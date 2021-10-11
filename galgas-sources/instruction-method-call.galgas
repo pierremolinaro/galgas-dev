@@ -63,7 +63,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
   [self.mReceiverExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration receiverExpression
@@ -125,13 +125,13 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
 
 shared class @methodCallInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
-  @unifiedTypeMap-proxy mReceiverType
+  @unifiedTypeMap-entry mReceiverType
   @semanticExpressionForGeneration mReceiverExpression
   @string mMethodName
   @methodKind mKind
   @actualParameterListForGeneration mActualParameterList
   @bool mHasCompilerArgument
-  @unifiedTypeMap-proxy mMethodBaseType
+  @unifiedTypeMap-entry mMethodBaseType
 }
 
 #·····················································································································*

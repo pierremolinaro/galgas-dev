@@ -242,7 +242,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
                                                                                   const class GALGAS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
                                                                                   const class GALGAS_operators & in_SUPPORTED_5F_OPERATORS,
                                                                                   const class GALGAS_functionSignature & in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST,
-                                                                                  const class GALGAS_unifiedTypeMap_2D_proxy & in_ENUMERATED_5F_OBJECT_5F_TYPE
+                                                                                  const class GALGAS_unifiedTypeMap_2D_entry & in_ENUMERATED_5F_OBJECT_5F_TYPE
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -254,7 +254,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_genericTypeImplementation (class C_Compiler * inCompiler,
                                                                                     const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                     const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                    const class GALGAS_unifiedTypeMap_2D_proxy & in_SUPER_5F_TYPE_5F_INDEX,
+                                                                                    const class GALGAS_unifiedTypeMap_2D_entry & in_SUPER_5F_TYPE_5F_INDEX,
                                                                                     const class GALGAS_operators & in_SUPPORTED_5F_OPERATORS
                                                                                     COMMA_LOCATION_ARGS) ;
 
@@ -289,9 +289,9 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeHeader_31_ (cl
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplementation (class C_Compiler * inCompiler,
-                                                                                          const class GALGAS_unifiedTypeMap_2D_proxy & in_TYPE,
+                                                                                          const class GALGAS_unifiedTypeMap_2D_entry & in_TYPE,
                                                                                           const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                          const class GALGAS_unifiedTypeMap_2D_proxy & in_ASSOCIATED_5F_LIST_5F_TYPE,
+                                                                                          const class GALGAS_unifiedTypeMap_2D_entry & in_ASSOCIATED_5F_LIST_5F_TYPE,
                                                                                           const class GALGAS_graphInsertModifierList & in_INSERT_5F_MODIFIER_5F_LIST
                                                                                           COMMA_LOCATION_ARGS) ;
 
@@ -788,7 +788,7 @@ void routine_enterInheritedGetterWith_32_Arguments (class GALGAS_getterMap & ioA
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Filewrapper 'mapProxyGenerationTemplate'
+//Filewrapper 'mapEntryGenerationTemplate'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -801,26 +801,26 @@ void routine_enterInheritedGetterWith_32_Arguments (class GALGAS_getterMap & ioA
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extern const cDirectoryWrapper gWrapperDirectory_0_mapProxyGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_0_mapEntryGenerationTemplate ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'mapProxyGenerationTemplate mapProxyTypeHeader1'
+//Filewrapper template 'mapEntryGenerationTemplate mapEntryTypeHeader1'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_mapProxyGenerationTemplate_mapProxyTypeHeader_31_ (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_mapEntryGenerationTemplate_mapEntryTypeHeader_31_ (class C_Compiler * inCompiler,
                                                                                      const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                      const class GALGAS_string & in_TYPE_5F_IDENTIFIER
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'mapProxyGenerationTemplate mapProxyTypeSpecificImplementation'
+//Filewrapper template 'mapEntryGenerationTemplate mapEntryTypeSpecificImplementation'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_mapProxyGenerationTemplate_mapProxyTypeSpecificImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_mapEntryGenerationTemplate_mapEntryTypeSpecificImplementation (class C_Compiler * inCompiler,
                                                                                                  const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                                  const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                                  const class GALGAS_string & in_ASSOCIATED_5F_MAP_5F_TYPE_5F_IDENTIFIER,

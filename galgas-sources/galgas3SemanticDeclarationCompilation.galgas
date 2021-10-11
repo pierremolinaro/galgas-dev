@@ -79,8 +79,8 @@ proc compileSemanticDeclarationsGalgas3
     message "*** Semantic analysis\n"
   end
 #------ Check there is no undefined types
-  for proxy in [outSemanticContext.mTypeMap unsolvedProxyList] do
-    error proxy.mValue : "the '@" + proxy.mValue + "' type is undefined"
+  for entry in [outSemanticContext.mTypeMap unsolvedEntryList] do
+    error entry.mValue : "the '@" + entry.mValue + "' type is undefined"
   end
 #------ Semantic Analysis
   outSemanticDeclarationSortedListForGeneration = {}

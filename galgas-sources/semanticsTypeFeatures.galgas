@@ -24,7 +24,7 @@ override method @stringsetPredefinedTypeAST getEnumerationList
   !@enumerationDescriptorList outEnumerationList
   !@string outEnumeratedType
 {
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?let stringTypeIndex]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"string" ?let stringTypeIndex]
   outEnumerationList = {}
   outEnumerationList += !stringTypeIndex !"key"
   outEnumeratedType = "string"
@@ -37,7 +37,7 @@ override method @dataPredefinedTypeAST getEnumerationList
   !@enumerationDescriptorList outEnumerationList
   !@string outEnumeratedType
 {
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"uint" ?let uintTypeIndex]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"uint" ?let uintTypeIndex]
   outEnumerationList = {}
   outEnumerationList += !uintTypeIndex !"data"
   outEnumeratedType = "uint"
@@ -53,7 +53,7 @@ override method @stringsetPredefinedTypeAST getSetterMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@setterMap outSetterMap
 {
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?let stringType]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"string" ?let stringType]
   outSetterMap = {}
   [!?outSetterMap insertKey
     !@lstring.new {!"removeKey" !@location.here}
@@ -231,7 +231,7 @@ override method @stringsetPredefinedTypeAST getAddAssignArgumentList
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@functionSignature outAddAssignArgumentList
 {
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?let @unifiedTypeMap-proxy stringTypeIndex]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"string" ?let @unifiedTypeMap-entry stringTypeIndex]
   outAddAssignArgumentList = {!["" nowhere] !stringTypeIndex !"inString"}
 }
 

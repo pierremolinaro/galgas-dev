@@ -8970,20 +8970,20 @@ GALGAS_descendantClassListMap GALGAS_descendantClassListMap::constructor_emptyMa
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_descendantClassListMap::addAssign_operation (const GALGAS_string & inKey,
-                                                         const GALGAS_unifiedTypeMap_2D_proxy & inOperand0
+                                                         const GALGAS_unifiedTypeMap_2D_entry & inOperand0
                                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid () && inOperand0.isValid ()) {
     capCollectionElement attributes ;
-    GALGAS_unifiedTypeMapProxyList::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
+    GALGAS_unifiedTypeMapEntryList::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
     addObjectInListMap (inKey.stringValue (), attributes) ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapProxyList GALGAS_descendantClassListMap::getter_listForKey (const GALGAS_string & inKey
+GALGAS_unifiedTypeMapEntryList GALGAS_descendantClassListMap::getter_listForKey (const GALGAS_string & inKey
                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  return GALGAS_unifiedTypeMapProxyList (listForKey (inKey)) ;
+  return GALGAS_unifiedTypeMapEntryList (listForKey (inKey)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -9012,10 +9012,10 @@ GALGAS_string cEnumerator_descendantClassListMap::current_key (LOCATION_ARGS) co
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapProxyList cEnumerator_descendantClassListMap::current_mList (LOCATION_ARGS) const {
+GALGAS_unifiedTypeMapEntryList cEnumerator_descendantClassListMap::current_mList (LOCATION_ARGS) const {
   const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cListMapElement) ;
-  return GALGAS_unifiedTypeMapProxyList (p->mSharedListMapList) ;
+  return GALGAS_unifiedTypeMapEntryList (p->mSharedListMapList) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

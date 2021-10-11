@@ -56,7 +56,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_default (LOCATI
   return GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
 if [ALL_ATTRIBUTE_LIST length] > 0 then
 for () in ALL_ATTRIBUTE_LIST do
-   %GALGAS_%![mPropertyTypeProxy identifierRepresentation]%::constructor_%![[mPropertyTypeProxy mDefaultConstructorName] identifierRepresentation]% (HERE)%
+   %GALGAS_%![mPropertyTypeEntry identifierRepresentation]%::constructor_%![[mPropertyTypeEntry mDefaultConstructorName] identifierRepresentation]% (HERE)%
   between %,\n%!^
 end%\n%!^%COMMA_THERE%
 else
@@ -87,7 +87,7 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
   for () in ALL_ATTRIBUTE_LIST
-    do %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & inAttribute_%![mPropertyName identifierRepresentation]
+    do %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inAttribute_%![mPropertyName identifierRepresentation]
     between %,\n%!^
   end
   if [ALL_ATTRIBUTE_LIST length] == 0 then
@@ -117,8 +117,8 @@ end
 for () in CURRENT_ATTRIBUTE_LIST do
   if mHasGetter then
     %//----------------------------------------------------------------------------------------------------------------------\n\n%
-    %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
-    %  GALGAS_%![mPropertyTypeProxy identifierRepresentation]% result ;\n%
+    %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
+    %  GALGAS_%![mPropertyTypeEntry identifierRepresentation]% result ;\n%
     %  if (NULL != mObjectPtr) {\n%
     %    const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
     %    macroValidSharedObject (p, cPtr_%!TYPE_IDENTIFIER%) ;\n%
@@ -127,7 +127,7 @@ for () in CURRENT_ATTRIBUTE_LIST do
     %  return result ;\n%
     %}\n\n%
     %//----------------------------------------------------------------------------------------------------------------------\n\n%
-    %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% cPtr_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
+    %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% cPtr_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
     %  return mProperty_%![mPropertyName identifierRepresentation]% ;\n%
     %}\n\n%
   end
@@ -136,7 +136,7 @@ end
 for () in CURRENT_ATTRIBUTE_LIST do
   if mHasSetter then
     %//----------------------------------------------------------------------------------------------------------------------\n\n%
-    %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mPropertyTypeProxy identifierRepresentation]% inValue\n%
+    %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inValue\n%
                           !^%COMMA_LOCATION_ARGS) {\n%
     %  if (NULL != mObjectPtr) {\n%
     %    insulate (THERE) ;\n%
@@ -146,7 +146,7 @@ for () in CURRENT_ATTRIBUTE_LIST do
     %  }\n%
     %}\n\n%
     %//----------------------------------------------------------------------------------------------------------------------\n\n%
-    %void cPtr_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mPropertyTypeProxy identifierRepresentation]% inValue\n%
+    %void cPtr_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inValue\n%
                           !^%COMMA_UNUSED_LOCATION_ARGS) {\n%
     %  mProperty_%![mPropertyName identifierRepresentation]% = inValue ;\n%
     %}\n\n%
@@ -159,7 +159,7 @@ end
 
 cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^
   for () in ALL_ATTRIBUTE_LIST
-    do %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
+    do %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
     between %,\n%!^
   end
   if [ALL_ATTRIBUTE_LIST length] > 0 then

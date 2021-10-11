@@ -52,7 +52,7 @@ list @templateInstructionListForGeneration {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract shared class @semanticExpressionForGeneration {
-  @unifiedTypeMap-proxy mResultType
+  @unifiedTypeMap-entry mResultType
   @location mLocation
 }
 
@@ -76,7 +76,7 @@ list @semanticExpressionListForGeneration {
 shared class @castInExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mReceiverExpression
   @string mTypeName
-  @unifiedTypeMap-proxy mCastType
+  @unifiedTypeMap-entry mCastType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -88,7 +88,7 @@ shared class @castInExpressionForGeneration : @semanticExpressionForGeneration {
 list @formalParameterListForGeneration {
   @lstring mFormalSelector
   @formalArgumentPassingModeAST mFormalArgumentPassingMode
-  @unifiedTypeMap-proxy mFormalArgumentType
+  @unifiedTypeMap-entry mFormalArgumentType
   @lstring mFormalArgumentName
   @string mFormalArgumentCppName
 }
@@ -101,7 +101,7 @@ list @formalParameterListForGeneration {
 
 list @formalInputParameterListForGeneration {
   @lstring mFormalSelector
-  @unifiedTypeMap-proxy mFormalArgumentType
+  @unifiedTypeMap-entry mFormalArgumentType
   @string mFormalArgumentCppName
   @lstring mFormalArgumentName
   @bool mIsConstant
@@ -114,7 +114,7 @@ list @formalInputParameterListForGeneration {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract shared class @actualParameterForGeneration {
-  @unifiedTypeMap-proxy mFormalArgumentType
+  @unifiedTypeMap-entry mFormalArgumentType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -139,7 +139,7 @@ shared class @outputActualParameterForGeneration : @actualParameterForGeneration
 shared class @outputInputActualParameterForGeneration : @actualParameterForGeneration {
   @string mOutputInputVariableCppName
   @lstringlist mStructAttributeList
-  @unifiedTypeMapProxyList mTypeList
+  @unifiedTypeMapEntryList mTypeList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -239,13 +239,13 @@ list @semanticDeclarationListForGeneration {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract shared class @semanticTypeForGeneration : @semanticDeclarationForGeneration {
-  @unifiedTypeMap-proxy mTypeProxy
+  @unifiedTypeMap-entry mSelfTypeEntry
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticTypeForGeneration implementationCppFileName -> @string outName {
-  outName = [self.mTypeProxy mHeaderFileName]
+  outName = [self.mSelfTypeEntry  mHeaderFileName]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -257,13 +257,13 @@ override getter @semanticTypeForGeneration hasCppHeaderFile -> @bool outHasHeade
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticTypeForGeneration isPredefined -> @bool {
-  result = [self.mTypeProxy mIsPredefined]
+  result = [self.mSelfTypeEntry  mIsPredefined]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticTypeForGeneration headerKind -> @headerKind outHeaderKind {
-  outHeaderKind = [self.mTypeProxy mHeaderKind]
+  outHeaderKind = [self.mSelfTypeEntry  mHeaderKind]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -405,7 +405,7 @@ shared class @routineImplementationForGeneration : @routinePrototypeDeclarationF
 shared class @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @string mFunctionName
   @formalInputParameterListForGeneration mFormalArgumentList
-  @unifiedTypeMap-proxy mReturnType
+  @unifiedTypeMap-entry mReturnType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -427,7 +427,7 @@ shared class @functionImplementationForGeneration : @functionPrototypeDeclaratio
 
 shared class @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @string mFunctionName
-  @unifiedTypeMap-proxy mReturnType
+  @unifiedTypeMap-entry mReturnType
   @string mResultVariableCppName
   @semanticInstructionListForGeneration mFunctionInstructionList
 }

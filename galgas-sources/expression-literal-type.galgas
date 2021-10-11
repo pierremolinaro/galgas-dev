@@ -31,7 +31,7 @@ syntax extension galgas3ExpressionSyntax {
 override method @literalTypeInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !self.mLiteralTypeName ?*]
+  [@unifiedTypeMap-entry makeEntry !?ioTypeMap !self.mLiteralTypeName ?*]
 }
 
 #·····················································································································
@@ -39,7 +39,7 @@ override method @literalTypeInExpressionAST enterExpressionInSemanticContext
 override method @literalTypeInExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy unused inType
+  ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -49,9 +49,9 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
 #--- Get constructor map from type map
   [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mLiteralTypeName ?26*]
 #---
-  let type = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mLiteralTypeName}
+  let type = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mLiteralTypeName}
   outExpression = @literalTypeInExpressionForGeneration.new {
-    !@unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !.new {!"type" !.here}}
+    !@unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !.new {!"type" !.here}}
     ![self.mLiteralTypeName location]
     !type
   }
@@ -62,7 +62,7 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 shared class @literalTypeInExpressionForGeneration : @semanticExpressionForGeneration {
-  @unifiedTypeMap-proxy mLiteralType
+  @unifiedTypeMap-entry mLiteralType
 }
 
 #·····················································································································

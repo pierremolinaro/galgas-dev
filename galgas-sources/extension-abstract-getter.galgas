@@ -109,7 +109,7 @@ override method @abstractExtensionGetterAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mTypeName}
+  let @unifiedTypeMap-entry selfType = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mTypeName}
 #--- Check self type is an abstract class
   if not [[selfType mTypeKindEnum] isClassType] then
     error self.mAbstractExtensionGetterName: "cannot declare an extension getter: '@" + [selfType key] + "' is not a class"
@@ -134,7 +134,7 @@ override method @abstractExtensionGetterAST semanticAnalysis
       !"getter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mAbstractExtensionGetterName fileNameRepresentation]
       !selfType
       ![self.mAbstractExtensionGetterName string]
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mAbstractExtensionGetterReturnedTypeName}
+      !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mAbstractExtensionGetterReturnedTypeName}
       !formalParameterListForGeneration
     }
 }
@@ -165,9 +165,9 @@ override method @abstractExtensionGetterAST buildExtensionListMaps
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 shared class @abstractExtensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMap-proxy mReceiverType
+  @unifiedTypeMap-entry mReceiverType
   @string mAbstractExtensionGetterName
-  @unifiedTypeMap-proxy mResultType
+  @unifiedTypeMap-entry mResultType
   @formalInputParameterListForGeneration mAbstractExtensionGetterFormalParameterList
 }
 

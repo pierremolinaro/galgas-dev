@@ -179,7 +179,7 @@ proc analyzeErrorOrWarningInstruction
         ?let @functionSignature argumentTypeList
         ?*
         ?let @bool hasCompilerArgument
-        ?let @unifiedTypeMap-proxy returnedType
+        ?let @unifiedTypeMap-entry returnedType
         ?2*
       ]
       if [argumentTypeList length] != 0 then

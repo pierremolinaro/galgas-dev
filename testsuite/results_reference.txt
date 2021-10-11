@@ -363,7 +363,7 @@ LOGGING r: <@uint:5>
   @luintlist
   @luintlist-element
   @maTable
-  @maTable-proxy
+  @maTable-entry
   @myList
   @myList-element
   @myListMap
@@ -407,10 +407,10 @@ Function 'functionTest' exists:true
 LOGGING object: 
 LOGGING y: <@uint:2>
 LOGGING result: 
-*************************************** begin of maproxy test
+*************************************** begin of mapentry test
 LOGGING [table count]: <@uint:0>
-LOGGING Proxy: : <@maTable-proxy regular (key "abc", unsolved)>
-LOGGING [table unsolvedProxyCount]: <@uint:1>
+LOGGING Entry: : <@maTable-entry regular (key "abc", unsolved)>
+LOGGING [table unsolvedEntryCount]: <@uint:1>
 *************************************** begin of extension reader test
 LOGGING s: <@string:"-3-4-4">
 *************************************** begin of extension setter test

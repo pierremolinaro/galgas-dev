@@ -231,11 +231,11 @@ override method @mapDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- string type index
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"string" ?let stringTypeIndex]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"string" ?let stringTypeIndex]
 #--- location type index
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"location" ?let locationTypeProxy]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"location" ?let locationTypeEntry]
 #--- lstring type index
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"lstring" ?let lstringTypeIndex]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"lstring" ?let lstringTypeIndex]
 #--- Enumeration description
   @enumerationDescriptorList enumerationDescriptor = {!lstringTypeIndex !"lkey"}
 #--- Attributes
@@ -365,9 +365,9 @@ override method @mapDeclarationAST enterInSemanticContext
     !lstringTypeIndex
     !@formalArgumentPassingModeAST.argumentConstantIn
     !"inLKey"
-  @unifiedTypeMapProxyList typesToIncludeInHeaderCompilation = {}
+  @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
   for () in self.mPropertyList do
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasGetter = true
     let hasSetter = true
     var hasSelector = false
@@ -435,7 +435,7 @@ override method @mapDeclarationAST enterInSemanticContext
     if mLocationAttribute then
       searchMethodFormalArgumentList +=
         !if usesSelectorsInInsertAndSearch then ["keyLocation" nowhere] else ["" nowhere] end
-        !locationTypeProxy
+        !locationTypeEntry
         !.argumentOut
         !"outKeyLocation"
     end
@@ -452,7 +452,7 @@ override method @mapDeclarationAST enterInSemanticContext
 #--- Enter "attributeForKey" getters
   for () in self.mPropertyList do
     let accessorName = @lstring.new {![mPropertyName string] + "ForKey" ![mPropertyName location]}
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
       !accessorName
       !@methodKind.definedAsMember
@@ -483,10 +483,10 @@ override method @mapDeclarationAST enterInSemanticContext
       !"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "ForKey"
       ![mPropertyName location]
     }
-    [@unifiedTypeMap-proxy makeProxy
+    [@unifiedTypeMap-entry makeEntry
       !?ioSemanticContext.mTypeMap
       !mPropertyTypeName
-      ?let @unifiedTypeMap-proxy attributeTypeIndex
+      ?let @unifiedTypeMap-entry attributeTypeIndex
     ]
     @formalParameterSignature accessorFormalArgumentList = {}
     accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
@@ -515,10 +515,10 @@ override method @mapDeclarationAST enterInSemanticContext
     !?instanceMethodMap
   )
 #--- Element type index
-  [@unifiedTypeMap-proxy makeProxy
+  [@unifiedTypeMap-entry makeEntry
     !?ioSemanticContext.mTypeMap
     !@lstring.new {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName.location}
-    ?let @unifiedTypeMap-proxy elementTypeProxy
+    ?let @unifiedTypeMap-entry elementTypeEntry
   ]
 #--- Enter in type map
   [!?ioSemanticContext.mTypeMap insertKey
@@ -545,7 +545,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !self.mSearchMethodList
     !{}
     !false # Do not generate header in separate file
-    !elementTypeProxy # Type for enumerated element for "for" instruction
+    !elementTypeEntry # Type for enumerated element for "for" instruction
     !"emptyMap"
     !"map-" + [self.mMapTypeName fileNameRepresentation]
     !@headerKind.twoHeaders
@@ -597,7 +597,7 @@ override method @mapDeclarationAST semanticAnalysis
   for () in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    @unifiedTypeMap-proxy t = .searchKey{!inSemanticContext.mTypeMap !mPropertyTypeName}
+    @unifiedTypeMap-entry t = .searchKey{!inSemanticContext.mTypeMap !mPropertyTypeName}
     let hasSetter = true
     let hasGetter = true
     let hasSelector = false
@@ -651,8 +651,8 @@ override method @mapDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"map " + self.mMapTypeName
     !@mapTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mMapTypeName}
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !@lstring.new {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName.location}}
+      !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mMapTypeName}
+      !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !@lstring.new {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName.location}}
       !self.mMapTypeName
       !typedAttributeList
       !self.mInsertMethodList
@@ -668,7 +668,7 @@ override method @mapDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 shared class @mapTypeForGeneration : @semanticTypeForGeneration {
-  @unifiedTypeMap-proxy mElementTypeProxy
+  @unifiedTypeMap-entry mElementTypeEntry
   @lstring mMapTypeName
   @typedPropertyList mTypedAttributeList
   @insertMethodListAST mInsertMethodList
@@ -685,25 +685,25 @@ override method @mapTypeForGeneration appendDeclaration1
   !@string outHeader
 {
   outHeader = [filewrapper typeGenerationTemplate.mapTypeHeader1
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mTypedAttributeList
     !self.mSearchMethodList
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
-    ![self.mTypeProxy mIsConcrete]
-    ![self.mTypeProxy mConstructorMap]
-    ![self.mTypeProxy mGetterMap]
-    ![self.mTypeProxy mSetterMap]
-    ![self.mTypeProxy mInstanceMethodMap]
-    ![self.mTypeProxy mClassMethodMap]
-    ![self.mTypeProxy mOptionalMethodMap]
-    ![self.mTypeProxy mEnumerationDescriptor]
-    ![self.mTypeProxy mHandledOperatorFlags]
-    ![self.mTypeProxy mAddAssignOperatorArguments]
-    ![self.mTypeProxy mTypeForEnumeratedElement]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
+    ![self.mSelfTypeEntry  mIsConcrete]
+    ![self.mSelfTypeEntry  mConstructorMap]
+    ![self.mSelfTypeEntry  mGetterMap]
+    ![self.mSelfTypeEntry  mSetterMap]
+    ![self.mSelfTypeEntry  mInstanceMethodMap]
+    ![self.mSelfTypeEntry  mClassMethodMap]
+    ![self.mSelfTypeEntry  mOptionalMethodMap]
+    ![self.mSelfTypeEntry  mEnumerationDescriptor]
+    ![self.mSelfTypeEntry  mHandledOperatorFlags]
+    ![self.mSelfTypeEntry  mAddAssignOperatorArguments]
+    ![self.mSelfTypeEntry  mTypeForEnumeratedElement]
   ]
 }
 
@@ -718,8 +718,8 @@ override method @mapTypeForGeneration appendDeclaration2
   end
 
   outHeader = [filewrapper typeGenerationTemplate.mapTypeHeader2
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mTypedAttributeList
   ]
 }
@@ -730,10 +730,10 @@ override method @mapTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  [self.mElementTypeProxy addHeaderFileName !?ioInclusionSet]
-  [self.mTypeProxy addHeaderFileName !?ioInclusionSet]
+  [self.mElementTypeEntry addHeaderFileName !?ioInclusionSet]
+  [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper typeGenerationTemplate.mapTypeSpecificImplementation
-    ![self.mTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mTypedAttributeList
     !self.mInsertMethodList
     !self.mSearchMethodList

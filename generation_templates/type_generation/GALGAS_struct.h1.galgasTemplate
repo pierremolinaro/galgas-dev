@@ -8,7 +8,7 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Properties
 %
 for () in PROPERTY_LIST do
-  %  public: GALGAS_%![mPropertyTypeProxy identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n\n%
+  %  public: GALGAS_%![mPropertyTypeEntry identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n\n%
 end%//--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
   public: VIRTUAL_IN_DEBUG void drop (void) ;
@@ -25,7 +25,7 @@ end
 //--------------------------------- Property setters
 %
 for () in PROPERTY_LIST do
-  %  public: inline void setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & inValue COMMA_UNUSED_LOCATION_ARGS) {\n%
+  %  public: inline void setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inValue COMMA_UNUSED_LOCATION_ARGS) {\n%
   %    mProperty_%![mPropertyName identifierRepresentation]% = inValue ;\n% 
   %  }\n\n%
 end%//--------------------------------- Virtual destructor (in debug mode)
@@ -34,7 +34,7 @@ end%//--------------------------------- Virtual destructor (in debug mode)
 //--------------------------------- Native constructor
   public: GALGAS_%!TYPE_IDENTIFIER% (%?^
 for () in PROPERTY_LIST
-  do %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
+  do %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
   between %,\n%!^
 end%) ;
 

@@ -7,7 +7,7 @@ class cNode_%!TYPE_IDENTIFIER% : public GALGAS_%!TYPE_IDENTIFIER%_2D_element {
 
   public: cNode_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & in_key%
 for () in ATTRIBUTE_LIST
-  do %,\n%!^%const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & inProperty_%![mPropertyName identifierRepresentation]
+  do %,\n%!^%const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inProperty_%![mPropertyName identifierRepresentation]
 end
 %) :
   GALGAS_%!TYPE_IDENTIFIER%_2D_element (in_key%
@@ -482,7 +482,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
 
 void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey%
 for () in ATTRIBUTE_LIST
-  do index IDX %,\n%!^%const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & inArgument%![IDX string]
+  do index IDX %,\n%!^%const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inArgument%![IDX string]
 end
 %,\n %!^%C_Compiler * /* inCompiler */%
 %\n %!^%COMMA_LOCATION_ARGS) {\n%
@@ -514,7 +514,7 @@ GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_hasKey (%?^%const GALGAS_%!KEY_TYP
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_searchKey (%?^%GALGAS_%!KEY_TYPE_IDENTIFIER% inKey%
 for () in ATTRIBUTE_LIST
-  do index IDX %,\n%!^%GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outArgument%![IDX string]
+  do index IDX %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
 end
 %,\n %!^%C_Compiler * inCompiler%
 %\n %!^%COMMA_LOCATION_ARGS) const {
@@ -546,7 +546,7 @@ end
 //----------------------------------------------------------------------------------------------------------------------\n\n%
 %void GALGAS_%!TYPE_IDENTIFIER%::setter_removeKey (%?^%GALGAS_%!KEY_TYPE_IDENTIFIER% inKey%
 for () in ATTRIBUTE_LIST
-  do index IDX %,\n%!^%GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outArgument%![IDX string]
+  do index IDX %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
 end
 %,\n %!^%C_Compiler * inCompiler%
 %\n %!^%COMMA_LOCATION_ARGS) {
@@ -579,10 +579,10 @@ end
 
 %for () in ATTRIBUTE_LIST do
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
-  %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]%ForKey (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey,\n%
+  %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]%ForKey (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey,\n%
   %                                               %!^%C_Compiler * inCompiler\n%
   %                                               %!^%COMMA_LOCATION_ARGS) const {\n%
-  %  GALGAS_%![mPropertyTypeProxy identifierRepresentation]% result ;\n%
+  %  GALGAS_%![mPropertyTypeEntry identifierRepresentation]% result ;\n%
   %  if (isValid () && inKey.isValid ()) {\n%
   %  const cNode_%!TYPE_IDENTIFIER% * p = mSharedDict->findEntryInDict (inKey) ;\n%
   %   if (NULL == p) {\n%
@@ -602,7 +602,7 @@ end
 
 for () in ATTRIBUTE_LIST do
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GALGAS_%![mPropertyTypeProxy identifierRepresentation]% inPropertyValue,\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inPropertyValue,\n%
   %                           %!^%GALGAS_%!KEY_TYPE_IDENTIFIER% inKey,\n%
   %                           %!^%C_Compiler * inCompiler\n%
   %                           %!^%COMMA_LOCATION_ARGS) {\n%
@@ -743,7 +743,7 @@ GALGAS_%!KEY_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current_key (LOCAT
 
 %for () in ATTRIBUTE_LIST do index IDX
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
-  %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cCollectionElement_%!TYPE_IDENTIFIER%* p = dynamic_cast  <const cCollectionElement_%!TYPE_IDENTIFIER%*> (currentObjectPtr (THERE)) ;\n%
   %  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
   %  return p->mElement.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
@@ -752,7 +752,7 @@ end
 %//----------------------------------------------------------------------------------------------------------------------\n\n%
 %bool GALGAS_%!TYPE_IDENTIFIER%::optional_searchKey (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey%
 for () in ATTRIBUTE_LIST
-  do index IDX %,\n%!^%GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outArgument%![IDX string]
+  do index IDX %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
 end
 %) const {\n%
 %  const cNode_%!TYPE_IDENTIFIER% * p = NULL ;\n%

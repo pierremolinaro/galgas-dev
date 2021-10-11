@@ -48,7 +48,7 @@ override method @grammarForGeneration appendSpecificImplementation
       for () in mFormalParametersList do
         switch mFormalArgumentPassingModeForGrammarAnalysis
         case argumentConstantIn, argumentIn :
-          let t = @unifiedTypeMap-proxy. searchKey {!inUnifiedTypeMap !mGalgasTypeNameForGrammarAnalysis}
+          let t = @unifiedTypeMap-entry. searchKey {!inUnifiedTypeMap !mGalgasTypeNameForGrammarAnalysis}
           [t addHeaderFileName !?ioInclusionSet]
         case argumentInOut, argumentOut :
         end     
@@ -349,7 +349,7 @@ proc generateFunction
   ?let @formalInputParameterListForGeneration inFormalArgumentList
   ?let @semanticInstructionListForGeneration inInstructionList
   ?let @string inCompilerTypeName
-  ?let @unifiedTypeMap-proxy inResultType
+  ?let @unifiedTypeMap-entry inResultType
   ?let @string inResultVariableCppName
   ?let @bool inIsStatic
   !@string outGeneratedCode
@@ -525,7 +525,7 @@ proc generateExtensionSetter
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateExtensionMethod
-  ?let @unifiedTypeMap-proxy inReceiverType
+  ?let @unifiedTypeMap-entry inReceiverType
   ?let @string inBaseClassName
   ?!@stringset ioInclusionSet
   ?let @string inMethodName
@@ -555,7 +555,7 @@ proc generateExtensionMethod
   end
   [!?routineBody decIndentation !2]
 #--- Generate inclusions
-  @unifiedTypeMap-proxy baseType = inReceiverType
+  @unifiedTypeMap-entry baseType = inReceiverType
   @bool searching = true
   loop( @uint. max) while searching do
     if not [[baseType mSuperType] isNull] then
@@ -641,7 +641,7 @@ proc generateExtensionMethod
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateExtensionGetter
-  ?let @unifiedTypeMap-proxy inReceiverType
+  ?let @unifiedTypeMap-entry inReceiverType
   ?let @string inBaseClassName
   ?!@stringset ioInclusionSet
   ?let @string inGetterName
@@ -676,7 +676,7 @@ proc generateExtensionGetter
   [!?routineBody decIndentation !2]
 #--- Generate inclusions
   [inReceiverType addHeaderFileName !?ioInclusionSet]
-  @unifiedTypeMap-proxy baseType = inReceiverType
+  @unifiedTypeMap-entry baseType = inReceiverType
   @bool searching = true
   loop( @uint. max) while searching do
     if not [[baseType mSuperType] isNull] then
@@ -788,12 +788,12 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST # Empty List if cannot be enumerated
     ?@operators SUPPORTED_OPERATORS
     ?@functionSignature ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
-    ?@unifiedTypeMap-proxy ENUMERATED_OBJECT_TYPE
+    ?@unifiedTypeMap-entry ENUMERATED_OBJECT_TYPE
 
   template genericTypeImplementation "generic-type.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@unifiedTypeMap-proxy SUPER_TYPE_INDEX
+    ?@unifiedTypeMap-entry SUPER_TYPE_INDEX
     ?@operators SUPPORTED_OPERATORS
 
 #---------- Extern Type
@@ -809,9 +809,9 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_IDENTIFIER
 
   template graphTypeSpecificImplementation "GALGAS_graph.cpp.galgasTemplate"
-    ?@unifiedTypeMap-proxy TYPE
+    ?@unifiedTypeMap-entry TYPE
     ?@string TYPE_IDENTIFIER
-    ?@unifiedTypeMap-proxy ASSOCIATED_LIST_TYPE
+    ?@unifiedTypeMap-entry ASSOCIATED_LIST_TYPE
     ?@graphInsertModifierList INSERT_MODIFIER_LIST
 
 #---------- Array
@@ -920,31 +920,31 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
-    ?@unifiedTypeMap-proxy RETURN_TYPE
+    ?@unifiedTypeMap-entry RETURN_TYPE
   
   template abstractExtensionGetterImplementation "abstract-extension-getter.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
-    ?@unifiedTypeMap-proxy RETURN_TYPE
+    ?@unifiedTypeMap-entry RETURN_TYPE
   
   template extensionGetterDeclaration "extension-getter.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
-    ?@unifiedTypeMap-proxy RETURN_TYPE
+    ?@unifiedTypeMap-entry RETURN_TYPE
 
   template extensionGetterImplementation "extension-getter.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
-    ?@unifiedTypeMap-proxy RETURN_TYPE
+    ?@unifiedTypeMap-entry RETURN_TYPE
     ?@string GETTER_IMPLEMENTATION
   
   template overridingExtensionGetterImplementation "overriding-extension-getter.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
-    ?@unifiedTypeMap-proxy RETURN_TYPE
+    ?@unifiedTypeMap-entry RETURN_TYPE
     ?@string GETTER_IMPLEMENTATION
   
 #------------ Extension setter
@@ -982,7 +982,7 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
   
   template abstractExtensionMethodImplementation "abstract-extension-method.cpp.galgasTemplate"
-    ?@unifiedTypeMap-proxy RECEIVER_TYPE
+    ?@unifiedTypeMap-entry RECEIVER_TYPE
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
   
@@ -1148,10 +1148,10 @@ override method @onceFunctionDeclarationForGeneration appendDeclaration1
 
 override getter @semanticTypeForGeneration appendTypeGenericImplementation -> @string outImplementation {
   outImplementation = [filewrapper typeGenerationTemplate.genericTypeImplementation
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
-    ![self.mTypeProxy mSuperType]
-    ![self.mTypeProxy mHandledOperatorFlags]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
+    ![self.mSelfTypeEntry  mSuperType]
+    ![self.mSelfTypeEntry  mHandledOperatorFlags]
   ]
 }
 
@@ -1628,19 +1628,19 @@ override getter @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @s
     outHeader = [filewrapper predefinedTypeGenerationTemplate.timer_type]
   end
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
-    ![self.mTypeProxy mIsConcrete]
-    ![self.mTypeProxy mConstructorMap]
-    ![self.mTypeProxy mGetterMap]
-    ![self.mTypeProxy mSetterMap]
-    ![self.mTypeProxy mInstanceMethodMap]
-    ![self.mTypeProxy mClassMethodMap]
-    ![self.mTypeProxy mOptionalMethodMap]
-    ![self.mTypeProxy mEnumerationDescriptor]
-    ![self.mTypeProxy mHandledOperatorFlags]
-    ![self.mTypeProxy mAddAssignOperatorArguments]
-    ![self.mTypeProxy mTypeForEnumeratedElement]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
+    ![self.mSelfTypeEntry  mIsConcrete]
+    ![self.mSelfTypeEntry  mConstructorMap]
+    ![self.mSelfTypeEntry  mGetterMap]
+    ![self.mSelfTypeEntry  mSetterMap]
+    ![self.mSelfTypeEntry  mInstanceMethodMap]
+    ![self.mSelfTypeEntry  mClassMethodMap]
+    ![self.mSelfTypeEntry  mOptionalMethodMap]
+    ![self.mSelfTypeEntry  mEnumerationDescriptor]
+    ![self.mSelfTypeEntry  mHandledOperatorFlags]
+    ![self.mSelfTypeEntry  mAddAssignOperatorArguments]
+    ![self.mSelfTypeEntry  mTypeForEnumeratedElement]
   ]
 }
 

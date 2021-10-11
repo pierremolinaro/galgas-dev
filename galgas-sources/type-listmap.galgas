@@ -97,9 +97,9 @@ override method @listmapDeclarationAST enterInSemanticContext
   @setterMap setterMap = {}
   @instanceMethodMap instanceMethodMap = {}
 #--- Associated map type index
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !self.mAssociatedListTypeName ?let associatedListTypeIndex]
+  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mAssociatedListTypeName ?let associatedListTypeIndex]
 #--- currentType type index
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"string" ?let stringTypeIndex]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"string" ?let stringTypeIndex]
 #--- Getters
   enterInheritedGetterWithoutArgument (
     !?getterMap
@@ -147,7 +147,7 @@ override method @listmapDeclarationAST enterInSemanticContext
   var addAssignOperatorDescription =@functionSignature {}
   addAssignOperatorDescription += !["" nowhere] !stringTypeIndex !"inKey"
   for () in listTypedAttributeList do
-    addAssignOperatorDescription += !["" nowhere] !mPropertyTypeProxy !mPropertyName.string
+    addAssignOperatorDescription += !["" nowhere] !mPropertyTypeEntry !mPropertyName.string
   end
 #--- Add extensions
   addExtensions (
@@ -161,17 +161,17 @@ override method @listmapDeclarationAST enterInSemanticContext
     !?instanceMethodMap
   )
 #--- Element type index
-  [@unifiedTypeMap-proxy makeProxy
+  [@unifiedTypeMap-entry makeEntry
     !?ioSemanticContext.mTypeMap
     !@lstring.new {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}
-    ?let @unifiedTypeMap-proxy listElementTypeIndex
+    ?let @unifiedTypeMap-entry listElementTypeIndex
   ]
 #--- Enter type in type map
   [!?ioSemanticContext.mTypeMap insertKey
     !self.mListmapTypeName
     !self.mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !@typeKindEnum. arrayType
     !true # Support collection value
     !@typedPropertyList.emptyList
@@ -246,9 +246,9 @@ override method @listmapDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 shared class @listmapTypeForGeneration : @semanticTypeForGeneration {
-  @unifiedTypeMap-proxy mAssociatedListTypeIndex
+  @unifiedTypeMap-entry mAssociatedListTypeIndex
   @typedPropertyList mAssociatedListTypedAttributeList
-  @unifiedTypeMap-proxy mAssociatedListMapElementTypeIndex
+  @unifiedTypeMap-entry mAssociatedListMapElementTypeIndex
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -261,23 +261,23 @@ override method @listmapTypeForGeneration appendDeclaration1
   end
 
   outHeader = [filewrapper typeGenerationTemplate.listmapTypeHeader1
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry key]
+    ![self.mSelfTypeEntry identifierRepresentation]
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
-    ![self.mTypeProxy mIsConcrete]
-    ![self.mTypeProxy mConstructorMap]
-    ![self.mTypeProxy mGetterMap]
-    ![self.mTypeProxy mSetterMap]
-    ![self.mTypeProxy mInstanceMethodMap]
-    ![self.mTypeProxy mClassMethodMap]
-    ![self.mTypeProxy mOptionalMethodMap]
-    ![self.mTypeProxy mEnumerationDescriptor]
-    ![self.mTypeProxy mHandledOperatorFlags]
-    ![self.mTypeProxy mAddAssignOperatorArguments]
-    ![self.mTypeProxy mTypeForEnumeratedElement]
+    ![self.mSelfTypeEntry key]
+    ![self.mSelfTypeEntry identifierRepresentation]
+    ![self.mSelfTypeEntry mIsConcrete]
+    ![self.mSelfTypeEntry mConstructorMap]
+    ![self.mSelfTypeEntry mGetterMap]
+    ![self.mSelfTypeEntry mSetterMap]
+    ![self.mSelfTypeEntry mInstanceMethodMap]
+    ![self.mSelfTypeEntry mClassMethodMap]
+    ![self.mSelfTypeEntry mOptionalMethodMap]
+    ![self.mSelfTypeEntry mEnumerationDescriptor]
+    ![self.mSelfTypeEntry mHandledOperatorFlags]
+    ![self.mSelfTypeEntry mAddAssignOperatorArguments]
+    ![self.mSelfTypeEntry mTypeForEnumeratedElement]
   ]
  }
 
@@ -287,10 +287,10 @@ override method @listmapTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  [self.mTypeProxy addHeaderFileName !?ioInclusionSet]
+  [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
   [self.mAssociatedListMapElementTypeIndex addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper typeGenerationTemplate.listmapTypeSpecificImplementation
-    ![self.mTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry identifierRepresentation]
     ![self.mAssociatedListTypeIndex identifierRepresentation]
     !self.mAssociatedListTypedAttributeList
   ]

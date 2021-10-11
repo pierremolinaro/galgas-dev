@@ -199,7 +199,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
                                                                                                           const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                           const class GALGAS_string & in_GETTER_5F_NAME,
                                                                                                           const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                                          const class GALGAS_unifiedTypeMap_2D_proxy & in_RETURN_5F_TYPE
+                                                                                                          const class GALGAS_unifiedTypeMap_2D_entry & in_RETURN_5F_TYPE
                                                                                                           COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -212,7 +212,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
                                                                                                              const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                              const class GALGAS_string & in_GETTER_5F_NAME,
                                                                                                              const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                                             const class GALGAS_unifiedTypeMap_2D_proxy & in_RETURN_5F_TYPE
+                                                                                                             const class GALGAS_unifiedTypeMap_2D_entry & in_RETURN_5F_TYPE
                                                                                                              COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -225,7 +225,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
                                                                                                   const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                   const class GALGAS_string & in_GETTER_5F_NAME,
                                                                                                   const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                                  const class GALGAS_unifiedTypeMap_2D_proxy & in_RETURN_5F_TYPE
+                                                                                                  const class GALGAS_unifiedTypeMap_2D_entry & in_RETURN_5F_TYPE
                                                                                                   COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -238,7 +238,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
                                                                                                      const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                      const class GALGAS_string & in_GETTER_5F_NAME,
                                                                                                      const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                                     const class GALGAS_unifiedTypeMap_2D_proxy & in_RETURN_5F_TYPE,
+                                                                                                     const class GALGAS_unifiedTypeMap_2D_entry & in_RETURN_5F_TYPE,
                                                                                                      const class GALGAS_string & in_GETTER_5F_IMPLEMENTATION
                                                                                                      COMMA_LOCATION_ARGS) ;
 
@@ -251,7 +251,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionGetterImplementation (class C_Compiler * inCompiler,
                                                                                                                const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                                const class GALGAS_string & in_GETTER_5F_NAME,
-                                                                                                               const class GALGAS_unifiedTypeMap_2D_proxy & in_RETURN_5F_TYPE,
+                                                                                                               const class GALGAS_unifiedTypeMap_2D_entry & in_RETURN_5F_TYPE,
                                                                                                                const class GALGAS_string & in_GETTER_5F_IMPLEMENTATION
                                                                                                                COMMA_LOCATION_ARGS) ;
 
@@ -335,7 +335,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionMethodImplementation (class C_Compiler * inCompiler,
-                                                                                                             const class GALGAS_unifiedTypeMap_2D_proxy & in_RECEIVER_5F_TYPE,
+                                                                                                             const class GALGAS_unifiedTypeMap_2D_entry & in_RECEIVER_5F_TYPE,
                                                                                                              const class GALGAS_string & in_METHOD_5F_NAME,
                                                                                                              const class GALGAS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
                                                                                                              COMMA_LOCATION_ARGS) ;
@@ -578,7 +578,7 @@ void routine_analyzeFunctionBody (const class GALGAS_lstring constinArgument0,
                                   const class GALGAS_lstring constinArgument8,
                                   const class GALGAS_location constinArgument9,
                                   class GALGAS_formalInputParameterListForGeneration & outArgument10,
-                                  class GALGAS_unifiedTypeMap_2D_proxy & outArgument11,
+                                  class GALGAS_unifiedTypeMap_2D_entry & outArgument11,
                                   class GALGAS_string & outArgument12,
                                   class GALGAS_semanticInstructionListForGeneration & outArgument13,
                                   class C_Compiler * inCompiler
@@ -590,7 +590,7 @@ void routine_analyzeFunctionBody (const class GALGAS_lstring constinArgument0,
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_generateExtensionGetter (const class GALGAS_unifiedTypeMap_2D_proxy constinArgument0,
+void routine_generateExtensionGetter (const class GALGAS_unifiedTypeMap_2D_entry constinArgument0,
                                       const class GALGAS_string constinArgument1,
                                       class GALGAS_stringset & ioArgument2,
                                       const class GALGAS_string constinArgument3,
@@ -614,7 +614,7 @@ void routine_generateFunction (const class GALGAS_string constinArgument0,
                                const class GALGAS_formalInputParameterListForGeneration constinArgument2,
                                const class GALGAS_semanticInstructionListForGeneration constinArgument3,
                                const class GALGAS_string constinArgument4,
-                               const class GALGAS_unifiedTypeMap_2D_proxy constinArgument5,
+                               const class GALGAS_unifiedTypeMap_2D_entry constinArgument5,
                                const class GALGAS_string constinArgument6,
                                const class GALGAS_bool constinArgument7,
                                class GALGAS_string & outArgument8,
@@ -658,7 +658,7 @@ void routine_analyzeRoutineBody (const class GALGAS_lstring constinArgument0,
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_generateExtensionMethod (const class GALGAS_unifiedTypeMap_2D_proxy constinArgument0,
+void routine_generateExtensionMethod (const class GALGAS_unifiedTypeMap_2D_entry constinArgument0,
                                       const class GALGAS_string constinArgument1,
                                       class GALGAS_stringset & ioArgument2,
                                       const class GALGAS_string constinArgument3,
@@ -722,10 +722,10 @@ void routine_generateExtensionSetter (const class GALGAS_string constinArgument0
 //----------------------------------------------------------------------------------------------------------------------
 
 void routine_checkGetterSignatures (const class GALGAS_formalInputParameterListForGeneration constinArgument0,
-                                    const class GALGAS_unifiedTypeMap_2D_proxy constinArgument1,
+                                    const class GALGAS_unifiedTypeMap_2D_entry constinArgument1,
                                     const class GALGAS_location constinArgument2,
                                     const class GALGAS_functionSignature constinArgument3,
-                                    const class GALGAS_unifiedTypeMap_2D_proxy constinArgument4,
+                                    const class GALGAS_unifiedTypeMap_2D_entry constinArgument4,
                                     const class GALGAS_location constinArgument5,
                                     class C_Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;

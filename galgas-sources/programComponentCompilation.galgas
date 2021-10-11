@@ -200,9 +200,9 @@ proc compileProgramComponentGalgas3
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !buildPredefinedTypes (!inSemanticContext)
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !""
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !""
   }
 #--- Analyse 'before' instructions

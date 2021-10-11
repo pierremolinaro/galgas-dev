@@ -9541,7 +9541,7 @@ GALGAS_enumConstantListForGeneration_2D_element::~ GALGAS_enumConstantListForGen
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_enumConstantListForGeneration_2D_element::GALGAS_enumConstantListForGeneration_2D_element (const GALGAS_string & inOperand0,
-                                                                                                  const GALGAS_unifiedTypeMapProxyList & inOperand1) :
+                                                                                                  const GALGAS_unifiedTypeMapEntryList & inOperand1) :
 mProperty_mConstantName (inOperand0),
 mProperty_mAssociatedValueTypeList (inOperand1) {
 }
@@ -9550,13 +9550,13 @@ mProperty_mAssociatedValueTypeList (inOperand1) {
 
 GALGAS_enumConstantListForGeneration_2D_element GALGAS_enumConstantListForGeneration_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_enumConstantListForGeneration_2D_element (GALGAS_string::constructor_default (HERE),
-                                                          GALGAS_unifiedTypeMapProxyList::constructor_emptyList (HERE)) ;
+                                                          GALGAS_unifiedTypeMapEntryList::constructor_emptyList (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_enumConstantListForGeneration_2D_element GALGAS_enumConstantListForGeneration_2D_element::constructor_new (const GALGAS_string & inOperand0,
-                                                                                                                  const GALGAS_unifiedTypeMapProxyList & inOperand1 
+                                                                                                                  const GALGAS_unifiedTypeMapEntryList & inOperand1 
                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_enumConstantListForGeneration_2D_element result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
@@ -9614,7 +9614,7 @@ GALGAS_string GALGAS_enumConstantListForGeneration_2D_element::getter_mConstantN
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapProxyList GALGAS_enumConstantListForGeneration_2D_element::getter_mAssociatedValueTypeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMapEntryList GALGAS_enumConstantListForGeneration_2D_element::getter_mAssociatedValueTypeList (UNUSED_LOCATION_ARGS) const {
   return mProperty_mAssociatedValueTypeList ;
 }
 

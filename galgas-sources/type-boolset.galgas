@@ -94,7 +94,7 @@ override method @boolsetDeclarationAST enterInSemanticContext
     slotNameSet += !slotName
   end  
 #--- boolset type index
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !self.mBoolsetTypeName ?let boolsetTypeIndex]
+  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mBoolsetTypeName ?let boolsetTypeIndex]
 #--- Constructors and attribute map
   commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?@getterMap getterMap)
   @constructorMap constructorMap = {}
@@ -237,24 +237,24 @@ override method @boolsetTypeForGeneration appendDeclaration1
   !@string outHeader
 {
   outHeader = [filewrapper structGenerationTemplate.boolsetTypeHeader1
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mFlagList
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
-    ![self.mTypeProxy mIsConcrete]
-    ![self.mTypeProxy mConstructorMap]
-    ![self.mTypeProxy mGetterMap]
-    ![self.mTypeProxy mSetterMap]
-    ![self.mTypeProxy mInstanceMethodMap]
-    ![self.mTypeProxy mClassMethodMap]
-    ![self.mTypeProxy mOptionalMethodMap]
-    ![self.mTypeProxy mEnumerationDescriptor]
-    ![self.mTypeProxy mHandledOperatorFlags]
-    ![self.mTypeProxy mAddAssignOperatorArguments]
-    ![self.mTypeProxy mTypeForEnumeratedElement]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
+    ![self.mSelfTypeEntry  mIsConcrete]
+    ![self.mSelfTypeEntry  mConstructorMap]
+    ![self.mSelfTypeEntry  mGetterMap]
+    ![self.mSelfTypeEntry  mSetterMap]
+    ![self.mSelfTypeEntry  mInstanceMethodMap]
+    ![self.mSelfTypeEntry  mClassMethodMap]
+    ![self.mSelfTypeEntry  mOptionalMethodMap]
+    ![self.mSelfTypeEntry  mEnumerationDescriptor]
+    ![self.mSelfTypeEntry  mHandledOperatorFlags]
+    ![self.mSelfTypeEntry  mAddAssignOperatorArguments]
+    ![self.mSelfTypeEntry  mTypeForEnumeratedElement]
   ]
  }
 
@@ -265,10 +265,10 @@ override method @boolsetTypeForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  [self.mTypeProxy addHeaderFileName !?ioInclusionSet]
+  [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper structGenerationTemplate.boolsetTypeSpecificImplementation
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mFlagList
     !(1G << [self.mFlagList length]) - 1G
   ]

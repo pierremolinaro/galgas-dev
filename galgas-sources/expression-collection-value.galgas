@@ -100,13 +100,13 @@ override method @collectionValueAST enterExpressionInSemanticContext ?!@unifiedT
 override method @collectionValueAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy inType
+  ?let @unifiedTypeMap-entry inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
 #--- Type
-  @unifiedTypeMap-proxy targetType
+  @unifiedTypeMap-entry targetType
   if self.mTypeName.string == "" then
     targetType = inType
   else
@@ -169,7 +169,7 @@ abstract method @abstractCollectionValueElement analyze
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-  ?let @unifiedTypeMap-proxy inElementType
+  ?let @unifiedTypeMap-entry inElementType
   ?!@variableMap ioVariableMap
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
 
@@ -179,7 +179,7 @@ override method @expressionCollectionValue analyze
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-  ?let @unifiedTypeMap-proxy inElementType
+  ?let @unifiedTypeMap-entry inElementType
   ?!@variableMap ioVariableMap
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
 {
@@ -203,7 +203,7 @@ override method @expressionListCollectionValue analyze
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-  ?let @unifiedTypeMap-proxy inElementType
+  ?let @unifiedTypeMap-entry inElementType
   ?!@variableMap ioVariableMap
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration {
   let @functionSignature formalParameterTypeList = [inElementType mAddAssignOperatorArguments]
@@ -253,7 +253,7 @@ abstract shared class @abstractCollectionValueElementForGeneration {
 #·····················································································································
 
 abstract method @abstractCollectionValueElementForGeneration generateCollectionElementCode
-  ?let @unifiedTypeMap-proxy inTargetType
+  ?let @unifiedTypeMap-entry inTargetType
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
@@ -269,7 +269,7 @@ shared class @expressionCollectionValueForGeneration : @abstractCollectionValueE
 #·····················································································································
 
 override method @expressionCollectionValueForGeneration generateCollectionElementCode
-  ?let @unifiedTypeMap-proxy unused inTargetType
+  ?let @unifiedTypeMap-entry unused inTargetType
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
@@ -298,7 +298,7 @@ shared class @expressionListCollectionForGeneration : @abstractCollectionValueEl
 #·····················································································································
 
 override method @expressionListCollectionForGeneration generateCollectionElementCode
-  ?let @unifiedTypeMap-proxy inTargetType
+  ?let @unifiedTypeMap-entry inTargetType
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex

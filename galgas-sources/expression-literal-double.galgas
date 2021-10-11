@@ -37,7 +37,7 @@ override method @literalDoubleExpressionAST enterExpressionInSemanticContext
 override method @literalDoubleExpressionAST analyzeSemanticExpression
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy unused inType
+  ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression

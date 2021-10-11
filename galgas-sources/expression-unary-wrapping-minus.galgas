@@ -41,7 +41,7 @@ override method @unaryWrappingMinusExpressionAST enterExpressionInSemanticContex
 override method @unaryWrappingMinusExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy unused inType
+  ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
@@ -50,13 +50,13 @@ override method @unaryWrappingMinusExpressionAST analyzeSemanticExpression
   [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?expression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy type = [expression mResultType]
+  let @unifiedTypeMap-entry type = [expression mResultType]
   if not [[type mHandledOperatorFlags] prefixMinusOperatorNoOVF] then
     error self.mOperatorLocation
     : "operand type is '@" + [type key] + "' and does not support the prefix minus operator"

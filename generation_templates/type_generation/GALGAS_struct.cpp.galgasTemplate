@@ -17,7 +17,7 @@ GALGAS_%!TYPE_IDENTIFIER%::~ GALGAS_%!TYPE_IDENTIFIER% (void) {
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^
 for () in PROPERTY_LIST
-  do index IDX %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & inOperand%![IDX string]
+  do index IDX %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
 end%) :\n%
 for () in PROPERTY_LIST do index IDX
@@ -33,7 +33,7 @@ end
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_%!TYPE_IDENTIFIER% (%?^
 for () in PROPERTY_LIST do
-   %GALGAS_%![mPropertyTypeProxy identifierRepresentation]%::constructor_%![[mPropertyTypeProxy mDefaultConstructorName] identifierRepresentation]% (HERE)%
+   %GALGAS_%![mPropertyTypeEntry identifierRepresentation]%::constructor_%![[mPropertyTypeEntry mDefaultConstructorName] identifierRepresentation]% (HERE)%
   between %,\n%!^
 end%) ;
 }
@@ -43,7 +43,7 @@ end%) ;
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
 for () in PROPERTY_LIST
-  do index IDX %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & inOperand%![IDX string]
+  do index IDX %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
 end% \n%!^%COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
@@ -115,7 +115,7 @@ end
 %for () in PROPERTY_LIST do
   if mHasGetter then
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
-  %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
+  %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
   %  return mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   %}\n\n%
   end

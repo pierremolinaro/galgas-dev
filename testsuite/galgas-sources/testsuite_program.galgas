@@ -12,7 +12,7 @@ before {
   testsuite_map ()
   testsuite_functions ()
   testsuite_introspection ()
-  testsuite_mapproxy ()
+  testsuite_mapentry ()
   testsuite_extension_readers ()
   testsuite_extension_setters ()
   testsuite_type_categories ()

@@ -9100,22 +9100,22 @@ class cPtr_mapDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @mapProxyDeclarationAST class
+// Phase 1: @mapEntryDeclarationAST class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_mapProxyDeclarationAST : public GALGAS_semanticDeclarationAST {
+class GALGAS_mapEntryDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--- Constructor
-  public: GALGAS_mapProxyDeclarationAST (void) ;
+  public: GALGAS_mapEntryDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public: static GALGAS_mapProxyDeclarationAST constructor_default (LOCATION_ARGS) ;
+  public: static GALGAS_mapEntryDeclarationAST constructor_default (LOCATION_ARGS) ;
 
 //---
-  public: inline const class cPtr_mapProxyDeclarationAST * ptr (void) const { return (const cPtr_mapProxyDeclarationAST *) mObjectPtr ; }
+  public: inline const class cPtr_mapEntryDeclarationAST * ptr (void) const { return (const cPtr_mapEntryDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
-  public: GALGAS_mapProxyDeclarationAST (const cPtr_mapProxyDeclarationAST * inSourcePtr) ;
+  public: GALGAS_mapEntryDeclarationAST (const cPtr_mapEntryDeclarationAST * inSourcePtr) ;
 
 //-- Start of generic part --*
 
@@ -9123,24 +9123,24 @@ class GALGAS_mapProxyDeclarationAST : public GALGAS_semanticDeclarationAST {
   protected: virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_mapProxyDeclarationAST extractObject (const GALGAS_object & inObject,
+  public: static GALGAS_mapEntryDeclarationAST extractObject (const GALGAS_object & inObject,
                                                               C_Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_mapProxyDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
+  public: static class GALGAS_mapEntryDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
                                                                       const class GALGAS_lstring & inOperand1,
                                                                       const class GALGAS_lstring & inOperand2
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_mapProxyDeclarationAST & inOperand) const ;
+  public: typeComparisonResult objectCompare (const GALGAS_mapEntryDeclarationAST & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMAssociatedMapTypeName (class GALGAS_lstring inArgument0
                                                                   COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMMapProxyTypeName (class GALGAS_lstring inArgument0
+  public: VIRTUAL_IN_DEBUG void setter_setMMapEntryTypeName (class GALGAS_lstring inArgument0
                                                              COMMA_LOCATION_ARGS) ;
 
 
@@ -9150,7 +9150,7 @@ class GALGAS_mapProxyDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mAssociatedMapTypeName (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mMapProxyTypeName (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mMapEntryTypeName (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods
@@ -9158,27 +9158,27 @@ class GALGAS_mapProxyDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_mapProxyDeclarationAST class
+} ; // End of GALGAS_mapEntryDeclarationAST class
 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapProxyDeclarationAST ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapEntryDeclarationAST ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 2: pointer class for @mapProxyDeclarationAST class
+// Phase 2: pointer class for @mapEntryDeclarationAST class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class cPtr_mapProxyDeclarationAST : public cPtr_semanticDeclarationAST {
+class cPtr_mapEntryDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
-  public: GALGAS_lstring mProperty_mMapProxyTypeName ;
+  public: GALGAS_lstring mProperty_mMapEntryTypeName ;
   public: GALGAS_lstring mProperty_mAssociatedMapTypeName ;
 
 //--- Constructor
-  public: cPtr_mapProxyDeclarationAST (const GALGAS_bool & in_mIsPredefined,
-                                       const GALGAS_lstring & in_mMapProxyTypeName,
+  public: cPtr_mapEntryDeclarationAST (const GALGAS_bool & in_mIsPredefined,
+                                       const GALGAS_lstring & in_mMapEntryTypeName,
                                        const GALGAS_lstring & in_mAssociatedMapTypeName
                                        COMMA_LOCATION_ARGS) ;
 
@@ -9186,8 +9186,8 @@ class cPtr_mapProxyDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public: VIRTUAL_IN_DEBUG GALGAS_lstring getter_mMapProxyTypeName (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMMapProxyTypeName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG GALGAS_lstring getter_mMapEntryTypeName (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG void setter_setMMapEntryTypeName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
   public: VIRTUAL_IN_DEBUG GALGAS_lstring getter_mAssociatedMapTypeName (LOCATION_ARGS) const ;
   public: VIRTUAL_IN_DEBUG void setter_setMAssociatedMapTypeName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
 //--- Description

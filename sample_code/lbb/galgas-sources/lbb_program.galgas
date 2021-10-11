@@ -35,22 +35,22 @@ message "a source text file with the .lbb extension"
     end
     @connectionMap connectionMap = {}
     for () in  portNameList, () in  mConnectionList do
-      @boxInstanceMap-proxy connectedBoxProxy
-      [@boxInstanceMap-proxy makeProxy !?boxInstanceMap !mConnectedBoxName ?connectedBoxProxy]
-      [!?connectionMap insertKey !mValue !connectedBoxProxy !mOppositePortName]
+      @boxInstanceMap-entry connectedBoxEntry
+      [@boxInstanceMap-entry makeEntry !?boxInstanceMap !mConnectedBoxName ?connectedBoxEntry]
+      [!?connectionMap insertKey !mValue !connectedBoxEntry !mOppositePortName]
     end
     [!?boxInstanceMap insertKey !mBoxInstanceName !connectionMap]
   end
 #--- Raise an error for every undefined box
-  for () in  [boxInstanceMap unsolvedProxyList] do
+  for () in  [boxInstanceMap unsolvedEntryList] do
     error mValue : "the '" + mValue + "' box is not defined"
   end
 #--- Check connections
   if @uint. errorCount == 0 then
     for () box_ in  boxInstanceMap do
       for () in  box_mConnectionMap do
-        @connectionMap oppositeConnectionMap = [mBoxProxy mConnectionMap]
-        @boxInstanceMap-proxy oppositeOfOppositeBox
+        @connectionMap oppositeConnectionMap = [mBoxEntry mConnectionMap]
+        @boxInstanceMap-entry oppositeOfOppositeBox
         @lstring myPortName
         [oppositeConnectionMap searchKey !mOppositePortName ?oppositeOfOppositeBox ?myPortName]
         if [oppositeOfOppositeBox key] != box_lkey.string then

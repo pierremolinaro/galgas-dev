@@ -336,7 +336,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
   [self.mEnumeratedExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?outEnumerationExpression
@@ -370,7 +370,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
   [self.mEnumeratedExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?outEnumerationExpression
@@ -410,7 +410,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
       for () in self.mElementList, () in enumerationDescriptorList do
         if [mOptionalConstantName string] != "" then # Empty string if joker
           if mOptionalTypeName.string != "" then
-            let foundType = @unifiedTypeMap-proxy.searchKey {
+            let foundType = @unifiedTypeMap-entry.searchKey {
               !inAnalysisContext.mSemanticContext.mTypeMap
               !mOptionalTypeName
             }
@@ -439,7 +439,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   [self.mEnumeratedExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?outEnumerationExpression
@@ -454,7 +454,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   end
 #--- Check enumeration type
   if self.mEnumerationOptionalTypeName.string != "" then
-    let explicitType = @unifiedTypeMap-proxy.searchKey {
+    let explicitType = @unifiedTypeMap-entry.searchKey {
       !inAnalysisContext.mSemanticContext.mTypeMap
       !self.mEnumerationOptionalTypeName
     }
@@ -556,7 +556,7 @@ override method @forInstructionAST analyzeSemanticInstruction
   [self.mWhileExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration uncheckedWhileExpression

@@ -41,7 +41,7 @@ private proc enterInstanceMethodWithInputArgument
   ?methodName:let @string inInstanceMethodName
   ?let @bool inHasCompilerArgument
 {
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?let argumentTypeIndex]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?let argumentTypeIndex]
   @formalParameterSignature argList = {}
   argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !inInputArgumentName
   [!?ioInstanceMethodMap insertKey
@@ -65,8 +65,8 @@ private proc enterInstanceMethodWithInputArgument
 #  ?methodName:let @lstring inInstanceMethodName
 #  ?let @bool inHasCompilerArgument
 #{
-#  @unifiedTypeMap-proxy argumentTypeIndex
-#  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?argumentTypeIndex]
+#  @unifiedTypeMap-entry argumentTypeIndex
+#  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?argumentTypeIndex]
 #  var argList =@formalParameterSignature {}
 #  argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentOut !inOutputArgumentName
 #  [!?ioInstanceMethodMap insertKey
@@ -103,9 +103,9 @@ override method @dataPredefinedTypeAST getInstanceMethodMap
     !true
   )
   @formalParameterSignature argList = {}
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?@unifiedTypeMap-proxy t]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"string" ?@unifiedTypeMap-entry t]
   argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"bool" ?t]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"bool" ?t]
   argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentOut !"outFileModified"
   [!?outInstanceMethodMap insertKey
     !@lstring.new {!"writeToFileWhenDifferentContents" !@location.here}
@@ -172,9 +172,9 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
   )
 #--- writeToFileWhenDifferentContents, writeToExecutableFileWhenDifferentContents
   @formalParameterSignature argList = {}
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?@unifiedTypeMap-proxy t]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"string" ?@unifiedTypeMap-entry t]
   argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"bool" ?t]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"bool" ?t]
   argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentOut !"outFileModified"
   [!?outInstanceMethodMap insertKey
     !@lstring.new {!"writeToFileWhenDifferentContents" !@location.here}
@@ -196,9 +196,9 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
   ]
 #--- commandWithArguments
 #  argList = {}
-#  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"stringlist" ?t]
+#  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"stringlist" ?t]
 #  argList += !["arguments" nowhere] !t !.argumentConstantIn !"inArguments"
-#  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?t]
+#  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"string" ?t]
 #  argList += !["output" nowhere] !t !.argumentOut !"outOutputString"
 #  [!?outInstanceMethodMap insertKey
 #    !@lstring.new {!"command" !.here}
@@ -219,7 +219,7 @@ override method @bigintPredefinedTypeAST getInstanceMethodMap
 {
   outInstanceMethodMap = {}
 #--- divide, floorDivide, ceilDivide
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"bigint" ?let bigIntType]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"bigint" ?let bigIntType]
   @formalParameterSignature argList = {}
   argList += !["" nowhere] !bigIntType !.argumentConstantIn !"inDivisor"
   argList += !["quotient" nowhere] !bigIntType !.argumentOut !"outQuotient"

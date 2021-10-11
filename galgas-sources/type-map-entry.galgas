@@ -1,0 +1,330 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   AST                                                                                                                *
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+shared class @mapEntryDeclarationAST : @semanticDeclarationAST {
+  @lstring mMapEntryTypeName
+  @lstring mAssociatedMapTypeName
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   ENTER IN GRAPH                                                                                                     *
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @mapEntryDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  let key = @lstring.new {!"@" + self.mMapEntryTypeName ![self.mMapEntryTypeName location]}
+  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  [!?ioSemanticTypePrecedenceGraph addEdge
+    !key !@lstring.new {!"@" + self.mAssociatedMapTypeName
+    ![self.mAssociatedMapTypeName location]}
+  ]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   ENTER IN SEMANTIC CONTEXT                                                                                          *
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @mapEntryDeclarationAST enterInSemanticContext
+  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+  ?!@semanticContext ioSemanticContext
+{
+#--- Check associated map is really a map
+  [ioSemanticContext.mTypeMap searchKey
+    !self.mAssociatedMapTypeName
+    ?3*
+    ?var @typeKindEnum typeKindEnum
+    ?3*
+    ?var @typedPropertyList mapTypedAttributeList
+    ?11*
+    ?var @mapSearchMethodListAST searchMethodList
+    ?6*
+  ]
+  if typeKindEnum != @typeKindEnum.sharedMapType then
+    error self.mAssociatedMapTypeName : "the @" + self.mAssociatedMapTypeName + " should be an unique map type"
+    mapTypedAttributeList = {}
+  end
+#---
+  let optionalMethodMap = @optionalMethodMap {}
+  @constructorMap constructorMap = {}
+  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  @setterMap setterMap = {}
+  @instanceMethodMap instanceMethodMap ={}
+  @classMethodMap classMethodMap = {}
+#--- Associated map type index
+  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mAssociatedMapTypeName ?let associatedMapTypeIndex]
+#--- string type index
+  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"string" ?let stringTypeIndex]
+#--- lstring type index
+  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"lstring" ?let lstringTypeIndex]
+#--- Handle map type name
+  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mMapEntryTypeName ?let mapEntryTypeIndex]
+#--- class methods : makeEntry, makeOptionalEntry
+  @formalParameterSignature argList = {}
+  argList += !["" nowhere] !associatedMapTypeIndex !@formalArgumentPassingModeAST.argumentInOut !"ioMap"
+  argList += !["" nowhere] !lstringTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !"inLKey"
+  argList += !["" nowhere] !mapEntryTypeIndex !@formalArgumentPassingModeAST.argumentOut !"outEntry"
+  [!?classMethodMap insertKey
+    !@lstring.new {!"makeEntry" !.here}
+    !argList
+    !false
+  ]
+  [!?classMethodMap insertKey
+    !@lstring.new {!"makeOptionalEntry" !.here}
+    !argList
+    !false
+  ]
+#--- class method : makeEntryFromString
+  argList = {}
+  argList += !["" nowhere] !associatedMapTypeIndex !@formalArgumentPassingModeAST.argumentInOut !"ioMap"
+  argList += !["" nowhere] !stringTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !"inLKey"
+  argList += !["" nowhere] !mapEntryTypeIndex !@formalArgumentPassingModeAST.argumentOut !"outEntry"
+  [!?classMethodMap insertKey
+    !@lstring.new {!"makeEntryFromString" !.here}
+    !argList
+    !false
+  ]
+#--- null constructor
+  enterConstructorWithoutArgument (
+    !?constructorMap
+    !?ioSemanticContext.mTypeMap
+    !name:"null"
+    !resultTypeName:[self.mMapEntryTypeName string]
+    !hasLexiqueArg:false
+  )
+#--- Search methods of associated map as constructors
+  var constructorAttributeTypeList =@functionSignature {}
+  constructorAttributeTypeList += !["" nowhere] !associatedMapTypeIndex !"inMap"
+  constructorAttributeTypeList += !["" nowhere] !lstringTypeIndex !"inLKey"
+  for () in searchMethodList do
+    [!?constructorMap insertKey
+      !mSearchMethodName
+      !constructorAttributeTypeList
+      !true
+      !mapEntryTypeIndex
+    ]
+  end
+#--- Getters
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"isSolved"
+    !returnedTypeName:"bool"
+    !hasCompilerArgument:true
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"isNull"
+    !returnedTypeName:"bool"
+    !hasCompilerArgument:false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"isRegular"
+    !returnedTypeName:"bool"
+    !hasCompilerArgument:false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"lkey"
+    !returnedTypeName:"lstring"
+    !hasCompilerArgument:true
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"key"
+    !returnedTypeName:"string"
+    !hasCompilerArgument:true
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"identifierRepresentation"
+    !returnedTypeName:"string"
+    !hasCompilerArgument:true
+  )
+#--- Enter associated map attribute names as getters
+  let @getterMap inheritedGetterMap = getterMap
+  for () in mapTypedAttributeList do
+    if [inheritedGetterMap hasKey ![mPropertyName string]] then
+      @string s = ""
+      for () in [inheritedGetterMap keySet]
+        do s += "'" + key + "'"
+        between s += ", "
+      end
+      error mPropertyName : "the map has a associated map entry, which has predefined getters: " + s
+       + "; you cannot use theses names for naming an attribute of this map"
+    else
+      [!?getterMap insertKey
+        !mPropertyName
+        !@methodKind.definedAsMember
+        !@functionSignature {}
+        !@location.here
+        !true
+        !mPropertyTypeEntry
+        !@methodQualifier.isBasic
+        !"" # No Error message
+      ]
+    end
+  end
+#--- Add Categories
+  addExtensions (
+    !inExtensionMethodMapForBuildingContext
+    !inExtensionGetterMapForBuildingContext
+    !inExtensionSetterMapForBuildingContext
+    !?ioSemanticContext
+    !self.mMapEntryTypeName
+    !?getterMap
+    !?setterMap
+    !?instanceMethodMap
+  )
+#--- Enter type in type map
+  [!?ioSemanticContext.mTypeMap insertKey
+    !self.mMapEntryTypeName
+    !self.mIsPredefined
+    !true # Concrete Type
+    !@unifiedTypeMap-entry.null
+    !@typeKindEnum.sharedMapEntryType
+    !false # Does not support collection value
+    !mapTypedAttributeList
+    !{}
+    !mapTypedAttributeList
+    !constructorMap
+    !getterMap
+    !setterMap
+    !instanceMethodMap
+    !classMethodMap
+    !optionalMethodMap
+    !{}
+    !.doNotGenererateObjectCompare
+    !{}
+    !{}
+    !{}
+    !{}
+    !searchMethodList
+    !false # Do not generate header in separate file
+    !@unifiedTypeMap-entry.null # Type for enumerated element for "for" instruction
+    !"null" # Default constructor
+    !"mapentry-" + [self.mMapEntryTypeName fileNameRepresentation]
+    !@headerKind.oneHeader
+  ]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   SEMANTIC ANALYSIS                                                                                                  *
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @mapEntryDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @string unused inProductDirectory
+  ?let @semanticContext inSemanticContext
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Useful entities graph
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mMapEntryTypeName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+#--- Get attribute list of associated map
+  [inSemanticContext.mTypeMap searchKey
+    !self.mAssociatedMapTypeName
+    ?7*
+    ?let @typedPropertyList listTypeAttributeList
+    ?11*
+    ?let @mapSearchMethodListAST searchMethodList
+    ?6*
+  ]
+#---
+  ioSemanticDeclarationListForGeneration +=
+    !"map entry " + self.mMapEntryTypeName
+    !@mapEntryTypeForGeneration.new {
+      !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mMapEntryTypeName}
+      !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mAssociatedMapTypeName}
+      !listTypeAttributeList
+      !searchMethodList
+    }
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   CODE GENERATION                                                                                                    *
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+shared class @mapEntryTypeForGeneration : @semanticTypeForGeneration {
+  @unifiedTypeMap-entry mAssociatedMapTypeEntry
+  @typedPropertyList mAssociatedMapTypedAttributeList
+  @mapSearchMethodListAST mSearchMethodList
+}
+
+#·······················································································································
+
+filewrapper mapEntryGenerationTemplate in "../generation_templates/type_generation" {
+}{
+}{
+  template mapEntryTypeHeader1 "GALGAS_mapentry.h1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+
+  template mapEntryTypeSpecificImplementation "GALGAS_mapentry.cpp.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string ASSOCIATED_MAP_TYPE_IDENTIFIER
+    ?@typedPropertyList ATTRIBUTE_LIST
+    ?@mapSearchMethodListAST SEARCH_METHOD_LIST
+}
+
+
+#·······················································································································
+
+override method @mapEntryTypeForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
+{
+  outHeader = [filewrapper mapEntryGenerationTemplate.mapEntryTypeHeader1
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
+  ] 
+  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
+    ![self.mSelfTypeEntry  mIsConcrete]
+    ![self.mSelfTypeEntry  mConstructorMap]
+    ![self.mSelfTypeEntry  mGetterMap]
+    ![self.mSelfTypeEntry  mSetterMap]
+    ![self.mSelfTypeEntry  mInstanceMethodMap]
+    ![self.mSelfTypeEntry  mClassMethodMap]
+    ![self.mSelfTypeEntry  mOptionalMethodMap]
+    ![self.mSelfTypeEntry  mEnumerationDescriptor]
+    ![self.mSelfTypeEntry  mHandledOperatorFlags]
+    ![self.mSelfTypeEntry  mAddAssignOperatorArguments]
+    ![self.mSelfTypeEntry  mTypeForEnumeratedElement]
+  ]
+}
+
+#·······················································································································
+
+override method @mapEntryTypeForGeneration appendSpecificImplementation
+  ?let @unifiedTypeMap unused inTypeMap
+  ?!@stringset ioInclusionSet
+  !@string outImplementation {
+  [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
+  [self.mAssociatedMapTypeEntry addHeaderFileName !?ioInclusionSet]
+  outImplementation = [filewrapper mapEntryGenerationTemplate.mapEntryTypeSpecificImplementation
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
+    ![self.mAssociatedMapTypeEntry identifierRepresentation]
+    !self.mAssociatedMapTypedAttributeList
+    !self.mSearchMethodList
+  ]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

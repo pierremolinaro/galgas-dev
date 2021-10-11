@@ -4233,7 +4233,7 @@ class GALGAS_descendantClassListMap : public AC_GALGAS_listmap {
 
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_string & inOperand0,
-                                                     const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1
+                                                     const class GALGAS_unifiedTypeMap_2D_entry & inOperand1
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Setters
@@ -4242,7 +4242,7 @@ class GALGAS_descendantClassListMap : public AC_GALGAS_listmap {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxyList getter_listForKey (const class GALGAS_string & constinOperand0
+  public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapEntryList getter_listForKey (const class GALGAS_string & constinOperand0
                                                                                    COMMA_LOCATION_ARGS) const ;
 
 
@@ -4266,7 +4266,7 @@ class cEnumerator_descendantClassListMap : public cGenericAbstractEnumerator {
 
 //--- Current element access
   public: class GALGAS_string current_key (LOCATION_ARGS) const ;
-  public: class GALGAS_unifiedTypeMapProxyList current_mList (LOCATION_ARGS) const ;
+  public: class GALGAS_unifiedTypeMapEntryList current_mList (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GALGAS_descendantClassListMap_2D_element current (LOCATION_ARGS) const ;
 } ;
@@ -4285,7 +4285,7 @@ class GALGAS_descendantClassListMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_string mProperty_key ;
 
-  public: GALGAS_unifiedTypeMapProxyList mProperty_mList ;
+  public: GALGAS_unifiedTypeMapEntryList mProperty_mList ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4302,7 +4302,7 @@ class GALGAS_descendantClassListMap_2D_element : public AC_GALGAS_root {
     mProperty_key = inValue ;
   }
 
-  public: inline void setter_setMList (const GALGAS_unifiedTypeMapProxyList & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMList (const GALGAS_unifiedTypeMapEntryList & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mList = inValue ;
   }
 
@@ -4311,7 +4311,7 @@ class GALGAS_descendantClassListMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Native constructor
   public: GALGAS_descendantClassListMap_2D_element (const GALGAS_string & in_key,
-                                                    const GALGAS_unifiedTypeMapProxyList & in_mList) ;
+                                                    const GALGAS_unifiedTypeMapEntryList & in_mList) ;
 
 //-- Start of generic part --*
 
@@ -4325,7 +4325,7 @@ class GALGAS_descendantClassListMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_descendantClassListMap_2D_element constructor_new (const class GALGAS_string & inOperand0,
-                                                                                 const class GALGAS_unifiedTypeMapProxyList & inOperand1
+                                                                                 const class GALGAS_unifiedTypeMapEntryList & inOperand1
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -4342,7 +4342,7 @@ class GALGAS_descendantClassListMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_string getter_key (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxyList getter_mList (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapEntryList getter_mList (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods
@@ -5168,7 +5168,7 @@ class C_Lexique_galgas_33_Scanner : public C_Lexique {
     kIndexing_mapDefinition,
     kIndexing_externTypeDefinition,
     kIndexing_uniquemapDefinition,
-    kIndexing_mapProxyDefinition,
+    kIndexing_mapEntryDefinition,
     kIndexing_arrayTypeDefinition,
     kIndexing_arrayElementTypeReference,
     kIndexing_filewrapperDefinition,

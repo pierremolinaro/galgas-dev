@@ -155,7 +155,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
     [mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-      !@unifiedTypeMap-proxy.null
+      !@unifiedTypeMap-entry.null
       !inAnalysisContext
       !?ioVariableMap
       ?let @semanticExpressionForGeneration matchedExpression
@@ -180,8 +180,8 @@ override method @matchInstructionAST analyzeSemanticInstruction
         let type = [mExpression mResultType]
         if [[type mTypeKindEnum] isClassType] then
           if mIsType then
-            let namedType = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeNameOrEnumerationConstantName}
-            @unifiedTypeMap-proxy t = type
+            let namedType = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeNameOrEnumerationConstantName}
+            @unifiedTypeMap-entry t = type
             @bool found = t == namedType
             loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
             while (not found) & not [[t mSuperType] isNull] do

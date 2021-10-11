@@ -62,18 +62,18 @@ override method @arrayDeclarationAST enterInSemanticContext
     error self.mDimension: "the dimension of an array should be > 0"
   end
 #--- array type
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !self.mArrayTypeName ?let arrayTypeIndex]
+  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mArrayTypeName ?let arrayTypeIndex]
 #--- element type
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !self.mElementTypeName ?let elementTypeIndex]
+  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mElementTypeName ?let elementTypeIndex]
 #---
   @constructorMap constructorMap = {}
   commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   @setterMap setterMap ={}
   @instanceMethodMap instanceMethodMap = {}
 #--- 
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"bool" ?let boolType]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"bool" ?let boolType]
 #--- 
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"uint" ?let uintType]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"uint" ?let uintType]
 #---
   @functionSignature uintArgs = {}
   @uint idx = 0
@@ -189,7 +189,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !self.mArrayTypeName
     !self.mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !@typeKindEnum. listMapType
     !false # Does not support collection value
     !@typedPropertyList.emptyList
@@ -209,7 +209,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !@mapSearchMethodListAST.emptyList
     !@mapSearchMethodListAST.emptyList
     !false # Do not generate header in separate file
-    !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction
+    !@unifiedTypeMap-entry.null # Type for enumerated element for "for" instruction
     !"" # No default constructor
     !"array-" + [self.mArrayTypeName fileNameRepresentation]
     !@headerKind.oneHeader
@@ -237,8 +237,8 @@ override method @arrayDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"array " + self.mArrayTypeName
     !@arrayTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mArrayTypeName}
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mElementTypeName}
+      !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mArrayTypeName}
+      !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mElementTypeName}
       ![self.mDimension uint]
     }
 }
@@ -248,7 +248,7 @@ override method @arrayDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 shared class @arrayTypeForGeneration : @semanticTypeForGeneration {
-  @unifiedTypeMap-proxy mElementTypeProxy
+  @unifiedTypeMap-entry mElementTypeEntry
   @uint mDimension
 }
 
@@ -258,25 +258,25 @@ override method @arrayTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   outHeader = [filewrapper typeGenerationTemplate.arrayTypeHeader1
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
-    ![self.mElementTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
+    ![self.mElementTypeEntry identifierRepresentation]
     !self.mDimension
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
-    ![self.mTypeProxy mIsConcrete]
-    ![self.mTypeProxy mConstructorMap]
-    ![self.mTypeProxy mGetterMap]
-    ![self.mTypeProxy mSetterMap]
-    ![self.mTypeProxy mInstanceMethodMap]
-    ![self.mTypeProxy mClassMethodMap]
-    ![self.mTypeProxy mOptionalMethodMap]
-    ![self.mTypeProxy mEnumerationDescriptor]
-    ![self.mTypeProxy mHandledOperatorFlags]
-    ![self.mTypeProxy mAddAssignOperatorArguments]
-    ![self.mTypeProxy mTypeForEnumeratedElement]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
+    ![self.mSelfTypeEntry  mIsConcrete]
+    ![self.mSelfTypeEntry  mConstructorMap]
+    ![self.mSelfTypeEntry  mGetterMap]
+    ![self.mSelfTypeEntry  mSetterMap]
+    ![self.mSelfTypeEntry  mInstanceMethodMap]
+    ![self.mSelfTypeEntry  mClassMethodMap]
+    ![self.mSelfTypeEntry  mOptionalMethodMap]
+    ![self.mSelfTypeEntry  mEnumerationDescriptor]
+    ![self.mSelfTypeEntry  mHandledOperatorFlags]
+    ![self.mSelfTypeEntry  mAddAssignOperatorArguments]
+    ![self.mSelfTypeEntry  mTypeForEnumeratedElement]
   ]
  }
 
@@ -286,8 +286,8 @@ override method @arrayTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  [self.mTypeProxy addHeaderFileName !?ioInclusionSet]
-  [self.mElementTypeProxy addHeaderFileName !?ioInclusionSet]
+  [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
+  [self.mElementTypeEntry addHeaderFileName !?ioInclusionSet]
 
   var suffixList =@stringlist {}
   @uint idx = 0
@@ -296,9 +296,9 @@ override method @arrayTypeForGeneration appendSpecificImplementation
     idx ++
   end
   outImplementation = [filewrapper typeGenerationTemplate.arrayTypeSpecificImplementation
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
-    ![self.mElementTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
+    ![self.mElementTypeEntry identifierRepresentation]
     !self.mDimension
     !suffixList
   ]

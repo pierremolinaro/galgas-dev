@@ -7341,7 +7341,7 @@ void callExtensionMethod_analyze (const cPtr_abstractCollectionValueElement * in
                                   const GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                   GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                   const GALGAS_analysisContext constin_inAnalysisContext,
-                                  const GALGAS_unifiedTypeMap_2D_proxy constin_inElementType,
+                                  const GALGAS_unifiedTypeMap_2D_entry constin_inElementType,
                                   GALGAS_variableMap & io_ioVariableMap,
                                   GALGAS_collectionValueElementListForGeneration & io_ioCollectionValueElementListForGeneration,
                                   C_Compiler * inCompiler
@@ -7946,7 +7946,7 @@ C_PrologueEpilogue gMethod_abstractCollectionValueElementForGeneration_generateC
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_generateCollectionElementCode (const cPtr_abstractCollectionValueElementForGeneration * inObject,
-                                                        const GALGAS_unifiedTypeMap_2D_proxy constin_inTargetType,
+                                                        const GALGAS_unifiedTypeMap_2D_entry constin_inTargetType,
                                                         GALGAS_string & io_ioGeneratedCode,
                                                         GALGAS_stringset & io_ioInclusionSet,
                                                         GALGAS_uint & io_ioTemporaryVariableIndex,
@@ -12095,12 +12095,12 @@ GALGAS_moduloExpressionAST GALGAS_moduloExpressionAST::extractObject (const GALG
 //----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_variableMap::cMapElement_variableMap (const GALGAS_lstring & inKey,
-                                                  const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
+                                                  const GALGAS_unifiedTypeMap_2D_entry & in_mType,
                                                   const GALGAS_string & in_mCppName,
                                                   const GALGAS_string & in_mNameForCheckingFormalParameterUsing
                                                   COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mProperty_mTypeProxy (in_mTypeProxy),
+mProperty_mType (in_mType),
 mProperty_mCppName (in_mCppName),
 mProperty_mNameForCheckingFormalParameterUsing (in_mNameForCheckingFormalParameterUsing) {
 }
@@ -12108,14 +12108,14 @@ mProperty_mNameForCheckingFormalParameterUsing (in_mNameForCheckingFormalParamet
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_variableMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mTypeProxy.isValid () && mProperty_mCppName.isValid () && mProperty_mNameForCheckingFormalParameterUsing.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mType.isValid () && mProperty_mCppName.isValid () && mProperty_mNameForCheckingFormalParameterUsing.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 cMapElement * cMapElement_variableMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_variableMap (mProperty_lkey, mProperty_mTypeProxy, mProperty_mCppName, mProperty_mNameForCheckingFormalParameterUsing COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_variableMap (mProperty_lkey, mProperty_mType, mProperty_mCppName, mProperty_mNameForCheckingFormalParameterUsing COMMA_HERE)) ;
   return result ;
 }
 
@@ -12124,8 +12124,8 @@ cMapElement * cMapElement_variableMap::copy (void) {
 void cMapElement_variableMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mTypeProxy" ":" ;
-  mProperty_mTypeProxy.description (ioString, inIndentation) ;
+  ioString << "mType" ":" ;
+  mProperty_mType.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mCppName" ":" ;
@@ -12142,7 +12142,7 @@ typeComparisonResult cMapElement_variableMap::compare (const cCollectionElement 
   cMapElement_variableMap * operand = (cMapElement_variableMap *) inOperand ;
   typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mProperty_mTypeProxy.objectCompare (operand->mProperty_mTypeProxy) ;
+    result = mProperty_mType.objectCompare (operand->mProperty_mType) ;
   }
   if (kOperandEqual == result) {
     result = mProperty_mCppName.objectCompare (operand->mProperty_mCppName) ;
@@ -12660,7 +12660,7 @@ void GALGAS_variableMap::setter_openOverrideForRepeatBlock (C_Compiler * inCompi
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_variableMap::setter_insertMutableAttribute (GALGAS_lstring inKey,
-                                                        GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                        GALGAS_unifiedTypeMap_2D_entry inArgument0,
                                                         GALGAS_string inArgument1,
                                                         GALGAS_string inArgument2,
                                                         C_Compiler * inCompiler
@@ -12682,7 +12682,7 @@ void GALGAS_variableMap::setter_insertMutableAttribute (GALGAS_lstring inKey,
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_variableMap::setter_insertNonMutableAttribute (GALGAS_lstring inKey,
-                                                           GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                           GALGAS_unifiedTypeMap_2D_entry inArgument0,
                                                            GALGAS_string inArgument1,
                                                            GALGAS_string inArgument2,
                                                            C_Compiler * inCompiler
@@ -12704,7 +12704,7 @@ void GALGAS_variableMap::setter_insertNonMutableAttribute (GALGAS_lstring inKey,
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_variableMap::setter_insertUndefinedLocalVariable (GALGAS_lstring inKey,
-                                                              GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                              GALGAS_unifiedTypeMap_2D_entry inArgument0,
                                                               GALGAS_string inArgument1,
                                                               GALGAS_string inArgument2,
                                                               C_Compiler * inCompiler
@@ -12726,7 +12726,7 @@ void GALGAS_variableMap::setter_insertUndefinedLocalVariable (GALGAS_lstring inK
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_variableMap::setter_insertDefinedLocalVariable (GALGAS_lstring inKey,
-                                                            GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                            GALGAS_unifiedTypeMap_2D_entry inArgument0,
                                                             GALGAS_string inArgument1,
                                                             GALGAS_string inArgument2,
                                                             C_Compiler * inCompiler
@@ -12748,7 +12748,7 @@ void GALGAS_variableMap::setter_insertDefinedLocalVariable (GALGAS_lstring inKey
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_variableMap::setter_insertUndefinedLocalConstant (GALGAS_lstring inKey,
-                                                              GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                              GALGAS_unifiedTypeMap_2D_entry inArgument0,
                                                               GALGAS_string inArgument1,
                                                               GALGAS_string inArgument2,
                                                               C_Compiler * inCompiler
@@ -12770,7 +12770,7 @@ void GALGAS_variableMap::setter_insertUndefinedLocalConstant (GALGAS_lstring inK
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_variableMap::setter_insertLocalConstant (GALGAS_lstring inKey,
-                                                     GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                     GALGAS_unifiedTypeMap_2D_entry inArgument0,
                                                      GALGAS_string inArgument1,
                                                      GALGAS_string inArgument2,
                                                      C_Compiler * inCompiler
@@ -12792,7 +12792,7 @@ void GALGAS_variableMap::setter_insertLocalConstant (GALGAS_lstring inKey,
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_variableMap::setter_insertUsedLocalConstant (GALGAS_lstring inKey,
-                                                         GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                         GALGAS_unifiedTypeMap_2D_entry inArgument0,
                                                          GALGAS_string inArgument1,
                                                          GALGAS_string inArgument2,
                                                          C_Compiler * inCompiler
@@ -12814,7 +12814,7 @@ void GALGAS_variableMap::setter_insertUsedLocalConstant (GALGAS_lstring inKey,
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_variableMap::setter_insertInputFormalArgument (GALGAS_lstring inKey,
-                                                           GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                           GALGAS_unifiedTypeMap_2D_entry inArgument0,
                                                            GALGAS_string inArgument1,
                                                            GALGAS_string inArgument2,
                                                            C_Compiler * inCompiler
@@ -12836,7 +12836,7 @@ void GALGAS_variableMap::setter_insertInputFormalArgument (GALGAS_lstring inKey,
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_variableMap::setter_insertInputFormalArgumentDeclaredAsUnused (GALGAS_lstring inKey,
-                                                                           GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                                           GALGAS_unifiedTypeMap_2D_entry inArgument0,
                                                                            GALGAS_string inArgument1,
                                                                            GALGAS_string inArgument2,
                                                                            C_Compiler * inCompiler
@@ -12858,7 +12858,7 @@ void GALGAS_variableMap::setter_insertInputFormalArgumentDeclaredAsUnused (GALGA
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_variableMap::setter_insertConstantInputFormalArgument (GALGAS_lstring inKey,
-                                                                   GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                                   GALGAS_unifiedTypeMap_2D_entry inArgument0,
                                                                    GALGAS_string inArgument1,
                                                                    GALGAS_string inArgument2,
                                                                    C_Compiler * inCompiler
@@ -12880,7 +12880,7 @@ void GALGAS_variableMap::setter_insertConstantInputFormalArgument (GALGAS_lstrin
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_variableMap::setter_insertConstantInputFormalArgumentDeclaredAsUnused (GALGAS_lstring inKey,
-                                                                                   GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                                                   GALGAS_unifiedTypeMap_2D_entry inArgument0,
                                                                                    GALGAS_string inArgument1,
                                                                                    GALGAS_string inArgument2,
                                                                                    C_Compiler * inCompiler
@@ -12902,7 +12902,7 @@ void GALGAS_variableMap::setter_insertConstantInputFormalArgumentDeclaredAsUnuse
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_variableMap::setter_insertOutputFormalArgument (GALGAS_lstring inKey,
-                                                            GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                            GALGAS_unifiedTypeMap_2D_entry inArgument0,
                                                             GALGAS_string inArgument1,
                                                             GALGAS_string inArgument2,
                                                             C_Compiler * inCompiler
@@ -12924,7 +12924,7 @@ void GALGAS_variableMap::setter_insertOutputFormalArgument (GALGAS_lstring inKey
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_variableMap::setter_insertInputOutputFormalArgument (GALGAS_lstring inKey,
-                                                                 GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                                 GALGAS_unifiedTypeMap_2D_entry inArgument0,
                                                                  GALGAS_string inArgument1,
                                                                  GALGAS_string inArgument2,
                                                                  C_Compiler * inCompiler
@@ -12946,7 +12946,7 @@ void GALGAS_variableMap::setter_insertInputOutputFormalArgument (GALGAS_lstring 
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_variableMap::setter_insertInputOutputFormalArgumentDeclaredAsUnused (GALGAS_lstring inKey,
-                                                                                 GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                                                 GALGAS_unifiedTypeMap_2D_entry inArgument0,
                                                                                  GALGAS_string inArgument1,
                                                                                  GALGAS_string inArgument2,
                                                                                  C_Compiler * inCompiler
@@ -12972,7 +12972,7 @@ const char * kSearchErrorMessage_variableMap_searchForReadAccess = "the '%K' var
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_variableMap::setter_searchForReadAccess (GALGAS_lstring inKey,
-                                                     GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
+                                                     GALGAS_unifiedTypeMap_2D_entry & outArgument0,
                                                      GALGAS_string & outArgument1,
                                                      GALGAS_string & outArgument2,
                                                      C_Compiler * inCompiler
@@ -12993,7 +12993,7 @@ void GALGAS_variableMap::setter_searchForReadAccess (GALGAS_lstring inKey,
     outArgument2.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    outArgument0 = p->mProperty_mTypeProxy ;
+    outArgument0 = p->mProperty_mType ;
     outArgument1 = p->mProperty_mCppName ;
     outArgument2 = p->mProperty_mNameForCheckingFormalParameterUsing ;
   }
@@ -13006,7 +13006,7 @@ const char * kSearchErrorMessage_variableMap_searchForWriteAccess = "the '%K' va
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_variableMap::setter_searchForWriteAccess (GALGAS_lstring inKey,
-                                                      GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
+                                                      GALGAS_unifiedTypeMap_2D_entry & outArgument0,
                                                       GALGAS_string & outArgument1,
                                                       GALGAS_string & outArgument2,
                                                       C_Compiler * inCompiler
@@ -13027,7 +13027,7 @@ void GALGAS_variableMap::setter_searchForWriteAccess (GALGAS_lstring inKey,
     outArgument2.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    outArgument0 = p->mProperty_mTypeProxy ;
+    outArgument0 = p->mProperty_mType ;
     outArgument1 = p->mProperty_mCppName ;
     outArgument2 = p->mProperty_mNameForCheckingFormalParameterUsing ;
   }
@@ -13040,7 +13040,7 @@ const char * kSearchErrorMessage_variableMap_searchForReadWriteAccess = "the '%K
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_variableMap::setter_searchForReadWriteAccess (GALGAS_lstring inKey,
-                                                          GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
+                                                          GALGAS_unifiedTypeMap_2D_entry & outArgument0,
                                                           GALGAS_string & outArgument1,
                                                           GALGAS_string & outArgument2,
                                                           C_Compiler * inCompiler
@@ -13061,7 +13061,7 @@ void GALGAS_variableMap::setter_searchForReadWriteAccess (GALGAS_lstring inKey,
     outArgument2.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    outArgument0 = p->mProperty_mTypeProxy ;
+    outArgument0 = p->mProperty_mType ;
     outArgument1 = p->mProperty_mCppName ;
     outArgument2 = p->mProperty_mNameForCheckingFormalParameterUsing ;
   }
@@ -13074,7 +13074,7 @@ const char * kSearchErrorMessage_variableMap_searchForDropAccess = "the '%K' var
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_variableMap::setter_searchForDropAccess (GALGAS_lstring inKey,
-                                                     GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
+                                                     GALGAS_unifiedTypeMap_2D_entry & outArgument0,
                                                      GALGAS_string & outArgument1,
                                                      GALGAS_string & outArgument2,
                                                      C_Compiler * inCompiler
@@ -13095,7 +13095,7 @@ void GALGAS_variableMap::setter_searchForDropAccess (GALGAS_lstring inKey,
     outArgument2.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    outArgument0 = p->mProperty_mTypeProxy ;
+    outArgument0 = p->mProperty_mType ;
     outArgument1 = p->mProperty_mCppName ;
     outArgument2 = p->mProperty_mNameForCheckingFormalParameterUsing ;
   }
@@ -13108,7 +13108,7 @@ const char * kSearchErrorMessage_variableMap_neutralAccess = "the '%K' variable 
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_variableMap::setter_neutralAccess (GALGAS_lstring inKey,
-                                               GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
+                                               GALGAS_unifiedTypeMap_2D_entry & outArgument0,
                                                GALGAS_string & outArgument1,
                                                GALGAS_string & outArgument2,
                                                C_Compiler * inCompiler
@@ -13129,7 +13129,7 @@ void GALGAS_variableMap::setter_neutralAccess (GALGAS_lstring inKey,
     outArgument2.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    outArgument0 = p->mProperty_mTypeProxy ;
+    outArgument0 = p->mProperty_mType ;
     outArgument1 = p->mProperty_mCppName ;
     outArgument2 = p->mProperty_mNameForCheckingFormalParameterUsing ;
   }
@@ -13137,15 +13137,15 @@ void GALGAS_variableMap::setter_neutralAccess (GALGAS_lstring inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_variableMap::getter_mTypeProxyForKey (const GALGAS_string & inKey,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry GALGAS_variableMap::getter_mTypeForKey (const GALGAS_string & inKey,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
   const cMapElement_variableMap * p = (const cMapElement_variableMap *) attributes ;
-  GALGAS_unifiedTypeMap_2D_proxy result ;
+  GALGAS_unifiedTypeMap_2D_entry result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    result = p->mProperty_mTypeProxy ;
+    result = p->mProperty_mType ;
   }
   return result ;
 }
@@ -13182,15 +13182,15 @@ GALGAS_string GALGAS_variableMap::getter_mNameForCheckingFormalParameterUsingFor
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_variableMap::setter_setMTypeProxyForKey (GALGAS_unifiedTypeMap_2D_proxy inAttributeValue,
-                                                     GALGAS_string inKey,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_setMTypeForKey (GALGAS_unifiedTypeMap_2D_entry inAttributeValue,
+                                                GALGAS_string inKey,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_variableMap * p = (cMapElement_variableMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    p->mProperty_mTypeProxy = inAttributeValue ;
+    p->mProperty_mType = inAttributeValue ;
   }
 }
 
@@ -13250,10 +13250,10 @@ GALGAS_lstring cEnumerator_variableMap::current_lkey (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy cEnumerator_variableMap::current_mTypeProxy (LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry cEnumerator_variableMap::current_mType (LOCATION_ARGS) const {
   const cMapElement_variableMap * p = (const cMapElement_variableMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_variableMap) ;
-  return p->mProperty_mTypeProxy ;
+  return p->mProperty_mType ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -13319,61 +13319,61 @@ GALGAS_variableMap GALGAS_variableMap::extractObject (const GALGAS_object & inOb
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_variableMap_2D_proxy::GALGAS_variableMap_2D_proxy (void) :
-AC_GALGAS_uniqueMapProxy () {
+GALGAS_variableMap_2D_entry::GALGAS_variableMap_2D_entry (void) :
+AC_GALGAS_sharedMapEntry () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_variableMap_2D_proxy GALGAS_variableMap_2D_proxy::constructor_null (LOCATION_ARGS) {
-  GALGAS_variableMap_2D_proxy result ;
-  result.makeNullProxy (THERE) ;
+GALGAS_variableMap_2D_entry GALGAS_variableMap_2D_entry::constructor_null (LOCATION_ARGS) {
+  GALGAS_variableMap_2D_entry result ;
+  result.makeNullEntry (THERE) ;
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_variableMap_2D_proxy::class_method_makeOptionalProxy (GALGAS_variableMap & ioMap,
+void GALGAS_variableMap_2D_entry::class_method_makeOptionalEntry (GALGAS_variableMap & ioMap,
                                                                   GALGAS_lstring inKey,
-                                                                  GALGAS_variableMap_2D_proxy & outProxy
+                                                                  GALGAS_variableMap_2D_entry & outEntry
                                                                   COMMA_LOCATION_ARGS) {
-  outProxy.internalMakeOptionalProxy (ioMap, inKey COMMA_THERE) ;
+  outEntry.internalMakeOptionalEntry (ioMap, inKey COMMA_THERE) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_variableMap_2D_proxy::class_method_makeProxy (GALGAS_variableMap & ioMap,
+void GALGAS_variableMap_2D_entry::class_method_makeEntry (GALGAS_variableMap & ioMap,
                                                           GALGAS_lstring inKey,
-                                                          GALGAS_variableMap_2D_proxy & outProxy
+                                                          GALGAS_variableMap_2D_entry & outEntry
                                                           COMMA_LOCATION_ARGS) {
-  outProxy.internalMakeProxy (ioMap, inKey COMMA_THERE) ;
+  outEntry.internalMakeEntry (ioMap, inKey COMMA_THERE) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_variableMap_2D_proxy::class_method_makeProxyFromString (GALGAS_variableMap & ioMap,
+void GALGAS_variableMap_2D_entry::class_method_makeEntryFromString (GALGAS_variableMap & ioMap,
                                                                     GALGAS_string inKey,
-                                                                    GALGAS_variableMap_2D_proxy & outProxy
+                                                                    GALGAS_variableMap_2D_entry & outEntry
                                                                     COMMA_LOCATION_ARGS) {
-  outProxy.internalMakeProxyFromString (ioMap, inKey COMMA_THERE) ;
+  outEntry.internalMakeEntryFromString (ioMap, inKey COMMA_THERE) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_variableMap_2D_proxy::getter_mTypeProxy (C_Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMap_2D_proxy result ;
-  const cMapElement_variableMap * p = (const cMapElement_variableMap *) getAttributeListPointer (inCompiler, "mTypeProxy" COMMA_THERE) ;
+GALGAS_unifiedTypeMap_2D_entry GALGAS_variableMap_2D_entry::getter_mType (C_Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_entry result ;
+  const cMapElement_variableMap * p = (const cMapElement_variableMap *) getAttributeListPointer (inCompiler, "mType" COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    result = p->mProperty_mTypeProxy;
+    result = p->mProperty_mType;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_variableMap_2D_proxy::getter_mCppName (C_Compiler * inCompiler
+GALGAS_string GALGAS_variableMap_2D_entry::getter_mCppName (C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_string result ;
   const cMapElement_variableMap * p = (const cMapElement_variableMap *) getAttributeListPointer (inCompiler, "mCppName" COMMA_THERE) ;
@@ -13386,7 +13386,7 @@ GALGAS_string GALGAS_variableMap_2D_proxy::getter_mCppName (C_Compiler * inCompi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_variableMap_2D_proxy::getter_mNameForCheckingFormalParameterUsing (C_Compiler * inCompiler
+GALGAS_string GALGAS_variableMap_2D_entry::getter_mNameForCheckingFormalParameterUsing (C_Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_string result ;
   const cMapElement_variableMap * p = (const cMapElement_variableMap *) getAttributeListPointer (inCompiler, "mNameForCheckingFormalParameterUsing" COMMA_THERE) ;
@@ -13399,98 +13399,98 @@ GALGAS_string GALGAS_variableMap_2D_proxy::getter_mNameForCheckingFormalParamete
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_variableMap_2D_proxy GALGAS_variableMap_2D_proxy::constructor_searchForReadAccess (const GALGAS_variableMap & inMap,
+GALGAS_variableMap_2D_entry GALGAS_variableMap_2D_entry::constructor_searchForReadAccess (const GALGAS_variableMap & inMap,
                                                                                           const GALGAS_lstring & inKey,
                                                                                           C_Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) {
-  GALGAS_variableMap_2D_proxy result ;
-  result.internalMakeRegularProxyBySearchingKey (inMap, inKey, kSearchErrorMessage_variableMap_searchForReadAccess, inCompiler COMMA_THERE) ;
+  GALGAS_variableMap_2D_entry result ;
+  result.internalMakeRegularEntryBySearchingKey (inMap, inKey, kSearchErrorMessage_variableMap_searchForReadAccess, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_variableMap_2D_proxy GALGAS_variableMap_2D_proxy::constructor_searchForWriteAccess (const GALGAS_variableMap & inMap,
+GALGAS_variableMap_2D_entry GALGAS_variableMap_2D_entry::constructor_searchForWriteAccess (const GALGAS_variableMap & inMap,
                                                                                            const GALGAS_lstring & inKey,
                                                                                            C_Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_variableMap_2D_proxy result ;
-  result.internalMakeRegularProxyBySearchingKey (inMap, inKey, kSearchErrorMessage_variableMap_searchForWriteAccess, inCompiler COMMA_THERE) ;
+  GALGAS_variableMap_2D_entry result ;
+  result.internalMakeRegularEntryBySearchingKey (inMap, inKey, kSearchErrorMessage_variableMap_searchForWriteAccess, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_variableMap_2D_proxy GALGAS_variableMap_2D_proxy::constructor_searchForReadWriteAccess (const GALGAS_variableMap & inMap,
+GALGAS_variableMap_2D_entry GALGAS_variableMap_2D_entry::constructor_searchForReadWriteAccess (const GALGAS_variableMap & inMap,
                                                                                                const GALGAS_lstring & inKey,
                                                                                                C_Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_variableMap_2D_proxy result ;
-  result.internalMakeRegularProxyBySearchingKey (inMap, inKey, kSearchErrorMessage_variableMap_searchForReadWriteAccess, inCompiler COMMA_THERE) ;
+  GALGAS_variableMap_2D_entry result ;
+  result.internalMakeRegularEntryBySearchingKey (inMap, inKey, kSearchErrorMessage_variableMap_searchForReadWriteAccess, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_variableMap_2D_proxy GALGAS_variableMap_2D_proxy::constructor_searchForDropAccess (const GALGAS_variableMap & inMap,
+GALGAS_variableMap_2D_entry GALGAS_variableMap_2D_entry::constructor_searchForDropAccess (const GALGAS_variableMap & inMap,
                                                                                           const GALGAS_lstring & inKey,
                                                                                           C_Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) {
-  GALGAS_variableMap_2D_proxy result ;
-  result.internalMakeRegularProxyBySearchingKey (inMap, inKey, kSearchErrorMessage_variableMap_searchForDropAccess, inCompiler COMMA_THERE) ;
+  GALGAS_variableMap_2D_entry result ;
+  result.internalMakeRegularEntryBySearchingKey (inMap, inKey, kSearchErrorMessage_variableMap_searchForDropAccess, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_variableMap_2D_proxy GALGAS_variableMap_2D_proxy::constructor_neutralAccess (const GALGAS_variableMap & inMap,
+GALGAS_variableMap_2D_entry GALGAS_variableMap_2D_entry::constructor_neutralAccess (const GALGAS_variableMap & inMap,
                                                                                     const GALGAS_lstring & inKey,
                                                                                     C_Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_variableMap_2D_proxy result ;
-  result.internalMakeRegularProxyBySearchingKey (inMap, inKey, kSearchErrorMessage_variableMap_neutralAccess, inCompiler COMMA_THERE) ;
+  GALGAS_variableMap_2D_entry result ;
+  result.internalMakeRegularEntryBySearchingKey (inMap, inKey, kSearchErrorMessage_variableMap_neutralAccess, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@variableMap-proxy type
+//@variableMap-entry type
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_variableMap_2D_proxy ("variableMap-proxy",
+kTypeDescriptor_GALGAS_variableMap_2D_entry ("variableMap-entry",
                                              NULL) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_variableMap_2D_proxy::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_variableMap_2D_proxy ;
+const C_galgas_type_descriptor * GALGAS_variableMap_2D_entry::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_variableMap_2D_entry ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_variableMap_2D_proxy::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_variableMap_2D_entry::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_variableMap_2D_proxy (*this)) ;
+    macroMyNew (result, GALGAS_variableMap_2D_entry (*this)) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_variableMap_2D_proxy GALGAS_variableMap_2D_proxy::extractObject (const GALGAS_object & inObject,
+GALGAS_variableMap_2D_entry GALGAS_variableMap_2D_entry::extractObject (const GALGAS_object & inObject,
                                                                         C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) {
-  GALGAS_variableMap_2D_proxy result ;
-  const GALGAS_variableMap_2D_proxy * p = (const GALGAS_variableMap_2D_proxy *) inObject.embeddedObject () ;
+  GALGAS_variableMap_2D_entry result ;
+  const GALGAS_variableMap_2D_entry * p = (const GALGAS_variableMap_2D_entry *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_variableMap_2D_proxy *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_variableMap_2D_entry *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("variableMap-proxy", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("variableMap-entry", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -13527,7 +13527,7 @@ C_PrologueEpilogue gMethod_semanticExpressionAST_analyzeSemanticExpression (NULL
 void callExtensionMethod_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
                                                     const GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                     GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                                    const GALGAS_unifiedTypeMap_2D_proxy constin_inType,
+                                                    const GALGAS_unifiedTypeMap_2D_entry constin_inType,
                                                     const GALGAS_analysisContext constin_inAnalysisContext,
                                                     GALGAS_variableMap & io_ioVariableMap,
                                                     GALGAS_semanticExpressionForGeneration & out_outExpression,
@@ -14561,7 +14561,7 @@ class cCollectionElement_castInstructionBranchListForGeneration : public cCollec
 
 //--- Constructors
   public: cCollectionElement_castInstructionBranchListForGeneration (const GALGAS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
-                                                                     const GALGAS_unifiedTypeMap_2D_proxy & in_mType,
+                                                                     const GALGAS_unifiedTypeMap_2D_entry & in_mType,
                                                                      const GALGAS_string & in_mCastedVarCppName,
                                                                      const GALGAS_semanticInstructionListForGeneration & in_mInstructionList
                                                                      COMMA_LOCATION_ARGS) ;
@@ -14583,7 +14583,7 @@ class cCollectionElement_castInstructionBranchListForGeneration : public cCollec
 //----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_castInstructionBranchListForGeneration::cCollectionElement_castInstructionBranchListForGeneration (const GALGAS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
-                                                                                                                      const GALGAS_unifiedTypeMap_2D_proxy & in_mType,
+                                                                                                                      const GALGAS_unifiedTypeMap_2D_entry & in_mType,
                                                                                                                       const GALGAS_string & in_mCastedVarCppName,
                                                                                                                       const GALGAS_semanticInstructionListForGeneration & in_mInstructionList
                                                                                                                       COMMA_LOCATION_ARGS) :
@@ -14662,7 +14662,7 @@ GALGAS_castInstructionBranchListForGeneration GALGAS_castInstructionBranchListFo
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_castInstructionBranchListForGeneration GALGAS_castInstructionBranchListForGeneration::constructor_listWithValue (const GALGAS_dynamicTypeComparisonKind & inOperand0,
-                                                                                                                        const GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
+                                                                                                                        const GALGAS_unifiedTypeMap_2D_entry & inOperand1,
                                                                                                                         const GALGAS_string & inOperand2,
                                                                                                                         const GALGAS_semanticInstructionListForGeneration & inOperand3
                                                                                                                         COMMA_LOCATION_ARGS) {
@@ -14680,7 +14680,7 @@ GALGAS_castInstructionBranchListForGeneration GALGAS_castInstructionBranchListFo
 
 void GALGAS_castInstructionBranchListForGeneration::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                                const GALGAS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
-                                                                               const GALGAS_unifiedTypeMap_2D_proxy & in_mType,
+                                                                               const GALGAS_unifiedTypeMap_2D_entry & in_mType,
                                                                                const GALGAS_string & in_mCastedVarCppName,
                                                                                const GALGAS_semanticInstructionListForGeneration & in_mInstructionList
                                                                                COMMA_LOCATION_ARGS) {
@@ -14696,7 +14696,7 @@ void GALGAS_castInstructionBranchListForGeneration::makeAttributesFromObjects (c
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_castInstructionBranchListForGeneration::addAssign_operation (const GALGAS_dynamicTypeComparisonKind & inOperand0,
-                                                                         const GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
+                                                                         const GALGAS_unifiedTypeMap_2D_entry & inOperand1,
                                                                          const GALGAS_string & inOperand2,
                                                                          const GALGAS_semanticInstructionListForGeneration & inOperand3
                                                                          COMMA_LOCATION_ARGS) {
@@ -14736,7 +14736,7 @@ void GALGAS_castInstructionBranchListForGeneration::setter_append (GALGAS_castIn
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_castInstructionBranchListForGeneration::setter_insertAtIndex (const GALGAS_dynamicTypeComparisonKind inOperand0,
-                                                                          const GALGAS_unifiedTypeMap_2D_proxy inOperand1,
+                                                                          const GALGAS_unifiedTypeMap_2D_entry inOperand1,
                                                                           const GALGAS_string inOperand2,
                                                                           const GALGAS_semanticInstructionListForGeneration inOperand3,
                                                                           const GALGAS_uint inInsertionIndex,
@@ -14759,7 +14759,7 @@ void GALGAS_castInstructionBranchListForGeneration::setter_insertAtIndex (const 
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_castInstructionBranchListForGeneration::setter_removeAtIndex (GALGAS_dynamicTypeComparisonKind & outOperand0,
-                                                                          GALGAS_unifiedTypeMap_2D_proxy & outOperand1,
+                                                                          GALGAS_unifiedTypeMap_2D_entry & outOperand1,
                                                                           GALGAS_string & outOperand2,
                                                                           GALGAS_semanticInstructionListForGeneration & outOperand3,
                                                                           const GALGAS_uint inRemoveIndex,
@@ -14801,7 +14801,7 @@ void GALGAS_castInstructionBranchListForGeneration::setter_removeAtIndex (GALGAS
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_castInstructionBranchListForGeneration::setter_popFirst (GALGAS_dynamicTypeComparisonKind & outOperand0,
-                                                                     GALGAS_unifiedTypeMap_2D_proxy & outOperand1,
+                                                                     GALGAS_unifiedTypeMap_2D_entry & outOperand1,
                                                                      GALGAS_string & outOperand2,
                                                                      GALGAS_semanticInstructionListForGeneration & outOperand3,
                                                                      C_Compiler * inCompiler
@@ -14826,7 +14826,7 @@ void GALGAS_castInstructionBranchListForGeneration::setter_popFirst (GALGAS_dyna
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_castInstructionBranchListForGeneration::setter_popLast (GALGAS_dynamicTypeComparisonKind & outOperand0,
-                                                                    GALGAS_unifiedTypeMap_2D_proxy & outOperand1,
+                                                                    GALGAS_unifiedTypeMap_2D_entry & outOperand1,
                                                                     GALGAS_string & outOperand2,
                                                                     GALGAS_semanticInstructionListForGeneration & outOperand3,
                                                                     C_Compiler * inCompiler
@@ -14851,7 +14851,7 @@ void GALGAS_castInstructionBranchListForGeneration::setter_popLast (GALGAS_dynam
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_castInstructionBranchListForGeneration::method_first (GALGAS_dynamicTypeComparisonKind & outOperand0,
-                                                                  GALGAS_unifiedTypeMap_2D_proxy & outOperand1,
+                                                                  GALGAS_unifiedTypeMap_2D_entry & outOperand1,
                                                                   GALGAS_string & outOperand2,
                                                                   GALGAS_semanticInstructionListForGeneration & outOperand3,
                                                                   C_Compiler * inCompiler
@@ -14876,7 +14876,7 @@ void GALGAS_castInstructionBranchListForGeneration::method_first (GALGAS_dynamic
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_castInstructionBranchListForGeneration::method_last (GALGAS_dynamicTypeComparisonKind & outOperand0,
-                                                                 GALGAS_unifiedTypeMap_2D_proxy & outOperand1,
+                                                                 GALGAS_unifiedTypeMap_2D_entry & outOperand1,
                                                                  GALGAS_string & outOperand2,
                                                                  GALGAS_semanticInstructionListForGeneration & outOperand3,
                                                                  C_Compiler * inCompiler
@@ -14980,7 +14980,7 @@ GALGAS_dynamicTypeComparisonKind GALGAS_castInstructionBranchListForGeneration::
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_castInstructionBranchListForGeneration::setter_setMTypeAtIndex (GALGAS_unifiedTypeMap_2D_proxy inOperand,
+void GALGAS_castInstructionBranchListForGeneration::setter_setMTypeAtIndex (GALGAS_unifiedTypeMap_2D_entry inOperand,
                                                                             GALGAS_uint inIndex,
                                                                             C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
@@ -14994,12 +14994,12 @@ void GALGAS_castInstructionBranchListForGeneration::setter_setMTypeAtIndex (GALG
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_castInstructionBranchListForGeneration::getter_mTypeAtIndex (const GALGAS_uint & inIndex,
+GALGAS_unifiedTypeMap_2D_entry GALGAS_castInstructionBranchListForGeneration::getter_mTypeAtIndex (const GALGAS_uint & inIndex,
                                                                                                    C_Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_castInstructionBranchListForGeneration * p = (cCollectionElement_castInstructionBranchListForGeneration *) attributes.ptr () ;
-  GALGAS_unifiedTypeMap_2D_proxy result ;
+  GALGAS_unifiedTypeMap_2D_entry result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_castInstructionBranchListForGeneration) ;
     result = p->mObject.mProperty_mType ;
@@ -15094,7 +15094,7 @@ GALGAS_dynamicTypeComparisonKind cEnumerator_castInstructionBranchListForGenerat
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy cEnumerator_castInstructionBranchListForGeneration::current_mType (LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry cEnumerator_castInstructionBranchListForGeneration::current_mType (LOCATION_ARGS) const {
   const cCollectionElement_castInstructionBranchListForGeneration * p = (const cCollectionElement_castInstructionBranchListForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_castInstructionBranchListForGeneration) ;
   return p->mObject.mProperty_mType ;

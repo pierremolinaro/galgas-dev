@@ -109,7 +109,7 @@ override method @extensionMethodAST semanticAnalysis
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (! self.mTypeName)
   [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap ! self.mTypeName}
+  let @unifiedTypeMap-entry selfType = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap ! self.mTypeName}
   @string selfObjectName
   @string selfObjectAccessor
   @bool implementedAsFunction
@@ -131,7 +131,7 @@ override method @extensionMethodAST semanticAnalysis
     !inPredefinedTypes
     !selfType
     !selfObjectName
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !selfObjectAccessor
   }
   analyzeRoutineBody (
@@ -192,7 +192,7 @@ override method @extensionMethodAST buildExtensionListMaps
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 shared class @extensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMap-proxy mReceiverType
+  @unifiedTypeMap-entry mReceiverType
   @string mExtensionMethodName
   @bool mImplementedAsFunction
   @formalParameterListForGeneration mExtensionMethodFormalParameterList
@@ -267,7 +267,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation
     for () in self.mExtensionMethodFormalParameterList do
       [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
     end
-    @unifiedTypeMap-proxy baseType = self.mReceiverType
+    @unifiedTypeMap-entry baseType = self.mReceiverType
     @bool searching = true
     loop( @uint. max) while searching do
       if not [[baseType mSuperType] isNull] then

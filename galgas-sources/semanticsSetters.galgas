@@ -23,7 +23,7 @@ proc enterModifierWithInputArgument
   ?setterName:let @string inSetterName
   ?compilerArg:let @bool inHasCompilerArgument
 {
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?let argumentTypeIndex]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?let argumentTypeIndex]
   @formalParameterSignature argList = {}
   argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inInputArgumentName
   [!?ioSetterMap insertOrReplace
@@ -48,8 +48,8 @@ proc enterModifierWithOutputAndInputArguments
   ?setterName:let @string inSetterName
   ?compilerArg:let @bool inHasCompilerArgument
 {
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?let outputArgumentTypeIndex]
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?let inputArgumentTypeIndex]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?let outputArgumentTypeIndex]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?let inputArgumentTypeIndex]
   @formalParameterSignature argList = {}
   argList += !["" nowhere] !outputArgumentTypeIndex !.argumentOut !inOutputArgumentName
   argList += !["" nowhere] !inputArgumentTypeIndex !.argumentConstantIn !inInputArgumentName
@@ -73,8 +73,8 @@ proc enterModifierWithOutputAndInputArguments
 #  ?setterName:let @string inSetterName
 #  ?compilerArg:let @bool inHasCompilerArgument
 #{
-#  @unifiedTypeMap-proxy argumentTypeIndex
-#  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?argumentTypeIndex]
+#  @unifiedTypeMap-entry argumentTypeIndex
+#  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?argumentTypeIndex]
 #  var argList =@formalParameterSignature {}
 #  argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentOut !inOutputArgumentName
 #  [!?ioSetterMap insertOrReplace
@@ -100,9 +100,9 @@ proc enterModifierWith2InputArguments
   ?compilerArg:let @bool inHasCompilerArgument
 {
   @formalParameterSignature argList = {}
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgument1TypeName ?@unifiedTypeMap-proxy argumentTypeIndex]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inInputArgument1TypeName ?@unifiedTypeMap-entry argumentTypeIndex]
   argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inInputArgument1Name
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgument2TypeName ?argumentTypeIndex]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inInputArgument2TypeName ?argumentTypeIndex]
   argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inInputArgument2Name
   [!?ioSetterMap insertOrReplace
     !@lstring.new {!inSetterName !.here}
@@ -129,11 +129,11 @@ proc enterModifierWith2InputArguments
 #  ?compilerArg:let @bool inHasCompilerArgument
 #{
 #  @formalParameterSignature argList = {}
-#  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgument1TypeName ?@unifiedTypeMap-proxy argumentTypeIndex]
+#  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inInputArgument1TypeName ?@unifiedTypeMap-entry argumentTypeIndex]
 #  argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inInputArgument1Name
-#  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgument2TypeName ?argumentTypeIndex]
+#  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inInputArgument2TypeName ?argumentTypeIndex]
 #  argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inInputArgument2Name
-#  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgument3TypeName ?argumentTypeIndex]
+#  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inInputArgument3TypeName ?argumentTypeIndex]
 #  argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inInputArgument3Name
 #  [!?ioSetterMap insertOrReplace
 #    !@lstring.new {!inSetterName !.here}

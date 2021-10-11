@@ -81,28 +81,28 @@ override method @structDeclarationAST enterInSemanticContext
 {
   let optionalMethodMap = @optionalMethodMap {}
 #--- Struct type index
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !self.mStructTypeName ?let structTypeIndex]
+  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mStructTypeName ?let structTypeIndex]
 #--- Constructors and property map
   @propertyMap propertyMap = {}
   @constructorMap constructorMap = {}
   @functionSignature constructorPropertyTypeList = {}
   @typedPropertyList typedPropertyList = {}
-  @unifiedTypeMapProxyList typesToIncludeInHeaderCompilation = {}
+  @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
   for () in self.mStructurePropertyList do
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let propertyTypeProxy]
+    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let propertyTypeEntry]
     @lstring selector = ["" nowhere]
     for () in mAttributeList do
       if mValue.string == selectorFeatureForNewConstructor () then
         selector = mPropertyName
       end
     end
-    constructorPropertyTypeList += !selector !propertyTypeProxy !mPropertyName.string
-    typesToIncludeInHeaderCompilation += !propertyTypeProxy
+    constructorPropertyTypeList += !selector !propertyTypeEntry !mPropertyName.string
+    typesToIncludeInHeaderCompilation += !propertyTypeEntry
     let hasSetter = true # mIsPublic
     let hasGetter = true # mIsPublic
     let hasSelector = false
-    typedPropertyList += !propertyTypeProxy !mPropertyName !hasSetter !hasGetter !hasSelector
-    [!?propertyMap insertKey !mPropertyName !mIsPublic !propertyTypeProxy]
+    typedPropertyList += !propertyTypeEntry !mPropertyName !hasSetter !hasGetter !hasSelector
+    [!?propertyMap insertKey !mPropertyName !mIsPublic !propertyTypeEntry]
   end
   [!?constructorMap insertKey
     !@lstring.new {!"new" !.here}
@@ -119,7 +119,7 @@ override method @structDeclarationAST enterInSemanticContext
         !?getterMap
         !?ioSemanticContext.mTypeMap 
         !getterName:[mPropertyName string]
-        !returnedTypeName:[mPropertyTypeProxy key]
+        !returnedTypeName:[mPropertyTypeEntry key]
         !hasCompilerArgument:false
       )
     end
@@ -140,11 +140,11 @@ override method @structDeclarationAST enterInSemanticContext
     !?instanceMethodMap
   )
 #--- Enumeration by "for" instruction
-  @unifiedTypeMap-proxy enumeratedType
+  @unifiedTypeMap-entry enumeratedType
   if self.mEnumeratedElementTypeName == "" then
-    enumeratedType = @unifiedTypeMap-proxy.null
+    enumeratedType = @unifiedTypeMap-entry.null
   else
-   [@unifiedTypeMap-proxy makeProxyFromString
+   [@unifiedTypeMap-entry makeEntryFromString
      !?ioSemanticContext.mTypeMap
      !self.mEnumeratedElementTypeName
      ?enumeratedType
@@ -153,7 +153,7 @@ override method @structDeclarationAST enterInSemanticContext
 #--- Generate a "default" constructor ?
   @string defaultConstructorName = "default"
   for () in typedPropertyList while defaultConstructorName != "" do
-    if ([mPropertyTypeProxy mDefaultConstructorName] == "") | not [mPropertyTypeProxy mIsConcrete] then
+    if ([mPropertyTypeEntry mDefaultConstructorName] == "") | not [mPropertyTypeEntry mIsConcrete] then
       defaultConstructorName = ""
     end
   end  
@@ -162,7 +162,7 @@ override method @structDeclarationAST enterInSemanticContext
     !self.mStructTypeName
     !self.mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !@typeKindEnum.structType
     !false # Does not support collection value
     !typedPropertyList
@@ -222,7 +222,7 @@ override method @structDeclarationAST semanticAnalysis
   for () in self.mStructurePropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]
-    let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
+    let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     var hasSelector = false
     for () in mAttributeList do
       if mValue.string != selectorFeatureForNewConstructor () then
@@ -296,25 +296,25 @@ override method @structTypeForGeneration appendDeclaration1
   end
 
   outHeader = [filewrapper boolsetGenerationTemplate.structTypeHeader1
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mTypedPropertyList
-    ![self.mTypeProxy mDefaultConstructorName] != ""
+    ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
-    ![self.mTypeProxy mIsConcrete]
-    ![self.mTypeProxy mConstructorMap]
-    ![self.mTypeProxy mGetterMap]
-    ![self.mTypeProxy mSetterMap]
-    ![self.mTypeProxy mInstanceMethodMap]
-    ![self.mTypeProxy mClassMethodMap]
-    ![self.mTypeProxy mOptionalMethodMap]
-    ![self.mTypeProxy mEnumerationDescriptor]
-    ![self.mTypeProxy mHandledOperatorFlags]
-    ![self.mTypeProxy mAddAssignOperatorArguments]
-    ![self.mTypeProxy mTypeForEnumeratedElement]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
+    ![self.mSelfTypeEntry  mIsConcrete]
+    ![self.mSelfTypeEntry  mConstructorMap]
+    ![self.mSelfTypeEntry  mGetterMap]
+    ![self.mSelfTypeEntry  mSetterMap]
+    ![self.mSelfTypeEntry  mInstanceMethodMap]
+    ![self.mSelfTypeEntry  mClassMethodMap]
+    ![self.mSelfTypeEntry  mOptionalMethodMap]
+    ![self.mSelfTypeEntry  mEnumerationDescriptor]
+    ![self.mSelfTypeEntry  mHandledOperatorFlags]
+    ![self.mSelfTypeEntry  mAddAssignOperatorArguments]
+    ![self.mSelfTypeEntry  mTypeForEnumeratedElement]
   ]
  }
 
@@ -325,12 +325,12 @@ override method @structTypeForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  [self.mTypeProxy addHeaderFileName !?ioInclusionSet]
+  [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper boolsetGenerationTemplate.structTypeSpecificImplementation
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mTypedPropertyList
-    ![self.mTypeProxy mDefaultConstructorName] != ""
+    ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
   ]
  }
 

@@ -122,7 +122,7 @@ override method @extensionGetterAST semanticAnalysis
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
   [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mTypeName}
+  let @unifiedTypeMap-entry selfType = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mTypeName}
   @string selfObjectName
   @string selfObjectAccessor
   @bool implementedAsFunction
@@ -142,10 +142,10 @@ override method @extensionGetterAST semanticAnalysis
     !inPredefinedTypes
     !selfType
     !selfObjectName
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !selfObjectAccessor
   }
-  @unifiedTypeMap-proxy returnType
+  @unifiedTypeMap-entry returnType
   @string returnVariableCppName
   @formalInputParameterListForGeneration formalParameterListForGeneration
   @semanticInstructionListForGeneration semanticInstructionListForGeneration
@@ -154,7 +154,7 @@ override method @extensionGetterAST semanticAnalysis
     !?ioUsefulEntitiesGraph
     !analysisContext
     !self.mExtensionGetterFormalInputParameterList
-    !if [[selfType mTypeKindEnum] isClassType] | ([selfType mTypeKindEnum] == .structType) | ([selfType mTypeKindEnum] == .mapProxyType)
+    !if [[selfType mTypeKindEnum] isClassType] | ([selfType mTypeKindEnum] == .structType) | ([selfType mTypeKindEnum] == .sharedMapEntryType)
        then [selfType mAllTypedAttributeList]
        else @typedPropertyList.emptyList
      end
@@ -212,10 +212,10 @@ override method @extensionGetterAST buildExtensionListMaps
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 shared class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMap-proxy mReceiverType
+  @unifiedTypeMap-entry mReceiverType
   @string mExtensionGetterName
   @bool mImplementedAsFunction
-  @unifiedTypeMap-proxy mResultType
+  @unifiedTypeMap-entry mResultType
   @string mResultVarCppName
   @formalInputParameterListForGeneration mExtensionGetterFormalParameterList
   @typedPropertyList mTypedAttributeList
@@ -290,7 +290,7 @@ override method @extensionGetterForGeneration appendSpecificImplementation
     ] 
   else
     [self.mReceiverType addHeaderFileName !?ioInclusionSet]
-    @unifiedTypeMap-proxy baseType = self.mReceiverType
+    @unifiedTypeMap-entry baseType = self.mReceiverType
     @bool searching = true
     loop( @uint. max) while searching do
       if not [[baseType mSuperType] isNull] then

@@ -254,17 +254,17 @@ override method @predefinedTypeAST enterInSemanticContext
     ?var @enumerationDescriptorList enumerationList
     ?var @string enumeratedTypeName
   ]
-  [@unifiedTypeMap-proxy makeProxyFromString
+  [@unifiedTypeMap-entry makeEntryFromString
     !?ioSemanticContext.mTypeMap
     !self.mPredefinedTypeName
-    ?var @unifiedTypeMap-proxy selfTypeProxy
+    ?var @unifiedTypeMap-entry selfTypeEntry
   ]
 #--- Enumeration
-  @unifiedTypeMap-proxy enumeratedTypeProxy
+  @unifiedTypeMap-entry enumeratedTypeEntry
   if enumeratedTypeName == "" then
-    enumeratedTypeProxy = @unifiedTypeMap-proxy.null
+    enumeratedTypeEntry = @unifiedTypeMap-entry.null
   else
-    [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !enumeratedTypeName ?enumeratedTypeProxy]
+    [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !enumeratedTypeName ?enumeratedTypeEntry]
   end
 #--- Add Categories
   addExtensions (
@@ -282,7 +282,7 @@ override method @predefinedTypeAST enterInSemanticContext
     !@lstring.new {!self.mPredefinedTypeName !@location.here}
     !self.mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !@typeKindEnum. predefinedType
     !self.mPredefinedTypeName == "stringset" # Only @stringset supports collection value
     !@typedPropertyList.emptyList
@@ -302,7 +302,7 @@ override method @predefinedTypeAST enterInSemanticContext
     !@mapSearchMethodListAST.emptyList
     !@mapSearchMethodListAST.emptyList
     !false # Do not generate header in separate file
-    !enumeratedTypeProxy
+    !enumeratedTypeEntry
     ![self.mKind defaultConstructorName]
     !"galgas2/predefined-types"
     !@headerKind.twoHeaders

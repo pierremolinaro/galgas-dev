@@ -1,13 +1,13 @@
 //--- Attributes
 %
   for () in CURRENT_ATTRIBUTE_LIST do
-    %  public: GALGAS_%![mPropertyTypeProxy identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+    %  public: GALGAS_%![mPropertyTypeEntry identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   end
 %
 //--- Constructor
   public: cPtr_%!TYPE_IDENTIFIER% (%?^
   for () in ALL_ATTRIBUTE_LIST
-    do %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
+    do %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
     between %,\n%!^
   end
   if [ALL_ATTRIBUTE_LIST length] > 0 then
@@ -26,10 +26,10 @@
 %
   for () in CURRENT_ATTRIBUTE_LIST do
     if mHasGetter then
-      %  public: VIRTUAL_IN_DEBUG GALGAS_%![mPropertyTypeProxy identifierRepresentation]% getter_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
+      %  public: VIRTUAL_IN_DEBUG GALGAS_%![mPropertyTypeEntry identifierRepresentation]% getter_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
     end
     if mHasSetter then
-      %  public: VIRTUAL_IN_DEBUG void setter_set%![[mPropertyName identifierRepresentation] stringByCapitalizingFirstCharacter]% (GALGAS_%![mPropertyTypeProxy identifierRepresentation]% inValue COMMA_LOCATION_ARGS) ;\n%
+      %  public: VIRTUAL_IN_DEBUG void setter_set%![[mPropertyName identifierRepresentation] stringByCapitalizingFirstCharacter]% (GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inValue COMMA_LOCATION_ARGS) ;\n%
     end
   end
 

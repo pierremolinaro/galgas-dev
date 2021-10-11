@@ -15403,25 +15403,25 @@ GALGAS_templateInstructionIfForGeneration GALGAS_templateInstructionIfForGenerat
 //----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_templateVariableMap::cMapElement_templateVariableMap (const GALGAS_lstring & inKey,
-                                                                  const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
+                                                                  const GALGAS_unifiedTypeMap_2D_entry & in_mType,
                                                                   const GALGAS_string & in_mCppName
                                                                   COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mProperty_mTypeProxy (in_mTypeProxy),
+mProperty_mType (in_mType),
 mProperty_mCppName (in_mCppName) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_templateVariableMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mTypeProxy.isValid () && mProperty_mCppName.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mType.isValid () && mProperty_mCppName.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 cMapElement * cMapElement_templateVariableMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_templateVariableMap (mProperty_lkey, mProperty_mTypeProxy, mProperty_mCppName COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_templateVariableMap (mProperty_lkey, mProperty_mType, mProperty_mCppName COMMA_HERE)) ;
   return result ;
 }
 
@@ -15430,8 +15430,8 @@ cMapElement * cMapElement_templateVariableMap::copy (void) {
 void cMapElement_templateVariableMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mTypeProxy" ":" ;
-  mProperty_mTypeProxy.description (ioString, inIndentation) ;
+  ioString << "mType" ":" ;
+  mProperty_mType.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mCppName" ":" ;
@@ -15444,7 +15444,7 @@ typeComparisonResult cMapElement_templateVariableMap::compare (const cCollection
   cMapElement_templateVariableMap * operand = (cMapElement_templateVariableMap *) inOperand ;
   typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mProperty_mTypeProxy.objectCompare (operand->mProperty_mTypeProxy) ;
+    result = mProperty_mType.objectCompare (operand->mProperty_mType) ;
   }
   if (kOperandEqual == result) {
     result = mProperty_mCppName.objectCompare (operand->mProperty_mCppName) ;
@@ -15500,7 +15500,7 @@ GALGAS_templateVariableMap GALGAS_templateVariableMap::getter_overriddenMap (C_C
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_templateVariableMap::addAssign_operation (const GALGAS_lstring & inKey,
-                                                      const GALGAS_unifiedTypeMap_2D_proxy & inArgument0,
+                                                      const GALGAS_unifiedTypeMap_2D_entry & inArgument0,
                                                       const GALGAS_string & inArgument1,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) {
@@ -15517,7 +15517,7 @@ void GALGAS_templateVariableMap::addAssign_operation (const GALGAS_lstring & inK
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_templateVariableMap::setter_insertKey (GALGAS_lstring inKey,
-                                                   GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                   GALGAS_unifiedTypeMap_2D_entry inArgument0,
                                                    GALGAS_string inArgument1,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) {
@@ -15538,7 +15538,7 @@ const char * kSearchErrorMessage_templateVariableMap_searchKey = "the '%K' varia
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_templateVariableMap::method_searchKey (GALGAS_lstring inKey,
-                                                   GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
+                                                   GALGAS_unifiedTypeMap_2D_entry & outArgument0,
                                                    GALGAS_string & outArgument1,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const {
@@ -15551,22 +15551,22 @@ void GALGAS_templateVariableMap::method_searchKey (GALGAS_lstring inKey,
     outArgument1.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_templateVariableMap) ;
-    outArgument0 = p->mProperty_mTypeProxy ;
+    outArgument0 = p->mProperty_mType ;
     outArgument1 = p->mProperty_mCppName ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_templateVariableMap::getter_mTypeProxyForKey (const GALGAS_string & inKey,
-                                                                                    C_Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry GALGAS_templateVariableMap::getter_mTypeForKey (const GALGAS_string & inKey,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
   const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) attributes ;
-  GALGAS_unifiedTypeMap_2D_proxy result ;
+  GALGAS_unifiedTypeMap_2D_entry result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_templateVariableMap) ;
-    result = p->mProperty_mTypeProxy ;
+    result = p->mProperty_mType ;
   }
   return result ;
 }
@@ -15588,15 +15588,15 @@ GALGAS_string GALGAS_templateVariableMap::getter_mCppNameForKey (const GALGAS_st
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_templateVariableMap::setter_setMTypeProxyForKey (GALGAS_unifiedTypeMap_2D_proxy inAttributeValue,
-                                                             GALGAS_string inKey,
-                                                             C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
+void GALGAS_templateVariableMap::setter_setMTypeForKey (GALGAS_unifiedTypeMap_2D_entry inAttributeValue,
+                                                        GALGAS_string inKey,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_templateVariableMap * p = (cMapElement_templateVariableMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_templateVariableMap) ;
-    p->mProperty_mTypeProxy = inAttributeValue ;
+    p->mProperty_mType = inAttributeValue ;
   }
 }
 
@@ -15637,7 +15637,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_templateVariableMap_2D_element cEnumerator_templateVariableMap::current (LOCATION_ARGS) const {
   const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_templateVariableMap) ;
-  return GALGAS_templateVariableMap_2D_element (p->mProperty_lkey, p->mProperty_mTypeProxy, p->mProperty_mCppName) ;
+  return GALGAS_templateVariableMap_2D_element (p->mProperty_lkey, p->mProperty_mType, p->mProperty_mCppName) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -15650,10 +15650,10 @@ GALGAS_lstring cEnumerator_templateVariableMap::current_lkey (LOCATION_ARGS) con
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy cEnumerator_templateVariableMap::current_mTypeProxy (LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry cEnumerator_templateVariableMap::current_mType (LOCATION_ARGS) const {
   const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_templateVariableMap) ;
-  return p->mProperty_mTypeProxy ;
+  return p->mProperty_mType ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -15667,13 +15667,13 @@ GALGAS_string cEnumerator_templateVariableMap::current_mCppName (LOCATION_ARGS) 
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_templateVariableMap::optional_searchKey (const GALGAS_string & inKey,
-                                                     GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
+                                                     GALGAS_unifiedTypeMap_2D_entry & outArgument0,
                                                      GALGAS_string & outArgument1) const {
   const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) searchForKey (inKey) ;
   const bool result = NULL != p ;
   if (result) {
     macroValidSharedObject (p, cMapElement_templateVariableMap) ;
-    outArgument0 = p->mProperty_mTypeProxy ;
+    outArgument0 = p->mProperty_mType ;
     outArgument1 = p->mProperty_mCppName ;
   }else{
     outArgument0.drop () ;

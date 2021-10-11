@@ -21,10 +21,10 @@ proc enterConstructorWithoutArgument
   ?resultTypeName:let @string inReturnedTypeName
   ?hasLexiqueArg:let @bool inHasLexiqueArgument
 {
-  [@unifiedTypeMap-proxy makeProxyFromString
+  [@unifiedTypeMap-entry makeEntryFromString
     !?ioUnifiedTypeMap
     !inReturnedTypeName
-    ?let @unifiedTypeMap-proxy returnedTypeIndex
+    ?let @unifiedTypeMap-entry returnedTypeIndex
   ]
   [!?ioConstructorMap insertOrReplace
     !@lstring.new {!inConstructorName !@location.here}
@@ -45,8 +45,8 @@ proc enterConstructorWithArgument
   ?resultTypeName:let @string inReturnedTypeName
   ?hasLexiqueArg:let @bool inHasLexiqueArgument
 {
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?let t]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument1TypeName ?let t]
   [!?ioConstructorMap insertOrReplace
     !@lstring.new {!inConstructorName !@location.here}
     !@functionSignature {!["" nowhere] !t !inArgument1Name}
@@ -68,13 +68,13 @@ proc enterConstructorWith2Arguments
   ?resultTypeName:let @string inReturnedTypeName
   ?hasLexiqueArg:let @bool inHasLexiqueArgument
 {
-  @unifiedTypeMap-proxy returnedTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
+  @unifiedTypeMap-entry returnedTypeIndex
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
   var argumentTypeList =@functionSignature {}
-  @unifiedTypeMap-proxy t
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t]
+  @unifiedTypeMap-entry t
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t]
   argumentTypeList += !["" nowhere] !t !inArgument1Name
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
   argumentTypeList += !["" nowhere] !t !inArgument2Name
   [!?ioConstructorMap insertOrReplace
     !@lstring.new {!inConstructorName !@location.here}
@@ -99,13 +99,13 @@ proc enterConstructorWith3Arguments
   ?resultTypeName:let @string inReturnedTypeName
   ?hasLexiqueArg:let @bool inHasLexiqueArgument
 {
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?var t]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument1TypeName ?var t]
   @functionSignature argumentTypeList = {}
   argumentTypeList += !["" nowhere] !t !inArgument1Name
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
   argumentTypeList += !["" nowhere] !t !inArgument2Name
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument3TypeName ?t]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument3TypeName ?t]
   argumentTypeList += !["" nowhere] !t !inArgument3Name
   [!?ioConstructorMap insertOrReplace
     !@lstring.new {!inConstructorName !@location.here}
@@ -136,15 +136,15 @@ proc enterConstructorWith4Arguments
   ?resultTypeName:let @string inReturnedTypeName
   ?hasLexiqueArg:let @bool inHasLexiqueArgument
 {
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?var t]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument1TypeName ?var t]
   @functionSignature argumentTypeList = {}
   argumentTypeList += ![inArgument1SelectorName nowhere] !t !inArgument1Name
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
   argumentTypeList += ![inArgument2SelectorName nowhere] !t !inArgument2Name
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument3TypeName ?t]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument3TypeName ?t]
   argumentTypeList += ![inArgument3SelectorName nowhere] !t !inArgument3Name
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument4TypeName ?t]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument4TypeName ?t]
   argumentTypeList += ![inArgument4SelectorName nowhere] !t !inArgument4Name
   [!?ioConstructorMap insertOrReplace
     !@lstring.new {!inConstructorName !@location.here}

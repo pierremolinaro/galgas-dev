@@ -56,7 +56,7 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
   [self.mSourceExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?var @semanticExpressionForGeneration expression

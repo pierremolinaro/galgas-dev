@@ -20,7 +20,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @templateVariableMap {
-  @unifiedTypeMap-proxy mTypeProxy
+  @unifiedTypeMap-entry mType
   @string mCppName
   search searchKey error message "the '%K' variable is not declared"
   insert insertKey error message "the '%K' variable is already declared in %L"
@@ -64,14 +64,14 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
     !inAnalysisContext
     ?receiverExpression
   ]
-  let @unifiedTypeMap-proxy receiverType = [receiverExpression mResultType]
+  let @unifiedTypeMap-entry receiverType = [receiverExpression mResultType]
 #--- Get getter map
   let @getterMap getterMap = [receiverType mGetterMap]
 #--- Search contructor
   @functionSignature getterFormalArgumentTypeList
   @methodKind kind
   @bool hasCompilerArgument
-  @unifiedTypeMap-proxy returnedType
+  @unifiedTypeMap-entry returnedType
   var fieldList =@stringlist {}
   if [getterMap hasKey ![self.mGetterName string]] then
     [getterMap searchKey !self.mGetterName
@@ -87,10 +87,10 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
     if [receiverType mTypeKindEnum] == @typeKindEnum. structType then
       getterFormalArgumentTypeList ={}
       hasCompilerArgument = true
-      returnedType = @unifiedTypeMap-proxy.null
+      returnedType = @unifiedTypeMap-entry.null
       kind = @methodKind. definedAsMember
       for () in [receiverType mCurrentTypedAttributeList] do
-        let @getterMap aMap = [mPropertyTypeProxy mGetterMap]
+        let @getterMap aMap = [mPropertyTypeEntry mGetterMap]
         with [self.mGetterName string] in aMap  do
           matchingReaderCount ++
           getterFormalArgumentTypeList = mArgumentTypeList
@@ -170,11 +170,11 @@ override method @templateConstructorAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression
 {
-  let @unifiedTypeMap-proxy constructorType = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
+  let @unifiedTypeMap-entry constructorType = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
 #--- Get constructor map from type map
   let @constructorMap constructorMap = [constructorType mConstructorMap]
 #--- Search contructor
-  @unifiedTypeMap-proxy returnedType
+  @unifiedTypeMap-entry returnedType
   @bool hasCompilerArgument
   @functionSignature constructorFormalArgumentTypeList
   with [self.mConstructorName string] in constructorMap  do
@@ -266,7 +266,7 @@ override method @templateAndOperationAST templateExpressionAnalysis
     ?@semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
@@ -308,7 +308,7 @@ override method @templateOrOperationAST templateExpressionAnalysis
     ?@semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
@@ -350,7 +350,7 @@ override method @templateXorOperationAST templateExpressionAnalysis
     ?@semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
@@ -507,7 +507,7 @@ override method @templateNotOperatorAST templateExpressionAnalysis
     ?expression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy type = [expression mResultType]
+  let @unifiedTypeMap-entry type = [expression mResultType]
   if not [[type mHandledOperatorFlags] prefixNotOperator] then
     error self.mOperatorLocation
     : "operand type is '@" + [type key] + "' and does not support the 'not' operator"
@@ -539,7 +539,7 @@ override method @templateLogicalNegateAST templateExpressionAnalysis
     ?expression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy type = [expression mResultType]
+  let @unifiedTypeMap-entry type = [expression mResultType]
   if not [[type mHandledOperatorFlags] prefixTildeOperator] then
     error self.mOperatorLocation
     : "operand type is '@" + [type key] + "' and does not support the '~' operator"
@@ -570,11 +570,11 @@ override method @templateTestDynamicClassAST templateExpressionAnalysis
     ?expression
   ]
 #--- Get type information
-   let castType = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
+   let castType = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
 #--- This type is either a class
   if [[[expression mResultType] mTypeKindEnum] isClassType] then
   #--- Check expression type is a descendant of named type
-    @unifiedTypeMap-proxy t = castType
+    @unifiedTypeMap-entry t = castType
     @bool found = t == [expression mResultType]
     loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
     while (not found) & not [[t mSuperType] isNull] do
@@ -617,7 +617,7 @@ override method @templateOptionAccessAST templateExpressionAnalysis
     ?let @commandLineOptionMap stringListOptionMap
   ]
   var found = [boolOptionMap hasKey !self.mOptionName.string]
-  @unifiedTypeMap-proxy returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
+  @unifiedTypeMap-entry returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
   if not found then
     found = [uintOptionMap hasKey !self.mOptionName.string]
     returnedType = inAnalysisContext.mPredefinedTypes.mUIntType
@@ -700,7 +700,7 @@ override method @templateFunctionCallAST templateExpressionAnalysis
   [inAnalysisContext.mSemanticContext.mFunctionMap searchKey
     !self.mFunctionName
     ?let @functionSignature functionSignature
-    ?let @unifiedTypeMap-proxy resultType
+    ?let @unifiedTypeMap-entry resultType
     ?let @bool isInternal
   ]
 #--- Check internal
@@ -765,7 +765,7 @@ override method @templateVarInExpressionAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression
 {
-  @unifiedTypeMap-proxy type
+  @unifiedTypeMap-entry type
   @string sourceVariableCppName
   [inAnalysisContext.mTemplateVariableMap searchKey !self.mVarName ?type ?sourceVariableCppName]
   outExpression = @varInExpressionForGeneration.new {
@@ -800,7 +800,7 @@ override method @templateAddOperationAST templateExpressionAnalysis
     ?@semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
@@ -844,7 +844,7 @@ override method @templateSubOperationAST templateExpressionAnalysis
     ?@semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
@@ -888,7 +888,7 @@ override method @templateMultiplyOperationAST templateExpressionAnalysis
     ?@semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
@@ -932,7 +932,7 @@ override method @templateDivideOperationAST templateExpressionAnalysis
     ?@semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
@@ -976,7 +976,7 @@ override method @templateModuloOperationAST templateExpressionAnalysis
     ?@semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
@@ -1014,7 +1014,7 @@ override method @templateUnaryMinusOperationAST templateExpressionAnalysis
     ?expression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy type = [expression mResultType]
+  let @unifiedTypeMap-entry type = [expression mResultType]
   if not [[type mHandledOperatorFlags] prefixMinusOperator] then
     error self.mOperatorLocation
     : "operand type is '@" + [type key] + "' and does not support the prefix minus operator"
@@ -1046,7 +1046,7 @@ override method @structFieldAccessTemplateExpressionAST templateExpressionAnalys
     ?let @semanticExpressionForGeneration expression
   ]
 #--- Check field access availability
-  @unifiedTypeMap-proxy type = [expression mResultType]
+  @unifiedTypeMap-entry type = [expression mResultType]
   if [type mTypeKindEnum] != @typeKindEnum. structType then
     error self.mStructFieldName:"the '.' operator requires the receiver to be a struct"
   end
@@ -1089,8 +1089,8 @@ override method @templateEqualTestAST templateExpressionAnalysis
     ?let @semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
-  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry rightType = [rightExpression mResultType]
   if [[leftType lkey] string] != [[rightType lkey] string] then
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType lkey] + "', right operand type is '@" + [rightType lkey] + "': '==' operator requires the types are the same"
@@ -1130,8 +1130,8 @@ override method @templateNonEqualTestAST templateExpressionAnalysis
     ?let @semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
-  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry rightType = [rightExpression mResultType]
   if [[leftType lkey] string] != [[rightType lkey] string] then
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '!=' operator requires the types are the same"
@@ -1171,8 +1171,8 @@ override method @templateStrictInfTestAST templateExpressionAnalysis
     ?let @semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
-  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry rightType = [rightExpression mResultType]
   if not [[leftType mHandledOperatorFlags] isComparable] then
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType key] + "' and does not support the '<' operator"
@@ -1216,8 +1216,8 @@ override method @templateInfOrEqualTestAST templateExpressionAnalysis
     ?let @semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
-  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry rightType = [rightExpression mResultType]
   if not [[leftType mHandledOperatorFlags] isComparable] then
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType key] + "' and does not support the '<=' operator"
@@ -1261,8 +1261,8 @@ override method @templateStrictSupTestAST templateExpressionAnalysis
     ?let @semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
-  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry rightType = [rightExpression mResultType]
   if not [[leftType mHandledOperatorFlags] isComparable] then
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType key] + "' and does not support the '>' operator"
@@ -1306,8 +1306,8 @@ override method @templateSupOrEqualTestAST templateExpressionAnalysis
     ?let @semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
-  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry rightType = [rightExpression mResultType]
   if not [[leftType mHandledOperatorFlags] isComparable] then
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType key] + "' and does not support the '>=' operator"
@@ -1351,8 +1351,8 @@ override method @templateLeftShiftOperationAST templateExpressionAnalysis
     ?let @semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
-  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry rightType = [rightExpression mResultType]
   if not [[leftType mHandledOperatorFlags] infixShiftOperator] then
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType key] + "' and does not support a shift operator"
@@ -1396,8 +1396,8 @@ override method @templateRightShiftOperationAST templateExpressionAnalysis
     ?let @semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
-  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry rightType = [rightExpression mResultType]
   if not [[leftType mHandledOperatorFlags] infixShiftOperator] then
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType key] + "' and does not support a shift operator"

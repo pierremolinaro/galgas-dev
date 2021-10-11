@@ -538,10 +538,10 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
 GALGAS_overrideExtensionGetterForGeneration GALGAS_overrideExtensionGetterForGeneration::constructor_default (LOCATION_ARGS) {
   return GALGAS_overrideExtensionGetterForGeneration::constructor_new (GALGAS_bool::constructor_default (HERE),
                                                                        GALGAS_string::constructor_default (HERE),
-                                                                       GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                                                       GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE),
                                                                        GALGAS_string::constructor_default (HERE),
                                                                        GALGAS_string::constructor_default (HERE),
-                                                                       GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                                                       GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE),
                                                                        GALGAS_string::constructor_default (HERE),
                                                                        GALGAS_formalInputParameterListForGeneration::constructor_emptyList (HERE),
                                                                        GALGAS_typedPropertyList::constructor_emptyList (HERE),
@@ -560,10 +560,10 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 
 GALGAS_overrideExtensionGetterForGeneration GALGAS_overrideExtensionGetterForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                           const GALGAS_string & inAttribute_mImplementationCppFileName,
-                                                                                                          const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReceiverType,
+                                                                                                          const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mReceiverType,
                                                                                                           const GALGAS_string & inAttribute_mBaseTypeName,
                                                                                                           const GALGAS_string & inAttribute_mOverridingExtensionGetterName,
-                                                                                                          const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
+                                                                                                          const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
                                                                                                           const GALGAS_string & inAttribute_mResultVarCppName,
                                                                                                           const GALGAS_formalInputParameterListForGeneration & inAttribute_mOverridingExtensionGetterFormalParameterList,
                                                                                                           const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
@@ -578,8 +578,8 @@ GALGAS_overrideExtensionGetterForGeneration GALGAS_overrideExtensionGetterForGen
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_overrideExtensionGetterForGeneration::getter_mReceiverType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMap_2D_proxy result ;
+GALGAS_unifiedTypeMap_2D_entry GALGAS_overrideExtensionGetterForGeneration::getter_mReceiverType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_entry result ;
   if (NULL != mObjectPtr) {
     const cPtr_overrideExtensionGetterForGeneration * p = (const cPtr_overrideExtensionGetterForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_overrideExtensionGetterForGeneration) ;
@@ -590,7 +590,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_overrideExtensionGetterForGeneration::gett
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy cPtr_overrideExtensionGetterForGeneration::getter_mReceiverType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry cPtr_overrideExtensionGetterForGeneration::getter_mReceiverType (UNUSED_LOCATION_ARGS) const {
   return mProperty_mReceiverType ;
 }
 
@@ -632,8 +632,8 @@ GALGAS_string cPtr_overrideExtensionGetterForGeneration::getter_mOverridingExten
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_overrideExtensionGetterForGeneration::getter_mResultType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMap_2D_proxy result ;
+GALGAS_unifiedTypeMap_2D_entry GALGAS_overrideExtensionGetterForGeneration::getter_mResultType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_entry result ;
   if (NULL != mObjectPtr) {
     const cPtr_overrideExtensionGetterForGeneration * p = (const cPtr_overrideExtensionGetterForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_overrideExtensionGetterForGeneration) ;
@@ -644,7 +644,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_overrideExtensionGetterForGeneration::gett
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy cPtr_overrideExtensionGetterForGeneration::getter_mResultType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry cPtr_overrideExtensionGetterForGeneration::getter_mResultType (UNUSED_LOCATION_ARGS) const {
   return mProperty_mResultType ;
 }
 
@@ -722,7 +722,7 @@ GALGAS_semanticInstructionListForGeneration cPtr_overrideExtensionGetterForGener
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_overrideExtensionGetterForGeneration::setter_setMReceiverType (GALGAS_unifiedTypeMap_2D_proxy inValue
+void GALGAS_overrideExtensionGetterForGeneration::setter_setMReceiverType (GALGAS_unifiedTypeMap_2D_entry inValue
                                                                            COMMA_LOCATION_ARGS) {
   if (NULL != mObjectPtr) {
     insulate (THERE) ;
@@ -734,7 +734,7 @@ void GALGAS_overrideExtensionGetterForGeneration::setter_setMReceiverType (GALGA
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void cPtr_overrideExtensionGetterForGeneration::setter_setMReceiverType (GALGAS_unifiedTypeMap_2D_proxy inValue
+void cPtr_overrideExtensionGetterForGeneration::setter_setMReceiverType (GALGAS_unifiedTypeMap_2D_entry inValue
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   mProperty_mReceiverType = inValue ;
 }
@@ -779,7 +779,7 @@ void cPtr_overrideExtensionGetterForGeneration::setter_setMOverridingExtensionGe
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_overrideExtensionGetterForGeneration::setter_setMResultType (GALGAS_unifiedTypeMap_2D_proxy inValue
+void GALGAS_overrideExtensionGetterForGeneration::setter_setMResultType (GALGAS_unifiedTypeMap_2D_entry inValue
                                                                          COMMA_LOCATION_ARGS) {
   if (NULL != mObjectPtr) {
     insulate (THERE) ;
@@ -791,7 +791,7 @@ void GALGAS_overrideExtensionGetterForGeneration::setter_setMResultType (GALGAS_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void cPtr_overrideExtensionGetterForGeneration::setter_setMResultType (GALGAS_unifiedTypeMap_2D_proxy inValue
+void cPtr_overrideExtensionGetterForGeneration::setter_setMResultType (GALGAS_unifiedTypeMap_2D_entry inValue
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   mProperty_mResultType = inValue ;
 }
@@ -878,10 +878,10 @@ void cPtr_overrideExtensionGetterForGeneration::setter_setMSemanticInstructionLi
 
 cPtr_overrideExtensionGetterForGeneration::cPtr_overrideExtensionGetterForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                       const GALGAS_string & in_mImplementationCppFileName,
-                                                                                      const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
+                                                                                      const GALGAS_unifiedTypeMap_2D_entry & in_mReceiverType,
                                                                                       const GALGAS_string & in_mBaseTypeName,
                                                                                       const GALGAS_string & in_mOverridingExtensionGetterName,
-                                                                                      const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
+                                                                                      const GALGAS_unifiedTypeMap_2D_entry & in_mResultType,
                                                                                       const GALGAS_string & in_mResultVarCppName,
                                                                                       const GALGAS_formalInputParameterListForGeneration & in_mOverridingExtensionGetterFormalParameterList,
                                                                                       const GALGAS_typedPropertyList & in_mTypedAttributeList,
@@ -1414,7 +1414,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
 GALGAS_overridingExtensionMethodForGeneration GALGAS_overridingExtensionMethodForGeneration::constructor_default (LOCATION_ARGS) {
   return GALGAS_overridingExtensionMethodForGeneration::constructor_new (GALGAS_bool::constructor_default (HERE),
                                                                          GALGAS_string::constructor_default (HERE),
-                                                                         GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                                                         GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE),
                                                                          GALGAS_string::constructor_default (HERE),
                                                                          GALGAS_string::constructor_default (HERE),
                                                                          GALGAS_formalParameterListForGeneration::constructor_emptyList (HERE),
@@ -1434,7 +1434,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 
 GALGAS_overridingExtensionMethodForGeneration GALGAS_overridingExtensionMethodForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                               const GALGAS_string & inAttribute_mImplementationCppFileName,
-                                                                                                              const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReceiverType,
+                                                                                                              const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mReceiverType,
                                                                                                               const GALGAS_string & inAttribute_mBaseTypeName,
                                                                                                               const GALGAS_string & inAttribute_mExtensionMethodName,
                                                                                                               const GALGAS_formalParameterListForGeneration & inAttribute_mExtensionMethodFormalParameterList,
@@ -1450,8 +1450,8 @@ GALGAS_overridingExtensionMethodForGeneration GALGAS_overridingExtensionMethodFo
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_overridingExtensionMethodForGeneration::getter_mReceiverType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMap_2D_proxy result ;
+GALGAS_unifiedTypeMap_2D_entry GALGAS_overridingExtensionMethodForGeneration::getter_mReceiverType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_entry result ;
   if (NULL != mObjectPtr) {
     const cPtr_overridingExtensionMethodForGeneration * p = (const cPtr_overridingExtensionMethodForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_overridingExtensionMethodForGeneration) ;
@@ -1462,7 +1462,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_overridingExtensionMethodForGeneration::ge
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy cPtr_overridingExtensionMethodForGeneration::getter_mReceiverType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry cPtr_overridingExtensionMethodForGeneration::getter_mReceiverType (UNUSED_LOCATION_ARGS) const {
   return mProperty_mReceiverType ;
 }
 
@@ -1558,7 +1558,7 @@ GALGAS_semanticInstructionListForGeneration cPtr_overridingExtensionMethodForGen
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_overridingExtensionMethodForGeneration::setter_setMReceiverType (GALGAS_unifiedTypeMap_2D_proxy inValue
+void GALGAS_overridingExtensionMethodForGeneration::setter_setMReceiverType (GALGAS_unifiedTypeMap_2D_entry inValue
                                                                              COMMA_LOCATION_ARGS) {
   if (NULL != mObjectPtr) {
     insulate (THERE) ;
@@ -1570,7 +1570,7 @@ void GALGAS_overridingExtensionMethodForGeneration::setter_setMReceiverType (GAL
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void cPtr_overridingExtensionMethodForGeneration::setter_setMReceiverType (GALGAS_unifiedTypeMap_2D_proxy inValue
+void cPtr_overridingExtensionMethodForGeneration::setter_setMReceiverType (GALGAS_unifiedTypeMap_2D_entry inValue
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   mProperty_mReceiverType = inValue ;
 }
@@ -1676,7 +1676,7 @@ void cPtr_overridingExtensionMethodForGeneration::setter_setMSemanticInstruction
 
 cPtr_overridingExtensionMethodForGeneration::cPtr_overridingExtensionMethodForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                           const GALGAS_string & in_mImplementationCppFileName,
-                                                                                          const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
+                                                                                          const GALGAS_unifiedTypeMap_2D_entry & in_mReceiverType,
                                                                                           const GALGAS_string & in_mBaseTypeName,
                                                                                           const GALGAS_string & in_mExtensionMethodName,
                                                                                           const GALGAS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
@@ -2204,7 +2204,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
 GALGAS_overridingExtensionSetterForGeneration GALGAS_overridingExtensionSetterForGeneration::constructor_default (LOCATION_ARGS) {
   return GALGAS_overridingExtensionSetterForGeneration::constructor_new (GALGAS_bool::constructor_default (HERE),
                                                                          GALGAS_string::constructor_default (HERE),
-                                                                         GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                                                         GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE),
                                                                          GALGAS_string::constructor_default (HERE),
                                                                          GALGAS_string::constructor_default (HERE),
                                                                          GALGAS_formalParameterListForGeneration::constructor_emptyList (HERE),
@@ -2224,7 +2224,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 
 GALGAS_overridingExtensionSetterForGeneration GALGAS_overridingExtensionSetterForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                               const GALGAS_string & inAttribute_mImplementationCppFileName,
-                                                                                                              const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReceiverType,
+                                                                                                              const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mReceiverType,
                                                                                                               const GALGAS_string & inAttribute_mBaseTypeName,
                                                                                                               const GALGAS_string & inAttribute_mExtensionSetterName,
                                                                                                               const GALGAS_formalParameterListForGeneration & inAttribute_mExtensionSetterFormalParameterList,
@@ -2240,8 +2240,8 @@ GALGAS_overridingExtensionSetterForGeneration GALGAS_overridingExtensionSetterFo
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_overridingExtensionSetterForGeneration::getter_mReceiverType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMap_2D_proxy result ;
+GALGAS_unifiedTypeMap_2D_entry GALGAS_overridingExtensionSetterForGeneration::getter_mReceiverType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_entry result ;
   if (NULL != mObjectPtr) {
     const cPtr_overridingExtensionSetterForGeneration * p = (const cPtr_overridingExtensionSetterForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_overridingExtensionSetterForGeneration) ;
@@ -2252,7 +2252,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_overridingExtensionSetterForGeneration::ge
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy cPtr_overridingExtensionSetterForGeneration::getter_mReceiverType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry cPtr_overridingExtensionSetterForGeneration::getter_mReceiverType (UNUSED_LOCATION_ARGS) const {
   return mProperty_mReceiverType ;
 }
 
@@ -2348,7 +2348,7 @@ GALGAS_semanticInstructionListForGeneration cPtr_overridingExtensionSetterForGen
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_overridingExtensionSetterForGeneration::setter_setMReceiverType (GALGAS_unifiedTypeMap_2D_proxy inValue
+void GALGAS_overridingExtensionSetterForGeneration::setter_setMReceiverType (GALGAS_unifiedTypeMap_2D_entry inValue
                                                                              COMMA_LOCATION_ARGS) {
   if (NULL != mObjectPtr) {
     insulate (THERE) ;
@@ -2360,7 +2360,7 @@ void GALGAS_overridingExtensionSetterForGeneration::setter_setMReceiverType (GAL
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void cPtr_overridingExtensionSetterForGeneration::setter_setMReceiverType (GALGAS_unifiedTypeMap_2D_proxy inValue
+void cPtr_overridingExtensionSetterForGeneration::setter_setMReceiverType (GALGAS_unifiedTypeMap_2D_entry inValue
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   mProperty_mReceiverType = inValue ;
 }
@@ -2466,7 +2466,7 @@ void cPtr_overridingExtensionSetterForGeneration::setter_setMSemanticInstruction
 
 cPtr_overridingExtensionSetterForGeneration::cPtr_overridingExtensionSetterForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                           const GALGAS_string & in_mImplementationCppFileName,
-                                                                                          const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
+                                                                                          const GALGAS_unifiedTypeMap_2D_entry & in_mReceiverType,
                                                                                           const GALGAS_string & in_mBaseTypeName,
                                                                                           const GALGAS_string & in_mExtensionSetterName,
                                                                                           const GALGAS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
@@ -8080,30 +8080,30 @@ GALGAS_galgas_33_GrammarComponentAST GALGAS_galgas_33_GrammarComponentAST::extra
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension Getter '@unifiedTypeMap-proxy baseType'
+//Extension Getter '@unifiedTypeMap-entry baseType'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy extensionGetter_baseType (const GALGAS_unifiedTypeMap_2D_proxy & inObject,
+GALGAS_unifiedTypeMap_2D_entry extensionGetter_baseType (const GALGAS_unifiedTypeMap_2D_entry & inObject,
                                                          C_Compiler * inCompiler
                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMap_2D_proxy result_outBaseType ; // Returned variable
-  const GALGAS_unifiedTypeMap_2D_proxy temp_0 = inObject ;
+  GALGAS_unifiedTypeMap_2D_entry result_outBaseType ; // Returned variable
+  const GALGAS_unifiedTypeMap_2D_entry temp_0 = inObject ;
   result_outBaseType = temp_0 ;
   if (GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 380)).isValid ()) {
-    uint32_t variant_18376 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 380)).uintValue () ;
-    bool loop_18376 = true ;
-    while (loop_18376) {
-      loop_18376 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 380)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 380)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 380)).isValid () ;
-      if (loop_18376) {
-        loop_18376 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 380)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 380)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 380)).boolValue () ;
+    uint32_t variant_18395 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 380)).uintValue () ;
+    bool loop_18395 = true ;
+    while (loop_18395) {
+      loop_18395 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 380)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 380)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 380)).isValid () ;
+      if (loop_18395) {
+        loop_18395 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 380)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 380)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 380)).boolValue () ;
       }
-      if (loop_18376 && (0 == variant_18376)) {
-        loop_18376 = false ;
+      if (loop_18395 && (0 == variant_18395)) {
+        loop_18395 = false ;
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticsTypes.galgas", 380)) ;
       }
-      if (loop_18376) {
-        variant_18376 -- ;
+      if (loop_18395) {
+        variant_18395 -- ;
         result_outBaseType = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 381)) ;
       }
     }
@@ -8117,21 +8117,21 @@ GALGAS_unifiedTypeMap_2D_proxy extensionGetter_baseType (const GALGAS_unifiedTyp
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension method '@unifiedTypeMap-proxy addHeaderFileName'
+//Extension method '@unifiedTypeMap-entry addHeaderFileName'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void extensionMethod_addHeaderFileName (const GALGAS_unifiedTypeMap_2D_proxy inObject,
+void extensionMethod_addHeaderFileName (const GALGAS_unifiedTypeMap_2D_entry inObject,
                                         GALGAS_stringset & ioArgument_ioInclusions,
                                         C_Compiler * inCompiler
                                         COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
-    const GALGAS_unifiedTypeMap_2D_proxy temp_1 = inObject ;
-    const GALGAS_unifiedTypeMap_2D_proxy temp_2 = inObject ;
+    const GALGAS_unifiedTypeMap_2D_entry temp_1 = inObject ;
+    const GALGAS_unifiedTypeMap_2D_entry temp_2 = inObject ;
     test_0 = temp_1.getter_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 388)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 388)).operator_and (GALGAS_bool (kIsNotEqual, temp_2.getter_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 388)).objectCompare (GALGAS_headerKind::constructor_noHeader (SOURCE_FILE ("semanticsTypes.galgas", 388)))) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 388)).boolEnum () ;
     if (kBoolTrue == test_0) {
-      const GALGAS_unifiedTypeMap_2D_proxy temp_3 = inObject ;
+      const GALGAS_unifiedTypeMap_2D_entry temp_3 = inObject ;
       ioArgument_ioInclusions.addAssign_operation (temp_3.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 389))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 389)) ;
     }
   }
@@ -8140,20 +8140,20 @@ void extensionMethod_addHeaderFileName (const GALGAS_unifiedTypeMap_2D_proxy inO
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension method '@unifiedTypeMap-proxy addHeaderFileName1'
+//Extension method '@unifiedTypeMap-entry addHeaderFileName1'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void extensionMethod_addHeaderFileName_31_ (const GALGAS_unifiedTypeMap_2D_proxy inObject,
+void extensionMethod_addHeaderFileName_31_ (const GALGAS_unifiedTypeMap_2D_entry inObject,
                                             GALGAS_stringset & ioArgument_ioInclusions,
                                             C_Compiler * inCompiler
                                             COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
-    const GALGAS_unifiedTypeMap_2D_proxy temp_1 = inObject ;
+    const GALGAS_unifiedTypeMap_2D_entry temp_1 = inObject ;
     test_0 = temp_1.getter_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 396)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 396)).boolEnum () ;
     if (kBoolTrue == test_0) {
-      const GALGAS_unifiedTypeMap_2D_proxy temp_2 = inObject ;
+      const GALGAS_unifiedTypeMap_2D_entry temp_2 = inObject ;
       switch (temp_2.getter_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 397)).enumValue ()) {
       case GALGAS_headerKind::kNotBuilt:
         break ;
@@ -8163,13 +8163,13 @@ void extensionMethod_addHeaderFileName_31_ (const GALGAS_unifiedTypeMap_2D_proxy
         break ;
       case GALGAS_headerKind::kEnum_oneHeader:
         {
-          const GALGAS_unifiedTypeMap_2D_proxy temp_3 = inObject ;
+          const GALGAS_unifiedTypeMap_2D_entry temp_3 = inObject ;
           ioArgument_ioInclusions.addAssign_operation (temp_3.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 400))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 400)) ;
         }
         break ;
       case GALGAS_headerKind::kEnum_twoHeaders:
         {
-          const GALGAS_unifiedTypeMap_2D_proxy temp_4 = inObject ;
+          const GALGAS_unifiedTypeMap_2D_entry temp_4 = inObject ;
           ioArgument_ioInclusions.addAssign_operation (temp_4.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 402)).add_operation (GALGAS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 402))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 402)) ;
         }
         break ;
@@ -8216,8 +8216,8 @@ AC_GALGAS_class (inSourcePtr, true) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_actualParameterForGeneration::getter_mFormalArgumentType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMap_2D_proxy result ;
+GALGAS_unifiedTypeMap_2D_entry GALGAS_actualParameterForGeneration::getter_mFormalArgumentType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_entry result ;
   if (NULL != mObjectPtr) {
     const cPtr_actualParameterForGeneration * p = (const cPtr_actualParameterForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_actualParameterForGeneration) ;
@@ -8228,13 +8228,13 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_actualParameterForGeneration::getter_mForm
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy cPtr_actualParameterForGeneration::getter_mFormalArgumentType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry cPtr_actualParameterForGeneration::getter_mFormalArgumentType (UNUSED_LOCATION_ARGS) const {
   return mProperty_mFormalArgumentType ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_actualParameterForGeneration::setter_setMFormalArgumentType (GALGAS_unifiedTypeMap_2D_proxy inValue
+void GALGAS_actualParameterForGeneration::setter_setMFormalArgumentType (GALGAS_unifiedTypeMap_2D_entry inValue
                                                                          COMMA_LOCATION_ARGS) {
   if (NULL != mObjectPtr) {
     insulate (THERE) ;
@@ -8246,7 +8246,7 @@ void GALGAS_actualParameterForGeneration::setter_setMFormalArgumentType (GALGAS_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void cPtr_actualParameterForGeneration::setter_setMFormalArgumentType (GALGAS_unifiedTypeMap_2D_proxy inValue
+void cPtr_actualParameterForGeneration::setter_setMFormalArgumentType (GALGAS_unifiedTypeMap_2D_entry inValue
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   mProperty_mFormalArgumentType = inValue ;
 }
@@ -8255,7 +8255,7 @@ void cPtr_actualParameterForGeneration::setter_setMFormalArgumentType (GALGAS_un
 //Pointer class for @actualParameterForGeneration class
 //----------------------------------------------------------------------------------------------------------------------
 
-cPtr_actualParameterForGeneration::cPtr_actualParameterForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mFormalArgumentType
+cPtr_actualParameterForGeneration::cPtr_actualParameterForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mFormalArgumentType
                                                                       COMMA_LOCATION_ARGS) :
 acPtr_class (THERE),
 mProperty_mFormalArgumentType (in_mFormalArgumentType) {
@@ -8423,10 +8423,10 @@ GALGAS_actualParameterForGeneration () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputActualParameterForGeneration GALGAS_outputInputActualParameterForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_outputInputActualParameterForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+  return GALGAS_outputInputActualParameterForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE),
                                                                           GALGAS_string::constructor_default (HERE),
                                                                           GALGAS_lstringlist::constructor_emptyList (HERE),
-                                                                          GALGAS_unifiedTypeMapProxyList::constructor_emptyList (HERE)
+                                                                          GALGAS_unifiedTypeMapEntryList::constructor_emptyList (HERE)
                                                                           COMMA_THERE) ;
 }
 
@@ -8439,10 +8439,10 @@ GALGAS_actualParameterForGeneration (inSourcePtr) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_outputInputActualParameterForGeneration GALGAS_outputInputActualParameterForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mFormalArgumentType,
+GALGAS_outputInputActualParameterForGeneration GALGAS_outputInputActualParameterForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mFormalArgumentType,
                                                                                                                 const GALGAS_string & inAttribute_mOutputInputVariableCppName,
                                                                                                                 const GALGAS_lstringlist & inAttribute_mStructAttributeList,
-                                                                                                                const GALGAS_unifiedTypeMapProxyList & inAttribute_mTypeList
+                                                                                                                const GALGAS_unifiedTypeMapEntryList & inAttribute_mTypeList
                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_outputInputActualParameterForGeneration result ;
   if (inAttribute_mFormalArgumentType.isValid () && inAttribute_mOutputInputVariableCppName.isValid () && inAttribute_mStructAttributeList.isValid () && inAttribute_mTypeList.isValid ()) {
@@ -8489,8 +8489,8 @@ GALGAS_lstringlist cPtr_outputInputActualParameterForGeneration::getter_mStructA
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapProxyList GALGAS_outputInputActualParameterForGeneration::getter_mTypeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMapProxyList result ;
+GALGAS_unifiedTypeMapEntryList GALGAS_outputInputActualParameterForGeneration::getter_mTypeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMapEntryList result ;
   if (NULL != mObjectPtr) {
     const cPtr_outputInputActualParameterForGeneration * p = (const cPtr_outputInputActualParameterForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_outputInputActualParameterForGeneration) ;
@@ -8501,7 +8501,7 @@ GALGAS_unifiedTypeMapProxyList GALGAS_outputInputActualParameterForGeneration::g
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapProxyList cPtr_outputInputActualParameterForGeneration::getter_mTypeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMapEntryList cPtr_outputInputActualParameterForGeneration::getter_mTypeList (UNUSED_LOCATION_ARGS) const {
   return mProperty_mTypeList ;
 }
 
@@ -8545,7 +8545,7 @@ void cPtr_outputInputActualParameterForGeneration::setter_setMStructAttributeLis
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_outputInputActualParameterForGeneration::setter_setMTypeList (GALGAS_unifiedTypeMapProxyList inValue
+void GALGAS_outputInputActualParameterForGeneration::setter_setMTypeList (GALGAS_unifiedTypeMapEntryList inValue
                                                                           COMMA_LOCATION_ARGS) {
   if (NULL != mObjectPtr) {
     insulate (THERE) ;
@@ -8557,7 +8557,7 @@ void GALGAS_outputInputActualParameterForGeneration::setter_setMTypeList (GALGAS
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void cPtr_outputInputActualParameterForGeneration::setter_setMTypeList (GALGAS_unifiedTypeMapProxyList inValue
+void cPtr_outputInputActualParameterForGeneration::setter_setMTypeList (GALGAS_unifiedTypeMapEntryList inValue
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   mProperty_mTypeList = inValue ;
 }
@@ -8566,10 +8566,10 @@ void cPtr_outputInputActualParameterForGeneration::setter_setMTypeList (GALGAS_u
 //Pointer class for @outputInputActualParameterForGeneration class
 //----------------------------------------------------------------------------------------------------------------------
 
-cPtr_outputInputActualParameterForGeneration::cPtr_outputInputActualParameterForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mFormalArgumentType,
+cPtr_outputInputActualParameterForGeneration::cPtr_outputInputActualParameterForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mFormalArgumentType,
                                                                                             const GALGAS_string & in_mOutputInputVariableCppName,
                                                                                             const GALGAS_lstringlist & in_mStructAttributeList,
-                                                                                            const GALGAS_unifiedTypeMapProxyList & in_mTypeList
+                                                                                            const GALGAS_unifiedTypeMapEntryList & in_mTypeList
                                                                                             COMMA_LOCATION_ARGS) :
 cPtr_actualParameterForGeneration (in_mFormalArgumentType COMMA_THERE),
 mProperty_mOutputInputVariableCppName (in_mOutputInputVariableCppName),
@@ -8693,7 +8693,7 @@ GALGAS_actualParameterForGeneration () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualParameterForGeneration GALGAS_inputActualParameterForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_inputActualParameterForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+  return GALGAS_inputActualParameterForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE),
                                                                     GALGAS_string::constructor_default (HERE)
                                                                     COMMA_THERE) ;
 }
@@ -8707,7 +8707,7 @@ GALGAS_actualParameterForGeneration (inSourcePtr) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_inputActualParameterForGeneration GALGAS_inputActualParameterForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mFormalArgumentType,
+GALGAS_inputActualParameterForGeneration GALGAS_inputActualParameterForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mFormalArgumentType,
                                                                                                     const GALGAS_string & inAttribute_mInputActualCppName
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_inputActualParameterForGeneration result ;
@@ -8758,7 +8758,7 @@ void cPtr_inputActualParameterForGeneration::setter_setMInputActualCppName (GALG
 //Pointer class for @inputActualParameterForGeneration class
 //----------------------------------------------------------------------------------------------------------------------
 
-cPtr_inputActualParameterForGeneration::cPtr_inputActualParameterForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mFormalArgumentType,
+cPtr_inputActualParameterForGeneration::cPtr_inputActualParameterForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mFormalArgumentType,
                                                                                 const GALGAS_string & in_mInputActualCppName
                                                                                 COMMA_LOCATION_ARGS) :
 cPtr_actualParameterForGeneration (in_mFormalArgumentType COMMA_THERE),
@@ -8877,7 +8877,7 @@ GALGAS_actualParameterForGeneration () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_inputJokerParameterForGeneration GALGAS_inputJokerParameterForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_inputJokerParameterForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+  return GALGAS_inputJokerParameterForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE),
                                                                    GALGAS_string::constructor_default (HERE)
                                                                    COMMA_THERE) ;
 }
@@ -8891,7 +8891,7 @@ GALGAS_actualParameterForGeneration (inSourcePtr) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_inputJokerParameterForGeneration GALGAS_inputJokerParameterForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mFormalArgumentType,
+GALGAS_inputJokerParameterForGeneration GALGAS_inputJokerParameterForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mFormalArgumentType,
                                                                                                   const GALGAS_string & inAttribute_mInputActualCppName
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_inputJokerParameterForGeneration result ;
@@ -8942,7 +8942,7 @@ void cPtr_inputJokerParameterForGeneration::setter_setMInputActualCppName (GALGA
 //Pointer class for @inputJokerParameterForGeneration class
 //----------------------------------------------------------------------------------------------------------------------
 
-cPtr_inputJokerParameterForGeneration::cPtr_inputJokerParameterForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mFormalArgumentType,
+cPtr_inputJokerParameterForGeneration::cPtr_inputJokerParameterForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mFormalArgumentType,
                                                                               const GALGAS_string & in_mInputActualCppName
                                                                               COMMA_LOCATION_ARGS) :
 cPtr_actualParameterForGeneration (in_mFormalArgumentType COMMA_THERE),
@@ -10502,7 +10502,7 @@ GALGAS_functionPrototypeDeclarationForGeneration GALGAS_functionPrototypeDeclara
                                                                             GALGAS_string::constructor_default (HERE),
                                                                             GALGAS_string::constructor_default (HERE),
                                                                             GALGAS_formalInputParameterListForGeneration::constructor_emptyList (HERE),
-                                                                            GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE)
+                                                                            GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE)
                                                                             COMMA_THERE) ;
 }
 
@@ -10519,7 +10519,7 @@ GALGAS_functionPrototypeDeclarationForGeneration GALGAS_functionPrototypeDeclara
                                                                                                                     const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                                                     const GALGAS_string & inAttribute_mFunctionName,
                                                                                                                     const GALGAS_formalInputParameterListForGeneration & inAttribute_mFormalArgumentList,
-                                                                                                                    const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReturnType
+                                                                                                                    const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mReturnType
                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_functionPrototypeDeclarationForGeneration result ;
   if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mFunctionName.isValid () && inAttribute_mFormalArgumentList.isValid () && inAttribute_mReturnType.isValid ()) {
@@ -10566,8 +10566,8 @@ GALGAS_formalInputParameterListForGeneration cPtr_functionPrototypeDeclarationFo
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_functionPrototypeDeclarationForGeneration::getter_mReturnType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMap_2D_proxy result ;
+GALGAS_unifiedTypeMap_2D_entry GALGAS_functionPrototypeDeclarationForGeneration::getter_mReturnType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_entry result ;
   if (NULL != mObjectPtr) {
     const cPtr_functionPrototypeDeclarationForGeneration * p = (const cPtr_functionPrototypeDeclarationForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_functionPrototypeDeclarationForGeneration) ;
@@ -10578,7 +10578,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_functionPrototypeDeclarationForGeneration:
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy cPtr_functionPrototypeDeclarationForGeneration::getter_mReturnType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry cPtr_functionPrototypeDeclarationForGeneration::getter_mReturnType (UNUSED_LOCATION_ARGS) const {
   return mProperty_mReturnType ;
 }
 
@@ -10622,7 +10622,7 @@ void cPtr_functionPrototypeDeclarationForGeneration::setter_setMFormalArgumentLi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_functionPrototypeDeclarationForGeneration::setter_setMReturnType (GALGAS_unifiedTypeMap_2D_proxy inValue
+void GALGAS_functionPrototypeDeclarationForGeneration::setter_setMReturnType (GALGAS_unifiedTypeMap_2D_entry inValue
                                                                               COMMA_LOCATION_ARGS) {
   if (NULL != mObjectPtr) {
     insulate (THERE) ;
@@ -10634,7 +10634,7 @@ void GALGAS_functionPrototypeDeclarationForGeneration::setter_setMReturnType (GA
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void cPtr_functionPrototypeDeclarationForGeneration::setter_setMReturnType (GALGAS_unifiedTypeMap_2D_proxy inValue
+void cPtr_functionPrototypeDeclarationForGeneration::setter_setMReturnType (GALGAS_unifiedTypeMap_2D_entry inValue
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   mProperty_mReturnType = inValue ;
 }
@@ -10647,7 +10647,7 @@ cPtr_functionPrototypeDeclarationForGeneration::cPtr_functionPrototypeDeclaratio
                                                                                                 const GALGAS_string & in_mImplementationCppFileName,
                                                                                                 const GALGAS_string & in_mFunctionName,
                                                                                                 const GALGAS_formalInputParameterListForGeneration & in_mFormalArgumentList,
-                                                                                                const GALGAS_unifiedTypeMap_2D_proxy & in_mReturnType
+                                                                                                const GALGAS_unifiedTypeMap_2D_entry & in_mReturnType
                                                                                                 COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mProperty_mFunctionName (in_mFunctionName),
@@ -10792,7 +10792,7 @@ GALGAS_functionImplementationForGeneration GALGAS_functionImplementationForGener
                                                                       GALGAS_string::constructor_default (HERE),
                                                                       GALGAS_string::constructor_default (HERE),
                                                                       GALGAS_formalInputParameterListForGeneration::constructor_emptyList (HERE),
-                                                                      GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                                                      GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE),
                                                                       GALGAS_string::constructor_default (HERE),
                                                                       GALGAS_semanticInstructionListForGeneration::constructor_emptyList (HERE)
                                                                       COMMA_THERE) ;
@@ -10811,7 +10811,7 @@ GALGAS_functionImplementationForGeneration GALGAS_functionImplementationForGener
                                                                                                         const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                                         const GALGAS_string & inAttribute_mFunctionName,
                                                                                                         const GALGAS_formalInputParameterListForGeneration & inAttribute_mFormalArgumentList,
-                                                                                                        const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReturnType,
+                                                                                                        const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mReturnType,
                                                                                                         const GALGAS_string & inAttribute_mResultVariableCppName,
                                                                                                         const GALGAS_semanticInstructionListForGeneration & inAttribute_mFunctionInstructionList
                                                                                                         COMMA_LOCATION_ARGS) {
@@ -10904,7 +10904,7 @@ cPtr_functionImplementationForGeneration::cPtr_functionImplementationForGenerati
                                                                                     const GALGAS_string & in_mImplementationCppFileName,
                                                                                     const GALGAS_string & in_mFunctionName,
                                                                                     const GALGAS_formalInputParameterListForGeneration & in_mFormalArgumentList,
-                                                                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mReturnType,
+                                                                                    const GALGAS_unifiedTypeMap_2D_entry & in_mReturnType,
                                                                                     const GALGAS_string & in_mResultVariableCppName,
                                                                                     const GALGAS_semanticInstructionListForGeneration & in_mFunctionInstructionList
                                                                                     COMMA_LOCATION_ARGS) :
@@ -11050,7 +11050,7 @@ GALGAS_onceFunctionDeclarationForGeneration GALGAS_onceFunctionDeclarationForGen
   return GALGAS_onceFunctionDeclarationForGeneration::constructor_new (GALGAS_bool::constructor_default (HERE),
                                                                        GALGAS_string::constructor_default (HERE),
                                                                        GALGAS_string::constructor_default (HERE),
-                                                                       GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                                                       GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE),
                                                                        GALGAS_string::constructor_default (HERE),
                                                                        GALGAS_semanticInstructionListForGeneration::constructor_emptyList (HERE)
                                                                        COMMA_THERE) ;
@@ -11068,7 +11068,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 GALGAS_onceFunctionDeclarationForGeneration GALGAS_onceFunctionDeclarationForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                           const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                                           const GALGAS_string & inAttribute_mFunctionName,
-                                                                                                          const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReturnType,
+                                                                                                          const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mReturnType,
                                                                                                           const GALGAS_string & inAttribute_mResultVariableCppName,
                                                                                                           const GALGAS_semanticInstructionListForGeneration & inAttribute_mFunctionInstructionList
                                                                                                           COMMA_LOCATION_ARGS) {
@@ -11099,8 +11099,8 @@ GALGAS_string cPtr_onceFunctionDeclarationForGeneration::getter_mFunctionName (U
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_onceFunctionDeclarationForGeneration::getter_mReturnType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMap_2D_proxy result ;
+GALGAS_unifiedTypeMap_2D_entry GALGAS_onceFunctionDeclarationForGeneration::getter_mReturnType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_entry result ;
   if (NULL != mObjectPtr) {
     const cPtr_onceFunctionDeclarationForGeneration * p = (const cPtr_onceFunctionDeclarationForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_onceFunctionDeclarationForGeneration) ;
@@ -11111,7 +11111,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_onceFunctionDeclarationForGeneration::gett
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy cPtr_onceFunctionDeclarationForGeneration::getter_mReturnType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry cPtr_onceFunctionDeclarationForGeneration::getter_mReturnType (UNUSED_LOCATION_ARGS) const {
   return mProperty_mReturnType ;
 }
 
@@ -11172,7 +11172,7 @@ void cPtr_onceFunctionDeclarationForGeneration::setter_setMFunctionName (GALGAS_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_onceFunctionDeclarationForGeneration::setter_setMReturnType (GALGAS_unifiedTypeMap_2D_proxy inValue
+void GALGAS_onceFunctionDeclarationForGeneration::setter_setMReturnType (GALGAS_unifiedTypeMap_2D_entry inValue
                                                                          COMMA_LOCATION_ARGS) {
   if (NULL != mObjectPtr) {
     insulate (THERE) ;
@@ -11184,7 +11184,7 @@ void GALGAS_onceFunctionDeclarationForGeneration::setter_setMReturnType (GALGAS_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void cPtr_onceFunctionDeclarationForGeneration::setter_setMReturnType (GALGAS_unifiedTypeMap_2D_proxy inValue
+void cPtr_onceFunctionDeclarationForGeneration::setter_setMReturnType (GALGAS_unifiedTypeMap_2D_entry inValue
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   mProperty_mReturnType = inValue ;
 }
@@ -11234,7 +11234,7 @@ void cPtr_onceFunctionDeclarationForGeneration::setter_setMFunctionInstructionLi
 cPtr_onceFunctionDeclarationForGeneration::cPtr_onceFunctionDeclarationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                       const GALGAS_string & in_mImplementationCppFileName,
                                                                                       const GALGAS_string & in_mFunctionName,
-                                                                                      const GALGAS_unifiedTypeMap_2D_proxy & in_mReturnType,
+                                                                                      const GALGAS_unifiedTypeMap_2D_entry & in_mReturnType,
                                                                                       const GALGAS_string & in_mResultVariableCppName,
                                                                                       const GALGAS_semanticInstructionListForGeneration & in_mFunctionInstructionList
                                                                                       COMMA_LOCATION_ARGS) :
@@ -11329,7 +11329,7 @@ typeComparisonResult cPtr_primitiveTypeForGeneration::dynamicObjectCompare (cons
   const cPtr_primitiveTypeForGeneration * p = (const cPtr_primitiveTypeForGeneration *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_primitiveTypeForGeneration) ;
   if (kOperandEqual == result) {
-    result = mProperty_mTypeProxy.objectCompare (p->mProperty_mTypeProxy) ;
+    result = mProperty_mSelfTypeEntry.objectCompare (p->mProperty_mSelfTypeEntry) ;
   }
   if (kOperandEqual == result) {
     result = mProperty_mPredefinedTypeName.objectCompare (p->mProperty_mPredefinedTypeName) ;
@@ -11374,13 +11374,13 @@ GALGAS_semanticTypeForGeneration (inSourcePtr) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_primitiveTypeForGeneration GALGAS_primitiveTypeForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mTypeProxy,
+GALGAS_primitiveTypeForGeneration GALGAS_primitiveTypeForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mSelfTypeEntry,
                                                                                       const GALGAS_string & inAttribute_mPredefinedTypeName,
                                                                                       const GALGAS_predefinedTypeKindEnum & inAttribute_mKind
                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_primitiveTypeForGeneration result ;
-  if (inAttribute_mTypeProxy.isValid () && inAttribute_mPredefinedTypeName.isValid () && inAttribute_mKind.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_primitiveTypeForGeneration (inAttribute_mTypeProxy, inAttribute_mPredefinedTypeName, inAttribute_mKind COMMA_THERE)) ;
+  if (inAttribute_mSelfTypeEntry.isValid () && inAttribute_mPredefinedTypeName.isValid () && inAttribute_mKind.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_primitiveTypeForGeneration (inAttribute_mSelfTypeEntry, inAttribute_mPredefinedTypeName, inAttribute_mKind COMMA_THERE)) ;
   }
   return result ;
 }
@@ -11463,11 +11463,11 @@ void cPtr_primitiveTypeForGeneration::setter_setMKind (GALGAS_predefinedTypeKind
 //Pointer class for @primitiveTypeForGeneration class
 //----------------------------------------------------------------------------------------------------------------------
 
-cPtr_primitiveTypeForGeneration::cPtr_primitiveTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
+cPtr_primitiveTypeForGeneration::cPtr_primitiveTypeForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
                                                                   const GALGAS_string & in_mPredefinedTypeName,
                                                                   const GALGAS_predefinedTypeKindEnum & in_mKind
                                                                   COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (in_mTypeProxy COMMA_THERE),
+cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
 mProperty_mPredefinedTypeName (in_mPredefinedTypeName),
 mProperty_mKind (in_mKind) {
 }
@@ -11481,7 +11481,7 @@ const C_galgas_type_descriptor * cPtr_primitiveTypeForGeneration::classDescripto
 void cPtr_primitiveTypeForGeneration::description (C_String & ioString,
                                                    const int32_t inIndentation) const {
   ioString << "[@primitiveTypeForGeneration:" ;
-  mProperty_mTypeProxy.description (ioString, inIndentation+1) ;
+  mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -11493,7 +11493,7 @@ void cPtr_primitiveTypeForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_primitiveTypeForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_primitiveTypeForGeneration (mProperty_mTypeProxy, mProperty_mPredefinedTypeName, mProperty_mKind COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_primitiveTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mPredefinedTypeName, mProperty_mKind COMMA_THERE)) ;
   return ptr ;
 }
 

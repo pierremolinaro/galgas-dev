@@ -20,7 +20,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 shared map @variableMap {
-  @unifiedTypeMap-proxy mTypeProxy
+  @unifiedTypeMap-entry mType
   @string mCppName
   @string mNameForCheckingFormalParameterUsing
 
@@ -433,11 +433,11 @@ shared map @variableMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkAssignmentTypes
-  ?let @unifiedTypeMap-proxy inTargetType
-  ?let @unifiedTypeMap-proxy inSourceType
+  ?let @unifiedTypeMap-entry inTargetType
+  ?let @unifiedTypeMap-entry inSourceType
   ?let @location inErrorLocation
 {
-  @unifiedTypeMap-proxy sourceType = inSourceType
+  @unifiedTypeMap-entry sourceType = inSourceType
   @bool ok = inTargetType == inSourceType
   loop (@uint.max) while (not ok) & (not [[sourceType mSuperType] isNull]) do
     sourceType = [sourceType mSuperType]
@@ -452,12 +452,12 @@ proc checkAssignmentTypes
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkAssignmentTypeWithImplicitGetterCall
-  ?let @unifiedTypeMap-proxy inTargetType
-  ?let @unifiedTypeMap-proxy inSourceType
+  ?let @unifiedTypeMap-entry inTargetType
+  ?let @unifiedTypeMap-entry inSourceType
   ?let @location inErrorLocation
   ?!@semanticExpressionForGeneration ioRightExpression
 {
-  @unifiedTypeMap-proxy sourceType = inSourceType
+  @unifiedTypeMap-entry sourceType = inSourceType
   @bool ok = inTargetType == inSourceType
   loop (@uint.max) while (not ok) & (not [[sourceType mSuperType] isNull]) do
     sourceType = [sourceType mSuperType]
@@ -503,8 +503,8 @@ proc checkAssignmentTypeWithImplicitGetterCall
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkDiadicOperator
-  ?let @unifiedTypeMap-proxy inLeftType
-  ?let @unifiedTypeMap-proxy inRightType
+  ?let @unifiedTypeMap-entry inLeftType
+  ?let @unifiedTypeMap-entry inRightType
   ?let @bool inOperandIsHandled
   ?let @string inOperatorNameForErrorMessage
   ?let @location inErrorLocation
@@ -515,7 +515,7 @@ proc checkDiadicOperator
     : "left operand type is '@" + [inLeftType key] + "' and does not accept '" + inOperatorNameForErrorMessage 
       + "' operator (right operand type is '@" + [inRightType key] + ")"
   else
-    @unifiedTypeMap-proxy rightType = inRightType
+    @unifiedTypeMap-entry rightType = inRightType
     @bool ok = inLeftType == rightType
     loop (@uint.max) while (not ok) & (not [[rightType mSuperType] isNull]) do
       rightType = [rightType mSuperType]
@@ -524,7 +524,7 @@ proc checkDiadicOperator
   #--- Check if there is a conversion getter
     if (not ok) && [[inRightType mGetterMap] hasKey ![inLeftType key]] then
       @bool hasCompilerArgument
-      @unifiedTypeMap-proxy returnedType
+      @unifiedTypeMap-entry returnedType
       @methodKind kind
       [[inRightType mGetterMap] searchKey
         ![inLeftType lkey]
@@ -566,28 +566,28 @@ proc checkDiadicOperator
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @predefinedTypes {
-  @unifiedTypeMap-proxy mLocationType
-  @unifiedTypeMap-proxy mBoolType
-  @unifiedTypeMap-proxy mCharType
-  @unifiedTypeMap-proxy mStringType
-  @unifiedTypeMap-proxy mUIntType
-  @unifiedTypeMap-proxy mSIntType
-  @unifiedTypeMap-proxy mUInt64Type
-  @unifiedTypeMap-proxy mSInt64Type
-  @unifiedTypeMap-proxy mDoubleType
-  @unifiedTypeMap-proxy mLBoolType
-  @unifiedTypeMap-proxy mLCharType
-  @unifiedTypeMap-proxy mLStringType
-  @unifiedTypeMap-proxy mLUIntType
-  @unifiedTypeMap-proxy mLSIntType
-  @unifiedTypeMap-proxy mLUInt64Type
-  @unifiedTypeMap-proxy mLSInt64Type
-  @unifiedTypeMap-proxy mLDoubleType
-  @unifiedTypeMap-proxy mStringListType
-  @unifiedTypeMap-proxy mLBigIntType
-  @unifiedTypeMap-proxy mBigIntType
-  @unifiedTypeMap-proxy mStringSetType
-  @unifiedTypeMap-proxy mLStringListType
+  @unifiedTypeMap-entry mLocationType
+  @unifiedTypeMap-entry mBoolType
+  @unifiedTypeMap-entry mCharType
+  @unifiedTypeMap-entry mStringType
+  @unifiedTypeMap-entry mUIntType
+  @unifiedTypeMap-entry mSIntType
+  @unifiedTypeMap-entry mUInt64Type
+  @unifiedTypeMap-entry mSInt64Type
+  @unifiedTypeMap-entry mDoubleType
+  @unifiedTypeMap-entry mLBoolType
+  @unifiedTypeMap-entry mLCharType
+  @unifiedTypeMap-entry mLStringType
+  @unifiedTypeMap-entry mLUIntType
+  @unifiedTypeMap-entry mLSIntType
+  @unifiedTypeMap-entry mLUInt64Type
+  @unifiedTypeMap-entry mLSInt64Type
+  @unifiedTypeMap-entry mLDoubleType
+  @unifiedTypeMap-entry mStringListType
+  @unifiedTypeMap-entry mLBigIntType
+  @unifiedTypeMap-entry mBigIntType
+  @unifiedTypeMap-entry mStringSetType
+  @unifiedTypeMap-entry mLStringListType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -599,9 +599,9 @@ struct @predefinedTypes {
 struct @analysisContext {
   @semanticContext mSemanticContext
   @predefinedTypes mPredefinedTypes
-  @unifiedTypeMap-proxy mSelfCopyTypeProxy # isNull if outside a extension
+  @unifiedTypeMap-entry mSelfCopyTypeEntry # isNull if outside a extension
   @string mSelfObjectCppName
-  @unifiedTypeMap-proxy mSelfTypeProxy # isNull if outside a setter extension
+  @unifiedTypeMap-entry mSelfTypeEntry # isNull if outside a setter extension
   @string mSelfObjectCppPrefixForAccessingProperty # i.e. "ioObject->", ...
 }
 
@@ -614,7 +614,7 @@ struct @analysisContext {
 abstract method @semanticExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy inType
+  ?let @unifiedTypeMap-entry inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression

@@ -221,7 +221,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   [self.mReceiverExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration receiverExpression
@@ -242,7 +242,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   [self.mKeyExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration keyExpression
@@ -259,14 +259,14 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   var localConstantList =@localConstantList {}
   for () in [receiverType mCurrentTypedAttributeList] do
     localConstantList +=
-      !mPropertyTypeProxy
+      !mPropertyTypeEntry
       !@lstring.new {!self.mPrefix.string + mPropertyName !self.mEndOfReceiverExpression}
       !true # Do not warn if unused
       !objectArrayCppName + "->mProperty_" + [mPropertyName identifierRepresentation]
   end
 #--- Add lkey as @lstring constant
   localConstantList +=
-    !@unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !["lstring" nowhere]}
+    !@unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !["lstring" nowhere]}
     !@lstring.new {!self.mPrefix.string + "lkey" !self.mEndOfReceiverExpression}
     !true # Do not warn if unused
     !objectArrayCppName + "->mPropertylkey"
@@ -318,7 +318,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   [self.mKeyExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration keyExpression
@@ -334,18 +334,18 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
 #--- Object Array cpp name
   let objectArrayCppName = "objectArray_" + [self.mInstructionLocation locationIndex]
 #--- Read/write access to receiver variable
-  var @unifiedTypeMap-proxy targetType
+  var @unifiedTypeMap-entry targetType
   var @string receiverVariableCppName
 #  var @string nameForCheckingFormalParameterUsing
   if self.mReceiverIsPrefixedBySelf then
-    if [inAnalysisContext.mSelfCopyTypeProxy isNull] then
+    if [inAnalysisContext.mSelfCopyTypeEntry isNull] then
       error self.mReceiverName: "'self' cannot be used in this context"
       : targetType, receiverVariableCppName
-    elsif [inAnalysisContext.mSelfTypeProxy isNull] then
+    elsif [inAnalysisContext.mSelfTypeEntry isNull] then
       error self.mReceiverName: "'self' object is not mutable"
       : targetType, receiverVariableCppName
     else
-      let propertyMap = [inAnalysisContext.mSelfTypeProxy mPropertyMap]
+      let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?targetType]
 #      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       receiverVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
@@ -361,7 +361,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   end
 #  [!?ioVariableMap searchForReadWriteAccess
 #    !self.mReceiverName
-#    ?var @unifiedTypeMap-proxy targetType
+#    ?var @unifiedTypeMap-entry targetType
 #    ?let @string receiverVariableCppName
 #    ?*
 #  ]
@@ -392,12 +392,12 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   @localInitializedVariableList localInitializedVariableList = {}
   for () in [targetType mCurrentTypedAttributeList] do
     localInitializedVariableList +=
-      !mPropertyTypeProxy
+      !mPropertyTypeEntry
       !@lstring.new {!self.mPrefix.string + mPropertyName !self.mEndOfReceiverExpression}
       !objectArrayCppName + "->mProperty_" + [mPropertyName identifierRepresentation]
   end
   let localConstantList = @localConstantList {
-    !@unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !["lstring" nowhere]}
+    !@unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !["lstring" nowhere]}
     !@lstring.new {!self.mPrefix.string + "lkey" !self.mEndOfReceiverExpression}
     !true # Do not warn if unused
     !objectArrayCppName + "->mProperty_lkey"
@@ -459,7 +459,7 @@ shared class @readOnlyWithInstructionForGeneration : @semanticInstructionForGene
 shared class @readWriteWithInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @string mReceiverVariableCppName
-  @unifiedTypeMap-proxy mReceiverType
+  @unifiedTypeMap-entry mReceiverType
   @lstringlist mStructAttributeList
   @string mObjectArrayCppName
   @semanticExpressionForGeneration mKeyExpression

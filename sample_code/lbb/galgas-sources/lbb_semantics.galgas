@@ -29,7 +29,7 @@ map @boxTypeMap {
 }
 
 map @connectionMap {
-  @boxInstanceMap-proxy mBoxProxy
+  @boxInstanceMap-entry mBoxEntry
   @lstring mOppositePortName
   insert insertKey error message "the '%K' connection is already declared"
   search searchKey error message "the '%K' connection is not declared"

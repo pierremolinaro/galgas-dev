@@ -99,7 +99,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST enterInstru
   ?!@unifiedTypeMap ioTypeMap
 {
   if self.mOptionalTypeName.string != "" then
-    [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !self.mOptionalTypeName ?*]
+    [@unifiedTypeMap-entry makeEntry !?ioTypeMap !self.mOptionalTypeName ?*]
   end
   [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
@@ -115,7 +115,7 @@ override method @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 {
-  let targetType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mConstantTypeName}
+  let targetType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mConstantTypeName}
   let targetVariableCppName = "var_" + [self.mConstantName identifierRepresentation] + "_" + [self.mConstantName.location locationIndex]
   [!?ioVariableMap insertUndefinedLocalConstant
     !self.mConstantName
@@ -142,7 +142,7 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
   [self.mSourceExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?var @semanticExpressionForGeneration expression
@@ -167,7 +167,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 {
-  let targetType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mOptionalTypeName}
+  let targetType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mOptionalTypeName}
 #--- Analyze source expression
   [self.mSourceExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
@@ -200,14 +200,14 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 shared class @undefinedLocalConstantDeclarationForGeneration : @semanticInstructionForGeneration {
-  @unifiedTypeMap-proxy mTargetType
+  @unifiedTypeMap-entry mTargetType
   @string mCppVariableName
 }
 
 #······················································································································*
 
 shared class @localVariableOrConstantDeclarationWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
-  @unifiedTypeMap-proxy mTargetType
+  @unifiedTypeMap-entry mTargetType
   @bool mIsConstant
   @string mCppVariableName
   @semanticExpressionForGeneration mSourceExpression

@@ -116,17 +116,17 @@ override method @enumDeclarationAST enterInSemanticContext
   @classMethodMap classMethodMap = {}
   @optionalMethodMap optionalMethodMap = {}
 #--- currentType type index
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !self.mEnumTypeName ?let enumTypeProxy]
+  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mEnumTypeName ?let enumTypeEntry]
 #--- Constructors
   @constantIndexMap constantMap = {}
   @bool hasAssociatedValues = false
   for () in self.mConstantList do
-    @unifiedTypeMapProxyList associatedTypeList = {}
+    @unifiedTypeMapEntryList associatedTypeList = {}
     @functionSignature argumentTypeList = {}
     for (typeName selectorName) in mAssociatedValueDefinitionList do
-      [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !typeName ?let associatedTypeProxy]
-      argumentTypeList += !selectorName !associatedTypeProxy !typeName.string
-      associatedTypeList += !associatedTypeProxy
+      [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !typeName ?let associatedTypeEntry]
+      argumentTypeList += !selectorName !associatedTypeEntry !typeName.string
+      associatedTypeList += !associatedTypeEntry
       hasAssociatedValues = true
     end
     [!?constantMap insertKey !mConstantName ![constantMap count] !associatedTypeList]
@@ -134,40 +134,30 @@ override method @enumDeclarationAST enterInSemanticContext
       !mConstantName
       !argumentTypeList
       !false
-      !enumTypeProxy
+      !enumTypeEntry
     ]
   end
 #--- Methods
   for () in self.mConstantList do
-#    if [mAssociatedValueDefinitionList length] > 0 then
-#      @unifiedTypeMapProxyList associatedTypeList = {}
-      @optionalMethodSignature argumentTypeList = {}
-      for (typeName selectorName) in mAssociatedValueDefinitionList do
-        [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !typeName ?let associatedTypeProxy]
-        argumentTypeList += !false !selectorName !associatedTypeProxy !typeName.string
-#        associatedTypeList += !associatedTypeProxy
-#        hasAssociatedValues = true
-      end
-      [!?optionalMethodMap insertKey
-        !mConstantName
-#        !.definedAsMember
-        !argumentTypeList
-#        !mConstantName.location
-#        !true
-#        !.isBasicFinal
-#        !""
-      ]
-#    end
+    @optionalMethodSignature argumentTypeList = {}
+    for (typeName selectorName) in mAssociatedValueDefinitionList do
+      [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !typeName ?let associatedTypeEntry]
+      argumentTypeList += !false !selectorName !associatedTypeEntry !typeName.string
+    end
+    [!?optionalMethodMap insertKey
+      !mConstantName
+      !argumentTypeList
+    ]
   end
 #--- Optional methods
   for () in self.mConstantList do
     if [mAssociatedValueDefinitionList length] > 0 then
-      @unifiedTypeMapProxyList associatedTypeList = {}
+      @unifiedTypeMapEntryList associatedTypeList = {}
       @formalParameterSignature argumentTypeList = {}
       for (typeName selectorName) in mAssociatedValueDefinitionList do
-        [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !typeName ?let associatedTypeProxy]
-        argumentTypeList += !selectorName !associatedTypeProxy !.argumentOut !typeName.string
-        associatedTypeList += !associatedTypeProxy
+        [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !typeName ?let associatedTypeEntry]
+        argumentTypeList += !selectorName !associatedTypeEntry !.argumentOut !typeName.string
+        associatedTypeList += !associatedTypeEntry
         hasAssociatedValues = true
       end
       [!?instanceMethodMap insertKey
@@ -218,7 +208,7 @@ override method @enumDeclarationAST enterInSemanticContext
     !self.mEnumTypeName
     !self.mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !@typeKindEnum.enumType
     !false # Does not support collection value
     !{}
@@ -238,7 +228,7 @@ override method @enumDeclarationAST enterInSemanticContext
     !{}
     !{}
     !false # Do not generate header in separate file
-    !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction
+    !@unifiedTypeMap-entry.null # Type for enumerated element for "for" instruction
     !defaultConstructorName
     !"enum-" + [self.mEnumTypeName fileNameRepresentation]
     !if hasAssociatedValues then @headerKind.twoHeaders else @headerKind.oneHeader end
@@ -266,13 +256,13 @@ override method @enumDeclarationAST semanticAnalysis
   var constantMap =@constantIndexMap.emptyMap{}
   for () in self.mConstantList do
     constantList += !mConstantName.string
-    @unifiedTypeMapProxyList associatedTypeList = {}
+    @unifiedTypeMapEntryList associatedTypeList = {}
     @stringset associatedValueNameSet = {}
     for () in mAssociatedValueDefinitionList do
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mValue0)
       [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-      let associatedTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mValue0}
-      associatedTypeList += !associatedTypeProxy
+      let associatedTypeEntry = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mValue0}
+      associatedTypeList += !associatedTypeEntry
       if [associatedValueNameSet hasKey !mValue1.string] then
         error mValue1 : "duplicated name"
       end
@@ -282,7 +272,7 @@ override method @enumDeclarationAST semanticAnalysis
     enumConstantListForGeneration += !mConstantName.string !associatedTypeList
   end
 #---
-  let selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mEnumTypeName}
+  let selfType = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mEnumTypeName}
   ioSemanticDeclarationListForGeneration +=
     !"enum " + self.mEnumTypeName
     !@enumTypeForGeneration.new {
@@ -297,7 +287,7 @@ override method @enumDeclarationAST semanticAnalysis
 
 list @enumConstantListForGeneration {
   @string mConstantName
-  @unifiedTypeMapProxyList mAssociatedValueTypeList
+  @unifiedTypeMapEntryList mAssociatedValueTypeList
 }
 
 #·······················································································································
@@ -342,25 +332,25 @@ override method @enumTypeForGeneration appendDeclaration1
     hasAssociatedValues = [mAssociatedValueTypeList length] > 0
   end
   outHeader = [filewrapper enumGenerationTemplate.enumTypeHeader1
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mConstantList
     !hasAssociatedValues
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
-    ![self.mTypeProxy mIsConcrete]
-    ![self.mTypeProxy mConstructorMap]
-    ![self.mTypeProxy mGetterMap]
-    ![self.mTypeProxy mSetterMap]
-    ![self.mTypeProxy mInstanceMethodMap]
-    ![self.mTypeProxy mClassMethodMap]
-    ![self.mTypeProxy mOptionalMethodMap]
-    ![self.mTypeProxy mEnumerationDescriptor]
-    ![self.mTypeProxy mHandledOperatorFlags]
-    ![self.mTypeProxy mAddAssignOperatorArguments]
-    ![self.mTypeProxy mTypeForEnumeratedElement]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
+    ![self.mSelfTypeEntry  mIsConcrete]
+    ![self.mSelfTypeEntry  mConstructorMap]
+    ![self.mSelfTypeEntry  mGetterMap]
+    ![self.mSelfTypeEntry  mSetterMap]
+    ![self.mSelfTypeEntry  mInstanceMethodMap]
+    ![self.mSelfTypeEntry  mClassMethodMap]
+    ![self.mSelfTypeEntry  mOptionalMethodMap]
+    ![self.mSelfTypeEntry  mEnumerationDescriptor]
+    ![self.mSelfTypeEntry  mHandledOperatorFlags]
+    ![self.mSelfTypeEntry  mAddAssignOperatorArguments]
+    ![self.mSelfTypeEntry  mTypeForEnumeratedElement]
   ]
  }
 
@@ -381,8 +371,8 @@ override method @enumTypeForGeneration appendDeclaration2
     end
   end
   outHeader = [filewrapper enumGenerationTemplate.enumTypeHeader2
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mConstantList
     !hasAssociatedValues
   ]
@@ -399,10 +389,10 @@ override method @enumTypeForGeneration appendSpecificImplementation
   for () in self.mConstantList while not hasAssociatedValues do
     hasAssociatedValues = [mAssociatedValueTypeList length] > 0
   end
-  [self.mTypeProxy addHeaderFileName !?ioInclusionSet]
+  [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper enumGenerationTemplate.enumTypeSpecificImplementation
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mConstantList
     !hasAssociatedValues
   ]

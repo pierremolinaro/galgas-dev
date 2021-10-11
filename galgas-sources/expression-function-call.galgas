@@ -47,7 +47,7 @@ override method @functionCallExpressionAST enterExpressionInSemanticContext
 override method @functionCallExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy unused inType
+  ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -58,7 +58,7 @@ override method @functionCallExpressionAST analyzeSemanticExpression
   [inAnalysisContext.mSemanticContext.mFunctionMap searchKey
     !self.mFunctionName
     ?let @functionSignature functionSignature
-    ?let @unifiedTypeMap-proxy resultType
+    ?let @unifiedTypeMap-entry resultType
     ?let @bool isInternal
   ]
 #--- Check internal

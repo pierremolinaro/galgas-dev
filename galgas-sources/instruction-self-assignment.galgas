@@ -55,24 +55,24 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
   [self.mSourceExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inAnalysisContext.mSelfTypeProxy
+    !inAnalysisContext.mSelfTypeEntry
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
   ]
 #--- Analyze "self", as receiver expression
-  if [inAnalysisContext.mSelfCopyTypeProxy isNull] then
+  if [inAnalysisContext.mSelfCopyTypeEntry isNull] then
     error self.mInstructionLocation: "'self' cannot be used in this context"
-  elsif [inAnalysisContext.mSelfTypeProxy isNull] then
+  elsif [inAnalysisContext.mSelfTypeEntry isNull] then
     error self.mInstructionLocation: "'self' object is not mutable"
-  elsif [[inAnalysisContext.mSelfTypeProxy mTypeKindEnum] isClassType] then
+  elsif [[inAnalysisContext.mSelfTypeEntry mTypeKindEnum] isClassType] then
     error self.mInstructionLocation: "'self' assignment is not allowed for class instances"
   end
 #--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!inAnalysisContext.mSelfTypeProxy ![expression mResultType] !self.mInstructionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (!inAnalysisContext.mSelfTypeEntry ![expression mResultType] !self.mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
-    !inAnalysisContext.mSelfTypeProxy
+    !inAnalysisContext.mSelfTypeEntry
     !inAnalysisContext.mSelfObjectCppName
     !inAnalysisContext.mSelfObjectCppName
     !["" nowhere]

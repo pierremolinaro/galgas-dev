@@ -73,7 +73,7 @@ syntax extension galgas3ExpressionSyntax {
 override method @constructorExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [@unifiedTypeMap-proxy makeOptionalProxy !?ioTypeMap !self.mTypeName ?*]
+  [@unifiedTypeMap-entry makeOptionalEntry !?ioTypeMap !self.mTypeName ?*]
   [self.mExpressions enterInSemanticContext !?ioTypeMap]
 }
 
@@ -82,20 +82,20 @@ override method @constructorExpressionAST enterExpressionInSemanticContext
 private proc analyzeConstructorInvocation
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy inType
+  ?let @unifiedTypeMap-entry inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   ?let @lstring inTypeName
   ?let @lstring inConstructorName
   ?let @actualOutputExpressionList inConstuctorEffectiveParameterExpressions
-  !@unifiedTypeMap-proxy outReturnedType
-  !@unifiedTypeMap-proxy outConstructorType
+  !@unifiedTypeMap-entry outReturnedType
+  !@unifiedTypeMap-entry outConstructorType
   !@semanticExpressionListForGeneration outConstructorEffectiveParameterList
   !@bool outHasCompilerArgument
 {
   outConstructorType = inType
   if inTypeName.string != "" then
-    outConstructorType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !inTypeName}
+    outConstructorType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !inTypeName}
   end
   if [outConstructorType isNull] then
     error inTypeName
@@ -154,7 +154,7 @@ private proc analyzeConstructorInvocation
 override method @constructorExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy inType
+  ?let @unifiedTypeMap-entry inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -168,8 +168,8 @@ override method @constructorExpressionAST analyzeSemanticExpression
     !self.mTypeName
     !self.mConstructorName
     !self.mExpressions
-    ?let @unifiedTypeMap-proxy returnedType
-    ?let @unifiedTypeMap-proxy constructorType
+    ?let @unifiedTypeMap-entry returnedType
+    ?let @unifiedTypeMap-entry constructorType
     ?let @semanticExpressionListForGeneration constructorEffectiveParameterList
     ?let @bool hasCompilerArgument
   )
@@ -194,7 +194,7 @@ override method @defaultConstructorExpressionAST enterExpressionInSemanticContex
   ?!@unifiedTypeMap ioTypeMap
 {
   if self.mTypeName.string != "" then
-    [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !self.mTypeName ?*]
+    [@unifiedTypeMap-entry makeEntry !?ioTypeMap !self.mTypeName ?*]
   end
 }
 
@@ -203,14 +203,14 @@ override method @defaultConstructorExpressionAST enterExpressionInSemanticContex
 override method @defaultConstructorExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy inType
+  ?let @unifiedTypeMap-entry inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   var type = inType
   if self.mTypeName.string != "" then
-    type = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
+    type = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
   end
   if [type isNull] then
     error self.mTypeName : "cannot infer type" : outExpression
@@ -237,7 +237,7 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 shared class @constructorExpressionForGeneration : @semanticExpressionForGeneration {
-  @unifiedTypeMap-proxy mConstructorType
+  @unifiedTypeMap-entry mConstructorType
   @string mConstructorName
   @semanticExpressionListForGeneration mEffectiveParameterList
   @bool mHasCompilerArgument

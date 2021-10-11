@@ -75,35 +75,35 @@ override method @graphDeclarationAST enterInSemanticContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
-#--- string type proxy
-  [@unifiedTypeMap-proxy makeProxyFromString
+#--- string type Entry
+  [@unifiedTypeMap-entry makeEntryFromString
     !?ioSemanticContext.mTypeMap
     !"string"
-    ?let @unifiedTypeMap-proxy stringTypeProxy
+    ?let @unifiedTypeMap-entry stringTypeEntry
   ]
-#--- lstring type proxy
-  [@unifiedTypeMap-proxy makeProxyFromString
+#--- lstring type Entry
+  [@unifiedTypeMap-entry makeEntryFromString
     !?ioSemanticContext.mTypeMap
     !"lstring"
-    ?let @unifiedTypeMap-proxy lstringTypeProxy
+    ?let @unifiedTypeMap-entry lstringTypeEntry
   ]
-#--- Graph type proxy
-  [@unifiedTypeMap-proxy makeProxy
+#--- Graph type Entry
+  [@unifiedTypeMap-entry makeEntry
     !?ioSemanticContext.mTypeMap
     !self.mGraphTypeName
-    ?let @unifiedTypeMap-proxy graphTypeProxy
+    ?let @unifiedTypeMap-entry graphTypeEntry
   ]
-#--- Associated list type proxy
-  [@unifiedTypeMap-proxy makeProxy
+#--- Associated list type Entry
+  [@unifiedTypeMap-entry makeEntry
     !?ioSemanticContext.mTypeMap
     !self.mAssociatedListTypeName
-    ?let @unifiedTypeMap-proxy associatedListTypeProxy
+    ?let @unifiedTypeMap-entry associatedListTypeEntry
   ]
-#--- @lstringlist type proxy
-  [@unifiedTypeMap-proxy makeProxyFromString
+#--- @lstringlist type Entry
+  [@unifiedTypeMap-entry makeEntryFromString
     !?ioSemanticContext.mTypeMap
     !"lstringlist"
-    ?let @unifiedTypeMap-proxy lstringListTypeProxy
+    ?let @unifiedTypeMap-entry lstringListTypeEntry
   ]
 #---
   commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
@@ -115,22 +115,22 @@ override method @graphDeclarationAST enterInSemanticContext
   var formalParameterList = @formalParameterSignature {}
   formalParameterList += 
     !["" nowhere]
-    !associatedListTypeProxy
+    !associatedListTypeEntry
     !@formalArgumentPassingModeAST.argumentOut
     !"outSortedInformationList"
   formalParameterList +=
     !["" nowhere]
-    !lstringListTypeProxy
+    !lstringListTypeEntry
     !@formalArgumentPassingModeAST.argumentOut
     !"outSortedLKeyList"
   formalParameterList +=
     !["" nowhere]
-    !associatedListTypeProxy
+    !associatedListTypeEntry
     !@formalArgumentPassingModeAST.argumentOut
     !"outUnsortedInformationList"
   formalParameterList +=
     !["" nowhere]
-    !lstringListTypeProxy
+    !lstringListTypeEntry
     !@formalArgumentPassingModeAST.argumentOut 
     !"outUnsortedLKeyList"
   [!?instanceMethodMap insertKey
@@ -156,12 +156,12 @@ override method @graphDeclarationAST enterInSemanticContext
   formalParameterList = {}
   formalParameterList +=
     !["" nowhere]
-    !associatedListTypeProxy
+    !associatedListTypeEntry
     !@formalArgumentPassingModeAST.argumentOut
     !"outInformationList"
   formalParameterList +=
     !["" nowhere]
-    !lstringListTypeProxy
+    !lstringListTypeEntry
     !@formalArgumentPassingModeAST.argumentOut
     !"outLKeyList"
   [!?instanceMethodMap insertKey
@@ -303,16 +303,16 @@ override method @graphDeclarationAST enterInSemanticContext
     !@lstring.new {!"emptyGraph" !@location.here}
     !{}
     !false # No compiler argument
-    !graphTypeProxy
+    !graphTypeEntry
   ]
 #--- setter 'enterNode'
   formalParameterList = {}
   formalParameterList +=
     !["" nowhere]
-    !lstringTypeProxy
+    !lstringTypeEntry
     !@formalArgumentPassingModeAST.argumentIn
     !"inLKey"
-  for () in [associatedListTypeProxy mAddAssignOperatorArguments] do
+  for () in [associatedListTypeEntry mAddAssignOperatorArguments] do
     formalParameterList +=
       !["" nowhere]
       !mFormalArgumentType
@@ -341,7 +341,7 @@ override method @graphDeclarationAST enterInSemanticContext
   ]
 #--- setter 'removeEdgesToNode'
   formalParameterList = @formalParameterSignature.emptyList
-  formalParameterList += !["" nowhere] !stringTypeProxy !@formalArgumentPassingModeAST.argumentIn !"inNodeName"
+  formalParameterList += !["" nowhere] !stringTypeEntry !@formalArgumentPassingModeAST.argumentIn !"inNodeName"
   [!?setterMap insertKey
     !@lstring.new {!"removeEdgesToNode" !@location.here}
     !@methodKind.definedAsMember
@@ -353,8 +353,8 @@ override method @graphDeclarationAST enterInSemanticContext
   drop formalParameterList
 #--- setter 'addEdge'
   formalParameterList = @formalParameterSignature.emptyList
-  formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST.argumentIn !"inSourceNodeLKey"
-  formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST.argumentIn !"inTargetNodeLKey"
+  formalParameterList += !["" nowhere] !lstringTypeEntry !@formalArgumentPassingModeAST.argumentIn !"inSourceNodeLKey"
+  formalParameterList += !["" nowhere] !lstringTypeEntry !@formalArgumentPassingModeAST.argumentIn !"inTargetNodeLKey"
   [!?setterMap insertKey
     !@lstring.new {!"addEdge" !@location.here}
     !@methodKind.definedAsMember
@@ -366,7 +366,7 @@ override method @graphDeclarationAST enterInSemanticContext
   drop formalParameterList
 #--- setter 'noteNode'
   formalParameterList = @formalParameterSignature.emptyList
-  formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST.argumentIn !"inNodeLKey"
+  formalParameterList += !["" nowhere] !lstringTypeEntry !@formalArgumentPassingModeAST.argumentIn !"inNodeLKey"
   [!?setterMap insertKey
     !@lstring.new {!"noteNode" !@location.here}
     !@methodKind.definedAsMember
@@ -392,7 +392,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !self.mGraphTypeName
     !self.mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !@typeKindEnum. graphType
     !false # Does not support collection value
     !@typedPropertyList.emptyList
@@ -412,7 +412,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !@mapSearchMethodListAST.emptyList
     !@mapSearchMethodListAST.emptyList
     !false # Do not generate header in separate file
-    !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction
+    !@unifiedTypeMap-entry.null # Type for enumerated element for "for" instruction
     !"emptyGraph" # Default constructor
     !"graph-" + [self.mGraphTypeName fileNameRepresentation]
     !@headerKind.oneHeader
@@ -437,12 +437,12 @@ override method @graphDeclarationAST semanticAnalysis
   let associatedTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mAssociatedListTypeName)
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !associatedTypeNameForUsefulness]
 #---
-  let graphTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mGraphTypeName}
-  let associatedListTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mAssociatedListTypeName}
-  let associatedListElementTypeProxy = @unifiedTypeMap-proxy.searchKey { 
+  let graphTypeEntry = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mGraphTypeName}
+  let associatedListTypeEntry = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mAssociatedListTypeName}
+  let associatedListElementTypeEntry = @unifiedTypeMap-entry.searchKey { 
     !inSemanticContext.mTypeMap
     !@lstring.new {!self.mAssociatedListTypeName.string +elementTypeNameSuffix () !self.mAssociatedListTypeName.location}}
-  if [associatedListTypeProxy mTypeKindEnum] != @typeKindEnum. listType then
+  if [associatedListTypeEntry mTypeKindEnum] != @typeKindEnum. listType then
     error self.mAssociatedListTypeName: "the '@" + self.mAssociatedListTypeName + "' type should be a list"
   end
 #--- Analyze insert methods
@@ -457,9 +457,9 @@ override method @graphDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"graph " + self.mGraphTypeName
     !@graphDeclarationForGeneration.new {
-      !graphTypeProxy
-      !associatedListTypeProxy
-      !associatedListElementTypeProxy
+      !graphTypeEntry
+      !associatedListTypeEntry
+      !associatedListElementTypeEntry
       !self.mInsertModifierList
     }
 }
@@ -469,8 +469,8 @@ override method @graphDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 shared class @graphDeclarationForGeneration : @semanticTypeForGeneration {
-  @unifiedTypeMap-proxy mAssociatedListTypeProxy
-  @unifiedTypeMap-proxy mAssociatedListElementTypeProxy
+  @unifiedTypeMap-entry mAssociatedListTypeEntry
+  @unifiedTypeMap-entry mAssociatedListElementTypeEntry
   @graphInsertModifierList mInsertModifierList
 }
 
@@ -480,23 +480,23 @@ override method @graphDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   outHeader = [filewrapper typeGenerationTemplate.graphTypeHeader1
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry key]
+    ![self.mSelfTypeEntry identifierRepresentation]
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
-    ![self.mTypeProxy mIsConcrete]
-    ![self.mTypeProxy mConstructorMap]
-    ![self.mTypeProxy mGetterMap]
-    ![self.mTypeProxy mSetterMap]
-    ![self.mTypeProxy mInstanceMethodMap]
-    ![self.mTypeProxy mClassMethodMap]
-    ![self.mTypeProxy mOptionalMethodMap]
-    ![self.mTypeProxy mEnumerationDescriptor]
-    ![self.mTypeProxy mHandledOperatorFlags]
-    ![self.mTypeProxy mAddAssignOperatorArguments]
-    ![self.mTypeProxy mTypeForEnumeratedElement]
+    ![self.mSelfTypeEntry key]
+    ![self.mSelfTypeEntry identifierRepresentation]
+    ![self.mSelfTypeEntry mIsConcrete]
+    ![self.mSelfTypeEntry mConstructorMap]
+    ![self.mSelfTypeEntry mGetterMap]
+    ![self.mSelfTypeEntry mSetterMap]
+    ![self.mSelfTypeEntry mInstanceMethodMap]
+    ![self.mSelfTypeEntry mClassMethodMap]
+    ![self.mSelfTypeEntry mOptionalMethodMap]
+    ![self.mSelfTypeEntry mEnumerationDescriptor]
+    ![self.mSelfTypeEntry mHandledOperatorFlags]
+    ![self.mSelfTypeEntry mAddAssignOperatorArguments]
+    ![self.mSelfTypeEntry mTypeForEnumeratedElement]
   ]
  }
 
@@ -506,13 +506,13 @@ override method @graphDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  [self.mTypeProxy addHeaderFileName !?ioInclusionSet]
-  [self.mAssociatedListTypeProxy addHeaderFileName !?ioInclusionSet]
-  [self.mAssociatedListElementTypeProxy addHeaderFileName !?ioInclusionSet]
+  [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
+  [self.mAssociatedListTypeEntry addHeaderFileName !?ioInclusionSet]
+  [self.mAssociatedListElementTypeEntry addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper typeGenerationTemplate.graphTypeSpecificImplementation
-    !self.mTypeProxy
-    ![self.mTypeProxy identifierRepresentation]
-    !self.mAssociatedListTypeProxy
+    !self.mSelfTypeEntry
+    ![self.mSelfTypeEntry identifierRepresentation]
+    !self.mAssociatedListTypeEntry
     !self.mInsertModifierList
   ]
  }

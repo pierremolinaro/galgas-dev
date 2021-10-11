@@ -55,7 +55,7 @@ override method @ifExpressionAST enterExpressionInSemanticContext
 override method @ifExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy inType
+  ?let @unifiedTypeMap-entry inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression

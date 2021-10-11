@@ -178,18 +178,18 @@ override method @incDecInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 {
 #--- Check target variable
-  var @unifiedTypeMap-proxy targetType
+  var @unifiedTypeMap-entry targetType
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if [inAnalysisContext.mSelfCopyTypeProxy isNull] then
+    if [inAnalysisContext.mSelfCopyTypeEntry isNull] then
       error self.mReceiverName: "'self' cannot be used in this context"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    elsif [inAnalysisContext.mSelfTypeProxy isNull] then
+    elsif [inAnalysisContext.mSelfTypeEntry isNull] then
       error self.mReceiverName: "'self' object is not mutable"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
     else
-      let propertyMap = [inAnalysisContext.mSelfTypeProxy mPropertyMap]
+      let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
@@ -202,7 +202,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
        ?nameForCheckingFormalParameterUsing
     ]  
   end
-#  @unifiedTypeMap-proxy targetType
+#  @unifiedTypeMap-entry targetType
 #  @string targetVariableCppName
 #  [!?ioVariableMap searchForReadWriteAccess !self.mReceiverName ?targetType ?targetVariableCppName ?*]
 #---
@@ -238,7 +238,7 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 {
 #--- Check target variable
-  @unifiedTypeMap-proxy targetType
+  @unifiedTypeMap-entry targetType
   @string targetVariableCppName
   [!?ioVariableMap searchForReadWriteAccess !self.mReceiverName ?targetType ?targetVariableCppName ?*]
   for () in self.mStructAttributeList do
@@ -273,24 +273,24 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
   ?!@variableMap unused ioVariableMap
 {
 #--- Analyze "self", as receiver expression
-  @unifiedTypeMap-proxy selfTypeProxy
+  @unifiedTypeMap-entry selfTypeEntry
   @string selfObjectCppName
-  if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeProxy
+  if [inAnalysisContext.mSelfTypeEntry isNull] then
+    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-    selfTypeProxy = inAnalysisContext.mSelfTypeProxy
+    selfTypeEntry = inAnalysisContext.mSelfTypeEntry
   end
 #--- Check target type accepts incrementation
-  if not [[selfTypeProxy mHandledOperatorFlags] incDecOperator] then
+  if not [[selfTypeEntry mHandledOperatorFlags] incDecOperator] then
     error self.mInstructionLocation
-    :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '&++' and  '&--' operators"
+    :"the target object has the '@" + [selfTypeEntry key] + "' type, but this type does not support the '&++' and  '&--' operators"
   end
 #--- Generate instruction
   ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration.new {
     !self.mInstructionLocation
     !selfObjectCppName
-    !selfTypeProxy
+    !selfTypeEntry
     !{}
     !self.mKind
    }
@@ -306,24 +306,24 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
   ?!@variableMap unused ioVariableMap
 {
 #--- Analyze "self", as receiver expression
-  @unifiedTypeMap-proxy selfTypeProxy
+  @unifiedTypeMap-entry selfTypeEntry
   @string selfObjectCppName
-  if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeProxy
+  if [inAnalysisContext.mSelfTypeEntry isNull] then
+    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-    selfTypeProxy = inAnalysisContext.mSelfTypeProxy
+    selfTypeEntry = inAnalysisContext.mSelfTypeEntry
   end
 #--- Check target type accepts incrementation
-  if not [[selfTypeProxy mHandledOperatorFlags] incDecOperator] then
+  if not [[selfTypeEntry mHandledOperatorFlags] incDecOperator] then
     error self.mInstructionLocation
-    :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '++' and  '--' operators"
+    :"the target object has the '@" + [selfTypeEntry key] + "' type, but this type does not support the '++' and  '--' operators"
   end
 #--- Generate instruction
   ioInstructionListForGeneration += !@incDecInstructionForGeneration.new {
     !self.mInstructionLocation
     !selfObjectCppName
-    !selfTypeProxy
+    !selfTypeEntry
     !{}
     !self.mKind
    }
@@ -336,7 +336,7 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
 shared class @incDecInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @string mReceiverCppName
-  @unifiedTypeMap-proxy mReceiverType
+  @unifiedTypeMap-entry mReceiverType
   @lstringlist mStructAttributeList
   @incDecKind mKind
 }
@@ -346,7 +346,7 @@ shared class @incDecInstructionForGeneration : @semanticInstructionForGeneration
 shared class @incDecNoOVFInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @string mReceiverCppName
-  @unifiedTypeMap-proxy mReceiverType
+  @unifiedTypeMap-entry mReceiverType
   @lstringlist mStructAttributeList
   @incDecKind mKind
 }

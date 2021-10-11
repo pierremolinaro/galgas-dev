@@ -208,29 +208,29 @@ override method @externTypeDeclarationAST enterInSemanticContext
   @classMethodMap classMethodMap = {}
 #--- Constructors
   for () in self.mExternTypeConstructorList do
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?let returnedTypeProxy]
+    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mResultTypeName ?let returnedTypeEntry]
   #---
     @functionSignature arguments = {}
     for () in mParameterList do
-      [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalParameterTypeName ?let argumentTypeProxy]
-      arguments += !mFormalSelector !argumentTypeProxy !mFormalParameterName.string
+      [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalParameterTypeName ?let argumentTypeEntry]
+      arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string
     end
   #---
     [!?constructorMap insertKey
       !mConstructorName
       !arguments
       !true #inHasLexiqueAndLocationArguments
-      !returnedTypeProxy
+      !returnedTypeEntry
     ]
   end
 #--- Getters
   for () in self.mExternTypeGetterList do
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?let returnedTypeProxy]
+    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mResultTypeName ?let returnedTypeEntry]
   #---
     @functionSignature arguments = {}
     for () in mParameterList do
-      [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalParameterTypeName ?let argumentTypeProxy]
-      arguments += !mFormalSelector !argumentTypeProxy !mFormalParameterName.string
+      [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalParameterTypeName ?let argumentTypeEntry]
+      arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string
     end
   #---
     [!?getterMap insertKey
@@ -239,7 +239,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
       !arguments
       !@location.here
       !true #inHasLexiqueAndLocationArguments
-      !returnedTypeProxy
+      !returnedTypeEntry
       !@methodQualifier.isBasicFinal
       !"" # No Error message
     ]
@@ -248,10 +248,10 @@ override method @externTypeDeclarationAST enterInSemanticContext
   for () in self.mExternTypeSetterList do
     @formalParameterSignature routineSignature = {}
     for () in mFormalParameterList do
-      [@unifiedTypeMap-proxy makeProxy
+      [@unifiedTypeMap-entry makeEntry
         !?ioSemanticContext.mTypeMap
         !mFormalArgumentTypeName
-        ?let @unifiedTypeMap-proxy parameterTypeIndex
+        ?let @unifiedTypeMap-entry parameterTypeIndex
       ]
       routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
     end
@@ -269,8 +269,8 @@ override method @externTypeDeclarationAST enterInSemanticContext
   for () in self.mExternTypeMethodList do
     var routineSignature =@formalParameterSignature {}
     for () in mFormalParameterList do
-      @unifiedTypeMap-proxy parameterTypeIndex
-      [@unifiedTypeMap-proxy makeProxy
+      @unifiedTypeMap-entry parameterTypeIndex
+      [@unifiedTypeMap-entry makeEntry
         !?ioSemanticContext.mTypeMap
         !mFormalArgumentTypeName
         ?parameterTypeIndex
@@ -293,7 +293,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     !self.mExternTypeName
     !self.mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !@typeKindEnum. externType
     !false # Does not support collection value
     !{}
@@ -313,7 +313,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     !{}
     !{}
     !false # Do not generate header in separate file
-    !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction
+    !@unifiedTypeMap-entry.null # Type for enumerated element for "for" instruction
     !"default" # Default constructor
     !"externtype-" + [self.mExternTypeName fileNameRepresentation]
     !@headerKind.oneHeader
@@ -362,25 +362,25 @@ override method @externTypeDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   outHeader = [filewrapper typeGenerationTemplate.externTypeHeader1
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry key]
+    ![self.mSelfTypeEntry identifierRepresentation]
     !self.mCppPreDeclarationCode
     !self.mCppClassCode
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
-    ![self.mTypeProxy mIsConcrete]
-    ![self.mTypeProxy mConstructorMap]
-    ![self.mTypeProxy mGetterMap]
-    ![self.mTypeProxy mSetterMap]
-    ![self.mTypeProxy mInstanceMethodMap]
-    ![self.mTypeProxy mClassMethodMap]
-    ![self.mTypeProxy mOptionalMethodMap]
-    ![self.mTypeProxy mEnumerationDescriptor]
-    ![self.mTypeProxy mHandledOperatorFlags]
-    ![self.mTypeProxy mAddAssignOperatorArguments]
-    ![self.mTypeProxy mTypeForEnumeratedElement]
+    ![self.mSelfTypeEntry key]
+    ![self.mSelfTypeEntry identifierRepresentation]
+    ![self.mSelfTypeEntry mIsConcrete]
+    ![self.mSelfTypeEntry mConstructorMap]
+    ![self.mSelfTypeEntry mGetterMap]
+    ![self.mSelfTypeEntry mSetterMap]
+    ![self.mSelfTypeEntry mInstanceMethodMap]
+    ![self.mSelfTypeEntry mClassMethodMap]
+    ![self.mSelfTypeEntry mOptionalMethodMap]
+    ![self.mSelfTypeEntry mEnumerationDescriptor]
+    ![self.mSelfTypeEntry mHandledOperatorFlags]
+    ![self.mSelfTypeEntry mAddAssignOperatorArguments]
+    ![self.mSelfTypeEntry mTypeForEnumeratedElement]
   ]
 }
 

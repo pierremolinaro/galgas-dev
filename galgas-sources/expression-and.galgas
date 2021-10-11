@@ -62,7 +62,7 @@ override method @andExpressionAST enterExpressionInSemanticContext
 override method @andExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy inInferenceType
+  ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
@@ -85,7 +85,7 @@ override method @andExpressionAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
@@ -118,7 +118,7 @@ override method @andShortExpressionAST enterExpressionInSemanticContext
 override method @andShortExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy inInferenceType
+  ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
@@ -141,7 +141,7 @@ override method @andShortExpressionAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]

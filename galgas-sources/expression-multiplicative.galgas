@@ -104,7 +104,7 @@ override method @multiplicationExpressionNoOverflowAST enterExpressionInSemantic
 override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy inInferenceType
+  ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
@@ -127,7 +127,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
@@ -161,7 +161,7 @@ override method @multiplicationExpressionAST enterExpressionInSemanticContext
 override method @multiplicationExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy inInferenceType
+  ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
@@ -184,7 +184,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
@@ -217,7 +217,7 @@ override method @divisionExpressionNoOverflowAST enterExpressionInSemanticContex
 override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy inInferenceType
+  ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
@@ -240,7 +240,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
@@ -273,7 +273,7 @@ override method @divisionExpressionAST enterExpressionInSemanticContext
 override method @divisionExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy inInferenceType
+  ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
@@ -296,7 +296,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
@@ -329,7 +329,7 @@ override method @moduloExpressionAST enterExpressionInSemanticContext
 override method @moduloExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy inInferenceType
+  ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
@@ -352,7 +352,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]

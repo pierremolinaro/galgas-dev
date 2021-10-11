@@ -106,16 +106,16 @@ override method @overridingExtensionGetterAST semanticAnalysis
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
   [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mTypeName}
+  let @unifiedTypeMap-entry selfType = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mTypeName}
 #--- Check self type is a class
   if not [[selfType mTypeKindEnum] isClassType] then
     error self.mOverridingExtensionGetterName: "cannot declare a extension getter: '@" + [selfType key] + "' is not a class"
   end
 #--- Find base type name
   @string baseTypeName = ""
-  @unifiedTypeMap-proxy superType = [selfType mSuperType]
+  @unifiedTypeMap-entry superType = [selfType mSuperType]
   @functionSignature inheritedSignature = {}
-  var inheritedReturnType =@unifiedTypeMap-proxy.null{}
+  var inheritedReturnType =@unifiedTypeMap-entry.null{}
   @location inheritedDeclarationLocation = @location.here
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
@@ -145,7 +145,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
     !inPredefinedTypes
     !selfType
     !"object"
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
      !"object."
  }
   analyzeFunctionBody (
@@ -163,7 +163,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
     !self.mOverridingExtensionGetterReturnedTypeName
     !self.mEndOfReaderLocation
     ?let @formalInputParameterListForGeneration formalParameterListForGeneration
-    ?let @unifiedTypeMap-proxy returnType
+    ?let @unifiedTypeMap-entry returnType
     ?let @string returnVariableCppName
     ?let @semanticInstructionListForGeneration semanticInstructionListForGeneration
   )
@@ -222,10 +222,10 @@ override method @overridingExtensionGetterAST buildExtensionListMaps
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 shared class @overrideExtensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMap-proxy mReceiverType
+  @unifiedTypeMap-entry mReceiverType
   @string mBaseTypeName
   @string mOverridingExtensionGetterName
-  @unifiedTypeMap-proxy mResultType
+  @unifiedTypeMap-entry mResultType
   @string mResultVarCppName
   @formalInputParameterListForGeneration mOverridingExtensionGetterFormalParameterList
   @typedPropertyList mTypedAttributeList

@@ -40,7 +40,7 @@ syntax extension galgas3DeclarationsSyntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @localVariableDeclarationAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !self.mTypeName ?*]
+  [@unifiedTypeMap-entry makeEntry !?ioTypeMap !self.mTypeName ?*]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -55,7 +55,7 @@ override method @localVariableDeclarationAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 {
 #--- Check target variable
-  let targetType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
+  let targetType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
   let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location locationIndex]
   if self.mIsUndefinedConstant then
     [!?ioVariableMap insertUndefinedLocalConstant !self.mVariableName !targetType !targetVariableCppName !targetVariableCppName]
@@ -74,7 +74,7 @@ override method @localVariableDeclarationAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 shared class @localVariableDeclarationForGeneration : @semanticInstructionForGeneration {
-  @unifiedTypeMap-proxy mVariableType
+  @unifiedTypeMap-entry mVariableType
   @string mCppVariableName
 }
 

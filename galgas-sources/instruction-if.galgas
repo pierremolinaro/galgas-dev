@@ -197,7 +197,7 @@ override method @ifInstructionAST enterInstructionInSemanticContext ?!@unifiedTy
       [exp enterExpressionInSemanticContext !?ioTypeMap]
     case letExp (* exp * @lstring typeName) :
       [exp enterExpressionInSemanticContext !?ioTypeMap]
-      [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !typeName ?*]
+      [@unifiedTypeMap-entry makeEntry !?ioTypeMap !typeName ?*]
     case optionalMethodCall (receiverExpression * parameters) :
       [receiverExpression enterExpressionInSemanticContext !?ioTypeMap]
       for (* parameter) in parameters do
@@ -280,11 +280,11 @@ override method @ifInstructionAST analyzeSemanticInstruction
         ?let analyzedExpression
       ]
     #--- Get type information
-      let castType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !typeName}
+      let castType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !typeName}
     #--- Check this is a class
       if [[[analyzedExpression mResultType] mTypeKindEnum] isClassType] then
       #--- Check expression type is a descendant of named type
-        @unifiedTypeMap-proxy t = castType
+        @unifiedTypeMap-entry t = castType
         @bool found = t == [analyzedExpression mResultType]
         loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
         while (not found) & not [[t mSuperType] isNull] do
@@ -386,7 +386,7 @@ private proc analyzeOptionalMethodCall
   [inReceiverExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration receiverExpression
@@ -394,7 +394,7 @@ private proc analyzeOptionalMethodCall
   [!?ioVariableMap openOverrideForSelectBlock]
   [!?ioVariableMap openBranch]
 #--- Get optional method map
-  let @unifiedTypeMap-proxy receiverType = [receiverExpression mResultType]
+  let @unifiedTypeMap-entry receiverType = [receiverExpression mResultType]
   let @optionalMethodMap optionalMethodMap = [receiverType mOptionalMethodMap]
 #--- Search optional method
   [optionalMethodMap searchKey !inOptionalMethodName ?let @optionalMethodSignature optionalMethodSignature]
@@ -502,7 +502,7 @@ private proc analyzeOptionalMethodCall
 
 enum @ifTestForGeneration {
   case regular (@semanticExpressionForGeneration exp)
-  case letExp (@string targetVarCppName @semanticExpressionForGeneration exp @unifiedTypeMap-proxy type)
+  case letExp (@string targetVarCppName @semanticExpressionForGeneration exp @unifiedTypeMap-entry type)
   case optionalMethodCall (
     @semanticExpressionForGeneration receiverExpression
     @lstring optionalMethodName

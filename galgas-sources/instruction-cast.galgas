@@ -144,7 +144,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   [self.mCastExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?castExpression
@@ -155,9 +155,9 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   var castBranchList =@castInstructionBranchListForGeneration {}
   for () in self.mCastInstructionBranchList do
   #--- Get named type
-    let type = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+    let type = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
   #--- Check named type is a descendant of receiver type
-    @unifiedTypeMap-proxy t = type
+    @unifiedTypeMap-entry t = type
     @bool found = t == [castExpression mResultType]
     loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
     while (not found) & not [[t mSuperType] isNull] do
@@ -224,7 +224,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
 
 list @castInstructionBranchListForGeneration {
   @dynamicTypeComparisonKind mTypeComparisonKind
-  @unifiedTypeMap-proxy mType
+  @unifiedTypeMap-entry mType
   @string mCastedVarCppName # Empty string if no var
   @semanticInstructionListForGeneration mInstructionList
 }

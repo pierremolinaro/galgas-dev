@@ -191,18 +191,18 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   ?!@variableMap ioVariableMap
 {
 #--- Check target variable, or self.property
-  var @unifiedTypeMap-proxy targetType
+  var @unifiedTypeMap-entry targetType
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if [inAnalysisContext.mSelfCopyTypeProxy isNull] then
+    if [inAnalysisContext.mSelfCopyTypeEntry isNull] then
       error self.mReceiverName: "'self' cannot be used in this context"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    elsif [inAnalysisContext.mSelfTypeProxy isNull] then
+    elsif [inAnalysisContext.mSelfTypeEntry isNull] then
       error self.mReceiverName: "'self' object is not mutable"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
     else
-      let propertyMap = [inAnalysisContext.mSelfTypeProxy mPropertyMap]
+      let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
@@ -218,7 +218,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
 #--- Check target variable
 #  [!?ioVariableMap searchForReadWriteAccess
 #    !self.mReceiverName 
-#    ?@unifiedTypeMap-proxy targetType
+#    ?@unifiedTypeMap-entry targetType
 #    ?@string targetVariableCppName
 #    ?@string nameForCheckingFormalParameterUsing
 #  ]
@@ -267,18 +267,18 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
   ?!@variableMap ioVariableMap
 {
 #--- Check target variable, or self.property
-  var @unifiedTypeMap-proxy targetType
+  var @unifiedTypeMap-entry targetType
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if [inAnalysisContext.mSelfCopyTypeProxy isNull] then
+    if [inAnalysisContext.mSelfCopyTypeEntry isNull] then
       error self.mReceiverName: "'self' cannot be used in this context"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    elsif [inAnalysisContext.mSelfTypeProxy isNull] then
+    elsif [inAnalysisContext.mSelfTypeEntry isNull] then
       error self.mReceiverName: "'self' object is not mutable"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
     else
-      let propertyMap = [inAnalysisContext.mSelfTypeProxy mPropertyMap]
+      let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
@@ -294,7 +294,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
 #--- Check target variable
 #  [!?ioVariableMap searchForReadWriteAccess
 #    !self.mReceiverName 
-#    ?@unifiedTypeMap-proxy targetType
+#    ?@unifiedTypeMap-entry targetType
 #    ?@string targetVariableCppName
 #    ?@string nameForCheckingFormalParameterUsing
 #  ]
@@ -343,18 +343,18 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
   ?!@variableMap ioVariableMap
 {
 #--- Check target variable, or self.property
-  var @unifiedTypeMap-proxy targetType
+  var @unifiedTypeMap-entry targetType
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if [inAnalysisContext.mSelfCopyTypeProxy isNull] then
+    if [inAnalysisContext.mSelfCopyTypeEntry isNull] then
       error self.mReceiverName: "'self' cannot be used in this context"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    elsif [inAnalysisContext.mSelfTypeProxy isNull] then
+    elsif [inAnalysisContext.mSelfTypeEntry isNull] then
       error self.mReceiverName: "'self' object is not mutable"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
     else
-      let propertyMap = [inAnalysisContext.mSelfTypeProxy mPropertyMap]
+      let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
@@ -370,7 +370,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
 #--- Check target variable
 #  [!?ioVariableMap searchForReadWriteAccess
 #    !self.mReceiverName 
-#    ?@unifiedTypeMap-proxy targetType
+#    ?@unifiedTypeMap-entry targetType
 #    ?@string targetVariableCppName
 #    ?@string nameForCheckingFormalParameterUsing
 #  ]
@@ -419,18 +419,18 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
   ?!@variableMap ioVariableMap
 {
 #--- Check target variable, or self.property
-  var @unifiedTypeMap-proxy targetType
+  var @unifiedTypeMap-entry targetType
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if [inAnalysisContext.mSelfCopyTypeProxy isNull] then
+    if [inAnalysisContext.mSelfCopyTypeEntry isNull] then
       error self.mReceiverName: "'self' cannot be used in this context"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    elsif [inAnalysisContext.mSelfTypeProxy isNull] then
+    elsif [inAnalysisContext.mSelfTypeEntry isNull] then
       error self.mReceiverName: "'self' object is not mutable"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
     else
-      let propertyMap = [inAnalysisContext.mSelfTypeProxy mPropertyMap]
+      let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
@@ -446,7 +446,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
 #--- Check target variable
 #  [!?ioVariableMap searchForReadWriteAccess
 #    !self.mReceiverName 
-#    ?@unifiedTypeMap-proxy targetType
+#    ?@unifiedTypeMap-entry targetType
 #    ?@string targetVariableCppName
 #    ?@string nameForCheckingFormalParameterUsing
 #  ]
@@ -495,18 +495,18 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
   ?!@variableMap ioVariableMap
 {
 #--- Check target variable, or self.property
-  var @unifiedTypeMap-proxy targetType
+  var @unifiedTypeMap-entry targetType
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if [inAnalysisContext.mSelfCopyTypeProxy isNull] then
+    if [inAnalysisContext.mSelfCopyTypeEntry isNull] then
       error self.mReceiverName: "'self' cannot be used in this context"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    elsif [inAnalysisContext.mSelfTypeProxy isNull] then
+    elsif [inAnalysisContext.mSelfTypeEntry isNull] then
       error self.mReceiverName: "'self' object is not mutable"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
     else
-      let propertyMap = [inAnalysisContext.mSelfTypeProxy mPropertyMap]
+      let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
@@ -580,7 +580,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
 
 shared class @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
   @string mReceiverCppName
-  @unifiedTypeMap-proxy mTargetType
+  @unifiedTypeMap-entry mTargetType
   @string mNameForCheckingFormalParameterUsing
   @location mInstructionLocation
   @lstringlist mStructAttributeList
@@ -632,7 +632,7 @@ override method @plusEqualnstructionForGeneration generateInstruction
 
 shared class @opEqualInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
-  @unifiedTypeMap-proxy mTargetType
+  @unifiedTypeMap-entry mTargetType
   @string mTargetVariableCppName
   @string mNameForCheckingFormalParameterUsing
   @lstringlist mStructAttributeList

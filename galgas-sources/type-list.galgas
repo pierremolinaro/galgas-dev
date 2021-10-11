@@ -66,7 +66,7 @@ override method @listDeclarationAST enterInSemanticContext
 #--- Handle attributes
   @typedPropertyList typedAttributeList = {}
   for () in self.mPropertyList do
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = mIsPublic
     let hasGetter = mIsPublic
     var hasSelector = false
@@ -97,14 +97,14 @@ override method @listDeclarationAST enterInSemanticContext
     typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
   end
 #--- uint type index
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"uint" ?let uintType]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"uint" ?let uintType]
 #--- List type index
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !self.mListTypeName ?let listTypeIndex]
+  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mListTypeName ?let listTypeIndex]
 #--- Element type index
-  [@unifiedTypeMap-proxy makeProxy
+  [@unifiedTypeMap-entry makeEntry
     !?ioSemanticContext.mTypeMap
     !@lstring.new {!self.mListTypeName.string + elementTypeNameSuffix () !self.mListTypeName.location}
-    ?let @unifiedTypeMap-proxy listElementTypeIndex
+    ?let @unifiedTypeMap-entry listElementTypeIndex
   ]
 #--- Property description
   @enumerationDescriptorList enumerationDescriptor = {}
@@ -113,19 +113,19 @@ override method @listDeclarationAST enterInSemanticContext
   @formalParameterSignature setterInputFormalArgumentList = {}
   for () in typedAttributeList do
     let selector = if mHasSelector then mPropertyName.string else "" end
-    enumerationDescriptor += !mPropertyTypeProxy !mPropertyName.string
+    enumerationDescriptor += !mPropertyTypeEntry !mPropertyName.string
     constructorAttributeTypeList +=
       ![selector nowhere]
-      !mPropertyTypeProxy
+      !mPropertyTypeEntry
       !mPropertyName.string
     setterOutputFormalArgumentList +=
       ![selector nowhere]
-      !mPropertyTypeProxy
+      !mPropertyTypeEntry
       !.argumentOut
       !mPropertyName.string
     setterInputFormalArgumentList +=
       ![selector nowhere]
-      !mPropertyTypeProxy
+      !mPropertyTypeEntry
       !.argumentConstantIn
       !mPropertyName.string
   end
@@ -189,7 +189,7 @@ override method @listDeclarationAST enterInSemanticContext
         !@functionSignature {!["" nowhere] !uintType !"inIndex"}
         !@location.here
         !true
-        !mPropertyTypeProxy
+        !mPropertyTypeEntry
         !@methodQualifier.isBasic
         !"" # No Error message
       ]
@@ -254,7 +254,7 @@ override method @listDeclarationAST enterInSemanticContext
   for () in typedAttributeList do
     if mHasSetter then
       var setterFormalArgumentList =@formalParameterSignature {}
-      setterFormalArgumentList += !["" nowhere] !mPropertyTypeProxy !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
+      setterFormalArgumentList += !["" nowhere] !mPropertyTypeEntry !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
       setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
       [!?setterMap insertOrReplace
         !@lstring.new {!"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "AtIndex" ![mPropertyName location]}
@@ -293,7 +293,7 @@ override method @listDeclarationAST enterInSemanticContext
     !self.mListTypeName
     !self.mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !@typeKindEnum. listType
     !true # Support collection value
     !typedAttributeList
@@ -365,7 +365,7 @@ override method @listDeclarationAST semanticAnalysis
   for () in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
+    let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     let hasSetter = mIsPublic
     let hasGetter = mIsPublic
     var hasSelector = false
@@ -402,7 +402,7 @@ override method @listDeclarationAST semanticAnalysis
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #---
-  let selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mListTypeName}
+  let selfType = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mListTypeName}
   ioSemanticDeclarationListForGeneration +=
     !"list type " + self.mListTypeName
     !@listTypeForGeneration.new {
@@ -417,7 +417,7 @@ override method @listDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 shared class @listTypeForGeneration : @semanticTypeForGeneration {
-  @unifiedTypeMap-proxy mListElementTypeIndex
+  @unifiedTypeMap-entry mListElementTypeIndex
   @typedPropertyList mTypedAttributeList
 }
 
@@ -445,24 +445,24 @@ override method @listTypeForGeneration appendDeclaration1
   !@string outHeader
 {
   outHeader = [filewrapper listGenerationTemplate.listTypeHeader1
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry key]
+    ![self.mSelfTypeEntry identifierRepresentation]
     !self.mTypedAttributeList
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
-    ![self.mTypeProxy mIsConcrete]
-    ![self.mTypeProxy mConstructorMap]
-    ![self.mTypeProxy mGetterMap]
-    ![self.mTypeProxy mSetterMap]
-    ![self.mTypeProxy mInstanceMethodMap]
-    ![self.mTypeProxy mClassMethodMap]
-    ![self.mTypeProxy mOptionalMethodMap]
-    ![self.mTypeProxy mEnumerationDescriptor]
-    ![self.mTypeProxy mHandledOperatorFlags]
-    ![self.mTypeProxy mAddAssignOperatorArguments]
-    ![self.mTypeProxy mTypeForEnumeratedElement]
+    ![self.mSelfTypeEntry key]
+    ![self.mSelfTypeEntry identifierRepresentation]
+    ![self.mSelfTypeEntry mIsConcrete]
+    ![self.mSelfTypeEntry mConstructorMap]
+    ![self.mSelfTypeEntry mGetterMap]
+    ![self.mSelfTypeEntry mSetterMap]
+    ![self.mSelfTypeEntry mInstanceMethodMap]
+    ![self.mSelfTypeEntry mClassMethodMap]
+    ![self.mSelfTypeEntry mOptionalMethodMap]
+    ![self.mSelfTypeEntry mEnumerationDescriptor]
+    ![self.mSelfTypeEntry mHandledOperatorFlags]
+    ![self.mSelfTypeEntry mAddAssignOperatorArguments]
+    ![self.mSelfTypeEntry mTypeForEnumeratedElement]
   ]
 }
 
@@ -476,12 +476,12 @@ override method @listTypeForGeneration appendSpecificImplementation
     [t addHeaderFileName !?ioInclusionSet]
   end
   [self.mListElementTypeIndex addHeaderFileName !?ioInclusionSet]
-  [self.mTypeProxy addHeaderFileName !?ioInclusionSet]
+  [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper listGenerationTemplate.listTypeSpecificImplementation
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry key]
+    ![self.mSelfTypeEntry identifierRepresentation]
     !self.mTypedAttributeList
-    ![[self.mTypeProxy mTypeForEnumeratedElement] identifierRepresentation]
+    ![[self.mSelfTypeEntry mTypeForEnumeratedElement] identifierRepresentation]
   ]
  }
 

@@ -93,14 +93,14 @@ override method @overridingExtensionSetterAST semanticAnalysis
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
   [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mTypeName}
+  let @unifiedTypeMap-entry selfType = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mTypeName}
 #--- Check self type is a class
   if not [[selfType mTypeKindEnum] isClassType] then
     error self.mOverridingExtensionSetterName: "cannot declare a extension setter: '@" + [selfType key] + "' is not a class"
   end
 #--- Find base type name
   @string baseTypeName = ""
-  @unifiedTypeMap-proxy superType = [selfType mSuperType]
+  @unifiedTypeMap-entry superType = [selfType mSuperType]
   var inheritedSignature =@formalParameterSignature {}
   @location inheritedDeclarationLocation = @location.here
   loop( [inSemanticContext.mTypeMap count] + 1)
@@ -199,7 +199,7 @@ override method @overridingExtensionSetterAST buildExtensionListMaps
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 shared class @overridingExtensionSetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMap-proxy mReceiverType
+  @unifiedTypeMap-entry mReceiverType
   @string mBaseTypeName
   @string mExtensionSetterName
   @formalParameterListForGeneration mExtensionSetterFormalParameterList
@@ -228,7 +228,7 @@ override method @overridingExtensionSetterForGeneration appendSpecificImplementa
     !self.mSemanticInstructionListForGeneration
     ?let @string methodImplementation
   )
-  @unifiedTypeMap-proxy baseType = self.mReceiverType
+  @unifiedTypeMap-entry baseType = self.mReceiverType
   @bool searching = true
   loop( @uint. max) while searching do
     if not [[baseType mSuperType] isNull] then

@@ -102,7 +102,7 @@ map @routineMap {
 
 map @functionMap {
   @functionSignature mFunctionSignature
-  @unifiedTypeMap-proxy mResultType
+  @unifiedTypeMap-entry mResultType
   @bool mIsInternal
   insert insertKey error message "the '%K' function has been already declared in %L"
   search searchKey error message "the '%K' function is not declared"
@@ -286,127 +286,126 @@ abstract getter @semanticDeclarationAST keyRepresentation -> @string
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @galgas3GrammarComponentAST keyRepresentation
-  ->@string outString {
-  outString = "grammar " + self.mGrammarComponentName
+  ->@string {
+  result = "grammar " + self.mGrammarComponentName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @galgas3SyntaxComponentAST keyRepresentation
-  ->@string outString {
-  outString = "syntax " + self.mSyntaxComponentName
+  ->@string {
+  result = "syntax " + self.mSyntaxComponentName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexiqueComponentAST keyRepresentation
-  ->@string outString {
-  outString = "lexique " + self.mLexiqueComponentName
+  ->@string {
+  result = "lexique " + self.mLexiqueComponentName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @predefinedTypeAST keyRepresentation
-  ->@string outString {
-  outString = "predefined type @" + self.mPredefinedTypeName
+  ->@string {
+  result = "predefined type @" + self.mPredefinedTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @mapProxyDeclarationAST keyRepresentation
-  ->@string outString {
-  outString = "map proxy @" + self.mMapProxyTypeName
+override getter @mapEntryDeclarationAST keyRepresentation -> @string {
+  result = "map entry @" + self.mMapEntryTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @enumDeclarationAST keyRepresentation
-  ->@string outString {
-  outString = "enum @" + self.mEnumTypeName
+  ->@string {
+  result = "enum @" + self.mEnumTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @sortedListDeclarationAST keyRepresentation
-  ->@string outString {
-  outString = "sorted list @" + self.mSortedListTypeName
+  ->@string {
+  result = "sorted list @" + self.mSortedListTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @listDeclarationAST keyRepresentation
-  ->@string outString {
-  outString = "list @" + self.mListTypeName
+  ->@string {
+  result = "list @" + self.mListTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @classDeclarationAST keyRepresentation
-  ->@string outString {
-  outString = "class @" + self.mClassTypeName
+  ->@string {
+  result = "class @" + self.mClassTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @arrayDeclarationAST keyRepresentation
-  ->@string outString {
-  outString = "array @" + self.mArrayTypeName
+  ->@string {
+  result = "array @" + self.mArrayTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @listmapDeclarationAST keyRepresentation
-  ->@string outString {
-  outString = "listmap @" + self.mListmapTypeName
+  ->@string {
+  result = "listmap @" + self.mListmapTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @filewrapperDeclarationAST keyRepresentation
-  ->@string outString {
-  outString = "filewrapper @" + self.mFilewrapperName
+  ->@string {
+  result = "filewrapper @" + self.mFilewrapperName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @optionComponentDeclarationAST keyRepresentation
-  ->@string outString {
-  outString = "option " + self.mOptionComponentName
+  ->@string {
+  result = "option " + self.mOptionComponentName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @graphDeclarationAST keyRepresentation
-  ->@string outString {
-  outString = "graph @" + self.mGraphTypeName
+  ->@string {
+  result = "graph @" + self.mGraphTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @externTypeDeclarationAST keyRepresentation
-  ->@string outString {
-  outString = "extern @" + self.mExternTypeName
+  ->@string {
+  result = "extern @" + self.mExternTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @onceFunctionDeclarationAST keyRepresentation
-  ->@string outString {
-  outString = "once function " + self.mFunctionName
+  ->@string {
+  result = "once function " + self.mFunctionName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @externFunctionDeclarationAST keyRepresentation
-  ->@string outString {
-  outString = "extern function " + self.mFunctionName
+  ->@string {
+  result = "extern function " + self.mFunctionName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @externRoutineDeclarationAST keyRepresentation
-  ->@string outString {
-  outString = "extern routine " + self.mRoutineName
+  ->@string {
+  result = "extern routine " + self.mRoutineName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -432,10 +431,10 @@ proc addExtensions
     for () in extensionMethodMapForType do
       var formalArgumentList =@formalParameterSignature {}
       for () in mFormalParameterList do
-        [@unifiedTypeMap-proxy makeProxy
+        [@unifiedTypeMap-entry makeEntry
           !?ioSemanticContext.mTypeMap
           !mFormalArgumentTypeName
-          ?let @unifiedTypeMap-proxy typeIndex
+          ?let @unifiedTypeMap-entry typeIndex
         ]
         formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
       end
@@ -457,10 +456,10 @@ proc addExtensions
     for () in extensionGetterMapForType do
       @functionSignature formalArgumentList = {}
       for () in mInputFormalParameterList do
-        [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let typeIndex]
+        [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let typeIndex]
         formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentName.string
       end
-      [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?let returnedType]
+      [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mResultTypeName ?let returnedType]
       [!?ioGetterMap insertKey
         !lkey
         !@methodKind.definedAsExtension
@@ -480,7 +479,7 @@ proc addExtensions
     for () in extensionSetterMapForType do
       @formalParameterSignature formalArgumentList = {}
       for () in mFormalParameterList do
-        [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let typeIndex]
+        [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let typeIndex]
         formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
       end
       [!?ioSetterMap insertKey
@@ -620,7 +619,7 @@ override method @filewrapperDeclarationAST enterInSemanticContext
   for () in self.mFilewrapperTemplateList do
     @functionSignature templateSignature = {}
     for () in mFilewrapperTemplateFormalInputParameters do
-      [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
+      [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
       templateSignature += !mFormalTemplateSelector !parameterTypeIndex !mFormalArgumentName.string
     end
     [!?filewrapperTemplateMap insertKey
@@ -692,7 +691,7 @@ override method @externRoutineDeclarationAST enterInSemanticContext
 #--- Build signature
   var routineSignature =@formalParameterSignature {}
   for () in self.mFormalArgumentList do
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
+    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
     routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
   end
 #--- Enter routine in routine map
@@ -713,7 +712,7 @@ override method @procDeclarationAST enterInSemanticContext
 #--- Build signature
   var routineSignature =@formalParameterSignature {}
   for () in self.mFormalArgumentList do
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
+    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
     routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
   end
 #--- Enter types for instruction list
@@ -736,11 +735,11 @@ override method @externFunctionDeclarationAST enterInSemanticContext # Handles a
 #--- Build signature
   var functionSignature =@functionSignature {}
   for () in self.mFormalArgumentList do
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
+    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
     functionSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentTypeName.string
   end
 #--- Result type
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !self.mResultTypeName ?let resultTypeIndex]
+  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mResultTypeName ?let resultTypeIndex]
 #--- Enter function in routine map
   [!?ioSemanticContext.mFunctionMap insertKey
     !self.mFunctionName
@@ -758,7 +757,7 @@ override method @onceFunctionDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Result type
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !self.mResultTypeName ?let @unifiedTypeMap-proxy resultTypeIndex]
+  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mResultTypeName ?let @unifiedTypeMap-entry resultTypeIndex]
 #--- Enter function in routine map
   [!?ioSemanticContext.mFunctionMap insertKey !self.mFunctionName !{} !resultTypeIndex !self.mIsInternal]
 }
@@ -794,7 +793,7 @@ override method @galgas3GrammarComponentAST enterInSemanticContext
   #--- Analyze signature
     @formalParameterSignature formalArgumentList = {}
     for () in mFormalArgumentList do
-      [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let argumentType]
+      [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let argumentType]
       formalArgumentList +=
         !mFormalSelector
         !argumentType

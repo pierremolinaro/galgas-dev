@@ -37,16 +37,16 @@ override method @selfInExpressionAST enterExpressionInSemanticContext
 override method @selfInExpressionAST analyzeSemanticExpression
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy unused inType
+  ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  if [inAnalysisContext.mSelfCopyTypeProxy isNull] then
+  if [inAnalysisContext.mSelfCopyTypeEntry isNull] then
     error self.mSelfLocation: "'self' cannot be used in this context" : outExpression
   else
     let @string selfCppName = inAnalysisContext.mSelfObjectCppName
-    outExpression = @selfInExpressionForGeneration.new {!inAnalysisContext.mSelfCopyTypeProxy !self.mSelfLocation !selfCppName}
+    outExpression = @selfInExpressionForGeneration.new {!inAnalysisContext.mSelfCopyTypeEntry !self.mSelfLocation !selfCppName}
   end
 }
 

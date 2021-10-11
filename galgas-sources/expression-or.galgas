@@ -104,7 +104,7 @@ override method @orExpressionAST enterExpressionInSemanticContext
 override method @orExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy inInferenceType
+  ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
@@ -127,7 +127,7 @@ override method @orExpressionAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
@@ -159,7 +159,7 @@ override method @orShortExpressionAST enterExpressionInSemanticContext
 override method @orShortExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy inInferenceType
+  ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
@@ -182,7 +182,7 @@ override method @orShortExpressionAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
@@ -213,7 +213,7 @@ override method @xorExpressionAST enterExpressionInSemanticContext
 override method @xorExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy inInferenceType
+  ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
@@ -236,7 +236,7 @@ override method @xorExpressionAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
@@ -269,7 +269,7 @@ override method @closedSliceExpressionAST enterExpressionInSemanticContext
 override method @closedSliceExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy unused inInferenceType
+  ?let @unifiedTypeMap-entry unused inInferenceType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -293,11 +293,11 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
   if [leftType key] != "uint" then
     error [leftExpression mLocation] : "the left expression or '...' operator should an @uint"
   end
-  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+  let @unifiedTypeMap-entry rightType = [rightExpression mResultType]
   if [rightType key] != "uint" then
     error [rightExpression mLocation] : "the right expression or '...' operator should an @uint"
   end
@@ -324,7 +324,7 @@ override method @openedSliceExpressionAST enterExpressionInSemanticContext
 override method @openedSliceExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy unused inInferenceType
+  ?let @unifiedTypeMap-entry unused inInferenceType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -348,11 +348,11 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
   if [leftType key] != "uint" then
     error [leftExpression mLocation] : "the left expression or '...' operator should an @uint"
   end
-  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+  let @unifiedTypeMap-entry rightType = [rightExpression mResultType]
   if [rightType key] != "uint" then
     error [rightExpression mLocation] : "the right expression or '...' operator should an @uint"
   end

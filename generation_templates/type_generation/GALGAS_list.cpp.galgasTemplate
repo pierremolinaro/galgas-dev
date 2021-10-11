@@ -10,7 +10,7 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
 //--- Constructors
   public: cCollectionElement_%!TYPE_IDENTIFIER% (%?^
   for () in ATTRIBUTE_LIST
-    do %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
+    do %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
     between %,\n%!^
   end
 %\n%
@@ -34,7 +34,7 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
 
 cCollectionElement_%!TYPE_IDENTIFIER%::cCollectionElement_%!TYPE_IDENTIFIER% (%?^
   for () in ATTRIBUTE_LIST
-    do %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
+    do %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
     between %,\n%!^
   end
 %\n%
@@ -121,7 +121,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (UNUS
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue (%?^
   for () in ATTRIBUTE_LIST
-  do index IDX %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & inOperand%![IDX string]
+  do index IDX %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
   end
   %\n%!^%COMMA_LOCATION_ARGS) {
@@ -148,7 +148,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue (
 
 void GALGAS_%!TYPE_IDENTIFIER%::makeAttributesFromObjects (%?^%capCollectionElement & outAttributes%
   for () in ATTRIBUTE_LIST
-    do %,\n%!^%const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
+    do %,\n%!^%const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
   end
 %\n%
 !^%COMMA_LOCATION_ARGS) {
@@ -167,7 +167,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::makeAttributesFromObjects (%?^%capCollectionElem
 
 void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
   for () in ATTRIBUTE_LIST
-  do index IDX %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & inOperand%![IDX string]
+  do index IDX %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
   end
   %\n%!^%COMMA_LOCATION_ARGS) {
@@ -218,7 +218,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_append (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIF
 
 void GALGAS_%!TYPE_IDENTIFIER%::setter_insertAtIndex (%?^
   for () in ATTRIBUTE_LIST do index IDX
-    %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% inOperand%![IDX string]%,\n%!^
+    %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inOperand%![IDX string]%,\n%!^
   end
    %const GALGAS_uint inInsertionIndex,\n%!^
    %C_Compiler * inCompiler\n%!^
@@ -250,7 +250,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_insertAtIndex (%?^
 
 void GALGAS_%!TYPE_IDENTIFIER%::setter_removeAtIndex (%?^
   for () in ATTRIBUTE_LIST do index IDX
-    %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outOperand%![IDX string]%,\n%!^
+    %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & outOperand%![IDX string]%,\n%!^
   end
    %const GALGAS_uint inRemoveIndex,\n%!^
    %C_Compiler * inCompiler\n%!^
@@ -292,7 +292,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_removeAtIndex (%?^
 
 void GALGAS_%!TYPE_IDENTIFIER%::setter_popFirst (%?^
   for () in ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  do index IDX %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) {
@@ -317,7 +317,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popFirst (%?^
 
 void GALGAS_%!TYPE_IDENTIFIER%::setter_popLast (%?^
   for () in ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  do index IDX %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) {
@@ -342,7 +342,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popLast (%?^
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^
   for () in ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  do index IDX %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) const {
@@ -367,7 +367,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^
   for () in ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  do index IDX %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) const {
@@ -443,7 +443,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::plusAssign_operation (%?^%const GALGAS_%!TYPE_ID
 for () in ATTRIBUTE_LIST do index IDX
   if mHasSetter then
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%AtIndex (%?^%GALGAS_%![mPropertyTypeProxy identifierRepresentation]% inOperand,\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%AtIndex (%?^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inOperand,\n%
   %                                              %!^%GALGAS_uint inIndex,\n%
   %                                              %!^%C_Compiler * inCompiler\n%
   %                                              %!^%COMMA_LOCATION_ARGS) {\n%
@@ -458,12 +458,12 @@ for () in ATTRIBUTE_LIST do index IDX
 
   if mHasGetter then
     %//----------------------------------------------------------------------------------------------------------------------\n\n%
-    %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]%AtIndex (%?^%const GALGAS_uint & inIndex,\n%
+    %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]%AtIndex (%?^%const GALGAS_uint & inIndex,\n%
     %                                              %!^%C_Compiler * inCompiler\n%
     %                                              %!^%COMMA_LOCATION_ARGS) const {\n%
     %  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;\n%
     %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;\n%
-    %  GALGAS_%![mPropertyTypeProxy identifierRepresentation]% result ;\n%
+    %  GALGAS_%![mPropertyTypeEntry identifierRepresentation]% result ;\n%
     %  if (NULL != p) {\n%
     %    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
     %    result = p->mObject.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
@@ -493,7 +493,7 @@ GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LO
 
 %for () in ATTRIBUTE_LIST do index IDX
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
-  %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
   %  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
   %  return p->mObject.mProperty_%![mPropertyName identifierRepresentation]% ;\n%

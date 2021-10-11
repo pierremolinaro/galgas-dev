@@ -23,14 +23,14 @@ func %once generateFewHeaderFiles -> @bool {
 
 list @functionSignature {
   @lstring mFormalSelector
-  @unifiedTypeMap-proxy mFormalArgumentType
+  @unifiedTypeMap-entry mFormalArgumentType
   @string mFormalArgumentName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-list @unifiedTypeMapProxyList {
-  @unifiedTypeMap-proxy mType
+list @unifiedTypeMapEntryList {
+  @unifiedTypeMap-entry mType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -42,7 +42,7 @@ list @unifiedTypeMapProxyList {
 map @constructorMap {
   @functionSignature mArgumentTypeList
   @bool mHasCompilerArgument
-  @unifiedTypeMap-proxy mReturnedType
+  @unifiedTypeMap-entry mReturnedType
   insert or replace
   insert insertKey error message "the '%K' constructor has been already defined"
   search searchKey error message "the '%K' constuctor is not declared"
@@ -75,7 +75,7 @@ enum @methodKind {
 list @optionalMethodSignature {
   @bool mInputArgument # true -> input, false -> output
   @lstring mFormalSelector
-  @unifiedTypeMap-proxy mFormalArgumentType
+  @unifiedTypeMap-entry mFormalArgumentType
   @string mFormalArgumentName
 }
 
@@ -99,7 +99,7 @@ map @getterMap {
   @functionSignature mArgumentTypeList
   @location mDeclarationLocation
   @bool mHasCompilerArgument
-  @unifiedTypeMap-proxy mReturnedType
+  @unifiedTypeMap-entry mReturnedType
   @methodQualifier mQualifier
   @string mErrorMessage # If not empty, calling the method raises an error with this message
  
@@ -117,7 +117,7 @@ map @getterMap {
 
 list @formalParameterSignature {
   @lstring mFormalSelector
-  @unifiedTypeMap-proxy mFormalArgumentType
+  @unifiedTypeMap-entry mFormalArgumentType
   @formalArgumentPassingModeAST mFormalArgumentPassingMode
   @string mFormalArgumentName
 }
@@ -174,7 +174,7 @@ map @classMethodMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @enumerationDescriptorList {
-  @unifiedTypeMap-proxy mEnumeratedType
+  @unifiedTypeMap-entry mEnumeratedType
   @string mEnumerationName
 }
 
@@ -185,7 +185,7 @@ list @enumerationDescriptorList {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @typedPropertyList {
-  @unifiedTypeMap-proxy mPropertyTypeProxy
+  @unifiedTypeMap-entry mPropertyTypeEntry
   @lstring mPropertyName
   @bool mHasSetter
   @bool mHasGetter
@@ -232,8 +232,8 @@ enum @typeKindEnum {
   case listType 
   case sortedListType 
   case mapType 
-  case uniqueMapType 
-  case mapProxyType 
+  case sharedMapType 
+  case sharedMapEntryType 
   case listMapType 
   case boolsetType 
   case structType 
@@ -252,8 +252,8 @@ getter @typeKindEnum kind -> @string {
     case listType : result = "list"
     case sortedListType : result = "sorted list"
     case mapType : result = "map"
-    case uniqueMapType : result = "unique map"
-    case mapProxyType : result = "map proxy"
+    case sharedMapType : result = "shared map"
+    case sharedMapEntryType : result = "shared map entry"
     case listMapType : result = "list map"
     case structType : result = "struct"
     case boolsetType : result = "boolset"
@@ -315,7 +315,7 @@ boolset @operators {
 
 map @propertyMap {
   @bool mIsPublic
-  @unifiedTypeMap-proxy mPropertyType
+  @unifiedTypeMap-entry mPropertyType
   insert insertKey error message "the '%K' property has been already declared in %L"
   search searchKey error message "the '%K' property is not declared"
 }
@@ -330,7 +330,7 @@ enum @headerKind {
 
 map @constantIndexMap {
   @uint mIndex
-  @unifiedTypeMapProxyList mAssociatedTypeList
+  @unifiedTypeMapEntryList mAssociatedTypeList
   insert insertKey error message "the '%K' constant is already declared"
   search searchKey error message "the '%K' constant is not declared"
 }
@@ -344,7 +344,7 @@ map @constantIndexMap {
 shared map @unifiedTypeMap {
   @bool mIsPredefined
   @bool mIsConcrete # false if abstract class
-  @unifiedTypeMap-proxy mSuperType
+  @unifiedTypeMap-entry mSuperType
   @typeKindEnum mTypeKindEnum
   @bool mSupportCollectionValue
   @typedPropertyList mAllTypedAttributeList
@@ -362,9 +362,9 @@ shared map @unifiedTypeMap {
   @constantIndexMap mEnumConstantMap
   @enumConstantList mEnumConstantList
   @mapSearchMethodListAST mMapSearchMethodList # For a map, the list of search methods
-  @mapSearchMethodListAST mMapProxySearchConstructorList # For a map proxy, the list of search methods of the associated map
+  @mapSearchMethodListAST mMapEntrySearchConstructorList # For a map entry, the list of search methods of the associated map
   @bool mGenerateHeaderInSeparateFile # Significant only for classes
-  @unifiedTypeMap-proxy mTypeForEnumeratedElement
+  @unifiedTypeMap-entry mTypeForEnumeratedElement
   @string mDefaultConstructorName # Used in [@xxx default] (empty string if no default constructor)
   @string mHeaderFileName # Name of C++ header file that contains type declaration
   @headerKind mHeaderKind
@@ -375,7 +375,7 @@ shared map @unifiedTypeMap {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-proxy baseType -> @unifiedTypeMap-proxy outBaseType {
+getter @unifiedTypeMap-entry baseType -> @unifiedTypeMap-entry outBaseType {
   outBaseType = self
   loop( @uint. max) while not [[outBaseType mSuperType] isNull] do
     outBaseType = [outBaseType mSuperType]
@@ -384,7 +384,7 @@ getter @unifiedTypeMap-proxy baseType -> @unifiedTypeMap-proxy outBaseType {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-method @unifiedTypeMap-proxy addHeaderFileName ?!@stringset ioInclusions {
+method @unifiedTypeMap-entry addHeaderFileName ?!@stringset ioInclusions {
   if (not [self mIsPredefined]) & ([self mHeaderKind] != @headerKind.noHeader) then
     ioInclusions += ![self mHeaderFileName]
   end
@@ -392,7 +392,7 @@ method @unifiedTypeMap-proxy addHeaderFileName ?!@stringset ioInclusions {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-method @unifiedTypeMap-proxy addHeaderFileName1 ?!@stringset ioInclusions {
+method @unifiedTypeMap-entry addHeaderFileName1 ?!@stringset ioInclusions {
   if not [self mIsPredefined] then
     switch [self mHeaderKind]
     case noHeader :

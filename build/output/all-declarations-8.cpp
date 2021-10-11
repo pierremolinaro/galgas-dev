@@ -7103,7 +7103,7 @@ typeComparisonResult cEnumAssociatedValues_ifTestForGeneration_regular::compare 
 
 cEnumAssociatedValues_ifTestForGeneration_letExp::cEnumAssociatedValues_ifTestForGeneration_letExp (const GALGAS_string & inAssociatedValue0,
                                                                                                     const GALGAS_semanticExpressionForGeneration & inAssociatedValue1,
-                                                                                                    const GALGAS_unifiedTypeMap_2D_proxy & inAssociatedValue2
+                                                                                                    const GALGAS_unifiedTypeMap_2D_entry & inAssociatedValue2
                                                                                                     COMMA_LOCATION_ARGS) :
 cEnumAssociatedValues (THERE),
 mAssociatedValue0 (inAssociatedValue0),
@@ -7207,7 +7207,7 @@ GALGAS_ifTestForGeneration GALGAS_ifTestForGeneration::constructor_regular (cons
 
 GALGAS_ifTestForGeneration GALGAS_ifTestForGeneration::constructor_letExp (const GALGAS_string & inAssociatedValue0,
                                                                            const GALGAS_semanticExpressionForGeneration & inAssociatedValue1,
-                                                                           const GALGAS_unifiedTypeMap_2D_proxy & inAssociatedValue2
+                                                                           const GALGAS_unifiedTypeMap_2D_entry & inAssociatedValue2
                                                                            COMMA_LOCATION_ARGS) {
   GALGAS_ifTestForGeneration result ;
   if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid () && inAssociatedValue2.isValid ()) {
@@ -7257,7 +7257,7 @@ void GALGAS_ifTestForGeneration::method_regular (GALGAS_semanticExpressionForGen
 
 void GALGAS_ifTestForGeneration::method_letExp (GALGAS_string & outAssociatedValue0,
                                                 GALGAS_semanticExpressionForGeneration & outAssociatedValue1,
-                                                GALGAS_unifiedTypeMap_2D_proxy & outAssociatedValue2,
+                                                GALGAS_unifiedTypeMap_2D_entry & outAssociatedValue2,
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_letExp) {
@@ -7313,7 +7313,7 @@ bool GALGAS_ifTestForGeneration::optional_regular (GALGAS_semanticExpressionForG
 
 bool GALGAS_ifTestForGeneration::optional_letExp (GALGAS_string & outAssociatedValue0,
                                                   GALGAS_semanticExpressionForGeneration & outAssociatedValue1,
-                                                  GALGAS_unifiedTypeMap_2D_proxy & outAssociatedValue2) const {
+                                                  GALGAS_unifiedTypeMap_2D_entry & outAssociatedValue2) const {
   const bool ok = mEnum == kEnum_letExp ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_ifTestForGeneration_letExp *) unsafePointer () ;

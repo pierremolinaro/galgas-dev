@@ -46,7 +46,7 @@ class C_Compiler ;
 class C_galgas_type_descriptor ;
 class capCollectionElementArray ;
 class cUniqueMapNode ;
-class cSharedProxy ;
+class cSharedEntry ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -108,18 +108,18 @@ class cOverrideStateDescriptor {
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class AC_GALGAS_uniqueMapProxy : public AC_GALGAS_root {
+class AC_GALGAS_sharedMapEntry : public AC_GALGAS_root {
   private: typedef enum {kNotValid, kIsNull, kIsRegular} enumMapProxyState ;
 
 //--------------------------------- Attributes
   private: enumMapProxyState mState ;
-  private: cSharedProxy * mSharedProxy ; // refers to map node if kIsRegular
+  private: cSharedEntry * mSharedEntry ; // refers to map node if kIsRegular
   
 //--------------------------------- Constructor
-  protected: AC_GALGAS_uniqueMapProxy (void) ;
+  protected: AC_GALGAS_sharedMapEntry (void) ;
   
 //--------------------------------- Destructor
-  protected: virtual ~ AC_GALGAS_uniqueMapProxy (void) ;
+  protected: virtual ~ AC_GALGAS_sharedMapEntry (void) ;
   
 //--------------------------------- isValid
   public: virtual bool isValid (void) const ;
@@ -128,34 +128,34 @@ class AC_GALGAS_uniqueMapProxy : public AC_GALGAS_root {
   public: virtual void drop (void) ;
   
 //--------------------------------- Handle copy
-  protected: AC_GALGAS_uniqueMapProxy (const AC_GALGAS_uniqueMapProxy & inSource) ;
-  protected: AC_GALGAS_uniqueMapProxy & operator = (const AC_GALGAS_uniqueMapProxy & inSource) ;
+  protected: AC_GALGAS_sharedMapEntry (const AC_GALGAS_sharedMapEntry & inSource) ;
+  protected: AC_GALGAS_sharedMapEntry & operator = (const AC_GALGAS_sharedMapEntry & inSource) ;
 
 //--------------------------------- Attachment management
-  private: VIRTUAL_IN_DEBUG void attachProxyToMapNode (cUniqueMapNode * inMapNode) ;
+  private: VIRTUAL_IN_DEBUG void attachEntryToMapNode (cUniqueMapNode * inMapNode) ;
 
 //--------------------------------- Internal make proxy
-  protected: VIRTUAL_IN_DEBUG void internalMakeProxy (AC_GALGAS_uniqueMap & ioMap,
+  protected: VIRTUAL_IN_DEBUG void internalMakeEntry (AC_GALGAS_uniqueMap & ioMap,
                                                        const GALGAS_lstring & inKey
                                                        COMMA_LOCATION_ARGS) ;
 
-  protected: VIRTUAL_IN_DEBUG void internalMakeOptionalProxy (AC_GALGAS_uniqueMap & ioMap,
+  protected: VIRTUAL_IN_DEBUG void internalMakeOptionalEntry (AC_GALGAS_uniqueMap & ioMap,
                                                                const GALGAS_lstring & inKey
                                                                COMMA_LOCATION_ARGS) ;
 
-  protected: VIRTUAL_IN_DEBUG void internalMakeProxyFromString (AC_GALGAS_uniqueMap & ioMap,
+  protected: VIRTUAL_IN_DEBUG void internalMakeEntryFromString (AC_GALGAS_uniqueMap & ioMap,
                                                                  const GALGAS_string & inKey
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Internal search key
-  protected: VIRTUAL_IN_DEBUG void internalMakeRegularProxyBySearchingKey (const AC_GALGAS_uniqueMap & inMap,
+  protected: VIRTUAL_IN_DEBUG void internalMakeRegularEntryBySearchingKey (const AC_GALGAS_uniqueMap & inMap,
                                                                             const GALGAS_lstring & inKey,
                                                                             const char * inSearchErrorMessage,
                                                                             C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Make null proxy
-  protected: VIRTUAL_IN_DEBUG void makeNullProxy (LOCATION_ARGS) ;
+  protected: VIRTUAL_IN_DEBUG void makeNullEntry (LOCATION_ARGS) ;
 
 //--------------------------------- Reader invocation declaration
   public: VIRTUAL_IN_DEBUG GALGAS_bool getter_isRegular (LOCATION_ARGS) const ;
@@ -184,7 +184,7 @@ class AC_GALGAS_uniqueMapProxy : public AC_GALGAS_root {
                                               const int32_t inIndentation) const ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const AC_GALGAS_uniqueMapProxy & inOperand) const ;
+  public: typeComparisonResult objectCompare (const AC_GALGAS_sharedMapEntry & inOperand) const ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -290,9 +290,9 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG GALGAS_uint getter_count (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GALGAS_uint getter_unsolvedProxyCount (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GALGAS_uint getter_unsolvedEntryCount (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_unsolvedProxyList (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_unsolvedEntryList (LOCATION_ARGS) const ;
 
 //--------------------------------- Introspection
   public: virtual const C_galgas_type_descriptor * staticTypeDescriptor (void) const = 0 ;
@@ -308,7 +308,7 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
   protected: VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
 
 //--------------------------------- Internal methods for inserting proxy
-  protected: VIRTUAL_IN_DEBUG cUniqueMapNode * performInsertProxy (const C_String & inKey,
+  protected: VIRTUAL_IN_DEBUG cUniqueMapNode * performInsertEntry (const C_String & inKey,
                                                                     const GALGAS_location & inLocation
                                                                     COMMA_LOCATION_ARGS) ;
 
@@ -352,7 +352,7 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
   protected: C_String mShadowMessage ;
 
 //--------------------------------- Friend
-  friend class AC_GALGAS_uniqueMapProxy ;
+  friend class AC_GALGAS_sharedMapEntry ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------

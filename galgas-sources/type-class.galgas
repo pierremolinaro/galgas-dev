@@ -116,10 +116,10 @@ override method @classDeclarationAST enterInSemanticContext
   @typedPropertyList inheritedTypedAttributeList
   @propertyMap attributeMap = {}
 #--- Handle super class
-  @unifiedTypeMap-proxy superClassIndex
+  @unifiedTypeMap-entry superClassIndex
   @bool generateHeaderInSeparateFile
   if [self.mSuperClassName string] == "" then
-    superClassIndex = @unifiedTypeMap-proxy.null
+    superClassIndex = @unifiedTypeMap-entry.null
     commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?getterMap )
     setterMap = {}
     instanceMethodMap = {}
@@ -132,7 +132,7 @@ override method @classDeclarationAST enterInSemanticContext
       end
     end
   else
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !self.mSuperClassName ?superClassIndex]
+    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mSuperClassName ?superClassIndex]
     @typeKindEnum typeKindEnum
     @getterMap inheritedGetterMap
     @setterMap inheritedSetterMap
@@ -201,11 +201,11 @@ override method @classDeclarationAST enterInSemanticContext
   for () in inheritedTypedAttributeList do
     constructorAttributeTypeList +=
       !if mHasSelector then mPropertyName else ["" nowhere] end
-      !mPropertyTypeProxy
+      !mPropertyTypeEntry
       !mPropertyName.string
   end
   for () in self.mPropertyList do
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     var hasSelector = false
     for (attribute) in mAttributeList do
       if attribute.string == "selector" then
@@ -229,10 +229,10 @@ override method @classDeclarationAST enterInSemanticContext
     end
   end
 #--- Current class Index
-  [@unifiedTypeMap-proxy makeProxy
+  [@unifiedTypeMap-entry makeEntry
      !?ioSemanticContext.mTypeMap
      !self.mClassTypeName
-     ?var @unifiedTypeMap-proxy classIndex
+     ?var @unifiedTypeMap-entry classIndex
   ]
 #--- Constructors
   @constructorMap constructorMap = {}
@@ -248,7 +248,7 @@ override method @classDeclarationAST enterInSemanticContext
   @typedPropertyList currentClassTypedAttributeList = {}
   @typedPropertyList allTypedAttributeList = inheritedTypedAttributeList
   for () in self.mPropertyList do
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true # mIsPublic
     let hasGetter = true # mIsPublic
     var hasSelector = false
@@ -282,7 +282,7 @@ override method @classDeclarationAST enterInSemanticContext
       [!?setterMap insertKey
         !@lstring.new {!"set"+ [[mPropertyName string] stringByCapitalizingFirstCharacter] !@location.here}
         !@methodKind.definedAsMember
-        !{!["" nowhere] !mPropertyTypeProxy !@formalArgumentPassingModeAST.argumentIn !mPropertyName.string}
+        !{!["" nowhere] !mPropertyTypeEntry !@formalArgumentPassingModeAST.argumentIn !mPropertyName.string}
         !false # No compiler argument
         !@methodQualifier.isBasicFinal
         !"" # No error message
@@ -308,7 +308,7 @@ override method @classDeclarationAST enterInSemanticContext
     defaultConstructorName = [superClassIndex mDefaultConstructorName]
   end
   for () in currentClassTypedAttributeList while defaultConstructorName != "" do
-    if ([mPropertyTypeProxy mDefaultConstructorName] == "") | not [mPropertyTypeProxy mIsConcrete] then
+    if ([mPropertyTypeEntry mDefaultConstructorName] == "") | not [mPropertyTypeEntry mIsConcrete] then
       defaultConstructorName = ""
     end
   end
@@ -337,7 +337,7 @@ override method @classDeclarationAST enterInSemanticContext
     !{}
     !{}
     !generateHeaderInSeparateFile
-    !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction
+    !@unifiedTypeMap-entry.null # Type for enumerated element for "for" instruction
     !defaultConstructorName # Default constructor
     !"class-" + [self.mClassTypeName fileNameRepresentation]
     !@headerKind.twoHeaders
@@ -364,17 +364,17 @@ override method @classDeclarationAST semanticAnalysis
     [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !superClassNameForUsefulness]
   end
 #------ Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mClassTypeName}
+  let @unifiedTypeMap-entry selfType = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mClassTypeName}
 #--- Super class type
-  let superClassProxy = if self.mSuperClassName.string == ""
-    then @unifiedTypeMap-proxy.null
-    else @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mSuperClassName}
+  let superClassEntry = if self.mSuperClassName.string == ""
+    then @unifiedTypeMap-entry.null
+    else @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mSuperClassName}
   end
 #------ check "shared" status:
 # a base class can be freely declared as shared or not
 # a class should the same 'shared' shared status as its super class
-  if superClassProxy != .null then
-    [[superClassProxy mTypeKindEnum] classType ?isShared:let superClassIsShared]
+  if superClassEntry != .null then
+    [[superClassEntry mTypeKindEnum] classType ?isShared:let superClassIsShared]
     if superClassIsShared & not self.mIsShared then
       error self.mClassTypeName : "this class should be declared with 'shared' qualifier, as its super class"
     elsif not superClassIsShared & self.mIsShared then
@@ -385,7 +385,7 @@ override method @classDeclarationAST semanticAnalysis
 # A class that has a super may not have any feature
 # A class without a super class admits the 'generatedInSeparateFile' feature
   @typedPropertyList allAttributeList
-  if superClassProxy == .null then
+  if superClassEntry == .null then
     allAttributeList = {}
     @bool generatedInSeparateFileFeature = false
     if [self.mClassFeatureList length] > 0 then
@@ -401,7 +401,7 @@ override method @classDeclarationAST semanticAnalysis
       end
     end
   else
-    allAttributeList = [superClassProxy mAllTypedAttributeList]
+    allAttributeList = [superClassEntry mAllTypedAttributeList]
     if [self.mClassFeatureList length] > 0 then
       for () in self.mClassFeatureList do
         error mValue:"a class that has a super class does not accept any feature"
@@ -414,7 +414,7 @@ override method @classDeclarationAST semanticAnalysis
   for () in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
-    let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
+    let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     let hasSetter = true # mIsPublic
     let hasGetter = true # mIsPublic
     var hasSelector = false
@@ -464,7 +464,7 @@ override method @classDeclarationAST semanticAnalysis
       !selfType
       !self.mIsAbstract
       !self.mIsShared
-      !superClassProxy
+      !superClassEntry
       !allAttributeList
       !typedAttributeList
       ![selfType mGenerateHeaderInSeparateFile]
@@ -478,7 +478,7 @@ override method @classDeclarationAST semanticAnalysis
 shared class @classTypeForGeneration : @semanticTypeForGeneration {
   @bool mIsAbstract
   @bool mIsShared
-  @unifiedTypeMap-proxy mSuperClass # Null if no super class
+  @unifiedTypeMap-entry mSuperClass # Null if no super class
   @typedPropertyList mAllTypedAttributeList # Inherited followed by current attributes
   @typedPropertyList mTypedAttributeList
   @bool mGenerateHeaderInSeparateFile # Significant only for classes
@@ -495,26 +495,26 @@ override method @classTypeForGeneration appendDeclaration1
   end
 
   outHeader = [filewrapper typeGenerationTemplate.classTypeHeader1
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
     !self.mIsAbstract
-    ![self.mTypeProxy mDefaultConstructorName] != ""
+    ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
-    ![self.mTypeProxy mIsConcrete]
-    ![self.mTypeProxy mConstructorMap]
-    ![self.mTypeProxy mGetterMap]
-    ![self.mTypeProxy mSetterMap]
-    ![self.mTypeProxy mInstanceMethodMap]
-    ![self.mTypeProxy mClassMethodMap]
-    ![self.mTypeProxy mOptionalMethodMap]
-    ![self.mTypeProxy mEnumerationDescriptor]
-    ![self.mTypeProxy mHandledOperatorFlags]
-    ![self.mTypeProxy mAddAssignOperatorArguments]
-    ![self.mTypeProxy mTypeForEnumeratedElement]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
+    ![self.mSelfTypeEntry  mIsConcrete]
+    ![self.mSelfTypeEntry  mConstructorMap]
+    ![self.mSelfTypeEntry  mGetterMap]
+    ![self.mSelfTypeEntry  mSetterMap]
+    ![self.mSelfTypeEntry  mInstanceMethodMap]
+    ![self.mSelfTypeEntry  mClassMethodMap]
+    ![self.mSelfTypeEntry  mOptionalMethodMap]
+    ![self.mSelfTypeEntry  mEnumerationDescriptor]
+    ![self.mSelfTypeEntry  mHandledOperatorFlags]
+    ![self.mSelfTypeEntry  mAddAssignOperatorArguments]
+    ![self.mSelfTypeEntry  mTypeForEnumeratedElement]
   ]
  }
 
@@ -531,22 +531,22 @@ override method @classTypeForGeneration appendDeclaration2
 
   if self.mGenerateHeaderInSeparateFile then
     let part1 = [filewrapper typeGenerationTemplate.classTypeHeader2part1
-      ![self.mTypeProxy key]
-      ![self.mTypeProxy identifierRepresentation]
+      ![self.mSelfTypeEntry  key]
+      ![self.mSelfTypeEntry  identifierRepresentation]
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
       !self.mTypedAttributeList
       !self.mAllTypedAttributeList
       !self.mIsAbstract
     ]
     let part2 = [filewrapper typeGenerationTemplate.classTypeHeader2part2
-      ![self.mTypeProxy key]
-      ![self.mTypeProxy identifierRepresentation]
+      ![self.mSelfTypeEntry  key]
+      ![self.mSelfTypeEntry  identifierRepresentation]
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
       !self.mTypedAttributeList
       !self.mAllTypedAttributeList
       !self.mIsAbstract
     ]
-    let headerFileName = "separateHeaderFor_" + [self.mTypeProxy identifierRepresentation] + ".h"
+    let headerFileName = "separateHeaderFor_" + [self.mSelfTypeEntry  identifierRepresentation] + ".h"
     [@string generateFileWithPattern
       !startPath:inOutputDirectory + "/../user-headers"
       !fileName:headerFileName
@@ -561,16 +561,16 @@ override method @classTypeForGeneration appendDeclaration2
     outHeader = "#include \"" + headerFileName + "\"\n\n"
   else
     outHeader = [filewrapper typeGenerationTemplate.classTypeHeader2part1
-      ![self.mTypeProxy key]
-      ![self.mTypeProxy identifierRepresentation]
+      ![self.mSelfTypeEntry  key]
+      ![self.mSelfTypeEntry  identifierRepresentation]
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
       !self.mTypedAttributeList
       !self.mAllTypedAttributeList
       !self.mIsAbstract
     ]
     outHeader += [filewrapper typeGenerationTemplate.classTypeHeader2part2
-      ![self.mTypeProxy key]
-      ![self.mTypeProxy identifierRepresentation]
+      ![self.mSelfTypeEntry  key]
+      ![self.mSelfTypeEntry  identifierRepresentation]
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
       !self.mTypedAttributeList
       !self.mAllTypedAttributeList
@@ -586,17 +586,17 @@ override method @classTypeForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  [self.mTypeProxy addHeaderFileName !?ioInclusionSet]
+  [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper typeGenerationTemplate.classTypeSpecificImplementation
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
     !self.mTypedAttributeList
     !self.mAllTypedAttributeList
     ![self.mAllTypedAttributeList subListWithRange !@range.new {!0 ![self.mAllTypedAttributeList length] - [self.mTypedAttributeList length]}]
     !self.mIsAbstract
     !self.mIsShared
-    ![self.mTypeProxy mDefaultConstructorName] != ""
+    ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
   ]
 }
 

@@ -48,7 +48,7 @@ method @semanticDeclarationAST buildExtensionListMaps
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-listmap @descendantClassListMap (@unifiedTypeMapProxyList)
+listmap @descendantClassListMap (@unifiedTypeMapEntryList)
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
@@ -93,7 +93,7 @@ proc checkextensionSetterDefinitionForClass
   ?let @genericExtensionMethodListMap inOverridingExtensionMethodListMap
   ?let @unifiedTypeMap inUnifiedTypeMap
 {
-  let @unifiedTypeMapProxyList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
+  let @unifiedTypeMapEntryList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
   for () in descendantClasses do
     let @lstring descendantClassName = [mType lkey]
     @lstringlist overridingMethods = [inOverridingExtensionMethodListMap listForKey ![descendantClassName string]]
@@ -130,7 +130,7 @@ proc checkExtensionMethodDefinitionForClass
   ?let @genericExtensionMethodListMap inOverridingExtensionMethodListMap
   ?let @unifiedTypeMap inUnifiedTypeMap
 {
-  let @unifiedTypeMapProxyList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
+  let @unifiedTypeMapEntryList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
   for () in descendantClasses do
     let @lstring descendantClassName = [mType lkey]
     @lstringlist overridingMethods = [inOverridingExtensionMethodListMap listForKey ![descendantClassName string]]
@@ -167,7 +167,7 @@ proc checkExtensionGetterDefinitionForClass
   ?let @genericExtensionMethodListMap inOverridingExtensionGetterListMap
   ?let @unifiedTypeMap inUnifiedTypeMap
 {
-  let @unifiedTypeMapProxyList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
+  let @unifiedTypeMapEntryList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
   for () in descendantClasses do
     @lstring descendantClassName = [mType lkey]
     @lstringlist overridingReaders = [inOverridingExtensionGetterListMap listForKey ![descendantClassName string]]
@@ -210,7 +210,7 @@ proc performGalgas3ProjectGlobalCheckings
      if not [mSuperType isNull] then
        descendantClassListMap +=
          ![mSuperType key]
-         !@unifiedTypeMap-proxy. searchKey {!inSemanticContext.mTypeMap !lkey}
+         !@unifiedTypeMap-entry. searchKey {!inSemanticContext.mTypeMap !lkey}
      end
   end
 #--- Build Extension method listmaps

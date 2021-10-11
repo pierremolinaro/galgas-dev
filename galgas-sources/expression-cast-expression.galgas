@@ -89,7 +89,7 @@ override method @testDynamicClassInExpressionAST enterExpressionInSemanticContex
 override method @testDynamicClassInExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy unused inType
+  ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -99,17 +99,17 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
   [self.mReceiverExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?expression
   ]
 #--- Get type information
-   let castType = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
+   let castType = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
 #--- This type is either a class
   if [[[expression mResultType] mTypeKindEnum] isClassType] then
   #--- Check expression type is a descendant of named type
-    @unifiedTypeMap-proxy t = castType
+    @unifiedTypeMap-entry t = castType
     @bool found = t == [expression mResultType]
     loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
     while (not found) & not [[t mSuperType] isNull] do
@@ -146,7 +146,7 @@ override method @castInExpressionAST enterExpressionInSemanticContext
 override method @castInExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy unused inType
+  ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -155,20 +155,20 @@ override method @castInExpressionAST analyzeSemanticExpression
   [self.mReceiverExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !inAnalysisContext 
     !?ioVariableMap
     ?var @semanticExpressionForGeneration expression
    ]
 #--- Get type information
-   let type = @unifiedTypeMap-proxy. searchKey {
+   let type = @unifiedTypeMap-entry. searchKey {
      !inAnalysisContext.mSemanticContext.mTypeMap
      !self.mTypeName
    }
 #--- This type is an @object type
   if [[[expression mResultType] mTypeKindEnum] isClassType]then
   #--- Check expression type is a descendant of named type
-    @unifiedTypeMap-proxy t = type
+    @unifiedTypeMap-entry t = type
     @bool found = t == [expression mResultType]
     loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
     while (not found) & not [[t mSuperType] isNull] do
@@ -210,7 +210,7 @@ override method @castInExpressionAST analyzeSemanticExpression
 shared class @testDynamicClassInExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mReceiverExpression
   @dynamicTypeComparisonKind mTypeComparisonKind
-  @unifiedTypeMap-proxy mCastType
+  @unifiedTypeMap-entry mCastType
 }
 
 #·····················································································································

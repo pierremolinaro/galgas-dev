@@ -2238,7 +2238,7 @@ class cCollectionElement_extractedAssociatedValuesForGeneration : public cCollec
   public: GALGAS_extractedAssociatedValuesForGeneration_2D_element mObject ;
 
 //--- Constructors
-  public: cCollectionElement_extractedAssociatedValuesForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mType,
+  public: cCollectionElement_extractedAssociatedValuesForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mType,
                                                                      const GALGAS_string & in_mCppName,
                                                                      const GALGAS_uint & in_mIndex
                                                                      COMMA_LOCATION_ARGS) ;
@@ -2259,7 +2259,7 @@ class cCollectionElement_extractedAssociatedValuesForGeneration : public cCollec
 
 //----------------------------------------------------------------------------------------------------------------------
 
-cCollectionElement_extractedAssociatedValuesForGeneration::cCollectionElement_extractedAssociatedValuesForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mType,
+cCollectionElement_extractedAssociatedValuesForGeneration::cCollectionElement_extractedAssociatedValuesForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mType,
                                                                                                                       const GALGAS_string & in_mCppName,
                                                                                                                       const GALGAS_uint & in_mIndex
                                                                                                                       COMMA_LOCATION_ARGS) :
@@ -2333,7 +2333,7 @@ GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesFo
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesForGeneration::constructor_listWithValue (const GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesForGeneration::constructor_listWithValue (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
                                                                                                                         const GALGAS_string & inOperand1,
                                                                                                                         const GALGAS_uint & inOperand2
                                                                                                                         COMMA_LOCATION_ARGS) {
@@ -2350,7 +2350,7 @@ GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesFo
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_extractedAssociatedValuesForGeneration::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                                               const GALGAS_unifiedTypeMap_2D_proxy & in_mType,
+                                                                               const GALGAS_unifiedTypeMap_2D_entry & in_mType,
                                                                                const GALGAS_string & in_mCppName,
                                                                                const GALGAS_uint & in_mIndex
                                                                                COMMA_LOCATION_ARGS) {
@@ -2364,7 +2364,7 @@ void GALGAS_extractedAssociatedValuesForGeneration::makeAttributesFromObjects (c
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extractedAssociatedValuesForGeneration::addAssign_operation (const GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+void GALGAS_extractedAssociatedValuesForGeneration::addAssign_operation (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
                                                                          const GALGAS_string & inOperand1,
                                                                          const GALGAS_uint & inOperand2
                                                                          COMMA_LOCATION_ARGS) {
@@ -2403,7 +2403,7 @@ void GALGAS_extractedAssociatedValuesForGeneration::setter_append (GALGAS_extrac
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extractedAssociatedValuesForGeneration::setter_insertAtIndex (const GALGAS_unifiedTypeMap_2D_proxy inOperand0,
+void GALGAS_extractedAssociatedValuesForGeneration::setter_insertAtIndex (const GALGAS_unifiedTypeMap_2D_entry inOperand0,
                                                                           const GALGAS_string inOperand1,
                                                                           const GALGAS_uint inOperand2,
                                                                           const GALGAS_uint inInsertionIndex,
@@ -2425,7 +2425,7 @@ void GALGAS_extractedAssociatedValuesForGeneration::setter_insertAtIndex (const 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extractedAssociatedValuesForGeneration::setter_removeAtIndex (GALGAS_unifiedTypeMap_2D_proxy & outOperand0,
+void GALGAS_extractedAssociatedValuesForGeneration::setter_removeAtIndex (GALGAS_unifiedTypeMap_2D_entry & outOperand0,
                                                                           GALGAS_string & outOperand1,
                                                                           GALGAS_uint & outOperand2,
                                                                           const GALGAS_uint inRemoveIndex,
@@ -2462,7 +2462,7 @@ void GALGAS_extractedAssociatedValuesForGeneration::setter_removeAtIndex (GALGAS
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extractedAssociatedValuesForGeneration::setter_popFirst (GALGAS_unifiedTypeMap_2D_proxy & outOperand0,
+void GALGAS_extractedAssociatedValuesForGeneration::setter_popFirst (GALGAS_unifiedTypeMap_2D_entry & outOperand0,
                                                                      GALGAS_string & outOperand1,
                                                                      GALGAS_uint & outOperand2,
                                                                      C_Compiler * inCompiler
@@ -2484,7 +2484,7 @@ void GALGAS_extractedAssociatedValuesForGeneration::setter_popFirst (GALGAS_unif
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extractedAssociatedValuesForGeneration::setter_popLast (GALGAS_unifiedTypeMap_2D_proxy & outOperand0,
+void GALGAS_extractedAssociatedValuesForGeneration::setter_popLast (GALGAS_unifiedTypeMap_2D_entry & outOperand0,
                                                                     GALGAS_string & outOperand1,
                                                                     GALGAS_uint & outOperand2,
                                                                     C_Compiler * inCompiler
@@ -2506,7 +2506,7 @@ void GALGAS_extractedAssociatedValuesForGeneration::setter_popLast (GALGAS_unifi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extractedAssociatedValuesForGeneration::method_first (GALGAS_unifiedTypeMap_2D_proxy & outOperand0,
+void GALGAS_extractedAssociatedValuesForGeneration::method_first (GALGAS_unifiedTypeMap_2D_entry & outOperand0,
                                                                   GALGAS_string & outOperand1,
                                                                   GALGAS_uint & outOperand2,
                                                                   C_Compiler * inCompiler
@@ -2528,7 +2528,7 @@ void GALGAS_extractedAssociatedValuesForGeneration::method_first (GALGAS_unified
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extractedAssociatedValuesForGeneration::method_last (GALGAS_unifiedTypeMap_2D_proxy & outOperand0,
+void GALGAS_extractedAssociatedValuesForGeneration::method_last (GALGAS_unifiedTypeMap_2D_entry & outOperand0,
                                                                  GALGAS_string & outOperand1,
                                                                  GALGAS_uint & outOperand2,
                                                                  C_Compiler * inCompiler
@@ -2601,7 +2601,7 @@ void GALGAS_extractedAssociatedValuesForGeneration::plusAssign_operation (const 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extractedAssociatedValuesForGeneration::setter_setMTypeAtIndex (GALGAS_unifiedTypeMap_2D_proxy inOperand,
+void GALGAS_extractedAssociatedValuesForGeneration::setter_setMTypeAtIndex (GALGAS_unifiedTypeMap_2D_entry inOperand,
                                                                             GALGAS_uint inIndex,
                                                                             C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
@@ -2615,12 +2615,12 @@ void GALGAS_extractedAssociatedValuesForGeneration::setter_setMTypeAtIndex (GALG
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_extractedAssociatedValuesForGeneration::getter_mTypeAtIndex (const GALGAS_uint & inIndex,
+GALGAS_unifiedTypeMap_2D_entry GALGAS_extractedAssociatedValuesForGeneration::getter_mTypeAtIndex (const GALGAS_uint & inIndex,
                                                                                                    C_Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_extractedAssociatedValuesForGeneration * p = (cCollectionElement_extractedAssociatedValuesForGeneration *) attributes.ptr () ;
-  GALGAS_unifiedTypeMap_2D_proxy result ;
+  GALGAS_unifiedTypeMap_2D_entry result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
     result = p->mObject.mProperty_mType ;
@@ -2707,7 +2707,7 @@ GALGAS_extractedAssociatedValuesForGeneration_2D_element cEnumerator_extractedAs
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy cEnumerator_extractedAssociatedValuesForGeneration::current_mType (LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry cEnumerator_extractedAssociatedValuesForGeneration::current_mType (LOCATION_ARGS) const {
   const cCollectionElement_extractedAssociatedValuesForGeneration * p = (const cCollectionElement_extractedAssociatedValuesForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
   return p->mObject.mProperty_mType ;

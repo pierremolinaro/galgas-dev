@@ -41,7 +41,7 @@ override method @unaryPlusExpressionAST enterExpressionInSemanticContext
 override method @unaryPlusExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy unused inType
+  ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
@@ -55,7 +55,7 @@ override method @unaryPlusExpressionAST analyzeSemanticExpression
     ?outExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy type = [outExpression mResultType]
+  let @unifiedTypeMap-entry type = [outExpression mResultType]
   if not [[type mHandledOperatorFlags] prefixPlusOperator] then
     error self.mOperatorLocation
     : "operand type is '@" + [type key] + "' and does not support the prefix '+' operator"

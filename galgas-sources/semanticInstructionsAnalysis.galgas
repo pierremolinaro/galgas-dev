@@ -29,7 +29,7 @@ abstract method @semanticInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @localConstantList {
-  @unifiedTypeMap-proxy mType
+  @unifiedTypeMap-entry mType
   @lstring mName
   @bool mNoWarningIfUnused
   @string mCppName
@@ -38,7 +38,7 @@ list @localConstantList {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @localInitializedVariableList {
-  @unifiedTypeMap-proxy mType
+  @unifiedTypeMap-entry mType
   @lstring mName
   @string mCppName
 }
@@ -117,7 +117,7 @@ abstract method @actualParameterAST checkAgainstFormalArgument
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @lstring inFormalSelector
-  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -142,7 +142,7 @@ override method @outputActualParameterAST checkAgainstFormalArgument
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @lstring inFormalSelector
-  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -184,7 +184,7 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?let @lstring inFormalSelector
-  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -199,8 +199,8 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
   end
 #--- Analyze input/output variable
   @string variableCppName
-  [!?ioVariableMap searchForReadWriteAccess !self.mOutputInputActualParameterName ?var @unifiedTypeMap-proxy parameterType ?variableCppName ?*]
-  var typeList = @unifiedTypeMapProxyList. listWithValue {!parameterType}
+  [!?ioVariableMap searchForReadWriteAccess !self.mOutputInputActualParameterName ?var @unifiedTypeMap-entry parameterType ?variableCppName ?*]
+  var typeList = @unifiedTypeMapEntryList.listWithValue {!parameterType}
   for () in self.mStructAttributeList do
     let propertyMap = [parameterType mPropertyMap]
     [propertyMap searchKey
@@ -240,7 +240,7 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?let @lstring inFormalSelector
-  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap unused ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -268,7 +268,7 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
     !inFormalArgumentType
     !cppVarName
     !{}
-    !@unifiedTypeMapProxyList. listWithValue {!inFormalArgumentType}}
+    !@unifiedTypeMapEntryList. listWithValue {!inFormalArgumentType}}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -278,7 +278,7 @@ override method @outputInputJokerParameterAST checkAgainstFormalArgument
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?let @lstring unused inFormalSelector
-  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap unused ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -304,7 +304,7 @@ override method @outputInputJokerParameterAST checkAgainstFormalArgument
     !inFormalArgumentType
     !cppVarName
     !{}
-    !@unifiedTypeMapProxyList. listWithValue {!inFormalArgumentType}}
+    !@unifiedTypeMapEntryList. listWithValue {!inFormalArgumentType}}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -314,7 +314,7 @@ override method @inputActualExistingVariableParameterAST checkAgainstFormalArgum
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?let @lstring inFormalSelector
-  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -359,7 +359,7 @@ override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @lstring inFormalSelector
-  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap unused ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -373,13 +373,13 @@ override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
   elsif inFormalSelector.string != self.mActualSelector.string then
      error self.mActualSelector : "the selector should be '?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
   end
-  var @unifiedTypeMap-proxy parameterType
+  var @unifiedTypeMap-entry parameterType
   var @string targetVariableCppName
-  if [inAnalysisContext.mSelfTypeProxy isNull] then
+  if [inAnalysisContext.mSelfTypeEntry isNull] then
     error self.mInputActualSelfPropertyName: "'self' cannot be used in this context"
     : parameterType, targetVariableCppName
   else
-    let propertyMap = [inAnalysisContext.mSelfTypeProxy mPropertyMap]
+    let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
     [propertyMap searchKey !self.mInputActualSelfPropertyName ?* ?parameterType]
     targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[self.mInputActualSelfPropertyName string] identifierRepresentation]
   end
@@ -416,7 +416,7 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @lstring inFormalSelector
-  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -434,7 +434,7 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
 #--- Analyze or infer type
 
   if self.mInputOptionalActualTypeName.string != "" then
-    let parameterType = @unifiedTypeMap-proxy.searchKey {
+    let parameterType = @unifiedTypeMap-entry.searchKey {
       !inAnalysisContext.mSemanticContext.mTypeMap
       !self.mInputOptionalActualTypeName
     }
@@ -475,7 +475,7 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @lstring inFormalSelector
-  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -492,7 +492,7 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
   end
 #--- Analyze or infer type
   if self.mInputOptionalActualTypeName.string != "" then
-    let parameterType = @unifiedTypeMap-proxy.searchKey {
+    let parameterType = @unifiedTypeMap-entry.searchKey {
       !inAnalysisContext.mSemanticContext.mTypeMap
       !self.mInputOptionalActualTypeName
     }
@@ -544,7 +544,7 @@ override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?let @lstring inFormalSelector
-  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap unused ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -572,7 +572,7 @@ override method @inputJokerActualParameterAST checkAgainstFormalArgument
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?let @lstring unused inFormalSelector
-  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap unused ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -704,7 +704,7 @@ proc checkExpressionIsBoolean
       [[expressionType mPropertyMap] searchKey
         !@lstring.new {!"bool" !inErrorLocation}
         ?let isPublic 
-        ?let @unifiedTypeMap-proxy attributeType
+        ?let @unifiedTypeMap-entry attributeType
       ]
       if not isPublic then
         error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
@@ -804,7 +804,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
   if not inHasTranslateFeature then
     error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
-  [!?ioVariableMap searchForWriteAccess !self.mActualParameterName ?let @unifiedTypeMap-proxy type ?let @string cppName ?*]
+  [!?ioVariableMap searchForWriteAccess !self.mActualParameterName ?let @unifiedTypeMap-entry type ?let @string cppName ?*]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
   if expectedType != type then
     error self.mActualParameterName
@@ -826,7 +826,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
     error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location locationIndex]
-  let type = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mActualParameterTypeName}
+  let type = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mActualParameterTypeName}
   [!?ioVariableMap insertDefinedLocalVariable !self.mActualParameterName !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
   if expectedType != type then
@@ -849,7 +849,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
     error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location locationIndex]
-  let type = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mActualParameterTypeName}
+  let type = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mActualParameterTypeName}
   [!?ioVariableMap insertLocalConstant !self.mActualParameterName !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
   if expectedType != type then

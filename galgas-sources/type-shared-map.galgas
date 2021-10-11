@@ -91,10 +91,9 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $shared$
     $map$
-#    warning .here : "shared map"
   #--- Map type name
-    $@type$ ?let @lstring mMapTypeName indexing uniquemapDefinition, mapProxyDefinition "-proxy"
-    let mapProxyTypeName = @lstring.new {!mMapTypeName.string + "-proxy" !mMapTypeName.location}
+    $@type$ ?let @lstring mMapTypeName indexing uniquemapDefinition, mapEntryDefinition "-entry"
+    let mapEntryTypeName = @lstring.new {!mMapTypeName.string + "-entry" !mMapTypeName.location}
   #--- Map attributes
     @lstringlist mapAttributeList = {}
     repeat
@@ -139,10 +138,10 @@ syntax extension galgas3DeclarationsSyntax {
       !mapOverrideBlockListAST
       !sharedMapAttributeListAST
     }
-  #--- Declare map proxy
-    ioDeclarations.mDeclarationList += !@mapProxyDeclarationAST.new {
+  #--- Declare map entry
+    ioDeclarations.mDeclarationList += !@mapEntryDeclarationAST.new {
       !false # Is not predefined
-      !mapProxyTypeName
+      !mapEntryTypeName
       !mMapTypeName
     }
   }
@@ -345,11 +344,13 @@ override method @sharedMapDeclarationAST enterInSemanticContext
 {
   let optionalMethodMap = @optionalMethodMap {}
 #--- string type index
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"string" ?let stringTypeIndex]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"string" ?let stringTypeIndex]
 #--- lstring type index
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"lstring" ?let lstringTypeIndex]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"lstring" ?let lstringTypeIndex]
 #--- lstringlist type index
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"lstringlist" ?let lstringlistTypeIndex]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"lstringlist" ?let lstringlistTypeIndex]
+#--- entry type index
+#  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !self.mMapTypeName.string + "-entry" ?let entryTypeIndex]
 #--- Enumeration description
   @enumerationDescriptorList enumerationDescriptor = {!lstringTypeIndex !"lkey"}
 #--- Attributes
@@ -420,14 +421,14 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !getterName:"unsolvedProxyCount"
+    !getterName:"unsolvedEntryCount"
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !getterName:"unsolvedProxyList"
+    !getterName:"unsolvedEntryList"
     !returnedTypeName:"lstringlist"
     !hasCompilerArgument:false
   )
@@ -438,6 +439,26 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
+#--- Add "makeEntryFromString" setter
+#  @formalParameterSignature makeEntryFromStringFormalArgumentList = {}
+#  makeEntryFromStringFormalArgumentList +=
+#    ![if usesSelectorsInInsertAndSearch then "key" else "" end nowhere]
+#    !stringTypeIndex
+#    !.argumentConstantIn
+#    !"inKey"
+#  makeEntryFromStringFormalArgumentList +=
+#    ![if usesSelectorsInInsertAndSearch then "entry" else "" end nowhere]
+#    !entryTypeIndex
+#    !.argumentOut
+#    !"outEntry"
+#  [!?setterMap insertOrReplace
+#    !["makeEntryFromString" nowhere]
+#    !.definedAsMember
+#    !makeEntryFromStringFormalArgumentList
+#    !true
+#    !@methodQualifier.isBasic
+#    !"" # No error message
+#  ]
 #--- Handle attributes
   @typedPropertyList typedAttributeList = {}
   @formalParameterSignature insertMethodFormalArgumentList = {}
@@ -453,7 +474,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !.argumentConstantIn
     !"inLKey"
   for () in self.mPropertyList do
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasGetter = true
     let hasSetter = true
     let hasSelector = false
@@ -486,7 +507,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     end
   end
 #--------------------------- EnterEdge setter
-  var enterEdgeFormalArgumentList =@formalParameterSignature {}
+  var enterEdgeFormalArgumentList = @formalParameterSignature {}
   enterEdgeFormalArgumentList += !["" nowhere] !lstringTypeIndex !.argumentConstantIn !"inSource"
   enterEdgeFormalArgumentList += !["" nowhere] !lstringTypeIndex !.argumentConstantIn !"inTarget"
   [!?setterMap insertOrReplace
@@ -537,7 +558,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   end
 #--- Enter "enterBranch" and "exitBranch" setters (only if there are states)
   if [self.mMapStateList length] > 0 then
-    [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"location" ?let locationTypeIndex]
+    [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"location" ?let locationTypeIndex]
     [!?setterMap insertKey
       !@lstring.new {!"openBranch" !@location.here}
       !@methodKind.definedAsMember
@@ -585,7 +606,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
 #--- Enter "attributeForKey" getters
   for () in self.mPropertyList do
     let accessorName = @lstring.new {![mPropertyName string] + "ForKey" ![mPropertyName location]}
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
       !accessorName
       !@methodKind.definedAsMember
@@ -600,7 +621,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
 #---------- Enter "set...Attribute...forKey" setters, and 'with' accessor parameter
   for () in self.mPropertyList do
     let accessorName = @lstring.new {!"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "ForKey" ![mPropertyName location]}
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     @formalParameterSignature accessorFormalArgumentList = {}
     accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
     accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !.argumentConstantIn !mPropertyName.string
@@ -613,7 +634,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
       !"" # No error message
     ]
   end
-#--- Add Categories
+#--- Add extensions
   addExtensions (
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext
@@ -629,8 +650,8 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !self.mMapTypeName
     !self.mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-proxy.null
-    !@typeKindEnum.uniqueMapType
+    !@unifiedTypeMap-entry.null
+    !@typeKindEnum.sharedMapType
     !false # Does not support collection value
     !{}
     !{}
@@ -649,7 +670,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !self.mSearchMethodList
     !{}
     !false # Do not generate header in separate file
-    !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction
+    !@unifiedTypeMap-entry.null # Type for enumerated element for "for" instruction
     !"emptyMap"
     !"sharedmap-" + [self.mMapTypeName fileNameRepresentation]
     !@headerKind.twoHeaders
@@ -736,7 +757,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mMapTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!self.mMapTypeName.string + "-proxy" !self.mMapTypeName})
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!self.mMapTypeName.string + "-entry" !self.mMapTypeName})
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #---
   @mapAutomatonMessageKind shadowBehaviour = .noMessage
@@ -991,7 +1012,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
   for () in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
+    let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     let hasSetter = true
     let hasGetter = true
     let hasSelector = false
@@ -1060,8 +1081,8 @@ override method @sharedMapDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"shared map " + self.mMapTypeName
     !@sharedMapTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mMapTypeName}
-      !self.mMapTypeName
+      !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mMapTypeName}
+#      !self.mMapTypeName.string + "-entry"
       !typedAttributeList
       !self.mInsertMethodList
       !self.mSearchMethodList
@@ -1117,7 +1138,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 shared class @sharedMapTypeForGeneration : @semanticTypeForGeneration {
-  @lstring mMapTypeName
+#  @string mMapEntryTypeName
   @typedPropertyList mTypedAttributeList
   @insertMethodListAST mInsertMethodList
   @mapSearchMethodListAST mSearchMethodList
@@ -1149,6 +1170,7 @@ filewrapper sharedMapGenerationTemplate in "../generation_templates/type_generat
 
   template uniqueMapTypeSpecificImplementation "GALGAS_uniqueMap.cpp.galgasTemplate"
     ?@string TYPE_IDENTIFIER
+#    ?@string ENTRY_TYPE_IDENTIFIER
     ?@typedPropertyList ATTRIBUTE_LIST
     ?@insertMethodListAST INSERT_METHOD_LIST
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
@@ -1172,25 +1194,25 @@ override method @sharedMapTypeForGeneration appendDeclaration1
   end
 
   outHeader = [filewrapper sharedMapGenerationTemplate.uniqueMapTypeHeader1
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mTypedAttributeList
     !self.mSearchMethodList
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
-    ![self.mTypeProxy mIsConcrete]
-    ![self.mTypeProxy mConstructorMap]
-    ![self.mTypeProxy mGetterMap]
-    ![self.mTypeProxy mSetterMap]
-    ![self.mTypeProxy mInstanceMethodMap]
-    ![self.mTypeProxy mClassMethodMap]
-    ![self.mTypeProxy mOptionalMethodMap]
-    ![self.mTypeProxy mEnumerationDescriptor]
-    ![self.mTypeProxy mHandledOperatorFlags]
-    ![self.mTypeProxy mAddAssignOperatorArguments]
-    ![self.mTypeProxy mTypeForEnumeratedElement]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
+    ![self.mSelfTypeEntry  mIsConcrete]
+    ![self.mSelfTypeEntry  mConstructorMap]
+    ![self.mSelfTypeEntry  mGetterMap]
+    ![self.mSelfTypeEntry  mSetterMap]
+    ![self.mSelfTypeEntry  mInstanceMethodMap]
+    ![self.mSelfTypeEntry  mClassMethodMap]
+    ![self.mSelfTypeEntry  mOptionalMethodMap]
+    ![self.mSelfTypeEntry  mEnumerationDescriptor]
+    ![self.mSelfTypeEntry  mHandledOperatorFlags]
+    ![self.mSelfTypeEntry  mAddAssignOperatorArguments]
+    ![self.mSelfTypeEntry  mTypeForEnumeratedElement]
   ]
  }
 
@@ -1202,8 +1224,8 @@ override method @sharedMapTypeForGeneration appendDeclaration2
   !@string outHeader
 {
   outHeader = [filewrapper sharedMapGenerationTemplate.uniqueMapTypeHeader2
-    ![self.mTypeProxy key]
-    ![self.mTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mTypedAttributeList
   ]
  }
@@ -1211,16 +1233,18 @@ override method @sharedMapTypeForGeneration appendDeclaration2
 #·······················································································································
 
 override method @sharedMapTypeForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation {
-  [self.mTypeProxy addHeaderFileName !?ioInclusionSet]
+                  ?let @unifiedTypeMap unused inTypeMap
+                  ?!@stringset ioInclusionSet
+                  !@string outImplementation
+{
+  [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
   var keySortedList =@keySortedList.emptySortedList{}
   for () in self.mMapAutomatonStateMap do
     keySortedList += !lkey.string !mStateIndex
   end
   outImplementation = [filewrapper sharedMapGenerationTemplate.uniqueMapTypeSpecificImplementation
-    ![self.mTypeProxy identifierRepresentation]
+    ![self.mSelfTypeEntry  identifierRepresentation]
+#    ![self.mMapEntryTypeName identifierRepresentation]
     !self.mTypedAttributeList
     !self.mInsertMethodList
     !self.mSearchMethodList

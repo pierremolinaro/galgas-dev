@@ -77,8 +77,8 @@ end
     case listType : %list%
     case sortedListType : %sorted list%
     case mapType : %map%
-    case uniqueMapType : %unique map%
-    case mapProxyType : %map proxy%
+    case sharedMapType : %shared map%
+    case sharedMapEntryType : %shared map entry%
     case listMapType : %list map%
     case boolsetType : %boolset%
     case structType : %struct%

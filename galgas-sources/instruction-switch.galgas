@@ -151,7 +151,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
   [self.mSwitchExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?switchExpression
@@ -178,7 +178,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
           :"the '" + mValue + "' constant is already named in this switch instruction"
         end
         constantsNamedInSwitchInstruction += ![mValue string]
-        [enumConstantMap searchKey !mValue ?* ?let @unifiedTypeMapProxyList associatedTypeList]
+        [enumConstantMap searchKey !mValue ?* ?let @unifiedTypeMapEntryList associatedTypeList]
         if ([associatedTypeList length] > 0) & ([mAssociatedValuesExtraction length] == 0) then
           error mValue
             :"the associated values of '" + mValue + "' constant should be extracted"
@@ -251,7 +251,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @extractedAssociatedValuesForGeneration {
-  @unifiedTypeMap-proxy mType
+  @unifiedTypeMap-entry mType
   @string mCppName
   @uint mIndex
 }
@@ -268,7 +268,7 @@ list @switchBranchesForGeneration {
 #·······················································································································
 
 shared class @switchInstructionForGeneration : @semanticInstructionForGeneration {
-  @unifiedTypeMap-proxy mEnumType
+  @unifiedTypeMap-entry mEnumType
   @semanticExpressionForGeneration mSwitchExpression
   @switchBranchesForGeneration mBranches
 }

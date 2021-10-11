@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2008, ..., 2016 Pierre Molinaro.
+//  Copyright (C) 2008, ..., 2021 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -88,64 +88,64 @@ class cSharedUniqueMapRoot : public C_SharedObject {
 
 //--------------------------------- EnterEdge
   public: void enterEdge (cUniqueMapNode * inSource,
-                           cUniqueMapNode * inTarget) ;
+                          cUniqueMapNode * inTarget) ;
 
 //--------------------------------- Edge graphviz representation
   public: VIRTUAL_IN_DEBUG C_String edgeGraphvizRepresentation (void) const ;
 
 //--------------------------------- internalTopologicalSort
   public: VIRTUAL_IN_DEBUG void internalTopologicalSort (GALGAS_lstringlist & outSortedNodeKeyList,
-                                                          GALGAS_lstringlist & outUnsortedNodeKeyList) const ;
+                                                         GALGAS_lstringlist & outUnsortedNodeKeyList) const ;
 
-//--------------------------------- Unsolved Proxy Count
-  public: VIRTUAL_IN_DEBUG uint32_t unsolvedProxyCount (void) const ;
+//--------------------------------- Unsolved Entry Count
+  public: VIRTUAL_IN_DEBUG uint32_t unsolvedEntryCount (void) const ;
 
 //--------------------------------- Attribute read access
   private: VIRTUAL_IN_DEBUG const cUniqueMapNode * findNodeForKeyInMapOrInOverridenMaps (const GALGAS_string & inKey,
-                                                                                    C_Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) const ;
+                                                                                         C_Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Insert
   protected: VIRTUAL_IN_DEBUG cUniqueMapNode * performInsert (capCollectionElement & inAttributes,
-                                                               C_Compiler * inCompiler,
-                                                               const uint32_t inInitialState,
-                                                               const char * inInsertErrorMessage,
-                                                               const mapAutomatonIssueEnum inShadowBehaviour,
-                                                               const C_String & inShadowErrorMessage
-                                                               COMMA_LOCATION_ARGS) ;
+                                                              C_Compiler * inCompiler,
+                                                              const uint32_t inInitialState,
+                                                              const char * inInsertErrorMessage,
+                                                              const mapAutomatonIssueEnum inShadowBehaviour,
+                                                              const C_String & inShadowErrorMessage
+                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Search
   private: VIRTUAL_IN_DEBUG cUniqueMapNode * findEntryInMap (const C_String & inKey,
-                                                        const cSharedUniqueMapRoot * inFirstMap) const ;
+                                                             const cSharedUniqueMapRoot * inFirstMap) const ;
 
   public: VIRTUAL_IN_DEBUG void findNearestKey (const C_String & inKey,
-                                                 TC_UniqueArray <C_String> & ioNearestKeyArray) const ;
+                                                TC_UniqueArray <C_String> & ioNearestKeyArray) const ;
 
   protected: VIRTUAL_IN_DEBUG cUniqueMapNode * performSearch (const GALGAS_lstring & inKey,
-                                                         C_Compiler * inCompiler,
-                                                         const char * inSearchErrorMessage
-                                                         COMMA_LOCATION_ARGS) const ;
+                                                              C_Compiler * inCompiler,
+                                                              const char * inSearchErrorMessage
+                                                              COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG const cMapElement * searchForReadingAttribute (const GALGAS_string & inKey,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const ;
+                                                                             C_Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG cMapElement * searchForReadWriteAttribute (const GALGAS_string & inKey,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
   protected: VIRTUAL_IN_DEBUG cMapElement * searchForReadWriteAttribute (const GALGAS_lstring & inKey,
-                                                                          C_Compiler * inCompiler,
-                                                                          const char * inSearchErrorMessage
-                                                                          COMMA_LOCATION_ARGS) ;
+                                                                         C_Compiler * inCompiler,
+                                                                         const char * inSearchErrorMessage
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Readers
   protected: VIRTUAL_IN_DEBUG GALGAS_bool getter_hasKey (const GALGAS_string & inKey
-                                                          COMMA_LOCATION_ARGS) const ;
+                                                         COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG GALGAS_location getter_locationForKey (const GALGAS_string & inKey,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const ;
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG GALGAS_stringset getter_allKeys (LOCATION_ARGS) const ;
 
@@ -153,8 +153,8 @@ class cSharedUniqueMapRoot : public C_SharedObject {
 
 //--------------------------------- Implementation of reader 'description'
   public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation,
-                                              const uint32_t inLevel) const ;
+                                             const int32_t inIndentation,
+                                             const uint32_t inLevel) const ;
 
 //--------------------------------- Internal method for enumeration
   protected: VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const ;
@@ -162,43 +162,43 @@ class cSharedUniqueMapRoot : public C_SharedObject {
 //--------------------------------- Comparison
   public: VIRTUAL_IN_DEBUG typeComparisonResult mapCompare (const cSharedUniqueMapRoot * inOperand) const ;
 
-//--------------------------------- Internal method for inserting proxy
-  protected: VIRTUAL_IN_DEBUG cUniqueMapNode * performInsertProxy (const C_String & inKey,
-                                                                    const GALGAS_location & inLocation) ;
+//--------------------------------- Internal method for inserting entry
+  protected: VIRTUAL_IN_DEBUG cUniqueMapNode * performInsertEntry (const C_String & inKey,
+                                                                   const GALGAS_location & inLocation) ;
 
-  protected: VIRTUAL_IN_DEBUG void unsolvedProxyKeyList (GALGAS_lstringlist & ioList) const ;
+  protected: VIRTUAL_IN_DEBUG void unsolvedEntryKeyList (GALGAS_lstringlist & ioList) const ;
 
 //--------------------------------- Check Map Automatons state
   public: VIRTUAL_IN_DEBUG void checkAutomatonStates (const GALGAS_location & inErrorLocation,
-                                                       const cMapAutomatonFinalIssue inAutomatonFinalIssueArray [],
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const ;
+                                                      const cMapAutomatonFinalIssue inAutomatonFinalIssueArray [],
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Begin override for block
   public: VIRTUAL_IN_DEBUG void openOverride (const cBranchOverrideTransformationDescriptor inBranchBehaviourArray [],
-                                               const uint32_t inBranchBehaviourSize,
-                                               const cBranchOverrideCompatibilityDescriptor inBranchCombinationArray [],
-                                               const uint32_t inBranchCombinationSize,
-                                               const char * inBlockName,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
+                                              const uint32_t inBranchBehaviourSize,
+                                              const cBranchOverrideCompatibilityDescriptor inBranchCombinationArray [],
+                                              const uint32_t inBranchCombinationSize,
+                                              const char * inBlockName,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- End override for block
   public: VIRTUAL_IN_DEBUG void closeOverride (const GALGAS_location & inErrorLocation,
-                                              C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Branch Handling
   public: VIRTUAL_IN_DEBUG void openBranch (C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
+                                            COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void closeBranch (const GALGAS_location & inErrorLocation,
-                                              const cMapAutomatonFinalIssue inAutomatonFinalIssueArray [],
-                                              #ifndef DO_NOT_GENERATE_CHECKINGS
-                                                const uint32_t inAutomatonStateCount,
-                                              #endif
-                                              C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
+                                             const cMapAutomatonFinalIssue inAutomatonFinalIssueArray [],
+                                             #ifndef DO_NOT_GENERATE_CHECKINGS
+                                               const uint32_t inAutomatonStateCount,
+                                             #endif
+                                             C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Check Map
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -215,22 +215,22 @@ class cSharedUniqueMapRoot : public C_SharedObject {
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class cSharedProxy : public C_SharedObject {
+class cSharedEntry : public C_SharedObject {
 //--- Attribute
   public: cUniqueMapNode * mNode ;
   
 //--- Constructor
-  public: cSharedProxy (cUniqueMapNode * inNode COMMA_LOCATION_ARGS) ;
+  public: cSharedEntry (cUniqueMapNode * inNode COMMA_LOCATION_ARGS) ;
   
 //--- Destructor
-  protected: virtual ~ cSharedProxy (void) ;
+  protected: virtual ~ cSharedEntry (void) ;
 
-//--- Detach proxy
-  protected: void detachProxy (void) ;
+//--- Detach entry
+  protected: void detachEntry (void) ;
 
 //--- No copy
-  private: cSharedProxy (const cSharedProxy &) ;
-  private: cSharedProxy & operator = (const cSharedProxy &) ;
+  private: cSharedEntry (const cSharedEntry &) ;
+  private: cSharedEntry & operator = (const cSharedEntry &) ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -246,7 +246,7 @@ class cUniqueMapNode {
   public: const C_String mKey ;
   public: GALGAS_location mDefinitionLocation ;
   public: capCollectionElement mAttributes ;
-  private: cSharedProxy * mProxy ;
+  private: cSharedEntry * mEntry ;
   public: TC_UniqueArray <GALGAS_location> mInvocationLocationArray ;
 //--- For state
   public: uint32_t mCurrentState ;
@@ -255,8 +255,8 @@ class cUniqueMapNode {
 
 //--- Constructor
   public: cUniqueMapNode (const C_String & inKey,
-                           const uint32_t inInitialState,
-                           capCollectionElement & inAttributes) ;
+                          const uint32_t inInitialState,
+                          capCollectionElement & inAttributes) ;
 
 //--- Solved ?
   public: inline VIRTUAL_IN_DEBUG bool isSolved (void) const {
@@ -271,8 +271,8 @@ class cUniqueMapNode {
   private: cUniqueMapNode & operator = (const cUniqueMapNode &) ;
 
 //--- Friends
-  friend class cSharedProxy ;
-  friend class AC_GALGAS_uniqueMapProxy ;
+  friend class cSharedEntry ;
+  friend class AC_GALGAS_sharedMapEntry ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -311,7 +311,7 @@ mBalance (0),
 mKey (inKey),
 mDefinitionLocation (),
 mAttributes (inAttributes),
-mProxy (NULL),
+mEntry (NULL),
 mInvocationLocationArray (),
 mCurrentState (inInitialState),
 mStateArray (NULL),
@@ -324,10 +324,10 @@ cUniqueMapNode::~cUniqueMapNode (void) {
   macroMyDelete (mInfPtr) ;
   macroMyDelete (mSupPtr) ;
   macroMyDeletePODArray (mStateArray) ;
-//--- Detach Proxy
-  if (NULL != mProxy) {
-    mProxy->mNode = NULL ;
-    mProxy = NULL ;
+//--- Detach Entry
+  if (NULL != mEntry) {
+    mEntry->mNode = NULL ;
+    mEntry = NULL ;
   }
 }
 
@@ -751,8 +751,8 @@ void AC_GALGAS_uniqueMap::setter_enterEdge (const GALGAS_lstring & inSource,
                                               const GALGAS_lstring & inTarget
                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inSource.isValid () && inTarget.isValid( )) {
-    cUniqueMapNode * source = mSharedMap->performInsertProxy (inSource.getter_string (THERE).stringValue (), inSource.getter_location (THERE)) ;
-    cUniqueMapNode * target = mSharedMap->performInsertProxy (inTarget.getter_string (THERE).stringValue (), inTarget.getter_location (THERE)) ;
+    cUniqueMapNode * source = mSharedMap->performInsertEntry (inSource.getter_string (THERE).stringValue (), inSource.getter_location (THERE)) ;
+    cUniqueMapNode * target = mSharedMap->performInsertEntry (inTarget.getter_string (THERE).stringValue (), inTarget.getter_location (THERE)) ;
     mSharedMap->enterEdge (source, target) ;
   }
 }
@@ -876,7 +876,7 @@ void AC_GALGAS_uniqueMap::method_topologicalSort (GALGAS_lstringlist & outSorted
   outSortedKeys.drop () ;
   outUnsortedKeys.drop () ;
   if (isValid ()) {
-    uint32_t undefinedNodeCount = mSharedMap->unsolvedProxyCount () ;
+    uint32_t undefinedNodeCount = mSharedMap->unsolvedEntryCount () ;
     if (0 != undefinedNodeCount) {
       C_String s ;
       s << "Cannot apply graph topologicalSort: there " ;
@@ -1027,33 +1027,33 @@ GALGAS_lstringlist AC_GALGAS_uniqueMap::getter_allKeyList (LOCATION_ARGS) const 
 //----------------------------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Reader unsolvedProxyCount
+  #pragma mark Reader unsolvedEntryCount
 #endif
 
 //----------------------------------------------------------------------------------------------------------------------
 
-static uint32_t unsolvedProxyCountForNode (const cUniqueMapNode * inNode) {
+static uint32_t unsolvedEntryCountForNode (const cUniqueMapNode * inNode) {
   uint32_t result = 0 ;
   if (NULL != inNode) {
     result = NULL == inNode->mAttributes.ptr () ;
-    result += unsolvedProxyCountForNode (inNode->mInfPtr) ;
-    result += unsolvedProxyCountForNode (inNode->mSupPtr) ;
+    result += unsolvedEntryCountForNode (inNode->mInfPtr) ;
+    result += unsolvedEntryCountForNode (inNode->mSupPtr) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-uint32_t cSharedUniqueMapRoot::unsolvedProxyCount (void) const {
-  return unsolvedProxyCountForNode (mRoot) ;
+uint32_t cSharedUniqueMapRoot::unsolvedEntryCount (void) const {
+  return unsolvedEntryCountForNode (mRoot) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint AC_GALGAS_uniqueMap::getter_unsolvedProxyCount (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint AC_GALGAS_uniqueMap::getter_unsolvedEntryCount (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
-    result = GALGAS_uint (mSharedMap->unsolvedProxyCount ()) ;
+    result = GALGAS_uint (mSharedMap->unsolvedEntryCount ()) ;
   }
   return result ;
 }
@@ -1061,7 +1061,7 @@ GALGAS_uint AC_GALGAS_uniqueMap::getter_unsolvedProxyCount (UNUSED_LOCATION_ARGS
 //----------------------------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Reader "unsolvedProxyKeyList"
+  #pragma mark Reader "unsolvedEntryKeyList"
 #endif
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1087,17 +1087,17 @@ static void recursiveUnsolvedKeyList (cUniqueMapNode * inNode,
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void cSharedUniqueMapRoot::unsolvedProxyKeyList (GALGAS_lstringlist & ioList) const {
+void cSharedUniqueMapRoot::unsolvedEntryKeyList (GALGAS_lstringlist & ioList) const {
   ioList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
   recursiveUnsolvedKeyList (mRoot, ioList) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstringlist AC_GALGAS_uniqueMap::getter_unsolvedProxyList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist AC_GALGAS_uniqueMap::getter_unsolvedEntryList (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstringlist result ;
   if (isValid ()) {
-    mSharedMap->unsolvedProxyKeyList (result) ;
+    mSharedMap->unsolvedEntryKeyList (result) ;
   }
   return result ;
 }
@@ -2018,25 +2018,25 @@ void AC_GALGAS_uniqueMap::populateEnumerationArray (capCollectionElementArray & 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-cSharedProxy::cSharedProxy (cUniqueMapNode * inNode
+cSharedEntry::cSharedEntry (cUniqueMapNode * inNode
                             COMMA_LOCATION_ARGS) :
 C_SharedObject (THERE),
 mNode (inNode) {
   macroValidPointer (inNode) ;
-  inNode->mProxy = this ;
+  inNode->mEntry = this ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-cSharedProxy::~cSharedProxy (void) {
-  detachProxy () ;
+cSharedEntry::~cSharedEntry (void) {
+  detachEntry () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void cSharedProxy::detachProxy (void) {
+void cSharedEntry::detachEntry (void) {
   if (NULL != mNode) {
-    mNode->mProxy = NULL ;
+    mNode->mEntry = NULL ;
     mNode = NULL ;
   }
 }
@@ -2044,70 +2044,71 @@ void cSharedProxy::detachProxy (void) {
 //----------------------------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Map Proxy
+  #pragma mark Map Entry
+
 #endif
 
 //----------------------------------------------------------------------------------------------------------------------
 
-AC_GALGAS_uniqueMapProxy::AC_GALGAS_uniqueMapProxy (void) :
+AC_GALGAS_sharedMapEntry::AC_GALGAS_sharedMapEntry (void) :
 AC_GALGAS_root (),
 mState (kNotValid),
-mSharedProxy (NULL) {
+mSharedEntry (NULL) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-AC_GALGAS_uniqueMapProxy::AC_GALGAS_uniqueMapProxy (const AC_GALGAS_uniqueMapProxy & inSource) :
+AC_GALGAS_sharedMapEntry::AC_GALGAS_sharedMapEntry (const AC_GALGAS_sharedMapEntry & inSource) :
 AC_GALGAS_root (),
 mState (inSource.mState),
-mSharedProxy (NULL) {
-  macroAssignSharedObject (mSharedProxy, inSource.mSharedProxy) ;
+mSharedEntry (NULL) {
+  macroAssignSharedObject (mSharedEntry, inSource.mSharedEntry) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-AC_GALGAS_uniqueMapProxy & AC_GALGAS_uniqueMapProxy::operator = (const AC_GALGAS_uniqueMapProxy & inSource) {
+AC_GALGAS_sharedMapEntry & AC_GALGAS_sharedMapEntry::operator = (const AC_GALGAS_sharedMapEntry & inSource) {
   mState = inSource.mState ;
-  macroAssignSharedObject (mSharedProxy, inSource.mSharedProxy) ;
+  macroAssignSharedObject (mSharedEntry, inSource.mSharedEntry) ;
   return * this ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-AC_GALGAS_uniqueMapProxy::~ AC_GALGAS_uniqueMapProxy (void) {
+AC_GALGAS_sharedMapEntry::~ AC_GALGAS_sharedMapEntry (void) {
   drop () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-bool AC_GALGAS_uniqueMapProxy::isValid (void) const {
+bool AC_GALGAS_sharedMapEntry::isValid (void) const {
   return (kIsNull == mState) || (kIsRegular == mState) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void AC_GALGAS_uniqueMapProxy::drop (void) {
-  macroDetachSharedObject (mSharedProxy) ;
+void AC_GALGAS_sharedMapEntry::drop (void) {
+  macroDetachSharedObject (mSharedEntry) ;
   mState = kNotValid ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void AC_GALGAS_uniqueMapProxy::makeNullProxy (LOCATION_ARGS) {
-  MF_AssertThere (kNotValid == mState, "invalid state for 'makeNullProxy'", 0, 0) ;
+void AC_GALGAS_sharedMapEntry::makeNullEntry (LOCATION_ARGS) {
+  MF_AssertThere (kNotValid == mState, "invalid state for 'makeNullEntry'", 0, 0) ;
   mState = kIsNull ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void AC_GALGAS_uniqueMapProxy::attachProxyToMapNode (cUniqueMapNode * inMapNode) {
-  MF_Assert (kNotValid == mState, "invalid state for 'makeNullProxy'", 0, 0) ;
+void AC_GALGAS_sharedMapEntry::attachEntryToMapNode (cUniqueMapNode * inMapNode) {
+  MF_Assert (kNotValid == mState, "invalid state for 'makeNullEntry'", 0, 0) ;
   if (NULL != inMapNode) {
     macroValidSharedObject (inMapNode, cUniqueMapNode) ;
-    if (NULL == inMapNode->mProxy) {
-      macroMyNew (mSharedProxy, cSharedProxy (inMapNode COMMA_HERE)) ;
+    if (NULL == inMapNode->mEntry) {
+      macroMyNew (mSharedEntry, cSharedEntry (inMapNode COMMA_HERE)) ;
     }else{
-      macroAssignSharedObject (mSharedProxy, inMapNode->mProxy) ;
+      macroAssignSharedObject (mSharedEntry, inMapNode->mEntry) ;
     }
     mState = kIsRegular ;
   }
@@ -2115,7 +2116,7 @@ void AC_GALGAS_uniqueMapProxy::attachProxyToMapNode (cUniqueMapNode * inMapNode)
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool AC_GALGAS_uniqueMapProxy::getter_isRegular (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool AC_GALGAS_sharedMapEntry::getter_isRegular (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
     result = GALGAS_bool (kIsRegular == mState) ;
@@ -2125,7 +2126,7 @@ GALGAS_bool AC_GALGAS_uniqueMapProxy::getter_isRegular (UNUSED_LOCATION_ARGS) co
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool AC_GALGAS_uniqueMapProxy::getter_isNull (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool AC_GALGAS_sharedMapEntry::getter_isNull (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
     result = GALGAS_bool (kIsNull == mState) ;
@@ -2135,20 +2136,20 @@ GALGAS_bool AC_GALGAS_uniqueMapProxy::getter_isNull (UNUSED_LOCATION_ARGS) const
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool AC_GALGAS_uniqueMapProxy::getter_isSolved (C_Compiler * inCompiler
+GALGAS_bool AC_GALGAS_sharedMapEntry::getter_isSolved (C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const {
   GALGAS_bool result ;
   switch (mState) {
   case kIsNull :
-    result = GALGAS_bool (true) ; // A NULL proxy is always solved
+    result = GALGAS_bool (true) ; // A NULL entry is always solved
     break ;
   case kIsRegular :
-    macroValidSharedObject (mSharedProxy, cSharedProxy) ;
-    if (NULL == mSharedProxy->mNode) {
-      inCompiler->onTheFlySemanticError ("cannot run 'isSolved' reader of map proxy: entry has been deleted" COMMA_THERE) ;
+    macroValidSharedObject (mSharedEntry, cSharedEntry) ;
+    if (NULL == mSharedEntry->mNode) {
+      inCompiler->onTheFlySemanticError ("cannot run 'isSolved' reader of map entry: entry has been deleted" COMMA_THERE) ;
     }else{
-      macroValidPointer (mSharedProxy->mNode) ;
-      result = GALGAS_bool (NULL != mSharedProxy->mNode->mAttributes.ptr ()) ;
+      macroValidPointer (mSharedEntry->mNode) ;
+      result = GALGAS_bool (NULL != mSharedEntry->mNode->mAttributes.ptr ()) ;
     }
     break ;
   case kNotValid :
@@ -2159,21 +2160,21 @@ GALGAS_bool AC_GALGAS_uniqueMapProxy::getter_isSolved (C_Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-const cMapElement * AC_GALGAS_uniqueMapProxy::getAttributeListPointer (C_Compiler * inCompiler,
+const cMapElement * AC_GALGAS_sharedMapEntry::getAttributeListPointer (C_Compiler * inCompiler,
                                                                        const char * inReaderName
                                                                        COMMA_LOCATION_ARGS) const {
   const cMapElement * result = NULL ;
   switch (mState) {
-  case kIsNull : // A NULL proxy has no key
-    inCompiler->onTheFlySemanticError (C_String ("cannot compute '") + inReaderName + "' reader of map proxy: proxy is null" COMMA_THERE) ;
+  case kIsNull : // A NULL entry has no key
+    inCompiler->onTheFlySemanticError (C_String ("cannot compute '") + inReaderName + "' reader of map entry: entry is null" COMMA_THERE) ;
     break ;
   case kIsRegular :
-    macroValidSharedObject (mSharedProxy, cSharedProxy) ;
-    if (NULL == mSharedProxy->mNode) {
-      inCompiler->onTheFlySemanticError (C_String ("cannot compute '") + inReaderName + "' reader of map proxy: entry has been deleted" COMMA_THERE) ;
+    macroValidSharedObject (mSharedEntry, cSharedEntry) ;
+    if (NULL == mSharedEntry->mNode) {
+      inCompiler->onTheFlySemanticError (C_String ("cannot compute '") + inReaderName + "' reader of map entry: entry has been deleted" COMMA_THERE) ;
     }else{
-      macroValidPointer (mSharedProxy->mNode) ;
-      result = (const cMapElement *) mSharedProxy->mNode->mAttributes.ptr () ;
+      macroValidPointer (mSharedEntry->mNode) ;
+      result = (const cMapElement *) mSharedEntry->mNode->mAttributes.ptr () ;
       macroNullOrValidSharedObject (result, cMapElement) ;
     }
     break ;
@@ -2185,7 +2186,7 @@ const cMapElement * AC_GALGAS_uniqueMapProxy::getAttributeListPointer (C_Compile
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring AC_GALGAS_uniqueMapProxy::getter_lkey (C_Compiler * inCompiler
+GALGAS_lstring AC_GALGAS_sharedMapEntry::getter_lkey (C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   const cMapElement * p = getAttributeListPointer (inCompiler, "lkey" COMMA_THERE) ;
@@ -2198,20 +2199,20 @@ GALGAS_lstring AC_GALGAS_uniqueMapProxy::getter_lkey (C_Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string AC_GALGAS_uniqueMapProxy::getter_key (C_Compiler * inCompiler
+GALGAS_string AC_GALGAS_sharedMapEntry::getter_key (C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_string result ;
   switch (mState) {
-  case kIsNull : // A NULL proxy has no key
-    inCompiler->onTheFlySemanticError ("cannot compute 'key' reader of map proxy: proxy is null" COMMA_THERE) ;
+  case kIsNull : // A NULL entry has no key
+    inCompiler->onTheFlySemanticError ("cannot compute 'key' reader of map entry: entry is null" COMMA_THERE) ;
     break ;
   case kIsRegular :
-    macroValidSharedObject (mSharedProxy, cSharedProxy) ;
-    if (NULL == mSharedProxy->mNode) {
-      inCompiler->onTheFlySemanticError ("cannot compute 'key' reader of map proxy: entry has been deleted" COMMA_THERE) ;
+    macroValidSharedObject (mSharedEntry, cSharedEntry) ;
+    if (NULL == mSharedEntry->mNode) {
+      inCompiler->onTheFlySemanticError ("cannot compute 'key' reader of map entry: entry has been deleted" COMMA_THERE) ;
     }else{
-      macroValidPointer (mSharedProxy->mNode) ;
-      result = mSharedProxy->mNode->mKey ;
+      macroValidPointer (mSharedEntry->mNode) ;
+      result = mSharedEntry->mNode->mKey ;
     }
     break ;
   case kNotValid :
@@ -2222,20 +2223,20 @@ GALGAS_string AC_GALGAS_uniqueMapProxy::getter_key (C_Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string AC_GALGAS_uniqueMapProxy::getter_identifierRepresentation (C_Compiler * inCompiler
+GALGAS_string AC_GALGAS_sharedMapEntry::getter_identifierRepresentation (C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
   GALGAS_string result ;
   switch (mState) {
-  case kIsNull : // A NULL proxy has no key
-    inCompiler->onTheFlySemanticError ("cannot compute 'identifierRepresentation' reader of map proxy: proxy is null" COMMA_THERE) ;
+  case kIsNull : // A NULL entry has no key
+    inCompiler->onTheFlySemanticError ("cannot compute 'identifierRepresentation' reader of map entry: entry is null" COMMA_THERE) ;
     break ;
   case kIsRegular :
-    macroValidSharedObject (mSharedProxy, cSharedProxy) ;
-    if (NULL == mSharedProxy->mNode) {
-      inCompiler->onTheFlySemanticError ("cannot compute 'identifierRepresentation' reader of map proxy: entry has been deleted" COMMA_THERE) ;
+    macroValidSharedObject (mSharedEntry, cSharedEntry) ;
+    if (NULL == mSharedEntry->mNode) {
+      inCompiler->onTheFlySemanticError ("cannot compute 'identifierRepresentation' reader of map entry: entry has been deleted" COMMA_THERE) ;
     }else{
-      macroValidPointer (mSharedProxy->mNode) ;
-      result = mSharedProxy->mNode->mKey.identifierRepresentation () ;
+      macroValidPointer (mSharedEntry->mNode) ;
+      result = mSharedEntry->mNode->mKey.identifierRepresentation () ;
     }
     break ;
   case kNotValid :
@@ -2246,25 +2247,25 @@ GALGAS_string AC_GALGAS_uniqueMapProxy::getter_identifierRepresentation (C_Compi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void AC_GALGAS_uniqueMapProxy::description (C_String & ioString,
+void AC_GALGAS_sharedMapEntry::description (C_String & ioString,
                                             const int32_t /* inIndentation */) const {
   ioString << "<@"
            << staticTypeDescriptor ()->mGalgasTypeName
            << " " ;
   switch (mState) {
-  case kIsNull : // A NULL proxy has no key
+  case kIsNull : // A NULL entry has no key
     ioString << "null" ;
     break ;
   case kIsRegular :
-    macroValidSharedObject (mSharedProxy, cSharedProxy) ;
-    if (NULL == mSharedProxy->mNode) {
+    macroValidSharedObject (mSharedEntry, cSharedEntry) ;
+    if (NULL == mSharedEntry->mNode) {
       ioString << "deleted" ;
     }else{
       ioString << "regular (key " ;
-      macroValidPointer (mSharedProxy->mNode) ;
-      ioString.appendCLiteralStringConstant (mSharedProxy->mNode->mKey) ;
+      macroValidPointer (mSharedEntry->mNode) ;
+      ioString.appendCLiteralStringConstant (mSharedEntry->mNode->mKey) ;
       ioString << ", "
-               << (mSharedProxy->mNode->isSolved () ? "solved" : "unsolved")
+               << (mSharedEntry->mNode->isSolved () ? "solved" : "unsolved")
                << ")" ;
     }
     break ;
@@ -2287,7 +2288,7 @@ cUniqueMapNode * AC_GALGAS_uniqueMap::searchEntryInMap (const C_String & inKey) 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void AC_GALGAS_uniqueMapProxy::internalMakeRegularProxyBySearchingKey (const AC_GALGAS_uniqueMap & inMap,
+void AC_GALGAS_sharedMapEntry::internalMakeRegularEntryBySearchingKey (const AC_GALGAS_uniqueMap & inMap,
                                                                        const GALGAS_lstring & inKey,
                                                                        const char * inSearchErrorMessage,
                                                                        C_Compiler * inCompiler
@@ -2299,13 +2300,13 @@ void AC_GALGAS_uniqueMapProxy::internalMakeRegularProxyBySearchingKey (const AC_
       inMap.findNearestKey (inKey.mProperty_string.stringValue (), nearestKeyArray) ;
       inCompiler->semanticErrorWith_K_message (inKey, nearestKeyArray, inSearchErrorMessage COMMA_THERE) ;
     }
-    attachProxyToMapNode (node) ;
+    attachEntryToMapNode (node) ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-static cUniqueMapNode * internalInsertProxy (cUniqueMapNode * & ioRootPtr,
+static cUniqueMapNode * internalInsertEntry (cUniqueMapNode * & ioRootPtr,
                                              const C_String & inKey,
                                              const GALGAS_location & inLocation,
                                              bool & ioExtension) {
@@ -2322,7 +2323,7 @@ static cUniqueMapNode * internalInsertProxy (cUniqueMapNode * & ioRootPtr,
     macroValidPointer (ioRootPtr) ;
     const int32_t comparaison = ioRootPtr->mKey.compare (inKey) ;
     if (comparaison > 0) {
-      matchingEntry = internalInsertProxy (ioRootPtr->mInfPtr, inKey, inLocation, ioExtension) ;
+      matchingEntry = internalInsertEntry (ioRootPtr->mInfPtr, inKey, inLocation, ioExtension) ;
       if (ioExtension) {
         ioRootPtr->mBalance ++ ;
         if (ioRootPtr->mBalance == 0) {
@@ -2336,7 +2337,7 @@ static cUniqueMapNode * internalInsertProxy (cUniqueMapNode * & ioRootPtr,
         }
       }
     }else if (comparaison < 0) {
-      matchingEntry = internalInsertProxy (ioRootPtr->mSupPtr, inKey, inLocation, ioExtension) ;
+      matchingEntry = internalInsertEntry (ioRootPtr->mSupPtr, inKey, inLocation, ioExtension) ;
       if (ioExtension) {
         ioRootPtr->mBalance-- ;
         if (ioRootPtr->mBalance == 0) {
@@ -2362,83 +2363,83 @@ static cUniqueMapNode * internalInsertProxy (cUniqueMapNode * & ioRootPtr,
 
 //----------------------------------------------------------------------------------------------------------------------
 
-cUniqueMapNode * cSharedUniqueMapRoot::performInsertProxy (const C_String & inKey,
+cUniqueMapNode * cSharedUniqueMapRoot::performInsertEntry (const C_String & inKey,
                                                            const GALGAS_location & inLocation) {
   bool extension = false ; // Unused here
-  return internalInsertProxy (mRoot, inKey, inLocation, extension) ;
+  return internalInsertEntry (mRoot, inKey, inLocation, extension) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-cUniqueMapNode * AC_GALGAS_uniqueMap::performInsertProxy (const C_String & inKey,
+cUniqueMapNode * AC_GALGAS_uniqueMap::performInsertEntry (const C_String & inKey,
                                                           const GALGAS_location & inLocation
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   cUniqueMapNode * result = NULL ;
   if (isValid ()) {
-    result = mSharedMap->performInsertProxy (inKey, inLocation) ;
+    result = mSharedMap->performInsertEntry (inKey, inLocation) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void AC_GALGAS_uniqueMapProxy::internalMakeProxy (AC_GALGAS_uniqueMap & ioMap,
+void AC_GALGAS_sharedMapEntry::internalMakeEntry (AC_GALGAS_uniqueMap & ioMap,
                                                   const GALGAS_lstring & inKey
                                                   COMMA_LOCATION_ARGS) {
   drop () ;
   if (inKey.isValid ()) {
-    cUniqueMapNode * node = ioMap.performInsertProxy (inKey.getter_string (THERE).stringValue (),
+    cUniqueMapNode * node = ioMap.performInsertEntry (inKey.getter_string (THERE).stringValue (),
                                                       inKey.getter_location (THERE)
                                                       COMMA_THERE) ;
     macroValidPointer (node) ;
-    attachProxyToMapNode (node) ;
+    attachEntryToMapNode (node) ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void AC_GALGAS_uniqueMapProxy::internalMakeOptionalProxy (AC_GALGAS_uniqueMap & ioMap,
+void AC_GALGAS_sharedMapEntry::internalMakeOptionalEntry (AC_GALGAS_uniqueMap & ioMap,
                                                           const GALGAS_lstring & inKey
                                                           COMMA_LOCATION_ARGS) {
   drop () ;
   if (inKey.isValid ()) {
     const C_String key = inKey.getter_string (THERE).stringValue () ;
     if (key.length() == 0) {
-      makeNullProxy (THERE) ;
+      makeNullEntry (THERE) ;
     }else{
-      cUniqueMapNode * node = ioMap.performInsertProxy (key,
+      cUniqueMapNode * node = ioMap.performInsertEntry (key,
                                                         inKey.getter_location (THERE)
                                                         COMMA_THERE) ;
       macroValidPointer (node) ;
-      attachProxyToMapNode (node) ;
+      attachEntryToMapNode (node) ;
     }
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void AC_GALGAS_uniqueMapProxy::internalMakeProxyFromString (AC_GALGAS_uniqueMap & ioMap,
+void AC_GALGAS_sharedMapEntry::internalMakeEntryFromString (AC_GALGAS_uniqueMap & ioMap,
                                                             const GALGAS_string & inKey
                                                             COMMA_LOCATION_ARGS) {
   drop () ;
   if (inKey.isValid ()) {
-    cUniqueMapNode * node = ioMap.performInsertProxy (inKey.stringValue (),
+    cUniqueMapNode * node = ioMap.performInsertEntry (inKey.stringValue (),
                                                       GALGAS_location ()
                                                       COMMA_THERE) ;
     macroValidPointer (node) ;
-    attachProxyToMapNode (node) ;
+    attachEntryToMapNode (node) ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-typeComparisonResult AC_GALGAS_uniqueMapProxy::objectCompare (const AC_GALGAS_uniqueMapProxy & inOperand) const {
+typeComparisonResult AC_GALGAS_sharedMapEntry::objectCompare (const AC_GALGAS_sharedMapEntry & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
     int32_t r = mState - inOperand.mState ;
     if (0 == r) {
-      const size_t entry1 = (size_t) mSharedProxy ;
-      const size_t entry2 = (size_t) inOperand.mSharedProxy ;
+      const size_t entry1 = (size_t) mSharedEntry ;
+      const size_t entry2 = (size_t) inOperand.mSharedEntry ;
       if (entry1 < entry2) {
         r = -1 ;
       }else if (entry1 > entry2) {

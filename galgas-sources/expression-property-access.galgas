@@ -44,7 +44,7 @@ override method @structPropertyAccessExpressionAST enterExpressionInSemanticCont
 override method @structPropertyAccessExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy unused inType
+  ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
@@ -52,13 +52,13 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
   [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy.null
+    !@unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration expression
   ]
 #--- Check field access availability
-  let @unifiedTypeMap-proxy expressionType = [expression mResultType]
+  let @unifiedTypeMap-entry expressionType = [expression mResultType]
   if (not [[expressionType mTypeKindEnum] isStructType]) & (not [[expressionType mTypeKindEnum] isClassType]) then
     error self.mStructFieldName: "the '.' operator requires the receiver to be a struct or a class"
   end
@@ -66,9 +66,9 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
   [propertyMap searchKey !self.mStructFieldName ?let isPublic ?let type]
   if isPublic then
     # Ok
-  elsif [inAnalysisContext.mSelfCopyTypeProxy isNull] then
+  elsif [inAnalysisContext.mSelfCopyTypeEntry isNull] then
     error self.mStructFieldName : "inaccessible property (due to its 'private' qualifier)"
-  elsif expressionType != inAnalysisContext.mSelfCopyTypeProxy then
+  elsif expressionType != inAnalysisContext.mSelfCopyTypeEntry then
     error self.mStructFieldName : "inaccessible property (due to its 'private' qualifier)2"
   end
 #--- Generate expression
