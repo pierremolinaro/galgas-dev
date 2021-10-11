@@ -45,26 +45,26 @@ Cette déclaration déclare aussi implicitement le type \ggs+@MaTable-entry+.
 
 \section{Constructeurs}
 
-Pour initialiser une table vide, il y a trois possibilités, sémantiquement identiques~:
+Pour initialiser une table vide, il y a deux possibilités, sémantiquement identiques~:
 \begin{itemize}
-  \item la constante \texttt{\{\}} (\refSubsectionPage{constanteSharedMapVide})~; 
+%  \item la constante \texttt{\{\}} (\refSubsectionPage{constanteSharedMapVide})~; 
   \item le constructeur \texttt{emptyMap} (\refSubsectionPage{constructeurEmptySharedMap})~; 
   \item le constructeur \texttt{default} (\refSubsectionPage{constructeurSharedMapDefault}). 
 \end{itemize}
 
 
-\subsectionLabel{Constante \texttt{\{\}}}{constanteSharedMapVide}
-
-Cette constante permet d'instancier une table vide. Exemple~:
-\begin{galgas}
-@MaTable uneTable = {}
-\end{galgas}
-
-Ou encore~:
-
-\begin{galgas}
-var uneTable = @MaTable {}
-\end{galgas}
+%\subsectionLabel{Constante \texttt{\{\}}}{constanteSharedMapVide}
+%
+%Cette constante permet d'instancier une table vide. Exemple~:
+%\begin{galgas}
+%@MaTable uneTable = .emptyMap
+%\end{galgas}
+%
+%Ou encore~:
+%
+%\begin{galgas}
+%var uneTable = @MaTable .emptyMap
+%\end{galgas}
 
 \subsectionLabel{Constructeur \texttt{emptyMap}}{constructeurEmptySharedMap}
 
@@ -97,17 +97,17 @@ var uneTable = @MaTable.default
 
  
 
-\subsection{Constructeur \texttt{mapWithMapToOverride}}
-
-\begin{galgas}
-constructor mapWithMapToOverride ?@T inMapToOverride -> @T
-\end{galgas}
-
-Ce constructeur permet d'instancier une table vide, qui surcharge la table \ggs+inMapToOverride+ citée en argument. Exemple~:
-\begin{galgas}
-@MaTable uneTable = .emptyMap
-@MaTable autreTableTable = .mapWithMapToOverride {!uneTable}
-\end{galgas}
+%\subsection{Constructeur \texttt{mapWithMapToOverride}}
+%
+%\begin{galgas}
+%constructor mapWithMapToOverride ?@T inMapToOverride -> @T
+%\end{galgas}
+%
+%Ce constructeur permet d'instancier une table vide, qui surcharge la table \ggs+inMapToOverride+ citée en argument. Exemple~:
+%\begin{galgas}
+%@MaTable uneTable = .emptyMap
+%@MaTable autreTableTable = .mapWithMapToOverride {!uneTable}
+%\end{galgas}
 
 
 
@@ -117,19 +117,7 @@ Ce constructeur permet d'instancier une table vide, qui surcharge la table \ggs+
 \sectionLabel{Setters d'insertion}{setterInsertionTablePartagee}
 
 
-
-\subsection{Setter d'insertion \texttt{noteKey}}
-
-Le setter d'insertion \ggs+noteKey+ est toujours implicitement déclaré.
-
-\begin{galgasbox}
-setter @t noteKey ?@lstring inKey !@t-entry outEntry
-\end{galgasbox}
-
-
-\subsection{Setters d'insertion déclarés par l'utilisateur}
-
-Une \ggs+map+ peut déclarer zéro, un ou plusieurs \emph{setters} d'insertion. Un \emph{setter} d'insertion permet d'insérer une nouvelle entrée à une table. Une erreur est déclenchée en cas de tentative d'une clé déjà existante.
+Une \ggs+shared map+ peut déclarer zéro, un ou plusieurs \emph{setters} d'insertion. Un \emph{setter} d'insertion permet d'insérer une nouvelle entrée à une table. Une erreur est déclenchée en cas de tentative d'une clé déjà existante.
 
 
 Un \emph{setter} d'insertion est déclaré par~:
@@ -153,7 +141,7 @@ Un \emph{setter} d'insertion est appelé dans une \emph{instruction d'appel de s
 
 Par exemple~:
 \begin{galgas}
-@MaTable uneTable = {}
+@MaTable uneTable = .emptyMap
 @lstring clef = ...
 @string s = ...
 @uint v = ...
@@ -172,7 +160,7 @@ Par exemple~:
 
 \sectionLabel{Méthodes de recherche}{methodesRechercheTablePartagee}
 
-Une \ggs+map+ peut déclarer zéro, une ou plusieurs \emph{méthodes} de recherche. Une \emph{méthode} de recherche permet de rechercher une entrée d'une table, et retourne la valeur de ses attributs associés. Une erreur est déclenchée si la clé n'existe pas.
+Une \ggs+shared map+ peut déclarer zéro, une ou plusieurs \emph{méthodes} de recherche. Une \emph{méthode} de recherche permet de rechercher une entrée d'une table, et retourne la valeur de ses attributs associés. Une erreur est déclenchée si la clé n'existe pas.
 
 
 Une \emph{méthode} de recherche est déclarée par~:
@@ -196,31 +184,31 @@ Une \emph{méthode} de recherche est appelée dans une \emph{instruction d'appel
 
 Par exemple~:
 \begin{galgas}
-@MaTable uneTable = {}
+@MaTable uneTable = .emptyMap
 ...
 @lstring clef = ...
 [uneTable searchKey !clef ?@string s ?@uint v]
 \end{galgas}
 
 
-\subsection{Attribut \texttt{\%location}}
-
-À partir de la version 3.2.13, la déclaration d'une méthode de recherche peut comporter l'attribut \ggs=%location=, placée juste après le nom de la méthode~:
-
-\begin{galgas}
-search nom %location error message "message_erreur"
-\end{galgas}
-
-La conséquence est que l'appel a la méthode de recherche doit comporter un argument effectif supplémentaire, de type \ggs=@location=, qui recevra l'information de localisation de la clé recherchée~:
-
-\begin{galgas}
-@MaTable uneTable = {}
-...
-@lstring clef = ...
-[uneTable searchKey !clef ?@string s ?@uint v ?@location key]
-\end{galgas}
-
-La valeur retournée est la même que celle renvoyée par le getter \ggs=locationForKey= (\refSubsectionPage{getterLocationForKey}). Si la clé recherchée n'existe pas, une valeur poison est retournée.
+%\subsection{Attribut \texttt{\%location}}
+%
+%À partir de la version 3.2.13, la déclaration d'une méthode de recherche peut comporter l'attribut \ggs=%location=, placée juste après le nom de la méthode~:
+%
+%\begin{galgas}
+%search nom %location error message "message_erreur"
+%\end{galgas}
+%
+%La conséquence est que l'appel a la méthode de recherche doit comporter un argument effectif supplémentaire, de type \ggs=@location=, qui recevra l'information de localisation de la clé recherchée~:
+%
+%\begin{galgas}
+%@MaTable uneTable = .emptyMap
+%...
+%@lstring clef = ...
+%[uneTable searchKey !clef ?@string s ?@uint v ?@location key]
+%\end{galgas}
+%
+%La valeur retournée est la même que celle renvoyée par le getter \ggs=locationForKey= (\refSubsectionPage{getterLocationForKey}). Si la clé recherchée n'existe pas, une valeur poison est retournée.
 
 
 
@@ -253,7 +241,7 @@ La valeur retournée est la même que celle renvoyée par le getter \ggs=locatio
 %
 %Par exemple~:
 %\begin{galgas}
-%@MaTable uneTable = {}
+%@MaTable uneTable = .emptyMap
 %...
 %@lstring clef = ...
 %[!?uneTable removeKey !clef ?@string s ?@uint v]
@@ -335,14 +323,14 @@ Le \emph{getter} \ggs+locationForKey+ retourne un \ggs+@location+ qui contient l
 
 
 
-\subsection{Getter \texttt{overriddenMap}}
-
-\begin{galgas}
-getter overriddenMap -> @T
-\end{galgas}
-
-
-Le \emph{getter} \ggs+overriddenMap+ retourne la table obtenue en amputant de la valeur du récepteur la table de premier niveau. Si le récepteur n'a pas de table surchargée, une erreur d'exécution est déclenchée.
+%\subsection{Getter \texttt{overriddenMap}}
+%
+%\begin{galgas}
+%getter overriddenMap -> @T
+%\end{galgas}
+%
+%
+%Le \emph{getter} \ggs+overriddenMap+ retourne la table obtenue en amputant de la valeur du récepteur la table de premier niveau. Si le récepteur n'a pas de table surchargée, une erreur d'exécution est déclenchée.
 
 
 
@@ -354,13 +342,13 @@ Le \emph{getter} \ggs+overriddenMap+ retourne la table obtenue en amputant de la
 
 \sectionLabel{Attributs d'une table}{attributsTablePartagee}
 
-Deux attributs peuvent être définis dans la déclaration d'une table : \ggs!%selectors! et \ggs!%noSuggestion!.
+Un attribut peut être définis dans la déclaration d'une table : \ggs!%selectors!.
 
-L'attribut \ggs!%selectors! impose l'utilisation de sélecteurs dans l'appel des setters d'insertion (\refSectionPage{setterInsertionTablePartagee}), des méthodes de recherche(\refSectionPage{methodesRechercheTablePartagee}). Le sélecteur associé à la clé est \ggs=!lkey:=. Le sélecteur associé à une propriété porte le nom de cette propriété.
+L'attribut \ggs!%selectors! impose l'utilisation de sélecteurs dans l'appel des setters d'insertion (\refSectionPage{setterInsertionTablePartagee}), des méthodes de recherche (\refSectionPage{methodesRechercheTablePartagee}). Le sélecteur associé à la clé est \ggs=!lkey:=. Le sélecteur associé à une propriété porte le nom de cette propriété.
 
 
 \begin{galgas}
-map @MaTable %selectors {
+shared map @MaTable %selectors {
   @string mPremier
   @uint mSecond
   insert insertKey error message "the '%K' key is already declared in %L"
@@ -370,7 +358,7 @@ map @MaTable %selectors {
 
 L'appel d'un \emph{setter} d'insertion :
 \begin{galgas}
-@MaTable uneTable = {}
+@MaTable uneTable = .emptyMap
 @lstring clef = ...
 @string s = ...
 @uint v = ...
@@ -381,22 +369,22 @@ L'appel d'un \emph{setter} d'insertion :
 
 L'appel d'une méthode de recherche :
 \begin{galgas}
-@MaTable uneTable = {}
+@MaTable uneTable = .emptyMap
 ...
 @lstring clef = ...
 [uneTable searchKey !lkey: clef ?mPremier: @string s ?mSecond: @uint v]
 \end{galgas}
 
-
-L'appel d'un \emph{setter} de retrait :
-\begin{galgas}
-@MaTable uneTable = {}
-...
-@lstring clef = ...
-[!?uneTable removeKey !lkey: clef ?mPremier: @string s ?mSecond: @uint v]
-\end{galgas}
-
-Lors de l'échec d'une recherche de clés, une méthode de recherche ou un setter de retrait affiche les clés voisines contenues dans la table. L'attribut \ggs!%noSuggestion! inhibe l'affichage de ces suggestions.
+%
+%L'appel d'un \emph{setter} de retrait :
+%\begin{galgas}
+%@MaTable uneTable = .emptyMap
+%...
+%@lstring clef = ...
+%[!?uneTable removeKey !lkey: clef ?mPremier: @string s ?mSecond: @uint v]
+%\end{galgas}
+%
+%Lors de l'échec d'une recherche de clés, une méthode de recherche ou un setter de retrait affiche les clés voisines contenues dans la table. L'attribut \ggs!%noSuggestion! inhibe l'affichage de ces suggestions.
 
 
 
@@ -411,9 +399,14 @@ Lors de l'échec d'une recherche de clés, une méthode de recherche ou un sette
 
 \sectionLabel{Le type associé \texttt{@t-entry}}{typeAssocieEntry}
 
-La déclaration d'une \ggs+shared map+ déclare aussi implicitement le type associé \ggs+@t-entry+ (où \ggs+@t+ est le nom du type table), qui représente une entrée de la table.
+La déclaration de \ggs+shared map @t+ déclare aussi implicitement le type associé \ggs+@t-entry+, qui représente une entrée de la table.
 
-L'implémentation de ce type est implicite. 
+L'implémentation de ce type est implicite.
+
+Un objet de type \ggs+@t-entry+ est un \emph{pointeur faible} vers une entrée d'une table.
+
+
+
 
 \subsection{Constructeurs}
 
