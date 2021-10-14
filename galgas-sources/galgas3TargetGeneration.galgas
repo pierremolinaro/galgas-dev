@@ -66,7 +66,7 @@ private filewrapper targetGalgas3GenerationFileWrapper in "../generation_templat
 
   template makefile_build_xcode "project_xcode/build.command"
 
-  template makefile_info_plist_strings "project_xcode/English.lproj/InfoPlist.strings" ?@string PROJECT_NAME
+  template makefile_info_plist_strings "project_xcode/Base.lproj/InfoPlist.strings" ?@string PROJECT_NAME
 
   template json_file_list "json-file-list-galgas3.galgasTemplate"
     ?@stringset HAND_CODED_SOURCE_DIR_SET
@@ -572,12 +572,12 @@ proc updateGalgas3Targets
       [[filewrapper targetGalgas3GenerationFileWrapper.makefile_build_xcode] writeToExecutableFile !dir +"/build.command"]
     end
 
-    [dir + "/English.lproj" makeDirectory]
-    let InfoPlist_strings_path = dir + "/English.lproj/InfoPlist.strings"
+    [dir + "/Base.lproj" makeDirectory]
+    let InfoPlist_strings_path = dir + "/Base.lproj/InfoPlist.strings"
     [[filewrapper targetGalgas3GenerationFileWrapper.makefile_info_plist_strings !inTargetName] writeToFileWhenDifferentContents !InfoPlist_strings_path ?*]
-    let Credits_rtf_path = dir + "/English.lproj/Credits.rtf"
+    let Credits_rtf_path = dir + "/Base.lproj/Credits.rtf"
     if not [Credits_rtf_path fileExists] then
-      [[filewrapper targetGalgas3GenerationFileWrapper."project_xcode/English.lproj/Credits.rtf"] writeToFile !Credits_rtf_path]
+      [[filewrapper targetGalgas3GenerationFileWrapper."project_xcode/Base.lproj/Credits.rtf"] writeToFile !Credits_rtf_path]
     end
   #--- Enumerate icons files in "userResources" directory
     let userResourceDir = projectDirectory + "/xcode-project/userResources"
@@ -799,10 +799,10 @@ proc updateGalgas3Targets
       !groupName:"Cocoa GALGAS"
       !groupPath:"cocoa_galgas"
       !fileNames:{
-        !"English.lproj/OC_GGS_Document.xib",
-        !"English.lproj/PMDebug.xib",
-        !"English.lproj/MainMenu.xib",
-        !"closeSourceFile.tiff",
+        !"Base.lproj/OC_GGS_Document.xib",
+        !"Base.lproj/PMDebug.xib",
+        !"Base.lproj/MainMenu.xib",
+    #    !"closeSourceFile.tiff",
         !"enterDefaultCommandLineOptions.h",
         !"enterDefaultCommandLineOptions.m",
         !"F_CocoaWrapperForGalgas.h",
