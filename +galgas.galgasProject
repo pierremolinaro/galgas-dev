@@ -113,6 +113,7 @@ project (3:4:4) -> "galgas" {
   "galgas-sources/semanticGeneration.galgas"
   "galgas-sources/predefinedTypes.galgas"
   "galgas-sources/useful-entities-computation.galgas"
+  "galgas-sources/variable-manager.galgas"
 
 #--- Expressions
   "galgas-sources/expression-if.galgas"
