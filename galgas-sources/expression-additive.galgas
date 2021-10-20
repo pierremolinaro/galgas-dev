@@ -120,7 +120,7 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
 #--- Left expression analysis
@@ -189,7 +189,7 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
 #--- Left expression analysis
@@ -258,7 +258,7 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
 #--- Left expression analysis
@@ -324,7 +324,7 @@ override method @addExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
@@ -389,7 +389,7 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
 #--- Left expression analysis
@@ -455,7 +455,7 @@ override method @subExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression

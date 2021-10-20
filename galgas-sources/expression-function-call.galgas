@@ -49,7 +49,7 @@ override method @functionCallExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   let usefulnessName = functionNameForUsefulEntitiesGraph (!self.mFunctionName)

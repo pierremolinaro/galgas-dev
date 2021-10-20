@@ -318,7 +318,7 @@ abstract method @abstractEnumeratedCollectionAST analyzeEnumeration
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@localInitializedVariableList ioLocalConstantListForDoBranch
   !@string outEnumeratorCppName
   !@semanticExpressionForGeneration outEnumerationExpression
@@ -329,7 +329,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@localInitializedVariableList ioLocalConstantListForDoBranch
   !@string outEnumeratorCppName
   !@semanticExpressionForGeneration outEnumerationExpression {
@@ -362,7 +362,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@localInitializedVariableList ioLocalConstantListForDoBranch
   !@string outEnumeratorCppName
   !@semanticExpressionForGeneration outEnumerationExpression
@@ -431,7 +431,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@localInitializedVariableList ioLocalConstantListForDoBranch
   !@string outEnumeratorCppName
   !@semanticExpressionForGeneration outEnumerationExpression
@@ -472,7 +472,7 @@ override method @forInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 {
 #--- Begin override for foreach defined constants
   [!?ioVariableMap openOverrideForSelectBlock]

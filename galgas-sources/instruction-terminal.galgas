@@ -107,7 +107,7 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
   ?let @string unused inComponentName
   ?let @stringset inIndexNameSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@uint unused ioSelectMethodCount {
   [inTerminalMap searchKey !self.mTerminalName ?let @lexicalSentValueList sentAttributeList]
 #---

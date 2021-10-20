@@ -55,7 +55,7 @@ override method @warningInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
+  ?!@localVarManager ioVariableMap {
 #---
   analyzeErrorOrWarningInstruction (
     !inUsefulnessCallerEntityName

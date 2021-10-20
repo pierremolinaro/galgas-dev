@@ -43,7 +43,7 @@ override method @unaryMinusExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
 #--- Expression analysis

@@ -2,7 +2,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2011, ..., 2016 Pierre Molinaro.
+//  Copyright (C) 2011, ..., 2021 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -16,6 +16,7 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
+#import "OC_GGS_ColorTransformer.h"
 #import "OC_GGS_TextView.h"
 #import "OC_GGS_TextDisplayDescriptor.h"
 #import "OC_GGS_RulerViewForTextView.h"
@@ -107,9 +108,10 @@
 
 - (void) updateCursorColor {
   NSUserDefaults * df = [NSUserDefaults standardUserDefaults] ;
-  NSData * data = [df valueForKey:GGS_editor_background_color] ;
-  // NSLog (@"DATA %@", data) ;
-  NSColor * color = [[NSUnarchiver unarchiveObjectWithData:data] colorUsingColorSpaceName:NSCalibratedRGBColorSpace] ;
+  NSData * data = [df valueForKey: GGS_editor_background_color] ;
+  OC_GGS_ColorTransformer * transformer = [OC_GGS_ColorTransformer new] ;
+  NSColor * color = [transformer transformedValue: data] ;
+  color = [color colorUsingColorSpace: [NSColorSpace sRGBColorSpace]] ;
   if ([color brightnessComponent] > 0.5) {
     self.insertionPointColor = [color blendedColorWithFraction:0.5 ofColor:[NSColor blackColor]] ;
   }else{
@@ -192,8 +194,8 @@
     const NSRect pageRectToDraw = NSIntersectionRect (inRect, pageRect) ;
     if (! NSIsEmptyRect (pageRectToDraw)) {
       NSData * data = [[NSUserDefaults standardUserDefaults] valueForKey:GGS_editor_background_color] ;
-      // NSLog (@"DATA %@", data) ;
-      NSColor * color = [NSUnarchiver unarchiveObjectWithData:data] ;
+      OC_GGS_ColorTransformer * colorTransformer = [OC_GGS_ColorTransformer new] ;
+      NSColor * color = [colorTransformer transformedValue: data] ;
       // NSLog (@"color %@", color) ;
       [color setFill] ;
       NSRectFill (pageRectToDraw) ;

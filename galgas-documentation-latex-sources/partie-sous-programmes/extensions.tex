@@ -5,6 +5,9 @@
 \chapterLabel{Extensions}{chapitreExtensions}\index{Extensions}
 %-------------------------------------------------------------
 
+\tableDesMatieresDuChapitre
+
+
 \emph{Categories} are the way for adding \emph{getters}, \emph{methods} and \emph{setters} to any type. They are defined outside type declarations.
 
 You can declare for any type:
@@ -346,7 +349,6 @@ The following example illustrates how theses rules should be applied. In the \re
    \end{tikzpicture}
   \caption{inheritance graph and categories}
   \labelFigure{figureCategoryExample}
-  \ligne
 \end{figure}
 
 \ggs!m1! is declared as \ggs!abstract! for the \ggs!@A! class. It is allowed since \ggs!@A! is abstract. Consequently, the concrete \ggs!@B! class should override \ggs!m1!. The \ggs!@C! class is also abstract, and \ggs!m1! can be declared as \ggs!abstract! for this class. But as it has been also declared for one of theses super class, it should also declared as \ggs!override!. As \ggs!@D! is concrete, \ggs!m1! should be declared for this class with \ggs!override! tag.

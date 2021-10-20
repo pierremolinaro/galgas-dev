@@ -87,7 +87,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   ?let @string inComponentName
   ?let @stringset inIndexNameSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@uint ioSelectMethodCount {
 #--- Variant expression
   @semanticExpressionForGeneration variant_expression

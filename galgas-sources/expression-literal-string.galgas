@@ -45,7 +45,7 @@ override method @literalStringExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap unused ioVariableMap
+  ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   @string s = ""

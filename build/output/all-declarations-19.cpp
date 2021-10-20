@@ -11,290 +11,6 @@
 //   Object comparison                                                                           
 //----------------------------------------------------------------------------------------------------------------------
 
-typeComparisonResult cPtr_optionStringExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_optionStringExpressionForGeneration * p = (const cPtr_optionStringExpressionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_optionStringExpressionForGeneration) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mOptionComponentIsPredefined.objectCompare (p->mProperty_mOptionComponentIsPredefined) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mOptionComponentName.objectCompare (p->mProperty_mOptionComponentName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mOptionEntryName.objectCompare (p->mProperty_mOptionEntryName) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-typeComparisonResult GALGAS_optionStringExpressionForGeneration::objectCompare (const GALGAS_optionStringExpressionForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_optionStringExpressionForGeneration::GALGAS_optionStringExpressionForGeneration (void) :
-GALGAS_semanticExpressionForGeneration () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_optionStringExpressionForGeneration GALGAS_optionStringExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_optionStringExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE),
-                                                                      GALGAS_location::constructor_nowhere (HERE),
-                                                                      GALGAS_bool::constructor_default (HERE),
-                                                                      GALGAS_string::constructor_default (HERE),
-                                                                      GALGAS_string::constructor_default (HERE)
-                                                                      COMMA_THERE) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_optionStringExpressionForGeneration::GALGAS_optionStringExpressionForGeneration (const cPtr_optionStringExpressionForGeneration * inSourcePtr) :
-GALGAS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_optionStringExpressionForGeneration) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_optionStringExpressionForGeneration GALGAS_optionStringExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
-                                                                                                        const GALGAS_location & inAttribute_mLocation,
-                                                                                                        const GALGAS_bool & inAttribute_mOptionComponentIsPredefined,
-                                                                                                        const GALGAS_string & inAttribute_mOptionComponentName,
-                                                                                                        const GALGAS_string & inAttribute_mOptionEntryName
-                                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_optionStringExpressionForGeneration result ;
-  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mOptionComponentIsPredefined.isValid () && inAttribute_mOptionComponentName.isValid () && inAttribute_mOptionEntryName.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_optionStringExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mOptionComponentIsPredefined, inAttribute_mOptionComponentName, inAttribute_mOptionEntryName COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_optionStringExpressionForGeneration::getter_mOptionComponentIsPredefined (UNUSED_LOCATION_ARGS) const {
-  GALGAS_bool result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_optionStringExpressionForGeneration * p = (const cPtr_optionStringExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_optionStringExpressionForGeneration) ;
-    result = p->mProperty_mOptionComponentIsPredefined ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_bool cPtr_optionStringExpressionForGeneration::getter_mOptionComponentIsPredefined (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mOptionComponentIsPredefined ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string GALGAS_optionStringExpressionForGeneration::getter_mOptionComponentName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_optionStringExpressionForGeneration * p = (const cPtr_optionStringExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_optionStringExpressionForGeneration) ;
-    result = p->mProperty_mOptionComponentName ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string cPtr_optionStringExpressionForGeneration::getter_mOptionComponentName (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mOptionComponentName ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string GALGAS_optionStringExpressionForGeneration::getter_mOptionEntryName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_optionStringExpressionForGeneration * p = (const cPtr_optionStringExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_optionStringExpressionForGeneration) ;
-    result = p->mProperty_mOptionEntryName ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string cPtr_optionStringExpressionForGeneration::getter_mOptionEntryName (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mOptionEntryName ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_optionStringExpressionForGeneration::setter_setMOptionComponentIsPredefined (GALGAS_bool inValue
-                                                                                         COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_optionStringExpressionForGeneration * p = (cPtr_optionStringExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_optionStringExpressionForGeneration) ;
-    p->mProperty_mOptionComponentIsPredefined = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void cPtr_optionStringExpressionForGeneration::setter_setMOptionComponentIsPredefined (GALGAS_bool inValue
-                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mOptionComponentIsPredefined = inValue ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_optionStringExpressionForGeneration::setter_setMOptionComponentName (GALGAS_string inValue
-                                                                                 COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_optionStringExpressionForGeneration * p = (cPtr_optionStringExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_optionStringExpressionForGeneration) ;
-    p->mProperty_mOptionComponentName = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void cPtr_optionStringExpressionForGeneration::setter_setMOptionComponentName (GALGAS_string inValue
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mOptionComponentName = inValue ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_optionStringExpressionForGeneration::setter_setMOptionEntryName (GALGAS_string inValue
-                                                                             COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_optionStringExpressionForGeneration * p = (cPtr_optionStringExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_optionStringExpressionForGeneration) ;
-    p->mProperty_mOptionEntryName = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void cPtr_optionStringExpressionForGeneration::setter_setMOptionEntryName (GALGAS_string inValue
-                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mOptionEntryName = inValue ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//Pointer class for @optionStringExpressionForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
-
-cPtr_optionStringExpressionForGeneration::cPtr_optionStringExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mResultType,
-                                                                                    const GALGAS_location & in_mLocation,
-                                                                                    const GALGAS_bool & in_mOptionComponentIsPredefined,
-                                                                                    const GALGAS_string & in_mOptionComponentName,
-                                                                                    const GALGAS_string & in_mOptionEntryName
-                                                                                    COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
-mProperty_mOptionComponentIsPredefined (in_mOptionComponentIsPredefined),
-mProperty_mOptionComponentName (in_mOptionComponentName),
-mProperty_mOptionEntryName (in_mOptionEntryName) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_optionStringExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_optionStringExpressionForGeneration ;
-}
-
-void cPtr_optionStringExpressionForGeneration::description (C_String & ioString,
-                                                            const int32_t inIndentation) const {
-  ioString << "[@optionStringExpressionForGeneration:" ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mOptionComponentIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mOptionComponentName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mOptionEntryName.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_optionStringExpressionForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_optionStringExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mOptionComponentIsPredefined, mProperty_mOptionComponentName, mProperty_mOptionEntryName COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@optionStringExpressionForGeneration type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_optionStringExpressionForGeneration ("optionStringExpressionForGeneration",
-                                                            & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_optionStringExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_optionStringExpressionForGeneration ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_optionStringExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_optionStringExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_optionStringExpressionForGeneration GALGAS_optionStringExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                      C_Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_optionStringExpressionForGeneration result ;
-  const GALGAS_optionStringExpressionForGeneration * p = (const GALGAS_optionStringExpressionForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_optionStringExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("optionStringExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//   Object comparison                                                                           
-//----------------------------------------------------------------------------------------------------------------------
-
 typeComparisonResult cPtr_optionCommentExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_optionCommentExpressionForGeneration * p = (const cPtr_optionCommentExpressionForGeneration *) inOperandPtr ;
@@ -13686,4 +13402,165 @@ static void defineExtensionMethod_templateFalseBoolAST_templateExpressionAnalysi
 //----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_templateFalseBoolAST_templateExpressionAnalysis (defineExtensionMethod_templateFalseBoolAST_templateExpressionAnalysis, NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@templateLiteralStringExpressionAST templateExpressionAnalysis'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static void extensionMethod_templateLiteralStringExpressionAST_templateExpressionAnalysis (const cPtr_templateExpressionAST * inObject,
+                                                                                           const GALGAS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
+                                                                                           GALGAS_usefulEntitiesGraph & /* ioArgument_ioUsefulEntitiesGraph */,
+                                                                                           const GALGAS_templateAnalysisContext constinArgument_inAnalysisContext,
+                                                                                           GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                                           C_Compiler * inCompiler
+                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_templateLiteralStringExpressionAST * object = (const cPtr_templateLiteralStringExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_templateLiteralStringExpressionAST) ;
+  GALGAS_string var_s_18444 = GALGAS_string::makeEmptyString () ;
+  const GALGAS_templateLiteralStringExpressionAST temp_0 = object ;
+  cEnumerator_stringlist enumerator_18485 (temp_0.getter_mLiteralStringList (HERE), kENUMERATION_UP) ;
+  while (enumerator_18485.hasCurrentObject ()) {
+    var_s_18444.plusAssign_operation(enumerator_18485.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 404)) ;
+    enumerator_18485.gotoNextObject () ;
+  }
+  const GALGAS_templateLiteralStringExpressionAST temp_1 = object ;
+  outArgument_outExpression = GALGAS_literalStringExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mStringType (HERE), temp_1.getter_mLocation (HERE), var_s_18444  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 406)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void defineExtensionMethod_templateLiteralStringExpressionAST_templateExpressionAnalysis (void) {
+  enterExtensionMethod_templateExpressionAnalysis (kTypeDescriptor_GALGAS_templateLiteralStringExpressionAST.mSlotID,
+                                                   extensionMethod_templateLiteralStringExpressionAST_templateExpressionAnalysis) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_templateLiteralStringExpressionAST_templateExpressionAnalysis (defineExtensionMethod_templateLiteralStringExpressionAST_templateExpressionAnalysis, NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@templateLiteralUIntExpressionAST templateExpressionAnalysis'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static void extensionMethod_templateLiteralUIntExpressionAST_templateExpressionAnalysis (const cPtr_templateExpressionAST * inObject,
+                                                                                         const GALGAS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
+                                                                                         GALGAS_usefulEntitiesGraph & /* ioArgument_ioUsefulEntitiesGraph */,
+                                                                                         const GALGAS_templateAnalysisContext constinArgument_inAnalysisContext,
+                                                                                         GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                                         C_Compiler * /* inCompiler */
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_templateLiteralUIntExpressionAST * object = (const cPtr_templateLiteralUIntExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_templateLiteralUIntExpressionAST) ;
+  const GALGAS_templateLiteralUIntExpressionAST temp_0 = object ;
+  const GALGAS_templateLiteralUIntExpressionAST temp_1 = object ;
+  outArgument_outExpression = GALGAS_literalUIntExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mUIntType (HERE), temp_0.getter_mLiteralInt (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 419)), temp_1.getter_mLiteralInt (HERE).getter_uint (SOURCE_FILE ("templateAnalysis.galgas", 420))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 417)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void defineExtensionMethod_templateLiteralUIntExpressionAST_templateExpressionAnalysis (void) {
+  enterExtensionMethod_templateExpressionAnalysis (kTypeDescriptor_GALGAS_templateLiteralUIntExpressionAST.mSlotID,
+                                                   extensionMethod_templateLiteralUIntExpressionAST_templateExpressionAnalysis) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_templateLiteralUIntExpressionAST_templateExpressionAnalysis (defineExtensionMethod_templateLiteralUIntExpressionAST_templateExpressionAnalysis, NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@templateLiteralSIntExpressionAST templateExpressionAnalysis'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static void extensionMethod_templateLiteralSIntExpressionAST_templateExpressionAnalysis (const cPtr_templateExpressionAST * inObject,
+                                                                                         const GALGAS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
+                                                                                         GALGAS_usefulEntitiesGraph & /* ioArgument_ioUsefulEntitiesGraph */,
+                                                                                         const GALGAS_templateAnalysisContext constinArgument_inAnalysisContext,
+                                                                                         GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                                         C_Compiler * /* inCompiler */
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_templateLiteralSIntExpressionAST * object = (const cPtr_templateLiteralSIntExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_templateLiteralSIntExpressionAST) ;
+  const GALGAS_templateLiteralSIntExpressionAST temp_0 = object ;
+  const GALGAS_templateLiteralSIntExpressionAST temp_1 = object ;
+  outArgument_outExpression = GALGAS_literalSIntExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mSIntType (HERE), temp_0.getter_mLiteralInt (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 433)), temp_1.getter_mLiteralInt (HERE).getter_sint (SOURCE_FILE ("templateAnalysis.galgas", 434))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 431)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void defineExtensionMethod_templateLiteralSIntExpressionAST_templateExpressionAnalysis (void) {
+  enterExtensionMethod_templateExpressionAnalysis (kTypeDescriptor_GALGAS_templateLiteralSIntExpressionAST.mSlotID,
+                                                   extensionMethod_templateLiteralSIntExpressionAST_templateExpressionAnalysis) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_templateLiteralSIntExpressionAST_templateExpressionAnalysis (defineExtensionMethod_templateLiteralSIntExpressionAST_templateExpressionAnalysis, NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@templateLiteralUInt64ExpressionAST templateExpressionAnalysis'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static void extensionMethod_templateLiteralUInt_36__34_ExpressionAST_templateExpressionAnalysis (const cPtr_templateExpressionAST * inObject,
+                                                                                                 const GALGAS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
+                                                                                                 GALGAS_usefulEntitiesGraph & /* ioArgument_ioUsefulEntitiesGraph */,
+                                                                                                 const GALGAS_templateAnalysisContext constinArgument_inAnalysisContext,
+                                                                                                 GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                                                 C_Compiler * /* inCompiler */
+                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_templateLiteralUInt_36__34_ExpressionAST * object = (const cPtr_templateLiteralUInt_36__34_ExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_templateLiteralUInt_36__34_ExpressionAST) ;
+  const GALGAS_templateLiteralUInt_36__34_ExpressionAST temp_0 = object ;
+  const GALGAS_templateLiteralUInt_36__34_ExpressionAST temp_1 = object ;
+  outArgument_outExpression = GALGAS_literalUInt_36__34_ExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mUInt_36__34_Type (HERE), temp_0.getter_mLiteralInt (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 447)), temp_1.getter_mLiteralInt (HERE).getter_uint_36__34_ (SOURCE_FILE ("templateAnalysis.galgas", 448))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 445)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void defineExtensionMethod_templateLiteralUInt_36__34_ExpressionAST_templateExpressionAnalysis (void) {
+  enterExtensionMethod_templateExpressionAnalysis (kTypeDescriptor_GALGAS_templateLiteralUInt_36__34_ExpressionAST.mSlotID,
+                                                   extensionMethod_templateLiteralUInt_36__34_ExpressionAST_templateExpressionAnalysis) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_templateLiteralUInt_36__34_ExpressionAST_templateExpressionAnalysis (defineExtensionMethod_templateLiteralUInt_36__34_ExpressionAST_templateExpressionAnalysis, NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@templateLiteralSInt64ExpressionAST templateExpressionAnalysis'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static void extensionMethod_templateLiteralSInt_36__34_ExpressionAST_templateExpressionAnalysis (const cPtr_templateExpressionAST * inObject,
+                                                                                                 const GALGAS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
+                                                                                                 GALGAS_usefulEntitiesGraph & /* ioArgument_ioUsefulEntitiesGraph */,
+                                                                                                 const GALGAS_templateAnalysisContext constinArgument_inAnalysisContext,
+                                                                                                 GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                                                 C_Compiler * /* inCompiler */
+                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_templateLiteralSInt_36__34_ExpressionAST * object = (const cPtr_templateLiteralSInt_36__34_ExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_templateLiteralSInt_36__34_ExpressionAST) ;
+  const GALGAS_templateLiteralSInt_36__34_ExpressionAST temp_0 = object ;
+  const GALGAS_templateLiteralSInt_36__34_ExpressionAST temp_1 = object ;
+  outArgument_outExpression = GALGAS_literalSInt_36__34_ExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mSInt_36__34_Type (HERE), temp_0.getter_mLiteralInt (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 461)), temp_1.getter_mLiteralInt (HERE).getter_sint_36__34_ (SOURCE_FILE ("templateAnalysis.galgas", 462))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 459)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void defineExtensionMethod_templateLiteralSInt_36__34_ExpressionAST_templateExpressionAnalysis (void) {
+  enterExtensionMethod_templateExpressionAnalysis (kTypeDescriptor_GALGAS_templateLiteralSInt_36__34_ExpressionAST.mSlotID,
+                                                   extensionMethod_templateLiteralSInt_36__34_ExpressionAST_templateExpressionAnalysis) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_templateLiteralSInt_36__34_ExpressionAST_templateExpressionAnalysis (defineExtensionMethod_templateLiteralSInt_36__34_ExpressionAST_templateExpressionAnalysis, NULL) ;
 

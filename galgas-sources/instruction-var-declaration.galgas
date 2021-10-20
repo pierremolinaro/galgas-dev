@@ -52,7 +52,7 @@ override method @localVariableDeclarationAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 {
 #--- Check target variable
   let targetType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}

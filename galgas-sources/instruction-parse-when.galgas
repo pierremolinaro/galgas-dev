@@ -120,7 +120,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   ?let @string inComponentName
   ?let @stringset inIndexNameSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@uint ioSelectMethodCount {
 #--- When expression
   @semanticExpressionForGeneration when_expression

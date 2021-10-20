@@ -6210,7 +6210,7 @@ typedef void (*extensionMethodSignature_semanticInstructionAST_analyzeSemanticIn
                                                                                             class GALGAS_usefulEntitiesGraph & ioArgument1,
                                                                                             const class GALGAS_analysisContext constinArgument2,
                                                                                             class GALGAS_semanticInstructionListForGeneration & ioArgument3,
-                                                                                            class GALGAS_variableMap & ioArgument4,
+                                                                                            class GALGAS_localVarManager & ioArgument4,
                                                                                             class C_Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) ;
 
@@ -6226,47 +6226,47 @@ void callExtensionMethod_analyzeSemanticInstruction (const class cPtr_semanticIn
                                                      GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                      const GALGAS_analysisContext constin_inAnalysisContext,
                                                      GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
-                                                     GALGAS_variableMap & io_ioVariableMap,
+                                                     GALGAS_localVarManager & io_ioVariableMap,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @variableMap unique map
+// Phase 1: @localVarManager unique map
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class cMapElement_variableMap ;
+class cMapElement_localVarManager ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extern const char * kSearchErrorMessage_variableMap_searchForReadAccess ;
+extern const char * kSearchErrorMessage_localVarManager_searchForReadAccess ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extern const char * kSearchErrorMessage_variableMap_searchForWriteAccess ;
+extern const char * kSearchErrorMessage_localVarManager_searchForWriteAccess ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extern const char * kSearchErrorMessage_variableMap_searchForReadWriteAccess ;
+extern const char * kSearchErrorMessage_localVarManager_searchForReadWriteAccess ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extern const char * kSearchErrorMessage_variableMap_searchForDropAccess ;
+extern const char * kSearchErrorMessage_localVarManager_searchForDropAccess ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extern const char * kSearchErrorMessage_variableMap_neutralAccess ;
+extern const char * kSearchErrorMessage_localVarManager_neutralAccess ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_variableMap : public AC_GALGAS_uniqueMap {
+class GALGAS_localVarManager : public AC_GALGAS_uniqueMap {
 //--------------------------------- Default constructor
-  public: GALGAS_variableMap (void) ;
+  public: GALGAS_localVarManager (void) ;
 
 //--------------------------------- Handle copy
-  public: GALGAS_variableMap (const GALGAS_variableMap & inSource) ;
-  public: GALGAS_variableMap & operator = (const GALGAS_variableMap & inSource) ;
+  public: GALGAS_localVarManager (const GALGAS_localVarManager & inSource) ;
+  public: GALGAS_localVarManager & operator = (const GALGAS_localVarManager & inSource) ;
 
 //-- Start of generic part --*
 
@@ -6274,12 +6274,12 @@ class GALGAS_variableMap : public AC_GALGAS_uniqueMap {
   protected: virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_variableMap extractObject (const GALGAS_object & inObject,
-                                                   C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_localVarManager extractObject (const GALGAS_object & inObject,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_variableMap constructor_emptyMap (LOCATION_ARGS) ;
+  public: static class GALGAS_localVarManager constructor_emptyMap (LOCATION_ARGS) ;
 
 
 //--------------------------------- Setters
@@ -6343,19 +6343,19 @@ class GALGAS_variableMap : public AC_GALGAS_uniqueMap {
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_insertMutableAttribute (class GALGAS_lstring constinArgument0,
-                                                               class GALGAS_unifiedTypeMap_2D_entry constinArgument1,
-                                                               class GALGAS_string constinArgument2,
-                                                               class GALGAS_string constinArgument3,
-                                                               C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void setter_insertMutableProperty (class GALGAS_lstring constinArgument0,
+                                                              class GALGAS_unifiedTypeMap_2D_entry constinArgument1,
+                                                              class GALGAS_string constinArgument2,
+                                                              class GALGAS_string constinArgument3,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_insertNonMutableAttribute (class GALGAS_lstring constinArgument0,
-                                                                  class GALGAS_unifiedTypeMap_2D_entry constinArgument1,
-                                                                  class GALGAS_string constinArgument2,
-                                                                  class GALGAS_string constinArgument3,
-                                                                  C_Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void setter_insertNonMutableProperty (class GALGAS_lstring constinArgument0,
+                                                                 class GALGAS_unifiedTypeMap_2D_entry constinArgument1,
+                                                                 class GALGAS_string constinArgument2,
+                                                                 class GALGAS_string constinArgument3,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertOutputFormalArgument (class GALGAS_lstring constinArgument0,
                                                                    class GALGAS_unifiedTypeMap_2D_entry constinArgument1,
@@ -6467,23 +6467,23 @@ class GALGAS_variableMap : public AC_GALGAS_uniqueMap {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
-  public: VIRTUAL_IN_DEBUG cMapElement_variableMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
-                                                                                        const GALGAS_string & inKey
-                                                                                        COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG cMapElement_localVarManager * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+                                                                                            const GALGAS_string & inKey
+                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
 
-  friend class cEnumerator_variableMap ;
+  friend class cEnumerator_localVarManager ;
  
-} ; // End of GALGAS_variableMap class
+} ; // End of GALGAS_localVarManager class
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                      
 //----------------------------------------------------------------------------------------------------------------------
 
-class cEnumerator_variableMap : public cGenericAbstractEnumerator {
-  public: cEnumerator_variableMap (const GALGAS_variableMap & inEnumeratedObject,
-                                   const typeEnumerationOrder inOrder) ;
+class cEnumerator_localVarManager : public cGenericAbstractEnumerator {
+  public: cEnumerator_localVarManager (const GALGAS_localVarManager & inEnumeratedObject,
+                                       const typeEnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -6494,26 +6494,26 @@ class cEnumerator_variableMap : public cGenericAbstractEnumerator {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_variableMap ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVarManager ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 2: class for element of '@variableMap' map
+// Phase 2: class for element of '@localVarManager' map
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class cMapElement_variableMap : public cMapElement {
+class cMapElement_localVarManager : public cMapElement {
 //--- Map attributes
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mType ;
   public: GALGAS_string mProperty_mCppName ;
   public: GALGAS_string mProperty_mNameForCheckingFormalParameterUsing ;
 
 //--- Constructor
-  public: cMapElement_variableMap (const GALGAS_lstring & inKey,
-                                   const GALGAS_unifiedTypeMap_2D_entry & in_mType,
-                                   const GALGAS_string & in_mCppName,
-                                   const GALGAS_string & in_mNameForCheckingFormalParameterUsing
-                                   COMMA_LOCATION_ARGS) ;
+  public: cMapElement_localVarManager (const GALGAS_lstring & inKey,
+                                       const GALGAS_unifiedTypeMap_2D_entry & in_mType,
+                                       const GALGAS_string & in_mCppName,
+                                       const GALGAS_string & in_mNameForCheckingFormalParameterUsing
+                                       COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -7220,7 +7220,7 @@ typedef void (*extensionMethodSignature_actualParameterAST_checkAgainstFormalArg
                                                                                         const class GALGAS_lstring constinArgument3,
                                                                                         const class GALGAS_unifiedTypeMap_2D_entry constinArgument4,
                                                                                         const class GALGAS_formalArgumentPassingModeAST constinArgument5,
-                                                                                        class GALGAS_variableMap & ioArgument6,
+                                                                                        class GALGAS_localVarManager & ioArgument6,
                                                                                         class GALGAS_actualParameterListForGeneration & ioArgument7,
                                                                                         class GALGAS_stringset & ioArgument8,
                                                                                         class GALGAS_semanticInstructionListForGeneration & ioArgument9,
@@ -7241,7 +7241,7 @@ void callExtensionMethod_checkAgainstFormalArgument (const class cPtr_actualPara
                                                      const GALGAS_lstring constin_inFormalSelector,
                                                      const GALGAS_unifiedTypeMap_2D_entry constin_inFormalArgumentType,
                                                      const GALGAS_formalArgumentPassingModeAST constin_inFormalArgumentPassingMode,
-                                                     GALGAS_variableMap & io_ioVariableMap,
+                                                     GALGAS_localVarManager & io_ioVariableMap,
                                                      GALGAS_actualParameterListForGeneration & io_ioActualParameterListForGeneration,
                                                      GALGAS_stringset & io_ioExclusiveVariableSet,
                                                      GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,

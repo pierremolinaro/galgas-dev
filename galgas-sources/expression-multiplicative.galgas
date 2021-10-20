@@ -106,7 +106,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
@@ -163,7 +163,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
@@ -219,7 +219,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
@@ -275,7 +275,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
@@ -331,7 +331,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression

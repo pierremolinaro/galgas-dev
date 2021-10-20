@@ -5,6 +5,9 @@
 \chapterLabel{Sous-programmes}{sousprgm}\index{Sous-programmes}
 %-------------------------------------------------------------
 
+\tableDesMatieresDuChapitre
+
+
 GALGAS définit les sous-programmes suivants :
 \begin{itemize}
   \item les \emph{fonctions} (dans ce chapitre, \refSectionPage{declarationFonction}) ;
@@ -32,7 +35,6 @@ En GALGAS, \emph{méthodes}, \emph{getters} et \emph{setters} s'appliquent sur u
     \end{tabular}
   \caption{Constructions d'appel de sous programme}
   \labelTableau{appelSousProgramme}
-  \ligne
 \end{table}
 
 
@@ -67,7 +69,6 @@ Le \refTableau{ArgumentFormelEntree} liste les différentes formes d'un argument
   \end{tabular}
   \caption{Argument formel en entrée, paramètre effectif en sortie}
   \labelTableau{ArgumentFormelEntree}
-  \ligne
 \end{table}
 
 
@@ -87,7 +88,6 @@ Le \refTableau{ArgumentFormelEntreeSortie} liste les différentes formes d'un ar
   \end{tabular}
   \caption{Argument formel en entrée/sortie, paramètre effectif en sortie/entrée}
   \labelTableau{ArgumentFormelEntreeSortie}
-  \ligne
 \end{table}
 
 \subsectionLabel{Argument formel en sortie}{argumentFormelSortie}
@@ -108,7 +108,6 @@ Le \refTableau{ArgumentFormelEntreeSortie} liste les différentes formes d'un ar
     \end{tabular}
   \caption{Argument formel en sortie, paramètre effectif en entrée}
   \labelTableau{ArgumentFormelSortie}
-  \ligne
 \end{table}
 
 Le \refTableau{ArgumentFormelSortie} liste l'unique forme d'un argument formel en sortie. Le compilateur vérifie que les instructions du sous-programme fixent une valeur à chaque argument formel en sortie.Le paramètre effectif correspondant est une \emph{cible} précédée par \ggs+?+. Une \emph{cible} est soit une variable, soit l'accès à un champ d'une variable de type \ggs+struct+.

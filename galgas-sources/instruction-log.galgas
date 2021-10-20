@@ -77,7 +77,7 @@ override method @logInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
+  ?!@localVarManager ioVariableMap {
   for () in self.mLogList do
   #--- Analyze source expression
     @semanticExpressionForGeneration expression

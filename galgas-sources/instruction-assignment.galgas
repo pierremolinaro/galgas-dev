@@ -99,7 +99,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 {
 #--- Get target variable type
   @unifiedTypeMap-entry targetType
@@ -177,7 +177,7 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 {
   var @unifiedTypeMap-entry targetType
   var @string targetVariableCppName

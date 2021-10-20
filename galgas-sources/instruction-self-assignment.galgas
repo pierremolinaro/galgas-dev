@@ -49,7 +49,7 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 {
 #--- Analyze source expression
   [self.mSourceExpression analyzeSemanticExpression

@@ -84,7 +84,7 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
   ?let @string unused inComponentName
   ?let @stringset unused inIndexNameSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@uint unused ioSelectMethodCount
 {
   [inNonterminalMap searchKey !self.mNonterminalName ?let @nonterminalLabelMap labelMap]

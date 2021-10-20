@@ -52,7 +52,7 @@ override method @trueExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap unused ioVariableMap
+  ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   outExpression = @trueExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !self.mLocation}
@@ -72,7 +72,7 @@ override method @falseExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap unused ioVariableMap
+  ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   outExpression = @falseExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !self.mLocation}

@@ -108,7 +108,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
   ?let @string inComponentName
   ?let @stringset inIndexNameSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@uint ioSelectMethodCount
 {
   let @uint choiceIndex = ioSelectMethodCount

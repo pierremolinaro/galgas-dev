@@ -91,7 +91,7 @@ override method @literalUIntExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap unused ioVariableMap
+  ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   outExpression = @literalUIntExpressionForGeneration.new {
@@ -115,7 +115,7 @@ override method @literalUInt64ExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap unused ioVariableMap
+  ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   outExpression = @literalUInt64ExpressionForGeneration.new {
@@ -139,7 +139,7 @@ override method @literalSIntExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap unused ioVariableMap
+  ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   outExpression = @literalSIntExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mSIntType ![self.mValue location] ![self.mValue sint]}
@@ -159,7 +159,7 @@ override method @literalSInt64ExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap unused ioVariableMap
+  ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   outExpression = @literalSInt64ExpressionForGeneration.new {
@@ -183,7 +183,7 @@ override method @literalBigIntExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap unused ioVariableMap
+  ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   outExpression = @literalBigIntExpressionForGeneration.new {

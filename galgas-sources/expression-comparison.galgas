@@ -92,7 +92,7 @@ override method @comparisonExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
  {
 #--- Left expression analysis

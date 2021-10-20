@@ -24,7 +24,7 @@ abstract method @semanticInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -53,7 +53,7 @@ proc analyzeSemanticInstructionList
   ?let @localInitializedVariableList inLocalInitializedVariableList
   ?let @semanticInstructionListAST inSemanticInstructionListAST
   ?let @location inEndOfBranchLocation
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticInstructionListForGeneration outInstructionListForGeneration
 {
 #--- Begin branch
@@ -82,7 +82,7 @@ proc analyzeSemanticInstructionListWithoutBranch
   ?let @localConstantList inLocalConstantList
   ?let @localInitializedVariableList inLocalInitializedVariableList
   ?let @semanticInstructionListAST inSemanticInstructionListAST
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticInstructionListForGeneration outInstructionListForGeneration
 {
   outInstructionListForGeneration = {}
@@ -119,7 +119,7 @@ abstract method @actualParameterAST checkAgainstFormalArgument
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset ioExclusiveVariableSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -144,7 +144,7 @@ override method @outputActualParameterAST checkAgainstFormalArgument
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset unused ioExclusiveVariableSet
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
@@ -186,7 +186,7 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset ioExclusiveVariableSet
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
@@ -242,7 +242,7 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-  ?!@variableMap unused ioVariableMap
+  ?!@localVarManager unused ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset unused ioExclusiveVariableSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
@@ -280,7 +280,7 @@ override method @outputInputJokerParameterAST checkAgainstFormalArgument
   ?let @lstring unused inFormalSelector
   ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-  ?!@variableMap unused ioVariableMap
+  ?!@localVarManager unused ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset unused ioExclusiveVariableSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
@@ -316,7 +316,7 @@ override method @inputActualExistingVariableParameterAST checkAgainstFormalArgum
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset ioExclusiveVariableSet
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
@@ -361,7 +361,7 @@ override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-  ?!@variableMap unused ioVariableMap
+  ?!@localVarManager unused ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset unused ioExclusiveVariableSet
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
@@ -418,7 +418,7 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset ioExclusiveVariableSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -477,7 +477,7 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset ioExclusiveVariableSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -546,7 +546,7 @@ override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-  ?!@variableMap unused ioVariableMap
+  ?!@localVarManager unused ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset unused ioExclusiveVariableSet
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
@@ -574,7 +574,7 @@ override method @inputJokerActualParameterAST checkAgainstFormalArgument
   ?let @lstring unused inFormalSelector
   ?let @unifiedTypeMap-entry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-  ?!@variableMap unused ioVariableMap
+  ?!@localVarManager unused ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset unused ioExclusiveVariableSet
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
@@ -657,7 +657,7 @@ proc analyzeRoutineArguments
   ?let @string inInvokedEntityName
   ?let @formalParameterSignature inRoutineSignature
   ?let @actualParameterListAST inActualParameterList
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   !@actualParameterListForGeneration outActualParameterListForGeneration
 {
@@ -768,7 +768,7 @@ abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analy
   ?let @bool inHasTranslateFeature
   ?let @string inSyntaxDirectedTranslationResultVarName
   ?!@stringlist ioAssignementList
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -777,7 +777,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeGr
   ?let @bool unused inHasTranslateFeature
   ?let @string unused inSyntaxDirectedTranslationResultVarName
   ?!@stringlist unused ioAssignementList
-  ?!@variableMap unused ioVariableMap {
+  ?!@localVarManager unused ioVariableMap {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -787,7 +787,7 @@ override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeG
   ?let @bool inHasTranslateFeature
   ?let @string unused inSyntaxDirectedTranslationResultVarName
   ?!@stringlist unused ioAssignementList
-  ?!@variableMap unused ioVariableMap {
+  ?!@localVarManager unused ioVariableMap {
   if not inHasTranslateFeature then
     error self.mLocation : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
@@ -800,7 +800,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
   ?let @bool inHasTranslateFeature
   ?let @string inSyntaxDirectedTranslationResultVarName
   ?!@stringlist ioAssignementList
-  ?!@variableMap ioVariableMap {
+  ?!@localVarManager ioVariableMap {
   if not inHasTranslateFeature then
     error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
@@ -821,7 +821,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   ?let @bool inHasTranslateFeature
   ?let @string inSyntaxDirectedTranslationResultVarName
   ?!@stringlist ioAssignementList
-  ?!@variableMap ioVariableMap {
+  ?!@localVarManager ioVariableMap {
   if not inHasTranslateFeature then
     error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
@@ -844,7 +844,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   ?let @bool inHasTranslateFeature
   ?let @string inSyntaxDirectedTranslationResultVarName
   ?!@stringlist ioAssignementList
-  ?!@variableMap ioVariableMap {
+  ?!@localVarManager ioVariableMap {
   if not inHasTranslateFeature then
     error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end

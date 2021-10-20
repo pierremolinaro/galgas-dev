@@ -112,7 +112,7 @@ override method @overridingAbstractExtensionSetterAST semanticAnalysis
     error self.mOverridingExtensionSetterName:"this setter is not declared by a super class"
   end
 #--- Analyze formal argument list
-  var variableMap = @variableMap.emptyMap
+  var variableMap = @localVarManager.default
   @formalParameterListForGeneration formalParameterListForGeneration
   buildLocalVariableMapAndSignature (
     !inSemanticContext

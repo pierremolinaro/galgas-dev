@@ -5,6 +5,9 @@
 \chapter{Formatage pour LaTeX}
 %-------------------------------------------------------------
 
+\tableDesMatieresDuChapitre
+
+
 Si vous utilisez \LaTeX pour écrire la documentation de votre compilateur, vous êtes confronté sans doute au problème de la présentation des programmes sources. En effet, les paquetages classiques pour ce type de problème, comme par exemple \tpp{listings}, peuvent être trop rigides pour des règles lexicales particulières d'un langage.
 
 Par exemple, en GALGAS, les constantes entières acceptent le caractère \tpp{\_}, comme dans \ggs+123_456+. Elles peuvent être préfixées par \tpp{0x}, et postfixées par \tpp{S}, \tpp{LS} pour indiquer leur type~: \ggs+0x123_456S+, ou encore \ggs+0x_123_456_LS+. Le paquetage \tpp{listings} ne peut pas être paramétré pour afficher correctement les constantes entières de GALGAS.
@@ -227,7 +230,6 @@ Vous devez donc créer une commande particulière pour chaque style, plus évent
   \end{tabular}
   \caption{Échappement et substitution des caractères pour formattage \LaTeX}
   \labelTableau{substitution-latex}
-  \ligne
 \end{table}
 
 

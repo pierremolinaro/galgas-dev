@@ -5,6 +5,8 @@
 \chapter{Tutorial : le langage LOGO}
 %-------------------------------------------------------------
 
+\tableDesMatieresDuChapitre
+
 Le but de ce tutorial est de construire en utilisant GALGAS un compilateur d’un langage inspiré de LOGO, qui fournit en sortie un fichier SVG\footnote{Vous trouverez des informations sur le format SVG sur la page : \url{http://www.canarlake.org/index.cgi?theme=svg}.} contenant les tracés définis par un programme source LOGO. La génération des fichiers SVG à partir de GALGAS sera faite par un template.
 
 
@@ -88,7 +90,6 @@ Voici quelques exemples de programmes LOGO (\refTableau{carreEtoilePentagoneLogo
   \end{tabular}
   \caption{Carré, étoile et pentagone en LOGO}
   \labelTableau{carreEtoilePentagoneLogo}
-  \ligne
 \end{table}
 
 
@@ -130,7 +131,6 @@ Voici quelques exemples de programmes LOGO (\refTableau{carreEtoilePentagoneLogo
   \end{tabular}
   \caption{Hexagone et octogone en LOGO}
   \labelTableau{hexagoneOctogoneLogo}
-  \ligne
 \end{table}
 
 
@@ -152,7 +152,6 @@ Voici quelques exemples de programmes LOGO (\refTableau{carreEtoilePentagoneLogo
   \end{tabular}
   \caption{Programmes LOGO contenant des erreurs sémantiques}
   \labelTableau{logoErreurSemantiques}
-  \ligne
 \end{table}
 
 
@@ -362,7 +361,6 @@ Dans le répertoire \tpp{chezmoi/logo}~:
   \end{tabular}
   \caption{Contenu du répertoire \texttt{logo/galgas-sources}}
   \labelTableau{tableauRepertoireSourcesLOGO}
-  \ligne
 \end{table}
 
 
@@ -394,7 +392,6 @@ Le répertoire \tpp{logo} est complété par de nouveaux répertoires (\refFigur
   \includegraphics{partie-utilisation/repertoire-logo.pdf}
   \caption{Répertoire \texttt{logo} après compilation GALGAS}
   \labelFigure{figureRepertoireLOGOapresCompGALGAS}
-  \ligne
 \end{figure}
 
 
@@ -411,7 +408,6 @@ Le répertoire \tpp{logo} est complété par de nouveaux répertoires (\refFigur
   \end{tabular}
   \caption{Contenu des sous-répertoires de \texttt{logo} après compilation GALGAS}
   \labelTableau{tableauRepertoireLOGOapresCompGALGAS}
-  \ligne
 \end{table}
 
 
@@ -642,7 +638,6 @@ A priori, vous n'avez pas besoin de modifier le fichier \tpp{logo-grammar.galgas
   \end{tabular}
   \caption{Spécification de l'analyse de la grammaire}
   \labelTableau{tableauClasseGrammaire}
-  \ligne
 \end{table}
 
 
@@ -756,7 +751,6 @@ Le cadre général est celui des grammaires attribuées. Ceci revient à doter d
   \end{tabular}
   \caption{Arguments formels, paramètres effectifs en C et en GALGAS}
   \labelTableau{tableauComparaisonArgumentsFormels}
-  \ligne
 \end{table}
 
 En GALGAS, nous utilisons plutôt le vocabulaire des langages de programmation~: \emph{argument formel}, \emph{paramètre effectif}.
@@ -783,7 +777,6 @@ Le sens de transmission d'un argument formel est défini dans le \refTableauPage
   \end{tabular}
   \caption{Sens de transmission d'un argument formel}
   \labelTableau{tableauSensTransmissionArgumentsFormels}
-  \ligne
 \end{table}
 
 
@@ -808,7 +801,6 @@ Le sens de transmission d'un paramètre effectif est défini dans le \refTableau
   \end{tabular}
   \caption{Sens de transmission d'un paramètre effectif}
   \labelTableau{tableauSensTransmissionParametresEffectifs}
-  \ligne
 \end{table}
 
 \subsubsection{Les types en GALGAS}

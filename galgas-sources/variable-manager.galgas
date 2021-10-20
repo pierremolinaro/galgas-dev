@@ -14,11 +14,204 @@
 #  details.                                                                                                            *
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! TOP LEVEL SETTERS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager insertUsedLocalConstant
+              ?let @lstring inVarName 
+              ?let @unifiedTypeMap-entry inType
+              ?let @string inCppName
+              ?let @string inNameForCheckingFormalParameterUsing
+{
+  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.constant !.modified]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager insertLocalConstant
+              ?let @lstring inVarName 
+              ?let @unifiedTypeMap-entry inType
+              ?let @string inCppName
+              ?let @string inNameForCheckingFormalParameterUsing
+{
+  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.constant !.initialized]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager insertUndefinedLocalConstant
+              ?let @lstring inVarName 
+              ?let @unifiedTypeMap-entry inType
+              ?let @string inCppName
+              ?let @string inNameForCheckingFormalParameterUsing
+{
+  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.constant !.unvaluated {!usedInSubscope: false}]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager insertDefinedLocalVariable
+              ?let @lstring inVarName 
+              ?let @unifiedTypeMap-entry inType
+              ?let @string inCppName
+              ?let @string inNameForCheckingFormalParameterUsing
+{
+  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.constant !.unvaluated {!usedInSubscope: false}]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager insertUndefinedLocalVariable
+              ?let @lstring inVarName 
+              ?let @unifiedTypeMap-entry inType
+              ?let @string inCppName
+              ?let @string inNameForCheckingFormalParameterUsing
+{
+  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.none !.initialized]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager insertInputFormalArgumentDeclaredAsUnused
+              ?let @lstring inVarName 
+              ?let @unifiedTypeMap-entry inType
+              ?let @string inCppName
+              ?let @string inNameForCheckingFormalParameterUsing
+{
+  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.none !.initialized]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager insertInputFormalArgument
+              ?let @lstring inVarName 
+              ?let @unifiedTypeMap-entry inType
+              ?let @string inCppName
+              ?let @string inNameForCheckingFormalParameterUsing
+{
+  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.none !.initialized]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager insertOutputFormalArgument
+              ?let @lstring inVarName 
+              ?let @unifiedTypeMap-entry inType
+              ?let @string inCppName
+              ?let @string inNameForCheckingFormalParameterUsing
+{
+  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.shouldBeInitialized !.unvaluated {!usedInSubscope: false}]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager insertInputOutputFormalArgumentDeclaredAsUnused
+              ?let @lstring inVarName 
+              ?let @unifiedTypeMap-entry inType
+              ?let @string inCppName
+              ?let @string inNameForCheckingFormalParameterUsing
+{
+  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.none !.initialized]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager insertInputOutputFormalArgument
+              ?let @lstring inVarName 
+              ?let @unifiedTypeMap-entry inType
+              ?let @string inCppName
+              ?let @string inNameForCheckingFormalParameterUsing
+{
+  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.none !.initialized]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager insertConstantInputFormalArgumentDeclaredAsUnused
+              ?let @lstring inVarName 
+              ?let @unifiedTypeMap-entry inType
+              ?let @string inCppName
+              ?let @string inNameForCheckingFormalParameterUsing
+{
+  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.constant !.initialized]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager insertConstantInputFormalArgument
+              ?let @lstring inVarName 
+              ?let @unifiedTypeMap-entry inType
+              ?let @string inCppName
+              ?let @string inNameForCheckingFormalParameterUsing
+{
+  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.constant !.initialized]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager insertNonMutableProperty
+              ?let @lstring inVarName 
+              ?let @unifiedTypeMap-entry inType
+              ?let @string inCppName
+              ?let @string inNameForCheckingFormalParameterUsing
+{
+  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.constant !.initialized]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager insertMutableProperty
+              ?let @lstring inVarName 
+              ?let @unifiedTypeMap-entry inType
+              ?let @string inCppName
+              ?let @string inNameForCheckingFormalParameterUsing
+{
+  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.none !.initialized]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager openOverrideForSelectBlock {
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager openOverrideForRepeatBlock {
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager openBranch {
+  [!?self.mCurrentManager openScope !{}]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager closeBranch ?let @location inEndOfBranchLocation {
+  [!?self.mCurrentManager closeScope !inEndOfBranchLocation]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager closeOverride ?let @location unused inEndOfBranchLocation {
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! TYPES
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 boolset @localVariableAttributes {
   constant, shouldBeInitialized, readOnce, noWarningOnNonMutation
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum @localVarValuation {
+  case invalid #--- Error state, for disabled further error messages
+  case unvaluated (@bool usedInSubscope) # The variable has no value
+  case initialized # The variable has been written once
+  case read # The variable has been written, and read
+  case modified # The variable has been rewritten
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -43,24 +236,22 @@ list @localVarMapListForLLVM {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @localVarManager {
+  private @currentVarManager mCurrentManager
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct @currentVarManager {
   private @scopeLocalVarMap mLocalVarMap
   private @localVarMapListForLLVM mSubMaps
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @localVarValuation {
-  case invalid #--- Error state, for disabled further error messages
-  case unvaluated (@stringset uninitializedPropertySet @bool usedInSubscope) # The variable has no value
-  case initialized # The variable has been written once
-  case read # The variable has been written, and read
-  case modified # The variable has been rewritten
-}
-
 getter @localVarValuation string -> @string {
   switch self
   case invalid : result = "invalid"
-  case unvaluated (**) : result = "unvaluated"
+  case unvaluated (*) : result = "unvaluated"
   case initialized : result = "initialized"
   case read : result = "read"
   case modified : result = "modified"
@@ -68,63 +259,184 @@ getter @localVarValuation string -> @string {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! WRITE ACCESS
+#! NEUTRAL ACCESS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @scopeLocalVarMap writeAccess ?let @lstring inVarName
-                                       ?let @localVariableAttributes inAttributes
-                                       ?let @localVarValuation inValuation {
+setter @localVarManager neutralAccess
+          ?let @lstring inVarName
+          !@unifiedTypeMap-entry outType
+          !@string outCppName
+          !@string outNameForCheckingFormalParameterUsing
+{
+  [!?self.mCurrentManager neutralAccess !inVarName ?outType ?outCppName ? outNameForCheckingFormalParameterUsing]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @currentVarManager neutralAccess
+          ?let @lstring inVarName
+          !@unifiedTypeMap-entry outType
+          !@string outCppName
+          !@string outNameForCheckingFormalParameterUsing
+{
+  if let [self.mLocalVarMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?2*] then
+    outType = type
+    outCppName = cppName
+    outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
+  else
+    [!?self.mSubMaps neutralAccess !inVarName !0 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarMapListForLLVM neutralAccess
+          ?let @lstring inVarName
+          ?let @uint inIndex
+          !@unifiedTypeMap-entry outType
+          !@string outCppName
+          !@string outNameForCheckingFormalParameterUsing
+{
+  if inIndex >= [self length] then
+    error inVarName : "Undefined variable" : outType, outCppName, outNameForCheckingFormalParameterUsing
+  else
+    var localMap = [self mMapAtIndex !inIndex]
+    if let [localMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?2*] then
+      outType = type
+      outCppName = cppName
+      outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
+    else
+      [!?self neutralAccess !inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
+    end
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! DROP ACCESS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @scopeLocalVarMap dropAccess ?let @lstring inVarName
+                                    ?let @localVariableAttributes unused inAttributes
+                                    ?let @localVarValuation inValuation {
   switch inValuation
   case invalid : #--- Error state, for disabled further error messages
-  case unvaluated (**) : # The variable has no value
-    [!?self setMStateForKey !.initialized !inVarName]
+  case unvaluated (*) : # The variable has no value
+     error inVarName : "variable '" + inVarName + "' cannot be dropped, it has no value"
+     [!?self setMStateForKey !.invalid !inVarName]
   case initialized : # The variable has been written once
-    if [inAttributes constant] then
-      error inVarName : "constant '" + inVarName + "' cannot be mutated"
-      [!?self setMStateForKey !.invalid !inVarName]
-    elsif not [inAttributes noWarningOnNonMutation] then
-      warning inVarName : "variable '" + inVarName + "' was written to, but never read"
-    end
+    #[!?self setMStateForKey !.invalid !inVarName]
+#    if [inAttributes constant] then
+#     # error inVarName : "constant '" + inVarName + "' cannot be mutated"
+#      [!?self setMStateForKey !.invalid !inVarName]
+#    elsif not [inAttributes noWarningOnNonMutation] then
+#      warning inVarName : "variable '" + inVarName + "' was written to, but never read"
+#    end
   case read : # The variable has been written, and read
-    if [inAttributes constant] then
-      error inVarName : "constant '" + inVarName + "' cannot be mutated"
-      [!?self setMStateForKey !.invalid !inVarName]
-    else
-      [!?self setMStateForKey !.modified !inVarName]
-    end
+#    if [inAttributes constant] then
+#      error inVarName : "constant '" + inVarName + "' cannot be mutated"
+#      [!?self setMStateForKey !.invalid !inVarName]
+#    else
+#      [!?self setMStateForKey !.modified !inVarName]
+#    end
   case modified : # The variable has been rewritten
     # ok
   end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#  @unifiedTypeMap-entry mType
-#  @string mCppName
-#  @string mNameForCheckingFormalParameterUsing
-#  @localVariableAttributes mAttributes
-#  @localVarValuation mState
 
-setter @localVarManager writeAccess
-          ?let @string inVarName
-          ?let @location inErrorLocation
+setter @localVarManager searchForDropAccess
+          ?let @lstring inVarName
           !@unifiedTypeMap-entry outType
           !@string outCppName
           !@string outNameForCheckingFormalParameterUsing
 {
-  let varName = @lstring.new {!inVarName !inErrorLocation}
+  [!?self.mCurrentManager searchForDropAccess !inVarName ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @currentVarManager searchForDropAccess
+          ?let @lstring inVarName
+          !@unifiedTypeMap-entry outType
+          !@string outCppName
+          !@string outNameForCheckingFormalParameterUsing
+{
   if let [self.mLocalVarMap searchKey
-    !varName
+    !inVarName
     ?let type
     ?let cppName
     ?let nameForCheckingFormalParameterUsing
     ?let attributes
     ?let valuation] then
-    [!?self.mLocalVarMap writeAccess !varName !attributes !valuation]
+    [!?self.mLocalVarMap dropAccess !inVarName !attributes !valuation]
     outType = type
     outCppName = cppName
     outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
   else
-    [!?self.mSubMaps writeAccess !varName !0 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
+    [!?self.mSubMaps dropAccess !inVarName !0 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarMapListForLLVM dropAccess
+          ?let @lstring inVarName
+          ?let @uint inIndex
+          !@unifiedTypeMap-entry outType
+          !@string outCppName
+          !@string outNameForCheckingFormalParameterUsing
+{
+  if inIndex >= [self length] then
+    error inVarName : "Undefined variable" : outType, outCppName, outNameForCheckingFormalParameterUsing
+  else
+    var localMap = [self mMapAtIndex !inIndex]
+    if let [localMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?let attributes ?let valuation] then
+      [!?localMap dropAccess !inVarName !attributes !valuation]
+      outType = type
+      outCppName = cppName
+      outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
+      [!?self setMMapAtIndex !localMap !inIndex]
+    else
+      [!?self dropAccess !inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
+    end
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! WRITE ACCESS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager searchForWriteAccess
+          ?let @lstring inVarName
+          !@unifiedTypeMap-entry outType
+          !@string outCppName
+          !@string outNameForCheckingFormalParameterUsing
+{
+  [!?self.mCurrentManager searchForWriteAccess !inVarName ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @currentVarManager searchForWriteAccess
+          ?let @lstring inVarName
+          !@unifiedTypeMap-entry outType
+          !@string outCppName
+          !@string outNameForCheckingFormalParameterUsing
+{
+  if let [self.mLocalVarMap searchKey
+    !inVarName
+    ?let type
+    ?let cppName
+    ?let nameForCheckingFormalParameterUsing
+    ?let attributes
+    ?let valuation] then
+    [!?self.mLocalVarMap writeAccess !inVarName !attributes !valuation]
+    outType = type
+    outCppName = cppName
+    outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
+  else
+    [!?self.mSubMaps writeAccess !inVarName !0 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
   end
 }
 
@@ -154,165 +466,61 @@ setter @localVarMapListForLLVM writeAccess
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! WRITE PROPERTY ACCESS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#setter @scopeLocalVarMap writePropertyAccess ?let @lstring inVarName
-#                                               ?let @string inPropertyName
-#                                               ?let @localVariableAttributes inAttributes
-#                                               ?let @localVarValuation inValuation
-#{
-#  switch inValuation
-##--- Error state, for disabled further error messages
-#  case invalid :
-#  case unvaluated (uninitializedPropertySet usedInSubscope) : # The variable has no value
-#    var s = uninitializedPropertySet
-#    [!?s removeKey !inPropertyName]
-#    if [s count] == 0 then
-#      [!?self setMStateForKey !.initialized !inVarName]
-#    else
-#      [!?self setMStateForKey !.unvaluated {!uninitializedPropertySet: s !usedInSubscope: usedInSubscope} !inVarName]
-#    end
-#  case initialized : # The variable has been written once
-#    if [inAttributes constant] then
-#      error inVarName : "constant '" + inVarName + "' cannot be mutated"
-#     [!?self setMStateForKey !.invalid !inVarName]
-#   elsif not [inAttributes noWarningOnNonMutation] then
-#      warning inVarName : "variable '" + inVarName + "' was written to, but never read"
-#    end
-#  case read : # The variable has been written, and read
-#    if [inAttributes constant] then
-#      error inVarName : "constant '" + inVarName + "' cannot be mutated"
-#     [!?self setMStateForKey !.invalid !inVarName]
-#    else
-#      [!?self setMStateForKey !.modified !inVarName]
-#    end
-#  case modified : # The variable has been rewritten
-#    # ok
-#  end
-#}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#setter @localVarManager writePropertyAccess
-#     ?let @string inVarName
-#     ?let @location inErrorLocation
-#     ?let @string inPropertyName
-#     !@string outLLVMName {
-#  let varName = @lstring.new {!inVarName !inErrorLocation}
-#  if let [self.mLocalVarMap searchKey !varName ?* ?let llvmName ?let attributes ?let valuation] then
-#    [!?self.mLocalVarMap writePropertyAccess !varName !inPropertyName !attributes !valuation]
-#    outLLVMName = llvmName
-#  else
-#    [!?self.mSubMaps writePropertyAccess !varName !inPropertyName !0 ?outLLVMName]
-#  end
-#}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#setter @localVarMapListForLLVM writePropertyAccess ?let @lstring inVarName ?let @string inPropertyName ?let @uint inIndex !@string outLLVMName {
-#  if inIndex >= [self length] then
-#    error inVarName : "Undefined variable" : outLLVMName
-#  else
-#    var localMap = [self mMapAtIndex !inIndex]
-#    if let [localMap searchKey !inVarName ?* ?let llvmName ?let attributes ?let valuation] then
-#      [!?localMap writePropertyAccess !inVarName !inPropertyName !attributes !valuation]
-#      [!?self setMMapAtIndex !localMap !inIndex]
-#      outLLVMName = llvmName
-#    else
-#      [!?self writePropertyAccess !inVarName !inPropertyName !inIndex + 1 ?outLLVMName]
-#    end
-#  end
-#}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! PARTIAL WRITE ACCESS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#setter @scopeLocalVarMap partialWriteAccess
-#          ?let @lstring inVarName
-#          ?let @localVariableAttributes inAttributes
-#          ?let @localVarValuation inValuation
-#{
-#  switch inValuation
-##--- Error state, for disabled further error messages
-#  case invalid :
-##--- Local var
-#  case unvaluated (**) : # The variable has no value
-#    error inVarName : "variable '" + inVarName + "' used before being initialized"
-#    [!?self setMStateForKey !.invalid !inVarName]
-#  case initialized : # The variable has been written once
-#    if [inAttributes constant] then
-#      error inVarName : "constant '" + inVarName + "' cannot be mutated"
-#     [!?self setMStateForKey !.invalid !inVarName]
-#    else
-#      [!?self setMStateForKey !.modified !inVarName]
-##   elsif not [inAttributes noWarningOnNonMutation] then
-##      warning inVarName : "variable '" + inVarName + "' was written to, but never read"
-#    end
-#  case read : # The variable has been written, and read
-#    if [inAttributes constant] then
-#      error inVarName : "constant '" + inVarName + "' cannot be mutated"
-#     [!?self setMStateForKey !.invalid !inVarName]
-#    else
-#      [!?self setMStateForKey !.modified !inVarName]
-#    end
-#  case modified : # The variable has been rewritten
-#    # ok
-#  end
-#}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#setter @localVarManager partialWriteAccess
-#          ?let @string inVarName
-#          ?let @location inErrorLocation
-#          !@string outLLVMName  {
-#  let varName = @lstring.new {!inVarName !inErrorLocation}
-#  if let [self.mLocalVarMap searchKey !varName ?* ?let llvmName ?let attributes ?let valuation] then
-#    [!?self.mLocalVarMap partialWriteAccess !varName !attributes !valuation]
-#    outLLVMName = llvmName
-#  else
-#    [!?self.mSubMaps partialWriteAccess !varName !0 ?outLLVMName]
-#  end
-#}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#setter @localVarMapListForLLVM partialWriteAccess ?let @lstring inVarName ?let @uint inIndex !@string outLLVMName  {
-#  if inIndex >= [self length] then
-#    error inVarName : "Undefined variable" : outLLVMName
-#  else
-#    var localMap = [self mMapAtIndex !inIndex]
-#    if let [localMap searchKey !inVarName ?* ?let llvmName ?let attributes ?let valuation] then
-#      [!?localMap partialWriteAccess !inVarName !attributes !valuation]
-#      [!?self setMMapAtIndex !localMap !inIndex]
-#      outLLVMName = llvmName
-#    else
-#      [!?self partialWriteAccess !inVarName !inIndex + 1 ?outLLVMName]
-#    end
-#  end
-#}
+setter @scopeLocalVarMap writeAccess ?let @lstring inVarName
+                                       ?let @localVariableAttributes inAttributes
+                                       ?let @localVarValuation inValuation {
+  switch inValuation
+  case invalid : #--- Error state, for disabled further error messages
+  case unvaluated (*) : # The variable has no value
+    [!?self setMStateForKey !.initialized !inVarName]
+  case initialized : # The variable has been written once
+    if [inAttributes constant] then
+      error inVarName : "constant '" + inVarName + "' cannot be mutated"
+      [!?self setMStateForKey !.invalid !inVarName]
+    elsif not [inAttributes noWarningOnNonMutation] then
+      warning inVarName : "variable '" + inVarName + "' was written to, but never read"
+    end
+  case read : # The variable has been written, and read
+    if [inAttributes constant] then
+      error inVarName : "constant '" + inVarName + "' cannot be mutated"
+      [!?self setMStateForKey !.invalid !inVarName]
+    else
+      [!?self setMStateForKey !.modified !inVarName]
+    end
+  case modified : # The variable has been rewritten
+    # ok
+  end
+}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! READ ACCESS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager readAccess
-          ?let @string inVarName
-          ?let @location inErrorLocation
+setter @localVarManager searchForReadAccess # --> method
+          ?let @lstring inVarName 
           !@unifiedTypeMap-entry outType
           !@string outCppName
           !@string outNameForCheckingFormalParameterUsing
 {
-  let varName = @lstring.new {!inVarName !inErrorLocation}
+  [!?self.mCurrentManager searchForReadAccess !inVarName ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @currentVarManager searchForReadAccess
+          ?let @lstring inVarName
+          !@unifiedTypeMap-entry outType
+          !@string outCppName
+          !@string outNameForCheckingFormalParameterUsing
+{
   if let [self.mLocalVarMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?* ?let valuation] then
-    [!?self.mLocalVarMap readAccess !varName !valuation]
+    [!?self.mLocalVarMap readAccess !inVarName !valuation]
     outType = type
     outCppName = cppName
     outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
   else
-    [!?self.mSubMaps readAccess !varName !0 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
+    [!?self.mSubMaps readAccess !inVarName !0 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
   end
 }
 
@@ -346,7 +554,7 @@ setter @localVarMapListForLLVM readAccess
 setter @scopeLocalVarMap readAccess ?let @lstring inVarName ?let @localVarValuation inValuation {
   switch inValuation
   case invalid :
-  case unvaluated (**) : # The variable has no value
+  case unvaluated (*) : # The variable has no value
     error inVarName : "variable '" + inVarName + "' used before being initialized"
     [!?self setMStateForKey !.invalid !inVarName]
   case initialized: # The variable has been written once
@@ -362,52 +570,30 @@ setter @scopeLocalVarMap readAccess ?let @lstring inVarName ?let @localVarValuat
 #! READ WRITE ACCESS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @scopeLocalVarMap readWriteAccess
-     ?let @lstring inVarName
-     ?let @localVariableAttributes inAttributes
-     ?let @localVarValuation inValuation
-{
-  switch inValuation
-  case invalid :
-  case unvaluated (**) : # The variable has no value
-    error inVarName : "variable '" + inVarName + "' used before being initialized"
-    [!?self setMStateForKey !.invalid !inVarName]
-  case initialized : # The variable has been written once
-    if [inAttributes constant] then
-      error inVarName : "constant '" + inVarName + "' cannot be mutated"
-     [!?self setMStateForKey !.invalid !inVarName]
-   else
-     [!?self setMStateForKey !.modified !inVarName]
-    end
-  case read : # The variable has been written, and read
-    if [inAttributes constant] then
-      error inVarName : "constant '" + inVarName + "' cannot be mutated"
-     [!?self setMStateForKey !.invalid !inVarName]
-    else
-      [!?self setMStateForKey !.modified !inVarName]
-    end
-  case modified : # The variable has been rewritten
-    # Ok
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-setter @localVarManager readWriteAccess
-          ?let @string inVarName
-          ?let @location inErrorLocation
+setter @localVarManager searchForReadWriteAccess
+          ?let @lstring inVarName
           !@unifiedTypeMap-entry outType
           !@string outCppName
           !@string outNameForCheckingFormalParameterUsing
 {
-  let varName = @lstring.new {!inVarName !inErrorLocation}
+  [!?self.mCurrentManager searchForReadWriteAccess !inVarName ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @currentVarManager searchForReadWriteAccess
+          ?let @lstring inVarName
+          !@unifiedTypeMap-entry outType
+          !@string outCppName
+          !@string outNameForCheckingFormalParameterUsing
+{
   if let [self.mLocalVarMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?let inAttributes  ?let valuation] then
-    [!?self.mLocalVarMap readWriteAccess !varName !inAttributes !valuation]
+    [!?self.mLocalVarMap readWriteAccess !inVarName !inAttributes !valuation]
     outType = type
     outCppName = cppName
     outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
   else
-    [!?self.mSubMaps readWriteAccess !varName !0 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
+    [!?self.mSubMaps readWriteAccess !inVarName !0 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
   end
 }
 
@@ -437,78 +623,41 @@ setter @localVarMapListForLLVM readWriteAccess
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! METHOD ACCESS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#setter @scopeLocalVarMap methodAccess ?let @lstring inReceiverName ?let @localVarValuation inValuation {
-#  switch inValuation
-#  case invalid :
-#  case unvaluated (**) : # The variable has no value
-#    error inReceiverName : "variable '" + inReceiverName + "' used before being initialized"
-#    [!?self setMStateForKey !.invalid !inReceiverName]
-#  case initialized : # The variable has been written once
-#    [!?self setMStateForKey !.modified !inReceiverName]
-#  case read : # The variable has been written, and read
-#    [!?self setMStateForKey !.modified !inReceiverName]
-#  case modified : # The variable has been rewritten
-#    # Ok
-#  end
-#}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#setter @localVarManager methodAccess
-#       ?let @string inReceiverName
-#       ?let @location inErrorLocation
-#       ?let @srpMethodTypeMap inMethodTypeMap
-#       ?let @lstring inMethodName
-#       !@string outLLVMName
-#       !@unifiedTypeMap-entry outReceiverType
-#       !@srpArgumentListAST outArgumentList
-#       !@srpOptionalTypeAST outReturnKind {
-#  let receiverName = @lstring.new {!inReceiverName !inErrorLocation}
-#  if let [self.mLocalVarMap searchKey !inReceiverName ?let receiverType ?let llvmName ?*  ?let valuation] then
-#    [!?self.mLocalVarMap methodAccess !receiverName !valuation]
-#    outReceiverType = receiverType
-#    outLLVMName = llvmName
-#  else
-#    [!?self.mSubMaps methodAccess !receiverName !0 ?outReceiverType ?outLLVMName]
-#  end
-#  [inMethodTypeMap searchKey !.new{![outReceiverType typeName] !inErrorLocation} ?let methodMap]
-#  [methodMap searchKey
-#    !inMethodName
-#    ?outArgumentList
-#    ?outReturnKind
-#    ?let unused methodQualifier
-#  ]
-#}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#setter @localVarMapListForLLVM methodAccess ?let @lstring inReceiverName
-#                                               ?let @uint inIndex
-#                                               !@unifiedTypeMap-entry outType
-#                                               !@string outLLVMName {
-#  if inIndex >= [self length] then
-#    error inReceiverName : "Undefined variable" : outType, outLLVMName
-#  else
-#    var localMap = [self mMapAtIndex !inIndex]
-#    if let [localMap searchKey !inReceiverName ?let type ?let llvmName ?*  ?let valuation] then
-#      [!?localMap methodAccess !inReceiverName !valuation]
-#      outType = type
-#      outLLVMName = llvmName
-#      [!?self setMMapAtIndex !localMap !inIndex]
-#    else
-#      [!?self methodAccess !inReceiverName !inIndex + 1 ?outType ?outLLVMName]
-#    end
-#  end
-#}
+setter @scopeLocalVarMap readWriteAccess
+     ?let @lstring inVarName
+     ?let @localVariableAttributes inAttributes
+     ?let @localVarValuation inValuation
+{
+  switch inValuation
+  case invalid :
+  case unvaluated (*) : # The variable has no value
+    error inVarName : "variable '" + inVarName + "' used before being initialized"
+    [!?self setMStateForKey !.invalid !inVarName]
+  case initialized : # The variable has been written once
+    if [inAttributes constant] then
+      error inVarName : "constant '" + inVarName + "' cannot be mutated"
+     [!?self setMStateForKey !.invalid !inVarName]
+   else
+     [!?self setMStateForKey !.modified !inVarName]
+    end
+  case read : # The variable has been written, and read
+    if [inAttributes constant] then
+      error inVarName : "constant '" + inVarName + "' cannot be mutated"
+     [!?self setMStateForKey !.invalid !inVarName]
+    else
+      [!?self setMStateForKey !.modified !inVarName]
+    end
+  case modified : # The variable has been rewritten
+    # Ok
+  end
+}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SCOPE
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager openScope ?let @lstringlist inTransferedLocalVariableList {
+setter @currentVarManager openScope ?let @lstringlist inTransferedLocalVariableList {
   var localMap = self.mLocalVarMap
   self.mLocalVarMap = {}
   for (variable) in inTransferedLocalVariableList do
@@ -520,7 +669,7 @@ setter @localVarManager openScope ?let @lstringlist inTransferedLocalVariableLis
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager closeScope ?let @location inErrorLocation {
+setter @currentVarManager closeScope ?let @location inErrorLocation {
   [self.mLocalVarMap checkFinalStates !inErrorLocation]
   if [self.mSubMaps length] == 0 then
     error inErrorLocation : "EMPTY SUBMAPS"
@@ -532,70 +681,14 @@ setter @localVarManager closeScope ?let @location inErrorLocation {
 #! INSERT KEY
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager insertKey ?let @lstring inVarName 
-                                            ?let @unifiedTypeMap-entry inType
-                                            ?let @string inCppName
-                                            ?let @string inNameForCheckingFormalParameterUsing
-                                            ?let @localVariableAttributes inAttributes
-                                            ?let @localVarValuation inState
+setter @currentVarManager insertKey ?let @lstring inVarName 
+                                  ?let @unifiedTypeMap-entry inType
+                                  ?let @string inCppName
+                                  ?let @string inNameForCheckingFormalParameterUsing
+                                  ?let @localVariableAttributes inAttributes
+                                  ?let @localVarValuation inState
 {
   [!?self.mLocalVarMap insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !inAttributes !inState]
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#setter @localVarManager insertVar ?let @string inVariable
-#                                            ?let @unifiedTypeMap-entry inType
-#                                            ?let @localVariableAttributes inAttributes
-#                                            ?let @localVarValuation inState {
-#  [!?self.mLocalVarMap insertKey ![inVariable srpName] !inType !inVariable !inAttributes !inState]
-#}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! REMOVE KEY
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#setter @localVarManager removeKey ?let @lstring inVarName {
-#  [!?self.mLocalVarMap removeKey !inVarName ?4*]
-#}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEARCH KEY
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-method @localVarManager searchKey
-          ?let @lstring inVarName 
-          !@unifiedTypeMap-entry outType
-          !@string outCppName
-          !@string outNameForCheckingFormalParameterUsing
-{
-  if let [self.mLocalVarMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?2*] then
-    outType = type
-    outCppName = cppName
-    outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
-  else
-    [self.mSubMaps searchKey !inVarName !0 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-method @localVarMapListForLLVM searchKey
-          ?let @lstring inVarName
-          ?let @uint inIndex
-          !@unifiedTypeMap-entry outType
-          !@string outCppName
-          !@string outNameForCheckingFormalParameterUsing
-{
-  if inIndex >= [self length] then
-    error inVarName : "Undefined variable" : outType, outCppName, outNameForCheckingFormalParameterUsing
-  elsif let [[self mMapAtIndex !inIndex] searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?2*] then
-    outType = type
-    outCppName = cppName
-    outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
-  else
-    [self searchKey !inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
-  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -605,7 +698,7 @@ method @localVarMapListForLLVM searchKey
 method @localVarValuation checkFinalState ?let @lstring inVarName ?let @localVariableAttributes inAttributes {
   switch self
   case invalid :
-  case unvaluated (* usedInOtherBlock) : # The variable has no value
+  case unvaluated (usedInOtherBlock) : # The variable has no value
     if [inAttributes shouldBeInitialized] then
       error inVarName : "variable '" + inVarName + "' should be initialized"
     elsif usedInOtherBlock then
@@ -636,7 +729,13 @@ method @scopeLocalVarMap checkFinalStates ?let @location unused inErrorLocation 
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-method @localVarManager checkFinalStates ?let @location inErrorLocation {
+method @localVarManager checkAutomatonStates ?let @location inErrorLocation {
+  [self.mCurrentManager checkAutomatonStates !inErrorLocation]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+method @currentVarManager checkAutomatonStates ?let @location inErrorLocation {
   [self.mLocalVarMap checkFinalStates !inErrorLocation]
 }
 
@@ -644,7 +743,7 @@ method @localVarManager checkFinalStates ?let @location inErrorLocation {
 #! STRING GETTER
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @localVarManager string -> @string {
+getter @currentVarManager string -> @string {
   result = "keys {"
   for (varName 5*) in self.mLocalVarMap
     do result += varName
@@ -663,23 +762,23 @@ method @localVarValuation combineValuationWith ?let @localVarValuation inOther
   switch self
   case invalid :
     outResult = self
-  case unvaluated (s usedInSubscope) :
+  case unvaluated (usedInSubscope) :
     switch inOther
     case invalid :
       outResult = inOther
-    case unvaluated (otherS otherUsedInSubscope) :
-      outResult = .unvaluated {!uninitializedPropertySet: s | otherS !usedInSubscope: usedInSubscope | otherUsedInSubscope}
+    case unvaluated (otherUsedInSubscope) :
+      outResult = .unvaluated {!usedInSubscope: usedInSubscope | otherUsedInSubscope}
     case initialized :
-      outResult = .unvaluated {!uninitializedPropertySet: s !usedInSubscope: true} # §
+      outResult = .unvaluated {!usedInSubscope: true} # §
     case read, modified :
-      outResult = .unvaluated {!uninitializedPropertySet: s !usedInSubscope: true} # §
+      outResult = .unvaluated {!usedInSubscope: true} # §
     end
   case initialized :
     switch inOther
     case invalid :
       outResult = inOther
-    case unvaluated (otherS otherUsedInSubscope) :
-      outResult = .unvaluated {!uninitializedPropertySet: otherS !usedInSubscope: otherUsedInSubscope}
+    case unvaluated (otherUsedInSubscope) :
+      outResult = .unvaluated {!usedInSubscope: otherUsedInSubscope}
     case initialized, read, modified :
       outResult = inOther
     end
@@ -687,8 +786,8 @@ method @localVarValuation combineValuationWith ?let @localVarValuation inOther
     switch inOther
     case invalid :
       outResult = inOther
-    case unvaluated (otherS *) :
-      outResult = .unvaluated {!uninitializedPropertySet: otherS !usedInSubscope: true} # § inOther
+    case unvaluated (*) :
+      outResult = .unvaluated {!usedInSubscope: true} # § inOther
     case initialized :
       outResult = self
     case read, modified :
@@ -698,8 +797,8 @@ method @localVarValuation combineValuationWith ?let @localVarValuation inOther
     switch inOther
     case invalid :
       outResult = inOther
-    case unvaluated (otherS *) :
-      outResult = .unvaluated {!uninitializedPropertySet: otherS !usedInSubscope: true} # § inOther
+    case unvaluated (*) :
+      outResult = .unvaluated {!usedInSubscope: true} # § inOther
     case initialized :
       outResult = self
     case read, modified :
@@ -741,7 +840,7 @@ setter @scopeLocalVarMap combineMapWith ?otherMap: let @scopeLocalVarMap inOther
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager combineManagerWith ?otherManager: let @localVarManager inOtherManager
+setter @currentVarManager combineManagerWith ?otherManager: let @currentVarManager inOtherManager
                                                      ?referenceLabel:let @string inReferenceLabel
                                                      ?sourceLabel: let @lstring inSourceLabel
                                                      ?targetLabel: let @lstring inTargetLabel {
@@ -773,419 +872,6 @@ setter @localVarManager combineManagerWith ?otherManager: let @localVarManager i
   if s != "" then
     error inTargetLabel : "convergence error for label '" + inTargetLabel + "':" + s
   end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! EX VARIABLE MAP                                                                                                     *
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-shared map @variableMap {
-  @unifiedTypeMap-entry mType
-  @string mCppName
-  @string mNameForCheckingFormalParameterUsing
-
-#--- Used local constant (no warning if not read)
-  state readLocalConstant {
-    neutralAccess   -> readLocalConstant
-    readAccess      -> readLocalConstant
-    writeAccess     -> readLocalConstant error "a constant cannot be written"
-    readWriteAccess -> readLocalConstant error "a constant cannot be written"
-    dropAccess      -> droppedLocalConstant
-  }
-
-#--- Local constant
-  state localConstant warning "the '%K' constant value is unused" {
-    neutralAccess   -> localConstant
-    readAccess      -> readLocalConstant
-    writeAccess     -> readLocalConstant error "a constant cannot be written"
-    readWriteAccess -> readLocalConstant error "a constant cannot be written"
-    dropAccess      -> droppedLocalConstant warning "the '%K' constant value is unused"
-  }
-
-#--- Undefined Local constant
-  state undefinedLocalConstant warning "the '%K' constant value is unused" {
-    neutralAccess   -> undefinedLocalConstant
-    readAccess      -> undefinedLocalConstant error "the constant is undefined"
-    writeAccess     -> localConstant
-    readWriteAccess -> undefinedLocalConstant error "the constant is undefined"
-    dropAccess      -> droppedLocalConstant warning "the dropped constant is undefined"
-  }
-
-#--- Dropped Local constant
-  state droppedLocalConstant {
-    neutralAccess   -> droppedLocalConstant
-    readAccess      -> undefinedLocalConstant error "the constant has been dropped"
-    writeAccess     -> localConstant          error "the constant has been dropped"
-    readWriteAccess -> undefinedLocalConstant error "the constant has been dropped"
-    dropAccess      -> undefinedLocalConstant warning "the constant has been dropped"
-  }
-
-#--- Local variable
-  state undefinedLocalVariable warning "the '%K' local variable is unused" {
-    neutralAccess   -> undefinedLocalVariable
-    readAccess      -> undefinedLocalVariable error "an undefined local variable cannot be read"
-    writeAccess     -> definedLocalVariable
-    readWriteAccess -> undefinedLocalVariable error "an undefined local variable cannot be read"
-    dropAccess      -> undefinedLocalVariable warning "the local variable has no value"
-  }
-  state definedLocalVariable { # warning "the '%K' local variable value is unused" {
-    neutralAccess   -> definedLocalVariable
-    readAccess      -> usedLocalVariable
-    writeAccess     -> definedLocalVariable # warning "the value has been changed without any read"
-    readWriteAccess -> usedLocalVariable
-    dropAccess      -> droppedLocalVariable warning "the local variable has been dropped without any read"
-  }
-  state usedLocalVariable {
-    neutralAccess   -> usedLocalVariable
-    readAccess      -> usedLocalVariable
-    writeAccess     -> definedLocalVariable
-    readWriteAccess -> definedLocalVariable
-    dropAccess      -> droppedLocalVariable
-  }
-  state droppedLocalVariable {
-    neutralAccess   -> droppedLocalVariable
-    readAccess      -> droppedLocalVariable error "a dropped local variable cannot be read"
-    writeAccess     -> definedLocalVariable
-    readWriteAccess -> definedLocalVariable error "a dropped local variable cannot be read"
-    dropAccess      -> droppedLocalVariable warning "the local variable is already dropped"
-  }
-
-#--- Output formal parameter
-  state undefinedOutputFormalArgument error "the '%K' output formal parameter is undefined" {
-    neutralAccess   -> undefinedOutputFormalArgument
-    readAccess      -> undefinedOutputFormalArgument error "an undefined output formal parameter cannot be read"
-    writeAccess     -> definedOutputFormalArgument
-    readWriteAccess -> undefinedOutputFormalArgument error "an undefined output formal parameter cannot be read"
-    dropAccess      -> undefinedOutputFormalArgument warning "the output formal parameter has no value"
-  }
-  state definedOutputFormalArgument {
-    neutralAccess   -> definedOutputFormalArgument
-    readAccess      -> definedOutputFormalArgument
-    writeAccess     -> definedOutputFormalArgument
-    readWriteAccess -> definedOutputFormalArgument
-    dropAccess      -> undefinedOutputFormalArgument
-  }
-
-#--- Input/Output formal parameter
-  state unusedInputOutputFormalArgument warning "the '%K' input/output formal parameter is unused" {
-    neutralAccess   -> unusedInputOutputFormalArgument
-    readAccess      -> usedInputOutputFormalArgument
-    writeAccess     -> usedInputOutputFormalArgument
-    readWriteAccess -> usedInputOutputFormalArgument
-    dropAccess      -> droppedInputOutputFormalArgument
-  }
-  state usedInputOutputFormalArgument {
-    neutralAccess   -> usedInputOutputFormalArgument
-    readAccess      -> usedInputOutputFormalArgument
-    writeAccess     -> usedInputOutputFormalArgument
-    readWriteAccess -> usedInputOutputFormalArgument
-    dropAccess      -> droppedInputOutputFormalArgument
-  }
-  state droppedInputOutputFormalArgument error "the '%K' input/ouput formal argument should be valuated at the end of the routine" {
-    neutralAccess   -> droppedInputOutputFormalArgument
-    readAccess      -> droppedInputOutputFormalArgument error "a dropped input/output formal argument cannot be read"
-    writeAccess     -> usedInputOutputFormalArgument
-    readWriteAccess -> droppedInputOutputFormalArgument error "a dropped input/output formal argument cannot be read"
-    dropAccess      -> droppedInputOutputFormalArgument warning "the input/output formal argument is already dropped"
-  }
-
-#--- Input/Output formal parameter declared as unused
-  state inputOutputFormalArgumentDeclaredAsUnused {
-    neutralAccess   -> inputOutputFormalArgumentDeclaredAsUnused
-    readAccess      -> usedInputOutputFormalArgument warning "the input/output formal parameter has been declared as unused"
-    writeAccess     -> usedInputOutputFormalArgument warning "the input/output formal parameter has been declared as unused"
-    readWriteAccess -> usedInputOutputFormalArgument warning "the input/output formal parameter has been declared as unused"
-    dropAccess      -> droppedInputOutputFormalArgument warning "the input/output formal parameter has been declared as unused"
-  }
-
-#--- Constant input formal parameter
-  state constantInputFormalArgument warning "the constant '%K' input formal parameter is not used and is not declared as unused" {
-    neutralAccess   -> constantInputFormalArgument
-    readAccess      -> usedConstantInputFormalArgument
-    writeAccess     -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
-    readWriteAccess -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
-    dropAccess      -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be dropped"
-  }
-  state usedConstantInputFormalArgument {
-    neutralAccess   -> usedConstantInputFormalArgument
-    readAccess      -> usedConstantInputFormalArgument
-    writeAccess     -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
-    readWriteAccess -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
-    dropAccess      -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be dropped"
-  }
-
-#--- Constant input formal parameter declared as unused
-  state constantInputFormalArgumentDeclaredAsUnused {
-    neutralAccess   -> constantInputFormalArgumentDeclaredAsUnused
-    readAccess      -> usedConstantInputFormalArgument warning "the constant input formal parameter is declared as unused"
-    writeAccess     -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
-    readWriteAccess -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
-    dropAccess      -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be dropped"
-  }
-
-#--- Input formal parameter
-  state inputFormalParameter warning "the '%K' input formal parameter is not used and is not declared as unused" {
-    neutralAccess   -> inputFormalParameter
-    readAccess      -> usedInputFormalArgument
-    writeAccess     -> usedInputFormalArgument
-    readWriteAccess -> usedInputFormalArgument
-    dropAccess      -> droppedInputFormalArgument
-  }
-  state usedInputFormalArgument {
-    neutralAccess   -> usedInputFormalArgument
-    readAccess      -> usedInputFormalArgument
-    writeAccess     -> usedInputFormalArgument
-    readWriteAccess -> usedInputFormalArgument
-    dropAccess      -> droppedInputFormalArgument
-  }
-  state droppedInputFormalArgument {
-    neutralAccess   -> droppedInputFormalArgument
-    readAccess      -> droppedInputFormalArgument error "a dropped input formal parameter cannot be read"
-    writeAccess     -> usedInputFormalArgument
-    readWriteAccess -> droppedInputFormalArgument error "a dropped input formal parameter cannot be read"
-    dropAccess      -> droppedInputFormalArgument warning "the input formal parameter is already dropped"
-  }
-
-#--- Input formal parameter declared as unused
-  state inputFormalArgumentDeclaredAsUnused {
-    neutralAccess   -> inputFormalArgumentDeclaredAsUnused
-    readAccess      -> usedInputFormalArgument warning "the input formal parameter is declared as unused"
-    writeAccess     -> usedInputFormalArgument warning "the input formal parameter is declared as unused"
-    readWriteAccess -> usedInputFormalArgument warning "the input formal parameter is declared as unused"
-    dropAccess      -> droppedInputFormalArgument warning "the input formal parameter is declared as unused"
-  }
-
-#--- Current instance attribute in a method or a getter
-  state currentInstanceAttribute {
-    neutralAccess   -> currentInstanceAttribute
-    readAccess      -> currentInstanceAttribute
-    writeAccess     -> currentInstanceAttribute error "an attribute cannot be written within a method or a getter"
-    readWriteAccess -> currentInstanceAttribute error "an attribute cannot be modified within a method or a getter"
-    dropAccess      -> currentInstanceAttribute error "an attribute cannot be dropped within a method or a getter"
-  }
-
-#--- Current instance attribute in a setter
-  state currentInstanceAttributeInModifier {
-    neutralAccess   -> currentInstanceAttributeInModifier
-    readAccess      -> currentInstanceAttributeInModifier
-    writeAccess     -> currentInstanceAttributeInModifier
-    readWriteAccess -> currentInstanceAttributeInModifier
-    dropAccess      -> currentInstanceDroppedAttributeInModifier
-  }
-
-  state currentInstanceDroppedAttributeInModifier warning "the '%K' attribute is in the dropped state at the end of the setter" {
-    neutralAccess   -> currentInstanceDroppedAttributeInModifier
-    readAccess      -> currentInstanceDroppedAttributeInModifier error "the attribute cannot be read, it has been dropped"
-    writeAccess     -> currentInstanceAttributeInModifier
-    readWriteAccess -> currentInstanceDroppedAttributeInModifier error "the attribute cannot be read/written, it has been dropped"
-    dropAccess      -> currentInstanceDroppedAttributeInModifier  warning "the attribute is already dropped"
-  }
-
-#--- Insert methods 
-  insert insertMutableAttribute state currentInstanceAttributeInModifier error message "redefinition of '%K' attribute (previous declaration was in %L)"
-  insert insertNonMutableAttribute state currentInstanceAttribute error message "redefinition of '%K' attribute (previous declaration was in %L)"
-  insert insertUndefinedLocalVariable state undefinedLocalVariable error message "redefinition of '%K' variable (previous declaration was in %L)"
-  insert insertDefinedLocalVariable state definedLocalVariable error message "redefinition of '%K' variable (previous declaration was in %L)"
-  insert insertUndefinedLocalConstant state undefinedLocalConstant error message "redefinition of '%K' variable (previous declaration was in %L)"
-  insert insertLocalConstant state localConstant error message "redefinition of '%K' variable (previous declaration was in %L)"
-  insert insertUsedLocalConstant state readLocalConstant error message "redefinition of '%K' variable (previous declaration was in %L)"
-  insert insertInputFormalArgument state inputFormalParameter error message "redefinition of '%K' variable (previous declaration was in %L)"
-  insert insertInputFormalArgumentDeclaredAsUnused state inputFormalArgumentDeclaredAsUnused error message "redefinition of '%K' variable (previous declaration was in %L)"
-  insert insertConstantInputFormalArgument state constantInputFormalArgument error message "redefinition of '%K' variable (previous declaration was in %L)"
-  insert insertConstantInputFormalArgumentDeclaredAsUnused state constantInputFormalArgumentDeclaredAsUnused error message "redefinition of '%K' variable (previous declaration was in %L)"
-  insert insertOutputFormalArgument state undefinedOutputFormalArgument error message "redefinition of '%K' variable (previous declaration was in %L)"
-  insert insertInputOutputFormalArgument state unusedInputOutputFormalArgument error message "redefinition of '%K' variable (previous declaration was in %L)"
-  insert insertInputOutputFormalArgumentDeclaredAsUnused state inputOutputFormalArgumentDeclaredAsUnused error message "redefinition of '%K' variable (previous declaration was in %L)"
-
-#--- Search methods
-  search searchForReadAccess do readAccess error message "the '%K' variable is not declared"
-  search searchForWriteAccess do writeAccess error message "the '%K' variable is not declared"
-  search searchForReadWriteAccess do readWriteAccess error message "the '%K' variable is not declared"
-  search searchForDropAccess do dropAccess error message "the '%K' variable is not declared"
-  search neutralAccess do neutralAccess error message "the '%K' variable is not declared"
-
-#--- 'selectBlock' override definitions
-  override selectBlock {
-    currentInstanceAttributeInModifier:currentInstanceDroppedAttributeInModifier -> currentInstanceDroppedAttributeInModifier
-    currentInstanceDroppedAttributeInModifier:currentInstanceAttributeInModifier -> currentInstanceAttributeInModifier
-    constantInputFormalArgument:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
-    constantInputFormalArgumentDeclaredAsUnused:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
-    definedLocalVariable:droppedLocalVariable -> droppedLocalVariable
-    definedLocalVariable:usedLocalVariable -> usedLocalVariable
-    definedOutputFormalArgument:undefinedOutputFormalArgument -> undefinedOutputFormalArgument
-    droppedInputFormalArgument:usedInputFormalArgument -> usedInputFormalArgument
-    droppedInputOutputFormalArgument:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
-    droppedLocalVariable:definedLocalVariable -> definedLocalVariable
-    inputFormalParameter:droppedInputFormalArgument -> droppedInputFormalArgument
-    inputFormalParameter:usedInputFormalArgument -> usedInputFormalArgument
-    inputFormalArgumentDeclaredAsUnused:droppedInputFormalArgument -> droppedInputFormalArgument
-    inputFormalArgumentDeclaredAsUnused:usedInputFormalArgument -> usedInputFormalArgument
-    inputOutputFormalArgumentDeclaredAsUnused:droppedInputOutputFormalArgument -> droppedInputOutputFormalArgument
-    inputOutputFormalArgumentDeclaredAsUnused:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
-    localConstant:readLocalConstant -> readLocalConstant
-    undefinedLocalVariable:definedLocalVariable -> definedLocalVariable
-    undefinedOutputFormalArgument:definedOutputFormalArgument -> definedOutputFormalArgument
-    unusedInputOutputFormalArgument:droppedInputOutputFormalArgument -> droppedInputOutputFormalArgument
-    unusedInputOutputFormalArgument:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
-    usedInputFormalArgument:droppedInputFormalArgument -> droppedInputFormalArgument
-    usedInputOutputFormalArgument:droppedInputOutputFormalArgument -> droppedInputOutputFormalArgument
-    usedLocalVariable:definedLocalVariable -> definedLocalVariable
-    usedLocalVariable:droppedLocalVariable -> droppedLocalVariable
-    droppedLocalVariable:usedLocalVariable -> usedLocalVariable
-    undefinedLocalVariable:droppedLocalVariable -> droppedLocalVariable
-    undefinedLocalVariable:usedLocalVariable -> usedLocalVariable
-    undefinedLocalConstant:localConstant -> undefinedLocalConstant error "this branch defines the '%K' variable, while previous ones let it undefined"
-    undefinedLocalConstant:readLocalConstant -> undefinedLocalConstant error "this branch defines the '%K' variable, while previous ones let it undefined"
-    droppedLocalConstant:localConstant -> droppedLocalConstant error "this branch drops the '%K' constant, while previous ones let it defined"
-    localConstant:droppedLocalConstant
-      -> droppedLocalConstant error "this branch let the '%K' constant defined, while previous ones drop it"
-    droppedLocalConstant:readLocalConstant -> droppedLocalConstant error "this branch drops the '%K' constant, while previous ones let it defined"
-    readLocalConstant:droppedLocalConstant -> droppedLocalConstant error "this branch lets the '%K' constant defined, while previous ones drop it"
-    droppedLocalConstant:undefinedLocalConstant -> droppedLocalConstant warning "this branch drops the '%K' constant, while previous ones let it undefined"
-    undefinedLocalConstant:droppedLocalConstant
-      -> droppedLocalConstant warning "this branch lets the '%K' undefined, while previous ones drop it"
-    localConstant:undefinedLocalConstant -> droppedLocalConstant warning "this branch defines the '%K' constant, while previous ones let it undefined"
-    readLocalConstant:localConstant -> readLocalConstant
-    readLocalConstant:undefinedLocalConstant -> undefinedLocalConstant error "this branch lets the '%K' constant defined, while previous ones do not define it"
-  }{
-    readLocalConstant:undefinedLocalConstant -> undefinedLocalConstant error "this branch lets the '%K' constant defined, while previous ones do not define it"
-    readLocalConstant:droppedLocalConstant -> droppedLocalConstant error "this branch lets the '%K' constant defined, while previous ones drop it"
-    undefinedLocalConstant:readLocalConstant -> undefinedLocalConstant error "this branch defines the '%K' variable, while previous ones let it undefined"
-    undefinedLocalConstant:droppedLocalConstant
-      -> droppedLocalConstant warning "this branch lets the '%K' undefined, while previous ones drop it"
-    localConstant:droppedLocalConstant
-      -> droppedLocalConstant error "this branch let the '%K' constant defined, while previous ones drop it"
-    droppedLocalConstant:readLocalConstant
-       -> droppedLocalConstant error "this branch drops the '%K' constant, while previous ones let it defined"
-    droppedLocalConstant:localConstant
-        -> droppedLocalConstant error "this branch drops the '%K' constant, while previous ones let it defined"
-    droppedLocalConstant:undefinedLocalConstant
-        -> droppedLocalConstant warning "this branch drops the '%K' constant, while previous ones let it undefined"
-    currentInstanceAttributeInModifier:currentInstanceDroppedAttributeInModifier
-        -> currentInstanceAttributeInModifier error "this branch drops the '%K' attribute, while previous ones let it defined"
-    currentInstanceDroppedAttributeInModifier:currentInstanceAttributeInModifier
-        -> currentInstanceAttributeInModifier error "this branch lets the '%K' attribute defined, while previous ones drop it"
-    constantInputFormalArgument:usedConstantInputFormalArgument
-        -> usedConstantInputFormalArgument
-    constantInputFormalArgumentDeclaredAsUnused:usedConstantInputFormalArgument
-        -> usedConstantInputFormalArgument
-    definedLocalVariable:droppedLocalVariable
-        -> definedLocalVariable error "this branch drops the '%K' variable, while previous ones let it defined"
-    definedLocalVariable:undefinedLocalVariable
-        -> definedLocalVariable error "this branch lets the '%K' variable undefined, while previous ones define it"
-    definedLocalVariable:usedLocalVariable
-        -> usedLocalVariable
-    definedOutputFormalArgument:undefinedOutputFormalArgument
-        -> definedOutputFormalArgument error "this branch lets the '%K' variable undefined, while previous ones define it"
-    droppedInputFormalArgument:inputFormalParameter
-       -> droppedInputFormalArgument error "this branch drops the '%K' input formal argument, while previous ones let it defined"
-    droppedInputFormalArgument:inputFormalArgumentDeclaredAsUnused
-       -> droppedInputFormalArgument
-    droppedInputFormalArgument:usedInputFormalArgument
-       -> usedInputFormalArgument error "this branch defines the '%K' input formal argument, while previous ones let it dropped"
-    droppedInputOutputFormalArgument:inputOutputFormalArgumentDeclaredAsUnused
-       -> inputOutputFormalArgumentDeclaredAsUnused error "this branch lets the '%K' input formal argument defined, while previous ones drop it"
-    droppedInputOutputFormalArgument:unusedInputOutputFormalArgument
-       -> unusedInputOutputFormalArgument error "this branch lets the '%K' input/output formal argument defined, while previous ones drop it"
-    droppedInputOutputFormalArgument:usedInputOutputFormalArgument
-       -> usedInputOutputFormalArgument error "this branch lets the '%K' input/output formal argument defined, while previous ones drop it"
-    droppedLocalVariable:definedLocalVariable
-       -> droppedLocalVariable error "this branch defines the '%K' variable, while previous ones drop it"
-    droppedLocalVariable:usedLocalVariable
-       -> droppedLocalVariable error "this branch defines the '%K' variable, while previous ones drop it"
-    inputFormalParameter:droppedInputFormalArgument
-       ->inputFormalParameter error "this branch drops the '%K' input formal argument, while previous let it defined"
-    inputFormalParameter:usedInputFormalArgument
-       -> usedInputFormalArgument
-    inputFormalArgumentDeclaredAsUnused:usedInputFormalArgument
-       -> usedInputFormalArgument
-    inputOutputFormalArgumentDeclaredAsUnused:droppedInputOutputFormalArgument
-       -> inputOutputFormalArgumentDeclaredAsUnused error "this branch drops the '%K' input formal argument defined, while previous ones let it defined"
-    inputOutputFormalArgumentDeclaredAsUnused:usedInputOutputFormalArgument
-       -> inputOutputFormalArgumentDeclaredAsUnused
-    localConstant:readLocalConstant
-       -> readLocalConstant
-    undefinedLocalVariable:definedLocalVariable
-       -> definedLocalVariable error "this branch defines the '%K' variable, while previous ones let it undefined"
-    undefinedOutputFormalArgument:definedOutputFormalArgument
-       -> definedOutputFormalArgument error "this branch defines the '%K' output formal argument, while previous ones let it undefined"
-    unusedInputOutputFormalArgument:droppedInputOutputFormalArgument
-       -> unusedInputOutputFormalArgument error "this branch drops the '%K' input/output formal argument, while previous ones let it undefined"
-    unusedInputOutputFormalArgument:usedInputOutputFormalArgument
-       -> usedInputOutputFormalArgument
-    usedInputFormalArgument:droppedInputFormalArgument
-       -> usedInputFormalArgument error "this branch drops the '%K' input formal argument, while previous ones let it defined"
-    usedInputOutputFormalArgument:droppedInputOutputFormalArgument
-       -> usedInputOutputFormalArgument error "this branch drops the '%K' input/output formal argument, while previous ones let it defined"
-    usedLocalVariable:droppedLocalVariable 
-       -> usedLocalVariable error "this branch drops the '%K' variable, while previous ones let it defined"
-    droppedLocalVariable:undefinedLocalVariable
-       -> droppedLocalVariable
-    undefinedLocalVariable:usedLocalVariable
-       -> undefinedLocalVariable error "this branch defines the '%K' variable, while previous ones let it undefined"
-    usedLocalVariable:undefinedLocalVariable
-       -> usedLocalVariable error "this branch lets the '%K' variable undefined, while previous defines let it"
-  }
-
-#--- 'repeatBlock' override definitions
-  override repeatBlock {
-    undefinedLocalConstant:localConstant -> undefinedLocalConstant error "the repeated branch should not define the '%K' variable"
-    undefinedLocalConstant:readLocalConstant -> undefinedLocalConstant error "the repeated branch should not define the '%K' variable"
-    currentInstanceAttributeInModifier:currentInstanceDroppedAttributeInModifier -> currentInstanceAttributeInModifier error "the repeated branch should not drop the '%K' attribute"
-    currentInstanceDroppedAttributeInModifier:currentInstanceAttributeInModifier -> currentInstanceAttributeInModifier
-    constantInputFormalArgument:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
-    constantInputFormalArgumentDeclaredAsUnused:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
-    definedLocalVariable:droppedLocalVariable -> definedLocalVariable error "the repeated branch should not drop the '%K' variable"
-    definedLocalVariable:usedLocalVariable -> usedLocalVariable
-    definedOutputFormalArgument:undefinedOutputFormalArgument -> definedOutputFormalArgument error "the repeated branch should not drop the '%K' output formal argument"
-    droppedInputFormalArgument:usedInputFormalArgument -> droppedInputFormalArgument error "the repeated branch should not drop the '%K' input formal argument"
-    droppedInputOutputFormalArgument:usedInputOutputFormalArgument -> droppedInputOutputFormalArgument error "the repeated branch should define the '%K' input formal argument"
-    droppedLocalVariable:definedLocalVariable -> droppedLocalVariable error "the repeated branch should not drop the '%K' variable"
-    inputFormalArgumentDeclaredAsUnused:droppedInputFormalArgument -> inputFormalArgumentDeclaredAsUnused error "the repeated branch should not drop the '%K' input formal argument"
-    inputFormalArgumentDeclaredAsUnused:usedInputFormalArgument -> usedInputFormalArgument
-    inputFormalParameter:droppedInputFormalArgument -> inputFormalParameter error "the repeated branch should not drop the '%K' input formal argument"
-    inputFormalParameter:usedInputFormalArgument -> usedInputFormalArgument
-    inputOutputFormalArgumentDeclaredAsUnused:droppedInputOutputFormalArgument -> inputOutputFormalArgumentDeclaredAsUnused error "the repeated branch should not drop the '%K' input/output formal argument"
-    inputOutputFormalArgumentDeclaredAsUnused:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
-    localConstant:readLocalConstant -> readLocalConstant
-    undefinedLocalVariable:definedLocalVariable -> undefinedLocalVariable error "the repeated branch should not define the '%K' variable"
-    undefinedOutputFormalArgument:definedOutputFormalArgument -> undefinedOutputFormalArgument error "the repeated branch should not define the '%K' output formal argument"
-    unusedInputOutputFormalArgument:droppedInputOutputFormalArgument -> unusedInputOutputFormalArgument error "the repeated branch should not drop the '%K' input/output formal argument"
-    unusedInputOutputFormalArgument:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
-    usedInputFormalArgument:droppedInputFormalArgument -> usedInputFormalArgument error "the repeated branch should not drop the '%K' input formal argument"
-    usedInputOutputFormalArgument:droppedInputOutputFormalArgument -> usedInputOutputFormalArgument error "the repeated branch should not drop the '%K' input/output formal argument"
-    usedLocalVariable:definedLocalVariable -> definedLocalVariable
-    usedLocalVariable:droppedLocalVariable -> usedLocalVariable error "the repeated branch should not drop the '%K' variable"
-    droppedLocalVariable:usedLocalVariable -> droppedLocalVariable error "the repeated branch should not define the dropped '%K' variable"
-    undefinedLocalVariable:droppedLocalVariable -> droppedLocalVariable
-    undefinedLocalVariable:usedLocalVariable -> undefinedLocalVariable error "the repeated branch should not define the '%K' variable"
-    localConstant:droppedLocalConstant -> droppedLocalConstant error "a branch lets the '%K' constant dropped"
-    droppedLocalConstant:localConstant -> droppedLocalConstant error "a branch lets the '%K' constant dropped"
-    droppedLocalConstant:readLocalConstant -> droppedLocalConstant error "a branch lets the '%K' constant dropped"
-    readLocalConstant:droppedLocalConstant -> droppedLocalConstant error "a branch lets the '%K' constant dropped"
-    localConstant:undefinedLocalConstant -> droppedLocalConstant error "a branch lets the '%K' constant undefined"
-    readLocalConstant:undefinedLocalConstant -> readLocalConstant error "a branch lets the '%K' constant undefined"
-    droppedLocalConstant:undefinedLocalConstant -> droppedLocalConstant
-    undefinedLocalConstant:droppedLocalConstant -> droppedLocalConstant
-    readLocalConstant:localConstant -> readLocalConstant
-  }{
-    droppedLocalConstant:localConstant -> droppedLocalConstant error "a branch lets the '%K' constant dropped"
-    localConstant:droppedLocalConstant -> droppedLocalConstant error "a branch lets the '%K' constant dropped"
-    droppedLocalConstant:readLocalConstant -> droppedLocalConstant error "a branch lets the '%K' constant dropped"
-    readLocalConstant:droppedLocalConstant -> droppedLocalConstant error "a branch lets the '%K' constant dropped"
-    droppedLocalConstant:undefinedLocalConstant -> droppedLocalConstant warning "a branch drops the '%K' constant, while other one lets it undefined"
-    undefinedLocalConstant:droppedLocalConstant -> droppedLocalConstant warning "a branch drops the '%K' constant, while other one lets it undefined"
-    currentInstanceAttributeInModifier:currentInstanceDroppedAttributeInModifier -> currentInstanceAttributeInModifier
-    constantInputFormalArgument:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
-    constantInputFormalArgumentDeclaredAsUnused:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
-    definedLocalVariable:usedLocalVariable -> usedLocalVariable
-    inputFormalArgumentDeclaredAsUnused:usedInputFormalArgument -> usedInputFormalArgument
-    inputFormalParameter:usedInputFormalArgument -> usedInputFormalArgument
-    localConstant:readLocalConstant -> readLocalConstant
-    inputOutputFormalArgumentDeclaredAsUnused:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
-    usedInputOutputFormalArgument:unusedInputOutputFormalArgument -> usedInputOutputFormalArgument
-    droppedLocalVariable:undefinedLocalVariable -> droppedLocalVariable
-  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

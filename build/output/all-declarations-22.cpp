@@ -6173,11 +6173,11 @@ static void extensionMethod_overridingAbstractExtensionMethodAST_semanticAnalysi
       inCompiler->emitSemanticError (temp_12.getter_mOverridingExtensionMethodName (HERE).getter_location (SOURCE_FILE ("extension-overriding-abstract-method.galgas", 114)), GALGAS_string ("this getter is not declared by a super class"), fixItArray13  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 114)) ;
     }
   }
-  GALGAS_variableMap var_variableMap_6642 = GALGAS_variableMap::constructor_emptyMap (SOURCE_FILE ("extension-overriding-abstract-method.galgas", 117)) ;
-  GALGAS_formalParameterListForGeneration var_formalParameterListForGeneration_6735 ;
+  GALGAS_localVarManager var_variableMap_6642 = GALGAS_localVarManager::constructor_emptyMap (SOURCE_FILE ("extension-overriding-abstract-method.galgas", 117)) ;
+  GALGAS_formalParameterListForGeneration var_formalParameterListForGeneration_6738 ;
   {
   const GALGAS_overridingAbstractExtensionMethodAST temp_14 = object ;
-  routine_buildLocalVariableMapAndSignature (constinArgument_inSemanticContext, temp_14.getter_mOverridingExtensionMethodFormalParameterList (HERE), var_variableMap_6642, var_formalParameterListForGeneration_6735, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 119)) ;
+  routine_buildLocalVariableMapAndSignature (constinArgument_inSemanticContext, temp_14.getter_mOverridingExtensionMethodFormalParameterList (HERE), var_variableMap_6642, var_formalParameterListForGeneration_6738, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 119)) ;
   }
   enumGalgasBool test_15 = kBoolTrue ;
   if (kBoolTrue == test_15) {
@@ -6185,7 +6185,7 @@ static void extensionMethod_overridingAbstractExtensionMethodAST_semanticAnalysi
     if (kBoolTrue == test_15) {
       {
       const GALGAS_overridingAbstractExtensionMethodAST temp_16 = object ;
-      routine_checkMethodSignatures (var_formalParameterListForGeneration_6735, temp_16.getter_mOverridingExtensionMethodName (HERE).getter_location (SOURCE_FILE ("extension-overriding-abstract-method.galgas", 129)), var_inheritedSignature_5820, var_inheritedDeclarationLocation_5891, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 127)) ;
+      routine_checkMethodSignatures (var_formalParameterListForGeneration_6738, temp_16.getter_mOverridingExtensionMethodName (HERE).getter_location (SOURCE_FILE ("extension-overriding-abstract-method.galgas", 129)), var_inheritedSignature_5820, var_inheritedDeclarationLocation_5891, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 127)) ;
       }
     }
   }
@@ -6419,11 +6419,11 @@ static void extensionMethod_overridingAbstractExtensionSetterAST_semanticAnalysi
       inCompiler->emitSemanticError (temp_12.getter_mOverridingExtensionSetterName (HERE).getter_location (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 112)), GALGAS_string ("this setter is not declared by a super class"), fixItArray13  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 112)) ;
     }
   }
-  GALGAS_variableMap var_variableMap_6435 = GALGAS_variableMap::constructor_emptyMap (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 115)) ;
-  GALGAS_formalParameterListForGeneration var_formalParameterListForGeneration_6528 ;
+  GALGAS_localVarManager var_variableMap_6435 = GALGAS_localVarManager::constructor_emptyMap (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 115)) ;
+  GALGAS_formalParameterListForGeneration var_formalParameterListForGeneration_6531 ;
   {
   const GALGAS_overridingAbstractExtensionSetterAST temp_14 = object ;
-  routine_buildLocalVariableMapAndSignature (constinArgument_inSemanticContext, temp_14.getter_mOverridingExtensionSetterFormalParameterList (HERE), var_variableMap_6435, var_formalParameterListForGeneration_6528, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 117)) ;
+  routine_buildLocalVariableMapAndSignature (constinArgument_inSemanticContext, temp_14.getter_mOverridingExtensionSetterFormalParameterList (HERE), var_variableMap_6435, var_formalParameterListForGeneration_6531, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 117)) ;
   }
   enumGalgasBool test_15 = kBoolTrue ;
   if (kBoolTrue == test_15) {
@@ -6431,7 +6431,7 @@ static void extensionMethod_overridingAbstractExtensionSetterAST_semanticAnalysi
     if (kBoolTrue == test_15) {
       {
       const GALGAS_overridingAbstractExtensionSetterAST temp_16 = object ;
-      routine_checkMethodSignatures (var_formalParameterListForGeneration_6528, temp_16.getter_mOverridingExtensionSetterName (HERE).getter_location (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 127)), var_inheritedSignature_5659, var_inheritedDeclarationLocation_5730, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 125)) ;
+      routine_checkMethodSignatures (var_formalParameterListForGeneration_6531, temp_16.getter_mOverridingExtensionSetterName (HERE).getter_location (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 127)), var_inheritedSignature_5659, var_inheritedDeclarationLocation_5730, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 125)) ;
       }
     }
   }

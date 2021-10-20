@@ -11496,7 +11496,7 @@ void callExtensionMethod_analyzeSemanticInstruction (const cPtr_semanticInstruct
                                                      GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                      const GALGAS_analysisContext constin_inAnalysisContext,
                                                      GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
-                                                     GALGAS_variableMap & io_ioVariableMap,
+                                                     GALGAS_localVarManager & io_ioVariableMap,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
@@ -12721,7 +12721,7 @@ void callExtensionMethod_checkAgainstFormalArgument (const cPtr_actualParameterA
                                                      const GALGAS_lstring constin_inFormalSelector,
                                                      const GALGAS_unifiedTypeMap_2D_entry constin_inFormalArgumentType,
                                                      const GALGAS_formalArgumentPassingModeAST constin_inFormalArgumentPassingMode,
-                                                     GALGAS_variableMap & io_ioVariableMap,
+                                                     GALGAS_localVarManager & io_ioVariableMap,
                                                      GALGAS_actualParameterListForGeneration & io_ioActualParameterListForGeneration,
                                                      GALGAS_stringset & io_ioExclusiveVariableSet,
                                                      GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,

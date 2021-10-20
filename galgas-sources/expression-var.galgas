@@ -39,7 +39,7 @@ override method @varInExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext unused inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   [!?ioVariableMap searchForReadAccess

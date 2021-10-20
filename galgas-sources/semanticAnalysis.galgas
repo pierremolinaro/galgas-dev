@@ -117,7 +117,7 @@ map @propertyIndexMap {
 proc buildLocalVariableMapAndSignature
   ?let @semanticContext inSemanticContext
   ?let @formalParameterListAST inRoutineSignatureAST
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@formalParameterListForGeneration outRoutineSignature
 {
   outRoutineSignature = @formalParameterListForGeneration {}
@@ -169,7 +169,7 @@ proc analyzeRoutineBody
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
   !@formalParameterListForGeneration outRoutineSignature
 {
-  var variableMap = @variableMap.emptyMap
+  var variableMap = @localVarManager.default
 #--- Declare local constants
   for () in inLocalConstantList do
     if mNoWarningIfUnused then
@@ -181,7 +181,7 @@ proc analyzeRoutineBody
 #--- Enter non mutable instance attributes
   if not [option galgas_cli_options.propertyAccessRequiresSelf value] then
     for () in inNonMutableTypedAttributeList do
-      [!?variableMap insertNonMutableAttribute
+      [!?variableMap insertNonMutableProperty
         !mPropertyName
         !mPropertyTypeEntry
         !inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[mPropertyName string] identifierRepresentation]
@@ -192,7 +192,7 @@ proc analyzeRoutineBody
 #--- Enter mutable instance attributes
   if not [option galgas_cli_options.propertyAccessRequiresSelf value] then
     for () in inMutableTypedAttributeList do
-      [!?variableMap insertMutableAttribute
+      [!?variableMap insertMutableProperty
         !mPropertyName
         !mPropertyTypeEntry
         !inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[mPropertyName string] identifierRepresentation]
@@ -355,11 +355,11 @@ proc analyzeFunctionBody
   !@string outResultVariableCppName
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
 {
-  var variableMap = @variableMap.emptyMap
+  var variableMap = @localVarManager.default
 #--- Enter instance attributes
   if not [option galgas_cli_options.propertyAccessRequiresSelf value] then
     for () in inTypedAttributeList do
-      [!?variableMap insertNonMutableAttribute
+      [!?variableMap insertNonMutableProperty
         !mPropertyName
         !mPropertyTypeEntry
         !inAttributeVariableNamePrefix + "mProperty_"+ [[mPropertyName string] identifierRepresentation]
@@ -1343,7 +1343,7 @@ abstract method @syntaxInstructionAST analyzeSyntaxInstruction
   ?let @string inComponentName
   ?let @stringset inIndexNameSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@uint ioSelectMethodCount
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1359,7 +1359,7 @@ override method @semanticInstructionAST analyzeSyntaxInstruction
   ?let @string unused inComponentName
   ?let @stringset unused inIndexNameSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@uint unused ioSelectMethodCount
 {
   [self analyzeSemanticInstruction
@@ -1378,7 +1378,7 @@ abstract method @abstractInputParameter analyzeInputParameter
   ?let @lexicalTypeEnum inRequiredLexicalType
   ?let @string inLexicalAttributeName
   ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1387,7 +1387,7 @@ override method @inputParameterAnonymousVariable analyzeInputParameter
   ?let @lexicalTypeEnum unused inRequiredLexicalType
   ?let @string unused inLexicalAttributeName
   ?!@terminalCheckAssignementList unused ioTerminalCheckAssignementList
-  ?!@variableMap unused ioVariableMap {
+  ?!@localVarManager unused ioVariableMap {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1397,7 +1397,7 @@ override method @inputParameterVariable analyzeInputParameter
   ?let @lexicalTypeEnum inRequiredLexicalType
   ?let @string inLexicalAttributeName
   ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
-  ?!@variableMap ioVariableMap {
+  ?!@localVarManager ioVariableMap {
   [!?ioVariableMap searchForWriteAccess !self.mActualParameterName ?let @unifiedTypeMap-entry type ?let @string cppName ?*]
   @unifiedTypeMap-entry expectedType
   switch inRequiredLexicalType
@@ -1428,7 +1428,7 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
   ?let @lexicalTypeEnum inRequiredLexicalType
   ?let @string inLexicalAttributeName
   ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
-  ?!@variableMap ioVariableMap {
+  ?!@localVarManager ioVariableMap {
 #--- Expected type
   @unifiedTypeMap-entry expectedType
   switch inRequiredLexicalType
@@ -1466,7 +1466,7 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
   ?let @lexicalTypeEnum inRequiredLexicalType
   ?let @string inLexicalAttributeName
   ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
-  ?!@variableMap ioVariableMap {
+  ?!@localVarManager ioVariableMap {
 #--- Expected type
   @unifiedTypeMap-entry expectedType
   switch inRequiredLexicalType
@@ -1503,14 +1503,14 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
 abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT
   ?let @analysisContext inAnalysisContext
   ?let @bool inHasTranslateFeature
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeSDT
   ?let @analysisContext unused inAnalysisContext
   ?let @bool unused inHasTranslateFeature
-  ?!@variableMap unused ioVariableMap {
+  ?!@localVarManager unused ioVariableMap {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1518,7 +1518,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeSD
 override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeSDT
   ?let @analysisContext unused inAnalysisContext
   ?let @bool inHasTranslateFeature
-  ?!@variableMap unused ioVariableMap {
+  ?!@localVarManager unused ioVariableMap {
   if not inHasTranslateFeature then
     error self.mLocation : "the ':>' construct requires the syntax component to be declared with 'translate' feature"
   end
@@ -1529,7 +1529,7 @@ override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeS
 override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeSDT
   ?let @analysisContext inAnalysisContext
   ?let @bool inHasTranslateFeature
-  ?!@variableMap ioVariableMap {
+  ?!@localVarManager ioVariableMap {
   if not inHasTranslateFeature then
     error self.mActualParameterName : "the ':>' construct requires the syntax component to be declared with 'translate' feature"
   end
@@ -1547,7 +1547,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
 override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  analyzeSDT
   ?let @analysisContext inAnalysisContext
   ?let @bool inHasTranslateFeature
-  ?!@variableMap ioVariableMap {
+  ?!@localVarManager ioVariableMap {
   if not inHasTranslateFeature then
     error self.mActualParameterName : "the ':>' construct requires the syntax component to be declared with 'translate' feature"
   end
@@ -1567,7 +1567,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
 override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  analyzeSDT
   ?let @analysisContext inAnalysisContext
   ?let @bool inHasTranslateFeature
-  ?!@variableMap ioVariableMap {
+  ?!@localVarManager ioVariableMap {
   if not inHasTranslateFeature then
     error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
@@ -1659,7 +1659,7 @@ proc analyzeSyntaxInstructionList
   ?let @syntaxInstructionList inSyntaxInstructionListAST
   ?let @location inEndOfBranchLocation
   ?let @stringset inIndexNameSet
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@uint ioSelectMethodCount
   !@semanticInstructionListForGeneration outInstructionListForGeneration {
   outInstructionListForGeneration = @semanticInstructionListForGeneration {}
@@ -1710,7 +1710,7 @@ proc semanticAnalysisOfRuleLabel
   !@formalParameterSignature outSignature
   !@semanticInstructionListForGeneration outInstructionListForGeneration
 {
-  var variableMap = @variableMap.emptyMap
+  var variableMap = @localVarManager.default
   buildLocalVariableMapAndSignature (
     !inAnalysisContext.mSemanticContext
     !inFormalArguments

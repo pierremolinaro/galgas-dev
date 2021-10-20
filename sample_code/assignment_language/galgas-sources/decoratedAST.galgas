@@ -73,13 +73,13 @@ shared map @variableMap {
 #---------------------------------------------------------------------------*
 
 abstract method @instructionAST semanticAnalysis
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@instructionListForGeneration ioInstructionListForGeneration
 
 #---------------------------------------------------------------------------*
 
 override method @varDeclarationAST semanticAnalysis
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@instructionListForGeneration ioInstructionListForGeneration {
   let @string cppName = "var_" + [self.mVarName identifierRepresentation] + "_" + [self.mVarName.location locationIndex]
   [!?ioVariableMap declareVariable !self.mVarName !cppName]
@@ -89,7 +89,7 @@ override method @varDeclarationAST semanticAnalysis
 #---------------------------------------------------------------------------*
 
 override method @printVariableAST semanticAnalysis
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@instructionListForGeneration ioInstructionListForGeneration {
   @string cppName
   [!?ioVariableMap searchForReadAccess !self.mVarName ?cppName]
@@ -99,7 +99,7 @@ override method @printVariableAST semanticAnalysis
 #---------------------------------------------------------------------------*
 
 override method @assignmentAST semanticAnalysis
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@instructionListForGeneration ioInstructionListForGeneration {
 #--- Expression
   @expressionForGeneration expression
@@ -114,13 +114,13 @@ override method @assignmentAST semanticAnalysis
 #---------------------------------------------------------------------------*
 
 abstract method @expressionAST expSemanticAnalysis
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@expressionForGeneration outExpression
 
 #---------------------------------------------------------------------------*
 
 override method @varInExpressionAST expSemanticAnalysis
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@expressionForGeneration outExpression {
   @string cppName
   [!?ioVariableMap searchForReadAccess !self.mVarName ?cppName]
@@ -130,7 +130,7 @@ override method @varInExpressionAST expSemanticAnalysis
 #---------------------------------------------------------------------------*
 
 override method @cstInExpressionAST expSemanticAnalysis
-  ?!@variableMap unused ioVariableMap
+  ?!@localVarManager unused ioVariableMap
   !@expressionForGeneration outExpression {
   outExpression = @cstInExpressionForGeneration.new { ![self.mConstant uint]}
 }
@@ -138,7 +138,7 @@ override method @cstInExpressionAST expSemanticAnalysis
 #---------------------------------------------------------------------------*
 
 override method @additionAST expSemanticAnalysis
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@expressionForGeneration outExpression {
 #--- Left expression
   @expressionForGeneration leftExpression
@@ -156,7 +156,7 @@ override method @additionAST expSemanticAnalysis
 #---------------------------------------------------------------------------*
 
 override method @multiplicationAST expSemanticAnalysis
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@expressionForGeneration outExpression {
 #--- Left expression
   @expressionForGeneration leftExpression

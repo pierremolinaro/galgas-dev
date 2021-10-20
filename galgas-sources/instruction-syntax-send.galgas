@@ -54,7 +54,7 @@ override method @syntaxSendInstruction analyzeSyntaxInstruction
   ?let @string unused inComponentName
   ?let @stringset unused inIndexNameSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@uint unused ioSelectMethodCount {
   if not inHasTranslateFeature then
     error self.mInstructionLocation : "'send' instruction is only allowed when syntax componant has 'translate' feature"

@@ -102,7 +102,7 @@ override method @collectionValueAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry inType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
 #--- Type
@@ -170,7 +170,7 @@ abstract method @abstractCollectionValueElement analyze
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @unifiedTypeMap-entry inElementType
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -180,7 +180,7 @@ override method @expressionCollectionValue analyze
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @unifiedTypeMap-entry inElementType
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
 {
   [self.mExpression analyzeSemanticExpression
@@ -204,7 +204,7 @@ override method @expressionListCollectionValue analyze
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @unifiedTypeMap-entry inElementType
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration {
   let @functionSignature formalParameterTypeList = [inElementType mAddAssignOperatorArguments]
   @semanticExpressionListForGeneration semanticExpressionListForGeneration

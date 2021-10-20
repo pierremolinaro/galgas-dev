@@ -84,7 +84,7 @@ private proc analyzeConstructorInvocation
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry inType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?let @lstring inTypeName
   ?let @lstring inConstructorName
   ?let @actualOutputExpressionList inConstuctorEffectiveParameterExpressions
@@ -156,7 +156,7 @@ override method @constructorExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry inType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   analyzeConstructorInvocation (
@@ -205,7 +205,7 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry inType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap unused ioVariableMap
+  ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   var type = inType

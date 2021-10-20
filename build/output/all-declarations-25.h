@@ -82,7 +82,7 @@ void routine_analyzeConstructorInvocation (const class GALGAS_lstring constinArg
                                            class GALGAS_usefulEntitiesGraph & ioArgument1,
                                            const class GALGAS_unifiedTypeMap_2D_entry constinArgument2,
                                            const class GALGAS_analysisContext constinArgument3,
-                                           class GALGAS_variableMap & ioArgument4,
+                                           class GALGAS_localVarManager & ioArgument4,
                                            const class GALGAS_lstring constinArgument5,
                                            const class GALGAS_lstring constinArgument6,
                                            const class GALGAS_actualOutputExpressionList constinArgument7,

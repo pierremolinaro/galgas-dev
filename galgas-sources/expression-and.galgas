@@ -64,7 +64,7 @@ override method @andExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
@@ -120,7 +120,7 @@ override method @andShortExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression

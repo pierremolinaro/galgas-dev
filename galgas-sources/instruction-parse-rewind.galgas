@@ -84,7 +84,7 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
   ?let @string inComponentName
   ?let @stringset inIndexNameSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@uint ioSelectMethodCount
 {
 #--- 'Rewind' blocks

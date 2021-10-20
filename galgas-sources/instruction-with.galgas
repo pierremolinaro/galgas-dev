@@ -216,7 +216,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
+  ?!@localVarManager ioVariableMap {
 #--- Analyze receiver expression
   [self.mReceiverExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
@@ -312,7 +312,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 {
 #--- Analyze source expression
   [self.mKeyExpression analyzeSemanticExpression

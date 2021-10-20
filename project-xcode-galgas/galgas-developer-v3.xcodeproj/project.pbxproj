@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -473,6 +473,7 @@
 		CFA1756C1C89BF8E00BB0B17 /* cLexiqueIntrospection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA175691C89BF8E00BB0B17 /* cLexiqueIntrospection.cpp */; };
 		CFA59E4F128EADA4000CD98B /* AC_GALGAS_uniqueMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA59E4B128EADA4000CD98B /* AC_GALGAS_uniqueMap.cpp */; };
 		CFA59E50128EADA4000CD98B /* AC_GALGAS_uniqueMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA59E4B128EADA4000CD98B /* AC_GALGAS_uniqueMap.cpp */; };
+		CFA941E0272040EC00B52A16 /* OC_GGS_ColorTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA941DF272040EC00B52A16 /* OC_GGS_ColorTransformer.m */; };
 		CFAC1A0B1C3318B800465212 /* C_galgas_quiet_option.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAC1A091C3318B800465212 /* C_galgas_quiet_option.cpp */; };
 		CFAE5AA110021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */; };
 		CFAE5B1C10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */; };
@@ -979,6 +980,8 @@
 		CFA59E4B128EADA4000CD98B /* AC_GALGAS_uniqueMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = AC_GALGAS_uniqueMap.cpp; sourceTree = "<group>"; };
 		CFA59E4C128EADA4000CD98B /* AC_GALGAS_uniqueMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AC_GALGAS_uniqueMap.h; sourceTree = "<group>"; };
 		CFA5C508192A884800C20A02 /* TC_UniqueSparseArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_UniqueSparseArray.h; sourceTree = "<group>"; };
+		CFA941DE272040EC00B52A16 /* OC_GGS_ColorTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OC_GGS_ColorTransformer.h; sourceTree = "<group>"; };
+		CFA941DF272040EC00B52A16 /* OC_GGS_ColorTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_ColorTransformer.m; sourceTree = "<group>"; };
 		CFAC1A091C3318B800465212 /* C_galgas_quiet_option.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_quiet_option.cpp; sourceTree = "<group>"; };
 		CFAC1A0A1C3318B800465212 /* C_galgas_quiet_option.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_galgas_quiet_option.h; sourceTree = "<group>"; };
 		CFAE5A9E10021A400068DEC9 /* OC_GGS_CommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OC_GGS_CommandLineOption.h; sourceTree = "<group>"; };
@@ -1600,6 +1603,8 @@
 				CFCAEE66160E5D3D0081F715 /* OC_GGS_ApplicationDelegate.m */,
 				CF3C17A614E97CCC0016A381 /* OC_GGS_BuildTask.h */,
 				CF3C17A714E97CCC0016A381 /* OC_GGS_BuildTask.m */,
+				CFA941DE272040EC00B52A16 /* OC_GGS_ColorTransformer.h */,
+				CFA941DF272040EC00B52A16 /* OC_GGS_ColorTransformer.m */,
 				CFAE5A9E10021A400068DEC9 /* OC_GGS_CommandLineOption.h */,
 				CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */,
 				CF82597308536A130077AEAF /* OC_GGS_Document.h */,
@@ -1936,7 +1941,7 @@
 		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1230;
+				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					CF6DF12309E3F23700506859 = {
@@ -1965,7 +1970,7 @@
 				};
 			};
 			buildConfigurationList = CF0DA6A4085630E800F38E67 /* Build configuration list for PBXProject "galgas-developer-v3" */;
-			compatibilityVersion = "Xcode 12.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -2565,6 +2570,7 @@
 				CFB697DF1483D47900BCAE41 /* PMIssueInRuler.m in Sources */,
 				CF3C17A814E97CCC0016A381 /* OC_GGS_BuildTask.m in Sources */,
 				CF59565C15C81988000E6B8B /* OC_GGS_DocumentData.m in Sources */,
+				CFA941E0272040EC00B52A16 /* OC_GGS_ColorTransformer.m in Sources */,
 				CF4E85961FF3EB6200A28AE6 /* option-galgas-5F-cli-5F-options-cocoa.m in Sources */,
 				CF9DE67E15C8766700D44EE3 /* OC_GGS_RulerViewForBuildOutput.m in Sources */,
 				CF2378C919967DF10061D2D8 /* gui-cocoa.m in Sources */,
@@ -2740,6 +2746,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEPLOYMENT_LOCATION = NO;
 				DEVELOPMENT_TEAM = YW8QY74J2A;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_PREPROCESSOR_DEFINITIONS = DO_NOT_GENERATE_CHECKINGS;
@@ -2754,6 +2761,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
@@ -2772,10 +2780,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEPLOYMENT_LOCATION = NO;
 				DEVELOPMENT_TEAM = YW8QY74J2A;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Sparkle.framework",
@@ -2783,7 +2792,7 @@
 				);
 				GCC_ENABLE_TRIGRAPHS = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 1;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_PEDANTIC = NO;

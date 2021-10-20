@@ -59,7 +59,7 @@ override method @optionExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap unused ioVariableMap
+  ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   let usefulnessName = optionNameForUsefulEntitiesGraph (!self.mOptionComponentName)

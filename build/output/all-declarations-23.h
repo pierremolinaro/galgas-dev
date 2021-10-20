@@ -207,7 +207,7 @@ void routine_analyzeSemanticInstructionList (const class GALGAS_lstring constinA
                                              const class GALGAS_localInitializedVariableList constinArgument4,
                                              const class GALGAS_semanticInstructionListAST constinArgument5,
                                              const class GALGAS_location constinArgument6,
-                                             class GALGAS_variableMap & ioArgument7,
+                                             class GALGAS_localVarManager & ioArgument7,
                                              class GALGAS_semanticInstructionListForGeneration & outArgument8,
                                              class C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
@@ -224,7 +224,7 @@ void routine_analyzeSemanticInstructionListWithoutBranch (const class GALGAS_lst
                                                           const class GALGAS_localConstantList constinArgument3,
                                                           const class GALGAS_localInitializedVariableList constinArgument4,
                                                           const class GALGAS_semanticInstructionListAST constinArgument5,
-                                                          class GALGAS_variableMap & ioArgument6,
+                                                          class GALGAS_localVarManager & ioArgument6,
                                                           class GALGAS_semanticInstructionListForGeneration & outArgument7,
                                                           class C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
@@ -242,7 +242,7 @@ void routine_analyzeRoutineArguments (const class GALGAS_lstring constinArgument
                                       const class GALGAS_string constinArgument4,
                                       const class GALGAS_formalParameterSignature constinArgument5,
                                       const class GALGAS_actualParameterListAST constinArgument6,
-                                      class GALGAS_variableMap & ioArgument7,
+                                      class GALGAS_localVarManager & ioArgument7,
                                       class GALGAS_semanticInstructionListForGeneration & ioArgument8,
                                       class GALGAS_actualParameterListForGeneration & outArgument9,
                                       class C_Compiler * inCompiler
@@ -525,7 +525,7 @@ void routine_analyzeSyntaxInstructionList (const class GALGAS_lstring constinArg
                                            const class GALGAS_syntaxInstructionList constinArgument8,
                                            const class GALGAS_location constinArgument9,
                                            const class GALGAS_stringset constinArgument10,
-                                           class GALGAS_variableMap & ioArgument11,
+                                           class GALGAS_localVarManager & ioArgument11,
                                            class GALGAS_uint & ioArgument12,
                                            class GALGAS_semanticInstructionListForGeneration & outArgument13,
                                            class C_Compiler * inCompiler

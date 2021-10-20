@@ -246,7 +246,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 {
 #--- Test expression
   @ifTestListForGeneration testListForGeneration = {}
@@ -376,7 +376,7 @@ private proc analyzeOptionalMethodCall
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?receiverExp: let @semanticExpressionAST inReceiverExpression
   ?optionalMethodName: let  @lstring inOptionalMethodName
   ?parameters: let  @optionalMethodActualArgumentList inActualParameters

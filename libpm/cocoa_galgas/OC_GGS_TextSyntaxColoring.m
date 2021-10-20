@@ -16,6 +16,7 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
+#import "OC_GGS_ColorTransformer.h"
 #import "OC_GGS_TextSyntaxColoring.h"
 #import "OC_GGS_TextDisplayDescriptor.h"
 #import "OC_Lexique.h"
@@ -140,39 +141,40 @@
   //--------------------------------------------------- Add foreground color observers
     NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults] ;
+    OC_GGS_ColorTransformer * colorTransformer = [OC_GGS_ColorTransformer new] ;
     if ([mTokenizer isTemplateLexique]) {
       NSString * keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_template_foreground_color, [mTokenizer styleIdentifierForStyleIndex:0]] ;
       [udc
-        addObserver:self
-        forKeyPath:keyPath
-        options:NSKeyValueObservingOptionNew
+        addObserver: self
+        forKeyPath: keyPath
+        options: NSKeyValueObservingOptionNew
         context:(void *) (TAG_FOR_TEMPLATE_FOREGROUND_COLOR)
       ] ;
       NSString * name = [NSString stringWithFormat:@"%@_%@", GGS_template_foreground_color, [mTokenizer styleIdentifierForStyleIndex:0]] ;
-      NSData * data = [defaults dataForKey:name] ;
+      NSData * data = [defaults dataForKey: name] ;
       if (data != nil) {
-        NSColor * color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
-        [mTemplateTextAttributeDictionary setObject:color forKey:NSForegroundColorAttributeName] ;
+        NSColor * color = [colorTransformer transformedValue: data] ;
+        [mTemplateTextAttributeDictionary setObject: color forKey: NSForegroundColorAttributeName] ;
       }else{
-        [mTemplateTextAttributeDictionary setObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName] ;
+        [mTemplateTextAttributeDictionary setObject: [NSColor blackColor] forKey: NSForegroundColorAttributeName] ;
       }
     }
     for (NSInteger i=0 ; i< (NSInteger) mTokenizer.styleCount ; i++) {
       NSString * keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_named_color, [mTokenizer styleIdentifierForStyleIndex:i]] ;
       [udc
-        addObserver:self
-        forKeyPath:keyPath
-        options:NSKeyValueObservingOptionNew
-        context:(void *) (TAG_FOR_FOREGROUND_COLOR | i)
+        addObserver: self
+        forKeyPath: keyPath
+        options: NSKeyValueObservingOptionNew
+        context: (void *) (TAG_FOR_FOREGROUND_COLOR | i)
       ] ;
     }
   //--------------------------------------------------- Add background color observers
     if ([mTokenizer isTemplateLexique]) {
       NSString * keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_template_background_color, [mTokenizer styleIdentifierForStyleIndex:0]] ;
       [udc
-        addObserver:self
-        forKeyPath:keyPath
-        options:NSKeyValueObservingOptionNew
+        addObserver: self
+        forKeyPath: keyPath
+        options: NSKeyValueObservingOptionNew
         context:(void *) (TAG_FOR_TEMPLATE_BACKGROUND_COLOR)
       ] ;
       keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_enable_template_background, [mTokenizer styleIdentifierForStyleIndex:0]] ;
@@ -187,7 +189,7 @@
         name = [NSString stringWithFormat:@"%@_%@", GGS_template_background_color, [mTokenizer styleIdentifierForStyleIndex:0]] ;
         NSData * data = [defaults dataForKey:name] ;
         if (data != nil) {
-          NSColor * color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
+          NSColor * color = [colorTransformer transformedValue: data] ;
           [mTemplateTextAttributeDictionary setObject:color forKey:NSBackgroundColorAttributeName] ;
         }else{
           [mTemplateTextAttributeDictionary setObject:[NSColor blackColor] forKey:NSBackgroundColorAttributeName] ;
@@ -245,10 +247,10 @@
       NSString * name = [NSString stringWithFormat:@"%@_%@", GGS_named_color, [mTokenizer styleIdentifierForStyleIndex:i]] ;
       NSData * data = [defaults dataForKey:name] ;
       if (data != nil) {
-        NSColor * color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
+        NSColor * color = [colorTransformer transformedValue: data] ;
         [attributeDictionary setObject:color forKey:NSForegroundColorAttributeName] ;
       }else{
-        [attributeDictionary setObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName] ;
+        [attributeDictionary setObject: [NSColor blackColor] forKey:NSForegroundColorAttributeName] ;
       }
     //--- Add background color   
       name = [NSString stringWithFormat:@"%@_%@", GGS_named_enable_background, [mTokenizer styleIdentifierForStyleIndex:i]] ;

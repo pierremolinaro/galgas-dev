@@ -44,7 +44,7 @@ override method @messageInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
+  ?!@localVarManager ioVariableMap {
 #--- Analyze source expression
   @semanticExpressionForGeneration expression
   [self.mExpression analyzeSemanticExpression

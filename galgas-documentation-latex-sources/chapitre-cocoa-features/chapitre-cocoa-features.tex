@@ -5,6 +5,9 @@
 \chapterLabel{Projet \texttt{Xcode} et application Cocoa}{appliCocoa}
 %-------------------------------------------------------------
 
+\tableDesMatieresDuChapitre
+
+
 Vous pouvez demander à GALGAS d'engendrer un projet \texttt{Xcode}, qui contiendra~:
 \begin{itemize}
   \item le compilateur en version \emph{release} sous la forme d'un utilitaire en ligne de commande~; 
@@ -63,7 +66,6 @@ Un projet \texttt{Xcode} définit la version de Mac OS pour laquelle il va être
   \end{tabular}
   \caption{Options du projet GALGAS indiquant la version Mac OS}
   \labelTableau{options-pour-xcode}
-  \ligne
 \end{table}
 
 
@@ -147,7 +149,6 @@ L'application \emph{Trousseaux d'accès} (« Keychain Access ») permet de retro
   \includegraphics[width=14cm]{chapitre-cocoa-features/trousseaux-acces.png}
   \caption{Application \emph{Trousseaux d'accès}}
   \labelFigure{figureAppliTrousseauxAccess}
-  \ligne
 \end{figure}
 
 
@@ -158,7 +159,6 @@ L'application \emph{Trousseaux d'accès} (« Keychain Access ») permet de retro
   \includegraphics[width=14cm]{chapitre-cocoa-features/certificat.png}
   \caption{Détail du certificat}
   \labelFigure{figureDetailCertificat}
-  \ligne
 \end{figure}
 
 
@@ -182,7 +182,6 @@ On peut utiler Xcode pour retrouver la chaîne recherchée. Pour cela, on va mod
   \includegraphics[width=15cm]{chapitre-cocoa-features/projet-xcode-sans-signature.png}
   \caption{Projet \texttt{Xcode} sans signature}
   \labelFigure{figureXcodeSansSignature}
-  \ligne
 \end{figure}
 
 
@@ -191,7 +190,6 @@ On peut utiler Xcode pour retrouver la chaîne recherchée. Pour cela, on va mod
   \includegraphics[width=15cm]{chapitre-cocoa-features/projet-xcode-avec-signature.png}
   \caption{Signature à partir du projet \texttt{Xcode}}
   \labelFigure{figureSignatureXcode}
-  \ligne
 \end{figure}
 
 Ouvrir donc le projet Xcode, sélectionner \tpp{logo} dans la barre latérale gauche, puis la cible (dans «~TARGETS~») \tpp{Cocoa logo}, puis l'onglet \tpp{General}, et repérer le bloc \tpp{Signing}~: \refFigure{}{figureXcodeSansSignature}. Cliquez alors sur «~Enable Development Signing~», de façon à aboutir à la \refFigure{}{figureSignatureXcode}. 
@@ -213,7 +211,6 @@ La valeur associée au paramètre \tpp{DEVELOPMENT\_TEAM} est la chaîne recherc
   }
   \caption{Afficher dans le Finder le contenu du paquet projet Xcode}
   \labelFigure{figureOuverturePaquetXcode}
-  \ligne
 \end{figure}
 
 
@@ -242,7 +239,6 @@ Le nom que vous avez donné au certificat est important, c'est lui que vous alle
   }
   \caption{Certificat auto-signé}
   \labelFigure{figureDefinirCertificatAutoSigne}
-  \ligne
 \end{figure}
 
 
@@ -316,7 +312,6 @@ Le rôle de chacun est précisé par le \refTableau{fichiers-repertoires-xcode}.
   \end{tabular}
   \caption{Fichiers et répertoires relatifs au projet Xcode}
   \labelTableau{fichiers-repertoires-xcode}
-  \ligne
 \end{table}
 
 
@@ -371,7 +366,6 @@ Vous pouvez configurer votre projet GALGAS pour que l'application Cocoa engendr�
   \includegraphics[width=14cm]{chapitre-cocoa-features/indexing-sample.png}
   \caption{Indexation et références croisées dans l'application CocoaGalgas}
   \labelFigure{indexingUnderCocoaGALGAS}
-  \ligne
 \end{figure}
 
 Pour configurer votre projet, vous avez à modifier le composant \emph{lexique}, le composant \emph{syntax}, le composant \emph{grammar}, et la règle d'analyse du fichier source. Les cinq modifications sont présentées successivement ci-après, en prenant comme exemple le langage LOGO (\refSectionPage{presentation-logo}).
@@ -527,7 +521,6 @@ Les modifications sont terminées. Vous pouvez recompiler votre projet (compilat
   \includegraphics[width=8cm]{chapitre-cocoa-features/exemple-indexation-logo.png}
   \caption{Exemple d'indexation en LOGO}
   \labelFigure{exemple-indexation-logo}
-  \ligne
 \end{figure}
 
 

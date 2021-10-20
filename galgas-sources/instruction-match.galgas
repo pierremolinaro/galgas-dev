@@ -148,7 +148,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
+  ?!@localVarManager ioVariableMap {
   var expressionList =@semanticExpressionListForGeneration {}
   for () in self.mMatchedExpressionList do
   #--- Analyze expression

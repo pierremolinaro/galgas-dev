@@ -146,7 +146,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
+  ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
   @unifiedTypeMap-entry selfTypeEntry
   @string selfObjectCppName
@@ -203,7 +203,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
+  ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
   @unifiedTypeMap-entry selfTypeEntry
   @string selfObjectCppName
@@ -248,7 +248,7 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
+  ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
   @unifiedTypeMap-entry selfTypeEntry
   @string selfObjectCppName
@@ -293,7 +293,7 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
+  ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
   @unifiedTypeMap-entry selfTypeEntry
   @string selfObjectCppName
@@ -338,7 +338,7 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
+  ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
   @unifiedTypeMap-entry selfTypeEntry
   @string selfObjectCppName

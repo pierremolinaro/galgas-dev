@@ -206,7 +206,7 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 {
   let usefulnessName = grammarNameForUsefulEntitiesGraph (!self.mGrammarComponentName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
@@ -280,7 +280,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 {
   let grammarUsefulnessName = grammarNameForUsefulEntitiesGraph (!self.mGrammarComponentName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !grammarUsefulnessName]

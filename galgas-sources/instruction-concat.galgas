@@ -188,7 +188,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 {
 #--- Check target variable, or self.property
   var @unifiedTypeMap-entry targetType
@@ -264,7 +264,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 {
 #--- Check target variable, or self.property
   var @unifiedTypeMap-entry targetType
@@ -340,7 +340,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 {
 #--- Check target variable, or self.property
   var @unifiedTypeMap-entry targetType
@@ -416,7 +416,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 {
 #--- Check target variable, or self.property
   var @unifiedTypeMap-entry targetType
@@ -492,7 +492,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 {
 #--- Check target variable, or self.property
   var @unifiedTypeMap-entry targetType

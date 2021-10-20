@@ -90,7 +90,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
+  ?!@localVarManager ioVariableMap {
 #--- Variant expression
   @semanticExpressionForGeneration variantExpression
   [self.mVariantExpression analyzeSemanticExpression

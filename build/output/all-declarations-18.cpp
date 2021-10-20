@@ -4075,200 +4075,6 @@ GALGAS_uselessEntityLocationMap_2D_element GALGAS_uselessEntityLocationMap_2D_el
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_scopeLocalVarMap_2D_element::GALGAS_scopeLocalVarMap_2D_element (void) :
-mProperty_lkey (),
-mProperty_mType (),
-mProperty_mCppName (),
-mProperty_mNameForCheckingFormalParameterUsing (),
-mProperty_mAttributes (),
-mProperty_mState () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_scopeLocalVarMap_2D_element::~ GALGAS_scopeLocalVarMap_2D_element (void) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_scopeLocalVarMap_2D_element::GALGAS_scopeLocalVarMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                                        const GALGAS_unifiedTypeMap_2D_entry & inOperand1,
-                                                                        const GALGAS_string & inOperand2,
-                                                                        const GALGAS_string & inOperand3,
-                                                                        const GALGAS_localVariableAttributes & inOperand4,
-                                                                        const GALGAS_localVarValuation & inOperand5) :
-mProperty_lkey (inOperand0),
-mProperty_mType (inOperand1),
-mProperty_mCppName (inOperand2),
-mProperty_mNameForCheckingFormalParameterUsing (inOperand3),
-mProperty_mAttributes (inOperand4),
-mProperty_mState (inOperand5) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_scopeLocalVarMap_2D_element GALGAS_scopeLocalVarMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                        const GALGAS_unifiedTypeMap_2D_entry & inOperand1,
-                                                                                        const GALGAS_string & inOperand2,
-                                                                                        const GALGAS_string & inOperand3,
-                                                                                        const GALGAS_localVariableAttributes & inOperand4,
-                                                                                        const GALGAS_localVarValuation & inOperand5 
-                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_scopeLocalVarMap_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid ()) {
-    result = GALGAS_scopeLocalVarMap_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_scopeLocalVarMap_2D_element::objectCompare (const GALGAS_scopeLocalVarMap_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mType.objectCompare (inOperand.mProperty_mType) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mCppName.objectCompare (inOperand.mProperty_mCppName) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mNameForCheckingFormalParameterUsing.objectCompare (inOperand.mProperty_mNameForCheckingFormalParameterUsing) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mAttributes.objectCompare (inOperand.mProperty_mAttributes) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mState.objectCompare (inOperand.mProperty_mState) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_scopeLocalVarMap_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mType.isValid () && mProperty_mCppName.isValid () && mProperty_mNameForCheckingFormalParameterUsing.isValid () && mProperty_mAttributes.isValid () && mProperty_mState.isValid () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_scopeLocalVarMap_2D_element::drop (void) {
-  mProperty_lkey.drop () ;
-  mProperty_mType.drop () ;
-  mProperty_mCppName.drop () ;
-  mProperty_mNameForCheckingFormalParameterUsing.drop () ;
-  mProperty_mAttributes.drop () ;
-  mProperty_mState.drop () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_scopeLocalVarMap_2D_element::description (C_String & ioString,
-                                                      const int32_t inIndentation) const {
-  ioString << "<struct @scopeLocalVarMap-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mType.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mCppName.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mNameForCheckingFormalParameterUsing.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mAttributes.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mState.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_scopeLocalVarMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
-  return mProperty_lkey ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_unifiedTypeMap_2D_entry GALGAS_scopeLocalVarMap_2D_element::getter_mType (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mType ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string GALGAS_scopeLocalVarMap_2D_element::getter_mCppName (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mCppName ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string GALGAS_scopeLocalVarMap_2D_element::getter_mNameForCheckingFormalParameterUsing (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mNameForCheckingFormalParameterUsing ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_localVariableAttributes GALGAS_scopeLocalVarMap_2D_element::getter_mAttributes (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mAttributes ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_localVarValuation GALGAS_scopeLocalVarMap_2D_element::getter_mState (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mState ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@scopeLocalVarMap-element type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_scopeLocalVarMap_2D_element ("scopeLocalVarMap-element",
-                                                    NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_scopeLocalVarMap_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_scopeLocalVarMap_2D_element ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_scopeLocalVarMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_scopeLocalVarMap_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_scopeLocalVarMap_2D_element GALGAS_scopeLocalVarMap_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                      C_Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_scopeLocalVarMap_2D_element result ;
-  const GALGAS_scopeLocalVarMap_2D_element * p = (const GALGAS_scopeLocalVarMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_scopeLocalVarMap_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("scopeLocalVarMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_actualOutputExpressionList_2D_element::GALGAS_actualOutputExpressionList_2D_element (void) :
 mProperty_mActualSelector (),
 mProperty_mExpression (),
@@ -15032,6 +14838,290 @@ GALGAS_optionCharExpressionForGeneration GALGAS_optionCharExpressionForGeneratio
       result = *p ;
     }else{
       inCompiler->castError ("optionCharExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//   Object comparison                                                                           
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_optionStringExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_optionStringExpressionForGeneration * p = (const cPtr_optionStringExpressionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_optionStringExpressionForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mOptionComponentIsPredefined.objectCompare (p->mProperty_mOptionComponentIsPredefined) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mOptionComponentName.objectCompare (p->mProperty_mOptionComponentName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mOptionEntryName.objectCompare (p->mProperty_mOptionEntryName) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_optionStringExpressionForGeneration::objectCompare (const GALGAS_optionStringExpressionForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_optionStringExpressionForGeneration::GALGAS_optionStringExpressionForGeneration (void) :
+GALGAS_semanticExpressionForGeneration () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_optionStringExpressionForGeneration GALGAS_optionStringExpressionForGeneration::constructor_default (LOCATION_ARGS) {
+  return GALGAS_optionStringExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE),
+                                                                      GALGAS_location::constructor_nowhere (HERE),
+                                                                      GALGAS_bool::constructor_default (HERE),
+                                                                      GALGAS_string::constructor_default (HERE),
+                                                                      GALGAS_string::constructor_default (HERE)
+                                                                      COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_optionStringExpressionForGeneration::GALGAS_optionStringExpressionForGeneration (const cPtr_optionStringExpressionForGeneration * inSourcePtr) :
+GALGAS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_optionStringExpressionForGeneration) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_optionStringExpressionForGeneration GALGAS_optionStringExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
+                                                                                                        const GALGAS_location & inAttribute_mLocation,
+                                                                                                        const GALGAS_bool & inAttribute_mOptionComponentIsPredefined,
+                                                                                                        const GALGAS_string & inAttribute_mOptionComponentName,
+                                                                                                        const GALGAS_string & inAttribute_mOptionEntryName
+                                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_optionStringExpressionForGeneration result ;
+  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mOptionComponentIsPredefined.isValid () && inAttribute_mOptionComponentName.isValid () && inAttribute_mOptionEntryName.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_optionStringExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mOptionComponentIsPredefined, inAttribute_mOptionComponentName, inAttribute_mOptionEntryName COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_optionStringExpressionForGeneration::getter_mOptionComponentIsPredefined (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_optionStringExpressionForGeneration * p = (const cPtr_optionStringExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_optionStringExpressionForGeneration) ;
+    result = p->mProperty_mOptionComponentIsPredefined ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool cPtr_optionStringExpressionForGeneration::getter_mOptionComponentIsPredefined (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mOptionComponentIsPredefined ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_optionStringExpressionForGeneration::getter_mOptionComponentName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_optionStringExpressionForGeneration * p = (const cPtr_optionStringExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_optionStringExpressionForGeneration) ;
+    result = p->mProperty_mOptionComponentName ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string cPtr_optionStringExpressionForGeneration::getter_mOptionComponentName (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mOptionComponentName ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_optionStringExpressionForGeneration::getter_mOptionEntryName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_optionStringExpressionForGeneration * p = (const cPtr_optionStringExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_optionStringExpressionForGeneration) ;
+    result = p->mProperty_mOptionEntryName ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string cPtr_optionStringExpressionForGeneration::getter_mOptionEntryName (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mOptionEntryName ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_optionStringExpressionForGeneration::setter_setMOptionComponentIsPredefined (GALGAS_bool inValue
+                                                                                         COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_optionStringExpressionForGeneration * p = (cPtr_optionStringExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_optionStringExpressionForGeneration) ;
+    p->mProperty_mOptionComponentIsPredefined = inValue ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_optionStringExpressionForGeneration::setter_setMOptionComponentIsPredefined (GALGAS_bool inValue
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mOptionComponentIsPredefined = inValue ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_optionStringExpressionForGeneration::setter_setMOptionComponentName (GALGAS_string inValue
+                                                                                 COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_optionStringExpressionForGeneration * p = (cPtr_optionStringExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_optionStringExpressionForGeneration) ;
+    p->mProperty_mOptionComponentName = inValue ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_optionStringExpressionForGeneration::setter_setMOptionComponentName (GALGAS_string inValue
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mOptionComponentName = inValue ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_optionStringExpressionForGeneration::setter_setMOptionEntryName (GALGAS_string inValue
+                                                                             COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_optionStringExpressionForGeneration * p = (cPtr_optionStringExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_optionStringExpressionForGeneration) ;
+    p->mProperty_mOptionEntryName = inValue ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_optionStringExpressionForGeneration::setter_setMOptionEntryName (GALGAS_string inValue
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mOptionEntryName = inValue ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//Pointer class for @optionStringExpressionForGeneration class
+//----------------------------------------------------------------------------------------------------------------------
+
+cPtr_optionStringExpressionForGeneration::cPtr_optionStringExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mResultType,
+                                                                                    const GALGAS_location & in_mLocation,
+                                                                                    const GALGAS_bool & in_mOptionComponentIsPredefined,
+                                                                                    const GALGAS_string & in_mOptionComponentName,
+                                                                                    const GALGAS_string & in_mOptionEntryName
+                                                                                    COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
+mProperty_mOptionComponentIsPredefined (in_mOptionComponentIsPredefined),
+mProperty_mOptionComponentName (in_mOptionComponentName),
+mProperty_mOptionEntryName (in_mOptionEntryName) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_optionStringExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_optionStringExpressionForGeneration ;
+}
+
+void cPtr_optionStringExpressionForGeneration::description (C_String & ioString,
+                                                            const int32_t inIndentation) const {
+  ioString << "[@optionStringExpressionForGeneration:" ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mOptionComponentIsPredefined.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mOptionComponentName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mOptionEntryName.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_optionStringExpressionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_optionStringExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mOptionComponentIsPredefined, mProperty_mOptionComponentName, mProperty_mOptionEntryName COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@optionStringExpressionForGeneration type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_optionStringExpressionForGeneration ("optionStringExpressionForGeneration",
+                                                            & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_optionStringExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_optionStringExpressionForGeneration ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_optionStringExpressionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_optionStringExpressionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_optionStringExpressionForGeneration GALGAS_optionStringExpressionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                      C_Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_optionStringExpressionForGeneration result ;
+  const GALGAS_optionStringExpressionForGeneration * p = (const GALGAS_optionStringExpressionForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_optionStringExpressionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("optionStringExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

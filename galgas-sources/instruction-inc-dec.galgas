@@ -175,7 +175,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 {
 #--- Check target variable
   var @unifiedTypeMap-entry targetType
@@ -235,7 +235,7 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 {
 #--- Check target variable
   @unifiedTypeMap-entry targetType
@@ -270,7 +270,7 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
+  ?!@localVarManager unused ioVariableMap
 {
 #--- Analyze "self", as receiver expression
   @unifiedTypeMap-entry selfTypeEntry
@@ -303,7 +303,7 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
+  ?!@localVarManager unused ioVariableMap
 {
 #--- Analyze "self", as receiver expression
   @unifiedTypeMap-entry selfTypeEntry

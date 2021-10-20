@@ -5,6 +5,9 @@
 \chapterLabel{Le type \texttt{dict}}{typeDict}
 %-------------------------------------------------------------
 
+\tableDesMatieresDuChapitre
+
+
 Un objet de type \ggs+dict+ est un dictionnaire. Contrairement à un objet de type \ggs+map+ , le type de la clé est déclaré explicitement et peut être d'un type quelconque.
 
 {\bf\color{red} Attention ! } Le type de la clé d'un dictionnaire peut être un \ggs+@lstring+, comme la clé implicite d'une \ggs+map+. Toutefois, la sémantique est différente. Dans une \ggs=map=, c'est la composante \ggs=string= de la clé qui est prise en compte comme clé effective. La composante \ggs=location= n'est utilisée que pour le signalement d'erreur. Dans un \ggs=dict=, le type déclaré comme clé est intégralement pris en compte : si la clé d'un \ggs=dict= est un \ggs=@lstring=, la comparaison des clés prend en compte la composante \ggs=string= {\bf et} la composante \ggs=location=.

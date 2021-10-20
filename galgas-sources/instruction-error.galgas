@@ -155,7 +155,7 @@ proc analyzeErrorOrWarningInstruction
   ?let @fixitListAST inFixitListAST
   ?let @location inErrorLocation
   ?let @string inErrorOrWarningString
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outLocationExpression
   !@semanticExpressionForGeneration outMessageExpression
   !@fixitListForGeneration outFixitListForGeneration
@@ -296,7 +296,7 @@ override method @errorInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 {
 #---
   analyzeErrorOrWarningInstruction (

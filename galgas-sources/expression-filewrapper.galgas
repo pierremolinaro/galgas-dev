@@ -78,7 +78,7 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap unused ioVariableMap
+  ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   let usefulnessName = filewrapperNameForUsefulEntitiesGraph (!self.mFilewrapperName)
@@ -122,7 +122,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   let usefulnessName = filewrapperTemplateNameForUsefulEntitiesGraph (!self.mFilewrapperName !self.mFilewrapperTemplateName)
@@ -192,7 +192,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
-  ?!@variableMap unused ioVariableMap
+  ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   let usefulnessName = filewrapperNameForUsefulEntitiesGraph (!self.mFilewrapperName)

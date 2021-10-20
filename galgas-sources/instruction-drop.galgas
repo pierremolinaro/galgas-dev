@@ -14,8 +14,7 @@ syntax extension galgas3InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction>
-    !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $drop$
     let instructionLocation = @location.here
     @lstringlist dropList = {}
@@ -48,7 +47,7 @@ override method @dropInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
+  ?!@localVarManager ioVariableMap
 {
   for () in self.mDropList do
     [!?ioVariableMap searchForDropAccess !mValue ?3*]
