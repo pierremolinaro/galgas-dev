@@ -321,6 +321,7 @@ override method @setterCallInstructionForGeneration generateInstruction
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 {
+#  ioGeneratedCode += "try{\n"
   ioGeneratedCode += "{\n"
   var receiverCppName = self.mReceiverCppName
   for () in self.mReceiverStructAttributes do
@@ -389,6 +390,7 @@ override method @setterCallInstructionForGeneration generateInstruction
     ioGeneratedCode += " COMMA_"
   end
   ioGeneratedCode += [[self.mSetterName location] sourceFile] + ") ;\n"
+#  ioGeneratedCode += "}catch (GGS_InvalidException &) {\n"
   ioGeneratedCode += "}\n"
 }
 

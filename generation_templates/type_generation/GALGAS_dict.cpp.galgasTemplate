@@ -22,6 +22,10 @@ end
 
   public: cNode_%!TYPE_IDENTIFIER% (cNode_%!TYPE_IDENTIFIER% * inNode) ;
 
+  public: cNode_%!TYPE_IDENTIFIER% (cNode_%!TYPE_IDENTIFIER% &) = delete ;
+
+  public: cNode_%!TYPE_IDENTIFIER%& operator = (cNode_%!TYPE_IDENTIFIER% &) = delete ;
+
   public: virtual ~ cNode_%!TYPE_IDENTIFIER% (void) {
     macroMyDelete (mInfPtr) ;
     macroMyDelete (mSupPtr) ;
