@@ -2,7 +2,7 @@
 #   AST                                                                                                                *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @listmapDeclarationAST : @semanticDeclarationAST {
+class @listmapDeclarationAST : @semanticDeclarationAST {
   @lstring mListmapTypeName
   @lstring mAssociatedListTypeName
 }
@@ -245,7 +245,7 @@ override method @listmapDeclarationAST semanticAnalysis
 #   CODE GENERATION                                                                                                    *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @listmapTypeForGeneration : @semanticTypeForGeneration {
+class @listmapTypeForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-entry mAssociatedListTypeIndex
   @typedPropertyList mAssociatedListTypedAttributeList
   @unifiedTypeMap-entry mAssociatedListMapElementTypeIndex

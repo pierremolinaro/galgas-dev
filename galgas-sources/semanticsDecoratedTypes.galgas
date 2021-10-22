@@ -40,7 +40,7 @@ proc generateInstructionList
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract shared class @templateInstructionForGeneration {
+abstract class @templateInstructionForGeneration {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -51,7 +51,7 @@ list @templateInstructionListForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract shared class @semanticExpressionForGeneration {
+abstract class @semanticExpressionForGeneration {
   @unifiedTypeMap-entry mResultType
   @location mLocation
 }
@@ -73,7 +73,7 @@ list @semanticExpressionListForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @castInExpressionForGeneration : @semanticExpressionForGeneration {
+class @castInExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mReceiverExpression
   @string mTypeName
   @unifiedTypeMap-entry mCastType
@@ -113,7 +113,7 @@ list @formalInputParameterListForGeneration {
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract shared class @actualParameterForGeneration {
+abstract class @actualParameterForGeneration {
   @unifiedTypeMap-entry mFormalArgumentType
 }
 
@@ -130,13 +130,13 @@ abstract method @actualParameterForGeneration generateActualParameter
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @outputActualParameterForGeneration : @actualParameterForGeneration {
+class @outputActualParameterForGeneration : @actualParameterForGeneration {
   @semanticExpressionForGeneration mOutputActualParameterExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @outputInputActualParameterForGeneration : @actualParameterForGeneration {
+class @outputInputActualParameterForGeneration : @actualParameterForGeneration {
   @string mOutputInputVariableCppName
   @lstringlist mStructAttributeList
   @unifiedTypeMapEntryList mTypeList
@@ -144,13 +144,13 @@ shared class @outputInputActualParameterForGeneration : @actualParameterForGener
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @inputActualParameterForGeneration : @actualParameterForGeneration {
+class @inputActualParameterForGeneration : @actualParameterForGeneration {
   @string mInputActualCppName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @inputJokerParameterForGeneration : @actualParameterForGeneration {
+class @inputJokerParameterForGeneration : @actualParameterForGeneration {
   @string mInputActualCppName
 }
 
@@ -162,7 +162,7 @@ list @actualParameterListForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract shared class @semanticInstructionForGeneration {
+abstract class @semanticInstructionForGeneration {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -182,7 +182,7 @@ list @semanticInstructionListForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @semanticBlockInstructionForGeneration : @semanticInstructionForGeneration {
+class @semanticBlockInstructionForGeneration : @semanticInstructionForGeneration {
   @semanticInstructionListForGeneration mInstructionList
 }
 
@@ -195,7 +195,7 @@ list @listOfSemanticInstructionListForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract shared class @semanticDeclarationForGeneration {
+abstract class @semanticDeclarationForGeneration {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -238,7 +238,7 @@ list @semanticDeclarationListForGeneration {
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract shared class @semanticTypeForGeneration : @semanticDeclarationForGeneration {
+abstract class @semanticTypeForGeneration : @semanticDeclarationForGeneration {
   @unifiedTypeMap-entry mSelfTypeEntry
 }
 
@@ -272,7 +272,7 @@ override getter @semanticTypeForGeneration headerKind -> @headerKind outHeaderKi
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract shared class @semanticDeclarationWithHeaderForGeneration : @semanticDeclarationForGeneration {
+abstract class @semanticDeclarationWithHeaderForGeneration : @semanticDeclarationForGeneration {
   @bool mHasHeader
   @string mImplementationCppFileName
 }
@@ -307,7 +307,7 @@ override getter @semanticDeclarationWithHeaderForGeneration isPredefined -> @boo
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @string mLexiqueName
   @string mHeaderContents
   @string mCppContents
@@ -362,7 +362,7 @@ list @nonTerminalToAddList {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @string mGrammarName
   @string mLexiqueName
   @nonTerminalSymbolMapForGrammarAnalysis mNonTerminalMapForGrammarAnalysis
@@ -380,7 +380,7 @@ shared class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @string mRoutineName
   @formalParameterListForGeneration mFormalArgumentList
 }
@@ -391,7 +391,7 @@ shared class @routinePrototypeDeclarationForGeneration : @semanticDeclarationWit
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @routineImplementationForGeneration : @routinePrototypeDeclarationForGeneration {
+class @routineImplementationForGeneration : @routinePrototypeDeclarationForGeneration {
   @bool mGenerateStatic
   @semanticInstructionListForGeneration mRoutineInstructionList
 }
@@ -402,7 +402,7 @@ shared class @routineImplementationForGeneration : @routinePrototypeDeclarationF
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @string mFunctionName
   @formalInputParameterListForGeneration mFormalArgumentList
   @unifiedTypeMap-entry mReturnType
@@ -414,7 +414,7 @@ shared class @functionPrototypeDeclarationForGeneration : @semanticDeclarationWi
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @functionImplementationForGeneration : @functionPrototypeDeclarationForGeneration {
+class @functionImplementationForGeneration : @functionPrototypeDeclarationForGeneration {
   @string mResultVariableCppName
   @semanticInstructionListForGeneration mFunctionInstructionList
 }
@@ -425,7 +425,7 @@ shared class @functionImplementationForGeneration : @functionPrototypeDeclaratio
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @string mFunctionName
   @unifiedTypeMap-entry mReturnType
   @string mResultVariableCppName
@@ -446,7 +446,7 @@ list @terminalCheckAssignementList {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract shared class @syntaxInstructionForGeneration : @semanticInstructionForGeneration {
+abstract class @syntaxInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
 }
 
@@ -456,7 +456,7 @@ abstract shared class @syntaxInstructionForGeneration : @semanticInstructionForG
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @primitiveTypeForGeneration : @semanticTypeForGeneration {
+class @primitiveTypeForGeneration : @semanticTypeForGeneration {
   @string mPredefinedTypeName
   @predefinedTypeKindEnum mKind
 }
@@ -475,7 +475,7 @@ list @filewrapperTemplateListForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @string mFilewrapperName
   @string mFilewrapperAbsolutePath
   @wrapperFileMap mFilewrapperFileMap
@@ -489,7 +489,7 @@ shared class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHead
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @programComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @programComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @stringset mInclusionSet
   @string mImplementationString
 }

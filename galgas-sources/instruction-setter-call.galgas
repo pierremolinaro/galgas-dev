@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @setterCallInstructionAST : @semanticInstructionAST {
+class @setterCallInstructionAST : @semanticInstructionAST {
   @bool mPrefixedBySelf
   @lstring mReceiverName
   @lstringlist mReceiverStructAttributes
@@ -13,7 +13,7 @@ shared class @setterCallInstructionAST : @semanticInstructionAST {
 
 #·····················································································································*
 
-shared class @selfSetterCallInstructionAST : @semanticInstructionAST {
+class @selfSetterCallInstructionAST : @semanticInstructionAST {
   @lstring mSetterName
   @actualParameterListAST mActualParameterList
 }
@@ -287,7 +287,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
 #! GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @setterCallInstructionForGeneration : @semanticInstructionForGeneration {
+class @setterCallInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @string mReceiverCppName
   @string mReceiverBaseName
@@ -303,7 +303,7 @@ shared class @setterCallInstructionForGeneration : @semanticInstructionForGenera
 
 #·····················································································································*
 
-shared class @selfSetterCallInstructionForGeneration : @semanticInstructionForGeneration {
+class @selfSetterCallInstructionForGeneration : @semanticInstructionForGeneration {
   @string mSelfCppName
   @unifiedTypeMap-entry mReceiverType
   @lstring mSetterName

@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @warningInstructionAST : @semanticInstructionAST {
+class @warningInstructionAST : @semanticInstructionAST {
   @semanticExpressionAST mLocationExpression
   @semanticExpressionAST mMessageExpression
   @fixitListAST mFixitListAST
@@ -84,7 +84,7 @@ override method @warningInstructionAST analyzeSemanticInstruction
 #! GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @warningInstructionForGeneration : @semanticInstructionForGeneration {
+class @warningInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @semanticExpressionForGeneration mReceiverExpression
   @semanticExpressionForGeneration mWarningExpression

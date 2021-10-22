@@ -8183,13 +8183,13 @@ typeComparisonResult GALGAS_lexicalFunctionExpressionAST::objectCompare (const G
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionExpressionAST::GALGAS_lexicalFunctionExpressionAST (void) :
-AC_GALGAS_class (true) {
+AC_GALGAS_class (false) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionExpressionAST::GALGAS_lexicalFunctionExpressionAST (const cPtr_lexicalFunctionExpressionAST * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, true) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalFunctionExpressionAST) ;
 }
 

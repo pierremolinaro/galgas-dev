@@ -1,18 +1,18 @@
 
 
-abstract shared class @cExpression {
+abstract class @cExpression {
 }
 
-shared class @cConst : @cExpression {
+class @cConst : @cExpression {
   @luint mValue
 }
   
-shared class @cAdd : @cExpression {
+class @cAdd : @cExpression {
   @cExpression mLeftExpression
   @cExpression mRightExpression
 }
   
-shared class @cMult : @cExpression {
+class @cMult : @cExpression {
   @cExpression mLeftExpression
   @cExpression mRightExpression
 }

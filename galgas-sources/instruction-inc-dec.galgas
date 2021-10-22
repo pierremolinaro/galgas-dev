@@ -9,7 +9,7 @@ enum @incDecKind {
 
 #·····················································································································*
 
-shared class @incDecInstructionAST : @semanticInstructionAST {
+class @incDecInstructionAST : @semanticInstructionAST {
   @bool mPrefixedBySelf
   @lstring mReceiverName
   @lstringlist mStructAttributeList
@@ -18,7 +18,7 @@ shared class @incDecInstructionAST : @semanticInstructionAST {
 
 #·····················································································································*
 
-shared class @incDecNoOVFInstructionAST : @semanticInstructionAST {
+class @incDecNoOVFInstructionAST : @semanticInstructionAST {
   @bool mPrefixedBySelf
   @lstring mReceiverName
   @lstringlist mStructAttributeList
@@ -27,13 +27,13 @@ shared class @incDecNoOVFInstructionAST : @semanticInstructionAST {
 
 #·····················································································································*
 
-shared class @selfIncDecInstructionAST : @semanticInstructionAST {
+class @selfIncDecInstructionAST : @semanticInstructionAST {
   @incDecKind mKind
 }
 
 #·····················································································································*
 
-shared class @selfIncDecNoOVFInstructionAST : @semanticInstructionAST {
+class @selfIncDecNoOVFInstructionAST : @semanticInstructionAST {
   @incDecKind mKind
 }
 
@@ -333,7 +333,7 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
 #! GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @incDecInstructionForGeneration : @semanticInstructionForGeneration {
+class @incDecInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @string mReceiverCppName
   @unifiedTypeMap-entry mReceiverType
@@ -343,7 +343,7 @@ shared class @incDecInstructionForGeneration : @semanticInstructionForGeneration
 
 #·····················································································································*
 
-shared class @incDecNoOVFInstructionForGeneration : @semanticInstructionForGeneration {
+class @incDecNoOVFInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @string mReceiverCppName
   @unifiedTypeMap-entry mReceiverType

@@ -410,50 +410,50 @@ method @unifiedTypeMap-entry addHeaderFileName1 ?!@stringset ioInclusions {
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract shared class @predefinedTypeAST : @semanticDeclarationAST {
+abstract class @predefinedTypeAST : @semanticDeclarationAST {
   @string mPredefinedTypeName
   @predefinedTypeKindEnum mKind
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @applicationPredefinedTypeAST : @predefinedTypeAST {}
+class @applicationPredefinedTypeAST : @predefinedTypeAST {}
 
-shared class @bigintPredefinedTypeAST : @predefinedTypeAST {}
+class @bigintPredefinedTypeAST : @predefinedTypeAST {}
 
-shared class @objectPredefinedTypeAST : @predefinedTypeAST {}
+class @objectPredefinedTypeAST : @predefinedTypeAST {}
 
-shared class @filewrapperPredefinedTypeAST : @predefinedTypeAST {}
+class @filewrapperPredefinedTypeAST : @predefinedTypeAST {}
 
-shared class @binarysetPredefinedTypeAST : @predefinedTypeAST {}
+class @binarysetPredefinedTypeAST : @predefinedTypeAST {}
 
-shared class @boolPredefinedTypeAST : @predefinedTypeAST {}
+class @boolPredefinedTypeAST : @predefinedTypeAST {}
 
-shared class @uintPredefinedTypeAST : @predefinedTypeAST {}
+class @uintPredefinedTypeAST : @predefinedTypeAST {}
 
-shared class @uint64PredefinedTypeAST : @predefinedTypeAST {}
+class @uint64PredefinedTypeAST : @predefinedTypeAST {}
 
-shared class @sintPredefinedTypeAST : @predefinedTypeAST {}
+class @sintPredefinedTypeAST : @predefinedTypeAST {}
 
-shared class @sint64PredefinedTypeAST : @predefinedTypeAST {}
+class @sint64PredefinedTypeAST : @predefinedTypeAST {}
 
-shared class @charPredefinedTypeAST : @predefinedTypeAST {}
+class @charPredefinedTypeAST : @predefinedTypeAST {}
 
-shared class @doublePredefinedTypeAST : @predefinedTypeAST {}
+class @doublePredefinedTypeAST : @predefinedTypeAST {}
 
-shared class @stringPredefinedTypeAST : @predefinedTypeAST {}
+class @stringPredefinedTypeAST : @predefinedTypeAST {}
 
-shared class @locationPredefinedTypeAST : @predefinedTypeAST {}
+class @locationPredefinedTypeAST : @predefinedTypeAST {}
 
-shared class @stringsetPredefinedTypeAST : @predefinedTypeAST {}
+class @stringsetPredefinedTypeAST : @predefinedTypeAST {}
 
-shared class @functionPredefinedTypeAST : @predefinedTypeAST {}
+class @functionPredefinedTypeAST : @predefinedTypeAST {}
 
-shared class @typePredefinedTypeAST : @predefinedTypeAST {}
+class @typePredefinedTypeAST : @predefinedTypeAST {}
 
-shared class @dataPredefinedTypeAST : @predefinedTypeAST {}
+class @dataPredefinedTypeAST : @predefinedTypeAST {}
 
-shared class @timerPredefinedTypeAST : @predefinedTypeAST {}
+class @timerPredefinedTypeAST : @predefinedTypeAST {}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

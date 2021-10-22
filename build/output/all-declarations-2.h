@@ -667,10 +667,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionList
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalFunctionExpressionAST : public AC_GALGAS_class {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalFunctionExpressionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalFunctionExpressionAST * ptr (void) const { return (const cPtr_lexicalFunctionExpressionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4908,10 +4908,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTagMap_2D_el
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalFunctionOrExpressionAST : public GALGAS_lexicalFunctionExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalFunctionOrExpressionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalFunctionOrExpressionAST * ptr (void) const { return (const cPtr_lexicalFunctionOrExpressionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer

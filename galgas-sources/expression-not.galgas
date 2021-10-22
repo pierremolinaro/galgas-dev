@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @notExpressionAST : @semanticExpressionAST {
+class @notExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mExpression
 }
@@ -79,7 +79,7 @@ override method @notExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @notExpressionForGeneration : @semanticExpressionForGeneration {
+class @notExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mExpression
 }
 

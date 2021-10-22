@@ -2,7 +2,7 @@
 #   AST                                                                                                                *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @structDeclarationAST : @semanticDeclarationAST {
+class @structDeclarationAST : @semanticDeclarationAST {
   @lstring mStructTypeName
   @propertyInCollectionListAST mStructurePropertyList
   @string mEnumeratedElementTypeName # Empty string if not enumerable
@@ -263,7 +263,7 @@ override method @structDeclarationAST semanticAnalysis
 #   CODE GENERATION                                                                                                    *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @structTypeForGeneration : @semanticTypeForGeneration {
+class @structTypeForGeneration : @semanticTypeForGeneration {
   @typedPropertyList mTypedPropertyList
 }
 

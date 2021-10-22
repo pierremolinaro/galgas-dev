@@ -107,13 +107,13 @@ class cParser_galgas_33_ParameterArgumentSyntax {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_inputActualExistingVariableParameterAST : public GALGAS_actualParameterAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_inputActualExistingVariableParameterAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_inputActualExistingVariableParameterAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_inputActualExistingVariableParameterAST * ptr (void) const { return (const cPtr_inputActualExistingVariableParameterAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -207,13 +207,13 @@ class cPtr_inputActualExistingVariableParameterAST : public cPtr_actualParameter
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_inputActualNewConstantParameterAST : public GALGAS_actualParameterAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_inputActualNewConstantParameterAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_inputActualNewConstantParameterAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_inputActualNewConstantParameterAST * ptr (void) const { return (const cPtr_inputActualNewConstantParameterAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -327,13 +327,13 @@ class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_inputActualNewVariableParameterAST : public GALGAS_actualParameterAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_inputActualNewVariableParameterAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_inputActualNewVariableParameterAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_inputActualNewVariableParameterAST * ptr (void) const { return (const cPtr_inputActualNewVariableParameterAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -437,13 +437,13 @@ class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_inputActualSelfPropertyParameterAST : public GALGAS_actualParameterAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_inputActualSelfPropertyParameterAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_inputActualSelfPropertyParameterAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_inputActualSelfPropertyParameterAST * ptr (void) const { return (const cPtr_inputActualSelfPropertyParameterAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -537,13 +537,13 @@ class cPtr_inputActualSelfPropertyParameterAST : public cPtr_actualParameterAST 
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_inputSingleJokerActualParameterAST : public GALGAS_actualParameterAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_inputSingleJokerActualParameterAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_inputSingleJokerActualParameterAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_inputSingleJokerActualParameterAST * ptr (void) const { return (const cPtr_inputSingleJokerActualParameterAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -627,10 +627,10 @@ class cPtr_inputSingleJokerActualParameterAST : public cPtr_actualParameterAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_outputActualParameterAST : public GALGAS_actualParameterAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_outputActualParameterAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_outputActualParameterAST * ptr (void) const { return (const cPtr_outputActualParameterAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -734,13 +734,13 @@ class cPtr_outputActualParameterAST : public cPtr_actualParameterAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_outputInputActualParameterAST : public GALGAS_actualParameterAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_outputInputActualParameterAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_outputInputActualParameterAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_outputInputActualParameterAST * ptr (void) const { return (const cPtr_outputInputActualParameterAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -844,13 +844,13 @@ class cPtr_outputInputActualParameterAST : public cPtr_actualParameterAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_outputInputSingleJokerParameterAST : public GALGAS_actualParameterAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_outputInputSingleJokerParameterAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_outputInputSingleJokerParameterAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_outputInputSingleJokerParameterAST * ptr (void) const { return (const cPtr_outputInputSingleJokerParameterAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -1796,10 +1796,10 @@ class cParser_galgas_33_InstructionsSyntax {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_assignmentInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_assignmentInstructionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_assignmentInstructionAST * ptr (void) const { return (const cPtr_assignmentInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -1905,10 +1905,10 @@ class cPtr_assignmentInstructionAST : public cPtr_semanticInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_divEqualExpressionInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_divEqualExpressionInstructionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_divEqualExpressionInstructionAST * ptr (void) const { return (const cPtr_divEqualExpressionInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -2024,10 +2024,10 @@ class cPtr_divEqualExpressionInstructionAST : public cPtr_semanticInstructionAST
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_enumeratedCollectionImplicitVarInExpAST : public GALGAS_abstractEnumeratedCollectionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_enumeratedCollectionImplicitVarInExpAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_enumeratedCollectionImplicitVarInExpAST * ptr (void) const { return (const cPtr_enumeratedCollectionImplicitVarInExpAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -2131,10 +2131,10 @@ class cPtr_enumeratedCollectionImplicitVarInExpAST : public cPtr_abstractEnumera
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_enumeratedCollectionVarInExpAST : public GALGAS_abstractEnumeratedCollectionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_enumeratedCollectionVarInExpAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_enumeratedCollectionVarInExpAST * ptr (void) const { return (const cPtr_enumeratedCollectionVarInExpAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -2248,13 +2248,13 @@ class cPtr_enumeratedCollectionVarInExpAST : public cPtr_abstractEnumeratedColle
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_externFunctionDeclarationAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_externFunctionDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_externFunctionDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_externFunctionDeclarationAST * ptr (void) const { return (const cPtr_externFunctionDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -2360,13 +2360,13 @@ class cPtr_externFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_externRoutineDeclarationAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_externRoutineDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_externRoutineDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_externRoutineDeclarationAST * ptr (void) const { return (const cPtr_externRoutineDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -2472,10 +2472,10 @@ class cPtr_externRoutineDeclarationAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_forInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_forInstructionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_forInstructionAST * ptr (void) const { return (const cPtr_forInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -2681,13 +2681,13 @@ class cPtr_forInstructionAST : public cPtr_semanticInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_functionDeclarationAST : public GALGAS_externFunctionDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_functionDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_functionDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_functionDeclarationAST * ptr (void) const { return (const cPtr_functionDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -2819,10 +2819,10 @@ class cPtr_functionDeclarationAST : public cPtr_externFunctionDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_grammarInFileInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_grammarInFileInstructionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_grammarInFileInstructionAST * ptr (void) const { return (const cPtr_grammarInFileInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -2958,10 +2958,10 @@ class cPtr_grammarInFileInstructionAST : public cPtr_semanticInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_grammarInStringInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_grammarInStringInstructionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_grammarInStringInstructionAST * ptr (void) const { return (const cPtr_grammarInStringInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3117,13 +3117,13 @@ class cPtr_grammarInStringInstructionAST : public cPtr_semanticInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : public GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst * ptr (void) const { return (const cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3217,13 +3217,13 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : pu
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar : public GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar * ptr (void) const { return (const cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3317,13 +3317,13 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar : publ
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar : public GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar * ptr (void) const { return (const cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3407,10 +3407,10 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar : public cPtr_
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_incDecInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_incDecInstructionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_incDecInstructionAST * ptr (void) const { return (const cPtr_incDecInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3526,10 +3526,10 @@ class cPtr_incDecInstructionAST : public cPtr_semanticInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_incDecNoOVFInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_incDecNoOVFInstructionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_incDecNoOVFInstructionAST * ptr (void) const { return (const cPtr_incDecNoOVFInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3645,13 +3645,13 @@ class cPtr_incDecNoOVFInstructionAST : public cPtr_semanticInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_inputParameterDeclaredConstant : public GALGAS_abstractInputParameter {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_inputParameterDeclaredConstant (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_inputParameterDeclaredConstant constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_inputParameterDeclaredConstant * ptr (void) const { return (const cPtr_inputParameterDeclaredConstant *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3745,13 +3745,13 @@ class cPtr_inputParameterDeclaredConstant : public cPtr_abstractInputParameter {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_inputParameterDeclaredVariable : public GALGAS_abstractInputParameter {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_inputParameterDeclaredVariable (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_inputParameterDeclaredVariable constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_inputParameterDeclaredVariable * ptr (void) const { return (const cPtr_inputParameterDeclaredVariable *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3845,13 +3845,13 @@ class cPtr_inputParameterDeclaredVariable : public cPtr_abstractInputParameter {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_inputParameterVariable : public GALGAS_abstractInputParameter {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_inputParameterVariable (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_inputParameterVariable constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_inputParameterVariable * ptr (void) const { return (const cPtr_inputParameterVariable *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3935,10 +3935,10 @@ class cPtr_inputParameterVariable : public cPtr_abstractInputParameter {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_localConstantDeclarationWithAssignmentAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_localConstantDeclarationWithAssignmentAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_localConstantDeclarationWithAssignmentAST * ptr (void) const { return (const cPtr_localConstantDeclarationWithAssignmentAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4034,10 +4034,10 @@ class cPtr_localConstantDeclarationWithAssignmentAST : public cPtr_semanticInstr
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_localVariableDeclarationWithAssignmentAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_localVariableDeclarationWithAssignmentAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_localVariableDeclarationWithAssignmentAST * ptr (void) const { return (const cPtr_localVariableDeclarationWithAssignmentAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4133,10 +4133,10 @@ class cPtr_localVariableDeclarationWithAssignmentAST : public cPtr_semanticInstr
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_localVariableOrConstantDeclarationWithAssignmentAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_localVariableOrConstantDeclarationWithAssignmentAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_localVariableOrConstantDeclarationWithAssignmentAST * ptr (void) const { return (const cPtr_localVariableOrConstantDeclarationWithAssignmentAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4252,10 +4252,10 @@ class cPtr_localVariableOrConstantDeclarationWithAssignmentAST : public cPtr_sem
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_methodCallInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_methodCallInstructionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_methodCallInstructionAST * ptr (void) const { return (const cPtr_methodCallInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4361,10 +4361,10 @@ class cPtr_methodCallInstructionAST : public cPtr_semanticInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_minusEqualExpressionInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_minusEqualExpressionInstructionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_minusEqualExpressionInstructionAST * ptr (void) const { return (const cPtr_minusEqualExpressionInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4480,10 +4480,10 @@ class cPtr_minusEqualExpressionInstructionAST : public cPtr_semanticInstructionA
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_mulEqualExpressionInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_mulEqualExpressionInstructionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_mulEqualExpressionInstructionAST * ptr (void) const { return (const cPtr_mulEqualExpressionInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4599,13 +4599,13 @@ class cPtr_mulEqualExpressionInstructionAST : public cPtr_semanticInstructionAST
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_onceFunctionDeclarationAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_onceFunctionDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_onceFunctionDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_onceFunctionDeclarationAST * ptr (void) const { return (const cPtr_onceFunctionDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4751,13 +4751,13 @@ class cPtr_onceFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_plusEqualElementsInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_plusEqualElementsInstructionAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_plusEqualElementsInstructionAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_plusEqualElementsInstructionAST * ptr (void) const { return (const cPtr_plusEqualElementsInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4873,10 +4873,10 @@ class cPtr_plusEqualElementsInstructionAST : public cPtr_semanticInstructionAST 
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_plusEqualExpressionInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_plusEqualExpressionInstructionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_plusEqualExpressionInstructionAST * ptr (void) const { return (const cPtr_plusEqualExpressionInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4992,13 +4992,13 @@ class cPtr_plusEqualExpressionInstructionAST : public cPtr_semanticInstructionAS
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_procCallInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_procCallInstructionAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_procCallInstructionAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_procCallInstructionAST * ptr (void) const { return (const cPtr_procCallInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -5094,13 +5094,13 @@ class cPtr_procCallInstructionAST : public cPtr_semanticInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_procDeclarationAST : public GALGAS_externRoutineDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_procDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_procDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_procDeclarationAST * ptr (void) const { return (const cPtr_procDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -5202,10 +5202,10 @@ class cPtr_procDeclarationAST : public cPtr_externRoutineDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_readAccessWithInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_readAccessWithInstructionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_readAccessWithInstructionAST * ptr (void) const { return (const cPtr_readAccessWithInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -5381,10 +5381,10 @@ class cPtr_readAccessWithInstructionAST : public cPtr_semanticInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_readWriteAccessWithInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_readWriteAccessWithInstructionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_readWriteAccessWithInstructionAST * ptr (void) const { return (const cPtr_readWriteAccessWithInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -5580,10 +5580,10 @@ class cPtr_readWriteAccessWithInstructionAST : public cPtr_semanticInstructionAS
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_selfPropertyAssignmentInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_selfPropertyAssignmentInstructionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_selfPropertyAssignmentInstructionAST * ptr (void) const { return (const cPtr_selfPropertyAssignmentInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -5689,13 +5689,13 @@ class cPtr_selfPropertyAssignmentInstructionAST : public cPtr_semanticInstructio
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_selfSetterCallInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_selfSetterCallInstructionAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_selfSetterCallInstructionAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_selfSetterCallInstructionAST * ptr (void) const { return (const cPtr_selfSetterCallInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -5791,13 +5791,13 @@ class cPtr_selfSetterCallInstructionAST : public cPtr_semanticInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_setterCallInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_setterCallInstructionAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_setterCallInstructionAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_setterCallInstructionAST * ptr (void) const { return (const cPtr_setterCallInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -5933,13 +5933,13 @@ class cPtr_setterCallInstructionAST : public cPtr_semanticInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeMethodCallInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_typeMethodCallInstructionAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_typeMethodCallInstructionAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_typeMethodCallInstructionAST * ptr (void) const { return (const cPtr_typeMethodCallInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -6045,13 +6045,13 @@ class cPtr_typeMethodCallInstructionAST : public cPtr_semanticInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_undefinedLocalConstantDeclarationAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_undefinedLocalConstantDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_undefinedLocalConstantDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_undefinedLocalConstantDeclarationAST * ptr (void) const { return (const cPtr_undefinedLocalConstantDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -6155,7 +6155,7 @@ extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_displayUnicodeLe
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams ;
 
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOnNotSharedClassDeclaration ;
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorSharedClassDeclaration ;
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateManyFiles ;
 
@@ -6869,13 +6869,13 @@ class cParser_galgas_33_DeclarationsSyntax {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_abstractExtensionGetterAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_abstractExtensionGetterAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_abstractExtensionGetterAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_abstractExtensionGetterAST * ptr (void) const { return (const cPtr_abstractExtensionGetterAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -6991,13 +6991,13 @@ class cPtr_abstractExtensionGetterAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_abstractExtensionMethodAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_abstractExtensionMethodAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_abstractExtensionMethodAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_abstractExtensionMethodAST * ptr (void) const { return (const cPtr_abstractExtensionMethodAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -7103,13 +7103,13 @@ class cPtr_abstractExtensionMethodAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_abstractExtensionSetterAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_abstractExtensionSetterAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_abstractExtensionSetterAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_abstractExtensionSetterAST * ptr (void) const { return (const cPtr_abstractExtensionSetterAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -7215,13 +7215,13 @@ class cPtr_abstractExtensionSetterAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_arrayDeclarationAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_arrayDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_arrayDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_arrayDeclarationAST * ptr (void) const { return (const cPtr_arrayDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -7327,13 +7327,13 @@ class cPtr_arrayDeclarationAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_boolsetDeclarationAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_boolsetDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_boolsetDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_boolsetDeclarationAST * ptr (void) const { return (const cPtr_boolsetDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -7429,13 +7429,13 @@ class cPtr_boolsetDeclarationAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_classDeclarationAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_classDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_classDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_classDeclarationAST * ptr (void) const { return (const cPtr_classDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -7571,13 +7571,13 @@ class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_dictDeclarationAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_dictDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_dictDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_dictDeclarationAST * ptr (void) const { return (const cPtr_dictDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -7693,13 +7693,13 @@ class cPtr_dictDeclarationAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_enumDeclarationAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_enumDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_enumDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_enumDeclarationAST * ptr (void) const { return (const cPtr_enumDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -7805,13 +7805,13 @@ class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_extensionGetterAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_extensionGetterAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_extensionGetterAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_extensionGetterAST * ptr (void) const { return (const cPtr_extensionGetterAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -7957,13 +7957,13 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_extensionMethodAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_extensionMethodAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_extensionMethodAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_extensionMethodAST * ptr (void) const { return (const cPtr_extensionMethodAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -8089,13 +8089,13 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_extensionSetterAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_extensionSetterAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_extensionSetterAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_extensionSetterAST * ptr (void) const { return (const cPtr_extensionSetterAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -8221,13 +8221,13 @@ class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_externTypeDeclarationAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_externTypeDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_externTypeDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_externTypeDeclarationAST * ptr (void) const { return (const cPtr_externTypeDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -8373,13 +8373,13 @@ class cPtr_externTypeDeclarationAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_filewrapperDeclarationAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_filewrapperDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_filewrapperDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_filewrapperDeclarationAST * ptr (void) const { return (const cPtr_filewrapperDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -8525,13 +8525,13 @@ class cPtr_filewrapperDeclarationAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_graphDeclarationAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_graphDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_graphDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_graphDeclarationAST * ptr (void) const { return (const cPtr_graphDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -8637,13 +8637,13 @@ class cPtr_graphDeclarationAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_listDeclarationAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_listDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_listDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_listDeclarationAST * ptr (void) const { return (const cPtr_listDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -8739,13 +8739,13 @@ class cPtr_listDeclarationAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_listmapDeclarationAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_listmapDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_listmapDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_listmapDeclarationAST * ptr (void) const { return (const cPtr_listmapDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -8841,13 +8841,13 @@ class cPtr_listmapDeclarationAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_localVariableDeclarationAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_localVariableDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_localVariableDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_localVariableDeclarationAST * ptr (void) const { return (const cPtr_localVariableDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -8953,13 +8953,13 @@ class cPtr_localVariableDeclarationAST : public cPtr_semanticInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_mapDeclarationAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_mapDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_mapDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_mapDeclarationAST * ptr (void) const { return (const cPtr_mapDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -9105,13 +9105,13 @@ class cPtr_mapDeclarationAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_mapEntryDeclarationAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_mapEntryDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_mapEntryDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_mapEntryDeclarationAST * ptr (void) const { return (const cPtr_mapEntryDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -9207,13 +9207,13 @@ class cPtr_mapEntryDeclarationAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_overridingAbstractExtensionGetterAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_overridingAbstractExtensionGetterAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_overridingAbstractExtensionGetterAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_overridingAbstractExtensionGetterAST * ptr (void) const { return (const cPtr_overridingAbstractExtensionGetterAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -9329,13 +9329,13 @@ class cPtr_overridingAbstractExtensionGetterAST : public cPtr_semanticDeclaratio
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_overridingAbstractExtensionMethodAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_overridingAbstractExtensionMethodAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_overridingAbstractExtensionMethodAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_overridingAbstractExtensionMethodAST * ptr (void) const { return (const cPtr_overridingAbstractExtensionMethodAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -9441,13 +9441,13 @@ class cPtr_overridingAbstractExtensionMethodAST : public cPtr_semanticDeclaratio
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_overridingAbstractExtensionSetterAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_overridingAbstractExtensionSetterAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_overridingAbstractExtensionSetterAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_overridingAbstractExtensionSetterAST * ptr (void) const { return (const cPtr_overridingAbstractExtensionSetterAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -9553,13 +9553,13 @@ class cPtr_overridingAbstractExtensionSetterAST : public cPtr_semanticDeclaratio
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_overridingExtensionGetterAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_overridingExtensionGetterAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_overridingExtensionGetterAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_overridingExtensionGetterAST * ptr (void) const { return (const cPtr_overridingExtensionGetterAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -9705,13 +9705,13 @@ class cPtr_overridingExtensionGetterAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_overridingExtensionMethodAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_overridingExtensionMethodAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_overridingExtensionMethodAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_overridingExtensionMethodAST * ptr (void) const { return (const cPtr_overridingExtensionMethodAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -9837,13 +9837,13 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_overridingExtensionSetterAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_overridingExtensionSetterAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_overridingExtensionSetterAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_overridingExtensionSetterAST * ptr (void) const { return (const cPtr_overridingExtensionSetterAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -9969,13 +9969,13 @@ class cPtr_overridingExtensionSetterAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_sharedMapDeclarationAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_sharedMapDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_sharedMapDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_sharedMapDeclarationAST * ptr (void) const { return (const cPtr_sharedMapDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -10131,13 +10131,13 @@ class cPtr_sharedMapDeclarationAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_sortedListDeclarationAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_sortedListDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_sortedListDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_sortedListDeclarationAST * ptr (void) const { return (const cPtr_sortedListDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -10243,13 +10243,13 @@ class cPtr_sortedListDeclarationAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_structDeclarationAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_structDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_structDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_structDeclarationAST * ptr (void) const { return (const cPtr_structDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -10913,13 +10913,13 @@ class cParser_galgas_33_LexiqueComponentSyntax {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalAttributeInputArgumentAST : public GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalAttributeInputArgumentAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalAttributeInputArgumentAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalAttributeInputArgumentAST * ptr (void) const { return (const cPtr_lexicalAttributeInputArgumentAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -11003,13 +11003,13 @@ class cPtr_lexicalAttributeInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalAttributeInputOutputArgumentAST : public GALGAS_abstractLexicalRoutineActualArgumentAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalAttributeInputOutputArgumentAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalAttributeInputOutputArgumentAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalAttributeInputOutputArgumentAST * ptr (void) const { return (const cPtr_lexicalAttributeInputOutputArgumentAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -11095,13 +11095,13 @@ class cPtr_lexicalAttributeInputOutputArgumentAST : public cPtr_abstractLexicalR
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalCharacterInputArgumentAST : public GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalCharacterInputArgumentAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalCharacterInputArgumentAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalCharacterInputArgumentAST * ptr (void) const { return (const cPtr_lexicalCharacterInputArgumentAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -11185,13 +11185,13 @@ class cPtr_lexicalCharacterInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalCharacterIntervalMatchAST : public GALGAS_lexicalExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalCharacterIntervalMatchAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalCharacterIntervalMatchAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalCharacterIntervalMatchAST * ptr (void) const { return (const cPtr_lexicalCharacterIntervalMatchAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -11285,13 +11285,13 @@ class cPtr_lexicalCharacterIntervalMatchAST : public cPtr_lexicalExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalCharacterMatchAST : public GALGAS_lexicalExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalCharacterMatchAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalCharacterMatchAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalCharacterMatchAST * ptr (void) const { return (const cPtr_lexicalCharacterMatchAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -11375,13 +11375,13 @@ class cPtr_lexicalCharacterMatchAST : public cPtr_lexicalExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalCharacterSetMatchAST : public GALGAS_lexicalExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalCharacterSetMatchAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalCharacterSetMatchAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalCharacterSetMatchAST * ptr (void) const { return (const cPtr_lexicalCharacterSetMatchAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -11465,13 +11465,13 @@ class cPtr_lexicalCharacterSetMatchAST : public cPtr_lexicalExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalDropInstructionAST : public GALGAS_lexicalInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalDropInstructionAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalDropInstructionAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalDropInstructionAST * ptr (void) const { return (const cPtr_lexicalDropInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -11555,13 +11555,13 @@ class cPtr_lexicalDropInstructionAST : public cPtr_lexicalInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalErrorByDefaultAST : public GALGAS_lexicalSendDefaultActionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalErrorByDefaultAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalErrorByDefaultAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalErrorByDefaultAST * ptr (void) const { return (const cPtr_lexicalErrorByDefaultAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -11645,13 +11645,13 @@ class cPtr_lexicalErrorByDefaultAST : public cPtr_lexicalSendDefaultActionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalErrorInstructionAST : public GALGAS_lexicalInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalErrorInstructionAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalErrorInstructionAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalErrorInstructionAST * ptr (void) const { return (const cPtr_lexicalErrorInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -11735,13 +11735,13 @@ class cPtr_lexicalErrorInstructionAST : public cPtr_lexicalInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalFunctionCallAST : public GALGAS_lexicalFunctionExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalFunctionCallAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalFunctionCallAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalFunctionCallAST * ptr (void) const { return (const cPtr_lexicalFunctionCallAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -11825,13 +11825,13 @@ class cPtr_lexicalFunctionCallAST : public cPtr_lexicalFunctionExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalFunctionCharacterIntervalMatchAST : public GALGAS_lexicalFunctionExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalFunctionCharacterIntervalMatchAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalFunctionCharacterIntervalMatchAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalFunctionCharacterIntervalMatchAST * ptr (void) const { return (const cPtr_lexicalFunctionCharacterIntervalMatchAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -11925,13 +11925,13 @@ class cPtr_lexicalFunctionCharacterIntervalMatchAST : public cPtr_lexicalFunctio
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalFunctionCharacterMatchAST : public GALGAS_lexicalFunctionExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalFunctionCharacterMatchAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalFunctionCharacterMatchAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalFunctionCharacterMatchAST * ptr (void) const { return (const cPtr_lexicalFunctionCharacterMatchAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -12015,13 +12015,13 @@ class cPtr_lexicalFunctionCharacterMatchAST : public cPtr_lexicalFunctionExpress
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalFunctionInputArgumentAST : public GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalFunctionInputArgumentAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalFunctionInputArgumentAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalFunctionInputArgumentAST * ptr (void) const { return (const cPtr_lexicalFunctionInputArgumentAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -12115,13 +12115,13 @@ class cPtr_lexicalFunctionInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalImplicitRuleAST : public GALGAS_abstractLexicalRuleAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalImplicitRuleAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalImplicitRuleAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalImplicitRuleAST * ptr (void) const { return (const cPtr_lexicalImplicitRuleAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -12205,13 +12205,13 @@ class cPtr_lexicalImplicitRuleAST : public cPtr_abstractLexicalRuleAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalRewindInstructionAST : public GALGAS_lexicalInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalRewindInstructionAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalRewindInstructionAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalRewindInstructionAST * ptr (void) const { return (const cPtr_lexicalRewindInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -12305,13 +12305,13 @@ class cPtr_lexicalRewindInstructionAST : public cPtr_lexicalInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalRoutineInstructionAST : public GALGAS_lexicalInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalRoutineInstructionAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalRoutineInstructionAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalRoutineInstructionAST * ptr (void) const { return (const cPtr_lexicalRoutineInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -12415,13 +12415,13 @@ class cPtr_lexicalRoutineInstructionAST : public cPtr_lexicalInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalSendTerminalByDefaultAST : public GALGAS_lexicalSendDefaultActionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalSendTerminalByDefaultAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalSendTerminalByDefaultAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalSendTerminalByDefaultAST * ptr (void) const { return (const cPtr_lexicalSendTerminalByDefaultAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -12505,13 +12505,13 @@ class cPtr_lexicalSendTerminalByDefaultAST : public cPtr_lexicalSendDefaultActio
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalSimpleSendInstructionAST : public GALGAS_lexicalInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalSimpleSendInstructionAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalSimpleSendInstructionAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalSimpleSendInstructionAST * ptr (void) const { return (const cPtr_lexicalSimpleSendInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -12595,13 +12595,13 @@ class cPtr_lexicalSimpleSendInstructionAST : public cPtr_lexicalInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalStringMatchAST : public GALGAS_lexicalExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalStringMatchAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalStringMatchAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalStringMatchAST * ptr (void) const { return (const cPtr_lexicalStringMatchAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -12685,13 +12685,13 @@ class cPtr_lexicalStringMatchAST : public cPtr_lexicalExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalStringNotMatchAST : public GALGAS_lexicalExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalStringNotMatchAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalStringNotMatchAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalStringNotMatchAST * ptr (void) const { return (const cPtr_lexicalStringNotMatchAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -12785,13 +12785,13 @@ class cPtr_lexicalStringNotMatchAST : public cPtr_lexicalExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalTagInstructionAST : public GALGAS_lexicalInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalTagInstructionAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalTagInstructionAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalTagInstructionAST * ptr (void) const { return (const cPtr_lexicalTagInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -12875,13 +12875,13 @@ class cPtr_lexicalTagInstructionAST : public cPtr_lexicalInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalUnsignedInputArgumentAST : public GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalUnsignedInputArgumentAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalUnsignedInputArgumentAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalUnsignedInputArgumentAST * ptr (void) const { return (const cPtr_lexicalUnsignedInputArgumentAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -12965,13 +12965,13 @@ class cPtr_lexicalUnsignedInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalWarningInstructionAST : public GALGAS_lexicalInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexicalWarningInstructionAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexicalWarningInstructionAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexicalWarningInstructionAST * ptr (void) const { return (const cPtr_lexicalWarningInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -13055,13 +13055,13 @@ class cPtr_lexicalWarningInstructionAST : public cPtr_lexicalInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexiqueComponentAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_lexiqueComponentAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexiqueComponentAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_lexiqueComponentAST * ptr (void) const { return (const cPtr_lexiqueComponentAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer

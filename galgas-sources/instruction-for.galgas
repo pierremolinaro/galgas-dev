@@ -9,12 +9,12 @@ list @forInstructionEnumeratedObjectElementListAST {
 
 #·····················································································································*
 
-abstract shared class @abstractEnumeratedCollectionAST {
+abstract class @abstractEnumeratedCollectionAST {
 }
 
 #·····················································································································*
 
-shared class @enumeratedCollectionImplicitVarInExpAST : @abstractEnumeratedCollectionAST {
+class @enumeratedCollectionImplicitVarInExpAST : @abstractEnumeratedCollectionAST {
   @lstring mPrefix
   @semanticExpressionAST mEnumeratedExpression
   @location mEndOfEnumerationExpression
@@ -22,7 +22,7 @@ shared class @enumeratedCollectionImplicitVarInExpAST : @abstractEnumeratedColle
 
 #·····················································································································*
 
-shared class @enumeratedCollectionVarInExpAST : @abstractEnumeratedCollectionAST {
+class @enumeratedCollectionVarInExpAST : @abstractEnumeratedCollectionAST {
   @lstring mEnumerationOptionalTypeName # Empty string if implicit
   @lstring mEnumerationVariable
   @semanticExpressionAST mEnumeratedExpression
@@ -31,7 +31,7 @@ shared class @enumeratedCollectionVarInExpAST : @abstractEnumeratedCollectionAST
 
 #·····················································································································*
 
-shared class @enumeratedCollectionCstListInExpAST : @abstractEnumeratedCollectionAST {
+class @enumeratedCollectionCstListInExpAST : @abstractEnumeratedCollectionAST {
   @forInstructionEnumeratedObjectElementListAST mElementList
   @bool mEndsWithEllipsis
   @semanticExpressionAST mEnumeratedExpression
@@ -47,7 +47,7 @@ list @forInstructionEnumeratedObjectListAST {
 
 #·····················································································································*
 
-shared class @forInstructionAST : @semanticInstructionAST {
+class @forInstructionAST : @semanticInstructionAST {
   @forInstructionEnumeratedObjectListAST mEnumeratedObjectList
   @lstring mIndexVariableName
   @semanticExpressionAST mWhileExpression
@@ -625,7 +625,7 @@ list @forInstructionEnumeratedObjectListForGeneration {
 
 #·····················································································································*
 
-shared class @forInstructionForGeneration : @semanticInstructionForGeneration {
+class @forInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @forInstructionEnumeratedObjectListForGeneration mEnumeratedObjectList
   @string mIndexVariableCppName  # Empty string if no index

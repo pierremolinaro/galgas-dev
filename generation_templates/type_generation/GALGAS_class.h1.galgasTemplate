@@ -5,7 +5,7 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %AC_GALGAS_class% else %GALGAS_%!SUPER_TYPE_IDENTIFIER end% {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
 %if HAS_DEFAULT_CONSTRUCTOR & not IS_ABSTRACT then
@@ -14,7 +14,7 @@ class GALGAS_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %A
 
 %
 end
-%//---
+%//--------------------------------- Embedded object pointer
   public: inline const class cPtr_%!TYPE_IDENTIFIER% * ptr (void) const { return (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer

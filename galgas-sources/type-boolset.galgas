@@ -2,7 +2,7 @@
 #   AST                                                                                                                *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @boolsetDeclarationAST : @semanticDeclarationAST {
+class @boolsetDeclarationAST : @semanticDeclarationAST {
   @lstring mBoolsetTypeName
   @lstringlist mFlagList
 }
@@ -209,7 +209,7 @@ override method @boolsetDeclarationAST semanticAnalysis
 #   CODE GENERATION                                                                                                    *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @boolsetTypeForGeneration : @semanticTypeForGeneration {
+class @boolsetTypeForGeneration : @semanticTypeForGeneration {
   @lstringlist mFlagList
 }
 

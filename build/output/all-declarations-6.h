@@ -3604,10 +3604,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterList
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_actualParameterForGeneration : public AC_GALGAS_class {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_actualParameterForGeneration (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_actualParameterForGeneration * ptr (void) const { return (const cPtr_actualParameterForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3784,13 +3784,13 @@ void callExtensionMethod_generateInstruction (const class cPtr_semanticInstructi
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_semanticBlockInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_semanticBlockInstructionForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_semanticBlockInstructionForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_semanticBlockInstructionForGeneration * ptr (void) const { return (const cPtr_semanticBlockInstructionForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4109,10 +4109,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listOfSemanticInstr
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_semanticDeclarationForGeneration : public AC_GALGAS_class {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_semanticDeclarationForGeneration (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_semanticDeclarationForGeneration * ptr (void) const { return (const cPtr_semanticDeclarationForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -5735,10 +5735,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckAssign
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_syntaxInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_syntaxInstructionForGeneration (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_syntaxInstructionForGeneration * ptr (void) const { return (const cPtr_syntaxInstructionForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -7288,10 +7288,10 @@ void callExtensionMethod_enterParameterInSemanticContext (const class cPtr_actua
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult : public AC_GALGAS_class {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * ptr (void) const { return (const cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer

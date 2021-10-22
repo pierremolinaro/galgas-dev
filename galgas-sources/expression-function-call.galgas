@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @functionCallExpressionAST : @semanticExpressionAST {
+class @functionCallExpressionAST : @semanticExpressionAST {
   @lstring mFunctionName
   @actualOutputExpressionList mExpressionList
 }
@@ -104,7 +104,7 @@ override method @functionCallExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @functionCallExpressionForGeneration : @semanticExpressionForGeneration {
+class @functionCallExpressionForGeneration : @semanticExpressionForGeneration {
   @string mFunctionName
   @semanticExpressionListForGeneration mExpressions
 }

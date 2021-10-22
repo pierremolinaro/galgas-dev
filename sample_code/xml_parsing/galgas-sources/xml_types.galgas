@@ -16,7 +16,7 @@ map @xmlAttributeMap {
 
 #------------------------------------------------------------*
 
-shared class @xmlNode {
+class @xmlNode {
   @xmlNodeType mType
   @string name
   @xmlAttributeMap attributeMap

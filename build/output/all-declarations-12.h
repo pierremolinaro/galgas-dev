@@ -15,13 +15,13 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateInstructionStringAST : public GALGAS_templateInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateInstructionStringAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateInstructionStringAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateInstructionStringAST * ptr (void) const { return (const cPtr_templateInstructionStringAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -295,13 +295,13 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateInstructionStringForGeneration : public GALGAS_templateInstructionForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateInstructionStringForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateInstructionStringForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateInstructionStringForGeneration * ptr (void) const { return (const cPtr_templateInstructionStringForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer

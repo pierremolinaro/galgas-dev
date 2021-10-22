@@ -1,17 +1,17 @@
 
 
-abstract shared class @declarationAST {
+abstract class @declarationAST {
 }
 
 list @declarationListAST {
   @declarationAST mDeclaration
 }
 
-shared class @classWithoutSuperClassAST : @declarationAST {
+class @classWithoutSuperClassAST : @declarationAST {
   @lstring mClassName
 }
 
-shared class @classWithSuperClassAST : @declarationAST {
+class @classWithSuperClassAST : @declarationAST {
   @lstring mClassName
   @lstring mSuperClassName
 }

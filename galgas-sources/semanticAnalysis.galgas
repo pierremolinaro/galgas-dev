@@ -1220,7 +1220,7 @@ list @ruleDeclarationList {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
+class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
   @string mSyntaxComponentName
   @string mLexiqueName
   @nonterminalMap mNonterminalDeclarationMap

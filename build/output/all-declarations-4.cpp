@@ -5910,13 +5910,13 @@ typeComparisonResult GALGAS_semanticExpressionAST::objectCompare (const GALGAS_s
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_semanticExpressionAST::GALGAS_semanticExpressionAST (void) :
-AC_GALGAS_class (true) {
+AC_GALGAS_class (false) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_semanticExpressionAST::GALGAS_semanticExpressionAST (const cPtr_semanticExpressionAST * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, true) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_semanticExpressionAST) ;
 }
 
@@ -6772,13 +6772,13 @@ typeComparisonResult GALGAS_actualParameterAST::objectCompare (const GALGAS_actu
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_actualParameterAST::GALGAS_actualParameterAST (void) :
-AC_GALGAS_class (true) {
+AC_GALGAS_class (false) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_actualParameterAST::GALGAS_actualParameterAST (const cPtr_actualParameterAST * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, true) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_actualParameterAST) ;
 }
 
@@ -7720,13 +7720,13 @@ typeComparisonResult GALGAS_abstractInputParameter::objectCompare (const GALGAS_
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_abstractInputParameter::GALGAS_abstractInputParameter (void) :
-AC_GALGAS_class (true) {
+AC_GALGAS_class (false) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_abstractInputParameter::GALGAS_abstractInputParameter (const cPtr_abstractInputParameter * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, true) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractInputParameter) ;
 }
 
@@ -8414,13 +8414,13 @@ typeComparisonResult GALGAS_syntaxInstructionAST::objectCompare (const GALGAS_sy
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxInstructionAST::GALGAS_syntaxInstructionAST (void) :
-AC_GALGAS_class (true) {
+AC_GALGAS_class (false) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxInstructionAST::GALGAS_syntaxInstructionAST (const cPtr_syntaxInstructionAST * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, true) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_syntaxInstructionAST) ;
 }
 

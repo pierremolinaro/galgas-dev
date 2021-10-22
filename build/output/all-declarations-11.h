@@ -68,13 +68,13 @@ class cParser_galgas_33_OptionComponentSyntax {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_optionComponentDeclarationAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_optionComponentDeclarationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_optionComponentDeclarationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_optionComponentDeclarationAST * ptr (void) const { return (const cPtr_optionComponentDeclarationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -539,10 +539,10 @@ class cParser_galgas_33_SyntaxComponentSyntax {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_nonterminalCallInstruction : public GALGAS_syntaxInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_nonterminalCallInstruction (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_nonterminalCallInstruction * ptr (void) const { return (const cPtr_nonterminalCallInstruction *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -658,10 +658,10 @@ class cPtr_nonterminalCallInstruction : public cPtr_syntaxInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_terminalCheckInstruction : public GALGAS_syntaxInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_terminalCheckInstruction (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_terminalCheckInstruction * ptr (void) const { return (const cPtr_terminalCheckInstruction *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -894,13 +894,13 @@ class cParser_galgas_33_GrammarComponentSyntax {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_galgas_33_GrammarComponentAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_galgas_33_GrammarComponentAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_galgas_33_GrammarComponentAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_galgas_33_GrammarComponentAST * ptr (void) const { return (const cPtr_galgas_33_GrammarComponentAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer

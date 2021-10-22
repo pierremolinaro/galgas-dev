@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @plusEqualElementsInstructionAST : @semanticInstructionAST {
+class @plusEqualElementsInstructionAST : @semanticInstructionAST {
   @bool mPrefixedBySelf
   @lstring mReceiverName
   @lstringlist mStructAttributeList
@@ -11,7 +11,7 @@ shared class @plusEqualElementsInstructionAST : @semanticInstructionAST {
 
 #······················································································································*
 
-shared class @plusEqualExpressionInstructionAST : @semanticInstructionAST {
+class @plusEqualExpressionInstructionAST : @semanticInstructionAST {
   @bool mPrefixedBySelf
   @lstring mReceiverName
   @lstringlist mStructAttributeList
@@ -20,7 +20,7 @@ shared class @plusEqualExpressionInstructionAST : @semanticInstructionAST {
 
 #······················································································································*
 
-shared class @minusEqualExpressionInstructionAST : @semanticInstructionAST {
+class @minusEqualExpressionInstructionAST : @semanticInstructionAST {
   @bool mPrefixedBySelf
   @lstring mReceiverName
   @lstringlist mStructAttributeList
@@ -29,7 +29,7 @@ shared class @minusEqualExpressionInstructionAST : @semanticInstructionAST {
 
 #······················································································································*
 
-shared class @mulEqualExpressionInstructionAST : @semanticInstructionAST {
+class @mulEqualExpressionInstructionAST : @semanticInstructionAST {
   @bool mPrefixedBySelf
   @lstring mReceiverName
   @lstringlist mStructAttributeList
@@ -38,7 +38,7 @@ shared class @mulEqualExpressionInstructionAST : @semanticInstructionAST {
 
 #······················································································································*
 
-shared class @divEqualExpressionInstructionAST : @semanticInstructionAST {
+class @divEqualExpressionInstructionAST : @semanticInstructionAST {
   @bool mPrefixedBySelf
   @lstring mReceiverName
   @lstringlist mStructAttributeList
@@ -578,7 +578,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
 #! GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
+class @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
   @string mReceiverCppName
   @unifiedTypeMap-entry mTargetType
   @string mNameForCheckingFormalParameterUsing
@@ -630,7 +630,7 @@ override method @plusEqualnstructionForGeneration generateInstruction
 
 #·····················································································································*
 
-shared class @opEqualInstructionForGeneration : @semanticInstructionForGeneration {
+class @opEqualInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @unifiedTypeMap-entry mTargetType
   @string mTargetVariableCppName

@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @unaryPlusExpressionAST : @semanticExpressionAST {
+class @unaryPlusExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mExpression
 }

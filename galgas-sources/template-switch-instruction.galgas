@@ -11,7 +11,7 @@ list @templateInstructionSwitchBranchListAST {
 
 #·······················································································································
 
-shared class @templateInstructionSwitchAST : @templateInstructionAST {
+class @templateInstructionSwitchAST : @templateInstructionAST {
   @templateExpressionAST mSwitchExpression
   @location mSwitchExpressionEndLocation
   @templateInstructionSwitchBranchListAST mTemplateInstructionSwitchBranchList
@@ -270,7 +270,7 @@ list @templateInstructionSwitchBranchListForGeneration {
 
 #·······················································································································
 
-shared class @templateInstructionSwitchForGeneration : @templateInstructionForGeneration {
+class @templateInstructionSwitchForGeneration : @templateInstructionForGeneration {
   @unifiedTypeMap-entry mEnumType
   @semanticExpressionForGeneration mSwitchExpression
   @templateInstructionSwitchBranchListForGeneration mTemplateInstructionSwitchBranchList

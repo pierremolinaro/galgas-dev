@@ -8204,13 +8204,13 @@ typeComparisonResult GALGAS_actualParameterForGeneration::objectCompare (const G
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_actualParameterForGeneration::GALGAS_actualParameterForGeneration (void) :
-AC_GALGAS_class (true) {
+AC_GALGAS_class (false) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_actualParameterForGeneration::GALGAS_actualParameterForGeneration (const cPtr_actualParameterForGeneration * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, true) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_actualParameterForGeneration) ;
 }
 

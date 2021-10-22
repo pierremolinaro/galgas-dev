@@ -2,31 +2,31 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @literalUIntExpressionAST : @semanticExpressionAST {
+class @literalUIntExpressionAST : @semanticExpressionAST {
   @luint mValue
 }
 
 #·····················································································································
 
-shared class @literalUInt64ExpressionAST : @semanticExpressionAST {
+class @literalUInt64ExpressionAST : @semanticExpressionAST {
   @luint64 mValue
 }
 
 #·····················································································································
 
-shared class @literalSIntExpressionAST : @semanticExpressionAST {
+class @literalSIntExpressionAST : @semanticExpressionAST {
   @lsint mValue
 }
 
 #·····················································································································
 
-shared class @literalSInt64ExpressionAST : @semanticExpressionAST {
+class @literalSInt64ExpressionAST : @semanticExpressionAST {
   @lsint64 mValue
 }
 
 #·····················································································································
 
-shared class @literalBigIntExpressionAST : @semanticExpressionAST {
+class @literalBigIntExpressionAST : @semanticExpressionAST {
   @lbigint mValue
 }
 
@@ -197,7 +197,7 @@ override method @literalBigIntExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @literalUIntExpressionForGeneration : @semanticExpressionForGeneration {
+class @literalUIntExpressionForGeneration : @semanticExpressionForGeneration {
   @uint mValue
 }
 
@@ -214,7 +214,7 @@ override method @literalUIntExpressionForGeneration generateExpression
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @literalUInt64ExpressionForGeneration : @semanticExpressionForGeneration {
+class @literalUInt64ExpressionForGeneration : @semanticExpressionForGeneration {
   @uint64 mValue
 }
 
@@ -231,7 +231,7 @@ override method @literalUInt64ExpressionForGeneration generateExpression
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @literalSIntExpressionForGeneration : @semanticExpressionForGeneration {
+class @literalSIntExpressionForGeneration : @semanticExpressionForGeneration {
   @sint mValue
 }
 
@@ -248,7 +248,7 @@ override method @literalSIntExpressionForGeneration generateExpression
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @literalSInt64ExpressionForGeneration : @semanticExpressionForGeneration {
+class @literalSInt64ExpressionForGeneration : @semanticExpressionForGeneration {
   @sint64 mValue
 }
 
@@ -265,7 +265,7 @@ override method @literalSInt64ExpressionForGeneration generateExpression
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @literalBigIntExpressionForGeneration : @semanticExpressionForGeneration {
+class @literalBigIntExpressionForGeneration : @semanticExpressionForGeneration {
   @bigint mValue
 }
 

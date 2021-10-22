@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @multiplicationExpressionAST : @semanticExpressionAST {
+class @multiplicationExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
@@ -10,7 +10,7 @@ shared class @multiplicationExpressionAST : @semanticExpressionAST {
 
 #·······················································································································
 
-shared class @multiplicationExpressionNoOverflowAST : @semanticExpressionAST {
+class @multiplicationExpressionNoOverflowAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
@@ -18,7 +18,7 @@ shared class @multiplicationExpressionNoOverflowAST : @semanticExpressionAST {
 
 #·······················································································································
 
-shared class @divisionExpressionAST : @semanticExpressionAST {
+class @divisionExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
@@ -26,7 +26,7 @@ shared class @divisionExpressionAST : @semanticExpressionAST {
 
 #·······················································································································
 
-shared class @divisionExpressionNoOverflowAST : @semanticExpressionAST {
+class @divisionExpressionNoOverflowAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
@@ -34,7 +34,7 @@ shared class @divisionExpressionNoOverflowAST : @semanticExpressionAST {
 
 #·······················································································································
 
-shared class @moduloExpressionAST : @semanticExpressionAST {
+class @moduloExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression

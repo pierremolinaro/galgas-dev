@@ -12311,11 +12311,11 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams ("ga
                                          "emit-syntax-diagrams",
                                          "Emit grammar syntax diagrams in TEX files") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOnNotSharedClassDeclaration ("galgas_cli_options",
-                                         "errorOnNotSharedClassDeclaration",
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorSharedClassDeclaration ("galgas_cli_options",
+                                         "errorSharedClassDeclaration",
                                          0,
-                                         "error-on-not-shared-class-declaration",
-                                         "'shared class' declaration is required") ;
+                                         "error-shared-class-declaration",
+                                         "'shared class' declaration is invalid") ;
 
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateManyFiles ("galgas_cli_options",
                                          "generateManyFiles",

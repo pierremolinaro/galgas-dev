@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @orExpressionAST : @semanticExpressionAST {
+class @orExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
@@ -10,7 +10,7 @@ shared class @orExpressionAST : @semanticExpressionAST {
 
 #·····················································································································
 
-shared class @orShortExpressionAST : @semanticExpressionAST {
+class @orShortExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
@@ -18,7 +18,7 @@ shared class @orShortExpressionAST : @semanticExpressionAST {
 
 #·····················································································································
 
-shared class @xorExpressionAST : @semanticExpressionAST {
+class @xorExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
@@ -26,7 +26,7 @@ shared class @xorExpressionAST : @semanticExpressionAST {
 
 #·····················································································································
 
-shared class @closedSliceExpressionAST : @semanticExpressionAST {
+class @closedSliceExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
@@ -34,7 +34,7 @@ shared class @closedSliceExpressionAST : @semanticExpressionAST {
 
 #·····················································································································
 
-shared class @openedSliceExpressionAST : @semanticExpressionAST {
+class @openedSliceExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
@@ -369,21 +369,21 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @orShortExpressionForGeneration : @semanticExpressionForGeneration {
+class @orShortExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mLeftExpression
   @semanticExpressionForGeneration mRightExpression
 }
 
 #·····················································································································
 
-shared class @openedSliceExpressionForGeneration : @semanticExpressionForGeneration {
+class @openedSliceExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mLeftExpression
   @semanticExpressionForGeneration mRightExpression
 }
 
 #·····················································································································
 
-shared class @closedSliceExpressionForGeneration : @semanticExpressionForGeneration {
+class @closedSliceExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mLeftExpression
   @semanticExpressionForGeneration mRightExpression
 }

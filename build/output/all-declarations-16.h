@@ -15,10 +15,10 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_terminalCheckInstructionForGeneration : public GALGAS_syntaxInstructionForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_terminalCheckInstructionForGeneration (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_terminalCheckInstructionForGeneration * ptr (void) const { return (const cPtr_terminalCheckInstructionForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -154,13 +154,13 @@ class cPtr_terminalCheckInstructionForGeneration : public cPtr_syntaxInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_terminalInstructionForGrammarAnalysis : public GALGAS_abstractSyntaxInstructionForGrammarAnalysis {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_terminalInstructionForGrammarAnalysis (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_terminalInstructionForGrammarAnalysis constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_terminalInstructionForGrammarAnalysis * ptr (void) const { return (const cPtr_terminalInstructionForGrammarAnalysis *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -223,13 +223,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_nonTerminalInstructionForGrammarAnalysis : public GALGAS_abstractSyntaxInstructionForGrammarAnalysis {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_nonTerminalInstructionForGrammarAnalysis (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_nonTerminalInstructionForGrammarAnalysis constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_nonTerminalInstructionForGrammarAnalysis * ptr (void) const { return (const cPtr_nonTerminalInstructionForGrammarAnalysis *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer

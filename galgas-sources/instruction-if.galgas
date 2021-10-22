@@ -36,7 +36,7 @@ list @ifExpressionList {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @ifInstructionAST : @semanticInstructionAST {
+class @ifInstructionAST : @semanticInstructionAST {
   @ifExpressionList mExpressions
   @semanticInstructionListAST m_then_instructionList
   @location mEndOf_then_branch
@@ -532,7 +532,7 @@ list @ifTestListForGeneration {
 
 #·······················································································································
 
-shared class @ifInstructionForGeneration : @semanticInstructionForGeneration {
+class @ifInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @ifTestListForGeneration mExpressions
   @semanticInstructionListForGeneration m_then_instructionList

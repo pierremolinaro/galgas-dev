@@ -7989,13 +7989,13 @@ typeComparisonResult GALGAS_semanticExpressionForGeneration::objectCompare (cons
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_semanticExpressionForGeneration::GALGAS_semanticExpressionForGeneration (void) :
-AC_GALGAS_class (true) {
+AC_GALGAS_class (false) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_semanticExpressionForGeneration::GALGAS_semanticExpressionForGeneration (const cPtr_semanticExpressionForGeneration * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, true) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_semanticExpressionForGeneration) ;
 }
 

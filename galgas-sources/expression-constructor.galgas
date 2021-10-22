@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @constructorExpressionAST : @semanticExpressionAST {
+class @constructorExpressionAST : @semanticExpressionAST {
   @lstring mTypeName
   @lstring mConstructorName
   @actualOutputExpressionList mExpressions
@@ -10,7 +10,7 @@ shared class @constructorExpressionAST : @semanticExpressionAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @defaultConstructorExpressionAST : @semanticExpressionAST {
+class @defaultConstructorExpressionAST : @semanticExpressionAST {
   @lstring mTypeName
 }
 
@@ -236,7 +236,7 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @constructorExpressionForGeneration : @semanticExpressionForGeneration {
+class @constructorExpressionForGeneration : @semanticExpressionForGeneration {
   @unifiedTypeMap-entry mConstructorType
   @string mConstructorName
   @semanticExpressionListForGeneration mEffectiveParameterList
@@ -289,7 +289,7 @@ override method @constructorExpressionForGeneration generateExpression
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @defaultConstructorExpressionForGeneration : @semanticExpressionForGeneration {
+class @defaultConstructorExpressionForGeneration : @semanticExpressionForGeneration {
 }
 
 #·····················································································································

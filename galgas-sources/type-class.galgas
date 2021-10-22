@@ -2,7 +2,7 @@
 #   AST                                                                                                                *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @classDeclarationAST : @semanticDeclarationAST {
+class @classDeclarationAST : @semanticDeclarationAST {
   @bool mIsAbstract
   @bool mIsShared
   @lstring mClassTypeName
@@ -38,8 +38,8 @@ syntax extension galgas3DeclarationsSyntax {
       end
     end
     $class$
-    if [option galgas_cli_options.errorOnNotSharedClassDeclaration value] & not isShared then
-      error .here : "not shared"
+    if [option galgas_cli_options.errorSharedClassDeclaration value] & isShared then
+      error .here : "shared"
     end
     $@type$ ?let @lstring className indexing classDefinition
     @lstring mSuperClassName # Empty if no super class
@@ -475,7 +475,7 @@ override method @classDeclarationAST semanticAnalysis
 #   CODE GENERATION                                                                                                    *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @classTypeForGeneration : @semanticTypeForGeneration {
+class @classTypeForGeneration : @semanticTypeForGeneration {
   @bool mIsAbstract
   @bool mIsShared
   @unifiedTypeMap-entry mSuperClass # Null if no super class

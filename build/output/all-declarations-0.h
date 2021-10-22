@@ -285,10 +285,10 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateInstructionAST : public AC_GALGAS_class {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateInstructionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateInstructionAST * ptr (void) const { return (const cPtr_templateInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -559,10 +559,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateExpressionAST : public AC_GALGAS_class {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateExpressionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateExpressionAST * ptr (void) const { return (const cPtr_templateExpressionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -891,10 +891,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateExpressionL
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateAndOperationAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateAndOperationAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateAndOperationAST * ptr (void) const { return (const cPtr_templateAndOperationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -998,10 +998,10 @@ class cPtr_templateAndOperationAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateOrOperationAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateOrOperationAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateOrOperationAST * ptr (void) const { return (const cPtr_templateOrOperationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -1105,10 +1105,10 @@ class cPtr_templateOrOperationAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateXorOperationAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateXorOperationAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateXorOperationAST * ptr (void) const { return (const cPtr_templateXorOperationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -1212,13 +1212,13 @@ class cPtr_templateXorOperationAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateTrueBoolAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateTrueBoolAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateTrueBoolAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateTrueBoolAST * ptr (void) const { return (const cPtr_templateTrueBoolAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -1302,13 +1302,13 @@ class cPtr_templateTrueBoolAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateFalseBoolAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateFalseBoolAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateFalseBoolAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateFalseBoolAST * ptr (void) const { return (const cPtr_templateFalseBoolAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -1392,10 +1392,10 @@ class cPtr_templateFalseBoolAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateNotOperatorAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateNotOperatorAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateNotOperatorAST * ptr (void) const { return (const cPtr_templateNotOperatorAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -1489,10 +1489,10 @@ class cPtr_templateNotOperatorAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateLogicalNegateAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateLogicalNegateAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateLogicalNegateAST * ptr (void) const { return (const cPtr_templateLogicalNegateAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -1666,10 +1666,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dynamicTypeComparis
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateAddOperationAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateAddOperationAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateAddOperationAST * ptr (void) const { return (const cPtr_templateAddOperationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -1773,10 +1773,10 @@ class cPtr_templateAddOperationAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateSubOperationAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateSubOperationAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateSubOperationAST * ptr (void) const { return (const cPtr_templateSubOperationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -1880,10 +1880,10 @@ class cPtr_templateSubOperationAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateMultiplyOperationAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateMultiplyOperationAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateMultiplyOperationAST * ptr (void) const { return (const cPtr_templateMultiplyOperationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -1987,10 +1987,10 @@ class cPtr_templateMultiplyOperationAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateDivideOperationAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateDivideOperationAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateDivideOperationAST * ptr (void) const { return (const cPtr_templateDivideOperationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -2094,10 +2094,10 @@ class cPtr_templateDivideOperationAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateModuloOperationAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateModuloOperationAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateModuloOperationAST * ptr (void) const { return (const cPtr_templateModuloOperationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -2201,10 +2201,10 @@ class cPtr_templateModuloOperationAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateUnaryMinusOperationAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateUnaryMinusOperationAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateUnaryMinusOperationAST * ptr (void) const { return (const cPtr_templateUnaryMinusOperationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -2298,10 +2298,10 @@ class cPtr_templateUnaryMinusOperationAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateEqualTestAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateEqualTestAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateEqualTestAST * ptr (void) const { return (const cPtr_templateEqualTestAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -2405,10 +2405,10 @@ class cPtr_templateEqualTestAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateNonEqualTestAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateNonEqualTestAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateNonEqualTestAST * ptr (void) const { return (const cPtr_templateNonEqualTestAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -2512,10 +2512,10 @@ class cPtr_templateNonEqualTestAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateStrictInfTestAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateStrictInfTestAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateStrictInfTestAST * ptr (void) const { return (const cPtr_templateStrictInfTestAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -2619,10 +2619,10 @@ class cPtr_templateStrictInfTestAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateInfOrEqualTestAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateInfOrEqualTestAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateInfOrEqualTestAST * ptr (void) const { return (const cPtr_templateInfOrEqualTestAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -2726,10 +2726,10 @@ class cPtr_templateInfOrEqualTestAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateStrictSupTestAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateStrictSupTestAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateStrictSupTestAST * ptr (void) const { return (const cPtr_templateStrictSupTestAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -2833,10 +2833,10 @@ class cPtr_templateStrictSupTestAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateSupOrEqualTestAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateSupOrEqualTestAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateSupOrEqualTestAST * ptr (void) const { return (const cPtr_templateSupOrEqualTestAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -2940,10 +2940,10 @@ class cPtr_templateSupOrEqualTestAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateLeftShiftOperationAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateLeftShiftOperationAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateLeftShiftOperationAST * ptr (void) const { return (const cPtr_templateLeftShiftOperationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3047,10 +3047,10 @@ class cPtr_templateLeftShiftOperationAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateRightShiftOperationAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateRightShiftOperationAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateRightShiftOperationAST * ptr (void) const { return (const cPtr_templateRightShiftOperationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3154,10 +3154,10 @@ class cPtr_templateRightShiftOperationAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateInstructionExpressionAST : public GALGAS_templateInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateInstructionExpressionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateInstructionExpressionAST * ptr (void) const { return (const cPtr_templateInstructionExpressionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3251,10 +3251,10 @@ class cPtr_templateInstructionExpressionAST : public cPtr_templateInstructionAST
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateBlockInstructionAST : public GALGAS_templateInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateBlockInstructionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateBlockInstructionAST * ptr (void) const { return (const cPtr_templateBlockInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3358,13 +3358,13 @@ class cPtr_templateBlockInstructionAST : public cPtr_templateInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateInstructionGetColumnLocationAST : public GALGAS_templateInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateInstructionGetColumnLocationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateInstructionGetColumnLocationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateInstructionGetColumnLocationAST * ptr (void) const { return (const cPtr_templateInstructionGetColumnLocationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3438,13 +3438,13 @@ class cPtr_templateInstructionGetColumnLocationAST : public cPtr_templateInstruc
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateInstructionGotoColumnLocationAST : public GALGAS_templateInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateInstructionGotoColumnLocationAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateInstructionGotoColumnLocationAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateInstructionGotoColumnLocationAST * ptr (void) const { return (const cPtr_templateInstructionGotoColumnLocationAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3750,13 +3750,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateInstructionIfAST : public GALGAS_templateInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateInstructionIfAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateInstructionIfAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateInstructionIfAST * ptr (void) const { return (const cPtr_templateInstructionIfAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4161,10 +4161,10 @@ class cParser_templateSyntax {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_structFieldAccessTemplateExpressionAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_structFieldAccessTemplateExpressionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_structFieldAccessTemplateExpressionAST * ptr (void) const { return (const cPtr_structFieldAccessTemplateExpressionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4268,13 +4268,13 @@ class cPtr_structFieldAccessTemplateExpressionAST : public cPtr_templateExpressi
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateConstructorAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateConstructorAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateConstructorAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateConstructorAST * ptr (void) const { return (const cPtr_templateConstructorAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4378,10 +4378,10 @@ class cPtr_templateConstructorAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateExtensionTemplateCallAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateExtensionTemplateCallAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateExtensionTemplateCallAST * ptr (void) const { return (const cPtr_templateExtensionTemplateCallAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4485,13 +4485,13 @@ class cPtr_templateExtensionTemplateCallAST : public cPtr_templateExpressionAST 
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateFileWrapperTemplateCallAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateFileWrapperTemplateCallAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateFileWrapperTemplateCallAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateFileWrapperTemplateCallAST * ptr (void) const { return (const cPtr_templateFileWrapperTemplateCallAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4595,13 +4595,13 @@ class cPtr_templateFileWrapperTemplateCallAST : public cPtr_templateExpressionAS
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateFunctionCallAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateFunctionCallAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateFunctionCallAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateFunctionCallAST * ptr (void) const { return (const cPtr_templateFunctionCallAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4695,10 +4695,10 @@ class cPtr_templateFunctionCallAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateGetterCallInExpressionAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateGetterCallInExpressionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateGetterCallInExpressionAST * ptr (void) const { return (const cPtr_templateGetterCallInExpressionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4802,10 +4802,10 @@ class cPtr_templateGetterCallInExpressionAST : public cPtr_templateExpressionAST
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateInstructionForeachAST : public GALGAS_templateInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateInstructionForeachAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateInstructionForeachAST * ptr (void) const { return (const cPtr_templateInstructionForeachAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4959,10 +4959,10 @@ class cPtr_templateInstructionForeachAST : public cPtr_templateInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateInstructionSwitchAST : public GALGAS_templateInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateInstructionSwitchAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateInstructionSwitchAST * ptr (void) const { return (const cPtr_templateInstructionSwitchAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -5257,13 +5257,13 @@ class cPtr_templateInstructionSwitchAST : public cPtr_templateInstructionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateLiteralCharExpressionAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateLiteralCharExpressionAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateLiteralCharExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateLiteralCharExpressionAST * ptr (void) const { return (const cPtr_templateLiteralCharExpressionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -5347,13 +5347,13 @@ class cPtr_templateLiteralCharExpressionAST : public cPtr_templateExpressionAST 
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateLiteralDoubleExpressionAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateLiteralDoubleExpressionAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateLiteralDoubleExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateLiteralDoubleExpressionAST * ptr (void) const { return (const cPtr_templateLiteralDoubleExpressionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -5437,13 +5437,13 @@ class cPtr_templateLiteralDoubleExpressionAST : public cPtr_templateExpressionAS
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateLiteralSIntExpressionAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateLiteralSIntExpressionAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateLiteralSIntExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateLiteralSIntExpressionAST * ptr (void) const { return (const cPtr_templateLiteralSIntExpressionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -5527,13 +5527,13 @@ class cPtr_templateLiteralSIntExpressionAST : public cPtr_templateExpressionAST 
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateLiteralSInt_36__34_ExpressionAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateLiteralSInt_36__34_ExpressionAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateLiteralSInt_36__34_ExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateLiteralSInt_36__34_ExpressionAST * ptr (void) const { return (const cPtr_templateLiteralSInt_36__34_ExpressionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -5617,13 +5617,13 @@ class cPtr_templateLiteralSInt_36__34_ExpressionAST : public cPtr_templateExpres
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateLiteralStringExpressionAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateLiteralStringExpressionAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateLiteralStringExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateLiteralStringExpressionAST * ptr (void) const { return (const cPtr_templateLiteralStringExpressionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -5717,13 +5717,13 @@ class cPtr_templateLiteralStringExpressionAST : public cPtr_templateExpressionAS
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateLiteralUIntExpressionAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateLiteralUIntExpressionAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateLiteralUIntExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateLiteralUIntExpressionAST * ptr (void) const { return (const cPtr_templateLiteralUIntExpressionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -5807,13 +5807,13 @@ class cPtr_templateLiteralUIntExpressionAST : public cPtr_templateExpressionAST 
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateLiteralUInt_36__34_ExpressionAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateLiteralUInt_36__34_ExpressionAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateLiteralUInt_36__34_ExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateLiteralUInt_36__34_ExpressionAST * ptr (void) const { return (const cPtr_templateLiteralUInt_36__34_ExpressionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -5897,13 +5897,13 @@ class cPtr_templateLiteralUInt_36__34_ExpressionAST : public cPtr_templateExpres
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateOptionAccessAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateOptionAccessAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateOptionAccessAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateOptionAccessAST * ptr (void) const { return (const cPtr_templateOptionAccessAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -6007,10 +6007,10 @@ class cPtr_templateOptionAccessAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateTestDynamicClassAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateTestDynamicClassAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateTestDynamicClassAST * ptr (void) const { return (const cPtr_templateTestDynamicClassAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -6124,13 +6124,13 @@ class cPtr_templateTestDynamicClassAST : public cPtr_templateExpressionAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateVarInExpressionAST : public GALGAS_templateExpressionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateVarInExpressionAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateVarInExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateVarInExpressionAST * ptr (void) const { return (const cPtr_templateVarInExpressionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -6396,10 +6396,10 @@ void routine_enterTemplateString (class GALGAS_templateInstructionListAST & ioAr
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateInstructionForGeneration : public AC_GALGAS_class {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateInstructionForGeneration (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateInstructionForGeneration * ptr (void) const { return (const cPtr_templateInstructionForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -6670,13 +6670,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateInstructionGetColumnLocationForGeneration : public GALGAS_templateInstructionForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateInstructionGetColumnLocationForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateInstructionGetColumnLocationForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateInstructionGetColumnLocationForGeneration * ptr (void) const { return (const cPtr_templateInstructionGetColumnLocationForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -6750,13 +6750,13 @@ class cPtr_templateInstructionGetColumnLocationForGeneration : public cPtr_templ
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateInstructionGotoColumnLocationForGeneration : public GALGAS_templateInstructionForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateInstructionGotoColumnLocationForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateInstructionGotoColumnLocationForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateInstructionGotoColumnLocationForGeneration * ptr (void) const { return (const cPtr_templateInstructionGotoColumnLocationForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -6983,10 +6983,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_semanticExpressionForGeneration : public AC_GALGAS_class {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_semanticExpressionForGeneration (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_semanticExpressionForGeneration * ptr (void) const { return (const cPtr_semanticExpressionForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -7292,13 +7292,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateInstructionIfForGeneration : public GALGAS_templateInstructionForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_templateInstructionIfForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_templateInstructionIfForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_templateInstructionIfForGeneration * ptr (void) const { return (const cPtr_templateInstructionIfForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer

@@ -2,7 +2,7 @@
 #   AST                                                                                                                *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @dictDeclarationAST : @semanticDeclarationAST {
+class @dictDeclarationAST : @semanticDeclarationAST {
   @lstring mDictTypeName
   @lstring mKeyTypeName
   @lstringlist mAttributeList
@@ -409,7 +409,7 @@ override method @dictDeclarationAST semanticAnalysis
 #   CODE GENERATION                                                                                                    *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @dictTypeForGeneration : @semanticTypeForGeneration {
+class @dictTypeForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-entry mElementTypeEntry
   @lstring mDictTypeName
   @typedPropertyList mTypedAttributeList

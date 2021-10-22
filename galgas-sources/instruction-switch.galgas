@@ -19,7 +19,7 @@ list @switchBranchesAST {
 
 #·······················································································································
 
-shared class @switchInstructionAST : @semanticInstructionAST {
+class @switchInstructionAST : @semanticInstructionAST {
   @semanticExpressionAST mSwitchExpression
   @location mEndOfSwitchExpression
   @switchBranchesAST mBranches
@@ -267,7 +267,7 @@ list @switchBranchesForGeneration {
 
 #·······················································································································
 
-shared class @switchInstructionForGeneration : @semanticInstructionForGeneration {
+class @switchInstructionForGeneration : @semanticInstructionForGeneration {
   @unifiedTypeMap-entry mEnumType
   @semanticExpressionForGeneration mSwitchExpression
   @switchBranchesForGeneration mBranches

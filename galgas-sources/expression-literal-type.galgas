@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @literalTypeInExpressionAST : @semanticExpressionAST {
+class @literalTypeInExpressionAST : @semanticExpressionAST {
   @lstring mLiteralTypeName
 }
 
@@ -61,7 +61,7 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @literalTypeInExpressionForGeneration : @semanticExpressionForGeneration {
+class @literalTypeInExpressionForGeneration : @semanticExpressionForGeneration {
   @unifiedTypeMap-entry mLiteralType
 }
 

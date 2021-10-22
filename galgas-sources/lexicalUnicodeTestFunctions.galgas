@@ -24,31 +24,31 @@ list @lexicalFunctionListAST {
 
 #······················································································································*
 
-abstract shared class @lexicalFunctionExpressionAST {
+abstract class @lexicalFunctionExpressionAST {
 }
 
 #······················································································································*
 
-shared class @lexicalFunctionOrExpressionAST : @lexicalFunctionExpressionAST {
+class @lexicalFunctionOrExpressionAST : @lexicalFunctionExpressionAST {
   @lexicalFunctionExpressionAST mLeftOperand
   @lexicalFunctionExpressionAST mRightOperand
 }
 
 #······················································································································*
 
-shared class @lexicalFunctionCallAST : @lexicalFunctionExpressionAST {
+class @lexicalFunctionCallAST : @lexicalFunctionExpressionAST {
   @lstring mCalledFunctionName
 }
 
 #······················································································································*
 
-shared class @lexicalFunctionCharacterMatchAST : @lexicalFunctionExpressionAST {
+class @lexicalFunctionCharacterMatchAST : @lexicalFunctionExpressionAST {
   @lchar mCharacter
 }
 
 #······················································································································*
 
-shared class @lexicalFunctionCharacterIntervalMatchAST : @lexicalFunctionExpressionAST {
+class @lexicalFunctionCharacterIntervalMatchAST : @lexicalFunctionExpressionAST {
   @lchar mLowerBound
   @lchar mUpperBound
 }

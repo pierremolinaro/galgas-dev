@@ -3255,10 +3255,10 @@ class cMapElement_unifiedTypeMap : public cMapElement {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_predefinedTypeAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_predefinedTypeAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_predefinedTypeAST * ptr (void) const { return (const cPtr_predefinedTypeAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3345,10 +3345,10 @@ class cPtr_predefinedTypeAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_applicationPredefinedTypeAST : public GALGAS_predefinedTypeAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_applicationPredefinedTypeAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_applicationPredefinedTypeAST * ptr (void) const { return (const cPtr_applicationPredefinedTypeAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3428,10 +3428,10 @@ class cPtr_applicationPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_bigintPredefinedTypeAST : public GALGAS_predefinedTypeAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_bigintPredefinedTypeAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_bigintPredefinedTypeAST * ptr (void) const { return (const cPtr_bigintPredefinedTypeAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3511,10 +3511,10 @@ class cPtr_bigintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_objectPredefinedTypeAST : public GALGAS_predefinedTypeAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_objectPredefinedTypeAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_objectPredefinedTypeAST * ptr (void) const { return (const cPtr_objectPredefinedTypeAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3594,10 +3594,10 @@ class cPtr_objectPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_filewrapperPredefinedTypeAST : public GALGAS_predefinedTypeAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_filewrapperPredefinedTypeAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_filewrapperPredefinedTypeAST * ptr (void) const { return (const cPtr_filewrapperPredefinedTypeAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3677,10 +3677,10 @@ class cPtr_filewrapperPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_binarysetPredefinedTypeAST : public GALGAS_predefinedTypeAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_binarysetPredefinedTypeAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_binarysetPredefinedTypeAST * ptr (void) const { return (const cPtr_binarysetPredefinedTypeAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3760,10 +3760,10 @@ class cPtr_binarysetPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_boolPredefinedTypeAST : public GALGAS_predefinedTypeAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_boolPredefinedTypeAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_boolPredefinedTypeAST * ptr (void) const { return (const cPtr_boolPredefinedTypeAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3843,10 +3843,10 @@ class cPtr_boolPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_uintPredefinedTypeAST : public GALGAS_predefinedTypeAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_uintPredefinedTypeAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_uintPredefinedTypeAST * ptr (void) const { return (const cPtr_uintPredefinedTypeAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3926,10 +3926,10 @@ class cPtr_uintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_uint_36__34_PredefinedTypeAST : public GALGAS_predefinedTypeAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_uint_36__34_PredefinedTypeAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_uint_36__34_PredefinedTypeAST * ptr (void) const { return (const cPtr_uint_36__34_PredefinedTypeAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4009,10 +4009,10 @@ class cPtr_uint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_sintPredefinedTypeAST : public GALGAS_predefinedTypeAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_sintPredefinedTypeAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_sintPredefinedTypeAST * ptr (void) const { return (const cPtr_sintPredefinedTypeAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4092,10 +4092,10 @@ class cPtr_sintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_sint_36__34_PredefinedTypeAST : public GALGAS_predefinedTypeAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_sint_36__34_PredefinedTypeAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_sint_36__34_PredefinedTypeAST * ptr (void) const { return (const cPtr_sint_36__34_PredefinedTypeAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4175,10 +4175,10 @@ class cPtr_sint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_charPredefinedTypeAST : public GALGAS_predefinedTypeAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_charPredefinedTypeAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_charPredefinedTypeAST * ptr (void) const { return (const cPtr_charPredefinedTypeAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4258,10 +4258,10 @@ class cPtr_charPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_doublePredefinedTypeAST : public GALGAS_predefinedTypeAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_doublePredefinedTypeAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_doublePredefinedTypeAST * ptr (void) const { return (const cPtr_doublePredefinedTypeAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4341,10 +4341,10 @@ class cPtr_doublePredefinedTypeAST : public cPtr_predefinedTypeAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_stringPredefinedTypeAST : public GALGAS_predefinedTypeAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_stringPredefinedTypeAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_stringPredefinedTypeAST * ptr (void) const { return (const cPtr_stringPredefinedTypeAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4424,10 +4424,10 @@ class cPtr_stringPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_locationPredefinedTypeAST : public GALGAS_predefinedTypeAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_locationPredefinedTypeAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_locationPredefinedTypeAST * ptr (void) const { return (const cPtr_locationPredefinedTypeAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4507,10 +4507,10 @@ class cPtr_locationPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_stringsetPredefinedTypeAST : public GALGAS_predefinedTypeAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_stringsetPredefinedTypeAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_stringsetPredefinedTypeAST * ptr (void) const { return (const cPtr_stringsetPredefinedTypeAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4590,10 +4590,10 @@ class cPtr_stringsetPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_functionPredefinedTypeAST : public GALGAS_predefinedTypeAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_functionPredefinedTypeAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_functionPredefinedTypeAST * ptr (void) const { return (const cPtr_functionPredefinedTypeAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4673,10 +4673,10 @@ class cPtr_functionPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typePredefinedTypeAST : public GALGAS_predefinedTypeAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_typePredefinedTypeAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_typePredefinedTypeAST * ptr (void) const { return (const cPtr_typePredefinedTypeAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4756,10 +4756,10 @@ class cPtr_typePredefinedTypeAST : public cPtr_predefinedTypeAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_dataPredefinedTypeAST : public GALGAS_predefinedTypeAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_dataPredefinedTypeAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_dataPredefinedTypeAST * ptr (void) const { return (const cPtr_dataPredefinedTypeAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4839,10 +4839,10 @@ class cPtr_dataPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_timerPredefinedTypeAST : public GALGAS_predefinedTypeAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_timerPredefinedTypeAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_timerPredefinedTypeAST * ptr (void) const { return (const cPtr_timerPredefinedTypeAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer

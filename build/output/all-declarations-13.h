@@ -15,10 +15,10 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_semanticDeclarationWithHeaderForGeneration : public GALGAS_semanticDeclarationForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_semanticDeclarationWithHeaderForGeneration (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_semanticDeclarationWithHeaderForGeneration * ptr (void) const { return (const cPtr_semanticDeclarationWithHeaderForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -104,10 +104,10 @@ class cPtr_semanticDeclarationWithHeaderForGeneration : public cPtr_semanticDecl
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_semanticTypeForGeneration : public GALGAS_semanticDeclarationForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_semanticTypeForGeneration (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_semanticTypeForGeneration * ptr (void) const { return (const cPtr_semanticTypeForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -184,13 +184,13 @@ class cPtr_semanticTypeForGeneration : public cPtr_semanticDeclarationForGenerat
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_boolsetTypeForGeneration : public GALGAS_semanticTypeForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_boolsetTypeForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_boolsetTypeForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_boolsetTypeForGeneration * ptr (void) const { return (const cPtr_boolsetTypeForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -276,13 +276,13 @@ class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_classTypeForGeneration : public GALGAS_semanticTypeForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_classTypeForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_classTypeForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_classTypeForGeneration * ptr (void) const { return (const cPtr_classTypeForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -418,13 +418,13 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_enumTypeForGeneration : public GALGAS_semanticTypeForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_enumTypeForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_enumTypeForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_enumTypeForGeneration * ptr (void) const { return (const cPtr_enumTypeForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -510,13 +510,13 @@ class cPtr_enumTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_externTypeDeclarationForGeneration : public GALGAS_semanticTypeForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_externTypeDeclarationForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_externTypeDeclarationForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_externTypeDeclarationForGeneration * ptr (void) const { return (const cPtr_externTypeDeclarationForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -622,13 +622,13 @@ class cPtr_externTypeDeclarationForGeneration : public cPtr_semanticTypeForGener
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_graphDeclarationForGeneration : public GALGAS_semanticTypeForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_graphDeclarationForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_graphDeclarationForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_graphDeclarationForGeneration * ptr (void) const { return (const cPtr_graphDeclarationForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -734,13 +734,13 @@ class cPtr_graphDeclarationForGeneration : public cPtr_semanticTypeForGeneration
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_listTypeForGeneration : public GALGAS_semanticTypeForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_listTypeForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_listTypeForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_listTypeForGeneration * ptr (void) const { return (const cPtr_listTypeForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -836,13 +836,13 @@ class cPtr_listTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_listmapTypeForGeneration : public GALGAS_semanticTypeForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_listmapTypeForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_listmapTypeForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_listmapTypeForGeneration * ptr (void) const { return (const cPtr_listmapTypeForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -948,13 +948,13 @@ class cPtr_listmapTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_dictTypeForGeneration : public GALGAS_semanticTypeForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_dictTypeForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_dictTypeForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_dictTypeForGeneration * ptr (void) const { return (const cPtr_dictTypeForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -1070,13 +1070,13 @@ class cPtr_dictTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_mapTypeForGeneration : public GALGAS_semanticTypeForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_mapTypeForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_mapTypeForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_mapTypeForGeneration * ptr (void) const { return (const cPtr_mapTypeForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -1232,13 +1232,13 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_mapEntryTypeForGeneration : public GALGAS_semanticTypeForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_mapEntryTypeForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_mapEntryTypeForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_mapEntryTypeForGeneration * ptr (void) const { return (const cPtr_mapEntryTypeForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -1344,10 +1344,10 @@ class cPtr_mapEntryTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_sharedMapTypeForGeneration : public GALGAS_semanticTypeForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_sharedMapTypeForGeneration (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_sharedMapTypeForGeneration * ptr (void) const { return (const cPtr_sharedMapTypeForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -1513,13 +1513,13 @@ class cPtr_sharedMapTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_sortedListTypeForGeneration : public GALGAS_semanticTypeForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_sortedListTypeForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_sortedListTypeForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_sortedListTypeForGeneration * ptr (void) const { return (const cPtr_sortedListTypeForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -1625,13 +1625,13 @@ class cPtr_sortedListTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_structTypeForGeneration : public GALGAS_semanticTypeForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_structTypeForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_structTypeForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_structTypeForGeneration * ptr (void) const { return (const cPtr_structTypeForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -1717,13 +1717,13 @@ class cPtr_structTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_abstractExtensionGetterForGeneration : public GALGAS_semanticDeclarationWithHeaderForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_abstractExtensionGetterForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_abstractExtensionGetterForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_abstractExtensionGetterForGeneration * ptr (void) const { return (const cPtr_abstractExtensionGetterForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -1841,13 +1841,13 @@ class cPtr_abstractExtensionGetterForGeneration : public cPtr_semanticDeclaratio
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_abstractExtensionMethodForGeneration : public GALGAS_semanticDeclarationWithHeaderForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_abstractExtensionMethodForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_abstractExtensionMethodForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_abstractExtensionMethodForGeneration * ptr (void) const { return (const cPtr_abstractExtensionMethodForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -1955,13 +1955,13 @@ class cPtr_abstractExtensionMethodForGeneration : public cPtr_semanticDeclaratio
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_abstractExtensionSetterForGeneration : public GALGAS_semanticDeclarationWithHeaderForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_abstractExtensionSetterForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_abstractExtensionSetterForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_abstractExtensionSetterForGeneration * ptr (void) const { return (const cPtr_abstractExtensionSetterForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -2069,13 +2069,13 @@ class cPtr_abstractExtensionSetterForGeneration : public cPtr_semanticDeclaratio
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_extensionGetterForGeneration : public GALGAS_semanticDeclarationWithHeaderForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_extensionGetterForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_extensionGetterForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_extensionGetterForGeneration * ptr (void) const { return (const cPtr_extensionGetterForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -2233,13 +2233,13 @@ class cPtr_extensionGetterForGeneration : public cPtr_semanticDeclarationWithHea
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_extensionMethodForGeneration : public GALGAS_semanticDeclarationWithHeaderForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_extensionMethodForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_extensionMethodForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_extensionMethodForGeneration * ptr (void) const { return (const cPtr_extensionMethodForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -2377,13 +2377,13 @@ class cPtr_extensionMethodForGeneration : public cPtr_semanticDeclarationWithHea
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_extensionSetterForGeneration : public GALGAS_semanticDeclarationWithHeaderForGeneration {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_extensionSetterForGeneration (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_extensionSetterForGeneration constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_extensionSetterForGeneration * ptr (void) const { return (const cPtr_extensionSetterForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer

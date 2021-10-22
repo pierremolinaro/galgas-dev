@@ -2833,10 +2833,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_syntaxInstructionAST : public AC_GALGAS_class {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_syntaxInstructionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_syntaxInstructionAST * ptr (void) const { return (const cPtr_syntaxInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -2913,10 +2913,10 @@ class cPtr_syntaxInstructionAST : public acPtr_class {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_semanticInstructionAST : public GALGAS_syntaxInstructionAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_semanticInstructionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_semanticInstructionAST * ptr (void) const { return (const cPtr_semanticInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3188,10 +3188,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_semanticInstructionForGeneration : public AC_GALGAS_class {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_semanticInstructionForGeneration (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_semanticInstructionForGeneration * ptr (void) const { return (const cPtr_semanticInstructionForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3328,10 +3328,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_semanticExpressionAST : public AC_GALGAS_class {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_semanticExpressionAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_semanticExpressionAST * ptr (void) const { return (const cPtr_semanticExpressionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3661,10 +3661,10 @@ class GALGAS_string extensionGetter_formalArgumentString (const class GALGAS_for
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_actualParameterAST : public AC_GALGAS_class {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_actualParameterAST (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_actualParameterAST * ptr (void) const { return (const cPtr_actualParameterAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3732,13 +3732,13 @@ class cPtr_actualParameterAST : public acPtr_class {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_outputInputJokerParameterAST : public GALGAS_actualParameterAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_outputInputJokerParameterAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_outputInputJokerParameterAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_outputInputJokerParameterAST * ptr (void) const { return (const cPtr_outputInputJokerParameterAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -3832,13 +3832,13 @@ class cPtr_outputInputJokerParameterAST : public cPtr_actualParameterAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_inputJokerActualParameterAST : public GALGAS_actualParameterAST {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_inputJokerActualParameterAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_inputJokerActualParameterAST constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_inputJokerActualParameterAST * ptr (void) const { return (const cPtr_inputJokerActualParameterAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4135,10 +4135,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterList
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_abstractInputParameter : public AC_GALGAS_class {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_abstractInputParameter (void) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_abstractInputParameter * ptr (void) const { return (const cPtr_abstractInputParameter *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
@@ -4206,13 +4206,13 @@ class cPtr_abstractInputParameter : public acPtr_class {
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_inputParameterAnonymousVariable : public GALGAS_abstractInputParameter {
-//--- Constructor
+//--------------------------------- Default constructor
   public: GALGAS_inputParameterAnonymousVariable (void) ;
 
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_inputParameterAnonymousVariable constructor_default (LOCATION_ARGS) ;
 
-//---
+//--------------------------------- Embedded object pointer
   public: inline const class cPtr_inputParameterAnonymousVariable * ptr (void) const { return (const cPtr_inputParameterAnonymousVariable *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer

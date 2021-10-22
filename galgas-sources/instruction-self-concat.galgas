@@ -2,31 +2,31 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
+class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
   @actualOutputExpressionList mExpressions
 }
 
 #·····················································································································*
 
-shared class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
+class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
   @semanticExpressionAST mExpression
 }
 
 #·····················································································································*
 
-shared class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
+class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
   @semanticExpressionAST mExpression
 }
 
 #·····················································································································*
 
-shared class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
+class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
   @semanticExpressionAST mExpression
 }
 
 #·····················································································································*
 
-shared class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
+class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
   @semanticExpressionAST mExpression
 }
 

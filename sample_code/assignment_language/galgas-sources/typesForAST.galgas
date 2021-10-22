@@ -1,34 +1,34 @@
 
 
-abstract shared class @expressionAST {
+abstract class @expressionAST {
 }
 
-shared class @varInExpressionAST : @expressionAST {
+class @varInExpressionAST : @expressionAST {
   @lstring mVarName
 }
 
-shared class @cstInExpressionAST : @expressionAST {
+class @cstInExpressionAST : @expressionAST {
   @luint mConstant
 }
 
-shared class @additionAST : @expressionAST {
+class @additionAST : @expressionAST {
   @expressionAST mLeftExpression
   @expressionAST mRightExpression
 }
 
-shared class @multiplicationAST : @expressionAST {
+class @multiplicationAST : @expressionAST {
   @expressionAST mLeftExpression
   @expressionAST mRightExpression
 }
 
-abstract shared class @instructionAST {
+abstract class @instructionAST {
 }
 
 list @instructionListAST {
   @instructionAST mInstruction
 }
 
-shared class @assignmentAST : @instructionAST {
+class @assignmentAST : @instructionAST {
   @lstring mTargetVarName
   @expressionAST mSourceExpression
 }
@@ -38,11 +38,11 @@ struct @programAST {
   @location mEndOfSourceFile
 }
 
-shared class @varDeclarationAST : @instructionAST {
+class @varDeclarationAST : @instructionAST {
   @lstring mVarName
 }
 
-shared class @printVariableAST : @instructionAST {
+class @printVariableAST : @instructionAST {
   @lstring mVarName
 }
 

@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @localVariableDeclarationWithAssignmentAST : @semanticInstructionAST {
+class @localVariableDeclarationWithAssignmentAST : @semanticInstructionAST {
   @lstring mVariableName
   @semanticExpressionAST mSourceExpression
 }

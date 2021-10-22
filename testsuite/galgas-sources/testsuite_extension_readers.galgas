@@ -1,8 +1,8 @@
 
 
-abstract shared class @A_A {}
+abstract class @A_A {}
 
-shared class @B_B : @A_A {}
+class @B_B : @A_A {}
 
 abstract getter @A_A aReader ?@uint inA ?let@string inB -> @string
 
@@ -16,7 +16,7 @@ getter @B_B otherReader ?@uint inA ?let@string inB -> @string {
   result = inB + inA + [self aReader !inA !inB] + [self aReader !inA !inB]
 }
 
-abstract shared class @C_C : @B_B {}
+abstract class @C_C : @B_B {}
 
 override abstract getter @C_C aReader ?@uint inA ?let@string inB -> @string
 

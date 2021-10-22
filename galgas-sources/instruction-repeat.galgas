@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @repeatInstruction : @syntaxInstructionAST {
+class @repeatInstruction : @syntaxInstructionAST {
   @syntaxInstructionList mRepeatedInstructionList
   @location mEndOf_repeated_instructions_branch
   @listOfSyntaxInstructionList mRepeatBranchList
@@ -171,7 +171,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
 #! GENERATION TYPES
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @repeatInstructionForGeneration : @syntaxInstructionForGeneration {
+class @repeatInstructionForGeneration : @syntaxInstructionForGeneration {
   @string mSyntaxComponentName
   @uint mChoiceIndex
   @semanticInstructionListForGeneration m_repeated_instructionList

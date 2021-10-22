@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @literalStringExpressionAST : @semanticExpressionAST {
+class @literalStringExpressionAST : @semanticExpressionAST {
   @location mLocation
   @stringlist mStringSequence
 }
@@ -59,7 +59,7 @@ override method @literalStringExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @literalStringExpressionForGeneration : @semanticExpressionForGeneration {
+class @literalStringExpressionForGeneration : @semanticExpressionForGeneration {
   @string mString
 }
 

@@ -6390,7 +6390,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeHeader_31_ (C_
     result << in_SUPER_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   }
   result << " {\n"
-    "//--- Constructor\n"
+    "//--------------------------------- Default constructor\n"
     "  public: GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (void) ;\n"
@@ -6404,7 +6404,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeHeader_31_ (C_
       "\n" ;
   }else if (kBoolFalse == test_1) {
   }
-  result << "//---\n"
+  result << "//--------------------------------- Embedded object pointer\n"
     "  public: inline const class cPtr_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " * ptr (void) const { return (const cPtr_" ;

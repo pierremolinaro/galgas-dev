@@ -2,7 +2,7 @@
 #   AST                                                                                                                *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @overridingAbstractExtensionMethodAST : @semanticDeclarationAST {
+class @overridingAbstractExtensionMethodAST : @semanticDeclarationAST {
   @lstring mTypeName
   @lstring mOverridingExtensionMethodName
   @formalParameterListAST mOverridingExtensionMethodFormalParameterList

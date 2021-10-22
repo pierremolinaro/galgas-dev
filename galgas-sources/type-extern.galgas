@@ -2,7 +2,7 @@
 #   AST                                                                                                                *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @externTypeDeclarationAST : @semanticDeclarationAST {
+class @externTypeDeclarationAST : @semanticDeclarationAST {
   @lstring mExternTypeName
   @string mCppPreDeclarationCode
   @string mCppClassCode
@@ -350,7 +350,7 @@ override method @externTypeDeclarationAST semanticAnalysis
 #   CODE GENERATION                                                                                                    *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @externTypeDeclarationForGeneration : @semanticTypeForGeneration {
+class @externTypeDeclarationForGeneration : @semanticTypeForGeneration {
   @string mExternTypeName
   @string mCppPreDeclarationCode
   @string mCppClassCode
