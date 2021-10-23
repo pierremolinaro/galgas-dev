@@ -421,7 +421,8 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeHeader_31_ (cl
                                                                               const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                               const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
                                                                               const class GALGAS_bool & in_IS_5F_ABSTRACT,
-                                                                              const class GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR
+                                                                              const class GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR,
+                                                                              const class GALGAS_bool & in_IS_5F_REFERENCE
                                                                               COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -468,7 +469,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeSpecificImplem
                                                                                           const class GALGAS_typedPropertyList & in_ALL_5F_ATTRIBUTE_5F_LIST,
                                                                                           const class GALGAS_typedPropertyList & in_INHERITED_5F_ATTRIBUTE_5F_LIST,
                                                                                           const class GALGAS_bool & in_IS_5F_ABSTRACT,
-                                                                                          const class GALGAS_bool & in_IS_5F_SHARED,
+                                                                                          const class GALGAS_bool & in_IS_5F_REFERENCE,
                                                                                           const class GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR
                                                                                           COMMA_LOCATION_ARGS) ;
 

@@ -1,18 +1,18 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#  GALGAS main program definition                                                                                      *
-#                                                                                                                      *
+#                                           
+#  GALGAS main program definition           
+#                                           
 #  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                                                                      *
-#                                                                                                                      *
-#  e-mail : pierre@pcmolinaro.name                                                                                     *
-#                                                                                                                      *
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
-#                                                                                                                      *
+#                                           
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
-#  details.                                                                                                            *
-#                                                                                                                      *
+#  details.                                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 before { #--- Generate project
@@ -57,9 +57,9 @@ before {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#          galgas                                                                                                      *
-#                                                                                                                      *
+#                                           
+#          galgas                           
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "galgas"
@@ -84,9 +84,9 @@ grammar galgas3Grammar
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#          Template                                                                                                    *
-#                                                                                                                      *
+#                                           
+#          Template                         
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "galgasTemplate"
@@ -97,9 +97,9 @@ grammar templateGrammar
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#          galgasProject                                                                                               *
-#                                                                                                                      *
+#                                           
+#          galgasProject                    
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "galgasProject"
@@ -110,9 +110,9 @@ grammar galgas3ProjectGrammar
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#          compileProject                                                                                              *
-#                                                                                                                      *
+#                                           
+#          compileProject                   
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc parseAndAnalyzeProject
@@ -333,9 +333,9 @@ private proc compileProject
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#          projectGeneration                                                                                           *
-#                                                                                                                      *
+#                                           
+#          projectGeneration                
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc projectGeneration

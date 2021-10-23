@@ -1,19 +1,19 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  Copyright (C) 2007, ..., 2015 Pierre Molinaro.                                                                      *
-#                                                                                                                      *
-#  e-mail : pierre@pcmolinaro.name                                                                                     *
-#                                                                                                                      *
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
-#                                                                                                                      *
+#                                           
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
-#  details.                                                                                                            *
-#                                                                                                                      *
+#  details.                                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @semanticExpressionAST {
+abstract valueclass @semanticExpressionAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -24,9 +24,9 @@ list @semanticExpressionListAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #   F O R M A L    A R G U M E N T S    P A S S I N G    M O D E S                                                     *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @formalArgumentPassingModeAST {
@@ -70,9 +70,9 @@ getter @formalArgumentPassingModeAST formalArgumentString -> @string {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  F O R M A L    P A R A M E T E R    L I S T                                                                         *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalParameterListAST {
@@ -84,9 +84,9 @@ list @formalParameterListAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  F O R M A L    I N P U T    P A R A M E T E R    L I S T                                                            *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalInputParameterListAST {
@@ -98,17 +98,17 @@ list @formalInputParameterListAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#  A C T U A L    P A R A M E T E R                                                                                    *
-#                                                                                                                      *
+#                                           
+#  A C T U A L    P A R A M E T E R         
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @actualParameterAST {
+abstract valueclass @actualParameterAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @outputActualParameterAST : @actualParameterAST {
+valueclass @outputActualParameterAST : @actualParameterAST {
   @lstring mActualSelector
   @semanticExpressionAST mOutputActualParameterExpression
   @location mEndOfExpressionLocation
@@ -116,7 +116,7 @@ class @outputActualParameterAST : @actualParameterAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @outputInputActualParameterAST : @actualParameterAST {
+valueclass @outputInputActualParameterAST : @actualParameterAST {
   @lstring mActualSelector
   @lstring mOutputInputActualParameterName
   @lstringlist mStructAttributeList
@@ -124,34 +124,34 @@ class @outputInputActualParameterAST : @actualParameterAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @outputInputSingleJokerParameterAST : @actualParameterAST {
+valueclass @outputInputSingleJokerParameterAST : @actualParameterAST {
   @lstring mActualSelector
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @outputInputJokerParameterAST : @actualParameterAST {
+valueclass @outputInputJokerParameterAST : @actualParameterAST {
   @location mQualifierLocation
   @uint mJokerIndex
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputActualExistingVariableParameterAST : @actualParameterAST {
+valueclass @inputActualExistingVariableParameterAST : @actualParameterAST {
   @lstring mActualSelector
   @lstring mInputActualParameterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputActualSelfPropertyParameterAST : @actualParameterAST {
+valueclass @inputActualSelfPropertyParameterAST : @actualParameterAST {
   @lstring mActualSelector
   @lstring mInputActualSelfPropertyName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputActualNewVariableParameterAST : @actualParameterAST {
+valueclass @inputActualNewVariableParameterAST : @actualParameterAST {
   @lstring mActualSelector
   @lstring mInputOptionalActualTypeName
   @lstring mInputActualParameterName
@@ -159,7 +159,7 @@ class @inputActualNewVariableParameterAST : @actualParameterAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputActualNewConstantParameterAST : @actualParameterAST {
+valueclass @inputActualNewConstantParameterAST : @actualParameterAST {
   @lstring mActualSelector
   @lstring mInputOptionalActualTypeName
   @lstring mInputActualParameterName
@@ -168,13 +168,13 @@ class @inputActualNewConstantParameterAST : @actualParameterAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputSingleJokerActualParameterAST : @actualParameterAST {
+valueclass @inputSingleJokerActualParameterAST : @actualParameterAST {
   @lstring mActualSelector
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputJokerActualParameterAST : @actualParameterAST {
+valueclass @inputJokerActualParameterAST : @actualParameterAST {
   @location mQualifierLocation
   @uint mJokerIndex
 }
@@ -186,35 +186,35 @@ list @actualParameterListAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  A C T U A L    I N P U T    P A R A M E T E R    L I S T                                                            *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @abstractInputParameter {
+abstract valueclass @abstractInputParameter {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputParameterAnonymousVariable : @abstractInputParameter {
+valueclass @inputParameterAnonymousVariable : @abstractInputParameter {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputParameterVariable : @abstractInputParameter {
+valueclass @inputParameterVariable : @abstractInputParameter {
   @lstring mActualParameterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputParameterDeclaredVariable : @abstractInputParameter {
+valueclass @inputParameterDeclaredVariable : @abstractInputParameter {
   @lstring mActualParameterTypeName
   @lstring mActualParameterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputParameterDeclaredConstant : @abstractInputParameter {
+valueclass @inputParameterDeclaredConstant : @abstractInputParameter {
   @lstring mActualParameterTypeName
   @lstring mActualParameterName
 }
@@ -228,13 +228,13 @@ list @actualInputParameterListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @syntaxInstructionAST {
+abstract valueclass @syntaxInstructionAST {
   @location mInstructionLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @semanticInstructionAST : @syntaxInstructionAST {
+abstract valueclass @semanticInstructionAST : @syntaxInstructionAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -250,47 +250,47 @@ list @semanticDeclarationListAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    E X T E R N    R O U T I N E    D E C L A R A T I O N                                                             *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @externRoutineDeclarationAST : @semanticDeclarationAST {
+valueclass @externRoutineDeclarationAST : @semanticDeclarationAST {
   @bool mIsInternal
   @lstring mRoutineName
   @formalParameterListAST mFormalArgumentList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#    R O U T I N E    D E C L A R A T I O N                                                                            *
-#                                                                                                                      *
+#                                           
+#    R O U T I N E    D E C L A R A T I O N 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @procDeclarationAST : @externRoutineDeclarationAST {
+valueclass @procDeclarationAST : @externRoutineDeclarationAST {
   @semanticInstructionListAST mRoutineInstructionList
   @location mEndOfRoutineInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    E X T E R N    F U N C T I O N    D E C L A R A T I O N                                                           *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @externFunctionDeclarationAST : @semanticDeclarationAST {
+valueclass @externFunctionDeclarationAST : @semanticDeclarationAST {
   @lstring mFunctionName
   @formalInputParameterListAST mFormalArgumentList
   @lstring mResultTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    F U N C T I O N    D E C L A R A T I O N                                                                          *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @functionDeclarationAST : @externFunctionDeclarationAST {
+valueclass @functionDeclarationAST : @externFunctionDeclarationAST {
   @lstring mResultVariableName
   @semanticInstructionListAST mFunctionInstructionList
   @location mEndOfFunctionInstructionList
@@ -299,12 +299,12 @@ class @functionDeclarationAST : @externFunctionDeclarationAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    O N C E    F U N C T I O N    D E C L A R A T I O N                                                               *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @onceFunctionDeclarationAST : @semanticDeclarationAST {
+valueclass @onceFunctionDeclarationAST : @semanticDeclarationAST {
   @lstring mFunctionName
   @lstring mResultTypeName
   @lstring mResultVariableName
@@ -315,9 +315,9 @@ class @onceFunctionDeclarationAST : @semanticDeclarationAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#    Common Rules                                                                                                      *
-#                                                                                                                      *
+#                                           
+#    Common Rules                           
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @propertyInCollectionListAST {
@@ -328,9 +328,9 @@ list @propertyInCollectionListAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    F I L E W R A P P E R    D E C L A R A T I O N                                                                    *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalTemplateInputParameterListAST {
@@ -350,7 +350,7 @@ list @filewrapperTemplateListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @filewrapperDeclarationAST : @semanticDeclarationAST {
+valueclass @filewrapperDeclarationAST : @semanticDeclarationAST {
   @bool mIsInternal
   @string mSourceFileAbsolutePath
   @lstring mFilewrapperName
@@ -399,9 +399,9 @@ list @syntaxRuleListAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#   R E P E A T    I N S T R U C T I O N                                                                               *
-#                                                                                                                      *
+#                                           
+#   R E P E A T    I N S T R U C T I O N    
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @listOfSyntaxInstructionList {
@@ -410,16 +410,16 @@ list @listOfSyntaxInstructionList {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #   S Y N T A X    C O M P O N E N T    A S T                                                                          *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #! GALGAS 3 AST
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @galgas3SyntaxComponentAST : @semanticDeclarationAST {
+valueclass @galgas3SyntaxComponentAST : @semanticDeclarationAST {
   @lstring mSyntaxComponentName
   @lstring mLexiqueName 
   @nonterminalDeclarationListAST mNonterminalDeclarationList
@@ -429,7 +429,7 @@ class @galgas3SyntaxComponentAST : @semanticDeclarationAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @galgas3GrammarComponentAST : @semanticDeclarationAST {
+valueclass @galgas3GrammarComponentAST : @semanticDeclarationAST {
   @lbool mHasIndexing
   @lstring mGrammarComponentName
   @lstring mGrammarClass

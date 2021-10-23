@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @andShortExpressionAST : @semanticExpressionAST {
+valueclass @andShortExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
@@ -10,7 +10,7 @@ class @andShortExpressionAST : @semanticExpressionAST {
 
 #·······················································································································
 
-class @andExpressionAST : @semanticExpressionAST {
+valueclass @andExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
@@ -162,7 +162,7 @@ override method @andShortExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @andShortExpressionForGeneration : @semanticExpressionForGeneration {
+valueclass @andShortExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mLeftExpression
   @semanticExpressionForGeneration mRightExpression
 }

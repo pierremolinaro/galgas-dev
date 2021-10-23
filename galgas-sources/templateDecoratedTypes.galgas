@@ -1,33 +1,33 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  Semantic decorated types for template generation                                                                    *
-#                                                                                                                      *
+#                                           
 #  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                                                                      *
-#                                                                                                                      *
-#  e-mail : pierre@pcmolinaro.name                                                                                     *
-#                                                                                                                      *
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
-#                                                                                                                      *
+#                                           
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
-#  details.                                                                                                            *
-#                                                                                                                      *
+#  details.                                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @templateInstructionStringForGeneration : @templateInstructionForGeneration {
+valueclass @templateInstructionStringForGeneration : @templateInstructionForGeneration {
   @string mTemplateString
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @templateInstructionExpressionForGeneration : @templateInstructionForGeneration {
+valueclass @templateInstructionExpressionForGeneration : @templateInstructionForGeneration {
   @semanticExpressionForGeneration mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @templateBlockInstructionForGeneration : @templateInstructionForGeneration {
+valueclass @templateBlockInstructionForGeneration : @templateInstructionForGeneration {
   @semanticExpressionForGeneration mExpression
   @location mLocation
   @templateInstructionListForGeneration mBlockInstructionList
@@ -35,17 +35,17 @@ class @templateBlockInstructionForGeneration : @templateInstructionForGeneration
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @templateInstructionGetColumnLocationForGeneration : @templateInstructionForGeneration {
+valueclass @templateInstructionGetColumnLocationForGeneration : @templateInstructionForGeneration {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @templateInstructionGotoColumnLocationForGeneration : @templateInstructionForGeneration {
+valueclass @templateInstructionGotoColumnLocationForGeneration : @templateInstructionForGeneration {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @templateInstructionForeachForGeneration : @templateInstructionForGeneration {
+valueclass @templateInstructionForeachForGeneration : @templateInstructionForGeneration {
   @bool mIsAscending
   @semanticExpressionForGeneration mExpression
   @string mEnumeratorCppName
@@ -65,7 +65,7 @@ list @templateInstructionIfBranchListForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @templateInstructionIfForGeneration : @templateInstructionForGeneration {
+valueclass @templateInstructionIfForGeneration : @templateInstructionForGeneration {
   @templateInstructionIfBranchListForGeneration mTemplateInstructionIfBranchList
   @templateInstructionListForGeneration mElseInstructionList
 }

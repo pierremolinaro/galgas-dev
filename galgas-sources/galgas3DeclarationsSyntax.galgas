@@ -1,16 +1,16 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                                                                      *
-#                                                                                                                      *
-#  e-mail : pierre@pcmolinaro.name                                                                                     *
-#                                                                                                                      *
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
-#                                                                                                                      *
+#                                           
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
-#  details.                                                                                                            *
-#                                                                                                                      *
+#  details.                                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3DeclarationsSyntax (galgas3Scanner) {
@@ -22,9 +22,9 @@ rule <declaration_with_private>
   ?!@galgas3DeclarationAST ioDeclarations
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#          Start symbol                                                                                                *
-#                                                                                                                      *
+#                                           
+#          Start symbol                     
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <start_symbol>
@@ -38,9 +38,9 @@ rule <start_symbol>
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#          Rules prototypes                                                                                            *
-#                                                                                                                      *
+#                                           
+#          Rules prototypes                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList
@@ -50,9 +50,9 @@ rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsLis
 rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    A T T R I B U T E    I N    C O L L E C T I O N                                                                   *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
@@ -79,9 +79,9 @@ rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollecti
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    F I L E W R A P P E R    D E C L A R A T I O N                                                                    *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #! Filewrapper Declaration

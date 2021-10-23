@@ -1,18 +1,18 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  semantics definitions for semantics component                                                                       *
-#                                                                                                                      *
+#                                           
 #  Copyright (C) 1997, ..., 2014 Pierre Molinaro.                                                                      *
-#                                                                                                                      *
-#  e-mail : pierre@pcmolinaro.name                                                                                     *
-#                                                                                                                      *
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
-#                                                                                                                      *
+#                                           
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
-#  details.                                                                                                            *
-#                                                                                                                      *
+#  details.                                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func %once generateFewHeaderFiles -> @bool {
@@ -34,9 +34,9 @@ list @unifiedTypeMapEntryList {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#  C O N S T R U C T O R    M A P                                                                                      *
-#                                                                                                                      *
+#                                           
+#  C O N S T R U C T O R    M A P           
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @constructorMap {
@@ -89,9 +89,9 @@ map @optionalMethodMap {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#  R E A D E R    M A P                                                                                                *
-#                                                                                                                      *
+#                                           
+#  R E A D E R    M A P                     
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @getterMap {
@@ -110,9 +110,9 @@ map @getterMap {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#  M O D I F I E R    M A P                                                                                            *
-#                                                                                                                      *
+#                                           
+#  M O D I F I E R    M A P                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalParameterSignature {
@@ -136,9 +136,9 @@ map @setterMap {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#  M E T H O D    M A P                                                                                                *
-#                                                                                                                      *
+#                                           
+#  M E T H O D    M A P                     
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @instanceMethodMap {
@@ -154,9 +154,9 @@ map @instanceMethodMap {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#  C L A S S    M E T H O D    M A P                                                                                   *
-#                                                                                                                      *
+#                                           
+#  C L A S S    M E T H O D    M A P        
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @classMethodMap {
@@ -168,9 +168,9 @@ map @classMethodMap {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  E N U M E R A T I O N    D E S C R I P T O R    L I S T                                                             *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @enumerationDescriptorList {
@@ -179,9 +179,9 @@ list @enumerationDescriptorList {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#  T Y P E D    P R O P E R T Y    L I S T                                                                             *
-#                                                                                                                      *
+#                                           
+#  T Y P E D    P R O P E R T Y    L I S T  
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @typedPropertyList {
@@ -193,9 +193,9 @@ list @typedPropertyList {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  P R E D E F I N E D    T Y P E    K I N D    E N U M E R A T I O N                                                  *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @predefinedTypeKindEnum {
@@ -221,9 +221,9 @@ enum @predefinedTypeKindEnum {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  T Y P E    K I N D    E N U M E R A T I O N                                                                         *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @typeKindEnum {
@@ -265,11 +265,11 @@ getter @typeKindEnum kind -> @string {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#  O P E R A T O R    Boolset                                                                                          *
-#                                                                                                                      *
+#                                           
+#  O P E R A T O R    Boolset               
+#                                           
 # This type is used for the mHandledOperatorFlags attribute of the @unifiedTypeMap map, for indicating the handled     *
-# operators.                                                                                                           *
+# operators.                                
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 boolset @operators {
@@ -336,9 +336,9 @@ map @constantIndexMap {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#  U N I F I E D    T Y P E    M A P                                                                                   *
-#                                                                                                                      *
+#                                           
+#  U N I F I E D    T Y P E    M A P        
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 shared map @unifiedTypeMap {
@@ -405,55 +405,55 @@ method @unifiedTypeMap-entry addHeaderFileName1 ?!@stringset ioInclusions {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  A S T   C L A S S E S    F O R    P R E D E F I N E D   T Y P E S                                                   *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @predefinedTypeAST : @semanticDeclarationAST {
+abstract valueclass @predefinedTypeAST : @semanticDeclarationAST {
   @string mPredefinedTypeName
   @predefinedTypeKindEnum mKind
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @applicationPredefinedTypeAST : @predefinedTypeAST {}
+valueclass @applicationPredefinedTypeAST : @predefinedTypeAST {}
 
-class @bigintPredefinedTypeAST : @predefinedTypeAST {}
+valueclass @bigintPredefinedTypeAST : @predefinedTypeAST {}
 
-class @objectPredefinedTypeAST : @predefinedTypeAST {}
+valueclass @objectPredefinedTypeAST : @predefinedTypeAST {}
 
-class @filewrapperPredefinedTypeAST : @predefinedTypeAST {}
+valueclass @filewrapperPredefinedTypeAST : @predefinedTypeAST {}
 
-class @binarysetPredefinedTypeAST : @predefinedTypeAST {}
+valueclass @binarysetPredefinedTypeAST : @predefinedTypeAST {}
 
-class @boolPredefinedTypeAST : @predefinedTypeAST {}
+valueclass @boolPredefinedTypeAST : @predefinedTypeAST {}
 
-class @uintPredefinedTypeAST : @predefinedTypeAST {}
+valueclass @uintPredefinedTypeAST : @predefinedTypeAST {}
 
-class @uint64PredefinedTypeAST : @predefinedTypeAST {}
+valueclass @uint64PredefinedTypeAST : @predefinedTypeAST {}
 
-class @sintPredefinedTypeAST : @predefinedTypeAST {}
+valueclass @sintPredefinedTypeAST : @predefinedTypeAST {}
 
-class @sint64PredefinedTypeAST : @predefinedTypeAST {}
+valueclass @sint64PredefinedTypeAST : @predefinedTypeAST {}
 
-class @charPredefinedTypeAST : @predefinedTypeAST {}
+valueclass @charPredefinedTypeAST : @predefinedTypeAST {}
 
-class @doublePredefinedTypeAST : @predefinedTypeAST {}
+valueclass @doublePredefinedTypeAST : @predefinedTypeAST {}
 
-class @stringPredefinedTypeAST : @predefinedTypeAST {}
+valueclass @stringPredefinedTypeAST : @predefinedTypeAST {}
 
-class @locationPredefinedTypeAST : @predefinedTypeAST {}
+valueclass @locationPredefinedTypeAST : @predefinedTypeAST {}
 
-class @stringsetPredefinedTypeAST : @predefinedTypeAST {}
+valueclass @stringsetPredefinedTypeAST : @predefinedTypeAST {}
 
-class @functionPredefinedTypeAST : @predefinedTypeAST {}
+valueclass @functionPredefinedTypeAST : @predefinedTypeAST {}
 
-class @typePredefinedTypeAST : @predefinedTypeAST {}
+valueclass @typePredefinedTypeAST : @predefinedTypeAST {}
 
-class @dataPredefinedTypeAST : @predefinedTypeAST {}
+valueclass @dataPredefinedTypeAST : @predefinedTypeAST {}
 
-class @timerPredefinedTypeAST : @predefinedTypeAST {}
+valueclass @timerPredefinedTypeAST : @predefinedTypeAST {}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -510,9 +510,9 @@ method @predefinedTypeAST getAddAssignArgumentList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  G E T    E N U M E R A T I O N    L I S T                                                                           *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @predefinedTypeAST getEnumerationList

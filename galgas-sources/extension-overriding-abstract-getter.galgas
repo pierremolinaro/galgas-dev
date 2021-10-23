@@ -1,8 +1,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                                                                                                *
+#   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @overridingAbstractExtensionGetterAST : @semanticDeclarationAST {
+valueclass @overridingAbstractExtensionGetterAST : @semanticDeclarationAST {
   @lstring mTypeName
   @lstring mAbstractExtensionGetterName
   @formalInputParameterListAST mAbstractExtensionGetterFormalInputParameterList
@@ -10,7 +10,7 @@ class @overridingAbstractExtensionGetterAST : @semanticDeclarationAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                                                                                             *
+#   SYNTAX                                  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -45,7 +45,7 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   KEY REPRESENTATION                                                                                                 *
+#   KEY REPRESENTATION                      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @overridingAbstractExtensionGetterAST keyRepresentation
@@ -54,7 +54,7 @@ override getter @overridingAbstractExtensionGetterAST keyRepresentation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                                                                                                     *
+#   ENTER IN GRAPH                          
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionGetterAST enterDeclarationInGraph
@@ -67,7 +67,7 @@ override method @overridingAbstractExtensionGetterAST enterDeclarationInGraph
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                                                                                                   *
+#   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionGetterAST enterInSemanticContext
@@ -79,7 +79,7 @@ override method @overridingAbstractExtensionGetterAST enterInSemanticContext
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                                                                                                  *
+#   SEMANTIC ANALYSIS                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionGetterAST semanticAnalysis
@@ -154,7 +154,7 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   EXTENSION LIST MAP                                                                                                 *
+#   EXTENSION LIST MAP                      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionGetterAST buildExtensionListMaps

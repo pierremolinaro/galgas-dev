@@ -1,17 +1,17 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#  GALGAS Command Line Option Definition                                                                               *
-#                                                                                                                      *
+#                                           
+#  GALGAS Command Line Option Definition    
+#                                           
 #  Copyright (C) 2004, ..., 2015 Pierre Molinaro.                                                                      *
-#  e-mail : pierre@pcmolinaro.name                                                                                     *
-#                                                                                                                      *
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
-#                                                                                                                      *
+#                                           
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
-#  details.                                                                                                            *
-#                                                                                                                      *
+#  details.                                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 option galgas_cli_options {
@@ -45,7 +45,7 @@ option galgas_cli_options {
 
   @bool propertyAccessRequiresSelf : '\0', "property-access-requires-self" -> "'self' is required for accessing properties in getter, setter and methods"
 
-  @bool errorSharedClassDeclaration : '\0', "error-shared-class-declaration" -> "'shared class' declaration is invalid"
+  @bool errorClassDeclaration : '\0', "error-class-declaration" -> "'class' declaration is obsolete use 'valueclass'"
 
   @bool warnsAnomynousForInstructionEnumeratedObject : '\0', "warns-anonymous-for-instruction" -> "warns on anonymous 'for' instruction enumerated object ('for () in ...')"
 

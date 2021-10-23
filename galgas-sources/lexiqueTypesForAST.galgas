@@ -1,32 +1,32 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#  'lexique' component metamodel                                                                                       *
-#                                                                                                                      *
+#                                           
+#  'lexique' component metamodel            
+#                                           
 #  Copyright (C) 2007, ..., 2015 Pierre Molinaro.                                                                      *
-#                                                                                                                      *
-#  e-mail : pierre@pcmolinaro.name                                                                                     *
-#                                                                                                                      *
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
-#                                                                                                                      *
+#                                           
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
-#  details.                                                                                                            *
-#                                                                                                                      *
+#  details.                                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @semanticDeclarationAST {
+abstract valueclass @semanticDeclarationAST {
   @bool mIsPredefined
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @lexicalExpressionAST {
+abstract valueclass @lexicalExpressionAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @lexicalInstructionAST {
+abstract valueclass @lexicalInstructionAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -53,7 +53,7 @@ list @templateReplacementListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @abstractLexicalRuleAST {
+abstract valueclass @abstractLexicalRuleAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -64,13 +64,13 @@ list @lexicalRuleListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalImplicitRuleAST : @abstractLexicalRuleAST {
+valueclass @lexicalImplicitRuleAST : @abstractLexicalRuleAST {
   @lstring mListName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalExplicitRuleAST : @abstractLexicalRuleAST {
+valueclass @lexicalExplicitRuleAST : @abstractLexicalRuleAST {
   @lexicalExpressionAST mLexicalRuleExpression
   @lexicalInstructionListAST mInstructionList
 }
@@ -133,39 +133,39 @@ list @lexicalListDeclarationListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalOrExpressionAST : @lexicalExpressionAST {
+valueclass @lexicalOrExpressionAST : @lexicalExpressionAST {
   @lexicalExpressionAST mLeftOperand
   @lexicalExpressionAST mRightOperand
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalCharacterSetMatchAST : @lexicalExpressionAST {
+valueclass @lexicalCharacterSetMatchAST : @lexicalExpressionAST {
   @lstring mCharacterSetName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalCharacterMatchAST : @lexicalExpressionAST {
+valueclass @lexicalCharacterMatchAST : @lexicalExpressionAST {
   @lchar mCharacter
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalCharacterIntervalMatchAST : @lexicalExpressionAST {
+valueclass @lexicalCharacterIntervalMatchAST : @lexicalExpressionAST {
   @lchar mLowerBound
   @lchar mUpperBound
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalStringMatchAST : @lexicalExpressionAST {
+valueclass @lexicalStringMatchAST : @lexicalExpressionAST {
   @lstring mString
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalStringNotMatchAST : @lexicalExpressionAST {
+valueclass @lexicalStringNotMatchAST : @lexicalExpressionAST {
   @lstring mString
   @lstring mErrorMessage
 }
@@ -179,31 +179,31 @@ list @lexicalSendSearchListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @lexicalSendDefaultActionAST {
+abstract valueclass @lexicalSendDefaultActionAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalStructuredSendInstructionAST : @lexicalInstructionAST {
+valueclass @lexicalStructuredSendInstructionAST : @lexicalInstructionAST {
   @lexicalSendSearchListAST mLexicalSendSearchList
   @lexicalSendDefaultActionAST mLexicalSendDefaultAction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalSimpleSendInstructionAST : @lexicalInstructionAST {
+valueclass @lexicalSimpleSendInstructionAST : @lexicalInstructionAST {
   @lstring mSentTerminal
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalSendTerminalByDefaultAST : @lexicalSendDefaultActionAST {
+valueclass @lexicalSendTerminalByDefaultAST : @lexicalSendDefaultActionAST {
   @lstring mDefaultSentTerminal
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalErrorByDefaultAST : @lexicalSendDefaultActionAST {
+valueclass @lexicalErrorByDefaultAST : @lexicalSendDefaultActionAST {
   @lstring mDefaultErrorMessageName
 }
 
@@ -216,7 +216,7 @@ list @lexicalWhileBranchListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalRepeatInstructionAST : @lexicalInstructionAST {
+valueclass @lexicalRepeatInstructionAST : @lexicalInstructionAST {
   @lexicalInstructionListAST mRepeatedInstructionList
   @lexicalWhileBranchListAST mLexicalWhileBranchList
 }
@@ -230,14 +230,14 @@ list @lexicalSelectBranchListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalSelectInstructionAST : @lexicalInstructionAST {
+valueclass @lexicalSelectInstructionAST : @lexicalInstructionAST {
   @lexicalSelectBranchListAST mLexicalSelectBranchList
   @lexicalInstructionListAST mDefaultInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @abstractLexicalRoutineActualArgumentAST {
+abstract valueclass @abstractLexicalRoutineActualArgumentAST {
   @location mActualPassingModeLocation
 }
 
@@ -249,7 +249,7 @@ list @lexicalRoutineCallActualArgumentListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalRoutineInstructionAST : @lexicalInstructionAST {
+valueclass @lexicalRoutineInstructionAST : @lexicalInstructionAST {
   @lstring mRoutineName
   @lexicalRoutineCallActualArgumentListAST mActualArgumentList
   @lstringlist mErrorMessageList
@@ -257,18 +257,18 @@ class @lexicalRoutineInstructionAST : @lexicalInstructionAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalAttributeInputOutputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
+valueclass @lexicalAttributeInputOutputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
   @lstring mAttributeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @lexicalRoutineOrFunctionFormalInputArgumentAST {
+abstract valueclass @lexicalRoutineOrFunctionFormalInputArgumentAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalFormalInputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
+valueclass @lexicalFormalInputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
   @lexicalRoutineOrFunctionFormalInputArgumentAST mRoutineOrFunctionFormalInputArgument
 }
 
@@ -280,75 +280,75 @@ list @lexicalFunctionCallActualArgumentListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalAttributeInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
+valueclass @lexicalAttributeInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   @lstring mAttributeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalCharacterInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
+valueclass @lexicalCharacterInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   @lchar mCharacter
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalUnsignedInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
+valueclass @lexicalUnsignedInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   @luint mUnsigned
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalCurrentCharacterInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
+valueclass @lexicalCurrentCharacterInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   @location mLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalFunctionInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
+valueclass @lexicalFunctionInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   @lstring mFunctionName
   @lexicalFunctionCallActualArgumentListAST mFunctionActualArgumentList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalDropInstructionAST : @lexicalInstructionAST {
+valueclass @lexicalDropInstructionAST : @lexicalInstructionAST {
   @lstring mTerminalName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#class @lexicalOptionInstructionAST : @lexicalInstructionAST {
+#valueclass @lexicalOptionInstructionAST : @lexicalInstructionAST {
 #  @lstring mTerminalName
 #}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalErrorInstructionAST : @lexicalInstructionAST {
+valueclass @lexicalErrorInstructionAST : @lexicalInstructionAST {
   @lstring mErrorMessageName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalWarningInstructionAST : @lexicalInstructionAST {
+valueclass @lexicalWarningInstructionAST : @lexicalInstructionAST {
   @lstring mWarningMessageName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalTagInstructionAST : @lexicalInstructionAST {
+valueclass @lexicalTagInstructionAST : @lexicalInstructionAST {
   @lstring mLexicalTagName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalRewindInstructionAST : @lexicalInstructionAST {
+valueclass @lexicalRewindInstructionAST : @lexicalInstructionAST {
   @lstring mLexicalTagName
   @lstring mTerminalName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalLogInstructionAST : @lexicalInstructionAST {
+valueclass @lexicalLogInstructionAST : @lexicalInstructionAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -425,7 +425,7 @@ list @indexingListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexiqueComponentAST : @semanticDeclarationAST {
+valueclass @lexiqueComponentAST : @semanticDeclarationAST {
   @lstring mLexiqueComponentName
   @bool mIsTemplate
   @metamodelTemplateDelimitorListAST mTemplateDelimitorList
@@ -444,9 +444,9 @@ class @lexiqueComponentAST : @semanticDeclarationAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #           B U I L D    T E R M I N A L    M A P                                                                      *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @lexicalTypeEnum {

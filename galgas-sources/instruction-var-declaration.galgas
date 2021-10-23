@@ -1,15 +1,15 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                                                                                                *
+#   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @localVariableDeclarationAST : @semanticInstructionAST {
+valueclass @localVariableDeclarationAST : @semanticInstructionAST {
   @lstring mTypeName
   @lstring mVariableName
   @bool mIsUndefinedConstant
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                                                                                             *
+#   SYNTAX                                  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -36,7 +36,7 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                                                                                                   *
+#   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @localVariableDeclarationAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
@@ -44,7 +44,7 @@ override method @localVariableDeclarationAST enterInstructionInSemanticContext ?
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                                                                                                  *
+#   SEMANTIC ANALYSIS                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @localVariableDeclarationAST analyzeSemanticInstruction
@@ -70,10 +70,10 @@ override method @localVariableDeclarationAST analyzeSemanticInstruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                                                                                                    *
+#   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @localVariableDeclarationForGeneration : @semanticInstructionForGeneration {
+valueclass @localVariableDeclarationForGeneration : @semanticInstructionForGeneration {
   @unifiedTypeMap-entry mVariableType
   @string mCppVariableName
 }

@@ -1,18 +1,18 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#  Generate predefined types                                                                                           *
-#                                                                                                                      *
+#                                           
+#  Generate predefined types                
+#                                           
 #  Copyright (C) 2010, ..., 2014 Pierre Molinaro.                                                                      *
-#                                                                                                                      *
-#  e-mail : pierre@pcmolinaro.name                                                                                     *
-#                                                                                                                      *
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
-#                                                                                                                      *
+#                                           
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
-#  details.                                                                                                            *
-#                                                                                                                      *
+#  details.                                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! Grammar
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -217,9 +217,9 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 # P R O C E D U R E    I M P L E M E N T A T I O N                                                                     *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateProcedure
@@ -338,9 +338,9 @@ proc generateProcedure
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 # F U N C T I O N    I M P L E M E N A T I O N                                                                         *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateFunction
@@ -423,9 +423,9 @@ proc generateFunction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 # E X T E N S I O N    M O D I F I E R    I M P L E M E N T A T I O N                                                  *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateExtensionSetter
@@ -519,9 +519,9 @@ proc generateExtensionSetter
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 # E X T E N S I O N    M E T H O D    I M P L E M E N T A T I O N                                                      *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateExtensionMethod
@@ -635,9 +635,9 @@ proc generateExtensionMethod
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 # E X T E N S I O N    R E A D E R    I M P L E M E N T A T I O N                                                      *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateExtensionGetter
@@ -767,9 +767,9 @@ sortedlist @keySortedList {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #           G E N E R A T I O N    F I L E W R A P P E R S                                                             *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper typeGenerationTemplate in "../generation_templates/type_generation" {
@@ -877,6 +877,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string SUPER_TYPE_IDENTIFIER
     ?@bool IS_ABSTRACT
     ?@bool HAS_DEFAULT_CONSTRUCTOR
+    ?@bool IS_REFERENCE
 
   template classTypeHeader2part1 "GALGAS_class.h2-part1.galgasTemplate"
     ?@string TYPE_NAME
@@ -902,14 +903,14 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedPropertyList ALL_ATTRIBUTE_LIST
     ?@typedPropertyList INHERITED_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
-    ?@bool IS_SHARED
+    ?@bool IS_REFERENCE
     ?@bool HAS_DEFAULT_CONSTRUCTOR
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #           G E N E R A T I O N    F I L E W R A P P E R S                                                             *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper semanticComponentGenerationTemplate in "../generation_templates/semantic_generation" {
@@ -1531,9 +1532,9 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #           G E N E R A T I O N    F I L E W R A P P E R S                                                             *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper predefinedTypeGenerationTemplate in "../generation_templates/type_generation" {
@@ -1730,9 +1731,9 @@ proc generatePredefinedTypeFiles
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #           G E N E R A T I O N    F I L E W R A P P E R S                                                             *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper semanticFileGenerationTemplate in "../generation_templates/semantic_generation" {

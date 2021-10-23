@@ -4,7 +4,11 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %AC_GALGAS_class% else %GALGAS_%!SUPER_TYPE_IDENTIFIER end% {
+class GALGAS_%!TYPE_IDENTIFIER% : public %
+  if SUPER_TYPE_IDENTIFIER == ""
+  then if IS_REFERENCE then %AC_GALGAS_reference_class% else %AC_GALGAS_value_class% end
+  else %GALGAS_%!SUPER_TYPE_IDENTIFIER
+  end% {
 //--------------------------------- Default constructor
   public: GALGAS_%!TYPE_IDENTIFIER% (void) ;
 

@@ -13,11 +13,11 @@ proc testsuite_extension_setters {
   typeCastInSetterCall ()
 }
 
-abstract class @abstractTestExtensionSetter {
+abstract valueclass @abstractTestExtensionSetter {
   @uint mInteger
 }
 
-class @TestExtensionSetter : @abstractTestExtensionSetter {
+valueclass @TestExtensionSetter : @abstractTestExtensionSetter {
   @string mString
 }
 
@@ -32,7 +32,7 @@ setter @TestExtensionSetter setter1 ?!@uint ioArg {
 }
 
 
-class @overridingTestExtensionSetter : @abstractOverridingTestExtensionSetter {
+valueclass @overridingTestExtensionSetter : @abstractOverridingTestExtensionSetter {
   @uint mOtherInteger
 }
 
@@ -50,11 +50,11 @@ override setter @overridingTestExtensionSetter m { }
 
 override abstract setter @abstractOverridingTestExtensionSetter m
 
-abstract class @abstractOverridingTestExtensionSetter : @TestExtensionSetter {
+abstract valueclass @abstractOverridingTestExtensionSetter : @TestExtensionSetter {
   @string mOtherString
 }
 
-class @adjMat{
+valueclass @adjMat{
    @uint dim
    @stringlist nodes
 }
@@ -65,7 +65,7 @@ setter @adjMat addNode {
 }
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-#   TYPE CAST IN SETTER CALL                                                                                           *
+#   TYPE CAST IN SETTER CALL                
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 private proc typeCastInSetterCall {
@@ -74,9 +74,9 @@ private proc typeCastInSetterCall {
 
 }
 
-class @baseClassForTypeCastInSetterCall {}
+valueclass @baseClassForTypeCastInSetterCall {}
 
-class @inheritedClassForTypeCastInSetterCall : @baseClassForTypeCastInSetterCall {}
+valueclass @inheritedClassForTypeCastInSetterCall : @baseClassForTypeCastInSetterCall {}
 
 setter @inheritedClassForTypeCastInSetterCall unSetter {
   message "Appel @inheritedClassForTypeCastInSetterCall unSetter\n"

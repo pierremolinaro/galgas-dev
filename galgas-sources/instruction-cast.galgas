@@ -12,7 +12,7 @@ list @castInstructionBranchListAST {
 
 #······················································································································*
 
-class @structuredCastInstructionAST : @semanticInstructionAST {
+valueclass @structuredCastInstructionAST : @semanticInstructionAST {
   @semanticExpressionAST mCastExpression
   @castInstructionBranchListAST mCastInstructionBranchList
   @semanticInstructionListAST mElseInstructionList
@@ -231,7 +231,7 @@ list @castInstructionBranchListForGeneration {
 
 #······················································································································*
 
-class @structuredCastInstructionForGeneration : @semanticInstructionForGeneration {
+valueclass @structuredCastInstructionForGeneration : @semanticInstructionForGeneration {
   @semanticExpressionForGeneration mExpression
   @castInstructionBranchListForGeneration mCastBranchList
   @semanticInstructionListForGeneration mElseInstructionList

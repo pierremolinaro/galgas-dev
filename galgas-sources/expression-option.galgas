@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @optionExpressionAST : @semanticExpressionAST {
+valueclass @optionExpressionAST : @semanticExpressionAST {
   @lstring mOptionComponentName
   @lstring mOptionEntryName
   @lstring mOptionGetterName
@@ -141,7 +141,7 @@ override method @optionExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @optionValueExpressionForGeneration : @semanticExpressionForGeneration {
+valueclass @optionValueExpressionForGeneration : @semanticExpressionForGeneration {
   @bool mOptionComponentIsPredefined
   @string mOptionComponentName
   @string mOptionEntryName
@@ -164,7 +164,7 @@ override method @optionValueExpressionForGeneration generateExpression
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @optionCharExpressionForGeneration : @semanticExpressionForGeneration {
+valueclass @optionCharExpressionForGeneration : @semanticExpressionForGeneration {
   @bool mOptionComponentIsPredefined
   @string mOptionComponentName
   @string mOptionEntryName
@@ -187,7 +187,7 @@ override method @optionCharExpressionForGeneration generateExpression
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @optionStringExpressionForGeneration : @semanticExpressionForGeneration {
+valueclass @optionStringExpressionForGeneration : @semanticExpressionForGeneration {
   @bool mOptionComponentIsPredefined
   @string mOptionComponentName
   @string mOptionEntryName
@@ -225,7 +225,7 @@ override method @optionCommentExpressionForGeneration generateExpression
 
 #·······················································································································
 
-class @optionCommentExpressionForGeneration : @semanticExpressionForGeneration {
+valueclass @optionCommentExpressionForGeneration : @semanticExpressionForGeneration {
   @bool mOptionComponentIsPredefined
   @string mOptionComponentName
   @string mOptionEntryName

@@ -1,8 +1,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                                                                                                *
+#   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @dictDeclarationAST : @semanticDeclarationAST {
+valueclass @dictDeclarationAST : @semanticDeclarationAST {
   @lstring mDictTypeName
   @lstring mKeyTypeName
   @lstringlist mAttributeList
@@ -16,7 +16,7 @@ override getter @dictDeclarationAST keyRepresentation ->@string outString {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                                                                                             *
+#   SYNTAX                                  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -61,7 +61,7 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ASSOCIATED ELEMENT                                                                                                 *
+#   ASSOCIATED ELEMENT                      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @dictDeclarationAST addAssociatedElement ?!@semanticDeclarationListAST ioSemanticDeclarationList {
@@ -79,7 +79,7 @@ override method @dictDeclarationAST addAssociatedElement ?!@semanticDeclarationL
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                                                                                                     *
+#   ENTER IN GRAPH                          
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @dictDeclarationAST enterDeclarationInGraph
@@ -98,7 +98,7 @@ override method @dictDeclarationAST enterDeclarationInGraph
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN SEMANTIC CONTEXT                                                                                          *
+#   ENTER IN SEMANTIC CONTEXT               
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @dictDeclarationAST enterInSemanticContext
@@ -308,7 +308,7 @@ override method @dictDeclarationAST enterInSemanticContext
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                                                                                                  *
+#   SEMANTIC ANALYSIS                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc check_K_escapeCharacters ?@lstring inString {  #--- Check escape sequences : only %K or %%
@@ -406,10 +406,10 @@ override method @dictDeclarationAST semanticAnalysis
 }
   
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                                                                                                    *
+#   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @dictTypeForGeneration : @semanticTypeForGeneration {
+valueclass @dictTypeForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-entry mElementTypeEntry
   @lstring mDictTypeName
   @typedPropertyList mTypedAttributeList

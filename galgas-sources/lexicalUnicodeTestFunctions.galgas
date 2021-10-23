@@ -1,20 +1,20 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#  Lexical Unicode Test Functions                                                                                      *
-#                                                                                                                      *
+#                                           
+#  Lexical Unicode Test Functions           
+#                                           
 #  Copyright (C) 2017, ..., 2017 Pierre Molinaro.                                                                      *
-#                                                                                                                      *
-#  e-mail : pierre@pcmolinaro.name                                                                                     *
-#                                                                                                                      *
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
-#                                                                                                                      *
+#                                           
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
-#  details.                                                                                                            *
-#                                                                                                                      *
+#  details.                                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                                                                                                *
+#   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalFunctionListAST {
@@ -24,37 +24,37 @@ list @lexicalFunctionListAST {
 
 #······················································································································*
 
-abstract class @lexicalFunctionExpressionAST {
+abstract valueclass @lexicalFunctionExpressionAST {
 }
 
 #······················································································································*
 
-class @lexicalFunctionOrExpressionAST : @lexicalFunctionExpressionAST {
+valueclass @lexicalFunctionOrExpressionAST : @lexicalFunctionExpressionAST {
   @lexicalFunctionExpressionAST mLeftOperand
   @lexicalFunctionExpressionAST mRightOperand
 }
 
 #······················································································································*
 
-class @lexicalFunctionCallAST : @lexicalFunctionExpressionAST {
+valueclass @lexicalFunctionCallAST : @lexicalFunctionExpressionAST {
   @lstring mCalledFunctionName
 }
 
 #······················································································································*
 
-class @lexicalFunctionCharacterMatchAST : @lexicalFunctionExpressionAST {
+valueclass @lexicalFunctionCharacterMatchAST : @lexicalFunctionExpressionAST {
   @lchar mCharacter
 }
 
 #······················································································································*
 
-class @lexicalFunctionCharacterIntervalMatchAST : @lexicalFunctionExpressionAST {
+valueclass @lexicalFunctionCharacterIntervalMatchAST : @lexicalFunctionExpressionAST {
   @lchar mLowerBound
   @lchar mUpperBound
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   Production rules                                                                                                   *
+#   Production rules                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3LexiqueComponentSyntax {
@@ -112,7 +112,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                                                                                                  *
+#   SEMANTIC ANALYSIS                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc lexicalUnicodeTestFunctionAnalysis
@@ -161,7 +161,7 @@ proc lexicalUnicodeTestFunctionAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   checkUnicodeConstants                                                                                              *
+#   checkUnicodeConstants                   
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @lexicalFunctionExpressionAST checkUnicodeConstants
@@ -192,7 +192,7 @@ override method @lexicalFunctionCharacterIntervalMatchAST checkUnicodeConstants 
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   callsDefinedUnicodeTestFunctions                                                                                   *
+#   callsDefinedUnicodeTestFunctions        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract getter @lexicalFunctionExpressionAST callsDefinedUnicodeTestFunctions ?let @stringset inDefinedUnicodeFunctionSet -> @bool
@@ -231,7 +231,7 @@ override getter @lexicalFunctionCharacterIntervalMatchAST callsDefinedUnicodeTes
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   generateForUnicodeTestFunctions                                                                                    *
+#   generateForUnicodeTestFunctions         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract getter @lexicalFunctionExpressionAST generateForUnicodeTestFunctions -> @string

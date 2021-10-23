@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @methodCallInstructionAST : @semanticInstructionAST {
+valueclass @methodCallInstructionAST : @semanticInstructionAST {
   @semanticExpressionAST mReceiverExpression
   @lstring mMethodName
   @actualParameterListAST mActualParameterList
@@ -123,7 +123,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
 #! GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @methodCallInstructionForGeneration : @semanticInstructionForGeneration {
+valueclass @methodCallInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @unifiedTypeMap-entry mReceiverType
   @semanticExpressionForGeneration mReceiverExpression

@@ -1,8 +1,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                                                                                                *
+#   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @externTypeDeclarationAST : @semanticDeclarationAST {
+valueclass @externTypeDeclarationAST : @semanticDeclarationAST {
   @lstring mExternTypeName
   @string mCppPreDeclarationCode
   @string mCppClassCode
@@ -53,7 +53,7 @@ list @externTypeMethodList {
 
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                                                                                             *
+#   SYNTAX                                  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -178,7 +178,7 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                                                                                                     *
+#   ENTER IN GRAPH                          
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @externTypeDeclarationAST enterDeclarationInGraph
@@ -192,7 +192,7 @@ override method @externTypeDeclarationAST enterDeclarationInGraph
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                                                                                                   *
+#   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @externTypeDeclarationAST enterInSemanticContext
@@ -321,7 +321,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                                                                                                  *
+#   SEMANTIC ANALYSIS                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @externTypeDeclarationAST semanticAnalysis
@@ -347,10 +347,10 @@ override method @externTypeDeclarationAST semanticAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                                                                                                    *
+#   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @externTypeDeclarationForGeneration : @semanticTypeForGeneration {
+valueclass @externTypeDeclarationForGeneration : @semanticTypeForGeneration {
   @string mExternTypeName
   @string mCppPreDeclarationCode
   @string mCppClassCode

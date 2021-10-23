@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @ifExpressionAST : @semanticExpressionAST {
+valueclass @ifExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mIfExpression
   @semanticExpressionAST mThenExpression
@@ -114,7 +114,7 @@ override method @ifExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @ifExpressionForGeneration : @semanticExpressionForGeneration {
+valueclass @ifExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mIfExpression
   @semanticExpressionForGeneration mThenExpression
   @semanticExpressionForGeneration mElseExpression

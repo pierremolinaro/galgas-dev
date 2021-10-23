@@ -2832,7 +2832,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstruction
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_syntaxInstructionAST : public AC_GALGAS_class {
+class GALGAS_syntaxInstructionAST : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_syntaxInstructionAST (void) ;
 
@@ -3187,7 +3187,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstruction
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_semanticInstructionForGeneration : public AC_GALGAS_class {
+class GALGAS_semanticInstructionForGeneration : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_semanticInstructionForGeneration (void) ;
 
@@ -3327,7 +3327,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstruction
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_semanticExpressionAST : public AC_GALGAS_class {
+class GALGAS_semanticExpressionAST : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_semanticExpressionAST (void) ;
 
@@ -3660,7 +3660,7 @@ class GALGAS_string extensionGetter_formalArgumentString (const class GALGAS_for
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_actualParameterAST : public AC_GALGAS_class {
+class GALGAS_actualParameterAST : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_actualParameterAST (void) ;
 
@@ -4134,7 +4134,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterList
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_abstractInputParameter : public AC_GALGAS_class {
+class GALGAS_abstractInputParameter : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_abstractInputParameter (void) ;
 

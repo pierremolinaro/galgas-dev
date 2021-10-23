@@ -1,5 +1,5 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                                                                                                *
+#   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @sortedListSortDescriptorListAST {
@@ -9,14 +9,14 @@ list @sortedListSortDescriptorListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @sortedListDeclarationAST : @semanticDeclarationAST {
+valueclass @sortedListDeclarationAST : @semanticDeclarationAST {
   @lstring mSortedListTypeName
   @propertyInCollectionListAST mPropertyList
   @sortedListSortDescriptorListAST mSortDescriptorList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                                                                                             *
+#   SYNTAX                                  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -72,7 +72,7 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                                                                                                     *
+#   ENTER IN GRAPH                          
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @sortedListDeclarationAST enterDeclarationInGraph
@@ -89,7 +89,7 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                                                                                                   *
+#   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @sortedListDeclarationAST addAssociatedElement
@@ -247,7 +247,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                                                                                                  *
+#   SEMANTIC ANALYSIS                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @sortedListDeclarationAST semanticAnalysis
@@ -304,7 +304,7 @@ override method @sortedListDeclarationAST semanticAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                                                                                                    *
+#   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @sortDescriptorListForGeneration {
@@ -315,7 +315,7 @@ list @sortDescriptorListForGeneration {
 
 #·······················································································································
 
-class @sortedListTypeForGeneration : @semanticTypeForGeneration {
+valueclass @sortedListTypeForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-entry mListElementTypeIndex
   @typedPropertyList mTypedAttributeList
   @sortDescriptorListForGeneration mSortDescriptorList

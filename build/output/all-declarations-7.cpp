@@ -8155,13 +8155,13 @@ typeComparisonResult GALGAS_abstractCollectionValueElement::objectCompare (const
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_abstractCollectionValueElement::GALGAS_abstractCollectionValueElement (void) :
-AC_GALGAS_class (false) {
+AC_GALGAS_value_class () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_abstractCollectionValueElement::GALGAS_abstractCollectionValueElement (const cPtr_abstractCollectionValueElement * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, false) {
+AC_GALGAS_value_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractCollectionValueElement) ;
 }
 
@@ -9220,13 +9220,13 @@ typeComparisonResult GALGAS_abstractCollectionValueElementForGeneration::objectC
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_abstractCollectionValueElementForGeneration::GALGAS_abstractCollectionValueElementForGeneration (void) :
-AC_GALGAS_class (false) {
+AC_GALGAS_value_class () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_abstractCollectionValueElementForGeneration::GALGAS_abstractCollectionValueElementForGeneration (const cPtr_abstractCollectionValueElementForGeneration * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, false) {
+AC_GALGAS_value_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractCollectionValueElementForGeneration) ;
 }
 

@@ -1,15 +1,15 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                                                                                                *
+#   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @abstractExtensionMethodAST : @semanticDeclarationAST {
+valueclass @abstractExtensionMethodAST : @semanticDeclarationAST {
   @lstring mTypeName
   @lstring mAbstractExtensionMethodName
   @formalParameterListAST mAbstractExtensionMethodFormalParameterList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                                                                                             *
+#   SYNTAX                                  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -35,7 +35,7 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                                                                                                     *
+#   ENTER IN GRAPH                          
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @abstractExtensionMethodAST enterDeclarationInGraph
@@ -64,7 +64,7 @@ override method @abstractExtensionMethodAST enterDeclarationInGraph
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   KEY REPRESENTATION                                                                                                 *
+#   KEY REPRESENTATION                      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @abstractExtensionMethodAST keyRepresentation
@@ -73,7 +73,7 @@ override getter @abstractExtensionMethodAST keyRepresentation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                                                                                                   *
+#   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @abstractExtensionMethodAST enterInSemanticContext
@@ -84,7 +84,7 @@ override method @abstractExtensionMethodAST enterInSemanticContext
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                                                                                                  *
+#   SEMANTIC ANALYSIS                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @abstractExtensionMethodAST semanticAnalysis
@@ -129,7 +129,7 @@ override method @abstractExtensionMethodAST semanticAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   EXTENSION LIST MAPS                                                                                                *
+#   EXTENSION LIST MAPS                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @abstractExtensionMethodAST buildExtensionListMaps
@@ -151,10 +151,10 @@ override method @abstractExtensionMethodAST buildExtensionListMaps
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                                                                                                    *
+#   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
+valueclass @abstractExtensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @unifiedTypeMap-entry mReceiverType
   @string mAbstractExtensionMethodName
   @formalParameterListForGeneration mAbstractExtensionMethodFormalParameterList

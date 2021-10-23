@@ -1,10 +1,10 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                                                                                                *
+#   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @classDeclarationAST : @semanticDeclarationAST {
+valueclass @classDeclarationAST : @semanticDeclarationAST {
   @bool mIsAbstract
-  @bool mIsShared
+  @bool mIsReference
   @lstring mClassTypeName
   @lstring mSuperClassName # Empty if no super class
   @lstringlist mClassFeatureList
@@ -12,34 +12,34 @@ class @classDeclarationAST : @semanticDeclarationAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                                                                                             *
+#   SYNTAX                                  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     @bool isAbstract
-    @bool isShared
     select
-      isShared = false
-      isAbstract = false
-    or
-      $shared$
-      isShared = true
       isAbstract = false
     or
       $abstract$
       isAbstract = true
-      select
-        isShared = false
-      or
-        $shared$
-        isShared = true
-      end
     end
-    $class$
-    if [option galgas_cli_options.errorSharedClassDeclaration value] & isShared then
-      error .here : "shared"
+    @bool isShared
+    select
+      $class$
+      if [option galgas_cli_options.errorClassDeclaration value] then
+        error .here : "'class' declaration is obsolete, use 'valueclass'"
+      else
+        warning .here : "'class' declaration is obsolete, use 'valueclass'"
+      end
+      isShared = false
+    or
+      $valueclass$
+      isShared = false
+    or
+      $refclass$
+      isShared = true
     end
     $@type$ ?let @lstring className indexing classDefinition
     @lstring mSuperClassName # Empty if no super class
@@ -80,7 +80,7 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                                                                                                     *
+#   ENTER IN GRAPH                          
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @classDeclarationAST enterDeclarationInGraph
@@ -101,7 +101,7 @@ override method @classDeclarationAST enterDeclarationInGraph
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                                                                                                   *
+#   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @classDeclarationAST enterInSemanticContext
@@ -318,7 +318,7 @@ override method @classDeclarationAST enterInSemanticContext
     !self.mIsPredefined
     !not self.mIsAbstract # Concrete Type
     !superClassIndex
-    !@typeKindEnum.classType {!isShared: self.mIsShared}
+    !@typeKindEnum.classType {!isShared: self.mIsReference}
     !false # Does not support collection value
     !allTypedAttributeList
     !attributeMap
@@ -345,7 +345,7 @@ override method @classDeclarationAST enterInSemanticContext
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                                                                                                  *
+#   SEMANTIC ANALYSIS                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @classDeclarationAST semanticAnalysis
@@ -370,15 +370,15 @@ override method @classDeclarationAST semanticAnalysis
     then @unifiedTypeMap-entry.null
     else @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mSuperClassName}
   end
-#------ check "shared" status:
+#------ check "reference" status:
 # a base class can be freely declared as shared or not
 # a class should the same 'shared' shared status as its super class
   if superClassEntry != .null then
-    [[superClassEntry mTypeKindEnum] classType ?isShared:let superClassIsShared]
-    if superClassIsShared & not self.mIsShared then
-      error self.mClassTypeName : "this class should be declared with 'shared' qualifier, as its super class"
-    elsif not superClassIsShared & self.mIsShared then
-      error self.mClassTypeName : "this class should be declared with no 'shared' qualifier, as its super class"
+    [[superClassEntry mTypeKindEnum] classType ?isShared: let superClassIsReference]
+    if superClassIsReference & not self.mIsReference then
+      error self.mClassTypeName : "this class should be declared by 'refClass', as its super class"
+    elsif not superClassIsReference & self.mIsReference then
+      error self.mClassTypeName : "this class should be declared by 'valueclass', as its super class"
     end
   end
 #------ Super type, and class features
@@ -463,7 +463,7 @@ override method @classDeclarationAST semanticAnalysis
     !@classTypeForGeneration.new {
       !selfType
       !self.mIsAbstract
-      !self.mIsShared
+      !self.mIsReference
       !superClassEntry
       !allAttributeList
       !typedAttributeList
@@ -472,12 +472,12 @@ override method @classDeclarationAST semanticAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                                                                                                    *
+#   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @classTypeForGeneration : @semanticTypeForGeneration {
+valueclass @classTypeForGeneration : @semanticTypeForGeneration {
   @bool mIsAbstract
-  @bool mIsShared
+  @bool mIsReference
   @unifiedTypeMap-entry mSuperClass # Null if no super class
   @typedPropertyList mAllTypedAttributeList # Inherited followed by current attributes
   @typedPropertyList mTypedAttributeList
@@ -500,6 +500,7 @@ override method @classTypeForGeneration appendDeclaration1
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
     !self.mIsAbstract
     ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
+    !self.mIsReference
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![self.mSelfTypeEntry  key]
@@ -593,9 +594,9 @@ override method @classTypeForGeneration appendSpecificImplementation
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
     !self.mTypedAttributeList
     !self.mAllTypedAttributeList
-    ![self.mAllTypedAttributeList subListWithRange !@range.new {!0 ![self.mAllTypedAttributeList length] - [self.mTypedAttributeList length]}]
+    ![self.mAllTypedAttributeList subListWithRange !.new {!0 ![self.mAllTypedAttributeList length] - [self.mTypedAttributeList length]}]
     !self.mIsAbstract
-    !self.mIsShared
+    !self.mIsReference
     ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
   ]
 }

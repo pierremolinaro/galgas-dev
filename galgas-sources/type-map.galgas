@@ -1,5 +1,5 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                                                                                                *
+#   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @insertMethodListAST {
@@ -33,7 +33,7 @@ list @insertOrReplaceDeclarationListAST {
 
 #·······················································································································
 
-class @mapDeclarationAST : @semanticDeclarationAST {
+valueclass @mapDeclarationAST : @semanticDeclarationAST {
   @lstring mMapTypeName
   @lstringlist mAttributeList
   @propertyInCollectionListAST mPropertyList
@@ -50,7 +50,7 @@ override getter @mapDeclarationAST keyRepresentation ->@string outString {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                                                                                             *
+#   SYNTAX                                  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -178,7 +178,7 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ASSOCIATED ELEMENT                                                                                                 *
+#   ASSOCIATED ELEMENT                      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mapDeclarationAST addAssociatedElement
@@ -205,7 +205,7 @@ override method @mapDeclarationAST addAssociatedElement
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                                                                                                     *
+#   ENTER IN GRAPH                          
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mapDeclarationAST enterDeclarationInGraph
@@ -222,7 +222,7 @@ override method @mapDeclarationAST enterDeclarationInGraph
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN SEMANTIC CONTEXT                                                                                          *
+#   ENTER IN SEMANTIC CONTEXT               
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mapDeclarationAST enterInSemanticContext
@@ -553,7 +553,7 @@ override method @mapDeclarationAST enterInSemanticContext
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                                                                                                  *
+#   SEMANTIC ANALYSIS                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @insertMethodMap {
@@ -664,10 +664,10 @@ override method @mapDeclarationAST semanticAnalysis
 }
   
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                                                                                                    *
+#   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @mapTypeForGeneration : @semanticTypeForGeneration {
+valueclass @mapTypeForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-entry mElementTypeEntry
   @lstring mMapTypeName
   @typedPropertyList mTypedAttributeList

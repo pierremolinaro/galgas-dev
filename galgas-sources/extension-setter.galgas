@@ -1,8 +1,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                                                                                                *
+#   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @extensionSetterAST : @semanticDeclarationAST {
+valueclass @extensionSetterAST : @semanticDeclarationAST {
   @lstring mTypeName
   @lstring mExtensionSetterName
   @formalParameterListAST mExtensionSetterFormalParameterList
@@ -11,7 +11,7 @@ class @extensionSetterAST : @semanticDeclarationAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                                                                                             *
+#   SYNTAX                                  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -42,7 +42,7 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   KEY REPRESENTATION                                                                                                 *
+#   KEY REPRESENTATION                      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @extensionSetterAST keyRepresentation
@@ -51,7 +51,7 @@ override getter @extensionSetterAST keyRepresentation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   DECLARATION GRAPH                                                                                                  *
+#   DECLARATION GRAPH                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @extensionSetterAST enterDeclarationInGraph
@@ -79,7 +79,7 @@ override method @extensionSetterAST enterDeclarationInGraph
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                                                                                                   *
+#   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @extensionSetterAST enterInSemanticContext
@@ -91,7 +91,7 @@ override method @extensionSetterAST enterInSemanticContext
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                                                                                                  *
+#   SEMANTIC ANALYSIS                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @extensionSetterAST semanticAnalysis
@@ -162,7 +162,7 @@ override method @extensionSetterAST semanticAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   EXTENSION LIST MAPS                                                                                                *
+#   EXTENSION LIST MAPS                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @extensionSetterAST buildExtensionListMaps
@@ -185,10 +185,10 @@ override method @extensionSetterAST buildExtensionListMaps
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                                                                                                    *
+#   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @extensionSetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
+valueclass @extensionSetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @unifiedTypeMap-entry mReceiverType
   @string mExtensionSetterName
   @bool mImplementedAsFunction

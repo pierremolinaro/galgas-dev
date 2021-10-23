@@ -1,8 +1,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                                                                                                *
+#   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @overridingExtensionSetterAST : @semanticDeclarationAST {
+valueclass @overridingExtensionSetterAST : @semanticDeclarationAST {
   @lstring mTypeName
   @lstring mOverridingExtensionSetterName
   @formalParameterListAST mOverridingExtensionSetterFormalParameterList
@@ -11,7 +11,7 @@ class @overridingExtensionSetterAST : @semanticDeclarationAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                                                                                             *
+#   SYNTAX                                  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -43,7 +43,7 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                                                                                                     *
+#   ENTER IN GRAPH                          
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionSetterAST enterDeclarationInGraph
@@ -57,7 +57,7 @@ override method @overridingExtensionSetterAST enterDeclarationInGraph
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   KEY REPRESENTATION                                                                                                 *
+#   KEY REPRESENTATION                      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @overridingExtensionSetterAST keyRepresentation -> @string outString {
@@ -65,7 +65,7 @@ override getter @overridingExtensionSetterAST keyRepresentation -> @string outSt
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                                                                                                   *
+#   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionSetterAST enterInSemanticContext
@@ -77,7 +77,7 @@ override method @overridingExtensionSetterAST enterInSemanticContext
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                                                                                                  *
+#   SEMANTIC ANALYSIS                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionSetterAST semanticAnalysis
@@ -172,7 +172,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   EXTENSION LIST MAP                                                                                                 *
+#   EXTENSION LIST MAP                      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionSetterAST buildExtensionListMaps
@@ -195,10 +195,10 @@ override method @overridingExtensionSetterAST buildExtensionListMaps
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                                                                                                    *
+#   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @overridingExtensionSetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
+valueclass @overridingExtensionSetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @unifiedTypeMap-entry mReceiverType
   @string mBaseTypeName
   @string mExtensionSetterName

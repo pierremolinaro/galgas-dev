@@ -1257,7 +1257,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnume
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_abstractEnumeratedCollectionAST : public AC_GALGAS_class {
+class GALGAS_abstractEnumeratedCollectionAST : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_abstractEnumeratedCollectionAST (void) ;
 

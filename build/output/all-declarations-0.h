@@ -284,7 +284,7 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_templateInstructionAST : public AC_GALGAS_class {
+class GALGAS_templateInstructionAST : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_templateInstructionAST (void) ;
 
@@ -558,7 +558,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_templateExpressionAST : public AC_GALGAS_class {
+class GALGAS_templateExpressionAST : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_templateExpressionAST (void) ;
 
@@ -6395,7 +6395,7 @@ void routine_enterTemplateString (class GALGAS_templateInstructionListAST & ioAr
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_templateInstructionForGeneration : public AC_GALGAS_class {
+class GALGAS_templateInstructionForGeneration : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_templateInstructionForGeneration (void) ;
 
@@ -6982,7 +6982,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_semanticExpressionForGeneration : public AC_GALGAS_class {
+class GALGAS_semanticExpressionForGeneration : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_semanticExpressionForGeneration (void) ;
 

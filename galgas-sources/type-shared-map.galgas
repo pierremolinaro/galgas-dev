@@ -1,20 +1,20 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#  shared map type                                                                                                     *
-#                                                                                                                      *
+#                                           
+#  shared map type                          
+#                                           
 #  Copyright (C) 2015, ..., 2015 Pierre Molinaro.                                                                      *
-#                                                                                                                      *
-#  e-mail : pierre@pcmolinaro.name                                                                                     *
-#                                                                                                                      *
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
-#                                                                                                                      *
+#                                           
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
-#  details.                                                                                                            *
-#                                                                                                                      *
+#  details.                                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                                                                                                *
+#   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @mapAutomatonMessageKind {
@@ -69,7 +69,7 @@ list @sharedMapAttributeListAST {
 
 #·······················································································································
 
-class @sharedMapDeclarationAST : @semanticDeclarationAST {
+valueclass @sharedMapDeclarationAST : @semanticDeclarationAST {
   @lstring mMapTypeName
   @lstringlist mAttributeList
   @propertyInCollectionListAST mPropertyList
@@ -81,7 +81,7 @@ class @sharedMapDeclarationAST : @semanticDeclarationAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                                                                                             *
+#   SYNTAX                                  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -309,7 +309,7 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                                                                                                     *
+#   ENTER IN GRAPH                          
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @sharedMapDeclarationAST enterDeclarationInGraph
@@ -333,7 +333,7 @@ override getter @sharedMapDeclarationAST keyRepresentation -> @string outString 
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN SEMANTIC CONTEXT                                                                                          *
+#   ENTER IN SEMANTIC CONTEXT               
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @sharedMapDeclarationAST enterInSemanticContext
@@ -678,7 +678,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                                                                                                  *
+#   SEMANTIC ANALYSIS                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 sortedlist @mapStateTransitionSortedList {
@@ -1134,10 +1134,10 @@ override method @sharedMapDeclarationAST semanticAnalysis
 }
    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                                                                                                    *
+#   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @sharedMapTypeForGeneration : @semanticTypeForGeneration {
+valueclass @sharedMapTypeForGeneration : @semanticTypeForGeneration {
 #  @string mMapEntryTypeName
   @typedPropertyList mTypedAttributeList
   @insertMethodListAST mInsertMethodList

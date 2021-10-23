@@ -1,37 +1,37 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#  Grammar Semantics                                                                                                   *
-#                                                                                                                      *
+#                                           
+#  Grammar Semantics                        
+#                                           
 #  Copyright (C) 2009, ..., 2011 Pierre Molinaro.                                                                      *
-#                                                                                                                      *
-#  e-mail : pierre@pcmolinaro.name                                                                                     *
-#                                                                                                                      *
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
-#                                                                                                                      *
+#                                           
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
-#  details.                                                                                                            *
-#                                                                                                                      *
+#  details.                                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #         Instruction abstract class for grammar component                                                             *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @abstractSyntaxInstructionForGrammarAnalysis %generatedInSeparateFile {
+abstract valueclass @abstractSyntaxInstructionForGrammarAnalysis %generatedInSeparateFile {
   @location mStartLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#        Syntax signature                                                                                              *
+#                                           
+#        Syntax signature                   
 #      (sequence of terminal, nonterminal, select and repeat)                                                          *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @syntaxInstructionListForGrammarAnalysis {
@@ -39,9 +39,9 @@ list @syntaxInstructionListForGrammarAnalysis {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #   Production rules list (for a grammar component)                                                                    *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @productionRuleListForGrammarAnalysis {
@@ -59,9 +59,9 @@ map @unusedNonTerminalSymbolMapForGrammarAnalysis {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #             nonterminal symbols sorted list                                                                          *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 sortedlist @nonTerminalSymbolSortedListForGrammarAnalysis {
@@ -73,31 +73,31 @@ sortedlist @nonTerminalSymbolSortedListForGrammarAnalysis {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#   Terminal call instruction                                                                                          *
-#                                                                                                                      *
+#                                           
+#   Terminal call instruction               
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+valueclass @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   @lstring mTerminalSymbolName
   @uint mTerminalSymbolIndex
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#   Nonterminal call instruction                                                                                       *
-#                                                                                                                      *
+#                                           
+#   Nonterminal call instruction            
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @nonTerminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+valueclass @nonTerminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   @lstring mNonterminalSymbolName
   @uint mNonterminalSymbolIndex
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 # Liste of branches of a 'select' or 'repeat' instruction                                                              *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @branchListForGrammarAnalysis {
@@ -105,31 +105,31 @@ list @branchListForGrammarAnalysis {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #   select instruction (for a grammar component)                                                                       *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+valueclass @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   @branchListForGrammarAnalysis mSelectBranchList
   @uint mAddedNonTerminalSymbolIndex
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#   repeat instruction                                                                                                 *
-#                                                                                                                      *
+#                                           
+#   repeat instruction                      
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @repeatInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+valueclass @repeatInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   @branchListForGrammarAnalysis mRepeatBranchList
   @uint mAddedNonTerminalSymbolIndex
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#    List of syntax components For Grammar                                                                             *
-#                                                                                                                      *
+#                                           
+#    List of syntax components For Grammar  
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @syntaxComponentListForGrammarAnalysis {
@@ -138,9 +138,9 @@ list @syntaxComponentListForGrammarAnalysis {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#      Terminal symbol map                                                                                             *
-#                                                                                                                      *
+#                                           
+#      Terminal symbol map                  
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @terminalSymbolsMapForGrammarAnalysis {

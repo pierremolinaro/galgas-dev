@@ -1,9 +1,9 @@
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
-#                                                                                                                      *
+#                                           
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
-#  details.                                                                                                            *
+#  details.                                 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private filewrapper targetGalgas3GenerationFileWrapper in "../generation_templates/target_generation" {
@@ -947,8 +947,10 @@ proc updateGalgas3Targets
       !groupName:"Galgas 2"
       !groupPath:"galgas2"
       !fileNames:{
-        !"AC_GALGAS_class.cpp",
-        !"AC_GALGAS_class.h",
+        !"AC_GALGAS_reference_class.cpp",
+        !"AC_GALGAS_reference_class.h",
+        !"AC_GALGAS_value_class.cpp",
+        !"AC_GALGAS_value_class.h",
         !"AC_GALGAS_enumAssociatedValues.cpp",
         !"AC_GALGAS_enumAssociatedValues.h",
         !"AC_GALGAS_graph.cpp",

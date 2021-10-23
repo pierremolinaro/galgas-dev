@@ -666,7 +666,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionList
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_lexicalFunctionExpressionAST : public AC_GALGAS_class {
+class GALGAS_lexicalFunctionExpressionAST : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_lexicalFunctionExpressionAST (void) ;
 

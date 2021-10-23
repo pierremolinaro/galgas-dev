@@ -1731,7 +1731,7 @@ class GALGAS_bool callExtensionGetter_compareInstructionSyntaxSignature (const c
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_abstractSyntaxInstructionForGrammarAnalysis : public AC_GALGAS_class {
+class GALGAS_abstractSyntaxInstructionForGrammarAnalysis : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_abstractSyntaxInstructionForGrammarAnalysis (void) ;
 
@@ -5059,6 +5059,7 @@ class C_Lexique_galgas_33_Scanner : public C_Lexique {
    kToken_private,
    kToken_proc,
    kToken_project,
+   kToken_refclass,
    kToken_remove,
    kToken_replace,
    kToken_repeat,
@@ -5081,6 +5082,7 @@ class C_Lexique_galgas_33_Scanner : public C_Lexique {
    kToken_true,
    kToken_shared,
    kToken_unused,
+   kToken_valueclass,
    kToken_var,
    kToken_warning,
    kToken_while,
@@ -5230,7 +5232,7 @@ class C_Lexique_galgas_33_Scanner : public C_Lexique {
   protected: virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const ;
 
 //--- Get terminal count
-  public: virtual int16_t terminalVocabularyCount (void) const { return 150 ; }
+  public: virtual int16_t terminalVocabularyCount (void) const { return 152 ; }
 
 //--- Get Token String
   public: virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;

@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @messageInstructionAST : @semanticInstructionAST {
+valueclass @messageInstructionAST : @semanticInstructionAST {
   @semanticExpressionAST mExpression
 }
 
@@ -70,7 +70,7 @@ override method @messageInstructionAST analyzeSemanticInstruction
 #! GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @messageInstructionForGeneration : @semanticInstructionForGeneration {
+valueclass @messageInstructionForGeneration : @semanticInstructionForGeneration {
   @semanticExpressionForGeneration mExpression
   @location mInstructionLocation
 }

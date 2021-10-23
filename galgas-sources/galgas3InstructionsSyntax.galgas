@@ -1,24 +1,24 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                                                                      *
-#                                                                                                                      *
-#  e-mail : pierre@pcmolinaro.name                                                                                     *
-#                                                                                                                      *
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
-#                                                                                                                      *
+#                                           
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
-#  details.                                                                                                            *
-#                                                                                                                      *
+#  details.                                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3InstructionsSyntax (galgas3Scanner) {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#          Rules prototypes                                                                                            *
-#                                                                                                                      *
+#                                           
+#          Rules prototypes                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <expression> !@semanticExpressionAST outExpression
@@ -30,9 +30,9 @@ rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList
 rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    S E M A N T I C    I N S T R U C T I O N    L I S T                                                               *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList {
@@ -61,9 +61,9 @@ rule <declaration>
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    E X T E R N    R O U T I N E    D E C L A R A T I O N                                                             *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <declaration>
@@ -81,9 +81,9 @@ rule <declaration>
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#    R O U T I N E    D E C L A R A T I O N                                                                            *
-#                                                                                                                      *
+#                                           
+#    R O U T I N E    D E C L A R A T I O N 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #! Routine declaration
@@ -112,9 +112,9 @@ rule <declaration_with_private>
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    F U N C T I O N    D E C L A R A T I O N                                                                          *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #! Function declaration
@@ -189,9 +189,9 @@ rule  <declaration_with_private>
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    E X T E R N    F U N C T I O N    D E C L A R A T I O N                                                           *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #! extern function declaration
@@ -214,9 +214,9 @@ rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  L O C A L    V A R I A B L E    D E C L A R A T I O N                                                               *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #! var declaration instruction
@@ -258,9 +258,9 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    M E T H O D    C A L L    I N S T R U C T I O N                                                                   *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #!  Method call instruction
@@ -296,9 +296,9 @@ rule <syntax_directed_translation_result> !@abstractGrammarInstructionSyntaxDire
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  A C T U A L    I N P U T    P A R A M E T E R    L I S T                                                            *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #! Input parameter list

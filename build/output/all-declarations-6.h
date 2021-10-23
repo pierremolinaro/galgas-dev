@@ -3603,7 +3603,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterList
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_actualParameterForGeneration : public AC_GALGAS_class {
+class GALGAS_actualParameterForGeneration : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_actualParameterForGeneration (void) ;
 
@@ -4108,7 +4108,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listOfSemanticInstr
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_semanticDeclarationForGeneration : public AC_GALGAS_class {
+class GALGAS_semanticDeclarationForGeneration : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_semanticDeclarationForGeneration (void) ;
 
@@ -7287,7 +7287,7 @@ void callExtensionMethod_enterParameterInSemanticContext (const class cPtr_actua
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult : public AC_GALGAS_class {
+class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult (void) ;
 

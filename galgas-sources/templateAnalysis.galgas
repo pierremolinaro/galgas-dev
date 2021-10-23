@@ -1,22 +1,22 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#  Template semantics analysis                                                                                         *
-#                                                                                                                      *
+#                                           
+#  Template semantics analysis              
+#                                           
 #  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                                                                      *
-#                                                                                                                      *
-#  e-mail : pierre@pcmolinaro.name                                                                                     *
-#                                                                                                                      *
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
-#                                                                                                                      *
+#                                           
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
-#  details.                                                                                                            *
-#                                                                                                                      *
+#  details.                                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #   T E M P L A T E    A N A L Y S I S    C O N T E X T                                                                *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @templateVariableMap {
@@ -35,9 +35,9 @@ struct @templateAnalysisContext {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#   E X P R E S S I O N                                                                                                *
-#                                                                                                                      *
+#                                           
+#   E X P R E S S I O N                     
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @templateExpressionAST templateExpressionAnalysis
@@ -47,7 +47,7 @@ abstract method @templateExpressionAST templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   R E A D E R    C A L L    O P E R A N D                                                                            *
+#   R E A D E R    C A L L    O P E R A N D 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateGetterCallInExpressionAST templateExpressionAnalysis
@@ -161,7 +161,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   C O N S T R U C T O R                                                                                              *
+#   C O N S T R U C T O R                   
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateConstructorAST templateExpressionAnalysis
@@ -242,7 +242,7 @@ override method @templateFileWrapperTemplateCallAST templateExpressionAnalysis
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   B O O L E A N    O P E R A T I O N S                                                                               *
+#   B O O L E A N    O P E R A T I O N S    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateAndOperationAST templateExpressionAnalysis
@@ -685,7 +685,7 @@ override method @templateOptionAccessAST templateExpressionAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   F U N C T I O N    C A L L                                                                                         *
+#   F U N C T I O N    C A L L              
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateFunctionCallAST templateExpressionAnalysis
@@ -741,7 +741,7 @@ override method @templateFunctionCallAST templateExpressionAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   T E M P L A T E    E X T E N S I O N                                                                               *
+#   T E M P L A T E    E X T E N S I O N    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateExtensionTemplateCallAST templateExpressionAnalysis
@@ -756,7 +756,7 @@ override method @templateExtensionTemplateCallAST templateExpressionAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   S I M P L E    V A R I A B L E                                                                                     *
+#   S I M P L E    V A R I A B L E          
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateVarInExpressionAST templateExpressionAnalysis
@@ -776,7 +776,7 @@ override method @templateVarInExpressionAST templateExpressionAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   A D D I T I O N    O P E R A T I O N                                                                               *
+#   A D D I T I O N    O P E R A T I O N    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateAddOperationAST templateExpressionAnalysis
@@ -908,7 +908,7 @@ override method @templateMultiplyOperationAST templateExpressionAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   D I V I S I O N    O P E R A T I O N                                                                               *
+#   D I V I S I O N    O P E R A T I O N    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateDivideOperationAST templateExpressionAnalysis
@@ -952,7 +952,7 @@ override method @templateDivideOperationAST templateExpressionAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   M O D U L O    O P E R A T I O N                                                                                   *
+#   M O D U L O    O P E R A T I O N        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateModuloOperationAST templateExpressionAnalysis
@@ -996,7 +996,7 @@ override method @templateModuloOperationAST templateExpressionAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   U N A R Y   -    O P E R A T I O N                                                                                 *
+#   U N A R Y   -    O P E R A T I O N      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateUnaryMinusOperationAST templateExpressionAnalysis
@@ -1065,7 +1065,7 @@ override method @structFieldAccessTemplateExpressionAST templateExpressionAnalys
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#  ==    O P E R A T I O N                                                                                             *
+#  ==    O P E R A T I O N                  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateEqualTestAST templateExpressionAnalysis
@@ -1419,9 +1419,9 @@ override method @templateRightShiftOperationAST templateExpressionAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#    I N S T R U C T I O N S                                                                                           *
-#                                                                                                                      *
+#                                           
+#    I N S T R U C T I O N S                
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @templateInstructionAST templateInstructionAnalysis

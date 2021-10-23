@@ -1,24 +1,24 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                                                                      *
-#                                                                                                                      *
-#  e-mail : pierre@pcmolinaro.name                                                                                     *
-#                                                                                                                      *
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
-#                                                                                                                      *
+#                                           
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
-#  details.                                                                                                            *
-#                                                                                                                      *
+#  details.                                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3SyntaxComponentSyntax (galgas3Scanner) {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#          Rules prototypes                                                                                            *
-#                                                                                                                      *
+#                                           
+#          Rules prototypes                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <expression> !@semanticExpressionAST outExpression
@@ -32,9 +32,9 @@ rule <actual_parameter_list>
   !@actualParameterListAST outActualParameterList
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#      S Y N T A X    C O M P O N E N T                                                                                *
-#                                                                                                                      *
+#                                           
+#      S Y N T A X    C O M P O N E N T     
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <declaration>
@@ -83,9 +83,9 @@ rule <declaration>
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#      S Y N T A X    E X T E N S I O N                                                                                *
-#                                                                                                                      *
+#                                           
+#      S Y N T A X    E X T E N S I O N     
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <declaration>
@@ -114,9 +114,9 @@ rule <declaration>
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #      N O N T E R M I N A L    D E C L A R A T I O N                                                                  *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList {
@@ -138,9 +138,9 @@ rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDec
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #      S Y N T A X    R U L E    D E C L A R A T I O N                                                                 *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <syntax_rule_label>
@@ -179,9 +179,9 @@ rule <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #   S Y N T A X    I N S T R U C T I O N    L I S T                                                                    *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList {
@@ -199,9 +199,9 @@ rule <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList 
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #   T E R M I N A L    C H E C K    I N S T R U C T I O N                                                              *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #! Terminal instruction

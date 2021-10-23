@@ -1,15 +1,15 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                                                                                                *
+#   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @structDeclarationAST : @semanticDeclarationAST {
+valueclass @structDeclarationAST : @semanticDeclarationAST {
   @lstring mStructTypeName
   @propertyInCollectionListAST mStructurePropertyList
   @string mEnumeratedElementTypeName # Empty string if not enumerable
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                                                                                             *
+#   SYNTAX                                  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -37,7 +37,7 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                                                                                                     *
+#   ENTER IN GRAPH                          
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @structDeclarationAST enterDeclarationInGraph
@@ -56,7 +56,7 @@ override method @structDeclarationAST enterDeclarationInGraph
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   KEY REPRESENTATION                                                                                                  *
+#   KEY REPRESENTATION                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @structDeclarationAST keyRepresentation ->@string outString {
@@ -64,7 +64,7 @@ override getter @structDeclarationAST keyRepresentation ->@string outString {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                                                                                                   *
+#   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func %once selectorFeatureForNewConstructor -> @string {
@@ -190,7 +190,7 @@ override method @structDeclarationAST enterInSemanticContext
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                                                                                                  *
+#   SEMANTIC ANALYSIS                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func %once forbiddenKeysForStruct -> @stringset {
@@ -260,10 +260,10 @@ override method @structDeclarationAST semanticAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                                                                                                    *
+#   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @structTypeForGeneration : @semanticTypeForGeneration {
+valueclass @structTypeForGeneration : @semanticTypeForGeneration {
   @typedPropertyList mTypedPropertyList
 }
 

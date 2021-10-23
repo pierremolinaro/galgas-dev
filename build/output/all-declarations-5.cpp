@@ -14730,10 +14730,10 @@ void extensionMethod_enterInstructionListInSemanticContext (const GALGAS_semanti
                                                             C_Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_semanticInstructionListAST temp_0 = inObject ;
-  cEnumerator_semanticInstructionListAST enumerator_3544 (temp_0, kENUMERATION_UP) ;
-  while (enumerator_3544.hasCurrentObject ()) {
-    callExtensionMethod_enterInstructionInSemanticContext ((const cPtr_semanticInstructionAST *) enumerator_3544.current_mInstruction (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 58)) ;
-    enumerator_3544.gotoNextObject () ;
+  cEnumerator_semanticInstructionListAST enumerator_2936 (temp_0, kENUMERATION_UP) ;
+  while (enumerator_2936.hasCurrentObject ()) {
+    callExtensionMethod_enterInstructionInSemanticContext ((const cPtr_semanticInstructionAST *) enumerator_2936.current_mInstruction (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 58)) ;
+    enumerator_2936.gotoNextObject () ;
   }
 }
 

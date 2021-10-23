@@ -13,11 +13,11 @@ proc testsuite_extension_modifiers {
   typeCastInSetterCall ()
 }
 
-abstract class @abstractTestExtensionModifier {
+abstract valueclass @abstractTestExtensionModifier {
   @uint mInteger
 }
 
-class @TestExtensionModifier : @abstractTestExtensionModifier {
+valueclass @TestExtensionModifier : @abstractTestExtensionModifier {
   @string mString
 }
 
@@ -32,7 +32,7 @@ setter @TestExtensionModifier modifier1 ?!@uint ioArg {
 }
 
 
-class @overridingTestExtensionModifier : @abstractOverridingTestExtensionModifier {
+valueclass @overridingTestExtensionModifier : @abstractOverridingTestExtensionModifier {
   @uint mOtherInteger
 }
 
@@ -50,11 +50,11 @@ override setter @overridingTestExtensionModifier m { }
 
 override abstract setter @abstractOverridingTestExtensionModifier m
 
-abstract class @abstractOverridingTestExtensionModifier : @TestExtensionModifier {
+abstract valueclass @abstractOverridingTestExtensionModifier : @TestExtensionModifier {
   @string mOtherString
 }
 
-class @adjMat{
+valueclass @adjMat{
    @uint dim
    @stringlist nodes %setter
 }
@@ -65,7 +65,7 @@ setter @adjMat addNode {
 }
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-#   TYPE CAST IN SETTER CALL                                                                                           *
+#   TYPE CAST IN SETTER CALL                
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 private proc typeCastInSetterCall {
@@ -74,9 +74,9 @@ private proc typeCastInSetterCall {
 
 }
 
-class @baseClassForTypeCastInSetterCall {}
+valueclass @baseClassForTypeCastInSetterCall {}
 
-class @inheritedClassForTypeCastInSetterCall : @baseClassForTypeCastInSetterCall {}
+valueclass @inheritedClassForTypeCastInSetterCall : @baseClassForTypeCastInSetterCall {}
 
 setter @inheritedClassForTypeCastInSetterCall unSetter {
   message "Appel @inheritedClassForTypeCastInSetterCall unSetter\n"

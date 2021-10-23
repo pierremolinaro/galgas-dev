@@ -1,18 +1,18 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#  Semantic Analysis of expression                                                                                     *
-#                                                                                                                      *
+#                                           
+#  Semantic Analysis of expression          
+#                                           
 #  Copyright (C) 2010, ..., 2016 Pierre Molinaro.                                                                      *
-#                                                                                                                      *
-#  e-mail : pierre@pcmolinaro.name                                                                                     *
-#                                                                                                                      *
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
-#                                                                                                                      *
+#                                           
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
-#  details.                                                                                                            *
-#                                                                                                                      *
+#  details.                                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkAssignmentTypes
@@ -143,9 +143,9 @@ proc checkDiadicOperator
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    S E M A N T I C    C O N T E X T    F O R    A N A L Y S I S                                                      *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @predefinedTypes {
@@ -174,9 +174,9 @@ struct @predefinedTypes {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#    A N A L Y S I S    C O N T E X T                                                                                  *
-#                                                                                                                      *
+#                                           
+#    A N A L Y S I S    C O N T E X T       
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @analysisContext {
@@ -189,9 +189,9 @@ struct @analysisContext {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#    E X P R E S S I O N    A N A L Y S I S                                                                            *
-#                                                                                                                      *
+#                                           
+#    E X P R E S S I O N    A N A L Y S I S 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @semanticExpressionAST analyzeSemanticExpression

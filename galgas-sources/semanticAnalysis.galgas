@@ -1,20 +1,20 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  Copyright (C) 2007, ..., 2015 Pierre Molinaro.                                                                      *
-#                                                                                                                      *
-#  e-mail : pierre@pcmolinaro.name                                                                                     *
-#                                                                                                                      *
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
-#                                                                                                                      *
+#                                           
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
-#  details.                                                                                                            *
-#                                                                                                                      *
+#  details.                                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    C H E C K    M E T H O D    S I G N A T U R E                                                                     *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkMethodSignatures
@@ -49,9 +49,9 @@ proc checkMethodSignatures
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    C H E C K    G E T T E R    S I G N A T U R E                                                                     *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkGetterSignatures
@@ -89,9 +89,9 @@ proc checkGetterSignatures
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    D E C L A R A T I O N    S E M A N T I C    A N A L Y S I S                                                       *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @semanticDeclarationAST semanticAnalysis
@@ -111,7 +111,7 @@ map @propertyIndexMap {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#         M A P                                                                                                        *
+#         M A P                             
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc buildLocalVariableMapAndSignature
@@ -534,9 +534,9 @@ override method @onceFunctionDeclarationAST semanticAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #     F I L E W R A P P E R    A N A L Y S I S                                                                         *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperDeclarationAST semanticAnalysis
@@ -1146,9 +1146,9 @@ override method @lexiqueComponentAST semanticAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#    P R E D E F I N E D    T Y P E S                                                                                  *
-#                                                                                                                      *
+#                                           
+#    P R E D E F I N E D    T Y P E S       
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func buildPredefinedTypes ?let @semanticContext inSemanticContext -> @predefinedTypes outPredefinedTypes {
@@ -1179,9 +1179,9 @@ func buildPredefinedTypes ?let @semanticContext inSemanticContext -> @predefined
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#    S Y N T A X    D E C L A R A T I O N S                                                                            *
-#                                                                                                                      *
+#                                           
+#    S Y N T A X    D E C L A R A T I O N S 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @nonterminalLabelMap {
@@ -1220,7 +1220,7 @@ list @ruleDeclarationList {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
+valueclass @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
   @string mSyntaxComponentName
   @string mLexiqueName
   @nonterminalMap mNonterminalDeclarationMap
@@ -1231,9 +1231,9 @@ class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #           G E N E R A T I O N    F I L E W R A P P E R S                                                             *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_generation" {
@@ -1253,9 +1253,9 @@ filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_gene
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #           B U I L D    N O N T E R M I N A L    M A P                                                                *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterNonterminalNonTerminalInMapAndCheck
@@ -1327,9 +1327,9 @@ proc buildNonterminalDeclarationsMap
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    S Y N T A X    I N S T R U C T I O N    A N A L Y S I S                                                           *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @syntaxInstructionAST analyzeSyntaxInstruction
@@ -1687,9 +1687,9 @@ proc analyzeSyntaxInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#           B U I L D    C O N T E X T                                                                                 *
-#                                                                                                                      *
+#                                           
+#           B U I L D    C O N T E X T      
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc semanticAnalysisOfRuleLabel
@@ -1746,9 +1746,9 @@ proc semanticAnalysisOfRuleLabel
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #           S E M A N T I C    A N A L Y S I S                                                                         *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc semanticAnalysisOfSyntaxComponent

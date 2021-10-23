@@ -2,13 +2,13 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @trueExpressionAST : @semanticExpressionAST {
+valueclass @trueExpressionAST : @semanticExpressionAST {
   @location mLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @falseExpressionAST : @semanticExpressionAST {
+valueclass @falseExpressionAST : @semanticExpressionAST {
   @location mLocation
 }
 
@@ -82,7 +82,7 @@ override method @falseExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @trueExpressionForGeneration : @semanticExpressionForGeneration {
+valueclass @trueExpressionForGeneration : @semanticExpressionForGeneration {
 }
 
 #·····················································································································
@@ -98,7 +98,7 @@ override method @trueExpressionForGeneration generateExpression
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @falseExpressionForGeneration : @semanticExpressionForGeneration {
+valueclass @falseExpressionForGeneration : @semanticExpressionForGeneration {
 }
 
 #·····················································································································
@@ -113,9 +113,9 @@ override method @falseExpressionForGeneration generateExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #           D E T E C T    ' T R U E '    E X P R E S S I O N                                                          *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @semanticExpressionForGeneration isTrueExpression -> @bool {

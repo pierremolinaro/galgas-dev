@@ -9,12 +9,12 @@ list @forInstructionEnumeratedObjectElementListAST {
 
 #·····················································································································*
 
-abstract class @abstractEnumeratedCollectionAST {
+abstract valueclass @abstractEnumeratedCollectionAST {
 }
 
 #·····················································································································*
 
-class @enumeratedCollectionImplicitVarInExpAST : @abstractEnumeratedCollectionAST {
+valueclass @enumeratedCollectionImplicitVarInExpAST : @abstractEnumeratedCollectionAST {
   @lstring mPrefix
   @semanticExpressionAST mEnumeratedExpression
   @location mEndOfEnumerationExpression
@@ -22,7 +22,7 @@ class @enumeratedCollectionImplicitVarInExpAST : @abstractEnumeratedCollectionAS
 
 #·····················································································································*
 
-class @enumeratedCollectionVarInExpAST : @abstractEnumeratedCollectionAST {
+valueclass @enumeratedCollectionVarInExpAST : @abstractEnumeratedCollectionAST {
   @lstring mEnumerationOptionalTypeName # Empty string if implicit
   @lstring mEnumerationVariable
   @semanticExpressionAST mEnumeratedExpression
@@ -31,7 +31,7 @@ class @enumeratedCollectionVarInExpAST : @abstractEnumeratedCollectionAST {
 
 #·····················································································································*
 
-class @enumeratedCollectionCstListInExpAST : @abstractEnumeratedCollectionAST {
+valueclass @enumeratedCollectionCstListInExpAST : @abstractEnumeratedCollectionAST {
   @forInstructionEnumeratedObjectElementListAST mElementList
   @bool mEndsWithEllipsis
   @semanticExpressionAST mEnumeratedExpression
@@ -47,7 +47,7 @@ list @forInstructionEnumeratedObjectListAST {
 
 #·····················································································································*
 
-class @forInstructionAST : @semanticInstructionAST {
+valueclass @forInstructionAST : @semanticInstructionAST {
   @forInstructionEnumeratedObjectListAST mEnumeratedObjectList
   @lstring mIndexVariableName
   @semanticExpressionAST mWhileExpression
@@ -625,7 +625,7 @@ list @forInstructionEnumeratedObjectListForGeneration {
 
 #·····················································································································*
 
-class @forInstructionForGeneration : @semanticInstructionForGeneration {
+valueclass @forInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @forInstructionEnumeratedObjectListForGeneration mEnumeratedObjectList
   @string mIndexVariableCppName  # Empty string if no index

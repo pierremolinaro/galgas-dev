@@ -1,8 +1,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                                                                                                *
+#   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @abstractExtensionGetterAST : @semanticDeclarationAST {
+valueclass @abstractExtensionGetterAST : @semanticDeclarationAST {
   @lstring mTypeName
   @lstring mAbstractExtensionGetterName
   @formalInputParameterListAST mAbstractExtensionGetterFormalInputParameterList
@@ -10,7 +10,7 @@ class @abstractExtensionGetterAST : @semanticDeclarationAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                                                                                             *
+#   SYNTAX                                  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -44,7 +44,7 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   KEY REPRESENTATION                                                                                                 *
+#   KEY REPRESENTATION                      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @abstractExtensionGetterAST keyRepresentation ->@string outString {
@@ -52,7 +52,7 @@ override getter @abstractExtensionGetterAST keyRepresentation ->@string outStrin
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                                                                                                     *
+#   ENTER IN GRAPH                          
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @abstractExtensionGetterAST enterDeclarationInGraph
@@ -85,7 +85,7 @@ override method @abstractExtensionGetterAST enterDeclarationInGraph
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                                                                                                   *
+#   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @abstractExtensionGetterAST enterInSemanticContext
@@ -164,7 +164,7 @@ override method @abstractExtensionGetterAST buildExtensionListMaps
 #   CODE GENERATION                                                                                                    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @abstractExtensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
+valueclass @abstractExtensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @unifiedTypeMap-entry mReceiverType
   @string mAbstractExtensionGetterName
   @unifiedTypeMap-entry mResultType

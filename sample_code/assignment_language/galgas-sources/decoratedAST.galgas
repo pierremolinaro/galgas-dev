@@ -1,13 +1,13 @@
 
 
-abstract class @expressionForGeneration {
+abstract valueclass @expressionForGeneration {
 }
 
-class @varInExpressionForGeneration : @expressionForGeneration {
+valueclass @varInExpressionForGeneration : @expressionForGeneration {
   @string mVarCppName
 }
 
-class @cstInExpressionForGeneration : @expressionForGeneration {
+valueclass @cstInExpressionForGeneration : @expressionForGeneration {
   @uint mConstantValue
 }
 
@@ -15,29 +15,29 @@ enum @diadicOperation {
  case addition  case multiplication
 }
 
-class @diadicForGeneration : @expressionForGeneration {
+valueclass @diadicForGeneration : @expressionForGeneration {
   @expressionForGeneration mLeftExpression
   @diadicOperation mOperation
   @expressionForGeneration mRightExpression
 }
 
-abstract class @instructionForGeneration {
+abstract valueclass @instructionForGeneration {
 }
 
 list @instructionListForGeneration {
   @instructionForGeneration mInstruction
 }
 
-class @assignmentForGeneration : @instructionForGeneration {
+valueclass @assignmentForGeneration : @instructionForGeneration {
   @string mTargetVarCppName
   @expressionForGeneration mSourceExpression
 }
 
-class @varDeclarationForGeneration : @instructionForGeneration {
+valueclass @varDeclarationForGeneration : @instructionForGeneration {
   @string mVarCppName
 }
 
-class @printVariableForGeneration : @instructionForGeneration {
+valueclass @printVariableForGeneration : @instructionForGeneration {
   @string mSourceName
   @string mVarCppName
 }

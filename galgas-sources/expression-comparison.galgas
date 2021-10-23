@@ -13,7 +13,7 @@ enum @comparison {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @comparisonExpressionAST : @semanticExpressionAST {
+valueclass @comparisonExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @comparison mComparison
@@ -147,7 +147,7 @@ override method @comparisonExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @comparisonExpressionForGeneration : @semanticExpressionForGeneration {
+valueclass @comparisonExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mLeftExpression
   @comparison mComparison
   @semanticExpressionForGeneration mRightExpression

@@ -2114,7 +2114,7 @@ typeComparisonResult cPtr_classDeclarationAST::dynamicObjectCompare (const acPtr
     result = mProperty_mIsAbstract.objectCompare (p->mProperty_mIsAbstract) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mIsShared.objectCompare (p->mProperty_mIsShared) ;
+    result = mProperty_mIsReference.objectCompare (p->mProperty_mIsReference) ;
   }
   if (kOperandEqual == result) {
     result = mProperty_mClassTypeName.objectCompare (p->mProperty_mClassTypeName) ;
@@ -2180,15 +2180,15 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 
 GALGAS_classDeclarationAST GALGAS_classDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                         const GALGAS_bool & inAttribute_mIsAbstract,
-                                                                        const GALGAS_bool & inAttribute_mIsShared,
+                                                                        const GALGAS_bool & inAttribute_mIsReference,
                                                                         const GALGAS_lstring & inAttribute_mClassTypeName,
                                                                         const GALGAS_lstring & inAttribute_mSuperClassName,
                                                                         const GALGAS_lstringlist & inAttribute_mClassFeatureList,
                                                                         const GALGAS_propertyInCollectionListAST & inAttribute_mPropertyList
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_classDeclarationAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mIsAbstract.isValid () && inAttribute_mIsShared.isValid () && inAttribute_mClassTypeName.isValid () && inAttribute_mSuperClassName.isValid () && inAttribute_mClassFeatureList.isValid () && inAttribute_mPropertyList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_classDeclarationAST (inAttribute_mIsPredefined, inAttribute_mIsAbstract, inAttribute_mIsShared, inAttribute_mClassTypeName, inAttribute_mSuperClassName, inAttribute_mClassFeatureList, inAttribute_mPropertyList COMMA_THERE)) ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mIsAbstract.isValid () && inAttribute_mIsReference.isValid () && inAttribute_mClassTypeName.isValid () && inAttribute_mSuperClassName.isValid () && inAttribute_mClassFeatureList.isValid () && inAttribute_mPropertyList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_classDeclarationAST (inAttribute_mIsPredefined, inAttribute_mIsAbstract, inAttribute_mIsReference, inAttribute_mClassTypeName, inAttribute_mSuperClassName, inAttribute_mClassFeatureList, inAttribute_mPropertyList COMMA_THERE)) ;
   }
   return result ;
 }
@@ -2213,20 +2213,20 @@ GALGAS_bool cPtr_classDeclarationAST::getter_mIsAbstract (UNUSED_LOCATION_ARGS) 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_classDeclarationAST::getter_mIsShared (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_classDeclarationAST::getter_mIsReference (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (NULL != mObjectPtr) {
     const cPtr_classDeclarationAST * p = (const cPtr_classDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_classDeclarationAST) ;
-    result = p->mProperty_mIsShared ;
+    result = p->mProperty_mIsReference ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_classDeclarationAST::getter_mIsShared (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mIsShared ;
+GALGAS_bool cPtr_classDeclarationAST::getter_mIsReference (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mIsReference ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2322,21 +2322,21 @@ void cPtr_classDeclarationAST::setter_setMIsAbstract (GALGAS_bool inValue
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_classDeclarationAST::setter_setMIsShared (GALGAS_bool inValue
-                                                      COMMA_LOCATION_ARGS) {
+void GALGAS_classDeclarationAST::setter_setMIsReference (GALGAS_bool inValue
+                                                         COMMA_LOCATION_ARGS) {
   if (NULL != mObjectPtr) {
     insulate (THERE) ;
     cPtr_classDeclarationAST * p = (cPtr_classDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_classDeclarationAST) ;
-    p->mProperty_mIsShared = inValue ;
+    p->mProperty_mIsReference = inValue ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void cPtr_classDeclarationAST::setter_setMIsShared (GALGAS_bool inValue
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mIsShared = inValue ;
+void cPtr_classDeclarationAST::setter_setMIsReference (GALGAS_bool inValue
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mIsReference = inValue ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2421,7 +2421,7 @@ void cPtr_classDeclarationAST::setter_setMPropertyList (GALGAS_propertyInCollect
 
 cPtr_classDeclarationAST::cPtr_classDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                     const GALGAS_bool & in_mIsAbstract,
-                                                    const GALGAS_bool & in_mIsShared,
+                                                    const GALGAS_bool & in_mIsReference,
                                                     const GALGAS_lstring & in_mClassTypeName,
                                                     const GALGAS_lstring & in_mSuperClassName,
                                                     const GALGAS_lstringlist & in_mClassFeatureList,
@@ -2429,7 +2429,7 @@ cPtr_classDeclarationAST::cPtr_classDeclarationAST (const GALGAS_bool & in_mIsPr
                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mProperty_mIsAbstract (in_mIsAbstract),
-mProperty_mIsShared (in_mIsShared),
+mProperty_mIsReference (in_mIsReference),
 mProperty_mClassTypeName (in_mClassTypeName),
 mProperty_mSuperClassName (in_mSuperClassName),
 mProperty_mClassFeatureList (in_mClassFeatureList),
@@ -2449,7 +2449,7 @@ void cPtr_classDeclarationAST::description (C_String & ioString,
   ioString << ", " ;
   mProperty_mIsAbstract.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mIsShared.description (ioString, inIndentation+1) ;
+  mProperty_mIsReference.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mProperty_mClassTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -2465,7 +2465,7 @@ void cPtr_classDeclarationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_classDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_classDeclarationAST (mProperty_mIsPredefined, mProperty_mIsAbstract, mProperty_mIsShared, mProperty_mClassTypeName, mProperty_mSuperClassName, mProperty_mClassFeatureList, mProperty_mPropertyList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_classDeclarationAST (mProperty_mIsPredefined, mProperty_mIsAbstract, mProperty_mIsReference, mProperty_mClassTypeName, mProperty_mSuperClassName, mProperty_mClassFeatureList, mProperty_mPropertyList COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -2528,7 +2528,7 @@ typeComparisonResult cPtr_classTypeForGeneration::dynamicObjectCompare (const ac
     result = mProperty_mIsAbstract.objectCompare (p->mProperty_mIsAbstract) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mIsShared.objectCompare (p->mProperty_mIsShared) ;
+    result = mProperty_mIsReference.objectCompare (p->mProperty_mIsReference) ;
   }
   if (kOperandEqual == result) {
     result = mProperty_mSuperClass.objectCompare (p->mProperty_mSuperClass) ;
@@ -2594,15 +2594,15 @@ GALGAS_semanticTypeForGeneration (inSourcePtr) {
 
 GALGAS_classTypeForGeneration GALGAS_classTypeForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mSelfTypeEntry,
                                                                               const GALGAS_bool & inAttribute_mIsAbstract,
-                                                                              const GALGAS_bool & inAttribute_mIsShared,
+                                                                              const GALGAS_bool & inAttribute_mIsReference,
                                                                               const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mSuperClass,
                                                                               const GALGAS_typedPropertyList & inAttribute_mAllTypedAttributeList,
                                                                               const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
                                                                               const GALGAS_bool & inAttribute_mGenerateHeaderInSeparateFile
                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_classTypeForGeneration result ;
-  if (inAttribute_mSelfTypeEntry.isValid () && inAttribute_mIsAbstract.isValid () && inAttribute_mIsShared.isValid () && inAttribute_mSuperClass.isValid () && inAttribute_mAllTypedAttributeList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mGenerateHeaderInSeparateFile.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_classTypeForGeneration (inAttribute_mSelfTypeEntry, inAttribute_mIsAbstract, inAttribute_mIsShared, inAttribute_mSuperClass, inAttribute_mAllTypedAttributeList, inAttribute_mTypedAttributeList, inAttribute_mGenerateHeaderInSeparateFile COMMA_THERE)) ;
+  if (inAttribute_mSelfTypeEntry.isValid () && inAttribute_mIsAbstract.isValid () && inAttribute_mIsReference.isValid () && inAttribute_mSuperClass.isValid () && inAttribute_mAllTypedAttributeList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mGenerateHeaderInSeparateFile.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_classTypeForGeneration (inAttribute_mSelfTypeEntry, inAttribute_mIsAbstract, inAttribute_mIsReference, inAttribute_mSuperClass, inAttribute_mAllTypedAttributeList, inAttribute_mTypedAttributeList, inAttribute_mGenerateHeaderInSeparateFile COMMA_THERE)) ;
   }
   return result ;
 }
@@ -2627,20 +2627,20 @@ GALGAS_bool cPtr_classTypeForGeneration::getter_mIsAbstract (UNUSED_LOCATION_ARG
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_classTypeForGeneration::getter_mIsShared (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_classTypeForGeneration::getter_mIsReference (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (NULL != mObjectPtr) {
     const cPtr_classTypeForGeneration * p = (const cPtr_classTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_classTypeForGeneration) ;
-    result = p->mProperty_mIsShared ;
+    result = p->mProperty_mIsReference ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool cPtr_classTypeForGeneration::getter_mIsShared (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mIsShared ;
+GALGAS_bool cPtr_classTypeForGeneration::getter_mIsReference (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mIsReference ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2736,21 +2736,21 @@ void cPtr_classTypeForGeneration::setter_setMIsAbstract (GALGAS_bool inValue
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_classTypeForGeneration::setter_setMIsShared (GALGAS_bool inValue
-                                                         COMMA_LOCATION_ARGS) {
+void GALGAS_classTypeForGeneration::setter_setMIsReference (GALGAS_bool inValue
+                                                            COMMA_LOCATION_ARGS) {
   if (NULL != mObjectPtr) {
     insulate (THERE) ;
     cPtr_classTypeForGeneration * p = (cPtr_classTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_classTypeForGeneration) ;
-    p->mProperty_mIsShared = inValue ;
+    p->mProperty_mIsReference = inValue ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void cPtr_classTypeForGeneration::setter_setMIsShared (GALGAS_bool inValue
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mIsShared = inValue ;
+void cPtr_classTypeForGeneration::setter_setMIsReference (GALGAS_bool inValue
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mIsReference = inValue ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2835,7 +2835,7 @@ void cPtr_classTypeForGeneration::setter_setMGenerateHeaderInSeparateFile (GALGA
 
 cPtr_classTypeForGeneration::cPtr_classTypeForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
                                                           const GALGAS_bool & in_mIsAbstract,
-                                                          const GALGAS_bool & in_mIsShared,
+                                                          const GALGAS_bool & in_mIsReference,
                                                           const GALGAS_unifiedTypeMap_2D_entry & in_mSuperClass,
                                                           const GALGAS_typedPropertyList & in_mAllTypedAttributeList,
                                                           const GALGAS_typedPropertyList & in_mTypedAttributeList,
@@ -2843,7 +2843,7 @@ cPtr_classTypeForGeneration::cPtr_classTypeForGeneration (const GALGAS_unifiedTy
                                                           COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
 mProperty_mIsAbstract (in_mIsAbstract),
-mProperty_mIsShared (in_mIsShared),
+mProperty_mIsReference (in_mIsReference),
 mProperty_mSuperClass (in_mSuperClass),
 mProperty_mAllTypedAttributeList (in_mAllTypedAttributeList),
 mProperty_mTypedAttributeList (in_mTypedAttributeList),
@@ -2863,7 +2863,7 @@ void cPtr_classTypeForGeneration::description (C_String & ioString,
   ioString << ", " ;
   mProperty_mIsAbstract.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mIsShared.description (ioString, inIndentation+1) ;
+  mProperty_mIsReference.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mProperty_mSuperClass.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -2879,7 +2879,7 @@ void cPtr_classTypeForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_classTypeForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_classTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mIsAbstract, mProperty_mIsShared, mProperty_mSuperClass, mProperty_mAllTypedAttributeList, mProperty_mTypedAttributeList, mProperty_mGenerateHeaderInSeparateFile COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_classTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mIsAbstract, mProperty_mIsReference, mProperty_mSuperClass, mProperty_mAllTypedAttributeList, mProperty_mTypedAttributeList, mProperty_mGenerateHeaderInSeparateFile COMMA_THERE)) ;
   return ptr ;
 }
 

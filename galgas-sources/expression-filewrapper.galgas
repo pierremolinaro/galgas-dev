@@ -2,20 +2,20 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @filewrapperObjectInstanciationInExpressionAST : @semanticExpressionAST {
+valueclass @filewrapperObjectInstanciationInExpressionAST : @semanticExpressionAST {
   @lstring mFilewrapperName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @filewrapperInExpressionAST : @semanticExpressionAST {
+valueclass @filewrapperInExpressionAST : @semanticExpressionAST {
   @lstring mFilewrapperName
   @lstring mFilewrapperPath
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @filewrapperTemplateInExpressionAST : @semanticExpressionAST {
+valueclass @filewrapperTemplateInExpressionAST : @semanticExpressionAST {
   @lstring mFilewrapperName
   @lstring mFilewrapperTemplateName
   @actualOutputExpressionList mExpressions
@@ -269,7 +269,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @filewrapperInExpressionForGeneration : @semanticExpressionForGeneration {
+valueclass @filewrapperInExpressionForGeneration : @semanticExpressionForGeneration {
   @string mFilewrapperName
   @string mFilewrapperPath
 }
@@ -288,7 +288,7 @@ override method @filewrapperInExpressionForGeneration generateExpression
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @filewrapperTemplateInExpressionForGeneration : @semanticExpressionForGeneration {
+valueclass @filewrapperTemplateInExpressionForGeneration : @semanticExpressionForGeneration {
   @string mFilewrapperName
   @string mFilewrapperTemplateName
   @semanticExpressionListForGeneration mActualOutputParameterList
@@ -327,7 +327,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @filewrapperStaticPathInExpressionForGeneration : @semanticExpressionForGeneration {
+valueclass @filewrapperStaticPathInExpressionForGeneration : @semanticExpressionForGeneration {
   @string mFilewrapperName
   @uint mFilewrapperFileIndex
   @bool mIsTextFile

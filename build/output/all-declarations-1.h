@@ -5408,7 +5408,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extractedAssociated
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_semanticDeclarationAST : public AC_GALGAS_class {
+class GALGAS_semanticDeclarationAST : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_semanticDeclarationAST (void) ;
 
@@ -5488,7 +5488,7 @@ class cPtr_semanticDeclarationAST : public acPtr_class {
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_lexicalExpressionAST : public AC_GALGAS_class {
+class GALGAS_lexicalExpressionAST : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_lexicalExpressionAST (void) ;
 
@@ -5559,7 +5559,7 @@ class cPtr_lexicalExpressionAST : public acPtr_class {
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_lexicalInstructionAST : public AC_GALGAS_class {
+class GALGAS_lexicalInstructionAST : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_lexicalInstructionAST (void) ;
 
@@ -6361,7 +6361,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateReplacement
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_abstractLexicalRuleAST : public AC_GALGAS_class {
+class GALGAS_abstractLexicalRuleAST : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_abstractLexicalRuleAST (void) ;
 
@@ -8912,7 +8912,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendSearchLi
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_lexicalSendDefaultActionAST : public AC_GALGAS_class {
+class GALGAS_lexicalSendDefaultActionAST : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_lexicalSendDefaultActionAST (void) ;
 
@@ -9744,7 +9744,7 @@ class cPtr_lexicalSelectInstructionAST : public cPtr_lexicalInstructionAST {
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_abstractLexicalRoutineActualArgumentAST : public AC_GALGAS_class {
+class GALGAS_abstractLexicalRoutineActualArgumentAST : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_abstractLexicalRoutineActualArgumentAST (void) ;
 
@@ -10027,7 +10027,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineCallA
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST : public AC_GALGAS_class {
+class GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST (void) ;
 

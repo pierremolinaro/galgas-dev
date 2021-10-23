@@ -6155,7 +6155,7 @@ extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_displayUnicodeLe
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams ;
 
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorSharedClassDeclaration ;
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorClassDeclaration ;
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateManyFiles ;
 
@@ -7474,8 +7474,8 @@ class GALGAS_classDeclarationAST : public GALGAS_semanticDeclarationAST {
   public: VIRTUAL_IN_DEBUG void setter_setMIsAbstract (class GALGAS_bool inArgument0
                                                        COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMIsShared (class GALGAS_bool inArgument0
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void setter_setMIsReference (class GALGAS_bool inArgument0
+                                                        COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMPropertyList (class GALGAS_propertyInCollectionListAST inArgument0
                                                          COMMA_LOCATION_ARGS) ;
@@ -7494,7 +7494,7 @@ class GALGAS_classDeclarationAST : public GALGAS_semanticDeclarationAST {
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mIsAbstract (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mIsShared (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mIsReference (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_propertyInCollectionListAST getter_mPropertyList (LOCATION_ARGS) const ;
 
@@ -7522,7 +7522,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classDeclarationAST
 class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
   public: GALGAS_bool mProperty_mIsAbstract ;
-  public: GALGAS_bool mProperty_mIsShared ;
+  public: GALGAS_bool mProperty_mIsReference ;
   public: GALGAS_lstring mProperty_mClassTypeName ;
   public: GALGAS_lstring mProperty_mSuperClassName ;
   public: GALGAS_lstringlist mProperty_mClassFeatureList ;
@@ -7531,7 +7531,7 @@ class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Constructor
   public: cPtr_classDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                     const GALGAS_bool & in_mIsAbstract,
-                                    const GALGAS_bool & in_mIsShared,
+                                    const GALGAS_bool & in_mIsReference,
                                     const GALGAS_lstring & in_mClassTypeName,
                                     const GALGAS_lstring & in_mSuperClassName,
                                     const GALGAS_lstringlist & in_mClassFeatureList,
@@ -7544,8 +7544,8 @@ class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Attribute accessors
   public: VIRTUAL_IN_DEBUG GALGAS_bool getter_mIsAbstract (LOCATION_ARGS) const ;
   public: VIRTUAL_IN_DEBUG void setter_setMIsAbstract (GALGAS_bool inValue COMMA_LOCATION_ARGS) ;
-  public: VIRTUAL_IN_DEBUG GALGAS_bool getter_mIsShared (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMIsShared (GALGAS_bool inValue COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG GALGAS_bool getter_mIsReference (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG void setter_setMIsReference (GALGAS_bool inValue COMMA_LOCATION_ARGS) ;
   public: VIRTUAL_IN_DEBUG GALGAS_lstring getter_mClassTypeName (LOCATION_ARGS) const ;
   public: VIRTUAL_IN_DEBUG void setter_setMClassTypeName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
   public: VIRTUAL_IN_DEBUG GALGAS_lstring getter_mSuperClassName (LOCATION_ARGS) const ;

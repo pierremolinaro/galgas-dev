@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @assignmentInstructionAST : @semanticInstructionAST {
+valueclass @assignmentInstructionAST : @semanticInstructionAST {
   @lstring mTargetVariableName
   @lstring mOptionalProperty
   @semanticExpressionAST mSourceExpression
@@ -10,7 +10,7 @@ class @assignmentInstructionAST : @semanticInstructionAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
+valueclass @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
   @lstring mTargetSelfPropertyName
   @lstring mOptionalProperty
   @semanticExpressionAST mSourceExpression
@@ -229,7 +229,7 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
 #! GENERATION TYPES
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
+valueclass @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
   @unifiedTypeMap-entry mTargetType
   @string mTargetCppName
   @string mNameForCheckingFormalParameterUsing

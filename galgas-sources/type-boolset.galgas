@@ -1,14 +1,14 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                                                                                                *
+#   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @boolsetDeclarationAST : @semanticDeclarationAST {
+valueclass @boolsetDeclarationAST : @semanticDeclarationAST {
   @lstring mBoolsetTypeName
   @lstringlist mFlagList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                                                                                             *
+#   SYNTAX                                  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -35,7 +35,7 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                                                                                                     *
+#   ENTER IN GRAPH                          
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @boolsetDeclarationAST enterDeclarationInGraph
@@ -50,7 +50,7 @@ override method @boolsetDeclarationAST enterDeclarationInGraph
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   KEY REPRESENTATION                                                                                                 *
+#   KEY REPRESENTATION                      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @boolsetDeclarationAST keyRepresentation -> @string {
@@ -58,7 +58,7 @@ override getter @boolsetDeclarationAST keyRepresentation -> @string {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                                                                                                   *
+#   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func %once forbiddenKeysForBoolset -> @stringset {
@@ -178,7 +178,7 @@ override method @boolsetDeclarationAST enterInSemanticContext
 
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                                                                                                  *
+#   SEMANTIC ANALYSIS                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @boolsetDeclarationAST semanticAnalysis
@@ -206,10 +206,10 @@ override method @boolsetDeclarationAST semanticAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                                                                                                    *
+#   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @boolsetTypeForGeneration : @semanticTypeForGeneration {
+valueclass @boolsetTypeForGeneration : @semanticTypeForGeneration {
   @lstringlist mFlagList
 }
 

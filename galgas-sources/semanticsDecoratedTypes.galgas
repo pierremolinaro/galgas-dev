@@ -1,20 +1,20 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  Copyright (C) 2007, ..., 2019 Pierre Molinaro.                                                                      *
-#                                                                                                                      *
-#  e-mail : pierre@pcmolinaro.name                                                                                     *
-#                                                                                                                      *
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
-#                                                                                                                      *
+#                                           
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
-#  details.                                                                                                            *
-#                                                                                                                      *
+#  details.                                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #           I N S T R U C T I O N    G E N E R A T I O N                                                               *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateInstructionList
@@ -40,7 +40,7 @@ proc generateInstructionList
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @templateInstructionForGeneration {
+abstract valueclass @templateInstructionForGeneration {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -51,7 +51,7 @@ list @templateInstructionListForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @semanticExpressionForGeneration {
+abstract valueclass @semanticExpressionForGeneration {
   @unifiedTypeMap-entry mResultType
   @location mLocation
 }
@@ -73,16 +73,16 @@ list @semanticExpressionListForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @castInExpressionForGeneration : @semanticExpressionForGeneration {
+valueclass @castInExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mReceiverExpression
   @string mTypeName
   @unifiedTypeMap-entry mCastType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  F O R M A L    P A R A M E T E R    L I S T                                                                         *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalParameterListForGeneration {
@@ -94,9 +94,9 @@ list @formalParameterListForGeneration {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  F O R M A L    I N P U T    P A R A M E T E R    L I S T                                                            *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalInputParameterListForGeneration {
@@ -108,12 +108,12 @@ list @formalInputParameterListForGeneration {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#  A C T U A L    P A R A M E T E R                                                                                    *
-#                                                                                                                      *
+#                                           
+#  A C T U A L    P A R A M E T E R         
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @actualParameterForGeneration {
+abstract valueclass @actualParameterForGeneration {
   @unifiedTypeMap-entry mFormalArgumentType
 }
 
@@ -130,13 +130,13 @@ abstract method @actualParameterForGeneration generateActualParameter
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @outputActualParameterForGeneration : @actualParameterForGeneration {
+valueclass @outputActualParameterForGeneration : @actualParameterForGeneration {
   @semanticExpressionForGeneration mOutputActualParameterExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @outputInputActualParameterForGeneration : @actualParameterForGeneration {
+valueclass @outputInputActualParameterForGeneration : @actualParameterForGeneration {
   @string mOutputInputVariableCppName
   @lstringlist mStructAttributeList
   @unifiedTypeMapEntryList mTypeList
@@ -144,13 +144,13 @@ class @outputInputActualParameterForGeneration : @actualParameterForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputActualParameterForGeneration : @actualParameterForGeneration {
+valueclass @inputActualParameterForGeneration : @actualParameterForGeneration {
   @string mInputActualCppName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputJokerParameterForGeneration : @actualParameterForGeneration {
+valueclass @inputJokerParameterForGeneration : @actualParameterForGeneration {
   @string mInputActualCppName
 }
 
@@ -162,7 +162,7 @@ list @actualParameterListForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @semanticInstructionForGeneration {
+abstract valueclass @semanticInstructionForGeneration {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -182,7 +182,7 @@ list @semanticInstructionListForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @semanticBlockInstructionForGeneration : @semanticInstructionForGeneration {
+valueclass @semanticBlockInstructionForGeneration : @semanticInstructionForGeneration {
   @semanticInstructionListForGeneration mInstructionList
 }
 
@@ -195,7 +195,7 @@ list @listOfSemanticInstructionListForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @semanticDeclarationForGeneration {
+abstract valueclass @semanticDeclarationForGeneration {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -233,12 +233,12 @@ list @semanticDeclarationListForGeneration {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#    T Y P E    D E C L A R A T I O N                                                                                  *
-#                                                                                                                      *
+#                                           
+#    T Y P E    D E C L A R A T I O N       
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @semanticTypeForGeneration : @semanticDeclarationForGeneration {
+abstract valueclass @semanticTypeForGeneration : @semanticDeclarationForGeneration {
   @unifiedTypeMap-entry mSelfTypeEntry
 }
 
@@ -267,12 +267,12 @@ override getter @semanticTypeForGeneration headerKind -> @headerKind outHeaderKi
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    D E C L A R A T I O N    W I T H   H E A D E R    S P E C                                                         *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @semanticDeclarationWithHeaderForGeneration : @semanticDeclarationForGeneration {
+abstract valueclass @semanticDeclarationWithHeaderForGeneration : @semanticDeclarationForGeneration {
   @bool mHasHeader
   @string mImplementationCppFileName
 }
@@ -302,12 +302,12 @@ override getter @semanticDeclarationWithHeaderForGeneration isPredefined -> @boo
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#    L E X I Q U E    D E C L A R A T I O N                                                                            *
-#                                                                                                                      *
+#                                           
+#    L E X I Q U E    D E C L A R A T I O N 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
+valueclass @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @string mLexiqueName
   @string mHeaderContents
   @string mCppContents
@@ -316,9 +316,9 @@ class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGenera
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #   A C T I O N ,    M E T H O D    S I G N A T U R E                                                                  *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @signatureForGrammarAnalysis {
@@ -327,9 +327,9 @@ list @signatureForGrammarAnalysis {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  N O N    T E R M I N A L    S Y M B O L    M A P                                                                    *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @nonterminalSymbolLabelMapForGrammarAnalysis {
@@ -340,9 +340,9 @@ map @nonterminalSymbolLabelMapForGrammarAnalysis {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#             nonterminal symbols map                                                                                  *
-#                                                                                                                      *
+#                                           
+#             nonterminal symbols map       
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @nonTerminalSymbolMapForGrammarAnalysis {
@@ -362,7 +362,7 @@ list @nonTerminalToAddList {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
+valueclass @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @string mGrammarName
   @string mLexiqueName
   @nonTerminalSymbolMapForGrammarAnalysis mNonTerminalMapForGrammarAnalysis
@@ -375,57 +375,57 @@ class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#    R O U T I N E    D E C L A R A T I O N                                                                            *
-#                                                                                                                      *
+#                                           
+#    R O U T I N E    D E C L A R A T I O N 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
+valueclass @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @string mRoutineName
   @formalParameterListForGeneration mFormalArgumentList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    R O U T I N E    I M P L E M E N T A T I O N                                                                      *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @routineImplementationForGeneration : @routinePrototypeDeclarationForGeneration {
+valueclass @routineImplementationForGeneration : @routinePrototypeDeclarationForGeneration {
   @bool mGenerateStatic
   @semanticInstructionListForGeneration mRoutineInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    F U N C T I O N    D E C L A R A T I O N                                                                          *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
+valueclass @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @string mFunctionName
   @formalInputParameterListForGeneration mFormalArgumentList
   @unifiedTypeMap-entry mReturnType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    F U N C T I O N    I M P L E M E N T A T I O N                                                                    *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @functionImplementationForGeneration : @functionPrototypeDeclarationForGeneration {
+valueclass @functionImplementationForGeneration : @functionPrototypeDeclarationForGeneration {
   @string mResultVariableCppName
   @semanticInstructionListForGeneration mFunctionInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    O N C E    F U N C T I O N    D E C L A R A T I O N                                                               *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
+valueclass @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @string mFunctionName
   @unifiedTypeMap-entry mReturnType
   @string mResultVariableCppName
@@ -433,9 +433,9 @@ class @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHeaderForG
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #  T E R M I N A L    C H E C K    I N S T R U C T I O N                                                               *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @terminalCheckAssignementList {
@@ -446,25 +446,25 @@ list @terminalCheckAssignementList {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @syntaxInstructionForGeneration : @semanticInstructionForGeneration {
+abstract valueclass @syntaxInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#    P R I M I T I V E    T Y P E                                                                                      *
-#                                                                                                                      *
+#                                           
+#    P R I M I T I V E    T Y P E           
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @primitiveTypeForGeneration : @semanticTypeForGeneration {
+valueclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
   @string mPredefinedTypeName
   @predefinedTypeKindEnum mKind
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
+#                                           
 #    F I L E W R A P P E R    D E C L A R A T I O N                                                                    *
-#                                                                                                                      *
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @filewrapperTemplateListForGeneration {
@@ -475,7 +475,7 @@ list @filewrapperTemplateListForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
+valueclass @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @string mFilewrapperName
   @string mFilewrapperAbsolutePath
   @wrapperFileMap mFilewrapperFileMap
@@ -484,20 +484,20 @@ class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeaderForGe
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#    P R O G R A M    D E C L A R A T I O N                                                                            *
-#                                                                                                                      *
+#                                           
+#    P R O G R A M    D E C L A R A T I O N 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @programComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
+valueclass @programComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @stringset mInclusionSet
   @string mImplementationString
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-# A P P E N D    D E C L A R A T I O N    1                                                                            *
-#                                                                                                                      *
+#                                           
+# A P P E N D    D E C L A R A T I O N    1 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @semanticDeclarationForGeneration appendDeclaration1
@@ -508,9 +508,9 @@ method @semanticDeclarationForGeneration appendDeclaration1
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-# A P P E N D    D E C L A R A T I O N    2                                                                            *
-#                                                                                                                      *
+#                                           
+# A P P E N D    D E C L A R A T I O N    2 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @semanticDeclarationForGeneration appendDeclaration2

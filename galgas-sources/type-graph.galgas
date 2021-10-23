@@ -1,5 +1,5 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                                                                                                *
+#   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @graphInsertModifierList {
@@ -9,14 +9,14 @@ list @graphInsertModifierList {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @graphDeclarationAST : @semanticDeclarationAST {
+valueclass @graphDeclarationAST : @semanticDeclarationAST {
   @lstring mGraphTypeName
   @lstring mAssociatedListTypeName
   @graphInsertModifierList mInsertModifierList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                                                                                             *
+#   SYNTAX                                  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -51,7 +51,7 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                                                                                                     *
+#   ENTER IN GRAPH                          
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @graphDeclarationAST enterDeclarationInGraph
@@ -67,7 +67,7 @@ override method @graphDeclarationAST enterDeclarationInGraph
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                                                                                                   *
+#   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @graphDeclarationAST enterInSemanticContext
@@ -420,7 +420,7 @@ override method @graphDeclarationAST enterInSemanticContext
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                                                                                                  *
+#   SEMANTIC ANALYSIS                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @graphDeclarationAST semanticAnalysis
@@ -465,10 +465,10 @@ override method @graphDeclarationAST semanticAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                                                                                                    *
+#   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @graphDeclarationForGeneration : @semanticTypeForGeneration {
+valueclass @graphDeclarationForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-entry mAssociatedListTypeEntry
   @unifiedTypeMap-entry mAssociatedListElementTypeEntry
   @graphInsertModifierList mInsertModifierList

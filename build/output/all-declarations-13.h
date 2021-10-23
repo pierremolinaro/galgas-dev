@@ -321,8 +321,8 @@ class GALGAS_classTypeForGeneration : public GALGAS_semanticTypeForGeneration {
   public: VIRTUAL_IN_DEBUG void setter_setMIsAbstract (class GALGAS_bool inArgument0
                                                        COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMIsShared (class GALGAS_bool inArgument0
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void setter_setMIsReference (class GALGAS_bool inArgument0
+                                                        COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMSuperClass (class GALGAS_unifiedTypeMap_2D_entry inArgument0
                                                        COMMA_LOCATION_ARGS) ;
@@ -341,7 +341,7 @@ class GALGAS_classTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mIsAbstract (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mIsShared (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mIsReference (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_entry getter_mSuperClass (LOCATION_ARGS) const ;
 
@@ -369,7 +369,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classTypeForGenerat
 class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Attributes
   public: GALGAS_bool mProperty_mIsAbstract ;
-  public: GALGAS_bool mProperty_mIsShared ;
+  public: GALGAS_bool mProperty_mIsReference ;
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mSuperClass ;
   public: GALGAS_typedPropertyList mProperty_mAllTypedAttributeList ;
   public: GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
@@ -378,7 +378,7 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Constructor
   public: cPtr_classTypeForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
                                        const GALGAS_bool & in_mIsAbstract,
-                                       const GALGAS_bool & in_mIsShared,
+                                       const GALGAS_bool & in_mIsReference,
                                        const GALGAS_unifiedTypeMap_2D_entry & in_mSuperClass,
                                        const GALGAS_typedPropertyList & in_mAllTypedAttributeList,
                                        const GALGAS_typedPropertyList & in_mTypedAttributeList,
@@ -391,8 +391,8 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Attribute accessors
   public: VIRTUAL_IN_DEBUG GALGAS_bool getter_mIsAbstract (LOCATION_ARGS) const ;
   public: VIRTUAL_IN_DEBUG void setter_setMIsAbstract (GALGAS_bool inValue COMMA_LOCATION_ARGS) ;
-  public: VIRTUAL_IN_DEBUG GALGAS_bool getter_mIsShared (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMIsShared (GALGAS_bool inValue COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG GALGAS_bool getter_mIsReference (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG void setter_setMIsReference (GALGAS_bool inValue COMMA_LOCATION_ARGS) ;
   public: VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_entry getter_mSuperClass (LOCATION_ARGS) const ;
   public: VIRTUAL_IN_DEBUG void setter_setMSuperClass (GALGAS_unifiedTypeMap_2D_entry inValue COMMA_LOCATION_ARGS) ;
   public: VIRTUAL_IN_DEBUG GALGAS_typedPropertyList getter_mAllTypedAttributeList (LOCATION_ARGS) const ;

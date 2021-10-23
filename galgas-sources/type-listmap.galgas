@@ -1,14 +1,14 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                                                                                                *
+#   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @listmapDeclarationAST : @semanticDeclarationAST {
+valueclass @listmapDeclarationAST : @semanticDeclarationAST {
   @lstring mListmapTypeName
   @lstring mAssociatedListTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                                                                                             *
+#   SYNTAX                                  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -29,7 +29,7 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ASSOCIATED ELEMENT                                                                                                 *
+#   ASSOCIATED ELEMENT                      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listmapDeclarationAST addAssociatedElement
@@ -55,7 +55,7 @@ override method @listmapDeclarationAST addAssociatedElement
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                                                                                                     *
+#   ENTER IN GRAPH                          
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listmapDeclarationAST enterDeclarationInGraph
@@ -70,7 +70,7 @@ override method @listmapDeclarationAST enterDeclarationInGraph
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                                                                                                   *
+#   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listmapDeclarationAST enterInSemanticContext
@@ -199,7 +199,7 @@ override method @listmapDeclarationAST enterInSemanticContext
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                                                                                                  *
+#   SEMANTIC ANALYSIS                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listmapDeclarationAST semanticAnalysis
@@ -242,10 +242,10 @@ override method @listmapDeclarationAST semanticAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                                                                                                    *
+#   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @listmapTypeForGeneration : @semanticTypeForGeneration {
+valueclass @listmapTypeForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-entry mAssociatedListTypeIndex
   @typedPropertyList mAssociatedListTypedAttributeList
   @unifiedTypeMap-entry mAssociatedListMapElementTypeIndex

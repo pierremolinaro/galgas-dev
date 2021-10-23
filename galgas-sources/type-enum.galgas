@@ -1,8 +1,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#!   AST                                                                                                               *
+#!   AST                                    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @enumDeclarationAST : @semanticDeclarationAST {
+valueclass @enumDeclarationAST : @semanticDeclarationAST {
   @lstring mEnumTypeName
   @enumConstantList mConstantList
   @lstring mDefaultConstantName
@@ -16,7 +16,7 @@ list @enumConstantList {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#!  SYNTAX                                                                                                             *
+#!  SYNTAX                                  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -62,7 +62,7 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#!  ENTER IN GRAPH                                                                                                     *
+#!  ENTER IN GRAPH                          
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @enumDeclarationAST enterDeclarationInGraph
@@ -101,7 +101,7 @@ override method @enumDeclarationAST enterDeclarationInGraph
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#!  SEMANTIC CONTEXT                                                                                                   *
+#!  SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @enumDeclarationAST enterInSemanticContext
@@ -236,7 +236,7 @@ override method @enumDeclarationAST enterInSemanticContext
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#!  SEMANTIC ANALYSIS                                                                                                  *
+#!  SEMANTIC ANALYSIS                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @enumDeclarationAST semanticAnalysis
@@ -282,7 +282,7 @@ override method @enumDeclarationAST semanticAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#!  CODE GENERATION                                                                                                    *
+#!  CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @enumConstantListForGeneration {
@@ -292,7 +292,7 @@ list @enumConstantListForGeneration {
 
 #·······················································································································
 
-class @enumTypeForGeneration : @semanticTypeForGeneration {
+valueclass @enumTypeForGeneration : @semanticTypeForGeneration {
   @enumConstantListForGeneration mConstantList
 }
 

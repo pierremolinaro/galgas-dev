@@ -1,17 +1,17 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#  GALGAS scanner definition                                                                                           *
-#                                                                                                                      *
+#                                           
+#  GALGAS scanner definition                
+#                                           
 #  Copyright (C) 1997, ..., 2015 Pierre Molinaro.                                                                      *
-#  e-mail : pierre@pcmolinaro.name                                                                                     *
-#                                                                                                                      *
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
-#                                                                                                                      *
+#                                           
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
-#  details.                                                                                                            *
-#                                                                                                                      *
+#  details.                                 
+#                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 lexique galgas3Scanner indexing in "../build/indexes" {
@@ -167,6 +167,7 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "private",
   "proc",
   "project",
+  "refclass",
   "remove",
   "replace",
   "repeat",
@@ -189,6 +190,7 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "true",
   "shared",
   "unused",
+  "valueclass",
   "var",
   "warning",
   "while",

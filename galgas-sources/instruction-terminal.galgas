@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @terminalCheckInstruction : @syntaxInstructionAST {
+valueclass @terminalCheckInstruction : @syntaxInstructionAST {
   @lstring mTerminalName
   @actualInputParameterListAST mActualInputParameterList
   @2lstringlist mIndexingKeyList # Empty list if no index
@@ -167,7 +167,7 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
 #! GENERATION TYPES
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @terminalCheckInstructionForGeneration : @syntaxInstructionForGeneration {
+valueclass @terminalCheckInstructionForGeneration : @syntaxInstructionForGeneration {
   @lstring mTerminalName
   @string mLexiqueIdentifier
   @terminalCheckAssignementList mTerminalCheckAssignementList

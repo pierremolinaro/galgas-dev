@@ -3051,7 +3051,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_collectionValueElem
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_abstractCollectionValueElement : public AC_GALGAS_class {
+class GALGAS_abstractCollectionValueElement : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_abstractCollectionValueElement (void) ;
 
@@ -3578,7 +3578,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_collectionValueElem
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_abstractCollectionValueElementForGeneration : public AC_GALGAS_class {
+class GALGAS_abstractCollectionValueElementForGeneration : public AC_GALGAS_value_class {
 //--------------------------------- Default constructor
   public: GALGAS_abstractCollectionValueElementForGeneration (void) ;
 

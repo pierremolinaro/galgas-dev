@@ -1,14 +1,14 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                                                                                                *
+#   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @mapEntryDeclarationAST : @semanticDeclarationAST {
+valueclass @mapEntryDeclarationAST : @semanticDeclarationAST {
   @lstring mMapEntryTypeName
   @lstring mAssociatedMapTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                                                                                                     *
+#   ENTER IN GRAPH                          
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mapEntryDeclarationAST enterDeclarationInGraph
@@ -26,7 +26,7 @@ override method @mapEntryDeclarationAST enterDeclarationInGraph
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN SEMANTIC CONTEXT                                                                                          *
+#   ENTER IN SEMANTIC CONTEXT               
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mapEntryDeclarationAST enterInSemanticContext
@@ -221,7 +221,7 @@ override method @mapEntryDeclarationAST enterInSemanticContext
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                                                                                                  *
+#   SEMANTIC ANALYSIS                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mapEntryDeclarationAST semanticAnalysis
@@ -256,10 +256,10 @@ override method @mapEntryDeclarationAST semanticAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                                                                                                    *
+#   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @mapEntryTypeForGeneration : @semanticTypeForGeneration {
+valueclass @mapEntryTypeForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-entry mAssociatedMapTypeEntry
   @typedPropertyList mAssociatedMapTypedAttributeList
   @mapSearchMethodListAST mSearchMethodList
