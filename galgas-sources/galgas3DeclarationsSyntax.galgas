@@ -63,17 +63,18 @@ rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollecti
     $private$
     isPublic = false
   end
-  $@type$ ?var  @lstring mAttributeTypeName
-  $identifier$ ?var  @lstring mAttributeName
-  var featureList =@lstringlist {}
+  $@type$ ?let attributeTypeName
+  $identifier$ ?let attributeName
+  var featureList = @lstringlist {}
   repeat
   while
     $%attribute$ ?let @lstring featureName
     featureList += !featureName
   end
   ioAttributeInCollectionList +=
-    !mAttributeTypeName
-    !mAttributeName
+#    !isWeak
+    !attributeTypeName
+    !attributeName
     !isPublic
     !featureList
 }

@@ -158,7 +158,7 @@ bool galgasUnicodeLetter (const utf32 inUnicodeCharacter) {
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-static const C_cocoa_lexique_table_entry ktable_for_galgas_33_Scanner_galgasKeyWordList [87] = {
+static const C_cocoa_lexique_table_entry ktable_for_galgas_33_Scanner_galgasKeyWordList [88] = {
   {"as", galgas3Scanner_1_as},
   {"do", galgas3Scanner_1_do},
   {"if", galgas3Scanner_1_if},
@@ -191,6 +191,7 @@ static const C_cocoa_lexique_table_entry ktable_for_galgas_33_Scanner_galgasKeyW
   {"send", galgas3Scanner_1_send},
   {"then", galgas3Scanner_1_then},
   {"true", galgas3Scanner_1_true},
+  {"weak", galgas3Scanner_1_weak},
   {"with", galgas3Scanner_1_with},
   {"after", galgas3Scanner_1_after},
   {"array", galgas3Scanner_1_array},
@@ -249,7 +250,7 @@ static const C_cocoa_lexique_table_entry ktable_for_galgas_33_Scanner_galgasKeyW
 } ;
 
 static NSInteger search_into_galgas_33_Scanner_galgasKeyWordList (NSString * inSearchedString) {
-  return searchStringInTable (inSearchedString, ktable_for_galgas_33_Scanner_galgasKeyWordList, 87) ;
+  return searchStringInTable (inSearchedString, ktable_for_galgas_33_Scanner_galgasKeyWordList, 88) ;
 }
 
 
@@ -948,7 +949,7 @@ static NSInteger search_into_galgas_33_Scanner_galgasKeyWordList (NSString * inS
 //----------------------------------------------------------------------------------------------------------------------
 
 - (NSUInteger) terminalVocabularyCount {
-  return 152 ;
+  return 153 ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -978,7 +979,7 @@ static NSInteger search_into_galgas_33_Scanner_galgasKeyWordList (NSString * inS
 //----------------------------------------------------------------------------------------------------------------------
 
 - (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal {
-  static const NSUInteger kTerminalSymbolStyles [153] = {0,
+  static const NSUInteger kTerminalSymbolStyles [154] = {0,
     0 /* galgas3Scanner_1_identifier */,
     8 /* galgas3Scanner_1_double_2E_xxx */,
     6 /* galgas3Scanner_1_uint_33__32_ */,
@@ -1089,6 +1090,7 @@ static NSInteger search_into_galgas_33_Scanner_galgasKeyWordList (NSString * inS
     1 /* galgas3Scanner_1_valueclass */,
     1 /* galgas3Scanner_1_var */,
     1 /* galgas3Scanner_1_warning */,
+    1 /* galgas3Scanner_1_weak */,
     1 /* galgas3Scanner_1_while */,
     1 /* galgas3Scanner_1_with */,
     2 /* galgas3Scanner_1__2A_ */,
@@ -1142,7 +1144,7 @@ static NSInteger search_into_galgas_33_Scanner_galgasKeyWordList (NSString * inS
 //----------------------------------------------------------------------------------------------------------------------
 
 - (BOOL) atomicSelectionForToken: (NSUInteger) inTokenIndex {
-  static const BOOL kTerminalAtomicSelection [153] = {NO,
+  static const BOOL kTerminalAtomicSelection [154] = {NO,
     YES /* galgas3Scanner_1_identifier */,
     YES /* galgas3Scanner_1_double_2E_xxx */,
     YES /* galgas3Scanner_1_uint_33__32_ */,
@@ -1253,6 +1255,7 @@ static NSInteger search_into_galgas_33_Scanner_galgasKeyWordList (NSString * inS
     YES /* galgas3Scanner_1_valueclass */,
     YES /* galgas3Scanner_1_var */,
     YES /* galgas3Scanner_1_warning */,
+    YES /* galgas3Scanner_1_weak */,
     YES /* galgas3Scanner_1_while */,
     YES /* galgas3Scanner_1_with */,
     YES /* galgas3Scanner_1__2A_ */,

@@ -349,8 +349,6 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"lstring" ?let lstringTypeIndex]
 #--- lstringlist type index
   [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"lstringlist" ?let lstringlistTypeIndex]
-#--- entry type index
-#  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !self.mMapTypeName.string + "-entry" ?let entryTypeIndex]
 #--- Enumeration description
   @enumerationDescriptorList enumerationDescriptor = {!lstringTypeIndex !"lkey"}
 #--- Attributes

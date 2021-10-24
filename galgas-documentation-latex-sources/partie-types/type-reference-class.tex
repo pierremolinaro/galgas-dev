@@ -1,0 +1,256 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapterLabel{Le type \texttt{refclass}}{typeRefClass}
+
+\tableDesMatieresDuChapitre
+
+
+Le type \ggs=refclass= est un type de classe classique -- il inclut l'\emph{héritage simple} et les \emph{classes abstraites} -- et a une sémantique de référence (\refSectionPage{semantiqueReference}).
+
+Il n'est pas possible de définir des méthodes dans une classe : on peut le faire uniquement via des \emph{extensions}~: \refChapterPage{chapitreExtensions}.
+
+Pour chaque type \ggs=refclass @T= déclaré, est implicitement déclaré le type \ggs=@T-weak=, qui implémente un \emph{pointeur faible} sur les objets de type \ggs=@T= (\refSectionPage{pointeurFaible}).
+
+
+
+
+
+
+\sectionLabel{Déclaration d'une classe}{declarationClasseReference}
+
+
+Voici différents exemples de déclaration de classes :
+
+\begin{galgas}
+abstract refclass @A {
+  @uint mA
+}
+refclass @B : @A {
+  @string mB
+}
+refclass @C : @B {
+  @data mC
+}
+\end{galgas}
+
+La classe \ggs+@A+ est abstraite (c'est-à-dire qu'elle ne peut pas être instanciée), la classe \ggs+@B+ hérite de \ggs+@A+. Une classe déclare zéro, un ou plusieurs propriétés. L'héritage multiple n'est pas implémenté en GALGAS.
+
+Une classe qui hérite d'une autre peut être abstraite :
+\begin{galgas}
+abstract refclass @D : @C {
+  ...
+ }
+\end{galgas}
+
+Une classe non abstraite définit implicitement le constructeur \ggs+new+, et des \emph{getters} pour lire les propriétés, et des \emph{setters} pour les écrire. On ne peut pas définir explicitement d'autres constructeurs, \emph{getters} ou \emph{setters} à l'intérieur de la classe. Cependant,  les extensions (\refChapterPage{chapitreExtensions}) permettent de définir \emph{getters}, \emph{méthodes} et \emph{setters} associés à une classe.
+
+
+
+
+
+
+
+
+
+
+
+\sectionLabel{Sémantique de référence}{semantiqueReference}
+
+Une classe déclarée par \ggs=refclass= a une \emph{sémantique de référence}, c'est-à-dire qu'une affectation entre instances provoque un partage de données~:
+
+\begin{galgas}
+shared refclass @classeSemantiqueDeReference {
+  @uint propriété
+}
+\end{galgas}
+
+Et l'exécution devient :
+
+\begin{galgas}
+@classeSemantiqueDeReference a = .new {!10}
+@classeSemantiqueDeReference b = a # Partage
+[!?a setPropriété !5]
+message "Propriété de a " + [a propriété] + "\n" # Propriété de a 5
+message "Propriété de b " + [b propriété] + "\n" # Propriété de b 5
+\end{galgas}
+
+L'affectation \ggs+b=a+ provoque un partage de données, \ggs=a= et \ggs=b= désigne le même objet~: l'affectation de sa \ggs=propriété= via \ggs=a= est visible via \ggs=b=.
+
+
+
+
+
+
+
+
+\section{Le constructeur \texttt{new}}
+
+Le constructeur \ggs+new+ est implicitement défini pour toute classe non abstraite (c'est à dire les classes \ggs+@B+ et \ggs+@C+ de la \refSectionPage{declarationClasseReference}). Ce constructeur présente un argument par propriété déclaré dans la classe instanciée et dans toutes ses super classes. L'ordre des arguments est celui obtenu en parcourant la hiérarchie de classes, en commençant par la classe de base. Par exemple on écrira~:
+
+\begin{galgas}
+@B b = @B.new {
+  !0 # Propriété mA de @A
+  !"Hello" # Propriété mB de @B
+}
+@C c = @C.new {
+  !0 # Propriété mA de @A
+  !"Hello" # Propriété mB de @B
+  !@data.emptyData # Propriété mC de @C
+}
+\end{galgas}
+
+Dans les exemples ci-dessus, les annotations de type apparaissent deux fois, à la déclaration de la variable et devant le constructeur \ggs=new=. Si ces deux annotations nomment le même type, l'une d'entre elles peut être omise. Par exemple~:
+
+\begin{galgas}
+@B b = .new {
+  !0 # Propriété mA de @A
+  !"Hello" # Propriété mB de @B
+}
+\end{galgas}
+
+Ou bien :
+\begin{galgas}
+var b = @B.new {
+  !0 # Propriété mA de @A
+  !"Hello" # Propriété mB de @B
+}
+\end{galgas}
+
+Aucune des deux annotations ne peut être omise si elles nomment des types différents, comme lorsque l'on réalise une affectation polymorphique~:
+
+\begin{galgas}
+@A b = @B.new {
+  !0 # Propriété mA de @A
+  !"Hello" # Propriété mB de @B
+}
+\end{galgas}
+
+
+
+
+
+
+
+%\sectionLabel{Qualificatif \texttt{shared} appliqué à une classe}{sharedClassQualifier}
+%
+%Le qualificatif \ggs=shared= donne une \emph{sémantique de référence} à la classe à laquelle il s'applique (voir \refSectionPage{semantiqueValeurReference}).
+%
+%Une classe de base, c'est-à-dire une classe sans super classe, accepte librement le qualificatif \ggs=shared=.
+%
+%Pour une classe ayant une super classe :
+%\begin{itemize}
+%  \item si la super classe est déclarée avec le qualificatif \ggs=shared=, alors la classe doit avoir le qualificatif \ggs=shared=~;
+%  \item si la super classe n'est pas déclarée avec le qualificatif \ggs=shared=, alors la classe ne doit pas avoir le qualificatif \ggs=shared=.
+%\end{itemize}
+%
+%Les notions de classe abstraite et de sémantique de valeur / de référence sont indépendantes : une classe abstraite peut avoir une sémantique de référence. Détail syntaxique, le mot réservé \ggs=abstract= doit précéder le mot réservé \ggs=shared=~:
+%
+%abstract shared refclass @A {
+%  ...
+%}
+
+
+
+
+
+
+
+
+\section{Lecture d'une propriété}
+
+Par défaut, la lecture d'une propriété est activée par la définition implicite d'un \emph{getter}, dont le nom est le nom de la propriété. Ainsi, pour une classe \ggs=@C=~:
+
+\begin{galgas}
+refclass @C {
+  @uint prop
+}
+\end{galgas}
+
+Et pour une variable \ggs+c+ de type \ggs+@C+, on peut écrire~:
+
+\begin{galgas}
+@uint v = [c prop]
+\end{galgas}
+
+À partir de la version 3.3.0, il est possible d'utiliser la notation pointée~:
+\begin{galgas}
+@uint v = c.prop
+\end{galgas}
+
+Si la propriété a été déclarée \ggs+private+, seules les \emph{méthodes}, \emph{getters} et \emph{setters} de cette classe peuvent accéder cette propriété.
+
+
+
+
+
+
+
+
+\section{Écriture d'une propriété}
+
+Par défaut, une propriété est publique et un \emph{setter} est engendré implicitement. Ce \emph{setter} porte le nom \texttt{set<Propriété>}, c'est-à-dire le nom de la propriété avec sa première lettre en majuscule, précédé par \texttt{set}. Par exemple :
+
+\begin{galgas}
+refclass @C {
+  @uint prop
+}
+\end{galgas}
+
+
+Pour modifier la propriété \ggs+prop+ d'un objet \ggs=c= instance de \ggs=@C=, on écrira :
+
+\begin{galgas}
+[!?c setProp !12]
+\end{galgas}
+
+Si la propriété a été déclarée \ggs+private+, seules les \emph{méthodes}, \emph{getters} et \emph{setters} de cette classe peuvent accéder cette propriété.
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Conversions entre objets de classes différentes}
+
+Pour toute cette section, nous illustrons les constructions décrites en nous basant sur les trois classes suivantes~:
+\begin{galgas}
+refclass @A {
+  ...
+}
+refclass @B : @A {
+  ...
+}
+refclass @C : @B {
+  ...
+}
+\end{galgas}
+
+Nous considérons trois variables \ggs=@a=, \ggs=b= et \ggs=c= respectivement de types \ggs=@A=, \ggs=@B= et \ggs=@C=.
+
+
+\subsection{Affectation polymorphique}
+
+GALGAS accepte l'affectation polymorphique qui est par exemple \ggs+a = b+. Elle est autorisée aussi lors de l'affectation d'une expression effective à un paramètre formel dans une instruction d'appel (de routine, de fonction, de méthode, ...)
+
+
+\subsection{Affectation polymorphique inverse}
+
+L'affectation polymorphique inverse (qui consisterait à écrire \ggs+b = a+) est logiquement refusée par le compilateur.
+
+Il y a trois constructions qui permettent d'effectuer cette opération :
+\begin{itemize}
+  \item l'expression de conversion polymorphique inverse (\refSubsectionPage{expConversionPolymorphiqueInverse}) ;
+  \item l'expression de test du type dynamique (\refSubsectionPage{testTypeDynamiqueExpression}) ;
+  \item l'instruction \ggs+cast+ (\refSectionPage{instructionCast}).
+\end{itemize}
+
+
+\sectionLabel{Pointeur faible}{pointeurFaible}

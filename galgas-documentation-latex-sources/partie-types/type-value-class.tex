@@ -2,16 +2,15 @@
 %!TEX root = ../galgas-book.tex
 
 %--------------------------------------------------------------
-\chapterLabel{Le type \texttt{class}}{typeClass}
+\chapterLabel{Le type \texttt{valueclass}}{typeClass}
 
 \tableDesMatieresDuChapitre
 
 
-Le type \ggs=class= GALGAS est classique : il inclut l'\emph{héritage simple} et les \emph{classes abstraites}.
+Le type \ggs=valueclass= est un type de classe classique -- il inclut l'\emph{héritage simple} et les \emph{classes abstraites} -- mais a une sémantique de valeur (\refSectionPage{semantiqueValeur}).
 
 Il n'est pas possible de définir des méthodes dans une classe : on peut le faire uniquement via des \emph{extensions}~: \refChapterPage{chapitreExtensions}.
 
-Les classes ont par défaut une \emph{sémantique de valeur}, c'est-à-dire qu'une affectation entre instances provoque une copie. À partir de la version 3.3.0 de GALGAS, le qualificatif \ggs=shared= donne à la classe qui le porte une \emph{sémantique de référence}, c'est-à-dire qu'une affectation entre instances provoque un partage de données. Ceci est expliqué en détail à la \refSectionPage{semantiqueValeurReference}.
 
 
 
@@ -19,20 +18,19 @@ Les classes ont par défaut une \emph{sémantique de valeur}, c'est-à-dire qu'u
 
 
 
-
-\sectionLabel{Déclaration d'une classe}{declarationClasse}
+\sectionLabel{Déclaration d'une classe}{declarationClasseValeur}
 
 
 Voici différents exemples de déclaration de classes :
 
 \begin{galgas}
-abstract class @A {
+abstract valueclass @A {
   @uint mA
 }
-class @B : @A {
+valueclass @B : @A {
   @string mB
 }
-class @C : @B {
+valueclass @C : @B {
   @data mC
 }
 \end{galgas}
@@ -41,7 +39,7 @@ La classe \ggs+@A+ est abstraite (c'est-à-dire qu'elle ne peut pas être instan
 
 Une classe qui hérite d'une autre peut être abstraite :
 \begin{galgas}
-abstract class @D : @C {
+abstract valueclass @D : @C {
   ...
  }
 \end{galgas}
@@ -58,12 +56,12 @@ Une classe non abstraite définit implicitement le constructeur \ggs+new+, et de
 
 
 
-\sectionLabel{Sémantique de valeur et sémantique de référence}{semantiqueValeurReference}
+\sectionLabel{Sémantique de valeur}{semantiqueValeur}
 
-Par défaut, une classe GALGAS a une \emph{sémantique de valeur}, c'est-à-dire qu'une affectation entre instances provoque une copie. Prenons un exemple, en considérant la classe~:
+Une classe déclarée par \ggs=valueclass= a une \emph{sémantique de valeur}, c'est-à-dire qu'une affectation entre instances provoque une copie. Prenons un exemple, en considérant la classe~:
 
 \begin{galgas}
-class @classeSemantiqueDeValeur {
+valueclass @classeSemantiqueDeValeur {
   @uint propriété
 }
 \end{galgas}
@@ -80,28 +78,6 @@ message "Propriété de b " + [b propriété] + "\n" # Propriété de b 10
 
 Lors de l'affectation \ggs+b=a+, \ggs=b= reçoit une copie de la valeur de \ggs=a=, si bien que l'affectation ultérieure de la \ggs=propriété= de \ggs=a= n'affecte pas \ggs=b=.
 
- À partir de la version 3.3.0 de GALGAS, le qualificatif \ggs=shared= donne à la classe qui le porte une \emph{sémantique de référence}, c'est-à-dire qu'une affectation entre instances provoque un partage de données~:
-
-\begin{galgas}
-shared class @classeSemantiqueDeReference {
-  @uint propriété
-}
-\end{galgas}
-
-Et l'exécution devient :
-
-\begin{galgas}
-@classeSemantiqueDeReference a = .new {!10}
-@classeSemantiqueDeReference b = a # Partage
-[!?a setPropriété !5]
-message "Propriété de a " + [a propriété] + "\n" # Propriété de a 5
-message "Propriété de b " + [b propriété] + "\n" # Propriété de b 5
-\end{galgas}
-
-L'affectation \ggs+b=a+ provoque maintenant un partage de données, \ggs=a= et \ggs=b= désigne le même objet~: l'affectation de sa \ggs=propriété= via \ggs=a= est visible via \ggs=b=.
-
-Les règles d'utilisation du qualificatif \ggs=shared= sont données à la \refSectionPage{sharedClassQualifier}.
-
 
 
 
@@ -111,7 +87,7 @@ Les règles d'utilisation du qualificatif \ggs=shared= sont données à la \refS
 
 \section{Le constructeur \texttt{new}}
 
-Le constructeur \ggs+new+ est implicitement défini pour toute classe non abstraite (c'est à dire les classes \ggs+@B+ et \ggs+@C+ de la \refSectionPage{declarationClasse}). Ce constructeur présente un argument par propriété déclaré dans la classe instanciée et dans toutes ses super classes. L'ordre des arguments est celui obtenu en parcourant la hiérarchie de classes, en commençant par la classe de base. Par exemple on écrira~:
+Le constructeur \ggs+new+ est implicitement défini pour toute classe non abstraite (c'est à dire les classes \ggs+@B+ et \ggs+@C+ de la \refSectionPage{declarationClasseValeur}). Ce constructeur présente un argument par propriété déclaré dans la classe instanciée et dans toutes ses super classes. L'ordre des arguments est celui obtenu en parcourant la hiérarchie de classes, en commençant par la classe de base. Par exemple on écrira~:
 
 \begin{galgas}
 @B b = @B.new {
@@ -157,25 +133,6 @@ Aucune des deux annotations ne peut être omise si elles nomment des types diff�
 
 
 
-\sectionLabel{Qualificatif \texttt{shared} appliqué à une classe}{sharedClassQualifier}
-
-Le qualificatif \ggs=shared= donne une \emph{sémantique de référence} à la classe à laquelle il s'applique (voir \refSectionPage{semantiqueValeurReference}).
-
-Une classe de base, c'est-à-dire une classe sans super classe, accepte librement le qualificatif \ggs=shared=.
-
-Pour une classe ayant une super classe :
-\begin{itemize}
-  \item si la super classe est déclarée avec le qualificatif \ggs=shared=, alors la classe doit avoir le qualificatif \ggs=shared=~;
-  \item si la super classe n'est pas déclarée avec le qualificatif \ggs=shared=, alors la classe ne doit pas avoir le qualificatif \ggs=shared=.
-\end{itemize}
-
-Les notions de classe abstraite et de sémantique de valeur / de référence sont indépendantes : une classe abstraite peut avoir une sémantique de référence. Détail syntaxique, le mot réservé \ggs=abstract= doit précéder le mot réservé \ggs=shared=~:
-
-abstract shared class @A {
-  ...
-}
-
-
 
 
 
@@ -187,7 +144,7 @@ abstract shared class @A {
 Par défaut, la lecture d'une propriété est activée par la définition implicite d'un \emph{getter}, dont le nom est le nom de la propriété. Ainsi, pour une classe \ggs=@C=~:
 
 \begin{galgas}
-class @C {
+valueclass @C {
   @uint prop
 }
 \end{galgas}
@@ -217,7 +174,7 @@ Si la propriété a été déclarée \ggs+private+, seules les \emph{méthodes},
 Par défaut, une propriété est publique et un \emph{setter} est engendré implicitement. Ce \emph{setter} porte le nom \texttt{set<Propriété>}, c'est-à-dire le nom de la propriété avec sa première lettre en majuscule, précédé par \texttt{set}. Par exemple :
 
 \begin{galgas}
-class @C {
+valueclass @C {
   @uint prop
 }
 \end{galgas}
@@ -246,13 +203,13 @@ Si la propriété a été déclarée \ggs+private+, seules les \emph{méthodes},
 
 Pour toute cette section, nous illustrons les constructions décrites en nous basant sur les trois classes suivantes~:
 \begin{galgas}
-class @A {
+valueclass @A {
   ...
 }
-class @B : @A {
+valueclass @B : @A {
   ...
 }
-class @C : @B {
+valueclass @C : @B {
   ...
 }
 \end{galgas}

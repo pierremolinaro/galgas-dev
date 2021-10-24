@@ -10061,6 +10061,9 @@ static const char * gSyntaxErrorMessage_galgas_33_Scanner_var = "the 'var' keywo
 //--- Syntax error message for terminal '$warning$' :
 static const char * gSyntaxErrorMessage_galgas_33_Scanner_warning = "the 'warning' keyword" ;
 
+//--- Syntax error message for terminal '$weak$' :
+static const char * gSyntaxErrorMessage_galgas_33_Scanner_weak = "the 'weak' keyword" ;
+
 //--- Syntax error message for terminal '$while$' :
 static const char * gSyntaxErrorMessage_galgas_33_Scanner_while = "the 'while' keyword" ;
 
@@ -10193,8 +10196,8 @@ static const char * gSyntaxErrorMessage_galgas_33_Scanner__26__2B__2B_ = "the '&
 
 C_String C_Lexique_galgas_33_Scanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
   C_String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 153)) {
-    static const char * syntaxErrorMessageArray [153] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 154)) {
+    static const char * syntaxErrorMessageArray [154] = {kEndOfSourceLexicalErrorMessage,
         gSyntaxErrorMessage_galgas_33_Scanner_identifier,
         gSyntaxErrorMessage_galgas_33_Scanner_double_2E_xxx,
         gSyntaxErrorMessage_galgas_33_Scanner_uint_33__32_,
@@ -10305,6 +10308,7 @@ C_String C_Lexique_galgas_33_Scanner::getMessageForTerminal (const int16_t inTer
         gSyntaxErrorMessage_galgas_33_Scanner_valueclass,
         gSyntaxErrorMessage_galgas_33_Scanner_var,
         gSyntaxErrorMessage_galgas_33_Scanner_warning,
+        gSyntaxErrorMessage_galgas_33_Scanner_weak,
         gSyntaxErrorMessage_galgas_33_Scanner_while,
         gSyntaxErrorMessage_galgas_33_Scanner_with,
         gSyntaxErrorMessage_galgas_33_Scanner__2A_,
@@ -11507,6 +11511,15 @@ static const utf32 kUnicodeString_galgas_33_Scanner_warning [] = {
   TO_UNICODE (0)
 } ;
 
+//--- Unicode string for '$weak$'
+static const utf32 kUnicodeString_galgas_33_Scanner_weak [] = {
+  TO_UNICODE ('w'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('k'),
+  TO_UNICODE (0)
+} ;
+
 //--- Unicode string for '$while$'
 static const utf32 kUnicodeString_galgas_33_Scanner_while [] = {
   TO_UNICODE ('w'),
@@ -11614,7 +11627,7 @@ int16_t C_Lexique_galgas_33_Scanner::search_into_galgasDelimitorsList (const C_S
 //             Key words table 'galgasKeyWordList'      
 //----------------------------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgas_33_Scanner_galgasKeyWordList = 87 ;
+static const int32_t ktable_size_galgas_33_Scanner_galgasKeyWordList = 88 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgas_33_Scanner_galgasKeyWordList [ktable_size_galgas_33_Scanner_galgasKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_as, 2, C_Lexique_galgas_33_Scanner::kToken_as),
@@ -11649,6 +11662,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgas_33_Scanner_galgasKe
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_send, 4, C_Lexique_galgas_33_Scanner::kToken_send),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_then, 4, C_Lexique_galgas_33_Scanner::kToken_then),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_true, 4, C_Lexique_galgas_33_Scanner::kToken_true),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_weak, 4, C_Lexique_galgas_33_Scanner::kToken_weak),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_with, 4, C_Lexique_galgas_33_Scanner::kToken_with),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_after, 5, C_Lexique_galgas_33_Scanner::kToken_after),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_array, 5, C_Lexique_galgas_33_Scanner::kToken_array),
@@ -12309,6 +12323,11 @@ C_String C_Lexique_galgas_33_Scanner::getCurrentTokenString (const cToken * inTo
     case kToken_warning:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("warning") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
+    case kToken_weak:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("weak") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_while:
@@ -13652,6 +13671,7 @@ GALGAS_stringlist C_Lexique_galgas_33_Scanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("valueclass") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("var") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("warning") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("weak") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("while") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("with") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("*") COMMA_THERE) ;
@@ -13787,6 +13807,7 @@ static void getKeywordsForIdentifier_galgas_33_Scanner (const C_String & inIdent
     ioList.appendObject ("send") ;
     ioList.appendObject ("then") ;
     ioList.appendObject ("true") ;
+    ioList.appendObject ("weak") ;
     ioList.appendObject ("with") ;
     ioList.appendObject ("after") ;
     ioList.appendObject ("array") ;
@@ -13857,7 +13878,7 @@ __attribute__ ((unused)) (getKeywordLists_galgas_33_Scanner, getKeywordsForIdent
 //----------------------------------------------------------------------------------------------------------------------
 
 uint32_t C_Lexique_galgas_33_Scanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [153] = {0,
+  static const uint32_t kTerminalSymbolStyles [154] = {0,
     0 /* galgas3Scanner_1_identifier */,
     8 /* galgas3Scanner_1_double_2E_xxx */,
     6 /* galgas3Scanner_1_uint_33__32_ */,
@@ -13968,6 +13989,7 @@ uint32_t C_Lexique_galgas_33_Scanner::styleIndexForTerminal (const int32_t inTer
     1 /* galgas3Scanner_1_valueclass */,
     1 /* galgas3Scanner_1_var */,
     1 /* galgas3Scanner_1_warning */,
+    1 /* galgas3Scanner_1_weak */,
     1 /* galgas3Scanner_1_while */,
     1 /* galgas3Scanner_1_with */,
     2 /* galgas3Scanner_1__2A_ */,

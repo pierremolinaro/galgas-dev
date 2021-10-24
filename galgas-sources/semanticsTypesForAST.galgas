@@ -321,6 +321,7 @@ valueclass @onceFunctionDeclarationAST : @semanticDeclarationAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @propertyInCollectionListAST {
+#  @bool mIsWeak 
   @lstring mPropertyTypeName
   @lstring mPropertyName
   @bool mIsPublic

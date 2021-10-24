@@ -12,6 +12,10 @@ valueclass @classDeclarationAST : @semanticDeclarationAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func weakSuffix -> @string { result = "-weak" }
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX                                  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -80,7 +84,7 @@ syntax extension galgas3DeclarationsSyntax {
         !false # Is not predefined
         !className
         !isAbstract
-        !.new {!className.string + "-weak" !className.location}
+        !.new {!className.string + weakSuffix () !className.location}
         !if superClassName.string == "" then superClassName else .new {!superClassName.string + "-weak" !superClassName.location} end
         !classFeatureList
         !propertyList
@@ -115,6 +119,10 @@ override method @classDeclarationAST enterDeclarationInGraph
   for () in self.mPropertyList do
     [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mPropertyTypeName !self.mSuperClassName.location}]
   end
+#  if self.mIsReference then
+#    let weakKey = @lstring.new {!"@" + self.mClassTypeName + weakSuffix () ![self.mClassTypeName location]}
+#    [!?ioSemanticTypePrecedenceGraph addEdge !key !weakKey]
+#  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -379,6 +387,10 @@ override method @classDeclarationAST semanticAnalysis
   if [self.mSuperClassName string] != "" then
     let superClassNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mSuperClassName)
     [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !superClassNameForUsefulness]
+  end
+  if self.mIsReference then
+    let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new {!self.mClassTypeName.string + weakSuffix () !self.mClassTypeName})
+    [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !weakRefTypeNameForUsefulness]
   end
 #------ Self type
   let @unifiedTypeMap-entry selfType = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mClassTypeName}
