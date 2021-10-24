@@ -423,7 +423,7 @@ valueclass @listTypeForGeneration : @semanticTypeForGeneration {
 
 #·······················································································································
 
-filewrapper listGenerationTemplate in "../generation_templates/type_generation" {
+filewrapper listGenerationTemplate in "+generation-templates/type_generation" {
 }{
 }{
   template listTypeHeader1 "GALGAS_list.h1.galgasTemplate"

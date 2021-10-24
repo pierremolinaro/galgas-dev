@@ -407,7 +407,6 @@ private proc analyzeOptionalMethodCall
     end
     error inOptionalMethodName : s : optionalMethodSignature
   end
-#  [optionalMethodMap searchKey !inOptionalMethodName ?let @optionalMethodSignature optionalMethodSignature]
 #--- Analysis actual parameters, test for matching formam arguments
   if [inActualParameters length] != [optionalMethodSignature length] then
     error inOptionalMethodName

@@ -24,7 +24,7 @@ list @programListForGeneration {
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private filewrapper programFileGenerationTemplate in "../generation_templates/program_generation" {
+private filewrapper programFileGenerationTemplate in "+generation-templates/program_generation" {
 }{
 }{
   template programFileImplementation "program-file.cpp.galgasTemplate"

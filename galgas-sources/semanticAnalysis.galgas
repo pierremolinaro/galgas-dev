@@ -1236,7 +1236,7 @@ valueclass @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_generation" {
+filewrapper syntaxFileGenerationTemplate in "+generation-templates/syntax_generation" {
 }{
 }{
   template syntaxFileImplementationGalgas3 "syntax-file-galgas3.cpp.galgasTemplate"

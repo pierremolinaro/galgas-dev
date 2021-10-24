@@ -247,6 +247,16 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?let @semanticExpressionForGeneration keyExpression
   ]
+#--- Check key is an @lstring or @string object
+  if self.mSearchMethodNameForErrorSignaling.string == "" then
+    if [[keyExpression mResultType] key] != "string" then
+      error self.mEndOfKeyExpression
+      : "the key type is '@" + [[keyExpression mResultType] key] + "', it should be '@string'"
+    end
+  elsif [[keyExpression mResultType] key] != "lstring" then
+    error self.mEndOfKeyExpression
+    : "the key type is '@" + [[keyExpression mResultType] key] + "', it should be @lstring"
+  end
 #--- Object Array cpp name
   let objectArrayCppName = "objectArray_" + [self.mInstructionLocation locationIndex]
 #--- Check this type handle 'with' access
@@ -302,7 +312,8 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     !keyExpression
     !self.mSearchMethodNameForErrorSignaling.string
     !do_instructionList
-    !else_instructionList}
+    !else_instructionList
+  }
 }
 
 #······················································································································*
@@ -326,17 +337,18 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
 #--- Check key is an @lstring or @string object
   if self.mSearchMethodNameForErrorSignaling.string == "" then
     if [[keyExpression mResultType] key] != "string" then
-      error self.mEndOfKeyExpression : "the key type is '@" + [[keyExpression mResultType] key] + "', it should be '@string'"
+      error self.mEndOfKeyExpression
+      : "the key type is '@" + [[keyExpression mResultType] key] + "', it should be '@string'"
     end
   elsif [[keyExpression mResultType] key] != "lstring" then
-    error self.mEndOfKeyExpression : "the key type is '@" + [[keyExpression mResultType] key] + "', it should be '@lstring'"
+    error self.mEndOfKeyExpression
+    : "the key type is '@" + [[keyExpression mResultType] key] + "', it should be @lstring"
   end
 #--- Object Array cpp name
   let objectArrayCppName = "objectArray_" + [self.mInstructionLocation locationIndex]
 #--- Read/write access to receiver variable
   var @unifiedTypeMap-entry targetType
   var @string receiverVariableCppName
-#  var @string nameForCheckingFormalParameterUsing
   if self.mReceiverIsPrefixedBySelf then
     if [inAnalysisContext.mSelfCopyTypeEntry isNull] then
       error self.mReceiverName: "'self' cannot be used in this context"
@@ -347,7 +359,6 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     else
       let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?targetType]
-#      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       receiverVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
        + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
     end
@@ -356,15 +367,9 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
       !self.mReceiverName
       ?targetType
       ?receiverVariableCppName
-      ?* # nameForCheckingFormalParameterUsing
+      ?*
     ]
   end
-#  [!?ioVariableMap searchForReadWriteAccess
-#    !self.mReceiverName
-#    ?var @unifiedTypeMap-entry targetType
-#    ?let @string receiverVariableCppName
-#    ?*
-#  ]
   for () in self.mFieldList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic ?targetType]
@@ -437,7 +442,8 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     !keyExpression
     !self.mSearchMethodNameForErrorSignaling.string
     !do_instructionList
-    !else_instructionList}
+    !else_instructionList
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -479,25 +485,40 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
 #--- Receiver expression
-  [self.mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string receiverVarCppName]
+  [self.mReceiverExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string receiverVarCppName
+  ]
   let receiverType = [self.mReceiverExpression mResultType]
 #--- key expression
-  [self.mKeyExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string keyVarCppName]
+  [self.mKeyExpression generateExpression
+    !?ioGeneratedCode 
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string keyVarCppName
+  ]
 #---
   ioGeneratedCode += "const cMapElement_" + [receiverType identifierRepresentation]
-                  + " * " + self.mObjectArrayCppName + " = (const cMapElement_" + [receiverType identifierRepresentation]
+                  + " * " + self.mObjectArrayCppName
+                  + " = (const cMapElement_" + [receiverType identifierRepresentation]
                   + " *) " + receiverVarCppName + "."
   if self.mSearchMethodNameForErrorSignaling == "" then
     ioGeneratedCode += "readAccessForWithInstruction (" + keyVarCppName + ") ;\n"
   else
     ioGeneratedCode += "performSearch (" + keyVarCppName
                     + ", " + compilerCppName ()
-                    + ", kSearchErrorMessage_" + [receiverType identifierRepresentation] + "_" + self.mSearchMethodNameForErrorSignaling
+                    + ", kSearchErrorMessage_"
+                    + [receiverType identifierRepresentation] + "_" + self.mSearchMethodNameForErrorSignaling
                     + " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   end
   ioGeneratedCode +=  "if (NULL != " + self.mObjectArrayCppName + ") {\n"
-                  +  "    macroValidSharedObject (" + self.mObjectArrayCppName + ", cMapElement_" + [receiverType identifierRepresentation] + ") ;\n"
+                  +  "    macroValidSharedObject (" + self.mObjectArrayCppName
+                  + ", cMapElement_" + [receiverType identifierRepresentation] + ") ;\n"
   generateInstructionList (
     !?ioInclusionSet
     !self.mDoBranchInstructions

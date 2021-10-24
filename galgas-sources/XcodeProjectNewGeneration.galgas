@@ -400,7 +400,7 @@ struct @XcodeProjectDescriptor {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private filewrapper xcodeProjectGenerationFilewrapper in "../generation_templates/target_generation/project_xcode" {
+private filewrapper xcodeProjectGenerationFilewrapper in "+generation-templates/target_generation/project_xcode" {
 }{
 }{
   template xcodeproj "project.pbxproj.galgasTemplate"

@@ -267,7 +267,7 @@ valueclass @mapEntryTypeForGeneration : @semanticTypeForGeneration {
 
 #·······················································································································
 
-filewrapper mapEntryGenerationTemplate in "../generation_templates/type_generation" {
+filewrapper mapEntryGenerationTemplate in "+generation-templates/type_generation" {
 }{
 }{
   template mapEntryTypeHeader1 "GALGAS_mapentry.h1.galgasTemplate"

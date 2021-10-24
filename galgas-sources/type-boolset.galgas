@@ -215,7 +215,7 @@ valueclass @boolsetTypeForGeneration : @semanticTypeForGeneration {
 
 #·······················································································································
 
-filewrapper structGenerationTemplate in "../generation_templates/type_generation" {
+filewrapper structGenerationTemplate in "+generation-templates/type_generation" {
 }{
 }{
   template boolsetTypeHeader1 "GALGAS_boolset.h1.galgasTemplate"

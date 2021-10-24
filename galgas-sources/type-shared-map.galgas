@@ -1153,7 +1153,7 @@ valueclass @sharedMapTypeForGeneration : @semanticTypeForGeneration {
 
 #·······················································································································
 
-filewrapper sharedMapGenerationTemplate in "../generation_templates/type_generation" {
+filewrapper sharedMapGenerationTemplate in "+generation-templates/type_generation" {
 }{
 }{
 #---------- UNIQUE MAP

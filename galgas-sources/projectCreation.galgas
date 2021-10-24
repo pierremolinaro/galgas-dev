@@ -18,7 +18,7 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-filewrapper projectCreationFileWrapper in "../generation_templates/project_creation" {
+filewrapper projectCreationFileWrapper in "+generation-templates/project_creation" {
 }{
 }{
 #--- Project

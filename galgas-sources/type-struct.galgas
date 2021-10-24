@@ -269,7 +269,7 @@ valueclass @structTypeForGeneration : @semanticTypeForGeneration {
 
 #·······················································································································
 
-filewrapper boolsetGenerationTemplate in "../generation_templates/type_generation" {
+filewrapper boolsetGenerationTemplate in "+generation-templates/type_generation" {
 }{
 }{
   template structTypeHeader1 "GALGAS_struct.h1.galgasTemplate"

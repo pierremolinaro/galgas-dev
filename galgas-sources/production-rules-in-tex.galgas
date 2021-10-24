@@ -17,7 +17,7 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-filewrapper grammarRulesInTexDocumentTemplate in "../generation_templates/grammar_generation" {
+filewrapper grammarRulesInTexDocumentTemplate in "+generation-templates/grammar_generation" {
 }{
 }{
   template document "grammar-rules-document.tex.galgasTemplate"

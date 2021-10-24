@@ -350,7 +350,7 @@ map @commandLineOptionMap { # the key is the option identifier
 #         G E N E R A T I O N    T E M P L A T E S                                                                     *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-filewrapper optionGenerationTemplates in "../generation_templates/option_generation" {
+filewrapper optionGenerationTemplates in "+generation-templates/option_generation" {
 }{
 }{
   template optionHeaderZone3 "option-header-zone3.galgasTemplate"

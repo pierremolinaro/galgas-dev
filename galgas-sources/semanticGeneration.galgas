@@ -770,7 +770,7 @@ sortedlist @keySortedList {
 #! Generation Filewrappers
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-filewrapper typeGenerationTemplate in "../generation_templates/type_generation" {
+filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
 }{
 }{
   template unifiedClassBodyForType "unified-class-body-for-type.h.galgasTemplate"
@@ -962,7 +962,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-filewrapper semanticComponentGenerationTemplate in "../generation_templates/semantic_generation" {
+filewrapper semanticComponentGenerationTemplate in "+generation-templates/semantic_generation" {
 }{
 }{
 #------------ Extension getter
@@ -1586,7 +1586,7 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-filewrapper predefinedTypeGenerationTemplate in "../generation_templates/type_generation" {
+filewrapper predefinedTypeGenerationTemplate in "+generation-templates/type_generation" {
 }{
 }{
   template predefinedTypesImplementation "predefined_types.cpp.galgasTemplate"
@@ -1785,7 +1785,7 @@ proc generatePredefinedTypeFiles
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-filewrapper semanticFileGenerationTemplate in "../generation_templates/semantic_generation" {
+filewrapper semanticFileGenerationTemplate in "+generation-templates/semantic_generation" {
 }{
 }{
   template semanticFileHeader "semantic-file.h.galgasTemplate"

@@ -2379,10 +2379,10 @@ static void extensionMethod_sharedMapTypeForGeneration_appendDeclaration_31_ (co
   const cPtr_sharedMapTypeForGeneration * object = (const cPtr_sharedMapTypeForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_sharedMapTypeForGeneration) ;
   const GALGAS_sharedMapTypeForGeneration temp_0 = object ;
-  cEnumerator_typedPropertyList enumerator_45088 (temp_0.getter_mTypedAttributeList (HERE), kENUMERATION_UP) ;
-  while (enumerator_45088.hasCurrentObject ()) {
-    extensionMethod_addHeaderFileName_31_ (enumerator_45088.current_mPropertyTypeEntry (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1193)) ;
-    enumerator_45088.gotoNextObject () ;
+  cEnumerator_typedPropertyList enumerator_45086 (temp_0.getter_mTypedAttributeList (HERE), kENUMERATION_UP) ;
+  while (enumerator_45086.hasCurrentObject ()) {
+    extensionMethod_addHeaderFileName_31_ (enumerator_45086.current_mPropertyTypeEntry (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1193)) ;
+    enumerator_45086.gotoNextObject () ;
   }
   const GALGAS_sharedMapTypeForGeneration temp_1 = object ;
   const GALGAS_sharedMapTypeForGeneration temp_2 = object ;
@@ -2463,12 +2463,12 @@ static void extensionMethod_sharedMapTypeForGeneration_appendSpecificImplementat
   macroValidSharedObject (object, cPtr_sharedMapTypeForGeneration) ;
   const GALGAS_sharedMapTypeForGeneration temp_0 = object ;
   extensionMethod_addHeaderFileName (temp_0.getter_mSelfTypeEntry (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1240)) ;
-  GALGAS_keySortedList var_keySortedList_46952 = GALGAS_keySortedList::constructor_emptySortedList (SOURCE_FILE ("type-shared-map.galgas", 1241)) ;
+  GALGAS_keySortedList var_keySortedList_46950 = GALGAS_keySortedList::constructor_emptySortedList (SOURCE_FILE ("type-shared-map.galgas", 1241)) ;
   const GALGAS_sharedMapTypeForGeneration temp_1 = object ;
-  cEnumerator_mapAutomatonStateMap enumerator_47025 (temp_1.getter_mMapAutomatonStateMap (HERE), kENUMERATION_UP) ;
-  while (enumerator_47025.hasCurrentObject ()) {
-    var_keySortedList_46952.addAssign_operation (enumerator_47025.current_lkey (HERE).getter_string (HERE), enumerator_47025.current_mStateIndex (HERE)  COMMA_SOURCE_FILE ("type-shared-map.galgas", 1243)) ;
-    enumerator_47025.gotoNextObject () ;
+  cEnumerator_mapAutomatonStateMap enumerator_47023 (temp_1.getter_mMapAutomatonStateMap (HERE), kENUMERATION_UP) ;
+  while (enumerator_47023.hasCurrentObject ()) {
+    var_keySortedList_46950.addAssign_operation (enumerator_47023.current_lkey (HERE).getter_string (HERE), enumerator_47023.current_mStateIndex (HERE)  COMMA_SOURCE_FILE ("type-shared-map.galgas", 1243)) ;
+    enumerator_47023.gotoNextObject () ;
   }
   const GALGAS_sharedMapTypeForGeneration temp_2 = object ;
   const GALGAS_sharedMapTypeForGeneration temp_3 = object ;
@@ -2480,7 +2480,7 @@ static void extensionMethod_sharedMapTypeForGeneration_appendSpecificImplementat
   const GALGAS_sharedMapTypeForGeneration temp_9 = object ;
   const GALGAS_sharedMapTypeForGeneration temp_10 = object ;
   const GALGAS_sharedMapTypeForGeneration temp_11 = object ;
-  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_sharedMapGenerationTemplate_uniqueMapTypeSpecificImplementation (inCompiler, temp_2.getter_mSelfTypeEntry (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1246)), temp_3.getter_mTypedAttributeList (HERE), temp_4.getter_mInsertMethodList (HERE), temp_5.getter_mSearchMethodList (HERE), temp_6.getter_mMapAutomatonStateMap (HERE), temp_7.getter_mMapAutomatonActionMap (HERE), temp_8.getter_mMapStateSortedList (HERE), temp_9.getter_mMapOverrideList (HERE), var_keySortedList_46952, temp_10.getter_mShadowBehaviour (HERE), temp_11.getter_mShadowMessage (HERE) COMMA_SOURCE_FILE ("type-shared-map.galgas", 1245))) ;
+  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_sharedMapGenerationTemplate_uniqueMapTypeSpecificImplementation (inCompiler, temp_2.getter_mSelfTypeEntry (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1246)), temp_3.getter_mTypedAttributeList (HERE), temp_4.getter_mInsertMethodList (HERE), temp_5.getter_mSearchMethodList (HERE), temp_6.getter_mMapAutomatonStateMap (HERE), temp_7.getter_mMapAutomatonActionMap (HERE), temp_8.getter_mMapStateSortedList (HERE), temp_9.getter_mMapOverrideList (HERE), var_keySortedList_46950, temp_10.getter_mShadowBehaviour (HERE), temp_11.getter_mShadowMessage (HERE) COMMA_SOURCE_FILE ("type-shared-map.galgas", 1245))) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3576,10 +3576,10 @@ static void extensionMethod_sortedListTypeForGeneration_appendSpecificImplementa
   const cPtr_sortedListTypeForGeneration * object = (const cPtr_sortedListTypeForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_sortedListTypeForGeneration) ;
   const GALGAS_sortedListTypeForGeneration temp_0 = object ;
-  cEnumerator_typedPropertyList enumerator_14566 (temp_0.getter_mTypedAttributeList (HERE), kENUMERATION_UP) ;
-  while (enumerator_14566.hasCurrentObject ()) {
-    extensionMethod_addHeaderFileName (enumerator_14566.current_mPropertyTypeEntry (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-sorted-list.galgas", 374)) ;
-    enumerator_14566.gotoNextObject () ;
+  cEnumerator_typedPropertyList enumerator_14564 (temp_0.getter_mTypedAttributeList (HERE), kENUMERATION_UP) ;
+  while (enumerator_14564.hasCurrentObject ()) {
+    extensionMethod_addHeaderFileName (enumerator_14564.current_mPropertyTypeEntry (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-sorted-list.galgas", 374)) ;
+    enumerator_14564.gotoNextObject () ;
   }
   const GALGAS_sortedListTypeForGeneration temp_1 = object ;
   extensionMethod_addHeaderFileName (temp_1.getter_mListElementTypeIndex (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-sorted-list.galgas", 376)) ;
@@ -4535,10 +4535,10 @@ static void extensionMethod_structTypeForGeneration_appendDeclaration_31_ (const
   const cPtr_structTypeForGeneration * object = (const cPtr_structTypeForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_structTypeForGeneration) ;
   const GALGAS_structTypeForGeneration temp_0 = object ;
-  cEnumerator_typedPropertyList enumerator_11490 (temp_0.getter_mTypedPropertyList (HERE), kENUMERATION_UP) ;
-  while (enumerator_11490.hasCurrentObject ()) {
-    extensionMethod_addHeaderFileName_31_ (enumerator_11490.current_mPropertyTypeEntry (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-struct.galgas", 295)) ;
-    enumerator_11490.gotoNextObject () ;
+  cEnumerator_typedPropertyList enumerator_11488 (temp_0.getter_mTypedPropertyList (HERE), kENUMERATION_UP) ;
+  while (enumerator_11488.hasCurrentObject ()) {
+    extensionMethod_addHeaderFileName_31_ (enumerator_11488.current_mPropertyTypeEntry (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-struct.galgas", 295)) ;
+    enumerator_11488.gotoNextObject () ;
   }
   const GALGAS_structTypeForGeneration temp_1 = object ;
   const GALGAS_structTypeForGeneration temp_2 = object ;

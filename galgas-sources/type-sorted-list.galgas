@@ -323,7 +323,7 @@ valueclass @sortedListTypeForGeneration : @semanticTypeForGeneration {
 
 #·······················································································································
 
-filewrapper sortedListGenerationTemplate in "../generation_templates/type_generation" {
+filewrapper sortedListGenerationTemplate in "+generation-templates/type_generation" {
 }{
 }{
   template sortedlistTypeHeader1 "GALGAS_sortedlist.h1.galgasTemplate"

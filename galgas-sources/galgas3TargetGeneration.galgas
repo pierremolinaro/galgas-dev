@@ -6,7 +6,7 @@
 #  details.                                 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private filewrapper targetGalgas3GenerationFileWrapper in "../generation_templates/target_generation" {
+private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates/target_generation" {
  "bat", "rtf", "py"
 }{
 }{

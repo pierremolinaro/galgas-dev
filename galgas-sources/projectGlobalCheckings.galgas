@@ -410,7 +410,7 @@ proc performGalgas3ProjectGlobalCheckings
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-filewrapper typeDumpGenerationTemplate in "../generation_templates/target_generation" {
+filewrapper typeDumpGenerationTemplate in "+generation-templates/target_generation" {
 }{
 }{
   template typeDump "typeDump.html.galgasTemplate"
