@@ -1,0 +1,533 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   AST                                     
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+valueclass @weakReferenceDeclarationAST : @semanticDeclarationAST {
+  @lstring mClassTypeName
+  @bool mIsAbstract
+  @lstring mWeakReferenceTypeName
+  @lstring mSuperWeakReferenceTypeName # Empty if no super class
+  @lstringlist mClassFeatureList
+  @propertyInCollectionListAST mPropertyList
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   ENTER IN GRAPH                          
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @weakReferenceDeclarationAST keyRepresentation -> @string {
+  result = "weak reference @" + self.mWeakReferenceTypeName
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @weakReferenceDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
+{
+  let key = @lstring.new {!"@" + self.mWeakReferenceTypeName ![self.mWeakReferenceTypeName location]}
+  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  if self.mSuperWeakReferenceTypeName.string != "" then
+    [!?ioSemanticTypePrecedenceGraph addEdge
+      !key
+      !@lstring.new {!"@" + self.mSuperWeakReferenceTypeName !self.mSuperWeakReferenceTypeName.location}
+    ]
+  end
+  [!?ioSemanticTypePrecedenceGraph addEdge
+    !key
+    !@lstring.new {!"@" + self.mClassTypeName !self.mClassTypeName.location}
+  ]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   SEMANTIC CONTEXT                        
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @weakReferenceDeclarationAST enterInSemanticContext
+  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+  ?!@semanticContext ioSemanticContext
+{
+  @getterMap getterMap
+  @setterMap setterMap
+  @instanceMethodMap instanceMethodMap
+  @typedPropertyList inheritedTypedAttributeList
+  @propertyMap attributeMap = {}
+#--- Handle super class
+  @unifiedTypeMap-entry superClassIndex
+  @bool generateHeaderInSeparateFile
+  if [self.mSuperWeakReferenceTypeName string] == "" then
+    superClassIndex = @unifiedTypeMap-entry.null
+    commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?getterMap )
+    setterMap = {}
+    instanceMethodMap = {}
+    inheritedTypedAttributeList = {}
+    attributeMap = {}
+    generateHeaderInSeparateFile = false
+    for () in self.mClassFeatureList do
+      if [mValue string] == "generatedInSeparateFile" then
+        generateHeaderInSeparateFile = true
+      end
+    end
+  else
+    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mSuperWeakReferenceTypeName ?superClassIndex]
+    @typeKindEnum typeKindEnum
+    @getterMap inheritedGetterMap
+    @setterMap inheritedSetterMap
+    @instanceMethodMap inheritedMethodMap
+    [ioSemanticContext.mTypeMap searchKey
+      !self.mSuperWeakReferenceTypeName
+      ?3*
+      ?typeKindEnum
+      ?*
+      ?inheritedTypedAttributeList
+      ?attributeMap
+      ?2*
+      ?inheritedGetterMap
+      ?inheritedSetterMap
+      ?inheritedMethodMap
+      ?9*
+      ?generateHeaderInSeparateFile
+      ?4*
+    ]
+  #---
+    if not [typeKindEnum isWeakReferenceType] then
+      error self.mSuperWeakReferenceTypeName : "the @" + self.mSuperWeakReferenceTypeName + " should be a weak reference type"
+    end
+  #--- Mark all setters as inherited
+    setterMap = {}
+    for () in inheritedSetterMap do
+      [!?setterMap insertKey
+        !lkey
+        !mKind
+        !mParameterList
+        !mHasCompilerArgument
+        !.isInherited
+        !"" # No error message
+      ] 
+    end
+  #--- Mark all getters as inherited
+    getterMap = {}
+    for aGetter in inheritedGetterMap do
+      [!?getterMap insertKey
+        !aGetter.lkey
+        !aGetter.mKind
+        !aGetter.mArgumentTypeList
+        !aGetter.mDeclarationLocation
+        !aGetter.mHasCompilerArgument
+        !aGetter.mReturnedType
+        !.isInherited
+        !aGetter.mErrorMessage
+      ] 
+    end
+  #--- Mark all methods as inherited
+    instanceMethodMap = {}
+    for () in inheritedMethodMap do
+      [!?instanceMethodMap insertKey
+        !lkey
+        !mKind
+        !mParameterList
+        !mDeclarationLocation
+        !mHasCompilerArgument
+        !.isInherited
+        !mErrorMessage
+      ] 
+    end
+  end
+#--- Build attribute Map and constructor argument list
+#  @functionSignature constructorAttributeTypeList = {}
+#  for () in inheritedTypedAttributeList do
+#    constructorAttributeTypeList +=
+#      !if mHasSelector then mPropertyName else ["" nowhere] end
+#      !mPropertyTypeEntry
+#      !mPropertyName.string
+#  end
+  for () in self.mPropertyList do
+    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    var hasSelector = false
+    for (attribute) in mAttributeList do
+      if attribute.string == "selector" then
+        if hasSelector then
+          error attribute : "duplicated attribute" fixit { remove }
+        end
+        hasSelector = true
+      end
+    end
+#    constructorAttributeTypeList += 
+#      !if hasSelector then mPropertyName else ["" nowhere] end
+#      !attributeTypeIndex
+#      !mPropertyName.string
+    [!?attributeMap insertKey
+      !mPropertyName
+      !mIsPublic
+      !attributeTypeIndex
+    ]
+    if [getterMap hasKey ![mPropertyName string]] then
+      error mPropertyName: "'" + mPropertyName + "' is the name of a prefefined or a user defined getter"
+    end
+  end
+#--- Current class Index
+  [@unifiedTypeMap-entry makeEntry
+     !?ioSemanticContext.mTypeMap
+     !self.mWeakReferenceTypeName
+     ?var @unifiedTypeMap-entry weakReferenceIndex
+  ]
+#--- Constructors
+  @constructorMap constructorMap = {}
+  [!?constructorMap insertKey
+    !@lstring.new {!"nil" !self.mWeakReferenceTypeName.location}
+    !{}
+    !false
+    !weakReferenceIndex
+  ]
+#--- Typed attribute list
+  @typedPropertyList currentClassTypedAttributeList = {}
+  @typedPropertyList allTypedAttributeList = inheritedTypedAttributeList
+  for () in self.mPropertyList do
+    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    let hasSetter = true # mIsPublic
+    let hasGetter = true # mIsPublic
+    var hasSelector = false
+    for () in mAttributeList do
+      if [mValue string] == "setter" then
+        warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
+      elsif [mValue string] == "nogetter" then
+        warning mValue : "obsolete attribute: use 'private' qualifier"
+      elsif [mValue string] == "selector" then
+        hasSelector = true
+      end
+    end
+    currentClassTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
+    allTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
+    if hasGetter then
+      [!?getterMap insertKey
+        !mPropertyName
+        !@methodKind.definedAsMember
+        !@functionSignature {} # No argument
+        !@location.here
+        !true # Compiler argument
+        !attributeTypeIndex # Returned type
+        !@methodQualifier.isBasic
+        !"" # No Error message
+      ]
+    end
+  end
+#--- set...attribute setter
+  for () in currentClassTypedAttributeList do
+    if mHasSetter then
+      [!?setterMap insertKey
+        !@lstring.new {!"set"+ [[mPropertyName string] stringByCapitalizingFirstCharacter] !@location.here}
+        !@methodKind.definedAsMember
+        !{!["" nowhere] !mPropertyTypeEntry !@formalArgumentPassingModeAST.argumentIn !mPropertyName.string}
+        !true # Compiler argument
+        !@methodQualifier.isBasicFinal
+        !"" # No error message
+      ]
+    end
+  end
+#--- Add Extensions
+  addExtensions (
+    !inExtensionMethodMapForBuildingContext
+    !inExtensionGetterMapForBuildingContext
+    !inExtensionSetterMapForBuildingContext
+    !?ioSemanticContext
+    !self.mWeakReferenceTypeName
+    !?getterMap
+    !?setterMap
+    !?instanceMethodMap
+  )
+#--- Generate a "default" constructor ?
+#  @string defaultConstructorName
+#  if [superClassIndex isNull] then
+#    defaultConstructorName = "default"
+#  else
+#    defaultConstructorName = [superClassIndex mDefaultConstructorName]
+#  end
+#  for () in currentClassTypedAttributeList while defaultConstructorName != "" do
+#    if ([mPropertyTypeEntry mDefaultConstructorName] == "") | not [mPropertyTypeEntry mIsConcrete] then
+#      defaultConstructorName = ""
+#    end
+#  end
+#--- Enter in type map
+  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mClassTypeName ?let classIndex]
+  [!?ioSemanticContext.mTypeMap insertKey
+    !self.mWeakReferenceTypeName
+    !self.mIsPredefined
+    !not self.mIsAbstract # Concrete Type
+    !superClassIndex
+    !@typeKindEnum.weakReferenceType {!referenceType: classIndex}
+    !false # Does not support collection value
+    !allTypedAttributeList
+    !attributeMap
+    !currentClassTypedAttributeList
+    !constructorMap
+    !getterMap
+    !setterMap
+    !instanceMethodMap
+    !{}
+    !@optionalMethodMap {}
+    !{}
+    !.none
+    !{}
+    !{}
+    !{}
+    !{}
+    !{}
+    !generateHeaderInSeparateFile
+    !@unifiedTypeMap-entry.null # Type for enumerated element for "for" instruction
+    !"nil" # Default constructor
+    !"weak-reference-" + [self.mWeakReferenceTypeName fileNameRepresentation]
+    !@headerKind.twoHeaders
+  ]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   SEMANTIC ANALYSIS                       
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @weakReferenceDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @string unused inProductDirectory
+  ?let @semanticContext inSemanticContext
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Useful entities graph
+  let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mWeakReferenceTypeName)
+  [!?ioUsefulEntitiesGraph addNode !weakRefTypeNameForUsefulness !weakRefTypeNameForUsefulness]
+  if [self.mSuperWeakReferenceTypeName string] != "" then
+    let superWeakRefNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mSuperWeakReferenceTypeName)
+    [!?ioUsefulEntitiesGraph addEdge !weakRefTypeNameForUsefulness !superWeakRefNameForUsefulness]
+  end
+#------ Self type
+  let @unifiedTypeMap-entry selfType = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mWeakReferenceTypeName}
+#--- Super class type
+  let superClassEntry = if self.mSuperWeakReferenceTypeName.string == ""
+    then @unifiedTypeMap-entry.null
+    else @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mSuperWeakReferenceTypeName}
+  end
+#------ Super type, and class features
+# A class that has a super may not have any feature
+# A class without a super class admits the 'generatedInSeparateFile' feature
+  @typedPropertyList allAttributeList
+  if superClassEntry == .null then
+    allAttributeList = {}
+    @bool generatedInSeparateFileFeature = false
+    if [self.mClassFeatureList length] > 0 then
+      for () in self.mClassFeatureList do
+        if [mValue string] == "generatedInSeparateFile" then
+          if generatedInSeparateFileFeature then
+            error mValue:"the 'generatedInSeparateFile' is already named"
+          end
+          generatedInSeparateFileFeature = true
+        else
+          error mValue:"only the 'generatedInSeparateFile' attribute is allowed here"
+        end
+      end
+    end
+  else
+    allAttributeList = [superClassEntry mAllTypedAttributeList]
+    if [self.mClassFeatureList length] > 0 then
+      for () in self.mClassFeatureList do
+        error mValue:"a class that has a super class does not accept any feature"
+      end
+    end
+  end
+#------ Enter attributes
+  @typedPropertyList typedAttributeList = {}
+  @propertyIndexMap attributeMap = {}
+  for () in self.mPropertyList do
+#    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
+#    [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
+    let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
+    let hasSetter = true # mIsPublic
+    let hasGetter = true # mIsPublic
+    var hasSelector = false
+    for () in mAttributeList do
+      if [mValue string] == "setter" then
+        warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
+#        if hasSetter then
+#          error mValue : "the '%setter' attribute is already named"
+#        end
+#        hasSetter = true
+      elsif [mValue string] == "nogetter" then
+        warning mValue : "obsolete attribute: use 'private' qualifier"
+#        if not hasGetter then
+#          error mValue : "the '%nogetter' attribute is already named"
+#        end
+#        hasGetter = false
+      elsif [mValue string] == "selector" then
+        if hasSelector then
+          error mValue : "the '%selector' attribute is already named"
+        end
+        hasSelector = true
+      else
+        error mValue
+        : "only '%selector' is allowed here"
+        fixit { replace {!"%selector"} }
+
+      end
+    end
+    typedAttributeList +=
+      !t
+      !mPropertyName
+      !hasSetter
+      !hasGetter
+      !hasSelector
+    allAttributeList +=
+      !t
+      !mPropertyName
+      !hasSetter
+      !hasGetter
+      !hasSelector
+    [!?attributeMap insertKey !mPropertyName !t]
+  end
+#------
+  ioSemanticDeclarationListForGeneration +=
+    !"weak reference " + self.mWeakReferenceTypeName
+    !@weakReferenceTypeForGeneration.new {
+      !selfType
+      !self.mIsAbstract
+      !self.mClassTypeName
+      !superClassEntry
+      !allAttributeList
+      !typedAttributeList
+      ![selfType mGenerateHeaderInSeparateFile]
+    }
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   CODE GENERATION                         
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+valueclass @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
+  @bool mIsAbstract
+  @string mClassTypeName
+  @unifiedTypeMap-entry mSuperClass # Null if no super class
+  @typedPropertyList mAllTypedAttributeList # Inherited followed by current attributes
+  @typedPropertyList mTypedAttributeList
+  @bool mGenerateHeaderInSeparateFile # Significant only for classes
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @weakReferenceTypeForGeneration appendDeclaration1
+  ?!@stringset ioInclusionSet
+  !@string outHeader
+{
+  if not [self.mSuperClass isNull] then
+    [self.mSuperClass addHeaderFileName !?ioInclusionSet]
+  end
+
+  outHeader = [filewrapper typeGenerationTemplate.weakReferenceClassTypeHeader1
+    ![self.mClassTypeName identifierRepresentation]
+    ![self.mSelfTypeEntry identifierRepresentation]
+    !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+    !self.mIsAbstract
+    ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
+  ]
+  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  identifierRepresentation]
+    ![self.mSelfTypeEntry  mIsConcrete]
+    ![self.mSelfTypeEntry  mConstructorMap]
+    ![self.mSelfTypeEntry  mGetterMap]
+    ![self.mSelfTypeEntry  mSetterMap]
+    ![self.mSelfTypeEntry  mInstanceMethodMap]
+    ![self.mSelfTypeEntry  mClassMethodMap]
+    ![self.mSelfTypeEntry  mOptionalMethodMap]
+    ![self.mSelfTypeEntry  mEnumerationDescriptor]
+    ![self.mSelfTypeEntry  mHandledOperatorFlags]
+    ![self.mSelfTypeEntry  mAddAssignOperatorArguments]
+    ![self.mSelfTypeEntry  mTypeForEnumeratedElement]
+  ]
+ }
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#override method @weakReferenceTypeForGeneration appendDeclaration2
+#  ?let @string inOutputDirectory
+#  ?!@stringset ioInclusionSet
+#  !@string outHeader
+#{
+#  for (t 4*) in self.mTypedAttributeList do
+#    [t addHeaderFileName !?ioInclusionSet]
+#  end
+#
+#  if self.mGenerateHeaderInSeparateFile then
+#    let part1 = [filewrapper typeGenerationTemplate.weakReferenceClassTypeHeader2part1
+#      ![self.mSelfTypeEntry  key]
+#      ![self.mSelfTypeEntry  identifierRepresentation]
+#      !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+#      !self.mTypedAttributeList
+#      !self.mAllTypedAttributeList
+#      !self.mIsAbstract
+#    ]
+#    let part2 = [filewrapper typeGenerationTemplate.weakReferenceClassTypeHeader2part2
+#      ![self.mSelfTypeEntry  key]
+#      ![self.mSelfTypeEntry  identifierRepresentation]
+#      !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+#      !self.mTypedAttributeList
+#      !self.mAllTypedAttributeList
+#      !self.mIsAbstract
+#    ]
+#    let headerFileName = "separateHeaderFor_" + [self.mSelfTypeEntry  identifierRepresentation] + ".h"
+#    [@string generateFileWithPattern
+#      !startPath:inOutputDirectory + "/../user-headers"
+#      !fileName:headerFileName
+#      !lineComment:"//"
+#      !header:"" # Header
+#      !defaultUserZone1:"\n\n" # Defaut user zone1
+#      !generatedZone2:part1
+#      !defaultUserZone2:"\n\n" # Defaut user zone2
+#      !generatedZone3:part2
+#      !makeExecutable:false
+#    ]
+#    outHeader = "#include \"" + headerFileName + "\"\n\n"
+#  else
+#    outHeader = [filewrapper typeGenerationTemplate.weakReferenceClassTypeHeader2part1
+#      ![self.mSelfTypeEntry  key]
+#      ![self.mSelfTypeEntry  identifierRepresentation]
+#      !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+#      !self.mTypedAttributeList
+#      !self.mAllTypedAttributeList
+#      !self.mIsAbstract
+#    ]
+#    outHeader += [filewrapper typeGenerationTemplate.weakReferenceClassTypeHeader2part2
+#      ![self.mSelfTypeEntry  key]
+#      ![self.mSelfTypeEntry  identifierRepresentation]
+#      !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+#      !self.mTypedAttributeList
+#      !self.mAllTypedAttributeList
+#      !self.mIsAbstract
+#    ]
+#  end
+# }
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @weakReferenceTypeForGeneration appendSpecificImplementation
+  ?let @unifiedTypeMap unused inTypeMap
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
+{
+  [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
+  outImplementation = [filewrapper typeGenerationTemplate.weakReferenceClassTypeSpecificImplementation
+    ![self.mClassTypeName identifierRepresentation]
+    ![self.mSelfTypeEntry identifierRepresentation]
+    !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+    !self.mTypedAttributeList
+    !self.mAllTypedAttributeList
+    ![self.mAllTypedAttributeList subListWithRange !.new {!0 ![self.mAllTypedAttributeList length] - [self.mTypedAttributeList length]}]
+    !self.mIsAbstract
+    ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
+  ]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

@@ -75,7 +75,6 @@ GALGAS_optionCommentExpressionForGeneration::GALGAS_optionCommentExpressionForGe
 GALGAS_semanticExpressionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_optionCommentExpressionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_optionCommentExpressionForGeneration GALGAS_optionCommentExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
@@ -355,7 +354,6 @@ GALGAS_lexiqueIntrospectionForGeneration::GALGAS_lexiqueIntrospectionForGenerati
 GALGAS_semanticExpressionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_lexiqueIntrospectionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexiqueIntrospectionForGeneration GALGAS_lexiqueIntrospectionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
@@ -593,7 +591,6 @@ GALGAS_filewrapperInExpressionForGeneration::GALGAS_filewrapperInExpressionForGe
 GALGAS_semanticExpressionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_filewrapperInExpressionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperInExpressionForGeneration GALGAS_filewrapperInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
@@ -835,7 +832,6 @@ GALGAS_filewrapperTemplateInExpressionForGeneration::GALGAS_filewrapperTemplateI
 GALGAS_semanticExpressionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_filewrapperTemplateInExpressionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperTemplateInExpressionForGeneration GALGAS_filewrapperTemplateInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
@@ -1119,7 +1115,6 @@ GALGAS_filewrapperStaticPathInExpressionForGeneration::GALGAS_filewrapperStaticP
 GALGAS_semanticExpressionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_filewrapperStaticPathInExpressionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperStaticPathInExpressionForGeneration GALGAS_filewrapperStaticPathInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
@@ -1401,7 +1396,6 @@ GALGAS_getterCallExpressionForGeneration::GALGAS_getterCallExpressionForGenerati
 GALGAS_semanticExpressionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_getterCallExpressionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_getterCallExpressionForGeneration GALGAS_getterCallExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
@@ -1815,7 +1809,6 @@ GALGAS_constructorExpressionForGeneration::GALGAS_constructorExpressionForGenera
 GALGAS_semanticExpressionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_constructorExpressionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_constructorExpressionForGeneration GALGAS_constructorExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
@@ -2129,7 +2122,6 @@ GALGAS_defaultConstructorExpressionForGeneration::GALGAS_defaultConstructorExpre
 GALGAS_semanticExpressionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_defaultConstructorExpressionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_defaultConstructorExpressionForGeneration GALGAS_defaultConstructorExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
@@ -2283,7 +2275,6 @@ GALGAS_functionCallExpressionForGeneration::GALGAS_functionCallExpressionForGene
 GALGAS_semanticExpressionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_functionCallExpressionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_functionCallExpressionForGeneration GALGAS_functionCallExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
@@ -2517,7 +2508,6 @@ GALGAS_literalTypeInExpressionForGeneration::GALGAS_literalTypeInExpressionForGe
 GALGAS_semanticExpressionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_literalTypeInExpressionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_literalTypeInExpressionForGeneration GALGAS_literalTypeInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
@@ -2697,7 +2687,6 @@ GALGAS_expressionCollectionValueForGeneration::GALGAS_expressionCollectionValueF
 GALGAS_abstractCollectionValueElementForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_expressionCollectionValueForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_expressionCollectionValueForGeneration GALGAS_expressionCollectionValueForGeneration::constructor_new (const GALGAS_location & inAttribute_mExpressionLocation,
@@ -2885,7 +2874,6 @@ GALGAS_expressionCollectionForGeneration::GALGAS_expressionCollectionForGenerati
 GALGAS_semanticExpressionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_expressionCollectionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_expressionCollectionForGeneration GALGAS_expressionCollectionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
@@ -3077,7 +3065,6 @@ GALGAS_selfInExpressionForGeneration::GALGAS_selfInExpressionForGeneration (cons
 GALGAS_semanticExpressionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_selfInExpressionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_selfInExpressionForGeneration GALGAS_selfInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
@@ -3263,7 +3250,6 @@ GALGAS_structPropertyAccessExpressionForGeneration::GALGAS_structPropertyAccessE
 GALGAS_semanticExpressionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_structPropertyAccessExpressionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_structPropertyAccessExpressionForGeneration GALGAS_structPropertyAccessExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
@@ -3488,7 +3474,6 @@ GALGAS_notExpressionForGeneration::GALGAS_notExpressionForGeneration (const cPtr
 GALGAS_semanticExpressionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_notExpressionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_notExpressionForGeneration GALGAS_notExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
@@ -3671,7 +3656,6 @@ GALGAS_tildeExpressionForGeneration::GALGAS_tildeExpressionForGeneration (const 
 GALGAS_semanticExpressionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_tildeExpressionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_tildeExpressionForGeneration GALGAS_tildeExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
@@ -3854,7 +3838,6 @@ GALGAS_unaryWrappingMinusExpressionForGeneration::GALGAS_unaryWrappingMinusExpre
 GALGAS_semanticExpressionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_unaryWrappingMinusExpressionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_unaryWrappingMinusExpressionForGeneration GALGAS_unaryWrappingMinusExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
@@ -4040,7 +4023,6 @@ GALGAS_orShortExpressionForGeneration::GALGAS_orShortExpressionForGeneration (co
 GALGAS_semanticExpressionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_orShortExpressionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_orShortExpressionForGeneration GALGAS_orShortExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
@@ -4268,7 +4250,6 @@ GALGAS_openedSliceExpressionForGeneration::GALGAS_openedSliceExpressionForGenera
 GALGAS_semanticExpressionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_openedSliceExpressionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_openedSliceExpressionForGeneration GALGAS_openedSliceExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
@@ -4496,7 +4477,6 @@ GALGAS_closedSliceExpressionForGeneration::GALGAS_closedSliceExpressionForGenera
 GALGAS_semanticExpressionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_closedSliceExpressionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_closedSliceExpressionForGeneration GALGAS_closedSliceExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
@@ -4724,7 +4704,6 @@ GALGAS_andShortExpressionForGeneration::GALGAS_andShortExpressionForGeneration (
 GALGAS_semanticExpressionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_andShortExpressionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_andShortExpressionForGeneration GALGAS_andShortExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
@@ -4958,7 +4937,6 @@ GALGAS_assignmentInstructionForGeneration::GALGAS_assignmentInstructionForGenera
 GALGAS_semanticInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_assignmentInstructionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_assignmentInstructionForGeneration GALGAS_assignmentInstructionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mTargetType,
@@ -5343,7 +5321,6 @@ GALGAS_structuredCastInstructionForGeneration::GALGAS_structuredCastInstructionF
 GALGAS_semanticInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_structuredCastInstructionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_structuredCastInstructionForGeneration GALGAS_structuredCastInstructionForGeneration::constructor_new (const GALGAS_semanticExpressionForGeneration & inAttribute_mExpression,
@@ -5614,7 +5591,6 @@ GALGAS_opEqualInstructionForGeneration::GALGAS_opEqualInstructionForGeneration (
 GALGAS_semanticInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_opEqualInstructionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_opEqualInstructionForGeneration GALGAS_opEqualInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
@@ -6047,7 +6023,6 @@ GALGAS_errorInstructionForGeneration::GALGAS_errorInstructionForGeneration (cons
 GALGAS_semanticInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_errorInstructionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_errorInstructionForGeneration GALGAS_errorInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
@@ -6405,7 +6380,6 @@ GALGAS_forInstructionForGeneration::GALGAS_forInstructionForGeneration (const cP
 GALGAS_semanticInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_forInstructionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_forInstructionForGeneration GALGAS_forInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
@@ -6889,7 +6863,6 @@ GALGAS_grammarInstructionWithSourceFileForGeneration::GALGAS_grammarInstructionW
 GALGAS_semanticInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_grammarInstructionWithSourceFileForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_grammarInstructionWithSourceFileForGeneration GALGAS_grammarInstructionWithSourceFileForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
@@ -7376,7 +7349,6 @@ GALGAS_grammarInstructionWithSourceExpressionForGeneration::GALGAS_grammarInstru
 GALGAS_semanticInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_grammarInstructionWithSourceExpressionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_grammarInstructionWithSourceExpressionForGeneration GALGAS_grammarInstructionWithSourceExpressionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
@@ -7890,7 +7862,6 @@ GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::GALG
 GALGAS_semanticInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mTargetType,
@@ -8188,7 +8159,6 @@ GALGAS_logInstructionForGeneration::GALGAS_logInstructionForGeneration (const cP
 GALGAS_semanticInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_logInstructionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_logInstructionForGeneration GALGAS_logInstructionForGeneration::constructor_new (const GALGAS_lstring & inAttribute_mLogMessage,
@@ -8411,7 +8381,6 @@ GALGAS_loopInstructionForGeneration::GALGAS_loopInstructionForGeneration (const 
 GALGAS_semanticInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_loopInstructionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_loopInstructionForGeneration GALGAS_loopInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
@@ -8751,7 +8720,6 @@ GALGAS_messageInstructionForGeneration::GALGAS_messageInstructionForGeneration (
 GALGAS_semanticInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_messageInstructionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_messageInstructionForGeneration GALGAS_messageInstructionForGeneration::constructor_new (const GALGAS_semanticExpressionForGeneration & inAttribute_mExpression,
@@ -8983,7 +8951,6 @@ GALGAS_methodCallInstructionForGeneration::GALGAS_methodCallInstructionForGenera
 GALGAS_semanticInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_methodCallInstructionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_methodCallInstructionForGeneration GALGAS_methodCallInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
@@ -9452,7 +9419,6 @@ GALGAS_switchInstructionForGeneration::GALGAS_switchInstructionForGeneration (co
 GALGAS_semanticInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_switchInstructionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_switchInstructionForGeneration GALGAS_switchInstructionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mEnumType,
@@ -9714,7 +9680,6 @@ GALGAS_warningInstructionForGeneration::GALGAS_warningInstructionForGeneration (
 GALGAS_semanticInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_warningInstructionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_warningInstructionForGeneration GALGAS_warningInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
@@ -10027,7 +9992,6 @@ GALGAS_readOnlyWithInstructionForGeneration::GALGAS_readOnlyWithInstructionForGe
 GALGAS_semanticInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_readOnlyWithInstructionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_readOnlyWithInstructionForGeneration GALGAS_readOnlyWithInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
@@ -10472,7 +10436,6 @@ GALGAS_readWriteWithInstructionForGeneration::GALGAS_readWriteWithInstructionFor
 GALGAS_semanticInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_readWriteWithInstructionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_readWriteWithInstructionForGeneration GALGAS_readWriteWithInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
@@ -10986,7 +10949,6 @@ GALGAS_parseLoopInstructionForGeneration::GALGAS_parseLoopInstructionForGenerati
 GALGAS_syntaxInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_parseLoopInstructionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_parseLoopInstructionForGeneration GALGAS_parseLoopInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
@@ -11252,7 +11214,6 @@ GALGAS_parseWhenInstructionForGeneration::GALGAS_parseWhenInstructionForGenerati
 GALGAS_syntaxInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_parseWhenInstructionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_parseWhenInstructionForGeneration GALGAS_parseWhenInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
@@ -11512,7 +11473,6 @@ GALGAS_syntaxSendInstructionForGeneration::GALGAS_syntaxSendInstructionForGenera
 GALGAS_syntaxInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_syntaxSendInstructionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxSendInstructionForGeneration GALGAS_syntaxSendInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
@@ -12157,7 +12117,6 @@ GALGAS_templateInstructionExpressionForGeneration::GALGAS_templateInstructionExp
 GALGAS_templateInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionExpressionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionExpressionForGeneration GALGAS_templateInstructionExpressionForGeneration::constructor_new (const GALGAS_semanticExpressionForGeneration & inAttribute_mExpression

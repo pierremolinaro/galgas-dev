@@ -662,7 +662,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionList
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @lexicalFunctionExpressionAST class
+// Phase 1: @lexicalFunctionExpressionAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -671,7 +671,9 @@ class GALGAS_lexicalFunctionExpressionAST : public AC_GALGAS_value_class {
   public: GALGAS_lexicalFunctionExpressionAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_lexicalFunctionExpressionAST * ptr (void) const { return (const cPtr_lexicalFunctionExpressionAST *) mObjectPtr ; }
+  public: inline const class cPtr_lexicalFunctionExpressionAST * ptr (void) const {
+    return (const cPtr_lexicalFunctionExpressionAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalFunctionExpressionAST (const cPtr_lexicalFunctionExpressionAST * inSourcePtr) ;
@@ -715,7 +717,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionExpr
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalFunctionExpressionAST : public acPtr_class {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_lexicalFunctionExpressionAST (LOCATION_ARGS) ;
@@ -4903,7 +4905,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTagMap_2D_el
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @lexicalFunctionOrExpressionAST class
+// Phase 1: @lexicalFunctionOrExpressionAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4912,7 +4914,9 @@ class GALGAS_lexicalFunctionOrExpressionAST : public GALGAS_lexicalFunctionExpre
   public: GALGAS_lexicalFunctionOrExpressionAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_lexicalFunctionOrExpressionAST * ptr (void) const { return (const cPtr_lexicalFunctionOrExpressionAST *) mObjectPtr ; }
+  public: inline const class cPtr_lexicalFunctionOrExpressionAST * ptr (void) const {
+    return (const cPtr_lexicalFunctionOrExpressionAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalFunctionOrExpressionAST (const cPtr_lexicalFunctionOrExpressionAST * inSourcePtr) ;
@@ -4971,7 +4975,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionOrEx
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalFunctionOrExpressionAST : public cPtr_lexicalFunctionExpressionAST {
-//--- Attributes
+//--- Properties
   public: GALGAS_lexicalFunctionExpressionAST mProperty_mLeftOperand ;
   public: GALGAS_lexicalFunctionExpressionAST mProperty_mRightOperand ;
 

@@ -630,7 +630,6 @@ GALGAS_syntaxDeclarationForGeneration::GALGAS_syntaxDeclarationForGeneration (co
 GALGAS_semanticDeclarationForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_syntaxDeclarationForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxDeclarationForGeneration GALGAS_syntaxDeclarationForGeneration::constructor_new (const GALGAS_string & inAttribute_mSyntaxComponentName,
@@ -3439,7 +3438,6 @@ GALGAS_ifExpressionAST::GALGAS_ifExpressionAST (const cPtr_ifExpressionAST * inS
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_ifExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_ifExpressionAST GALGAS_ifExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -3737,7 +3735,6 @@ GALGAS_unaryPlusExpressionAST::GALGAS_unaryPlusExpressionAST (const cPtr_unaryPl
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_unaryPlusExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_unaryPlusExpressionAST GALGAS_unaryPlusExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -3951,7 +3948,6 @@ GALGAS_unaryMinusExpressionAST::GALGAS_unaryMinusExpressionAST (const cPtr_unary
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_unaryMinusExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_unaryMinusExpressionAST GALGAS_unaryMinusExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -4735,7 +4731,6 @@ GALGAS_trueExpressionAST::GALGAS_trueExpressionAST (const cPtr_trueExpressionAST
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_trueExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_trueExpressionAST GALGAS_trueExpressionAST::constructor_new (const GALGAS_location & inAttribute_mLocation
@@ -4911,7 +4906,6 @@ GALGAS_falseExpressionAST::GALGAS_falseExpressionAST (const cPtr_falseExpression
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_falseExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_falseExpressionAST GALGAS_falseExpressionAST::constructor_new (const GALGAS_location & inAttribute_mLocation
@@ -5091,7 +5085,6 @@ GALGAS_literalStringExpressionAST::GALGAS_literalStringExpressionAST (const cPtr
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_literalStringExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_literalStringExpressionAST GALGAS_literalStringExpressionAST::constructor_new (const GALGAS_location & inAttribute_mLocation,
@@ -5522,7 +5515,6 @@ GALGAS_comparisonExpressionAST::GALGAS_comparisonExpressionAST (const cPtr_compa
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_comparisonExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_comparisonExpressionAST GALGAS_comparisonExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -5823,7 +5815,6 @@ GALGAS_rightShiftExpressionAST::GALGAS_rightShiftExpressionAST (const cPtr_right
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_rightShiftExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_rightShiftExpressionAST GALGAS_rightShiftExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -6082,7 +6073,6 @@ GALGAS_leftShiftExpressionAST::GALGAS_leftShiftExpressionAST (const cPtr_leftShi
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_leftShiftExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_leftShiftExpressionAST GALGAS_leftShiftExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -6341,7 +6331,6 @@ GALGAS_addExpressionAST::GALGAS_addExpressionAST (const cPtr_addExpressionAST * 
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_addExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_addExpressionAST GALGAS_addExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -6600,7 +6589,6 @@ GALGAS_addExpressionNoOverflowAST::GALGAS_addExpressionNoOverflowAST (const cPtr
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_addExpressionNoOverflowAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_addExpressionNoOverflowAST GALGAS_addExpressionNoOverflowAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -6859,7 +6847,6 @@ GALGAS_subExpressionAST::GALGAS_subExpressionAST (const cPtr_subExpressionAST * 
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_subExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_subExpressionAST GALGAS_subExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -7118,7 +7105,6 @@ GALGAS_subExpressionNoOverflowAST::GALGAS_subExpressionNoOverflowAST (const cPtr
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_subExpressionNoOverflowAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_subExpressionNoOverflowAST GALGAS_subExpressionNoOverflowAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -8164,7 +8150,6 @@ GALGAS_abstractCollectionValueElement::GALGAS_abstractCollectionValueElement (co
 AC_GALGAS_value_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractCollectionValueElement) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @abstractCollectionValueElement class
 //----------------------------------------------------------------------------------------------------------------------
@@ -8265,7 +8250,6 @@ GALGAS_expressionCollectionValue::GALGAS_expressionCollectionValue (const cPtr_e
 GALGAS_abstractCollectionValueElement (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_expressionCollectionValue) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_expressionCollectionValue GALGAS_expressionCollectionValue::constructor_new (const GALGAS_semanticExpressionAST & inAttribute_mExpression,
@@ -8487,7 +8471,6 @@ GALGAS_expressionListCollectionValue::GALGAS_expressionListCollectionValue (cons
 GALGAS_abstractCollectionValueElement (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_expressionListCollectionValue) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_expressionListCollectionValue GALGAS_expressionListCollectionValue::constructor_new (const GALGAS_actualOutputExpressionList & inAttribute_mExpressionList,
@@ -9229,7 +9212,6 @@ GALGAS_abstractCollectionValueElementForGeneration::GALGAS_abstractCollectionVal
 AC_GALGAS_value_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractCollectionValueElementForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_abstractCollectionValueElementForGeneration::getter_mExpressionLocation (UNUSED_LOCATION_ARGS) const {
@@ -9442,7 +9424,6 @@ GALGAS_expressionListCollectionForGeneration::GALGAS_expressionListCollectionFor
 GALGAS_abstractCollectionValueElementForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_expressionListCollectionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_expressionListCollectionForGeneration GALGAS_expressionListCollectionForGeneration::constructor_new (const GALGAS_location & inAttribute_mExpressionLocation,
@@ -9622,7 +9603,6 @@ GALGAS_selfInExpressionAST::GALGAS_selfInExpressionAST (const cPtr_selfInExpress
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_selfInExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_selfInExpressionAST GALGAS_selfInExpressionAST::constructor_new (const GALGAS_location & inAttribute_mSelfLocation
@@ -9794,7 +9774,6 @@ GALGAS_notExpressionAST::GALGAS_notExpressionAST (const cPtr_notExpressionAST * 
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_notExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_notExpressionAST GALGAS_notExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -10008,7 +9987,6 @@ GALGAS_tildeExpressionAST::GALGAS_tildeExpressionAST (const cPtr_tildeExpression
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_tildeExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_tildeExpressionAST GALGAS_tildeExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -10222,7 +10200,6 @@ GALGAS_unaryWrappingMinusExpressionAST::GALGAS_unaryWrappingMinusExpressionAST (
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_unaryWrappingMinusExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_unaryWrappingMinusExpressionAST GALGAS_unaryWrappingMinusExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -10439,7 +10416,6 @@ GALGAS_orExpressionAST::GALGAS_orExpressionAST (const cPtr_orExpressionAST * inS
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_orExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_orExpressionAST GALGAS_orExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -10698,7 +10674,6 @@ GALGAS_orShortExpressionAST::GALGAS_orShortExpressionAST (const cPtr_orShortExpr
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_orShortExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_orShortExpressionAST GALGAS_orShortExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -10957,7 +10932,6 @@ GALGAS_xorExpressionAST::GALGAS_xorExpressionAST (const cPtr_xorExpressionAST * 
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_xorExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_xorExpressionAST GALGAS_xorExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -11216,7 +11190,6 @@ GALGAS_closedSliceExpressionAST::GALGAS_closedSliceExpressionAST (const cPtr_clo
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_closedSliceExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_closedSliceExpressionAST GALGAS_closedSliceExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -11475,7 +11448,6 @@ GALGAS_openedSliceExpressionAST::GALGAS_openedSliceExpressionAST (const cPtr_ope
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_openedSliceExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_openedSliceExpressionAST GALGAS_openedSliceExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -11734,7 +11706,6 @@ GALGAS_andShortExpressionAST::GALGAS_andShortExpressionAST (const cPtr_andShortE
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_andShortExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_andShortExpressionAST GALGAS_andShortExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -11993,7 +11964,6 @@ GALGAS_andExpressionAST::GALGAS_andExpressionAST (const cPtr_andExpressionAST * 
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_andExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_andExpressionAST GALGAS_andExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -12252,7 +12222,6 @@ GALGAS_multiplicationExpressionAST::GALGAS_multiplicationExpressionAST (const cP
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_multiplicationExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_multiplicationExpressionAST GALGAS_multiplicationExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -12511,7 +12480,6 @@ GALGAS_multiplicationExpressionNoOverflowAST::GALGAS_multiplicationExpressionNoO
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_multiplicationExpressionNoOverflowAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_multiplicationExpressionNoOverflowAST GALGAS_multiplicationExpressionNoOverflowAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -12770,7 +12738,6 @@ GALGAS_divisionExpressionAST::GALGAS_divisionExpressionAST (const cPtr_divisionE
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_divisionExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_divisionExpressionAST GALGAS_divisionExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -13029,7 +12996,6 @@ GALGAS_divisionExpressionNoOverflowAST::GALGAS_divisionExpressionNoOverflowAST (
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_divisionExpressionNoOverflowAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_divisionExpressionNoOverflowAST GALGAS_divisionExpressionNoOverflowAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -13288,7 +13254,6 @@ GALGAS_moduloExpressionAST::GALGAS_moduloExpressionAST (const cPtr_moduloExpress
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_moduloExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_moduloExpressionAST GALGAS_moduloExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -14296,7 +14261,6 @@ GALGAS_structuredCastInstructionAST::GALGAS_structuredCastInstructionAST (const 
 GALGAS_semanticInstructionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_structuredCastInstructionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_structuredCastInstructionAST GALGAS_structuredCastInstructionAST::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,

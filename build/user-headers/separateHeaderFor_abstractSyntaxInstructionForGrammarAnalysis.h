@@ -30,7 +30,7 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acPtr_class {
                                                          cPureBNFproductionsList & ioProductions) = 0 ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
   public: GALGAS_location mProperty_mStartLocation ;
 
 //--- Constructor

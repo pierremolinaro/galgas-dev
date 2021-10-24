@@ -10,7 +10,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @templateBlockInstructionForGeneration class
+// Phase 1: @templateBlockInstructionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -19,7 +19,9 @@ class GALGAS_templateBlockInstructionForGeneration : public GALGAS_templateInstr
   public: GALGAS_templateBlockInstructionForGeneration (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_templateBlockInstructionForGeneration * ptr (void) const { return (const cPtr_templateBlockInstructionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_templateBlockInstructionForGeneration * ptr (void) const {
+    return (const cPtr_templateBlockInstructionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateBlockInstructionForGeneration (const cPtr_templateBlockInstructionForGeneration * inSourcePtr) ;
@@ -84,7 +86,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateBlockInstru
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_templateBlockInstructionForGeneration : public cPtr_templateInstructionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
   public: GALGAS_location mProperty_mLocation ;
   public: GALGAS_templateInstructionListForGeneration mProperty_mBlockInstructionList ;
@@ -117,7 +119,7 @@ class cPtr_templateBlockInstructionForGeneration : public cPtr_templateInstructi
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @templateInstructionForeachForGeneration class
+// Phase 1: @templateInstructionForeachForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -126,7 +128,9 @@ class GALGAS_templateInstructionForeachForGeneration : public GALGAS_templateIns
   public: GALGAS_templateInstructionForeachForGeneration (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_templateInstructionForeachForGeneration * ptr (void) const { return (const cPtr_templateInstructionForeachForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_templateInstructionForeachForGeneration * ptr (void) const {
+    return (const cPtr_templateInstructionForeachForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateInstructionForeachForGeneration (const cPtr_templateInstructionForeachForGeneration * inSourcePtr) ;
@@ -221,7 +225,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_templateInstructionForeachForGeneration : public cPtr_templateInstructionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_bool mProperty_mIsAscending ;
   public: GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
   public: GALGAS_string mProperty_mEnumeratorCppName ;
@@ -274,7 +278,7 @@ class cPtr_templateInstructionForeachForGeneration : public cPtr_templateInstruc
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @templateInstructionSwitchForGeneration class
+// Phase 1: @templateInstructionSwitchForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -283,7 +287,9 @@ class GALGAS_templateInstructionSwitchForGeneration : public GALGAS_templateInst
   public: GALGAS_templateInstructionSwitchForGeneration (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_templateInstructionSwitchForGeneration * ptr (void) const { return (const cPtr_templateInstructionSwitchForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_templateInstructionSwitchForGeneration * ptr (void) const {
+    return (const cPtr_templateInstructionSwitchForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateInstructionSwitchForGeneration (const cPtr_templateInstructionSwitchForGeneration * inSourcePtr) ;
@@ -348,7 +354,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_templateInstructionSwitchForGeneration : public cPtr_templateInstructionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mEnumType ;
   public: GALGAS_semanticExpressionForGeneration mProperty_mSwitchExpression ;
   public: GALGAS_templateInstructionSwitchBranchListForGeneration mProperty_mTemplateInstructionSwitchBranchList ;
@@ -381,7 +387,7 @@ class cPtr_templateInstructionSwitchForGeneration : public cPtr_templateInstruct
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @optionComponentForGeneration class
+// Phase 1: @optionComponentForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -393,7 +399,9 @@ class GALGAS_optionComponentForGeneration : public GALGAS_semanticDeclarationWit
   public: static GALGAS_optionComponentForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_optionComponentForGeneration * ptr (void) const { return (const cPtr_optionComponentForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_optionComponentForGeneration * ptr (void) const {
+    return (const cPtr_optionComponentForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_optionComponentForGeneration (const cPtr_optionComponentForGeneration * inSourcePtr) ;
@@ -478,7 +486,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentForG
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_bool mProperty_mIsPredefined ;
   public: GALGAS_string mProperty_mOptionComponentName ;
   public: GALGAS_commandLineOptionMap mProperty_mBoolOptionMap ;
@@ -525,7 +533,7 @@ class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHea
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @arrayTypeForGeneration class
+// Phase 1: @arrayTypeForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -537,7 +545,9 @@ class GALGAS_arrayTypeForGeneration : public GALGAS_semanticTypeForGeneration {
   public: static GALGAS_arrayTypeForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_arrayTypeForGeneration * ptr (void) const { return (const cPtr_arrayTypeForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_arrayTypeForGeneration * ptr (void) const {
+    return (const cPtr_arrayTypeForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_arrayTypeForGeneration (const cPtr_arrayTypeForGeneration * inSourcePtr) ;
@@ -597,7 +607,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_arrayTypeForGenerat
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_arrayTypeForGeneration : public cPtr_semanticTypeForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mElementTypeEntry ;
   public: GALGAS_uint mProperty_mDimension ;
 
@@ -627,7 +637,7 @@ class cPtr_arrayTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @castInExpressionForGeneration class
+// Phase 1: @castInExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -636,7 +646,9 @@ class GALGAS_castInExpressionForGeneration : public GALGAS_semanticExpressionFor
   public: GALGAS_castInExpressionForGeneration (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_castInExpressionForGeneration * ptr (void) const { return (const cPtr_castInExpressionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_castInExpressionForGeneration * ptr (void) const {
+    return (const cPtr_castInExpressionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_castInExpressionForGeneration (const cPtr_castInExpressionForGeneration * inSourcePtr) ;
@@ -703,7 +715,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInExpressionFor
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_castInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mReceiverExpression ;
   public: GALGAS_string mProperty_mTypeName ;
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mCastType ;
@@ -738,7 +750,7 @@ class cPtr_castInExpressionForGeneration : public cPtr_semanticExpressionForGene
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @outputActualParameterForGeneration class
+// Phase 1: @outputActualParameterForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -747,7 +759,9 @@ class GALGAS_outputActualParameterForGeneration : public GALGAS_actualParameterF
   public: GALGAS_outputActualParameterForGeneration (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_outputActualParameterForGeneration * ptr (void) const { return (const cPtr_outputActualParameterForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_outputActualParameterForGeneration * ptr (void) const {
+    return (const cPtr_outputActualParameterForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_outputActualParameterForGeneration (const cPtr_outputActualParameterForGeneration * inSourcePtr) ;
@@ -801,7 +815,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputActualParamet
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_outputActualParameterForGeneration : public cPtr_actualParameterForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mOutputActualParameterExpression ;
 
 //--- Constructor
@@ -827,7 +841,7 @@ class cPtr_outputActualParameterForGeneration : public cPtr_actualParameterForGe
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @ifExpressionForGeneration class
+// Phase 1: @ifExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -836,7 +850,9 @@ class GALGAS_ifExpressionForGeneration : public GALGAS_semanticExpressionForGene
   public: GALGAS_ifExpressionForGeneration (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_ifExpressionForGeneration * ptr (void) const { return (const cPtr_ifExpressionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_ifExpressionForGeneration * ptr (void) const {
+    return (const cPtr_ifExpressionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_ifExpressionForGeneration (const cPtr_ifExpressionForGeneration * inSourcePtr) ;
@@ -903,7 +919,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionForGene
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_ifExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mIfExpression ;
   public: GALGAS_semanticExpressionForGeneration mProperty_mThenExpression ;
   public: GALGAS_semanticExpressionForGeneration mProperty_mElseExpression ;
@@ -938,7 +954,7 @@ class cPtr_ifExpressionForGeneration : public cPtr_semanticExpressionForGenerati
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @unaryMinusExpressionForGeneration class
+// Phase 1: @unaryMinusExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -947,7 +963,9 @@ class GALGAS_unaryMinusExpressionForGeneration : public GALGAS_semanticExpressio
   public: GALGAS_unaryMinusExpressionForGeneration (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_unaryMinusExpressionForGeneration * ptr (void) const { return (const cPtr_unaryMinusExpressionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_unaryMinusExpressionForGeneration * ptr (void) const {
+    return (const cPtr_unaryMinusExpressionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_unaryMinusExpressionForGeneration (const cPtr_unaryMinusExpressionForGeneration * inSourcePtr) ;
@@ -1002,7 +1020,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryMinusExpressio
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_unaryMinusExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
 
 //--- Constructor
@@ -1029,7 +1047,7 @@ class cPtr_unaryMinusExpressionForGeneration : public cPtr_semanticExpressionFor
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @varInExpressionForGeneration class
+// Phase 1: @varInExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1041,7 +1059,9 @@ class GALGAS_varInExpressionForGeneration : public GALGAS_semanticExpressionForG
   public: static GALGAS_varInExpressionForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_varInExpressionForGeneration * ptr (void) const { return (const cPtr_varInExpressionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_varInExpressionForGeneration * ptr (void) const {
+    return (const cPtr_varInExpressionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_varInExpressionForGeneration (const cPtr_varInExpressionForGeneration * inSourcePtr) ;
@@ -1102,7 +1122,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varInExpressionForG
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_varInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_string mProperty_mCppVarName ;
   public: GALGAS_string mProperty_mNameForCheckingFormalParameterUsing ;
 
@@ -1133,7 +1153,7 @@ class cPtr_varInExpressionForGeneration : public cPtr_semanticExpressionForGener
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @trueExpressionForGeneration class
+// Phase 1: @trueExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1145,7 +1165,9 @@ class GALGAS_trueExpressionForGeneration : public GALGAS_semanticExpressionForGe
   public: static GALGAS_trueExpressionForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_trueExpressionForGeneration * ptr (void) const { return (const cPtr_trueExpressionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_trueExpressionForGeneration * ptr (void) const {
+    return (const cPtr_trueExpressionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_trueExpressionForGeneration (const cPtr_trueExpressionForGeneration * inSourcePtr) ;
@@ -1194,7 +1216,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_trueExpressionForGe
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_trueExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_trueExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mResultType,
@@ -1217,7 +1239,7 @@ class cPtr_trueExpressionForGeneration : public cPtr_semanticExpressionForGenera
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @falseExpressionForGeneration class
+// Phase 1: @falseExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1229,7 +1251,9 @@ class GALGAS_falseExpressionForGeneration : public GALGAS_semanticExpressionForG
   public: static GALGAS_falseExpressionForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_falseExpressionForGeneration * ptr (void) const { return (const cPtr_falseExpressionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_falseExpressionForGeneration * ptr (void) const {
+    return (const cPtr_falseExpressionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_falseExpressionForGeneration (const cPtr_falseExpressionForGeneration * inSourcePtr) ;
@@ -1278,7 +1302,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_falseExpressionForG
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_falseExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_falseExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mResultType,
@@ -1322,7 +1346,7 @@ class GALGAS_bool callExtensionGetter_isTrueExpression (const cPtr_semanticExpre
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @literalStringExpressionForGeneration class
+// Phase 1: @literalStringExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1334,7 +1358,9 @@ class GALGAS_literalStringExpressionForGeneration : public GALGAS_semanticExpres
   public: static GALGAS_literalStringExpressionForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_literalStringExpressionForGeneration * ptr (void) const { return (const cPtr_literalStringExpressionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_literalStringExpressionForGeneration * ptr (void) const {
+    return (const cPtr_literalStringExpressionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalStringExpressionForGeneration (const cPtr_literalStringExpressionForGeneration * inSourcePtr) ;
@@ -1389,7 +1415,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalStringExpres
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_literalStringExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_string mProperty_mString ;
 
 //--- Constructor
@@ -1416,7 +1442,7 @@ class cPtr_literalStringExpressionForGeneration : public cPtr_semanticExpression
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @literalCharExpressionForGeneration class
+// Phase 1: @literalCharExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1428,7 +1454,9 @@ class GALGAS_literalCharExpressionForGeneration : public GALGAS_semanticExpressi
   public: static GALGAS_literalCharExpressionForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_literalCharExpressionForGeneration * ptr (void) const { return (const cPtr_literalCharExpressionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_literalCharExpressionForGeneration * ptr (void) const {
+    return (const cPtr_literalCharExpressionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalCharExpressionForGeneration (const cPtr_literalCharExpressionForGeneration * inSourcePtr) ;
@@ -1483,7 +1511,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalCharExpressi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_literalCharExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_char mProperty_mCharacter ;
 
 //--- Constructor
@@ -1510,7 +1538,7 @@ class cPtr_literalCharExpressionForGeneration : public cPtr_semanticExpressionFo
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @literalDoubleExpressionForGeneration class
+// Phase 1: @literalDoubleExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1522,7 +1550,9 @@ class GALGAS_literalDoubleExpressionForGeneration : public GALGAS_semanticExpres
   public: static GALGAS_literalDoubleExpressionForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_literalDoubleExpressionForGeneration * ptr (void) const { return (const cPtr_literalDoubleExpressionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_literalDoubleExpressionForGeneration * ptr (void) const {
+    return (const cPtr_literalDoubleExpressionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalDoubleExpressionForGeneration (const cPtr_literalDoubleExpressionForGeneration * inSourcePtr) ;
@@ -1577,7 +1607,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalDoubleExpres
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_literalDoubleExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_double mProperty_mValue ;
 
 //--- Constructor
@@ -1604,7 +1634,7 @@ class cPtr_literalDoubleExpressionForGeneration : public cPtr_semanticExpression
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @literalUIntExpressionForGeneration class
+// Phase 1: @literalUIntExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1616,7 +1646,9 @@ class GALGAS_literalUIntExpressionForGeneration : public GALGAS_semanticExpressi
   public: static GALGAS_literalUIntExpressionForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_literalUIntExpressionForGeneration * ptr (void) const { return (const cPtr_literalUIntExpressionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_literalUIntExpressionForGeneration * ptr (void) const {
+    return (const cPtr_literalUIntExpressionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalUIntExpressionForGeneration (const cPtr_literalUIntExpressionForGeneration * inSourcePtr) ;
@@ -1671,7 +1703,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalUIntExpressi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_literalUIntExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_uint mProperty_mValue ;
 
 //--- Constructor
@@ -1698,7 +1730,7 @@ class cPtr_literalUIntExpressionForGeneration : public cPtr_semanticExpressionFo
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @literalUInt_36__34_ExpressionForGeneration class
+// Phase 1: @literalUInt_36__34_ExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1710,7 +1742,9 @@ class GALGAS_literalUInt_36__34_ExpressionForGeneration : public GALGAS_semantic
   public: static GALGAS_literalUInt_36__34_ExpressionForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_literalUInt_36__34_ExpressionForGeneration * ptr (void) const { return (const cPtr_literalUInt_36__34_ExpressionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_literalUInt_36__34_ExpressionForGeneration * ptr (void) const {
+    return (const cPtr_literalUInt_36__34_ExpressionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalUInt_36__34_ExpressionForGeneration (const cPtr_literalUInt_36__34_ExpressionForGeneration * inSourcePtr) ;
@@ -1765,7 +1799,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalUInt_36__34_
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_literalUInt_36__34_ExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_uint_36__34_ mProperty_mValue ;
 
 //--- Constructor
@@ -1792,7 +1826,7 @@ class cPtr_literalUInt_36__34_ExpressionForGeneration : public cPtr_semanticExpr
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @literalSIntExpressionForGeneration class
+// Phase 1: @literalSIntExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1804,7 +1838,9 @@ class GALGAS_literalSIntExpressionForGeneration : public GALGAS_semanticExpressi
   public: static GALGAS_literalSIntExpressionForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_literalSIntExpressionForGeneration * ptr (void) const { return (const cPtr_literalSIntExpressionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_literalSIntExpressionForGeneration * ptr (void) const {
+    return (const cPtr_literalSIntExpressionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalSIntExpressionForGeneration (const cPtr_literalSIntExpressionForGeneration * inSourcePtr) ;
@@ -1859,7 +1895,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalSIntExpressi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_literalSIntExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_sint mProperty_mValue ;
 
 //--- Constructor
@@ -1886,7 +1922,7 @@ class cPtr_literalSIntExpressionForGeneration : public cPtr_semanticExpressionFo
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @literalSInt_36__34_ExpressionForGeneration class
+// Phase 1: @literalSInt_36__34_ExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1898,7 +1934,9 @@ class GALGAS_literalSInt_36__34_ExpressionForGeneration : public GALGAS_semantic
   public: static GALGAS_literalSInt_36__34_ExpressionForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_literalSInt_36__34_ExpressionForGeneration * ptr (void) const { return (const cPtr_literalSInt_36__34_ExpressionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_literalSInt_36__34_ExpressionForGeneration * ptr (void) const {
+    return (const cPtr_literalSInt_36__34_ExpressionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalSInt_36__34_ExpressionForGeneration (const cPtr_literalSInt_36__34_ExpressionForGeneration * inSourcePtr) ;
@@ -1953,7 +1991,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalSInt_36__34_
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_literalSInt_36__34_ExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_sint_36__34_ mProperty_mValue ;
 
 //--- Constructor
@@ -1980,7 +2018,7 @@ class cPtr_literalSInt_36__34_ExpressionForGeneration : public cPtr_semanticExpr
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @literalBigIntExpressionForGeneration class
+// Phase 1: @literalBigIntExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1992,7 +2030,9 @@ class GALGAS_literalBigIntExpressionForGeneration : public GALGAS_semanticExpres
   public: static GALGAS_literalBigIntExpressionForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_literalBigIntExpressionForGeneration * ptr (void) const { return (const cPtr_literalBigIntExpressionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_literalBigIntExpressionForGeneration * ptr (void) const {
+    return (const cPtr_literalBigIntExpressionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalBigIntExpressionForGeneration (const cPtr_literalBigIntExpressionForGeneration * inSourcePtr) ;
@@ -2047,7 +2087,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalBigIntExpres
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_literalBigIntExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_bigint mProperty_mValue ;
 
 //--- Constructor
@@ -2074,7 +2114,7 @@ class cPtr_literalBigIntExpressionForGeneration : public cPtr_semanticExpression
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @comparisonExpressionForGeneration class
+// Phase 1: @comparisonExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2083,7 +2123,9 @@ class GALGAS_comparisonExpressionForGeneration : public GALGAS_semanticExpressio
   public: GALGAS_comparisonExpressionForGeneration (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_comparisonExpressionForGeneration * ptr (void) const { return (const cPtr_comparisonExpressionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_comparisonExpressionForGeneration * ptr (void) const {
+    return (const cPtr_comparisonExpressionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_comparisonExpressionForGeneration (const cPtr_comparisonExpressionForGeneration * inSourcePtr) ;
@@ -2150,7 +2192,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparisonExpressio
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_comparisonExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
   public: GALGAS_comparison mProperty_mComparison ;
   public: GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
@@ -2185,7 +2227,7 @@ class cPtr_comparisonExpressionForGeneration : public cPtr_semanticExpressionFor
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @binaryOperatorExpressionForGeneration class
+// Phase 1: @binaryOperatorExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2194,7 +2236,9 @@ class GALGAS_binaryOperatorExpressionForGeneration : public GALGAS_semanticExpre
   public: GALGAS_binaryOperatorExpressionForGeneration (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_binaryOperatorExpressionForGeneration * ptr (void) const { return (const cPtr_binaryOperatorExpressionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_binaryOperatorExpressionForGeneration * ptr (void) const {
+    return (const cPtr_binaryOperatorExpressionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_binaryOperatorExpressionForGeneration (const cPtr_binaryOperatorExpressionForGeneration * inSourcePtr) ;
@@ -2261,7 +2305,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binaryOperatorExpre
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_binaryOperatorExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
   public: GALGAS_binaryOperator mProperty_mOperator ;
   public: GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
@@ -2296,7 +2340,7 @@ class cPtr_binaryOperatorExpressionForGeneration : public cPtr_semanticExpressio
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @testDynamicClassInExpressionForGeneration class
+// Phase 1: @testDynamicClassInExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2305,7 +2349,9 @@ class GALGAS_testDynamicClassInExpressionForGeneration : public GALGAS_semanticE
   public: GALGAS_testDynamicClassInExpressionForGeneration (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_testDynamicClassInExpressionForGeneration * ptr (void) const { return (const cPtr_testDynamicClassInExpressionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_testDynamicClassInExpressionForGeneration * ptr (void) const {
+    return (const cPtr_testDynamicClassInExpressionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_testDynamicClassInExpressionForGeneration (const cPtr_testDynamicClassInExpressionForGeneration * inSourcePtr) ;
@@ -2372,7 +2418,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_testDynamicClassInE
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_testDynamicClassInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mReceiverExpression ;
   public: GALGAS_dynamicTypeComparisonKind mProperty_mTypeComparisonKind ;
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mCastType ;
@@ -2407,7 +2453,7 @@ class cPtr_testDynamicClassInExpressionForGeneration : public cPtr_semanticExpre
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @extractObjectInExpressionForGeneration class
+// Phase 1: @extractObjectInExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2416,7 +2462,9 @@ class GALGAS_extractObjectInExpressionForGeneration : public GALGAS_semanticExpr
   public: GALGAS_extractObjectInExpressionForGeneration (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_extractObjectInExpressionForGeneration * ptr (void) const { return (const cPtr_extractObjectInExpressionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_extractObjectInExpressionForGeneration * ptr (void) const {
+    return (const cPtr_extractObjectInExpressionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_extractObjectInExpressionForGeneration (const cPtr_extractObjectInExpressionForGeneration * inSourcePtr) ;
@@ -2477,7 +2525,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extractObjectInExpr
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_extractObjectInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mReceiverExpression ;
   public: GALGAS_string mProperty_mTypeName ;
 
@@ -2508,7 +2556,7 @@ class cPtr_extractObjectInExpressionForGeneration : public cPtr_semanticExpressi
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @optionValueExpressionForGeneration class
+// Phase 1: @optionValueExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2520,7 +2568,9 @@ class GALGAS_optionValueExpressionForGeneration : public GALGAS_semanticExpressi
   public: static GALGAS_optionValueExpressionForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_optionValueExpressionForGeneration * ptr (void) const { return (const cPtr_optionValueExpressionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_optionValueExpressionForGeneration * ptr (void) const {
+    return (const cPtr_optionValueExpressionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_optionValueExpressionForGeneration (const cPtr_optionValueExpressionForGeneration * inSourcePtr) ;
@@ -2587,7 +2637,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionValueExpressi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_optionValueExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_bool mProperty_mOptionComponentIsPredefined ;
   public: GALGAS_string mProperty_mOptionComponentName ;
   public: GALGAS_string mProperty_mOptionEntryName ;
@@ -2622,7 +2672,7 @@ class cPtr_optionValueExpressionForGeneration : public cPtr_semanticExpressionFo
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @optionCharExpressionForGeneration class
+// Phase 1: @optionCharExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2634,7 +2684,9 @@ class GALGAS_optionCharExpressionForGeneration : public GALGAS_semanticExpressio
   public: static GALGAS_optionCharExpressionForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_optionCharExpressionForGeneration * ptr (void) const { return (const cPtr_optionCharExpressionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_optionCharExpressionForGeneration * ptr (void) const {
+    return (const cPtr_optionCharExpressionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_optionCharExpressionForGeneration (const cPtr_optionCharExpressionForGeneration * inSourcePtr) ;
@@ -2701,7 +2753,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionCharExpressio
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_optionCharExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_bool mProperty_mOptionComponentIsPredefined ;
   public: GALGAS_string mProperty_mOptionComponentName ;
   public: GALGAS_string mProperty_mOptionEntryName ;
@@ -2736,7 +2788,7 @@ class cPtr_optionCharExpressionForGeneration : public cPtr_semanticExpressionFor
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @optionStringExpressionForGeneration class
+// Phase 1: @optionStringExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2748,7 +2800,9 @@ class GALGAS_optionStringExpressionForGeneration : public GALGAS_semanticExpress
   public: static GALGAS_optionStringExpressionForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_optionStringExpressionForGeneration * ptr (void) const { return (const cPtr_optionStringExpressionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_optionStringExpressionForGeneration * ptr (void) const {
+    return (const cPtr_optionStringExpressionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_optionStringExpressionForGeneration (const cPtr_optionStringExpressionForGeneration * inSourcePtr) ;
@@ -2815,7 +2869,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionStringExpress
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_optionStringExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_bool mProperty_mOptionComponentIsPredefined ;
   public: GALGAS_string mProperty_mOptionComponentName ;
   public: GALGAS_string mProperty_mOptionEntryName ;

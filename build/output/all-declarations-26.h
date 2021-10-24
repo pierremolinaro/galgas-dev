@@ -10,6 +10,18 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Routine 'checkAssignmentTypes'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_checkAssignmentTypes (const class GALGAS_unifiedTypeMap_2D_entry constinArgument0,
+                                   const class GALGAS_unifiedTypeMap_2D_entry constinArgument1,
+                                   const class GALGAS_location constinArgument2,
+                                   class C_Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Routine 'analyzeErrorOrWarningInstruction'
 //
 //----------------------------------------------------------------------------------------------------------------------

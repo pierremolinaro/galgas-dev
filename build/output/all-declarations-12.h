@@ -10,7 +10,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @templateInstructionStringAST class
+// Phase 1: @templateInstructionStringAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -22,7 +22,9 @@ class GALGAS_templateInstructionStringAST : public GALGAS_templateInstructionAST
   public: static GALGAS_templateInstructionStringAST constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_templateInstructionStringAST * ptr (void) const { return (const cPtr_templateInstructionStringAST *) mObjectPtr ; }
+  public: inline const class cPtr_templateInstructionStringAST * ptr (void) const {
+    return (const cPtr_templateInstructionStringAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateInstructionStringAST (const cPtr_templateInstructionStringAST * inSourcePtr) ;
@@ -75,7 +77,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_templateInstructionStringAST : public cPtr_templateInstructionAST {
-//--- Attributes
+//--- Properties
   public: GALGAS_string mProperty_mTemplateString ;
 
 //--- Constructor
@@ -290,7 +292,7 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 //----------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @templateInstructionStringForGeneration class
+// Phase 1: @templateInstructionStringForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -302,7 +304,9 @@ class GALGAS_templateInstructionStringForGeneration : public GALGAS_templateInst
   public: static GALGAS_templateInstructionStringForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_templateInstructionStringForGeneration * ptr (void) const { return (const cPtr_templateInstructionStringForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_templateInstructionStringForGeneration * ptr (void) const {
+    return (const cPtr_templateInstructionStringForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateInstructionStringForGeneration (const cPtr_templateInstructionStringForGeneration * inSourcePtr) ;
@@ -355,7 +359,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_templateInstructionStringForGeneration : public cPtr_templateInstructionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_string mProperty_mTemplateString ;
 
 //--- Constructor

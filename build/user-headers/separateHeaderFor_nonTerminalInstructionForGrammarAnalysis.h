@@ -28,7 +28,7 @@ class cPtr_nonTerminalInstructionForGrammarAnalysis : public cPtr_abstractSyntax
                                                          cPureBNFproductionsList & ioProductions) ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
   public: GALGAS_lstring mProperty_mNonterminalSymbolName ;
   public: GALGAS_uint mProperty_mNonterminalSymbolIndex ;
 

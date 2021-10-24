@@ -28,7 +28,7 @@ class cPtr_repeatInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
                                                          cPureBNFproductionsList & ioProductions) ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
   public: GALGAS_branchListForGrammarAnalysis mProperty_mRepeatBranchList ;
   public: GALGAS_uint mProperty_mAddedNonTerminalSymbolIndex ;
 

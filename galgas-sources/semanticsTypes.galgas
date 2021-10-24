@@ -227,7 +227,8 @@ enum @predefinedTypeKindEnum {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @typeKindEnum {
-  case classType (@bool isShared)
+  case classType (@bool isReference)
+  case weakReferenceType (@unifiedTypeMap-entry referenceType)
   case enumType 
   case listType 
   case sortedListType 
@@ -247,7 +248,7 @@ enum @typeKindEnum {
 
 getter @typeKindEnum kind -> @string {
   switch self
-    case classType (*) : result = "class"
+    case classType (isReference) : result = if isReference then "reference class" else "value class" end
     case enumType : result = "enumeration"
     case listType : result = "list"
     case sortedListType : result = "sorted list"
@@ -261,6 +262,7 @@ getter @typeKindEnum kind -> @string {
     case predefinedType : result = "predefined"
     case arrayType : result = "array"
     case externType : result = "extern"
+    case weakReferenceType (*) : result = "weak reference"
   end
 }
 

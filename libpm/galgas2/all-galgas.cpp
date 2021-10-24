@@ -32,6 +32,9 @@
 #include "AC_GALGAS_graph.cpp"
 #include "AC_GALGAS_enumAssociatedValues.cpp"
 #include "acPtr_class.cpp"
+#include "acStrongPtr_class.cpp"
+#include "cPtr_weakReference_class.cpp"
+#include "AC_GALGAS_weak_reference.cpp"
 #include "cPtr_object.cpp"
 
 #include "scanner_actions.cpp"

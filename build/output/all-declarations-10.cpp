@@ -6741,7 +6741,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   default:
     break ;
   }
-  GALGAS_bool var_isShared_1076 ;
+  GALGAS_bool var_isReference_1079 ;
   switch (select_galgas_33_DeclarationsSyntax_12 (inCompiler)) {
   case 1: {
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_class COMMA_SOURCE_FILE ("type-class.galgas", 30)) ;
@@ -6757,44 +6757,44 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
       TC_Array <C_FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticWarning (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 34)), GALGAS_string ("'class' declaration is obsolete, use 'valueclass'"), fixItArray2  COMMA_SOURCE_FILE ("type-class.galgas", 34)) ;
     }
-    var_isShared_1076 = GALGAS_bool (false) ;
+    var_isReference_1079 = GALGAS_bool (false) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_valueclass COMMA_SOURCE_FILE ("type-class.galgas", 38)) ;
-    var_isShared_1076 = GALGAS_bool (false) ;
+    var_isReference_1079 = GALGAS_bool (false) ;
   } break ;
   case 3: {
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_refclass COMMA_SOURCE_FILE ("type-class.galgas", 41)) ;
-    var_isShared_1076 = GALGAS_bool (true) ;
+    var_isReference_1079 = GALGAS_bool (true) ;
   } break ;
   default:
     break ;
   }
-  GALGAS_lstring var_className_1504 = inCompiler->synthetizedAttribute_tokenString () ;
+  GALGAS_lstring var_className_1516 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->enterIndexing (C_Lexique_galgas_33_Scanner::kIndexing_classDefinition, "") ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__40_type COMMA_SOURCE_FILE ("type-class.galgas", 44)) ;
-  GALGAS_lstring var_mSuperClassName_1558 ;
+  GALGAS_lstring var_superClassName_1569 ;
   switch (select_galgas_33_DeclarationsSyntax_13 (inCompiler)) {
   case 1: {
-    var_mSuperClassName_1558 = GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-class.galgas", 47)) ;
+    var_superClassName_1569 = GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-class.galgas", 47)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__3A_ COMMA_SOURCE_FILE ("type-class.galgas", 49)) ;
-    var_mSuperClassName_1558 = inCompiler->synthetizedAttribute_tokenString () ;
+    var_superClassName_1569 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->enterIndexing (C_Lexique_galgas_33_Scanner::kIndexing_classReferencedAsSuperClass, "") ;
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__40_type COMMA_SOURCE_FILE ("type-class.galgas", 50)) ;
   } break ;
   default:
     break ;
   }
-  GALGAS_lstringlist var_classFeatureList_1751 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("type-class.galgas", 52)) ;
+  GALGAS_lstringlist var_classFeatureList_1760 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("type-class.galgas", 52)) ;
   bool repeatFlag_3 = true ;
   while (repeatFlag_3) {
     switch (select_galgas_33_DeclarationsSyntax_14 (inCompiler)) {
     case 2: {
-      GALGAS_lstring var_classFeatureName_1840 = inCompiler->synthetizedAttribute_tokenString () ;
+      GALGAS_lstring var_classFeatureName_1849 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__25_attribute COMMA_SOURCE_FILE ("type-class.galgas", 55)) ;
-      var_classFeatureList_1751.addAssign_operation (var_classFeatureName_1840  COMMA_SOURCE_FILE ("type-class.galgas", 56)) ;
+      var_classFeatureList_1760.addAssign_operation (var_classFeatureName_1849  COMMA_SOURCE_FILE ("type-class.galgas", 56)) ;
     } break ;
     default:
       repeatFlag_3 = false ;
@@ -6802,13 +6802,13 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7B_ COMMA_SOURCE_FILE ("type-class.galgas", 58)) ;
-  GALGAS_string var_mClassMessage_1926 = GALGAS_string::makeEmptyString () ;
-  GALGAS_propertyInCollectionListAST var_propertyList_2001 = GALGAS_propertyInCollectionListAST::constructor_emptyList (SOURCE_FILE ("type-class.galgas", 61)) ;
+  GALGAS_string var_mClassMessage_1935 = GALGAS_string::makeEmptyString () ;
+  GALGAS_propertyInCollectionListAST var_propertyList_2010 = GALGAS_propertyInCollectionListAST::constructor_emptyList (SOURCE_FILE ("type-class.galgas", 61)) ;
   bool repeatFlag_4 = true ;
   while (repeatFlag_4) {
     switch (select_galgas_33_DeclarationsSyntax_15 (inCompiler)) {
     case 2: {
-      nt_property_5F_declaration_ (var_propertyList_2001, inCompiler) ;
+      nt_property_5F_declaration_ (var_propertyList_2010, inCompiler) ;
     } break ;
     case 3: {
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__3B_ COMMA_SOURCE_FILE ("type-class.galgas", 66)) ;
@@ -6819,7 +6819,21 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7D_ COMMA_SOURCE_FILE ("type-class.galgas", 68)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_classDeclarationAST::constructor_new (GALGAS_bool (false), var_isAbstract_965, var_isShared_1076, var_className_1504, var_mSuperClassName_1558, var_classFeatureList_1751, var_propertyList_2001  COMMA_SOURCE_FILE ("type-class.galgas", 69))  COMMA_SOURCE_FILE ("type-class.galgas", 69)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_classDeclarationAST::constructor_new (GALGAS_bool (false), var_isAbstract_965, var_isReference_1079, var_className_1516, var_superClassName_1569, var_classFeatureList_1760, var_propertyList_2010  COMMA_SOURCE_FILE ("type-class.galgas", 69))  COMMA_SOURCE_FILE ("type-class.galgas", 69)) ;
+  enumGalgasBool test_5 = kBoolTrue ;
+  if (kBoolTrue == test_5) {
+    test_5 = var_isReference_1079.boolEnum () ;
+    if (kBoolTrue == test_5) {
+      GALGAS_lstring temp_6 ;
+      const enumGalgasBool test_7 = GALGAS_bool (kIsEqual, var_superClassName_1569.getter_string (HERE).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+      if (kBoolTrue == test_7) {
+        temp_6 = var_superClassName_1569 ;
+      }else if (kBoolFalse == test_7) {
+        temp_6 = GALGAS_lstring::constructor_new (var_superClassName_1569.getter_string (HERE).add_operation (GALGAS_string ("-weak"), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 84)), var_superClassName_1569.getter_location (HERE)  COMMA_SOURCE_FILE ("type-class.galgas", 84)) ;
+      }
+      ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_weakReferenceDeclarationAST::constructor_new (GALGAS_bool (false), var_className_1516, var_isAbstract_965, GALGAS_lstring::constructor_new (var_className_1516.getter_string (HERE).add_operation (GALGAS_string ("-weak"), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 83)), var_className_1516.getter_location (HERE)  COMMA_SOURCE_FILE ("type-class.galgas", 83)), temp_6, var_classFeatureList_1760, var_propertyList_2010  COMMA_SOURCE_FILE ("type-class.galgas", 79))  COMMA_SOURCE_FILE ("type-class.galgas", 79)) ;
+    }
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

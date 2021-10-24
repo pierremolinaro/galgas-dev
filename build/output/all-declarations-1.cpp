@@ -1408,7 +1408,6 @@ GALGAS_templateInstructionSwitchAST::GALGAS_templateInstructionSwitchAST (const 
 GALGAS_templateInstructionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionSwitchAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionSwitchAST GALGAS_templateInstructionSwitchAST::constructor_new (const GALGAS_templateExpressionAST & inAttribute_mSwitchExpression,
@@ -2809,7 +2808,6 @@ GALGAS_semanticDeclarationAST::GALGAS_semanticDeclarationAST (const cPtr_semanti
 AC_GALGAS_value_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_semanticDeclarationAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_semanticDeclarationAST::getter_mIsPredefined (UNUSED_LOCATION_ARGS) const {
@@ -2935,7 +2933,6 @@ GALGAS_lexicalExpressionAST::GALGAS_lexicalExpressionAST (const cPtr_lexicalExpr
 AC_GALGAS_value_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @lexicalExpressionAST class
 //----------------------------------------------------------------------------------------------------------------------
@@ -3022,7 +3019,6 @@ GALGAS_lexicalInstructionAST::GALGAS_lexicalInstructionAST (const cPtr_lexicalIn
 AC_GALGAS_value_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalInstructionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @lexicalInstructionAST class
 //----------------------------------------------------------------------------------------------------------------------
@@ -4620,7 +4616,6 @@ GALGAS_abstractLexicalRuleAST::GALGAS_abstractLexicalRuleAST (const cPtr_abstrac
 AC_GALGAS_value_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractLexicalRuleAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @abstractLexicalRuleAST class
 //----------------------------------------------------------------------------------------------------------------------
@@ -5138,7 +5133,6 @@ GALGAS_lexicalExplicitRuleAST::GALGAS_lexicalExplicitRuleAST (const cPtr_lexical
 GALGAS_abstractLexicalRuleAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalExplicitRuleAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitRuleAST GALGAS_lexicalExplicitRuleAST::constructor_new (const GALGAS_lexicalExpressionAST & inAttribute_mLexicalRuleExpression,
@@ -9181,7 +9175,6 @@ GALGAS_lexicalOrExpressionAST::GALGAS_lexicalOrExpressionAST (const cPtr_lexical
 GALGAS_lexicalExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalOrExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalOrExpressionAST GALGAS_lexicalOrExpressionAST::constructor_new (const GALGAS_lexicalExpressionAST & inAttribute_mLeftOperand,
@@ -9863,7 +9856,6 @@ GALGAS_lexicalSendDefaultActionAST::GALGAS_lexicalSendDefaultActionAST (const cP
 AC_GALGAS_value_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalSendDefaultActionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @lexicalSendDefaultActionAST class
 //----------------------------------------------------------------------------------------------------------------------
@@ -9964,7 +9956,6 @@ GALGAS_lexicalStructuredSendInstructionAST::GALGAS_lexicalStructuredSendInstruct
 GALGAS_lexicalInstructionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalStructuredSendInstructionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalStructuredSendInstructionAST GALGAS_lexicalStructuredSendInstructionAST::constructor_new (const GALGAS_lexicalSendSearchListAST & inAttribute_mLexicalSendSearchList,
@@ -10668,7 +10659,6 @@ GALGAS_lexicalRepeatInstructionAST::GALGAS_lexicalRepeatInstructionAST (const cP
 GALGAS_lexicalInstructionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalRepeatInstructionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRepeatInstructionAST GALGAS_lexicalRepeatInstructionAST::constructor_new (const GALGAS_lexicalInstructionListAST & inAttribute_mRepeatedInstructionList,
@@ -11372,7 +11362,6 @@ GALGAS_lexicalSelectInstructionAST::GALGAS_lexicalSelectInstructionAST (const cP
 GALGAS_lexicalInstructionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalSelectInstructionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalSelectInstructionAST GALGAS_lexicalSelectInstructionAST::constructor_new (const GALGAS_lexicalSelectBranchListAST & inAttribute_mLexicalSelectBranchList,
@@ -11572,7 +11561,6 @@ GALGAS_abstractLexicalRoutineActualArgumentAST::GALGAS_abstractLexicalRoutineAct
 AC_GALGAS_value_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractLexicalRoutineActualArgumentAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_abstractLexicalRoutineActualArgumentAST::getter_mActualPassingModeLocation (UNUSED_LOCATION_ARGS) const {
@@ -12115,7 +12103,6 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST::GALGAS_lexicalRoutineOrFu
 AC_GALGAS_value_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @lexicalRoutineOrFunctionFormalInputArgumentAST class
 //----------------------------------------------------------------------------------------------------------------------
@@ -12216,7 +12203,6 @@ GALGAS_lexicalFormalInputArgumentAST::GALGAS_lexicalFormalInputArgumentAST (cons
 GALGAS_abstractLexicalRoutineActualArgumentAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalFormalInputArgumentAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFormalInputArgumentAST GALGAS_lexicalFormalInputArgumentAST::constructor_new (const GALGAS_location & inAttribute_mActualPassingModeLocation,
@@ -12813,7 +12799,6 @@ GALGAS_lexicalCurrentCharacterInputArgumentAST::GALGAS_lexicalCurrentCharacterIn
 GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalCurrentCharacterInputArgumentAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalCurrentCharacterInputArgumentAST GALGAS_lexicalCurrentCharacterInputArgumentAST::constructor_new (const GALGAS_location & inAttribute_mLocation
@@ -12982,7 +12967,6 @@ GALGAS_lexicalLogInstructionAST::GALGAS_lexicalLogInstructionAST (const cPtr_lex
 GALGAS_lexicalInstructionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalLogInstructionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalLogInstructionAST GALGAS_lexicalLogInstructionAST::constructor_new (LOCATION_ARGS) {

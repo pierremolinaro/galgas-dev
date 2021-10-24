@@ -1737,6 +1737,7 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
   public: typedef enum {
     kNotBuilt,
     kEnum_classType,
+    kEnum_weakReferenceType,
     kEnum_enumType,
     kEnum_listType,
     kEnum_sortedListType,
@@ -1805,6 +1806,9 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
 
   public: static class GALGAS_typeKindEnum constructor_structType (LOCATION_ARGS) ;
 
+  public: static class GALGAS_typeKindEnum constructor_weakReferenceType (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0
+                                                                          COMMA_LOCATION_ARGS) ;
+
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
@@ -1817,6 +1821,10 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void method_classType (class GALGAS_bool & outArgument0,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG void method_weakReferenceType (class GALGAS_unifiedTypeMap_2D_entry & outArgument0,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
@@ -1849,6 +1857,8 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isStructType (LOCATION_ARGS) const ;
 
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isWeakReferenceType (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_arrayType () const ;
@@ -1878,6 +1888,8 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG bool optional_sortedListType () const ;
 
   public: VIRTUAL_IN_DEBUG bool optional_structType () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_weakReferenceType (class GALGAS_unifiedTypeMap_2D_entry & outOperand0) const ;
 
 
 //--------------------------------- Introspection
@@ -5404,7 +5416,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extractedAssociated
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @semanticDeclarationAST class
+// Phase 1: @semanticDeclarationAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5413,7 +5425,9 @@ class GALGAS_semanticDeclarationAST : public AC_GALGAS_value_class {
   public: GALGAS_semanticDeclarationAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_semanticDeclarationAST * ptr (void) const { return (const cPtr_semanticDeclarationAST *) mObjectPtr ; }
+  public: inline const class cPtr_semanticDeclarationAST * ptr (void) const {
+    return (const cPtr_semanticDeclarationAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_semanticDeclarationAST (const cPtr_semanticDeclarationAST * inSourcePtr) ;
@@ -5462,7 +5476,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclaration
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_semanticDeclarationAST : public acPtr_class {
-//--- Attributes
+//--- Properties
   public: GALGAS_bool mProperty_mIsPredefined ;
 
 //--- Constructor
@@ -5484,7 +5498,7 @@ class cPtr_semanticDeclarationAST : public acPtr_class {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @lexicalExpressionAST class
+// Phase 1: @lexicalExpressionAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5493,7 +5507,9 @@ class GALGAS_lexicalExpressionAST : public AC_GALGAS_value_class {
   public: GALGAS_lexicalExpressionAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_lexicalExpressionAST * ptr (void) const { return (const cPtr_lexicalExpressionAST *) mObjectPtr ; }
+  public: inline const class cPtr_lexicalExpressionAST * ptr (void) const {
+    return (const cPtr_lexicalExpressionAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalExpressionAST (const cPtr_lexicalExpressionAST * inSourcePtr) ;
@@ -5537,7 +5553,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExpressionAS
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalExpressionAST : public acPtr_class {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_lexicalExpressionAST (LOCATION_ARGS) ;
@@ -5555,7 +5571,7 @@ class cPtr_lexicalExpressionAST : public acPtr_class {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @lexicalInstructionAST class
+// Phase 1: @lexicalInstructionAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5564,7 +5580,9 @@ class GALGAS_lexicalInstructionAST : public AC_GALGAS_value_class {
   public: GALGAS_lexicalInstructionAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_lexicalInstructionAST * ptr (void) const { return (const cPtr_lexicalInstructionAST *) mObjectPtr ; }
+  public: inline const class cPtr_lexicalInstructionAST * ptr (void) const {
+    return (const cPtr_lexicalInstructionAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalInstructionAST (const cPtr_lexicalInstructionAST * inSourcePtr) ;
@@ -5608,7 +5626,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalInstructionA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalInstructionAST : public acPtr_class {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_lexicalInstructionAST (LOCATION_ARGS) ;
@@ -6357,7 +6375,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateReplacement
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @abstractLexicalRuleAST class
+// Phase 1: @abstractLexicalRuleAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6366,7 +6384,9 @@ class GALGAS_abstractLexicalRuleAST : public AC_GALGAS_value_class {
   public: GALGAS_abstractLexicalRuleAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_abstractLexicalRuleAST * ptr (void) const { return (const cPtr_abstractLexicalRuleAST *) mObjectPtr ; }
+  public: inline const class cPtr_abstractLexicalRuleAST * ptr (void) const {
+    return (const cPtr_abstractLexicalRuleAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_abstractLexicalRuleAST (const cPtr_abstractLexicalRuleAST * inSourcePtr) ;
@@ -6410,7 +6430,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractLexicalRule
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_abstractLexicalRuleAST : public acPtr_class {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_abstractLexicalRuleAST (LOCATION_ARGS) ;
@@ -6631,7 +6651,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRuleListAST_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @lexicalExplicitRuleAST class
+// Phase 1: @lexicalExplicitRuleAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6640,7 +6660,9 @@ class GALGAS_lexicalExplicitRuleAST : public GALGAS_abstractLexicalRuleAST {
   public: GALGAS_lexicalExplicitRuleAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_lexicalExplicitRuleAST * ptr (void) const { return (const cPtr_lexicalExplicitRuleAST *) mObjectPtr ; }
+  public: inline const class cPtr_lexicalExplicitRuleAST * ptr (void) const {
+    return (const cPtr_lexicalExplicitRuleAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalExplicitRuleAST (const cPtr_lexicalExplicitRuleAST * inSourcePtr) ;
@@ -6699,7 +6721,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitRule
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalExplicitRuleAST : public cPtr_abstractLexicalRuleAST {
-//--- Attributes
+//--- Properties
   public: GALGAS_lexicalExpressionAST mProperty_mLexicalRuleExpression ;
   public: GALGAS_lexicalInstructionListAST mProperty_mInstructionList ;
 
@@ -8576,7 +8598,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalListDeclarat
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @lexicalOrExpressionAST class
+// Phase 1: @lexicalOrExpressionAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8585,7 +8607,9 @@ class GALGAS_lexicalOrExpressionAST : public GALGAS_lexicalExpressionAST {
   public: GALGAS_lexicalOrExpressionAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_lexicalOrExpressionAST * ptr (void) const { return (const cPtr_lexicalOrExpressionAST *) mObjectPtr ; }
+  public: inline const class cPtr_lexicalOrExpressionAST * ptr (void) const {
+    return (const cPtr_lexicalOrExpressionAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalOrExpressionAST (const cPtr_lexicalOrExpressionAST * inSourcePtr) ;
@@ -8644,7 +8668,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalOrExpression
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalOrExpressionAST : public cPtr_lexicalExpressionAST {
-//--- Attributes
+//--- Properties
   public: GALGAS_lexicalExpressionAST mProperty_mLeftOperand ;
   public: GALGAS_lexicalExpressionAST mProperty_mRightOperand ;
 
@@ -8908,7 +8932,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendSearchLi
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @lexicalSendDefaultActionAST class
+// Phase 1: @lexicalSendDefaultActionAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8917,7 +8941,9 @@ class GALGAS_lexicalSendDefaultActionAST : public AC_GALGAS_value_class {
   public: GALGAS_lexicalSendDefaultActionAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_lexicalSendDefaultActionAST * ptr (void) const { return (const cPtr_lexicalSendDefaultActionAST *) mObjectPtr ; }
+  public: inline const class cPtr_lexicalSendDefaultActionAST * ptr (void) const {
+    return (const cPtr_lexicalSendDefaultActionAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalSendDefaultActionAST (const cPtr_lexicalSendDefaultActionAST * inSourcePtr) ;
@@ -8961,7 +8987,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendDefaultA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalSendDefaultActionAST : public acPtr_class {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_lexicalSendDefaultActionAST (LOCATION_ARGS) ;
@@ -8979,7 +9005,7 @@ class cPtr_lexicalSendDefaultActionAST : public acPtr_class {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @lexicalStructuredSendInstructionAST class
+// Phase 1: @lexicalStructuredSendInstructionAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8988,7 +9014,9 @@ class GALGAS_lexicalStructuredSendInstructionAST : public GALGAS_lexicalInstruct
   public: GALGAS_lexicalStructuredSendInstructionAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_lexicalStructuredSendInstructionAST * ptr (void) const { return (const cPtr_lexicalStructuredSendInstructionAST *) mObjectPtr ; }
+  public: inline const class cPtr_lexicalStructuredSendInstructionAST * ptr (void) const {
+    return (const cPtr_lexicalStructuredSendInstructionAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalStructuredSendInstructionAST (const cPtr_lexicalStructuredSendInstructionAST * inSourcePtr) ;
@@ -9047,7 +9075,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStructuredSe
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalStructuredSendInstructionAST : public cPtr_lexicalInstructionAST {
-//--- Attributes
+//--- Properties
   public: GALGAS_lexicalSendSearchListAST mProperty_mLexicalSendSearchList ;
   public: GALGAS_lexicalSendDefaultActionAST mProperty_mLexicalSendDefaultAction ;
 
@@ -9308,7 +9336,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalWhileBranchL
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @lexicalRepeatInstructionAST class
+// Phase 1: @lexicalRepeatInstructionAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9320,7 +9348,9 @@ class GALGAS_lexicalRepeatInstructionAST : public GALGAS_lexicalInstructionAST {
   public: static GALGAS_lexicalRepeatInstructionAST constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_lexicalRepeatInstructionAST * ptr (void) const { return (const cPtr_lexicalRepeatInstructionAST *) mObjectPtr ; }
+  public: inline const class cPtr_lexicalRepeatInstructionAST * ptr (void) const {
+    return (const cPtr_lexicalRepeatInstructionAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalRepeatInstructionAST (const cPtr_lexicalRepeatInstructionAST * inSourcePtr) ;
@@ -9379,7 +9409,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRepeatInstru
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalRepeatInstructionAST : public cPtr_lexicalInstructionAST {
-//--- Attributes
+//--- Properties
   public: GALGAS_lexicalInstructionListAST mProperty_mRepeatedInstructionList ;
   public: GALGAS_lexicalWhileBranchListAST mProperty_mLexicalWhileBranchList ;
 
@@ -9640,7 +9670,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectBranch
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @lexicalSelectInstructionAST class
+// Phase 1: @lexicalSelectInstructionAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9652,7 +9682,9 @@ class GALGAS_lexicalSelectInstructionAST : public GALGAS_lexicalInstructionAST {
   public: static GALGAS_lexicalSelectInstructionAST constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_lexicalSelectInstructionAST * ptr (void) const { return (const cPtr_lexicalSelectInstructionAST *) mObjectPtr ; }
+  public: inline const class cPtr_lexicalSelectInstructionAST * ptr (void) const {
+    return (const cPtr_lexicalSelectInstructionAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalSelectInstructionAST (const cPtr_lexicalSelectInstructionAST * inSourcePtr) ;
@@ -9711,7 +9743,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectInstru
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalSelectInstructionAST : public cPtr_lexicalInstructionAST {
-//--- Attributes
+//--- Properties
   public: GALGAS_lexicalSelectBranchListAST mProperty_mLexicalSelectBranchList ;
   public: GALGAS_lexicalInstructionListAST mProperty_mDefaultInstructionList ;
 
@@ -9740,7 +9772,7 @@ class cPtr_lexicalSelectInstructionAST : public cPtr_lexicalInstructionAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @abstractLexicalRoutineActualArgumentAST class
+// Phase 1: @abstractLexicalRoutineActualArgumentAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9749,7 +9781,9 @@ class GALGAS_abstractLexicalRoutineActualArgumentAST : public AC_GALGAS_value_cl
   public: GALGAS_abstractLexicalRoutineActualArgumentAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_abstractLexicalRoutineActualArgumentAST * ptr (void) const { return (const cPtr_abstractLexicalRoutineActualArgumentAST *) mObjectPtr ; }
+  public: inline const class cPtr_abstractLexicalRoutineActualArgumentAST * ptr (void) const {
+    return (const cPtr_abstractLexicalRoutineActualArgumentAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_abstractLexicalRoutineActualArgumentAST (const cPtr_abstractLexicalRoutineActualArgumentAST * inSourcePtr) ;
@@ -9798,7 +9832,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractLexicalRout
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_abstractLexicalRoutineActualArgumentAST : public acPtr_class {
-//--- Attributes
+//--- Properties
   public: GALGAS_location mProperty_mActualPassingModeLocation ;
 
 //--- Constructor
@@ -10023,7 +10057,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineCallA
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @lexicalRoutineOrFunctionFormalInputArgumentAST class
+// Phase 1: @lexicalRoutineOrFunctionFormalInputArgumentAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10032,7 +10066,9 @@ class GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST : public AC_GALGAS_v
   public: GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * ptr (void) const { return (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST *) mObjectPtr ; }
+  public: inline const class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * ptr (void) const {
+    return (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inSourcePtr) ;
@@ -10076,7 +10112,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineOrFun
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST : public acPtr_class {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (LOCATION_ARGS) ;
@@ -10094,7 +10130,7 @@ class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST : public acPtr_class {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @lexicalFormalInputArgumentAST class
+// Phase 1: @lexicalFormalInputArgumentAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10103,7 +10139,9 @@ class GALGAS_lexicalFormalInputArgumentAST : public GALGAS_abstractLexicalRoutin
   public: GALGAS_lexicalFormalInputArgumentAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_lexicalFormalInputArgumentAST * ptr (void) const { return (const cPtr_lexicalFormalInputArgumentAST *) mObjectPtr ; }
+  public: inline const class cPtr_lexicalFormalInputArgumentAST * ptr (void) const {
+    return (const cPtr_lexicalFormalInputArgumentAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalFormalInputArgumentAST (const cPtr_lexicalFormalInputArgumentAST * inSourcePtr) ;
@@ -10157,7 +10195,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFormalInputA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalFormalInputArgumentAST : public cPtr_abstractLexicalRoutineActualArgumentAST {
-//--- Attributes
+//--- Properties
   public: GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST mProperty_mRoutineOrFunctionFormalInputArgument ;
 
 //--- Constructor
@@ -10386,7 +10424,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionCall
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @lexicalCurrentCharacterInputArgumentAST class
+// Phase 1: @lexicalCurrentCharacterInputArgumentAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10398,7 +10436,9 @@ class GALGAS_lexicalCurrentCharacterInputArgumentAST : public GALGAS_lexicalRout
   public: static GALGAS_lexicalCurrentCharacterInputArgumentAST constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_lexicalCurrentCharacterInputArgumentAST * ptr (void) const { return (const cPtr_lexicalCurrentCharacterInputArgumentAST *) mObjectPtr ; }
+  public: inline const class cPtr_lexicalCurrentCharacterInputArgumentAST * ptr (void) const {
+    return (const cPtr_lexicalCurrentCharacterInputArgumentAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalCurrentCharacterInputArgumentAST (const cPtr_lexicalCurrentCharacterInputArgumentAST * inSourcePtr) ;
@@ -10451,7 +10491,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCurrentChara
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalCurrentCharacterInputArgumentAST : public cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST {
-//--- Attributes
+//--- Properties
   public: GALGAS_location mProperty_mLocation ;
 
 //--- Constructor
@@ -10476,7 +10516,7 @@ class cPtr_lexicalCurrentCharacterInputArgumentAST : public cPtr_lexicalRoutineO
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @lexicalLogInstructionAST class
+// Phase 1: @lexicalLogInstructionAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10488,7 +10528,9 @@ class GALGAS_lexicalLogInstructionAST : public GALGAS_lexicalInstructionAST {
   public: static GALGAS_lexicalLogInstructionAST constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_lexicalLogInstructionAST * ptr (void) const { return (const cPtr_lexicalLogInstructionAST *) mObjectPtr ; }
+  public: inline const class cPtr_lexicalLogInstructionAST * ptr (void) const {
+    return (const cPtr_lexicalLogInstructionAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalLogInstructionAST (const cPtr_lexicalLogInstructionAST * inSourcePtr) ;
@@ -10535,7 +10577,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalLogInstructi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalLogInstructionAST : public cPtr_lexicalInstructionAST {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_lexicalLogInstructionAST (LOCATION_ARGS) ;

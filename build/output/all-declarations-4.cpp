@@ -5919,7 +5919,6 @@ GALGAS_semanticExpressionAST::GALGAS_semanticExpressionAST (const cPtr_semanticE
 AC_GALGAS_value_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_semanticExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @semanticExpressionAST class
 //----------------------------------------------------------------------------------------------------------------------
@@ -6781,7 +6780,6 @@ GALGAS_actualParameterAST::GALGAS_actualParameterAST (const cPtr_actualParameter
 AC_GALGAS_value_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_actualParameterAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @actualParameterAST class
 //----------------------------------------------------------------------------------------------------------------------
@@ -6890,7 +6888,6 @@ GALGAS_outputInputJokerParameterAST::GALGAS_outputInputJokerParameterAST (const 
 GALGAS_actualParameterAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_outputInputJokerParameterAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputJokerParameterAST GALGAS_outputInputJokerParameterAST::constructor_new (const GALGAS_location & inAttribute_mQualifierLocation,
@@ -7112,7 +7109,6 @@ GALGAS_inputJokerActualParameterAST::GALGAS_inputJokerActualParameterAST (const 
 GALGAS_actualParameterAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_inputJokerActualParameterAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_inputJokerActualParameterAST GALGAS_inputJokerActualParameterAST::constructor_new (const GALGAS_location & inAttribute_mQualifierLocation,
@@ -7729,7 +7725,6 @@ GALGAS_abstractInputParameter::GALGAS_abstractInputParameter (const cPtr_abstrac
 AC_GALGAS_value_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractInputParameter) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @abstractInputParameter class
 //----------------------------------------------------------------------------------------------------------------------
@@ -7827,7 +7822,6 @@ GALGAS_inputParameterAnonymousVariable::GALGAS_inputParameterAnonymousVariable (
 GALGAS_abstractInputParameter (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_inputParameterAnonymousVariable) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_inputParameterAnonymousVariable GALGAS_inputParameterAnonymousVariable::constructor_new (LOCATION_ARGS) {
@@ -8423,7 +8417,6 @@ GALGAS_syntaxInstructionAST::GALGAS_syntaxInstructionAST (const cPtr_syntaxInstr
 AC_GALGAS_value_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_syntaxInstructionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_syntaxInstructionAST::getter_mInstructionLocation (UNUSED_LOCATION_ARGS) const {
@@ -8549,7 +8542,6 @@ GALGAS_semanticInstructionAST::GALGAS_semanticInstructionAST (const cPtr_semanti
 GALGAS_syntaxInstructionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_semanticInstructionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @semanticInstructionAST class
 //----------------------------------------------------------------------------------------------------------------------

@@ -397,7 +397,17 @@ private proc analyzeOptionalMethodCall
   let @unifiedTypeMap-entry receiverType = [receiverExpression mResultType]
   let @optionalMethodMap optionalMethodMap = [receiverType mOptionalMethodMap]
 #--- Search optional method
-  [optionalMethodMap searchKey !inOptionalMethodName ?let @optionalMethodSignature optionalMethodSignature]
+  @optionalMethodSignature optionalMethodSignature
+  with inOptionalMethodName.string in optionalMethodMap do
+    optionalMethodSignature = mArgumentTypeList
+  else
+    var s = "this optional method is not defined; available optional methods:"
+    for (lkey *) in optionalMethodMap do
+      s += "\n  - " + lkey
+    end
+    error inOptionalMethodName : s : optionalMethodSignature
+  end
+#  [optionalMethodMap searchKey !inOptionalMethodName ?let @optionalMethodSignature optionalMethodSignature]
 #--- Analysis actual parameters, test for matching formam arguments
   if [inActualParameters length] != [optionalMethodSignature length] then
     error inOptionalMethodName

@@ -70,6 +70,7 @@ project (3:4:4) -> "galgas" {
   "galgas-sources/type-array.galgas"
   "galgas-sources/type-boolset.galgas"
   "galgas-sources/type-class.galgas"
+  "galgas-sources/type-weak-reference.galgas"
   "galgas-sources/type-enum.galgas"
   "galgas-sources/type-extern.galgas"
   "galgas-sources/type-graph.galgas"

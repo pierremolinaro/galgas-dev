@@ -28,7 +28,7 @@ class cPtr_selectInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
                                                          cPureBNFproductionsList & ioProductions) ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
   public: GALGAS_branchListForGrammarAnalysis mProperty_mSelectBranchList ;
   public: GALGAS_uint mProperty_mAddedNonTerminalSymbolIndex ;
 

@@ -86,6 +86,7 @@ end
     case arrayType : %array%
     case externType : %extern%
     case predefinedType : %predefined type%
+    case weakReferenceType (*) : %weak reference%
     end%
 </td></tr>
 %if not [type_mSuperType isNull] then

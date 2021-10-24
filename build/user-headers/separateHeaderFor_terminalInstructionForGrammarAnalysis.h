@@ -27,7 +27,7 @@ class cPtr_terminalInstructionForGrammarAnalysis : public cPtr_abstractSyntaxIns
                                                          cPureBNFproductionsList & ioProductions) ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
   public: GALGAS_lstring mProperty_mTerminalSymbolName ;
   public: GALGAS_uint mProperty_mTerminalSymbolIndex ;
 

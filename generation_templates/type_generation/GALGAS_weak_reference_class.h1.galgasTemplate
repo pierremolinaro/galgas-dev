@@ -1,0 +1,26 @@
+//----------------------------------------------------------------------------------------------------------------------
+//
+//%!" Phase 1: @" + WEAK_REF_TYPE_IDENTIFIER + " weak reference class"%
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% : public %
+  if SUPER_WEAK_REF_TYPE_IDENTIFIER == ""
+  then %AC_GALGAS_weak_reference%
+  else %GALGAS_%!SUPER_WEAK_REF_TYPE_IDENTIFIER
+  end% {
+//--------------------------------- Default constructor
+  public: GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% (void) ;
+
+%if HAS_DEFAULT_CONSTRUCTOR & not IS_ABSTRACT then
+%//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% constructor_default (LOCATION_ARGS) ;
+
+%
+end
+%//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% (const GALGAS_%!CLASS_TYPE_IDENTIFIER% & inSource) ;
+
+  public: GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% & operator = (const GALGAS_%!CLASS_TYPE_IDENTIFIER% & inSource) ;
+
+

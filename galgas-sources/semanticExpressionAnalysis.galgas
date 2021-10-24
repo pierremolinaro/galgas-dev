@@ -21,10 +21,18 @@ proc checkAssignmentTypes
   ?let @location inErrorLocation
 {
   @unifiedTypeMap-entry sourceType = inSourceType
-  @bool ok = inTargetType == inSourceType
+  @bool ok = inTargetType == sourceType
   loop (@uint.max) while (not ok) & (not [[sourceType mSuperType] isNull]) do
     sourceType = [sourceType mSuperType]
     ok = inTargetType == sourceType
+  end
+  if not ok, let [[inTargetType mTypeKindEnum] weakReferenceType ?referenceType: let targetType] then
+    sourceType = inSourceType
+    ok = targetType == sourceType
+    loop (@uint.max) while (not ok) & (not [[sourceType mSuperType] isNull]) do
+      sourceType = [sourceType mSuperType]
+      ok = targetType == sourceType
+    end
   end
   if not ok then
     error inErrorLocation
@@ -46,10 +54,14 @@ proc checkAssignmentTypeWithImplicitGetterCall
     sourceType = [sourceType mSuperType]
     ok = inTargetType == sourceType
   end
-#  if not ok then
-#    error inErrorLocation
-#     : "target object type is '@" + [inTargetType key] + "' and cannot be assigned from an '@" + [inSourceType key] + "' object"
-#  end
+  if not ok, let [[inTargetType mTypeKindEnum] weakReferenceType ?referenceType: let targetType] then
+    sourceType = inSourceType
+    ok = targetType == sourceType
+    loop (@uint.max) while (not ok) & (not [[sourceType mSuperType] isNull]) do
+      sourceType = [sourceType mSuperType]
+      ok = targetType == sourceType
+    end
+  end
 #--- Check if there is a conversion getter
   if (not ok) && [[inSourceType mGetterMap] hasKey ![inTargetType key]] then
     [[inSourceType mGetterMap] searchKey

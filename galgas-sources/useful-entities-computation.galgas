@@ -34,11 +34,6 @@ proc checkUsefulEntities
   ?let @string unused inProductDirectory
 {
   if [option galgas_cli_options.checkEntityUsefulness value] && (@uint.errorCount == 0) then
-#    let helperDirectory = inProductDirectory + "/../usefulness"
-#    let helperFile = helperDirectory + "/useful-entity-graph.dot"
-#    let s = [inUsefulEntitiesGraph graphviz]
-#    [helperDirectory makeDirectory]
-#    [s writeToFileWhenDifferentContents !helperFile ?*]
   #--- Undefined nodes
     let undefinedNodeList = [inUsefulEntitiesGraph undefinedNodeKeyList]
     if [undefinedNodeList length] > 0 then
@@ -63,11 +58,6 @@ proc checkUsefulEntities
           [!?uselessEntityLocationMap insertKey ![[l locationString] nowhere] !l]
         end
       end
-#      if [uselessEntityLocationMap count] == 1 then
-#        warning .nowhere : "1 unused entity"
-#      elsif [uselessEntityLocationMap count] > 1 then
-#        warning .nowhere : [[uselessEntityLocationMap count] string] + " unused entities"
-#      end
       for (* loc) in uselessEntityLocationMap do
         warning loc : "unused entity, due to option --" + [option galgas_cli_options.checkEntityUsefulness string] + ")"
       end

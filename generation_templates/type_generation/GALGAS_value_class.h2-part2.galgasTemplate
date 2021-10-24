@@ -1,0 +1,59 @@
+//--- Properties
+%
+  for () in CURRENT_ATTRIBUTE_LIST do
+    %  public: GALGAS_%![mPropertyTypeEntry identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+  end
+%
+//--- Constructor
+  public: cPtr_%!TYPE_IDENTIFIER% (%?^
+  for () in ALL_ATTRIBUTE_LIST
+    do %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
+    between %,\n%!^
+  end
+  if [ALL_ATTRIBUTE_LIST length] > 0 then
+    %\n%!^%COMMA_LOCATION_ARGS%
+  else
+    %LOCATION_ARGS%
+  end
+%) ;
+
+%if not IS_ABSTRACT then
+%//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+%end
+%//--- Attribute accessors
+%
+  for () in CURRENT_ATTRIBUTE_LIST do
+    if mHasGetter then
+      %  public: VIRTUAL_IN_DEBUG GALGAS_%![mPropertyTypeEntry identifierRepresentation]% getter_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
+    end
+    if mHasSetter then
+      %  public: VIRTUAL_IN_DEBUG void setter_set%![[mPropertyName identifierRepresentation] stringByCapitalizingFirstCharacter]% (GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inValue COMMA_LOCATION_ARGS) ;\n%
+    end
+  end
+
+if IS_ABSTRACT then
+%//--- Description
+  public: virtual void description (%?^%C_String & ioString,
+                           %!^%const int32_t inIndentation) const = 0 ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const = 0 ;
+%
+
+else
+%//--- Description
+  public: virtual void description (%?^%C_String & ioString,
+                           %!^%const int32_t inIndentation) const ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+%
+end
+
+%
+} ;
+

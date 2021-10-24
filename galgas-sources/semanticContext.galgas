@@ -340,13 +340,6 @@ override getter @listDeclarationAST keyRepresentation
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @classDeclarationAST keyRepresentation
-  ->@string {
-  result = "valueclass @" + self.mClassTypeName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 override getter @arrayDeclarationAST keyRepresentation
   ->@string {
   result = "array @" + self.mArrayTypeName

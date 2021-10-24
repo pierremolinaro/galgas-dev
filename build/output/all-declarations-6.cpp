@@ -6561,7 +6561,6 @@ GALGAS_semanticInstructionForGeneration::GALGAS_semanticInstructionForGeneration
 AC_GALGAS_value_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_semanticInstructionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @semanticInstructionForGeneration class
 //----------------------------------------------------------------------------------------------------------------------
@@ -6730,7 +6729,6 @@ GALGAS_semanticBlockInstructionForGeneration::GALGAS_semanticBlockInstructionFor
 GALGAS_semanticInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_semanticBlockInstructionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_semanticBlockInstructionForGeneration GALGAS_semanticBlockInstructionForGeneration::constructor_new (const GALGAS_semanticInstructionListForGeneration & inAttribute_mInstructionList
@@ -7370,7 +7368,6 @@ GALGAS_semanticDeclarationForGeneration::GALGAS_semanticDeclarationForGeneration
 AC_GALGAS_value_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_semanticDeclarationForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @semanticDeclarationForGeneration class
 //----------------------------------------------------------------------------------------------------------------------
@@ -10437,7 +10434,6 @@ GALGAS_syntaxInstructionForGeneration::GALGAS_syntaxInstructionForGeneration (co
 GALGAS_semanticInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_syntaxInstructionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_syntaxInstructionForGeneration::getter_mInstructionLocation (UNUSED_LOCATION_ARGS) const {
@@ -12891,7 +12887,6 @@ GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult::GALGAS_abstrac
 AC_GALGAS_value_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @abstractGrammarInstructionSyntaxDirectedTranslationResult class
 //----------------------------------------------------------------------------------------------------------------------

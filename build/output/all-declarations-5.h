@@ -2917,6 +2917,22 @@ class cEnumAssociatedValues_typeKindEnum_classType : public cEnumAssociatedValue
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
+
+class cEnumAssociatedValues_typeKindEnum_weakReferenceType : public cEnumAssociatedValues {
+  public: const GALGAS_unifiedTypeMap_2D_entry mAssociatedValue0 ;
+
+//--- Constructor
+  public: cEnumAssociatedValues_typeKindEnum_weakReferenceType (const GALGAS_unifiedTypeMap_2D_entry & inAssociatedValue0
+                                                                COMMA_LOCATION_ARGS) ;
+
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+  public: virtual typeComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
+
+  public: virtual ~ cEnumAssociatedValues_typeKindEnum_weakReferenceType (void) {}
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
 //
 //Extension getter '@typeKindEnum kind' (as function)
 //
@@ -3250,7 +3266,7 @@ class cMapElement_unifiedTypeMap : public cMapElement {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @predefinedTypeAST class
+// Phase 1: @predefinedTypeAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3259,7 +3275,9 @@ class GALGAS_predefinedTypeAST : public GALGAS_semanticDeclarationAST {
   public: GALGAS_predefinedTypeAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_predefinedTypeAST * ptr (void) const { return (const cPtr_predefinedTypeAST *) mObjectPtr ; }
+  public: inline const class cPtr_predefinedTypeAST * ptr (void) const {
+    return (const cPtr_predefinedTypeAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_predefinedTypeAST (const cPtr_predefinedTypeAST * inSourcePtr) ;
@@ -3313,7 +3331,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypeAST ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_predefinedTypeAST : public cPtr_semanticDeclarationAST {
-//--- Attributes
+//--- Properties
   public: GALGAS_string mProperty_mPredefinedTypeName ;
   public: GALGAS_predefinedTypeKindEnum mProperty_mKind ;
 
@@ -3340,7 +3358,7 @@ class cPtr_predefinedTypeAST : public cPtr_semanticDeclarationAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @applicationPredefinedTypeAST class
+// Phase 1: @applicationPredefinedTypeAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3349,7 +3367,9 @@ class GALGAS_applicationPredefinedTypeAST : public GALGAS_predefinedTypeAST {
   public: GALGAS_applicationPredefinedTypeAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_applicationPredefinedTypeAST * ptr (void) const { return (const cPtr_applicationPredefinedTypeAST *) mObjectPtr ; }
+  public: inline const class cPtr_applicationPredefinedTypeAST * ptr (void) const {
+    return (const cPtr_applicationPredefinedTypeAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_applicationPredefinedTypeAST (const cPtr_applicationPredefinedTypeAST * inSourcePtr) ;
@@ -3399,7 +3419,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_applicationPredefin
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_applicationPredefinedTypeAST : public cPtr_predefinedTypeAST {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_applicationPredefinedTypeAST (const GALGAS_bool & in_mIsPredefined,
@@ -3423,7 +3443,7 @@ class cPtr_applicationPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @bigintPredefinedTypeAST class
+// Phase 1: @bigintPredefinedTypeAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3432,7 +3452,9 @@ class GALGAS_bigintPredefinedTypeAST : public GALGAS_predefinedTypeAST {
   public: GALGAS_bigintPredefinedTypeAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_bigintPredefinedTypeAST * ptr (void) const { return (const cPtr_bigintPredefinedTypeAST *) mObjectPtr ; }
+  public: inline const class cPtr_bigintPredefinedTypeAST * ptr (void) const {
+    return (const cPtr_bigintPredefinedTypeAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_bigintPredefinedTypeAST (const cPtr_bigintPredefinedTypeAST * inSourcePtr) ;
@@ -3482,7 +3504,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigintPredefinedTyp
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_bigintPredefinedTypeAST : public cPtr_predefinedTypeAST {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_bigintPredefinedTypeAST (const GALGAS_bool & in_mIsPredefined,
@@ -3506,7 +3528,7 @@ class cPtr_bigintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @objectPredefinedTypeAST class
+// Phase 1: @objectPredefinedTypeAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3515,7 +3537,9 @@ class GALGAS_objectPredefinedTypeAST : public GALGAS_predefinedTypeAST {
   public: GALGAS_objectPredefinedTypeAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_objectPredefinedTypeAST * ptr (void) const { return (const cPtr_objectPredefinedTypeAST *) mObjectPtr ; }
+  public: inline const class cPtr_objectPredefinedTypeAST * ptr (void) const {
+    return (const cPtr_objectPredefinedTypeAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_objectPredefinedTypeAST (const cPtr_objectPredefinedTypeAST * inSourcePtr) ;
@@ -3565,7 +3589,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectPredefinedTyp
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_objectPredefinedTypeAST : public cPtr_predefinedTypeAST {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_objectPredefinedTypeAST (const GALGAS_bool & in_mIsPredefined,
@@ -3589,7 +3613,7 @@ class cPtr_objectPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @filewrapperPredefinedTypeAST class
+// Phase 1: @filewrapperPredefinedTypeAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3598,7 +3622,9 @@ class GALGAS_filewrapperPredefinedTypeAST : public GALGAS_predefinedTypeAST {
   public: GALGAS_filewrapperPredefinedTypeAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_filewrapperPredefinedTypeAST * ptr (void) const { return (const cPtr_filewrapperPredefinedTypeAST *) mObjectPtr ; }
+  public: inline const class cPtr_filewrapperPredefinedTypeAST * ptr (void) const {
+    return (const cPtr_filewrapperPredefinedTypeAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_filewrapperPredefinedTypeAST (const cPtr_filewrapperPredefinedTypeAST * inSourcePtr) ;
@@ -3648,7 +3674,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperPredefin
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_filewrapperPredefinedTypeAST : public cPtr_predefinedTypeAST {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_filewrapperPredefinedTypeAST (const GALGAS_bool & in_mIsPredefined,
@@ -3672,7 +3698,7 @@ class cPtr_filewrapperPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @binarysetPredefinedTypeAST class
+// Phase 1: @binarysetPredefinedTypeAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3681,7 +3707,9 @@ class GALGAS_binarysetPredefinedTypeAST : public GALGAS_predefinedTypeAST {
   public: GALGAS_binarysetPredefinedTypeAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_binarysetPredefinedTypeAST * ptr (void) const { return (const cPtr_binarysetPredefinedTypeAST *) mObjectPtr ; }
+  public: inline const class cPtr_binarysetPredefinedTypeAST * ptr (void) const {
+    return (const cPtr_binarysetPredefinedTypeAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_binarysetPredefinedTypeAST (const cPtr_binarysetPredefinedTypeAST * inSourcePtr) ;
@@ -3731,7 +3759,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binarysetPredefined
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_binarysetPredefinedTypeAST : public cPtr_predefinedTypeAST {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_binarysetPredefinedTypeAST (const GALGAS_bool & in_mIsPredefined,
@@ -3755,7 +3783,7 @@ class cPtr_binarysetPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @boolPredefinedTypeAST class
+// Phase 1: @boolPredefinedTypeAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3764,7 +3792,9 @@ class GALGAS_boolPredefinedTypeAST : public GALGAS_predefinedTypeAST {
   public: GALGAS_boolPredefinedTypeAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_boolPredefinedTypeAST * ptr (void) const { return (const cPtr_boolPredefinedTypeAST *) mObjectPtr ; }
+  public: inline const class cPtr_boolPredefinedTypeAST * ptr (void) const {
+    return (const cPtr_boolPredefinedTypeAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_boolPredefinedTypeAST (const cPtr_boolPredefinedTypeAST * inSourcePtr) ;
@@ -3814,7 +3844,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolPredefinedTypeA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_boolPredefinedTypeAST : public cPtr_predefinedTypeAST {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_boolPredefinedTypeAST (const GALGAS_bool & in_mIsPredefined,
@@ -3838,7 +3868,7 @@ class cPtr_boolPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @uintPredefinedTypeAST class
+// Phase 1: @uintPredefinedTypeAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3847,7 +3877,9 @@ class GALGAS_uintPredefinedTypeAST : public GALGAS_predefinedTypeAST {
   public: GALGAS_uintPredefinedTypeAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_uintPredefinedTypeAST * ptr (void) const { return (const cPtr_uintPredefinedTypeAST *) mObjectPtr ; }
+  public: inline const class cPtr_uintPredefinedTypeAST * ptr (void) const {
+    return (const cPtr_uintPredefinedTypeAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_uintPredefinedTypeAST (const cPtr_uintPredefinedTypeAST * inSourcePtr) ;
@@ -3897,7 +3929,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintPredefinedTypeA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_uintPredefinedTypeAST : public cPtr_predefinedTypeAST {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_uintPredefinedTypeAST (const GALGAS_bool & in_mIsPredefined,
@@ -3921,7 +3953,7 @@ class cPtr_uintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @uint_36__34_PredefinedTypeAST class
+// Phase 1: @uint_36__34_PredefinedTypeAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3930,7 +3962,9 @@ class GALGAS_uint_36__34_PredefinedTypeAST : public GALGAS_predefinedTypeAST {
   public: GALGAS_uint_36__34_PredefinedTypeAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_uint_36__34_PredefinedTypeAST * ptr (void) const { return (const cPtr_uint_36__34_PredefinedTypeAST *) mObjectPtr ; }
+  public: inline const class cPtr_uint_36__34_PredefinedTypeAST * ptr (void) const {
+    return (const cPtr_uint_36__34_PredefinedTypeAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_uint_36__34_PredefinedTypeAST (const cPtr_uint_36__34_PredefinedTypeAST * inSourcePtr) ;
@@ -3980,7 +4014,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_Predefi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_uint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_uint_36__34_PredefinedTypeAST (const GALGAS_bool & in_mIsPredefined,
@@ -4004,7 +4038,7 @@ class cPtr_uint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @sintPredefinedTypeAST class
+// Phase 1: @sintPredefinedTypeAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4013,7 +4047,9 @@ class GALGAS_sintPredefinedTypeAST : public GALGAS_predefinedTypeAST {
   public: GALGAS_sintPredefinedTypeAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_sintPredefinedTypeAST * ptr (void) const { return (const cPtr_sintPredefinedTypeAST *) mObjectPtr ; }
+  public: inline const class cPtr_sintPredefinedTypeAST * ptr (void) const {
+    return (const cPtr_sintPredefinedTypeAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_sintPredefinedTypeAST (const cPtr_sintPredefinedTypeAST * inSourcePtr) ;
@@ -4063,7 +4099,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sintPredefinedTypeA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_sintPredefinedTypeAST : public cPtr_predefinedTypeAST {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_sintPredefinedTypeAST (const GALGAS_bool & in_mIsPredefined,
@@ -4087,7 +4123,7 @@ class cPtr_sintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @sint_36__34_PredefinedTypeAST class
+// Phase 1: @sint_36__34_PredefinedTypeAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4096,7 +4132,9 @@ class GALGAS_sint_36__34_PredefinedTypeAST : public GALGAS_predefinedTypeAST {
   public: GALGAS_sint_36__34_PredefinedTypeAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_sint_36__34_PredefinedTypeAST * ptr (void) const { return (const cPtr_sint_36__34_PredefinedTypeAST *) mObjectPtr ; }
+  public: inline const class cPtr_sint_36__34_PredefinedTypeAST * ptr (void) const {
+    return (const cPtr_sint_36__34_PredefinedTypeAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_sint_36__34_PredefinedTypeAST (const cPtr_sint_36__34_PredefinedTypeAST * inSourcePtr) ;
@@ -4146,7 +4184,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint_36__34_Predefi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_sint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_sint_36__34_PredefinedTypeAST (const GALGAS_bool & in_mIsPredefined,
@@ -4170,7 +4208,7 @@ class cPtr_sint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @charPredefinedTypeAST class
+// Phase 1: @charPredefinedTypeAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4179,7 +4217,9 @@ class GALGAS_charPredefinedTypeAST : public GALGAS_predefinedTypeAST {
   public: GALGAS_charPredefinedTypeAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_charPredefinedTypeAST * ptr (void) const { return (const cPtr_charPredefinedTypeAST *) mObjectPtr ; }
+  public: inline const class cPtr_charPredefinedTypeAST * ptr (void) const {
+    return (const cPtr_charPredefinedTypeAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_charPredefinedTypeAST (const cPtr_charPredefinedTypeAST * inSourcePtr) ;
@@ -4229,7 +4269,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_charPredefinedTypeA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_charPredefinedTypeAST : public cPtr_predefinedTypeAST {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_charPredefinedTypeAST (const GALGAS_bool & in_mIsPredefined,
@@ -4253,7 +4293,7 @@ class cPtr_charPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @doublePredefinedTypeAST class
+// Phase 1: @doublePredefinedTypeAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4262,7 +4302,9 @@ class GALGAS_doublePredefinedTypeAST : public GALGAS_predefinedTypeAST {
   public: GALGAS_doublePredefinedTypeAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_doublePredefinedTypeAST * ptr (void) const { return (const cPtr_doublePredefinedTypeAST *) mObjectPtr ; }
+  public: inline const class cPtr_doublePredefinedTypeAST * ptr (void) const {
+    return (const cPtr_doublePredefinedTypeAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_doublePredefinedTypeAST (const cPtr_doublePredefinedTypeAST * inSourcePtr) ;
@@ -4312,7 +4354,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_doublePredefinedTyp
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_doublePredefinedTypeAST : public cPtr_predefinedTypeAST {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_doublePredefinedTypeAST (const GALGAS_bool & in_mIsPredefined,
@@ -4336,7 +4378,7 @@ class cPtr_doublePredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @stringPredefinedTypeAST class
+// Phase 1: @stringPredefinedTypeAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4345,7 +4387,9 @@ class GALGAS_stringPredefinedTypeAST : public GALGAS_predefinedTypeAST {
   public: GALGAS_stringPredefinedTypeAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_stringPredefinedTypeAST * ptr (void) const { return (const cPtr_stringPredefinedTypeAST *) mObjectPtr ; }
+  public: inline const class cPtr_stringPredefinedTypeAST * ptr (void) const {
+    return (const cPtr_stringPredefinedTypeAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_stringPredefinedTypeAST (const cPtr_stringPredefinedTypeAST * inSourcePtr) ;
@@ -4395,7 +4439,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringPredefinedTyp
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_stringPredefinedTypeAST : public cPtr_predefinedTypeAST {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_stringPredefinedTypeAST (const GALGAS_bool & in_mIsPredefined,
@@ -4419,7 +4463,7 @@ class cPtr_stringPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @locationPredefinedTypeAST class
+// Phase 1: @locationPredefinedTypeAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4428,7 +4472,9 @@ class GALGAS_locationPredefinedTypeAST : public GALGAS_predefinedTypeAST {
   public: GALGAS_locationPredefinedTypeAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_locationPredefinedTypeAST * ptr (void) const { return (const cPtr_locationPredefinedTypeAST *) mObjectPtr ; }
+  public: inline const class cPtr_locationPredefinedTypeAST * ptr (void) const {
+    return (const cPtr_locationPredefinedTypeAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_locationPredefinedTypeAST (const cPtr_locationPredefinedTypeAST * inSourcePtr) ;
@@ -4478,7 +4524,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_locationPredefinedT
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_locationPredefinedTypeAST : public cPtr_predefinedTypeAST {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_locationPredefinedTypeAST (const GALGAS_bool & in_mIsPredefined,
@@ -4502,7 +4548,7 @@ class cPtr_locationPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @stringsetPredefinedTypeAST class
+// Phase 1: @stringsetPredefinedTypeAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4511,7 +4557,9 @@ class GALGAS_stringsetPredefinedTypeAST : public GALGAS_predefinedTypeAST {
   public: GALGAS_stringsetPredefinedTypeAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_stringsetPredefinedTypeAST * ptr (void) const { return (const cPtr_stringsetPredefinedTypeAST *) mObjectPtr ; }
+  public: inline const class cPtr_stringsetPredefinedTypeAST * ptr (void) const {
+    return (const cPtr_stringsetPredefinedTypeAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_stringsetPredefinedTypeAST (const cPtr_stringsetPredefinedTypeAST * inSourcePtr) ;
@@ -4561,7 +4609,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringsetPredefined
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_stringsetPredefinedTypeAST : public cPtr_predefinedTypeAST {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_stringsetPredefinedTypeAST (const GALGAS_bool & in_mIsPredefined,
@@ -4585,7 +4633,7 @@ class cPtr_stringsetPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @functionPredefinedTypeAST class
+// Phase 1: @functionPredefinedTypeAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4594,7 +4642,9 @@ class GALGAS_functionPredefinedTypeAST : public GALGAS_predefinedTypeAST {
   public: GALGAS_functionPredefinedTypeAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_functionPredefinedTypeAST * ptr (void) const { return (const cPtr_functionPredefinedTypeAST *) mObjectPtr ; }
+  public: inline const class cPtr_functionPredefinedTypeAST * ptr (void) const {
+    return (const cPtr_functionPredefinedTypeAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_functionPredefinedTypeAST (const cPtr_functionPredefinedTypeAST * inSourcePtr) ;
@@ -4644,7 +4694,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionPredefinedT
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_functionPredefinedTypeAST : public cPtr_predefinedTypeAST {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_functionPredefinedTypeAST (const GALGAS_bool & in_mIsPredefined,
@@ -4668,7 +4718,7 @@ class cPtr_functionPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @typePredefinedTypeAST class
+// Phase 1: @typePredefinedTypeAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4677,7 +4727,9 @@ class GALGAS_typePredefinedTypeAST : public GALGAS_predefinedTypeAST {
   public: GALGAS_typePredefinedTypeAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_typePredefinedTypeAST * ptr (void) const { return (const cPtr_typePredefinedTypeAST *) mObjectPtr ; }
+  public: inline const class cPtr_typePredefinedTypeAST * ptr (void) const {
+    return (const cPtr_typePredefinedTypeAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_typePredefinedTypeAST (const cPtr_typePredefinedTypeAST * inSourcePtr) ;
@@ -4727,7 +4779,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typePredefinedTypeA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_typePredefinedTypeAST : public cPtr_predefinedTypeAST {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_typePredefinedTypeAST (const GALGAS_bool & in_mIsPredefined,
@@ -4751,7 +4803,7 @@ class cPtr_typePredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @dataPredefinedTypeAST class
+// Phase 1: @dataPredefinedTypeAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4760,7 +4812,9 @@ class GALGAS_dataPredefinedTypeAST : public GALGAS_predefinedTypeAST {
   public: GALGAS_dataPredefinedTypeAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_dataPredefinedTypeAST * ptr (void) const { return (const cPtr_dataPredefinedTypeAST *) mObjectPtr ; }
+  public: inline const class cPtr_dataPredefinedTypeAST * ptr (void) const {
+    return (const cPtr_dataPredefinedTypeAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_dataPredefinedTypeAST (const cPtr_dataPredefinedTypeAST * inSourcePtr) ;
@@ -4810,7 +4864,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dataPredefinedTypeA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_dataPredefinedTypeAST : public cPtr_predefinedTypeAST {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_dataPredefinedTypeAST (const GALGAS_bool & in_mIsPredefined,
@@ -4834,7 +4888,7 @@ class cPtr_dataPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @timerPredefinedTypeAST class
+// Phase 1: @timerPredefinedTypeAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4843,7 +4897,9 @@ class GALGAS_timerPredefinedTypeAST : public GALGAS_predefinedTypeAST {
   public: GALGAS_timerPredefinedTypeAST (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_timerPredefinedTypeAST * ptr (void) const { return (const cPtr_timerPredefinedTypeAST *) mObjectPtr ; }
+  public: inline const class cPtr_timerPredefinedTypeAST * ptr (void) const {
+    return (const cPtr_timerPredefinedTypeAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_timerPredefinedTypeAST (const cPtr_timerPredefinedTypeAST * inSourcePtr) ;
@@ -4893,7 +4949,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_timerPredefinedType
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_timerPredefinedTypeAST : public cPtr_predefinedTypeAST {
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_timerPredefinedTypeAST (const GALGAS_bool & in_mIsPredefined,

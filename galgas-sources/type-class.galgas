@@ -25,7 +25,7 @@ syntax extension galgas3DeclarationsSyntax {
       $abstract$
       isAbstract = true
     end
-    @bool isShared
+    @bool isReference
     select
       $class$
       if [option galgas_cli_options.errorClassDeclaration value] then
@@ -33,21 +33,21 @@ syntax extension galgas3DeclarationsSyntax {
       else
         warning .here : "'class' declaration is obsolete, use 'valueclass'"
       end
-      isShared = false
+      isReference = false
     or
       $valueclass$
-      isShared = false
+      isReference = false
     or
       $refclass$
-      isShared = true
+      isReference = true
     end
     $@type$ ?let @lstring className indexing classDefinition
-    @lstring mSuperClassName # Empty if no super class
+    @lstring superClassName # Empty if no super class
     select
-      mSuperClassName = ["" nowhere]
+      superClassName = ["" nowhere]
     or
       $:$
-      $@type$ ? mSuperClassName indexing classReferencedAsSuperClass
+      $@type$ ? superClassName indexing classReferencedAsSuperClass
     end
     var classFeatureList =@lstringlist {}
     repeat
@@ -69,18 +69,35 @@ syntax extension galgas3DeclarationsSyntax {
     ioDeclarations.mDeclarationList += !@classDeclarationAST.new {
       !false # Is not predefined
       !isAbstract
-      !isShared
+      !isReference
       !className
-      !mSuperClassName # Empty if no super class
+      !superClassName # Empty if no super class
       !classFeatureList
       !propertyList
     }
+    if isReference then
+      ioDeclarations.mDeclarationList += !@weakReferenceDeclarationAST.new {
+        !false # Is not predefined
+        !className
+        !isAbstract
+        !.new {!className.string + "-weak" !className.location}
+        !if superClassName.string == "" then superClassName else .new {!superClassName.string + "-weak" !superClassName.location} end
+        !classFeatureList
+        !propertyList
+      }
+    end
   }
 
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH                          
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @classDeclarationAST keyRepresentation -> @string {
+  result = "valueclass @" + self.mClassTypeName
+}
+
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @classDeclarationAST enterDeclarationInGraph
@@ -318,7 +335,7 @@ override method @classDeclarationAST enterInSemanticContext
     !self.mIsPredefined
     !not self.mIsAbstract # Concrete Type
     !superClassIndex
-    !@typeKindEnum.classType {!isShared: self.mIsReference}
+    !@typeKindEnum.classType {!isReference: self.mIsReference}
     !false # Does not support collection value
     !allTypedAttributeList
     !attributeMap
@@ -374,7 +391,7 @@ override method @classDeclarationAST semanticAnalysis
 # a base class can be freely declared as shared or not
 # a class should the same 'shared' shared status as its super class
   if superClassEntry != .null then
-    [[superClassEntry mTypeKindEnum] classType ?isShared: let superClassIsReference]
+    [[superClassEntry mTypeKindEnum] classType ?isReference: let superClassIsReference]
     if superClassIsReference & not self.mIsReference then
       error self.mClassTypeName : "this class should be declared by 'refClass', as its super class"
     elsif not superClassIsReference & self.mIsReference then
@@ -494,30 +511,54 @@ override method @classTypeForGeneration appendDeclaration1
     [self.mSuperClass addHeaderFileName !?ioInclusionSet]
   end
 
-  outHeader = [filewrapper typeGenerationTemplate.classTypeHeader1
-    ![self.mSelfTypeEntry  key]
-    ![self.mSelfTypeEntry  identifierRepresentation]
-    !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-    !self.mIsAbstract
-    ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
-    !self.mIsReference
-  ]
-  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![self.mSelfTypeEntry  key]
-    ![self.mSelfTypeEntry  identifierRepresentation]
-    ![self.mSelfTypeEntry  mIsConcrete]
-    ![self.mSelfTypeEntry  mConstructorMap]
-    ![self.mSelfTypeEntry  mGetterMap]
-    ![self.mSelfTypeEntry  mSetterMap]
-    ![self.mSelfTypeEntry  mInstanceMethodMap]
-    ![self.mSelfTypeEntry  mClassMethodMap]
-    ![self.mSelfTypeEntry  mOptionalMethodMap]
-    ![self.mSelfTypeEntry  mEnumerationDescriptor]
-    ![self.mSelfTypeEntry  mHandledOperatorFlags]
-    ![self.mSelfTypeEntry  mAddAssignOperatorArguments]
-    ![self.mSelfTypeEntry  mTypeForEnumeratedElement]
-  ]
- }
+  if self.mIsReference then
+    outHeader = [filewrapper typeGenerationTemplate.referenceClassTypeHeader1
+      ![self.mSelfTypeEntry key]
+      ![self.mSelfTypeEntry identifierRepresentation]
+      !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+      !self.mIsAbstract
+      ![self.mSelfTypeEntry mDefaultConstructorName] != ""
+    ]
+    outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+      ![self.mSelfTypeEntry  key]
+      ![self.mSelfTypeEntry  identifierRepresentation]
+      ![self.mSelfTypeEntry  mIsConcrete]
+      ![self.mSelfTypeEntry  mConstructorMap]
+      ![self.mSelfTypeEntry  mGetterMap]
+      ![self.mSelfTypeEntry  mSetterMap]
+      ![self.mSelfTypeEntry  mInstanceMethodMap]
+      ![self.mSelfTypeEntry  mClassMethodMap]
+      ![self.mSelfTypeEntry  mOptionalMethodMap]
+      ![self.mSelfTypeEntry  mEnumerationDescriptor]
+      ![self.mSelfTypeEntry  mHandledOperatorFlags]
+      ![self.mSelfTypeEntry  mAddAssignOperatorArguments]
+      ![self.mSelfTypeEntry  mTypeForEnumeratedElement]
+    ]
+  else
+    outHeader = [filewrapper typeGenerationTemplate.valueClassTypeHeader1
+      ![self.mSelfTypeEntry  key]
+      ![self.mSelfTypeEntry  identifierRepresentation]
+      !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+      !self.mIsAbstract
+      ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
+    ]
+    outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+      ![self.mSelfTypeEntry  key]
+      ![self.mSelfTypeEntry  identifierRepresentation]
+      ![self.mSelfTypeEntry  mIsConcrete]
+      ![self.mSelfTypeEntry  mConstructorMap]
+      ![self.mSelfTypeEntry  mGetterMap]
+      ![self.mSelfTypeEntry  mSetterMap]
+      ![self.mSelfTypeEntry  mInstanceMethodMap]
+      ![self.mSelfTypeEntry  mClassMethodMap]
+      ![self.mSelfTypeEntry  mOptionalMethodMap]
+      ![self.mSelfTypeEntry  mEnumerationDescriptor]
+      ![self.mSelfTypeEntry  mHandledOperatorFlags]
+      ![self.mSelfTypeEntry  mAddAssignOperatorArguments]
+      ![self.mSelfTypeEntry  mTypeForEnumeratedElement]
+    ]  
+  end
+}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -530,53 +571,104 @@ override method @classTypeForGeneration appendDeclaration2
     [t addHeaderFileName !?ioInclusionSet]
   end
 
-  if self.mGenerateHeaderInSeparateFile then
-    let part1 = [filewrapper typeGenerationTemplate.classTypeHeader2part1
-      ![self.mSelfTypeEntry  key]
-      ![self.mSelfTypeEntry  identifierRepresentation]
-      !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-      !self.mTypedAttributeList
-      !self.mAllTypedAttributeList
-      !self.mIsAbstract
-    ]
-    let part2 = [filewrapper typeGenerationTemplate.classTypeHeader2part2
-      ![self.mSelfTypeEntry  key]
-      ![self.mSelfTypeEntry  identifierRepresentation]
-      !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-      !self.mTypedAttributeList
-      !self.mAllTypedAttributeList
-      !self.mIsAbstract
-    ]
-    let headerFileName = "separateHeaderFor_" + [self.mSelfTypeEntry  identifierRepresentation] + ".h"
-    [@string generateFileWithPattern
-      !startPath:inOutputDirectory + "/../user-headers"
-      !fileName:headerFileName
-      !lineComment:"//"
-      !header:"" # Header
-      !defaultUserZone1:"\n\n" # Defaut user zone1
-      !generatedZone2:part1
-      !defaultUserZone2:"\n\n" # Defaut user zone2
-      !generatedZone3:part2
-      !makeExecutable:false
-    ]
-    outHeader = "#include \"" + headerFileName + "\"\n\n"
+  if self.mIsReference then
+    if self.mGenerateHeaderInSeparateFile then
+      let part1 = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part1
+        ![self.mSelfTypeEntry  key]
+        ![self.mSelfTypeEntry  identifierRepresentation]
+        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !self.mTypedAttributeList
+        !self.mAllTypedAttributeList
+        !self.mIsAbstract
+      ]
+      let part2 = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part2
+        ![self.mSelfTypeEntry  key]
+        ![self.mSelfTypeEntry  identifierRepresentation]
+        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !self.mTypedAttributeList
+        !self.mAllTypedAttributeList
+        !self.mIsAbstract
+      ]
+      let headerFileName = "separateHeaderFor_" + [self.mSelfTypeEntry  identifierRepresentation] + ".h"
+      [@string generateFileWithPattern
+        !startPath:inOutputDirectory + "/../user-headers"
+        !fileName:headerFileName
+        !lineComment:"//"
+        !header:"" # Header
+        !defaultUserZone1:"\n\n" # Defaut user zone1
+        !generatedZone2:part1
+        !defaultUserZone2:"\n\n" # Defaut user zone2
+        !generatedZone3:part2
+        !makeExecutable:false
+      ]
+      outHeader = "#include \"" + headerFileName + "\"\n\n"
+    else
+      outHeader = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part1
+        ![self.mSelfTypeEntry  key]
+        ![self.mSelfTypeEntry  identifierRepresentation]
+        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !self.mTypedAttributeList
+        !self.mAllTypedAttributeList
+        !self.mIsAbstract
+      ]
+      outHeader += [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part2
+        ![self.mSelfTypeEntry  key]
+        ![self.mSelfTypeEntry  identifierRepresentation]
+        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !self.mTypedAttributeList
+        !self.mAllTypedAttributeList
+        !self.mIsAbstract
+      ]
+    end
   else
-    outHeader = [filewrapper typeGenerationTemplate.classTypeHeader2part1
-      ![self.mSelfTypeEntry  key]
-      ![self.mSelfTypeEntry  identifierRepresentation]
-      !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-      !self.mTypedAttributeList
-      !self.mAllTypedAttributeList
-      !self.mIsAbstract
-    ]
-    outHeader += [filewrapper typeGenerationTemplate.classTypeHeader2part2
-      ![self.mSelfTypeEntry  key]
-      ![self.mSelfTypeEntry  identifierRepresentation]
-      !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-      !self.mTypedAttributeList
-      !self.mAllTypedAttributeList
-      !self.mIsAbstract
-    ]
+    if self.mGenerateHeaderInSeparateFile then
+      let part1 = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part1
+        ![self.mSelfTypeEntry  key]
+        ![self.mSelfTypeEntry  identifierRepresentation]
+        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !self.mTypedAttributeList
+        !self.mAllTypedAttributeList
+        !self.mIsAbstract
+      ]
+      let part2 = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part2
+        ![self.mSelfTypeEntry  key]
+        ![self.mSelfTypeEntry  identifierRepresentation]
+        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !self.mTypedAttributeList
+        !self.mAllTypedAttributeList
+        !self.mIsAbstract
+      ]
+      let headerFileName = "separateHeaderFor_" + [self.mSelfTypeEntry  identifierRepresentation] + ".h"
+      [@string generateFileWithPattern
+        !startPath:inOutputDirectory + "/../user-headers"
+        !fileName:headerFileName
+        !lineComment:"//"
+        !header:"" # Header
+        !defaultUserZone1:"\n\n" # Defaut user zone1
+        !generatedZone2:part1
+        !defaultUserZone2:"\n\n" # Defaut user zone2
+        !generatedZone3:part2
+        !makeExecutable:false
+      ]
+      outHeader = "#include \"" + headerFileName + "\"\n\n"
+    else
+      outHeader = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part1
+        ![self.mSelfTypeEntry  key]
+        ![self.mSelfTypeEntry  identifierRepresentation]
+        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !self.mTypedAttributeList
+        !self.mAllTypedAttributeList
+        !self.mIsAbstract
+      ]
+      outHeader += [filewrapper typeGenerationTemplate.valueClassTypeHeader2part2
+        ![self.mSelfTypeEntry  key]
+        ![self.mSelfTypeEntry  identifierRepresentation]
+        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !self.mTypedAttributeList
+        !self.mAllTypedAttributeList
+        !self.mIsAbstract
+      ]
+    end
   end
  }
 
@@ -588,17 +680,32 @@ override method @classTypeForGeneration appendSpecificImplementation
   !@string outImplementation
 {
   [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
-  outImplementation = [filewrapper typeGenerationTemplate.classTypeSpecificImplementation
-    ![self.mSelfTypeEntry  key]
-    ![self.mSelfTypeEntry  identifierRepresentation]
-    !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-    !self.mTypedAttributeList
-    !self.mAllTypedAttributeList
-    ![self.mAllTypedAttributeList subListWithRange !.new {!0 ![self.mAllTypedAttributeList length] - [self.mTypedAttributeList length]}]
-    !self.mIsAbstract
-    !self.mIsReference
-    ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
+  let at = [self.mAllTypedAttributeList subListWithRange
+    !.new {!0 ![self.mAllTypedAttributeList length] - [self.mTypedAttributeList length]}
   ]
+  if self.mIsReference then
+    outImplementation = [filewrapper typeGenerationTemplate.referenceClassTypeSpecificImplementation
+      ![self.mSelfTypeEntry  key]
+      ![self.mSelfTypeEntry  identifierRepresentation]
+      !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+      !self.mTypedAttributeList
+      !self.mAllTypedAttributeList
+      !at
+      !self.mIsAbstract
+      ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
+    ]
+  else
+    outImplementation = [filewrapper typeGenerationTemplate.valueClassTypeSpecificImplementation
+      ![self.mSelfTypeEntry  key]
+      ![self.mSelfTypeEntry  identifierRepresentation]
+      !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+      !self.mTypedAttributeList
+      !self.mAllTypedAttributeList
+      !at
+      !self.mIsAbstract
+      ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
+    ]
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

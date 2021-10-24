@@ -10,7 +10,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @terminalCheckInstructionForGeneration class
+// Phase 1: @terminalCheckInstructionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -19,7 +19,9 @@ class GALGAS_terminalCheckInstructionForGeneration : public GALGAS_syntaxInstruc
   public: GALGAS_terminalCheckInstructionForGeneration (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_terminalCheckInstructionForGeneration * ptr (void) const { return (const cPtr_terminalCheckInstructionForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_terminalCheckInstructionForGeneration * ptr (void) const {
+    return (const cPtr_terminalCheckInstructionForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_terminalCheckInstructionForGeneration (const cPtr_terminalCheckInstructionForGeneration * inSourcePtr) ;
@@ -103,7 +105,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckInstru
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_terminalCheckInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_lstring mProperty_mTerminalName ;
   public: GALGAS_string mProperty_mLexiqueIdentifier ;
   public: GALGAS_terminalCheckAssignementList mProperty_mTerminalCheckAssignementList ;
@@ -149,7 +151,7 @@ class cPtr_terminalCheckInstructionForGeneration : public cPtr_syntaxInstruction
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @terminalInstructionForGrammarAnalysis class
+// Phase 1: @terminalInstructionForGrammarAnalysis  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -161,7 +163,9 @@ class GALGAS_terminalInstructionForGrammarAnalysis : public GALGAS_abstractSynta
   public: static GALGAS_terminalInstructionForGrammarAnalysis constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_terminalInstructionForGrammarAnalysis * ptr (void) const { return (const cPtr_terminalInstructionForGrammarAnalysis *) mObjectPtr ; }
+  public: inline const class cPtr_terminalInstructionForGrammarAnalysis * ptr (void) const {
+    return (const cPtr_terminalInstructionForGrammarAnalysis *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_terminalInstructionForGrammarAnalysis (const cPtr_terminalInstructionForGrammarAnalysis * inSourcePtr) ;
@@ -218,7 +222,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalInstruction
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @nonTerminalInstructionForGrammarAnalysis class
+// Phase 1: @nonTerminalInstructionForGrammarAnalysis  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -230,7 +234,9 @@ class GALGAS_nonTerminalInstructionForGrammarAnalysis : public GALGAS_abstractSy
   public: static GALGAS_nonTerminalInstructionForGrammarAnalysis constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_nonTerminalInstructionForGrammarAnalysis * ptr (void) const { return (const cPtr_nonTerminalInstructionForGrammarAnalysis *) mObjectPtr ; }
+  public: inline const class cPtr_nonTerminalInstructionForGrammarAnalysis * ptr (void) const {
+    return (const cPtr_nonTerminalInstructionForGrammarAnalysis *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_nonTerminalInstructionForGrammarAnalysis (const cPtr_nonTerminalInstructionForGrammarAnalysis * inSourcePtr) ;

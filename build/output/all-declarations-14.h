@@ -10,7 +10,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @overrideExtensionGetterForGeneration class
+// Phase 1: @overrideExtensionGetterForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -22,7 +22,9 @@ class GALGAS_overrideExtensionGetterForGeneration : public GALGAS_semanticDeclar
   public: static GALGAS_overrideExtensionGetterForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_overrideExtensionGetterForGeneration * ptr (void) const { return (const cPtr_overrideExtensionGetterForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_overrideExtensionGetterForGeneration * ptr (void) const {
+    return (const cPtr_overrideExtensionGetterForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_overrideExtensionGetterForGeneration (const cPtr_overrideExtensionGetterForGeneration * inSourcePtr) ;
@@ -119,7 +121,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideExtensionGe
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_overrideExtensionGetterForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
   public: GALGAS_string mProperty_mBaseTypeName ;
   public: GALGAS_string mProperty_mOverridingExtensionGetterName ;
@@ -174,7 +176,7 @@ class cPtr_overrideExtensionGetterForGeneration : public cPtr_semanticDeclaratio
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @overridingExtensionMethodForGeneration class
+// Phase 1: @overridingExtensionMethodForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -186,7 +188,9 @@ class GALGAS_overridingExtensionMethodForGeneration : public GALGAS_semanticDecl
   public: static GALGAS_overridingExtensionMethodForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_overridingExtensionMethodForGeneration * ptr (void) const { return (const cPtr_overridingExtensionMethodForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_overridingExtensionMethodForGeneration * ptr (void) const {
+    return (const cPtr_overridingExtensionMethodForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_overridingExtensionMethodForGeneration (const cPtr_overridingExtensionMethodForGeneration * inSourcePtr) ;
@@ -271,7 +275,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtension
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_overridingExtensionMethodForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
   public: GALGAS_string mProperty_mBaseTypeName ;
   public: GALGAS_string mProperty_mExtensionMethodName ;
@@ -318,7 +322,7 @@ class cPtr_overridingExtensionMethodForGeneration : public cPtr_semanticDeclarat
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @overridingExtensionSetterForGeneration class
+// Phase 1: @overridingExtensionSetterForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -330,7 +334,9 @@ class GALGAS_overridingExtensionSetterForGeneration : public GALGAS_semanticDecl
   public: static GALGAS_overridingExtensionSetterForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_overridingExtensionSetterForGeneration * ptr (void) const { return (const cPtr_overridingExtensionSetterForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_overridingExtensionSetterForGeneration * ptr (void) const {
+    return (const cPtr_overridingExtensionSetterForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_overridingExtensionSetterForGeneration (const cPtr_overridingExtensionSetterForGeneration * inSourcePtr) ;
@@ -415,7 +421,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtension
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_overridingExtensionSetterForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
   public: GALGAS_string mProperty_mBaseTypeName ;
   public: GALGAS_string mProperty_mExtensionSetterName ;
@@ -462,7 +468,7 @@ class cPtr_overridingExtensionSetterForGeneration : public cPtr_semanticDeclarat
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @galgas_33_SyntaxComponentAST class
+// Phase 1: @galgas_33_SyntaxComponentAST  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -474,7 +480,9 @@ class GALGAS_galgas_33_SyntaxComponentAST : public GALGAS_semanticDeclarationAST
   public: static GALGAS_galgas_33_SyntaxComponentAST constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_galgas_33_SyntaxComponentAST * ptr (void) const { return (const cPtr_galgas_33_SyntaxComponentAST *) mObjectPtr ; }
+  public: inline const class cPtr_galgas_33_SyntaxComponentAST * ptr (void) const {
+    return (const cPtr_galgas_33_SyntaxComponentAST *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_galgas_33_SyntaxComponentAST (const cPtr_galgas_33_SyntaxComponentAST * inSourcePtr) ;
@@ -552,7 +560,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_SyntaxCom
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_galgas_33_SyntaxComponentAST : public cPtr_semanticDeclarationAST {
-//--- Attributes
+//--- Properties
   public: GALGAS_lstring mProperty_mSyntaxComponentName ;
   public: GALGAS_lstring mProperty_mLexiqueName ;
   public: GALGAS_nonterminalDeclarationListAST mProperty_mNonterminalDeclarationList ;
@@ -661,7 +669,7 @@ void callExtensionMethod_generateActualParameter (const class cPtr_actualParamet
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @outputInputActualParameterForGeneration class
+// Phase 1: @outputInputActualParameterForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -673,7 +681,9 @@ class GALGAS_outputInputActualParameterForGeneration : public GALGAS_actualParam
   public: static GALGAS_outputInputActualParameterForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_outputInputActualParameterForGeneration * ptr (void) const { return (const cPtr_outputInputActualParameterForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_outputInputActualParameterForGeneration * ptr (void) const {
+    return (const cPtr_outputInputActualParameterForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_outputInputActualParameterForGeneration (const cPtr_outputInputActualParameterForGeneration * inSourcePtr) ;
@@ -739,7 +749,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputActualPa
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_outputInputActualParameterForGeneration : public cPtr_actualParameterForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_string mProperty_mOutputInputVariableCppName ;
   public: GALGAS_lstringlist mProperty_mStructAttributeList ;
   public: GALGAS_unifiedTypeMapEntryList mProperty_mTypeList ;
@@ -773,7 +783,7 @@ class cPtr_outputInputActualParameterForGeneration : public cPtr_actualParameter
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @inputActualParameterForGeneration class
+// Phase 1: @inputActualParameterForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -785,7 +795,9 @@ class GALGAS_inputActualParameterForGeneration : public GALGAS_actualParameterFo
   public: static GALGAS_inputActualParameterForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_inputActualParameterForGeneration * ptr (void) const { return (const cPtr_inputActualParameterForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_inputActualParameterForGeneration * ptr (void) const {
+    return (const cPtr_inputActualParameterForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_inputActualParameterForGeneration (const cPtr_inputActualParameterForGeneration * inSourcePtr) ;
@@ -839,7 +851,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualParamete
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_inputActualParameterForGeneration : public cPtr_actualParameterForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_string mProperty_mInputActualCppName ;
 
 //--- Constructor
@@ -865,7 +877,7 @@ class cPtr_inputActualParameterForGeneration : public cPtr_actualParameterForGen
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @inputJokerParameterForGeneration class
+// Phase 1: @inputJokerParameterForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -877,7 +889,9 @@ class GALGAS_inputJokerParameterForGeneration : public GALGAS_actualParameterFor
   public: static GALGAS_inputJokerParameterForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_inputJokerParameterForGeneration * ptr (void) const { return (const cPtr_inputJokerParameterForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_inputJokerParameterForGeneration * ptr (void) const {
+    return (const cPtr_inputJokerParameterForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_inputJokerParameterForGeneration (const cPtr_inputJokerParameterForGeneration * inSourcePtr) ;
@@ -931,7 +945,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputJokerParameter
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_inputJokerParameterForGeneration : public cPtr_actualParameterForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_string mProperty_mInputActualCppName ;
 
 //--- Constructor
@@ -957,7 +971,7 @@ class cPtr_inputJokerParameterForGeneration : public cPtr_actualParameterForGene
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @lexiqueDeclarationForGeneration class
+// Phase 1: @lexiqueDeclarationForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -969,7 +983,9 @@ class GALGAS_lexiqueDeclarationForGeneration : public GALGAS_semanticDeclaration
   public: static GALGAS_lexiqueDeclarationForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_lexiqueDeclarationForGeneration * ptr (void) const { return (const cPtr_lexiqueDeclarationForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_lexiqueDeclarationForGeneration * ptr (void) const {
+    return (const cPtr_lexiqueDeclarationForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexiqueDeclarationForGeneration (const cPtr_lexiqueDeclarationForGeneration * inSourcePtr) ;
@@ -1048,7 +1064,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueDeclarationF
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexiqueDeclarationForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_string mProperty_mLexiqueName ;
   public: GALGAS_string mProperty_mHeaderContents ;
   public: GALGAS_string mProperty_mCppContents ;
@@ -1091,7 +1107,7 @@ class cPtr_lexiqueDeclarationForGeneration : public cPtr_semanticDeclarationWith
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @grammarForGeneration class
+// Phase 1: @grammarForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1103,7 +1119,9 @@ class GALGAS_grammarForGeneration : public GALGAS_semanticDeclarationWithHeaderF
   public: static GALGAS_grammarForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_grammarForGeneration * ptr (void) const { return (const cPtr_grammarForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_grammarForGeneration * ptr (void) const {
+    return (const cPtr_grammarForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_grammarForGeneration (const cPtr_grammarForGeneration * inSourcePtr) ;
@@ -1206,7 +1224,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarForGeneratio
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_grammarForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_string mProperty_mGrammarName ;
   public: GALGAS_string mProperty_mLexiqueName ;
   public: GALGAS_nonTerminalSymbolMapForGrammarAnalysis mProperty_mNonTerminalMapForGrammarAnalysis ;
@@ -1265,7 +1283,7 @@ class cPtr_grammarForGeneration : public cPtr_semanticDeclarationWithHeaderForGe
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @routinePrototypeDeclarationForGeneration class
+// Phase 1: @routinePrototypeDeclarationForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1277,7 +1295,9 @@ class GALGAS_routinePrototypeDeclarationForGeneration : public GALGAS_semanticDe
   public: static GALGAS_routinePrototypeDeclarationForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_routinePrototypeDeclarationForGeneration * ptr (void) const { return (const cPtr_routinePrototypeDeclarationForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_routinePrototypeDeclarationForGeneration * ptr (void) const {
+    return (const cPtr_routinePrototypeDeclarationForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_routinePrototypeDeclarationForGeneration (const cPtr_routinePrototypeDeclarationForGeneration * inSourcePtr) ;
@@ -1338,7 +1358,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routinePrototypeDec
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_routinePrototypeDeclarationForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_string mProperty_mRoutineName ;
   public: GALGAS_formalParameterListForGeneration mProperty_mFormalArgumentList ;
 
@@ -1369,7 +1389,7 @@ class cPtr_routinePrototypeDeclarationForGeneration : public cPtr_semanticDeclar
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @routineImplementationForGeneration class
+// Phase 1: @routineImplementationForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1381,7 +1401,9 @@ class GALGAS_routineImplementationForGeneration : public GALGAS_routinePrototype
   public: static GALGAS_routineImplementationForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_routineImplementationForGeneration * ptr (void) const { return (const cPtr_routineImplementationForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_routineImplementationForGeneration * ptr (void) const {
+    return (const cPtr_routineImplementationForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_routineImplementationForGeneration (const cPtr_routineImplementationForGeneration * inSourcePtr) ;
@@ -1444,7 +1466,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routineImplementati
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_routineImplementationForGeneration : public cPtr_routinePrototypeDeclarationForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_bool mProperty_mGenerateStatic ;
   public: GALGAS_semanticInstructionListForGeneration mProperty_mRoutineInstructionList ;
 
@@ -1477,7 +1499,7 @@ class cPtr_routineImplementationForGeneration : public cPtr_routinePrototypeDecl
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @functionPrototypeDeclarationForGeneration class
+// Phase 1: @functionPrototypeDeclarationForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1489,7 +1511,9 @@ class GALGAS_functionPrototypeDeclarationForGeneration : public GALGAS_semanticD
   public: static GALGAS_functionPrototypeDeclarationForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_functionPrototypeDeclarationForGeneration * ptr (void) const { return (const cPtr_functionPrototypeDeclarationForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_functionPrototypeDeclarationForGeneration * ptr (void) const {
+    return (const cPtr_functionPrototypeDeclarationForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_functionPrototypeDeclarationForGeneration (const cPtr_functionPrototypeDeclarationForGeneration * inSourcePtr) ;
@@ -1556,7 +1580,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionPrototypeDe
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_functionPrototypeDeclarationForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_string mProperty_mFunctionName ;
   public: GALGAS_formalInputParameterListForGeneration mProperty_mFormalArgumentList ;
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReturnType ;
@@ -1591,7 +1615,7 @@ class cPtr_functionPrototypeDeclarationForGeneration : public cPtr_semanticDecla
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @functionImplementationForGeneration class
+// Phase 1: @functionImplementationForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1603,7 +1627,9 @@ class GALGAS_functionImplementationForGeneration : public GALGAS_functionPrototy
   public: static GALGAS_functionImplementationForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_functionImplementationForGeneration * ptr (void) const { return (const cPtr_functionImplementationForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_functionImplementationForGeneration * ptr (void) const {
+    return (const cPtr_functionImplementationForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_functionImplementationForGeneration (const cPtr_functionImplementationForGeneration * inSourcePtr) ;
@@ -1667,7 +1693,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionImplementat
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_functionImplementationForGeneration : public cPtr_functionPrototypeDeclarationForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_string mProperty_mResultVariableCppName ;
   public: GALGAS_semanticInstructionListForGeneration mProperty_mFunctionInstructionList ;
 
@@ -1701,7 +1727,7 @@ class cPtr_functionImplementationForGeneration : public cPtr_functionPrototypeDe
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @onceFunctionDeclarationForGeneration class
+// Phase 1: @onceFunctionDeclarationForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1713,7 +1739,9 @@ class GALGAS_onceFunctionDeclarationForGeneration : public GALGAS_semanticDeclar
   public: static GALGAS_onceFunctionDeclarationForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_onceFunctionDeclarationForGeneration * ptr (void) const { return (const cPtr_onceFunctionDeclarationForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_onceFunctionDeclarationForGeneration * ptr (void) const {
+    return (const cPtr_onceFunctionDeclarationForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_onceFunctionDeclarationForGeneration (const cPtr_onceFunctionDeclarationForGeneration * inSourcePtr) ;
@@ -1786,7 +1814,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_onceFunctionDeclara
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_onceFunctionDeclarationForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_string mProperty_mFunctionName ;
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReturnType ;
   public: GALGAS_string mProperty_mResultVariableCppName ;
@@ -1825,7 +1853,7 @@ class cPtr_onceFunctionDeclarationForGeneration : public cPtr_semanticDeclaratio
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @primitiveTypeForGeneration class
+// Phase 1: @primitiveTypeForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1834,7 +1862,9 @@ class GALGAS_primitiveTypeForGeneration : public GALGAS_semanticTypeForGeneratio
   public: GALGAS_primitiveTypeForGeneration (void) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_primitiveTypeForGeneration * ptr (void) const { return (const cPtr_primitiveTypeForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_primitiveTypeForGeneration * ptr (void) const {
+    return (const cPtr_primitiveTypeForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_primitiveTypeForGeneration (const cPtr_primitiveTypeForGeneration * inSourcePtr) ;
@@ -1894,7 +1924,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_primitiveTypeForGen
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_primitiveTypeForGeneration : public cPtr_semanticTypeForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_string mProperty_mPredefinedTypeName ;
   public: GALGAS_predefinedTypeKindEnum mProperty_mKind ;
 
@@ -1924,7 +1954,7 @@ class cPtr_primitiveTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @filewrapperDeclarationForGeneration class
+// Phase 1: @filewrapperDeclarationForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1936,7 +1966,9 @@ class GALGAS_filewrapperDeclarationForGeneration : public GALGAS_semanticDeclara
   public: static GALGAS_filewrapperDeclarationForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_filewrapperDeclarationForGeneration * ptr (void) const { return (const cPtr_filewrapperDeclarationForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_filewrapperDeclarationForGeneration * ptr (void) const {
+    return (const cPtr_filewrapperDeclarationForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_filewrapperDeclarationForGeneration (const cPtr_filewrapperDeclarationForGeneration * inSourcePtr) ;
@@ -2015,7 +2047,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperDeclarat
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_filewrapperDeclarationForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_string mProperty_mFilewrapperName ;
   public: GALGAS_string mProperty_mFilewrapperAbsolutePath ;
   public: GALGAS_wrapperFileMap mProperty_mFilewrapperFileMap ;
@@ -2058,7 +2090,7 @@ class cPtr_filewrapperDeclarationForGeneration : public cPtr_semanticDeclaration
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @programComponentForGeneration class
+// Phase 1: @programComponentForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2070,7 +2102,9 @@ class GALGAS_programComponentForGeneration : public GALGAS_semanticDeclarationWi
   public: static GALGAS_programComponentForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
-  public: inline const class cPtr_programComponentForGeneration * ptr (void) const { return (const cPtr_programComponentForGeneration *) mObjectPtr ; }
+  public: inline const class cPtr_programComponentForGeneration * ptr (void) const {
+    return (const cPtr_programComponentForGeneration *) mObjectPtr ;
+  }
 
 //--------------------------------- Constructor from pointer
   public: GALGAS_programComponentForGeneration (const cPtr_programComponentForGeneration * inSourcePtr) ;
@@ -2131,7 +2165,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_programComponentFor
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_programComponentForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
-//--- Attributes
+//--- Properties
   public: GALGAS_stringset mProperty_mInclusionSet ;
   public: GALGAS_string mProperty_mImplementationString ;
 

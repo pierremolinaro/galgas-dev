@@ -1,0 +1,122 @@
+//----------------------------------------------------------------------------------------------------------------------
+//   Object comparison                                                                           
+//----------------------------------------------------------------------------------------------------------------------
+
+%
+if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] == 0) then
+%/* typeComparisonResult cPtr_%!WEAK_REF_TYPE_IDENTIFIER%::dynamicObjectCompare (const acPtr_class * /* inOperandPtr */) const {
+  return kOperandEqual ;
+} */
+
+//----------------------------------------------------------------------------------------------------------------------
+%end
+
+if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
+%/* typeComparisonResult cPtr_%!WEAK_REF_TYPE_IDENTIFIER%::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_%!WEAK_REF_TYPE_IDENTIFIER% * p = (const cPtr_%!WEAK_REF_TYPE_IDENTIFIER% *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_%!WEAK_REF_TYPE_IDENTIFIER%) ;
+% for () in ALL_ATTRIBUTE_LIST do
+    %  if (kOperandEqual == result) {\n%
+    %    result = mProperty_%![mPropertyName identifierRepresentation]%.objectCompare (p->mProperty_%![mPropertyName identifierRepresentation]%) ;\n%
+    %  }\n%
+  end
+%  return result ;
+} */
+
+//----------------------------------------------------------------------------------------------------------------------
+%end%
+
+typeComparisonResult GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% (void) :
+%if SUPER_WEAK_REF_TYPE_IDENTIFIER == ""
+  then %AC_GALGAS_weak_reference%
+  else %GALGAS_%!SUPER_WEAK_REF_TYPE_IDENTIFIER%%
+  end% () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% & GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::operator = (const GALGAS_%!CLASS_TYPE_IDENTIFIER% & inSource) {
+  cPtr_weakReference_class * proxyPtr = NULL ;
+  acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
+  if (p != NULL) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mObjectPtr, proxyPtr) ;
+  return *this ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% (const GALGAS_%!CLASS_TYPE_IDENTIFIER% & inSource) :
+% if SUPER_WEAK_REF_TYPE_IDENTIFIER == ""
+  then %AC_GALGAS_weak_reference%
+  else %GALGAS_%!SUPER_WEAK_REF_TYPE_IDENTIFIER
+  end% (inSource) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::constructor_nil (LOCATION_ARGS) {
+  GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% result ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  return result ;
+}
+
+%for () in CURRENT_ATTRIBUTE_LIST do
+  if mHasGetter then
+    %//----------------------------------------------------------------------------------------------------------------------\n\n%
+    %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]% (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {\n%
+    %  GALGAS_%![mPropertyTypeEntry identifierRepresentation]% result ;\n%
+    %  if (NULL != mObjectPtr) {\n%
+    %    cPtr_weakReference_class * ptr = (cPtr_weakReference_class *) mObjectPtr ;\n%
+    %    const cPtr_%!CLASS_TYPE_IDENTIFIER% * objectPtr = (cPtr_%!CLASS_TYPE_IDENTIFIER% *) ptr->strongObject () ;\n%
+    %    if (objectPtr == NULL) {\n%
+    %      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;\n%
+    %    }else{\n%
+    %      macroValidSharedObject (objectPtr, cPtr_%!CLASS_TYPE_IDENTIFIER%) ;\n%
+    %      result = objectPtr->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+    %    }\n%
+    %  }\n%
+    %  return result ;\n%
+    %}\n\n%
+  end
+end
+
+for () in CURRENT_ATTRIBUTE_LIST do
+  if mHasSetter then
+    %//----------------------------------------------------------------------------------------------------------------------\n\n%
+    %void GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inValue,\n%
+                  !^%C_Compiler * inCompiler COMMA_LOCATION_ARGS) {\n%
+    %  if (NULL != mObjectPtr) {\n%
+    %    cPtr_weakReference_class * ptr = (cPtr_weakReference_class *) mObjectPtr ;\n%
+    %    cPtr_%!CLASS_TYPE_IDENTIFIER% * objectPtr = (cPtr_%!CLASS_TYPE_IDENTIFIER% *) ptr->strongObject () ;\n%
+    %    if (objectPtr == NULL) {\n%
+    %      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;\n%
+    %    }else{\n%
+    %      macroValidSharedObject (objectPtr, cPtr_%!CLASS_TYPE_IDENTIFIER%) ;\n%
+    %      objectPtr->mProperty_%![mPropertyName identifierRepresentation]% = inValue ;\n%
+    %    }\n%
+    %  }\n%
+    %}\n\n%
+  end
+end
+

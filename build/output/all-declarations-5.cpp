@@ -7443,6 +7443,35 @@ typeComparisonResult cEnumAssociatedValues_typeKindEnum_classType::compare (cons
 
 //----------------------------------------------------------------------------------------------------------------------
 
+cEnumAssociatedValues_typeKindEnum_weakReferenceType::cEnumAssociatedValues_typeKindEnum_weakReferenceType (const GALGAS_unifiedTypeMap_2D_entry & inAssociatedValue0
+                                                                                                            COMMA_LOCATION_ARGS) :
+cEnumAssociatedValues (THERE),
+mAssociatedValue0 (inAssociatedValue0) {
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cEnumAssociatedValues_typeKindEnum_weakReferenceType::description (C_String & ioString,
+                                                                        const int32_t inIndentation) const {
+  ioString << "(\n" ;
+  mAssociatedValue0.description (ioString, inIndentation) ;
+  ioString << ")" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cEnumAssociatedValues_typeKindEnum_weakReferenceType::compare (const cEnumAssociatedValues * inOperand) const {
+  const cEnumAssociatedValues_typeKindEnum_weakReferenceType * ptr = dynamic_cast<const cEnumAssociatedValues_typeKindEnum_weakReferenceType *> (inOperand) ;
+  macroValidPointer (ptr) ;
+  typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAssociatedValue0.objectCompare (ptr->mAssociatedValue0) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 GALGAS_typeKindEnum::GALGAS_typeKindEnum (void) :
 mAssociatedValues (),
 mEnum (kNotBuilt) {
@@ -7457,6 +7486,21 @@ GALGAS_typeKindEnum GALGAS_typeKindEnum::constructor_classType (const GALGAS_boo
     result.mEnum = kEnum_classType ;
     cEnumAssociatedValues * ptr = NULL ;
     macroMyNew (ptr, cEnumAssociatedValues_typeKindEnum_classType (inAssociatedValue0 COMMA_THERE)) ;
+    result.mAssociatedValues.setPointer (ptr) ;
+    macroDetachSharedObject (ptr) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_typeKindEnum GALGAS_typeKindEnum::constructor_weakReferenceType (const GALGAS_unifiedTypeMap_2D_entry & inAssociatedValue0
+                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_typeKindEnum result ;
+  if (inAssociatedValue0.isValid ()) {
+    result.mEnum = kEnum_weakReferenceType ;
+    cEnumAssociatedValues * ptr = NULL ;
+    macroMyNew (ptr, cEnumAssociatedValues_typeKindEnum_weakReferenceType (inAssociatedValue0 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
     macroDetachSharedObject (ptr) ;
   }
@@ -7585,11 +7629,39 @@ void GALGAS_typeKindEnum::method_classType (GALGAS_bool & outAssociatedValue0,
 
 //----------------------------------------------------------------------------------------------------------------------
 
+void GALGAS_typeKindEnum::method_weakReferenceType (GALGAS_unifiedTypeMap_2D_entry & outAssociatedValue0,
+                                                    C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const {
+  if (mEnum != kEnum_weakReferenceType) {
+    outAssociatedValue0.drop () ;
+    C_String s ;
+    s << "method @typeKindEnum weakReferenceType invoked with an invalid enum value" ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const cEnumAssociatedValues_typeKindEnum_weakReferenceType * ptr = (const cEnumAssociatedValues_typeKindEnum_weakReferenceType *) unsafePointer () ;
+    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 bool GALGAS_typeKindEnum::optional_classType (GALGAS_bool & outAssociatedValue0) const {
   const bool ok = mEnum == kEnum_classType ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_typeKindEnum_classType *) unsafePointer () ;
     // const cEnumAssociatedValues_typeKindEnum_classType * ptr = (const cEnumAssociatedValues_typeKindEnum_classType *) unsafePointer () ;
+    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+  }
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_typeKindEnum::optional_weakReferenceType (GALGAS_unifiedTypeMap_2D_entry & outAssociatedValue0) const {
+  const bool ok = mEnum == kEnum_weakReferenceType ;
+  if (ok) {
+    const auto * ptr = (const cEnumAssociatedValues_typeKindEnum_weakReferenceType *) unsafePointer () ;
+    // const cEnumAssociatedValues_typeKindEnum_weakReferenceType * ptr = (const cEnumAssociatedValues_typeKindEnum_weakReferenceType *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;
@@ -7688,9 +7760,10 @@ bool GALGAS_typeKindEnum::optional_predefinedType () const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-static const char * gEnumNameArrayFor_typeKindEnum [15] = {
+static const char * gEnumNameArrayFor_typeKindEnum [16] = {
   "(not built)",
   "classType",
+  "weakReferenceType",
   "enumType",
   "listType",
   "sortedListType",
@@ -7710,6 +7783,12 @@ static const char * gEnumNameArrayFor_typeKindEnum [15] = {
 
 GALGAS_bool GALGAS_typeKindEnum::getter_isClassType (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_classType == mEnum) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_typeKindEnum::getter_isWeakReferenceType (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_weakReferenceType == mEnum) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7874,7 +7953,16 @@ GALGAS_string extensionGetter_kind (const GALGAS_typeKindEnum & inObject,
     break ;
   case GALGAS_typeKindEnum::kEnum_classType:
     {
-      result_result = GALGAS_string ("class") ;
+      const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_10488 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
+      const GALGAS_bool extractedValue_isReference = extractPtr_10488->mAssociatedValue0 ;
+      GALGAS_string temp_1 ;
+      const enumGalgasBool test_2 = extractedValue_isReference.boolEnum () ;
+      if (kBoolTrue == test_2) {
+        temp_1 = GALGAS_string ("reference class") ;
+      }else if (kBoolFalse == test_2) {
+        temp_1 = GALGAS_string ("value class") ;
+      }
+      result_result = temp_1 ;
     }
     break ;
   case GALGAS_typeKindEnum::kEnum_enumType:
@@ -7940,6 +8028,11 @@ GALGAS_string extensionGetter_kind (const GALGAS_typeKindEnum & inObject,
   case GALGAS_typeKindEnum::kEnum_externType:
     {
       result_result = GALGAS_string ("extern") ;
+    }
+    break ;
+  case GALGAS_typeKindEnum::kEnum_weakReferenceType:
+    {
+      result_result = GALGAS_string ("weak reference") ;
     }
     break ;
   }
@@ -11048,7 +11141,6 @@ GALGAS_predefinedTypeAST::GALGAS_predefinedTypeAST (const cPtr_predefinedTypeAST
 GALGAS_semanticDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_predefinedTypeAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_predefinedTypeAST::getter_mPredefinedTypeName (UNUSED_LOCATION_ARGS) const {
@@ -11231,7 +11323,6 @@ GALGAS_applicationPredefinedTypeAST::GALGAS_applicationPredefinedTypeAST (const 
 GALGAS_predefinedTypeAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_applicationPredefinedTypeAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_applicationPredefinedTypeAST GALGAS_applicationPredefinedTypeAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
@@ -11376,7 +11467,6 @@ GALGAS_bigintPredefinedTypeAST::GALGAS_bigintPredefinedTypeAST (const cPtr_bigin
 GALGAS_predefinedTypeAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_bigintPredefinedTypeAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bigintPredefinedTypeAST GALGAS_bigintPredefinedTypeAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
@@ -11521,7 +11611,6 @@ GALGAS_objectPredefinedTypeAST::GALGAS_objectPredefinedTypeAST (const cPtr_objec
 GALGAS_predefinedTypeAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_objectPredefinedTypeAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_objectPredefinedTypeAST GALGAS_objectPredefinedTypeAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
@@ -11666,7 +11755,6 @@ GALGAS_filewrapperPredefinedTypeAST::GALGAS_filewrapperPredefinedTypeAST (const 
 GALGAS_predefinedTypeAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_filewrapperPredefinedTypeAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperPredefinedTypeAST GALGAS_filewrapperPredefinedTypeAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
@@ -11811,7 +11899,6 @@ GALGAS_binarysetPredefinedTypeAST::GALGAS_binarysetPredefinedTypeAST (const cPtr
 GALGAS_predefinedTypeAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_binarysetPredefinedTypeAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_binarysetPredefinedTypeAST GALGAS_binarysetPredefinedTypeAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
@@ -11956,7 +12043,6 @@ GALGAS_boolPredefinedTypeAST::GALGAS_boolPredefinedTypeAST (const cPtr_boolPrede
 GALGAS_predefinedTypeAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_boolPredefinedTypeAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_boolPredefinedTypeAST GALGAS_boolPredefinedTypeAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
@@ -12101,7 +12187,6 @@ GALGAS_uintPredefinedTypeAST::GALGAS_uintPredefinedTypeAST (const cPtr_uintPrede
 GALGAS_predefinedTypeAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_uintPredefinedTypeAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_uintPredefinedTypeAST GALGAS_uintPredefinedTypeAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
@@ -12246,7 +12331,6 @@ GALGAS_uint_36__34_PredefinedTypeAST::GALGAS_uint_36__34_PredefinedTypeAST (cons
 GALGAS_predefinedTypeAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_uint_36__34_PredefinedTypeAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_uint_36__34_PredefinedTypeAST GALGAS_uint_36__34_PredefinedTypeAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
@@ -12391,7 +12475,6 @@ GALGAS_sintPredefinedTypeAST::GALGAS_sintPredefinedTypeAST (const cPtr_sintPrede
 GALGAS_predefinedTypeAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_sintPredefinedTypeAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_sintPredefinedTypeAST GALGAS_sintPredefinedTypeAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
@@ -12536,7 +12619,6 @@ GALGAS_sint_36__34_PredefinedTypeAST::GALGAS_sint_36__34_PredefinedTypeAST (cons
 GALGAS_predefinedTypeAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_sint_36__34_PredefinedTypeAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_sint_36__34_PredefinedTypeAST GALGAS_sint_36__34_PredefinedTypeAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
@@ -12681,7 +12763,6 @@ GALGAS_charPredefinedTypeAST::GALGAS_charPredefinedTypeAST (const cPtr_charPrede
 GALGAS_predefinedTypeAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_charPredefinedTypeAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_charPredefinedTypeAST GALGAS_charPredefinedTypeAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
@@ -12826,7 +12907,6 @@ GALGAS_doublePredefinedTypeAST::GALGAS_doublePredefinedTypeAST (const cPtr_doubl
 GALGAS_predefinedTypeAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_doublePredefinedTypeAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_doublePredefinedTypeAST GALGAS_doublePredefinedTypeAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
@@ -12971,7 +13051,6 @@ GALGAS_stringPredefinedTypeAST::GALGAS_stringPredefinedTypeAST (const cPtr_strin
 GALGAS_predefinedTypeAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_stringPredefinedTypeAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_stringPredefinedTypeAST GALGAS_stringPredefinedTypeAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
@@ -13116,7 +13195,6 @@ GALGAS_locationPredefinedTypeAST::GALGAS_locationPredefinedTypeAST (const cPtr_l
 GALGAS_predefinedTypeAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_locationPredefinedTypeAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_locationPredefinedTypeAST GALGAS_locationPredefinedTypeAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
@@ -13261,7 +13339,6 @@ GALGAS_stringsetPredefinedTypeAST::GALGAS_stringsetPredefinedTypeAST (const cPtr
 GALGAS_predefinedTypeAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_stringsetPredefinedTypeAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_stringsetPredefinedTypeAST GALGAS_stringsetPredefinedTypeAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
@@ -13406,7 +13483,6 @@ GALGAS_functionPredefinedTypeAST::GALGAS_functionPredefinedTypeAST (const cPtr_f
 GALGAS_predefinedTypeAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_functionPredefinedTypeAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_functionPredefinedTypeAST GALGAS_functionPredefinedTypeAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
@@ -13551,7 +13627,6 @@ GALGAS_typePredefinedTypeAST::GALGAS_typePredefinedTypeAST (const cPtr_typePrede
 GALGAS_predefinedTypeAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_typePredefinedTypeAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_typePredefinedTypeAST GALGAS_typePredefinedTypeAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
@@ -13696,7 +13771,6 @@ GALGAS_dataPredefinedTypeAST::GALGAS_dataPredefinedTypeAST (const cPtr_dataPrede
 GALGAS_predefinedTypeAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_dataPredefinedTypeAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_dataPredefinedTypeAST GALGAS_dataPredefinedTypeAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
@@ -13841,7 +13915,6 @@ GALGAS_timerPredefinedTypeAST::GALGAS_timerPredefinedTypeAST (const cPtr_timerPr
 GALGAS_predefinedTypeAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_timerPredefinedTypeAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_timerPredefinedTypeAST GALGAS_timerPredefinedTypeAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
@@ -13991,7 +14064,7 @@ static void extensionMethod_predefinedTypeAST_getConstructorMap (const cPtr_pred
                                                                  GALGAS_constructorMap & outArgument_outConstructorMap,
                                                                  C_Compiler * /* inCompiler */
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outConstructorMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 463)) ;
+  outArgument_outConstructorMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 465)) ;
 }
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14067,7 +14140,7 @@ static void extensionMethod_predefinedTypeAST_getGetterMap (const cPtr_predefine
                                                             GALGAS_getterMap & outArgument_outGetterMap,
                                                             C_Compiler * /* inCompiler */
                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outGetterMap = GALGAS_getterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 471)) ;
+  outArgument_outGetterMap = GALGAS_getterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 473)) ;
 }
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14143,7 +14216,7 @@ static void extensionMethod_predefinedTypeAST_getSetterMap (const cPtr_predefine
                                                             GALGAS_setterMap & outArgument_outSetterMap,
                                                             C_Compiler * /* inCompiler */
                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outSetterMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 479)) ;
+  outArgument_outSetterMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 481)) ;
 }
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14219,7 +14292,7 @@ static void extensionMethod_predefinedTypeAST_getInstanceMethodMap (const cPtr_p
                                                                     GALGAS_instanceMethodMap & outArgument_outInstanceMethodMap,
                                                                     C_Compiler * /* inCompiler */
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outInstanceMethodMap = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 487)) ;
+  outArgument_outInstanceMethodMap = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 489)) ;
 }
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14295,7 +14368,7 @@ static void extensionMethod_predefinedTypeAST_getClassMethodMap (const cPtr_pred
                                                                  GALGAS_classMethodMap & outArgument_outClassMethodMap,
                                                                  C_Compiler * /* inCompiler */
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outClassMethodMap = GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 495)) ;
+  outArgument_outClassMethodMap = GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 497)) ;
 }
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14370,7 +14443,7 @@ static GALGAS_operators extensionGetter_predefinedTypeAST_getSupportedOperatorFl
                                                                                      C_Compiler * /* inCompiler */
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_operators result_outFlags ; // Returned variable
-  result_outFlags = GALGAS_operators::constructor_none (SOURCE_FILE ("semanticsTypes.galgas", 501)) ;
+  result_outFlags = GALGAS_operators::constructor_none (SOURCE_FILE ("semanticsTypes.galgas", 503)) ;
 //---
   return result_outFlags ;
 }
@@ -14450,7 +14523,7 @@ static void extensionMethod_predefinedTypeAST_getAddAssignArgumentList (const cP
                                                                         GALGAS_functionSignature & outArgument_outAddAssignArgumentList,
                                                                         C_Compiler * /* inCompiler */
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outAddAssignArgumentList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 509)) ;
+  outArgument_outAddAssignArgumentList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 511)) ;
 }
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14529,7 +14602,7 @@ static void extensionMethod_predefinedTypeAST_getEnumerationList (const cPtr_pre
                                                                   GALGAS_string & outArgument_outEnumeratedType,
                                                                   C_Compiler * /* inCompiler */
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outEnumerationList = GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 523)) ;
+  outArgument_outEnumerationList = GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 525)) ;
   outArgument_outEnumeratedType = GALGAS_string::makeEmptyString () ;
 }
 //----------------------------------------------------------------------------------------------------------------------

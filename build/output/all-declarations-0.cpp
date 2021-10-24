@@ -4460,7 +4460,6 @@ GALGAS_templateInstructionAST::GALGAS_templateInstructionAST (const cPtr_templat
 AC_GALGAS_value_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @templateInstructionAST class
 //----------------------------------------------------------------------------------------------------------------------
@@ -4964,7 +4963,6 @@ GALGAS_templateExpressionAST::GALGAS_templateExpressionAST (const cPtr_templateE
 AC_GALGAS_value_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @templateExpressionAST class
 //----------------------------------------------------------------------------------------------------------------------
@@ -5615,7 +5613,6 @@ GALGAS_templateAndOperationAST::GALGAS_templateAndOperationAST (const cPtr_templ
 GALGAS_templateExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateAndOperationAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateAndOperationAST GALGAS_templateAndOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -5874,7 +5871,6 @@ GALGAS_templateOrOperationAST::GALGAS_templateOrOperationAST (const cPtr_templat
 GALGAS_templateExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateOrOperationAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateOrOperationAST GALGAS_templateOrOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -6133,7 +6129,6 @@ GALGAS_templateXorOperationAST::GALGAS_templateXorOperationAST (const cPtr_templ
 GALGAS_templateExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateXorOperationAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateXorOperationAST GALGAS_templateXorOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -6393,7 +6388,6 @@ GALGAS_templateTrueBoolAST::GALGAS_templateTrueBoolAST (const cPtr_templateTrueB
 GALGAS_templateExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateTrueBoolAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateTrueBoolAST GALGAS_templateTrueBoolAST::constructor_new (const GALGAS_location & inAttribute_mLocation
@@ -6569,7 +6563,6 @@ GALGAS_templateFalseBoolAST::GALGAS_templateFalseBoolAST (const cPtr_templateFal
 GALGAS_templateExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateFalseBoolAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateFalseBoolAST GALGAS_templateFalseBoolAST::constructor_new (const GALGAS_location & inAttribute_mLocation
@@ -6741,7 +6734,6 @@ GALGAS_templateNotOperatorAST::GALGAS_templateNotOperatorAST (const cPtr_templat
 GALGAS_templateExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateNotOperatorAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateNotOperatorAST GALGAS_templateNotOperatorAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -6955,7 +6947,6 @@ GALGAS_templateLogicalNegateAST::GALGAS_templateLogicalNegateAST (const cPtr_tem
 GALGAS_templateExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateLogicalNegateAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateLogicalNegateAST GALGAS_templateLogicalNegateAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -7317,7 +7308,6 @@ GALGAS_templateAddOperationAST::GALGAS_templateAddOperationAST (const cPtr_templ
 GALGAS_templateExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateAddOperationAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateAddOperationAST GALGAS_templateAddOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -7576,7 +7566,6 @@ GALGAS_templateSubOperationAST::GALGAS_templateSubOperationAST (const cPtr_templ
 GALGAS_templateExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateSubOperationAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateSubOperationAST GALGAS_templateSubOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -7835,7 +7824,6 @@ GALGAS_templateMultiplyOperationAST::GALGAS_templateMultiplyOperationAST (const 
 GALGAS_templateExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateMultiplyOperationAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateMultiplyOperationAST GALGAS_templateMultiplyOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -8094,7 +8082,6 @@ GALGAS_templateDivideOperationAST::GALGAS_templateDivideOperationAST (const cPtr
 GALGAS_templateExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateDivideOperationAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateDivideOperationAST GALGAS_templateDivideOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -8353,7 +8340,6 @@ GALGAS_templateModuloOperationAST::GALGAS_templateModuloOperationAST (const cPtr
 GALGAS_templateExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateModuloOperationAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateModuloOperationAST GALGAS_templateModuloOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -8609,7 +8595,6 @@ GALGAS_templateUnaryMinusOperationAST::GALGAS_templateUnaryMinusOperationAST (co
 GALGAS_templateExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateUnaryMinusOperationAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateUnaryMinusOperationAST GALGAS_templateUnaryMinusOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -8826,7 +8811,6 @@ GALGAS_templateEqualTestAST::GALGAS_templateEqualTestAST (const cPtr_templateEqu
 GALGAS_templateExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateEqualTestAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateEqualTestAST GALGAS_templateEqualTestAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -9085,7 +9069,6 @@ GALGAS_templateNonEqualTestAST::GALGAS_templateNonEqualTestAST (const cPtr_templ
 GALGAS_templateExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateNonEqualTestAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateNonEqualTestAST GALGAS_templateNonEqualTestAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -9344,7 +9327,6 @@ GALGAS_templateStrictInfTestAST::GALGAS_templateStrictInfTestAST (const cPtr_tem
 GALGAS_templateExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateStrictInfTestAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateStrictInfTestAST GALGAS_templateStrictInfTestAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -9603,7 +9585,6 @@ GALGAS_templateInfOrEqualTestAST::GALGAS_templateInfOrEqualTestAST (const cPtr_t
 GALGAS_templateExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInfOrEqualTestAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateInfOrEqualTestAST GALGAS_templateInfOrEqualTestAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -9862,7 +9843,6 @@ GALGAS_templateStrictSupTestAST::GALGAS_templateStrictSupTestAST (const cPtr_tem
 GALGAS_templateExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateStrictSupTestAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateStrictSupTestAST GALGAS_templateStrictSupTestAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -10121,7 +10101,6 @@ GALGAS_templateSupOrEqualTestAST::GALGAS_templateSupOrEqualTestAST (const cPtr_t
 GALGAS_templateExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateSupOrEqualTestAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateSupOrEqualTestAST GALGAS_templateSupOrEqualTestAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -10380,7 +10359,6 @@ GALGAS_templateLeftShiftOperationAST::GALGAS_templateLeftShiftOperationAST (cons
 GALGAS_templateExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateLeftShiftOperationAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateLeftShiftOperationAST GALGAS_templateLeftShiftOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -10639,7 +10617,6 @@ GALGAS_templateRightShiftOperationAST::GALGAS_templateRightShiftOperationAST (co
 GALGAS_templateExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateRightShiftOperationAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateRightShiftOperationAST GALGAS_templateRightShiftOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
@@ -10895,7 +10872,6 @@ GALGAS_templateInstructionExpressionAST::GALGAS_templateInstructionExpressionAST
 GALGAS_templateInstructionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionExpressionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionExpressionAST GALGAS_templateInstructionExpressionAST::constructor_new (const GALGAS_templateExpressionAST & inAttribute_mExpression,
@@ -11112,7 +11088,6 @@ GALGAS_templateBlockInstructionAST::GALGAS_templateBlockInstructionAST (const cP
 GALGAS_templateInstructionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateBlockInstructionAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateBlockInstructionAST GALGAS_templateBlockInstructionAST::constructor_new (const GALGAS_templateExpressionAST & inAttribute_mExpression,
@@ -11365,7 +11340,6 @@ GALGAS_templateInstructionGetColumnLocationAST::GALGAS_templateInstructionGetCol
 GALGAS_templateInstructionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionGetColumnLocationAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionGetColumnLocationAST GALGAS_templateInstructionGetColumnLocationAST::constructor_new (LOCATION_ARGS) {
@@ -11490,7 +11464,6 @@ GALGAS_templateInstructionGotoColumnLocationAST::GALGAS_templateInstructionGotoC
 GALGAS_templateInstructionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionGotoColumnLocationAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionGotoColumnLocationAST GALGAS_templateInstructionGotoColumnLocationAST::constructor_new (LOCATION_ARGS) {
@@ -12108,7 +12081,6 @@ GALGAS_templateInstructionIfAST::GALGAS_templateInstructionIfAST (const cPtr_tem
 GALGAS_templateInstructionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionIfAST) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionIfAST GALGAS_templateInstructionIfAST::constructor_new (const GALGAS_templateInstructionIfBranchListAST & inAttribute_mTemplateInstructionIfBranchList,
@@ -13976,7 +13948,6 @@ GALGAS_templateInstructionForGeneration::GALGAS_templateInstructionForGeneration
 AC_GALGAS_value_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @templateInstructionForGeneration class
 //----------------------------------------------------------------------------------------------------------------------
@@ -14491,7 +14462,6 @@ GALGAS_templateInstructionGetColumnLocationForGeneration::GALGAS_templateInstruc
 GALGAS_templateInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionGetColumnLocationForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionGetColumnLocationForGeneration GALGAS_templateInstructionGetColumnLocationForGeneration::constructor_new (LOCATION_ARGS) {
@@ -14616,7 +14586,6 @@ GALGAS_templateInstructionGotoColumnLocationForGeneration::GALGAS_templateInstru
 GALGAS_templateInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionGotoColumnLocationForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionGotoColumnLocationForGeneration GALGAS_templateInstructionGotoColumnLocationForGeneration::constructor_new (LOCATION_ARGS) {
@@ -15234,7 +15203,6 @@ GALGAS_templateInstructionIfForGeneration::GALGAS_templateInstructionIfForGenera
 GALGAS_templateInstructionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionIfForGeneration) ;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionIfForGeneration GALGAS_templateInstructionIfForGeneration::constructor_new (const GALGAS_templateInstructionIfBranchListForGeneration & inAttribute_mTemplateInstructionIfBranchList,
