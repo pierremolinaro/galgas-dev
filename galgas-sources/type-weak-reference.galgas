@@ -139,13 +139,6 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
     end
   end
 #--- Build attribute Map and constructor argument list
-#  @functionSignature constructorAttributeTypeList = {}
-#  for () in inheritedTypedAttributeList do
-#    constructorAttributeTypeList +=
-#      !if mHasSelector then mPropertyName else ["" nowhere] end
-#      !mPropertyTypeEntry
-#      !mPropertyName.string
-#  end
   for () in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     var hasSelector = false
@@ -157,10 +150,6 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
         hasSelector = true
       end
     end
-#    constructorAttributeTypeList += 
-#      !if hasSelector then mPropertyName else ["" nowhere] end
-#      !attributeTypeIndex
-#      !mPropertyName.string
     [!?attributeMap insertKey
       !mPropertyName
       !mIsPublic
@@ -183,6 +172,18 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
     !{}
     !false
     !weakReferenceIndex
+  ]
+#--- Add getter to return a strong object
+  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mClassTypeName ?let refClassTypeIndex]
+  [!?getterMap insertKey
+    !self.mClassTypeName
+    !@methodKind.definedAsMember
+    !@functionSignature {} # No argument
+    !@location.here
+    !true # Compiler argument
+    !refClassTypeIndex # Returned type
+    !@methodQualifier.isBasic
+    !"" # No Error message
   ]
 #--- Typed attribute list
   @typedPropertyList currentClassTypedAttributeList = {}
@@ -240,18 +241,6 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
     !?setterMap
     !?instanceMethodMap
   )
-#--- Generate a "default" constructor ?
-#  @string defaultConstructorName
-#  if [superClassIndex isNull] then
-#    defaultConstructorName = "default"
-#  else
-#    defaultConstructorName = [superClassIndex mDefaultConstructorName]
-#  end
-#  for () in currentClassTypedAttributeList while defaultConstructorName != "" do
-#    if ([mPropertyTypeEntry mDefaultConstructorName] == "") | not [mPropertyTypeEntry mIsConcrete] then
-#      defaultConstructorName = ""
-#    end
-#  end
 #--- Enter in type map
   [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mClassTypeName ?let classIndex]
   [!?ioSemanticContext.mTypeMap insertKey

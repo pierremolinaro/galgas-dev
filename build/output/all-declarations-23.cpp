@@ -9,6 +9,86 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Routine 'enterConstructorWith2Arguments'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterConstructorWith_32_Arguments (GALGAS_constructorMap & ioArgument_ioConstructorMap,
+                                                GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
+                                                const GALGAS_string constinArgument_inConstructorName,
+                                                const GALGAS_string constinArgument_inArgument_31_TypeName,
+                                                const GALGAS_string constinArgument_inArgument_31_Name,
+                                                const GALGAS_string constinArgument_inArgument_32_TypeName,
+                                                const GALGAS_string constinArgument_inArgument_32_Name,
+                                                const GALGAS_string constinArgument_inReturnedTypeName,
+                                                const GALGAS_bool constinArgument_inHasLexiqueArgument,
+                                                C_Compiler * inCompiler
+                                                COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_unifiedTypeMap_2D_entry var_returnedTypeIndex_3225 ;
+  {
+  GALGAS_unifiedTypeMap_2D_entry::class_method_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex_3225 COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 72)) ;
+  }
+  GALGAS_functionSignature var_argumentTypeList_3352 = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsConstructors.galgas", 73)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_t_3401 ;
+  {
+  GALGAS_unifiedTypeMap_2D_entry::class_method_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t_3401 COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 75)) ;
+  }
+  var_argumentTypeList_3352.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsConstructors.galgas", 76)), var_t_3401, constinArgument_inArgument_31_Name  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 76)) ;
+  {
+  GALGAS_unifiedTypeMap_2D_entry::class_method_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_32_TypeName, var_t_3401 COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 77)) ;
+  }
+  var_argumentTypeList_3352.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsConstructors.galgas", 78)), var_t_3401, constinArgument_inArgument_32_Name  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 78)) ;
+  {
+  ioArgument_ioConstructorMap.setter_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inConstructorName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 80))  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 80)), var_argumentTypeList_3352, constinArgument_inHasLexiqueArgument, var_returnedTypeIndex_3225 COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 79)) ;
+  }
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterConstructorWith3Arguments'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterConstructorWith_33_Arguments (GALGAS_constructorMap & ioArgument_ioConstructorMap,
+                                                GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
+                                                const GALGAS_string constinArgument_inConstructorName,
+                                                const GALGAS_string constinArgument_inArgument_31_TypeName,
+                                                const GALGAS_string constinArgument_inArgument_31_Name,
+                                                const GALGAS_string constinArgument_inArgument_32_TypeName,
+                                                const GALGAS_string constinArgument_inArgument_32_Name,
+                                                const GALGAS_string constinArgument_inArgument_33_TypeName,
+                                                const GALGAS_string constinArgument_inArgument_33_Name,
+                                                const GALGAS_string constinArgument_inReturnedTypeName,
+                                                const GALGAS_bool constinArgument_inHasLexiqueArgument,
+                                                C_Compiler * inCompiler
+                                                COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_unifiedTypeMap_2D_entry var_returnedTypeIndex_4602 ;
+  {
+  GALGAS_unifiedTypeMap_2D_entry::class_method_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex_4602 COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 102)) ;
+  }
+  GALGAS_unifiedTypeMap_2D_entry var_t_4695 ;
+  {
+  GALGAS_unifiedTypeMap_2D_entry::class_method_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t_4695 COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 103)) ;
+  }
+  GALGAS_functionSignature var_argumentTypeList_4734 = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsConstructors.galgas", 104)) ;
+  var_argumentTypeList_4734.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsConstructors.galgas", 105)), var_t_4695, constinArgument_inArgument_31_Name  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 105)) ;
+  {
+  GALGAS_unifiedTypeMap_2D_entry::class_method_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_32_TypeName, var_t_4695 COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 106)) ;
+  }
+  var_argumentTypeList_4734.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsConstructors.galgas", 107)), var_t_4695, constinArgument_inArgument_32_Name  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 107)) ;
+  {
+  GALGAS_unifiedTypeMap_2D_entry::class_method_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_33_TypeName, var_t_4695 COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 108)) ;
+  }
+  var_argumentTypeList_4734.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsConstructors.galgas", 109)), var_t_4695, constinArgument_inArgument_33_Name  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 109)) ;
+  {
+  ioArgument_ioConstructorMap.setter_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inConstructorName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 111))  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 111)), var_argumentTypeList_4734, constinArgument_inHasLexiqueArgument, var_returnedTypeIndex_4602 COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 110)) ;
+  }
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Routine 'enterConstructorWith4Arguments'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -8933,29 +9013,4 @@ static void defineExtensionMethod_inputParameterDeclaredConstant_analyzeInputPar
 //----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_inputParameterDeclaredConstant_analyzeInputParameter (defineExtensionMethod_inputParameterDeclaredConstant_analyzeInputParameter, NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@grammarInstructionSyntaxDirectedTranslationResultNone analyzeSDT'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-static void extensionMethod_grammarInstructionSyntaxDirectedTranslationResultNone_analyzeSDT (const cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * /* inObject */,
-                                                                                              const GALGAS_analysisContext /* constinArgument_inAnalysisContext */,
-                                                                                              const GALGAS_bool /* constinArgument_inHasTranslateFeature */,
-                                                                                              GALGAS_localVarManager & /* ioArgument_ioVariableMap */,
-                                                                                              C_Compiler * /* inCompiler */
-                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-static void defineExtensionMethod_grammarInstructionSyntaxDirectedTranslationResultNone_analyzeSDT (void) {
-  enterExtensionMethod_analyzeSDT (kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone.mSlotID,
-                                   extensionMethod_grammarInstructionSyntaxDirectedTranslationResultNone_analyzeSDT) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-C_PrologueEpilogue gMethod_grammarInstructionSyntaxDirectedTranslationResultNone_analyzeSDT (defineExtensionMethod_grammarInstructionSyntaxDirectedTranslationResultNone_analyzeSDT, NULL) ;
 

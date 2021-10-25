@@ -2,16 +2,7 @@
 //   Object comparison                                                                           
 //----------------------------------------------------------------------------------------------------------------------
 
-%
-if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] == 0) then
-%/* typeComparisonResult cPtr_%!WEAK_REF_TYPE_IDENTIFIER%::dynamicObjectCompare (const acPtr_class * /* inOperandPtr */) const {
-  return kOperandEqual ;
-} */
-
-//----------------------------------------------------------------------------------------------------------------------
-%end
-
-if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
+%if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
 %/* typeComparisonResult cPtr_%!WEAK_REF_TYPE_IDENTIFIER%::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_%!WEAK_REF_TYPE_IDENTIFIER% * p = (const cPtr_%!WEAK_REF_TYPE_IDENTIFIER% *) inOperandPtr ;
@@ -78,6 +69,23 @@ GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% (const GA
 GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::constructor_nil (LOCATION_ARGS) {
   GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% result ;
   macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_%!CLASS_TYPE_IDENTIFIER% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::getter_%!CLASS_TYPE_IDENTIFIER% (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_%!CLASS_TYPE_IDENTIFIER% result ;
+  if (mObjectPtr != NULL) {
+    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
+    acStrongPtr_class * strongPtr = p->strongObject () ;
+    if (strongPtr == NULL) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_%!CLASS_TYPE_IDENTIFIER%) ;
+      result = GALGAS_%!CLASS_TYPE_IDENTIFIER% ((cPtr_%!CLASS_TYPE_IDENTIFIER% *) strongPtr) ;
+    }
+  }
   return result ;
 }
 

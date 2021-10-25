@@ -401,7 +401,7 @@ override method @classDeclarationAST semanticAnalysis
   end
 #------ check "reference" status:
 # a base class can be freely declared as shared or not
-# a class should the same 'shared' shared status as its super class
+# a class should the same 'reference' status as its super class
   if superClassEntry != .null then
     [[superClassEntry mTypeKindEnum] classType ?isReference: let superClassIsReference]
     if superClassIsReference & not self.mIsReference then
@@ -450,16 +450,8 @@ override method @classDeclarationAST semanticAnalysis
     for () in mAttributeList do
       if [mValue string] == "setter" then
         warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
-#        if hasSetter then
-#          error mValue : "the '%setter' attribute is already named"
-#        end
-#        hasSetter = true
       elsif [mValue string] == "nogetter" then
         warning mValue : "obsolete attribute: use 'private' qualifier"
-#        if not hasGetter then
-#          error mValue : "the '%nogetter' attribute is already named"
-#        end
-#        hasGetter = false
       elsif [mValue string] == "selector" then
         if hasSelector then
           error mValue : "the '%selector' attribute is already named"
