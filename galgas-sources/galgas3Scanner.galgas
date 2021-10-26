@@ -193,7 +193,6 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "valueclass",
   "var",
   "warning",
-  "weak",
   "while",
   "with"
 }
