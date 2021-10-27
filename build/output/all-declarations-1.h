@@ -4048,10 +4048,10 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                                              C_Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMAllTypedAttributeListForKey (class GALGAS_typedPropertyList constinArgument0,
-                                                                        class GALGAS_string constinArgument1,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void setter_setMAllTypedPropertyListForKey (class GALGAS_typedPropertyList constinArgument0,
+                                                                       class GALGAS_string constinArgument1,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMClassMethodMapForKey (class GALGAS_classMethodMap constinArgument0,
                                                                  class GALGAS_string constinArgument1,
@@ -4063,10 +4063,10 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                                  C_Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMCurrentTypedAttributeListForKey (class GALGAS_typedPropertyList constinArgument0,
-                                                                            class GALGAS_string constinArgument1,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void setter_setMCurrentTypedPropertyListForKey (class GALGAS_typedPropertyList constinArgument0,
+                                                                           class GALGAS_string constinArgument1,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMDefaultConstructorNameForKey (class GALGAS_string constinArgument0,
                                                                          class GALGAS_string constinArgument1,
@@ -4212,9 +4212,9 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                                                                     C_Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_typedPropertyList getter_mAllTypedAttributeListForKey (const class GALGAS_string & constinOperand0,
-                                                                                               C_Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_typedPropertyList getter_mAllTypedPropertyListForKey (const class GALGAS_string & constinOperand0,
+                                                                                              C_Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_classMethodMap getter_mClassMethodMapForKey (const class GALGAS_string & constinOperand0,
                                                                                      C_Compiler * inCompiler
@@ -4224,9 +4224,9 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                                                      C_Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_typedPropertyList getter_mCurrentTypedAttributeListForKey (const class GALGAS_string & constinOperand0,
-                                                                                                   C_Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_typedPropertyList getter_mCurrentTypedPropertyListForKey (const class GALGAS_string & constinOperand0,
+                                                                                                  C_Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_string getter_mDefaultConstructorNameForKey (const class GALGAS_string & constinOperand0,
                                                                                      C_Compiler * inCompiler
@@ -4342,9 +4342,9 @@ class cEnumerator_unifiedTypeMap : public cGenericAbstractEnumerator {
   public: class GALGAS_unifiedTypeMap_2D_entry current_mSuperType (LOCATION_ARGS) const ;
   public: class GALGAS_typeKindEnum current_mTypeKindEnum (LOCATION_ARGS) const ;
   public: class GALGAS_bool current_mSupportCollectionValue (LOCATION_ARGS) const ;
-  public: class GALGAS_typedPropertyList current_mAllTypedAttributeList (LOCATION_ARGS) const ;
+  public: class GALGAS_typedPropertyList current_mAllTypedPropertyList (LOCATION_ARGS) const ;
   public: class GALGAS_propertyMap current_mPropertyMap (LOCATION_ARGS) const ;
-  public: class GALGAS_typedPropertyList current_mCurrentTypedAttributeList (LOCATION_ARGS) const ;
+  public: class GALGAS_typedPropertyList current_mCurrentTypedPropertyList (LOCATION_ARGS) const ;
   public: class GALGAS_constructorMap current_mConstructorMap (LOCATION_ARGS) const ;
   public: class GALGAS_getterMap current_mGetterMap (LOCATION_ARGS) const ;
   public: class GALGAS_setterMap current_mSetterMap (LOCATION_ARGS) const ;

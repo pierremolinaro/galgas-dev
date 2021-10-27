@@ -9363,7 +9363,6 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeH
                                                                                            const GALGAS_string & in_CLASS_5F_TYPE_5F_IDENTIFIER,
                                                                                            const GALGAS_string & in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER,
                                                                                            const GALGAS_string & in_SUPER_5F_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER,
-                                                                                           const GALGAS_bool & in_IS_5F_ABSTRACT,
                                                                                            const GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR
                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
@@ -9391,7 +9390,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeH
   result << in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (void) ;\n"
     "\n" ;
-  const enumGalgasBool test_1 = in_HAS_5F_DEFAULT_5F_CONSTRUCTOR.operator_and (in_IS_5F_ABSTRACT.operator_not (SOURCE_FILE ("GALGAS_weak_reference_class.h1.galgasTemplate", 15)) COMMA_SOURCE_FILE ("GALGAS_weak_reference_class.h1.galgasTemplate", 15)).boolEnum () ;
+  const enumGalgasBool test_1 = in_HAS_5F_DEFAULT_5F_CONSTRUCTOR.boolEnum () ;
   if (kBoolTrue == test_1) {
     result << "//--------------------------------- Default GALGAS constructor\n"
       "  public: static GALGAS_" ;
@@ -9403,16 +9402,22 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeH
   result << "//--------------------------------- Constructor and assignment from strong reference\n"
     "  public: GALGAS_" ;
   result << in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.stringValue () ;
-  result << " (const GALGAS_" ;
+  result << " (const class GALGAS_" ;
   result << in_CLASS_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " & inSource) ;\n"
     "\n"
     "  public: GALGAS_" ;
   result << in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.stringValue () ;
-  result << " & operator = (const GALGAS_" ;
+  result << " & operator = (const class GALGAS_" ;
   result << in_CLASS_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " & inSource) ;\n"
     "\n"
+    "//--------------------------------- Bang operator\n"
+    "  public: GALGAS_" ;
+  result << in_CLASS_5F_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " bang_" ;
+  result << in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;\n"
     "\n" ;
   return GALGAS_string (result) ;
 }
@@ -9428,9 +9433,8 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeS
                                                                                                        const GALGAS_string & in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER,
                                                                                                        const GALGAS_string & in_SUPER_5F_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER,
                                                                                                        const GALGAS_typedPropertyList & in_CURRENT_5F_ATTRIBUTE_5F_LIST,
-                                                                                                       const GALGAS_typedPropertyList & in_ALL_5F_ATTRIBUTE_5F_LIST,
+                                                                                                       const GALGAS_typedPropertyList & /* in_ALL_5F_ATTRIBUTE_5F_LIST */,
                                                                                                        const GALGAS_typedPropertyList & /* in_INHERITED_5F_ATTRIBUTE_5F_LIST */,
-                                                                                                       const GALGAS_bool & in_IS_5F_ABSTRACT,
                                                                                                        const GALGAS_bool & /* in_HAS_5F_DEFAULT_5F_CONSTRUCTOR */
                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
@@ -9438,43 +9442,6 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeS
   result << "//----------------------------------------------------------------------------------------------------------------------\n"
     "//   Object comparison                                                                           \n"
     "//----------------------------------------------------------------------------------------------------------------------\n"
-    "\n" ;
-  const enumGalgasBool test_0 = in_IS_5F_ABSTRACT.operator_not (SOURCE_FILE ("GALGAS_weak_reference_class.cpp.galgasTemplate", 5)).operator_and (GALGAS_bool (kIsStrictSup, in_ALL_5F_ATTRIBUTE_5F_LIST.getter_length (SOURCE_FILE ("GALGAS_weak_reference_class.cpp.galgasTemplate", 5)).objectCompare (GALGAS_uint ((uint32_t) 0U))) COMMA_SOURCE_FILE ("GALGAS_weak_reference_class.cpp.galgasTemplate", 5)).boolEnum () ;
-  if (kBoolTrue == test_0) {
-    result << "/* typeComparisonResult cPtr_" ;
-    result << in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.stringValue () ;
-    result << "::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {\n"
-      "  typeComparisonResult result = kOperandEqual ;\n"
-      "  const cPtr_" ;
-    result << in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.stringValue () ;
-    result << " * p = (const cPtr_" ;
-    result << in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.stringValue () ;
-    result << " *) inOperandPtr ;\n"
-      "  macroValidSharedObject (p, cPtr_" ;
-    result << in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.stringValue () ;
-    result << ") ;\n" ;
-    GALGAS_uint index_777_ (0) ;
-    if (in_ALL_5F_ATTRIBUTE_5F_LIST.isValid ()) {
-      cEnumerator_typedPropertyList enumerator_777 (in_ALL_5F_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-      while (enumerator_777.hasCurrentObject ()) {
-        result << "  if (kOperandEqual == result) {\n"
-          "    result = mProperty_" ;
-        result << enumerator_777.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_weak_reference_class.cpp.galgasTemplate", 12)).stringValue () ;
-        result << ".objectCompare (p->mProperty_" ;
-        result << enumerator_777.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_weak_reference_class.cpp.galgasTemplate", 12)).stringValue () ;
-        result << ") ;\n"
-          "  }\n" ;
-        index_777_.increment () ;
-        enumerator_777.gotoNextObject () ;
-      }
-    }
-    result << "  return result ;\n"
-      "} */\n"
-      "\n"
-      "//----------------------------------------------------------------------------------------------------------------------\n" ;
-  }else if (kBoolFalse == test_0) {
-  }
-  result << "\n"
     "\n"
     "typeComparisonResult GALGAS_" ;
   result << in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -9503,10 +9470,10 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeS
   result << "::GALGAS_" ;
   result << in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (void) :\n" ;
-  const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, in_SUPER_5F_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-  if (kBoolTrue == test_1) {
+  const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, in_SUPER_5F_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+  if (kBoolTrue == test_0) {
     result << "AC_GALGAS_weak_reference" ;
-  }else if (kBoolFalse == test_1) {
+  }else if (kBoolFalse == test_0) {
     result << "GALGAS_" ;
     result << in_SUPER_5F_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   }
@@ -9540,10 +9507,10 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeS
   result << " (const GALGAS_" ;
   result << in_CLASS_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " & inSource) :\n" ;
-  const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, in_SUPER_5F_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-  if (kBoolTrue == test_2) {
+  const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, in_SUPER_5F_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+  if (kBoolTrue == test_1) {
     result << "AC_GALGAS_weak_reference" ;
-  }else if (kBoolFalse == test_2) {
+  }else if (kBoolFalse == test_1) {
     result << "GALGAS_" ;
     result << in_SUPER_5F_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   }
@@ -9570,8 +9537,8 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeS
   result << in_CLASS_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " GALGAS_" ;
   result << in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.stringValue () ;
-  result << "::getter_" ;
-  result << in_CLASS_5F_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::bang_" ;
+  result << in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {\n"
     "  GALGAS_" ;
   result << in_CLASS_5F_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -9595,23 +9562,23 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeS
     "  return result ;\n"
     "}\n"
     "\n" ;
-  GALGAS_uint index_4226_ (0) ;
+  GALGAS_uint index_3427_ (0) ;
   if (in_CURRENT_5F_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_4226 (in_CURRENT_5F_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_4226.hasCurrentObject ()) {
-      const enumGalgasBool test_3 = enumerator_4226.current_mHasGetter (HERE).boolEnum () ;
-      if (kBoolTrue == test_3) {
+    cEnumerator_typedPropertyList enumerator_3427 (in_CURRENT_5F_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_3427.hasCurrentObject ()) {
+      const enumGalgasBool test_2 = enumerator_3427.current_mHasGetter (HERE).boolEnum () ;
+      if (kBoolTrue == test_2) {
         result << "//----------------------------------------------------------------------------------------------------------------------\n"
           "\n"
           "GALGAS_" ;
-        result << enumerator_4226.current_mPropertyTypeEntry (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_weak_reference_class.cpp.galgasTemplate", 95)).stringValue () ;
+        result << enumerator_3427.current_mPropertyTypeEntry (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_weak_reference_class.cpp.galgasTemplate", 79)).stringValue () ;
         result << " GALGAS_" ;
         result << in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.stringValue () ;
         result << "::getter_" ;
-        result << enumerator_4226.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_weak_reference_class.cpp.galgasTemplate", 95)).stringValue () ;
+        result << enumerator_3427.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_weak_reference_class.cpp.galgasTemplate", 79)).stringValue () ;
         result << " (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {\n"
           "  GALGAS_" ;
-        result << enumerator_4226.current_mPropertyTypeEntry (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_weak_reference_class.cpp.galgasTemplate", 96)).stringValue () ;
+        result << enumerator_3427.current_mPropertyTypeEntry (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_weak_reference_class.cpp.galgasTemplate", 80)).stringValue () ;
         result << " result ;\n"
           "  if (NULL != mObjectPtr) {\n"
           "    cPtr_weakReference_class * ptr = (cPtr_weakReference_class *) mObjectPtr ;\n"
@@ -9627,35 +9594,35 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeS
         result << in_CLASS_5F_TYPE_5F_IDENTIFIER.stringValue () ;
         result << ") ;\n"
           "      result = objectPtr->mProperty_" ;
-        result << enumerator_4226.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_weak_reference_class.cpp.galgasTemplate", 104)).stringValue () ;
+        result << enumerator_3427.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_weak_reference_class.cpp.galgasTemplate", 88)).stringValue () ;
         result << " ;\n"
           "    }\n"
           "  }\n"
           "  return result ;\n"
           "}\n"
           "\n" ;
-      }else if (kBoolFalse == test_3) {
+      }else if (kBoolFalse == test_2) {
       }
-      index_4226_.increment () ;
-      enumerator_4226.gotoNextObject () ;
+      index_3427_.increment () ;
+      enumerator_3427.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_5327_ (0) ;
+  GALGAS_uint index_4528_ (0) ;
   if (in_CURRENT_5F_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_5327 (in_CURRENT_5F_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_5327.hasCurrentObject ()) {
-      const enumGalgasBool test_4 = enumerator_5327.current_mHasSetter (HERE).boolEnum () ;
-      if (kBoolTrue == test_4) {
+    cEnumerator_typedPropertyList enumerator_4528 (in_CURRENT_5F_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_4528.hasCurrentObject ()) {
+      const enumGalgasBool test_3 = enumerator_4528.current_mHasSetter (HERE).boolEnum () ;
+      if (kBoolTrue == test_3) {
         result << "//----------------------------------------------------------------------------------------------------------------------\n"
           "\n"
           "void GALGAS_" ;
         result << in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.stringValue () ;
         result << "::setter_set" ;
-        result << enumerator_5327.current_mPropertyName (HERE).getter_string (HERE).getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("GALGAS_weak_reference_class.cpp.galgasTemplate", 115)).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_weak_reference_class.cpp.galgasTemplate", 115)).stringValue () ;
+        result << enumerator_4528.current_mPropertyName (HERE).getter_string (HERE).getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("GALGAS_weak_reference_class.cpp.galgasTemplate", 99)).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_weak_reference_class.cpp.galgasTemplate", 99)).stringValue () ;
         result << " (" ;
         columnMarker = result.currentColumn () ;
         result << "const GALGAS_" ;
-        result << enumerator_5327.current_mPropertyTypeEntry (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_weak_reference_class.cpp.galgasTemplate", 115)).stringValue () ;
+        result << enumerator_4528.current_mPropertyTypeEntry (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_weak_reference_class.cpp.galgasTemplate", 99)).stringValue () ;
         result << " inValue,\n" ;
         result.appendSpacesUntilColumn (columnMarker) ;
         result << "C_Compiler * inCompiler COMMA_LOCATION_ARGS) {\n"
@@ -9673,16 +9640,16 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeS
         result << in_CLASS_5F_TYPE_5F_IDENTIFIER.stringValue () ;
         result << ") ;\n"
           "      objectPtr->mProperty_" ;
-        result << enumerator_5327.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_weak_reference_class.cpp.galgasTemplate", 124)).stringValue () ;
+        result << enumerator_4528.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_weak_reference_class.cpp.galgasTemplate", 108)).stringValue () ;
         result << " = inValue ;\n"
           "    }\n"
           "  }\n"
           "}\n"
           "\n" ;
-      }else if (kBoolFalse == test_4) {
+      }else if (kBoolFalse == test_3) {
       }
-      index_5327_.increment () ;
-      enumerator_5327.gotoNextObject () ;
+      index_4528_.increment () ;
+      enumerator_4528.gotoNextObject () ;
     }
   }
   return GALGAS_string (result) ;

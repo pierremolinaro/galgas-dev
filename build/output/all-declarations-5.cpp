@@ -9620,9 +9620,9 @@ cMapElement_unifiedTypeMap::cMapElement_unifiedTypeMap (const GALGAS_lstring & i
                                                         const GALGAS_unifiedTypeMap_2D_entry & in_mSuperType,
                                                         const GALGAS_typeKindEnum & in_mTypeKindEnum,
                                                         const GALGAS_bool & in_mSupportCollectionValue,
-                                                        const GALGAS_typedPropertyList & in_mAllTypedAttributeList,
+                                                        const GALGAS_typedPropertyList & in_mAllTypedPropertyList,
                                                         const GALGAS_propertyMap & in_mPropertyMap,
-                                                        const GALGAS_typedPropertyList & in_mCurrentTypedAttributeList,
+                                                        const GALGAS_typedPropertyList & in_mCurrentTypedPropertyList,
                                                         const GALGAS_constructorMap & in_mConstructorMap,
                                                         const GALGAS_getterMap & in_mGetterMap,
                                                         const GALGAS_setterMap & in_mSetterMap,
@@ -9648,9 +9648,9 @@ mProperty_mIsConcrete (in_mIsConcrete),
 mProperty_mSuperType (in_mSuperType),
 mProperty_mTypeKindEnum (in_mTypeKindEnum),
 mProperty_mSupportCollectionValue (in_mSupportCollectionValue),
-mProperty_mAllTypedAttributeList (in_mAllTypedAttributeList),
+mProperty_mAllTypedPropertyList (in_mAllTypedPropertyList),
 mProperty_mPropertyMap (in_mPropertyMap),
-mProperty_mCurrentTypedAttributeList (in_mCurrentTypedAttributeList),
+mProperty_mCurrentTypedPropertyList (in_mCurrentTypedPropertyList),
 mProperty_mConstructorMap (in_mConstructorMap),
 mProperty_mGetterMap (in_mGetterMap),
 mProperty_mSetterMap (in_mSetterMap),
@@ -9674,14 +9674,14 @@ mProperty_mHeaderKind (in_mHeaderKind) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_unifiedTypeMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mIsPredefined.isValid () && mProperty_mIsConcrete.isValid () && mProperty_mSuperType.isValid () && mProperty_mTypeKindEnum.isValid () && mProperty_mSupportCollectionValue.isValid () && mProperty_mAllTypedAttributeList.isValid () && mProperty_mPropertyMap.isValid () && mProperty_mCurrentTypedAttributeList.isValid () && mProperty_mConstructorMap.isValid () && mProperty_mGetterMap.isValid () && mProperty_mSetterMap.isValid () && mProperty_mInstanceMethodMap.isValid () && mProperty_mClassMethodMap.isValid () && mProperty_mOptionalMethodMap.isValid () && mProperty_mEnumerationDescriptor.isValid () && mProperty_mHandledOperatorFlags.isValid () && mProperty_mAddAssignOperatorArguments.isValid () && mProperty_mEnumConstantMap.isValid () && mProperty_mEnumConstantList.isValid () && mProperty_mMapSearchMethodList.isValid () && mProperty_mMapEntrySearchConstructorList.isValid () && mProperty_mGenerateHeaderInSeparateFile.isValid () && mProperty_mTypeForEnumeratedElement.isValid () && mProperty_mDefaultConstructorName.isValid () && mProperty_mHeaderFileName.isValid () && mProperty_mHeaderKind.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mIsPredefined.isValid () && mProperty_mIsConcrete.isValid () && mProperty_mSuperType.isValid () && mProperty_mTypeKindEnum.isValid () && mProperty_mSupportCollectionValue.isValid () && mProperty_mAllTypedPropertyList.isValid () && mProperty_mPropertyMap.isValid () && mProperty_mCurrentTypedPropertyList.isValid () && mProperty_mConstructorMap.isValid () && mProperty_mGetterMap.isValid () && mProperty_mSetterMap.isValid () && mProperty_mInstanceMethodMap.isValid () && mProperty_mClassMethodMap.isValid () && mProperty_mOptionalMethodMap.isValid () && mProperty_mEnumerationDescriptor.isValid () && mProperty_mHandledOperatorFlags.isValid () && mProperty_mAddAssignOperatorArguments.isValid () && mProperty_mEnumConstantMap.isValid () && mProperty_mEnumConstantList.isValid () && mProperty_mMapSearchMethodList.isValid () && mProperty_mMapEntrySearchConstructorList.isValid () && mProperty_mGenerateHeaderInSeparateFile.isValid () && mProperty_mTypeForEnumeratedElement.isValid () && mProperty_mDefaultConstructorName.isValid () && mProperty_mHeaderFileName.isValid () && mProperty_mHeaderKind.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 cMapElement * cMapElement_unifiedTypeMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_unifiedTypeMap (mProperty_lkey, mProperty_mIsPredefined, mProperty_mIsConcrete, mProperty_mSuperType, mProperty_mTypeKindEnum, mProperty_mSupportCollectionValue, mProperty_mAllTypedAttributeList, mProperty_mPropertyMap, mProperty_mCurrentTypedAttributeList, mProperty_mConstructorMap, mProperty_mGetterMap, mProperty_mSetterMap, mProperty_mInstanceMethodMap, mProperty_mClassMethodMap, mProperty_mOptionalMethodMap, mProperty_mEnumerationDescriptor, mProperty_mHandledOperatorFlags, mProperty_mAddAssignOperatorArguments, mProperty_mEnumConstantMap, mProperty_mEnumConstantList, mProperty_mMapSearchMethodList, mProperty_mMapEntrySearchConstructorList, mProperty_mGenerateHeaderInSeparateFile, mProperty_mTypeForEnumeratedElement, mProperty_mDefaultConstructorName, mProperty_mHeaderFileName, mProperty_mHeaderKind COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_unifiedTypeMap (mProperty_lkey, mProperty_mIsPredefined, mProperty_mIsConcrete, mProperty_mSuperType, mProperty_mTypeKindEnum, mProperty_mSupportCollectionValue, mProperty_mAllTypedPropertyList, mProperty_mPropertyMap, mProperty_mCurrentTypedPropertyList, mProperty_mConstructorMap, mProperty_mGetterMap, mProperty_mSetterMap, mProperty_mInstanceMethodMap, mProperty_mClassMethodMap, mProperty_mOptionalMethodMap, mProperty_mEnumerationDescriptor, mProperty_mHandledOperatorFlags, mProperty_mAddAssignOperatorArguments, mProperty_mEnumConstantMap, mProperty_mEnumConstantList, mProperty_mMapSearchMethodList, mProperty_mMapEntrySearchConstructorList, mProperty_mGenerateHeaderInSeparateFile, mProperty_mTypeForEnumeratedElement, mProperty_mDefaultConstructorName, mProperty_mHeaderFileName, mProperty_mHeaderKind COMMA_HERE)) ;
   return result ;
 }
 
@@ -9710,16 +9710,16 @@ void cMapElement_unifiedTypeMap::description (C_String & ioString, const int32_t
   mProperty_mSupportCollectionValue.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mAllTypedAttributeList" ":" ;
-  mProperty_mAllTypedAttributeList.description (ioString, inIndentation) ;
+  ioString << "mAllTypedPropertyList" ":" ;
+  mProperty_mAllTypedPropertyList.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mPropertyMap" ":" ;
   mProperty_mPropertyMap.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mCurrentTypedAttributeList" ":" ;
-  mProperty_mCurrentTypedAttributeList.description (ioString, inIndentation) ;
+  ioString << "mCurrentTypedPropertyList" ":" ;
+  mProperty_mCurrentTypedPropertyList.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mConstructorMap" ":" ;
@@ -9815,13 +9815,13 @@ typeComparisonResult cMapElement_unifiedTypeMap::compare (const cCollectionEleme
     result = mProperty_mSupportCollectionValue.objectCompare (operand->mProperty_mSupportCollectionValue) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mAllTypedAttributeList.objectCompare (operand->mProperty_mAllTypedAttributeList) ;
+    result = mProperty_mAllTypedPropertyList.objectCompare (operand->mProperty_mAllTypedPropertyList) ;
   }
   if (kOperandEqual == result) {
     result = mProperty_mPropertyMap.objectCompare (operand->mProperty_mPropertyMap) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mCurrentTypedAttributeList.objectCompare (operand->mProperty_mCurrentTypedAttributeList) ;
+    result = mProperty_mCurrentTypedPropertyList.objectCompare (operand->mProperty_mCurrentTypedPropertyList) ;
   }
   if (kOperandEqual == result) {
     result = mProperty_mConstructorMap.objectCompare (operand->mProperty_mConstructorMap) ;
@@ -10050,9 +10050,9 @@ void GALGAS_unifiedTypeMap::method_searchKey (GALGAS_lstring inKey,
     outArgument2 = p->mProperty_mSuperType ;
     outArgument3 = p->mProperty_mTypeKindEnum ;
     outArgument4 = p->mProperty_mSupportCollectionValue ;
-    outArgument5 = p->mProperty_mAllTypedAttributeList ;
+    outArgument5 = p->mProperty_mAllTypedPropertyList ;
     outArgument6 = p->mProperty_mPropertyMap ;
-    outArgument7 = p->mProperty_mCurrentTypedAttributeList ;
+    outArgument7 = p->mProperty_mCurrentTypedPropertyList ;
     outArgument8 = p->mProperty_mConstructorMap ;
     outArgument9 = p->mProperty_mGetterMap ;
     outArgument10 = p->mProperty_mSetterMap ;
@@ -10151,15 +10151,15 @@ GALGAS_bool GALGAS_unifiedTypeMap::getter_mSupportCollectionValueForKey (const G
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_typedPropertyList GALGAS_unifiedTypeMap::getter_mAllTypedAttributeListForKey (const GALGAS_string & inKey,
-                                                                                     C_Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) const {
+GALGAS_typedPropertyList GALGAS_unifiedTypeMap::getter_mAllTypedPropertyListForKey (const GALGAS_string & inKey,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) attributes ;
   GALGAS_typedPropertyList result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mProperty_mAllTypedAttributeList ;
+    result = p->mProperty_mAllTypedPropertyList ;
   }
   return result ;
 }
@@ -10181,15 +10181,15 @@ GALGAS_propertyMap GALGAS_unifiedTypeMap::getter_mPropertyMapForKey (const GALGA
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_typedPropertyList GALGAS_unifiedTypeMap::getter_mCurrentTypedAttributeListForKey (const GALGAS_string & inKey,
-                                                                                         C_Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) const {
+GALGAS_typedPropertyList GALGAS_unifiedTypeMap::getter_mCurrentTypedPropertyListForKey (const GALGAS_string & inKey,
+                                                                                        C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) attributes ;
   GALGAS_typedPropertyList result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mProperty_mCurrentTypedAttributeList ;
+    result = p->mProperty_mCurrentTypedPropertyList ;
   }
   return result ;
 }
@@ -10536,15 +10536,15 @@ void GALGAS_unifiedTypeMap::setter_setMSupportCollectionValueForKey (GALGAS_bool
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMap::setter_setMAllTypedAttributeListForKey (GALGAS_typedPropertyList inAttributeValue,
-                                                                    GALGAS_string inKey,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) {
+void GALGAS_unifiedTypeMap::setter_setMAllTypedPropertyListForKey (GALGAS_typedPropertyList inAttributeValue,
+                                                                   GALGAS_string inKey,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mProperty_mAllTypedAttributeList = inAttributeValue ;
+    p->mProperty_mAllTypedPropertyList = inAttributeValue ;
   }
 }
 
@@ -10564,15 +10564,15 @@ void GALGAS_unifiedTypeMap::setter_setMPropertyMapForKey (GALGAS_propertyMap inA
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMap::setter_setMCurrentTypedAttributeListForKey (GALGAS_typedPropertyList inAttributeValue,
-                                                                        GALGAS_string inKey,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
+void GALGAS_unifiedTypeMap::setter_setMCurrentTypedPropertyListForKey (GALGAS_typedPropertyList inAttributeValue,
+                                                                       GALGAS_string inKey,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mProperty_mCurrentTypedAttributeList = inAttributeValue ;
+    p->mProperty_mCurrentTypedPropertyList = inAttributeValue ;
   }
 }
 
@@ -10896,10 +10896,10 @@ GALGAS_bool cEnumerator_unifiedTypeMap::current_mSupportCollectionValue (LOCATIO
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_typedPropertyList cEnumerator_unifiedTypeMap::current_mAllTypedAttributeList (LOCATION_ARGS) const {
+GALGAS_typedPropertyList cEnumerator_unifiedTypeMap::current_mAllTypedPropertyList (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mProperty_mAllTypedAttributeList ;
+  return p->mProperty_mAllTypedPropertyList ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10912,10 +10912,10 @@ GALGAS_propertyMap cEnumerator_unifiedTypeMap::current_mPropertyMap (LOCATION_AR
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_typedPropertyList cEnumerator_unifiedTypeMap::current_mCurrentTypedAttributeList (LOCATION_ARGS) const {
+GALGAS_typedPropertyList cEnumerator_unifiedTypeMap::current_mCurrentTypedPropertyList (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mProperty_mCurrentTypedAttributeList ;
+  return p->mProperty_mCurrentTypedPropertyList ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

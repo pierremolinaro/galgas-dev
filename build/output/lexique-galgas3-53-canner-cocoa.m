@@ -631,6 +631,8 @@ static NSInteger search_into_galgas_33_Scanner_galgasKeyWordList (NSString * inS
       mTokenCode = galgas3Scanner_1__26__26_ ;
     }else if (scanningOk && [self testForInputString:@"!=" advance:YES]) {
       mTokenCode = galgas3Scanner_1__21__3D_ ;
+    }else if (scanningOk && [self testForInputString:@"\xC2""\xB0""" advance:YES]) {
+      mTokenCode = galgas3Scanner_1__B0_ ;
     }else if (scanningOk && [self testForInputString:@"~" advance:YES]) {
       mTokenCode = galgas3Scanner_1__7E_ ;
     }else if (scanningOk && [self testForInputString:@"}" advance:YES]) {
@@ -948,7 +950,7 @@ static NSInteger search_into_galgas_33_Scanner_galgasKeyWordList (NSString * inS
 //----------------------------------------------------------------------------------------------------------------------
 
 - (NSUInteger) terminalVocabularyCount {
-  return 152 ;
+  return 153 ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -978,7 +980,7 @@ static NSInteger search_into_galgas_33_Scanner_galgasKeyWordList (NSString * inS
 //----------------------------------------------------------------------------------------------------------------------
 
 - (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal {
-  static const NSUInteger kTerminalSymbolStyles [153] = {0,
+  static const NSUInteger kTerminalSymbolStyles [154] = {0,
     0 /* galgas3Scanner_1_identifier */,
     8 /* galgas3Scanner_1_double_2E_xxx */,
     6 /* galgas3Scanner_1_uint_33__32_ */,
@@ -1130,7 +1132,8 @@ static NSInteger search_into_galgas_33_Scanner_galgasKeyWordList (NSString * inS
     2 /* galgas3Scanner_1__2D__2D_ */,
     2 /* galgas3Scanner_1__2B__2B_ */,
     2 /* galgas3Scanner_1__26__2D__2D_ */,
-    2 /* galgas3Scanner_1__26__2B__2B_ */
+    2 /* galgas3Scanner_1__26__2B__2B_ */,
+    2 /* galgas3Scanner_1__B0_ */
   } ;
   return kTerminalSymbolStyles [inTerminal] ;
 }
@@ -1142,7 +1145,7 @@ static NSInteger search_into_galgas_33_Scanner_galgasKeyWordList (NSString * inS
 //----------------------------------------------------------------------------------------------------------------------
 
 - (BOOL) atomicSelectionForToken: (NSUInteger) inTokenIndex {
-  static const BOOL kTerminalAtomicSelection [153] = {NO,
+  static const BOOL kTerminalAtomicSelection [154] = {NO,
     YES /* galgas3Scanner_1_identifier */,
     YES /* galgas3Scanner_1_double_2E_xxx */,
     YES /* galgas3Scanner_1_uint_33__32_ */,
@@ -1294,7 +1297,8 @@ static NSInteger search_into_galgas_33_Scanner_galgasKeyWordList (NSString * inS
     YES /* galgas3Scanner_1__2D__2D_ */,
     YES /* galgas3Scanner_1__2B__2B_ */,
     YES /* galgas3Scanner_1__26__2D__2D_ */,
-    YES /* galgas3Scanner_1__26__2B__2B_ */
+    YES /* galgas3Scanner_1__26__2B__2B_ */,
+    YES /* galgas3Scanner_1__B0_ */
   } ;
   return kTerminalAtomicSelection [inTokenIndex] ;
 }

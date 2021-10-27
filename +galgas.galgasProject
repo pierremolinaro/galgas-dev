@@ -143,6 +143,7 @@ project (3:4:4) -> "galgas" {
   "galgas-sources/expression-property-access.galgas"
   "galgas-sources/expression-not.galgas"
   "galgas-sources/expression-tilde.galgas"
+  "galgas-sources/expression-bang.galgas"
   "galgas-sources/expression-unary-wrapping-minus.galgas"
   "galgas-sources/expression-or.galgas"
   "galgas-sources/expression-and.galgas"

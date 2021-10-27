@@ -2,22 +2,6 @@
 //   Object comparison                                                                           
 //----------------------------------------------------------------------------------------------------------------------
 
-%if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
-%/* typeComparisonResult cPtr_%!WEAK_REF_TYPE_IDENTIFIER%::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_%!WEAK_REF_TYPE_IDENTIFIER% * p = (const cPtr_%!WEAK_REF_TYPE_IDENTIFIER% *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_%!WEAK_REF_TYPE_IDENTIFIER%) ;
-% for () in ALL_ATTRIBUTE_LIST do
-    %  if (kOperandEqual == result) {\n%
-    %    result = mProperty_%![mPropertyName identifierRepresentation]%.objectCompare (p->mProperty_%![mPropertyName identifierRepresentation]%) ;\n%
-    %  }\n%
-  end
-%  return result ;
-} */
-
-//----------------------------------------------------------------------------------------------------------------------
-%end%
-
 typeComparisonResult GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
@@ -74,7 +58,7 @@ GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::construct
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_%!CLASS_TYPE_IDENTIFIER% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::getter_%!CLASS_TYPE_IDENTIFIER% (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_%!CLASS_TYPE_IDENTIFIER% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::bang_%!WEAK_REF_TYPE_IDENTIFIER% (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_%!CLASS_TYPE_IDENTIFIER% result ;
   if (mObjectPtr != NULL) {
     cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;

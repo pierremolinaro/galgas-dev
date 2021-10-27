@@ -1699,6 +1699,109 @@ class cPtr_tildeExpressionForGeneration : public cPtr_semanticExpressionForGener
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+// Phase 1: @bangExpressionForGeneration  value class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_bangExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
+//--------------------------------- Default constructor
+  public: GALGAS_bangExpressionForGeneration (void) ;
+
+//--------------------------------- Embedded object pointer
+  public: inline const class cPtr_bangExpressionForGeneration * ptr (void) const {
+    return (const cPtr_bangExpressionForGeneration *) mObjectPtr ;
+  }
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_bangExpressionForGeneration (const cPtr_bangExpressionForGeneration * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_bangExpressionForGeneration extractObject (const GALGAS_object & inObject,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_bangExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+                                                                           const class GALGAS_location & inOperand1,
+                                                                           const class GALGAS_semanticExpressionForGeneration & inOperand2,
+                                                                           const class GALGAS_string & inOperand3
+                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_bangExpressionForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMExpression (class GALGAS_semanticExpressionForGeneration inArgument0
+                                                       COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMReceiverTypeName (class GALGAS_string inArgument0
+                                                             COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mExpression (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_string getter_mReceiverTypeName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_bangExpressionForGeneration class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bangExpressionForGeneration ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @bangExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_bangExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
+//--- Properties
+  public: GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
+  public: GALGAS_string mProperty_mReceiverTypeName ;
+
+//--- Constructor
+  public: cPtr_bangExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mResultType,
+                                            const GALGAS_location & in_mLocation,
+                                            const GALGAS_semanticExpressionForGeneration & in_mExpression,
+                                            const GALGAS_string & in_mReceiverTypeName
+                                            COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public: VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mExpression (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG void setter_setMExpression (GALGAS_semanticExpressionForGeneration inValue COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG GALGAS_string getter_mReceiverTypeName (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG void setter_setMReceiverTypeName (GALGAS_string inValue COMMA_LOCATION_ARGS) ;
+//--- Description
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 // Phase 1: @unaryWrappingMinusExpressionForGeneration  value class
 //
 //----------------------------------------------------------------------------------------------------------------------

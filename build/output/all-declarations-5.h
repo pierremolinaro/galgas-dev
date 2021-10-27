@@ -3199,9 +3199,9 @@ class cMapElement_unifiedTypeMap : public cMapElement {
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mSuperType ;
   public: GALGAS_typeKindEnum mProperty_mTypeKindEnum ;
   public: GALGAS_bool mProperty_mSupportCollectionValue ;
-  public: GALGAS_typedPropertyList mProperty_mAllTypedAttributeList ;
+  public: GALGAS_typedPropertyList mProperty_mAllTypedPropertyList ;
   public: GALGAS_propertyMap mProperty_mPropertyMap ;
-  public: GALGAS_typedPropertyList mProperty_mCurrentTypedAttributeList ;
+  public: GALGAS_typedPropertyList mProperty_mCurrentTypedPropertyList ;
   public: GALGAS_constructorMap mProperty_mConstructorMap ;
   public: GALGAS_getterMap mProperty_mGetterMap ;
   public: GALGAS_setterMap mProperty_mSetterMap ;
@@ -3228,9 +3228,9 @@ class cMapElement_unifiedTypeMap : public cMapElement {
                                       const GALGAS_unifiedTypeMap_2D_entry & in_mSuperType,
                                       const GALGAS_typeKindEnum & in_mTypeKindEnum,
                                       const GALGAS_bool & in_mSupportCollectionValue,
-                                      const GALGAS_typedPropertyList & in_mAllTypedAttributeList,
+                                      const GALGAS_typedPropertyList & in_mAllTypedPropertyList,
                                       const GALGAS_propertyMap & in_mPropertyMap,
-                                      const GALGAS_typedPropertyList & in_mCurrentTypedAttributeList,
+                                      const GALGAS_typedPropertyList & in_mCurrentTypedPropertyList,
                                       const GALGAS_constructorMap & in_mConstructorMap,
                                       const GALGAS_getterMap & in_mGetterMap,
                                       const GALGAS_setterMap & in_mSetterMap,

@@ -154,7 +154,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
     !analysisContext
     !self.mOverridingExtensionGetterFormalInputParameterList
     !if [[selfType mTypeKindEnum] isClassType] | ([selfType mTypeKindEnum] == @typeKindEnum. structType)
-       then [selfType mAllTypedAttributeList]
+       then [selfType mAllTypedPropertyList]
        else {}
      end
     !"object->"
@@ -190,7 +190,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
       !returnType
       !returnVariableCppName
       !formalParameterListForGeneration
-      ![selfType mAllTypedAttributeList]
+      ![selfType mAllTypedPropertyList]
       !semanticInstructionListForGeneration
     }
 }

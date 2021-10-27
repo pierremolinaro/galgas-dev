@@ -135,7 +135,7 @@ override method @overridingExtensionMethodAST semanticAnalysis
     !self.mOverridingExtensionMethodFormalParameterList
     !@localConstantList.emptyList
     !if [[selfType mTypeKindEnum] isClassType] | ([selfType mTypeKindEnum] == @typeKindEnum. structType)
-       then [selfType mAllTypedAttributeList]
+       then [selfType mAllTypedPropertyList]
        else @typedPropertyList.emptyList
      end
     !mutablePropertyList:@typedPropertyList.emptyList
@@ -164,7 +164,7 @@ override method @overridingExtensionMethodAST semanticAnalysis
       !baseTypeName
       ![self.mOverridingExtensionMethodName string]
       !formalParameterListForGeneration
-      ![selfType mAllTypedAttributeList]
+      ![selfType mAllTypedPropertyList]
       !semanticInstructionListForGeneration
     }
 }

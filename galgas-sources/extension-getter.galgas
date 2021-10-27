@@ -155,7 +155,7 @@ override method @extensionGetterAST semanticAnalysis
     !analysisContext
     !self.mExtensionGetterFormalInputParameterList
     !if [[selfType mTypeKindEnum] isClassType] | ([selfType mTypeKindEnum] == .structType) | ([selfType mTypeKindEnum] == .sharedMapEntryType)
-       then [selfType mAllTypedAttributeList]
+       then [selfType mAllTypedPropertyList]
        else @typedPropertyList.emptyList
      end
     !selfObjectAccessor
@@ -180,7 +180,7 @@ override method @extensionGetterAST semanticAnalysis
       !returnType
       !returnVariableCppName
       !formalParameterListForGeneration
-      ![selfType mAllTypedAttributeList]
+      ![selfType mAllTypedPropertyList]
       !semanticInstructionListForGeneration
     }
 }

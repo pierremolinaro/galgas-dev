@@ -9,6 +9,130 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Overriding extension method '@templateLiteralUIntExpressionAST templateExpressionAnalysis'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static void extensionMethod_templateLiteralUIntExpressionAST_templateExpressionAnalysis (const cPtr_templateExpressionAST * inObject,
+                                                                                         const GALGAS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
+                                                                                         GALGAS_usefulEntitiesGraph & /* ioArgument_ioUsefulEntitiesGraph */,
+                                                                                         const GALGAS_templateAnalysisContext constinArgument_inAnalysisContext,
+                                                                                         GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                                         C_Compiler * /* inCompiler */
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_templateLiteralUIntExpressionAST * object = (const cPtr_templateLiteralUIntExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_templateLiteralUIntExpressionAST) ;
+  const GALGAS_templateLiteralUIntExpressionAST temp_0 = object ;
+  const GALGAS_templateLiteralUIntExpressionAST temp_1 = object ;
+  outArgument_outExpression = GALGAS_literalUIntExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mUIntType (HERE), temp_0.getter_mLiteralInt (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 419)), temp_1.getter_mLiteralInt (HERE).getter_uint (SOURCE_FILE ("templateAnalysis.galgas", 420))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 417)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void defineExtensionMethod_templateLiteralUIntExpressionAST_templateExpressionAnalysis (void) {
+  enterExtensionMethod_templateExpressionAnalysis (kTypeDescriptor_GALGAS_templateLiteralUIntExpressionAST.mSlotID,
+                                                   extensionMethod_templateLiteralUIntExpressionAST_templateExpressionAnalysis) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_templateLiteralUIntExpressionAST_templateExpressionAnalysis (defineExtensionMethod_templateLiteralUIntExpressionAST_templateExpressionAnalysis, NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@templateLiteralSIntExpressionAST templateExpressionAnalysis'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static void extensionMethod_templateLiteralSIntExpressionAST_templateExpressionAnalysis (const cPtr_templateExpressionAST * inObject,
+                                                                                         const GALGAS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
+                                                                                         GALGAS_usefulEntitiesGraph & /* ioArgument_ioUsefulEntitiesGraph */,
+                                                                                         const GALGAS_templateAnalysisContext constinArgument_inAnalysisContext,
+                                                                                         GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                                         C_Compiler * /* inCompiler */
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_templateLiteralSIntExpressionAST * object = (const cPtr_templateLiteralSIntExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_templateLiteralSIntExpressionAST) ;
+  const GALGAS_templateLiteralSIntExpressionAST temp_0 = object ;
+  const GALGAS_templateLiteralSIntExpressionAST temp_1 = object ;
+  outArgument_outExpression = GALGAS_literalSIntExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mSIntType (HERE), temp_0.getter_mLiteralInt (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 433)), temp_1.getter_mLiteralInt (HERE).getter_sint (SOURCE_FILE ("templateAnalysis.galgas", 434))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 431)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void defineExtensionMethod_templateLiteralSIntExpressionAST_templateExpressionAnalysis (void) {
+  enterExtensionMethod_templateExpressionAnalysis (kTypeDescriptor_GALGAS_templateLiteralSIntExpressionAST.mSlotID,
+                                                   extensionMethod_templateLiteralSIntExpressionAST_templateExpressionAnalysis) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_templateLiteralSIntExpressionAST_templateExpressionAnalysis (defineExtensionMethod_templateLiteralSIntExpressionAST_templateExpressionAnalysis, NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@templateLiteralUInt64ExpressionAST templateExpressionAnalysis'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static void extensionMethod_templateLiteralUInt_36__34_ExpressionAST_templateExpressionAnalysis (const cPtr_templateExpressionAST * inObject,
+                                                                                                 const GALGAS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
+                                                                                                 GALGAS_usefulEntitiesGraph & /* ioArgument_ioUsefulEntitiesGraph */,
+                                                                                                 const GALGAS_templateAnalysisContext constinArgument_inAnalysisContext,
+                                                                                                 GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                                                 C_Compiler * /* inCompiler */
+                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_templateLiteralUInt_36__34_ExpressionAST * object = (const cPtr_templateLiteralUInt_36__34_ExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_templateLiteralUInt_36__34_ExpressionAST) ;
+  const GALGAS_templateLiteralUInt_36__34_ExpressionAST temp_0 = object ;
+  const GALGAS_templateLiteralUInt_36__34_ExpressionAST temp_1 = object ;
+  outArgument_outExpression = GALGAS_literalUInt_36__34_ExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mUInt_36__34_Type (HERE), temp_0.getter_mLiteralInt (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 447)), temp_1.getter_mLiteralInt (HERE).getter_uint_36__34_ (SOURCE_FILE ("templateAnalysis.galgas", 448))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 445)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void defineExtensionMethod_templateLiteralUInt_36__34_ExpressionAST_templateExpressionAnalysis (void) {
+  enterExtensionMethod_templateExpressionAnalysis (kTypeDescriptor_GALGAS_templateLiteralUInt_36__34_ExpressionAST.mSlotID,
+                                                   extensionMethod_templateLiteralUInt_36__34_ExpressionAST_templateExpressionAnalysis) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_templateLiteralUInt_36__34_ExpressionAST_templateExpressionAnalysis (defineExtensionMethod_templateLiteralUInt_36__34_ExpressionAST_templateExpressionAnalysis, NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@templateLiteralSInt64ExpressionAST templateExpressionAnalysis'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static void extensionMethod_templateLiteralSInt_36__34_ExpressionAST_templateExpressionAnalysis (const cPtr_templateExpressionAST * inObject,
+                                                                                                 const GALGAS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
+                                                                                                 GALGAS_usefulEntitiesGraph & /* ioArgument_ioUsefulEntitiesGraph */,
+                                                                                                 const GALGAS_templateAnalysisContext constinArgument_inAnalysisContext,
+                                                                                                 GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                                                 C_Compiler * /* inCompiler */
+                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_templateLiteralSInt_36__34_ExpressionAST * object = (const cPtr_templateLiteralSInt_36__34_ExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_templateLiteralSInt_36__34_ExpressionAST) ;
+  const GALGAS_templateLiteralSInt_36__34_ExpressionAST temp_0 = object ;
+  const GALGAS_templateLiteralSInt_36__34_ExpressionAST temp_1 = object ;
+  outArgument_outExpression = GALGAS_literalSInt_36__34_ExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mSInt_36__34_Type (HERE), temp_0.getter_mLiteralInt (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 461)), temp_1.getter_mLiteralInt (HERE).getter_sint_36__34_ (SOURCE_FILE ("templateAnalysis.galgas", 462))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 459)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void defineExtensionMethod_templateLiteralSInt_36__34_ExpressionAST_templateExpressionAnalysis (void) {
+  enterExtensionMethod_templateExpressionAnalysis (kTypeDescriptor_GALGAS_templateLiteralSInt_36__34_ExpressionAST.mSlotID,
+                                                   extensionMethod_templateLiteralSInt_36__34_ExpressionAST_templateExpressionAnalysis) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_templateLiteralSInt_36__34_ExpressionAST_templateExpressionAnalysis (defineExtensionMethod_templateLiteralSInt_36__34_ExpressionAST_templateExpressionAnalysis, NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Overriding extension method '@templateLiteralCharExpressionAST templateExpressionAnalysis'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -84,23 +208,23 @@ static void extensionMethod_templateNotOperatorAST_templateExpressionAnalysis (c
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateNotOperatorAST * object = (const cPtr_templateNotOperatorAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateNotOperatorAST) ;
-  GALGAS_semanticExpressionForGeneration var_expression_21340 ;
+  GALGAS_semanticExpressionForGeneration var_expression_21339 ;
   const GALGAS_templateNotOperatorAST temp_0 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_expression_21340, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 503)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_type_21559 = var_expression_21340.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 510)) ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_expression_21339, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 503)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_type_21558 = var_expression_21339.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 510)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = var_type_21559.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 511)).getter_prefixNotOperator (SOURCE_FILE ("templateAnalysis.galgas", 511)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 511)).boolEnum () ;
+    test_1 = var_type_21558.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 511)).getter_prefixNotOperator (SOURCE_FILE ("templateAnalysis.galgas", 511)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 511)).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GALGAS_templateNotOperatorAST temp_2 = object ;
       TC_Array <C_FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.getter_mOperatorLocation (HERE), GALGAS_string ("operand type is '@").add_operation (var_type_21559.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 513)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 513)).add_operation (GALGAS_string ("' and does not support the 'not' operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 513)), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 512)) ;
+      inCompiler->emitSemanticError (temp_2.getter_mOperatorLocation (HERE), GALGAS_string ("operand type is '@").add_operation (var_type_21558.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 513)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 513)).add_operation (GALGAS_string ("' and does not support the 'not' operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 513)), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 512)) ;
       outArgument_outExpression.drop () ; // Release error dropped variable
     }
   }
   if (kBoolFalse == test_1) {
     const GALGAS_templateNotOperatorAST temp_4 = object ;
-    outArgument_outExpression = GALGAS_notExpressionForGeneration::constructor_new (var_type_21559, temp_4.getter_mOperatorLocation (HERE), var_expression_21340  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 517)) ;
+    outArgument_outExpression = GALGAS_notExpressionForGeneration::constructor_new (var_type_21558, temp_4.getter_mOperatorLocation (HERE), var_expression_21339  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 517)) ;
   }
 }
 
@@ -130,23 +254,23 @@ static void extensionMethod_templateLogicalNegateAST_templateExpressionAnalysis 
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateLogicalNegateAST * object = (const cPtr_templateLogicalNegateAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateLogicalNegateAST) ;
-  GALGAS_semanticExpressionForGeneration var_expression_22406 ;
+  GALGAS_semanticExpressionForGeneration var_expression_22405 ;
   const GALGAS_templateLogicalNegateAST temp_0 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_expression_22406, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 535)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_type_22624 = var_expression_22406.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 542)) ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_expression_22405, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 535)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_type_22623 = var_expression_22405.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 542)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = var_type_22624.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 543)).getter_prefixTildeOperator (SOURCE_FILE ("templateAnalysis.galgas", 543)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 543)).boolEnum () ;
+    test_1 = var_type_22623.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 543)).getter_prefixTildeOperator (SOURCE_FILE ("templateAnalysis.galgas", 543)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 543)).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GALGAS_templateLogicalNegateAST temp_2 = object ;
       TC_Array <C_FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.getter_mOperatorLocation (HERE), GALGAS_string ("operand type is '@").add_operation (var_type_22624.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 545)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 545)).add_operation (GALGAS_string ("' and does not support the '~' operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 545)), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 544)) ;
+      inCompiler->emitSemanticError (temp_2.getter_mOperatorLocation (HERE), GALGAS_string ("operand type is '@").add_operation (var_type_22623.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 545)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 545)).add_operation (GALGAS_string ("' and does not support the '~' operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 545)), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 544)) ;
       outArgument_outExpression.drop () ; // Release error dropped variable
     }
   }
   if (kBoolFalse == test_1) {
     const GALGAS_templateLogicalNegateAST temp_4 = object ;
-    outArgument_outExpression = GALGAS_tildeExpressionForGeneration::constructor_new (var_type_22624, temp_4.getter_mOperatorLocation (HERE), var_expression_22406  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 549)) ;
+    outArgument_outExpression = GALGAS_tildeExpressionForGeneration::constructor_new (var_type_22623, temp_4.getter_mOperatorLocation (HERE), var_expression_22405  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 549)) ;
   }
 }
 
@@ -176,55 +300,55 @@ static void extensionMethod_templateTestDynamicClassAST_templateExpressionAnalys
                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateTestDynamicClassAST * object = (const cPtr_templateTestDynamicClassAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateTestDynamicClassAST) ;
-  GALGAS_semanticExpressionForGeneration var_expression_23480 ;
+  GALGAS_semanticExpressionForGeneration var_expression_23479 ;
   const GALGAS_templateTestDynamicClassAST temp_0 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mReceiverExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_expression_23480, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 566)) ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mReceiverExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_expression_23479, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 566)) ;
   const GALGAS_templateTestDynamicClassAST temp_1 = object ;
-  GALGAS_unifiedTypeMap_2D_entry var_castType_23682 = GALGAS_unifiedTypeMap_2D_entry::constructor_searchKey (constinArgument_inAnalysisContext.getter_mSemanticContext (HERE).getter_mTypeMap (HERE), temp_1.getter_mTypeName (HERE), inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 573)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_castType_23681 = GALGAS_unifiedTypeMap_2D_entry::constructor_searchKey (constinArgument_inAnalysisContext.getter_mSemanticContext (HERE).getter_mTypeMap (HERE), temp_1.getter_mTypeName (HERE), inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 573)) ;
   enumGalgasBool test_2 = kBoolTrue ;
   if (kBoolTrue == test_2) {
-    test_2 = var_expression_23480.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 575)).getter_mTypeKindEnum (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 575)).getter_isClassType (SOURCE_FILE ("templateAnalysis.galgas", 575)).boolEnum () ;
+    test_2 = var_expression_23479.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 575)).getter_mTypeKindEnum (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 575)).getter_isClassType (SOURCE_FILE ("templateAnalysis.galgas", 575)).boolEnum () ;
     if (kBoolTrue == test_2) {
-      GALGAS_unifiedTypeMap_2D_entry var_t_23965 = var_castType_23682 ;
-      GALGAS_bool var_found_23992 = GALGAS_bool (kIsEqual, var_t_23965.objectCompare (var_expression_23480.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 578)))) ;
+      GALGAS_unifiedTypeMap_2D_entry var_t_23964 = var_castType_23681 ;
+      GALGAS_bool var_found_23991 = GALGAS_bool (kIsEqual, var_t_23964.objectCompare (var_expression_23479.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 578)))) ;
       if (constinArgument_inAnalysisContext.getter_mSemanticContext (HERE).getter_mTypeMap (HERE).getter_count (SOURCE_FILE ("templateAnalysis.galgas", 579)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 579)).isValid ()) {
-        uint32_t variant_24033 = constinArgument_inAnalysisContext.getter_mSemanticContext (HERE).getter_mTypeMap (HERE).getter_count (SOURCE_FILE ("templateAnalysis.galgas", 579)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 579)).uintValue () ;
-        bool loop_24033 = true ;
-        while (loop_24033) {
-          loop_24033 = var_found_23992.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 580)).operator_and (var_t_23965.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 580)).getter_isNull (SOURCE_FILE ("templateAnalysis.galgas", 580)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 580)) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 580)).isValid () ;
-          if (loop_24033) {
-            loop_24033 = var_found_23992.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 580)).operator_and (var_t_23965.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 580)).getter_isNull (SOURCE_FILE ("templateAnalysis.galgas", 580)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 580)) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 580)).boolValue () ;
+        uint32_t variant_24032 = constinArgument_inAnalysisContext.getter_mSemanticContext (HERE).getter_mTypeMap (HERE).getter_count (SOURCE_FILE ("templateAnalysis.galgas", 579)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 579)).uintValue () ;
+        bool loop_24032 = true ;
+        while (loop_24032) {
+          loop_24032 = var_found_23991.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 580)).operator_and (var_t_23964.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 580)).getter_isNull (SOURCE_FILE ("templateAnalysis.galgas", 580)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 580)) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 580)).isValid () ;
+          if (loop_24032) {
+            loop_24032 = var_found_23991.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 580)).operator_and (var_t_23964.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 580)).getter_isNull (SOURCE_FILE ("templateAnalysis.galgas", 580)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 580)) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 580)).boolValue () ;
           }
-          if (loop_24033 && (0 == variant_24033)) {
-            loop_24033 = false ;
+          if (loop_24032 && (0 == variant_24032)) {
+            loop_24032 = false ;
             inCompiler->loopRunTimeVariantError (SOURCE_FILE ("templateAnalysis.galgas", 579)) ;
           }
-          if (loop_24033) {
-            variant_24033 -- ;
-            var_t_23965 = var_t_23965.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 581)) ;
-            var_found_23992 = GALGAS_bool (kIsEqual, var_t_23965.objectCompare (var_expression_23480.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 582)))) ;
+          if (loop_24032) {
+            variant_24032 -- ;
+            var_t_23964 = var_t_23964.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 581)) ;
+            var_found_23991 = GALGAS_bool (kIsEqual, var_t_23964.objectCompare (var_expression_23479.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 582)))) ;
           }
         }
       }
       enumGalgasBool test_3 = kBoolTrue ;
       if (kBoolTrue == test_3) {
-        test_3 = var_found_23992.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 584)).boolEnum () ;
+        test_3 = var_found_23991.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 584)).boolEnum () ;
         if (kBoolTrue == test_3) {
           const GALGAS_templateTestDynamicClassAST temp_4 = object ;
           const GALGAS_templateTestDynamicClassAST temp_5 = object ;
           TC_Array <C_FixItDescription> fixItArray6 ;
-          inCompiler->emitSemanticError (temp_4.getter_mTypeName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 585)), GALGAS_string ("the '@").add_operation (temp_5.getter_mTypeName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 586)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 586)).add_operation (GALGAS_string ("' is not a descendant of the '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 586)).add_operation (var_expression_23480.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 586)).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 586)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 586)).add_operation (GALGAS_string ("' type of the cast expression"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 586)), fixItArray6  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 585)) ;
+          inCompiler->emitSemanticError (temp_4.getter_mTypeName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 585)), GALGAS_string ("the '@").add_operation (temp_5.getter_mTypeName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 586)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 586)).add_operation (GALGAS_string ("' is not a descendant of the '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 586)).add_operation (var_expression_23479.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 586)).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 586)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 586)).add_operation (GALGAS_string ("' type of the cast expression"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 586)), fixItArray6  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 585)) ;
         }
       }
     }
   }
   if (kBoolFalse == test_2) {
     TC_Array <C_FixItDescription> fixItArray7 ;
-    inCompiler->emitSemanticError (var_expression_23480.getter_mLocation (SOURCE_FILE ("templateAnalysis.galgas", 589)), GALGAS_string ("expression should be a class instance: it is an @").add_operation (var_expression_23480.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 590)).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 590)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 589)).add_operation (GALGAS_string (" instance"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 590)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 589)) ;
+    inCompiler->emitSemanticError (var_expression_23479.getter_mLocation (SOURCE_FILE ("templateAnalysis.galgas", 589)), GALGAS_string ("expression should be a class instance: it is an @").add_operation (var_expression_23479.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 590)).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 590)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 589)).add_operation (GALGAS_string (" instance"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 590)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 589)) ;
   }
   const GALGAS_templateTestDynamicClassAST temp_8 = object ;
   const GALGAS_templateTestDynamicClassAST temp_9 = object ;
-  outArgument_outExpression = GALGAS_testDynamicClassInExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mBoolType (HERE), temp_8.getter_mTypeName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 595)), var_expression_23480, temp_9.getter_mTypeComparisonKind (HERE), var_castType_23682  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 593)) ;
+  outArgument_outExpression = GALGAS_testDynamicClassInExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mBoolType (HERE), temp_8.getter_mTypeName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 595)), var_expression_23479, temp_9.getter_mTypeComparisonKind (HERE), var_castType_23681  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 593)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -254,50 +378,50 @@ static void extensionMethod_templateOptionAccessAST_templateExpressionAnalysis (
   const cPtr_templateOptionAccessAST * object = (const cPtr_templateOptionAccessAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateOptionAccessAST) ;
   const GALGAS_templateOptionAccessAST temp_0 = object ;
-  GALGAS_lstring var_usefulnessName_25210 = function_optionNameForUsefulEntitiesGraph (temp_0.getter_mOptionComponentName (HERE), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 609)) ;
+  GALGAS_lstring var_usefulnessName_25209 = function_optionNameForUsefulEntitiesGraph (temp_0.getter_mOptionComponentName (HERE), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 609)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (constinArgument_inUsefulnessCallerEntityName, var_usefulnessName_25210 COMMA_SOURCE_FILE ("templateAnalysis.galgas", 610)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (constinArgument_inUsefulnessCallerEntityName, var_usefulnessName_25209 COMMA_SOURCE_FILE ("templateAnalysis.galgas", 610)) ;
   }
-  GALGAS_bool var_optionComponentIsPredefined_25517 ;
-  GALGAS_commandLineOptionMap var_boolOptionMap_25562 ;
-  GALGAS_commandLineOptionMap var_uintOptionMap_25607 ;
-  GALGAS_commandLineOptionMap var_stringOptionMap_25654 ;
-  GALGAS_commandLineOptionMap var_stringListOptionMap_25705 ;
+  GALGAS_bool var_optionComponentIsPredefined_25516 ;
+  GALGAS_commandLineOptionMap var_boolOptionMap_25561 ;
+  GALGAS_commandLineOptionMap var_uintOptionMap_25606 ;
+  GALGAS_commandLineOptionMap var_stringOptionMap_25653 ;
+  GALGAS_commandLineOptionMap var_stringListOptionMap_25704 ;
   const GALGAS_templateOptionAccessAST temp_1 = object ;
-  constinArgument_inAnalysisContext.getter_mSemanticContext (HERE).getter_mOptionComponentMapForSemanticAnalysis (HERE).method_searchKey (temp_1.getter_mOptionComponentName (HERE), var_optionComponentIsPredefined_25517, var_boolOptionMap_25562, var_uintOptionMap_25607, var_stringOptionMap_25654, var_stringListOptionMap_25705, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 611)) ;
+  constinArgument_inAnalysisContext.getter_mSemanticContext (HERE).getter_mOptionComponentMapForSemanticAnalysis (HERE).method_searchKey (temp_1.getter_mOptionComponentName (HERE), var_optionComponentIsPredefined_25516, var_boolOptionMap_25561, var_uintOptionMap_25606, var_stringOptionMap_25653, var_stringListOptionMap_25704, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 611)) ;
   const GALGAS_templateOptionAccessAST temp_2 = object ;
-  GALGAS_bool var_found_25721 = var_boolOptionMap_25562.getter_hasKey (temp_2.getter_mOptionName (HERE).getter_string (HERE) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 619)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_returnedType_25808 = constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mBoolType (HERE) ;
+  GALGAS_bool var_found_25720 = var_boolOptionMap_25561.getter_hasKey (temp_2.getter_mOptionName (HERE).getter_string (HERE) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 619)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_returnedType_25807 = constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mBoolType (HERE) ;
   enumGalgasBool test_3 = kBoolTrue ;
   if (kBoolTrue == test_3) {
-    test_3 = var_found_25721.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 621)).boolEnum () ;
+    test_3 = var_found_25720.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 621)).boolEnum () ;
     if (kBoolTrue == test_3) {
       const GALGAS_templateOptionAccessAST temp_4 = object ;
-      var_found_25721 = var_uintOptionMap_25607.getter_hasKey (temp_4.getter_mOptionName (HERE).getter_string (HERE) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 622)) ;
-      var_returnedType_25808 = constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mUIntType (HERE) ;
+      var_found_25720 = var_uintOptionMap_25606.getter_hasKey (temp_4.getter_mOptionName (HERE).getter_string (HERE) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 622)) ;
+      var_returnedType_25807 = constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mUIntType (HERE) ;
     }
   }
   enumGalgasBool test_5 = kBoolTrue ;
   if (kBoolTrue == test_5) {
-    test_5 = var_found_25721.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 625)).boolEnum () ;
+    test_5 = var_found_25720.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 625)).boolEnum () ;
     if (kBoolTrue == test_5) {
       const GALGAS_templateOptionAccessAST temp_6 = object ;
-      var_found_25721 = var_stringOptionMap_25654.getter_hasKey (temp_6.getter_mOptionName (HERE).getter_string (HERE) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 626)) ;
-      var_returnedType_25808 = constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mStringType (HERE) ;
+      var_found_25720 = var_stringOptionMap_25653.getter_hasKey (temp_6.getter_mOptionName (HERE).getter_string (HERE) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 626)) ;
+      var_returnedType_25807 = constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mStringType (HERE) ;
     }
   }
   enumGalgasBool test_7 = kBoolTrue ;
   if (kBoolTrue == test_7) {
-    test_7 = var_found_25721.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 629)).boolEnum () ;
+    test_7 = var_found_25720.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 629)).boolEnum () ;
     if (kBoolTrue == test_7) {
       const GALGAS_templateOptionAccessAST temp_8 = object ;
-      var_found_25721 = var_stringListOptionMap_25705.getter_hasKey (temp_8.getter_mOptionName (HERE).getter_string (HERE) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 630)) ;
-      var_returnedType_25808 = constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mStringListType (HERE) ;
+      var_found_25720 = var_stringListOptionMap_25704.getter_hasKey (temp_8.getter_mOptionName (HERE).getter_string (HERE) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 630)) ;
+      var_returnedType_25807 = constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mStringListType (HERE) ;
     }
   }
   enumGalgasBool test_9 = kBoolTrue ;
   if (kBoolTrue == test_9) {
-    test_9 = var_found_25721.boolEnum () ;
+    test_9 = var_found_25720.boolEnum () ;
     if (kBoolTrue == test_9) {
       enumGalgasBool test_10 = kBoolTrue ;
       if (kBoolTrue == test_10) {
@@ -307,7 +431,7 @@ static void extensionMethod_templateOptionAccessAST_templateExpressionAnalysis (
           const GALGAS_templateOptionAccessAST temp_12 = object ;
           const GALGAS_templateOptionAccessAST temp_13 = object ;
           const GALGAS_templateOptionAccessAST temp_14 = object ;
-          outArgument_outExpression = GALGAS_optionValueExpressionForGeneration::constructor_new (var_returnedType_25808, temp_12.getter_mOptionComponentName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 637)), var_optionComponentIsPredefined_25517, temp_13.getter_mOptionComponentName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 639)), temp_14.getter_mOptionName (HERE).getter_string (HERE)  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 635)) ;
+          outArgument_outExpression = GALGAS_optionValueExpressionForGeneration::constructor_new (var_returnedType_25807, temp_12.getter_mOptionComponentName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 637)), var_optionComponentIsPredefined_25516, temp_13.getter_mOptionComponentName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 639)), temp_14.getter_mOptionName (HERE).getter_string (HERE)  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 635)) ;
         }
       }
       if (kBoolFalse == test_10) {
@@ -319,7 +443,7 @@ static void extensionMethod_templateOptionAccessAST_templateExpressionAnalysis (
             const GALGAS_templateOptionAccessAST temp_17 = object ;
             const GALGAS_templateOptionAccessAST temp_18 = object ;
             const GALGAS_templateOptionAccessAST temp_19 = object ;
-            outArgument_outExpression = GALGAS_optionCharExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mCharType (HERE), temp_17.getter_mOptionComponentName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 645)), var_optionComponentIsPredefined_25517, temp_18.getter_mOptionComponentName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 647)), temp_19.getter_mOptionName (HERE).getter_string (HERE)  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 643)) ;
+            outArgument_outExpression = GALGAS_optionCharExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mCharType (HERE), temp_17.getter_mOptionComponentName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 645)), var_optionComponentIsPredefined_25516, temp_18.getter_mOptionComponentName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 647)), temp_19.getter_mOptionName (HERE).getter_string (HERE)  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 643)) ;
           }
         }
         if (kBoolFalse == test_15) {
@@ -331,7 +455,7 @@ static void extensionMethod_templateOptionAccessAST_templateExpressionAnalysis (
               const GALGAS_templateOptionAccessAST temp_22 = object ;
               const GALGAS_templateOptionAccessAST temp_23 = object ;
               const GALGAS_templateOptionAccessAST temp_24 = object ;
-              outArgument_outExpression = GALGAS_optionStringExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mStringType (HERE), temp_22.getter_mOptionComponentName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 653)), var_optionComponentIsPredefined_25517, temp_23.getter_mOptionComponentName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 655)), temp_24.getter_mOptionName (HERE).getter_string (HERE)  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 651)) ;
+              outArgument_outExpression = GALGAS_optionStringExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mStringType (HERE), temp_22.getter_mOptionComponentName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 653)), var_optionComponentIsPredefined_25516, temp_23.getter_mOptionComponentName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 655)), temp_24.getter_mOptionName (HERE).getter_string (HERE)  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 651)) ;
             }
           }
           if (kBoolFalse == test_20) {
@@ -343,7 +467,7 @@ static void extensionMethod_templateOptionAccessAST_templateExpressionAnalysis (
                 const GALGAS_templateOptionAccessAST temp_27 = object ;
                 const GALGAS_templateOptionAccessAST temp_28 = object ;
                 const GALGAS_templateOptionAccessAST temp_29 = object ;
-                outArgument_outExpression = GALGAS_optionCommentExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mStringType (HERE), temp_27.getter_mOptionComponentName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 661)), var_optionComponentIsPredefined_25517, temp_28.getter_mOptionComponentName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 663)), temp_29.getter_mOptionName (HERE).getter_string (HERE)  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 659)) ;
+                outArgument_outExpression = GALGAS_optionCommentExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mStringType (HERE), temp_27.getter_mOptionComponentName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 661)), var_optionComponentIsPredefined_25516, temp_28.getter_mOptionComponentName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 663)), temp_29.getter_mOptionName (HERE).getter_string (HERE)  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 659)) ;
               }
             }
             if (kBoolFalse == test_25) {
@@ -358,27 +482,27 @@ static void extensionMethod_templateOptionAccessAST_templateExpressionAnalysis (
     }
   }
   if (kBoolFalse == test_9) {
-    GALGAS_stringset var_s_27832 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("templateAnalysis.galgas", 670)) ;
-    cEnumerator_commandLineOptionMap enumerator_27865 (var_boolOptionMap_25562, kENUMERATION_UP) ;
-    while (enumerator_27865.hasCurrentObject ()) {
-      var_s_27832.addAssign_operation (enumerator_27865.current_lkey (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 672))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 672)) ;
-      enumerator_27865.gotoNextObject () ;
+    GALGAS_stringset var_s_27831 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("templateAnalysis.galgas", 670)) ;
+    cEnumerator_commandLineOptionMap enumerator_27864 (var_boolOptionMap_25561, kENUMERATION_UP) ;
+    while (enumerator_27864.hasCurrentObject ()) {
+      var_s_27831.addAssign_operation (enumerator_27864.current_lkey (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 672))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 672)) ;
+      enumerator_27864.gotoNextObject () ;
     }
-    cEnumerator_commandLineOptionMap enumerator_27921 (var_uintOptionMap_25607, kENUMERATION_UP) ;
-    while (enumerator_27921.hasCurrentObject ()) {
-      var_s_27832.addAssign_operation (enumerator_27921.current_lkey (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 675))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 675)) ;
-      enumerator_27921.gotoNextObject () ;
+    cEnumerator_commandLineOptionMap enumerator_27920 (var_uintOptionMap_25606, kENUMERATION_UP) ;
+    while (enumerator_27920.hasCurrentObject ()) {
+      var_s_27831.addAssign_operation (enumerator_27920.current_lkey (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 675))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 675)) ;
+      enumerator_27920.gotoNextObject () ;
     }
-    cEnumerator_commandLineOptionMap enumerator_27979 (var_stringOptionMap_25654, kENUMERATION_UP) ;
-    while (enumerator_27979.hasCurrentObject ()) {
-      var_s_27832.addAssign_operation (enumerator_27979.current_lkey (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 678))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 678)) ;
-      enumerator_27979.gotoNextObject () ;
+    cEnumerator_commandLineOptionMap enumerator_27978 (var_stringOptionMap_25653, kENUMERATION_UP) ;
+    while (enumerator_27978.hasCurrentObject ()) {
+      var_s_27831.addAssign_operation (enumerator_27978.current_lkey (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 678))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 678)) ;
+      enumerator_27978.gotoNextObject () ;
     }
     const GALGAS_templateOptionAccessAST temp_32 = object ;
     const GALGAS_templateOptionAccessAST temp_33 = object ;
     const GALGAS_templateOptionAccessAST temp_34 = object ;
     TC_Array <C_FixItDescription> fixItArray35 ;
-    appendFixItActions (fixItArray35, kFixItReplace, var_s_27832) ;
+    appendFixItActions (fixItArray35, kFixItReplace, var_s_27831) ;
     inCompiler->emitSemanticError (temp_32.getter_mOptionName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 680)), GALGAS_string ("the '").add_operation (temp_33.getter_mOptionComponentName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 681)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 681)).add_operation (GALGAS_string ("' option component does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 681)).add_operation (temp_34.getter_mOptionName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 681)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 681)).add_operation (GALGAS_string ("' option"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 681)), fixItArray35  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 680)) ;
     outArgument_outExpression.drop () ; // Release error dropped variable
   }
@@ -411,29 +535,29 @@ static void extensionMethod_templateFunctionCallAST_templateExpressionAnalysis (
   const cPtr_templateFunctionCallAST * object = (const cPtr_templateFunctionCallAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateFunctionCallAST) ;
   const GALGAS_templateFunctionCallAST temp_0 = object ;
-  GALGAS_lstring var_usefulnessName_28777 = function_functionNameForUsefulEntitiesGraph (temp_0.getter_mFunctionName (HERE), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 697)) ;
+  GALGAS_lstring var_usefulnessName_28776 = function_functionNameForUsefulEntitiesGraph (temp_0.getter_mFunctionName (HERE), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 697)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (constinArgument_inUsefulnessCallerEntityName, var_usefulnessName_28777 COMMA_SOURCE_FILE ("templateAnalysis.galgas", 698)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (constinArgument_inUsefulnessCallerEntityName, var_usefulnessName_28776 COMMA_SOURCE_FILE ("templateAnalysis.galgas", 698)) ;
   }
-  GALGAS_functionSignature var_functionSignature_29081 ;
-  GALGAS_unifiedTypeMap_2D_entry var_resultType_29123 ;
-  GALGAS_bool var_isInternal_29149 ;
+  GALGAS_functionSignature var_functionSignature_29080 ;
+  GALGAS_unifiedTypeMap_2D_entry var_resultType_29122 ;
+  GALGAS_bool var_isInternal_29148 ;
   const GALGAS_templateFunctionCallAST temp_1 = object ;
-  constinArgument_inAnalysisContext.getter_mSemanticContext (HERE).getter_mFunctionMap (HERE).method_searchKey (temp_1.getter_mFunctionName (HERE), var_functionSignature_29081, var_resultType_29123, var_isInternal_29149, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 700)) ;
+  constinArgument_inAnalysisContext.getter_mSemanticContext (HERE).getter_mFunctionMap (HERE).method_searchKey (temp_1.getter_mFunctionName (HERE), var_functionSignature_29080, var_resultType_29122, var_isInternal_29148, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 700)) ;
   enumGalgasBool test_2 = kBoolTrue ;
   if (kBoolTrue == test_2) {
-    test_2 = var_isInternal_29149.boolEnum () ;
+    test_2 = var_isInternal_29148.boolEnum () ;
     if (kBoolTrue == test_2) {
       const GALGAS_templateFunctionCallAST temp_3 = object ;
-      GALGAS_location var_procDeclarationLocation_29226 = constinArgument_inAnalysisContext.getter_mSemanticContext (HERE).getter_mFunctionMap (HERE).getter_locationForKey (temp_3.getter_mFunctionName (HERE).getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 708)) ;
+      GALGAS_location var_procDeclarationLocation_29225 = constinArgument_inAnalysisContext.getter_mSemanticContext (HERE).getter_mFunctionMap (HERE).getter_locationForKey (temp_3.getter_mFunctionName (HERE).getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 708)) ;
       enumGalgasBool test_4 = kBoolTrue ;
       if (kBoolTrue == test_4) {
         const GALGAS_templateFunctionCallAST temp_5 = object ;
-        test_4 = GALGAS_bool (kIsNotEqual, temp_5.getter_mFunctionName (HERE).getter_location (HERE).getter_file (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 709)).objectCompare (var_procDeclarationLocation_29226.getter_file (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 709)))).boolEnum () ;
+        test_4 = GALGAS_bool (kIsNotEqual, temp_5.getter_mFunctionName (HERE).getter_location (HERE).getter_file (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 709)).objectCompare (var_procDeclarationLocation_29225.getter_file (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 709)))).boolEnum () ;
         if (kBoolTrue == test_4) {
           const GALGAS_templateFunctionCallAST temp_6 = object ;
           TC_Array <C_FixItDescription> fixItArray7 ;
-          inCompiler->emitSemanticError (temp_6.getter_mFunctionName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 710)), GALGAS_string ("this proc is internal to '").add_operation (var_procDeclarationLocation_29226.getter_file (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 710)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 710)).add_operation (GALGAS_string ("' file"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 710)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 710)) ;
+          inCompiler->emitSemanticError (temp_6.getter_mFunctionName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 710)), GALGAS_string ("this proc is internal to '").add_operation (var_procDeclarationLocation_29225.getter_file (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 710)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 710)).add_operation (GALGAS_string ("' file"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 710)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 710)) ;
         }
       }
     }
@@ -441,49 +565,49 @@ static void extensionMethod_templateFunctionCallAST_templateExpressionAnalysis (
   enumGalgasBool test_8 = kBoolTrue ;
   if (kBoolTrue == test_8) {
     const GALGAS_templateFunctionCallAST temp_9 = object ;
-    test_8 = GALGAS_bool (kIsNotEqual, var_functionSignature_29081.getter_length (SOURCE_FILE ("templateAnalysis.galgas", 714)).objectCompare (temp_9.getter_mExpressionList (HERE).getter_length (SOURCE_FILE ("templateAnalysis.galgas", 714)))).boolEnum () ;
+    test_8 = GALGAS_bool (kIsNotEqual, var_functionSignature_29080.getter_length (SOURCE_FILE ("templateAnalysis.galgas", 714)).objectCompare (temp_9.getter_mExpressionList (HERE).getter_length (SOURCE_FILE ("templateAnalysis.galgas", 714)))).boolEnum () ;
     if (kBoolTrue == test_8) {
       const GALGAS_templateFunctionCallAST temp_10 = object ;
       const GALGAS_templateFunctionCallAST temp_11 = object ;
       const GALGAS_templateFunctionCallAST temp_12 = object ;
       TC_Array <C_FixItDescription> fixItArray13 ;
-      inCompiler->emitSemanticError (temp_10.getter_mFunctionName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 715)), GALGAS_string ("the '").add_operation (temp_11.getter_mFunctionName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 716)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 716)).add_operation (GALGAS_string ("' function header declares "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 716)).add_operation (var_functionSignature_29081.getter_length (SOURCE_FILE ("templateAnalysis.galgas", 716)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 716)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 716)).add_operation (GALGAS_string (" formal parameter(s), but this function call names "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 716)).add_operation (temp_12.getter_mExpressionList (HERE).getter_length (SOURCE_FILE ("templateAnalysis.galgas", 717)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 717)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 717)).add_operation (GALGAS_string (" effective argument(s)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 717)), fixItArray13  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 715)) ;
+      inCompiler->emitSemanticError (temp_10.getter_mFunctionName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 715)), GALGAS_string ("the '").add_operation (temp_11.getter_mFunctionName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 716)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 716)).add_operation (GALGAS_string ("' function header declares "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 716)).add_operation (var_functionSignature_29080.getter_length (SOURCE_FILE ("templateAnalysis.galgas", 716)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 716)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 716)).add_operation (GALGAS_string (" formal parameter(s), but this function call names "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 716)).add_operation (temp_12.getter_mExpressionList (HERE).getter_length (SOURCE_FILE ("templateAnalysis.galgas", 717)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 717)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 717)).add_operation (GALGAS_string (" effective argument(s)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 717)), fixItArray13  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 715)) ;
       outArgument_outExpression.drop () ; // Release error dropped variable
     }
   }
   if (kBoolFalse == test_8) {
-    GALGAS_semanticExpressionListForGeneration var_semanticExpressionListForGeneration_29965 = GALGAS_semanticExpressionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 721)) ;
+    GALGAS_semanticExpressionListForGeneration var_semanticExpressionListForGeneration_29964 = GALGAS_semanticExpressionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 721)) ;
     const GALGAS_templateFunctionCallAST temp_14 = object ;
-    cEnumerator_functionSignature enumerator_30038 (var_functionSignature_29081, kENUMERATION_UP) ;
-    cEnumerator_templateExpressionListAST enumerator_30066 (temp_14.getter_mExpressionList (HERE), kENUMERATION_UP) ;
-    while (enumerator_30038.hasCurrentObject () && enumerator_30066.hasCurrentObject ()) {
-      GALGAS_semanticExpressionForGeneration var_expression_30265 ;
-      callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) enumerator_30066.current_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_expression_30265, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 723)) ;
+    cEnumerator_functionSignature enumerator_30037 (var_functionSignature_29080, kENUMERATION_UP) ;
+    cEnumerator_templateExpressionListAST enumerator_30065 (temp_14.getter_mExpressionList (HERE), kENUMERATION_UP) ;
+    while (enumerator_30037.hasCurrentObject () && enumerator_30065.hasCurrentObject ()) {
+      GALGAS_semanticExpressionForGeneration var_expression_30264 ;
+      callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) enumerator_30065.current_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_expression_30264, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 723)) ;
       {
-      routine_checkAssignmentTypeWithImplicitGetterCall (enumerator_30038.current_mFormalArgumentType (HERE), var_expression_30265.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 729)), enumerator_30066.current_mEndOfExpressionLocation (HERE), var_expression_30265, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 729)) ;
+      routine_checkAssignmentTypeWithImplicitGetterCall (enumerator_30037.current_mFormalArgumentType (HERE), var_expression_30264.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 729)), enumerator_30065.current_mEndOfExpressionLocation (HERE), var_expression_30264, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 729)) ;
       }
-      var_semanticExpressionListForGeneration_29965.addAssign_operation (var_expression_30265  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 730)) ;
+      var_semanticExpressionListForGeneration_29964.addAssign_operation (var_expression_30264  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 730)) ;
       enumGalgasBool test_15 = kBoolTrue ;
       if (kBoolTrue == test_15) {
-        test_15 = GALGAS_bool (kIsNotEqual, enumerator_30038.current_mFormalSelector (HERE).getter_string (HERE).objectCompare (enumerator_30066.current_mActualSelector (HERE).getter_string (HERE))).boolEnum () ;
+        test_15 = GALGAS_bool (kIsNotEqual, enumerator_30037.current_mFormalSelector (HERE).getter_string (HERE).objectCompare (enumerator_30065.current_mActualSelector (HERE).getter_string (HERE))).boolEnum () ;
         if (kBoolTrue == test_15) {
           GALGAS_string temp_16 ;
-          const enumGalgasBool test_17 = GALGAS_bool (kIsNotEqual, enumerator_30038.current_mFormalSelector (HERE).getter_string (HERE).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+          const enumGalgasBool test_17 = GALGAS_bool (kIsNotEqual, enumerator_30037.current_mFormalSelector (HERE).getter_string (HERE).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_17) {
-            temp_16 = enumerator_30038.current_mFormalSelector (HERE).getter_string (HERE).add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 732)) ;
+            temp_16 = enumerator_30037.current_mFormalSelector (HERE).getter_string (HERE).add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 732)) ;
           }else if (kBoolFalse == test_17) {
             temp_16 = GALGAS_string::makeEmptyString () ;
           }
           TC_Array <C_FixItDescription> fixItArray18 ;
-          inCompiler->emitSemanticError (enumerator_30066.current_mActualSelector (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 732)), GALGAS_string ("the selector should be '!").add_operation (temp_16, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 732)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 732)), fixItArray18  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 732)) ;
+          inCompiler->emitSemanticError (enumerator_30065.current_mActualSelector (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 732)), GALGAS_string ("the selector should be '!").add_operation (temp_16, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 732)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 732)), fixItArray18  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 732)) ;
         }
       }
-      enumerator_30038.gotoNextObject () ;
-      enumerator_30066.gotoNextObject () ;
+      enumerator_30037.gotoNextObject () ;
+      enumerator_30065.gotoNextObject () ;
     }
     const GALGAS_templateFunctionCallAST temp_19 = object ;
     const GALGAS_templateFunctionCallAST temp_20 = object ;
-    outArgument_outExpression = GALGAS_functionCallExpressionForGeneration::constructor_new (var_resultType_29123, temp_19.getter_mFunctionName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 737)), temp_20.getter_mFunctionName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 738)), var_semanticExpressionListForGeneration_29965  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 735)) ;
+    outArgument_outExpression = GALGAS_functionCallExpressionForGeneration::constructor_new (var_resultType_29122, temp_19.getter_mFunctionName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 737)), temp_20.getter_mFunctionName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 738)), var_semanticExpressionListForGeneration_29964  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 735)) ;
   }
 }
 
@@ -545,12 +669,12 @@ static void extensionMethod_templateVarInExpressionAST_templateExpressionAnalysi
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateVarInExpressionAST * object = (const cPtr_templateVarInExpressionAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateVarInExpressionAST) ;
-  GALGAS_unifiedTypeMap_2D_entry var_type_32224 ;
-  GALGAS_string var_sourceVariableCppName_32256 ;
+  GALGAS_unifiedTypeMap_2D_entry var_type_32223 ;
+  GALGAS_string var_sourceVariableCppName_32255 ;
   const GALGAS_templateVarInExpressionAST temp_0 = object ;
-  constinArgument_inAnalysisContext.getter_mTemplateVariableMap (HERE).method_searchKey (temp_0.getter_mVarName (HERE), var_type_32224, var_sourceVariableCppName_32256, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 770)) ;
+  constinArgument_inAnalysisContext.getter_mTemplateVariableMap (HERE).method_searchKey (temp_0.getter_mVarName (HERE), var_type_32223, var_sourceVariableCppName_32255, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 770)) ;
   const GALGAS_templateVarInExpressionAST temp_1 = object ;
-  outArgument_outExpression = GALGAS_varInExpressionForGeneration::constructor_new (var_type_32224, temp_1.getter_mVarName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 773)), var_sourceVariableCppName_32256, var_sourceVariableCppName_32256  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 771)) ;
+  outArgument_outExpression = GALGAS_varInExpressionForGeneration::constructor_new (var_type_32223, temp_1.getter_mVarName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 773)), var_sourceVariableCppName_32255, var_sourceVariableCppName_32255  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 771)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -579,19 +703,19 @@ static void extensionMethod_templateAddOperationAST_templateExpressionAnalysis (
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateAddOperationAST * object = (const cPtr_templateAddOperationAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateAddOperationAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_33278 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_33277 ;
   const GALGAS_templateAddOperationAST temp_0 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_33278, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 789)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_33504 ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_33277, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 789)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_33503 ;
   const GALGAS_templateAddOperationAST temp_1 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_33504, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 796)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_leftType_33579 = var_leftExpression_33278.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 803)) ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_33503, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 796)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_leftType_33578 = var_leftExpression_33277.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 803)) ;
   {
   const GALGAS_templateAddOperationAST temp_2 = object ;
-  routine_checkDiadicOperator (var_leftType_33579, var_rightExpression_33504.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 806)), var_leftType_33579.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 807)).getter_infixAddOperator (SOURCE_FILE ("templateAnalysis.galgas", 807)), GALGAS_string ("+"), temp_2.getter_mOperatorLocation (HERE), var_rightExpression_33504, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 804)) ;
+  routine_checkDiadicOperator (var_leftType_33578, var_rightExpression_33503.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 806)), var_leftType_33578.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 807)).getter_infixAddOperator (SOURCE_FILE ("templateAnalysis.galgas", 807)), GALGAS_string ("+"), temp_2.getter_mOperatorLocation (HERE), var_rightExpression_33503, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 804)) ;
   }
   const GALGAS_templateAddOperationAST temp_3 = object ;
-  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::constructor_new (var_leftType_33579, temp_3.getter_mOperatorLocation (HERE), var_leftExpression_33278, GALGAS_binaryOperator::constructor_add (SOURCE_FILE ("templateAnalysis.galgas", 817)), var_rightExpression_33504  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 813)) ;
+  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::constructor_new (var_leftType_33578, temp_3.getter_mOperatorLocation (HERE), var_leftExpression_33277, GALGAS_binaryOperator::constructor_add (SOURCE_FILE ("templateAnalysis.galgas", 817)), var_rightExpression_33503  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 813)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -620,19 +744,19 @@ static void extensionMethod_templateSubOperationAST_templateExpressionAnalysis (
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateSubOperationAST * object = (const cPtr_templateSubOperationAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateSubOperationAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_34842 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_34841 ;
   const GALGAS_templateSubOperationAST temp_0 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_34842, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 833)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_35068 ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_34841, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 833)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_35067 ;
   const GALGAS_templateSubOperationAST temp_1 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_35068, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 840)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_leftType_35143 = var_leftExpression_34842.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 847)) ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_35067, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 840)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_leftType_35142 = var_leftExpression_34841.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 847)) ;
   {
   const GALGAS_templateSubOperationAST temp_2 = object ;
-  routine_checkDiadicOperator (var_leftType_35143, var_rightExpression_35068.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 850)), var_leftType_35143.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 851)).getter_infixSubOperator (SOURCE_FILE ("templateAnalysis.galgas", 851)), GALGAS_string ("-"), temp_2.getter_mOperatorLocation (HERE), var_rightExpression_35068, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 848)) ;
+  routine_checkDiadicOperator (var_leftType_35142, var_rightExpression_35067.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 850)), var_leftType_35142.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 851)).getter_infixSubOperator (SOURCE_FILE ("templateAnalysis.galgas", 851)), GALGAS_string ("-"), temp_2.getter_mOperatorLocation (HERE), var_rightExpression_35067, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 848)) ;
   }
   const GALGAS_templateSubOperationAST temp_3 = object ;
-  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::constructor_new (var_leftType_35143, temp_3.getter_mOperatorLocation (HERE), var_leftExpression_34842, GALGAS_binaryOperator::constructor_sub (SOURCE_FILE ("templateAnalysis.galgas", 861)), var_rightExpression_35068  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 857)) ;
+  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::constructor_new (var_leftType_35142, temp_3.getter_mOperatorLocation (HERE), var_leftExpression_34841, GALGAS_binaryOperator::constructor_sub (SOURCE_FILE ("templateAnalysis.galgas", 861)), var_rightExpression_35067  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 857)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -661,19 +785,19 @@ static void extensionMethod_templateMultiplyOperationAST_templateExpressionAnaly
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateMultiplyOperationAST * object = (const cPtr_templateMultiplyOperationAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateMultiplyOperationAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_36411 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_36410 ;
   const GALGAS_templateMultiplyOperationAST temp_0 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_36411, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 877)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_36637 ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_36410, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 877)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_36636 ;
   const GALGAS_templateMultiplyOperationAST temp_1 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_36637, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 884)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_leftType_36712 = var_leftExpression_36411.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 891)) ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_36636, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 884)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_leftType_36711 = var_leftExpression_36410.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 891)) ;
   {
   const GALGAS_templateMultiplyOperationAST temp_2 = object ;
-  routine_checkDiadicOperator (var_leftType_36712, var_rightExpression_36637.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 894)), var_leftType_36712.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 895)).getter_infixMulOperator (SOURCE_FILE ("templateAnalysis.galgas", 895)), GALGAS_string ("*"), temp_2.getter_mOperatorLocation (HERE), var_rightExpression_36637, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 892)) ;
+  routine_checkDiadicOperator (var_leftType_36711, var_rightExpression_36636.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 894)), var_leftType_36711.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 895)).getter_infixMulOperator (SOURCE_FILE ("templateAnalysis.galgas", 895)), GALGAS_string ("*"), temp_2.getter_mOperatorLocation (HERE), var_rightExpression_36636, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 892)) ;
   }
   const GALGAS_templateMultiplyOperationAST temp_3 = object ;
-  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::constructor_new (var_leftType_36712, temp_3.getter_mOperatorLocation (HERE), var_leftExpression_36411, GALGAS_binaryOperator::constructor_multiply_5F_operation (SOURCE_FILE ("templateAnalysis.galgas", 905)), var_rightExpression_36637  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 901)) ;
+  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::constructor_new (var_leftType_36711, temp_3.getter_mOperatorLocation (HERE), var_leftExpression_36410, GALGAS_binaryOperator::constructor_multiply_5F_operation (SOURCE_FILE ("templateAnalysis.galgas", 905)), var_rightExpression_36636  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 901)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -702,19 +826,19 @@ static void extensionMethod_templateDivideOperationAST_templateExpressionAnalysi
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateDivideOperationAST * object = (const cPtr_templateDivideOperationAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateDivideOperationAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_37917 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_37916 ;
   const GALGAS_templateDivideOperationAST temp_0 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_37917, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 921)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_38143 ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_37916, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 921)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_38142 ;
   const GALGAS_templateDivideOperationAST temp_1 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_38143, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 928)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_leftType_38218 = var_leftExpression_37917.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 935)) ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_38142, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 928)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_leftType_38217 = var_leftExpression_37916.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 935)) ;
   {
   const GALGAS_templateDivideOperationAST temp_2 = object ;
-  routine_checkDiadicOperator (var_leftType_38218, var_rightExpression_38143.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 938)), var_leftType_38218.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 939)).getter_infixDivOperator (SOURCE_FILE ("templateAnalysis.galgas", 939)), GALGAS_string ("/"), temp_2.getter_mOperatorLocation (HERE), var_rightExpression_38143, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 936)) ;
+  routine_checkDiadicOperator (var_leftType_38217, var_rightExpression_38142.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 938)), var_leftType_38217.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 939)).getter_infixDivOperator (SOURCE_FILE ("templateAnalysis.galgas", 939)), GALGAS_string ("/"), temp_2.getter_mOperatorLocation (HERE), var_rightExpression_38142, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 936)) ;
   }
   const GALGAS_templateDivideOperationAST temp_3 = object ;
-  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::constructor_new (var_leftType_38218, temp_3.getter_mOperatorLocation (HERE), var_leftExpression_37917, GALGAS_binaryOperator::constructor_divide_5F_operation (SOURCE_FILE ("templateAnalysis.galgas", 949)), var_rightExpression_38143  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 945)) ;
+  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::constructor_new (var_leftType_38217, temp_3.getter_mOperatorLocation (HERE), var_leftExpression_37916, GALGAS_binaryOperator::constructor_divide_5F_operation (SOURCE_FILE ("templateAnalysis.galgas", 949)), var_rightExpression_38142  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 945)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -743,19 +867,19 @@ static void extensionMethod_templateModuloOperationAST_templateExpressionAnalysi
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateModuloOperationAST * object = (const cPtr_templateModuloOperationAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateModuloOperationAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_39421 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_39420 ;
   const GALGAS_templateModuloOperationAST temp_0 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_39421, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 965)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_39647 ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_39420, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 965)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_39646 ;
   const GALGAS_templateModuloOperationAST temp_1 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_39647, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 972)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_leftType_39722 = var_leftExpression_39421.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 979)) ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_39646, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 972)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_leftType_39721 = var_leftExpression_39420.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 979)) ;
   {
   const GALGAS_templateModuloOperationAST temp_2 = object ;
-  routine_checkDiadicOperator (var_leftType_39722, var_rightExpression_39647.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 982)), var_leftType_39722.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 983)).getter_infixModOperator (SOURCE_FILE ("templateAnalysis.galgas", 983)), GALGAS_string ("mod"), temp_2.getter_mOperatorLocation (HERE), var_rightExpression_39647, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 980)) ;
+  routine_checkDiadicOperator (var_leftType_39721, var_rightExpression_39646.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 982)), var_leftType_39721.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 983)).getter_infixModOperator (SOURCE_FILE ("templateAnalysis.galgas", 983)), GALGAS_string ("mod"), temp_2.getter_mOperatorLocation (HERE), var_rightExpression_39646, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 980)) ;
   }
   const GALGAS_templateModuloOperationAST temp_3 = object ;
-  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::constructor_new (var_leftType_39722, temp_3.getter_mOperatorLocation (HERE), var_leftExpression_39421, GALGAS_binaryOperator::constructor_modulo_5F_operation (SOURCE_FILE ("templateAnalysis.galgas", 993)), var_rightExpression_39647  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 989)) ;
+  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::constructor_new (var_leftType_39721, temp_3.getter_mOperatorLocation (HERE), var_leftExpression_39420, GALGAS_binaryOperator::constructor_modulo_5F_operation (SOURCE_FILE ("templateAnalysis.galgas", 993)), var_rightExpression_39646  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 989)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -784,23 +908,23 @@ static void extensionMethod_templateUnaryMinusOperationAST_templateExpressionAna
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateUnaryMinusOperationAST * object = (const cPtr_templateUnaryMinusOperationAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateUnaryMinusOperationAST) ;
-  GALGAS_semanticExpressionForGeneration var_expression_40779 ;
+  GALGAS_semanticExpressionForGeneration var_expression_40778 ;
   const GALGAS_templateUnaryMinusOperationAST temp_0 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_expression_40779, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1010)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_type_40997 = var_expression_40779.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1017)) ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_expression_40778, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1010)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_type_40996 = var_expression_40778.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1017)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = var_type_40997.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1018)).getter_prefixMinusOperator (SOURCE_FILE ("templateAnalysis.galgas", 1018)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1018)).boolEnum () ;
+    test_1 = var_type_40996.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1018)).getter_prefixMinusOperator (SOURCE_FILE ("templateAnalysis.galgas", 1018)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1018)).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GALGAS_templateUnaryMinusOperationAST temp_2 = object ;
       TC_Array <C_FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.getter_mOperatorLocation (HERE), GALGAS_string ("operand type is '@").add_operation (var_type_40997.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1020)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1020)).add_operation (GALGAS_string ("' and does not support the prefix minus operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1020)), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1019)) ;
+      inCompiler->emitSemanticError (temp_2.getter_mOperatorLocation (HERE), GALGAS_string ("operand type is '@").add_operation (var_type_40996.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1020)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1020)).add_operation (GALGAS_string ("' and does not support the prefix minus operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1020)), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1019)) ;
       outArgument_outExpression.drop () ; // Release error dropped variable
     }
   }
   if (kBoolFalse == test_1) {
     const GALGAS_templateUnaryMinusOperationAST temp_4 = object ;
-    outArgument_outExpression = GALGAS_unaryMinusExpressionForGeneration::constructor_new (var_type_40997, temp_4.getter_mOperatorLocation (HERE), var_expression_40779  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1024)) ;
+    outArgument_outExpression = GALGAS_unaryMinusExpressionForGeneration::constructor_new (var_type_40996, temp_4.getter_mOperatorLocation (HERE), var_expression_40778  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1024)) ;
   }
 }
 
@@ -830,26 +954,26 @@ static void extensionMethod_structFieldAccessTemplateExpressionAST_templateExpre
                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_structFieldAccessTemplateExpressionAST * object = (const cPtr_structFieldAccessTemplateExpressionAST *) inObject ;
   macroValidSharedObject (object, cPtr_structFieldAccessTemplateExpressionAST) ;
-  GALGAS_semanticExpressionForGeneration var_expression_42250 ;
+  GALGAS_semanticExpressionForGeneration var_expression_42249 ;
   const GALGAS_structFieldAccessTemplateExpressionAST temp_0 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_expression_42250, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1042)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_type_42320 = var_expression_42250.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1049)) ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_expression_42249, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1042)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_type_42319 = var_expression_42249.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1049)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = GALGAS_bool (kIsNotEqual, var_type_42320.getter_mTypeKindEnum (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1050)).objectCompare (GALGAS_typeKindEnum::constructor_structType (SOURCE_FILE ("templateAnalysis.galgas", 1050)))).boolEnum () ;
+    test_1 = GALGAS_bool (kIsNotEqual, var_type_42319.getter_mTypeKindEnum (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1050)).objectCompare (GALGAS_typeKindEnum::constructor_structType (SOURCE_FILE ("templateAnalysis.galgas", 1050)))).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GALGAS_structFieldAccessTemplateExpressionAST temp_2 = object ;
       TC_Array <C_FixItDescription> fixItArray3 ;
       inCompiler->emitSemanticError (temp_2.getter_mStructFieldName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 1051)), GALGAS_string ("the '.' operator requires the receiver to be a struct"), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1051)) ;
     }
   }
-  GALGAS_propertyMap var_propertyMap_42519 = var_type_42320.getter_mPropertyMap (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1053)) ;
-  GALGAS_bool var_isPublic_42603 ;
+  GALGAS_propertyMap var_propertyMap_42518 = var_type_42319.getter_mPropertyMap (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1053)) ;
+  GALGAS_bool var_isPublic_42602 ;
   const GALGAS_structFieldAccessTemplateExpressionAST temp_4 = object ;
-  var_propertyMap_42519.method_searchKey (temp_4.getter_mStructFieldName (HERE), var_isPublic_42603, var_type_42320, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1054)) ;
+  var_propertyMap_42518.method_searchKey (temp_4.getter_mStructFieldName (HERE), var_isPublic_42602, var_type_42319, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1054)) ;
   enumGalgasBool test_5 = kBoolTrue ;
   if (kBoolTrue == test_5) {
-    test_5 = var_isPublic_42603.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1055)).boolEnum () ;
+    test_5 = var_isPublic_42602.operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1055)).boolEnum () ;
     if (kBoolTrue == test_5) {
       const GALGAS_structFieldAccessTemplateExpressionAST temp_6 = object ;
       TC_Array <C_FixItDescription> fixItArray7 ;
@@ -858,7 +982,7 @@ static void extensionMethod_structFieldAccessTemplateExpressionAST_templateExpre
   }
   const GALGAS_structFieldAccessTemplateExpressionAST temp_8 = object ;
   const GALGAS_structFieldAccessTemplateExpressionAST temp_9 = object ;
-  outArgument_outExpression = GALGAS_structPropertyAccessExpressionForGeneration::constructor_new (var_type_42320, temp_8.getter_mOperatorLocation (HERE), var_expression_42250, temp_9.getter_mStructFieldName (HERE).getter_string (HERE)  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1059)) ;
+  outArgument_outExpression = GALGAS_structPropertyAccessExpressionForGeneration::constructor_new (var_type_42319, temp_8.getter_mOperatorLocation (HERE), var_expression_42249, temp_9.getter_mStructFieldName (HERE).getter_string (HERE)  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1059)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -887,27 +1011,27 @@ static void extensionMethod_templateEqualTestAST_templateExpressionAnalysis (con
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateEqualTestAST * object = (const cPtr_templateEqualTestAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateEqualTestAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_43691 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_43690 ;
   const GALGAS_templateEqualTestAST temp_0 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_43691, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1078)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_43921 ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_43690, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1078)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_43920 ;
   const GALGAS_templateEqualTestAST temp_1 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_43921, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1085)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_leftType_43996 = var_leftExpression_43691.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1092)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_rightType_44065 = var_rightExpression_43921.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1093)) ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_43920, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1085)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_leftType_43995 = var_leftExpression_43690.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1092)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_rightType_44064 = var_rightExpression_43920.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1093)) ;
   enumGalgasBool test_2 = kBoolTrue ;
   if (kBoolTrue == test_2) {
-    test_2 = GALGAS_bool (kIsNotEqual, var_leftType_43996.getter_lkey (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1094)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1094)).objectCompare (var_rightType_44065.getter_lkey (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1094)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1094)))).boolEnum () ;
+    test_2 = GALGAS_bool (kIsNotEqual, var_leftType_43995.getter_lkey (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1094)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1094)).objectCompare (var_rightType_44064.getter_lkey (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1094)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1094)))).boolEnum () ;
     if (kBoolTrue == test_2) {
       const GALGAS_templateEqualTestAST temp_3 = object ;
       TC_Array <C_FixItDescription> fixItArray4 ;
-      inCompiler->emitSemanticError (temp_3.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_43996.getter_lkey (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1096)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1096)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1096)).add_operation (GALGAS_string ("', right operand type is '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1096)).add_operation (var_rightType_44065.getter_lkey (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1096)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1096)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1096)).add_operation (GALGAS_string ("': '==' operator requires the types are the same"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1096)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1095)) ;
+      inCompiler->emitSemanticError (temp_3.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_43995.getter_lkey (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1096)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1096)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1096)).add_operation (GALGAS_string ("', right operand type is '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1096)).add_operation (var_rightType_44064.getter_lkey (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1096)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1096)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1096)).add_operation (GALGAS_string ("': '==' operator requires the types are the same"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1096)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1095)) ;
       outArgument_outExpression.drop () ; // Release error dropped variable
     }
   }
   if (kBoolFalse == test_2) {
     const GALGAS_templateEqualTestAST temp_5 = object ;
-    outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mBoolType (HERE), temp_5.getter_mOperatorLocation (HERE), var_leftExpression_43691, GALGAS_comparison::constructor_equal (SOURCE_FILE ("templateAnalysis.galgas", 1104)), var_rightExpression_43921  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1100)) ;
+    outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mBoolType (HERE), temp_5.getter_mOperatorLocation (HERE), var_leftExpression_43690, GALGAS_comparison::constructor_equal (SOURCE_FILE ("templateAnalysis.galgas", 1104)), var_rightExpression_43920  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1100)) ;
   }
 }
 
@@ -937,27 +1061,27 @@ static void extensionMethod_templateNonEqualTestAST_templateExpressionAnalysis (
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateNonEqualTestAST * object = (const cPtr_templateNonEqualTestAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateNonEqualTestAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_45225 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_45224 ;
   const GALGAS_templateNonEqualTestAST temp_0 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_45225, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1119)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_45455 ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_45224, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1119)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_45454 ;
   const GALGAS_templateNonEqualTestAST temp_1 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_45455, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1126)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_leftType_45530 = var_leftExpression_45225.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1133)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_rightType_45599 = var_rightExpression_45455.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1134)) ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_45454, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1126)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_leftType_45529 = var_leftExpression_45224.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1133)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_rightType_45598 = var_rightExpression_45454.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1134)) ;
   enumGalgasBool test_2 = kBoolTrue ;
   if (kBoolTrue == test_2) {
-    test_2 = GALGAS_bool (kIsNotEqual, var_leftType_45530.getter_lkey (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1135)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1135)).objectCompare (var_rightType_45599.getter_lkey (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1135)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1135)))).boolEnum () ;
+    test_2 = GALGAS_bool (kIsNotEqual, var_leftType_45529.getter_lkey (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1135)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1135)).objectCompare (var_rightType_45598.getter_lkey (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1135)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1135)))).boolEnum () ;
     if (kBoolTrue == test_2) {
       const GALGAS_templateNonEqualTestAST temp_3 = object ;
       TC_Array <C_FixItDescription> fixItArray4 ;
-      inCompiler->emitSemanticError (temp_3.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_45530.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1137)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1137)).add_operation (GALGAS_string ("', right operand type is '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1137)).add_operation (var_rightType_45599.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1137)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1137)).add_operation (GALGAS_string ("': '!=' operator requires the types are the same"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1137)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1136)) ;
+      inCompiler->emitSemanticError (temp_3.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_45529.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1137)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1137)).add_operation (GALGAS_string ("', right operand type is '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1137)).add_operation (var_rightType_45598.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1137)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1137)).add_operation (GALGAS_string ("': '!=' operator requires the types are the same"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1137)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1136)) ;
       outArgument_outExpression.drop () ; // Release error dropped variable
     }
   }
   if (kBoolFalse == test_2) {
     const GALGAS_templateNonEqualTestAST temp_5 = object ;
-    outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mBoolType (HERE), temp_5.getter_mOperatorLocation (HERE), var_leftExpression_45225, GALGAS_comparison::constructor_notEqual (SOURCE_FILE ("templateAnalysis.galgas", 1145)), var_rightExpression_45455  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1141)) ;
+    outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mBoolType (HERE), temp_5.getter_mOperatorLocation (HERE), var_leftExpression_45224, GALGAS_comparison::constructor_notEqual (SOURCE_FILE ("templateAnalysis.galgas", 1145)), var_rightExpression_45454  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1141)) ;
   }
 }
 
@@ -987,38 +1111,38 @@ static void extensionMethod_templateStrictInfTestAST_templateExpressionAnalysis 
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateStrictInfTestAST * object = (const cPtr_templateStrictInfTestAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateStrictInfTestAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_46761 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_46760 ;
   const GALGAS_templateStrictInfTestAST temp_0 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_46761, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1160)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_46991 ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_46760, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1160)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_46990 ;
   const GALGAS_templateStrictInfTestAST temp_1 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_46991, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1167)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_leftType_47066 = var_leftExpression_46761.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1174)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_rightType_47135 = var_rightExpression_46991.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1175)) ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_46990, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1167)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_leftType_47065 = var_leftExpression_46760.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1174)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_rightType_47134 = var_rightExpression_46990.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1175)) ;
   enumGalgasBool test_2 = kBoolTrue ;
   if (kBoolTrue == test_2) {
-    test_2 = var_leftType_47066.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1176)).getter_isComparable (SOURCE_FILE ("templateAnalysis.galgas", 1176)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1176)).boolEnum () ;
+    test_2 = var_leftType_47065.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1176)).getter_isComparable (SOURCE_FILE ("templateAnalysis.galgas", 1176)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1176)).boolEnum () ;
     if (kBoolTrue == test_2) {
       const GALGAS_templateStrictInfTestAST temp_3 = object ;
       TC_Array <C_FixItDescription> fixItArray4 ;
-      inCompiler->emitSemanticError (temp_3.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_47066.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1178)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1178)).add_operation (GALGAS_string ("' and does not support the '<' operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1178)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1177)) ;
+      inCompiler->emitSemanticError (temp_3.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_47065.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1178)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1178)).add_operation (GALGAS_string ("' and does not support the '<' operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1178)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1177)) ;
       outArgument_outExpression.drop () ; // Release error dropped variable
     }
   }
   if (kBoolFalse == test_2) {
     enumGalgasBool test_5 = kBoolTrue ;
     if (kBoolTrue == test_5) {
-      test_5 = GALGAS_bool (kIsNotEqual, var_leftType_47066.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1180)).objectCompare (var_rightType_47135.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1180)))).boolEnum () ;
+      test_5 = GALGAS_bool (kIsNotEqual, var_leftType_47065.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1180)).objectCompare (var_rightType_47134.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1180)))).boolEnum () ;
       if (kBoolTrue == test_5) {
         const GALGAS_templateStrictInfTestAST temp_6 = object ;
         TC_Array <C_FixItDescription> fixItArray7 ;
-        inCompiler->emitSemanticError (temp_6.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_47066.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1182)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1182)).add_operation (GALGAS_string ("', right operand type is '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1182)).add_operation (var_rightType_47135.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1182)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1182)).add_operation (GALGAS_string ("': '<' operator requires the types are the same"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1182)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1181)) ;
+        inCompiler->emitSemanticError (temp_6.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_47065.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1182)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1182)).add_operation (GALGAS_string ("', right operand type is '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1182)).add_operation (var_rightType_47134.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1182)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1182)).add_operation (GALGAS_string ("': '<' operator requires the types are the same"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1182)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1181)) ;
         outArgument_outExpression.drop () ; // Release error dropped variable
       }
     }
     if (kBoolFalse == test_5) {
       const GALGAS_templateStrictInfTestAST temp_8 = object ;
-      outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mBoolType (HERE), temp_8.getter_mOperatorLocation (HERE), var_leftExpression_46761, GALGAS_comparison::constructor_lowerThan (SOURCE_FILE ("templateAnalysis.galgas", 1190)), var_rightExpression_46991  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1186)) ;
+      outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mBoolType (HERE), temp_8.getter_mOperatorLocation (HERE), var_leftExpression_46760, GALGAS_comparison::constructor_lowerThan (SOURCE_FILE ("templateAnalysis.galgas", 1190)), var_rightExpression_46990  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1186)) ;
     }
   }
 }
@@ -1049,38 +1173,38 @@ static void extensionMethod_templateInfOrEqualTestAST_templateExpressionAnalysis
                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateInfOrEqualTestAST * object = (const cPtr_templateInfOrEqualTestAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateInfOrEqualTestAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_48488 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_48487 ;
   const GALGAS_templateInfOrEqualTestAST temp_0 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_48488, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1205)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_48718 ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_48487, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1205)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_48717 ;
   const GALGAS_templateInfOrEqualTestAST temp_1 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_48718, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1212)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_leftType_48793 = var_leftExpression_48488.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1219)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_rightType_48862 = var_rightExpression_48718.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1220)) ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_48717, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1212)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_leftType_48792 = var_leftExpression_48487.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1219)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_rightType_48861 = var_rightExpression_48717.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1220)) ;
   enumGalgasBool test_2 = kBoolTrue ;
   if (kBoolTrue == test_2) {
-    test_2 = var_leftType_48793.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1221)).getter_isComparable (SOURCE_FILE ("templateAnalysis.galgas", 1221)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1221)).boolEnum () ;
+    test_2 = var_leftType_48792.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1221)).getter_isComparable (SOURCE_FILE ("templateAnalysis.galgas", 1221)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1221)).boolEnum () ;
     if (kBoolTrue == test_2) {
       const GALGAS_templateInfOrEqualTestAST temp_3 = object ;
       TC_Array <C_FixItDescription> fixItArray4 ;
-      inCompiler->emitSemanticError (temp_3.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_48793.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1223)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1223)).add_operation (GALGAS_string ("' and does not support the '<=' operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1223)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1222)) ;
+      inCompiler->emitSemanticError (temp_3.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_48792.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1223)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1223)).add_operation (GALGAS_string ("' and does not support the '<=' operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1223)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1222)) ;
       outArgument_outExpression.drop () ; // Release error dropped variable
     }
   }
   if (kBoolFalse == test_2) {
     enumGalgasBool test_5 = kBoolTrue ;
     if (kBoolTrue == test_5) {
-      test_5 = GALGAS_bool (kIsNotEqual, var_leftType_48793.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1225)).objectCompare (var_rightType_48862.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1225)))).boolEnum () ;
+      test_5 = GALGAS_bool (kIsNotEqual, var_leftType_48792.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1225)).objectCompare (var_rightType_48861.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1225)))).boolEnum () ;
       if (kBoolTrue == test_5) {
         const GALGAS_templateInfOrEqualTestAST temp_6 = object ;
         TC_Array <C_FixItDescription> fixItArray7 ;
-        inCompiler->emitSemanticError (temp_6.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_48793.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1227)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1227)).add_operation (GALGAS_string ("', right operand type is '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1227)).add_operation (var_rightType_48862.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1227)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1227)).add_operation (GALGAS_string ("': '<=' operator requires the types are the same"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1227)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1226)) ;
+        inCompiler->emitSemanticError (temp_6.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_48792.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1227)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1227)).add_operation (GALGAS_string ("', right operand type is '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1227)).add_operation (var_rightType_48861.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1227)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1227)).add_operation (GALGAS_string ("': '<=' operator requires the types are the same"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1227)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1226)) ;
         outArgument_outExpression.drop () ; // Release error dropped variable
       }
     }
     if (kBoolFalse == test_5) {
       const GALGAS_templateInfOrEqualTestAST temp_8 = object ;
-      outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mBoolType (HERE), temp_8.getter_mOperatorLocation (HERE), var_leftExpression_48488, GALGAS_comparison::constructor_lowerOrEqual (SOURCE_FILE ("templateAnalysis.galgas", 1235)), var_rightExpression_48718  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1231)) ;
+      outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mBoolType (HERE), temp_8.getter_mOperatorLocation (HERE), var_leftExpression_48487, GALGAS_comparison::constructor_lowerOrEqual (SOURCE_FILE ("templateAnalysis.galgas", 1235)), var_rightExpression_48717  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1231)) ;
     }
   }
 }
@@ -1111,38 +1235,38 @@ static void extensionMethod_templateStrictSupTestAST_templateExpressionAnalysis 
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateStrictSupTestAST * object = (const cPtr_templateStrictSupTestAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateStrictSupTestAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_50219 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_50218 ;
   const GALGAS_templateStrictSupTestAST temp_0 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_50219, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1250)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_50449 ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_50218, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1250)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_50448 ;
   const GALGAS_templateStrictSupTestAST temp_1 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_50449, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1257)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_leftType_50524 = var_leftExpression_50219.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1264)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_rightType_50593 = var_rightExpression_50449.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1265)) ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_50448, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1257)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_leftType_50523 = var_leftExpression_50218.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1264)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_rightType_50592 = var_rightExpression_50448.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1265)) ;
   enumGalgasBool test_2 = kBoolTrue ;
   if (kBoolTrue == test_2) {
-    test_2 = var_leftType_50524.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1266)).getter_isComparable (SOURCE_FILE ("templateAnalysis.galgas", 1266)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1266)).boolEnum () ;
+    test_2 = var_leftType_50523.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1266)).getter_isComparable (SOURCE_FILE ("templateAnalysis.galgas", 1266)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1266)).boolEnum () ;
     if (kBoolTrue == test_2) {
       const GALGAS_templateStrictSupTestAST temp_3 = object ;
       TC_Array <C_FixItDescription> fixItArray4 ;
-      inCompiler->emitSemanticError (temp_3.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_50524.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1268)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1268)).add_operation (GALGAS_string ("' and does not support the '>' operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1268)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1267)) ;
+      inCompiler->emitSemanticError (temp_3.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_50523.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1268)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1268)).add_operation (GALGAS_string ("' and does not support the '>' operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1268)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1267)) ;
       outArgument_outExpression.drop () ; // Release error dropped variable
     }
   }
   if (kBoolFalse == test_2) {
     enumGalgasBool test_5 = kBoolTrue ;
     if (kBoolTrue == test_5) {
-      test_5 = GALGAS_bool (kIsNotEqual, var_leftType_50524.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1270)).objectCompare (var_rightType_50593.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1270)))).boolEnum () ;
+      test_5 = GALGAS_bool (kIsNotEqual, var_leftType_50523.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1270)).objectCompare (var_rightType_50592.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1270)))).boolEnum () ;
       if (kBoolTrue == test_5) {
         const GALGAS_templateStrictSupTestAST temp_6 = object ;
         TC_Array <C_FixItDescription> fixItArray7 ;
-        inCompiler->emitSemanticError (temp_6.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_50524.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1272)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1272)).add_operation (GALGAS_string ("', right operand type is '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1272)).add_operation (var_rightType_50593.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1272)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1272)).add_operation (GALGAS_string ("': '>' operator requires the types are the same"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1272)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1271)) ;
+        inCompiler->emitSemanticError (temp_6.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_50523.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1272)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1272)).add_operation (GALGAS_string ("', right operand type is '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1272)).add_operation (var_rightType_50592.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1272)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1272)).add_operation (GALGAS_string ("': '>' operator requires the types are the same"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1272)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1271)) ;
         outArgument_outExpression.drop () ; // Release error dropped variable
       }
     }
     if (kBoolFalse == test_5) {
       const GALGAS_templateStrictSupTestAST temp_8 = object ;
-      outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mBoolType (HERE), temp_8.getter_mOperatorLocation (HERE), var_leftExpression_50219, GALGAS_comparison::constructor_greaterThan (SOURCE_FILE ("templateAnalysis.galgas", 1280)), var_rightExpression_50449  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1276)) ;
+      outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mBoolType (HERE), temp_8.getter_mOperatorLocation (HERE), var_leftExpression_50218, GALGAS_comparison::constructor_greaterThan (SOURCE_FILE ("templateAnalysis.galgas", 1280)), var_rightExpression_50448  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1276)) ;
     }
   }
 }
@@ -1173,38 +1297,38 @@ static void extensionMethod_templateSupOrEqualTestAST_templateExpressionAnalysis
                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateSupOrEqualTestAST * object = (const cPtr_templateSupOrEqualTestAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateSupOrEqualTestAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_51948 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_51947 ;
   const GALGAS_templateSupOrEqualTestAST temp_0 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_51948, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1295)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_52178 ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_51947, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1295)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_52177 ;
   const GALGAS_templateSupOrEqualTestAST temp_1 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_52178, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1302)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_leftType_52253 = var_leftExpression_51948.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1309)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_rightType_52322 = var_rightExpression_52178.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1310)) ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_52177, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1302)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_leftType_52252 = var_leftExpression_51947.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1309)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_rightType_52321 = var_rightExpression_52177.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1310)) ;
   enumGalgasBool test_2 = kBoolTrue ;
   if (kBoolTrue == test_2) {
-    test_2 = var_leftType_52253.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1311)).getter_isComparable (SOURCE_FILE ("templateAnalysis.galgas", 1311)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1311)).boolEnum () ;
+    test_2 = var_leftType_52252.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1311)).getter_isComparable (SOURCE_FILE ("templateAnalysis.galgas", 1311)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1311)).boolEnum () ;
     if (kBoolTrue == test_2) {
       const GALGAS_templateSupOrEqualTestAST temp_3 = object ;
       TC_Array <C_FixItDescription> fixItArray4 ;
-      inCompiler->emitSemanticError (temp_3.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_52253.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1313)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1313)).add_operation (GALGAS_string ("' and does not support the '>=' operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1313)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1312)) ;
+      inCompiler->emitSemanticError (temp_3.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_52252.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1313)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1313)).add_operation (GALGAS_string ("' and does not support the '>=' operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1313)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1312)) ;
       outArgument_outExpression.drop () ; // Release error dropped variable
     }
   }
   if (kBoolFalse == test_2) {
     enumGalgasBool test_5 = kBoolTrue ;
     if (kBoolTrue == test_5) {
-      test_5 = GALGAS_bool (kIsNotEqual, var_leftType_52253.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1315)).objectCompare (var_rightType_52322.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1315)))).boolEnum () ;
+      test_5 = GALGAS_bool (kIsNotEqual, var_leftType_52252.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1315)).objectCompare (var_rightType_52321.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1315)))).boolEnum () ;
       if (kBoolTrue == test_5) {
         const GALGAS_templateSupOrEqualTestAST temp_6 = object ;
         TC_Array <C_FixItDescription> fixItArray7 ;
-        inCompiler->emitSemanticError (temp_6.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_52253.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1317)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1317)).add_operation (GALGAS_string ("', right operand type is '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1317)).add_operation (var_rightType_52322.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1317)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1317)).add_operation (GALGAS_string ("': '>=' operator requires the types are the same"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1317)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1316)) ;
+        inCompiler->emitSemanticError (temp_6.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_52252.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1317)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1317)).add_operation (GALGAS_string ("', right operand type is '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1317)).add_operation (var_rightType_52321.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1317)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1317)).add_operation (GALGAS_string ("': '>=' operator requires the types are the same"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1317)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1316)) ;
         outArgument_outExpression.drop () ; // Release error dropped variable
       }
     }
     if (kBoolFalse == test_5) {
       const GALGAS_templateSupOrEqualTestAST temp_8 = object ;
-      outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mBoolType (HERE), temp_8.getter_mOperatorLocation (HERE), var_leftExpression_51948, GALGAS_comparison::constructor_greaterOrEqual (SOURCE_FILE ("templateAnalysis.galgas", 1325)), var_rightExpression_52178  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1321)) ;
+      outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mBoolType (HERE), temp_8.getter_mOperatorLocation (HERE), var_leftExpression_51947, GALGAS_comparison::constructor_greaterOrEqual (SOURCE_FILE ("templateAnalysis.galgas", 1325)), var_rightExpression_52177  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1321)) ;
     }
   }
 }
@@ -1235,38 +1359,38 @@ static void extensionMethod_templateLeftShiftOperationAST_templateExpressionAnal
                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateLeftShiftOperationAST * object = (const cPtr_templateLeftShiftOperationAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateLeftShiftOperationAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_53686 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_53685 ;
   const GALGAS_templateLeftShiftOperationAST temp_0 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_53686, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1340)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_53916 ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_53685, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1340)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_53915 ;
   const GALGAS_templateLeftShiftOperationAST temp_1 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_53916, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1347)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_leftType_53991 = var_leftExpression_53686.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1354)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_rightType_54060 = var_rightExpression_53916.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1355)) ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_53915, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1347)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_leftType_53990 = var_leftExpression_53685.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1354)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_rightType_54059 = var_rightExpression_53915.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1355)) ;
   enumGalgasBool test_2 = kBoolTrue ;
   if (kBoolTrue == test_2) {
-    test_2 = var_leftType_53991.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1356)).getter_infixShiftOperator (SOURCE_FILE ("templateAnalysis.galgas", 1356)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1356)).boolEnum () ;
+    test_2 = var_leftType_53990.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1356)).getter_infixShiftOperator (SOURCE_FILE ("templateAnalysis.galgas", 1356)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1356)).boolEnum () ;
     if (kBoolTrue == test_2) {
       const GALGAS_templateLeftShiftOperationAST temp_3 = object ;
       TC_Array <C_FixItDescription> fixItArray4 ;
-      inCompiler->emitSemanticError (temp_3.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_53991.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1358)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1358)).add_operation (GALGAS_string ("' and does not support a shift operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1358)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1357)) ;
+      inCompiler->emitSemanticError (temp_3.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_53990.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1358)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1358)).add_operation (GALGAS_string ("' and does not support a shift operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1358)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1357)) ;
       outArgument_outExpression.drop () ; // Release error dropped variable
     }
   }
   if (kBoolFalse == test_2) {
     enumGalgasBool test_5 = kBoolTrue ;
     if (kBoolTrue == test_5) {
-      test_5 = GALGAS_bool (kIsNotEqual, var_rightType_54060.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1360)).objectCompare (GALGAS_string ("uint"))).boolEnum () ;
+      test_5 = GALGAS_bool (kIsNotEqual, var_rightType_54059.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1360)).objectCompare (GALGAS_string ("uint"))).boolEnum () ;
       if (kBoolTrue == test_5) {
         const GALGAS_templateLeftShiftOperationAST temp_6 = object ;
         TC_Array <C_FixItDescription> fixItArray7 ;
-        inCompiler->emitSemanticError (temp_6.getter_mOperatorLocation (HERE), GALGAS_string ("for a shift operator, right operand type should be '@uint': it is '@").add_operation (var_rightType_54060.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1362)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1362)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1362)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1361)) ;
+        inCompiler->emitSemanticError (temp_6.getter_mOperatorLocation (HERE), GALGAS_string ("for a shift operator, right operand type should be '@uint': it is '@").add_operation (var_rightType_54059.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1362)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1362)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1362)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1361)) ;
         outArgument_outExpression.drop () ; // Release error dropped variable
       }
     }
     if (kBoolFalse == test_5) {
       const GALGAS_templateLeftShiftOperationAST temp_8 = object ;
-      outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::constructor_new (var_leftType_53991, temp_8.getter_mOperatorLocation (HERE), var_leftExpression_53686, GALGAS_binaryOperator::constructor_leftShift (SOURCE_FILE ("templateAnalysis.galgas", 1370)), var_rightExpression_53916  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1366)) ;
+      outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::constructor_new (var_leftType_53990, temp_8.getter_mOperatorLocation (HERE), var_leftExpression_53685, GALGAS_binaryOperator::constructor_leftShift (SOURCE_FILE ("templateAnalysis.galgas", 1370)), var_rightExpression_53915  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1366)) ;
     }
   }
 }
@@ -1297,38 +1421,38 @@ static void extensionMethod_templateRightShiftOperationAST_templateExpressionAna
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateRightShiftOperationAST * object = (const cPtr_templateRightShiftOperationAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateRightShiftOperationAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_55334 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_55333 ;
   const GALGAS_templateRightShiftOperationAST temp_0 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_55334, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1385)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_55564 ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_leftExpression_55333, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1385)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_55563 ;
   const GALGAS_templateRightShiftOperationAST temp_1 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_55564, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1392)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_leftType_55639 = var_leftExpression_55334.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1399)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_rightType_55708 = var_rightExpression_55564.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1400)) ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_rightExpression_55563, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1392)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_leftType_55638 = var_leftExpression_55333.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1399)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_rightType_55707 = var_rightExpression_55563.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1400)) ;
   enumGalgasBool test_2 = kBoolTrue ;
   if (kBoolTrue == test_2) {
-    test_2 = var_leftType_55639.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1401)).getter_infixShiftOperator (SOURCE_FILE ("templateAnalysis.galgas", 1401)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1401)).boolEnum () ;
+    test_2 = var_leftType_55638.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1401)).getter_infixShiftOperator (SOURCE_FILE ("templateAnalysis.galgas", 1401)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1401)).boolEnum () ;
     if (kBoolTrue == test_2) {
       const GALGAS_templateRightShiftOperationAST temp_3 = object ;
       TC_Array <C_FixItDescription> fixItArray4 ;
-      inCompiler->emitSemanticError (temp_3.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_55639.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1403)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1403)).add_operation (GALGAS_string ("' and does not support a shift operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1403)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1402)) ;
+      inCompiler->emitSemanticError (temp_3.getter_mOperatorLocation (HERE), GALGAS_string ("left operand type is '@").add_operation (var_leftType_55638.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1403)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1403)).add_operation (GALGAS_string ("' and does not support a shift operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1403)), fixItArray4  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1402)) ;
       outArgument_outExpression.drop () ; // Release error dropped variable
     }
   }
   if (kBoolFalse == test_2) {
     enumGalgasBool test_5 = kBoolTrue ;
     if (kBoolTrue == test_5) {
-      test_5 = GALGAS_bool (kIsNotEqual, var_rightType_55708.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1405)).objectCompare (GALGAS_string ("uint"))).boolEnum () ;
+      test_5 = GALGAS_bool (kIsNotEqual, var_rightType_55707.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1405)).objectCompare (GALGAS_string ("uint"))).boolEnum () ;
       if (kBoolTrue == test_5) {
         const GALGAS_templateRightShiftOperationAST temp_6 = object ;
         TC_Array <C_FixItDescription> fixItArray7 ;
-        inCompiler->emitSemanticError (temp_6.getter_mOperatorLocation (HERE), GALGAS_string ("for a shift operator, right operand type should be '@uint': it is '@").add_operation (var_rightType_55708.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1407)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1407)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1407)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1406)) ;
+        inCompiler->emitSemanticError (temp_6.getter_mOperatorLocation (HERE), GALGAS_string ("for a shift operator, right operand type should be '@uint': it is '@").add_operation (var_rightType_55707.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1407)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1407)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1407)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1406)) ;
         outArgument_outExpression.drop () ; // Release error dropped variable
       }
     }
     if (kBoolFalse == test_5) {
       const GALGAS_templateRightShiftOperationAST temp_8 = object ;
-      outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::constructor_new (var_leftType_55639, temp_8.getter_mOperatorLocation (HERE), var_leftExpression_55334, GALGAS_binaryOperator::constructor_rightShift (SOURCE_FILE ("templateAnalysis.galgas", 1415)), var_rightExpression_55564  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1411)) ;
+      outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::constructor_new (var_leftType_55638, temp_8.getter_mOperatorLocation (HERE), var_leftExpression_55333, GALGAS_binaryOperator::constructor_rightShift (SOURCE_FILE ("templateAnalysis.galgas", 1415)), var_rightExpression_55563  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1411)) ;
     }
   }
 }
@@ -1357,10 +1481,10 @@ void routine_templateInstructionListAnalysis (const GALGAS_lstring constinArgume
                                               GALGAS_templateInstructionListForGeneration & ioArgument_ioInstructionList,
                                               C_Compiler * inCompiler
                                               COMMA_UNUSED_LOCATION_ARGS) {
-  cEnumerator_templateInstructionListAST enumerator_57464 (constinArgument_inInstructionList, kENUMERATION_UP) ;
-  while (enumerator_57464.hasCurrentObject ()) {
-    callExtensionMethod_templateInstructionAnalysis ((const cPtr_templateInstructionAST *) enumerator_57464.current_mInstruction (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioInstructionList, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1443)) ;
-    enumerator_57464.gotoNextObject () ;
+  cEnumerator_templateInstructionListAST enumerator_57463 (constinArgument_inInstructionList, kENUMERATION_UP) ;
+  while (enumerator_57463.hasCurrentObject ()) {
+    callExtensionMethod_templateInstructionAnalysis ((const cPtr_templateInstructionAST *) enumerator_57463.current_mInstruction (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioInstructionList, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1443)) ;
+    enumerator_57463.gotoNextObject () ;
   }
 }
 
@@ -1410,19 +1534,19 @@ static void extensionMethod_templateInstructionExpressionAST_templateInstruction
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateInstructionExpressionAST * object = (const cPtr_templateInstructionExpressionAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateInstructionExpressionAST) ;
-  GALGAS_semanticExpressionForGeneration var_expression_58611 ;
+  GALGAS_semanticExpressionForGeneration var_expression_58610 ;
   const GALGAS_templateInstructionExpressionAST temp_0 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_expression_58611, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1472)) ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_expression_58610, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1472)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = GALGAS_bool (kIsNotEqual, var_expression_58611.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1478)).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1478)).objectCompare (GALGAS_string ("string"))).boolEnum () ;
+    test_1 = GALGAS_bool (kIsNotEqual, var_expression_58610.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1478)).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1478)).objectCompare (GALGAS_string ("string"))).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GALGAS_templateInstructionExpressionAST temp_2 = object ;
       TC_Array <C_FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.getter_mLocation (HERE), GALGAS_string ("expression type should be '@string' (it is '@").add_operation (var_expression_58611.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1479)).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1479)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1479)).add_operation (GALGAS_string ("')"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1479)), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1479)) ;
+      inCompiler->emitSemanticError (temp_2.getter_mLocation (HERE), GALGAS_string ("expression type should be '@string' (it is '@").add_operation (var_expression_58610.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1479)).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1479)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1479)).add_operation (GALGAS_string ("')"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1479)), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1479)) ;
     }
   }
-  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionExpressionForGeneration::constructor_new (var_expression_58611  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1481))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1481)) ;
+  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionExpressionForGeneration::constructor_new (var_expression_58610  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1481))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1481)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1451,25 +1575,25 @@ static void extensionMethod_templateBlockInstructionAST_templateInstructionAnaly
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateBlockInstructionAST * object = (const cPtr_templateBlockInstructionAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateBlockInstructionAST) ;
-  GALGAS_semanticExpressionForGeneration var_expression_59469 ;
+  GALGAS_semanticExpressionForGeneration var_expression_59468 ;
   const GALGAS_templateBlockInstructionAST temp_0 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_expression_59469, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1493)) ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_expression_59468, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1493)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = GALGAS_bool (kIsNotEqual, var_expression_59469.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1499)).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1499)).objectCompare (GALGAS_string ("uint"))).boolEnum () ;
+    test_1 = GALGAS_bool (kIsNotEqual, var_expression_59468.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1499)).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1499)).objectCompare (GALGAS_string ("uint"))).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GALGAS_templateBlockInstructionAST temp_2 = object ;
       TC_Array <C_FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.getter_mLocation (HERE), GALGAS_string ("expression type should be '@uint' (it is '@").add_operation (var_expression_59469.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1500)).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1500)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1500)).add_operation (GALGAS_string ("')"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1500)), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1500)) ;
+      inCompiler->emitSemanticError (temp_2.getter_mLocation (HERE), GALGAS_string ("expression type should be '@uint' (it is '@").add_operation (var_expression_59468.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1500)).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1500)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1500)).add_operation (GALGAS_string ("')"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1500)), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1500)) ;
     }
   }
-  GALGAS_templateInstructionListForGeneration var_blockInstructionList_59816 = GALGAS_templateInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1502)) ;
+  GALGAS_templateInstructionListForGeneration var_blockInstructionList_59815 = GALGAS_templateInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1502)) ;
   {
   const GALGAS_templateBlockInstructionAST temp_4 = object ;
-  routine_templateInstructionListAnalysis (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, temp_4.getter_mBlockInstructionList (HERE), var_blockInstructionList_59816, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1503)) ;
+  routine_templateInstructionListAnalysis (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, temp_4.getter_mBlockInstructionList (HERE), var_blockInstructionList_59815, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1503)) ;
   }
   const GALGAS_templateBlockInstructionAST temp_5 = object ;
-  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateBlockInstructionForGeneration::constructor_new (var_expression_59469, temp_5.getter_mLocation (HERE), var_blockInstructionList_59816  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1510))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1510)) ;
+  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateBlockInstructionForGeneration::constructor_new (var_expression_59468, temp_5.getter_mLocation (HERE), var_blockInstructionList_59815  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1510))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1510)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1552,29 +1676,29 @@ static void extensionMethod_templateInstructionForeachAST_templateInstructionAna
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateInstructionForeachAST * object = (const cPtr_templateInstructionForeachAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateInstructionForeachAST) ;
-  GALGAS_semanticExpressionForGeneration var_expression_61665 ;
+  GALGAS_semanticExpressionForGeneration var_expression_61664 ;
   const GALGAS_templateInstructionForeachAST temp_0 = object ;
-  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_expression_61665, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1545)) ;
-  GALGAS_enumerationDescriptorList var_enumerationDescriptor_61908 = var_expression_61665.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1552)).getter_mEnumerationDescriptor (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1552)) ;
+  callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) temp_0.getter_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_expression_61664, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1545)) ;
+  GALGAS_enumerationDescriptorList var_enumerationDescriptor_61907 = var_expression_61664.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1552)).getter_mEnumerationDescriptor (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1552)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = GALGAS_bool (kIsEqual, var_enumerationDescriptor_61908.getter_length (SOURCE_FILE ("templateAnalysis.galgas", 1553)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    test_1 = GALGAS_bool (kIsEqual, var_enumerationDescriptor_61907.getter_length (SOURCE_FILE ("templateAnalysis.galgas", 1553)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
     if (kBoolTrue == test_1) {
       TC_Array <C_FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (var_expression_61665.getter_mLocation (SOURCE_FILE ("templateAnalysis.galgas", 1554)), GALGAS_string ("expression of '@").add_operation (var_expression_61665.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1554)).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1554)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1554)).add_operation (GALGAS_string ("' cannot be enumerated"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1554)), fixItArray2  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1554)) ;
+      inCompiler->emitSemanticError (var_expression_61664.getter_mLocation (SOURCE_FILE ("templateAnalysis.galgas", 1554)), GALGAS_string ("expression of '@").add_operation (var_expression_61664.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1554)).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1554)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1554)).add_operation (GALGAS_string ("' cannot be enumerated"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1554)), fixItArray2  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1554)) ;
     }
   }
-  GALGAS_templateInstructionListForGeneration var_beforeInstructionList_62216 = GALGAS_templateInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1557)) ;
+  GALGAS_templateInstructionListForGeneration var_beforeInstructionList_62215 = GALGAS_templateInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1557)) ;
   {
   const GALGAS_templateInstructionForeachAST temp_3 = object ;
-  routine_templateInstructionListAnalysis (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, temp_3.getter_mBeforeInstructionList (HERE), var_beforeInstructionList_62216, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1558)) ;
+  routine_templateInstructionListAnalysis (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, temp_3.getter_mBeforeInstructionList (HERE), var_beforeInstructionList_62215, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1558)) ;
   }
   const GALGAS_templateInstructionForeachAST temp_4 = object ;
-  GALGAS_string var_enumeratorCppName_62497 = GALGAS_string ("enumerator_").add_operation (temp_4.getter_mIndexIdentifier (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 1566)).getter_locationIndex (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1566)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1566)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1566)) ;
-  GALGAS_templateVariableMap var_doVariableMap_62610 = constinArgument_inAnalysisContext.getter_mTemplateVariableMap (HERE) ;
+  GALGAS_string var_enumeratorCppName_62496 = GALGAS_string ("enumerator_").add_operation (temp_4.getter_mIndexIdentifier (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 1566)).getter_locationIndex (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1566)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1566)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1566)) ;
+  GALGAS_templateVariableMap var_doVariableMap_62609 = constinArgument_inAnalysisContext.getter_mTemplateVariableMap (HERE) ;
   const GALGAS_templateInstructionForeachAST temp_5 = object ;
   const GALGAS_templateInstructionForeachAST temp_6 = object ;
-  GALGAS_string var_cppIndexVarName_62681 = GALGAS_string ("index_").add_operation (temp_5.getter_mIndexIdentifier (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 1568)).getter_locationIndex (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1568)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1568)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1568)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1568)).add_operation (temp_6.getter_mIndexIdentifier (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1568)).getter_identifierRepresentation (SOURCE_FILE ("templateAnalysis.galgas", 1568)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1568)) ;
+  GALGAS_string var_cppIndexVarName_62680 = GALGAS_string ("index_").add_operation (temp_5.getter_mIndexIdentifier (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 1568)).getter_locationIndex (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1568)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1568)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1568)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1568)).add_operation (temp_6.getter_mIndexIdentifier (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1568)).getter_identifierRepresentation (SOURCE_FILE ("templateAnalysis.galgas", 1568)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1568)) ;
   enumGalgasBool test_7 = kBoolTrue ;
   if (kBoolTrue == test_7) {
     const GALGAS_templateInstructionForeachAST temp_8 = object ;
@@ -1582,36 +1706,36 @@ static void extensionMethod_templateInstructionForeachAST_templateInstructionAna
     if (kBoolTrue == test_7) {
       {
       const GALGAS_templateInstructionForeachAST temp_9 = object ;
-      var_doVariableMap_62610.setter_insertKey (temp_9.getter_mIndexIdentifier (HERE), constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mUIntType (HERE), var_cppIndexVarName_62681, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1570)) ;
+      var_doVariableMap_62609.setter_insertKey (temp_9.getter_mIndexIdentifier (HERE), constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mUIntType (HERE), var_cppIndexVarName_62680, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1570)) ;
       }
     }
   }
-  cEnumerator_enumerationDescriptorList enumerator_63023 (var_enumerationDescriptor_61908, kENUMERATION_UP) ;
-  while (enumerator_63023.hasCurrentObject ()) {
+  cEnumerator_enumerationDescriptorList enumerator_63022 (var_enumerationDescriptor_61907, kENUMERATION_UP) ;
+  while (enumerator_63022.hasCurrentObject ()) {
     {
     const GALGAS_templateInstructionForeachAST temp_10 = object ;
-    var_doVariableMap_62610.setter_insertKey (GALGAS_lstring::constructor_new (temp_10.getter_mPrefix (HERE).add_operation (enumerator_63023.current_mEnumerationName (HERE), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1574)), var_expression_61665.getter_mLocation (SOURCE_FILE ("templateAnalysis.galgas", 1574))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1574)), enumerator_63023.current_mEnumeratedType (HERE), var_enumeratorCppName_62497.add_operation (GALGAS_string (".current_"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1576)).add_operation (enumerator_63023.current_mEnumerationName (HERE).getter_identifierRepresentation (SOURCE_FILE ("templateAnalysis.galgas", 1576)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1576)).add_operation (GALGAS_string (" (HERE)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1576)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1573)) ;
+    var_doVariableMap_62609.setter_insertKey (GALGAS_lstring::constructor_new (temp_10.getter_mPrefix (HERE).add_operation (enumerator_63022.current_mEnumerationName (HERE), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1574)), var_expression_61664.getter_mLocation (SOURCE_FILE ("templateAnalysis.galgas", 1574))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1574)), enumerator_63022.current_mEnumeratedType (HERE), var_enumeratorCppName_62496.add_operation (GALGAS_string (".current_"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1576)).add_operation (enumerator_63022.current_mEnumerationName (HERE).getter_identifierRepresentation (SOURCE_FILE ("templateAnalysis.galgas", 1576)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1576)).add_operation (GALGAS_string (" (HERE)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1576)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1573)) ;
     }
-    enumerator_63023.gotoNextObject () ;
+    enumerator_63022.gotoNextObject () ;
   }
-  GALGAS_templateAnalysisContext var_doAnalysisContext_63291 = GALGAS_templateAnalysisContext::constructor_new (constinArgument_inAnalysisContext.getter_mSemanticContext (HERE), constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE), var_doVariableMap_62610  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1579)) ;
-  GALGAS_templateInstructionListForGeneration var_doInstructionList_63448 = GALGAS_templateInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1583)) ;
+  GALGAS_templateAnalysisContext var_doAnalysisContext_63290 = GALGAS_templateAnalysisContext::constructor_new (constinArgument_inAnalysisContext.getter_mSemanticContext (HERE), constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE), var_doVariableMap_62609  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1579)) ;
+  GALGAS_templateInstructionListForGeneration var_doInstructionList_63447 = GALGAS_templateInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1583)) ;
   {
   const GALGAS_templateInstructionForeachAST temp_11 = object ;
-  routine_templateInstructionListAnalysis (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_doAnalysisContext_63291, temp_11.getter_mDoInstructionList (HERE), var_doInstructionList_63448, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1584)) ;
+  routine_templateInstructionListAnalysis (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_doAnalysisContext_63290, temp_11.getter_mDoInstructionList (HERE), var_doInstructionList_63447, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1584)) ;
   }
-  GALGAS_templateInstructionListForGeneration var_betweenInstructionList_63723 = GALGAS_templateInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1592)) ;
+  GALGAS_templateInstructionListForGeneration var_betweenInstructionList_63722 = GALGAS_templateInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1592)) ;
   {
   const GALGAS_templateInstructionForeachAST temp_12 = object ;
-  routine_templateInstructionListAnalysis (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, temp_12.getter_mBetweenInstructionList (HERE), var_betweenInstructionList_63723, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1593)) ;
+  routine_templateInstructionListAnalysis (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, temp_12.getter_mBetweenInstructionList (HERE), var_betweenInstructionList_63722, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1593)) ;
   }
-  GALGAS_templateInstructionListForGeneration var_afterInstructionList_64004 = GALGAS_templateInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1601)) ;
+  GALGAS_templateInstructionListForGeneration var_afterInstructionList_64003 = GALGAS_templateInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1601)) ;
   {
   const GALGAS_templateInstructionForeachAST temp_13 = object ;
-  routine_templateInstructionListAnalysis (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, temp_13.getter_mAfterInstructionList (HERE), var_afterInstructionList_64004, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1602)) ;
+  routine_templateInstructionListAnalysis (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, temp_13.getter_mAfterInstructionList (HERE), var_afterInstructionList_64003, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1602)) ;
   }
   const GALGAS_templateInstructionForeachAST temp_14 = object ;
-  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionForeachForGeneration::constructor_new (temp_14.getter_mIsAscending (HERE), var_expression_61665, var_enumeratorCppName_62497, var_beforeInstructionList_62216, var_doInstructionList_63448, var_cppIndexVarName_62681, var_betweenInstructionList_63723, var_afterInstructionList_64004  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1610))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1610)) ;
+  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionForeachForGeneration::constructor_new (temp_14.getter_mIsAscending (HERE), var_expression_61664, var_enumeratorCppName_62496, var_beforeInstructionList_62215, var_doInstructionList_63447, var_cppIndexVarName_62680, var_betweenInstructionList_63722, var_afterInstructionList_64003  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1610))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1610)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1640,33 +1764,33 @@ static void extensionMethod_templateInstructionIfAST_templateInstructionAnalysis
                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateInstructionIfAST * object = (const cPtr_templateInstructionIfAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateInstructionIfAST) ;
-  GALGAS_templateInstructionIfBranchListForGeneration var_templateInstructionIfBranchList_64934 = GALGAS_templateInstructionIfBranchListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1630)) ;
+  GALGAS_templateInstructionIfBranchListForGeneration var_templateInstructionIfBranchList_64933 = GALGAS_templateInstructionIfBranchListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1630)) ;
   const GALGAS_templateInstructionIfAST temp_0 = object ;
-  cEnumerator_templateInstructionIfBranchListAST enumerator_65034 (temp_0.getter_mTemplateInstructionIfBranchList (HERE), kENUMERATION_UP) ;
-  while (enumerator_65034.hasCurrentObject ()) {
-    GALGAS_semanticExpressionForGeneration var_expression_65085 ;
-    callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) enumerator_65034.current_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_expression_65085, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1633)) ;
+  cEnumerator_templateInstructionIfBranchListAST enumerator_65033 (temp_0.getter_mTemplateInstructionIfBranchList (HERE), kENUMERATION_UP) ;
+  while (enumerator_65033.hasCurrentObject ()) {
+    GALGAS_semanticExpressionForGeneration var_expression_65084 ;
+    callExtensionMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) enumerator_65033.current_mExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_expression_65084, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1633)) ;
     enumGalgasBool test_1 = kBoolTrue ;
     if (kBoolTrue == test_1) {
-      test_1 = GALGAS_bool (kIsNotEqual, var_expression_65085.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1639)).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1639)).objectCompare (GALGAS_string ("bool"))).boolEnum () ;
+      test_1 = GALGAS_bool (kIsNotEqual, var_expression_65084.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1639)).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1639)).objectCompare (GALGAS_string ("bool"))).boolEnum () ;
       if (kBoolTrue == test_1) {
         TC_Array <C_FixItDescription> fixItArray2 ;
-        inCompiler->emitSemanticError (var_expression_65085.getter_mLocation (SOURCE_FILE ("templateAnalysis.galgas", 1640)), GALGAS_string ("'if' expression type should be '@bool' (it is '@").add_operation (var_expression_65085.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1640)).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1640)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1640)).add_operation (GALGAS_string ("')"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1640)), fixItArray2  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1640)) ;
+        inCompiler->emitSemanticError (var_expression_65084.getter_mLocation (SOURCE_FILE ("templateAnalysis.galgas", 1640)), GALGAS_string ("'if' expression type should be '@bool' (it is '@").add_operation (var_expression_65084.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1640)).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1640)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1640)).add_operation (GALGAS_string ("')"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1640)), fixItArray2  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1640)) ;
       }
     }
-    GALGAS_templateInstructionListForGeneration var_instructionList_65453 = GALGAS_templateInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1642)) ;
+    GALGAS_templateInstructionListForGeneration var_instructionList_65452 = GALGAS_templateInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1642)) ;
     {
-    routine_templateInstructionListAnalysis (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, enumerator_65034.current_mInstructionList (HERE), var_instructionList_65453, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1643)) ;
+    routine_templateInstructionListAnalysis (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, enumerator_65033.current_mInstructionList (HERE), var_instructionList_65452, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1643)) ;
     }
-    var_templateInstructionIfBranchList_64934.addAssign_operation (var_expression_65085, var_instructionList_65453  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1650)) ;
-    enumerator_65034.gotoNextObject () ;
+    var_templateInstructionIfBranchList_64933.addAssign_operation (var_expression_65084, var_instructionList_65452  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1650)) ;
+    enumerator_65033.gotoNextObject () ;
   }
-  GALGAS_templateInstructionListForGeneration var_elseInstructionList_65783 = GALGAS_templateInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1653)) ;
+  GALGAS_templateInstructionListForGeneration var_elseInstructionList_65782 = GALGAS_templateInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1653)) ;
   {
   const GALGAS_templateInstructionIfAST temp_3 = object ;
-  routine_templateInstructionListAnalysis (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, temp_3.getter_mElseInstructionList (HERE), var_elseInstructionList_65783, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1654)) ;
+  routine_templateInstructionListAnalysis (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, temp_3.getter_mElseInstructionList (HERE), var_elseInstructionList_65782, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1654)) ;
   }
-  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionIfForGeneration::constructor_new (var_templateInstructionIfBranchList_64934, var_elseInstructionList_65783  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1662))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1662)) ;
+  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionIfForGeneration::constructor_new (var_templateInstructionIfBranchList_64933, var_elseInstructionList_65782  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1662))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1662)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -8959,50 +9083,4 @@ static void defineExtensionMethod_optionComponentDeclarationAST_enterInSemanticC
 //----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_optionComponentDeclarationAST_enterInSemanticContext (defineExtensionMethod_optionComponentDeclarationAST_enterInSemanticContext, NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@optionComponentDeclarationAST semanticAnalysis'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-static void extensionMethod_optionComponentDeclarationAST_semanticAnalysis (const cPtr_semanticDeclarationAST * inObject,
-                                                                            GALGAS_lstringlist & /* ioArgument_ioUsefulnessRootEntities */,
-                                                                            GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                            const GALGAS_string /* constinArgument_inProductDirectory */,
-                                                                            const GALGAS_semanticContext constinArgument_inSemanticContext,
-                                                                            const GALGAS_predefinedTypes /* constinArgument_inPredefinedTypes */,
-                                                                            GALGAS_semanticDeclarationListForGeneration & ioArgument_ioSemanticDeclarationListForGeneration,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_optionComponentDeclarationAST * object = (const cPtr_optionComponentDeclarationAST *) inObject ;
-  macroValidSharedObject (object, cPtr_optionComponentDeclarationAST) ;
-  const GALGAS_optionComponentDeclarationAST temp_0 = object ;
-  GALGAS_lstring var_nameForUsefulness_8082 = function_optionNameForUsefulEntitiesGraph (temp_0.getter_mOptionComponentName (HERE), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 198)) ;
-  {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_8082, var_nameForUsefulness_8082, inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 199)) ;
-  }
-  GALGAS_bool var_isPredefined_8354 ;
-  GALGAS_commandLineOptionMap var_boolOptionMap_8399 ;
-  GALGAS_commandLineOptionMap var_uintOptionMap_8444 ;
-  GALGAS_commandLineOptionMap var_stringOptionMap_8491 ;
-  GALGAS_commandLineOptionMap var_stringListOptionMap_8542 ;
-  const GALGAS_optionComponentDeclarationAST temp_1 = object ;
-  constinArgument_inSemanticContext.getter_mOptionComponentMapForSemanticAnalysis (HERE).method_searchKey (temp_1.getter_mOptionComponentName (HERE), var_isPredefined_8354, var_boolOptionMap_8399, var_uintOptionMap_8444, var_stringOptionMap_8491, var_stringListOptionMap_8542, inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 201)) ;
-  const GALGAS_optionComponentDeclarationAST temp_2 = object ;
-  const GALGAS_optionComponentDeclarationAST temp_3 = object ;
-  const GALGAS_optionComponentDeclarationAST temp_4 = object ;
-  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("option ").add_operation (temp_2.getter_mOptionComponentName (HERE).getter_string (SOURCE_FILE ("optionCompilation.galgas", 211)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 211)), GALGAS_optionComponentForGeneration::constructor_new (GALGAS_bool (true), GALGAS_string ("option-").add_operation (temp_3.getter_mOptionComponentName (HERE).getter_string (HERE).getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 214)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 214)), var_isPredefined_8354, temp_4.getter_mOptionComponentName (HERE).getter_string (HERE), var_boolOptionMap_8399, var_uintOptionMap_8444, var_stringOptionMap_8491, var_stringListOptionMap_8542  COMMA_SOURCE_FILE ("optionCompilation.galgas", 212))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 210)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-static void defineExtensionMethod_optionComponentDeclarationAST_semanticAnalysis (void) {
-  enterExtensionMethod_semanticAnalysis (kTypeDescriptor_GALGAS_optionComponentDeclarationAST.mSlotID,
-                                         extensionMethod_optionComponentDeclarationAST_semanticAnalysis) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-C_PrologueEpilogue gMethod_optionComponentDeclarationAST_semanticAnalysis (defineExtensionMethod_optionComponentDeclarationAST_semanticAnalysis, NULL) ;
 

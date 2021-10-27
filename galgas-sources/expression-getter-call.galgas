@@ -86,7 +86,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       hasCompilerArgument = true
       returnedType = @unifiedTypeMap-entry.null
       kind = @methodKind. definedAsExtension
-      for () in [receiverType mCurrentTypedAttributeList] do
+      for () in [receiverType mCurrentTypedPropertyList] do
         let attributeType = @unifiedTypeMap-entry.searchKey {
           !inAnalysisContext.mSemanticContext.mTypeMap
           !@lstring.new {![mPropertyTypeEntry key] !@location.here}

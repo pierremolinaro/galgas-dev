@@ -1,0 +1,113 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+valueclass @bangExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mExpression
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    let operatorLocation = @location.here
+    <primary> ? outExpression
+    $°$
+    outExpression = @bangExpressionAST.new {!operatorLocation !outExpression}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @bangExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#·····················································································································
+
+override method @bangExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-entry unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@localVarManager ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+#--- Expression analysis
+  [self.mExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !@unifiedTypeMap-entry.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration expression
+  ]
+#--- Check operator availability
+  let @unifiedTypeMap-entry type = [expression mResultType]
+#  if let exp = expression as @literalBigIntExpressionForGeneration then
+#    outExpression = @literalBigIntExpressionForGeneration.new {
+#      ![exp mResultType]
+#      ![exp mLocation]
+#      !~ [exp mValue]
+#    }
+#  elsif not [[type mHandledOperatorFlags] prefixTildeOperator] then
+  if let [[type mTypeKindEnum] weakReferenceType ?referenceType: let classIndex] then
+    outExpression = @bangExpressionForGeneration.new {
+      !classIndex
+      !self.mOperatorLocation
+      !expression
+      ![type key]
+    }
+  else
+    error self.mOperatorLocation
+    : "operand type is '@" + [type key] + "' and does not support the '°' operator"
+    : outExpression
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+valueclass @bangExpressionForGeneration : @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mExpression
+  @string mReceiverTypeName
+}
+
+#·····················································································································
+
+override method @bangExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  [[self.mExpression mResultType] addHeaderFileName !?ioInclusionSet]
+#--- Operand
+  [self.mExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let operand
+  ]
+#--- Generate
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  outCppExpression = operand + ".bang_" + [self.mReceiverTypeName identifierRepresentation]
+  outCppExpression += " (" + compilerCppName () + [self.mLocation commaSourceFile] + ")"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

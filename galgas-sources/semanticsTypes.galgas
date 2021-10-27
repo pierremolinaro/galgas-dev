@@ -349,9 +349,9 @@ shared map @unifiedTypeMap {
   @unifiedTypeMap-entry mSuperType
   @typeKindEnum mTypeKindEnum
   @bool mSupportCollectionValue
-  @typedPropertyList mAllTypedAttributeList
+  @typedPropertyList mAllTypedPropertyList
   @propertyMap mPropertyMap # struct, class
-  @typedPropertyList mCurrentTypedAttributeList
+  @typedPropertyList mCurrentTypedPropertyList
   @constructorMap mConstructorMap
   @getterMap mGetterMap
   @setterMap mSetterMap

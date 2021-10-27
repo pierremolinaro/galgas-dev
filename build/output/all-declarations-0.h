@@ -7187,8 +7187,8 @@ class GALGAS_unifiedTypeMap_2D_entry : public AC_GALGAS_sharedMapEntry {
   public: VIRTUAL_IN_DEBUG class GALGAS_functionSignature getter_mAddAssignOperatorArguments (C_Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_typedPropertyList getter_mAllTypedAttributeList (C_Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_typedPropertyList getter_mAllTypedPropertyList (C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_classMethodMap getter_mClassMethodMap (C_Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const ;
@@ -7196,8 +7196,8 @@ class GALGAS_unifiedTypeMap_2D_entry : public AC_GALGAS_sharedMapEntry {
   public: VIRTUAL_IN_DEBUG class GALGAS_constructorMap getter_mConstructorMap (C_Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_typedPropertyList getter_mCurrentTypedAttributeList (C_Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_typedPropertyList getter_mCurrentTypedPropertyList (C_Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_string getter_mDefaultConstructorName (C_Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const ;

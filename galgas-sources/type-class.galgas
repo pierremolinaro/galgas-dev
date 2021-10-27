@@ -83,7 +83,6 @@ syntax extension galgas3DeclarationsSyntax {
       ioDeclarations.mDeclarationList += !@weakReferenceDeclarationAST.new {
         !false # Is not predefined
         !className
-        !isAbstract
         !.new {!className.string + weakSuffix () !className.location}
         !if superClassName.string == "" then superClassName else .new {!superClassName.string + "-weak" !superClassName.location} end
         !classFeatureList
@@ -119,10 +118,6 @@ override method @classDeclarationAST enterDeclarationInGraph
   for () in self.mPropertyList do
     [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mPropertyTypeName !self.mSuperClassName.location}]
   end
-#  if self.mIsReference then
-#    let weakKey = @lstring.new {!"@" + self.mClassTypeName + weakSuffix () ![self.mClassTypeName location]}
-#    [!?ioSemanticTypePrecedenceGraph addEdge !key !weakKey]
-#  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -138,7 +133,7 @@ override method @classDeclarationAST enterInSemanticContext
   @getterMap getterMap
   @setterMap setterMap
   @instanceMethodMap instanceMethodMap
-  @typedPropertyList inheritedTypedAttributeList
+  @typedPropertyList inheritedTypedPropertyList
   @propertyMap attributeMap = {}
 #--- Handle super class
   @unifiedTypeMap-entry superClassIndex
@@ -148,7 +143,7 @@ override method @classDeclarationAST enterInSemanticContext
     commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?getterMap )
     setterMap = {}
     instanceMethodMap = {}
-    inheritedTypedAttributeList = {}
+    inheritedTypedPropertyList = {}
     attributeMap = {}
     generateHeaderInSeparateFile = false
     for () in self.mClassFeatureList do
@@ -167,7 +162,7 @@ override method @classDeclarationAST enterInSemanticContext
       ?3*
       ?typeKindEnum
       ?*
-      ?inheritedTypedAttributeList
+      ?inheritedTypedPropertyList
       ?attributeMap
       ?2*
       ?inheritedGetterMap
@@ -222,9 +217,9 @@ override method @classDeclarationAST enterInSemanticContext
     end
   end
 #--- Build attribute Map and constructor argument list
-  @functionSignature constructorAttributeTypeList = {}
-  for () in inheritedTypedAttributeList do
-    constructorAttributeTypeList +=
+  @functionSignature constructorPropertyTypeList = {}
+  for () in inheritedTypedPropertyList do
+    constructorPropertyTypeList +=
       !if mHasSelector then mPropertyName else ["" nowhere] end
       !mPropertyTypeEntry
       !mPropertyName.string
@@ -240,7 +235,7 @@ override method @classDeclarationAST enterInSemanticContext
         hasSelector = true
       end
     end
-    constructorAttributeTypeList += 
+    constructorPropertyTypeList += 
       !if hasSelector then mPropertyName else ["" nowhere] end
       !attributeTypeIndex
       !mPropertyName.string
@@ -264,14 +259,14 @@ override method @classDeclarationAST enterInSemanticContext
   if not self.mIsAbstract then
     [!?constructorMap insertKey
       !@lstring.new {!"new" !@location.here}
-      !constructorAttributeTypeList
+      !constructorPropertyTypeList
       !false
       !classIndex
     ]
   end
 #--- Typed attribute list
-  @typedPropertyList currentClassTypedAttributeList = {}
-  @typedPropertyList allTypedAttributeList = inheritedTypedAttributeList
+  @typedPropertyList currentClassTypedPropertyList = {}
+  @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
   for () in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true # mIsPublic
@@ -286,7 +281,7 @@ override method @classDeclarationAST enterInSemanticContext
         hasSelector = true
       end
     end
-    currentClassTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
+    currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
     allTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
     if hasGetter then
       [!?getterMap insertKey
@@ -302,7 +297,7 @@ override method @classDeclarationAST enterInSemanticContext
     end
   end
 #--- set...attribute setter
-  for () in currentClassTypedAttributeList do
+  for () in currentClassTypedPropertyList do
     if mHasSetter then
       [!?setterMap insertKey
         !@lstring.new {!"set"+ [[mPropertyName string] stringByCapitalizingFirstCharacter] !@location.here}
@@ -332,7 +327,7 @@ override method @classDeclarationAST enterInSemanticContext
   else
     defaultConstructorName = [superClassIndex mDefaultConstructorName]
   end
-  for () in currentClassTypedAttributeList while defaultConstructorName != "" do
+  for () in currentClassTypedPropertyList while defaultConstructorName != "" do
     if ([mPropertyTypeEntry mDefaultConstructorName] == "") | not [mPropertyTypeEntry mIsConcrete] then
       defaultConstructorName = ""
     end
@@ -347,7 +342,7 @@ override method @classDeclarationAST enterInSemanticContext
     !false # Does not support collection value
     !allTypedAttributeList
     !attributeMap
-    !currentClassTypedAttributeList
+    !currentClassTypedPropertyList
     !constructorMap
     !getterMap
     !setterMap
@@ -430,7 +425,7 @@ override method @classDeclarationAST semanticAnalysis
       end
     end
   else
-    allAttributeList = [superClassEntry mAllTypedAttributeList]
+    allAttributeList = [superClassEntry mAllTypedPropertyList]
     if [self.mClassFeatureList length] > 0 then
       for () in self.mClassFeatureList do
         error mValue:"a class that has a super class does not accept any feature"

@@ -942,7 +942,6 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string CLASS_TYPE_IDENTIFIER
     ?@string WEAK_REF_TYPE_IDENTIFIER
     ?@string SUPER_WEAK_REF_TYPE_IDENTIFIER
-    ?@bool IS_ABSTRACT
     ?@bool HAS_DEFAULT_CONSTRUCTOR
 
   template weakReferenceClassTypeSpecificImplementation "GALGAS_weak_reference_class.cpp.galgasTemplate"
@@ -952,7 +951,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@typedPropertyList CURRENT_ATTRIBUTE_LIST
     ?@typedPropertyList ALL_ATTRIBUTE_LIST
     ?@typedPropertyList INHERITED_ATTRIBUTE_LIST
-    ?@bool IS_ABSTRACT
+#    ?@bool IS_ABSTRACT
     ?@bool HAS_DEFAULT_CONSTRUCTOR
 }
 

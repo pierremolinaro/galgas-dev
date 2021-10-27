@@ -140,7 +140,7 @@ override method @extensionSetterAST semanticAnalysis
     !self.mExtensionSetterFormalParameterList
     !{}
     !{}
-    !mutablePropertyList:[selfType mAllTypedAttributeList]
+    !mutablePropertyList:[selfType mAllTypedPropertyList]
 #    !selfObjectAccessor
     !self.mExtensionSetterInstructionList
     !self.mEndOfSetterDeclarationLocation
@@ -157,7 +157,7 @@ override method @extensionSetterAST semanticAnalysis
       ![self.mExtensionSetterName string]
       !implementedAsFunction
       !formalParameterListForGeneration
-      ![selfType mAllTypedAttributeList]
+      ![selfType mAllTypedPropertyList]
       !semanticInstructionListForGeneration}
 }
 

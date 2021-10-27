@@ -12,15 +12,17 @@ class GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% : public %
 //--------------------------------- Default constructor
   public: GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% (void) ;
 
-%if HAS_DEFAULT_CONSTRUCTOR & not IS_ABSTRACT then
+%if HAS_DEFAULT_CONSTRUCTOR then
 %//--------------------------------- Default GALGAS constructor
   public: static GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% constructor_default (LOCATION_ARGS) ;
 
 %
 end
 %//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% (const GALGAS_%!CLASS_TYPE_IDENTIFIER% & inSource) ;
+  public: GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% (const class GALGAS_%!CLASS_TYPE_IDENTIFIER% & inSource) ;
 
-  public: GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% & operator = (const GALGAS_%!CLASS_TYPE_IDENTIFIER% & inSource) ;
+  public: GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% & operator = (const class GALGAS_%!CLASS_TYPE_IDENTIFIER% & inSource) ;
 
+//--------------------------------- Bang operator
+  public: GALGAS_%!CLASS_TYPE_IDENTIFIER% bang_%!WEAK_REF_TYPE_IDENTIFIER% (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 

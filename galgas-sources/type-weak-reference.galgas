@@ -4,7 +4,6 @@
 
 valueclass @weakReferenceDeclarationAST : @semanticDeclarationAST {
   @lstring mClassTypeName
-  @bool mIsAbstract
   @lstring mWeakReferenceTypeName
   @lstring mSuperWeakReferenceTypeName # Empty if no super class
   @lstringlist mClassFeatureList
@@ -174,20 +173,20 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
     !weakReferenceIndex
   ]
 #--- Add getter to return a strong object
-  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mClassTypeName ?let refClassTypeIndex]
-  [!?getterMap insertKey
-    !self.mClassTypeName
-    !@methodKind.definedAsMember
-    !@functionSignature {} # No argument
-    !@location.here
-    !true # Compiler argument
-    !refClassTypeIndex # Returned type
-    !@methodQualifier.isBasic
-    !"" # No Error message
-  ]
-#--- Typed attribute list
-  @typedPropertyList currentClassTypedAttributeList = {}
-  @typedPropertyList allTypedAttributeList = inheritedTypedAttributeList
+#  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mClassTypeName ?let refClassTypeIndex]
+#  [!?getterMap insertKey
+#    !self.mClassTypeName # .new {!"strong" !self.mWeakReferenceTypeName.location}
+#    !@methodKind.definedAsMember
+#    !@functionSignature {} # No argument
+#    !@location.here
+#    !true # Compiler argument
+#    !refClassTypeIndex # Returned type
+#    !@methodQualifier.isBasic
+#    !"" # No Error message
+#  ]
+#--- Typed property list
+  @typedPropertyList currentClassTypedPropertyList = {}
+  @typedPropertyList allTypedPropertyList = inheritedTypedAttributeList
   for () in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true # mIsPublic
@@ -202,8 +201,8 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
         hasSelector = true
       end
     end
-    currentClassTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
-    allTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
+    currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
+    allTypedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
     if hasGetter then
       [!?getterMap insertKey
         !mPropertyName
@@ -218,7 +217,7 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
     end
   end
 #--- set...attribute setter
-  for () in currentClassTypedAttributeList do
+  for () in currentClassTypedPropertyList do
     if mHasSetter then
       [!?setterMap insertKey
         !@lstring.new {!"set"+ [[mPropertyName string] stringByCapitalizingFirstCharacter] !@location.here}
@@ -246,13 +245,13 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
   [!?ioSemanticContext.mTypeMap insertKey
     !self.mWeakReferenceTypeName
     !self.mIsPredefined
-    !not self.mIsAbstract # Concrete Type
+    !true # Concrete Type
     !superClassIndex
     !@typeKindEnum.weakReferenceType {!referenceType: classIndex}
     !false # Does not support collection value
-    !allTypedAttributeList
+    !allTypedPropertyList
     !attributeMap
-    !currentClassTypedAttributeList
+    !currentClassTypedPropertyList
     !constructorMap
     !getterMap
     !setterMap
@@ -320,7 +319,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
       end
     end
   else
-    allAttributeList = [superClassEntry mAllTypedAttributeList]
+    allAttributeList = [superClassEntry mAllTypedPropertyList]
     if [self.mClassFeatureList length] > 0 then
       for () in self.mClassFeatureList do
         error mValue:"a class that has a super class does not accept any feature"
@@ -381,7 +380,6 @@ override method @weakReferenceDeclarationAST semanticAnalysis
     !"weak reference " + self.mWeakReferenceTypeName
     !@weakReferenceTypeForGeneration.new {
       !selfType
-      !self.mIsAbstract
       !self.mClassTypeName
       !superClassEntry
       !allAttributeList
@@ -395,10 +393,9 @@ override method @weakReferenceDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 valueclass @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
-  @bool mIsAbstract
   @string mClassTypeName
   @unifiedTypeMap-entry mSuperClass # Null if no super class
-  @typedPropertyList mAllTypedAttributeList # Inherited followed by current attributes
+  @typedPropertyList mAllTypedPropertyList # Inherited followed by current attributes
   @typedPropertyList mTypedAttributeList
   @bool mGenerateHeaderInSeparateFile # Significant only for classes
 }
@@ -417,7 +414,6 @@ override method @weakReferenceTypeForGeneration appendDeclaration1
     ![self.mClassTypeName identifierRepresentation]
     ![self.mSelfTypeEntry identifierRepresentation]
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-    !self.mIsAbstract
     ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
@@ -439,67 +435,6 @@ override method @weakReferenceTypeForGeneration appendDeclaration1
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#override method @weakReferenceTypeForGeneration appendDeclaration2
-#  ?let @string inOutputDirectory
-#  ?!@stringset ioInclusionSet
-#  !@string outHeader
-#{
-#  for (t 4*) in self.mTypedAttributeList do
-#    [t addHeaderFileName !?ioInclusionSet]
-#  end
-#
-#  if self.mGenerateHeaderInSeparateFile then
-#    let part1 = [filewrapper typeGenerationTemplate.weakReferenceClassTypeHeader2part1
-#      ![self.mSelfTypeEntry  key]
-#      ![self.mSelfTypeEntry  identifierRepresentation]
-#      !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-#      !self.mTypedAttributeList
-#      !self.mAllTypedAttributeList
-#      !self.mIsAbstract
-#    ]
-#    let part2 = [filewrapper typeGenerationTemplate.weakReferenceClassTypeHeader2part2
-#      ![self.mSelfTypeEntry  key]
-#      ![self.mSelfTypeEntry  identifierRepresentation]
-#      !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-#      !self.mTypedAttributeList
-#      !self.mAllTypedAttributeList
-#      !self.mIsAbstract
-#    ]
-#    let headerFileName = "separateHeaderFor_" + [self.mSelfTypeEntry  identifierRepresentation] + ".h"
-#    [@string generateFileWithPattern
-#      !startPath:inOutputDirectory + "/../user-headers"
-#      !fileName:headerFileName
-#      !lineComment:"//"
-#      !header:"" # Header
-#      !defaultUserZone1:"\n\n" # Defaut user zone1
-#      !generatedZone2:part1
-#      !defaultUserZone2:"\n\n" # Defaut user zone2
-#      !generatedZone3:part2
-#      !makeExecutable:false
-#    ]
-#    outHeader = "#include \"" + headerFileName + "\"\n\n"
-#  else
-#    outHeader = [filewrapper typeGenerationTemplate.weakReferenceClassTypeHeader2part1
-#      ![self.mSelfTypeEntry  key]
-#      ![self.mSelfTypeEntry  identifierRepresentation]
-#      !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-#      !self.mTypedAttributeList
-#      !self.mAllTypedAttributeList
-#      !self.mIsAbstract
-#    ]
-#    outHeader += [filewrapper typeGenerationTemplate.weakReferenceClassTypeHeader2part2
-#      ![self.mSelfTypeEntry  key]
-#      ![self.mSelfTypeEntry  identifierRepresentation]
-#      !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-#      !self.mTypedAttributeList
-#      !self.mAllTypedAttributeList
-#      !self.mIsAbstract
-#    ]
-#  end
-# }
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 override method @weakReferenceTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
@@ -511,9 +446,8 @@ override method @weakReferenceTypeForGeneration appendSpecificImplementation
     ![self.mSelfTypeEntry identifierRepresentation]
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
     !self.mTypedAttributeList
-    !self.mAllTypedAttributeList
-    ![self.mAllTypedAttributeList subListWithRange !.new {!0 ![self.mAllTypedAttributeList length] - [self.mTypedAttributeList length]}]
-    !self.mIsAbstract
+    !self.mAllTypedPropertyList
+    ![self.mAllTypedPropertyList subListWithRange !.new {!0 ![self.mAllTypedPropertyList length] - [self.mTypedAttributeList length]}]
     ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
   ]
 }
