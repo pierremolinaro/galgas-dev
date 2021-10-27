@@ -1,6 +1,4 @@
 //----------------------------------------------------------------------------------------------------------------------
-//   Object comparison                                                                           
-//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;

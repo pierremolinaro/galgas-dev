@@ -84,14 +84,20 @@ AC_GALGAS_weak_reference & AC_GALGAS_weak_reference::operator = (const AC_GALGAS
 //----------------------------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_weak_reference::description (C_String & ioString,
-                                             const int32_t inIndentation) const {
+                                            const int32_t /* inIndentation */) const {
   ioString << "<@"
            << staticTypeDescriptor ()->mGalgasTypeName
            << ":" ;
-  if (isValid ()) {
-    mObjectPtr->description (ioString, inIndentation) ;
-  }else{
+  acStrongPtr_class * ptr = (acStrongPtr_class *) mObjectPtr ;
+  if (ptr == NULL) {
     ioString << "not built" ;
+  }else{
+    cPtr_weakReference_class * proxy = ptr->getProxy () ;
+    if (proxy == NULL) {
+      ioString << "nil" ;
+    }else{
+      ioString << "not nil" ;
+    }
   }
   ioString << ">" ;
 }

@@ -131,10 +131,6 @@ for () in CURRENT_ATTRIBUTE_LIST do
     %  }\n%
     %  return result ;\n%
     %}\n\n%
-    %//----------------------------------------------------------------------------------------------------------------------\n\n%
-    %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% cPtr_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
-    %  return mProperty_%![mPropertyName identifierRepresentation]% ;\n%
-    %}\n\n%
   end
 end
 
@@ -148,11 +144,6 @@ for () in CURRENT_ATTRIBUTE_LIST do
     %    macroValidSharedObject (p, cPtr_%!TYPE_IDENTIFIER%) ;\n%
     %    p->mProperty_%![mPropertyName identifierRepresentation]% = inValue ;\n%
     %  }\n%
-    %}\n\n%
-    %//----------------------------------------------------------------------------------------------------------------------\n\n%
-    %void cPtr_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inValue\n%
-                          !^%COMMA_UNUSED_LOCATION_ARGS) {\n%
-    %  mProperty_%![mPropertyName identifierRepresentation]% = inValue ;\n%
     %}\n\n%
   end
 end
