@@ -3712,7 +3712,8 @@ class GALGAS_ifTestForGeneration : public AC_GALGAS_root {
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_ifTestForGeneration constructor_letExp (const class GALGAS_string & inOperand0,
                                                                       const class GALGAS_semanticExpressionForGeneration & inOperand1,
-                                                                      const class GALGAS_unifiedTypeMap_2D_entry & inOperand2
+                                                                      const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+                                                                      const class GALGAS_unifiedTypeMap_2D_entry & inOperand3
                                                                       COMMA_LOCATION_ARGS) ;
 
   public: static class GALGAS_ifTestForGeneration constructor_optionalMethodCall (const class GALGAS_semanticExpressionForGeneration & inOperand0,
@@ -3735,6 +3736,7 @@ class GALGAS_ifTestForGeneration : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void method_letExp (class GALGAS_string & outArgument0,
                                                class GALGAS_semanticExpressionForGeneration & outArgument1,
                                                class GALGAS_unifiedTypeMap_2D_entry & outArgument2,
+                                               class GALGAS_unifiedTypeMap_2D_entry & outArgument3,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const ;
 
@@ -3761,7 +3763,8 @@ class GALGAS_ifTestForGeneration : public AC_GALGAS_root {
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_letExp (class GALGAS_string & outOperand0,
                                                  class GALGAS_semanticExpressionForGeneration & outOperand1,
-                                                 class GALGAS_unifiedTypeMap_2D_entry & outOperand2) const ;
+                                                 class GALGAS_unifiedTypeMap_2D_entry & outOperand2,
+                                                 class GALGAS_unifiedTypeMap_2D_entry & outOperand3) const ;
 
   public: VIRTUAL_IN_DEBUG bool optional_optionalMethodCall (class GALGAS_semanticExpressionForGeneration & outOperand0,
                                                              class GALGAS_lstring & outOperand1,
@@ -3940,11 +3943,13 @@ class cEnumAssociatedValues_ifTestForGeneration_letExp : public cEnumAssociatedV
   public: const GALGAS_string mAssociatedValue0 ;
   public: const GALGAS_semanticExpressionForGeneration mAssociatedValue1 ;
   public: const GALGAS_unifiedTypeMap_2D_entry mAssociatedValue2 ;
+  public: const GALGAS_unifiedTypeMap_2D_entry mAssociatedValue3 ;
 
 //--- Constructor
   public: cEnumAssociatedValues_ifTestForGeneration_letExp (const GALGAS_string & inAssociatedValue0,
                                                             const GALGAS_semanticExpressionForGeneration & inAssociatedValue1,
-                                                            const GALGAS_unifiedTypeMap_2D_entry & inAssociatedValue2
+                                                            const GALGAS_unifiedTypeMap_2D_entry & inAssociatedValue2,
+                                                            const GALGAS_unifiedTypeMap_2D_entry & inAssociatedValue3
                                                             COMMA_LOCATION_ARGS) ;
 
   public: virtual void description (C_String & ioString,

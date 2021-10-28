@@ -83,6 +83,17 @@ AC_GALGAS_weak_reference & AC_GALGAS_weak_reference::operator = (const AC_GALGAS
 
 //----------------------------------------------------------------------------------------------------------------------
 
+const acPtr_class * AC_GALGAS_weak_reference::ptr (void) const {
+   acPtr_class * result = NULL ;
+   if (mObjectPtr != NULL) {
+     cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
+     result = p->strongObject () ;
+   }
+   return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 void AC_GALGAS_weak_reference::description (C_String & ioString,
                                             const int32_t /* inIndentation */) const {
   ioString << "<@"
@@ -96,7 +107,8 @@ void AC_GALGAS_weak_reference::description (C_String & ioString,
     if (proxy == NULL) {
       ioString << "nil" ;
     }else{
-      ioString << "not nil" ;
+      const C_galgas_type_descriptor * descriptor = proxy->classDescriptor () ;
+      ioString << "instance of @" << descriptor->mGalgasTypeName ;
     }
   }
   ioString << ">" ;

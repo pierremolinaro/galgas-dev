@@ -40,27 +40,6 @@ cPtr_weakReference_class::~ cPtr_weakReference_class (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void cPtr_weakReference_class::description (C_String & ioString,
-                                            const int32_t inIndentation) const {
-  if (mStrongObject == NULL) {
-    ioString << "nil" ;
-  }else{
-    mStrongObject->description (ioString, inIndentation) ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult cPtr_weakReference_class::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = typeComparisonResult::kOperandNotValid ;
-  if (mStrongObject != NULL) {
-    result = mStrongObject->dynamicObjectCompare (inOperandPtr) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 const C_galgas_type_descriptor * cPtr_weakReference_class::classDescriptor (void) const {
   const C_galgas_type_descriptor * result = NULL ;
   if (mStrongObject != NULL) {

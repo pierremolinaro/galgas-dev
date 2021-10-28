@@ -7706,12 +7706,14 @@ typeComparisonResult cEnumAssociatedValues_ifTestForGeneration_regular::compare 
 
 cEnumAssociatedValues_ifTestForGeneration_letExp::cEnumAssociatedValues_ifTestForGeneration_letExp (const GALGAS_string & inAssociatedValue0,
                                                                                                     const GALGAS_semanticExpressionForGeneration & inAssociatedValue1,
-                                                                                                    const GALGAS_unifiedTypeMap_2D_entry & inAssociatedValue2
+                                                                                                    const GALGAS_unifiedTypeMap_2D_entry & inAssociatedValue2,
+                                                                                                    const GALGAS_unifiedTypeMap_2D_entry & inAssociatedValue3
                                                                                                     COMMA_LOCATION_ARGS) :
 cEnumAssociatedValues (THERE),
 mAssociatedValue0 (inAssociatedValue0),
 mAssociatedValue1 (inAssociatedValue1),
-mAssociatedValue2 (inAssociatedValue2) {
+mAssociatedValue2 (inAssociatedValue2),
+mAssociatedValue3 (inAssociatedValue3) {
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7722,6 +7724,7 @@ void cEnumAssociatedValues_ifTestForGeneration_letExp::description (C_String & i
   mAssociatedValue0.description (ioString, inIndentation) ;
   mAssociatedValue1.description (ioString, inIndentation) ;
   mAssociatedValue2.description (ioString, inIndentation) ;
+  mAssociatedValue3.description (ioString, inIndentation) ;
   ioString << ")" ;
 }
 
@@ -7739,6 +7742,9 @@ typeComparisonResult cEnumAssociatedValues_ifTestForGeneration_letExp::compare (
   }
   if (result == kOperandEqual) {
     result = mAssociatedValue2.objectCompare (ptr->mAssociatedValue2) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAssociatedValue3.objectCompare (ptr->mAssociatedValue3) ;
   }
   return result ;
 }
@@ -7810,13 +7816,14 @@ GALGAS_ifTestForGeneration GALGAS_ifTestForGeneration::constructor_regular (cons
 
 GALGAS_ifTestForGeneration GALGAS_ifTestForGeneration::constructor_letExp (const GALGAS_string & inAssociatedValue0,
                                                                            const GALGAS_semanticExpressionForGeneration & inAssociatedValue1,
-                                                                           const GALGAS_unifiedTypeMap_2D_entry & inAssociatedValue2
+                                                                           const GALGAS_unifiedTypeMap_2D_entry & inAssociatedValue2,
+                                                                           const GALGAS_unifiedTypeMap_2D_entry & inAssociatedValue3
                                                                            COMMA_LOCATION_ARGS) {
   GALGAS_ifTestForGeneration result ;
-  if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid () && inAssociatedValue2.isValid ()) {
+  if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid () && inAssociatedValue2.isValid () && inAssociatedValue3.isValid ()) {
     result.mEnum = kEnum_letExp ;
     cEnumAssociatedValues * ptr = NULL ;
-    macroMyNew (ptr, cEnumAssociatedValues_ifTestForGeneration_letExp (inAssociatedValue0, inAssociatedValue1, inAssociatedValue2 COMMA_THERE)) ;
+    macroMyNew (ptr, cEnumAssociatedValues_ifTestForGeneration_letExp (inAssociatedValue0, inAssociatedValue1, inAssociatedValue2, inAssociatedValue3 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
     macroDetachSharedObject (ptr) ;
   }
@@ -7861,12 +7868,14 @@ void GALGAS_ifTestForGeneration::method_regular (GALGAS_semanticExpressionForGen
 void GALGAS_ifTestForGeneration::method_letExp (GALGAS_string & outAssociatedValue0,
                                                 GALGAS_semanticExpressionForGeneration & outAssociatedValue1,
                                                 GALGAS_unifiedTypeMap_2D_entry & outAssociatedValue2,
+                                                GALGAS_unifiedTypeMap_2D_entry & outAssociatedValue3,
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_letExp) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
     outAssociatedValue2.drop () ;
+    outAssociatedValue3.drop () ;
     C_String s ;
     s << "method @ifTestForGeneration letExp invoked with an invalid enum value" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
@@ -7875,6 +7884,7 @@ void GALGAS_ifTestForGeneration::method_letExp (GALGAS_string & outAssociatedVal
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
     outAssociatedValue2 = ptr->mAssociatedValue2 ;
+    outAssociatedValue3 = ptr->mAssociatedValue3 ;
   }
 }
 
@@ -7916,7 +7926,8 @@ bool GALGAS_ifTestForGeneration::optional_regular (GALGAS_semanticExpressionForG
 
 bool GALGAS_ifTestForGeneration::optional_letExp (GALGAS_string & outAssociatedValue0,
                                                   GALGAS_semanticExpressionForGeneration & outAssociatedValue1,
-                                                  GALGAS_unifiedTypeMap_2D_entry & outAssociatedValue2) const {
+                                                  GALGAS_unifiedTypeMap_2D_entry & outAssociatedValue2,
+                                                  GALGAS_unifiedTypeMap_2D_entry & outAssociatedValue3) const {
   const bool ok = mEnum == kEnum_letExp ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_ifTestForGeneration_letExp *) unsafePointer () ;
@@ -7924,6 +7935,7 @@ bool GALGAS_ifTestForGeneration::optional_letExp (GALGAS_string & outAssociatedV
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
     outAssociatedValue2 = ptr->mAssociatedValue2 ;
+    outAssociatedValue3 = ptr->mAssociatedValue3 ;
   }
   return ok ;
 }

@@ -109,14 +109,23 @@ syntax extension galgas3InstructionsSyntax {
         $=$
         <expression_or> ?let expression
         let endOfReceiverExpression = @location.here
-        $as$
-        $@type$ ?let @lstring typeName
-        outExpressionList += !.letExp {
-          !constantName: constantName
-          !exp: expression
-          !endOfExp: endOfReceiverExpression
-          !typeName: typeName
-        }
+        select
+          outExpressionList += !.letExp {
+            !constantName: constantName
+            !exp: expression
+            !endOfExp: endOfReceiverExpression
+            !typeName: ["" here]
+          }
+        or
+          $as$
+          $@type$ ?let @lstring typeName
+          outExpressionList += !.letExp {
+            !constantName: constantName
+            !exp: expression
+            !endOfExp: endOfReceiverExpression
+            !typeName: typeName
+          }
+        end
       or
         $let$
         $[$
@@ -280,30 +289,65 @@ override method @ifInstructionAST analyzeSemanticInstruction
         ?let analyzedExpression
       ]
     #--- Get type information
-      let castType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !typeName}
+      var castType = @unifiedTypeMap-entry.null
+      var testType = @unifiedTypeMap-entry.null
     #--- Check this is a class
       if [[[analyzedExpression mResultType] mTypeKindEnum] isClassType] then
-      #--- Check expression type is a descendant of named type
+        if typeName.string == "" then
+          error typeName.location : "on a class object, the 'as' clause is required" : castType, testType
+        else
+          castType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !typeName}
+          testType = castType
+        #--- Check expression type is a descendant of named type
+          @unifiedTypeMap-entry t = castType
+          @bool found = t == [analyzedExpression mResultType]
+          loop ([inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
+          while (not found) & not [[t mSuperType] isNull] do
+            t = [t mSuperType]
+            found = t == [analyzedExpression mResultType]
+          end
+          if not found then
+            error typeName
+            : "the '@" + typeName + "' type is not a descendant of the '@" + [[analyzedExpression mResultType] key]
+              + "' type of the cast expression"
+          end
+        end
+      elsif let [[[analyzedExpression mResultType] mTypeKindEnum] weakReferenceType ?referenceType: let classType] then
+        if typeName.string == "" then
+          castType = classType
+        else
+          castType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !typeName}
+        end
+        testType = castType
         @unifiedTypeMap-entry t = castType
         @bool found = t == [analyzedExpression mResultType]
-        loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
+        if found then
+          [[castType mTypeKindEnum] weakReferenceType ?referenceType: testType]
+        elsif t == classType then
+          found = true
+        end
+        loop ([inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
         while (not found) & not [[t mSuperType] isNull] do
           t = [t mSuperType]
-          found = t == [analyzedExpression mResultType]
+          if t == [analyzedExpression mResultType] then
+            found = true
+            [[castType mTypeKindEnum] weakReferenceType ?referenceType: testType]
+          elsif t == classType then
+            found = true
+          end
         end
         if not found then
           error typeName
-          : "the '@" + typeName + "' is not a descendant of the '@" + [[analyzedExpression mResultType] key]
-            + "' type of the cast expression"
+          : "the '@" + [castType key] + "' type is not compatible with the '@" + [[analyzedExpression mResultType] key] + "' type"
         end
       else
-        error [analyzedExpression mLocation]: "expression should be a class instance: it is an @"
+        error [analyzedExpression mLocation]: "expression should be a class instance, or a weak reference: it is an @"
          +  [[analyzedExpression mResultType] key] + " instance"
       end
       [!?ioVariableMap openOverrideForSelectBlock]
       [!?ioVariableMap openBranch]
       let targetVariableCppName = "var_" + [constantName identifierRepresentation]
-         + "_" + [constantName.location locationIndex]
+        + "_" + [constantName.location locationIndex]
       [!?ioVariableMap insertLocalConstant
         !constantName
         !castType
@@ -313,7 +357,8 @@ override method @ifInstructionAST analyzeSemanticInstruction
       testListForGeneration += !.letExp {
         !targetVarCppName: targetVariableCppName
         !exp: analyzedExpression
-        !type:castType
+        !targetType: castType
+        !testType: testType
       }
     case optionalMethodCall (receiverExpression optionalMethodName parameters) :
       analyzeOptionalMethodCall (
@@ -511,7 +556,10 @@ private proc analyzeOptionalMethodCall
 
 enum @ifTestForGeneration {
   case regular (@semanticExpressionForGeneration exp)
-  case letExp (@string targetVarCppName @semanticExpressionForGeneration exp @unifiedTypeMap-entry type)
+  case letExp (@string targetVarCppName
+               @semanticExpressionForGeneration exp
+               @unifiedTypeMap-entry targetType
+               @unifiedTypeMap-entry testType)
   case optionalMethodCall (
     @semanticExpressionForGeneration receiverExpression
     @lstring optionalMethodName
@@ -573,8 +621,9 @@ override method @ifInstructionForGeneration generateInstruction
         ?let cppVarName
       ]
       ioGeneratedCode += testVar + " = " + cppVarName + ".boolEnum () ;\n"
-    case letExp (targetVarCppName exp type) :
-      let typeName = [type identifierRepresentation]
+    case letExp (targetVarCppName exp targetType testType) :
+      let targetTypeName = [targetType identifierRepresentation]
+      let testTypeName = [testType identifierRepresentation]
       [exp generateExpression
         !?ioGeneratedCode
         !?ioInclusionSet
@@ -582,8 +631,8 @@ override method @ifInstructionForGeneration generateInstruction
         !?ioUnusedVariableCppNameSet
         ?let cppVarName
       ]
-      ioGeneratedCode += "GALGAS_" + typeName + " " + targetVarCppName
-      ioGeneratedCode += " (dynamic_cast <const cPtr_" + typeName + " *> (" + cppVarName + ".ptr ())) ;\n"
+      ioGeneratedCode += "GALGAS_" + targetTypeName + " " + targetVarCppName
+      ioGeneratedCode += " (dynamic_cast <const cPtr_" + testTypeName + " *> (" + cppVarName + ".ptr ())) ;\n"
       ioGeneratedCode += "if (NULL == " + targetVarCppName + ".ptr ()) {\n"
       ioGeneratedCode += "  " + testVar + " = kBoolFalse ;\n"
       ioGeneratedCode += "}\n"

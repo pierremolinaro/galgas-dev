@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2008, ..., 2016 Pierre Molinaro.
+//  Copyright (C) 2008, ..., 2021 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -143,12 +143,12 @@ class AC_GALGAS_map : public AC_GALGAS_root {
                                                        COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG GALGAS_bool getter_hasKeyAtLevel (const GALGAS_string & inKey,
-                                                              const GALGAS_uint & inLevel
-                                                              COMMA_LOCATION_ARGS) const ;
+                                                             const GALGAS_uint & inLevel
+                                                             COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG GALGAS_location getter_locationForKey (const GALGAS_string & inKey,
-                                                                   C_Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const ;
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG GALGAS_stringset getter_keySet (LOCATION_ARGS) const ;
 
@@ -169,7 +169,7 @@ class AC_GALGAS_map : public AC_GALGAS_root {
 //--------------------------------- Internal methods for enumeration
   protected: VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
 
-//--------------------------------- Attributes
+//--------------------------------- Properties
   private: cSharedMapRoot * mSharedMap ;
   private: bool mActivateReplacementSuggestions ;
 } ;

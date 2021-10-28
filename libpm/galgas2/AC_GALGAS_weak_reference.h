@@ -36,7 +36,6 @@ class acPtr_class ;
 class AC_GALGAS_weak_reference : public AC_GALGAS_root { // AC_GALGAS_weak_reference est une classe abstraite
 //--- Properties
   protected: acPtr_class * mObjectPtr ;
-  public: inline const acPtr_class * ptr (void) const { return mObjectPtr ; }
 
 //--- Default constructor
   protected: AC_GALGAS_weak_reference (void) ;
@@ -52,6 +51,9 @@ class AC_GALGAS_weak_reference : public AC_GALGAS_root { // AC_GALGAS_weak_refer
 
 //--- Drop
   public: virtual void drop (void) ;
+
+//--- Get a pointer on strong object
+  public: const acPtr_class * ptr (void) const ;
 
 //--- Handle copy
   protected: AC_GALGAS_weak_reference (const AC_GALGAS_weak_reference & inSource) ;

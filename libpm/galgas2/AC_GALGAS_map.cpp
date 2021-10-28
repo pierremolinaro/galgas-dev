@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2008, ..., 2016 Pierre Molinaro.
+//  Copyright (C) 2008, ..., 2021 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -1615,11 +1615,9 @@ void cSharedMapRoot::populateEnumerationArray (capCollectionElementArray & ioEnu
 //----------------------------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_map::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const {
-  // printf ("MAP COUNT %u\n", count ()) ;
   if (isValid ()) {
     mSharedMap->populateEnumerationArray (ioEnumerationArray) ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-

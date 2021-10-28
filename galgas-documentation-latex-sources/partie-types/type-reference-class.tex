@@ -9,10 +9,11 @@
 
 Le type \ggs=refclass= est un type de classe classique -- il inclut l'\emph{héritage simple} et les \emph{classes abstraites} -- et a une sémantique de référence (\refSectionPage{semantiqueReference}).
 
+Les instances d'une \ggs=refclass= sont des \emph{pointeurs forts}, c'est-à-dire que le nombre de pointeurs forts qui désignent un objet est maintenu à jour en permanence. La déallocation est fait automatiquement lorsque le nombre de pointeurs forts tombe à zéro.
+
+Pour chaque type \ggs=refclass @T= déclaré, est implicitement déclaré le type \ggs=@T-weak=, qui implémente un \emph{pointeur faible} sur les objets de type \ggs=@T= (\refSectionPage{pointeurFaible}). Un pointeur faible n'est pas compté dans le comptage de références, et est mis automatiquement à \ggs=nil= lorsque l'objet disparaît.
+
 Il n'est pas possible de définir des méthodes dans une classe : on peut le faire uniquement via des \emph{extensions}~: \refChapterPage{chapitreExtensions}.
-
-Pour chaque type \ggs=refclass @T= déclaré, est implicitement déclaré le type \ggs=@T-weak=, qui implémente un \emph{pointeur faible} sur les objets de type \ggs=@T= (\refSectionPage{pointeurFaible}).
-
 
 
 
@@ -133,30 +134,6 @@ Aucune des deux annotations ne peut être omise si elles nomment des types diff�
 
 
 
-%\sectionLabel{Qualificatif \texttt{shared} appliqué à une classe}{sharedClassQualifier}
-%
-%Le qualificatif \ggs=shared= donne une \emph{sémantique de référence} à la classe à laquelle il s'applique (voir \refSectionPage{semantiqueValeurReference}).
-%
-%Une classe de base, c'est-à-dire une classe sans super classe, accepte librement le qualificatif \ggs=shared=.
-%
-%Pour une classe ayant une super classe :
-%\begin{itemize}
-%  \item si la super classe est déclarée avec le qualificatif \ggs=shared=, alors la classe doit avoir le qualificatif \ggs=shared=~;
-%  \item si la super classe n'est pas déclarée avec le qualificatif \ggs=shared=, alors la classe ne doit pas avoir le qualificatif \ggs=shared=.
-%\end{itemize}
-%
-%Les notions de classe abstraite et de sémantique de valeur / de référence sont indépendantes : une classe abstraite peut avoir une sémantique de référence. Détail syntaxique, le mot réservé \ggs=abstract= doit précéder le mot réservé \ggs=shared=~:
-%
-%abstract shared refclass @A {
-%  ...
-%}
-
-
-
-
-
-
-
 
 \section{Lecture d'une propriété}
 
@@ -252,5 +229,133 @@ Il y a trois constructions qui permettent d'effectuer cette opération :
   \item l'instruction \ggs+cast+ (\refSectionPage{instructionCast}).
 \end{itemize}
 
+\section{Comparaison}
+
+La comparaison implémentée est une comparison de références. Chaque référence est convertie en un entier non signé. Autrement dit, l'égalité entre deux références signifie qu'elles désignent le même objet. 
+
+Note~: comme l'adresse d'allocation peut varier d'une exécution à une autre, la relation d'ordre entre les objets n'est pas stable d'une exécution à l'autre.
+
+
+
+
 
 \sectionLabel{Pointeur faible}{pointeurFaible}
+
+Il est possible de définir un \emph{pointeur faible} sur une instance d'une \ggs=refclass=. Un pointeur faible ne change pas le comptage de références, et est mis automatiquement à \ggs=nil= lorsque l'objet disparaît.
+
+Pour une classe est déclarée par \ggs=refclass @T=, le type de référence faible sur les instances de cette classe est \ggs=@T-weak= ; ce type est implicitement déclaré.
+
+
+
+
+
+
+
+\subsection{Constructeurs}
+
+Il y a deux constructeurs : \ggs=default= et \ggs=nil=. Ceux-ci ont le même effet, initialisé un pointeur faible à \texttt{nil}.
+
+\begin{galgas}
+  var weak1 = @A-weak.nil
+  @A-weak weak2 = .nil
+  var weak3 = @A-weak.default
+\end{galgas}
+
+
+\subsection{Initialisation à partir d'une instance de \texttt{refclass @T}}
+
+Un objet de type \ggs=refclass @T-weak= peut être diectement initialisé à partir d'un objet de type \ggs=refclass @T=~:
+\begin{galgas}
+  var a = @A.new
+  @A-weak weakA = a
+\end{galgas}
+
+Dès que l'objet \ggs=a= disparaît, \ggs=weakA= est mis à \ggs=nil=.
+
+Cette initialisation est polymorphique~: si \ggs=refclass @B= est une héritière de \ggs=refclass @A=, on peut écrire~:
+\begin{galgas}
+  var b = @B.new
+  @A-weak weakA = b
+\end{galgas}
+
+Attention, si on écrit~:
+\begin{galgas}
+  @A-weak weakA = @A.new
+\end{galgas}
+L'objet créé disparaît aussitôt (il n'a pas de pointeur fort qui le référencie)~: \ggs=weakA= est mis à \ggs=nil= à la fin de l'exécution de l'instruction.
+
+
+\subsection{Extraction de l'objet}
+
+Si un pointeur faible n'est pas \ggs=nil=, l'opérateur \ggs=°= permet d'obtenir un pointeur fort sur cet objet.
+\begin{galgas}
+  var a = @A.new
+  @A-weak weakA = a
+  var @A b = weakA°
+\end{galgas}
+Si le pointeur faible est \ggs=nil=, une erreur d'exécution est déclenchée.
+
+
+
+\subsection{Comparaison}
+
+La comparaison implémentée est une comparaison de références. Chaque référence est convertie en un entier non signé. La valeur \ggs=nil= est convertie en la valeur entière \ggs=0=. L'égalité entre deux références signifie qu'elles désignent le même objet. 
+
+On peut donc écrire~:
+\begin{galgas}
+  @A-weak weakA = ...
+  if weakA == .nil then
+    message "weakA is nil\n"
+  else
+    message "weakA is not nil\n"
+  end
+\end{galgas}
+
+
+Note~: comme l'adresse d'allocation peut varier d'une exécution à une autre, la relation d'ordre entre les objets n'est pas stable d'une exécution à l'autre.
+
+
+
+
+\subsection{Affectation conditionnelle}
+
+Trois formes d'affection conditionnelle sont possibles.
+
+{\bf Affectation polymorphique inverse conditionnelle vers un pointeur fort, type explicite.}  Dans l'exemple suivant, \ggs=weakA= est un pointeur faible de type \ggs=@A-weak= qui désigne un objet de type \ggs=@B=. La condition teste la valeur de \ggs=weakA=~: si elle est non nil et désigne un objet de type \ggs=@B= (ou d'une classe héritière de \ggs=@B=), l'affectation de \ggs=b= a lieu et la condition est vraie. La constante \ggs=b= a pour type \ggs=@B=. Sinon, la condition est fausse et la constante \ggs=b= est inaccessible.
+
+\begin{galgas}
+  let b = @B.new
+  @A-weak weakA = b
+  if let b = weakA as @B then
+    log b # Affiche : LOGGING b: <@B: [@B]>
+  else
+    message "weakA is nil\n"
+  end
+\end{galgas}
+
+
+{\bf Affectation polymorphique inverse conditionnelle vers un pointeur fort, type implicite.}  Dans l'exemple suivant, \ggs=weakA= est un pointeur faible de type \ggs=@A-weak= qui désigne un objet de type \ggs=@B=. La condition teste la valeur de \ggs=weakA=~: si elle est non nil et désigne un objet de type \ggs=@A= (ou d'une classe héritière, comme \ggs=@B=), l'affectation de \ggs=a= a lieu et la condition est vraie. La constante \ggs=a= a pour type \ggs=@A=. Sinon, la condition est fausse et la constante \ggs=a= est inaccessible.
+
+\begin{galgas}
+  let b = @B.new
+  @A-weak weakA = b
+  if let a = weakA then
+    log a # Affiche : LOGGING a: <@A: [@B]>
+  else
+    message "weakA is nil\n"
+  end
+\end{galgas}
+
+
+{\bf Affectation polymorphique inverse conditionnelle vers un pointeur faible.} Dans l'exemple suivant, \ggs=weakA= est un pointeur faible de type \ggs=@A-weak= qui désigne un objet de type \ggs=@B=. La condition teste la valeur de \ggs=weakA=~: si elle est non nil et désigne un objet de type \ggs=@B= (ou d'une classe héritière de \ggs=@B=), l'affectation de \ggs=b= a lieu et la condition est vraie. La constante \ggs=b= a pour type \ggs=@B-weak=. Sinon, la condition est fausse et la constante \ggs=b= est inaccessible.
+
+\begin{galgas}
+  let b = @B.new
+  @A-weak weakA = b
+  if let b = weakA as @B-weak then
+    log b # Affiche : LOGGING b: <@B-weak:instance of @B>
+  else
+    message "weakA is nil\n"
+  end
+\end{galgas}
+
