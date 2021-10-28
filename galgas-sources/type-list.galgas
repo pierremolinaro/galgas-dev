@@ -306,7 +306,7 @@ override method @listDeclarationAST enterInSemanticContext
     !{}
     !@optionalMethodMap {}
     !enumerationDescriptor
-    !.doNotGenererateObjectCompare | .plusEqualOperatorWithExpression | .infixAddOperator
+    !.doNotGenererateObjectCompare | .plusEqualOperatorWithExpression | .infixAddOperator | .isComparable
     !constructorAttributeTypeList
     !{}
     !{}
@@ -328,7 +328,6 @@ override method @listDeclarationAST addAssociatedElement
   @propertyInCollectionListAST structAttributeList = {}
   for () in self.mPropertyList do
     structAttributeList +=
-#      !false
       !mPropertyTypeName
       !mPropertyName
       !true

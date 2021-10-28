@@ -3,12 +3,14 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @comparison { 
-  case equal 
-  case notEqual 
+  case equal # ==
+  case notEqual # !=
   case lowerOrEqual 
   case lowerThan 
   case greaterOrEqual 
   case greaterThan
+  case sameInstance # ===
+  case differentInstances # !==
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -67,6 +69,18 @@ syntax extension galgas3ExpressionSyntax {
       let leftOperand = outExpression
       <simple_expression> ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.lowerThan !rightOperand}
+    while
+      let operatorLocation = @location.here
+      $===$
+      let leftOperand = outExpression
+      <simple_expression> ?let rightOperand
+      outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.sameInstance !rightOperand}
+    while
+      let operatorLocation = @location.here
+      $!==$
+      let leftOperand = outExpression
+      <simple_expression> ?let rightOperand
+      outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.differentInstances !rightOperand}
     end
   }
 
@@ -94,7 +108,7 @@ override method @comparisonExpressionAST analyzeSemanticExpression
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
- {
+{
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
@@ -115,20 +129,41 @@ override method @comparisonExpressionAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Operator name
+  let isComparable = [[leftType mHandledOperatorFlags] isComparable]
+  let isReferenceEquatable = [[leftType mHandledOperatorFlags] isReferenceEquatable]
+  var @bool operatorIsAvailable
   var @string operatorName
   switch self.mComparison
-  case equal : operatorName = "=="
-  case notEqual : operatorName = "!="
-  case lowerOrEqual : operatorName = "<="
-  case lowerThan : operatorName = "<"
-  case greaterOrEqual : operatorName = ">="
-  case greaterThan : operatorName = ">"
+  case equal :
+    operatorName = "=="
+    operatorIsAvailable = isComparable
+  case notEqual :
+    operatorName = "!="
+    operatorIsAvailable = isComparable
+  case lowerOrEqual :
+    operatorName = "<="
+    operatorIsAvailable = isComparable
+  case lowerThan :
+    operatorName = "<"
+    operatorIsAvailable = isComparable
+  case greaterOrEqual :
+    operatorName = ">="
+    operatorIsAvailable = isComparable
+  case greaterThan :
+    operatorName = ">"
+    operatorIsAvailable = isComparable
+  case sameInstance :
+    operatorName = "==="
+    operatorIsAvailable = isReferenceEquatable
+  case differentInstances :
+    operatorName = "!=="
+    operatorIsAvailable = isReferenceEquatable
   end
 #--- Check operator availability
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !true # Always available
+    !operatorIsAvailable
     !operatorName
     !self.mOperatorLocation
     !?rightExpression
@@ -160,19 +195,30 @@ override method @comparisonExpressionForGeneration generateExpression
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
+  !@string outCppExpression
+{
   [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Left operand
-  @string leftTemporaryOperand
-  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
+  [self.mLeftExpression  generateExpression
+     !?ioGeneratedCode
+     !?ioInclusionSet
+     !?ioTemporaryVariableIndex
+     !?ioUnusedVariableCppNameSet
+     ?let leftTemporaryOperand
+   ]
 #--- Right operand
-  @string rightTemporaryOperand
-  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
+  [self.mRightExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex 
+    !?ioUnusedVariableCppNameSet
+    ?let rightTemporaryOperand
+  ]
 #--- Operator name
   var @string operatorName
   switch self.mComparison
-  case equal : operatorName = "kIsEqual"
-  case notEqual : operatorName = "kIsNotEqual"
+  case equal, sameInstance : operatorName = "kIsEqual"
+  case notEqual, differentInstances : operatorName = "kIsNotEqual"
   case lowerOrEqual : operatorName = "kIsInfOrEqual"
   case lowerThan : operatorName = "kIsStrictInf"
   case greaterOrEqual : operatorName = "kIsSupOrEqual"

@@ -172,18 +172,6 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
     !false
     !weakReferenceIndex
   ]
-#--- Add getter to return a strong object
-#  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mClassTypeName ?let refClassTypeIndex]
-#  [!?getterMap insertKey
-#    !self.mClassTypeName # .new {!"strong" !self.mWeakReferenceTypeName.location}
-#    !@methodKind.definedAsMember
-#    !@functionSignature {} # No argument
-#    !@location.here
-#    !true # Compiler argument
-#    !refClassTypeIndex # Returned type
-#    !@methodQualifier.isBasic
-#    !"" # No Error message
-#  ]
 #--- Typed property list
   @typedPropertyList currentClassTypedPropertyList = {}
   @typedPropertyList allTypedPropertyList = inheritedTypedAttributeList
@@ -259,7 +247,7 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
     !{}
     !@optionalMethodMap {}
     !{}
-    !.none
+    !.isReferenceEquatable
     !{}
     !{}
     !{}

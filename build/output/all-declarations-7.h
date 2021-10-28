@@ -1926,7 +1926,9 @@ class GALGAS_comparison : public AC_GALGAS_root {
     kEnum_lowerOrEqual,
     kEnum_lowerThan,
     kEnum_greaterOrEqual,
-    kEnum_greaterThan
+    kEnum_greaterThan,
+    kEnum_sameInstance,
+    kEnum_differentInstances
   } enumeration ;
   
 //--------------------------------- Private data member
@@ -1948,6 +1950,8 @@ class GALGAS_comparison : public AC_GALGAS_root {
                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
+  public: static class GALGAS_comparison constructor_differentInstances (LOCATION_ARGS) ;
+
   public: static class GALGAS_comparison constructor_equal (LOCATION_ARGS) ;
 
   public: static class GALGAS_comparison constructor_greaterOrEqual (LOCATION_ARGS) ;
@@ -1959,6 +1963,8 @@ class GALGAS_comparison : public AC_GALGAS_root {
   public: static class GALGAS_comparison constructor_lowerThan (LOCATION_ARGS) ;
 
   public: static class GALGAS_comparison constructor_notEqual (LOCATION_ARGS) ;
+
+  public: static class GALGAS_comparison constructor_sameInstance (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -1972,6 +1978,8 @@ class GALGAS_comparison : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isDifferentInstances (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isEqual (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isGreaterOrEqual (LOCATION_ARGS) const ;
@@ -1984,8 +1992,12 @@ class GALGAS_comparison : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNotEqual (LOCATION_ARGS) const ;
 
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isSameInstance (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Optional Methods
+  public: VIRTUAL_IN_DEBUG bool optional_differentInstances () const ;
+
   public: VIRTUAL_IN_DEBUG bool optional_equal () const ;
 
   public: VIRTUAL_IN_DEBUG bool optional_greaterOrEqual () const ;
@@ -1997,6 +2009,8 @@ class GALGAS_comparison : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG bool optional_lowerThan () const ;
 
   public: VIRTUAL_IN_DEBUG bool optional_notEqual () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_sameInstance () const ;
 
 
 //--------------------------------- Introspection

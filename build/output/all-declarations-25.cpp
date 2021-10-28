@@ -4686,9 +4686,9 @@ static void extensionMethod_comparisonExpressionAST_enterExpressionInSemanticCon
   const cPtr_comparisonExpressionAST * object = (const cPtr_comparisonExpressionAST *) inObject ;
   macroValidSharedObject (object, cPtr_comparisonExpressionAST) ;
   const GALGAS_comparisonExpressionAST temp_0 = object ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 84)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 98)) ;
   const GALGAS_comparisonExpressionAST temp_1 = object ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 85)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 99)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4719,56 +4719,77 @@ static void extensionMethod_comparisonExpressionAST_analyzeSemanticExpression (c
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_comparisonExpressionAST * object = (const cPtr_comparisonExpressionAST *) inObject ;
   macroValidSharedObject (object, cPtr_comparisonExpressionAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_4155 ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_4748 ;
   const GALGAS_comparisonExpressionAST temp_0 = object ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_4155, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 99)) ;
-  GALGAS_unifiedTypeMap_2D_entry var_leftType_4196 = var_leftExpression_4155.getter_mResultType (SOURCE_FILE ("expression-comparison.galgas", 107)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_4483 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) temp_0.getter_mLeftExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_4748, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 113)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_leftType_4789 = var_leftExpression_4748.getter_mResultType (SOURCE_FILE ("expression-comparison.galgas", 121)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_5076 ;
   const GALGAS_comparisonExpressionAST temp_1 = object ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftType_4196, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_4483, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 109)) ;
-  GALGAS_string var_operatorName_4533 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) temp_1.getter_mRightExpression (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftType_4789, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_5076, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 123)) ;
+  GALGAS_bool var_isComparable_5118 = var_leftType_4789.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 132)).getter_isComparable (SOURCE_FILE ("expression-comparison.galgas", 132)) ;
+  GALGAS_bool var_isReferenceEquatable_5195 = var_leftType_4789.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 133)).getter_isReferenceEquatable (SOURCE_FILE ("expression-comparison.galgas", 133)) ;
+  GALGAS_bool var_operatorIsAvailable_5285 ;
+  GALGAS_string var_operatorName_5312 ;
   const GALGAS_comparisonExpressionAST temp_2 = object ;
   switch (temp_2.getter_mComparison (HERE).enumValue ()) {
   case GALGAS_comparison::kNotBuilt:
     break ;
   case GALGAS_comparison::kEnum_equal:
     {
-      var_operatorName_4533 = GALGAS_string ("==") ;
+      var_operatorName_5312 = GALGAS_string ("==") ;
+      var_operatorIsAvailable_5285 = var_isComparable_5118 ;
     }
     break ;
   case GALGAS_comparison::kEnum_notEqual:
     {
-      var_operatorName_4533 = GALGAS_string ("!=") ;
+      var_operatorName_5312 = GALGAS_string ("!=") ;
+      var_operatorIsAvailable_5285 = var_isComparable_5118 ;
     }
     break ;
   case GALGAS_comparison::kEnum_lowerOrEqual:
     {
-      var_operatorName_4533 = GALGAS_string ("<=") ;
+      var_operatorName_5312 = GALGAS_string ("<=") ;
+      var_operatorIsAvailable_5285 = var_isComparable_5118 ;
     }
     break ;
   case GALGAS_comparison::kEnum_lowerThan:
     {
-      var_operatorName_4533 = GALGAS_string ("<") ;
+      var_operatorName_5312 = GALGAS_string ("<") ;
+      var_operatorIsAvailable_5285 = var_isComparable_5118 ;
     }
     break ;
   case GALGAS_comparison::kEnum_greaterOrEqual:
     {
-      var_operatorName_4533 = GALGAS_string (">=") ;
+      var_operatorName_5312 = GALGAS_string (">=") ;
+      var_operatorIsAvailable_5285 = var_isComparable_5118 ;
     }
     break ;
   case GALGAS_comparison::kEnum_greaterThan:
     {
-      var_operatorName_4533 = GALGAS_string (">") ;
+      var_operatorName_5312 = GALGAS_string (">") ;
+      var_operatorIsAvailable_5285 = var_isComparable_5118 ;
+    }
+    break ;
+  case GALGAS_comparison::kEnum_sameInstance:
+    {
+      var_operatorName_5312 = GALGAS_string ("===") ;
+      var_operatorIsAvailable_5285 = var_isReferenceEquatable_5195 ;
+    }
+    break ;
+  case GALGAS_comparison::kEnum_differentInstances:
+    {
+      var_operatorName_5312 = GALGAS_string ("!==") ;
+      var_operatorIsAvailable_5285 = var_isReferenceEquatable_5195 ;
     }
     break ;
   }
   {
   const GALGAS_comparisonExpressionAST temp_3 = object ;
-  routine_checkDiadicOperator (var_leftType_4196, var_rightExpression_4483.getter_mResultType (SOURCE_FILE ("expression-comparison.galgas", 130)), GALGAS_bool (true), var_operatorName_4533, temp_3.getter_mOperatorLocation (HERE), var_rightExpression_4483, inCompiler  COMMA_SOURCE_FILE ("expression-comparison.galgas", 128)) ;
+  routine_checkDiadicOperator (var_leftType_4789, var_rightExpression_5076.getter_mResultType (SOURCE_FILE ("expression-comparison.galgas", 165)), var_operatorIsAvailable_5285, var_operatorName_5312, temp_3.getter_mOperatorLocation (HERE), var_rightExpression_5076, inCompiler  COMMA_SOURCE_FILE ("expression-comparison.galgas", 163)) ;
   }
   const GALGAS_comparisonExpressionAST temp_4 = object ;
   const GALGAS_comparisonExpressionAST temp_5 = object ;
-  outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mBoolType (HERE), temp_4.getter_mOperatorLocation (HERE), var_leftExpression_4155, temp_5.getter_mComparison (HERE), var_rightExpression_4483  COMMA_SOURCE_FILE ("expression-comparison.galgas", 137)) ;
+  outArgument_outExpression = GALGAS_comparisonExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mBoolType (HERE), temp_4.getter_mOperatorLocation (HERE), var_leftExpression_4748, temp_5.getter_mComparison (HERE), var_rightExpression_5076  COMMA_SOURCE_FILE ("expression-comparison.galgas", 172)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4799,50 +4820,52 @@ static void extensionMethod_comparisonExpressionForGeneration_generateExpression
   const cPtr_comparisonExpressionForGeneration * object = (const cPtr_comparisonExpressionForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_comparisonExpressionForGeneration) ;
   const GALGAS_comparisonExpressionForGeneration temp_0 = object ;
-  extensionMethod_addHeaderFileName (temp_0.getter_mLeftExpression (HERE).getter_mResultType (SOURCE_FILE ("expression-comparison.galgas", 164)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 164)) ;
-  GALGAS_string var_leftTemporaryOperand_6198 ;
+  extensionMethod_addHeaderFileName (temp_0.getter_mLeftExpression (HERE).getter_mResultType (SOURCE_FILE ("expression-comparison.galgas", 200)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 200)) ;
+  GALGAS_string var_leftTemporaryOperand_7580 ;
   const GALGAS_comparisonExpressionForGeneration temp_1 = object ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) temp_1.getter_mLeftExpression (HERE).ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_6198, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 167)) ;
-  GALGAS_string var_rightTemporaryOperand_6406 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) temp_1.getter_mLeftExpression (HERE).ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_7580, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 202)) ;
+  GALGAS_string var_rightTemporaryOperand_7787 ;
   const GALGAS_comparisonExpressionForGeneration temp_2 = object ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) temp_2.getter_mRightExpression (HERE).ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_6406, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 170)) ;
-  GALGAS_string var_operatorName_6611 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) temp_2.getter_mRightExpression (HERE).ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_7787, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 210)) ;
+  GALGAS_string var_operatorName_7837 ;
   const GALGAS_comparisonExpressionForGeneration temp_3 = object ;
   switch (temp_3.getter_mComparison (HERE).enumValue ()) {
   case GALGAS_comparison::kNotBuilt:
     break ;
   case GALGAS_comparison::kEnum_equal:
+  case GALGAS_comparison::kEnum_sameInstance:
     {
-      var_operatorName_6611 = GALGAS_string ("kIsEqual") ;
+      var_operatorName_7837 = GALGAS_string ("kIsEqual") ;
     }
     break ;
   case GALGAS_comparison::kEnum_notEqual:
+  case GALGAS_comparison::kEnum_differentInstances:
     {
-      var_operatorName_6611 = GALGAS_string ("kIsNotEqual") ;
+      var_operatorName_7837 = GALGAS_string ("kIsNotEqual") ;
     }
     break ;
   case GALGAS_comparison::kEnum_lowerOrEqual:
     {
-      var_operatorName_6611 = GALGAS_string ("kIsInfOrEqual") ;
+      var_operatorName_7837 = GALGAS_string ("kIsInfOrEqual") ;
     }
     break ;
   case GALGAS_comparison::kEnum_lowerThan:
     {
-      var_operatorName_6611 = GALGAS_string ("kIsStrictInf") ;
+      var_operatorName_7837 = GALGAS_string ("kIsStrictInf") ;
     }
     break ;
   case GALGAS_comparison::kEnum_greaterOrEqual:
     {
-      var_operatorName_6611 = GALGAS_string ("kIsSupOrEqual") ;
+      var_operatorName_7837 = GALGAS_string ("kIsSupOrEqual") ;
     }
     break ;
   case GALGAS_comparison::kEnum_greaterThan:
     {
-      var_operatorName_6611 = GALGAS_string ("kIsStrictSup") ;
+      var_operatorName_7837 = GALGAS_string ("kIsStrictSup") ;
     }
     break ;
   }
-  outArgument_outCppExpression = GALGAS_string ("GALGAS_bool (").add_operation (var_operatorName_6611, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 182)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 182)).add_operation (var_leftTemporaryOperand_6198, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 182)).add_operation (GALGAS_string (".objectCompare ("), inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 182)).add_operation (var_rightTemporaryOperand_6406, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 182)).add_operation (GALGAS_string ("))"), inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 182)) ;
+  outArgument_outCppExpression = GALGAS_string ("GALGAS_bool (").add_operation (var_operatorName_7837, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 228)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 228)).add_operation (var_leftTemporaryOperand_7580, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 228)).add_operation (GALGAS_string (".objectCompare ("), inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 228)).add_operation (var_rightTemporaryOperand_7787, inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 228)).add_operation (GALGAS_string ("))"), inCompiler COMMA_SOURCE_FILE ("expression-comparison.galgas", 228)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

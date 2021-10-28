@@ -206,7 +206,7 @@ override method @mapEntryDeclarationAST enterInSemanticContext
     !classMethodMap
     !optionalMethodMap
     !{}
-    !.doNotGenererateObjectCompare
+    !.doNotGenererateObjectCompare | .isComparable
     !{}
     !{}
     !{}

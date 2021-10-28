@@ -175,7 +175,7 @@ override method @structDeclarationAST enterInSemanticContext
     !{}
     !optionalMethodMap
     !@enumerationDescriptorList.emptyList
-    !.generateDescriptionGetterUtilityMethod
+    !.generateDescriptionGetterUtilityMethod | .isComparable
     !@functionSignature.emptyList
     !{}
     !{}

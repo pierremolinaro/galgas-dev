@@ -143,7 +143,7 @@ override method @boolsetDeclarationAST enterInSemanticContext
   )
 #--- Operators
   let operators = @operators.infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator
-    | .generateDescriptionGetterUtilityMethod | .infixSubOperator
+    | .generateDescriptionGetterUtilityMethod | .infixSubOperator | .isComparable
 #--- Enter in type map
   [!?ioSemanticContext.mTypeMap insertKey
     !self.mBoolsetTypeName

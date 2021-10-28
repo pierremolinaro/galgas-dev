@@ -192,13 +192,13 @@ override getter @stringsetPredefinedTypeAST getSupportedOperatorFlags -> @operat
 override getter @binarysetPredefinedTypeAST getSupportedOperatorFlags -> @operators outFlags {
   outFlags = .infixAndOperator | .infixOrOperator | .infixXorOperator
     | .prefixTildeOperator | .infixShiftOperator
-    | .generateDescriptionGetterUtilityMethod
+    | .generateDescriptionGetterUtilityMethod | .isComparable
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @typePredefinedTypeAST getSupportedOperatorFlags -> @operators outFlags {
-  outFlags = .generateDescriptionGetterUtilityMethod
+  outFlags = .generateDescriptionGetterUtilityMethod | .isComparable
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -216,7 +216,7 @@ override getter @functionPredefinedTypeAST getSupportedOperatorFlags -> @operato
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @locationPredefinedTypeAST getSupportedOperatorFlags -> @operators outFlags {
-  outFlags = .generateDescriptionGetterUtilityMethod
+  outFlags = .generateDescriptionGetterUtilityMethod | .isComparable
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

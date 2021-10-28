@@ -291,7 +291,8 @@ boolset @operators {
   infixXorOperator,
   prefixNotOperator,
 
-  isComparable, # Supports <, <=, >, >= operators
+  isComparable, # Supports <, <=, >, >=, ==, != operators
+  isReferenceEquatable,  # Supports ===, !== operators
 
   plusEqualOperatorWithExpression, # var += exp ;
   minusEqualOperatorWithExpression, # var -= exp ;

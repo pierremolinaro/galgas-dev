@@ -1510,6 +1510,8 @@ class GALGAS_operators : public AC_GALGAS_root {
 
   public: static class GALGAS_operators constructor_isComparable (LOCATION_ARGS) ;
 
+  public: static class GALGAS_operators constructor_isReferenceEquatable (LOCATION_ARGS) ;
+
   public: static class GALGAS_operators constructor_minusEqualOperatorWithExpression (LOCATION_ARGS) ;
 
   public: static class GALGAS_operators constructor_mulEqualOperatorWithExpression (LOCATION_ARGS) ;
@@ -1607,6 +1609,8 @@ class GALGAS_operators : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_infixXorOperator (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isComparable (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isReferenceEquatable (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_minusEqualOperatorWithExpression (LOCATION_ARGS) const ;
 

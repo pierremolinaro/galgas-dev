@@ -350,7 +350,7 @@ override method @classDeclarationAST enterInSemanticContext
     !{}
     !@optionalMethodMap {}
     !{}
-    !.none
+    !if self.mIsReference then .isReferenceEquatable else .isComparable end
     !{}
     !{}
     !{}

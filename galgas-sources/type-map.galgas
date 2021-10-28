@@ -538,7 +538,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !{}
     !optionalMethodMap
     !enumerationDescriptor
-    !.doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg | .supportWithAccessor
+    !.doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg | .supportWithAccessor | .isComparable
     !argumentTypeListForAddAssignWithFieldExpressionList
     !{}
     !{}
