@@ -325,48 +325,44 @@
   \draw[->] (p0-10) -- (p0-11) ;
 \end{tikzpicture}
 
-\ruleSubsection{galgas3DeclarationsSyntax}{type-class}{20}
+\ruleSubsection{galgas3DeclarationsSyntax}{type-class}{24}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    & & & & & \node (p3-5) [terminal] {shared}; & & & & & & & & & & & & & & & & & & & & & & & \node (p3-28) [point] {}; & \\
-    & & & \node (p2-3) [terminal] {abstract}; & \node (p2-4) [point] {}; & \node (p2-5) [point] {}; & \node (p2-6) [point] {}; & & & & & & & \node (p2-13) [point] {}; & & & & & & & & & \node (p2-22) [point] {}; & & & & & \node (p2-27) [terminal] {;}; & \\
-    & & & \node (p1-3) [terminal] {shared}; & & & & & & & & & \node (p1-12) [terminal] {,}; & & & \node (p1-15) [terminal] {:}; & \node (p1-16) [terminal] {@type}; & & & & & \node (p1-21) [terminal] {\verb=%=attribute}; & & & & & & \node (p1-27) [nonterminal] {\nonTerminalSymbol{property\_declaration}{36}}; & \\
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [point] {}; & \node (p0-3) [point] {}; & & & & \node (p0-7) [point] {}; & \node (p0-8) [terminal] {class}; & \node (p0-9) [point] {}; & \node (p0-10) [terminal] {@type}; & \node (p0-11) [point] {}; & & & \node (p0-14) [point] {}; & \node (p0-15) [point] {}; & & \node (p0-17) [point] {}; & \node (p0-18) [point] {}; & \node (p0-19) [point] {}; & \node (p0-20) [point] {}; & & & \node (p0-23) [terminal] {\{}; & \node (p0-24) [point] {}; & \node (p0-25) [point] {}; & \node (p0-26) [point] {}; & & & \node (p0-29) [terminal] {\}}; & \node (p0-30) [lastPoint] {}; & \\
+    & & & & & & & & & & & & & & & & & & & & & & & \node (p3-23) [point] {}; & \\
+    & & & & & & \node (p2-6) [terminal] {refclass}; & & & & & & & & & & & \node (p2-17) [point] {}; & & & & & \node (p2-22) [terminal] {;}; & \\
+    & & & \node (p1-3) [terminal] {abstract}; & & & \node (p1-6) [terminal] {valueclass}; & & & & \node (p1-10) [terminal] {:}; & \node (p1-11) [terminal] {@type}; & & & & & \node (p1-16) [terminal] {\verb=%=attribute}; & & & & & & \node (p1-22) [nonterminal] {\nonTerminalSymbol{property\_declaration}{36}}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [point] {}; & \node (p0-3) [point] {}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & \node (p0-6) [terminal] {class}; & \node (p0-7) [point] {}; & \node (p0-8) [terminal] {@type}; & \node (p0-9) [point] {}; & \node (p0-10) [point] {}; & & \node (p0-12) [point] {}; & \node (p0-13) [point] {}; & \node (p0-14) [point] {}; & \node (p0-15) [point] {}; & & & \node (p0-18) [terminal] {\{}; & \node (p0-19) [point] {}; & \node (p0-20) [point] {}; & \node (p0-21) [point] {}; & & & \node (p0-24) [terminal] {\}}; & \node (p0-25) [lastPoint] {}; & \\
   };
   \draw (P0start) -- (p0-3) ;
   \draw[->] (p0-2) |- (p1-3) ;
-  \draw[->] (p0-2) |- (p2-3) ;
-  \draw (p2-3) -- (p2-5) ;
-  \draw[->] (p2-4) |- (p3-5) ;
-  \draw (p2-5) -- (p2-6) ;
-  \draw[->] (p3-5) -| (p2-6) ;
-  \draw (p0-3) -- (p0-7) ;
-  \draw[->] (p1-3) -| (p0-7) ;
+  \draw (p0-3) -- (p0-4) ;
+  \draw[->] (p1-3) -| (p0-4) ;
+  \draw[->] (p0-4) -- (p0-6) ;
+  \draw[->] (p0-5) |- (p1-6) ;
+  \draw[->] (p0-5) |- (p2-6) ;
+  \draw (p0-6) -- (p0-7) ;
+  \draw[->] (p1-6) -| (p0-7) ;
   \draw[->] (p2-6) -| (p0-7) ;
   \draw[->] (p0-7) -- (p0-8) ;
-  \draw[->] (p0-8) -- (p0-10) ;
-  \draw[->] (p0-11) |- (p1-12) ;
-  \draw[->] (p2-13) -| (p0-9) ;
-  \draw[->] (p1-12) -| (p2-13) ;
-  \draw (p0-10) -- (p0-15) ;
-  \draw[->] (p0-14) |- (p1-15) ;
-  \draw[->] (p1-15) -- (p1-16) ;
-  \draw (p0-15) -- (p0-17) ;
-  \draw[->] (p1-16) -| (p0-17) ;
-  \draw (p0-17) -- (p0-19) ;
-  \draw[->] (p0-20) |- (p1-21) ;
-  \draw[->] (p2-22) -| (p0-18) ;
-  \draw[->] (p1-21) -| (p2-22) ;
-  \draw[->] (p0-19) -- (p0-23) ;
-  \draw (p0-23) -- (p0-25) ;
-  \draw[->] (p0-26) |- (p1-27) ;
-  \draw[->] (p0-26) |- (p2-27) ;
-  \draw[->] (p3-28) -| (p0-24) ;
-  \draw[->] (p1-27) -| (p3-28) ;
-  \draw[->] (p2-27) -| (p3-28) ;
-  \draw[->] (p0-25) -- (p0-29) ;
-  \draw[->] (p0-29) -- (p0-30) ;
+  \draw (p0-8) -- (p0-10) ;
+  \draw[->] (p0-9) |- (p1-10) ;
+  \draw[->] (p1-10) -- (p1-11) ;
+  \draw (p0-10) -- (p0-12) ;
+  \draw[->] (p1-11) -| (p0-12) ;
+  \draw (p0-12) -- (p0-14) ;
+  \draw[->] (p0-15) |- (p1-16) ;
+  \draw[->] (p2-17) -| (p0-13) ;
+  \draw[->] (p1-16) -| (p2-17) ;
+  \draw[->] (p0-14) -- (p0-18) ;
+  \draw (p0-18) -- (p0-20) ;
+  \draw[->] (p0-21) |- (p1-22) ;
+  \draw[->] (p0-21) |- (p2-22) ;
+  \draw[->] (p3-23) -| (p0-19) ;
+  \draw[->] (p1-22) -| (p3-23) ;
+  \draw[->] (p2-22) -| (p3-23) ;
+  \draw[->] (p0-20) -- (p0-24) ;
+  \draw[->] (p0-24) -- (p0-25) ;
 \end{tikzpicture}
 
 \ruleSubsection{galgas3DeclarationsSyntax}{type-enum}{24}
@@ -1228,7 +1224,7 @@
   \draw[->] (p0-17) -- (p0-18) ;
 \end{tikzpicture}
 
-\ruleSubsection{galgas3DeclarationsSyntax}{galgas3DeclarationsSyntax}{91}
+\ruleSubsection{galgas3DeclarationsSyntax}{galgas3DeclarationsSyntax}{92}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -1282,7 +1278,7 @@
 
 \nonTerminalSection{expression\_and}{9}
 
-\ruleSubsection{galgas3ExpressionSyntax}{expression-and}{20}
+\ruleSubsection{galgas3ExpressionSyntax}{expression-and}{27}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -1305,7 +1301,7 @@
 
 \nonTerminalSection{expression\_or}{8}
 
-\ruleSubsection{galgas3ExpressionSyntax}{expression-or}{23}
+\ruleSubsection{galgas3ExpressionSyntax}{expression-or}{51}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -1584,7 +1580,7 @@
 
 \nonTerminalSection{filewrapper\_binary\_files}{38}
 
-\ruleSubsection{galgas3DeclarationsSyntax}{galgas3DeclarationsSyntax}{133}
+\ruleSubsection{galgas3DeclarationsSyntax}{galgas3DeclarationsSyntax}{134}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -1607,7 +1603,7 @@
 
 \nonTerminalSection{filewrapper\_templates}{39}
 
-\ruleSubsection{galgas3DeclarationsSyntax}{galgas3DeclarationsSyntax}{150}
+\ruleSubsection{galgas3DeclarationsSyntax}{galgas3DeclarationsSyntax}{151}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -1641,7 +1637,7 @@
 
 \nonTerminalSection{filewrapper\_text\_files}{37}
 
-\ruleSubsection{galgas3DeclarationsSyntax}{galgas3DeclarationsSyntax}{116}
+\ruleSubsection{galgas3DeclarationsSyntax}{galgas3DeclarationsSyntax}{117}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -1674,7 +1670,7 @@
   \draw[->] (p0-2) -- (p0-3) ;
 \end{tikzpicture}
 
-\ruleSubsection{galgas3InstructionsSyntax}{instruction-for}{82}
+\ruleSubsection{galgas3InstructionsSyntax}{instruction-for}{81}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -1685,7 +1681,7 @@
   \draw[->] (p0-3) -- (p0-4) ;
 \end{tikzpicture}
 
-\ruleSubsection{galgas3InstructionsSyntax}{instruction-for}{98}
+\ruleSubsection{galgas3InstructionsSyntax}{instruction-for}{96}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -1702,7 +1698,7 @@
 
 \nonTerminalSection{for\_instruction\_enumerated\_object}{27}
 
-\ruleSubsection{galgas3InstructionsSyntax}{instruction-for}{112}
+\ruleSubsection{galgas3InstructionsSyntax}{instruction-for}{109}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -1727,7 +1723,7 @@
   \draw[->] (p0-14) -- (p0-15) ;
 \end{tikzpicture}
 
-\ruleSubsection{galgas3InstructionsSyntax}{instruction-for}{144}
+\ruleSubsection{galgas3InstructionsSyntax}{instruction-for}{142}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -1744,7 +1740,7 @@
   \draw[->] (p0-7) -- (p0-8) ;
 \end{tikzpicture}
 
-\ruleSubsection{galgas3InstructionsSyntax}{instruction-for}{164}
+\ruleSubsection{galgas3InstructionsSyntax}{instruction-for}{161}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -1980,63 +1976,67 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    & & & & & & & & & & & & & & & & & & & & & & & & \node (p11-24) [point] {}; & \\
-    & & & & \node (p10-4) [nonterminal] {\nonTerminalSymbol{expression}{5}}; & \\
-    & & & & & & & & & & & & & & & & & & & \node (p9-19) [point] {}; & \\
-    & & & & & & & & & & & & & \node (p8-13) [terminal] {uint32}; & \node (p8-14) [terminal] {*}; & \\
-    & & & & & & & & & & & & & \node (p7-13) [terminal] {*}; & \\
-    & & & & & & & & & & & & & & & \node (p6-15) [terminal] {@type}; & \\
-    & & & & & & & & & & & & & \node (p5-13) [terminal] {var}; & \node (p5-14) [point] {}; & \node (p5-15) [point] {}; & \node (p5-16) [point] {}; & \node (p5-17) [terminal] {identifier}; & \\
-    & & & & & & & & & & & & & & & \node (p4-15) [terminal] {@type}; & \\
-    & & & & & & & & & & & \node (p3-11) [terminal] {?}; & \node (p3-12) [point] {}; & \node (p3-13) [terminal] {let}; & \node (p3-14) [point] {}; & \node (p3-15) [point] {}; & \node (p3-16) [point] {}; & \node (p3-17) [terminal] {identifier}; & \node (p3-18) [point] {}; & \\
-    & & & & & & & & & & & \node (p2-11) [terminal] {!}; & \node (p2-12) [nonterminal] {\nonTerminalSymbol{expression}{5}}; & \\
-    & & & & \node (p1-4) [terminal] {let}; & \node (p1-5) [terminal] {[}; & \node (p1-6) [nonterminal] {\nonTerminalSymbol{expression}{5}}; & \node (p1-7) [terminal] {identifier}; & \node (p1-8) [point] {}; & \node (p1-9) [point] {}; & \node (p1-10) [point] {}; & & & & & & & & & & \node (p1-20) [terminal] {]}; & & & \node (p1-23) [terminal] {,}; & \\
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [point] {}; & \node (p0-3) [point] {}; & \node (p0-4) [terminal] {let}; & \node (p0-5) [terminal] {identifier}; & \node (p0-6) [terminal] {=}; & \node (p0-7) [nonterminal] {\nonTerminalSymbol{expression\_or}{8}}; & \node (p0-8) [terminal] {as}; & \node (p0-9) [terminal] {@type}; & & & & & & & & & & & & \node (p0-21) [point] {}; & \node (p0-22) [point] {}; & & & \node (p0-25) [lastPoint] {}; & \\
+    & & & & & & & & & & & & & & & & & & & & & & & & \node (p12-24) [point] {}; & \\
+    & & & & \node (p11-4) [nonterminal] {\nonTerminalSymbol{expression}{5}}; & \\
+    & & & & & & & & & & & & & & & & & & & \node (p10-19) [point] {}; & \\
+    & & & & & & & & & & & & & \node (p9-13) [terminal] {uint32}; & \node (p9-14) [terminal] {*}; & \\
+    & & & & & & & & & & & & & \node (p8-13) [terminal] {*}; & \\
+    & & & & & & & & & & & & & & & \node (p7-15) [terminal] {@type}; & \\
+    & & & & & & & & & & & & & \node (p6-13) [terminal] {var}; & \node (p6-14) [point] {}; & \node (p6-15) [point] {}; & \node (p6-16) [point] {}; & \node (p6-17) [terminal] {identifier}; & \\
+    & & & & & & & & & & & & & & & \node (p5-15) [terminal] {@type}; & \\
+    & & & & & & & & & & & \node (p4-11) [terminal] {?}; & \node (p4-12) [point] {}; & \node (p4-13) [terminal] {let}; & \node (p4-14) [point] {}; & \node (p4-15) [point] {}; & \node (p4-16) [point] {}; & \node (p4-17) [terminal] {identifier}; & \node (p4-18) [point] {}; & \\
+    & & & & & & & & & & & \node (p3-11) [terminal] {!}; & \node (p3-12) [nonterminal] {\nonTerminalSymbol{expression}{5}}; & \\
+    & & & & \node (p2-4) [terminal] {let}; & \node (p2-5) [terminal] {[}; & \node (p2-6) [nonterminal] {\nonTerminalSymbol{expression}{5}}; & \node (p2-7) [terminal] {identifier}; & \node (p2-8) [point] {}; & \node (p2-9) [point] {}; & \node (p2-10) [point] {}; & & & & & & & & & & \node (p2-20) [terminal] {]}; & \\
+    & & & & & & & & & \node (p1-9) [terminal] {as}; & \node (p1-10) [terminal] {@type}; & & & & & & & & & & & & & \node (p1-23) [terminal] {,}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [point] {}; & \node (p0-3) [point] {}; & \node (p0-4) [terminal] {let}; & \node (p0-5) [terminal] {identifier}; & \node (p0-6) [terminal] {=}; & \node (p0-7) [nonterminal] {\nonTerminalSymbol{expression\_or}{8}}; & \node (p0-8) [point] {}; & \node (p0-9) [point] {}; & & \node (p0-11) [point] {}; & & & & & & & & & & \node (p0-21) [point] {}; & \node (p0-22) [point] {}; & & & \node (p0-25) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-4) ;
   \draw[->] (p0-4) -- (p0-5) ;
   \draw[->] (p0-5) -- (p0-6) ;
   \draw[->] (p0-6) -- (p0-7) ;
-  \draw[->] (p0-7) -- (p0-8) ;
-  \draw[->] (p0-8) -- (p0-9) ;
-  \draw[->] (p0-3) |- (p1-4) ;
-  \draw[->] (p1-4) -- (p1-5) ;
-  \draw[->] (p1-5) -- (p1-6) ;
-  \draw[->] (p1-6) -- (p1-7) ;
-  \draw (p1-7) -- (p1-9) ;
-  \draw[->] (p1-10) |- (p2-11) ;
-  \draw[->] (p2-11) -- (p2-12) ;
-  \draw[->] (p1-10) |- (p3-11) ;
-  \draw[->] (p3-11) -- (p3-13) ;
-  \draw (p3-13) -- (p3-15) ;
-  \draw[->] (p3-14) |- (p4-15) ;
-  \draw (p3-15) -- (p3-16) ;
-  \draw[->] (p4-15) -| (p3-16) ;
-  \draw[->] (p3-16) -- (p3-17) ;
-  \draw[->] (p3-12) |- (p5-13) ;
-  \draw (p5-13) -- (p5-15) ;
-  \draw[->] (p5-14) |- (p6-15) ;
-  \draw (p5-15) -- (p5-16) ;
-  \draw[->] (p6-15) -| (p5-16) ;
-  \draw[->] (p5-16) -- (p5-17) ;
-  \draw[->] (p3-12) |- (p7-13) ;
-  \draw[->] (p3-12) |- (p8-13) ;
-  \draw[->] (p8-13) -- (p8-14) ;
-  \draw (p3-17) -- (p3-18) ;
-  \draw[->] (p5-17) -| (p3-18) ;
-  \draw[->] (p7-13) -| (p3-18) ;
-  \draw[->] (p8-14) -| (p3-18) ;
-  \draw[->] (p9-19) -| (p1-8) ;
-  \draw[->] (p2-12) -| (p9-19) ;
-  \draw[->] (p3-18) -| (p9-19) ;
-  \draw[->] (p1-9) -- (p1-20) ;
-  \draw[->] (p0-3) |- (p10-4) ;
-  \draw (p0-9) -- (p0-21) ;
-  \draw[->] (p1-20) -| (p0-21) ;
-  \draw[->] (p10-4) -| (p0-21) ;
+  \draw (p0-7) -- (p0-9) ;
+  \draw[->] (p0-8) |- (p1-9) ;
+  \draw[->] (p1-9) -- (p1-10) ;
+  \draw (p0-9) -- (p0-11) ;
+  \draw[->] (p1-10) -| (p0-11) ;
+  \draw[->] (p0-3) |- (p2-4) ;
+  \draw[->] (p2-4) -- (p2-5) ;
+  \draw[->] (p2-5) -- (p2-6) ;
+  \draw[->] (p2-6) -- (p2-7) ;
+  \draw (p2-7) -- (p2-9) ;
+  \draw[->] (p2-10) |- (p3-11) ;
+  \draw[->] (p3-11) -- (p3-12) ;
+  \draw[->] (p2-10) |- (p4-11) ;
+  \draw[->] (p4-11) -- (p4-13) ;
+  \draw (p4-13) -- (p4-15) ;
+  \draw[->] (p4-14) |- (p5-15) ;
+  \draw (p4-15) -- (p4-16) ;
+  \draw[->] (p5-15) -| (p4-16) ;
+  \draw[->] (p4-16) -- (p4-17) ;
+  \draw[->] (p4-12) |- (p6-13) ;
+  \draw (p6-13) -- (p6-15) ;
+  \draw[->] (p6-14) |- (p7-15) ;
+  \draw (p6-15) -- (p6-16) ;
+  \draw[->] (p7-15) -| (p6-16) ;
+  \draw[->] (p6-16) -- (p6-17) ;
+  \draw[->] (p4-12) |- (p8-13) ;
+  \draw[->] (p4-12) |- (p9-13) ;
+  \draw[->] (p9-13) -- (p9-14) ;
+  \draw (p4-17) -- (p4-18) ;
+  \draw[->] (p6-17) -| (p4-18) ;
+  \draw[->] (p8-13) -| (p4-18) ;
+  \draw[->] (p9-14) -| (p4-18) ;
+  \draw[->] (p10-19) -| (p2-8) ;
+  \draw[->] (p3-12) -| (p10-19) ;
+  \draw[->] (p4-18) -| (p10-19) ;
+  \draw[->] (p2-9) -- (p2-20) ;
+  \draw[->] (p0-3) |- (p11-4) ;
+  \draw (p0-11) -- (p0-21) ;
+  \draw[->] (p2-20) -| (p0-21) ;
+  \draw[->] (p11-4) -| (p0-21) ;
   \draw[->] (p0-22) |- (p1-23) ;
-  \draw[->] (p11-24) -| (p0-2) ;
-  \draw[->] (p1-23) -| (p11-24) ;
+  \draw[->] (p12-24) -| (p0-2) ;
+  \draw[->] (p1-23) -| (p12-24) ;
   \draw[->] (p0-21) -- (p0-25) ;
 \end{tikzpicture}
 
@@ -3236,6 +3236,17 @@
   \draw[->] (p0-2) -- (p0-3) ;
 \end{tikzpicture}
 
+\ruleSubsection{galgas3ExpressionSyntax}{expression-bang}{18}
+
+\begin{tikzpicture}
+  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [nonterminal] {\nonTerminalSymbol{primary}{0}}; & \node (p0-3) [terminal] {°}; & \node (p0-4) [lastPoint] {}; & \\
+  };
+  \draw[->] (P0start) -- (p0-2) ;
+  \draw[->] (p0-2) -- (p0-3) ;
+  \draw[->] (p0-3) -- (p0-4) ;
+\end{tikzpicture}
+
 \nonTerminalSection{property\_declaration}{36}
 
 \ruleSubsection{galgas3DeclarationsSyntax}{galgas3DeclarationsSyntax}{58}
@@ -3261,11 +3272,13 @@
 
 \nonTerminalSection{relation\_factor}{3}
 
-\ruleSubsection{galgas3ExpressionSyntax}{expression-comparison}{24}
+\ruleSubsection{galgas3ExpressionSyntax}{expression-comparison}{33}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    & & & & & & & & \node (p7-8) [point] {}; & \\
+    & & & & & & & & \node (p9-8) [point] {}; & \\
+    & & & & & & \node (p8-6) [terminal] {!==}; & \node (p8-7) [nonterminal] {\nonTerminalSymbol{simple\_expression}{4}}; & \\
+    & & & & & & \node (p7-6) [terminal] {===}; & \node (p7-7) [nonterminal] {\nonTerminalSymbol{simple\_expression}{4}}; & \\
     & & & & & & \node (p6-6) [terminal] {<}; & \node (p6-7) [nonterminal] {\nonTerminalSymbol{simple\_expression}{4}}; & \\
     & & & & & & \node (p5-6) [terminal] {>}; & \node (p5-7) [nonterminal] {\nonTerminalSymbol{simple\_expression}{4}}; & \\
     & & & & & & \node (p4-6) [terminal] {>=}; & \node (p4-7) [nonterminal] {\nonTerminalSymbol{simple\_expression}{4}}; & \\
@@ -3288,13 +3301,19 @@
   \draw[->] (p5-6) -- (p5-7) ;
   \draw[->] (p0-5) |- (p6-6) ;
   \draw[->] (p6-6) -- (p6-7) ;
-  \draw[->] (p7-8) -| (p0-3) ;
-  \draw[->] (p1-7) -| (p7-8) ;
-  \draw[->] (p2-7) -| (p7-8) ;
-  \draw[->] (p3-7) -| (p7-8) ;
-  \draw[->] (p4-7) -| (p7-8) ;
-  \draw[->] (p5-7) -| (p7-8) ;
-  \draw[->] (p6-7) -| (p7-8) ;
+  \draw[->] (p0-5) |- (p7-6) ;
+  \draw[->] (p7-6) -- (p7-7) ;
+  \draw[->] (p0-5) |- (p8-6) ;
+  \draw[->] (p8-6) -- (p8-7) ;
+  \draw[->] (p9-8) -| (p0-3) ;
+  \draw[->] (p1-7) -| (p9-8) ;
+  \draw[->] (p2-7) -| (p9-8) ;
+  \draw[->] (p3-7) -| (p9-8) ;
+  \draw[->] (p4-7) -| (p9-8) ;
+  \draw[->] (p5-7) -| (p9-8) ;
+  \draw[->] (p6-7) -| (p9-8) ;
+  \draw[->] (p7-7) -| (p9-8) ;
+  \draw[->] (p8-7) -| (p9-8) ;
   \draw[->] (p0-4) -- (p0-9) ;
 \end{tikzpicture}
 
@@ -3396,40 +3415,38 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    & & & & & & & & \node (p2-8) [point] {}; & \\
-    & & & & & & \node (p1-6) [terminal] {.}; & \node (p1-7) [terminal] {identifier}; & \\
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {identifier}; & \node (p0-3) [point] {}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & & & & \node (p0-9) [terminal] {=}; & \node (p0-10) [nonterminal] {\nonTerminalSymbol{expression}{5}}; & \node (p0-11) [lastPoint] {}; & \\
+    & & & & \node (p1-4) [terminal] {.}; & \node (p1-5) [terminal] {identifier}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {identifier}; & \node (p0-3) [point] {}; & \node (p0-4) [point] {}; & & \node (p0-6) [point] {}; & \node (p0-7) [terminal] {=}; & \node (p0-8) [nonterminal] {\nonTerminalSymbol{expression}{5}}; & \node (p0-9) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw (p0-2) -- (p0-4) ;
-  \draw[->] (p0-5) |- (p1-6) ;
-  \draw[->] (p1-6) -- (p1-7) ;
-  \draw[->] (p2-8) -| (p0-3) ;
-  \draw[->] (p1-7) -| (p2-8) ;
-  \draw[->] (p0-4) -- (p0-9) ;
-  \draw[->] (p0-9) -- (p0-10) ;
-  \draw[->] (p0-10) -- (p0-11) ;
+  \draw[->] (p0-3) |- (p1-4) ;
+  \draw[->] (p1-4) -- (p1-5) ;
+  \draw (p0-4) -- (p0-6) ;
+  \draw[->] (p1-5) -| (p0-6) ;
+  \draw[->] (p0-6) -- (p0-7) ;
+  \draw[->] (p0-7) -- (p0-8) ;
+  \draw[->] (p0-8) -- (p0-9) ;
 \end{tikzpicture}
 
-\ruleSubsection{galgas3InstructionsSyntax}{instruction-assignment}{48}
+\ruleSubsection{galgas3InstructionsSyntax}{instruction-assignment}{49}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    & & & & & & & & & & \node (p2-10) [point] {}; & \\
-    & & & & & & & & \node (p1-8) [terminal] {.}; & \node (p1-9) [terminal] {identifier}; & \\
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {self}; & \node (p0-3) [terminal] {.}; & \node (p0-4) [terminal] {identifier}; & \node (p0-5) [point] {}; & \node (p0-6) [point] {}; & \node (p0-7) [point] {}; & & & & \node (p0-11) [terminal] {=}; & \node (p0-12) [nonterminal] {\nonTerminalSymbol{expression}{5}}; & \node (p0-13) [lastPoint] {}; & \\
+    & & & & & & \node (p1-6) [terminal] {.}; & \node (p1-7) [terminal] {identifier}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {self}; & \node (p0-3) [terminal] {.}; & \node (p0-4) [terminal] {identifier}; & \node (p0-5) [point] {}; & \node (p0-6) [point] {}; & & \node (p0-8) [point] {}; & \node (p0-9) [terminal] {=}; & \node (p0-10) [nonterminal] {\nonTerminalSymbol{expression}{5}}; & \node (p0-11) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;
   \draw[->] (p0-3) -- (p0-4) ;
   \draw (p0-4) -- (p0-6) ;
-  \draw[->] (p0-7) |- (p1-8) ;
-  \draw[->] (p1-8) -- (p1-9) ;
-  \draw[->] (p2-10) -| (p0-5) ;
-  \draw[->] (p1-9) -| (p2-10) ;
-  \draw[->] (p0-6) -- (p0-11) ;
-  \draw[->] (p0-11) -- (p0-12) ;
-  \draw[->] (p0-12) -- (p0-13) ;
+  \draw[->] (p0-5) |- (p1-6) ;
+  \draw[->] (p1-6) -- (p1-7) ;
+  \draw (p0-6) -- (p0-8) ;
+  \draw[->] (p1-7) -| (p0-8) ;
+  \draw[->] (p0-8) -- (p0-9) ;
+  \draw[->] (p0-9) -- (p0-10) ;
+  \draw[->] (p0-10) -- (p0-11) ;
 \end{tikzpicture}
 
 \ruleSubsection{galgas3InstructionsSyntax}{instruction-cast}{86}
@@ -3516,7 +3533,7 @@
   \draw[->] (p0-14) -- (p0-15) ;
 \end{tikzpicture}
 
-\ruleSubsection{galgas3InstructionsSyntax}{instruction-for}{184}
+\ruleSubsection{galgas3InstructionsSyntax}{instruction-for}{183}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -4287,7 +4304,7 @@
 
 \nonTerminalSection{simple\_expression}{4}
 
-\ruleSubsection{galgas3ExpressionSyntax}{expression-additive}{24}
+\ruleSubsection{galgas3ExpressionSyntax}{expression-additive}{59}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -4711,7 +4728,7 @@
 
 \nonTerminalSection{term}{10}
 
-\ruleSubsection{galgas3ExpressionSyntax}{expression-multiplicative}{23}
+\ruleSubsection{galgas3ExpressionSyntax}{expression-multiplicative}{51}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {

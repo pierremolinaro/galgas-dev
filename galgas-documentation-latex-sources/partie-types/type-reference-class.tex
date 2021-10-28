@@ -229,12 +229,27 @@ Il y a trois constructions qui permettent d'effectuer cette opération :
   \item l'instruction \ggs+cast+ (\refSectionPage{instructionCast}).
 \end{itemize}
 
-\section{Comparaison}
+%\section{Comparaison}
+%
+%La comparaison implémentée est une comparaison de références. Chaque référence est convertie en un entier non signé. Autrement dit, l'égalité entre deux références signifie qu'elles désignent le même objet. 
 
-La comparaison implémentée est une comparison de références. Chaque référence est convertie en un entier non signé. Autrement dit, l'égalité entre deux références signifie qu'elles désignent le même objet. 
+%Note~: comme l'adresse d'allocation peut varier d'une exécution à une autre, la relation d'ordre entre les objets n'est pas stable d'une exécution à l'autre.
 
-Note~: comme l'adresse d'allocation peut varier d'une exécution à une autre, la relation d'ordre entre les objets n'est pas stable d'une exécution à l'autre.
+\subsection{Comparaison}
 
+Les opérateurs de comparaison (\ggs@=@, \ggs@!=@, \ggs@<@, \ggs@<=@, \ggs@>@ et \ggs@>=@) ne sont pas disponibles pour un pointeur fort. Les opérateurs \ggs@===@ et \ggs@!==@ permettent de tester si deux pointeurs forts désignent la même instance.
+
+
+On peut donc écrire~:
+\begin{galgas}
+  @A a = @A.new
+  var aa = a
+  if a === aa then
+    message "same instance\n"
+  else
+    message "different instances\n"
+  end
+\end{galgas}
 
 
 
@@ -299,12 +314,13 @@ Si le pointeur faible est \ggs=nil=, une erreur d'exécution est déclenchée.
 
 \subsection{Comparaison}
 
-La comparaison implémentée est une comparaison de références. Chaque référence est convertie en un entier non signé. La valeur \ggs=nil= est convertie en la valeur entière \ggs=0=. L'égalité entre deux références signifie qu'elles désignent le même objet. 
+Les opérateurs de comparaison (\ggs@=@, \ggs@!=@, \ggs@<@, \ggs@<=@, \ggs@>@ et \ggs@>=@) ne sont pas disponibles pour un pointeur faible. Les opérateurs \ggs@===@ et \ggs@!==@ permettent de tester si deux pointeurs faibles désignent la même instance, ou si ils sont \ggs=nil= tous les deux. La valeur \ggs=nil= est toujours différente de la valeur qui désigne une instance.
+
 
 On peut donc écrire~:
 \begin{galgas}
   @A-weak weakA = ...
-  if weakA == .nil then
+  if weakA === .nil then
     message "weakA is nil\n"
   else
     message "weakA is not nil\n"
