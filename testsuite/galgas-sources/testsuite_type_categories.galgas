@@ -85,10 +85,10 @@ setter @uint64 increment {
 
 #----------------------------------------------------------------------------*
 
-abstract valueclass @toto { }
-valueclass @toto1 : @toto { }
-abstract valueclass @toto2 : @toto1 { }
-valueclass @toto3 : @toto2 { }
+abstract refclass @toto { }
+refclass @toto1 : @toto { }
+abstract refclass @toto2 : @toto1 { }
+refclass @toto3 : @toto2 { }
 
 override abstract getter @toto2 r -> @uint
 override getter @toto3 r -> @uint result { result = 0 }

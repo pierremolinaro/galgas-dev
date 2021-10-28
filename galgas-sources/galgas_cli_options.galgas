@@ -47,6 +47,8 @@ option galgas_cli_options {
 
   @bool errorClassDeclaration : '\0', "error-class-declaration" -> "'class' declaration is obsolete use 'valueclass'"
 
+  @bool errorValueClassDeclaration : '\0', "error-value-class-declaration" -> "'value class' declaration is obsolete use 'refclass'"
+
   @bool warnsAnomynousForInstructionEnumeratedObject : '\0', "warns-anonymous-for-instruction" -> "warns on anonymous 'for' instruction enumerated object ('for () in ...')"
 
   @uint macosxSDK : '\0', "macosx" -> "Generate an Xcode project for OS X"

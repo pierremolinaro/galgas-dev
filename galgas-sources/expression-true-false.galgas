@@ -2,13 +2,13 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @trueExpressionAST : @semanticExpressionAST {
+refclass @trueExpressionAST : @semanticExpressionAST {
   @location mLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @falseExpressionAST : @semanticExpressionAST {
+refclass @falseExpressionAST : @semanticExpressionAST {
   @location mLocation
 }
 
@@ -82,7 +82,7 @@ override method @falseExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @trueExpressionForGeneration : @semanticExpressionForGeneration {
+refclass @trueExpressionForGeneration : @semanticExpressionForGeneration {
 }
 
 #·····················································································································
@@ -98,7 +98,7 @@ override method @trueExpressionForGeneration generateExpression
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @falseExpressionForGeneration : @semanticExpressionForGeneration {
+refclass @falseExpressionForGeneration : @semanticExpressionForGeneration {
 }
 
 #·····················································································································

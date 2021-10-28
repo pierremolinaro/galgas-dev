@@ -2,7 +2,7 @@
 #   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @arrayDeclarationAST : @semanticDeclarationAST {
+refclass @arrayDeclarationAST : @semanticDeclarationAST {
   @lstring mArrayTypeName
   @lstring mElementTypeName
   @luint mDimension
@@ -247,7 +247,7 @@ override method @arrayDeclarationAST semanticAnalysis
 #   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @arrayTypeForGeneration : @semanticTypeForGeneration {
+refclass @arrayTypeForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-entry mElementTypeEntry
   @uint mDimension
 }

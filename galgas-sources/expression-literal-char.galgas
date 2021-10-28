@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @literalCharExpressionAST : @semanticExpressionAST {
+refclass @literalCharExpressionAST : @semanticExpressionAST {
   @lchar mCharacter
 }
 
@@ -53,7 +53,7 @@ override method @literalCharExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @literalCharExpressionForGeneration : @semanticExpressionForGeneration {
+refclass @literalCharExpressionForGeneration : @semanticExpressionForGeneration {
   @char mCharacter
 }
 

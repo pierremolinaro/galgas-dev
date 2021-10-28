@@ -19,7 +19,7 @@ list @matchInstructionBranchListAST {
 
 #······················································································································*
 
-valueclass @matchInstructionAST : @semanticInstructionAST {
+refclass @matchInstructionAST : @semanticInstructionAST {
   @semanticExpressionListAST mMatchedExpressionList
   @matchInstructionBranchListAST mMatchInstructionBranchList
   @semanticInstructionListAST mElseInstructionList
@@ -277,7 +277,7 @@ list @matchInstructionBranchListForGeneration {
 
 #······················································································································*
 
-valueclass @matchInstructionForGeneration : @semanticInstructionForGeneration {
+refclass @matchInstructionForGeneration : @semanticInstructionForGeneration {
   @semanticExpressionListForGeneration mMatchedExpressionList
   @matchInstructionBranchListForGeneration mMatchInstructionBranchList
   @semanticInstructionListForGeneration mElseInstructionList

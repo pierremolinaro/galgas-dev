@@ -16,7 +16,7 @@ map @xmlAttributeMap {
 
 #------------------------------------------------------------*
 
-valueclass @xmlNode {
+refclass @xmlNode {
   @xmlNodeType mType
   @string name
   @xmlAttributeMap attributeMap

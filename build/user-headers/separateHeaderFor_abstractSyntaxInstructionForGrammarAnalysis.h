@@ -11,7 +11,7 @@ class cVocabulary ;
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acPtr_class {
+class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acStrongPtr_class {
 //--- START OF USER ZONE 2
 
   public: virtual void printInstructionForGrammar (C_HTMLString & inHTMLfile) = 0 ;
@@ -38,8 +38,6 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acPtr_class {
                                                             COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
-  public: VIRTUAL_IN_DEBUG GALGAS_location getter_mStartLocation (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMStartLocation (GALGAS_location inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public: virtual void description (C_String & ioString,
                                     const int32_t inIndentation) const = 0 ;

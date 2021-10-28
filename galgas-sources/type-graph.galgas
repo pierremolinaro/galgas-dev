@@ -9,7 +9,7 @@ list @graphInsertModifierList {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @graphDeclarationAST : @semanticDeclarationAST {
+refclass @graphDeclarationAST : @semanticDeclarationAST {
   @lstring mGraphTypeName
   @lstring mAssociatedListTypeName
   @graphInsertModifierList mInsertModifierList
@@ -468,7 +468,7 @@ override method @graphDeclarationAST semanticAnalysis
 #   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @graphDeclarationForGeneration : @semanticTypeForGeneration {
+refclass @graphDeclarationForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-entry mAssociatedListTypeEntry
   @unifiedTypeMap-entry mAssociatedListElementTypeEntry
   @graphInsertModifierList mInsertModifierList

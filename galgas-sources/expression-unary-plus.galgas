@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @unaryPlusExpressionAST : @semanticExpressionAST {
+refclass @unaryPlusExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mExpression
 }

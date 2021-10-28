@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @getterCallExpressionAST : @semanticExpressionAST {
+refclass @getterCallExpressionAST : @semanticExpressionAST {
   @semanticExpressionAST mReceiver
   @lstring mGetterName
   @actualOutputExpressionList mExpressions
@@ -177,7 +177,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
+refclass @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
   @methodKind mKind
   @semanticExpressionForGeneration mReceiverExpression
   @stringlist mFieldList

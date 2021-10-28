@@ -1,6 +1,6 @@
 
 
-valueclass @TestExtensionMethod {}
+refclass @TestExtensionMethod {}
 
 method @TestExtensionMethod method1 {
 }

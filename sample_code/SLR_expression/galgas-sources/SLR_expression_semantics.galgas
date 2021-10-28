@@ -1,13 +1,13 @@
 
 
-abstract valueclass @cExpression {
+abstract refclass @cExpression {
 }
 
-valueclass @cConst : @cExpression {
+refclass @cConst : @cExpression {
   @luint mValue
 }
   
-valueclass @cAdd : @cExpression {
+refclass @cAdd : @cExpression {
   @cExpression mLeftExpression
   @cExpression mRightExpression
 }

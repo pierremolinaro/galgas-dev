@@ -248,6 +248,9 @@
       NSData * data = [defaults dataForKey:name] ;
       if (data != nil) {
         NSColor * color = [colorTransformer transformedValue: data] ;
+        if (color == nil) {
+          color = [NSColor blackColor] ;
+        }
         [attributeDictionary setObject:color forKey:NSForegroundColorAttributeName] ;
       }else{
         [attributeDictionary setObject: [NSColor blackColor] forKey:NSForegroundColorAttributeName] ;
@@ -259,6 +262,9 @@
         data = [defaults dataForKey:name] ;
         if (data != nil) {
           NSColor * color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
+          if (color == nil) {
+            color = [NSColor whiteColor] ;
+          }
           [attributeDictionary setObject:color forKey:NSBackgroundColorAttributeName] ;
         }else{
           [attributeDictionary setObject:[NSColor blackColor] forKey:NSBackgroundColorAttributeName] ;

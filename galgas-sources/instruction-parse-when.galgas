@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @parseWhenInstruction : @syntaxInstructionAST {
+refclass @parseWhenInstruction : @syntaxInstructionAST {
   @semanticExpressionAST mWhenExpression
   @location mEndOfWhenExpression
   @syntaxInstructionList mWhenInstructionList
@@ -193,7 +193,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
 #! GENERATION TYPES
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @parseWhenInstructionForGeneration : @syntaxInstructionForGeneration {
+refclass @parseWhenInstructionForGeneration : @syntaxInstructionForGeneration {
   @semanticExpressionForGeneration mWhenExpression
   @semanticInstructionListForGeneration mInstructionList
   @semanticInstructionListForGeneration mElseInstructionList

@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @varInExpressionAST : @semanticExpressionAST {
+refclass @varInExpressionAST : @semanticExpressionAST {
   @lstring mVarName
 }
 
@@ -60,7 +60,7 @@ override method @varInExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @varInExpressionForGeneration : @semanticExpressionForGeneration {
+refclass @varInExpressionForGeneration : @semanticExpressionForGeneration {
   @string mCppVarName
   @string mNameForCheckingFormalParameterUsing
 }

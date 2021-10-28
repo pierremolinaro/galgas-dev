@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @nonterminalCallInstruction : @syntaxInstructionAST {
+refclass @nonterminalCallInstruction : @syntaxInstructionAST {
   @lstring mNonterminalName
   @lstring mLabelName # No label : empty string
   @actualParameterListAST mActualParameterList
@@ -127,7 +127,7 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
 #! GENERATION TYPES
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @nonterminalInstructionForGeneration : @syntaxInstructionForGeneration {
+refclass @nonterminalInstructionForGeneration : @syntaxInstructionForGeneration {
   @string mNonterminalName
   @string mLabelName
   @actualParameterListForGeneration mActualParameterList

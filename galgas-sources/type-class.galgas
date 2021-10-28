@@ -2,7 +2,7 @@
 #   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @classDeclarationAST : @semanticDeclarationAST {
+refclass @classDeclarationAST : @semanticDeclarationAST {
   @bool mIsAbstract
   @bool mIsReference
   @lstring mClassTypeName
@@ -44,6 +44,9 @@ syntax extension galgas3DeclarationsSyntax {
     or
       $refclass$
       isReference = true
+    end
+    if not isReference && [option galgas_cli_options.errorValueClassDeclaration value] then
+      error .here : "'value class' is obsolete, use 'refclass'"
     end
     $@type$ ?let @lstring className indexing classDefinition
     @lstring superClassName # Empty if no super class
@@ -491,7 +494,7 @@ override method @classDeclarationAST semanticAnalysis
 #   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @classTypeForGeneration : @semanticTypeForGeneration {
+refclass @classTypeForGeneration : @semanticTypeForGeneration {
   @bool mIsAbstract
   @bool mIsReference
   @unifiedTypeMap-entry mSuperClass # Null if no super class

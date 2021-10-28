@@ -2,7 +2,7 @@
 #   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @mapEntryDeclarationAST : @semanticDeclarationAST {
+refclass @mapEntryDeclarationAST : @semanticDeclarationAST {
   @lstring mMapEntryTypeName
   @lstring mAssociatedMapTypeName
 }
@@ -259,7 +259,7 @@ override method @mapEntryDeclarationAST semanticAnalysis
 #   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @mapEntryTypeForGeneration : @semanticTypeForGeneration {
+refclass @mapEntryTypeForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-entry mAssociatedMapTypeEntry
   @typedPropertyList mAssociatedMapTypedAttributeList
   @mapSearchMethodListAST mSearchMethodList

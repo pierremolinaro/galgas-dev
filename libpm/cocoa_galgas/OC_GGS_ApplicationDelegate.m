@@ -396,6 +396,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     }else if ([colorTransformer transformedValue: [ud objectForKey:name]] == nil ) {
       NSColor * color = [NSUnarchiver unarchiveObjectWithData: [ud objectForKey:name]] ;
       NSData * archiveData = [colorTransformer reverseTransformedValue: color] ;
+      if (archiveData == nil) {
+        archiveData = [colorTransformer reverseTransformedValue: [NSColor whiteColor]] ;
+      }
       [ud setValue: archiveData forKey: GGS_template_background_color] ;
     }
   //--- Find a default foreground color
@@ -410,6 +413,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     }else if ([colorTransformer transformedValue: [ud objectForKey:name]] == nil ) {
       NSColor * color = [NSUnarchiver unarchiveObjectWithData: [ud objectForKey:name]] ;
       NSData * archiveData = [colorTransformer reverseTransformedValue: color] ;
+      if (archiveData == nil) {
+        archiveData = [colorTransformer reverseTransformedValue: [NSColor blackColor]] ;
+      }
       [ud setValue: archiveData forKey: GGS_template_foreground_color] ;
       defaultColorIndex = 1 ;
     }
@@ -466,6 +472,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     }else if ([colorTransformer transformedValue: data] == nil ) {
       NSColor * color = [NSUnarchiver unarchiveObjectWithData: data] ;
       NSData * archiveData = [colorTransformer reverseTransformedValue: color] ;
+      if (archiveData == nil) {
+        archiveData = [colorTransformer reverseTransformedValue: [NSColor whiteColor]] ;
+      }
       [ud setValue: archiveData forKey: name] ;
     }
   //--- Find a default foreground color
@@ -480,6 +489,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     }else if ([colorTransformer transformedValue: data] == nil ) {
       NSColor * color = [NSUnarchiver unarchiveObjectWithData: data] ;
       NSData * archiveData = [colorTransformer reverseTransformedValue: color] ;
+      if (archiveData == nil) {
+        archiveData = [colorTransformer reverseTransformedValue: defaultColorArray [defaultColorIndex]] ;
+      }
       [ud setValue: archiveData forKey: name] ;
     }
    //--- By default, font is courier 13
@@ -964,11 +976,12 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   if (data_GGS_editor_background_color == nil) {
     NSData * archiveData = [colorTransformer reverseTransformedValue: [NSColor whiteColor]] ;
     [ud setValue: archiveData forKey: GGS_editor_background_color] ;
-//    NSData * data = [NSArchiver archivedDataWithRootObject:[NSColor whiteColor]] ;
-//    [ud setValue:data forKey:GGS_editor_background_color] ;
   }else if ([colorTransformer transformedValue: data_GGS_editor_background_color] == nil ) {
     NSColor * color = [NSUnarchiver unarchiveObjectWithData: data_GGS_editor_background_color] ;
     NSData * archiveData = [colorTransformer reverseTransformedValue: color] ;
+    if (archiveData == nil) {
+      archiveData = [colorTransformer reverseTransformedValue: [NSColor whiteColor]] ;
+    }
     [ud setValue: archiveData forKey: GGS_editor_background_color] ;
   }
   [mEditorBackgroundColorWell

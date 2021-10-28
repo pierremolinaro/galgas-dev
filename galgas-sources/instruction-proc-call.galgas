@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @procCallInstructionAST : @semanticInstructionAST {
+refclass @procCallInstructionAST : @semanticInstructionAST {
   @lstring mRoutineName
   @actualParameterListAST mActualParameterList
 }
@@ -90,7 +90,7 @@ override method @procCallInstructionAST analyzeSemanticInstruction
 #! GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @procCallInstructionForGeneration : @semanticInstructionForGeneration {
+refclass @procCallInstructionForGeneration : @semanticInstructionForGeneration {
   @lstring mRoutineName
   @actualParameterListForGeneration mActualParameterList
 }

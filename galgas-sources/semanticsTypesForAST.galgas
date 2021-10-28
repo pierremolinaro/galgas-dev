@@ -13,7 +13,7 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract valueclass @semanticExpressionAST {
+abstract refclass @semanticExpressionAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -103,12 +103,12 @@ list @formalInputParameterListAST {
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract valueclass @actualParameterAST {
+abstract refclass @actualParameterAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @outputActualParameterAST : @actualParameterAST {
+refclass @outputActualParameterAST : @actualParameterAST {
   @lstring mActualSelector
   @semanticExpressionAST mOutputActualParameterExpression
   @location mEndOfExpressionLocation
@@ -116,7 +116,7 @@ valueclass @outputActualParameterAST : @actualParameterAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @outputInputActualParameterAST : @actualParameterAST {
+refclass @outputInputActualParameterAST : @actualParameterAST {
   @lstring mActualSelector
   @lstring mOutputInputActualParameterName
   @lstringlist mStructAttributeList
@@ -124,34 +124,34 @@ valueclass @outputInputActualParameterAST : @actualParameterAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @outputInputSingleJokerParameterAST : @actualParameterAST {
+refclass @outputInputSingleJokerParameterAST : @actualParameterAST {
   @lstring mActualSelector
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @outputInputJokerParameterAST : @actualParameterAST {
+refclass @outputInputJokerParameterAST : @actualParameterAST {
   @location mQualifierLocation
   @uint mJokerIndex
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @inputActualExistingVariableParameterAST : @actualParameterAST {
+refclass @inputActualExistingVariableParameterAST : @actualParameterAST {
   @lstring mActualSelector
   @lstring mInputActualParameterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @inputActualSelfPropertyParameterAST : @actualParameterAST {
+refclass @inputActualSelfPropertyParameterAST : @actualParameterAST {
   @lstring mActualSelector
   @lstring mInputActualSelfPropertyName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @inputActualNewVariableParameterAST : @actualParameterAST {
+refclass @inputActualNewVariableParameterAST : @actualParameterAST {
   @lstring mActualSelector
   @lstring mInputOptionalActualTypeName
   @lstring mInputActualParameterName
@@ -159,7 +159,7 @@ valueclass @inputActualNewVariableParameterAST : @actualParameterAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @inputActualNewConstantParameterAST : @actualParameterAST {
+refclass @inputActualNewConstantParameterAST : @actualParameterAST {
   @lstring mActualSelector
   @lstring mInputOptionalActualTypeName
   @lstring mInputActualParameterName
@@ -168,13 +168,13 @@ valueclass @inputActualNewConstantParameterAST : @actualParameterAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @inputSingleJokerActualParameterAST : @actualParameterAST {
+refclass @inputSingleJokerActualParameterAST : @actualParameterAST {
   @lstring mActualSelector
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @inputJokerActualParameterAST : @actualParameterAST {
+refclass @inputJokerActualParameterAST : @actualParameterAST {
   @location mQualifierLocation
   @uint mJokerIndex
 }
@@ -191,30 +191,30 @@ list @actualParameterListAST {
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract valueclass @abstractInputParameter {
+abstract refclass @abstractInputParameter {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @inputParameterAnonymousVariable : @abstractInputParameter {
+refclass @inputParameterAnonymousVariable : @abstractInputParameter {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @inputParameterVariable : @abstractInputParameter {
+refclass @inputParameterVariable : @abstractInputParameter {
   @lstring mActualParameterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @inputParameterDeclaredVariable : @abstractInputParameter {
+refclass @inputParameterDeclaredVariable : @abstractInputParameter {
   @lstring mActualParameterTypeName
   @lstring mActualParameterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @inputParameterDeclaredConstant : @abstractInputParameter {
+refclass @inputParameterDeclaredConstant : @abstractInputParameter {
   @lstring mActualParameterTypeName
   @lstring mActualParameterName
 }
@@ -228,13 +228,13 @@ list @actualInputParameterListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract valueclass @syntaxInstructionAST {
+abstract refclass @syntaxInstructionAST {
   @location mInstructionLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract valueclass @semanticInstructionAST : @syntaxInstructionAST {
+abstract refclass @semanticInstructionAST : @syntaxInstructionAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -255,7 +255,7 @@ list @semanticDeclarationListAST {
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @externRoutineDeclarationAST : @semanticDeclarationAST {
+refclass @externRoutineDeclarationAST : @semanticDeclarationAST {
   @bool mIsInternal
   @lstring mRoutineName
   @formalParameterListAST mFormalArgumentList
@@ -267,7 +267,7 @@ valueclass @externRoutineDeclarationAST : @semanticDeclarationAST {
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @procDeclarationAST : @externRoutineDeclarationAST {
+refclass @procDeclarationAST : @externRoutineDeclarationAST {
   @semanticInstructionListAST mRoutineInstructionList
   @location mEndOfRoutineInstructionList
 }
@@ -278,7 +278,7 @@ valueclass @procDeclarationAST : @externRoutineDeclarationAST {
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @externFunctionDeclarationAST : @semanticDeclarationAST {
+refclass @externFunctionDeclarationAST : @semanticDeclarationAST {
   @lstring mFunctionName
   @formalInputParameterListAST mFormalArgumentList
   @lstring mResultTypeName
@@ -290,7 +290,7 @@ valueclass @externFunctionDeclarationAST : @semanticDeclarationAST {
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @functionDeclarationAST : @externFunctionDeclarationAST {
+refclass @functionDeclarationAST : @externFunctionDeclarationAST {
   @lstring mResultVariableName
   @semanticInstructionListAST mFunctionInstructionList
   @location mEndOfFunctionInstructionList
@@ -304,7 +304,7 @@ valueclass @functionDeclarationAST : @externFunctionDeclarationAST {
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @onceFunctionDeclarationAST : @semanticDeclarationAST {
+refclass @onceFunctionDeclarationAST : @semanticDeclarationAST {
   @lstring mFunctionName
   @lstring mResultTypeName
   @lstring mResultVariableName
@@ -351,7 +351,7 @@ list @filewrapperTemplateListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @filewrapperDeclarationAST : @semanticDeclarationAST {
+refclass @filewrapperDeclarationAST : @semanticDeclarationAST {
   @bool mIsInternal
   @string mSourceFileAbsolutePath
   @lstring mFilewrapperName
@@ -420,7 +420,7 @@ list @listOfSyntaxInstructionList {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @galgas3SyntaxComponentAST : @semanticDeclarationAST {
+refclass @galgas3SyntaxComponentAST : @semanticDeclarationAST {
   @lstring mSyntaxComponentName
   @lstring mLexiqueName 
   @nonterminalDeclarationListAST mNonterminalDeclarationList
@@ -430,7 +430,7 @@ valueclass @galgas3SyntaxComponentAST : @semanticDeclarationAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @galgas3GrammarComponentAST : @semanticDeclarationAST {
+refclass @galgas3GrammarComponentAST : @semanticDeclarationAST {
   @lbool mHasIndexing
   @lstring mGrammarComponentName
   @lstring mGrammarClass

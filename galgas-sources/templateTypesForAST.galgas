@@ -15,7 +15,7 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract valueclass @templateInstructionAST {
+abstract refclass @templateInstructionAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -30,7 +30,7 @@ list @templateInstructionListAST {
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract valueclass @templateExpressionAST {
+abstract refclass @templateExpressionAST {
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -45,7 +45,7 @@ list @templateExpressionListAST {
 #   G E T T E R    C A L L    O P E R A N D 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateGetterCallInExpressionAST : @templateExpressionAST {
+refclass @templateGetterCallInExpressionAST : @templateExpressionAST {
   @templateExpressionAST mReceiverExpression
   @lstring mGetterName
   @templateExpressionListAST mExpressionList
@@ -55,7 +55,7 @@ valueclass @templateGetterCallInExpressionAST : @templateExpressionAST {
 #   C O N S T R U C T O R                   
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateConstructorAST : @templateExpressionAST {
+refclass @templateConstructorAST : @templateExpressionAST {
   @lstring mTypeName
   @lstring mConstructorName
   @templateExpressionListAST mExpressionList
@@ -65,7 +65,7 @@ valueclass @templateConstructorAST : @templateExpressionAST {
 #   F I L E W R A P P E R    T E M P L A T E     C A L L                                                               *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateFileWrapperTemplateCallAST : @templateExpressionAST {
+refclass @templateFileWrapperTemplateCallAST : @templateExpressionAST {
   @lstring mFileWrapperName
   @lstring mTemplateName
   @templateExpressionListAST mOutExpressionList
@@ -75,7 +75,7 @@ valueclass @templateFileWrapperTemplateCallAST : @templateExpressionAST {
 #   E X T E N S I O N    T E M P L A T E     C A L L                                                                     *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateExtensionTemplateCallAST : @templateExpressionAST {
+refclass @templateExtensionTemplateCallAST : @templateExpressionAST {
   @templateExpressionAST mExpressionValue
   @lstring mTemplateName
   @templateExpressionListAST mOutExpressionList
@@ -85,7 +85,7 @@ valueclass @templateExtensionTemplateCallAST : @templateExpressionAST {
 #   B O O L E A N    O P E R A T I O N S    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateAndOperationAST : @templateExpressionAST {
+refclass @templateAndOperationAST : @templateExpressionAST {
   @location mOperatorLocation
   @templateExpressionAST mLeftExpression
   @templateExpressionAST mRightExpression
@@ -93,7 +93,7 @@ valueclass @templateAndOperationAST : @templateExpressionAST {
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateOrOperationAST : @templateExpressionAST {
+refclass @templateOrOperationAST : @templateExpressionAST {
   @location mOperatorLocation
   @templateExpressionAST mLeftExpression
   @templateExpressionAST mRightExpression
@@ -101,7 +101,7 @@ valueclass @templateOrOperationAST : @templateExpressionAST {
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateXorOperationAST : @templateExpressionAST {
+refclass @templateXorOperationAST : @templateExpressionAST {
   @location mOperatorLocation
   @templateExpressionAST mLeftExpression
   @templateExpressionAST mRightExpression
@@ -109,62 +109,62 @@ valueclass @templateXorOperationAST : @templateExpressionAST {
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateTrueBoolAST : @templateExpressionAST {
+refclass @templateTrueBoolAST : @templateExpressionAST {
   @location mLocation
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateFalseBoolAST : @templateExpressionAST {
+refclass @templateFalseBoolAST : @templateExpressionAST {
   @location mLocation
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateLiteralStringExpressionAST : @templateExpressionAST {
+refclass @templateLiteralStringExpressionAST : @templateExpressionAST {
   @stringlist mLiteralStringList
   @location mLocation
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateLiteralUIntExpressionAST : @templateExpressionAST {
+refclass @templateLiteralUIntExpressionAST : @templateExpressionAST {
   @luint mLiteralInt
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateLiteralSIntExpressionAST : @templateExpressionAST {
+refclass @templateLiteralSIntExpressionAST : @templateExpressionAST {
   @lsint mLiteralInt
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateLiteralUInt64ExpressionAST : @templateExpressionAST {
+refclass @templateLiteralUInt64ExpressionAST : @templateExpressionAST {
   @luint64 mLiteralInt
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateLiteralSInt64ExpressionAST : @templateExpressionAST {
+refclass @templateLiteralSInt64ExpressionAST : @templateExpressionAST {
   @lsint64 mLiteralInt
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateLiteralCharExpressionAST : @templateExpressionAST {
+refclass @templateLiteralCharExpressionAST : @templateExpressionAST {
   @lchar mLiteralChar
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateLiteralDoubleExpressionAST : @templateExpressionAST {
+refclass @templateLiteralDoubleExpressionAST : @templateExpressionAST {
   @ldouble mLiteralDouble
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @structFieldAccessTemplateExpressionAST : @templateExpressionAST {
+refclass @structFieldAccessTemplateExpressionAST : @templateExpressionAST {
   @location mOperatorLocation
   @templateExpressionAST mExpression
   @lstring mStructFieldName
@@ -172,21 +172,21 @@ valueclass @structFieldAccessTemplateExpressionAST : @templateExpressionAST {
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateNotOperatorAST : @templateExpressionAST {
+refclass @templateNotOperatorAST : @templateExpressionAST {
   @location mOperatorLocation
   @templateExpressionAST mExpression
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateLogicalNegateAST : @templateExpressionAST {
+refclass @templateLogicalNegateAST : @templateExpressionAST {
   @location mOperatorLocation
   @templateExpressionAST mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateOptionAccessAST : @templateExpressionAST {
+refclass @templateOptionAccessAST : @templateExpressionAST {
   @lstring mOptionComponentName
   @lstring mOptionName
   @lstring mGetterName
@@ -194,7 +194,7 @@ valueclass @templateOptionAccessAST : @templateExpressionAST {
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateTestDynamicClassAST : @templateExpressionAST {
+refclass @templateTestDynamicClassAST : @templateExpressionAST {
   @templateExpressionAST mReceiverExpression
   @location mEndOfReceiverExpression
   @dynamicTypeComparisonKind mTypeComparisonKind
@@ -205,7 +205,7 @@ valueclass @templateTestDynamicClassAST : @templateExpressionAST {
 #   F U N C T I O N    C A L L              
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateFunctionCallAST : @templateExpressionAST {
+refclass @templateFunctionCallAST : @templateExpressionAST {
   @lstring mFunctionName
   @templateExpressionListAST mExpressionList
 }
@@ -214,7 +214,7 @@ valueclass @templateFunctionCallAST : @templateExpressionAST {
 #   S I M P L E    V A R I A B L E          
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateVarInExpressionAST : @templateExpressionAST {
+refclass @templateVarInExpressionAST : @templateExpressionAST {
   @lstring mVarName
 }
  
@@ -222,7 +222,7 @@ valueclass @templateVarInExpressionAST : @templateExpressionAST {
 #   A D D I T I O N    O P E R A T I O N    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateAddOperationAST : @templateExpressionAST {
+refclass @templateAddOperationAST : @templateExpressionAST {
   @location mOperatorLocation
   @templateExpressionAST mLeftExpression
   @templateExpressionAST mRightExpression
@@ -232,7 +232,7 @@ valueclass @templateAddOperationAST : @templateExpressionAST {
 #   S U B S T R A C T I O N    O P E R A T I O N                                                                       *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateSubOperationAST : @templateExpressionAST {
+refclass @templateSubOperationAST : @templateExpressionAST {
   @location mOperatorLocation
   @templateExpressionAST mLeftExpression
   @templateExpressionAST mRightExpression
@@ -242,7 +242,7 @@ valueclass @templateSubOperationAST : @templateExpressionAST {
 #   M U L T I P L I C A T I O N    O P E R A T I O N                                                                   *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateMultiplyOperationAST : @templateExpressionAST {
+refclass @templateMultiplyOperationAST : @templateExpressionAST {
   @location mOperatorLocation
   @templateExpressionAST mLeftExpression
   @templateExpressionAST mRightExpression
@@ -252,7 +252,7 @@ valueclass @templateMultiplyOperationAST : @templateExpressionAST {
 #   D I V I S I O N    O P E R A T I O N    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateDivideOperationAST : @templateExpressionAST {
+refclass @templateDivideOperationAST : @templateExpressionAST {
   @location mOperatorLocation
   @templateExpressionAST mLeftExpression
   @templateExpressionAST mRightExpression
@@ -262,7 +262,7 @@ valueclass @templateDivideOperationAST : @templateExpressionAST {
 #   M O D U L O    O P E R A T I O N        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateModuloOperationAST : @templateExpressionAST {
+refclass @templateModuloOperationAST : @templateExpressionAST {
   @location mOperatorLocation
   @templateExpressionAST mLeftExpression
   @templateExpressionAST mRightExpression
@@ -272,7 +272,7 @@ valueclass @templateModuloOperationAST : @templateExpressionAST {
 #   U N A R Y   -    O P E R A T I O N      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateUnaryMinusOperationAST : @templateExpressionAST {
+refclass @templateUnaryMinusOperationAST : @templateExpressionAST {
   @location mOperatorLocation
   @templateExpressionAST mExpression
 }
@@ -281,7 +281,7 @@ valueclass @templateUnaryMinusOperationAST : @templateExpressionAST {
 #  ==    O P E R A T I O N                  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateEqualTestAST : @templateExpressionAST {
+refclass @templateEqualTestAST : @templateExpressionAST {
   @location mOperatorLocation
   @templateExpressionAST mLeftExpression
   @templateExpressionAST mRightExpression
@@ -289,7 +289,7 @@ valueclass @templateEqualTestAST : @templateExpressionAST {
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateNonEqualTestAST : @templateExpressionAST {
+refclass @templateNonEqualTestAST : @templateExpressionAST {
   @location mOperatorLocation
   @templateExpressionAST mLeftExpression
   @templateExpressionAST mRightExpression
@@ -297,7 +297,7 @@ valueclass @templateNonEqualTestAST : @templateExpressionAST {
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateStrictInfTestAST : @templateExpressionAST {
+refclass @templateStrictInfTestAST : @templateExpressionAST {
   @location mOperatorLocation
   @templateExpressionAST mLeftExpression
   @templateExpressionAST mRightExpression
@@ -305,7 +305,7 @@ valueclass @templateStrictInfTestAST : @templateExpressionAST {
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateInfOrEqualTestAST : @templateExpressionAST {
+refclass @templateInfOrEqualTestAST : @templateExpressionAST {
   @location mOperatorLocation
   @templateExpressionAST mLeftExpression
   @templateExpressionAST mRightExpression
@@ -313,15 +313,7 @@ valueclass @templateInfOrEqualTestAST : @templateExpressionAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateStrictSupTestAST : @templateExpressionAST {
-  @location mOperatorLocation
-  @templateExpressionAST mLeftExpression
-  @templateExpressionAST mRightExpression
-}
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-valueclass @templateSupOrEqualTestAST : @templateExpressionAST {
+refclass @templateStrictSupTestAST : @templateExpressionAST {
   @location mOperatorLocation
   @templateExpressionAST mLeftExpression
   @templateExpressionAST mRightExpression
@@ -329,7 +321,7 @@ valueclass @templateSupOrEqualTestAST : @templateExpressionAST {
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateLeftShiftOperationAST : @templateExpressionAST {
+refclass @templateSupOrEqualTestAST : @templateExpressionAST {
   @location mOperatorLocation
   @templateExpressionAST mLeftExpression
   @templateExpressionAST mRightExpression
@@ -337,7 +329,15 @@ valueclass @templateLeftShiftOperationAST : @templateExpressionAST {
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateRightShiftOperationAST : @templateExpressionAST {
+refclass @templateLeftShiftOperationAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mLeftExpression
+  @templateExpressionAST mRightExpression
+}
+ 
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @templateRightShiftOperationAST : @templateExpressionAST {
   @location mOperatorLocation
   @templateExpressionAST mLeftExpression
   @templateExpressionAST mRightExpression
@@ -349,20 +349,20 @@ valueclass @templateRightShiftOperationAST : @templateExpressionAST {
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateInstructionStringAST : @templateInstructionAST {
+refclass @templateInstructionStringAST : @templateInstructionAST {
   @string mTemplateString
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateInstructionExpressionAST : @templateInstructionAST {
+refclass @templateInstructionExpressionAST : @templateInstructionAST {
   @templateExpressionAST mExpression
   @location mLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateBlockInstructionAST : @templateInstructionAST {
+refclass @templateBlockInstructionAST : @templateInstructionAST {
   @templateExpressionAST mExpression
   @location mLocation
   @templateInstructionListAST mBlockInstructionList
@@ -370,17 +370,17 @@ valueclass @templateBlockInstructionAST : @templateInstructionAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateInstructionGetColumnLocationAST : @templateInstructionAST {
+refclass @templateInstructionGetColumnLocationAST : @templateInstructionAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateInstructionGotoColumnLocationAST : @templateInstructionAST {
+refclass @templateInstructionGotoColumnLocationAST : @templateInstructionAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateInstructionForeachAST : @templateInstructionAST {
+refclass @templateInstructionForeachAST : @templateInstructionAST {
   @bool mIsAscending
   @templateExpressionAST mExpression
   @string mPrefix
@@ -400,7 +400,7 @@ list @templateInstructionIfBranchListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @templateInstructionIfAST : @templateInstructionAST {
+refclass @templateInstructionIfAST : @templateInstructionAST {
   @templateInstructionIfBranchListAST mTemplateInstructionIfBranchList
   @templateInstructionListAST mElseInstructionList
 }

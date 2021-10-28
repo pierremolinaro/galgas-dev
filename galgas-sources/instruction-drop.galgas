@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @dropInstructionAST : @semanticInstructionAST {
+refclass @dropInstructionAST : @semanticInstructionAST {
   @lstringlist mDropList
 }
 

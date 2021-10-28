@@ -413,50 +413,50 @@ method @unifiedTypeMap-entry addHeaderFileName1 ?!@stringset ioInclusions {
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract valueclass @predefinedTypeAST : @semanticDeclarationAST {
+abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
   @string mPredefinedTypeName
   @predefinedTypeKindEnum mKind
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @applicationPredefinedTypeAST : @predefinedTypeAST {}
+refclass @applicationPredefinedTypeAST : @predefinedTypeAST {}
 
-valueclass @bigintPredefinedTypeAST : @predefinedTypeAST {}
+refclass @bigintPredefinedTypeAST : @predefinedTypeAST {}
 
-valueclass @objectPredefinedTypeAST : @predefinedTypeAST {}
+refclass @objectPredefinedTypeAST : @predefinedTypeAST {}
 
-valueclass @filewrapperPredefinedTypeAST : @predefinedTypeAST {}
+refclass @filewrapperPredefinedTypeAST : @predefinedTypeAST {}
 
-valueclass @binarysetPredefinedTypeAST : @predefinedTypeAST {}
+refclass @binarysetPredefinedTypeAST : @predefinedTypeAST {}
 
-valueclass @boolPredefinedTypeAST : @predefinedTypeAST {}
+refclass @boolPredefinedTypeAST : @predefinedTypeAST {}
 
-valueclass @uintPredefinedTypeAST : @predefinedTypeAST {}
+refclass @uintPredefinedTypeAST : @predefinedTypeAST {}
 
-valueclass @uint64PredefinedTypeAST : @predefinedTypeAST {}
+refclass @uint64PredefinedTypeAST : @predefinedTypeAST {}
 
-valueclass @sintPredefinedTypeAST : @predefinedTypeAST {}
+refclass @sintPredefinedTypeAST : @predefinedTypeAST {}
 
-valueclass @sint64PredefinedTypeAST : @predefinedTypeAST {}
+refclass @sint64PredefinedTypeAST : @predefinedTypeAST {}
 
-valueclass @charPredefinedTypeAST : @predefinedTypeAST {}
+refclass @charPredefinedTypeAST : @predefinedTypeAST {}
 
-valueclass @doublePredefinedTypeAST : @predefinedTypeAST {}
+refclass @doublePredefinedTypeAST : @predefinedTypeAST {}
 
-valueclass @stringPredefinedTypeAST : @predefinedTypeAST {}
+refclass @stringPredefinedTypeAST : @predefinedTypeAST {}
 
-valueclass @locationPredefinedTypeAST : @predefinedTypeAST {}
+refclass @locationPredefinedTypeAST : @predefinedTypeAST {}
 
-valueclass @stringsetPredefinedTypeAST : @predefinedTypeAST {}
+refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {}
 
-valueclass @functionPredefinedTypeAST : @predefinedTypeAST {}
+refclass @functionPredefinedTypeAST : @predefinedTypeAST {}
 
-valueclass @typePredefinedTypeAST : @predefinedTypeAST {}
+refclass @typePredefinedTypeAST : @predefinedTypeAST {}
 
-valueclass @dataPredefinedTypeAST : @predefinedTypeAST {}
+refclass @dataPredefinedTypeAST : @predefinedTypeAST {}
 
-valueclass @timerPredefinedTypeAST : @predefinedTypeAST {}
+refclass @timerPredefinedTypeAST : @predefinedTypeAST {}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

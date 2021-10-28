@@ -2,7 +2,7 @@
 #   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @weakReferenceDeclarationAST : @semanticDeclarationAST {
+refclass @weakReferenceDeclarationAST : @semanticDeclarationAST {
   @lstring mClassTypeName
   @lstring mWeakReferenceTypeName
   @lstring mSuperWeakReferenceTypeName # Empty if no super class
@@ -380,7 +380,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
 #   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
+refclass @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
   @string mClassTypeName
   @unifiedTypeMap-entry mSuperClass # Null if no super class
   @typedPropertyList mAllTypedPropertyList # Inherited followed by current attributes

@@ -2,7 +2,7 @@
 #   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @overridingExtensionGetterAST : @semanticDeclarationAST {
+refclass @overridingExtensionGetterAST : @semanticDeclarationAST {
   @lstring mTypeName
   @lstring mOverridingExtensionGetterName
   @formalInputParameterListAST mOverridingExtensionGetterFormalInputParameterList
@@ -221,7 +221,7 @@ override method @overridingExtensionGetterAST buildExtensionListMaps
 #   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @overrideExtensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
+refclass @overrideExtensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @unifiedTypeMap-entry mReceiverType
   @string mBaseTypeName
   @string mOverridingExtensionGetterName

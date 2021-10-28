@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @localVariableOrConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
+refclass @localVariableOrConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
   @bool mIsConstant
   @lstring mOptionalTypeName
   @lstring mVariableName
@@ -11,14 +11,14 @@ valueclass @localVariableOrConstantDeclarationWithAssignmentAST : @semanticInstr
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @undefinedLocalConstantDeclarationAST : @semanticInstructionAST {
+refclass @undefinedLocalConstantDeclarationAST : @semanticInstructionAST {
   @lstring mConstantTypeName
   @lstring mConstantName
 }
 
 #·····················································································································*
 
-valueclass @localConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
+refclass @localConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
   @lstring mVariableName
   @semanticExpressionAST mSourceExpression
 }
@@ -199,14 +199,14 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
 #! GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @undefinedLocalConstantDeclarationForGeneration : @semanticInstructionForGeneration {
+refclass @undefinedLocalConstantDeclarationForGeneration : @semanticInstructionForGeneration {
   @unifiedTypeMap-entry mTargetType
   @string mCppVariableName
 }
 
 #······················································································································*
 
-valueclass @localVariableOrConstantDeclarationWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
+refclass @localVariableOrConstantDeclarationWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
   @unifiedTypeMap-entry mTargetType
   @bool mIsConstant
   @string mCppVariableName

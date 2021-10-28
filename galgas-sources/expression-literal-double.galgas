@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @literalDoubleExpressionAST : @semanticExpressionAST {
+refclass @literalDoubleExpressionAST : @semanticExpressionAST {
   @ldouble mValue
 }
 
@@ -54,7 +54,7 @@ override method @literalDoubleExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @literalDoubleExpressionForGeneration : @semanticExpressionForGeneration {
+refclass @literalDoubleExpressionForGeneration : @semanticExpressionForGeneration {
   @double mValue
 }
 

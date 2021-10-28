@@ -9,7 +9,7 @@ list @sortedListSortDescriptorListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @sortedListDeclarationAST : @semanticDeclarationAST {
+refclass @sortedListDeclarationAST : @semanticDeclarationAST {
   @lstring mSortedListTypeName
   @propertyInCollectionListAST mPropertyList
   @sortedListSortDescriptorListAST mSortDescriptorList
@@ -315,7 +315,7 @@ list @sortDescriptorListForGeneration {
 
 #·······················································································································
 
-valueclass @sortedListTypeForGeneration : @semanticTypeForGeneration {
+refclass @sortedListTypeForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-entry mListElementTypeIndex
   @typedPropertyList mTypedAttributeList
   @sortDescriptorListForGeneration mSortDescriptorList

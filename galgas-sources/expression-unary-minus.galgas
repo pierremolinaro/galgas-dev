@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @unaryMinusExpressionAST : @semanticExpressionAST {
+refclass @unaryMinusExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mExpression
 }
@@ -81,7 +81,7 @@ override method @unaryMinusExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @unaryMinusExpressionForGeneration : @semanticExpressionForGeneration {
+refclass @unaryMinusExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mExpression
 }
 

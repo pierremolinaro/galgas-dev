@@ -2,7 +2,7 @@
 #   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @overridingAbstractExtensionMethodAST : @semanticDeclarationAST {
+refclass @overridingAbstractExtensionMethodAST : @semanticDeclarationAST {
   @lstring mTypeName
   @lstring mOverridingExtensionMethodName
   @formalParameterListAST mOverridingExtensionMethodFormalParameterList

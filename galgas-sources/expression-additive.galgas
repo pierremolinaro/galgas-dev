@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @rightShiftExpressionAST : @semanticExpressionAST {
+refclass @rightShiftExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
@@ -10,7 +10,7 @@ valueclass @rightShiftExpressionAST : @semanticExpressionAST {
 
 #·······················································································································
 
-valueclass @leftShiftExpressionAST : @semanticExpressionAST {
+refclass @leftShiftExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
@@ -18,7 +18,7 @@ valueclass @leftShiftExpressionAST : @semanticExpressionAST {
 
 #·······················································································································
 
-valueclass @addExpressionAST : @semanticExpressionAST {
+refclass @addExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
@@ -26,7 +26,7 @@ valueclass @addExpressionAST : @semanticExpressionAST {
 
 #·······················································································································
 
-valueclass @addExpressionNoOverflowAST : @semanticExpressionAST {
+refclass @addExpressionNoOverflowAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
@@ -34,7 +34,7 @@ valueclass @addExpressionNoOverflowAST : @semanticExpressionAST {
 
 #·······················································································································
 
-valueclass @subExpressionAST : @semanticExpressionAST {
+refclass @subExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
@@ -42,7 +42,7 @@ valueclass @subExpressionAST : @semanticExpressionAST {
 
 #·······················································································································
 
-valueclass @subExpressionNoOverflowAST : @semanticExpressionAST {
+refclass @subExpressionNoOverflowAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
@@ -527,7 +527,7 @@ enum @binaryOperator {
 
 #·····················································································································
 
-valueclass @binaryOperatorExpressionForGeneration : @semanticExpressionForGeneration {
+refclass @binaryOperatorExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mLeftExpression
   @binaryOperator mOperator
   @semanticExpressionForGeneration mRightExpression

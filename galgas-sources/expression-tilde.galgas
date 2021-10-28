@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @tildeExpressionAST : @semanticExpressionAST {
+refclass @tildeExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mExpression
 }
@@ -81,7 +81,7 @@ override method @tildeExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @tildeExpressionForGeneration : @semanticExpressionForGeneration {
+refclass @tildeExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mExpression
 }
 

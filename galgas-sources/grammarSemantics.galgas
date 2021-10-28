@@ -23,7 +23,7 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract valueclass @abstractSyntaxInstructionForGrammarAnalysis %generatedInSeparateFile {
+abstract refclass @abstractSyntaxInstructionForGrammarAnalysis %generatedInSeparateFile {
   @location mStartLocation
 }
 
@@ -78,7 +78,7 @@ sortedlist @nonTerminalSymbolSortedListForGrammarAnalysis {
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+refclass @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   @lstring mTerminalSymbolName
   @uint mTerminalSymbolIndex
 }
@@ -89,7 +89,7 @@ valueclass @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionFo
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @nonTerminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+refclass @nonTerminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   @lstring mNonterminalSymbolName
   @uint mNonterminalSymbolIndex
 }
@@ -110,7 +110,7 @@ list @branchListForGrammarAnalysis {
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+refclass @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   @branchListForGrammarAnalysis mSelectBranchList
   @uint mAddedNonTerminalSymbolIndex
 }
@@ -121,7 +121,7 @@ valueclass @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForG
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @repeatInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+refclass @repeatInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   @branchListForGrammarAnalysis mRepeatBranchList
   @uint mAddedNonTerminalSymbolIndex
 }

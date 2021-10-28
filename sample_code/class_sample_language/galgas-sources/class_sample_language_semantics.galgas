@@ -1,17 +1,17 @@
 
 
-abstract valueclass @declarationAST {
+abstract refclass @declarationAST {
 }
 
 list @declarationListAST {
   @declarationAST mDeclaration
 }
 
-valueclass @classWithoutSuperClassAST : @declarationAST {
+refclass @classWithoutSuperClassAST : @declarationAST {
   @lstring mClassName
 }
 
-valueclass @classWithSuperClassAST : @declarationAST {
+refclass @classWithSuperClassAST : @declarationAST {
   @lstring mClassName
   @lstring mSuperClassName
 }

@@ -2,31 +2,31 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @literalUIntExpressionAST : @semanticExpressionAST {
+refclass @literalUIntExpressionAST : @semanticExpressionAST {
   @luint mValue
 }
 
 #·····················································································································
 
-valueclass @literalUInt64ExpressionAST : @semanticExpressionAST {
+refclass @literalUInt64ExpressionAST : @semanticExpressionAST {
   @luint64 mValue
 }
 
 #·····················································································································
 
-valueclass @literalSIntExpressionAST : @semanticExpressionAST {
+refclass @literalSIntExpressionAST : @semanticExpressionAST {
   @lsint mValue
 }
 
 #·····················································································································
 
-valueclass @literalSInt64ExpressionAST : @semanticExpressionAST {
+refclass @literalSInt64ExpressionAST : @semanticExpressionAST {
   @lsint64 mValue
 }
 
 #·····················································································································
 
-valueclass @literalBigIntExpressionAST : @semanticExpressionAST {
+refclass @literalBigIntExpressionAST : @semanticExpressionAST {
   @lbigint mValue
 }
 
@@ -197,7 +197,7 @@ override method @literalBigIntExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @literalUIntExpressionForGeneration : @semanticExpressionForGeneration {
+refclass @literalUIntExpressionForGeneration : @semanticExpressionForGeneration {
   @uint mValue
 }
 
@@ -214,7 +214,7 @@ override method @literalUIntExpressionForGeneration generateExpression
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @literalUInt64ExpressionForGeneration : @semanticExpressionForGeneration {
+refclass @literalUInt64ExpressionForGeneration : @semanticExpressionForGeneration {
   @uint64 mValue
 }
 
@@ -231,7 +231,7 @@ override method @literalUInt64ExpressionForGeneration generateExpression
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @literalSIntExpressionForGeneration : @semanticExpressionForGeneration {
+refclass @literalSIntExpressionForGeneration : @semanticExpressionForGeneration {
   @sint mValue
 }
 
@@ -248,7 +248,7 @@ override method @literalSIntExpressionForGeneration generateExpression
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @literalSInt64ExpressionForGeneration : @semanticExpressionForGeneration {
+refclass @literalSInt64ExpressionForGeneration : @semanticExpressionForGeneration {
   @sint64 mValue
 }
 
@@ -265,7 +265,7 @@ override method @literalSInt64ExpressionForGeneration generateExpression
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @literalBigIntExpressionForGeneration : @semanticExpressionForGeneration {
+refclass @literalBigIntExpressionForGeneration : @semanticExpressionForGeneration {
   @bigint mValue
 }
 

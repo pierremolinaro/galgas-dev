@@ -2,7 +2,7 @@
 #   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @localVariableDeclarationAST : @semanticInstructionAST {
+refclass @localVariableDeclarationAST : @semanticInstructionAST {
   @lstring mTypeName
   @lstring mVariableName
   @bool mIsUndefinedConstant
@@ -73,7 +73,7 @@ override method @localVariableDeclarationAST analyzeSemanticInstruction
 #   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @localVariableDeclarationForGeneration : @semanticInstructionForGeneration {
+refclass @localVariableDeclarationForGeneration : @semanticInstructionForGeneration {
   @unifiedTypeMap-entry mVariableType
   @string mCppVariableName
 }

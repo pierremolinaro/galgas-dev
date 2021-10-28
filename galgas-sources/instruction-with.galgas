@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @readAccessWithInstructionAST : @semanticInstructionAST {
+refclass @readAccessWithInstructionAST : @semanticInstructionAST {
   @lstring mPrefix
   @semanticExpressionAST mReceiverExpression
   @location mEndOfReceiverExpression
@@ -17,7 +17,7 @@ valueclass @readAccessWithInstructionAST : @semanticInstructionAST {
 
 #······················································································································*
 
-valueclass @readWriteAccessWithInstructionAST : @semanticInstructionAST {
+refclass @readWriteAccessWithInstructionAST : @semanticInstructionAST {
   @lstring mPrefix
   @lstring mReceiverName
   @bool mReceiverIsPrefixedBySelf
@@ -450,7 +450,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
 #! GENERATION TYPES
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @readOnlyWithInstructionForGeneration : @semanticInstructionForGeneration {
+refclass @readOnlyWithInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @semanticExpressionForGeneration mReceiverExpression
   @string mObjectArrayCppName
@@ -462,7 +462,7 @@ valueclass @readOnlyWithInstructionForGeneration : @semanticInstructionForGenera
 
 #······················································································································*
 
-valueclass @readWriteWithInstructionForGeneration : @semanticInstructionForGeneration {
+refclass @readWriteWithInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @string mReceiverVariableCppName
   @unifiedTypeMap-entry mReceiverType

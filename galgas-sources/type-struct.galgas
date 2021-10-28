@@ -2,7 +2,7 @@
 #   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @structDeclarationAST : @semanticDeclarationAST {
+refclass @structDeclarationAST : @semanticDeclarationAST {
   @lstring mStructTypeName
   @propertyInCollectionListAST mStructurePropertyList
   @string mEnumeratedElementTypeName # Empty string if not enumerable
@@ -263,7 +263,7 @@ override method @structDeclarationAST semanticAnalysis
 #   CODE GENERATION                         
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @structTypeForGeneration : @semanticTypeForGeneration {
+refclass @structTypeForGeneration : @semanticTypeForGeneration {
   @typedPropertyList mTypedPropertyList
 }
 

@@ -13,11 +13,11 @@ proc testsuite_extension_setters {
   typeCastInSetterCall ()
 }
 
-abstract valueclass @abstractTestExtensionSetter {
+abstract refclass @abstractTestExtensionSetter {
   @uint mInteger
 }
 
-valueclass @TestExtensionSetter : @abstractTestExtensionSetter {
+refclass @TestExtensionSetter : @abstractTestExtensionSetter {
   @string mString
 }
 
@@ -32,7 +32,7 @@ setter @TestExtensionSetter setter1 ?!@uint ioArg {
 }
 
 
-valueclass @overridingTestExtensionSetter : @abstractOverridingTestExtensionSetter {
+refclass @overridingTestExtensionSetter : @abstractOverridingTestExtensionSetter {
   @uint mOtherInteger
 }
 
@@ -50,11 +50,11 @@ override setter @overridingTestExtensionSetter m { }
 
 override abstract setter @abstractOverridingTestExtensionSetter m
 
-abstract valueclass @abstractOverridingTestExtensionSetter : @TestExtensionSetter {
+abstract refclass @abstractOverridingTestExtensionSetter : @TestExtensionSetter {
   @string mOtherString
 }
 
-valueclass @adjMat{
+refclass @adjMat{
    @uint dim
    @stringlist nodes
 }
@@ -74,9 +74,9 @@ private proc typeCastInSetterCall {
 
 }
 
-valueclass @baseClassForTypeCastInSetterCall {}
+refclass @baseClassForTypeCastInSetterCall {}
 
-valueclass @inheritedClassForTypeCastInSetterCall : @baseClassForTypeCastInSetterCall {}
+refclass @inheritedClassForTypeCastInSetterCall : @baseClassForTypeCastInSetterCall {}
 
 setter @inheritedClassForTypeCastInSetterCall unSetter {
   message "Appel @inheritedClassForTypeCastInSetterCall unSetter\n"

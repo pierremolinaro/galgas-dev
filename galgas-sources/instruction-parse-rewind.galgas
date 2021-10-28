@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @parseRewindInstruction : @syntaxInstructionAST {
+refclass @parseRewindInstruction : @syntaxInstructionAST {
   @listOfSyntaxInstructionList mParseRewindBranchList
   @location mEndOfParseDoInstruction
 }
@@ -135,7 +135,7 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
 #! GENERATION TYPES
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @parseRewindInstructionForGeneration : @syntaxInstructionForGeneration {
+refclass @parseRewindInstructionForGeneration : @syntaxInstructionForGeneration {
   @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
 }
 

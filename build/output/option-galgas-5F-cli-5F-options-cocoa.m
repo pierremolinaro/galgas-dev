@@ -61,6 +61,15 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
+    identifier:@"errorValueClassDeclaration"
+    commandChar:0
+    commandString:@"error-value-class-declaration"
+    comment:@"'value class' declaration is obsolete use 'refclass'"
+    defaultValue:@""
+  ] ;
+  [ioBoolOptionArray addObject:option] ;
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
     identifier:@"generateManyFiles"
     commandChar:0
     commandString:@"generate-many-cpp-files"

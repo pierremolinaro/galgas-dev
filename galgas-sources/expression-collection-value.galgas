@@ -8,25 +8,25 @@ list @collectionValueElementList {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract valueclass @abstractCollectionValueElement {}
+abstract refclass @abstractCollectionValueElement {}
 
 #·····················································································································
 
-valueclass @expressionCollectionValue : @abstractCollectionValueElement {
+refclass @expressionCollectionValue : @abstractCollectionValueElement {
   @semanticExpressionAST mExpression
   @location mExpressionLocation
 }
 
 #·····················································································································
 
-valueclass @expressionListCollectionValue : @abstractCollectionValueElement {
+refclass @expressionListCollectionValue : @abstractCollectionValueElement {
   @actualOutputExpressionList mExpressionList
   @location mEndOfExpressionLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @collectionValueAST : @semanticExpressionAST {
+refclass @collectionValueAST : @semanticExpressionAST {
   @lstring mTypeName # Empty string if infered
   @collectionValueElementList mElementList
   @location mEndOfCollectionValue
@@ -246,7 +246,7 @@ list @collectionValueElementListForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract valueclass @abstractCollectionValueElementForGeneration {
+abstract refclass @abstractCollectionValueElementForGeneration {
   @location mExpressionLocation
 }
 
@@ -262,7 +262,7 @@ abstract method @abstractCollectionValueElementForGeneration generateCollectionE
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @expressionCollectionValueForGeneration : @abstractCollectionValueElementForGeneration {
+refclass @expressionCollectionValueForGeneration : @abstractCollectionValueElementForGeneration {
   @semanticExpressionForGeneration mExpression
 }
 
@@ -291,7 +291,7 @@ override method @expressionCollectionValueForGeneration generateCollectionElemen
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @expressionListCollectionForGeneration : @abstractCollectionValueElementForGeneration {
+refclass @expressionListCollectionForGeneration : @abstractCollectionValueElementForGeneration {
   @semanticExpressionListForGeneration mExpressionList
 }
 
@@ -333,7 +333,7 @@ override method @expressionListCollectionForGeneration generateCollectionElement
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-valueclass @expressionCollectionForGeneration : @semanticExpressionForGeneration {
+refclass @expressionCollectionForGeneration : @semanticExpressionForGeneration {
   @collectionValueElementListForGeneration mElementList
 }
 
