@@ -88,7 +88,7 @@ override method @structDeclarationAST enterInSemanticContext
   @functionSignature constructorPropertyTypeList = {}
   @typedPropertyList typedPropertyList = {}
   @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mStructurePropertyList do
+  for (isConstant mPropertyTypeName mPropertyName isPublic mAttributeList) in self.mStructurePropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let propertyTypeEntry]
     @lstring selector = ["" nowhere]
     for (mValue) in mAttributeList do
@@ -98,10 +98,10 @@ override method @structDeclarationAST enterInSemanticContext
     end
     constructorPropertyTypeList += !selector !propertyTypeEntry !mPropertyName.string
     typesToIncludeInHeaderCompilation += !propertyTypeEntry
-    let hasSetter = true # mIsPublic
+    let hasSetter = isPublic && not isConstant
     let hasSelector = false
     typedPropertyList += !propertyTypeEntry !mPropertyName !hasSetter !hasSelector
-    [!?propertyMap insertKey !mPropertyName !mIsPublic !propertyTypeEntry]
+    [!?propertyMap insertKey !mPropertyName !isPublic !isConstant !propertyTypeEntry]
   end
   [!?constructorMap insertKey
     !@lstring.new {!"new" !.here}
@@ -111,7 +111,7 @@ override method @structDeclarationAST enterInSemanticContext
   ]
 #--- Readers
   @getterMap getterMap
-  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?getterMap )
+  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?getterMap)
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in typedPropertyList do
     enterBaseFinalGetterWithoutArgument (
       !?getterMap

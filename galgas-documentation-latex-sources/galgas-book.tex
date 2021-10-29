@@ -507,13 +507,13 @@
 % ATTENTION : ajouter \etocsettocstyle{}{} juste après \tableofcontents
 
 % ATTENTION : mettre le + dans \localtableofcontentswithrelativedepth
-\newcommand\tableDesMatieresDuChapitre{
+\newcommand\tableDesMatieresLocaleDeProfondeurRelative[1]{
   { % \singlespacing
     \footnotesize
     \setlength{\parskip}{0pt}
     \ligne
 %    \localtableofcontents
-    \localtableofcontentswithrelativedepth{+1}
+    \localtableofcontentswithrelativedepth{+#1}
     \setlength{\parskip}{-1.2ex}
     \ligne
   }

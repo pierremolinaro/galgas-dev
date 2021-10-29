@@ -358,7 +358,10 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
       : targetType, receiverVariableCppName
     else
       let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
-      [propertyMap searchKey !self.mReceiverName ?* ?targetType]
+      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
+      if isConstant then
+        error self.mReceiverName: "a constant property cannot be modified"
+      end
       receiverVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
        + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
     end
@@ -370,11 +373,14 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
       ?*
     ]
   end
-  for (mValue) in self.mFieldList do
+  for (value) in self.mFieldList do
     let propertyMap = [targetType mPropertyMap]
-    [propertyMap searchKey !mValue ?let isPublic ?targetType]
+    [propertyMap searchKey !value ?let isPublic ?let isConstant ?targetType]
     if not isPublic then
-      error mValue : "inaccessible property (due to 'private' qualifier)"
+      error value : "inaccessible property (due to 'private' qualifier)"
+    end
+    if isConstant then
+      error value: "a constant property cannot be modified"
     end
   end
 #--- Check this type handle 'with' access

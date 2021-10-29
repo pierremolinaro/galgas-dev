@@ -5031,11 +5031,13 @@ class GALGAS_string extensionGetter_kind (const class GALGAS_typeKindEnum & inOb
 class cMapElement_propertyMap : public cMapElement {
 //--- Map attributes
   public: GALGAS_bool mProperty_mIsPublic ;
+  public: GALGAS_bool mProperty_mIsConstant ;
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mPropertyType ;
 
 //--- Constructor
   public: cMapElement_propertyMap (const GALGAS_lstring & inKey,
                                    const GALGAS_bool & in_mIsPublic,
+                                   const GALGAS_bool & in_mIsConstant,
                                    const GALGAS_unifiedTypeMap_2D_entry & in_mPropertyType
                                    COMMA_LOCATION_ARGS) ;
 
@@ -5064,6 +5066,8 @@ class GALGAS_propertyMap_2D_element : public AC_GALGAS_root {
 
   public: GALGAS_bool mProperty_mIsPublic ;
 
+  public: GALGAS_bool mProperty_mIsConstant ;
+
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mPropertyType ;
 
 //--------------------------------- Accessors
@@ -5085,6 +5089,10 @@ class GALGAS_propertyMap_2D_element : public AC_GALGAS_root {
     mProperty_mIsPublic = inValue ;
   }
 
+  public: inline void setter_setMIsConstant (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mIsConstant = inValue ;
+  }
+
   public: inline void setter_setMPropertyType (const GALGAS_unifiedTypeMap_2D_entry & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mPropertyType = inValue ;
   }
@@ -5095,6 +5103,7 @@ class GALGAS_propertyMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GALGAS_propertyMap_2D_element (const GALGAS_lstring & in_lkey,
                                          const GALGAS_bool & in_mIsPublic,
+                                         const GALGAS_bool & in_mIsConstant,
                                          const GALGAS_unifiedTypeMap_2D_entry & in_mPropertyType) ;
 
 //-- Start of generic part --*
@@ -5110,7 +5119,8 @@ class GALGAS_propertyMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_propertyMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                       const class GALGAS_bool & inOperand1,
-                                                                      const class GALGAS_unifiedTypeMap_2D_entry & inOperand2
+                                                                      const class GALGAS_bool & inOperand2,
+                                                                      const class GALGAS_unifiedTypeMap_2D_entry & inOperand3
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -5126,6 +5136,8 @@ class GALGAS_propertyMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_lkey (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mIsConstant (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mIsPublic (LOCATION_ARGS) const ;
 

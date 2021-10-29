@@ -14676,6 +14676,7 @@ GALGAS_typedPropertyList_2D_element GALGAS_typedPropertyList_2D_element::extract
 GALGAS_propertyMap_2D_element::GALGAS_propertyMap_2D_element (void) :
 mProperty_lkey (),
 mProperty_mIsPublic (),
+mProperty_mIsConstant (),
 mProperty_mPropertyType () {
 }
 
@@ -14688,16 +14689,19 @@ GALGAS_propertyMap_2D_element::~ GALGAS_propertyMap_2D_element (void) {
 
 GALGAS_propertyMap_2D_element::GALGAS_propertyMap_2D_element (const GALGAS_lstring & inOperand0,
                                                               const GALGAS_bool & inOperand1,
-                                                              const GALGAS_unifiedTypeMap_2D_entry & inOperand2) :
+                                                              const GALGAS_bool & inOperand2,
+                                                              const GALGAS_unifiedTypeMap_2D_entry & inOperand3) :
 mProperty_lkey (inOperand0),
 mProperty_mIsPublic (inOperand1),
-mProperty_mPropertyType (inOperand2) {
+mProperty_mIsConstant (inOperand2),
+mProperty_mPropertyType (inOperand3) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_propertyMap_2D_element GALGAS_propertyMap_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_propertyMap_2D_element (GALGAS_lstring::constructor_default (HERE),
+                                        GALGAS_bool::constructor_default (HERE),
                                         GALGAS_bool::constructor_default (HERE),
                                         GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE)) ;
 }
@@ -14706,11 +14710,12 @@ GALGAS_propertyMap_2D_element GALGAS_propertyMap_2D_element::constructor_default
 
 GALGAS_propertyMap_2D_element GALGAS_propertyMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
                                                                               const GALGAS_bool & inOperand1,
-                                                                              const GALGAS_unifiedTypeMap_2D_entry & inOperand2 
+                                                                              const GALGAS_bool & inOperand2,
+                                                                              const GALGAS_unifiedTypeMap_2D_entry & inOperand3 
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_propertyMap_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_propertyMap_2D_element (inOperand0, inOperand1, inOperand2) ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
+    result = GALGAS_propertyMap_2D_element (inOperand0, inOperand1, inOperand2, inOperand3) ;
   }
   return result ;
 }
@@ -14726,6 +14731,9 @@ typeComparisonResult GALGAS_propertyMap_2D_element::objectCompare (const GALGAS_
     result = mProperty_mIsPublic.objectCompare (inOperand.mProperty_mIsPublic) ;
   }
   if (result == kOperandEqual) {
+    result = mProperty_mIsConstant.objectCompare (inOperand.mProperty_mIsConstant) ;
+  }
+  if (result == kOperandEqual) {
     result = mProperty_mPropertyType.objectCompare (inOperand.mProperty_mPropertyType) ;
   }
   return result ;
@@ -14734,7 +14742,7 @@ typeComparisonResult GALGAS_propertyMap_2D_element::objectCompare (const GALGAS_
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_propertyMap_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mIsPublic.isValid () && mProperty_mPropertyType.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mIsPublic.isValid () && mProperty_mIsConstant.isValid () && mProperty_mPropertyType.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -14742,6 +14750,7 @@ bool GALGAS_propertyMap_2D_element::isValid (void) const {
 void GALGAS_propertyMap_2D_element::drop (void) {
   mProperty_lkey.drop () ;
   mProperty_mIsPublic.drop () ;
+  mProperty_mIsConstant.drop () ;
   mProperty_mPropertyType.drop () ;
 }
 
@@ -14756,6 +14765,8 @@ void GALGAS_propertyMap_2D_element::description (C_String & ioString,
     mProperty_lkey.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mIsPublic.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mIsConstant.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mPropertyType.description (ioString, inIndentation+1) ;
   }
@@ -14772,6 +14783,12 @@ GALGAS_lstring GALGAS_propertyMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS)
 
 GALGAS_bool GALGAS_propertyMap_2D_element::getter_mIsPublic (UNUSED_LOCATION_ARGS) const {
   return mProperty_mIsPublic ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_propertyMap_2D_element::getter_mIsConstant (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mIsConstant ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

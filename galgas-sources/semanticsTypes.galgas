@@ -318,6 +318,7 @@ boolset @operators {
 
 map @propertyMap {
   @bool mIsPublic
+  @bool mIsConstant
   @unifiedTypeMap-entry mPropertyType
   insert insertKey error message "the '%K' property has been already declared in %L"
   search searchKey error message "the '%K' property is not declared"

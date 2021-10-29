@@ -1051,7 +1051,7 @@ override method @structFieldAccessTemplateExpressionAST templateExpressionAnalys
     error self.mStructFieldName:"the '.' operator requires the receiver to be a struct"
   end
   let propertyMap = [type mPropertyMap]
-  [propertyMap searchKey !self.mStructFieldName ?let isPublic  ?type]
+  [propertyMap searchKey !self.mStructFieldName ?let isPublic ?* ?type]
   if not isPublic then
     error self.mStructFieldName : " inaccessible property (due to its 'private' qualifier)"
   end

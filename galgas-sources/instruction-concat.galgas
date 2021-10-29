@@ -203,9 +203,13 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
     else
       let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
-      [propertyMap searchKey !self.mReceiverName ?* ?targetType]
+      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
-      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
+      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+        + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
+      if isConstant then
+        error self.mReceiverName : "a constant property cannot be modified"
+      end
     end
   else
     [!?ioVariableMap searchForReadWriteAccess
@@ -224,9 +228,12 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
 #  ]
   for (mValue) in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
-    [propertyMap searchKey !mValue ?let isPublic  ?targetType]
+    [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
     if not isPublic then
       error mValue : " inaccessible property (due to its 'private' qualifier)"
+    end
+    if isConstant then
+      error mValue : "a constant property cannot be modified"
     end
   end
 #--- Check target variable type support '+= exp' operator
@@ -279,9 +286,13 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
     else
       let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
-      [propertyMap searchKey !self.mReceiverName ?* ?targetType]
+      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
-      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
+      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+        + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
+      if isConstant then
+        error self.mReceiverName : "a constant property cannot be modified"
+      end
     end
   else
     [!?ioVariableMap searchForReadWriteAccess
@@ -300,9 +311,12 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
 #  ]
   for (mValue) in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
-    [propertyMap searchKey !mValue ?let isPublic  ?targetType]
+    [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
     if not isPublic then
       error mValue : " inaccessible property (due to its 'private' qualifier)"
+    end
+    if isConstant then
+      error mValue : "a constant property cannot be modified"
     end
   end
 #--- Check target variable type support '-= exp' operator
@@ -355,9 +369,13 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
     else
       let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
-      [propertyMap searchKey !self.mReceiverName ?* ?targetType]
+      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
-      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
+      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+        + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
+      if isConstant then
+        error self.mReceiverName : "a constant property cannot be modified"
+      end
     end
   else
     [!?ioVariableMap searchForReadWriteAccess
@@ -376,9 +394,12 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
 #  ]
   for (mValue) in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
-    [propertyMap searchKey !mValue ?let isPublic  ?targetType]
+    [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
     if not isPublic then
       error mValue : " inaccessible property (due to its 'private' qualifier)"
+    end
+    if isConstant then
+      error mValue : "a constant property cannot be modified"
     end
   end
 #--- Check target variable type support '*= exp' operator
@@ -431,9 +452,13 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
     else
       let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
-      [propertyMap searchKey !self.mReceiverName ?* ?targetType]
+      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
-      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
+      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+        + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
+      if isConstant then
+        error self.mReceiverName : "a constant property cannot be modified"
+      end
     end
   else
     [!?ioVariableMap searchForReadWriteAccess
@@ -444,17 +469,14 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
     ]
   end
 #--- Check target variable
-#  [!?ioVariableMap searchForReadWriteAccess
-#    !self.mReceiverName 
-#    ?@unifiedTypeMap-entry targetType
-#    ?@string targetVariableCppName
-#    ?@string nameForCheckingFormalParameterUsing
-#  ]
   for (mValue) in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
-    [propertyMap searchKey !mValue ?let isPublic  ?targetType]
+    [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
     if not isPublic then
       error mValue : " inaccessible property (due to its 'private' qualifier)"
+    end
+    if isConstant then
+      error self.mReceiverName : "a constant property cannot be modified"
     end
   end
 #--- Check target variable type support '/= exp' operator
@@ -507,9 +529,13 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
     else
       let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
-      [propertyMap searchKey !self.mReceiverName ?* ?targetType]
+      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
-      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
+      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+        + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
+      if isConstant then
+        error self.mReceiverName : "a constant property cannot be modified"
+      end
     end
   else
     [!?ioVariableMap searchForReadWriteAccess
@@ -519,19 +545,15 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
       ?nameForCheckingFormalParameterUsing
     ]
   end
-
 #--- Check target variable
-#  [!?ioVariableMap searchForReadWriteAccess
-#    !self.mReceiverName
-#    ?targetType
-#    ?targetVariableCppName
-#    ?nameForCheckingFormalParameterUsing
-#  ]
   for (mValue) in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
-    [propertyMap searchKey !mValue ?let isPublic  ?targetType]
+    [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
     if not isPublic then
       error mValue : " inaccessible property (due to its 'private' qualifier)"
+    end
+    if isConstant then
+      error mValue : "a constant property cannot be modified"
     end
   end
 #--- Check target variable type support '+=' operator

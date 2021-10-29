@@ -3,7 +3,7 @@
 
 \chapitreTypePredefiniLabelIndex{location}
 
-\tableDesMatieresDuChapitre
+\tableDesMatieresLocaleDeProfondeurRelative{1}
 
 
 Un objet de type \ggs+@location+ a pour valeur une position dans un texte source. Les objets de ce types sont utilisés dans les messages d'erreurs et les messages d'alerte pour indiquer à l'utilisateur la position de l'erreur ou de l'alerte.
@@ -81,6 +81,8 @@ The returned object responds \ggs+true+ to the \refGetterPage{location}{isNowher
 
 \section{Getters}
 
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
 \subsectionGetter{column}{location}
 
 \begin{galgas}
@@ -124,3 +126,13 @@ getter locationString -> @string
 \end{galgas}
 
 Returns an \ggs+@string+ object that contains a string representation of the location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \ggs+true+ to the \refGetterPage{location}{isNowhere}.
+
+
+\subsectionGetter{union}{location}
+
+\begin{galgas}
+getter union ?@location inOther -> @location
+\end{galgas}
+
+L'objet courant et l'argument doivent concerner le même source. Sinon, une erreur d'exécution est déclenchée. Cette fonction retourne l'union des intervalles définis par l'objet courant et l'argument. 
+

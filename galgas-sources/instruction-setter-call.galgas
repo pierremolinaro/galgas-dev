@@ -139,9 +139,13 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
       : receiverType, nameForCheckingFormalParameterUsing, targetVariableCppName
     else
       let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
-      [propertyMap searchKey !self.mReceiverName ?* ?receiverType]
+      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?receiverType]
+      if isConstant then
+        error self.mReceiverName: "a constant property cannot be modified"
+      end
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
-      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
     end
   else
     [!?ioVariableMap searchForReadWriteAccess
@@ -160,27 +164,16 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
       error errorLocation : "a structure is required for '.' access"
     else
       let propertyMap = [receiverType mPropertyMap]
-      [propertyMap searchKey !mValue ?let isPublic ?receiverType]
+      [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?receiverType]
       errorLocation = mValue.location
       if not isPublic then
         error mValue : " inaccessible property (due to its 'private' qualifier)"
       end
+      if isConstant then
+        error mValue : "a constant property cannot be modified"
+      end
     end
   end
-#--- Check receiver object
-#  [!?ioVariableMap searchForReadWriteAccess
-#     !self.mReceiverName
-#     ?@unifiedTypeMap-entry receiverType
-#     ?let @string receiverVariableCppName
-#     ?let @string receiverVariableBaseName
-#  ]
-#  for () in self.mReceiverStructAttributes do
-#    let propertyMap = [receiverType mPropertyMap]
-#    [propertyMap searchKey !mValue ?let isPublic ?receiverType]
-#    if not isPublic then
-#      error mValue : " inaccessible property (due to its 'private' qualifier)"
-#    end
-#  end
 #--- Type cast ?
   @unifiedTypeMap-entry castType
   if self.mTypeNameForCasting.string != "" then

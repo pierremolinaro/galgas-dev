@@ -5173,16 +5173,23 @@ class GALGAS_propertyMap : public AC_GALGAS_map {
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
                                                      const class GALGAS_bool & inOperand1,
-                                                     const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+                                                     const class GALGAS_bool & inOperand2,
+                                                     const class GALGAS_unifiedTypeMap_2D_entry & inOperand3,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
                                                   class GALGAS_bool constinArgument1,
-                                                  class GALGAS_unifiedTypeMap_2D_entry constinArgument2,
+                                                  class GALGAS_bool constinArgument2,
+                                                  class GALGAS_unifiedTypeMap_2D_entry constinArgument3,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMIsConstantForKey (class GALGAS_bool constinArgument0,
+                                                             class GALGAS_string constinArgument1,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMIsPublicForKey (class GALGAS_bool constinArgument0,
                                                            class GALGAS_string constinArgument1,
@@ -5198,13 +5205,18 @@ class GALGAS_propertyMap : public AC_GALGAS_map {
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_searchKey (class GALGAS_lstring constinArgument0,
                                                   class GALGAS_bool & outArgument1,
-                                                  class GALGAS_unifiedTypeMap_2D_entry & outArgument2,
+                                                  class GALGAS_bool & outArgument2,
+                                                  class GALGAS_unifiedTypeMap_2D_entry & outArgument3,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mIsConstantForKey (const class GALGAS_string & constinOperand0,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mIsPublicForKey (const class GALGAS_string & constinOperand0,
                                                                      C_Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const ;
@@ -5220,7 +5232,8 @@ class GALGAS_propertyMap : public AC_GALGAS_map {
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
                                                     class GALGAS_bool & outOperand1,
-                                                    class GALGAS_unifiedTypeMap_2D_entry & outOperand2) const ;
+                                                    class GALGAS_bool & outOperand2,
+                                                    class GALGAS_unifiedTypeMap_2D_entry & outOperand3) const ;
 
 
 //--------------------------------- Introspection
@@ -5246,6 +5259,7 @@ class cEnumerator_propertyMap : public cGenericAbstractEnumerator {
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
   public: class GALGAS_bool current_mIsPublic (LOCATION_ARGS) const ;
+  public: class GALGAS_bool current_mIsConstant (LOCATION_ARGS) const ;
   public: class GALGAS_unifiedTypeMap_2D_entry current_mPropertyType (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GALGAS_propertyMap_2D_element current (LOCATION_ARGS) const ;

@@ -13151,24 +13151,26 @@ GALGAS_operators GALGAS_operators::extractObject (const GALGAS_object & inObject
 
 cMapElement_propertyMap::cMapElement_propertyMap (const GALGAS_lstring & inKey,
                                                   const GALGAS_bool & in_mIsPublic,
+                                                  const GALGAS_bool & in_mIsConstant,
                                                   const GALGAS_unifiedTypeMap_2D_entry & in_mPropertyType
                                                   COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
 mProperty_mIsPublic (in_mIsPublic),
+mProperty_mIsConstant (in_mIsConstant),
 mProperty_mPropertyType (in_mPropertyType) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_propertyMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mIsPublic.isValid () && mProperty_mPropertyType.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mIsPublic.isValid () && mProperty_mIsConstant.isValid () && mProperty_mPropertyType.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 cMapElement * cMapElement_propertyMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_propertyMap (mProperty_lkey, mProperty_mIsPublic, mProperty_mPropertyType COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_propertyMap (mProperty_lkey, mProperty_mIsPublic, mProperty_mIsConstant, mProperty_mPropertyType COMMA_HERE)) ;
   return result ;
 }
 
@@ -13179,6 +13181,10 @@ void cMapElement_propertyMap::description (C_String & ioString, const int32_t in
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mIsPublic" ":" ;
   mProperty_mIsPublic.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mIsConstant" ":" ;
+  mProperty_mIsConstant.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mPropertyType" ":" ;
@@ -13192,6 +13198,9 @@ typeComparisonResult cMapElement_propertyMap::compare (const cCollectionElement 
   typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
     result = mProperty_mIsPublic.objectCompare (operand->mProperty_mIsPublic) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mIsConstant.objectCompare (operand->mProperty_mIsConstant) ;
   }
   if (kOperandEqual == result) {
     result = mProperty_mPropertyType.objectCompare (operand->mProperty_mPropertyType) ;
@@ -13248,11 +13257,12 @@ GALGAS_propertyMap GALGAS_propertyMap::getter_overriddenMap (C_Compiler * inComp
 
 void GALGAS_propertyMap::addAssign_operation (const GALGAS_lstring & inKey,
                                               const GALGAS_bool & inArgument0,
-                                              const GALGAS_unifiedTypeMap_2D_entry & inArgument1,
+                                              const GALGAS_bool & inArgument1,
+                                              const GALGAS_unifiedTypeMap_2D_entry & inArgument2,
                                               C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
   cMapElement_propertyMap * p = NULL ;
-  macroMyNew (p, cMapElement_propertyMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
+  macroMyNew (p, cMapElement_propertyMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -13265,11 +13275,12 @@ void GALGAS_propertyMap::addAssign_operation (const GALGAS_lstring & inKey,
 
 void GALGAS_propertyMap::setter_insertKey (GALGAS_lstring inKey,
                                            GALGAS_bool inArgument0,
-                                           GALGAS_unifiedTypeMap_2D_entry inArgument1,
+                                           GALGAS_bool inArgument1,
+                                           GALGAS_unifiedTypeMap_2D_entry inArgument2,
                                            C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) {
   cMapElement_propertyMap * p = NULL ;
-  macroMyNew (p, cMapElement_propertyMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
+  macroMyNew (p, cMapElement_propertyMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -13286,7 +13297,8 @@ const char * kSearchErrorMessage_propertyMap_searchKey = "the '%K' property is n
 
 void GALGAS_propertyMap::method_searchKey (GALGAS_lstring inKey,
                                            GALGAS_bool & outArgument0,
-                                           GALGAS_unifiedTypeMap_2D_entry & outArgument1,
+                                           GALGAS_bool & outArgument1,
+                                           GALGAS_unifiedTypeMap_2D_entry & outArgument2,
                                            C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const {
   const cMapElement_propertyMap * p = (const cMapElement_propertyMap *) performSearch (inKey,
@@ -13296,10 +13308,12 @@ void GALGAS_propertyMap::method_searchKey (GALGAS_lstring inKey,
   if (NULL == p) {
     outArgument0.drop () ;
     outArgument1.drop () ;
+    outArgument2.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_propertyMap) ;
     outArgument0 = p->mProperty_mIsPublic ;
-    outArgument1 = p->mProperty_mPropertyType ;
+    outArgument1 = p->mProperty_mIsConstant ;
+    outArgument2 = p->mProperty_mPropertyType ;
   }
 }
 
@@ -13314,6 +13328,21 @@ GALGAS_bool GALGAS_propertyMap::getter_mIsPublicForKey (const GALGAS_string & in
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_propertyMap) ;
     result = p->mProperty_mIsPublic ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_propertyMap::getter_mIsConstantForKey (const GALGAS_string & inKey,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const {
+  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
+  const cMapElement_propertyMap * p = (const cMapElement_propertyMap *) attributes ;
+  GALGAS_bool result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_propertyMap) ;
+    result = p->mProperty_mIsConstant ;
   }
   return result ;
 }
@@ -13344,6 +13373,20 @@ void GALGAS_propertyMap::setter_setMIsPublicForKey (GALGAS_bool inAttributeValue
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_propertyMap) ;
     p->mProperty_mIsPublic = inAttributeValue ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_propertyMap::setter_setMIsConstantForKey (GALGAS_bool inAttributeValue,
+                                                      GALGAS_string inKey,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
+  cMapElement_propertyMap * p = (cMapElement_propertyMap *) attributes ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_propertyMap) ;
+    p->mProperty_mIsConstant = inAttributeValue ;
   }
 }
 
@@ -13384,7 +13427,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_propertyMap_2D_element cEnumerator_propertyMap::current (LOCATION_ARGS) const {
   const cMapElement_propertyMap * p = (const cMapElement_propertyMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_propertyMap) ;
-  return GALGAS_propertyMap_2D_element (p->mProperty_lkey, p->mProperty_mIsPublic, p->mProperty_mPropertyType) ;
+  return GALGAS_propertyMap_2D_element (p->mProperty_lkey, p->mProperty_mIsPublic, p->mProperty_mIsConstant, p->mProperty_mPropertyType) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -13405,6 +13448,14 @@ GALGAS_bool cEnumerator_propertyMap::current_mIsPublic (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+GALGAS_bool cEnumerator_propertyMap::current_mIsConstant (LOCATION_ARGS) const {
+  const cMapElement_propertyMap * p = (const cMapElement_propertyMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_propertyMap) ;
+  return p->mProperty_mIsConstant ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 GALGAS_unifiedTypeMap_2D_entry cEnumerator_propertyMap::current_mPropertyType (LOCATION_ARGS) const {
   const cMapElement_propertyMap * p = (const cMapElement_propertyMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_propertyMap) ;
@@ -13415,16 +13466,19 @@ GALGAS_unifiedTypeMap_2D_entry cEnumerator_propertyMap::current_mPropertyType (L
 
 bool GALGAS_propertyMap::optional_searchKey (const GALGAS_string & inKey,
                                              GALGAS_bool & outArgument0,
-                                             GALGAS_unifiedTypeMap_2D_entry & outArgument1) const {
+                                             GALGAS_bool & outArgument1,
+                                             GALGAS_unifiedTypeMap_2D_entry & outArgument2) const {
   const cMapElement_propertyMap * p = (const cMapElement_propertyMap *) searchForKey (inKey) ;
   const bool result = NULL != p ;
   if (result) {
     macroValidSharedObject (p, cMapElement_propertyMap) ;
     outArgument0 = p->mProperty_mIsPublic ;
-    outArgument1 = p->mProperty_mPropertyType ;
+    outArgument1 = p->mProperty_mIsConstant ;
+    outArgument2 = p->mProperty_mPropertyType ;
   }else{
     outArgument0.drop () ;
     outArgument1.drop () ;
+    outArgument2.drop () ;
   }
   return result ;
 }

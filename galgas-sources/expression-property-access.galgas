@@ -63,7 +63,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
     error self.mStructFieldName: "the '.' operator requires the receiver to be a struct or a class"
   end
   let propertyMap = [expressionType mPropertyMap]
-  [propertyMap searchKey !self.mStructFieldName ?let isPublic ?let type]
+  [propertyMap searchKey !self.mStructFieldName ?let isPublic ?* ?let type]
   if isPublic then
     # Ok
   elsif [inAnalysisContext.mSelfCopyTypeEntry isNull] then

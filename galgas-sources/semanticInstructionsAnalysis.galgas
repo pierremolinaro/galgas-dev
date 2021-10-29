@@ -205,11 +205,15 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
     let propertyMap = [parameterType mPropertyMap]
     [propertyMap searchKey
       !mValue
-      ?let isPublic 
+      ?let isPublic
+      ?let isConstant
       ?parameterType
     ]
     if not isPublic then
       error mValue : " inaccessible property (due to its 'private' qualifier)"
+    end
+    if isConstant then
+      error mValue : "a constant property cannot be modified"
     end
     typeList += !parameterType
   end
@@ -380,7 +384,7 @@ override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
     : parameterType, targetVariableCppName
   else
     let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
-    [propertyMap searchKey !self.mInputActualSelfPropertyName ?* ?parameterType]
+    [propertyMap searchKey !self.mInputActualSelfPropertyName ?2* ?parameterType]
     targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[self.mInputActualSelfPropertyName string] identifierRepresentation]
   end
 
@@ -704,6 +708,7 @@ proc checkExpressionIsBoolean
       [[expressionType mPropertyMap] searchKey
         !@lstring.new {!"bool" !inErrorLocation}
         ?let isPublic 
+        ?*
         ?let @unifiedTypeMap-entry attributeType
       ]
       if not isPublic then

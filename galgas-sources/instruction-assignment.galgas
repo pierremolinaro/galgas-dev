@@ -117,13 +117,14 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
       ?*
       ?*
     ]
-#    for () in self.mStructAttributeList do
-      let propertyMap = [targetType mPropertyMap]
-      [propertyMap searchKey !self.mOptionalProperty ?let isPublic  ?targetType]
-      if not isPublic then
-        error self.mOptionalProperty : " inaccessible property (due to its 'private' qualifier)"
-      end
-#    end
+    let propertyMap = [targetType mPropertyMap]
+    [propertyMap searchKey !self.mOptionalProperty ?let isPublic ?let isConstant ?targetType]
+    if not isPublic then
+      error self.mOptionalProperty : " inaccessible property (due to its 'private' qualifier)"
+    end
+    if isConstant then
+      error self.mOptionalProperty : "a constant property cannot be modified"
+    end
   end
 #--- Analyze source expression
   [self.mSourceExpression analyzeSemanticExpression
@@ -190,7 +191,10 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
     : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
   else
     let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
-    [propertyMap searchKey !self.mTargetSelfPropertyName ?* ?targetType]
+    [propertyMap searchKey !self.mTargetSelfPropertyName ?* ?let isConstant ?targetType]
+    if isConstant then
+      error self.mTargetSelfPropertyName : "a constant property cannot be modified"
+    end
     nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
     targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
      + "mProperty_"+ [[self.mTargetSelfPropertyName string] identifierRepresentation]
@@ -198,9 +202,12 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
 #--- Get target variable type
   if self.mOptionalProperty.string != "" then
     let propertyMap = [targetType mPropertyMap]
-    [propertyMap searchKey !self.mOptionalProperty ?let isPublic ?targetType]
+    [propertyMap searchKey !self.mOptionalProperty ?let isPublic ?let isConstant ?targetType]
     if not isPublic then
       error self.mOptionalProperty : " inaccessible property (due to its 'private' qualifier)"
+    end
+    if isConstant then
+      error self.mOptionalProperty : "a constant property cannot be modified"
     end
   end
 #--- Analyze source expression

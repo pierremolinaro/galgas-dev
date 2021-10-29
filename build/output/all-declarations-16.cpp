@@ -1045,21 +1045,21 @@ GALGAS_unifiedTypeMap_2D_entry extensionGetter_baseType (const GALGAS_unifiedTyp
   GALGAS_unifiedTypeMap_2D_entry result_outBaseType ; // Returned variable
   const GALGAS_unifiedTypeMap_2D_entry temp_0 = inObject ;
   result_outBaseType = temp_0 ;
-  if (GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 383)).isValid ()) {
-    uint32_t variant_15681 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 383)).uintValue () ;
-    bool loop_15681 = true ;
-    while (loop_15681) {
-      loop_15681 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 383)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 383)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 383)).isValid () ;
-      if (loop_15681) {
-        loop_15681 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 383)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 383)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 383)).boolValue () ;
+  if (GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 384)).isValid ()) {
+    uint32_t variant_15701 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 384)).uintValue () ;
+    bool loop_15701 = true ;
+    while (loop_15701) {
+      loop_15701 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 384)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 384)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 384)).isValid () ;
+      if (loop_15701) {
+        loop_15701 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 384)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 384)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 384)).boolValue () ;
       }
-      if (loop_15681 && (0 == variant_15681)) {
-        loop_15681 = false ;
-        inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticsTypes.galgas", 383)) ;
+      if (loop_15701 && (0 == variant_15701)) {
+        loop_15701 = false ;
+        inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticsTypes.galgas", 384)) ;
       }
-      if (loop_15681) {
-        variant_15681 -- ;
-        result_outBaseType = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 384)) ;
+      if (loop_15701) {
+        variant_15701 -- ;
+        result_outBaseType = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 385)) ;
       }
     }
   }
@@ -1084,10 +1084,10 @@ void extensionMethod_addHeaderFileName (const GALGAS_unifiedTypeMap_2D_entry inO
   if (kBoolTrue == test_0) {
     const GALGAS_unifiedTypeMap_2D_entry temp_1 = inObject ;
     const GALGAS_unifiedTypeMap_2D_entry temp_2 = inObject ;
-    test_0 = temp_1.getter_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 391)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 391)).operator_and (GALGAS_bool (kIsNotEqual, temp_2.getter_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 391)).objectCompare (GALGAS_headerKind::constructor_noHeader (SOURCE_FILE ("semanticsTypes.galgas", 391)))) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 391)).boolEnum () ;
+    test_0 = temp_1.getter_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 392)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 392)).operator_and (GALGAS_bool (kIsNotEqual, temp_2.getter_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 392)).objectCompare (GALGAS_headerKind::constructor_noHeader (SOURCE_FILE ("semanticsTypes.galgas", 392)))) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 392)).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_unifiedTypeMap_2D_entry temp_3 = inObject ;
-      ioArgument_ioInclusions.addAssign_operation (temp_3.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 392))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 392)) ;
+      ioArgument_ioInclusions.addAssign_operation (temp_3.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 393))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 393)) ;
     }
   }
 }
@@ -1106,10 +1106,10 @@ void extensionMethod_addHeaderFileName_31_ (const GALGAS_unifiedTypeMap_2D_entry
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_unifiedTypeMap_2D_entry temp_1 = inObject ;
-    test_0 = temp_1.getter_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 399)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 399)).boolEnum () ;
+    test_0 = temp_1.getter_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 400)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 400)).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_unifiedTypeMap_2D_entry temp_2 = inObject ;
-      switch (temp_2.getter_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 400)).enumValue ()) {
+      switch (temp_2.getter_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 401)).enumValue ()) {
       case GALGAS_headerKind::kNotBuilt:
         break ;
       case GALGAS_headerKind::kEnum_noHeader:
@@ -1119,13 +1119,13 @@ void extensionMethod_addHeaderFileName_31_ (const GALGAS_unifiedTypeMap_2D_entry
       case GALGAS_headerKind::kEnum_oneHeader:
         {
           const GALGAS_unifiedTypeMap_2D_entry temp_3 = inObject ;
-          ioArgument_ioInclusions.addAssign_operation (temp_3.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 403))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 403)) ;
+          ioArgument_ioInclusions.addAssign_operation (temp_3.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 404))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 404)) ;
         }
         break ;
       case GALGAS_headerKind::kEnum_twoHeaders:
         {
           const GALGAS_unifiedTypeMap_2D_entry temp_4 = inObject ;
-          ioArgument_ioInclusions.addAssign_operation (temp_4.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 405)).add_operation (GALGAS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 405))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 405)) ;
+          ioArgument_ioInclusions.addAssign_operation (temp_4.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 406)).add_operation (GALGAS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 406))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 406)) ;
         }
         break ;
       }

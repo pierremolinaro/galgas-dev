@@ -245,6 +245,7 @@ override method @classDeclarationAST enterInSemanticContext
     [!?attributeMap insertKey
       !mPropertyName
       !mIsPublic
+      !isConstant
       !attributeTypeIndex
     ]
     if [getterMap hasKey ![mPropertyName string]] then
