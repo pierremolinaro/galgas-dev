@@ -148,7 +148,7 @@ override method @listmapDeclarationAST enterInSemanticContext
 #--- Add assign operator description
   var addAssignOperatorDescription =@functionSignature {}
   addAssignOperatorDescription += !["" nowhere] !stringTypeIndex !"inKey"
-  for () in listTypedAttributeList do
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in listTypedAttributeList do
     addAssignOperatorDescription += !["" nowhere] !mPropertyTypeEntry !mPropertyName.string
   end
 #--- Add extensions

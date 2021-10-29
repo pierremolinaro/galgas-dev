@@ -315,7 +315,7 @@ override method @errorInstructionAST analyzeSemanticInstruction
   )
 #--- Handle dropped variables
   var builtVariableCppNameList = @stringlist {}
-  for () in self.mBuiltVariableList do
+  for (mValue) in self.mBuiltVariableList do
     [!?ioVariableMap searchForWriteAccess !mValue ?* ?let varCppName ?*]
     builtVariableCppNameList += !varCppName
   end
@@ -431,7 +431,7 @@ override method @errorInstructionForGeneration generateInstruction
     + fixItArrayCppName + " "
     + [self.mInstructionLocation commaSourceFile] + ") ;\n"
 #--- Release dropped variables
-  for () in self.mBuiltVariableCppNameList do
+  for (mValue) in self.mBuiltVariableCppNameList do
     [!?ioUnusedVariableCppNameSet removeKey !mValue]
     ioGeneratedCode += mValue + ".drop () ; // Release error dropped variable\n"
   end

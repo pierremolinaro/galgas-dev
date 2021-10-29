@@ -690,7 +690,7 @@ override method @ifInstructionForGeneration generateInstruction
     !?ioGeneratedCode
   )
   ioGeneratedCode += "}\n"
-  for () in self.mExpressions do
+  for (mExpression) in self.mExpressions do
     [!?ioGeneratedCode decIndentation !2]
     ioGeneratedCode += "}\n"
   end

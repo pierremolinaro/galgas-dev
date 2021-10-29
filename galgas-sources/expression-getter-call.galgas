@@ -86,7 +86,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       hasCompilerArgument = true
       returnedType = @unifiedTypeMap-entry.null
       kind = @methodKind. definedAsExtension
-      for () in [receiverType mCurrentTypedPropertyList] do
+      for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in [receiverType mCurrentTypedPropertyList] do
         let attributeType = @unifiedTypeMap-entry.searchKey {
           !inAnalysisContext.mSemanticContext.mTypeMap
           !@lstring.new {![mPropertyTypeEntry key] !@location.here}
@@ -118,7 +118,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
         : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       elsif matchingReaderCount > 1 then
         @string s = ""
-        for () in fieldList
+        for (mValue) in fieldList
           do s += mValue
           between s += ", "
         end
@@ -145,7 +145,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
     + [[self.mExpressions length] string] + " parameter(s)" : outExpression
   else
     @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
-    for () in self.mExpressions, () in getterFormalArgumentTypeList do
+    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType mFormalArgumentName) in getterFormalArgumentTypeList do
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
@@ -207,7 +207,7 @@ override method @getterCallExpressionForGeneration generateExpression
   ]
 #--- Reader operands
   @stringlist getterArgumentCppNameList = {}
-  for () in self.mExpressions do
+  for (mExpression) in self.mExpressions do
     [mExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
@@ -245,13 +245,13 @@ override method @getterCallExpressionForGeneration generateExpression
     end
   case definedAsMember :
     outCppExpression = receiverCppName
-    for () in self.mFieldList do
+    for (mValue) in self.mFieldList do
       outCppExpression += ".getter_" + [mValue identifierRepresentation] + " (HERE)"
     end
     [self.mResultType addHeaderFileName !?ioInclusionSet]
     outCppExpression +=  ".getter_" + [self.mGetterName identifierRepresentation] + " ("
   end
-  for () in getterArgumentCppNameList
+  for (mValue) in getterArgumentCppNameList
     do outCppExpression += mValue
     between outCppExpression += ", "
   end

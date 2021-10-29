@@ -37,7 +37,7 @@ syntax extension galgas3ExpressionSyntax {
 override method @functionCallExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  for () in self.mExpressionList do
+  for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList do
     [mExpression enterExpressionInSemanticContext !?ioTypeMap]
   end
 }
@@ -77,7 +77,7 @@ override method @functionCallExpressionAST analyzeSemanticExpression
     : outExpression
   else
     var semanticExpressionListForGeneration =@semanticExpressionListForGeneration {}
-    for () in functionSignature, () in self.mExpressionList do
+    for (mFormalSelector mFormalArgumentType mFormalArgumentName) in functionSignature, (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList do
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
@@ -123,13 +123,13 @@ override method @functionCallExpressionForGeneration generateExpression
   ioInclusionSet += !"func-" + [self.mFunctionName fileNameRepresentation]
 #---
   var parameterList =@stringlist {}
-  for () in self.mExpressions do
+  for (mExpression) in self.mExpressions do
     @string parameter
     [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?parameter]
     parameterList += !parameter  
   end
   outCppExpression = "function_" + [self.mFunctionName identifierRepresentation] + " ("
-  for () in parameterList
+  for (mValue) in parameterList
     do outCppExpression += mValue + ", "
   end
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]

@@ -49,7 +49,7 @@ override method @literalStringExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
   @string s = ""
-  for () in self.mStringSequence do
+  for (mValue) in self.mStringSequence do
     s += mValue
   end
   outExpression = @literalStringExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mStringType !self.mLocation !s}

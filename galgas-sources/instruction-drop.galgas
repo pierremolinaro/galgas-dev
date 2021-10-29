@@ -49,7 +49,7 @@ override method @dropInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 {
-  for () in self.mDropList do
+  for (mValue) in self.mDropList do
     [!?ioVariableMap searchForDropAccess !mValue ?3*]
   end
 }

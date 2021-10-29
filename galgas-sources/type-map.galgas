@@ -190,7 +190,7 @@ override method @mapDeclarationAST addAssociatedElement
     !["lkey" nowhere]
     !true
     !{}
-  for () in self.mPropertyList do
+  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     structAttributeList +=
       !isConstant: false
       !mPropertyTypeName
@@ -218,7 +218,7 @@ override method @mapDeclarationAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + self.mMapTypeName ![self.mMapTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for () in self.mPropertyList do
+  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
   end
 }
@@ -368,7 +368,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !@formalArgumentPassingModeAST.argumentConstantIn
     !"inLKey"
   @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
-  for () in self.mPropertyList do
+  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true
     var hasSelector = false
@@ -401,7 +401,7 @@ override method @mapDeclarationAST enterInSemanticContext
       !mPropertyName.string
   end
 #--- Handle insert setters
-  for () in self.mInsertMethodList do
+  for (mInsertMethodName mErrorMessage mShadowErrorMessage mInitialStateName) in self.mInsertMethodList do
     if [setterMap hasKey ![mInsertMethodName string]] then
       error mInsertMethodName:"the '" + mInsertMethodName + "' insert method is already declared"
     else
@@ -416,7 +416,7 @@ override method @mapDeclarationAST enterInSemanticContext
     end
   end
 #--- Handle remove setters
-  for () in self.mRemoveMethodList do
+  for (mMethodName mErrorMessage) in self.mRemoveMethodList do
     if [setterMap hasKey ![mMethodName string]] then
       error mMethodName:"the '" + mMethodName + "' method is already declared as an insert setter or a remove setter"
     else
@@ -431,7 +431,7 @@ override method @mapDeclarationAST enterInSemanticContext
     end
   end
 #--- Handle search methods (methods if no state, setters if states)
-  for () in self.mSearchMethodList do
+  for (mSearchMethodName mErrorMessage mActionName mLocationAttribute) in self.mSearchMethodList do
     var searchMethodFormalArgumentList = removeMethodFormalArgumentList
     if mLocationAttribute then
       searchMethodFormalArgumentList +=
@@ -451,7 +451,7 @@ override method @mapDeclarationAST enterInSemanticContext
     ]
   end
 #--- Enter "attributeForKey" getters
-  for () in self.mPropertyList do
+  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     let accessorName = @lstring.new {![mPropertyName string] + "ForKey" ![mPropertyName location]}
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
@@ -479,7 +479,7 @@ override method @mapDeclarationAST enterInSemanticContext
     ]
   end
 #---------- Enter "set...Attribute...forKey" setters, and 'with' accessor
-  for () in self.mPropertyList do
+  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     let accessorName = @lstring.new {
       !"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "ForKey"
       ![mPropertyName location]
@@ -595,7 +595,7 @@ override method @mapDeclarationAST semanticAnalysis
 #------ Enter property
   @typedPropertyList typedAttributeList = {}
   @propertyIndexMap attributeMap = {}
-  for () in self.mPropertyList do
+  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     @unifiedTypeMap-entry t = .searchKey{!inSemanticContext.mTypeMap !mPropertyTypeName}
@@ -618,24 +618,24 @@ override method @mapDeclarationAST semanticAnalysis
   end
 #--- Enter insert setters
   @insertMethodMap insertMethodMap = {}
-  for () in self.mInsertMethodList do
+  for (mInsertMethodName mErrorMessage mShadowErrorMessage mInitialStateName) in self.mInsertMethodList do
     [!?insertMethodMap insertKey !mInsertMethodName]
     check_K_L_escapeCharacters ( !mErrorMessage )
     check_K_L_escapeCharacters ( !mShadowErrorMessage )
   end
 #--- Enter search methods
   @searchMethodMap searchMethodMap = {}
-  for () in self.mSearchMethodList do
+  for (mSearchMethodName mErrorMessage mActionName mLocationAttribute) in self.mSearchMethodList do
     [!?searchMethodMap insertKey !mSearchMethodName]
     check_K_escapeCharacters ( !mErrorMessage )
   end
 #--- Enter remove methods
-  for () in self.mRemoveMethodList do
+  for (mMethodName mErrorMessage) in self.mRemoveMethodList do
     [!?insertMethodMap insertKey !mMethodName]
     check_K_escapeCharacters ( !mErrorMessage )
   end
 #--- Warn for duplicated declarations or 'insertOrReplace' setter
-  for () in self.mInsertOrReplaceDeclarationListAST do(IDX)
+  for (mInsertOrReplaceDeclarationLocation) in self.mInsertOrReplaceDeclarationListAST do(IDX)
     if IDX > 0 then
       warning mInsertOrReplaceDeclarationLocation: "the 'insertOrReplace' setter is already declared"
     end

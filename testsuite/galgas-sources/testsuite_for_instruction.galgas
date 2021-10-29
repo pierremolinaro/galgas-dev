@@ -19,7 +19,7 @@ proc testsuite_for_instruction {
   end
 
   message "--- begin of for instruction test 2\n"
-  for () in strList
+  for (mValue) in strList
   while false
   before
     message "  before\n"
@@ -33,7 +33,7 @@ proc testsuite_for_instruction {
 
   message "--- begin of for instruction test 3\n"
   @uint n = 0
-  for () xyz_ in strList
+  for (xyz_mValue) in strList
   while n < 2
   before
     message "  before\n"

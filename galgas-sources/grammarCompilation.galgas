@@ -19,9 +19,9 @@ func transformLabelMap
   -> @nonterminalSymbolLabelMapForGrammarAnalysis outNonterminalSymbolLabelMapForGrammarAnalysis
 {
   outNonterminalSymbolLabelMapForGrammarAnalysis = {}
-  for () in inLabels do
+  for (mLabelName mFormalArgumentList mEndOfArgumentLocation) in inLabels do
     @signatureForGrammarAnalysis formalParametersList = {}
-    for () in mFormalArgumentList do
+    for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFormalArgumentList do
       formalParametersList += !mFormalArgumentPassingMode !mFormalArgumentTypeName
     end
     [!?outNonterminalSymbolLabelMapForGrammarAnalysis insertKey
@@ -40,7 +40,7 @@ proc checkLabelMap
   ?let @nonterminalSymbolLabelMapForGrammarAnalysis inNonterminalSymbolLabelMapForGrammarAnalysis
 {
   @stringset labelStringSet = {}
-  for () in inLabels do
+  for (mLabelName mFormalArgumentList mEndOfArgumentLocation) in inLabels do
     labelStringSet += ![mLabelName string]
     @signatureForGrammarAnalysis formalParametersList
     [inNonterminalSymbolLabelMapForGrammarAnalysis searchKey !mLabelName ?formalParametersList]
@@ -53,7 +53,7 @@ proc checkLabelMap
         + " names " + [[formalParametersList length] string] + " parameter"
         + if [formalParametersList length] > 1 then "s" else "" end
     else
-      for () in mFormalArgumentList, () in formalParametersList do
+      for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFormalArgumentList, (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in formalParametersList do
         if mFormalArgumentPassingModeForGrammarAnalysis != mFormalArgumentPassingMode then
           error mGalgasTypeNameForGrammarAnalysis :
             " this formal parameter is declared with "
@@ -74,7 +74,7 @@ proc checkLabelMap
     end
   end
 #---
-  for () in inNonterminalSymbolLabelMapForGrammarAnalysis do
+  for (lkey mFormalParametersList) in inNonterminalSymbolLabelMapForGrammarAnalysis do
     if not [labelStringSet hasKey ![lkey string]] then
       error inNonTerminalLocation :
         "this non terminal does not declare the '" + lkey + "' label, but declaration at "
@@ -89,7 +89,7 @@ proc checkLabelMap
 proc handleNonTerminalDeclarations
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis
   ?let @nonterminalDeclarationListAST inNonterminalDeclarationList {
-  for () in inNonterminalDeclarationList do
+  for (mNonterminalName mLabels) in inNonterminalDeclarationList do
     with [mNonterminalName string] in ioNonTerminalMapForGrammarAnalysis  do
       checkLabelMap (
         ![mNonterminalName location]
@@ -112,9 +112,9 @@ proc handleNonTerminalDeclarations
 proc handleNonTerminalDeclarationsFromRuleList
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis
   ?let @syntaxRuleListAST inRuleList {
-  for () in inRuleList do
+  for (mNonterminalName mLabelList) in inRuleList do
     var nonTerminalLabelListAST =@nonTerminalLabelListAST {}
-    for () in mLabelList do
+    for (mLabelName mFormalArguments mEndOfArgumentLocation mSyntaxInstructionList mEndOfInstructionList) in mLabelList do
       nonTerminalLabelListAST += 
         !mLabelName
         !mFormalArguments
@@ -164,7 +164,7 @@ proc transformInstructionList
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
-  for () in inInstructionList do
+  for (mInstruction) in inInstructionList do
     [mInstruction transformInstruction
       !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
       !nonTerminalSymbolMap:inNonTerminalSymbolMap
@@ -184,7 +184,7 @@ proc buildRuleList
   ?!@syntaxComponentListForGrammarAnalysis ioSyntaxComponentListForGrammarAnalysis
   ?!@uint ioAddedNonTerminalCount {
   var productionRulesList =@productionRuleListForGrammarAnalysis {}
-  for () in inRuleList do
+  for (mNonterminalName mLabelList) in inRuleList do
     @uint nonTerminalIndex
     @nonterminalSymbolLabelMapForGrammarAnalysis nonterminalSymbolParametersMap
     [inNonTerminalMapForGrammarAnalysis searchKey !mNonterminalName ?nonTerminalIndex ?nonterminalSymbolParametersMap]

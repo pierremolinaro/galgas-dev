@@ -109,7 +109,7 @@ override method @abstractExtensionSetterAST semanticAnalysis
   end
 #--- Compute setter signature
   var formalParameterListForGeneration =@formalParameterListForGeneration {}
-  for () in self.mAbstractExtensionSetterFormalParameterList do
+  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in self.mAbstractExtensionSetterFormalParameterList do
     formalParameterListForGeneration +=
       !mFormalSelector
       !mFormalArgumentPassingMode
@@ -189,7 +189,7 @@ override method @abstractExtensionSetterForGeneration appendSpecificImplementati
 {
   ioInclusionSet += !"setter-" + [[self.mReceiverType key] fileNameRepresentation] + "-" + [self.mAbstractExtensionSetterName fileNameRepresentation]
   [self.mReceiverType addHeaderFileName !?ioInclusionSet]
-  for () in self.mAbstractExtensionSetterFormalParameterList do
+  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in self.mAbstractExtensionSetterFormalParameterList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
   outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionSetterImplementation

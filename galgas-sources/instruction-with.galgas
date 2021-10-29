@@ -230,7 +230,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
 #--- Check search method
   if self.mSearchMethodNameForErrorSignaling.string != "" then
     @bool found = false
-    for () in [receiverType mMapSearchMethodList] while not found do
+    for (mSearchMethodName mErrorMessage mActionName mLocationAttribute) in [receiverType mMapSearchMethodList] while not found do
       found = mSearchMethodName.string == self.mSearchMethodNameForErrorSignaling.string
     end
     if not found then
@@ -267,7 +267,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- 'do' branch : add attributes as constant
   var localConstantList =@localConstantList {}
-  for () in [receiverType mCurrentTypedPropertyList] do
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in [receiverType mCurrentTypedPropertyList] do
     localConstantList +=
       !mPropertyTypeEntry
       !@lstring.new {!self.mPrefix.string + mPropertyName !self.mEndOfReceiverExpression}
@@ -370,7 +370,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
       ?*
     ]
   end
-  for () in self.mFieldList do
+  for (mValue) in self.mFieldList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic ?targetType]
     if not isPublic then
@@ -384,7 +384,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
 #--- Check search method
   if self.mSearchMethodNameForErrorSignaling.string != "" then
     @bool found = false
-    for () in [targetType mMapSearchMethodList] while not found do
+    for (mSearchMethodName mErrorMessage mActionName mLocationAttribute) in [targetType mMapSearchMethodList] while not found do
       found = mSearchMethodName.string == self.mSearchMethodNameForErrorSignaling.string
     end
     if not found then
@@ -395,7 +395,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- 'do' branch
   @localInitializedVariableList localInitializedVariableList = {}
-  for () in [targetType mCurrentTypedPropertyList] do
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in [targetType mCurrentTypedPropertyList] do
     localInitializedVariableList +=
       !mPropertyTypeEntry
       !@lstring.new {!self.mPrefix.string + mPropertyName !self.mEndOfReceiverExpression}
@@ -551,7 +551,7 @@ override method @readWriteWithInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode
 {
   @string receiverCppName = self.mReceiverVariableCppName
-  for () in self.mStructAttributeList do
+  for (mValue) in self.mStructAttributeList do
     receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]
   end
 #--- key expression

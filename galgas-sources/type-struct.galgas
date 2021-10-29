@@ -49,7 +49,7 @@ override method @structDeclarationAST enterDeclarationInGraph
 {
   let key = @lstring.new {!"@" + self.mStructTypeName ![self.mStructTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for () in self.mStructurePropertyList do
+  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mStructurePropertyList do
     let propertyKey = @lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}
     [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
   end
@@ -88,10 +88,10 @@ override method @structDeclarationAST enterInSemanticContext
   @functionSignature constructorPropertyTypeList = {}
   @typedPropertyList typedPropertyList = {}
   @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
-  for () in self.mStructurePropertyList do
+  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mStructurePropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let propertyTypeEntry]
     @lstring selector = ["" nowhere]
-    for () in mAttributeList do
+    for (mValue) in mAttributeList do
       if mValue.string == selectorFeatureForNewConstructor () then
         selector = mPropertyName
       end
@@ -112,7 +112,7 @@ override method @structDeclarationAST enterInSemanticContext
 #--- Readers
   @getterMap getterMap
   commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?getterMap )
-  for () in typedPropertyList do
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in typedPropertyList do
     enterBaseFinalGetterWithoutArgument (
       !?getterMap
       !?ioSemanticContext.mTypeMap 
@@ -149,7 +149,7 @@ override method @structDeclarationAST enterInSemanticContext
   end
 #--- Generate a "default" constructor ?
   @string defaultConstructorName = "default"
-  for () in typedPropertyList while defaultConstructorName != "" do
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in typedPropertyList while defaultConstructorName != "" do
     if ([mPropertyTypeEntry mDefaultConstructorName] == "") | not [mPropertyTypeEntry mIsConcrete] then
       defaultConstructorName = ""
     end
@@ -216,12 +216,12 @@ override method @structDeclarationAST semanticAnalysis
   end
   @typedPropertyList typedPropertyList = {}
   @propertyIndexMap propertyMap = {}
-  for () in self.mStructurePropertyList do
+  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mStructurePropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     var hasSelector = false
-    for () in mAttributeList do
+    for (mValue) in mAttributeList do
       if mValue.string != selectorFeatureForNewConstructor () then
         error mValue : "a struct property accepts only the %" + selectorFeatureForNewConstructor () + " feature"
       end if hasSelector then

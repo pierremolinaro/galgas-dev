@@ -181,7 +181,7 @@ syntax extension galgas3InstructionsSyntax {
     ?!@unifiedTypeMap ioTypeMap
   {
     [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
-    for () in self.mActualParameterList do
+    for (mActualParameter) in self.mActualParameterList do
       [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
     end
   }
@@ -192,7 +192,7 @@ syntax extension galgas3InstructionsSyntax {
     ?!@unifiedTypeMap ioTypeMap
   {
     [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
-    for () in self.mActualParameterList do
+    for (mActualParameter) in self.mActualParameterList do
       [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
     end
   }
@@ -400,7 +400,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     var parameterCppNameList =@stringlist {}
     var jokerParametersToReleaseList =@stringlist {}
     var inputVariableList =@stringlist {}
-    for () in self.mActualParameterList do
+    for (mActualParameter) in self.mActualParameterList do
       [mActualParameter generateActualParameter
         !?ioInclusionSet
         !?ioTemporaryVariableIndex
@@ -424,7 +424,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
                     + compilerCppName () + ", "
                     + if self.mGrammarHasTranslateFeature then self.mSyntaxDirectedTranslationResultVarName + ", " else "" end
                     + sourceVar
-    for () in parameterCppNameList do
+    for (mValue) in parameterCppNameList do
       ioGeneratedCode += ", " + mValue
     end
     ioGeneratedCode += " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
@@ -479,7 +479,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     var parameterCppNameList =@stringlist {}
     var jokerParametersToReleaseList =@stringlist {}
     var inputVariableList =@stringlist {}
-    for () in self.mActualParameterList do
+    for (mActualParameter) in self.mActualParameterList do
       [mActualParameter generateActualParameter
          !?ioInclusionSet
          !?ioTemporaryVariableIndex
@@ -503,7 +503,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
                     + if self.mGrammarHasTranslateFeature then self.mSyntaxDirectedTranslationResultVarName + ", " else "" end
                     + sourceVar
                     + ", " + nameVar
-    for () in parameterCppNameList do
+    for (mValue) in parameterCppNameList do
       ioGeneratedCode += ", " + mValue
     end
     ioGeneratedCode += " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"

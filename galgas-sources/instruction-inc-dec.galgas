@@ -206,7 +206,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
 #  @string targetVariableCppName
 #  [!?ioVariableMap searchForReadWriteAccess !self.mReceiverName ?targetType ?targetVariableCppName ?*]
 #---
-  for () in self.mStructAttributeList do
+  for (mValue) in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic  ?targetType]
     if not isPublic then
@@ -241,7 +241,7 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
   @unifiedTypeMap-entry targetType
   @string targetVariableCppName
   [!?ioVariableMap searchForReadWriteAccess !self.mReceiverName ?targetType ?targetVariableCppName ?*]
-  for () in self.mStructAttributeList do
+  for (mValue) in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic  ?targetType]
     if not isPublic then
@@ -363,7 +363,7 @@ override method @incDecInstructionForGeneration generateInstruction
 #--- Receiver
   [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverCppName]
   @string receiverCppName = self.mReceiverCppName
-  for () in self.mStructAttributeList do
+  for (mValue) in self.mStructAttributeList do
     receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]
   end
 #--- Invoke incrementation
@@ -391,7 +391,7 @@ override method @incDecNoOVFInstructionForGeneration generateInstruction
 #--- Receiver
   [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverCppName]
   @string receiverCppName = self.mReceiverCppName
-  for () in self.mStructAttributeList do
+  for (mValue) in self.mStructAttributeList do
     receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]
   end
 #--- Invoke incrementation

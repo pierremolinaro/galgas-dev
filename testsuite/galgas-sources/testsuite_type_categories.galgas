@@ -35,7 +35,7 @@ getter @uint64 square -> @uint64 {
 
 getter @uintlist sum -> @uint {
   result = 0
-  for () in self do
+  for (mValue) in self do
     result = result + mValue
   end
 }
@@ -51,7 +51,7 @@ method @uint64 square !@uint64 outResult {
 
 method @uintlist sum !@uint outResult {
   outResult = 0
-  for () in self do
+  for (mValue) in self do
     outResult = outResult + mValue
   end
 }
@@ -74,7 +74,7 @@ setter @uint64list prependSquare ?let@uint64 inValue {
 }
 
 setter @string concatList ?let@stringlist inList {
-  for () in inList do
+  for (mValue) in inList do
     self += mValue
   end
 }

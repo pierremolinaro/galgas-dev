@@ -44,7 +44,7 @@ proc testsuite_foreach_instruction {
     message "  after\n"
   end
   message "--- begin of foreach instruction test 4\n"
-  for () in strList while mValue != "c"
+  for (mValue) in strList while mValue != "c"
   before
     message "  before\n"
   do
@@ -80,12 +80,12 @@ proc testsuite_foreach_instruction {
   set += !"F"
   set += !"G"
   set += !"H"
-  for () in set
+  for (key) in set
   do (idx)
     message "  do '" + key + "' (idx: " + [idx string] + ")\n"
   end
   message "--- begin of foreach instruction test 8\n"
-  for > () in set
+  for > (key) in set
   do (idx)
     message "  do '" + key + "' (idx: " + [idx string] + ")\n"
   end
@@ -99,7 +99,7 @@ proc testsuite_foreach_instruction {
   [!?myData appendByte !6]
   [!?myData appendByte !7]
   [!?myData appendByte !8]
-  for () in myData
+  for (data) in myData
   do (idx)
     message "  do '" + data + "' (idx: " + [idx string] + ")\n"
   end

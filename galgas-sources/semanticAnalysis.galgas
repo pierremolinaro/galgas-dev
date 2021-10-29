@@ -28,7 +28,7 @@ proc checkMethodSignatures
     + " formal parameter(s), but overriden method declares " + [[inReferenceSignature length] string]
     error inReferenceLocation:"overriden method is declared here"
   else
-    for () ref_ in inReferenceSignature, () in inTestedSignature do
+    for (ref_mFormalSelector ref_mFormalArgumentType ref_mFormalArgumentPassingMode ref_mFormalArgumentName) in inReferenceSignature, (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in inTestedSignature do
       if ref_mFormalArgumentPassingMode != mFormalArgumentPassingMode then
         error mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter is declared as "
         + [mFormalArgumentPassingMode formalArgumentMessage] + ", but overriden method declares it as " 
@@ -72,7 +72,7 @@ proc checkGetterSignatures
     + " formal parameter(s), but overriden getter declares " + [[inReferenceSignature length] string]
     error inReferenceLocation:"overriden getter is declared here"
   else
-    for () ref_ in inReferenceSignature, () in inTestedSignature do
+    for (ref_mFormalSelector ref_mFormalArgumentType ref_mFormalArgumentName) in inReferenceSignature, (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in inTestedSignature do
       if mFormalSelector.string != ref_mFormalSelector.string then
         error mFormalSelector
         : "the selector should be '?" + ref_mFormalSelector
@@ -121,7 +121,7 @@ proc buildLocalVariableMapAndSignature
   !@formalParameterListForGeneration outRoutineSignature
 {
   outRoutineSignature = @formalParameterListForGeneration {}
-  for () in inRoutineSignatureAST do
+  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in inRoutineSignatureAST do
     let type = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
     @string formalArgumentCppName
     switch mFormalArgumentPassingMode
@@ -171,7 +171,7 @@ proc analyzeRoutineBody
 {
   var variableMap = @localVarManager.default
 #--- Declare local constants
-  for () in inLocalConstantList do
+  for (mType mName mNoWarningIfUnused mCppName) in inLocalConstantList do
     if mNoWarningIfUnused then
       [!?variableMap insertUsedLocalConstant !mName !mType !mCppName !inAnalysisContext.mSelfObjectCppName]
     else
@@ -180,7 +180,7 @@ proc analyzeRoutineBody
   end
 #--- Enter non mutable instance attributes
   if not [option galgas_cli_options.propertyAccessRequiresSelf value] then
-    for () in inNonMutableTypedAttributeList do
+    for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in inNonMutableTypedAttributeList do
       [!?variableMap insertNonMutableProperty
         !mPropertyName
         !mPropertyTypeEntry
@@ -191,7 +191,7 @@ proc analyzeRoutineBody
   end
 #--- Enter mutable instance attributes
   if not [option galgas_cli_options.propertyAccessRequiresSelf value] then
-    for () in inMutableTypedAttributeList do
+    for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in inMutableTypedAttributeList do
       [!?variableMap insertMutableProperty
         !mPropertyName
         !mPropertyTypeEntry
@@ -209,7 +209,7 @@ proc analyzeRoutineBody
   )
 #---  Analyze instruction list
   outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration {}
-  for () in inInstructionList do
+  for (mInstruction) in inInstructionList do
     [mInstruction analyzeSemanticInstruction
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -237,7 +237,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #---
   var formalArgumentList =@formalInputParameterListForGeneration {}
-  for () in self.mFormalArgumentList do
+  for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName mIsUnused mIsConstant) in self.mFormalArgumentList do
     formalArgumentList +=
       !mFormalSelector
       !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
@@ -270,7 +270,7 @@ override method @externRoutineDeclarationAST semanticAnalysis
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #---
   var formalArgumentList =@formalParameterListForGeneration {}
-  for () in self.mFormalArgumentList do
+  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in self.mFormalArgumentList do
     formalArgumentList +=
       !mFormalSelector
       !mFormalArgumentPassingMode
@@ -358,7 +358,7 @@ proc analyzeFunctionBody
   var variableMap = @localVarManager.default
 #--- Enter instance attributes
   if not [option galgas_cli_options.propertyAccessRequiresSelf value] then
-    for () in inTypedAttributeList do
+    for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in inTypedAttributeList do
       [!?variableMap insertNonMutableProperty
         !mPropertyName
         !mPropertyTypeEntry
@@ -369,7 +369,7 @@ proc analyzeFunctionBody
   end
 #--- Enter formal parameters
   outSignatureForGeneration = @formalInputParameterListForGeneration {}
-  for () in inFunctionSignature do
+  for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName mIsUnused mIsConstant) in inFunctionSignature do
     let parameterType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mFormalArgumentTypeName}
     if mIsConstant then
       let @string cppName = "constinArgument_" + [[mFormalArgumentName string] identifierRepresentation]
@@ -405,7 +405,7 @@ proc analyzeFunctionBody
   [!?variableMap insertOutputFormalArgument !inReturnVariableName !outReturnedType !outResultVariableCppName !outResultVariableCppName]
 #---  Analyze instruction list
   outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration {}
-  for () in inInstructionList do
+  for (mInstruction) in inInstructionList do
     [mInstruction analyzeSemanticInstruction
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -571,7 +571,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
   else
   #---- Analyze filewrapper templates
     @filewrapperTemplateListForGeneration filewrapperTemplateListForGeneration = {}
-    for () in self.mFilewrapperTemplateList do
+    for (mFilewrapperTemplateName mFilewrapperTemplatePath mFilewrapperTemplateFormalInputParameters) in self.mFilewrapperTemplateList do
       let filewrapperTemplateNameForUsefulness = filewrapperTemplateNameForUsefulEntitiesGraph (
         !self.mFilewrapperName
         !mFilewrapperTemplateName
@@ -589,7 +589,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
     #--- Build template variable map
       @templateVariableMap templateVariableMap = {}
       @formalInputParameterListForGeneration filewrapperTemplateFormalInputParameters = {}
-      for () in mFilewrapperTemplateFormalInputParameters do
+      for (mFormalTemplateSelector mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFilewrapperTemplateFormalInputParameters do
         var type =@unifiedTypeMap-entry.searchKey{!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
         let @string cppVarName = "in_" + [[mFormalArgumentName string] identifierRepresentation]
         [!?templateVariableMap insertKey !mFormalArgumentName !type !cppVarName]
@@ -651,7 +651,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
   ]
 #--------------------------------------- Build "indexing" set
   @stringset indexNameSet = {}
-  for () in indexingListAST do
+  for (mIndexName mIndexComment) in indexingListAST do
     indexNameSet += !mIndexName.string
   end
   let @bool hasIndexing = not [indexingDirectory isNowhere]
@@ -785,13 +785,13 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   )
 #---------------------------------------------------------- Unused Non Terminal Symbols
   @unusedNonTerminalSymbolMapForGrammarAnalysis unusedNonTerminalSymbolsForGrammar = {}
-  for () in self.mUnusedNonterminalList do
+  for (mValue) in self.mUnusedNonterminalList do
     [nonTerminalMapForGrammarAnalysis searchKey !mValue ?let @uint nonterminalIndex ?*]
     [!?unusedNonTerminalSymbolsForGrammar insertKey !mValue !nonterminalIndex]
   end
 #---------------------------------------------------------- Non terminal symbols, sorted by index
   @nonTerminalSymbolSortedListForGrammarAnalysis nonTerminalSymbolSortedListForGrammarAnalysis = {}
-  for () in nonTerminalMapForGrammarAnalysis do
+  for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in nonTerminalMapForGrammarAnalysis do
     nonTerminalSymbolSortedListForGrammarAnalysis += !lkey !mNonTerminalIndex !mNonterminalSymbolParametersMap
   end
 #---------------------------------------------------------- Print an tex file for grammar rule list
@@ -809,8 +809,8 @@ override method @galgas3GrammarComponentAST semanticAnalysis
 # for these arguments, we need to include the corresponding type declaration.
   @stringset implementationFileHeader = {}
   for nonTerminal in nonTerminalMapForGrammarAnalysis do
-    for () in nonTerminal.mNonterminalSymbolParametersMap do
-      for () in mFormalParametersList do
+    for (lkey mFormalParametersList) in nonTerminal.mNonterminalSymbolParametersMap do
+      for (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in mFormalParametersList do
         switch mFormalArgumentPassingModeForGrammarAnalysis
         case argumentIn, argumentConstantIn :
           let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mGalgasTypeNameForGrammarAnalysis}
@@ -884,9 +884,9 @@ override method @lexiqueComponentAST semanticAnalysis
   @lexicalRoutineMap lexicalRoutineMap
   buildLexicalRoutineMap ( ?lexicalRoutineMap )
 #--------------------------------------- Add extern routines
-  for () in self.mExternRoutineList do
+  for (mRoutineName mLexicalRoutineFormalArgumentList mErrorMessageList) in self.mExternRoutineList do
     var lexicalRoutineFormalArgumentList =@lexicalRoutineFormalArgumentList {}
-    for () in mLexicalRoutineFormalArgumentList do
+    for (mPassingMode mLexicalTypeName mFormalArgumentName) in mLexicalRoutineFormalArgumentList do
       @lexicalTypeEnum lexicalFormalArgumentType
       [lexicalTypeMap searchKey !mLexicalTypeName ?lexicalFormalArgumentType]
       lexicalRoutineFormalArgumentList += !mPassingMode !lexicalFormalArgumentType ![mFormalArgumentName string]
@@ -897,9 +897,9 @@ override method @lexiqueComponentAST semanticAnalysis
   @lexicalFunctionMap lexicalFunctionMap
   buildLexicalFunctionMap ( ?lexicalFunctionMap )
 #--------------------------------------- Add extern functions
-  for () in self.mExternFunctionList do
+  for (mFunctionName mLexicalFunctionFormalArgumentList mReturnedTypeName) in self.mExternFunctionList do
     @lexicalFunctionFormalArgumentList lexicalFunctionFormalArgumentList = {}
-    for () in mLexicalFunctionFormalArgumentList do
+    for (mLexicalTypeName mFormalArgumentName) in mLexicalFunctionFormalArgumentList do
       @lexicalTypeEnum lexicalFormalArgumentType
       [lexicalTypeMap searchKey !mLexicalTypeName ?lexicalFormalArgumentType]
       lexicalFunctionFormalArgumentList += !lexicalFormalArgumentType ![mFormalArgumentName string]
@@ -927,7 +927,7 @@ override method @lexiqueComponentAST semanticAnalysis
   }
 #--------------------------------------- Build style map
   var styleIndex = 1
-  for () in self.mLexicalStyleList do
+  for (mName mComment) in self.mLexicalStyleList do
     [!?lexiqueAnalysisContext.mStyleMap insertKey !mName !mComment !styleIndex]
     styleIndex ++
   end
@@ -938,13 +938,13 @@ override method @lexiqueComponentAST semanticAnalysis
    !?lexiqueAnalysisContext.mLexicalAttributeMap
   )
 #--------------------------------------- Build terminal map
-  for () in self.mTerminalDeclarationList do
+  for (mName mSentAttributeList mSyntaxErrorMessage mStyle mOptionList) in self.mTerminalDeclarationList do
     @uint terminalStyleIndex = 0
     if [[mStyle string] length] > 0 then
       [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex]
     end
     var argumentTypeList =@lexicalSentValueList {}
-    for () in mSentAttributeList do
+    for (mFormalSelector mAttributeName) in mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType
       [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
@@ -952,7 +952,7 @@ override method @lexiqueComponentAST semanticAnalysis
     [!?lexiqueAnalysisContext.mTerminalMap insertKey !mName !argumentTypeList]
     var isEndOfTemplateMark = false
     var atomicSelection = true
-    for () in mOptionList do
+    for (mValue) in mOptionList do
       if [mValue string] == "nonAtomicSelection" then
         if atomicSelection then
           atomicSelection = false
@@ -975,24 +975,24 @@ override method @lexiqueComponentAST semanticAnalysis
       !atomicSelection
       !terminalStyleIndex
   end
-  for () in self.mLexicalListDeclarationList do
+  for (mName mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in self.mLexicalListDeclarationList do
     @uint terminalStyleIndex = 0
     if [[mStyle string] length] > 0 then
       [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex]
     end
     var argumentTypeList =@lexicalSentValueList {}
-    for () in mSentAttributeList do
+    for (mFormalSelector mAttributeName) in mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType
       [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
     @lexicalExplicitTokenListMap lexicalTokenListMap = {}
     var tokenSortedlist =@tokenSortedlist.emptySortedList{}
-    for () in mEntryList do
+    for (mEntrySpelling mTerminalSpelling mAttributeList) in mEntryList do
       @string syntaxErrorMessage = [[mSyntaxErrorMessage string] stringByReplacingStringByString !"%K" ![mTerminalSpelling string]]
       var isEndOfTemplateMark = false
       var atomicSelection = true
-      for () in mAttributeList do
+      for (mValue) in mAttributeList do
         if [mValue string] == "nonAtomicSelection" then
           if atomicSelection then
             atomicSelection = false
@@ -1022,25 +1022,25 @@ override method @lexiqueComponentAST semanticAnalysis
     [!?lexiqueAnalysisContext.mLexicalTokenListMap insertKey !mName !lexicalTokenListMap !tokenSortedlist !false]
   end
 #--------------------------------------- Build Message map
-  for () in self.mLexicalMessageDeclarationList do
+  for (mMessageName mMessageValue) in self.mLexicalMessageDeclarationList do
     [!?lexiqueAnalysisContext.mLexicalMessageMap insertKey !mMessageName !mMessageValue !false]
   end
 #--------------------------------------- Check rules
-  for () in self.mLexicalRuleList do
+  for (mLexicalRule) in self.mLexicalRuleList do
     [mLexicalRule checkLexicalRule !?lexiqueAnalysisContext]
   end
 #--------------------------------------- Warn for unused messages
-  for () in [lexiqueAnalysisContext mLexicalMessageMap] do
+  for (lkey mLexicalMessage mMessageIsUsed) in [lexiqueAnalysisContext mLexicalMessageMap] do
     if not mMessageIsUsed then
       warning lkey:"unused message"
     end
   end
 #--------------------------------------- Template delimiters
-  for () in self.mTemplateDelimitorList do
+  for (mStartString mOptionList mEndString) in self.mTemplateDelimitorList do
    lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mStartString string]
    lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mEndString string]
    var preservesStartDelimiter = false
-   for () in mOptionList do
+   for (mValue) in mOptionList do
      if [mValue string] != "preserved" then
        error mValue:"only the 'preserved' attribute is allowed here"
      elsif preservesStartDelimiter then
@@ -1053,19 +1053,19 @@ override method @lexiqueComponentAST semanticAnalysis
   end
 #--------------------------------------- Check "indexing" declarations
   if [self.mIndexingDirectory isNowhere] then
-    for () in self.mIndexingListAST do
+    for (mIndexName mIndexComment) in self.mIndexingListAST do
       error mIndexName : "indexing declaration requires one 'indexing in \"path\";' declaration"
     end
   end
   @stringset indexNameSet = {}
-  for () in self.mIndexingListAST do
+  for (mIndexName mIndexComment) in self.mIndexingListAST do
     if [indexNameSet hasKey ![mIndexName string]] then
       error mIndexName : "the '" + mIndexName + "' index is already declared"
     end
     indexNameSet += ![mIndexName string]
   end
 #--------------------------------------- Template replacements
-  for () in self.mTemplateReplacementList do
+  for (mMatchString mReplacementString mReplacementFunction) in self.mTemplateReplacementList do
    lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mMatchString string]
    lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mReplacementString string]
    # § TODO Check replacement function
@@ -1268,7 +1268,7 @@ proc enterNonterminalNonTerminalInMapAndCheck
     let @stringset missingLabelSet = firstDeclarationLabelSet - reDeclarationLabelSet
     if [missingLabelSet count] > 0 then
       @string s = ""
-      for () in missingLabelSet do
+      for (key) in missingLabelSet do
         s += "\n-  " + key
       end
       error inNonTerminalName
@@ -1277,16 +1277,16 @@ proc enterNonterminalNonTerminalInMapAndCheck
     let @stringset newLabelSet = reDeclarationLabelSet - firstDeclarationLabelSet
     if [newLabelSet count] > 0 then
       var s = ""
-      for () in newLabelSet do
+      for (key) in newLabelSet do
         s += "\n-  " + key
       end
       error inNonTerminalName
       : "the '" + inNonTerminalName + "' nonterminal is redeclared with the new label(s):" + s
     end
     if ([missingLabelSet count] == 0) & ([newLabelSet count] == 0) then
-      for aLabel in mLabelMap, () new_ in inNonterminalLabelMap do
+      for aLabel in mLabelMap, (new_lkey new_mSignatureForGeneration new_mSignature new_mEndOfArgumentLocation) in inNonterminalLabelMap do
         @formalParameterSignature newSignature = {}
-        for () in new_mSignature do
+        for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in new_mSignature do
           newSignature += !mFormalSelector !mFormalArgumentType !mFormalArgumentPassingMode !mFormalArgumentName
         end
         checkMethodSignatures (
@@ -1310,12 +1310,12 @@ proc buildNonterminalDeclarationsMap
   !@nonterminalMap outNonterminalDeclarationMap {
   outNonterminalDeclarationMap = @nonterminalMap {}
 #--- Nonterminal declaration list
-  for () in inNonterminalDeclarationList do
+  for (mNonterminalName mLabels) in inNonterminalDeclarationList do
     var nonterminalLabelMap =@nonterminalLabelMap {}
-    for () in mLabels do
+    for (mLabelName mFormalArgumentList mEndOfArgumentLocation) in mLabels do
       var signatureForGeneration =@formalParameterListForGeneration {}
       var signature =@formalParameterSignature {}
-      for () in mFormalArgumentList do
+      for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFormalArgumentList do
         let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
         signatureForGeneration += !mFormalSelector !mFormalArgumentPassingMode !t !mFormalArgumentName ![mFormalArgumentName string]
         signature += !mFormalSelector !t !mFormalArgumentPassingMode !mFormalArgumentName.string
@@ -1666,7 +1666,7 @@ proc analyzeSyntaxInstructionList
 #--- Begin branch
   [!?ioVariableMap openBranch]
 #--- Instruction list
-  for () in inSyntaxInstructionListAST do
+  for (mInstruction) in inSyntaxInstructionListAST do
     [mInstruction analyzeSyntaxInstruction
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -1719,13 +1719,13 @@ proc semanticAnalysisOfRuleLabel
   )
 #---
   outSignature = @formalParameterSignature {}
-  for () in outSignatureForGeneration do
+  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in outSignatureForGeneration do
     outSignature += !mFormalSelector !mFormalArgumentType !mFormalArgumentPassingMode !mFormalArgumentName.string
   end
 #--- Semantic analysis of instruction list
   outInstructionListForGeneration = @semanticInstructionListForGeneration {}
   var localVariableCppNameList =@stringlist {}
-  for () in inSyntaxInstructionList do
+  for (mInstruction) in inSyntaxInstructionList do
     [mInstruction analyzeSyntaxInstruction
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -1773,12 +1773,12 @@ proc semanticAnalysisOfSyntaxComponent
     ?var @nonterminalMap nonterminalMap
   )
 #------------ Build nonterminal map from rule headers
-  for () in inRuleList do
+  for (mNonterminalName mLabelList) in inRuleList do
     @nonterminalLabelMap nonterminalLabelMap = {}
-    for () in mLabelList do
+    for (mLabelName mFormalArguments mEndOfArgumentLocation mSyntaxInstructionList mEndOfInstructionList) in mLabelList do
       @formalParameterListForGeneration signatureForGeneration = {}
       @formalParameterSignature signature = {}
-      for () in mFormalArguments do
+      for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFormalArguments do
         let type = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
         signatureForGeneration +=
           !mFormalSelector
@@ -1805,12 +1805,12 @@ proc semanticAnalysisOfSyntaxComponent
   @uint selectMethodCount = 0
   @ruleDeclarationList ruleDeclarationList = {}
   @uint newRuleIndex = 0
-  for () in inRuleList do
+  for (mNonterminalName mLabelList) in inRuleList do
   #---
     @ruleLabelImplementationList ruleLabelImplementationList = {}
     @uint localSelectMethodCount = selectMethodCount
     [nonterminalMap searchKey !mNonterminalName ?*]
-    for () in mLabelList do
+    for (mLabelName mFormalArguments mEndOfArgumentLocation mSyntaxInstructionList mEndOfInstructionList) in mLabelList do
       localSelectMethodCount = selectMethodCount
       @formalParameterListForGeneration signatureForGeneration
       @formalParameterSignature signature

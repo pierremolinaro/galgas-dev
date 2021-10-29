@@ -61,7 +61,7 @@ override method @selectInstruction transformInstruction
   ioAddedNonTerminalIndex ++
 
   var selectBranchList =@branchListForGrammarAnalysis {}
-  for () in self.mSelectBranchList do
+  for (mSyntaxInstructionList mEndOf_instructions) in self.mSelectBranchList do
     var syntaxInstructionList =@syntaxInstructionListForGrammarAnalysis {}
     transformInstructionList (
       !mSyntaxInstructionList
@@ -103,7 +103,7 @@ override method @selectInstruction analyzeSyntaxInstruction
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- 'or' blocks
   var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration {}
-  for () in self.mSelectBranchList do
+  for (mSyntaxInstructionList mEndOf_instructions) in self.mSelectBranchList do
     @semanticInstructionListForGeneration instructionList
     analyzeSyntaxInstructionList (
       !inUsefulnessCallerEntityName
@@ -151,7 +151,7 @@ override method @selectInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
   var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration {}
-  for () in self.mListOfSemanticInstructionListForGeneration do
+  for (mInstructionList mEndOfInstructionList) in self.mListOfSemanticInstructionListForGeneration do
     listOfSemanticInstructionListForGeneration +=
       !syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)
       !mEndOfInstructionList
@@ -183,7 +183,7 @@ override getter @selectInstructionForGeneration compareInstructionSyntaxSignatur
         + [[[si mListOfSemanticInstructionListForGeneration] length] string]
       outOk = false
     end
-    for () ref_ in self.mListOfSemanticInstructionListForGeneration, () test_ in [si mListOfSemanticInstructionListForGeneration] while outOk do
+    for (ref_mInstructionList ref_mEndOfInstructionList) in self.mListOfSemanticInstructionListForGeneration, (test_mInstructionList test_mEndOfInstructionList) in [si mListOfSemanticInstructionListForGeneration] while outOk do
       outOk = compareSyntaxSignature (!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList)    
     end
   case >= @syntaxInstructionForGeneration si :
@@ -213,7 +213,7 @@ override method @selectInstructionForGeneration generateInstruction
 #  ioGeneratedCode .= "//-------- @selectInstructionForGeneration\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   ioGeneratedCode += "switch (select_" + [self.mSyntaxComponentName identifierRepresentation] + "_" + [self.mChoiceIndex string] + " (" + compilerCppName () + ")) {\n"
-  for () in self.mListOfSemanticInstructionListForGeneration do(IDX)
+  for (mInstructionList mEndOfInstructionList) in self.mListOfSemanticInstructionListForGeneration do(IDX)
     ioGeneratedCode += "case " + [IDX + 1 string] + ": {\n"
     generateInstructionList (
       !?ioInclusionSet

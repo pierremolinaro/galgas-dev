@@ -131,10 +131,10 @@ syntax extension galgas3InstructionsSyntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @matchInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  for () in self.mMatchedExpressionList do
+  for (mExpression mEndOfExpressionLocation) in self.mMatchedExpressionList do
     [mExpression enterExpressionInSemanticContext !?ioTypeMap]
   end
-  for () in self.mMatchInstructionBranchList do
+  for (mMatchEntryList mEndOfMatchEntryList mMatchBranchInstructionList mEndOf_instructionList) in self.mMatchInstructionBranchList do
     [mMatchBranchInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
   end
 }
@@ -150,7 +150,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
   var expressionList =@semanticExpressionListForGeneration {}
-  for () in self.mMatchedExpressionList do
+  for (mExpression mEndOfExpressionLocation) in self.mMatchedExpressionList do
   #--- Analyze expression
     [mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
@@ -171,12 +171,12 @@ override method @matchInstructionAST analyzeSemanticInstruction
 #--- Analyze branches
   [!?ioVariableMap openOverrideForSelectBlock]
   var matchInstructionBranchList =@matchInstructionBranchListForGeneration {}
-  for () in self.mMatchInstructionBranchList do
+  for (mMatchEntryList mEndOfMatchEntryList mMatchBranchInstructionList mEndOf_instructionList) in self.mMatchInstructionBranchList do
   #--- Match list
     var localConstantList =@localConstantList {}
     var matchListForGeneration = @matchListForGeneration {}
     if [expressionList length] == [mMatchEntryList length] then
-      for () in expressionList, () in mMatchEntryList do
+      for (mExpression) in expressionList, (mIsType mTypeNameOrEnumerationConstantName mLocalConstantName) in mMatchEntryList do
         let type = [mExpression mResultType]
         if [[type mTypeKindEnum] isClassType] then
           if mIsType then
@@ -294,20 +294,20 @@ override method @matchInstructionForGeneration generateInstruction
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
   var receiverList =@stringlist {}
-  for () in self.mMatchedExpressionList do
+  for (mExpression) in self.mMatchedExpressionList do
     [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string variable]
     receiverList += !variable
   end
   ioGeneratedCode += "if ("
-  for () in receiverList
+  for (mValue) in receiverList
     do ioGeneratedCode += mValue + ".isValid ()"
     between ioGeneratedCode += " && "
   end
   ioGeneratedCode += ") {\n"
   [!?ioGeneratedCode incIndentation !2]
-  for () in self.mMatchInstructionBranchList do
+  for (mMatchListForGeneration mMatchBranchInstructionList) in self.mMatchInstructionBranchList do
     ioGeneratedCode += "if ("
-    for () in mMatchListForGeneration, () in receiverList do
+    for (mIsType mTypeNameOrEnumerationConstantName mLocalConstantName) in mMatchListForGeneration, (mValue) in receiverList do
       if mIsType then
         ioGeneratedCode += "(NULL != dynamic_cast <const cPtr_" + [mTypeNameOrEnumerationConstantName identifierRepresentation]
                         + " *> (" + mValue + ".ptr ()))"

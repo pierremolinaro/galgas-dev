@@ -36,7 +36,7 @@ syntax extension galgas3InstructionsSyntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @procCallInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  for () in self.mActualParameterList do
+  for (mActualParameter) in self.mActualParameterList do
     [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
   end
 }
@@ -110,7 +110,7 @@ override method @procCallInstructionForGeneration generateInstruction
   @stringlist parameterCppNameList = {}
   @stringlist jokerParametersToReleaseList = {}
   @stringlist inputVariableList = {}
-  for () in self.mActualParameterList do
+  for (mActualParameter) in self.mActualParameterList do
     [mActualParameter generateActualParameter
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
@@ -124,7 +124,7 @@ override method @procCallInstructionForGeneration generateInstruction
   end
 #--- Generate method call
   ioGeneratedCode += "routine_" + [[self.mRoutineName string] identifierRepresentation] + " ("
-  for () in parameterCppNameList do
+  for (mValue) in parameterCppNameList do
     ioGeneratedCode += mValue + ", "
   end
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]

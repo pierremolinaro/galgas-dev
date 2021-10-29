@@ -85,35 +85,50 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
     var loop = true
     var nombreModifications = 0
     while loop {
-      print ("--------------------------------------------------------------------------------------------")
-      let (s, status) = runHiddenCommand ("/usr/local/bin/galgas", ["--error-anonymous-for-instruction", "-q", "--no-color", "--max-errors=1", inCheminFichierGALGAS])
+      print (String (repeating: "-", count: 79))
+      let (s, status) = runHiddenCommand ("/usr/local/bin/galgas", ["--error-anonymous-for-instruction", "--no-color", "--max-errors=1", inCheminFichierGALGAS])
       if status == 0 {
         print (BOLD_GREEN + "Succès !" + ENDC)
         loop = false
         ok = true
       }else if status == 1 {
+        print (CYAN + s + ENDC)
         let lines = s.components (separatedBy: "\n")
-        let line1 = lines [0]
-        let line2 = lines [1]
-        print (line1)
-        print (line2)
-        loop = line2.hasPrefix ("semantic error #1: 'value class' is obsolete, use 'refclass'")
+        var lineIndex = 0
+        var found = false
+        while (lineIndex < lines.count) && !found {
+          found = lines [lineIndex].hasPrefix ("semantic error #1: anonymous 'for' enumerated object (due to '--error-anonymous-for-instruction' option)")
+          lineIndex += 1
+        }
+        loop = found
         if !loop {
           print (BOLD_RED + "Erreur non gérée" + ENDC)
         }else{
-          let c = line1.components (separatedBy: ":")
+          let lineFixIt = lines [lineIndex + 2]
+          print ("  Ligne Fixit : '\(lineFixIt)'")
+          let errorMessageLine = lines [lineIndex - 2]
+          let c = errorMessageLine.components (separatedBy: ":")
           assert (c.count == 5)
           let fichier = c [0]
           let ligne = Int (c [1])!
-          let colonne = Int (c[2])!
-          print (BOLD_BLUE + "Erreur détectée dans '\(fichier)', ligne \(ligne), colonne \(colonne)" + ENDC)
+          let premierCaractère = Int (c[2])! - 1
+          let dernierCaractère = Int (c[3])! - 1
+          print (BOLD_BLUE + "  Erreur détectée : ligne \(ligne), premier caractère \(premierCaractère), dernier \(dernierCaractère)" + ENDC)
           let contents = try! String (contentsOf: URL (fileURLWithPath: fichier))
           var lignesDuFichier = contents.components (separatedBy: "\n")
           let ligneConcernée = lignesDuFichier [ligne - 1]
-          print ("line concernée '\(ligneConcernée)'")
-          let components = ligneConcernée.components (separatedBy: "valueclass @")
-          let ligneModifiée = components.joined (separator: "refclass @")
-          print ("ligne modifiée '\(ligneModifiée)'")
+          print ("  line concernée '\(ligneConcernée)'")
+          var préfixe = ligneConcernée
+          préfixe.removeLast (ligneConcernée.count - premierCaractère)
+          print ("  Préfixe '\(préfixe)'")
+          var suffixe = ligneConcernée
+          suffixe.removeFirst (dernierCaractère + 1)
+          print ("  Suffixe '\(suffixe)'")
+          var chaîneRemplacement = lineFixIt
+          chaîneRemplacement.removeFirst (24) // "Fix-it, replace with " suivi de ZeroWidthSpace
+          print ("  Remplacement '\(chaîneRemplacement)'")
+          let ligneModifiée = préfixe + chaîneRemplacement + suffixe
+          print ("  ligne modifiée '\(ligneModifiée)'")
           lignesDuFichier [ligne - 1] = ligneModifiée
           let newContents = lignesDuFichier.joined (separator: "\n")
           let data : Data = newContents.data (using: .utf8, allowLossyConversion: false)!

@@ -110,7 +110,7 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
 override method @filewrapperTemplateInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  for () in self.mExpressions do
+  for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions do
     [mExpression enterExpressionInSemanticContext !?ioTypeMap]
   end
 }
@@ -153,7 +153,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
     : effectiveParameterList
   else
     effectiveParameterList = {}
-    for () in self.mExpressions, () in templateSignature do
+    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType mFormalArgumentName) in templateSignature do
       if mFormalSelector.string != mActualSelector.string then
         error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
@@ -305,7 +305,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
 #---
   ioInclusionSet += !"filewrapper-" + self.mFilewrapperName
   var parameterList =@stringlist {}
-  for () in self.mActualOutputParameterList do
+  for (mExpression) in self.mActualOutputParameterList do
     @string parameter
     [mExpression generateExpression
       !?ioGeneratedCode
@@ -318,7 +318,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
   end
   outCppExpression = "GALGAS_string (filewrapperTemplate_" + [self.mFilewrapperName identifierRepresentation] + "_" + [self.mFilewrapperTemplateName identifierRepresentation]
                   + " (" + compilerCppName ()
-  for () in parameterList do
+  for (mValue) in parameterList do
     outCppExpression += ", " + mValue
   end
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]

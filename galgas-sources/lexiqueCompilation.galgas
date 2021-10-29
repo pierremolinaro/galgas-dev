@@ -330,7 +330,7 @@ override method @lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgumen
     + [[lexicalFormalTypeList length] string] + " actual argument(s)"
   end
 #--- Check actual argument against formal parameters
-  for () in lexicalFormalTypeList, () in self.mFunctionActualArgumentList do
+  for (mLexicalType mArgumentNameForComment) in lexicalFormalTypeList, (mLexicalActualInputArgument) in self.mFunctionActualArgumentList do
     [mLexicalActualInputArgument checkLexicalFunctionCallArgument
       !?ioLexiqueAnalysisContext
       !mLexicalType
@@ -445,7 +445,7 @@ override method @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
     + [[lexicalFormalTypeList length] string] + " actual argument(s)"
   end
 #--- Check actual argument against formal parameters
-  for () in lexicalFormalTypeList, () in self.mFunctionActualArgumentList do
+  for (mLexicalType mArgumentNameForComment) in lexicalFormalTypeList, (mLexicalActualInputArgument) in self.mFunctionActualArgumentList do
     [mLexicalActualInputArgument checkLexicalFunctionCallArgument
       !?ioLexiqueAnalysisContext
       !mLexicalType
@@ -518,7 +518,7 @@ abstract method @lexicalInstructionAST checkLexicalInstruction
 override method @lexicalStructuredSendInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap {
-  for () in self.mLexicalSendSearchList do
+  for (mAttributeName mSearchListName) in self.mLexicalSendSearchList do
     [!?ioLexiqueAnalysisContext.mLexicalTokenListMap setMShouldBeGeneratedForKey !true !mSearchListName.string]
     [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey !mAttributeName ?*]
   end
@@ -538,15 +538,15 @@ override method @lexicalSimpleSendInstructionAST checkLexicalInstruction
 override method @lexicalRepeatInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap ioTagMap {
-  for () in self.mLexicalWhileBranchList do
+  for (mWhileExpression mWhileInstructionList) in self.mLexicalWhileBranchList do
     [mWhileExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
     var tagMap =@lexicalTagMap.mapWithMapToOverride{!ioTagMap}
-    for () in mWhileInstructionList do
+    for (mInstruction) in mWhileInstructionList do
       [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
     end
   end
   var tagMap =@lexicalTagMap.mapWithMapToOverride{!ioTagMap}
-  for () in self.mRepeatedInstructionList do
+  for (mInstruction) in self.mRepeatedInstructionList do
     [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
   end
 }
@@ -556,15 +556,15 @@ override method @lexicalRepeatInstructionAST checkLexicalInstruction
 override method @lexicalSelectInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap  ioTagMap {
-  for () in self.mLexicalSelectBranchList do
+  for (mSelectExpression mSelectInstructionList) in self.mLexicalSelectBranchList do
     [mSelectExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
     var tagMap =@lexicalTagMap.mapWithMapToOverride{!ioTagMap}
-    for () in mSelectInstructionList do
+    for (mInstruction) in mSelectInstructionList do
       [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
     end
   end
   var tagMap =@lexicalTagMap.mapWithMapToOverride{!ioTagMap}
-  for () in self.mDefaultInstructionList do
+  for (mInstruction) in self.mDefaultInstructionList do
     [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
   end
 }
@@ -590,7 +590,7 @@ override method @lexicalRoutineInstructionAST checkLexicalInstruction
     + [lexicalRoutineFormalArgumentList length] + " actual argument(s)"
   end
 #--- Check actual argument against formal parameters
-  for () in lexicalRoutineFormalArgumentList, () in self.mActualArgumentList do
+  for (mLexicalFormalArgumentMode mLexicalFormalArgumentType mArgumentNameForComment) in lexicalRoutineFormalArgumentList, (mLexicalRoutineActualArgument) in self.mActualArgumentList do
     [mLexicalRoutineActualArgument checkLexicalRoutineCallArgument
       !?ioLexiqueAnalysisContext
       !mLexicalFormalArgumentMode
@@ -605,7 +605,7 @@ override method @lexicalRoutineInstructionAST checkLexicalInstruction
     + [[routineErrorMessageList length] string] + " error message(s)"
   end
 #--- Check error messages are actually defined
-  for () in self.mErrorMessageList do
+  for (mValue) in self.mErrorMessageList do
     with mValue in !?ioLexiqueAnalysisContext.mLexicalMessageMap error message searchKey  do
       mMessageIsUsed = true
     end
@@ -681,7 +681,7 @@ override method @lexicalExplicitRuleAST checkLexicalRule
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
   [self.mLexicalRuleExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
   @lexicalTagMap tagMap = {}
-  for () in self.mInstructionList do
+  for (mInstruction) in self.mInstructionList do
     [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
   end
 }

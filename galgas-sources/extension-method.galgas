@@ -264,7 +264,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation
     ] 
   else
     [self.mReceiverType addHeaderFileName !?ioInclusionSet]
-    for () in self.mExtensionMethodFormalParameterList do
+    for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in self.mExtensionMethodFormalParameterList do
       [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
     end
     @unifiedTypeMap-entry baseType = self.mReceiverType

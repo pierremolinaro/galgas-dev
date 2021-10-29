@@ -121,7 +121,7 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
   end
 #---
   var terminalCheckAssignementList =@terminalCheckAssignementList {}
-  for () in self.mActualInputParameterList, () in sentAttributeList do
+  for (mActualSelector mInputParameter) in self.mActualInputParameterList, (mLexicalFormalSelector mLexicalAttributeName mLexicalType) in sentAttributeList do
     [mInputParameter analyzeInputParameter
       !inAnalysisContext
       !mLexicalType
@@ -135,7 +135,7 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
     end
   end
 #---
-  for () in self.mIndexingKeyList do
+  for (mValue0 mValue1) in self.mIndexingKeyList do
     if not [inIndexNameSet hasKey ![mValue0 string]] then
       error mValue0 : "the '" + mValue0 + "' indexing name is not declared by the lexique" fixit { replace inIndexNameSet }
     end
@@ -235,7 +235,7 @@ override method @terminalCheckInstructionForGeneration generateInstruction
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
 #--- Get synthetized attributes
-  for () in self.mTerminalCheckAssignementList do
+  for (mTypeName mTargetVarCppName mSourceLexicalAttributeName) in self.mTerminalCheckAssignementList do
     if mTypeName != "" then
       ioGeneratedCode += "GALGAS_" + [mTypeName identifierRepresentation] + " "
     else
@@ -245,7 +245,7 @@ override method @terminalCheckInstructionForGeneration generateInstruction
                     + " () ;\n"
   end
 #--- Indexing
-  for () in self.mIndexingKeyList do
+  for (mValue0 mValue1) in self.mIndexingKeyList do
     ioGeneratedCode += compilerCppName ()
     ioGeneratedCode += "->enterIndexing (C_Lexique_" + self.mLexiqueIdentifier + "::kIndexing_"
     ioGeneratedCode += [mValue0 identifierRepresentation]

@@ -135,7 +135,7 @@ rule <element>
     s += [[[name location] line] string]
     s += ":" + [[[name location] column] string]
     s += ":" + [[[name location] locationIndex] string] + " {"
-    for () in  attributeMap do
+    for (lkey value) in  attributeMap do
       s += "'" + lkey + "' "
       s += [[[lkey location] line] string]
       s += ":" + [[[lkey location] column] string]

@@ -169,7 +169,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
     + [[self.mExpressions length] string] + " parameter(s)"
   else
     var effectiveParameterList =@semanticExpressionListForGeneration {}
-    for () in self.mExpressions, () in addAssignOperatorArguments do
+    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType mFormalArgumentName) in addAssignOperatorArguments do
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph

@@ -90,7 +90,7 @@ syntax extension galgas3ExpressionSyntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @collectionValueAST enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  for () in self.mElementList do
+  for (mElement) in self.mElementList do
     [mElement enterInSemanticContext !?ioTypeMap]
   end
 }
@@ -127,7 +127,7 @@ override method @collectionValueAST analyzeSemanticExpression
       }
     else
       @collectionValueElementListForGeneration collectionValueElementListForGeneration = {}
-      for () in self.mElementList do
+      for (mElement) in self.mElementList do
         [mElement analyze
           !inUsefulnessCallerEntityName
           !?ioUsefulEntitiesGraph
@@ -214,7 +214,7 @@ override method @expressionListCollectionValue analyze
     + [self.mExpressionList length] + " element(s)" : semanticExpressionListForGeneration
   else
     semanticExpressionListForGeneration = @semanticExpressionListForGeneration {}
-    for expression in self.mExpressionList, () in formalParameterTypeList do
+    for expression in self.mExpressionList, (mFormalSelector mFormalArgumentType mFormalArgumentName) in formalParameterTypeList do
       [expression.mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
@@ -306,7 +306,7 @@ override method @expressionListCollectionForGeneration generateCollectionElement
   ?let @string inCppTargetVar {
 #--- Parameters
   var parameterList = @stringlist {}
-  for () in self.mExpressionList do
+  for (mExpression) in self.mExpressionList do
     [mExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
@@ -320,7 +320,7 @@ override method @expressionListCollectionForGeneration generateCollectionElement
   ioGeneratedCode += inCppTargetVar
 #--- Call add assign (+=) operator
   ioGeneratedCode += ".addAssign_operation ("
-  for () in parameterList
+  for (mValue) in parameterList
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
@@ -353,7 +353,7 @@ override method @expressionCollectionForGeneration generateExpression
   ioGeneratedCode += "GALGAS_" + [self.mResultType identifierRepresentation] + " " + outCppExpression
      + " = GALGAS_" +  [self.mResultType identifierRepresentation] + "::constructor_" + [[self.mResultType mDefaultConstructorName] identifierRepresentation] + " (" + [self.mLocation sourceFile] + ") ;\n"
 #--- Add Elements
-  for () in self.mElementList do
+  for (mElement) in self.mElementList do
     [mElement generateCollectionElementCode
       !self.mResultType
       !?ioGeneratedCode

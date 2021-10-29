@@ -257,7 +257,7 @@ override method @extensionGetterForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  for () in self.mExtensionGetterFormalParameterList do
+  for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in self.mExtensionGetterFormalParameterList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
   [self.mResultType addHeaderFileName !?ioInclusionSet] 

@@ -37,7 +37,7 @@ syntax extension galgas3ExpressionSyntax {
 method @actualOutputExpressionList enterInSemanticContext 
   ?!@unifiedTypeMap ioTypeMap
 {
-  for () in self do
+  for (mActualSelector mExpression mEndOfExpressionLocation) in self do
     [mExpression enterExpressionInSemanticContext !?ioTypeMap]
   end
 }

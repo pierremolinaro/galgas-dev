@@ -194,7 +194,7 @@ override method @nonterminalInstructionForGeneration generateInstruction
   var parameterCppNameList =@stringlist {}
   var jokerParametersToReleaseList =@stringlist {}
   var inputVariableList =@stringlist {}
-  for () in self.mActualParameterList do
+  for (mActualParameter) in self.mActualParameterList do
     [mActualParameter generateActualParameter
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
@@ -212,7 +212,7 @@ override method @nonterminalInstructionForGeneration generateInstruction
     ioGeneratedCode += "C_String " + sdtResultVarName + " ;\n"
   end
   ioGeneratedCode += "nt_" + [self.mNonterminalName identifierRepresentation] + "_" + [self.mLabelName identifierRepresentation] + " ("
-  for () in parameterCppNameList do
+  for (mValue) in parameterCppNameList do
     ioGeneratedCode += mValue + ", "
   end
   if inGenerateSyntaxDirectedTranslationString then
@@ -227,7 +227,7 @@ override method @nonterminalInstructionForGeneration generateInstruction
     !?ioGeneratedCode
   ]
 #--- Release temporary variables
-  for () in jokerParametersToReleaseList do
+  for (mValue) in jokerParametersToReleaseList do
     ioGeneratedCode += mValue + ".drop () ; // Release temporary input variables (joker in source)\n"
   end
 }

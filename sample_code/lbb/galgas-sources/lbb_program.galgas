@@ -13,9 +13,9 @@ message "a source text file with the .lbb extension"
   grammar lbb_grammar in inSourceFile ?programAST
 #--- Build box type map
   @boxTypeMap boxTypeMap = {}
-  for () in  [programAST mBoxTypeListAST] do
+  for (mBoxTypeName mPortNameList) in  [programAST mBoxTypeListAST] do
     @stringset portStringSet = {}
-    for () in  mPortNameList do
+    for (mValue) in  mPortNameList do
       if [portStringSet hasKey !mValue.string] then
         error mValue : "the '" + mValue + "' port is already declared"
       end
@@ -25,7 +25,7 @@ message "a source text file with the .lbb extension"
   end
 #--- Build box map and connections
   @boxInstanceMap boxInstanceMap = .emptyMap
-  for () in  [programAST mBoxInstanceListAST] do
+  for (mBoxTypeName mBoxInstanceName mConnectionList) in  [programAST mBoxInstanceListAST] do
     @lstringlist portNameList
     [boxTypeMap searchKey !mBoxTypeName ?portNameList]
     if [portNameList length] != [mConnectionList length] then
@@ -34,7 +34,7 @@ message "a source text file with the .lbb extension"
       + [portNameList length] + " ports"
     end
     @connectionMap connectionMap = {}
-    for () in  portNameList, () in  mConnectionList do
+    for (mValue) in  portNameList, (mConnectedBoxName mOppositePortName) in  mConnectionList do
       @boxInstanceMap-entry connectedBoxEntry
       [@boxInstanceMap-entry makeEntry !?boxInstanceMap !mConnectedBoxName ?connectedBoxEntry]
       [!?connectionMap insertKey !mValue !connectedBoxEntry !mOppositePortName]
@@ -42,13 +42,13 @@ message "a source text file with the .lbb extension"
     [!?boxInstanceMap insertKey !mBoxInstanceName !connectionMap]
   end
 #--- Raise an error for every undefined box
-  for () in  [boxInstanceMap unsolvedEntryList] do
+  for (mValue) in  [boxInstanceMap unsolvedEntryList] do
     error mValue : "the '" + mValue + "' box is not defined"
   end
 #--- Check connections
   if @uint. errorCount == 0 then
-    for () box_ in  boxInstanceMap do
-      for () in  box_mConnectionMap do
+    for (box_lkey box_mConnectionMap) in  boxInstanceMap do
+      for (lkey mBoxEntry mOppositePortName) in  box_mConnectionMap do
         @connectionMap oppositeConnectionMap = [mBoxEntry mConnectionMap]
         @boxInstanceMap-entry oppositeOfOppositeBox
         @lstring myPortName

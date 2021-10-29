@@ -520,12 +520,12 @@ proc printPredefinedLexicalActions {
 #--------------------------------------- Display lexical routines
   @string s = ""
   s += "**************** Prefined lexical routines  ****************\n"
-  for () in lexicalRoutineMap do
+  for (lkey mLexicalRoutineFormalArgumentList mErrorMessageList mIsExtern) in lexicalRoutineMap do
     s += [lkey string]
-    for () in mLexicalRoutineFormalArgumentList do
+    for (mLexicalFormalArgumentMode mLexicalFormalArgumentType mArgumentNameForComment) in mLexicalRoutineFormalArgumentList do
       s += " " + [mLexicalFormalArgumentMode lexicalFormalModeName] + "@" + [mLexicalFormalArgumentType lexicalTypeBaseName] + " " + mArgumentNameForComment
     end
-    for () in mErrorMessageList
+    for (mValue) in mErrorMessageList
     before s += " error"
     do s += " " + mValue
     between s += ","
@@ -537,9 +537,9 @@ proc printPredefinedLexicalActions {
   buildLexicalFunctionMap (?lexicalFunctionMap )
 #--------------------------------------- Display lexical functions
   s += "**************** Prefined lexical functions ****************\n"
-  for () in lexicalFunctionMap do
+  for (lkey mLexicalTypeList mReturnedLexicalType mReplacementFunctionName mIsExtern) in lexicalFunctionMap do
     s += [lkey string]
-    for () in mLexicalTypeList do
+    for (mLexicalType mArgumentNameForComment) in mLexicalTypeList do
       s += " ?@" + [mLexicalType lexicalTypeBaseName]+ " " + mArgumentNameForComment
     end
     s += " -> @" + [mReturnedLexicalType lexicalTypeBaseName] + " ;\n"

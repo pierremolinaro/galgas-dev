@@ -124,7 +124,7 @@ override method @structuredCastInstructionAST enterInstructionInSemanticContext
 {
   [self.mCastExpression enterExpressionInSemanticContext !?ioTypeMap]
   [self.mElseInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
-  for () in self.mCastInstructionBranchList do
+  for (mTypeName mConstantVarName mInstructionList mTypeComparisonKind mEndOfInstructions) in self.mCastInstructionBranchList do
     [mInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
   end
 }
@@ -153,7 +153,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- Branches
   var castBranchList =@castInstructionBranchListForGeneration {}
-  for () in self.mCastInstructionBranchList do
+  for (mTypeName mConstantVarName mInstructionList mTypeComparisonKind mEndOfInstructions) in self.mCastInstructionBranchList do
   #--- Get named type
     let type = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
   #--- Check named type is a descendant of receiver type
@@ -258,7 +258,7 @@ override method @structuredCastInstructionForGeneration generateInstruction
 #---
   ioGeneratedCode += "if (" + castCppVarName + ".isValid ()) {\n"
   [!?ioGeneratedCode incIndentation !2]
-  for () in self.mCastBranchList do
+  for (mTypeComparisonKind mType mCastedVarCppName mInstructionList) in self.mCastBranchList do
    [mType addHeaderFileName !?ioInclusionSet]
     switch mTypeComparisonKind
     case equal :

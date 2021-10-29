@@ -42,7 +42,7 @@ override method @outputInputActualParameterForGeneration generateActualParameter
     [t addHeaderFileName !?ioInclusionSet]
   end
   outCppName = self.mOutputInputVariableCppName
-  for () in self.mStructAttributeList do
+  for (mValue) in self.mStructAttributeList do
     outCppName += ".mProperty_" + [mValue identifierRepresentation]
   end
   [!?ioUnusedVariableCppNameSet removeKey !self.mOutputInputVariableCppName]

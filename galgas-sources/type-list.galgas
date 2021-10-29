@@ -48,7 +48,7 @@ override method @listDeclarationAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + self.mListTypeName ![self.mListTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for () in self.mPropertyList do
+  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
   end
 }
@@ -65,11 +65,11 @@ override method @listDeclarationAST enterInSemanticContext
 {
 #--- Handle attributes
   @typedPropertyList typedAttributeList = {}
-  for () in self.mPropertyList do
+  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = mIsPublic
     var hasSelector = false
-    for () in mAttributeList do
+    for (mValue) in mAttributeList do
       if [mValue string] == "setter" then
         warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
       elsif [mValue string] == "nogetter" then
@@ -102,7 +102,7 @@ override method @listDeclarationAST enterInSemanticContext
   @functionSignature constructorAttributeTypeList = {}
   @formalParameterSignature setterOutputFormalArgumentList = {}
   @formalParameterSignature setterInputFormalArgumentList = {}
-  for () in typedAttributeList do
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in typedAttributeList do
     let selector = if mHasSelector then mPropertyName.string else "" end
     enumerationDescriptor += !mPropertyTypeEntry !mPropertyName.string
     constructorAttributeTypeList +=
@@ -172,7 +172,7 @@ override method @listDeclarationAST enterInSemanticContext
     !returnedTypeName:[self.mListTypeName string]
     !hasCompilerArgument:true
   )
-  for () in typedAttributeList do
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in typedAttributeList do
     [!?getterMap insertOrReplace
       !@lstring.new {![mPropertyName string] + "AtIndex" ![mPropertyName location]}
       !@methodKind.definedAsMember
@@ -240,7 +240,7 @@ override method @listDeclarationAST enterInSemanticContext
     !""
   ]
   drop setterOutputFormalArgumentList
-  for () in typedAttributeList do
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in typedAttributeList do
     if mHasSetter then
       var setterFormalArgumentList =@formalParameterSignature {}
       setterFormalArgumentList += !["" nowhere] !mPropertyTypeEntry !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
@@ -315,7 +315,7 @@ override method @listDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList
 {
   @propertyInCollectionListAST structAttributeList = {}
-  for () in self.mPropertyList do
+  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     structAttributeList +=
       !isConstant: isConstant
       !mPropertyTypeName
@@ -352,13 +352,13 @@ override method @listDeclarationAST semanticAnalysis
 #---
   @typedPropertyList typedAttributeList = {}
   @propertyIndexMap attributeMap = {}
-  for () in self.mPropertyList do
+  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     let hasSetter = mIsPublic
     var hasSelector = false
-    for () in mAttributeList do
+    for (mValue) in mAttributeList do
       if [mValue string] == "setter" then
         warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
       elsif [mValue string] == "nogetter" then

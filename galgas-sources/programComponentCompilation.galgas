@@ -53,7 +53,7 @@ proc compileBeforeClauseGalgas3
   ioUsefulnessRootEntities += !usefulnessName
 #--- Compile 'before' routines
   var semanticInstructionListForGeneration = @semanticInstructionListForGeneration.emptyList
-  for () in inPrologueList do
+  for (mInstructionList mEndOfInstructionList) in inPrologueList do
     analyzeRoutineBody (
       !usefulnessName
       !?ioUsefulEntitiesGraph
@@ -96,7 +96,7 @@ private proc compileProgramRulesGalgas3
   ?!@programListForGeneration ioDecoratedDeclarationListForGeneration
 {
   @uint ruleIndex = 0
-  for () in inProgramRules do
+  for (mSourceFileExtension mSourceFileHelp mSourceFileVariableName mSourceFileVariableNameIsUnused mReferenceGrammar mInstructionList mEndOfInstructionList) in inProgramRules do
     let usefulnessName = rootRuleNameForUsefulEntitiesGraph (!mSourceFileExtension)
     [!?ioUsefulEntitiesGraph addNode !usefulnessName !usefulnessName]
     ioUsefulnessRootEntities += !usefulnessName
@@ -153,7 +153,7 @@ proc compileAfterClauseGalgas3
   ioUsefulnessRootEntities += !usefulnessName
 #--- Compile 'after' routines
   @semanticInstructionListForGeneration semanticInstructionListForGeneration = {}
-  for () in inEpilogueList do
+  for (mInstructionList mEndOfInstructionList) in inEpilogueList do
     analyzeRoutineBody (
       !usefulnessName
       !?ioUsefulEntitiesGraph
@@ -233,12 +233,12 @@ proc compileProgramComponentGalgas3
 #------------ Build Implementation File
   @stringset inclusionSet = {}
   var beforeAfterRulesString = ""
-  for () in decoratedDeclarationListForGeneration do
+  for (mDeclaration) in decoratedDeclarationListForGeneration do
     beforeAfterRulesString += [mDeclaration appendTypeGenericImplementation]
     [mDeclaration appendSpecificImplementation !inSemanticContext.mTypeMap !?inclusionSet ?let @string code]
     beforeAfterRulesString += code
   end
-  for () in inProgramRules do
+  for (mSourceFileExtension mSourceFileHelp mSourceFileVariableName mSourceFileVariableNameIsUnused mReferenceGrammar mInstructionList mEndOfInstructionList) in inProgramRules do
     if mReferenceGrammar.string != "" then
       inclusionSet += !"grammar-" + [mReferenceGrammar fileNameRepresentation]
     end

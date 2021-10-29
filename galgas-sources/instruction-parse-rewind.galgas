@@ -90,10 +90,10 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
 #--- 'Rewind' blocks
   var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration {}
   let @uint referenceSelectMethodCount = ioSelectMethodCount
-  for () in self.mParseRewindBranchList do
+  for (mSyntaxInstructionList mEndOf_instructions) in self.mParseRewindBranchList do
     ioSelectMethodCount = referenceSelectMethodCount
     var instructionList =@semanticInstructionListForGeneration {}
-    for () in mSyntaxInstructionList do
+    for (mInstruction) in mSyntaxInstructionList do
       [mInstruction analyzeSyntaxInstruction
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
@@ -117,7 +117,7 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
   [!?tempListOfBranches popFirst ?instructionList ?*]
   let @semanticInstructionListForGeneration referenceSignature = syntaxSignatureOfInstructionList (!"parse" !instructionList)
   @bool ok = true
-  for () in tempListOfBranches while ok do
+  for (mInstructionList mEndOfInstructionList) in tempListOfBranches while ok do
     ok = compareSyntaxSignature (
       !referenceSignature
       !syntaxSignatureOfInstructionList (!"parse" !mInstructionList)
@@ -165,7 +165,7 @@ override method @parseRewindInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   let @string parsingContextVar = "parsingContext_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
   ioGeneratedCode += "const C_parsingContext " + parsingContextVar + " = " + compilerCppName () + "->parsingContext () ;\n"
-  for () in self.mListOfSemanticInstructionListForGeneration
+  for (mInstructionList mEndOfInstructionList) in self.mListOfSemanticInstructionListForGeneration
   do
     generateInstructionList (
       !?ioInclusionSet

@@ -263,7 +263,7 @@ private proc guiComponentSemanticAnalysis
 #--- 
   @guiAnalysisContext context = .default
 #--- Check imported options components
-  for () in inGUIComponentAST.mImportedOptionList do
+  for (mValue) in inGUIComponentAST.mImportedOptionList do
     [inSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
       !mValue
       ?5*
@@ -272,7 +272,7 @@ private proc guiComponentSemanticAnalysis
   end
 #--- Nib and main classes
   var runOptionDefined = false
-  for () in inGUIComponentAST.mGlobalSimpleAttributeList do
+  for (mKey mValue) in inGUIComponentAST.mGlobalSimpleAttributeList do
     if mKey.string == "run" then
       if runOptionDefined then
         error mKey : "option already defined"
@@ -291,7 +291,7 @@ private proc guiComponentSemanticAnalysis
     end
   end
 #--- 'with lexique' construct analysis
-  for () in inGUIComponentAST.mWithLexiqueList do (idx)
+  for (mLexiqueFileName mLabels mSimpleAttributes mCompoundAttributes) in inGUIComponentAST.mWithLexiqueList do (idx)
   #--- Check lexique
     [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
       !mLexiqueFileName
@@ -301,8 +301,8 @@ private proc guiComponentSemanticAnalysis
   #--- Build terminal symbol set
     let terminalSymbolSet = [terminalMap keySet]
   #--- Check labels
-    for () in mLabels do
-      for () in mTerminalList do
+    for (mLeadingCharacterStrippedCount mTerminalList mLocation) in mLabels do
+      for (mTerminal mDisplayFlags) in mTerminalList do
         if not [terminalSymbolSet hasKey ![mTerminal string]] then
           error mTerminal: "the '$"
             + mTerminal
@@ -314,7 +314,7 @@ private proc guiComponentSemanticAnalysis
     end
   #--- Compound attributes
     @textMacroList textMacroList = {}
-    for () in mCompoundAttributes do
+    for (mKey mAttributeName mValue) in mCompoundAttributes do
       if [mKey string] != "textMacro" then
         error mKey: "for a compound attribute, only the 'textMacro' key is valid"
       else
@@ -327,7 +327,7 @@ private proc guiComponentSemanticAnalysis
     @bool hasBlockComment = false
     @string tabViewTitle = ""
     @string blockComment = ""
-    for () in mSimpleAttributes do
+    for (mKey mValue) in mSimpleAttributes do
       if [mKey string] == "fileExtension" then
         [!?context.mExtensionMap insertKey !mValue !mLexiqueFileName.string !idx]
         hasAssociatedExtension = true
@@ -382,7 +382,7 @@ proc generateAllGuiComponentsGalgas3
   ?!@stringlist ioApplicationSourceSet
   ?!@stringset ioAllProductFileSet
 {
-  for () in inOptionComponentMapForGeneration do
+  for (lkey mGuiComponentContext) in inOptionComponentMapForGeneration do
     let fileName = "gui-" + lkey + ".m"
     ioApplicationSourceSet += !fileName
     ioAllProductFileSet += !fileName

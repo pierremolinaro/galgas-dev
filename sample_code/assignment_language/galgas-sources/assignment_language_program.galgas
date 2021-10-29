@@ -14,7 +14,7 @@ grammar assignment_language_grammar
 #--- Semantic analysis
   @variableMap variableMap = .emptyMap
   @instructionListForGeneration instructionListForGeneration = {}
-  for () in  [programAST mProgramInstructionList] do
+  for (mInstruction) in  [programAST mProgramInstructionList] do
     [mInstruction semanticAnalysis !?variableMap !?instructionListForGeneration]
   end
   [variableMap checkAutomatonStates ![programAST mEndOfSourceFile]]

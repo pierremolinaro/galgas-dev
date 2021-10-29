@@ -130,7 +130,7 @@ override method @switchInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   [self.mSwitchExpression enterExpressionInSemanticContext !?ioTypeMap]
-  for () in self.mBranches do
+  for (mSwitchConstantList mAssociatedValuesExtraction mInstructions mEndOfBranch) in self.mBranches do
     [mInstructions enterInstructionListInSemanticContext !?ioTypeMap]
   end
 }
@@ -168,10 +168,10 @@ override method @switchInstructionAST analyzeSemanticInstruction
 #--- Analyze branches
   [!?ioVariableMap openOverrideForSelectBlock]
   @switchBranchesForGeneration switchBranchesForGeneration = {}
-  for () in self.mBranches do
+  for (mSwitchConstantList mAssociatedValuesExtraction mInstructions mEndOfBranch) in self.mBranches do
     @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = {}
     @bool firstConstant = true
-    for () in mSwitchConstantList do
+    for (mValue) in mSwitchConstantList do
       if [enumConstantMap hasKey ![mValue string]] then
         if [constantsNamedInSwitchInstruction hasKey ![mValue string]] then
           error mValue
@@ -191,7 +191,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
             + if [associatedTypeList length] > 1 then "s" else "" end
         else
           var associatedValueIndex = 0
-          for () in associatedTypeList, () in mAssociatedValuesExtraction do
+          for (mType) in associatedTypeList, (mExtractedValueTypeName mExtractedValueName mMarkedAsUnused) in mAssociatedValuesExtraction do
             if mExtractedValueTypeName.string != "" then # Explicit type ?
               if [mType key] != mExtractedValueTypeName.string then
                 error mExtractedValueTypeName : "the required type is '@" + [mType key] + "'"
@@ -233,7 +233,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
   let forgottenConstants = [enumConstantMap keySet] - constantsNamedInSwitchInstruction
   if [forgottenConstants count] > 0 then
     @string s = ""
-    for () in forgottenConstants do
+    for (key) in forgottenConstants do
       s += "\n  - " + key
     end
     error self.mEndOf_switch_instruction
@@ -293,8 +293,8 @@ override method @switchInstructionForGeneration generateInstruction
   ioGeneratedCode += "switch (" + switchVar + ".enumValue ()) {\n"
   ioGeneratedCode += "case GALGAS_" + [[self.mSwitchExpression mResultType] identifierRepresentation] + "::kNotBuilt:\n"
   ioGeneratedCode += "  break ;\n"
-  for () in self.mBranches do
-    for () in mSwitchConstantList do
+  for (mSwitchConstantList mExtractedAssociatedValuesForGeneration mEndOfBranchLocationIndex mInstructions) in self.mBranches do
+    for (mValue) in mSwitchConstantList do
       ioGeneratedCode += "case GALGAS_" + [[self.mSwitchExpression mResultType] identifierRepresentation] + "::kEnum_" + [[mValue string] identifierRepresentation] + ":\n"
     end
     [!?ioGeneratedCode incIndentation !2]
@@ -304,7 +304,7 @@ override method @switchInstructionForGeneration generateInstruction
         + "_" + [mSwitchConstantList mValueAtIndex!0].string + " *"
       let varPtr = "extractPtr_" + mEndOfBranchLocationIndex
       ioGeneratedCode += "  " + type + " " + varPtr + " = (" + type + ") (" + switchVar + ".unsafePointer ()) ;\n"
-      for () in mExtractedAssociatedValuesForGeneration do
+      for (mType mCppName mIndex) in mExtractedAssociatedValuesForGeneration do
         ioGeneratedCode += "  const GALGAS_" + [mType identifierRepresentation] + " " + mCppName
           + " = " + varPtr + "->mAssociatedValue" + mIndex + " ;\n"
       end

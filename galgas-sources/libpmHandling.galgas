@@ -36,7 +36,7 @@ proc updateLIBPMatPath ?let @string inLIBPMPath {
     allNeededFileSet += !path
   end
 #--- Update binary files
-  for () in [fw allBinaryFilePathes] do
+  for (mValue) in [fw allBinaryFilePathes] do
     let contents = [fw binaryFileContentsAtPath !mValue]
     let actualFilePath = inLIBPMPath + mValue
     [contents writeToFileWhenDifferentContents !actualFilePath ?*]
@@ -44,11 +44,11 @@ proc updateLIBPMatPath ?let @string inLIBPMPath {
   end
 #--- Remove useless files
   @stringset allActualFileSet = {}
-  for () in [inLIBPMPath regularFiles !true] do
+  for (mValue) in [inLIBPMPath regularFiles !true] do
     allActualFileSet += !"/" + mValue
   end
   let uselessFileSet = allActualFileSet - allNeededFileSet
-  for () in uselessFileSet do
+  for (key) in uselessFileSet do
     [@string deleteFile !inLIBPMPath + key]
   end
 }

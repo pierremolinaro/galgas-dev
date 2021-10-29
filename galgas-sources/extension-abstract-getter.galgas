@@ -118,7 +118,7 @@ override method @abstractExtensionGetterAST semanticAnalysis
   end
 #--- Compute method signature
   @formalInputParameterListForGeneration formalParameterListForGeneration = {}
-  for () in self.mAbstractExtensionGetterFormalInputParameterList do
+  for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName mIsUnused mIsConstant) in self.mAbstractExtensionGetterFormalInputParameterList do
     formalParameterListForGeneration +=
       !mFormalSelector
       !.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
@@ -201,7 +201,7 @@ override method @abstractExtensionGetterForGeneration appendSpecificImplementati
   ioInclusionSet += !"getter-" + [[self.mReceiverType key] fileNameRepresentation] + "-" + [self.mAbstractExtensionGetterName fileNameRepresentation]
   [self.mResultType addHeaderFileName !?ioInclusionSet]
   [self.mReceiverType addHeaderFileName !?ioInclusionSet]
-  for () in self.mAbstractExtensionGetterFormalParameterList do
+  for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in self.mAbstractExtensionGetterFormalParameterList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
   outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionGetterImplementation

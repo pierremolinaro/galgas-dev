@@ -31,7 +31,7 @@ func syntaxSignatureOfInstructionList
   -> @semanticInstructionListForGeneration
 {
   result = {}
-  for () in inInstructionList do
+  for (mInstruction) in inInstructionList do
     [mInstruction appendSyntaxSignature !inPosfix !?result]
   end
 }
@@ -58,7 +58,7 @@ func compareSyntaxSignature
   ->@bool outOk
 {
   outOk = true
-  for () ref_ in inReferenceSignature, () test_ in inTestedSignature while outOk do
+  for (ref_mInstruction) in inReferenceSignature, (test_mInstruction) in inTestedSignature while outOk do
      outOk = [ref_mInstruction compareInstructionSyntaxSignature !test_mInstruction]
   end
   if outOk & ([inReferenceSignature length] < [inTestedSignature length]) then

@@ -118,7 +118,7 @@ override method @classDeclarationAST enterDeclarationInGraph
   if self.mSuperClassName.string != "" then
     [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mSuperClassName !self.mSuperClassName.location}]
   end
-  for () in self.mPropertyList do
+  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mPropertyTypeName !self.mSuperClassName.location}]
   end
 }
@@ -149,7 +149,7 @@ override method @classDeclarationAST enterInSemanticContext
     inheritedTypedPropertyList = {}
     attributeMap = {}
     generateHeaderInSeparateFile = false
-    for () in self.mClassFeatureList do
+    for (mValue) in self.mClassFeatureList do
       if [mValue string] == "generatedInSeparateFile" then
         generateHeaderInSeparateFile = true
       end
@@ -181,7 +181,7 @@ override method @classDeclarationAST enterInSemanticContext
     end
   #--- Mark all setters as inherited
     setterMap = {}
-    for () in inheritedSetterMap do
+    for (lkey mKind mParameterList mHasCompilerArgument mQualifier mErrorMessage) in inheritedSetterMap do
       [!?setterMap insertKey
         !lkey
         !mKind
@@ -193,7 +193,7 @@ override method @classDeclarationAST enterInSemanticContext
     end
   #--- Mark all getters as inherited
     getterMap = {}
-    for () in inheritedGetterMap do
+    for (lkey mKind mArgumentTypeList mDeclarationLocation mHasCompilerArgument mReturnedType mQualifier mErrorMessage) in inheritedGetterMap do
       [!?getterMap insertKey
         !lkey
         !mKind
@@ -207,7 +207,7 @@ override method @classDeclarationAST enterInSemanticContext
     end
   #--- Mark all methods as inherited
     instanceMethodMap = {}
-    for () in inheritedMethodMap do
+    for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument mQualifier mErrorMessage) in inheritedMethodMap do
       [!?instanceMethodMap insertKey
         !lkey
         !mKind
@@ -221,13 +221,13 @@ override method @classDeclarationAST enterInSemanticContext
   end
 #--- Build attribute Map and constructor argument list
   @functionSignature constructorPropertyTypeList = {}
-  for () in inheritedTypedPropertyList do
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in inheritedTypedPropertyList do
     constructorPropertyTypeList +=
       !if mHasSelector then mPropertyName else ["" nowhere] end
       !mPropertyTypeEntry
       !mPropertyName.string
   end
-  for () in self.mPropertyList do
+  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     var hasSelector = false
     for (attribute) in mAttributeList do
@@ -270,11 +270,11 @@ override method @classDeclarationAST enterInSemanticContext
 #--- Typed attribute list
   @typedPropertyList currentClassTypedPropertyList = {}
   @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
-  for () in self.mPropertyList do
+  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true # mIsPublic
     var hasSelector = false
-    for () in mAttributeList do
+    for (mValue) in mAttributeList do
       if [mValue string] == "setter" then
         warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
       elsif [mValue string] == "nogetter" then
@@ -297,7 +297,7 @@ override method @classDeclarationAST enterInSemanticContext
     ]
   end
 #--- set...attribute setter
-  for () in currentClassTypedPropertyList do
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in currentClassTypedPropertyList do
     if mHasSetter then
       [!?setterMap insertKey
         !@lstring.new {!"set"+ [[mPropertyName string] stringByCapitalizingFirstCharacter] !@location.here}
@@ -327,7 +327,7 @@ override method @classDeclarationAST enterInSemanticContext
   else
     defaultConstructorName = [superClassIndex mDefaultConstructorName]
   end
-  for () in currentClassTypedPropertyList while defaultConstructorName != "" do
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in currentClassTypedPropertyList while defaultConstructorName != "" do
     if ([mPropertyTypeEntry mDefaultConstructorName] == "") | not [mPropertyTypeEntry mIsConcrete] then
       defaultConstructorName = ""
     end
@@ -413,7 +413,7 @@ override method @classDeclarationAST semanticAnalysis
     allAttributeList = {}
     @bool generatedInSeparateFileFeature = false
     if [self.mClassFeatureList length] > 0 then
-      for () in self.mClassFeatureList do
+      for (mValue) in self.mClassFeatureList do
         if [mValue string] == "generatedInSeparateFile" then
           if generatedInSeparateFileFeature then
             error mValue:"the 'generatedInSeparateFile' is already named"
@@ -427,7 +427,7 @@ override method @classDeclarationAST semanticAnalysis
   else
     allAttributeList = [superClassEntry mAllTypedPropertyList]
     if [self.mClassFeatureList length] > 0 then
-      for () in self.mClassFeatureList do
+      for (mValue) in self.mClassFeatureList do
         error mValue:"a class that has a super class does not accept any feature"
       end
     end
@@ -435,13 +435,13 @@ override method @classDeclarationAST semanticAnalysis
 #------ Enter attributes
   @typedPropertyList typedAttributeList = {}
   @propertyIndexMap attributeMap = {}
-  for () in self.mPropertyList do
+  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     let hasSetter = true # mIsPublic
     var hasSelector = false
-    for () in mAttributeList do
+    for (mValue) in mAttributeList do
       if [mValue string] == "setter" then
         warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
       elsif [mValue string] == "nogetter" then

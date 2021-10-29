@@ -130,7 +130,7 @@ private proc analyzeConstructorInvocation
       + [[inConstuctorEffectiveParameterExpressions length] string] + " parameter(s)"
     end
     outConstructorEffectiveParameterList = {}
-    for () in inConstuctorEffectiveParameterExpressions, () in constructorFormalArgumentTypeList do
+    for (mActualSelector mExpression mEndOfExpressionLocation) in inConstuctorEffectiveParameterExpressions, (mFormalSelector mFormalArgumentType mFormalArgumentName) in constructorFormalArgumentTypeList do
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
@@ -254,7 +254,7 @@ override method @constructorExpressionForGeneration generateExpression
 {
   [self.mResultType addHeaderFileName !?ioInclusionSet]
   @stringlist parameterList = {}
-  for () in self.mEffectiveParameterList do
+  for (mExpression) in self.mEffectiveParameterList do
     [mExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
@@ -267,7 +267,7 @@ override method @constructorExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_"  + [self.mConstructorType identifierRepresentation]
                    + "::constructor_" + [self.mConstructorName identifierRepresentation]
                    + " ("
-  for () in parameterList
+  for (mValue) in parameterList
     do outCppExpression += mValue
     between outCppExpression += ", "
   end

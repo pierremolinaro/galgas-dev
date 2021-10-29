@@ -32,7 +32,7 @@ proc templateCodeGenerationForListInstruction
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@bool ioUseColumnMarker
  {
-  for () in inInstructionList do
+  for (mInstruction) in inInstructionList do
     [mInstruction templateCodeGeneration
       !?ioGeneratedCode
       !?ioInclusionSet
@@ -219,7 +219,7 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@bool ioUseColumnMarker {
-  for () in self.mTemplateInstructionIfBranchList do
+  for (mExpression mInstructionList) in self.mTemplateInstructionIfBranchList do
   #--- IF expression
     @string ifVarCppName
     [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?ifVarCppName]
@@ -248,7 +248,7 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
     !?ioUnusedVariableCppNameSet
     !?ioUseColumnMarker
   )
-  for () in self.mTemplateInstructionIfBranchList do
+  for (mExpression mInstructionList) in self.mTemplateInstructionIfBranchList do
     [!?ioGeneratedCode decIndentation !2]
     ioGeneratedCode += "}\n"
   end

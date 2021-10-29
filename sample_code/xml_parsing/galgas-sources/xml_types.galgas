@@ -35,12 +35,12 @@ proc internal_logXMLNodes
   ?let @xmlNodeList inNodeList
   ?let @string inIndentationString
   ?!@string ioString {
-  for () in  inNodeList do
+  for (node) in  inNodeList do
     ioString += inIndentationString
     switch [node mType]
     case element :
       ioString+= "ELEMENT '" + [node name] + "' {"
-      for () in  [node attributeMap] do
+      for (lkey value) in  [node attributeMap] do
         ioString += "'" + lkey + "' "
         ioString += [[[lkey location] line] string]
         ioString += ":" + [[[lkey location] column] string]

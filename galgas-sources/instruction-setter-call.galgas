@@ -101,7 +101,7 @@ syntax extension galgas3InstructionsSyntax {
 override method @setterCallInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  for () in self.mActualParameterList do
+  for (mActualParameter) in self.mActualParameterList do
     [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
   end
 }
@@ -111,7 +111,7 @@ override method @setterCallInstructionAST enterInstructionInSemanticContext
 override method @selfSetterCallInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  for () in self.mActualParameterList do
+  for (mActualParameter) in self.mActualParameterList do
     [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
   end
 }
@@ -154,7 +154,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
 #--- Get target variable type
   var ok = true
   var errorLocation = self.mReceiverName.location
-  for () in self.mReceiverStructProperties while ok do
+  for (mValue) in self.mReceiverStructProperties while ok do
     ok = [[receiverType mTypeKindEnum] isStructType]
     if not ok then
       error errorLocation : "a structure is required for '.' access"
@@ -332,7 +332,7 @@ override method @setterCallInstructionForGeneration generateInstruction
 #  ioGeneratedCode += "try{\n"
   ioGeneratedCode += "{\n"
   var receiverCppName = self.mReceiverCppName
-  for () in self.mReceiverStructAttributes do
+  for (mValue) in self.mReceiverStructAttributes do
     receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]
   end
   [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverBaseName]
@@ -340,7 +340,7 @@ override method @setterCallInstructionForGeneration generateInstruction
   @stringlist parameterCppNameList = {}
   @stringlist jokerParametersToReleaseList = {}
   @stringlist inputVariableList = {}
-  for () in self.mActualParameterList do
+  for (mActualParameter) in self.mActualParameterList do
     [mActualParameter generateActualParameter
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
@@ -383,7 +383,7 @@ override method @setterCallInstructionForGeneration generateInstruction
     [self.mReceiverType addHeaderFileName !?ioInclusionSet]
     ioGeneratedCode += receiverCppName + ".setter_" + [[self.mSetterName string] identifierRepresentation] + " ("
   end
-  for () in parameterCppNameList
+  for (mValue) in parameterCppNameList
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
@@ -416,7 +416,7 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
   var parameterCppNameList =@stringlist {}
   var jokerParametersToReleaseList =@stringlist {}
   var inputVariableList =@stringlist {}
-  for () in self.mActualParameterList do
+  for (mActualParameter) in self.mActualParameterList do
     [mActualParameter generateActualParameter
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
@@ -443,7 +443,7 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
       ioGeneratedCode += self.mSelfCppName + ".setter_" + [self.mSetterName identifierRepresentation] + " ("
     end
   end
-  for () in parameterCppNameList
+  for (mValue) in parameterCppNameList
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end

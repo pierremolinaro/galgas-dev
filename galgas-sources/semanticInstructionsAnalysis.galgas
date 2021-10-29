@@ -87,7 +87,7 @@ proc analyzeSemanticInstructionListWithoutBranch
 {
   outInstructionListForGeneration = {}
 #--- Declare local constants
-  for () in inLocalConstantList do
+  for (mType mName mNoWarningIfUnused mCppName) in inLocalConstantList do
     if mNoWarningIfUnused then
       [!?ioVariableMap insertUsedLocalConstant !mName !mType !mCppName !mCppName]
     else
@@ -95,11 +95,11 @@ proc analyzeSemanticInstructionListWithoutBranch
     end
   end
 #--- Declare local variables
-  for () in inLocalInitializedVariableList do
+  for (mType mName mCppName) in inLocalInitializedVariableList do
     [!?ioVariableMap insertDefinedLocalVariable !mName !mType !mCppName !mCppName]
   end
 #--- Instruction list
-  for () in inSemanticInstructionListAST do
+  for (mInstruction) in inSemanticInstructionListAST do
     [mInstruction analyzeSemanticInstruction
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -201,7 +201,7 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
   @string variableCppName
   [!?ioVariableMap searchForReadWriteAccess !self.mOutputInputActualParameterName ?var @unifiedTypeMap-entry parameterType ?variableCppName ?*]
   var typeList = @unifiedTypeMapEntryList.listWithValue {!parameterType}
-  for () in self.mStructAttributeList do
+  for (mValue) in self.mStructAttributeList do
     let propertyMap = [parameterType mPropertyMap]
     [propertyMap searchKey
       !mValue
@@ -670,7 +670,7 @@ proc analyzeRoutineArguments
   else
     outActualParameterListForGeneration = {}
     @stringset exclusiveVariableSet = {}
-    for () in inRoutineSignature, () in inActualParameterList do
+    for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in inRoutineSignature, (mActualParameter) in inActualParameterList do
       [mActualParameter checkAgainstFormalArgument
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph

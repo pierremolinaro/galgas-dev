@@ -222,7 +222,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
 #    ?@string targetVariableCppName
 #    ?@string nameForCheckingFormalParameterUsing
 #  ]
-  for () in self.mStructAttributeList do
+  for (mValue) in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic  ?targetType]
     if not isPublic then
@@ -298,7 +298,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
 #    ?@string targetVariableCppName
 #    ?@string nameForCheckingFormalParameterUsing
 #  ]
-  for () in self.mStructAttributeList do
+  for (mValue) in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic  ?targetType]
     if not isPublic then
@@ -374,7 +374,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
 #    ?@string targetVariableCppName
 #    ?@string nameForCheckingFormalParameterUsing
 #  ]
-  for () in self.mStructAttributeList do
+  for (mValue) in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic  ?targetType]
     if not isPublic then
@@ -450,7 +450,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
 #    ?@string targetVariableCppName
 #    ?@string nameForCheckingFormalParameterUsing
 #  ]
-  for () in self.mStructAttributeList do
+  for (mValue) in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic  ?targetType]
     if not isPublic then
@@ -527,7 +527,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
 #    ?targetVariableCppName
 #    ?nameForCheckingFormalParameterUsing
 #  ]
-  for () in self.mStructAttributeList do
+  for (mValue) in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic  ?targetType]
     if not isPublic then
@@ -547,7 +547,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
     + [[self.mExpressions length] string] + " parameter(s)"
   else
     @semanticExpressionListForGeneration effectiveParameterList = {}
-    for () in self.mExpressions, () in addAssignOperatorArguments do
+    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType mFormalArgumentName) in addAssignOperatorArguments do
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
@@ -598,7 +598,7 @@ override method @plusEqualnstructionForGeneration generateInstruction
 #--- Parameters
   [self.mTargetType addHeaderFileName !?ioInclusionSet]
   var parameterList =@stringlist {}
-  for () in self.mExpressionList do
+  for (mExpression) in self.mExpressionList do
     [mExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
@@ -611,13 +611,13 @@ override method @plusEqualnstructionForGeneration generateInstruction
 #--- Receiver
   [!?ioUnusedVariableCppNameSet removeKey !self.mNameForCheckingFormalParameterUsing]
   ioGeneratedCode += self.mReceiverCppName
-  for () in self.mStructAttributeList do
+  for (mValue) in self.mStructAttributeList do
     ioGeneratedCode += ".mProperty_" + [[mValue string] identifierRepresentation]
   end
 #--- Call add assign (+=) operator
   ioGeneratedCode += ".addAssign_operation ("
   [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverCppName]
-  for () in parameterList
+  for (mValue) in parameterList
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
@@ -658,7 +658,7 @@ override method @opEqualInstructionForGeneration generateInstruction
   ]
   [!?ioUnusedVariableCppNameSet removeKey !self.mNameForCheckingFormalParameterUsing]
   ioGeneratedCode += self.mTargetVariableCppName
-  for () in self.mStructAttributeList do
+  for (mValue) in self.mStructAttributeList do
     ioGeneratedCode += ".mProperty_" + mValue
   end
   ioGeneratedCode += "." + self.mGeneratedMethod + "(" + sourceVar
