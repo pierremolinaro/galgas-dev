@@ -63,6 +63,16 @@ rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollecti
     $private$
     isPublic = false
   end
+  @bool isConstant
+  select
+    isConstant = false
+  or
+    $var$
+    isConstant = false
+  or
+    $let$
+    isConstant = true
+  end
   $@type$ ?let attributeTypeName
   $identifier$ ?let attributeName
   var featureList = @lstringlist {}
@@ -72,7 +82,7 @@ rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollecti
     featureList += !featureName
   end
   ioAttributeInCollectionList +=
-#    !isWeak
+    !isConstant: isConstant
     !attributeTypeName
     !attributeName
     !isPublic

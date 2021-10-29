@@ -36,11 +36,13 @@ override method @listmapDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
   var structAttributeList =@propertyInCollectionListAST {}
   structAttributeList +=
+    !isConstant: false
     !["string" nowhere]
     !["key" nowhere]
     !true
     !{}
   structAttributeList +=
+    !isConstant: false
     !self.mAssociatedListTypeName
     !["mList" nowhere]
     !true

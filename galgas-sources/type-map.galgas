@@ -185,12 +185,14 @@ override method @mapDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
   var structAttributeList =@propertyInCollectionListAST {}
   structAttributeList +=
+    !isConstant: false
     !["lstring" nowhere]
     !["lkey" nowhere]
     !true
     !{}
   for () in self.mPropertyList do
     structAttributeList +=
+      !isConstant: false
       !mPropertyTypeName
       !mPropertyName
       !true

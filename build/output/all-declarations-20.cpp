@@ -10974,6 +10974,7 @@ GALGAS_actualInputParameterListAST_2D_element GALGAS_actualInputParameterListAST
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_propertyInCollectionListAST_2D_element::GALGAS_propertyInCollectionListAST_2D_element (void) :
+mProperty_isConstant (),
 mProperty_mPropertyTypeName (),
 mProperty_mPropertyName (),
 mProperty_mIsPublic (),
@@ -10987,20 +10988,23 @@ GALGAS_propertyInCollectionListAST_2D_element::~ GALGAS_propertyInCollectionList
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_propertyInCollectionListAST_2D_element::GALGAS_propertyInCollectionListAST_2D_element (const GALGAS_lstring & inOperand0,
+GALGAS_propertyInCollectionListAST_2D_element::GALGAS_propertyInCollectionListAST_2D_element (const GALGAS_bool & inOperand0,
                                                                                               const GALGAS_lstring & inOperand1,
-                                                                                              const GALGAS_bool & inOperand2,
-                                                                                              const GALGAS_lstringlist & inOperand3) :
-mProperty_mPropertyTypeName (inOperand0),
-mProperty_mPropertyName (inOperand1),
-mProperty_mIsPublic (inOperand2),
-mProperty_mAttributeList (inOperand3) {
+                                                                                              const GALGAS_lstring & inOperand2,
+                                                                                              const GALGAS_bool & inOperand3,
+                                                                                              const GALGAS_lstringlist & inOperand4) :
+mProperty_isConstant (inOperand0),
+mProperty_mPropertyTypeName (inOperand1),
+mProperty_mPropertyName (inOperand2),
+mProperty_mIsPublic (inOperand3),
+mProperty_mAttributeList (inOperand4) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_propertyInCollectionListAST_2D_element GALGAS_propertyInCollectionListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_propertyInCollectionListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
+  return GALGAS_propertyInCollectionListAST_2D_element (GALGAS_bool::constructor_default (HERE),
+                                                        GALGAS_lstring::constructor_default (HERE),
                                                         GALGAS_lstring::constructor_default (HERE),
                                                         GALGAS_bool::constructor_default (HERE),
                                                         GALGAS_lstringlist::constructor_emptyList (HERE)) ;
@@ -11008,14 +11012,15 @@ GALGAS_propertyInCollectionListAST_2D_element GALGAS_propertyInCollectionListAST
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_propertyInCollectionListAST_2D_element GALGAS_propertyInCollectionListAST_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
+GALGAS_propertyInCollectionListAST_2D_element GALGAS_propertyInCollectionListAST_2D_element::constructor_new (const GALGAS_bool & inOperand0,
                                                                                                               const GALGAS_lstring & inOperand1,
-                                                                                                              const GALGAS_bool & inOperand2,
-                                                                                                              const GALGAS_lstringlist & inOperand3 
+                                                                                                              const GALGAS_lstring & inOperand2,
+                                                                                                              const GALGAS_bool & inOperand3,
+                                                                                                              const GALGAS_lstringlist & inOperand4 
                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_propertyInCollectionListAST_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_propertyInCollectionListAST_2D_element (inOperand0, inOperand1, inOperand2, inOperand3) ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
+    result = GALGAS_propertyInCollectionListAST_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4) ;
   }
   return result ;
 }
@@ -11024,6 +11029,9 @@ GALGAS_propertyInCollectionListAST_2D_element GALGAS_propertyInCollectionListAST
 
 typeComparisonResult GALGAS_propertyInCollectionListAST_2D_element::objectCompare (const GALGAS_propertyInCollectionListAST_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mProperty_isConstant.objectCompare (inOperand.mProperty_isConstant) ;
+  }
   if (result == kOperandEqual) {
     result = mProperty_mPropertyTypeName.objectCompare (inOperand.mProperty_mPropertyTypeName) ;
   }
@@ -11042,12 +11050,13 @@ typeComparisonResult GALGAS_propertyInCollectionListAST_2D_element::objectCompar
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_propertyInCollectionListAST_2D_element::isValid (void) const {
-  return mProperty_mPropertyTypeName.isValid () && mProperty_mPropertyName.isValid () && mProperty_mIsPublic.isValid () && mProperty_mAttributeList.isValid () ;
+  return mProperty_isConstant.isValid () && mProperty_mPropertyTypeName.isValid () && mProperty_mPropertyName.isValid () && mProperty_mIsPublic.isValid () && mProperty_mAttributeList.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_propertyInCollectionListAST_2D_element::drop (void) {
+  mProperty_isConstant.drop () ;
   mProperty_mPropertyTypeName.drop () ;
   mProperty_mPropertyName.drop () ;
   mProperty_mIsPublic.drop () ;
@@ -11062,6 +11071,8 @@ void GALGAS_propertyInCollectionListAST_2D_element::description (C_String & ioSt
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
+    mProperty_isConstant.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
     mProperty_mPropertyTypeName.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mPropertyName.description (ioString, inIndentation+1) ;
@@ -11071,6 +11082,12 @@ void GALGAS_propertyInCollectionListAST_2D_element::description (C_String & ioSt
     mProperty_mAttributeList.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_propertyInCollectionListAST_2D_element::getter_isConstant (UNUSED_LOCATION_ARGS) const {
+  return mProperty_isConstant ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

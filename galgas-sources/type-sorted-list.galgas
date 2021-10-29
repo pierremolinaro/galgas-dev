@@ -97,6 +97,7 @@ override method @sortedListDeclarationAST addAssociatedElement
   @propertyInCollectionListAST structAttributeList = {}
   for () in self.mPropertyList do
     structAttributeList +=
+      !isConstant: isConstant 
       !mPropertyTypeName
       !mPropertyName
       !true

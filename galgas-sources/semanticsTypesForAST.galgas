@@ -321,7 +321,7 @@ refclass @onceFunctionDeclarationAST : @semanticDeclarationAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @propertyInCollectionListAST {
-#  @bool mIsWeak 
+  @bool isConstant %selector
   @lstring mPropertyTypeName
   @lstring mPropertyName
   @bool mIsPublic
