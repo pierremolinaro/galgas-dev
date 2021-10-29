@@ -25,9 +25,9 @@ proc groupSyntaxComponentsGalgas3
     componentNameSet += !component.mSyntaxComponentName.string
     var nonterminalDeclarationList = component.mNonterminalDeclarationList
     var ruleList = component.mRuleList
-    for () ext_ in [inSyntaxExtensions listForKey !component.mSyntaxComponentName.string] do
-      nonterminalDeclarationList += ext_mNonterminalDeclarationList
-      ruleList += ext_mRuleList
+    for (* mNonterminalDeclarationList mRuleList) in [inSyntaxExtensions listForKey !component.mSyntaxComponentName.string] do
+      nonterminalDeclarationList += mNonterminalDeclarationList
+      ruleList += mRuleList
     end
     ioDeclarationList += !@galgas3SyntaxComponentAST.new {
       !false # Is not predefined

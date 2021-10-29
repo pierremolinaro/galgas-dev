@@ -99,14 +99,14 @@ override method @arrayDeclarationAST enterInSemanticContext
   enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !"sizeForAxis" !"uint" !"inAxisIndex"
+    !getterName: "sizeForAxis" !"uint" !"inAxisIndex"
     !returnedTypeName:"uint"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !"rangeForAxis"
+    !getterName: "rangeForAxis"
     !"uint"
     !"inAxisIndex"
     !returnedTypeName:"range"

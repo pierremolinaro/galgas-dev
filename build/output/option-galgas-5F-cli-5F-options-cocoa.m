@@ -52,6 +52,15 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
+    identifier:@"errorAnomynousForInstructionEnumeratedObject"
+    commandChar:0
+    commandString:@"error-anonymous-for-instruction"
+    comment:@"error on anonymous 'for' instruction enumerated object ('for () in ...')"
+    defaultValue:@""
+  ] ;
+  [ioBoolOptionArray addObject:option] ;
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
     identifier:@"errorClassDeclaration"
     commandChar:0
     commandString:@"error-class-declaration"
@@ -128,15 +137,6 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
     commandChar:0
     commandString:@"property-access-requires-self"
     comment:@"'self' is required for accessing properties in getter, setter and methods"
-    defaultValue:@""
-  ] ;
-  [ioBoolOptionArray addObject:option] ;
-  option = [[OC_GGS_CommandLineOption alloc]
-    initWithDomainName:@"galgas_cli_options"
-    identifier:@"warnsAnomynousForInstructionEnumeratedObject"
-    commandChar:0
-    commandString:@"warns-anonymous-for-instruction"
-    comment:@"warns on anonymous 'for' instruction enumerated object ('for () in ...')"
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;

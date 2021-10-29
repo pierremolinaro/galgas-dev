@@ -396,7 +396,7 @@
     object: d
   ] ;
   [mSourceTextStorage beginEditing] ;
-  [mSourceTextStorage replaceCharactersInRange:inRange withString:inReplaceString] ;
+  [mSourceTextStorage replaceCharactersInRange: inRange withString: inReplaceString] ;
   [mSourceTextStorage endEditing] ;
 }
 

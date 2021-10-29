@@ -127,7 +127,7 @@ override method @listmapDeclarationAST enterInSemanticContext
   enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !"listForKey"
+    !getterName: "listForKey"
     !"string"
     !"inKey"
     !returnedTypeName:[self.mAssociatedListTypeName string]

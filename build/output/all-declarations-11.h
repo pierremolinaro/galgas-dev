@@ -2025,8 +2025,8 @@ class GALGAS_enumeratedCollectionImplicitVarInExpAST : public GALGAS_abstractEnu
   public: typeComparisonResult objectCompare (const GALGAS_enumeratedCollectionImplicitVarInExpAST & inOperand) const ;
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_setMEndOfEnumerationExpression (class GALGAS_location inArgument0
-                                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void setter_setMEndOfAnonymousEnumeration (class GALGAS_location inArgument0
+                                                                      COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMEnumeratedExpression (class GALGAS_semanticExpressionAST inArgument0
                                                                  COMMA_LOCATION_ARGS) ;
@@ -2039,7 +2039,7 @@ class GALGAS_enumeratedCollectionImplicitVarInExpAST : public GALGAS_abstractEnu
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_location getter_mEndOfEnumerationExpression (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_location getter_mEndOfAnonymousEnumeration (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST getter_mEnumeratedExpression (LOCATION_ARGS) const ;
 
@@ -2068,12 +2068,12 @@ class cPtr_enumeratedCollectionImplicitVarInExpAST : public cPtr_abstractEnumera
 //--- Properties
   public: GALGAS_lstring mProperty_mPrefix ;
   public: GALGAS_semanticExpressionAST mProperty_mEnumeratedExpression ;
-  public: GALGAS_location mProperty_mEndOfEnumerationExpression ;
+  public: GALGAS_location mProperty_mEndOfAnonymousEnumeration ;
 
 //--- Constructor
   public: cPtr_enumeratedCollectionImplicitVarInExpAST (const GALGAS_lstring & in_mPrefix,
                                                         const GALGAS_semanticExpressionAST & in_mEnumeratedExpression,
-                                                        const GALGAS_location & in_mEndOfEnumerationExpression
+                                                        const GALGAS_location & in_mEndOfAnonymousEnumeration
                                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -5899,69 +5899,6 @@ class cPtr_undefinedLocalConstantDeclarationAST : public cPtr_semanticInstructio
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
 
 } ;
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//                               Bool options                                                    
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkEntityUsefulness ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_gmp ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_displayUnicodeLexicalTestFunctions ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorClassDeclaration ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorValueClassDeclaration ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateManyFiles ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateOneHeader ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateSharedMapAutomatonDotFiles ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLTypeListFile ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedLexicalActions ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_warnsAnomynousForInstructionEnumeratedObject ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//                               UInt options                                                    
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-extern C_UIntCommandLineOption gOption_galgas_5F_cli_5F_options_macosxSDK ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//                              String options                                                   
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_cppCompile ;
-
-extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_create_5F_project ;
-
-extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_extractLIBPMOption ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//                              String List options                                              
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-//----------------------------------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -10062,6 +9999,69 @@ class cPtr_weakReferenceDeclarationAST : public cPtr_semanticDeclarationAST {
 
 class GALGAS_string function_weakSuffix (class C_Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                               Bool options                                                    
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkEntityUsefulness ;
+
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_gmp ;
+
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_displayUnicodeLexicalTestFunctions ;
+
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams ;
+
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorAnomynousForInstructionEnumeratedObject ;
+
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorClassDeclaration ;
+
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorValueClassDeclaration ;
+
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateManyFiles ;
+
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateOneHeader ;
+
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateSharedMapAutomatonDotFiles ;
+
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLTypeListFile ;
+
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile ;
+
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedLexicalActions ;
+
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                               UInt options                                                    
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+extern C_UIntCommandLineOption gOption_galgas_5F_cli_5F_options_macosxSDK ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                              String options                                                   
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_cppCompile ;
+
+extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_create_5F_project ;
+
+extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_extractLIBPMOption ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                              String List options                                              
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------------------------------
 //

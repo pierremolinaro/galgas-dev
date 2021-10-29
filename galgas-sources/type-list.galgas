@@ -154,21 +154,21 @@ override method @listDeclarationAST enterInSemanticContext
   enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !"subListFromIndex" !"uint" !"inIndex"
+    !getterName: "subListFromIndex" !"uint" !"inIndex"
     !returnedTypeName:[self.mListTypeName string]
     !hasCompilerArgument:true
   )
   enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !"subListToIndex" !"uint" !"inIndex"
+    !getterName: "subListToIndex" !"uint" !"inIndex"
     !returnedTypeName:[self.mListTypeName string]
     !hasCompilerArgument:true
   )
   enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !"subListWithRange" !"range" !"inRange"
+    !getterName: "subListWithRange" !"range" !"inRange"
     !returnedTypeName:[self.mListTypeName string]
     !hasCompilerArgument:true
   )

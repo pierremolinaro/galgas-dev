@@ -86,6 +86,14 @@ class C_SourceTextInString {
     return mObject != NULL ;
   }
 
+  public: inline bool operator == (const C_SourceTextInString & inOther) const {
+    return mObject == inOther.mObject ;
+  }
+
+  public: inline bool operator != (const C_SourceTextInString & inOther) const {
+    return mObject != inOther.mObject ;
+  }
+
   public: int32_t sourceLength (void) const {
     return (mObject == NULL) ? 0 : mObject->mSourceString.length () ;
   }

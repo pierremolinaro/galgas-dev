@@ -17,7 +17,7 @@ abstract refclass @abstractEnumeratedCollectionAST {
 refclass @enumeratedCollectionImplicitVarInExpAST : @abstractEnumeratedCollectionAST {
   @lstring mPrefix
   @semanticExpressionAST mEnumeratedExpression
-  @location mEndOfEnumerationExpression
+  @location mEndOfAnonymousEnumeration
 }
 
 #·····················································································································*
@@ -160,9 +160,7 @@ syntax extension galgas3InstructionsSyntax {
   
   rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
     $($
-    if [option galgas_cli_options.warnsAnomynousForInstructionEnumeratedObject value] then
-      warning .here : "anonymous 'for' enumerated object (due to '--warns-anonymous-for-instruction' option)"
-    end
+    let startLocation = @location.here
     $)$
     @lstring prefix
     select
@@ -170,12 +168,14 @@ syntax extension galgas3InstructionsSyntax {
     or
       $identifier$ ?prefix
     end
+    let endLocation = @location.here
     $in$
     <expression> ?let @semanticExpressionAST enumeratedExpression
     outEnumeratedObject = @enumeratedCollectionImplicitVarInExpAST.new {
       !prefix
       !enumeratedExpression
-      !@location.here}
+      ![startLocation union !endLocation]
+    }
   }
   
   #·····················································································································
@@ -332,7 +332,8 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
   ?!@localVarManager ioVariableMap
   ?!@localInitializedVariableList ioLocalConstantListForDoBranch
   !@string outEnumeratorCppName
-  !@semanticExpressionForGeneration outEnumerationExpression {
+  !@semanticExpressionForGeneration outEnumerationExpression
+{
   [self.mEnumeratedExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -342,17 +343,28 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
     ?outEnumerationExpression
   ]
 #--- Check object can be enumerated
-  outEnumeratorCppName = "enumerator_" + [self.mEndOfEnumerationExpression locationIndex]
+  outEnumeratorCppName = "enumerator_" + [self.mEndOfAnonymousEnumeration locationIndex]
   let enumerationDescriptorList = [[outEnumerationExpression mResultType] mEnumerationDescriptor]
   if [enumerationDescriptorList length] == 0 then
-    error self.mEndOfEnumerationExpression : "an '@" + [[outEnumerationExpression mResultType] key] + "' object cannot be enumerated"
+    error self.mEndOfAnonymousEnumeration : "an '@" + [[outEnumerationExpression mResultType] key] + "' object cannot be enumerated"
   end
 #--- Declare implicit constants
-  for () in enumerationDescriptorList do
+  var suggestion = "("
+  for (mEnumeratedType mEnumerationName) in enumerationDescriptorList
+  do
+    suggestion += self.mPrefix.string + mEnumerationName
     ioLocalConstantListForDoBranch +=
       !mEnumeratedType
-      !@lstring.new {!self.mPrefix.string + mEnumerationName !self.mEndOfEnumerationExpression}
+      !@lstring.new {!self.mPrefix.string + mEnumerationName !self.mEndOfAnonymousEnumeration}
       !outEnumeratorCppName + ".current_" + [mEnumerationName identifierRepresentation]+ " (HERE)"
+  between 
+    suggestion += " "
+  end
+  suggestion += ")"
+  if [option galgas_cli_options.errorAnomynousForInstructionEnumeratedObject value] then
+    error self.mEndOfAnonymousEnumeration
+    : "anonymous 'for' enumerated object (due to '--warns-anonymous-for-instruction' option)"
+    fixit { replace suggestion }
   end
 }
 

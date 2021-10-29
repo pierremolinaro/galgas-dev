@@ -567,7 +567,7 @@ typeComparisonResult cPtr_enumeratedCollectionImplicitVarInExpAST::dynamicObject
     result = mProperty_mEnumeratedExpression.objectCompare (p->mProperty_mEnumeratedExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mEndOfEnumerationExpression.objectCompare (p->mProperty_mEndOfEnumerationExpression) ;
+    result = mProperty_mEndOfAnonymousEnumeration.objectCompare (p->mProperty_mEndOfAnonymousEnumeration) ;
   }
   return result ;
 }
@@ -607,11 +607,11 @@ GALGAS_abstractEnumeratedCollectionAST (inSourcePtr) {
 
 GALGAS_enumeratedCollectionImplicitVarInExpAST GALGAS_enumeratedCollectionImplicitVarInExpAST::constructor_new (const GALGAS_lstring & inAttribute_mPrefix,
                                                                                                                 const GALGAS_semanticExpressionAST & inAttribute_mEnumeratedExpression,
-                                                                                                                const GALGAS_location & inAttribute_mEndOfEnumerationExpression
+                                                                                                                const GALGAS_location & inAttribute_mEndOfAnonymousEnumeration
                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_enumeratedCollectionImplicitVarInExpAST result ;
-  if (inAttribute_mPrefix.isValid () && inAttribute_mEnumeratedExpression.isValid () && inAttribute_mEndOfEnumerationExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_enumeratedCollectionImplicitVarInExpAST (inAttribute_mPrefix, inAttribute_mEnumeratedExpression, inAttribute_mEndOfEnumerationExpression COMMA_THERE)) ;
+  if (inAttribute_mPrefix.isValid () && inAttribute_mEnumeratedExpression.isValid () && inAttribute_mEndOfAnonymousEnumeration.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_enumeratedCollectionImplicitVarInExpAST (inAttribute_mPrefix, inAttribute_mEnumeratedExpression, inAttribute_mEndOfAnonymousEnumeration COMMA_THERE)) ;
   }
   return result ;
 }
@@ -642,12 +642,12 @@ GALGAS_semanticExpressionAST GALGAS_enumeratedCollectionImplicitVarInExpAST::get
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_enumeratedCollectionImplicitVarInExpAST::getter_mEndOfEnumerationExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_enumeratedCollectionImplicitVarInExpAST::getter_mEndOfAnonymousEnumeration (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_enumeratedCollectionImplicitVarInExpAST * p = (const cPtr_enumeratedCollectionImplicitVarInExpAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_enumeratedCollectionImplicitVarInExpAST) ;
-    result = p->mProperty_mEndOfEnumerationExpression ;
+    result = p->mProperty_mEndOfAnonymousEnumeration ;
   }
   return result ;
 }
@@ -676,12 +676,12 @@ void GALGAS_enumeratedCollectionImplicitVarInExpAST::setter_setMEnumeratedExpres
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_enumeratedCollectionImplicitVarInExpAST::setter_setMEndOfEnumerationExpression (GALGAS_location inValue
-                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_enumeratedCollectionImplicitVarInExpAST::setter_setMEndOfAnonymousEnumeration (GALGAS_location inValue
+                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (NULL != mObjectPtr) {
     cPtr_enumeratedCollectionImplicitVarInExpAST * p = (cPtr_enumeratedCollectionImplicitVarInExpAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_enumeratedCollectionImplicitVarInExpAST) ;
-    p->mProperty_mEndOfEnumerationExpression = inValue ;
+    p->mProperty_mEndOfAnonymousEnumeration = inValue ;
   }
 }
 
@@ -691,12 +691,12 @@ void GALGAS_enumeratedCollectionImplicitVarInExpAST::setter_setMEndOfEnumeration
 
 cPtr_enumeratedCollectionImplicitVarInExpAST::cPtr_enumeratedCollectionImplicitVarInExpAST (const GALGAS_lstring & in_mPrefix,
                                                                                             const GALGAS_semanticExpressionAST & in_mEnumeratedExpression,
-                                                                                            const GALGAS_location & in_mEndOfEnumerationExpression
+                                                                                            const GALGAS_location & in_mEndOfAnonymousEnumeration
                                                                                             COMMA_LOCATION_ARGS) :
 cPtr_abstractEnumeratedCollectionAST (THERE),
 mProperty_mPrefix (in_mPrefix),
 mProperty_mEnumeratedExpression (in_mEnumeratedExpression),
-mProperty_mEndOfEnumerationExpression (in_mEndOfEnumerationExpression) {
+mProperty_mEndOfAnonymousEnumeration (in_mEndOfAnonymousEnumeration) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -712,7 +712,7 @@ void cPtr_enumeratedCollectionImplicitVarInExpAST::description (C_String & ioStr
   ioString << ", " ;
   mProperty_mEnumeratedExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mEndOfEnumerationExpression.description (ioString, inIndentation+1) ;
+  mProperty_mEndOfAnonymousEnumeration.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -720,7 +720,7 @@ void cPtr_enumeratedCollectionImplicitVarInExpAST::description (C_String & ioStr
 
 acPtr_class * cPtr_enumeratedCollectionImplicitVarInExpAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_enumeratedCollectionImplicitVarInExpAST (mProperty_mPrefix, mProperty_mEnumeratedExpression, mProperty_mEndOfEnumerationExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_enumeratedCollectionImplicitVarInExpAST (mProperty_mPrefix, mProperty_mEnumeratedExpression, mProperty_mEndOfAnonymousEnumeration COMMA_THERE)) ;
   return ptr ;
 }
 

@@ -43,28 +43,28 @@ void routine_updateLIBPMatPath (const GALGAS_string constinArgument_inLIBPMPath,
     var_allNeededFileSet_1333.addAssign_operation (enumerator_1377.current_mValue (HERE)  COMMA_SOURCE_FILE ("libpmHandling.galgas", 36)) ;
     enumerator_1377.gotoNextObject () ;
   }
-  cEnumerator_stringlist enumerator_1791 (var_fw_1085.getter_allBinaryFilePathes (SOURCE_FILE ("libpmHandling.galgas", 39)), kENUMERATION_UP) ;
-  while (enumerator_1791.hasCurrentObject ()) {
-    GALGAS_data var_contents_1811 = var_fw_1085.getter_binaryFileContentsAtPath (enumerator_1791.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 40)) ;
-    GALGAS_string var_actualFilePath_1874 = constinArgument_inLIBPMPath.add_operation (enumerator_1791.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 41)) ;
+  cEnumerator_stringlist enumerator_1763 (var_fw_1085.getter_allBinaryFilePathes (SOURCE_FILE ("libpmHandling.galgas", 39)), kENUMERATION_UP) ;
+  while (enumerator_1763.hasCurrentObject ()) {
+    GALGAS_data var_contents_1811 = var_fw_1085.getter_binaryFileContentsAtPath (enumerator_1763.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 40)) ;
+    GALGAS_string var_actualFilePath_1874 = constinArgument_inLIBPMPath.add_operation (enumerator_1763.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 41)) ;
     GALGAS_bool joker_1962 ; // Joker input parameter
     var_contents_1811.method_writeToFileWhenDifferentContents (var_actualFilePath_1874, joker_1962, inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 42)) ;
-    var_allNeededFileSet_1333.addAssign_operation (enumerator_1791.current_mValue (HERE)  COMMA_SOURCE_FILE ("libpmHandling.galgas", 43)) ;
-    enumerator_1791.gotoNextObject () ;
+    var_allNeededFileSet_1333.addAssign_operation (enumerator_1763.current_mValue (HERE)  COMMA_SOURCE_FILE ("libpmHandling.galgas", 43)) ;
+    enumerator_1763.gotoNextObject () ;
   }
   GALGAS_stringset var_allActualFileSet_2058 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("libpmHandling.galgas", 46)) ;
-  cEnumerator_stringlist enumerator_2108 (constinArgument_inLIBPMPath.getter_regularFiles (GALGAS_bool (true) COMMA_SOURCE_FILE ("libpmHandling.galgas", 47)), kENUMERATION_UP) ;
-  while (enumerator_2108.hasCurrentObject ()) {
-    var_allActualFileSet_2058.addAssign_operation (GALGAS_string ("/").add_operation (enumerator_2108.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 48))  COMMA_SOURCE_FILE ("libpmHandling.galgas", 48)) ;
-    enumerator_2108.gotoNextObject () ;
+  cEnumerator_stringlist enumerator_2072 (constinArgument_inLIBPMPath.getter_regularFiles (GALGAS_bool (true) COMMA_SOURCE_FILE ("libpmHandling.galgas", 47)), kENUMERATION_UP) ;
+  while (enumerator_2072.hasCurrentObject ()) {
+    var_allActualFileSet_2058.addAssign_operation (GALGAS_string ("/").add_operation (enumerator_2072.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 48))  COMMA_SOURCE_FILE ("libpmHandling.galgas", 48)) ;
+    enumerator_2072.gotoNextObject () ;
   }
   GALGAS_stringset var_uselessFileSet_2176 = var_allActualFileSet_2058.substract_operation (var_allNeededFileSet_1333, inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 50)) ;
-  cEnumerator_stringset enumerator_2241 (var_uselessFileSet_2176, kENUMERATION_UP) ;
-  while (enumerator_2241.hasCurrentObject ()) {
+  cEnumerator_stringset enumerator_2223 (var_uselessFileSet_2176, kENUMERATION_UP) ;
+  while (enumerator_2223.hasCurrentObject ()) {
     {
-    GALGAS_string::class_method_deleteFile (constinArgument_inLIBPMPath.add_operation (enumerator_2241.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 52)), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 52)) ;
+    GALGAS_string::class_method_deleteFile (constinArgument_inLIBPMPath.add_operation (enumerator_2223.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 52)), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 52)) ;
     }
-    enumerator_2241.gotoNextObject () ;
+    enumerator_2223.gotoNextObject () ;
   }
 }
 
@@ -6087,11 +6087,11 @@ static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_in
       test_3 = GALGAS_bool (kIsStrictSup, var_candidateProjectFiles_3246.getter_length (SOURCE_FILE ("galgas_prgm.galgas", 74)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
       if (kBoolTrue == test_3) {
         GALGAS_string var_s_3502 = GALGAS_string ("several project files in source file parent directory:") ;
-        cEnumerator_stringlist enumerator_3597 (var_candidateProjectFiles_3246, kENUMERATION_UP) ;
-        while (enumerator_3597.hasCurrentObject ()) {
+        cEnumerator_stringlist enumerator_3572 (var_candidateProjectFiles_3246, kENUMERATION_UP) ;
+        while (enumerator_3572.hasCurrentObject ()) {
           var_s_3502.plusAssign_operation(GALGAS_string ("\n"
-            "  - ").add_operation (enumerator_3597.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 77)), inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 77)) ;
-          enumerator_3597.gotoNextObject () ;
+            "  - ").add_operation (enumerator_3572.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 77)), inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 77)) ;
+          enumerator_3572.gotoNextObject () ;
         }
         TC_Array <C_FixItDescription> fixItArray4 ;
         inCompiler->emitSemanticError (constinArgument_inSourceFile.getter_location (SOURCE_FILE ("galgas_prgm.galgas", 79)), var_s_3502, fixItArray4  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 79)) ;

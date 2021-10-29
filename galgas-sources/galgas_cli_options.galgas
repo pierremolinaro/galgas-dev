@@ -43,15 +43,16 @@ option galgas_cli_options {
 
   @bool checkEntityUsefulness : '\0', "check-usefulness" -> "Check Entity Usefulness"
 
+  @uint macosxSDK : '\0', "macosx" -> "Generate an Xcode project for OS X"
+  
+#--- Deprecated constructions
   @bool propertyAccessRequiresSelf : '\0', "property-access-requires-self" -> "'self' is required for accessing properties in getter, setter and methods"
 
   @bool errorClassDeclaration : '\0', "error-class-declaration" -> "'class' declaration is obsolete use 'valueclass'"
 
   @bool errorValueClassDeclaration : '\0', "error-value-class-declaration" -> "'value class' declaration is obsolete use 'refclass'"
 
-  @bool warnsAnomynousForInstructionEnumeratedObject : '\0', "warns-anonymous-for-instruction" -> "warns on anonymous 'for' instruction enumerated object ('for () in ...')"
-
-  @uint macosxSDK : '\0', "macosx" -> "Generate an Xcode project for OS X"
+  @bool errorAnomynousForInstructionEnumeratedObject : '\0', "error-anonymous-for-instruction" -> "error on anonymous 'for' instruction enumerated object ('for () in ...')"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

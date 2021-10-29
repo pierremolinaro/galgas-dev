@@ -142,7 +142,7 @@ proc enterBaseGetterWithoutArgument
 proc enterBaseGetterWithArgument
   ?!@getterMap ioGetterMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?let @string inGetterName
+  ?getterName: let @string inGetterName
   ?let @string inArgument1TypeName
   ?let @string inArgument1Name
   ?returnedTypeName:let @string inReturnedTypeName
@@ -409,6 +409,14 @@ override method @locationPredefinedTypeAST getGetterMap
     !"isNowhere"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
+  )
+  enterBaseGetterWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName: "union"
+    !"location" !"inOtherLocation"
+    !returnedTypeName:"location"
+    !hasCompilerArgument: true
   )
 }
 
@@ -778,35 +786,35 @@ override method @stringPredefinedTypeAST getGetterMap
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"utf8RepresentationEnclosedWithin" !"char" !"inCharacter"
+    !getterName: "utf8RepresentationEnclosedWithin" !"char" !"inCharacter"
     !returnedTypeName: "string"
     !hasCompilerArgument: false
   )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"commandWithArguments" !"stringlist" !"inArguments"
+    !getterName: "commandWithArguments" !"stringlist" !"inArguments"
     !returnedTypeName: "sint"
     !hasCompilerArgument: true
   )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"hiddenCommandWithArguments" !"stringlist" !"inArguments"
+    !getterName: "hiddenCommandWithArguments" !"stringlist" !"inArguments"
     !returnedTypeName: "string"
     !hasCompilerArgument: true
   )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"characterAtIndex" !"uint" !"inIndex"
+    !getterName: "characterAtIndex" !"uint" !"inIndex"
     !returnedTypeName:"char"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"containsCharacter" !"char" !"inCharacter"
+    !getterName: "containsCharacter" !"char" !"inCharacter"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -824,28 +832,28 @@ override method @stringPredefinedTypeAST getGetterMap
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"stringByRemovingCharacterAtIndex" !"uint" !"inIndex"
+    !getterName: "stringByRemovingCharacterAtIndex" !"uint" !"inIndex"
     !returnedTypeName:"string"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"subStringFromIndex" !"uint" !"inIndex"
+    !getterName: "subStringFromIndex" !"uint" !"inIndex"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"rightSubString" !"uint" !"inLength"
+    !getterName: "rightSubString" !"uint" !"inLength"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"leftSubString" !"uint" !"inLength"
+    !getterName: "leftSubString" !"uint" !"inLength"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -859,21 +867,21 @@ override method @stringPredefinedTypeAST getGetterMap
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"absolutePathFromPath" !"string" !"inPath"
+    !getterName: "absolutePathFromPath" !"string" !"inPath"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"relativePathFromPath" !"string" !"inPath"
+    !getterName: "relativePathFromPath" !"string" !"inPath"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"componentsSeparatedByString" !"string" !"inSeparator"
+    !getterName: "componentsSeparatedByString" !"string" !"inSeparator"
     !returnedTypeName:"stringlist"
     !hasCompilerArgument:false
   )
@@ -908,7 +916,7 @@ override method @stringPredefinedTypeAST getGetterMap
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"regularFiles"
+    !getterName: "regularFiles"
     !"bool"
     !"inRecursiveSearch"
     !returnedTypeName:"stringlist"
@@ -917,14 +925,14 @@ override method @stringPredefinedTypeAST getGetterMap
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"hiddenFiles" !"bool" !"inRecursiveSearch"
+    !getterName: "hiddenFiles" !"bool" !"inRecursiveSearch"
     !returnedTypeName:"stringlist"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"directories"  !"bool" !"inRecursiveSearch"
+    !getterName: "directories"  !"bool" !"inRecursiveSearch"
     !returnedTypeName:"stringlist"
     !hasCompilerArgument:false
   )

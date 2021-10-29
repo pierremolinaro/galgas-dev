@@ -139,7 +139,7 @@ override method @dictDeclarationAST enterInSemanticContext
   enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !"hasKey" !self.mKeyTypeName.string !"inKey"
+    !getterName: "hasKey" !self.mKeyTypeName.string !"inKey"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
