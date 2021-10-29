@@ -86,7 +86,7 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
     var nombreModifications = 0
     while loop {
       print ("----------------------------------------------------------------------------------------------------------")
-      let (s, status) = runHiddenCommand ("/usr/local/bin/galgas", ["--property-access-requires-self", "-q", "--no-color", "--max-errors=1", inCheminFichierGALGAS])
+      let (s, status) = runHiddenCommand ("/usr/local/bin/galgas", ["--error-property-access-without-self", "-q", "--no-color", "--max-errors=1", inCheminFichierGALGAS])
       if status == 0 {
         print (BOLD_GREEN + "Succès !" + ENDC)
         loop = false

@@ -70,10 +70,19 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
+    identifier:@"errorEllipsisInEnumeratedObject"
+    commandChar:0
+    commandString:@"error-ellipsis-in-for-instruction"
+    comment:@"error on ellipsis in enumerated object ('for (x y ...) in xxx')"
+    defaultValue:@""
+  ] ;
+  [ioBoolOptionArray addObject:option] ;
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
     identifier:@"errorValueClassDeclaration"
     commandChar:0
     commandString:@"error-value-class-declaration"
-    comment:@"'value class' declaration is obsolete use 'refclass'"
+    comment:@"error on 'value class' declaration"
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
@@ -135,7 +144,7 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
     initWithDomainName:@"galgas_cli_options"
     identifier:@"propertyAccessRequiresSelf"
     commandChar:0
-    commandString:@"property-access-requires-self"
+    commandString:@"error-property-access-without-self"
     comment:@"'self' is required for accessing properties in getter, setter and methods"
     defaultValue:@""
   ] ;

@@ -112,7 +112,6 @@ syntax extension galgas3InstructionsSyntax {
     @bool endsWithEllipsis
     select
       $...$
-#      error .here : "deprecated"
       endsWithEllipsis = true
     or
       repeat
@@ -123,10 +122,10 @@ syntax extension galgas3InstructionsSyntax {
         endsWithEllipsis = false
       or
         $...$
-#        error .here : "deprecated"
         endsWithEllipsis = true
       end
     end
+    let location = @location.here
     $)$
     $in$
     <expression> ?let @semanticExpressionAST enumeratedExpression
@@ -134,7 +133,8 @@ syntax extension galgas3InstructionsSyntax {
       !elementList
       !endsWithEllipsis
       !enumeratedExpression
-      !@location.here}
+      !location
+    }
   }
   
   #·····················································································································
@@ -419,6 +419,12 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
       + " or less for enumeration: this list provides "
       + [[self.mElementList length] string]
     else
+      if [option galgas_cli_options.errorEllipsisInEnumeratedObject value] && ([enumerationDescriptorList length] > [self.mElementList length]) then
+        let missingArgumentCount = [enumerationDescriptorList length] - [self.mElementList length]
+        error mEndOfEnumerationExpression
+        : "enumerated object ends with '...' (due to '--error-ellipsis-in-for-instruction' option)"
+        fixit { replace if missingArgumentCount == 1 then "*" else " " + missingArgumentCount + "*" end }
+      end
       for (mOptionalTypeName mOptionalConstantName) in self.mElementList, (mEnumeratedType mEnumerationName) in enumerationDescriptorList do
         if [mOptionalConstantName string] != "" then # Empty string if joker
           if mOptionalTypeName.string != "" then
@@ -430,7 +436,10 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
               error mOptionalTypeName : "incorrect '@" + [foundType key] + "' type: '@" + [mEnumeratedType key] + "' type required here"
             end
           end
-          ioLocalConstantListForDoBranch += !mEnumeratedType !mOptionalConstantName !outEnumeratorCppName + ".current_" + [mEnumerationName identifierRepresentation]+ " (HERE)"
+          ioLocalConstantListForDoBranch +=
+            !mEnumeratedType
+            !mOptionalConstantName
+            !outEnumeratorCppName + ".current_" + [mEnumerationName identifierRepresentation] + " (HERE)"
         end
       end
     end

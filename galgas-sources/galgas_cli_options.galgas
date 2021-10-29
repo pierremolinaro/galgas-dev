@@ -46,13 +46,14 @@ option galgas_cli_options {
   @uint macosxSDK : '\0', "macosx" -> "Generate an Xcode project for OS X"
   
 #--- Deprecated constructions
-  @bool propertyAccessRequiresSelf : '\0', "property-access-requires-self" -> "'self' is required for accessing properties in getter, setter and methods"
+  @bool propertyAccessRequiresSelf : '\0', "error-property-access-without-self" -> "'self' is required for accessing properties in getter, setter and methods"
 
   @bool errorClassDeclaration : '\0', "error-class-declaration" -> "'class' declaration is obsolete use 'valueclass'"
 
-  @bool errorValueClassDeclaration : '\0', "error-value-class-declaration" -> "'value class' declaration is obsolete use 'refclass'"
+  @bool errorValueClassDeclaration : '\0', "error-value-class-declaration" -> "error on 'value class' declaration"
 
   @bool errorAnomynousForInstructionEnumeratedObject : '\0', "error-anonymous-for-instruction" -> "error on anonymous 'for' instruction enumerated object ('for () in ...')"
+  @bool errorEllipsisInEnumeratedObject : '\0', "error-ellipsis-in-for-instruction" -> "error on ellipsis in enumerated object ('for (x y ...) in xxx')"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
