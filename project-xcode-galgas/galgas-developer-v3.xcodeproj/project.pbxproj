@@ -147,8 +147,6 @@
 		CF653FC3272B2A9200698C45 /* all-declarations-30.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF653FBF272B2A9200698C45 /* all-declarations-30.cpp */; };
 		CF653FC4272B2A9200698C45 /* all-declarations-31.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF653FC0272B2A9200698C45 /* all-declarations-31.cpp */; };
 		CF653FC5272B2A9200698C45 /* all-declarations-31.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF653FC0272B2A9200698C45 /* all-declarations-31.cpp */; };
-		CF653FC6272B2A9200698C45 /* all-declarations-32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF653FC1272B2A9200698C45 /* all-declarations-32.cpp */; };
-		CF653FC7272B2A9200698C45 /* all-declarations-32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF653FC1272B2A9200698C45 /* all-declarations-32.cpp */; };
 		CF69B28E0A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF69B2800A31EFF0002AE337 /* C_ErrorOut.cpp */; };
 		CF69B2900A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF69B2800A31EFF0002AE337 /* C_ErrorOut.cpp */; };
 		CF6CEB841278B57400E8F785 /* C_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6CEB6F1278B57400E8F785 /* C_Compiler.cpp */; };
@@ -780,8 +778,6 @@
 		CF653FBC272B23B100698C45 /* all-declarations-29.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-29.cpp"; sourceTree = "<group>"; };
 		CF653FBF272B2A9200698C45 /* all-declarations-30.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-30.cpp"; sourceTree = "<group>"; };
 		CF653FC0272B2A9200698C45 /* all-declarations-31.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-31.cpp"; sourceTree = "<group>"; };
-		CF653FC1272B2A9200698C45 /* all-declarations-32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-32.cpp"; sourceTree = "<group>"; };
-		CF653FC8272B2ABA00698C45 /* all-declarations-32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations-32.h"; sourceTree = "<group>"; };
 		CF653FC9272B2ABA00698C45 /* all-declarations-31.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations-31.h"; sourceTree = "<group>"; };
 		CF69B2800A31EFF0002AE337 /* C_ErrorOut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_ErrorOut.cpp; sourceTree = "<group>"; };
 		CF69B2810A31EFF0002AE337 /* C_ErrorOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_ErrorOut.h; sourceTree = "<group>"; };
@@ -1292,7 +1288,6 @@
 				CF653FBC272B23B100698C45 /* all-declarations-29.cpp */,
 				CF653FBF272B2A9200698C45 /* all-declarations-30.cpp */,
 				CF653FC0272B2A9200698C45 /* all-declarations-31.cpp */,
-				CF653FC1272B2A9200698C45 /* all-declarations-32.cpp */,
 				CF12C0BD1D043E610060778F /* all-predefined-types.cpp */,
 			);
 			name = "C++ files";
@@ -1333,7 +1328,6 @@
 				CF45B181239AF25200F16511 /* all-declarations-29.h */,
 				CF45B183239AF25200F16511 /* all-declarations-30.h */,
 				CF653FC9272B2ABA00698C45 /* all-declarations-31.h */,
-				CF653FC8272B2ABA00698C45 /* all-declarations-32.h */,
 				CF2374E319967D5D0061D2D8 /* all-declarations.h */,
 				CF12C0BF1D043E6C0060778F /* all-predefined-types.h */,
 				CF0EBF7E1DACE65F007B4D58 /* galgas_cli_options.h */,
@@ -2244,7 +2238,6 @@
 				CF92344B1BADC719001032DA /* mpn-tdiv_qr.c in Sources */,
 				CF9233C71BADAEDD001032DA /* mpz-export.c in Sources */,
 				CF9E75AE1BAE11DD00DBEFEE /* mpz-fdiv_q_ui.c in Sources */,
-				CF653FC6272B2A9200698C45 /* all-declarations-32.cpp in Sources */,
 				CF9E75A61BADF2B000DBEFEE /* 64-mp_bases.c in Sources */,
 				CF9E75771BADDDA900DBEFEE /* mpn-lshiftc.c in Sources */,
 				CF92340D1BADBFF6001032DA /* mpz-com.c in Sources */,
@@ -2517,7 +2510,6 @@
 				CF9234141BADBFF6001032DA /* mpz-tdiv_qr.c in Sources */,
 				CF9E75AF1BAE11DD00DBEFEE /* mpz-fdiv_q_ui.c in Sources */,
 				CFB02C8319F3FC2F0011D03D /* all-declarations-23.cpp in Sources */,
-				CF653FC7272B2A9200698C45 /* all-declarations-32.cpp in Sources */,
 				CF9E75A71BADF2B000DBEFEE /* 64-mp_bases.c in Sources */,
 				CF92344C1BADC719001032DA /* mpn-tdiv_qr.c in Sources */,
 				CF9233C81BADAEDD001032DA /* mpz-export.c in Sources */,

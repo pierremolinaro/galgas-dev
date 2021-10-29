@@ -51,21 +51,21 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 {
-  @getterMap getterMap
-  @setterMap setterMap
-  @instanceMethodMap instanceMethodMap
-  @typedPropertyList inheritedTypedAttributeList
-  @propertyMap attributeMap = {}
+#  @getterMap getterMap
+#  @setterMap setterMap
+#  @instanceMethodMap instanceMethodMap
+#  @typedPropertyList inheritedTypedAttributeList
+#  @propertyMap attributeMap = {}
 #--- Handle super class
   @unifiedTypeMap-entry superClassIndex
   @bool generateHeaderInSeparateFile
   if [self.mSuperWeakReferenceTypeName string] == "" then
     superClassIndex = @unifiedTypeMap-entry.null
-    commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?getterMap )
-    setterMap = {}
-    instanceMethodMap = {}
-    inheritedTypedAttributeList = {}
-    attributeMap = {}
+#    commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?getterMap )
+#    setterMap = {}
+#    instanceMethodMap = {}
+#    inheritedTypedAttributeList = {}
+#    attributeMap = {}
     generateHeaderInSeparateFile = false
     for () in self.mClassFeatureList do
       if [mValue string] == "generatedInSeparateFile" then
@@ -82,10 +82,10 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
       !self.mSuperWeakReferenceTypeName
       ?3*
       ?typeKindEnum
-      ?*
-      ?inheritedTypedAttributeList
-      ?attributeMap
-      ?2*
+      ?5*
+#      ?inheritedTypedAttributeList
+#      ?attributeMap
+#      ?2*
       ?inheritedGetterMap
       ?inheritedSetterMap
       ?inheritedMethodMap
@@ -98,66 +98,66 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
       error self.mSuperWeakReferenceTypeName : "the @" + self.mSuperWeakReferenceTypeName + " should be a weak reference type"
     end
   #--- Mark all setters as inherited
-    setterMap = {}
-    for () in inheritedSetterMap do
-      [!?setterMap insertKey
-        !lkey
-        !mKind
-        !mParameterList
-        !mHasCompilerArgument
-        !.isInherited
-        !"" # No error message
-      ] 
-    end
+#    setterMap = {}
+#    for () in inheritedSetterMap do
+#      [!?setterMap insertKey
+#        !lkey
+#        !mKind
+#        !mParameterList
+#        !mHasCompilerArgument
+#        !.isInherited
+#        !"" # No error message
+#      ] 
+#    end
   #--- Mark all getters as inherited
-    getterMap = {}
-    for aGetter in inheritedGetterMap do
-      [!?getterMap insertKey
-        !aGetter.lkey
-        !aGetter.mKind
-        !aGetter.mArgumentTypeList
-        !aGetter.mDeclarationLocation
-        !aGetter.mHasCompilerArgument
-        !aGetter.mReturnedType
-        !.isInherited
-        !aGetter.mErrorMessage
-      ] 
-    end
+#    getterMap = {}
+#    for aGetter in inheritedGetterMap do
+#      [!?getterMap insertKey
+#        !aGetter.lkey
+#        !aGetter.mKind
+#        !aGetter.mArgumentTypeList
+#        !aGetter.mDeclarationLocation
+#        !aGetter.mHasCompilerArgument
+#        !aGetter.mReturnedType
+#        !.isInherited
+#        !aGetter.mErrorMessage
+#      ] 
+#    end
   #--- Mark all methods as inherited
-    instanceMethodMap = {}
-    for () in inheritedMethodMap do
-      [!?instanceMethodMap insertKey
-        !lkey
-        !mKind
-        !mParameterList
-        !mDeclarationLocation
-        !mHasCompilerArgument
-        !.isInherited
-        !mErrorMessage
-      ] 
-    end
+#    instanceMethodMap = {}
+#    for () in inheritedMethodMap do
+#      [!?instanceMethodMap insertKey
+#        !lkey
+#        !mKind
+#        !mParameterList
+#        !mDeclarationLocation
+#        !mHasCompilerArgument
+#        !.isInherited
+#        !mErrorMessage
+#      ] 
+#    end
   end
-#--- Build attribute Map and constructor argument list
-  for () in self.mPropertyList do
-    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
-    var hasSelector = false
-    for (attribute) in mAttributeList do
-      if attribute.string == "selector" then
-        if hasSelector then
-          error attribute : "duplicated attribute" fixit { remove }
-        end
-        hasSelector = true
-      end
-    end
-    [!?attributeMap insertKey
-      !mPropertyName
-      !mIsPublic
-      !attributeTypeIndex
-    ]
-    if [getterMap hasKey ![mPropertyName string]] then
-      error mPropertyName: "'" + mPropertyName + "' is the name of a prefefined or a user defined getter"
-    end
-  end
+#--- Build property Map and constructor argument list
+#  for () in self.mPropertyList do
+#    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+#    var hasSelector = false
+#    for (attribute) in mAttributeList do
+#      if attribute.string == "selector" then
+#        if hasSelector then
+#          error attribute : "duplicated attribute" fixit { remove }
+#        end
+#        hasSelector = true
+#      end
+#    end
+#    [!?attributeMap insertKey
+#      !mPropertyName
+#      !mIsPublic
+#      !attributeTypeIndex
+#    ]
+#    if [getterMap hasKey ![mPropertyName string]] then
+#      error mPropertyName: "'" + mPropertyName + "' is the name of a prefefined or a user defined getter"
+#    end
+#  end
 #--- Current class Index
   [@unifiedTypeMap-entry makeEntry
      !?ioSemanticContext.mTypeMap
@@ -173,48 +173,51 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
     !weakReferenceIndex
   ]
 #--- Typed property list
-  @typedPropertyList currentClassTypedPropertyList = {}
-  @typedPropertyList allTypedPropertyList = inheritedTypedAttributeList
-  for () in self.mPropertyList do
-    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
-    let hasSetter = true # mIsPublic
-    var hasSelector = false
-    for () in mAttributeList do
-      if [mValue string] == "setter" then
-        warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
-      elsif [mValue string] == "nogetter" then
-        warning mValue : "obsolete attribute: use 'private' qualifier"
-      elsif [mValue string] == "selector" then
-        hasSelector = true
-      end
-    end
-    currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
-    allTypedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
-    [!?getterMap insertKey
-      !mPropertyName
-      !@methodKind.definedAsMember
-      !@functionSignature {} # No argument
-      !@location.here
-      !true # Compiler argument
-      !attributeTypeIndex # Returned type
-      !@methodQualifier.isBasic
-      !"" # No Error message
-    ]
-  end
+#  @typedPropertyList currentClassTypedPropertyList = {}
+#  @typedPropertyList allTypedPropertyList = inheritedTypedAttributeList
+#  for () in self.mPropertyList do
+#    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+#    let hasSetter = true # mIsPublic
+#    var hasSelector = false
+#    for () in mAttributeList do
+#      if [mValue string] == "setter" then
+#        warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
+#      elsif [mValue string] == "nogetter" then
+#        warning mValue : "obsolete attribute: use 'private' qualifier"
+#      elsif [mValue string] == "selector" then
+#        hasSelector = true
+#      end
+#    end
+#    currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
+#    allTypedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
+#    [!?getterMap insertKey
+#      !mPropertyName
+#      !@methodKind.definedAsMember
+#      !@functionSignature {} # No argument
+#      !@location.here
+#      !true # Compiler argument
+#      !attributeTypeIndex # Returned type
+#      !@methodQualifier.isBasic
+#      !"" # No Error message
+#    ]
+#  end
 #--- set...attribute setter
-  for () in currentClassTypedPropertyList do
-    if mHasSetter then
-      [!?setterMap insertKey
-        !@lstring.new {!"set"+ [[mPropertyName string] stringByCapitalizingFirstCharacter] !@location.here}
-        !@methodKind.definedAsMember
-        !{!["" nowhere] !mPropertyTypeEntry !@formalArgumentPassingModeAST.argumentIn !mPropertyName.string}
-        !true # Compiler argument
-        !@methodQualifier.isBasicFinal
-        !"" # No error message
-      ]
-    end
-  end
+#  for () in currentClassTypedPropertyList do
+#    if mHasSetter then
+#      [!?setterMap insertKey
+#        !@lstring.new {!"set"+ [[mPropertyName string] stringByCapitalizingFirstCharacter] !@location.here}
+#        !@methodKind.definedAsMember
+#        !{!["" nowhere] !mPropertyTypeEntry !@formalArgumentPassingModeAST.argumentIn !mPropertyName.string}
+#        !true # Compiler argument
+#        !@methodQualifier.isBasicFinal
+#        !"" # No error message
+#      ]
+#    end
+#  end
 #--- Add Extensions
+  @getterMap getterMap = {}
+  @setterMap setterMap = {}
+  @instanceMethodMap instanceMethodMap = {}
   addExtensions (
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext
@@ -225,6 +228,15 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
     !?setterMap
     !?instanceMethodMap
   )
+  for (lkey 7*) in getterMap do
+    error lkey : "a weak referencev does not support extension"
+  end
+  for (lkey 5*) in setterMap do
+    error lkey : "a weak referencev does not support extension"
+  end
+  for (lkey 6*) in instanceMethodMap do
+    error lkey : "a weak referencev does not support extension"
+  end
 #--- Enter in type map
   [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mClassTypeName ?let classIndex]
   [!?ioSemanticContext.mTypeMap insertKey
@@ -234,13 +246,13 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
     !superClassIndex
     !@typeKindEnum.weakReferenceType {!referenceType: classIndex}
     !false # Does not support collection value
-    !allTypedPropertyList
-    !attributeMap
-    !currentClassTypedPropertyList
+    !{} # allTypedPropertyList
+    !{} # attributeMap
+    !{} # currentClassTypedPropertyList
     !constructorMap
-    !getterMap
-    !setterMap
-    !instanceMethodMap
+    !{} # getterMap
+    !{} # setterMap
+    !{} # instanceMethodMap
     !{}
     !@optionalMethodMap {}
     !{}
