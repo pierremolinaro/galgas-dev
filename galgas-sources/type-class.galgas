@@ -273,7 +273,6 @@ override method @classDeclarationAST enterInSemanticContext
   for () in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true # mIsPublic
-    let hasGetter = true # mIsPublic
     var hasSelector = false
     for () in mAttributeList do
       if [mValue string] == "setter" then
@@ -284,20 +283,18 @@ override method @classDeclarationAST enterInSemanticContext
         hasSelector = true
       end
     end
-    currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
-    allTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
-    if hasGetter then
-      [!?getterMap insertKey
-        !mPropertyName
-        !@methodKind.definedAsMember
-        !@functionSignature {} # No argument
-        !@location.here
-        !false # No Compiler argument
-        !attributeTypeIndex # Returned type
-        !@methodQualifier.isBasic
-        !"" # No Error message
-      ]
-    end
+    currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
+    allTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
+    [!?getterMap insertKey
+      !mPropertyName
+      !@methodKind.definedAsMember
+      !@functionSignature {} # No argument
+      !@location.here
+      !false # No Compiler argument
+      !attributeTypeIndex # Returned type
+      !@methodQualifier.isBasic
+      !"" # No Error message
+    ]
   end
 #--- set...attribute setter
   for () in currentClassTypedPropertyList do
@@ -443,7 +440,6 @@ override method @classDeclarationAST semanticAnalysis
     [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     let hasSetter = true # mIsPublic
-    let hasGetter = true # mIsPublic
     var hasSelector = false
     for () in mAttributeList do
       if [mValue string] == "setter" then
@@ -466,13 +462,11 @@ override method @classDeclarationAST semanticAnalysis
       !t
       !mPropertyName
       !hasSetter
-      !hasGetter
       !hasSelector
     allAttributeList +=
       !t
       !mPropertyName
       !hasSetter
-      !hasGetter
       !hasSelector
     [!?attributeMap insertKey !mPropertyName !t]
   end
@@ -569,7 +563,7 @@ override method @classTypeForGeneration appendDeclaration2
   ?!@stringset ioInclusionSet
   !@string outHeader
 {
-  for (t 4*) in self.mTypedAttributeList do
+  for (t 3*) in self.mTypedAttributeList do
     [t addHeaderFileName !?ioInclusionSet]
   end
 

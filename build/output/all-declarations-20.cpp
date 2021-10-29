@@ -14506,7 +14506,6 @@ GALGAS_typedPropertyList_2D_element::GALGAS_typedPropertyList_2D_element (void) 
 mProperty_mPropertyTypeEntry (),
 mProperty_mPropertyName (),
 mProperty_mHasSetter (),
-mProperty_mHasGetter (),
 mProperty_mHasSelector () {
 }
 
@@ -14520,13 +14519,11 @@ GALGAS_typedPropertyList_2D_element::~ GALGAS_typedPropertyList_2D_element (void
 GALGAS_typedPropertyList_2D_element::GALGAS_typedPropertyList_2D_element (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
                                                                           const GALGAS_lstring & inOperand1,
                                                                           const GALGAS_bool & inOperand2,
-                                                                          const GALGAS_bool & inOperand3,
-                                                                          const GALGAS_bool & inOperand4) :
+                                                                          const GALGAS_bool & inOperand3) :
 mProperty_mPropertyTypeEntry (inOperand0),
 mProperty_mPropertyName (inOperand1),
 mProperty_mHasSetter (inOperand2),
-mProperty_mHasGetter (inOperand3),
-mProperty_mHasSelector (inOperand4) {
+mProperty_mHasSelector (inOperand3) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -14534,7 +14531,6 @@ mProperty_mHasSelector (inOperand4) {
 GALGAS_typedPropertyList_2D_element GALGAS_typedPropertyList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_typedPropertyList_2D_element (GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE),
                                               GALGAS_lstring::constructor_default (HERE),
-                                              GALGAS_bool::constructor_default (HERE),
                                               GALGAS_bool::constructor_default (HERE),
                                               GALGAS_bool::constructor_default (HERE)) ;
 }
@@ -14544,12 +14540,11 @@ GALGAS_typedPropertyList_2D_element GALGAS_typedPropertyList_2D_element::constru
 GALGAS_typedPropertyList_2D_element GALGAS_typedPropertyList_2D_element::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
                                                                                           const GALGAS_lstring & inOperand1,
                                                                                           const GALGAS_bool & inOperand2,
-                                                                                          const GALGAS_bool & inOperand3,
-                                                                                          const GALGAS_bool & inOperand4 
+                                                                                          const GALGAS_bool & inOperand3 
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typedPropertyList_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    result = GALGAS_typedPropertyList_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4) ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
+    result = GALGAS_typedPropertyList_2D_element (inOperand0, inOperand1, inOperand2, inOperand3) ;
   }
   return result ;
 }
@@ -14568,9 +14563,6 @@ typeComparisonResult GALGAS_typedPropertyList_2D_element::objectCompare (const G
     result = mProperty_mHasSetter.objectCompare (inOperand.mProperty_mHasSetter) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mHasGetter.objectCompare (inOperand.mProperty_mHasGetter) ;
-  }
-  if (result == kOperandEqual) {
     result = mProperty_mHasSelector.objectCompare (inOperand.mProperty_mHasSelector) ;
   }
   return result ;
@@ -14579,7 +14571,7 @@ typeComparisonResult GALGAS_typedPropertyList_2D_element::objectCompare (const G
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_typedPropertyList_2D_element::isValid (void) const {
-  return mProperty_mPropertyTypeEntry.isValid () && mProperty_mPropertyName.isValid () && mProperty_mHasSetter.isValid () && mProperty_mHasGetter.isValid () && mProperty_mHasSelector.isValid () ;
+  return mProperty_mPropertyTypeEntry.isValid () && mProperty_mPropertyName.isValid () && mProperty_mHasSetter.isValid () && mProperty_mHasSelector.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -14588,7 +14580,6 @@ void GALGAS_typedPropertyList_2D_element::drop (void) {
   mProperty_mPropertyTypeEntry.drop () ;
   mProperty_mPropertyName.drop () ;
   mProperty_mHasSetter.drop () ;
-  mProperty_mHasGetter.drop () ;
   mProperty_mHasSelector.drop () ;
 }
 
@@ -14605,8 +14596,6 @@ void GALGAS_typedPropertyList_2D_element::description (C_String & ioString,
     mProperty_mPropertyName.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mHasSetter.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mHasGetter.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mHasSelector.description (ioString, inIndentation+1) ;
   }
@@ -14629,12 +14618,6 @@ GALGAS_lstring GALGAS_typedPropertyList_2D_element::getter_mPropertyName (UNUSED
 
 GALGAS_bool GALGAS_typedPropertyList_2D_element::getter_mHasSetter (UNUSED_LOCATION_ARGS) const {
   return mProperty_mHasSetter ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_typedPropertyList_2D_element::getter_mHasGetter (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mHasGetter ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

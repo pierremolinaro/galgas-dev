@@ -306,25 +306,25 @@
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   [[NSNotificationCenter defaultCenter]
-    removeObserver:self
-    name:NSUndoManagerCheckpointNotification
-    object:mUndoManager
+    removeObserver: self
+    name: NSUndoManagerCheckpointNotification
+    object: mUndoManager
   ] ;
   [[NSNotificationCenter defaultCenter]
-    removeObserver:self
-    name:NSUndoManagerDidUndoChangeNotification
-    object:mUndoManager
+    removeObserver: self
+    name: NSUndoManagerDidUndoChangeNotification
+    object: mUndoManager
   ] ;
   [[NSNotificationCenter defaultCenter]
-    removeObserver:self
+    removeObserver: self
     name:NSUndoManagerDidRedoChangeNotification
-    object:mUndoManager
+    object: mUndoManager
   ] ;
 //---
   [[NSNotificationCenter defaultCenter]
-    removeObserver:self
+    removeObserver: self
     name: NSTextStorageDidProcessEditingNotification
-    object:mSourceTextStorage
+    object: mSourceTextStorage
   ] ;
 //---
 //  NSLog (@"%s:observationInfo %@", __PRETTY_FUNCTION__, (id) self.observationInfo) ;
@@ -391,9 +391,9 @@
     nil
   ] ;
   [mUndoManager
-    registerUndoWithTarget:self
-    selector:@selector (replaceUsingDictionary:)
-    object:d
+    registerUndoWithTarget: self
+    selector: @selector (replaceUsingDictionary:)
+    object: d
   ] ;
   [mSourceTextStorage beginEditing] ;
   [mSourceTextStorage replaceCharactersInRange:inRange withString:inReplaceString] ;

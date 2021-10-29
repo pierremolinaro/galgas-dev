@@ -370,7 +370,6 @@ override method @mapDeclarationAST enterInSemanticContext
   @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
   for () in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
-    let hasGetter = true
     let hasSetter = true
     var hasSelector = false
     for (attribute) in mAttributeList do
@@ -382,7 +381,7 @@ override method @mapDeclarationAST enterInSemanticContext
       end
     end
     argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
-    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
+    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
     enumerationDescriptor += !attributeTypeIndex ![mPropertyName string]
     insertMethodFormalArgumentList +=
@@ -601,13 +600,11 @@ override method @mapDeclarationAST semanticAnalysis
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     @unifiedTypeMap-entry t = .searchKey{!inSemanticContext.mTypeMap !mPropertyTypeName}
     let hasSetter = true
-    let hasGetter = true
     let hasSelector = false
     typedAttributeList +=
       !t
       !mPropertyName
       !hasSetter
-      !hasGetter
       !hasSelector
     if [forbiddenKeysForMapAndDict () hasKey !mPropertyName.string] then
       @string m = "a property cannot be named:"
@@ -715,7 +712,7 @@ override method @mapTypeForGeneration appendDeclaration2
   ?let @string unused inOutputDirectory
   ?!@stringset ioInclusionSet
   !@string outHeader {
-  for (t 4*) in self.mTypedAttributeList do
+  for (t 3*) in self.mTypedAttributeList do
     [t addHeaderFileName1 !?ioInclusionSet]
   end
 

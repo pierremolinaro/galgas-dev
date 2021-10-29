@@ -178,7 +178,6 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
   for () in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true # mIsPublic
-    let hasGetter = true # mIsPublic
     var hasSelector = false
     for () in mAttributeList do
       if [mValue string] == "setter" then
@@ -189,20 +188,18 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
         hasSelector = true
       end
     end
-    currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
-    allTypedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
-    if hasGetter then
-      [!?getterMap insertKey
-        !mPropertyName
-        !@methodKind.definedAsMember
-        !@functionSignature {} # No argument
-        !@location.here
-        !true # Compiler argument
-        !attributeTypeIndex # Returned type
-        !@methodQualifier.isBasic
-        !"" # No Error message
-      ]
-    end
+    currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
+    allTypedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
+    [!?getterMap insertKey
+      !mPropertyName
+      !@methodKind.definedAsMember
+      !@functionSignature {} # No argument
+      !@location.here
+      !true # Compiler argument
+      !attributeTypeIndex # Returned type
+      !@methodQualifier.isBasic
+      !"" # No Error message
+    ]
   end
 #--- set...attribute setter
   for () in currentClassTypedPropertyList do
@@ -322,21 +319,12 @@ override method @weakReferenceDeclarationAST semanticAnalysis
 #    [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     let hasSetter = true # mIsPublic
-    let hasGetter = true # mIsPublic
     var hasSelector = false
     for () in mAttributeList do
       if [mValue string] == "setter" then
         warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
-#        if hasSetter then
-#          error mValue : "the '%setter' attribute is already named"
-#        end
-#        hasSetter = true
       elsif [mValue string] == "nogetter" then
         warning mValue : "obsolete attribute: use 'private' qualifier"
-#        if not hasGetter then
-#          error mValue : "the '%nogetter' attribute is already named"
-#        end
-#        hasGetter = false
       elsif [mValue string] == "selector" then
         if hasSelector then
           error mValue : "the '%selector' attribute is already named"
@@ -353,13 +341,11 @@ override method @weakReferenceDeclarationAST semanticAnalysis
       !t
       !mPropertyName
       !hasSetter
-      !hasGetter
       !hasSelector
     allAttributeList +=
       !t
       !mPropertyName
       !hasSetter
-      !hasGetter
       !hasSelector
     [!?attributeMap insertKey !mPropertyName !t]
   end

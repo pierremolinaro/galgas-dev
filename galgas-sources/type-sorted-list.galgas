@@ -134,10 +134,9 @@ override method @sortedListDeclarationAST enterInSemanticContext
   @typedPropertyList typedAttributeList = {}
   for () in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
-    let hasGetter = true
     let hasSetter = true
     let hasSelector = false
-    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
+    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
     setterFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST.argumentOut !mPropertyName.string
@@ -272,13 +271,11 @@ override method @sortedListDeclarationAST semanticAnalysis
     [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     let hasSetter = true
-    let hasGetter = true
     let hasSelector = true
     typedAttributeList +=
       !t
       !mPropertyName
       !hasSetter
-      !hasGetter
       !hasSelector
     [!?attributeMap insertKey !mPropertyName !t]
   end
@@ -371,7 +368,7 @@ override method @sortedListTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  for (t 4*) in self.mTypedAttributeList do
+  for (t 3*) in self.mTypedAttributeList do
     [t addHeaderFileName !?ioInclusionSet]
   end
   [self.mListElementTypeIndex addHeaderFileName !?ioInclusionSet]

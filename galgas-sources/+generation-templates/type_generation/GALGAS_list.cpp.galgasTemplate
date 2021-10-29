@@ -456,21 +456,19 @@ for () in ATTRIBUTE_LIST do index IDX
   %}\n\n%
   end
 
-  if mHasGetter then
-    %//----------------------------------------------------------------------------------------------------------------------\n\n%
-    %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]%AtIndex (%?^%const GALGAS_uint & inIndex,\n%
-    %                                              %!^%C_Compiler * inCompiler\n%
-    %                                              %!^%COMMA_LOCATION_ARGS) const {\n%
-    %  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;\n%
-    %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;\n%
-    %  GALGAS_%![mPropertyTypeEntry identifierRepresentation]% result ;\n%
-    %  if (NULL != p) {\n%
-    %    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
-    %    result = p->mObject.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
-    %  }\n%
-    %  return result ;\n%
-    %}\n\n%
-  end
+  %//----------------------------------------------------------------------------------------------------------------------\n\n%
+  %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]%AtIndex (%?^%const GALGAS_uint & inIndex,\n%
+  %                                              %!^%C_Compiler * inCompiler\n%
+  %                                              %!^%COMMA_LOCATION_ARGS) const {\n%
+  %  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;\n%
+  %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;\n%
+  %  GALGAS_%![mPropertyTypeEntry identifierRepresentation]% result ;\n%
+  %  if (NULL != p) {\n%
+  %    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
+  %    result = p->mObject.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+  %  }\n%
+  %  return result ;\n%
+  %}\n\n%
 end
 %
 

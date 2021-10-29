@@ -113,12 +113,10 @@ end
 }
 
 %for () in PROPERTY_LIST do
-  if mHasGetter then
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
   %  return mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   %}\n\n%
-  end
 end
 %
 

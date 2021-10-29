@@ -25,9 +25,7 @@
 %//--- Attribute accessors
 %
   for () in CURRENT_ATTRIBUTE_LIST do
-    if mHasGetter then
-      %  public: VIRTUAL_IN_DEBUG GALGAS_%![mPropertyTypeEntry identifierRepresentation]% getter_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
-    end
+    %  public: VIRTUAL_IN_DEBUG GALGAS_%![mPropertyTypeEntry identifierRepresentation]% getter_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
     if mHasSetter then
       %  public: VIRTUAL_IN_DEBUG void setter_set%![[mPropertyName identifierRepresentation] stringByCapitalizingFirstCharacter]% (GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inValue COMMA_LOCATION_ARGS) ;\n%
     end

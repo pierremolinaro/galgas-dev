@@ -99,9 +99,8 @@ override method @structDeclarationAST enterInSemanticContext
     constructorPropertyTypeList += !selector !propertyTypeEntry !mPropertyName.string
     typesToIncludeInHeaderCompilation += !propertyTypeEntry
     let hasSetter = true # mIsPublic
-    let hasGetter = true # mIsPublic
     let hasSelector = false
-    typedPropertyList += !propertyTypeEntry !mPropertyName !hasSetter !hasGetter !hasSelector
+    typedPropertyList += !propertyTypeEntry !mPropertyName !hasSetter !hasSelector
     [!?propertyMap insertKey !mPropertyName !mIsPublic !propertyTypeEntry]
   end
   [!?constructorMap insertKey
@@ -114,15 +113,13 @@ override method @structDeclarationAST enterInSemanticContext
   @getterMap getterMap
   commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?getterMap )
   for () in typedPropertyList do
-    if mHasGetter then
-      enterBaseFinalGetterWithoutArgument (
-        !?getterMap
-        !?ioSemanticContext.mTypeMap 
-        !getterName:[mPropertyName string]
-        !returnedTypeName:[mPropertyTypeEntry key]
-        !hasCompilerArgument:false
-      )
-    end
+    enterBaseFinalGetterWithoutArgument (
+      !?getterMap
+      !?ioSemanticContext.mTypeMap 
+      !getterName:[mPropertyName string]
+      !returnedTypeName:[mPropertyTypeEntry key]
+      !hasCompilerArgument:false
+    )
   end
 #--- Modifiers
   @setterMap setterMap = {}
@@ -234,12 +231,10 @@ override method @structDeclarationAST semanticAnalysis
       end
     end
     let hasSetter = true # mIsPublic
-    let hasGetter = true # mIsPublic
     typedPropertyList +=
       !t
       !mPropertyName
       !hasSetter
-      !hasGetter
       !hasSelector
     if [forbiddenKeysForStruct () hasKey !mPropertyName.string] then
       @string m = "an property cannot be named:"
@@ -291,7 +286,7 @@ override method @structTypeForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
   !@string outHeader
 {
-  for (t 4*) in self.mTypedPropertyList do
+  for (t 3*) in self.mTypedPropertyList do
     [t addHeaderFileName1 !?ioInclusionSet]
   end
 

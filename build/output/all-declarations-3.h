@@ -5194,8 +5194,6 @@ class GALGAS_typedPropertyList_2D_element : public AC_GALGAS_root {
 
   public: GALGAS_bool mProperty_mHasSetter ;
 
-  public: GALGAS_bool mProperty_mHasGetter ;
-
   public: GALGAS_bool mProperty_mHasSelector ;
 
 //--------------------------------- Accessors
@@ -5221,10 +5219,6 @@ class GALGAS_typedPropertyList_2D_element : public AC_GALGAS_root {
     mProperty_mHasSetter = inValue ;
   }
 
-  public: inline void setter_setMHasGetter (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mHasGetter = inValue ;
-  }
-
   public: inline void setter_setMHasSelector (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mHasSelector = inValue ;
   }
@@ -5236,7 +5230,6 @@ class GALGAS_typedPropertyList_2D_element : public AC_GALGAS_root {
   public: GALGAS_typedPropertyList_2D_element (const GALGAS_unifiedTypeMap_2D_entry & in_mPropertyTypeEntry,
                                                const GALGAS_lstring & in_mPropertyName,
                                                const GALGAS_bool & in_mHasSetter,
-                                               const GALGAS_bool & in_mHasGetter,
                                                const GALGAS_bool & in_mHasSelector) ;
 
 //-- Start of generic part --*
@@ -5253,8 +5246,7 @@ class GALGAS_typedPropertyList_2D_element : public AC_GALGAS_root {
   public: static class GALGAS_typedPropertyList_2D_element constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
                                                                             const class GALGAS_lstring & inOperand1,
                                                                             const class GALGAS_bool & inOperand2,
-                                                                            const class GALGAS_bool & inOperand3,
-                                                                            const class GALGAS_bool & inOperand4
+                                                                            const class GALGAS_bool & inOperand3
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -5269,8 +5261,6 @@ class GALGAS_typedPropertyList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mHasGetter (LOCATION_ARGS) const ;
-
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mHasSelector (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mHasSetter (LOCATION_ARGS) const ;

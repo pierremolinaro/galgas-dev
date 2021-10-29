@@ -68,21 +68,12 @@ override method @listDeclarationAST enterInSemanticContext
   for () in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = mIsPublic
-    let hasGetter = mIsPublic
     var hasSelector = false
     for () in mAttributeList do
       if [mValue string] == "setter" then
         warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
-#        if hasSetter then
-#          error mValue : "the '%setter' attribute is already named"
-#        end
-#        hasSetter = true
       elsif [mValue string] == "nogetter" then
         warning mValue : "obsolete attribute: use 'private' qualifier"
-#        if not hasGetter then
-#          error mValue : "the '%nogetter' attribute is already named"
-#        end
-#        hasGetter = false
       elsif [mValue string] == "selector" then
         if hasSelector then
           error mValue : "the '%selector' attribute is already named"
@@ -94,7 +85,7 @@ override method @listDeclarationAST enterInSemanticContext
         fixit { replace {!"%selector"} }
       end
     end
-    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
+    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
   end
 #--- uint type index
   [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"uint" ?let uintType]
@@ -182,18 +173,16 @@ override method @listDeclarationAST enterInSemanticContext
     !hasCompilerArgument:true
   )
   for () in typedAttributeList do
-    if mHasGetter then
-      [!?getterMap insertOrReplace
-        !@lstring.new {![mPropertyName string] + "AtIndex" ![mPropertyName location]}
-        !@methodKind.definedAsMember
-        !@functionSignature {!["" nowhere] !uintType !"inIndex"}
-        !@location.here
-        !true
-        !mPropertyTypeEntry
-        !@methodQualifier.isBasic
-        !"" # No Error message
-      ]
-    end
+    [!?getterMap insertOrReplace
+      !@lstring.new {![mPropertyName string] + "AtIndex" ![mPropertyName location]}
+      !@methodKind.definedAsMember
+      !@functionSignature {!["" nowhere] !uintType !"inIndex"}
+      !@location.here
+      !true
+      !mPropertyTypeEntry
+      !@methodQualifier.isBasic
+      !"" # No Error message
+    ]
   end
 #------------------------- Instance methods
   @instanceMethodMap instanceMethodMap = {}
@@ -368,21 +357,12 @@ override method @listDeclarationAST semanticAnalysis
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     let hasSetter = mIsPublic
-    let hasGetter = mIsPublic
     var hasSelector = false
     for () in mAttributeList do
       if [mValue string] == "setter" then
         warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
-#        if hasSetter then
-#          error mValue : "the '%setter' attribute is already named"
-#        end
-#        hasSetter = true
       elsif [mValue string] == "nogetter" then
         warning mValue : "obsolete attribute: use 'private' qualifier"
-#        if not hasGetter then
-#          error mValue : "the '%nogetter' attribute is already named"
-#        end
-#        hasGetter = false
       elsif [mValue string] == "selector" then
         if hasSelector then
           error mValue : "the '%selector' attribute is already named"
@@ -398,7 +378,6 @@ override method @listDeclarationAST semanticAnalysis
       !t
       !mPropertyName
       !hasSetter
-      !hasGetter
       !hasSelector
     [!?attributeMap insertKey !mPropertyName !t]
   end
@@ -473,7 +452,7 @@ override method @listTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  for (t 4*) in self.mTypedAttributeList do
+  for (t 3*) in self.mTypedAttributeList do
     [t addHeaderFileName !?ioInclusionSet]
   end
   [self.mListElementTypeIndex addHeaderFileName !?ioInclusionSet]

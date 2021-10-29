@@ -258,7 +258,7 @@ refclass @listmapTypeForGeneration : @semanticTypeForGeneration {
 override method @listmapTypeForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
   !@string outHeader {
-  for (t 4*) in self.mAssociatedListTypedAttributeList do
+  for (t 3*) in self.mAssociatedListTypedAttributeList do
     [t addHeaderFileName1 !?ioInclusionSet]
   end
 

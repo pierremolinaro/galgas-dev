@@ -1045,8 +1045,8 @@ GALGAS_string extensionGetter_kind (const GALGAS_typeKindEnum & inObject,
     break ;
   case GALGAS_typeKindEnum::kEnum_classType:
     {
-      const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_10488 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
-      const GALGAS_bool extractedValue_isReference = extractPtr_10488->mAssociatedValue0 ;
+      const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_10489 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
+      const GALGAS_bool extractedValue_isReference = extractPtr_10489->mAssociatedValue0 ;
       GALGAS_string temp_1 ;
       const enumGalgasBool test_2 = extractedValue_isReference.boolEnum () ;
       if (kBoolTrue == test_2) {
