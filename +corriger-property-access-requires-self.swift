@@ -71,7 +71,7 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
   }
   task.waitUntilExit ()
   let status = task.terminationStatus
-  return (String (data: data, encoding: .ascii)!, status)
+  return (String (data: data, encoding: .utf8)!, status)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -105,7 +105,7 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
           let ligne = Int (c [1])!
           let colonne = Int (c[2])!
           print (BOLD_BLUE + "Erreur détectée dans '\(fichier)', ligne \(ligne), colonne \(colonne)" + ENDC)
-          let contents = try! String (contentsOf: URL (fileURLWithPath: fichier))
+          let contents = try! String (contentsOf: URL (fileURLWithPath: fichier), encoding: .utf8)
           var lignesDuFichier = contents.components (separatedBy: "\n")
           var ligneConcernée = lignesDuFichier [ligne - 1]
           print ("line concernée '\(ligneConcernée)'")
@@ -136,7 +136,7 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
 let fm = FileManager ()
 //-------------------- Get script absolute path
 let scriptDir = URL (fileURLWithPath: CommandLine.arguments [0]).deletingLastPathComponent ().path
-print (BOLD_BLUE + "Inventaires des projets galgas dans \(scriptDir)…" + ENDC)
+print (BOLD_BLUE + "Inventaire des projets galgas dans \(scriptDir)…" + ENDC)
 //--- Énumérer les fichiers galgas
   let directoryEnumerator = fm.enumerator (atPath: scriptDir)
   var galgasProjectFiles = [String] ()

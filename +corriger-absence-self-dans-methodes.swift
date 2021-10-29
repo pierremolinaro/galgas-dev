@@ -71,12 +71,12 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
   }
   task.waitUntilExit ()
   let status = task.terminationStatus
-  return (String (data: data, encoding: .ascii)!, status)
+  return (String (data: data, encoding: .utf8)!, status)
 }
 
 //--------------------------------------------------------------------------------------------------
 
-  func traduire (projetGALGAS inCheminFichierGALGAS : String) -> Bool {
+  func traduire (projetGALGAS inCheminFichierGALGAS : String) -> (Bool, Int) {
     let débutConstruction = Date ()
   //-------------------- Chemin absolu vers projet galgas
     print ("projetGALGAS \(inCheminFichierGALGAS)")
@@ -85,8 +85,8 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
     var loop = true
     var nombreModifications = 0
     while loop {
-      print ("--------------------------------------------------------------------------------------------")
-      let (s, status) = runHiddenCommand ("/usr/local/bin/galgas", ["--error-value-class-declaration", "-q", "--no-color", "--max-errors=1", inCheminFichierGALGAS])
+      print ("----------------------------------------------------------------------------------------------------------")
+      let (s, status) = runHiddenCommand ("/usr/local/bin/galgas", ["--property-access-requires-self", "-q", "--no-color", "--max-errors=1", inCheminFichierGALGAS])
       if status == 0 {
         print (BOLD_GREEN + "Succès !" + ENDC)
         loop = false
@@ -97,7 +97,10 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
         let line2 = lines [1]
         print (line1)
         print (line2)
-        loop = line2.hasPrefix ("semantic error #1: 'value class' is obsolete, use 'refclass'")
+        loop = line2.hasPrefix ("semantic error #1: the '") && line2.hasSuffix ("' variable is not declared")
+        if !loop {
+          print (BOLD_RED + "Erreur non gérée" + ENDC)
+        }
         if loop {
           let c = line1.components (separatedBy: ":")
           assert (c.count == 5)
@@ -105,14 +108,14 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
           let ligne = Int (c [1])!
           let colonne = Int (c[2])!
           print (BOLD_BLUE + "Erreur détectée dans '\(fichier)', ligne \(ligne), colonne \(colonne)" + ENDC)
-          let contents = try! String (contentsOf: URL (fileURLWithPath: fichier))
+          let contents = try! String (contentsOf: URL (fileURLWithPath: fichier), encoding: .utf8)
           var lignesDuFichier = contents.components (separatedBy: "\n")
-          let ligneConcernée = lignesDuFichier [ligne - 1]
+          var ligneConcernée = lignesDuFichier [ligne - 1]
           print ("line concernée '\(ligneConcernée)'")
-          let components = ligneConcernée.components (separatedBy: "valueclass @")
-          let ligneModifiée = components.joined (separator: "refclass @")
-          print ("ligne modifiée '\(ligneModifiée)'")
-          lignesDuFichier [ligne - 1] = ligneModifiée
+          let idx = ligneConcernée.index (ligneConcernée.startIndex, offsetBy: colonne - 1)
+          ligneConcernée.insert (contentsOf: "self.", at: idx)
+          print ("ligne modifiée '\(ligneConcernée)'")
+          lignesDuFichier [ligne - 1] = ligneConcernée
           let newContents = lignesDuFichier.joined (separator: "\n")
           let data : Data = newContents.data (using: .utf8, allowLossyConversion: false)!
           try! data.write (to: URL (fileURLWithPath: fichier), options: .atomic)
@@ -128,7 +131,7 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
     let durée = Int (duréeConstruction)
     print ("Durée : \(durée / 60) min \(durée % 60) s")
     print ("Nombre modifications: \(nombreModifications)")
-    return ok
+    return (ok, nombreModifications)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -136,23 +139,26 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
 let fm = FileManager ()
 //-------------------- Get script absolute path
 let scriptDir = URL (fileURLWithPath: CommandLine.arguments [0]).deletingLastPathComponent ().path
-print (BOLD_BLUE + "Inventaires des projets galgas dans \(scriptDir)…" + ENDC)
+print (BOLD_BLUE + "Inventaire des projets galgas dans \(scriptDir)…" + ENDC)
 //--- Énumérer les fichiers galgas
-  let directoryEnumerator = fm.enumerator (atPath: scriptDir)
-  var galgasProjectFiles = [String] ()
-  while let file = directoryEnumerator?.nextObject () as? String {
-    if file.hasSuffix (".galgasProject") {
-      let path = scriptDir.appending("/\(file)")
-      galgasProjectFiles.append (path)
-      print ("  found \(path)")
-    }
+let directoryEnumerator = fm.enumerator (atPath: scriptDir)
+var galgasProjectFiles = [String] ()
+while let file = directoryEnumerator?.nextObject () as? String {
+  if file.hasSuffix (".galgasProject") {
+    let path = scriptDir.appending("/\(file)")
+    galgasProjectFiles.append (path)
+    print ("  found \(path)")
   }
-  print (BOLD_BLUE + "\(galgasProjectFiles.count) projet(s) à examiner" + ENDC)
-  for f in galgasProjectFiles {
-    let ok = traduire (projetGALGAS: f)
-    if !ok {
-      exit (1)
-    }
+}
+print (BOLD_BLUE + "\(galgasProjectFiles.count) projet(s) à examiner" + ENDC)
+var totalModifications = 0
+for f in galgasProjectFiles {
+  let (ok, nombreModifications) = traduire (projetGALGAS: f)
+  totalModifications += nombreModifications
+  if !ok {
+    exit (1)
   }
+}
+print (BOLD_BLUE + "Total des corrections : \(totalModifications)" + ENDC)
 
 //--------------------------------------------------------------------------------------------------

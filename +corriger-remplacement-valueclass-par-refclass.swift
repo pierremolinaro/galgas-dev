@@ -76,7 +76,7 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
 
 //--------------------------------------------------------------------------------------------------
 
-  func traduire (projetGALGAS inCheminFichierGALGAS : String) -> (Bool, Int) {
+  func traduire (projetGALGAS inCheminFichierGALGAS : String) -> Bool {
     let débutConstruction = Date ()
   //-------------------- Chemin absolu vers projet galgas
     print ("projetGALGAS \(inCheminFichierGALGAS)")
@@ -85,50 +85,33 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
     var loop = true
     var nombreModifications = 0
     while loop {
-      print (String (repeating: "-", count: 79))
-      let (s, status) = runHiddenCommand ("/usr/local/bin/galgas", ["--error-anonymous-for-instruction", "--no-color", "--max-errors=1", inCheminFichierGALGAS])
+      print ("--------------------------------------------------------------------------------------------")
+      let (s, status) = runHiddenCommand ("/usr/local/bin/galgas", ["--error-value-class-declaration", "-q", "--no-color", "--max-errors=1", inCheminFichierGALGAS])
       if status == 0 {
         print (BOLD_GREEN + "Succès !" + ENDC)
         loop = false
         ok = true
       }else if status == 1 {
-        print (CYAN + s + ENDC)
         let lines = s.components (separatedBy: "\n")
-        var lineIndex = 0
-        var found = false
-        while (lineIndex < lines.count) && !found {
-          found = lines [lineIndex].hasPrefix ("semantic error #1: anonymous 'for' enumerated object (due to '--error-anonymous-for-instruction' option)")
-          lineIndex += 1
-        }
-        loop = found
-        if !loop {
-          print (BOLD_RED + "Erreur non gérée" + ENDC)
-        }else{
-          let lineFixIt = lines [lineIndex + 2]
-          print ("  Ligne Fixit : '\(lineFixIt)'")
-          let errorMessageLine = lines [lineIndex - 2]
-          let c = errorMessageLine.components (separatedBy: ":")
+        let line1 = lines [0]
+        let line2 = lines [1]
+        print (line1)
+        print (line2)
+        loop = line2.hasPrefix ("semantic error #1: 'value class' is obsolete, use 'refclass'")
+        if loop {
+          let c = line1.components (separatedBy: ":")
           assert (c.count == 5)
           let fichier = c [0]
           let ligne = Int (c [1])!
-          let premierCaractère = Int (c[2])! - 1
-          let dernierCaractère = Int (c[3])! - 1
-          print (BOLD_BLUE + "  Erreur détectée : ligne \(ligne), premier caractère \(premierCaractère), dernier \(dernierCaractère)" + ENDC)
+          let colonne = Int (c[2])!
+          print (BOLD_BLUE + "Erreur détectée dans '\(fichier)', ligne \(ligne), colonne \(colonne)" + ENDC)
           let contents = try! String (contentsOf: URL (fileURLWithPath: fichier), encoding: .utf8)
           var lignesDuFichier = contents.components (separatedBy: "\n")
           let ligneConcernée = lignesDuFichier [ligne - 1]
-          print ("  line concernée '\(ligneConcernée)'")
-          var préfixe = ligneConcernée
-          préfixe.removeLast (ligneConcernée.count - premierCaractère)
-          print ("  Préfixe '\(préfixe)'")
-          var suffixe = ligneConcernée
-          suffixe.removeFirst (dernierCaractère + 1)
-          print ("  Suffixe '\(suffixe)'")
-          var chaîneRemplacement = lineFixIt
-          chaîneRemplacement.removeFirst (22) // "Fix-it, replace with " suivi de ZeroWidthSpace
-          print ("  Remplacement '\(chaîneRemplacement)'")
-          let ligneModifiée = préfixe + chaîneRemplacement + suffixe
-          print ("  ligne modifiée '\(ligneModifiée)'")
+          print ("line concernée '\(ligneConcernée)'")
+          let components = ligneConcernée.components (separatedBy: "valueclass @")
+          let ligneModifiée = components.joined (separator: "refclass @")
+          print ("ligne modifiée '\(ligneModifiée)'")
           lignesDuFichier [ligne - 1] = ligneModifiée
           let newContents = lignesDuFichier.joined (separator: "\n")
           let data : Data = newContents.data (using: .utf8, allowLossyConversion: false)!
@@ -145,7 +128,7 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
     let durée = Int (duréeConstruction)
     print ("Durée : \(durée / 60) min \(durée % 60) s")
     print ("Nombre modifications: \(nombreModifications)")
-    return (ok, nombreModifications)
+    return ok
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -155,24 +138,21 @@ let fm = FileManager ()
 let scriptDir = URL (fileURLWithPath: CommandLine.arguments [0]).deletingLastPathComponent ().path
 print (BOLD_BLUE + "Inventaire des projets galgas dans \(scriptDir)…" + ENDC)
 //--- Énumérer les fichiers galgas
-let directoryEnumerator = fm.enumerator (atPath: scriptDir)
-var galgasProjectFiles = [String] ()
-while let file = directoryEnumerator?.nextObject () as? String {
-  if file.hasSuffix (".galgasProject") {
-    let path = scriptDir.appending("/\(file)")
-    galgasProjectFiles.append (path)
-    print ("  found \(path)")
+  let directoryEnumerator = fm.enumerator (atPath: scriptDir)
+  var galgasProjectFiles = [String] ()
+  while let file = directoryEnumerator?.nextObject () as? String {
+    if file.hasSuffix (".galgasProject") {
+      let path = scriptDir.appending("/\(file)")
+      galgasProjectFiles.append (path)
+      print ("  found \(path)")
+    }
   }
-}
-var totalCorrections = 0
-print (BOLD_BLUE + "\(galgasProjectFiles.count) projet(s) à examiner" + ENDC)
-for f in galgasProjectFiles {
-  let (ok, nombreModifications) = traduire (projetGALGAS: f)
-  totalCorrections += nombreModifications
-  if !ok {
-    exit (1)
+  print (BOLD_BLUE + "\(galgasProjectFiles.count) projet(s) à examiner" + ENDC)
+  for f in galgasProjectFiles {
+    let ok = traduire (projetGALGAS: f)
+    if !ok {
+      exit (1)
+    }
   }
-}
-print (BOLD_BLUE + "Total corrections : \(totalCorrections)" + ENDC)
 
 //--------------------------------------------------------------------------------------------------
