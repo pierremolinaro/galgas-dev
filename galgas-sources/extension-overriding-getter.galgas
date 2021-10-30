@@ -119,7 +119,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
   var @location inheritedDeclarationLocation = @location.here
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType mGetterMap] hasKey ![self.mOverridingExtensionGetterName string]] then
+    if [[superType mGetterMap] hasKey !self.mOverridingExtensionGetterName.string] then
       [[superType mGetterMap] searchKey
         !self.mOverridingExtensionGetterName
         ?*
@@ -172,7 +172,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
     checkGetterSignatures (
       !formalParameterListForGeneration
       !returnType
-      ![self.mOverridingExtensionGetterName location]
+      !self.mOverridingExtensionGetterName.location
       !inheritedSignature
       !inheritedReturnType
       !inheritedDeclarationLocation
@@ -186,7 +186,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
       !"getter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mOverridingExtensionGetterName fileNameRepresentation]
       !selfType
       !baseTypeName
-      ![self.mOverridingExtensionGetterName string]
+      !self.mOverridingExtensionGetterName.string
       !returnType
       !returnVariableCppName
       !formalParameterListForGeneration
@@ -213,7 +213,7 @@ override method @overridingExtensionGetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
   ioOverridingExtensionGetterListMap +=
-    ![self.mTypeName string]
+    !self.mTypeName.string
     !self.mOverridingExtensionGetterName
 }
 

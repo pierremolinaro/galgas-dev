@@ -58,7 +58,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
     ?let @semanticExpressionForGeneration expression
   ]
 #--- Check field access availability
-  let @unifiedTypeMap-entry expressionType = [expression mResultType]
+  let @unifiedTypeMap-entry expressionType = expression.mResultType
   if (not [[expressionType mTypeKindEnum] isStructType]) & (not [[expressionType mTypeKindEnum] isClassType]) then
     error self.mStructFieldName: "the '.' operator requires the receiver to be a struct or a class"
   end

@@ -21,7 +21,7 @@ syntax extension galgas3InstructionsSyntax {
     $=$
     <expression> ?let @semanticExpressionAST sourceExpression
     outInstruction = @localVariableDeclarationWithAssignmentAST.new {
-      ![variableName location]
+      !variableName.location
       !variableName
       !sourceExpression
     }
@@ -36,7 +36,7 @@ syntax extension galgas3InstructionsSyntax {
     $=$
     <expression> ?let @semanticExpressionAST sourceExpression
     outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
-      ![typeName location]
+      !typeName.location
       !false
       !typeName
       !variableName
@@ -52,7 +52,7 @@ syntax extension galgas3InstructionsSyntax {
     $=$
     <expression> ?let @semanticExpressionAST sourceExpression
     outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
-      ![typeName location]
+      !typeName.location
       !false
       !typeName
       !variableName
@@ -102,13 +102,13 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
   let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location locationIndex]
   [!?ioVariableMap insertDefinedLocalVariable
     !self.mVariableName
-    ![expression mResultType]
+    !expression.mResultType
     !targetVariableCppName
     !targetVariableCppName
   ]
 #--- Generate instruction
   ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
-    ![expression mResultType]
+    !expression.mResultType
     !false
     !targetVariableCppName
     !expression

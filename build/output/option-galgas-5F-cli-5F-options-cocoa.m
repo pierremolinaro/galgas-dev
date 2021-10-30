@@ -97,6 +97,15 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
+    identifier:@"errorPropertyGetterCall"
+    commandChar:0
+    commandString:@"error-property-getter-call"
+    comment:@"error on calling property getter (instead of dot notation)"
+    defaultValue:@""
+  ] ;
+  [ioBoolOptionArray addObject:option] ;
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
     identifier:@"errorValueClassDeclaration"
     commandChar:0
     commandString:@"error-value-class-declaration"

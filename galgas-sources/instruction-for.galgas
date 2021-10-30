@@ -81,7 +81,7 @@ syntax extension galgas3InstructionsSyntax {
   rule <for_instruction_element> ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
     $uint32$ ?let @luint count
     $*$
-    var n = [count uint]
+    var n = count.uint
     if n == 0 then
       error count: "this value should be > 0"
     end
@@ -344,9 +344,9 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
   ]
 #--- Check object can be enumerated
   outEnumeratorCppName = "enumerator_" + [self.mEndOfAnonymousEnumeration locationIndex]
-  let enumerationDescriptorList = [[outEnumerationExpression mResultType] mEnumerationDescriptor]
+  let enumerationDescriptorList = [outEnumerationExpression.mResultType mEnumerationDescriptor]
   if [enumerationDescriptorList length] == 0 then
-    error self.mEndOfAnonymousEnumeration : "an '@" + [[outEnumerationExpression mResultType] key] + "' object cannot be enumerated"
+    error self.mEndOfAnonymousEnumeration : "an '@" + [outEnumerationExpression.mResultType key] + "' object cannot be enumerated"
   end
 #--- Declare implicit constants
   var suggestion = "("
@@ -389,13 +389,13 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
   ]
 #--- Check object can be enumerated
   outEnumeratorCppName = "enumerator_" + [self.mEndOfEnumerationExpression locationIndex]
-  let enumerationDescriptorList = [[outEnumerationExpression mResultType] mEnumerationDescriptor]
+  let enumerationDescriptorList = [outEnumerationExpression.mResultType mEnumerationDescriptor]
   if [enumerationDescriptorList length] == 0 then
-    error self.mEndOfEnumerationExpression : "an '@" + [[outEnumerationExpression mResultType] key] + "' object cannot be enumerated"
+    error self.mEndOfEnumerationExpression : "an '@" + [outEnumerationExpression.mResultType key] + "' object cannot be enumerated"
   else
 #--- Arguments
     if ([self.mElementList length] == 0) & not self.mEndsWithEllipsis then
-      let currentTypedAttributeList = [[outEnumerationExpression mResultType] mEnumerationDescriptor]
+      let currentTypedAttributeList = [outEnumerationExpression.mResultType mEnumerationDescriptor]
       for (mEnumeratedType mEnumerationName) in currentTypedAttributeList do 
        [!?ioVariableMap insertUsedLocalConstant
          !@lstring.new {!mEnumerationName !self.mEndOfEnumerationExpression}
@@ -406,14 +406,14 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
       end
     elsif (not self.mEndsWithEllipsis) & ([self.mElementList length] != [enumerationDescriptorList length]) then
       error self.mEndOfEnumerationExpression
-      :"the '@" + [[outEnumerationExpression mResultType] key] + "' type requires "
+      :"the '@" + [outEnumerationExpression.mResultType key] + "' type requires "
       + [[enumerationDescriptorList length] string] + " argument"
       + if ([enumerationDescriptorList length] > 1) then "s" else "" end
       + " for enumeration: this list provides "
       + [[self.mElementList length] string]
     elsif (self.mEndsWithEllipsis) & ([self.mElementList length] > [enumerationDescriptorList length]) then
       error self.mEndOfEnumerationExpression
-      :"the '@" + [[outEnumerationExpression mResultType] key] + "' type requires "
+      :"the '@" + [outEnumerationExpression.mResultType key] + "' type requires "
       + [[enumerationDescriptorList length] string] + " argument"
       + if ([enumerationDescriptorList length] > 1) then "s" else "" end
       + " or less for enumeration: this list provides "
@@ -426,7 +426,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
         fixit { replace if missingArgumentCount == 1 then "*" else " " + missingArgumentCount + "*" end }
       end
       for (mOptionalTypeName mOptionalConstantName) in self.mElementList, (mEnumeratedType mEnumerationName) in enumerationDescriptorList do
-        if [mOptionalConstantName string] != "" then # Empty string if joker
+        if mOptionalConstantName.string != "" then # Empty string if joker
           if mOptionalTypeName.string != "" then
             let foundType = @unifiedTypeMap-entry.searchKey {
               !inAnalysisContext.mSemanticContext.mTypeMap
@@ -467,9 +467,9 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   ]
 #--- Check object can be enumerated
   outEnumeratorCppName = "enumerator_" + [self.mEndOfEnumerationExpression locationIndex]
-  let enumeratedElementType = [[outEnumerationExpression mResultType] mTypeForEnumeratedElement]
+  let enumeratedElementType = [outEnumerationExpression.mResultType mTypeForEnumeratedElement]
   if [enumeratedElementType isNull] then
-    error self.mEndOfEnumerationExpression : "an '@" + [[outEnumerationExpression mResultType] key] + "' object cannot be enumerated"
+    error self.mEndOfEnumerationExpression : "an '@" + [outEnumerationExpression.mResultType key] + "' object cannot be enumerated"
   else
     ioLocalConstantListForDoBranch += !enumeratedElementType !self.mEnumerationVariable !outEnumeratorCppName + ".current (HERE)"
   end
@@ -595,7 +595,7 @@ override method @forInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap openOverrideForRepeatBlock]
   var @string indexCppName = ""
   var @localConstantList indexDeclaration = {}
-  if [self.mIndexVariableName string] != "" then
+  if self.mIndexVariableName.string != "" then
     indexCppName = "index_" + [self.mInstructionLocation locationIndex]
     indexDeclaration +=
       !inAnalysisContext.mPredefinedTypes.mUIntType
@@ -681,7 +681,7 @@ override method @forInstructionForGeneration generateInstruction
     enumerationVarCppNameList += !enumerationVar
   end
   for (mEnumerationOrder mEnumeratedExpression mEnumeratorCppName) in self.mEnumeratedObjectList, (mValue) in enumerationVarCppNameList do
-    ioGeneratedCode += "cEnumerator_" + [[mEnumeratedExpression mResultType] identifierRepresentation]
+    ioGeneratedCode += "cEnumerator_" + [mEnumeratedExpression.mResultType identifierRepresentation]
       + " " + mEnumeratorCppName + " (" + mValue
       + ", kENUMERATION_" + mEnumerationOrder + ") ;\n"
   end

@@ -106,7 +106,7 @@ private proc analyzeConstructorInvocation
     let @constructorMap constructorMap = [outConstructorType mConstructorMap]
   #--- Search contructor
     var @functionSignature constructorFormalArgumentTypeList
-    with [inConstructorName string] in constructorMap  do
+    with inConstructorName.string in constructorMap  do
       constructorFormalArgumentTypeList = mArgumentTypeList
       outHasCompilerArgument = mHasCompilerArgument
       outReturnedType = mReturnedType
@@ -139,7 +139,7 @@ private proc analyzeConstructorInvocation
         !?ioVariableMap
         ?@semanticExpressionForGeneration exp
       ]
-      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation !?exp)
+      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
       outConstructorEffectiveParameterList += !exp
       if mFormalSelector.string != mActualSelector.string then
         error mActualSelector 
@@ -180,9 +180,9 @@ override method @constructorExpressionAST analyzeSemanticExpression
 #---
   outExpression = @constructorExpressionForGeneration.new {
     !returnedType
-    ![self.mConstructorName location]
+    !self.mConstructorName.location
     !constructorType
-    ![self.mConstructorName string]
+    !self.mConstructorName.string
     !constructorEffectiveParameterList
     !hasCompilerArgument
   }

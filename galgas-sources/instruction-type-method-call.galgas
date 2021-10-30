@@ -117,8 +117,8 @@ override method @typeMethodCallInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName
   end
 #--- Generate method call
-  ioGeneratedCode += "GALGAS_" + [[self.mTypeName string] identifierRepresentation]
-                  + "::class_method_" + [[self.mMethodName string] identifierRepresentation] + " ("
+  ioGeneratedCode += "GALGAS_" + [self.mTypeName.string identifierRepresentation]
+                  + "::class_method_" + [self.mMethodName.string identifierRepresentation] + " ("
   for (mValue) in parameterCppNameList
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
@@ -133,7 +133,7 @@ override method @typeMethodCallInstructionForGeneration generateInstruction
   if self.mHasCompilerArgument | ([parameterCppNameList length] > 0) then
     ioGeneratedCode += " COMMA_"
   end
-  ioGeneratedCode += [[self.mMethodName location] sourceFile] + ") ;\n"
+  ioGeneratedCode += [self.mMethodName.location sourceFile] + ") ;\n"
   ioGeneratedCode += "}\n"
 }
 

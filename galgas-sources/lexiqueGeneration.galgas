@@ -38,9 +38,9 @@ override getter @lexicalCharacterIntervalMatchAST generateConditionCode
   -> @string outGeneratedCode {
   outGeneratedCode = ""
   outGeneratedCode = "testForInputUTF32CharRange ("
-  outGeneratedCode += [[self.mLowerBound char] utf32CharConstantRepresentation]
+  outGeneratedCode += [self.mLowerBound.char utf32CharConstantRepresentation]
   outGeneratedCode += ", "
-  outGeneratedCode += [[self.mUpperBound char] utf32CharConstantRepresentation]
+  outGeneratedCode += [self.mUpperBound.char utf32CharConstantRepresentation]
   outGeneratedCode += ")"
 }
 
@@ -66,7 +66,7 @@ override getter @lexicalStringNotMatchAST generateConditionCode
   outGeneratedCode += [[self.mString length] string]
   outGeneratedCode += ", gLexicalMessage_"
   outGeneratedCode += [inLexiqueAnalysisContext.mLexiqueName identifierRepresentation] + "_"
-  outGeneratedCode += [self.mErrorMessage string]
+  outGeneratedCode += self.mErrorMessage.string
   outGeneratedCode += " COMMA_LINE_AND_SOURCE_FILE)"
 }
 
@@ -76,7 +76,7 @@ override getter @lexicalCharacterMatchAST generateConditionCode
   ?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "testForInputUTF32Char ("
-  outGeneratedCode += [[self.mCharacter char] utf32CharConstantRepresentation]
+  outGeneratedCode += [self.mCharacter.char utf32CharConstantRepresentation]
   outGeneratedCode += ")"
 }
 
@@ -86,7 +86,7 @@ override getter @lexicalCharacterSetMatchAST generateConditionCode
   ?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "testForCharWithFunction ("
-  outGeneratedCode += [self.mCharacterSetName string]
+  outGeneratedCode += self.mCharacterSetName.string
   outGeneratedCode += ")"
 }
 
@@ -108,14 +108,14 @@ override getter @lexicalAttributeInputArgumentAST generateRoutineOrFunctionArgum
 
 override getter @lexicalCharacterInputArgumentAST generateRoutineOrFunctionArgument
   -> @string outGeneratedCode {
-  outGeneratedCode = [[self.mCharacter char] utf32CharConstantRepresentation]
+  outGeneratedCode = [self.mCharacter.char utf32CharConstantRepresentation]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalUnsignedInputArgumentAST generateRoutineOrFunctionArgument
   -> @string outGeneratedCode {
-  outGeneratedCode = [[self.mUnsigned uint] string]
+  outGeneratedCode = [self.mUnsigned.uint string]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -383,7 +383,7 @@ override getter @lexicalImplicitRuleAST generateCode
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   var @tokenSortedlist tokenSortedList
-  [[inLexiqueAnalysisContext mLexicalTokenListMap] searchKey !self.mListName ?* ?tokenSortedList ?*]
+  [inLexiqueAnalysisContext.mLexicalTokenListMap searchKey !self.mListName ?* ?tokenSortedList ?*]
   outGeneratedCode = ""
   for > (mLength mName mTerminalName) in tokenSortedList do
     outGeneratedCode += "if (testForInputUTF32String (kUnicodeString_" + inScannerClassName + "_"

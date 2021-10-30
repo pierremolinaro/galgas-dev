@@ -37,26 +37,26 @@ proc internal_logXMLNodes
   ?!@string ioString {
   for (node) in  inNodeList do
     ioString += inIndentationString
-    switch [node mType]
+    switch node.mType
     case element :
-      ioString+= "ELEMENT '" + [node name] + "' {"
-      for (lkey value) in  [node attributeMap] do
+      ioString+= "ELEMENT '" + node.name + "' {"
+      for (lkey value) in  node.attributeMap do
         ioString += "'" + lkey + "' "
-        ioString += [[[lkey location] line] string]
-        ioString += ":" + [[[lkey location] column] string]
-        ioString += ":" + [[[lkey location] locationIndex] string]
+        ioString += [[lkey.location line] string]
+        ioString += ":" + [[lkey.location column] string]
+        ioString += ":" + [[lkey.location locationIndex] string]
         ioString += " -> '" + value + "' "
-        ioString += [[[value location] line] string]
-        ioString += ":" + [[[value location] column] string]
-        ioString += ":" + [[[value location] locationIndex] string]
+        ioString += [[value.location line] string]
+        ioString += ":" + [[value.location column] string]
+        ioString += ":" + [[value.location locationIndex] string]
       between ioString += ", "
       end
       ioString += "}\n"
-      internal_logXMLNodes ( ![node nodeList] ! inIndentationString + " " !?ioString )
+      internal_logXMLNodes ( !node.nodeList ! inIndentationString + " " !?ioString )
     case text :
-      ioString += "TEXT '" + [node name] + "'\n"
+      ioString += "TEXT '" + node.name + "'\n"
     case comment :
-      ioString+= "COMMENT '" + [node name] + "'\n"
+      ioString+= "COMMENT '" + node.name + "'\n"
     end
   end
 }

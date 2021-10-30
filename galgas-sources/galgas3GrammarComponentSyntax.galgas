@@ -95,10 +95,10 @@ rule <grammar_start_symbol_label>
   repeat
   while
     <label_formal_parameter> ?let argumentName !?mFormalParameterList
-    if [argumentNameSet hasKey ![argumentName string]] then
+    if [argumentNameSet hasKey !argumentName.string] then
       error argumentName: "there is already an argument named '" + argumentName + "'"
     end
-    argumentNameSet += ![argumentName string]
+    argumentNameSet += !argumentName.string
   end
   ioLabelList += !inLabelName !mFormalParameterList !.here
 }

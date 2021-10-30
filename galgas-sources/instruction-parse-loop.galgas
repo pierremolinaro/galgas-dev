@@ -99,9 +99,9 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
     !?ioVariableMap
     ?variant_expression
   ]
-  if [variant_expression mResultType] != inAnalysisContext.mPredefinedTypes.mUIntType then
+  if variant_expression.mResultType != inAnalysisContext.mPredefinedTypes.mUIntType then
     error self.mEndOfVariantExpression
-    :"the variant expression type is '@" + [[variant_expression mResultType] key]
+    :"the variant expression type is '@" + [variant_expression.mResultType key]
     + "', but it should be '@" + [inAnalysisContext.mPredefinedTypes.mUIntType key] + "' type"
   end
 #--- While expression
@@ -114,9 +114,9 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
     !?ioVariableMap
     ?while_expression
   ]
-  if [while_expression mResultType] != inAnalysisContext.mPredefinedTypes.mBoolType then
+  if while_expression.mResultType != inAnalysisContext.mPredefinedTypes.mBoolType then
     error self.mEndOfWhileExpression
-    :"the variant expression type is '@" + [[variant_expression mResultType] key]
+    :"the variant expression type is '@" + [variant_expression.mResultType key]
     + "', but it should be '@" + [inAnalysisContext.mPredefinedTypes.mBoolType key] + "' type"
   end
 #--- 'do' instructions

@@ -137,7 +137,7 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
 #---
   ioGeneratedCode += "if (" + foreachVarCppName + ".isValid ()) {\n"
   [!?ioGeneratedCode incIndentation !2]
-  ioGeneratedCode += "cEnumerator_" + [[self.mExpression mResultType] identifierRepresentation] + " " + self.mEnumeratorCppName + " (" + foreachVarCppName + ", "
+  ioGeneratedCode += "cEnumerator_" + [self.mExpression.mResultType identifierRepresentation] + " " + self.mEnumeratorCppName + " (" + foreachVarCppName + ", "
                   + if self.mIsAscending then "kENUMERATION_UP" else "kENUMERATION_DOWN" end + ") ;\n"
 #--- Before
   if ([self.mBeforeInstructionList length] + [self.mAfterInstructionList length]) > 0 then

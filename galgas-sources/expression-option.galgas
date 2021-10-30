@@ -73,49 +73,49 @@ override method @optionExpressionAST analyzeSemanticExpression
     ?let @commandLineOptionMap stringOptionMap
     ?let @commandLineOptionMap stringListOptionMap
   ]
-  var @bool found = [boolOptionMap hasKey ![self.mOptionEntryName string]]
+  var @bool found = [boolOptionMap hasKey !self.mOptionEntryName.string]
   var @unifiedTypeMap-entry returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
   if not found then
-    found = [uintOptionMap hasKey ![self.mOptionEntryName string]]
+    found = [uintOptionMap hasKey !self.mOptionEntryName.string]
     returnedType = inAnalysisContext.mPredefinedTypes.mUIntType
   end
   if not found then
-    found = [stringOptionMap hasKey ![self.mOptionEntryName string]]
+    found = [stringOptionMap hasKey !self.mOptionEntryName.string]
     returnedType = inAnalysisContext.mPredefinedTypes.mStringType
   end
   if not found then
-    found = [stringListOptionMap hasKey ![self.mOptionEntryName string]]
+    found = [stringListOptionMap hasKey !self.mOptionEntryName.string]
     returnedType = inAnalysisContext.mPredefinedTypes.mStringListType
   end
   if found then
-    if [self.mOptionGetterName string] == "value" then
+    if self.mOptionGetterName.string == "value" then
       outExpression = @optionValueExpressionForGeneration.new {
         !returnedType
-        ![self.mOptionComponentName location]
+        !self.mOptionComponentName.location
         !optionComponentIsPredefined
-        ![self.mOptionComponentName string]
-        ![self.mOptionEntryName string]}
-    elsif [self.mOptionGetterName string] == "char" then
+        !self.mOptionComponentName.string
+        !self.mOptionEntryName.string}
+    elsif self.mOptionGetterName.string == "char" then
       outExpression = @optionCharExpressionForGeneration.new {
         !inAnalysisContext.mPredefinedTypes.mCharType
-        ![self.mOptionComponentName location]
+        !self.mOptionComponentName.location
         !optionComponentIsPredefined
-        ![self.mOptionComponentName string]
-        ![self.mOptionEntryName string]}
-    elsif [self.mOptionGetterName string] == "string" then
+        !self.mOptionComponentName.string
+        !self.mOptionEntryName.string}
+    elsif self.mOptionGetterName.string == "string" then
       outExpression = @optionStringExpressionForGeneration.new {
         !inAnalysisContext.mPredefinedTypes.mStringType
-        ![self.mOptionComponentName location]
+        !self.mOptionComponentName.location
         !optionComponentIsPredefined
-        ![self.mOptionComponentName string]
-        ![self.mOptionEntryName string]}
-    elsif [self.mOptionGetterName string] == "comment" then
+        !self.mOptionComponentName.string
+        !self.mOptionEntryName.string}
+    elsif self.mOptionGetterName.string == "comment" then
       outExpression = @optionCommentExpressionForGeneration.new {
         !inAnalysisContext.mPredefinedTypes.mStringType
-        ![self.mOptionComponentName location]
+        !self.mOptionComponentName.location
         !optionComponentIsPredefined
-        ![self.mOptionComponentName string]
-        ![self.mOptionEntryName string]}
+        !self.mOptionComponentName.string
+        !self.mOptionEntryName.string}
     else
       error self.mOptionGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" :outExpression
     end

@@ -39,7 +39,7 @@ syntax extension galgas3SyntaxComponentSyntax {
       <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
     end
     outInstruction = @nonterminalCallInstruction.new {
-      ![mNonterminalName location]
+      !mNonterminalName.location
       !mNonterminalName
       !mLabelName
       !mActualParameterList
@@ -89,7 +89,7 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
 {
   [inNonterminalMap searchKey !self.mNonterminalName ?let @nonterminalLabelMap labelMap]
   var @formalParameterSignature signature
-  if [self.mLabelName string] == "parse" then
+  if self.mLabelName.string == "parse" then
     signature = {}
   else
     [labelMap searchKey !self.mLabelName ?* ?signature ?*]
@@ -116,8 +116,8 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
 #--- Generate instructions
   ioInstructionListForGeneration += !@nonterminalInstructionForGeneration.new {
     !self.mInstructionLocation
-    ![self.mNonterminalName string]
-    ![self.mLabelName string]
+    !self.mNonterminalName.string
+    !self.mLabelName.string
     !actualParameterListForGeneration
     !self.mGrammarInstructionSyntaxDirectedTranslationResult
   }
@@ -160,13 +160,13 @@ override getter @nonterminalInstructionForGeneration compareInstructionSyntaxSig
   ->@bool outOk {
   cast inTestedInstruction
   case >= @nonterminalInstructionForGeneration si :
-    outOk = self.mNonterminalName == [si mNonterminalName]
+    outOk = self.mNonterminalName == si.mNonterminalName
     if not outOk then
-      error [si mInstructionLocation]
+      error si.mInstructionLocation
       :"syntax signature error; the expected syntax instruction here is the '<" + self.mNonterminalName + ">' nonterminal invocation"
     end
   case >= @syntaxInstructionForGeneration si :
-    error [si mInstructionLocation]
+    error si.mInstructionLocation
       :"syntax signature error; the expected syntax instruction here is the '<" + self.mNonterminalName + ">' nonterminal invocation"
     outOk = false
   else

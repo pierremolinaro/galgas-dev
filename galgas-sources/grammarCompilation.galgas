@@ -41,7 +41,7 @@ proc checkLabelMap
 {
   var @stringset labelStringSet = {}
   for (mLabelName mFormalArgumentList mEndOfArgumentLocation) in inLabels do
-    labelStringSet += ![mLabelName string]
+    labelStringSet += !mLabelName.string
     var @signatureForGrammarAnalysis formalParametersList
     [inNonterminalSymbolLabelMapForGrammarAnalysis searchKey !mLabelName ?formalParametersList]
     if [mFormalArgumentList length] != [formalParametersList length] then
@@ -49,7 +49,7 @@ proc checkLabelMap
         + " formal parameter"
         + if [mFormalArgumentList length] > 1 then "s" else "" end
         + " declared here, but declaration at "
-        + [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey ![mLabelName string]] locationString]
+        + [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey !mLabelName.string] locationString]
         + " names " + [[formalParametersList length] string] + " parameter"
         + if [formalParametersList length] > 1 then "s" else "" end
     else
@@ -59,15 +59,15 @@ proc checkLabelMap
             " this formal parameter is declared with "
           + [mFormalArgumentPassingModeForGrammarAnalysis formalArgumentString]
           + " passing mode, but declaration at "
-          + [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey ![mLabelName string]] locationString]
+          + [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey !mLabelName.string] locationString]
           + " is declared with " + [mFormalArgumentPassingMode formalArgumentString] + " passing mode"
         end
-        if [mGalgasTypeNameForGrammarAnalysis string] != [mFormalArgumentTypeName string] then
+        if mGalgasTypeNameForGrammarAnalysis.string != mFormalArgumentTypeName.string then
           error mGalgasTypeNameForGrammarAnalysis :
             " this formal parameter is declared of '@"
           + mGalgasTypeNameForGrammarAnalysis
           + "' type, but declaration at "
-          + [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey ![mLabelName string]] locationString]
+          + [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey !mLabelName.string] locationString]
           + " is declared with '@" + mFormalArgumentTypeName + "' type"
         end
       end
@@ -75,7 +75,7 @@ proc checkLabelMap
   end
 #---
   for (lkey mFormalParametersList) in inNonterminalSymbolLabelMapForGrammarAnalysis do
-    if not [labelStringSet hasKey ![lkey string]] then
+    if not [labelStringSet hasKey !lkey.string] then
       error inNonTerminalLocation :
         "this non terminal does not declare the '" + lkey + "' label, but declaration at "
           + [inOriginalNonTerminalLocation locationString]
@@ -90,11 +90,11 @@ proc handleNonTerminalDeclarations
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis
   ?let @nonterminalDeclarationListAST inNonterminalDeclarationList {
   for (mNonterminalName mLabels) in inNonterminalDeclarationList do
-    with [mNonterminalName string] in ioNonTerminalMapForGrammarAnalysis  do
+    with mNonterminalName.string in ioNonTerminalMapForGrammarAnalysis  do
       checkLabelMap (
-        ![mNonterminalName location]
+        !mNonterminalName.location
         !mLabels
-        ![ioNonTerminalMapForGrammarAnalysis locationForKey ![mNonterminalName string]]
+        ![ioNonTerminalMapForGrammarAnalysis locationForKey !mNonterminalName.string]
         !mNonterminalSymbolParametersMap
       )
     else
@@ -120,11 +120,11 @@ proc handleNonTerminalDeclarationsFromRuleList
         !mFormalArguments
         !mEndOfArgumentLocation
     end
-    with [mNonterminalName string] in ioNonTerminalMapForGrammarAnalysis  do
+    with mNonterminalName.string in ioNonTerminalMapForGrammarAnalysis  do
       checkLabelMap (
-        ![mNonterminalName location]
+        !mNonterminalName.location
         !nonTerminalLabelListAST
-        ![ioNonTerminalMapForGrammarAnalysis locationForKey ![mNonterminalName string]]
+        ![ioNonTerminalMapForGrammarAnalysis locationForKey !mNonterminalName.string]
         !mNonterminalSymbolParametersMap
       )
     else

@@ -27,7 +27,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 {
-  let key = @lstring.new {!"@" + self.mWeakReferenceTypeName ![self.mWeakReferenceTypeName location]}
+  let key = @lstring.new {!"@" + self.mWeakReferenceTypeName !self.mWeakReferenceTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   if self.mSuperWeakReferenceTypeName.string != "" then
     [!?ioSemanticTypePrecedenceGraph addEdge
@@ -59,7 +59,7 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
 #--- Handle super class
   var @unifiedTypeMap-entry superClassIndex
   var @bool generateHeaderInSeparateFile
-  if [self.mSuperWeakReferenceTypeName string] == "" then
+  if self.mSuperWeakReferenceTypeName.string == "" then
     superClassIndex = @unifiedTypeMap-entry.null
 #    commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?getterMap )
 #    setterMap = {}
@@ -68,7 +68,7 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
 #    attributeMap = {}
     generateHeaderInSeparateFile = false
     for (mValue) in self.mClassFeatureList do
-      if [mValue string] == "generatedInSeparateFile" then
+      if mValue.string == "generatedInSeparateFile" then
         generateHeaderInSeparateFile = true
       end
     end
@@ -285,7 +285,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mWeakReferenceTypeName)
   [!?ioUsefulEntitiesGraph addNode !weakRefTypeNameForUsefulness !weakRefTypeNameForUsefulness]
-  if [self.mSuperWeakReferenceTypeName string] != "" then
+  if self.mSuperWeakReferenceTypeName.string != "" then
     let superWeakRefNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mSuperWeakReferenceTypeName)
     [!?ioUsefulEntitiesGraph addEdge !weakRefTypeNameForUsefulness !superWeakRefNameForUsefulness]
   end
@@ -305,7 +305,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
     var @bool generatedInSeparateFileFeature = false
     if [self.mClassFeatureList length] > 0 then
       for (mValue) in self.mClassFeatureList do
-        if [mValue string] == "generatedInSeparateFile" then
+        if mValue.string == "generatedInSeparateFile" then
           if generatedInSeparateFileFeature then
             error mValue:"the 'generatedInSeparateFile' is already named"
           end
@@ -333,11 +333,11 @@ override method @weakReferenceDeclarationAST semanticAnalysis
     let hasSetter = true # mIsPublic
     var hasSelector = false
     for (mValue) in mAttributeList do
-      if [mValue string] == "setter" then
+      if mValue.string == "setter" then
         warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
-      elsif [mValue string] == "nogetter" then
+      elsif mValue.string == "nogetter" then
         warning mValue : "obsolete attribute: use 'private' qualifier"
-      elsif [mValue string] == "selector" then
+      elsif mValue.string == "selector" then
         if hasSelector then
           error mValue : "the '%selector' attribute is already named"
         end

@@ -99,10 +99,10 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
   end
 #---
   outExpression = @filewrapperInExpressionForGeneration.new {
-    !@unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {!"filewrapper" ![self.mFilewrapperName location]}}
-    ![self.mFilewrapperName location]
-    ![self.mFilewrapperName string]
-    ![filewrapperPath string]}
+    !@unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {!"filewrapper" !self.mFilewrapperName.location}}
+    !self.mFilewrapperName.location
+    !self.mFilewrapperName.string
+    !filewrapperPath.string}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -165,16 +165,16 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
         !?ioVariableMap
         ?@semanticExpressionForGeneration exp
       ]
-      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation !?exp)
+      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
       effectiveParameterList += !exp
     end
   end
 #---
   outExpression = @filewrapperTemplateInExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mStringType
-    ![self.mFilewrapperName location]
-    ![self.mFilewrapperName string]
-    ![self.mFilewrapperTemplateName string]
+    !self.mFilewrapperName.location
+    !self.mFilewrapperName.string
+    !self.mFilewrapperTemplateName.string
     !effectiveParameterList}
 }
 
@@ -259,8 +259,8 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
       then inAnalysisContext.mPredefinedTypes.mStringType
       else @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {!"data" !@location.here}}
      end
-    ![self.mFilewrapperName location]
-    ![self.mFilewrapperName string]
+    !self.mFilewrapperName.location
+    !self.mFilewrapperName.string
     !fileIndex
     !isTextFile}
 }

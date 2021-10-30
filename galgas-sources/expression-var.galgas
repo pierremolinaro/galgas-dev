@@ -50,7 +50,7 @@ override method @varInExpressionAST analyzeSemanticExpression
   ]
   outExpression = @varInExpressionForGeneration.new {
     !type
-    ![self.mVarName location]
+    !self.mVarName.location
     !sourceVariableCppName
     !nameForCheckingFormalParameterUsing
   }

@@ -64,12 +64,12 @@ override method @abstractExtensionGetterAST enterDeclarationInGraph
 {
   let key = @lstring.new {
     !"extension getter @" + self.mTypeName + " " + self.mAbstractExtensionGetterName
-    ![self.mAbstractExtensionGetterName location]
+    !self.mAbstractExtensionGetterName.location
   }
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName ![self.mTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName !self.mTypeName.location}]
 #---
-  if not [ioExtensionGetterMapForBuildingContext hasKey ![self.mTypeName string]] then
+  if not [ioExtensionGetterMapForBuildingContext hasKey !self.mTypeName.string] then
     [!?ioExtensionGetterMapForBuildingContext insertKey
       !self.mTypeName
       !{}
@@ -122,7 +122,7 @@ override method @abstractExtensionGetterAST semanticAnalysis
     formalParameterListForGeneration +=
       !mFormalSelector
       !.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
-      ![mFormalArgumentName string]
+      !mFormalArgumentName.string
       !mFormalArgumentName
       !mIsConstant
   end
@@ -133,7 +133,7 @@ override method @abstractExtensionGetterAST semanticAnalysis
       !true # Generate Cpp header file
       !"getter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mAbstractExtensionGetterName fileNameRepresentation]
       !selfType
-      ![self.mAbstractExtensionGetterName string]
+      !self.mAbstractExtensionGetterName.string
       !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mAbstractExtensionGetterReturnedTypeName}
       !formalParameterListForGeneration
     }

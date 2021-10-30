@@ -45,11 +45,11 @@ override method @abstractExtensionMethodAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 {
-  let key = @lstring.new {!"extension method @" + self.mTypeName + " " + self.mAbstractExtensionMethodName ![self.mAbstractExtensionMethodName location]}
+  let key = @lstring.new {!"extension method @" + self.mTypeName + " " + self.mAbstractExtensionMethodName !self.mAbstractExtensionMethodName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName ![self.mTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName !self.mTypeName.location}]
 #---
-  if not [ioExtensionMethodMapForBuildingContext hasKey ![self.mTypeName string]] then
+  if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
     [!?ioExtensionMethodMapForBuildingContext insertKey
       !self.mTypeName
       !{}
@@ -114,7 +114,7 @@ override method @abstractExtensionMethodAST semanticAnalysis
       !mFormalArgumentPassingMode
       !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
       !mFormalArgumentName
-      ![mFormalArgumentName string]
+      !mFormalArgumentName.string
   end
 #---
   ioSemanticDeclarationListForGeneration +=
@@ -123,7 +123,7 @@ override method @abstractExtensionMethodAST semanticAnalysis
       !true # Generate Cpp header file
       !"method-" + [[selfType key] fileNameRepresentation] + "-" + [self.mAbstractExtensionMethodName fileNameRepresentation]
       !selfType
-      ![self.mAbstractExtensionMethodName string]
+      !self.mAbstractExtensionMethodName.string
       !formalParameterListForGeneration}
 #    !"~"
 }
@@ -146,7 +146,7 @@ override method @abstractExtensionMethodAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
   ioAbstractExtensionMethodListMapAST +=
-    ![self.mTypeName string]
+    !self.mTypeName.string
     !self.mAbstractExtensionMethodName
 }
 

@@ -631,7 +631,7 @@ rule <extern_routine_declaration> ?!@externRoutineListAST ioExternRoutineList {
     $error$
     repeat
       $identifier$ ?var @lstring errorMessageName
-      errorMessageList += ![errorMessageName string]
+      errorMessageList += !errorMessageName.string
     while
       $,$
     end

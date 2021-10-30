@@ -81,10 +81,10 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"@" + self.mSortedListTypeName ![self.mSortedListTypeName location]}
+  let key = @lstring.new {!"@" + self.mSortedListTypeName !self.mSortedListTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
-    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName !mPropertyTypeName.location}]
   end
 }
 
@@ -147,7 +147,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !?constructorMap
     !?ioSemanticContext.mTypeMap
     !name:"emptySortedList"
-    !resultTypeName:[self.mSortedListTypeName string]
+    !resultTypeName:self.mSortedListTypeName.string
     !hasLexiqueArg:false
   )
   [!?constructorMap insertKey
@@ -284,11 +284,11 @@ override method @sortedListDeclarationAST semanticAnalysis
   var @sortDescriptorListForGeneration sortDescriptorList = {}
   for (mSortedAttributeName mAscending) in self.mSortDescriptorList do
     [attributeMap searchKey !mSortedAttributeName ?let @unifiedTypeMap-entry type]
-    sortDescriptorList += !type ![mSortedAttributeName string] !mAscending
-    if [attributesUsedForSorting hasKey ![mSortedAttributeName string]] then
+    sortDescriptorList += !type !mSortedAttributeName.string !mAscending
+    if [attributesUsedForSorting hasKey !mSortedAttributeName.string] then
       error mSortedAttributeName : "the '" + mSortedAttributeName + "' is already used for sorting"
     end
-    attributesUsedForSorting += ![mSortedAttributeName string]
+    attributesUsedForSorting += !mSortedAttributeName.string
   end
 #--- Generate type
   ioSemanticDeclarationListForGeneration +=

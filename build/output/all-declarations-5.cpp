@@ -12265,9 +12265,9 @@ GALGAS_string extensionGetter_kind (const GALGAS_typeKindEnum & inObject,
   case GALGAS_typeKindEnum::kEnum_classType:
     {
       const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_10951 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
-      const GALGAS_bool extractedValue_isReference = extractPtr_10951->mAssociatedValue0 ;
+      const GALGAS_bool extractedValue_10878_isReference = extractPtr_10951->mAssociatedValue0 ;
       GALGAS_string temp_1 ;
-      const enumGalgasBool test_2 = extractedValue_isReference.boolEnum () ;
+      const enumGalgasBool test_2 = extractedValue_10878_isReference.boolEnum () ;
       if (kBoolTrue == test_2) {
         temp_1 = GALGAS_string ("reference class") ;
       }else if (kBoolFalse == test_2) {

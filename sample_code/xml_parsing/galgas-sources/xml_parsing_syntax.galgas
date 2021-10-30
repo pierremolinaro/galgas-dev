@@ -89,7 +89,7 @@ rule <element>
   if inIncludeComments then
     var node =@xmlNode.new{
       !@xmlNodeType. comment
-      ![commentString string]
+      !commentString.string
       !{}
       !{}
     }
@@ -103,9 +103,9 @@ rule <element>
       discartedMessage = "(discarted) "
     end
     var @string s = inIndendation + "COMMENT " + discartedMessage + "'" + commentString + "' "
-    s += [[[commentString location] line] string]
-    s += ":" + [[[commentString location] column] string]
-    s += ":" + [[[commentString location] locationIndex] string] + "\n"
+    s += [[commentString.location line] string]
+    s += ":" + [[commentString.location column] string]
+    s += ":" + [[commentString.location locationIndex] string] + "\n"
     message s
   end
 }
@@ -132,18 +132,18 @@ rule <element>
   if inPrintDuringParsing then
     var @string s = inIndendation
     s += "ELEMENT '" + name + "' "
-    s += [[[name location] line] string]
-    s += ":" + [[[name location] column] string]
-    s += ":" + [[[name location] locationIndex] string] + " {"
+    s += [[name.location line] string]
+    s += ":" + [[name.location column] string]
+    s += ":" + [[name.location locationIndex] string] + " {"
     for (lkey value) in  attributeMap do
       s += "'" + lkey + "' "
-      s += [[[lkey location] line] string]
-      s += ":" + [[[lkey location] column] string]
-      s += ":" + [[[lkey location] locationIndex] string]
+      s += [[lkey.location line] string]
+      s += ":" + [[lkey.location column] string]
+      s += ":" + [[lkey.location locationIndex] string]
       s += " -> '" + value + "' "
-      s += [[[value location] line] string]
-      s += ":" + [[[value location] column] string]
-      s += ":" + [[[value location] locationIndex] string]
+      s += [[value.location line] string]
+      s += ":" + [[value.location column] string]
+      s += ":" + [[value.location locationIndex] string]
     between s += ", "
     end
     s += "}\n"
@@ -169,14 +169,14 @@ rule <element>
     )
     $</$
     $name$ ?var  @lstring closingName
-    if [closingName string] != [name string] then
+    if closingName.string != name.string then
       error closingName:"incorrect closing tag </" + closingName + "> instead of </" + name + ">"
     end
     $>$
   end
   var node =@xmlNode.new{
     !@xmlNodeType. element
-    ![name string]
+    !name.string
     !attributeMap
     !nodeList
   }

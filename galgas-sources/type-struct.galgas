@@ -47,10 +47,10 @@ override method @structDeclarationAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 {
-  let key = @lstring.new {!"@" + self.mStructTypeName ![self.mStructTypeName location]}
+  let key = @lstring.new {!"@" + self.mStructTypeName !self.mStructTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mStructurePropertyList do
-    let propertyKey = @lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}
+    let propertyKey = @lstring.new {!"@" + mPropertyTypeName !mPropertyTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
   end
 }
@@ -116,7 +116,7 @@ override method @structDeclarationAST enterInSemanticContext
     enterBaseFinalGetterWithoutArgument (
       !?getterMap
       !?ioSemanticContext.mTypeMap 
-      !getterName:[mPropertyName string]
+      !getterName:mPropertyName.string
       !returnedTypeName:[mPropertyTypeEntry key]
       !hasCompilerArgument:false
     )

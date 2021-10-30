@@ -56,7 +56,7 @@ override method @unaryWrappingMinusExpressionAST analyzeSemanticExpression
     ?expression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-entry type = [expression mResultType]
+  let @unifiedTypeMap-entry type = expression.mResultType
   if not [[type mHandledOperatorFlags] prefixMinusOperatorNoOVF] then
     error self.mOperatorLocation
     : "operand type is '@" + [type key] + "' and does not support the prefix minus operator"
@@ -86,7 +86,7 @@ override method @unaryWrappingMinusExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  [[self.mExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [self.mExpression.mResultType addHeaderFileName !?ioInclusionSet]
 #--- Left operand
   [self.mExpression generateExpression
     !?ioGeneratedCode

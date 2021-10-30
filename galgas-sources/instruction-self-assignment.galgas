@@ -69,7 +69,7 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
     error self.mInstructionLocation: "'self' assignment is not allowed for class instances"
   end
 #--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!inAnalysisContext.mSelfTypeEntry ![expression mResultType] !self.mInstructionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (!inAnalysisContext.mSelfTypeEntry !expression.mResultType !self.mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
     !inAnalysisContext.mSelfTypeEntry

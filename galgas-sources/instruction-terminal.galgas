@@ -34,7 +34,7 @@ syntax extension galgas3SyntaxComponentSyntax {
       <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingToken
     end
     outInstruction = @terminalCheckInstruction.new {
-      ![terminalName location]
+      !terminalName.location
       !terminalName
       !actualInputParameterList
       !indexNameList
@@ -79,7 +79,7 @@ override method @terminalCheckInstruction transformInstruction
   ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
   var @uint terminalSymbolIndex
-  with [self.mTerminalName string] in ioActuallyUsedTerminalSymbolMap  do
+  with self.mTerminalName.string in ioActuallyUsedTerminalSymbolMap  do
     terminalSymbolIndex = mTerminalIndex
   else
     terminalSymbolIndex = [ioActuallyUsedTerminalSymbolMap count]
@@ -136,7 +136,7 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
   end
 #---
   for (mValue0 mValue1) in self.mIndexingKeyList do
-    if not [inIndexNameSet hasKey ![mValue0 string]] then
+    if not [inIndexNameSet hasKey !mValue0.string] then
       error mValue0 : "the '" + mValue0 + "' indexing name is not declared by the lexique" fixit { replace inIndexNameSet }
     end
   end
@@ -205,13 +205,13 @@ override getter @terminalCheckInstructionForGeneration compareInstructionSyntaxS
 {
   cast inTestedInstruction
   case >= @terminalCheckInstructionForGeneration si :
-    outOk = [self.mTerminalName string] == [[si mTerminalName] string]
+    outOk = self.mTerminalName.string == si.mTerminalName.string
     if not outOk then
-      error [si mInstructionLocation]
+      error si.mInstructionLocation
       :"syntax signature error; the expected syntax instruction here is the '$" + self.mTerminalName + "$' terminal check"
     end
   case >= @syntaxInstructionForGeneration si :
-    error [si mInstructionLocation]
+    error si.mInstructionLocation
       :"syntax signature error; the expected syntax instruction here is the '$" + self.mTerminalName + "$' terminal check"
     outOk = false
   else

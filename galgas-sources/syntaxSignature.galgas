@@ -65,7 +65,7 @@ func compareSyntaxSignature
     var @semanticInstructionForGeneration instruction = [inTestedSignature mInstructionAtIndex ![inReferenceSignature length]]
     cast instruction
     case >= @syntaxInstructionForGeneration si :
-      error [si mInstructionLocation]
+      error si.mInstructionLocation
       :"syntax signature error, exceeding instruction; this branch has more syntax instructions than reference branch"
     else
       error inErrorLocation : "internal error"
@@ -76,7 +76,7 @@ func compareSyntaxSignature
     var @semanticInstructionForGeneration instruction = [inReferenceSignature mInstructionAtIndex ![inTestedSignature length]]
     cast instruction
     case >= @syntaxInstructionForGeneration si :
-      error [si mInstructionLocation]
+      error si.mInstructionLocation
       :"this is the syntax instruction in reference branch that corresponds to the first missing instruction"
     else
       error inErrorLocation : "internal error"

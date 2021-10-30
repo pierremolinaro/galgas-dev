@@ -187,7 +187,7 @@ override method @externTypeDeclarationAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"@" + self.mExternTypeName ![self.mExternTypeName location]}
+  let key = @lstring.new {!"@" + self.mExternTypeName !self.mExternTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
 }
 

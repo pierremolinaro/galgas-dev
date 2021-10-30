@@ -73,11 +73,11 @@ override method @extensionGetterAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 {
-  let key = @lstring.new {!"extension getter @" + self.mTypeName + " " + self.mExtensionGetterName ![self.mExtensionGetterName location]}
+  let key = @lstring.new {!"extension getter @" + self.mTypeName + " " + self.mExtensionGetterName !self.mExtensionGetterName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName ![self.mTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName !self.mTypeName.location}]
 #---
-  if not [ioExtensionGetterMapForBuildingContext hasKey ![self.mTypeName string]] then
+  if not [ioExtensionGetterMapForBuildingContext hasKey !self.mTypeName.string] then
     [!?ioExtensionGetterMapForBuildingContext insertKey
       !self.mTypeName
       !{}
@@ -175,7 +175,7 @@ override method @extensionGetterAST semanticAnalysis
       !true # Generate Cpp header file
       !"getter-" + [[selfType key] fileNameRepresentation] + "-" + [self.mExtensionGetterName fileNameRepresentation]
       !selfType
-      ![self.mExtensionGetterName string]
+      !self.mExtensionGetterName.string
       !implementedAsFunction
       !returnType
       !returnVariableCppName
@@ -203,7 +203,7 @@ override method @extensionGetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
   ioExtensionGetterListMap +=
-    ![self.mTypeName string]
+    !self.mTypeName.string
     !self.mExtensionGetterName
 }
 

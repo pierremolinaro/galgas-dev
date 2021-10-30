@@ -1489,7 +1489,7 @@ proc generateWrapperContents
   for (lkey mRegularFileMap mDirectoryMap mWrapperDirectoryIndex) in inFilewrapperDirectoryMap do
     generateWrapperContents (
       !inFilewrapperName
-      ![lkey string]
+      !lkey.string
       !mWrapperDirectoryIndex
       !mRegularFileMap
       !mDirectoryMap

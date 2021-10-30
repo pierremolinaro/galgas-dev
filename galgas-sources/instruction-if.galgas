@@ -292,7 +292,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
       var castType = @unifiedTypeMap-entry.null
       var testType = @unifiedTypeMap-entry.null
     #--- Check this is a class
-      if [[[analyzedExpression mResultType] mTypeKindEnum] isClassType] then
+      if [[analyzedExpression.mResultType mTypeKindEnum] isClassType] then
         if typeName.string == "" then
           error typeName.location : "on a class object, the 'as' clause is required" : castType, testType
         else
@@ -300,19 +300,19 @@ override method @ifInstructionAST analyzeSemanticInstruction
           testType = castType
         #--- Check expression type is a descendant of named type
           var @unifiedTypeMap-entry t = castType
-          var @bool found = t == [analyzedExpression mResultType]
+          var @bool found = t == analyzedExpression.mResultType
           loop ([inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
           while (not found) & not [[t mSuperType] isNull] do
             t = [t mSuperType]
-            found = t == [analyzedExpression mResultType]
+            found = t == analyzedExpression.mResultType
           end
           if not found then
             error typeName
-            : "the '@" + typeName + "' type is not a descendant of the '@" + [[analyzedExpression mResultType] key]
+            : "the '@" + typeName + "' type is not a descendant of the '@" + [analyzedExpression.mResultType key]
               + "' type of the cast expression"
           end
         end
-      elsif let [[[analyzedExpression mResultType] mTypeKindEnum] weakReferenceType ?referenceType: let classType] then
+      elsif let [[analyzedExpression.mResultType mTypeKindEnum] weakReferenceType ?referenceType: let classType] then
         if typeName.string == "" then
           castType = classType
         else
@@ -320,7 +320,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
         end
         testType = castType
         var @unifiedTypeMap-entry t = castType
-        var @bool found = t == [analyzedExpression mResultType]
+        var @bool found = t == analyzedExpression.mResultType
         if found then
           [[castType mTypeKindEnum] weakReferenceType ?referenceType: testType]
         elsif t == classType then
@@ -329,7 +329,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
         loop ([inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
         while (not found) & not [[t mSuperType] isNull] do
           t = [t mSuperType]
-          if t == [analyzedExpression mResultType] then
+          if t == analyzedExpression.mResultType then
             found = true
             [[castType mTypeKindEnum] weakReferenceType ?referenceType: testType]
           elsif t == classType then
@@ -338,11 +338,11 @@ override method @ifInstructionAST analyzeSemanticInstruction
         end
         if not found then
           error typeName
-          : "the '@" + [castType key] + "' type is not compatible with the '@" + [[analyzedExpression mResultType] key] + "' type"
+          : "the '@" + [castType key] + "' type is not compatible with the '@" + [analyzedExpression.mResultType key] + "' type"
         end
       else
-        error [analyzedExpression mLocation]: "expression should be a class instance, or a weak reference: it is an @"
-         +  [[analyzedExpression mResultType] key] + " instance"
+        error analyzedExpression.mLocation: "expression should be a class instance, or a weak reference: it is an @"
+         +  [analyzedExpression.mResultType key] + " instance"
       end
       [!?ioVariableMap openOverrideForSelectBlock]
       [!?ioVariableMap openBranch]
@@ -439,7 +439,7 @@ private proc analyzeOptionalMethodCall
   [!?ioVariableMap openOverrideForSelectBlock]
   [!?ioVariableMap openBranch]
 #--- Get optional method map
-  let @unifiedTypeMap-entry receiverType = [receiverExpression mResultType]
+  let @unifiedTypeMap-entry receiverType = receiverExpression.mResultType
   let @optionalMethodMap optionalMethodMap = [receiverType mOptionalMethodMap]
 #--- Search optional method
   var @optionalMethodSignature optionalMethodSignature
@@ -476,7 +476,7 @@ private proc analyzeOptionalMethodCall
           error actualSelector :
           "the selector should be '!" + formalSelector + if formalSelector.string != "" then ":" else "" end + "'"
         end
-        checkAssignmentTypeWithImplicitGetterCall (!formalType ![exp mResultType] !location !?exp)
+        checkAssignmentTypeWithImplicitGetterCall (!formalType !exp.mResultType !location !?exp)
         actualParameterList += !.actualOutput {!expression: exp}
       case actualLetInput (@lstring actualTypeName @lstring constantName) :
         if (actualTypeName.string != "") && ([formalType key] != actualTypeName.string) then

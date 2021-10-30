@@ -43,9 +43,9 @@ override method @arrayDeclarationAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"@" + self.mArrayTypeName ![self.mArrayTypeName location]}
+  let key = @lstring.new {!"@" + self.mArrayTypeName !self.mArrayTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mElementTypeName ![self.mElementTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mElementTypeName !self.mElementTypeName.location}]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -58,7 +58,7 @@ override method @arrayDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #---
-  if [self.mDimension uint] == 0 then
+  if self.mDimension.uint == 0 then
     error self.mDimension: "the dimension of an array should be > 0"
   end
 #--- array type
@@ -77,7 +77,7 @@ override method @arrayDeclarationAST enterInSemanticContext
 #---
   var @functionSignature uintArgs = {}
   var @uint idx = 0
-  loop ([self.mDimension uint]) while idx < [self.mDimension uint] do
+  loop (self.mDimension.uint) while idx < self.mDimension.uint do
     uintArgs += !["" nowhere] !uintType !"inSize" + idx
     idx ++
   end
@@ -136,7 +136,7 @@ override method @arrayDeclarationAST enterInSemanticContext
   var setterFormalArgumentList =@formalParameterSignature {}
   setterFormalArgumentList += !["" nowhere] !elementTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !"InValue"
   idx = 0
-  loop ([self.mDimension uint]) while idx < [self.mDimension uint] do
+  loop (self.mDimension.uint) while idx < self.mDimension.uint do
     setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inIndex" + idx
     idx ++
   end
@@ -239,7 +239,7 @@ override method @arrayDeclarationAST semanticAnalysis
     !@arrayTypeForGeneration.new {
       !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mArrayTypeName}
       !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mElementTypeName}
-      ![self.mDimension uint]
+      !self.mDimension.uint
     }
 }
 

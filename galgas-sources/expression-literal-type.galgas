@@ -52,7 +52,7 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
   let type = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mLiteralTypeName}
   outExpression = @literalTypeInExpressionForGeneration.new {
     !@unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !.new {!"type" !.here}}
-    ![self.mLiteralTypeName location]
+    !self.mLiteralTypeName.location
     !type
   }
 }

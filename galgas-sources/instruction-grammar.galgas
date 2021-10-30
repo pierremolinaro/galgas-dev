@@ -245,10 +245,10 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
     ?let @semanticExpressionForGeneration sourceExpression
   ]
 #--- Check source expression type: @lstring for file, @string for source string itself
-  if [sourceExpression mResultType] != inAnalysisContext.mPredefinedTypes.mLStringType then
+  if sourceExpression.mResultType != inAnalysisContext.mPredefinedTypes.mLStringType then
     error self.mEndOfSourceExpression
     :"this expression is the source file path and its type should be '@lstring', but it is '@"
-     + [[sourceExpression mResultType] key] + "'"
+     + [sourceExpression.mResultType key] + "'"
   end
 #--- Check syntax directed translation result parameter
   let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + [self.mGrammarComponentName.location locationIndex]
@@ -263,8 +263,8 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
 #--- Generate instructions
   ioInstructionListForGeneration += !@grammarInstructionWithSourceFileForGeneration.new {
     !self.mInstructionLocation
-    ![self.mGrammarComponentName string]
-    ![self.mLabelName string]
+    !self.mGrammarComponentName.string
+    !self.mLabelName.string
     !sourceExpression
     !actualParameterListForGeneration
     !hasTranslateFeature
@@ -319,10 +319,10 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     ?let @semanticExpressionForGeneration sourceExpression
   ]
 #--- Check source expression type: @string
-  if [sourceExpression mResultType] != inAnalysisContext.mPredefinedTypes.mStringType then
+  if sourceExpression.mResultType != inAnalysisContext.mPredefinedTypes.mStringType then
     error self.mEndOfSourceExpression
     :"this expression is the source string and its type should be '@string', but it is '@"
-     + [[sourceExpression mResultType] key] + "'"
+     + [sourceExpression.mResultType key] + "'"
   end
 #--- Parse name expression
   [self.mNameExpression analyzeSemanticExpression
@@ -334,10 +334,10 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     ?let @semanticExpressionForGeneration nameExpression
   ]
 #--- Check name expression type: @string
-  if [nameExpression mResultType] != inAnalysisContext.mPredefinedTypes.mStringType then
+  if nameExpression.mResultType != inAnalysisContext.mPredefinedTypes.mStringType then
     error self.mEndOfNameExpression
     :"this expression is the name string and its type should be '@string', but it is '@"
-     + [[sourceExpression mResultType] key] + "'"
+     + [sourceExpression.mResultType key] + "'"
   end
 #--- Check syntax directed translation result parameter
   let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + [self.mGrammarComponentName.location locationIndex]
@@ -352,8 +352,8 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
 #--- Generate instructions
   ioInstructionListForGeneration += !@grammarInstructionWithSourceExpressionForGeneration.new {
     !self.mInstructionLocation
-    ![self.mGrammarComponentName string]
-    ![self.mLabelName string]
+    !self.mGrammarComponentName.string
+    !self.mLabelName.string
     !sourceExpression
     !nameExpression
     !actualParameterListForGeneration

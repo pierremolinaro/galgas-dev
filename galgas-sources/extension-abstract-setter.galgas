@@ -45,11 +45,11 @@ override method @abstractExtensionSetterAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 {
-  let key = @lstring.new {!"extension setter @" + self.mTypeName + " " + self.mAbstractExtensionSetterName ![self.mAbstractExtensionSetterName location]}
+  let key = @lstring.new {!"extension setter @" + self.mTypeName + " " + self.mAbstractExtensionSetterName !self.mAbstractExtensionSetterName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName ![self.mTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName !self.mTypeName.location}]
 #---
-  if not [ioExtensionSetterMapForBuildingContext hasKey ![self.mTypeName string]] then
+  if not [ioExtensionSetterMapForBuildingContext hasKey !self.mTypeName.string] then
     [!?ioExtensionSetterMapForBuildingContext insertKey
       !self.mTypeName
       !{}
@@ -115,7 +115,7 @@ override method @abstractExtensionSetterAST semanticAnalysis
       !mFormalArgumentPassingMode
       !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
       !mFormalArgumentName
-      ![mFormalArgumentName string]
+      !mFormalArgumentName.string
   end
 #---
   ioSemanticDeclarationListForGeneration +=
@@ -124,7 +124,7 @@ override method @abstractExtensionSetterAST semanticAnalysis
       !true # Generate Cpp header file
       !"setter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mAbstractExtensionSetterName fileNameRepresentation]
       !selfType
-      ![self.mAbstractExtensionSetterName string]
+      !self.mAbstractExtensionSetterName.string
       !formalParameterListForGeneration
     }
 }
@@ -148,7 +148,7 @@ override method @abstractExtensionSetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap
 {
   ioAbstractExtensionSetterListMap +=
-    ![self.mTypeName string]
+    !self.mTypeName.string
     !self.mAbstractExtensionSetterName
 }
 

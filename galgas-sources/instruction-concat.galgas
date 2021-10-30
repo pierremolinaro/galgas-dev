@@ -206,7 +206,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
-        + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
+        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
@@ -251,7 +251,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
     ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !self.mInstructionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
     !self.mInstructionLocation
@@ -289,7 +289,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
-        + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
+        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
@@ -334,7 +334,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
     ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !self.mInstructionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
     !self.mInstructionLocation
@@ -372,7 +372,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
-        + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
+        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
@@ -417,7 +417,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
     ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !self.mInstructionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
     !self.mInstructionLocation
@@ -455,7 +455,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
-        + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
+        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
@@ -494,7 +494,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
     ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !self.mInstructionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
     !self.mInstructionLocation
@@ -532,7 +532,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
-        + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
+        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
@@ -582,7 +582,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
         error mActualSelector
           : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
-      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![expression mResultType] !mEndOfExpressionLocation !?expression)
+      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !expression.mResultType !mEndOfExpressionLocation !?expression)
       effectiveParameterList += !expression
     end
   #--- Generate instruction
@@ -634,7 +634,7 @@ override method @plusEqualnstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !self.mNameForCheckingFormalParameterUsing]
   ioGeneratedCode += self.mReceiverCppName
   for (mValue) in self.mStructAttributeList do
-    ioGeneratedCode += ".mProperty_" + [[mValue string] identifierRepresentation]
+    ioGeneratedCode += ".mProperty_" + [mValue.string identifierRepresentation]
   end
 #--- Call add assign (+=) operator
   ioGeneratedCode += ".addAssign_operation ("

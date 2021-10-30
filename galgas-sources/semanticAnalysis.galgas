@@ -126,24 +126,24 @@ proc buildLocalVariableMapAndSignature
     var @string formalArgumentCppName
     switch mFormalArgumentPassingMode
     case argumentIn :
-      formalArgumentCppName = "inArgument_" + [[mFormalArgumentName string] identifierRepresentation]
+      formalArgumentCppName = "inArgument_" + [mFormalArgumentName.string identifierRepresentation]
       if mIsUnused then
         [!?ioVariableMap insertInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName]
       else
         [!?ioVariableMap insertInputFormalArgument !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName]
       end
     case argumentOut :
-      formalArgumentCppName = "outArgument_" + [[mFormalArgumentName string] identifierRepresentation]
+      formalArgumentCppName = "outArgument_" + [mFormalArgumentName.string identifierRepresentation]
       [!?ioVariableMap insertOutputFormalArgument !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName]
     case argumentInOut :
-      formalArgumentCppName = "ioArgument_" + [[mFormalArgumentName string] identifierRepresentation]
+      formalArgumentCppName = "ioArgument_" + [mFormalArgumentName.string identifierRepresentation]
       if mIsUnused then
         [!?ioVariableMap insertInputOutputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName]
       else
         [!?ioVariableMap insertInputOutputFormalArgument !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName]
       end
     case argumentConstantIn :
-      formalArgumentCppName = "constinArgument_" + [[mFormalArgumentName string] identifierRepresentation]
+      formalArgumentCppName = "constinArgument_" + [mFormalArgumentName.string identifierRepresentation]
       if mIsUnused then
         [!?ioVariableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName]
       else
@@ -184,7 +184,7 @@ proc analyzeRoutineBody
       [!?variableMap insertNonMutableProperty
         !mPropertyName
         !mPropertyTypeEntry
-        !inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[mPropertyName string] identifierRepresentation]
+        !inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [mPropertyName.string identifierRepresentation]
         !inAnalysisContext.mSelfObjectCppName
       ]
     end
@@ -195,7 +195,7 @@ proc analyzeRoutineBody
       [!?variableMap insertMutableProperty
         !mPropertyName
         !mPropertyTypeEntry
-        !inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[mPropertyName string] identifierRepresentation]
+        !inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [mPropertyName.string identifierRepresentation]
         !inAnalysisContext.mSelfObjectCppName
       ]
     end
@@ -241,7 +241,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
     formalArgumentList +=
       !mFormalSelector
       !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
-      ![mFormalArgumentName string]
+      !mFormalArgumentName.string
       !mFormalArgumentName
       !mIsConstant
   end
@@ -250,7 +250,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
     !@functionPrototypeDeclarationForGeneration.new {
       !true # Generate Cpp header file
       !"func-" + [self.mFunctionName fileNameRepresentation]
-      ![self.mFunctionName string]
+      !self.mFunctionName.string
       !formalArgumentList
       !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mResultTypeName}}
 }
@@ -276,14 +276,14 @@ override method @externRoutineDeclarationAST semanticAnalysis
       !mFormalArgumentPassingMode
       !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
       !mFormalArgumentName
-      ![mFormalArgumentName string]
+      !mFormalArgumentName.string
   end
   ioSemanticDeclarationListForGeneration +=
     !"extern proc " + self.mRoutineName
     !@routinePrototypeDeclarationForGeneration.new {
       !true # Generate Cpp header file
       !"proc-" + [self.mRoutineName fileNameRepresentation]
-      ![self.mRoutineName string]
+      !self.mRoutineName.string
       !formalArgumentList}
 }
 
@@ -330,7 +330,7 @@ override method @procDeclarationAST semanticAnalysis
     !@routineImplementationForGeneration.new {
       !true # Generate Cpp header file
       !"proc-" + [self.mRoutineName fileNameRepresentation]
-      ![self.mRoutineName string]
+      !self.mRoutineName.string
       !formalArgumentList
       !false # Do not generate static
       !instructionList
@@ -362,7 +362,7 @@ proc analyzeFunctionBody
       [!?variableMap insertNonMutableProperty
         !mPropertyName
         !mPropertyTypeEntry
-        !inAttributeVariableNamePrefix + "mProperty_"+ [[mPropertyName string] identifierRepresentation]
+        !inAttributeVariableNamePrefix + "mProperty_"+ [mPropertyName.string identifierRepresentation]
         !inAnalysisContext.mSelfObjectCppName
       ]
     end
@@ -372,7 +372,7 @@ proc analyzeFunctionBody
   for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName mIsUnused mIsConstant) in inFunctionSignature do
     let parameterType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mFormalArgumentTypeName}
     if mIsConstant then
-      let @string cppName = "constinArgument_" + [[mFormalArgumentName string] identifierRepresentation]
+      let @string cppName = "constinArgument_" + [mFormalArgumentName.string identifierRepresentation]
       outSignatureForGeneration +=
         !mFormalSelector
         !parameterType
@@ -385,7 +385,7 @@ proc analyzeFunctionBody
         [!?variableMap insertConstantInputFormalArgument !mFormalArgumentName !parameterType !cppName !cppName]
       end
     else
-      let @string cppName = "inArgument_" + [[mFormalArgumentName string] identifierRepresentation]
+      let @string cppName = "inArgument_" + [mFormalArgumentName.string identifierRepresentation]
       outSignatureForGeneration +=
         !mFormalSelector
         !parameterType
@@ -469,7 +469,7 @@ override method @functionDeclarationAST semanticAnalysis
     !@functionImplementationForGeneration.new {
       !true # Generate Cpp header file
       !"func-" + [self.mFunctionName fileNameRepresentation]
-      ![self.mFunctionName string]
+      !self.mFunctionName.string
       !formalInputParameterList
       !returnType
       !resultVariableCppName
@@ -527,7 +527,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
     !@onceFunctionDeclarationForGeneration.new {
       !true # Generate Cpp header file
       !"func-" + [self.mFunctionName fileNameRepresentation]
-      ![self.mFunctionName string]
+      !self.mFunctionName.string
       !returnType
       !resultVariableCppName
       !semanticInstructionListForGeneration}
@@ -564,7 +564,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
   if [self.mFilewrapperPath.string firstCharacterOrNul] == '/' then
     absoluteSourcePath = self.mFilewrapperPath.string
   else
-    absoluteSourcePath = [self.mSourceFileAbsolutePath stringByDeletingLastPathComponent] + "/" + [self.mFilewrapperPath string]
+    absoluteSourcePath = [self.mSourceFileAbsolutePath stringByDeletingLastPathComponent] + "/" + self.mFilewrapperPath.string
   end
   if not [absoluteSourcePath directoryExists] then
     error self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist"
@@ -578,20 +578,20 @@ override method @filewrapperDeclarationAST semanticAnalysis
       )
       [!?ioUsefulEntitiesGraph addNode !filewrapperTemplateNameForUsefulness !filewrapperTemplateNameForUsefulness]
       [!?ioUsefulEntitiesGraph addEdge !filewrapperTemplateNameForUsefulness !filewrapperNameForUsefulness]
-      if [[mFilewrapperTemplatePath string] firstCharacterOrNul] == '/' then
+      if [mFilewrapperTemplatePath.string firstCharacterOrNul] == '/' then
         error mFilewrapperTemplatePath
          : "the path should not begin with a '/'; it is relative to filewrapper path '" + absoluteSourcePath + "'"
       end
       let absoluteTemplatePath = absoluteSourcePath + "/" + mFilewrapperTemplatePath
     #--- Parse template
-      grammar templateGrammar in @lstring.new {!absoluteTemplatePath ![mFilewrapperTemplatePath location]}
+      grammar templateGrammar in @lstring.new {!absoluteTemplatePath !mFilewrapperTemplatePath.location}
         ?let @templateInstructionListAST resultingInstructionList
     #--- Build template variable map
       var @templateVariableMap templateVariableMap = {}
       var @formalInputParameterListForGeneration filewrapperTemplateFormalInputParameters = {}
       for (mFormalTemplateSelector mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFilewrapperTemplateFormalInputParameters do
         var type =@unifiedTypeMap-entry.searchKey{!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
-        let @string cppVarName = "in_" + [[mFormalArgumentName string] identifierRepresentation]
+        let @string cppVarName = "in_" + [mFormalArgumentName.string identifierRepresentation]
         [!?templateVariableMap insertKey !mFormalArgumentName !type !cppVarName]
         filewrapperTemplateFormalInputParameters += !mFormalTemplateSelector !type !cppVarName !mFormalArgumentName !true
       end
@@ -610,7 +610,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
       )
     #--- Enter in generation list
       filewrapperTemplateListForGeneration +=
-        ![mFilewrapperTemplateName string]
+        !mFilewrapperTemplateName.string
         !filewrapperTemplateFormalInputParameters
         !templateInstructionListForGeneration
     end
@@ -620,8 +620,8 @@ override method @filewrapperDeclarationAST semanticAnalysis
       !@filewrapperDeclarationForGeneration.new {
         !true # Generate Cpp header file
         !"filewrapper-" + self.mFilewrapperName
-        ![self.mFilewrapperName string]
-        ![self.mFilewrapperPath string]
+        !self.mFilewrapperName.string
+        !self.mFilewrapperPath.string
         !wrapperFileMap
         !wrapperDirectoryMap
         !filewrapperTemplateListForGeneration}
@@ -889,7 +889,7 @@ override method @lexiqueComponentAST semanticAnalysis
     for (mPassingMode mLexicalTypeName mFormalArgumentName) in mLexicalRoutineFormalArgumentList do
       var @lexicalTypeEnum lexicalFormalArgumentType
       [lexicalTypeMap searchKey !mLexicalTypeName ?lexicalFormalArgumentType]
-      lexicalRoutineFormalArgumentList += !mPassingMode !lexicalFormalArgumentType ![mFormalArgumentName string]
+      lexicalRoutineFormalArgumentList += !mPassingMode !lexicalFormalArgumentType !mFormalArgumentName.string
     end
     [!?lexicalRoutineMap insertKey !mRoutineName !lexicalRoutineFormalArgumentList !mErrorMessageList !true]
   end
@@ -902,7 +902,7 @@ override method @lexiqueComponentAST semanticAnalysis
     for (mLexicalTypeName mFormalArgumentName) in mLexicalFunctionFormalArgumentList do
       var @lexicalTypeEnum lexicalFormalArgumentType
       [lexicalTypeMap searchKey !mLexicalTypeName ?lexicalFormalArgumentType]
-      lexicalFunctionFormalArgumentList += !lexicalFormalArgumentType ![mFormalArgumentName string]
+      lexicalFunctionFormalArgumentList += !lexicalFormalArgumentType !mFormalArgumentName.string
     end
     var @lexicalTypeEnum returnedArgumentType
     [lexicalTypeMap searchKey !mReturnedTypeName ? returnedArgumentType]
@@ -940,8 +940,8 @@ override method @lexiqueComponentAST semanticAnalysis
 #--------------------------------------- Build terminal map
   for (mName mSentAttributeList mSyntaxErrorMessage mStyle mOptionList) in self.mTerminalDeclarationList do
     var @uint terminalStyleIndex = 0
-    if [[mStyle string] length] > 0 then
-      [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex]
+    if [mStyle.string length] > 0 then
+      [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
     end
     var argumentTypeList =@lexicalSentValueList {}
     for (mFormalSelector mAttributeName) in mSentAttributeList do
@@ -953,13 +953,13 @@ override method @lexiqueComponentAST semanticAnalysis
     var isEndOfTemplateMark = false
     var atomicSelection = true
     for (mValue) in mOptionList do
-      if [mValue string] == "nonAtomicSelection" then
+      if mValue.string == "nonAtomicSelection" then
         if atomicSelection then
           atomicSelection = false
         else
           error mValue: "the 'nonAtomicSelection' attribute is already set"
         end
-      elsif [mValue string] != "templateEndMark" then
+      elsif mValue.string != "templateEndMark" then
         error mValue:"only the 'templateEndMark' and 'nonAtomicSelection' attributes are allowed here"
       elsif isEndOfTemplateMark then
         error mValue:"the 'templateEndMark' attribute is already set"
@@ -970,15 +970,15 @@ override method @lexiqueComponentAST semanticAnalysis
     lexiqueAnalysisContext.mTerminalList +=
       !mName
       !argumentTypeList
-      ![mSyntaxErrorMessage string]
+      !mSyntaxErrorMessage.string
       !isEndOfTemplateMark
       !atomicSelection
       !terminalStyleIndex
   end
   for (mName mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in self.mLexicalListDeclarationList do
     var @uint terminalStyleIndex = 0
-    if [[mStyle string] length] > 0 then
-      [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex]
+    if [mStyle.string length] > 0 then
+      [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
     end
     var argumentTypeList =@lexicalSentValueList {}
     for (mFormalSelector mAttributeName) in mSentAttributeList do
@@ -989,17 +989,17 @@ override method @lexiqueComponentAST semanticAnalysis
     var @lexicalExplicitTokenListMap lexicalTokenListMap = {}
     var tokenSortedlist =@tokenSortedlist.emptySortedList{}
     for (mEntrySpelling mTerminalSpelling mAttributeList) in mEntryList do
-      var @string syntaxErrorMessage = [[mSyntaxErrorMessage string] stringByReplacingStringByString !"%K" ![mTerminalSpelling string]]
+      var @string syntaxErrorMessage = [mSyntaxErrorMessage.string stringByReplacingStringByString !"%K" !mTerminalSpelling.string]
       var isEndOfTemplateMark = false
       var atomicSelection = true
       for (mValue) in mAttributeList do
-        if [mValue string] == "nonAtomicSelection" then
+        if mValue.string == "nonAtomicSelection" then
           if atomicSelection then
             atomicSelection = false
           else
             error mValue: "the 'nonAtomicSelection' attribute is already set"
           end
-        elsif [mValue string] != "templateEndMark" then
+        elsif mValue.string != "templateEndMark" then
           error mValue:"only the 'templateEndMark' and 'nonAtomicSelection' attributes are allowed here"
         elsif isEndOfTemplateMark then
           error mValue:"the 'templateEndMark' attribute is already set"
@@ -1016,8 +1016,8 @@ override method @lexiqueComponentAST semanticAnalysis
         !terminalStyleIndex
       [!?lexiqueAnalysisContext.mTerminalMap insertKey !mTerminalSpelling !argumentTypeList]
       [!?lexicalTokenListMap insertKey !mEntrySpelling !mTerminalSpelling !mAttributeList]
-      tokenSortedlist += ![[mEntrySpelling string] length] ![mEntrySpelling string] ![mTerminalSpelling string]
-      lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mEntrySpelling string]
+      tokenSortedlist += ![mEntrySpelling.string length] !mEntrySpelling.string !mTerminalSpelling.string
+      lexiqueAnalysisContext.mUnicodeStringToGenerate += !mEntrySpelling.string
     end
     [!?lexiqueAnalysisContext.mLexicalTokenListMap insertKey !mName !lexicalTokenListMap !tokenSortedlist !false]
   end
@@ -1030,18 +1030,18 @@ override method @lexiqueComponentAST semanticAnalysis
     [mLexicalRule checkLexicalRule !?lexiqueAnalysisContext]
   end
 #--------------------------------------- Warn for unused messages
-  for (lkey mLexicalMessage mMessageIsUsed) in [lexiqueAnalysisContext mLexicalMessageMap] do
+  for (lkey mLexicalMessage mMessageIsUsed) in lexiqueAnalysisContext.mLexicalMessageMap do
     if not mMessageIsUsed then
       warning lkey:"unused message"
     end
   end
 #--------------------------------------- Template delimiters
   for (mStartString mOptionList mEndString) in self.mTemplateDelimitorList do
-   lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mStartString string]
-   lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mEndString string]
+   lexiqueAnalysisContext.mUnicodeStringToGenerate += !mStartString.string
+   lexiqueAnalysisContext.mUnicodeStringToGenerate += !mEndString.string
    var preservesStartDelimiter = false
    for (mValue) in mOptionList do
-     if [mValue string] != "preserved" then
+     if mValue.string != "preserved" then
        error mValue:"only the 'preserved' attribute is allowed here"
      elsif preservesStartDelimiter then
        error mValue:"the 'preserved' attribute is already set"
@@ -1059,15 +1059,15 @@ override method @lexiqueComponentAST semanticAnalysis
   end
   var @stringset indexNameSet = {}
   for (mIndexName mIndexComment) in self.mIndexingListAST do
-    if [indexNameSet hasKey ![mIndexName string]] then
+    if [indexNameSet hasKey !mIndexName.string] then
       error mIndexName : "the '" + mIndexName + "' index is already declared"
     end
-    indexNameSet += ![mIndexName string]
+    indexNameSet += !mIndexName.string
   end
 #--------------------------------------- Template replacements
   for (mMatchString mReplacementString mReplacementFunction) in self.mTemplateReplacementList do
-   lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mMatchString string]
-   lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mReplacementString string]
+   lexiqueAnalysisContext.mUnicodeStringToGenerate += !mMatchString.string
+   lexiqueAnalysisContext.mUnicodeStringToGenerate += !mReplacementString.string
    # § TODO Check replacement function
   end
 #--------------------------------------- Build header and Cpp contents
@@ -1089,11 +1089,11 @@ override method @lexiqueComponentAST semanticAnalysis
   #--- Cpp
     let cppContents =  [filewrapper lexiqueGenerationTemplates.newImplementationZone2Galgas3
       ![lexiqueClassName identifierRepresentation]
-      ![lexiqueAnalysisContext mLexicalAttributeMap]
-      ![lexiqueAnalysisContext mLexicalMessageMap]
-      ![lexiqueAnalysisContext mTerminalList]
-      ![lexiqueAnalysisContext mLexicalTokenListMap]
-      ![lexiqueAnalysisContext mUnicodeStringToGenerate]
+      !lexiqueAnalysisContext.mLexicalAttributeMap
+      !lexiqueAnalysisContext.mLexicalMessageMap
+      !lexiqueAnalysisContext.mTerminalList
+      !lexiqueAnalysisContext.mLexicalTokenListMap
+      !lexiqueAnalysisContext.mUnicodeStringToGenerate
       !self.mLexicalRuleList
       !lexiqueAnalysisContext
       !self.mIndexingDirectory.string
@@ -1117,10 +1117,10 @@ override method @lexiqueComponentAST semanticAnalysis
     let cocoaImplementation = [filewrapper lexiqueGenerationTemplates.cocoaImplementationZone2
       !"lexique-" + [lexiqueClassName fileNameRepresentation] + "-cocoa"
       !lexiqueClassName
-      ![lexiqueAnalysisContext mLexicalAttributeMap]
-      ![lexiqueAnalysisContext mLexicalMessageMap]
-      ![lexiqueAnalysisContext mTerminalList]
-      ![lexiqueAnalysisContext mUnicodeStringToGenerate]
+      !lexiqueAnalysisContext.mLexicalAttributeMap
+      !lexiqueAnalysisContext.mLexicalMessageMap
+      !lexiqueAnalysisContext.mTerminalList
+      !lexiqueAnalysisContext.mUnicodeStringToGenerate
       !self.mLexicalRuleList
       !lexiqueAnalysisContext
       !self.mTemplateReplacementList
@@ -1262,7 +1262,7 @@ proc enterNonterminalNonTerminalInMapAndCheck
   ?let @lstring inNonTerminalName
   ?let @nonterminalLabelMap inNonterminalLabelMap
   ?!@nonterminalMap ioNonterminalDeclarationMap {
-  with [inNonTerminalName string] in ioNonterminalDeclarationMap  do
+  with inNonTerminalName.string in ioNonterminalDeclarationMap  do
     let @stringset firstDeclarationLabelSet = [mLabelMap keySet]
     let @stringset reDeclarationLabelSet = [inNonterminalLabelMap keySet]
     let @stringset missingLabelSet = firstDeclarationLabelSet - reDeclarationLabelSet
@@ -1317,7 +1317,7 @@ proc buildNonterminalDeclarationsMap
       var signature =@formalParameterSignature {}
       for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFormalArgumentList do
         let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
-        signatureForGeneration += !mFormalSelector !mFormalArgumentPassingMode !t !mFormalArgumentName ![mFormalArgumentName string]
+        signatureForGeneration += !mFormalSelector !mFormalArgumentPassingMode !t !mFormalArgumentName !mFormalArgumentName.string
         signature += !mFormalSelector !t !mFormalArgumentPassingMode !mFormalArgumentName.string
       end
       [!?nonterminalLabelMap insertKey !mLabelName !signatureForGeneration !signature !mEndOfArgumentLocation]
@@ -1843,7 +1843,7 @@ proc semanticAnalysisOfSyntaxComponent
     selectMethodCount = localSelectMethodCount
     [nonterminalMap searchKey !mNonterminalName ?*]
     ruleDeclarationList +=
-      ![mNonterminalName string]
+      !mNonterminalName.string
       !newRuleIndex
       !ruleLabelImplementationList
     newRuleIndex ++

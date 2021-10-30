@@ -46,10 +46,10 @@ override method @listDeclarationAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"@" + self.mListTypeName ![self.mListTypeName location]}
+  let key = @lstring.new {!"@" + self.mListTypeName !self.mListTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
-    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName !mPropertyTypeName.location}]
   end
 }
 
@@ -70,11 +70,11 @@ override method @listDeclarationAST enterInSemanticContext
     let hasSetter = mIsPublic
     var hasSelector = false
     for (mValue) in mAttributeList do
-      if [mValue string] == "setter" then
+      if mValue.string == "setter" then
         warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
-      elsif [mValue string] == "nogetter" then
+      elsif mValue.string == "nogetter" then
         warning mValue : "obsolete attribute: use 'private' qualifier"
-      elsif [mValue string] == "selector" then
+      elsif mValue.string == "selector" then
         if hasSelector then
           error mValue : "the '%selector' attribute is already named"
         end
@@ -126,7 +126,7 @@ override method @listDeclarationAST enterInSemanticContext
     !?constructorMap
     !?ioSemanticContext.mTypeMap 
     !name:"emptyList"
-    !resultTypeName:[self.mListTypeName string]
+    !resultTypeName:self.mListTypeName.string
     !hasLexiqueArg:false
   )
   [!?constructorMap insertKey
@@ -155,26 +155,26 @@ override method @listDeclarationAST enterInSemanticContext
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName: "subListFromIndex" !"uint" !"inIndex"
-    !returnedTypeName:[self.mListTypeName string]
+    !returnedTypeName:self.mListTypeName.string
     !hasCompilerArgument:true
   )
   enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName: "subListToIndex" !"uint" !"inIndex"
-    !returnedTypeName:[self.mListTypeName string]
+    !returnedTypeName:self.mListTypeName.string
     !hasCompilerArgument:true
   )
   enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName: "subListWithRange" !"range" !"inRange"
-    !returnedTypeName:[self.mListTypeName string]
+    !returnedTypeName:self.mListTypeName.string
     !hasCompilerArgument:true
   )
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in typedAttributeList do
     [!?getterMap insertOrReplace
-      !@lstring.new {![mPropertyName string] + "AtIndex" ![mPropertyName location]}
+      !@lstring.new {!mPropertyName.string + "AtIndex" !mPropertyName.location}
       !@methodKind.definedAsMember
       !@functionSignature {!["" nowhere] !uintType !"inIndex"}
       !@location.here
@@ -246,7 +246,7 @@ override method @listDeclarationAST enterInSemanticContext
       setterFormalArgumentList += !["" nowhere] !mPropertyTypeEntry !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
       setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
       [!?setterMap insertOrReplace
-        !@lstring.new {!"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "AtIndex" ![mPropertyName location]}
+        !@lstring.new {!"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "AtIndex" !mPropertyName.location}
         !@methodKind.definedAsMember
         !setterFormalArgumentList
         !true
@@ -359,11 +359,11 @@ override method @listDeclarationAST semanticAnalysis
     let hasSetter = mIsPublic
     var hasSelector = false
     for (mValue) in mAttributeList do
-      if [mValue string] == "setter" then
+      if mValue.string == "setter" then
         warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
-      elsif [mValue string] == "nogetter" then
+      elsif mValue.string == "nogetter" then
         warning mValue : "obsolete attribute: use 'private' qualifier"
-      elsif [mValue string] == "selector" then
+      elsif mValue.string == "selector" then
         if hasSelector then
           error mValue : "the '%selector' attribute is already named"
         end

@@ -6628,13 +6628,17 @@ class GALGAS_getterCallExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_getterCallExpressionAST constructor_new (const class GALGAS_semanticExpressionAST & inOperand0,
                                                                        const class GALGAS_lstring & inOperand1,
-                                                                       const class GALGAS_actualOutputExpressionList & inOperand2
+                                                                       const class GALGAS_actualOutputExpressionList & inOperand2,
+                                                                       const class GALGAS_location & inOperand3
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_getterCallExpressionAST & inOperand) const ;
 
 //--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMExpressionLocation (class GALGAS_location inArgument0
+                                                               COMMA_LOCATION_ARGS) ;
+
   public: VIRTUAL_IN_DEBUG void setter_setMExpressions (class GALGAS_actualOutputExpressionList inArgument0
                                                         COMMA_LOCATION_ARGS) ;
 
@@ -6649,6 +6653,8 @@ class GALGAS_getterCallExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_location getter_mExpressionLocation (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_actualOutputExpressionList getter_mExpressions (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mGetterName (LOCATION_ARGS) const ;
@@ -6679,11 +6685,13 @@ class cPtr_getterCallExpressionAST : public cPtr_semanticExpressionAST {
   public: GALGAS_semanticExpressionAST mProperty_mReceiver ;
   public: GALGAS_lstring mProperty_mGetterName ;
   public: GALGAS_actualOutputExpressionList mProperty_mExpressions ;
+  public: GALGAS_location mProperty_mExpressionLocation ;
 
 //--- Constructor
   public: cPtr_getterCallExpressionAST (const GALGAS_semanticExpressionAST & in_mReceiver,
                                         const GALGAS_lstring & in_mGetterName,
-                                        const GALGAS_actualOutputExpressionList & in_mExpressions
+                                        const GALGAS_actualOutputExpressionList & in_mExpressions,
+                                        const GALGAS_location & in_mExpressionLocation
                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

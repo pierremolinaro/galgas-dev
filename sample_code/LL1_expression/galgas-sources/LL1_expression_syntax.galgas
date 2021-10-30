@@ -11,7 +11,7 @@ rule <Constant>
   $number$ ?let @luint cst
   send " "
   outExpressionTree = @cConst.new { !cst}
-  outValue = [cst uint]
+  outValue = cst.uint
 }
   
 rule <Expression>

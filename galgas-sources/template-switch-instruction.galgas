@@ -128,11 +128,11 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
     !inAnalysisContext
     ?switchExpression
   ]
-  if [[switchExpression mResultType] mTypeKindEnum] != .enumType then
-    error [switchExpression mLocation] : "'switch' expression type should be an enumeration (it is a "
-       + [[[switchExpression mResultType] mTypeKindEnum] kind] + " type)"
+  if [switchExpression.mResultType mTypeKindEnum] != .enumType then
+    error switchExpression.mLocation : "'switch' expression type should be an enumeration (it is a "
+       + [[switchExpression.mResultType mTypeKindEnum] kind] + " type)"
   end
-  let enumConstantMap = [[switchExpression mResultType] mEnumConstantMap]
+  let enumConstantMap = [switchExpression.mResultType mEnumConstantMap]
   var @stringset constantsNamedInSwitchInstruction = {}
 #--- Analyze branches
 #  @switchBranchesForGeneration switchBranchesForGeneration = {}
@@ -142,12 +142,12 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
     var @bool firstConstant = true
     var analysisContext = inAnalysisContext 
     for (mValue) in mConstantList do
-      if [enumConstantMap hasKey ![mValue string]] then
-        if [constantsNamedInSwitchInstruction hasKey ![mValue string]] then
+      if [enumConstantMap hasKey !mValue.string] then
+        if [constantsNamedInSwitchInstruction hasKey !mValue.string] then
           error mValue
           :"the '" + mValue + "' constant is already named in this switch instruction"
         end
-        constantsNamedInSwitchInstruction += ![mValue string]
+        constantsNamedInSwitchInstruction += !mValue.string
         [enumConstantMap searchKey !mValue ?* ?let @unifiedTypeMapEntryList associatedTypeList]
         if ([associatedTypeList length] > 0) & ([mAssociatedValuesExtraction length] == 0) then
           error mValue
@@ -168,7 +168,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
               end
             end
             if firstConstant & (mExtractedValueName.string != "") then
-              let cppName = "extractedValue_" + mExtractedValueName
+              let cppName = "extractedValue_" + [mExtractedValueName.location locationIndex] + "_" + mExtractedValueName
               extractedAssociatedValuesForGeneration += !mType !cppName !associatedValueIndex
               [!?analysisContext.mTemplateVariableMap insertKey !mExtractedValueName !mType !cppName]
             end
@@ -177,7 +177,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
         end
       else
         error mValue
-        :"'" + mValue + "' is not a constant of '@" + [[switchExpression mResultType] key] + "' enumeration type"
+        :"'" + mValue + "' is not a constant of '@" + [switchExpression.mResultType key] + "' enumeration type"
       end
       firstConstant = false
     end
@@ -251,7 +251,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
 #  end
 #---
   ioInstructionList += !@templateInstructionSwitchForGeneration.new {
-    ![switchExpression mResultType]
+    !switchExpression.mResultType
     !switchExpression
     !templateInstructionSwitchBranchList
   }
@@ -295,13 +295,13 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
   ]
 #---
   ioGeneratedCode += "switch (" + switchVarCppName + ".enumValue ()) {\n"
-  ioGeneratedCode += "case GALGAS_" + [[self.mSwitchExpression mResultType] identifierRepresentation] + "::kNotBuilt :\n"
+  ioGeneratedCode += "case GALGAS_" + [self.mSwitchExpression.mResultType identifierRepresentation] + "::kNotBuilt :\n"
   ioGeneratedCode += "  break ;\n"
 #---
   for (mConstantList mExtractedAssociatedValuesForGeneration mEndOfBranchLocationIndex mInstructionList) in self.mTemplateInstructionSwitchBranchList do
     for (mValue) in mConstantList do
-      ioGeneratedCode += "case GALGAS_" + [[self.mSwitchExpression mResultType] identifierRepresentation]
-                      + "::kEnum_" + [[mValue string] identifierRepresentation] + " :\n"
+      ioGeneratedCode += "case GALGAS_" + [self.mSwitchExpression.mResultType identifierRepresentation]
+                      + "::kEnum_" + [mValue.string identifierRepresentation] + " :\n"
     end
     [!?ioGeneratedCode incIndentation !2]
     ioGeneratedCode += "{\n"

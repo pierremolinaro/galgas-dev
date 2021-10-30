@@ -79,16 +79,16 @@ override method @andExpressionAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    ![leftExpression mResultType]
+    !leftExpression.mResultType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = leftExpression.mResultType
   checkDiadicOperator (
     !leftType
-    ![rightExpression mResultType]
+    !rightExpression.mResultType
     ![[leftType mHandledOperatorFlags] infixAndOperator]
     !"&"
     !self.mOperatorLocation
@@ -135,16 +135,16 @@ override method @andShortExpressionAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    ![leftExpression mResultType]
+    !leftExpression.mResultType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = leftExpression.mResultType
   checkDiadicOperator (
     !leftType
-    ![rightExpression mResultType]
+    !rightExpression.mResultType
     ![[leftType mHandledOperatorFlags] infixAndOperator]
     !"&"
     !self.mOperatorLocation
@@ -175,7 +175,7 @@ override method @andShortExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [self.mLeftExpression.mResultType addHeaderFileName !?ioInclusionSet]
 #--- Left operand
   [self.mLeftExpression generateExpression
     !?ioGeneratedCode

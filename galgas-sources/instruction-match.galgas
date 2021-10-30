@@ -162,7 +162,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
     ]
     expressionList += !matchedExpression
   #--- Check expression is an enum or a class instance
-    let type = [matchedExpression mResultType]
+    let type = matchedExpression.mResultType
     if (not [[type mTypeKindEnum] isClassType]) & ([type mTypeKindEnum] != @typeKindEnum. enumType) then
       error mEndOfExpressionLocation
       :"this expression is an instance of '@" + [type key] + "' type, but this type is neither an enumeration, neither a class"
@@ -177,7 +177,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
     var matchListForGeneration = @matchListForGeneration {}
     if [expressionList length] == [mMatchEntryList length] then
       for (mExpression) in expressionList, (mIsType mTypeNameOrEnumerationConstantName mLocalConstantName) in mMatchEntryList do
-        let type = [mExpression mResultType]
+        let type = mExpression.mResultType
         if [[type mTypeKindEnum] isClassType] then
           if mIsType then
             let namedType = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeNameOrEnumerationConstantName}
@@ -191,26 +191,26 @@ override method @matchInstructionAST analyzeSemanticInstruction
             if not found then
               error mTypeNameOrEnumerationConstantName
               :"the '@" + mTypeNameOrEnumerationConstantName + "' is not a descendant of the '@" + [type key] + "' type of the cast expression"
-            elsif [[mLocalConstantName string] length] > 0 then
+            elsif [mLocalConstantName.string length] > 0 then
               localConstantList += !t !mLocalConstantName !false !"match_instruction_constant_name"
             end
           else
             error mTypeNameOrEnumerationConstantName
-            :"a type that inherits from '@" + [[mExpression mResultType] key] + "' class is expected here"
+            :"a type that inherits from '@" + [mExpression.mResultType key] + "' class is expected here"
           end
-          matchListForGeneration += !true ![mTypeNameOrEnumerationConstantName string] ![mLocalConstantName string]
+          matchListForGeneration += !true !mTypeNameOrEnumerationConstantName.string !mLocalConstantName.string
         elsif [type mTypeKindEnum] == @typeKindEnum. enumType then
           if mIsType then
             error mTypeNameOrEnumerationConstantName
-            :"a constant of the '@" + [[mExpression mResultType] key] + "' enumeration type is expected here"          
-          elsif not [[type mEnumConstantMap] hasKey ![mTypeNameOrEnumerationConstantName string]] then
+            :"a constant of the '@" + [mExpression.mResultType key] + "' enumeration type is expected here"          
+          elsif not [[type mEnumConstantMap] hasKey !mTypeNameOrEnumerationConstantName.string] then
             error mTypeNameOrEnumerationConstantName
-            :"the '" + mTypeNameOrEnumerationConstantName + "' symbol is not a constant of the '@" + [[mExpression mResultType] key] + "' enumeration type"
+            :"the '" + mTypeNameOrEnumerationConstantName + "' symbol is not a constant of the '@" + [mExpression.mResultType key] + "' enumeration type"
           end
           matchListForGeneration +=
             !false
-            ![mTypeNameOrEnumerationConstantName string]
-            ![[mExpression mResultType] key]
+            !mTypeNameOrEnumerationConstantName.string
+            ![mExpression.mResultType key]
         else
           error mTypeNameOrEnumerationConstantName: "internal error"
         end

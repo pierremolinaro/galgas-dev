@@ -14,10 +14,10 @@ grammar assignment_language_grammar
 #--- Semantic analysis
   var @variableMap variableMap = .emptyMap
   var @instructionListForGeneration instructionListForGeneration = {}
-  for (mInstruction) in  [programAST mProgramInstructionList] do
+  for (mInstruction) in  programAST.mProgramInstructionList do
     [mInstruction semanticAnalysis !?variableMap !?instructionListForGeneration]
   end
-  [variableMap checkAutomatonStates ![programAST mEndOfSourceFile]]
+  [variableMap checkAutomatonStates !programAST.mEndOfSourceFile]
 #--- Code generation
   generateCfile (
     ![inSourceFile stringByDeletingPathExtension] + ".c"

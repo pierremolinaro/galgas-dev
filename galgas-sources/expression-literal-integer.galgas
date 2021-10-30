@@ -120,8 +120,8 @@ override method @literalUInt64ExpressionAST analyzeSemanticExpression
 {
   outExpression = @literalUInt64ExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mUInt64Type
-    ![self.mValue location]
-    ![self.mValue uint64]
+    !self.mValue.location
+    !self.mValue.uint64
   }
 }
 
@@ -142,7 +142,7 @@ override method @literalSIntExpressionAST analyzeSemanticExpression
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  outExpression = @literalSIntExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mSIntType ![self.mValue location] ![self.mValue sint]}
+  outExpression = @literalSIntExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mSIntType !self.mValue.location !self.mValue.sint}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -164,8 +164,8 @@ override method @literalSInt64ExpressionAST analyzeSemanticExpression
 {
   outExpression = @literalSInt64ExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mSInt64Type
-    ![self.mValue location]
-    ![self.mValue sint64]
+    !self.mValue.location
+    !self.mValue.sint64
   }
 }
 
@@ -188,8 +188,8 @@ override method @literalBigIntExpressionAST analyzeSemanticExpression
 {
   outExpression = @literalBigIntExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mBigIntType
-    ![self.mValue location]
-    ![self.mValue bigint]
+    !self.mValue.location
+    !self.mValue.bigint
   }
 }
 

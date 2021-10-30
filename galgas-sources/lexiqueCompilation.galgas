@@ -160,7 +160,7 @@ abstract method @lexicalSendDefaultActionAST checkLexicalDefaultAction
 
 override method @lexicalSendTerminalByDefaultAST checkLexicalDefaultAction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
-  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !self.mDefaultSentTerminal ?*]
+  [ioLexiqueAnalysisContext.mTerminalMap searchKey !self.mDefaultSentTerminal ?*]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -197,7 +197,7 @@ override method @lexicalCharacterMatchAST checkLexicalExpression
 override method @lexicalCharacterSetMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 {
-  if not [ioLexiqueAnalysisContext.mExternUnicodeTestFunctions hasKey ![self.mCharacterSetName string]] then
+  if not [ioLexiqueAnalysisContext.mExternUnicodeTestFunctions hasKey !self.mCharacterSetName.string] then
     error self.mCharacterSetName : "undefined test function" fixit { replace ioLexiqueAnalysisContext.mExternUnicodeTestFunctions }
   end
 }
@@ -212,14 +212,14 @@ override method @lexicalCharacterIntervalMatchAST checkLexicalExpression
 
 override method @lexicalStringMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
-  ioLexiqueAnalysisContext.mUnicodeStringToGenerate += ![self.mString string]
+  ioLexiqueAnalysisContext.mUnicodeStringToGenerate += !self.mString.string
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalStringNotMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
-  ioLexiqueAnalysisContext.mUnicodeStringToGenerate += ![self.mString string]
+  ioLexiqueAnalysisContext.mUnicodeStringToGenerate += !self.mString.string
   [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !self.mErrorMessage.string]
 }
 
@@ -238,7 +238,7 @@ override method @lexicalAttributeInputArgumentAST checkLexicalFunctionCallArgume
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 #--- Check attribute definition
   var @lexicalTypeEnum attributeLexicalType
-  [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey
+  [ioLexiqueAnalysisContext.mLexicalAttributeMap searchKey
     !self.mAttributeName
     ?attributeLexicalType
   ]
@@ -303,7 +303,7 @@ override method @lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgumen
   var @lexicalFunctionFormalArgumentList lexicalFormalTypeList
   var @lexicalTypeEnum returnedLexicalFormalType
   var @string replacementFunctionName
-  [[ioLexiqueAnalysisContext mLexicalFunctionMap] searchKey
+  [ioLexiqueAnalysisContext.mLexicalFunctionMap searchKey
     !self.mFunctionName
     ?lexicalFormalTypeList
     ?returnedLexicalFormalType
@@ -353,7 +353,7 @@ override method @lexicalAttributeInputArgumentAST checkLexicalRoutineCallArgumen
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 #--- Check attribute definition
   var @lexicalTypeEnum attributeLexicalType
-  [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey
+  [ioLexiqueAnalysisContext.mLexicalAttributeMap searchKey
     !self.mAttributeName
     ?attributeLexicalType
   ]
@@ -418,7 +418,7 @@ override method @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
   var @lexicalFunctionFormalArgumentList lexicalFormalTypeList
   var @lexicalTypeEnum returnedLexicalFormalType
   var @string replacementFunctionName
-  [[ioLexiqueAnalysisContext mLexicalFunctionMap] searchKey
+  [ioLexiqueAnalysisContext.mLexicalFunctionMap searchKey
     !self.mFunctionName
     ?lexicalFormalTypeList
     ?returnedLexicalFormalType
@@ -470,7 +470,7 @@ override method @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallA
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 #--- Check attribute definition
   var @lexicalTypeEnum attributeLexicalType
-  [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey
+  [ioLexiqueAnalysisContext.mLexicalAttributeMap searchKey
     !self.mAttributeName
     ?attributeLexicalType
   ]
@@ -520,7 +520,7 @@ override method @lexicalStructuredSendInstructionAST checkLexicalInstruction
   ?!@lexicalTagMap unused ioTagMap {
   for (mAttributeName mSearchListName) in self.mLexicalSendSearchList do
     [!?ioLexiqueAnalysisContext.mLexicalTokenListMap setMShouldBeGeneratedForKey !true !mSearchListName.string]
-    [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey !mAttributeName ?*]
+    [ioLexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?*]
   end
   [self.mLexicalSendDefaultAction checkLexicalDefaultAction !?ioLexiqueAnalysisContext]
 }
@@ -530,7 +530,7 @@ override method @lexicalStructuredSendInstructionAST checkLexicalInstruction
 override method @lexicalSimpleSendInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap {
-  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !self.mSentTerminal ?*]
+  [ioLexiqueAnalysisContext.mTerminalMap searchKey !self.mSentTerminal ?*]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -576,7 +576,7 @@ override method @lexicalRoutineInstructionAST checkLexicalInstruction
   ?!@lexicalTagMap unused ioTagMap {
   var @lexicalRoutineFormalArgumentList lexicalRoutineFormalArgumentList
   var @stringlist routineErrorMessageList
-  [[ioLexiqueAnalysisContext mLexicalRoutineMessageMap] searchKey
+  [ioLexiqueAnalysisContext.mLexicalRoutineMessageMap searchKey
     !self.mRoutineName
     ?lexicalRoutineFormalArgumentList
     ?routineErrorMessageList
@@ -625,7 +625,7 @@ override method @lexicalRewindInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap ioTagMap {
   [ioTagMap searchKey !self.mLexicalTagName]
-  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !self.mTerminalName ?*]
+  [ioLexiqueAnalysisContext.mTerminalMap searchKey !self.mTerminalName ?*]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -633,7 +633,7 @@ override method @lexicalRewindInstructionAST checkLexicalInstruction
 override method @lexicalDropInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext  ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap {
-  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !self.mTerminalName ?*]
+  [ioLexiqueAnalysisContext.mTerminalMap searchKey !self.mTerminalName ?*]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -672,7 +672,7 @@ abstract method @abstractLexicalRuleAST checkLexicalRule
 
 override method @lexicalImplicitRuleAST checkLexicalRule
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
-  [[ioLexiqueAnalysisContext mLexicalTokenListMap] searchKey !self.mListName ?* ?* ?*]
+  [ioLexiqueAnalysisContext.mLexicalTokenListMap searchKey !self.mListName ?* ?* ?*]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

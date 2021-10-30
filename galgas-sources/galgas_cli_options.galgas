@@ -59,6 +59,8 @@ option galgas_cli_options {
   @bool errorOldStylePropertyDeclaration : '\0', "error-old-style-property-declaration" -> "error on old style property declaration"
 
   @bool errorOldStyleLocalVarDeclaration : '\0', "error-old-style-local-var-declaration" -> "error on old style local variable declaration"
+
+  @bool errorPropertyGetterCall : '\0', "error-property-getter-call" -> "error on calling property getter (instead of dot notation)"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

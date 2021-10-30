@@ -170,7 +170,7 @@ syntax galgas3GuiComponentSyntax (galgas3Scanner) {
       var value =@lstring.new{!"" !@location.here}
       repeat
         $"string"$ ?var @lstring v
-        value = @lstring.new {![value string] + [v string] ![v location]}
+        value = @lstring.new {!value.string + v.string !v.location}
       while
       end
       compoundAttributes += !key !name !value
@@ -201,7 +201,7 @@ syntax galgas3GuiComponentSyntax (galgas3Scanner) {
     var mValue = @lstring.new {!"" !.here}
     repeat
       $"string"$ ?var @lstring value
-      mValue = @lstring.new {![mValue string] + [value string] ![value location]}
+      mValue = @lstring.new {!mValue.string + value.string !value.location}
     while
     end
     ioSimpleGlobalAttributes += !mKey !mValue
@@ -303,7 +303,7 @@ private proc guiComponentSemanticAnalysis
   #--- Check labels
     for (mLeadingCharacterStrippedCount mTerminalList mLocation) in mLabels do
       for (mTerminal mDisplayFlags) in mTerminalList do
-        if not [terminalSymbolSet hasKey ![mTerminal string]] then
+        if not [terminalSymbolSet hasKey !mTerminal.string] then
           error mTerminal: "the '$"
             + mTerminal
             + "$' terminal symbol is not declared by the '"
@@ -315,10 +315,10 @@ private proc guiComponentSemanticAnalysis
   #--- Compound attributes
     var @textMacroList textMacroList = {}
     for (mKey mAttributeName mValue) in mCompoundAttributes do
-      if [mKey string] != "textMacro" then
+      if mKey.string != "textMacro" then
         error mKey: "for a compound attribute, only the 'textMacro' key is valid"
       else
-        textMacroList += ![mAttributeName string] ![mValue string]
+        textMacroList += !mAttributeName.string !mValue.string
       end
     end
   #--- Simple attributes
@@ -328,21 +328,21 @@ private proc guiComponentSemanticAnalysis
     var @string tabViewTitle = ""
     var @string blockComment = ""
     for (mKey mValue) in mSimpleAttributes do
-      if [mKey string] == "fileExtension" then
+      if mKey.string == "fileExtension" then
         [!?context.mExtensionMap insertKey !mValue !mLexiqueFileName.string !idx]
         hasAssociatedExtension = true
-      elsif [mKey string] == "title" then
+      elsif mKey.string == "title" then
         if hasTabViewTitle then
           error mKey: "the '" + mKey + "' key should be defined once"
         end
         hasTabViewTitle = true
-        tabViewTitle = [mValue string]
-      elsif [mKey string] == "blockComment" then
+        tabViewTitle = mValue.string
+      elsif mKey.string == "blockComment" then
         if hasBlockComment then
           error mKey: "the '" + mKey + "' key should be defined once"
         end
         hasBlockComment = true
-        blockComment = [mValue string]
+        blockComment = mValue.string
       else
         error mKey: "the '" + mKey + "' key is not valid (valid keys: 'blockComment,', 'fileExtension', 'title')"
       end

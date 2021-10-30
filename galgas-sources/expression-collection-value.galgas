@@ -192,7 +192,7 @@ override method @expressionCollectionValue analyze
     ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!inElementType ![expression mResultType] !self.mExpressionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (!inElementType !expression.mResultType !self.mExpressionLocation !?expression)
 #---
   ioCollectionValueElementListForGeneration += !@expressionCollectionValueForGeneration.new {!self.mExpressionLocation !expression}
 }
@@ -227,7 +227,7 @@ override method @expressionListCollectionValue analyze
         error expression.mActualSelector
           : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
-      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![exp mResultType] !self.mEndOfExpressionLocation !?exp)
+      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !self.mEndOfExpressionLocation !?exp)
       semanticExpressionListForGeneration += !exp
     end
     ioCollectionValueElementListForGeneration += !@expressionListCollectionForGeneration.new {

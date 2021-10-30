@@ -86,7 +86,7 @@ override method @functionCallExpressionAST analyzeSemanticExpression
         !?ioVariableMap
         ?@semanticExpressionForGeneration expression
       ]
-      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![expression mResultType] !mEndOfExpressionLocation !?expression)
+      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !expression.mResultType !mEndOfExpressionLocation !?expression)
       if mFormalSelector.string != mActualSelector.string then
         error mActualSelector : "the selector should be '!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "'"
       end
@@ -94,8 +94,8 @@ override method @functionCallExpressionAST analyzeSemanticExpression
     end
     outExpression = @functionCallExpressionForGeneration.new {
       !resultType
-      ![self.mFunctionName location]
-      ![self.mFunctionName string]
+      !self.mFunctionName.location
+      !self.mFunctionName.string
       !semanticExpressionListForGeneration}
   end
 }

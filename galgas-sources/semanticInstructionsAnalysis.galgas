@@ -169,7 +169,7 @@ override method @outputActualParameterAST checkAgainstFormalArgument
       ?@semanticExpressionForGeneration expression
     ]
   #--- Check effective expression type against formal argument type
-    checkAssignmentTypeWithImplicitGetterCall (!inFormalArgumentType ![expression mResultType] !self.mEndOfExpressionLocation !?expression)
+    checkAssignmentTypeWithImplicitGetterCall (!inFormalArgumentType !expression.mResultType !self.mEndOfExpressionLocation !?expression)
   #--- Generate actual parameter
     ioActualParameterListForGeneration += !@outputActualParameterForGeneration.new {
       !inFormalArgumentType
@@ -224,11 +224,11 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
     + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType key] + "'"
   end
 #--- Check for exclusive access
-  if [ioExclusiveVariableSet hasKey ![self.mOutputInputActualParameterName string]] then
+  if [ioExclusiveVariableSet hasKey !self.mOutputInputActualParameterName.string] then
     error self.mOutputInputActualParameterName
     :"this variable is already named as input or output/input effective parameter"
   end
-  ioExclusiveVariableSet += ![self.mOutputInputActualParameterName string]
+  ioExclusiveVariableSet += !self.mOutputInputActualParameterName.string
 #--- Generate actual parameter
   ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration.new {
     !parameterType
@@ -344,11 +344,11 @@ override method @inputActualExistingVariableParameterAST checkAgainstFormalArgum
     + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType key] + "'"
   end
 #--- Check for exclusive access
-  if [ioExclusiveVariableSet hasKey ![self.mInputActualParameterName string]] then
+  if [ioExclusiveVariableSet hasKey !self.mInputActualParameterName.string] then
     error self.mInputActualParameterName
     :"this variable is already named as input or output/input effective parameter"
   end
-  ioExclusiveVariableSet += ![self.mInputActualParameterName string]
+  ioExclusiveVariableSet += !self.mInputActualParameterName.string
 #--- Generate actual parameter
   ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
     !parameterType
@@ -385,7 +385,7 @@ override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
   else
     let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
     [propertyMap searchKey !self.mInputActualSelfPropertyName ?2* ?parameterType]
-    targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[self.mInputActualSelfPropertyName string] identifierRepresentation]
+    targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [self.mInputActualSelfPropertyName.string identifierRepresentation]
   end
 
 #  [!?ioVariableMap searchForWriteAccess
@@ -698,7 +698,7 @@ proc checkExpressionIsBoolean
   ?let @location inErrorLocation
   ?let @semanticExpressionForGeneration inExpression
   !@semanticExpressionForGeneration outExpression {
-  let expressionType = [inExpression mResultType]
+  let expressionType = inExpression.mResultType
 #--- Boolean type
   let boolType = inAnalysisContext.mPredefinedTypes.mBoolType
   if expressionType == boolType then

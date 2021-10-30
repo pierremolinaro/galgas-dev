@@ -158,15 +158,15 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     let type = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
   #--- Check named type is a descendant of receiver type
     var @unifiedTypeMap-entry t = type
-    var @bool found = t == [castExpression mResultType]
+    var @bool found = t == castExpression.mResultType
     loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
     while (not found) & not [[t mSuperType] isNull] do
       t = [t mSuperType]
-      found = t == [castExpression mResultType]
+      found = t == castExpression.mResultType
     end
     if not found then
       error mTypeName
-      :"the '@" + mTypeName + "' is not a descendant of the '@" + [[castExpression mResultType] key] + "' type of the cast expression"
+      :"the '@" + mTypeName + "' is not a descendant of the '@" + [castExpression.mResultType key] + "' type of the cast expression"
     end
   #--- Declare a local constant ?
     var @string localConstantName

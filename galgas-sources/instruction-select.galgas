@@ -175,19 +175,19 @@ override getter @selectInstructionForGeneration compareInstructionSyntaxSignatur
   cast inTestedInstruction
   case >= @selectInstructionForGeneration si :
     outOk = true
-    if outOk & ([self.mListOfSemanticInstructionListForGeneration length] != [[si mListOfSemanticInstructionListForGeneration] length]) then
-      error [si mInstructionLocation]
+    if outOk & ([self.mListOfSemanticInstructionListForGeneration length] != [si.mListOfSemanticInstructionListForGeneration length]) then
+      error si.mInstructionLocation
         :"syntax signature error; the reference 'select' instruction has "
         + [[self.mListOfSemanticInstructionListForGeneration length] string]
         + " 'while' branche(s), but this instruction has "
-        + [[[si mListOfSemanticInstructionListForGeneration] length] string]
+        + [[si.mListOfSemanticInstructionListForGeneration length] string]
       outOk = false
     end
-    for (ref_mInstructionList ref_mEndOfInstructionList) in self.mListOfSemanticInstructionListForGeneration, (test_mInstructionList test_mEndOfInstructionList) in [si mListOfSemanticInstructionListForGeneration] while outOk do
+    for (ref_mInstructionList ref_mEndOfInstructionList) in self.mListOfSemanticInstructionListForGeneration, (test_mInstructionList test_mEndOfInstructionList) in si.mListOfSemanticInstructionListForGeneration while outOk do
       outOk = compareSyntaxSignature (!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList)    
     end
   case >= @syntaxInstructionForGeneration si :
-    error [si mInstructionLocation]
+    error si.mInstructionLocation
       :"syntax signature error; the expected syntax instruction here is a 'select' instruction"
     outOk = false
   else

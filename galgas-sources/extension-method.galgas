@@ -61,11 +61,11 @@ override method @extensionMethodAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 {
-  let key = @lstring.new {!"extension method @" + self.mTypeName + " " + self.mExtensionMethodName ![self.mExtensionMethodName location]}
+  let key = @lstring.new {!"extension method @" + self.mTypeName + " " + self.mExtensionMethodName !self.mExtensionMethodName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName ![self.mTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName !self.mTypeName.location}]
 #---
-  if not [ioExtensionMethodMapForBuildingContext hasKey ![self.mTypeName string]] then
+  if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
     [!?ioExtensionMethodMapForBuildingContext insertKey
       ! self.mTypeName
       !{}
@@ -158,7 +158,7 @@ override method @extensionMethodAST semanticAnalysis
       !true # Generate Cpp header file
       !"method-" + [[selfType key] fileNameRepresentation] + "-" + [self.mExtensionMethodName fileNameRepresentation]
       !selfType
-      ![self.mExtensionMethodName string]
+      !self.mExtensionMethodName.string
       !implementedAsFunction
       !formalParameterListForGeneration
       ![selfType mAllTypedPropertyList]

@@ -89,7 +89,7 @@ override method @dictDeclarationAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
  {
-  let dictionary = @lstring.new {!"@" + self.mDictTypeName ![self.mDictTypeName location]}
+  let dictionary = @lstring.new {!"@" + self.mDictTypeName !self.mDictTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !dictionary !self]
   [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + self.mKeyTypeName !self.mKeyTypeName}]
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
@@ -180,7 +180,7 @@ override method @dictDeclarationAST enterInSemanticContext
     argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
     typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
-    enumerationDescriptor += !attributeTypeIndex ![mPropertyName string]
+    enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     insertMethodFormalArgumentList +=
       !if usesSelectorsInInsertAndSearch then mPropertyName else ["" nowhere] end
       !attributeTypeIndex
@@ -218,7 +218,7 @@ override method @dictDeclarationAST enterInSemanticContext
   ]
 #--- Enter "attributeForKey" getters
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
-    let accessorName = @lstring.new {![mPropertyName string] + "ForKey" ![mPropertyName location]}
+    let accessorName = @lstring.new {!mPropertyName.string + "ForKey" !mPropertyName.location}
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
       !accessorName
@@ -234,8 +234,8 @@ override method @dictDeclarationAST enterInSemanticContext
 #---------- Enter "set...Attribute...forKey" setters, and 'with' accessor
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     let accessorName = @lstring.new {
-      !"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "ForKey"
-      ![mPropertyName location]
+      !"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "ForKey"
+      !mPropertyName.location
     }
     [@unifiedTypeMap-entry makeEntry
       !?ioSemanticContext.mTypeMap
@@ -311,7 +311,7 @@ override method @dictDeclarationAST enterInSemanticContext
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc check_K_escapeCharacters ?@lstring inString {  #--- Check escape sequences : only %K or %%
-  for components in [[inString string] componentsSeparatedByString !"%%"] do
+  for components in [inString.string componentsSeparatedByString !"%%"] do
     var @stringlist explodedArray = [components.mValue componentsSeparatedByString !"%"]
     [!?explodedArray popFirst ?*]
     for (mValue) in explodedArray do
@@ -328,7 +328,7 @@ proc check_K_escapeCharacters ?@lstring inString {  #--- Check escape sequences 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc check_K_L_escapeCharacters ?@lstring inString {  #--- Check escape sequences : only %K, %L or %%
-  for components in [[inString string] componentsSeparatedByString !"%%"] do
+  for components in [inString.string componentsSeparatedByString !"%%"] do
     var @stringlist explodedArray = [components.mValue componentsSeparatedByString !"%"]
     [!?explodedArray popFirst ?*]
     for (mValue) in explodedArray do

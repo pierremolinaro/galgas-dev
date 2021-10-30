@@ -101,7 +101,7 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
   var @location inheritedDeclarationLocation = @location.here
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType mInstanceMethodMap] hasKey ![self.mOverridingExtensionMethodName string]] then
+    if [[superType mInstanceMethodMap] hasKey !self.mOverridingExtensionMethodName.string] then
       var @methodQualifier qualifier
       [[superType mInstanceMethodMap] searchKey !self.mOverridingExtensionMethodName ?* ?inheritedSignature ?inheritedDeclarationLocation ?* ?qualifier ?*]
       if qualifier <= @methodQualifier. isBasicFinal then
@@ -126,7 +126,7 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
   if baseTypeName != "" then
     checkMethodSignatures (
       !formalParameterListForGeneration
-      ![self.mOverridingExtensionMethodName location]
+      !self.mOverridingExtensionMethodName.location
       !inheritedSignature
       !inheritedDeclarationLocation
     )
@@ -152,7 +152,7 @@ override method @overridingAbstractExtensionMethodAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap
 {
   ioOverridingAbstractExtensionMethodListMap +=
-    ![self.mTypeName string]
+    !self.mTypeName.string
     !self.mOverridingExtensionMethodName
 }
 

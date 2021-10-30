@@ -66,9 +66,9 @@ override method @listmapDeclarationAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"@" + self.mListmapTypeName ![self.mListmapTypeName location]}
+  let key = @lstring.new {!"@" + self.mListmapTypeName !self.mListmapTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mAssociatedListTypeName ![self.mAssociatedListTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mAssociatedListTypeName !self.mAssociatedListTypeName.location}]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -130,7 +130,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !getterName: "listForKey"
     !"string"
     !"inKey"
-    !returnedTypeName:[self.mAssociatedListTypeName string]
+    !returnedTypeName:self.mAssociatedListTypeName.string
     !hasCompilerArgument:false
   )
 #--- Constructors
@@ -138,7 +138,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !?constructorMap
     !?ioSemanticContext.mTypeMap
     !name:"emptyMap"
-    !resultTypeName:[self.mListmapTypeName string]
+    !resultTypeName:self.mListmapTypeName.string
     !hasLexiqueArg:false
   )
 #--- Enumerator description

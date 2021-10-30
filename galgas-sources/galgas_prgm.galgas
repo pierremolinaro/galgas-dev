@@ -257,9 +257,9 @@ private proc compileProject
   end
 #---------------------------------- Compile program declarations
   if @uint.errorCount == 0 then
-    let projectVersionString = [[inProjectComponentAST.mMajorVersion uint] string]
-      + "." + [inProjectComponentAST.mMinorVersion uint]
-      + "." + [inProjectComponentAST.mRevisionVersion uint]
+    let projectVersionString = [inProjectComponentAST.mMajorVersion.uint string]
+      + "." + inProjectComponentAST.mMinorVersion.uint
+      + "." + inProjectComponentAST.mRevisionVersion.uint
     compileProgramComponentGalgas3 (
       !?usefulnessRootEntities
       !?usefulEntitiesGraph

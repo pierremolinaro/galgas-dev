@@ -60,11 +60,11 @@ override method @extensionSetterAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"extension setter @" + self.mTypeName + " " + self.mExtensionSetterName ![self.mExtensionSetterName location]}
+  let key = @lstring.new {!"extension setter @" + self.mTypeName + " " + self.mExtensionSetterName !self.mExtensionSetterName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName ![self.mTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName !self.mTypeName.location}]
 #---
-  if not [ioExtensionSetterMapForBuildingContext hasKey ![self.mTypeName string]] then
+  if not [ioExtensionSetterMapForBuildingContext hasKey !self.mTypeName.string] then
     [!?ioExtensionSetterMapForBuildingContext insertKey
       !self.mTypeName
       !{}
@@ -154,7 +154,7 @@ override method @extensionSetterAST semanticAnalysis
       !true # Generate Cpp header file
       !"setter-" + [[selfType key] fileNameRepresentation] + "-" + [self.mExtensionSetterName fileNameRepresentation]
       !selfType
-      ![self.mExtensionSetterName string]
+      !self.mExtensionSetterName.string
       !implementedAsFunction
       !formalParameterListForGeneration
       ![selfType mAllTypedPropertyList]
@@ -180,7 +180,7 @@ override method @extensionSetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap
 {
   ioExtensionSettierListMap +=
-    ![self.mTypeName string]
+    !self.mTypeName.string
     !self.mExtensionSetterName
 }
 

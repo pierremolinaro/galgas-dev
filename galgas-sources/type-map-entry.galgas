@@ -17,11 +17,11 @@ override method @mapEntryDeclarationAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"@" + self.mMapEntryTypeName ![self.mMapEntryTypeName location]}
+  let key = @lstring.new {!"@" + self.mMapEntryTypeName !self.mMapEntryTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge
     !key !@lstring.new {!"@" + self.mAssociatedMapTypeName
-    ![self.mAssociatedMapTypeName location]}
+    !self.mAssociatedMapTypeName.location}
   ]
 }
 
@@ -95,7 +95,7 @@ override method @mapEntryDeclarationAST enterInSemanticContext
     !?constructorMap
     !?ioSemanticContext.mTypeMap
     !name:"null"
-    !resultTypeName:[self.mMapEntryTypeName string]
+    !resultTypeName:self.mMapEntryTypeName.string
     !hasLexiqueArg:false
   )
 #--- Search methods of associated map as constructors
@@ -156,7 +156,7 @@ override method @mapEntryDeclarationAST enterInSemanticContext
 #--- Enter associated map attribute names as getters
   let @getterMap inheritedGetterMap = getterMap
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in mapTypedAttributeList do
-    if [inheritedGetterMap hasKey ![mPropertyName string]] then
+    if [inheritedGetterMap hasKey !mPropertyName.string] then
       var @string s = ""
       for (key) in [inheritedGetterMap keySet]
         do s += "'" + key + "'"

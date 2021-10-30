@@ -113,7 +113,7 @@ override method @classDeclarationAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 {
-  let key = @lstring.new {!"@" + self.mClassTypeName ![self.mClassTypeName location]}
+  let key = @lstring.new {!"@" + self.mClassTypeName !self.mClassTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   if self.mSuperClassName.string != "" then
     [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mSuperClassName !self.mSuperClassName.location}]
@@ -141,7 +141,7 @@ override method @classDeclarationAST enterInSemanticContext
 #--- Handle super class
   var @unifiedTypeMap-entry superClassIndex
   var @bool generateHeaderInSeparateFile
-  if [self.mSuperClassName string] == "" then
+  if self.mSuperClassName.string == "" then
     superClassIndex = @unifiedTypeMap-entry.null
     commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?getterMap )
     setterMap = {}
@@ -150,7 +150,7 @@ override method @classDeclarationAST enterInSemanticContext
     attributeMap = {}
     generateHeaderInSeparateFile = false
     for (mValue) in self.mClassFeatureList do
-      if [mValue string] == "generatedInSeparateFile" then
+      if mValue.string == "generatedInSeparateFile" then
         generateHeaderInSeparateFile = true
       end
     end
@@ -248,7 +248,7 @@ override method @classDeclarationAST enterInSemanticContext
       !isConstant
       !attributeTypeIndex
     ]
-    if [getterMap hasKey ![mPropertyName string]] then
+    if [getterMap hasKey !mPropertyName.string] then
       error mPropertyName: "'" + mPropertyName + "' is the name of a prefefined or a user defined getter"
     end
   end
@@ -276,11 +276,11 @@ override method @classDeclarationAST enterInSemanticContext
     let hasSetter = true # mIsPublic
     var hasSelector = false
     for (mValue) in mAttributeList do
-      if [mValue string] == "setter" then
+      if mValue.string == "setter" then
         warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
-      elsif [mValue string] == "nogetter" then
+      elsif mValue.string == "nogetter" then
         warning mValue : "obsolete attribute: use 'private' qualifier"
-      elsif [mValue string] == "selector" then
+      elsif mValue.string == "selector" then
         hasSelector = true
       end
     end
@@ -301,7 +301,7 @@ override method @classDeclarationAST enterInSemanticContext
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in currentClassTypedPropertyList do
     if mHasSetter then
       [!?setterMap insertKey
-        !@lstring.new {!"set"+ [[mPropertyName string] stringByCapitalizingFirstCharacter] !@location.here}
+        !@lstring.new {!"set"+ [mPropertyName.string stringByCapitalizingFirstCharacter] !@location.here}
         !@methodKind.definedAsMember
         !{!["" nowhere] !mPropertyTypeEntry !@formalArgumentPassingModeAST.argumentIn !mPropertyName.string}
         !false # No compiler argument
@@ -380,7 +380,7 @@ override method @classDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let classTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mClassTypeName)
   [!?ioUsefulEntitiesGraph addNode !classTypeNameForUsefulness !classTypeNameForUsefulness]
-  if [self.mSuperClassName string] != "" then
+  if self.mSuperClassName.string != "" then
     let superClassNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mSuperClassName)
     [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !superClassNameForUsefulness]
   end
@@ -415,7 +415,7 @@ override method @classDeclarationAST semanticAnalysis
     var @bool generatedInSeparateFileFeature = false
     if [self.mClassFeatureList length] > 0 then
       for (mValue) in self.mClassFeatureList do
-        if [mValue string] == "generatedInSeparateFile" then
+        if mValue.string == "generatedInSeparateFile" then
           if generatedInSeparateFileFeature then
             error mValue:"the 'generatedInSeparateFile' is already named"
           end
@@ -443,11 +443,11 @@ override method @classDeclarationAST semanticAnalysis
     let hasSetter = true # mIsPublic
     var hasSelector = false
     for (mValue) in mAttributeList do
-      if [mValue string] == "setter" then
+      if mValue.string == "setter" then
         warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
-      elsif [mValue string] == "nogetter" then
+      elsif mValue.string == "nogetter" then
         warning mValue : "obsolete attribute: use 'private' qualifier"
-      elsif [mValue string] == "selector" then
+      elsif mValue.string == "selector" then
         if hasSelector then
           error mValue : "the '%selector' attribute is already named"
         end

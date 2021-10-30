@@ -121,16 +121,16 @@ override method @orExpressionAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    ![leftExpression mResultType]
+    !leftExpression.mResultType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+let @unifiedTypeMap-entry leftType = leftExpression.mResultType
   checkDiadicOperator (
     !leftType
-    ![rightExpression mResultType]
+    !rightExpression.mResultType
     ![[leftType mHandledOperatorFlags] infixOrOperator]
     !"|"
     !self.mOperatorLocation
@@ -176,16 +176,16 @@ override method @orShortExpressionAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    ![leftExpression mResultType]
+    !leftExpression.mResultType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = leftExpression.mResultType
   checkDiadicOperator (
     !leftType
-    ![rightExpression mResultType]
+    !rightExpression.mResultType
     ![[leftType mHandledOperatorFlags] infixOrOperator]
     !"|"
     !self.mOperatorLocation
@@ -230,16 +230,16 @@ override method @xorExpressionAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    ![leftExpression mResultType]
+    !leftExpression.mResultType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = leftExpression.mResultType
   checkDiadicOperator (
     !leftType
-    ![rightExpression mResultType]
+    !rightExpression.mResultType
     ![[leftType mHandledOperatorFlags] infixXorOperator]
     !"^"
     !self.mOperatorLocation
@@ -293,17 +293,17 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = leftExpression.mResultType
   if [leftType key] != "uint" then
-    error [leftExpression mLocation] : "the left expression or '...' operator should an @uint"
+    error leftExpression.mLocation : "the left expression or '...' operator should an @uint"
   end
-  let @unifiedTypeMap-entry rightType = [rightExpression mResultType]
+  let @unifiedTypeMap-entry rightType = rightExpression.mResultType
   if [rightType key] != "uint" then
-    error [rightExpression mLocation] : "the right expression or '...' operator should an @uint"
+    error rightExpression.mLocation : "the right expression or '...' operator should an @uint"
   end
 #--- Generate expression
   outExpression = @closedSliceExpressionForGeneration.new {
-    !.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !.new {!"range" ![leftExpression mLocation]}}
+    !.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !.new {!"range" !leftExpression.mLocation}}
     !self.mOperatorLocation
     !leftExpression
     !rightExpression
@@ -348,17 +348,17 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = leftExpression.mResultType
   if [leftType key] != "uint" then
-    error [leftExpression mLocation] : "the left expression or '...' operator should an @uint"
+    error leftExpression.mLocation : "the left expression or '...' operator should an @uint"
   end
-  let @unifiedTypeMap-entry rightType = [rightExpression mResultType]
+  let @unifiedTypeMap-entry rightType = rightExpression.mResultType
   if [rightType key] != "uint" then
-    error [rightExpression mLocation] : "the right expression or '...' operator should an @uint"
+    error rightExpression.mLocation : "the right expression or '...' operator should an @uint"
   end
 #--- Generate expression
   outExpression = @openedSliceExpressionForGeneration.new {
-    !.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !.new {!"range" ![leftExpression mLocation]}}
+    !.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !.new {!"range" !leftExpression.mLocation}}
     !self.mOperatorLocation
     !leftExpression
     !rightExpression
@@ -396,7 +396,7 @@ override method @orShortExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [self.mLeftExpression.mResultType addHeaderFileName !?ioInclusionSet]
 #--- Left operand
   [self.mLeftExpression generateExpression
     !?ioGeneratedCode
@@ -432,7 +432,7 @@ override method @closedSliceExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [self.mLeftExpression.mResultType addHeaderFileName !?ioInclusionSet]
 #--- Left operand
   [self.mLeftExpression generateExpression
     !?ioGeneratedCode
@@ -464,7 +464,7 @@ override method @openedSliceExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 {
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [self.mLeftExpression.mResultType addHeaderFileName !?ioInclusionSet]
 #--- Left operand
   [self.mLeftExpression generateExpression
     !?ioGeneratedCode

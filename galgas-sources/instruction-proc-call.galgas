@@ -21,7 +21,7 @@ syntax extension galgas3InstructionsSyntax {
     <actual_parameter_list> ?let @actualParameterListAST actualParameterList
     $)$
     outInstruction = @procCallInstructionAST.new {
-      ![mRoutineName location]
+      !mRoutineName.location
       !mRoutineName
       !actualParameterList
     }
@@ -123,12 +123,12 @@ override method @procCallInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName
   end
 #--- Generate method call
-  ioGeneratedCode += "routine_" + [[self.mRoutineName string] identifierRepresentation] + " ("
+  ioGeneratedCode += "routine_" + [self.mRoutineName.string identifierRepresentation] + " ("
   for (mValue) in parameterCppNameList do
     ioGeneratedCode += mValue + ", "
   end
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  ioGeneratedCode +=  compilerCppName () + " " + [[self.mRoutineName location] commaSourceFile] + ") ;\n"
+  ioGeneratedCode +=  compilerCppName () + " " + [self.mRoutineName.location commaSourceFile] + ") ;\n"
   ioGeneratedCode += "}\n"
 }
 

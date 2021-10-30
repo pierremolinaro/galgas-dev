@@ -30,7 +30,7 @@ rule <Constant>
   var @luint cst
   $number$ ? cst
   outExpressionTree = @cConst.new { !cst}
-  outValue = [cst uint]
+  outValue = cst.uint
 }
 
 rule <Expression>

@@ -44,8 +44,8 @@ override method @literalCharExpressionAST analyzeSemanticExpression
 {
   outExpression = @literalCharExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mCharType
-    ![self.mCharacter location]
-    ![self.mCharacter char]
+    !self.mCharacter.location
+    !self.mCharacter.char
   }
 }
 

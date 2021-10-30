@@ -319,10 +319,10 @@ override method @sharedMapDeclarationAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 {
-  let key = @lstring.new {!"@" + self.mMapTypeName ![self.mMapTypeName location]}
+  let key = @lstring.new {!"@" + self.mMapTypeName !self.mMapTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
-    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName !mPropertyTypeName.location}]
   end
 }
 
@@ -373,7 +373,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !?constructorMap
     !?ioSemanticContext.mTypeMap
     !name:"emptyMap"
-    !resultTypeName:[self.mMapTypeName string]
+    !resultTypeName:self.mMapTypeName.string
     !hasLexiqueArg:false
   )
 #--- Readers
@@ -476,7 +476,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     let hasSetter = true
     let hasSelector = false
     typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
-    enumerationDescriptor += !attributeTypeIndex ![mPropertyName string]
+    enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     insertMethodFormalArgumentList +=
       !if usesSelectorsInInsertAndSearch then mPropertyName else ["" nowhere] end
       !attributeTypeIndex 
@@ -490,7 +490,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   end
 #-------------------------- Insert Modifiers
   for (mInsertMethodName mErrorMessage mShadowErrorMessage mInitialStateName) in self.mInsertMethodList do
-    if [setterMap hasKey ![mInsertMethodName string]] then
+    if [setterMap hasKey !mInsertMethodName.string] then
       error mInsertMethodName:"the '" + mInsertMethodName + "' insert method is already declared"
     else
       [!?setterMap insertOrReplace
@@ -535,7 +535,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
         !mSearchMethodName
         !@methodKind.definedAsMember
         !removeMethodFormalArgumentList
-        ![mSearchMethodName location]
+        !mSearchMethodName.location
         !true
         !@methodQualifier.isBasic
         !"" # No error message
@@ -602,7 +602,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   end
 #--- Enter "attributeForKey" getters
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
-    let accessorName = @lstring.new {![mPropertyName string] + "ForKey" ![mPropertyName location]}
+    let accessorName = @lstring.new {!mPropertyName.string + "ForKey" !mPropertyName.location}
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
       !accessorName
@@ -617,7 +617,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   end
 #---------- Enter "set...Attribute...forKey" setters, and 'with' accessor parameter
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
-    let accessorName = @lstring.new {!"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "ForKey" ![mPropertyName location]}
+    let accessorName = @lstring.new {!"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "ForKey" !mPropertyName.location}
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     var @formalParameterSignature accessorFormalArgumentList = {}
     accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
@@ -774,12 +774,12 @@ override method @sharedMapDeclarationAST semanticAnalysis
   var @stringset initialStateSet = {}
   for (mInsertMethodName mErrorMessage mShadowErrorMessage mInitialStateName) in self.mInsertMethodList do
     if [self.mMapStateList length] > 0 then
-      if [mInitialStateName string] == "" then
+      if mInitialStateName.string == "" then
         error mInsertMethodName: "the '" + mInsertMethodName + "' insert method should name an automaton state"
       else
-        initialStateSet += ![mInitialStateName string]
+        initialStateSet += !mInitialStateName.string
       end
-    elsif [mInitialStateName string] != "" then
+    elsif mInitialStateName.string != "" then
       error mInsertMethodName: "the '" + mInsertMethodName + "' insert method should not name an automaton state"
     end
   end
@@ -787,12 +787,12 @@ override method @sharedMapDeclarationAST semanticAnalysis
   var @mapAutomatonActionMap mapAutomatonActionMap = {}
   for (mSearchMethodName mErrorMessage mActionName mLocationAttribute) in self.mSearchMethodList do
     if [self.mMapStateList length] > 0 then
-      if [mActionName string] == "" then
+      if mActionName.string == "" then
         error mSearchMethodName: "the '" + mSearchMethodName + "' search method should name an automaton action"
-      elsif not [mapAutomatonActionMap hasKey ![mActionName string]] then
+      elsif not [mapAutomatonActionMap hasKey !mActionName.string] then
         [!?mapAutomatonActionMap insertKey !mActionName ![mapAutomatonActionMap count]]
       end
-    elsif [mActionName string] != "" then
+    elsif mActionName.string != "" then
       error mSearchMethodName: "the '" + mSearchMethodName + "' search method should not name an automaton action"
     end
   end
@@ -814,25 +814,25 @@ override method @sharedMapDeclarationAST semanticAnalysis
     var @mapStateTransitionSortedList mapStateTransitionSortedList = {}
     for (mActionName mTargetStateName mTransitionMessageKind mTransitionMessage) in mTransitionList do
       [mapAutomatonActionMap searchKey !mActionName ?let @uint actionIndex]
-      if [actionsForCurrentState hasKey ![mActionName string]] then
+      if [actionsForCurrentState hasKey !mActionName.string] then
         error mActionName : "the '" + mActionName + "' action is already used for this state"
       end
-      actionsForCurrentState += ![mActionName string]
+      actionsForCurrentState += !mActionName.string
       [mapAutomatonStateMap searchKey !mTargetStateName ?let @uint targetStateIndex ?*]
       mapStateTransitionSortedList +=
         !actionIndex
-        ![mActionName string]
+        !mActionName.string
         !targetStateIndex
-        ![mTargetStateName string]
+        !mTargetStateName.string
         !mTransitionMessageKind
-        ![mTransitionMessage string]
+        !mTransitionMessage.string
     end
     [mapAutomatonStateMap searchKey !mStateName ?let @uint stateIndex ?*]
     mapStateSortedList +=
       !stateIndex
-      ![mStateName string]
+      !mStateName.string
       !mStateMessageKind
-      ![mStateMessage string]
+      !mStateMessage.string
       !mapStateTransitionSortedList
     let @stringset missingActions = allActions - actionsForCurrentState
     if [missingActions count] > 0 then
@@ -850,10 +850,10 @@ override method @sharedMapDeclarationAST semanticAnalysis
   loop ([self.mMapStateList length] + 1) while progress do
     progress = false
     for (mStateName mStateMessageKind mStateMessage mTransitionList) in self.mMapStateList do
-      if [accessibleStates hasKey ![mStateName string]] then
+      if [accessibleStates hasKey !mStateName.string] then
         for (mActionName mTargetStateName mTransitionMessageKind mTransitionMessage) in mTransitionList do
-          if not [accessibleStates hasKey ![mTargetStateName string]] then
-            accessibleStates += ![mTargetStateName string]
+          if not [accessibleStates hasKey !mTargetStateName.string] then
+            accessibleStates += !mTargetStateName.string
             progress = true
           end
         end
@@ -875,16 +875,16 @@ override method @sharedMapDeclarationAST semanticAnalysis
   var @stringset accessibilityGraph = {}
   for mapAutomatonState in mapAutomatonStateMap do
     var @stringset reachableStates = {}
-    reachableStates += ![mapAutomatonState.lkey string]
+    reachableStates += !mapAutomatonState.lkey.string
     progress = true
     loop ([mapAutomatonStateMap count] + 1) while progress do
       progress = false
       for (mStateName mStateMessageKind mStateMessage mTransitionList) in self.mMapStateList do
-        if [reachableStates hasKey ![mStateName string]] then
+        if [reachableStates hasKey !mStateName.string] then
           for (mActionName mTargetStateName mTransitionMessageKind mTransitionMessage) in mTransitionList do
-            if not [reachableStates hasKey ![mTargetStateName string]] then
-              reachableStates += ![mTargetStateName string]
-              accessibilityGraph += ![mapAutomatonState.lkey string] + ":" + [mTargetStateName string]
+            if not [reachableStates hasKey !mTargetStateName.string] then
+              reachableStates += !mTargetStateName.string
+              accessibilityGraph += !mapAutomatonState.lkey.string + ":" + mTargetStateName.string
               progress = true
             end
           end
@@ -892,8 +892,8 @@ override method @sharedMapDeclarationAST semanticAnalysis
       end
     end
     for (key) in reachableStates do
-      if [mapAutomatonState.lkey string] != key then
-        neededAssociations += ![mapAutomatonState.lkey string] + ":" + key
+      if mapAutomatonState.lkey.string != key then
+        neededAssociations += !mapAutomatonState.lkey.string + ":" + key
       end
     end
   end
@@ -906,7 +906,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
     for (mLeftState mRightState mResultingState mMessageKind mTransitionMessage) in mMapOverrideBlockDescriptor1AST do
       [mapAutomatonStateMap searchKey !mLeftState ?let startStateNameIndex ?*]
       [mapAutomatonStateMap searchKey !mRightState ?let currentStateNameIndex ?*]
-      let @string association = [mLeftState string] + ":" + [mRightState string]
+      let @string association = mLeftState.string + ":" + mRightState.string
       if not [neededAssociations hasKey !association] then
         warning mRightState :"the '" + association + "' association is useless"
       end
@@ -916,10 +916,10 @@ override method @sharedMapDeclarationAST semanticAnalysis
       end
       handledAssociations += !association
       [mapAutomatonStateMap searchKey !mResultingState ?let finalStateNameIndex ?*]
-      if [mLeftState string] != [mResultingState string] then
-        neededCombinaisons += ![mLeftState string] + ":" + [mResultingState string]
-        neededCombinaisons += ![mResultingState string] + ":" + [mLeftState string]
-        if not [accessibilityGraph hasKey ![mLeftState string] + ":" + [mRightState string]] then
+      if mLeftState.string != mResultingState.string then
+        neededCombinaisons += !mLeftState.string + ":" + mResultingState.string
+        neededCombinaisons += !mResultingState.string + ":" + mLeftState.string
+        if not [accessibilityGraph hasKey !mLeftState.string + ":" + mRightState.string] then
           error mResultingState
           : "the '" + mResultingState + "' state is not reachable from '" + mLeftState + "' state"
         end
@@ -927,13 +927,13 @@ override method @sharedMapDeclarationAST semanticAnalysis
       check_K_escapeCharacters (!mTransitionMessage )
       branchBehaviourSortedListForMapOverride1 +=
         !startStateNameIndex
-        ![mLeftState string]
+        !mLeftState.string
         !currentStateNameIndex
-        ![mRightState string]
+        !mRightState.string
         !finalStateNameIndex
-        ![mResultingState string]
+        !mResultingState.string
         !mMessageKind
-        ![mTransitionMessage string]
+        !mTransitionMessage.string
     end
     var @stringset forgottenAssociations = neededAssociations - handledAssociations
     if [forgottenAssociations count] > 0 then
@@ -948,7 +948,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
     for (mLeftState mRightState mResultingState mMessageKind mTransitionMessage) in mMapOverrideBlockDescriptor2AST do
       [mapAutomatonStateMap searchKey !mLeftState ?let leftStateIndex ?*]
       [mapAutomatonStateMap searchKey !mRightState ?let rightStateIndex ?*]
-      let @string combinaison = [mLeftState string] + ":" + [mRightState string]
+      let @string combinaison = mLeftState.string + ":" + mRightState.string
       if not [neededCombinaisons hasKey !combinaison] then
         error mRightState
         :"the '" + mLeftState + ":" + mRightState + "' combinaison is useless"
@@ -959,34 +959,34 @@ override method @sharedMapDeclarationAST semanticAnalysis
       end
       definedCombinaisons += !combinaison
       [mapAutomatonStateMap searchKey !mResultingState ?let resultingStateNameIndex ?*]
-      if ([mLeftState string] != [mResultingState string])
-       & ([mRightState string] != [mResultingState string])
-       & not [accessibilityGraph hasKey ![mLeftState string] + ":" + [mResultingState string]] then
+      if (mLeftState.string != mResultingState.string)
+       & (mRightState.string != mResultingState.string)
+       & not [accessibilityGraph hasKey !mLeftState.string + ":" + mResultingState.string] then
         error mResultingState
         :"the '" + mResultingState + "' state cannot be reached from the '" + mResultingState + "' state"
       end
       check_K_escapeCharacters ( !mTransitionMessage )
       if mMessageKind == @mapAutomatonMessageKind.noMessage then
-        definedCombinaisons += ![mRightState string] + ":" + [mLeftState string]
+        definedCombinaisons += !mRightState.string + ":" + mLeftState.string
         branchBehaviourSortedListForMapOverride2 +=
           !rightStateIndex
-          ![mRightState string]
+          !mRightState.string
           !leftStateIndex
-          ![mLeftState string]
+          !mLeftState.string
           !resultingStateNameIndex
-          ![mResultingState string]
+          !mResultingState.string
           !mMessageKind
-          ![mTransitionMessage string]
+          !mTransitionMessage.string
       end
       branchBehaviourSortedListForMapOverride2 +=
         !leftStateIndex
-        ![mLeftState string]
+        !mLeftState.string
         !rightStateIndex
-        ![mRightState string]
+        !mRightState.string
         !resultingStateNameIndex
-        ![mResultingState string]
+        !mResultingState.string
         !mMessageKind
-        ![mTransitionMessage string]
+        !mTransitionMessage.string
     end
     if [forgottenAssociations count] == 0 then # Check only if all associations are defined
       var @stringset forgottenCombinaisons = neededCombinaisons - definedCombinaisons
@@ -999,7 +999,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
       end
     end
     mapOverrideList +=
-      ![mOverrideBlockName string]
+      !mOverrideBlockName.string
       !branchBehaviourSortedListForMapOverride1
       !branchBehaviourSortedListForMapOverride2
   end
@@ -1024,7 +1024,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
   for insertMethod in self.mInsertMethodList do
     [!?insertMethodMap insertKey !insertMethod.mInsertMethodName]
   #--- Check error message escape sequences : only %K, %L or %%
-    for messageComponent in [[insertMethod.mErrorMessage string] componentsSeparatedByString !"%%"] do
+    for messageComponent in [insertMethod.mErrorMessage.string componentsSeparatedByString !"%%"] do
       var @stringlist explodedArray = [messageComponent.mValue componentsSeparatedByString !"%"]
       [!?explodedArray popFirst ?*]
       for (mValue) in explodedArray do
@@ -1037,7 +1037,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
       end
     end
   #--- Check shadow error message escape sequences : only %K, %L or %%
-    for shadowMessageComponent in [[insertMethod.mShadowErrorMessage string] componentsSeparatedByString !"%%"] do
+    for shadowMessageComponent in [insertMethod.mShadowErrorMessage.string componentsSeparatedByString !"%%"] do
       var @stringlist explodedArray = [shadowMessageComponent.mValue componentsSeparatedByString !"%"]
       [!?explodedArray popFirst ?*]
       for component in explodedArray do
@@ -1059,7 +1059,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
       [!?searchMethodMap insertKey !searchMethod.mSearchMethodName]
     end
   #--- Check error message escape sequences : only %K or %%
-    for errorMessageComponent in [[searchMethod.mErrorMessage string] componentsSeparatedByString !"%%"] do
+    for errorMessageComponent in [searchMethod.mErrorMessage.string componentsSeparatedByString !"%%"] do
       var @stringlist explodedArray = [errorMessageComponent.mValue componentsSeparatedByString !"%"]
       [!?explodedArray popFirst ?*]
       for component in explodedArray do

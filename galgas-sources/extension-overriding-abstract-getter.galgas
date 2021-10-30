@@ -111,7 +111,7 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
   var @location inheritedDeclarationLocation = @location.here
   loop ([inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType mGetterMap] hasKey ![self.mAbstractExtensionGetterName string]] then
+    if [[superType mGetterMap] hasKey !self.mAbstractExtensionGetterName.string] then
       [[superType mGetterMap] searchKey
         !self.mAbstractExtensionGetterName
         ?*
@@ -138,14 +138,14 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
       formalParameterListForGeneration +=
         !mFormalSelector
         !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
-        ![mFormalArgumentName string]
+        !mFormalArgumentName.string
         !mFormalArgumentName
         !mIsConstant
     end
     checkGetterSignatures (
       !formalParameterListForGeneration
       !returnType
-      ![self.mAbstractExtensionGetterName location]
+      !self.mAbstractExtensionGetterName.location
       !inheritedSignature
       !inheritedReturnType
       !inheritedDeclarationLocation
@@ -171,7 +171,7 @@ override method @overridingAbstractExtensionGetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap ioOverridingAbstractExtensionGetterListMap {
   ioOverridingAbstractExtensionGetterListMap +=
-    ![self.mTypeName string]
+    !self.mTypeName.string
     !self.mAbstractExtensionGetterName
 }
 

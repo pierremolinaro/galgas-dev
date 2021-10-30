@@ -73,7 +73,7 @@ syntax galgas3OptionComponentSyntax (galgas3Scanner) {
         optionDefaultValueKind = @optionDefaultValueEnumAST. stringDefaultValue
       or
         $uint32$ ?var  @luint v
-        defaultValue = @lstring.new {![[v uint] string] ![v location]}
+        defaultValue = @lstring.new {![v.uint string] !v.location}
         optionDefaultValueKind = @optionDefaultValueEnumAST. unsignedDefaultValue
       end
     end
@@ -120,48 +120,48 @@ override method @optionComponentDeclarationAST enterInSemanticContext
   var @commandLineOptionMap stringListOptionMap = {}
   var optionNameSet = @stringset.emptySet
   for (mOptionTypeName mOptionInternalName mOptionInvocationLetter mOptionInvocationString mOptionComment mOptionDefaultValue mOptionDefaultValueKind) in self.mOptions do
-    if [optionNameSet hasKey ![mOptionInternalName string]] then
-      error mOptionInternalName: "the '" + [mOptionInternalName string] + "' command line option has been already declared"
-    elsif [mOptionTypeName string] == "bool" then
+    if [optionNameSet hasKey !mOptionInternalName.string] then
+      error mOptionInternalName: "the '" + mOptionInternalName.string + "' command line option has been already declared"
+    elsif mOptionTypeName.string == "bool" then
       [!?boolOptionMap insertKey
         !mOptionInternalName
-        ![mOptionInvocationLetter char]
-        ![mOptionInvocationString string]
-        ![mOptionComment string]
+        !mOptionInvocationLetter.char
+        !mOptionInvocationString.string
+        !mOptionComment.string
         !"false"
       ]
       if mOptionDefaultValueKind != @optionDefaultValueEnumAST. noDefaultValue then
         error mOptionDefaultValue:"an @bool option cannot have a default value (default value is always false)"      
       end
-    elsif [mOptionTypeName string] == "uint" then
+    elsif mOptionTypeName.string == "uint" then
       [!?uintOptionMap insertKey
         !mOptionInternalName
-        ![mOptionInvocationLetter char]
-        ![mOptionInvocationString string]
-        ![mOptionComment string]
-        !if [mOptionDefaultValue string] == "" then "0" else [mOptionDefaultValue string] end
+        !mOptionInvocationLetter.char
+        !mOptionInvocationString.string
+        !mOptionComment.string
+        !if mOptionDefaultValue.string == "" then "0" else mOptionDefaultValue.string end
       ]
       if mOptionDefaultValueKind == @optionDefaultValueEnumAST. stringDefaultValue then
         error mOptionDefaultValue:"an @uint option default value cannot be an @string value"      
       end
-    elsif [mOptionTypeName string] == "string" then
+    elsif mOptionTypeName.string == "string" then
       [!?stringOptionMap insertKey
         !mOptionInternalName
-        ![mOptionInvocationLetter char]
-        ![mOptionInvocationString string]
-        ![mOptionComment string]
-        ![mOptionDefaultValue string]
+        !mOptionInvocationLetter.char
+        !mOptionInvocationString.string
+        !mOptionComment.string
+        !mOptionDefaultValue.string
       ]
       if mOptionDefaultValueKind == @optionDefaultValueEnumAST. unsignedDefaultValue then
         error mOptionDefaultValue:"an @string option default value cannot be an @uint value"      
       end
-    elsif [mOptionTypeName string] == "stringlist" then
+    elsif mOptionTypeName.string == "stringlist" then
       [!?stringListOptionMap insertKey
         !mOptionInternalName
-        ![mOptionInvocationLetter char]
-        ![mOptionInvocationString string]
-        ![mOptionComment string]
-        ![mOptionDefaultValue string]
+        !mOptionInvocationLetter.char
+        !mOptionInvocationString.string
+        !mOptionComment.string
+        !mOptionDefaultValue.string
       ]
       if mOptionDefaultValueKind != .noDefaultValue then
         error mOptionDefaultValue:"an @stringlist option cannot accept default value"      
@@ -169,7 +169,7 @@ override method @optionComponentDeclarationAST enterInSemanticContext
     else
       error mOptionTypeName: "only the @bool, @uint or @string types are allowed here"
     end
-    optionNameSet += ![mOptionInternalName string]
+    optionNameSet += !mOptionInternalName.string
   end
 #--- Insert option
   [!?ioSemanticContext.mOptionComponentMapForSemanticAnalysis insertKey

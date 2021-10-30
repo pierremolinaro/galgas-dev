@@ -521,7 +521,7 @@ proc printPredefinedLexicalActions {
   var @string s = ""
   s += "**************** Prefined lexical routines  ****************\n"
   for (lkey mLexicalRoutineFormalArgumentList mErrorMessageList mIsExtern) in lexicalRoutineMap do
-    s += [lkey string]
+    s += lkey.string
     for (mLexicalFormalArgumentMode mLexicalFormalArgumentType mArgumentNameForComment) in mLexicalRoutineFormalArgumentList do
       s += " " + [mLexicalFormalArgumentMode lexicalFormalModeName] + "@" + [mLexicalFormalArgumentType lexicalTypeBaseName] + " " + mArgumentNameForComment
     end
@@ -538,7 +538,7 @@ proc printPredefinedLexicalActions {
 #--------------------------------------- Display lexical functions
   s += "**************** Prefined lexical functions ****************\n"
   for (lkey mLexicalTypeList mReturnedLexicalType mReplacementFunctionName mIsExtern) in lexicalFunctionMap do
-    s += [lkey string]
+    s += lkey.string
     for (mLexicalType mArgumentNameForComment) in mLexicalTypeList do
       s += " ?@" + [mLexicalType lexicalTypeBaseName]+ " " + mArgumentNameForComment
     end

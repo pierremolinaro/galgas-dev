@@ -73,7 +73,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
   var @bool hasCompilerArgument
   var @methodKind kind
   var @string errorMessage
-  [[[receiverExpression mResultType] mInstanceMethodMap] searchKey !self.mMethodName ?kind ?routineSignature ?* ?hasCompilerArgument ?* ?errorMessage]
+  [[receiverExpression.mResultType mInstanceMethodMap] searchKey !self.mMethodName ?kind ?routineSignature ?* ?hasCompilerArgument ?* ?errorMessage]
   if errorMessage != "" then
     error self.mMethodName : errorMessage
   end
@@ -91,7 +91,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     ?let @actualParameterListForGeneration actualParameterListForGeneration
   )
 #--- Search base type that declares the method
-  var baseType = [receiverExpression mResultType]
+  var baseType = receiverExpression.mResultType
   var searching = true
   if @uint. errorCount == 0 then
     loop( @uint. max) while searching do
@@ -109,9 +109,9 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
 #--- Generate instructions
   ioInstructionListForGeneration += !@methodCallInstructionForGeneration.new {
     !self.mInstructionLocation
-    ![receiverExpression mResultType]
+    !receiverExpression.mResultType
     !receiverExpression
-    ![self.mMethodName string]
+    !self.mMethodName.string
     !kind
     !actualParameterListForGeneration
     !hasCompilerArgument
@@ -160,7 +160,7 @@ override method @methodCallInstructionForGeneration generateInstruction
     ioInclusionSet += !"method-" + [[self.mMethodBaseType key] fileNameRepresentation] + "-" + [self.mMethodName fileNameRepresentation]
     if [[self.mReceiverType mTypeKindEnum] isClassType] then
       ioGeneratedCode += "callExtensionMethod_" + [self.mMethodName identifierRepresentation]
-                      + " ((const cPtr_" + [[self.mReceiverExpression mResultType] identifierRepresentation] + " *) " + receiverCppName + ".ptr (), "
+                      + " ((const cPtr_" + [self.mReceiverExpression.mResultType identifierRepresentation] + " *) " + receiverCppName + ".ptr (), "
     else
       ioGeneratedCode += "extensionMethod_" + [self.mMethodName identifierRepresentation] + " (" + receiverCppName + ", "
     end

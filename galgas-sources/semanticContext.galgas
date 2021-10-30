@@ -418,7 +418,7 @@ proc addExtensions
   ?!@instanceMethodMap ioInstanceMethodMap
 {
 #------------------------  Extension methods
-  if [inExtensionMethodMapForBuildingContext hasKey ![inTypeName string]] then
+  if [inExtensionMethodMapForBuildingContext hasKey !inTypeName.string] then
     var @extensionMethodMapForType extensionMethodMapForType
     [inExtensionMethodMapForBuildingContext searchKey !inTypeName ?extensionMethodMapForType]
     for (lkey mFormalParameterList) in extensionMethodMapForType do
@@ -435,7 +435,7 @@ proc addExtensions
         !lkey
         !@methodKind.definedAsExtension
         !formalArgumentList
-        ![lkey location]
+        !lkey.location
         !true
         !@methodQualifier.isBasic
         !"" # No error message
@@ -443,7 +443,7 @@ proc addExtensions
     end
   end
 #------------------------  Extension getters
-  if [inExtensionGetterMapForBuildingContext hasKey ![inTypeName string]] then
+  if [inExtensionGetterMapForBuildingContext hasKey !inTypeName.string] then
 #    @extensionGetterMapForType extensionGetterMapForType
     [inExtensionGetterMapForBuildingContext searchKey !inTypeName ?let extensionGetterMapForType]
     for (lkey mResultTypeName mInputFormalParameterList) in extensionGetterMapForType do
@@ -457,7 +457,7 @@ proc addExtensions
         !lkey
         !@methodKind.definedAsExtension
         !formalArgumentList
-        ![lkey location]
+        !lkey.location
         !true
         !returnedType
         !@methodQualifier.isBasic
@@ -466,7 +466,7 @@ proc addExtensions
     end
   end
 #------------------------  Extension setters
-  if [inExtensionSetterMapForBuildingContext hasKey ![inTypeName string]] then
+  if [inExtensionSetterMapForBuildingContext hasKey !inTypeName.string] then
     var @extensionSetterMapForType extensionSetterMapForType
     [inExtensionSetterMapForBuildingContext searchKey !inTypeName ?extensionSetterMapForType]
     for (lkey mFormalParameterList) in extensionSetterMapForType do
@@ -639,10 +639,10 @@ override method @filewrapperDeclarationAST enterInSemanticContext
   var @wrapperFileMap regularRootFileMap
   var @wrapperDirectoryMap wrapperDirectoryMap
   var @string absoluteSourcePath
-  if [[self.mFilewrapperPath string] firstCharacterOrNul] == '/' then
-    absoluteSourcePath = [self.mFilewrapperPath string]
+  if [self.mFilewrapperPath.string firstCharacterOrNul] == '/' then
+    absoluteSourcePath = self.mFilewrapperPath.string
   else
-    absoluteSourcePath = [self.mSourceFileAbsolutePath stringByDeletingLastPathComponent] + "/" + [self.mFilewrapperPath string]
+    absoluteSourcePath = [self.mSourceFileAbsolutePath stringByDeletingLastPathComponent] + "/" + self.mFilewrapperPath.string
   end
   if not [absoluteSourcePath directoryExists] then
     error self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist" 

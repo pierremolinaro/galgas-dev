@@ -118,7 +118,7 @@ override method @comparisonExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?let @semanticExpressionForGeneration leftExpression
   ]
-  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = leftExpression.mResultType
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
@@ -162,7 +162,7 @@ override method @comparisonExpressionAST analyzeSemanticExpression
 #--- Check operator availability
   checkDiadicOperator (
     !leftType
-    ![rightExpression mResultType]
+    !rightExpression.mResultType
     !operatorIsAvailable
     !operatorName
     !self.mOperatorLocation
@@ -197,7 +197,7 @@ override method @comparisonExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 {
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [self.mLeftExpression.mResultType addHeaderFileName !?ioInclusionSet]
 #--- Left operand
   [self.mLeftExpression  generateExpression
      !?ioGeneratedCode

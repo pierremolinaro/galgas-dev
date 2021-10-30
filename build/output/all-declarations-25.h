@@ -10,17 +10,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Function 'setterNameForUsefulEntitiesGraph'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_lstring function_setterNameForUsefulEntitiesGraph (const class GALGAS_string & constinArgument0,
-                                                                const class GALGAS_lstring & constinArgument1,
-                                                                class C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Routine 'generateExtensionSetter'
 //
 //----------------------------------------------------------------------------------------------------------------------

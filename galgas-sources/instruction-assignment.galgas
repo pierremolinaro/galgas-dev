@@ -37,7 +37,7 @@ syntax extension galgas3InstructionsSyntax {
     $=$
     <expression> ?let @semanticExpressionAST mSourceExpression
     outInstruction = @assignmentInstructionAST.new {
-      ![mTargetVariableName location]
+      !mTargetVariableName.location
       !mTargetVariableName
       !optionalProperty
       !mSourceExpression
@@ -61,7 +61,7 @@ syntax extension galgas3InstructionsSyntax {
     $=$
     <expression> ?let @semanticExpressionAST mSourceExpression
     outInstruction = @selfPropertyAssignmentInstructionAST.new {
-      ![mTargetVariableName location]
+      !mTargetVariableName.location
       !mTargetVariableName
       !optionalProperty
       !mSourceExpression
@@ -138,7 +138,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
 #--- Check assignment type compatibility
   checkAssignmentTypeWithImplicitGetterCall (
     !targetType
-    ![expression mResultType]
+    !expression.mResultType
     !self.mInstructionLocation
     !?expression
   )
@@ -197,7 +197,7 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
     end
     nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
     targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
-     + "mProperty_"+ [[self.mTargetSelfPropertyName string] identifierRepresentation]
+     + "mProperty_"+ [self.mTargetSelfPropertyName.string identifierRepresentation]
   end
 #--- Get target variable type
   if self.mOptionalProperty.string != "" then
@@ -220,7 +220,7 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
     ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !self.mInstructionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
     !targetType

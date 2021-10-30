@@ -69,7 +69,7 @@ override method @syntaxSendInstruction analyzeSyntaxInstruction
     ?let @semanticExpressionForGeneration expression
   ]
 #--- Check expression type
-  if [expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringType  then
+  if expression.mResultType != inAnalysisContext.mPredefinedTypes.mStringType  then
     error self.mInstructionLocation: "'send' expresion should be an @string expression"
   end
 #---

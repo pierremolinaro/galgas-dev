@@ -72,7 +72,7 @@ syntax extension galgas3InstructionsSyntax {
     select
       $++$
       outInstruction = @incDecInstructionAST.new {
-        ![mReceiverName location]
+        !mReceiverName.location
         !inPrefixedBySelf
         !mReceiverName
         !mStructAttributeList
@@ -81,7 +81,7 @@ syntax extension galgas3InstructionsSyntax {
     or
       $&++$
       outInstruction = @incDecNoOVFInstructionAST.new {
-        ![mReceiverName location]
+        !mReceiverName.location
         !inPrefixedBySelf
         !mReceiverName
         !mStructAttributeList
@@ -90,7 +90,7 @@ syntax extension galgas3InstructionsSyntax {
     or
       $&--$
       outInstruction = @incDecNoOVFInstructionAST.new {
-        ![mReceiverName location]
+        !mReceiverName.location
         !inPrefixedBySelf
         !mReceiverName
         !mStructAttributeList
@@ -99,7 +99,7 @@ syntax extension galgas3InstructionsSyntax {
     or
       $--$
       outInstruction = @incDecInstructionAST.new {
-        ![mReceiverName location]
+        !mReceiverName.location
         !inPrefixedBySelf
         !mReceiverName
         !mStructAttributeList
@@ -371,7 +371,7 @@ override method @incDecInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverCppName]
   var @string receiverCppName = self.mReceiverCppName
   for (mValue) in self.mStructAttributeList do
-    receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]
+    receiverCppName += ".mProperty_" + [mValue.string identifierRepresentation]
   end
 #--- Invoke incrementation
   switch self.mKind
@@ -399,7 +399,7 @@ override method @incDecNoOVFInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverCppName]
   var @string receiverCppName = self.mReceiverCppName
   for (mValue) in self.mStructAttributeList do
-    receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]
+    receiverCppName += ".mProperty_" + [mValue.string identifierRepresentation]
   end
 #--- Invoke incrementation
   switch self.mKind

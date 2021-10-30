@@ -93,7 +93,7 @@ override method @printVariableAST semanticAnalysis
   ?!@instructionListForGeneration ioInstructionListForGeneration {
   var @string cppName
   [!?ioVariableMap searchForReadAccess !self.mVarName ?cppName]
-  ioInstructionListForGeneration += !@printVariableForGeneration.new { ![self.mVarName string] !cppName}
+  ioInstructionListForGeneration += !@printVariableForGeneration.new { !self.mVarName.string !cppName}
 }
 
 #---------------------------------------------------------------------------*
@@ -132,7 +132,7 @@ override method @varInExpressionAST expSemanticAnalysis
 override method @cstInExpressionAST expSemanticAnalysis
   ?!@variableMap unused ioVariableMap
   !@expressionForGeneration outExpression {
-  outExpression = @cstInExpressionForGeneration.new { ![self.mConstant uint]}
+  outExpression = @cstInExpressionForGeneration.new { !self.mConstant.uint}
 }
 
 #---------------------------------------------------------------------------*

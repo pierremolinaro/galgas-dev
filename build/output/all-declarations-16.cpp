@@ -10312,6 +10312,9 @@ typeComparisonResult cPtr_getterCallExpressionAST::dynamicObjectCompare (const a
   if (kOperandEqual == result) {
     result = mProperty_mExpressions.objectCompare (p->mProperty_mExpressions) ;
   }
+  if (kOperandEqual == result) {
+    result = mProperty_mExpressionLocation.objectCompare (p->mProperty_mExpressionLocation) ;
+  }
   return result ;
 }
 
@@ -10350,11 +10353,12 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 
 GALGAS_getterCallExpressionAST GALGAS_getterCallExpressionAST::constructor_new (const GALGAS_semanticExpressionAST & inAttribute_mReceiver,
                                                                                 const GALGAS_lstring & inAttribute_mGetterName,
-                                                                                const GALGAS_actualOutputExpressionList & inAttribute_mExpressions
+                                                                                const GALGAS_actualOutputExpressionList & inAttribute_mExpressions,
+                                                                                const GALGAS_location & inAttribute_mExpressionLocation
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_getterCallExpressionAST result ;
-  if (inAttribute_mReceiver.isValid () && inAttribute_mGetterName.isValid () && inAttribute_mExpressions.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_getterCallExpressionAST (inAttribute_mReceiver, inAttribute_mGetterName, inAttribute_mExpressions COMMA_THERE)) ;
+  if (inAttribute_mReceiver.isValid () && inAttribute_mGetterName.isValid () && inAttribute_mExpressions.isValid () && inAttribute_mExpressionLocation.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_getterCallExpressionAST (inAttribute_mReceiver, inAttribute_mGetterName, inAttribute_mExpressions, inAttribute_mExpressionLocation COMMA_THERE)) ;
   }
   return result ;
 }
@@ -10397,6 +10401,18 @@ GALGAS_actualOutputExpressionList GALGAS_getterCallExpressionAST::getter_mExpres
 
 //----------------------------------------------------------------------------------------------------------------------
 
+GALGAS_location GALGAS_getterCallExpressionAST::getter_mExpressionLocation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_getterCallExpressionAST * p = (const cPtr_getterCallExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_getterCallExpressionAST) ;
+    result = p->mProperty_mExpressionLocation ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 void GALGAS_getterCallExpressionAST::setter_setMReceiver (GALGAS_semanticExpressionAST inValue
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (NULL != mObjectPtr) {
@@ -10429,17 +10445,30 @@ void GALGAS_getterCallExpressionAST::setter_setMExpressions (GALGAS_actualOutput
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_getterCallExpressionAST::setter_setMExpressionLocation (GALGAS_location inValue
+                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    cPtr_getterCallExpressionAST * p = (cPtr_getterCallExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_getterCallExpressionAST) ;
+    p->mProperty_mExpressionLocation = inValue ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @getterCallExpressionAST class
 //----------------------------------------------------------------------------------------------------------------------
 
 cPtr_getterCallExpressionAST::cPtr_getterCallExpressionAST (const GALGAS_semanticExpressionAST & in_mReceiver,
                                                             const GALGAS_lstring & in_mGetterName,
-                                                            const GALGAS_actualOutputExpressionList & in_mExpressions
+                                                            const GALGAS_actualOutputExpressionList & in_mExpressions,
+                                                            const GALGAS_location & in_mExpressionLocation
                                                             COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionAST (THERE),
 mProperty_mReceiver (in_mReceiver),
 mProperty_mGetterName (in_mGetterName),
-mProperty_mExpressions (in_mExpressions) {
+mProperty_mExpressions (in_mExpressions),
+mProperty_mExpressionLocation (in_mExpressionLocation) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10456,6 +10485,8 @@ void cPtr_getterCallExpressionAST::description (C_String & ioString,
   mProperty_mGetterName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mProperty_mExpressions.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mExpressionLocation.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -10463,7 +10494,7 @@ void cPtr_getterCallExpressionAST::description (C_String & ioString,
 
 acPtr_class * cPtr_getterCallExpressionAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_getterCallExpressionAST (mProperty_mReceiver, mProperty_mGetterName, mProperty_mExpressions COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_getterCallExpressionAST (mProperty_mReceiver, mProperty_mGetterName, mProperty_mExpressions, mProperty_mExpressionLocation COMMA_THERE)) ;
   return ptr ;
 }
 

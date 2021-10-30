@@ -121,16 +121,16 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    ![leftExpression mResultType]
+    !leftExpression.mResultType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = leftExpression.mResultType
   checkDiadicOperator (
     !leftType
-    ![rightExpression mResultType]
+    !rightExpression.mResultType
     ![[leftType mHandledOperatorFlags] infixMulOperatorNoOVF]
     !"&*"
     !self.mOperatorLocation
@@ -178,16 +178,16 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    ![leftExpression mResultType]
+    !leftExpression.mResultType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = leftExpression.mResultType
   checkDiadicOperator (
     !leftType
-    ![rightExpression mResultType]
+    !rightExpression.mResultType
     ![[leftType mHandledOperatorFlags] infixMulOperator]
     !"*"
     !self.mOperatorLocation
@@ -234,16 +234,16 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    ![leftExpression mResultType]
+    !leftExpression.mResultType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = leftExpression.mResultType
   checkDiadicOperator (
     !leftType
-    ![rightExpression mResultType]
+    !rightExpression.mResultType
     ![[leftType mHandledOperatorFlags] infixDivOperatorNoOVF]
     !"&/"
     !self.mOperatorLocation
@@ -290,16 +290,16 @@ override method @divisionExpressionAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    ![leftExpression mResultType]
+    !leftExpression.mResultType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = leftExpression.mResultType
   checkDiadicOperator (
     !leftType
-    ![rightExpression mResultType]
+    !rightExpression.mResultType
     ![[leftType mHandledOperatorFlags] infixDivOperator]
     !"/"
     !self.mOperatorLocation
@@ -346,16 +346,16 @@ override method @moduloExpressionAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    ![leftExpression mResultType]
+    !leftExpression.mResultType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = leftExpression.mResultType
   checkDiadicOperator (
     !leftType
-    ![rightExpression mResultType]
+    !rightExpression.mResultType
     ![[leftType mHandledOperatorFlags] infixModOperator]
     !"mod"
     !self.mOperatorLocation

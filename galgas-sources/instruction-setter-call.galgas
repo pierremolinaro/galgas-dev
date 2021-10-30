@@ -326,7 +326,7 @@ override method @setterCallInstructionForGeneration generateInstruction
   ioGeneratedCode += "{\n"
   var receiverCppName = self.mReceiverCppName
   for (mValue) in self.mReceiverStructAttributes do
-    receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]
+    receiverCppName += ".mProperty_" + [mValue.string identifierRepresentation]
   end
   [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverBaseName]
 #--- Parameters
@@ -374,7 +374,7 @@ override method @setterCallInstructionForGeneration generateInstruction
     end
   case definedAsMember :
     [self.mReceiverType addHeaderFileName !?ioInclusionSet]
-    ioGeneratedCode += receiverCppName + ".setter_" + [[self.mSetterName string] identifierRepresentation] + " ("
+    ioGeneratedCode += receiverCppName + ".setter_" + [self.mSetterName.string identifierRepresentation] + " ("
   end
   for (mValue) in parameterCppNameList
     do ioGeneratedCode += mValue
@@ -390,7 +390,7 @@ override method @setterCallInstructionForGeneration generateInstruction
   elsif [parameterCppNameList length] != 0 then
     ioGeneratedCode += " COMMA_"
   end
-  ioGeneratedCode += [[self.mSetterName location] sourceFile] + ") ;\n"
+  ioGeneratedCode += [self.mSetterName.location sourceFile] + ") ;\n"
 #  ioGeneratedCode += "}catch (GGS_InvalidException &) {\n"
   ioGeneratedCode += "}\n"
 }
@@ -450,7 +450,7 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
   elsif [parameterCppNameList length] != 0 then
     ioGeneratedCode += " COMMA_"
   end
-  ioGeneratedCode += [[self.mSetterName location] sourceFile] + ") ;\n"
+  ioGeneratedCode += [self.mSetterName.location sourceFile] + ") ;\n"
   ioGeneratedCode += "}\n"
 }
 

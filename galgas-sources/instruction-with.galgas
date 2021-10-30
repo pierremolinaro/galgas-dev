@@ -226,7 +226,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?let @semanticExpressionForGeneration receiverExpression
   ]
-  let receiverType = [receiverExpression mResultType]
+  let receiverType = receiverExpression.mResultType
 #--- Check search method
   if self.mSearchMethodNameForErrorSignaling.string != "" then
     var @bool found = false
@@ -249,13 +249,13 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   ]
 #--- Check key is an @lstring or @string object
   if self.mSearchMethodNameForErrorSignaling.string == "" then
-    if [[keyExpression mResultType] key] != "string" then
+    if [keyExpression.mResultType key] != "string" then
       error self.mEndOfKeyExpression
-      : "the key type is '@" + [[keyExpression mResultType] key] + "', it should be '@string'"
+      : "the key type is '@" + [keyExpression.mResultType key] + "', it should be '@string'"
     end
-  elsif [[keyExpression mResultType] key] != "lstring" then
+  elsif [keyExpression.mResultType key] != "lstring" then
     error self.mEndOfKeyExpression
-    : "the key type is '@" + [[keyExpression mResultType] key] + "', it should be @lstring"
+    : "the key type is '@" + [keyExpression.mResultType key] + "', it should be @lstring"
   end
 #--- Object Array cpp name
   let objectArrayCppName = "objectArray_" + [self.mInstructionLocation locationIndex]
@@ -336,13 +336,13 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   ]
 #--- Check key is an @lstring or @string object
   if self.mSearchMethodNameForErrorSignaling.string == "" then
-    if [[keyExpression mResultType] key] != "string" then
+    if [keyExpression.mResultType key] != "string" then
       error self.mEndOfKeyExpression
-      : "the key type is '@" + [[keyExpression mResultType] key] + "', it should be '@string'"
+      : "the key type is '@" + [keyExpression.mResultType key] + "', it should be '@string'"
     end
-  elsif [[keyExpression mResultType] key] != "lstring" then
+  elsif [keyExpression.mResultType key] != "lstring" then
     error self.mEndOfKeyExpression
-    : "the key type is '@" + [[keyExpression mResultType] key] + "', it should be @lstring"
+    : "the key type is '@" + [keyExpression.mResultType key] + "', it should be @lstring"
   end
 #--- Object Array cpp name
   let objectArrayCppName = "objectArray_" + [self.mInstructionLocation locationIndex]
@@ -363,7 +363,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
         error self.mReceiverName: "a constant property cannot be modified"
       end
       receiverVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
-       + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
+       + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
     end
   else
     [!?ioVariableMap searchForReadWriteAccess
@@ -498,7 +498,7 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
     !?ioUnusedVariableCppNameSet
     ?let @string receiverVarCppName
   ]
-  let receiverType = [self.mReceiverExpression mResultType]
+  let receiverType = self.mReceiverExpression.mResultType
 #--- key expression
   [self.mKeyExpression generateExpression
     !?ioGeneratedCode 
@@ -558,7 +558,7 @@ override method @readWriteWithInstructionForGeneration generateInstruction
 {
   var @string receiverCppName = self.mReceiverVariableCppName
   for (mValue) in self.mStructAttributeList do
-    receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]
+    receiverCppName += ".mProperty_" + [mValue.string identifierRepresentation]
   end
 #--- key expression
   [self.mKeyExpression generateExpression

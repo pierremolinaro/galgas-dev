@@ -85,7 +85,7 @@ override method @rotate codeDisplay
   ?!@double ioAngle
   ?!@string unused SVG
 {
-  ioAngle = ioAngle + [[self.mAngle uint] double]
+  ioAngle = ioAngle + [self.mAngle.uint double]
 }
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

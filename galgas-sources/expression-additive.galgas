@@ -142,20 +142,20 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
     ?let @semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = leftExpression.mResultType
   if let left = leftExpression as @literalBigIntExpressionForGeneration,
      let right = rightExpression as @literalUIntExpressionForGeneration then
      outExpression = @literalBigIntExpressionForGeneration.new {
        !inAnalysisContext.mPredefinedTypes.mBigIntType
        !self.mOperatorLocation
-       ![left mValue] >> [right mValue]
+       !left.mValue >> right.mValue
      }
   elsif let left = leftExpression as @literalBigIntExpressionForGeneration,
      let right = rightExpression as @literalBigIntExpressionForGeneration then
      outExpression = @literalBigIntExpressionForGeneration.new {
        !inAnalysisContext.mPredefinedTypes.mBigIntType
        !self.mOperatorLocation
-       ![left mValue] >> [[right mValue] uint]
+       !left.mValue >> [right.mValue uint]
      }
   elsif not [[leftType mHandledOperatorFlags] infixShiftOperator] then
     error self.mOperatorLocation
@@ -211,20 +211,20 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
     ?let @semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = leftExpression.mResultType
   if let left = leftExpression as @literalBigIntExpressionForGeneration,
      let right = rightExpression as @literalUIntExpressionForGeneration then
      outExpression = @literalBigIntExpressionForGeneration.new {
        !inAnalysisContext.mPredefinedTypes.mBigIntType
        !self.mOperatorLocation
-       ![left mValue] << [right mValue]
+       !left.mValue << right.mValue
      }
   elsif let left = leftExpression as @literalBigIntExpressionForGeneration,
      let right = rightExpression as @literalBigIntExpressionForGeneration then
      outExpression = @literalBigIntExpressionForGeneration.new {
        !inAnalysisContext.mPredefinedTypes.mBigIntType
        !self.mOperatorLocation
-       ![left mValue] << [[right mValue] uint]
+       !left.mValue << [right.mValue uint]
      }
   elsif not [[leftType mHandledOperatorFlags] infixShiftOperator] then
     error self.mOperatorLocation
@@ -274,16 +274,16 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    ![leftExpression mResultType]
+    !leftExpression.mResultType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = leftExpression.mResultType
   checkDiadicOperator (
     !leftType
-    ![rightExpression mResultType]
+    !rightExpression.mResultType
     ![[leftType mHandledOperatorFlags] infixAddOperatorNoOVF]
     !"&+"
     !self.mOperatorLocation
@@ -339,16 +339,16 @@ override method @addExpressionAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    ![leftExpression mResultType]
+    !leftExpression.mResultType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = leftExpression.mResultType
   checkDiadicOperator (
     !leftType
-    ![rightExpression mResultType]
+    !rightExpression.mResultType
     ![[leftType mHandledOperatorFlags] infixAddOperator]
     !"+"
     !self.mOperatorLocation
@@ -405,16 +405,16 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    ![leftExpression mResultType]
+    !leftExpression.mResultType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = leftExpression.mResultType
   checkDiadicOperator (
     !leftType
-    ![rightExpression mResultType]
+    !rightExpression.mResultType
     ![[leftType mHandledOperatorFlags] infixSubOperatorNoOVF]
     !"&-"
     !self.mOperatorLocation
@@ -470,16 +470,16 @@ override method @subExpressionAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    ![leftExpression mResultType]
+    !leftExpression.mResultType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-entry leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-entry leftType = leftExpression.mResultType
   checkDiadicOperator (
     !leftType
-    ![rightExpression mResultType]
+    !rightExpression.mResultType
     ![[leftType mHandledOperatorFlags] infixSubOperator]
     !"-"
     !self.mOperatorLocation
@@ -541,7 +541,7 @@ override method @binaryOperatorExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [self.mLeftExpression.mResultType addHeaderFileName !?ioInclusionSet]
 #--- Left operand
   var @string leftTemporaryOperand
   [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
