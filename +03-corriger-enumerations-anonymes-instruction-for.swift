@@ -92,7 +92,7 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
         loop = false
         ok = true
       }else if status == 1 {
-        print (CYAN + s + ENDC)
+//        print (CYAN + s + ENDC)
         let lines = s.components (separatedBy: "\n")
         var lineIndex = 0
         var found = false
@@ -102,6 +102,7 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
         }
         loop = found
         if !loop {
+          print (CYAN + s + ENDC)
           print (BOLD_RED + "Erreur non gérée" + ENDC)
         }else{
           let lineFixIt = lines [lineIndex + 2]

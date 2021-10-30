@@ -102,6 +102,7 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
         }
         loop = found
         if !loop {
+          print (CYAN + s + ENDC)
           print (BOLD_RED + "Erreur non gérée" + ENDC)
         }else{
           let lineFixIt = lines [lineIndex + 2]
