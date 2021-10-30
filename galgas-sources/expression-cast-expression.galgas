@@ -40,7 +40,7 @@ syntax extension galgas3ExpressionSyntax {
     or
       let endOfReceiverExpression = @location.here
       $is$
-      @dynamicTypeComparisonKind kind
+      var @dynamicTypeComparisonKind kind
       select
         $==$
         kind = .equal
@@ -95,7 +95,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
 #--- Receiver expression analysis
-  @semanticExpressionForGeneration expression
+  var @semanticExpressionForGeneration expression
   [self.mReceiverExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -109,8 +109,8 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
 #--- This type is either a class
   if [[[expression mResultType] mTypeKindEnum] isClassType] then
   #--- Check expression type is a descendant of named type
-    @unifiedTypeMap-entry t = castType
-    @bool found = t == [expression mResultType]
+    var @unifiedTypeMap-entry t = castType
+    var @bool found = t == [expression mResultType]
     loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
     while (not found) & not [[t mSuperType] isNull] do
       t = [t mSuperType]
@@ -168,8 +168,8 @@ override method @castInExpressionAST analyzeSemanticExpression
 #--- This type is an @object type
   if [[[expression mResultType] mTypeKindEnum] isClassType]then
   #--- Check expression type is a descendant of named type
-    @unifiedTypeMap-entry t = type
-    @bool found = t == [expression mResultType]
+    var @unifiedTypeMap-entry t = type
+    var @bool found = t == [expression mResultType]
     loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
     while (not found) & not [[t mSuperType] isNull] do
       t = [t mSuperType]

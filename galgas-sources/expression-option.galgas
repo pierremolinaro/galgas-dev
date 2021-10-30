@@ -73,8 +73,8 @@ override method @optionExpressionAST analyzeSemanticExpression
     ?let @commandLineOptionMap stringOptionMap
     ?let @commandLineOptionMap stringListOptionMap
   ]
-  @bool found = [boolOptionMap hasKey ![self.mOptionEntryName string]]
-  @unifiedTypeMap-entry returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
+  var @bool found = [boolOptionMap hasKey ![self.mOptionEntryName string]]
+  var @unifiedTypeMap-entry returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
   if not found then
     found = [uintOptionMap hasKey ![self.mOptionEntryName string]]
     returnedType = inAnalysisContext.mPredefinedTypes.mUIntType
@@ -120,7 +120,7 @@ override method @optionExpressionAST analyzeSemanticExpression
       error self.mOptionGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" :outExpression
     end
   else
-    @stringlist s = {}
+    var @stringlist s = {}
     for (lkey mOptionChar mOptionString mComment mDefaultValue) in boolOptionMap do
       s += !lkey
     end

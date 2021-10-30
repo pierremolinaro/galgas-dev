@@ -29,7 +29,7 @@ syntax extension galgas3DeclarationsSyntax {
     $sortedlist$
     $@type$ ?let sortedListTypeName indexing sortedListDefinition, structDefinition "-element"
     ${$
-    @propertyInCollectionListAST attributeList = {}
+    var @propertyInCollectionListAST attributeList = {}
     repeat
     while
       <property_declaration> !? attributeList
@@ -38,7 +38,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $}$
     ${$
-    @sortedListSortDescriptorListAST sortDescriptorList = {}
+    var @sortedListSortDescriptorListAST sortDescriptorList = {}
     repeat
       <sortedlist_sort_descriptor> !? sortDescriptorList
     while
@@ -57,7 +57,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList {
     $identifier$ ?var  @lstring mSortedAttributeName
-    @bool mAscending
+    var @bool mAscending
     select
       $<$
       mAscending = true
@@ -94,7 +94,7 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
 
 override method @sortedListDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
-  @propertyInCollectionListAST structAttributeList = {}
+  var @propertyInCollectionListAST structAttributeList = {}
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     structAttributeList +=
       !isConstant: isConstant 
@@ -128,10 +128,10 @@ override method @sortedListDeclarationAST enterInSemanticContext
     ?let @unifiedTypeMap-entry listElementTypeIndex
   ]
 #--- Enumeration description
-  @enumerationDescriptorList enumerationDescriptor = {}
-  @functionSignature constructorAttributeTypeList = {}
-  @formalParameterSignature setterFormalArgumentList = {}
-  @typedPropertyList typedAttributeList = {}
+  var @enumerationDescriptorList enumerationDescriptor = {}
+  var @functionSignature constructorAttributeTypeList = {}
+  var @formalParameterSignature setterFormalArgumentList = {}
+  var @typedPropertyList typedAttributeList = {}
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true
@@ -142,7 +142,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     setterFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST.argumentOut !mPropertyName.string
   end
 #--- Constructors
-  @constructorMap constructorMap = {}
+  var @constructorMap constructorMap = {}
   enterConstructorWithoutArgument (
     !?constructorMap
     !?ioSemanticContext.mTypeMap
@@ -166,7 +166,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !hasCompilerArgument:false
   )
 #--- Modifiers
-  @setterMap setterMap = {}
+  var @setterMap setterMap = {}
   [!?setterMap insertOrReplace
     !@lstring.new {!"popGreatest" !@location.here}
     !@methodKind.definedAsMember
@@ -184,7 +184,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !"" # No error message
   ]
 #--- Instance methods
-  @instanceMethodMap instanceMethodMap = {}
+  var @instanceMethodMap instanceMethodMap = {}
   [!?instanceMethodMap insertKey
     !@lstring.new {!"greatest" !@location.here}
     !@methodKind.definedAsMember
@@ -265,7 +265,7 @@ override method @sortedListDeclarationAST semanticAnalysis
   [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !elementTypeNameForUsefulness]
 #--- Attribute
   var typedAttributeList =@typedPropertyList {}
-  @propertyIndexMap attributeMap = {}
+  var @propertyIndexMap attributeMap = {}
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !propertyTypeNameForUsefulness]
@@ -280,8 +280,8 @@ override method @sortedListDeclarationAST semanticAnalysis
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #--- Sort descriptor
-  @stringset attributesUsedForSorting = {}
-  @sortDescriptorListForGeneration sortDescriptorList = {}
+  var @stringset attributesUsedForSorting = {}
+  var @sortDescriptorListForGeneration sortDescriptorList = {}
   for (mSortedAttributeName mAscending) in self.mSortDescriptorList do
     [attributeMap searchKey !mSortedAttributeName ?let @unifiedTypeMap-entry type]
     sortDescriptorList += !type ![mSortedAttributeName string] !mAscending

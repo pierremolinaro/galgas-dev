@@ -29,7 +29,7 @@ syntax extension galgas3InstructionsSyntax {
   
   rule <cast_instruction_branch> ?!@castInstructionBranchListAST ioCastInstructionBranchList {
     $case$
-    @dynamicTypeComparisonKind kind
+    var @dynamicTypeComparisonKind kind
     select
       $==$
       kind = .equal
@@ -41,7 +41,7 @@ syntax extension galgas3InstructionsSyntax {
       kind = .strictlyInherited
     end
     $@type$ ?let mTypeName
-    @lstring mConstantVarName # Empty string if no constant var
+    var @lstring mConstantVarName # Empty string if no constant var
     select
       $identifier$ ?mConstantVarName
     or
@@ -140,7 +140,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Expression
-  @semanticExpressionForGeneration castExpression
+  var @semanticExpressionForGeneration castExpression
   [self.mCastExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -157,8 +157,8 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   #--- Get named type
     let type = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
   #--- Check named type is a descendant of receiver type
-    @unifiedTypeMap-entry t = type
-    @bool found = t == [castExpression mResultType]
+    var @unifiedTypeMap-entry t = type
+    var @bool found = t == [castExpression mResultType]
     loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
     while (not found) & not [[t mSuperType] isNull] do
       t = [t mSuperType]
@@ -169,7 +169,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
       :"the '@" + mTypeName + "' is not a descendant of the '@" + [[castExpression mResultType] key] + "' type of the cast expression"
     end
   #--- Declare a local constant ?
-    @string localConstantName
+    var @string localConstantName
     var localConstantList =@localConstantList {}
     if [mConstantVarName length] > 0 then
       localConstantName = "cast_" + [mConstantVarName.location locationIndex] + "_" + mConstantVarName
@@ -182,7 +182,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
       localConstantName = "" # No constant
     end
   #--- Analyze instruction list
-    @semanticInstructionListForGeneration instructionList
+    var @semanticInstructionListForGeneration instructionList
     analyzeSemanticInstructionList (
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -197,7 +197,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     castBranchList += !mTypeComparisonKind !type !localConstantName !instructionList
   end
 #--- else or default branch
-  @semanticInstructionListForGeneration else_instructionList
+  var @semanticInstructionListForGeneration else_instructionList
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph

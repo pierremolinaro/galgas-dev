@@ -144,7 +144,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
 #---
   [filewrapperTemplateMap searchKey !self.mFilewrapperTemplateName ?let @functionSignature templateSignature ?*]
 #--- Analysis arguments
-  @semanticExpressionListForGeneration effectiveParameterList
+  var @semanticExpressionListForGeneration effectiveParameterList
   if [self.mExpressions length] != [templateSignature length] then
     error self.mFilewrapperTemplateName
     : "calling the '" + self.mFilewrapperTemplateName + "' template of '" + self.mFilewrapperName + "' filewrapper requires "
@@ -198,8 +198,8 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
   let usefulnessName = filewrapperNameForUsefulEntitiesGraph (!self.mFilewrapperName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #--- Parse filewrapper path
-  @stringlist directoryList
-  @string fileName
+  var @stringlist directoryList
+  var @string fileName
   if [self.mFilewrapperPath length] == 0 then
     error self.mFilewrapperPath : "path is empty" : directoryList, fileName
   elsif [self.mFilewrapperPath firstCharacterOrNul] == '/' then
@@ -226,10 +226,10 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
     end
   end
 #--- Search for file
-  @string builtPath = ""
+  var @string builtPath = ""
   loop( [filewrapperDirectoryMap count] + 1)
   while [directoryList length] > 0 do
-    @string directoryName
+    var @string directoryName
     [!?directoryList popFirst ?directoryName]
     builtPath += directoryName + "/"
     if [filewrapperDirectoryMap hasKey !directoryName] then
@@ -244,8 +244,8 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
       directoryList = @stringlist.emptyList # For exiting loop
     end
   end
-  @uint fileIndex
-  @bool isTextFile
+  var @uint fileIndex
+  var @bool isTextFile
   if [filewrapperFileMap hasKey !fileName] then
     [filewrapperFileMap searchKey !@lstring.new {!fileName !@location.here} ?* ?isTextFile ?* ?fileIndex]
   else
@@ -306,7 +306,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
   ioInclusionSet += !"filewrapper-" + self.mFilewrapperName
   var parameterList =@stringlist {}
   for (mExpression) in self.mActualOutputParameterList do
-    @string parameter
+    var @string parameter
     [mExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet

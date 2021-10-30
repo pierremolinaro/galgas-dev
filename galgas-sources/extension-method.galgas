@@ -110,9 +110,9 @@ override method @extensionMethodAST semanticAnalysis
   [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 #--- Self type
   let @unifiedTypeMap-entry selfType = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap ! self.mTypeName}
-  @string selfObjectName
-  @string selfObjectAccessor
-  @bool implementedAsFunction
+  var @string selfObjectName
+  var @string selfObjectAccessor
+  var @bool implementedAsFunction
 #--- Check self type is a class
   if [[selfType mTypeKindEnum] isClassType] then
     selfObjectName = "object"
@@ -125,7 +125,7 @@ override method @extensionMethodAST semanticAnalysis
   end
 #--- Analyze instruction list
   var formalParameterListForGeneration =@formalParameterListForGeneration {}
-  @semanticInstructionListForGeneration semanticInstructionListForGeneration
+  var @semanticInstructionListForGeneration semanticInstructionListForGeneration
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
@@ -234,7 +234,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation
   !@string outImplementation
 {
   if self.mImplementedAsFunction then
-    @formalParameterListForGeneration extensionMethodFormalParameterList = self.mExtensionMethodFormalParameterList
+    var @formalParameterListForGeneration extensionMethodFormalParameterList = self.mExtensionMethodFormalParameterList
     [!?extensionMethodFormalParameterList insertAtIndex
       !["" nowhere]
       !@formalArgumentPassingModeAST. argumentConstantIn
@@ -267,8 +267,8 @@ override method @extensionMethodForGeneration appendSpecificImplementation
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in self.mExtensionMethodFormalParameterList do
       [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
     end
-    @unifiedTypeMap-entry baseType = self.mReceiverType
-    @bool searching = true
+    var @unifiedTypeMap-entry baseType = self.mReceiverType
+    var @bool searching = true
     loop( @uint. max) while searching do
       if not [[baseType mSuperType] isNull] then
         if [[[baseType mSuperType] mInstanceMethodMap] hasKey !self.mExtensionMethodName] then

@@ -101,7 +101,7 @@ override method @warningInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode
  {
 #--- Receiver expression
-  @string receiverCppVarName
+  var @string receiverCppVarName
   [self.mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverCppVarName]
 #--- Receiver expression
   [self.mWarningExpression generateExpression

@@ -104,11 +104,11 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
     error self.mAbstractExtensionGetterName: "cannot declare an abstract extension getter: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Find base type name
-  @string baseTypeName = ""
-  @unifiedTypeMap-entry superType = [selfType mSuperType]
-  @functionSignature inheritedSignature = {}
-  @unifiedTypeMap-entry inheritedReturnType = .null{}
-  @location inheritedDeclarationLocation = @location.here
+  var @string baseTypeName = ""
+  var @unifiedTypeMap-entry superType = [selfType mSuperType]
+  var @functionSignature inheritedSignature = {}
+  var @unifiedTypeMap-entry inheritedReturnType = .null{}
+  var @location inheritedDeclarationLocation = @location.here
   loop ([inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mGetterMap] hasKey ![self.mAbstractExtensionGetterName string]] then

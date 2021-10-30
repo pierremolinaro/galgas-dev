@@ -46,7 +46,7 @@ override method @notExpressionAST analyzeSemanticExpression
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Expression analysis
-  @semanticExpressionForGeneration expression
+  var @semanticExpressionForGeneration expression
   [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -93,7 +93,7 @@ override method @notExpressionForGeneration generateExpression
   !@string outCppExpression {
   [[self.mExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Operand
-  @string operand
+  var @string operand
   [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?operand]
 #--- Generate
   outCppExpression = operand + ".operator_not (" + [self.mLocation sourceFile] + ")"

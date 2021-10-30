@@ -123,7 +123,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   ?!@localVarManager ioVariableMap
   ?!@uint ioSelectMethodCount {
 #--- When expression
-  @semanticExpressionForGeneration when_expression
+  var @semanticExpressionForGeneration when_expression
   [self.mWhenExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -135,8 +135,8 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
 #--- Begin block
   [!?ioVariableMap openOverrideForRepeatBlock]
 #--- 'when' branch
-  @uint localSelectMethodCount = ioSelectMethodCount
-  @semanticInstructionListForGeneration when_instructionListForGeneration
+  var @uint localSelectMethodCount = ioSelectMethodCount
+  var @semanticInstructionListForGeneration when_instructionListForGeneration
   analyzeSyntaxInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -154,7 +154,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
     ?when_instructionListForGeneration
   )
 #--- 'else' branch
-  @semanticInstructionListForGeneration else_instructionListForGeneration
+  var @semanticInstructionListForGeneration else_instructionListForGeneration
   analyzeSyntaxInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -220,7 +220,7 @@ override method @parseWhenInstructionForGeneration generateInstruction
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 {
-  @string sourceVar
+  var @string sourceVar
   [self.mWhenExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar]
   ioGeneratedCode += "if (" + sourceVar + ".isValidAndTrue ()) {\n"
   generateInstructionList (

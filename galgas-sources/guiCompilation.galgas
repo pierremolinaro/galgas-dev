@@ -95,9 +95,9 @@ syntax galgas3GuiComponentSyntax (galgas3Scanner) {
     $gui$
     $identifier$ ?let @lstring mGUIName
     ${$
-    @lstringlist importedOptionList = {}
-    @guiSimpleAttributeListAST simpleGlobalAttributes = {}
-    @withLexiqueListAST withLexiqueList = {}
+    var @lstringlist importedOptionList = {}
+    var @guiSimpleAttributeListAST simpleGlobalAttributes = {}
+    var @withLexiqueListAST withLexiqueList = {}
     repeat
     while
       <gui_attributes> !?simpleGlobalAttributes
@@ -121,24 +121,24 @@ syntax galgas3GuiComponentSyntax (galgas3Scanner) {
     $with$
     $lexique$
     $identifier$ ?var @lstring lexiqueReference
-    @guiLabelListAST labels = {}
-    @guiSimpleAttributeListAST simpleAttributes = {}
-    @guiCompoundAttributeListAST compoundAttributes = {}
+    var @guiLabelListAST labels = {}
+    var @guiSimpleAttributeListAST simpleAttributes = {}
+    var @guiCompoundAttributeListAST compoundAttributes = {}
     ${$
     repeat
     while
       $label$
-      @uint displayStyle
+      var @uint displayStyle
       select
         displayStyle = 0
       or
         $*$
         displayStyle = 1
       end
-      @terminalLabelListAST terminalList = {}
+      var @terminalLabelListAST terminalList = {}
       repeat
         $\$terminal\$$ ?let  @lstring terminal
-        @uint displayFlags
+        var @uint displayFlags
         select
           displayFlags = 0 # Default
         or
@@ -261,7 +261,7 @@ private proc guiComponentSemanticAnalysis
     error inGUIComponentAST.mGUIComponentName : "the gui name should be 'cocoa'"
   end
 #--- 
-  @guiAnalysisContext context = .default
+  var @guiAnalysisContext context = .default
 #--- Check imported options components
   for (mValue) in inGUIComponentAST.mImportedOptionList do
     [inSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
@@ -313,7 +313,7 @@ private proc guiComponentSemanticAnalysis
       end
     end
   #--- Compound attributes
-    @textMacroList textMacroList = {}
+    var @textMacroList textMacroList = {}
     for (mKey mAttributeName mValue) in mCompoundAttributes do
       if [mKey string] != "textMacro" then
         error mKey: "for a compound attribute, only the 'textMacro' key is valid"
@@ -322,11 +322,11 @@ private proc guiComponentSemanticAnalysis
       end
     end
   #--- Simple attributes
-    @bool hasAssociatedExtension = false
-    @bool hasTabViewTitle = false
-    @bool hasBlockComment = false
-    @string tabViewTitle = ""
-    @string blockComment = ""
+    var @bool hasAssociatedExtension = false
+    var @bool hasTabViewTitle = false
+    var @bool hasBlockComment = false
+    var @string tabViewTitle = ""
+    var @string blockComment = ""
     for (mKey mValue) in mSimpleAttributes do
       if [mKey string] == "fileExtension" then
         [!?context.mExtensionMap insertKey !mValue !mLexiqueFileName.string !idx]

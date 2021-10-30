@@ -90,7 +90,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   ?!@localVarManager ioVariableMap
   ?!@uint ioSelectMethodCount {
 #--- Variant expression
-  @semanticExpressionForGeneration variant_expression
+  var @semanticExpressionForGeneration variant_expression
   [self.mVariantExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -105,7 +105,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
     + "', but it should be '@" + [inAnalysisContext.mPredefinedTypes.mUIntType key] + "' type"
   end
 #--- While expression
-  @semanticExpressionForGeneration while_expression
+  var @semanticExpressionForGeneration while_expression
   [self.mWhileExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -123,7 +123,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
 #--- Begin block
   [!?ioVariableMap openOverrideForRepeatBlock]
 #--- 'or' blocks
-  @semanticInstructionListForGeneration instructionList
+  var @semanticInstructionListForGeneration instructionList
   analyzeSyntaxInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -184,7 +184,7 @@ override method @parseLoopInstructionForGeneration generateInstruction
 {
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 #--- Variant
-  @string variantVarCppName
+  var @string variantVarCppName
   [self.mVariantExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?variantVarCppName]
 #--- Loop variable
   ioGeneratedCode += "if (" + variantVarCppName + ".isValid ()) {\n"
@@ -197,7 +197,7 @@ override method @parseLoopInstructionForGeneration generateInstruction
   ioGeneratedCode += "while (" + loopVar + ") {\n"
   [!?ioGeneratedCode incIndentation !2]
   ioGeneratedCode += loopVar + " = false ;\n"
-  @string whileVarCppName
+  var @string whileVarCppName
   [self.mWhileExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVarCppName]
   ioGeneratedCode += "if (" + whileVarCppName + ".isValidAndTrue ()) {\n"
   [!?ioGeneratedCode incIndentation !2]

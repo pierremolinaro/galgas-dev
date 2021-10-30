@@ -38,7 +38,7 @@ syntax galgas3OptionComponentSyntax (galgas3Scanner) {
     $option$
     $identifier$ ?let @lstring optionComponentName
     ${$
-    @commandLineOptionListAST options = {}
+    var @commandLineOptionListAST options = {}
     repeat
     while 
       <option_declaration> !?options
@@ -63,7 +63,7 @@ syntax galgas3OptionComponentSyntax (galgas3Scanner) {
     $->$
     $"string"$ ?var @lstring mOptionComment
     var defaultValue =@lstring.new{!"" !@location.here}
-    @optionDefaultValueEnumAST optionDefaultValueKind
+    var @optionDefaultValueEnumAST optionDefaultValueKind
     select
       optionDefaultValueKind = @optionDefaultValueEnumAST. noDefaultValue
     or
@@ -114,10 +114,10 @@ override method @optionComponentDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 {
-  @commandLineOptionMap boolOptionMap = {}
-  @commandLineOptionMap uintOptionMap = {}
-  @commandLineOptionMap stringOptionMap = {}
-  @commandLineOptionMap stringListOptionMap = {}
+  var @commandLineOptionMap boolOptionMap = {}
+  var @commandLineOptionMap uintOptionMap = {}
+  var @commandLineOptionMap stringOptionMap = {}
+  var @commandLineOptionMap stringListOptionMap = {}
   var optionNameSet = @stringset.emptySet
   for (mOptionTypeName mOptionInternalName mOptionInvocationLetter mOptionInvocationString mOptionComment mOptionDefaultValue mOptionDefaultValueKind) in self.mOptions do
     if [optionNameSet hasKey ![mOptionInternalName string]] then

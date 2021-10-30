@@ -9,14 +9,14 @@ map @aMap {
 
 proc testsuite_map {
   message "*************************************** begin of map\n"
-  @aMap m = {}
+  var @aMap m = {}
   [!?m insertKey !@lstring.new {!"g" !.here} !37]
   log m
   [!?m setValueForKey !56 !"g"]
   log m
   var mm = @aMap.mapWithMapToOverride {!m}
   log mm
-  @uint v
+  var @uint v
   [mm searchKey !@lstring.new {!"g" !.here} ?v]
   log v # Displays 56
   [!?mm insertKey !@lstring.new {!"g" !.here} !11]
@@ -25,10 +25,10 @@ proc testsuite_map {
   log v # Displays 11
   m = [mm overriddenMap]
   log m
-  @location loc = [m locationForKey !"g"]
+  var @location loc = [m locationForKey !"g"]
   log loc
 #---
-  @aMap otherMap = {
+  var @aMap otherMap = {
     !["A" nowhere] !1,
     !["B" nowhere] !2,
     !["C" nowhere] !3,

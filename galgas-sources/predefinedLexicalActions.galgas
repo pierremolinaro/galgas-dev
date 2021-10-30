@@ -35,8 +35,8 @@ getter @lexicalTypeEnum lexicalTypeBaseName -> @string {
 proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
   outLexicalRoutineMap = {}
 #--- enterHexDigitIntoASCIIcharacter
-  @lexicalRoutineFormalArgumentList lexicalRoutineFormalArgumentList = {}
-  @stringlist errorMessageList = {}
+  var @lexicalRoutineFormalArgumentList lexicalRoutineFormalArgumentList = {}
+  var @stringlist errorMessageList = {}
   lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_char !"ioASCIICharacter"
   lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_char !"inHexDigitCharacter"
   errorMessageList += !"inErrorCodeGreaterThan255"
@@ -515,10 +515,10 @@ proc buildLexicalFunctionMap !@lexicalFunctionMap outLexicalFunctionMap {
 
 proc printPredefinedLexicalActions {
 #--------------------------------------- Build lexical routine map
-  @lexicalRoutineMap lexicalRoutineMap
+  var @lexicalRoutineMap lexicalRoutineMap
   buildLexicalRoutineMap ( ?lexicalRoutineMap )
 #--------------------------------------- Display lexical routines
-  @string s = ""
+  var @string s = ""
   s += "**************** Prefined lexical routines  ****************\n"
   for (lkey mLexicalRoutineFormalArgumentList mErrorMessageList mIsExtern) in lexicalRoutineMap do
     s += [lkey string]
@@ -533,7 +533,7 @@ proc printPredefinedLexicalActions {
     s += " ;\n\n"
   end
 #--------------------------------------- Build lexical function map
-  @lexicalFunctionMap lexicalFunctionMap
+  var @lexicalFunctionMap lexicalFunctionMap
   buildLexicalFunctionMap (?lexicalFunctionMap )
 #--------------------------------------- Display lexical functions
   s += "**************** Prefined lexical functions ****************\n"

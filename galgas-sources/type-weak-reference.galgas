@@ -57,8 +57,8 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
 #  @typedPropertyList inheritedTypedAttributeList
 #  @propertyMap attributeMap = {}
 #--- Handle super class
-  @unifiedTypeMap-entry superClassIndex
-  @bool generateHeaderInSeparateFile
+  var @unifiedTypeMap-entry superClassIndex
+  var @bool generateHeaderInSeparateFile
   if [self.mSuperWeakReferenceTypeName string] == "" then
     superClassIndex = @unifiedTypeMap-entry.null
 #    commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?getterMap )
@@ -74,10 +74,10 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
     end
   else
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mSuperWeakReferenceTypeName ?superClassIndex]
-    @typeKindEnum typeKindEnum
-    @getterMap inheritedGetterMap
-    @setterMap inheritedSetterMap
-    @instanceMethodMap inheritedMethodMap
+    var @typeKindEnum typeKindEnum
+    var @getterMap inheritedGetterMap
+    var @setterMap inheritedSetterMap
+    var @instanceMethodMap inheritedMethodMap
     [ioSemanticContext.mTypeMap searchKey
       !self.mSuperWeakReferenceTypeName
       ?3*
@@ -165,7 +165,7 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
      ?var @unifiedTypeMap-entry weakReferenceIndex
   ]
 #--- Constructors
-  @constructorMap constructorMap = {}
+  var @constructorMap constructorMap = {}
   [!?constructorMap insertKey
     !@lstring.new {!"nil" !self.mWeakReferenceTypeName.location}
     !{}
@@ -215,9 +215,9 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
 #    end
 #  end
 #--- Add Extensions
-  @getterMap getterMap = {}
-  @setterMap setterMap = {}
-  @instanceMethodMap instanceMethodMap = {}
+  var @getterMap getterMap = {}
+  var @setterMap setterMap = {}
+  var @instanceMethodMap instanceMethodMap = {}
   addExtensions (
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext
@@ -299,10 +299,10 @@ override method @weakReferenceDeclarationAST semanticAnalysis
 #------ Super type, and class features
 # A class that has a super may not have any feature
 # A class without a super class admits the 'generatedInSeparateFile' feature
-  @typedPropertyList allAttributeList
+  var @typedPropertyList allAttributeList
   if superClassEntry == .null then
     allAttributeList = {}
-    @bool generatedInSeparateFileFeature = false
+    var @bool generatedInSeparateFileFeature = false
     if [self.mClassFeatureList length] > 0 then
       for (mValue) in self.mClassFeatureList do
         if [mValue string] == "generatedInSeparateFile" then
@@ -324,8 +324,8 @@ override method @weakReferenceDeclarationAST semanticAnalysis
     end
   end
 #------ Enter attributes
-  @typedPropertyList typedAttributeList = {}
-  @propertyIndexMap attributeMap = {}
+  var @typedPropertyList typedAttributeList = {}
+  var @propertyIndexMap attributeMap = {}
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
 #    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
 #    [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]

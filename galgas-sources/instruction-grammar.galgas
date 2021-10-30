@@ -77,7 +77,7 @@ syntax extension galgas3InstructionsSyntax {
     $grammar$
     let instructionLocation = @location.here
     $identifier$ ?let @lstring grammarComponentName indexing grammarComponentReference
-    @lstring labelName
+    var @lstring labelName
     select
       labelName = @lstring.new {!"" !@location.here}
     or
@@ -100,7 +100,7 @@ syntax extension galgas3InstructionsSyntax {
     let endOfSourceExpression = @location.here
     <actual_parameter_list> ?let @actualParameterListAST actualParameterList
   #--- Get syntax directed translation result string
-    @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
+    var @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or
@@ -127,10 +127,10 @@ syntax extension galgas3InstructionsSyntax {
     !@semanticInstructionAST outInstruction
   {
     $on$
-    @semanticExpressionAST sourceExpression
-    @location endOfSourceExpression
-    @semanticExpressionAST nameExpression
-    @location endOfNameExpression
+    var @semanticExpressionAST sourceExpression
+    var @location endOfSourceExpression
+    var @semanticExpressionAST nameExpression
+    var @location endOfNameExpression
     select
       <expression> ?sourceExpression
       endOfSourceExpression = .here
@@ -149,7 +149,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     <actual_parameter_list> ?let @actualParameterListAST actualParameterList
   #--- Get syntax directed translation result string
-    @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
+    var @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or

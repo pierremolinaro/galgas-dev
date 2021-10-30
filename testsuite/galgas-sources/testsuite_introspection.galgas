@@ -20,7 +20,7 @@ message "*************************************** begin of introspection test\n"
   message "--- Function list (" + [[functionList length] string]
   + " function" + if [functionList length] > 1 then "s" else "" end + ")\n"
   for (mValue) in functionList do
-    @string s = ""
+    var @string s = ""
     for (mValue) in [mValue formalParameterTypeList]
     do s += "?@" + [mValue name]
     between s += " "
@@ -34,7 +34,7 @@ message "*************************************** begin of introspection test\n"
   message "Function 'functionTest' exists:" + [b2 cString] + "\n"
 #--- Introspection of an @uint
   let @uint x = 2
-  @object object = [x object]
+  var @object object = [x object]
   log object
   let @uint y = ( object as @uint)
   log y
@@ -45,7 +45,7 @@ message "*************************************** begin of introspection test\n"
 #  t := [a dynamicType] ;
 #  log t ;
 #--- Function invocation
-  @function f = @function.functionWithName {!"functionTest"}
+  var @function f = @function.functionWithName {!"functionTest"}
   var arguments = @objectlist {}
   arguments += ![2 object]
   arguments += ![6 object]

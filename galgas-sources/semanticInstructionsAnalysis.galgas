@@ -198,7 +198,7 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
     error self.mActualSelector : "the selector should be '!?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
   end
 #--- Analyze input/output variable
-  @string variableCppName
+  var @string variableCppName
   [!?ioVariableMap searchForReadWriteAccess !self.mOutputInputActualParameterName ?var @unifiedTypeMap-entry parameterType ?variableCppName ?*]
   var typeList = @unifiedTypeMapEntryList.listWithValue {!parameterType}
   for (mValue) in self.mStructAttributeList do
@@ -673,7 +673,7 @@ proc analyzeRoutineArguments
     : outActualParameterListForGeneration
   else
     outActualParameterListForGeneration = {}
-    @stringset exclusiveVariableSet = {}
+    var @stringset exclusiveVariableSet = {}
     for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in inRoutineSignature, (mActualParameter) in inActualParameterList do
       [mActualParameter checkAgainstFormalArgument
         !inUsefulnessCallerEntityName

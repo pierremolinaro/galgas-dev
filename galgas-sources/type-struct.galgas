@@ -18,7 +18,7 @@ syntax extension galgas3DeclarationsSyntax {
     $struct$
     $@type$ ?let @lstring structTypeName indexing structDefinition
     ${$
-    @propertyInCollectionListAST propertyList = {}
+    var @propertyInCollectionListAST propertyList = {}
     repeat
     while
       <property_declaration> !?propertyList
@@ -83,14 +83,14 @@ override method @structDeclarationAST enterInSemanticContext
 #--- Struct type index
   [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mStructTypeName ?let structTypeIndex]
 #--- Constructors and property map
-  @propertyMap propertyMap = {}
-  @constructorMap constructorMap = {}
-  @functionSignature constructorPropertyTypeList = {}
-  @typedPropertyList typedPropertyList = {}
-  @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
+  var @propertyMap propertyMap = {}
+  var @constructorMap constructorMap = {}
+  var @functionSignature constructorPropertyTypeList = {}
+  var @typedPropertyList typedPropertyList = {}
+  var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
   for (isConstant mPropertyTypeName mPropertyName isPublic mAttributeList) in self.mStructurePropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let propertyTypeEntry]
-    @lstring selector = ["" nowhere]
+    var @lstring selector = ["" nowhere]
     for (mValue) in mAttributeList do
       if mValue.string == selectorFeatureForNewConstructor () then
         selector = mPropertyName
@@ -110,7 +110,7 @@ override method @structDeclarationAST enterInSemanticContext
     !structTypeIndex
   ]
 #--- Readers
-  @getterMap getterMap
+  var @getterMap getterMap
   commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?getterMap)
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in typedPropertyList do
     enterBaseFinalGetterWithoutArgument (
@@ -122,9 +122,9 @@ override method @structDeclarationAST enterInSemanticContext
     )
   end
 #--- Modifiers
-  @setterMap setterMap = {}
+  var @setterMap setterMap = {}
 #--- Instance methods
-  @instanceMethodMap instanceMethodMap = {}
+  var @instanceMethodMap instanceMethodMap = {}
 #--- Add Categories
   addExtensions (
     !inExtensionMethodMapForBuildingContext
@@ -137,7 +137,7 @@ override method @structDeclarationAST enterInSemanticContext
     !?instanceMethodMap
   )
 #--- Enumeration by "for" instruction
-  @unifiedTypeMap-entry enumeratedType
+  var @unifiedTypeMap-entry enumeratedType
   if self.mEnumeratedElementTypeName == "" then
     enumeratedType = @unifiedTypeMap-entry.null
   else
@@ -148,7 +148,7 @@ override method @structDeclarationAST enterInSemanticContext
     ]
   end
 #--- Generate a "default" constructor ?
-  @string defaultConstructorName = "default"
+  var @string defaultConstructorName = "default"
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in typedPropertyList while defaultConstructorName != "" do
     if ([mPropertyTypeEntry mDefaultConstructorName] == "") | not [mPropertyTypeEntry mIsConcrete] then
       defaultConstructorName = ""
@@ -214,8 +214,8 @@ override method @structDeclarationAST semanticAnalysis
   if [self.mStructurePropertyList length] == 0 then
     error self.mStructTypeName: "a structure cannot be empty: it must have at least one property" 
   end
-  @typedPropertyList typedPropertyList = {}
-  @propertyIndexMap propertyMap = {}
+  var @typedPropertyList typedPropertyList = {}
+  var @propertyIndexMap propertyMap = {}
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mStructurePropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]
@@ -237,7 +237,7 @@ override method @structDeclarationAST semanticAnalysis
       !hasSetter
       !hasSelector
     if [forbiddenKeysForStruct () hasKey !mPropertyName.string] then
-      @string m = "an property cannot be named:"
+      var @string m = "an property cannot be named:"
       for s in forbiddenKeysForStruct () do
         m+= " " + s
       end

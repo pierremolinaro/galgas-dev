@@ -17,7 +17,7 @@ syntax extension galgas3DeclarationsSyntax {
     $list$
     $@type$ ?var @lstring listTypeName indexing listDefinition, structDefinition "-element"
     ${$
-    @propertyInCollectionListAST propertyList = {}
+    var @propertyInCollectionListAST propertyList = {}
     repeat
       <property_declaration> !?propertyList
       select
@@ -64,7 +64,7 @@ override method @listDeclarationAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext
 {
 #--- Handle attributes
-  @typedPropertyList typedAttributeList = {}
+  var @typedPropertyList typedAttributeList = {}
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = mIsPublic
@@ -98,10 +98,10 @@ override method @listDeclarationAST enterInSemanticContext
     ?let @unifiedTypeMap-entry listElementTypeIndex
   ]
 #--- Property description
-  @enumerationDescriptorList enumerationDescriptor = {}
-  @functionSignature constructorAttributeTypeList = {}
-  @formalParameterSignature setterOutputFormalArgumentList = {}
-  @formalParameterSignature setterInputFormalArgumentList = {}
+  var @enumerationDescriptorList enumerationDescriptor = {}
+  var @functionSignature constructorAttributeTypeList = {}
+  var @formalParameterSignature setterOutputFormalArgumentList = {}
+  var @formalParameterSignature setterInputFormalArgumentList = {}
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in typedAttributeList do
     let selector = if mHasSelector then mPropertyName.string else "" end
     enumerationDescriptor += !mPropertyTypeEntry !mPropertyName.string
@@ -121,7 +121,7 @@ override method @listDeclarationAST enterInSemanticContext
       !mPropertyName.string
   end
 #--- Constructors
-  @constructorMap constructorMap = {}
+  var @constructorMap constructorMap = {}
   enterConstructorWithoutArgument (
     !?constructorMap
     !?ioSemanticContext.mTypeMap 
@@ -185,7 +185,7 @@ override method @listDeclarationAST enterInSemanticContext
     ]
   end
 #------------------------- Instance methods
-  @instanceMethodMap instanceMethodMap = {}
+  var @instanceMethodMap instanceMethodMap = {}
   [!?instanceMethodMap insertKey
     !@lstring.new {!"first" !@location.here}
     !@methodKind.definedAsMember
@@ -205,7 +205,7 @@ override method @listDeclarationAST enterInSemanticContext
     !""
   ]
 #----------------------------------------- Modifiers
-  @setterMap setterMap = {}
+  var @setterMap setterMap = {}
   [!?setterMap insertOrReplace
     !@lstring.new {!"append" !@location.here}
     !@methodKind.definedAsMember
@@ -314,7 +314,7 @@ override method @listDeclarationAST enterInSemanticContext
 override method @listDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList
 {
-  @propertyInCollectionListAST structAttributeList = {}
+  var @propertyInCollectionListAST structAttributeList = {}
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     structAttributeList +=
       !isConstant: isConstant
@@ -350,8 +350,8 @@ override method @listDeclarationAST semanticAnalysis
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!self.mListTypeName.string + "-element" !self.mListTypeName})
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #---
-  @typedPropertyList typedAttributeList = {}
-  @propertyIndexMap attributeMap = {}
+  var @typedPropertyList typedAttributeList = {}
+  var @propertyIndexMap attributeMap = {}
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]

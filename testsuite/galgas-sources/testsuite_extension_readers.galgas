@@ -27,8 +27,8 @@ override getter @B_B location -> @location outLocation { outLocation = .here}
 
 proc testsuite_extension_readers {
   message "*************************************** begin of extension reader test\n"
-  @B_B b = .new
-  @string s = [b otherReader !2 !"-"]
+  var @B_B b = .new
+  var @string s = [b otherReader !2 !"-"]
   log s
   if false then
     error b : "non displayed message"

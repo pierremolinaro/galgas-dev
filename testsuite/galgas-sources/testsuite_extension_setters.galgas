@@ -3,8 +3,8 @@
 proc testsuite_extension_setters {
   message "*************************************** begin of extension setter test\n"
   var v = @TestExtensionSetter.new {!1 !"Hello"}
-  @uint u = 2
-  @string s = " World"
+  var @uint u = 2
+  var @string s = " World"
   [!?v setter2 !?u !s]
   log u, v
   var w = @overridingTestExtensionSetter.new {!1 !"" !"" !2}
@@ -69,7 +69,7 @@ setter @adjMat addNode {
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 private proc typeCastInSetterCall {
-  @baseClassForTypeCastInSetterCall object = @inheritedClassForTypeCastInSetterCall.new
+  var @baseClassForTypeCastInSetterCall object = @inheritedClassForTypeCastInSetterCall.new
   [!?object as @inheritedClassForTypeCastInSetterCall unSetter]
 
 }

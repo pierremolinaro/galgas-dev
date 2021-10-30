@@ -24,7 +24,7 @@ private proc enterClassMethodWithInputArgument
   ?compilerArgument:let @bool inHasCompilerArgument
 {
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgumentTypeName ?let argumentTypeIndex]
-  @formalParameterSignature argList = {}
+  var @formalParameterSignature argList = {}
   argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inArgumentName
   [!?ioClassMethodMap insertOrReplace
     !.new {!inClassMethodName !.here}
@@ -47,7 +47,7 @@ private proc enterClassMethodWith3InputArguments
   ?argName3:let @string inArgumentName3
   ?compilerArgument:let @bool inHasCompilerArgument
 {
-  @formalParameterSignature argList = {}
+  var @formalParameterSignature argList = {}
 #--- Argument 1
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgumentTypeName1 ?let argumentTypeIndex1]
   argList += !["" nowhere] !argumentTypeIndex1 !.argumentConstantIn !inArgumentName1
@@ -71,7 +71,7 @@ private proc enterClassMethodWithStringInputArgument
   ?compilerArg:let @bool inHasCompilerArgument
 {
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"string" ?let argumentTypeIndex]
-  @formalParameterSignature argList = {}
+  var @formalParameterSignature argList = {}
   argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inStringArgumentName
   [!?ioClassMethodMap insertOrReplace
     !.new {!inClassMethodName !.here}
@@ -180,7 +180,7 @@ override method @stringPredefinedTypeAST getClassMethodMap
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"string" ?let @unifiedTypeMap-entry stringType]
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"bool" ?let @unifiedTypeMap-entry boolType]
 #--- Generate file
-  @formalParameterSignature argList = {}
+  var @formalParameterSignature argList = {}
   argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inStartPath"
   argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileName"
   argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inContents"

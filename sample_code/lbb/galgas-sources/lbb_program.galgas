@@ -9,12 +9,12 @@ case . "lbb"
 message "a source text file with the .lbb extension"
 ?sourceFilePath:@lstring inSourceFile {
 #--- Build AST
-  @programAST programAST
+  var @programAST programAST
   grammar lbb_grammar in inSourceFile ?programAST
 #--- Build box type map
-  @boxTypeMap boxTypeMap = {}
+  var @boxTypeMap boxTypeMap = {}
   for (mBoxTypeName mPortNameList) in  [programAST mBoxTypeListAST] do
-    @stringset portStringSet = {}
+    var @stringset portStringSet = {}
     for (mValue) in  mPortNameList do
       if [portStringSet hasKey !mValue.string] then
         error mValue : "the '" + mValue + "' port is already declared"
@@ -24,18 +24,18 @@ message "a source text file with the .lbb extension"
     [!?boxTypeMap insertKey !mBoxTypeName !mPortNameList]
   end
 #--- Build box map and connections
-  @boxInstanceMap boxInstanceMap = .emptyMap
+  var @boxInstanceMap boxInstanceMap = .emptyMap
   for (mBoxTypeName mBoxInstanceName mConnectionList) in  [programAST mBoxInstanceListAST] do
-    @lstringlist portNameList
+    var @lstringlist portNameList
     [boxTypeMap searchKey !mBoxTypeName ?portNameList]
     if [portNameList length] != [mConnectionList length] then
       error mBoxInstanceName: "this instance names " + [mConnectionList length]
       + " connection(s), although the '" + mBoxTypeName + "' type declares "
       + [portNameList length] + " ports"
     end
-    @connectionMap connectionMap = {}
+    var @connectionMap connectionMap = {}
     for (mValue) in  portNameList, (mConnectedBoxName mOppositePortName) in  mConnectionList do
-      @boxInstanceMap-entry connectedBoxEntry
+      var @boxInstanceMap-entry connectedBoxEntry
       [@boxInstanceMap-entry makeEntry !?boxInstanceMap !mConnectedBoxName ?connectedBoxEntry]
       [!?connectionMap insertKey !mValue !connectedBoxEntry !mOppositePortName]
     end
@@ -49,9 +49,9 @@ message "a source text file with the .lbb extension"
   if @uint. errorCount == 0 then
     for (box_lkey box_mConnectionMap) in  boxInstanceMap do
       for (lkey mBoxEntry mOppositePortName) in  box_mConnectionMap do
-        @connectionMap oppositeConnectionMap = [mBoxEntry mConnectionMap]
-        @boxInstanceMap-entry oppositeOfOppositeBox
-        @lstring myPortName
+        var @connectionMap oppositeConnectionMap = [mBoxEntry mConnectionMap]
+        var @boxInstanceMap-entry oppositeOfOppositeBox
+        var @lstring myPortName
         [oppositeConnectionMap searchKey !mOppositePortName ?oppositeOfOppositeBox ?myPortName]
         if [oppositeOfOppositeBox key] != box_lkey.string then
           error mOppositePortName : "the opposite connection does not name this box, but '" + [oppositeOfOppositeBox key] + "' box"

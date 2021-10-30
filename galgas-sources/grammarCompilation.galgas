@@ -20,7 +20,7 @@ func transformLabelMap
 {
   outNonterminalSymbolLabelMapForGrammarAnalysis = {}
   for (mLabelName mFormalArgumentList mEndOfArgumentLocation) in inLabels do
-    @signatureForGrammarAnalysis formalParametersList = {}
+    var @signatureForGrammarAnalysis formalParametersList = {}
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFormalArgumentList do
       formalParametersList += !mFormalArgumentPassingMode !mFormalArgumentTypeName
     end
@@ -39,10 +39,10 @@ proc checkLabelMap
   ?let @location inOriginalNonTerminalLocation
   ?let @nonterminalSymbolLabelMapForGrammarAnalysis inNonterminalSymbolLabelMapForGrammarAnalysis
 {
-  @stringset labelStringSet = {}
+  var @stringset labelStringSet = {}
   for (mLabelName mFormalArgumentList mEndOfArgumentLocation) in inLabels do
     labelStringSet += ![mLabelName string]
-    @signatureForGrammarAnalysis formalParametersList
+    var @signatureForGrammarAnalysis formalParametersList
     [inNonterminalSymbolLabelMapForGrammarAnalysis searchKey !mLabelName ?formalParametersList]
     if [mFormalArgumentList length] != [formalParametersList length] then
       error mLabelName: [[mFormalArgumentList length] string]
@@ -185,11 +185,11 @@ proc buildRuleList
   ?!@uint ioAddedNonTerminalCount {
   var productionRulesList =@productionRuleListForGrammarAnalysis {}
   for (mNonterminalName mLabelList) in inRuleList do
-    @uint nonTerminalIndex
-    @nonterminalSymbolLabelMapForGrammarAnalysis nonterminalSymbolParametersMap
+    var @uint nonTerminalIndex
+    var @nonterminalSymbolLabelMapForGrammarAnalysis nonterminalSymbolParametersMap
     [inNonTerminalMapForGrammarAnalysis searchKey !mNonterminalName ?nonTerminalIndex ?nonterminalSymbolParametersMap]
   #--- Retrieve instruction list from first label
-    @syntaxInstructionList parsedSyntaxInstructionList [mLabelList first ?* ?* ?* ?parsedSyntaxInstructionList ?*]
+    var @syntaxInstructionList parsedSyntaxInstructionList [mLabelList first ?* ?* ?* ?parsedSyntaxInstructionList ?*]
   #--- Transform instruction list
     var instructionList =@syntaxInstructionListForGrammarAnalysis {}
     transformInstructionList (

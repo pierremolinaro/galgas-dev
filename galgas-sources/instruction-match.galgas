@@ -46,7 +46,7 @@ syntax extension galgas3InstructionsSyntax {
   
   rule <match_entry> ?!@matchEntryListAST ioMatchEntryList {
     $@type$ ?let className
-    @lstring localConstant
+    var @lstring localConstant
     select
       localConstant = @lstring.new {!"" !@location.here}
     or
@@ -62,7 +62,7 @@ syntax extension galgas3InstructionsSyntax {
   
   rule <match_instruction_branch> ?!@matchInstructionBranchListAST ioMatchInstructionBranchList {
     $case$
-    @matchEntryListAST mMatchEntryList = {}
+    var @matchEntryListAST mMatchEntryList = {}
     repeat
       <match_entry> !? mMatchEntryList
     while
@@ -70,7 +70,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     let endOfMatchEntryList = @location.here
     $:$
-    @semanticInstructionListAST mMatchBranchInstructionList
+    var @semanticInstructionListAST mMatchBranchInstructionList
     <semantic_instruction_list> ? mMatchBranchInstructionList
     ioMatchInstructionBranchList +=
       !mMatchEntryList
@@ -83,7 +83,7 @@ syntax extension galgas3InstructionsSyntax {
   
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $match$
-    @semanticExpressionListAST matchedExpressionNameList = {}
+    var @semanticExpressionListAST matchedExpressionNameList = {}
     let instructionLocation = @location.here
     <expression> ?let @semanticExpressionAST receiverExpression
     matchedExpressionNameList += !receiverExpression !@location.here
@@ -93,12 +93,12 @@ syntax extension galgas3InstructionsSyntax {
       matchedExpressionNameList += !expression !@location.here
     while
     end
-    @matchInstructionBranchListAST matchInstructionBranchList = {}
+    var @matchInstructionBranchListAST matchInstructionBranchList = {}
     repeat
       <match_instruction_branch> !? matchInstructionBranchList
     while
     end
-    @semanticInstructionListAST elseInstructionList
+    var @semanticInstructionListAST elseInstructionList
     select
       elseInstructionList = {}
     or
@@ -181,8 +181,8 @@ override method @matchInstructionAST analyzeSemanticInstruction
         if [[type mTypeKindEnum] isClassType] then
           if mIsType then
             let namedType = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeNameOrEnumerationConstantName}
-            @unifiedTypeMap-entry t = type
-            @bool found = t == namedType
+            var @unifiedTypeMap-entry t = type
+            var @bool found = t == namedType
             loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
             while (not found) & not [[t mSuperType] isNull] do
               t = [t mSuperType]
@@ -221,7 +221,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
       + [[mMatchEntryList length] string]
     end
   #--- Instruction list
-    @semanticInstructionListForGeneration instructionList
+    var @semanticInstructionListForGeneration instructionList
     analyzeSemanticInstructionList (
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -237,7 +237,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
     matchInstructionBranchList += !matchListForGeneration !instructionList
   end
 #--- 'else' branch
-  @semanticInstructionListForGeneration elseInstructionList
+  var @semanticInstructionListForGeneration elseInstructionList
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph

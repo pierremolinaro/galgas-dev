@@ -237,7 +237,7 @@ override method @lexicalAttributeInputArgumentAST checkLexicalFunctionCallArgume
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 #--- Check attribute definition
-  @lexicalTypeEnum attributeLexicalType
+  var @lexicalTypeEnum attributeLexicalType
   [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey
     !self.mAttributeName
     ?attributeLexicalType
@@ -300,9 +300,9 @@ override method @lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgumen
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 #--- Check attribute definition
-  @lexicalFunctionFormalArgumentList lexicalFormalTypeList
-  @lexicalTypeEnum returnedLexicalFormalType
-  @string replacementFunctionName
+  var @lexicalFunctionFormalArgumentList lexicalFormalTypeList
+  var @lexicalTypeEnum returnedLexicalFormalType
+  var @string replacementFunctionName
   [[ioLexiqueAnalysisContext mLexicalFunctionMap] searchKey
     !self.mFunctionName
     ?lexicalFormalTypeList
@@ -352,7 +352,7 @@ override method @lexicalAttributeInputArgumentAST checkLexicalRoutineCallArgumen
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 #--- Check attribute definition
-  @lexicalTypeEnum attributeLexicalType
+  var @lexicalTypeEnum attributeLexicalType
   [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey
     !self.mAttributeName
     ?attributeLexicalType
@@ -415,9 +415,9 @@ override method @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 #--- Check attribute definition
-  @lexicalFunctionFormalArgumentList lexicalFormalTypeList
-  @lexicalTypeEnum returnedLexicalFormalType
-  @string replacementFunctionName
+  var @lexicalFunctionFormalArgumentList lexicalFormalTypeList
+  var @lexicalTypeEnum returnedLexicalFormalType
+  var @string replacementFunctionName
   [[ioLexiqueAnalysisContext mLexicalFunctionMap] searchKey
     !self.mFunctionName
     ?lexicalFormalTypeList
@@ -469,7 +469,7 @@ override method @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallA
   ?@lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 #--- Check attribute definition
-  @lexicalTypeEnum attributeLexicalType
+  var @lexicalTypeEnum attributeLexicalType
   [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey
     !self.mAttributeName
     ?attributeLexicalType
@@ -574,8 +574,8 @@ override method @lexicalSelectInstructionAST checkLexicalInstruction
 override method @lexicalRoutineInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap {
-  @lexicalRoutineFormalArgumentList lexicalRoutineFormalArgumentList
-  @stringlist routineErrorMessageList
+  var @lexicalRoutineFormalArgumentList lexicalRoutineFormalArgumentList
+  var @stringlist routineErrorMessageList
   [[ioLexiqueAnalysisContext mLexicalRoutineMessageMap] searchKey
     !self.mRoutineName
     ?lexicalRoutineFormalArgumentList
@@ -680,7 +680,7 @@ override method @lexicalImplicitRuleAST checkLexicalRule
 override method @lexicalExplicitRuleAST checkLexicalRule
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
   [self.mLexicalRuleExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
-  @lexicalTagMap tagMap = {}
+  var @lexicalTagMap tagMap = {}
   for (mInstruction) in self.mInstructionList do
     [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
   end

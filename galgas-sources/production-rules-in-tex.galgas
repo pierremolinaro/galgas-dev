@@ -107,10 +107,10 @@ method @productionRuleListForGrammarAnalysis-element displayRule
   ?let @string inSyntaxCompnentName
   ?!@string ioGeneratedCode
 {
-  @string currentNode = "P0start"
-  @rowList rowArray = {!{!currentNode !"[firstPoint] {}"}}
-  @string arrows = ""
-  @string arrowStyle = "--"
+  var @string currentNode = "P0start"
+  var @rowList rowArray = {!{!currentNode !"[firstPoint] {}"}}
+  var @string arrows = ""
+  var @string arrowStyle = "--"
   var column = 1
   var unusedMaxUsedRowIndex = 0 # Unused
   for (instruction) in self.mInstructionList do
@@ -161,14 +161,14 @@ method @productionRuleListForGrammarAnalysis-element displayRuleVertically
   ?let @string inSyntaxCompnentName
   ?!@string ioGeneratedCode
 {
-  @string currentNode = "P0start"
-  @rowList rowArray = {}
+  var @string currentNode = "P0start"
+  var @rowList rowArray = {}
   for i in 1 ..< [self.mInstructionList length] do
     rowArray += !{!"" !""}
   end
   rowArray += !{!currentNode !"[firstPoint] {}"}
-  @string arrows = ""
-  @string arrowStyle = "--"
+  var @string arrows = ""
+  var @string arrowStyle = "--"
   var unusedMaxUsedRowIndex = 0 # Unused
   var row = [self.mInstructionList length]
   for (instruction) in self.mInstructionList do
@@ -399,7 +399,7 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   ]
   var endColumn = branchZeroColumn
 #--- Enter following branches
-  @stringlist endingNodes = {}
+  var @stringlist endingNodes = {}
   for branch in branches do
     maxUsedRowIndex ++
     var branchColumn = ioColumn
@@ -501,7 +501,7 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
     oneEmptyBranch = [firstBranch length] == 0
   end
 #--- Enter branches
-  @stringlist endingNodes = {}
+  var @stringlist endingNodes = {}
   if oneEmptyBranch then
     endingNodes += !startNodeName
   else

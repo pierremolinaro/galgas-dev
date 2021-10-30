@@ -23,7 +23,7 @@ syntax galgas3GrammarComponentSyntax (galgas3Scanner) {
 
 rule <declaration>
  ?!@galgas3DeclarationAST ioDeclarations {
-  @lbool hasIndexing
+  var @lbool hasIndexing
   select
     hasIndexing = @lbool.new {!false !@location.here}
   or
@@ -34,7 +34,7 @@ rule <declaration>
   $identifier$ ?var  @lstring mGrammarName indexing grammarComponentDefinition
   $"string"$ ?var  @lstring mGrammarClass
 #--- Feature translate
-  @bool hasTranslateFeature
+  var @bool hasTranslateFeature
   select
     hasTranslateFeature = false
   or
@@ -46,7 +46,7 @@ rule <declaration>
   end
   ${$
 #--- Imports
-  @lstringlist syntaxComponents = {}
+  var @lstringlist syntaxComponents = {}
   repeat
     $syntax$
     $identifier$ ?var  @lstring syntaxComponent
@@ -90,8 +90,8 @@ rule <declaration>
 rule <grammar_start_symbol_label>
   ?let @lstring inLabelName
   ?!@nonTerminalLabelListAST ioLabelList {
-  @stringset argumentNameSet = {}
-  @formalParameterListAST mFormalParameterList = {}
+  var @stringset argumentNameSet = {}
+  var @formalParameterListAST mFormalParameterList = {}
   repeat
   while
     <label_formal_parameter> ?let argumentName !?mFormalParameterList

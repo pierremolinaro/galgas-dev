@@ -13,7 +13,7 @@ proc testsuite_list {
   strList += !"c"
   strList += !"d"
   message "*************************************** begin of list direct access\n"
-  @string s = [strList mValueAtIndex !0]
+  var @string s = [strList mValueAtIndex !0]
   log s
   s = [strList mValueAtIndex !1]
   log s

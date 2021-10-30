@@ -70,7 +70,7 @@ override method @ifExpressionAST analyzeSemanticExpression
     ?let @semanticExpressionForGeneration if_expression
   ]
 #--- 'then' expression analysis
-  @semanticExpressionForGeneration then_expression
+  var @semanticExpressionForGeneration then_expression
   [self.mThenExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -80,7 +80,7 @@ override method @ifExpressionAST analyzeSemanticExpression
     ?then_expression
   ]
 #--- 'else' expression analysis
-  @semanticExpressionForGeneration else_expression
+  var @semanticExpressionForGeneration else_expression
   [self.mElseExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph

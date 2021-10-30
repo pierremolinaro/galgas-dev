@@ -24,11 +24,11 @@ syntax extension galgas3DeclarationsSyntax {
     $getter$
     $@type$ ?var  @lstring className indexing typeReferenceExtensionGetter
     $identifier$ ?var  @lstring mMethodName indexing extensionGetterDefinition
-    @formalInputParameterListAST mFormalInputParameterList
+    var @formalInputParameterListAST mFormalInputParameterList
     <formal_input_parameter_list> ? mFormalInputParameterList
     $->$
     $@type$ ?var  @lstring mReturnedTypeName
-    @lstring resultVariableName
+    var @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
     or
@@ -123,9 +123,9 @@ override method @extensionGetterAST semanticAnalysis
   [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 #--- Self type
   let @unifiedTypeMap-entry selfType = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mTypeName}
-  @string selfObjectName
-  @string selfObjectAccessor
-  @bool implementedAsFunction
+  var @string selfObjectName
+  var @string selfObjectAccessor
+  var @bool implementedAsFunction
 #--- Check self type is a class
   if [[selfType mTypeKindEnum] isClassType] then
     selfObjectName = "object"
@@ -145,10 +145,10 @@ override method @extensionGetterAST semanticAnalysis
     !@unifiedTypeMap-entry.null
     !selfObjectAccessor
   }
-  @unifiedTypeMap-entry returnType
-  @string returnVariableCppName
-  @formalInputParameterListForGeneration formalParameterListForGeneration
-  @semanticInstructionListForGeneration semanticInstructionListForGeneration
+  var @unifiedTypeMap-entry returnType
+  var @string returnVariableCppName
+  var @formalInputParameterListForGeneration formalParameterListForGeneration
+  var @semanticInstructionListForGeneration semanticInstructionListForGeneration
   analyzeFunctionBody (
     !nameForUsefulness
     !?ioUsefulEntitiesGraph
@@ -290,8 +290,8 @@ override method @extensionGetterForGeneration appendSpecificImplementation
     ] 
   else
     [self.mReceiverType addHeaderFileName !?ioInclusionSet]
-    @unifiedTypeMap-entry baseType = self.mReceiverType
-    @bool searching = true
+    var @unifiedTypeMap-entry baseType = self.mReceiverType
+    var @bool searching = true
     loop( @uint. max) while searching do
       if not [[baseType mSuperType] isNull] then
         if [[[baseType mSuperType] mGetterMap] hasKey !self.mExtensionGetterName] then

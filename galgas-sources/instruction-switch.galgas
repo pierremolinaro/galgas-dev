@@ -39,7 +39,7 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
     <expression> ?let switchExpression
     let endOfSwitchExpression = @location.here
-    @switchBranchesAST switchBranches = {}
+    var @switchBranchesAST switchBranches = {}
     repeat
       $case$
       <switch_case>
@@ -96,13 +96,13 @@ syntax extension galgas3InstructionsSyntax {
           $*$
           outAssociatedValuesExtraction += !["" nowhere] !["" nowhere] !false
          or
-          @lstring typeName
+          var @lstring typeName
           select
             $@type$ ?typeName
           or
             typeName = ["" nowhere]
           end
-          @bool constantMarkedAsUnused
+          var @bool constantMarkedAsUnused
           select
             constantMarkedAsUnused = false
           or
@@ -147,7 +147,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap
 {
 #--- Analyze switch expression
-  @semanticExpressionForGeneration switchExpression
+  var @semanticExpressionForGeneration switchExpression
   [self.mSwitchExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -164,13 +164,13 @@ override method @switchInstructionAST analyzeSemanticInstruction
   end
 #--- Enum constant map
   let enumConstantMap = [[switchExpression mResultType] mEnumConstantMap]
-  @stringset constantsNamedInSwitchInstruction = {}
+  var @stringset constantsNamedInSwitchInstruction = {}
 #--- Analyze branches
   [!?ioVariableMap openOverrideForSelectBlock]
-  @switchBranchesForGeneration switchBranchesForGeneration = {}
+  var @switchBranchesForGeneration switchBranchesForGeneration = {}
   for (mSwitchConstantList mAssociatedValuesExtraction mInstructions mEndOfBranch) in self.mBranches do
-    @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = {}
-    @bool firstConstant = true
+    var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = {}
+    var @bool firstConstant = true
     for (mValue) in mSwitchConstantList do
       if [enumConstantMap hasKey ![mValue string]] then
         if [constantsNamedInSwitchInstruction hasKey ![mValue string]] then
@@ -232,7 +232,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
 #--- Check all constants have been named
   let forgottenConstants = [enumConstantMap keySet] - constantsNamedInSwitchInstruction
   if [forgottenConstants count] > 0 then
-    @string s = ""
+    var @string s = ""
     for (key) in forgottenConstants do
       s += "\n  - " + key
     end

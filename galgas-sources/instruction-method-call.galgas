@@ -69,10 +69,10 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     ?let @semanticExpressionForGeneration receiverExpression
   ]
 #--- Get type method signature
-  @formalParameterSignature routineSignature
-  @bool hasCompilerArgument
-  @methodKind kind
-  @string errorMessage
+  var @formalParameterSignature routineSignature
+  var @bool hasCompilerArgument
+  var @methodKind kind
+  var @string errorMessage
   [[[receiverExpression mResultType] mInstanceMethodMap] searchKey !self.mMethodName ?kind ?routineSignature ?* ?hasCompilerArgument ?* ?errorMessage]
   if errorMessage != "" then
     error self.mMethodName : errorMessage
@@ -150,7 +150,7 @@ override method @methodCallInstructionForGeneration generateInstruction
   var jokerParametersToReleaseList =@stringlist {}
   var inputVariableList =@stringlist {}
   for (mActualParameter) in self.mActualParameterList do
-    @string parameterCppName
+    var @string parameterCppName
     [mActualParameter generateActualParameter !?ioInclusionSet !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName]
     parameterCppNameList += !parameterCppName
   end

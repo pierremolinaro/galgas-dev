@@ -20,8 +20,8 @@ proc checkAssignmentTypes
   ?let @unifiedTypeMap-entry inSourceType
   ?let @location inErrorLocation
 {
-  @unifiedTypeMap-entry sourceType = inSourceType
-  @bool ok = inTargetType == sourceType
+  var @unifiedTypeMap-entry sourceType = inSourceType
+  var @bool ok = inTargetType == sourceType
   loop (@uint.max) while (not ok) & (not [[sourceType mSuperType] isNull]) do
     sourceType = [sourceType mSuperType]
     ok = inTargetType == sourceType
@@ -48,8 +48,8 @@ proc checkAssignmentTypeWithImplicitGetterCall
   ?let @location inErrorLocation
   ?!@semanticExpressionForGeneration ioRightExpression
 {
-  @unifiedTypeMap-entry sourceType = inSourceType
-  @bool ok = inTargetType == inSourceType
+  var @unifiedTypeMap-entry sourceType = inSourceType
+  var @bool ok = inTargetType == inSourceType
   loop (@uint.max) while (not ok) & (not [[sourceType mSuperType] isNull]) do
     sourceType = [sourceType mSuperType]
     ok = inTargetType == sourceType
@@ -110,17 +110,17 @@ proc checkDiadicOperator
     : "left operand type is '@" + [inLeftType key] + "' and does not accept '" + inOperatorNameForErrorMessage 
       + "' operator (right operand type is '@" + [inRightType key] + ")"
   else
-    @unifiedTypeMap-entry rightType = inRightType
-    @bool ok = inLeftType == rightType
+    var @unifiedTypeMap-entry rightType = inRightType
+    var @bool ok = inLeftType == rightType
     loop (@uint.max) while (not ok) & (not [[rightType mSuperType] isNull]) do
       rightType = [rightType mSuperType]
       ok = inLeftType == rightType
     end
   #--- Check if there is a conversion getter
     if (not ok) && [[inRightType mGetterMap] hasKey ![inLeftType key]] then
-      @bool hasCompilerArgument
-      @unifiedTypeMap-entry returnedType
-      @methodKind kind
+      var @bool hasCompilerArgument
+      var @unifiedTypeMap-entry returnedType
+      var @methodKind kind
       [[inRightType mGetterMap] searchKey
         ![inLeftType lkey]
         ?kind

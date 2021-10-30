@@ -104,7 +104,7 @@ override method @selectInstruction analyzeSyntaxInstruction
 #--- 'or' blocks
   var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration {}
   for (mSyntaxInstructionList mEndOf_instructions) in self.mSelectBranchList do
-    @semanticInstructionListForGeneration instructionList
+    var @semanticInstructionListForGeneration instructionList
     analyzeSyntaxInstructionList (
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph

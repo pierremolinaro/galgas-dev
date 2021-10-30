@@ -86,18 +86,18 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
     var nombreModifications = 0
     while loop {
       print (String (repeating: "-", count: 79))
-      let (s, status) = runHiddenCommand ("/usr/local/bin/galgas", ["--error-old-style-property-declaration", "--no-color", "--max-errors=1", inCheminFichierGALGAS])
+      let (s, status) = runHiddenCommand ("/usr/local/bin/galgas", ["--error-old-style-local-var-declaration", "--no-color", "--max-errors=1", inCheminFichierGALGAS])
       if status == 0 {
         print (BOLD_GREEN + "Succès !" + ENDC)
         loop = false
         ok = true
       }else if status == 1 {
-        // print (CYAN + s + ENDC)
+    //    print (CYAN + s + ENDC)
         let lines = s.components (separatedBy: "\n")
         var lineIndex = 0
         var found = false
         while (lineIndex < lines.count) && !found {
-          found = lines [lineIndex].hasPrefix ("semantic error #1: old style property declaration (due to '--error-old-style-property-declaration' option)")
+          found = lines [lineIndex].hasPrefix ("semantic error #1: old style local variable declaration (due to '--error-old-style-local-var-declaration' option)")
           lineIndex += 1
         }
         loop = found

@@ -42,7 +42,7 @@ rule <declaration>
   $syntax$
   $identifier$ ?let @lstring syntaxComponentName
 #--- Imported lexique
-  @lstring importedLexiqueReference
+  var @lstring importedLexiqueReference
   select
     importedLexiqueReference = ["" nowhere]
   or
@@ -51,7 +51,7 @@ rule <declaration>
     $)$
   end
 #--- Feature 'translate'
-  @bool hasTranslateFeature
+  var @bool hasTranslateFeature
   select
     hasTranslateFeature = false
   or
@@ -122,7 +122,7 @@ rule <declaration>
 rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList {
   $rule$
   $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
-  @nonTerminalLabelListAST labels = {}
+  var @nonTerminalLabelListAST labels = {}
   <formal_parameter_list> ?let @formalParameterListAST firstBranchFormalParameters
   labels += !.new {!"" !.here} !firstBranchFormalParameters !.here
 #  <nonterminal_label_declaration> !@lstring.new {!"" !@location.here} !?labels
@@ -146,7 +146,7 @@ rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDec
 rule <syntax_rule_label>
   ?let @lstring inLabelName
   ?!@syntaxRuleLabelListAST ioLabelList {
-  @formalParameterListAST mFormalParameters
+  var @formalParameterListAST mFormalParameters
   <formal_parameter_list> ? mFormalParameters
   let endOfArguments = @location.here
   ${$

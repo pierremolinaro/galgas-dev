@@ -62,7 +62,7 @@ syntax extension galgas3InstructionsSyntax {
     $then$
     <semantic_instruction_list> ?let then_instructionList
     let endOf_then_branchLocation = @location.here
-    @semanticInstructionListAST else_instructionList
+    var @semanticInstructionListAST else_instructionList
     select
       else_instructionList = @semanticInstructionListAST.emptyList
     or
@@ -131,7 +131,7 @@ syntax extension galgas3InstructionsSyntax {
         $[$
         <expression> ?let @semanticExpressionAST receiverExpression
         $identifier$ ?let @lstring optionalMethodName
-        @optionalMethodActualArgumentList optionalMethodActualArgumentList = {}
+        var @optionalMethodActualArgumentList optionalMethodActualArgumentList = {}
         repeat
         while
           $!$ ?let selector
@@ -141,7 +141,7 @@ syntax extension galgas3InstructionsSyntax {
           $?$ ?let selector
           select
             $let$
-            @lstring typeName 
+            var @lstring typeName 
             select
               typeName = ["" nowhere]
             or
@@ -151,7 +151,7 @@ syntax extension galgas3InstructionsSyntax {
             optionalMethodActualArgumentList += !selector !.actualLetInput {!typeName: typeName !constantName: constantName}
           or
             $var$
-            @lstring typeName 
+            var @lstring typeName 
             select
               typeName = ["" nowhere]
             or
@@ -258,7 +258,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap
 {
 #--- Test expression
-  @ifTestListForGeneration testListForGeneration = {}
+  var @ifTestListForGeneration testListForGeneration = {}
   for (expression) in self.mExpressions do
     switch expression
     case regularExp (exp) :
@@ -299,8 +299,8 @@ override method @ifInstructionAST analyzeSemanticInstruction
           castType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !typeName}
           testType = castType
         #--- Check expression type is a descendant of named type
-          @unifiedTypeMap-entry t = castType
-          @bool found = t == [analyzedExpression mResultType]
+          var @unifiedTypeMap-entry t = castType
+          var @bool found = t == [analyzedExpression mResultType]
           loop ([inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
           while (not found) & not [[t mSuperType] isNull] do
             t = [t mSuperType]
@@ -319,8 +319,8 @@ override method @ifInstructionAST analyzeSemanticInstruction
           castType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !typeName}
         end
         testType = castType
-        @unifiedTypeMap-entry t = castType
-        @bool found = t == [analyzedExpression mResultType]
+        var @unifiedTypeMap-entry t = castType
+        var @bool found = t == [analyzedExpression mResultType]
         if found then
           [[castType mTypeKindEnum] weakReferenceType ?referenceType: testType]
         elsif t == classType then
@@ -442,7 +442,7 @@ private proc analyzeOptionalMethodCall
   let @unifiedTypeMap-entry receiverType = [receiverExpression mResultType]
   let @optionalMethodMap optionalMethodMap = [receiverType mOptionalMethodMap]
 #--- Search optional method
-  @optionalMethodSignature optionalMethodSignature
+  var @optionalMethodSignature optionalMethodSignature
   with inOptionalMethodName.string in optionalMethodMap do
     optionalMethodSignature = mArgumentTypeList
   else
@@ -459,7 +459,7 @@ private proc analyzeOptionalMethodCall
     + [optionalMethodSignature length] + " parameter(s), while this call has "
     + [inActualParameters length] + " parameter(s)"
   else
-    @optionalMethodActualArgumentListForGeneration actualParameterList = {}
+    var @optionalMethodActualArgumentListForGeneration actualParameterList = {}
     for (actualSelector actualParameter) in inActualParameters,
         (isInput formalSelector formalType *) in optionalMethodSignature do
       switch actualParameter
@@ -644,7 +644,7 @@ override method @ifInstructionForGeneration generateInstruction
         !?ioUnusedVariableCppNameSet
         ?let cppVarName
       ]
-      @stringlist actualParameterNameList = {}
+      var @stringlist actualParameterNameList = {}
       for (parameter) in parameters do
         switch parameter
         case actualOutput (expression) :

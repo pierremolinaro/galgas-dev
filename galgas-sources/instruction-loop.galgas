@@ -92,7 +92,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Variant expression
-  @semanticExpressionForGeneration variantExpression
+  var @semanticExpressionForGeneration variantExpression
   [self.mVariantExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -107,7 +107,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
     : "the variant expression type should be '@" + [inAnalysisContext.mPredefinedTypes.mUIntType key] + "', but it has '@" + [[variantExpression mResultType] key] + "' type"
   end
 #--- Loop expression
-  @semanticExpressionForGeneration loopExpression
+  var @semanticExpressionForGeneration loopExpression
   [self.mLoopExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -124,7 +124,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
 #--- Begin override for analyze loop instruction list
   [!?ioVariableMap openOverrideForRepeatBlock]
 #--- First branch
-  @semanticInstructionListForGeneration first_instructionList
+  var @semanticInstructionListForGeneration first_instructionList
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -137,7 +137,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
     ?first_instructionList
   )
 #--- Second branch
-  @semanticInstructionListForGeneration second_instructionList
+  var @semanticInstructionListForGeneration second_instructionList
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -205,7 +205,7 @@ override method @loopInstructionForGeneration generateInstruction
     !inGenerateSyntaxDirectedTranslationString
     !?ioGeneratedCode
   )
-  @string loopExpressionVar
+  var @string loopExpressionVar
   [self.mLoopExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?loopExpressionVar]
   ioGeneratedCode += loopVar + " = " + loopExpressionVar + ".isValid () ;\n"
                    + "if (" + loopVar + ") {\n"

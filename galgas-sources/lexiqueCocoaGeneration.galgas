@@ -144,7 +144,7 @@ override getter @lexicalAttributeInputOutputArgumentAST generateCocoaRoutineArgu
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
 {
-  @lexicalTypeEnum lexicalType
+  var @lexicalTypeEnum lexicalType
   [[inLexiqueAnalysisContext mLexicalAttributeMap] searchKey !self.mAttributeName ?lexicalType]
   outGeneratedCode = ""
   if [lexicalType needsReferenceInInputOutputInCocoa] then
@@ -371,7 +371,7 @@ override getter @lexicalImplicitRuleAST generateCocoaCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
-  @tokenSortedlist tokenSortedList
+  var @tokenSortedlist tokenSortedList
   [[inLexiqueAnalysisContext mLexicalTokenListMap] searchKey !self.mListName ?* ?tokenSortedList ?*]
   outGeneratedCode = ""
   for > (mLength mName mTerminalName) in tokenSortedList do

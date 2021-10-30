@@ -154,7 +154,7 @@ private proc compileProject
   ?let @string inSourceToAnalyze
   ?let @galgas3ProjectComponentAST inProjectComponentAST
 {
-  @galgas3DeclarationAST declarationAST = .default
+  var @galgas3DeclarationAST declarationAST = .default
   for (mValue) in inProjectComponentAST.mProjectSourceList do
     if [mValue pathExtension] == "galgas" then
       let absoluteSourcePath = [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]]
@@ -164,12 +164,12 @@ private proc compileProject
     end
   end
 #---------------------------------- Hand coded source files
-  @stringlist handCodedLinkToolFileList = {}
-  @stringlist handCodedLinkAppFileList = {}
-  @stringlist handCodedSourceAppFileList = {}
-  @stringlist handCodedSourceToolFileList = {}
-  @stringlist frameworkToolFileList = {}
-  @stringset handCodedSourceDirectorySet = {}
+  var @stringlist handCodedLinkToolFileList = {}
+  var @stringlist handCodedLinkAppFileList = {}
+  var @stringlist handCodedSourceAppFileList = {}
+  var @stringlist handCodedSourceToolFileList = {}
+  var @stringlist frameworkToolFileList = {}
+  var @stringset handCodedSourceDirectorySet = {}
   for (mFeatureName mFeatureValue) in inProjectComponentAST.mQualifiedFeatureList do
     if "tool-source" == mFeatureName then
       handCodedSourceToolFileList += !mFeatureValue.string
@@ -224,13 +224,13 @@ private proc compileProject
     !?declarationAST.mDeclarationList
   )
 #---------------------------------- Compile semantic declarations
-  @usefulEntitiesGraph usefulEntitiesGraph = .emptyGraph
-  @lstringlist usefulnessRootEntities = {}
+  var @usefulEntitiesGraph usefulEntitiesGraph = .emptyGraph
+  var @lstringlist usefulnessRootEntities = {}
   let buildDirectory = [inProjectSourceFile stringByDeletingLastPathComponent] + "/build"
   let productDirectory = buildDirectory + "/output"
-  @stringlist appProductFileList = {}
-  @semanticContext semanticContext = .default
-  @semanticDeclarationListForGeneration semanticDeclarationSortedListForGeneration
+  var @stringlist appProductFileList = {}
+  var @semanticContext semanticContext = .default
+  var @semanticDeclarationListForGeneration semanticDeclarationSortedListForGeneration
   if @uint.errorCount == 0 then
     compileSemanticDeclarationsGalgas3 (
       !?usefulnessRootEntities
@@ -245,7 +245,7 @@ private proc compileProject
     semanticDeclarationSortedListForGeneration = {}
   end
 #---------------------------------- Compile GUI components
-  @optionComponentMapForGeneration optionComponentMapForGeneration
+  var @optionComponentMapForGeneration optionComponentMapForGeneration
   if @uint.errorCount == 0 then
     compileAllGuiComponentFromASTGalgas3 (
       !declarationAST.mGUIComponentList
@@ -281,12 +281,12 @@ private proc compileProject
   let typeDumpFilePath = [inProjectSourceFile stringByDeletingLastPathComponent]
          + "/build/helpers/" +  [inProjectSourceFile lastPathComponent] + ".html"
   if [option galgas_cli_options.outputHTMLTypeListFile value] then
-    @stringset firstLetterSet = {}
+    var @stringset firstLetterSet = {}
     for (lkey mIsPredefined mIsConcrete mSuperType mTypeKindEnum mSupportCollectionValue mAllTypedPropertyList mPropertyMap mCurrentTypedPropertyList mConstructorMap mGetterMap mSetterMap mInstanceMethodMap mClassMethodMap mOptionalMethodMap mEnumerationDescriptor mHandledOperatorFlags mAddAssignOperatorArguments mEnumConstantMap mEnumConstantList mMapSearchMethodList mMapEntrySearchConstructorList mGenerateHeaderInSeparateFile mTypeForEnumeratedElement mDefaultConstructorName mHeaderFileName mHeaderKind) in semanticContext.mTypeMap do
       firstLetterSet += ![[lkey.string characterAtIndex!0] string]
     end
-    @string tableOfTypeString = ""
-    @char currentFirstLetter = ' '
+    var @string tableOfTypeString = ""
+    var @char currentFirstLetter = ' '
     for (type_lkey type_mIsPredefined type_mIsConcrete type_mSuperType type_mTypeKindEnum type_mSupportCollectionValue type_mAllTypedPropertyList type_mPropertyMap type_mCurrentTypedPropertyList type_mConstructorMap type_mGetterMap type_mSetterMap type_mInstanceMethodMap type_mClassMethodMap type_mOptionalMethodMap type_mEnumerationDescriptor type_mHandledOperatorFlags type_mAddAssignOperatorArguments type_mEnumConstantMap type_mEnumConstantList type_mMapSearchMethodList type_mMapEntrySearchConstructorList type_mGenerateHeaderInSeparateFile type_mTypeForEnumeratedElement type_mDefaultConstructorName type_mHeaderFileName type_mHeaderKind) in semanticContext.mTypeMap do
       if currentFirstLetter != [type_lkey.string characterAtIndex !0] then
         currentFirstLetter = [type_lkey.string characterAtIndex !0]
@@ -359,7 +359,7 @@ private proc projectGeneration
   if @application.verboseOutput then
     message "*** Generating files\n"
   end
-  @stringset allProductFileSet = {}
+  var @stringset allProductFileSet = {}
 #---------------------------------- Create build/user-headers if does not exist
   let userHeadersDir = inBuildDirectory + "/user-headers"
   [userHeadersDir makeDirectory] ;
@@ -381,8 +381,8 @@ private proc projectGeneration
   end
 #---------------------------------- Generate semantic files
 #  message "*** Generate semantic\n" ;
-  @stringlist toolCppFileList = {}
-  @stringlist toolHeaderFileList = {}
+  var @stringlist toolCppFileList = {}
+  var @stringlist toolHeaderFileList = {}
   generatePredefinedTypeFiles (
     !productDirectory
     !inSemanticDeclarationSortedListForGeneration
@@ -402,17 +402,17 @@ private proc projectGeneration
 #---------------------------------- Update targets
 #  message "*** update targets\n" ;
   if 0 == @uint.errorCount then
-    @stringset handledExtensionSet = {}
+    var @stringset handledExtensionSet = {}
     for (mSourceFileExtension mSourceFileHelp mSourceFileVariableName mSourceFileVariableNameIsUnused mReferenceGrammar mInstructionList mEndOfInstructionList) in inSourceRuleList do
       handledExtensionSet += !mSourceFileExtension.string
     end
   #--- Build qualified feature map
-    @stringset ignoredFeatureSet = {}
+    var @stringset ignoredFeatureSet = {}
     ignoredFeatureSet += !"tool-framework"
     ignoredFeatureSet += !"tool-source"
     ignoredFeatureSet += !"tool-link"
     ignoredFeatureSet += !"app-source"
-    @projectQualifiedFeatureMap projectQualifiedFeatureMap = {}
+    var @projectQualifiedFeatureMap projectQualifiedFeatureMap = {}
     for (mFeatureName mFeatureValue) in inProjectComponentAST.mQualifiedFeatureList do
       if not [ignoredFeatureSet hasKey !mFeatureName.string] then
         [!?projectQualifiedFeatureMap insertKey
@@ -444,7 +444,7 @@ private proc projectGeneration
   end
 #---------------------------------- Remove useless files
   if 0 == @uint.errorCount then
-    @stringset allActualFileSet = {}
+    var @stringset allActualFileSet = {}
     for (mValue) in [productDirectory regularFiles !false] do
       allActualFileSet += !mValue
     end

@@ -66,10 +66,10 @@ syntax extension galgas3DeclarationsSyntax {
     <externtype_cpp_predeclaration> ?let cppPredeclarationCode
     <externtype_cpp_classdeclaration> ?let cppClassCode
     ${$
-    @externTypeConstructorList externTypeConstructorList =  {}
-    @externTypeGetterList externTypeGetterList = {}
-    @externTypeSetterList externTypeSetterList = {}
-    @externTypeMethodList externTypeMethodList = {}
+    var @externTypeConstructorList externTypeConstructorList =  {}
+    var @externTypeGetterList externTypeGetterList = {}
+    var @externTypeSetterList externTypeSetterList = {}
+    var @externTypeMethodList externTypeMethodList = {}
     repeat
     while
       <externtype_constructor> !?externTypeConstructorList
@@ -124,7 +124,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <externtype_constructor> ?!@externTypeConstructorList ioExternTypeConstructorList {
     $constructor$
     $identifier$ ?let @lstring constructorName
-    @typeNameFormalParameterNameList argumentTypeList = {}
+    var @typeNameFormalParameterNameList argumentTypeList = {}
     repeat
     while
       $?$ ?let selector
@@ -142,7 +142,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <externtype_getter> ?!@externTypeGetterList ioExternTypeGetterList {
     $getter$
     $identifier$ ?let @lstring getterName
-    @typeNameFormalParameterNameList argumentTypeList = {}
+    var @typeNameFormalParameterNameList argumentTypeList = {}
     repeat
     while
       $?$ ?let selector
@@ -202,15 +202,15 @@ override method @externTypeDeclarationAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext {
 #---
   commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
-  @constructorMap constructorMap = {}
-  @setterMap setterMap = {}
-  @instanceMethodMap instanceMethodMap = {}
-  @classMethodMap classMethodMap = {}
+  var @constructorMap constructorMap = {}
+  var @setterMap setterMap = {}
+  var @instanceMethodMap instanceMethodMap = {}
+  var @classMethodMap classMethodMap = {}
 #--- Constructors
   for (mConstructorName mResultTypeName mParameterList) in self.mExternTypeConstructorList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mResultTypeName ?let returnedTypeEntry]
   #---
-    @functionSignature arguments = {}
+    var @functionSignature arguments = {}
     for (mFormalSelector mFormalParameterTypeName mFormalParameterName) in mParameterList do
       [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalParameterTypeName ?let argumentTypeEntry]
       arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string
@@ -227,7 +227,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
   for (mGetterName mResultTypeName mParameterList) in self.mExternTypeGetterList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mResultTypeName ?let returnedTypeEntry]
   #---
-    @functionSignature arguments = {}
+    var @functionSignature arguments = {}
     for (mFormalSelector mFormalParameterTypeName mFormalParameterName) in mParameterList do
       [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalParameterTypeName ?let argumentTypeEntry]
       arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string
@@ -246,7 +246,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
   end
 #--- Modifiers
   for (mSetterName mFormalParameterList) in self.mExternTypeSetterList do
-    @formalParameterSignature routineSignature = {}
+    var @formalParameterSignature routineSignature = {}
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFormalParameterList do
       [@unifiedTypeMap-entry makeEntry
         !?ioSemanticContext.mTypeMap
@@ -269,7 +269,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
   for (mMethodName mFormalParameterList mDeclarationLocation) in self.mExternTypeMethodList do
     var routineSignature =@formalParameterSignature {}
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFormalParameterList do
-      @unifiedTypeMap-entry parameterTypeIndex
+      var @unifiedTypeMap-entry parameterTypeIndex
       [@unifiedTypeMap-entry makeEntry
         !?ioSemanticContext.mTypeMap
         !mFormalArgumentTypeName

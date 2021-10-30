@@ -543,14 +543,14 @@ override method @binaryOperatorExpressionForGeneration generateExpression
   !@string outCppExpression {
   [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Left operand
-  @string leftTemporaryOperand
+  var @string leftTemporaryOperand
   [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
 #--- Right operand
-  @string rightTemporaryOperand
+  var @string rightTemporaryOperand
   [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
 #--- Generate Comparison
-  @string operatorString
-  @bool hasCompilerOption
+  var @string operatorString
+  var @bool hasCompilerOption
   switch self.mOperator
   case rightShift    :
     operatorString = "right_shift_operation"

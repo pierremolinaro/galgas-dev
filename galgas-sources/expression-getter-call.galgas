@@ -66,11 +66,11 @@ override method @getterCallExpressionAST analyzeSemanticExpression
 #--- Get getter map
   let @getterMap getterMap = [receiverType mGetterMap]
 #--- Search getter
-  @functionSignature getterFormalArgumentTypeList
-  @methodKind kind
-  @bool hasCompilerArgument
-  @unifiedTypeMap-entry returnedType
-  @stringlist fieldList = {}
+  var @functionSignature getterFormalArgumentTypeList
+  var @methodKind kind
+  var @bool hasCompilerArgument
+  var @unifiedTypeMap-entry returnedType
+  var @stringlist fieldList = {}
   with [self.mGetterName string] in getterMap  do
     getterFormalArgumentTypeList = mArgumentTypeList
     hasCompilerArgument = mHasCompilerArgument
@@ -80,7 +80,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       error self.mGetterName : mErrorMessage
     end
   else
-    @uint matchingReaderCount = 0
+    var @uint matchingReaderCount = 0
     if [receiverType mTypeKindEnum] == @typeKindEnum.structType then
       getterFormalArgumentTypeList = {}
       hasCompilerArgument = true
@@ -117,7 +117,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
         + "' getter, and none of its fields defines it"
         : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       elsif matchingReaderCount > 1 then
-        @string s = ""
+        var @string s = ""
         for (mValue) in fieldList
           do s += mValue
           between s += ", "
@@ -144,7 +144,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
     + [[getterFormalArgumentTypeList length] string] + " parameter(s), while this call has "
     + [[self.mExpressions length] string] + " parameter(s)" : outExpression
   else
-    @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
+    var @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
     for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType mFormalArgumentName) in getterFormalArgumentTypeList do
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
@@ -206,7 +206,7 @@ override method @getterCallExpressionForGeneration generateExpression
     ?let @string receiverCppName
   ]
 #--- Reader operands
-  @stringlist getterArgumentCppNameList = {}
+  var @stringlist getterArgumentCppNameList = {}
   for (mExpression) in self.mExpressions do
     [mExpression generateExpression
       !?ioGeneratedCode
@@ -220,9 +220,9 @@ override method @getterCallExpressionForGeneration generateExpression
 #--- Generate Reader call
   switch self.mKind
   case definedAsExtension :
-    @unifiedTypeMap-entry baseType = [self.mReceiverExpression mResultType]
+    var @unifiedTypeMap-entry baseType = [self.mReceiverExpression mResultType]
    [baseType addHeaderFileName !?ioInclusionSet]
-    @bool searching = true
+    var @bool searching = true
     loop (@uint.max) while searching do
       if not [[baseType mSuperType] isNull] then
         if [[[baseType mSuperType] mGetterMap] hasKey !self.mGetterName] then

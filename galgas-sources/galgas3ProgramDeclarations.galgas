@@ -71,7 +71,7 @@ rule <declaration>
   $message$
   $"string"$ ?let @lstring mSourceFileHelp
 #--- Reference grammar
-  @lstring referenceGrammar
+  var @lstring referenceGrammar
   select
     referenceGrammar = ["" nowhere]
   or
@@ -90,7 +90,7 @@ rule <declaration>
       error typeName : "the only type allowed here is '@lstring'"
     end
   end
-  @bool isUnused
+  var @bool isUnused
   select
     isUnused = false
   or

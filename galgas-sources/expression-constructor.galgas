@@ -39,7 +39,7 @@ syntax extension galgas3ExpressionSyntax {
   #--- Constructor name
     $identifier$ ?let @lstring constructorName
   #--- Actual arguments
-    @actualOutputExpressionList expressionList
+    var @actualOutputExpressionList expressionList
     select
       expressionList = {}
     or
@@ -105,7 +105,7 @@ private proc analyzeConstructorInvocation
   #--- Get constructor map from type map
     let @constructorMap constructorMap = [outConstructorType mConstructorMap]
   #--- Search contructor
-    @functionSignature constructorFormalArgumentTypeList
+    var @functionSignature constructorFormalArgumentTypeList
     with [inConstructorName string] in constructorMap  do
       constructorFormalArgumentTypeList = mArgumentTypeList
       outHasCompilerArgument = mHasCompilerArgument
@@ -253,7 +253,7 @@ override method @constructorExpressionForGeneration generateExpression
   !@string outCppExpression
 {
   [self.mResultType addHeaderFileName !?ioInclusionSet]
-  @stringlist parameterList = {}
+  var @stringlist parameterList = {}
   for (mExpression) in self.mEffectiveParameterList do
     [mExpression generateExpression
       !?ioGeneratedCode
@@ -271,7 +271,7 @@ override method @constructorExpressionForGeneration generateExpression
     do outCppExpression += mValue
     between outCppExpression += ", "
   end
-  @bool needsComma = [parameterList length] > 0
+  var @bool needsComma = [parameterList length] > 0
   if self.mHasCompilerArgument then
     if needsComma then
       outCppExpression += ", "

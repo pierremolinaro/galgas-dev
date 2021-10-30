@@ -18,8 +18,8 @@ rule <Constant>
   !@uint outValue
 
 rule <StartSymbol> {
-  @cExpression expressionTree
-  @uint value
+  var @cExpression expressionTree
+  var @uint value
   <Expression> ?expressionTree ?value
   log value
 }
@@ -27,7 +27,7 @@ rule <StartSymbol> {
 rule <Constant>
   !@cExpression outExpressionTree
   !@uint outValue {
-  @luint cst
+  var @luint cst
   $number$ ? cst
   outExpressionTree = @cConst.new { !cst}
   outValue = [cst uint]
@@ -41,8 +41,8 @@ rule <Expression>
   or 
     <Expression> ?outExpressionTree ?outValue
     $+$
-    @cExpression rightOperand
-    @uint v
+    var @cExpression rightOperand
+    var @uint v
     <Terme> ?rightOperand ?v
     outExpressionTree = @cAdd.new { ! outExpressionTree !rightOperand}
     outValue = outValue + v
@@ -57,8 +57,8 @@ rule <Terme>
   or 
     <Terme> ?outExpressionTree ?outValue
     $*$
-    @cExpression rightOperand
-    @uint v
+    var @cExpression rightOperand
+    var @uint v
     <Facteur> ?rightOperand ?v
     outExpressionTree = @cAdd.new { ! outExpressionTree !rightOperand}
     outValue = outValue * v

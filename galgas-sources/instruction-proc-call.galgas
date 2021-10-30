@@ -107,9 +107,9 @@ override method @procCallInstructionForGeneration generateInstruction
   ioInclusionSet += !"proc-" + [self.mRoutineName fileNameRepresentation]
   ioGeneratedCode += "{\n"
 #--- Parameters
-  @stringlist parameterCppNameList = {}
-  @stringlist jokerParametersToReleaseList = {}
-  @stringlist inputVariableList = {}
+  var @stringlist parameterCppNameList = {}
+  var @stringlist jokerParametersToReleaseList = {}
+  var @stringlist inputVariableList = {}
   for (mActualParameter) in self.mActualParameterList do
     [mActualParameter generateActualParameter
       !?ioInclusionSet

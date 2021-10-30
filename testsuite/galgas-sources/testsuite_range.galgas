@@ -2,7 +2,7 @@
 
 proc testsuite_range {
   message "*************************************** begin of range test\n"
-  @string s = "Range [4, 3] enumeration:"
+  var @string s = "Range [4, 3] enumeration:"
   for i in @range.new {!4 ! 3} do
     s+= " " + i
   end

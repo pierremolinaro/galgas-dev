@@ -12,7 +12,7 @@ before {
 case . "xml_file"
 message "an XML text file with the .xml_file extension"
 ?sourceFilePath:@lstring inSourceFile {
-  @xmlNodeList rootNodes
+  var @xmlNodeList rootNodes
   grammar xml_parsing_grammar in inSourceFile
     ?rootNodes
     !true # Include comments

@@ -57,7 +57,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 {
 #--- Expression analysis
-  @semanticExpressionForGeneration receiverExpression
+  var @semanticExpressionForGeneration receiverExpression
   [self.mReceiverExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -68,10 +68,10 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
 #--- Get getter map
   let @getterMap getterMap = [receiverType mGetterMap]
 #--- Search contructor
-  @functionSignature getterFormalArgumentTypeList
-  @methodKind kind
-  @bool hasCompilerArgument
-  @unifiedTypeMap-entry returnedType
+  var @functionSignature getterFormalArgumentTypeList
+  var @methodKind kind
+  var @bool hasCompilerArgument
+  var @unifiedTypeMap-entry returnedType
   var fieldList =@stringlist {}
   if [getterMap hasKey ![self.mGetterName string]] then
     [getterMap searchKey !self.mGetterName
@@ -83,7 +83,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
       ?2*
     ]
   else
-    @uint matchingReaderCount = 0
+    var @uint matchingReaderCount = 0
     if [receiverType mTypeKindEnum] == @typeKindEnum. structType then
       getterFormalArgumentTypeList ={}
       hasCompilerArgument = true
@@ -106,7 +106,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
         + "' getter, and none of its fields defines it"
         : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       elsif matchingReaderCount > 1 then
-        @string s = ""
+        var @string s = ""
         for (mValue) in fieldList
           do s += mValue
           between s += ", "
@@ -133,7 +133,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
     + [[getterFormalArgumentTypeList length] string] + " parameter(s), while this call has "
     + [[self.mExpressionList length] string] + " parameter(s)" : outExpression
   else
-    @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
+    var @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
     for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList, (mFormalSelector mFormalArgumentType mFormalArgumentName) in getterFormalArgumentTypeList do
       if mFormalSelector.string != mActualSelector.string then
         error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
@@ -174,9 +174,9 @@ override method @templateConstructorAST templateExpressionAnalysis
 #--- Get constructor map from type map
   let @constructorMap constructorMap = [constructorType mConstructorMap]
 #--- Search contructor
-  @unifiedTypeMap-entry returnedType
-  @bool hasCompilerArgument
-  @functionSignature constructorFormalArgumentTypeList
+  var @unifiedTypeMap-entry returnedType
+  var @bool hasCompilerArgument
+  var @functionSignature constructorFormalArgumentTypeList
   with [self.mConstructorName string] in constructorMap  do
     constructorFormalArgumentTypeList = mArgumentTypeList
     hasCompilerArgument = mHasCompilerArgument
@@ -194,7 +194,7 @@ override method @templateConstructorAST templateExpressionAnalysis
     end
   end
 #--- Analysis arguments
-  @semanticExpressionListForGeneration constructorEffectiveParameterList
+  var @semanticExpressionListForGeneration constructorEffectiveParameterList
   if [self.mExpressionList length] != [constructorFormalArgumentTypeList length] then
     error self.mConstructorName
     : "calling the '" + self.mConstructorName + "' constructor of '@" + [constructorType key] + "' requires "
@@ -399,7 +399,7 @@ override method @templateLiteralStringExpressionAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression
 {
-  @string s = ""
+  var @string s = ""
   for (mValue) in self.mLiteralStringList do
     s += mValue
   end
@@ -499,7 +499,7 @@ override method @templateNotOperatorAST templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 {
 #--- Expression analysis
-  @semanticExpressionForGeneration expression
+  var @semanticExpressionForGeneration expression
   [self.mExpression templateExpressionAnalysis 
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -531,7 +531,7 @@ override method @templateLogicalNegateAST templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 {
 #--- Expression analysis
-  @semanticExpressionForGeneration expression
+  var @semanticExpressionForGeneration expression
   [self.mExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -562,7 +562,7 @@ override method @templateTestDynamicClassAST templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 {
 #--- Receiver expression analysis
-  @semanticExpressionForGeneration expression
+  var @semanticExpressionForGeneration expression
   [self.mReceiverExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -574,8 +574,8 @@ override method @templateTestDynamicClassAST templateExpressionAnalysis
 #--- This type is either a class
   if [[[expression mResultType] mTypeKindEnum] isClassType] then
   #--- Check expression type is a descendant of named type
-    @unifiedTypeMap-entry t = castType
-    @bool found = t == [expression mResultType]
+    var @unifiedTypeMap-entry t = castType
+    var @bool found = t == [expression mResultType]
     loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
     while (not found) & not [[t mSuperType] isNull] do
       t = [t mSuperType]
@@ -617,7 +617,7 @@ override method @templateOptionAccessAST templateExpressionAnalysis
     ?let @commandLineOptionMap stringListOptionMap
   ]
   var found = [boolOptionMap hasKey !self.mOptionName.string]
-  @unifiedTypeMap-entry returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
+  var @unifiedTypeMap-entry returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
   if not found then
     found = [uintOptionMap hasKey !self.mOptionName.string]
     returnedType = inAnalysisContext.mPredefinedTypes.mUIntType
@@ -667,7 +667,7 @@ override method @templateOptionAccessAST templateExpressionAnalysis
       error self.mGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" :outExpression
     end
   else
-    @stringset s = {}
+    var @stringset s = {}
     for (lkey mOptionChar mOptionString mComment mDefaultValue) in boolOptionMap do
       s += !lkey
     end
@@ -765,8 +765,8 @@ override method @templateVarInExpressionAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression
 {
-  @unifiedTypeMap-entry type
-  @string sourceVariableCppName
+  var @unifiedTypeMap-entry type
+  var @string sourceVariableCppName
   [inAnalysisContext.mTemplateVariableMap searchKey !self.mVarName ?type ?sourceVariableCppName]
   outExpression = @varInExpressionForGeneration.new {
     !type
@@ -1006,7 +1006,7 @@ override method @templateUnaryMinusOperationAST templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 {
 #--- Expression analysis
-  @semanticExpressionForGeneration expression
+  var @semanticExpressionForGeneration expression
   [self.mExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -1046,7 +1046,7 @@ override method @structFieldAccessTemplateExpressionAST templateExpressionAnalys
     ?let @semanticExpressionForGeneration expression
   ]
 #--- Check field access availability
-  @unifiedTypeMap-entry type = [expression mResultType]
+  var @unifiedTypeMap-entry type = [expression mResultType]
   if [type mTypeKindEnum] != @typeKindEnum. structType then
     error self.mStructFieldName:"the '.' operator requires the receiver to be a struct"
   end
@@ -1468,7 +1468,7 @@ override method @templateInstructionExpressionAST templateInstructionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   ?!@templateInstructionListForGeneration ioInstructionList
 {
-  @semanticExpressionForGeneration expression
+  var @semanticExpressionForGeneration expression
   [self.mExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -1489,7 +1489,7 @@ override method @templateBlockInstructionAST templateInstructionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   ?!@templateInstructionListForGeneration ioInstructionList
 {
-  @semanticExpressionForGeneration expression
+  var @semanticExpressionForGeneration expression
   [self.mExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -1541,7 +1541,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
   ?!@templateInstructionListForGeneration ioInstructionList
 {
 #--- Foreach expression
-  @semanticExpressionForGeneration expression
+  var @semanticExpressionForGeneration expression
   [self.mExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -1564,7 +1564,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
   )
 #--- Do instructions
   let @string enumeratorCppName = "enumerator_" + [[[self.mIndexIdentifier location] locationIndex] string]
-  @templateVariableMap doVariableMap = inAnalysisContext.mTemplateVariableMap
+  var @templateVariableMap doVariableMap = inAnalysisContext.mTemplateVariableMap
   let @string cppIndexVarName = "index_" + [[[self.mIndexIdentifier location] locationIndex] string] + "_" + [[self.mIndexIdentifier string] identifierRepresentation]
   if [self.mIndexIdentifier string] != "" then
     [!?doVariableMap insertKey !self.mIndexIdentifier !inAnalysisContext.mPredefinedTypes.mUIntType !cppIndexVarName]
@@ -1629,7 +1629,7 @@ override method @templateInstructionIfAST templateInstructionAnalysis
 {
   var templateInstructionIfBranchList =@templateInstructionIfBranchListForGeneration {}
   for (mExpression mInstructionList) in self.mTemplateInstructionIfBranchList do
-    @semanticExpressionForGeneration expression
+    var @semanticExpressionForGeneration expression
     [mExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph

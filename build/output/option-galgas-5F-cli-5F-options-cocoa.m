@@ -79,6 +79,15 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
+    identifier:@"errorOldStyleLocalVarDeclaration"
+    commandChar:0
+    commandString:@"error-old-style-local-var-declaration"
+    comment:@"error on old style local variable declaration"
+    defaultValue:@""
+  ] ;
+  [ioBoolOptionArray addObject:option] ;
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
     identifier:@"errorOldStylePropertyDeclaration"
     commandChar:0
     commandString:@"error-old-style-property-declaration"

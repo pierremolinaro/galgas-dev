@@ -7,7 +7,7 @@ rule <expression> !@expressionAST outExpressionAST {
   repeat
   while
     $+$
-    @expressionAST rightExpression
+    var @expressionAST rightExpression
     <expression_term> ?rightExpression
     outExpressionAST = @additionAST.new {
       !outExpressionAST
@@ -22,7 +22,7 @@ rule <expression_term> !@expressionAST outExpressionAST {
   repeat
   while
     $*$
-    @expressionAST rightExpression
+    var @expressionAST rightExpression
     <expression_factor> ?rightExpression
     outExpressionAST = @multiplicationAST.new {
       !outExpressionAST
@@ -57,7 +57,7 @@ rule <instruction> ?!@instructionListAST ioInstructionList {
 rule <instruction> ?!@instructionListAST ioInstructionList {
   $identifier$ ?var  @lstring targetVarName
   $:=$
-  @expressionAST expression
+  var @expressionAST expression
   <expression> ? expression
   $;$
   ioInstructionList += !@assignmentAST.new { !targetVarName !expression}

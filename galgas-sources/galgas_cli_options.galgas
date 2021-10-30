@@ -57,6 +57,8 @@ option galgas_cli_options {
   @bool errorEllipsisInEnumeratedObject : '\0', "error-ellipsis-in-for-instruction" -> "error on ellipsis in enumerated object ('for (x y ...) in xxx')"
 
   @bool errorOldStylePropertyDeclaration : '\0', "error-old-style-property-declaration" -> "error on old style property declaration"
+
+  @bool errorOldStyleLocalVarDeclaration : '\0', "error-old-style-local-var-declaration" -> "error on old style local variable declaration"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

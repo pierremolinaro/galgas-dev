@@ -148,8 +148,8 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-  @unifiedTypeMap-entry selfTypeEntry
-  @string selfObjectCppName
+  var @unifiedTypeMap-entry selfTypeEntry
+  var @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeEntry isNull] then
     error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
   else
@@ -205,8 +205,8 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-  @unifiedTypeMap-entry selfTypeEntry
-  @string selfObjectCppName
+  var @unifiedTypeMap-entry selfTypeEntry
+  var @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeEntry isNull] then
     error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
   else
@@ -250,8 +250,8 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-  @unifiedTypeMap-entry selfTypeEntry
-  @string selfObjectCppName
+  var @unifiedTypeMap-entry selfTypeEntry
+  var @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeEntry isNull] then
     error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
   else
@@ -295,8 +295,8 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-  @unifiedTypeMap-entry selfTypeEntry
-  @string selfObjectCppName
+  var @unifiedTypeMap-entry selfTypeEntry
+  var @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeEntry isNull] then
     error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
   else
@@ -340,8 +340,8 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-  @unifiedTypeMap-entry selfTypeEntry
-  @string selfObjectCppName
+  var @unifiedTypeMap-entry selfTypeEntry
+  var @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeEntry isNull] then
     error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
   else

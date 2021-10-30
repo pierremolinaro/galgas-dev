@@ -115,7 +115,7 @@ override method @syntaxDeclarationForGeneration appendDeclaration1
   !@string outHeader {
   ioInclusionSet += !"lexique-" + [self.mLexiqueName fileNameRepresentation]
   var selectMethodList =@uintlist {}
-  @uint idx = 0
+  var @uint idx = 0
   loop (self.mSelectMethodCount + 1)
   while idx < self.mSelectMethodCount do
     selectMethodList += !idx
@@ -191,7 +191,7 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
     outImplementation += parseCode
   #--- Generate indexing code
     if self.mHasIndexing then
-      @semanticInstructionListForGeneration instructionList
+      var @semanticInstructionListForGeneration instructionList
       [mLabelImplementationList first ?* ?* ?* ?* ?instructionList]
       let @string ruleName = "cParser_" + [self.mSyntaxComponentName identifierRepresentation]
       + "::rule_" + [self.mSyntaxComponentName identifierRepresentation] + "_"
@@ -236,7 +236,7 @@ proc generateProcedure
   !@string outGeneratedCode
 {
 #--- Build unused variable set
-  @stringset unusedVariableCppNameSet = {}
+  var @stringset unusedVariableCppNameSet = {}
   if inGenerateSyntaxDirectedTranslationString then
     unusedVariableCppNameSet += !syntaxDirectedTranslationResultVarName ()
   end
@@ -357,7 +357,7 @@ proc generateFunction
   outGeneratedCode = ""
   [inResultType addHeaderFileName !?ioInclusionSet]
 #--- Build unused variable set
-  @stringset unusedVariableCppNameSet = {}
+  var @stringset unusedVariableCppNameSet = {}
   unusedVariableCppNameSet += !compilerCppName ()
 #--- Release 'in' and 'const in' arguments at the end of the routine
   for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in inFormalArgumentList do
@@ -365,8 +365,8 @@ proc generateFunction
     unusedVariableCppNameSet += !mFormalArgumentCppName
   end
 #--- Generate body
-  @uint temporaryVariableIndex = 0
-  @string routineBody = ""
+  var @uint temporaryVariableIndex = 0
+  var @string routineBody = ""
   [!?routineBody incIndentation !2]
   for (mInstruction) in inInstructionList do
     [mInstruction generateInstruction
@@ -437,7 +437,7 @@ proc generateExtensionSetter
   ?let @semanticInstructionListForGeneration inInstructionList
   !@string outGeneratedCode {
 #--- Build unused variable set
-  @stringset unusedVariableCppNameSet = {}
+  var @stringset unusedVariableCppNameSet = {}
   unusedVariableCppNameSet += !compilerCppName ()
   unusedVariableCppNameSet += !"object"
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in inFormalArgumentList do
@@ -534,15 +534,15 @@ proc generateExtensionMethod
   !@string outGeneratedCode {
   let className = [inReceiverType key]
 #--- Build unused variable set
-  @stringset unusedVariableCppNameSet = {}
+  var @stringset unusedVariableCppNameSet = {}
   unusedVariableCppNameSet += !compilerCppName ()
   unusedVariableCppNameSet += !"object"
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in inFormalArgumentList do
     unusedVariableCppNameSet += !mFormalArgumentCppName
   end
 #--- Generate body
-  @uint temporaryVariableIndex = 0
-  @string routineBody = ""
+  var @uint temporaryVariableIndex = 0
+  var @string routineBody = ""
   [!?routineBody incIndentation !2]
   for (mInstruction) in inInstructionList do
     [mInstruction generateInstruction
@@ -555,8 +555,8 @@ proc generateExtensionMethod
   end
   [!?routineBody decIndentation !2]
 #--- Generate inclusions
-  @unifiedTypeMap-entry baseType = inReceiverType
-  @bool searching = true
+  var @unifiedTypeMap-entry baseType = inReceiverType
+  var @bool searching = true
   loop( @uint. max) while searching do
     if not [[baseType mSuperType] isNull] then
       if [[[baseType mSuperType] mInstanceMethodMap] hasKey !inMethodName] then
@@ -654,15 +654,15 @@ proc generateExtensionGetter
 {
   let className = [inReceiverType key]
 #--- Build unused variable set
-  @stringset unusedVariableCppNameSet = {}
+  var @stringset unusedVariableCppNameSet = {}
   unusedVariableCppNameSet += !compilerCppName ()
   unusedVariableCppNameSet += !"object"
   for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in inFormalArgumentList do
     unusedVariableCppNameSet += !mFormalArgumentCppName
   end
 #--- Generate body
-  @uint temporaryVariableIndex = 0
-  @string routineBody = ""
+  var @uint temporaryVariableIndex = 0
+  var @string routineBody = ""
   [!?routineBody incIndentation !2]
   for (mInstruction) in inInstructionList do
     [mInstruction generateInstruction
@@ -676,8 +676,8 @@ proc generateExtensionGetter
   [!?routineBody decIndentation !2]
 #--- Generate inclusions
   [inReceiverType addHeaderFileName !?ioInclusionSet]
-  @unifiedTypeMap-entry baseType = inReceiverType
-  @bool searching = true
+  var @unifiedTypeMap-entry baseType = inReceiverType
+  var @bool searching = true
   loop( @uint. max) while searching do
     if not [[baseType mSuperType] isNull] then
       if [[[baseType mSuperType] mGetterMap] hasKey !inGetterName] then
@@ -1535,7 +1535,7 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
   ?!@stringset ioInclusionSet
   !@string outImplementation {
   ioInclusionSet += !"filewrapper-" + self.mFilewrapperName
-  @string filewrapperImplementation = ""
+  var @string filewrapperImplementation = ""
   generateWrapperContents (
     !self.mFilewrapperName
     !""
@@ -1551,14 +1551,14 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
 #--- template generation
   for (mFilewrapperTemplateName mFilewrapperTemplateFormalInputParameters mTemplateInstructionListForGeneration) in self.mFilewrapperTemplateListForGeneration do
   #--- Build generated code for instruction list
-    @string generatedCodeForInstructionList = ""
-    @uint temporaryVariableIndex = 0
-    @stringset unusedVariableCppNameSet = {}
+    var @string generatedCodeForInstructionList = ""
+    var @uint temporaryVariableIndex = 0
+    var @stringset unusedVariableCppNameSet = {}
     unusedVariableCppNameSet += !compilerCppName ()
     for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in mFilewrapperTemplateFormalInputParameters do
       unusedVariableCppNameSet += !mFormalArgumentCppName
     end
-    @bool useColumnMarker = false
+    var @bool useColumnMarker = false
     templateCodeGenerationForListInstruction (
       !mTemplateInstructionListForGeneration
       !?generatedCodeForInstructionList

@@ -26,10 +26,10 @@ proc compileSemanticDeclarationsGalgas3
     message "*** Building semantic context\n"
   end
 #------ Add predefined types to semantics declarations
-  @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes = inSemanticDeclarationList
+  var @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes = inSemanticDeclarationList
   appendPredefinedTypesASTs (!?semanticDeclarationListWithPredefinedTypes !?ioUsefulnessRootEntities)
 #---- Add predefined option component
-  @commandLineOptionListAST options = {}
+  var @commandLineOptionListAST options = {}
   for name in @application.boolOptionNameList do
     options +=
       !["bool" nowhere]
@@ -112,7 +112,7 @@ proc buildGalgas3SemanticContext
   !@semanticDeclarationListAST outSortedSemanticDeclarationListAST
 {
 #------ Create associated type (@TYPE-element) for lists, maps, ...
-  @semanticDeclarationListAST semanticDeclarationList = inSemanticDeclarationList
+  var @semanticDeclarationListAST semanticDeclarationList = inSemanticDeclarationList
   for declaration in inSemanticDeclarationList do
     [declaration.mSemanticDeclaration addAssociatedElement !?semanticDeclarationList]
   end
@@ -120,11 +120,11 @@ proc buildGalgas3SemanticContext
 #  - a class appears after its super class
 #  - a map index appears after its associated map
 #  - a list map appears after its associated list
-  @semanticTypePrecedenceGraph semanticTypePrecedenceGraph = .emptyGraph
-  @extensionMethodMapForBuildingContext extensionMethodMapForBuildingContext = {}
-  @extensionGetterMapForBuildingContext extensionGetterMapForBuildingContext = {}
-  @extensionSetterMapForBuildingContext extensionSetterMapForBuildingContext = {}
-  @semanticDeclarationListAST extensionOverrideDefinitionList = {}
+  var @semanticTypePrecedenceGraph semanticTypePrecedenceGraph = .emptyGraph
+  var @extensionMethodMapForBuildingContext extensionMethodMapForBuildingContext = {}
+  var @extensionGetterMapForBuildingContext extensionGetterMapForBuildingContext = {}
+  var @extensionSetterMapForBuildingContext extensionSetterMapForBuildingContext = {}
+  var @semanticDeclarationListAST extensionOverrideDefinitionList = {}
   for declaration in semanticDeclarationList do
     [declaration.mSemanticDeclaration enterDeclarationInGraph
       !?semanticTypePrecedenceGraph
@@ -280,11 +280,11 @@ private proc generateManyHeaders
   ?!@stringlist ioToolHeaderFileList
 {
 #--- Header files
-  @stringlist headerInclusionList1 = {}
-  @stringlist headerInclusionList2 = {}
+  var @stringlist headerInclusionList1 = {}
+  var @stringlist headerInclusionList2 = {}
   for declaration in inSemanticDeclarationSortedListForGeneration do
     if not [declaration.mDeclaration isPredefined] then
-      @stringset inclusionSet1 = {}
+      var @stringset inclusionSet1 = {}
       [declaration.mDeclaration appendDeclaration1 !?inclusionSet1 ?let @string headerDef1]
       var headerIncludes1 = ""
       if [inclusionSet1 hasKey !""] then
@@ -294,7 +294,7 @@ private proc generateManyHeaders
         headerIncludes1 += "#include \"" + s + ".h\"\n"
       end
       headerIncludes1 += headerDef1
-      @stringset inclusionSet2 = {}
+      var @stringset inclusionSet2 = {}
       [declaration.mDeclaration appendDeclaration2 !inProductDirectory !?inclusionSet2 ?let @string headerDef2]
       var headerIncludes2 = ""
       if [inclusionSet2 hasKey !""] then
@@ -497,7 +497,7 @@ private proc generateFewImplementationFiles
   var n = 0
   var fileIdx = 0
   var implementationString = ""
-  @stringset inclusionSet = {}
+  var @stringset inclusionSet = {}
   for declaration in inSemanticDeclarationSortedListForGeneration do
     if not [declaration.mDeclaration isPredefined] then
       [declaration.mDeclaration appendSpecificImplementation !inUnifiedTypeMap !?inclusionSet ?let @string code]
@@ -558,12 +558,12 @@ private proc generateFewImplementationFilesWithFewHeaders
   ?!@stringset ioAllProductFileSet
   ?!@stringlist ioToolHeaderFileList
 {
-  @headerCompositionMap headerCompositionMap = {}
+  var @headerCompositionMap headerCompositionMap = {}
   for declaration in inSemanticDeclarationSortedListForGeneration do
     if not [declaration.mDeclaration isPredefined] then
-      @stringset inclusionSet1 = {}
+      var @stringset inclusionSet1 = {}
       [declaration.mDeclaration appendDeclaration1 !?inclusionSet1 ?let @string headerString1]
-      @stringset inclusionSet2 = {}
+      var @stringset inclusionSet2 = {}
       [declaration.mDeclaration appendDeclaration2 !inProductDirectory !?inclusionSet2 ?let @string headerString2]
       if [declaration.mDeclaration headerKind] != .noHeader then
         let headerFileName = [declaration.mDeclaration implementationCppFileName] + if [declaration.mDeclaration headerKind] == .twoHeaders then "-1" else "" end
@@ -582,11 +582,11 @@ private proc generateFewImplementationFilesWithFewHeaders
       end
     end
   end
-  @headerRepartitionMap headerRepartitionMap = {}
+  var @headerRepartitionMap headerRepartitionMap = {}
   var fileIdx = 0
   var implementationString = ""
   var headerString = ""
-  @stringset inclusionSet = {}
+  var @stringset inclusionSet = {}
   var headerFileName = "all-declarations-" + fileIdx
   for declaration in inSemanticDeclarationSortedListForGeneration do
     if not [declaration.mDeclaration isPredefined] then
@@ -690,7 +690,7 @@ private proc generateManyImplementationFiles
   let useOneHugeHeader = [option galgas_cli_options.generateOneHeader value]
 #--- Generation
   for declaration in inSemanticDeclarationSortedListForGeneration do
-    @stringset inclusionSet = {}
+    var @stringset inclusionSet = {}
     if not [declaration.mDeclaration isPredefined] then
       [declaration.mDeclaration appendSpecificImplementation !inUnifiedTypeMap !?inclusionSet ?var @string implementationString]
       if [declaration.mDeclaration hasCppHeaderFile] then

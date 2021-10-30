@@ -25,11 +25,11 @@ syntax extension galgas3DeclarationsSyntax {
     $enum$
     $@type$ ?let mEnumTypeName indexing enumDefinition
     ${$
-    @enumConstantList mConstantList = {}
+    var @enumConstantList mConstantList = {}
     repeat
       $case$
       $identifier$ ?let constantName
-      @2lstringlist associatedValueTypeList = {}
+      var @2lstringlist associatedValueTypeList = {}
       select
       or
         $($
@@ -44,7 +44,7 @@ syntax extension galgas3DeclarationsSyntax {
       mConstantList += !constantName !associatedValueTypeList
     while
     end
-    @lstring defaultConstantName
+    var @lstring defaultConstantName
     select
       defaultConstantName = ["" nowhere]
     or
@@ -110,19 +110,19 @@ override method @enumDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #---
-  @constructorMap constructorMap = {}
-  @setterMap setterMap = {}
-  @instanceMethodMap instanceMethodMap = {}
-  @classMethodMap classMethodMap = {}
-  @optionalMethodMap optionalMethodMap = {}
+  var @constructorMap constructorMap = {}
+  var @setterMap setterMap = {}
+  var @instanceMethodMap instanceMethodMap = {}
+  var @classMethodMap classMethodMap = {}
+  var @optionalMethodMap optionalMethodMap = {}
 #--- currentType type index
   [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mEnumTypeName ?let enumTypeEntry]
 #--- Constructors
-  @constantIndexMap constantMap = {}
-  @bool hasAssociatedValues = false
+  var @constantIndexMap constantMap = {}
+  var @bool hasAssociatedValues = false
   for (mConstantName mAssociatedValueDefinitionList) in self.mConstantList do
-    @unifiedTypeMapEntryList associatedTypeList = {}
-    @functionSignature argumentTypeList = {}
+    var @unifiedTypeMapEntryList associatedTypeList = {}
+    var @functionSignature argumentTypeList = {}
     for (typeName selectorName) in mAssociatedValueDefinitionList do
       [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !typeName ?let associatedTypeEntry]
       argumentTypeList += !selectorName !associatedTypeEntry !typeName.string
@@ -139,7 +139,7 @@ override method @enumDeclarationAST enterInSemanticContext
   end
 #--- Methods
   for (mConstantName mAssociatedValueDefinitionList) in self.mConstantList do
-    @optionalMethodSignature argumentTypeList = {}
+    var @optionalMethodSignature argumentTypeList = {}
     for (typeName selectorName) in mAssociatedValueDefinitionList do
       [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !typeName ?let associatedTypeEntry]
       argumentTypeList += !false !selectorName !associatedTypeEntry !typeName.string
@@ -152,8 +152,8 @@ override method @enumDeclarationAST enterInSemanticContext
 #--- Optional methods
   for (mConstantName mAssociatedValueDefinitionList) in self.mConstantList do
     if [mAssociatedValueDefinitionList length] > 0 then
-      @unifiedTypeMapEntryList associatedTypeList = {}
-      @formalParameterSignature argumentTypeList = {}
+      var @unifiedTypeMapEntryList associatedTypeList = {}
+      var @formalParameterSignature argumentTypeList = {}
       for (typeName selectorName) in mAssociatedValueDefinitionList do
         [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !typeName ?let associatedTypeEntry]
         argumentTypeList += !selectorName !associatedTypeEntry !.argumentOut !typeName.string
@@ -252,12 +252,12 @@ override method @enumDeclarationAST semanticAnalysis
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Constant list
   var constantList =@stringlist {}
-  @enumConstantListForGeneration enumConstantListForGeneration = {}
+  var @enumConstantListForGeneration enumConstantListForGeneration = {}
   var constantMap =@constantIndexMap.emptyMap{}
   for (mConstantName mAssociatedValueDefinitionList) in self.mConstantList do
     constantList += !mConstantName.string
-    @unifiedTypeMapEntryList associatedTypeList = {}
-    @stringset associatedValueNameSet = {}
+    var @unifiedTypeMapEntryList associatedTypeList = {}
+    var @stringset associatedValueNameSet = {}
     for (mValue0 mValue1) in mAssociatedValueDefinitionList do
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mValue0)
       [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
@@ -327,7 +327,7 @@ override method @enumTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader
 {
-  @bool hasAssociatedValues = false
+  var @bool hasAssociatedValues = false
   for (mConstantName mAssociatedValueTypeList) in self.mConstantList while not hasAssociatedValues do
     hasAssociatedValues = [mAssociatedValueTypeList length] > 0
   end
@@ -361,7 +361,7 @@ override method @enumTypeForGeneration appendDeclaration2
   ?!@stringset ioInclusionSet
   !@string outHeader
 {
-  @bool hasAssociatedValues = false
+  var @bool hasAssociatedValues = false
   for (mConstantName mAssociatedValueTypeList) in self.mConstantList while not hasAssociatedValues do
     hasAssociatedValues = [mAssociatedValueTypeList length] > 0
   end
@@ -385,7 +385,7 @@ override method @enumTypeForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  @bool hasAssociatedValues = false
+  var @bool hasAssociatedValues = false
   for (mConstantName mAssociatedValueTypeList) in self.mConstantList while not hasAssociatedValues do
     hasAssociatedValues = [mAssociatedValueTypeList length] > 0
   end

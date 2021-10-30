@@ -29,8 +29,8 @@ rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList {
   outFormalParameterList = {}
   repeat
   while
-    @lstring selector
-    @formalArgumentPassingModeAST mFormalParameterPassingMode
+    var @lstring selector
+    var @formalArgumentPassingModeAST mFormalParameterPassingMode
     select
       $?$ ?selector
       mFormalParameterPassingMode = @formalArgumentPassingModeAST. argumentIn
@@ -46,7 +46,7 @@ rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList {
       mFormalParameterPassingMode = @formalArgumentPassingModeAST. argumentOut
     end
     $@type$ ?var @lstring mFormalParameterTypeName
-    @bool mIsUnused
+    var @bool mIsUnused
     select
       mIsUnused = false
     or
@@ -80,7 +80,7 @@ rule <actual_parameter_list>
       $*$
       outActualParameterList += !@inputSingleJokerActualParameterAST.new {!selector}
     or
-      @luint count
+      var @luint count
       $uint32$ ? count
       $*$
       var n = [count uint]
@@ -108,7 +108,7 @@ rule <actual_parameter_list>
     }
   while
     $!?$ ?let selector
-    @lstring outputInputActualParameterName
+    var @lstring outputInputActualParameterName
     $identifier$ ?outputInputActualParameterName
     var structAttributeList =@lstringlist {}
     repeat
@@ -162,7 +162,7 @@ rule <actual_parameter_list>
   while  # input parameter, new variable
     $?$ ?let selector
     $var$
-    @lstring declarationTypeName
+    var @lstring declarationTypeName
     select
       declarationTypeName = ["" nowhere]
     or
@@ -186,13 +186,13 @@ rule <actual_parameter_list>
   while # input parameter, new constant
     $?$ ?let selector
     $let$
-    @lstring declarationTypeName
+    var @lstring declarationTypeName
     select
       declarationTypeName = ["" nowhere]
     or
       $@type$ ?declarationTypeName
     end
-    @bool markedAsUnused
+    var @bool markedAsUnused
     select
       markedAsUnused = false
     or
@@ -219,7 +219,7 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
   outFormalInputParameterList = {}
   repeat
   while
-    @bool isConstant
+    var @bool isConstant
     $?$ ?let selector
     select
       isConstant = false
@@ -228,7 +228,7 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
       isConstant = true
     end
     $@type$ ?var @lstring mFormalParameterTypeName
-    @bool mIsUnused
+    var @bool mIsUnused
     select
       mIsUnused = false
     or

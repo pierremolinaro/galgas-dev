@@ -25,7 +25,7 @@ syntax extension galgas3InstructionsSyntax {
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $log$
     let instructionLocation = @location.here
-    @logListAST logList = {}
+    var @logListAST logList = {}
     repeat
       select
         $identifier$ ?let loggedVariableName
@@ -80,7 +80,7 @@ override method @logInstructionAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap {
   for (mLogMessage mLogExpression) in self.mLogList do
   #--- Analyze source expression
-    @semanticExpressionForGeneration expression
+    var @semanticExpressionForGeneration expression
     [mLogExpression analyzeSemanticExpression
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph

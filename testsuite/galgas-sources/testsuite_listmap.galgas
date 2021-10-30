@@ -15,13 +15,13 @@ proc testsuite_listmap {
   m += !"c" !"f" !11
   m += !"a" !"c" !98
   log m
-  @uint c = [m count]
+  var @uint c = [m count]
   log c
-  @stringset s = [m allKeys]
+  var @stringset s = [m allKeys]
   log s
-  @stringlist sl = [m keyList]
+  var @stringlist sl = [m keyList]
   log sl
-  @aList aList = [m listForKey !"a"]
+  var @aList aList = [m listForKey !"a"]
   log aList
 #  message "--- test .= operator listmap\n" ;
   var m2 = @myListMap {}

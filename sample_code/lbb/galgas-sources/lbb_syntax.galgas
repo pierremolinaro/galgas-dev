@@ -3,7 +3,7 @@ syntax lbb_syntax (lbb_lexique) {
 
 rule <start_symbol> !@programAST outProgramAST {
   var boxTypeListAST =@boxTypeListAST {}
-  @boxInstanceListAST boxInstanceListAST = {}
+  var @boxInstanceListAST boxInstanceListAST = {}
   repeat
   while
     $identifier$ ?var  @lstring boxTypeName

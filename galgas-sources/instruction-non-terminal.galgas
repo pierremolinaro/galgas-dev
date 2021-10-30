@@ -18,7 +18,7 @@ syntax extension galgas3SyntaxComponentSyntax {
   #·····················································································································
 
   rule <syntax_instruction> !@syntaxInstructionAST outInstruction {
-    @lstring mLabelName # No label : empty string
+    var @lstring mLabelName # No label : empty string
     select
       mLabelName = @lstring.new {!"" !@location.here}
     or
@@ -31,7 +31,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleReference
     <actual_parameter_list> ?let @actualParameterListAST mActualParameterList
   #--- Get syntax directed translation result string
-    @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
+    var @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or
@@ -60,7 +60,7 @@ override method @nonterminalCallInstruction transformInstruction
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
   ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
-  @uint nonTerminalSymbolIndex
+  var @uint nonTerminalSymbolIndex
   [inNonTerminalSymbolMap searchKey !self.mNonterminalName ?nonTerminalSymbolIndex ?*]
   ioSyntaxInstructionList += !@nonTerminalInstructionForGrammarAnalysis.new {
     !self.mInstructionLocation
@@ -88,7 +88,7 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
   ?!@uint unused ioSelectMethodCount
 {
   [inNonterminalMap searchKey !self.mNonterminalName ?let @nonterminalLabelMap labelMap]
-  @formalParameterSignature signature
+  var @formalParameterSignature signature
   if [self.mLabelName string] == "parse" then
     signature = {}
   else

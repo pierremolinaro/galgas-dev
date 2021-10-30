@@ -8,7 +8,7 @@ message "an '.class_sample_language' source file"
 grammar class_sample_language_grammar
 ?sourceFilePath:@lstring inSourceFile {
 #--- Build Abstract Syntax Tree
-  @declarationListAST declarationListAST
+  var @declarationListAST declarationListAST
   grammar class_sample_language_grammar in inSourceFile
     ?declarationListAST
 #--- Build dependence graph
@@ -35,7 +35,7 @@ grammar class_sample_language_grammar
       end
     else
     #--- Generate code
-      @string codeToGenerate = ""
+      var @string codeToGenerate = ""
       for (mDeclaration) in  sortedDeclarationListAST do
         [mDeclaration generateCode !?codeToGenerate]
       end

@@ -419,7 +419,7 @@ proc addExtensions
 {
 #------------------------  Extension methods
   if [inExtensionMethodMapForBuildingContext hasKey ![inTypeName string]] then
-    @extensionMethodMapForType extensionMethodMapForType
+    var @extensionMethodMapForType extensionMethodMapForType
     [inExtensionMethodMapForBuildingContext searchKey !inTypeName ?extensionMethodMapForType]
     for (lkey mFormalParameterList) in extensionMethodMapForType do
       var formalArgumentList =@formalParameterSignature {}
@@ -447,7 +447,7 @@ proc addExtensions
 #    @extensionGetterMapForType extensionGetterMapForType
     [inExtensionGetterMapForBuildingContext searchKey !inTypeName ?let extensionGetterMapForType]
     for (lkey mResultTypeName mInputFormalParameterList) in extensionGetterMapForType do
-      @functionSignature formalArgumentList = {}
+      var @functionSignature formalArgumentList = {}
       for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName mIsUnused mIsConstant) in mInputFormalParameterList do
         [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let typeIndex]
         formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentName.string
@@ -467,10 +467,10 @@ proc addExtensions
   end
 #------------------------  Extension setters
   if [inExtensionSetterMapForBuildingContext hasKey ![inTypeName string]] then
-    @extensionSetterMapForType extensionSetterMapForType
+    var @extensionSetterMapForType extensionSetterMapForType
     [inExtensionSetterMapForBuildingContext searchKey !inTypeName ?extensionSetterMapForType]
     for (lkey mFormalParameterList) in extensionSetterMapForType do
-      @formalParameterSignature formalArgumentList = {}
+      var @formalParameterSignature formalArgumentList = {}
       for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFormalParameterList do
         [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let typeIndex]
         formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
@@ -545,14 +545,14 @@ proc recursivelyEnumerateDirectories
   !@wrapperDirectoryMap outWrapperDirectoryMap
   ?!@uint ioWrapperFileIndex
   ?!@uint ioWrapperDirectoryIndex {
-  @uint currentDirectoryIndex = ioWrapperDirectoryIndex
+  var @uint currentDirectoryIndex = ioWrapperDirectoryIndex
   ioWrapperDirectoryIndex ++
 #--- Enumerates regular files
-  @stringlist files = [inAbsoluteSourcePath regularFiles !false]
+  var @stringlist files = [inAbsoluteSourcePath regularFiles !false]
   outWrapperFileMap = {}
   for (mValue) in files do
     if [inTextFileExtensionMap hasKey ![mValue pathExtension]] then
-      @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
+      var @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
       [!?outWrapperFileMap insertKey
         !@lstring.new {!mValue !@location.here}
         !absoluteFilePath
@@ -562,7 +562,7 @@ proc recursivelyEnumerateDirectories
       ]
       ioWrapperFileIndex ++
     elsif [inBinaryFileExtensionMap hasKey ![mValue pathExtension]] then
-      @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
+      var @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
       [!?outWrapperFileMap insertKey
         !@lstring.new {!mValue !@location.here}
         !absoluteFilePath
@@ -574,12 +574,12 @@ proc recursivelyEnumerateDirectories
     end
   end
 #--- Enumerates regular directories
-  @stringlist directories = [inAbsoluteSourcePath directories !false]
+  var @stringlist directories = [inAbsoluteSourcePath directories !false]
   outWrapperDirectoryMap = {}
   for (mValue) in directories do
-    @wrapperFileMap internalWrapperFileMap
-    @wrapperDirectoryMap internalWrapperDirectoryMap
-    @uint theDirectoryIndex = ioWrapperDirectoryIndex
+    var @wrapperFileMap internalWrapperFileMap
+    var @wrapperDirectoryMap internalWrapperDirectoryMap
+    var @uint theDirectoryIndex = ioWrapperDirectoryIndex
     recursivelyEnumerateDirectories (
       !inAbsoluteSourcePath + "/" + mValue
       !inPathInWrapper + mValue + "/"
@@ -608,9 +608,9 @@ override method @filewrapperDeclarationAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext
 {
 #--- Templates
-  @filewrapperTemplateMap filewrapperTemplateMap = {}
+  var @filewrapperTemplateMap filewrapperTemplateMap = {}
   for (mFilewrapperTemplateName mFilewrapperTemplatePath mFilewrapperTemplateFormalInputParameters) in self.mFilewrapperTemplateList do
-    @functionSignature templateSignature = {}
+    var @functionSignature templateSignature = {}
     for (mFormalTemplateSelector mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFilewrapperTemplateFormalInputParameters do
       [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
       templateSignature += !mFormalTemplateSelector !parameterTypeIndex !mFormalArgumentName.string
@@ -622,12 +622,12 @@ override method @filewrapperDeclarationAST enterInSemanticContext
     ]
   end
 #--- Build text file extension map
-  @wrapperExtensionMap textExtensionMap = {}
+  var @wrapperExtensionMap textExtensionMap = {}
   for (mValue) in self.mFilewrapperTextFileExtensionList do
     [!?textExtensionMap insertKey !mValue]
   end
 #--- Build binary file extension map
-  @wrapperExtensionMap binaryFileExtensionMap = {}
+  var @wrapperExtensionMap binaryFileExtensionMap = {}
   for (mValue) in self.mFilewrapperBinaryFileExtensionList do
     if [textExtensionMap hasKey !mValue.string] then
       error mValue:"the '" + mValue + "' extension is already used for text files"
@@ -636,9 +636,9 @@ override method @filewrapperDeclarationAST enterInSemanticContext
     end
   end
 #--- Enumerate filewrapper files
-  @wrapperFileMap regularRootFileMap
-  @wrapperDirectoryMap wrapperDirectoryMap
-  @string absoluteSourcePath
+  var @wrapperFileMap regularRootFileMap
+  var @wrapperDirectoryMap wrapperDirectoryMap
+  var @string absoluteSourcePath
   if [[self.mFilewrapperPath string] firstCharacterOrNul] == '/' then
     absoluteSourcePath = [self.mFilewrapperPath string]
   else
@@ -649,8 +649,8 @@ override method @filewrapperDeclarationAST enterInSemanticContext
     : regularRootFileMap, wrapperDirectoryMap
   else
   #--- Enumerate pathes
-    @uint wrapperFileIndex = 0
-    @uint wrapperDirectoryIndex = 0
+    var @uint wrapperFileIndex = 0
+    var @uint wrapperDirectoryIndex = 0
     recursivelyEnumerateDirectories (
      !absoluteSourcePath
      !"/"
@@ -781,10 +781,10 @@ override method @galgas3GrammarComponentAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext
 {
 #--- Analyze start symbol labels
-  @grammarLabelMap grammarLabelMap = {}
+  var @grammarLabelMap grammarLabelMap = {}
   for (mLabelName mFormalArgumentList mEndOfArgumentLocation) in self.mStartSymbolLabelList do
   #--- Analyze signature
-    @formalParameterSignature formalArgumentList = {}
+    var @formalParameterSignature formalArgumentList = {}
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFormalArgumentList do
       [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let argumentType]
       formalArgumentList +=
@@ -816,18 +816,18 @@ override method @lexiqueComponentAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext {
 #--------------------------------------- Build lexical attribute map
   let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()
-  @lexicalAttributeMap lexicalAttributeMap = {}
+  var @lexicalAttributeMap lexicalAttributeMap = {}
   buildLexicalAttributeMap (
    !lexicalTypeMap
    !self.mLexicalAttributeList
    !?lexicalAttributeMap
   )
 #--------------------------------------- 
-  @terminalMap terminalMap = {}
+  var @terminalMap terminalMap = {}
   for (mName mSentAttributeList mSyntaxErrorMessage mStyle mOptionList) in self.mTerminalDeclarationList do
     var argumentTypeList =@lexicalSentValueList {}
     for (mFormalSelector mAttributeName) in mSentAttributeList do
-      @lexicalTypeEnum attributeLexicalType
+      var @lexicalTypeEnum attributeLexicalType
       [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
@@ -837,7 +837,7 @@ override method @lexiqueComponentAST enterInSemanticContext
   for (mName mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in self.mLexicalListDeclarationList do
     var argumentTypeList =@lexicalSentValueList {}
     for (mFormalSelector mAttributeName) in mSentAttributeList do
-      @lexicalTypeEnum attributeLexicalType
+      var @lexicalTypeEnum attributeLexicalType
       [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end

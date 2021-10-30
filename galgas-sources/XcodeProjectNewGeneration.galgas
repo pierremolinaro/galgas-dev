@@ -162,12 +162,12 @@ setter @XcodeProjectDescriptor addAppTarget
   [!?self getReferenceKey ?ref:let buildConfigurationRef]
   [!?self getReferenceKey ?ref:let frameworkBuildRef]
   [!?self getReferenceKey ?ref:let resourceBuildRef]
-  @2stringlist dependentTargets = {}
+  var @2stringlist dependentTargets = {}
   for (ref) in inDependentTargetRefList do
     [!?self getReferenceKey ?ref:let dependencyBuildRef]
     dependentTargets += !dependencyBuildRef !ref
   end
-  @stringlist resourceFileBuildRefs = inResourceFileBuildRefs
+  var @stringlist resourceFileBuildRefs = inResourceFileBuildRefs
   for (ref name) in inProductCopyList do
     [!?self addBuildFile !fileRef:ref !fileName:name ?buildRef:let @string buildRef]
     resourceFileBuildRefs += !buildRef
@@ -234,7 +234,7 @@ setter @XcodeProjectDescriptor addGroupWithFiles
   end
   [!?self getReferenceKey ?ref:outGroupRef]
 #---
-  @stringlist childrenRefs = {}
+  var @stringlist childrenRefs = {}
   for (f) in inFileNames do
     if [f pathExtension] == "c" then
       [!?self addCFile !fileName:f ?fileRef:let @string cFileRef]

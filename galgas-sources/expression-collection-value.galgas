@@ -43,7 +43,7 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary> !@semanticExpressionAST outExpression {
     <optional_type> ?let @lstring typeName
     ${$
-    @collectionValueElementList elementList = {}
+    var @collectionValueElementList elementList = {}
     select
     or
       repeat
@@ -64,7 +64,7 @@ syntax extension galgas3ExpressionSyntax {
   #·····················································································································
   
   rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
-    @actualOutputExpressionList expressionList = {}
+    var @actualOutputExpressionList expressionList = {}
     repeat
       $!$ ?let selector
       <expression> ?let @semanticExpressionAST expression
@@ -106,7 +106,7 @@ override method @collectionValueAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
 #--- Type
-  @unifiedTypeMap-entry targetType
+  var @unifiedTypeMap-entry targetType
   if self.mTypeName.string == "" then
     targetType = inType
   else
@@ -126,7 +126,7 @@ override method @collectionValueAST analyzeSemanticExpression
         !self.mTypeName.location
       }
     else
-      @collectionValueElementListForGeneration collectionValueElementListForGeneration = {}
+      var @collectionValueElementListForGeneration collectionValueElementListForGeneration = {}
       for (mElement) in self.mElementList do
         [mElement analyze
           !inUsefulnessCallerEntityName
@@ -207,7 +207,7 @@ override method @expressionListCollectionValue analyze
   ?!@localVarManager ioVariableMap
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration {
   let @functionSignature formalParameterTypeList = [inElementType mAddAssignOperatorArguments]
-  @semanticExpressionListForGeneration semanticExpressionListForGeneration
+  var @semanticExpressionListForGeneration semanticExpressionListForGeneration
   if [formalParameterTypeList length] != [self.mExpressionList length] then
     error self.mEndOfExpressionLocation: "element of of '@" + [inElementType key] + "' requires "
     + [formalParameterTypeList length] + " parameter(s), while this list has "

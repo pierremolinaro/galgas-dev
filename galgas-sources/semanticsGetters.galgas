@@ -69,7 +69,7 @@ proc enterInheritedGetterWithArgument
   ?hasCompilerArgument:let @bool inHasCompilerArgument
  {
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
-  @functionSignature argList = {}
+  var @functionSignature argList = {}
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument1TypeName ?let t]
   argList += !["" nowhere] !t !inArgument1Name
   [!?ioGetterMap insertOrReplace
@@ -98,7 +98,7 @@ proc enterInheritedGetterWith2Arguments
   ?hasCompilerArgument:let @bool inHasCompilerArgument
 {
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
-  @functionSignature argList = {}
+  var @functionSignature argList = {}
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument1TypeName ?@unifiedTypeMap-entry t]
   argList += !["" nowhere] !t !inArgument1Name
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
@@ -149,7 +149,7 @@ proc enterBaseGetterWithArgument
   ?hasCompilerArgument:let @bool inHasCompilerArgument
 {
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
-  @functionSignature argList = {}
+  var @functionSignature argList = {}
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument1TypeName ?let t]
   argList += !["" nowhere] !t !inArgument1Name
   [!?ioGetterMap insertOrReplace
@@ -176,7 +176,7 @@ proc enterBaseFinalGetterWithArgument
   ?hasCompilerArgument:let @bool inHasCompilerArgument
  {
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
-  @functionSignature argList = {}
+  var @functionSignature argList = {}
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument1TypeName ?let t]
   argList += !["" nowhere] !t !inArgument1Name
   [!?ioGetterMap insertOrReplace
@@ -205,7 +205,7 @@ proc enterBaseGetterWith2Arguments
   ?hasCompilerArgument:let @bool inHasCompilerArgument
 {
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
-  @functionSignature argList = {}
+  var @functionSignature argList = {}
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument1TypeName ?@unifiedTypeMap-entry t]
   argList += !["" nowhere] !t !inArgument1Name
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
@@ -236,7 +236,7 @@ proc enterBaseFinalGetterWith2Arguments
   ?hasCompilerArgument:let @bool inHasCompilerArgument
 {
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
-  @functionSignature argList = {}
+  var @functionSignature argList = {}
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument1TypeName ?@unifiedTypeMap-entry t]
   argList += !["" nowhere] !t !inArgument1Name
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
@@ -305,7 +305,7 @@ proc enterBaseFinalGetterWith3Arguments
   ?hasCompilerArgument:let @bool inHasCompilerArgument
 {
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
-  @functionSignature argList = {}
+  var @functionSignature argList = {}
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument1TypeName ?@unifiedTypeMap-entry t]
   argList += !["" nowhere] !t !inArgument1Name
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]

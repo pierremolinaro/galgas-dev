@@ -29,6 +29,43 @@ syntax extension galgas3InstructionsSyntax {
 
   #·····················································································································
 
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $var$
+    $@type$ ?let typeName
+    $identifier$ ?let variableName
+    $=$
+    <expression> ?let @semanticExpressionAST sourceExpression
+    outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
+      ![typeName location]
+      !false
+      !typeName
+      !variableName
+      !sourceExpression
+    }
+  }
+
+  #·····················································································································
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $@type$ ?let typeName
+    $identifier$ ?let variableName
+    $=$
+    <expression> ?let @semanticExpressionAST sourceExpression
+    outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
+      ![typeName location]
+      !false
+      !typeName
+      !variableName
+      !sourceExpression
+    }
+    if [option galgas_cli_options.errorOldStyleLocalVarDeclaration value] then
+      error typeName : "old style local variable declaration (due to '--error-old-style-local-var-declaration' option)"
+      fixit { replace "var @" + typeName }
+    end
+  }
+
+  #·····················································································································
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

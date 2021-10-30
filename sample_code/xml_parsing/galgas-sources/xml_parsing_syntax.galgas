@@ -28,7 +28,7 @@ rule <start_symbol>
   ?let @bool inIncludeComments
   ?let @bool inDoNotCondenseWhiteSpaces
   ?let @bool inPrintDuringParsing {
-  @string s = @string. retrieveAndResetTemplateString
+  var @string s = @string. retrieveAndResetTemplateString
   if [s length] > 0 then
     error @location.here: "No character is allowed before XML header"
   end
@@ -96,13 +96,13 @@ rule <element>
     ioNodes += !node
   end
   if inPrintDuringParsing then
-    @string discartedMessage
+    var @string discartedMessage
     if inIncludeComments then
       discartedMessage = ""
     else
       discartedMessage = "(discarted) "
     end
-    @string s = inIndendation + "COMMENT " + discartedMessage + "'" + commentString + "' "
+    var @string s = inIndendation + "COMMENT " + discartedMessage + "'" + commentString + "' "
     s += [[[commentString location] line] string]
     s += ":" + [[[commentString location] column] string]
     s += ":" + [[[commentString location] locationIndex] string] + "\n"
@@ -120,7 +120,7 @@ rule <element>
   ?let @string inIndendation {
   $<$
   $name$ ?var  @lstring name
-  @xmlAttributeMap attributeMap = {}
+  var @xmlAttributeMap attributeMap = {}
   repeat
   while 
     $name$ ?var  @lstring attributeName
@@ -130,7 +130,7 @@ rule <element>
   end
 
   if inPrintDuringParsing then
-    @string s = inIndendation
+    var @string s = inIndendation
     s += "ELEMENT '" + name + "' "
     s += [[[name location] line] string]
     s += ":" + [[[name location] column] string]
@@ -194,10 +194,10 @@ proc addText
   ?let @bool inDoNotCondenseWhiteSpaces
   ?let @bool inPrintDuringParsing
   ?let @string inIndendation {
-  @string s = @string. retrieveAndResetTemplateString
-  @string trimmedString = [s stringByTrimmingWhiteSpaces]
+  var @string s = @string. retrieveAndResetTemplateString
+  var @string trimmedString = [s stringByTrimmingWhiteSpaces]
   if [trimmedString length] > 0 then
-    @string ls
+    var @string ls
     if inDoNotCondenseWhiteSpaces then
       ls = s
     else
@@ -211,7 +211,7 @@ proc addText
     }
     ioNodes += !node
     if inPrintDuringParsing then
-      @string s = inIndendation + "TEXT " + "'" + ls + "'\n"
+      var @string s = inIndendation + "TEXT " + "'" + ls + "'\n"
       message s
     end
   end

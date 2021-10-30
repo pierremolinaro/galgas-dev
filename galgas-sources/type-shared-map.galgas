@@ -95,7 +95,7 @@ syntax extension galgas3DeclarationsSyntax {
     $@type$ ?let @lstring mMapTypeName indexing uniquemapDefinition, mapEntryDefinition "-entry"
     let mapEntryTypeName = @lstring.new {!mMapTypeName.string + "-entry" !mMapTypeName.location}
   #--- Map attributes
-    @lstringlist mapAttributeList = {}
+    var @lstringlist mapAttributeList = {}
     repeat
     while
       $%attribute$ ?let attribute
@@ -103,12 +103,12 @@ syntax extension galgas3DeclarationsSyntax {
     end
   #--- Map properties
     ${$
-    @propertyInCollectionListAST propertyList = {}
-    @insertMethodListAST mInsertMethodList = {}
-    @mapSearchMethodListAST mSearchMethodList = {}
-    @mapStateList mapStateList = {}
-    @mapOverrideBlockListAST mapOverrideBlockListAST = {}
-    @sharedMapAttributeListAST sharedMapAttributeListAST = {} 
+    var @propertyInCollectionListAST propertyList = {}
+    var @insertMethodListAST mInsertMethodList = {}
+    var @mapSearchMethodListAST mSearchMethodList = {}
+    var @mapStateList mapStateList = {}
+    var @mapOverrideBlockListAST mapOverrideBlockListAST = {}
+    var @sharedMapAttributeListAST sharedMapAttributeListAST = {} 
     repeat
     while
       <shared_map_state_list> !?mapStateList
@@ -151,7 +151,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <shared_map_override> ?!@mapOverrideBlockListAST ioMapOverrideBlockListAST {
     $override$
     $identifier$ ?var  @lstring overrideBlockName
-    @mapOverrideBlockDescriptorAST mapOverrideBlockDescriptor1AST = {}
+    var @mapOverrideBlockDescriptorAST mapOverrideBlockDescriptor1AST = {}
     ${$
     repeat
     while
@@ -160,8 +160,8 @@ syntax extension galgas3DeclarationsSyntax {
       $identifier$ ?var  @lstring sourceState2
       $->$
       $identifier$ ?var  @lstring targetState
-      @mapAutomatonMessageKind messageKind
-      @lstring messageText
+      var @mapAutomatonMessageKind messageKind
+      var @lstring messageText
       select
         messageKind = @mapAutomatonMessageKind.noMessage
         messageText = @lstring.new {!"" !@location.here}
@@ -186,8 +186,8 @@ syntax extension galgas3DeclarationsSyntax {
       $identifier$ ?var  @lstring sourceState2
       $->$
       $identifier$ ?var  @lstring targetState
-      @mapAutomatonMessageKind messageKind
-      @lstring messageText
+      var @mapAutomatonMessageKind messageKind
+      var @lstring messageText
       select
         messageKind = @mapAutomatonMessageKind.noMessage
         messageText = @lstring.new {!"" !@location.here}
@@ -209,7 +209,7 @@ syntax extension galgas3DeclarationsSyntax {
   #·····················································································································
 
   rule <shared_map_attribute> ?!@sharedMapAttributeListAST ioSharedMapAttributeListAST {
-    @bool isError
+    var @bool isError
     select
       $error$
       isError = true
@@ -227,7 +227,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <shared_map_search_method_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
     $search$
     $identifier$ ?let @lstring mMethodName
-    @lstring actionName
+    var @lstring actionName
     select
       actionName = @lstring.new {!"" !@location.here}
     or
@@ -249,8 +249,8 @@ syntax extension galgas3DeclarationsSyntax {
   rule <shared_map_state_list> ?!@mapStateList ioMapStateList {
     $state$
     $identifier$ ?let @lstring stateName
-    @mapAutomatonMessageKind stateMessageKind
-    @lstring stateMessage
+    var @mapAutomatonMessageKind stateMessageKind
+    var @lstring stateMessage
     select
       stateMessageKind = .noMessage
       stateMessage = @lstring.new {!"" !@location.here}
@@ -264,7 +264,7 @@ syntax extension galgas3DeclarationsSyntax {
       stateMessageKind = .errorMessage
     end
     ${$
-    @mapStateTransitionList transitionList = {}
+    var @mapStateTransitionList transitionList = {}
     repeat
     while
       <shared_map_state_transition> !?transitionList
@@ -283,8 +283,8 @@ syntax extension galgas3DeclarationsSyntax {
     $identifier$ ?let @lstring actionName
     $->$
     $identifier$ ?let @lstring targetStateName
-    @mapAutomatonMessageKind transitionMessageKind
-    @lstring transitionMessage
+    var @mapAutomatonMessageKind transitionMessageKind
+    var @lstring transitionMessage
     select
       transitionMessageKind = .noMessage
       transitionMessage = .new {!"" !.here}
@@ -350,9 +350,9 @@ override method @sharedMapDeclarationAST enterInSemanticContext
 #--- lstringlist type index
   [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"lstringlist" ?let lstringlistTypeIndex]
 #--- Enumeration description
-  @enumerationDescriptorList enumerationDescriptor = {!lstringTypeIndex !"lkey"}
+  var @enumerationDescriptorList enumerationDescriptor = {!lstringTypeIndex !"lkey"}
 #--- Attributes
-  @bool usesSelectorsInInsertAndSearch = false
+  var @bool usesSelectorsInInsertAndSearch = false
   for (s) in self.mAttributeList do
     if s.string == "selectors" then
       if usesSelectorsInInsertAndSearch then
@@ -364,10 +364,10 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     end
   end
 #---
-  @constructorMap constructorMap = {}
+  var @constructorMap constructorMap = {}
   commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
-  @setterMap setterMap = {}
-  @instanceMethodMap instanceMethodMap = {}
+  var @setterMap setterMap = {}
+  var @instanceMethodMap instanceMethodMap = {}
 #--- Constructors
   enterConstructorWithoutArgument (
     !?constructorMap
@@ -458,14 +458,14 @@ override method @sharedMapDeclarationAST enterInSemanticContext
 #    !"" # No error message
 #  ]
 #--- Handle attributes
-  @typedPropertyList typedAttributeList = {}
-  @formalParameterSignature insertMethodFormalArgumentList = {}
+  var @typedPropertyList typedAttributeList = {}
+  var @formalParameterSignature insertMethodFormalArgumentList = {}
   insertMethodFormalArgumentList +=
     ![if usesSelectorsInInsertAndSearch then "lkey" else "" end nowhere]
     !lstringTypeIndex
     !.argumentConstantIn
     !"inLKey"
-  @formalParameterSignature removeMethodFormalArgumentList = {}
+  var @formalParameterSignature removeMethodFormalArgumentList = {}
   removeMethodFormalArgumentList +=
     ![if usesSelectorsInInsertAndSearch then "lkey" else "" end nowhere]
     !lstringTypeIndex
@@ -619,7 +619,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     let accessorName = @lstring.new {!"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "ForKey" ![mPropertyName location]}
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
-    @formalParameterSignature accessorFormalArgumentList = {}
+    var @formalParameterSignature accessorFormalArgumentList = {}
     accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
     accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !.argumentConstantIn !mPropertyName.string
     [!?setterMap insertOrReplace
@@ -757,7 +757,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!self.mMapTypeName.string + "-entry" !self.mMapTypeName})
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #---
-  @mapAutomatonMessageKind shadowBehaviour = .noMessage
+  var @mapAutomatonMessageKind shadowBehaviour = .noMessage
   var shadowMessage = ""
   for (attributeName isError messageText) in self.mSharedMapAttributeListAST do
     if attributeName.string != "shadow" then
@@ -771,7 +771,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
     end
   end
 #--- Compute initial state set
-  @stringset initialStateSet = {}
+  var @stringset initialStateSet = {}
   for (mInsertMethodName mErrorMessage mShadowErrorMessage mInitialStateName) in self.mInsertMethodList do
     if [self.mMapStateList length] > 0 then
       if [mInitialStateName string] == "" then
@@ -784,7 +784,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
     end
   end
 #--- Analyze map automation actions
-  @mapAutomatonActionMap mapAutomatonActionMap = {}
+  var @mapAutomatonActionMap mapAutomatonActionMap = {}
   for (mSearchMethodName mErrorMessage mActionName mLocationAttribute) in self.mSearchMethodList do
     if [self.mMapStateList length] > 0 then
       if [mActionName string] == "" then
@@ -797,7 +797,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
     end
   end
 #--- Analyze map automaton
-  @mapAutomatonStateMap mapAutomatonStateMap = {}
+  var @mapAutomatonStateMap mapAutomatonStateMap = {}
   for (mStateName mStateMessageKind mStateMessage mTransitionList) in self.mMapStateList do
     [!?mapAutomatonStateMap insertKey !mStateName ![mapAutomatonStateMap count] !mStateMessageKind]
   end
@@ -808,10 +808,10 @@ override method @sharedMapDeclarationAST semanticAnalysis
   end
 #--- Check automaton actions are all defined
   let @stringset allActions = [mapAutomatonActionMap keySet]
-  @mapStateSortedList mapStateSortedList = {}
+  var @mapStateSortedList mapStateSortedList = {}
   for (mStateName mStateMessageKind mStateMessage mTransitionList) in self.mMapStateList do
-    @stringset actionsForCurrentState = {}
-    @mapStateTransitionSortedList mapStateTransitionSortedList = {}
+    var @stringset actionsForCurrentState = {}
+    var @mapStateTransitionSortedList mapStateTransitionSortedList = {}
     for (mActionName mTargetStateName mTransitionMessageKind mTransitionMessage) in mTransitionList do
       [mapAutomatonActionMap searchKey !mActionName ?let @uint actionIndex]
       if [actionsForCurrentState hasKey ![mActionName string]] then
@@ -836,7 +836,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
       !mapStateTransitionSortedList
     let @stringset missingActions = allActions - actionsForCurrentState
     if [missingActions count] > 0 then
-      @string s = ""
+      var @string s = ""
       for (key) in missingActions
         do s += "'" + key + "'"
         between s += ", "
@@ -846,7 +846,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
   end
 #--- Check for useful automaton states
   var accessibleStates = initialStateSet
-  @bool progress = true
+  var @bool progress = true
   loop ([self.mMapStateList length] + 1) while progress do
     progress = false
     for (mStateName mStateMessageKind mStateMessage mTransitionList) in self.mMapStateList do
@@ -871,10 +871,10 @@ override method @sharedMapDeclarationAST semanticAnalysis
   end
 #---------------------------------- override methods
 #--- Compute needed associations
-  @stringset neededAssociations = {}
-  @stringset accessibilityGraph = {}
+  var @stringset neededAssociations = {}
+  var @stringset accessibilityGraph = {}
   for mapAutomatonState in mapAutomatonStateMap do
-    @stringset reachableStates = {}
+    var @stringset reachableStates = {}
     reachableStates += ![mapAutomatonState.lkey string]
     progress = true
     loop ([mapAutomatonStateMap count] + 1) while progress do
@@ -898,11 +898,11 @@ override method @sharedMapDeclarationAST semanticAnalysis
     end
   end
 #---
-  @mapOverrideList mapOverrideList = {}
+  var @mapOverrideList mapOverrideList = {}
   for (mOverrideBlockName mMapOverrideBlockDescriptor1AST mMapOverrideBlockDescriptor2AST) in self.mMapOverrideBlockListAST do
-    @stringset handledAssociations = {}
-    @stringset neededCombinaisons = {}
-    @branchBehaviourSortedListForMapOverride branchBehaviourSortedListForMapOverride1 = {}
+    var @stringset handledAssociations = {}
+    var @stringset neededCombinaisons = {}
+    var @branchBehaviourSortedListForMapOverride branchBehaviourSortedListForMapOverride1 = {}
     for (mLeftState mRightState mResultingState mMessageKind mTransitionMessage) in mMapOverrideBlockDescriptor1AST do
       [mapAutomatonStateMap searchKey !mLeftState ?let startStateNameIndex ?*]
       [mapAutomatonStateMap searchKey !mRightState ?let currentStateNameIndex ?*]
@@ -935,16 +935,16 @@ override method @sharedMapDeclarationAST semanticAnalysis
         !mMessageKind
         ![mTransitionMessage string]
     end
-    @stringset forgottenAssociations = neededAssociations - handledAssociations
+    var @stringset forgottenAssociations = neededAssociations - handledAssociations
     if [forgottenAssociations count] > 0 then
-      @string s = ""
+      var @string s = ""
       for (key) in forgottenAssociations do
         s += "\n  - " + key
       end
       error @location.here: [[forgottenAssociations count] string] + " associations should be defined:" + s
     end
-    @stringset definedCombinaisons = {}
-    @branchBehaviourSortedListForMapOverride branchBehaviourSortedListForMapOverride2 = {}
+    var @stringset definedCombinaisons = {}
+    var @branchBehaviourSortedListForMapOverride branchBehaviourSortedListForMapOverride2 = {}
     for (mLeftState mRightState mResultingState mMessageKind mTransitionMessage) in mMapOverrideBlockDescriptor2AST do
       [mapAutomatonStateMap searchKey !mLeftState ?let leftStateIndex ?*]
       [mapAutomatonStateMap searchKey !mRightState ?let rightStateIndex ?*]
@@ -989,9 +989,9 @@ override method @sharedMapDeclarationAST semanticAnalysis
         ![mTransitionMessage string]
     end
     if [forgottenAssociations count] == 0 then # Check only if all associations are defined
-      @stringset forgottenCombinaisons = neededCombinaisons - definedCombinaisons
+      var @stringset forgottenCombinaisons = neededCombinaisons - definedCombinaisons
       if [forgottenCombinaisons count] > 0 then
-        @string s = ""
+        var @string s = ""
         for (key) in forgottenCombinaisons do
           s += "\n  - " + key
         end
@@ -1004,8 +1004,8 @@ override method @sharedMapDeclarationAST semanticAnalysis
       !branchBehaviourSortedListForMapOverride2
   end
 #------ Enter attributes
-  @typedPropertyList typedAttributeList = {}
-  @propertyIndexMap attributeMap = {}
+  var @typedPropertyList typedAttributeList = {}
+  var @propertyIndexMap attributeMap = {}
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
@@ -1020,12 +1020,12 @@ override method @sharedMapDeclarationAST semanticAnalysis
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #--- Enter insert setters
-  @insertMethodMap insertMethodMap = {}
+  var @insertMethodMap insertMethodMap = {}
   for insertMethod in self.mInsertMethodList do
     [!?insertMethodMap insertKey !insertMethod.mInsertMethodName]
   #--- Check error message escape sequences : only %K, %L or %%
     for messageComponent in [[insertMethod.mErrorMessage string] componentsSeparatedByString !"%%"] do
-      @stringlist explodedArray = [messageComponent.mValue componentsSeparatedByString !"%"]
+      var @stringlist explodedArray = [messageComponent.mValue componentsSeparatedByString !"%"]
       [!?explodedArray popFirst ?*]
       for (mValue) in explodedArray do
         if [mValue length] > 0 then
@@ -1038,7 +1038,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
     end
   #--- Check shadow error message escape sequences : only %K, %L or %%
     for shadowMessageComponent in [[insertMethod.mShadowErrorMessage string] componentsSeparatedByString !"%%"] do
-      @stringlist explodedArray = [shadowMessageComponent.mValue componentsSeparatedByString !"%"]
+      var @stringlist explodedArray = [shadowMessageComponent.mValue componentsSeparatedByString !"%"]
       [!?explodedArray popFirst ?*]
       for component in explodedArray do
         if [component.mValue length] > 0 then
@@ -1051,7 +1051,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
     end
   end
 #--- Enter search methods
-  @searchMethodMap searchMethodMap = {}
+  var @searchMethodMap searchMethodMap = {}
   for searchMethod in self.mSearchMethodList do
     if [self.mMapStateList length] == 0 then
       [!?searchMethodMap insertKey !searchMethod.mSearchMethodName]
@@ -1060,7 +1060,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
     end
   #--- Check error message escape sequences : only %K or %%
     for errorMessageComponent in [[searchMethod.mErrorMessage string] componentsSeparatedByString !"%%"] do
-      @stringlist explodedArray = [errorMessageComponent.mValue componentsSeparatedByString !"%"]
+      var @stringlist explodedArray = [errorMessageComponent.mValue componentsSeparatedByString !"%"]
       [!?explodedArray popFirst ?*]
       for component in explodedArray do
         if [component.mValue length] > 0 then

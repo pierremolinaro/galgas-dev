@@ -62,7 +62,7 @@ syntax extension galgas3DeclarationsSyntax {
   #--- Map type name
     $@type$ ?var  @lstring mMapTypeName indexing mapDefinition, structDefinition "-element"
   #--- Map attributes
-    @lstringlist mapAttributeList = {}
+    var @lstringlist mapAttributeList = {}
     repeat
     while
       $%attribute$ ?let attribute
@@ -72,9 +72,9 @@ syntax extension galgas3DeclarationsSyntax {
     ${$
     var propertyList =@propertyInCollectionListAST {}
     var mInsertMethodList =@insertMethodListAST {}
-    @mapSearchMethodListAST mSearchMethodList = {}
-    @mapRemoveMethodListAST mRemoveMethodList = {}
-    @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = {}
+    var @mapSearchMethodListAST mSearchMethodList = {}
+    var @mapRemoveMethodListAST mRemoveMethodList = {}
+    var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = {}
     repeat
     while
       <property_declaration> !? propertyList
@@ -107,7 +107,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <search_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
     $search$
     $identifier$ ?var  @lstring methodName
-    @bool locationAttribute
+    var @bool locationAttribute
     select
       locationAttribute = false
     or
@@ -149,7 +149,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <map_insert_setter_declaration> ?!@insertMethodListAST ioMapMethodList {
     $insert$
     $identifier$ ?var  @lstring mMethodName
-    @lstring stateName
+    var @lstring stateName
     select
       stateName = @lstring.new {!"" !@location.here}
     or
@@ -159,7 +159,7 @@ syntax extension galgas3DeclarationsSyntax {
     $error$
     $message$
     $"string"$ ?var  @lstring mErrorMessage
-    @lstring mShadowErrorMessage
+    var @lstring mShadowErrorMessage
     select
       mShadowErrorMessage = @lstring.new {!"" !@location.here}
     or
@@ -239,7 +239,7 @@ override method @mapDeclarationAST enterInSemanticContext
 #--- lstring type index
   [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"lstring" ?let lstringTypeIndex]
 #--- Enumeration description
-  @enumerationDescriptorList enumerationDescriptor = {!lstringTypeIndex !"lkey"}
+  var @enumerationDescriptorList enumerationDescriptor = {!lstringTypeIndex !"lkey"}
 #--- Attributes
   var usesSelectorsInInsertAndSearch = false
   var activateSuggestion = true
@@ -259,10 +259,10 @@ override method @mapDeclarationAST enterInSemanticContext
     end
   end
 #---
-  @constructorMap constructorMap = {}
+  var @constructorMap constructorMap = {}
   commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap)
-  @setterMap setterMap = {}
-  @instanceMethodMap instanceMethodMap = {}
+  var @setterMap setterMap = {}
+  var @instanceMethodMap instanceMethodMap = {}
 #--- Constructors
   enterConstructorWithoutArgument (
     !?constructorMap
@@ -348,26 +348,26 @@ override method @mapDeclarationAST enterInSemanticContext
 #--- Handle properties
   var insertMethodFormalArgumentList = @formalParameterSignature {}
   var typedPropertyList = @typedPropertyList {}
-  @optionalMethodSignature optionalMethodSignature = {}
+  var @optionalMethodSignature optionalMethodSignature = {}
   optionalMethodSignature +=
     !true
     ![if usesSelectorsInInsertAndSearch then "key" else "" end nowhere]
     !stringTypeIndex
     !"inKey"
-  @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = {}
+  var @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = {}
   argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !lstringTypeIndex !"lkey"
   insertMethodFormalArgumentList +=
     ![if usesSelectorsInInsertAndSearch then "lkey" else "" end nowhere]
     !lstringTypeIndex
     !@formalArgumentPassingModeAST.argumentConstantIn
     !"inLKey"
-  @formalParameterSignature removeMethodFormalArgumentList = {}
+  var @formalParameterSignature removeMethodFormalArgumentList = {}
   removeMethodFormalArgumentList +=
     ![if usesSelectorsInInsertAndSearch then "lkey" else "" end nowhere]
     !lstringTypeIndex
     !@formalArgumentPassingModeAST.argumentConstantIn
     !"inLKey"
-  @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
+  var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true
@@ -467,7 +467,7 @@ override method @mapDeclarationAST enterInSemanticContext
   end
 #---------- Handle "insertOrReplace" setter
   if [self.mInsertOrReplaceDeclarationListAST length] >= 1 then
-    @location insertOrReplaceLocation
+    var @location insertOrReplaceLocation
     [self.mInsertOrReplaceDeclarationListAST first ?insertOrReplaceLocation]
     [!?setterMap insertOrReplace
       !@lstring.new {!"insertOrReplace" !insertOrReplaceLocation}
@@ -489,7 +489,7 @@ override method @mapDeclarationAST enterInSemanticContext
       !mPropertyTypeName
       ?let @unifiedTypeMap-entry attributeTypeIndex
     ]
-    @formalParameterSignature accessorFormalArgumentList = {}
+    var @formalParameterSignature accessorFormalArgumentList = {}
     accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
     accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !.argumentConstantIn !"key"
     [!?setterMap insertOrReplace
@@ -593,12 +593,12 @@ override method @mapDeclarationAST semanticAnalysis
     end
   end
 #------ Enter property
-  @typedPropertyList typedAttributeList = {}
-  @propertyIndexMap attributeMap = {}
+  var @typedPropertyList typedAttributeList = {}
+  var @propertyIndexMap attributeMap = {}
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    @unifiedTypeMap-entry t = .searchKey{!inSemanticContext.mTypeMap !mPropertyTypeName}
+    var @unifiedTypeMap-entry t = .searchKey{!inSemanticContext.mTypeMap !mPropertyTypeName}
     let hasSetter = true
     let hasSelector = false
     typedAttributeList +=
@@ -607,7 +607,7 @@ override method @mapDeclarationAST semanticAnalysis
       !hasSetter
       !hasSelector
     if [forbiddenKeysForMapAndDict () hasKey !mPropertyName.string] then
-      @string m = "a property cannot be named:"
+      var @string m = "a property cannot be named:"
       for s in forbiddenKeysForMapAndDict () do
         m+= " " + s
       end
@@ -617,14 +617,14 @@ override method @mapDeclarationAST semanticAnalysis
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #--- Enter insert setters
-  @insertMethodMap insertMethodMap = {}
+  var @insertMethodMap insertMethodMap = {}
   for (mInsertMethodName mErrorMessage mShadowErrorMessage mInitialStateName) in self.mInsertMethodList do
     [!?insertMethodMap insertKey !mInsertMethodName]
     check_K_L_escapeCharacters ( !mErrorMessage )
     check_K_L_escapeCharacters ( !mShadowErrorMessage )
   end
 #--- Enter search methods
-  @searchMethodMap searchMethodMap = {}
+  var @searchMethodMap searchMethodMap = {}
   for (mSearchMethodName mErrorMessage mActionName mLocationAttribute) in self.mSearchMethodList do
     [!?searchMethodMap insertKey !mSearchMethodName]
     check_K_escapeCharacters ( !mErrorMessage )
@@ -642,7 +642,7 @@ override method @mapDeclarationAST semanticAnalysis
   end
   let @bool hasInsertOrReplaceModifier = [self.mInsertOrReplaceDeclarationListAST length] > 0
   if hasInsertOrReplaceModifier & [insertMethodMap hasKey !"insertOrReplace"] then
-    @location insertOrReplaceDeclarationLocation
+    var @location insertOrReplaceDeclarationLocation
     [self.mInsertOrReplaceDeclarationListAST first ?insertOrReplaceDeclarationLocation]
     error insertOrReplaceDeclarationLocation : "the insertOrReplace' setter cannot be declared : an insert setter or a remove setter has been declared with this name"
   end

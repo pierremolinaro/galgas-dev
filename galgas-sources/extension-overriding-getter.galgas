@@ -28,7 +28,7 @@ syntax extension galgas3DeclarationsSyntax {
     <formal_input_parameter_list> ?let formalInputParameterList
     $->$
     $@type$ ?var  @lstring mReturnedTypeName
-    @lstring resultVariableName
+    var @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
     or
@@ -112,11 +112,11 @@ override method @overridingExtensionGetterAST semanticAnalysis
     error self.mOverridingExtensionGetterName: "cannot declare a extension getter: '@" + [selfType key] + "' is not a class"
   end
 #--- Find base type name
-  @string baseTypeName = ""
-  @unifiedTypeMap-entry superType = [selfType mSuperType]
-  @functionSignature inheritedSignature = {}
+  var @string baseTypeName = ""
+  var @unifiedTypeMap-entry superType = [selfType mSuperType]
+  var @functionSignature inheritedSignature = {}
   var inheritedReturnType =@unifiedTypeMap-entry.null{}
-  @location inheritedDeclarationLocation = @location.here
+  var @location inheritedDeclarationLocation = @location.here
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mGetterMap] hasKey ![self.mOverridingExtensionGetterName string]] then

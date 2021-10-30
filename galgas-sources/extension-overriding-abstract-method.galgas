@@ -95,14 +95,14 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
     error self.mOverridingExtensionMethodName: "cannot declare an abstract extension method: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Find base type name
-  @string baseTypeName = ""
-  @unifiedTypeMap-entry superType = [selfType mSuperType]
+  var @string baseTypeName = ""
+  var @unifiedTypeMap-entry superType = [selfType mSuperType]
   var inheritedSignature =@formalParameterSignature {}
-  @location inheritedDeclarationLocation = @location.here
+  var @location inheritedDeclarationLocation = @location.here
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mInstanceMethodMap] hasKey ![self.mOverridingExtensionMethodName string]] then
-      @methodQualifier qualifier
+      var @methodQualifier qualifier
       [[superType mInstanceMethodMap] searchKey !self.mOverridingExtensionMethodName ?* ?inheritedSignature ?inheritedDeclarationLocation ?* ?qualifier ?*]
       if qualifier <= @methodQualifier. isBasicFinal then
         baseTypeName = [superType key]
@@ -115,7 +115,7 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
   end
 #--- Analyze formal argument list
   var variableMap = @localVarManager.default
-  @formalParameterListForGeneration formalParameterListForGeneration
+  var @formalParameterListForGeneration formalParameterListForGeneration
   buildLocalVariableMapAndSignature (
     !inSemanticContext
     !self.mOverridingExtensionMethodFormalParameterList

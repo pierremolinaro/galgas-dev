@@ -6,7 +6,7 @@ proc generateCfile
   ?let @string inTargetFilePath
   ?let @instructionListForGeneration inInstructionListForGeneration {
   if @uint. errorCount == 0 then
-    @string generatedCode = [filewrapper cCodeGeneration.cCodeFile !inInstructionListForGeneration]
+    var @string generatedCode = [filewrapper cCodeGeneration.cCodeFile !inInstructionListForGeneration]
     [generatedCode writeToFileWhenDifferentContents !inTargetFilePath ?*]
   end
 }

@@ -31,7 +31,7 @@ syntax extension templateSyntax {
     <expression> ?let switchExpression
     let @location endOfSwitchExpression = .here
   #--- Loop on "case" clauses
-    @templateInstructionSwitchBranchListAST templateInstructionSwitchBranchList = {}
+    var @templateInstructionSwitchBranchListAST templateInstructionSwitchBranchList = {}
     repeat
     while
       $case$
@@ -39,7 +39,7 @@ syntax extension templateSyntax {
         ?let @lstringlist constantNameList
         ?let @switchExtractedValuesListAST associatedValuesExtraction
       $:$
-      @templateInstructionListAST instructionList = {}
+      var @templateInstructionListAST instructionList = {}
       repeat
         enterTemplateString (!?instructionList)
       while
@@ -84,13 +84,13 @@ syntax extension templateSyntax {
           $*$
           outAssociatedValuesExtraction += !["" nowhere] !["" nowhere] !false
          or
-          @lstring typeName
+          var @lstring typeName
           select
             $@type$ ?typeName
           or
             typeName = ["" nowhere]
           end
-          @bool constantMarkedAsUnused
+          var @bool constantMarkedAsUnused
           select
             constantMarkedAsUnused = false
           or
@@ -121,7 +121,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
   ?!@templateInstructionListForGeneration ioInstructionList
 {
 #---
-  @semanticExpressionForGeneration switchExpression
+  var @semanticExpressionForGeneration switchExpression
   [self.mSwitchExpression templateExpressionAnalysis 
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -133,13 +133,13 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
        + [[[switchExpression mResultType] mTypeKindEnum] kind] + " type)"
   end
   let enumConstantMap = [[switchExpression mResultType] mEnumConstantMap]
-  @stringset constantsNamedInSwitchInstruction = {}
+  var @stringset constantsNamedInSwitchInstruction = {}
 #--- Analyze branches
 #  @switchBranchesForGeneration switchBranchesForGeneration = {}
-  @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = {}
+  var @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = {}
   for (mConstantList mAssociatedValuesExtraction mInstructionList mEndOfBranch) in self.mTemplateInstructionSwitchBranchList do
-    @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = {}
-    @bool firstConstant = true
+    var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = {}
+    var @bool firstConstant = true
     var analysisContext = inAnalysisContext 
     for (mValue) in mConstantList do
       if [enumConstantMap hasKey ![mValue string]] then
@@ -181,7 +181,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
       end
       firstConstant = false
     end
-    @templateInstructionListForGeneration instructionList = {}
+    var @templateInstructionListForGeneration instructionList = {}
     templateInstructionListAnalysis (
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -198,7 +198,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
 #--- Check all constants have been named
   let forgottenConstants = [enumConstantMap keySet] - constantsNamedInSwitchInstruction
   if [forgottenConstants count] > 0 then
-    @string s = ""
+    var @string s = ""
     for (key) in forgottenConstants do
       s += "\n  - " + key
     end

@@ -17,7 +17,7 @@ syntax extension galgas3DeclarationsSyntax {
     $boolset$
     $@type$ ?let @lstring boolsetTypeName indexing structDefinition
     ${$
-    @lstringlist slotList = {}
+    var @lstringlist slotList = {}
     repeat
       $identifier$ ?let slotName
       slotList += !slotName
@@ -79,10 +79,10 @@ override method @boolsetDeclarationAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext
 {
 #--- Check unicity of slot names
-  @stringset slotNameSet = {}
+  var @stringset slotNameSet = {}
   for (slotName) in self.mFlagList do
     if [forbiddenKeysForBoolset () hasKey !slotName.string] then
-      @string m = "a slot cannot be named:"
+      var @string m = "a slot cannot be named:"
       for s in forbiddenKeysForBoolset () do
         m += " " + s
       end
@@ -97,7 +97,7 @@ override method @boolsetDeclarationAST enterInSemanticContext
   [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mBoolsetTypeName ?let boolsetTypeIndex]
 #--- Constructors and attribute map
   commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?@getterMap getterMap)
-  @constructorMap constructorMap = {}
+  var @constructorMap constructorMap = {}
   [!?constructorMap insertKey !["none" nowhere] !{} !false !boolsetTypeIndex] 
   [!?constructorMap insertKey !["all" nowhere] !{} !false !boolsetTypeIndex] 
   enterBaseFinalGetterWithoutArgument (
@@ -127,9 +127,9 @@ override method @boolsetDeclarationAST enterInSemanticContext
     end
   end
 #--- Setters
-  @setterMap setterMap = {}
+  var @setterMap setterMap = {}
 #--- Instance methods
-  @instanceMethodMap instanceMethodMap = {}
+  var @instanceMethodMap instanceMethodMap = {}
 #--- Add Categories
   addExtensions (
     !inExtensionMethodMapForBuildingContext

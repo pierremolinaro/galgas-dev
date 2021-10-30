@@ -95,7 +95,7 @@ private proc compileProgramRulesGalgas3
   ?let @programRuleList inProgramRules
   ?!@programListForGeneration ioDecoratedDeclarationListForGeneration
 {
-  @uint ruleIndex = 0
+  var @uint ruleIndex = 0
   for (mSourceFileExtension mSourceFileHelp mSourceFileVariableName mSourceFileVariableNameIsUnused mReferenceGrammar mInstructionList mEndOfInstructionList) in inProgramRules do
     let usefulnessName = rootRuleNameForUsefulEntitiesGraph (!mSourceFileExtension)
     [!?ioUsefulEntitiesGraph addNode !usefulnessName !usefulnessName]
@@ -107,8 +107,8 @@ private proc compileProgramRulesGalgas3
       !mSourceFileVariableName
       !mSourceFileVariableNameIsUnused
     }
-    @semanticInstructionListForGeneration semanticInstructionListForGeneration
-    @formalParameterListForGeneration routineSignature
+    var @semanticInstructionListForGeneration semanticInstructionListForGeneration
+    var @formalParameterListForGeneration routineSignature
     analyzeRoutineBody (
       !usefulnessName
       !?ioUsefulEntitiesGraph
@@ -152,7 +152,7 @@ proc compileAfterClauseGalgas3
   [!?ioUsefulEntitiesGraph addNode !usefulnessName !usefulnessName]
   ioUsefulnessRootEntities += !usefulnessName
 #--- Compile 'after' routines
-  @semanticInstructionListForGeneration semanticInstructionListForGeneration = {}
+  var @semanticInstructionListForGeneration semanticInstructionListForGeneration = {}
   for (mInstructionList mEndOfInstructionList) in inEpilogueList do
     analyzeRoutineBody (
       !usefulnessName
@@ -206,7 +206,7 @@ proc compileProgramComponentGalgas3
     !""
   }
 #--- Analyse 'before' instructions
-  @programListForGeneration decoratedDeclarationListForGeneration = {}
+  var @programListForGeneration decoratedDeclarationListForGeneration = {}
   compileBeforeClauseGalgas3 (
     !?ioUsefulnessRootEntities
     !?ioUsefulEntitiesGraph
@@ -231,7 +231,7 @@ proc compileProgramComponentGalgas3
     !?decoratedDeclarationListForGeneration
   )
 #------------ Build Implementation File
-  @stringset inclusionSet = {}
+  var @stringset inclusionSet = {}
   var beforeAfterRulesString = ""
   for (mDeclaration) in decoratedDeclarationListForGeneration do
     beforeAfterRulesString += [mDeclaration appendTypeGenericImplementation]

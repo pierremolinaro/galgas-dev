@@ -4,9 +4,9 @@
 
 proc listUnicodeCharacterProperties {
   message "---- Unassigned Unicode Characters\n"
-  @uint unicodeValue = 0
-  @uint matchedValue = 0
-  @bool found = false
+  var @uint unicodeValue = 0
+  var @uint matchedValue = 0
+  var @bool found = false
   loop( 0x10000 - unicodeValue)
   while unicodeValue < 0x10000 do
     if [unicodeValue isUnicodeValueAssigned] then

@@ -305,7 +305,7 @@ proc updateGalgas3Targets
     toolCppFileList += !"C_galgas_quiet_option.cpp"
   end
 #----------------------------------------------------------- macCodeSign
-  @lstring macCodeSign
+  var @lstring macCodeSign
   with "macCodeSign" in inProjectQualifiedFeatureMap  do
     if mFeatureValue.string == "" then
       error mFeatureValue:"the %macCodeSign attribute should not be empty" : macCodeSign
@@ -316,7 +316,7 @@ proc updateGalgas3Targets
     macCodeSign = ["" nowhere]
   end
 #----------------------------------------------------------- MacOSDeployment
-  @string MACOSX_DEPLOYMENT_TARGET
+  var @string MACOSX_DEPLOYMENT_TARGET
   with "MacOSDeployment" in inProjectQualifiedFeatureMap  do
     if mFeatureValue.string == "" then
       error mFeatureValue:"the %MacOSDeployment attribute should not be empty" : MACOSX_DEPLOYMENT_TARGET
@@ -327,7 +327,7 @@ proc updateGalgas3Targets
     MACOSX_DEPLOYMENT_TARGET = ["10.10" nowhere]
   end
 #----------------------------------------------------------- LIBPM path
-  @string libpmPath
+  var @string libpmPath
   with "libpmAtPath" in inProjectQualifiedFeatureMap  do
     if mFeatureValue.string == "" then
       error mFeatureValue:"the libpm path should not be empty" : libpmPath
@@ -339,11 +339,11 @@ proc updateGalgas3Targets
     libpmPath = "../build/libpm"
   end
 #---------------------------------------- Check target names, file base name uniqueness, and build target file list
-  @stringset guiSourceSet_app = .setWithStringList {!inAppProductFileList}
+  var @stringset guiSourceSet_app = .setWithStringList {!inAppProductFileList}
 #---
-  @stringset sourceFileSet = {}
+  var @stringset sourceFileSet = {}
 #--- Parse features
-  @stringset availableGenerationFeatures = {}
+  var @stringset availableGenerationFeatures = {}
   availableGenerationFeatures += !"quietOutputByDefault"
   availableGenerationFeatures += !"codeblocks-windows"
   availableGenerationFeatures += !"codeblocks-linux32"
@@ -364,9 +364,9 @@ proc updateGalgas3Targets
   availableGenerationFeatures += !"ElCapitan"
   availableGenerationFeatures += !"Sierra"
   availableGenerationFeatures += !"LatestMacOS"
-  @stringset generationFeatures = {}
+  var @stringset generationFeatures = {}
 #--- Check xcode target architectures
-  @string SDK = ""
+  var @string SDK = ""
   for (value) in inTargetFeatureList do
     if [availableGenerationFeatures hasKey !value.string] then
       if [generationFeatures hasKey !value.string] then
@@ -438,7 +438,7 @@ proc updateGalgas3Targets
         generationFeatures += !value.string
       end
     else
-      @stringlist s = {}
+      var @stringlist s = {}
       for (key) in availableGenerationFeatures do
         s += !"%" + key
       end
@@ -520,7 +520,7 @@ proc updateGalgas3Targets
     )
   end
 #--- Frameworks to link with tool
-  @stringlist linkOptionForLinkingFrameworkWithTool = {}
+  var @stringlist linkOptionForLinkingFrameworkWithTool = {}
   if [inFrameworkToolFileList length] > 0 then
     if SDK != "macosx" then
       linkOptionForLinkingFrameworkWithTool += !"-isysroot"
@@ -532,7 +532,7 @@ proc updateGalgas3Targets
     end
   end
 #--- Update json file list
-  @stringlist handCodedSourceToolFileList = {}
+  var @stringlist handCodedSourceToolFileList = {}
   for (f) in inHandCodedSourceToolFileList do
     if [f pathExtension] != "h" then
       handCodedSourceToolFileList += ![f lastPathComponent]
@@ -553,7 +553,7 @@ proc updateGalgas3Targets
     let dir = projectDirectory + "/xcode-project"
     [dir makeDirectory]
   #--- Info.plist
-    @string applicationBundleBase
+    var @string applicationBundleBase
     with "applicationBundleBase" in inProjectQualifiedFeatureMap  do
       applicationBundleBase = mFeatureValue.string
     else
@@ -582,7 +582,7 @@ proc updateGalgas3Targets
   #--- Enumerate icons files in "userResources" directory
     let userResourceDir = projectDirectory + "/xcode-project/userResources"
     [userResourceDir makeDirectory]
-    @stringlist extensionList = {!"icns"}
+    var @stringlist extensionList = {!"icns"}
     let resourceFiles = [userResourceDir regularFilesWithExtensions !false !extensionList]
   #--- Build pathes
     let newIntermediateFilePath = [inProjectSourceFilePath stringByDeletingLastPathComponent] + "/build/output/file-list-for-xcode-project.txt"
@@ -597,7 +597,7 @@ proc updateGalgas3Targets
     end   
     headerSearchPaths += ")"
   #--- Default build configuration
-    @stringlist xcodeSettingList = {
+    var @stringlist xcodeSettingList = {
       !"ALWAYS_SEARCH_USER_PATHS = NO",
       !"ARCHS = \"$(ARCHS_STANDARD_64_BIT)\"",
       !"GCC_GENERATE_DEBUGGING_SYMBOLS = NO",
@@ -644,8 +644,8 @@ proc updateGalgas3Targets
     end
     [!?xcodeProject addSettingsToDefaultConfiguration !settingList:xcodeSettingList]
   #--- Add "Hand coded sources (App)" group
-    @stringlist m_HandCodedSourceFileRefForAppList = {}
-    @stringlist m_HandCodedResourceFileRefForAppList = {}
+    var @stringlist m_HandCodedSourceFileRefForAppList = {}
+    var @stringlist m_HandCodedResourceFileRefForAppList = {}
     if [inHandCodedSourceAppFileList length] > 0 then
       [!?xcodeProject addGroupWithFiles
         !groupName:"Hand Coded Sources (App)"
@@ -662,7 +662,7 @@ proc updateGalgas3Targets
       [!?xcodeProject placeGroupAsMainGroup !groupRef:groupRef]
     end
   #--- Add "Frameworks for App" group
-    @stringlist appFrameworksFileRefList = {}
+    var @stringlist appFrameworksFileRefList = {}
     if [inHandCodedLinkAppFileList length] > 0 then
       [!?xcodeProject addGroupWithFiles
         !groupName:"Frameworks (App)"
@@ -679,12 +679,12 @@ proc updateGalgas3Targets
       [!?xcodeProject placeGroupAsMainGroup !groupRef:frameworkGroupRef]
     end
   #--- Mach O target
-    @stringlist buildCFileRefListForTool = {}
-    @stringlist buildCppFileRefListForTool = {}
-    @stringlist m_FileRefList = {}
-    @stringlist mm_FileRefList = {}
-    @stringlist frameworksFileRefList = {}
-    @stringlist resourceFileBuildRefs = {}
+    var @stringlist buildCFileRefListForTool = {}
+    var @stringlist buildCppFileRefListForTool = {}
+    var @stringlist m_FileRefList = {}
+    var @stringlist mm_FileRefList = {}
+    var @stringlist frameworksFileRefList = {}
+    var @stringlist resourceFileBuildRefs = {}
   #--- Add "Hand coded sources (Tool)" group
     if [inHandCodedSourceToolFileList length] > 0 then
       [!?xcodeProject addGroupWithFiles
@@ -702,7 +702,7 @@ proc updateGalgas3Targets
       [!?xcodeProject placeGroupAsMainGroup !groupRef:groupRef]
     end
   #--- Add "Frameworks for tool" group
-    @stringlist toolFrameworksFileRefList = {}
+    var @stringlist toolFrameworksFileRefList = {}
     if [inFrameworkToolFileList length] > 0 then
       [!?xcodeProject addGroupWithFiles
         !groupName:"Frameworks (Tool)"
@@ -732,7 +732,7 @@ proc updateGalgas3Targets
       ?groupRef:var @string groupRef
     ]
     [!?xcodeProject placeGroupAsMainGroup !groupRef:groupRef]
-    @stringlist libpmReferenceGroupList = {}
+    var @stringlist libpmReferenceGroupList = {}
   #--- Add "BDD" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Binary Decision Diagrams"
@@ -1368,7 +1368,7 @@ proc updateGalgas3Targets
     ]
     [!?xcodeProject placeGroupAsMainGroup !groupRef:frameworkGroupRef]
   #--- Add Mach O release target
-    @stringlist settingList = {
+    var @stringlist settingList = {
       !"GCC_OPTIMIZATION_LEVEL = 2",
       !"GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)",
       !"GCC_WARN_UNUSED_PARAMETER = YES"
@@ -1417,7 +1417,7 @@ proc updateGalgas3Targets
       ?productFileRef:let debugProductFileRef
     ]
   #--- Add Cocoa target
-    @stringlist configurationSettingList = {
+    var @stringlist configurationSettingList = {
       !"GCC_OPTIMIZATION_LEVEL = 0",
       !"GCC_PREPROCESSOR_DEFINITIONS = ()"
     }

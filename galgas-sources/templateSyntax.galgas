@@ -28,17 +28,17 @@ rule <expression>
   <relation_term> ?outExpression
   repeat
   while
-    @location operatorLocation = @location.here
+    var @location operatorLocation = @location.here
     $|$
-    @templateExpressionAST leftOperand = outExpression
-    @templateExpressionAST rightOperand
+    var @templateExpressionAST leftOperand = outExpression
+    var @templateExpressionAST rightOperand
     <relation_term> ?rightOperand
     outExpression = @templateOrOperationAST.new {!operatorLocation !leftOperand !rightOperand}
   while
-    @location operatorLocation = @location.here
+    var @location operatorLocation = @location.here
     $^$
-    @templateExpressionAST leftOperand = outExpression
-    @templateExpressionAST rightOperand
+    var @templateExpressionAST leftOperand = outExpression
+    var @templateExpressionAST rightOperand
     <relation_term> ?rightOperand
     outExpression = @templateXorOperationAST.new {!operatorLocation !leftOperand !rightOperand}
   end
@@ -55,10 +55,10 @@ rule <relation_term>
   <relation_factor> ?outExpression
   repeat
   while
-    @location operatorLocation = @location.here
+    var @location operatorLocation = @location.here
     $&$
-    @templateExpressionAST leftOperand = outExpression
-    @templateExpressionAST rightOperand
+    var @templateExpressionAST leftOperand = outExpression
+    var @templateExpressionAST rightOperand
     <relation_factor> ?rightOperand
     outExpression = @templateAndOperationAST.new {!operatorLocation !leftOperand !rightOperand}
   end
@@ -75,45 +75,45 @@ rule <relation_factor>
   <simple_expression> ?outExpression
   select
   or
-    @location operatorLocation = @location.here
+    var @location operatorLocation = @location.here
     $==$
-    @templateExpressionAST leftExpression = outExpression
-    @templateExpressionAST rightExpression
+    var @templateExpressionAST leftExpression = outExpression
+    var @templateExpressionAST rightExpression
     <simple_expression> ?rightExpression
     outExpression = @templateEqualTestAST.new {!operatorLocation !leftExpression !rightExpression}
   or
-    @location operatorLocation = @location.here
+    var @location operatorLocation = @location.here
     $!=$
-    @templateExpressionAST leftExpression = outExpression
-    @templateExpressionAST rightExpression
+    var @templateExpressionAST leftExpression = outExpression
+    var @templateExpressionAST rightExpression
     <simple_expression> ?rightExpression
     outExpression = @templateNonEqualTestAST.new {!operatorLocation !leftExpression !rightExpression}
   or
-    @location operatorLocation = @location.here
+    var @location operatorLocation = @location.here
     $<=$
-    @templateExpressionAST leftExpression = outExpression
-    @templateExpressionAST rightExpression
+    var @templateExpressionAST leftExpression = outExpression
+    var @templateExpressionAST rightExpression
     <simple_expression> ?rightExpression
     outExpression = @templateInfOrEqualTestAST.new {!operatorLocation !leftExpression !rightExpression}
   or
-    @location operatorLocation = @location.here
+    var @location operatorLocation = @location.here
     $>=$
-    @templateExpressionAST leftExpression = outExpression
-    @templateExpressionAST rightExpression
+    var @templateExpressionAST leftExpression = outExpression
+    var @templateExpressionAST rightExpression
     <simple_expression> ?rightExpression
     outExpression = @templateSupOrEqualTestAST.new {!operatorLocation !leftExpression !rightExpression}
   or
-    @location operatorLocation = @location.here
+    var @location operatorLocation = @location.here
     $>$
-    @templateExpressionAST leftExpression = outExpression
-    @templateExpressionAST rightExpression
+    var @templateExpressionAST leftExpression = outExpression
+    var @templateExpressionAST rightExpression
     <simple_expression> ?rightExpression
     outExpression = @templateStrictSupTestAST.new {!operatorLocation !leftExpression !rightExpression}
   or
-    @location operatorLocation = @location.here
+    var @location operatorLocation = @location.here
     $<$
-    @templateExpressionAST leftExpression = outExpression
-    @templateExpressionAST rightExpression
+    var @templateExpressionAST leftExpression = outExpression
+    var @templateExpressionAST rightExpression
     <simple_expression> ?rightExpression
     outExpression = @templateStrictInfTestAST.new {!operatorLocation !leftExpression !rightExpression}
   end
@@ -130,31 +130,31 @@ rule <simple_expression>
   <term> ?outExpression
   repeat
   while 
-    @location operatorLocation = @location.here
+    var @location operatorLocation = @location.here
     $<<$
-    @templateExpressionAST leftExpression = outExpression
-    @templateExpressionAST rightExpression
+    var @templateExpressionAST leftExpression = outExpression
+    var @templateExpressionAST rightExpression
     <term> ?rightExpression
     outExpression = @templateLeftShiftOperationAST.new {!operatorLocation !leftExpression !rightExpression}
   while 
-    @location operatorLocation = @location.here
+    var @location operatorLocation = @location.here
     $>>$
-    @templateExpressionAST leftExpression = outExpression
-    @templateExpressionAST rightExpression
+    var @templateExpressionAST leftExpression = outExpression
+    var @templateExpressionAST rightExpression
     <term> ?rightExpression
     outExpression = @templateRightShiftOperationAST.new {!operatorLocation !leftExpression !rightExpression}
   while 
-    @location operatorLocation = @location.here
+    var @location operatorLocation = @location.here
     $+$
-    @templateExpressionAST leftExpression = outExpression
-    @templateExpressionAST rightExpression
+    var @templateExpressionAST leftExpression = outExpression
+    var @templateExpressionAST rightExpression
     <term> ?rightExpression
     outExpression = @templateAddOperationAST.new {!operatorLocation !leftExpression !rightExpression}
   while 
-    @location operatorLocation = @location.here
+    var @location operatorLocation = @location.here
     $-$
-    @templateExpressionAST leftExpression = outExpression
-    @templateExpressionAST rightExpression
+    var @templateExpressionAST leftExpression = outExpression
+    var @templateExpressionAST rightExpression
     <term> ?rightExpression
     outExpression = @templateSubOperationAST.new {!operatorLocation !leftExpression !rightExpression}
   end
@@ -171,24 +171,24 @@ rule <term>
   <factor> ?outExpression
   repeat
   while 
-    @location operatorLocation = @location.here
+    var @location operatorLocation = @location.here
     $*$
-    @templateExpressionAST leftExpression = outExpression
-    @templateExpressionAST rightExpression
+    var @templateExpressionAST leftExpression = outExpression
+    var @templateExpressionAST rightExpression
     <factor> ?rightExpression
     outExpression = @templateMultiplyOperationAST.new {!operatorLocation !leftExpression !rightExpression}
   while 
-    @location operatorLocation = @location.here
+    var @location operatorLocation = @location.here
     $/$
-    @templateExpressionAST leftExpression = outExpression
-    @templateExpressionAST rightExpression
+    var @templateExpressionAST leftExpression = outExpression
+    var @templateExpressionAST rightExpression
     <factor> ?rightExpression
     outExpression = @templateDivideOperationAST.new {!operatorLocation !leftExpression !rightExpression}
   while 
-    @location operatorLocation = @location.here
+    var @location operatorLocation = @location.here
     $mod$
-    @templateExpressionAST leftExpression = outExpression
-    @templateExpressionAST rightExpression
+    var @templateExpressionAST leftExpression = outExpression
+    var @templateExpressionAST rightExpression
     <factor> ?rightExpression
     outExpression = @templateModuloOperationAST.new {!operatorLocation !leftExpression !rightExpression}
   end
@@ -218,9 +218,9 @@ rule <factor> !@templateExpressionAST outExpression {
 
 rule <factor>
   !@templateExpressionAST outExpression {
-  @location operatorLocation = @location.here
+  var @location operatorLocation = @location.here
   $-$
-  @templateExpressionAST expression
+  var @templateExpressionAST expression
   <factor> ?expression
   outExpression = @templateUnaryMinusOperationAST.new {!operatorLocation !expression}
 }
@@ -233,9 +233,9 @@ rule <factor>
 
 rule <factor>
   !@templateExpressionAST outExpression {
-  @location operatorLocation = @location.here
+  var @location operatorLocation = @location.here
   $not$
-  @templateExpressionAST ifCondition
+  var @templateExpressionAST ifCondition
   <factor> ?ifCondition
   outExpression = @templateNotOperatorAST.new {!operatorLocation !ifCondition}
 }
@@ -248,9 +248,9 @@ rule <factor>
 
 rule <factor>
   !@templateExpressionAST outExpression {
-  @location operatorLocation = @location.here
+  var @location operatorLocation = @location.here
   $~$
-  @templateExpressionAST ifCondition
+  var @templateExpressionAST ifCondition
   <factor> ?ifCondition
   outExpression = @templateLogicalNegateAST.new {!operatorLocation !ifCondition}
 }
@@ -307,7 +307,7 @@ rule <primary> !@templateExpressionAST outExpression {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary> !@templateExpressionAST outExpression {
-  @luint literalInt
+  var @luint literalInt
   $uint32$ ?literalInt
   outExpression = @templateLiteralUIntExpressionAST.new {!literalInt}
 }
@@ -319,7 +319,7 @@ rule <primary> !@templateExpressionAST outExpression {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary> !@templateExpressionAST outExpression {
-  @lsint literalInt
+  var @lsint literalInt
   $sint32_S$ ?literalInt
   outExpression = @templateLiteralSIntExpressionAST.new {!literalInt}
 }
@@ -331,7 +331,7 @@ rule <primary> !@templateExpressionAST outExpression {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary> !@templateExpressionAST outExpression {
-  @luint64 literalInt
+  var @luint64 literalInt
   $uint64_L$ ?literalInt
   outExpression = @templateLiteralUInt64ExpressionAST.new {!literalInt}
 }
@@ -343,7 +343,7 @@ rule <primary> !@templateExpressionAST outExpression {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary> !@templateExpressionAST outExpression {
-  @lsint64 literalInt
+  var @lsint64 literalInt
   $sint64_LS$ ?literalInt
   outExpression = @templateLiteralSInt64ExpressionAST.new {!literalInt}
 }
@@ -355,7 +355,7 @@ rule <primary> !@templateExpressionAST outExpression {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary> !@templateExpressionAST outExpression {
-  @ldouble literalDouble
+  var @ldouble literalDouble
   $double.xxx$ ? literalDouble ?*
   outExpression = @templateLiteralDoubleExpressionAST.new {!literalDouble}
 }
@@ -378,9 +378,9 @@ rule <primary> !@templateExpressionAST outExpression {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary> !@templateExpressionAST outExpression {
-  @stringlist literalStringList = {}
+  var @stringlist literalStringList = {}
   repeat
-    @lstring literalString
+    var @lstring literalString
     $"string"$ ?literalString
     literalStringList += ![literalString string]
   while
@@ -405,10 +405,10 @@ rule <primary> !@templateExpressionAST outExpression {
   select
   #--------------------------------- Template
     $template$
-    @templateExpressionAST receiverExpression
+    var @templateExpressionAST receiverExpression
     <expression> ?receiverExpression
     $identifier$ ?var  @lstring templateName
-    @templateExpressionListAST expressionList
+    var @templateExpressionListAST expressionList
     <output_expression_list> ?expressionList
     outExpression = @templateExtensionTemplateCallAST.new {
       !receiverExpression
@@ -427,14 +427,14 @@ rule <primary> !@templateExpressionAST outExpression {
     $identifier$ ?var @lstring filewrapperName
     $.$
     $identifier$ ?var @lstring templateName
-    @templateExpressionListAST expressionList
+    var @templateExpressionListAST expressionList
     <output_expression_list> ?expressionList
     outExpression = @templateFileWrapperTemplateCallAST.new {!filewrapperName !templateName !expressionList}
   or #--------------------------------- Retter call
-    @templateExpressionAST receiverExpression
+    var @templateExpressionAST receiverExpression
     <expression> ?receiverExpression
     $identifier$ ?var  @lstring getterName
-    @templateExpressionListAST expressionList
+    var @templateExpressionListAST expressionList
     <output_expression_list> ?expressionList
     outExpression = @templateGetterCallInExpressionAST.new {
       !receiverExpression
@@ -479,7 +479,7 @@ rule <primary> !@templateExpressionAST outExpression {
   <primary> ?outExpression
   let @location endOfReceiverExpression = @location.here
   $is$
-  @dynamicTypeComparisonKind kind
+  var @dynamicTypeComparisonKind kind
   select
     $==$
     kind = .equal
@@ -510,7 +510,7 @@ rule <output_expression_list> !@templateExpressionListAST outExpressionList {
   repeat
   while
     $!$ ?let selector
-    @templateExpressionAST expression
+    var @templateExpressionAST expression
     <expression> ?expression
     outExpressionList += !selector !expression !@location.here
   end
@@ -549,7 +549,7 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
 
 rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
   $block$
-  @templateExpressionAST expression
+  var @templateExpressionAST expression
   <expression> ?expression
   $:$
 #--- Instruction list
@@ -571,7 +571,7 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
 
 rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
   $for$
-  @bool ascending
+  var @bool ascending
   select
     ascending = true
   or
@@ -585,7 +585,7 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
   $)$
   $in$
   <expression> ?let @templateExpressionAST expression
-  @string foreachPrefix
+  var @string foreachPrefix
   select
     foreachPrefix = ""
   or
@@ -594,7 +594,7 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
     foreachPrefix = [prefixString string]
   end
 #--- before block
-  @templateInstructionListAST beforeInstructionList = {}
+  var @templateInstructionListAST beforeInstructionList = {}
   select
   or
     $before$
@@ -606,21 +606,21 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
   end
 #--- Do block
   $do$
-  @lstring indexIdentifier
+  var @lstring indexIdentifier
   select
     indexIdentifier = @lstring.new {!"" !@location.here}
   or
     $index$
     $identifier$ ? indexIdentifier
   end
-  @templateInstructionListAST doInstructionList = {}
+  var @templateInstructionListAST doInstructionList = {}
   repeat
     enterTemplateString (!?doInstructionList)
   while
     <template_instruction> !?doInstructionList
   end
 #--- between block
-  @templateInstructionListAST betweenInstructionList = {}
+  var @templateInstructionListAST betweenInstructionList = {}
   select
   or
     $between$
@@ -631,7 +631,7 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
     end
   end
 #--- after block
-  @templateInstructionListAST afterInstructionList = {}
+  var @templateInstructionListAST afterInstructionList = {}
   select
   or
     $after$
@@ -662,7 +662,7 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
   repeat
     <expression> ?let expression
     $then$
-    @templateInstructionListAST instructionList = {}
+    var @templateInstructionListAST instructionList = {}
     repeat
       enterTemplateString (!?instructionList)
     while
@@ -673,7 +673,7 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
     $elsif$
   end
 #--- else
-  @templateInstructionListAST elseInstructionList = {}
+  var @templateInstructionListAST elseInstructionList = {}
   select
   or
     $else$

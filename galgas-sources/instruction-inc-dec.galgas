@@ -242,8 +242,8 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap
 {
 #--- Check target variable
-  @unifiedTypeMap-entry targetType
-  @string targetVariableCppName
+  var @unifiedTypeMap-entry targetType
+  var @string targetVariableCppName
   [!?ioVariableMap searchForReadWriteAccess !self.mReceiverName ?targetType ?targetVariableCppName ?*]
   for (mValue) in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
@@ -280,8 +280,8 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
   ?!@localVarManager unused ioVariableMap
 {
 #--- Analyze "self", as receiver expression
-  @unifiedTypeMap-entry selfTypeEntry
-  @string selfObjectCppName
+  var @unifiedTypeMap-entry selfTypeEntry
+  var @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeEntry isNull] then
     error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
   else
@@ -313,8 +313,8 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
   ?!@localVarManager unused ioVariableMap
 {
 #--- Analyze "self", as receiver expression
-  @unifiedTypeMap-entry selfTypeEntry
-  @string selfObjectCppName
+  var @unifiedTypeMap-entry selfTypeEntry
+  var @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeEntry isNull] then
     error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
   else
@@ -369,7 +369,7 @@ override method @incDecInstructionForGeneration generateInstruction
 {
 #--- Receiver
   [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverCppName]
-  @string receiverCppName = self.mReceiverCppName
+  var @string receiverCppName = self.mReceiverCppName
   for (mValue) in self.mStructAttributeList do
     receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]
   end
@@ -397,7 +397,7 @@ override method @incDecNoOVFInstructionForGeneration generateInstruction
 {
 #--- Receiver
   [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverCppName]
-  @string receiverCppName = self.mReceiverCppName
+  var @string receiverCppName = self.mReceiverCppName
   for (mValue) in self.mStructAttributeList do
     receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]
   end

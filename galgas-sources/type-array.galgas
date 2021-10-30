@@ -66,17 +66,17 @@ override method @arrayDeclarationAST enterInSemanticContext
 #--- element type
   [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mElementTypeName ?let elementTypeIndex]
 #---
-  @constructorMap constructorMap = {}
+  var @constructorMap constructorMap = {}
   commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
-  @setterMap setterMap ={}
-  @instanceMethodMap instanceMethodMap = {}
+  var @setterMap setterMap ={}
+  var @instanceMethodMap instanceMethodMap = {}
 #--- 
   [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"bool" ?let boolType]
 #--- 
   [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"uint" ?let uintType]
 #---
-  @functionSignature uintArgs = {}
-  @uint idx = 0
+  var @functionSignature uintArgs = {}
+  var @uint idx = 0
   loop ([self.mDimension uint]) while idx < [self.mDimension uint] do
     uintArgs += !["" nowhere] !uintType !"inSize" + idx
     idx ++
@@ -290,7 +290,7 @@ override method @arrayTypeForGeneration appendSpecificImplementation
   [self.mElementTypeEntry addHeaderFileName !?ioInclusionSet]
 
   var suffixList =@stringlist {}
-  @uint idx = 0
+  var @uint idx = 0
   loop (self.mDimension) while idx < self.mDimension do
     suffixList += ![idx string]
     idx ++

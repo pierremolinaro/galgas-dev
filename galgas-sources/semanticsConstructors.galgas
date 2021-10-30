@@ -68,10 +68,10 @@ proc enterConstructorWith2Arguments
   ?resultTypeName:let @string inReturnedTypeName
   ?hasLexiqueArg:let @bool inHasLexiqueArgument
 {
-  @unifiedTypeMap-entry returnedTypeIndex
+  var @unifiedTypeMap-entry returnedTypeIndex
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
   var argumentTypeList =@functionSignature {}
-  @unifiedTypeMap-entry t
+  var @unifiedTypeMap-entry t
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t]
   argumentTypeList += !["" nowhere] !t !inArgument1Name
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
@@ -101,7 +101,7 @@ proc enterConstructorWith3Arguments
 {
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument1TypeName ?var t]
-  @functionSignature argumentTypeList = {}
+  var @functionSignature argumentTypeList = {}
   argumentTypeList += !["" nowhere] !t !inArgument1Name
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
   argumentTypeList += !["" nowhere] !t !inArgument2Name
@@ -138,7 +138,7 @@ proc enterConstructorWith4Arguments
 {
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument1TypeName ?var t]
-  @functionSignature argumentTypeList = {}
+  var @functionSignature argumentTypeList = {}
   argumentTypeList += ![inArgument1SelectorName nowhere] !t !inArgument1Name
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
   argumentTypeList += ![inArgument2SelectorName nowhere] !t !inArgument2Name

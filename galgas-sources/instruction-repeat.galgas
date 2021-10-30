@@ -116,7 +116,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
 #--- Begin block
   [!?ioVariableMap openOverrideForRepeatBlock]
 #--- Repeated instructions
-  @semanticInstructionListForGeneration repeated_instructionList
+  var @semanticInstructionListForGeneration repeated_instructionList
   analyzeSyntaxInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -134,7 +134,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
     ?repeated_instructionList
   )
 #--- 'while' blocks
-  @listOfSemanticInstructionListForGeneration listOfSemanticInstructionListForGeneration = {}
+  var @listOfSemanticInstructionListForGeneration listOfSemanticInstructionListForGeneration = {}
   for (mSyntaxInstructionList mEndOf_instructions) in self.mRepeatBranchList do
     analyzeSyntaxInstructionList (
       !inUsefulnessCallerEntityName

@@ -48,7 +48,7 @@ proc checkUsefulEntities
       let usefullEntitySet = @stringset.setWithLStringList {!usefullEntityList}
       let allEntitySet = @stringset.setWithStringList {![inUsefulEntitiesGraph keyList]}
       let unusedEntities = allEntitySet - usefullEntitySet
-      @uselessEntityLocationMap uselessEntityLocationMap = {}
+      var @uselessEntityLocationMap uselessEntityLocationMap = {}
       for (unusedEntity) in unusedEntities do
         let l = [inUsefulEntitiesGraph locationForKey !unusedEntity]
         if l == .nowhere then

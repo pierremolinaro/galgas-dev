@@ -21,7 +21,7 @@ proc testsuite_array {
   var pp = @charArray.new {!4 !3}
   [!?pp setValueAtIndex !'?' !2 !1]
   log pp
-  @uint v = 0
+  var @uint v = 0
   log "" : [[pp valueAtIndex !2 !1] string]
   for i in [p rangeForAxis !0] do
     message "i = " + i + "\n"
@@ -44,7 +44,7 @@ proc testsuite_array {
     end
   end
 #--- Copy
-  @stringArray p2 = p
+  var @stringArray p2 = p
   [!?p2 setValueAtIndex !"Ciao" !0 !1 !2]
   log "" : [p valueAtIndex !0 !1 !2]
   log "" : [p2 valueAtIndex !0 !1 !2]

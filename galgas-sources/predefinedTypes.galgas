@@ -20,7 +20,7 @@ private proc appendPredefinedListTypeAST
   ?let @string inElementTypeName
   ?!@lstringlist ioUsefulnessRootEntities 
  {
-  @propertyInCollectionListAST attributeList = {}
+  var @propertyInCollectionListAST attributeList = {}
   attributeList +=
     !isConstant: false 
     !@lstring.new {!inElementTypeName !@location.here}
@@ -69,7 +69,7 @@ private proc appendPredefined2LStringListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs
   ?!@lstringlist ioUsefulnessRootEntities 
 {
-  @propertyInCollectionListAST attributeList = {}
+  var @propertyInCollectionListAST attributeList = {}
   attributeList +=
     !isConstant: false 
     !@lstring.new {!"lstring" !@location.here}
@@ -126,7 +126,7 @@ private proc appendStructASTForRangeType
   ?!@semanticDeclarationListAST ioDeclarationListASTs
   ?!@lstringlist ioUsefulnessRootEntities 
 {
-  @propertyInCollectionListAST attributeList = {}
+  var @propertyInCollectionListAST attributeList = {}
   attributeList +=
     !isConstant: false 
     !@lstring.new {!"uint" !@location.here}
@@ -269,7 +269,7 @@ override method @predefinedTypeAST enterInSemanticContext
     ?var @unifiedTypeMap-entry selfTypeEntry
   ]
 #--- Enumeration
-  @unifiedTypeMap-entry enumeratedTypeEntry
+  var @unifiedTypeMap-entry enumeratedTypeEntry
   if enumeratedTypeName == "" then
     enumeratedTypeEntry = @unifiedTypeMap-entry.null
   else

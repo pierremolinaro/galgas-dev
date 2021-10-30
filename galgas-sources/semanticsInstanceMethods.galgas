@@ -42,7 +42,7 @@ private proc enterInstanceMethodWithInputArgument
   ?let @bool inHasCompilerArgument
 {
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?let argumentTypeIndex]
-  @formalParameterSignature argList = {}
+  var @formalParameterSignature argList = {}
   argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !inInputArgumentName
   [!?ioInstanceMethodMap insertKey
     ![inInstanceMethodName nowhere]
@@ -102,7 +102,7 @@ override method @dataPredefinedTypeAST getInstanceMethodMap
     !methodName:"writeToExecutableFile"
     !true
   )
-  @formalParameterSignature argList = {}
+  var @formalParameterSignature argList = {}
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"string" ?@unifiedTypeMap-entry t]
   argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"bool" ?t]
@@ -171,7 +171,7 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
     !true
   )
 #--- writeToFileWhenDifferentContents, writeToExecutableFileWhenDifferentContents
-  @formalParameterSignature argList = {}
+  var @formalParameterSignature argList = {}
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"string" ?@unifiedTypeMap-entry t]
   argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"bool" ?t]
@@ -220,7 +220,7 @@ override method @bigintPredefinedTypeAST getInstanceMethodMap
   outInstanceMethodMap = {}
 #--- divide, floorDivide, ceilDivide
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"bigint" ?let bigIntType]
-  @formalParameterSignature argList = {}
+  var @formalParameterSignature argList = {}
   argList += !["" nowhere] !bigIntType !.argumentConstantIn !"inDivisor"
   argList += !["quotient" nowhere] !bigIntType !.argumentOut !"outQuotient"
   argList += !["remainder" nowhere] !bigIntType !.argumentOut !"outRemainder"

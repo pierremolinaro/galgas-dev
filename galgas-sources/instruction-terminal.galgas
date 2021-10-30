@@ -23,8 +23,8 @@ syntax extension galgas3SyntaxComponentSyntax {
     <actual_input_parameter_list> ?let @actualInputParameterListAST actualInputParameterList
     <terminal_instruction_indexing> ?let indexNameList
   #--- Get syntax directed translation result string
-    @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
-    @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingToken
+    var @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+    var @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingToken
     select
       grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor = @grammarInstructionSyntaxDirectedTranslationResultNone.new
       grammarInstructionSyntaxDirectedTranslationPreceedingToken = @grammarInstructionSyntaxDirectedTranslationResultNone.new
@@ -52,7 +52,7 @@ syntax extension galgas3SyntaxComponentSyntax {
       $indexing$
       repeat
         $identifier$ ?let @lstring indexName indexing indexingNameReference
-        @lstring postfixName
+        var @lstring postfixName
         select
           postfixName = ["" nowhere]
         or
@@ -78,7 +78,7 @@ override method @terminalCheckInstruction transformInstruction
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
   ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
-  @uint terminalSymbolIndex
+  var @uint terminalSymbolIndex
   with [self.mTerminalName string] in ioActuallyUsedTerminalSymbolMap  do
     terminalSymbolIndex = mTerminalIndex
   else

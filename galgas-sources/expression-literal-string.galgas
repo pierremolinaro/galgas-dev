@@ -16,7 +16,7 @@ syntax extension galgas3ExpressionSyntax {
   #·····················································································································
   
   rule <primary> !@semanticExpressionAST outExpression {
-    @stringlist literalStringList = {}
+    var @stringlist literalStringList = {}
     repeat
       $"string"$ ?let literalString
       literalStringList += !literalString.string
@@ -48,7 +48,7 @@ override method @literalStringExpressionAST analyzeSemanticExpression
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  @string s = ""
+  var @string s = ""
   for (mValue) in self.mStringSequence do
     s += mValue
   end

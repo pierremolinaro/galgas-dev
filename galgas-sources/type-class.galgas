@@ -22,14 +22,14 @@ func weakSuffix -> @string { result = "-weak" }
 syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
-    @bool isAbstract
+    var @bool isAbstract
     select
       isAbstract = false
     or
       $abstract$
       isAbstract = true
     end
-    @bool isReference
+    var @bool isReference
     select
       $class$
       if [option galgas_cli_options.errorClassDeclaration value] then
@@ -49,7 +49,7 @@ syntax extension galgas3DeclarationsSyntax {
       error .here : "'value class' is obsolete, use 'refclass'"
     end
     $@type$ ?let @lstring className indexing classDefinition
-    @lstring superClassName # Empty if no super class
+    var @lstring superClassName # Empty if no super class
     select
       superClassName = ["" nowhere]
     or
@@ -63,9 +63,9 @@ syntax extension galgas3DeclarationsSyntax {
       classFeatureList += !classFeatureName
     end
     ${$
-    @string mClassMessage = ""
+    var @string mClassMessage = ""
   #--- Class properties
-    @propertyInCollectionListAST propertyList = {}
+    var @propertyInCollectionListAST propertyList = {}
     repeat
     while
       <property_declaration> !? propertyList
@@ -133,14 +133,14 @@ override method @classDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 {
-  @getterMap getterMap
-  @setterMap setterMap
-  @instanceMethodMap instanceMethodMap
-  @typedPropertyList inheritedTypedPropertyList
-  @propertyMap attributeMap = {}
+  var @getterMap getterMap
+  var @setterMap setterMap
+  var @instanceMethodMap instanceMethodMap
+  var @typedPropertyList inheritedTypedPropertyList
+  var @propertyMap attributeMap = {}
 #--- Handle super class
-  @unifiedTypeMap-entry superClassIndex
-  @bool generateHeaderInSeparateFile
+  var @unifiedTypeMap-entry superClassIndex
+  var @bool generateHeaderInSeparateFile
   if [self.mSuperClassName string] == "" then
     superClassIndex = @unifiedTypeMap-entry.null
     commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?getterMap )
@@ -156,10 +156,10 @@ override method @classDeclarationAST enterInSemanticContext
     end
   else
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mSuperClassName ?superClassIndex]
-    @typeKindEnum typeKindEnum
-    @getterMap inheritedGetterMap
-    @setterMap inheritedSetterMap
-    @instanceMethodMap inheritedMethodMap
+    var @typeKindEnum typeKindEnum
+    var @getterMap inheritedGetterMap
+    var @setterMap inheritedSetterMap
+    var @instanceMethodMap inheritedMethodMap
     [ioSemanticContext.mTypeMap searchKey
       !self.mSuperClassName
       ?3*
@@ -220,7 +220,7 @@ override method @classDeclarationAST enterInSemanticContext
     end
   end
 #--- Build attribute Map and constructor argument list
-  @functionSignature constructorPropertyTypeList = {}
+  var @functionSignature constructorPropertyTypeList = {}
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in inheritedTypedPropertyList do
     constructorPropertyTypeList +=
       !if mHasSelector then mPropertyName else ["" nowhere] end
@@ -259,7 +259,7 @@ override method @classDeclarationAST enterInSemanticContext
      ?var @unifiedTypeMap-entry classIndex
   ]
 #--- Constructors
-  @constructorMap constructorMap = {}
+  var @constructorMap constructorMap = {}
   if not self.mIsAbstract then
     [!?constructorMap insertKey
       !@lstring.new {!"new" !@location.here}
@@ -269,8 +269,8 @@ override method @classDeclarationAST enterInSemanticContext
     ]
   end
 #--- Typed attribute list
-  @typedPropertyList currentClassTypedPropertyList = {}
-  @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
+  var @typedPropertyList currentClassTypedPropertyList = {}
+  var @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true # mIsPublic
@@ -322,7 +322,7 @@ override method @classDeclarationAST enterInSemanticContext
     !?instanceMethodMap
   )
 #--- Generate a "default" constructor ?
-  @string defaultConstructorName
+  var @string defaultConstructorName
   if [superClassIndex isNull] then
     defaultConstructorName = "default"
   else
@@ -409,10 +409,10 @@ override method @classDeclarationAST semanticAnalysis
 #------ Super type, and class features
 # A class that has a super may not have any feature
 # A class without a super class admits the 'generatedInSeparateFile' feature
-  @typedPropertyList allAttributeList
+  var @typedPropertyList allAttributeList
   if superClassEntry == .null then
     allAttributeList = {}
-    @bool generatedInSeparateFileFeature = false
+    var @bool generatedInSeparateFileFeature = false
     if [self.mClassFeatureList length] > 0 then
       for (mValue) in self.mClassFeatureList do
         if [mValue string] == "generatedInSeparateFile" then
@@ -434,8 +434,8 @@ override method @classDeclarationAST semanticAnalysis
     end
   end
 #------ Enter attributes
-  @typedPropertyList typedAttributeList = {}
-  @propertyIndexMap attributeMap = {}
+  var @typedPropertyList typedAttributeList = {}
+  var @propertyIndexMap attributeMap = {}
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]

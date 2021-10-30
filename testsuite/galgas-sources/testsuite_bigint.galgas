@@ -18,7 +18,7 @@ proc testsuite_bigint_type {
   message [-123_456_789_012_345_678G spacedString !3] + "\n"
   message "--- extract8ForUnsignedRepresentation\n"
 # Parcours dans le sens des indices croissants : little endian
-  @uintlist a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G extract8ForUnsignedRepresentation]
+  var @uintlist a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G extract8ForUnsignedRepresentation]
   var s = ""
   for (n) in a
     do s += [n hexString]
@@ -127,7 +127,7 @@ proc testsuite_bigint_type {
   message s + "\n" # 0xFFFFFFAA 0xBBCCDDEF
   message "--- extract64ForUnsignedRepresentation\n"
   # Parcours dans le sens des indices croissants : little endian
-  @uint64list aa = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G extract64ForUnsignedRepresentation]
+  var @uint64list aa = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G extract64ForUnsignedRepresentation]
   s = ""
   for (n) in aa
     do s += [n hexString]
@@ -206,8 +206,8 @@ proc testsuite_bigint_type {
   message [(-2000S) mod (-183S) string] + "\n" # -170
   message [2000S mod (-183S) string] + "\n" # 170
   message "--- divideBy\n"
-  @bigint quotient
-  @bigint remainder
+  var @bigint quotient
+  var @bigint remainder
   [9876543210_9876543210G divideBy
     !1234567890G
     ?quotient:quotient

@@ -72,7 +72,7 @@ syntax extension galgas3InstructionsSyntax {
   {
     $identifier$ ?let @lstring receiverName
     let instructionLocation = @location.here
-    @lstringlist mStructAttributeList = {}
+    var @lstringlist mStructAttributeList = {}
     repeat
     while
       $.$
@@ -568,7 +568,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
     + [[addAssignOperatorArguments length] string] + " parameter(s), while this invocation has "
     + [[self.mExpressions length] string] + " parameter(s)"
   else
-    @semanticExpressionListForGeneration effectiveParameterList = {}
+    var @semanticExpressionListForGeneration effectiveParameterList = {}
     for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType mFormalArgumentName) in addAssignOperatorArguments do
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName

@@ -46,7 +46,7 @@ override method @unaryWrappingMinusExpressionAST analyzeSemanticExpression
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Expression analysis
-  @semanticExpressionForGeneration expression
+  var @semanticExpressionForGeneration expression
   [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph

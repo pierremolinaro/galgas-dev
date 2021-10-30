@@ -39,7 +39,7 @@ filewrapper projectCreationFileWrapper in "+generation-templates/project_creatio
 proc performProjectCreation ?let @string inProjectPath {
   let @string projectName = [inProjectPath lastPathComponent]
 #--- galgas_sources
-  @string galgas_sources_DIR = inProjectPath +"/galgas-sources"
+  var @string galgas_sources_DIR = inProjectPath +"/galgas-sources"
   [galgas_sources_DIR makeDirectory]
   [[filewrapper projectCreationFileWrapper.PROJECT_project !projectName] writeToFile !inProjectPath +"/+" +projectName +".galgasProject"]
   [[filewrapper projectCreationFileWrapper.PROJECT_cocoa !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-cocoa.galgas"]
@@ -61,11 +61,11 @@ proc projectCreation
     message "*** PERFORM PROJECT CREATION (--create-project=" + inProjectPath +" option) ***\n"
   #--- First check the project name is correct (not empty, only letters, digits and '_')
     let @string projectName = [inProjectPath lastPathComponent]
-    @bool ok = [[projectName characterAtIndex !0] isalpha]
-    @uint idx = 1
+    var @bool ok = [[projectName characterAtIndex !0] isalpha]
+    var @uint idx = 1
     loop( [projectName length])
     while (idx < [projectName length]) & ok do
-      @char c = [projectName characterAtIndex !idx]
+      var @char c = [projectName characterAtIndex !idx]
       ok = [c isalnum] | (c == '_')
       idx ++
     end

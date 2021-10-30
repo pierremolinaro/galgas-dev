@@ -19,7 +19,7 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
 
 rule <declaration>
  ?!@galgas3DeclarationAST ioDeclarations {
-  @bool isTemplate
+  var @bool isTemplate
   select
     isTemplate = true
     $template$
@@ -30,7 +30,7 @@ rule <declaration>
 #--- Lexique Component Name
   $identifier$ ?let @lstring lexiqueComponentName
 #--- Enable indexing ?
-  @lstring indexingDirectory
+  var @lstring indexingDirectory
   select
     indexingDirectory = ["" nowhere]
   or
@@ -40,18 +40,18 @@ rule <declaration>
   end
   ${$
 #--- Parse lexique body
-  @metamodelTemplateDelimitorListAST templateDelimitorList = {}
-  @templateReplacementListAST templateReplacementList = {}
-  @lexicalAttributeListAST lexicalAttributeList = {}
-  @lexicalStyleListAST lexicalStyleList = {}
-  @terminalDeclarationListAST terminalDeclarationList = {}
-  @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = {}
-  @lexicalListDeclarationListAST lexicalListDeclarationList = {}
-  @lexicalRuleListAST lexicalRuleList = {}
-  @externRoutineListAST externRoutineList = {}
-  @externFunctionListAST externFunctionList = {}
-  @indexingListAST indexingListAST = {}
-  @lexicalFunctionListAST lexicalFunctionListAST = {}
+  var @metamodelTemplateDelimitorListAST templateDelimitorList = {}
+  var @templateReplacementListAST templateReplacementList = {}
+  var @lexicalAttributeListAST lexicalAttributeList = {}
+  var @lexicalStyleListAST lexicalStyleList = {}
+  var @terminalDeclarationListAST terminalDeclarationList = {}
+  var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = {}
+  var @lexicalListDeclarationListAST lexicalListDeclarationList = {}
+  var @lexicalRuleListAST lexicalRuleList = {}
+  var @externRoutineListAST externRoutineList = {}
+  var @externFunctionListAST externFunctionList = {}
+  var @indexingListAST indexingListAST = {}
+  var @lexicalFunctionListAST lexicalFunctionListAST = {}
   repeat
   while 
     <extern_routine_declaration> !?externRoutineList
@@ -132,8 +132,8 @@ rule <template_delimitor> ?!@metamodelTemplateDelimitorListAST ioTemplateDelimit
 rule <template_replacement> ?!@templateReplacementListAST ioTemplateReplacement {
   $replace$
   $"string"$ ?var @lstring matchString
-  @lstring replacementString
-  @lstring replacementFunction
+  var @lstring replacementString
+  var @lstring replacementFunction
   select
     $...$
     $"string"$ ?replacementString
@@ -173,7 +173,7 @@ rule <lexical_explicit_rule> ?!@lexicalRuleListAST ioLexicalExplicitRuleList {
   $rule$
   <lexical_expression> ?let @lexicalExpressionAST lexicalRuleExpression
   ${$
-  @lexicalInstructionListAST instructionList = {}
+  var @lexicalInstructionListAST instructionList = {}
   repeat
   while
     <lexical_instruction> !?instructionList
@@ -200,7 +200,7 @@ rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
-  @lexicalSendSearchListAST lexicalSendSearchList = {}
+  var @lexicalSendSearchListAST lexicalSendSearchList = {}
   $search$
   repeat
     $identifier$ ?let @lstring attributeName
@@ -211,7 +211,7 @@ rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
   while
     $search$
   end
-  @lexicalSendDefaultActionAST lexicalSendDefaultAction
+  var @lexicalSendDefaultActionAST lexicalSendDefaultAction
   select
     $\$terminal\$$ ?let @lstring defaultSentTerminal
     lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST.new {!defaultSentTerminal}
@@ -230,12 +230,12 @@ rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
 
 rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $repeat$
-  @lexicalInstructionListAST repeatedInstructionList = {}
+  var @lexicalInstructionListAST repeatedInstructionList = {}
   repeat
   while
     <lexical_instruction> !?repeatedInstructionList
   end
-  @lexicalWhileBranchListAST lexicalWhileBranchList = {}
+  var @lexicalWhileBranchListAST lexicalWhileBranchList = {}
   repeat
     <repeat_while_branch> !?lexicalWhileBranchList
   while
@@ -253,7 +253,7 @@ rule <repeat_while_branch> ?!@lexicalWhileBranchListAST ioLexicalWhileBranchList
   $while$
   <lexical_expression> ?let @lexicalExpressionAST whileExpression
   $:$
-  @lexicalInstructionListAST whileInstructionList = {}
+  var @lexicalInstructionListAST whileInstructionList = {}
   repeat
   while
     <lexical_instruction> !?whileInstructionList
@@ -265,12 +265,12 @@ rule <repeat_while_branch> ?!@lexicalWhileBranchListAST ioLexicalWhileBranchList
 
 rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $select$
-  @lexicalSelectBranchListAST lexicalWhileBranchList = {}
+  var @lexicalSelectBranchListAST lexicalWhileBranchList = {}
   repeat
     $case$
     <lexical_expression> ?let @lexicalExpressionAST selectExpression
     $:$
-    @lexicalInstructionListAST selectInstructionList = {}
+    var @lexicalInstructionListAST selectInstructionList = {}
     repeat
     while
       <lexical_instruction> !?selectInstructionList
@@ -279,7 +279,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   while
   end
   $default$
-  @lexicalInstructionListAST defaultInstructionList = {}
+  var @lexicalInstructionListAST defaultInstructionList = {}
   repeat
   while
     <lexical_instruction> !?defaultInstructionList
@@ -295,7 +295,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
 
 rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $identifier$ ?let @lstring actionName
-  @lexicalRoutineCallActualArgumentListAST actualArgumentList = {}
+  var @lexicalRoutineCallActualArgumentListAST actualArgumentList = {}
   $($
   repeat
   while
@@ -316,7 +316,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     var arg = @lexicalAttributeInputOutputArgumentAST.new{!passingModeLocation !attributeName}
     actualArgumentList += !arg
   end
-  @lstringlist errorMessageList = {}
+  var @lstringlist errorMessageList = {}
   select
   or
     $error$
@@ -364,7 +364,7 @@ rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputAr
     outEffectiveArgument = @lexicalAttributeInputArgumentAST.new {!idf}
   or
     $($
-    @lexicalFunctionCallActualArgumentListAST functionActualArgumentList = {}
+    var @lexicalFunctionCallActualArgumentListAST functionActualArgumentList = {}
     repeat
     while
       $!$ ?let selector
@@ -496,14 +496,14 @@ rule <lexical_factor> !@lexicalExpressionAST outExpression {
 rule <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDeclarationList {
   $list$
   $identifier$ ?let name
-  @sentLexicalAttributeListAST sentAttributeList = {}
+  var @sentLexicalAttributeListAST sentAttributeList = {}
   repeat
   while
     $!$ ?let selector
     $identifier$ ?let sentAttribute
     sentAttributeList += !selector !sentAttribute
   end
-  @lstring theStyle # Empty string if no style
+  var @lstring theStyle # Empty string if no style
   select
     $style$
     $identifier$ ? theStyle
@@ -528,13 +528,13 @@ rule <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDe
 
 rule <lexical_list_entry> ?!@lexicalListEntryListAST ioLexicalListEntryList {
   $"string"$ ?var @lstring entrySpelling
-  @lstringlist optionList = {}
+  var @lstringlist optionList = {}
   select
   or
     $%attribute$ ?var  @lstring optionName
     optionList += !optionName
   end
-  @lstring terminalSpelling
+  var @lstring terminalSpelling
   select
     $->$
     $\$terminal\$$ ? terminalSpelling
@@ -563,8 +563,8 @@ rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationL
     $identifier$ ?let sentAttribute
     sentAttributeList += !selector !sentAttribute
   end
-  @lstring theStyle = [""nowhere] # Empty string if no style
-  @lstringlist optionList = {}
+  var @lstring theStyle = [""nowhere] # Empty string if no style
+  var @lstringlist optionList = {}
   repeat
   while
     $style$
@@ -607,7 +607,7 @@ rule <extern_routine_declaration> ?!@externRoutineListAST ioExternRoutineList {
   var lexicalRoutineFormalArgumentList =@lexicalExternRoutineFormalArgumentListAST {}
   repeat
   while
-    @lexicalArgumentModeAST lexicalArgumentMode
+    var @lexicalArgumentModeAST lexicalArgumentMode
     select
       $?!$ ?let selector
       if selector.string != "" then
@@ -625,7 +625,7 @@ rule <extern_routine_declaration> ?!@externRoutineListAST ioExternRoutineList {
     $identifier$ ?var @lstring formalArgumentName
     lexicalRoutineFormalArgumentList += !lexicalArgumentMode !lexicalTypeName !formalArgumentName
   end
-  @stringlist errorMessageList = {}
+  var @stringlist errorMessageList = {}
   select
   or
     $error$

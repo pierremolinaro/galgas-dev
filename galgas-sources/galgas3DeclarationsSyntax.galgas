@@ -54,7 +54,7 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
-  @bool isPublic
+  var @bool isPublic
   select
     isPublic = true
   or
@@ -64,7 +64,7 @@ rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollecti
     $private$
     isPublic = false
   end
-  @bool isConstant
+  var @bool isConstant
   select
     $var$
     isConstant = false
@@ -185,12 +185,12 @@ rule <filewrapper_templates> !@filewrapperTemplateListAST outFilewrapperTemplate
     $template$
     $identifier$ ?let mFilewrapperTemplateName
     $"string"$ ?let mFilewrapperTemplatePath
-    @formalTemplateInputParameterListAST filewrapperTemplateFormalInputParameters = {}
+    var @formalTemplateInputParameterListAST filewrapperTemplateFormalInputParameters = {}
     repeat
     while
       $?$ ?let selector
       $@type$ ?var  @lstring typeName
-      @bool isUnused
+      var @bool isUnused
       select
         isUnused = false
       or

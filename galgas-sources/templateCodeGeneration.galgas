@@ -63,7 +63,7 @@ override method @templateInstructionExpressionForGeneration templateCodeGenerati
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@bool unused ioUseColumnMarker {
 #--- Expression
-  @string cppName
+  var @string cppName
   [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?cppName]
   ioGeneratedCode += "result << " + cppName + ".stringValue () ;\n"
 }
@@ -77,7 +77,7 @@ override method @templateBlockInstructionForGeneration templateCodeGeneration
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@bool ioUseColumnMarker {
 #--- Expression
-  @string indendationVarCppName
+  var @string indendationVarCppName
   [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?indendationVarCppName]
   ioGeneratedCode += "if (" + indendationVarCppName + ".isValid ()) {\n"
   ioGeneratedCode += "  result.incIndentation ((int32_t) " + indendationVarCppName + ".uintValue ()) ;\n"
@@ -128,7 +128,7 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@bool ioUseColumnMarker {
 #---
-  @string foreachVarCppName
+  var @string foreachVarCppName
   [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?foreachVarCppName]
 #--- Index
   if [self.mIndexCppName length] > 0 then
@@ -221,7 +221,7 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
   ?!@bool ioUseColumnMarker {
   for (mExpression mInstructionList) in self.mTemplateInstructionIfBranchList do
   #--- IF expression
-    @string ifVarCppName
+    var @string ifVarCppName
     [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?ifVarCppName]
     let @string testVar = "test_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
     ioGeneratedCode += "const enumGalgasBool " + testVar + " = " + ifVarCppName + ".boolEnum () ;\n"
