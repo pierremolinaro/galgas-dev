@@ -16,10 +16,10 @@ enum @comparison {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @comparisonExpressionAST : @semanticExpressionAST {
-  @location mOperatorLocation
-  @semanticExpressionAST mLeftExpression
-  @comparison mComparison
-  @semanticExpressionAST mRightExpression
+  public var @location mOperatorLocation
+  public var @semanticExpressionAST mLeftExpression
+  public var @comparison mComparison
+  public var @semanticExpressionAST mRightExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -183,9 +183,9 @@ override method @comparisonExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @comparisonExpressionForGeneration : @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression
-  @comparison mComparison
-  @semanticExpressionForGeneration mRightExpression
+  public var @semanticExpressionForGeneration mLeftExpression
+  public var @comparison mComparison
+  public var @semanticExpressionForGeneration mRightExpression
 }
 
 #·····················································································································

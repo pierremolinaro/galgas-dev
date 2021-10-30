@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @literalStringExpressionAST : @semanticExpressionAST {
-  @location mLocation
-  @stringlist mStringSequence
+  public var @location mLocation
+  public var @stringlist mStringSequence
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -60,7 +60,7 @@ override method @literalStringExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @literalStringExpressionForGeneration : @semanticExpressionForGeneration {
-  @string mString
+  public var @string mString
 }
 
 #·····················································································································

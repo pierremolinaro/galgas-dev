@@ -3,41 +3,41 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @orExpressionAST : @semanticExpressionAST {
-  @location mOperatorLocation
-  @semanticExpressionAST mLeftExpression
-  @semanticExpressionAST mRightExpression
+  public var @location mOperatorLocation
+  public var @semanticExpressionAST mLeftExpression
+  public var @semanticExpressionAST mRightExpression
 }
 
 #·····················································································································
 
 refclass @orShortExpressionAST : @semanticExpressionAST {
-  @location mOperatorLocation
-  @semanticExpressionAST mLeftExpression
-  @semanticExpressionAST mRightExpression
+  public var @location mOperatorLocation
+  public var @semanticExpressionAST mLeftExpression
+  public var @semanticExpressionAST mRightExpression
 }
 
 #·····················································································································
 
 refclass @xorExpressionAST : @semanticExpressionAST {
-  @location mOperatorLocation
-  @semanticExpressionAST mLeftExpression
-  @semanticExpressionAST mRightExpression
+  public var @location mOperatorLocation
+  public var @semanticExpressionAST mLeftExpression
+  public var @semanticExpressionAST mRightExpression
 }
 
 #·····················································································································
 
 refclass @closedSliceExpressionAST : @semanticExpressionAST {
-  @location mOperatorLocation
-  @semanticExpressionAST mLeftExpression
-  @semanticExpressionAST mRightExpression
+  public var @location mOperatorLocation
+  public var @semanticExpressionAST mLeftExpression
+  public var @semanticExpressionAST mRightExpression
 }
 
 #·····················································································································
 
 refclass @openedSliceExpressionAST : @semanticExpressionAST {
-  @location mOperatorLocation
-  @semanticExpressionAST mLeftExpression
-  @semanticExpressionAST mRightExpression
+  public var @location mOperatorLocation
+  public var @semanticExpressionAST mLeftExpression
+  public var @semanticExpressionAST mRightExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -370,22 +370,22 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @orShortExpressionForGeneration : @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression
-  @semanticExpressionForGeneration mRightExpression
+  public var @semanticExpressionForGeneration mLeftExpression
+  public var @semanticExpressionForGeneration mRightExpression
 }
 
 #·····················································································································
 
 refclass @openedSliceExpressionForGeneration : @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression
-  @semanticExpressionForGeneration mRightExpression
+  public var @semanticExpressionForGeneration mLeftExpression
+  public var @semanticExpressionForGeneration mRightExpression
 }
 
 #·····················································································································
 
 refclass @closedSliceExpressionForGeneration : @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression
-  @semanticExpressionForGeneration mRightExpression
+  public var @semanticExpressionForGeneration mLeftExpression
+  public var @semanticExpressionForGeneration mRightExpression
 }
 
 #·····················································································································

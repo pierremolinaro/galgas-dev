@@ -85,43 +85,57 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
     var loop = true
     var nombreModifications = 0
     while loop {
-      print ("----------------------------------------------------------------------------------------------------------")
-      let (s, status) = runHiddenCommand ("/usr/local/bin/galgas", ["--property-access-requires-self", "-q", "--no-color", "--max-errors=1", inCheminFichierGALGAS])
+      print (String (repeating: "-", count: 79))
+      let (s, status) = runHiddenCommand ("/usr/local/bin/galgas", ["--error-old-style-property-declaration", "--no-color", "--max-errors=1", inCheminFichierGALGAS])
       if status == 0 {
         print (BOLD_GREEN + "Succès !" + ENDC)
         loop = false
         ok = true
       }else if status == 1 {
+        // print (CYAN + s + ENDC)
         let lines = s.components (separatedBy: "\n")
-        let line1 = lines [0]
-        let line2 = lines [1]
-        print (line1)
-        print (line2)
-        loop = line2.hasPrefix ("semantic error #1: the '") && line2.hasSuffix ("' variable is not declared")
+        var lineIndex = 0
+        var found = false
+        while (lineIndex < lines.count) && !found {
+          found = lines [lineIndex].hasPrefix ("semantic error #1: old style property declaration (due to '--error-old-style-property-declaration' option)")
+          lineIndex += 1
+        }
+        loop = found
         if !loop {
           print (BOLD_RED + "Erreur non gérée" + ENDC)
-        }
-        if loop {
-          let c = line1.components (separatedBy: ":")
+        }else{
+          let lineFixIt = lines [lineIndex + 2]
+          print ("  Ligne Fixit : '\(lineFixIt)'")
+          let errorMessageLine = lines [lineIndex - 2]
+          let c = errorMessageLine.components (separatedBy: ":")
           assert (c.count == 5)
           let fichier = c [0]
           let ligne = Int (c [1])!
-          let colonne = Int (c[2])!
-          print (BOLD_BLUE + "Erreur détectée dans '\(fichier)', ligne \(ligne), colonne \(colonne)" + ENDC)
+          let premierCaractère = Int (c[2])! - 1
+          let dernierCaractère = Int (c[3])! - 1
+          print (BOLD_BLUE + "  Erreur détectée : ligne \(ligne), premier caractère \(premierCaractère), dernier \(dernierCaractère)" + ENDC)
           let contents = try! String (contentsOf: URL (fileURLWithPath: fichier), encoding: .utf8)
           var lignesDuFichier = contents.components (separatedBy: "\n")
-          var ligneConcernée = lignesDuFichier [ligne - 1]
-          print ("line concernée '\(ligneConcernée)'")
-          let idx = ligneConcernée.index (ligneConcernée.startIndex, offsetBy: colonne - 1)
-          ligneConcernée.insert (contentsOf: "self.", at: idx)
-          print ("ligne modifiée '\(ligneConcernée)'")
-          lignesDuFichier [ligne - 1] = ligneConcernée
+          let ligneConcernée = lignesDuFichier [ligne - 1]
+          print ("  line concernée '\(ligneConcernée)'")
+          var préfixe = ligneConcernée
+          préfixe.removeLast (ligneConcernée.count - premierCaractère)
+          print ("  Préfixe '\(préfixe)'")
+          var suffixe = ligneConcernée
+          suffixe.removeFirst (dernierCaractère + 1)
+          print ("  Suffixe '\(suffixe)'")
+          var chaîneRemplacement = lineFixIt
+          chaîneRemplacement.removeFirst (22) // "Fix-it, replace with " suivi de ZeroWidthSpace
+          print ("  Remplacement '\(chaîneRemplacement)'")
+          let ligneModifiée = préfixe + chaîneRemplacement + suffixe
+          print ("  ligne modifiée '\(ligneModifiée)'")
+          lignesDuFichier [ligne - 1] = ligneModifiée
           let newContents = lignesDuFichier.joined (separator: "\n")
           let data : Data = newContents.data (using: .utf8, allowLossyConversion: false)!
           try! data.write (to: URL (fileURLWithPath: fichier), options: .atomic)
           nombreModifications += 1
           print ("Nombre modifications: \(nombreModifications)")
-        }
+//        }
       }else{
         print (BOLD_RED + "Status \(status) non géré" + ENDC)
         loop = false
@@ -150,15 +164,15 @@ while let file = directoryEnumerator?.nextObject () as? String {
     print ("  found \(path)")
   }
 }
+var totalCorrections = 0
 print (BOLD_BLUE + "\(galgasProjectFiles.count) projet(s) à examiner" + ENDC)
-var totalModifications = 0
 for f in galgasProjectFiles {
   let (ok, nombreModifications) = traduire (projetGALGAS: f)
-  totalModifications += nombreModifications
+  totalCorrections += nombreModifications
   if !ok {
     exit (1)
   }
 }
-print (BOLD_BLUE + "Total des corrections : \(totalModifications)" + ENDC)
+print (BOLD_BLUE + "Total corrections : \(totalCorrections)" + ENDC)
 
 //--------------------------------------------------------------------------------------------------

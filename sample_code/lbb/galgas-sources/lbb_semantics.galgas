@@ -1,42 +1,42 @@
 
 
 list @boxTypeListAST {
-  @lstring mBoxTypeName
-  @lstringlist mPortNameList
+  public var @lstring mBoxTypeName
+  public var @lstringlist mPortNameList
 }
 
 list @connectionlistAST {
-  @lstring mConnectedBoxName
-  @lstring mOppositePortName
+  public var @lstring mConnectedBoxName
+  public var @lstring mOppositePortName
 }
 
 list @boxInstanceListAST {
-  @lstring mBoxTypeName
-  @lstring mBoxInstanceName
-  @connectionlistAST mConnectionList
+  public var @lstring mBoxTypeName
+  public var @lstring mBoxInstanceName
+  public var @connectionlistAST mConnectionList
 }
 
 struct @programAST {
-  @boxTypeListAST mBoxTypeListAST
-  @boxInstanceListAST mBoxInstanceListAST
-  @location mEndOfSourceLine
+  public var @boxTypeListAST mBoxTypeListAST
+  public var @boxInstanceListAST mBoxInstanceListAST
+  public var @location mEndOfSourceLine
 }
 
 map @boxTypeMap {
-  @lstringlist mPortNameList
+  public var @lstringlist mPortNameList
   insert insertKey error message "the '%K' box type is already declared"
   search searchKey error message "the '%K' box type is not declared"
 }
 
 map @connectionMap {
-  @boxInstanceMap-entry mBoxEntry
-  @lstring mOppositePortName
+  public var @boxInstanceMap-entry mBoxEntry
+  public var @lstring mOppositePortName
   insert insertKey error message "the '%K' connection is already declared"
   search searchKey error message "the '%K' connection is not declared"
 }
 
 shared map @boxInstanceMap {
-  @connectionMap mConnectionMap
+  public var @connectionMap mConnectionMap
   insert insertKey error message "the '%K' box is already declared"
   search searchKey error message "the '%K' box is not declared"
 }

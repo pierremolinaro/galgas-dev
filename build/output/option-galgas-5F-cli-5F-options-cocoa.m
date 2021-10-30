@@ -79,6 +79,15 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
+    identifier:@"errorOldStylePropertyDeclaration"
+    commandChar:0
+    commandString:@"error-old-style-property-declaration"
+    comment:@"error on old style property declaration"
+    defaultValue:@""
+  ] ;
+  [ioBoolOptionArray addObject:option] ;
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
     identifier:@"errorValueClassDeclaration"
     commandChar:0
     commandString:@"error-value-class-declaration"

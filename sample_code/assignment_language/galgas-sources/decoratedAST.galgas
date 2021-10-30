@@ -4,11 +4,11 @@ abstract refclass @expressionForGeneration {
 }
 
 refclass @varInExpressionForGeneration : @expressionForGeneration {
-  @string mVarCppName
+  public var @string mVarCppName
 }
 
 refclass @cstInExpressionForGeneration : @expressionForGeneration {
-  @uint mConstantValue
+  public var @uint mConstantValue
 }
 
 enum @diadicOperation {
@@ -16,36 +16,36 @@ enum @diadicOperation {
 }
 
 refclass @diadicForGeneration : @expressionForGeneration {
-  @expressionForGeneration mLeftExpression
-  @diadicOperation mOperation
-  @expressionForGeneration mRightExpression
+  public var @expressionForGeneration mLeftExpression
+  public var @diadicOperation mOperation
+  public var @expressionForGeneration mRightExpression
 }
 
 abstract refclass @instructionForGeneration {
 }
 
 list @instructionListForGeneration {
-  @instructionForGeneration mInstruction
+  public var @instructionForGeneration mInstruction
 }
 
 refclass @assignmentForGeneration : @instructionForGeneration {
-  @string mTargetVarCppName
-  @expressionForGeneration mSourceExpression
+  public var @string mTargetVarCppName
+  public var @expressionForGeneration mSourceExpression
 }
 
 refclass @varDeclarationForGeneration : @instructionForGeneration {
-  @string mVarCppName
+  public var @string mVarCppName
 }
 
 refclass @printVariableForGeneration : @instructionForGeneration {
-  @string mSourceName
-  @string mVarCppName
+  public var @string mSourceName
+  public var @string mVarCppName
 }
 
 #---------------------------------------------------------------------------*
 
 shared map @variableMap {
-  @string mCppName
+  public var @string mCppName
 
 #--- Variable states
   state declaredState warning "the '%K' variable is unused" {

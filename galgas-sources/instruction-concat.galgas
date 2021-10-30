@@ -3,46 +3,46 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @plusEqualElementsInstructionAST : @semanticInstructionAST {
-  @bool mPrefixedBySelf
-  @lstring mReceiverName
-  @lstringlist mStructAttributeList
-  @actualOutputExpressionList mExpressions
+  public var @bool mPrefixedBySelf
+  public var @lstring mReceiverName
+  public var @lstringlist mStructAttributeList
+  public var @actualOutputExpressionList mExpressions
 }
 
 #······················································································································*
 
 refclass @plusEqualExpressionInstructionAST : @semanticInstructionAST {
-  @bool mPrefixedBySelf
-  @lstring mReceiverName
-  @lstringlist mStructAttributeList
-  @semanticExpressionAST mExpression
+  public var @bool mPrefixedBySelf
+  public var @lstring mReceiverName
+  public var @lstringlist mStructAttributeList
+  public var @semanticExpressionAST mExpression
 }
 
 #······················································································································*
 
 refclass @minusEqualExpressionInstructionAST : @semanticInstructionAST {
-  @bool mPrefixedBySelf
-  @lstring mReceiverName
-  @lstringlist mStructAttributeList
-  @semanticExpressionAST mExpression
+  public var @bool mPrefixedBySelf
+  public var @lstring mReceiverName
+  public var @lstringlist mStructAttributeList
+  public var @semanticExpressionAST mExpression
 }
 
 #······················································································································*
 
 refclass @mulEqualExpressionInstructionAST : @semanticInstructionAST {
-  @bool mPrefixedBySelf
-  @lstring mReceiverName
-  @lstringlist mStructAttributeList
-  @semanticExpressionAST mExpression
+  public var @bool mPrefixedBySelf
+  public var @lstring mReceiverName
+  public var @lstringlist mStructAttributeList
+  public var @semanticExpressionAST mExpression
 }
 
 #······················································································································*
 
 refclass @divEqualExpressionInstructionAST : @semanticInstructionAST {
-  @bool mPrefixedBySelf
-  @lstring mReceiverName
-  @lstringlist mStructAttributeList
-  @semanticExpressionAST mExpression
+  public var @bool mPrefixedBySelf
+  public var @lstring mReceiverName
+  public var @lstringlist mStructAttributeList
+  public var @semanticExpressionAST mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -601,12 +601,12 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
-  @string mReceiverCppName
-  @unifiedTypeMap-entry mTargetType
-  @string mNameForCheckingFormalParameterUsing
-  @location mInstructionLocation
-  @lstringlist mStructAttributeList
-  @semanticExpressionListForGeneration mExpressionList
+  public var @string mReceiverCppName
+  public var @unifiedTypeMap-entry mTargetType
+  public var @string mNameForCheckingFormalParameterUsing
+  public var @location mInstructionLocation
+  public var @lstringlist mStructAttributeList
+  public var @semanticExpressionListForGeneration mExpressionList
 }
 
 #·····················································································································*
@@ -653,13 +653,13 @@ override method @plusEqualnstructionForGeneration generateInstruction
 #·····················································································································*
 
 refclass @opEqualInstructionForGeneration : @semanticInstructionForGeneration {
-  @location mInstructionLocation
-  @unifiedTypeMap-entry mTargetType
-  @string mTargetVariableCppName
-  @string mNameForCheckingFormalParameterUsing
-  @lstringlist mStructAttributeList
-  @semanticExpressionForGeneration mSourceExpression
-  @string mGeneratedMethod
+  public var @location mInstructionLocation
+  public var @unifiedTypeMap-entry mTargetType
+  public var @string mTargetVariableCppName
+  public var @string mNameForCheckingFormalParameterUsing
+  public var @lstringlist mStructAttributeList
+  public var @semanticExpressionForGeneration mSourceExpression
+  public var @string mGeneratedMethod
 }
 
 #·····················································································································*

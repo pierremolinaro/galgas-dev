@@ -3,13 +3,13 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @extensionGetterAST : @semanticDeclarationAST {
-  @lstring mTypeName
-  @lstring mExtensionGetterName
-  @formalInputParameterListAST mExtensionGetterFormalInputParameterList
-  @lstring mExtensionGetterReturnedTypeName
-  @lstring mExtensionGetterReturnedVariableName
-  @semanticInstructionListAST mExtensionGetterInstructionList
-  @location mEndOfReaderLocation
+  public var @lstring mTypeName
+  public var @lstring mExtensionGetterName
+  public var @formalInputParameterListAST mExtensionGetterFormalInputParameterList
+  public var @lstring mExtensionGetterReturnedTypeName
+  public var @lstring mExtensionGetterReturnedVariableName
+  public var @semanticInstructionListAST mExtensionGetterInstructionList
+  public var @location mEndOfReaderLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -212,14 +212,14 @@ override method @extensionGetterAST buildExtensionListMaps
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMap-entry mReceiverType
-  @string mExtensionGetterName
-  @bool mImplementedAsFunction
-  @unifiedTypeMap-entry mResultType
-  @string mResultVarCppName
-  @formalInputParameterListForGeneration mExtensionGetterFormalParameterList
-  @typedPropertyList mTypedAttributeList
-  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
+  public var @unifiedTypeMap-entry mReceiverType
+  public var @string mExtensionGetterName
+  public var @bool mImplementedAsFunction
+  public var @unifiedTypeMap-entry mResultType
+  public var @string mResultVarCppName
+  public var @formalInputParameterListForGeneration mExtensionGetterFormalParameterList
+  public var @typedPropertyList mTypedAttributeList
+  public var @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 
 #·······················································································································

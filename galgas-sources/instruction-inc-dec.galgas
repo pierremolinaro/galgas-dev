@@ -10,31 +10,31 @@ enum @incDecKind {
 #·····················································································································*
 
 refclass @incDecInstructionAST : @semanticInstructionAST {
-  @bool mPrefixedBySelf
-  @lstring mReceiverName
-  @lstringlist mStructAttributeList
-  @incDecKind mKind
+  public var @bool mPrefixedBySelf
+  public var @lstring mReceiverName
+  public var @lstringlist mStructAttributeList
+  public var @incDecKind mKind
 }
 
 #·····················································································································*
 
 refclass @incDecNoOVFInstructionAST : @semanticInstructionAST {
-  @bool mPrefixedBySelf
-  @lstring mReceiverName
-  @lstringlist mStructAttributeList
-  @incDecKind mKind
+  public var @bool mPrefixedBySelf
+  public var @lstring mReceiverName
+  public var @lstringlist mStructAttributeList
+  public var @incDecKind mKind
 }
 
 #·····················································································································*
 
 refclass @selfIncDecInstructionAST : @semanticInstructionAST {
-  @incDecKind mKind
+  public var @incDecKind mKind
 }
 
 #·····················································································································*
 
 refclass @selfIncDecNoOVFInstructionAST : @semanticInstructionAST {
-  @incDecKind mKind
+  public var @incDecKind mKind
 }
 
 
@@ -341,21 +341,21 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @incDecInstructionForGeneration : @semanticInstructionForGeneration {
-  @location mInstructionLocation
-  @string mReceiverCppName
-  @unifiedTypeMap-entry mReceiverType
-  @lstringlist mStructAttributeList
-  @incDecKind mKind
+  public var @location mInstructionLocation
+  public var @string mReceiverCppName
+  public var @unifiedTypeMap-entry mReceiverType
+  public var @lstringlist mStructAttributeList
+  public var @incDecKind mKind
 }
 
 #·····················································································································*
 
 refclass @incDecNoOVFInstructionForGeneration : @semanticInstructionForGeneration {
-  @location mInstructionLocation
-  @string mReceiverCppName
-  @unifiedTypeMap-entry mReceiverType
-  @lstringlist mStructAttributeList
-  @incDecKind mKind
+  public var @location mInstructionLocation
+  public var @string mReceiverCppName
+  public var @unifiedTypeMap-entry mReceiverType
+  public var @lstringlist mStructAttributeList
+  public var @incDecKind mKind
 }
 
 #·····················································································································*

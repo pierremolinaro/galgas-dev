@@ -3,10 +3,10 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @dictDeclarationAST : @semanticDeclarationAST {
-  @lstring mDictTypeName
-  @lstring mKeyTypeName
-  @lstringlist mAttributeList
-  @propertyInCollectionListAST mPropertyList
+  public var @lstring mDictTypeName
+  public var @lstring mKeyTypeName
+  public var @lstringlist mAttributeList
+  public var @propertyInCollectionListAST mPropertyList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -407,10 +407,10 @@ override method @dictDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @dictTypeForGeneration : @semanticTypeForGeneration {
-  @unifiedTypeMap-entry mElementTypeEntry
-  @lstring mDictTypeName
-  @typedPropertyList mTypedAttributeList
-  @lstring mKeyTypeName
+  public var @unifiedTypeMap-entry mElementTypeEntry
+  public var @lstring mDictTypeName
+  public var @typedPropertyList mTypedAttributeList
+  public var @lstring mKeyTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

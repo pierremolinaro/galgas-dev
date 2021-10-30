@@ -1,7 +1,7 @@
 
 
 sortedlist @mySortedList {
-  @string mValue
+  public var @string mValue
 }{
   mValue >
 }

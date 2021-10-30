@@ -4,46 +4,46 @@ abstract refclass @expressionAST {
 }
 
 refclass @varInExpressionAST : @expressionAST {
-  @lstring mVarName
+  public var @lstring mVarName
 }
 
 refclass @cstInExpressionAST : @expressionAST {
-  @luint mConstant
+  public var @luint mConstant
 }
 
 refclass @additionAST : @expressionAST {
-  @expressionAST mLeftExpression
-  @expressionAST mRightExpression
+  public var @expressionAST mLeftExpression
+  public var @expressionAST mRightExpression
 }
 
 refclass @multiplicationAST : @expressionAST {
-  @expressionAST mLeftExpression
-  @expressionAST mRightExpression
+  public var @expressionAST mLeftExpression
+  public var @expressionAST mRightExpression
 }
 
 abstract refclass @instructionAST {
 }
 
 list @instructionListAST {
-  @instructionAST mInstruction
+  public var @instructionAST mInstruction
 }
 
 refclass @assignmentAST : @instructionAST {
-  @lstring mTargetVarName
-  @expressionAST mSourceExpression
+  public var @lstring mTargetVarName
+  public var @expressionAST mSourceExpression
 }
 
 struct @programAST {
-  @instructionListAST mProgramInstructionList
-  @location mEndOfSourceFile
+  public var @instructionListAST mProgramInstructionList
+  public var @location mEndOfSourceFile
 }
 
 refclass @varDeclarationAST : @instructionAST {
-  @lstring mVarName
+  public var @lstring mVarName
 }
 
 refclass @printVariableAST : @instructionAST {
-  @lstring mVarName
+  public var @lstring mVarName
 }
 
 #---------------------------------------------------------------------------*

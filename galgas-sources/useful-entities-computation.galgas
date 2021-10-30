@@ -22,7 +22,7 @@ graph @usefulEntitiesGraph (@lstringlist) {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @uselessEntityLocationMap {
-  @location mLocation
+  public var @location mLocation
   insert insertKey error message "--- %K INTERNAL ERROR ---"
 }
 

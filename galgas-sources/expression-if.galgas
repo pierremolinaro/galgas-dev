@@ -3,10 +3,10 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @ifExpressionAST : @semanticExpressionAST {
-  @location mOperatorLocation
-  @semanticExpressionAST mIfExpression
-  @semanticExpressionAST mThenExpression
-  @semanticExpressionAST mElseExpression
+  public var @location mOperatorLocation
+  public var @semanticExpressionAST mIfExpression
+  public var @semanticExpressionAST mThenExpression
+  public var @semanticExpressionAST mElseExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -115,9 +115,9 @@ override method @ifExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @ifExpressionForGeneration : @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mIfExpression
-  @semanticExpressionForGeneration mThenExpression
-  @semanticExpressionForGeneration mElseExpression
+  public var @semanticExpressionForGeneration mIfExpression
+  public var @semanticExpressionForGeneration mThenExpression
+  public var @semanticExpressionForGeneration mElseExpression
 }
 
 #·······················································································································

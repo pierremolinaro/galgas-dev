@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @boolsetDeclarationAST : @semanticDeclarationAST {
-  @lstring mBoolsetTypeName
-  @lstringlist mFlagList
+  public var @lstring mBoolsetTypeName
+  public var @lstringlist mFlagList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -210,7 +210,7 @@ override method @boolsetDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @boolsetTypeForGeneration : @semanticTypeForGeneration {
-  @lstringlist mFlagList
+  public var @lstringlist mFlagList
 }
 
 #·······················································································································

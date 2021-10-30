@@ -3,9 +3,9 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @structDeclarationAST : @semanticDeclarationAST {
-  @lstring mStructTypeName
-  @propertyInCollectionListAST mStructurePropertyList
-  @string mEnumeratedElementTypeName # Empty string if not enumerable
+  public var @lstring mStructTypeName
+  public var @propertyInCollectionListAST mStructurePropertyList
+  public var @string mEnumeratedElementTypeName # Empty string if not enumerable
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -259,7 +259,7 @@ override method @structDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @structTypeForGeneration : @semanticTypeForGeneration {
-  @typedPropertyList mTypedPropertyList
+  public var @typedPropertyList mTypedPropertyList
 }
 
 #·······················································································································

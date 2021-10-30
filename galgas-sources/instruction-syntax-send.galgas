@@ -3,7 +3,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @syntaxSendInstruction : @syntaxInstructionAST {
-  @semanticExpressionAST mExpression
+  public var @semanticExpressionAST mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -84,7 +84,7 @@ override method @syntaxSendInstruction analyzeSyntaxInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
-  @semanticExpressionForGeneration mExpression
+  public var @semanticExpressionForGeneration mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

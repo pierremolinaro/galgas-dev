@@ -15,54 +15,54 @@
 
   refclass @grammarInstructionSyntaxDirectedTranslationDropResult :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-    @location mLocation
+    public var @location mLocation
   }
 
   #·····················································································································
 
   refclass @grammarInstructionSyntaxDirectedTranslationResultInVar :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-    @lstring mActualParameterName
+    public var @lstring mActualParameterName
   }
 
   #·····················································································································
 
   refclass @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-    @lstring mActualParameterTypeName
-    @lstring mActualParameterName
+    public var @lstring mActualParameterTypeName
+    public var @lstring mActualParameterName
   }
 
   #·····················································································································
 
   refclass @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-    @lstring mActualParameterTypeName
-    @lstring mActualParameterName
+    public var @lstring mActualParameterTypeName
+    public var @lstring mActualParameterName
   }
 
   #·····················································································································
 
   refclass @grammarInFileInstructionAST : @semanticInstructionAST {
-    @lstring mGrammarComponentName
-    @lstring mLabelName
-    @semanticExpressionAST mSourceExpression
-    @location mEndOfSourceExpression
-    @actualParameterListAST mActualParameterList
-    @abstractGrammarInstructionSyntaxDirectedTranslationResult mAbstractGrammarInstructionSyntaxDirectedTranslationResult
+    public var @lstring mGrammarComponentName
+    public var @lstring mLabelName
+    public var @semanticExpressionAST mSourceExpression
+    public var @location mEndOfSourceExpression
+    public var @actualParameterListAST mActualParameterList
+    public var @abstractGrammarInstructionSyntaxDirectedTranslationResult mAbstractGrammarInstructionSyntaxDirectedTranslationResult
   }
 
   #·····················································································································
 
   refclass @grammarInStringInstructionAST : @semanticInstructionAST {
-    @lstring mGrammarComponentName
-    @lstring mLabelName
-    @semanticExpressionAST mSourceExpression
-    @location mEndOfSourceExpression
-    @semanticExpressionAST mNameExpression
-    @location mEndOfNameExpression
-    @actualParameterListAST mActualParameterList
-    @abstractGrammarInstructionSyntaxDirectedTranslationResult mAbstractGrammarInstructionSyntaxDirectedTranslationResult
+    public var @lstring mGrammarComponentName
+    public var @lstring mLabelName
+    public var @semanticExpressionAST mSourceExpression
+    public var @location mEndOfSourceExpression
+    public var @semanticExpressionAST mNameExpression
+    public var @location mEndOfNameExpression
+    public var @actualParameterListAST mActualParameterList
+    public var @abstractGrammarInstructionSyntaxDirectedTranslationResult mAbstractGrammarInstructionSyntaxDirectedTranslationResult
   }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -368,14 +368,14 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
   refclass @grammarInstructionWithSourceFileForGeneration : @semanticInstructionForGeneration {
-    @location mInstructionLocation
-    @string mGrammarName
-    @string mLabelName
-    @semanticExpressionForGeneration mSourceFileExpression
-    @actualParameterListForGeneration mActualParameterList
-    @bool mGrammarHasTranslateFeature
-    @stringlist mAssignementList
-    @string mSyntaxDirectedTranslationResultVarName
+    public var @location mInstructionLocation
+    public var @string mGrammarName
+    public var @string mLabelName
+    public var @semanticExpressionForGeneration mSourceFileExpression
+    public var @actualParameterListForGeneration mActualParameterList
+    public var @bool mGrammarHasTranslateFeature
+    public var @stringlist mAssignementList
+    public var @string mSyntaxDirectedTranslationResultVarName
   }
 
   #·····················································································································
@@ -439,15 +439,15 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
   refclass @grammarInstructionWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
-    @location mInstructionLocation
-    @string mGrammarName
-    @string mLabelName
-    @semanticExpressionForGeneration mSourceStringExpression
-    @semanticExpressionForGeneration mNameStringExpression
-    @actualParameterListForGeneration mActualParameterList
-    @bool mGrammarHasTranslateFeature
-    @stringlist mAssignementList
-    @string mSyntaxDirectedTranslationResultVarName
+    public var @location mInstructionLocation
+    public var @string mGrammarName
+    public var @string mLabelName
+    public var @semanticExpressionForGeneration mSourceStringExpression
+    public var @semanticExpressionForGeneration mNameStringExpression
+    public var @actualParameterListForGeneration mActualParameterList
+    public var @bool mGrammarHasTranslateFeature
+    public var @stringlist mAssignementList
+    public var @string mSyntaxDirectedTranslationResultVarName
   }
 
   #·····················································································································

@@ -3,19 +3,19 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @setterCallInstructionAST : @semanticInstructionAST {
-  @bool mPrefixedBySelf
-  @lstring mReceiverName
-  @lstringlist mReceiverStructProperties
-  @lstring mTypeNameForCasting
-  @lstring mSetterName
-  @actualParameterListAST mActualParameterList
+  public var @bool mPrefixedBySelf
+  public var @lstring mReceiverName
+  public var @lstringlist mReceiverStructProperties
+  public var @lstring mTypeNameForCasting
+  public var @lstring mSetterName
+  public var @actualParameterListAST mActualParameterList
 }
 
 #·····················································································································*
 
 refclass @selfSetterCallInstructionAST : @semanticInstructionAST {
-  @lstring mSetterName
-  @actualParameterListAST mActualParameterList
+  public var @lstring mSetterName
+  public var @actualParameterListAST mActualParameterList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -289,28 +289,28 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @setterCallInstructionForGeneration : @semanticInstructionForGeneration {
-  @location mInstructionLocation
-  @string mReceiverCppName
-  @string mReceiverBaseName
-  @lstringlist mReceiverStructAttributes
-  @unifiedTypeMap-entry mCastType
-  @unifiedTypeMap-entry mReceiverType
-  @lstring mSetterName
-  @methodKind mKind
-  @actualParameterListForGeneration mActualParameterList
-  @bool mHasCompilerArgument
-  @unifiedTypeMap-entry mMethodBaseType
+  public var @location mInstructionLocation
+  public var @string mReceiverCppName
+  public var @string mReceiverBaseName
+  public var @lstringlist mReceiverStructAttributes
+  public var @unifiedTypeMap-entry mCastType
+  public var @unifiedTypeMap-entry mReceiverType
+  public var @lstring mSetterName
+  public var @methodKind mKind
+  public var @actualParameterListForGeneration mActualParameterList
+  public var @bool mHasCompilerArgument
+  public var @unifiedTypeMap-entry mMethodBaseType
 }
 
 #·····················································································································*
 
 refclass @selfSetterCallInstructionForGeneration : @semanticInstructionForGeneration {
-  @string mSelfCppName
-  @unifiedTypeMap-entry mReceiverType
-  @lstring mSetterName
-  @methodKind mKind
-  @actualParameterListForGeneration mActualParameterList
-  @bool mHasCompilerArgument
+  public var @string mSelfCppName
+  public var @unifiedTypeMap-entry mReceiverType
+  public var @lstring mSetterName
+  public var @methodKind mKind
+  public var @actualParameterListForGeneration mActualParameterList
+  public var @bool mHasCompilerArgument
 }
 
 #·····················································································································*

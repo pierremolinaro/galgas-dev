@@ -3,16 +3,16 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @enumDeclarationAST : @semanticDeclarationAST {
-  @lstring mEnumTypeName
-  @enumConstantList mConstantList
-  @lstring mDefaultConstantName
+  public var @lstring mEnumTypeName
+  public var @enumConstantList mConstantList
+  public var @lstring mDefaultConstantName
 }
 
 #·······················································································································
 
 list @enumConstantList {
-  @lstring mConstantName
-  @2lstringlist mAssociatedValueDefinitionList
+  public var @lstring mConstantName
+  public var @2lstringlist mAssociatedValueDefinitionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -286,14 +286,14 @@ override method @enumDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @enumConstantListForGeneration {
-  @string mConstantName
-  @unifiedTypeMapEntryList mAssociatedValueTypeList
+  public var @string mConstantName
+  public var @unifiedTypeMapEntryList mAssociatedValueTypeList
 }
 
 #·······················································································································
 
 refclass @enumTypeForGeneration : @semanticTypeForGeneration {
-  @enumConstantListForGeneration mConstantList
+  public var @enumConstantListForGeneration mConstantList
 }
 
 

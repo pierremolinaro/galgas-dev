@@ -3,15 +3,15 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @constructorExpressionAST : @semanticExpressionAST {
-  @lstring mTypeName
-  @lstring mConstructorName
-  @actualOutputExpressionList mExpressions
+  public var @lstring mTypeName
+  public var @lstring mConstructorName
+  public var @actualOutputExpressionList mExpressions
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @defaultConstructorExpressionAST : @semanticExpressionAST {
-  @lstring mTypeName
+  public var @lstring mTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -237,10 +237,10 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @constructorExpressionForGeneration : @semanticExpressionForGeneration {
-  @unifiedTypeMap-entry mConstructorType
-  @string mConstructorName
-  @semanticExpressionListForGeneration mEffectiveParameterList
-  @bool mHasCompilerArgument
+  public var @unifiedTypeMap-entry mConstructorType
+  public var @string mConstructorName
+  public var @semanticExpressionListForGeneration mEffectiveParameterList
+  public var @bool mHasCompilerArgument
 }
 
 #·····················································································································

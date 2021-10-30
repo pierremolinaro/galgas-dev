@@ -3,9 +3,9 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @optionExpressionAST : @semanticExpressionAST {
-  @lstring mOptionComponentName
-  @lstring mOptionEntryName
-  @lstring mOptionGetterName
+  public var @lstring mOptionComponentName
+  public var @lstring mOptionEntryName
+  public var @lstring mOptionGetterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -142,9 +142,9 @@ override method @optionExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @optionValueExpressionForGeneration : @semanticExpressionForGeneration {
-  @bool mOptionComponentIsPredefined
-  @string mOptionComponentName
-  @string mOptionEntryName
+  public var @bool mOptionComponentIsPredefined
+  public var @string mOptionComponentName
+  public var @string mOptionEntryName
 }
 
 #·······················································································································
@@ -165,9 +165,9 @@ override method @optionValueExpressionForGeneration generateExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @optionCharExpressionForGeneration : @semanticExpressionForGeneration {
-  @bool mOptionComponentIsPredefined
-  @string mOptionComponentName
-  @string mOptionEntryName
+  public var @bool mOptionComponentIsPredefined
+  public var @string mOptionComponentName
+  public var @string mOptionEntryName
 }
 
 #·······················································································································
@@ -188,9 +188,9 @@ override method @optionCharExpressionForGeneration generateExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @optionStringExpressionForGeneration : @semanticExpressionForGeneration {
-  @bool mOptionComponentIsPredefined
-  @string mOptionComponentName
-  @string mOptionEntryName
+  public var @bool mOptionComponentIsPredefined
+  public var @string mOptionComponentName
+  public var @string mOptionEntryName
 }
 
 #·······················································································································
@@ -226,9 +226,9 @@ override method @optionCommentExpressionForGeneration generateExpression
 #·······················································································································
 
 refclass @optionCommentExpressionForGeneration : @semanticExpressionForGeneration {
-  @bool mOptionComponentIsPredefined
-  @string mOptionComponentName
-  @string mOptionEntryName
+  public var @bool mOptionComponentIsPredefined
+  public var @string mOptionComponentName
+  public var @string mOptionEntryName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

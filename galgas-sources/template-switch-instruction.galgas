@@ -3,18 +3,18 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateInstructionSwitchBranchListAST {
-  @lstringlist mConstantList
-  @switchExtractedValuesListAST mAssociatedValuesExtraction
-  @templateInstructionListAST mInstructionList
-  @location mEndOfBranch
+  public var @lstringlist mConstantList
+  public var @switchExtractedValuesListAST mAssociatedValuesExtraction
+  public var @templateInstructionListAST mInstructionList
+  public var @location mEndOfBranch
 }
 
 #·······················································································································
 
 refclass @templateInstructionSwitchAST : @templateInstructionAST {
-  @templateExpressionAST mSwitchExpression
-  @location mSwitchExpressionEndLocation
-  @templateInstructionSwitchBranchListAST mTemplateInstructionSwitchBranchList
+  public var @templateExpressionAST mSwitchExpression
+  public var @location mSwitchExpressionEndLocation
+  public var @templateInstructionSwitchBranchListAST mTemplateInstructionSwitchBranchList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -262,18 +262,18 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateInstructionSwitchBranchListForGeneration {
-  @lstringlist mConstantList
-  @extractedAssociatedValuesForGeneration mExtractedAssociatedValuesForGeneration
-  @uint mEndOfBranchLocationIndex
-  @templateInstructionListForGeneration mInstructionList
+  public var @lstringlist mConstantList
+  public var @extractedAssociatedValuesForGeneration mExtractedAssociatedValuesForGeneration
+  public var @uint mEndOfBranchLocationIndex
+  public var @templateInstructionListForGeneration mInstructionList
 }
 
 #·······················································································································
 
 refclass @templateInstructionSwitchForGeneration : @templateInstructionForGeneration {
-  @unifiedTypeMap-entry mEnumType
-  @semanticExpressionForGeneration mSwitchExpression
-  @templateInstructionSwitchBranchListForGeneration mTemplateInstructionSwitchBranchList
+  public var @unifiedTypeMap-entry mEnumType
+  public var @semanticExpressionForGeneration mSwitchExpression
+  public var @templateInstructionSwitchBranchListForGeneration mTemplateInstructionSwitchBranchList
 }
 
 #·······················································································································

@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @parseRewindInstruction : @syntaxInstructionAST {
-  @listOfSyntaxInstructionList mParseRewindBranchList
-  @location mEndOfParseDoInstruction
+  public var @listOfSyntaxInstructionList mParseRewindBranchList
+  public var @location mEndOfParseDoInstruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -136,7 +136,7 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @parseRewindInstructionForGeneration : @syntaxInstructionForGeneration {
-  @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
+  public var @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

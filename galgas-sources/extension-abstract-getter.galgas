@@ -3,10 +3,10 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @abstractExtensionGetterAST : @semanticDeclarationAST {
-  @lstring mTypeName
-  @lstring mAbstractExtensionGetterName
-  @formalInputParameterListAST mAbstractExtensionGetterFormalInputParameterList
-  @lstring mAbstractExtensionGetterReturnedTypeName
+  public var @lstring mTypeName
+  public var @lstring mAbstractExtensionGetterName
+  public var @formalInputParameterListAST mAbstractExtensionGetterFormalInputParameterList
+  public var @lstring mAbstractExtensionGetterReturnedTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -165,10 +165,10 @@ override method @abstractExtensionGetterAST buildExtensionListMaps
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @abstractExtensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMap-entry mReceiverType
-  @string mAbstractExtensionGetterName
-  @unifiedTypeMap-entry mResultType
-  @formalInputParameterListForGeneration mAbstractExtensionGetterFormalParameterList
+  public var @unifiedTypeMap-entry mReceiverType
+  public var @string mAbstractExtensionGetterName
+  public var @unifiedTypeMap-entry mResultType
+  public var @formalInputParameterListForGeneration mAbstractExtensionGetterFormalParameterList
 }
 
 #·······················································································································

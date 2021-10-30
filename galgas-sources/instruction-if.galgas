@@ -24,24 +24,24 @@ enum @optionalMethodActualArgument {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @optionalMethodActualArgumentList {
-  @lstring mSelector
-  @optionalMethodActualArgument mActualArgument
+  public var @lstring mSelector
+  public var @optionalMethodActualArgument mActualArgument
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @ifExpressionList {
-  @ifExpressionKind mExpression
+  public var @ifExpressionKind mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @ifInstructionAST : @semanticInstructionAST {
-  @ifExpressionList mExpressions
-  @semanticInstructionListAST m_then_instructionList
-  @location mEndOf_then_branch
-  @semanticInstructionListAST m_else_instructionList
-  @location mEndOf_if_instruction
+  public var @ifExpressionList mExpressions
+  public var @semanticInstructionListAST m_then_instructionList
+  public var @location mEndOf_then_branch
+  public var @semanticInstructionListAST m_else_instructionList
+  public var @location mEndOf_if_instruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -578,22 +578,22 @@ enum @optionalMethodActualArgumentForGeneration {
 #·······················································································································
 
 list @optionalMethodActualArgumentListForGeneration {
-  @optionalMethodActualArgumentForGeneration mParameter
+  public var @optionalMethodActualArgumentForGeneration mParameter
 }
 
 #·······················································································································
 
 list @ifTestListForGeneration {
-  @ifTestForGeneration mExpression
+  public var @ifTestForGeneration mExpression
 }
 
 #·······················································································································
 
 refclass @ifInstructionForGeneration : @semanticInstructionForGeneration {
-  @location mInstructionLocation
-  @ifTestListForGeneration mExpressions
-  @semanticInstructionListForGeneration m_then_instructionList
-  @semanticInstructionListForGeneration m_else_instructionList
+  public var @location mInstructionLocation
+  public var @ifTestListForGeneration mExpressions
+  public var @semanticInstructionListForGeneration m_then_instructionList
+  public var @semanticInstructionListForGeneration m_else_instructionList
 }
 
 #·······················································································································

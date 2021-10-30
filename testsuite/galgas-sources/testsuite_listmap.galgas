@@ -1,8 +1,8 @@
 
 
 list @aList {
-  @string mString
-  @uint mInt
+  public var @string mString
+  public var @uint mInt
 }
 
 listmap @myListMap (@aList)

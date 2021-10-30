@@ -3,7 +3,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @messageInstructionAST : @semanticInstructionAST {
-  @semanticExpressionAST mExpression
+  public var @semanticExpressionAST mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -71,8 +71,8 @@ override method @messageInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @messageInstructionForGeneration : @semanticInstructionForGeneration {
-  @semanticExpressionForGeneration mExpression
-  @location mInstructionLocation
+  public var @semanticExpressionForGeneration mExpression
+  public var @location mInstructionLocation
 }
 
 #·····················································································································*

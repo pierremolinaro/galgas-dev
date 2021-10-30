@@ -3,13 +3,13 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @trueExpressionAST : @semanticExpressionAST {
-  @location mLocation
+  public var @location mLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @falseExpressionAST : @semanticExpressionAST {
-  @location mLocation
+  public var @location mLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

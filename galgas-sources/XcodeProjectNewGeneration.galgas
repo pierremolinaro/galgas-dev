@@ -7,7 +7,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @projectQualifiedFeatureMap {
-  @lstring mFeatureValue
+  public var @lstring mFeatureValue
   insert insertKey error message "the '%K' attribute is already declared"
   search searchKey error message "the '%K' attribute is not declared"  
 }
@@ -306,53 +306,53 @@ setter @XcodeProjectDescriptor addSettingsToDefaultConfiguration
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @XCodeGroupList {
-  @string mGroupReference
-  @string mGroupName
-  @string mGroupPath
-  @stringlist mChildrenRefs
+  public var @string mGroupReference
+  public var @string mGroupName
+  public var @string mGroupPath
+  public var @stringlist mChildrenRefs
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @XCodeToolTargetList {
-  @string mTargetRef
-  @string mTargetName
-  @string mProductFileReference
-  @string mProductFileName
-  @stringlist mBuildPhaseRefList
-  @string mBuildPhaseRef
-  @string mBuildConfigurationListRef
-  @stringlist mBuildConfigurationSettingList
-  @string mBuildConfigurationRef
-  @stringlist mFrameworksFileRefList
-  @string mFrameworkBuildPhaseRef
+  public var @string mTargetRef
+  public var @string mTargetName
+  public var @string mProductFileReference
+  public var @string mProductFileName
+  public var @stringlist mBuildPhaseRefList
+  public var @string mBuildPhaseRef
+  public var @string mBuildConfigurationListRef
+  public var @stringlist mBuildConfigurationSettingList
+  public var @string mBuildConfigurationRef
+  public var @stringlist mFrameworksFileRefList
+  public var @string mFrameworkBuildPhaseRef
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @XCodeAppTargetList {
-  @string mTargetRef
-  @string mTargetName
-  @string mProductFileReference
-  @string mProductFileName
-  @stringlist mBuildPhaseRefList
-  @string mBuildPhaseRef
-  @string mBuildConfigurationListRef
-  @stringlist mBuildConfigurationSettingList
-  @string mBuildConfigurationRef
-  @stringlist mFrameworksFileRefList
-  @string mFrameworkBuildPhaseRef
-  @2stringlist mDependentTargets
-  @string mResourceBuildRef
-  @stringlist mResourceFileBuildRefs
+  public var @string mTargetRef
+  public var @string mTargetName
+  public var @string mProductFileReference
+  public var @string mProductFileName
+  public var @stringlist mBuildPhaseRefList
+  public var @string mBuildPhaseRef
+  public var @string mBuildConfigurationListRef
+  public var @stringlist mBuildConfigurationSettingList
+  public var @string mBuildConfigurationRef
+  public var @stringlist mFrameworksFileRefList
+  public var @string mFrameworkBuildPhaseRef
+  public var @2stringlist mDependentTargets
+  public var @string mResourceBuildRef
+  public var @stringlist mResourceFileBuildRefs
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @BuildFileList {
-  @string mFileReference
-  @string mFileName
-  @string mBuildReference
+  public var @string mFileReference
+  public var @string mFileName
+  public var @string mBuildReference
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -370,32 +370,32 @@ setter @XcodeProjectDescriptor getReferenceKey
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @XcodeProjectDescriptor {
-  @uint mSequenceNumber
-  @string mMainGroupReference
-  @stringlist mMainGroupChildrenRefs
-  @string mProjectObjectReference
-  @XCodeGroupList mGroupList
-  @XCodeToolTargetList mToolTargetList
-  @XCodeAppTargetList mAppTargetList
-  @2stringlist mCFileList
-  @2stringlist mCppFileList
-  @2stringlist m_M_FileList
-  @2stringlist m_MM_FileList
-  @2stringlist mFrameworkFileList
-  @2stringlist mHeaderFileList
-  @BuildFileList mBuildFileList
+  public var @uint mSequenceNumber
+  public var @string mMainGroupReference
+  public var @stringlist mMainGroupChildrenRefs
+  public var @string mProjectObjectReference
+  public var @XCodeGroupList mGroupList
+  public var @XCodeToolTargetList mToolTargetList
+  public var @XCodeAppTargetList mAppTargetList
+  public var @2stringlist mCFileList
+  public var @2stringlist mCppFileList
+  public var @2stringlist m_M_FileList
+  public var @2stringlist m_MM_FileList
+  public var @2stringlist mFrameworkFileList
+  public var @2stringlist mHeaderFileList
+  public var @BuildFileList mBuildFileList
 #--- Default configuration
-  @string mDefaultConfigurationRef
-  @stringlist mDefaultConfigurationSettingList
-  @string mProjectBuildConfigurationRef
+  public var @string mDefaultConfigurationRef
+  public var @stringlist mDefaultConfigurationSettingList
+  public var @string mProjectBuildConfigurationRef
 #--- Resource files
-  @2stringlist mInfoPlistFileList
-  @2stringlist mXIB_fileList
-  @2stringlist mTIFF_fileList
-  @2stringlist mICNS_fileList
+  public var @2stringlist mInfoPlistFileList
+  public var @2stringlist mXIB_fileList
+  public var @2stringlist mTIFF_fileList
+  public var @2stringlist mICNS_fileList
 #--- Project
-  @string mApplicationBundleName
-  @string mProjectName
+  public var @string mApplicationBundleName
+  public var @string mProjectName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

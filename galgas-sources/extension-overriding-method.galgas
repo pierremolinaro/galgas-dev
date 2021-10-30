@@ -3,11 +3,11 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @overridingExtensionMethodAST : @semanticDeclarationAST {
-  @lstring mTypeName
-  @lstring mOverridingExtensionMethodName
-  @formalParameterListAST mOverridingExtensionMethodFormalParameterList
-  @semanticInstructionListAST mOverridingExtensionMethodInstructionList
-  @location mEndOfMethodLocation
+  public var @lstring mTypeName
+  public var @lstring mOverridingExtensionMethodName
+  public var @formalParameterListAST mOverridingExtensionMethodFormalParameterList
+  public var @semanticInstructionListAST mOverridingExtensionMethodInstructionList
+  public var @location mEndOfMethodLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -196,12 +196,12 @@ override method @overridingExtensionMethodAST buildExtensionListMaps
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @overridingExtensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMap-entry mReceiverType
-  @string mBaseTypeName
-  @string mExtensionMethodName
-  @formalParameterListForGeneration mExtensionMethodFormalParameterList
-  @typedPropertyList mTypedAttributeList
-  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
+  public var @unifiedTypeMap-entry mReceiverType
+  public var @string mBaseTypeName
+  public var @string mExtensionMethodName
+  public var @formalParameterListForGeneration mExtensionMethodFormalParameterList
+  public var @typedPropertyList mTypedAttributeList
+  public var @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 
 #·······················································································································

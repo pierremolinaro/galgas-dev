@@ -3,7 +3,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @collectionValueElementList {
-  @abstractCollectionValueElement mElement
+  public var @abstractCollectionValueElement mElement
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -13,23 +13,23 @@ abstract refclass @abstractCollectionValueElement {}
 #·····················································································································
 
 refclass @expressionCollectionValue : @abstractCollectionValueElement {
-  @semanticExpressionAST mExpression
-  @location mExpressionLocation
+  public var @semanticExpressionAST mExpression
+  public var @location mExpressionLocation
 }
 
 #·····················································································································
 
 refclass @expressionListCollectionValue : @abstractCollectionValueElement {
-  @actualOutputExpressionList mExpressionList
-  @location mEndOfExpressionLocation
+  public var @actualOutputExpressionList mExpressionList
+  public var @location mEndOfExpressionLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @collectionValueAST : @semanticExpressionAST {
-  @lstring mTypeName # Empty string if infered
-  @collectionValueElementList mElementList
-  @location mEndOfCollectionValue
+  public var @lstring mTypeName # Empty string if infered
+  public var @collectionValueElementList mElementList
+  public var @location mEndOfCollectionValue
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -241,13 +241,13 @@ override method @expressionListCollectionValue analyze
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @collectionValueElementListForGeneration {
-  @abstractCollectionValueElementForGeneration mElement
+  public var @abstractCollectionValueElementForGeneration mElement
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @abstractCollectionValueElementForGeneration {
-  @location mExpressionLocation
+  public var @location mExpressionLocation
 }
 
 #·····················································································································
@@ -263,7 +263,7 @@ abstract method @abstractCollectionValueElementForGeneration generateCollectionE
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @expressionCollectionValueForGeneration : @abstractCollectionValueElementForGeneration {
-  @semanticExpressionForGeneration mExpression
+  public var @semanticExpressionForGeneration mExpression
 }
 
 #·····················································································································
@@ -292,7 +292,7 @@ override method @expressionCollectionValueForGeneration generateCollectionElemen
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @expressionListCollectionForGeneration : @abstractCollectionValueElementForGeneration {
-  @semanticExpressionListForGeneration mExpressionList
+  public var @semanticExpressionListForGeneration mExpressionList
 }
 
 #·····················································································································
@@ -334,7 +334,7 @@ override method @expressionListCollectionForGeneration generateCollectionElement
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @expressionCollectionForGeneration : @semanticExpressionForGeneration {
-  @collectionValueElementListForGeneration mElementList
+  public var @collectionValueElementListForGeneration mElementList
 }
 
 #·····················································································································

@@ -3,10 +3,10 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @nonterminalCallInstruction : @syntaxInstructionAST {
-  @lstring mNonterminalName
-  @lstring mLabelName # No label : empty string
-  @actualParameterListAST mActualParameterList
-  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
+  public var @lstring mNonterminalName
+  public var @lstring mLabelName # No label : empty string
+  public var @actualParameterListAST mActualParameterList
+  public var @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -128,10 +128,10 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @nonterminalInstructionForGeneration : @syntaxInstructionForGeneration {
-  @string mNonterminalName
-  @string mLabelName
-  @actualParameterListForGeneration mActualParameterList
-  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
+  public var @string mNonterminalName
+  public var @string mLabelName
+  public var @actualParameterListForGeneration mActualParameterList
+  public var @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

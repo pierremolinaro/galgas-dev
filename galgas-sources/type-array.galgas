@@ -3,9 +3,9 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @arrayDeclarationAST : @semanticDeclarationAST {
-  @lstring mArrayTypeName
-  @lstring mElementTypeName
-  @luint mDimension
+  public var @lstring mArrayTypeName
+  public var @lstring mElementTypeName
+  public var @luint mDimension
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -248,8 +248,8 @@ override method @arrayDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @arrayTypeForGeneration : @semanticTypeForGeneration {
-  @unifiedTypeMap-entry mElementTypeEntry
-  @uint mDimension
+  public var @unifiedTypeMap-entry mElementTypeEntry
+  public var @uint mDimension
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

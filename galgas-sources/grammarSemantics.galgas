@@ -24,7 +24,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @abstractSyntaxInstructionForGrammarAnalysis %generatedInSeparateFile {
-  @location mStartLocation
+  public var @location mStartLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -35,7 +35,7 @@ abstract refclass @abstractSyntaxInstructionForGrammarAnalysis %generatedInSepar
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @syntaxInstructionListForGrammarAnalysis {
-  @abstractSyntaxInstructionForGrammarAnalysis mInstruction
+  public var @abstractSyntaxInstructionForGrammarAnalysis mInstruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -45,16 +45,16 @@ list @syntaxInstructionListForGrammarAnalysis {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @productionRuleListForGrammarAnalysis {
-  @lstring mLeftNonterminalSymbol
-  @uint mLeftNonterminalSymbolIndex
-  @syntaxInstructionListForGrammarAnalysis mInstructionList
-  @uint mProductionIndex
+  public var @lstring mLeftNonterminalSymbol
+  public var @uint mLeftNonterminalSymbolIndex
+  public var @syntaxInstructionListForGrammarAnalysis mInstructionList
+  public var @uint mProductionIndex
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @unusedNonTerminalSymbolMapForGrammarAnalysis {
-  @uint mNonTerminalIndex
+  public var @uint mNonTerminalIndex
   insert insertKey error message "the '<%K>' non terminal symbol has already been declared as unused in %L"
 }
 
@@ -65,9 +65,9 @@ map @unusedNonTerminalSymbolMapForGrammarAnalysis {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 sortedlist @nonTerminalSymbolSortedListForGrammarAnalysis {
-  @lstring mNonTerminalSymbol
-  @uint mNonTerminalIndex
-  @nonterminalSymbolLabelMapForGrammarAnalysis mNonterminalSymbolParametersMap
+  public var @lstring mNonTerminalSymbol
+  public var @uint mNonTerminalIndex
+  public var @nonterminalSymbolLabelMapForGrammarAnalysis mNonterminalSymbolParametersMap
 }{
   mNonTerminalIndex <
 }
@@ -79,8 +79,8 @@ sortedlist @nonTerminalSymbolSortedListForGrammarAnalysis {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
-  @lstring mTerminalSymbolName
-  @uint mTerminalSymbolIndex
+  public var @lstring mTerminalSymbolName
+  public var @uint mTerminalSymbolIndex
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -90,8 +90,8 @@ refclass @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForG
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @nonTerminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
-  @lstring mNonterminalSymbolName
-  @uint mNonterminalSymbolIndex
+  public var @lstring mNonterminalSymbolName
+  public var @uint mNonterminalSymbolIndex
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -101,7 +101,7 @@ refclass @nonTerminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionF
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @branchListForGrammarAnalysis {
-  @syntaxInstructionListForGrammarAnalysis mSyntaxInstructionList
+  public var @syntaxInstructionListForGrammarAnalysis mSyntaxInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -111,8 +111,8 @@ list @branchListForGrammarAnalysis {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
-  @branchListForGrammarAnalysis mSelectBranchList
-  @uint mAddedNonTerminalSymbolIndex
+  public var @branchListForGrammarAnalysis mSelectBranchList
+  public var @uint mAddedNonTerminalSymbolIndex
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -122,8 +122,8 @@ refclass @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGra
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @repeatInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
-  @branchListForGrammarAnalysis mRepeatBranchList
-  @uint mAddedNonTerminalSymbolIndex
+  public var @branchListForGrammarAnalysis mRepeatBranchList
+  public var @uint mAddedNonTerminalSymbolIndex
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -133,8 +133,8 @@ refclass @repeatInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGra
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @syntaxComponentListForGrammarAnalysis {
-  @productionRuleListForGrammarAnalysis mProductionRulesList
-  @lstring mSyntaxComponentName
+  public var @productionRuleListForGrammarAnalysis mProductionRulesList
+  public var @lstring mSyntaxComponentName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -144,7 +144,7 @@ list @syntaxComponentListForGrammarAnalysis {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @terminalSymbolsMapForGrammarAnalysis {
-  @uint mTerminalIndex
+  public var @uint mTerminalIndex
   insert insertKey error message "the terminal symbol '$%K$' is already declared in %L"
   search searchKey error message "the terminal symbol '$%K$' is not declared"
 }

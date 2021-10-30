@@ -3,9 +3,9 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @typeMethodCallInstructionAST : @semanticInstructionAST {
-  @lstring mTypeName
-  @lstring mMethodName
-  @actualParameterListAST mActualParameterList
+  public var @lstring mTypeName
+  public var @lstring mMethodName
+  public var @actualParameterListAST mActualParameterList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -86,10 +86,10 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @typeMethodCallInstructionForGeneration : @semanticInstructionForGeneration {
-  @lstring mTypeName
-  @lstring mMethodName
-  @actualParameterListForGeneration mActualParameterList
-  @bool mHasCompilerArgument
+  public var @lstring mTypeName
+  public var @lstring mMethodName
+  public var @actualParameterListForGeneration mActualParameterList
+  public var @bool mHasCompilerArgument
 }
 
 #·····················································································································*

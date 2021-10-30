@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @localVariableDeclarationWithAssignmentAST : @semanticInstructionAST {
-  @lstring mVariableName
-  @semanticExpressionAST mSourceExpression
+  public var @lstring mVariableName
+  public var @semanticExpressionAST mSourceExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

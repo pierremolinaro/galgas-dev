@@ -16,9 +16,9 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 shared map @localVarManager {
-  @unifiedTypeMap-entry mType
-  @string mCppName
-  @string mNameForCheckingFormalParameterUsing
+  public var @unifiedTypeMap-entry mType
+  public var @string mCppName
+  public var @string mNameForCheckingFormalParameterUsing
 
 #--- Used local constant (no warning if not read)
   state readLocalConstant {

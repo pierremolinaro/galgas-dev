@@ -1,8 +1,8 @@
 
 
 struct @structTest {
-  @string mString
-  @uint mInt
+  public var @string mString
+  public var @uint mInt
 }
 
 proc testsuite_struct {

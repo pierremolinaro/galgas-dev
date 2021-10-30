@@ -3,52 +3,52 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @externTypeDeclarationAST : @semanticDeclarationAST {
-  @lstring mExternTypeName
-  @string mCppPreDeclarationCode
-  @string mCppClassCode
-  @externTypeConstructorList mExternTypeConstructorList
-  @externTypeGetterList mExternTypeGetterList
-  @externTypeSetterList mExternTypeSetterList
-  @externTypeMethodList mExternTypeMethodList
+  public var @lstring mExternTypeName
+  public var @string mCppPreDeclarationCode
+  public var @string mCppClassCode
+  public var @externTypeConstructorList mExternTypeConstructorList
+  public var @externTypeGetterList mExternTypeGetterList
+  public var @externTypeSetterList mExternTypeSetterList
+  public var @externTypeMethodList mExternTypeMethodList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @typeNameFormalParameterNameList {
-  @lstring mFormalSelector
-  @lstring mFormalParameterTypeName
-  @lstring mFormalParameterName
+  public var @lstring mFormalSelector
+  public var @lstring mFormalParameterTypeName
+  public var @lstring mFormalParameterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @externTypeConstructorList {
-  @lstring mConstructorName
-  @lstring mResultTypeName
-  @typeNameFormalParameterNameList mParameterList
+  public var @lstring mConstructorName
+  public var @lstring mResultTypeName
+  public var @typeNameFormalParameterNameList mParameterList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @externTypeGetterList {
-  @lstring mGetterName
-  @lstring mResultTypeName
-  @typeNameFormalParameterNameList mParameterList
+  public var @lstring mGetterName
+  public var @lstring mResultTypeName
+  public var @typeNameFormalParameterNameList mParameterList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @externTypeSetterList {
-  @lstring mSetterName
-  @formalParameterListAST mFormalParameterList
+  public var @lstring mSetterName
+  public var @formalParameterListAST mFormalParameterList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @externTypeMethodList {
-  @lstring mMethodName
-  @formalParameterListAST mFormalParameterList
-  @location mDeclarationLocation
+  public var @lstring mMethodName
+  public var @formalParameterListAST mFormalParameterList
+  public var @location mDeclarationLocation
 }
 
 
@@ -351,9 +351,9 @@ override method @externTypeDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @externTypeDeclarationForGeneration : @semanticTypeForGeneration {
-  @string mExternTypeName
-  @string mCppPreDeclarationCode
-  @string mCppClassCode
+  public var @string mExternTypeName
+  public var @string mCppPreDeclarationCode
+  public var @string mCppClassCode
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

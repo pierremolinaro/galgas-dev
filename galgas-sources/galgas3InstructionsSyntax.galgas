@@ -48,8 +48,7 @@ rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsLis
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-rule <declaration>
- ?!@galgas3DeclarationAST ioDeclarations {
+rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
   @bool isLocal
   select
     isLocal = false

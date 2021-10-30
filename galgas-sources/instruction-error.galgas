@@ -12,16 +12,16 @@ enum @fixitElementAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @fixitListAST {
-  @fixitElementAST mElement
+  public var @fixitElementAST mElement
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @errorInstructionAST : @semanticInstructionAST {
-  @semanticExpressionAST mLocationExpression
-  @semanticExpressionAST mMessageExpression
-  @lstringlist mBuiltVariableList
-  @fixitListAST mFixitListAST
+  public var @semanticExpressionAST mLocationExpression
+  public var @semanticExpressionAST mMessageExpression
+  public var @lstringlist mBuiltVariableList
+  public var @fixitListAST mFixitListAST
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -141,7 +141,7 @@ enum @fixitElementForGeneration {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @fixitListForGeneration {
-  @fixitElementForGeneration mElement
+  public var @fixitElementForGeneration mElement
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -382,11 +382,11 @@ method @fixitListForGeneration generateFixIt
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @errorInstructionForGeneration : @semanticInstructionForGeneration {
-  @location mInstructionLocation
-  @semanticExpressionForGeneration mReceiverExpression
-  @semanticExpressionForGeneration mErrorExpression
-  @stringlist mBuiltVariableCppNameList
-  @fixitListForGeneration mFixitListForGeneration
+  public var @location mInstructionLocation
+  public var @semanticExpressionForGeneration mReceiverExpression
+  public var @semanticExpressionForGeneration mErrorExpression
+  public var @stringlist mBuiltVariableCppNameList
+  public var @fixitListForGeneration mFixitListForGeneration
 }
 
 #·····················································································································*

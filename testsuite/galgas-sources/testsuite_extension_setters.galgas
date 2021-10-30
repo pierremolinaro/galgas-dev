@@ -14,11 +14,11 @@ proc testsuite_extension_setters {
 }
 
 abstract refclass @abstractTestExtensionSetter {
-  @uint mInteger
+  public var @uint mInteger
 }
 
 refclass @TestExtensionSetter : @abstractTestExtensionSetter {
-  @string mString
+  public var @string mString
 }
 
 setter @TestExtensionSetter setter3 ?let@uint inArg {
@@ -33,7 +33,7 @@ setter @TestExtensionSetter setter1 ?!@uint ioArg {
 
 
 refclass @overridingTestExtensionSetter : @abstractOverridingTestExtensionSetter {
-  @uint mOtherInteger
+  public var @uint mOtherInteger
 }
 
 
@@ -51,12 +51,12 @@ override setter @overridingTestExtensionSetter m { }
 override abstract setter @abstractOverridingTestExtensionSetter m
 
 abstract refclass @abstractOverridingTestExtensionSetter : @TestExtensionSetter {
-  @string mOtherString
+  public var @string mOtherString
 }
 
 refclass @adjMat{
-   @uint dim
-   @stringlist nodes
+   public var @uint dim
+   public var @stringlist nodes
 }
 
 setter @adjMat addNode {

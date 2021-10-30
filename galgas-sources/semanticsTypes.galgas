@@ -22,15 +22,15 @@ func %once generateFewHeaderFiles -> @bool {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @functionSignature {
-  @lstring mFormalSelector
-  @unifiedTypeMap-entry mFormalArgumentType
-  @string mFormalArgumentName
+  public var @lstring mFormalSelector
+  public var @unifiedTypeMap-entry mFormalArgumentType
+  public var @string mFormalArgumentName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @unifiedTypeMapEntryList {
-  @unifiedTypeMap-entry mType
+  public var @unifiedTypeMap-entry mType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -40,9 +40,9 @@ list @unifiedTypeMapEntryList {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @constructorMap {
-  @functionSignature mArgumentTypeList
-  @bool mHasCompilerArgument
-  @unifiedTypeMap-entry mReturnedType
+  public var @functionSignature mArgumentTypeList
+  public var @bool mHasCompilerArgument
+  public var @unifiedTypeMap-entry mReturnedType
   insert or replace
   insert insertKey error message "the '%K' constructor has been already defined"
   search searchKey error message "the '%K' constuctor is not declared"
@@ -73,16 +73,16 @@ enum @methodKind {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @optionalMethodSignature {
-  @bool mInputArgument # true -> input, false -> output
-  @lstring mFormalSelector
-  @unifiedTypeMap-entry mFormalArgumentType
-  @string mFormalArgumentName
+  public var @bool mInputArgument # true -> input, false -> output
+  public var @lstring mFormalSelector
+  public var @unifiedTypeMap-entry mFormalArgumentType
+  public var @string mFormalArgumentName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @optionalMethodMap {
-  @optionalMethodSignature mArgumentTypeList
+  public var @optionalMethodSignature mArgumentTypeList
  
   insert insertKey error message "the '%K' optional method is already declared"
   search searchKey error message "the '%K' optional method is not declared"
@@ -95,13 +95,13 @@ map @optionalMethodMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @getterMap {
-  @methodKind mKind
-  @functionSignature mArgumentTypeList
-  @location mDeclarationLocation
-  @bool mHasCompilerArgument
-  @unifiedTypeMap-entry mReturnedType
-  @methodQualifier mQualifier
-  @string mErrorMessage # If not empty, calling the method raises an error with this message
+  public var @methodKind mKind
+  public var @functionSignature mArgumentTypeList
+  public var @location mDeclarationLocation
+  public var @bool mHasCompilerArgument
+  public var @unifiedTypeMap-entry mReturnedType
+  public var @methodQualifier mQualifier
+  public var @string mErrorMessage # If not empty, calling the method raises an error with this message
  
   insert insertKey error message "the '%K' getter is already declared"
   search searchKey error message "the '%K' getter is not declared"
@@ -116,20 +116,20 @@ map @getterMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalParameterSignature {
-  @lstring mFormalSelector
-  @unifiedTypeMap-entry mFormalArgumentType
-  @formalArgumentPassingModeAST mFormalArgumentPassingMode
-  @string mFormalArgumentName
+  public var @lstring mFormalSelector
+  public var @unifiedTypeMap-entry mFormalArgumentType
+  public var @formalArgumentPassingModeAST mFormalArgumentPassingMode
+  public var @string mFormalArgumentName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @setterMap {
-  @methodKind mKind
-  @formalParameterSignature mParameterList
-  @bool mHasCompilerArgument
-  @methodQualifier mQualifier
-  @string mErrorMessage # If not empty, calling the setter raises an error ith this message
+  public var @methodKind mKind
+  public var @formalParameterSignature mParameterList
+  public var @bool mHasCompilerArgument
+  public var @methodQualifier mQualifier
+  public var @string mErrorMessage # If not empty, calling the setter raises an error ith this message
   insert or replace
   insert insertKey error message "the '%K' setter is already declared"
   search searchKey error message "the '%K' setter is not declared"
@@ -142,12 +142,12 @@ map @setterMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @instanceMethodMap {
-  @methodKind mKind
-  @formalParameterSignature mParameterList
-  @location mDeclarationLocation
-  @bool mHasCompilerArgument
-  @methodQualifier mQualifier
-  @string mErrorMessage # If not empty, calling the method raises an error ith this message
+  public var @methodKind mKind
+  public var @formalParameterSignature mParameterList
+  public var @location mDeclarationLocation
+  public var @bool mHasCompilerArgument
+  public var @methodQualifier mQualifier
+  public var @string mErrorMessage # If not empty, calling the method raises an error ith this message
   insert insertKey error message "the '%K' instance method is already declared"
   search searchKey error message "the '%K' instance method is not declared"
   search searchInheritedKey error message "as the '%K' method is tagged as 'override', it should be declared in the super class"
@@ -160,8 +160,8 @@ map @instanceMethodMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @classMethodMap {
-  @formalParameterSignature mParameterList
-  @bool mHasCompilerArgument
+  public var @formalParameterSignature mParameterList
+  public var @bool mHasCompilerArgument
   insert or replace
   insert insertKey error message "the '%K' type proc is already declared"
   search searchKey error message "the '%K' type proc is not declared"
@@ -174,8 +174,8 @@ map @classMethodMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @enumerationDescriptorList {
-  @unifiedTypeMap-entry mEnumeratedType
-  @string mEnumerationName
+  public var @unifiedTypeMap-entry mEnumeratedType
+  public var @string mEnumerationName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -185,11 +185,11 @@ list @enumerationDescriptorList {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @typedPropertyList {
-  @unifiedTypeMap-entry mPropertyTypeEntry
-  @lstring mPropertyName
-  @bool mHasSetter
+  public var @unifiedTypeMap-entry mPropertyTypeEntry
+  public var @lstring mPropertyName
+  public var @bool mHasSetter
 #  @bool mHasGetter
-  @bool mHasSelector
+  public var @bool mHasSelector
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -317,9 +317,9 @@ boolset @operators {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @propertyMap {
-  @bool mIsPublic
-  @bool mIsConstant
-  @unifiedTypeMap-entry mPropertyType
+  public var @bool mIsPublic
+  public var @bool mIsConstant
+  public var @unifiedTypeMap-entry mPropertyType
   insert insertKey error message "the '%K' property has been already declared in %L"
   search searchKey error message "the '%K' property is not declared"
 }
@@ -333,8 +333,8 @@ enum @headerKind {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @constantIndexMap {
-  @uint mIndex
-  @unifiedTypeMapEntryList mAssociatedTypeList
+  public var @uint mIndex
+  public var @unifiedTypeMapEntryList mAssociatedTypeList
   insert insertKey error message "the '%K' constant is already declared"
   search searchKey error message "the '%K' constant is not declared"
 }
@@ -346,32 +346,32 @@ map @constantIndexMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 shared map @unifiedTypeMap {
-  @bool mIsPredefined
-  @bool mIsConcrete # false if abstract class
-  @unifiedTypeMap-entry mSuperType
-  @typeKindEnum mTypeKindEnum
-  @bool mSupportCollectionValue
-  @typedPropertyList mAllTypedPropertyList
-  @propertyMap mPropertyMap # struct, class
-  @typedPropertyList mCurrentTypedPropertyList
-  @constructorMap mConstructorMap
-  @getterMap mGetterMap
-  @setterMap mSetterMap
-  @instanceMethodMap mInstanceMethodMap
-  @classMethodMap mClassMethodMap
-  @optionalMethodMap mOptionalMethodMap
-  @enumerationDescriptorList mEnumerationDescriptor # Empty List if cannot be enumerated
-  @operators mHandledOperatorFlags
-  @functionSignature mAddAssignOperatorArguments # Empty list if += operator is not supported
-  @constantIndexMap mEnumConstantMap
-  @enumConstantList mEnumConstantList
-  @mapSearchMethodListAST mMapSearchMethodList # For a map, the list of search methods
-  @mapSearchMethodListAST mMapEntrySearchConstructorList # For a map entry, the list of search methods of the associated map
-  @bool mGenerateHeaderInSeparateFile # Significant only for classes
-  @unifiedTypeMap-entry mTypeForEnumeratedElement
-  @string mDefaultConstructorName # Used in [@xxx default] (empty string if no default constructor)
-  @string mHeaderFileName # Name of C++ header file that contains type declaration
-  @headerKind mHeaderKind
+  public var @bool mIsPredefined
+  public var @bool mIsConcrete # false if abstract class
+  public var @unifiedTypeMap-entry mSuperType
+  public var @typeKindEnum mTypeKindEnum
+  public var @bool mSupportCollectionValue
+  public var @typedPropertyList mAllTypedPropertyList
+  public var @propertyMap mPropertyMap # struct, class
+  public var @typedPropertyList mCurrentTypedPropertyList
+  public var @constructorMap mConstructorMap
+  public var @getterMap mGetterMap
+  public var @setterMap mSetterMap
+  public var @instanceMethodMap mInstanceMethodMap
+  public var @classMethodMap mClassMethodMap
+  public var @optionalMethodMap mOptionalMethodMap
+  public var @enumerationDescriptorList mEnumerationDescriptor # Empty List if cannot be enumerated
+  public var @operators mHandledOperatorFlags
+  public var @functionSignature mAddAssignOperatorArguments # Empty list if += operator is not supported
+  public var @constantIndexMap mEnumConstantMap
+  public var @enumConstantList mEnumConstantList
+  public var @mapSearchMethodListAST mMapSearchMethodList # For a map, the list of search methods
+  public var @mapSearchMethodListAST mMapEntrySearchConstructorList # For a map entry, the list of search methods of the associated map
+  public var @bool mGenerateHeaderInSeparateFile # Significant only for classes
+  public var @unifiedTypeMap-entry mTypeForEnumeratedElement
+  public var @string mDefaultConstructorName # Used in [@xxx default] (empty string if no default constructor)
+  public var @string mHeaderFileName # Name of C++ header file that contains type declaration
+  public var @headerKind mHeaderKind
 
   insert insertKey error message "the '@%K' type has been already declared in %L"
   search searchKey error message "the '@%K' type is not declared"
@@ -415,8 +415,8 @@ method @unifiedTypeMap-entry addHeaderFileName1 ?!@stringset ioInclusions {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
-  @string mPredefinedTypeName
-  @predefinedTypeKindEnum mKind
+  public var @string mPredefinedTypeName
+  public var @predefinedTypeKindEnum mKind
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

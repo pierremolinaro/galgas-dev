@@ -161,28 +161,28 @@ proc checkDiadicOperator
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @predefinedTypes {
-  @unifiedTypeMap-entry mLocationType
-  @unifiedTypeMap-entry mBoolType
-  @unifiedTypeMap-entry mCharType
-  @unifiedTypeMap-entry mStringType
-  @unifiedTypeMap-entry mUIntType
-  @unifiedTypeMap-entry mSIntType
-  @unifiedTypeMap-entry mUInt64Type
-  @unifiedTypeMap-entry mSInt64Type
-  @unifiedTypeMap-entry mDoubleType
-  @unifiedTypeMap-entry mLBoolType
-  @unifiedTypeMap-entry mLCharType
-  @unifiedTypeMap-entry mLStringType
-  @unifiedTypeMap-entry mLUIntType
-  @unifiedTypeMap-entry mLSIntType
-  @unifiedTypeMap-entry mLUInt64Type
-  @unifiedTypeMap-entry mLSInt64Type
-  @unifiedTypeMap-entry mLDoubleType
-  @unifiedTypeMap-entry mStringListType
-  @unifiedTypeMap-entry mLBigIntType
-  @unifiedTypeMap-entry mBigIntType
-  @unifiedTypeMap-entry mStringSetType
-  @unifiedTypeMap-entry mLStringListType
+  public var @unifiedTypeMap-entry mLocationType
+  public var @unifiedTypeMap-entry mBoolType
+  public var @unifiedTypeMap-entry mCharType
+  public var @unifiedTypeMap-entry mStringType
+  public var @unifiedTypeMap-entry mUIntType
+  public var @unifiedTypeMap-entry mSIntType
+  public var @unifiedTypeMap-entry mUInt64Type
+  public var @unifiedTypeMap-entry mSInt64Type
+  public var @unifiedTypeMap-entry mDoubleType
+  public var @unifiedTypeMap-entry mLBoolType
+  public var @unifiedTypeMap-entry mLCharType
+  public var @unifiedTypeMap-entry mLStringType
+  public var @unifiedTypeMap-entry mLUIntType
+  public var @unifiedTypeMap-entry mLSIntType
+  public var @unifiedTypeMap-entry mLUInt64Type
+  public var @unifiedTypeMap-entry mLSInt64Type
+  public var @unifiedTypeMap-entry mLDoubleType
+  public var @unifiedTypeMap-entry mStringListType
+  public var @unifiedTypeMap-entry mLBigIntType
+  public var @unifiedTypeMap-entry mBigIntType
+  public var @unifiedTypeMap-entry mStringSetType
+  public var @unifiedTypeMap-entry mLStringListType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -192,12 +192,12 @@ struct @predefinedTypes {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @analysisContext {
-  @semanticContext mSemanticContext
-  @predefinedTypes mPredefinedTypes
-  @unifiedTypeMap-entry mSelfCopyTypeEntry # isNull if outside a extension
-  @string mSelfObjectCppName
-  @unifiedTypeMap-entry mSelfTypeEntry # isNull if outside a setter extension
-  @string mSelfObjectCppPrefixForAccessingProperty # i.e. "ioObject->", ...
+  public var @semanticContext mSemanticContext
+  public var @predefinedTypes mPredefinedTypes
+  public var @unifiedTypeMap-entry mSelfCopyTypeEntry # isNull if outside a extension
+  public var @string mSelfObjectCppName
+  public var @unifiedTypeMap-entry mSelfTypeEntry # isNull if outside a setter extension
+  public var @string mSelfObjectCppPrefixForAccessingProperty # i.e. "ioObject->", ...
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

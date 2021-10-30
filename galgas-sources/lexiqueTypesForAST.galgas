@@ -16,7 +16,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @semanticDeclarationAST {
-  @bool mIsPredefined
+  public var @bool mIsPredefined
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -32,23 +32,23 @@ abstract refclass @lexicalInstructionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalInstructionListAST {
-  @lexicalInstructionAST mInstruction
+  public var @lexicalInstructionAST mInstruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @metamodelTemplateDelimitorListAST {
-  @lstring mStartString
-  @lstringlist mOptionList
-  @lstring mEndString
+  public var @lstring mStartString
+  public var @lstringlist mOptionList
+  public var @lstring mEndString
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateReplacementListAST {
-  @lstring mMatchString
-  @lstring mReplacementString
-  @lstring mReplacementFunction
+  public var @lstring mMatchString
+  public var @lstring mReplacementString
+  public var @lstring mReplacementFunction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -59,122 +59,122 @@ abstract refclass @abstractLexicalRuleAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalRuleListAST {
-  @abstractLexicalRuleAST mLexicalRule
+  public var @abstractLexicalRuleAST mLexicalRule
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalImplicitRuleAST : @abstractLexicalRuleAST {
-  @lstring mListName
+  public var @lstring mListName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalExplicitRuleAST : @abstractLexicalRuleAST {
-  @lexicalExpressionAST mLexicalRuleExpression
-  @lexicalInstructionListAST mInstructionList
+  public var @lexicalExpressionAST mLexicalRuleExpression
+  public var @lexicalInstructionListAST mInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalMessageDeclarationListAST {
-  @lstring mMessageName
-  @lstring mMessageValue
+  public var @lstring mMessageName
+  public var @lstring mMessageValue
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalAttributeListAST {
-  @lstring mTypeName
-  @lstring mName
+  public var @lstring mTypeName
+  public var @lstring mName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalStyleListAST {
-  @lstring mName
-  @lstring mComment
+  public var @lstring mName
+  public var @lstring mComment
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @terminalDeclarationListAST {
-  @lstring mName
-  @sentLexicalAttributeListAST mSentAttributeList
-  @lstring mSyntaxErrorMessage
-  @lstring mStyle # Empty string if no style
-  @lstringlist mOptionList
+  public var @lstring mName
+  public var @sentLexicalAttributeListAST mSentAttributeList
+  public var @lstring mSyntaxErrorMessage
+  public var @lstring mStyle # Empty string if no style
+  public var @lstringlist mOptionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalListEntryListAST {
-  @lstring mEntrySpelling
-  @lstring mTerminalSpelling
-  @lstringlist mAttributeList
+  public var @lstring mEntrySpelling
+  public var @lstring mTerminalSpelling
+  public var @lstringlist mAttributeList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @sentLexicalAttributeListAST {
-  @lstring mFormalSelector
-  @lstring mAttributeName
+  public var @lstring mFormalSelector
+  public var @lstring mAttributeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalListDeclarationListAST {
-  @lstring mName
-  @lstring mStyle # Empty string if no style
-  @lstring mSyntaxErrorMessage
-  @sentLexicalAttributeListAST mSentAttributeList
-  @lexicalListEntryListAST mEntryList  
+  public var @lstring mName
+  public var @lstring mStyle # Empty string if no style
+  public var @lstring mSyntaxErrorMessage
+  public var @sentLexicalAttributeListAST mSentAttributeList
+  public var @lexicalListEntryListAST mEntryList  
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalOrExpressionAST : @lexicalExpressionAST {
-  @lexicalExpressionAST mLeftOperand
-  @lexicalExpressionAST mRightOperand
+  public var @lexicalExpressionAST mLeftOperand
+  public var @lexicalExpressionAST mRightOperand
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalCharacterSetMatchAST : @lexicalExpressionAST {
-  @lstring mCharacterSetName
+  public var @lstring mCharacterSetName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalCharacterMatchAST : @lexicalExpressionAST {
-  @lchar mCharacter
+  public var @lchar mCharacter
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalCharacterIntervalMatchAST : @lexicalExpressionAST {
-  @lchar mLowerBound
-  @lchar mUpperBound
+  public var @lchar mLowerBound
+  public var @lchar mUpperBound
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalStringMatchAST : @lexicalExpressionAST {
-  @lstring mString
+  public var @lstring mString
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalStringNotMatchAST : @lexicalExpressionAST {
-  @lstring mString
-  @lstring mErrorMessage
+  public var @lstring mString
+  public var @lstring mErrorMessage
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalSendSearchListAST {
-  @lstring mAttributeName
-  @lstring mSearchListName
+  public var @lstring mAttributeName
+  public var @lstring mSearchListName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -185,80 +185,80 @@ abstract refclass @lexicalSendDefaultActionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalStructuredSendInstructionAST : @lexicalInstructionAST {
-  @lexicalSendSearchListAST mLexicalSendSearchList
-  @lexicalSendDefaultActionAST mLexicalSendDefaultAction
+  public var @lexicalSendSearchListAST mLexicalSendSearchList
+  public var @lexicalSendDefaultActionAST mLexicalSendDefaultAction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalSimpleSendInstructionAST : @lexicalInstructionAST {
-  @lstring mSentTerminal
+  public var @lstring mSentTerminal
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalSendTerminalByDefaultAST : @lexicalSendDefaultActionAST {
-  @lstring mDefaultSentTerminal
+  public var @lstring mDefaultSentTerminal
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalErrorByDefaultAST : @lexicalSendDefaultActionAST {
-  @lstring mDefaultErrorMessageName
+  public var @lstring mDefaultErrorMessageName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalWhileBranchListAST {
-  @lexicalExpressionAST mWhileExpression
-  @lexicalInstructionListAST mWhileInstructionList
+  public var @lexicalExpressionAST mWhileExpression
+  public var @lexicalInstructionListAST mWhileInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalRepeatInstructionAST : @lexicalInstructionAST {
-  @lexicalInstructionListAST mRepeatedInstructionList
-  @lexicalWhileBranchListAST mLexicalWhileBranchList
+  public var @lexicalInstructionListAST mRepeatedInstructionList
+  public var @lexicalWhileBranchListAST mLexicalWhileBranchList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalSelectBranchListAST {
-  @lexicalExpressionAST mSelectExpression
-  @lexicalInstructionListAST mSelectInstructionList
+  public var @lexicalExpressionAST mSelectExpression
+  public var @lexicalInstructionListAST mSelectInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalSelectInstructionAST : @lexicalInstructionAST {
-  @lexicalSelectBranchListAST mLexicalSelectBranchList
-  @lexicalInstructionListAST mDefaultInstructionList
+  public var @lexicalSelectBranchListAST mLexicalSelectBranchList
+  public var @lexicalInstructionListAST mDefaultInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @abstractLexicalRoutineActualArgumentAST {
-  @location mActualPassingModeLocation
+  public var @location mActualPassingModeLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalRoutineCallActualArgumentListAST {
-  @abstractLexicalRoutineActualArgumentAST mLexicalRoutineActualArgument
+  public var @abstractLexicalRoutineActualArgumentAST mLexicalRoutineActualArgument
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalRoutineInstructionAST : @lexicalInstructionAST {
-  @lstring mRoutineName
-  @lexicalRoutineCallActualArgumentListAST mActualArgumentList
-  @lstringlist mErrorMessageList
+  public var @lstring mRoutineName
+  public var @lexicalRoutineCallActualArgumentListAST mActualArgumentList
+  public var @lstringlist mErrorMessageList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalAttributeInputOutputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
-  @lstring mAttributeName
+  public var @lstring mAttributeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -269,50 +269,50 @@ abstract refclass @lexicalRoutineOrFunctionFormalInputArgumentAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalFormalInputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
-  @lexicalRoutineOrFunctionFormalInputArgumentAST mRoutineOrFunctionFormalInputArgument
+  public var @lexicalRoutineOrFunctionFormalInputArgumentAST mRoutineOrFunctionFormalInputArgument
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalFunctionCallActualArgumentListAST {
-  @lexicalRoutineOrFunctionFormalInputArgumentAST mLexicalActualInputArgument
+  public var @lexicalRoutineOrFunctionFormalInputArgumentAST mLexicalActualInputArgument
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalAttributeInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
-  @lstring mAttributeName
+  public var @lstring mAttributeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalCharacterInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
-  @lchar mCharacter
+  public var @lchar mCharacter
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalUnsignedInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
-  @luint mUnsigned
+  public var @luint mUnsigned
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalCurrentCharacterInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
-  @location mLocation
+  public var @location mLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalFunctionInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
-  @lstring mFunctionName
-  @lexicalFunctionCallActualArgumentListAST mFunctionActualArgumentList
+  public var @lstring mFunctionName
+  public var @lexicalFunctionCallActualArgumentListAST mFunctionActualArgumentList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalDropInstructionAST : @lexicalInstructionAST {
-  @lstring mTerminalName
+  public var @lstring mTerminalName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -324,26 +324,26 @@ refclass @lexicalDropInstructionAST : @lexicalInstructionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalErrorInstructionAST : @lexicalInstructionAST {
-  @lstring mErrorMessageName
+  public var @lstring mErrorMessageName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalWarningInstructionAST : @lexicalInstructionAST {
-  @lstring mWarningMessageName
+  public var @lstring mWarningMessageName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalTagInstructionAST : @lexicalInstructionAST {
-  @lstring mLexicalTagName
+  public var @lstring mLexicalTagName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalRewindInstructionAST : @lexicalInstructionAST {
-  @lstring mLexicalTagName
-  @lstring mTerminalName
+  public var @lstring mLexicalTagName
+  public var @lstring mTerminalName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -388,59 +388,59 @@ getter @lexicalArgumentModeAST cocoaPointerInFormalArgument -> @string {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalExternRoutineFormalArgumentListAST {
-  @lexicalArgumentModeAST mPassingMode
-  @lstring mLexicalTypeName
-  @lstring mFormalArgumentName
+  public var @lexicalArgumentModeAST mPassingMode
+  public var @lstring mLexicalTypeName
+  public var @lstring mFormalArgumentName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @externRoutineListAST {
-  @lstring mRoutineName
-  @lexicalExternRoutineFormalArgumentListAST mLexicalRoutineFormalArgumentList
-  @stringlist mErrorMessageList
+  public var @lstring mRoutineName
+  public var @lexicalExternRoutineFormalArgumentListAST mLexicalRoutineFormalArgumentList
+  public var @stringlist mErrorMessageList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalExternFunctionFormalArgumentListAST {
-  @lstring mLexicalTypeName
-  @lstring mFormalArgumentName
+  public var @lstring mLexicalTypeName
+  public var @lstring mFormalArgumentName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @externFunctionListAST {
-  @lstring mFunctionName
-  @lexicalExternFunctionFormalArgumentListAST mLexicalFunctionFormalArgumentList
-  @lstring mReturnedTypeName
+  public var @lstring mFunctionName
+  public var @lexicalExternFunctionFormalArgumentListAST mLexicalFunctionFormalArgumentList
+  public var @lstring mReturnedTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @indexingListAST {
-  @lstring mIndexName
-  @lstring mIndexComment
+  public var @lstring mIndexName
+  public var @lstring mIndexComment
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexiqueComponentAST : @semanticDeclarationAST {
-  @lstring mLexiqueComponentName
-  @bool mIsTemplate
-  @metamodelTemplateDelimitorListAST mTemplateDelimitorList
-  @templateReplacementListAST mTemplateReplacementList
-  @lexicalAttributeListAST mLexicalAttributeList
-  @lexicalStyleListAST mLexicalStyleList
-  @terminalDeclarationListAST mTerminalDeclarationList
-  @lexicalMessageDeclarationListAST mLexicalMessageDeclarationList
-  @lexicalListDeclarationListAST mLexicalListDeclarationList
-  @lexicalRuleListAST mLexicalRuleList
-  @externRoutineListAST mExternRoutineList
-  @externFunctionListAST mExternFunctionList
-  @indexingListAST mIndexingListAST
-  @lstring mIndexingDirectory
-  @lexicalFunctionListAST mLexicalFunctionListAST
+  public var @lstring mLexiqueComponentName
+  public var @bool mIsTemplate
+  public var @metamodelTemplateDelimitorListAST mTemplateDelimitorList
+  public var @templateReplacementListAST mTemplateReplacementList
+  public var @lexicalAttributeListAST mLexicalAttributeList
+  public var @lexicalStyleListAST mLexicalStyleList
+  public var @terminalDeclarationListAST mTerminalDeclarationList
+  public var @lexicalMessageDeclarationListAST mLexicalMessageDeclarationList
+  public var @lexicalListDeclarationListAST mLexicalListDeclarationList
+  public var @lexicalRuleListAST mLexicalRuleList
+  public var @externRoutineListAST mExternRoutineList
+  public var @externFunctionListAST mExternFunctionList
+  public var @indexingListAST mIndexingListAST
+  public var @lstring mIndexingDirectory
+  public var @lexicalFunctionListAST mLexicalFunctionListAST
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -463,15 +463,15 @@ enum @lexicalTypeEnum {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalSentValueList {
-  @lstring mLexicalFormalSelector
-  @string mLexicalAttributeName
-  @lexicalTypeEnum mLexicalType
+  public var @lstring mLexicalFormalSelector
+  public var @string mLexicalAttributeName
+  public var @lexicalTypeEnum mLexicalType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @terminalMap {
-  @lexicalSentValueList mSentAttributeList
+  public var @lexicalSentValueList mSentAttributeList
   insert insertKey error message "the '%K' terminal has been already declared in %L"
   search searchKey error message "the '%K' terminal is not declared"
 }
@@ -481,7 +481,7 @@ map @terminalMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalTypeMap {
-  @lexicalTypeEnum mLexicalType
+  public var @lexicalTypeEnum mLexicalType
   insert insertKey error message "the '@%K' lexical type is already declared in %L"
   search searchKey error message "there is no '@%K' lexical type"
 }
@@ -505,7 +505,7 @@ func %once buildLexicalTypeMap
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalAttributeMap {
-  @lexicalTypeEnum mLexicalType
+  public var @lexicalTypeEnum mLexicalType
   insert insertKey error message "the '%K' lexical attribute has been already declared in %L"
   search searchKey error message "the '%K' lexical attribute is not declared"
 }

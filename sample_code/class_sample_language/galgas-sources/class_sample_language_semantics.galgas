@@ -4,16 +4,16 @@ abstract refclass @declarationAST {
 }
 
 list @declarationListAST {
-  @declarationAST mDeclaration
+  public var @declarationAST mDeclaration
 }
 
 refclass @classWithoutSuperClassAST : @declarationAST {
-  @lstring mClassName
+  public var @lstring mClassName
 }
 
 refclass @classWithSuperClassAST : @declarationAST {
-  @lstring mClassName
-  @lstring mSuperClassName
+  public var @lstring mClassName
+  public var @lstring mSuperClassName
 }
 
 

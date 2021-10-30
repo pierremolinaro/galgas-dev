@@ -3,41 +3,41 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @multiplicationExpressionAST : @semanticExpressionAST {
-  @location mOperatorLocation
-  @semanticExpressionAST mLeftExpression
-  @semanticExpressionAST mRightExpression
+  public var @location mOperatorLocation
+  public var @semanticExpressionAST mLeftExpression
+  public var @semanticExpressionAST mRightExpression
 }
 
 #·······················································································································
 
 refclass @multiplicationExpressionNoOverflowAST : @semanticExpressionAST {
-  @location mOperatorLocation
-  @semanticExpressionAST mLeftExpression
-  @semanticExpressionAST mRightExpression
+  public var @location mOperatorLocation
+  public var @semanticExpressionAST mLeftExpression
+  public var @semanticExpressionAST mRightExpression
 }
 
 #·······················································································································
 
 refclass @divisionExpressionAST : @semanticExpressionAST {
-  @location mOperatorLocation
-  @semanticExpressionAST mLeftExpression
-  @semanticExpressionAST mRightExpression
+  public var @location mOperatorLocation
+  public var @semanticExpressionAST mLeftExpression
+  public var @semanticExpressionAST mRightExpression
 }
 
 #·······················································································································
 
 refclass @divisionExpressionNoOverflowAST : @semanticExpressionAST {
-  @location mOperatorLocation
-  @semanticExpressionAST mLeftExpression
-  @semanticExpressionAST mRightExpression
+  public var @location mOperatorLocation
+  public var @semanticExpressionAST mLeftExpression
+  public var @semanticExpressionAST mRightExpression
 }
 
 #·······················································································································
 
 refclass @moduloExpressionAST : @semanticExpressionAST {
-  @location mOperatorLocation
-  @semanticExpressionAST mLeftExpression
-  @semanticExpressionAST mRightExpression
+  public var @location mOperatorLocation
+  public var @semanticExpressionAST mLeftExpression
+  public var @semanticExpressionAST mRightExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -3,12 +3,12 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @parseWhenInstruction : @syntaxInstructionAST {
-  @semanticExpressionAST mWhenExpression
-  @location mEndOfWhenExpression
-  @syntaxInstructionList mWhenInstructionList
-  @location mEndOfWhenInstructionList
-  @syntaxInstructionList mElseInstructionList
-  @location mEndOfElseInstructionList
+  public var @semanticExpressionAST mWhenExpression
+  public var @location mEndOfWhenExpression
+  public var @syntaxInstructionList mWhenInstructionList
+  public var @location mEndOfWhenInstructionList
+  public var @syntaxInstructionList mElseInstructionList
+  public var @location mEndOfElseInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -194,9 +194,9 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @parseWhenInstructionForGeneration : @syntaxInstructionForGeneration {
-  @semanticExpressionForGeneration mWhenExpression
-  @semanticInstructionListForGeneration mInstructionList
-  @semanticInstructionListForGeneration mElseInstructionList
+  public var @semanticExpressionForGeneration mWhenExpression
+  public var @semanticInstructionListForGeneration mInstructionList
+  public var @semanticInstructionListForGeneration mElseInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

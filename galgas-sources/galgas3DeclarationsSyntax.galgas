@@ -50,9 +50,7 @@ rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsLis
 rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    A T T R I B U T E    I N    C O L L E C T I O N                                                                   *
-#                                           
+#    A T T R I B U T E    I N    C O L L E C T I O N
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
@@ -60,13 +58,14 @@ rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollecti
   select
     isPublic = true
   or
+    $public$
+    isPublic = true
+  or
     $private$
     isPublic = false
   end
   @bool isConstant
   select
-    isConstant = false
-  or
     $var$
     isConstant = false
   or
@@ -90,13 +89,33 @@ rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollecti
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    F I L E W R A P P E R    D E C L A R A T I O N                                                                    *
-#                                           
+
+rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
+  $@type$ ?let propertyTypeName
+  $identifier$ ?let propertyName
+  var featureList = @lstringlist {}
+  repeat
+  while
+    $%attribute$ ?let @lstring featureName
+    featureList += !featureName
+  end
+  ioAttributeInCollectionList +=
+    !isConstant: false
+    !propertyTypeName
+    !propertyName
+    !true
+    !featureList
+  if [option galgas_cli_options.errorOldStylePropertyDeclaration value] then
+    let errorLocation = [propertyTypeName.location union !propertyName.location]
+    error errorLocation
+    : "old style property declaration (due to '--error-old-style-property-declaration' option)"
+    fixit { replace "public var @" + propertyTypeName + " " + propertyName }
+  end
+}
+
+
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 #! Filewrapper Declaration
-
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <declaration_with_private>

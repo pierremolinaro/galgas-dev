@@ -760,8 +760,8 @@ proc generateExtensionGetter
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 sortedlist @keySortedList {
-  @string mKey
-  @uint mOrder
+  public var @string mKey
+  public var @uint mOrder
 }{
   mOrder <
 }

@@ -3,12 +3,12 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @parseLoopInstruction : @syntaxInstructionAST {
-  @semanticExpressionAST mVariantExpression
-  @location mEndOfVariantExpression
-  @semanticExpressionAST mWhileExpression
-  @location mEndOfWhileExpression
-  @syntaxInstructionList mDoInstructionList
-  @location mEndOfInstructionList
+  public var @semanticExpressionAST mVariantExpression
+  public var @location mEndOfVariantExpression
+  public var @semanticExpressionAST mWhileExpression
+  public var @location mEndOfWhileExpression
+  public var @syntaxInstructionList mDoInstructionList
+  public var @location mEndOfInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -156,9 +156,9 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @parseLoopInstructionForGeneration : @syntaxInstructionForGeneration {
-  @semanticExpressionForGeneration mVariantExpression
-  @semanticExpressionForGeneration mWhileExpression
-  @semanticInstructionListForGeneration mInstructionList
+  public var @semanticExpressionForGeneration mVariantExpression
+  public var @semanticExpressionForGeneration mWhileExpression
+  public var @semanticInstructionListForGeneration mInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

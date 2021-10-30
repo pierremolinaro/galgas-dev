@@ -18,8 +18,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalFunctionListAST {
-  @lstring mFunctionName
-  @lexicalFunctionExpressionAST mLexicalExpression
+  public var @lstring mFunctionName
+  public var @lexicalFunctionExpressionAST mLexicalExpression
 }
 
 #······················································································································*
@@ -30,27 +30,27 @@ abstract refclass @lexicalFunctionExpressionAST {
 #······················································································································*
 
 refclass @lexicalFunctionOrExpressionAST : @lexicalFunctionExpressionAST {
-  @lexicalFunctionExpressionAST mLeftOperand
-  @lexicalFunctionExpressionAST mRightOperand
+  public var @lexicalFunctionExpressionAST mLeftOperand
+  public var @lexicalFunctionExpressionAST mRightOperand
 }
 
 #······················································································································*
 
 refclass @lexicalFunctionCallAST : @lexicalFunctionExpressionAST {
-  @lstring mCalledFunctionName
+  public var @lstring mCalledFunctionName
 }
 
 #······················································································································*
 
 refclass @lexicalFunctionCharacterMatchAST : @lexicalFunctionExpressionAST {
-  @lchar mCharacter
+  public var @lchar mCharacter
 }
 
 #······················································································································*
 
 refclass @lexicalFunctionCharacterIntervalMatchAST : @lexicalFunctionExpressionAST {
-  @lchar mLowerBound
-  @lchar mUpperBound
+  public var @lchar mLowerBound
+  public var @lchar mUpperBound
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

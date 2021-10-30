@@ -3,9 +3,9 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @structPropertyAccessExpressionAST : @semanticExpressionAST {
-  @location mOperatorLocation
-  @semanticExpressionAST mExpression
-  @lstring mStructFieldName
+  public var @location mOperatorLocation
+  public var @semanticExpressionAST mExpression
+  public var @lstring mStructFieldName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -69,7 +69,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
   elsif [inAnalysisContext.mSelfCopyTypeEntry isNull] then
     error self.mStructFieldName : "inaccessible property (due to its 'private' qualifier)"
   elsif expressionType != inAnalysisContext.mSelfCopyTypeEntry then
-    error self.mStructFieldName : "inaccessible property (due to its 'private' qualifier)2"
+    error self.mStructFieldName : "inaccessible property (due to its 'private' qualifier)"
   end
 #--- Generate expression
   outExpression = @structPropertyAccessExpressionForGeneration.new {
@@ -85,8 +85,8 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @structPropertyAccessExpressionForGeneration : @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mExpression
-  @string mStructFieldName
+  public var @semanticExpressionForGeneration mExpression
+  public var @string mStructFieldName
 }
 
 #·····················································································································

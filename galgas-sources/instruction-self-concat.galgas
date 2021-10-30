@@ -3,31 +3,31 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
-  @actualOutputExpressionList mExpressions
+  public var @actualOutputExpressionList mExpressions
 }
 
 #·····················································································································*
 
 refclass @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
-  @semanticExpressionAST mExpression
+  public var @semanticExpressionAST mExpression
 }
 
 #·····················································································································*
 
 refclass @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
-  @semanticExpressionAST mExpression
+  public var @semanticExpressionAST mExpression
 }
 
 #·····················································································································*
 
 refclass @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
-  @semanticExpressionAST mExpression
+  public var @semanticExpressionAST mExpression
 }
 
 #·····················································································································*
 
 refclass @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
-  @semanticExpressionAST mExpression
+  public var @semanticExpressionAST mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

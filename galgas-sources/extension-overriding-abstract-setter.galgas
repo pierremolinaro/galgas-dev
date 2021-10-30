@@ -3,9 +3,9 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
-  @lstring mTypeName
-  @lstring mOverridingExtensionSetterName
-  @formalParameterListAST mOverridingExtensionSetterFormalParameterList
+  public var @lstring mTypeName
+  public var @lstring mOverridingExtensionSetterName
+  public var @formalParameterListAST mOverridingExtensionSetterFormalParameterList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

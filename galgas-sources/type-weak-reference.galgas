@@ -3,11 +3,11 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @weakReferenceDeclarationAST : @semanticDeclarationAST {
-  @lstring mClassTypeName
-  @lstring mWeakReferenceTypeName
-  @lstring mSuperWeakReferenceTypeName # Empty if no super class
-  @lstringlist mClassFeatureList
-  @propertyInCollectionListAST mPropertyList
+  public var @lstring mClassTypeName
+  public var @lstring mWeakReferenceTypeName
+  public var @lstring mSuperWeakReferenceTypeName # Empty if no super class
+  public var @lstringlist mClassFeatureList
+  public var @propertyInCollectionListAST mPropertyList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -379,11 +379,11 @@ override method @weakReferenceDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
-  @string mClassTypeName
-  @unifiedTypeMap-entry mSuperClass # Null if no super class
-  @typedPropertyList mAllTypedPropertyList # Inherited followed by current attributes
-  @typedPropertyList mTypedAttributeList
-  @bool mGenerateHeaderInSeparateFile # Significant only for classes
+  public var @string mClassTypeName
+  public var @unifiedTypeMap-entry mSuperClass # Null if no super class
+  public var @typedPropertyList mAllTypedPropertyList # Inherited followed by current attributes
+  public var @typedPropertyList mTypedAttributeList
+  public var @bool mGenerateHeaderInSeparateFile # Significant only for classes
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

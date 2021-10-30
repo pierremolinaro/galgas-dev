@@ -16,21 +16,21 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionStringForGeneration : @templateInstructionForGeneration {
-  @string mTemplateString
+  public var @string mTemplateString
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionExpressionForGeneration : @templateInstructionForGeneration {
-  @semanticExpressionForGeneration mExpression
+  public var @semanticExpressionForGeneration mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateBlockInstructionForGeneration : @templateInstructionForGeneration {
-  @semanticExpressionForGeneration mExpression
-  @location mLocation
-  @templateInstructionListForGeneration mBlockInstructionList
+  public var @semanticExpressionForGeneration mExpression
+  public var @location mLocation
+  public var @templateInstructionListForGeneration mBlockInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -46,28 +46,28 @@ refclass @templateInstructionGotoColumnLocationForGeneration : @templateInstruct
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionForeachForGeneration : @templateInstructionForGeneration {
-  @bool mIsAscending
-  @semanticExpressionForGeneration mExpression
-  @string mEnumeratorCppName
-  @templateInstructionListForGeneration mBeforeInstructionList
-  @templateInstructionListForGeneration mDoInstructionList
-  @string mIndexCppName
-  @templateInstructionListForGeneration mBetweenInstructionList
-  @templateInstructionListForGeneration mAfterInstructionList
+  public var @bool mIsAscending
+  public var @semanticExpressionForGeneration mExpression
+  public var @string mEnumeratorCppName
+  public var @templateInstructionListForGeneration mBeforeInstructionList
+  public var @templateInstructionListForGeneration mDoInstructionList
+  public var @string mIndexCppName
+  public var @templateInstructionListForGeneration mBetweenInstructionList
+  public var @templateInstructionListForGeneration mAfterInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateInstructionIfBranchListForGeneration {
-  @semanticExpressionForGeneration mExpression
-  @templateInstructionListForGeneration mInstructionList
+  public var @semanticExpressionForGeneration mExpression
+  public var @templateInstructionListForGeneration mInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionIfForGeneration : @templateInstructionForGeneration {
-  @templateInstructionIfBranchListForGeneration mTemplateInstructionIfBranchList
-  @templateInstructionListForGeneration mElseInstructionList
+  public var @templateInstructionIfBranchListForGeneration mTemplateInstructionIfBranchList
+  public var @templateInstructionListForGeneration mElseInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

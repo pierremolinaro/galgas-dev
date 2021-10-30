@@ -3,44 +3,44 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @insertMethodListAST {
-  @lstring mInsertMethodName
-  @lstring mErrorMessage
-  @lstring mShadowErrorMessage
-  @lstring mInitialStateName
+  public var @lstring mInsertMethodName
+  public var @lstring mErrorMessage
+  public var @lstring mShadowErrorMessage
+  public var @lstring mInitialStateName
 }
 
 #·······················································································································
 
 list @mapSearchMethodListAST {
-  @lstring mSearchMethodName
-  @lstring mErrorMessage
-  @lstring mActionName
-  @bool mLocationAttribute
+  public var @lstring mSearchMethodName
+  public var @lstring mErrorMessage
+  public var @lstring mActionName
+  public var @bool mLocationAttribute
 }
 
 #·······················································································································
 
 list @mapRemoveMethodListAST {
-  @lstring mMethodName
-  @lstring mErrorMessage
+  public var @lstring mMethodName
+  public var @lstring mErrorMessage
 }
 
 #·······················································································································
 
 list @insertOrReplaceDeclarationListAST {
-  @location mInsertOrReplaceDeclarationLocation
+  public var @location mInsertOrReplaceDeclarationLocation
 }
 
 #·······················································································································
 
 refclass @mapDeclarationAST : @semanticDeclarationAST {
-  @lstring mMapTypeName
-  @lstringlist mAttributeList
-  @propertyInCollectionListAST mPropertyList
-  @insertMethodListAST mInsertMethodList
-  @mapSearchMethodListAST mSearchMethodList
-  @mapRemoveMethodListAST mRemoveMethodList
-  @insertOrReplaceDeclarationListAST mInsertOrReplaceDeclarationListAST
+  public var @lstring mMapTypeName
+  public var @lstringlist mAttributeList
+  public var @propertyInCollectionListAST mPropertyList
+  public var @insertMethodListAST mInsertMethodList
+  public var @mapSearchMethodListAST mSearchMethodList
+  public var @mapRemoveMethodListAST mRemoveMethodList
+  public var @insertOrReplaceDeclarationListAST mInsertOrReplaceDeclarationListAST
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -667,14 +667,14 @@ override method @mapDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @mapTypeForGeneration : @semanticTypeForGeneration {
-  @unifiedTypeMap-entry mElementTypeEntry
-  @lstring mMapTypeName
-  @typedPropertyList mTypedAttributeList
-  @insertMethodListAST mInsertMethodList
-  @mapSearchMethodListAST mSearchMethodList
-  @mapRemoveMethodListAST mRemoveMethodList
-  @bool mHasInsertOrReplaceModifier
-  @bool mActivateSuggestions
+  public var @unifiedTypeMap-entry mElementTypeEntry
+  public var @lstring mMapTypeName
+  public var @typedPropertyList mTypedAttributeList
+  public var @insertMethodListAST mInsertMethodList
+  public var @mapSearchMethodListAST mSearchMethodList
+  public var @mapRemoveMethodListAST mRemoveMethodList
+  public var @bool mHasInsertOrReplaceModifier
+  public var @bool mActivateSuggestions
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -46,14 +46,14 @@ abstract refclass @templateInstructionForGeneration {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateInstructionListForGeneration {
-  @templateInstructionForGeneration mInstruction
+  public var @templateInstructionForGeneration mInstruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @semanticExpressionForGeneration {
-  @unifiedTypeMap-entry mResultType
-  @location mLocation
+  public var @unifiedTypeMap-entry mResultType
+  public var @location mLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -68,15 +68,15 @@ abstract method @semanticExpressionForGeneration generateExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @semanticExpressionListForGeneration {
-  @semanticExpressionForGeneration mExpression
+  public var @semanticExpressionForGeneration mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @castInExpressionForGeneration : @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mReceiverExpression
-  @string mTypeName
-  @unifiedTypeMap-entry mCastType
+  public var @semanticExpressionForGeneration mReceiverExpression
+  public var @string mTypeName
+  public var @unifiedTypeMap-entry mCastType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -86,11 +86,11 @@ refclass @castInExpressionForGeneration : @semanticExpressionForGeneration {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalParameterListForGeneration {
-  @lstring mFormalSelector
-  @formalArgumentPassingModeAST mFormalArgumentPassingMode
-  @unifiedTypeMap-entry mFormalArgumentType
-  @lstring mFormalArgumentName
-  @string mFormalArgumentCppName
+  public var @lstring mFormalSelector
+  public var @formalArgumentPassingModeAST mFormalArgumentPassingMode
+  public var @unifiedTypeMap-entry mFormalArgumentType
+  public var @lstring mFormalArgumentName
+  public var @string mFormalArgumentCppName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -100,11 +100,11 @@ list @formalParameterListForGeneration {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalInputParameterListForGeneration {
-  @lstring mFormalSelector
-  @unifiedTypeMap-entry mFormalArgumentType
-  @string mFormalArgumentCppName
-  @lstring mFormalArgumentName
-  @bool mIsConstant
+  public var @lstring mFormalSelector
+  public var @unifiedTypeMap-entry mFormalArgumentType
+  public var @string mFormalArgumentCppName
+  public var @lstring mFormalArgumentName
+  public var @bool mIsConstant
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -114,7 +114,7 @@ list @formalInputParameterListForGeneration {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @actualParameterForGeneration {
-  @unifiedTypeMap-entry mFormalArgumentType
+  public var @unifiedTypeMap-entry mFormalArgumentType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -131,33 +131,33 @@ abstract method @actualParameterForGeneration generateActualParameter
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @outputActualParameterForGeneration : @actualParameterForGeneration {
-  @semanticExpressionForGeneration mOutputActualParameterExpression
+  public var @semanticExpressionForGeneration mOutputActualParameterExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @outputInputActualParameterForGeneration : @actualParameterForGeneration {
-  @string mOutputInputVariableCppName
-  @lstringlist mStructAttributeList
-  @unifiedTypeMapEntryList mTypeList
+  public var @string mOutputInputVariableCppName
+  public var @lstringlist mStructAttributeList
+  public var @unifiedTypeMapEntryList mTypeList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @inputActualParameterForGeneration : @actualParameterForGeneration {
-  @string mInputActualCppName
+  public var @string mInputActualCppName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @inputJokerParameterForGeneration : @actualParameterForGeneration {
-  @string mInputActualCppName
+  public var @string mInputActualCppName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @actualParameterListForGeneration {
-  @actualParameterForGeneration mActualParameter
+  public var @actualParameterForGeneration mActualParameter
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -177,20 +177,20 @@ abstract method @semanticInstructionForGeneration generateInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @semanticInstructionListForGeneration {
-  @semanticInstructionForGeneration mInstruction
+  public var @semanticInstructionForGeneration mInstruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @semanticBlockInstructionForGeneration : @semanticInstructionForGeneration {
-  @semanticInstructionListForGeneration mInstructionList
+  public var @semanticInstructionListForGeneration mInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @listOfSemanticInstructionListForGeneration {
-  @semanticInstructionListForGeneration mInstructionList
-  @location mEndOfInstructionList
+  public var @semanticInstructionListForGeneration mInstructionList
+  public var @location mEndOfInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -228,8 +228,8 @@ abstract getter @semanticDeclarationForGeneration headerKind -> @headerKind
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @semanticDeclarationListForGeneration {
-  @string mMessage
-  @semanticDeclarationForGeneration mDeclaration
+  public var @string mMessage
+  public var @semanticDeclarationForGeneration mDeclaration
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -239,7 +239,7 @@ list @semanticDeclarationListForGeneration {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @semanticTypeForGeneration : @semanticDeclarationForGeneration {
-  @unifiedTypeMap-entry mSelfTypeEntry
+  public var @unifiedTypeMap-entry mSelfTypeEntry
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -273,8 +273,8 @@ override getter @semanticTypeForGeneration headerKind -> @headerKind outHeaderKi
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @semanticDeclarationWithHeaderForGeneration : @semanticDeclarationForGeneration {
-  @bool mHasHeader
-  @string mImplementationCppFileName
+  public var @bool mHasHeader
+  public var @string mImplementationCppFileName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -308,11 +308,11 @@ override getter @semanticDeclarationWithHeaderForGeneration isPredefined -> @boo
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @string mLexiqueName
-  @string mHeaderContents
-  @string mCppContents
-  @string mCocoaHeader
-  @string mCocoaImplementation
+  public var @string mLexiqueName
+  public var @string mHeaderContents
+  public var @string mCppContents
+  public var @string mCocoaHeader
+  public var @string mCocoaImplementation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -322,8 +322,8 @@ refclass @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGen
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @signatureForGrammarAnalysis {
-  @formalArgumentPassingModeAST mFormalArgumentPassingModeForGrammarAnalysis
-  @lstring mGalgasTypeNameForGrammarAnalysis
+  public var @formalArgumentPassingModeAST mFormalArgumentPassingModeForGrammarAnalysis
+  public var @lstring mGalgasTypeNameForGrammarAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -333,7 +333,7 @@ list @signatureForGrammarAnalysis {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @nonterminalSymbolLabelMapForGrammarAnalysis {
-  @signatureForGrammarAnalysis mFormalParametersList
+  public var @signatureForGrammarAnalysis mFormalParametersList
 
   insert insertKey error message "the rule label '%K' has been already declared in %L"
   search searchKey error message "the rule label '%K' is not declared"
@@ -346,8 +346,8 @@ map @nonterminalSymbolLabelMapForGrammarAnalysis {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @nonTerminalSymbolMapForGrammarAnalysis {
-  @uint mNonTerminalIndex
-  @nonterminalSymbolLabelMapForGrammarAnalysis mNonterminalSymbolParametersMap
+  public var @uint mNonTerminalIndex
+  public var @nonterminalSymbolLabelMapForGrammarAnalysis mNonterminalSymbolParametersMap
 
   insert insertKey error message "the '<%K>' non terminal symbol has already been declared in %L"
   search searchKey error message "the '<%K>' non terminal symbol is not declared"
@@ -356,22 +356,22 @@ map @nonTerminalSymbolMapForGrammarAnalysis {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @nonTerminalToAddList {
-  @string mSyntaxComponentName
-  @uint mNonTerminalToAddCount
+  public var @string mSyntaxComponentName
+  public var @uint mNonTerminalToAddCount
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @string mGrammarName
-  @string mLexiqueName
-  @nonTerminalSymbolMapForGrammarAnalysis mNonTerminalMapForGrammarAnalysis
-  @nonTerminalToAddList mNonTerminalToAddList
-  @bool mHasIndexing
-  @lstringlist mSyntaxComponents
-  @string mStartSymbolName
-  @bool mHasTranslateFeature
-  @string mCppFileContents
+  public var @string mGrammarName
+  public var @string mLexiqueName
+  public var @nonTerminalSymbolMapForGrammarAnalysis mNonTerminalMapForGrammarAnalysis
+  public var @nonTerminalToAddList mNonTerminalToAddList
+  public var @bool mHasIndexing
+  public var @lstringlist mSyntaxComponents
+  public var @string mStartSymbolName
+  public var @bool mHasTranslateFeature
+  public var @string mCppFileContents
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -381,8 +381,8 @@ refclass @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @string mRoutineName
-  @formalParameterListForGeneration mFormalArgumentList
+  public var @string mRoutineName
+  public var @formalParameterListForGeneration mFormalArgumentList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -392,8 +392,8 @@ refclass @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHea
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @routineImplementationForGeneration : @routinePrototypeDeclarationForGeneration {
-  @bool mGenerateStatic
-  @semanticInstructionListForGeneration mRoutineInstructionList
+  public var @bool mGenerateStatic
+  public var @semanticInstructionListForGeneration mRoutineInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -403,9 +403,9 @@ refclass @routineImplementationForGeneration : @routinePrototypeDeclarationForGe
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @string mFunctionName
-  @formalInputParameterListForGeneration mFormalArgumentList
-  @unifiedTypeMap-entry mReturnType
+  public var @string mFunctionName
+  public var @formalInputParameterListForGeneration mFormalArgumentList
+  public var @unifiedTypeMap-entry mReturnType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -415,8 +415,8 @@ refclass @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHe
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @functionImplementationForGeneration : @functionPrototypeDeclarationForGeneration {
-  @string mResultVariableCppName
-  @semanticInstructionListForGeneration mFunctionInstructionList
+  public var @string mResultVariableCppName
+  public var @semanticInstructionListForGeneration mFunctionInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -426,10 +426,10 @@ refclass @functionImplementationForGeneration : @functionPrototypeDeclarationFor
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @string mFunctionName
-  @unifiedTypeMap-entry mReturnType
-  @string mResultVariableCppName
-  @semanticInstructionListForGeneration mFunctionInstructionList
+  public var @string mFunctionName
+  public var @unifiedTypeMap-entry mReturnType
+  public var @string mResultVariableCppName
+  public var @semanticInstructionListForGeneration mFunctionInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -439,15 +439,15 @@ refclass @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHeaderF
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @terminalCheckAssignementList {
-  @string mTypeName # Empty string if no declaration
-  @string mTargetVarCppName
-  @string mSourceLexicalAttributeName
+  public var @string mTypeName # Empty string if no declaration
+  public var @string mTargetVarCppName
+  public var @string mSourceLexicalAttributeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @syntaxInstructionForGeneration : @semanticInstructionForGeneration {
-  @location mInstructionLocation
+  public var @location mInstructionLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -457,8 +457,8 @@ abstract refclass @syntaxInstructionForGeneration : @semanticInstructionForGener
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
-  @string mPredefinedTypeName
-  @predefinedTypeKindEnum mKind
+  public var @string mPredefinedTypeName
+  public var @predefinedTypeKindEnum mKind
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -468,19 +468,19 @@ refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @filewrapperTemplateListForGeneration {
-  @string mFilewrapperTemplateName
-  @formalInputParameterListForGeneration mFilewrapperTemplateFormalInputParameters
-  @templateInstructionListForGeneration mTemplateInstructionListForGeneration
+  public var @string mFilewrapperTemplateName
+  public var @formalInputParameterListForGeneration mFilewrapperTemplateFormalInputParameters
+  public var @templateInstructionListForGeneration mTemplateInstructionListForGeneration
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @string mFilewrapperName
-  @string mFilewrapperAbsolutePath
-  @wrapperFileMap mFilewrapperFileMap
-  @wrapperDirectoryMap mFilewrapperDirectoryMap
-  @filewrapperTemplateListForGeneration mFilewrapperTemplateListForGeneration
+  public var @string mFilewrapperName
+  public var @string mFilewrapperAbsolutePath
+  public var @wrapperFileMap mFilewrapperFileMap
+  public var @wrapperDirectoryMap mFilewrapperDirectoryMap
+  public var @filewrapperTemplateListForGeneration mFilewrapperTemplateListForGeneration
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -490,8 +490,8 @@ refclass @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeaderFo
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @programComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @stringset mInclusionSet
-  @string mImplementationString
+  public var @stringset mInclusionSet
+  public var @string mImplementationString
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

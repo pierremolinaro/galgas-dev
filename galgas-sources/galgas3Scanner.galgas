@@ -164,6 +164,7 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "or",
   "override",
   "parse",
+  "public",
   "private",
   "proc",
   "project",

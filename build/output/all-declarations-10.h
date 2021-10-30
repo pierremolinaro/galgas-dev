@@ -4756,6 +4756,7 @@ class C_Lexique_galgas_33_Scanner : public C_Lexique {
    kToken_or,
    kToken_override,
    kToken_parse,
+   kToken_public,
    kToken_private,
    kToken_proc,
    kToken_project,
@@ -4935,7 +4936,7 @@ class C_Lexique_galgas_33_Scanner : public C_Lexique {
   protected: virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const ;
 
 //--- Get terminal count
-  public: virtual int16_t terminalVocabularyCount (void) const { return 155 ; }
+  public: virtual int16_t terminalVocabularyCount (void) const { return 156 ; }
 
 //--- Get Token String
   public: virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;

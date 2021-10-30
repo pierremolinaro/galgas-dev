@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexiqueIntrospectionExpressionAST : @semanticExpressionAST {
-  @lstring mLexiqueComponentName
-  @lstring mLexiqueGetterName
+  public var @lstring mLexiqueComponentName
+  public var @lstring mLexiqueGetterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -72,8 +72,8 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexiqueIntrospectionForGeneration : @semanticExpressionForGeneration {
-  @string mLexiqueComponentName
-  @string mLexiqueGetterName
+  public var @string mLexiqueComponentName
+  public var @string mLexiqueGetterName
 }
 
 #·····················································································································

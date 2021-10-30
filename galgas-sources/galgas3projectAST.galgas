@@ -7,21 +7,21 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @galgas3QualifiedFeatureList {
-  @lstring mFeatureName
-  @lstring mFeatureValue
+  public var @lstring mFeatureName
+  public var @lstring mFeatureValue
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @galgas3ProjectComponentAST {
-  @lstringlist mProjectSourceList
-  @luint mMajorVersion
-  @luint mMinorVersion
-  @luint mRevisionVersion
-  @lstringlist mGenerationFeatureList
-  @galgas3QualifiedFeatureList mQualifiedFeatureList
-  @lstring mTargetName
-  @location mEndOfSourceFile
+  public var @lstringlist mProjectSourceList
+  public var @luint mMajorVersion
+  public var @luint mMinorVersion
+  public var @luint mRevisionVersion
+  public var @lstringlist mGenerationFeatureList
+  public var @galgas3QualifiedFeatureList mQualifiedFeatureList
+  public var @lstring mTargetName
+  public var @location mEndOfSourceFile
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -3,9 +3,9 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @methodCallInstructionAST : @semanticInstructionAST {
-  @semanticExpressionAST mReceiverExpression
-  @lstring mMethodName
-  @actualParameterListAST mActualParameterList
+  public var @semanticExpressionAST mReceiverExpression
+  public var @lstring mMethodName
+  public var @actualParameterListAST mActualParameterList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -124,14 +124,14 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @methodCallInstructionForGeneration : @semanticInstructionForGeneration {
-  @location mInstructionLocation
-  @unifiedTypeMap-entry mReceiverType
-  @semanticExpressionForGeneration mReceiverExpression
-  @string mMethodName
-  @methodKind mKind
-  @actualParameterListForGeneration mActualParameterList
-  @bool mHasCompilerArgument
-  @unifiedTypeMap-entry mMethodBaseType
+  public var @location mInstructionLocation
+  public var @unifiedTypeMap-entry mReceiverType
+  public var @semanticExpressionForGeneration mReceiverExpression
+  public var @string mMethodName
+  public var @methodKind mKind
+  public var @actualParameterListForGeneration mActualParameterList
+  public var @bool mHasCompilerArgument
+  public var @unifiedTypeMap-entry mMethodBaseType
 }
 
 #·····················································································································*

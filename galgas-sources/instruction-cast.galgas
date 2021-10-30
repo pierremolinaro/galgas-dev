@@ -3,20 +3,20 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @castInstructionBranchListAST {
-  @lstring mTypeName
-  @lstring mConstantVarName # Empty string if no constant var
-  @semanticInstructionListAST mInstructionList
-  @dynamicTypeComparisonKind mTypeComparisonKind
-  @location mEndOfInstructions
+  public var @lstring mTypeName
+  public var @lstring mConstantVarName # Empty string if no constant var
+  public var @semanticInstructionListAST mInstructionList
+  public var @dynamicTypeComparisonKind mTypeComparisonKind
+  public var @location mEndOfInstructions
 }
 
 #······················································································································*
 
 refclass @structuredCastInstructionAST : @semanticInstructionAST {
-  @semanticExpressionAST mCastExpression
-  @castInstructionBranchListAST mCastInstructionBranchList
-  @semanticInstructionListAST mElseInstructionList
-  @location mEndOfCastInstruction
+  public var @semanticExpressionAST mCastExpression
+  public var @castInstructionBranchListAST mCastInstructionBranchList
+  public var @semanticInstructionListAST mElseInstructionList
+  public var @location mEndOfCastInstruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -223,18 +223,18 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @castInstructionBranchListForGeneration {
-  @dynamicTypeComparisonKind mTypeComparisonKind
-  @unifiedTypeMap-entry mType
-  @string mCastedVarCppName # Empty string if no var
-  @semanticInstructionListForGeneration mInstructionList
+  public var @dynamicTypeComparisonKind mTypeComparisonKind
+  public var @unifiedTypeMap-entry mType
+  public var @string mCastedVarCppName # Empty string if no var
+  public var @semanticInstructionListForGeneration mInstructionList
 }
 
 #······················································································································*
 
 refclass @structuredCastInstructionForGeneration : @semanticInstructionForGeneration {
-  @semanticExpressionForGeneration mExpression
-  @castInstructionBranchListForGeneration mCastBranchList
-  @semanticInstructionListForGeneration mElseInstructionList
+  public var @semanticExpressionForGeneration mExpression
+  public var @castInstructionBranchListForGeneration mCastBranchList
+  public var @semanticInstructionListForGeneration mElseInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

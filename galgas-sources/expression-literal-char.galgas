@@ -3,7 +3,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @literalCharExpressionAST : @semanticExpressionAST {
-  @lchar mCharacter
+  public var @lchar mCharacter
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -54,7 +54,7 @@ override method @literalCharExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @literalCharExpressionForGeneration : @semanticExpressionForGeneration {
-  @char mCharacter
+  public var @char mCharacter
 }
 
 #·····················································································································

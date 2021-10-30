@@ -3,27 +3,27 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @matchEntryListAST {
-  @bool mIsType # true if type, false if enum
-  @lstring mTypeNameOrEnumerationConstantName
-  @lstring mLocalConstantName # Empty string if no constant
+  public var @bool mIsType # true if type, false if enum
+  public var @lstring mTypeNameOrEnumerationConstantName
+  public var @lstring mLocalConstantName # Empty string if no constant
 }
 
 #······················································································································*
 
 list @matchInstructionBranchListAST {
-  @matchEntryListAST mMatchEntryList
-  @location mEndOfMatchEntryList
-  @semanticInstructionListAST mMatchBranchInstructionList
-  @location mEndOf_instructionList
+  public var @matchEntryListAST mMatchEntryList
+  public var @location mEndOfMatchEntryList
+  public var @semanticInstructionListAST mMatchBranchInstructionList
+  public var @location mEndOf_instructionList
 }
 
 #······················································································································*
 
 refclass @matchInstructionAST : @semanticInstructionAST {
-  @semanticExpressionListAST mMatchedExpressionList
-  @matchInstructionBranchListAST mMatchInstructionBranchList
-  @semanticInstructionListAST mElseInstructionList
-  @location mEndOf_match_instruction
+  public var @semanticExpressionListAST mMatchedExpressionList
+  public var @matchInstructionBranchListAST mMatchInstructionBranchList
+  public var @semanticInstructionListAST mElseInstructionList
+  public var @location mEndOf_match_instruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -263,24 +263,24 @@ override method @matchInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @matchListForGeneration {
-  @bool mIsType
-  @string mTypeNameOrEnumerationConstantName
-  @string mLocalConstantName # Empy string if no variable
+  public var @bool mIsType
+  public var @string mTypeNameOrEnumerationConstantName
+  public var @string mLocalConstantName # Empy string if no variable
 }
 
 #······················································································································*
 
 list @matchInstructionBranchListForGeneration {
-  @matchListForGeneration mMatchListForGeneration
-  @semanticInstructionListForGeneration mMatchBranchInstructionList
+  public var @matchListForGeneration mMatchListForGeneration
+  public var @semanticInstructionListForGeneration mMatchBranchInstructionList
 }
 
 #······················································································································*
 
 refclass @matchInstructionForGeneration : @semanticInstructionForGeneration {
-  @semanticExpressionListForGeneration mMatchedExpressionList
-  @matchInstructionBranchListForGeneration mMatchInstructionBranchList
-  @semanticInstructionListForGeneration mElseInstructionList
+  public var @semanticExpressionListForGeneration mMatchedExpressionList
+  public var @matchInstructionBranchListForGeneration mMatchInstructionBranchList
+  public var @semanticInstructionListForGeneration mElseInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

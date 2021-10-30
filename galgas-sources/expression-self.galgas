@@ -3,7 +3,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @selfInExpressionAST : @semanticExpressionAST {
-  @location mSelfLocation
+  public var @location mSelfLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -55,7 +55,7 @@ override method @selfInExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @selfInExpressionForGeneration : @semanticExpressionForGeneration {
-  @string mSelfCppName
+  public var @string mSelfCppName
 }
 
 #·····················································································································

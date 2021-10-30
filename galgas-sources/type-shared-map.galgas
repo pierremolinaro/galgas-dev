@@ -26,58 +26,58 @@ enum @mapAutomatonMessageKind {
 #·······················································································································
 
 list @mapStateTransitionList {
-  @lstring mActionName
-  @lstring mTargetStateName
-  @mapAutomatonMessageKind mTransitionMessageKind
-  @lstring mTransitionMessage
+  public var @lstring mActionName
+  public var @lstring mTargetStateName
+  public var @mapAutomatonMessageKind mTransitionMessageKind
+  public var @lstring mTransitionMessage
 }
 
 #·······················································································································
 
 list @mapStateList {
-  @lstring mStateName
-  @mapAutomatonMessageKind mStateMessageKind
-  @lstring mStateMessage
-  @mapStateTransitionList mTransitionList
+  public var @lstring mStateName
+  public var @mapAutomatonMessageKind mStateMessageKind
+  public var @lstring mStateMessage
+  public var @mapStateTransitionList mTransitionList
 }
 
 #·······················································································································
 
 list @mapOverrideBlockDescriptorAST {
-  @lstring mLeftState
-  @lstring mRightState
-  @lstring mResultingState
-  @mapAutomatonMessageKind mMessageKind
-  @lstring mTransitionMessage
+  public var @lstring mLeftState
+  public var @lstring mRightState
+  public var @lstring mResultingState
+  public var @mapAutomatonMessageKind mMessageKind
+  public var @lstring mTransitionMessage
 }
 
 #·······················································································································
 
 list @mapOverrideBlockListAST {
-  @lstring mOverrideBlockName
-  @mapOverrideBlockDescriptorAST mMapOverrideBlockDescriptor1AST
-  @mapOverrideBlockDescriptorAST mMapOverrideBlockDescriptor2AST
+  public var @lstring mOverrideBlockName
+  public var @mapOverrideBlockDescriptorAST mMapOverrideBlockDescriptor1AST
+  public var @mapOverrideBlockDescriptorAST mMapOverrideBlockDescriptor2AST
 }
 
 #·······················································································································
 
 list @sharedMapAttributeListAST {
-  @lstring mAttributeName
-  @bool mIsError # false;: warning
-  @lstring mMessage
+  public var @lstring mAttributeName
+  public var @bool mIsError # false;: warning
+  public var @lstring mMessage
 }
 
 #·······················································································································
 
 refclass @sharedMapDeclarationAST : @semanticDeclarationAST {
-  @lstring mMapTypeName
-  @lstringlist mAttributeList
-  @propertyInCollectionListAST mPropertyList
-  @insertMethodListAST mInsertMethodList
-  @mapSearchMethodListAST mSearchMethodList
-  @mapStateList mMapStateList
-  @mapOverrideBlockListAST mMapOverrideBlockListAST
-  @sharedMapAttributeListAST mSharedMapAttributeListAST
+  public var @lstring mMapTypeName
+  public var @lstringlist mAttributeList
+  public var @propertyInCollectionListAST mPropertyList
+  public var @insertMethodListAST mInsertMethodList
+  public var @mapSearchMethodListAST mSearchMethodList
+  public var @mapStateList mMapStateList
+  public var @mapOverrideBlockListAST mMapOverrideBlockListAST
+  public var @sharedMapAttributeListAST mSharedMapAttributeListAST
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -679,12 +679,12 @@ override method @sharedMapDeclarationAST enterInSemanticContext
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 sortedlist @mapStateTransitionSortedList {
-  @uint mActionIndex
-  @string mActionName
-  @uint mTargetStateIndex
-  @string mTargetStateName
-  @mapAutomatonMessageKind mTransitionMessageKind
-  @string mTransitionMessage
+  public var @uint mActionIndex
+  public var @string mActionName
+  public var @uint mTargetStateIndex
+  public var @string mTargetStateName
+  public var @mapAutomatonMessageKind mTransitionMessageKind
+  public var @string mTransitionMessage
 }{
   mActionIndex <
 }
@@ -692,11 +692,11 @@ sortedlist @mapStateTransitionSortedList {
 #·······················································································································
 
 sortedlist @mapStateSortedList {
-  @uint mStateIndex
-  @string mStateName
-  @mapAutomatonMessageKind mStateMessageKind
-  @string mStateMessage
-  @mapStateTransitionSortedList mTransitionList
+  public var @uint mStateIndex
+  public var @string mStateName
+  public var @mapAutomatonMessageKind mStateMessageKind
+  public var @string mStateMessage
+  public var @mapStateTransitionSortedList mTransitionList
 }{
   mStateIndex <
 }
@@ -704,8 +704,8 @@ sortedlist @mapStateSortedList {
 #·······················································································································
 
 map @mapAutomatonStateMap {
-  @uint mStateIndex
-  @mapAutomatonMessageKind mStateMessageKind
+  public var @uint mStateIndex
+  public var @mapAutomatonMessageKind mStateMessageKind
   insert insertKey error message "redefinition of '%K' map automaton state"
   search searchKey error message "undefined '%K' map automaton state"
 }
@@ -713,7 +713,7 @@ map @mapAutomatonStateMap {
 #·······················································································································
 
 map @mapAutomatonActionMap {
-  @uint mActionIndex
+  public var @uint mActionIndex
   insert insertKey error message "redefinition of '%K' map automaton action"
   search searchKey error message "undefined '%K' map automaton action"
 }
@@ -721,14 +721,14 @@ map @mapAutomatonActionMap {
 #·······················································································································
 
 sortedlist @branchBehaviourSortedListForMapOverride {
-  @uint mStartStateIndex
-  @string mStartStateName
-  @uint mCurrentStateIndex
-  @string mCurrentStateName
-  @uint mFinalStateIndex
-  @string mFinalStateName
-  @mapAutomatonMessageKind mBehaviourMessageKind
-  @string mBehaviourMessage
+  public var @uint mStartStateIndex
+  public var @string mStartStateName
+  public var @uint mCurrentStateIndex
+  public var @string mCurrentStateName
+  public var @uint mFinalStateIndex
+  public var @string mFinalStateName
+  public var @mapAutomatonMessageKind mBehaviourMessageKind
+  public var @string mBehaviourMessage
 }{
   mStartStateIndex <, mCurrentStateIndex <
 }
@@ -736,9 +736,9 @@ sortedlist @branchBehaviourSortedListForMapOverride {
 #·······················································································································
 
 list @mapOverrideList {
-  @string mOverrideName
-  @branchBehaviourSortedListForMapOverride mBranchBehaviourSortedListForMapOverride
-  @branchBehaviourSortedListForMapOverride mBranchCombinationSortedListForMapOverride
+  public var @string mOverrideName
+  public var @branchBehaviourSortedListForMapOverride mBranchBehaviourSortedListForMapOverride
+  public var @branchBehaviourSortedListForMapOverride mBranchCombinationSortedListForMapOverride
 }
 
 #·······················································································································
@@ -1134,16 +1134,16 @@ override method @sharedMapDeclarationAST semanticAnalysis
 
 refclass @sharedMapTypeForGeneration : @semanticTypeForGeneration {
 #  @string mMapEntryTypeName
-  @typedPropertyList mTypedAttributeList
-  @insertMethodListAST mInsertMethodList
-  @mapSearchMethodListAST mSearchMethodList
-  @mapAutomatonStateMap mMapAutomatonStateMap
-  @mapAutomatonActionMap mMapAutomatonActionMap
-  @mapStateSortedList mMapStateSortedList
-  @mapOverrideList mMapOverrideList
+  public var @typedPropertyList mTypedAttributeList
+  public var @insertMethodListAST mInsertMethodList
+  public var @mapSearchMethodListAST mSearchMethodList
+  public var @mapAutomatonStateMap mMapAutomatonStateMap
+  public var @mapAutomatonActionMap mMapAutomatonActionMap
+  public var @mapStateSortedList mMapStateSortedList
+  public var @mapOverrideList mMapOverrideList
 #---
-  @mapAutomatonMessageKind mShadowBehaviour
-  @string mShadowMessage
+  public var @mapAutomatonMessageKind mShadowBehaviour
+  public var @string mShadowMessage
 }
 
 #·······················································································································

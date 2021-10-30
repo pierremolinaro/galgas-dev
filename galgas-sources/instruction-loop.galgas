@@ -3,15 +3,15 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @loopInstructionAST : @semanticInstructionAST {
-  @semanticExpressionAST mVariantExpression
-  @location mEndOfVariantExpression
-  @semanticInstructionListAST mFirstInstructions
-  @location mEndOfFirstInstructions
-  @semanticExpressionAST mLoopExpression
-  @location mEndOfLoopExpression
-  @semanticInstructionListAST mSecondInstructions
-  @location mEndOfSecondInstructions
-  @location mEndOfLoopInstruction
+  public var @semanticExpressionAST mVariantExpression
+  public var @location mEndOfVariantExpression
+  public var @semanticInstructionListAST mFirstInstructions
+  public var @location mEndOfFirstInstructions
+  public var @semanticExpressionAST mLoopExpression
+  public var @location mEndOfLoopExpression
+  public var @semanticInstructionListAST mSecondInstructions
+  public var @location mEndOfSecondInstructions
+  public var @location mEndOfLoopInstruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -165,11 +165,11 @@ override method @loopInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @loopInstructionForGeneration : @semanticInstructionForGeneration {
-  @location mInstructionLocation
-  @semanticExpressionForGeneration mVariantExpression
-  @semanticInstructionListForGeneration mFirstInstructions
-  @semanticExpressionForGeneration mLoopExpression
-  @semanticInstructionListForGeneration mSecondInstructions
+  public var @location mInstructionLocation
+  public var @semanticExpressionForGeneration mVariantExpression
+  public var @semanticInstructionListForGeneration mFirstInstructions
+  public var @semanticExpressionForGeneration mLoopExpression
+  public var @semanticInstructionListForGeneration mSecondInstructions
 }
 
 #······················································································································*

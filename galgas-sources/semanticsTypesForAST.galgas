@@ -19,8 +19,8 @@ abstract refclass @semanticExpressionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @semanticExpressionListAST {
-  @semanticExpressionAST mExpression
-  @location mEndOfExpressionLocation
+  public var @semanticExpressionAST mExpression
+  public var @location mEndOfExpressionLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -76,11 +76,11 @@ getter @formalArgumentPassingModeAST formalArgumentString -> @string {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalParameterListAST {
-  @lstring mFormalSelector
-  @formalArgumentPassingModeAST mFormalArgumentPassingMode
-  @lstring mFormalArgumentTypeName
-  @lstring mFormalArgumentName
-  @bool mIsUnused
+  public var @lstring mFormalSelector
+  public var @formalArgumentPassingModeAST mFormalArgumentPassingMode
+  public var @lstring mFormalArgumentTypeName
+  public var @lstring mFormalArgumentName
+  public var @bool mIsUnused
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -90,11 +90,11 @@ list @formalParameterListAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalInputParameterListAST {
-  @lstring mFormalSelector
-  @lstring mFormalArgumentTypeName
-  @lstring mFormalArgumentName
-  @bool mIsUnused
-  @bool mIsConstant
+  public var @lstring mFormalSelector
+  public var @lstring mFormalArgumentTypeName
+  public var @lstring mFormalArgumentName
+  public var @bool mIsUnused
+  public var @bool mIsConstant
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -109,80 +109,80 @@ abstract refclass @actualParameterAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @outputActualParameterAST : @actualParameterAST {
-  @lstring mActualSelector
-  @semanticExpressionAST mOutputActualParameterExpression
-  @location mEndOfExpressionLocation
+  public var @lstring mActualSelector
+  public var @semanticExpressionAST mOutputActualParameterExpression
+  public var @location mEndOfExpressionLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @outputInputActualParameterAST : @actualParameterAST {
-  @lstring mActualSelector
-  @lstring mOutputInputActualParameterName
-  @lstringlist mStructAttributeList
+  public var @lstring mActualSelector
+  public var @lstring mOutputInputActualParameterName
+  public var @lstringlist mStructAttributeList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @outputInputSingleJokerParameterAST : @actualParameterAST {
-  @lstring mActualSelector
+  public var @lstring mActualSelector
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @outputInputJokerParameterAST : @actualParameterAST {
-  @location mQualifierLocation
-  @uint mJokerIndex
+  public var @location mQualifierLocation
+  public var @uint mJokerIndex
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @inputActualExistingVariableParameterAST : @actualParameterAST {
-  @lstring mActualSelector
-  @lstring mInputActualParameterName
+  public var @lstring mActualSelector
+  public var @lstring mInputActualParameterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @inputActualSelfPropertyParameterAST : @actualParameterAST {
-  @lstring mActualSelector
-  @lstring mInputActualSelfPropertyName
+  public var @lstring mActualSelector
+  public var @lstring mInputActualSelfPropertyName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @inputActualNewVariableParameterAST : @actualParameterAST {
-  @lstring mActualSelector
-  @lstring mInputOptionalActualTypeName
-  @lstring mInputActualParameterName
+  public var @lstring mActualSelector
+  public var @lstring mInputOptionalActualTypeName
+  public var @lstring mInputActualParameterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @inputActualNewConstantParameterAST : @actualParameterAST {
-  @lstring mActualSelector
-  @lstring mInputOptionalActualTypeName
-  @lstring mInputActualParameterName
-  @bool mMarkedAsUnused
+  public var @lstring mActualSelector
+  public var @lstring mInputOptionalActualTypeName
+  public var @lstring mInputActualParameterName
+  public var @bool mMarkedAsUnused
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @inputSingleJokerActualParameterAST : @actualParameterAST {
-  @lstring mActualSelector
+  public var @lstring mActualSelector
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @inputJokerActualParameterAST : @actualParameterAST {
-  @location mQualifierLocation
-  @uint mJokerIndex
+  public var @location mQualifierLocation
+  public var @uint mJokerIndex
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @actualParameterListAST {
-  @actualParameterAST mActualParameter
+  public var @actualParameterAST mActualParameter
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -202,34 +202,34 @@ refclass @inputParameterAnonymousVariable : @abstractInputParameter {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @inputParameterVariable : @abstractInputParameter {
-  @lstring mActualParameterName
+  public var @lstring mActualParameterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @inputParameterDeclaredVariable : @abstractInputParameter {
-  @lstring mActualParameterTypeName
-  @lstring mActualParameterName
+  public var @lstring mActualParameterTypeName
+  public var @lstring mActualParameterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @inputParameterDeclaredConstant : @abstractInputParameter {
-  @lstring mActualParameterTypeName
-  @lstring mActualParameterName
+  public var @lstring mActualParameterTypeName
+  public var @lstring mActualParameterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @actualInputParameterListAST {
-  @lstring mActualSelector
-  @abstractInputParameter mInputParameter
+  public var @lstring mActualSelector
+  public var @abstractInputParameter mInputParameter
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @syntaxInstructionAST {
-  @location mInstructionLocation
+  public var @location mInstructionLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -240,13 +240,13 @@ abstract refclass @semanticInstructionAST : @syntaxInstructionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @semanticInstructionListAST {
-  @semanticInstructionAST mInstruction
+  public var @semanticInstructionAST mInstruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @semanticDeclarationListAST {
-  @semanticDeclarationAST mSemanticDeclaration
+  public var @semanticDeclarationAST mSemanticDeclaration
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -256,9 +256,9 @@ list @semanticDeclarationListAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @externRoutineDeclarationAST : @semanticDeclarationAST {
-  @bool mIsInternal
-  @lstring mRoutineName
-  @formalParameterListAST mFormalArgumentList
+  public var @bool mIsInternal
+  public var @lstring mRoutineName
+  public var @formalParameterListAST mFormalArgumentList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -268,8 +268,8 @@ refclass @externRoutineDeclarationAST : @semanticDeclarationAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @procDeclarationAST : @externRoutineDeclarationAST {
-  @semanticInstructionListAST mRoutineInstructionList
-  @location mEndOfRoutineInstructionList
+  public var @semanticInstructionListAST mRoutineInstructionList
+  public var @location mEndOfRoutineInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -279,9 +279,9 @@ refclass @procDeclarationAST : @externRoutineDeclarationAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @externFunctionDeclarationAST : @semanticDeclarationAST {
-  @lstring mFunctionName
-  @formalInputParameterListAST mFormalArgumentList
-  @lstring mResultTypeName
+  public var @lstring mFunctionName
+  public var @formalInputParameterListAST mFormalArgumentList
+  public var @lstring mResultTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -291,11 +291,11 @@ refclass @externFunctionDeclarationAST : @semanticDeclarationAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @functionDeclarationAST : @externFunctionDeclarationAST {
-  @lstring mResultVariableName
-  @semanticInstructionListAST mFunctionInstructionList
-  @location mEndOfFunctionInstructionList
-  @bool mIsInternal
-  @bool mIsUsefull
+  public var @lstring mResultVariableName
+  public var @semanticInstructionListAST mFunctionInstructionList
+  public var @location mEndOfFunctionInstructionList
+  public var @bool mIsInternal
+  public var @bool mIsUsefull
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -305,13 +305,13 @@ refclass @functionDeclarationAST : @externFunctionDeclarationAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @onceFunctionDeclarationAST : @semanticDeclarationAST {
-  @lstring mFunctionName
-  @lstring mResultTypeName
-  @lstring mResultVariableName
-  @semanticInstructionListAST mFunctionInstructionList
-  @location mEndOfFunctionInstructionList
-  @bool mIsInternal
-  @bool mIsUsefull
+  public var @lstring mFunctionName
+  public var @lstring mResultTypeName
+  public var @lstring mResultVariableName
+  public var @semanticInstructionListAST mFunctionInstructionList
+  public var @location mEndOfFunctionInstructionList
+  public var @bool mIsInternal
+  public var @bool mIsUsefull
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -321,11 +321,11 @@ refclass @onceFunctionDeclarationAST : @semanticDeclarationAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @propertyInCollectionListAST {
-  @bool isConstant %selector
-  @lstring mPropertyTypeName
-  @lstring mPropertyName
-  @bool mIsPublic
-  @lstringlist mAttributeList
+  public var @bool isConstant %selector
+  public var @lstring mPropertyTypeName
+  public var @lstring mPropertyName
+  public var @bool mIsPublic
+  public var @lstringlist mAttributeList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -335,68 +335,68 @@ list @propertyInCollectionListAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalTemplateInputParameterListAST {
-  @lstring mFormalTemplateSelector
-  @lstring mFormalArgumentTypeName
-  @lstring mFormalArgumentName
-  @bool mIsUnused
+  public var @lstring mFormalTemplateSelector
+  public var @lstring mFormalArgumentTypeName
+  public var @lstring mFormalArgumentName
+  public var @bool mIsUnused
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @filewrapperTemplateListAST {
-  @lstring mFilewrapperTemplateName
-  @lstring mFilewrapperTemplatePath
-  @formalTemplateInputParameterListAST mFilewrapperTemplateFormalInputParameters
+  public var @lstring mFilewrapperTemplateName
+  public var @lstring mFilewrapperTemplatePath
+  public var @formalTemplateInputParameterListAST mFilewrapperTemplateFormalInputParameters
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @filewrapperDeclarationAST : @semanticDeclarationAST {
-  @bool mIsInternal
-  @string mSourceFileAbsolutePath
-  @lstring mFilewrapperName
-  @lstring mFilewrapperPath
-  @lstringlist mFilewrapperTextFileExtensionList
-  @lstringlist mFilewrapperBinaryFileExtensionList
-  @filewrapperTemplateListAST mFilewrapperTemplateList
+  public var @bool mIsInternal
+  public var @string mSourceFileAbsolutePath
+  public var @lstring mFilewrapperName
+  public var @lstring mFilewrapperPath
+  public var @lstringlist mFilewrapperTextFileExtensionList
+  public var @lstringlist mFilewrapperBinaryFileExtensionList
+  public var @filewrapperTemplateListAST mFilewrapperTemplateList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @syntaxInstructionList {
-  @syntaxInstructionAST mInstruction
+  public var @syntaxInstructionAST mInstruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @nonTerminalLabelListAST {
-  @lstring mLabelName
-  @formalParameterListAST mFormalArgumentList
-  @location mEndOfArgumentLocation
+  public var @lstring mLabelName
+  public var @formalParameterListAST mFormalArgumentList
+  public var @location mEndOfArgumentLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @nonterminalDeclarationListAST {
-  @lstring mNonterminalName
-  @nonTerminalLabelListAST mLabels
+  public var @lstring mNonterminalName
+  public var @nonTerminalLabelListAST mLabels
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @syntaxRuleLabelListAST {
-  @lstring mLabelName
-  @formalParameterListAST mFormalArguments
-  @location mEndOfArgumentLocation
-  @syntaxInstructionList mSyntaxInstructionList
-  @location mEndOfInstructionList
+  public var @lstring mLabelName
+  public var @formalParameterListAST mFormalArguments
+  public var @location mEndOfArgumentLocation
+  public var @syntaxInstructionList mSyntaxInstructionList
+  public var @location mEndOfInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @syntaxRuleListAST {
-  @lstring mNonterminalName
-  @syntaxRuleLabelListAST mLabelList
+  public var @lstring mNonterminalName
+  public var @syntaxRuleLabelListAST mLabelList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -406,8 +406,8 @@ list @syntaxRuleListAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @listOfSyntaxInstructionList {
-  @syntaxInstructionList mSyntaxInstructionList
-  @location mEndOf_instructions
+  public var @syntaxInstructionList mSyntaxInstructionList
+  public var @location mEndOf_instructions
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -421,42 +421,42 @@ list @listOfSyntaxInstructionList {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @galgas3SyntaxComponentAST : @semanticDeclarationAST {
-  @lstring mSyntaxComponentName
-  @lstring mLexiqueName 
-  @nonterminalDeclarationListAST mNonterminalDeclarationList
-  @syntaxRuleListAST mRuleList
-  @bool mHasTranslateFeature
+  public var @lstring mSyntaxComponentName
+  public var @lstring mLexiqueName 
+  public var @nonterminalDeclarationListAST mNonterminalDeclarationList
+  public var @syntaxRuleListAST mRuleList
+  public var @bool mHasTranslateFeature
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @galgas3GrammarComponentAST : @semanticDeclarationAST {
-  @lbool mHasIndexing
-  @lstring mGrammarComponentName
-  @lstring mGrammarClass
-  @lstringlist mSyntaxComponents
-  @lstring mStartSymbolName
-  @nonTerminalLabelListAST mStartSymbolLabelList
-  @lstringlist mUnusedNonterminalList
-  @bool mHasTranslateFeature
+  public var @lbool mHasIndexing
+  public var @lstring mGrammarComponentName
+  public var @lstring mGrammarClass
+  public var @lstringlist mSyntaxComponents
+  public var @lstring mStartSymbolName
+  public var @nonTerminalLabelListAST mStartSymbolLabelList
+  public var @lstringlist mUnusedNonterminalList
+  public var @bool mHasTranslateFeature
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @galgas3SyntaxComponentListAST {
-  @lstring mSyntaxComponentName
-  @lstring mImportedLexiqueFilePath 
-  @nonterminalDeclarationListAST mNonterminalDeclarationList
-  @syntaxRuleListAST mRuleList
-  @bool mHasTranslateFeature
+  public var @lstring mSyntaxComponentName
+  public var @lstring mImportedLexiqueFilePath 
+  public var @nonterminalDeclarationListAST mNonterminalDeclarationList
+  public var @syntaxRuleListAST mRuleList
+  public var @bool mHasTranslateFeature
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @galgas3SyntaxExtensionListAST {
-  @lstring mSyntaxComponentName
-  @nonterminalDeclarationListAST mNonterminalDeclarationList
-  @syntaxRuleListAST mRuleList
+  public var @lstring mSyntaxComponentName
+  public var @nonterminalDeclarationListAST mNonterminalDeclarationList
+  public var @syntaxRuleListAST mRuleList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -466,32 +466,32 @@ listmap @syntaxExtensions (@galgas3SyntaxExtensionListAST)
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @prologueEpilogueList {
-  @semanticInstructionListAST mInstructionList
-  @location mEndOfInstructionList
+  public var @semanticInstructionListAST mInstructionList
+  public var @location mEndOfInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @programRuleList {
-  @lstring mSourceFileExtension
-  @lstring mSourceFileHelp
-  @lstring mSourceFileVariableName
-  @bool mSourceFileVariableNameIsUnused
-  @lstring mReferenceGrammar # Empty string if no grammar
-  @semanticInstructionListAST mInstructionList
-  @location mEndOfInstructionList
+  public var @lstring mSourceFileExtension
+  public var @lstring mSourceFileHelp
+  public var @lstring mSourceFileVariableName
+  public var @bool mSourceFileVariableNameIsUnused
+  public var @lstring mReferenceGrammar # Empty string if no grammar
+  public var @semanticInstructionListAST mInstructionList
+  public var @location mEndOfInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @galgas3DeclarationAST {
-  @semanticDeclarationListAST mDeclarationList
-  @galgas3SyntaxComponentListAST mSyntaxComponentList
-  @syntaxExtensions mSyntaxExtensions
-  @galgas3GUIComponentListAST mGUIComponentList
-  @prologueEpilogueList mPrologueDeclarationList
-  @programRuleList mSourceRuleList
-  @prologueEpilogueList mEpilogueDeclarationList
+  public var @semanticDeclarationListAST mDeclarationList
+  public var @galgas3SyntaxComponentListAST mSyntaxComponentList
+  public var @syntaxExtensions mSyntaxExtensions
+  public var @galgas3GUIComponentListAST mGUIComponentList
+  public var @prologueEpilogueList mPrologueDeclarationList
+  public var @programRuleList mSourceRuleList
+  public var @prologueEpilogueList mEpilogueDeclarationList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -3,16 +3,16 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @sortedListSortDescriptorListAST {
-  @lstring mSortedAttributeName
-  @bool mAscending
+  public var @lstring mSortedAttributeName
+  public var @bool mAscending
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @sortedListDeclarationAST : @semanticDeclarationAST {
-  @lstring mSortedListTypeName
-  @propertyInCollectionListAST mPropertyList
-  @sortedListSortDescriptorListAST mSortDescriptorList
+  public var @lstring mSortedListTypeName
+  public var @propertyInCollectionListAST mPropertyList
+  public var @sortedListSortDescriptorListAST mSortDescriptorList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -306,17 +306,17 @@ override method @sortedListDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @sortDescriptorListForGeneration {
-  @unifiedTypeMap-entry mAttributeTypeIndex
-  @string mAttributeName
-  @bool mAscendingOrder
+  public var @unifiedTypeMap-entry mAttributeTypeIndex
+  public var @string mAttributeName
+  public var @bool mAscendingOrder
 }
 
 #·······················································································································
 
 refclass @sortedListTypeForGeneration : @semanticTypeForGeneration {
-  @unifiedTypeMap-entry mListElementTypeIndex
-  @typedPropertyList mTypedAttributeList
-  @sortDescriptorListForGeneration mSortDescriptorList
+  public var @unifiedTypeMap-entry mListElementTypeIndex
+  public var @typedPropertyList mTypedAttributeList
+  public var @sortDescriptorListForGeneration mSortDescriptorList
 }
 
 #·······················································································································

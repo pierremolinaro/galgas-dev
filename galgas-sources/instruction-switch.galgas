@@ -3,27 +3,27 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @switchExtractedValuesListAST {
-  @lstring mExtractedValueTypeName
-  @lstring mExtractedValueName
-  @bool mMarkedAsUnused
+  public var @lstring mExtractedValueTypeName
+  public var @lstring mExtractedValueName
+  public var @bool mMarkedAsUnused
 }
 
 #·······················································································································
 
 list @switchBranchesAST {
-  @lstringlist mSwitchConstantList
-  @switchExtractedValuesListAST mAssociatedValuesExtraction
-  @semanticInstructionListAST mInstructions
-  @location mEndOfBranch
+  public var @lstringlist mSwitchConstantList
+  public var @switchExtractedValuesListAST mAssociatedValuesExtraction
+  public var @semanticInstructionListAST mInstructions
+  public var @location mEndOfBranch
 }
 
 #·······················································································································
 
 refclass @switchInstructionAST : @semanticInstructionAST {
-  @semanticExpressionAST mSwitchExpression
-  @location mEndOfSwitchExpression
-  @switchBranchesAST mBranches
-  @location mEndOf_switch_instruction
+  public var @semanticExpressionAST mSwitchExpression
+  public var @location mEndOfSwitchExpression
+  public var @switchBranchesAST mBranches
+  public var @location mEndOf_switch_instruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -251,26 +251,26 @@ override method @switchInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @extractedAssociatedValuesForGeneration {
-  @unifiedTypeMap-entry mType
-  @string mCppName
-  @uint mIndex
+  public var @unifiedTypeMap-entry mType
+  public var @string mCppName
+  public var @uint mIndex
 }
 
 #·······················································································································
 
 list @switchBranchesForGeneration {
-  @lstringlist mSwitchConstantList
-  @extractedAssociatedValuesForGeneration mExtractedAssociatedValuesForGeneration
-  @uint mEndOfBranchLocationIndex
-  @semanticInstructionListForGeneration mInstructions
+  public var @lstringlist mSwitchConstantList
+  public var @extractedAssociatedValuesForGeneration mExtractedAssociatedValuesForGeneration
+  public var @uint mEndOfBranchLocationIndex
+  public var @semanticInstructionListForGeneration mInstructions
 }
 
 #·······················································································································
 
 refclass @switchInstructionForGeneration : @semanticInstructionForGeneration {
-  @unifiedTypeMap-entry mEnumType
-  @semanticExpressionForGeneration mSwitchExpression
-  @switchBranchesForGeneration mBranches
+  public var @unifiedTypeMap-entry mEnumType
+  public var @semanticExpressionForGeneration mSwitchExpression
+  public var @switchBranchesForGeneration mBranches
 }
 
 #·······················································································································

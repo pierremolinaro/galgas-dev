@@ -3,10 +3,10 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @repeatInstruction : @syntaxInstructionAST {
-  @syntaxInstructionList mRepeatedInstructionList
-  @location mEndOf_repeated_instructions_branch
-  @listOfSyntaxInstructionList mRepeatBranchList
-  @location mEndOf_repeat_instruction
+  public var @syntaxInstructionList mRepeatedInstructionList
+  public var @location mEndOf_repeated_instructions_branch
+  public var @listOfSyntaxInstructionList mRepeatBranchList
+  public var @location mEndOf_repeat_instruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -172,11 +172,11 @@ override method @repeatInstruction analyzeSyntaxInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @repeatInstructionForGeneration : @syntaxInstructionForGeneration {
-  @string mSyntaxComponentName
-  @uint mChoiceIndex
-  @semanticInstructionListForGeneration m_repeated_instructionList
-  @location mEndOfRepeatedInstructions
-  @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
+  public var @string mSyntaxComponentName
+  public var @uint mChoiceIndex
+  public var @semanticInstructionListForGeneration m_repeated_instructionList
+  public var @location mEndOfRepeatedInstructions
+  public var @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

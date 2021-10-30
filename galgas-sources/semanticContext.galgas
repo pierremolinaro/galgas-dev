@@ -66,7 +66,7 @@ method @semanticInstructionListAST enterInstructionListInSemanticContext
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @grammarLabelMap {
-  @formalParameterSignature mLabelSignature
+  public var @formalParameterSignature mLabelSignature
   insert insertKey error message "the '%K' grammar label has been already declared in %L"
   search searchKey error message "the '%K' grammar label is not declared"
 }
@@ -74,9 +74,9 @@ map @grammarLabelMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @grammarMap {
-  @grammarLabelMap mLabelMap
-  @bool mHasIndexing
-  @bool mHasTranslateFeature
+  public var @grammarLabelMap mLabelMap
+  public var @bool mHasIndexing
+  public var @bool mHasTranslateFeature
   insert insertGrammar error message "the '%K' grammar has been already declared in %L"
   search searchKey error message "the '%K' grammar is not declared"
 }
@@ -88,8 +88,8 @@ map @grammarMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @routineMap {
-  @formalParameterSignature mRoutineSignature
-  @bool mIsInternal
+  public var @formalParameterSignature mRoutineSignature
+  public var @bool mIsInternal
   insert insertKey error message "the '%K' routine has been already declared in %L"
   search searchKey error message "the '%K' routine is not declared"
 }
@@ -101,9 +101,9 @@ map @routineMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @functionMap {
-  @functionSignature mFunctionSignature
-  @unifiedTypeMap-entry mResultType
-  @bool mIsInternal
+  public var @functionSignature mFunctionSignature
+  public var @unifiedTypeMap-entry mResultType
+  public var @bool mIsInternal
   insert insertKey error message "the '%K' function has been already declared in %L"
   search searchKey error message "the '%K' function is not declared"
 }
@@ -115,10 +115,10 @@ map @functionMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @wrapperFileMap { # Key is file name
-  @string mAbsoluteFilePath
-  @bool mIsTextFile # true: text file, false: binary file
-  @uint mWrapperDirectoryIndex
-  @uint mWrapperFileIndex
+  public var @string mAbsoluteFilePath
+  public var @bool mIsTextFile # true: text file, false: binary file
+  public var @uint mWrapperDirectoryIndex
+  public var @uint mWrapperFileIndex
   insert insertKey error message "INTERNAL ERROR"
   search searchKey error message "INTERNAL ERROR"
 }
@@ -126,9 +126,9 @@ map @wrapperFileMap { # Key is file name
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @wrapperDirectoryMap { # Key is directory name
-  @wrapperFileMap mRegularFileMap
-  @wrapperDirectoryMap mDirectoryMap
-  @uint mWrapperDirectoryIndex
+  public var @wrapperFileMap mRegularFileMap
+  public var @wrapperDirectoryMap mDirectoryMap
+  public var @uint mWrapperDirectoryIndex
   insert insertKey error message "INTERNAL ERROR"
   search searchKey error message "INTERNAL ERROR"
 }
@@ -136,8 +136,8 @@ map @wrapperDirectoryMap { # Key is directory name
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @filewrapperTemplateMap {
-  @functionSignature mTemplateSignature
-  @lstring mFilewrapperTemplatePath
+  public var @functionSignature mTemplateSignature
+  public var @lstring mFilewrapperTemplatePath
   insert insertKey error message "the '%K' filewrapper template has been already declared in %L"
   search searchKey error message "the '%K' filewrapper template is not declared"
 }
@@ -145,12 +145,12 @@ map @filewrapperTemplateMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @filewrapperMap {
-  @lstring mFilewrapperPath
-  @lstringlist mFilewrapperExtensionList
-  @wrapperFileMap mFilewrapperFileMap
-  @wrapperDirectoryMap mFilewrapperDirectoryMap
-  @filewrapperTemplateMap mFilewrapperTemplateMap
-  @bool mIsInternal
+  public var @lstring mFilewrapperPath
+  public var @lstringlist mFilewrapperExtensionList
+  public var @wrapperFileMap mFilewrapperFileMap
+  public var @wrapperDirectoryMap mFilewrapperDirectoryMap
+  public var @filewrapperTemplateMap mFilewrapperTemplateMap
+  public var @bool mIsInternal
   insert insertKey error message "the '%K' filewrapper has been already declared in %L"
   search searchKey error message "the '%K' filewrapper is not declared"
 }
@@ -162,11 +162,11 @@ map @filewrapperMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @optionComponentMapForSemanticAnalysis {
-  @bool mIsPredefined
-  @commandLineOptionMap mBoolOptionMap
-  @commandLineOptionMap mUIntOptionMap
-  @commandLineOptionMap mStringOptionMap
-  @commandLineOptionMap mStringListOptionMap
+  public var @bool mIsPredefined
+  public var @commandLineOptionMap mBoolOptionMap
+  public var @commandLineOptionMap mUIntOptionMap
+  public var @commandLineOptionMap mStringOptionMap
+  public var @commandLineOptionMap mStringListOptionMap
   insert insertKey error message "redefinition of the '%K' option component: it has been already declared in %L"
   search searchKey error message "the '%K' option component is not imported"
 }
@@ -178,9 +178,9 @@ map @optionComponentMapForSemanticAnalysis {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexiqueComponentMapForSemanticAnalysis {
-  @terminalMap mTerminalMap
-  @indexingListAST mIndexingListAST
-  @lstring mIndexingDirectory
+  public var @terminalMap mTerminalMap
+  public var @indexingListAST mIndexingListAST
+  public var @lstring mIndexingDirectory
   insert insertKey error message "redefinition of the '%K' lexique component: it has been already declared in %L"
   search searchKey error message "the '%K' lexique component is not imported"
 }
@@ -192,10 +192,10 @@ map @lexiqueComponentMapForSemanticAnalysis {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @syntaxComponentMap {
-  @lstring mLexiqueName 
-  @nonterminalDeclarationListAST mNonterminalDeclarationList
-  @syntaxRuleListAST mRuleList
-  @bool mHasTranslateFeature
+  public var @lstring mLexiqueName 
+  public var @nonterminalDeclarationListAST mNonterminalDeclarationList
+  public var @syntaxRuleListAST mRuleList
+  public var @bool mHasTranslateFeature
   insert insertKey error message "the '%K' syntax component has already been parsed"
   search searchKey error message "the '%K' syntax component is not parsed"
 }
@@ -207,14 +207,14 @@ map @syntaxComponentMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @semanticContext {
-  @unifiedTypeMap mTypeMap
-  @routineMap mRoutineMap
-  @functionMap mFunctionMap
-  @filewrapperMap mFilewrapperMap
-  @grammarMap mGrammarMap
-  @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis
-  @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis
-  @syntaxComponentMap mSyntaxComponentMapForSemanticAnalysis
+  public var @unifiedTypeMap mTypeMap
+  public var @routineMap mRoutineMap
+  public var @functionMap mFunctionMap
+  public var @filewrapperMap mFilewrapperMap
+  public var @grammarMap mGrammarMap
+  public var @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis
+  public var @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis
+  public var @syntaxComponentMap mSyntaxComponentMapForSemanticAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -224,14 +224,14 @@ struct @semanticContext {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionMethodMapForType {
-  @formalParameterListAST mFormalParameterList
+  public var @formalParameterListAST mFormalParameterList
   insert insertKey error message "the '%K' method has been already declared in %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionMethodMapForBuildingContext {
-  @extensionMethodMapForType mExtensionMethodMapForType
+  public var @extensionMethodMapForType mExtensionMethodMapForType
   insert insertKey error message "internal error"
   search searchKey error message "internal error"
 }
@@ -243,14 +243,14 @@ map @extensionMethodMapForBuildingContext {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionSetterMapForType {
-  @formalParameterListAST mFormalParameterList
+  public var @formalParameterListAST mFormalParameterList
   insert insertKey error message "the '%K' setter has been already declared in %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionSetterMapForBuildingContext {
-  @extensionSetterMapForType mExtensionSetterMapForType
+  public var @extensionSetterMapForType mExtensionSetterMapForType
   insert insertKey error message "internal error"
   search searchKey error message "internal error"
 }
@@ -262,15 +262,15 @@ map @extensionSetterMapForBuildingContext {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionGetterMapForType {
-  @lstring mResultTypeName
-  @formalInputParameterListAST mInputFormalParameterList
+  public var @lstring mResultTypeName
+  public var @formalInputParameterListAST mInputFormalParameterList
   insert insertKey error message "the '%K' getter has been already declared in %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionGetterMapForBuildingContext {
-  @extensionGetterMapForType mExtensionGetterMapForType
+  public var @extensionGetterMapForType mExtensionGetterMapForType
   insert insertKey error message "internal error"
   search searchKey error message "internal error"
 }

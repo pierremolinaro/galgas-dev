@@ -3,17 +3,17 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @assignmentInstructionAST : @semanticInstructionAST {
-  @lstring mTargetVariableName
-  @lstring mOptionalProperty
-  @semanticExpressionAST mSourceExpression
+  public var @lstring mTargetVariableName
+  public var @lstring mOptionalProperty
+  public var @semanticExpressionAST mSourceExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
-  @lstring mTargetSelfPropertyName
-  @lstring mOptionalProperty
-  @semanticExpressionAST mSourceExpression
+  public var @lstring mTargetSelfPropertyName
+  public var @lstring mOptionalProperty
+  public var @semanticExpressionAST mSourceExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -237,12 +237,12 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
-  @unifiedTypeMap-entry mTargetType
-  @string mTargetCppName
-  @string mNameForCheckingFormalParameterUsing
-  @string mOptionalProperty
-  @semanticExpressionForGeneration mSourceExpression
-  @location mSourceLocation
+  public var @unifiedTypeMap-entry mTargetType
+  public var @string mTargetCppName
+  public var @string mNameForCheckingFormalParameterUsing
+  public var @string mOptionalProperty
+  public var @semanticExpressionForGeneration mSourceExpression
+  public var @location mSourceLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

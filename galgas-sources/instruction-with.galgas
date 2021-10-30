@@ -3,33 +3,33 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @readAccessWithInstructionAST : @semanticInstructionAST {
-  @lstring mPrefix
-  @semanticExpressionAST mReceiverExpression
-  @location mEndOfReceiverExpression
-  @semanticExpressionAST mKeyExpression
-  @location mEndOfKeyExpression
-  @lstring mSearchMethodNameForErrorSignaling
-  @semanticInstructionListAST mDoBranchInstructions
-  @location mEndOf_do_instructions
-  @semanticInstructionListAST mElseBranchInstructions
-  @location mEndOf_else_instructions
+  public var @lstring mPrefix
+  public var @semanticExpressionAST mReceiverExpression
+  public var @location mEndOfReceiverExpression
+  public var @semanticExpressionAST mKeyExpression
+  public var @location mEndOfKeyExpression
+  public var @lstring mSearchMethodNameForErrorSignaling
+  public var @semanticInstructionListAST mDoBranchInstructions
+  public var @location mEndOf_do_instructions
+  public var @semanticInstructionListAST mElseBranchInstructions
+  public var @location mEndOf_else_instructions
 }
 
 #······················································································································*
 
 refclass @readWriteAccessWithInstructionAST : @semanticInstructionAST {
-  @lstring mPrefix
-  @lstring mReceiverName
-  @bool mReceiverIsPrefixedBySelf
-  @lstringlist mFieldList
-  @location mEndOfReceiverExpression
-  @semanticExpressionAST mKeyExpression
-  @location mEndOfKeyExpression
-  @lstring mSearchMethodNameForErrorSignaling
-  @semanticInstructionListAST m_do_Instructions
-  @location mEndOf_do_instructions
-  @semanticInstructionListAST m_else_Instructions
-  @location mEndOf_else_instructions
+  public var @lstring mPrefix
+  public var @lstring mReceiverName
+  public var @bool mReceiverIsPrefixedBySelf
+  public var @lstringlist mFieldList
+  public var @location mEndOfReceiverExpression
+  public var @semanticExpressionAST mKeyExpression
+  public var @location mEndOfKeyExpression
+  public var @lstring mSearchMethodNameForErrorSignaling
+  public var @semanticInstructionListAST m_do_Instructions
+  public var @location mEndOf_do_instructions
+  public var @semanticInstructionListAST m_else_Instructions
+  public var @location mEndOf_else_instructions
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -457,27 +457,27 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @readOnlyWithInstructionForGeneration : @semanticInstructionForGeneration {
-  @location mInstructionLocation
-  @semanticExpressionForGeneration mReceiverExpression
-  @string mObjectArrayCppName
-  @semanticExpressionForGeneration mKeyExpression
-  @string mSearchMethodNameForErrorSignaling
-  @semanticInstructionListForGeneration mDoBranchInstructions
-  @semanticInstructionListForGeneration mElseBranchInstructions
+  public var @location mInstructionLocation
+  public var @semanticExpressionForGeneration mReceiverExpression
+  public var @string mObjectArrayCppName
+  public var @semanticExpressionForGeneration mKeyExpression
+  public var @string mSearchMethodNameForErrorSignaling
+  public var @semanticInstructionListForGeneration mDoBranchInstructions
+  public var @semanticInstructionListForGeneration mElseBranchInstructions
 }
 
 #······················································································································*
 
 refclass @readWriteWithInstructionForGeneration : @semanticInstructionForGeneration {
-  @location mInstructionLocation
-  @string mReceiverVariableCppName
-  @unifiedTypeMap-entry mReceiverType
-  @lstringlist mStructAttributeList
-  @string mObjectArrayCppName
-  @semanticExpressionForGeneration mKeyExpression
-  @string mSearchMethodNameForErrorSignaling
-  @semanticInstructionListForGeneration mDoBranchInstructions
-  @semanticInstructionListForGeneration mElseBranchInstructions
+  public var @location mInstructionLocation
+  public var @string mReceiverVariableCppName
+  public var @unifiedTypeMap-entry mReceiverType
+  public var @lstringlist mStructAttributeList
+  public var @string mObjectArrayCppName
+  public var @semanticExpressionForGeneration mKeyExpression
+  public var @string mSearchMethodNameForErrorSignaling
+  public var @semanticInstructionListForGeneration mDoBranchInstructions
+  public var @semanticInstructionListForGeneration mElseBranchInstructions
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

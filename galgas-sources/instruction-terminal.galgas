@@ -3,11 +3,11 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @terminalCheckInstruction : @syntaxInstructionAST {
-  @lstring mTerminalName
-  @actualInputParameterListAST mActualInputParameterList
-  @2lstringlist mIndexingKeyList # Empty list if no index
-  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
-  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken
+  public var @lstring mTerminalName
+  public var @actualInputParameterListAST mActualInputParameterList
+  public var @2lstringlist mIndexingKeyList # Empty list if no index
+  public var @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+  public var @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -168,12 +168,12 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @terminalCheckInstructionForGeneration : @syntaxInstructionForGeneration {
-  @lstring mTerminalName
-  @string mLexiqueIdentifier
-  @terminalCheckAssignementList mTerminalCheckAssignementList
-  @2lstringlist mIndexingKeyList
-  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
-  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken
+  public var @lstring mTerminalName
+  public var @string mLexiqueIdentifier
+  public var @terminalCheckAssignementList mTerminalCheckAssignementList
+  public var @2lstringlist mIndexingKeyList
+  public var @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+  public var @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

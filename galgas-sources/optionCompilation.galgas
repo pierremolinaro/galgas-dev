@@ -9,20 +9,20 @@ enum @optionDefaultValueEnumAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @commandLineOptionListAST {
-  @lstring mOptionTypeName
-  @lstring mOptionInternalName
-  @lchar mOptionInvocationLetter
-  @lstring mOptionInvocationString
-  @lstring mOptionComment
-  @lstring mOptionDefaultValue
-  @optionDefaultValueEnumAST mOptionDefaultValueKind
+  public var @lstring mOptionTypeName
+  public var @lstring mOptionInternalName
+  public var @lchar mOptionInvocationLetter
+  public var @lstring mOptionInvocationString
+  public var @lstring mOptionComment
+  public var @lstring mOptionDefaultValue
+  public var @optionDefaultValueEnumAST mOptionDefaultValueKind
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @optionComponentDeclarationAST : @semanticDeclarationAST {
-  @lstring mOptionComponentName
-  @commandLineOptionListAST mOptions
+  public var @lstring mOptionComponentName
+  public var @commandLineOptionListAST mOptions
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -226,12 +226,12 @@ override method @optionComponentDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @optionComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @bool mIsPredefined
-  @string mOptionComponentName
-  @commandLineOptionMap mBoolOptionMap
-  @commandLineOptionMap mUIntOptionMap
-  @commandLineOptionMap mStringOptionMap
-  @commandLineOptionMap mStringListOptionMap
+  public var @bool mIsPredefined
+  public var @string mOptionComponentName
+  public var @commandLineOptionMap mBoolOptionMap
+  public var @commandLineOptionMap mUIntOptionMap
+  public var @commandLineOptionMap mStringOptionMap
+  public var @commandLineOptionMap mStringListOptionMap
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -338,10 +338,10 @@ override method @optionComponentForGeneration appendSpecificFiles
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @commandLineOptionMap { # the key is the option identifier
-  @char mOptionChar
-  @string mOptionString
-  @string mComment
-  @string mDefaultValue
+  public var @char mOptionChar
+  public var @string mOptionString
+  public var @string mComment
+  public var @string mDefaultValue
   insert insertKey error message "the '%K' command line option has been already declared in %L"
   search searchKey error message "the '%K' command line option is not declared"
 }

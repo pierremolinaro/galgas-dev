@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @forInstructionEnumeratedObjectElementListAST {
-  @lstring mOptionalTypeName # Empty string if joker
-  @lstring mOptionalConstantName  # Empty string if joker
+  public var @lstring mOptionalTypeName # Empty string if joker
+  public var @lstring mOptionalConstantName  # Empty string if joker
 }
 
 #·····················································································································*
@@ -15,52 +15,52 @@ abstract refclass @abstractEnumeratedCollectionAST {
 #·····················································································································*
 
 refclass @enumeratedCollectionImplicitVarInExpAST : @abstractEnumeratedCollectionAST {
-  @lstring mPrefix
-  @semanticExpressionAST mEnumeratedExpression
-  @location mEndOfAnonymousEnumeration
+  public var @lstring mPrefix
+  public var @semanticExpressionAST mEnumeratedExpression
+  public var @location mEndOfAnonymousEnumeration
 }
 
 #·····················································································································*
 
 refclass @enumeratedCollectionVarInExpAST : @abstractEnumeratedCollectionAST {
-  @lstring mEnumerationOptionalTypeName # Empty string if implicit
-  @lstring mEnumerationVariable
-  @semanticExpressionAST mEnumeratedExpression
-  @location mEndOfEnumerationExpression
+  public var @lstring mEnumerationOptionalTypeName # Empty string if implicit
+  public var @lstring mEnumerationVariable
+  public var @semanticExpressionAST mEnumeratedExpression
+  public var @location mEndOfEnumerationExpression
 }
 
 #·····················································································································*
 
 refclass @enumeratedCollectionCstListInExpAST : @abstractEnumeratedCollectionAST {
-  @forInstructionEnumeratedObjectElementListAST mElementList
-  @bool mEndsWithEllipsis
-  @semanticExpressionAST mEnumeratedExpression
-  @location mEndOfEnumerationExpression
+  public var @forInstructionEnumeratedObjectElementListAST mElementList
+  public var @bool mEndsWithEllipsis
+  public var @semanticExpressionAST mEnumeratedExpression
+  public var @location mEndOfEnumerationExpression
 }
 
 #·····················································································································*
 
 list @forInstructionEnumeratedObjectListAST {
-  @bool mAscending
-  @abstractEnumeratedCollectionAST mEnumeratedCollection
+  public var @bool mAscending
+  public var @abstractEnumeratedCollectionAST mEnumeratedCollection
 }
 
 #·····················································································································*
 
 refclass @forInstructionAST : @semanticInstructionAST {
-  @forInstructionEnumeratedObjectListAST mEnumeratedObjectList
-  @lstring mIndexVariableName
-  @semanticExpressionAST mWhileExpression
-  @location mEndOf_while_expression
-  @semanticInstructionListAST mBeforeInstructionList
-  @location mEndOf_before_branch
-  @semanticInstructionListAST mBetweenInstructionList
-  @location mEndOf_between_branch
-  @semanticInstructionListAST mDoInstructionList
-  @location mEndOf_do_branch
-  @semanticInstructionListAST mAfterInstructionList
-  @location mEndOf_after_branch
-  @location mEndOf_foreach_instruction
+  public var @forInstructionEnumeratedObjectListAST mEnumeratedObjectList
+  public var @lstring mIndexVariableName
+  public var @semanticExpressionAST mWhileExpression
+  public var @location mEndOf_while_expression
+  public var @semanticInstructionListAST mBeforeInstructionList
+  public var @location mEndOf_before_branch
+  public var @semanticInstructionListAST mBetweenInstructionList
+  public var @location mEndOf_between_branch
+  public var @semanticInstructionListAST mDoInstructionList
+  public var @location mEndOf_do_branch
+  public var @semanticInstructionListAST mAfterInstructionList
+  public var @location mEndOf_after_branch
+  public var @location mEndOf_foreach_instruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -421,7 +421,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
     else
       if [option galgas_cli_options.errorEllipsisInEnumeratedObject value] && ([enumerationDescriptorList length] > [self.mElementList length]) then
         let missingArgumentCount = [enumerationDescriptorList length] - [self.mElementList length]
-        error mEndOfEnumerationExpression
+        error self.mEndOfEnumerationExpression
         : "enumerated object ends with '...' (due to '--error-ellipsis-in-for-instruction' option)"
         fixit { replace if missingArgumentCount == 1 then "*" else " " + missingArgumentCount + "*" end }
       end
@@ -639,22 +639,22 @@ override method @forInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @forInstructionEnumeratedObjectListForGeneration {
-  @string mEnumerationOrder
-  @semanticExpressionForGeneration mEnumeratedExpression
-  @string mEnumeratorCppName
+  public var @string mEnumerationOrder
+  public var @semanticExpressionForGeneration mEnumeratedExpression
+  public var @string mEnumeratorCppName
 }
 
 #·····················································································································*
 
 refclass @forInstructionForGeneration : @semanticInstructionForGeneration {
-  @location mInstructionLocation
-  @forInstructionEnumeratedObjectListForGeneration mEnumeratedObjectList
-  @string mIndexVariableCppName  # Empty string if no index
-  @semanticExpressionForGeneration mWhileExpression
-  @semanticInstructionListForGeneration mBeforeInstructionList
-  @semanticInstructionListForGeneration mBetweenInstructionList
-  @semanticInstructionListForGeneration mDoInstructionList
-  @semanticInstructionListForGeneration mAfterInstructionList
+  public var @location mInstructionLocation
+  public var @forInstructionEnumeratedObjectListForGeneration mEnumeratedObjectList
+  public var @string mIndexVariableCppName  # Empty string if no index
+  public var @semanticExpressionForGeneration mWhileExpression
+  public var @semanticInstructionListForGeneration mBeforeInstructionList
+  public var @semanticInstructionListForGeneration mBetweenInstructionList
+  public var @semanticInstructionListForGeneration mDoInstructionList
+  public var @semanticInstructionListForGeneration mAfterInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

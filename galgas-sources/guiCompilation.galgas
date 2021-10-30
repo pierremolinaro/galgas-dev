@@ -3,84 +3,84 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @guiSimpleAttributeListAST {
-  @lstring mKey
-  @lstring mValue
+  public var @lstring mKey
+  public var @lstring mValue
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @guiCompoundAttributeListAST {
-  @lstring mKey
-  @lstring mAttributeName
-  @lstring mValue
+  public var @lstring mKey
+  public var @lstring mAttributeName
+  public var @lstring mValue
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @terminalLabelListAST {
-  @lstring mTerminal
-  @uint mDisplayFlags
+  public var @lstring mTerminal
+  public var @uint mDisplayFlags
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @guiLabelListAST {
-  @uint mLeadingCharacterStrippedCount
-  @terminalLabelListAST mTerminalList
-  @location mLocation
+  public var @uint mLeadingCharacterStrippedCount
+  public var @terminalLabelListAST mTerminalList
+  public var @location mLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @withLexiqueListAST {
-  @lstring mLexiqueFileName
-  @guiLabelListAST mLabels
-  @guiSimpleAttributeListAST mSimpleAttributes
-  @guiCompoundAttributeListAST mCompoundAttributes
+  public var @lstring mLexiqueFileName
+  public var @guiLabelListAST mLabels
+  public var @guiSimpleAttributeListAST mSimpleAttributes
+  public var @guiCompoundAttributeListAST mCompoundAttributes
 }
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @guiCommandLineOptionList {
-  @string mOptionComponent
-  @string mOptionIdentifier
-  @char mOptionChar
-  @string mOptionString
-  @string mComment
+  public var @string mOptionComponent
+  public var @string mOptionIdentifier
+  public var @char mOptionChar
+  public var @string mOptionString
+  public var @string mComment
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionMap {
-  @string mLexiqueName
-  @uint mIndex
+  public var @string mLexiqueName
+  public var @uint mIndex
   insert insertKey error message "the '%K' extension is already declared in %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @textMacroList {
-  @string mKey
-  @string mContents
+  public var @string mKey
+  public var @string mContents
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @importedLexiqueList {
-  @string mLexiqueClassName
-  @uint mIndex
-  @string mBlockComment
-  @string mTitle
-  @textMacroList mTextMacroList
-  @guiLabelListAST mLabels
+  public var @string mLexiqueClassName
+  public var @uint mIndex
+  public var @string mBlockComment
+  public var @string mTitle
+  public var @textMacroList mTextMacroList
+  public var @guiLabelListAST mLabels
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @galgas3GUIComponentListAST {
-  @lstring mGUIComponentName
-  @lstringlist mImportedOptionList
-  @guiSimpleAttributeListAST mGlobalSimpleAttributeList
-  @withLexiqueListAST mWithLexiqueList
+  public var @lstring mGUIComponentName
+  public var @lstringlist mImportedOptionList
+  public var @guiSimpleAttributeListAST mGlobalSimpleAttributeList
+  public var @withLexiqueListAST mWithLexiqueList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -216,20 +216,20 @@ syntax galgas3GuiComponentSyntax (galgas3Scanner) {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @guiAnalysisContext {
-  @stringlist mImportedOptionComponentList
-  @guiCommandLineOptionList mBoolOptionList
-  @guiCommandLineOptionList mUIntOptionList
-  @guiCommandLineOptionList mStringOptionList
-  @stringlist mNibAndClassList
-  @extensionMap mExtensionMap
-  @importedLexiqueList mWithLexiqueList
-  @string mBuildRunOption
+  public var @stringlist mImportedOptionComponentList
+  public var @guiCommandLineOptionList mBoolOptionList
+  public var @guiCommandLineOptionList mUIntOptionList
+  public var @guiCommandLineOptionList mStringOptionList
+  public var @stringlist mNibAndClassList
+  public var @extensionMap mExtensionMap
+  public var @importedLexiqueList mWithLexiqueList
+  public var @string mBuildRunOption
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @optionComponentMapForGeneration {
-  @guiAnalysisContext mGuiComponentContext
+  public var @guiAnalysisContext mGuiComponentContext
   insert insertKey error message "redefinition of the '%K' option component: it has been already declared in %L"
 }
 

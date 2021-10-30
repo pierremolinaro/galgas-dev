@@ -429,8 +429,8 @@ private proc generateOneBigHeader
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @headerCompositionMap {
-  @stringset mInclusion
-  @string mHeaderString
+  public var @stringset mInclusion
+  public var @string mHeaderString
   insert insertKey error message "the '%K' key is already declared in %L"
   search searchKey error message "there is no '%K' key"
 }
@@ -438,7 +438,7 @@ map @headerCompositionMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @headerRepartitionMap {
-  @string mHeaderFileName
+  public var @string mHeaderFileName
   insert insertKey error message "the '%K' key is already declared in %L"
   search searchKey error message "there is no '%K' key"
 }
