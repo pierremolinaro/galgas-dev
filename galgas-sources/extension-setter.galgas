@@ -230,7 +230,7 @@ override method @extensionSetterForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in self.mExtensionSetterFormalParameterList do
+  for (* * mFormalArgumentType * *) in self.mExtensionSetterFormalParameterList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
   if self.mImplementedAsFunction then

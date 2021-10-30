@@ -330,7 +330,7 @@ override method @lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgumen
     + [[lexicalFormalTypeList length] string] + " actual argument(s)"
   end
 #--- Check actual argument against formal parameters
-  for (mLexicalType mArgumentNameForComment) in lexicalFormalTypeList, (mLexicalActualInputArgument) in self.mFunctionActualArgumentList do
+  for (mLexicalType *) in lexicalFormalTypeList, (mLexicalActualInputArgument) in self.mFunctionActualArgumentList do
     [mLexicalActualInputArgument checkLexicalFunctionCallArgument
       !?ioLexiqueAnalysisContext
       !mLexicalType
@@ -445,7 +445,7 @@ override method @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
     + [[lexicalFormalTypeList length] string] + " actual argument(s)"
   end
 #--- Check actual argument against formal parameters
-  for (mLexicalType mArgumentNameForComment) in lexicalFormalTypeList, (mLexicalActualInputArgument) in self.mFunctionActualArgumentList do
+  for (mLexicalType *) in lexicalFormalTypeList, (mLexicalActualInputArgument) in self.mFunctionActualArgumentList do
     [mLexicalActualInputArgument checkLexicalFunctionCallArgument
       !?ioLexiqueAnalysisContext
       !mLexicalType
@@ -590,7 +590,7 @@ override method @lexicalRoutineInstructionAST checkLexicalInstruction
     + [lexicalRoutineFormalArgumentList length] + " actual argument(s)"
   end
 #--- Check actual argument against formal parameters
-  for (mLexicalFormalArgumentMode mLexicalFormalArgumentType mArgumentNameForComment) in lexicalRoutineFormalArgumentList, (mLexicalRoutineActualArgument) in self.mActualArgumentList do
+  for (mLexicalFormalArgumentMode mLexicalFormalArgumentType *) in lexicalRoutineFormalArgumentList, (mLexicalRoutineActualArgument) in self.mActualArgumentList do
     [mLexicalRoutineActualArgument checkLexicalRoutineCallArgument
       !?ioLexiqueAnalysisContext
       !mLexicalFormalArgumentMode

@@ -89,7 +89,7 @@ syntax extension galgas3InstructionsSyntax {
         select
           $uint32$ ?let n
           $*$
-          for a in 0 ..< n.uint do
+          for * in 0 ..< n.uint do
             outAssociatedValuesExtraction += !["" nowhere] !["" nowhere] !false
           end
          or
@@ -130,7 +130,7 @@ override method @switchInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   [self.mSwitchExpression enterExpressionInSemanticContext !?ioTypeMap]
-  for (mSwitchConstantList mAssociatedValuesExtraction mInstructions mEndOfBranch) in self.mBranches do
+  for (* * mInstructions *) in self.mBranches do
     [mInstructions enterInstructionListInSemanticContext !?ioTypeMap]
   end
 }

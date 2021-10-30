@@ -423,7 +423,7 @@ proc addExtensions
     [inExtensionMethodMapForBuildingContext searchKey !inTypeName ?extensionMethodMapForType]
     for (lkey mFormalParameterList) in extensionMethodMapForType do
       var formalArgumentList =@formalParameterSignature {}
-      for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFormalParameterList do
+      for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
         [@unifiedTypeMap-entry makeEntry
           !?ioSemanticContext.mTypeMap
           !mFormalArgumentTypeName
@@ -448,7 +448,7 @@ proc addExtensions
     [inExtensionGetterMapForBuildingContext searchKey !inTypeName ?let extensionGetterMapForType]
     for (lkey mResultTypeName mInputFormalParameterList) in extensionGetterMapForType do
       var @functionSignature formalArgumentList = {}
-      for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName mIsUnused mIsConstant) in mInputFormalParameterList do
+      for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * *) in mInputFormalParameterList do
         [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let typeIndex]
         formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentName.string
       end
@@ -471,7 +471,7 @@ proc addExtensions
     [inExtensionSetterMapForBuildingContext searchKey !inTypeName ?extensionSetterMapForType]
     for (lkey mFormalParameterList) in extensionSetterMapForType do
       var @formalParameterSignature formalArgumentList = {}
-      for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFormalParameterList do
+      for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
         [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let typeIndex]
         formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
       end
@@ -611,7 +611,7 @@ override method @filewrapperDeclarationAST enterInSemanticContext
   var @filewrapperTemplateMap filewrapperTemplateMap = {}
   for (mFilewrapperTemplateName mFilewrapperTemplatePath mFilewrapperTemplateFormalInputParameters) in self.mFilewrapperTemplateList do
     var @functionSignature templateSignature = {}
-    for (mFormalTemplateSelector mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFilewrapperTemplateFormalInputParameters do
+    for (mFormalTemplateSelector mFormalArgumentTypeName mFormalArgumentName *) in mFilewrapperTemplateFormalInputParameters do
       [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
       templateSignature += !mFormalTemplateSelector !parameterTypeIndex !mFormalArgumentName.string
     end
@@ -683,7 +683,7 @@ override method @externRoutineDeclarationAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
   var routineSignature =@formalParameterSignature {}
-  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in self.mFormalArgumentList do
+  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mFormalArgumentList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
     routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
   end
@@ -704,7 +704,7 @@ override method @procDeclarationAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
   var routineSignature =@formalParameterSignature {}
-  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in self.mFormalArgumentList do
+  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mFormalArgumentList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
     routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
   end
@@ -727,7 +727,7 @@ override method @externFunctionDeclarationAST enterInSemanticContext # Handles a
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
   var functionSignature =@functionSignature {}
-  for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName mIsUnused mIsConstant) in self.mFormalArgumentList do
+  for (mFormalSelector mFormalArgumentTypeName * * *) in self.mFormalArgumentList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
     functionSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentTypeName.string
   end
@@ -782,10 +782,10 @@ override method @galgas3GrammarComponentAST enterInSemanticContext
 {
 #--- Analyze start symbol labels
   var @grammarLabelMap grammarLabelMap = {}
-  for (mLabelName mFormalArgumentList mEndOfArgumentLocation) in self.mStartSymbolLabelList do
+  for (mLabelName mFormalArgumentList *) in self.mStartSymbolLabelList do
   #--- Analyze signature
     var @formalParameterSignature formalArgumentList = {}
-    for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFormalArgumentList do
+    for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalArgumentList do
       [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let argumentType]
       formalArgumentList +=
         !mFormalSelector
@@ -824,7 +824,7 @@ override method @lexiqueComponentAST enterInSemanticContext
   )
 #--------------------------------------- 
   var @terminalMap terminalMap = {}
-  for (mName mSentAttributeList mSyntaxErrorMessage mStyle mOptionList) in self.mTerminalDeclarationList do
+  for (mName mSentAttributeList * * *) in self.mTerminalDeclarationList do
     var argumentTypeList =@lexicalSentValueList {}
     for (mFormalSelector mAttributeName) in mSentAttributeList do
       var @lexicalTypeEnum attributeLexicalType
@@ -834,14 +834,14 @@ override method @lexiqueComponentAST enterInSemanticContext
     [!?terminalMap insertKey !mName !argumentTypeList]
   end
 #---
-  for (mName mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in self.mLexicalListDeclarationList do
+  for (* * * mSentAttributeList mEntryList) in self.mLexicalListDeclarationList do
     var argumentTypeList =@lexicalSentValueList {}
     for (mFormalSelector mAttributeName) in mSentAttributeList do
       var @lexicalTypeEnum attributeLexicalType
       [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
-    for (mEntrySpelling mTerminalSpelling mAttributeList) in mEntryList do
+    for (* mTerminalSpelling *) in mEntryList do
       [!?terminalMap insertKey !mTerminalSpelling !argumentTypeList]
     end
   end
@@ -903,9 +903,9 @@ override method @galgas3SyntaxComponentAST enterDeclarationInGraph
   let key = @lstring.new {!"syntax " + self.mSyntaxComponentName !self.mSyntaxComponentName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"lexique " + self.mLexiqueName !self.mLexiqueName.location}]
-  for (mNonterminalName mLabelList) in self.mRuleList do
-    for (mLabelName mFormalArguments mEndOfArgumentLocation mSyntaxInstructionList mEndOfInstructionList) in mLabelList do
-      for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFormalArguments do
+  for (* mLabelList) in self.mRuleList do
+    for (* mFormalArguments * * *) in mLabelList do
+      for (* mFormalArgumentPassingMode mFormalArgumentTypeName * *) in mFormalArguments do
         switch mFormalArgumentPassingMode
           case argumentIn : [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mFormalArgumentTypeName !mFormalArgumentTypeName.location}] ;
           case argumentOut, argumentInOut, argumentConstantIn :

@@ -49,7 +49,7 @@ override method @structDeclarationAST enterDeclarationInGraph
 {
   let key = @lstring.new {!"@" + self.mStructTypeName !self.mStructTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mStructurePropertyList do
+  for (* mPropertyTypeName * * *) in self.mStructurePropertyList do
     let propertyKey = @lstring.new {!"@" + mPropertyTypeName !mPropertyTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
   end
@@ -112,7 +112,7 @@ override method @structDeclarationAST enterInSemanticContext
 #--- Readers
   var @getterMap getterMap
   commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?getterMap)
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in typedPropertyList do
+  for (mPropertyTypeEntry mPropertyName * *) in typedPropertyList do
     enterBaseFinalGetterWithoutArgument (
       !?getterMap
       !?ioSemanticContext.mTypeMap 
@@ -149,7 +149,7 @@ override method @structDeclarationAST enterInSemanticContext
   end
 #--- Generate a "default" constructor ?
   var @string defaultConstructorName = "default"
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in typedPropertyList while defaultConstructorName != "" do
+  for (mPropertyTypeEntry * * *) in typedPropertyList while defaultConstructorName != "" do
     if ([mPropertyTypeEntry mDefaultConstructorName] == "") | not [mPropertyTypeEntry mIsConcrete] then
       defaultConstructorName = ""
     end
@@ -216,7 +216,7 @@ override method @structDeclarationAST semanticAnalysis
   end
   var @typedPropertyList typedPropertyList = {}
   var @propertyIndexMap propertyMap = {}
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mStructurePropertyList do
+  for (* mPropertyTypeName mPropertyName * mAttributeList) in self.mStructurePropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}

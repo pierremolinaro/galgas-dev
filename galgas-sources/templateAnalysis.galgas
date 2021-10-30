@@ -89,7 +89,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
       hasCompilerArgument = true
       returnedType = @unifiedTypeMap-entry.null
       kind = @methodKind. definedAsMember
-      for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in [receiverType mCurrentTypedPropertyList] do
+      for (mPropertyTypeEntry mPropertyName * *) in [receiverType mCurrentTypedPropertyList] do
         let @getterMap aMap = [mPropertyTypeEntry mGetterMap]
         with self.mGetterName.string in aMap  do
           matchingReaderCount ++
@@ -134,7 +134,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
     + [[self.mExpressionList length] string] + " parameter(s)" : outExpression
   else
     var @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
-    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList, (mFormalSelector mFormalArgumentType mFormalArgumentName) in getterFormalArgumentTypeList do
+    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList, (mFormalSelector mFormalArgumentType *) in getterFormalArgumentTypeList do
       if mFormalSelector.string != mActualSelector.string then
         error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
@@ -203,7 +203,7 @@ override method @templateConstructorAST templateExpressionAnalysis
     : constructorEffectiveParameterList
   else
     constructorEffectiveParameterList = @semanticExpressionListForGeneration.emptyList
-    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList, (mFormalSelector mFormalArgumentType mFormalArgumentName) in constructorFormalArgumentTypeList do
+    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList, (mFormalSelector mFormalArgumentType *) in constructorFormalArgumentTypeList do
       if mFormalSelector.string != mActualSelector.string then
         error mActualSelector
           : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
@@ -668,13 +668,13 @@ override method @templateOptionAccessAST templateExpressionAnalysis
     end
   else
     var @stringset s = {}
-    for (lkey mOptionChar mOptionString mComment mDefaultValue) in boolOptionMap do
+    for (lkey * * * *) in boolOptionMap do
       s += !lkey
     end
-    for (lkey mOptionChar mOptionString mComment mDefaultValue) in uintOptionMap do
+    for (lkey * * * *) in uintOptionMap do
       s += !lkey
     end
-    for (lkey mOptionChar mOptionString mComment mDefaultValue) in stringOptionMap do
+    for (lkey * * * *) in stringOptionMap do
       s += !lkey
     end
     error self.mOptionName
@@ -719,7 +719,7 @@ override method @templateFunctionCallAST templateExpressionAnalysis
     : outExpression
   else
     var semanticExpressionListForGeneration =@semanticExpressionListForGeneration {}
-    for (mFormalSelector mFormalArgumentType mFormalArgumentName) in functionSignature, (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList do
+    for (mFormalSelector mFormalArgumentType *) in functionSignature, (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList do
       [mExpression templateExpressionAnalysis
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph

@@ -131,10 +131,10 @@ syntax extension galgas3InstructionsSyntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @matchInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  for (mExpression mEndOfExpressionLocation) in self.mMatchedExpressionList do
+  for (mExpression *) in self.mMatchedExpressionList do
     [mExpression enterExpressionInSemanticContext !?ioTypeMap]
   end
-  for (mMatchEntryList mEndOfMatchEntryList mMatchBranchInstructionList mEndOf_instructionList) in self.mMatchInstructionBranchList do
+  for (* * mMatchBranchInstructionList *) in self.mMatchInstructionBranchList do
     [mMatchBranchInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
   end
 }

@@ -44,7 +44,7 @@ override method @grammarForGeneration appendSpecificImplementation
 {
   ioInclusionSet += !"grammar-" + [self.mGrammarName fileNameRepresentation]
   for nonTerminal in self.mNonTerminalMapForGrammarAnalysis do
-    for (lkey mFormalParametersList) in nonTerminal.mNonterminalSymbolParametersMap do
+    for (* mFormalParametersList) in nonTerminal.mNonterminalSymbolParametersMap do
       for (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in mFormalParametersList do
         switch mFormalArgumentPassingModeForGrammarAnalysis
         case argumentConstantIn, argumentIn :
@@ -147,7 +147,7 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
   let lexiqueCppName = "C_Lexique_" + [self.mLexiqueName identifierRepresentation]
   for (mNonterminalName mRuleIndex mLabelImplementationList) in self.mRuleDeclarationList do
   #--- Generate rule label implementation
-    for (mLabelName mSignatureForGeneration mSignature mEndOfArgumentLocation mInstructionListForGeneration) in mLabelImplementationList do
+    for (mLabelName mSignatureForGeneration * * mInstructionListForGeneration) in mLabelImplementationList do
       let @string ruleName = "cParser_" + [self.mSyntaxComponentName identifierRepresentation]
         + "::rule_" + [self.mSyntaxComponentName identifierRepresentation] + "_"
         + [mNonterminalName identifierRepresentation]
@@ -243,7 +243,7 @@ proc generateProcedure
   if not inGenerateResetTemplateString then
     unusedVariableCppNameSet += !compilerCppName ()
   end
-  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in inFormalArgumentList do
+  for (* mFormalArgumentPassingMode * * mFormalArgumentCppName) in inFormalArgumentList do
     if mFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
       unusedVariableCppNameSet += !mFormalArgumentCppName
     end
@@ -263,7 +263,7 @@ proc generateProcedure
   end
   [!?routineBody decIndentation !2]
 #--- Generate inclusions
-  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in inFormalArgumentList do
+  for (* * mFormalArgumentType * *) in inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
 #--- Generate header
@@ -274,7 +274,7 @@ proc generateProcedure
   outGeneratedCode += "void " + inProcedureName + " ("
   let @uint colRef = [outGeneratedCode currentColumn]
 #---
-  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in inFormalArgumentList do
+  for (* mFormalArgumentPassingMode mFormalArgumentType * mFormalArgumentCppName) in inFormalArgumentList do
     switch mFormalArgumentPassingMode 
     case argumentConstantIn :
       outGeneratedCode += "const GALGAS_" + [mFormalArgumentType identifierRepresentation] + " "
@@ -320,7 +320,7 @@ proc generateProcedure
   end
   outGeneratedCode += " {\n"
 #--- Release 'out' arguments
-  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in inFormalArgumentList do
+  for (* mFormalArgumentPassingMode * * mFormalArgumentCppName) in inFormalArgumentList do
     switch mFormalArgumentPassingMode 
     case argumentOut :
       outGeneratedCode += "  " + mFormalArgumentCppName + ".drop () ; // Release 'out' argument\n"
@@ -360,7 +360,7 @@ proc generateFunction
   var @stringset unusedVariableCppNameSet = {}
   unusedVariableCppNameSet += !compilerCppName ()
 #--- Release 'in' and 'const in' arguments at the end of the routine
-  for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in inFormalArgumentList do
+  for (* mFormalArgumentType mFormalArgumentCppName * *) in inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
     unusedVariableCppNameSet += !mFormalArgumentCppName
   end
@@ -385,7 +385,7 @@ proc generateFunction
   outGeneratedCode += inFunctionCppRepresentationName + " ("
   let @uint colRef = [outGeneratedCode currentColumn]
 #---
-  for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in inFormalArgumentList do
+  for (* mFormalArgumentType mFormalArgumentCppName * mIsConstant) in inFormalArgumentList do
     if mIsConstant then
       outGeneratedCode += "const GALGAS_" + [mFormalArgumentType identifierRepresentation] + " & "
     else
@@ -440,7 +440,7 @@ proc generateExtensionSetter
   var @stringset unusedVariableCppNameSet = {}
   unusedVariableCppNameSet += !compilerCppName ()
   unusedVariableCppNameSet += !"object"
-  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in inFormalArgumentList do
+  for (* * * * mFormalArgumentCppName) in inFormalArgumentList do
     unusedVariableCppNameSet += !mFormalArgumentCppName
   end
 #--- Generate body
@@ -472,7 +472,7 @@ proc generateExtensionSetter
     outGeneratedCode += "inObject"
   end
 #---
-  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in inFormalArgumentList do
+  for (* mFormalArgumentPassingMode mFormalArgumentType * mFormalArgumentCppName) in inFormalArgumentList do
     outGeneratedCode += ",\n"
     [!?outGeneratedCode appendSpacesUntilColumn !colRef]
     switch mFormalArgumentPassingMode 
@@ -537,7 +537,7 @@ proc generateExtensionMethod
   var @stringset unusedVariableCppNameSet = {}
   unusedVariableCppNameSet += !compilerCppName ()
   unusedVariableCppNameSet += !"object"
-  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in inFormalArgumentList do
+  for (* * * * mFormalArgumentCppName) in inFormalArgumentList do
     unusedVariableCppNameSet += !mFormalArgumentCppName
   end
 #--- Generate body
@@ -570,7 +570,7 @@ proc generateExtensionMethod
   end
   ioInclusionSet += !"method-" + [[baseType key] fileNameRepresentation] + "-" + [inMethodName fileNameRepresentation]
   [inReceiverType addHeaderFileName !?ioInclusionSet]
-  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in inFormalArgumentList do
+  for (* * mFormalArgumentType * *) in inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
 #--- Generate header
@@ -588,7 +588,7 @@ proc generateExtensionMethod
     outGeneratedCode += "inObject"
   end
 #---
-  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in inFormalArgumentList do
+  for (* mFormalArgumentPassingMode mFormalArgumentType * mFormalArgumentCppName) in inFormalArgumentList do
     outGeneratedCode += ",\n"
     [!?outGeneratedCode appendSpacesUntilColumn !colRef]
     switch mFormalArgumentPassingMode 
@@ -657,7 +657,7 @@ proc generateExtensionGetter
   var @stringset unusedVariableCppNameSet = {}
   unusedVariableCppNameSet += !compilerCppName ()
   unusedVariableCppNameSet += !"object"
-  for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in inFormalArgumentList do
+  for (* * mFormalArgumentCppName * *) in inFormalArgumentList do
     unusedVariableCppNameSet += !mFormalArgumentCppName
   end
 #--- Generate body
@@ -691,7 +691,7 @@ proc generateExtensionGetter
   end
   ioInclusionSet += !"getter-" + [[baseType key] fileNameRepresentation] + "-" + [inGetterName fileNameRepresentation]
   [inReceiverType addHeaderFileName !?ioInclusionSet]
-  for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in inFormalArgumentList do
+  for (* mFormalArgumentType * * *) in inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
 #--- Generate header
@@ -712,7 +712,7 @@ proc generateExtensionGetter
   outGeneratedCode += ",\n"
   [!?outGeneratedCode appendSpacesUntilColumn !colRef]
 #---
-  for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in inFormalArgumentList do
+  for (* mFormalArgumentType mFormalArgumentCppName * mIsConstant) in inFormalArgumentList do
     if mIsConstant then
       outGeneratedCode += "const GALGAS_" + [mFormalArgumentType identifierRepresentation] + " "
     else
@@ -1388,7 +1388,7 @@ proc recursivlyEnumerateRegularFile
   ?!@stringlist ioRegularTextContentIndexStringList
   ?!@stringlist ioRegularBinaryContentIndexStringList {
   ioDirectoryIndexStringList += ![[ioDirectoryIndexStringList length] string]
-  for (lkey mAbsoluteFilePath mIsTextFile mWrapperDirectoryIndex mWrapperFileIndex) in inFilewrapperFileMap do
+  for (* * mIsTextFile * mWrapperFileIndex) in inFilewrapperFileMap do
     ioRegularFileIndexStringList += ![[ioRegularFileIndexStringList length] string]
     if mIsTextFile then
       ioRegularTextContentIndexStringList += ![mWrapperFileIndex string]
@@ -1396,7 +1396,7 @@ proc recursivlyEnumerateRegularFile
       ioRegularBinaryContentIndexStringList += ![mWrapperFileIndex string]
     end
   end
-  for (lkey mRegularFileMap mDirectoryMap mWrapperDirectoryIndex) in inFilewrapperDirectoryMap do
+  for (* mRegularFileMap mDirectoryMap *) in inFilewrapperDirectoryMap do
     recursivlyEnumerateRegularFile (
       !mRegularFileMap
       !mDirectoryMap
@@ -1433,7 +1433,7 @@ override method @filewrapperDeclarationForGeneration appendDeclaration1
     !self.mFilewrapperName
   ] 
 #--- template generation
-  for (mFilewrapperTemplateName mFilewrapperTemplateFormalInputParameters mTemplateInstructionListForGeneration) in self.mFilewrapperTemplateListForGeneration do
+  for (mFilewrapperTemplateName mFilewrapperTemplateFormalInputParameters *) in self.mFilewrapperTemplateListForGeneration do
     outHeader += [filewrapper semanticComponentGenerationTemplate.filewrapperTemplateDeclaration
       !self.mFilewrapperName
       !mFilewrapperTemplateName
@@ -1452,7 +1452,7 @@ proc generateWrapperContents
   ?let @wrapperDirectoryMap inFilewrapperDirectoryMap
   ?!@string ioImplementation {
 #--- Generate regular files
-  for (lkey mAbsoluteFilePath mIsTextFile mWrapperDirectoryIndex mWrapperFileIndex) in inFilewrapperRegularFileMap do
+  for (lkey mAbsoluteFilePath mIsTextFile * mWrapperFileIndex) in inFilewrapperRegularFileMap do
     if mIsTextFile then
       let @string contents = @string. stringWithContentsOfFile {!mAbsoluteFilePath}
       ioImplementation += "//--- File '" + inFilewrapperDirectory + "/" + lkey + "'\n\n"
@@ -1501,7 +1501,7 @@ proc generateWrapperContents
   + "static const cRegularFileWrapper * gWrapperAllFiles_"
   + [inFilewrapperName identifierRepresentation] + "_" + [inFilewrapperDirectoryIndex string]
   + " [" + [[inFilewrapperRegularFileMap count] + 1 string] + "] = {\n"
-  for (lkey mAbsoluteFilePath mIsTextFile mWrapperDirectoryIndex mWrapperFileIndex) in inFilewrapperRegularFileMap do
+  for (* * * * mWrapperFileIndex) in inFilewrapperRegularFileMap do
     ioImplementation += "  & gWrapperFile_" + [mWrapperFileIndex string] + "_" + [inFilewrapperName identifierRepresentation] + ",\n"
   end  
   ioImplementation += "  NULL\n"
@@ -1511,7 +1511,7 @@ proc generateWrapperContents
   + "static const cDirectoryWrapper * gWrapperAllDirectories_"
   + [inFilewrapperName identifierRepresentation] + "_" + [inFilewrapperDirectoryIndex string]
   + " [" + [[inFilewrapperDirectoryMap count] + 1 string] + "] = {\n"
-  for (lkey mRegularFileMap mDirectoryMap mWrapperDirectoryIndex) in inFilewrapperDirectoryMap do
+  for (* * * mWrapperDirectoryIndex) in inFilewrapperDirectoryMap do
     ioImplementation += "  & gWrapperDirectory_" + [mWrapperDirectoryIndex string] + "_" + [inFilewrapperName identifierRepresentation] + ",\n"
   end
   ioImplementation += "  NULL\n"
@@ -1555,7 +1555,7 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
     var @uint temporaryVariableIndex = 0
     var @stringset unusedVariableCppNameSet = {}
     unusedVariableCppNameSet += !compilerCppName ()
-    for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in mFilewrapperTemplateFormalInputParameters do
+    for (* * mFormalArgumentCppName * *) in mFilewrapperTemplateFormalInputParameters do
       unusedVariableCppNameSet += !mFormalArgumentCppName
     end
     var @bool useColumnMarker = false
@@ -1713,25 +1713,25 @@ proc generatePredefinedTypeFiles
 {
 #------------------------------------------------------------------ Generate header file
   var generatedCode = [filewrapper predefinedTypeGenerationTemplate.primitiveTypesHeaderPrologue]
-  for (mMessage mDeclaration) in inSemanticDeclarationListForGeneration do
+  for (* mDeclaration) in inSemanticDeclarationListForGeneration do
     if [mDeclaration isPredefined] then
       [mDeclaration appendPrimitiveTypePreDeclaration !?generatedCode]
     end
   end
   generatedCode += "\n"
-  for (mMessage mDeclaration) in inSemanticDeclarationListForGeneration do
+  for (* mDeclaration) in inSemanticDeclarationListForGeneration do
     if [mDeclaration isPredefined] then
       generatedCode += [mDeclaration appendPrimitiveTypeDeclaration]
     end
   end
-  for (mMessage mDeclaration) in inSemanticDeclarationListForGeneration do
+  for (* mDeclaration) in inSemanticDeclarationListForGeneration do
     if [mDeclaration isPredefined] then
       [mDeclaration appendDeclaration1 !?* ?let @string code]
       generatedCode += code
     end
   end
   generatedCode += [filewrapper predefinedTypeGenerationTemplate.predefinedTypeSeparation]
-  for (mMessage mDeclaration) in inSemanticDeclarationListForGeneration do
+  for (* mDeclaration) in inSemanticDeclarationListForGeneration do
     if [mDeclaration isPredefined] then
       [mDeclaration appendDeclaration2 !inDirectory !?* ?let @string headerString2]
       generatedCode += headerString2
@@ -1754,7 +1754,7 @@ proc generatePredefinedTypeFiles
   end
 #------------------------------------------------------------------ Generate implementation file
   generatedCode = [filewrapper predefinedTypeGenerationTemplate.predefinedTypesImplementation]
-  for (mMessage mDeclaration) in inSemanticDeclarationListForGeneration do
+  for (* mDeclaration) in inSemanticDeclarationListForGeneration do
     if [mDeclaration isPredefined] then
       generatedCode += [mDeclaration appendTypeGenericImplementation]
       [mDeclaration appendSpecificImplementation !@unifiedTypeMap.emptyMap !?* ?let @string code]

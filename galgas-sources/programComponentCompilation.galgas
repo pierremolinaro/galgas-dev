@@ -96,7 +96,7 @@ private proc compileProgramRulesGalgas3
   ?!@programListForGeneration ioDecoratedDeclarationListForGeneration
 {
   var @uint ruleIndex = 0
-  for (mSourceFileExtension mSourceFileHelp mSourceFileVariableName mSourceFileVariableNameIsUnused mReferenceGrammar mInstructionList mEndOfInstructionList) in inProgramRules do
+  for (mSourceFileExtension * mSourceFileVariableName mSourceFileVariableNameIsUnused * mInstructionList mEndOfInstructionList) in inProgramRules do
     let usefulnessName = rootRuleNameForUsefulEntitiesGraph (!mSourceFileExtension)
     [!?ioUsefulEntitiesGraph addNode !usefulnessName !usefulnessName]
     ioUsefulnessRootEntities += !usefulnessName
@@ -238,7 +238,7 @@ proc compileProgramComponentGalgas3
     [mDeclaration appendSpecificImplementation !inSemanticContext.mTypeMap !?inclusionSet ?let @string code]
     beforeAfterRulesString += code
   end
-  for (mSourceFileExtension mSourceFileHelp mSourceFileVariableName mSourceFileVariableNameIsUnused mReferenceGrammar mInstructionList mEndOfInstructionList) in inProgramRules do
+  for (* * * * mReferenceGrammar * *) in inProgramRules do
     if mReferenceGrammar.string != "" then
       inclusionSet += !"grammar-" + [mReferenceGrammar fileNameRepresentation]
     end

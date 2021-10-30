@@ -326,7 +326,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
 #------ Enter attributes
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName * mAttributeList) in self.mPropertyList do
 #    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
 #    [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}

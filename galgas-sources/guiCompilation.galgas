@@ -301,8 +301,8 @@ private proc guiComponentSemanticAnalysis
   #--- Build terminal symbol set
     let terminalSymbolSet = [terminalMap keySet]
   #--- Check labels
-    for (mLeadingCharacterStrippedCount mTerminalList mLocation) in mLabels do
-      for (mTerminal mDisplayFlags) in mTerminalList do
+    for (* mTerminalList *) in mLabels do
+      for (mTerminal *) in mTerminalList do
         if not [terminalSymbolSet hasKey !mTerminal.string] then
           error mTerminal: "the '$"
             + mTerminal

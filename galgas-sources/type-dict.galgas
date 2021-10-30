@@ -67,7 +67,7 @@ syntax extension galgas3DeclarationsSyntax {
 override method @dictDeclarationAST addAssociatedElement ?!@semanticDeclarationListAST ioSemanticDeclarationList {
   var @propertyInCollectionListAST structAttributeList = {}
   structAttributeList += !isConstant: false !self.mKeyTypeName !["key" nowhere] !true !{}
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     structAttributeList += !isConstant: false !mPropertyTypeName !mPropertyName !true !{}
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
@@ -92,7 +92,7 @@ override method @dictDeclarationAST enterDeclarationInGraph
   let dictionary = @lstring.new {!"@" + self.mDictTypeName !self.mDictTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !dictionary !self]
   [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + self.mKeyTypeName !self.mKeyTypeName}]
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName * * *) in self.mPropertyList do
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName !mPropertyTypeName}]
   end
 }
@@ -173,7 +173,7 @@ override method @dictDeclarationAST enterInSemanticContext
     !keyTypeIndex
     !"inKey"
   var typesToIncludeInHeaderCompilation = @unifiedTypeMapEntryList.emptyList
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true
     let hasSelector = false
@@ -217,7 +217,7 @@ override method @dictDeclarationAST enterInSemanticContext
     !"" # No error message
   ]
 #--- Enter "attributeForKey" getters
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     let accessorName = @lstring.new {!mPropertyName.string + "ForKey" !mPropertyName.location}
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
@@ -232,7 +232,7 @@ override method @dictDeclarationAST enterInSemanticContext
     ]
   end
 #---------- Enter "set...Attribute...forKey" setters, and 'with' accessor
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     let accessorName = @lstring.new {
       !"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "ForKey"
       !mPropertyName.location
@@ -369,7 +369,7 @@ override method @dictDeclarationAST semanticAnalysis
 #------ Enter attributes
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     var @unifiedTypeMap-entry t = .searchKey{!inSemanticContext.mTypeMap !mPropertyTypeName}

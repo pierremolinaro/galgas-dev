@@ -165,7 +165,7 @@ override method @parseRewindInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   let @string parsingContextVar = "parsingContext_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
   ioGeneratedCode += "const C_parsingContext " + parsingContextVar + " = " + compilerCppName () + "->parsingContext () ;\n"
-  for (mInstructionList mEndOfInstructionList) in self.mListOfSemanticInstructionListForGeneration
+  for (mInstructionList *) in self.mListOfSemanticInstructionListForGeneration
   do
     generateInstructionList (
       !?ioInclusionSet

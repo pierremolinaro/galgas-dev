@@ -48,7 +48,7 @@ override method @listDeclarationAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + self.mListTypeName !self.mListTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName * * *) in self.mPropertyList do
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName !mPropertyTypeName.location}]
   end
 }
@@ -65,7 +65,7 @@ override method @listDeclarationAST enterInSemanticContext
 {
 #--- Handle attributes
   var @typedPropertyList typedAttributeList = {}
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = mIsPublic
     var hasSelector = false
@@ -102,7 +102,7 @@ override method @listDeclarationAST enterInSemanticContext
   var @functionSignature constructorAttributeTypeList = {}
   var @formalParameterSignature setterOutputFormalArgumentList = {}
   var @formalParameterSignature setterInputFormalArgumentList = {}
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in typedAttributeList do
+  for (mPropertyTypeEntry mPropertyName * mHasSelector) in typedAttributeList do
     let selector = if mHasSelector then mPropertyName.string else "" end
     enumerationDescriptor += !mPropertyTypeEntry !mPropertyName.string
     constructorAttributeTypeList +=
@@ -172,7 +172,7 @@ override method @listDeclarationAST enterInSemanticContext
     !returnedTypeName:self.mListTypeName.string
     !hasCompilerArgument:true
   )
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in typedAttributeList do
+  for (mPropertyTypeEntry mPropertyName * *) in typedAttributeList do
     [!?getterMap insertOrReplace
       !@lstring.new {!mPropertyName.string + "AtIndex" !mPropertyName.location}
       !@methodKind.definedAsMember
@@ -240,7 +240,7 @@ override method @listDeclarationAST enterInSemanticContext
     !""
   ]
   drop setterOutputFormalArgumentList
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in typedAttributeList do
+  for (mPropertyTypeEntry mPropertyName mHasSetter *) in typedAttributeList do
     if mHasSetter then
       var setterFormalArgumentList =@formalParameterSignature {}
       setterFormalArgumentList += !["" nowhere] !mPropertyTypeEntry !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
@@ -315,7 +315,7 @@ override method @listDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList
 {
   var @propertyInCollectionListAST structAttributeList = {}
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (isConstant mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     structAttributeList +=
       !isConstant: isConstant
       !mPropertyTypeName
@@ -352,7 +352,7 @@ override method @listDeclarationAST semanticAnalysis
 #---
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}

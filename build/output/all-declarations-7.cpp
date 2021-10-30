@@ -9300,7 +9300,7 @@ static const cMapAutomatonTransition kMapTransitions_localVarManager [24 * 5] = 
   {kMapState_localVarManager_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
   {kMapState_localVarManager_readLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be written"}, // for action 'writeAccess', (index 1)
   {kMapState_localVarManager_readLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be written"}, // for action 'readWriteAccess', (index 2)
-  {kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueWarning, "the '%K' constant value is unused"}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueWarning, "the constant value is unused"}, // for action 'dropAccess', (index 3)
   {kMapState_localVarManager_localConstant /* 1 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'undefinedLocalConstant', index 2 
   {kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "the constant is undefined"}, // for action 'readAccess', (index 0)
@@ -9442,8 +9442,8 @@ static const cMapAutomatonTransition kMapTransitions_localVarManager [24 * 5] = 
 
 static const cMapAutomatonFinalIssue kMapAutomatonFinalIssue_localVarManager [24] = {
   {kMapAutomatonNoIssue, ""},// state 'readLocalConstant' (index 0)
-  {kMapAutomatonIssueWarning, "the '%K' constant value is unused"},// state 'localConstant' (index 1)
-  {kMapAutomatonIssueWarning, "the '%K' constant value is unused"},// state 'undefinedLocalConstant' (index 2)
+  {kMapAutomatonIssueWarning, "the constant value is unused"},// state 'localConstant' (index 1)
+  {kMapAutomatonIssueWarning, "the constant value is unused"},// state 'undefinedLocalConstant' (index 2)
   {kMapAutomatonNoIssue, ""},// state 'droppedLocalConstant' (index 3)
   {kMapAutomatonIssueWarning, "the '%K' local variable is unused"},// state 'undefinedLocalVariable' (index 4)
   {kMapAutomatonNoIssue, ""},// state 'definedLocalVariable' (index 5)
@@ -12038,10 +12038,10 @@ void extensionMethod_enterInSemanticContext (const GALGAS_actualOutputExpression
                                              C_Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_actualOutputExpressionList temp_0 = inObject ;
-  cEnumerator_actualOutputExpressionList enumerator_1655 (temp_0, kENUMERATION_UP) ;
-  while (enumerator_1655.hasCurrentObject ()) {
-    callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) enumerator_1655.current_mExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 41)) ;
-    enumerator_1655.gotoNextObject () ;
+  cEnumerator_actualOutputExpressionList enumerator_1618 (temp_0, kENUMERATION_UP) ;
+  while (enumerator_1618.hasCurrentObject ()) {
+    callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) enumerator_1618.current_mExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 41)) ;
+    enumerator_1618.gotoNextObject () ;
   }
 }
 

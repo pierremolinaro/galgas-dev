@@ -282,12 +282,12 @@ private proc compileProject
          + "/build/helpers/" +  [inProjectSourceFile lastPathComponent] + ".html"
   if [option galgas_cli_options.outputHTMLTypeListFile value] then
     var @stringset firstLetterSet = {}
-    for (lkey mIsPredefined mIsConcrete mSuperType mTypeKindEnum mSupportCollectionValue mAllTypedPropertyList mPropertyMap mCurrentTypedPropertyList mConstructorMap mGetterMap mSetterMap mInstanceMethodMap mClassMethodMap mOptionalMethodMap mEnumerationDescriptor mHandledOperatorFlags mAddAssignOperatorArguments mEnumConstantMap mEnumConstantList mMapSearchMethodList mMapEntrySearchConstructorList mGenerateHeaderInSeparateFile mTypeForEnumeratedElement mDefaultConstructorName mHeaderFileName mHeaderKind) in semanticContext.mTypeMap do
+    for (lkey * * * * * * * * * * * * * * * * * * * * * * * * * *) in semanticContext.mTypeMap do
       firstLetterSet += ![[lkey.string characterAtIndex!0] string]
     end
     var @string tableOfTypeString = ""
     var @char currentFirstLetter = ' '
-    for (type_lkey type_mIsPredefined type_mIsConcrete type_mSuperType type_mTypeKindEnum type_mSupportCollectionValue type_mAllTypedPropertyList type_mPropertyMap type_mCurrentTypedPropertyList type_mConstructorMap type_mGetterMap type_mSetterMap type_mInstanceMethodMap type_mClassMethodMap type_mOptionalMethodMap type_mEnumerationDescriptor type_mHandledOperatorFlags type_mAddAssignOperatorArguments type_mEnumConstantMap type_mEnumConstantList type_mMapSearchMethodList type_mMapEntrySearchConstructorList type_mGenerateHeaderInSeparateFile type_mTypeForEnumeratedElement type_mDefaultConstructorName type_mHeaderFileName type_mHeaderKind) in semanticContext.mTypeMap do
+    for (type_lkey * * * * * * * * * * * * * * * * * * * * * * * * * *) in semanticContext.mTypeMap do
       if currentFirstLetter != [type_lkey.string characterAtIndex !0] then
         currentFirstLetter = [type_lkey.string characterAtIndex !0]
         tableOfTypeString += "<br><a name=\"" + [currentFirstLetter uint] + "\"><b>" + currentFirstLetter + "</b></a><br>"
@@ -403,7 +403,7 @@ private proc projectGeneration
 #  message "*** update targets\n" ;
   if 0 == @uint.errorCount then
     var @stringset handledExtensionSet = {}
-    for (mSourceFileExtension mSourceFileHelp mSourceFileVariableName mSourceFileVariableNameIsUnused mReferenceGrammar mInstructionList mEndOfInstructionList) in inSourceRuleList do
+    for (mSourceFileExtension * * * * * *) in inSourceRuleList do
       handledExtensionSet += !mSourceFileExtension.string
     end
   #--- Build qualified feature map

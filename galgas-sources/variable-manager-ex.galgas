@@ -30,16 +30,16 @@ shared map @localVarManager {
   }
 
 #--- Local constant
-  state localConstant warning "the '%K' constant value is unused" {
+  state localConstant warning "the constant value is unused" {
     neutralAccess   -> localConstant
     readAccess      -> readLocalConstant
     writeAccess     -> readLocalConstant error "a constant cannot be written"
     readWriteAccess -> readLocalConstant error "a constant cannot be written"
-    dropAccess      -> droppedLocalConstant warning "the '%K' constant value is unused"
+    dropAccess      -> droppedLocalConstant warning "the constant value is unused"
   }
 
 #--- Undefined Local constant
-  state undefinedLocalConstant warning "the '%K' constant value is unused" {
+  state undefinedLocalConstant warning "the constant value is unused" {
     neutralAccess   -> undefinedLocalConstant
     readAccess      -> undefinedLocalConstant error "the constant is undefined"
     writeAccess     -> localConstant

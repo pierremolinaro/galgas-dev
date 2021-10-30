@@ -108,7 +108,7 @@ override method @abstractExtensionMethodAST semanticAnalysis
   end
 #--- Compute method signature
   var formalParameterListForGeneration =@formalParameterListForGeneration {}
-  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in self.mAbstractExtensionMethodFormalParameterList do
+  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mAbstractExtensionMethodFormalParameterList do
     formalParameterListForGeneration +=
       !mFormalSelector
       !mFormalArgumentPassingMode
@@ -186,7 +186,7 @@ override method @abstractExtensionMethodForGeneration appendSpecificImplementati
   !@string outImplementation {
   ioInclusionSet += !"method-" + [[self.mReceiverType key] fileNameRepresentation]+ "-" + [self.mAbstractExtensionMethodName fileNameRepresentation]
   [self.mReceiverType addHeaderFileName !?ioInclusionSet]
-  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in self.mAbstractExtensionMethodFormalParameterList do
+  for (* * mFormalArgumentType * *) in self.mAbstractExtensionMethodFormalParameterList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
   outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionMethodImplementation

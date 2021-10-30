@@ -39,6 +39,7 @@ list @localConstantList {
 
 list @localInitializedVariableList {
   public var @unifiedTypeMap-entry mType
+#  public var @bool mIsUnused
   public var @lstring mName
   public var @string mCppName
 }
@@ -674,7 +675,7 @@ proc analyzeRoutineArguments
   else
     outActualParameterListForGeneration = {}
     var @stringset exclusiveVariableSet = {}
-    for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in inRoutineSignature, (mActualParameter) in inActualParameterList do
+    for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode *) in inRoutineSignature, (mActualParameter) in inActualParameterList do
       [mActualParameter checkAgainstFormalArgument
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph

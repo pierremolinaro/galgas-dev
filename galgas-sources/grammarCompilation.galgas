@@ -19,9 +19,9 @@ func transformLabelMap
   -> @nonterminalSymbolLabelMapForGrammarAnalysis outNonterminalSymbolLabelMapForGrammarAnalysis
 {
   outNonterminalSymbolLabelMapForGrammarAnalysis = {}
-  for (mLabelName mFormalArgumentList mEndOfArgumentLocation) in inLabels do
+  for (mLabelName mFormalArgumentList *) in inLabels do
     var @signatureForGrammarAnalysis formalParametersList = {}
-    for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFormalArgumentList do
+    for (* mFormalArgumentPassingMode mFormalArgumentTypeName * *) in mFormalArgumentList do
       formalParametersList += !mFormalArgumentPassingMode !mFormalArgumentTypeName
     end
     [!?outNonterminalSymbolLabelMapForGrammarAnalysis insertKey
@@ -40,7 +40,7 @@ proc checkLabelMap
   ?let @nonterminalSymbolLabelMapForGrammarAnalysis inNonterminalSymbolLabelMapForGrammarAnalysis
 {
   var @stringset labelStringSet = {}
-  for (mLabelName mFormalArgumentList mEndOfArgumentLocation) in inLabels do
+  for (mLabelName mFormalArgumentList *) in inLabels do
     labelStringSet += !mLabelName.string
     var @signatureForGrammarAnalysis formalParametersList
     [inNonterminalSymbolLabelMapForGrammarAnalysis searchKey !mLabelName ?formalParametersList]
@@ -53,7 +53,7 @@ proc checkLabelMap
         + " names " + [[formalParametersList length] string] + " parameter"
         + if [formalParametersList length] > 1 then "s" else "" end
     else
-      for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFormalArgumentList, (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in formalParametersList do
+      for (* mFormalArgumentPassingMode mFormalArgumentTypeName * *) in mFormalArgumentList, (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in formalParametersList do
         if mFormalArgumentPassingModeForGrammarAnalysis != mFormalArgumentPassingMode then
           error mGalgasTypeNameForGrammarAnalysis :
             " this formal parameter is declared with "
@@ -74,7 +74,7 @@ proc checkLabelMap
     end
   end
 #---
-  for (lkey mFormalParametersList) in inNonterminalSymbolLabelMapForGrammarAnalysis do
+  for (lkey *) in inNonterminalSymbolLabelMapForGrammarAnalysis do
     if not [labelStringSet hasKey !lkey.string] then
       error inNonTerminalLocation :
         "this non terminal does not declare the '" + lkey + "' label, but declaration at "
@@ -114,7 +114,7 @@ proc handleNonTerminalDeclarationsFromRuleList
   ?let @syntaxRuleListAST inRuleList {
   for (mNonterminalName mLabelList) in inRuleList do
     var nonTerminalLabelListAST =@nonTerminalLabelListAST {}
-    for (mLabelName mFormalArguments mEndOfArgumentLocation mSyntaxInstructionList mEndOfInstructionList) in mLabelList do
+    for (mLabelName mFormalArguments mEndOfArgumentLocation * *) in mLabelList do
       nonTerminalLabelListAST += 
         !mLabelName
         !mFormalArguments

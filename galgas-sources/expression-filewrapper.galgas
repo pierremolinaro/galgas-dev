@@ -110,7 +110,7 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
 override method @filewrapperTemplateInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions do
+  for (* mExpression *) in self.mExpressions do
     [mExpression enterExpressionInSemanticContext !?ioTypeMap]
   end
 }
@@ -153,7 +153,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
     : effectiveParameterList
   else
     effectiveParameterList = {}
-    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType mFormalArgumentName) in templateSignature do
+    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType *) in templateSignature do
       if mFormalSelector.string != mActualSelector.string then
         error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end

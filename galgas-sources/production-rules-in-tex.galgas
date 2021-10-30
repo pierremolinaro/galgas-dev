@@ -163,7 +163,7 @@ method @productionRuleListForGrammarAnalysis-element displayRuleVertically
 {
   var @string currentNode = "P0start"
   var @rowList rowArray = {}
-  for i in 1 ..< [self.mInstructionList length] do
+  for * in 1 ..< [self.mInstructionList length] do
     rowArray += !{!"" !""}
   end
   rowArray += !{!currentNode !"[firstPoint] {}"}
@@ -273,7 +273,7 @@ setter @rowList appendRow
 #--- Add rows ?
   let length = [self length]
   if length <= inRow then
-    for i in length ... inRow do
+    for * in length ... inRow do
       self += !{}
     end
   end
@@ -281,7 +281,7 @@ setter @rowList appendRow
   var cols = [self columnsAtIndex !inRow]
 #--- add column pads in row
   if [cols length] <= inColumn then
-    for i in [cols length] ... inColumn do
+    for * in [cols length] ... inColumn do
       cols += !"" !""
     end
   end

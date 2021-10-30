@@ -40,7 +40,7 @@ proc groupSyntaxComponentsGalgas3
 #--- Check all extensions are handled
   for (key theLists) in inSyntaxExtensions do
     if not [componentNameSet hasKey !key] then
-      for (mSyntaxComponentName mNonterminalDeclarationList mRuleList) in theLists do
+      for (mSyntaxComponentName * *) in theLists do
         error mSyntaxComponentName : "there is no '" + mSyntaxComponentName +"' syntax component"
       end    
     end

@@ -10,6 +10,53 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Routine 'generateExtensionMethod'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_generateExtensionMethod (const class GALGAS_unifiedTypeMap_2D_entry constinArgument0,
+                                      const class GALGAS_string constinArgument1,
+                                      class GALGAS_stringset & ioArgument2,
+                                      const class GALGAS_string constinArgument3,
+                                      const class GALGAS_formalParameterListForGeneration constinArgument4,
+                                      const class GALGAS_semanticInstructionListForGeneration constinArgument5,
+                                      class GALGAS_string & outArgument6,
+                                      class C_Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'generateProcedure'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_generateProcedure (const class GALGAS_bool constinArgument0,
+                                const class GALGAS_string constinArgument1,
+                                class GALGAS_stringset & ioArgument2,
+                                class GALGAS_formalParameterListForGeneration inArgument3,
+                                const class GALGAS_semanticInstructionListForGeneration constinArgument4,
+                                const class GALGAS_bool constinArgument5,
+                                const class GALGAS_string constinArgument6,
+                                const class GALGAS_bool constinArgument7,
+                                const class GALGAS_bool constinArgument8,
+                                const class GALGAS_bool constinArgument9,
+                                class GALGAS_string & outArgument10,
+                                class C_Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'setterNameForUsefulEntitiesGraph'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_lstring function_setterNameForUsefulEntitiesGraph (const class GALGAS_string & constinArgument0,
+                                                                const class GALGAS_lstring & constinArgument1,
+                                                                class C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Routine 'generateExtensionSetter'
 //
 //----------------------------------------------------------------------------------------------------------------------

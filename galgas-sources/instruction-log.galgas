@@ -63,7 +63,7 @@ syntax extension galgas3InstructionsSyntax {
 override method @logInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  for (mLogMessage mLogExpression) in self.mLogList do
+  for (* mLogExpression) in self.mLogList do
     [mLogExpression enterExpressionInSemanticContext !?ioTypeMap]
   end 
 }

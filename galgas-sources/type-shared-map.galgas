@@ -321,7 +321,7 @@ override method @sharedMapDeclarationAST enterDeclarationInGraph
 {
   let key = @lstring.new {!"@" + self.mMapTypeName !self.mMapTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName * * *) in self.mPropertyList do
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName !mPropertyTypeName.location}]
   end
 }
@@ -471,7 +471,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !lstringTypeIndex
     !.argumentConstantIn
     !"inLKey"
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true
     let hasSelector = false
@@ -489,7 +489,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
       !mPropertyName.string
   end
 #-------------------------- Insert Modifiers
-  for (mInsertMethodName mErrorMessage mShadowErrorMessage mInitialStateName) in self.mInsertMethodList do
+  for (mInsertMethodName * * *) in self.mInsertMethodList do
     if [setterMap hasKey !mInsertMethodName.string] then
       error mInsertMethodName:"the '" + mInsertMethodName + "' insert method is already declared"
     else
@@ -530,7 +530,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   ]
 #--- Handle search methods (methods if no state, setters if states)
   if [self.mMapStateList length] == 0 then
-    for (mSearchMethodName mErrorMessage mActionName mLocationAttribute) in self.mSearchMethodList do
+    for (mSearchMethodName * * *) in self.mSearchMethodList do
       [!?instanceMethodMap insertKey
         !mSearchMethodName
         !@methodKind.definedAsMember
@@ -542,7 +542,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
       ]
     end
   else
-    for (mSearchMethodName mErrorMessage mActionName mLocationAttribute) in self.mSearchMethodList do
+    for (mSearchMethodName * * *) in self.mSearchMethodList do
       [!?setterMap insertKey
         !mSearchMethodName
         !@methodKind.definedAsMember
@@ -589,7 +589,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
       !@methodQualifier.isBasic
       !"" # No error message
     ]
-    for (mOverrideBlockName mMapOverrideBlockDescriptor1AST mMapOverrideBlockDescriptor2AST) in self.mMapOverrideBlockListAST do
+    for (mOverrideBlockName * *) in self.mMapOverrideBlockListAST do
       [!?setterMap insertKey
         !@lstring.new {!"openOverrideFor" + [mOverrideBlockName stringByCapitalizingFirstCharacter] !@location.here}
         !@methodKind.definedAsMember
@@ -601,7 +601,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     end
   end
 #--- Enter "attributeForKey" getters
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     let accessorName = @lstring.new {!mPropertyName.string + "ForKey" !mPropertyName.location}
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
@@ -616,7 +616,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     ]
   end
 #---------- Enter "set...Attribute...forKey" setters, and 'with' accessor parameter
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     let accessorName = @lstring.new {!"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "ForKey" !mPropertyName.location}
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     var @formalParameterSignature accessorFormalArgumentList = {}
@@ -772,7 +772,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
   end
 #--- Compute initial state set
   var @stringset initialStateSet = {}
-  for (mInsertMethodName mErrorMessage mShadowErrorMessage mInitialStateName) in self.mInsertMethodList do
+  for (mInsertMethodName * * mInitialStateName) in self.mInsertMethodList do
     if [self.mMapStateList length] > 0 then
       if mInitialStateName.string == "" then
         error mInsertMethodName: "the '" + mInsertMethodName + "' insert method should name an automaton state"
@@ -785,7 +785,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
   end
 #--- Analyze map automation actions
   var @mapAutomatonActionMap mapAutomatonActionMap = {}
-  for (mSearchMethodName mErrorMessage mActionName mLocationAttribute) in self.mSearchMethodList do
+  for (mSearchMethodName * mActionName *) in self.mSearchMethodList do
     if [self.mMapStateList length] > 0 then
       if mActionName.string == "" then
         error mSearchMethodName: "the '" + mSearchMethodName + "' search method should name an automaton action"
@@ -798,11 +798,11 @@ override method @sharedMapDeclarationAST semanticAnalysis
   end
 #--- Analyze map automaton
   var @mapAutomatonStateMap mapAutomatonStateMap = {}
-  for (mStateName mStateMessageKind mStateMessage mTransitionList) in self.mMapStateList do
+  for (mStateName mStateMessageKind * *) in self.mMapStateList do
     [!?mapAutomatonStateMap insertKey !mStateName ![mapAutomatonStateMap count] !mStateMessageKind]
   end
-  for (mStateName mStateMessageKind mStateMessage mTransitionList) in self.mMapStateList do
-    for (mActionName mTargetStateName mTransitionMessageKind mTransitionMessage) in mTransitionList do
+  for (* * * mTransitionList) in self.mMapStateList do
+    for (* mTargetStateName * *) in mTransitionList do
       [mapAutomatonStateMap searchKey !mTargetStateName ?2*]
     end
   end
@@ -849,9 +849,9 @@ override method @sharedMapDeclarationAST semanticAnalysis
   var @bool progress = true
   loop ([self.mMapStateList length] + 1) while progress do
     progress = false
-    for (mStateName mStateMessageKind mStateMessage mTransitionList) in self.mMapStateList do
+    for (mStateName * * mTransitionList) in self.mMapStateList do
       if [accessibleStates hasKey !mStateName.string] then
-        for (mActionName mTargetStateName mTransitionMessageKind mTransitionMessage) in mTransitionList do
+        for (* mTargetStateName * *) in mTransitionList do
           if not [accessibleStates hasKey !mTargetStateName.string] then
             accessibleStates += !mTargetStateName.string
             progress = true
@@ -879,9 +879,9 @@ override method @sharedMapDeclarationAST semanticAnalysis
     progress = true
     loop ([mapAutomatonStateMap count] + 1) while progress do
       progress = false
-      for (mStateName mStateMessageKind mStateMessage mTransitionList) in self.mMapStateList do
+      for (mStateName * * mTransitionList) in self.mMapStateList do
         if [reachableStates hasKey !mStateName.string] then
-          for (mActionName mTargetStateName mTransitionMessageKind mTransitionMessage) in mTransitionList do
+          for (* mTargetStateName * *) in mTransitionList do
             if not [reachableStates hasKey !mTargetStateName.string] then
               reachableStates += !mTargetStateName.string
               accessibilityGraph += !mapAutomatonState.lkey.string + ":" + mTargetStateName.string
@@ -1006,7 +1006,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
 #------ Enter attributes
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
@@ -1092,7 +1092,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
   let graphFile = inProductDirectory + "/../helpers/shared-map-" + self.mMapTypeName + ".dot"
   if [option galgas_cli_options.generateSharedMapAutomatonDotFiles value] then
     var theGraph = "digraph G {\n"
-    for (lkey mStateIndex mStateMessageKind) in mapAutomatonStateMap do
+    for (lkey * mStateMessageKind) in mapAutomatonStateMap do
       theGraph += "\"" + lkey + "\" [label=\"" + lkey + "\""
       if [initialStateSet hasKey !lkey.string] then
         theGraph += " shape=box color=blue"
@@ -1108,8 +1108,8 @@ override method @sharedMapDeclarationAST semanticAnalysis
       end
       theGraph += "];\n"
     end
-    for (mStateName mStateMessageKind mStateMessage mTransitionList) in self.mMapStateList do
-      for (mActionName mTargetStateName mTransitionMessageKind mTransitionMessage) in mTransitionList do
+    for (mStateName * * mTransitionList) in self.mMapStateList do
+      for (mActionName mTargetStateName mTransitionMessageKind *) in mTransitionList do
         theGraph += "\"" + mStateName + "\" -> \"" + mTargetStateName + "\" [label=\"" + mActionName + "\""
         switch mTransitionMessageKind 
         case noMessage : 
@@ -1234,7 +1234,7 @@ override method @sharedMapTypeForGeneration appendSpecificImplementation
 {
   [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
   var keySortedList =@keySortedList.emptySortedList{}
-  for (lkey mStateIndex mStateMessageKind) in self.mMapAutomatonStateMap do
+  for (lkey mStateIndex *) in self.mMapAutomatonStateMap do
     keySortedList += !lkey.string !mStateIndex
   end
   outImplementation = [filewrapper sharedMapGenerationTemplate.uniqueMapTypeSpecificImplementation

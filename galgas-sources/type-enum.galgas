@@ -75,9 +75,9 @@ override method @enumDeclarationAST enterDeclarationInGraph
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
 #--- There is a circular reference if all constant names current type in associated values
   var circularReference = true
-  for (mConstantName mAssociatedValueDefinitionList) in self.mConstantList while circularReference do
+  for (* mAssociatedValueDefinitionList) in self.mConstantList while circularReference do
     var namesCurrentType = false
-    for (mValue0 mValue1) in mAssociatedValueDefinitionList while not namesCurrentType do
+    for (mValue0 *) in mAssociatedValueDefinitionList while not namesCurrentType do
       let propertyKey = @lstring.new {!"@" + mValue0 !mValue0.location}
       if propertyKey.string == key.string then
         namesCurrentType = true
@@ -89,8 +89,8 @@ override method @enumDeclarationAST enterDeclarationInGraph
   end
 #--- Enter dependances, and only when there is circular reference
   if circularReference then
-    for (mConstantName mAssociatedValueDefinitionList) in self.mConstantList do
-      for (mValue0 mValue1) in mAssociatedValueDefinitionList do
+    for (* mAssociatedValueDefinitionList) in self.mConstantList do
+      for (mValue0 *) in mAssociatedValueDefinitionList do
         let propertyKey = @lstring.new {!"@" + mValue0 !mValue0.location}
         if (propertyKey.string != key.string) then # || circularReference then
           [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
@@ -173,7 +173,7 @@ override method @enumDeclarationAST enterInSemanticContext
   end
 #--- getters
   commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap)
-  for (mConstantName mAssociatedValueDefinitionList) in self.mConstantList do
+  for (mConstantName *) in self.mConstantList do
     enterBaseGetterWithoutArgument (
       !?getterMap
       !?ioSemanticContext.mTypeMap
@@ -328,7 +328,7 @@ override method @enumTypeForGeneration appendDeclaration1
   !@string outHeader
 {
   var @bool hasAssociatedValues = false
-  for (mConstantName mAssociatedValueTypeList) in self.mConstantList while not hasAssociatedValues do
+  for (* mAssociatedValueTypeList) in self.mConstantList while not hasAssociatedValues do
     hasAssociatedValues = [mAssociatedValueTypeList length] > 0
   end
   outHeader = [filewrapper enumGenerationTemplate.enumTypeHeader1
@@ -362,10 +362,10 @@ override method @enumTypeForGeneration appendDeclaration2
   !@string outHeader
 {
   var @bool hasAssociatedValues = false
-  for (mConstantName mAssociatedValueTypeList) in self.mConstantList while not hasAssociatedValues do
+  for (* mAssociatedValueTypeList) in self.mConstantList while not hasAssociatedValues do
     hasAssociatedValues = [mAssociatedValueTypeList length] > 0
   end
-  for (mConstantName mAssociatedValueTypeList) in self.mConstantList do
+  for (* mAssociatedValueTypeList) in self.mConstantList do
     for (mType) in mAssociatedValueTypeList do
       [mType addHeaderFileName1 !?ioInclusionSet]
     end
@@ -386,7 +386,7 @@ override method @enumTypeForGeneration appendSpecificImplementation
   !@string outImplementation
 {
   var @bool hasAssociatedValues = false
-  for (mConstantName mAssociatedValueTypeList) in self.mConstantList while not hasAssociatedValues do
+  for (* mAssociatedValueTypeList) in self.mConstantList while not hasAssociatedValues do
     hasAssociatedValues = [mAssociatedValueTypeList length] > 0
   end
   [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]

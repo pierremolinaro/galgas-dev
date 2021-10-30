@@ -77,7 +77,7 @@ syntax extension templateSyntax {
         select
           $uint32$ ?let n
           $*$
-          for a in 0 ..< n.uint do
+          for * in 0 ..< n.uint do
             outAssociatedValuesExtraction += !["" nowhere] !["" nowhere] !false
           end
          or
@@ -161,7 +161,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
             + if [associatedTypeList length] > 1 then "s" else "" end
         else
           var associatedValueIndex = 0
-          for (mType) in associatedTypeList, (mExtractedValueTypeName mExtractedValueName mMarkedAsUnused) in mAssociatedValuesExtraction do
+          for (mType) in associatedTypeList, (mExtractedValueTypeName mExtractedValueName *) in mAssociatedValuesExtraction do
             if mExtractedValueTypeName.string != "" then # Explicit type ?
               if [mType key] != mExtractedValueTypeName.string then
                 error mExtractedValueTypeName : "the required type is '@" + [mType key] + "'"

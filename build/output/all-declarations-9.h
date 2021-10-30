@@ -10,6 +10,41 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Abstract extension method '@abstractEnumeratedCollectionAST analyzeEnumeration'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef void (*extensionMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration) (const class cPtr_abstractEnumeratedCollectionAST * inObject,
+                                                                                             const class GALGAS_lstring constinArgument0,
+                                                                                             class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                                                                             const class GALGAS_analysisContext constinArgument2,
+                                                                                             class GALGAS_localVarManager & ioArgument3,
+                                                                                             class GALGAS_localConstantList & ioArgument4,
+                                                                                             class GALGAS_string & outArgument5,
+                                                                                             class GALGAS_semanticExpressionForGeneration & outArgument6,
+                                                                                             class C_Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionMethod_analyzeEnumeration (const int32_t inClassIndex,
+                                              extensionMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration inMethod) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_analyzeEnumeration (const class cPtr_abstractEnumeratedCollectionAST * inObject,
+                                             const GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                             GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                             const GALGAS_analysisContext constin_inAnalysisContext,
+                                             GALGAS_localVarManager & io_ioVariableMap,
+                                             GALGAS_localConstantList & io_ioLocalConstantListForDoBranch,
+                                             GALGAS_string & out_outEnumeratorCppName,
+                                             GALGAS_semanticExpressionForGeneration & out_outEnumerationExpression,
+                                             C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 // Phase 1: @forInstructionEnumeratedObjectListForGeneration list
 //
 //----------------------------------------------------------------------------------------------------------------------

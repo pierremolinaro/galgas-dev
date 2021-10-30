@@ -134,7 +134,7 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
 #--- Check Signature
   if baseTypeName != "" then
     var formalParameterListForGeneration =@formalInputParameterListForGeneration {}
-    for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName mIsUnused mIsConstant) in self.mAbstractExtensionGetterFormalInputParameterList do
+    for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in self.mAbstractExtensionGetterFormalInputParameterList do
       formalParameterListForGeneration +=
         !mFormalSelector
         !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}

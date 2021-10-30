@@ -248,7 +248,7 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
     !?ioUnusedVariableCppNameSet
     !?ioUseColumnMarker
   )
-  for (mExpression mInstructionList) in self.mTemplateInstructionIfBranchList do
+  for (* *) in self.mTemplateInstructionIfBranchList do
     [!?ioGeneratedCode decIndentation !2]
     ioGeneratedCode += "}\n"
   end

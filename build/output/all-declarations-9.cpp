@@ -9,6 +9,74 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Abstract extension method '@abstractEnumeratedCollectionAST analyzeEnumeration'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static TC_UniqueArray <extensionMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration> gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionMethod_analyzeEnumeration (const int32_t inClassIndex,
+                                              extensionMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration inMethod) {
+  gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void freeExtensionMethod_abstractEnumeratedCollectionAST_analyzeEnumeration (void) {
+  gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.free () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_abstractEnumeratedCollectionAST_analyzeEnumeration (NULL,
+                                                                               freeExtensionMethod_abstractEnumeratedCollectionAST_analyzeEnumeration) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_analyzeEnumeration (const cPtr_abstractEnumeratedCollectionAST * inObject,
+                                             const GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                             GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                             const GALGAS_analysisContext constin_inAnalysisContext,
+                                             GALGAS_localVarManager & io_ioVariableMap,
+                                             GALGAS_localConstantList & io_ioLocalConstantListForDoBranch,
+                                             GALGAS_string & out_outEnumeratorCppName,
+                                             GALGAS_semanticExpressionForGeneration & out_outEnumerationExpression,
+                                             C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) {
+//--- Drop output arguments
+  out_outEnumeratorCppName.drop () ;
+  out_outEnumerationExpression.drop () ;
+//--- Find method
+  if (NULL != inObject) {
+    macroValidSharedObject (inObject, cPtr_abstractEnumeratedCollectionAST) ;
+    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
+    const int32_t classIndex = info->mSlotID ;
+    extensionMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration f = NULL ;
+    if (classIndex < gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.count ()) {
+      f = gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration (classIndex COMMA_HERE) ;
+    }
+    if (NULL == f) {
+      const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
+      while ((NULL == f) && (NULL != p)) {
+        if (p->mSlotID < gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.count ()) {
+          f = gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration (p->mSlotID COMMA_HERE) ;
+        }
+        p = p->mSuperclassDescriptor ;
+      }
+      gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+    }
+    if (NULL == f) {
+      fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
+    }else{
+      f (inObject, constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, io_ioVariableMap, io_ioLocalConstantListForDoBranch, out_outEnumeratorCppName, out_outEnumerationExpression, inCompiler COMMA_THERE) ;
+    }
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Class for element of '@forInstructionEnumeratedObjectListForGeneration' list
 //
 //----------------------------------------------------------------------------------------------------------------------

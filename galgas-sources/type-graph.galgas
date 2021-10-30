@@ -312,14 +312,14 @@ override method @graphDeclarationAST enterInSemanticContext
     !lstringTypeEntry
     !@formalArgumentPassingModeAST.argumentIn
     !"inLKey"
-  for (mFormalSelector mFormalArgumentType mFormalArgumentName) in [associatedListTypeEntry mAddAssignOperatorArguments] do
+  for (* mFormalArgumentType mFormalArgumentName) in [associatedListTypeEntry mAddAssignOperatorArguments] do
     formalParameterList +=
       !["" nowhere]
       !mFormalArgumentType
       !@formalArgumentPassingModeAST.argumentIn
       !mFormalArgumentName
   end
-  for (mInsertModifierName mInsertErrorMessage) in self.mInsertModifierList do
+  for (mInsertModifierName *) in self.mInsertModifierList do
     [!?setterMap insertOrReplace
       !mInsertModifierName
       !@methodKind.definedAsMember

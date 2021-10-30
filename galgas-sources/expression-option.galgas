@@ -121,13 +121,13 @@ override method @optionExpressionAST analyzeSemanticExpression
     end
   else
     var @stringlist s = {}
-    for (lkey mOptionChar mOptionString mComment mDefaultValue) in boolOptionMap do
+    for (lkey * * * *) in boolOptionMap do
       s += !lkey
     end
-    for (lkey mOptionChar mOptionString mComment mDefaultValue) in uintOptionMap do
+    for (lkey * * * *) in uintOptionMap do
       s += !lkey
     end
-    for (lkey mOptionChar mOptionString mComment mDefaultValue) in stringOptionMap do
+    for (lkey * * * *) in stringOptionMap do
       s += !lkey
     end
     error self.mOptionEntryName

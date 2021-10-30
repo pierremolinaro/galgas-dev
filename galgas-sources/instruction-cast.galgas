@@ -124,7 +124,7 @@ override method @structuredCastInstructionAST enterInstructionInSemanticContext
 {
   [self.mCastExpression enterExpressionInSemanticContext !?ioTypeMap]
   [self.mElseInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
-  for (mTypeName mConstantVarName mInstructionList mTypeComparisonKind mEndOfInstructions) in self.mCastInstructionBranchList do
+  for (* * mInstructionList * *) in self.mCastInstructionBranchList do
     [mInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
   end
 }

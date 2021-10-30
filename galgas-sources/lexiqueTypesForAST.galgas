@@ -526,7 +526,7 @@ proc buildLexicalAttributeMap
       var @string m = ""
       m += "the @" + mTypeName + " type is not a valid lexical attribute type; are allowed:"
       var @bool firstLoop = true
-      for (lkey mLexicalType) in inLexicalTypeMap do
+      for (lkey *) in inLexicalTypeMap do
         m += " @" + lkey
       between
         m += ","

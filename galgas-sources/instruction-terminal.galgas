@@ -135,7 +135,7 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
     end
   end
 #---
-  for (mValue0 mValue1) in self.mIndexingKeyList do
+  for (mValue0 *) in self.mIndexingKeyList do
     if not [inIndexNameSet hasKey !mValue0.string] then
       error mValue0 : "the '" + mValue0 + "' indexing name is not declared by the lexique" fixit { replace inIndexNameSet }
     end

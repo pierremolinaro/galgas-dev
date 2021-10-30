@@ -130,7 +130,7 @@ private proc analyzeConstructorInvocation
       + [[inConstuctorEffectiveParameterExpressions length] string] + " parameter(s)"
     end
     outConstructorEffectiveParameterList = {}
-    for (mActualSelector mExpression mEndOfExpressionLocation) in inConstuctorEffectiveParameterExpressions, (mFormalSelector mFormalArgumentType mFormalArgumentName) in constructorFormalArgumentTypeList do
+    for (mActualSelector mExpression mEndOfExpressionLocation) in inConstuctorEffectiveParameterExpressions, (mFormalSelector mFormalArgumentType *) in constructorFormalArgumentTypeList do
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph

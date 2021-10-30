@@ -37,7 +37,7 @@ syntax extension galgas3ExpressionSyntax {
 override method @functionCallExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList do
+  for (* mExpression *) in self.mExpressionList do
     [mExpression enterExpressionInSemanticContext !?ioTypeMap]
   end
 }
@@ -77,7 +77,7 @@ override method @functionCallExpressionAST analyzeSemanticExpression
     : outExpression
   else
     var semanticExpressionListForGeneration =@semanticExpressionListForGeneration {}
-    for (mFormalSelector mFormalArgumentType mFormalArgumentName) in functionSignature, (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList do
+    for (mFormalSelector mFormalArgumentType *) in functionSignature, (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList do
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph

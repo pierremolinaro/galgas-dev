@@ -6772,6 +6772,7 @@ class GALGAS_forInstructionEnumeratedObjectElementListAST : public AC_GALGAS_lis
 //--------------------------------- Element constructor
   public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                  const class GALGAS_lstring & in_mOptionalTypeName,
+                                                 const class GALGAS_bool & in_mDeclaredAsUnused,
                                                  const class GALGAS_lstring & in_mOptionalConstantName
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -6789,7 +6790,8 @@ class GALGAS_forInstructionEnumeratedObjectElementListAST : public AC_GALGAS_lis
   public: static class GALGAS_forInstructionEnumeratedObjectElementListAST constructor_emptyList (LOCATION_ARGS) ;
 
   public: static class GALGAS_forInstructionEnumeratedObjectElementListAST constructor_listWithValue (const class GALGAS_lstring & inOperand0,
-                                                                                                      const class GALGAS_lstring & inOperand1
+                                                                                                      const class GALGAS_bool & inOperand1,
+                                                                                                      const class GALGAS_lstring & inOperand2
                                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
@@ -6799,7 +6801,8 @@ class GALGAS_forInstructionEnumeratedObjectElementListAST : public AC_GALGAS_lis
 
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
-                                                     const class GALGAS_lstring & inOperand1
+                                                     const class GALGAS_bool & inOperand1,
+                                                     const class GALGAS_lstring & inOperand2
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_forInstructionEnumeratedObjectElementListAST add_operation (const GALGAS_forInstructionEnumeratedObjectElementListAST & inOperand,
@@ -6813,26 +6816,35 @@ class GALGAS_forInstructionEnumeratedObjectElementListAST : public AC_GALGAS_lis
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
-                                                      class GALGAS_lstring constinArgument1,
-                                                      class GALGAS_uint constinArgument2,
+                                                      class GALGAS_bool constinArgument1,
+                                                      class GALGAS_lstring constinArgument2,
+                                                      class GALGAS_uint constinArgument3,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
-                                                 class GALGAS_lstring & outArgument1,
+                                                 class GALGAS_bool & outArgument1,
+                                                 class GALGAS_lstring & outArgument2,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
-                                                class GALGAS_lstring & outArgument1,
+                                                class GALGAS_bool & outArgument1,
+                                                class GALGAS_lstring & outArgument2,
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
-                                                      class GALGAS_lstring & outArgument1,
-                                                      class GALGAS_uint constinArgument2,
+                                                      class GALGAS_bool & outArgument1,
+                                                      class GALGAS_lstring & outArgument2,
+                                                      class GALGAS_uint constinArgument3,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMDeclaredAsUnusedAtIndex (class GALGAS_bool constinArgument0,
+                                                                    class GALGAS_uint constinArgument1,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMOptionalConstantNameAtIndex (class GALGAS_lstring constinArgument0,
                                                                         class GALGAS_uint constinArgument1,
@@ -6847,18 +6859,24 @@ class GALGAS_forInstructionEnumeratedObjectElementListAST : public AC_GALGAS_lis
 
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstring & outArgument0,
-                                              class GALGAS_lstring & outArgument1,
+                                              class GALGAS_bool & outArgument1,
+                                              class GALGAS_lstring & outArgument2,
                                               C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
-                                             class GALGAS_lstring & outArgument1,
+                                             class GALGAS_bool & outArgument1,
+                                             class GALGAS_lstring & outArgument2,
                                              C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mDeclaredAsUnusedAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mOptionalConstantNameAtIndex (const class GALGAS_uint & constinOperand0,
                                                                                      C_Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) const ;
@@ -6900,6 +6918,7 @@ class cEnumerator_forInstructionEnumeratedObjectElementListAST : public cGeneric
 
 //--- Current element access
   public: class GALGAS_lstring current_mOptionalTypeName (LOCATION_ARGS) const ;
+  public: class GALGAS_bool current_mDeclaredAsUnused (LOCATION_ARGS) const ;
   public: class GALGAS_lstring current_mOptionalConstantName (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element current (LOCATION_ARGS) const ;
@@ -6919,6 +6938,8 @@ class GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element : public AC
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_mOptionalTypeName ;
 
+  public: GALGAS_bool mProperty_mDeclaredAsUnused ;
+
   public: GALGAS_lstring mProperty_mOptionalConstantName ;
 
 //--------------------------------- Accessors
@@ -6936,6 +6957,10 @@ class GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element : public AC
     mProperty_mOptionalTypeName = inValue ;
   }
 
+  public: inline void setter_setMDeclaredAsUnused (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mDeclaredAsUnused = inValue ;
+  }
+
   public: inline void setter_setMOptionalConstantName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mOptionalConstantName = inValue ;
   }
@@ -6945,6 +6970,7 @@ class GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element : public AC
 
 //--------------------------------- Native constructor
   public: GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element (const GALGAS_lstring & in_mOptionalTypeName,
+                                                                          const GALGAS_bool & in_mDeclaredAsUnused,
                                                                           const GALGAS_lstring & in_mOptionalConstantName) ;
 
 //-- Start of generic part --*
@@ -6959,7 +6985,8 @@ class GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element : public AC
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                                       const class GALGAS_lstring & inOperand1
+                                                                                                       const class GALGAS_bool & inOperand1,
+                                                                                                       const class GALGAS_lstring & inOperand2
                                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -6974,6 +7001,8 @@ class GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element : public AC
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mDeclaredAsUnused (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mOptionalConstantName (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mOptionalTypeName (LOCATION_ARGS) const ;
@@ -7541,39 +7570,4 @@ void callExtensionMethod_enterInSemanticContext (const class cPtr_abstractEnumer
                                                  GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@abstractEnumeratedCollectionAST analyzeEnumeration'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef void (*extensionMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration) (const class cPtr_abstractEnumeratedCollectionAST * inObject,
-                                                                                             const class GALGAS_lstring constinArgument0,
-                                                                                             class GALGAS_usefulEntitiesGraph & ioArgument1,
-                                                                                             const class GALGAS_analysisContext constinArgument2,
-                                                                                             class GALGAS_localVarManager & ioArgument3,
-                                                                                             class GALGAS_localInitializedVariableList & ioArgument4,
-                                                                                             class GALGAS_string & outArgument5,
-                                                                                             class GALGAS_semanticExpressionForGeneration & outArgument6,
-                                                                                             class C_Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_analyzeEnumeration (const int32_t inClassIndex,
-                                              extensionMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration inMethod) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_analyzeEnumeration (const class cPtr_abstractEnumeratedCollectionAST * inObject,
-                                             const GALGAS_lstring constin_inUsefulnessCallerEntityName,
-                                             GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                             const GALGAS_analysisContext constin_inAnalysisContext,
-                                             GALGAS_localVarManager & io_ioVariableMap,
-                                             GALGAS_localInitializedVariableList & io_ioLocalConstantListForDoBranch,
-                                             GALGAS_string & out_outEnumeratorCppName,
-                                             GALGAS_semanticExpressionForGeneration & out_outEnumerationExpression,
-                                             C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
 

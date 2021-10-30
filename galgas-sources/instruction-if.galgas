@@ -386,7 +386,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
   )
   var expressions = self.mExpressions
   [!?expressions popLast ?*]
-  for (expression) in expressions do
+  for (*) in expressions do
     [!?ioVariableMap closeBranch !self.mEndOf_then_branch]
     [!?ioVariableMap closeOverride !self.mEndOf_then_branch]
   end
@@ -461,7 +461,7 @@ private proc analyzeOptionalMethodCall
   else
     var @optionalMethodActualArgumentListForGeneration actualParameterList = {}
     for (actualSelector actualParameter) in inActualParameters,
-        (isInput formalSelector formalType *) in optionalMethodSignature do
+        (* formalSelector formalType *) in optionalMethodSignature do
       switch actualParameter
       case actualOutput (expression location) :
         [expression analyzeSemanticExpression
@@ -690,7 +690,7 @@ override method @ifInstructionForGeneration generateInstruction
     !?ioGeneratedCode
   )
   ioGeneratedCode += "}\n"
-  for (mExpression) in self.mExpressions do
+  for (*) in self.mExpressions do
     [!?ioGeneratedCode decIndentation !2]
     ioGeneratedCode += "}\n"
   end

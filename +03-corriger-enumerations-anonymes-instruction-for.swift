@@ -86,7 +86,7 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
     var nombreModifications = 0
     while loop {
       print (String (repeating: "-", count: 79))
-      let (s, status) = runHiddenCommand ("/usr/local/bin/galgas", ["--error-anonymous-for-instruction", "--no-color", "--max-errors=1", inCheminFichierGALGAS])
+      let (s, status) = runHiddenCommand ("/usr/local/bin/galgas", ["--error-anonymous-for-instruction", "--no-color", "--max-errors=1", "--max-warnings=1", inCheminFichierGALGAS])
       if status == 0 {
         print (BOLD_GREEN + "Succès !" + ENDC)
         loop = false
@@ -101,10 +101,7 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
           lineIndex += 1
         }
         loop = found
-        if !loop {
-          print (CYAN + s + ENDC)
-          print (BOLD_RED + "Erreur non gérée" + ENDC)
-        }else{
+        if loop {
           let lineFixIt = lines [lineIndex + 2]
           print ("  Ligne Fixit : '\(lineFixIt)'")
           let errorMessageLine = lines [lineIndex - 2]
@@ -136,6 +133,45 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
           try! data.write (to: URL (fileURLWithPath: fichier), options: .atomic)
           nombreModifications += 1
           print ("Nombre modifications: \(nombreModifications)")
+        }else{
+          lineIndex = 0
+          found = false
+          while (lineIndex < lines.count) && !found {
+            found = lines [lineIndex].hasPrefix ("semantic warning #1: the constant value is unused")
+            lineIndex += 1
+          }
+          loop = found
+          if loop {
+            let errorMessageLine = lines [lineIndex - 2]
+            let c = errorMessageLine.components (separatedBy: ":")
+            assert (c.count == 5)
+            let fichier = c [0]
+            let ligne = Int (c [1])!
+            let premierCaractère = Int (c[2])! - 1
+            let dernierCaractère = Int (c[3])! - 1
+            print (BOLD_BLUE + "  Erreur détectée : ligne \(ligne), premier caractère \(premierCaractère), dernier \(dernierCaractère)" + ENDC)
+            let contents = try! String (contentsOf: URL (fileURLWithPath: fichier), encoding: .utf8)
+            var lignesDuFichier = contents.components (separatedBy: "\n")
+            let ligneConcernée = lignesDuFichier [ligne - 1]
+            print ("  line concernée '\(ligneConcernée)'")
+            var préfixe = ligneConcernée
+            préfixe.removeLast (ligneConcernée.count - premierCaractère)
+            print ("  Préfixe '\(préfixe)'")
+            var suffixe = ligneConcernée
+            suffixe.removeFirst (dernierCaractère + 1)
+            print ("  Suffixe '\(suffixe)'")
+            let ligneModifiée = préfixe + "*" + suffixe
+            print ("  ligne modifiée '\(ligneModifiée)'")
+            lignesDuFichier [ligne - 1] = ligneModifiée
+            let newContents = lignesDuFichier.joined (separator: "\n")
+            let data : Data = newContents.data (using: .utf8, allowLossyConversion: false)!
+            try! data.write (to: URL (fileURLWithPath: fichier), options: .atomic)
+            nombreModifications += 1
+            print ("Nombre modifications: \(nombreModifications)")
+          }else{
+            print (CYAN + s + ENDC)
+            print (BOLD_RED + "Erreur non gérée" + ENDC)
+          }
         }
       }else{
         print (BOLD_RED + "Status \(status) non géré" + ENDC)

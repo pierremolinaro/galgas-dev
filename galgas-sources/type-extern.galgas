@@ -247,7 +247,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
 #--- Modifiers
   for (mSetterName mFormalParameterList) in self.mExternTypeSetterList do
     var @formalParameterSignature routineSignature = {}
-    for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFormalParameterList do
+    for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
       [@unifiedTypeMap-entry makeEntry
         !?ioSemanticContext.mTypeMap
         !mFormalArgumentTypeName
@@ -268,7 +268,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
 #--- Methods
   for (mMethodName mFormalParameterList mDeclarationLocation) in self.mExternTypeMethodList do
     var routineSignature =@formalParameterSignature {}
-    for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in mFormalParameterList do
+    for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
       var @unifiedTypeMap-entry parameterTypeIndex
       [@unifiedTypeMap-entry makeEntry
         !?ioSemanticContext.mTypeMap

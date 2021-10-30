@@ -74,7 +74,7 @@ override method @repeatInstruction transformInstruction
   )
   var repeatBranchList =@branchListForGrammarAnalysis.listWithValue{!repeatedInstructionList}
 
-  for (mSyntaxInstructionList mEndOf_instructions) in self.mRepeatBranchList do
+  for (mSyntaxInstructionList *) in self.mRepeatBranchList do
     var syntaxInstructionList =@syntaxInstructionListForGrammarAnalysis {}
     transformInstructionList (
       !mSyntaxInstructionList
@@ -224,7 +224,7 @@ override getter @repeatInstructionForGeneration compareInstructionSyntaxSignatur
         + [[si.mListOfSemanticInstructionListForGeneration length] string]
       outOk = false
     end
-    for (ref_mInstructionList ref_mEndOfInstructionList) in self.mListOfSemanticInstructionListForGeneration, (test_mInstructionList test_mEndOfInstructionList) in si.mListOfSemanticInstructionListForGeneration while outOk do
+    for (ref_mInstructionList *) in self.mListOfSemanticInstructionListForGeneration, (test_mInstructionList test_mEndOfInstructionList) in si.mListOfSemanticInstructionListForGeneration while outOk do
       outOk = compareSyntaxSignature (!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList)    
     end
   case >= @syntaxInstructionForGeneration si :
@@ -266,7 +266,7 @@ override method @repeatInstructionForGeneration generateInstruction
   )
   [!?ioGeneratedCode incIndentation !2]
   ioGeneratedCode += "switch (select_" + [self.mSyntaxComponentName identifierRepresentation] + "_" + [self.mChoiceIndex string] + " (" + compilerCppName () + ")) {\n"
-  for (mInstructionList mEndOfInstructionList) in self.mListOfSemanticInstructionListForGeneration do(IDX)
+  for (mInstructionList *) in self.mListOfSemanticInstructionListForGeneration do(IDX)
     ioGeneratedCode += "case " + [IDX + 2 string] + ": {\n"
     generateInstructionList (
       !?ioInclusionSet

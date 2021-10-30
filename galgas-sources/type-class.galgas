@@ -118,7 +118,7 @@ override method @classDeclarationAST enterDeclarationInGraph
   if self.mSuperClassName.string != "" then
     [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mSuperClassName !self.mSuperClassName.location}]
   end
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName * * *) in self.mPropertyList do
     [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mPropertyTypeName !self.mSuperClassName.location}]
   end
 }
@@ -181,7 +181,7 @@ override method @classDeclarationAST enterInSemanticContext
     end
   #--- Mark all setters as inherited
     setterMap = {}
-    for (lkey mKind mParameterList mHasCompilerArgument mQualifier mErrorMessage) in inheritedSetterMap do
+    for (lkey mKind mParameterList mHasCompilerArgument * *) in inheritedSetterMap do
       [!?setterMap insertKey
         !lkey
         !mKind
@@ -193,7 +193,7 @@ override method @classDeclarationAST enterInSemanticContext
     end
   #--- Mark all getters as inherited
     getterMap = {}
-    for (lkey mKind mArgumentTypeList mDeclarationLocation mHasCompilerArgument mReturnedType mQualifier mErrorMessage) in inheritedGetterMap do
+    for (lkey mKind mArgumentTypeList mDeclarationLocation mHasCompilerArgument mReturnedType * mErrorMessage) in inheritedGetterMap do
       [!?getterMap insertKey
         !lkey
         !mKind
@@ -207,7 +207,7 @@ override method @classDeclarationAST enterInSemanticContext
     end
   #--- Mark all methods as inherited
     instanceMethodMap = {}
-    for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument mQualifier mErrorMessage) in inheritedMethodMap do
+    for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument * mErrorMessage) in inheritedMethodMap do
       [!?instanceMethodMap insertKey
         !lkey
         !mKind
@@ -221,7 +221,7 @@ override method @classDeclarationAST enterInSemanticContext
   end
 #--- Build attribute Map and constructor argument list
   var @functionSignature constructorPropertyTypeList = {}
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in inheritedTypedPropertyList do
+  for (mPropertyTypeEntry mPropertyName * mHasSelector) in inheritedTypedPropertyList do
     constructorPropertyTypeList +=
       !if mHasSelector then mPropertyName else ["" nowhere] end
       !mPropertyTypeEntry
@@ -271,7 +271,7 @@ override method @classDeclarationAST enterInSemanticContext
 #--- Typed attribute list
   var @typedPropertyList currentClassTypedPropertyList = {}
   var @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName * mAttributeList) in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true # mIsPublic
     var hasSelector = false
@@ -298,7 +298,7 @@ override method @classDeclarationAST enterInSemanticContext
     ]
   end
 #--- set...attribute setter
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in currentClassTypedPropertyList do
+  for (mPropertyTypeEntry mPropertyName mHasSetter *) in currentClassTypedPropertyList do
     if mHasSetter then
       [!?setterMap insertKey
         !@lstring.new {!"set"+ [mPropertyName.string stringByCapitalizingFirstCharacter] !@location.here}
@@ -328,7 +328,7 @@ override method @classDeclarationAST enterInSemanticContext
   else
     defaultConstructorName = [superClassIndex mDefaultConstructorName]
   end
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in currentClassTypedPropertyList while defaultConstructorName != "" do
+  for (mPropertyTypeEntry * * *) in currentClassTypedPropertyList while defaultConstructorName != "" do
     if ([mPropertyTypeEntry mDefaultConstructorName] == "") | not [mPropertyTypeEntry mIsConcrete] then
       defaultConstructorName = ""
     end
@@ -436,7 +436,7 @@ override method @classDeclarationAST semanticAnalysis
 #------ Enter attributes
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName * mAttributeList) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}

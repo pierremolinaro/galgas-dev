@@ -374,7 +374,7 @@ override getter @lexicalImplicitRuleAST generateCocoaCode
   var @tokenSortedlist tokenSortedList
   [inLexiqueAnalysisContext.mLexicalTokenListMap searchKey !self.mListName ?* ?tokenSortedList ?*]
   outGeneratedCode = ""
-  for > (mLength mName mTerminalName) in tokenSortedList do
+  for > (* mName mTerminalName) in tokenSortedList do
     outGeneratedCode += "if (scanningOk && [self testForInputString:@"
     outGeneratedCode += [mName utf8Representation]
     outGeneratedCode += " advance:YES]) {\n"

@@ -102,7 +102,7 @@ override method @mapEntryDeclarationAST enterInSemanticContext
   var constructorAttributeTypeList =@functionSignature {}
   constructorAttributeTypeList += !["" nowhere] !associatedMapTypeIndex !"inMap"
   constructorAttributeTypeList += !["" nowhere] !lstringTypeIndex !"inLKey"
-  for (mSearchMethodName mErrorMessage mActionName mLocationAttribute) in searchMethodList do
+  for (mSearchMethodName * * *) in searchMethodList do
     [!?constructorMap insertKey
       !mSearchMethodName
       !constructorAttributeTypeList
@@ -155,7 +155,7 @@ override method @mapEntryDeclarationAST enterInSemanticContext
   )
 #--- Enter associated map attribute names as getters
   let @getterMap inheritedGetterMap = getterMap
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in mapTypedAttributeList do
+  for (mPropertyTypeEntry mPropertyName * *) in mapTypedAttributeList do
     if [inheritedGetterMap hasKey !mPropertyName.string] then
       var @string s = ""
       for (key) in [inheritedGetterMap keySet]

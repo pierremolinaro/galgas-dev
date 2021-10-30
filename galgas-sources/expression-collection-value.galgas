@@ -214,7 +214,7 @@ override method @expressionListCollectionValue analyze
     + [self.mExpressionList length] + " element(s)" : semanticExpressionListForGeneration
   else
     semanticExpressionListForGeneration = @semanticExpressionListForGeneration {}
-    for expression in self.mExpressionList, (mFormalSelector mFormalArgumentType mFormalArgumentName) in formalParameterTypeList do
+    for expression in self.mExpressionList, (mFormalSelector mFormalArgumentType *) in formalParameterTypeList do
       [expression.mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph

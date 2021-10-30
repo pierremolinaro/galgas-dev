@@ -13798,6 +13798,7 @@ class cCollectionElement_forInstructionEnumeratedObjectElementListAST : public c
 
 //--- Constructors
   public: cCollectionElement_forInstructionEnumeratedObjectElementListAST (const GALGAS_lstring & in_mOptionalTypeName,
+                                                                           const GALGAS_bool & in_mDeclaredAsUnused,
                                                                            const GALGAS_lstring & in_mOptionalConstantName
                                                                            COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_forInstructionEnumeratedObjectElementListAST (const GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -13818,17 +13819,18 @@ class cCollectionElement_forInstructionEnumeratedObjectElementListAST : public c
 //----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_forInstructionEnumeratedObjectElementListAST::cCollectionElement_forInstructionEnumeratedObjectElementListAST (const GALGAS_lstring & in_mOptionalTypeName,
+                                                                                                                                  const GALGAS_bool & in_mDeclaredAsUnused,
                                                                                                                                   const GALGAS_lstring & in_mOptionalConstantName
                                                                                                                                   COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mOptionalTypeName, in_mOptionalConstantName) {
+mObject (in_mOptionalTypeName, in_mDeclaredAsUnused, in_mOptionalConstantName) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_forInstructionEnumeratedObjectElementListAST::cCollectionElement_forInstructionEnumeratedObjectElementListAST (const GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (inElement.mProperty_mOptionalTypeName, inElement.mProperty_mOptionalConstantName) {
+mObject (inElement.mProperty_mOptionalTypeName, inElement.mProperty_mDeclaredAsUnused, inElement.mProperty_mOptionalConstantName) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -13841,7 +13843,7 @@ bool cCollectionElement_forInstructionEnumeratedObjectElementListAST::isValid (v
 
 cCollectionElement * cCollectionElement_forInstructionEnumeratedObjectElementListAST::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_forInstructionEnumeratedObjectElementListAST (mObject.mProperty_mOptionalTypeName, mObject.mProperty_mOptionalConstantName COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_forInstructionEnumeratedObjectElementListAST (mObject.mProperty_mOptionalTypeName, mObject.mProperty_mDeclaredAsUnused, mObject.mProperty_mOptionalConstantName COMMA_HERE)) ;
   return result ;
 }
 
@@ -13852,6 +13854,10 @@ void cCollectionElement_forInstructionEnumeratedObjectElementListAST::descriptio
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mOptionalTypeName" ":" ;
   mObject.mProperty_mOptionalTypeName.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mDeclaredAsUnused" ":" ;
+  mObject.mProperty_mDeclaredAsUnused.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mOptionalConstantName" ":" ;
@@ -13887,13 +13893,14 @@ GALGAS_forInstructionEnumeratedObjectElementListAST GALGAS_forInstructionEnumera
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_forInstructionEnumeratedObjectElementListAST GALGAS_forInstructionEnumeratedObjectElementListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
-                                                                                                                                    const GALGAS_lstring & inOperand1
+                                                                                                                                    const GALGAS_bool & inOperand1,
+                                                                                                                                    const GALGAS_lstring & inOperand2
                                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_forInstructionEnumeratedObjectElementListAST result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     result = GALGAS_forInstructionEnumeratedObjectElementListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
-    GALGAS_forInstructionEnumeratedObjectElementListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
+    GALGAS_forInstructionEnumeratedObjectElementListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
   }
   return result ;
@@ -13903,10 +13910,12 @@ GALGAS_forInstructionEnumeratedObjectElementListAST GALGAS_forInstructionEnumera
 
 void GALGAS_forInstructionEnumeratedObjectElementListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                                      const GALGAS_lstring & in_mOptionalTypeName,
+                                                                                     const GALGAS_bool & in_mDeclaredAsUnused,
                                                                                      const GALGAS_lstring & in_mOptionalConstantName
                                                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement_forInstructionEnumeratedObjectElementListAST * p = NULL ;
   macroMyNew (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST (in_mOptionalTypeName,
+                                                                                  in_mDeclaredAsUnused,
                                                                                   in_mOptionalConstantName COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -13915,12 +13924,13 @@ void GALGAS_forInstructionEnumeratedObjectElementListAST::makeAttributesFromObje
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_forInstructionEnumeratedObjectElementListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
-                                                                               const GALGAS_lstring & inOperand1
+                                                                               const GALGAS_bool & inOperand1,
+                                                                               const GALGAS_lstring & inOperand2
                                                                                COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inOperand0.isValid () && inOperand1.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
       cCollectionElement * p = NULL ;
-      macroMyNew (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -13953,14 +13963,15 @@ void GALGAS_forInstructionEnumeratedObjectElementListAST::setter_append (GALGAS_
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_forInstructionEnumeratedObjectElementListAST::setter_insertAtIndex (const GALGAS_lstring inOperand0,
-                                                                                const GALGAS_lstring inOperand1,
+                                                                                const GALGAS_bool inOperand1,
+                                                                                const GALGAS_lstring inOperand2,
                                                                                 const GALGAS_uint inInsertionIndex,
                                                                                 C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
       cCollectionElement * p = NULL ;
-      macroMyNew (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -13974,7 +13985,8 @@ void GALGAS_forInstructionEnumeratedObjectElementListAST::setter_insertAtIndex (
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_forInstructionEnumeratedObjectElementListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
-                                                                                GALGAS_lstring & outOperand1,
+                                                                                GALGAS_bool & outOperand1,
+                                                                                GALGAS_lstring & outOperand2,
                                                                                 const GALGAS_uint inRemoveIndex,
                                                                                 C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
@@ -13986,27 +13998,32 @@ void GALGAS_forInstructionEnumeratedObjectElementListAST::setter_removeAtIndex (
       if (NULL == p) {
         outOperand0.drop () ;
         outOperand1.drop () ;
+        outOperand2.drop () ;
         drop () ;
       }else{
         macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST) ;
         outOperand0 = p->mObject.mProperty_mOptionalTypeName ;
-        outOperand1 = p->mObject.mProperty_mOptionalConstantName ;
+        outOperand1 = p->mObject.mProperty_mDeclaredAsUnused ;
+        outOperand2 = p->mObject.mProperty_mOptionalConstantName ;
       }
     }else{
       outOperand0.drop () ;
       outOperand1.drop () ;
+      outOperand2.drop () ;
       drop () ;    
     }
   }else{
     outOperand0.drop () ;
     outOperand1.drop () ;
+    outOperand2.drop () ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_forInstructionEnumeratedObjectElementListAST::setter_popFirst (GALGAS_lstring & outOperand0,
-                                                                           GALGAS_lstring & outOperand1,
+                                                                           GALGAS_bool & outOperand1,
+                                                                           GALGAS_lstring & outOperand2,
                                                                            C_Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
@@ -14015,17 +14032,20 @@ void GALGAS_forInstructionEnumeratedObjectElementListAST::setter_popFirst (GALGA
   if (NULL == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
+    outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST) ;
     outOperand0 = p->mObject.mProperty_mOptionalTypeName ;
-    outOperand1 = p->mObject.mProperty_mOptionalConstantName ;
+    outOperand1 = p->mObject.mProperty_mDeclaredAsUnused ;
+    outOperand2 = p->mObject.mProperty_mOptionalConstantName ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_forInstructionEnumeratedObjectElementListAST::setter_popLast (GALGAS_lstring & outOperand0,
-                                                                          GALGAS_lstring & outOperand1,
+                                                                          GALGAS_bool & outOperand1,
+                                                                          GALGAS_lstring & outOperand2,
                                                                           C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
@@ -14034,17 +14054,20 @@ void GALGAS_forInstructionEnumeratedObjectElementListAST::setter_popLast (GALGAS
   if (NULL == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
+    outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST) ;
     outOperand0 = p->mObject.mProperty_mOptionalTypeName ;
-    outOperand1 = p->mObject.mProperty_mOptionalConstantName ;
+    outOperand1 = p->mObject.mProperty_mDeclaredAsUnused ;
+    outOperand2 = p->mObject.mProperty_mOptionalConstantName ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_forInstructionEnumeratedObjectElementListAST::method_first (GALGAS_lstring & outOperand0,
-                                                                        GALGAS_lstring & outOperand1,
+                                                                        GALGAS_bool & outOperand1,
+                                                                        GALGAS_lstring & outOperand2,
                                                                         C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
@@ -14053,17 +14076,20 @@ void GALGAS_forInstructionEnumeratedObjectElementListAST::method_first (GALGAS_l
   if (NULL == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
+    outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST) ;
     outOperand0 = p->mObject.mProperty_mOptionalTypeName ;
-    outOperand1 = p->mObject.mProperty_mOptionalConstantName ;
+    outOperand1 = p->mObject.mProperty_mDeclaredAsUnused ;
+    outOperand2 = p->mObject.mProperty_mOptionalConstantName ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_forInstructionEnumeratedObjectElementListAST::method_last (GALGAS_lstring & outOperand0,
-                                                                       GALGAS_lstring & outOperand1,
+                                                                       GALGAS_bool & outOperand1,
+                                                                       GALGAS_lstring & outOperand2,
                                                                        C_Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
@@ -14072,10 +14098,12 @@ void GALGAS_forInstructionEnumeratedObjectElementListAST::method_last (GALGAS_ls
   if (NULL == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
+    outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST) ;
     outOperand0 = p->mObject.mProperty_mOptionalTypeName ;
-    outOperand1 = p->mObject.mProperty_mOptionalConstantName ;
+    outOperand1 = p->mObject.mProperty_mDeclaredAsUnused ;
+    outOperand2 = p->mObject.mProperty_mOptionalConstantName ;
   }
 }
 
@@ -14161,6 +14189,35 @@ GALGAS_lstring GALGAS_forInstructionEnumeratedObjectElementListAST::getter_mOpti
 
 //----------------------------------------------------------------------------------------------------------------------
 
+void GALGAS_forInstructionEnumeratedObjectElementListAST::setter_setMDeclaredAsUnusedAtIndex (GALGAS_bool inOperand,
+                                                                                              GALGAS_uint inIndex,
+                                                                                              C_Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) {
+  cCollectionElement_forInstructionEnumeratedObjectElementListAST * p = (cCollectionElement_forInstructionEnumeratedObjectElementListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mDeclaredAsUnused = inOperand ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_forInstructionEnumeratedObjectElementListAST::getter_mDeclaredAsUnusedAtIndex (const GALGAS_uint & inIndex,
+                                                                                                  C_Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_forInstructionEnumeratedObjectElementListAST * p = (cCollectionElement_forInstructionEnumeratedObjectElementListAST *) attributes.ptr () ;
+  GALGAS_bool result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST) ;
+    result = p->mObject.mProperty_mDeclaredAsUnused ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 void GALGAS_forInstructionEnumeratedObjectElementListAST::setter_setMOptionalConstantNameAtIndex (GALGAS_lstring inOperand,
                                                                                                   GALGAS_uint inIndex,
                                                                                                   C_Compiler * inCompiler
@@ -14213,6 +14270,14 @@ GALGAS_lstring cEnumerator_forInstructionEnumeratedObjectElementListAST::current
   const cCollectionElement_forInstructionEnumeratedObjectElementListAST * p = (const cCollectionElement_forInstructionEnumeratedObjectElementListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST) ;
   return p->mObject.mProperty_mOptionalTypeName ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool cEnumerator_forInstructionEnumeratedObjectElementListAST::current_mDeclaredAsUnused (LOCATION_ARGS) const {
+  const cCollectionElement_forInstructionEnumeratedObjectElementListAST * p = (const cCollectionElement_forInstructionEnumeratedObjectElementListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST) ;
+  return p->mObject.mProperty_mDeclaredAsUnused ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -15364,74 +15429,6 @@ void callExtensionMethod_enterInSemanticContext (const cPtr_abstractEnumeratedCo
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
     }else{
       f (inObject, io_ioTypeMap, inCompiler COMMA_THERE) ;
-    }
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@abstractEnumeratedCollectionAST analyzeEnumeration'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-static TC_UniqueArray <extensionMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration> gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_analyzeEnumeration (const int32_t inClassIndex,
-                                              extensionMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration inMethod) {
-  gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-static void freeExtensionMethod_abstractEnumeratedCollectionAST_analyzeEnumeration (void) {
-  gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.free () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-C_PrologueEpilogue gMethod_abstractEnumeratedCollectionAST_analyzeEnumeration (NULL,
-                                                                               freeExtensionMethod_abstractEnumeratedCollectionAST_analyzeEnumeration) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_analyzeEnumeration (const cPtr_abstractEnumeratedCollectionAST * inObject,
-                                             const GALGAS_lstring constin_inUsefulnessCallerEntityName,
-                                             GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                             const GALGAS_analysisContext constin_inAnalysisContext,
-                                             GALGAS_localVarManager & io_ioVariableMap,
-                                             GALGAS_localInitializedVariableList & io_ioLocalConstantListForDoBranch,
-                                             GALGAS_string & out_outEnumeratorCppName,
-                                             GALGAS_semanticExpressionForGeneration & out_outEnumerationExpression,
-                                             C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
-//--- Drop output arguments
-  out_outEnumeratorCppName.drop () ;
-  out_outEnumerationExpression.drop () ;
-//--- Find method
-  if (NULL != inObject) {
-    macroValidSharedObject (inObject, cPtr_abstractEnumeratedCollectionAST) ;
-    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const int32_t classIndex = info->mSlotID ;
-    extensionMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration f = NULL ;
-    if (classIndex < gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.count ()) {
-      f = gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration (classIndex COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
-      while ((NULL == f) && (NULL != p)) {
-        if (p->mSlotID < gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.count ()) {
-          f = gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration (p->mSlotID COMMA_HERE) ;
-        }
-        p = p->mSuperclassDescriptor ;
-      }
-      gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
-    }else{
-      f (inObject, constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, io_ioVariableMap, io_ioLocalConstantListForDoBranch, out_outEnumeratorCppName, out_outEnumerationExpression, inCompiler COMMA_THERE) ;
     }
   }
 }

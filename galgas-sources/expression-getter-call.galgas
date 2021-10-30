@@ -94,7 +94,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       hasCompilerArgument = true
       returnedType = @unifiedTypeMap-entry.null
       kind = @methodKind.definedAsExtension
-      for (propertyTypeEntry propertyName hasSetter hasSelector) in [receiverType mCurrentTypedPropertyList] do
+      for (propertyTypeEntry propertyName * *) in [receiverType mCurrentTypedPropertyList] do
         let propertyType = @unifiedTypeMap-entry.searchKey {
           !inAnalysisContext.mSemanticContext.mTypeMap
           !.new {![propertyTypeEntry key] !.here}
@@ -153,7 +153,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
     + [[self.mExpressions length] string] + " parameter(s)" : outExpression
   else
     var @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
-    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType mFormalArgumentName) in getterFormalArgumentTypeList do
+    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType *) in getterFormalArgumentTypeList do
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph

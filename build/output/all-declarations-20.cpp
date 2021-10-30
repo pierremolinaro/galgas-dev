@@ -4563,6 +4563,7 @@ GALGAS_castInstructionBranchListForGeneration_2D_element GALGAS_castInstructionB
 
 GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element::GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element (void) :
 mProperty_mOptionalTypeName (),
+mProperty_mDeclaredAsUnused (),
 mProperty_mOptionalConstantName () {
 }
 
@@ -4574,26 +4575,30 @@ GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element::~ GALGAS_forInst
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element::GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                                                                const GALGAS_lstring & inOperand1) :
+                                                                                                                                const GALGAS_bool & inOperand1,
+                                                                                                                                const GALGAS_lstring & inOperand2) :
 mProperty_mOptionalTypeName (inOperand0),
-mProperty_mOptionalConstantName (inOperand1) {
+mProperty_mDeclaredAsUnused (inOperand1),
+mProperty_mOptionalConstantName (inOperand2) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
+                                                                         GALGAS_bool::constructor_default (HERE),
                                                                          GALGAS_lstring::constructor_default (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                                                                                const GALGAS_lstring & inOperand1 
+                                                                                                                                                const GALGAS_bool & inOperand1,
+                                                                                                                                                const GALGAS_lstring & inOperand2 
                                                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element (inOperand0, inOperand1) ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    result = GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element (inOperand0, inOperand1, inOperand2) ;
   }
   return result ;
 }
@@ -4606,6 +4611,9 @@ typeComparisonResult GALGAS_forInstructionEnumeratedObjectElementListAST_2D_elem
     result = mProperty_mOptionalTypeName.objectCompare (inOperand.mProperty_mOptionalTypeName) ;
   }
   if (result == kOperandEqual) {
+    result = mProperty_mDeclaredAsUnused.objectCompare (inOperand.mProperty_mDeclaredAsUnused) ;
+  }
+  if (result == kOperandEqual) {
     result = mProperty_mOptionalConstantName.objectCompare (inOperand.mProperty_mOptionalConstantName) ;
   }
   return result ;
@@ -4614,13 +4622,14 @@ typeComparisonResult GALGAS_forInstructionEnumeratedObjectElementListAST_2D_elem
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element::isValid (void) const {
-  return mProperty_mOptionalTypeName.isValid () && mProperty_mOptionalConstantName.isValid () ;
+  return mProperty_mOptionalTypeName.isValid () && mProperty_mDeclaredAsUnused.isValid () && mProperty_mOptionalConstantName.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element::drop (void) {
   mProperty_mOptionalTypeName.drop () ;
+  mProperty_mDeclaredAsUnused.drop () ;
   mProperty_mOptionalConstantName.drop () ;
 }
 
@@ -4634,6 +4643,8 @@ void GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element::description
   }else{
     mProperty_mOptionalTypeName.description (ioString, inIndentation+1) ;
     ioString << ", " ;
+    mProperty_mDeclaredAsUnused.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
     mProperty_mOptionalConstantName.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
@@ -4643,6 +4654,12 @@ void GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element::description
 
 GALGAS_lstring GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element::getter_mOptionalTypeName (UNUSED_LOCATION_ARGS) const {
   return mProperty_mOptionalTypeName ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element::getter_mDeclaredAsUnused (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mDeclaredAsUnused ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -15067,183 +15084,6 @@ GALGAS_literalSIntExpressionForGeneration_2D_weak GALGAS_literalSIntExpressionFo
       result = *p ;
     }else{
       inCompiler->castError ("literalSIntExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//   Object comparison                                                                           
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult cPtr_literalSInt_36__34_ExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_literalSInt_36__34_ExpressionForGeneration * p = (const cPtr_literalSInt_36__34_ExpressionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_literalSInt_36__34_ExpressionForGeneration) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mValue.objectCompare (p->mProperty_mValue) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-typeComparisonResult GALGAS_literalSInt_36__34_ExpressionForGeneration::objectCompare (const GALGAS_literalSInt_36__34_ExpressionForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_literalSInt_36__34_ExpressionForGeneration::GALGAS_literalSInt_36__34_ExpressionForGeneration (void) :
-GALGAS_semanticExpressionForGeneration () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_literalSInt_36__34_ExpressionForGeneration GALGAS_literalSInt_36__34_ExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_literalSInt_36__34_ExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE),
-                                                                             GALGAS_location::constructor_nowhere (HERE),
-                                                                             GALGAS_sint_36__34_::constructor_default (HERE)
-                                                                             COMMA_THERE) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_literalSInt_36__34_ExpressionForGeneration::GALGAS_literalSInt_36__34_ExpressionForGeneration (const cPtr_literalSInt_36__34_ExpressionForGeneration * inSourcePtr) :
-GALGAS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_literalSInt_36__34_ExpressionForGeneration) ;
-}
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_literalSInt_36__34_ExpressionForGeneration GALGAS_literalSInt_36__34_ExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
-                                                                                                                      const GALGAS_location & inAttribute_mLocation,
-                                                                                                                      const GALGAS_sint_36__34_ & inAttribute_mValue
-                                                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_literalSInt_36__34_ExpressionForGeneration result ;
-  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mValue.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_literalSInt_36__34_ExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mValue COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_sint_36__34_ GALGAS_literalSInt_36__34_ExpressionForGeneration::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  GALGAS_sint_36__34_ result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_literalSInt_36__34_ExpressionForGeneration * p = (const cPtr_literalSInt_36__34_ExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalSInt_36__34_ExpressionForGeneration) ;
-    result = p->mProperty_mValue ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_literalSInt_36__34_ExpressionForGeneration::setter_setMValue (GALGAS_sint_36__34_ inValue
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_literalSInt_36__34_ExpressionForGeneration * p = (cPtr_literalSInt_36__34_ExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalSInt_36__34_ExpressionForGeneration) ;
-    p->mProperty_mValue = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//Pointer class for @literalSInt64ExpressionForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
-
-cPtr_literalSInt_36__34_ExpressionForGeneration::cPtr_literalSInt_36__34_ExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mResultType,
-                                                                                                  const GALGAS_location & in_mLocation,
-                                                                                                  const GALGAS_sint_36__34_ & in_mValue
-                                                                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
-mProperty_mValue (in_mValue) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_literalSInt_36__34_ExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalSInt_36__34_ExpressionForGeneration ;
-}
-
-void cPtr_literalSInt_36__34_ExpressionForGeneration::description (C_String & ioString,
-                                                                   const int32_t inIndentation) const {
-  ioString << "[@literalSInt64ExpressionForGeneration:" ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mValue.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_literalSInt_36__34_ExpressionForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_literalSInt_36__34_ExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mValue COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@literalSInt64ExpressionForGeneration type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_literalSInt_36__34_ExpressionForGeneration ("literalSInt64ExpressionForGeneration",
-                                                                   & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_literalSInt_36__34_ExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalSInt_36__34_ExpressionForGeneration ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_literalSInt_36__34_ExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_literalSInt_36__34_ExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_literalSInt_36__34_ExpressionForGeneration GALGAS_literalSInt_36__34_ExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                                    C_Compiler * inCompiler
-                                                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_literalSInt_36__34_ExpressionForGeneration result ;
-  const GALGAS_literalSInt_36__34_ExpressionForGeneration * p = (const GALGAS_literalSInt_36__34_ExpressionForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_literalSInt_36__34_ExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("literalSInt64ExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
