@@ -195,9 +195,9 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: let mutableProperties] then
-      if not selfIsMutable then
-        error self.mInstructionLocation : "'self' not mutable in this context"
+    if let [inAnalysisContext.selfType available ?type: let selfType ?1* ?mutableproperties: let mutableProperties] then
+      if not mutableProperties then
+        error self.mInstructionLocation : "property not mutable in this context"
       end
       let propertyMap = [selfType mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
@@ -214,24 +214,6 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
       error self.mInstructionLocation : "'self' not available in this context"
       : targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
     end
-
-
-#    if [inAnalysisContext.nonMutableSelfType isNull] then
-#      error self.mReceiverName: "'self' cannot be used in this context"
-#      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-#    elsif [inAnalysisContext.mutableSelfType isNull] then
-#      error self.mReceiverName: "'self' object is not mutable"
-#      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-#    else
-#      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
-#      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
-#      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
-#      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
-#        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
-#      if isConstant then
-#        error self.mReceiverName : "a constant property cannot be modified"
-#      end
-#    end
   else
     [!?ioVariableMap searchForReadWriteAccess
       !self.mReceiverName

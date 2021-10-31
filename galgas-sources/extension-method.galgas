@@ -114,7 +114,9 @@ override method @extensionMethodAST semanticAnalysis
   var @string selfObjectAccessor
   var @bool implementedAsFunction
 #--- Check self type is a class
-  if [[selfType mTypeKindEnum] isClassType] then
+  var isReferenceClass = false
+  if let [[selfType mTypeKindEnum] classType ?isReference: let isReference] then
+    isReferenceClass = isReference
     selfObjectName = "object"
     selfObjectAccessor = "object->"
     implementedAsFunction = false
@@ -130,7 +132,7 @@ override method @extensionMethodAST semanticAnalysis
     !inSemanticContext
     !inPredefinedTypes
     !selfObjectName
-    !selfType: .available {!type:  selfType !mutable: false !mutableproperties: false}
+    !selfType: .available {!type:  selfType !mutable: false !mutableproperties: isReferenceClass}
     !selfObjectAccessor
   }
   var isRefClass = false

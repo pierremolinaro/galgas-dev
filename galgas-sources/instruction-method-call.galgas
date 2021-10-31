@@ -69,11 +69,15 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     ?let @semanticExpressionForGeneration receiverExpression
   ]
 #--- Get type method signature
-  var @formalParameterSignature routineSignature
-  var @bool hasCompilerArgument
-  var @methodKind kind
-  var @string errorMessage
-  [[receiverExpression.mResultType mInstanceMethodMap] searchKey !self.mMethodName ?kind ?routineSignature ?* ?hasCompilerArgument ?* ?errorMessage]
+  [[receiverExpression.mResultType mInstanceMethodMap] searchKey
+    !self.mMethodName
+    ?let kind
+    ?let routineSignature
+    ?*
+    ?let hasCompilerArgument
+    ?*
+    ?let errorMessage
+  ]
   if errorMessage != "" then
     error self.mMethodName : errorMessage
   end
