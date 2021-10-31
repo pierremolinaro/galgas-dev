@@ -416,6 +416,7 @@ proc addExtensions
   ?!@getterMap ioGetterMap
   ?!@setterMap ioSetterMap
   ?!@instanceMethodMap ioInstanceMethodMap
+  ?acceptSetters: let @bool inAcceptSetters
 {
 #------------------------  Extension methods
   if [inExtensionMethodMapForBuildingContext hasKey !inTypeName.string] then
@@ -444,7 +445,6 @@ proc addExtensions
   end
 #------------------------  Extension getters
   if [inExtensionGetterMapForBuildingContext hasKey !inTypeName.string] then
-#    @extensionGetterMapForType extensionGetterMapForType
     [inExtensionGetterMapForBuildingContext searchKey !inTypeName ?let extensionGetterMapForType]
     for (lkey mResultTypeName mInputFormalParameterList) in extensionGetterMapForType do
       var @functionSignature formalArgumentList = {}
@@ -483,6 +483,9 @@ proc addExtensions
         !@methodQualifier.isBasic
         !"" # No Error message
       ]
+      if not inAcceptSetters then
+        error lkey : "a refclass does not accept any setter; use method instead"
+      end
     end
   end
 }

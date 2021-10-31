@@ -130,7 +130,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
   [self.mSourceExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !targetType
+    ! targetType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
@@ -183,53 +183,59 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
   var @unifiedTypeMap-entry targetType
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
-  if [inAnalysisContext.mSelfCopyTypeEntry isNull] then
+  if [inAnalysisContext.nonMutableSelfType isNull] then
     error self.mTargetSelfPropertyName: "'self' cannot be used in this context"
     : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-  elsif [inAnalysisContext.mSelfTypeEntry isNull] then
-    error self.mTargetSelfPropertyName: "'self' object is not mutable"
-    : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
   else
-    let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
-    [propertyMap searchKey !self.mTargetSelfPropertyName ?* ?let isConstant ?targetType]
-    if isConstant then
-      error self.mTargetSelfPropertyName : "a constant property cannot be modified"
+    var ok = not [inAnalysisContext.mutableSelfType isNull]
+    if not ok, let [[inAnalysisContext.nonMutableSelfType mTypeKindEnum] classType ?isReference: let isReference], isReference then
+      ok = self.mOptionalProperty.string != ""
     end
-    nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
-    targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
-     + "mProperty_"+ [self.mTargetSelfPropertyName.string identifierRepresentation]
+    if not ok then
+      error self.mTargetSelfPropertyName: "'self' object is not mutable"
+      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+    else
+      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
+      [propertyMap searchKey !self.mTargetSelfPropertyName ?* ?let isConstant ?targetType]
+      if isConstant then
+        error self.mTargetSelfPropertyName : "a constant property cannot be modified"
+      end
+      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
+      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+       + "mProperty_"+ [self.mTargetSelfPropertyName.string identifierRepresentation]
+    end
+  #--- Get target variable type
+    if self.mOptionalProperty.string != "" then
+      let propertyMap = [targetType mPropertyMap]
+      [propertyMap searchKey !self.mOptionalProperty ?let isPublic ?let isConstant ?targetType]
+      if not isPublic then
+        error self.mOptionalProperty : " inaccessible property (due to its 'private' qualifier)"
+      end
+      if isConstant then
+        error self.mOptionalProperty : "a constant property cannot be modified"
+      end
+    end
+  #--- Analyze source expression
+    [self.mSourceExpression analyzeSemanticExpression
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      ! targetType
+      !inAnalysisContext
+      !?ioVariableMap
+      ?@semanticExpressionForGeneration expression
+    ]
+  #--- Check assignment type compatibility
+    checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
+  #--- Generate instruction
+    ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
+      !targetType
+      !targetVariableCppName
+      !nameForCheckingFormalParameterUsing
+      !self.mOptionalProperty
+      !expression
+      !self.mTargetSelfPropertyName.location
+    }
   end
-#--- Get target variable type
-  if self.mOptionalProperty.string != "" then
-    let propertyMap = [targetType mPropertyMap]
-    [propertyMap searchKey !self.mOptionalProperty ?let isPublic ?let isConstant ?targetType]
-    if not isPublic then
-      error self.mOptionalProperty : " inaccessible property (due to its 'private' qualifier)"
-    end
-    if isConstant then
-      error self.mOptionalProperty : "a constant property cannot be modified"
-    end
-  end
-#--- Analyze source expression
-  [self.mSourceExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !targetType
-    !inAnalysisContext
-    !?ioVariableMap
-    ?@semanticExpressionForGeneration expression
-  ]
-#--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
-#--- Generate instruction
-  ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
-    !targetType
-    !targetVariableCppName
-    !nameForCheckingFormalParameterUsing
-    !self.mOptionalProperty
-    !expression
-    !self.mTargetSelfPropertyName.location
-  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

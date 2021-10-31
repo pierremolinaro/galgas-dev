@@ -131,14 +131,14 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if [inAnalysisContext.mSelfCopyTypeEntry isNull] then
+    if [inAnalysisContext.nonMutableSelfType isNull] then
       error self.mReceiverName: "'self' cannot be used in this context"
       : receiverType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    elsif [inAnalysisContext.mSelfTypeEntry isNull] then
+    elsif [inAnalysisContext.mutableSelfType isNull] then
       error self.mReceiverName: "'self' object is not mutable"
       : receiverType, nameForCheckingFormalParameterUsing, targetVariableCppName
     else
-      let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
+      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?receiverType]
       if isConstant then
         error self.mReceiverName: "a constant property cannot be modified"
@@ -250,11 +250,11 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
 #--- Analyze "self", as receiver expression
   var @unifiedTypeMap-entry selfTypeEntry
   var @string selfObjectCppName
-  if [inAnalysisContext.mSelfTypeEntry isNull] then
+  if [inAnalysisContext.mutableSelfType isNull] then
     error self.mSetterName: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-    selfTypeEntry = inAnalysisContext.mSelfTypeEntry
+    selfTypeEntry = inAnalysisContext.mutableSelfType
   end
 #--- Get setter signature
   var @formalParameterSignature routineSignature

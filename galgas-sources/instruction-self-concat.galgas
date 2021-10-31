@@ -150,11 +150,11 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
 #--- Analyze "self", as receiver expression
   var @unifiedTypeMap-entry selfTypeEntry
   var @string selfObjectCppName
-  if [inAnalysisContext.mSelfTypeEntry isNull] then
+  if [inAnalysisContext.mutableSelfType isNull] then
     error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-    selfTypeEntry = inAnalysisContext.mSelfTypeEntry
+    selfTypeEntry = inAnalysisContext.mutableSelfType
   end
 #--- Check target variable type support '+=' operator
   let addAssignOperatorArguments= [selfTypeEntry mAddAssignOperatorArguments] # Empty list if += operator is not supported
@@ -179,8 +179,10 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
         ?@semanticExpressionForGeneration expression
       ]
       if mFormalSelector.string != mActualSelector.string then
-        error mActualSelector
-          : "the selector should be '!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "'"
+        let s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
+        error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+#        error mActualSelector
+#          : "the selector should be '!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "'"
       end
       checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !expression.mResultType !mEndOfExpressionLocation !?expression)
       effectiveParameterList += !expression
@@ -207,11 +209,11 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
 #--- Analyze "self", as receiver expression
   var @unifiedTypeMap-entry selfTypeEntry
   var @string selfObjectCppName
-  if [inAnalysisContext.mSelfTypeEntry isNull] then
+  if [inAnalysisContext.mutableSelfType isNull] then
     error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-    selfTypeEntry = inAnalysisContext.mSelfTypeEntry
+    selfTypeEntry = inAnalysisContext.mutableSelfType
   end
 #--- Check target variable type support '+= exp' operator
   if not [[selfTypeEntry mHandledOperatorFlags] plusEqualOperatorWithExpression] then
@@ -252,11 +254,11 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
 #--- Analyze "self", as receiver expression
   var @unifiedTypeMap-entry selfTypeEntry
   var @string selfObjectCppName
-  if [inAnalysisContext.mSelfTypeEntry isNull] then
+  if [inAnalysisContext.mutableSelfType isNull] then
     error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-    selfTypeEntry = inAnalysisContext.mSelfTypeEntry
+    selfTypeEntry = inAnalysisContext.mutableSelfType
   end
 #--- Check target variable type support '-= exp' operator
   if not [[selfTypeEntry mHandledOperatorFlags] minusEqualOperatorWithExpression] then
@@ -297,11 +299,11 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
 #--- Analyze "self", as receiver expression
   var @unifiedTypeMap-entry selfTypeEntry
   var @string selfObjectCppName
-  if [inAnalysisContext.mSelfTypeEntry isNull] then
+  if [inAnalysisContext.mutableSelfType isNull] then
     error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-    selfTypeEntry = inAnalysisContext.mSelfTypeEntry
+    selfTypeEntry = inAnalysisContext.mutableSelfType
   end
 #--- Check target variable type support '*= exp' operator
   if [[selfTypeEntry mHandledOperatorFlags] mulEqualOperatorWithExpression] then
@@ -342,11 +344,11 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
 #--- Analyze "self", as receiver expression
   var @unifiedTypeMap-entry selfTypeEntry
   var @string selfObjectCppName
-  if [inAnalysisContext.mSelfTypeEntry isNull] then
+  if [inAnalysisContext.mutableSelfType isNull] then
     error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-    selfTypeEntry = inAnalysisContext.mSelfTypeEntry
+    selfTypeEntry = inAnalysisContext.mutableSelfType
   end
 #--- Check target variable type support '/= exp' operator
   if [[selfTypeEntry mHandledOperatorFlags] divEqualOperatorWithExpression] then

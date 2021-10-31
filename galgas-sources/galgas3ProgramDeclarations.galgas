@@ -81,7 +81,7 @@ rule <declaration>
 #--- Source file
   $?$ ?let selector
   if selector.string != "sourceFilePath" then
-    error selector : "the selector should be '?sourceFilePath:'"
+    error selector : "the selector should be '?sourceFilePath:'" fixit { replace "?sourceFilePath:" }
   end
   select
   or

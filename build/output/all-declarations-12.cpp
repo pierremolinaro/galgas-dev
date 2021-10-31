@@ -2625,6 +2625,7 @@ void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_d
     test_0 = GALGAS_bool (kIsNotEqual, var_selector_3706.getter_string (HERE).objectCompare (GALGAS_string ("sourceFilePath"))).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray1 ;
+      appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string ("\?sourceFilePath:")) ;
       inCompiler->emitSemanticError (var_selector_3706.getter_location (SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 84)), GALGAS_string ("the selector should be '\?sourceFilePath:'"), fixItArray1  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 84)) ;
     }
   }
@@ -2632,40 +2633,40 @@ void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_d
   case 1: {
   } break ;
   case 2: {
-    GALGAS_lstring var_typeName_3863 = inCompiler->synthetizedAttribute_tokenString () ;
+    GALGAS_lstring var_typeName_3900 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__40_type COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 88)) ;
     enumGalgasBool test_2 = kBoolTrue ;
     if (kBoolTrue == test_2) {
-      test_2 = GALGAS_bool (kIsNotEqual, var_typeName_3863.getter_string (HERE).objectCompare (GALGAS_string ("lstring"))).boolEnum () ;
+      test_2 = GALGAS_bool (kIsNotEqual, var_typeName_3900.getter_string (HERE).objectCompare (GALGAS_string ("lstring"))).boolEnum () ;
       if (kBoolTrue == test_2) {
         TC_Array <C_FixItDescription> fixItArray3 ;
-        inCompiler->emitSemanticError (var_typeName_3863.getter_location (SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 90)), GALGAS_string ("the only type allowed here is '@lstring'"), fixItArray3  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 90)) ;
+        inCompiler->emitSemanticError (var_typeName_3900.getter_location (SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 90)), GALGAS_string ("the only type allowed here is '@lstring'"), fixItArray3  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 90)) ;
       }
     }
   } break ;
   default:
     break ;
   }
-  GALGAS_bool var_isUnused_4005 ;
+  GALGAS_bool var_isUnused_4042 ;
   switch (select_galgas_33_ProgramDeclarations_2 (inCompiler)) {
   case 1: {
-    var_isUnused_4005 = GALGAS_bool (false) ;
+    var_isUnused_4042 = GALGAS_bool (false) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_unused COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 97)) ;
-    var_isUnused_4005 = GALGAS_bool (true) ;
+    var_isUnused_4042 = GALGAS_bool (true) ;
   } break ;
   default:
     break ;
   }
-  GALGAS_lstring var_mSourceFileVariableName_4133 = inCompiler->synthetizedAttribute_tokenString () ;
+  GALGAS_lstring var_mSourceFileVariableName_4170 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 100)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7B_ COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 102)) ;
-  GALGAS_semanticInstructionListAST var_mInstructionList_4224 ;
-  nt_semantic_5F_instruction_5F_list_ (var_mInstructionList_4224, inCompiler) ;
-  GALGAS_location var_endOfInstructionList_4251 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 104)) ;
+  GALGAS_semanticInstructionListAST var_mInstructionList_4261 ;
+  nt_semantic_5F_instruction_5F_list_ (var_mInstructionList_4261, inCompiler) ;
+  GALGAS_location var_endOfInstructionList_4288 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 104)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7D_ COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 105)) ;
-  ioArgument_ioDeclarations.mProperty_mSourceRuleList.addAssign_operation (var_mSourceFileExtension_3454, var_mSourceFileHelp_3509, var_mSourceFileVariableName_4133, var_isUnused_4005, var_referenceGrammar_3564, var_mInstructionList_4224, var_endOfInstructionList_4251  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 106)) ;
+  ioArgument_ioDeclarations.mProperty_mSourceRuleList.addAssign_operation (var_mSourceFileExtension_3454, var_mSourceFileHelp_3509, var_mSourceFileVariableName_4170, var_isUnused_4042, var_referenceGrammar_3564, var_mInstructionList_4261, var_endOfInstructionList_4288  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 106)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

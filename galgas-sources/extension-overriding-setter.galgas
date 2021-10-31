@@ -120,17 +120,13 @@ override method @overridingExtensionSetterAST semanticAnalysis
 #--- Analyze instruction list
   var @formalParameterListForGeneration formalParameterListForGeneration = {}
   var @semanticInstructionListForGeneration semanticInstructionListForGeneration
-#  if [[selfType mTypeKindEnum] isClassType] then
-#    selfObjectName = "object"
-#  else
-#    selfObjectName = "ioObject"
-#   end
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !selfType
+    !nonMutableSelfType: selfType
     !"object"
-    !selfType
+    !mutableSelfType: selfType
+    !selfAvailability: .available {!selfType: selfType !selfIsMutable: true !selfPropertiesAreMutable: true}
     !"object->"
   }
   analyzeRoutineBody (
@@ -138,10 +134,8 @@ override method @overridingExtensionSetterAST semanticAnalysis
     !?ioUsefulEntitiesGraph
     !analysisContext
     !self.mOverridingExtensionSetterFormalParameterList
-    !@localConstantList {}
-    !@typedPropertyList {}
+    !nonMutablePropertyList: @typedPropertyList {}
     !mutablePropertyList: [selfType mAllTypedPropertyList]
-#    !"object->"
     !self.mOverridingExtensionSetterInstructionList
     !self.mEndOfSetterDeclarationLocation
     ?semanticInstructionListForGeneration

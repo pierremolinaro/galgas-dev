@@ -2377,6 +2377,95 @@ class cMapElement_localVarManager : public cMapElement {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//                                           Phase 1: @selfAvailability enum                                           *
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_selfAvailability : public AC_GALGAS_root {
+//--------------------------------- Default constructor
+  public: GALGAS_selfAvailability (void) ;
+
+//--------------------------------- Enumeration
+  public: typedef enum {
+    kNotBuilt,
+    kEnum_none,
+    kEnum_available
+  } enumeration ;
+  
+//--------------------------------- Private data member
+  private: AC_GALGAS_enumAssociatedValues mAssociatedValues ;
+  public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
+    return mAssociatedValues.unsafePointer () ;
+  }
+
+  private: enumeration mEnum ;
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const { return kNotBuilt != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) { mEnum = kNotBuilt ; }
+  public: inline enumeration enumValue (void) const { return mEnum ; }
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_selfAvailability extractObject (const GALGAS_object & inObject,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_selfAvailability constructor_available (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+                                                                      const class GALGAS_bool & inOperand1,
+                                                                      const class GALGAS_bool & inOperand2
+                                                                      COMMA_LOCATION_ARGS) ;
+
+  public: static class GALGAS_selfAvailability constructor_none (LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_selfAvailability & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+  public: VIRTUAL_IN_DEBUG void method_available (class GALGAS_unifiedTypeMap_2D_entry & outArgument0,
+                                                  class GALGAS_bool & outArgument1,
+                                                  class GALGAS_bool & outArgument2,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isAvailable (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNone (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+  public: VIRTUAL_IN_DEBUG bool optional_available (class GALGAS_unifiedTypeMap_2D_entry & outOperand0,
+                                                    class GALGAS_bool & outOperand1,
+                                                    class GALGAS_bool & outOperand2) const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_none () const ;
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_selfAvailability class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfAvailability ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 // Phase 1: @analysisContext struct
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -2387,20 +2476,19 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
 
   public: GALGAS_predefinedTypes mProperty_mPredefinedTypes ;
 
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mSelfCopyTypeEntry ;
+  public: GALGAS_unifiedTypeMap_2D_entry mProperty_nonMutableSelfType ;
 
   public: GALGAS_string mProperty_mSelfObjectCppName ;
 
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mSelfTypeEntry ;
+  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mutableSelfType ;
+
+  public: GALGAS_selfAvailability mProperty_selfAvailability ;
 
   public: GALGAS_string mProperty_mSelfObjectCppPrefixForAccessingProperty ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
   public: VIRTUAL_IN_DEBUG void drop (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_analysisContext constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Default constructor
   public: GALGAS_analysisContext (void) ;
@@ -2414,16 +2502,20 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
     mProperty_mPredefinedTypes = inValue ;
   }
 
-  public: inline void setter_setMSelfCopyTypeEntry (const GALGAS_unifiedTypeMap_2D_entry & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mSelfCopyTypeEntry = inValue ;
+  public: inline void setter_setNonMutableSelfType (const GALGAS_unifiedTypeMap_2D_entry & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_nonMutableSelfType = inValue ;
   }
 
   public: inline void setter_setMSelfObjectCppName (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mSelfObjectCppName = inValue ;
   }
 
-  public: inline void setter_setMSelfTypeEntry (const GALGAS_unifiedTypeMap_2D_entry & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mSelfTypeEntry = inValue ;
+  public: inline void setter_setMutableSelfType (const GALGAS_unifiedTypeMap_2D_entry & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mutableSelfType = inValue ;
+  }
+
+  public: inline void setter_setSelfAvailability (const GALGAS_selfAvailability & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_selfAvailability = inValue ;
   }
 
   public: inline void setter_setMSelfObjectCppPrefixForAccessingProperty (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -2436,9 +2528,10 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GALGAS_analysisContext (const GALGAS_semanticContext & in_mSemanticContext,
                                   const GALGAS_predefinedTypes & in_mPredefinedTypes,
-                                  const GALGAS_unifiedTypeMap_2D_entry & in_mSelfCopyTypeEntry,
+                                  const GALGAS_unifiedTypeMap_2D_entry & in_nonMutableSelfType,
                                   const GALGAS_string & in_mSelfObjectCppName,
-                                  const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
+                                  const GALGAS_unifiedTypeMap_2D_entry & in_mutableSelfType,
+                                  const GALGAS_selfAvailability & in_selfAvailability,
                                   const GALGAS_string & in_mSelfObjectCppPrefixForAccessingProperty) ;
 
 //-- Start of generic part --*
@@ -2457,7 +2550,8 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
                                                                const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
                                                                const class GALGAS_string & inOperand3,
                                                                const class GALGAS_unifiedTypeMap_2D_entry & inOperand4,
-                                                               const class GALGAS_string & inOperand5
+                                                               const class GALGAS_selfAvailability & inOperand5,
+                                                               const class GALGAS_string & inOperand6
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -2474,15 +2568,17 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_predefinedTypes getter_mPredefinedTypes (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_entry getter_mSelfCopyTypeEntry (LOCATION_ARGS) const ;
-
   public: VIRTUAL_IN_DEBUG class GALGAS_string getter_mSelfObjectCppName (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_string getter_mSelfObjectCppPrefixForAccessingProperty (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_entry getter_mSelfTypeEntry (LOCATION_ARGS) const ;
-
   public: VIRTUAL_IN_DEBUG class GALGAS_semanticContext getter_mSemanticContext (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_entry getter_mutableSelfType (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_entry getter_nonMutableSelfType (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_selfAvailability getter_selfAvailability (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods

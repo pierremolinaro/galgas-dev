@@ -12500,9 +12500,10 @@ GALGAS_structPropertyAccessExpressionAST_2D_weak GALGAS_structPropertyAccessExpr
 GALGAS_analysisContext::GALGAS_analysisContext (void) :
 mProperty_mSemanticContext (),
 mProperty_mPredefinedTypes (),
-mProperty_mSelfCopyTypeEntry (),
+mProperty_nonMutableSelfType (),
 mProperty_mSelfObjectCppName (),
-mProperty_mSelfTypeEntry (),
+mProperty_mutableSelfType (),
+mProperty_selfAvailability (),
 mProperty_mSelfObjectCppPrefixForAccessingProperty () {
 }
 
@@ -12518,24 +12519,15 @@ GALGAS_analysisContext::GALGAS_analysisContext (const GALGAS_semanticContext & i
                                                 const GALGAS_unifiedTypeMap_2D_entry & inOperand2,
                                                 const GALGAS_string & inOperand3,
                                                 const GALGAS_unifiedTypeMap_2D_entry & inOperand4,
-                                                const GALGAS_string & inOperand5) :
+                                                const GALGAS_selfAvailability & inOperand5,
+                                                const GALGAS_string & inOperand6) :
 mProperty_mSemanticContext (inOperand0),
 mProperty_mPredefinedTypes (inOperand1),
-mProperty_mSelfCopyTypeEntry (inOperand2),
+mProperty_nonMutableSelfType (inOperand2),
 mProperty_mSelfObjectCppName (inOperand3),
-mProperty_mSelfTypeEntry (inOperand4),
-mProperty_mSelfObjectCppPrefixForAccessingProperty (inOperand5) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_analysisContext GALGAS_analysisContext::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_analysisContext (GALGAS_semanticContext::constructor_default (HERE),
-                                 GALGAS_predefinedTypes::constructor_default (HERE),
-                                 GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE),
-                                 GALGAS_string::constructor_default (HERE),
-                                 GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE),
-                                 GALGAS_string::constructor_default (HERE)) ;
+mProperty_mutableSelfType (inOperand4),
+mProperty_selfAvailability (inOperand5),
+mProperty_mSelfObjectCppPrefixForAccessingProperty (inOperand6) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12545,11 +12537,12 @@ GALGAS_analysisContext GALGAS_analysisContext::constructor_new (const GALGAS_sem
                                                                 const GALGAS_unifiedTypeMap_2D_entry & inOperand2,
                                                                 const GALGAS_string & inOperand3,
                                                                 const GALGAS_unifiedTypeMap_2D_entry & inOperand4,
-                                                                const GALGAS_string & inOperand5 
+                                                                const GALGAS_selfAvailability & inOperand5,
+                                                                const GALGAS_string & inOperand6 
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_analysisContext result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid ()) {
-    result = GALGAS_analysisContext (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5) ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid ()) {
+    result = GALGAS_analysisContext (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6) ;
   }
   return result ;
 }
@@ -12565,13 +12558,16 @@ typeComparisonResult GALGAS_analysisContext::objectCompare (const GALGAS_analysi
     result = mProperty_mPredefinedTypes.objectCompare (inOperand.mProperty_mPredefinedTypes) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mSelfCopyTypeEntry.objectCompare (inOperand.mProperty_mSelfCopyTypeEntry) ;
+    result = mProperty_nonMutableSelfType.objectCompare (inOperand.mProperty_nonMutableSelfType) ;
   }
   if (result == kOperandEqual) {
     result = mProperty_mSelfObjectCppName.objectCompare (inOperand.mProperty_mSelfObjectCppName) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mSelfTypeEntry.objectCompare (inOperand.mProperty_mSelfTypeEntry) ;
+    result = mProperty_mutableSelfType.objectCompare (inOperand.mProperty_mutableSelfType) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_selfAvailability.objectCompare (inOperand.mProperty_selfAvailability) ;
   }
   if (result == kOperandEqual) {
     result = mProperty_mSelfObjectCppPrefixForAccessingProperty.objectCompare (inOperand.mProperty_mSelfObjectCppPrefixForAccessingProperty) ;
@@ -12582,7 +12578,7 @@ typeComparisonResult GALGAS_analysisContext::objectCompare (const GALGAS_analysi
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_analysisContext::isValid (void) const {
-  return mProperty_mSemanticContext.isValid () && mProperty_mPredefinedTypes.isValid () && mProperty_mSelfCopyTypeEntry.isValid () && mProperty_mSelfObjectCppName.isValid () && mProperty_mSelfTypeEntry.isValid () && mProperty_mSelfObjectCppPrefixForAccessingProperty.isValid () ;
+  return mProperty_mSemanticContext.isValid () && mProperty_mPredefinedTypes.isValid () && mProperty_nonMutableSelfType.isValid () && mProperty_mSelfObjectCppName.isValid () && mProperty_mutableSelfType.isValid () && mProperty_selfAvailability.isValid () && mProperty_mSelfObjectCppPrefixForAccessingProperty.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12590,9 +12586,10 @@ bool GALGAS_analysisContext::isValid (void) const {
 void GALGAS_analysisContext::drop (void) {
   mProperty_mSemanticContext.drop () ;
   mProperty_mPredefinedTypes.drop () ;
-  mProperty_mSelfCopyTypeEntry.drop () ;
+  mProperty_nonMutableSelfType.drop () ;
   mProperty_mSelfObjectCppName.drop () ;
-  mProperty_mSelfTypeEntry.drop () ;
+  mProperty_mutableSelfType.drop () ;
+  mProperty_selfAvailability.drop () ;
   mProperty_mSelfObjectCppPrefixForAccessingProperty.drop () ;
 }
 
@@ -12608,11 +12605,13 @@ void GALGAS_analysisContext::description (C_String & ioString,
     ioString << ", " ;
     mProperty_mPredefinedTypes.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_mSelfCopyTypeEntry.description (ioString, inIndentation+1) ;
+    mProperty_nonMutableSelfType.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mSelfObjectCppName.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
+    mProperty_mutableSelfType.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_selfAvailability.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mSelfObjectCppPrefixForAccessingProperty.description (ioString, inIndentation+1) ;
   }
@@ -12633,8 +12632,8 @@ GALGAS_predefinedTypes GALGAS_analysisContext::getter_mPredefinedTypes (UNUSED_L
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_analysisContext::getter_mSelfCopyTypeEntry (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mSelfCopyTypeEntry ;
+GALGAS_unifiedTypeMap_2D_entry GALGAS_analysisContext::getter_nonMutableSelfType (UNUSED_LOCATION_ARGS) const {
+  return mProperty_nonMutableSelfType ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12645,8 +12644,14 @@ GALGAS_string GALGAS_analysisContext::getter_mSelfObjectCppName (UNUSED_LOCATION
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_analysisContext::getter_mSelfTypeEntry (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mSelfTypeEntry ;
+GALGAS_unifiedTypeMap_2D_entry GALGAS_analysisContext::getter_mutableSelfType (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mutableSelfType ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_selfAvailability GALGAS_analysisContext::getter_selfAvailability (UNUSED_LOCATION_ARGS) const {
+  return mProperty_selfAvailability ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

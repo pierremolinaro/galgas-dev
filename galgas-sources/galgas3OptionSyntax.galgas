@@ -25,7 +25,7 @@ rule <declaration>
  ?!@semanticDeclarationListAST ioDeclarations
 :
   $option$ ;
-  $identifier$ ??@lstring optionComponentName ;
+  $identifier$ ?@lstring optionComponentName ;
   $:$ ;
   @commandLineOptionListAST options [emptyList] ;
   repeat

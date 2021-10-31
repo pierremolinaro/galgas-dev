@@ -192,6 +192,7 @@ override method @enumDeclarationAST enterInSemanticContext
     !?getterMap
     !?setterMap
     !?instanceMethodMap
+    !acceptSetters: true
   )
 #--- Default value ?
   var defaultConstructorName = "" # No default contructor

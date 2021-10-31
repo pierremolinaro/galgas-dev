@@ -112,6 +112,7 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
     !?getterMap
     !?setterMap
     !?instanceMethodMap
+    !acceptSetters: true
   )
   for (lkey 7*) in getterMap do
     error lkey : "a weak referencev does not support extension"

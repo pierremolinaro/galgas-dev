@@ -191,13 +191,20 @@ struct @predefinedTypes {
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+enum @selfAvailability {
+  case none
+  case available (@unifiedTypeMap-entry selfType @bool selfIsMutable @bool selfPropertiesAreMutable)
+}
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 struct @analysisContext {
-  public var @semanticContext mSemanticContext
-  public var @predefinedTypes mPredefinedTypes
-  public var @unifiedTypeMap-entry mSelfCopyTypeEntry # isNull if outside a extension
-  public var @string mSelfObjectCppName
-  public var @unifiedTypeMap-entry mSelfTypeEntry # isNull if outside a setter extension
-  public var @string mSelfObjectCppPrefixForAccessingProperty # i.e. "ioObject->", ...
+  public let @semanticContext mSemanticContext
+  public let @predefinedTypes mPredefinedTypes
+  public let @unifiedTypeMap-entry nonMutableSelfType %selector # isNull if outside a extension
+  public let @string mSelfObjectCppName
+  public let @unifiedTypeMap-entry mutableSelfType %selector # isNull if outside a setter extension
+  public let @selfAvailability selfAvailability %selector
+  public let @string mSelfObjectCppPrefixForAccessingProperty # i.e. "ioObject->", ...
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

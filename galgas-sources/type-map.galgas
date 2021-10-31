@@ -514,6 +514,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !?getterMap
     !?setterMap
     !?instanceMethodMap
+    !acceptSetters: true
   )
 #--- Element type index
   [@unifiedTypeMap-entry makeEntry

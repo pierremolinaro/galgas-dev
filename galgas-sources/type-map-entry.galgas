@@ -187,6 +187,7 @@ override method @mapEntryDeclarationAST enterInSemanticContext
     !?getterMap
     !?setterMap
     !?instanceMethodMap
+    !acceptSetters: true
   )
 #--- Enter type in type map
   [!?ioSemanticContext.mTypeMap insertKey

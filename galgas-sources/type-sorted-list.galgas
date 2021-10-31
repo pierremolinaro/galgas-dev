@@ -213,6 +213,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !?getterMap
     !?setterMap
     !?instanceMethodMap
+    !acceptSetters: true
   )
 #--- Enter in type map
   [!?ioSemanticContext.mTypeMap insertKey

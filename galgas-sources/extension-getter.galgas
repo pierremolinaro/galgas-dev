@@ -140,9 +140,10 @@ override method @extensionGetterAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !selfType
+    !nonMutableSelfType: selfType
     !selfObjectName
-    !@unifiedTypeMap-entry.null
+    !mutableSelfType: @unifiedTypeMap-entry.null
+    !selfAvailability: .available {!selfType: selfType !selfIsMutable: false !selfPropertiesAreMutable: false}
     !selfObjectAccessor
   }
   var @unifiedTypeMap-entry returnType

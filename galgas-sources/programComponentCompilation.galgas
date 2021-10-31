@@ -59,8 +59,8 @@ proc compileBeforeClauseGalgas3
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !@formalParameterListAST {} # Routine signature : no argument
-      !@localConstantList {} # No local constant
-      !@typedPropertyList {} # No attribute (not a method)
+#      !localConstantList: {} # No local constant
+      !nonMutablePropertyList: @typedPropertyList {} # No attribute (not a method)
       !mutablePropertyList: @typedPropertyList {} # No attribute (not a method)
       !mInstructionList
       !mEndOfInstructionList
@@ -114,8 +114,8 @@ private proc compileProgramRulesGalgas3
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !argumentList
-      !@localConstantList {} # No local constant
-      !@typedPropertyList {} # No attribute (not a method)
+#      !localConstantList: {} # No local constant
+      !nonMutablePropertyList: @typedPropertyList {} # No attribute (not a method)
       !mutablePropertyList: @typedPropertyList {} # No attribute (not a method)
       !mInstructionList
       !mEndOfInstructionList
@@ -159,8 +159,8 @@ proc compileAfterClauseGalgas3
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !@formalParameterListAST {} # Routine signature : no argument
-      !@localConstantList {} # No local constant
-      !@typedPropertyList {} # No attribute (not a method)
+#      !localConstantList: {} # No local constant
+      !nonMutablePropertyList: @typedPropertyList {} # No attribute (not a method)
       !mutablePropertyList: @typedPropertyList {} # No attribute (not a method)
       !mInstructionList
       !mEndOfInstructionList
@@ -200,9 +200,10 @@ proc compileProgramComponentGalgas3
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !buildPredefinedTypes (!inSemanticContext)
-    !@unifiedTypeMap-entry.null
+    !nonMutableSelfType: @unifiedTypeMap-entry.null
     !""
-    !@unifiedTypeMap-entry.null
+    !mutableSelfType: @unifiedTypeMap-entry.null
+    !selfAvailability: .none
     !""
   }
 #--- Analyse 'before' instructions

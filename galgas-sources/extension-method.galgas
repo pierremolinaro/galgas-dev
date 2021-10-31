@@ -124,28 +124,39 @@ override method @extensionMethodAST semanticAnalysis
     implementedAsFunction = true
   end
 #--- Analyze instruction list
-  var formalParameterListForGeneration =@formalParameterListForGeneration {}
+  var formalParameterListForGeneration = @formalParameterListForGeneration {}
   var @semanticInstructionListForGeneration semanticInstructionListForGeneration
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !selfType
+    !nonMutableSelfType: selfType
     !selfObjectName
-    !@unifiedTypeMap-entry.null
+    !mutableSelfType: @unifiedTypeMap-entry.null
+    !selfAvailability: .available {!selfType: selfType !selfIsMutable: false !selfPropertiesAreMutable: false}
     !selfObjectAccessor
   }
+  var isRefClass = false
+  if let [[selfType mTypeKindEnum] classType ?isReference: let reference] then
+    isRefClass = reference
+  end
+  var mutableProperties = @typedPropertyList {}
+  var nonMutableProperties = @typedPropertyList {}
+  if [selfType mTypeKindEnum] == .structType then
+    nonMutableProperties = [selfType mAllTypedPropertyList]
+  elsif let [[selfType mTypeKindEnum] classType ?isReference: let isReference] then
+    if isReference then
+      mutableProperties = [selfType mAllTypedPropertyList]
+    else
+      nonMutableProperties = [selfType mAllTypedPropertyList]
+    end
+  end
   analyzeRoutineBody (
     !nameForUsefulness
     !?ioUsefulEntitiesGraph
     !analysisContext
     ! self.mExtensionMethodFormalParameterList
-    !{}
-    !if [[selfType mTypeKindEnum] isClassType] | ([selfType mTypeKindEnum] == @typeKindEnum. structType)
-       then [selfType mAllTypedPropertyList]
-       else {}
-     end
-    !mutablePropertyList:{}
-#    !selfObjectAccessor
+    !nonMutablePropertyList: nonMutableProperties
+    !mutablePropertyList: mutableProperties
     !self.mExtensionMethodInstructionList
     !self.mEndOfMethodLocation
     ?semanticInstructionListForGeneration
@@ -237,7 +248,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation
     var @formalParameterListForGeneration extensionMethodFormalParameterList = self.mExtensionMethodFormalParameterList
     [!?extensionMethodFormalParameterList insertAtIndex
       !["" nowhere]
-      !@formalArgumentPassingModeAST. argumentConstantIn
+      !@formalArgumentPassingModeAST.argumentConstantIn
       !self.mReceiverType
       !@lstring.new {!"self" !@location.here}
       !"inObject"

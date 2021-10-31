@@ -322,6 +322,7 @@ override method @classDeclarationAST enterInSemanticContext
     !?getterMap
     !?setterMap
     !?instanceMethodMap
+    !acceptSetters: not self.mIsReference
   )
 #--- Generate a "default" constructor ?
   var @string defaultConstructorName

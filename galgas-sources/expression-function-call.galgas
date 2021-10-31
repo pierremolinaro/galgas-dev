@@ -88,7 +88,9 @@ override method @functionCallExpressionAST analyzeSemanticExpression
       ]
       checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !expression.mResultType !mEndOfExpressionLocation !?expression)
       if mFormalSelector.string != mActualSelector.string then
-        error mActualSelector : "the selector should be '!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "'"
+        let s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
+        error mActualSelector : "the selector should be '" + s + "'"
+        fixit { replace s }
       end
       semanticExpressionListForGeneration += !expression
     end

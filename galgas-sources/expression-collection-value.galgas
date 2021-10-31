@@ -224,8 +224,10 @@ override method @expressionListCollectionValue analyze
         ?@semanticExpressionForGeneration exp
       ]
       if mFormalSelector.string != expression.mActualSelector.string then
-        error expression.mActualSelector
-          : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
+        let s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
+        error expression.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+#        error expression.mActualSelector
+#          : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
       checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !self.mEndOfExpressionLocation !?exp)
       semanticExpressionListForGeneration += !exp

@@ -696,6 +696,7 @@ void routine_addExtensions (const class GALGAS_extensionMethodMapForBuildingCont
                             class GALGAS_getterMap & ioArgument5,
                             class GALGAS_setterMap & ioArgument6,
                             class GALGAS_instanceMethodMap & ioArgument7,
+                            const class GALGAS_bool constinArgument8,
                             class C_Compiler * inCompiler
                             COMMA_LOCATION_ARGS) ;
 

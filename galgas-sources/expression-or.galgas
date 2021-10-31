@@ -112,7 +112,7 @@ override method @orExpressionAST analyzeSemanticExpression
   [self.mLeftExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inInferenceType
+    ! inInferenceType
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration leftExpression
@@ -121,7 +121,7 @@ override method @orExpressionAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !leftExpression.mResultType
+    ! leftExpression.mResultType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
@@ -167,7 +167,7 @@ override method @orShortExpressionAST analyzeSemanticExpression
   [self.mLeftExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inInferenceType
+    ! inInferenceType
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration leftExpression
@@ -176,7 +176,7 @@ override method @orShortExpressionAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !leftExpression.mResultType
+    ! leftExpression.mResultType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
@@ -221,7 +221,7 @@ override method @xorExpressionAST analyzeSemanticExpression
   [self.mLeftExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inInferenceType
+    ! inInferenceType
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration leftExpression
@@ -230,7 +230,7 @@ override method @xorExpressionAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !leftExpression.mResultType
+    ! leftExpression.mResultType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
@@ -278,7 +278,7 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
   [self.mLeftExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inAnalysisContext.mPredefinedTypes.mUIntType
+    ! inAnalysisContext.mPredefinedTypes.mUIntType
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration leftExpression
@@ -287,7 +287,7 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inAnalysisContext.mPredefinedTypes.mUIntType
+    ! inAnalysisContext.mPredefinedTypes.mUIntType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
@@ -333,7 +333,7 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
   [self.mLeftExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inAnalysisContext.mPredefinedTypes.mUIntType
+    ! inAnalysisContext.mPredefinedTypes.mUIntType
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration leftExpression
@@ -342,7 +342,7 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inAnalysisContext.mPredefinedTypes.mUIntType
+    ! inAnalysisContext.mPredefinedTypes.mUIntType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression

@@ -128,9 +128,10 @@ override method @extensionSetterAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !selfType
+    !nonMutableSelfType: selfType
     !selfObjectName
-    !selfType
+    !mutableSelfType: selfType
+    !selfAvailability: .available {!selfType: selfType !selfIsMutable: true !selfPropertiesAreMutable: true}
     !selfObjectAccessor
   }
   analyzeRoutineBody (
@@ -138,10 +139,8 @@ override method @extensionSetterAST semanticAnalysis
     !?ioUsefulEntitiesGraph
     !analysisContext
     !self.mExtensionSetterFormalParameterList
-    !{}
-    !{}
-    !mutablePropertyList:[selfType mAllTypedPropertyList]
-#    !selfObjectAccessor
+    !nonMutablePropertyList: {}
+    !mutablePropertyList: [selfType mAllTypedPropertyList]
     !self.mExtensionSetterInstructionList
     !self.mEndOfSetterDeclarationLocation
     ?semanticInstructionListForGeneration

@@ -301,7 +301,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   while
     $!$ ?let selector
     if selector.string != "" then
-      error selector : "the selector should be '!'"
+      error selector : "the selector should be '!'" fixit { replace "!" }
     end
     let passingModeLocation = @location.here
     <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
@@ -309,7 +309,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   while
     $!?$ ?let selector
     if selector.string != "" then
-      error selector : "the selector should be '!?'"
+      error selector : "the selector should be '!?'" fixit { replace "!?" }
     end
     let passingModeLocation = @location.here
     $identifier$ ?var @lstring attributeName
@@ -369,7 +369,7 @@ rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputAr
     while
       $!$ ?let selector
       if selector.string != "" then
-        error selector : "the selector should be '!'"
+        error selector : "the selector should be '!'" fixit { replace "!" }
       end
       <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
       functionActualArgumentList += !arg
@@ -611,13 +611,13 @@ rule <extern_routine_declaration> ?!@externRoutineListAST ioExternRoutineList {
     select
       $?!$ ?let selector
       if selector.string != "" then
-        error selector : "the selector should be '?!'"
+        error selector : "the selector should be '?!'" fixit { replace "?!" }
       end
       lexicalArgumentMode = @lexicalArgumentModeAST. lexicalInputOutputMode
     or
       $?$ ?let selector
       if selector.string != "" then
-        error selector : "the selector should be '?'"
+        error selector : "the selector should be '?'"  fixit { replace "?" }
       end
       lexicalArgumentMode = @lexicalArgumentModeAST. lexicalInputMode
     end
@@ -650,7 +650,7 @@ rule <extern_function_declaration> ?!@externFunctionListAST ioExternFunctionList
   while
     $?$ ?let selector
     if selector.string != "" then
-      error selector : "the selector should be '?'"
+      error selector : "the selector should be '?'"  fixit { replace "?" }
     end
     $@type$ ?var @lstring lexicalTypeName
     $identifier$ ?var @lstring formalArgumentName

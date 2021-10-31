@@ -182,14 +182,14 @@ override method @incDecInstructionAST analyzeSemanticInstruction
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if [inAnalysisContext.mSelfCopyTypeEntry isNull] then
+    if [inAnalysisContext.nonMutableSelfType isNull] then
       error self.mReceiverName: "'self' cannot be used in this context"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    elsif [inAnalysisContext.mSelfTypeEntry isNull] then
+    elsif [inAnalysisContext.mutableSelfType isNull] then
       error self.mReceiverName: "'self' object is not mutable"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
     else
-      let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
+      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
@@ -282,11 +282,11 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
 #--- Analyze "self", as receiver expression
   var @unifiedTypeMap-entry selfTypeEntry
   var @string selfObjectCppName
-  if [inAnalysisContext.mSelfTypeEntry isNull] then
+  if [inAnalysisContext.mutableSelfType isNull] then
     error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-    selfTypeEntry = inAnalysisContext.mSelfTypeEntry
+    selfTypeEntry = inAnalysisContext.mutableSelfType
   end
 #--- Check target type accepts incrementation
   if not [[selfTypeEntry mHandledOperatorFlags] incDecOperator] then
@@ -315,11 +315,11 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
 #--- Analyze "self", as receiver expression
   var @unifiedTypeMap-entry selfTypeEntry
   var @string selfObjectCppName
-  if [inAnalysisContext.mSelfTypeEntry isNull] then
+  if [inAnalysisContext.mutableSelfType isNull] then
     error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-    selfTypeEntry = inAnalysisContext.mSelfTypeEntry
+    selfTypeEntry = inAnalysisContext.mutableSelfType
   end
 #--- Check target type accepts incrementation
   if not [[selfTypeEntry mHandledOperatorFlags] incDecOperator] then

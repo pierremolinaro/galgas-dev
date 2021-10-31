@@ -85,7 +85,7 @@ rule <actual_parameter_list>
       $*$
       var n = count.uint
       if selector.string != "" then
-        error selector : "the selector should be '?'"
+        error selector : "the selector should be '?'" fixit { replace "?" }
       end
      if n == 0 then
         error count: "the count value should be > 0"
@@ -132,7 +132,7 @@ rule <actual_parameter_list>
     $*$
     var n = count.uint
     if selector.string != "" then
-      error selector : "the selector should be '!?'"
+      error selector : "the selector should be '!?'" fixit { replace "!?" }
     end
     if n == 0 then
       error count: "the count value should be > 0"

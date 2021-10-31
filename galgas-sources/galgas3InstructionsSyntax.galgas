@@ -241,7 +241,7 @@ rule <actual_parameter_list>
 rule <syntax_directed_translation_result> !@abstractGrammarInstructionSyntaxDirectedTranslationResult result {
   $?$ ?let selector
   if selector.string != "" then
-    error selector : "the selector should be '?'"
+    error selector : "the selector should be '?'" fixit { replace "?" }
   end
   select
     $*$

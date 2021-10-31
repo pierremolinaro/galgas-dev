@@ -285,6 +285,7 @@ override method @predefinedTypeAST enterInSemanticContext
     !?getterMap
     !?setterMap
     !?instanceMethodMap
+    !acceptSetters: true
   )
 #---
   [!?ioSemanticContext.mTypeMap insertKey

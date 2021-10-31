@@ -350,14 +350,14 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   var @unifiedTypeMap-entry targetType
   var @string receiverVariableCppName
   if self.mReceiverIsPrefixedBySelf then
-    if [inAnalysisContext.mSelfCopyTypeEntry isNull] then
+    if [inAnalysisContext.nonMutableSelfType isNull] then
       error self.mReceiverName: "'self' cannot be used in this context"
       : targetType, receiverVariableCppName
-    elsif [inAnalysisContext.mSelfTypeEntry isNull] then
+    elsif [inAnalysisContext.mutableSelfType isNull] then
       error self.mReceiverName: "'self' object is not mutable"
       : targetType, receiverVariableCppName
     else
-      let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
+      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       if isConstant then
         error self.mReceiverName: "a constant property cannot be modified"

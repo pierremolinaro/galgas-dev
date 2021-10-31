@@ -140,6 +140,7 @@ override method @boolsetDeclarationAST enterInSemanticContext
     !?getterMap
     !?setterMap
     !?instanceMethodMap
+    !acceptSetters: true
   )
 #--- Operators
   let operators = @operators.infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator

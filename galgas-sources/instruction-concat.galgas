@@ -195,14 +195,14 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if [inAnalysisContext.mSelfCopyTypeEntry isNull] then
+    if [inAnalysisContext.nonMutableSelfType isNull] then
       error self.mReceiverName: "'self' cannot be used in this context"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    elsif [inAnalysisContext.mSelfTypeEntry isNull] then
+    elsif [inAnalysisContext.mutableSelfType isNull] then
       error self.mReceiverName: "'self' object is not mutable"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
     else
-      let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
+      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
@@ -245,7 +245,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !targetType
+    ! targetType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
@@ -278,14 +278,14 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if [inAnalysisContext.mSelfCopyTypeEntry isNull] then
+    if [inAnalysisContext.nonMutableSelfType isNull] then
       error self.mReceiverName: "'self' cannot be used in this context"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    elsif [inAnalysisContext.mSelfTypeEntry isNull] then
+    elsif [inAnalysisContext.mutableSelfType isNull] then
       error self.mReceiverName: "'self' object is not mutable"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
     else
-      let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
+      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
@@ -328,7 +328,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
   [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !targetType
+    ! targetType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
@@ -361,14 +361,14 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if [inAnalysisContext.mSelfCopyTypeEntry isNull] then
+    if [inAnalysisContext.nonMutableSelfType isNull] then
       error self.mReceiverName: "'self' cannot be used in this context"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    elsif [inAnalysisContext.mSelfTypeEntry isNull] then
+    elsif [inAnalysisContext.mutableSelfType isNull] then
       error self.mReceiverName: "'self' object is not mutable"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
     else
-      let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
+      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
@@ -411,7 +411,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
   [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !targetType
+    ! targetType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
@@ -444,14 +444,14 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if [inAnalysisContext.mSelfCopyTypeEntry isNull] then
+    if [inAnalysisContext.nonMutableSelfType isNull] then
       error self.mReceiverName: "'self' cannot be used in this context"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    elsif [inAnalysisContext.mSelfTypeEntry isNull] then
+    elsif [inAnalysisContext.mutableSelfType isNull] then
       error self.mReceiverName: "'self' object is not mutable"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
     else
-      let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
+      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
@@ -488,7 +488,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
   [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !targetType
+    ! targetType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
@@ -521,14 +521,14 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if [inAnalysisContext.mSelfCopyTypeEntry isNull] then
+    if [inAnalysisContext.nonMutableSelfType isNull] then
       error self.mReceiverName: "'self' cannot be used in this context"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    elsif [inAnalysisContext.mSelfTypeEntry isNull] then
+    elsif [inAnalysisContext.mutableSelfType isNull] then
       error self.mReceiverName: "'self' object is not mutable"
       : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
     else
-      let propertyMap = [inAnalysisContext.mSelfTypeEntry mPropertyMap]
+      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
@@ -579,8 +579,10 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
         ?@semanticExpressionForGeneration expression
       ]
       if mFormalSelector.string != mActualSelector.string then
-        error mActualSelector
-          : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
+        let s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
+        error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+#        error mActualSelector
+#          : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
       checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !expression.mResultType !mEndOfExpressionLocation !?expression)
       effectiveParameterList += !expression

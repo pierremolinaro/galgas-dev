@@ -123,23 +123,34 @@ override method @overridingExtensionMethodAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !selfType
+    !nonMutableSelfType: selfType
     !"object"
-    !@unifiedTypeMap-entry.null
+    !mutableSelfType: @unifiedTypeMap-entry.null
+    !selfAvailability: .none
     !"object->"
   }
+  var isRefClass = false
+  if let [[selfType mTypeKindEnum] classType ?isReference: let reference] then
+    isRefClass = reference
+  end
+  var mutableProperties = @typedPropertyList {}
+  var nonMutableProperties = @typedPropertyList {}
+  if [selfType mTypeKindEnum] == .structType then
+    nonMutableProperties = [selfType mAllTypedPropertyList]
+  elsif let [[selfType mTypeKindEnum] classType ?isReference: let isReference] then
+    if isReference then
+      mutableProperties = [selfType mAllTypedPropertyList]
+    else
+      nonMutableProperties = [selfType mAllTypedPropertyList]
+    end
+  end
   analyzeRoutineBody (
     !nameForUsefulness
     !?ioUsefulEntitiesGraph
     !analysisContext
     !self.mOverridingExtensionMethodFormalParameterList
-    !@localConstantList {}
-    !if [[selfType mTypeKindEnum] isClassType] | ([selfType mTypeKindEnum] == @typeKindEnum. structType)
-       then [selfType mAllTypedPropertyList]
-       else @typedPropertyList {}
-     end
-    !mutablePropertyList:@typedPropertyList {}
-#    !"object->"
+    !nonMutablePropertyList: nonMutableProperties
+    !mutablePropertyList: mutableProperties
     !self.mOverridingExtensionMethodInstructionList
     !self.mEndOfMethodLocation
     ?semanticInstructionListForGeneration

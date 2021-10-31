@@ -36,7 +36,18 @@ proc checkMethodSignatures
         error inReferenceLocation:"overriden method is declared here"
       end
       if mFormalSelector.string != ref_mFormalSelector.string then
-        error mFormalSelector : "the selector should be '" + [ref_mFormalArgumentPassingMode string] + ref_mFormalSelector + if ref_mFormalSelector.string != "" then ":" else "" end + "'"
+        var @string s
+        switch ref_mFormalArgumentPassingMode
+        case argumentConstantIn, argumentIn :
+          s = "?"
+        case argumentInOut :
+          s = "?!"
+        case argumentOut :
+          s = "!"
+        end
+        s += if ref_mFormalSelector.string != "" then ref_mFormalSelector.string + ":" else "" end
+        error mFormalSelector : "the selector should be '" + s + "'" fixit { replace s }
+#        error mFormalSelector : "the selector should be '" + [ref_mFormalArgumentPassingMode string] + ref_mFormalSelector + if ref_mFormalSelector.string != "" then ":" else "" end + "'"
       end
       if [mFormalArgumentType key] != [ref_mFormalArgumentType key] then
         error mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter has the '@"
@@ -74,9 +85,11 @@ proc checkGetterSignatures
   else
     for (ref_mFormalSelector ref_mFormalArgumentType *) in inReferenceSignature, (mFormalSelector mFormalArgumentType * mFormalArgumentName *) in inTestedSignature do
       if mFormalSelector.string != ref_mFormalSelector.string then
-        error mFormalSelector
-        : "the selector should be '?" + ref_mFormalSelector
-          + if ref_mFormalSelector.string != "" then ":" else "" end + "'"
+        let s = "?" + if ref_mFormalSelector.string != "" then ref_mFormalSelector.string + ":" else "" end
+        error mFormalSelector : "the selector should be '" + s + "'" fixit { replace s }
+#        error mFormalSelector
+#        : "the selector should be '?" + ref_mFormalSelector
+#          + if ref_mFormalSelector.string != "" then ":" else "" end + "'"
       end
       if [mFormalArgumentType key] != [ref_mFormalArgumentType key] then
         error mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter has the '@"
@@ -161,8 +174,8 @@ proc analyzeRoutineBody
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @formalParameterListAST inRoutineSignatureAST
-  ?let @localConstantList inLocalConstantList
-  ?let @typedPropertyList inNonMutableTypedAttributeList
+#  ?localConstantList: let @localConstantList inLocalConstantList
+  ?nonMutablePropertyList: let @typedPropertyList inNonMutableTypedAttributeList
   ?mutablePropertyList: let @typedPropertyList inMutableTypedAttributeList
   ?let @semanticInstructionListAST inInstructionList
   ?let @location inEndOfMethodLocation
@@ -171,13 +184,13 @@ proc analyzeRoutineBody
 {
   var variableMap = @localVarManager.default
 #--- Declare local constants
-  for (mType mName mNoWarningIfUnused mCppName) in inLocalConstantList do
-    if mNoWarningIfUnused then
-      [!?variableMap insertUsedLocalConstant !mName !mType !mCppName !inAnalysisContext.mSelfObjectCppName]
-    else
-      [!?variableMap insertLocalConstant !mName !mType !mCppName !inAnalysisContext.mSelfObjectCppName]
-    end
-  end
+#  for (mType mName mNoWarningIfUnused mCppName) in inLocalConstantList do
+#    if mNoWarningIfUnused then
+#      [!?variableMap insertUsedLocalConstant !mName !mType !mCppName !inAnalysisContext.mSelfObjectCppName]
+#    else
+#      [!?variableMap insertLocalConstant !mName !mType !mCppName !inAnalysisContext.mSelfObjectCppName]
+#    end
+#  end
 #--- Enter non mutable instance attributes
   if not [option galgas_cli_options.propertyAccessRequiresSelf value] then
     for (mPropertyTypeEntry mPropertyName * *) in inNonMutableTypedAttributeList do
@@ -306,9 +319,10 @@ override method @procDeclarationAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !@unifiedTypeMap-entry.null
+    !nonMutableSelfType: @unifiedTypeMap-entry.null
     !""
-    !@unifiedTypeMap-entry.null
+    !mutableSelfType:@unifiedTypeMap-entry.null
+    !selfAvailability: .none
     !""
   }
   analyzeRoutineBody (
@@ -316,8 +330,8 @@ override method @procDeclarationAST semanticAnalysis
     !?ioUsefulEntitiesGraph
     !analysisContext
     !self.mFormalArgumentList
-    !@localConstantList {}
-    !@typedPropertyList {}
+#    !localConstantList: {}
+    !nonMutablePropertyList: @typedPropertyList {}
     !mutablePropertyList: @typedPropertyList {}
     !self.mRoutineInstructionList
     !self.mEndOfRoutineInstructionList
@@ -442,9 +456,10 @@ override method @functionDeclarationAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !@unifiedTypeMap-entry.null
+    !nonMutableSelfType: @unifiedTypeMap-entry.null
     !""
-    !@unifiedTypeMap-entry.null
+    !mutableSelfType:@unifiedTypeMap-entry.null
+    !selfAvailability: .none
     !""
   }
   analyzeFunctionBody (
@@ -500,9 +515,10 @@ override method @onceFunctionDeclarationAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !@unifiedTypeMap-entry.null
+    !nonMutableSelfType: @unifiedTypeMap-entry.null
     !""
-    !@unifiedTypeMap-entry.null
+    !mutableSelfType: @unifiedTypeMap-entry.null
+    !selfAvailability: .none
     !""
   }
   analyzeFunctionBody (
@@ -1796,9 +1812,10 @@ proc semanticAnalysisOfSyntaxComponent
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !@unifiedTypeMap-entry.null
+    !nonMutableSelfType: @unifiedTypeMap-entry.null
     !""
-    !@unifiedTypeMap-entry.null
+    !mutableSelfType: @unifiedTypeMap-entry.null
+    !selfAvailability: .none
     !""
   }
 #--- Rule list

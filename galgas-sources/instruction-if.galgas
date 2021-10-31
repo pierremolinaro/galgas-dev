@@ -166,7 +166,7 @@ syntax extension galgas3InstructionsSyntax {
             $uint32$ ?let repetitionCount
             $*$
             if selector.string != "" then
-              error selector : "the selector should be '?'"
+              error selector : "the selector should be '?'"  fixit { replace "?" }
             end
             if repetitionCount.uint == 0 then
               error repetitionCount : "the repetition count should be > 0"
@@ -473,8 +473,10 @@ private proc analyzeOptionalMethodCall
           ?@semanticExpressionForGeneration exp
         ]
         if formalSelector.string != actualSelector.string then
-          error actualSelector :
-          "the selector should be '!" + formalSelector + if formalSelector.string != "" then ":" else "" end + "'"
+          let s = "!" + if formalSelector.string != "" then formalSelector.string + ":" else "" end
+          error actualSelector : "the selector should be '" + s + "'" fixit { replace s }
+#          error actualSelector :
+#          "the selector should be '!" + formalSelector + if formalSelector.string != "" then ":" else "" end + "'"
         end
         checkAssignmentTypeWithImplicitGetterCall (!formalType !exp.mResultType !location !?exp)
         actualParameterList += !.actualOutput {!expression: exp}
@@ -494,8 +496,10 @@ private proc analyzeOptionalMethodCall
         ]
         actualParameterList += !.actualLetInput {!typeName: [formalType key] !constantName: targetVariableCppName}
         if formalSelector.string != actualSelector.string then
-          error actualSelector :
-          "the selector should be '?" + formalSelector + if formalSelector.string != "" then ":" else "" end + "'"
+          let s = "?" + if formalSelector.string != "" then formalSelector.string + ":" else "" end
+          error actualSelector : "the selector should be '" + s + "'" fixit { replace s }
+#          error actualSelector :
+#          "the selector should be '?" + formalSelector + if formalSelector.string != "" then ":" else "" end + "'"
         end
       case actualVarInput (@lstring actualTypeName @lstring variableName) :
          if (actualTypeName.string != "") && ([formalType key] != actualTypeName.string) then
@@ -513,15 +517,19 @@ private proc analyzeOptionalMethodCall
         ]
         actualParameterList += !.actualVarInput {!typeName: [formalType key] !variableName: targetVariableCppName}
         if formalSelector.string != actualSelector.string then
-          error actualSelector :
-          "the selector should be '?" + formalSelector + if formalSelector.string != "" then ":" else "" end + "'"
+          let s = "?" + if formalSelector.string != "" then formalSelector.string + ":" else "" end
+          error actualSelector : "the selector should be '" + s + "'" fixit { replace s }
+#          error actualSelector :
+#          "the selector should be '?" + formalSelector + if formalSelector.string != "" then ":" else "" end + "'"
         end
       case actualInputJoker (checkSelector location idx) :
         let targetVariableCppName = "var_unused_" + idx + "_" + [location locationIndex]
         actualParameterList += !.actualVarInput {!typeName: [formalType key] !variableName: targetVariableCppName}
         if checkSelector && (formalSelector.string != actualSelector.string) then
-          error actualSelector :
-          "the selector should be '?" + formalSelector + if formalSelector.string != "" then ":" else "" end + "'"
+          let s = "?" + if formalSelector.string != "" then formalSelector.string + ":" else "" end
+          error actualSelector : "the selector should be '" + s + "'" fixit { replace s }
+#          error actualSelector :
+#          "the selector should be '?" + formalSelector + if formalSelector.string != "" then ":" else "" end + "'"
         end
       end
     end

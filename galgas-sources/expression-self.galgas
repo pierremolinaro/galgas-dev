@@ -42,11 +42,11 @@ override method @selfInExpressionAST analyzeSemanticExpression
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  if [inAnalysisContext.mSelfCopyTypeEntry isNull] then
+  if [inAnalysisContext.nonMutableSelfType isNull] then
     error self.mSelfLocation: "'self' cannot be used in this context" : outExpression
   else
     let @string selfCppName = inAnalysisContext.mSelfObjectCppName
-    outExpression = @selfInExpressionForGeneration.new {!inAnalysisContext.mSelfCopyTypeEntry !self.mSelfLocation !selfCppName}
+    outExpression = @selfInExpressionForGeneration.new {!inAnalysisContext.nonMutableSelfType !self.mSelfLocation !selfCppName}
   end
 }
 

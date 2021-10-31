@@ -4833,6 +4833,30 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andExpressionAST_2D
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+// Phase 2: @selfAvailability enum, associated values
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cEnumAssociatedValues_selfAvailability_available : public cEnumAssociatedValues {
+  public: const GALGAS_unifiedTypeMap_2D_entry mAssociatedValue0 ;
+  public: const GALGAS_bool mAssociatedValue1 ;
+  public: const GALGAS_bool mAssociatedValue2 ;
+
+//--- Constructor
+  public: cEnumAssociatedValues_selfAvailability_available (const GALGAS_unifiedTypeMap_2D_entry & inAssociatedValue0,
+                                                            const GALGAS_bool & inAssociatedValue1,
+                                                            const GALGAS_bool & inAssociatedValue2
+                                                            COMMA_LOCATION_ARGS) ;
+
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+  public: virtual typeComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
+
+  public: virtual ~ cEnumAssociatedValues_selfAvailability_available (void) {}
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Abstract extension method '@semanticExpressionAST analyzeSemanticExpression'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -7547,27 +7571,4 @@ class GALGAS_forInstructionEnumeratedObjectListAST_2D_element : public AC_GALGAS
 //----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListAST_2D_element ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@abstractEnumeratedCollectionAST enterInSemanticContext'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef void (*extensionMethodSignature_abstractEnumeratedCollectionAST_enterInSemanticContext) (const class cPtr_abstractEnumeratedCollectionAST * inObject,
-                                                                                                 class GALGAS_unifiedTypeMap & ioArgument0,
-                                                                                                 class C_Compiler * inCompiler
-                                                                                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_enterInSemanticContext (const int32_t inClassIndex,
-                                                  extensionMethodSignature_abstractEnumeratedCollectionAST_enterInSemanticContext inMethod) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_enterInSemanticContext (const class cPtr_abstractEnumeratedCollectionAST * inObject,
-                                                 GALGAS_unifiedTypeMap & io_ioTypeMap,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
 

@@ -135,6 +135,7 @@ override method @structDeclarationAST enterInSemanticContext
     !?getterMap
     !?setterMap
     !?instanceMethodMap
+    !acceptSetters: true
   )
 #--- Enumeration by "for" instruction
   var @unifiedTypeMap-entry enumeratedType

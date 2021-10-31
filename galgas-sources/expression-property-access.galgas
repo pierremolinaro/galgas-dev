@@ -66,9 +66,9 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
   [propertyMap searchKey !self.mStructFieldName ?let isPublic ?* ?let type]
   if isPublic then
     # Ok
-  elsif [inAnalysisContext.mSelfCopyTypeEntry isNull] then
+  elsif [inAnalysisContext.nonMutableSelfType isNull] then
     error self.mStructFieldName : "inaccessible property (due to its 'private' qualifier)"
-  elsif expressionType != inAnalysisContext.mSelfCopyTypeEntry then
+  elsif expressionType != inAnalysisContext.nonMutableSelfType then
     error self.mStructFieldName : "inaccessible property (due to its 'private' qualifier)"
   end
 #--- Generate expression
