@@ -57,7 +57,7 @@ override method @optionExpressionAST enterExpressionInSemanticContext
 override method @optionExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-entry unused inType
+  ?inferenceType: let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression

@@ -182,14 +182,11 @@ override method @incDecInstructionAST analyzeSemanticInstruction
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if [inAnalysisContext.nonMutableSelfType isNull] then
-      error self.mReceiverName: "'self' cannot be used in this context"
-      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    elsif [inAnalysisContext.mutableSelfType isNull] then
-      error self.mReceiverName: "'self' object is not mutable"
-      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    else
-      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
+    if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: let mutableProperties] then
+      if not selfIsMutable then
+        error self.mInstructionLocation : "'self' not mutable in this context"
+      end
+      let propertyMap = [selfType mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
@@ -197,7 +194,31 @@ override method @incDecInstructionAST analyzeSemanticInstruction
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
+      if not mutableProperties then
+        error self.mReceiverName : "the property cannot be mutated in this constant"
+      end
+    else
+      error self.mInstructionLocation : "'self' not available in this context"
+      : targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
     end
+
+  
+#    if [inAnalysisContext.nonMutableSelfType isNull] then
+#      error self.mReceiverName: "'self' cannot be used in this context"
+#      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+#    elsif [inAnalysisContext.mutableSelfType isNull] then
+#      error self.mReceiverName: "'self' object is not mutable"
+#      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+#    else
+#      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
+#      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
+#      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
+#      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+#       + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+#      if isConstant then
+#        error self.mReceiverName : "a constant property cannot be modified"
+#      end
+#    end
   else
     [!?ioVariableMap searchForReadWriteAccess
        !self.mReceiverName
@@ -279,28 +300,49 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager unused ioVariableMap
 {
-#--- Analyze "self", as receiver expression
-  var @unifiedTypeMap-entry selfTypeEntry
-  var @string selfObjectCppName
-  if [inAnalysisContext.mutableSelfType isNull] then
-    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
+  if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: *] then
+    if not selfIsMutable then
+      error self.mInstructionLocation : "'self' not mutable in this context"
+    end
+  #--- Check target type accepts incrementation
+    if not [[selfType mHandledOperatorFlags] incDecOperator] then
+      error self.mInstructionLocation
+      :"the target object has the '@" + [selfType key] + "' type, but this type does not support the '&++' and  '&--' operators"
+    end
+  #--- Generate instruction
+    ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration.new {
+      !self.mInstructionLocation
+      !inAnalysisContext.mSelfObjectCppName
+      !selfType
+      !{}
+      !self.mKind
+    }
   else
-    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-    selfTypeEntry = inAnalysisContext.mutableSelfType
+    error self.mInstructionLocation : "'self' not available in this context"
   end
-#--- Check target type accepts incrementation
-  if not [[selfTypeEntry mHandledOperatorFlags] incDecOperator] then
-    error self.mInstructionLocation
-    :"the target object has the '@" + [selfTypeEntry key] + "' type, but this type does not support the '&++' and  '&--' operators"
-  end
-#--- Generate instruction
-  ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration.new {
-    !self.mInstructionLocation
-    !selfObjectCppName
-    !selfTypeEntry
-    !{}
-    !self.mKind
-   }
+
+#--- Analyze "self", as receiver expression
+#  var @unifiedTypeMap-entry selfTypeEntry
+#  var @string selfObjectCppName
+#  if [inAnalysisContext.mutableSelfType isNull] then
+#    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
+#  else
+#    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
+#    selfTypeEntry = inAnalysisContext.mutableSelfType
+#  end
+##--- Check target type accepts incrementation
+#  if not [[selfTypeEntry mHandledOperatorFlags] incDecOperator] then
+#    error self.mInstructionLocation
+#    :"the target object has the '@" + [selfTypeEntry key] + "' type, but this type does not support the '&++' and  '&--' operators"
+#  end
+##--- Generate instruction
+#  ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration.new {
+#    !self.mInstructionLocation
+#    !selfObjectCppName
+#    !selfTypeEntry
+#    !{}
+#    !self.mKind
+#   }
 }
 
 #·····················································································································*
@@ -312,28 +354,51 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager unused ioVariableMap
 {
-#--- Analyze "self", as receiver expression
-  var @unifiedTypeMap-entry selfTypeEntry
-  var @string selfObjectCppName
-  if [inAnalysisContext.mutableSelfType isNull] then
-    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
+  if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: *] then
+    if not selfIsMutable then
+      error self.mInstructionLocation : "'self' not mutable in this context"
+    end
+  #--- Check target type accepts incrementation
+    if not [[selfType mHandledOperatorFlags] incDecOperator] then
+      error self.mInstructionLocation
+      :"the target object has the '@" + [selfType key] + "' type, but this type does not support the '++' and  '--' operators"
+    end
+  #--- Generate instruction
+    ioInstructionListForGeneration += !@incDecInstructionForGeneration.new {
+      !self.mInstructionLocation
+      !inAnalysisContext.mSelfObjectCppName
+      !selfType
+      !{}
+      !self.mKind
+     }
   else
-    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-    selfTypeEntry = inAnalysisContext.mutableSelfType
+    error self.mInstructionLocation : "'self' not available in this context"
   end
-#--- Check target type accepts incrementation
-  if not [[selfTypeEntry mHandledOperatorFlags] incDecOperator] then
-    error self.mInstructionLocation
-    :"the target object has the '@" + [selfTypeEntry key] + "' type, but this type does not support the '++' and  '--' operators"
-  end
-#--- Generate instruction
-  ioInstructionListForGeneration += !@incDecInstructionForGeneration.new {
-    !self.mInstructionLocation
-    !selfObjectCppName
-    !selfTypeEntry
-    !{}
-    !self.mKind
-   }
+
+
+
+#--- Analyze "self", as receiver expression
+#  var @unifiedTypeMap-entry selfTypeEntry
+#  var @string selfObjectCppName
+#  if [inAnalysisContext.mutableSelfType isNull] then
+#    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
+#  else
+#    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
+#    selfTypeEntry = inAnalysisContext.mutableSelfType
+#  end
+##--- Check target type accepts incrementation
+#  if not [[selfTypeEntry mHandledOperatorFlags] incDecOperator] then
+#    error self.mInstructionLocation
+#    :"the target object has the '@" + [selfTypeEntry key] + "' type, but this type does not support the '++' and  '--' operators"
+#  end
+##--- Generate instruction
+#  ioInstructionListForGeneration += !@incDecInstructionForGeneration.new {
+#    !self.mInstructionLocation
+#    !selfObjectCppName
+#    !selfTypeEntry
+#    !{}
+#    !self.mKind
+#   }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

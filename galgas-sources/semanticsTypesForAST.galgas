@@ -40,7 +40,7 @@ enum @formalArgumentPassingModeAST {
 
 getter @formalArgumentPassingModeAST string -> @string {
   switch self
-    case argumentConstantIn : result = "??"
+    case argumentConstantIn : result = "?let"
     case argumentIn : result = "?"
     case argumentOut : result = "!"
     case argumentInOut : result = "?!"
@@ -51,21 +51,10 @@ getter @formalArgumentPassingModeAST string -> @string {
 
 getter @formalArgumentPassingModeAST formalArgumentMessage -> @string {
   switch self
-    case argumentConstantIn : result = "a constant input (??) formal argument"
+    case argumentConstantIn : result = "a constant input (?let) formal argument"
     case argumentIn : result = "an input (?) formal argument"
     case argumentOut : result = "an output (!) formal argument"
     case argumentInOut : result = "an input/output (?!) formal argument"
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @formalArgumentPassingModeAST formalArgumentString -> @string {
-  switch self
-    case argumentConstantIn : result = "'??'"
-    case argumentIn : result = "'?'"
-    case argumentOut : result = "'!'"
-    case argumentInOut : result = "'?!'"
   end
 }
 

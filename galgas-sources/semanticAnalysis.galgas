@@ -319,10 +319,8 @@ override method @procDeclarationAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !nonMutableSelfType: @unifiedTypeMap-entry.null
     !""
-    !mutableSelfType:@unifiedTypeMap-entry.null
-    !selfAvailability: .none
+    !selfType: .none
     !""
   }
   analyzeRoutineBody (
@@ -456,10 +454,8 @@ override method @functionDeclarationAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !nonMutableSelfType: @unifiedTypeMap-entry.null
     !""
-    !mutableSelfType:@unifiedTypeMap-entry.null
-    !selfAvailability: .none
+    !selfType: .none
     !""
   }
   analyzeFunctionBody (
@@ -515,10 +511,8 @@ override method @onceFunctionDeclarationAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !nonMutableSelfType: @unifiedTypeMap-entry.null
     !""
-    !mutableSelfType: @unifiedTypeMap-entry.null
-    !selfAvailability: .none
+    !selfType: .none
     !""
   }
   analyzeFunctionBody (
@@ -1812,10 +1806,8 @@ proc semanticAnalysisOfSyntaxComponent
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !nonMutableSelfType: @unifiedTypeMap-entry.null
     !""
-    !mutableSelfType: @unifiedTypeMap-entry.null
-    !selfAvailability: .none
+    !selfType: .none
     !""
   }
 #--- Rule list

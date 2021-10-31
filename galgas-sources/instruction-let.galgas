@@ -142,7 +142,7 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
   [self.mSourceExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?var @semanticExpressionForGeneration expression
@@ -172,7 +172,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
   [self.mSourceExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !targetType
+    !inferenceType: targetType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression

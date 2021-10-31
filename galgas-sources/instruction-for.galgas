@@ -350,7 +350,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
   [self.mEnumeratedExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?outEnumerationExpression
@@ -396,7 +396,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
   [self.mEnumeratedExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?outEnumerationExpression
@@ -475,7 +475,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   [self.mEnumeratedExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?outEnumerationExpression
@@ -592,7 +592,7 @@ override method @forInstructionAST analyzeSemanticInstruction
   [self.mWhileExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration uncheckedWhileExpression

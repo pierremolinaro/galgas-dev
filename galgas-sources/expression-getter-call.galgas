@@ -56,7 +56,7 @@ override method @getterCallExpressionAST enterExpressionInSemanticContext
 override method @getterCallExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-entry unused inType
+  ?inferenceType: let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -65,7 +65,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
   [self.mReceiver analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration receiverExpression
@@ -162,7 +162,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
-        !mFormalArgumentType
+        !inferenceType: mFormalArgumentType
         !inAnalysisContext
         !?ioVariableMap
         ?@semanticExpressionForGeneration exp

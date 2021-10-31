@@ -127,7 +127,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   [self.mWhenExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?when_expression

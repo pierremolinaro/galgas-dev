@@ -37,17 +37,24 @@ override method @selfInExpressionAST enterExpressionInSemanticContext
 override method @selfInExpressionAST analyzeSemanticExpression
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-entry unused inType
+  ?inferenceType: let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  if [inAnalysisContext.nonMutableSelfType isNull] then
-    error self.mSelfLocation: "'self' cannot be used in this context" : outExpression
-  else
+  if let [inAnalysisContext.selfType available ?type: let selfType ?2*] then
     let @string selfCppName = inAnalysisContext.mSelfObjectCppName
-    outExpression = @selfInExpressionForGeneration.new {!inAnalysisContext.nonMutableSelfType !self.mSelfLocation !selfCppName}
+    outExpression = @selfInExpressionForGeneration.new {!selfType !self.mSelfLocation !selfCppName}
+  else
+    error self.mSelfLocation : "'self' not available in this context" : outExpression
   end
+
+#  if [inAnalysisContext.nonMutableSelfType isNull] then
+#    error self.mSelfLocation: "'self' cannot be used in this context" : outExpression
+#  else
+#    let @string selfCppName = inAnalysisContext.mSelfObjectCppName
+#    outExpression = @selfInExpressionForGeneration.new {!inAnalysisContext.nonMutableSelfType !self.mSelfLocation !selfCppName}
+#  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

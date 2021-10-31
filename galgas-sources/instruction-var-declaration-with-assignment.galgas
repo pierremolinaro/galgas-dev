@@ -93,7 +93,7 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
   [self.mSourceExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?var @semanticExpressionForGeneration expression

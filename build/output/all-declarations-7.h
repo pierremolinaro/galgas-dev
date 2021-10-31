@@ -2476,13 +2476,9 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
 
   public: GALGAS_predefinedTypes mProperty_mPredefinedTypes ;
 
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_nonMutableSelfType ;
-
   public: GALGAS_string mProperty_mSelfObjectCppName ;
 
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mutableSelfType ;
-
-  public: GALGAS_selfAvailability mProperty_selfAvailability ;
+  public: GALGAS_selfAvailability mProperty_selfType ;
 
   public: GALGAS_string mProperty_mSelfObjectCppPrefixForAccessingProperty ;
 
@@ -2502,20 +2498,12 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
     mProperty_mPredefinedTypes = inValue ;
   }
 
-  public: inline void setter_setNonMutableSelfType (const GALGAS_unifiedTypeMap_2D_entry & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_nonMutableSelfType = inValue ;
-  }
-
   public: inline void setter_setMSelfObjectCppName (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mSelfObjectCppName = inValue ;
   }
 
-  public: inline void setter_setMutableSelfType (const GALGAS_unifiedTypeMap_2D_entry & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mutableSelfType = inValue ;
-  }
-
-  public: inline void setter_setSelfAvailability (const GALGAS_selfAvailability & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_selfAvailability = inValue ;
+  public: inline void setter_setSelfType (const GALGAS_selfAvailability & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_selfType = inValue ;
   }
 
   public: inline void setter_setMSelfObjectCppPrefixForAccessingProperty (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -2528,10 +2516,8 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GALGAS_analysisContext (const GALGAS_semanticContext & in_mSemanticContext,
                                   const GALGAS_predefinedTypes & in_mPredefinedTypes,
-                                  const GALGAS_unifiedTypeMap_2D_entry & in_nonMutableSelfType,
                                   const GALGAS_string & in_mSelfObjectCppName,
-                                  const GALGAS_unifiedTypeMap_2D_entry & in_mutableSelfType,
-                                  const GALGAS_selfAvailability & in_selfAvailability,
+                                  const GALGAS_selfAvailability & in_selfType,
                                   const GALGAS_string & in_mSelfObjectCppPrefixForAccessingProperty) ;
 
 //-- Start of generic part --*
@@ -2547,11 +2533,9 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_analysisContext constructor_new (const class GALGAS_semanticContext & inOperand0,
                                                                const class GALGAS_predefinedTypes & inOperand1,
-                                                               const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
-                                                               const class GALGAS_string & inOperand3,
-                                                               const class GALGAS_unifiedTypeMap_2D_entry & inOperand4,
-                                                               const class GALGAS_selfAvailability & inOperand5,
-                                                               const class GALGAS_string & inOperand6
+                                                               const class GALGAS_string & inOperand2,
+                                                               const class GALGAS_selfAvailability & inOperand3,
+                                                               const class GALGAS_string & inOperand4
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -2574,11 +2558,7 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG class GALGAS_semanticContext getter_mSemanticContext (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_entry getter_mutableSelfType (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_entry getter_nonMutableSelfType (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_selfAvailability getter_selfAvailability (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_selfAvailability getter_selfType (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods

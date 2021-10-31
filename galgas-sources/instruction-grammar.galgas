@@ -239,7 +239,7 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
   [self.mSourceExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration sourceExpression
@@ -313,7 +313,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
   [self.mSourceExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration sourceExpression
@@ -328,7 +328,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
   [self.mNameExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration nameExpression

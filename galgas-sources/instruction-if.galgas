@@ -265,7 +265,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
       [exp analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
-        !.null
+        !inferenceType: .null
         !inAnalysisContext
         !?ioVariableMap
         ?let analyzed_if_expression
@@ -283,7 +283,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
       [exp analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
-        !.null
+        !inferenceType: .null
         !inAnalysisContext
         !?ioVariableMap
         ?let analyzedExpression
@@ -431,7 +431,7 @@ private proc analyzeOptionalMethodCall
   [inReceiverExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration receiverExpression
@@ -467,7 +467,7 @@ private proc analyzeOptionalMethodCall
         [expression analyzeSemanticExpression
           !inUsefulnessCallerEntityName
           !?ioUsefulEntitiesGraph
-          !formalType
+          !inferenceType: formalType
           !inAnalysisContext
           !?ioVariableMap
           ?@semanticExpressionForGeneration exp

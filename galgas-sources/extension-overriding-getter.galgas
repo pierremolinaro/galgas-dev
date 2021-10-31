@@ -143,10 +143,8 @@ override method @overridingExtensionGetterAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !nonMutableSelfType: selfType
     !"object"
-    !mutableSelfType: @unifiedTypeMap-entry.null
-    !selfAvailability: .none
+    !selfType: .available {!type: selfType !mutable: false !mutableproperties: true}
     !"object."
   }
   analyzeFunctionBody (

@@ -148,53 +148,63 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-  var @unifiedTypeMap-entry selfTypeEntry
-  var @string selfObjectCppName
-  if [inAnalysisContext.mutableSelfType isNull] then
-    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
-  else
-    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-    selfTypeEntry = inAnalysisContext.mutableSelfType
-  end
-#--- Check target variable type support '+=' operator
-  let addAssignOperatorArguments= [selfTypeEntry mAddAssignOperatorArguments] # Empty list if += operator is not supported
-  if [addAssignOperatorArguments length] == 0 then
-    error self.mInstructionLocation
-    :"the target object has the '@" + [selfTypeEntry key] + "' type, but this type does not support the '+=' operator"
-#--- Analyze source expressions
-  elsif [self.mExpressions length] != [addAssignOperatorArguments length] then
-    error self.mInstructionLocation
-    : "calling the '+=' operator on an '@" + [selfTypeEntry key] + "' object requires "
-    + [[addAssignOperatorArguments length] string] + " parameter(s), while this invocation has "
-    + [[self.mExpressions length] string] + " parameter(s)"
-  else
-    var effectiveParameterList =@semanticExpressionListForGeneration {}
-    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType *) in addAssignOperatorArguments do
-      [mExpression analyzeSemanticExpression
-        !inUsefulnessCallerEntityName
-        !?ioUsefulEntitiesGraph
-        !mFormalArgumentType
-        !inAnalysisContext
-        !?ioVariableMap
-        ?@semanticExpressionForGeneration expression
-      ]
-      if mFormalSelector.string != mActualSelector.string then
-        let s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-        error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
-#        error mActualSelector
-#          : "the selector should be '!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "'"
-      end
-      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !expression.mResultType !mEndOfExpressionLocation !?expression)
-      effectiveParameterList += !expression
+#  var @unifiedTypeMap-entry selfTypeEntry
+#  var @string selfObjectCppName
+  if let [inAnalysisContext.selfType available
+      ?type: let selfType
+      ?mutable: let selfIsMutable
+      ?mutableproperties: *] then
+    if not selfIsMutable then
+      error self.mInstructionLocation : "'self' not mutable in this context"
     end
-  #--- Generate instruction
-    ioInstructionListForGeneration += !@plusEqualnstructionForGeneration.new {
-      !selfObjectCppName
-      !selfTypeEntry
-      !""
-      !self.mInstructionLocation
-      !@lstringlist {}
-      !effectiveParameterList}
+
+#  if [inAnalysisContext.mutableSelfType isNull] then
+#    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
+#  else
+#    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
+#    selfTypeEntry = inAnalysisContext.mutableSelfType
+#  end
+  #--- Check target variable type support '+=' operator
+    let addAssignOperatorArguments= [selfType mAddAssignOperatorArguments] # Empty list if += operator is not supported
+    if [addAssignOperatorArguments length] == 0 then
+      error self.mInstructionLocation
+      :"the target object has the '@" + [selfType key] + "' type, but this type does not support the '+=' operator"
+  #--- Analyze source expressions
+    elsif [self.mExpressions length] != [addAssignOperatorArguments length] then
+      error self.mInstructionLocation
+      : "calling the '+=' operator on an '@" + [selfType key] + "' object requires "
+      + [[addAssignOperatorArguments length] string] + " parameter(s), while this invocation has "
+      + [[self.mExpressions length] string] + " parameter(s)"
+    else
+      var effectiveParameterList = @semanticExpressionListForGeneration {}
+      for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType *) in addAssignOperatorArguments do
+        [mExpression analyzeSemanticExpression
+          !inUsefulnessCallerEntityName
+          !?ioUsefulEntitiesGraph
+          !inferenceType: mFormalArgumentType
+          !inAnalysisContext
+          !?ioVariableMap
+          ?@semanticExpressionForGeneration expression
+        ]
+        if mFormalSelector.string != mActualSelector.string then
+          let s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
+          error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+        end
+        checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !expression.mResultType !mEndOfExpressionLocation !?expression)
+        effectiveParameterList += !expression
+      end
+    #--- Generate instruction
+      ioInstructionListForGeneration += !@plusEqualnstructionForGeneration.new {
+        !inAnalysisContext.mSelfObjectCppName
+        !selfType
+        !""
+        !self.mInstructionLocation
+        !@lstringlist {}
+        !effectiveParameterList
+      }
+    end
+  else
+    error self.mInstructionLocation : "'self' not available in this context"
   end
 }
 
@@ -207,40 +217,51 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-  var @unifiedTypeMap-entry selfTypeEntry
-  var @string selfObjectCppName
-  if [inAnalysisContext.mutableSelfType isNull] then
-    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
+#  var @unifiedTypeMap-entry selfTypeEntry
+#  var @string selfObjectCppName
+  if let [inAnalysisContext.selfType available
+      ?type: let selfType
+      ?mutable: let selfIsMutable
+      ?mutableproperties: *] then
+    if not selfIsMutable then
+      error self.mInstructionLocation : "'self' not mutable in this context"
+    end
+
+#  if [inAnalysisContext.mutableSelfType isNull] then
+#    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
+#  else
+#    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
+#    selfTypeEntry = inAnalysisContext.mutableSelfType
+#  end
+  #--- Check target variable type support '+= exp' operator
+    if not [[selfType mHandledOperatorFlags] plusEqualOperatorWithExpression] then
+      error self.mInstructionLocation
+      :"the target object has the '@" + [selfType key] + "' type, but this type does not support the '+=' operator"
+    end
+  #--- Analyze source expression
+    [self.mExpression analyzeSemanticExpression
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      !inferenceType: selfType
+      !inAnalysisContext
+      !?ioVariableMap
+      ?@semanticExpressionForGeneration expression
+    ]
+  #--- Check assignment type compatibility
+    checkAssignmentTypeWithImplicitGetterCall (!selfType !expression.mResultType !self.mInstructionLocation !?expression)
+  #--- Generate instruction
+    ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
+      !self.mInstructionLocation
+      !selfType
+      !inAnalysisContext.mSelfObjectCppName
+      !""
+      !{}
+      !expression
+      !"plusAssign_operation"
+    }
   else
-    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-    selfTypeEntry = inAnalysisContext.mutableSelfType
+    error self.mInstructionLocation : "'self' not available in this context"
   end
-#--- Check target variable type support '+= exp' operator
-  if not [[selfTypeEntry mHandledOperatorFlags] plusEqualOperatorWithExpression] then
-    error self.mInstructionLocation
-    :"the target object has the '@" + [selfTypeEntry key] + "' type, but this type does not support the '+=' operator"
-  end
-#--- Analyze source expression
-  [self.mExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !selfTypeEntry
-    !inAnalysisContext
-    !?ioVariableMap
-    ?@semanticExpressionForGeneration expression
-  ]
-#--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!selfTypeEntry !expression.mResultType !self.mInstructionLocation !?expression)
-#--- Generate instruction
-  ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
-    !self.mInstructionLocation
-    !selfTypeEntry
-    !selfObjectCppName
-    !""
-    !{}
-    !expression
-    !"plusAssign_operation"
-  }
 }
 
 #·····················································································································*
@@ -252,40 +273,51 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-  var @unifiedTypeMap-entry selfTypeEntry
-  var @string selfObjectCppName
-  if [inAnalysisContext.mutableSelfType isNull] then
-    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
+#  var @unifiedTypeMap-entry selfTypeEntry
+#  var @string selfObjectCppName
+  if let [inAnalysisContext.selfType available
+      ?type: let selfType
+      ?mutable: let selfIsMutable
+      ?mutableproperties: *] then
+    if not selfIsMutable then
+      error self.mInstructionLocation : "'self' not mutable in this context"
+    end
+
+#  if [inAnalysisContext.mutableSelfType isNull] then
+#    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
+#  else
+#    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
+#    selfTypeEntry = inAnalysisContext.mutableSelfType
+#  end
+  #--- Check target variable type support '-= exp' operator
+    if not [[selfType mHandledOperatorFlags] minusEqualOperatorWithExpression] then
+      error self.mInstructionLocation
+      :"the target object has the '@" + [selfType key] + "' type, but this type does not support the '-=' operator"
+    end
+  #--- Analyze source expression
+    [self.mExpression analyzeSemanticExpression
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      !inferenceType: selfType
+      !inAnalysisContext
+      !?ioVariableMap
+      ?@semanticExpressionForGeneration expression
+    ]
+  #--- Check assignment type compatibility
+    checkAssignmentTypeWithImplicitGetterCall (!selfType !expression.mResultType !self.mInstructionLocation !?expression)
+  #--- Generate instruction
+    ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
+      !self.mInstructionLocation
+      !selfType
+      !inAnalysisContext.mSelfObjectCppName
+      !""
+      !{}
+      !expression
+      !"minusAssign_operation"
+    }
   else
-    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-    selfTypeEntry = inAnalysisContext.mutableSelfType
+    error self.mInstructionLocation : "'self' not available in this context"
   end
-#--- Check target variable type support '-= exp' operator
-  if not [[selfTypeEntry mHandledOperatorFlags] minusEqualOperatorWithExpression] then
-    error self.mInstructionLocation
-    :"the target object has the '@" + [selfTypeEntry key] + "' type, but this type does not support the '-=' operator"
-  end
-#--- Analyze source expression
-  [self.mExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !selfTypeEntry
-    !inAnalysisContext
-    !?ioVariableMap
-    ?@semanticExpressionForGeneration expression
-  ]
-#--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!selfTypeEntry !expression.mResultType !self.mInstructionLocation !?expression)
-#--- Generate instruction
-  ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
-    !self.mInstructionLocation
-    !selfTypeEntry
-    !selfObjectCppName
-    !""
-    !{}
-    !expression
-    !"minusAssign_operation"
-  }
 }
 
 #·····················································································································*
@@ -297,40 +329,51 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-  var @unifiedTypeMap-entry selfTypeEntry
-  var @string selfObjectCppName
-  if [inAnalysisContext.mutableSelfType isNull] then
-    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
+#  var @unifiedTypeMap-entry selfTypeEntry
+#  var @string selfObjectCppName
+  if let [inAnalysisContext.selfType available
+      ?type: let selfType
+      ?mutable: let selfIsMutable
+      ?mutableproperties: *] then
+    if not selfIsMutable then
+      error self.mInstructionLocation : "'self' not mutable in this context"
+    end
+
+#  if [inAnalysisContext.mutableSelfType isNull] then
+#    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
+#  else
+#    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
+#    selfTypeEntry = inAnalysisContext.mutableSelfType
+#  end
+  #--- Check target variable type support '*= exp' operator
+    if [[selfType mHandledOperatorFlags] mulEqualOperatorWithExpression] then
+      error self.mInstructionLocation
+      :"the target object has the '@" + [selfType key] + "' type, but this type does not support the '*=' operator"
+    end
+  #--- Analyze source expression
+    [self.mExpression analyzeSemanticExpression
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      !inferenceType: selfType
+      !inAnalysisContext
+      !?ioVariableMap
+      ?@semanticExpressionForGeneration expression
+    ]
+  #--- Check assignment type compatibility
+    checkAssignmentTypeWithImplicitGetterCall (!selfType !expression.mResultType !self.mInstructionLocation !?expression)
+  #--- Generate instruction
+    ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
+      !self.mInstructionLocation
+      !selfType
+      !inAnalysisContext.mSelfObjectCppName
+      !""
+      !{}
+      !expression
+      !"mulAssign_operation"
+    }
   else
-    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-    selfTypeEntry = inAnalysisContext.mutableSelfType
+    error self.mInstructionLocation : "'self' not available in this context"
   end
-#--- Check target variable type support '*= exp' operator
-  if [[selfTypeEntry mHandledOperatorFlags] mulEqualOperatorWithExpression] then
-    error self.mInstructionLocation
-    :"the target object has the '@" + [selfTypeEntry key] + "' type, but this type does not support the '*=' operator"
-  end
-#--- Analyze source expression
-  [self.mExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !selfTypeEntry
-    !inAnalysisContext
-    !?ioVariableMap
-    ?@semanticExpressionForGeneration expression
-  ]
-#--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!selfTypeEntry !expression.mResultType !self.mInstructionLocation !?expression)
-#--- Generate instruction
-  ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
-    !self.mInstructionLocation
-    !selfTypeEntry
-    !selfObjectCppName
-    !""
-    !{}
-    !expression
-    !"mulAssign_operation"
-  }
 }
 
 #·····················································································································*
@@ -342,40 +385,51 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-  var @unifiedTypeMap-entry selfTypeEntry
-  var @string selfObjectCppName
-  if [inAnalysisContext.mutableSelfType isNull] then
-    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
+#  var @unifiedTypeMap-entry selfTypeEntry
+#  var @string selfObjectCppName
+  if let [inAnalysisContext.selfType available
+      ?type: let selfType
+      ?mutable: let selfIsMutable
+      ?mutableproperties: *] then
+    if not selfIsMutable then
+      error self.mInstructionLocation : "'self' not mutable in this context"
+    end
+
+#  if [inAnalysisContext.mutableSelfType isNull] then
+#    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
+#  else
+#    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
+#    selfTypeEntry = inAnalysisContext.mutableSelfType
+#  end
+  #--- Check target variable type support '/= exp' operator
+    if [[selfType mHandledOperatorFlags] divEqualOperatorWithExpression] then
+      error self.mInstructionLocation
+      :"the target object has the '@" + [selfType key] + "' type, but this type does not support the '/=' operator"
+    end
+  #--- Analyze source expression
+    [self.mExpression analyzeSemanticExpression
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      !inferenceType: selfType
+      !inAnalysisContext
+      !?ioVariableMap
+      ?@semanticExpressionForGeneration expression
+    ]
+  #--- Check assignment type compatibility
+    checkAssignmentTypeWithImplicitGetterCall (!selfType !expression.mResultType !self.mInstructionLocation !?expression)
+  #--- Generate instruction
+    ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
+      !self.mInstructionLocation
+      !selfType
+      !inAnalysisContext.mSelfObjectCppName
+      !""
+      !{}
+      !expression
+      !"divAssign_operation"
+    }
   else
-    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-    selfTypeEntry = inAnalysisContext.mutableSelfType
+    error self.mInstructionLocation : "'self' not available in this context"
   end
-#--- Check target variable type support '/= exp' operator
-  if [[selfTypeEntry mHandledOperatorFlags] divEqualOperatorWithExpression] then
-    error self.mInstructionLocation
-    :"the target object has the '@" + [selfTypeEntry key] + "' type, but this type does not support the '/=' operator"
-  end
-#--- Analyze source expression
-  [self.mExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !selfTypeEntry
-    !inAnalysisContext
-    !?ioVariableMap
-    ?@semanticExpressionForGeneration expression
-  ]
-#--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!selfTypeEntry !expression.mResultType !self.mInstructionLocation !?expression)
-#--- Generate instruction
-  ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
-    !self.mInstructionLocation
-    !selfTypeEntry
-    !selfObjectCppName
-    !""
-    !{}
-    !expression
-    !"divAssign_operation"
-  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

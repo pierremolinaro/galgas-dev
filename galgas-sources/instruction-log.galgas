@@ -84,7 +84,7 @@ override method @logInstructionAST analyzeSemanticInstruction
     [mLogExpression analyzeSemanticExpression
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
-      !@unifiedTypeMap-entry.null
+      !inferenceType: @unifiedTypeMap-entry.null
       !inAnalysisContext
       !?ioVariableMap
       ?expression

@@ -62,7 +62,7 @@ override method @andExpressionAST enterExpressionInSemanticContext
 override method @andExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-entry inInferenceType
+  ?inferenceType: let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
@@ -70,7 +70,7 @@ override method @andExpressionAST analyzeSemanticExpression
   [self.mLeftExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inInferenceType
+    !inferenceType: inInferenceType
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration leftExpression
@@ -79,7 +79,7 @@ override method @andExpressionAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !leftExpression.mResultType
+    !inferenceType: leftExpression.mResultType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
@@ -118,7 +118,7 @@ override method @andShortExpressionAST enterExpressionInSemanticContext
 override method @andShortExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-entry inInferenceType
+  ?inferenceType: let @unifiedTypeMap-entry inInferenceType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
@@ -126,7 +126,7 @@ override method @andShortExpressionAST analyzeSemanticExpression
   [self.mLeftExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inInferenceType
+    !inferenceType: inInferenceType
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration leftExpression
@@ -135,7 +135,7 @@ override method @andShortExpressionAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !leftExpression.mResultType
+    !inferenceType: leftExpression.mResultType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression

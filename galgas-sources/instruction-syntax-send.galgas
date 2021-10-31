@@ -63,7 +63,7 @@ override method @syntaxSendInstruction analyzeSyntaxInstruction
   [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration expression

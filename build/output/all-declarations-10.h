@@ -7796,8 +7796,8 @@ class GALGAS_structPropertyAccessExpressionAST : public GALGAS_semanticExpressio
   public: VIRTUAL_IN_DEBUG void setter_setMOperatorLocation (class GALGAS_location inArgument0
                                                              COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMStructFieldName (class GALGAS_lstring inArgument0
-                                                            COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void setter_setMPropertyName (class GALGAS_lstring inArgument0
+                                                         COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -7808,7 +7808,7 @@ class GALGAS_structPropertyAccessExpressionAST : public GALGAS_semanticExpressio
 
   public: VIRTUAL_IN_DEBUG class GALGAS_location getter_mOperatorLocation (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mStructFieldName (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mPropertyName (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods
@@ -7833,12 +7833,12 @@ class cPtr_structPropertyAccessExpressionAST : public cPtr_semanticExpressionAST
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
   public: GALGAS_semanticExpressionAST mProperty_mExpression ;
-  public: GALGAS_lstring mProperty_mStructFieldName ;
+  public: GALGAS_lstring mProperty_mPropertyName ;
 
 //--- Constructor
   public: cPtr_structPropertyAccessExpressionAST (const GALGAS_location & in_mOperatorLocation,
                                                   const GALGAS_semanticExpressionAST & in_mExpression,
-                                                  const GALGAS_lstring & in_mStructFieldName
+                                                  const GALGAS_lstring & in_mPropertyName
                                                   COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

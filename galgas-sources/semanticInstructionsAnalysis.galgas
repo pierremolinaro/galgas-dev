@@ -164,7 +164,7 @@ override method @outputActualParameterAST checkAgainstFormalArgument
     [self.mOutputActualParameterExpression analyzeSemanticExpression
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
-      !inFormalArgumentType
+      !inferenceType: inFormalArgumentType
       !inAnalysisContext
       !?ioVariableMap
       ?@semanticExpressionForGeneration expression
@@ -384,29 +384,55 @@ override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
   elsif inFormalSelector.string != self.mActualSelector.string then
     let s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
     error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
-#     error self.mActualSelector : "the selector should be '?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
   end
-  var @unifiedTypeMap-entry parameterType
-  var @string targetVariableCppName
-  if [inAnalysisContext.mutableSelfType isNull] then
-    error self.mInputActualSelfPropertyName: "'self' cannot be used in this context"
-    : parameterType, targetVariableCppName
+  
+  if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: *] then
+    if not selfIsMutable then
+      error self.mInputActualSelfPropertyName : "'self' not mutable in this context"
+    end
+    let propertyMap = [selfType mPropertyMap]
+    [propertyMap searchKey !self.mInputActualSelfPropertyName ?2* ?var parameterType]
+    let targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+     + "mProperty_"+ [self.mInputActualSelfPropertyName.string identifierRepresentation]
+  #--- Check type
+    if inFormalArgumentType != parameterType then
+      error self.mInputActualSelfPropertyName
+      :"the parameter object has the '@" + [parameterType key]
+      + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType key] + "'"
+    end
+  #--- Generate actual parameter
+    ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
+      !parameterType
+      !targetVariableCppName
+    }
+
   else
-    let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
-    [propertyMap searchKey !self.mInputActualSelfPropertyName ?2* ?parameterType]
-    targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [self.mInputActualSelfPropertyName.string identifierRepresentation]
+    error self.mInputActualSelfPropertyName : "'self' not available in this context"
   end
-#--- Check type
-  if inFormalArgumentType != parameterType then
-    error self.mInputActualSelfPropertyName
-    :"the parameter object has the '@" + [parameterType key]
-    + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType key] + "'"
-  end
-#--- Generate actual parameter
-  ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
-    !parameterType
-    !targetVariableCppName
-  }
+  
+  
+  
+#  var @unifiedTypeMap-entry parameterType
+#  var @string targetVariableCppName
+#  if [inAnalysisContext.mutableSelfType isNull] then
+#    error self.mInputActualSelfPropertyName: "'self' cannot be used in this context"
+#    : parameterType, targetVariableCppName
+#  else
+#    let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
+#    [propertyMap searchKey !self.mInputActualSelfPropertyName ?2* ?parameterType]
+#    targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [self.mInputActualSelfPropertyName.string identifierRepresentation]
+#  end
+##--- Check type
+#  if inFormalArgumentType != parameterType then
+#    error self.mInputActualSelfPropertyName
+#    :"the parameter object has the '@" + [parameterType key]
+#    + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType key] + "'"
+#  end
+##--- Generate actual parameter
+#  ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
+#    !parameterType
+#    !targetVariableCppName
+#  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -584,7 +610,7 @@ override method @inputJokerActualParameterAST checkAgainstFormalArgument
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset unused ioExclusiveVariableSet
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
-  if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
+  if inFormalArgumentPassingMode != @formalArgumentPassingModeAST.argumentOut then
     error self.mQualifierLocation
     :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
     + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"

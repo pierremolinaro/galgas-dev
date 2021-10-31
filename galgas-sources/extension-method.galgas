@@ -129,10 +129,8 @@ override method @extensionMethodAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !nonMutableSelfType: selfType
     !selfObjectName
-    !mutableSelfType: @unifiedTypeMap-entry.null
-    !selfAvailability: .available {!selfType: selfType !selfIsMutable: false !selfPropertiesAreMutable: false}
+    !selfType: .available {!type:  selfType !mutable: false !mutableproperties: false}
     !selfObjectAccessor
   }
   var isRefClass = false

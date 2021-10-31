@@ -140,7 +140,7 @@ private proc analyzeConstructorInvocation
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
-        !mFormalArgumentType
+        !inferenceType: mFormalArgumentType
         !inAnalysisContext
         !?ioVariableMap
         ?@semanticExpressionForGeneration exp
@@ -171,7 +171,7 @@ private proc analyzeConstructorInvocation
 override method @constructorExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-entry inType
+  ?inferenceType: let @unifiedTypeMap-entry inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -221,7 +221,7 @@ override method @defaultConstructorExpressionAST enterExpressionInSemanticContex
 override method @defaultConstructorExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-entry inType
+  ?inferenceType: let @unifiedTypeMap-entry inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression

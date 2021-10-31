@@ -200,10 +200,8 @@ proc compileProgramComponentGalgas3
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !buildPredefinedTypes (!inSemanticContext)
-    !nonMutableSelfType: @unifiedTypeMap-entry.null
     !""
-    !mutableSelfType: @unifiedTypeMap-entry.null
-    !selfAvailability: .none
+    !selfType: .none
     !""
   }
 #--- Analyse 'before' instructions

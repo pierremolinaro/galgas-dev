@@ -123,10 +123,8 @@ override method @overridingExtensionSetterAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !nonMutableSelfType: selfType
     !"object"
-    !mutableSelfType: selfType
-    !selfAvailability: .available {!selfType: selfType !selfIsMutable: true !selfPropertiesAreMutable: true}
+    !selfType: .available {!type:  selfType !mutable: true !mutableproperties: true}
     !"object->"
   }
   analyzeRoutineBody (

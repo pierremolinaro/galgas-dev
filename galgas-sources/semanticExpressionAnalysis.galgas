@@ -14,6 +14,26 @@
 #  details.                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#                                           
+#    A N A L Y S I S    C O N T E X T       
+#                                           
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum @selfAvailability {
+  case none
+  case available (@unifiedTypeMap-entry type @bool mutable @bool mutableproperties)
+}
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct @analysisContext {
+  public let @semanticContext mSemanticContext
+  public let @predefinedTypes mPredefinedTypes
+  public let @string mSelfObjectCppName
+  public let @selfAvailability selfType %selector
+  public let @string mSelfObjectCppPrefixForAccessingProperty # i.e. "ioObject->", ...
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkAssignmentTypes
   ?let @unifiedTypeMap-entry inTargetType
@@ -187,28 +207,6 @@ struct @predefinedTypes {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#    A N A L Y S I S    C O N T E X T       
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum @selfAvailability {
-  case none
-  case available (@unifiedTypeMap-entry selfType @bool selfIsMutable @bool selfPropertiesAreMutable)
-}
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-struct @analysisContext {
-  public let @semanticContext mSemanticContext
-  public let @predefinedTypes mPredefinedTypes
-  public let @unifiedTypeMap-entry nonMutableSelfType %selector # isNull if outside a extension
-  public let @string mSelfObjectCppName
-  public let @unifiedTypeMap-entry mutableSelfType %selector # isNull if outside a setter extension
-  public let @selfAvailability selfAvailability %selector
-  public let @string mSelfObjectCppPrefixForAccessingProperty # i.e. "ioObject->", ...
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
 #    E X P R E S S I O N    A N A L Y S I S 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -216,7 +214,7 @@ struct @analysisContext {
 abstract method @semanticExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-entry inType
+  ?inferenceType: let @unifiedTypeMap-entry inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression

@@ -12182,7 +12182,7 @@ typeComparisonResult cPtr_structPropertyAccessExpressionAST::dynamicObjectCompar
     result = mProperty_mExpression.objectCompare (p->mProperty_mExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mStructFieldName.objectCompare (p->mProperty_mStructFieldName) ;
+    result = mProperty_mPropertyName.objectCompare (p->mProperty_mPropertyName) ;
   }
   return result ;
 }
@@ -12222,11 +12222,11 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 
 GALGAS_structPropertyAccessExpressionAST GALGAS_structPropertyAccessExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
                                                                                                     const GALGAS_semanticExpressionAST & inAttribute_mExpression,
-                                                                                                    const GALGAS_lstring & inAttribute_mStructFieldName
+                                                                                                    const GALGAS_lstring & inAttribute_mPropertyName
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_structPropertyAccessExpressionAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mExpression.isValid () && inAttribute_mStructFieldName.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_structPropertyAccessExpressionAST (inAttribute_mOperatorLocation, inAttribute_mExpression, inAttribute_mStructFieldName COMMA_THERE)) ;
+  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mExpression.isValid () && inAttribute_mPropertyName.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_structPropertyAccessExpressionAST (inAttribute_mOperatorLocation, inAttribute_mExpression, inAttribute_mPropertyName COMMA_THERE)) ;
   }
   return result ;
 }
@@ -12257,12 +12257,12 @@ GALGAS_semanticExpressionAST GALGAS_structPropertyAccessExpressionAST::getter_mE
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_structPropertyAccessExpressionAST::getter_mStructFieldName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_structPropertyAccessExpressionAST::getter_mPropertyName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_structPropertyAccessExpressionAST * p = (const cPtr_structPropertyAccessExpressionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_structPropertyAccessExpressionAST) ;
-    result = p->mProperty_mStructFieldName ;
+    result = p->mProperty_mPropertyName ;
   }
   return result ;
 }
@@ -12291,12 +12291,12 @@ void GALGAS_structPropertyAccessExpressionAST::setter_setMExpression (GALGAS_sem
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_structPropertyAccessExpressionAST::setter_setMStructFieldName (GALGAS_lstring inValue
-                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_structPropertyAccessExpressionAST::setter_setMPropertyName (GALGAS_lstring inValue
+                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   if (NULL != mObjectPtr) {
     cPtr_structPropertyAccessExpressionAST * p = (cPtr_structPropertyAccessExpressionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_structPropertyAccessExpressionAST) ;
-    p->mProperty_mStructFieldName = inValue ;
+    p->mProperty_mPropertyName = inValue ;
   }
 }
 
@@ -12306,12 +12306,12 @@ void GALGAS_structPropertyAccessExpressionAST::setter_setMStructFieldName (GALGA
 
 cPtr_structPropertyAccessExpressionAST::cPtr_structPropertyAccessExpressionAST (const GALGAS_location & in_mOperatorLocation,
                                                                                 const GALGAS_semanticExpressionAST & in_mExpression,
-                                                                                const GALGAS_lstring & in_mStructFieldName
+                                                                                const GALGAS_lstring & in_mPropertyName
                                                                                 COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionAST (THERE),
 mProperty_mOperatorLocation (in_mOperatorLocation),
 mProperty_mExpression (in_mExpression),
-mProperty_mStructFieldName (in_mStructFieldName) {
+mProperty_mPropertyName (in_mPropertyName) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12327,7 +12327,7 @@ void cPtr_structPropertyAccessExpressionAST::description (C_String & ioString,
   ioString << ", " ;
   mProperty_mExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mStructFieldName.description (ioString, inIndentation+1) ;
+  mProperty_mPropertyName.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -12335,7 +12335,7 @@ void cPtr_structPropertyAccessExpressionAST::description (C_String & ioString,
 
 acPtr_class * cPtr_structPropertyAccessExpressionAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_structPropertyAccessExpressionAST (mProperty_mOperatorLocation, mProperty_mExpression, mProperty_mStructFieldName COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_structPropertyAccessExpressionAST (mProperty_mOperatorLocation, mProperty_mExpression, mProperty_mPropertyName COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -12500,10 +12500,8 @@ GALGAS_structPropertyAccessExpressionAST_2D_weak GALGAS_structPropertyAccessExpr
 GALGAS_analysisContext::GALGAS_analysisContext (void) :
 mProperty_mSemanticContext (),
 mProperty_mPredefinedTypes (),
-mProperty_nonMutableSelfType (),
 mProperty_mSelfObjectCppName (),
-mProperty_mutableSelfType (),
-mProperty_selfAvailability (),
+mProperty_selfType (),
 mProperty_mSelfObjectCppPrefixForAccessingProperty () {
 }
 
@@ -12516,33 +12514,27 @@ GALGAS_analysisContext::~ GALGAS_analysisContext (void) {
 
 GALGAS_analysisContext::GALGAS_analysisContext (const GALGAS_semanticContext & inOperand0,
                                                 const GALGAS_predefinedTypes & inOperand1,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand2,
-                                                const GALGAS_string & inOperand3,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand4,
-                                                const GALGAS_selfAvailability & inOperand5,
-                                                const GALGAS_string & inOperand6) :
+                                                const GALGAS_string & inOperand2,
+                                                const GALGAS_selfAvailability & inOperand3,
+                                                const GALGAS_string & inOperand4) :
 mProperty_mSemanticContext (inOperand0),
 mProperty_mPredefinedTypes (inOperand1),
-mProperty_nonMutableSelfType (inOperand2),
-mProperty_mSelfObjectCppName (inOperand3),
-mProperty_mutableSelfType (inOperand4),
-mProperty_selfAvailability (inOperand5),
-mProperty_mSelfObjectCppPrefixForAccessingProperty (inOperand6) {
+mProperty_mSelfObjectCppName (inOperand2),
+mProperty_selfType (inOperand3),
+mProperty_mSelfObjectCppPrefixForAccessingProperty (inOperand4) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_analysisContext GALGAS_analysisContext::constructor_new (const GALGAS_semanticContext & inOperand0,
                                                                 const GALGAS_predefinedTypes & inOperand1,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand2,
-                                                                const GALGAS_string & inOperand3,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand4,
-                                                                const GALGAS_selfAvailability & inOperand5,
-                                                                const GALGAS_string & inOperand6 
+                                                                const GALGAS_string & inOperand2,
+                                                                const GALGAS_selfAvailability & inOperand3,
+                                                                const GALGAS_string & inOperand4 
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_analysisContext result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid ()) {
-    result = GALGAS_analysisContext (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6) ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
+    result = GALGAS_analysisContext (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4) ;
   }
   return result ;
 }
@@ -12558,16 +12550,10 @@ typeComparisonResult GALGAS_analysisContext::objectCompare (const GALGAS_analysi
     result = mProperty_mPredefinedTypes.objectCompare (inOperand.mProperty_mPredefinedTypes) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_nonMutableSelfType.objectCompare (inOperand.mProperty_nonMutableSelfType) ;
-  }
-  if (result == kOperandEqual) {
     result = mProperty_mSelfObjectCppName.objectCompare (inOperand.mProperty_mSelfObjectCppName) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mutableSelfType.objectCompare (inOperand.mProperty_mutableSelfType) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_selfAvailability.objectCompare (inOperand.mProperty_selfAvailability) ;
+    result = mProperty_selfType.objectCompare (inOperand.mProperty_selfType) ;
   }
   if (result == kOperandEqual) {
     result = mProperty_mSelfObjectCppPrefixForAccessingProperty.objectCompare (inOperand.mProperty_mSelfObjectCppPrefixForAccessingProperty) ;
@@ -12578,7 +12564,7 @@ typeComparisonResult GALGAS_analysisContext::objectCompare (const GALGAS_analysi
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_analysisContext::isValid (void) const {
-  return mProperty_mSemanticContext.isValid () && mProperty_mPredefinedTypes.isValid () && mProperty_nonMutableSelfType.isValid () && mProperty_mSelfObjectCppName.isValid () && mProperty_mutableSelfType.isValid () && mProperty_selfAvailability.isValid () && mProperty_mSelfObjectCppPrefixForAccessingProperty.isValid () ;
+  return mProperty_mSemanticContext.isValid () && mProperty_mPredefinedTypes.isValid () && mProperty_mSelfObjectCppName.isValid () && mProperty_selfType.isValid () && mProperty_mSelfObjectCppPrefixForAccessingProperty.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12586,10 +12572,8 @@ bool GALGAS_analysisContext::isValid (void) const {
 void GALGAS_analysisContext::drop (void) {
   mProperty_mSemanticContext.drop () ;
   mProperty_mPredefinedTypes.drop () ;
-  mProperty_nonMutableSelfType.drop () ;
   mProperty_mSelfObjectCppName.drop () ;
-  mProperty_mutableSelfType.drop () ;
-  mProperty_selfAvailability.drop () ;
+  mProperty_selfType.drop () ;
   mProperty_mSelfObjectCppPrefixForAccessingProperty.drop () ;
 }
 
@@ -12605,13 +12589,9 @@ void GALGAS_analysisContext::description (C_String & ioString,
     ioString << ", " ;
     mProperty_mPredefinedTypes.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_nonMutableSelfType.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
     mProperty_mSelfObjectCppName.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_mutableSelfType.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_selfAvailability.description (ioString, inIndentation+1) ;
+    mProperty_selfType.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mSelfObjectCppPrefixForAccessingProperty.description (ioString, inIndentation+1) ;
   }
@@ -12632,26 +12612,14 @@ GALGAS_predefinedTypes GALGAS_analysisContext::getter_mPredefinedTypes (UNUSED_L
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_analysisContext::getter_nonMutableSelfType (UNUSED_LOCATION_ARGS) const {
-  return mProperty_nonMutableSelfType ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_string GALGAS_analysisContext::getter_mSelfObjectCppName (UNUSED_LOCATION_ARGS) const {
   return mProperty_mSelfObjectCppName ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_analysisContext::getter_mutableSelfType (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mutableSelfType ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_selfAvailability GALGAS_analysisContext::getter_selfAvailability (UNUSED_LOCATION_ARGS) const {
-  return mProperty_selfAvailability ;
+GALGAS_selfAvailability GALGAS_analysisContext::getter_selfType (UNUSED_LOCATION_ARGS) const {
+  return mProperty_selfType ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

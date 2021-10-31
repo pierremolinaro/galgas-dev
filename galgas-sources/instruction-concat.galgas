@@ -195,14 +195,11 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if [inAnalysisContext.nonMutableSelfType isNull] then
-      error self.mReceiverName: "'self' cannot be used in this context"
-      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    elsif [inAnalysisContext.mutableSelfType isNull] then
-      error self.mReceiverName: "'self' object is not mutable"
-      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    else
-      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
+    if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: let mutableProperties] then
+      if not selfIsMutable then
+        error self.mInstructionLocation : "'self' not mutable in this context"
+      end
+      let propertyMap = [selfType mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
@@ -210,7 +207,31 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
+      if not mutableProperties then
+        error self.mReceiverName : "the property is not mutable in this context"
+      end
+    else
+      error self.mInstructionLocation : "'self' not available in this context"
+      : targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
     end
+
+
+#    if [inAnalysisContext.nonMutableSelfType isNull] then
+#      error self.mReceiverName: "'self' cannot be used in this context"
+#      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+#    elsif [inAnalysisContext.mutableSelfType isNull] then
+#      error self.mReceiverName: "'self' object is not mutable"
+#      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+#    else
+#      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
+#      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
+#      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
+#      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+#        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+#      if isConstant then
+#        error self.mReceiverName : "a constant property cannot be modified"
+#      end
+#    end
   else
     [!?ioVariableMap searchForReadWriteAccess
       !self.mReceiverName
@@ -219,13 +240,6 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
       ?nameForCheckingFormalParameterUsing
     ]
   end
-#--- Check target variable
-#  [!?ioVariableMap searchForReadWriteAccess
-#    !self.mReceiverName 
-#    ?@unifiedTypeMap-entry targetType
-#    ?@string targetVariableCppName
-#    ?@string nameForCheckingFormalParameterUsing
-#  ]
   for (mValue) in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
@@ -245,7 +259,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    ! targetType
+    !inferenceType:  targetType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
@@ -278,14 +292,11 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if [inAnalysisContext.nonMutableSelfType isNull] then
-      error self.mReceiverName: "'self' cannot be used in this context"
-      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    elsif [inAnalysisContext.mutableSelfType isNull] then
-      error self.mReceiverName: "'self' object is not mutable"
-      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    else
-      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
+    if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: let mutableProperties] then
+      if not selfIsMutable then
+        error self.mInstructionLocation : "'self' not mutable in this context"
+      end
+      let propertyMap = [selfType mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
@@ -293,7 +304,32 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
+      if not mutableProperties then
+        error self.mReceiverName : "the property is not mutable in this context"
+      end
+    else
+      error self.mInstructionLocation : "'self' not available in this context"
+      : targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
     end
+
+
+
+#    if [inAnalysisContext.nonMutableSelfType isNull] then
+#      error self.mReceiverName: "'self' cannot be used in this context"
+#      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+#    elsif [inAnalysisContext.mutableSelfType isNull] then
+#      error self.mReceiverName: "'self' object is not mutable"
+#      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+#    else
+#      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
+#      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
+#      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
+#      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+#        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+#      if isConstant then
+#        error self.mReceiverName : "a constant property cannot be modified"
+#      end
+#    end
   else
     [!?ioVariableMap searchForReadWriteAccess
       !self.mReceiverName
@@ -302,13 +338,6 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
       ?nameForCheckingFormalParameterUsing
     ]
   end
-#--- Check target variable
-#  [!?ioVariableMap searchForReadWriteAccess
-#    !self.mReceiverName 
-#    ?@unifiedTypeMap-entry targetType
-#    ?@string targetVariableCppName
-#    ?@string nameForCheckingFormalParameterUsing
-#  ]
   for (mValue) in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
@@ -328,7 +357,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
   [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    ! targetType
+    !inferenceType:  targetType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
@@ -361,14 +390,11 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if [inAnalysisContext.nonMutableSelfType isNull] then
-      error self.mReceiverName: "'self' cannot be used in this context"
-      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    elsif [inAnalysisContext.mutableSelfType isNull] then
-      error self.mReceiverName: "'self' object is not mutable"
-      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    else
-      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
+    if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: let mutableProperties] then
+      if not selfIsMutable then
+        error self.mInstructionLocation : "'self' not mutable in this context"
+      end
+      let propertyMap = [selfType mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
@@ -376,7 +402,31 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
+      if not mutableProperties then
+        error self.mReceiverName : "the property is not mutable in this context"
+      end
+    else
+      error self.mInstructionLocation : "'self' not available in this context"
+      : targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
     end
+
+
+#    if [inAnalysisContext.nonMutableSelfType isNull] then
+#      error self.mReceiverName: "'self' cannot be used in this context"
+#      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+#    elsif [inAnalysisContext.mutableSelfType isNull] then
+#      error self.mReceiverName: "'self' object is not mutable"
+#      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+#    else
+#      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
+#      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
+#      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
+#      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+#        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+#      if isConstant then
+#        error self.mReceiverName : "a constant property cannot be modified"
+#      end
+#    end
   else
     [!?ioVariableMap searchForReadWriteAccess
       !self.mReceiverName
@@ -411,7 +461,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
   [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    ! targetType
+    !inferenceType:  targetType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
@@ -444,14 +494,11 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if [inAnalysisContext.nonMutableSelfType isNull] then
-      error self.mReceiverName: "'self' cannot be used in this context"
-      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    elsif [inAnalysisContext.mutableSelfType isNull] then
-      error self.mReceiverName: "'self' object is not mutable"
-      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    else
-      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
+    if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: let mutableProperties] then
+      if not selfIsMutable then
+        error self.mInstructionLocation : "'self' not mutable in this context"
+      end
+      let propertyMap = [selfType mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
@@ -459,7 +506,32 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
+      if not mutableProperties then
+        error self.mReceiverName : "the property is not mutable in this context"
+      end
+    else
+      error self.mInstructionLocation : "'self' not available in this context"
+      : targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
     end
+
+
+
+#    if [inAnalysisContext.nonMutableSelfType isNull] then
+#      error self.mReceiverName: "'self' cannot be used in this context"
+#      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+#    elsif [inAnalysisContext.mutableSelfType isNull] then
+#      error self.mReceiverName: "'self' object is not mutable"
+#      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+#    else
+#      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
+#      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
+#      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
+#      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+#        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+#      if isConstant then
+#        error self.mReceiverName : "a constant property cannot be modified"
+#      end
+#    end
   else
     [!?ioVariableMap searchForReadWriteAccess
       !self.mReceiverName
@@ -488,7 +560,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
   [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    ! targetType
+    !inferenceType:  targetType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
@@ -521,14 +593,11 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if [inAnalysisContext.nonMutableSelfType isNull] then
-      error self.mReceiverName: "'self' cannot be used in this context"
-      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    elsif [inAnalysisContext.mutableSelfType isNull] then
-      error self.mReceiverName: "'self' object is not mutable"
-      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    else
-      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
+    if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: let mutableProperties] then
+      if not selfIsMutable then
+        error self.mInstructionLocation : "'self' not mutable in this context"
+      end
+      let propertyMap = [selfType mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
@@ -536,7 +605,31 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
+      if not mutableProperties then
+        error self.mReceiverName : "the property cannot be mutated in this context"
+      end
+    else
+      error self.mInstructionLocation : "'self' not available in this context"
+      : targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
     end
+
+
+#    if [inAnalysisContext.nonMutableSelfType isNull] then
+#      error self.mReceiverName: "'self' cannot be used in this context"
+#      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+#    elsif [inAnalysisContext.mutableSelfType isNull] then
+#      error self.mReceiverName: "'self' object is not mutable"
+#      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+#    else
+#      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
+#      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
+#      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
+#      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+#        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+#      if isConstant then
+#        error self.mReceiverName : "a constant property cannot be modified"
+#      end
+#    end
   else
     [!?ioVariableMap searchForReadWriteAccess
       !self.mReceiverName
@@ -573,7 +666,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
-        !mFormalArgumentType
+        !inferenceType: mFormalArgumentType
         !inAnalysisContext
         !?ioVariableMap
         ?@semanticExpressionForGeneration expression

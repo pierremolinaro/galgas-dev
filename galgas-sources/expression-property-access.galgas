@@ -5,7 +5,7 @@
 refclass @structPropertyAccessExpressionAST : @semanticExpressionAST {
   public var @location mOperatorLocation
   public var @semanticExpressionAST mExpression
-  public var @lstring mStructFieldName
+  public var @lstring mPropertyName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -44,7 +44,7 @@ override method @structPropertyAccessExpressionAST enterExpressionInSemanticCont
 override method @structPropertyAccessExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-entry unused inType
+  ?inferenceType: let @unifiedTypeMap-entry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
@@ -52,7 +52,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
   [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration expression
@@ -60,23 +60,35 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
 #--- Check field access availability
   let @unifiedTypeMap-entry expressionType = expression.mResultType
   if (not [[expressionType mTypeKindEnum] isStructType]) & (not [[expressionType mTypeKindEnum] isClassType]) then
-    error self.mStructFieldName: "the '.' operator requires the receiver to be a struct or a class"
+    error self.mPropertyName: "the '.' operator requires the receiver to be a struct or a class"
   end
   let propertyMap = [expressionType mPropertyMap]
-  [propertyMap searchKey !self.mStructFieldName ?let isPublic ?* ?let type]
+  [propertyMap searchKey !self.mPropertyName ?let isPublic ?* ?let type]
+#  if not isPublic then
+#    error self.mPropertyName : "inaccessible property (due to its 'private' qualifier)zzzz"
+#  end
+
   if isPublic then
     # Ok
-  elsif [inAnalysisContext.nonMutableSelfType isNull] then
-    error self.mStructFieldName : "inaccessible property (due to its 'private' qualifier)"
-  elsif expressionType != inAnalysisContext.nonMutableSelfType then
-    error self.mStructFieldName : "inaccessible property (due to its 'private' qualifier)"
+  elsif let [inAnalysisContext.selfType available ?type: let selfType ?2*], expressionType != selfType then
+#  elsif [inAnalysisContext.nonMutableSelfType isNull] then
+#    error self.mPropertyName : "inaccessible property (due to its 'private' qualifier)"
+#  elsif expressionType != inAnalysisContext.nonMutableSelfType then
+    error self.mPropertyName : "inaccessible property (due to its 'private' qualifier)"
   end
+#  if isPublic then
+#    # Ok
+#  elsif [inAnalysisContext.nonMutableSelfType isNull] then
+#    error self.mStructFieldName : "inaccessible property (due to its 'private' qualifier)"
+#  elsif expressionType != inAnalysisContext.nonMutableSelfType then
+#    error self.mStructFieldName : "inaccessible property (due to its 'private' qualifier)"
+#  end
 #--- Generate expression
   outExpression = @structPropertyAccessExpressionForGeneration.new {
     !type
     !self.mOperatorLocation
     !expression
-    !self.mStructFieldName.string
+    !self.mPropertyName.string
   }
 }
 

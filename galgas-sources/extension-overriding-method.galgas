@@ -46,9 +46,8 @@ syntax extension galgas3DeclarationsSyntax {
 #   KEY REPRESENTATION                      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @overridingExtensionMethodAST keyRepresentation
-  ->@string outString {
-  outString = "overriding extension method @" + self.mTypeName + " " + self.mOverridingExtensionMethodName
+override getter @overridingExtensionMethodAST keyRepresentation -> @string {
+  result = "overriding extension method @" + self.mTypeName + " " + self.mOverridingExtensionMethodName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -123,10 +122,8 @@ override method @overridingExtensionMethodAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !nonMutableSelfType: selfType
     !"object"
-    !mutableSelfType: @unifiedTypeMap-entry.null
-    !selfAvailability: .none
+    !selfType: .available {!type: selfType !mutable: false !mutableproperties: true}
     !"object->"
   }
   var isRefClass = false

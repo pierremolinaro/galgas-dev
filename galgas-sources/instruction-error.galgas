@@ -164,7 +164,7 @@ proc analyzeErrorOrWarningInstruction
   [inLocationExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inAnalysisContext.mPredefinedTypes.mLocationType
+    !inferenceType: inAnalysisContext.mPredefinedTypes.mLocationType
     !inAnalysisContext
     !?ioVariableMap
     ?outLocationExpression
@@ -217,7 +217,7 @@ proc analyzeErrorOrWarningInstruction
   [inMessageExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !.null
+    !inferenceType: .null
     !inAnalysisContext
     !?ioVariableMap
     ?outMessageExpression
@@ -232,7 +232,7 @@ proc analyzeErrorOrWarningInstruction
       [exp analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
-        !inAnalysisContext.mPredefinedTypes.mStringListType
+        !inferenceType: inAnalysisContext.mPredefinedTypes.mStringListType
         !inAnalysisContext
         !?ioVariableMap
         ?let expression
@@ -249,7 +249,7 @@ proc analyzeErrorOrWarningInstruction
       [exp analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
-        !inAnalysisContext.mPredefinedTypes.mStringListType
+        !inferenceType: inAnalysisContext.mPredefinedTypes.mStringListType
         !inAnalysisContext
         !?ioVariableMap
         ?let expression
@@ -266,7 +266,7 @@ proc analyzeErrorOrWarningInstruction
       [exp analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
-        !inAnalysisContext.mPredefinedTypes.mStringListType
+        !inferenceType: inAnalysisContext.mPredefinedTypes.mStringListType
         !inAnalysisContext
         !?ioVariableMap
         ?let expression

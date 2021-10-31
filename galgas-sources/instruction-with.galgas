@@ -221,7 +221,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   [self.mReceiverExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration receiverExpression
@@ -242,7 +242,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   [self.mKeyExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration keyExpression
@@ -329,7 +329,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   [self.mKeyExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration keyExpression
@@ -350,21 +350,37 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   var @unifiedTypeMap-entry targetType
   var @string receiverVariableCppName
   if self.mReceiverIsPrefixedBySelf then
-    if [inAnalysisContext.nonMutableSelfType isNull] then
-      error self.mReceiverName: "'self' cannot be used in this context"
-      : targetType, receiverVariableCppName
-    elsif [inAnalysisContext.mutableSelfType isNull] then
-      error self.mReceiverName: "'self' object is not mutable"
-      : targetType, receiverVariableCppName
-    else
-      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
+    if let [inAnalysisContext.selfType available
+      ?type:  let selfType
+      ?mutable: *
+      ?mutableproperties: let propertiesAreMutable] then
+      let propertyMap = [selfType mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       if isConstant then
         error self.mReceiverName: "a constant property cannot be modified"
+      elsif not propertiesAreMutable then
+        error self.mReceiverName: "the property cannot be modified in this context"
       end
       receiverVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+    else
+      error self.mReceiverName: "'self' cannot be used in this context" : targetType, receiverVariableCppName
     end
+#    if [inAnalysisContext.nonMutableSelfType isNull] then
+#      error self.mReceiverName: "'self' cannot be used in this context"
+#      : targetType, receiverVariableCppName
+#    elsif [inAnalysisContext.mutableSelfType isNull] then
+#      error self.mReceiverName: "'self' object is not mutable"
+#      : targetType, receiverVariableCppName
+#    else
+#      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
+#      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
+#      if isConstant then
+#        error self.mReceiverName: "a constant property cannot be modified"
+#      end
+#      receiverVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+#       + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+#    end
   else
     [!?ioVariableMap searchForReadWriteAccess
       !self.mReceiverName

@@ -474,9 +474,6 @@ static const char * gSyntaxErrorMessage_galgasTemplateScanner__2D__3E_ = "the '-
 //--- Syntax error message for terminal '$==$' :
 static const char * gSyntaxErrorMessage_galgasTemplateScanner__3D__3D_ = "the '==' delimitor" ;
 
-//--- Syntax error message for terminal '$??$' :
-static const char * gSyntaxErrorMessage_galgasTemplateScanner__3F__3F_ = "the '\?\?' delimitor" ;
-
 //--- Syntax error message for terminal '$:=$' :
 static const char * gSyntaxErrorMessage_galgasTemplateScanner__3A__3D_ = "the ':=' delimitor" ;
 
@@ -540,8 +537,8 @@ static const char * gSyntaxErrorMessage_galgasTemplateScanner__26__2F_ = "the '&
 
 C_String C_Lexique_galgasTemplateScanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
   C_String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 147)) {
-    static const char * syntaxErrorMessageArray [147] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 146)) {
+    static const char * syntaxErrorMessageArray [146] = {kEndOfSourceLexicalErrorMessage,
         gSyntaxErrorMessage_galgasTemplateScanner_identifier,
         gSyntaxErrorMessage_galgasTemplateScanner__40_type,
         gSyntaxErrorMessage_galgasTemplateScanner_double_2E_xxx,
@@ -668,7 +665,6 @@ C_String C_Lexique_galgasTemplateScanner::getMessageForTerminal (const int16_t i
         gSyntaxErrorMessage_galgasTemplateScanner__29_,
         gSyntaxErrorMessage_galgasTemplateScanner__2D__3E_,
         gSyntaxErrorMessage_galgasTemplateScanner__3D__3D_,
-        gSyntaxErrorMessage_galgasTemplateScanner__3F__3F_,
         gSyntaxErrorMessage_galgasTemplateScanner__3A__3D_,
         gSyntaxErrorMessage_galgasTemplateScanner__2B__2B_,
         gSyntaxErrorMessage_galgasTemplateScanner__5B_,
@@ -907,13 +903,6 @@ static const utf32 kUnicodeString_galgasTemplateScanner__3E__3D_ [] = {
 static const utf32 kUnicodeString_galgasTemplateScanner__3E__3E_ [] = {
   TO_UNICODE ('>'),
   TO_UNICODE ('>'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_3F__3F_$'
-static const utf32 kUnicodeString_galgasTemplateScanner__3F__3F_ [] = {
-  TO_UNICODE ('\?'),
-  TO_UNICODE ('\?'),
   TO_UNICODE (0)
 } ;
 
@@ -1913,7 +1902,7 @@ static const utf32 kUnicodeString_galgasTemplateScanner__7E_ [] = {
 //             Key words table 'galgasDelimitorsList'      
 //----------------------------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasTemplateScanner_galgasDelimitorsList = 35 ;
+static const int32_t ktable_size_galgasTemplateScanner_galgasDelimitorsList = 34 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasTemplateScanner_galgasDelimitorsList [ktable_size_galgasTemplateScanner_galgasDelimitorsList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__26_, 1, C_Lexique_galgasTemplateScanner::kToken__26_),
@@ -1947,7 +1936,6 @@ static const C_unicode_lexique_table_entry ktable_for_galgasTemplateScanner_galg
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__3D__3D_, 2, C_Lexique_galgasTemplateScanner::kToken__3D__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__3E__3D_, 2, C_Lexique_galgasTemplateScanner::kToken__3E__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__3E__3E_, 2, C_Lexique_galgasTemplateScanner::kToken__3E__3E_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__3F__3F_, 2, C_Lexique_galgasTemplateScanner::kToken__3F__3F_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__3F__5E_, 2, C_Lexique_galgasTemplateScanner::kToken__3F__5E_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__26__2B__2B_, 3, C_Lexique_galgasTemplateScanner::kToken__26__2B__2B_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__26__2D__2D_, 3, C_Lexique_galgasTemplateScanner::kToken__26__2D__2D_)
@@ -2734,11 +2722,6 @@ C_String C_Lexique_galgasTemplateScanner::getCurrentTokenString (const cToken * 
       s.appendCString ("==") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
-    case kToken__3F__3F_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("\?\?") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
     case kToken__3A__3D_:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString (":=") ;
@@ -2863,7 +2846,7 @@ static const cTemplateDelimiter galgasTemplateScanner_kTemplateReplacementArray 
 //            Terminal Symbols as end of script in template mark                                 
 //----------------------------------------------------------------------------------------------------------------------
 
-static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [146] = {
+static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [145] = {
   false /* identifier */,
   false /* @type */,
   false /* double.xxx */,
@@ -2990,7 +2973,6 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [146] = {
   false /* ) */,
   false /* -> */,
   false /* == */,
-  false /* ?? */,
   false /* := */,
   false /* ++ */,
   false /* [ */,
@@ -3492,9 +3474,6 @@ bool C_Lexique_galgasTemplateScanner::parseLexicalToken (void) {
         enterToken (token) ;
       }else if (testForInputUTF32String (kUnicodeString_galgasTemplateScanner__3F__5E_, 2, true)) {
         token.mTokenCode = kToken__3F__5E_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgasTemplateScanner__3F__3F_, 2, true)) {
-        token.mTokenCode = kToken__3F__3F_ ;
         enterToken (token) ;
       }else if (testForInputUTF32String (kUnicodeString_galgasTemplateScanner__3E__3E_, 2, true)) {
         token.mTokenCode = kToken__3E__3E_ ;
@@ -4069,7 +4048,6 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string (")") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("->") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("==") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("\?\?") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string (":=") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("++") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("[") COMMA_THERE) ;
@@ -4137,7 +4115,6 @@ static void getKeywordsForIdentifier_galgasTemplateScanner (const C_String & inI
     ioList.appendObject ("==") ;
     ioList.appendObject (">=") ;
     ioList.appendObject (">>") ;
-    ioList.appendObject ("\?\?") ;
     ioList.appendObject ("\?^") ;
     ioList.appendObject ("&++") ;
     ioList.appendObject ("&--") ;
@@ -4249,7 +4226,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasTemplateScanner, getKeywordsForI
 //----------------------------------------------------------------------------------------------------------------------
 
 uint32_t C_Lexique_galgasTemplateScanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [147] = {0,
+  static const uint32_t kTerminalSymbolStyles [146] = {0,
     0 /* galgasTemplateScanner_1_identifier */,
     10 /* galgasTemplateScanner_1__40_type */,
     7 /* galgasTemplateScanner_1_double_2E_xxx */,
@@ -4376,7 +4353,6 @@ uint32_t C_Lexique_galgasTemplateScanner::styleIndexForTerminal (const int32_t i
     2 /* galgasTemplateScanner_1__29_ */,
     2 /* galgasTemplateScanner_1__2D__3E_ */,
     2 /* galgasTemplateScanner_1__3D__3D_ */,
-    2 /* galgasTemplateScanner_1__3F__3F_ */,
     2 /* galgasTemplateScanner_1__3A__3D_ */,
     2 /* galgasTemplateScanner_1__2B__2B_ */,
     2 /* galgasTemplateScanner_1__5B_ */,

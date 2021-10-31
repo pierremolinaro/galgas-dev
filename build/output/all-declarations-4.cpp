@@ -10689,7 +10689,7 @@ GALGAS_string extensionGetter_string (const GALGAS_formalArgumentPassingModeAST 
     break ;
   case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn:
     {
-      result_result = GALGAS_string ("\?\?") ;
+      result_result = GALGAS_string ("\?let") ;
     }
     break ;
   case GALGAS_formalArgumentPassingModeAST::kEnum_argumentIn:
@@ -10731,7 +10731,7 @@ GALGAS_string extensionGetter_formalArgumentMessage (const GALGAS_formalArgument
     break ;
   case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn:
     {
-      result_result = GALGAS_string ("a constant input (\?\?) formal argument") ;
+      result_result = GALGAS_string ("a constant input (\?let) formal argument") ;
     }
     break ;
   case GALGAS_formalArgumentPassingModeAST::kEnum_argumentIn:
@@ -10747,48 +10747,6 @@ GALGAS_string extensionGetter_formalArgumentMessage (const GALGAS_formalArgument
   case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut:
     {
       result_result = GALGAS_string ("an input/output (\?!) formal argument") ;
-    }
-    break ;
-  }
-//---
-  return result_result ;
-}
-
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@formalArgumentPassingModeAST formalArgumentString'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string extensionGetter_formalArgumentString (const GALGAS_formalArgumentPassingModeAST & inObject,
-                                                    C_Compiler * /* inCompiler */
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_result ; // Returned variable
-  const GALGAS_formalArgumentPassingModeAST temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GALGAS_formalArgumentPassingModeAST::kNotBuilt:
-    break ;
-  case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn:
-    {
-      result_result = GALGAS_string ("'\?\?'") ;
-    }
-    break ;
-  case GALGAS_formalArgumentPassingModeAST::kEnum_argumentIn:
-    {
-      result_result = GALGAS_string ("'\?'") ;
-    }
-    break ;
-  case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut:
-    {
-      result_result = GALGAS_string ("'!'") ;
-    }
-    break ;
-  case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut:
-    {
-      result_result = GALGAS_string ("'\?!'") ;
     }
     break ;
   }

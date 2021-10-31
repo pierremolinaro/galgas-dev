@@ -56,11 +56,11 @@ proc checkLabelMap
       for (* mFormalArgumentPassingMode mFormalArgumentTypeName * *) in mFormalArgumentList, (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in formalParametersList do
         if mFormalArgumentPassingModeForGrammarAnalysis != mFormalArgumentPassingMode then
           error mGalgasTypeNameForGrammarAnalysis :
-            " this formal parameter is declared with "
-          + [mFormalArgumentPassingModeForGrammarAnalysis formalArgumentString]
-          + " passing mode, but declaration at "
+            " this formal parameter is declared with '"
+          + mFormalArgumentPassingModeForGrammarAnalysis
+          + "' passing mode, but declaration at "
           + [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey !mLabelName.string] locationString]
-          + " is declared with " + [mFormalArgumentPassingMode formalArgumentString] + " passing mode"
+          + " is declared with '" + mFormalArgumentPassingMode + "' passing mode"
         end
         if mGalgasTypeNameForGrammarAnalysis.string != mFormalArgumentTypeName.string then
           error mGalgasTypeNameForGrammarAnalysis :

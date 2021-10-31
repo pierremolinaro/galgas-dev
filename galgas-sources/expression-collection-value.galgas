@@ -100,7 +100,7 @@ override method @collectionValueAST enterExpressionInSemanticContext ?!@unifiedT
 override method @collectionValueAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-entry inType
+  ?inferenceType: let @unifiedTypeMap-entry inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -186,7 +186,7 @@ override method @expressionCollectionValue analyze
   [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inElementType
+    !inferenceType: inElementType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
@@ -218,7 +218,7 @@ override method @expressionListCollectionValue analyze
       [expression.mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
-        !mFormalArgumentType
+        !inferenceType: mFormalArgumentType
         !inAnalysisContext
         !?ioVariableMap
         ?@semanticExpressionForGeneration exp

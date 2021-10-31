@@ -97,7 +97,7 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
         var lineIndex = 0
         var found = false
         while (lineIndex < lines.count) && !found {
-          found = lines [lineIndex].hasPrefix ("semantic error #1: old style collection initializer call (due to '--error-old-syle-collection-initializer' option)")
+          found = lines [lineIndex].hasPrefix ("semantic error #1: the selector should be '")
           lineIndex += 1
         }
         loop = found
@@ -124,11 +124,13 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
           print ("  Préfixe '\(préfixe)'")
           var suffixe = ligneConcernée
           suffixe.removeFirst (dernierCaractère + 1)
+          while (suffixe.first == " ") {
+            suffixe.removeFirst (1)
+          }
           print ("  Suffixe '\(suffixe)'")
-          var chaîneRemplacement = lineFixIt
-          chaîneRemplacement.removeFirst (22) // "Fix-it, replace with " suivi de ZeroWidthSpace
+          let chaîneRemplacement = lineFixIt.components (separatedBy: "\u{200B}") [1]
           print ("  Remplacement '\(chaîneRemplacement)'")
-          let ligneModifiée = préfixe + chaîneRemplacement + suffixe
+          let ligneModifiée = préfixe + chaîneRemplacement + " " + suffixe
           print ("  ligne modifiée '\(ligneModifiée)'")
           lignesDuFichier [ligne - 1] = ligneModifiée
           let newContents = lignesDuFichier.joined (separator: "\n")

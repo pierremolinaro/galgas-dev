@@ -151,7 +151,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
   [self.mSwitchExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
     ?switchExpression

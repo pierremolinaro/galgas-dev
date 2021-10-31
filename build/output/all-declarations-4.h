@@ -5825,16 +5825,6 @@ class GALGAS_string extensionGetter_formalArgumentMessage (const class GALGAS_fo
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension getter '@formalArgumentPassingModeAST formalArgumentString' (as function)
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_string extensionGetter_formalArgumentString (const class GALGAS_formalArgumentPassingModeAST & inObject,
-                                                          class C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 // Phase 1: @actualParameterAST reference class
 //
 //----------------------------------------------------------------------------------------------------------------------

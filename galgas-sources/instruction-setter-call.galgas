@@ -131,14 +131,14 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
   var @string targetVariableCppName
   var @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if [inAnalysisContext.nonMutableSelfType isNull] then
-      error self.mReceiverName: "'self' cannot be used in this context"
-      : receiverType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    elsif [inAnalysisContext.mutableSelfType isNull] then
-      error self.mReceiverName: "'self' object is not mutable"
-      : receiverType, nameForCheckingFormalParameterUsing, targetVariableCppName
-    else
-      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
+    if let [inAnalysisContext.selfType available
+        ?type: let selfType
+        ?mutable: let selfIsMutable
+        ?mutableproperties: *] then
+      if not selfIsMutable then
+        error self.mSetterName : "'self' not mutable in this context"
+      end
+      let propertyMap = [selfType mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?receiverType]
       if isConstant then
         error self.mReceiverName: "a constant property cannot be modified"
@@ -146,7 +146,28 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
         + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+    else
+      error self.mSetterName
+      : "'self' not available in this context"
+      : receiverType, targetVariableCppName, nameForCheckingFormalParameterUsing
     end
+
+#    if [inAnalysisContext.nonMutableSelfType isNull] then
+#      error self.mReceiverName: "'self' cannot be used in this context"
+#      : receiverType, nameForCheckingFormalParameterUsing, targetVariableCppName
+#    elsif [inAnalysisContext.mutableSelfType isNull] then
+#      error self.mReceiverName: "'self' object is not mutable"
+#      : receiverType, nameForCheckingFormalParameterUsing, targetVariableCppName
+#    else
+#      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
+#      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?receiverType]
+#      if isConstant then
+#        error self.mReceiverName: "a constant property cannot be modified"
+#      end
+#      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
+#      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+#        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+#    end
   else
     [!?ioVariableMap searchForReadWriteAccess
        !self.mReceiverName
@@ -248,40 +269,43 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-  var @unifiedTypeMap-entry selfTypeEntry
-  var @string selfObjectCppName
-  if [inAnalysisContext.mutableSelfType isNull] then
-    error self.mSetterName: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
+  if let [inAnalysisContext.selfType available
+      ?type: let selfType
+      ?mutable: let selfIsMutable
+      ?mutableproperties: *] then
+    if not selfIsMutable then
+      error self.mSetterName : "'self' not mutable in this context"
+    end
+  #--- Get setter signature
+    var @formalParameterSignature routineSignature
+    var @bool hasCompilerArgument
+    var @methodKind kind
+    [[selfType mSetterMap] searchKey !self.mSetterName ?kind ?routineSignature ?hasCompilerArgument ?* ?*]
+  #--- Check effective parameters
+    analyzeRoutineArguments (
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      !inAnalysisContext
+      !self.mSetterName
+      !"'" + self.mSetterName + "' setter header"
+      !routineSignature
+      !self.mActualParameterList
+      !?ioVariableMap
+      !?ioInstructionListForGeneration
+      ?let @actualParameterListForGeneration actualParameterListForGeneration
+    )
+  #--- Generate instructions
+    ioInstructionListForGeneration += !@selfSetterCallInstructionForGeneration.new {
+      !inAnalysisContext.mSelfObjectCppName
+      !selfType
+      !self.mSetterName
+      !kind
+      !actualParameterListForGeneration
+      !hasCompilerArgument
+    }
   else
-    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-    selfTypeEntry = inAnalysisContext.mutableSelfType
+    error self.mSetterName : "'self' not available in this context"
   end
-#--- Get setter signature
-  var @formalParameterSignature routineSignature
-  var @bool hasCompilerArgument
-  var @methodKind kind
-  [[selfTypeEntry mSetterMap] searchKey !self.mSetterName ?kind ?routineSignature ?hasCompilerArgument ?* ?*]
-#--- Check effective parameters
-  analyzeRoutineArguments (
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !self.mSetterName
-    !"'" + self.mSetterName + "' setter header"
-    !routineSignature
-    !self.mActualParameterList
-    !?ioVariableMap
-    !?ioInstructionListForGeneration
-    ?let @actualParameterListForGeneration actualParameterListForGeneration
-  )
-#--- Generate instructions
-  ioInstructionListForGeneration += !@selfSetterCallInstructionForGeneration.new {
-    !selfObjectCppName
-    !selfTypeEntry
-    !self.mSetterName
-    !kind
-    !actualParameterListForGeneration
-    !hasCompilerArgument}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
