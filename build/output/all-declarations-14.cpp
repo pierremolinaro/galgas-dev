@@ -7168,7 +7168,7 @@ typeComparisonResult cPtr_weakReferenceTypeForGeneration::dynamicObjectCompare (
     result = mProperty_mSelfTypeEntry.objectCompare (p->mProperty_mSelfTypeEntry) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mClassTypeName.objectCompare (p->mProperty_mClassTypeName) ;
+    result = mProperty_mReferenceClassType.objectCompare (p->mProperty_mReferenceClassType) ;
   }
   if (kOperandEqual == result) {
     result = mProperty_mSuperClass.objectCompare (p->mProperty_mSuperClass) ;
@@ -7214,7 +7214,7 @@ GALGAS_semanticTypeForGeneration () {
 
 GALGAS_weakReferenceTypeForGeneration GALGAS_weakReferenceTypeForGeneration::constructor_default (LOCATION_ARGS) {
   return GALGAS_weakReferenceTypeForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE),
-                                                                 GALGAS_string::constructor_default (HERE),
+                                                                 GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE),
                                                                  GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE),
                                                                  GALGAS_typedPropertyList::constructor_emptyList (HERE),
                                                                  GALGAS_typedPropertyList::constructor_emptyList (HERE),
@@ -7231,27 +7231,27 @@ GALGAS_semanticTypeForGeneration (inSourcePtr) {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_weakReferenceTypeForGeneration GALGAS_weakReferenceTypeForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mSelfTypeEntry,
-                                                                                              const GALGAS_string & inAttribute_mClassTypeName,
+                                                                                              const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mReferenceClassType,
                                                                                               const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mSuperClass,
                                                                                               const GALGAS_typedPropertyList & inAttribute_mAllTypedPropertyList,
                                                                                               const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
                                                                                               const GALGAS_bool & inAttribute_mGenerateHeaderInSeparateFile
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_weakReferenceTypeForGeneration result ;
-  if (inAttribute_mSelfTypeEntry.isValid () && inAttribute_mClassTypeName.isValid () && inAttribute_mSuperClass.isValid () && inAttribute_mAllTypedPropertyList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mGenerateHeaderInSeparateFile.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_weakReferenceTypeForGeneration (inAttribute_mSelfTypeEntry, inAttribute_mClassTypeName, inAttribute_mSuperClass, inAttribute_mAllTypedPropertyList, inAttribute_mTypedAttributeList, inAttribute_mGenerateHeaderInSeparateFile COMMA_THERE)) ;
+  if (inAttribute_mSelfTypeEntry.isValid () && inAttribute_mReferenceClassType.isValid () && inAttribute_mSuperClass.isValid () && inAttribute_mAllTypedPropertyList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mGenerateHeaderInSeparateFile.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_weakReferenceTypeForGeneration (inAttribute_mSelfTypeEntry, inAttribute_mReferenceClassType, inAttribute_mSuperClass, inAttribute_mAllTypedPropertyList, inAttribute_mTypedAttributeList, inAttribute_mGenerateHeaderInSeparateFile COMMA_THERE)) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_weakReferenceTypeForGeneration::getter_mClassTypeName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
+GALGAS_unifiedTypeMap_2D_entry GALGAS_weakReferenceTypeForGeneration::getter_mReferenceClassType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_entry result ;
   if (NULL != mObjectPtr) {
     const cPtr_weakReferenceTypeForGeneration * p = (const cPtr_weakReferenceTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_weakReferenceTypeForGeneration) ;
-    result = p->mProperty_mClassTypeName ;
+    result = p->mProperty_mReferenceClassType ;
   }
   return result ;
 }
@@ -7306,12 +7306,12 @@ GALGAS_bool GALGAS_weakReferenceTypeForGeneration::getter_mGenerateHeaderInSepar
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_weakReferenceTypeForGeneration::setter_setMClassTypeName (GALGAS_string inValue
-                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_weakReferenceTypeForGeneration::setter_setMReferenceClassType (GALGAS_unifiedTypeMap_2D_entry inValue
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (NULL != mObjectPtr) {
     cPtr_weakReferenceTypeForGeneration * p = (cPtr_weakReferenceTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_weakReferenceTypeForGeneration) ;
-    p->mProperty_mClassTypeName = inValue ;
+    p->mProperty_mReferenceClassType = inValue ;
   }
 }
 
@@ -7364,14 +7364,14 @@ void GALGAS_weakReferenceTypeForGeneration::setter_setMGenerateHeaderInSeparateF
 //----------------------------------------------------------------------------------------------------------------------
 
 cPtr_weakReferenceTypeForGeneration::cPtr_weakReferenceTypeForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
-                                                                          const GALGAS_string & in_mClassTypeName,
+                                                                          const GALGAS_unifiedTypeMap_2D_entry & in_mReferenceClassType,
                                                                           const GALGAS_unifiedTypeMap_2D_entry & in_mSuperClass,
                                                                           const GALGAS_typedPropertyList & in_mAllTypedPropertyList,
                                                                           const GALGAS_typedPropertyList & in_mTypedAttributeList,
                                                                           const GALGAS_bool & in_mGenerateHeaderInSeparateFile
                                                                           COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
-mProperty_mClassTypeName (in_mClassTypeName),
+mProperty_mReferenceClassType (in_mReferenceClassType),
 mProperty_mSuperClass (in_mSuperClass),
 mProperty_mAllTypedPropertyList (in_mAllTypedPropertyList),
 mProperty_mTypedAttributeList (in_mTypedAttributeList),
@@ -7389,7 +7389,7 @@ void cPtr_weakReferenceTypeForGeneration::description (C_String & ioString,
   ioString << "[@weakReferenceTypeForGeneration:" ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mClassTypeName.description (ioString, inIndentation+1) ;
+  mProperty_mReferenceClassType.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mProperty_mSuperClass.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -7405,7 +7405,7 @@ void cPtr_weakReferenceTypeForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_weakReferenceTypeForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_weakReferenceTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mClassTypeName, mProperty_mSuperClass, mProperty_mAllTypedPropertyList, mProperty_mTypedAttributeList, mProperty_mGenerateHeaderInSeparateFile COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_weakReferenceTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mReferenceClassType, mProperty_mSuperClass, mProperty_mAllTypedPropertyList, mProperty_mTypedAttributeList, mProperty_mGenerateHeaderInSeparateFile COMMA_THERE)) ;
   return ptr ;
 }
 

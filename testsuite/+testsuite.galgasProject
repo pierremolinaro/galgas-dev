@@ -1,8 +1,9 @@
 project (1:0:0) -> "testsuite" {
   %makefile-macosx
   %makefile-win32-on-macosx
-#  %LatestMacOS
-#  %applicationBundleBase : "fr.what"
+  %LatestMacOS
+  %applicationBundleBase : "fr.what"
+
   "galgas-sources/testsuite_lexique.galgas"
   "galgas-sources/testsuite_syntax.galgas"
   "galgas-sources/testsuite_grammar.galgas"

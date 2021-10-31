@@ -65,15 +65,14 @@ override method @listDeclarationAST enterInSemanticContext
 {
 #--- Handle attributes
   var @typedPropertyList typedAttributeList = {}
-  for (* mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName isPublic mAttributeList) in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
-    let hasSetter = mIsPublic
     var hasSelector = false
     for (mValue) in mAttributeList do
       if mValue.string == "setter" then
-        warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
+        warning mValue : "'%setter' is obsolete and has no effect"
       elsif mValue.string == "nogetter" then
-        warning mValue : "obsolete attribute: use 'private' qualifier"
+        warning mValue : "'%nogetter' is obsolete and has no effect"
       elsif mValue.string == "selector" then
         if hasSelector then
           error mValue : "the '%selector' attribute is already named"
@@ -85,7 +84,7 @@ override method @listDeclarationAST enterInSemanticContext
         fixit { replace {!"%selector"} }
       end
     end
-    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
+    typedAttributeList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
   end
 #--- uint type index
   [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"uint" ?let uintType]

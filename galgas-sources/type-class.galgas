@@ -116,7 +116,10 @@ override method @classDeclarationAST enterDeclarationInGraph
   let key = @lstring.new {!"@" + self.mClassTypeName !self.mClassTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   if self.mSuperClassName.string != "" then
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mSuperClassName !self.mSuperClassName.location}]
+    [!?ioSemanticTypePrecedenceGraph addEdge
+      !key
+      !.new {!"@" + self.mSuperClassName !self.mSuperClassName.location}
+    ]
   end
   for (* mPropertyTypeName * * *) in self.mPropertyList do
     [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mPropertyTypeName !self.mSuperClassName.location}]
@@ -271,21 +274,20 @@ override method @classDeclarationAST enterInSemanticContext
 #--- Typed attribute list
   var @typedPropertyList currentClassTypedPropertyList = {}
   var @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
-  for (* mPropertyTypeName mPropertyName * mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName isPublic mAttributeList) in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
-    let hasSetter = true # mIsPublic
     var hasSelector = false
     for (mValue) in mAttributeList do
       if mValue.string == "setter" then
-        warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
+        warning mValue : "'%nogetter' is obsolete and has no effect"
       elsif mValue.string == "nogetter" then
-        warning mValue : "obsolete attribute: use 'private' qualifier"
+        warning mValue : "'%setter' is obsolete and has no effect"
       elsif mValue.string == "selector" then
         hasSelector = true
       end
     end
-    currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
-    allTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
+    currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
+    allTypedAttributeList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
     [!?getterMap insertKey
       !mPropertyName
       !@methodKind.definedAsMember
@@ -304,7 +306,7 @@ override method @classDeclarationAST enterInSemanticContext
         !@lstring.new {!"set"+ [mPropertyName.string stringByCapitalizingFirstCharacter] !@location.here}
         !@methodKind.definedAsMember
         !{!["" nowhere] !mPropertyTypeEntry !@formalArgumentPassingModeAST.argumentIn !mPropertyName.string}
-        !false # No compiler argument
+        !false # Compiler argument
         !@methodQualifier.isBasicFinal
         !"" # No error message
       ]
@@ -436,38 +438,23 @@ override method @classDeclarationAST semanticAnalysis
 #------ Enter attributes
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
-  for (* mPropertyTypeName mPropertyName * mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName isPublic mAttributeList) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
-    let hasSetter = true # mIsPublic
     var hasSelector = false
-    for (mValue) in mAttributeList do
-      if mValue.string == "setter" then
-        warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
-      elsif mValue.string == "nogetter" then
-        warning mValue : "obsolete attribute: use 'private' qualifier"
-      elsif mValue.string == "selector" then
-        if hasSelector then
-          error mValue : "the '%selector' attribute is already named"
-        end
-        hasSelector = true
-      else
-        error mValue
-        : "only '%selector' is allowed here"
-        fixit { replace {!"%selector"} }
-
-      end
+    for (mValue) in mAttributeList while not hasSelector do
+      hasSelector = mValue.string == "selector"
     end
     typedAttributeList +=
       !t
       !mPropertyName
-      !hasSetter
+      !isPublic
       !hasSelector
     allAttributeList +=
       !t
       !mPropertyName
-      !hasSetter
+      !isPublic
       !hasSelector
     [!?attributeMap insertKey !mPropertyName !t]
   end

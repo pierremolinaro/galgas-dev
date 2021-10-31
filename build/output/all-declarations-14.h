@@ -1608,7 +1608,7 @@ class GALGAS_weakReferenceTypeForGeneration : public GALGAS_semanticTypeForGener
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_weakReferenceTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
-                                                                              const class GALGAS_string & inOperand1,
+                                                                              const class GALGAS_unifiedTypeMap_2D_entry & inOperand1,
                                                                               const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
                                                                               const class GALGAS_typedPropertyList & inOperand3,
                                                                               const class GALGAS_typedPropertyList & inOperand4,
@@ -1622,11 +1622,11 @@ class GALGAS_weakReferenceTypeForGeneration : public GALGAS_semanticTypeForGener
   public: VIRTUAL_IN_DEBUG void setter_setMAllTypedPropertyList (class GALGAS_typedPropertyList inArgument0
                                                                  COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMClassTypeName (class GALGAS_string inArgument0
-                                                          COMMA_LOCATION_ARGS) ;
-
   public: VIRTUAL_IN_DEBUG void setter_setMGenerateHeaderInSeparateFile (class GALGAS_bool inArgument0
                                                                          COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMReferenceClassType (class GALGAS_unifiedTypeMap_2D_entry inArgument0
+                                                               COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMSuperClass (class GALGAS_unifiedTypeMap_2D_entry inArgument0
                                                        COMMA_LOCATION_ARGS) ;
@@ -1641,9 +1641,9 @@ class GALGAS_weakReferenceTypeForGeneration : public GALGAS_semanticTypeForGener
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_typedPropertyList getter_mAllTypedPropertyList (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_string getter_mClassTypeName (LOCATION_ARGS) const ;
-
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mGenerateHeaderInSeparateFile (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_entry getter_mReferenceClassType (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_entry getter_mSuperClass (LOCATION_ARGS) const ;
 
@@ -1670,7 +1670,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_weakReferenceTypeFo
 
 class cPtr_weakReferenceTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Properties
-  public: GALGAS_string mProperty_mClassTypeName ;
+  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReferenceClassType ;
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mSuperClass ;
   public: GALGAS_typedPropertyList mProperty_mAllTypedPropertyList ;
   public: GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
@@ -1678,7 +1678,7 @@ class cPtr_weakReferenceTypeForGeneration : public cPtr_semanticTypeForGeneratio
 
 //--- Constructor
   public: cPtr_weakReferenceTypeForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
-                                               const GALGAS_string & in_mClassTypeName,
+                                               const GALGAS_unifiedTypeMap_2D_entry & in_mReferenceClassType,
                                                const GALGAS_unifiedTypeMap_2D_entry & in_mSuperClass,
                                                const GALGAS_typedPropertyList & in_mAllTypedPropertyList,
                                                const GALGAS_typedPropertyList & in_mTypedAttributeList,

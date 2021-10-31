@@ -878,3 +878,17 @@ void routine_check_5F_K_5F_L_5F_escapeCharacters (class GALGAS_lstring inArgumen
                                                   class C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterConstructorWithoutArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterConstructorWithoutArgument (class GALGAS_constructorMap & ioArgument0,
+                                              class GALGAS_unifiedTypeMap & ioArgument1,
+                                              const class GALGAS_string constinArgument2,
+                                              const class GALGAS_string constinArgument3,
+                                              const class GALGAS_bool constinArgument4,
+                                              class C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+

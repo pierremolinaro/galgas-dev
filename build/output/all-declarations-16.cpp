@@ -10412,50 +10412,6 @@ GALGAS_location GALGAS_getterCallExpressionAST::getter_mExpressionLocation (UNUS
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_getterCallExpressionAST::setter_setMReceiver (GALGAS_semanticExpressionAST inValue
-                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_getterCallExpressionAST * p = (cPtr_getterCallExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_getterCallExpressionAST) ;
-    p->mProperty_mReceiver = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_getterCallExpressionAST::setter_setMGetterName (GALGAS_lstring inValue
-                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_getterCallExpressionAST * p = (cPtr_getterCallExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_getterCallExpressionAST) ;
-    p->mProperty_mGetterName = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_getterCallExpressionAST::setter_setMExpressions (GALGAS_actualOutputExpressionList inValue
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_getterCallExpressionAST * p = (cPtr_getterCallExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_getterCallExpressionAST) ;
-    p->mProperty_mExpressions = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_getterCallExpressionAST::setter_setMExpressionLocation (GALGAS_location inValue
-                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_getterCallExpressionAST * p = (cPtr_getterCallExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_getterCallExpressionAST) ;
-    p->mProperty_mExpressionLocation = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @getterCallExpressionAST class
 //----------------------------------------------------------------------------------------------------------------------
 

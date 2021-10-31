@@ -51,21 +51,11 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 {
-#  @getterMap getterMap
-#  @setterMap setterMap
-#  @instanceMethodMap instanceMethodMap
-#  @typedPropertyList inheritedTypedAttributeList
-#  @propertyMap attributeMap = {}
 #--- Handle super class
   var @unifiedTypeMap-entry superClassIndex
   var @bool generateHeaderInSeparateFile
   if self.mSuperWeakReferenceTypeName.string == "" then
     superClassIndex = @unifiedTypeMap-entry.null
-#    commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?getterMap )
-#    setterMap = {}
-#    instanceMethodMap = {}
-#    inheritedTypedAttributeList = {}
-#    attributeMap = {}
     generateHeaderInSeparateFile = false
     for (mValue) in self.mClassFeatureList do
       if mValue.string == "generatedInSeparateFile" then
@@ -83,9 +73,6 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
       ?3*
       ?typeKindEnum
       ?5*
-#      ?inheritedTypedAttributeList
-#      ?attributeMap
-#      ?2*
       ?inheritedGetterMap
       ?inheritedSetterMap
       ?inheritedMethodMap
@@ -97,67 +84,7 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
     if not [typeKindEnum isWeakReferenceType] then
       error self.mSuperWeakReferenceTypeName : "the @" + self.mSuperWeakReferenceTypeName + " should be a weak reference type"
     end
-  #--- Mark all setters as inherited
-#    setterMap = {}
-#    for () in inheritedSetterMap do
-#      [!?setterMap insertKey
-#        !lkey
-#        !mKind
-#        !mParameterList
-#        !mHasCompilerArgument
-#        !.isInherited
-#        !"" # No error message
-#      ] 
-#    end
-  #--- Mark all getters as inherited
-#    getterMap = {}
-#    for aGetter in inheritedGetterMap do
-#      [!?getterMap insertKey
-#        !aGetter.lkey
-#        !aGetter.mKind
-#        !aGetter.mArgumentTypeList
-#        !aGetter.mDeclarationLocation
-#        !aGetter.mHasCompilerArgument
-#        !aGetter.mReturnedType
-#        !.isInherited
-#        !aGetter.mErrorMessage
-#      ] 
-#    end
-  #--- Mark all methods as inherited
-#    instanceMethodMap = {}
-#    for () in inheritedMethodMap do
-#      [!?instanceMethodMap insertKey
-#        !lkey
-#        !mKind
-#        !mParameterList
-#        !mDeclarationLocation
-#        !mHasCompilerArgument
-#        !.isInherited
-#        !mErrorMessage
-#      ] 
-#    end
   end
-#--- Build property Map and constructor argument list
-#  for () in self.mPropertyList do
-#    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
-#    var hasSelector = false
-#    for (attribute) in mAttributeList do
-#      if attribute.string == "selector" then
-#        if hasSelector then
-#          error attribute : "duplicated attribute" fixit { remove }
-#        end
-#        hasSelector = true
-#      end
-#    end
-#    [!?attributeMap insertKey
-#      !mPropertyName
-#      !mIsPublic
-#      !attributeTypeIndex
-#    ]
-#    if [getterMap hasKey ![mPropertyName string]] then
-#      error mPropertyName: "'" + mPropertyName + "' is the name of a prefefined or a user defined getter"
-#    end
-#  end
 #--- Current class Index
   [@unifiedTypeMap-entry makeEntry
      !?ioSemanticContext.mTypeMap
@@ -172,48 +99,6 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
     !false
     !weakReferenceIndex
   ]
-#--- Typed property list
-#  @typedPropertyList currentClassTypedPropertyList = {}
-#  @typedPropertyList allTypedPropertyList = inheritedTypedAttributeList
-#  for () in self.mPropertyList do
-#    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
-#    let hasSetter = true # mIsPublic
-#    var hasSelector = false
-#    for () in mAttributeList do
-#      if [mValue string] == "setter" then
-#        warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
-#      elsif [mValue string] == "nogetter" then
-#        warning mValue : "obsolete attribute: use 'private' qualifier"
-#      elsif [mValue string] == "selector" then
-#        hasSelector = true
-#      end
-#    end
-#    currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
-#    allTypedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
-#    [!?getterMap insertKey
-#      !mPropertyName
-#      !@methodKind.definedAsMember
-#      !@functionSignature {} # No argument
-#      !@location.here
-#      !true # Compiler argument
-#      !attributeTypeIndex # Returned type
-#      !@methodQualifier.isBasic
-#      !"" # No Error message
-#    ]
-#  end
-#--- set...attribute setter
-#  for () in currentClassTypedPropertyList do
-#    if mHasSetter then
-#      [!?setterMap insertKey
-#        !@lstring.new {!"set"+ [[mPropertyName string] stringByCapitalizingFirstCharacter] !@location.here}
-#        !@methodKind.definedAsMember
-#        !{!["" nowhere] !mPropertyTypeEntry !@formalArgumentPassingModeAST.argumentIn !mPropertyName.string}
-#        !true # Compiler argument
-#        !@methodQualifier.isBasicFinal
-#        !"" # No error message
-#      ]
-#    end
-#  end
 #--- Add Extensions
   var @getterMap getterMap = {}
   var @setterMap setterMap = {}
@@ -266,7 +151,7 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-entry.null # Type for enumerated element for "for" instruction
     !"nil" # Default constructor
     !"weak-reference-" + [self.mWeakReferenceTypeName fileNameRepresentation]
-    !@headerKind.twoHeaders
+    !@headerKind.oneHeader
   ]
 }
 
@@ -326,47 +211,34 @@ override method @weakReferenceDeclarationAST semanticAnalysis
 #------ Enter attributes
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
-  for (* mPropertyTypeName mPropertyName * mAttributeList) in self.mPropertyList do
-#    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
-#    [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
+  for (* mPropertyTypeName mPropertyName isPublic attributeList) in self.mPropertyList do
     let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
-    let hasSetter = true # mIsPublic
     var hasSelector = false
-    for (mValue) in mAttributeList do
-      if mValue.string == "setter" then
-        warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
-      elsif mValue.string == "nogetter" then
-        warning mValue : "obsolete attribute: use 'private' qualifier"
-      elsif mValue.string == "selector" then
-        if hasSelector then
-          error mValue : "the '%selector' attribute is already named"
-        end
-        hasSelector = true
-      else
-        error mValue
-        : "only '%selector' is allowed here"
-        fixit { replace {!"%selector"} }
-
-      end
+    for (mValue) in attributeList while not hasSelector do
+      hasSelector = mValue.string == "selector"
     end
     typedAttributeList +=
       !t
       !mPropertyName
-      !hasSetter
+      !isPublic
       !hasSelector
     allAttributeList +=
       !t
       !mPropertyName
-      !hasSetter
+      !isPublic
       !hasSelector
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #------
+  let @unifiedTypeMap-entry referenceClassType = @unifiedTypeMap-entry.searchKey {
+    !inSemanticContext.mTypeMap
+    !self.mClassTypeName
+  }
   ioSemanticDeclarationListForGeneration +=
     !"weak reference " + self.mWeakReferenceTypeName
     !@weakReferenceTypeForGeneration.new {
       !selfType
-      !self.mClassTypeName
+      !referenceClassType
       !superClassEntry
       !allAttributeList
       !typedAttributeList
@@ -379,7 +251,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
-  public var @string mClassTypeName
+  public var @unifiedTypeMap-entry mReferenceClassType
   public var @unifiedTypeMap-entry mSuperClass # Null if no super class
   public var @typedPropertyList mAllTypedPropertyList # Inherited followed by current attributes
   public var @typedPropertyList mTypedAttributeList
@@ -395,9 +267,10 @@ override method @weakReferenceTypeForGeneration appendDeclaration1
   if not [self.mSuperClass isNull] then
     [self.mSuperClass addHeaderFileName !?ioInclusionSet]
   end
+  [self.mReferenceClassType addHeaderFileName !?ioInclusionSet]
 
   outHeader = [filewrapper typeGenerationTemplate.weakReferenceClassTypeHeader1
-    ![self.mClassTypeName identifierRepresentation]
+    ![self.mReferenceClassType identifierRepresentation]
     ![self.mSelfTypeEntry identifierRepresentation]
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
     ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
@@ -426,9 +299,9 @@ override method @weakReferenceTypeForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
+  [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper typeGenerationTemplate.weakReferenceClassTypeSpecificImplementation
-    ![self.mClassTypeName identifierRepresentation]
+    ![self.mReferenceClassType identifierRepresentation]
     ![self.mSelfTypeEntry identifierRepresentation]
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
     !self.mTypedAttributeList

@@ -6644,18 +6644,6 @@ class GALGAS_getterCallExpressionAST : public GALGAS_semanticExpressionAST {
   public: typeComparisonResult objectCompare (const GALGAS_getterCallExpressionAST & inOperand) const ;
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_setMExpressionLocation (class GALGAS_location inArgument0
-                                                               COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMExpressions (class GALGAS_actualOutputExpressionList inArgument0
-                                                        COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMGetterName (class GALGAS_lstring inArgument0
-                                                       COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMReceiver (class GALGAS_semanticExpressionAST inArgument0
-                                                     COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods

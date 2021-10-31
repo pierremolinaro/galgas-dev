@@ -336,15 +336,13 @@ private proc generateManyHeaders
       end
     #--- Header 1
       if [declaration.mDeclaration headerKind] != @headerKind.noHeader then
-        var headerString = "#ifndef " + [[declaration.mDeclaration implementationCppFileName] identifierRepresentation] + "_1_DEFINED\n"
-        headerString += "#define " + [[declaration.mDeclaration implementationCppFileName] identifierRepresentation] + "_1_DEFINED\n\n"
+        var headerString = "#pragma once\n"
         headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
         headerString += "#include \"all-predefined-types.h\"\n\n"
         headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
         headerString += headerIncludes1
         headerString += "\n"
         headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
-        headerString += "#endif\n\n"
         let headerFileName = [declaration.mDeclaration implementationCppFileName]
            + if [declaration.mDeclaration headerKind] == @headerKind.twoHeaders then "-1" else "" end
         headerInclusionList1 += !headerFileName
