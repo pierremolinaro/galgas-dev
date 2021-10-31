@@ -11496,7 +11496,7 @@ mProperty_mSyntaxComponentMapForSemanticAnalysis (inOperand7) {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_semanticContext GALGAS_semanticContext::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_semanticContext (GALGAS_unifiedTypeMap::constructor_emptyMap (HERE),
+  return GALGAS_semanticContext (GALGAS_unifiedTypeMap::constructor_emptySharedMap (HERE),
                                  GALGAS_routineMap::constructor_emptyMap (HERE),
                                  GALGAS_functionMap::constructor_emptyMap (HERE),
                                  GALGAS_filewrapperMap::constructor_emptyMap (HERE),

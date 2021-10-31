@@ -372,7 +372,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   enterConstructorWithoutArgument (
     !?constructorMap
     !?ioSemanticContext.mTypeMap
-    !name:"emptyMap"
+    !name:"emptySharedMap"
     !resultTypeName:self.mMapTypeName.string
     !hasLexiqueArg:false
   )
@@ -668,7 +668,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !{}
     !false # Do not generate header in separate file
     !@unifiedTypeMap-entry.null # Type for enumerated element for "for" instruction
-    !"emptyMap"
+    !"emptySharedMap"
     !"sharedmap-" + [self.mMapTypeName fileNameRepresentation]
     !@headerKind.twoHeaders
   ]
@@ -1233,7 +1233,7 @@ override method @sharedMapTypeForGeneration appendSpecificImplementation
                   !@string outImplementation
 {
   [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
-  var keySortedList =@keySortedList.emptySortedList{}
+  var keySortedList =@keySortedList {}
   for (lkey mStateIndex *) in self.mMapAutomatonStateMap do
     keySortedList += !lkey.string !mStateIndex
   end

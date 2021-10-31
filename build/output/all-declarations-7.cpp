@@ -9205,7 +9205,7 @@ GALGAS_localVarManager & GALGAS_localVarManager::operator = (const GALGAS_localV
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_localVarManager GALGAS_localVarManager::constructor_emptyMap (LOCATION_ARGS) {
+GALGAS_localVarManager GALGAS_localVarManager::constructor_emptySharedMap (LOCATION_ARGS) {
   GALGAS_localVarManager result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;

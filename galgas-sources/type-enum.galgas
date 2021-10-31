@@ -253,7 +253,7 @@ override method @enumDeclarationAST semanticAnalysis
 #--- Constant list
   var constantList =@stringlist {}
   var @enumConstantListForGeneration enumConstantListForGeneration = {}
-  var constantMap =@constantIndexMap.emptyMap{}
+  var constantMap =@constantIndexMap {}
   for (mConstantName mAssociatedValueDefinitionList) in self.mConstantList do
     constantList += !mConstantName.string
     var @unifiedTypeMapEntryList associatedTypeList = {}

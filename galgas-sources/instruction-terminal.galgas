@@ -188,7 +188,7 @@ override method @terminalCheckInstructionForGeneration appendSyntaxSignature
     !self.mInstructionLocation
     !self.mTerminalName
     !self.mLexiqueIdentifier
-    !@terminalCheckAssignementList.emptyList
+    !@terminalCheckAssignementList {}
     !self.mIndexingKeyList
     !@grammarInstructionSyntaxDirectedTranslationResultNone.new
     !@grammarInstructionSyntaxDirectedTranslationResultNone.new

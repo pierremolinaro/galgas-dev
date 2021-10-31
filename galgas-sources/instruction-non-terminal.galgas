@@ -146,7 +146,7 @@ override method @nonterminalInstructionForGeneration appendSyntaxSignature
     !self.mInstructionLocation
     !self.mNonterminalName
     !inPosfix
-    !@actualParameterListForGeneration.emptyList
+    !@actualParameterListForGeneration {}
     !@grammarInstructionSyntaxDirectedTranslationResultNone.new
   }
 }

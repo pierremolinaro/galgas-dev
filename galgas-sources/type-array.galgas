@@ -173,7 +173,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !@methodQualifier.isBasicFinal
     !""
   ]
-  setterFormalArgumentList = @formalParameterSignature.emptyList
+  setterFormalArgumentList = @formalParameterSignature {}
   setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inSize"
   setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inAxisIndex"
   [!?setterMap insertKey
@@ -192,22 +192,22 @@ override method @arrayDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-entry.null
     !@typeKindEnum. listMapType
     !false # Does not support collection value
-    !@typedPropertyList.emptyList
+    !@typedPropertyList {}
     !{}
-    !@typedPropertyList.emptyList
+    !@typedPropertyList {}
     !constructorMap
     !getterMap
     !setterMap
     !instanceMethodMap
     !{}
     !@optionalMethodMap {}
-    !@enumerationDescriptorList.emptyList
+    !@enumerationDescriptorList {}
     !.isComparable
-    !@functionSignature.emptyList # addAssignOperatorDescription
+    !@functionSignature {} # addAssignOperatorDescription
     !{}
     !{}
-    !@mapSearchMethodListAST.emptyList
-    !@mapSearchMethodListAST.emptyList
+    !@mapSearchMethodListAST {}
+    !@mapSearchMethodListAST {}
     !false # Do not generate header in separate file
     !@unifiedTypeMap-entry.null # Type for enumerated element for "for" instruction
     !"" # No default constructor

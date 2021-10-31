@@ -2126,7 +2126,7 @@ class GALGAS_localVarManager : public AC_GALGAS_uniqueMap {
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_localVarManager constructor_emptyMap (LOCATION_ARGS) ;
+  public: static class GALGAS_localVarManager constructor_emptySharedMap (LOCATION_ARGS) ;
 
 
 //--------------------------------- Setters

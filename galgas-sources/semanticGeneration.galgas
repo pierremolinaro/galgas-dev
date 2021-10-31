@@ -179,7 +179,7 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
       !static:false
       !parseRuleName
       !?ioInclusionSet
-      !@formalParameterListForGeneration.emptyList
+      !@formalParameterListForGeneration {}
       !syntaxSignatureOfInstructionList (!"parse" !parseInstructionList)
       !false
       !lexiqueCppName
@@ -202,7 +202,7 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
         !static:false
         !ruleName
         !?ioInclusionSet
-        !@formalParameterListForGeneration.emptyList
+        !@formalParameterListForGeneration {}
         !syntaxSignatureOfInstructionList (!"indexing" !instructionList)
         !false
         !lexiqueCppName
@@ -1186,7 +1186,7 @@ override method @onceFunctionDeclarationForGeneration appendDeclaration1
   !@string outHeader {
   outHeader = [filewrapper semanticComponentGenerationTemplate.functionDeclaration
     !self.mFunctionName
-    !@formalInputParameterListForGeneration.emptyList
+    !@formalInputParameterListForGeneration {}
     ![self.mReturnType identifierRepresentation]
   ] 
 }
@@ -1272,7 +1272,7 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
   generateFunction (
     !"onceFunction_" + [self.mFunctionName identifierRepresentation]
     !?ioInclusionSet
-    !@formalInputParameterListForGeneration.emptyList
+    !@formalInputParameterListForGeneration {}
     !self.mFunctionInstructionList
     !"C_Compiler"
     !self.mReturnType
@@ -1283,7 +1283,7 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
   outImplementation = [filewrapper semanticComponentGenerationTemplate.onceFunctionImplementation
     !self.mFunctionName
     !code
-    !@formalInputParameterListForGeneration.emptyList
+    !@formalInputParameterListForGeneration {}
     ![self.mReturnType identifierRepresentation]
   ] 
 }
@@ -1757,7 +1757,7 @@ proc generatePredefinedTypeFiles
   for (* mDeclaration) in inSemanticDeclarationListForGeneration do
     if [mDeclaration isPredefined] then
       generatedCode += [mDeclaration appendTypeGenericImplementation]
-      [mDeclaration appendSpecificImplementation !@unifiedTypeMap.emptyMap !?* ?let @string code]
+      [mDeclaration appendSpecificImplementation !@unifiedTypeMap.emptySharedMap !?* ?let @string code]
       generatedCode += code
     end
   end

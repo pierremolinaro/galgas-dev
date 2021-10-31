@@ -5475,7 +5475,7 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_unifiedTypeMap constructor_emptyMap (LOCATION_ARGS) ;
+  public: static class GALGAS_unifiedTypeMap constructor_emptySharedMap (LOCATION_ARGS) ;
 
 
 //--------------------------------- Setters

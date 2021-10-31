@@ -219,8 +219,8 @@ override method @switchInstructionAST analyzeSemanticInstruction
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
-      !@localConstantList.emptyList
-      !@localInitializedVariableList.emptyList
+      !@localConstantList {}
+      !@localInitializedVariableList {}
       !mInstructions
       !mEndOfBranch
       !?ioVariableMap

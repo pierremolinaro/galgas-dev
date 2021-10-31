@@ -1,4 +1,4 @@
-#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #  semantics definitions for semantics component                                                                       *
 #                                           
@@ -13,7 +13,7 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                 
 #                                           
-#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc enterClassMethodWithInputArgument
   ?!@classMethodMap ioClassMethodMap
@@ -33,7 +33,7 @@ private proc enterClassMethodWithInputArgument
   ]
 }
 
-#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc enterClassMethodWith3InputArguments
   ?!@classMethodMap ioClassMethodMap
@@ -61,7 +61,7 @@ private proc enterClassMethodWith3InputArguments
   [!?ioClassMethodMap insertOrReplace !.new {!inClassMethodName !.here} !argList !inHasCompilerArgument]
 }
 
-#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc enterClassMethodWithStringInputArgument
   ?!@classMethodMap ioClassMethodMap
@@ -80,7 +80,7 @@ private proc enterClassMethodWithStringInputArgument
   ]
 }
 
-#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @uintPredefinedTypeAST getClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -97,7 +97,7 @@ override method @uintPredefinedTypeAST getClassMethodMap
   )
 }
 
-#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @applicationPredefinedTypeAST getClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -142,7 +142,7 @@ override method @applicationPredefinedTypeAST getClassMethodMap
   )
 }
 
-#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @stringPredefinedTypeAST getClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -207,7 +207,7 @@ override method @stringPredefinedTypeAST getClassMethodMap
   ]
 }
 
-#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @binarysetPredefinedTypeAST getClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -232,5 +232,5 @@ override method @binarysetPredefinedTypeAST getClassMethodMap
   )
 }
 
-#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

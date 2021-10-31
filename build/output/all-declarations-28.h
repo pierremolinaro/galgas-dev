@@ -22,10 +22,11 @@ void routine_analyzeConstructorInvocation (const class GALGAS_lstring constinArg
                                            const class GALGAS_lstring constinArgument5,
                                            const class GALGAS_lstring constinArgument6,
                                            const class GALGAS_actualOutputExpressionList constinArgument7,
-                                           class GALGAS_unifiedTypeMap_2D_entry & outArgument8,
+                                           const class GALGAS_location constinArgument8,
                                            class GALGAS_unifiedTypeMap_2D_entry & outArgument9,
-                                           class GALGAS_semanticExpressionListForGeneration & outArgument10,
-                                           class GALGAS_bool & outArgument11,
+                                           class GALGAS_unifiedTypeMap_2D_entry & outArgument10,
+                                           class GALGAS_semanticExpressionListForGeneration & outArgument11,
+                                           class GALGAS_bool & outArgument12,
                                            class C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 

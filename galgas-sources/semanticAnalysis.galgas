@@ -987,7 +987,7 @@ override method @lexiqueComponentAST semanticAnalysis
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
     var @lexicalExplicitTokenListMap lexicalTokenListMap = {}
-    var tokenSortedlist =@tokenSortedlist.emptySortedList{}
+    var tokenSortedlist =@tokenSortedlist {}
     for (mEntrySpelling mTerminalSpelling mAttributeList) in mEntryList do
       var @string syntaxErrorMessage = [mSyntaxErrorMessage.string stringByReplacingStringByString !"%K" !mTerminalSpelling.string]
       var isEndOfTemplateMark = false

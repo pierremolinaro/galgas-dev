@@ -52,16 +52,16 @@ proc compileBeforeClauseGalgas3
   [!?ioUsefulEntitiesGraph addNode !usefulnessName !usefulnessName]
   ioUsefulnessRootEntities += !usefulnessName
 #--- Compile 'before' routines
-  var semanticInstructionListForGeneration = @semanticInstructionListForGeneration.emptyList
+  var semanticInstructionListForGeneration = @semanticInstructionListForGeneration {}
   for (mInstructionList mEndOfInstructionList) in inPrologueList do
     analyzeRoutineBody (
       !usefulnessName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
-      !@formalParameterListAST.emptyList # Routine signature : no argument
-      !@localConstantList.emptyList # No local constant
-      !@typedPropertyList.emptyList # No attribute (not a method)
-      !mutablePropertyList: @typedPropertyList.emptyList # No attribute (not a method)
+      !@formalParameterListAST {} # Routine signature : no argument
+      !@localConstantList {} # No local constant
+      !@typedPropertyList {} # No attribute (not a method)
+      !mutablePropertyList: @typedPropertyList {} # No attribute (not a method)
       !mInstructionList
       !mEndOfInstructionList
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration
@@ -76,7 +76,7 @@ proc compileBeforeClauseGalgas3
       !false # Has no header
       !"proc-before"
       !"before"
-      !@formalParameterListForGeneration.emptyList
+      !@formalParameterListForGeneration {}
       !true # Generate static
       !semanticInstructionListForGeneration
     }
@@ -114,9 +114,9 @@ private proc compileProgramRulesGalgas3
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !argumentList
-      !@localConstantList.emptyList # No local constant
-      !@typedPropertyList.emptyList # No attribute (not a method)
-      !mutablePropertyList: @typedPropertyList.emptyList # No attribute (not a method)
+      !@localConstantList {} # No local constant
+      !@typedPropertyList {} # No attribute (not a method)
+      !mutablePropertyList: @typedPropertyList {} # No attribute (not a method)
       !mInstructionList
       !mEndOfInstructionList
       ?semanticInstructionListForGeneration
@@ -158,10 +158,10 @@ proc compileAfterClauseGalgas3
       !usefulnessName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
-      !@formalParameterListAST.emptyList # Routine signature : no argument
-      !@localConstantList.emptyList # No local constant
-      !@typedPropertyList.emptyList # No attribute (not a method)
-      !mutablePropertyList: @typedPropertyList.emptyList # No attribute (not a method)
+      !@formalParameterListAST {} # Routine signature : no argument
+      !@localConstantList {} # No local constant
+      !@typedPropertyList {} # No attribute (not a method)
+      !mutablePropertyList: @typedPropertyList {} # No attribute (not a method)
       !mInstructionList
       !mEndOfInstructionList
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration
@@ -174,7 +174,7 @@ proc compileAfterClauseGalgas3
     !false # Has no header
     !"proc-after"
     !"after"
-    !@formalParameterListForGeneration.emptyList
+    !@formalParameterListForGeneration {}
     !true # Generate static
     !semanticInstructionListForGeneration
   }

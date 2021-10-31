@@ -28,7 +28,12 @@ syntax extension galgas3ExpressionSyntax {
     <output_expression_list> ?let @actualOutputExpressionList expressionList
     $]$
     let endLocation = @location.here
-    outExpression = @getterCallExpressionAST.new {!receiverExpression !getterName !expressionList ![startLocation union !endLocation]}
+    outExpression = @getterCallExpressionAST.new {
+      !receiverExpression
+      !getterName
+      !expressionList
+      ![startLocation union !endLocation]
+    }
   }
 
   #·····················································································································

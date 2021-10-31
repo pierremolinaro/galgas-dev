@@ -241,7 +241,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
       ]
     else
       error self.mFilewrapperPath : "the '" + builtPath + "' path does not exists for the '" + self.mFilewrapperName + "' filewrapper" : filewrapperFileMap 
-      directoryList = @stringlist.emptyList # For exiting loop
+      directoryList = @stringlist {} # For exiting loop
     end
   end
   var @uint fileIndex

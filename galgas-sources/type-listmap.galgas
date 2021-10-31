@@ -91,7 +91,7 @@ override method @listmapDeclarationAST enterInSemanticContext
   ]
   if typeKindEnum != @typeKindEnum. listType then
     error self.mAssociatedListTypeName : "the '@" + self.mAssociatedListTypeName + "' type should be a list type"
-    listTypedAttributeList = @typedPropertyList.emptyList
+    listTypedAttributeList = @typedPropertyList {}
   end
 #---
   var @constructorMap constructorMap ={}
@@ -176,7 +176,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-entry.null
     !@typeKindEnum. arrayType
     !true # Support collection value
-    !@typedPropertyList.emptyList
+    !@typedPropertyList {}
     !{}
     !listTypedAttributeList
     !constructorMap
@@ -190,8 +190,8 @@ override method @listmapDeclarationAST enterInSemanticContext
     !addAssignOperatorDescription
     !{}
     !{}
-    !@mapSearchMethodListAST.emptyList
-    !@mapSearchMethodListAST.emptyList
+    !@mapSearchMethodListAST {}
+    !@mapSearchMethodListAST {}
     !false # Do not generate header in separate file
     !listElementTypeIndex # Type for enumerated element for "for" instruction
     !"emptyMap" # Default constructor

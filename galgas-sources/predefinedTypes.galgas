@@ -294,9 +294,9 @@ override method @predefinedTypeAST enterInSemanticContext
     !@unifiedTypeMap-entry.null
     !@typeKindEnum. predefinedType
     !self.mPredefinedTypeName == "stringset" # Only @stringset supports collection value
-    !@typedPropertyList.emptyList
+    !@typedPropertyList {}
     !{}
-    !@typedPropertyList.emptyList
+    !@typedPropertyList {}
     !constructorMap
     !getterMap
     !setterMap
@@ -308,8 +308,8 @@ override method @predefinedTypeAST enterInSemanticContext
     !addAssignArgumentList
     !{}
     !{}
-    !@mapSearchMethodListAST.emptyList
-    !@mapSearchMethodListAST.emptyList
+    !@mapSearchMethodListAST {}
+    !@mapSearchMethodListAST {}
     !false # Do not generate header in separate file
     !enumeratedTypeEntry
     ![self.mKind defaultConstructorName]

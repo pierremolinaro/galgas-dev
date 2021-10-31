@@ -72,13 +72,6 @@ syntax extension galgas3InstructionsSyntax {
 
   #·····················································································································
   
-#  rule <for_instruction_element> ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
-#    $*$
-#    ioElementList += !["" nowhere] !true !["" nowhere]
-#  }
-  
-  #·····················································································································
-  
   rule <for_instruction_element> ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
     $uint32$ ?let @luint count
     $*$
@@ -172,7 +165,8 @@ syntax extension galgas3InstructionsSyntax {
       !typeName
       !enumerationVariable
       !enumeratedExpression
-      !@location.here}
+      !@location.here
+    }
   }
   
   #·····················································································································
@@ -226,7 +220,7 @@ syntax extension galgas3InstructionsSyntax {
     let endof_while_expression = @location.here
     var @semanticInstructionListAST mBeforeInstructionList
     select
-      mBeforeInstructionList = @semanticInstructionListAST.emptyList
+      mBeforeInstructionList = @semanticInstructionListAST {}
     or
       $before$
       <semantic_instruction_list> ? mBeforeInstructionList
@@ -246,7 +240,7 @@ syntax extension galgas3InstructionsSyntax {
     let endof_do_branch = @location.here
     var @semanticInstructionListAST mBetweenInstructionList
     select
-      mBetweenInstructionList = @semanticInstructionListAST.emptyList
+      mBetweenInstructionList = @semanticInstructionListAST {}
     or
       $between$
       <semantic_instruction_list> ? mBetweenInstructionList
@@ -254,7 +248,7 @@ syntax extension galgas3InstructionsSyntax {
     let endof_between_branch = @location.here
     var @semanticInstructionListAST mAfterInstructionList
     select
-      mAfterInstructionList = @semanticInstructionListAST.emptyList
+      mAfterInstructionList = @semanticInstructionListAST {}
     or
       $after$
       <semantic_instruction_list> ? mAfterInstructionList
@@ -526,8 +520,8 @@ override method @forInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !@localConstantList.emptyList
-    !@localInitializedVariableList.emptyList
+    !@localConstantList {}
+    !@localInitializedVariableList {}
     !self.mBeforeInstructionList
     !self.mEndOf_before_branch
     !?ioVariableMap
@@ -541,8 +535,8 @@ override method @forInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !@localConstantList.emptyList
-    !@localInitializedVariableList.emptyList
+    !@localConstantList {}
+    !@localInitializedVariableList {}
     !self.mBetweenInstructionList
     !self.mEndOf_between_branch
     !?ioVariableMap
@@ -555,8 +549,8 @@ override method @forInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !@localConstantList.emptyList
-    !@localInitializedVariableList.emptyList
+    !@localConstantList {}
+    !@localInitializedVariableList {}
     !self.mAfterInstructionList
     !self.mEndOf_after_branch
     !?ioVariableMap

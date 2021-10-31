@@ -202,7 +202,7 @@ override method @templateConstructorAST templateExpressionAnalysis
     + [[self.mExpressionList length] string] + " parameter(s)" 
     : constructorEffectiveParameterList
   else
-    constructorEffectiveParameterList = @semanticExpressionListForGeneration.emptyList
+    constructorEffectiveParameterList = @semanticExpressionListForGeneration {}
     for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList, (mFormalSelector mFormalArgumentType *) in constructorFormalArgumentTypeList do
       if mFormalSelector.string != mActualSelector.string then
         error mActualSelector

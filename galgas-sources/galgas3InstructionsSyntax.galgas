@@ -36,7 +36,7 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList {
-  outInstructionsList = @semanticInstructionListAST.emptyList
+  outInstructionsList = @semanticInstructionListAST {}
   repeat
   while
     $;$
@@ -310,7 +310,7 @@ rule <syntax_directed_translation_result> !@abstractGrammarInstructionSyntaxDire
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <actual_input_parameter_list> !@actualInputParameterListAST outActualInputParameterList {
-  outActualInputParameterList = @actualInputParameterListAST.emptyList
+  outActualInputParameterList = @actualInputParameterListAST {}
   repeat
   while
     $?$ ?let selector

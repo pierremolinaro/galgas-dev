@@ -340,7 +340,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !"" # No error message
   ]
 #--- setter 'removeEdgesToNode'
-  formalParameterList = @formalParameterSignature.emptyList
+  formalParameterList = @formalParameterSignature {}
   formalParameterList += !["" nowhere] !stringTypeEntry !@formalArgumentPassingModeAST.argumentIn !"inNodeName"
   [!?setterMap insertKey
     !@lstring.new {!"removeEdgesToNode" !@location.here}
@@ -352,7 +352,7 @@ override method @graphDeclarationAST enterInSemanticContext
   ]
   drop formalParameterList
 #--- setter 'addEdge'
-  formalParameterList = @formalParameterSignature.emptyList
+  formalParameterList = @formalParameterSignature {}
   formalParameterList += !["" nowhere] !lstringTypeEntry !@formalArgumentPassingModeAST.argumentIn !"inSourceNodeLKey"
   formalParameterList += !["" nowhere] !lstringTypeEntry !@formalArgumentPassingModeAST.argumentIn !"inTargetNodeLKey"
   [!?setterMap insertKey
@@ -365,7 +365,7 @@ override method @graphDeclarationAST enterInSemanticContext
   ]
   drop formalParameterList
 #--- setter 'noteNode'
-  formalParameterList = @formalParameterSignature.emptyList
+  formalParameterList = @formalParameterSignature {}
   formalParameterList += !["" nowhere] !lstringTypeEntry !@formalArgumentPassingModeAST.argumentIn !"inNodeLKey"
   [!?setterMap insertKey
     !@lstring.new {!"noteNode" !@location.here}
@@ -395,22 +395,22 @@ override method @graphDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-entry.null
     !@typeKindEnum. graphType
     !false # Does not support collection value
-    !@typedPropertyList.emptyList
+    !@typedPropertyList {}
     !{}
-    !@typedPropertyList.emptyList
+    !@typedPropertyList {}
     !constructorMap
     !getterMap
     !setterMap
     !instanceMethodMap
-    !@classMethodMap. emptyMap
+    !@classMethodMap {}
     !@optionalMethodMap {}
-    !@enumerationDescriptorList.emptyList
+    !@enumerationDescriptorList {}
     !.doNotGenererateObjectCompare
-    !@functionSignature.emptyList
+    !@functionSignature {}
     !{}
     !{}
-    !@mapSearchMethodListAST.emptyList
-    !@mapSearchMethodListAST.emptyList
+    !@mapSearchMethodListAST {}
+    !@mapSearchMethodListAST {}
     !false # Do not generate header in separate file
     !@unifiedTypeMap-entry.null # Type for enumerated element for "for" instruction
     !"emptyGraph" # Default constructor

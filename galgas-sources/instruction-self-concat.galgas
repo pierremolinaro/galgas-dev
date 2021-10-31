@@ -191,7 +191,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
       !selfTypeEntry
       !""
       !self.mInstructionLocation
-      !@lstringlist.emptyList
+      !@lstringlist {}
       !effectiveParameterList}
   end
 }

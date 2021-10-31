@@ -138,8 +138,8 @@ override method @overridingExtensionSetterAST semanticAnalysis
     !?ioUsefulEntitiesGraph
     !analysisContext
     !self.mOverridingExtensionSetterFormalParameterList
-    !@localConstantList.emptyList
-    !@typedPropertyList.emptyList
+    !@localConstantList {}
+    !@typedPropertyList {}
     !mutablePropertyList: [selfType mAllTypedPropertyList]
 #    !"object->"
     !self.mOverridingExtensionSetterInstructionList

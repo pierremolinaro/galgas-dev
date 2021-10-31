@@ -56,7 +56,7 @@ syntax extension galgas3ExpressionSyntax {
     outExpression = @collectionValueAST.new {
       !typeName
       !elementList
-      !@location.here
+      !.here
     }  
     $}$
   }

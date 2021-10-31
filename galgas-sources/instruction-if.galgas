@@ -64,7 +64,7 @@ syntax extension galgas3InstructionsSyntax {
     let endOf_then_branchLocation = @location.here
     var @semanticInstructionListAST else_instructionList
     select
-      else_instructionList = @semanticInstructionListAST.emptyList
+      else_instructionList = @semanticInstructionListAST {}
     or
       $else$
       <semantic_instruction_list> ? else_instructionList
@@ -378,8 +378,8 @@ override method @ifInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !@localConstantList.emptyList
-    !@localInitializedVariableList.emptyList
+    !@localConstantList {}
+    !@localInitializedVariableList {}
     !self.m_then_instructionList
     !?ioVariableMap
     ?let then_instructionList
@@ -396,8 +396,8 @@ override method @ifInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !@localConstantList.emptyList
-    !@localInitializedVariableList.emptyList
+    !@localConstantList {}
+    !@localInitializedVariableList {}
     !self.m_else_instructionList
     !self.mEndOf_if_instruction
     !?ioVariableMap

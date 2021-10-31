@@ -172,7 +172,7 @@ override method @dictDeclarationAST enterInSemanticContext
     ![if usesSelectorsInInsertAndSearch then "key" else "" end nowhere]
     !keyTypeIndex
     !"inKey"
-  var typesToIncludeInHeaderCompilation = @unifiedTypeMapEntryList.emptyList
+  var typesToIncludeInHeaderCompilation = @unifiedTypeMapEntryList {}
   for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true
@@ -282,7 +282,7 @@ override method @dictDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-entry.null
     !@typeKindEnum.mapType
     !true # Support collection value
-    !@typedPropertyList.emptyList
+    !@typedPropertyList {}
     !{}
     !typedPropertyList
     !constructorMap

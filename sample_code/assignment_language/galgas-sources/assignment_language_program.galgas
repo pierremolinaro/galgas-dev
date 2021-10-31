@@ -12,7 +12,7 @@ grammar assignment_language_grammar
   var @programAST programAST
   grammar assignment_language_grammar in inSourceFile ?programAST
 #--- Semantic analysis
-  var @variableMap variableMap = .emptyMap
+  var @variableMap variableMap = .emptySharedMap
   var @instructionListForGeneration instructionListForGeneration = {}
   for (mInstruction) in  programAST.mProgramInstructionList do
     [mInstruction semanticAnalysis !?variableMap !?instructionListForGeneration]

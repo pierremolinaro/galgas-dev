@@ -10671,6 +10671,9 @@ typeComparisonResult cPtr_constructorExpressionAST::dynamicObjectCompare (const 
   if (kOperandEqual == result) {
     result = mProperty_mExpressions.objectCompare (p->mProperty_mExpressions) ;
   }
+  if (kOperandEqual == result) {
+    result = mProperty_locationForOldStyleCollectionInitializerError.objectCompare (p->mProperty_locationForOldStyleCollectionInitializerError) ;
+  }
   return result ;
 }
 
@@ -10704,7 +10707,8 @@ GALGAS_semanticExpressionAST () {
 GALGAS_constructorExpressionAST GALGAS_constructorExpressionAST::constructor_default (LOCATION_ARGS) {
   return GALGAS_constructorExpressionAST::constructor_new (GALGAS_lstring::constructor_default (HERE),
                                                            GALGAS_lstring::constructor_default (HERE),
-                                                           GALGAS_actualOutputExpressionList::constructor_emptyList (HERE)
+                                                           GALGAS_actualOutputExpressionList::constructor_emptyList (HERE),
+                                                           GALGAS_location::constructor_nowhere (HERE)
                                                            COMMA_THERE) ;
 }
 
@@ -10718,11 +10722,12 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 
 GALGAS_constructorExpressionAST GALGAS_constructorExpressionAST::constructor_new (const GALGAS_lstring & inAttribute_mTypeName,
                                                                                   const GALGAS_lstring & inAttribute_mConstructorName,
-                                                                                  const GALGAS_actualOutputExpressionList & inAttribute_mExpressions
+                                                                                  const GALGAS_actualOutputExpressionList & inAttribute_mExpressions,
+                                                                                  const GALGAS_location & inAttribute_locationForOldStyleCollectionInitializerError
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_constructorExpressionAST result ;
-  if (inAttribute_mTypeName.isValid () && inAttribute_mConstructorName.isValid () && inAttribute_mExpressions.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_constructorExpressionAST (inAttribute_mTypeName, inAttribute_mConstructorName, inAttribute_mExpressions COMMA_THERE)) ;
+  if (inAttribute_mTypeName.isValid () && inAttribute_mConstructorName.isValid () && inAttribute_mExpressions.isValid () && inAttribute_locationForOldStyleCollectionInitializerError.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_constructorExpressionAST (inAttribute_mTypeName, inAttribute_mConstructorName, inAttribute_mExpressions, inAttribute_locationForOldStyleCollectionInitializerError COMMA_THERE)) ;
   }
   return result ;
 }
@@ -10765,6 +10770,18 @@ GALGAS_actualOutputExpressionList GALGAS_constructorExpressionAST::getter_mExpre
 
 //----------------------------------------------------------------------------------------------------------------------
 
+GALGAS_location GALGAS_constructorExpressionAST::getter_locationForOldStyleCollectionInitializerError (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_constructorExpressionAST * p = (const cPtr_constructorExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_constructorExpressionAST) ;
+    result = p->mProperty_locationForOldStyleCollectionInitializerError ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 void GALGAS_constructorExpressionAST::setter_setMTypeName (GALGAS_lstring inValue
                                                            COMMA_UNUSED_LOCATION_ARGS) {
   if (NULL != mObjectPtr) {
@@ -10797,17 +10814,30 @@ void GALGAS_constructorExpressionAST::setter_setMExpressions (GALGAS_actualOutpu
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_constructorExpressionAST::setter_setLocationForOldStyleCollectionInitializerError (GALGAS_location inValue
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    cPtr_constructorExpressionAST * p = (cPtr_constructorExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_constructorExpressionAST) ;
+    p->mProperty_locationForOldStyleCollectionInitializerError = inValue ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @constructorExpressionAST class
 //----------------------------------------------------------------------------------------------------------------------
 
 cPtr_constructorExpressionAST::cPtr_constructorExpressionAST (const GALGAS_lstring & in_mTypeName,
                                                               const GALGAS_lstring & in_mConstructorName,
-                                                              const GALGAS_actualOutputExpressionList & in_mExpressions
+                                                              const GALGAS_actualOutputExpressionList & in_mExpressions,
+                                                              const GALGAS_location & in_locationForOldStyleCollectionInitializerError
                                                               COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionAST (THERE),
 mProperty_mTypeName (in_mTypeName),
 mProperty_mConstructorName (in_mConstructorName),
-mProperty_mExpressions (in_mExpressions) {
+mProperty_mExpressions (in_mExpressions),
+mProperty_locationForOldStyleCollectionInitializerError (in_locationForOldStyleCollectionInitializerError) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10824,6 +10854,8 @@ void cPtr_constructorExpressionAST::description (C_String & ioString,
   mProperty_mConstructorName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mProperty_mExpressions.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_locationForOldStyleCollectionInitializerError.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -10831,7 +10863,7 @@ void cPtr_constructorExpressionAST::description (C_String & ioString,
 
 acPtr_class * cPtr_constructorExpressionAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_constructorExpressionAST (mProperty_mTypeName, mProperty_mConstructorName, mProperty_mExpressions COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_constructorExpressionAST (mProperty_mTypeName, mProperty_mConstructorName, mProperty_mExpressions, mProperty_locationForOldStyleCollectionInitializerError COMMA_THERE)) ;
   return ptr ;
 }
 

@@ -6,6 +6,7 @@ refclass @constructorExpressionAST : @semanticExpressionAST {
   public var @lstring mTypeName
   public var @lstring mConstructorName
   public var @actualOutputExpressionList mExpressions
+  public var @location locationForOldStyleCollectionInitializerError
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -36,6 +37,7 @@ syntax extension galgas3ExpressionSyntax {
   #--- Type name
     <optional_type> ?let @lstring typeName
     $.$
+    let startOfExpression = @location.here
   #--- Constructor name
     $identifier$ ?let @lstring constructorName
   #--- Actual arguments
@@ -47,10 +49,13 @@ syntax extension galgas3ExpressionSyntax {
       <output_expression_list> ?expressionList
       $}$
     end
+    let endOfExpression = @location.here
     outExpression = @constructorExpressionAST.new {
       !typeName
       !constructorName
-      !expressionList}
+      !expressionList
+      ![startOfExpression union !endOfExpression]
+    }
   }
   
   #·····················································································································
@@ -87,7 +92,8 @@ private proc analyzeConstructorInvocation
   ?!@localVarManager ioVariableMap
   ?let @lstring inTypeName
   ?let @lstring inConstructorName
-  ?let @actualOutputExpressionList inConstuctorEffectiveParameterExpressions
+  ?let @actualOutputExpressionList inInitializerEffectiveParameterExpressions
+  ?let @location inLocationForOldStyleCollectionInitializerError
   !@unifiedTypeMap-entry outReturnedType
   !@unifiedTypeMap-entry outConstructorType
   !@semanticExpressionListForGeneration outConstructorEffectiveParameterList
@@ -123,14 +129,14 @@ private proc analyzeConstructorInvocation
       end
     end
   #--- Analysis arguments
-    if [inConstuctorEffectiveParameterExpressions length] != [constructorFormalArgumentTypeList length] then
+    if [inInitializerEffectiveParameterExpressions length] != [constructorFormalArgumentTypeList length] then
       error inConstructorName
       : "calling the '" + inConstructorName + "' constructor of '@" + [outConstructorType key] + "' requires "
       + [[constructorFormalArgumentTypeList length] string] + " parameter(s), while this call has "
-      + [[inConstuctorEffectiveParameterExpressions length] string] + " parameter(s)"
+      + [[inInitializerEffectiveParameterExpressions length] string] + " parameter(s)"
     end
     outConstructorEffectiveParameterList = {}
-    for (mActualSelector mExpression mEndOfExpressionLocation) in inConstuctorEffectiveParameterExpressions, (mFormalSelector mFormalArgumentType *) in constructorFormalArgumentTypeList do
+    for (mActualSelector mExpression mEndOfExpressionLocation) in inInitializerEffectiveParameterExpressions, (mFormalSelector mFormalArgumentType *) in constructorFormalArgumentTypeList do
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
@@ -145,6 +151,15 @@ private proc analyzeConstructorInvocation
         error mActualSelector 
          : "the selector should be '!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "'"
       end
+    end
+  end
+#---
+  if [option galgas_cli_options.errorOldStyleCollectionInitializer value] && ([inInitializerEffectiveParameterExpressions length] == 0) then
+    let oldInitializers = @stringset {!"emptyList", !"emptyMap", !"emptySortedList", !"emptyDict"}
+    if [oldInitializers hasKey !inConstructorName.string] then
+    error inLocationForOldStyleCollectionInitializerError
+    : "old style collection initializer call (due to '--error-old-syle-collection-initializer' option)"
+    fixit { replace " {}" }
     end
   end
 }
@@ -168,6 +183,7 @@ override method @constructorExpressionAST analyzeSemanticExpression
     !self.mTypeName
     !self.mConstructorName
     !self.mExpressions
+    !self.locationForOldStyleCollectionInitializerError
     ?let @unifiedTypeMap-entry returnedType
     ?let @unifiedTypeMap-entry constructorType
     ?let @semanticExpressionListForGeneration constructorEffectiveParameterList

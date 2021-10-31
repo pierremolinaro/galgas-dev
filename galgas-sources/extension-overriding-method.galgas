@@ -133,12 +133,12 @@ override method @overridingExtensionMethodAST semanticAnalysis
     !?ioUsefulEntitiesGraph
     !analysisContext
     !self.mOverridingExtensionMethodFormalParameterList
-    !@localConstantList.emptyList
+    !@localConstantList {}
     !if [[selfType mTypeKindEnum] isClassType] | ([selfType mTypeKindEnum] == @typeKindEnum. structType)
        then [selfType mAllTypedPropertyList]
-       else @typedPropertyList.emptyList
+       else @typedPropertyList {}
      end
-    !mutablePropertyList:@typedPropertyList.emptyList
+    !mutablePropertyList:@typedPropertyList {}
 #    !"object->"
     !self.mOverridingExtensionMethodInstructionList
     !self.mEndOfMethodLocation

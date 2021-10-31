@@ -171,13 +171,13 @@ override method @structDeclarationAST enterInSemanticContext
     !instanceMethodMap
     !{}
     !optionalMethodMap
-    !@enumerationDescriptorList.emptyList
+    !@enumerationDescriptorList {}
     !.generateDescriptionGetterUtilityMethod | .isComparable
-    !@functionSignature.emptyList
+    !@functionSignature {}
     !{}
     !{}
-    !@mapSearchMethodListAST.emptyList
-    !@mapSearchMethodListAST.emptyList
+    !@mapSearchMethodListAST {}
+    !@mapSearchMethodListAST {}
     !false # Do not generate header in separate file
     !enumeratedType # Type for enumerated element for "for" instruction
     !defaultConstructorName # Default constructor

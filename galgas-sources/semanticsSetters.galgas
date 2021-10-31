@@ -155,7 +155,7 @@ proc enterModifierWithoutArgument
   [!?ioSetterMap insertOrReplace
     !@lstring.new {!inSetterName !@location.here}
     !@methodKind. definedAsMember
-    !@formalParameterSignature.emptyList
+    !@formalParameterSignature {}
     !inHasCompilerArgument
     !@methodQualifier. isBasic
     !""

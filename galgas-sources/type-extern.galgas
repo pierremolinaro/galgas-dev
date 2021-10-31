@@ -303,7 +303,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     !getterMap
     !setterMap
     !instanceMethodMap
-    !@classMethodMap. emptyMap
+    !@classMethodMap {}
     !@optionalMethodMap {}
     !{}
     !.none

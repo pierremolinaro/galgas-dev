@@ -24,7 +24,7 @@ message "a source text file with the .lbb extension"
     [!?boxTypeMap insertKey !mBoxTypeName !mPortNameList]
   end
 #--- Build box map and connections
-  var @boxInstanceMap boxInstanceMap = .emptyMap
+  var @boxInstanceMap boxInstanceMap = .emptySharedMap
   for (mBoxTypeName mBoxInstanceName mConnectionList) in  programAST.mBoxInstanceListAST do
     var @lstringlist portNameList
     [boxTypeMap searchKey !mBoxTypeName ?portNameList]
