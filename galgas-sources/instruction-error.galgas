@@ -18,10 +18,10 @@ list @fixitListAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @errorInstructionAST : @semanticInstructionAST {
-  public var @semanticExpressionAST mLocationExpression
-  public var @semanticExpressionAST mMessageExpression
-  public var @lstringlist mBuiltVariableList
-  public var @fixitListAST mFixitListAST
+  private let @semanticExpressionAST mLocationExpression
+  private let @semanticExpressionAST mMessageExpression
+  private let @lstringlist mBuiltVariableList
+  private let @fixitListAST mFixitListAST
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -141,7 +141,7 @@ enum @fixitElementForGeneration {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @fixitListForGeneration {
-  public var @fixitElementForGeneration mElement
+  private let @fixitElementForGeneration mElement
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -382,11 +382,11 @@ method @fixitListForGeneration generateFixIt
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @errorInstructionForGeneration : @semanticInstructionForGeneration {
-  public var @location mInstructionLocation
-  public var @semanticExpressionForGeneration mReceiverExpression
-  public var @semanticExpressionForGeneration mErrorExpression
-  public var @stringlist mBuiltVariableCppNameList
-  public var @fixitListForGeneration mFixitListForGeneration
+  private let @location mInstructionLocation
+  private let @semanticExpressionForGeneration mReceiverExpression
+  private let @semanticExpressionForGeneration mErrorExpression
+  private let @stringlist mBuiltVariableCppNameList
+  private let @fixitListForGeneration mFixitListForGeneration
 }
 
 #·····················································································································*

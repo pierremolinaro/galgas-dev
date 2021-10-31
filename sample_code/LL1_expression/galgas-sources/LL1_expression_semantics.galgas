@@ -4,7 +4,7 @@ abstract refclass @cExpression {
 }
 
 refclass @cConst : @cExpression {
-public var @luint mValue
+  public var @luint mValue
 }
   
 refclass @cAdd : @cExpression {

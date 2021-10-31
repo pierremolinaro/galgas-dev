@@ -3,11 +3,11 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @overridingExtensionSetterAST : @semanticDeclarationAST {
-  public var @lstring mTypeName
-  public var @lstring mOverridingExtensionSetterName
-  public var @formalParameterListAST mOverridingExtensionSetterFormalParameterList
-  public var @semanticInstructionListAST mOverridingExtensionSetterInstructionList
-  public var @location mEndOfSetterDeclarationLocation
+  private let @lstring mTypeName
+  private let @lstring mOverridingExtensionSetterName
+  private let @formalParameterListAST mOverridingExtensionSetterFormalParameterList
+  private let @semanticInstructionListAST mOverridingExtensionSetterInstructionList
+  private let @location mEndOfSetterDeclarationLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -191,12 +191,12 @@ override method @overridingExtensionSetterAST buildExtensionListMaps
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @overridingExtensionSetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  public var @unifiedTypeMap-entry mReceiverType
-  public var @string mBaseTypeName
-  public var @string mExtensionSetterName
-  public var @formalParameterListForGeneration mExtensionSetterFormalParameterList
-  public var @typedPropertyList mTypedAttributeList
-  public var @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
+  private let @unifiedTypeMap-entry mReceiverType
+  private let @string mBaseTypeName
+  private let @string mExtensionSetterName
+  private let @formalParameterListForGeneration mExtensionSetterFormalParameterList
+  private let @typedPropertyList mTypedAttributeList
+  private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 
 #·······················································································································

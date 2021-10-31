@@ -3,9 +3,9 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @typeMethodCallInstructionAST : @semanticInstructionAST {
-  public var @lstring mTypeName
-  public var @lstring mMethodName
-  public var @actualParameterListAST mActualParameterList
+  private let @lstring mTypeName
+  private let @lstring mMethodName
+  private let @actualParameterListAST mActualParameterList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -66,7 +66,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !self.mMethodName
-    !"'" + self.mMethodName + "' type proc header"
+    !invokedEntityNameForErrorSignaling: "'" + self.mMethodName + "' type proc header"
     !routineSignature
     !self.mActualParameterList
     !?ioVariableMap
@@ -86,10 +86,10 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @typeMethodCallInstructionForGeneration : @semanticInstructionForGeneration {
-  public var @lstring mTypeName
-  public var @lstring mMethodName
-  public var @actualParameterListForGeneration mActualParameterList
-  public var @bool mHasCompilerArgument
+  private let @lstring mTypeName
+  private let @lstring mMethodName
+  private let @actualParameterListForGeneration mActualParameterList
+  private let @bool mHasCompilerArgument
 }
 
 #·····················································································································*

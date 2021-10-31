@@ -231,7 +231,8 @@ override method @mapDeclarationAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-  ?!@semanticContext ioSemanticContext {
+  ?!@semanticContext ioSemanticContext
+{
 #--- string type index
   [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"string" ?let stringTypeIndex]
 #--- location type index
@@ -447,6 +448,7 @@ override method @mapDeclarationAST enterInSemanticContext
       !mSearchMethodName.location
       !true
       !@methodQualifier.isBasic
+#      !.constantMethod
       !"" # No error message
     ]
   end

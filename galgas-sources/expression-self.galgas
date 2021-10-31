@@ -3,7 +3,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @selfInExpressionAST : @semanticExpressionAST {
-  public var @location mSelfLocation
+  private let @location mSelfLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -48,13 +48,6 @@ override method @selfInExpressionAST analyzeSemanticExpression
   else
     error self.mSelfLocation : "'self' not available in this context" : outExpression
   end
-
-#  if [inAnalysisContext.nonMutableSelfType isNull] then
-#    error self.mSelfLocation: "'self' cannot be used in this context" : outExpression
-#  else
-#    let @string selfCppName = inAnalysisContext.mSelfObjectCppName
-#    outExpression = @selfInExpressionForGeneration.new {!inAnalysisContext.nonMutableSelfType !self.mSelfLocation !selfCppName}
-#  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -62,7 +55,7 @@ override method @selfInExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @selfInExpressionForGeneration : @semanticExpressionForGeneration {
-  public var @string mSelfCppName
+  private let @string mSelfCppName
 }
 
 #·····················································································································

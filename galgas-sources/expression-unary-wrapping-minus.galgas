@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @unaryWrappingMinusExpressionAST : @semanticExpressionAST {
-  public var @location mOperatorLocation
-  public var @semanticExpressionAST mExpression
+  private let @location mOperatorLocation
+  private let @semanticExpressionAST mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -75,7 +75,7 @@ override method @unaryWrappingMinusExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @unaryWrappingMinusExpressionForGeneration : @semanticExpressionForGeneration {
-  public var @semanticExpressionForGeneration mExpression
+  private let @semanticExpressionForGeneration mExpression
 }
 
 #·····················································································································

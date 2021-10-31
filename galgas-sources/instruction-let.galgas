@@ -3,24 +3,24 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @localVariableOrConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
-  public var @bool mIsConstant
-  public var @lstring mOptionalTypeName
-  public var @lstring mVariableName
-  public var @semanticExpressionAST mSourceExpression
+  private let @bool mIsConstant
+  private let @lstring mOptionalTypeName
+  private let @lstring mVariableName
+  private let @semanticExpressionAST mSourceExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @undefinedLocalConstantDeclarationAST : @semanticInstructionAST {
-  public var @lstring mConstantTypeName
-  public var @lstring mConstantName
+  private let @lstring mConstantTypeName
+  private let @lstring mConstantName
 }
 
 #·····················································································································*
 
 refclass @localConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
-  public var @lstring mVariableName
-  public var @semanticExpressionAST mSourceExpression
+  private let @lstring mVariableName
+  private let @semanticExpressionAST mSourceExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -200,17 +200,17 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @undefinedLocalConstantDeclarationForGeneration : @semanticInstructionForGeneration {
-  public var @unifiedTypeMap-entry mTargetType
-  public var @string mCppVariableName
+  private let @unifiedTypeMap-entry mTargetType
+  private let @string mCppVariableName
 }
 
 #······················································································································*
 
 refclass @localVariableOrConstantDeclarationWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
-  public var @unifiedTypeMap-entry mTargetType
-  public var @bool mIsConstant
-  public var @string mCppVariableName
-  public var @semanticExpressionForGeneration mSourceExpression
+  private let @unifiedTypeMap-entry mTargetType
+  private let @bool mIsConstant
+  private let @string mCppVariableName
+  private let @semanticExpressionForGeneration mSourceExpression
 }
 
 #······················································································································*

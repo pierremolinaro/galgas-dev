@@ -3,7 +3,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @literalTypeInExpressionAST : @semanticExpressionAST {
-  public var @lstring mLiteralTypeName
+  private let @lstring mLiteralTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -62,7 +62,7 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @literalTypeInExpressionForGeneration : @semanticExpressionForGeneration {
-  public var @unifiedTypeMap-entry mLiteralType
+  private let @unifiedTypeMap-entry mLiteralType
 }
 
 #·····················································································································

@@ -3,12 +3,12 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @parseLoopInstruction : @syntaxInstructionAST {
-  public var @semanticExpressionAST mVariantExpression
-  public var @location mEndOfVariantExpression
-  public var @semanticExpressionAST mWhileExpression
-  public var @location mEndOfWhileExpression
-  public var @syntaxInstructionList mDoInstructionList
-  public var @location mEndOfInstructionList
+  private let @semanticExpressionAST mVariantExpression
+  private let @location mEndOfVariantExpression
+  private let @semanticExpressionAST mWhileExpression
+  private let @location mEndOfWhileExpression
+  private let @syntaxInstructionList mDoInstructionList
+  private let @location mEndOfInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -156,9 +156,9 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @parseLoopInstructionForGeneration : @syntaxInstructionForGeneration {
-  public var @semanticExpressionForGeneration mVariantExpression
-  public var @semanticExpressionForGeneration mWhileExpression
-  public var @semanticInstructionListForGeneration mInstructionList
+  private let @semanticExpressionForGeneration mVariantExpression
+  private let @semanticExpressionForGeneration mWhileExpression
+  private let @semanticInstructionListForGeneration mInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

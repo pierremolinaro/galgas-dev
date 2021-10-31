@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @listmapDeclarationAST : @semanticDeclarationAST {
-  public var @lstring mListmapTypeName
-  public var @lstring mAssociatedListTypeName
+  private let @lstring mListmapTypeName
+  private let @lstring mAssociatedListTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -249,9 +249,9 @@ override method @listmapDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @listmapTypeForGeneration : @semanticTypeForGeneration {
-  public var @unifiedTypeMap-entry mAssociatedListTypeIndex
-  public var @typedPropertyList mAssociatedListTypedAttributeList
-  public var @unifiedTypeMap-entry mAssociatedListMapElementTypeIndex
+  private let @unifiedTypeMap-entry mAssociatedListTypeIndex
+  private let @typedPropertyList mAssociatedListTypedAttributeList
+  private let @unifiedTypeMap-entry mAssociatedListMapElementTypeIndex
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -3,13 +3,13 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @externTypeDeclarationAST : @semanticDeclarationAST {
-  public var @lstring mExternTypeName
-  public var @string mCppPreDeclarationCode
-  public var @string mCppClassCode
-  public var @externTypeConstructorList mExternTypeConstructorList
-  public var @externTypeGetterList mExternTypeGetterList
-  public var @externTypeSetterList mExternTypeSetterList
-  public var @externTypeMethodList mExternTypeMethodList
+  private let @lstring mExternTypeName
+  private let @string mCppPreDeclarationCode
+  private let @string mCppClassCode
+  private let @externTypeConstructorList mExternTypeConstructorList
+  private let @externTypeGetterList mExternTypeGetterList
+  private let @externTypeSetterList mExternTypeSetterList
+  private let @externTypeMethodList mExternTypeMethodList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -285,6 +285,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
       !mDeclarationLocation
       !true #inHasLexiqueAndLocationArguments
       !@methodQualifier.isBasicFinal
+#      !.constantMethod
       !"" # No Error message
     ]
   end
@@ -351,9 +352,9 @@ override method @externTypeDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @externTypeDeclarationForGeneration : @semanticTypeForGeneration {
-  public var @string mExternTypeName
-  public var @string mCppPreDeclarationCode
-  public var @string mCppClassCode
+  private let @string mExternTypeName
+  private let @string mCppPreDeclarationCode
+  private let @string mCppClassCode
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

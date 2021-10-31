@@ -3,9 +3,9 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @abstractExtensionSetterAST : @semanticDeclarationAST {
-  public var @lstring mTypeName
-  public var @lstring mAbstractExtensionSetterName
-  public var @formalParameterListAST mAbstractExtensionSetterFormalParameterList
+  private let @lstring mTypeName
+  private let @lstring mAbstractExtensionSetterName
+  private let @formalParameterListAST mAbstractExtensionSetterFormalParameterList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -157,9 +157,9 @@ override method @abstractExtensionSetterAST buildExtensionListMaps
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @abstractExtensionSetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  public var @unifiedTypeMap-entry mReceiverType
-  public var @string mAbstractExtensionSetterName
-  public var @formalParameterListForGeneration mAbstractExtensionSetterFormalParameterList
+  private let @unifiedTypeMap-entry mReceiverType
+  private let @string mAbstractExtensionSetterName
+  private let @formalParameterListForGeneration mAbstractExtensionSetterFormalParameterList
 }
 
 #·······················································································································

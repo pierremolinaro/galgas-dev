@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @tildeExpressionAST : @semanticExpressionAST {
-  public var @location mOperatorLocation
-  public var @semanticExpressionAST mExpression
+  private let @location mOperatorLocation
+  private let @semanticExpressionAST mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -82,7 +82,7 @@ override method @tildeExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @tildeExpressionForGeneration : @semanticExpressionForGeneration {
-  public var @semanticExpressionForGeneration mExpression
+  private let @semanticExpressionForGeneration mExpression
 }
 
 #·····················································································································

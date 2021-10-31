@@ -3,13 +3,13 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @extensionGetterAST : @semanticDeclarationAST {
-  public var @lstring mTypeName
-  public var @lstring mExtensionGetterName
-  public var @formalInputParameterListAST mExtensionGetterFormalInputParameterList
-  public var @lstring mExtensionGetterReturnedTypeName
-  public var @lstring mExtensionGetterReturnedVariableName
-  public var @semanticInstructionListAST mExtensionGetterInstructionList
-  public var @location mEndOfReaderLocation
+  private let @lstring mTypeName
+  private let @lstring mExtensionGetterName
+  private let @formalInputParameterListAST mExtensionGetterFormalInputParameterList
+  private let @lstring mExtensionGetterReturnedTypeName
+  private let @lstring mExtensionGetterReturnedVariableName
+  private let @semanticInstructionListAST mExtensionGetterInstructionList
+  private let @location mEndOfReaderLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -211,14 +211,14 @@ override method @extensionGetterAST buildExtensionListMaps
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  public var @unifiedTypeMap-entry mReceiverType
-  public var @string mExtensionGetterName
-  public var @bool mImplementedAsFunction
-  public var @unifiedTypeMap-entry mResultType
-  public var @string mResultVarCppName
-  public var @formalInputParameterListForGeneration mExtensionGetterFormalParameterList
-  public var @typedPropertyList mTypedAttributeList
-  public var @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
+  private let @unifiedTypeMap-entry mReceiverType
+  private let @string mExtensionGetterName
+  private let @bool mImplementedAsFunction
+  private let @unifiedTypeMap-entry mResultType
+  private let @string mResultVarCppName
+  private let @formalInputParameterListForGeneration mExtensionGetterFormalParameterList
+  private let @typedPropertyList mTypedAttributeList
+  private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 
 #·······················································································································

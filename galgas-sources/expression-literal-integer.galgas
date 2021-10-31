@@ -3,31 +3,31 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @literalUIntExpressionAST : @semanticExpressionAST {
-  public var @luint mValue
+  private let @luint mValue
 }
 
 #·····················································································································
 
 refclass @literalUInt64ExpressionAST : @semanticExpressionAST {
-  public var @luint64 mValue
+  private let @luint64 mValue
 }
 
 #·····················································································································
 
 refclass @literalSIntExpressionAST : @semanticExpressionAST {
-  public var @lsint mValue
+  private let @lsint mValue
 }
 
 #·····················································································································
 
 refclass @literalSInt64ExpressionAST : @semanticExpressionAST {
-  public var @lsint64 mValue
+  private let @lsint64 mValue
 }
 
 #·····················································································································
 
 refclass @literalBigIntExpressionAST : @semanticExpressionAST {
-  public var @lbigint mValue
+  private let @lbigint mValue
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -198,7 +198,7 @@ override method @literalBigIntExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @literalUIntExpressionForGeneration : @semanticExpressionForGeneration {
-  public var @uint mValue
+  public let @uint mValue
 }
 
 #·····················································································································
@@ -215,7 +215,7 @@ override method @literalUIntExpressionForGeneration generateExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @literalUInt64ExpressionForGeneration : @semanticExpressionForGeneration {
-  public var @uint64 mValue
+  private let @uint64 mValue
 }
 
 #·····················································································································
@@ -232,7 +232,7 @@ override method @literalUInt64ExpressionForGeneration generateExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @literalSIntExpressionForGeneration : @semanticExpressionForGeneration {
-  public var @sint mValue
+  private let @sint mValue
 }
 
 #·····················································································································
@@ -249,7 +249,7 @@ override method @literalSIntExpressionForGeneration generateExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @literalSInt64ExpressionForGeneration : @semanticExpressionForGeneration {
-  public var @sint64 mValue
+  private let @sint64 mValue
 }
 
 #·····················································································································
@@ -266,7 +266,7 @@ override method @literalSInt64ExpressionForGeneration generateExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @literalBigIntExpressionForGeneration : @semanticExpressionForGeneration {
-  public var @bigint mValue
+  public let @bigint mValue
 }
 
 #·····················································································································

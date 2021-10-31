@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @procCallInstructionAST : @semanticInstructionAST {
-  public var @lstring mRoutineName
-  public var @actualParameterListAST mActualParameterList
+  private let @lstring mRoutineName
+  private let @actualParameterListAST mActualParameterList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -73,7 +73,7 @@ override method @procCallInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !self.mRoutineName
-    !"'" + self.mRoutineName + "' routine header"
+    !invokedEntityNameForErrorSignaling: "'" + self.mRoutineName + "' routine header"
     !routineSignature
     !self.mActualParameterList
     !?ioVariableMap
@@ -91,8 +91,8 @@ override method @procCallInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @procCallInstructionForGeneration : @semanticInstructionForGeneration {
-  public var @lstring mRoutineName
-  public var @actualParameterListForGeneration mActualParameterList
+  private let @lstring mRoutineName
+  private let @actualParameterListForGeneration mActualParameterList
 }
 
 #·····················································································································*

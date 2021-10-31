@@ -3,12 +3,12 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @classDeclarationAST : @semanticDeclarationAST {
-  public var @bool mIsAbstract
-  public var @bool mIsReference
-  public var @lstring mClassTypeName
-  public var @lstring mSuperClassName # Empty if no super class
-  public var @lstringlist mClassFeatureList
-  public var @propertyInCollectionListAST mPropertyList
+  private let @bool mIsAbstract
+  private let @bool mIsReference
+  private let @lstring mClassTypeName
+  private let @lstring mSuperClassName # Empty if no super class
+  private let @lstringlist mClassFeatureList
+  private let @propertyInCollectionListAST mPropertyList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -218,6 +218,7 @@ override method @classDeclarationAST enterInSemanticContext
         !mDeclarationLocation
         !mHasCompilerArgument
         !.isInherited
+#        !mutatingStatus
         !mErrorMessage
       ] 
     end
@@ -478,12 +479,12 @@ override method @classDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @classTypeForGeneration : @semanticTypeForGeneration {
-  public var @bool mIsAbstract
-  public var @bool mIsReference
-  public var @unifiedTypeMap-entry mSuperClass # Null if no super class
-  public var @typedPropertyList mAllTypedAttributeList # Inherited followed by current attributes
-  public var @typedPropertyList mTypedAttributeList
-  public var @bool mGenerateHeaderInSeparateFile # Significant only for classes
+  private let @bool mIsAbstract
+  private let @bool mIsReference
+  private let @unifiedTypeMap-entry mSuperClass # Null if no super class
+  private let @typedPropertyList mAllTypedAttributeList # Inherited followed by current attributes
+  private let @typedPropertyList mTypedAttributeList
+  private let @bool mGenerateHeaderInSeparateFile # Significant only for classes
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

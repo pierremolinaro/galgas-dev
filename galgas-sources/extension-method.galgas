@@ -3,11 +3,11 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @extensionMethodAST : @semanticDeclarationAST {
-  public var @lstring mTypeName
-  public var @lstring mExtensionMethodName
-  public var @formalParameterListAST mExtensionMethodFormalParameterList
-  public var @semanticInstructionListAST mExtensionMethodInstructionList
-  public var @location mEndOfMethodLocation
+  private let @lstring mTypeName
+  private let @lstring mExtensionMethodName
+  private let @formalParameterListAST mExtensionMethodFormalParameterList
+  private let @semanticInstructionListAST mExtensionMethodInstructionList
+  private let @location mEndOfMethodLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -203,12 +203,12 @@ override method @extensionMethodAST buildExtensionListMaps
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @extensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  public var @unifiedTypeMap-entry mReceiverType
-  public var @string mExtensionMethodName
-  public var @bool mImplementedAsFunction
-  public var @formalParameterListForGeneration mExtensionMethodFormalParameterList
-  public var @typedPropertyList mTypedAttributeList
-  public var @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
+  private let @unifiedTypeMap-entry mReceiverType
+  private let @string mExtensionMethodName
+  private let @bool mImplementedAsFunction
+  private let @formalParameterListForGeneration mExtensionMethodFormalParameterList
+  private let @typedPropertyList mTypedAttributeList
+  private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 
 #·······················································································································

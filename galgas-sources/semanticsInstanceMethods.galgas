@@ -27,6 +27,7 @@ private proc enterInstanceMethodWithoutArgument
     !.nowhere
     !inHasCompilerArgument
     !@methodQualifier. isBasic
+#    !.constantMethod
     !"" # No error message
   ]
 }
@@ -51,6 +52,7 @@ private proc enterInstanceMethodWithInputArgument
     !.nowhere
     !inHasCompilerArgument
     !@methodQualifier. isBasic
+#    !.constantMethod
     !"" # No error message
   ]
 }
@@ -114,6 +116,7 @@ override method @dataPredefinedTypeAST getInstanceMethodMap
     !@location.here
     !true
     !@methodQualifier. isBasic
+#    !.constantMethod
     !"" # No error message
   ]
 }
@@ -183,6 +186,7 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
     !@location.here
     !true
     !@methodQualifier.isBasic
+#    !.constantMethod
     !"" # No error message
   ]
   [!?outInstanceMethodMap insertKey
@@ -192,23 +196,9 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
     !@location.here
     !true
     !@methodQualifier.isBasic
+#    !.constantMethod
     !"" # No error message
   ]
-#--- commandWithArguments
-#  argList = {}
-#  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"stringlist" ?t]
-#  argList += !["arguments" nowhere] !t !.argumentConstantIn !"inArguments"
-#  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"string" ?t]
-#  argList += !["output" nowhere] !t !.argumentOut !"outOutputString"
-#  [!?outInstanceMethodMap insertKey
-#    !@lstring.new {!"command" !.here}
-#    !.definedAsMember
-#    !argList
-#    !.here
-#    !true
-#    !.isBasic
-#    !"" # No error message
-#  ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -231,6 +221,7 @@ override method @bigintPredefinedTypeAST getInstanceMethodMap
     !.here
     !true
     !.isBasic
+#    !.constantMethod
     !"" # No error message
   ]
   [!?outInstanceMethodMap insertKey
@@ -240,6 +231,7 @@ override method @bigintPredefinedTypeAST getInstanceMethodMap
     !.here
     !true
     !.isBasic
+#    !.constantMethod
     !"" # No error message
   ]
   [!?outInstanceMethodMap insertKey
@@ -249,6 +241,7 @@ override method @bigintPredefinedTypeAST getInstanceMethodMap
     !.here
     !true
     !.isBasic
+#    !.constantMethod
     !"" # No error message
   ]
 }

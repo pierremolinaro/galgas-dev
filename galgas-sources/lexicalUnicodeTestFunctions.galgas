@@ -30,27 +30,27 @@ abstract refclass @lexicalFunctionExpressionAST {
 #······················································································································*
 
 refclass @lexicalFunctionOrExpressionAST : @lexicalFunctionExpressionAST {
-  public var @lexicalFunctionExpressionAST mLeftOperand
-  public var @lexicalFunctionExpressionAST mRightOperand
+  private let @lexicalFunctionExpressionAST mLeftOperand
+  private let @lexicalFunctionExpressionAST mRightOperand
 }
 
 #······················································································································*
 
 refclass @lexicalFunctionCallAST : @lexicalFunctionExpressionAST {
-  public var @lstring mCalledFunctionName
+  private let @lstring mCalledFunctionName
 }
 
 #······················································································································*
 
 refclass @lexicalFunctionCharacterMatchAST : @lexicalFunctionExpressionAST {
-  public var @lchar mCharacter
+  private let @lchar mCharacter
 }
 
 #······················································································································*
 
 refclass @lexicalFunctionCharacterIntervalMatchAST : @lexicalFunctionExpressionAST {
-  public var @lchar mLowerBound
-  public var @lchar mUpperBound
+  private let @lchar mLowerBound
+  private let @lchar mUpperBound
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

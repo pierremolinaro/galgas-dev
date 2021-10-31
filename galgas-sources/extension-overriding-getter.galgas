@@ -3,13 +3,13 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @overridingExtensionGetterAST : @semanticDeclarationAST {
-  public var @lstring mTypeName
-  public var @lstring mOverridingExtensionGetterName
-  public var @formalInputParameterListAST mOverridingExtensionGetterFormalInputParameterList
-  public var @lstring mOverridingExtensionGetterReturnedTypeName
-  public var @lstring mOverridingExtensionGetterReturnedVariableName
-  public var @semanticInstructionListAST mOverridingExtensionGetterInstructionList
-  public var @location mEndOfReaderLocation
+  private let @lstring mTypeName
+  private let @lstring mOverridingExtensionGetterName
+  private let @formalInputParameterListAST mOverridingExtensionGetterFormalInputParameterList
+  private let @lstring mOverridingExtensionGetterReturnedTypeName
+  private let @lstring mOverridingExtensionGetterReturnedVariableName
+  private let @semanticInstructionListAST mOverridingExtensionGetterInstructionList
+  private let @location mEndOfReaderLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -221,14 +221,14 @@ override method @overridingExtensionGetterAST buildExtensionListMaps
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @overrideExtensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  public var @unifiedTypeMap-entry mReceiverType
-  public var @string mBaseTypeName
-  public var @string mOverridingExtensionGetterName
-  public var @unifiedTypeMap-entry mResultType
-  public var @string mResultVarCppName
-  public var @formalInputParameterListForGeneration mOverridingExtensionGetterFormalParameterList
-  public var @typedPropertyList mTypedAttributeList
-  public var @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
+  private let @unifiedTypeMap-entry mReceiverType
+  private let @string mBaseTypeName
+  private let @string mOverridingExtensionGetterName
+  private let @unifiedTypeMap-entry mResultType
+  private let @string mResultVarCppName
+  private let @formalInputParameterListForGeneration mOverridingExtensionGetterFormalParameterList
+  private let @typedPropertyList mTypedAttributeList
+  private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 
 #·······················································································································

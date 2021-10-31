@@ -13,10 +13,10 @@ list @castInstructionBranchListAST {
 #······················································································································*
 
 refclass @structuredCastInstructionAST : @semanticInstructionAST {
-  public var @semanticExpressionAST mCastExpression
-  public var @castInstructionBranchListAST mCastInstructionBranchList
-  public var @semanticInstructionListAST mElseInstructionList
-  public var @location mEndOfCastInstruction
+  private let @semanticExpressionAST mCastExpression
+  private let @castInstructionBranchListAST mCastInstructionBranchList
+  private let @semanticInstructionListAST mElseInstructionList
+  private let @location mEndOfCastInstruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -232,9 +232,9 @@ list @castInstructionBranchListForGeneration {
 #······················································································································*
 
 refclass @structuredCastInstructionForGeneration : @semanticInstructionForGeneration {
-  public var @semanticExpressionForGeneration mExpression
-  public var @castInstructionBranchListForGeneration mCastBranchList
-  public var @semanticInstructionListForGeneration mElseInstructionList
+  private let @semanticExpressionForGeneration mExpression
+  private let @castInstructionBranchListForGeneration mCastBranchList
+  private let @semanticInstructionListForGeneration mElseInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

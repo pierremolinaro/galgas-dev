@@ -3,13 +3,13 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @trueExpressionAST : @semanticExpressionAST {
-  public var @location mLocation
+  private let @location mLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @falseExpressionAST : @semanticExpressionAST {
-  public var @location mLocation
+  private let @location mLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

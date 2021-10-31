@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @functionCallExpressionAST : @semanticExpressionAST {
-  public var @lstring mFunctionName
-  public var @actualOutputExpressionList mExpressionList
+  private let @lstring mFunctionName
+  private let @actualOutputExpressionList mExpressionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -107,8 +107,8 @@ override method @functionCallExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @functionCallExpressionForGeneration : @semanticExpressionForGeneration {
-  public var @string mFunctionName
-  public var @semanticExpressionListForGeneration mExpressions
+  private let @string mFunctionName
+  private let @semanticExpressionListForGeneration mExpressions
 }
 
 #·····················································································································

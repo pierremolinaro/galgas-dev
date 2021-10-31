@@ -140,6 +140,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !@location.here
     !true # Has Compiler Argument
     !@methodQualifier.isBasic
+#    !.constantMethod
     !"" # No error message
   ]
   [!?instanceMethodMap insertKey
@@ -149,6 +150,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !@location.here
     !true # Has Compiler Argument
     !@methodQualifier.isBasic
+#    !.constantMethod
     !"" # No error message
   ]
   drop formalParameterList
@@ -171,6 +173,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !@location.here
     !false # No Compiler Argument
     !@methodQualifier.isBasic
+#    !.constantMethod
     !"" # No error message
   ]
   [!?instanceMethodMap insertKey
@@ -180,6 +183,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !@location.here
     !false # No Compiler Argument
     !@methodQualifier.isBasic
+#    !.constantMethod
     !"" # No error message
   ]
   [!?instanceMethodMap insertKey
@@ -189,6 +193,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !@location.here
     !false # No Compiler Argument
     !@methodQualifier.isBasic
+#    !.constantMethod
     !"" # No error message
   ]
   drop formalParameterList

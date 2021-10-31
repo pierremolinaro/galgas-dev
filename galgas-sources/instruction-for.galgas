@@ -16,52 +16,52 @@ abstract refclass @abstractEnumeratedCollectionAST {
 #·····················································································································*
 
 refclass @enumeratedCollectionImplicitVarInExpAST : @abstractEnumeratedCollectionAST {
-  public var @lstring mPrefix
-  public var @semanticExpressionAST mEnumeratedExpression
-  public var @location mEndOfAnonymousEnumeration
+  private let @lstring mPrefix
+  private let @semanticExpressionAST mEnumeratedExpression
+  private let @location mEndOfAnonymousEnumeration
 }
 
 #·····················································································································*
 
 refclass @enumeratedCollectionVarInExpAST : @abstractEnumeratedCollectionAST {
-  public var @lstring mEnumerationOptionalTypeName # Empty string if implicit
-  public var @lstring mEnumerationVariable  # Empty string if joker
-  public var @semanticExpressionAST mEnumeratedExpression
-  public var @location mEndOfEnumerationExpression
+  private let @lstring mEnumerationOptionalTypeName # Empty string if implicit
+  private let @lstring mEnumerationVariable  # Empty string if joker
+  private let @semanticExpressionAST mEnumeratedExpression
+  private let @location mEndOfEnumerationExpression
 }
 
 #·····················································································································*
 
 refclass @enumeratedCollectionCstListInExpAST : @abstractEnumeratedCollectionAST {
-  public var @forInstructionEnumeratedObjectElementListAST mElementList
-  public var @bool mEndsWithEllipsis
-  public var @semanticExpressionAST mEnumeratedExpression
-  public var @location mEndOfEnumerationExpression
+  private let @forInstructionEnumeratedObjectElementListAST mElementList
+  private let @bool mEndsWithEllipsis
+  private let @semanticExpressionAST mEnumeratedExpression
+  private let @location mEndOfEnumerationExpression
 }
 
 #·····················································································································*
 
 list @forInstructionEnumeratedObjectListAST {
-  public var @bool mAscending
-  public var @abstractEnumeratedCollectionAST mEnumeratedCollection
+  private let @bool mAscending
+  private let @abstractEnumeratedCollectionAST mEnumeratedCollection
 }
 
 #·····················································································································*
 
 refclass @forInstructionAST : @semanticInstructionAST {
-  public var @forInstructionEnumeratedObjectListAST mEnumeratedObjectList
-  public var @lstring mIndexVariableName
-  public var @semanticExpressionAST mWhileExpression
-  public var @location mEndOf_while_expression
-  public var @semanticInstructionListAST mBeforeInstructionList
-  public var @location mEndOf_before_branch
-  public var @semanticInstructionListAST mBetweenInstructionList
-  public var @location mEndOf_between_branch
-  public var @semanticInstructionListAST mDoInstructionList
-  public var @location mEndOf_do_branch
-  public var @semanticInstructionListAST mAfterInstructionList
-  public var @location mEndOf_after_branch
-  public var @location mEndOf_foreach_instruction
+  private let @forInstructionEnumeratedObjectListAST mEnumeratedObjectList
+  private let @lstring mIndexVariableName
+  private let @semanticExpressionAST mWhileExpression
+  private let @location mEndOf_while_expression
+  private let @semanticInstructionListAST mBeforeInstructionList
+  private let @location mEndOf_before_branch
+  private let @semanticInstructionListAST mBetweenInstructionList
+  private let @location mEndOf_between_branch
+  private let @semanticInstructionListAST mDoInstructionList
+  private let @location mEndOf_do_branch
+  private let @semanticInstructionListAST mAfterInstructionList
+  private let @location mEndOf_after_branch
+  private let @location mEndOf_foreach_instruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -662,14 +662,14 @@ list @forInstructionEnumeratedObjectListForGeneration {
 #·····················································································································*
 
 refclass @forInstructionForGeneration : @semanticInstructionForGeneration {
-  public var @location mInstructionLocation
-  public var @forInstructionEnumeratedObjectListForGeneration mEnumeratedObjectList
-  public var @string mIndexVariableCppName  # Empty string if no index
-  public var @semanticExpressionForGeneration mWhileExpression
-  public var @semanticInstructionListForGeneration mBeforeInstructionList
-  public var @semanticInstructionListForGeneration mBetweenInstructionList
-  public var @semanticInstructionListForGeneration mDoInstructionList
-  public var @semanticInstructionListForGeneration mAfterInstructionList
+  private let @location mInstructionLocation
+  private let @forInstructionEnumeratedObjectListForGeneration mEnumeratedObjectList
+  private let @string mIndexVariableCppName  # Empty string if no index
+  private let @semanticExpressionForGeneration mWhileExpression
+  private let @semanticInstructionListForGeneration mBeforeInstructionList
+  private let @semanticInstructionListForGeneration mBetweenInstructionList
+  private let @semanticInstructionListForGeneration mDoInstructionList
+  private let @semanticInstructionListForGeneration mAfterInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

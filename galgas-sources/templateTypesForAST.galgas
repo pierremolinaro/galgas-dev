@@ -46,9 +46,9 @@ list @templateExpressionListAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateGetterCallInExpressionAST : @templateExpressionAST {
-  public var @templateExpressionAST mReceiverExpression
-  public var @lstring mGetterName
-  public var @templateExpressionListAST mExpressionList
+  private let @templateExpressionAST mReceiverExpression
+  private let @lstring mGetterName
+  private let @templateExpressionListAST mExpressionList
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -56,9 +56,9 @@ refclass @templateGetterCallInExpressionAST : @templateExpressionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateConstructorAST : @templateExpressionAST {
-  public var @lstring mTypeName
-  public var @lstring mConstructorName
-  public var @templateExpressionListAST mExpressionList
+  private let @lstring mTypeName
+  private let @lstring mConstructorName
+  private let @templateExpressionListAST mExpressionList
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -66,9 +66,9 @@ refclass @templateConstructorAST : @templateExpressionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateFileWrapperTemplateCallAST : @templateExpressionAST {
-  public var @lstring mFileWrapperName
-  public var @lstring mTemplateName
-  public var @templateExpressionListAST mOutExpressionList
+  private let @lstring mFileWrapperName
+  private let @lstring mTemplateName
+  private let @templateExpressionListAST mOutExpressionList
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -76,9 +76,9 @@ refclass @templateFileWrapperTemplateCallAST : @templateExpressionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateExtensionTemplateCallAST : @templateExpressionAST {
-  public var @templateExpressionAST mExpressionValue
-  public var @lstring mTemplateName
-  public var @templateExpressionListAST mOutExpressionList
+  private let @templateExpressionAST mExpressionValue
+  private let @lstring mTemplateName
+  private let @templateExpressionListAST mOutExpressionList
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -86,119 +86,119 @@ refclass @templateExtensionTemplateCallAST : @templateExpressionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateAndOperationAST : @templateExpressionAST {
-  public var @location mOperatorLocation
-  public var @templateExpressionAST mLeftExpression
-  public var @templateExpressionAST mRightExpression
+  private let @location mOperatorLocation
+  private let @templateExpressionAST mLeftExpression
+  private let @templateExpressionAST mRightExpression
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateOrOperationAST : @templateExpressionAST {
-  public var @location mOperatorLocation
-  public var @templateExpressionAST mLeftExpression
-  public var @templateExpressionAST mRightExpression
+  private let @location mOperatorLocation
+  private let @templateExpressionAST mLeftExpression
+  private let @templateExpressionAST mRightExpression
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateXorOperationAST : @templateExpressionAST {
-  public var @location mOperatorLocation
-  public var @templateExpressionAST mLeftExpression
-  public var @templateExpressionAST mRightExpression
+  private let @location mOperatorLocation
+  private let @templateExpressionAST mLeftExpression
+  private let @templateExpressionAST mRightExpression
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateTrueBoolAST : @templateExpressionAST {
-  public var @location mLocation
+  private let @location mLocation
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateFalseBoolAST : @templateExpressionAST {
-  public var @location mLocation
+  private let @location mLocation
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateLiteralStringExpressionAST : @templateExpressionAST {
-  public var @stringlist mLiteralStringList
-  public var @location mLocation
+  private let @stringlist mLiteralStringList
+  private let @location mLocation
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateLiteralUIntExpressionAST : @templateExpressionAST {
-  public var @luint mLiteralInt
+  private let @luint mLiteralInt
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateLiteralSIntExpressionAST : @templateExpressionAST {
-  public var @lsint mLiteralInt
+  private let @lsint mLiteralInt
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateLiteralUInt64ExpressionAST : @templateExpressionAST {
-  public var @luint64 mLiteralInt
+  private let @luint64 mLiteralInt
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateLiteralSInt64ExpressionAST : @templateExpressionAST {
-  public var @lsint64 mLiteralInt
+  private let @lsint64 mLiteralInt
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateLiteralCharExpressionAST : @templateExpressionAST {
-  public var @lchar mLiteralChar
+  private let @lchar mLiteralChar
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateLiteralDoubleExpressionAST : @templateExpressionAST {
-  public var @ldouble mLiteralDouble
+  private let @ldouble mLiteralDouble
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @structFieldAccessTemplateExpressionAST : @templateExpressionAST {
-  public var @location mOperatorLocation
-  public var @templateExpressionAST mExpression
-  public var @lstring mStructFieldName
+  private let @location mOperatorLocation
+  private let @templateExpressionAST mExpression
+  private let @lstring mStructFieldName
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateNotOperatorAST : @templateExpressionAST {
-  public var @location mOperatorLocation
-  public var @templateExpressionAST mExpression
+  private let @location mOperatorLocation
+  private let @templateExpressionAST mExpression
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateLogicalNegateAST : @templateExpressionAST {
-  public var @location mOperatorLocation
-  public var @templateExpressionAST mExpression
+  private let @location mOperatorLocation
+  private let @templateExpressionAST mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateOptionAccessAST : @templateExpressionAST {
-  public var @lstring mOptionComponentName
-  public var @lstring mOptionName
-  public var @lstring mGetterName
+  private let @lstring mOptionComponentName
+  private let @lstring mOptionName
+  private let @lstring mGetterName
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateTestDynamicClassAST : @templateExpressionAST {
-  public var @templateExpressionAST mReceiverExpression
-  public var @location mEndOfReceiverExpression
-  public var @dynamicTypeComparisonKind mTypeComparisonKind
-  public var @lstring mTypeName
+  private let @templateExpressionAST mReceiverExpression
+  private let @location mEndOfReceiverExpression
+  private let @dynamicTypeComparisonKind mTypeComparisonKind
+  private let @lstring mTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -206,8 +206,8 @@ refclass @templateTestDynamicClassAST : @templateExpressionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateFunctionCallAST : @templateExpressionAST {
-  public var @lstring mFunctionName
-  public var @templateExpressionListAST mExpressionList
+  private let @lstring mFunctionName
+  private let @templateExpressionListAST mExpressionList
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -215,7 +215,7 @@ refclass @templateFunctionCallAST : @templateExpressionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateVarInExpressionAST : @templateExpressionAST {
-  public var @lstring mVarName
+  private let @lstring mVarName
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -223,9 +223,9 @@ refclass @templateVarInExpressionAST : @templateExpressionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateAddOperationAST : @templateExpressionAST {
-  public var @location mOperatorLocation
-  public var @templateExpressionAST mLeftExpression
-  public var @templateExpressionAST mRightExpression
+  private let @location mOperatorLocation
+  private let @templateExpressionAST mLeftExpression
+  private let @templateExpressionAST mRightExpression
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -233,9 +233,9 @@ refclass @templateAddOperationAST : @templateExpressionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateSubOperationAST : @templateExpressionAST {
-  public var @location mOperatorLocation
-  public var @templateExpressionAST mLeftExpression
-  public var @templateExpressionAST mRightExpression
+  private let @location mOperatorLocation
+  private let @templateExpressionAST mLeftExpression
+  private let @templateExpressionAST mRightExpression
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -243,9 +243,9 @@ refclass @templateSubOperationAST : @templateExpressionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateMultiplyOperationAST : @templateExpressionAST {
-  public var @location mOperatorLocation
-  public var @templateExpressionAST mLeftExpression
-  public var @templateExpressionAST mRightExpression
+  private let @location mOperatorLocation
+  private let @templateExpressionAST mLeftExpression
+  private let @templateExpressionAST mRightExpression
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -253,9 +253,9 @@ refclass @templateMultiplyOperationAST : @templateExpressionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateDivideOperationAST : @templateExpressionAST {
-  public var @location mOperatorLocation
-  public var @templateExpressionAST mLeftExpression
-  public var @templateExpressionAST mRightExpression
+  private let @location mOperatorLocation
+  private let @templateExpressionAST mLeftExpression
+  private let @templateExpressionAST mRightExpression
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -263,9 +263,9 @@ refclass @templateDivideOperationAST : @templateExpressionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateModuloOperationAST : @templateExpressionAST {
-  public var @location mOperatorLocation
-  public var @templateExpressionAST mLeftExpression
-  public var @templateExpressionAST mRightExpression
+  private let @location mOperatorLocation
+  private let @templateExpressionAST mLeftExpression
+  private let @templateExpressionAST mRightExpression
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -273,8 +273,8 @@ refclass @templateModuloOperationAST : @templateExpressionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateUnaryMinusOperationAST : @templateExpressionAST {
-  public var @location mOperatorLocation
-  public var @templateExpressionAST mExpression
+  private let @location mOperatorLocation
+  private let @templateExpressionAST mExpression
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -282,65 +282,65 @@ refclass @templateUnaryMinusOperationAST : @templateExpressionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateEqualTestAST : @templateExpressionAST {
-  public var @location mOperatorLocation
-  public var @templateExpressionAST mLeftExpression
-  public var @templateExpressionAST mRightExpression
+  private let @location mOperatorLocation
+  private let @templateExpressionAST mLeftExpression
+  private let @templateExpressionAST mRightExpression
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateNonEqualTestAST : @templateExpressionAST {
-  public var @location mOperatorLocation
-  public var @templateExpressionAST mLeftExpression
-  public var @templateExpressionAST mRightExpression
+  private let @location mOperatorLocation
+  private let @templateExpressionAST mLeftExpression
+  private let @templateExpressionAST mRightExpression
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateStrictInfTestAST : @templateExpressionAST {
-  public var @location mOperatorLocation
-  public var @templateExpressionAST mLeftExpression
-  public var @templateExpressionAST mRightExpression
+  private let @location mOperatorLocation
+  private let @templateExpressionAST mLeftExpression
+  private let @templateExpressionAST mRightExpression
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInfOrEqualTestAST : @templateExpressionAST {
-  public var @location mOperatorLocation
-  public var @templateExpressionAST mLeftExpression
-  public var @templateExpressionAST mRightExpression
+  private let @location mOperatorLocation
+  private let @templateExpressionAST mLeftExpression
+  private let @templateExpressionAST mRightExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateStrictSupTestAST : @templateExpressionAST {
-  public var @location mOperatorLocation
-  public var @templateExpressionAST mLeftExpression
-  public var @templateExpressionAST mRightExpression
+  private let @location mOperatorLocation
+  private let @templateExpressionAST mLeftExpression
+  private let @templateExpressionAST mRightExpression
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateSupOrEqualTestAST : @templateExpressionAST {
-  public var @location mOperatorLocation
-  public var @templateExpressionAST mLeftExpression
-  public var @templateExpressionAST mRightExpression
+  private let @location mOperatorLocation
+  private let @templateExpressionAST mLeftExpression
+  private let @templateExpressionAST mRightExpression
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateLeftShiftOperationAST : @templateExpressionAST {
-  public var @location mOperatorLocation
-  public var @templateExpressionAST mLeftExpression
-  public var @templateExpressionAST mRightExpression
+  private let @location mOperatorLocation
+  private let @templateExpressionAST mLeftExpression
+  private let @templateExpressionAST mRightExpression
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateRightShiftOperationAST : @templateExpressionAST {
-  public var @location mOperatorLocation
-  public var @templateExpressionAST mLeftExpression
-  public var @templateExpressionAST mRightExpression
+  private let @location mOperatorLocation
+  private let @templateExpressionAST mLeftExpression
+  private let @templateExpressionAST mRightExpression
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -350,22 +350,22 @@ refclass @templateRightShiftOperationAST : @templateExpressionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionStringAST : @templateInstructionAST {
-  public var @string mTemplateString
+  private let @string mTemplateString
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionExpressionAST : @templateInstructionAST {
-  public var @templateExpressionAST mExpression
-  public var @location mLocation
+  private let @templateExpressionAST mExpression
+  private let @location mLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateBlockInstructionAST : @templateInstructionAST {
-  public var @templateExpressionAST mExpression
-  public var @location mLocation
-  public var @templateInstructionListAST mBlockInstructionList
+  private let @templateExpressionAST mExpression
+  private let @location mLocation
+  private let @templateInstructionListAST mBlockInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -381,14 +381,14 @@ refclass @templateInstructionGotoColumnLocationAST : @templateInstructionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionForeachAST : @templateInstructionAST {
-  public var @bool mIsAscending
-  public var @templateExpressionAST mExpression
-  public var @string mPrefix
-  public var @templateInstructionListAST mBeforeInstructionList
-  public var @templateInstructionListAST mDoInstructionList
-  public var @lstring mIndexIdentifier
-  public var @templateInstructionListAST mBetweenInstructionList
-  public var @templateInstructionListAST mAfterInstructionList
+  private let @bool mIsAscending
+  private let @templateExpressionAST mExpression
+  private let @string mPrefix
+  private let @templateInstructionListAST mBeforeInstructionList
+  private let @templateInstructionListAST mDoInstructionList
+  private let @lstring mIndexIdentifier
+  private let @templateInstructionListAST mBetweenInstructionList
+  private let @templateInstructionListAST mAfterInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -401,8 +401,8 @@ list @templateInstructionIfBranchListAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionIfAST : @templateInstructionAST {
-  public var @templateInstructionIfBranchListAST mTemplateInstructionIfBranchList
-  public var @templateInstructionListAST mElseInstructionList
+  private let @templateInstructionIfBranchListAST mTemplateInstructionIfBranchList
+  private let @templateInstructionListAST mElseInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

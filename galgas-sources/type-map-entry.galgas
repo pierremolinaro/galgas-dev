@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @mapEntryDeclarationAST : @semanticDeclarationAST {
-  public var @lstring mMapEntryTypeName
-  public var @lstring mAssociatedMapTypeName
+  private let @lstring mMapEntryTypeName
+  private let @lstring mAssociatedMapTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -261,9 +261,9 @@ override method @mapEntryDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @mapEntryTypeForGeneration : @semanticTypeForGeneration {
-  public var @unifiedTypeMap-entry mAssociatedMapTypeEntry
-  public var @typedPropertyList mAssociatedMapTypedAttributeList
-  public var @mapSearchMethodListAST mSearchMethodList
+  private let @unifiedTypeMap-entry mAssociatedMapTypeEntry
+  private let @typedPropertyList mAssociatedMapTypedAttributeList
+  private let @mapSearchMethodListAST mSearchMethodList
 }
 
 #·······················································································································

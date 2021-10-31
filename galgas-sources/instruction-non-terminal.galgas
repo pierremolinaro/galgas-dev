@@ -3,10 +3,10 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @nonterminalCallInstruction : @syntaxInstructionAST {
-  public var @lstring mNonterminalName
-  public var @lstring mLabelName # No label : empty string
-  public var @actualParameterListAST mActualParameterList
-  public var @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
+  private let @lstring mNonterminalName
+  private let @lstring mLabelName # No label : empty string
+  private let @actualParameterListAST mActualParameterList
+  private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -100,7 +100,7 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !self.mNonterminalName
-    !"'<" + self.mNonterminalName + ">' nonterminal declaration"
+    !invokedEntityNameForErrorSignaling: "'<" + self.mNonterminalName + ">' nonterminal declaration"
     !signature
     !self.mActualParameterList
     !?ioVariableMap
@@ -128,10 +128,10 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @nonterminalInstructionForGeneration : @syntaxInstructionForGeneration {
-  public var @string mNonterminalName
-  public var @string mLabelName
-  public var @actualParameterListForGeneration mActualParameterList
-  public var @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
+  private let @string mNonterminalName
+  private let @string mLabelName
+  private let @actualParameterListForGeneration mActualParameterList
+  private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

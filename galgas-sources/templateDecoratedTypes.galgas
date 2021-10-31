@@ -16,21 +16,21 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionStringForGeneration : @templateInstructionForGeneration {
-  public var @string mTemplateString
+  private let @string mTemplateString
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionExpressionForGeneration : @templateInstructionForGeneration {
-  public var @semanticExpressionForGeneration mExpression
+  private let @semanticExpressionForGeneration mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateBlockInstructionForGeneration : @templateInstructionForGeneration {
-  public var @semanticExpressionForGeneration mExpression
-  public var @location mLocation
-  public var @templateInstructionListForGeneration mBlockInstructionList
+  private let @semanticExpressionForGeneration mExpression
+  private let @location mLocation
+  private let @templateInstructionListForGeneration mBlockInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -46,14 +46,14 @@ refclass @templateInstructionGotoColumnLocationForGeneration : @templateInstruct
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionForeachForGeneration : @templateInstructionForGeneration {
-  public var @bool mIsAscending
-  public var @semanticExpressionForGeneration mExpression
-  public var @string mEnumeratorCppName
-  public var @templateInstructionListForGeneration mBeforeInstructionList
-  public var @templateInstructionListForGeneration mDoInstructionList
-  public var @string mIndexCppName
-  public var @templateInstructionListForGeneration mBetweenInstructionList
-  public var @templateInstructionListForGeneration mAfterInstructionList
+  private let @bool mIsAscending
+  private let @semanticExpressionForGeneration mExpression
+  private let @string mEnumeratorCppName
+  private let @templateInstructionListForGeneration mBeforeInstructionList
+  private let @templateInstructionListForGeneration mDoInstructionList
+  private let @string mIndexCppName
+  private let @templateInstructionListForGeneration mBetweenInstructionList
+  private let @templateInstructionListForGeneration mAfterInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -66,8 +66,8 @@ list @templateInstructionIfBranchListForGeneration {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionIfForGeneration : @templateInstructionForGeneration {
-  public var @templateInstructionIfBranchListForGeneration mTemplateInstructionIfBranchList
-  public var @templateInstructionListForGeneration mElseInstructionList
+  private let @templateInstructionIfBranchListForGeneration mTemplateInstructionIfBranchList
+  private let @templateInstructionListForGeneration mElseInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

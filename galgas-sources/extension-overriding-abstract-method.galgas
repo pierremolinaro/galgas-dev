@@ -103,7 +103,15 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mInstanceMethodMap] hasKey !self.mOverridingExtensionMethodName.string] then
       var @methodQualifier qualifier
-      [[superType mInstanceMethodMap] searchKey !self.mOverridingExtensionMethodName ?* ?inheritedSignature ?inheritedDeclarationLocation ?* ?qualifier ?*]
+      [[superType mInstanceMethodMap] searchKey
+        !self.mOverridingExtensionMethodName
+        ?*
+        ?inheritedSignature
+        ?inheritedDeclarationLocation
+        ?*
+        ?qualifier
+        ?*
+      ]
       if qualifier <= @methodQualifier. isBasicFinal then
         baseTypeName = [superType key]
       end

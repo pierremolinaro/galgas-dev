@@ -3,10 +3,10 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @dictDeclarationAST : @semanticDeclarationAST {
-  public var @lstring mDictTypeName
-  public var @lstring mKeyTypeName
-  public var @lstringlist mAttributeList
-  public var @propertyInCollectionListAST mPropertyList
+  private let @lstring mDictTypeName
+  private let @lstring mKeyTypeName
+  private let @lstringlist mAttributeList
+  private let @propertyInCollectionListAST mPropertyList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -214,6 +214,7 @@ override method @dictDeclarationAST enterInSemanticContext
     !self.mDictTypeName.location
     !true
     !@methodQualifier.isBasic
+#    !.constantMethod
     !"" # No error message
   ]
 #--- Enter "attributeForKey" getters
@@ -408,10 +409,10 @@ override method @dictDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @dictTypeForGeneration : @semanticTypeForGeneration {
-  public var @unifiedTypeMap-entry mElementTypeEntry
-  public var @lstring mDictTypeName
-  public var @typedPropertyList mTypedAttributeList
-  public var @lstring mKeyTypeName
+  private let @unifiedTypeMap-entry mElementTypeEntry
+  private let @lstring mDictTypeName
+  private let @typedPropertyList mTypedAttributeList
+  private let @lstring mKeyTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

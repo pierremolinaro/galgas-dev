@@ -3,17 +3,17 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @assignmentInstructionAST : @semanticInstructionAST {
-  public var @lstring mTargetVariableName
-  public var @lstring mOptionalProperty
-  public var @semanticExpressionAST mSourceExpression
+  private let @lstring mTargetVariableName
+  private let @lstring mOptionalProperty
+  private let @semanticExpressionAST mSourceExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
-  public var @lstring mTargetSelfPropertyName
-  public var @lstring mOptionalProperty
-  public var @semanticExpressionAST mSourceExpression
+  private let @lstring mTargetSelfPropertyName
+  private let @lstring mOptionalProperty
+  private let @semanticExpressionAST mSourceExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -294,12 +294,12 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
-  public var @unifiedTypeMap-entry mTargetType
-  public var @string mTargetCppName
-  public var @string mNameForCheckingFormalParameterUsing
-  public var @string mOptionalProperty
-  public var @semanticExpressionForGeneration mSourceExpression
-  public var @location mSourceLocation
+  private let @unifiedTypeMap-entry mTargetType
+  private let @string mTargetCppName
+  private let @string mNameForCheckingFormalParameterUsing
+  private let @string mOptionalProperty
+  private let @semanticExpressionForGeneration mSourceExpression
+  private let @location mSourceLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -270,24 +270,49 @@ private proc compileProject
       !projectVersionString
       ?let @programComponentForGeneration programComponentForGeneration
     )
-    semanticDeclarationSortedListForGeneration +=
-      !"zprogram"
-      !programComponentForGeneration
-#      !"z"
+    semanticDeclarationSortedListForGeneration += !"zprogram" !programComponentForGeneration
   end
-#------------ Check entity usefulness
+#------------------------------------ Check entity usefulness
   checkUsefulEntities (!usefulEntitiesGraph !usefulnessRootEntities !productDirectory)
+#------------------------------------ Check entity usefulness
+#  for (lkey 7* propertyList getterMap setterMap instanceMethodMap 15*) in semanticContext.mTypeMap do
+#    var methodNameSet = @stringset {}
+#    for (* propertyName 2*) in propertyList do
+#      if [methodNameSet hasKey !propertyName] then
+#        warning propertyName : "@" + lkey + ": property name collision"
+#      end
+#      methodNameSet += !propertyName.string
+#    end
+#    for (getterName 3*) in getterMap do
+#      if [methodNameSet hasKey !getterName.string] then
+#        warning getterName : "@" + lkey + ": getter name collision"
+#      end
+#      methodNameSet += !getterName.string
+#    end
+#    for (setterName 7*) in setterMap do
+#      if [methodNameSet hasKey !setterName.string] then
+#        warning setterName : "@" + lkey + ": setter name collision"
+#      end
+#      methodNameSet += !setterName.string
+#    end
+#    for (methodName 5*) in instanceMethodMap do
+#      if [methodNameSet hasKey !methodName.string] then
+#        warning methodName : "@" + lkey + ": method name collision"
+#      end
+#      methodNameSet += !methodName.string
+#    end
+#  end
 #------------------------------------ Build an HTML file that contains all declared types
   let typeDumpFilePath = [inProjectSourceFile stringByDeletingLastPathComponent]
          + "/build/helpers/" +  [inProjectSourceFile lastPathComponent] + ".html"
   if [option galgas_cli_options.outputHTMLTypeListFile value] then
     var @stringset firstLetterSet = {}
-    for (lkey * * * * * * * * * * * * * * * * * * * * * * * * * *) in semanticContext.mTypeMap do
+    for (lkey 26*) in semanticContext.mTypeMap do
       firstLetterSet += ![[lkey.string characterAtIndex!0] string]
     end
     var @string tableOfTypeString = ""
     var @char currentFirstLetter = ' '
-    for (type_lkey * * * * * * * * * * * * * * * * * * * * * * * * * *) in semanticContext.mTypeMap do
+    for (type_lkey 26*) in semanticContext.mTypeMap do
       if currentFirstLetter != [type_lkey.string characterAtIndex !0] then
         currentFirstLetter = [type_lkey.string characterAtIndex !0]
         tableOfTypeString += "<br><a name=\"" + [currentFirstLetter uint] + "\"><b>" + currentFirstLetter + "</b></a><br>"

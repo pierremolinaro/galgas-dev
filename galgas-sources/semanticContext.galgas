@@ -439,6 +439,7 @@ proc addExtensions
         !lkey.location
         !true
         !@methodQualifier.isBasic
+#        !.constantMethod
         !"" # No error message
       ]
     end

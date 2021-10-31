@@ -3,9 +3,9 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @methodCallInstructionAST : @semanticInstructionAST {
-  public var @semanticExpressionAST mReceiverExpression
-  public var @lstring mMethodName
-  public var @actualParameterListAST mActualParameterList
+  private let @semanticExpressionAST mReceiverExpression
+  private let @lstring mMethodName
+  private let @actualParameterListAST mActualParameterList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -58,12 +58,13 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap {
+  ?!@localVarManager ioVariableMap
+{
 #--- Analyze receiver expression
   [self.mReceiverExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMap-entry.null
+    !inferenceType: .null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration receiverExpression
@@ -87,7 +88,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !self.mMethodName
-    !"'" + self.mMethodName + "' instance method header"
+    !invokedEntityNameForErrorSignaling: "'" + self.mMethodName + "' instance method header"
     !routineSignature
     !self.mActualParameterList
     !?ioVariableMap
@@ -128,14 +129,14 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @methodCallInstructionForGeneration : @semanticInstructionForGeneration {
-  public var @location mInstructionLocation
-  public var @unifiedTypeMap-entry mReceiverType
-  public var @semanticExpressionForGeneration mReceiverExpression
-  public var @string mMethodName
-  public var @methodKind mKind
-  public var @actualParameterListForGeneration mActualParameterList
-  public var @bool mHasCompilerArgument
-  public var @unifiedTypeMap-entry mMethodBaseType
+  private let @location mInstructionLocation
+  private let @unifiedTypeMap-entry mReceiverType
+  private let @semanticExpressionForGeneration mReceiverExpression
+  private let @string mMethodName
+  private let @methodKind mKind
+  private let @actualParameterListForGeneration mActualParameterList
+  private let @bool mHasCompilerArgument
+  private let @unifiedTypeMap-entry mMethodBaseType
 }
 
 #·····················································································································*

@@ -3,9 +3,9 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @enumDeclarationAST : @semanticDeclarationAST {
-  public var @lstring mEnumTypeName
-  public var @enumConstantList mConstantList
-  public var @lstring mDefaultConstantName
+  private let @lstring mEnumTypeName
+  private let @enumConstantList mConstantList
+  private let @lstring mDefaultConstantName
 }
 
 #·······················································································································
@@ -167,6 +167,7 @@ override method @enumDeclarationAST enterInSemanticContext
         !mConstantName.location
         !true
         !.isBasicFinal
+#        !.constantMethod
         !""
       ]
     end
@@ -294,7 +295,7 @@ list @enumConstantListForGeneration {
 #·······················································································································
 
 refclass @enumTypeForGeneration : @semanticTypeForGeneration {
-  public var @enumConstantListForGeneration mConstantList
+  private let @enumConstantListForGeneration mConstantList
 }
 
 

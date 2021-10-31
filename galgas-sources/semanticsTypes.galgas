@@ -141,13 +141,21 @@ map @setterMap {
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+#enum @instanceMethodMutability {
+#  case constantMethod
+#  case mutatingMethod
+#}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 map @instanceMethodMap {
   public var @methodKind mKind
   public var @formalParameterSignature mParameterList
   public var @location mDeclarationLocation
   public var @bool mHasCompilerArgument
   public var @methodQualifier mQualifier
-  public var @string mErrorMessage # If not empty, calling the method raises an error ith this message
+#  public var @instanceMethodMutability mMutability
+  public var @string mErrorMessage # If not empty, calling the method raises an error with this message
   insert insertKey error message "the '%K' instance method is already declared"
   search searchKey error message "the '%K' instance method is not declared"
   search searchInheritedKey error message "as the '%K' method is tagged as 'override', it should be declared in the super class"
@@ -188,7 +196,6 @@ list @typedPropertyList {
   public var @unifiedTypeMap-entry mPropertyTypeEntry
   public var @lstring mPropertyName
   public var @bool mHasSetter
-#  @bool mHasGetter
   public var @bool mHasSelector
 }
 

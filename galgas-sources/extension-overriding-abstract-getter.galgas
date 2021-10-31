@@ -3,10 +3,10 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @overridingAbstractExtensionGetterAST : @semanticDeclarationAST {
-  public var @lstring mTypeName
-  public var @lstring mAbstractExtensionGetterName
-  public var @formalInputParameterListAST mAbstractExtensionGetterFormalInputParameterList
-  public var @lstring mAbstractExtensionGetterReturnedTypeName
+  private let @lstring mTypeName
+  private let @lstring mAbstractExtensionGetterName
+  private let @formalInputParameterListAST mAbstractExtensionGetterFormalInputParameterList
+  private let @lstring mAbstractExtensionGetterReturnedTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

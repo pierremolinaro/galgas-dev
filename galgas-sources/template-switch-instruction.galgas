@@ -12,9 +12,9 @@ list @templateInstructionSwitchBranchListAST {
 #·······················································································································
 
 refclass @templateInstructionSwitchAST : @templateInstructionAST {
-  public var @templateExpressionAST mSwitchExpression
-  public var @location mSwitchExpressionEndLocation
-  public var @templateInstructionSwitchBranchListAST mTemplateInstructionSwitchBranchList
+  private let @templateExpressionAST mSwitchExpression
+  private let @location mSwitchExpressionEndLocation
+  private let @templateInstructionSwitchBranchListAST mTemplateInstructionSwitchBranchList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -271,9 +271,9 @@ list @templateInstructionSwitchBranchListForGeneration {
 #·······················································································································
 
 refclass @templateInstructionSwitchForGeneration : @templateInstructionForGeneration {
-  public var @unifiedTypeMap-entry mEnumType
-  public var @semanticExpressionForGeneration mSwitchExpression
-  public var @templateInstructionSwitchBranchListForGeneration mTemplateInstructionSwitchBranchList
+  private let @unifiedTypeMap-entry mEnumType
+  private let @semanticExpressionForGeneration mSwitchExpression
+  private let @templateInstructionSwitchBranchListForGeneration mTemplateInstructionSwitchBranchList
 }
 
 #·······················································································································

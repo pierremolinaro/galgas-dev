@@ -10,9 +10,9 @@ list @sortedListSortDescriptorListAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @sortedListDeclarationAST : @semanticDeclarationAST {
-  public var @lstring mSortedListTypeName
-  public var @propertyInCollectionListAST mPropertyList
-  public var @sortedListSortDescriptorListAST mSortDescriptorList
+  private let @lstring mSortedListTypeName
+  private let @propertyInCollectionListAST mPropertyList
+  private let @sortedListSortDescriptorListAST mSortDescriptorList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -192,6 +192,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !@location.here
     !true
     !@methodQualifier.isBasic
+#    !.constantMethod
     !"" # No error message
   ]
   [!?instanceMethodMap insertKey
@@ -201,6 +202,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !@location.here
     !true
     !@methodQualifier.isBasic
+#    !.constantMethod
     !"" # No error message
   ]
 #--- Add Categories
@@ -315,9 +317,9 @@ list @sortDescriptorListForGeneration {
 #·······················································································································
 
 refclass @sortedListTypeForGeneration : @semanticTypeForGeneration {
-  public var @unifiedTypeMap-entry mListElementTypeIndex
-  public var @typedPropertyList mTypedAttributeList
-  public var @sortDescriptorListForGeneration mSortDescriptorList
+  private let @unifiedTypeMap-entry mListElementTypeIndex
+  private let @typedPropertyList mTypedAttributeList
+  private let @sortDescriptorListForGeneration mSortDescriptorList
 }
 
 #·······················································································································

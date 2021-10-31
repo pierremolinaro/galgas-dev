@@ -3,10 +3,10 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @testDynamicClassInExpressionAST : @semanticExpressionAST {
-  public var @semanticExpressionAST mReceiverExpression
-  public var @location mEndOfReceiverExpression
-  public var @dynamicTypeComparisonKind mTypeComparisonKind
-  public var @lstring mTypeName
+  private let @semanticExpressionAST mReceiverExpression
+  private let @location mEndOfReceiverExpression
+  private let @dynamicTypeComparisonKind mTypeComparisonKind
+  private let @lstring mTypeName
 }
 
 #·····················································································································
@@ -21,9 +21,9 @@ enum @dynamicTypeComparisonKind {
 #·····················································································································
 
 refclass @castInExpressionAST : @semanticExpressionAST {
-  public var @semanticExpressionAST mReceiverExpression
-  public var @location mEndOfReceiverExpression
-  public var @lstring mTypeName
+  private let @semanticExpressionAST mReceiverExpression
+  private let @location mEndOfReceiverExpression
+  private let @lstring mTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -208,9 +208,9 @@ override method @castInExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @testDynamicClassInExpressionForGeneration : @semanticExpressionForGeneration {
-  public var @semanticExpressionForGeneration mReceiverExpression
-  public var @dynamicTypeComparisonKind mTypeComparisonKind
-  public var @unifiedTypeMap-entry mCastType
+  private let @semanticExpressionForGeneration mReceiverExpression
+  private let @dynamicTypeComparisonKind mTypeComparisonKind
+  private let @unifiedTypeMap-entry mCastType
 }
 
 #·····················································································································
@@ -299,8 +299,8 @@ override method @castInExpressionForGeneration generateExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @extractObjectInExpressionForGeneration : @semanticExpressionForGeneration {
-  public var @semanticExpressionForGeneration mReceiverExpression
-  public var @string mTypeName
+  private let @semanticExpressionForGeneration mReceiverExpression
+  private let @string mTypeName
 }
 
 #·····················································································································

@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @listDeclarationAST : @semanticDeclarationAST {
-  public var @lstring mListTypeName
-  public var @propertyInCollectionListAST mPropertyList
+  private let @lstring mListTypeName
+  private let @propertyInCollectionListAST mPropertyList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -192,6 +192,7 @@ override method @listDeclarationAST enterInSemanticContext
     !@location.here
     !true
     !@methodQualifier.isBasic
+#    !.constantMethod
     !""
   ]
   [!?instanceMethodMap insertKey
@@ -201,6 +202,7 @@ override method @listDeclarationAST enterInSemanticContext
     !@location.here
     !true
     !@methodQualifier.isBasic
+#    !.constantMethod
     !""
   ]
 #----------------------------------------- Modifiers
@@ -397,8 +399,8 @@ override method @listDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @listTypeForGeneration : @semanticTypeForGeneration {
-  public var @unifiedTypeMap-entry mListElementTypeIndex
-  public var @typedPropertyList mTypedAttributeList
+  private let @unifiedTypeMap-entry mListElementTypeIndex
+  private let @typedPropertyList mTypedAttributeList
 }
 
 #·······················································································································

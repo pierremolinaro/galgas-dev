@@ -3,7 +3,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @selfAssignmentInstructionAST : @semanticInstructionAST {
-  public var @semanticExpressionAST mSourceExpression
+  private let @semanticExpressionAST mSourceExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

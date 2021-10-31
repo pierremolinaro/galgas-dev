@@ -20,10 +20,10 @@ list @switchBranchesAST {
 #·······················································································································
 
 refclass @switchInstructionAST : @semanticInstructionAST {
-  public var @semanticExpressionAST mSwitchExpression
-  public var @location mEndOfSwitchExpression
-  public var @switchBranchesAST mBranches
-  public var @location mEndOf_switch_instruction
+  private let @semanticExpressionAST mSwitchExpression
+  private let @location mEndOfSwitchExpression
+  private let @switchBranchesAST mBranches
+  private let @location mEndOf_switch_instruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -268,9 +268,9 @@ list @switchBranchesForGeneration {
 #·······················································································································
 
 refclass @switchInstructionForGeneration : @semanticInstructionForGeneration {
-  public var @unifiedTypeMap-entry mEnumType
-  public var @semanticExpressionForGeneration mSwitchExpression
-  public var @switchBranchesForGeneration mBranches
+  private let @unifiedTypeMap-entry mEnumType
+  private let @semanticExpressionForGeneration mSwitchExpression
+  private let @switchBranchesForGeneration mBranches
 }
 
 #·······················································································································

@@ -3,11 +3,11 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @overridingExtensionMethodAST : @semanticDeclarationAST {
-  public var @lstring mTypeName
-  public var @lstring mOverridingExtensionMethodName
-  public var @formalParameterListAST mOverridingExtensionMethodFormalParameterList
-  public var @semanticInstructionListAST mOverridingExtensionMethodInstructionList
-  public var @location mEndOfMethodLocation
+  private let @lstring mTypeName
+  private let @lstring mOverridingExtensionMethodName
+  private let @formalParameterListAST mOverridingExtensionMethodFormalParameterList
+  private let @semanticInstructionListAST mOverridingExtensionMethodInstructionList
+  private let @location mEndOfMethodLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -106,7 +106,15 @@ override method @overridingExtensionMethodAST semanticAnalysis
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mInstanceMethodMap] hasKey !self.mOverridingExtensionMethodName.string] then
       var @methodQualifier qualifier
-      [[superType mInstanceMethodMap] searchKey !self.mOverridingExtensionMethodName ?* ?inheritedSignature ?inheritedDeclarationLocation ?* ?qualifier ?*]
+      [[superType mInstanceMethodMap] searchKey
+        !self.mOverridingExtensionMethodName
+        ?*
+        ?inheritedSignature
+        ?inheritedDeclarationLocation
+        ?*
+        ?qualifier
+        ?*
+      ]
       if qualifier <= @methodQualifier. isBasicFinal then
         baseTypeName = [superType key]
       end
@@ -204,12 +212,12 @@ override method @overridingExtensionMethodAST buildExtensionListMaps
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @overridingExtensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  public var @unifiedTypeMap-entry mReceiverType
-  public var @string mBaseTypeName
-  public var @string mExtensionMethodName
-  public var @formalParameterListForGeneration mExtensionMethodFormalParameterList
-  public var @typedPropertyList mTypedAttributeList
-  public var @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
+  private let @unifiedTypeMap-entry mReceiverType
+  private let @string mBaseTypeName
+  private let @string mExtensionMethodName
+  private let @formalParameterListForGeneration mExtensionMethodFormalParameterList
+  private let @typedPropertyList mTypedAttributeList
+  private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 
 #·······················································································································

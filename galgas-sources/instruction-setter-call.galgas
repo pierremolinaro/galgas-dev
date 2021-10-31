@@ -3,19 +3,19 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @setterCallInstructionAST : @semanticInstructionAST {
-  public var @bool mPrefixedBySelf
-  public var @lstring mReceiverName
-  public var @lstringlist mReceiverStructProperties
-  public var @lstring mTypeNameForCasting
-  public var @lstring mSetterName
-  public var @actualParameterListAST mActualParameterList
+  private let @bool mPrefixedBySelf
+  private let @lstring mReceiverName
+  private let @lstringlist mReceiverStructProperties
+  private let @lstring mTypeNameForCasting
+  private let @lstring mSetterName
+  private let @actualParameterListAST mActualParameterList
 }
 
 #·····················································································································*
 
 refclass @selfSetterCallInstructionAST : @semanticInstructionAST {
-  public var @lstring mSetterName
-  public var @actualParameterListAST mActualParameterList
+  private let @lstring mSetterName
+  private let @actualParameterListAST mActualParameterList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -221,7 +221,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !self.mSetterName
-    !"'" + self.mSetterName + "' setter header"
+    !invokedEntityNameForErrorSignaling: "'" + self.mSetterName + "' setter header"
     !routineSignature
     !self.mActualParameterList
     !?ioVariableMap
@@ -287,7 +287,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !self.mSetterName
-      !"'" + self.mSetterName + "' setter header"
+      !invokedEntityNameForErrorSignaling: "'" + self.mSetterName + "' setter header"
       !routineSignature
       !self.mActualParameterList
       !?ioVariableMap
@@ -313,28 +313,28 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @setterCallInstructionForGeneration : @semanticInstructionForGeneration {
-  public var @location mInstructionLocation
-  public var @string mReceiverCppName
-  public var @string mReceiverBaseName
-  public var @lstringlist mReceiverStructAttributes
-  public var @unifiedTypeMap-entry mCastType
-  public var @unifiedTypeMap-entry mReceiverType
-  public var @lstring mSetterName
-  public var @methodKind mKind
-  public var @actualParameterListForGeneration mActualParameterList
-  public var @bool mHasCompilerArgument
-  public var @unifiedTypeMap-entry mMethodBaseType
+  private let @location mInstructionLocation
+  private let @string mReceiverCppName
+  private let @string mReceiverBaseName
+  private let @lstringlist mReceiverStructAttributes
+  private let @unifiedTypeMap-entry mCastType
+  private let @unifiedTypeMap-entry mReceiverType
+  private let @lstring mSetterName
+  private let @methodKind mKind
+  private let @actualParameterListForGeneration mActualParameterList
+  private let @bool mHasCompilerArgument
+  private let @unifiedTypeMap-entry mMethodBaseType
 }
 
 #·····················································································································*
 
 refclass @selfSetterCallInstructionForGeneration : @semanticInstructionForGeneration {
-  public var @string mSelfCppName
-  public var @unifiedTypeMap-entry mReceiverType
-  public var @lstring mSetterName
-  public var @methodKind mKind
-  public var @actualParameterListForGeneration mActualParameterList
-  public var @bool mHasCompilerArgument
+  private let @string mSelfCppName
+  private let @unifiedTypeMap-entry mReceiverType
+  private let @lstring mSetterName
+  private let @methodKind mKind
+  private let @actualParameterListForGeneration mActualParameterList
+  private let @bool mHasCompilerArgument
 }
 
 #·····················································································································*

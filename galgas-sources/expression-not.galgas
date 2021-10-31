@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @notExpressionAST : @semanticExpressionAST {
-  public var @location mOperatorLocation
-  public var @semanticExpressionAST mExpression
+  private let @location mOperatorLocation
+  private let @semanticExpressionAST mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -80,7 +80,7 @@ override method @notExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @notExpressionForGeneration : @semanticExpressionForGeneration {
-  public var @semanticExpressionForGeneration mExpression
+  private let @semanticExpressionForGeneration mExpression
 }
 
 #·····················································································································

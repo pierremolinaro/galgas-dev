@@ -3,16 +3,16 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @constructorExpressionAST : @semanticExpressionAST {
-  public var @lstring mTypeName
-  public var @lstring mConstructorName
-  public var @actualOutputExpressionList mExpressions
-  public var @location locationForOldStyleCollectionInitializerError
+  private let @lstring mTypeName
+  private let @lstring mConstructorName
+  private let @actualOutputExpressionList mExpressions
+  private let @location locationForOldStyleCollectionInitializerError
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @defaultConstructorExpressionAST : @semanticExpressionAST {
-  public var @lstring mTypeName
+  private let @lstring mTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -255,10 +255,10 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @constructorExpressionForGeneration : @semanticExpressionForGeneration {
-  public var @unifiedTypeMap-entry mConstructorType
-  public var @string mConstructorName
-  public var @semanticExpressionListForGeneration mEffectiveParameterList
-  public var @bool mHasCompilerArgument
+  private let @unifiedTypeMap-entry mConstructorType
+  private let @string mConstructorName
+  private let @semanticExpressionListForGeneration mEffectiveParameterList
+  private let @bool mHasCompilerArgument
 }
 
 #·····················································································································

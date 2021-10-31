@@ -3,46 +3,46 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @plusEqualElementsInstructionAST : @semanticInstructionAST {
-  public var @bool mPrefixedBySelf
-  public var @lstring mReceiverName
-  public var @lstringlist mStructAttributeList
-  public var @actualOutputExpressionList mExpressions
+  private let @bool mPrefixedBySelf
+  private let @lstring mReceiverName
+  private let @lstringlist mStructAttributeList
+  private let @actualOutputExpressionList mExpressions
 }
 
 #······················································································································*
 
 refclass @plusEqualExpressionInstructionAST : @semanticInstructionAST {
-  public var @bool mPrefixedBySelf
-  public var @lstring mReceiverName
-  public var @lstringlist mStructAttributeList
-  public var @semanticExpressionAST mExpression
+  private let @bool mPrefixedBySelf
+  private let @lstring mReceiverName
+  private let @lstringlist mStructAttributeList
+  private let @semanticExpressionAST mExpression
 }
 
 #······················································································································*
 
 refclass @minusEqualExpressionInstructionAST : @semanticInstructionAST {
-  public var @bool mPrefixedBySelf
-  public var @lstring mReceiverName
-  public var @lstringlist mStructAttributeList
-  public var @semanticExpressionAST mExpression
+  private let @bool mPrefixedBySelf
+  private let @lstring mReceiverName
+  private let @lstringlist mStructAttributeList
+  private let @semanticExpressionAST mExpression
 }
 
 #······················································································································*
 
 refclass @mulEqualExpressionInstructionAST : @semanticInstructionAST {
-  public var @bool mPrefixedBySelf
-  public var @lstring mReceiverName
-  public var @lstringlist mStructAttributeList
-  public var @semanticExpressionAST mExpression
+  private let @bool mPrefixedBySelf
+  private let @lstring mReceiverName
+  private let @lstringlist mStructAttributeList
+  private let @semanticExpressionAST mExpression
 }
 
 #······················································································································*
 
 refclass @divEqualExpressionInstructionAST : @semanticInstructionAST {
-  public var @bool mPrefixedBySelf
-  public var @lstring mReceiverName
-  public var @lstringlist mStructAttributeList
-  public var @semanticExpressionAST mExpression
+  private let @bool mPrefixedBySelf
+  private let @lstring mReceiverName
+  private let @lstringlist mStructAttributeList
+  private let @semanticExpressionAST mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -678,12 +678,12 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
-  public var @string mReceiverCppName
-  public var @unifiedTypeMap-entry mTargetType
-  public var @string mNameForCheckingFormalParameterUsing
-  public var @location mInstructionLocation
-  public var @lstringlist mStructAttributeList
-  public var @semanticExpressionListForGeneration mExpressionList
+  private let @string mReceiverCppName
+  private let @unifiedTypeMap-entry mTargetType
+  private let @string mNameForCheckingFormalParameterUsing
+  private let @location mInstructionLocation
+  private let @lstringlist mStructAttributeList
+  private let @semanticExpressionListForGeneration mExpressionList
 }
 
 #·····················································································································*
@@ -730,13 +730,13 @@ override method @plusEqualnstructionForGeneration generateInstruction
 #·····················································································································*
 
 refclass @opEqualInstructionForGeneration : @semanticInstructionForGeneration {
-  public var @location mInstructionLocation
-  public var @unifiedTypeMap-entry mTargetType
-  public var @string mTargetVariableCppName
-  public var @string mNameForCheckingFormalParameterUsing
-  public var @lstringlist mStructAttributeList
-  public var @semanticExpressionForGeneration mSourceExpression
-  public var @string mGeneratedMethod
+  private let @location mInstructionLocation
+  private let @unifiedTypeMap-entry mTargetType
+  private let @string mTargetVariableCppName
+  private let @string mNameForCheckingFormalParameterUsing
+  private let @lstringlist mStructAttributeList
+  private let @semanticExpressionForGeneration mSourceExpression
+  private let @string mGeneratedMethod
 }
 
 #·····················································································································*

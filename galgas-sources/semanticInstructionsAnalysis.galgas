@@ -686,7 +686,7 @@ proc analyzeRoutineArguments
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @lstring inRoutineName
-  ?let @string inInvokedEntityName
+  ?invokedEntityNameForErrorSignaling: let @string inInvokedEntityName
   ?let @formalParameterSignature inRoutineSignature
   ?let @actualParameterListAST inActualParameterList
   ?!@localVarManager ioVariableMap

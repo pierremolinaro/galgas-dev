@@ -3,9 +3,9 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @localVariableDeclarationAST : @semanticInstructionAST {
-  public var @lstring mTypeName
-  public var @lstring mVariableName
-  public var @bool mIsUndefinedConstant
+  private let @lstring mTypeName
+  private let @lstring mVariableName
+  private let @bool mIsUndefinedConstant
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -78,8 +78,8 @@ override method @localVariableDeclarationAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @localVariableDeclarationForGeneration : @semanticInstructionForGeneration {
-  public var @unifiedTypeMap-entry mVariableType
-  public var @string mCppVariableName
+  private let @unifiedTypeMap-entry mVariableType
+  private let @string mCppVariableName
 }
 
 #·······················································································································

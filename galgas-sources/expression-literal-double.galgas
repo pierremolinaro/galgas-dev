@@ -3,7 +3,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @literalDoubleExpressionAST : @semanticExpressionAST {
-  public var @ldouble mValue
+  private let @ldouble mValue
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -55,7 +55,7 @@ override method @literalDoubleExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @literalDoubleExpressionForGeneration : @semanticExpressionForGeneration {
-  public var @double mValue
+  private let @double mValue
 }
 
 #·····················································································································
