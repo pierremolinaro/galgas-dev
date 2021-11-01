@@ -14317,7 +14317,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   while (repeatFlag_0) {
     GALGAS_lstring var_literalString_961 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("expression-literal-string.galgas", 21)) ;
-    var_literalStringList_909.addAssign_operation (var_literalString_961.getter_string (HERE)  COMMA_SOURCE_FILE ("expression-literal-string.galgas", 22)) ;
+    var_literalStringList_909.addAssign_operation (var_literalString_961.readProperty_string ()  COMMA_SOURCE_FILE ("expression-literal-string.galgas", 22)) ;
     switch (select_galgas_33_ExpressionSyntax_1 (inCompiler)) {
     case 2: {
     } break ;
@@ -15754,7 +15754,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E_ COMMA_SOURCE_FILE ("expression-property-access.galgas", 23)) ;
       GALGAS_lstring var_structFieldName_1027 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("expression-property-access.galgas", 24)) ;
-      outArgument_outExpression = GALGAS_structPropertyAccessExpressionAST::constructor_new (var_structFieldName_1027.getter_location (HERE), outArgument_outExpression, var_structFieldName_1027  COMMA_SOURCE_FILE ("expression-property-access.galgas", 25)) ;
+      outArgument_outExpression = GALGAS_structPropertyAccessExpressionAST::constructor_new (var_structFieldName_1027.readProperty_location (), outArgument_outExpression, var_structFieldName_1027  COMMA_SOURCE_FILE ("expression-property-access.galgas", 25)) ;
     } break ;
     default:
       repeatFlag_0 = false ;

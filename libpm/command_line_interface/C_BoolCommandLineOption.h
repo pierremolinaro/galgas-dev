@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2009, ..., 2009 Pierre Molinaro.
+//  Copyright (C) 2009, ..., 2021 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -44,7 +44,7 @@ class C_BoolCommandLineOption : public C_CommandLineOption {
 //--- Attributes
   private: C_BoolCommandLineOption * mNext ;
   public: bool mValue ;
-  public: inline bool getter_value (void) const { return mValue ; }
+  public: inline bool readProperty_value (void) const { return mValue ; }
   public: const bool mVisibleInGalgas ;
 
 //--- Static methods

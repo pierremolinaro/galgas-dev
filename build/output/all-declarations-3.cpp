@@ -6070,56 +6070,6 @@ void GALGAS_guiAnalysisContext::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_stringlist GALGAS_guiAnalysisContext::getter_mImportedOptionComponentList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mImportedOptionComponentList ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_guiCommandLineOptionList GALGAS_guiAnalysisContext::getter_mBoolOptionList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mBoolOptionList ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_guiCommandLineOptionList GALGAS_guiAnalysisContext::getter_mUIntOptionList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mUIntOptionList ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_guiCommandLineOptionList GALGAS_guiAnalysisContext::getter_mStringOptionList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mStringOptionList ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_stringlist GALGAS_guiAnalysisContext::getter_mNibAndClassList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mNibAndClassList ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_extensionMap GALGAS_guiAnalysisContext::getter_mExtensionMap (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mExtensionMap ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_importedLexiqueList GALGAS_guiAnalysisContext::getter_mWithLexiqueList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mWithLexiqueList ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string GALGAS_guiAnalysisContext::getter_mBuildRunOption (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mBuildRunOption ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@guiAnalysisContext type
 //

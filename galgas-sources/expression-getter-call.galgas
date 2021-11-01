@@ -261,7 +261,8 @@ override method @getterCallExpressionForGeneration generateExpression
   case definedAsMember :
     outCppExpression = receiverCppName
     for (mValue) in self.mFieldList do
-      outCppExpression += ".getter_" + [mValue identifierRepresentation] + " (HERE)"
+#      outCppExpression += ".getter_" + [mValue identifierRepresentation] + " (HERE)"
+      outCppExpression += ".readProperty_" + [mValue identifierRepresentation] + " ()"
     end
     [self.mResultType addHeaderFileName !?ioInclusionSet]
     outCppExpression +=  ".getter_" + [self.mGetterName identifierRepresentation] + " ("

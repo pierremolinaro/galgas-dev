@@ -14897,7 +14897,7 @@ void cParser_templateSyntax::rule_templateSyntax_factor_i5_ (GALGAS_templateExpr
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 206)) ;
       GALGAS_lstring var_structFieldName_9276 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 207)) ;
-      outArgument_outExpression = GALGAS_structFieldAccessTemplateExpressionAST::constructor_new (var_structFieldName_9276.getter_location (HERE), outArgument_outExpression, var_structFieldName_9276  COMMA_SOURCE_FILE ("templateSyntax.galgas", 208)) ;
+      outArgument_outExpression = GALGAS_structFieldAccessTemplateExpressionAST::constructor_new (var_structFieldName_9276.readProperty_location (), outArgument_outExpression, var_structFieldName_9276  COMMA_SOURCE_FILE ("templateSyntax.galgas", 208)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -15171,7 +15171,7 @@ void cParser_templateSyntax::rule_templateSyntax_primary_i19_ (GALGAS_templateEx
     GALGAS_lstring var_literalString_17675 ;
     var_literalString_17675 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 383)) ;
-    var_literalStringList_17630.addAssign_operation (var_literalString_17675.getter_string (HERE)  COMMA_SOURCE_FILE ("templateSyntax.galgas", 384)) ;
+    var_literalStringList_17630.addAssign_operation (var_literalString_17675.readProperty_string ()  COMMA_SOURCE_FILE ("templateSyntax.galgas", 384)) ;
     switch (select_templateSyntax_6 (inCompiler)) {
     case 2: {
     } break ;
@@ -15465,11 +15465,11 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i24_ (G
   inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__21_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 535)) ;
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
-    test_0 = GALGAS_bool (kIsNotEqual, var_selector_23828.getter_string (HERE).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+    test_0 = GALGAS_bool (kIsNotEqual, var_selector_23828.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray1 ;
       appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string ("!")) ;
-      inCompiler->emitSemanticError (var_selector_23828.getter_location (HERE), GALGAS_string ("the selector should be '!'"), fixItArray1  COMMA_SOURCE_FILE ("templateSyntax.galgas", 537)) ;
+      inCompiler->emitSemanticError (var_selector_23828.readProperty_location (), GALGAS_string ("the selector should be '!'"), fixItArray1  COMMA_SOURCE_FILE ("templateSyntax.galgas", 537)) ;
     }
   }
   GALGAS_templateExpressionAST var_expression_23996 ;
@@ -15598,7 +15598,7 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i28_ (G
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3A_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 602)) ;
     GALGAS_lstring var_prefixString_25869 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 603)) ;
-    var_foreachPrefix_25779 = var_prefixString_25869.getter_string (HERE) ;
+    var_foreachPrefix_25779 = var_prefixString_25869.readProperty_string () ;
   } break ;
   default:
     break ;
@@ -16091,7 +16091,7 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i32_ (GALGAS_lst
         GALGAS_luint var_n_2851 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
         inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_uint_33__32_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 78)) ;
         inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2A_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 79)) ;
-        cEnumerator_range enumerator_2897 (GALGAS_range (GALGAS_uint ((uint32_t) 0U), var_n_2851.getter_uint (HERE).substract_operation (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 80))), kENUMERATION_UP) ;
+        cEnumerator_range enumerator_2897 (GALGAS_range (GALGAS_uint ((uint32_t) 0U), var_n_2851.readProperty_uint ().substract_operation (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 80))), kENUMERATION_UP) ;
         while (enumerator_2897.hasCurrentObject ()) {
           outArgument_outAssociatedValuesExtraction.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("template-switch-instruction.galgas", 81)), GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("template-switch-instruction.galgas", 81)), GALGAS_bool (false)  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 81)) ;
           enumerator_2897.gotoNextObject () ;

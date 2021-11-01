@@ -10,110 +10,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'generateExtensionMethod'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateExtensionMethod (const class GALGAS_unifiedTypeMap_2D_entry constinArgument0,
-                                      const class GALGAS_string constinArgument1,
-                                      class GALGAS_stringset & ioArgument2,
-                                      const class GALGAS_string constinArgument3,
-                                      const class GALGAS_formalParameterListForGeneration constinArgument4,
-                                      const class GALGAS_semanticInstructionListForGeneration constinArgument5,
-                                      class GALGAS_string & outArgument6,
-                                      class C_Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'generateProcedure'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateProcedure (const class GALGAS_bool constinArgument0,
-                                const class GALGAS_string constinArgument1,
-                                class GALGAS_stringset & ioArgument2,
-                                class GALGAS_formalParameterListForGeneration inArgument3,
-                                const class GALGAS_semanticInstructionListForGeneration constinArgument4,
-                                const class GALGAS_bool constinArgument5,
-                                const class GALGAS_string constinArgument6,
-                                const class GALGAS_bool constinArgument7,
-                                const class GALGAS_bool constinArgument8,
-                                const class GALGAS_bool constinArgument9,
-                                class GALGAS_string & outArgument10,
-                                class C_Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Function 'setterNameForUsefulEntitiesGraph'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_lstring function_setterNameForUsefulEntitiesGraph (const class GALGAS_string & constinArgument0,
-                                                                const class GALGAS_lstring & constinArgument1,
-                                                                class C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'generateExtensionSetter'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateExtensionSetter (const class GALGAS_string constinArgument0,
-                                      const class GALGAS_string constinArgument1,
-                                      const class GALGAS_string constinArgument2,
-                                      class GALGAS_stringset & ioArgument3,
-                                      const class GALGAS_formalParameterListForGeneration constinArgument4,
-                                      const class GALGAS_semanticInstructionListForGeneration constinArgument5,
-                                      class GALGAS_string & outArgument6,
-                                      class C_Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'checkGetterSignatures'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_checkGetterSignatures (const class GALGAS_formalInputParameterListForGeneration constinArgument0,
-                                    const class GALGAS_unifiedTypeMap_2D_entry constinArgument1,
-                                    const class GALGAS_location constinArgument2,
-                                    const class GALGAS_functionSignature constinArgument3,
-                                    const class GALGAS_unifiedTypeMap_2D_entry constinArgument4,
-                                    const class GALGAS_location constinArgument5,
-                                    class C_Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'buildLocalVariableMapAndSignature'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_buildLocalVariableMapAndSignature (const class GALGAS_semanticContext constinArgument0,
-                                                const class GALGAS_formalParameterListAST constinArgument1,
-                                                class GALGAS_localVarManager & ioArgument2,
-                                                class GALGAS_formalParameterListForGeneration & outArgument3,
-                                                class C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'checkMethodSignatures'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_checkMethodSignatures (const class GALGAS_formalParameterListForGeneration constinArgument0,
-                                    const class GALGAS_location constinArgument1,
-                                    const class GALGAS_formalParameterSignature constinArgument2,
-                                    const class GALGAS_location constinArgument3,
-                                    class C_Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Function 'generateFewHeaderFiles'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -459,4 +355,46 @@ void routine_analyzeSemanticInstructionListWithoutBranch (const class GALGAS_lst
                                                           class GALGAS_semanticInstructionListForGeneration & outArgument7,
                                                           class C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'analyzeRoutineArguments'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_analyzeRoutineArguments (const class GALGAS_lstring constinArgument0,
+                                      class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                      const class GALGAS_analysisContext constinArgument2,
+                                      const class GALGAS_lstring constinArgument3,
+                                      const class GALGAS_string constinArgument4,
+                                      const class GALGAS_formalParameterSignature constinArgument5,
+                                      const class GALGAS_actualParameterListAST constinArgument6,
+                                      class GALGAS_localVarManager & ioArgument7,
+                                      class GALGAS_semanticInstructionListForGeneration & ioArgument8,
+                                      class GALGAS_actualParameterListForGeneration & outArgument9,
+                                      class C_Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'checkExpressionIsBoolean'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_checkExpressionIsBoolean (const class GALGAS_analysisContext constinArgument0,
+                                       const class GALGAS_location constinArgument1,
+                                       const class GALGAS_semanticExpressionForGeneration constinArgument2,
+                                       class GALGAS_semanticExpressionForGeneration & outArgument3,
+                                       class C_Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'procedureNameForUsefulEntitiesGraph'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_lstring function_procedureNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
+                                                                   class C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 

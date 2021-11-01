@@ -5853,50 +5853,6 @@ void GALGAS_galgas_33_DeclarationAST::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_semanticDeclarationListAST GALGAS_galgas_33_DeclarationAST::getter_mDeclarationList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mDeclarationList ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_galgas_33_SyntaxComponentListAST GALGAS_galgas_33_DeclarationAST::getter_mSyntaxComponentList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mSyntaxComponentList ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_syntaxExtensions GALGAS_galgas_33_DeclarationAST::getter_mSyntaxExtensions (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mSyntaxExtensions ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_galgas_33_GUIComponentListAST GALGAS_galgas_33_DeclarationAST::getter_mGUIComponentList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mGUIComponentList ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_prologueEpilogueList GALGAS_galgas_33_DeclarationAST::getter_mPrologueDeclarationList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mPrologueDeclarationList ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_programRuleList GALGAS_galgas_33_DeclarationAST::getter_mSourceRuleList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mSourceRuleList ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_prologueEpilogueList GALGAS_galgas_33_DeclarationAST::getter_mEpilogueDeclarationList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mEpilogueDeclarationList ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@galgas3DeclarationAST type
 //

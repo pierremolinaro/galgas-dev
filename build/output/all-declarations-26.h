@@ -10,48 +10,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'analyzeRoutineArguments'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_analyzeRoutineArguments (const class GALGAS_lstring constinArgument0,
-                                      class GALGAS_usefulEntitiesGraph & ioArgument1,
-                                      const class GALGAS_analysisContext constinArgument2,
-                                      const class GALGAS_lstring constinArgument3,
-                                      const class GALGAS_string constinArgument4,
-                                      const class GALGAS_formalParameterSignature constinArgument5,
-                                      const class GALGAS_actualParameterListAST constinArgument6,
-                                      class GALGAS_localVarManager & ioArgument7,
-                                      class GALGAS_semanticInstructionListForGeneration & ioArgument8,
-                                      class GALGAS_actualParameterListForGeneration & outArgument9,
-                                      class C_Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'checkExpressionIsBoolean'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_checkExpressionIsBoolean (const class GALGAS_analysisContext constinArgument0,
-                                       const class GALGAS_location constinArgument1,
-                                       const class GALGAS_semanticExpressionForGeneration constinArgument2,
-                                       class GALGAS_semanticExpressionForGeneration & outArgument3,
-                                       class C_Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Function 'procedureNameForUsefulEntitiesGraph'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_lstring function_procedureNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
-                                                                   class C_Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Function 'filewrapperNameForUsefulEntitiesGraph'
 //
 //----------------------------------------------------------------------------------------------------------------------

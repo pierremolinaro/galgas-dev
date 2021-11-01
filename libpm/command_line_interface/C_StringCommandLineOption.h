@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2009, ..., 2018 Pierre Molinaro.
+//  Copyright (C) 2009, ..., 2021 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -42,7 +42,7 @@ class C_StringCommandLineOption : public C_CommandLineOption {
 //--- Attributes
   private: C_StringCommandLineOption * mNext ;
   public: C_String mValue ;
-  public: inline C_String getter_value (void) const { return mValue ; }
+  public: inline C_String readProperty_value (void) const { return mValue ; }
   public: const char * mDefaultValue ;
 
 //--- Static methods

@@ -880,3 +880,59 @@ void routine_check_5F_K_5F_L_5F_escapeCharacters (class GALGAS_lstring inArgumen
                                                   class C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterConstructorWithoutArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterConstructorWithoutArgument (class GALGAS_constructorMap & ioArgument0,
+                                              class GALGAS_unifiedTypeMap & ioArgument1,
+                                              const class GALGAS_string constinArgument2,
+                                              const class GALGAS_string constinArgument3,
+                                              const class GALGAS_bool constinArgument4,
+                                              class C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'listGenerationTemplate'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_listGenerationTemplate ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'listGenerationTemplate listTypeHeader1'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeHeader_31_ (class C_Compiler * inCompiler,
+                                                                             const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                             const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                             const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'listGenerationTemplate listTypeSpecificImplementation'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImplementation (class C_Compiler * inCompiler,
+                                                                                         const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                         const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                         const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
+                                                                                         const class GALGAS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER
+                                                                                         COMMA_LOCATION_ARGS) ;
+

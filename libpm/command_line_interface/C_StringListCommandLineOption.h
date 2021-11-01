@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2014, ..., 2017 Pierre Molinaro.
+//  Copyright (C) 2014, ..., 2021 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -41,7 +41,7 @@ class C_StringListCommandLineOption : public C_CommandLineOption {
 //--- Attributes
   private: C_StringListCommandLineOption * mNext ;
   public: TC_Array <C_String> mValue ;
-  public: inline TC_Array <C_String> getter_value (void) const { return mValue ; }
+  public: inline TC_Array <C_String> readProperty_value (void) const { return mValue ; }
 
 //--- Static methods
   public: static void setStringListOptionForCommandChar (const char * inCommandCommandLineOptionString,

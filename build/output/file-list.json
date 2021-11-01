@@ -4,7 +4,6 @@
     "SOURCES"  :  [
         "all-galgas.cpp",
         "all-libpm.cpp",
-        "all-declarations-31.cpp",
         "all-declarations-30.cpp",
         "all-declarations-29.cpp",
         "all-declarations-28.cpp",

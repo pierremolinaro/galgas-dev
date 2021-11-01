@@ -1716,20 +1716,6 @@ void GALGAS_lbool::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_lbool::getter_bool (UNUSED_LOCATION_ARGS) const {
-  return mProperty_bool ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_lbool::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mProperty_location ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@double type
 //
@@ -6230,20 +6216,6 @@ void GALGAS_range::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_uint GALGAS_range::getter_start (UNUSED_LOCATION_ARGS) const {
-  return mProperty_start ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_uint GALGAS_range::getter_length (UNUSED_LOCATION_ARGS) const {
-  return mProperty_length ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@functionlist-element type
 //
@@ -6350,14 +6322,6 @@ void GALGAS_functionlist_2D_element::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_function GALGAS_functionlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@objectlist-element type
 //
@@ -6462,14 +6426,6 @@ void GALGAS_objectlist_2D_element::description (C_String & ioString,
   }
   ioString << ">" ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_object GALGAS_objectlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -6584,14 +6540,6 @@ void GALGAS_stringlist_2D_element::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string GALGAS_stringlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@typelist-element type
 //
@@ -6696,14 +6644,6 @@ void GALGAS_typelist_2D_element::description (C_String & ioString,
   }
   ioString << ">" ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_type GALGAS_typelist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -6818,14 +6758,6 @@ void GALGAS_uintlist_2D_element::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_uint GALGAS_uintlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@uint64list-element type
 //
@@ -6938,14 +6870,6 @@ void GALGAS_uint_36__34_list_2D_element::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_uint_36__34_ GALGAS_uint_36__34_list_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@bigintlist-element type
 //
@@ -7056,14 +6980,6 @@ void GALGAS_bigintlist_2D_element::description (C_String & ioString,
   }
   ioString << ">" ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_bigint GALGAS_bigintlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -7189,20 +7105,6 @@ void GALGAS__32_stringlist_2D_element::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string GALGAS__32_stringlist_2D_element::getter_mValue_30_ (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue_30_ ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string GALGAS__32_stringlist_2D_element::getter_mValue_31_ (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue_31_ ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@lstring type
 //
@@ -7324,20 +7226,6 @@ void GALGAS_lstring::description (C_String & ioString,
   }
   ioString << ">" ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string GALGAS_lstring::getter_string (UNUSED_LOCATION_ARGS) const {
-  return mProperty_string ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_lstring::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mProperty_location ;
-}
-
-
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -7463,20 +7351,6 @@ void GALGAS_luint::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_uint GALGAS_luint::getter_uint (UNUSED_LOCATION_ARGS) const {
-  return mProperty_uint ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_luint::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mProperty_location ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@lsint type
 //
@@ -7598,20 +7472,6 @@ void GALGAS_lsint::description (C_String & ioString,
   }
   ioString << ">" ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_sint GALGAS_lsint::getter_sint (UNUSED_LOCATION_ARGS) const {
-  return mProperty_sint ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_lsint::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mProperty_location ;
-}
-
-
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -7737,20 +7597,6 @@ void GALGAS_luint_36__34_::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_uint_36__34_ GALGAS_luint_36__34_::getter_uint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  return mProperty_uint_36__34_ ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_luint_36__34_::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mProperty_location ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@lsint64 type
 //
@@ -7872,20 +7718,6 @@ void GALGAS_lsint_36__34_::description (C_String & ioString,
   }
   ioString << ">" ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_sint_36__34_ GALGAS_lsint_36__34_::getter_sint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  return mProperty_sint_36__34_ ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_lsint_36__34_::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mProperty_location ;
-}
-
-
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -8011,20 +7843,6 @@ void GALGAS_lchar::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_char GALGAS_lchar::getter_char (UNUSED_LOCATION_ARGS) const {
-  return mProperty_char ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_lchar::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mProperty_location ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@ldouble type
 //
@@ -8146,20 +7964,6 @@ void GALGAS_ldouble::description (C_String & ioString,
   }
   ioString << ">" ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_double GALGAS_ldouble::getter_double (UNUSED_LOCATION_ARGS) const {
-  return mProperty_double ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_ldouble::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mProperty_location ;
-}
-
-
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -8285,20 +8089,6 @@ void GALGAS_lbigint::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_bigint GALGAS_lbigint::getter_bigint (UNUSED_LOCATION_ARGS) const {
-  return mProperty_bigint ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_lbigint::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mProperty_location ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@luintlist-element type
 //
@@ -8409,14 +8199,6 @@ void GALGAS_luintlist_2D_element::description (C_String & ioString,
   }
   ioString << ">" ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_luint GALGAS_luintlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -8531,14 +8313,6 @@ void GALGAS_lstringlist_2D_element::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_lstringlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@lbigintlist-element type
 //
@@ -8649,14 +8423,6 @@ void GALGAS_lbigintlist_2D_element::description (C_String & ioString,
   }
   ioString << ">" ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lbigint GALGAS_lbigintlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -8780,20 +8546,6 @@ void GALGAS__32_lstringlist_2D_element::description (C_String & ioString,
   }
   ioString << ">" ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS__32_lstringlist_2D_element::getter_mValue_30_ (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue_30_ ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS__32_lstringlist_2D_element::getter_mValue_31_ (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue_31_ ;
-}
-
-
 
 //--- START OF USER ZONE 2
 
