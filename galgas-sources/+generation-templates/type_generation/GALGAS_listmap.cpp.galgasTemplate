@@ -15,18 +15,18 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOCAT
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^%const GALGAS_string & inKey%
-  for () in ATTRIBUTE_LIST do index IDX
+  for () in CURRENT_PROPERTY_LIST do index IDX
     %,\n%!^%const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]
   end
   %\n%!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()%
-  for () in ATTRIBUTE_LIST do index IDX
+  for () in CURRENT_PROPERTY_LIST do index IDX
     % && inOperand%![IDX string]%.isValid ()%
   end
   %) {
     capCollectionElement attributes ;
     GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER%::makeAttributesFromObjects (attributes%
-    for () in ATTRIBUTE_LIST
+    for () in CURRENT_PROPERTY_LIST
     do index IDX %, inOperand%![IDX string]
     end
     % COMMA_THERE) ;

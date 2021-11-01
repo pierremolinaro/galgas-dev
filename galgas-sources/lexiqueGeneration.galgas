@@ -49,7 +49,7 @@ override getter @lexicalCharacterIntervalMatchAST generateConditionCode
 override getter @lexicalStringMatchAST generateConditionCode
   ?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
-  outGeneratedCode = "testForInputUTF32String (kUnicodeString_" + [inLexiqueAnalysisContext.mLexiqueName identifierRepresentation] + "_" + [self.mString identifierRepresentation]
+  outGeneratedCode = "testForInputUTF32String (kUnicodeString_" + [inLexiqueAnalysisContext.mLexiqueName identifierRepresentation] + "_" + [self.mString.string identifierRepresentation]
   outGeneratedCode += ", "
   outGeneratedCode += [[self.mString length] string]
   outGeneratedCode += ", true)"

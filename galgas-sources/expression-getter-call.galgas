@@ -61,7 +61,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-#--- Expression analysis
+#--------------------------------------- Expression analysis
   [self.mReceiver analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -71,34 +71,82 @@ override method @getterCallExpressionAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration receiverExpression
   ]
   let @unifiedTypeMap-entry receiverType = receiverExpression.mResultType
-#--- Get getter map
-  let @getterMap getterMap = [receiverType mGetterMap]
-#--- Search getter
-  var @functionSignature getterFormalArgumentTypeList
-  var @methodKind kind
-  var @bool hasCompilerArgument
-  var @unifiedTypeMap-entry returnedType
-  var @stringlist fieldList = {}
-  with self.mGetterName.string in getterMap  do
-    getterFormalArgumentTypeList = mArgumentTypeList
-    hasCompilerArgument = mHasCompilerArgument
-    returnedType = mReturnedType
-    kind = mKind
-    if mErrorMessage != "" then
-      error self.mGetterName : mErrorMessage
+#--------------------------------------- Search getter
+  if let [[receiverType mGetterMap] searchKey
+      !self.mGetterName.string
+      ?let kind
+      ?let getterFormalArgumentTypeList
+      ?*
+      ?let @bool hasCompilerArgument
+      ?let @unifiedTypeMap-entry returnedType
+      ?*
+      ?let @string getterErrorMessage] then
+    if getterErrorMessage != "" then
+      error self.mGetterName : getterErrorMessage
     end
     if [option galgas_cli_options.errorPropertyGetterCall value]
       && [[receiverType mPropertyMap] hasKey !self.mGetterName.string]
       && ([self.mExpressions length] == 0) then
       error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
     end
+  #--- Analysis arguments
+    if [self.mExpressions length] != [getterFormalArgumentTypeList length] then
+      error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + [receiverType key] + "' requires "
+      + [[getterFormalArgumentTypeList length] string] + " parameter(s), while this call has "
+      + [[self.mExpressions length] string] + " parameter(s)" : outExpression
+    else
+      var @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
+      for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions,
+          (mFormalSelector mFormalArgumentType *) in getterFormalArgumentTypeList do
+        [mExpression analyzeSemanticExpression
+          !inUsefulnessCallerEntityName
+          !?ioUsefulEntitiesGraph
+          !inferenceType: mFormalArgumentType
+          !inAnalysisContext
+          !?ioVariableMap
+          ?@semanticExpressionForGeneration exp
+        ]
+        if mFormalSelector.string != mActualSelector.string then
+          let s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
+          error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+        end
+        checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
+        constructorEffectiveParameterList += !exp
+      end
+      outExpression = @getterCallExpressionForGeneration.new {
+        !returnedType
+        !self.mGetterName.location
+        !kind
+        !receiverExpression
+        !{}
+        !self.mGetterName.string
+        !constructorEffectiveParameterList
+        !hasCompilerArgument
+      }
+    end
+#--------------------------------------- The getter does not exist, it is a property ?
+  elsif [self.mExpressions length] == 0, let [[receiverType mPropertyMap] searchKey !self.mGetterName.string ?let isPublic ?* ?let propertyType] then
+    if not isPublic then
+      error self.mGetterName : " inaccessible property (due to its 'private' qualifier)"
+    end
+    outExpression = @structPropertyAccessExpressionForGeneration.new {
+      !propertyType
+      !self.mGetterName.location
+      !receiverExpression
+      !self.mGetterName.string
+    }
+    if [option galgas_cli_options.errorPropertyGetterCall value] then
+      error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
+    end
+#--------------------------------------- not found, old style search
   else
     var @uint matchingReaderCount = 0
     if [receiverType mTypeKindEnum] == @typeKindEnum.structType then
-      getterFormalArgumentTypeList = {}
-      hasCompilerArgument = true
-      returnedType = @unifiedTypeMap-entry.null
-      kind = @methodKind.definedAsExtension
+      var @functionSignature getterFormalArgumentTypeList = {}
+      var hasCompilerArgument = true
+      var returnedType = @unifiedTypeMap-entry.null
+      var kind = @methodKind.definedAsExtension
+      var @stringlist fieldList = {}
       for (propertyTypeEntry propertyName * *) in [receiverType mCurrentTypedPropertyList] do
         let propertyType = @unifiedTypeMap-entry.searchKey {
           !inAnalysisContext.mSemanticContext.mTypeMap
@@ -140,51 +188,51 @@ override method @getterCallExpressionAST analyzeSemanticExpression
         + "' getter, and several of its fields defines it:" + s + " (exactly one field should define it)"
         : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       end
-    elsif [getterMap count] == 0 then
+    #--- Analysis arguments
+      if [self.mExpressions length] != [getterFormalArgumentTypeList length] then
+        error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + [receiverType key] + "' requires "
+        + [[getterFormalArgumentTypeList length] string] + " parameter(s), while this call has "
+        + [[self.mExpressions length] string] + " parameter(s)" : outExpression
+      else
+        var @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
+        for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions,
+            (mFormalSelector mFormalArgumentType *) in getterFormalArgumentTypeList do
+          [mExpression analyzeSemanticExpression
+            !inUsefulnessCallerEntityName
+            !?ioUsefulEntitiesGraph
+            !inferenceType: mFormalArgumentType
+            !inAnalysisContext
+            !?ioVariableMap
+            ?@semanticExpressionForGeneration exp
+          ]
+          if mFormalSelector.string != mActualSelector.string then
+            let s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
+            error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+          end
+          checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
+          constructorEffectiveParameterList += !exp
+        end
+        outExpression = @getterCallExpressionForGeneration.new {
+          !returnedType
+          !self.mGetterName.location
+          !kind
+          !receiverExpression
+          !fieldList
+          !self.mGetterName.string
+          !constructorEffectiveParameterList
+          !hasCompilerArgument
+        }
+      end
+    elsif [[receiverType mGetterMap] count] == 0 then
       error self.mGetterName
       : "the '@"+ [receiverType key] + "' type does not define any getter"
-      : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+      : outExpression
     else
       error self.mGetterName
       : "the '@"+ [receiverType key] + "' type does not define the '" + self.mGetterName + "' getter "
-      : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
-      fixit { replace [getterMap keyList] }
+      : outExpression
+      fixit { replace [[receiverType mGetterMap] keyList] }
     end
-  end
-#--- Analysis arguments
-  if [self.mExpressions length] != [getterFormalArgumentTypeList length] then
-    error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + [receiverType key] + "' requires "
-    + [[getterFormalArgumentTypeList length] string] + " parameter(s), while this call has "
-    + [[self.mExpressions length] string] + " parameter(s)" : outExpression
-  else
-    var @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
-    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions,
-        (mFormalSelector mFormalArgumentType *) in getterFormalArgumentTypeList do
-      [mExpression analyzeSemanticExpression
-        !inUsefulnessCallerEntityName
-        !?ioUsefulEntitiesGraph
-        !inferenceType: mFormalArgumentType
-        !inAnalysisContext
-        !?ioVariableMap
-        ?@semanticExpressionForGeneration exp
-      ]
-      if mFormalSelector.string != mActualSelector.string then
-        let s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-        error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
-      end
-      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
-      constructorEffectiveParameterList += !exp
-    end
-    outExpression = @getterCallExpressionForGeneration.new {
-      !returnedType
-      !self.mGetterName.location
-      !kind
-      !receiverExpression
-      !fieldList
-      !self.mGetterName.string
-      !constructorEffectiveParameterList
-      !hasCompilerArgument
-    }
   end
 }
 
