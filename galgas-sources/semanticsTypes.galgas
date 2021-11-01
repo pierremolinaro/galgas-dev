@@ -253,7 +253,7 @@ enum @typeKindEnum {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @typeKindEnum kind -> @string {
+getter @typeKindEnum string -> @string {
   switch self
     case classType (isReference) : result = if isReference then "reference class" else "value class" end
     case enumType : result = "enumeration"

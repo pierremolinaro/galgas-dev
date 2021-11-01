@@ -4811,13 +4811,13 @@ class cEnumAssociatedValues_typeKindEnum_weakReferenceType : public cEnumAssocia
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension getter '@typeKindEnum kind' (as function)
+//Extension getter '@typeKindEnum string' (as function)
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_string extensionGetter_kind (const class GALGAS_typeKindEnum & inObject,
-                                          class C_Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
+class GALGAS_string extensionGetter_string (const class GALGAS_typeKindEnum & inObject,
+                                            class C_Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //

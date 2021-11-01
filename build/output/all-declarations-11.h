@@ -4774,6 +4774,8 @@ extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedL
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf ;
 
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_warningOnPropertyMethodCollision ;
+
 //----------------------------------------------------------------------------------------------------------------------
 //
 //                               UInt options                                                    

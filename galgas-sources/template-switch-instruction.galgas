@@ -130,12 +130,11 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
   ]
   if [switchExpression.mResultType mTypeKindEnum] != .enumType then
     error switchExpression.mLocation : "'switch' expression type should be an enumeration (it is a "
-       + [[switchExpression.mResultType mTypeKindEnum] kind] + " type)"
+       + [switchExpression.mResultType mTypeKindEnum] + " type)"
   end
   let enumConstantMap = [switchExpression.mResultType mEnumConstantMap]
   var @stringset constantsNamedInSwitchInstruction = {}
 #--- Analyze branches
-#  @switchBranchesForGeneration switchBranchesForGeneration = {}
   var @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = {}
   for (mConstantList mAssociatedValuesExtraction mInstructionList mEndOfBranch) in self.mTemplateInstructionSwitchBranchList do
     var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = {}

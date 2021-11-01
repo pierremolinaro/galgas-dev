@@ -11833,13 +11833,13 @@ GALGAS_typeKindEnum GALGAS_typeKindEnum::extractObject (const GALGAS_object & in
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension Getter '@typeKindEnum kind'
+//Extension Getter '@typeKindEnum string'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string extensionGetter_kind (const GALGAS_typeKindEnum & inObject,
-                                    C_Compiler * /* inCompiler */
-                                    COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_string (const GALGAS_typeKindEnum & inObject,
+                                      C_Compiler * /* inCompiler */
+                                      COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_typeKindEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
@@ -11847,10 +11847,10 @@ GALGAS_string extensionGetter_kind (const GALGAS_typeKindEnum & inObject,
     break ;
   case GALGAS_typeKindEnum::kEnum_classType:
     {
-      const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_11190 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
-      const GALGAS_bool extractedValue_11117_isReference = extractPtr_11190->mAssociatedValue0 ;
+      const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_11192 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
+      const GALGAS_bool extractedValue_11119_isReference = extractPtr_11192->mAssociatedValue0 ;
       GALGAS_string temp_1 ;
-      const enumGalgasBool test_2 = extractedValue_11117_isReference.boolEnum () ;
+      const enumGalgasBool test_2 = extractedValue_11119_isReference.boolEnum () ;
       if (kBoolTrue == test_2) {
         temp_1 = GALGAS_string ("reference class") ;
       }else if (kBoolFalse == test_2) {
