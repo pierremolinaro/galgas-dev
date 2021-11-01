@@ -4726,10 +4726,10 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
       }
     }
     if (kBoolFalse == test_3) {
-      var_MACOSX_5F_DEPLOYMENT_5F_TARGET_17163 = objectArray_17170->mProperty_mFeatureValue.getter_string (SOURCE_FILE ("galgas3TargetGeneration.galgas", 324)) ;
+      var_MACOSX_5F_DEPLOYMENT_5F_TARGET_17163 = objectArray_17170->mProperty_mFeatureValue.getter_string (HERE) ;
     }
   }else{
-    var_MACOSX_5F_DEPLOYMENT_5F_TARGET_17163 = GALGAS_string ("10.10").getter_nowhere (SOURCE_FILE ("galgas3TargetGeneration.galgas", 327)).getter_string (SOURCE_FILE ("galgas3TargetGeneration.galgas", 327)) ;
+    var_MACOSX_5F_DEPLOYMENT_5F_TARGET_17163 = GALGAS_string ("10.10").getter_nowhere (SOURCE_FILE ("galgas3TargetGeneration.galgas", 327)).getter_string (HERE) ;
   }
   GALGAS_string var_libpmPath_17591 ;
   const cMapElement_projectQualifiedFeatureMap * objectArray_17598 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("libpmAtPath")) ;

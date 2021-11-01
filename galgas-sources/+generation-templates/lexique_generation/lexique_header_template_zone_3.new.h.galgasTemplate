@@ -1,27 +1,27 @@
 
 //--- Terminal symbols enumeration
   public: enum {kToken_%
-    for () in [LEXIQUE_ANALYSIS_CONTEXT mTerminalList] do
-      %,\n   kToken_% ![[mTerminalName string] identifierRepresentation]
+    for () in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do
+      %,\n   kToken_% ![mTerminalName.string identifierRepresentation]
     end
   %} ;
 %
   for () in DELIMITOR_LIST_LIST do
-    %\n//--- Key words table '%![mName string]%'\n%
-    %  public: static int16_t search_into_%![mName string]% (const C_String & inSearchedString) ;\n%
+    %\n//--- Key words table '%!mName.string%'\n%
+    %  public: static int16_t search_into_%!mName.string% (const C_String & inSearchedString) ;\n%
   end
 %  
 
 //--- Assign from attribute
 %
-  for () in [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
+  for () in LEXIQUE_ANALYSIS_CONTEXT.mLexicalAttributeMap do
     %  public: GALGAS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% synthetizedAttribute_%![lkey identifierRepresentation]% (void) const ;\n%
   end
 %
 
 //--- Attribute access
 %
-  for () in [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
+  for () in LEXIQUE_ANALYSIS_CONTEXT.mLexicalAttributeMap do
     %  public: %![mLexicalType cppTypeName]% attributeValue_%![lkey identifierRepresentation]% (void) const ;\n%
   end
 %
@@ -51,7 +51,7 @@
   protected: virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const ;
 
 //--- Get terminal count
-  public: virtual int16_t terminalVocabularyCount (void) const { return %![[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string]% ; }
+  public: virtual int16_t terminalVocabularyCount (void) const { return %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList length] string]% ; }
 
 //--- Get Token String
   public: virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;

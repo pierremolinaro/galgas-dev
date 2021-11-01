@@ -82,8 +82,20 @@ proc checkAssignmentTypeWithImplicitGetterCall
       ok = targetType == sourceType
     end
   end
-#--- Check if there is a conversion getter
-  if (not ok) && [[inSourceType mGetterMap] hasKey ![inTargetType key]] then
+#--- Check for a direct property access or for a conversion getter
+  if not ok, let [[inSourceType mPropertyMap] searchKey ![inTargetType key] ?let isPublic ?* ?let propertyType] then
+    if not isPublic then
+      error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
+    end
+    let conversionExpression = @structPropertyAccessExpressionForGeneration.new {
+      !propertyType
+      !inErrorLocation
+      !ioRightExpression
+      ![inTargetType key] 
+    }
+    ioRightExpression = conversionExpression
+    ok = propertyType == inTargetType
+  elsif (not ok) && [[inSourceType mGetterMap] hasKey ![inTargetType key]] then
     [[inSourceType mGetterMap] searchKey
       ![inTargetType lkey]
       ?let kind

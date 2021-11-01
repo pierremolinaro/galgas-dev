@@ -125,8 +125,7 @@ rule <relation_factor>
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-rule <simple_expression>
-  !@templateExpressionAST outExpression {
+rule <simple_expression> !@templateExpressionAST outExpression {
   <term> ?outExpression
   repeat
   while 
@@ -413,7 +412,9 @@ rule <primary> !@templateExpressionAST outExpression {
     outExpression = @templateExtensionTemplateCallAST.new {
       !receiverExpression
       !templateName
-      !expressionList}
+      !expressionList
+    }
+    $]$
   or #------------ Constructor call
     $@type$ ?var @lstring typeName
     $identifier$ ?var  @lstring constructorName
@@ -421,7 +422,9 @@ rule <primary> !@templateExpressionAST outExpression {
     outExpression = @templateConstructorAST.new {
       !typeName
       !constructorName
-      !expressionList}
+      !expressionList
+    }
+    $]$
   or #--------------------------------- Filewrapper
     $filewrapper$
     $identifier$ ?var @lstring filewrapperName
@@ -429,14 +432,16 @@ rule <primary> !@templateExpressionAST outExpression {
     $identifier$ ?var @lstring templateName
     var @templateExpressionListAST expressionList
     <output_expression_list> ?expressionList
+    $]$
     outExpression = @templateFileWrapperTemplateCallAST.new {!filewrapperName !templateName !expressionList}
-  or #--------------------------------- Retter call
+  or #--------------------------------- Getter call
     let startLocation = @location.here
     var @templateExpressionAST receiverExpression
     <expression> ?receiverExpression
     $identifier$ ?var  @lstring getterName
     var @templateExpressionListAST expressionList
     <output_expression_list> ?expressionList
+    $]$
     let endLocation = @location.here
     outExpression = @templateGetterCallInExpressionAST.new {
       !receiverExpression
@@ -458,8 +463,8 @@ rule <primary> !@templateExpressionAST outExpression {
       $identifier$ ?var @lstring getterName
       outExpression = @templateOptionAccessAST.new {!optionComponentName !optionName !getterName}
     end
+    $]$
   end
-  $]$
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

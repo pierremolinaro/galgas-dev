@@ -85,6 +85,9 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
       error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
     end
     [propertyMap searchKey !self.mGetterName ?let isPublic ?* ?let propertyType]
+    if not isPublic then
+      error self.mGetterName : "inaccessible property (due to 'private' qualifier)"
+    end
     outExpression = @structPropertyAccessExpressionForGeneration.new {
       !propertyType
       !self.mGetterName.location
@@ -92,14 +95,6 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
       !self.mGetterName.string
     }
   else
-
-#  outExpression = @structPropertyAccessExpressionForGeneration.new {
-#    !type
-#    !self.mOperatorLocation
-#    !expression
-#    !self.mStructFieldName.string
-#  }
-  
   #--- Get getter map
     let @getterMap getterMap = [receiverType mGetterMap]
   #--- Search contructor

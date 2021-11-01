@@ -127,7 +127,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
 %
 for () in SLOT_LIST do index idx
    %    if ((mFlags & ((uint64_t) 1) << %![idx string]%) != 0) {\n%
-   %      ioString << " %![mValue string]%" ;\n%
+   %      ioString << " %!mValue.string%" ;\n%
    %    }\n%
 end
 %  }

@@ -300,7 +300,7 @@ end
   %  macroDetachSharedObject (p) ;\n%
   block 2 :
     %const char * kInsertErrorMessage = %![mErrorMessage utf8Representation]% ;\n%
-    if [mInitialStateName string] == "" then
+    if mInitialStateName.string == "" then
 %insertInSharedMap (attributes,
                    inCompiler,
                    0,
@@ -324,7 +324,7 @@ for () in SEARCH_METHOD_LIST do
   %const char * kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]% = %![mErrorMessage utf8Representation]% ;\n\n%
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::%
-    if [mActionName string] == "" then
+    if mActionName.string == "" then
       %method_%
     else
       %setter_%
@@ -335,14 +335,14 @@ for () in SEARCH_METHOD_LIST do
     end
     %,\n %!^%C_Compiler * inCompiler%
     %\n %!^%COMMA_LOCATION_ARGS) %
-    if [mActionName string] == "" then
+    if mActionName.string == "" then
       %const %
     end
     %{\n%
   block 2 :
     %const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) performSearch (%?^%inKey,\n%
     !^%inCompiler,\n%
-    if [mActionName string] != "" then
+    if mActionName.string != "" then
       !^%kMapAction_%!TYPE_IDENTIFIER%_%![mActionName identifierRepresentation]%,\n%
       !^%kMapTransitions_%!TYPE_IDENTIFIER%,\n%
       !^%kMapActionCount_%!TYPE_IDENTIFIER%,\n%

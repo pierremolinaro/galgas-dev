@@ -584,7 +584,7 @@ override method @lexicalRoutineInstructionAST checkLexicalInstruction
   ]
 #--- Check actual argument count
   if [lexicalRoutineFormalArgumentList length] != [self.mActualArgumentList length] then
-    error self.mRoutineName: "this lexical routine call names "
+    error self.mRoutineName : "this lexical routine call names "
     + [[self.mActualArgumentList length] string]
     + " actual argument(s), but the lexical routine prototype requires "
     + [lexicalRoutineFormalArgumentList length] + " actual argument(s)"

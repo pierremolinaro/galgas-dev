@@ -7,9 +7,9 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 %
-  for () in [LEXIQUE_ANALYSIS_CONTEXT mLexicalRoutineMessageMap] do
+  for () in LEXIQUE_ANALYSIS_CONTEXT.mLexicalRoutineMessageMap do
     if mIsExtern then
-      %\nvoid scanner_cocoa_routine_%![lkey string]% (%?^%BOOL * ioScanningOk%
+      %\nvoid scanner_cocoa_routine_%!lkey.string% (%?^%BOOL * ioScanningOk%
       for () in mLexicalRoutineFormalArgumentList do
         %,\n                %!^![mLexicalFormalArgumentMode cppConstInFormalArgument]
                              ![mLexicalFormalArgumentType cocoaTypeName]
@@ -26,9 +26,9 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 %
-  for () in [LEXIQUE_ANALYSIS_CONTEXT mLexicalFunctionMap] do
+  for () in LEXIQUE_ANALYSIS_CONTEXT.mLexicalFunctionMap do
     if mIsExtern then
-      %\n%![mReturnedLexicalType cppTypeName]% scanner_cocoa_function_%![lkey string]% (%?^%BOOL * ioScanningOk%
+      %\n%![mReturnedLexicalType cppTypeName]% scanner_cocoa_function_%!lkey.string% (%?^%BOOL * ioScanningOk%
       for () in mLexicalTypeList do
         %,\n                %!^%const %![mLexicalType cppTypeName]% %!mArgumentNameForComment
       end
@@ -44,8 +44,8 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 enum {%!LEXIQUE_CLASS_NAME%_1_%
-    for () in [LEXIQUE_ANALYSIS_CONTEXT mTerminalList] do
-      %,\n  %!LEXIQUE_CLASS_NAME %_1_% ![[mTerminalName string] identifierRepresentation]
+    for () in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do
+      %,\n  %!LEXIQUE_CLASS_NAME %_1_% ![mTerminalName.string identifierRepresentation]
     end
   %\n} ;
 
@@ -68,8 +68,8 @@ enum {%!LEXIQUE_CLASS_NAME%_1_%
 @interface OC_Lexique_%!LEXIQUE_CLASS_NAME% : OC_Lexique {
 //--- Attributes
 %
-  for () in [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
-    %  @private %![mLexicalType cocoaTypeName]% mLexicalAttribute_%![lkey string]% ;\n%
+  for () in LEXIQUE_ANALYSIS_CONTEXT.mLexicalAttributeMap do
+    %  @private %![mLexicalType cocoaTypeName]% mLexicalAttribute_%!lkey.string% ;\n%
   end
 %
 }

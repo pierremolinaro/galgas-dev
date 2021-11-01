@@ -360,7 +360,7 @@ static void extensionMethod_overridingExtensionGetterAST_semanticAnalysis (const
   macroValidSharedObject (object, cPtr_overridingExtensionGetterAST) ;
   const GALGAS_overridingExtensionGetterAST temp_0 = object ;
   const GALGAS_overridingExtensionGetterAST temp_1 = object ;
-  GALGAS_lstring var_nameForUsefulness_5050 = function_getterNameForUsefulEntitiesGraph (temp_0.getter_mTypeName (HERE).getter_string (SOURCE_FILE ("extension-overriding-getter.galgas", 104)), temp_1.getter_mOverridingExtensionGetterName (HERE), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 104)) ;
+  GALGAS_lstring var_nameForUsefulness_5050 = function_getterNameForUsefulEntitiesGraph (temp_0.getter_mTypeName (HERE).getter_string (HERE), temp_1.getter_mOverridingExtensionGetterName (HERE), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 104)) ;
   {
   ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_5050, var_nameForUsefulness_5050, inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 105)) ;
   }
@@ -695,7 +695,7 @@ static void extensionMethod_overridingExtensionMethodAST_semanticAnalysis (const
   macroValidSharedObject (object, cPtr_overridingExtensionMethodAST) ;
   const GALGAS_overridingExtensionMethodAST temp_0 = object ;
   const GALGAS_overridingExtensionMethodAST temp_1 = object ;
-  GALGAS_lstring var_nameForUsefulness_4652 = function_methodNameForUsefulEntitiesGraph (temp_0.getter_mTypeName (HERE).getter_string (SOURCE_FILE ("extension-overriding-method.galgas", 90)), temp_1.getter_mOverridingExtensionMethodName (HERE), inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 90)) ;
+  GALGAS_lstring var_nameForUsefulness_4652 = function_methodNameForUsefulEntitiesGraph (temp_0.getter_mTypeName (HERE).getter_string (HERE), temp_1.getter_mOverridingExtensionMethodName (HERE), inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 90)) ;
   {
   ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_4652, var_nameForUsefulness_4652, inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 91)) ;
   }
@@ -1057,7 +1057,7 @@ static void extensionMethod_overridingExtensionSetterAST_semanticAnalysis (const
   macroValidSharedObject (object, cPtr_overridingExtensionSetterAST) ;
   const GALGAS_overridingExtensionSetterAST temp_0 = object ;
   const GALGAS_overridingExtensionSetterAST temp_1 = object ;
-  GALGAS_lstring var_nameForUsefulness_4674 = function_setterNameForUsefulEntitiesGraph (temp_0.getter_mTypeName (HERE).getter_string (SOURCE_FILE ("extension-overriding-setter.galgas", 91)), temp_1.getter_mOverridingExtensionSetterName (HERE), inCompiler COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 91)) ;
+  GALGAS_lstring var_nameForUsefulness_4674 = function_setterNameForUsefulEntitiesGraph (temp_0.getter_mTypeName (HERE).getter_string (HERE), temp_1.getter_mOverridingExtensionSetterName (HERE), inCompiler COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 91)) ;
   {
   ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_4674, var_nameForUsefulness_4674, inCompiler COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 92)) ;
   }
