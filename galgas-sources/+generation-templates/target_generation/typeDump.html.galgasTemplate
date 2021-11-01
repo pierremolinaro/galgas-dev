@@ -55,7 +55,7 @@ tr.result_line {
 <h1>Types of %!PROJECT_NAME%</h1>
 <p>This document lists all %![[UNIFIED_TYPE_MAP count] string]% defined types, sorted by name.</p>
 <p>%
-for () in FIRST_LETTER_SET
+for (key) in FIRST_LETTER_SET
 do %<a class="header_link" href="#%![[[key characterAtIndex!0] uint] string]%">%!key%</a>%
 between % - %
 end
@@ -64,7 +64,7 @@ end
 !TABLE_OF_TYPES_STRING%
 </p>
 <table class="result">
-%for () in UNIFIED_TYPE_MAP : type_ do%
+%for (type_lkey type_mIsPredefined type_mIsConcrete type_mSuperType type_mTypeKindEnum type_mSupportCollectionValue type_mAllTypedPropertyList type_mPropertyMap type_mCurrentTypedPropertyList type_mConstructorMap type_mGetterMap type_mSetterMap type_mInstanceMethodMap type_mClassMethodMap type_mOptionalMethodMap type_mEnumerationDescriptor type_mHandledOperatorFlags type_mAddAssignOperatorArguments type_mEnumConstantMap type_mEnumConstantList type_mMapSearchMethodList type_mMapEntrySearchConstructorList type_mGenerateHeaderInSeparateFile type_mTypeForEnumeratedElement type_mDefaultConstructorName type_mHeaderFileName type_mHeaderKind) in UNIFIED_TYPE_MAP do%
 <tr><td colspan="2" class="result_title"><a name="%!type_lkey.string%">@%!type_lkey.string%</a></td></tr>
 
 <tr class="result_line">
@@ -165,7 +165,7 @@ end%
 % 
 if [type_mAddAssignOperatorArguments length] > 0 then
   %<tr class="result_line"><td>+= !... !...</td><td>%
-  for () in type_mAddAssignOperatorArguments do
+  for (mFormalSelector mFormalArgumentType mFormalArgumentName) in type_mAddAssignOperatorArguments do
     %<span class="selecteur">?%if mFormalSelector.string != "" then !mFormalSelector.string + ":" end%</span>%
     !linkForType (![mFormalArgumentType key])% % !mFormalArgumentName %<br>%
   end
@@ -173,7 +173,7 @@ if [type_mAddAssignOperatorArguments length] > 0 then
 end
 if [type_mEnumerationDescriptor length] > 0 then
   %<tr class="result_line"><td><b>for</b> constants</td><td>%
-  for () in type_mEnumerationDescriptor do
+  for (mEnumeratedType mEnumerationName) in type_mEnumerationDescriptor do
     !linkForType (![mEnumeratedType key])% %!mEnumerationName%<br>%
   end
   %</td></tr>%
@@ -184,9 +184,9 @@ end
 #--- Constructors
 if [type_mConstructorMap count] > 0 then
   %<tr class="result_line"><td>Constructors</td><td>%
-  for () in type_mConstructorMap do
+  for (lkey mArgumentTypeList mHasCompilerArgument mReturnedType) in type_mConstructorMap do
     %<b>constructor</b> %!lkey.string
-    for () in mArgumentTypeList do
+    for (mFormalSelector mFormalArgumentType mFormalArgumentName) in mArgumentTypeList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       % <span class="selecteur">?%if mFormalSelector.string != "" then !mFormalSelector.string + ":" end !%</span>%
       linkForType (![mFormalArgumentType key]) % % !mFormalArgumentName
@@ -197,7 +197,7 @@ end
 #--- Readers
 if [type_mGetterMap count] > 0 then
   %<tr class="result_line"><td>Getters</td><td>%
-  for () in type_mGetterMap do
+  for (lkey mKind mArgumentTypeList mDeclarationLocation mHasCompilerArgument mReturnedType mQualifier mErrorMessage) in type_mGetterMap do
     switch mKind
     case definedAsMember :
     case definedAsExtension : %(extension) %
@@ -211,7 +211,7 @@ if [type_mGetterMap count] > 0 then
     case isOverridingAbstract : %<b>abstract override</b> %
     end
     %<b>getter</b> %!lkey.string
-    for () in mArgumentTypeList do
+    for (mFormalSelector mFormalArgumentType mFormalArgumentName) in mArgumentTypeList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       % ?<span class="selecteur">%if mFormalSelector.string != "" then !mFormalSelector.string + ":" end%</span>%
       !linkForType (![mFormalArgumentType key]) % % !mFormalArgumentName
@@ -223,7 +223,7 @@ end
 #--- Methods
 if [type_mInstanceMethodMap count] > 0 then
   %<tr class="result_line"><td>Methods</td><td>%
-  for () in type_mInstanceMethodMap do
+  for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument mQualifier mErrorMessage) in type_mInstanceMethodMap do
     switch mKind
     case definedAsMember :
     case definedAsExtension : %(extension) %
@@ -237,7 +237,7 @@ if [type_mInstanceMethodMap count] > 0 then
     case isOverridingAbstract : %<b>abstract override</b> %
     end
     %<b>method</b> %!lkey.string
-    for () in mParameterList do
+    for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in mParameterList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       switch mFormalArgumentPassingMode
       case argumentConstantIn : % <span class="selecteur">?%
@@ -255,7 +255,7 @@ end
 #--- Modifiers
 if [type_mSetterMap count] > 0 then
   %<tr class="result_line"><td>Setters</td><td>%
-  for () in type_mSetterMap do
+  for (lkey mKind mParameterList mHasCompilerArgument mQualifier mErrorMessage) in type_mSetterMap do
     switch mKind
     case definedAsMember :
     case definedAsExtension : %(extension) %
@@ -269,7 +269,7 @@ if [type_mSetterMap count] > 0 then
     case isOverridingAbstract : %<b>abstract override</b> %
     end
     %<b>setter</b> %!lkey.string
-    for () in mParameterList do
+    for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in mParameterList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       switch mFormalArgumentPassingMode
       case argumentConstantIn : % <span class="selecteur">?%
@@ -287,9 +287,9 @@ end
 #--- type proc
 if [type_mClassMethodMap count] > 0 then
   %<tr class="result_line"><td>Type procs</td><td>%
-  for () in type_mClassMethodMap do
+  for (lkey mParameterList mHasCompilerArgument) in type_mClassMethodMap do
     %<b>proc</b> @%!type_lkey.string% %!lkey.string
-    for () in mParameterList do
+    for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in mParameterList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       switch mFormalArgumentPassingMode
       case argumentConstantIn : % <span class="selecteur">?%

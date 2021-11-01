@@ -28,6 +28,6 @@ end
 
 //--------------------------------- Property read access
 %
-for () in CURRENT_PROPERTY_LIST do
+for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do
   %  public: class GALGAS_%![mPropertyTypeEntry identifierRepresentation]% readProperty_%![mPropertyName identifierRepresentation]% (void) const ;\n\n%
 end

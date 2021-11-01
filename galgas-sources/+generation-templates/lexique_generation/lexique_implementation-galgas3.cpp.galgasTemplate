@@ -11,7 +11,7 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 cTokenFor_%!LEXIQUE_IDENTIFIER%::cTokenFor_%!LEXIQUE_IDENTIFIER% (void)%
-  for () in LEXICAL_ATTRIBUTE_MAP
+  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP
   before % :\n%
   do %mLexicalAttribute_%![lkey identifierRepresentation]% ()%
   between %,\n%
@@ -56,7 +56,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
 //                        Lexical error message list                                             
 //----------------------------------------------------------------------------------------------------------------------
 %
-  for () in LEXICAL_MESSAGE_MAP do
+  for (lkey mLexicalMessage mMessageIsUsed) in LEXICAL_MESSAGE_MAP do
    %\nstatic const char * gLexicalMessage_%!LEXIQUE_IDENTIFIER%_%!lkey.string% = % ![mLexicalMessage utf8Representation]% ;\n%
   end
 %
@@ -64,7 +64,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
 //          Syntax error messages, for every terminal symbol                                     
 //----------------------------------------------------------------------------------------------------------------------
 %
-  for () in TERMINAL_LIST do
+  for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in TERMINAL_LIST do
    %\n//--- Syntax error message for terminal '$%!mTerminalName.string%$' :\n%
    %static const char * gSyntaxErrorMessage_%!LEXIQUE_IDENTIFIER%_%![mTerminalName.string identifierRepresentation]% = %![mSyntaxErrorMessage utf8Representation]% ;\n%
   end
@@ -77,7 +77,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int16_t i
   C_String result = "<unknown>" ;
   if ((inTerminalIndex >= 0) && (inTerminalIndex < %![[TERMINAL_LIST length] + 1 string]%)) {
     static const char * syntaxErrorMessageArray [%![[TERMINAL_LIST length] + 1 string]%] = {kEndOfSourceLexicalErrorMessage%
-  for () in TERMINAL_LIST do
+  for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in TERMINAL_LIST do
    %,\n        gSyntaxErrorMessage_%!LEXIQUE_IDENTIFIER%_%![mTerminalName.string identifierRepresentation]
   end
 %\n    } ;
@@ -90,7 +90,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int16_t i
 //                      U N I C O D E    S T R I N G S                                           
 //----------------------------------------------------------------------------------------------------------------------
 %
-  for () in STRINGS_IN_EXPLICIT_RULES do
+  for (key) in STRINGS_IN_EXPLICIT_RULES do
    if [key length] > 0 then
    %\n//--- Unicode string for '$%![key identifierRepresentation]%$'\n%
    %static const utf32 kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![key identifierRepresentation]% [] = % ![key utf32Representation]% ;\n%
@@ -98,13 +98,13 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int16_t i
   end
 %
 %
-  for () in LEXICAL_TOKEN_LIST_MAP : tokenList_ do
+  for (tokenList_lkey tokenList_mExplicitTokenListMap tokenList_mTokenSortedList tokenList_mShouldBeGenerated) in LEXICAL_TOKEN_LIST_MAP do
     %//----------------------------------------------------------------------------------------------------------------------\n%
     %//             Key words table '%!tokenList_lkey.string%'      \n%
     %//----------------------------------------------------------------------------------------------------------------------\n%
     %\nstatic const int32_t ktable_size_%!LEXIQUE_IDENTIFIER%_%!tokenList_lkey.string% = %![[tokenList_mExplicitTokenListMap count] string]% ;\n\n%
     %static const C_unicode_lexique_table_entry ktable_for_%!LEXIQUE_IDENTIFIER%_%!tokenList_lkey.string% [ktable_size_%!LEXIQUE_IDENTIFIER%_%!tokenList_lkey.string%] = {\n%
-      for () in tokenList_mTokenSortedList
+      for (mLength mName mTerminalName) in tokenList_mTokenSortedList
       do %  C_unicode_lexique_table_entry (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mName identifierRepresentation]%, %![mLength string]%, C_Lexique_%!LEXIQUE_IDENTIFIER%::kToken_%![mTerminalName identifierRepresentation]%)%
       between %,\n%
       end
@@ -128,12 +128,12 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getCurrentTokenString (const cToken * 
     case kToken_:
       s.appendCString("$$") ;
       break ;
-%for () in TERMINAL_LIST do
+%for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in TERMINAL_LIST do
    %    case kToken_%![mTerminalName.string identifierRepresentation]%:\n%
    %      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;\n%
    %      s.appendCString (%![mTerminalName.string utf8Representation]%) ;\n%
    %      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;\n%
-   for () in mSentAttributeList do
+   for (mLexicalFormalSelector mLexicalAttributeName mLexicalType) in mSentAttributeList do
      %      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;\n%
      %      s.%![mLexicalType appendMethodName]% (ptr->mLexicalAttribute_%![mLexicalAttributeName identifierRepresentation] ![mLexicalType appendArgumentOfMethod]%) ;\n%
    end
@@ -150,7 +150,7 @@ end
 //                           Template Delimiters                                                 
 //----------------------------------------------------------------------------------------------------------------------
 
-% for () in LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList
+% for (mStartString mEndString mPreservesStartDelimiter) in LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList
     before %static const cTemplateDelimiter %!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [%![[TEMPLATE_DELIMITOR_LIST length] string]%] = {\n%
     do %  cTemplateDelimiter (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mStartString identifierRepresentation]%, %![[mStartString length] string]%, %
       if [mEndString length] == 0 then
@@ -169,7 +169,7 @@ end
 //                           Template Replacements                                               
 //----------------------------------------------------------------------------------------------------------------------
 
-% for () in TEMPLATE_REPLACEMENT_LIST
+% for (mMatchString mReplacementString mReplacementFunction) in TEMPLATE_REPLACEMENT_LIST
     before %static const cTemplateDelimiter %!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [%![[TEMPLATE_REPLACEMENT_LIST length] string]%] = {\n%
     do
       %  cTemplateDelimiter (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mMatchString identifierRepresentation]%, %![[mMatchString length] string]%, %
@@ -189,7 +189,7 @@ end
 //----------------------------------------------------------------------------------------------------------------------
 
 % if [TEMPLATE_DELIMITOR_LIST length] > 0 then
-    for () in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList
+    for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList
       before %static const bool %!LEXIQUE_IDENTIFIER%_kEndOfScriptInTemplateArray [%![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList length] string]%] = {\n%
       do %  %![mIsEndOfTemplateMark cString]% /* %!mTerminalName.string% */%
       between %,\n%
@@ -202,7 +202,7 @@ end
 //----------------------------------------------------------------------------------------------------------------------
  
 %
-  for () in UNICODE_TEST_FUNCTIONS do
+  for (mFunctionName mLexicalExpression) in UNICODE_TEST_FUNCTIONS do
     %bool C_Lexique_%!LEXIQUE_IDENTIFIER%::%![mFunctionName identifierRepresentation]% (const utf32 inUnicodeCharacter) {\n%
     %  return %![mLexicalExpression generateForUnicodeTestFunctions]% ;\n%
     %}\n\n%
@@ -254,14 +254,14 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
       }
     }
     if ((mMatchedTemplateDelimiterIndex >= 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
-%  for () in LEXICAL_ATTRIBUTE_MAP do
+%  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
     %    token.mLexicalAttribute_%![lkey identifierRepresentation] ![mLexicalType initialization] % ;\n%
   end
 %    mTokenStartLocation = mCurrentLocation ;
     try{
 %
   block 6 :
-    for () in LEXICAL_RULE_LIST do
+    for (mLexicalRule) in LEXICAL_RULE_LIST do
       ![mLexicalRule generateCode !LEXIQUE_IDENTIFIER !LEXIQUE_ANALYSIS_CONTEXT]
     end
   end
@@ -281,14 +281,14 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
       mMatchedTemplateDelimiterIndex = -1 ;
     }
   %else
-  for () in LEXICAL_ATTRIBUTE_MAP do
+  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
     %    token.mLexicalAttribute_%![lkey identifierRepresentation] ![mLexicalType initialization] % ;\n%
   end
 %    mTokenStartLocation = mCurrentLocation ;
     try{
 %
   block 6 :
-    for () in LEXICAL_RULE_LIST do
+    for (mLexicalRule) in LEXICAL_RULE_LIST do
       ![mLexicalRule generateCode !LEXIQUE_IDENTIFIER !LEXIQUE_ANALYSIS_CONTEXT]
     end
   end
@@ -325,7 +325,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER
   ptr->mTemplateStringBeforeToken = ioToken.mTemplateStringBeforeToken ;
   ioToken.mTemplateStringBeforeToken = "" ;
 %
-  for () in LEXICAL_ATTRIBUTE_MAP do
+  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
     %  ptr->mLexicalAttribute_%![lkey identifierRepresentation]% = ioToken.mLexicalAttribute_%![lkey identifierRepresentation]% ;\n%
   end
 %  enterTokenFromPointer (ptr) ;
@@ -334,7 +334,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER
 //----------------------------------------------------------------------------------------------------------------------
 //               A T T R I B U T E   A C C E S S                                                 
 %
-  for () in LEXICAL_ATTRIBUTE_MAP do
+  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
     %//----------------------------------------------------------------------------------------------------------------------\n\n%
     ![mLexicalType cppTypeName]% C_Lexique_%!LEXIQUE_IDENTIFIER%::attributeValue_%![lkey identifierRepresentation]% (void) const {\n%
     %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) currentTokenPtr (HERE) ;\n%
@@ -344,7 +344,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER
 %//----------------------------------------------------------------------------------------------------------------------
 //         A S S I G N    F R O M    A T T R I B U T E                                           
 %
-  for () in LEXICAL_ATTRIBUTE_MAP do
+  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
     %//----------------------------------------------------------------------------------------------------------------------\n\n%
     %GALGAS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% C_Lexique_%!LEXIQUE_IDENTIFIER%::synthetizedAttribute_%![lkey identifierRepresentation]% (void) const {\n%
     %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) currentTokenPtr (HERE) ;\n%
@@ -361,7 +361,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER
 
 GALGAS_stringlist C_Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
   GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
-%for () in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList
+%for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList
   do %  result.addAssign_operation (GALGAS_string (%![mTerminalName utf8Representation]%) COMMA_THERE) ;\n%
   end
 %  return result ;
@@ -373,7 +373,7 @@ static void getKeywordLists_%!LEXIQUE_IDENTIFIER% (TC_UniqueArray <C_String> & %
 if [LEXICAL_TOKEN_LIST_MAP count] == 0 then %/* ioList */% else %ioList% end
 %) {
 %
-for () in LEXICAL_TOKEN_LIST_MAP do
+for (lkey mExplicitTokenListMap mTokenSortedList mShouldBeGenerated) in LEXICAL_TOKEN_LIST_MAP do
   %  ioList.appendObject (%![LEXIQUE_COMPONENT_NAME + ":" + lkey utf8Representation]%) ;\n%
 end
 %}
@@ -385,10 +385,10 @@ static void getKeywordsForIdentifier_%!LEXIQUE_IDENTIFIER% (%?^%const C_String &
      %!^%TC_UniqueArray <C_String> & %if [LEXICAL_TOKEN_LIST_MAP count] == 0 then %/* ioList */% else %ioList% end
 %) {
 %
-for () in LEXICAL_TOKEN_LIST_MAP do
+for (lkey mExplicitTokenListMap mTokenSortedList mShouldBeGenerated) in LEXICAL_TOKEN_LIST_MAP do
   %  if (inIdentifier == %![LEXIQUE_COMPONENT_NAME + ":" + lkey utf8Representation]%) {\n%
   %    ioFound = true ;\n%
-  for () in mTokenSortedList do
+  for (mLength mName mTerminalName) in mTokenSortedList do
     %    ioList.appendObject (%![mName utf8Representation]%) ;\n%
   end
   %    ioList.sortArrayUsingCompareMethod() ;\n%
@@ -408,7 +408,7 @@ __attribute__ ((unused)) (getKeywordLists_%!LEXIQUE_IDENTIFIER%, getKeywordsForI
 
 uint32_t C_Lexique_%!LEXIQUE_IDENTIFIER%::styleIndexForTerminal (const int32_t inTerminalIndex) const {
   static const uint32_t kTerminalSymbolStyles [%![[TERMINAL_LIST length] + 1 string]%] = {0%
-for () in TERMINAL_LIST do
+for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in TERMINAL_LIST do
   %,\n    %![mStyleIndex string]% /* %!LEXIQUE_COMPONENT_NAME%_1_%![mTerminalName.string identifierRepresentation]% */%
 end%\n  } ;
   return (inTerminalIndex >= 0) ? kTerminalSymbolStyles [inTerminalIndex] : 0 ;
@@ -423,7 +423,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::styleNameForIndex (const uint32_t inSt
   if (inStyleIndex < %![[LEXICAL_STYLE_LIST length] + 1 string]%) {
     static const char * kStyleArray [%![[LEXICAL_STYLE_LIST length] + 1 string]%] = {
       ""%
-for () in LEXICAL_STYLE_LIST do
+for (mName mComment) in LEXICAL_STYLE_LIST do
   %,\n      %![mName.string utf8Representation]
 end%\n    } ;
     result = kStyleArray [inStyleIndex] ;

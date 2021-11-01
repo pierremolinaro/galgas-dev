@@ -8,6 +8,268 @@
 #include "all-declarations-14.h"
 
 //----------------------------------------------------------------------------------------------------------------------
+// @lexicalWarningInstructionAST reference class
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_lexicalWarningInstructionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_lexicalWarningInstructionAST * p = (const cPtr_lexicalWarningInstructionAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_lexicalWarningInstructionAST) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mWarningMessageName.objectCompare (p->mProperty_mWarningMessageName) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_lexicalWarningInstructionAST::objectCompare (const GALGAS_lexicalWarningInstructionAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalWarningInstructionAST::GALGAS_lexicalWarningInstructionAST (void) :
+GALGAS_lexicalInstructionAST () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalWarningInstructionAST GALGAS_lexicalWarningInstructionAST::constructor_default (LOCATION_ARGS) {
+  return GALGAS_lexicalWarningInstructionAST::constructor_new (GALGAS_lstring::constructor_default (HERE)
+                                                               COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalWarningInstructionAST::GALGAS_lexicalWarningInstructionAST (const cPtr_lexicalWarningInstructionAST * inSourcePtr) :
+GALGAS_lexicalInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalWarningInstructionAST) ;
+}
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalWarningInstructionAST GALGAS_lexicalWarningInstructionAST::constructor_new (const GALGAS_lstring & inAttribute_mWarningMessageName
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalWarningInstructionAST result ;
+  if (inAttribute_mWarningMessageName.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_lexicalWarningInstructionAST (inAttribute_mWarningMessageName COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_lexicalWarningInstructionAST::readProperty_mWarningMessageName (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_lexicalWarningInstructionAST * p = (cPtr_lexicalWarningInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexicalWarningInstructionAST) ;
+    return p->mProperty_mWarningMessageName ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//Pointer class for @lexicalWarningInstructionAST class
+//----------------------------------------------------------------------------------------------------------------------
+
+cPtr_lexicalWarningInstructionAST::cPtr_lexicalWarningInstructionAST (const GALGAS_lstring & in_mWarningMessageName
+                                                                      COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (THERE),
+mProperty_mWarningMessageName (in_mWarningMessageName) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_lexicalWarningInstructionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalWarningInstructionAST ;
+}
+
+void cPtr_lexicalWarningInstructionAST::description (C_String & ioString,
+                                                     const int32_t inIndentation) const {
+  ioString << "[@lexicalWarningInstructionAST:" ;
+  mProperty_mWarningMessageName.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_lexicalWarningInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_lexicalWarningInstructionAST (mProperty_mWarningMessageName COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@lexicalWarningInstructionAST type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_lexicalWarningInstructionAST ("lexicalWarningInstructionAST",
+                                                     & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_lexicalWarningInstructionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalWarningInstructionAST ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_lexicalWarningInstructionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lexicalWarningInstructionAST (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalWarningInstructionAST GALGAS_lexicalWarningInstructionAST::extractObject (const GALGAS_object & inObject,
+                                                                                        C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalWarningInstructionAST result ;
+  const GALGAS_lexicalWarningInstructionAST * p = (const GALGAS_lexicalWarningInstructionAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_lexicalWarningInstructionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalWarningInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_lexicalWarningInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalWarningInstructionAST_2D_weak & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
+    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalWarningInstructionAST_2D_weak::GALGAS_lexicalWarningInstructionAST_2D_weak (void) :
+GALGAS_lexicalInstructionAST_2D_weak () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalWarningInstructionAST_2D_weak & GALGAS_lexicalWarningInstructionAST_2D_weak::operator = (const GALGAS_lexicalWarningInstructionAST & inSource) {
+  cPtr_weakReference_class * proxyPtr = NULL ;
+  acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
+  if (p != NULL) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mObjectPtr, proxyPtr) ;
+  return *this ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalWarningInstructionAST_2D_weak::GALGAS_lexicalWarningInstructionAST_2D_weak (const GALGAS_lexicalWarningInstructionAST & inSource) :
+GALGAS_lexicalInstructionAST_2D_weak (inSource) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalWarningInstructionAST_2D_weak GALGAS_lexicalWarningInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+  GALGAS_lexicalWarningInstructionAST_2D_weak result ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalWarningInstructionAST GALGAS_lexicalWarningInstructionAST_2D_weak::bang_lexicalWarningInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalWarningInstructionAST result ;
+  if (mObjectPtr != NULL) {
+    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
+    acStrongPtr_class * strongPtr = p->strongObject () ;
+    if (strongPtr == NULL) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_lexicalWarningInstructionAST) ;
+      result = GALGAS_lexicalWarningInstructionAST ((cPtr_lexicalWarningInstructionAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@lexicalWarningInstructionAST-weak type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_lexicalWarningInstructionAST_2D_weak ("lexicalWarningInstructionAST-weak",
+                                                             & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_lexicalWarningInstructionAST_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalWarningInstructionAST_2D_weak ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_lexicalWarningInstructionAST_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lexicalWarningInstructionAST_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalWarningInstructionAST_2D_weak GALGAS_lexicalWarningInstructionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                                        C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalWarningInstructionAST_2D_weak result ;
+  const GALGAS_lexicalWarningInstructionAST_2D_weak * p = (const GALGAS_lexicalWarningInstructionAST_2D_weak *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_lexicalWarningInstructionAST_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalWarningInstructionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 // @lexicalTagInstructionAST reference class
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15198,431 +15460,6 @@ GALGAS_extensionGetterAST GALGAS_extensionGetterAST::extractObject (const GALGAS
       result = *p ;
     }else{
       inCompiler->castError ("extensionGetterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_extensionGetterAST_2D_weak::objectCompare (const GALGAS_extensionGetterAST_2D_weak & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
-    const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_extensionGetterAST_2D_weak::GALGAS_extensionGetterAST_2D_weak (void) :
-GALGAS_semanticDeclarationAST_2D_weak () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_extensionGetterAST_2D_weak & GALGAS_extensionGetterAST_2D_weak::operator = (const GALGAS_extensionGetterAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
-  acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
-  if (p != NULL) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mObjectPtr, proxyPtr) ;
-  return *this ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_extensionGetterAST_2D_weak::GALGAS_extensionGetterAST_2D_weak (const GALGAS_extensionGetterAST & inSource) :
-GALGAS_semanticDeclarationAST_2D_weak (inSource) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_extensionGetterAST_2D_weak GALGAS_extensionGetterAST_2D_weak::constructor_nil (LOCATION_ARGS) {
-  GALGAS_extensionGetterAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_extensionGetterAST GALGAS_extensionGetterAST_2D_weak::bang_extensionGetterAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GALGAS_extensionGetterAST result ;
-  if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
-    if (strongPtr == NULL) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_extensionGetterAST) ;
-      result = GALGAS_extensionGetterAST ((cPtr_extensionGetterAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@extensionGetterAST-weak type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionGetterAST_2D_weak ("extensionGetterAST-weak",
-                                                   & kTypeDescriptor_GALGAS_semanticDeclarationAST_2D_weak) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_extensionGetterAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionGetterAST_2D_weak ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_extensionGetterAST_2D_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_extensionGetterAST_2D_weak (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_extensionGetterAST_2D_weak GALGAS_extensionGetterAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_extensionGetterAST_2D_weak result ;
-  const GALGAS_extensionGetterAST_2D_weak * p = (const GALGAS_extensionGetterAST_2D_weak *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_extensionGetterAST_2D_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("extensionGetterAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-// @extensionGetterForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult cPtr_extensionGetterForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_extensionGetterForGeneration * p = (const cPtr_extensionGetterForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_extensionGetterForGeneration) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mHasHeader.objectCompare (p->mProperty_mHasHeader) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mImplementationCppFileName.objectCompare (p->mProperty_mImplementationCppFileName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mReceiverType.objectCompare (p->mProperty_mReceiverType) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mExtensionGetterName.objectCompare (p->mProperty_mExtensionGetterName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mImplementedAsFunction.objectCompare (p->mProperty_mImplementedAsFunction) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mResultVarCppName.objectCompare (p->mProperty_mResultVarCppName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mExtensionGetterFormalParameterList.objectCompare (p->mProperty_mExtensionGetterFormalParameterList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mTypedAttributeList.objectCompare (p->mProperty_mTypedAttributeList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mSemanticInstructionListForGeneration.objectCompare (p->mProperty_mSemanticInstructionListForGeneration) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-typeComparisonResult GALGAS_extensionGetterForGeneration::objectCompare (const GALGAS_extensionGetterForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_extensionGetterForGeneration::GALGAS_extensionGetterForGeneration (void) :
-GALGAS_semanticDeclarationWithHeaderForGeneration () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_extensionGetterForGeneration GALGAS_extensionGetterForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_extensionGetterForGeneration::constructor_new (GALGAS_bool::constructor_default (HERE),
-                                                               GALGAS_string::constructor_default (HERE),
-                                                               GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE),
-                                                               GALGAS_string::constructor_default (HERE),
-                                                               GALGAS_bool::constructor_default (HERE),
-                                                               GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE),
-                                                               GALGAS_string::constructor_default (HERE),
-                                                               GALGAS_formalInputParameterListForGeneration::constructor_emptyList (HERE),
-                                                               GALGAS_typedPropertyList::constructor_emptyList (HERE),
-                                                               GALGAS_semanticInstructionListForGeneration::constructor_emptyList (HERE)
-                                                               COMMA_THERE) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_extensionGetterForGeneration::GALGAS_extensionGetterForGeneration (const cPtr_extensionGetterForGeneration * inSourcePtr) :
-GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_extensionGetterForGeneration) ;
-}
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_extensionGetterForGeneration GALGAS_extensionGetterForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
-                                                                                          const GALGAS_string & inAttribute_mImplementationCppFileName,
-                                                                                          const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mReceiverType,
-                                                                                          const GALGAS_string & inAttribute_mExtensionGetterName,
-                                                                                          const GALGAS_bool & inAttribute_mImplementedAsFunction,
-                                                                                          const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mResultType,
-                                                                                          const GALGAS_string & inAttribute_mResultVarCppName,
-                                                                                          const GALGAS_formalInputParameterListForGeneration & inAttribute_mExtensionGetterFormalParameterList,
-                                                                                          const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
-                                                                                          const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
-                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_extensionGetterForGeneration result ;
-  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mExtensionGetterName.isValid () && inAttribute_mImplementedAsFunction.isValid () && inAttribute_mResultType.isValid () && inAttribute_mResultVarCppName.isValid () && inAttribute_mExtensionGetterFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_extensionGetterForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mExtensionGetterName, inAttribute_mImplementedAsFunction, inAttribute_mResultType, inAttribute_mResultVarCppName, inAttribute_mExtensionGetterFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_unifiedTypeMap_2D_entry GALGAS_extensionGetterForGeneration::readProperty_mReceiverType (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_unifiedTypeMap_2D_entry () ;
-  }else{
-    cPtr_extensionGetterForGeneration * p = (cPtr_extensionGetterForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionGetterForGeneration) ;
-    return p->mProperty_mReceiverType ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string GALGAS_extensionGetterForGeneration::readProperty_mExtensionGetterName (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_string () ;
-  }else{
-    cPtr_extensionGetterForGeneration * p = (cPtr_extensionGetterForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionGetterForGeneration) ;
-    return p->mProperty_mExtensionGetterName ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_extensionGetterForGeneration::readProperty_mImplementedAsFunction (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_bool () ;
-  }else{
-    cPtr_extensionGetterForGeneration * p = (cPtr_extensionGetterForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionGetterForGeneration) ;
-    return p->mProperty_mImplementedAsFunction ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_unifiedTypeMap_2D_entry GALGAS_extensionGetterForGeneration::readProperty_mResultType (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_unifiedTypeMap_2D_entry () ;
-  }else{
-    cPtr_extensionGetterForGeneration * p = (cPtr_extensionGetterForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionGetterForGeneration) ;
-    return p->mProperty_mResultType ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string GALGAS_extensionGetterForGeneration::readProperty_mResultVarCppName (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_string () ;
-  }else{
-    cPtr_extensionGetterForGeneration * p = (cPtr_extensionGetterForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionGetterForGeneration) ;
-    return p->mProperty_mResultVarCppName ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_formalInputParameterListForGeneration GALGAS_extensionGetterForGeneration::readProperty_mExtensionGetterFormalParameterList (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_formalInputParameterListForGeneration () ;
-  }else{
-    cPtr_extensionGetterForGeneration * p = (cPtr_extensionGetterForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionGetterForGeneration) ;
-    return p->mProperty_mExtensionGetterFormalParameterList ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_typedPropertyList GALGAS_extensionGetterForGeneration::readProperty_mTypedAttributeList (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_typedPropertyList () ;
-  }else{
-    cPtr_extensionGetterForGeneration * p = (cPtr_extensionGetterForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionGetterForGeneration) ;
-    return p->mProperty_mTypedAttributeList ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_semanticInstructionListForGeneration GALGAS_extensionGetterForGeneration::readProperty_mSemanticInstructionListForGeneration (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_semanticInstructionListForGeneration () ;
-  }else{
-    cPtr_extensionGetterForGeneration * p = (cPtr_extensionGetterForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionGetterForGeneration) ;
-    return p->mProperty_mSemanticInstructionListForGeneration ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//Pointer class for @extensionGetterForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
-
-cPtr_extensionGetterForGeneration::cPtr_extensionGetterForGeneration (const GALGAS_bool & in_mHasHeader,
-                                                                      const GALGAS_string & in_mImplementationCppFileName,
-                                                                      const GALGAS_unifiedTypeMap_2D_entry & in_mReceiverType,
-                                                                      const GALGAS_string & in_mExtensionGetterName,
-                                                                      const GALGAS_bool & in_mImplementedAsFunction,
-                                                                      const GALGAS_unifiedTypeMap_2D_entry & in_mResultType,
-                                                                      const GALGAS_string & in_mResultVarCppName,
-                                                                      const GALGAS_formalInputParameterListForGeneration & in_mExtensionGetterFormalParameterList,
-                                                                      const GALGAS_typedPropertyList & in_mTypedAttributeList,
-                                                                      const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
-                                                                      COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
-mProperty_mReceiverType (in_mReceiverType),
-mProperty_mExtensionGetterName (in_mExtensionGetterName),
-mProperty_mImplementedAsFunction (in_mImplementedAsFunction),
-mProperty_mResultType (in_mResultType),
-mProperty_mResultVarCppName (in_mResultVarCppName),
-mProperty_mExtensionGetterFormalParameterList (in_mExtensionGetterFormalParameterList),
-mProperty_mTypedAttributeList (in_mTypedAttributeList),
-mProperty_mSemanticInstructionListForGeneration (in_mSemanticInstructionListForGeneration) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_extensionGetterForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionGetterForGeneration ;
-}
-
-void cPtr_extensionGetterForGeneration::description (C_String & ioString,
-                                                     const int32_t inIndentation) const {
-  ioString << "[@extensionGetterForGeneration:" ;
-  mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mExtensionGetterName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mImplementedAsFunction.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mResultVarCppName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mExtensionGetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mSemanticInstructionListForGeneration.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_extensionGetterForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_extensionGetterForGeneration (mProperty_mHasHeader, mProperty_mImplementationCppFileName, mProperty_mReceiverType, mProperty_mExtensionGetterName, mProperty_mImplementedAsFunction, mProperty_mResultType, mProperty_mResultVarCppName, mProperty_mExtensionGetterFormalParameterList, mProperty_mTypedAttributeList, mProperty_mSemanticInstructionListForGeneration COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@extensionGetterForGeneration type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionGetterForGeneration ("extensionGetterForGeneration",
-                                                     & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_extensionGetterForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionGetterForGeneration ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_extensionGetterForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_extensionGetterForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_extensionGetterForGeneration GALGAS_extensionGetterForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_extensionGetterForGeneration result ;
-  const GALGAS_extensionGetterForGeneration * p = (const GALGAS_extensionGetterForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_extensionGetterForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("extensionGetterForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

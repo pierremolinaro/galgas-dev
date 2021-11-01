@@ -10,16 +10,16 @@
 //                    E X T E R N    R O U T I N E S                                             
 //----------------------------------------------------------------------------------------------------------------------
 %
-  for () in LEXIQUE_ANALYSIS_CONTEXT.mLexicalRoutineMessageMap do
+  for (lkey mLexicalRoutineFormalArgumentList mErrorMessageList mIsExtern) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalRoutineMessageMap do
     if mIsExtern then
       %\nvoid scanner_routine_%!lkey.string% (C_Lexique & inLexique%
-      for () in mLexicalRoutineFormalArgumentList do
+      for (mLexicalFormalArgumentMode mLexicalFormalArgumentType mArgumentNameForComment) in mLexicalRoutineFormalArgumentList do
         %,\n                %![mLexicalFormalArgumentMode cppConstInFormalArgument]
                              ![mLexicalFormalArgumentType cppTypeName]
                              ![mLexicalFormalArgumentMode cppReferenceInFormalArgument]
                              % %!mArgumentNameForComment
       end
-      for () in mErrorMessageList do
+      for (mValue) in mErrorMessageList do
         %,\n                const char * %!mValue
       end
       %) ;\n%
@@ -30,10 +30,10 @@
 //                    E X T E R N    F U N C T I O N S                                           
 //----------------------------------------------------------------------------------------------------------------------
 %
-  for () in LEXIQUE_ANALYSIS_CONTEXT.mLexicalFunctionMap do
+  for (lkey mLexicalTypeList mReturnedLexicalType mReplacementFunctionName mIsExtern) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalFunctionMap do
     if mIsExtern then
       %\n%![mReturnedLexicalType cppTypeName]% scanner_function_%!lkey.string% (C_Lexique & inLexique%
-      for () in mLexicalTypeList do
+      for (mLexicalType mArgumentNameForComment) in mLexicalTypeList do
         %,\n                const %![mLexicalType cppTypeName]% %!mArgumentNameForComment
       end
       %) ;\n%
@@ -46,7 +46,7 @@
 
 class cTokenFor_%!LEXIQUE_IDENTIFIER% : public cToken {
 %
-  for () in LEXIQUE_ANALYSIS_CONTEXT.mLexicalAttributeMap do
+  for (lkey mLexicalType) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalAttributeMap do
     %  public: %![mLexicalType cppTypeName]% mLexicalAttribute_%![lkey identifierRepresentation]% ;\n%
   end
 %

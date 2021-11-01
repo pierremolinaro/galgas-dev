@@ -4,17 +4,17 @@
 //%!" Phase 2: @" + TYPE_IDENTIFIER + " enum, associated values"%
 //
 %
-for () in CONSTANT_LIST do
+for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   if [mAssociatedValueTypeList length] > 0 then
     %//----------------------------------------------------------------------------------------------------------------------\n\n%
     %class cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% : public cEnumAssociatedValues {\n%
-    for () in mAssociatedValueTypeList do index idx
+    for (mType) in mAssociatedValueTypeList do index idx
       %  public: const GALGAS_%![mType identifierRepresentation]% mAssociatedValue%![idx string]% ;\n%
     end
     %\n%
     %//--- Constructor\n%
     %  public: cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% (%?^
-    for () in mAssociatedValueTypeList
+    for (mType) in mAssociatedValueTypeList
     do index idx %const GALGAS_%![mType identifierRepresentation]% & inAssociatedValue%![idx string]
     between %,\n%!^
     end

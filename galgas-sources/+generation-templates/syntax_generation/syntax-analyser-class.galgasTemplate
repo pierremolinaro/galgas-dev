@@ -9,10 +9,10 @@ class cParser_%![COMPONENT_NAME identifierRepresentation]% {
   public: virtual ~ cParser_%![COMPONENT_NAME identifierRepresentation]% (void) {}
 
 //--- Non terminal declarations
-%for () in NONTERMINAL_MAP do
-  for () in mLabelMap : label_ do
+%for (lkey mLabelMap) in NONTERMINAL_MAP do
+  for (label_lkey * label_mSignature *) in mLabelMap do
   %  protected: virtual void nt_%![lkey identifierRepresentation]%_%![label_lkey identifierRepresentation]% (%?^
-    for () in label_mSignature do index IDX
+    for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in label_mSignature do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
         %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
@@ -41,10 +41,10 @@ class cParser_%![COMPONENT_NAME identifierRepresentation]% {
   end
 end%
 //--- Rule declarations
-%for () in RULE_DECLARATION_LIST do
-  for () in mLabelImplementationList do
+%for (mNonterminalName mRuleIndex mLabelImplementationList) in RULE_DECLARATION_LIST do
+  for (mLabelName mSignatureForGeneration mSignature mEndOfArgumentLocation mInstructionListForGeneration) in mLabelImplementationList do
     %  protected: void rule_%![COMPONENT_NAME identifierRepresentation]%_%![mNonterminalName identifierRepresentation]%_i%![mRuleIndex string]%_%![mLabelName identifierRepresentation]% (%?^
-    for () in mSignature do index IDX
+    for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in mSignature do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
         %const GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
@@ -72,7 +72,7 @@ end%
 end%
 
 //--- Select methods
-%for () in SELECT_METHOD_LIST do
+%for (mValue) in SELECT_METHOD_LIST do
   %  protected: virtual int32_t select_%![COMPONENT_NAME identifierRepresentation]%_%![mValue string]% (C_Lexique_%!LEXIQUE_NAME% *) = 0 ;\n\n%
 end%
 } ;

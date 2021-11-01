@@ -6371,6 +6371,140 @@ GALGAS_templateBlockInstructionForGeneration_2D_weak GALGAS_templateBlockInstruc
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateAnalysisContext::GALGAS_templateAnalysisContext (void) :
+mProperty_mSemanticContext (),
+mProperty_mPredefinedTypes (),
+mProperty_mTemplateVariableMap () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateAnalysisContext::~ GALGAS_templateAnalysisContext (void) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateAnalysisContext::GALGAS_templateAnalysisContext (const GALGAS_semanticContext & inOperand0,
+                                                                const GALGAS_predefinedTypes & inOperand1,
+                                                                const GALGAS_templateVariableMap & inOperand2) :
+mProperty_mSemanticContext (inOperand0),
+mProperty_mPredefinedTypes (inOperand1),
+mProperty_mTemplateVariableMap (inOperand2) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateAnalysisContext GALGAS_templateAnalysisContext::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_templateAnalysisContext (GALGAS_semanticContext::constructor_default (HERE),
+                                         GALGAS_predefinedTypes::constructor_default (HERE),
+                                         GALGAS_templateVariableMap::constructor_emptyMap (HERE)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateAnalysisContext GALGAS_templateAnalysisContext::constructor_new (const GALGAS_semanticContext & inOperand0,
+                                                                                const GALGAS_predefinedTypes & inOperand1,
+                                                                                const GALGAS_templateVariableMap & inOperand2 
+                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_templateAnalysisContext result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    result = GALGAS_templateAnalysisContext (inOperand0, inOperand1, inOperand2) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_templateAnalysisContext::objectCompare (const GALGAS_templateAnalysisContext & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mProperty_mSemanticContext.objectCompare (inOperand.mProperty_mSemanticContext) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mPredefinedTypes.objectCompare (inOperand.mProperty_mPredefinedTypes) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mTemplateVariableMap.objectCompare (inOperand.mProperty_mTemplateVariableMap) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_templateAnalysisContext::isValid (void) const {
+  return mProperty_mSemanticContext.isValid () && mProperty_mPredefinedTypes.isValid () && mProperty_mTemplateVariableMap.isValid () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_templateAnalysisContext::drop (void) {
+  mProperty_mSemanticContext.drop () ;
+  mProperty_mPredefinedTypes.drop () ;
+  mProperty_mTemplateVariableMap.drop () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_templateAnalysisContext::description (C_String & ioString,
+                                                  const int32_t inIndentation) const {
+  ioString << "<struct @templateAnalysisContext:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mProperty_mSemanticContext.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mPredefinedTypes.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mTemplateVariableMap.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@templateAnalysisContext type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_templateAnalysisContext ("templateAnalysisContext",
+                                                NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_templateAnalysisContext::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateAnalysisContext ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_templateAnalysisContext::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_templateAnalysisContext (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateAnalysisContext GALGAS_templateAnalysisContext::extractObject (const GALGAS_object & inObject,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_templateAnalysisContext result ;
+  const GALGAS_templateAnalysisContext * p = (const GALGAS_templateAnalysisContext *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_templateAnalysisContext *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateAnalysisContext", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 // @templateInstructionForeachForGeneration reference class
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6760,140 +6894,6 @@ GALGAS_templateInstructionForeachForGeneration_2D_weak GALGAS_templateInstructio
       result = *p ;
     }else{
       inCompiler->castError ("templateInstructionForeachForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateAnalysisContext::GALGAS_templateAnalysisContext (void) :
-mProperty_mSemanticContext (),
-mProperty_mPredefinedTypes (),
-mProperty_mTemplateVariableMap () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateAnalysisContext::~ GALGAS_templateAnalysisContext (void) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateAnalysisContext::GALGAS_templateAnalysisContext (const GALGAS_semanticContext & inOperand0,
-                                                                const GALGAS_predefinedTypes & inOperand1,
-                                                                const GALGAS_templateVariableMap & inOperand2) :
-mProperty_mSemanticContext (inOperand0),
-mProperty_mPredefinedTypes (inOperand1),
-mProperty_mTemplateVariableMap (inOperand2) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateAnalysisContext GALGAS_templateAnalysisContext::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_templateAnalysisContext (GALGAS_semanticContext::constructor_default (HERE),
-                                         GALGAS_predefinedTypes::constructor_default (HERE),
-                                         GALGAS_templateVariableMap::constructor_emptyMap (HERE)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateAnalysisContext GALGAS_templateAnalysisContext::constructor_new (const GALGAS_semanticContext & inOperand0,
-                                                                                const GALGAS_predefinedTypes & inOperand1,
-                                                                                const GALGAS_templateVariableMap & inOperand2 
-                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_templateAnalysisContext result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_templateAnalysisContext (inOperand0, inOperand1, inOperand2) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_templateAnalysisContext::objectCompare (const GALGAS_templateAnalysisContext & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mProperty_mSemanticContext.objectCompare (inOperand.mProperty_mSemanticContext) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mPredefinedTypes.objectCompare (inOperand.mProperty_mPredefinedTypes) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mTemplateVariableMap.objectCompare (inOperand.mProperty_mTemplateVariableMap) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_templateAnalysisContext::isValid (void) const {
-  return mProperty_mSemanticContext.isValid () && mProperty_mPredefinedTypes.isValid () && mProperty_mTemplateVariableMap.isValid () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_templateAnalysisContext::drop (void) {
-  mProperty_mSemanticContext.drop () ;
-  mProperty_mPredefinedTypes.drop () ;
-  mProperty_mTemplateVariableMap.drop () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_templateAnalysisContext::description (C_String & ioString,
-                                                  const int32_t inIndentation) const {
-  ioString << "<struct @templateAnalysisContext:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mProperty_mSemanticContext.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mPredefinedTypes.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mTemplateVariableMap.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@templateAnalysisContext type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateAnalysisContext ("templateAnalysisContext",
-                                                NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_templateAnalysisContext::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateAnalysisContext ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_templateAnalysisContext::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_templateAnalysisContext (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateAnalysisContext GALGAS_templateAnalysisContext::extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_templateAnalysisContext result ;
-  const GALGAS_templateAnalysisContext * p = (const GALGAS_templateAnalysisContext *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_templateAnalysisContext *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("templateAnalysisContext", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

@@ -370,19 +370,6 @@ refclass @templateInstructionGotoColumnLocationAST : @templateInstructionAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @templateInstructionForeachAST : @templateInstructionAST {
-  private let @bool mIsAscending
-  private let @templateExpressionAST mExpression
-  private let @string mPrefix
-  private let @templateInstructionListAST mBeforeInstructionList
-  private let @templateInstructionListAST mDoInstructionList
-  private let @lstring mIndexIdentifier
-  private let @templateInstructionListAST mBetweenInstructionList
-  private let @templateInstructionListAST mAfterInstructionList
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 list @templateInstructionIfBranchListAST {
   public var @templateExpressionAST mExpression
   public var @templateInstructionListAST mInstructionList

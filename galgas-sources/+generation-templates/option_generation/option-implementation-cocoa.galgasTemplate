@@ -12,7 +12,7 @@ void enterOptionsFor_%![OPTION_COMPONENT_NAME identifierRepresentation]% (%?^%NS
 %if ([BOOL_OPTION_MAP count] + [UINT_OPTION_MAP count] + [STRING_OPTION_MAP count] + [STRING_LIST_OPTION_MAP count]) > 0 then
   %  OC_GGS_CommandLineOption * option ;\n%
 end
-for () in BOOL_OPTION_MAP do
+for (lkey mOptionChar mOptionString mComment mDefaultValue) in BOOL_OPTION_MAP do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
   %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8Representation]%\n%
   %    identifier:@%![lkey utf8Representation]%\n%
@@ -23,7 +23,7 @@ for () in BOOL_OPTION_MAP do
   %  ] ;\n%
   %  [ioBoolOptionArray addObject:option] ;\n%
 end
-for () in UINT_OPTION_MAP do
+for (lkey mOptionChar mOptionString mComment mDefaultValue) in UINT_OPTION_MAP do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
   %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8Representation]%\n%
   %    identifier:@%![lkey utf8Representation]%\n%
@@ -34,7 +34,7 @@ for () in UINT_OPTION_MAP do
   %  ] ;\n%
   %  [ioUIntOptionArray addObject:option] ;\n%
 end
-for () in STRING_OPTION_MAP do
+for (lkey mOptionChar mOptionString mComment mDefaultValue) in STRING_OPTION_MAP do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
   %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8Representation]%\n%
   %    identifier:@%![lkey utf8Representation]%\n%
@@ -45,7 +45,7 @@ for () in STRING_OPTION_MAP do
   %  ] ;\n%
   %  [ioStringOptionArray addObject:option] ;\n%
 end
-for () in STRING_LIST_OPTION_MAP do
+for (lkey mOptionChar mOptionString mComment mDefaultValue) in STRING_LIST_OPTION_MAP do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
   %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8Representation]%\n%
   %    identifier:@%![lkey utf8Representation]%\n%

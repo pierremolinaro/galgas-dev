@@ -45,19 +45,6 @@ refclass @templateInstructionGotoColumnLocationForGeneration : @templateInstruct
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @templateInstructionForeachForGeneration : @templateInstructionForGeneration {
-  private let @bool mIsAscending
-  private let @semanticExpressionForGeneration mExpression
-  private let @string mEnumeratorCppName
-  private let @templateInstructionListForGeneration mBeforeInstructionList
-  private let @templateInstructionListForGeneration mDoInstructionList
-  private let @string mIndexCppName
-  private let @templateInstructionListForGeneration mBetweenInstructionList
-  private let @templateInstructionListForGeneration mAfterInstructionList
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 list @templateInstructionIfBranchListForGeneration {
   public var @semanticExpressionForGeneration mExpression
   public var @templateInstructionListForGeneration mInstructionList

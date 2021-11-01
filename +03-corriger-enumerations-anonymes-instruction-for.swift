@@ -169,8 +169,50 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
             nombreModifications += 1
             print ("Nombre modifications: \(nombreModifications)")
           }else{
-            print (CYAN + s + ENDC)
-            print (BOLD_RED + "Erreur non gérée" + ENDC)
+            lineIndex = 0
+            found = false
+            while (lineIndex < lines.count) && !found {
+              found = lines [lineIndex].hasPrefix ("semantic error #1: useless prefix")
+              lineIndex += 1
+            }
+            loop = found
+            if loop {
+              let errorMessageLine = lines [lineIndex - 2]
+              let c = errorMessageLine.components (separatedBy: ":")
+              assert (c.count == 5)
+              let fichier = c [0]
+              let ligne = Int (c [1])!
+              let premierCaractère = Int (c[2])! - 1
+              let dernierCaractère = Int (c[3])! - 1
+              print (BOLD_BLUE + "  Erreur détectée : ligne \(ligne), premier caractère \(premierCaractère), dernier \(dernierCaractère)" + ENDC)
+              let contents = try! String (contentsOf: URL (fileURLWithPath: fichier), encoding: .utf8)
+              var lignesDuFichier = contents.components (separatedBy: "\n")
+              let ligneConcernée = lignesDuFichier [ligne - 1]
+              print ("  line concernée '\(ligneConcernée)'")
+              var préfixe = ligneConcernée
+              préfixe.removeLast (ligneConcernée.count - premierCaractère)
+              while préfixe.last == " " {
+                préfixe.removeLast (1)
+              }
+              print ("  Préfixe '\(préfixe)'")
+              var suffixe = ligneConcernée
+              suffixe.removeFirst (dernierCaractère + 1)
+              while suffixe.first == " " {
+                suffixe.removeFirst (1)
+              }
+              print ("  Suffixe '\(suffixe)'")
+              let ligneModifiée = préfixe + " " + suffixe
+              print ("  ligne modifiée '\(ligneModifiée)'")
+              lignesDuFichier [ligne - 1] = ligneModifiée
+              let newContents = lignesDuFichier.joined (separator: "\n")
+              let data : Data = newContents.data (using: .utf8, allowLossyConversion: false)!
+              try! data.write (to: URL (fileURLWithPath: fichier), options: .atomic)
+              nombreModifications += 1
+              print ("Nombre modifications: \(nombreModifications)")
+            }else{
+              print (CYAN + s + ENDC)
+              print (BOLD_RED + "Erreur non gérée" + ENDC)
+            }
           }
         }
       }else{

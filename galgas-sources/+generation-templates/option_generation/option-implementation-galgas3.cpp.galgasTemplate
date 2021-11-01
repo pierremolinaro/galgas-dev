@@ -4,7 +4,7 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-%for () in BOOL_OPTION_MAP do
+%for (lkey mOptionChar mOptionString mComment mDefaultValue) in BOOL_OPTION_MAP do
   %C_BoolCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
   %                                         %![lkey utf8Representation]%,\n%
   %                                         %![[mOptionChar uint] string]%,\n%
@@ -17,7 +17,7 @@ end
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-%for () in UINT_OPTION_MAP do
+%for (lkey mOptionChar mOptionString mComment mDefaultValue) in UINT_OPTION_MAP do
   %C_UIntCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
   %                                         %![lkey utf8Representation]%,\n%
   %                                         %![[mOptionChar uint] string]%,\n%
@@ -31,7 +31,7 @@ end
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-%for () in STRING_OPTION_MAP do
+%for (lkey mOptionChar mOptionString mComment mDefaultValue) in STRING_OPTION_MAP do
   %C_StringCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
   %                                         %![lkey utf8Representation]%,\n%
   %                                         %![[mOptionChar uint] string]%,\n%
@@ -45,7 +45,7 @@ end
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-%for () in STRING_LIST_OPTION_MAP do
+%for (lkey mOptionChar mOptionString mComment mDefaultValue) in STRING_LIST_OPTION_MAP do
   %C_StringListCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
   %                                         %![lkey utf8Representation]%,\n%
   %                                         %![[mOptionChar uint] string]%,\n%

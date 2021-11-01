@@ -5206,6 +5206,17 @@ class cParser_templateSyntax {
 
   protected: virtual void nt_factor_parse (class C_Lexique_galgasTemplateScanner * inLexique) = 0 ;
 
+  protected: virtual void nt_for_5F_instruction_5F_element_ (class GALGAS_lstringlist & ioArgument0,
+                                                             class C_Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_for_5F_instruction_5F_element_parse (class C_Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_ (class GALGAS_templateInstructionForEnumerationAST & outArgument0,
+                                                                          class GALGAS_templateExpressionAST & outArgument1,
+                                                                          class C_Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_parse (class C_Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
   protected: virtual void nt_output_5F_expression_5F_list_ (class GALGAS_templateExpressionListAST & outArgument0,
                                                             class C_Lexique_galgasTemplateScanner * inLexique) = 0 ;
 
@@ -5399,26 +5410,53 @@ class cParser_templateSyntax {
 
   protected: void rule_templateSyntax_template_5F_instruction_i28_parse (C_Lexique_galgasTemplateScanner * inLexique) ;
 
-  protected: void rule_templateSyntax_template_5F_instruction_i29_ (GALGAS_templateInstructionListAST & ioArgument0,
-                                                                    C_Lexique_galgasTemplateScanner * inLexique) ;
-
-  protected: void rule_templateSyntax_template_5F_instruction_i29_parse (C_Lexique_galgasTemplateScanner * inLexique) ;
-
-  protected: void rule_templateSyntax_template_5F_parser_5F_start_5F_symbol_i30_ (GALGAS_templateInstructionListAST & outArgument0,
+  protected: void rule_templateSyntax_template_5F_parser_5F_start_5F_symbol_i29_ (GALGAS_templateInstructionListAST & outArgument0,
                                                                                   C_Lexique_galgasTemplateScanner * inLexique) ;
 
-  protected: void rule_templateSyntax_template_5F_parser_5F_start_5F_symbol_i30_parse (C_Lexique_galgasTemplateScanner * inLexique) ;
+  protected: void rule_templateSyntax_template_5F_parser_5F_start_5F_symbol_i29_parse (C_Lexique_galgasTemplateScanner * inLexique) ;
 
-  protected: void rule_templateSyntax_template_5F_instruction_i31_ (GALGAS_templateInstructionListAST & ioArgument0,
+  protected: void rule_templateSyntax_for_5F_instruction_5F_element_i30_ (GALGAS_lstringlist & ioArgument0,
+                                                                          C_Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_for_5F_instruction_5F_element_i30_parse (C_Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_for_5F_instruction_5F_element_i31_ (GALGAS_lstringlist & ioArgument0,
+                                                                          C_Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_for_5F_instruction_5F_element_i31_parse (C_Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_for_5F_instruction_5F_element_i32_ (GALGAS_lstringlist & ioArgument0,
+                                                                          C_Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_for_5F_instruction_5F_element_i32_parse (C_Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_for_5F_instruction_5F_enumerated_5F_object_i33_ (GALGAS_templateInstructionForEnumerationAST & outArgument0,
+                                                                                       GALGAS_templateExpressionAST & outArgument1,
+                                                                                       C_Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_for_5F_instruction_5F_enumerated_5F_object_i33_parse (C_Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_for_5F_instruction_5F_enumerated_5F_object_i34_ (GALGAS_templateInstructionForEnumerationAST & outArgument0,
+                                                                                       GALGAS_templateExpressionAST & outArgument1,
+                                                                                       C_Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_for_5F_instruction_5F_enumerated_5F_object_i34_parse (C_Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_template_5F_instruction_i35_ (GALGAS_templateInstructionListAST & ioArgument0,
                                                                     C_Lexique_galgasTemplateScanner * inLexique) ;
 
-  protected: void rule_templateSyntax_template_5F_instruction_i31_parse (C_Lexique_galgasTemplateScanner * inLexique) ;
+  protected: void rule_templateSyntax_template_5F_instruction_i35_parse (C_Lexique_galgasTemplateScanner * inLexique) ;
 
-  protected: void rule_templateSyntax_switch_5F_case_i32_ (GALGAS_lstringlist & outArgument0,
+  protected: void rule_templateSyntax_template_5F_instruction_i36_ (GALGAS_templateInstructionListAST & ioArgument0,
+                                                                    C_Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_template_5F_instruction_i36_parse (C_Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_switch_5F_case_i37_ (GALGAS_lstringlist & outArgument0,
                                                            GALGAS_switchExtractedValuesListAST & outArgument1,
                                                            C_Lexique_galgasTemplateScanner * inLexique) ;
 
-  protected: void rule_templateSyntax_switch_5F_case_i32_parse (C_Lexique_galgasTemplateScanner * inLexique) ;
+  protected: void rule_templateSyntax_switch_5F_case_i37_parse (C_Lexique_galgasTemplateScanner * inLexique) ;
 
 
 
@@ -5492,6 +5530,10 @@ class cParser_templateSyntax {
   protected: virtual int32_t select_templateSyntax_33 (C_Lexique_galgasTemplateScanner *) = 0 ;
 
   protected: virtual int32_t select_templateSyntax_34 (C_Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_35 (C_Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_36 (C_Lexique_galgasTemplateScanner *) = 0 ;
 
 
 } ;
@@ -6098,7 +6140,7 @@ class GALGAS_templateInstructionForeachAST : public GALGAS_templateInstructionAS
 
   public: class GALGAS_templateExpressionAST readProperty_mExpression (void) const ;
 
-  public: class GALGAS_string readProperty_mPrefix (void) const ;
+  public: class GALGAS_templateInstructionForEnumerationAST readProperty_mEnumeratedObjectProperties (void) const ;
 
   public: class GALGAS_templateInstructionListAST readProperty_mBeforeInstructionList (void) const ;
 
@@ -6123,7 +6165,7 @@ class GALGAS_templateInstructionForeachAST : public GALGAS_templateInstructionAS
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_templateInstructionForeachAST constructor_new (const class GALGAS_bool & inOperand0,
                                                                              const class GALGAS_templateExpressionAST & inOperand1,
-                                                                             const class GALGAS_string & inOperand2,
+                                                                             const class GALGAS_templateInstructionForEnumerationAST & inOperand2,
                                                                              const class GALGAS_templateInstructionListAST & inOperand3,
                                                                              const class GALGAS_templateInstructionListAST & inOperand4,
                                                                              const class GALGAS_lstring & inOperand5,
@@ -6155,6 +6197,140 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//                                 Phase 1: @templateInstructionForEnumerationAST enum                                 *
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_templateInstructionForEnumerationAST : public AC_GALGAS_root {
+//--------------------------------- Default constructor
+  public: GALGAS_templateInstructionForEnumerationAST (void) ;
+
+//--------------------------------- Enumeration
+  public: typedef enum {
+    kNotBuilt,
+    kEnum_implicit,
+    kEnum_explicit
+  } enumeration ;
+  
+//--------------------------------- Private data member
+  private: AC_GALGAS_enumAssociatedValues mAssociatedValues ;
+  public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
+    return mAssociatedValues.unsafePointer () ;
+  }
+
+  private: enumeration mEnum ;
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const { return kNotBuilt != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) { mEnum = kNotBuilt ; }
+  public: inline enumeration enumValue (void) const { return mEnum ; }
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_templateInstructionForEnumerationAST extractObject (const GALGAS_object & inObject,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_templateInstructionForEnumerationAST constructor_explicit (const class GALGAS_lstringlist & inOperand0,
+                                                                                         const class GALGAS_location & inOperand1
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+  public: static class GALGAS_templateInstructionForEnumerationAST constructor_implicit (const class GALGAS_string & inOperand0,
+                                                                                         const class GALGAS_location & inOperand1
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_templateInstructionForEnumerationAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+  public: VIRTUAL_IN_DEBUG void method_explicit (class GALGAS_lstringlist & outArgument0,
+                                                 class GALGAS_location & outArgument1,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG void method_implicit (class GALGAS_string & outArgument0,
+                                                 class GALGAS_location & outArgument1,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isExplicit (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isImplicit (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+  public: VIRTUAL_IN_DEBUG bool optional_explicit (class GALGAS_lstringlist & outOperand0,
+                                                   class GALGAS_location & outOperand1) const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_implicit (class GALGAS_string & outOperand0,
+                                                   class GALGAS_location & outOperand1) const ;
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_templateInstructionForEnumerationAST class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForEnumerationAST ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: @templateInstructionForEnumerationAST enum, associated values
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cEnumAssociatedValues_templateInstructionForEnumerationAST_implicit : public cEnumAssociatedValues {
+  public: const GALGAS_string mAssociatedValue0 ;
+  public: const GALGAS_location mAssociatedValue1 ;
+
+//--- Constructor
+  public: cEnumAssociatedValues_templateInstructionForEnumerationAST_implicit (const GALGAS_string & inAssociatedValue0,
+                                                                               const GALGAS_location & inAssociatedValue1
+                                                                               COMMA_LOCATION_ARGS) ;
+
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+  public: virtual typeComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
+
+  public: virtual ~ cEnumAssociatedValues_templateInstructionForEnumerationAST_implicit (void) {}
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class cEnumAssociatedValues_templateInstructionForEnumerationAST_explicit : public cEnumAssociatedValues {
+  public: const GALGAS_lstringlist mAssociatedValue0 ;
+  public: const GALGAS_location mAssociatedValue1 ;
+
+//--- Constructor
+  public: cEnumAssociatedValues_templateInstructionForEnumerationAST_explicit (const GALGAS_lstringlist & inAssociatedValue0,
+                                                                               const GALGAS_location & inAssociatedValue1
+                                                                               COMMA_LOCATION_ARGS) ;
+
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+  public: virtual typeComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
+
+  public: virtual ~ cEnumAssociatedValues_templateInstructionForEnumerationAST_explicit (void) {}
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 // Phase 2: pointer class for @templateInstructionForeachAST class
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -6163,7 +6339,7 @@ class cPtr_templateInstructionForeachAST : public cPtr_templateInstructionAST {
 //--- Properties
   public: GALGAS_bool mProperty_mIsAscending ;
   public: GALGAS_templateExpressionAST mProperty_mExpression ;
-  public: GALGAS_string mProperty_mPrefix ;
+  public: GALGAS_templateInstructionForEnumerationAST mProperty_mEnumeratedObjectProperties ;
   public: GALGAS_templateInstructionListAST mProperty_mBeforeInstructionList ;
   public: GALGAS_templateInstructionListAST mProperty_mDoInstructionList ;
   public: GALGAS_lstring mProperty_mIndexIdentifier ;
@@ -6173,7 +6349,7 @@ class cPtr_templateInstructionForeachAST : public cPtr_templateInstructionAST {
 //--- Constructor
   public: cPtr_templateInstructionForeachAST (const GALGAS_bool & in_mIsAscending,
                                               const GALGAS_templateExpressionAST & in_mExpression,
-                                              const GALGAS_string & in_mPrefix,
+                                              const GALGAS_templateInstructionForEnumerationAST & in_mEnumeratedObjectProperties,
                                               const GALGAS_templateInstructionListAST & in_mBeforeInstructionList,
                                               const GALGAS_templateInstructionListAST & in_mDoInstructionList,
                                               const GALGAS_lstring & in_mIndexIdentifier,
@@ -7699,208 +7875,4 @@ class GALGAS_templateInstructionForGeneration_2D_weak : public AC_GALGAS_weak_re
 //----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForGeneration_2D_weak ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @templateInstructionListForGeneration list
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_templateInstructionListForGeneration : public AC_GALGAS_list {
-//--------------------------------- Default constructor
-  public: GALGAS_templateInstructionListForGeneration (void) ;
-
-//--------------------------------- List constructor used by listmap
-  public: GALGAS_templateInstructionListForGeneration (const capCollectionElementArray & inSharedArray) ;
-
-//--------------------------------- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                 const class GALGAS_templateInstructionForGeneration & in_mInstruction
-                                                 COMMA_LOCATION_ARGS) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_templateInstructionListForGeneration extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_templateInstructionListForGeneration constructor_emptyList (LOCATION_ARGS) ;
-
-  public: static class GALGAS_templateInstructionListForGeneration constructor_listWithValue (const class GALGAS_templateInstructionForGeneration & inOperand0
-                                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_templateInstructionListForGeneration inOperand,
-                                                       class C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_templateInstructionForGeneration & inOperand0
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GALGAS_templateInstructionListForGeneration add_operation (const GALGAS_templateInstructionListForGeneration & inOperand,
-                                                                                      C_Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_templateInstructionListForGeneration_2D_element inArgument0,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_templateInstructionForGeneration constinArgument0,
-                                                      class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_templateInstructionForGeneration & outArgument0,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_templateInstructionForGeneration & outArgument0,
-                                                C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_templateInstructionForGeneration & outArgument0,
-                                                      class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMInstructionAtIndex (class GALGAS_templateInstructionForGeneration constinArgument0,
-                                                               class GALGAS_uint constinArgument1,
-                                                               C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_templateInstructionForGeneration & outArgument0,
-                                              C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_templateInstructionForGeneration & outArgument0,
-                                             C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_templateInstructionForGeneration getter_mInstructionAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                     C_Compiler * inCompiler
-                                                                                                     COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_templateInstructionListForGeneration getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                      C_Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_templateInstructionListForGeneration getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                    C_Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_templateInstructionListForGeneration getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                                      C_Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
-//--------------------------------- Friend
-
-  friend class cEnumerator_templateInstructionListForGeneration ;
- 
-} ; // End of GALGAS_templateInstructionListForGeneration class
-
-//----------------------------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//----------------------------------------------------------------------------------------------------------------------
-
-class cEnumerator_templateInstructionListForGeneration : public cGenericAbstractEnumerator {
-  public: cEnumerator_templateInstructionListForGeneration (const GALGAS_templateInstructionListForGeneration & inEnumeratedObject,
-                                                            const typeEnumerationOrder inOrder) ;
-
-//--- Current element access
-  public: class GALGAS_templateInstructionForGeneration current_mInstruction (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GALGAS_templateInstructionListForGeneration_2D_element current (LOCATION_ARGS) const ;
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListForGeneration ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @templateInstructionListForGeneration_2D_element struct
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_templateInstructionListForGeneration_2D_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GALGAS_templateInstructionForGeneration mProperty_mInstruction ;
-  public: inline GALGAS_templateInstructionForGeneration readProperty_mInstruction (void) const {
-    return mProperty_mInstruction ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
-  public: VIRTUAL_IN_DEBUG void drop (void) ;
-
-//--------------------------------- Default constructor
-  public: GALGAS_templateInstructionListForGeneration_2D_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMInstruction (const GALGAS_templateInstructionForGeneration & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mInstruction = inValue ;
-  }
-
-//--------------------------------- Virtual destructor (in debug mode)
-  public: virtual ~ GALGAS_templateInstructionListForGeneration_2D_element (void) ;
-
-//--------------------------------- Native constructor
-  public: GALGAS_templateInstructionListForGeneration_2D_element (const GALGAS_templateInstructionForGeneration & in_mInstruction) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_templateInstructionListForGeneration_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                       C_Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_templateInstructionListForGeneration_2D_element constructor_new (const class GALGAS_templateInstructionForGeneration & inOperand0
-                                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_templateInstructionListForGeneration_2D_element & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_templateInstructionListForGeneration_2D_element class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListForGeneration_2D_element ;
 

@@ -63,7 +63,7 @@
    <Add directory="../build/user-headers" />
    <Add directory="../build/output" />
 %
-for () in HAND_CODED_SOURCE_TOOL_DIRECTORY_SET do
+for (key) in HAND_CODED_SOURCE_TOOL_DIRECTORY_SET do
 %  <Add directory="%!key%" />\n%
 end
 %  </Compiler>
@@ -78,10 +78,10 @@ end
 %  <Unit filename="%!LIBPM_PATH%/galgas2/C_galgas_quiet_option.cpp" />
 %
 end
-for () in TOOL_CPP_FILE_LIST do
+for (mValue) in TOOL_CPP_FILE_LIST do
 %  <Unit filename="../build/output/%!mValue%" />\n%
 end
-for () in HAND_CODED_SOURCE_TOOL_FILE_LIST do
+for (mValue) in HAND_CODED_SOURCE_TOOL_FILE_LIST do
 %  <Unit filename="../%!mValue%" />\n%
 end
 %  <Unit filename="%!LIBPM_PATH%/gmp/32-mp_bases.c" />

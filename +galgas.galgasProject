@@ -48,6 +48,7 @@ project (3:4:4) -> "galgas" {
   "galgas-sources/templateDecoratedTypes.galgas"
   "galgas-sources/templateAnalysis.galgas"
   "galgas-sources/templateCodeGeneration.galgas"
+  "galgas-sources/template-for-instruction.galgas"
   "galgas-sources/template-switch-instruction.galgas"
 
 #--- Lexique Component

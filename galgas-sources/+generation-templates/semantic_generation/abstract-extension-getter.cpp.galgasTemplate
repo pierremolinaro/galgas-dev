@@ -27,7 +27,7 @@ C_PrologueEpilogue gGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NA
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%![RETURN_TYPE identifierRepresentation]% callExtensionGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
-  for () in FORMAL_ARGUMENT_LIST do
+  for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mIsConstant then
       %const GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
@@ -61,7 +61,7 @@ GALGAS_%![RETURN_TYPE identifierRepresentation]% callExtensionGetter_%![GETTER_N
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
     }else{
       result = f (inObject, %
-      for () in FORMAL_ARGUMENT_LIST do
+      for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do
         %in_%![mFormalArgumentName identifierRepresentation]%, %
       end
       %inCompiler COMMA_THERE) ;

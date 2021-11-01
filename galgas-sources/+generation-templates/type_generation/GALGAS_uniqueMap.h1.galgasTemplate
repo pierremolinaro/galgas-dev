@@ -7,7 +7,7 @@
 class cMapElement_%!TYPE_IDENTIFIER% ;
 
 %
-for () in SEARCH_METHOD_LIST do
+for (mSearchMethodName mErrorMessage mActionName mLocationAttribute) in SEARCH_METHOD_LIST do
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %extern const char * kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]% ;\n\n%
 end

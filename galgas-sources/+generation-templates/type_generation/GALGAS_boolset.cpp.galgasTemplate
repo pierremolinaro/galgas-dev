@@ -26,7 +26,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_all (UNUSED_LOC
   return GALGAS_%!TYPE_IDENTIFIER% ((uint64_t) %![FULL_SET hexString]%) ;
 }
 
-%for () in SLOT_LIST do index idx
+%for (mValue) in SLOT_LIST do index idx
 %//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_%![mValue identifierRepresentation]% (UNUSED_LOCATION_ARGS) {
@@ -125,7 +125,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
     ioString << " not built" ;
   }else{
 %
-for () in SLOT_LIST do index idx
+for (mValue) in SLOT_LIST do index idx
    %    if ((mFlags & ((uint64_t) 1) << %![idx string]%) != 0) {\n%
    %      ioString << " %!mValue.string%" ;\n%
    %    }\n%
@@ -154,7 +154,7 @@ GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_all (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-%for () in SLOT_LIST do index idx
+%for (mValue) in SLOT_LIST do index idx
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_%![mValue identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
   %  GALGAS_bool result ;\n%

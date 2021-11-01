@@ -2029,15 +2029,15 @@ GALGAS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileHea
     "\n"
     "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n" ;
-  GALGAS_uint index_330_ (0) ;
+  GALGAS_uint index_336_ (0) ;
   if (in_IMPORTED_5F_COMPONENT_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_330 (in_IMPORTED_5F_COMPONENT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_330.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_336 (in_IMPORTED_5F_COMPONENT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_336.hasCurrentObject ()) {
       result << "#include \"" ;
-      result << enumerator_330.current_mValue (HERE).stringValue () ;
+      result << enumerator_336.current_mValue (HERE).stringValue () ;
       result << ".h\"\n" ;
-      index_330_.increment () ;
-      enumerator_330.gotoNextObject () ;
+      index_336_.increment () ;
+      enumerator_336.gotoNextObject () ;
     }
   }
   result << "\n" ;
@@ -2061,15 +2061,15 @@ GALGAS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImp
     "\n"
     "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n" ;
-  GALGAS_uint index_309_ (0) ;
+  GALGAS_uint index_315_ (0) ;
   if (in_IMPORTED_5F_COMPONENT_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_309 (in_IMPORTED_5F_COMPONENT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_309.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_315 (in_IMPORTED_5F_COMPONENT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_315.hasCurrentObject ()) {
       result << "#include \"" ;
-      result << enumerator_309.current_mValue (HERE).stringValue () ;
+      result << enumerator_315.current_mValue (HERE).stringValue () ;
       result << ".h\"\n" ;
-      index_309_.increment () ;
-      enumerator_309.gotoNextObject () ;
+      index_315_.increment () ;
+      enumerator_315.gotoNextObject () ;
     }
   }
   result << "\n" ;

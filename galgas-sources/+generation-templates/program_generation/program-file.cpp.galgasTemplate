@@ -6,7 +6,7 @@
 #include "galgas2/F_verbose_output.h"
 #include "galgas2/cLexiqueIntrospection.h"
 #include "command_line_interface/C_builtin_CLI_Options.h"
-% for () in IMPORTED_COMPONENT_LIST do
+% for (mValue) in IMPORTED_COMPONENT_LIST do
     %#include "%!mValue%.h"\n%
   end%
 //----------------------------------------------------------------------------------------------------------------------
@@ -23,7 +23,7 @@ static void print_tool_help_message (void) {
 
 static const char * kSourceFileExtensions [] = {
 %
-for () in PROGRAM_RULE_LIST do
+for (mSourceFileExtension mSourceFileHelp mSourceFileVariableName mSourceFileVariableNameIsUnused mReferenceGrammar mInstructionList mEndOfInstructionList) in PROGRAM_RULE_LIST do
   %  %![mSourceFileExtension utf8Representation]%,\n%
 end
 %  NULL
@@ -33,7 +33,7 @@ end
 
 static const char * kSourceFileHelpMessages [] = {
 %
-for () in PROGRAM_RULE_LIST do
+for (mSourceFileExtension mSourceFileHelp mSourceFileVariableName mSourceFileVariableNameIsUnused mReferenceGrammar mInstructionList mEndOfInstructionList) in PROGRAM_RULE_LIST do
   %  %![mSourceFileHelp utf8Representation]%,\n%
 end
 %  NULL
@@ -84,7 +84,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
 %if [PROGRAM_RULE_LIST length] > 0 then
 %        int r = 0 ;
         %
-          for () in PROGRAM_RULE_LIST 
+          for (mSourceFileExtension mSourceFileHelp mSourceFileVariableName mSourceFileVariableNameIsUnused mReferenceGrammar mInstructionList mEndOfInstructionList) in PROGRAM_RULE_LIST 
           do index IDX
             %if (fileExtension == %![mSourceFileExtension utf8Representation]%) {\n%
             if mReferenceGrammar.string == "" then

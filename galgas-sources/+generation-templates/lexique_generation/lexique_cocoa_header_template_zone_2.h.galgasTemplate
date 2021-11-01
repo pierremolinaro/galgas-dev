@@ -7,10 +7,10 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 %
-  for () in LEXIQUE_ANALYSIS_CONTEXT.mLexicalRoutineMessageMap do
+  for (lkey mLexicalRoutineFormalArgumentList mErrorMessageList mIsExtern) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalRoutineMessageMap do
     if mIsExtern then
       %\nvoid scanner_cocoa_routine_%!lkey.string% (%?^%BOOL * ioScanningOk%
-      for () in mLexicalRoutineFormalArgumentList do
+      for (mLexicalFormalArgumentMode mLexicalFormalArgumentType mArgumentNameForComment) in mLexicalRoutineFormalArgumentList do
         %,\n                %!^![mLexicalFormalArgumentMode cppConstInFormalArgument]
                              ![mLexicalFormalArgumentType cocoaTypeName]
                              ![mLexicalFormalArgumentMode cocoaPointerInFormalArgument]
@@ -26,10 +26,10 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 %
-  for () in LEXIQUE_ANALYSIS_CONTEXT.mLexicalFunctionMap do
+  for (lkey mLexicalTypeList mReturnedLexicalType mReplacementFunctionName mIsExtern) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalFunctionMap do
     if mIsExtern then
       %\n%![mReturnedLexicalType cppTypeName]% scanner_cocoa_function_%!lkey.string% (%?^%BOOL * ioScanningOk%
-      for () in mLexicalTypeList do
+      for (mLexicalType mArgumentNameForComment) in mLexicalTypeList do
         %,\n                %!^%const %![mLexicalType cppTypeName]% %!mArgumentNameForComment
       end
       %) ;\n%
@@ -44,7 +44,7 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 enum {%!LEXIQUE_CLASS_NAME%_1_%
-    for () in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do
+    for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do
       %,\n  %!LEXIQUE_CLASS_NAME %_1_% ![mTerminalName.string identifierRepresentation]
     end
   %\n} ;
@@ -56,7 +56,7 @@ enum {%!LEXIQUE_CLASS_NAME%_1_%
 //----------------------------------------------------------------------------------------------------------------------
 
 %
-  for () in UNICODE_TEST_FUNCTIONS
+  for (mFunctionName mLexicalExpression) in UNICODE_TEST_FUNCTIONS
   do %bool %![mFunctionName identifierRepresentation]% (const utf32 inUnicodeCharacter) ;\n\n%
   end
 %//----------------------------------------------------------------------------------------------------------------------
@@ -68,7 +68,7 @@ enum {%!LEXIQUE_CLASS_NAME%_1_%
 @interface OC_Lexique_%!LEXIQUE_CLASS_NAME% : OC_Lexique {
 //--- Attributes
 %
-  for () in LEXIQUE_ANALYSIS_CONTEXT.mLexicalAttributeMap do
+  for (lkey mLexicalType) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalAttributeMap do
     %  @private %![mLexicalType cocoaTypeName]% mLexicalAttribute_%!lkey.string% ;\n%
   end
 %

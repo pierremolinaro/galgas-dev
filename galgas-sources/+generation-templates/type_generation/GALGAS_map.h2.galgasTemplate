@@ -7,13 +7,13 @@
 class cMapElement_%!TYPE_IDENTIFIER% : public cMapElement {
 //--- Map attributes
 %
-    for () in CURRENT_PROPERTY_LIST
+    for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST
       do %  public: GALGAS_%![mPropertyTypeEntry identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n%
     end
 %
 //--- Constructor
   public: cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_lstring & inKey%
-  for () in CURRENT_PROPERTY_LIST
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST
     do %,\n%!^%const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
   end
 %\n%

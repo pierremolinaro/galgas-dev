@@ -1,7 +1,7 @@
 {
     "LIBPM_DIRECTORY_PATH"  :  "%!LIBPM_DIRECTORY_PATH%",
     "SOURCES_DIR"  :  ["../build/output",  "../build/user-headers",  "%!LIBPM_DIRECTORY_PATH%"%
-for  ()  in  HAND_CODED_SOURCE_DIR_SET  do
+for  (key)  in  HAND_CODED_SOURCE_DIR_SET  do
     %,  "%!key%"%
 end
 %],
@@ -9,10 +9,10 @@ end
         "all-galgas.cpp",
         "all-libpm.cpp",
 %
-for  ()  in  MAKEFILE_FILE_LIST  do
+for  (mValue)  in  MAKEFILE_FILE_LIST  do
     %        "%!mValue%",\n%
 end
-for  ()  in  HAND_CODED_SOURCE_FILE_LIST  do
+for  (mValue)  in  HAND_CODED_SOURCE_FILE_LIST  do
     %        "%!mValue%",\n%
 end
 %        "32-mp_bases.c",
@@ -130,7 +130,7 @@ end
         "mpz-cdiv_q_ui.c"
     ],
     "USER_LINK_OPTIONS"  :  [%
-for  ()  in  TOOL_LINK_LIST
+for  (mValue)  in  TOOL_LINK_LIST
     do%\n        "%!mValue%"%
     between  %,%
 end%

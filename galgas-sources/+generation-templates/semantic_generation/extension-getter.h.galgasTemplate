@@ -6,7 +6,7 @@
 
 typedef class GALGAS_%![RETURN_TYPE identifierRepresentation]% (*enterExtensionGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%) (%?^
 %const class cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
-  for () in FORMAL_ARGUMENT_LIST do index IDX
+  for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do index IDX
     %,\n%!^
     if mIsConstant then
       %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
@@ -25,7 +25,7 @@ void enterExtensionGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const i
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_%![RETURN_TYPE identifierRepresentation]% callExtensionGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
-  for () in FORMAL_ARGUMENT_LIST do
+  for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mIsConstant then
       %const GALGAS_%![mFormalArgumentType identifierRepresentation]% constin_%![mFormalArgumentName identifierRepresentation]

@@ -11,9 +11,9 @@
 %
 if [CONSTRUCTOR_MAP count] > 0 then
   %//--------------------------------- GALGAS constructors\n%
-  for () in CONSTRUCTOR_MAP do
+  for (lkey mArgumentTypeList mHasCompilerArgument mReturnedType) in CONSTRUCTOR_MAP do
     %  public: static class GALGAS_%![mReturnedType identifierRepresentation]% constructor_%![lkey.string identifierRepresentation]% (%?^
-    for () in mArgumentTypeList
+    for (mFormalSelector mFormalArgumentType mFormalArgumentName) in mArgumentTypeList
       do index IDX %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]
       between %,\n%!^
     end
@@ -84,7 +84,7 @@ end
 if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
 %//--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (%?^
-  for () in ADD_ASSIGN_ARGUMENT_LIST
+  for (mFormalSelector mFormalArgumentType mFormalArgumentName) in ADD_ASSIGN_ARGUMENT_LIST
   do index IDX %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
   end
@@ -216,11 +216,11 @@ if not [SUPPORTED_OPERATORS doNotGenererateObjectCompare] then
 %
 //--------------------------------- Setters
 %
-for () in MODIFIER_MAP do
+for (lkey mKind mParameterList mHasCompilerArgument mQualifier mErrorMessage) in MODIFIER_MAP do
   if mKind == [@methodKind definedAsMember] then
     if (mErrorMessage == "") & ((mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal])) then
       %  public: VIRTUAL_IN_DEBUG void setter_%![lkey.string identifierRepresentation]% (%?^
-      for () in mParameterList do index IDX
+      for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in mParameterList do index IDX
         if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
           %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
         elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
@@ -254,11 +254,11 @@ end
 %
 //--------------------------------- Instance Methods
 %
-for () in INSTANCE_METHOD_MAP do
+for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument mQualifier mErrorMessage) in INSTANCE_METHOD_MAP do
   if mKind == [@methodKind definedAsMember] then
     if (mErrorMessage == "") & ((mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal])) then
       %  public: VIRTUAL_IN_DEBUG void method_%![lkey.string identifierRepresentation]% (%?^
-      for () in mParameterList do index IDX
+      for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in mParameterList do index IDX
         if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
           %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
         elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
@@ -291,9 +291,9 @@ for () in INSTANCE_METHOD_MAP do
 end
 %//--------------------------------- Class Methods
 %
-for () in CLASS_METHOD_MAP do
+for (lkey mParameterList mHasCompilerArgument) in CLASS_METHOD_MAP do
   %  public: static void class_method_%![lkey.string identifierRepresentation]% (%?^
-  for () in mParameterList do index IDX
+  for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in mParameterList do index IDX
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
@@ -325,7 +325,7 @@ end
 %
 //--------------------------------- Getters
 %
-for () in GETTER_MAP do
+for (lkey mKind mArgumentTypeList mDeclarationLocation mHasCompilerArgument mReturnedType mQualifier mErrorMessage) in GETTER_MAP do
   switch mKind 
   case definedAsExtension :
 #      %  /* EXTENSION public: virtual class GALGAS_% ![mReturnedType identifierRepresentation] % getter_% ![[lkey string] identifierRepresentation] % (%?^
@@ -350,7 +350,7 @@ for () in GETTER_MAP do
   case definedAsMember :
     if (mErrorMessage == "") & ((mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal])) then
       %  public: VIRTUAL_IN_DEBUG class GALGAS_% ![mReturnedType identifierRepresentation] % getter_% ![lkey.string identifierRepresentation] % (%?^
-      for () in mArgumentTypeList
+      for (mFormalSelector mFormalArgumentType mFormalArgumentName) in mArgumentTypeList
         do index IDX %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & constinOperand% ![IDX string]
         between %,\n% !^
       end
@@ -375,9 +375,9 @@ end
 %
 //--------------------------------- Optional Methods
 %
-for () in OPTIONAL_METHOD_MAP do
+for (lkey mArgumentTypeList) in OPTIONAL_METHOD_MAP do
    %  public: VIRTUAL_IN_DEBUG bool optional_% ![lkey.string identifierRepresentation] % (%?^
-  for () in mArgumentTypeList
+  for (mInputArgument mFormalSelector mFormalArgumentType mFormalArgumentName) in mArgumentTypeList
     do index IDX
       if mInputArgument then
         %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & constinOperand% ![IDX string]
@@ -423,7 +423,7 @@ class cEnumerator_%!TYPE_IDENTIFIER% : public cGenericAbstractEnumerator {
      %!^%const typeEnumerationOrder inOrder) ;
 
 //--- Current element access\n%
-  for () in ENUMERATION_DESCRIPTOR_LIST do
+  for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
 %  public: class GALGAS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
   end
   if not [ENUMERATED_OBJECT_TYPE isNull] then

@@ -1118,329 +1118,329 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
     "  objects = {\n"
     "\n"
     "  /*------------------------------------------------------------------ PBXBuildFile */\n" ;
-  GALGAS_uint index_210_ (0) ;
+  GALGAS_uint index_250_ (0) ;
   if (in_BUILD_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_BuildFileList enumerator_210 (in_BUILD_5F_FILE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_210.hasCurrentObject ()) {
+    cEnumerator_BuildFileList enumerator_250 (in_BUILD_5F_FILE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_250.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_210.current_mBuildReference (HERE).stringValue () ;
+      result << enumerator_250.current_mBuildReference (HERE).stringValue () ;
       result << " /* " ;
-      result << enumerator_210.current_mFileName (HERE).stringValue () ;
+      result << enumerator_250.current_mFileName (HERE).stringValue () ;
       result << " */ = {\n"
         "    isa = PBXBuildFile;\n"
         "    fileRef = " ;
-      result << enumerator_210.current_mFileReference (HERE).stringValue () ;
+      result << enumerator_250.current_mFileReference (HERE).stringValue () ;
       result << " ;\n"
         "    settings = {ATTRIBUTES = (); };\n"
         "  };\n"
         "\n" ;
-      index_210_.increment () ;
-      enumerator_210.gotoNextObject () ;
+      index_250_.increment () ;
+      enumerator_250.gotoNextObject () ;
     }
   }
   result << "  /*------------------------------------------------------------------ PBXFileReference */\n" ;
-  GALGAS_uint index_498_ (0) ;
+  GALGAS_uint index_553_ (0) ;
   if (in_C_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_498 (in_C_5F_FILE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_498.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_553 (in_C_5F_FILE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_553.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_498.current_mValue_30_ (HERE).stringValue () ;
+      result << enumerator_553.current_mValue_30_ (HERE).stringValue () ;
       result << " /* " ;
-      result << enumerator_498.current_mValue_31_ (HERE).stringValue () ;
+      result << enumerator_553.current_mValue_31_ (HERE).stringValue () ;
       result << " */ = {\n"
         "    isa = PBXFileReference;\n"
         "    fileEncoding = 4;\n"
         "    lastKnownFileType = sourcecode.c.c;\n"
         "    name = " ;
-      result << enumerator_498.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 25)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 25)).stringValue () ;
+      result << enumerator_553.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 25)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 25)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_498.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 26)).stringValue () ;
+      result << enumerator_553.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 26)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
         "\n" ;
-      index_498_.increment () ;
-      enumerator_498.gotoNextObject () ;
+      index_553_.increment () ;
+      enumerator_553.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_828_ (0) ;
+  GALGAS_uint index_898_ (0) ;
   if (in_CPP_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_828 (in_CPP_5F_FILE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_828.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_898 (in_CPP_5F_FILE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_898.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_828.current_mValue_30_ (HERE).stringValue () ;
+      result << enumerator_898.current_mValue_30_ (HERE).stringValue () ;
       result << " /* " ;
-      result << enumerator_828.current_mValue_31_ (HERE).stringValue () ;
+      result << enumerator_898.current_mValue_31_ (HERE).stringValue () ;
       result << " */ = {\n"
         "    isa = PBXFileReference;\n"
         "    fileEncoding = 4;\n"
         "    lastKnownFileType = sourcecode.cpp.cpp;\n"
         "    name = " ;
-      result << enumerator_828.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 35)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 35)).stringValue () ;
+      result << enumerator_898.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 35)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 35)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_828.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 36)).stringValue () ;
+      result << enumerator_898.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 36)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
         "\n" ;
-      index_828_.increment () ;
-      enumerator_828.gotoNextObject () ;
+      index_898_.increment () ;
+      enumerator_898.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_1160_ (0) ;
+  GALGAS_uint index_1245_ (0) ;
   if (in_M_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_1160 (in_M_5F_FILE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_1160.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_1245 (in_M_5F_FILE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_1245.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_1160.current_mValue_30_ (HERE).stringValue () ;
+      result << enumerator_1245.current_mValue_30_ (HERE).stringValue () ;
       result << " /* " ;
-      result << enumerator_1160.current_mValue_31_ (HERE).stringValue () ;
+      result << enumerator_1245.current_mValue_31_ (HERE).stringValue () ;
       result << " */ = {\n"
         "    isa = PBXFileReference;\n"
         "    fileEncoding = 4;\n"
         "    lastKnownFileType = sourcecode.c.obj;\n"
         "    name = " ;
-      result << enumerator_1160.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 45)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 45)).stringValue () ;
+      result << enumerator_1245.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 45)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 45)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_1160.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 46)).stringValue () ;
+      result << enumerator_1245.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 46)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
         "\n" ;
-      index_1160_.increment () ;
-      enumerator_1160.gotoNextObject () ;
+      index_1245_.increment () ;
+      enumerator_1245.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_1491_ (0) ;
+  GALGAS_uint index_1591_ (0) ;
   if (in_MM_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_1491 (in_MM_5F_FILE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_1491.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_1591 (in_MM_5F_FILE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_1591.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_1491.current_mValue_30_ (HERE).stringValue () ;
+      result << enumerator_1591.current_mValue_30_ (HERE).stringValue () ;
       result << " /* " ;
-      result << enumerator_1491.current_mValue_31_ (HERE).stringValue () ;
+      result << enumerator_1591.current_mValue_31_ (HERE).stringValue () ;
       result << " */ = {\n"
         "    isa = PBXFileReference;\n"
         "    fileEncoding = 4;\n"
         "    lastKnownFileType = sourcecode.cpp.objcpp;\n"
         "    name = " ;
-      result << enumerator_1491.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 55)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 55)).stringValue () ;
+      result << enumerator_1591.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 55)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 55)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_1491.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 56)).stringValue () ;
+      result << enumerator_1591.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 56)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
         "\n" ;
-      index_1491_.increment () ;
-      enumerator_1491.gotoNextObject () ;
+      index_1591_.increment () ;
+      enumerator_1591.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_1831_ (0) ;
+  GALGAS_uint index_1946_ (0) ;
   if (in_HEADER_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_1831 (in_HEADER_5F_FILE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_1831.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_1946 (in_HEADER_5F_FILE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_1946.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_1831.current_mValue_30_ (HERE).stringValue () ;
+      result << enumerator_1946.current_mValue_30_ (HERE).stringValue () ;
       result << " /* " ;
-      result << enumerator_1831.current_mValue_31_ (HERE).stringValue () ;
+      result << enumerator_1946.current_mValue_31_ (HERE).stringValue () ;
       result << " */ = {\n"
         "    isa = PBXFileReference;\n"
         "    fileEncoding = 4;\n"
         "    lastKnownFileType = sourcecode.c.h;\n"
         "    name = " ;
-      result << enumerator_1831.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 65)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 65)).stringValue () ;
+      result << enumerator_1946.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 65)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 65)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_1831.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 66)).stringValue () ;
+      result << enumerator_1946.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 66)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
         "\n" ;
-      index_1831_.increment () ;
-      enumerator_1831.gotoNextObject () ;
+      index_1946_.increment () ;
+      enumerator_1946.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_2167_ (0) ;
+  GALGAS_uint index_2297_ (0) ;
   if (in_FRAMEWORK_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_2167 (in_FRAMEWORK_5F_FILE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_2167.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_2297 (in_FRAMEWORK_5F_FILE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_2297.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_2167.current_mValue_30_ (HERE).stringValue () ;
+      result << enumerator_2297.current_mValue_30_ (HERE).stringValue () ;
       result << " /* " ;
-      result << enumerator_2167.current_mValue_31_ (HERE).stringValue () ;
+      result << enumerator_2297.current_mValue_31_ (HERE).stringValue () ;
       result << " */ = {\n"
         "    isa = PBXFileReference;\n"
         "    lastKnownFileType = wrapper.framework;\n"
         "    name = " ;
-      result << enumerator_2167.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 74)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 74)).stringValue () ;
+      result << enumerator_2297.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 74)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 74)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_2167.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 75)).stringValue () ;
+      result << enumerator_2297.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 75)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
         "\n" ;
-      index_2167_.increment () ;
-      enumerator_2167.gotoNextObject () ;
+      index_2297_.increment () ;
+      enumerator_2297.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_2477_ (0) ;
+  GALGAS_uint index_2830_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_2477 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_2477.hasCurrentObject ()) {
+    cEnumerator_XCodeToolTargetList enumerator_2830 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_2830.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_2477.current_mProductFileReference (HERE).stringValue () ;
+      result << enumerator_2830.current_mProductFileReference (HERE).stringValue () ;
       result << " = {\n"
         "    isa = PBXFileReference;\n"
         "    explicitFileType = \"compiled.mach-o.executable\";\n"
         "    includeInIndex = 0;\n"
         "    path = " ;
-      result << enumerator_2477.current_mProductFileName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 84)).stringValue () ;
+      result << enumerator_2830.current_mProductFileName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 84)).stringValue () ;
       result << ";\n"
         "    sourceTree = BUILT_PRODUCTS_DIR;\n"
         "  };\n"
         "\n" ;
-      index_2477_.increment () ;
-      enumerator_2477.gotoNextObject () ;
+      index_2830_.increment () ;
+      enumerator_2830.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_2771_ (0) ;
+  GALGAS_uint index_3406_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_2771 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_2771.hasCurrentObject ()) {
+    cEnumerator_XCodeAppTargetList enumerator_3406 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_3406.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_2771.current_mProductFileReference (HERE).stringValue () ;
+      result << enumerator_3406.current_mProductFileReference (HERE).stringValue () ;
       result << " = {\n"
         "    isa = PBXFileReference;\n"
         "    explicitFileType = \"compiled.mach-o.executable\";\n"
         "    includeInIndex = 0;\n"
         "    path = " ;
-      result << enumerator_2771.current_mProductFileName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 93)).stringValue () ;
+      result << enumerator_3406.current_mProductFileName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 93)).stringValue () ;
       result << ";\n"
         "    sourceTree = BUILT_PRODUCTS_DIR;\n"
         "  };\n"
         "\n" ;
-      index_2771_.increment () ;
-      enumerator_2771.gotoNextObject () ;
+      index_3406_.increment () ;
+      enumerator_3406.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_3065_ (0) ;
+  GALGAS_uint index_3715_ (0) ;
   if (in_PLIST_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_3065 (in_PLIST_5F_FILE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_3065.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_3715 (in_PLIST_5F_FILE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_3715.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_3065.current_mValue_30_ (HERE).stringValue () ;
+      result << enumerator_3715.current_mValue_30_ (HERE).stringValue () ;
       result << " = {\n"
         "    isa = PBXFileReference;\n"
         "    fileEncoding = 4;\n"
         "    lastKnownFileType = text.plist;\n"
         "    name = " ;
-      result << enumerator_3065.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 102)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 102)).stringValue () ;
+      result << enumerator_3715.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 102)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 102)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_3065.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 103)).stringValue () ;
+      result << enumerator_3715.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 103)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
         "\n" ;
-      index_3065_.increment () ;
-      enumerator_3065.gotoNextObject () ;
+      index_3715_.increment () ;
+      enumerator_3715.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_3374_ (0) ;
+  GALGAS_uint index_4039_ (0) ;
   if (in_XIB_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_3374 (in_XIB_5F_FILE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_3374.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_4039 (in_XIB_5F_FILE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_4039.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_3374.current_mValue_30_ (HERE).stringValue () ;
+      result << enumerator_4039.current_mValue_30_ (HERE).stringValue () ;
       result << " = {\n"
         "    isa = PBXFileReference;\n"
         "    fileEncoding = 4;\n"
         "    lastKnownFileType = wrapper.xib;\n"
         "    name = " ;
-      result << enumerator_3374.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 112)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 112)).stringValue () ;
+      result << enumerator_4039.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 112)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 112)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_3374.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 113)).stringValue () ;
+      result << enumerator_4039.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 113)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
         "\n" ;
-      index_3374_.increment () ;
-      enumerator_3374.gotoNextObject () ;
+      index_4039_.increment () ;
+      enumerator_4039.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_3685_ (0) ;
+  GALGAS_uint index_4365_ (0) ;
   if (in_TIFF_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_3685 (in_TIFF_5F_FILE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_3685.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_4365 (in_TIFF_5F_FILE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_4365.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_3685.current_mValue_30_ (HERE).stringValue () ;
+      result << enumerator_4365.current_mValue_30_ (HERE).stringValue () ;
       result << " = {\n"
         "    isa = PBXFileReference;\n"
         "    lastKnownFileType = image.tiff;\n"
         "    name = " ;
-      result << enumerator_3685.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 121)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 121)).stringValue () ;
+      result << enumerator_4365.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 121)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 121)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_3685.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 122)).stringValue () ;
+      result << enumerator_4365.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 122)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
         "\n" ;
-      index_3685_.increment () ;
-      enumerator_3685.gotoNextObject () ;
+      index_4365_.increment () ;
+      enumerator_4365.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_3969_ (0) ;
+  GALGAS_uint index_4664_ (0) ;
   if (in_ICNS_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_3969 (in_ICNS_5F_FILE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_3969.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_4664 (in_ICNS_5F_FILE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_4664.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_3969.current_mValue_30_ (HERE).stringValue () ;
+      result << enumerator_4664.current_mValue_30_ (HERE).stringValue () ;
       result << " = {\n"
         "    isa = PBXFileReference;\n"
         "    lastKnownFileType = image.icns;\n"
         "    name = " ;
-      result << enumerator_3969.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 130)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 130)).stringValue () ;
+      result << enumerator_4664.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 130)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 130)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_3969.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 131)).stringValue () ;
+      result << enumerator_4664.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 131)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
         "\n" ;
-      index_3969_.increment () ;
-      enumerator_3969.gotoNextObject () ;
+      index_4664_.increment () ;
+      enumerator_4664.gotoNextObject () ;
     }
   }
   result << "  /*------------------------------------------------------------------ PBXFrameworksBuildPhase */\n"
     "\n" ;
-  GALGAS_uint index_4357_ (0) ;
+  GALGAS_uint index_5275_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_4357 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_4357.hasCurrentObject ()) {
-      const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, enumerator_4357.current_mFrameworksFileRefList (HERE).getter_length (SOURCE_FILE ("project.pbxproj.galgasTemplate", 139)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    cEnumerator_XCodeToolTargetList enumerator_5275 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_5275.hasCurrentObject ()) {
+      const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, enumerator_5275.current_mFrameworksFileRefList (HERE).getter_length (SOURCE_FILE ("project.pbxproj.galgasTemplate", 139)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "  " ;
-        result << enumerator_4357.current_mFrameworkBuildPhaseRef (HERE).stringValue () ;
+        result << enumerator_5275.current_mFrameworkBuildPhaseRef (HERE).stringValue () ;
         result << " = {\n"
           "    isa = PBXFrameworksBuildPhase;\n"
           "    buildActionMask = 2147483647;\n"
           "    files = (\n" ;
-        GALGAS_uint index_4591_ (0) ;
-        if (enumerator_4357.current_mFrameworksFileRefList (HERE).isValid ()) {
-          cEnumerator_stringlist enumerator_4591 (enumerator_4357.current_mFrameworksFileRefList (HERE), kENUMERATION_UP) ;
-          while (enumerator_4591.hasCurrentObject ()) {
+        GALGAS_uint index_5515_ (0) ;
+        if (enumerator_5275.current_mFrameworksFileRefList (HERE).isValid ()) {
+          cEnumerator_stringlist enumerator_5515 (enumerator_5275.current_mFrameworksFileRefList (HERE), kENUMERATION_UP) ;
+          while (enumerator_5515.hasCurrentObject ()) {
             result << "      " ;
-            result << enumerator_4591.current_mValue (HERE).stringValue () ;
+            result << enumerator_5515.current_mValue (HERE).stringValue () ;
             result << ",\n" ;
-            index_4591_.increment () ;
-            enumerator_4591.gotoNextObject () ;
+            index_5515_.increment () ;
+            enumerator_5515.gotoNextObject () ;
           }
         }
         result << "    );\n"
@@ -1449,73 +1449,73 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
           "\n" ;
       }else if (kBoolFalse == test_0) {
       }
-      index_4357_.increment () ;
-      enumerator_4357.gotoNextObject () ;
+      index_5275_.increment () ;
+      enumerator_5275.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_4747_ (0) ;
+  GALGAS_uint index_5953_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_4747 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_4747.hasCurrentObject ()) {
+    cEnumerator_XCodeAppTargetList enumerator_5953 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_5953.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_4747.current_mFrameworkBuildPhaseRef (HERE).stringValue () ;
+      result << enumerator_5953.current_mFrameworkBuildPhaseRef (HERE).stringValue () ;
       result << " = {\n"
         "    isa = PBXFrameworksBuildPhase;\n"
         "    buildActionMask = 2147483647;\n"
         "    files = (\n" ;
-      GALGAS_uint index_4925_ (0) ;
-      if (enumerator_4747.current_mFrameworksFileRefList (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_4925 (enumerator_4747.current_mFrameworksFileRefList (HERE), kENUMERATION_UP) ;
-        while (enumerator_4925.hasCurrentObject ()) {
+      GALGAS_uint index_6137_ (0) ;
+      if (enumerator_5953.current_mFrameworksFileRefList (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_6137 (enumerator_5953.current_mFrameworksFileRefList (HERE), kENUMERATION_UP) ;
+        while (enumerator_6137.hasCurrentObject ()) {
           result << "      " ;
-          result << enumerator_4925.current_mValue (HERE).stringValue () ;
+          result << enumerator_6137.current_mValue (HERE).stringValue () ;
           result << ",\n" ;
-          index_4925_.increment () ;
-          enumerator_4925.gotoNextObject () ;
+          index_6137_.increment () ;
+          enumerator_6137.gotoNextObject () ;
         }
       }
       result << "    );\n"
         "    runOnlyForDeploymentPostprocessing = 0;\n"
         "  };\n"
         "\n" ;
-      index_4747_.increment () ;
-      enumerator_4747.gotoNextObject () ;
+      index_5953_.increment () ;
+      enumerator_5953.gotoNextObject () ;
     }
   }
   result << "  /*------------------------------------------------------------------ PBXGroup section */\n" ;
-  GALGAS_uint index_5150_ (0) ;
+  GALGAS_uint index_6413_ (0) ;
   if (in_GROUPS.isValid ()) {
-    cEnumerator_XCodeGroupList enumerator_5150 (in_GROUPS, kENUMERATION_UP) ;
-    while (enumerator_5150.hasCurrentObject ()) {
+    cEnumerator_XCodeGroupList enumerator_6413 (in_GROUPS, kENUMERATION_UP) ;
+    while (enumerator_6413.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_5150.current_mGroupReference (HERE).stringValue () ;
+      result << enumerator_6413.current_mGroupReference (HERE).stringValue () ;
       result << " /* " ;
-      result << enumerator_5150.current_mGroupName (HERE).stringValue () ;
+      result << enumerator_6413.current_mGroupName (HERE).stringValue () ;
       result << " */ = {\n"
         "    isa = PBXGroup;\n"
         "    children = (\n" ;
-      GALGAS_uint index_5271_ (0) ;
-      if (enumerator_5150.current_mChildrenRefs (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_5271 (enumerator_5150.current_mChildrenRefs (HERE), kENUMERATION_UP) ;
-        while (enumerator_5271.hasCurrentObject ()) {
+      GALGAS_uint index_6540_ (0) ;
+      if (enumerator_6413.current_mChildrenRefs (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_6540 (enumerator_6413.current_mChildrenRefs (HERE), kENUMERATION_UP) ;
+        while (enumerator_6540.hasCurrentObject ()) {
           result << "      " ;
-          result << enumerator_5271.current_mValue (HERE).stringValue () ;
+          result << enumerator_6540.current_mValue (HERE).stringValue () ;
           result << ", \n" ;
-          index_5271_.increment () ;
-          enumerator_5271.gotoNextObject () ;
+          index_6540_.increment () ;
+          enumerator_6540.gotoNextObject () ;
         }
       }
       result << "    );\n"
         "    name = " ;
-      result << enumerator_5150.current_mGroupName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 174)).stringValue () ;
+      result << enumerator_6413.current_mGroupName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 174)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_5150.current_mGroupPath (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 175)).stringValue () ;
+      result << enumerator_6413.current_mGroupPath (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 175)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n" ;
-      index_5150_.increment () ;
-      enumerator_5150.gotoNextObject () ;
+      index_6413_.increment () ;
+      enumerator_6413.gotoNextObject () ;
     }
   }
   result << "\n"
@@ -1524,15 +1524,15 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   result << " /* Main Group */ = {\n"
     "    isa = PBXGroup;\n"
     "    children = (\n" ;
-  GALGAS_uint index_5577_ (0) ;
+  GALGAS_uint index_6852_ (0) ;
   if (in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS.isValid ()) {
-    cEnumerator_stringlist enumerator_5577 (in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS, kENUMERATION_UP) ;
-    while (enumerator_5577.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_6852 (in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS, kENUMERATION_UP) ;
+    while (enumerator_6852.hasCurrentObject ()) {
       result << "      " ;
-      result << enumerator_5577.current_mValue (HERE).stringValue () ;
+      result << enumerator_6852.current_mValue (HERE).stringValue () ;
       result << ",\n" ;
-      index_5577_.increment () ;
-      enumerator_5577.gotoNextObject () ;
+      index_6852_.increment () ;
+      enumerator_6852.gotoNextObject () ;
     }
   }
   result << "    );\n"
@@ -1540,27 +1540,27 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
     "  };\n"
     "\n"
     "  /*------------------------------------------------------------------ PBXNativeTarget */\n" ;
-  GALGAS_uint index_5768_ (0) ;
+  GALGAS_uint index_7266_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_5768 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_5768.hasCurrentObject ()) {
+    cEnumerator_XCodeToolTargetList enumerator_7266 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_7266.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_5768.current_mTargetRef (HERE).stringValue () ;
+      result << enumerator_7266.current_mTargetRef (HERE).stringValue () ;
       result << " /* " ;
-      result << enumerator_5768.current_mTargetName (HERE).stringValue () ;
+      result << enumerator_7266.current_mTargetName (HERE).stringValue () ;
       result << " */ = {\n"
         "    isa = PBXNativeTarget;\n"
         "    buildConfigurationList = " ;
-      result << enumerator_5768.current_mBuildConfigurationListRef (HERE).stringValue () ;
+      result << enumerator_7266.current_mBuildConfigurationListRef (HERE).stringValue () ;
       result << " ;\n"
         "    buildPhases = (\n"
         "      " ;
-      result << enumerator_5768.current_mBuildPhaseRef (HERE).stringValue () ;
+      result << enumerator_7266.current_mBuildPhaseRef (HERE).stringValue () ;
       result << " ,\n" ;
-      const enumGalgasBool test_1 = GALGAS_bool (kIsStrictSup, enumerator_5768.current_mFrameworksFileRefList (HERE).getter_length (SOURCE_FILE ("project.pbxproj.galgasTemplate", 200)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+      const enumGalgasBool test_1 = GALGAS_bool (kIsStrictSup, enumerator_7266.current_mFrameworksFileRefList (HERE).getter_length (SOURCE_FILE ("project.pbxproj.galgasTemplate", 200)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_1) {
         result << "      " ;
-        result << enumerator_5768.current_mFrameworkBuildPhaseRef (HERE).stringValue () ;
+        result << enumerator_7266.current_mFrameworkBuildPhaseRef (HERE).stringValue () ;
         result << " , /* Frameworks */\n" ;
       }else if (kBoolFalse == test_1) {
       }
@@ -1570,76 +1570,76 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "    dependencies = (\n"
         "    );\n"
         "    name = " ;
-      result << enumerator_5768.current_mTargetName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 208)).stringValue () ;
+      result << enumerator_7266.current_mTargetName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 208)).stringValue () ;
       result << ";\n"
         "    productInstallPath = \"$(HOME)/bin\";\n"
         "    productName = " ;
-      result << enumerator_5768.current_mTargetName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 210)).stringValue () ;
+      result << enumerator_7266.current_mTargetName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 210)).stringValue () ;
       result << ";\n"
         "    productReference = " ;
-      result << enumerator_5768.current_mProductFileReference (HERE).stringValue () ;
+      result << enumerator_7266.current_mProductFileReference (HERE).stringValue () ;
       result << " ;\n"
         "    productType = \"com.apple.product-type.tool\";\n"
         "  };\n"
         " \n" ;
-      index_5768_.increment () ;
-      enumerator_5768.gotoNextObject () ;
+      index_7266_.increment () ;
+      enumerator_7266.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_6404_ (0) ;
+  GALGAS_uint index_8184_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_6404 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_6404.hasCurrentObject ()) {
+    cEnumerator_XCodeAppTargetList enumerator_8184 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_8184.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_6404.current_mTargetRef (HERE).stringValue () ;
+      result << enumerator_8184.current_mTargetRef (HERE).stringValue () ;
       result << " /* " ;
-      result << enumerator_6404.current_mTargetName (HERE).stringValue () ;
+      result << enumerator_8184.current_mTargetName (HERE).stringValue () ;
       result << " */ = {\n"
         "    isa = PBXNativeTarget;\n"
         "    buildConfigurationList = " ;
-      result << enumerator_6404.current_mBuildConfigurationListRef (HERE).stringValue () ;
+      result << enumerator_8184.current_mBuildConfigurationListRef (HERE).stringValue () ;
       result << " ;\n"
         "    buildPhases = (\n"
         "      " ;
-      result << enumerator_6404.current_mResourceBuildRef (HERE).stringValue () ;
+      result << enumerator_8184.current_mResourceBuildRef (HERE).stringValue () ;
       result << " , /* Resources */\n"
         "      " ;
-      result << enumerator_6404.current_mFrameworkBuildPhaseRef (HERE).stringValue () ;
+      result << enumerator_8184.current_mFrameworkBuildPhaseRef (HERE).stringValue () ;
       result << " , /* Frameworks */\n"
         "      " ;
-      result << enumerator_6404.current_mBuildPhaseRef (HERE).stringValue () ;
+      result << enumerator_8184.current_mBuildPhaseRef (HERE).stringValue () ;
       result << " , /* Sources */\n"
         "    );\n"
         "    buildRules = (\n"
         "    );\n"
         "    dependencies = (\n" ;
-      GALGAS_uint index_6778_ (0) ;
-      if (enumerator_6404.current_mDependentTargets (HERE).isValid ()) {
-        cEnumerator__32_stringlist enumerator_6778 (enumerator_6404.current_mDependentTargets (HERE), kENUMERATION_UP) ;
-        while (enumerator_6778.hasCurrentObject ()) {
+      GALGAS_uint index_8573_ (0) ;
+      if (enumerator_8184.current_mDependentTargets (HERE).isValid ()) {
+        cEnumerator__32_stringlist enumerator_8573 (enumerator_8184.current_mDependentTargets (HERE), kENUMERATION_UP) ;
+        while (enumerator_8573.hasCurrentObject ()) {
           result << "      " ;
-          result << enumerator_6778.current_mValue_30_ (HERE).stringValue () ;
+          result << enumerator_8573.current_mValue_30_ (HERE).stringValue () ;
           result << " ,\n" ;
-          index_6778_.increment () ;
-          enumerator_6778.gotoNextObject () ;
+          index_8573_.increment () ;
+          enumerator_8573.gotoNextObject () ;
         }
       }
       result << "    );\n"
         "    name = " ;
-      result << enumerator_6404.current_mTargetName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 234)).stringValue () ;
+      result << enumerator_8184.current_mTargetName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 234)).stringValue () ;
       result << ";\n"
         "    productInstallPath = \"$(HOME)/bin\";\n"
         "    productName = " ;
-      result << enumerator_6404.current_mTargetName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 236)).stringValue () ;
+      result << enumerator_8184.current_mTargetName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 236)).stringValue () ;
       result << ";\n"
         "    productReference = " ;
-      result << enumerator_6404.current_mProductFileReference (HERE).stringValue () ;
+      result << enumerator_8184.current_mProductFileReference (HERE).stringValue () ;
       result << " ;\n"
         "    productType = \"com.apple.product-type.application\";\n"
         "  };\n"
         "\n" ;
-      index_6404_.increment () ;
-      enumerator_6404.gotoNextObject () ;
+      index_8184_.increment () ;
+      enumerator_8184.gotoNextObject () ;
     }
   }
   result << "  /*------------------------------------------------------------------ PBXProject */\n"
@@ -1658,26 +1658,26 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
     "   projectDirPath = \"\";\n"
     "   projectRoot = \"\";\n"
     "   targets = (\n" ;
-  GALGAS_uint index_7539_ (0) ;
+  GALGAS_uint index_9557_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_7539 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_7539.hasCurrentObject ()) {
+    cEnumerator_XCodeToolTargetList enumerator_9557 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_9557.hasCurrentObject ()) {
       result << "    " ;
-      result << enumerator_7539.current_mTargetRef (HERE).stringValue () ;
+      result << enumerator_9557.current_mTargetRef (HERE).stringValue () ;
       result << ", \n" ;
-      index_7539_.increment () ;
-      enumerator_7539.gotoNextObject () ;
+      index_9557_.increment () ;
+      enumerator_9557.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_7596_ (0) ;
+  GALGAS_uint index_9896_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_7596 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_7596.hasCurrentObject ()) {
+    cEnumerator_XCodeAppTargetList enumerator_9896 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_9896.hasCurrentObject ()) {
       result << "    " ;
-      result << enumerator_7596.current_mTargetRef (HERE).stringValue () ;
+      result << enumerator_9896.current_mTargetRef (HERE).stringValue () ;
       result << ", \n" ;
-      index_7596_.increment () ;
-      enumerator_7596.gotoNextObject () ;
+      index_9896_.increment () ;
+      enumerator_9896.gotoNextObject () ;
     }
   }
   result << "   );\n"
@@ -1685,119 +1685,119 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
     "\n"
     "  /*------------------------------------------------------------------ PBXResourcesBuildPhase */\n"
     "\n" ;
-  GALGAS_uint index_7766_ (0) ;
+  GALGAS_uint index_10348_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_7766 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_7766.hasCurrentObject ()) {
+    cEnumerator_XCodeAppTargetList enumerator_10348 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_10348.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_7766.current_mResourceBuildRef (HERE).stringValue () ;
+      result << enumerator_10348.current_mResourceBuildRef (HERE).stringValue () ;
       result << " /* Resources */ = {\n"
         "    isa = PBXResourcesBuildPhase;\n"
         "    buildActionMask = 2147483647;\n"
         "    files = (\n" ;
-      GALGAS_uint index_7943_ (0) ;
-      if (enumerator_7766.current_mResourceFileBuildRefs (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_7943 (enumerator_7766.current_mResourceFileBuildRefs (HERE), kENUMERATION_UP) ;
-        while (enumerator_7943.hasCurrentObject ()) {
+      GALGAS_uint index_10531_ (0) ;
+      if (enumerator_10348.current_mResourceFileBuildRefs (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_10531 (enumerator_10348.current_mResourceFileBuildRefs (HERE), kENUMERATION_UP) ;
+        while (enumerator_10531.hasCurrentObject ()) {
           result << "      " ;
-          result << enumerator_7943.current_mValue (HERE).stringValue () ;
+          result << enumerator_10531.current_mValue (HERE).stringValue () ;
           result << ",\n" ;
-          index_7943_.increment () ;
-          enumerator_7943.gotoNextObject () ;
+          index_10531_.increment () ;
+          enumerator_10531.gotoNextObject () ;
         }
       }
       result << "    );\n"
         "    runOnlyForDeploymentPostprocessing = 0;\n"
         "  };\n"
         "\n" ;
-      index_7766_.increment () ;
-      enumerator_7766.gotoNextObject () ;
+      index_10348_.increment () ;
+      enumerator_10348.gotoNextObject () ;
     }
   }
   result << "  /*------------------------------------------------------------------ PBXSourcesBuildPhase */\n" ;
-  GALGAS_uint index_8170_ (0) ;
+  GALGAS_uint index_10981_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_8170 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_8170.hasCurrentObject ()) {
+    cEnumerator_XCodeToolTargetList enumerator_10981 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_10981.hasCurrentObject ()) {
       result << "    " ;
-      result << enumerator_8170.current_mBuildPhaseRef (HERE).stringValue () ;
+      result << enumerator_10981.current_mBuildPhaseRef (HERE).stringValue () ;
       result << " /* Sources */ = {\n"
         "      isa = PBXSourcesBuildPhase;\n"
         "      buildActionMask = 2147483647;\n"
         "      files = (\n" ;
-      GALGAS_uint index_8331_ (0) ;
-      if (enumerator_8170.current_mBuildPhaseRefList (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_8331 (enumerator_8170.current_mBuildPhaseRefList (HERE), kENUMERATION_UP) ;
-        while (enumerator_8331.hasCurrentObject ()) {
+      GALGAS_uint index_11148_ (0) ;
+      if (enumerator_10981.current_mBuildPhaseRefList (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_11148 (enumerator_10981.current_mBuildPhaseRefList (HERE), kENUMERATION_UP) ;
+        while (enumerator_11148.hasCurrentObject ()) {
           result << "        " ;
-          result << enumerator_8331.current_mValue (HERE).stringValue () ;
+          result << enumerator_11148.current_mValue (HERE).stringValue () ;
           result << ",\n" ;
-          index_8331_.increment () ;
-          enumerator_8331.gotoNextObject () ;
+          index_11148_.increment () ;
+          enumerator_11148.gotoNextObject () ;
         }
       }
       result << "      );\n"
         "      runOnlyForDeploymentPostprocessing = 0;\n"
         "    };\n" ;
-      index_8170_.increment () ;
-      enumerator_8170.gotoNextObject () ;
+      index_10981_.increment () ;
+      enumerator_10981.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_8455_ (0) ;
+  GALGAS_uint index_11554_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_8455 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_8455.hasCurrentObject ()) {
+    cEnumerator_XCodeAppTargetList enumerator_11554 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_11554.hasCurrentObject ()) {
       result << "    " ;
-      result << enumerator_8455.current_mBuildPhaseRef (HERE).stringValue () ;
+      result << enumerator_11554.current_mBuildPhaseRef (HERE).stringValue () ;
       result << " /* Sources */ = {\n"
         "      isa = PBXSourcesBuildPhase;\n"
         "      buildActionMask = 2147483647;\n"
         "      files = (\n" ;
-      GALGAS_uint index_8616_ (0) ;
-      if (enumerator_8455.current_mBuildPhaseRefList (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_8616 (enumerator_8455.current_mBuildPhaseRefList (HERE), kENUMERATION_UP) ;
-        while (enumerator_8616.hasCurrentObject ()) {
+      GALGAS_uint index_11721_ (0) ;
+      if (enumerator_11554.current_mBuildPhaseRefList (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_11721 (enumerator_11554.current_mBuildPhaseRefList (HERE), kENUMERATION_UP) ;
+        while (enumerator_11721.hasCurrentObject ()) {
           result << "        " ;
-          result << enumerator_8616.current_mValue (HERE).stringValue () ;
+          result << enumerator_11721.current_mValue (HERE).stringValue () ;
           result << ",\n" ;
-          index_8616_.increment () ;
-          enumerator_8616.gotoNextObject () ;
+          index_11721_.increment () ;
+          enumerator_11721.gotoNextObject () ;
         }
       }
       result << "      );\n"
         "      runOnlyForDeploymentPostprocessing = 0;\n"
         "    };\n" ;
-      index_8455_.increment () ;
-      enumerator_8455.gotoNextObject () ;
+      index_11554_.increment () ;
+      enumerator_11554.gotoNextObject () ;
     }
   }
   result << "\n"
     "\n"
     "  /*------------------------------------------------------------------ PBXTargetDependency */\n"
     " \n" ;
-  GALGAS_uint index_8841_ (0) ;
+  GALGAS_uint index_12228_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_8841 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_8841.hasCurrentObject ()) {
-      GALGAS_uint index_8874_ (0) ;
-      if (enumerator_8841.current_mDependentTargets (HERE).isValid ()) {
-        cEnumerator__32_stringlist enumerator_8874 (enumerator_8841.current_mDependentTargets (HERE), kENUMERATION_UP) ;
-        while (enumerator_8874.hasCurrentObject ()) {
+    cEnumerator_XCodeAppTargetList enumerator_12228 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_12228.hasCurrentObject ()) {
+      GALGAS_uint index_12276_ (0) ;
+      if (enumerator_12228.current_mDependentTargets (HERE).isValid ()) {
+        cEnumerator__32_stringlist enumerator_12276 (enumerator_12228.current_mDependentTargets (HERE), kENUMERATION_UP) ;
+        while (enumerator_12276.hasCurrentObject ()) {
           result << "  " ;
-          result << enumerator_8874.current_mValue_30_ (HERE).stringValue () ;
+          result << enumerator_12276.current_mValue_30_ (HERE).stringValue () ;
           result << " = {\n"
             "    isa = PBXTargetDependency;\n"
             "    target = " ;
-          result << enumerator_8874.current_mValue_31_ (HERE).stringValue () ;
+          result << enumerator_12276.current_mValue_31_ (HERE).stringValue () ;
           result << ";\n"
             "  };\n"
             "\n" ;
-          index_8874_.increment () ;
-          enumerator_8874.gotoNextObject () ;
+          index_12276_.increment () ;
+          enumerator_12276.gotoNextObject () ;
         }
       }
-      index_8841_.increment () ;
-      enumerator_8841.gotoNextObject () ;
+      index_12228_.increment () ;
+      enumerator_12228.gotoNextObject () ;
     }
   }
   result << "  /*------------------------------------------------------------------ PBXVariantGroup */\n"
@@ -1809,77 +1809,77 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
     "      isa = XCBuildConfiguration;\n"
     "      buildSettings = {\n"
     "        CLANG_CXX_LANGUAGE_STANDARD = \"c++14\";\n" ;
-  GALGAS_uint index_9392_ (0) ;
+  GALGAS_uint index_12800_ (0) ;
   if (in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_9392 (in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_9392.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_12800 (in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_12800.hasCurrentObject ()) {
       result << "      " ;
-      result << enumerator_9392.current_mValue (HERE).stringValue () ;
+      result << enumerator_12800.current_mValue (HERE).stringValue () ;
       result << " ;\n" ;
-      index_9392_.increment () ;
-      enumerator_9392.gotoNextObject () ;
+      index_12800_.increment () ;
+      enumerator_12800.gotoNextObject () ;
     }
   }
   result << "    };\n"
     "    name = Default;\n"
     "  };\n"
     "\n" ;
-  GALGAS_uint index_9484_ (0) ;
+  GALGAS_uint index_13115_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_9484 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_9484.hasCurrentObject ()) {
+    cEnumerator_XCodeToolTargetList enumerator_13115 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_13115.hasCurrentObject ()) {
       result << "    " ;
-      result << enumerator_9484.current_mBuildConfigurationRef (HERE).stringValue () ;
+      result << enumerator_13115.current_mBuildConfigurationRef (HERE).stringValue () ;
       result << " /* Default */ = {\n"
         "      isa = XCBuildConfiguration;\n"
         "      buildSettings = {\n"
         "        ARCHS = \"$(NATIVE_ARCH_ACTUAL)\";\n"
         "        ONLY_ACTIVE_ARCH = YES;\n" ;
-      GALGAS_uint index_9727_ (0) ;
-      if (enumerator_9484.current_mBuildConfigurationSettingList (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_9727 (enumerator_9484.current_mBuildConfigurationSettingList (HERE), kENUMERATION_UP) ;
-        while (enumerator_9727.hasCurrentObject ()) {
+      GALGAS_uint index_13364_ (0) ;
+      if (enumerator_13115.current_mBuildConfigurationSettingList (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_13364 (enumerator_13115.current_mBuildConfigurationSettingList (HERE), kENUMERATION_UP) ;
+        while (enumerator_13364.hasCurrentObject ()) {
           result << "      " ;
-          result << enumerator_9727.current_mValue (HERE).stringValue () ;
+          result << enumerator_13364.current_mValue (HERE).stringValue () ;
           result << " ;\n" ;
-          index_9727_.increment () ;
-          enumerator_9727.gotoNextObject () ;
+          index_13364_.increment () ;
+          enumerator_13364.gotoNextObject () ;
         }
       }
       result << "      PRODUCT_NAME = " ;
-      result << enumerator_9484.current_mProductFileName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 346)).stringValue () ;
+      result << enumerator_13115.current_mProductFileName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 346)).stringValue () ;
       result << " ;\n"
         "    };\n"
         "    name = Default;\n"
         "  };\n"
         "\n" ;
-      index_9484_.increment () ;
-      enumerator_9484.gotoNextObject () ;
+      index_13115_.increment () ;
+      enumerator_13115.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_9900_ (0) ;
+  GALGAS_uint index_13819_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_9900 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_9900.hasCurrentObject ()) {
+    cEnumerator_XCodeAppTargetList enumerator_13819 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_13819.hasCurrentObject ()) {
       result << "    " ;
-      result << enumerator_9900.current_mBuildConfigurationRef (HERE).stringValue () ;
+      result << enumerator_13819.current_mBuildConfigurationRef (HERE).stringValue () ;
       result << " /* Default */ = {\n"
         "      isa = XCBuildConfiguration;\n"
         "      buildSettings = {\n" ;
-      GALGAS_uint index_10062_ (0) ;
-      if (enumerator_9900.current_mBuildConfigurationSettingList (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_10062 (enumerator_9900.current_mBuildConfigurationSettingList (HERE), kENUMERATION_UP) ;
-        while (enumerator_10062.hasCurrentObject ()) {
+      GALGAS_uint index_13987_ (0) ;
+      if (enumerator_13819.current_mBuildConfigurationSettingList (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_13987 (enumerator_13819.current_mBuildConfigurationSettingList (HERE), kENUMERATION_UP) ;
+        while (enumerator_13987.hasCurrentObject ()) {
           result << "      " ;
-          result << enumerator_10062.current_mValue (HERE).stringValue () ;
+          result << enumerator_13987.current_mValue (HERE).stringValue () ;
           result << " ;\n" ;
-          index_10062_.increment () ;
-          enumerator_10062.gotoNextObject () ;
+          index_13987_.increment () ;
+          enumerator_13987.gotoNextObject () ;
         }
       }
       result << "      INFOPLIST_FILE = \"Info.plist\";\n"
         "      PRODUCT_NAME = " ;
-      result << enumerator_9900.current_mProductFileName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 359)).stringValue () ;
+      result << enumerator_13819.current_mProductFileName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 359)).stringValue () ;
       result << ";\n"
         "      PRODUCT_BUNDLE_IDENTIFIER = \"" ;
       result << in_APPLICATION_5F_BUNDLE_5F_BASE.stringValue () ;
@@ -1890,8 +1890,8 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "    name = Default;\n"
         "  };\n"
         "\n" ;
-      index_9900_.increment () ;
-      enumerator_9900.gotoNextObject () ;
+      index_13819_.increment () ;
+      enumerator_13819.gotoNextObject () ;
     }
   }
   result << "  /*------------------------------------------------------------------ XCConfigurationList section */\n"
@@ -1909,46 +1909,46 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
     "      defaultConfigurationName = Default;\n"
     "    };\n"
     "\n" ;
-  GALGAS_uint index_10778_ (0) ;
+  GALGAS_uint index_14926_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_10778 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_10778.hasCurrentObject ()) {
+    cEnumerator_XCodeToolTargetList enumerator_14926 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_14926.hasCurrentObject ()) {
       result << "    " ;
-      result << enumerator_10778.current_mBuildConfigurationListRef (HERE).stringValue () ;
+      result << enumerator_14926.current_mBuildConfigurationListRef (HERE).stringValue () ;
       result << " /* Default */ = {\n"
         "      isa = XCConfigurationList;\n"
         "      buildConfigurations = (\n"
         "        " ;
-      result << enumerator_10778.current_mBuildConfigurationRef (HERE).stringValue () ;
+      result << enumerator_14926.current_mBuildConfigurationRef (HERE).stringValue () ;
       result << " /* Default */,\n"
         "      );\n"
         "      defaultConfigurationIsVisible = 0;\n"
         "      defaultConfigurationName = Default;\n"
         "    };\n"
         "\n" ;
-      index_10778_.increment () ;
-      enumerator_10778.gotoNextObject () ;
+      index_14926_.increment () ;
+      enumerator_14926.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_11078_ (0) ;
+  GALGAS_uint index_15508_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_11078 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_11078.hasCurrentObject ()) {
+    cEnumerator_XCodeAppTargetList enumerator_15508 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_15508.hasCurrentObject ()) {
       result << "    " ;
-      result << enumerator_11078.current_mBuildConfigurationListRef (HERE).stringValue () ;
+      result << enumerator_15508.current_mBuildConfigurationListRef (HERE).stringValue () ;
       result << " /* Default */ = {\n"
         "      isa = XCConfigurationList;\n"
         "      buildConfigurations = (\n"
         "        " ;
-      result << enumerator_11078.current_mBuildConfigurationRef (HERE).stringValue () ;
+      result << enumerator_15508.current_mBuildConfigurationRef (HERE).stringValue () ;
       result << " /* Default */,\n"
         "      );\n"
         "      defaultConfigurationIsVisible = 0;\n"
         "      defaultConfigurationName = Default;\n"
         "    };\n"
         "\n" ;
-      index_11078_.increment () ;
-      enumerator_11078.gotoNextObject () ;
+      index_15508_.increment () ;
+      enumerator_15508.gotoNextObject () ;
     }
   }
   result << "/*------------------------------------------------------------------ End */\n"
@@ -3653,15 +3653,15 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
   result << "\" />\n"
     "   <Add directory=\"../build/user-headers\" />\n"
     "   <Add directory=\"../build/output\" />\n" ;
-  GALGAS_uint index_2360_ (0) ;
+  GALGAS_uint index_2363_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET.isValid ()) {
-    cEnumerator_stringset enumerator_2360 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET, kENUMERATION_UP) ;
-    while (enumerator_2360.hasCurrentObject ()) {
+    cEnumerator_stringset enumerator_2363 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET, kENUMERATION_UP) ;
+    while (enumerator_2363.hasCurrentObject ()) {
       result << "  <Add directory=\"" ;
-      result << enumerator_2360.current_key (HERE).stringValue () ;
+      result << enumerator_2363.current_key (HERE).stringValue () ;
       result << "\" />\n" ;
-      index_2360_.increment () ;
-      enumerator_2360.gotoNextObject () ;
+      index_2363_.increment () ;
+      enumerator_2363.gotoNextObject () ;
     }
   }
   result << "  </Compiler>\n"
@@ -3689,26 +3689,26 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
     result << in_LIBPM_5F_PATH.stringValue () ;
     result << "/galgas2/C_galgas_quiet_option.cpp\" />\n" ;
   }
-  GALGAS_uint index_2864_ (0) ;
+  GALGAS_uint index_2873_ (0) ;
   if (in_TOOL_5F_CPP_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_2864 (in_TOOL_5F_CPP_5F_FILE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_2864.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_2873 (in_TOOL_5F_CPP_5F_FILE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_2873.hasCurrentObject ()) {
       result << "  <Unit filename=\"../build/output/" ;
-      result << enumerator_2864.current_mValue (HERE).stringValue () ;
+      result << enumerator_2873.current_mValue (HERE).stringValue () ;
       result << "\" />\n" ;
-      index_2864_.increment () ;
-      enumerator_2864.gotoNextObject () ;
+      index_2873_.increment () ;
+      enumerator_2873.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_2966_ (0) ;
+  GALGAS_uint index_2981_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_2966 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_2966.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_2981 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_2981.hasCurrentObject ()) {
       result << "  <Unit filename=\"../" ;
-      result << enumerator_2966.current_mValue (HERE).stringValue () ;
+      result << enumerator_2981.current_mValue (HERE).stringValue () ;
       result << "\" />\n" ;
-      index_2966_.increment () ;
-      enumerator_2966.gotoNextObject () ;
+      index_2981_.increment () ;
+      enumerator_2981.gotoNextObject () ;
     }
   }
   result << "  <Unit filename=\"" ;
@@ -4113,19 +4113,19 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     " <string>NSApplication</string>\n"
     " <key>CFBundleDocumentTypes</key>\n"
     " <array>\n" ;
-  GALGAS_uint index_1037_ (0) ;
+  GALGAS_uint index_1040_ (0) ;
   if (in_HANDLED_5F_EXTENSION_5F_SET.isValid ()) {
-    cEnumerator_stringset enumerator_1037 (in_HANDLED_5F_EXTENSION_5F_SET, kENUMERATION_UP) ;
-    while (enumerator_1037.hasCurrentObject ()) {
+    cEnumerator_stringset enumerator_1040 (in_HANDLED_5F_EXTENSION_5F_SET, kENUMERATION_UP) ;
+    while (enumerator_1040.hasCurrentObject ()) {
       result << "  <dict>\n"
         "   <key>CFBundleTypeIconFile</key>\n"
         "   <string>" ;
-      result << enumerator_1037.current_key (HERE).stringValue () ;
+      result << enumerator_1040.current_key (HERE).stringValue () ;
       result << "_icns</string>\n"
         "   <key>CFBundleTypeExtensions</key>\n"
         "   <array>\n"
         "    <string>" ;
-      result << enumerator_1037.current_key (HERE).stringValue () ;
+      result << enumerator_1040.current_key (HERE).stringValue () ;
       result << "</string>\n"
         "   </array>\n"
         "   <key>CFBundleTypeName</key>\n"
@@ -4143,8 +4143,8 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
         "   <key>NSDocumentClass</key>\n"
         "   <string>OC_GGS_Document</string>\n"
         "  </dict>\n" ;
-      index_1037_.increment () ;
-      enumerator_1037.gotoNextObject () ;
+      index_1040_.increment () ;
+      enumerator_1040.gotoNextObject () ;
     }
   }
   result << "\n"
@@ -4204,41 +4204,41 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_
     "    \"SOURCES_DIR\"  :  [\"../build/output\",  \"../build/user-headers\",  \"" ;
   result << in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue () ;
   result << "\"" ;
-  GALGAS_uint index_197_ (0) ;
+  GALGAS_uint index_200_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET.isValid ()) {
-    cEnumerator_stringset enumerator_197 (in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET, kENUMERATION_UP) ;
-    while (enumerator_197.hasCurrentObject ()) {
+    cEnumerator_stringset enumerator_200 (in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET, kENUMERATION_UP) ;
+    while (enumerator_200.hasCurrentObject ()) {
       result << ",  \"" ;
-      result << enumerator_197.current_key (HERE).stringValue () ;
+      result << enumerator_200.current_key (HERE).stringValue () ;
       result << "\"" ;
-      index_197_.increment () ;
-      enumerator_197.gotoNextObject () ;
+      index_200_.increment () ;
+      enumerator_200.gotoNextObject () ;
     }
   }
   result << "],\n"
     "    \"SOURCES\"  :  [\n"
     "        \"all-galgas.cpp\",\n"
     "        \"all-libpm.cpp\",\n" ;
-  GALGAS_uint index_332_ (0) ;
+  GALGAS_uint index_341_ (0) ;
   if (in_MAKEFILE_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_332 (in_MAKEFILE_5F_FILE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_332.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_341 (in_MAKEFILE_5F_FILE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_341.hasCurrentObject ()) {
       result << "        \"" ;
-      result << enumerator_332.current_mValue (HERE).stringValue () ;
+      result << enumerator_341.current_mValue (HERE).stringValue () ;
       result << "\",\n" ;
-      index_332_.increment () ;
-      enumerator_332.gotoNextObject () ;
+      index_341_.increment () ;
+      enumerator_341.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_410_ (0) ;
+  GALGAS_uint index_425_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_410 (in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_410.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_425 (in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_425.hasCurrentObject ()) {
       result << "        \"" ;
-      result << enumerator_410.current_mValue (HERE).stringValue () ;
+      result << enumerator_425.current_mValue (HERE).stringValue () ;
       result << "\",\n" ;
-      index_410_.increment () ;
-      enumerator_410.gotoNextObject () ;
+      index_425_.increment () ;
+      enumerator_425.gotoNextObject () ;
     }
   }
   result << "        \"32-mp_bases.c\",\n"
@@ -4356,19 +4356,19 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_
     "        \"mpz-cdiv_q_ui.c\"\n"
     "    ],\n"
     "    \"USER_LINK_OPTIONS\"  :  [" ;
-  GALGAS_uint index_3530_ (0) ;
+  GALGAS_uint index_3551_ (0) ;
   if (in_TOOL_5F_LINK_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_3530 (in_TOOL_5F_LINK_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_3530.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_3551 (in_TOOL_5F_LINK_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_3551.hasCurrentObject ()) {
       result << "\n"
         "        \"" ;
-      result << enumerator_3530.current_mValue (HERE).stringValue () ;
+      result << enumerator_3551.current_mValue (HERE).stringValue () ;
       result << "\"" ;
-      if (enumerator_3530.hasNextObject ()) {
+      if (enumerator_3551.hasNextObject ()) {
         result << "," ;
       }
-      index_3530_.increment () ;
-      enumerator_3530.gotoNextObject () ;
+      index_3551_.increment () ;
+      enumerator_3551.gotoNextObject () ;
     }
   }
   result << "\n"

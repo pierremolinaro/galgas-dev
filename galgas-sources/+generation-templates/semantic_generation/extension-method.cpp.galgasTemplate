@@ -16,7 +16,7 @@ void enterExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const i
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
-  for () in FORMAL_ARGUMENT_LIST do
+  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %const GALGAS_%![mFormalArgumentType identifierRepresentation]% constin_%![mFormalArgumentName identifierRepresentation]
@@ -31,7 +31,7 @@ void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cP
   %,\n%!^%C_Compiler * inCompiler%
   %\n%!^%COMMA_LOCATION_ARGS) {
 %
-  for () in FORMAL_ARGUMENT_LIST do
+  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in FORMAL_ARGUMENT_LIST do
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
       %  out_%![mFormalArgumentName identifierRepresentation]%.drop () ;\n%
     end
@@ -58,7 +58,7 @@ void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cP
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
     }else{
       f (inObject, %
-      for () in FORMAL_ARGUMENT_LIST do
+      for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in FORMAL_ARGUMENT_LIST do
         if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
           %constin_%![mFormalArgumentName identifierRepresentation]
         elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then

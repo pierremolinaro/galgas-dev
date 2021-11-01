@@ -204,50 +204,6 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
     error self.mSwitchExpressionEndLocation
     : "the switch instruction should name all enumeration constants; missing constants are:" + s
   end
-
-
-
-
-
-
-
-
-
-
-
-#---
-#  @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = {}
-#  @stringset namedConstantSet = {}
-#  for () in mTemplateInstructionSwitchBranchList do
-#    for () in mConstantList do
-#      if not [enumConstantMap hasKey ![mValue string]] then
-#        error mValue
-#          : "the '" + mValue + "' is not a constant of '@" + [[switchExpression mResultType] key] + "' enumeration type"
-#      end
-#      if [namedConstantSet hasKey ![mValue string]] then
-#        error mValue : "the '" + mValue + "' constant is already named in the switch instruction"
-#      end
-#      namedConstantSet += ![mValue string]
-#    end
-#    @templateInstructionListForGeneration instructionList = {}
-#    templateInstructionListAnalysis (
-#      !inUsefulnessCallerEntityName
-#      !?ioUsefulEntitiesGraph
-#      !inAnalysisContext
-#      !mInstructionList
-#      !?instructionList
-#    )
-#    templateInstructionSwitchBranchList += !mConstantList !instructionList
-#  end
-#--- Check every constant is named
-#  @stringset missingConstants = [enumConstantMap keySet] - namedConstantSet
-#  if [missingConstants count] > 0 then
-#    @string m = "all constants should be named in a switch instruction; the following constants are missing:"
-#    for () in missingConstants do
-#      m += "\n  - '" + key + "'"
-#    end
-#    error mSwitchExpressionEndLocation : m
-#  end
 #---
   ioInstructionList += !@templateInstructionSwitchForGeneration.new {
     !switchExpression.mResultType
