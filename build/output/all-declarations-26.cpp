@@ -7837,27 +7837,27 @@ static void extensionMethod_getterCallExpressionForGeneration_generateExpression
       const GALGAS_getterCallExpressionForGeneration temp_15 = object ;
       cEnumerator_stringlist enumerator_13547 (temp_15.readProperty_mFieldList (), kENUMERATION_UP) ;
       while (enumerator_13547.hasCurrentObject ()) {
-        outArgument_outCppExpression.plusAssign_operation(GALGAS_string (".readProperty_").add_operation (enumerator_13547.current_mValue (HERE).getter_identifierRepresentation (SOURCE_FILE ("expression-getter-call.galgas", 313)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 313)).add_operation (GALGAS_string (" ()"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 313)), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 313)) ;
+        outArgument_outCppExpression.plusAssign_operation(GALGAS_string (".readProperty_").add_operation (enumerator_13547.current_mValue (HERE).getter_identifierRepresentation (SOURCE_FILE ("expression-getter-call.galgas", 312)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 312)).add_operation (GALGAS_string (" ()"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 312)), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 312)) ;
         enumerator_13547.gotoNextObject () ;
       }
       const GALGAS_getterCallExpressionForGeneration temp_16 = object ;
-      extensionMethod_addHeaderFileName (temp_16.readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 315)) ;
+      extensionMethod_addHeaderFileName (temp_16.readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 314)) ;
       const GALGAS_getterCallExpressionForGeneration temp_17 = object ;
-      outArgument_outCppExpression.plusAssign_operation(GALGAS_string (".getter_").add_operation (temp_17.readProperty_mGetterName ().getter_identifierRepresentation (SOURCE_FILE ("expression-getter-call.galgas", 316)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 316)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 316)), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 316)) ;
+      outArgument_outCppExpression.plusAssign_operation(GALGAS_string (".getter_").add_operation (temp_17.readProperty_mGetterName ().getter_identifierRepresentation (SOURCE_FILE ("expression-getter-call.galgas", 315)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 315)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 315)), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 315)) ;
     }
     break ;
   }
-  cEnumerator_stringlist enumerator_13918 (var_getterArgumentCppNameList_11912, kENUMERATION_UP) ;
-  while (enumerator_13918.hasCurrentObject ()) {
-    outArgument_outCppExpression.plusAssign_operation(enumerator_13918.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 319)) ;
-    if (enumerator_13918.hasNextObject ()) {
-      outArgument_outCppExpression.plusAssign_operation(GALGAS_string (", "), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 320)) ;
+  cEnumerator_stringlist enumerator_13832 (var_getterArgumentCppNameList_11912, kENUMERATION_UP) ;
+  while (enumerator_13832.hasCurrentObject ()) {
+    outArgument_outCppExpression.plusAssign_operation(enumerator_13832.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 318)) ;
+    if (enumerator_13832.hasNextObject ()) {
+      outArgument_outCppExpression.plusAssign_operation(GALGAS_string (", "), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 319)) ;
     }
-    enumerator_13918.gotoNextObject () ;
+    enumerator_13832.gotoNextObject () ;
   }
   enumGalgasBool test_18 = kBoolTrue ;
   if (kBoolTrue == test_18) {
-    test_18 = GALGAS_bool (kIsEqual, var_getterArgumentCppNameList_11912.getter_length (SOURCE_FILE ("expression-getter-call.galgas", 322)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    test_18 = GALGAS_bool (kIsEqual, var_getterArgumentCppNameList_11912.getter_length (SOURCE_FILE ("expression-getter-call.galgas", 321)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
     if (kBoolTrue == test_18) {
       enumGalgasBool test_19 = kBoolTrue ;
       if (kBoolTrue == test_19) {
@@ -7865,9 +7865,9 @@ static void extensionMethod_getterCallExpressionForGeneration_generateExpression
         test_19 = temp_20.readProperty_mHasCompilerArgument ().boolEnum () ;
         if (kBoolTrue == test_19) {
           {
-          ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 324)) COMMA_SOURCE_FILE ("expression-getter-call.galgas", 324)) ;
+          ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 323)) COMMA_SOURCE_FILE ("expression-getter-call.galgas", 323)) ;
           }
-          outArgument_outCppExpression.plusAssign_operation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 325)).add_operation (GALGAS_string (" COMMA_"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 325)), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 325)) ;
+          outArgument_outCppExpression.plusAssign_operation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 324)).add_operation (GALGAS_string (" COMMA_"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 324)), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 324)) ;
         }
       }
     }
@@ -7879,17 +7879,17 @@ static void extensionMethod_getterCallExpressionForGeneration_generateExpression
       test_21 = temp_22.readProperty_mHasCompilerArgument ().boolEnum () ;
       if (kBoolTrue == test_21) {
         {
-        ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 328)) COMMA_SOURCE_FILE ("expression-getter-call.galgas", 328)) ;
+        ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 327)) COMMA_SOURCE_FILE ("expression-getter-call.galgas", 327)) ;
         }
-        outArgument_outCppExpression.plusAssign_operation(GALGAS_string (", ").add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 329)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 329)).add_operation (GALGAS_string (" COMMA_"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 329)), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 329)) ;
+        outArgument_outCppExpression.plusAssign_operation(GALGAS_string (", ").add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 328)), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 328)).add_operation (GALGAS_string (" COMMA_"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 328)), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 328)) ;
       }
     }
     if (kBoolFalse == test_21) {
-      outArgument_outCppExpression.plusAssign_operation(GALGAS_string (" COMMA_"), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 331)) ;
+      outArgument_outCppExpression.plusAssign_operation(GALGAS_string (" COMMA_"), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 330)) ;
     }
   }
   const GALGAS_getterCallExpressionForGeneration temp_23 = object ;
-  outArgument_outCppExpression.plusAssign_operation(extensionGetter_sourceFile (temp_23.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 333)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 333)), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 333)) ;
+  outArgument_outCppExpression.plusAssign_operation(extensionGetter_sourceFile (temp_23.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 332)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas", 332)), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 332)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

@@ -1096,8 +1096,8 @@ override method @structFieldAccessTemplateExpressionAST templateExpressionAnalys
   ]
 #--- Check field access availability
   var @unifiedTypeMap-entry type = expression.mResultType
-  if [type mTypeKindEnum] != @typeKindEnum. structType then
-    error self.mStructFieldName:"the '.' operator requires the receiver to be a struct"
+  if ([type mTypeKindEnum] != .structType) && not [[type mTypeKindEnum] isClassType] then
+    error self.mStructFieldName:"the '.' operator requires the receiver to be a struct ou a class"
   end
   let propertyMap = [type mPropertyMap]
   [propertyMap searchKey !self.mStructFieldName ?let isPublic ?* ?type]

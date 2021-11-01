@@ -106,7 +106,6 @@ override method @structPropertyAccessExpressionForGeneration generateExpression
   ]
 #--- Generate
   outCppExpression = operand + ".readProperty_" + [self.mStructFieldName identifierRepresentation] + " ()"
-#  outCppExpression = operand + ".getter_" + [self.mStructFieldName identifierRepresentation] + " (HERE)"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
