@@ -148,18 +148,27 @@ proc checkDiadicOperator
       rightType = [rightType mSuperType]
       ok = inLeftType == rightType
     end
-  #--- Check if there is a conversion getter
-    if (not ok) && [[inRightType mGetterMap] hasKey ![inLeftType key]] then
-      var @bool hasCompilerArgument
-      var @unifiedTypeMap-entry returnedType
-      var @methodKind kind
+#--- Check for a direct property access or for a conversion getter
+    if not ok, let [[inRightType mPropertyMap] searchKey ![inLeftType key] ?let isPublic ?* ?let propertyType] then
+      if not isPublic then
+        error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
+      end
+      let conversionExpression = @structPropertyAccessExpressionForGeneration.new {
+        !propertyType
+        !inErrorLocation
+        !ioRightExpression
+        ![inLeftType key] 
+      }
+      ioRightExpression = conversionExpression
+      ok = propertyType == inLeftType
+    elsif (not ok) && [[inRightType mGetterMap] hasKey ![inLeftType key]] then
       [[inRightType mGetterMap] searchKey
         ![inLeftType lkey]
-        ?kind
+        ?let kind
         ?var @functionSignature argumentTypeList
         ?*
-        ?hasCompilerArgument
-        ?returnedType
+        ?let hasCompilerArgument
+        ?let returnedType
         ?2*
       ]
       ok = ([argumentTypeList length] == 0) & (returnedType == inLeftType)

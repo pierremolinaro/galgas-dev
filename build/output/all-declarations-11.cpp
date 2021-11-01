@@ -4986,7 +4986,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
     test_0 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorOldStyleLocalVarDeclaration.getter_value ()).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray1 ;
-      appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string ("var @").add_operation (var_typeName_1929.getter_string (SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 63)), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 63))) ;
+      appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string ("var @").add_operation (var_typeName_1929.getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 63))) ;
       inCompiler->emitSemanticError (var_typeName_1929.getter_location (HERE), GALGAS_string ("old style local variable declaration (due to '--error-old-style-local-var-declaration' option)"), fixItArray1  COMMA_SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 62)) ;
     }
   }
@@ -5689,7 +5689,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_pro
     if (kBoolTrue == test_1) {
       GALGAS_location var_errorLocation_4185 = var_propertyTypeName_3796.getter_location (HERE).getter_union (var_propertyName_3829.getter_location (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3DeclarationsSyntax.galgas", 109)) ;
       TC_Array <C_FixItDescription> fixItArray2 ;
-      appendFixItActions (fixItArray2, kFixItReplace, GALGAS_string ("public var @").add_operation (var_propertyTypeName_3796.getter_string (SOURCE_FILE ("galgas3DeclarationsSyntax.galgas", 112)), inCompiler COMMA_SOURCE_FILE ("galgas3DeclarationsSyntax.galgas", 112)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("galgas3DeclarationsSyntax.galgas", 112)).add_operation (var_propertyName_3829.getter_string (SOURCE_FILE ("galgas3DeclarationsSyntax.galgas", 112)), inCompiler COMMA_SOURCE_FILE ("galgas3DeclarationsSyntax.galgas", 112))) ;
+      appendFixItActions (fixItArray2, kFixItReplace, GALGAS_string ("public var @").add_operation (var_propertyTypeName_3796.getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3DeclarationsSyntax.galgas", 112)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("galgas3DeclarationsSyntax.galgas", 112)).add_operation (var_propertyName_3829.getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3DeclarationsSyntax.galgas", 112))) ;
       inCompiler->emitSemanticError (var_errorLocation_4185, GALGAS_string ("old style property declaration (due to '--error-old-style-property-declaration' option)"), fixItArray2  COMMA_SOURCE_FILE ("galgas3DeclarationsSyntax.galgas", 110)) ;
     }
   }
@@ -9584,7 +9584,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_sem
     test_0 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorOldStyleLocalVarDeclaration.getter_value ()).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray1 ;
-      appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string ("var @").add_operation (var_typeName_1396.getter_string (SOURCE_FILE ("instruction-var-declaration.galgas", 34)), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 34))) ;
+      appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string ("var @").add_operation (var_typeName_1396.getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 34))) ;
       inCompiler->emitSemanticError (var_typeName_1396.getter_location (HERE), GALGAS_string ("old style local variable declaration (due to '--error-old-style-local-var-declaration' option)"), fixItArray1  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 33)) ;
     }
   }

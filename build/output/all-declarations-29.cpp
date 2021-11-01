@@ -130,7 +130,7 @@ void routine_compileSemanticDeclarationsGalgas_33_ (GALGAS_lstringlist & ioArgum
   cEnumerator_lstringlist enumerator_4118 (outArgument_outSemanticContext.getter_mTypeMap (HERE).getter_unsolvedEntryList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 82)), kENUMERATION_UP) ;
   while (enumerator_4118.hasCurrentObject ()) {
     TC_Array <C_FixItDescription> fixItArray2 ;
-    inCompiler->emitSemanticError (enumerator_4118.current (HERE).getter_mValue (HERE).getter_location (HERE), GALGAS_string ("the '@").add_operation (enumerator_4118.current (HERE).getter_mValue (HERE).getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 83)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 83)).add_operation (GALGAS_string ("' type is undefined"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 83)), fixItArray2  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 83)) ;
+    inCompiler->emitSemanticError (enumerator_4118.current (HERE).getter_mValue (HERE).getter_location (HERE), GALGAS_string ("the '@").add_operation (enumerator_4118.current (HERE).getter_mValue (HERE).getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 83)).add_operation (GALGAS_string ("' type is undefined"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 83)), fixItArray2  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 83)) ;
     enumerator_4118.gotoNextObject () ;
   }
   outArgument_outSemanticDeclarationSortedListForGeneration = GALGAS_semanticDeclarationListForGeneration::constructor_emptyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 86)) ;
@@ -185,7 +185,7 @@ void routine_buildGalgas_33_SemanticContext (const GALGAS_semanticDeclarationLis
     if (kBoolTrue == test_0) {
       test_0 = GALGAS_bool (kIsEqual, enumerator_6765.current (HERE).getter_mValue (HERE).getter_string (HERE).getter_lastCharacter (inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 139)).objectCompare (GALGAS_char (TO_UNICODE (63)))).boolEnum () ;
       if (kBoolTrue == test_0) {
-        inCompiler->printMessage (GALGAS_string ("Optional '").add_operation (enumerator_6765.current (HERE).getter_mValue (HERE).getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 140)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 140)).add_operation (GALGAS_string ("'\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 140))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 140)) ;
+        inCompiler->printMessage (GALGAS_string ("Optional '").add_operation (enumerator_6765.current (HERE).getter_mValue (HERE).getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 140)).add_operation (GALGAS_string ("'\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 140))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 140)) ;
       }
     }
     enumerator_6765.gotoNextObject () ;
@@ -197,7 +197,7 @@ void routine_buildGalgas_33_SemanticContext (const GALGAS_semanticDeclarationLis
       cEnumerator_lstringlist enumerator_7019 (var_semanticTypePrecedenceGraph_5985.getter_undefinedNodeReferenceList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 145)), kENUMERATION_UP) ;
       while (enumerator_7019.hasCurrentObject ()) {
         TC_Array <C_FixItDescription> fixItArray2 ;
-        inCompiler->emitSemanticError (enumerator_7019.current (HERE).getter_mValue (HERE).getter_location (HERE), GALGAS_string ("the '").add_operation (enumerator_7019.current (HERE).getter_mValue (HERE).getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 146)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 146)).add_operation (GALGAS_string ("' type is not defined"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 146)), fixItArray2  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 146)) ;
+        inCompiler->emitSemanticError (enumerator_7019.current (HERE).getter_mValue (HERE).getter_location (HERE), GALGAS_string ("the '").add_operation (enumerator_7019.current (HERE).getter_mValue (HERE).getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 146)).add_operation (GALGAS_string ("' type is not defined"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 146)), fixItArray2  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 146)) ;
         enumerator_7019.gotoNextObject () ;
       }
       TC_Array <C_FixItDescription> fixItArray3 ;
@@ -4789,7 +4789,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
           test_8 = var_generationFeatures_19349.getter_hasKey (enumerator_19428.current_mValue (HERE).getter_string (HERE) COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 372)).boolEnum () ;
           if (kBoolTrue == test_8) {
             TC_Array <C_FixItDescription> fixItArray9 ;
-            inCompiler->emitSemanticError (enumerator_19428.current_mValue (HERE).getter_location (HERE), GALGAS_string ("duplicate '").add_operation (enumerator_19428.current_mValue (HERE).getter_string (SOURCE_FILE ("galgas3TargetGeneration.galgas", 373)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 373)).add_operation (GALGAS_string ("' feature"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 373)), fixItArray9  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 373)) ;
+            inCompiler->emitSemanticError (enumerator_19428.current_mValue (HERE).getter_location (HERE), GALGAS_string ("duplicate '").add_operation (enumerator_19428.current_mValue (HERE).getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 373)).add_operation (GALGAS_string ("' feature"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 373)), fixItArray9  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 373)) ;
           }
         }
         GALGAS_string var_macOsDuplicateMessage_19673 = GALGAS_string ("the \"%SnowLeopard\", \"%Lion\", \"%MountainLion\", \"%Mavericks\", \"%Yosemite\", \"%ElCapitanYosemite\", \"%ElCapitan\", \"%ElCapitanSierra\", \"%Sierra\", \"%LatestMac"
@@ -4976,7 +4976,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
       }
       TC_Array <C_FixItDescription> fixItArray40 ;
       appendFixItActions (fixItArray40, kFixItReplace, var_s_21763) ;
-      inCompiler->emitSemanticError (enumerator_19428.current_mValue (HERE).getter_location (HERE), GALGAS_string ("unknown '").add_operation (enumerator_19428.current_mValue (HERE).getter_string (SOURCE_FILE ("galgas3TargetGeneration.galgas", 445)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 445)).add_operation (GALGAS_string ("' feature"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 445)), fixItArray40  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 445)) ;
+      inCompiler->emitSemanticError (enumerator_19428.current_mValue (HERE).getter_location (HERE), GALGAS_string ("unknown '").add_operation (enumerator_19428.current_mValue (HERE).getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 445)).add_operation (GALGAS_string ("' feature"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 445)), fixItArray40  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 445)) ;
     }
     enumerator_19428.gotoNextObject () ;
   }

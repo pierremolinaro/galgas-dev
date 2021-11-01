@@ -339,7 +339,7 @@ void cParser_galgas_33_GuiComponentSyntax::rule_galgas_33_GuiComponentSyntax_gui
               inCompiler->emitSemanticError (var_endingStrip_5168.getter_location (HERE), GALGAS_string ("tail strip should be < 15"), fixItArray5  COMMA_SOURCE_FILE ("guiCompilation.galgas", 156)) ;
             }
           }
-          var_displayFlags_4799 = var_leadingStrip_4993.getter_uint (HERE).left_shift_operation (GALGAS_uint ((uint32_t) 4U), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 158)).operator_or (var_endingStrip_5168.getter_uint (SOURCE_FILE ("guiCompilation.galgas", 158)) COMMA_SOURCE_FILE ("guiCompilation.galgas", 158)) ;
+          var_displayFlags_4799 = var_leadingStrip_4993.getter_uint (HERE).left_shift_operation (GALGAS_uint ((uint32_t) 4U), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 158)).operator_or (var_endingStrip_5168.getter_uint (HERE) COMMA_SOURCE_FILE ("guiCompilation.galgas", 158)) ;
           inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__29_ COMMA_SOURCE_FILE ("guiCompilation.galgas", 159)) ;
         } break ;
         default:
@@ -2270,7 +2270,7 @@ void cParser_galgas_33_GrammarComponentSyntax::rule_galgas_33_GrammarComponentSy
         test_1 = var_argumentNameSet_3566.getter_hasKey (var_argumentName_3691.getter_string (HERE) COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 98)).boolEnum () ;
         if (kBoolTrue == test_1) {
           TC_Array <C_FixItDescription> fixItArray2 ;
-          inCompiler->emitSemanticError (var_argumentName_3691.getter_location (HERE), GALGAS_string ("there is already an argument named '").add_operation (var_argumentName_3691.getter_string (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 99)), inCompiler COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 99)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 99)), fixItArray2  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 99)) ;
+          inCompiler->emitSemanticError (var_argumentName_3691.getter_location (HERE), GALGAS_string ("there is already an argument named '").add_operation (var_argumentName_3691.getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 99)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 99)), fixItArray2  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 99)) ;
         }
       }
       var_argumentNameSet_3566.addAssign_operation (var_argumentName_3691.getter_string (HERE)  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 101)) ;
