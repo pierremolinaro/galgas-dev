@@ -14713,7 +14713,7 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i24_ (G
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray1 ;
       appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string ("!")) ;
-      inCompiler->emitSemanticError (var_selector_23828.getter_location (SOURCE_FILE ("templateSyntax.galgas", 537)), GALGAS_string ("the selector should be '!'"), fixItArray1  COMMA_SOURCE_FILE ("templateSyntax.galgas", 537)) ;
+      inCompiler->emitSemanticError (var_selector_23828.getter_location (HERE), GALGAS_string ("the selector should be '!'"), fixItArray1  COMMA_SOURCE_FILE ("templateSyntax.galgas", 537)) ;
     }
   }
   GALGAS_templateExpressionAST var_expression_23996 ;

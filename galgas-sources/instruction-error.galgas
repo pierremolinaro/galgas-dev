@@ -169,50 +169,57 @@ proc analyzeErrorOrWarningInstruction
     !?ioVariableMap
     ?outLocationExpression
   ]
+#--- Check type
+  checkAssignmentTypeWithImplicitGetterCall (
+    !inAnalysisContext.mPredefinedTypes.mLocationType
+    !outLocationExpression.mResultType
+    !inErrorLocation
+    !?outLocationExpression
+  )
 #--- Check location expression type is either @location either has a correct location getter
-  if outLocationExpression.mResultType != inAnalysisContext.mPredefinedTypes.mLocationType then
-    let @getterMap getterMap = [outLocationExpression.mResultType mGetterMap]
-    if [getterMap hasKey !"location"] then
-      [getterMap searchKey
-        !["location" nowhere]
-        ?let @methodKind kind
-        ?let @functionSignature argumentTypeList
-        ?*
-        ?let @bool hasCompilerArgument
-        ?let @unifiedTypeMap-entry returnedType
-        ?2*
-      ]
-      if [argumentTypeList length] != 0 then
-        error inErrorLocation
-        :"the " + inErrorOrWarningString + " location expression type is '@" + [outLocationExpression.mResultType key]
-        + "' and defines a 'location' getter with arguments; it should be either of the '@location' type,"
-        + " either defines a 'location' getter without argument that returns an '@location' object"
-      elsif returnedType != inAnalysisContext.mPredefinedTypes.mLocationType then
-        error inErrorLocation
-        :"the " + inErrorOrWarningString + " location expression type is '@" + [outLocationExpression.mResultType key]
-        + "' and defines a 'location' getter that returns an '@" + [returnedType key]
-        + "' object; it should be either of the '@location' type, either defines a 'location' getter without"
-        + " argument that returns an '@location' object"
-      else
-        let conversionExpression = @getterCallExpressionForGeneration.new {
-          !inAnalysisContext.mPredefinedTypes.mLocationType
-          !inErrorLocation
-          !kind
-          !outLocationExpression
-          !{}
-          ![inAnalysisContext.mPredefinedTypes.mLocationType key]
-          !{}
-          !hasCompilerArgument
-        }
-        outLocationExpression = conversionExpression
-      end
-    else
-      error inErrorLocation
-      :"the " + inErrorOrWarningString + " location expression type is '@" + [outLocationExpression.mResultType key]
-      + "' and does not define a 'location' getter; it should be either of the '@location' type, either"
-      + " defines a 'location' getter without argument that returns an '@location' object"
-    end
-  end
+#  if outLocationExpression.mResultType != inAnalysisContext.mPredefinedTypes.mLocationType then
+#    let @getterMap getterMap = [outLocationExpression.mResultType mGetterMap]
+#    if [getterMap hasKey !"location"] then
+#      [getterMap searchKey
+#        !["location" nowhere]
+#        ?let @methodKind kind
+#        ?let @functionSignature argumentTypeList
+#        ?*
+#        ?let @bool hasCompilerArgument
+#        ?let @unifiedTypeMap-entry returnedType
+#        ?2*
+#      ]
+#      if [argumentTypeList length] != 0 then
+#        error inErrorLocation
+#        :"the " + inErrorOrWarningString + " location expression type is '@" + [outLocationExpression.mResultType key]
+#        + "' and defines a 'location' getter with arguments; it should be either of the '@location' type,"
+#        + " either defines a 'location' getter without argument that returns an '@location' object"
+#      elsif returnedType != inAnalysisContext.mPredefinedTypes.mLocationType then
+#        error inErrorLocation
+#        :"the " + inErrorOrWarningString + " location expression type is '@" + [outLocationExpression.mResultType key]
+#        + "' and defines a 'location' getter that returns an '@" + [returnedType key]
+#        + "' object; it should be either of the '@location' type, either defines a 'location' getter without"
+#        + " argument that returns an '@location' object"
+#      else
+#        let conversionExpression = @getterCallExpressionForGeneration.new {
+#          !inAnalysisContext.mPredefinedTypes.mLocationType
+#          !inErrorLocation
+#          !kind
+#          !outLocationExpression
+#          !{}
+#          ![inAnalysisContext.mPredefinedTypes.mLocationType key]
+#          !{}
+#          !hasCompilerArgument
+#        }
+#        outLocationExpression = conversionExpression
+#      end
+#    else
+#      error inErrorLocation
+#      :"the " + inErrorOrWarningString + " location expression type is '@" + [outLocationExpression.mResultType key]
+#      + "' and does not define a 'location' getter; it should be either of the '@location' type, either"
+#      + " defines a 'location' getter without argument that returns an '@location' object"
+#    end
+#  end
 #--- Analyze message expression
   [inMessageExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName

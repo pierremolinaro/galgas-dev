@@ -66,7 +66,7 @@ proc checkAssignmentTypeWithImplicitGetterCall
   ?let @unifiedTypeMap-entry inTargetType
   ?let @unifiedTypeMap-entry inSourceType
   ?let @location inErrorLocation
-  ?!@semanticExpressionForGeneration ioRightExpression
+  ?!@semanticExpressionForGeneration ioExpression
 {
   var @unifiedTypeMap-entry sourceType = inSourceType
   var @bool ok = inTargetType == inSourceType
@@ -90,10 +90,10 @@ proc checkAssignmentTypeWithImplicitGetterCall
     let conversionExpression = @structPropertyAccessExpressionForGeneration.new {
       !propertyType
       !inErrorLocation
-      !ioRightExpression
+      !ioExpression
       ![inTargetType key] 
     }
-    ioRightExpression = conversionExpression
+    ioExpression = conversionExpression
     ok = propertyType == inTargetType
   elsif (not ok) && [[inSourceType mGetterMap] hasKey ![inTargetType key]] then
     [[inSourceType mGetterMap] searchKey
@@ -111,13 +111,13 @@ proc checkAssignmentTypeWithImplicitGetterCall
       !inTargetType
       !inErrorLocation
       !kind
-      !ioRightExpression
+      !ioExpression
       !{}
       ![inTargetType key]
       !{}
       !hasCompilerArgument
     }
-    ioRightExpression = conversionExpression
+    ioExpression = conversionExpression
   end
   if not ok then
     error inErrorLocation

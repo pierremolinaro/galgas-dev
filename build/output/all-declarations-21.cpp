@@ -2923,7 +2923,7 @@ static void extensionMethod_templateGetterCallInExpressionAST_templateExpression
         if (kBoolTrue == test_10) {
           const GALGAS_templateGetterCallInExpressionAST temp_11 = object ;
           TC_Array <C_FixItDescription> fixItArray12 ;
-          inCompiler->emitSemanticError (temp_11.getter_mGetterName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 89)), GALGAS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray12  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 89)) ;
+          inCompiler->emitSemanticError (temp_11.getter_mGetterName (HERE).getter_location (HERE), GALGAS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray12  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 89)) ;
         }
       }
       const GALGAS_templateGetterCallInExpressionAST temp_13 = object ;
@@ -2983,7 +2983,7 @@ static void extensionMethod_templateGetterCallInExpressionAST_templateExpression
               const GALGAS_templateGetterCallInExpressionAST temp_21 = object ;
               const GALGAS_templateGetterCallInExpressionAST temp_22 = object ;
               TC_Array <C_FixItDescription> fixItArray23 ;
-              inCompiler->emitSemanticError (temp_21.getter_mGetterName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 134)), GALGAS_string ("the '@").add_operation (var_receiverType_4186.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 135)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 135)).add_operation (GALGAS_string ("' struct type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 135)).add_operation (temp_22.getter_mGetterName (HERE).getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 135)).add_operation (GALGAS_string ("' getter, and none of its fields defines it"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 135)), fixItArray23  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 134)) ;
+              inCompiler->emitSemanticError (temp_21.getter_mGetterName (HERE).getter_location (HERE), GALGAS_string ("the '@").add_operation (var_receiverType_4186.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 135)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 135)).add_operation (GALGAS_string ("' struct type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 135)).add_operation (temp_22.getter_mGetterName (HERE).getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 135)).add_operation (GALGAS_string ("' getter, and none of its fields defines it"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 135)), fixItArray23  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 134)) ;
               var_getterFormalArgumentTypeList_5155.drop () ; // Release error dropped variable
               var_hasCompilerArgument_5214.drop () ; // Release error dropped variable
               var_returnedType_5257.drop () ; // Release error dropped variable
@@ -3007,7 +3007,7 @@ static void extensionMethod_templateGetterCallInExpressionAST_templateExpression
                 const GALGAS_templateGetterCallInExpressionAST temp_25 = object ;
                 const GALGAS_templateGetterCallInExpressionAST temp_26 = object ;
                 TC_Array <C_FixItDescription> fixItArray27 ;
-                inCompiler->emitSemanticError (temp_25.getter_mGetterName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 144)), GALGAS_string ("the '@").add_operation (var_receiverType_4186.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 145)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 145)).add_operation (GALGAS_string ("' struct type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 145)).add_operation (temp_26.getter_mGetterName (HERE).getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 145)).add_operation (GALGAS_string ("' getter, and several of its fields defines it:"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 145)).add_operation (var_s_6709, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 146)).add_operation (GALGAS_string (" (exactly one field should define it)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 146)), fixItArray27  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 144)) ;
+                inCompiler->emitSemanticError (temp_25.getter_mGetterName (HERE).getter_location (HERE), GALGAS_string ("the '@").add_operation (var_receiverType_4186.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 145)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 145)).add_operation (GALGAS_string ("' struct type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 145)).add_operation (temp_26.getter_mGetterName (HERE).getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 145)).add_operation (GALGAS_string ("' getter, and several of its fields defines it:"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 145)).add_operation (var_s_6709, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 146)).add_operation (GALGAS_string (" (exactly one field should define it)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 146)), fixItArray27  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 144)) ;
                 var_getterFormalArgumentTypeList_5155.drop () ; // Release error dropped variable
                 var_hasCompilerArgument_5214.drop () ; // Release error dropped variable
                 var_returnedType_5257.drop () ; // Release error dropped variable
@@ -3024,7 +3024,7 @@ static void extensionMethod_templateGetterCallInExpressionAST_templateExpression
           if (kBoolTrue == test_28) {
             const GALGAS_templateGetterCallInExpressionAST temp_29 = object ;
             TC_Array <C_FixItDescription> fixItArray30 ;
-            inCompiler->emitSemanticError (temp_29.getter_mGetterName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 150)), GALGAS_string ("the '@").add_operation (var_receiverType_4186.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 151)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 151)).add_operation (GALGAS_string ("' type does not define any getter"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 151)), fixItArray30  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 150)) ;
+            inCompiler->emitSemanticError (temp_29.getter_mGetterName (HERE).getter_location (HERE), GALGAS_string ("the '@").add_operation (var_receiverType_4186.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 151)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 151)).add_operation (GALGAS_string ("' type does not define any getter"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 151)), fixItArray30  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 150)) ;
             var_getterFormalArgumentTypeList_5155.drop () ; // Release error dropped variable
             var_hasCompilerArgument_5214.drop () ; // Release error dropped variable
             var_returnedType_5257.drop () ; // Release error dropped variable
@@ -3036,7 +3036,7 @@ static void extensionMethod_templateGetterCallInExpressionAST_templateExpression
           const GALGAS_templateGetterCallInExpressionAST temp_32 = object ;
           TC_Array <C_FixItDescription> fixItArray33 ;
           appendFixItActions (fixItArray33, kFixItReplace, var_getterMap_5046.getter_keyList (SOURCE_FILE ("templateAnalysis.galgas", 157))) ;
-          inCompiler->emitSemanticError (temp_31.getter_mGetterName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 154)), GALGAS_string ("the '@").add_operation (var_receiverType_4186.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 155)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 155)).add_operation (GALGAS_string ("' type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 155)).add_operation (temp_32.getter_mGetterName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 155)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 155)).add_operation (GALGAS_string ("' getter"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 155)), fixItArray33  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 154)) ;
+          inCompiler->emitSemanticError (temp_31.getter_mGetterName (HERE).getter_location (HERE), GALGAS_string ("the '@").add_operation (var_receiverType_4186.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 155)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 155)).add_operation (GALGAS_string ("' type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 155)).add_operation (temp_32.getter_mGetterName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 155)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 155)).add_operation (GALGAS_string ("' getter"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 155)), fixItArray33  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 154)) ;
           var_getterFormalArgumentTypeList_5155.drop () ; // Release error dropped variable
           var_hasCompilerArgument_5214.drop () ; // Release error dropped variable
           var_returnedType_5257.drop () ; // Release error dropped variable
@@ -3053,7 +3053,7 @@ static void extensionMethod_templateGetterCallInExpressionAST_templateExpression
         const GALGAS_templateGetterCallInExpressionAST temp_37 = object ;
         const GALGAS_templateGetterCallInExpressionAST temp_38 = object ;
         TC_Array <C_FixItDescription> fixItArray39 ;
-        inCompiler->emitSemanticError (temp_36.getter_mGetterName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 162)), GALGAS_string ("calling the '").add_operation (temp_37.getter_mGetterName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 162)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 162)).add_operation (GALGAS_string ("' getter of '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 162)).add_operation (var_receiverType_4186.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 162)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 162)).add_operation (GALGAS_string ("' requires "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 162)).add_operation (var_getterFormalArgumentTypeList_5155.getter_length (SOURCE_FILE ("templateAnalysis.galgas", 163)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 163)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 162)).add_operation (GALGAS_string (" parameter(s), while this call has "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 163)).add_operation (temp_38.getter_mExpressionList (HERE).getter_length (SOURCE_FILE ("templateAnalysis.galgas", 164)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 164)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 163)).add_operation (GALGAS_string (" parameter(s)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 164)), fixItArray39  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 162)) ;
+        inCompiler->emitSemanticError (temp_36.getter_mGetterName (HERE).getter_location (HERE), GALGAS_string ("calling the '").add_operation (temp_37.getter_mGetterName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 162)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 162)).add_operation (GALGAS_string ("' getter of '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 162)).add_operation (var_receiverType_4186.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 162)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 162)).add_operation (GALGAS_string ("' requires "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 162)).add_operation (var_getterFormalArgumentTypeList_5155.getter_length (SOURCE_FILE ("templateAnalysis.galgas", 163)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 163)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 162)).add_operation (GALGAS_string (" parameter(s), while this call has "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 163)).add_operation (temp_38.getter_mExpressionList (HERE).getter_length (SOURCE_FILE ("templateAnalysis.galgas", 164)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 164)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 163)).add_operation (GALGAS_string (" parameter(s)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 164)), fixItArray39  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 162)) ;
         outArgument_outExpression.drop () ; // Release error dropped variable
       }
     }
@@ -3077,7 +3077,7 @@ static void extensionMethod_templateGetterCallInExpressionAST_templateExpression
             GALGAS_string var_s_8428 = GALGAS_string ("!").add_operation (temp_42, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 169)) ;
             TC_Array <C_FixItDescription> fixItArray44 ;
             appendFixItActions (fixItArray44, kFixItReplace, var_s_8428) ;
-            inCompiler->emitSemanticError (enumerator_8246.current_mActualSelector (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 170)), GALGAS_string ("the selector should be '").add_operation (var_s_8428, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 170)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 170)), fixItArray44  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 170)) ;
+            inCompiler->emitSemanticError (enumerator_8246.current_mActualSelector (HERE).getter_location (HERE), GALGAS_string ("the selector should be '").add_operation (var_s_8428, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 170)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 170)), fixItArray44  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 170)) ;
           }
         }
         GALGAS_semanticExpressionForGeneration var_exp_8958 ;
@@ -3143,7 +3143,7 @@ static void extensionMethod_templateConstructorAST_templateExpressionAnalysis (c
         const GALGAS_templateConstructorAST temp_3 = object ;
         const GALGAS_templateConstructorAST temp_4 = object ;
         TC_Array <C_FixItDescription> fixItArray5 ;
-        inCompiler->emitSemanticError (temp_3.getter_mConstructorName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 219)), GALGAS_string ("the '@").add_operation (temp_4.getter_mTypeName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 220)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 220)).add_operation (GALGAS_string ("' type does not define any constructor"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 220)), fixItArray5  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 219)) ;
+        inCompiler->emitSemanticError (temp_3.getter_mConstructorName (HERE).getter_location (HERE), GALGAS_string ("the '@").add_operation (temp_4.getter_mTypeName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 220)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 220)).add_operation (GALGAS_string ("' type does not define any constructor"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 220)), fixItArray5  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 219)) ;
         var_constructorFormalArgumentTypeList_10420.drop () ; // Release error dropped variable
         var_hasCompilerArgument_10361.drop () ; // Release error dropped variable
         var_returnedType_10329.drop () ; // Release error dropped variable
@@ -3155,7 +3155,7 @@ static void extensionMethod_templateConstructorAST_templateExpressionAnalysis (c
       const GALGAS_templateConstructorAST temp_8 = object ;
       TC_Array <C_FixItDescription> fixItArray9 ;
       appendFixItActions (fixItArray9, kFixItReplace, var_constructorMap_10229.getter_keyList (SOURCE_FILE ("templateAnalysis.galgas", 226))) ;
-      inCompiler->emitSemanticError (temp_6.getter_mConstructorName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 223)), GALGAS_string ("the '@").add_operation (temp_7.getter_mTypeName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 224)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 224)).add_operation (GALGAS_string ("' type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 224)).add_operation (temp_8.getter_mConstructorName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 224)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 224)).add_operation (GALGAS_string ("' constructor"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 224)), fixItArray9  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 223)) ;
+      inCompiler->emitSemanticError (temp_6.getter_mConstructorName (HERE).getter_location (HERE), GALGAS_string ("the '@").add_operation (temp_7.getter_mTypeName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 224)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 224)).add_operation (GALGAS_string ("' type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 224)).add_operation (temp_8.getter_mConstructorName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 224)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 224)).add_operation (GALGAS_string ("' constructor"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 224)), fixItArray9  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 223)) ;
       var_constructorFormalArgumentTypeList_10420.drop () ; // Release error dropped variable
       var_hasCompilerArgument_10361.drop () ; // Release error dropped variable
       var_returnedType_10329.drop () ; // Release error dropped variable
@@ -3171,7 +3171,7 @@ static void extensionMethod_templateConstructorAST_templateExpressionAnalysis (c
       const GALGAS_templateConstructorAST temp_13 = object ;
       const GALGAS_templateConstructorAST temp_14 = object ;
       TC_Array <C_FixItDescription> fixItArray15 ;
-      inCompiler->emitSemanticError (temp_12.getter_mConstructorName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 232)), GALGAS_string ("calling the '").add_operation (temp_13.getter_mConstructorName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 233)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 233)).add_operation (GALGAS_string ("' constructor of '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 233)).add_operation (var_constructorType_10055.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 233)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 233)).add_operation (GALGAS_string ("' requires "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 233)).add_operation (var_constructorFormalArgumentTypeList_10420.getter_length (SOURCE_FILE ("templateAnalysis.galgas", 234)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 234)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 233)).add_operation (GALGAS_string (" parameter(s), while this call has "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 234)).add_operation (temp_14.getter_mExpressionList (HERE).getter_length (SOURCE_FILE ("templateAnalysis.galgas", 235)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 235)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 234)).add_operation (GALGAS_string (" parameter(s)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 235)), fixItArray15  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 232)) ;
+      inCompiler->emitSemanticError (temp_12.getter_mConstructorName (HERE).getter_location (HERE), GALGAS_string ("calling the '").add_operation (temp_13.getter_mConstructorName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 233)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 233)).add_operation (GALGAS_string ("' constructor of '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 233)).add_operation (var_constructorType_10055.getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 233)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 233)).add_operation (GALGAS_string ("' requires "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 233)).add_operation (var_constructorFormalArgumentTypeList_10420.getter_length (SOURCE_FILE ("templateAnalysis.galgas", 234)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 234)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 233)).add_operation (GALGAS_string (" parameter(s), while this call has "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 234)).add_operation (temp_14.getter_mExpressionList (HERE).getter_length (SOURCE_FILE ("templateAnalysis.galgas", 235)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 235)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 234)).add_operation (GALGAS_string (" parameter(s)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 235)), fixItArray15  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 232)) ;
       var_constructorEffectiveParameterList_11242.drop () ; // Release error dropped variable
     }
   }
@@ -3195,7 +3195,7 @@ static void extensionMethod_templateConstructorAST_templateExpressionAnalysis (c
           GALGAS_string var_s_12004 = GALGAS_string ("!").add_operation (temp_18, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 241)) ;
           TC_Array <C_FixItDescription> fixItArray20 ;
           appendFixItActions (fixItArray20, kFixItReplace, var_s_12004) ;
-          inCompiler->emitSemanticError (enumerator_11821.current_mActualSelector (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 242)), GALGAS_string ("the selector should be '").add_operation (var_s_12004, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 242)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 242)), fixItArray20  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 242)) ;
+          inCompiler->emitSemanticError (enumerator_11821.current_mActualSelector (HERE).getter_location (HERE), GALGAS_string ("the selector should be '").add_operation (var_s_12004, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 242)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 242)), fixItArray20  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 242)) ;
         }
       }
       GALGAS_semanticExpressionForGeneration var_exp_12529 ;
@@ -3241,7 +3241,7 @@ static void extensionMethod_templateFileWrapperTemplateCallAST_templateExpressio
   macroValidSharedObject (object, cPtr_templateFileWrapperTemplateCallAST) ;
   const GALGAS_templateFileWrapperTemplateCallAST temp_0 = object ;
   TC_Array <C_FixItDescription> fixItArray1 ;
-  inCompiler->emitSemanticError (temp_0.getter_mFileWrapperName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 276)), GALGAS_string ("unhandled @templateFileWrapperTemplateCallAST templateExpressionAnalysis"), fixItArray1  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 276)) ;
+  inCompiler->emitSemanticError (temp_0.getter_mFileWrapperName (HERE).getter_location (HERE), GALGAS_string ("unhandled @templateFileWrapperTemplateCallAST templateExpressionAnalysis"), fixItArray1  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 276)) ;
   outArgument_outExpression.drop () ; // Release error dropped variable
 }
 
@@ -3806,7 +3806,7 @@ static void extensionMethod_templateTestDynamicClassAST_templateExpressionAnalys
           const GALGAS_templateTestDynamicClassAST temp_4 = object ;
           const GALGAS_templateTestDynamicClassAST temp_5 = object ;
           TC_Array <C_FixItDescription> fixItArray6 ;
-          inCompiler->emitSemanticError (temp_4.getter_mTypeName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 620)), GALGAS_string ("the '@").add_operation (temp_5.getter_mTypeName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 621)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 621)).add_operation (GALGAS_string ("' is not a descendant of the '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 621)).add_operation (var_expression_25661.getter_mResultType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 621)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 621)).add_operation (GALGAS_string ("' type of the cast expression"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 621)), fixItArray6  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 620)) ;
+          inCompiler->emitSemanticError (temp_4.getter_mTypeName (HERE).getter_location (HERE), GALGAS_string ("the '@").add_operation (temp_5.getter_mTypeName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 621)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 621)).add_operation (GALGAS_string ("' is not a descendant of the '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 621)).add_operation (var_expression_25661.getter_mResultType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 621)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 621)).add_operation (GALGAS_string ("' type of the cast expression"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 621)), fixItArray6  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 620)) ;
         }
       }
     }
@@ -3942,7 +3942,7 @@ static void extensionMethod_templateOptionAccessAST_templateExpressionAnalysis (
             if (kBoolFalse == test_25) {
               const GALGAS_templateOptionAccessAST temp_30 = object ;
               TC_Array <C_FixItDescription> fixItArray31 ;
-              inCompiler->emitSemanticError (temp_30.getter_mGetterName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 702)), GALGAS_string ("only the 'value', 'char', 'string' and 'comment' getters are defined for an option"), fixItArray31  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 702)) ;
+              inCompiler->emitSemanticError (temp_30.getter_mGetterName (HERE).getter_location (HERE), GALGAS_string ("only the 'value', 'char', 'string' and 'comment' getters are defined for an option"), fixItArray31  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 702)) ;
               outArgument_outExpression.drop () ; // Release error dropped variable
             }
           }
@@ -3972,7 +3972,7 @@ static void extensionMethod_templateOptionAccessAST_templateExpressionAnalysis (
     const GALGAS_templateOptionAccessAST temp_34 = object ;
     TC_Array <C_FixItDescription> fixItArray35 ;
     appendFixItActions (fixItArray35, kFixItReplace, var_s_29991) ;
-    inCompiler->emitSemanticError (temp_32.getter_mOptionName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 715)), GALGAS_string ("the '").add_operation (temp_33.getter_mOptionComponentName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 716)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 716)).add_operation (GALGAS_string ("' option component does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 716)).add_operation (temp_34.getter_mOptionName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 716)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 716)).add_operation (GALGAS_string ("' option"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 716)), fixItArray35  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 715)) ;
+    inCompiler->emitSemanticError (temp_32.getter_mOptionName (HERE).getter_location (HERE), GALGAS_string ("the '").add_operation (temp_33.getter_mOptionComponentName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 716)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 716)).add_operation (GALGAS_string ("' option component does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 716)).add_operation (temp_34.getter_mOptionName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 716)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 716)).add_operation (GALGAS_string ("' option"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 716)), fixItArray35  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 715)) ;
     outArgument_outExpression.drop () ; // Release error dropped variable
   }
 }
@@ -4026,7 +4026,7 @@ static void extensionMethod_templateFunctionCallAST_templateExpressionAnalysis (
         if (kBoolTrue == test_4) {
           const GALGAS_templateFunctionCallAST temp_6 = object ;
           TC_Array <C_FixItDescription> fixItArray7 ;
-          inCompiler->emitSemanticError (temp_6.getter_mFunctionName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 745)), GALGAS_string ("this proc is internal to '").add_operation (var_procDeclarationLocation_31421.getter_file (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 745)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 745)).add_operation (GALGAS_string ("' file"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 745)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 745)) ;
+          inCompiler->emitSemanticError (temp_6.getter_mFunctionName (HERE).getter_location (HERE), GALGAS_string ("this proc is internal to '").add_operation (var_procDeclarationLocation_31421.getter_file (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 745)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 745)).add_operation (GALGAS_string ("' file"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 745)), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 745)) ;
         }
       }
     }
@@ -4040,7 +4040,7 @@ static void extensionMethod_templateFunctionCallAST_templateExpressionAnalysis (
       const GALGAS_templateFunctionCallAST temp_11 = object ;
       const GALGAS_templateFunctionCallAST temp_12 = object ;
       TC_Array <C_FixItDescription> fixItArray13 ;
-      inCompiler->emitSemanticError (temp_10.getter_mFunctionName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 750)), GALGAS_string ("the '").add_operation (temp_11.getter_mFunctionName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 751)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 751)).add_operation (GALGAS_string ("' function header declares "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 751)).add_operation (var_functionSignature_31276.getter_length (SOURCE_FILE ("templateAnalysis.galgas", 751)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 751)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 751)).add_operation (GALGAS_string (" formal parameter(s), but this function call names "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 751)).add_operation (temp_12.getter_mExpressionList (HERE).getter_length (SOURCE_FILE ("templateAnalysis.galgas", 752)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 752)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 752)).add_operation (GALGAS_string (" effective argument(s)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 752)), fixItArray13  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 750)) ;
+      inCompiler->emitSemanticError (temp_10.getter_mFunctionName (HERE).getter_location (HERE), GALGAS_string ("the '").add_operation (temp_11.getter_mFunctionName (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 751)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 751)).add_operation (GALGAS_string ("' function header declares "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 751)).add_operation (var_functionSignature_31276.getter_length (SOURCE_FILE ("templateAnalysis.galgas", 751)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 751)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 751)).add_operation (GALGAS_string (" formal parameter(s), but this function call names "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 751)).add_operation (temp_12.getter_mExpressionList (HERE).getter_length (SOURCE_FILE ("templateAnalysis.galgas", 752)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 752)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 752)).add_operation (GALGAS_string (" effective argument(s)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 752)), fixItArray13  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 750)) ;
       outArgument_outExpression.drop () ; // Release error dropped variable
     }
   }
@@ -4070,7 +4070,7 @@ static void extensionMethod_templateFunctionCallAST_templateExpressionAnalysis (
           GALGAS_string var_s_32825 = GALGAS_string ("!").add_operation (temp_16, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 767)) ;
           TC_Array <C_FixItDescription> fixItArray18 ;
           appendFixItActions (fixItArray18, kFixItReplace, var_s_32825) ;
-          inCompiler->emitSemanticError (enumerator_32325.current_mActualSelector (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 768)), GALGAS_string ("the selector should be '").add_operation (var_s_32825, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 768)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 768)), fixItArray18  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 768)) ;
+          inCompiler->emitSemanticError (enumerator_32325.current_mActualSelector (HERE).getter_location (HERE), GALGAS_string ("the selector should be '").add_operation (var_s_32825, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 768)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 768)), fixItArray18  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 768)) ;
         }
       }
       enumerator_32248.gotoNextObject () ;
@@ -4110,7 +4110,7 @@ static void extensionMethod_templateExtensionTemplateCallAST_templateExpressionA
   macroValidSharedObject (object, cPtr_templateExtensionTemplateCallAST) ;
   const GALGAS_templateExtensionTemplateCallAST temp_0 = object ;
   TC_Array <C_FixItDescription> fixItArray1 ;
-  inCompiler->emitSemanticError (temp_0.getter_mTemplateName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 790)), GALGAS_string ("INTERNAL ERROR: @templateExtensionTemplateCallAST templateExpressionAnalysis not implemented yet"), fixItArray1  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 790)) ;
+  inCompiler->emitSemanticError (temp_0.getter_mTemplateName (HERE).getter_location (HERE), GALGAS_string ("INTERNAL ERROR: @templateExtensionTemplateCallAST templateExpressionAnalysis not implemented yet"), fixItArray1  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 790)) ;
   outArgument_outExpression.drop () ; // Release error dropped variable
 }
 
@@ -4435,7 +4435,7 @@ static void extensionMethod_structFieldAccessTemplateExpressionAST_templateExpre
     if (kBoolTrue == test_1) {
       const GALGAS_structFieldAccessTemplateExpressionAST temp_2 = object ;
       TC_Array <C_FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.getter_mStructFieldName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 1088)), GALGAS_string ("the '.' operator requires the receiver to be a struct"), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1088)) ;
+      inCompiler->emitSemanticError (temp_2.getter_mStructFieldName (HERE).getter_location (HERE), GALGAS_string ("the '.' operator requires the receiver to be a struct"), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1088)) ;
     }
   }
   GALGAS_propertyMap var_propertyMap_44977 = var_type_44780.getter_mPropertyMap (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1090)) ;
@@ -4449,7 +4449,7 @@ static void extensionMethod_structFieldAccessTemplateExpressionAST_templateExpre
     if (kBoolTrue == test_5) {
       const GALGAS_structFieldAccessTemplateExpressionAST temp_6 = object ;
       TC_Array <C_FixItDescription> fixItArray7 ;
-      inCompiler->emitSemanticError (temp_6.getter_mStructFieldName (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 1093)), GALGAS_string (" inaccessible property (due to its 'private' qualifier)"), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1093)) ;
+      inCompiler->emitSemanticError (temp_6.getter_mStructFieldName (HERE).getter_location (HERE), GALGAS_string (" inaccessible property (due to its 'private' qualifier)"), fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1093)) ;
     }
   }
   const GALGAS_structFieldAccessTemplateExpressionAST temp_8 = object ;
@@ -5729,7 +5729,7 @@ static void extensionMethod_templateInstructionSwitchAST_templateInstructionAnal
             test_5 = var_constantsNamedInSwitchInstruction_4890.getter_hasKey (enumerator_5330.current_mValue (HERE).getter_string (HERE) COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 145)).boolEnum () ;
             if (kBoolTrue == test_5) {
               TC_Array <C_FixItDescription> fixItArray6 ;
-              inCompiler->emitSemanticError (enumerator_5330.current_mValue (HERE).getter_location (SOURCE_FILE ("template-switch-instruction.galgas", 146)), GALGAS_string ("the '").add_operation (enumerator_5330.current_mValue (HERE).getter_string (SOURCE_FILE ("template-switch-instruction.galgas", 147)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 147)).add_operation (GALGAS_string ("' constant is already named in this switch instruction"), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 147)), fixItArray6  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 146)) ;
+              inCompiler->emitSemanticError (enumerator_5330.current_mValue (HERE).getter_location (HERE), GALGAS_string ("the '").add_operation (enumerator_5330.current_mValue (HERE).getter_string (SOURCE_FILE ("template-switch-instruction.galgas", 147)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 147)).add_operation (GALGAS_string ("' constant is already named in this switch instruction"), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 147)), fixItArray6  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 146)) ;
             }
           }
           var_constantsNamedInSwitchInstruction_4890.addAssign_operation (enumerator_5330.current_mValue (HERE).getter_string (HERE)  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 149)) ;
@@ -5741,7 +5741,7 @@ static void extensionMethod_templateInstructionSwitchAST_templateInstructionAnal
             test_7 = GALGAS_bool (kIsStrictSup, var_associatedTypeList_5756.getter_length (SOURCE_FILE ("template-switch-instruction.galgas", 151)).objectCompare (GALGAS_uint ((uint32_t) 0U))).operator_and (GALGAS_bool (kIsEqual, enumerator_5093.current_mAssociatedValuesExtraction (HERE).getter_length (SOURCE_FILE ("template-switch-instruction.galgas", 151)).objectCompare (GALGAS_uint ((uint32_t) 0U))) COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 151)).boolEnum () ;
             if (kBoolTrue == test_7) {
               TC_Array <C_FixItDescription> fixItArray8 ;
-              inCompiler->emitSemanticError (enumerator_5330.current_mValue (HERE).getter_location (SOURCE_FILE ("template-switch-instruction.galgas", 152)), GALGAS_string ("the associated values of '").add_operation (enumerator_5330.current_mValue (HERE).getter_string (SOURCE_FILE ("template-switch-instruction.galgas", 153)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 153)).add_operation (GALGAS_string ("' constant should be extracted"), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 153)), fixItArray8  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 152)) ;
+              inCompiler->emitSemanticError (enumerator_5330.current_mValue (HERE).getter_location (HERE), GALGAS_string ("the associated values of '").add_operation (enumerator_5330.current_mValue (HERE).getter_string (SOURCE_FILE ("template-switch-instruction.galgas", 153)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 153)).add_operation (GALGAS_string ("' constant should be extracted"), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 153)), fixItArray8  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 152)) ;
             }
           }
           if (kBoolFalse == test_7) {
@@ -5750,7 +5750,7 @@ static void extensionMethod_templateInstructionSwitchAST_templateInstructionAnal
               test_9 = GALGAS_bool (kIsEqual, var_associatedTypeList_5756.getter_length (SOURCE_FILE ("template-switch-instruction.galgas", 154)).objectCompare (GALGAS_uint ((uint32_t) 0U))).operator_and (GALGAS_bool (kIsStrictSup, enumerator_5093.current_mAssociatedValuesExtraction (HERE).getter_length (SOURCE_FILE ("template-switch-instruction.galgas", 154)).objectCompare (GALGAS_uint ((uint32_t) 0U))) COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 154)).boolEnum () ;
               if (kBoolTrue == test_9) {
                 TC_Array <C_FixItDescription> fixItArray10 ;
-                inCompiler->emitSemanticError (enumerator_5330.current_mValue (HERE).getter_location (SOURCE_FILE ("template-switch-instruction.galgas", 155)), GALGAS_string ("the '").add_operation (enumerator_5330.current_mValue (HERE).getter_string (SOURCE_FILE ("template-switch-instruction.galgas", 156)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 156)).add_operation (GALGAS_string ("' constant has no associated value"), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 156)), fixItArray10  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 155)) ;
+                inCompiler->emitSemanticError (enumerator_5330.current_mValue (HERE).getter_location (HERE), GALGAS_string ("the '").add_operation (enumerator_5330.current_mValue (HERE).getter_string (SOURCE_FILE ("template-switch-instruction.galgas", 156)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 156)).add_operation (GALGAS_string ("' constant has no associated value"), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 156)), fixItArray10  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 155)) ;
               }
             }
             if (kBoolFalse == test_9) {
@@ -5766,7 +5766,7 @@ static void extensionMethod_templateInstructionSwitchAST_templateInstructionAnal
                     temp_12 = GALGAS_string::makeEmptyString () ;
                   }
                   TC_Array <C_FixItDescription> fixItArray14 ;
-                  inCompiler->emitSemanticError (enumerator_5330.current_mValue (HERE).getter_location (SOURCE_FILE ("template-switch-instruction.galgas", 158)), GALGAS_string ("the '").add_operation (enumerator_5330.current_mValue (HERE).getter_string (SOURCE_FILE ("template-switch-instruction.galgas", 159)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 159)).add_operation (GALGAS_string ("' constant requires "), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 159)).add_operation (var_associatedTypeList_5756.getter_length (SOURCE_FILE ("template-switch-instruction.galgas", 159)).getter_string (SOURCE_FILE ("template-switch-instruction.galgas", 159)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 159)).add_operation (GALGAS_string ("  associated value"), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 159)).add_operation (temp_12, inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 159)), fixItArray14  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 158)) ;
+                  inCompiler->emitSemanticError (enumerator_5330.current_mValue (HERE).getter_location (HERE), GALGAS_string ("the '").add_operation (enumerator_5330.current_mValue (HERE).getter_string (SOURCE_FILE ("template-switch-instruction.galgas", 159)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 159)).add_operation (GALGAS_string ("' constant requires "), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 159)).add_operation (var_associatedTypeList_5756.getter_length (SOURCE_FILE ("template-switch-instruction.galgas", 159)).getter_string (SOURCE_FILE ("template-switch-instruction.galgas", 159)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 159)).add_operation (GALGAS_string ("  associated value"), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 159)).add_operation (temp_12, inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 159)), fixItArray14  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 158)) ;
                 }
               }
               if (kBoolFalse == test_11) {
@@ -5783,7 +5783,7 @@ static void extensionMethod_templateInstructionSwitchAST_templateInstructionAnal
                         test_16 = GALGAS_bool (kIsNotEqual, enumerator_6515.current_mType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 165)).objectCompare (enumerator_6586.current_mExtractedValueTypeName (HERE).getter_string (HERE))).boolEnum () ;
                         if (kBoolTrue == test_16) {
                           TC_Array <C_FixItDescription> fixItArray17 ;
-                          inCompiler->emitSemanticError (enumerator_6586.current_mExtractedValueTypeName (HERE).getter_location (SOURCE_FILE ("template-switch-instruction.galgas", 166)), GALGAS_string ("the required type is '@").add_operation (enumerator_6515.current_mType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 166)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 166)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 166)), fixItArray17  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 166)) ;
+                          inCompiler->emitSemanticError (enumerator_6586.current_mExtractedValueTypeName (HERE).getter_location (HERE), GALGAS_string ("the required type is '@").add_operation (enumerator_6515.current_mType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 166)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 166)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 166)), fixItArray17  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 166)) ;
                         }
                       }
                     }
@@ -5810,7 +5810,7 @@ static void extensionMethod_templateInstructionSwitchAST_templateInstructionAnal
       }
       if (kBoolFalse == test_4) {
         TC_Array <C_FixItDescription> fixItArray19 ;
-        inCompiler->emitSemanticError (enumerator_5330.current_mValue (HERE).getter_location (SOURCE_FILE ("template-switch-instruction.galgas", 178)), GALGAS_string ("'").add_operation (enumerator_5330.current_mValue (HERE).getter_string (SOURCE_FILE ("template-switch-instruction.galgas", 179)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 179)).add_operation (GALGAS_string ("' is not a constant of '@"), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 179)).add_operation (var_switchExpression_4362.getter_mResultType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 179)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 179)).add_operation (GALGAS_string ("' enumeration type"), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 179)), fixItArray19  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 178)) ;
+        inCompiler->emitSemanticError (enumerator_5330.current_mValue (HERE).getter_location (HERE), GALGAS_string ("'").add_operation (enumerator_5330.current_mValue (HERE).getter_string (SOURCE_FILE ("template-switch-instruction.galgas", 179)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 179)).add_operation (GALGAS_string ("' is not a constant of '@"), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 179)).add_operation (var_switchExpression_4362.getter_mResultType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 179)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 179)).add_operation (GALGAS_string ("' enumeration type"), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 179)), fixItArray19  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 178)) ;
       }
       var_firstConstant_5262 = GALGAS_bool (false) ;
       enumerator_5330.gotoNextObject () ;
@@ -6071,7 +6071,7 @@ void routine_buildLexicalAttributeMap (const GALGAS_lexicalTypeMap constinArgume
         enumerator_21631.gotoNextObject () ;
       }
       TC_Array <C_FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (enumerator_21225.current_mTypeName (HERE).getter_location (SOURCE_FILE ("lexiqueTypesForAST.galgas", 528)), var_m_21482, fixItArray1  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 528)) ;
+      inCompiler->emitSemanticError (enumerator_21225.current_mTypeName (HERE).getter_location (HERE), var_m_21482, fixItArray1  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 528)) ;
     }
     enumerator_21225.gotoNextObject () ;
   }
@@ -6131,7 +6131,7 @@ void routine_lexicalUnicodeTestFunctionAnalysis (const GALGAS_lexicalFunctionLis
             test_1 = outArgument_outUnicodeTestFunctions.getter_hasKey (enumerator_6379.current (HERE).getter_mFunctionName (HERE).getter_string (HERE) COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 148)).boolEnum () ;
             if (kBoolTrue == test_1) {
               TC_Array <C_FixItDescription> fixItArray2 ;
-              inCompiler->emitSemanticError (enumerator_6379.current (HERE).getter_mFunctionName (HERE).getter_location (SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 149)), GALGAS_string ("Unicode test function already defined"), fixItArray2  COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 149)) ;
+              inCompiler->emitSemanticError (enumerator_6379.current (HERE).getter_mFunctionName (HERE).getter_location (HERE), GALGAS_string ("Unicode test function already defined"), fixItArray2  COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 149)) ;
             }
           }
           if (kBoolFalse == test_1) {
@@ -6155,7 +6155,7 @@ void routine_lexicalUnicodeTestFunctionAnalysis (const GALGAS_lexicalFunctionLis
   cEnumerator_lexicalFunctionListAST enumerator_6941 (var_lexicalFunctionListAST_6110, kENUMERATION_UP) ;
   while (enumerator_6941.hasCurrentObject ()) {
     TC_Array <C_FixItDescription> fixItArray4 ;
-    inCompiler->emitSemanticError (enumerator_6941.current (HERE).getter_mFunctionName (HERE).getter_location (SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 159)), GALGAS_string ("Circular definition of this lexical Unicode test function"), fixItArray4  COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 159)) ;
+    inCompiler->emitSemanticError (enumerator_6941.current (HERE).getter_mFunctionName (HERE).getter_location (HERE), GALGAS_string ("Circular definition of this lexical Unicode test function"), fixItArray4  COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 159)) ;
     enumerator_6941.gotoNextObject () ;
   }
 }
@@ -6252,7 +6252,7 @@ static void extensionMethod_lexicalFunctionCharacterIntervalMatchAST_checkUnicod
     if (kBoolTrue == test_0) {
       const GALGAS_lexicalFunctionCharacterIntervalMatchAST temp_3 = object ;
       TC_Array <C_FixItDescription> fixItArray4 ;
-      inCompiler->emitSemanticError (temp_3.getter_mUpperBound (HERE).getter_location (SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 190)), GALGAS_string ("Upper bound code point should be greater or equal to lower bound code point"), fixItArray4  COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 190)) ;
+      inCompiler->emitSemanticError (temp_3.getter_mUpperBound (HERE).getter_location (HERE), GALGAS_string ("Upper bound code point should be greater or equal to lower bound code point"), fixItArray4  COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 190)) ;
     }
   }
 }
@@ -9127,7 +9127,7 @@ static void extensionMethod_lexicalCharacterSetMatchAST_checkLexicalExpression (
       const GALGAS_lexicalCharacterSetMatchAST temp_2 = object ;
       TC_Array <C_FixItDescription> fixItArray3 ;
       appendFixItActions (fixItArray3, kFixItReplace, ioArgument_ioLexiqueAnalysisContext.getter_mExternUnicodeTestFunctions (HERE)) ;
-      inCompiler->emitSemanticError (temp_2.getter_mCharacterSetName (HERE).getter_location (SOURCE_FILE ("lexiqueCompilation.galgas", 201)), GALGAS_string ("undefined test function"), fixItArray3  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 201)) ;
+      inCompiler->emitSemanticError (temp_2.getter_mCharacterSetName (HERE).getter_location (HERE), GALGAS_string ("undefined test function"), fixItArray3  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 201)) ;
     }
   }
 }
@@ -9246,7 +9246,7 @@ static void extensionMethod_lexicalAttributeInputArgumentAST_checkLexicalFunctio
     if (kBoolTrue == test_1) {
       const GALGAS_lexicalAttributeInputArgumentAST temp_2 = object ;
       TC_Array <C_FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.getter_mAttributeName (HERE).getter_location (SOURCE_FILE ("lexiqueCompilation.galgas", 247)), GALGAS_string ("type error, attribute type is @").add_operation (extensionGetter_lexicalTypeBaseName (var_attributeLexicalType_11275, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 248)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 247)).add_operation (GALGAS_string (" type, but lexical routine prototype requires @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 248)).add_operation (extensionGetter_lexicalTypeBaseName (inArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 250)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 249)).add_operation (GALGAS_string (" type"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 250)), fixItArray3  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 247)) ;
+      inCompiler->emitSemanticError (temp_2.getter_mAttributeName (HERE).getter_location (HERE), GALGAS_string ("type error, attribute type is @").add_operation (extensionGetter_lexicalTypeBaseName (var_attributeLexicalType_11275, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 248)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 247)).add_operation (GALGAS_string (" type, but lexical routine prototype requires @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 248)).add_operation (extensionGetter_lexicalTypeBaseName (inArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 250)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 249)).add_operation (GALGAS_string (" type"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 250)), fixItArray3  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 247)) ;
     }
   }
 }
@@ -9281,7 +9281,7 @@ static void extensionMethod_lexicalCharacterInputArgumentAST_checkLexicalFunctio
     if (kBoolTrue == test_0) {
       const GALGAS_lexicalCharacterInputArgumentAST temp_1 = object ;
       TC_Array <C_FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (temp_1.getter_mCharacter (HERE).getter_location (SOURCE_FILE ("lexiqueCompilation.galgas", 262)), GALGAS_string ("type error, a literal character has @char").add_operation (GALGAS_string (" type, but lexical routine prototype requires an @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 262)).add_operation (extensionGetter_lexicalTypeBaseName (inArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 264)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 263)).add_operation (GALGAS_string (" type value"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 264)), fixItArray2  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 262)) ;
+      inCompiler->emitSemanticError (temp_1.getter_mCharacter (HERE).getter_location (HERE), GALGAS_string ("type error, a literal character has @char").add_operation (GALGAS_string (" type, but lexical routine prototype requires an @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 262)).add_operation (extensionGetter_lexicalTypeBaseName (inArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 264)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 263)).add_operation (GALGAS_string (" type value"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 264)), fixItArray2  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 262)) ;
     }
   }
 }
@@ -9316,7 +9316,7 @@ static void extensionMethod_lexicalUnsignedInputArgumentAST_checkLexicalFunction
     if (kBoolTrue == test_0) {
       const GALGAS_lexicalUnsignedInputArgumentAST temp_1 = object ;
       TC_Array <C_FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (temp_1.getter_mUnsigned (HERE).getter_location (SOURCE_FILE ("lexiqueCompilation.galgas", 276)), GALGAS_string ("type error, a literal character has @uint").add_operation (GALGAS_string (" type, but lexical routine prototype requires an @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 276)).add_operation (extensionGetter_lexicalTypeBaseName (inArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 278)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 277)).add_operation (GALGAS_string (" type value"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 278)), fixItArray2  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 276)) ;
+      inCompiler->emitSemanticError (temp_1.getter_mUnsigned (HERE).getter_location (HERE), GALGAS_string ("type error, a literal character has @uint").add_operation (GALGAS_string (" type, but lexical routine prototype requires an @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 276)).add_operation (extensionGetter_lexicalTypeBaseName (inArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 278)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 277)).add_operation (GALGAS_string (" type value"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 278)), fixItArray2  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 276)) ;
     }
   }
 }
