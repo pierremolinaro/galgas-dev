@@ -76,15 +76,13 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
     ?receiverExpression
   ]
   let @unifiedTypeMap-entry receiverType = receiverExpression.mResultType
-  
-  let propertyMap = [receiverType mPropertyMap]
-  if [[receiverType mTypeKindEnum] isStructType]
-     && ([self.mExpressionList length] == 0)
-     && [propertyMap hasKey !self.mGetterName] then
+  #--------------------------------------- Property ?
+  if [[receiverType mTypeKindEnum] isStructType] || [[receiverType mTypeKindEnum] isClassType],
+     [self.mExpressionList length] == 0,
+     let [[receiverType mPropertyMap] searchKey !self.mGetterName ?let isPublic ?* ?let propertyType] then
     if [option galgas_cli_options.errorPropertyGetterCall value] then
       error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
     end
-    [propertyMap searchKey !self.mGetterName ?let isPublic ?* ?let propertyType]
     if not isPublic then
       error self.mGetterName : "inaccessible property (due to 'private' qualifier)"
     end
@@ -94,6 +92,20 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
       !receiverExpression
       !self.mGetterName.string
     }
+#--------------------------------------- The getter does not exist, it is a property ?
+#  elsif [self.mExpressions length] == 0, let [[receiverType mPropertyMap] searchKey !self.mGetterName.string ?let isPublic ?* ?let propertyType] then
+#    if not isPublic then
+#      error self.mGetterName : " inaccessible property (due to its 'private' qualifier)"
+#    end
+#    outExpression = @structPropertyAccessExpressionForGeneration.new {
+#      !propertyType
+#      !self.mGetterName.location
+#      !receiverExpression
+#      !self.mGetterName.string
+#    }
+#    if [option galgas_cli_options.errorPropertyGetterCall value] then
+#      error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
+#    end
   else
   #--- Get getter map
     let @getterMap getterMap = [receiverType mGetterMap]
