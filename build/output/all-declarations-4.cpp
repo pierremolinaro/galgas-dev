@@ -11071,7 +11071,7 @@ void GALGAS_outputInputJokerParameterAST::setter_setMJokerIndex (GALGAS_uint inV
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_outputInputJokerParameterAST::readProperty_mQualifierLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_outputInputJokerParameterAST::readProperty_mQualifierLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -11083,7 +11083,7 @@ GALGAS_location GALGAS_outputInputJokerParameterAST::readProperty_mQualifierLoca
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_outputInputJokerParameterAST::readProperty_mJokerIndex (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_outputInputJokerParameterAST::readProperty_mJokerIndex (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_uint () ;
   }else{
@@ -11400,7 +11400,7 @@ void GALGAS_inputJokerActualParameterAST::setter_setMJokerIndex (GALGAS_uint inV
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_inputJokerActualParameterAST::readProperty_mQualifierLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_inputJokerActualParameterAST::readProperty_mQualifierLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -11412,7 +11412,7 @@ GALGAS_location GALGAS_inputJokerActualParameterAST::readProperty_mQualifierLoca
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_inputJokerActualParameterAST::readProperty_mJokerIndex (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_inputJokerActualParameterAST::readProperty_mJokerIndex (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_uint () ;
   }else{
@@ -13005,7 +13005,7 @@ void GALGAS_syntaxInstructionAST::setter_setMInstructionLocation (GALGAS_locatio
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_syntaxInstructionAST::readProperty_mInstructionLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_syntaxInstructionAST::readProperty_mInstructionLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{

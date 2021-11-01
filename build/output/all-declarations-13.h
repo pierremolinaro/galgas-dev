@@ -534,7 +534,7 @@ class GALGAS_templateInstructionStringAST : public GALGAS_templateInstructionAST
   public: GALGAS_templateInstructionStringAST (const class cPtr_templateInstructionStringAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_string readProperty_mTemplateString (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_string readProperty_mTemplateString (void) const ;
 
 //-- Start of generic part --*
 
@@ -926,7 +926,7 @@ class GALGAS_templateInstructionStringForGeneration : public GALGAS_templateInst
   public: GALGAS_templateInstructionStringForGeneration (const class cPtr_templateInstructionStringForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_string readProperty_mTemplateString (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_string readProperty_mTemplateString (void) const ;
 
 //-- Start of generic part --*
 

@@ -550,7 +550,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 class GALGAS_templateInstructionListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_templateInstructionAST mProperty_mInstruction ;
-  public: inline GALGAS_templateInstructionAST readProperty_mInstruction (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_templateInstructionAST readProperty_mInstruction (void) const {
     return mProperty_mInstruction ;
   }
 
@@ -924,17 +924,17 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateExpressionL
 class GALGAS_templateExpressionListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
-  public: inline GALGAS_lstring readProperty_mActualSelector (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mActualSelector (void) const {
     return mProperty_mActualSelector ;
   }
 
   public: GALGAS_templateExpressionAST mProperty_mExpression ;
-  public: inline GALGAS_templateExpressionAST readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_templateExpressionAST readProperty_mExpression (void) const {
     return mProperty_mExpression ;
   }
 
   public: GALGAS_location mProperty_mEndOfExpressionLocation ;
-  public: inline GALGAS_location readProperty_mEndOfExpressionLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_location readProperty_mEndOfExpressionLocation (void) const {
     return mProperty_mEndOfExpressionLocation ;
   }
 
@@ -1032,11 +1032,11 @@ class GALGAS_templateAndOperationAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateAndOperationAST (const class cPtr_templateAndOperationAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -1189,11 +1189,11 @@ class GALGAS_templateOrOperationAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateOrOperationAST (const class cPtr_templateOrOperationAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -1346,11 +1346,11 @@ class GALGAS_templateXorOperationAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateXorOperationAST (const class cPtr_templateXorOperationAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -1506,7 +1506,7 @@ class GALGAS_templateTrueBoolAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateTrueBoolAST (const class cPtr_templateTrueBoolAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mLocation (void) const ;
 
 //-- Start of generic part --*
 
@@ -1652,7 +1652,7 @@ class GALGAS_templateFalseBoolAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateFalseBoolAST (const class cPtr_templateFalseBoolAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mLocation (void) const ;
 
 //-- Start of generic part --*
 
@@ -1795,9 +1795,9 @@ class GALGAS_templateNotOperatorAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateNotOperatorAST (const class cPtr_templateNotOperatorAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -1945,9 +1945,9 @@ class GALGAS_templateLogicalNegateAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateLogicalNegateAST (const class cPtr_templateLogicalNegateAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -2175,11 +2175,11 @@ class GALGAS_templateAddOperationAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateAddOperationAST (const class cPtr_templateAddOperationAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -2332,11 +2332,11 @@ class GALGAS_templateSubOperationAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateSubOperationAST (const class cPtr_templateSubOperationAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -2489,11 +2489,11 @@ class GALGAS_templateMultiplyOperationAST : public GALGAS_templateExpressionAST 
   public: GALGAS_templateMultiplyOperationAST (const class cPtr_templateMultiplyOperationAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -2646,11 +2646,11 @@ class GALGAS_templateDivideOperationAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateDivideOperationAST (const class cPtr_templateDivideOperationAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -2803,11 +2803,11 @@ class GALGAS_templateModuloOperationAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateModuloOperationAST (const class cPtr_templateModuloOperationAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -2960,9 +2960,9 @@ class GALGAS_templateUnaryMinusOperationAST : public GALGAS_templateExpressionAS
   public: GALGAS_templateUnaryMinusOperationAST (const class cPtr_templateUnaryMinusOperationAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -3110,11 +3110,11 @@ class GALGAS_templateEqualTestAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateEqualTestAST (const class cPtr_templateEqualTestAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -3267,11 +3267,11 @@ class GALGAS_templateNonEqualTestAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateNonEqualTestAST (const class cPtr_templateNonEqualTestAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -3424,11 +3424,11 @@ class GALGAS_templateStrictInfTestAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateStrictInfTestAST (const class cPtr_templateStrictInfTestAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -3581,11 +3581,11 @@ class GALGAS_templateInfOrEqualTestAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateInfOrEqualTestAST (const class cPtr_templateInfOrEqualTestAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -3738,11 +3738,11 @@ class GALGAS_templateStrictSupTestAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateStrictSupTestAST (const class cPtr_templateStrictSupTestAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -3895,11 +3895,11 @@ class GALGAS_templateSupOrEqualTestAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateSupOrEqualTestAST (const class cPtr_templateSupOrEqualTestAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -4052,11 +4052,11 @@ class GALGAS_templateLeftShiftOperationAST : public GALGAS_templateExpressionAST
   public: GALGAS_templateLeftShiftOperationAST (const class cPtr_templateLeftShiftOperationAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -4209,11 +4209,11 @@ class GALGAS_templateRightShiftOperationAST : public GALGAS_templateExpressionAS
   public: GALGAS_templateRightShiftOperationAST (const class cPtr_templateRightShiftOperationAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -4366,9 +4366,9 @@ class GALGAS_templateInstructionExpressionAST : public GALGAS_templateInstructio
   public: GALGAS_templateInstructionExpressionAST (const class cPtr_templateInstructionExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_templateExpressionAST readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mExpression (void) const ;
 
-  public: class GALGAS_location readProperty_mLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mLocation (void) const ;
 
 //-- Start of generic part --*
 
@@ -4516,11 +4516,11 @@ class GALGAS_templateBlockInstructionAST : public GALGAS_templateInstructionAST 
   public: GALGAS_templateBlockInstructionAST (const class cPtr_templateBlockInstructionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_templateExpressionAST readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mExpression (void) const ;
 
-  public: class GALGAS_location readProperty_mLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mLocation (void) const ;
 
-  public: class GALGAS_templateInstructionListAST readProperty_mBlockInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateInstructionListAST readProperty_mBlockInstructionList (void) const ;
 
 //-- Start of generic part --*
 
@@ -5094,12 +5094,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 class GALGAS_templateInstructionIfBranchListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_templateExpressionAST mProperty_mExpression ;
-  public: inline GALGAS_templateExpressionAST readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_templateExpressionAST readProperty_mExpression (void) const {
     return mProperty_mExpression ;
   }
 
   public: GALGAS_templateInstructionListAST mProperty_mInstructionList ;
-  public: inline GALGAS_templateInstructionListAST readProperty_mInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_templateInstructionListAST readProperty_mInstructionList (void) const {
     return mProperty_mInstructionList ;
   }
 
@@ -5192,9 +5192,9 @@ class GALGAS_templateInstructionIfAST : public GALGAS_templateInstructionAST {
   public: GALGAS_templateInstructionIfAST (const class cPtr_templateInstructionIfAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_templateInstructionIfBranchListAST readProperty_mTemplateInstructionIfBranchList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateInstructionIfBranchListAST readProperty_mTemplateInstructionIfBranchList (void) const ;
 
-  public: class GALGAS_templateInstructionListAST readProperty_mElseInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateInstructionListAST readProperty_mElseInstructionList (void) const ;
 
 //-- Start of generic part --*
 
@@ -5653,11 +5653,11 @@ class GALGAS_structFieldAccessTemplateExpressionAST : public GALGAS_templateExpr
   public: GALGAS_structFieldAccessTemplateExpressionAST (const class cPtr_structFieldAccessTemplateExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mExpression (void) const ;
 
-  public: class GALGAS_lstring readProperty_mStructFieldName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lstring readProperty_mStructFieldName (void) const ;
 
 //-- Start of generic part --*
 
@@ -5757,11 +5757,11 @@ class GALGAS_templateConstructorAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateConstructorAST (const class cPtr_templateConstructorAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_lstring readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lstring readProperty_mTypeName (void) const ;
 
-  public: class GALGAS_lstring readProperty_mConstructorName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lstring readProperty_mConstructorName (void) const ;
 
-  public: class GALGAS_templateExpressionListAST readProperty_mExpressionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionListAST readProperty_mExpressionList (void) const ;
 
 //-- Start of generic part --*
 
@@ -5858,11 +5858,11 @@ class GALGAS_templateExtensionTemplateCallAST : public GALGAS_templateExpression
   public: GALGAS_templateExtensionTemplateCallAST (const class cPtr_templateExtensionTemplateCallAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_templateExpressionAST readProperty_mExpressionValue (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mExpressionValue (void) const ;
 
-  public: class GALGAS_lstring readProperty_mTemplateName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lstring readProperty_mTemplateName (void) const ;
 
-  public: class GALGAS_templateExpressionListAST readProperty_mOutExpressionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionListAST readProperty_mOutExpressionList (void) const ;
 
 //-- Start of generic part --*
 
@@ -5962,11 +5962,11 @@ class GALGAS_templateFileWrapperTemplateCallAST : public GALGAS_templateExpressi
   public: GALGAS_templateFileWrapperTemplateCallAST (const class cPtr_templateFileWrapperTemplateCallAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_lstring readProperty_mFileWrapperName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lstring readProperty_mFileWrapperName (void) const ;
 
-  public: class GALGAS_lstring readProperty_mTemplateName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lstring readProperty_mTemplateName (void) const ;
 
-  public: class GALGAS_templateExpressionListAST readProperty_mOutExpressionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionListAST readProperty_mOutExpressionList (void) const ;
 
 //-- Start of generic part --*
 
@@ -6066,9 +6066,9 @@ class GALGAS_templateFunctionCallAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateFunctionCallAST (const class cPtr_templateFunctionCallAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_lstring readProperty_mFunctionName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lstring readProperty_mFunctionName (void) const ;
 
-  public: class GALGAS_templateExpressionListAST readProperty_mExpressionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionListAST readProperty_mExpressionList (void) const ;
 
 //-- Start of generic part --*
 
@@ -6160,13 +6160,13 @@ class GALGAS_templateGetterCallInExpressionAST : public GALGAS_templateExpressio
   public: GALGAS_templateGetterCallInExpressionAST (const class cPtr_templateGetterCallInExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_templateExpressionAST readProperty_mReceiverExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mReceiverExpression (void) const ;
 
-  public: class GALGAS_lstring readProperty_mGetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lstring readProperty_mGetterName (void) const ;
 
-  public: class GALGAS_templateExpressionListAST readProperty_mExpressionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionListAST readProperty_mExpressionList (void) const ;
 
-  public: class GALGAS_location readProperty_mExpressionLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mExpressionLocation (void) const ;
 
 //-- Start of generic part --*
 
@@ -6268,21 +6268,21 @@ class GALGAS_templateInstructionForeachAST : public GALGAS_templateInstructionAS
   public: GALGAS_templateInstructionForeachAST (const class cPtr_templateInstructionForeachAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_bool readProperty_mIsAscending (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_bool readProperty_mIsAscending (void) const ;
 
-  public: class GALGAS_templateExpressionAST readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mExpression (void) const ;
 
-  public: class GALGAS_string readProperty_mPrefix (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_string readProperty_mPrefix (void) const ;
 
-  public: class GALGAS_templateInstructionListAST readProperty_mBeforeInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateInstructionListAST readProperty_mBeforeInstructionList (void) const ;
 
-  public: class GALGAS_templateInstructionListAST readProperty_mDoInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateInstructionListAST readProperty_mDoInstructionList (void) const ;
 
-  public: class GALGAS_lstring readProperty_mIndexIdentifier (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lstring readProperty_mIndexIdentifier (void) const ;
 
-  public: class GALGAS_templateInstructionListAST readProperty_mBetweenInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateInstructionListAST readProperty_mBetweenInstructionList (void) const ;
 
-  public: class GALGAS_templateInstructionListAST readProperty_mAfterInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateInstructionListAST readProperty_mAfterInstructionList (void) const ;
 
 //-- Start of generic part --*
 
@@ -6404,11 +6404,11 @@ class GALGAS_templateInstructionSwitchAST : public GALGAS_templateInstructionAST
   public: GALGAS_templateInstructionSwitchAST (const class cPtr_templateInstructionSwitchAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_templateExpressionAST readProperty_mSwitchExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mSwitchExpression (void) const ;
 
-  public: class GALGAS_location readProperty_mSwitchExpressionEndLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mSwitchExpressionEndLocation (void) const ;
 
-  public: class GALGAS_templateInstructionSwitchBranchListAST readProperty_mTemplateInstructionSwitchBranchList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateInstructionSwitchBranchListAST readProperty_mTemplateInstructionSwitchBranchList (void) const ;
 
 //-- Start of generic part --*
 
@@ -6699,7 +6699,7 @@ class GALGAS_templateLiteralCharExpressionAST : public GALGAS_templateExpression
   public: GALGAS_templateLiteralCharExpressionAST (const class cPtr_templateLiteralCharExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_lchar readProperty_mLiteralChar (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lchar readProperty_mLiteralChar (void) const ;
 
 //-- Start of generic part --*
 
@@ -6789,7 +6789,7 @@ class GALGAS_templateLiteralDoubleExpressionAST : public GALGAS_templateExpressi
   public: GALGAS_templateLiteralDoubleExpressionAST (const class cPtr_templateLiteralDoubleExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_ldouble readProperty_mLiteralDouble (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_ldouble readProperty_mLiteralDouble (void) const ;
 
 //-- Start of generic part --*
 
@@ -6879,7 +6879,7 @@ class GALGAS_templateLiteralSIntExpressionAST : public GALGAS_templateExpression
   public: GALGAS_templateLiteralSIntExpressionAST (const class cPtr_templateLiteralSIntExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_lsint readProperty_mLiteralInt (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lsint readProperty_mLiteralInt (void) const ;
 
 //-- Start of generic part --*
 
@@ -6969,7 +6969,7 @@ class GALGAS_templateLiteralSInt_36__34_ExpressionAST : public GALGAS_templateEx
   public: GALGAS_templateLiteralSInt_36__34_ExpressionAST (const class cPtr_templateLiteralSInt_36__34_ExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_lsint_36__34_ readProperty_mLiteralInt (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lsint_36__34_ readProperty_mLiteralInt (void) const ;
 
 //-- Start of generic part --*
 
@@ -7059,9 +7059,9 @@ class GALGAS_templateLiteralStringExpressionAST : public GALGAS_templateExpressi
   public: GALGAS_templateLiteralStringExpressionAST (const class cPtr_templateLiteralStringExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_stringlist readProperty_mLiteralStringList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_stringlist readProperty_mLiteralStringList (void) const ;
 
-  public: class GALGAS_location readProperty_mLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mLocation (void) const ;
 
 //-- Start of generic part --*
 
@@ -7156,7 +7156,7 @@ class GALGAS_templateLiteralUIntExpressionAST : public GALGAS_templateExpression
   public: GALGAS_templateLiteralUIntExpressionAST (const class cPtr_templateLiteralUIntExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_luint readProperty_mLiteralInt (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_luint readProperty_mLiteralInt (void) const ;
 
 //-- Start of generic part --*
 
@@ -7246,7 +7246,7 @@ class GALGAS_templateLiteralUInt_36__34_ExpressionAST : public GALGAS_templateEx
   public: GALGAS_templateLiteralUInt_36__34_ExpressionAST (const class cPtr_templateLiteralUInt_36__34_ExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_luint_36__34_ readProperty_mLiteralInt (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_luint_36__34_ readProperty_mLiteralInt (void) const ;
 
 //-- Start of generic part --*
 
@@ -7336,11 +7336,11 @@ class GALGAS_templateOptionAccessAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateOptionAccessAST (const class cPtr_templateOptionAccessAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_lstring readProperty_mOptionComponentName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lstring readProperty_mOptionComponentName (void) const ;
 
-  public: class GALGAS_lstring readProperty_mOptionName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lstring readProperty_mOptionName (void) const ;
 
-  public: class GALGAS_lstring readProperty_mGetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lstring readProperty_mGetterName (void) const ;
 
 //-- Start of generic part --*
 
@@ -7437,13 +7437,13 @@ class GALGAS_templateTestDynamicClassAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateTestDynamicClassAST (const class cPtr_templateTestDynamicClassAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_templateExpressionAST readProperty_mReceiverExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mReceiverExpression (void) const ;
 
-  public: class GALGAS_location readProperty_mEndOfReceiverExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mEndOfReceiverExpression (void) const ;
 
-  public: class GALGAS_dynamicTypeComparisonKind readProperty_mTypeComparisonKind (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_dynamicTypeComparisonKind readProperty_mTypeComparisonKind (void) const ;
 
-  public: class GALGAS_lstring readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lstring readProperty_mTypeName (void) const ;
 
 //-- Start of generic part --*
 
@@ -7548,7 +7548,7 @@ class GALGAS_templateVarInExpressionAST : public GALGAS_templateExpressionAST {
   public: GALGAS_templateVarInExpressionAST (const class cPtr_templateVarInExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_lstring readProperty_mVarName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lstring readProperty_mVarName (void) const ;
 
 //-- Start of generic part --*
 

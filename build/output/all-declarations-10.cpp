@@ -269,7 +269,7 @@ GALGAS_listOfSemanticInstructionListForGeneration GALGAS_repeatInstructionForGen
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_repeatInstructionForGeneration::readProperty_mSyntaxComponentName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_repeatInstructionForGeneration::readProperty_mSyntaxComponentName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -281,7 +281,7 @@ GALGAS_string GALGAS_repeatInstructionForGeneration::readProperty_mSyntaxCompone
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_repeatInstructionForGeneration::readProperty_mChoiceIndex (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_repeatInstructionForGeneration::readProperty_mChoiceIndex (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_uint () ;
   }else{
@@ -293,7 +293,7 @@ GALGAS_uint GALGAS_repeatInstructionForGeneration::readProperty_mChoiceIndex (C_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListForGeneration GALGAS_repeatInstructionForGeneration::readProperty_m_5F_repeated_5F_instructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListForGeneration GALGAS_repeatInstructionForGeneration::readProperty_m_5F_repeated_5F_instructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticInstructionListForGeneration () ;
   }else{
@@ -305,7 +305,7 @@ GALGAS_semanticInstructionListForGeneration GALGAS_repeatInstructionForGeneratio
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_repeatInstructionForGeneration::readProperty_mEndOfRepeatedInstructions (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_repeatInstructionForGeneration::readProperty_mEndOfRepeatedInstructions (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -317,7 +317,7 @@ GALGAS_location GALGAS_repeatInstructionForGeneration::readProperty_mEndOfRepeat
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_listOfSemanticInstructionListForGeneration GALGAS_repeatInstructionForGeneration::readProperty_mListOfSemanticInstructionListForGeneration (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_listOfSemanticInstructionListForGeneration GALGAS_repeatInstructionForGeneration::readProperty_mListOfSemanticInstructionListForGeneration (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_listOfSemanticInstructionListForGeneration () ;
   }else{
@@ -654,7 +654,7 @@ void GALGAS_selectInstruction::setter_setMEndOf_5F_select_5F_instruction (GALGAS
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_listOfSyntaxInstructionList GALGAS_selectInstruction::readProperty_mSelectBranchList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_listOfSyntaxInstructionList GALGAS_selectInstruction::readProperty_mSelectBranchList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_listOfSyntaxInstructionList () ;
   }else{
@@ -666,7 +666,7 @@ GALGAS_listOfSyntaxInstructionList GALGAS_selectInstruction::readProperty_mSelec
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_selectInstruction::readProperty_mEndOf_5F_select_5F_instruction (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_selectInstruction::readProperty_mEndOf_5F_select_5F_instruction (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -1019,7 +1019,7 @@ void GALGAS_selectInstructionForGeneration::setter_setMListOfSemanticInstruction
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_selectInstructionForGeneration::readProperty_mSyntaxComponentName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_selectInstructionForGeneration::readProperty_mSyntaxComponentName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -1031,7 +1031,7 @@ GALGAS_string GALGAS_selectInstructionForGeneration::readProperty_mSyntaxCompone
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_selectInstructionForGeneration::readProperty_mChoiceIndex (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_selectInstructionForGeneration::readProperty_mChoiceIndex (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_uint () ;
   }else{
@@ -1043,7 +1043,7 @@ GALGAS_uint GALGAS_selectInstructionForGeneration::readProperty_mChoiceIndex (C_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_listOfSemanticInstructionListForGeneration GALGAS_selectInstructionForGeneration::readProperty_mListOfSemanticInstructionListForGeneration (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_listOfSemanticInstructionListForGeneration GALGAS_selectInstructionForGeneration::readProperty_mListOfSemanticInstructionListForGeneration (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_listOfSemanticInstructionListForGeneration () ;
   }else{
@@ -1405,7 +1405,7 @@ GALGAS_location GALGAS_parseLoopInstruction::getter_mEndOfInstructionList (UNUSE
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_parseLoopInstruction::readProperty_mVariantExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_parseLoopInstruction::readProperty_mVariantExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -1417,7 +1417,7 @@ GALGAS_semanticExpressionAST GALGAS_parseLoopInstruction::readProperty_mVariantE
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_parseLoopInstruction::readProperty_mEndOfVariantExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_parseLoopInstruction::readProperty_mEndOfVariantExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -1429,7 +1429,7 @@ GALGAS_location GALGAS_parseLoopInstruction::readProperty_mEndOfVariantExpressio
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_parseLoopInstruction::readProperty_mWhileExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_parseLoopInstruction::readProperty_mWhileExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -1441,7 +1441,7 @@ GALGAS_semanticExpressionAST GALGAS_parseLoopInstruction::readProperty_mWhileExp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_parseLoopInstruction::readProperty_mEndOfWhileExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_parseLoopInstruction::readProperty_mEndOfWhileExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -1453,7 +1453,7 @@ GALGAS_location GALGAS_parseLoopInstruction::readProperty_mEndOfWhileExpression 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_syntaxInstructionList GALGAS_parseLoopInstruction::readProperty_mDoInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_syntaxInstructionList GALGAS_parseLoopInstruction::readProperty_mDoInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_syntaxInstructionList () ;
   }else{
@@ -1465,7 +1465,7 @@ GALGAS_syntaxInstructionList GALGAS_parseLoopInstruction::readProperty_mDoInstru
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_parseLoopInstruction::readProperty_mEndOfInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_parseLoopInstruction::readProperty_mEndOfInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -1806,7 +1806,7 @@ void GALGAS_parseRewindInstruction::setter_setMEndOfParseDoInstruction (GALGAS_l
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_listOfSyntaxInstructionList GALGAS_parseRewindInstruction::readProperty_mParseRewindBranchList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_listOfSyntaxInstructionList GALGAS_parseRewindInstruction::readProperty_mParseRewindBranchList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_listOfSyntaxInstructionList () ;
   }else{
@@ -1818,7 +1818,7 @@ GALGAS_listOfSyntaxInstructionList GALGAS_parseRewindInstruction::readProperty_m
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_parseRewindInstruction::readProperty_mEndOfParseDoInstruction (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_parseRewindInstruction::readProperty_mEndOfParseDoInstruction (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -2115,7 +2115,7 @@ void GALGAS_parseRewindInstructionForGeneration::setter_setMListOfSemanticInstru
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_listOfSemanticInstructionListForGeneration GALGAS_parseRewindInstructionForGeneration::readProperty_mListOfSemanticInstructionListForGeneration (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_listOfSemanticInstructionListForGeneration GALGAS_parseRewindInstructionForGeneration::readProperty_mListOfSemanticInstructionListForGeneration (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_listOfSemanticInstructionListForGeneration () ;
   }else{
@@ -2469,7 +2469,7 @@ GALGAS_location GALGAS_parseWhenInstruction::getter_mEndOfElseInstructionList (U
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_parseWhenInstruction::readProperty_mWhenExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_parseWhenInstruction::readProperty_mWhenExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -2481,7 +2481,7 @@ GALGAS_semanticExpressionAST GALGAS_parseWhenInstruction::readProperty_mWhenExpr
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_parseWhenInstruction::readProperty_mEndOfWhenExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_parseWhenInstruction::readProperty_mEndOfWhenExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -2493,7 +2493,7 @@ GALGAS_location GALGAS_parseWhenInstruction::readProperty_mEndOfWhenExpression (
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_syntaxInstructionList GALGAS_parseWhenInstruction::readProperty_mWhenInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_syntaxInstructionList GALGAS_parseWhenInstruction::readProperty_mWhenInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_syntaxInstructionList () ;
   }else{
@@ -2505,7 +2505,7 @@ GALGAS_syntaxInstructionList GALGAS_parseWhenInstruction::readProperty_mWhenInst
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_parseWhenInstruction::readProperty_mEndOfWhenInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_parseWhenInstruction::readProperty_mEndOfWhenInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -2517,7 +2517,7 @@ GALGAS_location GALGAS_parseWhenInstruction::readProperty_mEndOfWhenInstructionL
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_syntaxInstructionList GALGAS_parseWhenInstruction::readProperty_mElseInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_syntaxInstructionList GALGAS_parseWhenInstruction::readProperty_mElseInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_syntaxInstructionList () ;
   }else{
@@ -2529,7 +2529,7 @@ GALGAS_syntaxInstructionList GALGAS_parseWhenInstruction::readProperty_mElseInst
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_parseWhenInstruction::readProperty_mEndOfElseInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_parseWhenInstruction::readProperty_mEndOfElseInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -2823,7 +2823,7 @@ GALGAS_semanticExpressionAST GALGAS_syntaxSendInstruction::getter_mExpression (U
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_syntaxSendInstruction::readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_syntaxSendInstruction::readProperty_mExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -3237,7 +3237,7 @@ void GALGAS_abstractSyntaxInstructionForGrammarAnalysis::setter_setMStartLocatio
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_abstractSyntaxInstructionForGrammarAnalysis::readProperty_mStartLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_abstractSyntaxInstructionForGrammarAnalysis::readProperty_mStartLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -5550,7 +5550,7 @@ void GALGAS_selectInstructionForGrammarAnalysis::setter_setMAddedNonTerminalSymb
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_branchListForGrammarAnalysis GALGAS_selectInstructionForGrammarAnalysis::readProperty_mSelectBranchList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_branchListForGrammarAnalysis GALGAS_selectInstructionForGrammarAnalysis::readProperty_mSelectBranchList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_branchListForGrammarAnalysis () ;
   }else{
@@ -5562,7 +5562,7 @@ GALGAS_branchListForGrammarAnalysis GALGAS_selectInstructionForGrammarAnalysis::
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_selectInstructionForGrammarAnalysis::readProperty_mAddedNonTerminalSymbolIndex (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_selectInstructionForGrammarAnalysis::readProperty_mAddedNonTerminalSymbolIndex (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_uint () ;
   }else{
@@ -5887,7 +5887,7 @@ void GALGAS_repeatInstructionForGrammarAnalysis::setter_setMAddedNonTerminalSymb
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_branchListForGrammarAnalysis GALGAS_repeatInstructionForGrammarAnalysis::readProperty_mRepeatBranchList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_branchListForGrammarAnalysis GALGAS_repeatInstructionForGrammarAnalysis::readProperty_mRepeatBranchList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_branchListForGrammarAnalysis () ;
   }else{
@@ -5899,7 +5899,7 @@ GALGAS_branchListForGrammarAnalysis GALGAS_repeatInstructionForGrammarAnalysis::
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_repeatInstructionForGrammarAnalysis::readProperty_mAddedNonTerminalSymbolIndex (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_repeatInstructionForGrammarAnalysis::readProperty_mAddedNonTerminalSymbolIndex (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_uint () ;
   }else{

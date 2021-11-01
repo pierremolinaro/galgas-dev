@@ -9,7 +9,7 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 %
 for () in PROPERTY_LIST do
   %  public: GALGAS_%![mPropertyTypeEntry identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n%
-  %  public: inline GALGAS_%![mPropertyTypeEntry identifierRepresentation]% readProperty_%![mPropertyName identifierRepresentation]% (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {\n%
+  %  public: inline GALGAS_%![mPropertyTypeEntry identifierRepresentation]% readProperty_%![mPropertyName identifierRepresentation]% (void) const {\n%
   %    return mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   %  }\n\n%
 end

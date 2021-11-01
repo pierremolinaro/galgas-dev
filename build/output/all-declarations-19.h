@@ -17,117 +17,117 @@
 class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_uint mProperty_mSequenceNumber ;
-  public: inline GALGAS_uint readProperty_mSequenceNumber (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_uint readProperty_mSequenceNumber (void) const {
     return mProperty_mSequenceNumber ;
   }
 
   public: GALGAS_string mProperty_mMainGroupReference ;
-  public: inline GALGAS_string readProperty_mMainGroupReference (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_string readProperty_mMainGroupReference (void) const {
     return mProperty_mMainGroupReference ;
   }
 
   public: GALGAS_stringlist mProperty_mMainGroupChildrenRefs ;
-  public: inline GALGAS_stringlist readProperty_mMainGroupChildrenRefs (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_stringlist readProperty_mMainGroupChildrenRefs (void) const {
     return mProperty_mMainGroupChildrenRefs ;
   }
 
   public: GALGAS_string mProperty_mProjectObjectReference ;
-  public: inline GALGAS_string readProperty_mProjectObjectReference (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_string readProperty_mProjectObjectReference (void) const {
     return mProperty_mProjectObjectReference ;
   }
 
   public: GALGAS_XCodeGroupList mProperty_mGroupList ;
-  public: inline GALGAS_XCodeGroupList readProperty_mGroupList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_XCodeGroupList readProperty_mGroupList (void) const {
     return mProperty_mGroupList ;
   }
 
   public: GALGAS_XCodeToolTargetList mProperty_mToolTargetList ;
-  public: inline GALGAS_XCodeToolTargetList readProperty_mToolTargetList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_XCodeToolTargetList readProperty_mToolTargetList (void) const {
     return mProperty_mToolTargetList ;
   }
 
   public: GALGAS_XCodeAppTargetList mProperty_mAppTargetList ;
-  public: inline GALGAS_XCodeAppTargetList readProperty_mAppTargetList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_XCodeAppTargetList readProperty_mAppTargetList (void) const {
     return mProperty_mAppTargetList ;
   }
 
   public: GALGAS__32_stringlist mProperty_mCFileList ;
-  public: inline GALGAS__32_stringlist readProperty_mCFileList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS__32_stringlist readProperty_mCFileList (void) const {
     return mProperty_mCFileList ;
   }
 
   public: GALGAS__32_stringlist mProperty_mCppFileList ;
-  public: inline GALGAS__32_stringlist readProperty_mCppFileList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS__32_stringlist readProperty_mCppFileList (void) const {
     return mProperty_mCppFileList ;
   }
 
   public: GALGAS__32_stringlist mProperty_m_5F_M_5F_FileList ;
-  public: inline GALGAS__32_stringlist readProperty_m_5F_M_5F_FileList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS__32_stringlist readProperty_m_5F_M_5F_FileList (void) const {
     return mProperty_m_5F_M_5F_FileList ;
   }
 
   public: GALGAS__32_stringlist mProperty_m_5F_MM_5F_FileList ;
-  public: inline GALGAS__32_stringlist readProperty_m_5F_MM_5F_FileList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS__32_stringlist readProperty_m_5F_MM_5F_FileList (void) const {
     return mProperty_m_5F_MM_5F_FileList ;
   }
 
   public: GALGAS__32_stringlist mProperty_mFrameworkFileList ;
-  public: inline GALGAS__32_stringlist readProperty_mFrameworkFileList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS__32_stringlist readProperty_mFrameworkFileList (void) const {
     return mProperty_mFrameworkFileList ;
   }
 
   public: GALGAS__32_stringlist mProperty_mHeaderFileList ;
-  public: inline GALGAS__32_stringlist readProperty_mHeaderFileList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS__32_stringlist readProperty_mHeaderFileList (void) const {
     return mProperty_mHeaderFileList ;
   }
 
   public: GALGAS_BuildFileList mProperty_mBuildFileList ;
-  public: inline GALGAS_BuildFileList readProperty_mBuildFileList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_BuildFileList readProperty_mBuildFileList (void) const {
     return mProperty_mBuildFileList ;
   }
 
   public: GALGAS_string mProperty_mDefaultConfigurationRef ;
-  public: inline GALGAS_string readProperty_mDefaultConfigurationRef (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_string readProperty_mDefaultConfigurationRef (void) const {
     return mProperty_mDefaultConfigurationRef ;
   }
 
   public: GALGAS_stringlist mProperty_mDefaultConfigurationSettingList ;
-  public: inline GALGAS_stringlist readProperty_mDefaultConfigurationSettingList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_stringlist readProperty_mDefaultConfigurationSettingList (void) const {
     return mProperty_mDefaultConfigurationSettingList ;
   }
 
   public: GALGAS_string mProperty_mProjectBuildConfigurationRef ;
-  public: inline GALGAS_string readProperty_mProjectBuildConfigurationRef (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_string readProperty_mProjectBuildConfigurationRef (void) const {
     return mProperty_mProjectBuildConfigurationRef ;
   }
 
   public: GALGAS__32_stringlist mProperty_mInfoPlistFileList ;
-  public: inline GALGAS__32_stringlist readProperty_mInfoPlistFileList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS__32_stringlist readProperty_mInfoPlistFileList (void) const {
     return mProperty_mInfoPlistFileList ;
   }
 
   public: GALGAS__32_stringlist mProperty_mXIB_5F_fileList ;
-  public: inline GALGAS__32_stringlist readProperty_mXIB_5F_fileList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS__32_stringlist readProperty_mXIB_5F_fileList (void) const {
     return mProperty_mXIB_5F_fileList ;
   }
 
   public: GALGAS__32_stringlist mProperty_mTIFF_5F_fileList ;
-  public: inline GALGAS__32_stringlist readProperty_mTIFF_5F_fileList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS__32_stringlist readProperty_mTIFF_5F_fileList (void) const {
     return mProperty_mTIFF_5F_fileList ;
   }
 
   public: GALGAS__32_stringlist mProperty_mICNS_5F_fileList ;
-  public: inline GALGAS__32_stringlist readProperty_mICNS_5F_fileList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS__32_stringlist readProperty_mICNS_5F_fileList (void) const {
     return mProperty_mICNS_5F_fileList ;
   }
 
   public: GALGAS_string mProperty_mApplicationBundleName ;
-  public: inline GALGAS_string readProperty_mApplicationBundleName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_string readProperty_mApplicationBundleName (void) const {
     return mProperty_mApplicationBundleName ;
   }
 
   public: GALGAS_string mProperty_mProjectName ;
-  public: inline GALGAS_string readProperty_mProjectName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_string readProperty_mProjectName (void) const {
     return mProperty_mProjectName ;
   }
 

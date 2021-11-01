@@ -5864,7 +5864,7 @@ GALGAS_templateExpressionAST GALGAS_templateAndOperationAST::getter_mRightExpres
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateAndOperationAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateAndOperationAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -5876,7 +5876,7 @@ GALGAS_location GALGAS_templateAndOperationAST::readProperty_mOperatorLocation (
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateAndOperationAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateAndOperationAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -5888,7 +5888,7 @@ GALGAS_templateExpressionAST GALGAS_templateAndOperationAST::readProperty_mLeftE
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateAndOperationAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateAndOperationAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -6195,7 +6195,7 @@ GALGAS_templateExpressionAST GALGAS_templateOrOperationAST::getter_mRightExpress
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateOrOperationAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateOrOperationAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -6207,7 +6207,7 @@ GALGAS_location GALGAS_templateOrOperationAST::readProperty_mOperatorLocation (C
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateOrOperationAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateOrOperationAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -6219,7 +6219,7 @@ GALGAS_templateExpressionAST GALGAS_templateOrOperationAST::readProperty_mLeftEx
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateOrOperationAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateOrOperationAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -6526,7 +6526,7 @@ GALGAS_templateExpressionAST GALGAS_templateXorOperationAST::getter_mRightExpres
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateXorOperationAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateXorOperationAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -6538,7 +6538,7 @@ GALGAS_location GALGAS_templateXorOperationAST::readProperty_mOperatorLocation (
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateXorOperationAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateXorOperationAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -6550,7 +6550,7 @@ GALGAS_templateExpressionAST GALGAS_templateXorOperationAST::readProperty_mLeftE
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateXorOperationAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateXorOperationAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -6832,7 +6832,7 @@ GALGAS_location GALGAS_templateTrueBoolAST::getter_mLocation (UNUSED_LOCATION_AR
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateTrueBoolAST::readProperty_mLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateTrueBoolAST::readProperty_mLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -7106,7 +7106,7 @@ GALGAS_location GALGAS_templateFalseBoolAST::getter_mLocation (UNUSED_LOCATION_A
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateFalseBoolAST::readProperty_mLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateFalseBoolAST::readProperty_mLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -7389,7 +7389,7 @@ GALGAS_templateExpressionAST GALGAS_templateNotOperatorAST::getter_mExpression (
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateNotOperatorAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateNotOperatorAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -7401,7 +7401,7 @@ GALGAS_location GALGAS_templateNotOperatorAST::readProperty_mOperatorLocation (C
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateNotOperatorAST::readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateNotOperatorAST::readProperty_mExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -7688,7 +7688,7 @@ GALGAS_templateExpressionAST GALGAS_templateLogicalNegateAST::getter_mExpression
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateLogicalNegateAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateLogicalNegateAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -7700,7 +7700,7 @@ GALGAS_location GALGAS_templateLogicalNegateAST::readProperty_mOperatorLocation 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateLogicalNegateAST::readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateLogicalNegateAST::readProperty_mExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -8148,7 +8148,7 @@ GALGAS_templateExpressionAST GALGAS_templateAddOperationAST::getter_mRightExpres
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateAddOperationAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateAddOperationAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -8160,7 +8160,7 @@ GALGAS_location GALGAS_templateAddOperationAST::readProperty_mOperatorLocation (
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateAddOperationAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateAddOperationAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -8172,7 +8172,7 @@ GALGAS_templateExpressionAST GALGAS_templateAddOperationAST::readProperty_mLeftE
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateAddOperationAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateAddOperationAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -8479,7 +8479,7 @@ GALGAS_templateExpressionAST GALGAS_templateSubOperationAST::getter_mRightExpres
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateSubOperationAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateSubOperationAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -8491,7 +8491,7 @@ GALGAS_location GALGAS_templateSubOperationAST::readProperty_mOperatorLocation (
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateSubOperationAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateSubOperationAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -8503,7 +8503,7 @@ GALGAS_templateExpressionAST GALGAS_templateSubOperationAST::readProperty_mLeftE
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateSubOperationAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateSubOperationAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -8810,7 +8810,7 @@ GALGAS_templateExpressionAST GALGAS_templateMultiplyOperationAST::getter_mRightE
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateMultiplyOperationAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateMultiplyOperationAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -8822,7 +8822,7 @@ GALGAS_location GALGAS_templateMultiplyOperationAST::readProperty_mOperatorLocat
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateMultiplyOperationAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateMultiplyOperationAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -8834,7 +8834,7 @@ GALGAS_templateExpressionAST GALGAS_templateMultiplyOperationAST::readProperty_m
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateMultiplyOperationAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateMultiplyOperationAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -9141,7 +9141,7 @@ GALGAS_templateExpressionAST GALGAS_templateDivideOperationAST::getter_mRightExp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateDivideOperationAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateDivideOperationAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -9153,7 +9153,7 @@ GALGAS_location GALGAS_templateDivideOperationAST::readProperty_mOperatorLocatio
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateDivideOperationAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateDivideOperationAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -9165,7 +9165,7 @@ GALGAS_templateExpressionAST GALGAS_templateDivideOperationAST::readProperty_mLe
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateDivideOperationAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateDivideOperationAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -9472,7 +9472,7 @@ GALGAS_templateExpressionAST GALGAS_templateModuloOperationAST::getter_mRightExp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateModuloOperationAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateModuloOperationAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -9484,7 +9484,7 @@ GALGAS_location GALGAS_templateModuloOperationAST::readProperty_mOperatorLocatio
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateModuloOperationAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateModuloOperationAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -9496,7 +9496,7 @@ GALGAS_templateExpressionAST GALGAS_templateModuloOperationAST::readProperty_mLe
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateModuloOperationAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateModuloOperationAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -9787,7 +9787,7 @@ GALGAS_templateExpressionAST GALGAS_templateUnaryMinusOperationAST::getter_mExpr
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateUnaryMinusOperationAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateUnaryMinusOperationAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -9799,7 +9799,7 @@ GALGAS_location GALGAS_templateUnaryMinusOperationAST::readProperty_mOperatorLoc
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateUnaryMinusOperationAST::readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateUnaryMinusOperationAST::readProperty_mExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -10102,7 +10102,7 @@ GALGAS_templateExpressionAST GALGAS_templateEqualTestAST::getter_mRightExpressio
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateEqualTestAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateEqualTestAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -10114,7 +10114,7 @@ GALGAS_location GALGAS_templateEqualTestAST::readProperty_mOperatorLocation (C_C
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateEqualTestAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateEqualTestAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -10126,7 +10126,7 @@ GALGAS_templateExpressionAST GALGAS_templateEqualTestAST::readProperty_mLeftExpr
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateEqualTestAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateEqualTestAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -10433,7 +10433,7 @@ GALGAS_templateExpressionAST GALGAS_templateNonEqualTestAST::getter_mRightExpres
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateNonEqualTestAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateNonEqualTestAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -10445,7 +10445,7 @@ GALGAS_location GALGAS_templateNonEqualTestAST::readProperty_mOperatorLocation (
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateNonEqualTestAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateNonEqualTestAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -10457,7 +10457,7 @@ GALGAS_templateExpressionAST GALGAS_templateNonEqualTestAST::readProperty_mLeftE
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateNonEqualTestAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateNonEqualTestAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -10764,7 +10764,7 @@ GALGAS_templateExpressionAST GALGAS_templateStrictInfTestAST::getter_mRightExpre
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateStrictInfTestAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateStrictInfTestAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -10776,7 +10776,7 @@ GALGAS_location GALGAS_templateStrictInfTestAST::readProperty_mOperatorLocation 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateStrictInfTestAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateStrictInfTestAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -10788,7 +10788,7 @@ GALGAS_templateExpressionAST GALGAS_templateStrictInfTestAST::readProperty_mLeft
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateStrictInfTestAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateStrictInfTestAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -11095,7 +11095,7 @@ GALGAS_templateExpressionAST GALGAS_templateInfOrEqualTestAST::getter_mRightExpr
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateInfOrEqualTestAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateInfOrEqualTestAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -11107,7 +11107,7 @@ GALGAS_location GALGAS_templateInfOrEqualTestAST::readProperty_mOperatorLocation
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateInfOrEqualTestAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateInfOrEqualTestAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -11119,7 +11119,7 @@ GALGAS_templateExpressionAST GALGAS_templateInfOrEqualTestAST::readProperty_mLef
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateInfOrEqualTestAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateInfOrEqualTestAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -11426,7 +11426,7 @@ GALGAS_templateExpressionAST GALGAS_templateStrictSupTestAST::getter_mRightExpre
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateStrictSupTestAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateStrictSupTestAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -11438,7 +11438,7 @@ GALGAS_location GALGAS_templateStrictSupTestAST::readProperty_mOperatorLocation 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateStrictSupTestAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateStrictSupTestAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -11450,7 +11450,7 @@ GALGAS_templateExpressionAST GALGAS_templateStrictSupTestAST::readProperty_mLeft
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateStrictSupTestAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateStrictSupTestAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -11757,7 +11757,7 @@ GALGAS_templateExpressionAST GALGAS_templateSupOrEqualTestAST::getter_mRightExpr
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateSupOrEqualTestAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateSupOrEqualTestAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -11769,7 +11769,7 @@ GALGAS_location GALGAS_templateSupOrEqualTestAST::readProperty_mOperatorLocation
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateSupOrEqualTestAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateSupOrEqualTestAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -11781,7 +11781,7 @@ GALGAS_templateExpressionAST GALGAS_templateSupOrEqualTestAST::readProperty_mLef
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateSupOrEqualTestAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateSupOrEqualTestAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -12088,7 +12088,7 @@ GALGAS_templateExpressionAST GALGAS_templateLeftShiftOperationAST::getter_mRight
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateLeftShiftOperationAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateLeftShiftOperationAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -12100,7 +12100,7 @@ GALGAS_location GALGAS_templateLeftShiftOperationAST::readProperty_mOperatorLoca
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateLeftShiftOperationAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateLeftShiftOperationAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -12112,7 +12112,7 @@ GALGAS_templateExpressionAST GALGAS_templateLeftShiftOperationAST::readProperty_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateLeftShiftOperationAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateLeftShiftOperationAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -12419,7 +12419,7 @@ GALGAS_templateExpressionAST GALGAS_templateRightShiftOperationAST::getter_mRigh
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateRightShiftOperationAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateRightShiftOperationAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -12431,7 +12431,7 @@ GALGAS_location GALGAS_templateRightShiftOperationAST::readProperty_mOperatorLoc
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateRightShiftOperationAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateRightShiftOperationAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -12443,7 +12443,7 @@ GALGAS_templateExpressionAST GALGAS_templateRightShiftOperationAST::readProperty
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateRightShiftOperationAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateRightShiftOperationAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -12734,7 +12734,7 @@ GALGAS_location GALGAS_templateInstructionExpressionAST::getter_mLocation (UNUSE
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateInstructionExpressionAST::readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateInstructionExpressionAST::readProperty_mExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -12746,7 +12746,7 @@ GALGAS_templateExpressionAST GALGAS_templateInstructionExpressionAST::readProper
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateInstructionExpressionAST::readProperty_mLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateInstructionExpressionAST::readProperty_mLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -13049,7 +13049,7 @@ GALGAS_templateInstructionListAST GALGAS_templateBlockInstructionAST::getter_mBl
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateBlockInstructionAST::readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateBlockInstructionAST::readProperty_mExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -13061,7 +13061,7 @@ GALGAS_templateExpressionAST GALGAS_templateBlockInstructionAST::readProperty_mE
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateBlockInstructionAST::readProperty_mLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateBlockInstructionAST::readProperty_mLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -13073,7 +13073,7 @@ GALGAS_location GALGAS_templateBlockInstructionAST::readProperty_mLocation (C_Co
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionListAST GALGAS_templateBlockInstructionAST::readProperty_mBlockInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionListAST GALGAS_templateBlockInstructionAST::readProperty_mBlockInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateInstructionListAST () ;
   }else{
@@ -14326,7 +14326,7 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionIfAST::getter_mElseI
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfAST::readProperty_mTemplateInstructionIfBranchList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfAST::readProperty_mTemplateInstructionIfBranchList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateInstructionIfBranchListAST () ;
   }else{
@@ -14338,7 +14338,7 @@ GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfAST::readP
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionListAST GALGAS_templateInstructionIfAST::readProperty_mElseInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionListAST GALGAS_templateInstructionIfAST::readProperty_mElseInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateInstructionListAST () ;
   }else{

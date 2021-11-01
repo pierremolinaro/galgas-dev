@@ -83,7 +83,7 @@ class GALGAS_abstractLexicalRoutineActualArgumentAST : public AC_GALGAS_referenc
   public: GALGAS_abstractLexicalRoutineActualArgumentAST (const class cPtr_abstractLexicalRoutineActualArgumentAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mActualPassingModeLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mActualPassingModeLocation (void) const ;
 
 //-- Start of generic part --*
 
@@ -343,7 +343,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineCallA
 class GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_abstractLexicalRoutineActualArgumentAST mProperty_mLexicalRoutineActualArgument ;
-  public: inline GALGAS_abstractLexicalRoutineActualArgumentAST readProperty_mLexicalRoutineActualArgument (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_abstractLexicalRoutineActualArgumentAST readProperty_mLexicalRoutineActualArgument (void) const {
     return mProperty_mLexicalRoutineActualArgument ;
   }
 
@@ -555,7 +555,7 @@ class GALGAS_lexicalFormalInputArgumentAST : public GALGAS_abstractLexicalRoutin
   public: GALGAS_lexicalFormalInputArgumentAST (const class cPtr_lexicalFormalInputArgumentAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST readProperty_mRoutineOrFunctionFormalInputArgument (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST readProperty_mRoutineOrFunctionFormalInputArgument (void) const ;
 
 //-- Start of generic part --*
 
@@ -824,7 +824,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionCall
 class GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST mProperty_mLexicalActualInputArgument ;
-  public: inline GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST readProperty_mLexicalActualInputArgument (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST readProperty_mLexicalActualInputArgument (void) const {
     return mProperty_mLexicalActualInputArgument ;
   }
 
@@ -909,7 +909,7 @@ class GALGAS_lexicalCurrentCharacterInputArgumentAST : public GALGAS_lexicalRout
   public: GALGAS_lexicalCurrentCharacterInputArgumentAST (const class cPtr_lexicalCurrentCharacterInputArgumentAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mLocation (void) const ;
 
 //-- Start of generic part --*
 
@@ -1466,17 +1466,17 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExternRoutin
 class GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lexicalArgumentModeAST mProperty_mPassingMode ;
-  public: inline GALGAS_lexicalArgumentModeAST readProperty_mPassingMode (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalArgumentModeAST readProperty_mPassingMode (void) const {
     return mProperty_mPassingMode ;
   }
 
   public: GALGAS_lstring mProperty_mLexicalTypeName ;
-  public: inline GALGAS_lstring readProperty_mLexicalTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mLexicalTypeName (void) const {
     return mProperty_mLexicalTypeName ;
   }
 
   public: GALGAS_lstring mProperty_mFormalArgumentName ;
-  public: inline GALGAS_lstring readProperty_mFormalArgumentName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mFormalArgumentName (void) const {
     return mProperty_mFormalArgumentName ;
   }
 
@@ -1736,17 +1736,17 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externRoutineListAS
 class GALGAS_externRoutineListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_mRoutineName ;
-  public: inline GALGAS_lstring readProperty_mRoutineName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mRoutineName (void) const {
     return mProperty_mRoutineName ;
   }
 
   public: GALGAS_lexicalExternRoutineFormalArgumentListAST mProperty_mLexicalRoutineFormalArgumentList ;
-  public: inline GALGAS_lexicalExternRoutineFormalArgumentListAST readProperty_mLexicalRoutineFormalArgumentList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalExternRoutineFormalArgumentListAST readProperty_mLexicalRoutineFormalArgumentList (void) const {
     return mProperty_mLexicalRoutineFormalArgumentList ;
   }
 
   public: GALGAS_stringlist mProperty_mErrorMessageList ;
-  public: inline GALGAS_stringlist readProperty_mErrorMessageList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_stringlist readProperty_mErrorMessageList (void) const {
     return mProperty_mErrorMessageList ;
   }
 
@@ -1990,12 +1990,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExternFuncti
 class GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_mLexicalTypeName ;
-  public: inline GALGAS_lstring readProperty_mLexicalTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mLexicalTypeName (void) const {
     return mProperty_mLexicalTypeName ;
   }
 
   public: GALGAS_lstring mProperty_mFormalArgumentName ;
-  public: inline GALGAS_lstring readProperty_mFormalArgumentName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mFormalArgumentName (void) const {
     return mProperty_mFormalArgumentName ;
   }
 
@@ -2250,17 +2250,17 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externFunctionListA
 class GALGAS_externFunctionListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_mFunctionName ;
-  public: inline GALGAS_lstring readProperty_mFunctionName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mFunctionName (void) const {
     return mProperty_mFunctionName ;
   }
 
   public: GALGAS_lexicalExternFunctionFormalArgumentListAST mProperty_mLexicalFunctionFormalArgumentList ;
-  public: inline GALGAS_lexicalExternFunctionFormalArgumentListAST readProperty_mLexicalFunctionFormalArgumentList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalExternFunctionFormalArgumentListAST readProperty_mLexicalFunctionFormalArgumentList (void) const {
     return mProperty_mLexicalFunctionFormalArgumentList ;
   }
 
   public: GALGAS_lstring mProperty_mReturnedTypeName ;
-  public: inline GALGAS_lstring readProperty_mReturnedTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mReturnedTypeName (void) const {
     return mProperty_mReturnedTypeName ;
   }
 
@@ -2504,12 +2504,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_indexingListAST ;
 class GALGAS_indexingListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_mIndexName ;
-  public: inline GALGAS_lstring readProperty_mIndexName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mIndexName (void) const {
     return mProperty_mIndexName ;
   }
 
   public: GALGAS_lstring mProperty_mIndexComment ;
-  public: inline GALGAS_lstring readProperty_mIndexComment (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mIndexComment (void) const {
     return mProperty_mIndexComment ;
   }
 
@@ -2819,12 +2819,12 @@ class cPtr_lexicalFunctionExpressionAST : public acStrongPtr_class {
 class GALGAS_lexicalFunctionListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_mFunctionName ;
-  public: inline GALGAS_lstring readProperty_mFunctionName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mFunctionName (void) const {
     return mProperty_mFunctionName ;
   }
 
   public: GALGAS_lexicalFunctionExpressionAST mProperty_mLexicalExpression ;
-  public: inline GALGAS_lexicalFunctionExpressionAST readProperty_mLexicalExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalFunctionExpressionAST readProperty_mLexicalExpression (void) const {
     return mProperty_mLexicalExpression ;
   }
 
@@ -3191,17 +3191,17 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSentValueLis
 class GALGAS_lexicalSentValueList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_mLexicalFormalSelector ;
-  public: inline GALGAS_lstring readProperty_mLexicalFormalSelector (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mLexicalFormalSelector (void) const {
     return mProperty_mLexicalFormalSelector ;
   }
 
   public: GALGAS_string mProperty_mLexicalAttributeName ;
-  public: inline GALGAS_string readProperty_mLexicalAttributeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_string readProperty_mLexicalAttributeName (void) const {
     return mProperty_mLexicalAttributeName ;
   }
 
   public: GALGAS_lexicalTypeEnum mProperty_mLexicalType ;
-  public: inline GALGAS_lexicalTypeEnum readProperty_mLexicalType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalTypeEnum readProperty_mLexicalType (void) const {
     return mProperty_mLexicalType ;
   }
 
@@ -3426,12 +3426,12 @@ class cMapElement_terminalMap : public cMapElement {
 class GALGAS_terminalMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
-  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_lkey (void) const {
     return mProperty_lkey ;
   }
 
   public: GALGAS_lexicalSentValueList mProperty_mSentAttributeList ;
-  public: inline GALGAS_lexicalSentValueList readProperty_mSentAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalSentValueList readProperty_mSentAttributeList (void) const {
     return mProperty_mSentAttributeList ;
   }
 
@@ -3651,12 +3651,12 @@ class cMapElement_lexicalTypeMap : public cMapElement {
 class GALGAS_lexicalTypeMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
-  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_lkey (void) const {
     return mProperty_lkey ;
   }
 
   public: GALGAS_lexicalTypeEnum mProperty_mLexicalType ;
-  public: inline GALGAS_lexicalTypeEnum readProperty_mLexicalType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalTypeEnum readProperty_mLexicalType (void) const {
     return mProperty_mLexicalType ;
   }
 
@@ -3873,12 +3873,12 @@ class cMapElement_lexicalAttributeMap : public cMapElement {
 class GALGAS_lexicalAttributeMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
-  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_lkey (void) const {
     return mProperty_lkey ;
   }
 
   public: GALGAS_lexicalTypeEnum mProperty_mLexicalType ;
-  public: inline GALGAS_lexicalTypeEnum readProperty_mLexicalType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalTypeEnum readProperty_mLexicalType (void) const {
     return mProperty_mLexicalType ;
   }
 
@@ -4187,32 +4187,32 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalList ;
 class GALGAS_terminalList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_mTerminalName ;
-  public: inline GALGAS_lstring readProperty_mTerminalName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mTerminalName (void) const {
     return mProperty_mTerminalName ;
   }
 
   public: GALGAS_lexicalSentValueList mProperty_mSentAttributeList ;
-  public: inline GALGAS_lexicalSentValueList readProperty_mSentAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalSentValueList readProperty_mSentAttributeList (void) const {
     return mProperty_mSentAttributeList ;
   }
 
   public: GALGAS_string mProperty_mSyntaxErrorMessage ;
-  public: inline GALGAS_string readProperty_mSyntaxErrorMessage (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_string readProperty_mSyntaxErrorMessage (void) const {
     return mProperty_mSyntaxErrorMessage ;
   }
 
   public: GALGAS_bool mProperty_mIsEndOfTemplateMark ;
-  public: inline GALGAS_bool readProperty_mIsEndOfTemplateMark (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_bool readProperty_mIsEndOfTemplateMark (void) const {
     return mProperty_mIsEndOfTemplateMark ;
   }
 
   public: GALGAS_bool mProperty_mAtomicSelection ;
-  public: inline GALGAS_bool readProperty_mAtomicSelection (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_bool readProperty_mAtomicSelection (void) const {
     return mProperty_mAtomicSelection ;
   }
 
   public: GALGAS_uint mProperty_mStyleIndex ;
-  public: inline GALGAS_uint readProperty_mStyleIndex (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_uint readProperty_mStyleIndex (void) const {
     return mProperty_mStyleIndex ;
   }
 
@@ -4480,17 +4480,17 @@ class cMapElement_lexicalExplicitTokenListMap : public cMapElement {
 class GALGAS_lexicalExplicitTokenListMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
-  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_lkey (void) const {
     return mProperty_lkey ;
   }
 
   public: GALGAS_lstring mProperty_mTerminal ;
-  public: inline GALGAS_lstring readProperty_mTerminal (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mTerminal (void) const {
     return mProperty_mTerminal ;
   }
 
   public: GALGAS_lstringlist mProperty_mAttributeList ;
-  public: inline GALGAS_lstringlist readProperty_mAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstringlist readProperty_mAttributeList (void) const {
     return mProperty_mAttributeList ;
   }
 
@@ -4681,17 +4681,17 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_tokenSortedlist ;
 class GALGAS_tokenSortedlist_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_uint mProperty_mLength ;
-  public: inline GALGAS_uint readProperty_mLength (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_uint readProperty_mLength (void) const {
     return mProperty_mLength ;
   }
 
   public: GALGAS_string mProperty_mName ;
-  public: inline GALGAS_string readProperty_mName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_string readProperty_mName (void) const {
     return mProperty_mName ;
   }
 
   public: GALGAS_string mProperty_mTerminalName ;
-  public: inline GALGAS_string readProperty_mTerminalName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_string readProperty_mTerminalName (void) const {
     return mProperty_mTerminalName ;
   }
 
@@ -4951,22 +4951,22 @@ class cMapElement_lexicalExplicitTokenListMapMap : public cMapElement {
 class GALGAS_lexicalExplicitTokenListMapMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
-  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_lkey (void) const {
     return mProperty_lkey ;
   }
 
   public: GALGAS_lexicalExplicitTokenListMap mProperty_mExplicitTokenListMap ;
-  public: inline GALGAS_lexicalExplicitTokenListMap readProperty_mExplicitTokenListMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalExplicitTokenListMap readProperty_mExplicitTokenListMap (void) const {
     return mProperty_mExplicitTokenListMap ;
   }
 
   public: GALGAS_tokenSortedlist mProperty_mTokenSortedList ;
-  public: inline GALGAS_tokenSortedlist readProperty_mTokenSortedList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_tokenSortedlist readProperty_mTokenSortedList (void) const {
     return mProperty_mTokenSortedList ;
   }
 
   public: GALGAS_bool mProperty_mShouldBeGenerated ;
-  public: inline GALGAS_bool readProperty_mShouldBeGenerated (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_bool readProperty_mShouldBeGenerated (void) const {
     return mProperty_mShouldBeGenerated ;
   }
 
@@ -5218,17 +5218,17 @@ class cMapElement_lexicalMessageMap : public cMapElement {
 class GALGAS_lexicalMessageMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
-  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_lkey (void) const {
     return mProperty_lkey ;
   }
 
   public: GALGAS_lstring mProperty_mLexicalMessage ;
-  public: inline GALGAS_lstring readProperty_mLexicalMessage (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mLexicalMessage (void) const {
     return mProperty_mLexicalMessage ;
   }
 
   public: GALGAS_bool mProperty_mMessageIsUsed ;
-  public: inline GALGAS_bool readProperty_mMessageIsUsed (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_bool readProperty_mMessageIsUsed (void) const {
     return mProperty_mMessageIsUsed ;
   }
 
@@ -5491,17 +5491,17 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineForma
 class GALGAS_lexicalRoutineFormalArgumentList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lexicalArgumentModeAST mProperty_mLexicalFormalArgumentMode ;
-  public: inline GALGAS_lexicalArgumentModeAST readProperty_mLexicalFormalArgumentMode (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalArgumentModeAST readProperty_mLexicalFormalArgumentMode (void) const {
     return mProperty_mLexicalFormalArgumentMode ;
   }
 
   public: GALGAS_lexicalTypeEnum mProperty_mLexicalFormalArgumentType ;
-  public: inline GALGAS_lexicalTypeEnum readProperty_mLexicalFormalArgumentType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalTypeEnum readProperty_mLexicalFormalArgumentType (void) const {
     return mProperty_mLexicalFormalArgumentType ;
   }
 
   public: GALGAS_string mProperty_mArgumentNameForComment ;
-  public: inline GALGAS_string readProperty_mArgumentNameForComment (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_string readProperty_mArgumentNameForComment (void) const {
     return mProperty_mArgumentNameForComment ;
   }
 
@@ -5758,22 +5758,22 @@ class cMapElement_lexicalRoutineMap : public cMapElement {
 class GALGAS_lexicalRoutineMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
-  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_lkey (void) const {
     return mProperty_lkey ;
   }
 
   public: GALGAS_lexicalRoutineFormalArgumentList mProperty_mLexicalRoutineFormalArgumentList ;
-  public: inline GALGAS_lexicalRoutineFormalArgumentList readProperty_mLexicalRoutineFormalArgumentList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalRoutineFormalArgumentList readProperty_mLexicalRoutineFormalArgumentList (void) const {
     return mProperty_mLexicalRoutineFormalArgumentList ;
   }
 
   public: GALGAS_stringlist mProperty_mErrorMessageList ;
-  public: inline GALGAS_stringlist readProperty_mErrorMessageList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_stringlist readProperty_mErrorMessageList (void) const {
     return mProperty_mErrorMessageList ;
   }
 
   public: GALGAS_bool mProperty_mIsExtern ;
-  public: inline GALGAS_bool readProperty_mIsExtern (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_bool readProperty_mIsExtern (void) const {
     return mProperty_mIsExtern ;
   }
 
@@ -6025,12 +6025,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionForm
 class GALGAS_lexicalFunctionFormalArgumentList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lexicalTypeEnum mProperty_mLexicalType ;
-  public: inline GALGAS_lexicalTypeEnum readProperty_mLexicalType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalTypeEnum readProperty_mLexicalType (void) const {
     return mProperty_mLexicalType ;
   }
 
   public: GALGAS_string mProperty_mArgumentNameForComment ;
-  public: inline GALGAS_string readProperty_mArgumentNameForComment (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_string readProperty_mArgumentNameForComment (void) const {
     return mProperty_mArgumentNameForComment ;
   }
 
@@ -6295,27 +6295,27 @@ class cMapElement_lexicalFunctionMap : public cMapElement {
 class GALGAS_lexicalFunctionMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
-  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_lkey (void) const {
     return mProperty_lkey ;
   }
 
   public: GALGAS_lexicalFunctionFormalArgumentList mProperty_mLexicalTypeList ;
-  public: inline GALGAS_lexicalFunctionFormalArgumentList readProperty_mLexicalTypeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalFunctionFormalArgumentList readProperty_mLexicalTypeList (void) const {
     return mProperty_mLexicalTypeList ;
   }
 
   public: GALGAS_lexicalTypeEnum mProperty_mReturnedLexicalType ;
-  public: inline GALGAS_lexicalTypeEnum readProperty_mReturnedLexicalType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalTypeEnum readProperty_mReturnedLexicalType (void) const {
     return mProperty_mReturnedLexicalType ;
   }
 
   public: GALGAS_string mProperty_mReplacementFunctionName ;
-  public: inline GALGAS_string readProperty_mReplacementFunctionName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_string readProperty_mReplacementFunctionName (void) const {
     return mProperty_mReplacementFunctionName ;
   }
 
   public: GALGAS_bool mProperty_mIsExtern ;
-  public: inline GALGAS_bool readProperty_mIsExtern (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_bool readProperty_mIsExtern (void) const {
     return mProperty_mIsExtern ;
   }
 
@@ -6591,17 +6591,17 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateDelimitorLi
 class GALGAS_templateDelimitorList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_mStartString ;
-  public: inline GALGAS_lstring readProperty_mStartString (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mStartString (void) const {
     return mProperty_mStartString ;
   }
 
   public: GALGAS_lstring mProperty_mEndString ;
-  public: inline GALGAS_lstring readProperty_mEndString (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mEndString (void) const {
     return mProperty_mEndString ;
   }
 
   public: GALGAS_bool mProperty_mPreservesStartDelimiter ;
-  public: inline GALGAS_bool readProperty_mPreservesStartDelimiter (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_bool readProperty_mPreservesStartDelimiter (void) const {
     return mProperty_mPreservesStartDelimiter ;
   }
 
@@ -6845,17 +6845,17 @@ class cMapElement_styleMap : public cMapElement {
 class GALGAS_styleMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
-  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_lkey (void) const {
     return mProperty_lkey ;
   }
 
   public: GALGAS_lstring mProperty_mComment ;
-  public: inline GALGAS_lstring readProperty_mComment (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mComment (void) const {
     return mProperty_mComment ;
   }
 
   public: GALGAS_uint mProperty_mStyleIndex ;
-  public: inline GALGAS_uint readProperty_mStyleIndex (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_uint readProperty_mStyleIndex (void) const {
     return mProperty_mStyleIndex ;
   }
 
@@ -7067,7 +7067,7 @@ class cMapElement_lexicalTagMap : public cMapElement {
 class GALGAS_lexicalTagMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
-  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_lkey (void) const {
     return mProperty_lkey ;
   }
 
@@ -7208,9 +7208,9 @@ class GALGAS_lexicalFunctionOrExpressionAST : public GALGAS_lexicalFunctionExpre
   public: GALGAS_lexicalFunctionOrExpressionAST (const class cPtr_lexicalFunctionOrExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_lexicalFunctionExpressionAST readProperty_mLeftOperand (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lexicalFunctionExpressionAST readProperty_mLeftOperand (void) const ;
 
-  public: class GALGAS_lexicalFunctionExpressionAST readProperty_mRightOperand (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lexicalFunctionExpressionAST readProperty_mRightOperand (void) const ;
 
 //-- Start of generic part --*
 
@@ -7446,62 +7446,62 @@ class GALGAS_string callExtensionGetter_generateConditionCode (const class cPtr_
 class GALGAS_lexiqueAnalysisContext : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_string mProperty_mLexiqueName ;
-  public: inline GALGAS_string readProperty_mLexiqueName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_string readProperty_mLexiqueName (void) const {
     return mProperty_mLexiqueName ;
   }
 
   public: GALGAS_lexicalRoutineMap mProperty_mLexicalRoutineMessageMap ;
-  public: inline GALGAS_lexicalRoutineMap readProperty_mLexicalRoutineMessageMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalRoutineMap readProperty_mLexicalRoutineMessageMap (void) const {
     return mProperty_mLexicalRoutineMessageMap ;
   }
 
   public: GALGAS_lexicalFunctionMap mProperty_mLexicalFunctionMap ;
-  public: inline GALGAS_lexicalFunctionMap readProperty_mLexicalFunctionMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalFunctionMap readProperty_mLexicalFunctionMap (void) const {
     return mProperty_mLexicalFunctionMap ;
   }
 
   public: GALGAS_lexicalMessageMap mProperty_mLexicalMessageMap ;
-  public: inline GALGAS_lexicalMessageMap readProperty_mLexicalMessageMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalMessageMap readProperty_mLexicalMessageMap (void) const {
     return mProperty_mLexicalMessageMap ;
   }
 
   public: GALGAS_terminalMap mProperty_mTerminalMap ;
-  public: inline GALGAS_terminalMap readProperty_mTerminalMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_terminalMap readProperty_mTerminalMap (void) const {
     return mProperty_mTerminalMap ;
   }
 
   public: GALGAS_terminalList mProperty_mTerminalList ;
-  public: inline GALGAS_terminalList readProperty_mTerminalList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_terminalList readProperty_mTerminalList (void) const {
     return mProperty_mTerminalList ;
   }
 
   public: GALGAS_lexicalAttributeMap mProperty_mLexicalAttributeMap ;
-  public: inline GALGAS_lexicalAttributeMap readProperty_mLexicalAttributeMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalAttributeMap readProperty_mLexicalAttributeMap (void) const {
     return mProperty_mLexicalAttributeMap ;
   }
 
   public: GALGAS_lexicalExplicitTokenListMapMap mProperty_mLexicalTokenListMap ;
-  public: inline GALGAS_lexicalExplicitTokenListMapMap readProperty_mLexicalTokenListMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lexicalExplicitTokenListMapMap readProperty_mLexicalTokenListMap (void) const {
     return mProperty_mLexicalTokenListMap ;
   }
 
   public: GALGAS_stringset mProperty_mUnicodeStringToGenerate ;
-  public: inline GALGAS_stringset readProperty_mUnicodeStringToGenerate (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_stringset readProperty_mUnicodeStringToGenerate (void) const {
     return mProperty_mUnicodeStringToGenerate ;
   }
 
   public: GALGAS_templateDelimitorList mProperty_mTemplateDelimitorList ;
-  public: inline GALGAS_templateDelimitorList readProperty_mTemplateDelimitorList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_templateDelimitorList readProperty_mTemplateDelimitorList (void) const {
     return mProperty_mTemplateDelimitorList ;
   }
 
   public: GALGAS_styleMap mProperty_mStyleMap ;
-  public: inline GALGAS_styleMap readProperty_mStyleMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_styleMap readProperty_mStyleMap (void) const {
     return mProperty_mStyleMap ;
   }
 
   public: GALGAS_stringset mProperty_mExternUnicodeTestFunctions ;
-  public: inline GALGAS_stringset readProperty_mExternUnicodeTestFunctions (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_stringset readProperty_mExternUnicodeTestFunctions (void) const {
     return mProperty_mExternUnicodeTestFunctions ;
   }
 
@@ -8508,37 +8508,37 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionLi
 class GALGAS_commandLineOptionListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_mOptionTypeName ;
-  public: inline GALGAS_lstring readProperty_mOptionTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mOptionTypeName (void) const {
     return mProperty_mOptionTypeName ;
   }
 
   public: GALGAS_lstring mProperty_mOptionInternalName ;
-  public: inline GALGAS_lstring readProperty_mOptionInternalName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mOptionInternalName (void) const {
     return mProperty_mOptionInternalName ;
   }
 
   public: GALGAS_lchar mProperty_mOptionInvocationLetter ;
-  public: inline GALGAS_lchar readProperty_mOptionInvocationLetter (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lchar readProperty_mOptionInvocationLetter (void) const {
     return mProperty_mOptionInvocationLetter ;
   }
 
   public: GALGAS_lstring mProperty_mOptionInvocationString ;
-  public: inline GALGAS_lstring readProperty_mOptionInvocationString (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mOptionInvocationString (void) const {
     return mProperty_mOptionInvocationString ;
   }
 
   public: GALGAS_lstring mProperty_mOptionComment ;
-  public: inline GALGAS_lstring readProperty_mOptionComment (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mOptionComment (void) const {
     return mProperty_mOptionComment ;
   }
 
   public: GALGAS_lstring mProperty_mOptionDefaultValue ;
-  public: inline GALGAS_lstring readProperty_mOptionDefaultValue (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mOptionDefaultValue (void) const {
     return mProperty_mOptionDefaultValue ;
   }
 
   public: GALGAS_optionDefaultValueEnumAST mProperty_mOptionDefaultValueKind ;
-  public: inline GALGAS_optionDefaultValueEnumAST readProperty_mOptionDefaultValueKind (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_optionDefaultValueEnumAST readProperty_mOptionDefaultValueKind (void) const {
     return mProperty_mOptionDefaultValueKind ;
   }
 

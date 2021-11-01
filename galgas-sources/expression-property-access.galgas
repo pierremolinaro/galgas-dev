@@ -105,7 +105,7 @@ override method @structPropertyAccessExpressionForGeneration generateExpression
     ?let @string operand
   ]
 #--- Generate
-#  outCppExpression = operand + ".mProperty_" + [self.mStructFieldName identifierRepresentation]
+#  outCppExpression = operand + ".readProperty_" + [self.mStructFieldName identifierRepresentation] + " ()"
   outCppExpression = operand + ".getter_" + [self.mStructFieldName identifierRepresentation] + " (HERE)"
 }
 

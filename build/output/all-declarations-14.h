@@ -811,9 +811,9 @@ class GALGAS_semanticDeclarationWithHeaderForGeneration : public GALGAS_semantic
   public: GALGAS_semanticDeclarationWithHeaderForGeneration (const class cPtr_semanticDeclarationWithHeaderForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_bool readProperty_mHasHeader (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_bool readProperty_mHasHeader (void) const ;
 
-  public: class GALGAS_string readProperty_mImplementationCppFileName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_string readProperty_mImplementationCppFileName (void) const ;
 
 //-- Start of generic part --*
 
@@ -1015,7 +1015,7 @@ class GALGAS_semanticTypeForGeneration : public GALGAS_semanticDeclarationForGen
   public: GALGAS_semanticTypeForGeneration (const class cPtr_semanticTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mSelfTypeEntry (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mSelfTypeEntry (void) const ;
 
 //-- Start of generic part --*
 
@@ -1213,7 +1213,7 @@ class GALGAS_boolsetTypeForGeneration : public GALGAS_semanticTypeForGeneration 
   public: GALGAS_boolsetTypeForGeneration (const class cPtr_boolsetTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_lstringlist readProperty_mFlagList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lstringlist readProperty_mFlagList (void) const ;
 
 //-- Start of generic part --*
 
@@ -1417,17 +1417,17 @@ class GALGAS_classTypeForGeneration : public GALGAS_semanticTypeForGeneration {
   public: GALGAS_classTypeForGeneration (const class cPtr_classTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_bool readProperty_mIsAbstract (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_bool readProperty_mIsAbstract (void) const ;
 
-  public: class GALGAS_bool readProperty_mIsReference (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_bool readProperty_mIsReference (void) const ;
 
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mSuperClass (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mSuperClass (void) const ;
 
-  public: class GALGAS_typedPropertyList readProperty_mAllTypedAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_typedPropertyList readProperty_mAllTypedAttributeList (void) const ;
 
-  public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
 
-  public: class GALGAS_bool readProperty_mGenerateHeaderInSeparateFile (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_bool readProperty_mGenerateHeaderInSeparateFile (void) const ;
 
 //-- Start of generic part --*
 
@@ -1656,15 +1656,15 @@ class GALGAS_weakReferenceTypeForGeneration : public GALGAS_semanticTypeForGener
   public: GALGAS_weakReferenceTypeForGeneration (const class cPtr_weakReferenceTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReferenceClassType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReferenceClassType (void) const ;
 
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mSuperClass (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mSuperClass (void) const ;
 
-  public: class GALGAS_typedPropertyList readProperty_mAllTypedPropertyList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_typedPropertyList readProperty_mAllTypedPropertyList (void) const ;
 
-  public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
 
-  public: class GALGAS_bool readProperty_mGenerateHeaderInSeparateFile (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_bool readProperty_mGenerateHeaderInSeparateFile (void) const ;
 
 //-- Start of generic part --*
 
@@ -1888,7 +1888,7 @@ class GALGAS_enumTypeForGeneration : public GALGAS_semanticTypeForGeneration {
   public: GALGAS_enumTypeForGeneration (const class cPtr_enumTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_enumConstantListForGeneration readProperty_mConstantList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_enumConstantListForGeneration readProperty_mConstantList (void) const ;
 
 //-- Start of generic part --*
 
@@ -2092,11 +2092,11 @@ class GALGAS_externTypeDeclarationForGeneration : public GALGAS_semanticTypeForG
   public: GALGAS_externTypeDeclarationForGeneration (const class cPtr_externTypeDeclarationForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_string readProperty_mExternTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_string readProperty_mExternTypeName (void) const ;
 
-  public: class GALGAS_string readProperty_mCppPreDeclarationCode (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_string readProperty_mCppPreDeclarationCode (void) const ;
 
-  public: class GALGAS_string readProperty_mCppClassCode (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_string readProperty_mCppClassCode (void) const ;
 
 //-- Start of generic part --*
 
@@ -2310,11 +2310,11 @@ class GALGAS_graphDeclarationForGeneration : public GALGAS_semanticTypeForGenera
   public: GALGAS_graphDeclarationForGeneration (const class cPtr_graphDeclarationForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mAssociatedListTypeEntry (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mAssociatedListTypeEntry (void) const ;
 
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mAssociatedListElementTypeEntry (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mAssociatedListElementTypeEntry (void) const ;
 
-  public: class GALGAS_graphInsertModifierList readProperty_mInsertModifierList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_graphInsertModifierList readProperty_mInsertModifierList (void) const ;
 
 //-- Start of generic part --*
 
@@ -2537,9 +2537,9 @@ class GALGAS_listTypeForGeneration : public GALGAS_semanticTypeForGeneration {
   public: GALGAS_listTypeForGeneration (const class cPtr_listTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mListElementTypeIndex (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mListElementTypeIndex (void) const ;
 
-  public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
 
 //-- Start of generic part --*
 
@@ -2748,11 +2748,11 @@ class GALGAS_listmapTypeForGeneration : public GALGAS_semanticTypeForGeneration 
   public: GALGAS_listmapTypeForGeneration (const class cPtr_listmapTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mAssociatedListTypeIndex (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mAssociatedListTypeIndex (void) const ;
 
-  public: class GALGAS_typedPropertyList readProperty_mAssociatedListTypedAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_typedPropertyList readProperty_mAssociatedListTypedAttributeList (void) const ;
 
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mAssociatedListMapElementTypeIndex (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mAssociatedListMapElementTypeIndex (void) const ;
 
 //-- Start of generic part --*
 
@@ -2966,13 +2966,13 @@ class GALGAS_dictTypeForGeneration : public GALGAS_semanticTypeForGeneration {
   public: GALGAS_dictTypeForGeneration (const class cPtr_dictTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mElementTypeEntry (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mElementTypeEntry (void) const ;
 
-  public: class GALGAS_lstring readProperty_mDictTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lstring readProperty_mDictTypeName (void) const ;
 
-  public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
 
-  public: class GALGAS_lstring readProperty_mKeyTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lstring readProperty_mKeyTypeName (void) const ;
 
 //-- Start of generic part --*
 
@@ -3191,21 +3191,21 @@ class GALGAS_mapTypeForGeneration : public GALGAS_semanticTypeForGeneration {
   public: GALGAS_mapTypeForGeneration (const class cPtr_mapTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mElementTypeEntry (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mElementTypeEntry (void) const ;
 
-  public: class GALGAS_lstring readProperty_mMapTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lstring readProperty_mMapTypeName (void) const ;
 
-  public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
 
-  public: class GALGAS_insertMethodListAST readProperty_mInsertMethodList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_insertMethodListAST readProperty_mInsertMethodList (void) const ;
 
-  public: class GALGAS_mapSearchMethodListAST readProperty_mSearchMethodList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_mapSearchMethodListAST readProperty_mSearchMethodList (void) const ;
 
-  public: class GALGAS_mapRemoveMethodListAST readProperty_mRemoveMethodList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_mapRemoveMethodListAST readProperty_mRemoveMethodList (void) const ;
 
-  public: class GALGAS_bool readProperty_mHasInsertOrReplaceModifier (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_bool readProperty_mHasInsertOrReplaceModifier (void) const ;
 
-  public: class GALGAS_bool readProperty_mActivateSuggestions (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_bool readProperty_mActivateSuggestions (void) const ;
 
 //-- Start of generic part --*
 
@@ -3468,11 +3468,11 @@ class GALGAS_mapEntryTypeForGeneration : public GALGAS_semanticTypeForGeneration
   public: GALGAS_mapEntryTypeForGeneration (const class cPtr_mapEntryTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mAssociatedMapTypeEntry (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mAssociatedMapTypeEntry (void) const ;
 
-  public: class GALGAS_typedPropertyList readProperty_mAssociatedMapTypedAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_typedPropertyList readProperty_mAssociatedMapTypedAttributeList (void) const ;
 
-  public: class GALGAS_mapSearchMethodListAST readProperty_mSearchMethodList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_mapSearchMethodListAST readProperty_mSearchMethodList (void) const ;
 
 //-- Start of generic part --*
 
@@ -3683,23 +3683,23 @@ class GALGAS_sharedMapTypeForGeneration : public GALGAS_semanticTypeForGeneratio
   public: GALGAS_sharedMapTypeForGeneration (const class cPtr_sharedMapTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
 
-  public: class GALGAS_insertMethodListAST readProperty_mInsertMethodList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_insertMethodListAST readProperty_mInsertMethodList (void) const ;
 
-  public: class GALGAS_mapSearchMethodListAST readProperty_mSearchMethodList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_mapSearchMethodListAST readProperty_mSearchMethodList (void) const ;
 
-  public: class GALGAS_mapAutomatonStateMap readProperty_mMapAutomatonStateMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_mapAutomatonStateMap readProperty_mMapAutomatonStateMap (void) const ;
 
-  public: class GALGAS_mapAutomatonActionMap readProperty_mMapAutomatonActionMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_mapAutomatonActionMap readProperty_mMapAutomatonActionMap (void) const ;
 
-  public: class GALGAS_mapStateSortedList readProperty_mMapStateSortedList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_mapStateSortedList readProperty_mMapStateSortedList (void) const ;
 
-  public: class GALGAS_mapOverrideList readProperty_mMapOverrideList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_mapOverrideList readProperty_mMapOverrideList (void) const ;
 
-  public: class GALGAS_mapAutomatonMessageKind readProperty_mShadowBehaviour (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_mapAutomatonMessageKind readProperty_mShadowBehaviour (void) const ;
 
-  public: class GALGAS_string readProperty_mShadowMessage (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_string readProperty_mShadowMessage (void) const ;
 
 //-- Start of generic part --*
 
@@ -3970,11 +3970,11 @@ class GALGAS_sortedListTypeForGeneration : public GALGAS_semanticTypeForGenerati
   public: GALGAS_sortedListTypeForGeneration (const class cPtr_sortedListTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mListElementTypeIndex (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mListElementTypeIndex (void) const ;
 
-  public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
 
-  public: class GALGAS_sortDescriptorListForGeneration readProperty_mSortDescriptorList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_sortDescriptorListForGeneration readProperty_mSortDescriptorList (void) const ;
 
 //-- Start of generic part --*
 

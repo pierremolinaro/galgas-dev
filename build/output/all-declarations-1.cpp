@@ -1670,7 +1670,7 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionIfForGener
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionIfBranchListForGeneration GALGAS_templateInstructionIfForGeneration::readProperty_mTemplateInstructionIfBranchList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionIfBranchListForGeneration GALGAS_templateInstructionIfForGeneration::readProperty_mTemplateInstructionIfBranchList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateInstructionIfBranchListForGeneration () ;
   }else{
@@ -1682,7 +1682,7 @@ GALGAS_templateInstructionIfBranchListForGeneration GALGAS_templateInstructionIf
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionIfForGeneration::readProperty_mElseInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionIfForGeneration::readProperty_mElseInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateInstructionListForGeneration () ;
   }else{
@@ -3660,7 +3660,7 @@ GALGAS_templateInstructionSwitchBranchListAST GALGAS_templateInstructionSwitchAS
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateInstructionSwitchAST::readProperty_mSwitchExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateInstructionSwitchAST::readProperty_mSwitchExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -3672,7 +3672,7 @@ GALGAS_templateExpressionAST GALGAS_templateInstructionSwitchAST::readProperty_m
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateInstructionSwitchAST::readProperty_mSwitchExpressionEndLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateInstructionSwitchAST::readProperty_mSwitchExpressionEndLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -3684,7 +3684,7 @@ GALGAS_location GALGAS_templateInstructionSwitchAST::readProperty_mSwitchExpress
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionSwitchBranchListAST GALGAS_templateInstructionSwitchAST::readProperty_mTemplateInstructionSwitchBranchList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionSwitchBranchListAST GALGAS_templateInstructionSwitchAST::readProperty_mTemplateInstructionSwitchBranchList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateInstructionSwitchBranchListAST () ;
   }else{
@@ -5096,7 +5096,7 @@ GALGAS_bool GALGAS_semanticDeclarationAST::getter_mIsPredefined (UNUSED_LOCATION
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_semanticDeclarationAST::readProperty_mIsPredefined (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_semanticDeclarationAST::readProperty_mIsPredefined (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_bool () ;
   }else{
@@ -7880,7 +7880,7 @@ GALGAS_lexicalInstructionListAST GALGAS_lexicalExplicitRuleAST::getter_mInstruct
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalExpressionAST GALGAS_lexicalExplicitRuleAST::readProperty_mLexicalRuleExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalExpressionAST GALGAS_lexicalExplicitRuleAST::readProperty_mLexicalRuleExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lexicalExpressionAST () ;
   }else{
@@ -7892,7 +7892,7 @@ GALGAS_lexicalExpressionAST GALGAS_lexicalExplicitRuleAST::readProperty_mLexical
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalInstructionListAST GALGAS_lexicalExplicitRuleAST::readProperty_mInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalInstructionListAST GALGAS_lexicalExplicitRuleAST::readProperty_mInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lexicalInstructionListAST () ;
   }else{
@@ -12008,7 +12008,7 @@ GALGAS_lexicalExpressionAST GALGAS_lexicalOrExpressionAST::getter_mRightOperand 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalExpressionAST GALGAS_lexicalOrExpressionAST::readProperty_mLeftOperand (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalExpressionAST GALGAS_lexicalOrExpressionAST::readProperty_mLeftOperand (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lexicalExpressionAST () ;
   }else{
@@ -12020,7 +12020,7 @@ GALGAS_lexicalExpressionAST GALGAS_lexicalOrExpressionAST::readProperty_mLeftOpe
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalExpressionAST GALGAS_lexicalOrExpressionAST::readProperty_mRightOperand (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalExpressionAST GALGAS_lexicalOrExpressionAST::readProperty_mRightOperand (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lexicalExpressionAST () ;
   }else{
@@ -12959,7 +12959,7 @@ GALGAS_lexicalSendDefaultActionAST GALGAS_lexicalStructuredSendInstructionAST::g
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSendSearchListAST GALGAS_lexicalStructuredSendInstructionAST::readProperty_mLexicalSendSearchList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalSendSearchListAST GALGAS_lexicalStructuredSendInstructionAST::readProperty_mLexicalSendSearchList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lexicalSendSearchListAST () ;
   }else{
@@ -12971,7 +12971,7 @@ GALGAS_lexicalSendSearchListAST GALGAS_lexicalStructuredSendInstructionAST::read
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSendDefaultActionAST GALGAS_lexicalStructuredSendInstructionAST::readProperty_mLexicalSendDefaultAction (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalSendDefaultActionAST GALGAS_lexicalStructuredSendInstructionAST::readProperty_mLexicalSendDefaultAction (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lexicalSendDefaultActionAST () ;
   }else{
@@ -13748,7 +13748,7 @@ GALGAS_lexicalWhileBranchListAST GALGAS_lexicalRepeatInstructionAST::getter_mLex
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalInstructionListAST GALGAS_lexicalRepeatInstructionAST::readProperty_mRepeatedInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalInstructionListAST GALGAS_lexicalRepeatInstructionAST::readProperty_mRepeatedInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lexicalInstructionListAST () ;
   }else{
@@ -13760,7 +13760,7 @@ GALGAS_lexicalInstructionListAST GALGAS_lexicalRepeatInstructionAST::readPropert
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalWhileBranchListAST GALGAS_lexicalRepeatInstructionAST::readProperty_mLexicalWhileBranchList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalWhileBranchListAST GALGAS_lexicalRepeatInstructionAST::readProperty_mLexicalWhileBranchList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lexicalWhileBranchListAST () ;
   }else{
@@ -14537,7 +14537,7 @@ GALGAS_lexicalInstructionListAST GALGAS_lexicalSelectInstructionAST::getter_mDef
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSelectBranchListAST GALGAS_lexicalSelectInstructionAST::readProperty_mLexicalSelectBranchList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalSelectBranchListAST GALGAS_lexicalSelectInstructionAST::readProperty_mLexicalSelectBranchList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lexicalSelectBranchListAST () ;
   }else{
@@ -14549,7 +14549,7 @@ GALGAS_lexicalSelectBranchListAST GALGAS_lexicalSelectInstructionAST::readProper
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalInstructionListAST GALGAS_lexicalSelectInstructionAST::readProperty_mDefaultInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalInstructionListAST GALGAS_lexicalSelectInstructionAST::readProperty_mDefaultInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lexicalInstructionListAST () ;
   }else{

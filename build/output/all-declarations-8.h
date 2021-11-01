@@ -83,11 +83,11 @@ class GALGAS_leftShiftExpressionAST : public GALGAS_semanticExpressionAST {
   public: GALGAS_leftShiftExpressionAST (const class cPtr_leftShiftExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -240,11 +240,11 @@ class GALGAS_addExpressionAST : public GALGAS_semanticExpressionAST {
   public: GALGAS_addExpressionAST (const class cPtr_addExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -397,11 +397,11 @@ class GALGAS_addExpressionNoOverflowAST : public GALGAS_semanticExpressionAST {
   public: GALGAS_addExpressionNoOverflowAST (const class cPtr_addExpressionNoOverflowAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -554,11 +554,11 @@ class GALGAS_subExpressionAST : public GALGAS_semanticExpressionAST {
   public: GALGAS_subExpressionAST (const class cPtr_subExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -711,11 +711,11 @@ class GALGAS_subExpressionNoOverflowAST : public GALGAS_semanticExpressionAST {
   public: GALGAS_subExpressionNoOverflowAST (const class cPtr_subExpressionNoOverflowAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -1025,11 +1025,11 @@ class GALGAS_multiplicationExpressionAST : public GALGAS_semanticExpressionAST {
   public: GALGAS_multiplicationExpressionAST (const class cPtr_multiplicationExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -1191,11 +1191,11 @@ class GALGAS_multiplicationExpressionNoOverflowAST : public GALGAS_semanticExpre
   public: GALGAS_multiplicationExpressionNoOverflowAST (const class cPtr_multiplicationExpressionNoOverflowAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -1357,11 +1357,11 @@ class GALGAS_divisionExpressionAST : public GALGAS_semanticExpressionAST {
   public: GALGAS_divisionExpressionAST (const class cPtr_divisionExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -1523,11 +1523,11 @@ class GALGAS_divisionExpressionNoOverflowAST : public GALGAS_semanticExpressionA
   public: GALGAS_divisionExpressionNoOverflowAST (const class cPtr_divisionExpressionNoOverflowAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -1689,11 +1689,11 @@ class GALGAS_moduloExpressionAST : public GALGAS_semanticExpressionAST {
   public: GALGAS_moduloExpressionAST (const class cPtr_moduloExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -2053,7 +2053,7 @@ class cPtr_abstractCollectionValueElement : public acStrongPtr_class {
 class GALGAS_collectionValueElementList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_abstractCollectionValueElement mProperty_mElement ;
-  public: inline GALGAS_abstractCollectionValueElement readProperty_mElement (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_abstractCollectionValueElement readProperty_mElement (void) const {
     return mProperty_mElement ;
   }
 
@@ -2191,9 +2191,9 @@ class GALGAS_expressionCollectionValue : public GALGAS_abstractCollectionValueEl
   public: GALGAS_expressionCollectionValue (const class cPtr_expressionCollectionValue * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_semanticExpressionAST readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mExpression (void) const ;
 
-  public: class GALGAS_location readProperty_mExpressionLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mExpressionLocation (void) const ;
 
 //-- Start of generic part --*
 
@@ -2350,9 +2350,9 @@ class GALGAS_expressionListCollectionValue : public GALGAS_abstractCollectionVal
   public: GALGAS_expressionListCollectionValue (const class cPtr_expressionListCollectionValue * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_actualOutputExpressionList readProperty_mExpressionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_actualOutputExpressionList readProperty_mExpressionList (void) const ;
 
-  public: class GALGAS_location readProperty_mEndOfExpressionLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mEndOfExpressionLocation (void) const ;
 
 //-- Start of generic part --*
 
@@ -2696,7 +2696,7 @@ class GALGAS_abstractCollectionValueElementForGeneration : public AC_GALGAS_refe
   public: GALGAS_abstractCollectionValueElementForGeneration (const class cPtr_abstractCollectionValueElementForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mExpressionLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mExpressionLocation (void) const ;
 
 //-- Start of generic part --*
 
@@ -2769,7 +2769,7 @@ class cPtr_abstractCollectionValueElementForGeneration : public acStrongPtr_clas
 class GALGAS_collectionValueElementListForGeneration_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_abstractCollectionValueElementForGeneration mProperty_mElement ;
-  public: inline GALGAS_abstractCollectionValueElementForGeneration readProperty_mElement (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_abstractCollectionValueElementForGeneration readProperty_mElement (void) const {
     return mProperty_mElement ;
   }
 
@@ -2943,7 +2943,7 @@ class GALGAS_expressionListCollectionForGeneration : public GALGAS_abstractColle
   public: GALGAS_expressionListCollectionForGeneration (const class cPtr_expressionListCollectionForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_semanticExpressionListForGeneration readProperty_mExpressionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionListForGeneration readProperty_mExpressionList (void) const ;
 
 //-- Start of generic part --*
 
@@ -3094,7 +3094,7 @@ class GALGAS_selfInExpressionAST : public GALGAS_semanticExpressionAST {
   public: GALGAS_selfInExpressionAST (const class cPtr_selfInExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mSelfLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mSelfLocation (void) const ;
 
 //-- Start of generic part --*
 
@@ -3237,9 +3237,9 @@ class GALGAS_notExpressionAST : public GALGAS_semanticExpressionAST {
   public: GALGAS_notExpressionAST (const class cPtr_notExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -3387,9 +3387,9 @@ class GALGAS_tildeExpressionAST : public GALGAS_semanticExpressionAST {
   public: GALGAS_tildeExpressionAST (const class cPtr_tildeExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -3537,9 +3537,9 @@ class GALGAS_bangExpressionAST : public GALGAS_semanticExpressionAST {
   public: GALGAS_bangExpressionAST (const class cPtr_bangExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -3693,9 +3693,9 @@ class GALGAS_unaryWrappingMinusExpressionAST : public GALGAS_semanticExpressionA
   public: GALGAS_unaryWrappingMinusExpressionAST (const class cPtr_unaryWrappingMinusExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -3843,11 +3843,11 @@ class GALGAS_orExpressionAST : public GALGAS_semanticExpressionAST {
   public: GALGAS_orExpressionAST (const class cPtr_orExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -4000,11 +4000,11 @@ class GALGAS_orShortExpressionAST : public GALGAS_semanticExpressionAST {
   public: GALGAS_orShortExpressionAST (const class cPtr_orShortExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -4157,11 +4157,11 @@ class GALGAS_xorExpressionAST : public GALGAS_semanticExpressionAST {
   public: GALGAS_xorExpressionAST (const class cPtr_xorExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -4314,11 +4314,11 @@ class GALGAS_closedSliceExpressionAST : public GALGAS_semanticExpressionAST {
   public: GALGAS_closedSliceExpressionAST (const class cPtr_closedSliceExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -4471,11 +4471,11 @@ class GALGAS_openedSliceExpressionAST : public GALGAS_semanticExpressionAST {
   public: GALGAS_openedSliceExpressionAST (const class cPtr_openedSliceExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -4628,11 +4628,11 @@ class GALGAS_andShortExpressionAST : public GALGAS_semanticExpressionAST {
   public: GALGAS_andShortExpressionAST (const class cPtr_andShortExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -4794,11 +4794,11 @@ class GALGAS_andExpressionAST : public GALGAS_semanticExpressionAST {
   public: GALGAS_andExpressionAST (const class cPtr_andExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -5217,27 +5217,27 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInstructionBran
 class GALGAS_castInstructionBranchListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
-  public: inline GALGAS_lstring readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mTypeName (void) const {
     return mProperty_mTypeName ;
   }
 
   public: GALGAS_lstring mProperty_mConstantVarName ;
-  public: inline GALGAS_lstring readProperty_mConstantVarName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mConstantVarName (void) const {
     return mProperty_mConstantVarName ;
   }
 
   public: GALGAS_semanticInstructionListAST mProperty_mInstructionList ;
-  public: inline GALGAS_semanticInstructionListAST readProperty_mInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_semanticInstructionListAST readProperty_mInstructionList (void) const {
     return mProperty_mInstructionList ;
   }
 
   public: GALGAS_dynamicTypeComparisonKind mProperty_mTypeComparisonKind ;
-  public: inline GALGAS_dynamicTypeComparisonKind readProperty_mTypeComparisonKind (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_dynamicTypeComparisonKind readProperty_mTypeComparisonKind (void) const {
     return mProperty_mTypeComparisonKind ;
   }
 
   public: GALGAS_location mProperty_mEndOfInstructions ;
-  public: inline GALGAS_location readProperty_mEndOfInstructions (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_location readProperty_mEndOfInstructions (void) const {
     return mProperty_mEndOfInstructions ;
   }
 
@@ -5351,13 +5351,13 @@ class GALGAS_structuredCastInstructionAST : public GALGAS_semanticInstructionAST
   public: GALGAS_structuredCastInstructionAST (const class cPtr_structuredCastInstructionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_semanticExpressionAST readProperty_mCastExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mCastExpression (void) const ;
 
-  public: class GALGAS_castInstructionBranchListAST readProperty_mCastInstructionBranchList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_castInstructionBranchListAST readProperty_mCastInstructionBranchList (void) const ;
 
-  public: class GALGAS_semanticInstructionListAST readProperty_mElseInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticInstructionListAST readProperty_mElseInstructionList (void) const ;
 
-  public: class GALGAS_location readProperty_mEndOfCastInstruction (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mEndOfCastInstruction (void) const ;
 
 //-- Start of generic part --*
 
@@ -5698,22 +5698,22 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInstructionBran
 class GALGAS_castInstructionBranchListForGeneration_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_dynamicTypeComparisonKind mProperty_mTypeComparisonKind ;
-  public: inline GALGAS_dynamicTypeComparisonKind readProperty_mTypeComparisonKind (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_dynamicTypeComparisonKind readProperty_mTypeComparisonKind (void) const {
     return mProperty_mTypeComparisonKind ;
   }
 
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mType ;
-  public: inline GALGAS_unifiedTypeMap_2D_entry readProperty_mType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_unifiedTypeMap_2D_entry readProperty_mType (void) const {
     return mProperty_mType ;
   }
 
   public: GALGAS_string mProperty_mCastedVarCppName ;
-  public: inline GALGAS_string readProperty_mCastedVarCppName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_string readProperty_mCastedVarCppName (void) const {
     return mProperty_mCastedVarCppName ;
   }
 
   public: GALGAS_semanticInstructionListForGeneration mProperty_mInstructionList ;
-  public: inline GALGAS_semanticInstructionListForGeneration readProperty_mInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_semanticInstructionListForGeneration readProperty_mInstructionList (void) const {
     return mProperty_mInstructionList ;
   }
 
@@ -5822,7 +5822,7 @@ class GALGAS_dropInstructionAST : public GALGAS_semanticInstructionAST {
   public: GALGAS_dropInstructionAST (const class cPtr_dropInstructionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_lstringlist readProperty_mDropList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lstringlist readProperty_mDropList (void) const ;
 
 //-- Start of generic part --*
 
@@ -6265,7 +6265,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitListAST ;
 class GALGAS_fixitListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_fixitElementAST mProperty_mElement ;
-  public: inline GALGAS_fixitElementAST readProperty_mElement (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_fixitElementAST readProperty_mElement (void) const {
     return mProperty_mElement ;
   }
 
@@ -6347,13 +6347,13 @@ class GALGAS_errorInstructionAST : public GALGAS_semanticInstructionAST {
   public: GALGAS_errorInstructionAST (const class cPtr_errorInstructionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_semanticExpressionAST readProperty_mLocationExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mLocationExpression (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mMessageExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mMessageExpression (void) const ;
 
-  public: class GALGAS_lstringlist readProperty_mBuiltVariableList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_lstringlist readProperty_mBuiltVariableList (void) const ;
 
-  public: class GALGAS_fixitListAST readProperty_mFixitListAST (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_fixitListAST readProperty_mFixitListAST (void) const ;
 
 //-- Start of generic part --*
 
@@ -6802,7 +6802,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitListForGenerat
 class GALGAS_fixitListForGeneration_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_fixitElementForGeneration mProperty_mElement ;
-  public: inline GALGAS_fixitElementForGeneration readProperty_mElement (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_fixitElementForGeneration readProperty_mElement (void) const {
     return mProperty_mElement ;
   }
 
@@ -7093,17 +7093,17 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnume
 class GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_mOptionalTypeName ;
-  public: inline GALGAS_lstring readProperty_mOptionalTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mOptionalTypeName (void) const {
     return mProperty_mOptionalTypeName ;
   }
 
   public: GALGAS_bool mProperty_mDeclaredAsUnused ;
-  public: inline GALGAS_bool readProperty_mDeclaredAsUnused (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_bool readProperty_mDeclaredAsUnused (void) const {
     return mProperty_mDeclaredAsUnused ;
   }
 
   public: GALGAS_lstring mProperty_mOptionalConstantName ;
-  public: inline GALGAS_lstring readProperty_mOptionalConstantName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_lstring readProperty_mOptionalConstantName (void) const {
     return mProperty_mOptionalConstantName ;
   }
 
@@ -7334,13 +7334,13 @@ class GALGAS_enumeratedCollectionCstListInExpAST : public GALGAS_abstractEnumera
   public: GALGAS_enumeratedCollectionCstListInExpAST (const class cPtr_enumeratedCollectionCstListInExpAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_forInstructionEnumeratedObjectElementListAST readProperty_mElementList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_forInstructionEnumeratedObjectElementListAST readProperty_mElementList (void) const ;
 
-  public: class GALGAS_bool readProperty_mEndsWithEllipsis (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_bool readProperty_mEndsWithEllipsis (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_mEnumeratedExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mEnumeratedExpression (void) const ;
 
-  public: class GALGAS_location readProperty_mEndOfEnumerationExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+  public: class GALGAS_location readProperty_mEndOfEnumerationExpression (void) const ;
 
 //-- Start of generic part --*
 
@@ -7631,12 +7631,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnume
 class GALGAS_forInstructionEnumeratedObjectListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_bool mProperty_mAscending ;
-  public: inline GALGAS_bool readProperty_mAscending (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_bool readProperty_mAscending (void) const {
     return mProperty_mAscending ;
   }
 
   public: GALGAS_abstractEnumeratedCollectionAST mProperty_mEnumeratedCollection ;
-  public: inline GALGAS_abstractEnumeratedCollectionAST readProperty_mEnumeratedCollection (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  public: inline GALGAS_abstractEnumeratedCollectionAST readProperty_mEnumeratedCollection (void) const {
     return mProperty_mEnumeratedCollection ;
   }
 

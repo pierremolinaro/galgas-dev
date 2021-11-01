@@ -89,7 +89,7 @@ void GALGAS_predefinedTypeAST::setter_setMKind (GALGAS_predefinedTypeKindEnum in
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_predefinedTypeAST::readProperty_mPredefinedTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_predefinedTypeAST::readProperty_mPredefinedTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -101,7 +101,7 @@ GALGAS_string GALGAS_predefinedTypeAST::readProperty_mPredefinedTypeName (C_Comp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeAST::readProperty_mKind (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeAST::readProperty_mKind (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_predefinedTypeKindEnum () ;
   }else{
@@ -13792,7 +13792,7 @@ void GALGAS_semanticBlockInstructionForGeneration::setter_setMInstructionList (G
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListForGeneration GALGAS_semanticBlockInstructionForGeneration::readProperty_mInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListForGeneration GALGAS_semanticBlockInstructionForGeneration::readProperty_mInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticInstructionListForGeneration () ;
   }else{

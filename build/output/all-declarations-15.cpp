@@ -235,7 +235,7 @@ GALGAS_string GALGAS_structDeclarationAST::getter_mEnumeratedElementTypeName (UN
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_structDeclarationAST::readProperty_mStructTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_structDeclarationAST::readProperty_mStructTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -247,7 +247,7 @@ GALGAS_lstring GALGAS_structDeclarationAST::readProperty_mStructTypeName (C_Comp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_propertyInCollectionListAST GALGAS_structDeclarationAST::readProperty_mStructurePropertyList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_propertyInCollectionListAST GALGAS_structDeclarationAST::readProperty_mStructurePropertyList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_propertyInCollectionListAST () ;
   }else{
@@ -259,7 +259,7 @@ GALGAS_propertyInCollectionListAST GALGAS_structDeclarationAST::readProperty_mSt
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_structDeclarationAST::readProperty_mEnumeratedElementTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_structDeclarationAST::readProperty_mEnumeratedElementTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -549,7 +549,7 @@ GALGAS_typedPropertyList GALGAS_structTypeForGeneration::getter_mTypedPropertyLi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_typedPropertyList GALGAS_structTypeForGeneration::readProperty_mTypedPropertyList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList GALGAS_structTypeForGeneration::readProperty_mTypedPropertyList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_typedPropertyList () ;
   }else{
@@ -882,7 +882,7 @@ GALGAS_lstring GALGAS_abstractExtensionGetterAST::getter_mAbstractExtensionGette
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_abstractExtensionGetterAST::readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_abstractExtensionGetterAST::readProperty_mTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -894,7 +894,7 @@ GALGAS_lstring GALGAS_abstractExtensionGetterAST::readProperty_mTypeName (C_Comp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_abstractExtensionGetterAST::readProperty_mAbstractExtensionGetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_abstractExtensionGetterAST::readProperty_mAbstractExtensionGetterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -906,7 +906,7 @@ GALGAS_lstring GALGAS_abstractExtensionGetterAST::readProperty_mAbstractExtensio
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalInputParameterListAST GALGAS_abstractExtensionGetterAST::readProperty_mAbstractExtensionGetterFormalInputParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalInputParameterListAST GALGAS_abstractExtensionGetterAST::readProperty_mAbstractExtensionGetterFormalInputParameterList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalInputParameterListAST () ;
   }else{
@@ -918,7 +918,7 @@ GALGAS_formalInputParameterListAST GALGAS_abstractExtensionGetterAST::readProper
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_abstractExtensionGetterAST::readProperty_mAbstractExtensionGetterReturnedTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_abstractExtensionGetterAST::readProperty_mAbstractExtensionGetterReturnedTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -1268,7 +1268,7 @@ GALGAS_formalInputParameterListForGeneration GALGAS_abstractExtensionGetterForGe
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_abstractExtensionGetterForGeneration::readProperty_mReceiverType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry GALGAS_abstractExtensionGetterForGeneration::readProperty_mReceiverType (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_unifiedTypeMap_2D_entry () ;
   }else{
@@ -1280,7 +1280,7 @@ GALGAS_unifiedTypeMap_2D_entry GALGAS_abstractExtensionGetterForGeneration::read
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_abstractExtensionGetterForGeneration::readProperty_mAbstractExtensionGetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_abstractExtensionGetterForGeneration::readProperty_mAbstractExtensionGetterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -1292,7 +1292,7 @@ GALGAS_string GALGAS_abstractExtensionGetterForGeneration::readProperty_mAbstrac
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_abstractExtensionGetterForGeneration::readProperty_mResultType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry GALGAS_abstractExtensionGetterForGeneration::readProperty_mResultType (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_unifiedTypeMap_2D_entry () ;
   }else{
@@ -1304,7 +1304,7 @@ GALGAS_unifiedTypeMap_2D_entry GALGAS_abstractExtensionGetterForGeneration::read
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalInputParameterListForGeneration GALGAS_abstractExtensionGetterForGeneration::readProperty_mAbstractExtensionGetterFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalInputParameterListForGeneration GALGAS_abstractExtensionGetterForGeneration::readProperty_mAbstractExtensionGetterFormalParameterList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalInputParameterListForGeneration () ;
   }else{
@@ -1668,7 +1668,7 @@ void GALGAS_abstractExtensionMethodAST::setter_setMAbstractExtensionMethodFormal
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_abstractExtensionMethodAST::readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_abstractExtensionMethodAST::readProperty_mTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -1680,7 +1680,7 @@ GALGAS_lstring GALGAS_abstractExtensionMethodAST::readProperty_mTypeName (C_Comp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_abstractExtensionMethodAST::readProperty_mAbstractExtensionMethodName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_abstractExtensionMethodAST::readProperty_mAbstractExtensionMethodName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -1692,7 +1692,7 @@ GALGAS_lstring GALGAS_abstractExtensionMethodAST::readProperty_mAbstractExtensio
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListAST GALGAS_abstractExtensionMethodAST::readProperty_mAbstractExtensionMethodFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListAST GALGAS_abstractExtensionMethodAST::readProperty_mAbstractExtensionMethodFormalParameterList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalParameterListAST () ;
   }else{
@@ -2054,7 +2054,7 @@ void GALGAS_abstractExtensionMethodForGeneration::setter_setMAbstractExtensionMe
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_abstractExtensionMethodForGeneration::readProperty_mReceiverType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry GALGAS_abstractExtensionMethodForGeneration::readProperty_mReceiverType (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_unifiedTypeMap_2D_entry () ;
   }else{
@@ -2066,7 +2066,7 @@ GALGAS_unifiedTypeMap_2D_entry GALGAS_abstractExtensionMethodForGeneration::read
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_abstractExtensionMethodForGeneration::readProperty_mAbstractExtensionMethodName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_abstractExtensionMethodForGeneration::readProperty_mAbstractExtensionMethodName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -2078,7 +2078,7 @@ GALGAS_string GALGAS_abstractExtensionMethodForGeneration::readProperty_mAbstrac
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListForGeneration GALGAS_abstractExtensionMethodForGeneration::readProperty_mAbstractExtensionMethodFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListForGeneration GALGAS_abstractExtensionMethodForGeneration::readProperty_mAbstractExtensionMethodFormalParameterList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalParameterListForGeneration () ;
   }else{
@@ -2405,7 +2405,7 @@ GALGAS_formalParameterListAST GALGAS_abstractExtensionSetterAST::getter_mAbstrac
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_abstractExtensionSetterAST::readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_abstractExtensionSetterAST::readProperty_mTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -2417,7 +2417,7 @@ GALGAS_lstring GALGAS_abstractExtensionSetterAST::readProperty_mTypeName (C_Comp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_abstractExtensionSetterAST::readProperty_mAbstractExtensionSetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_abstractExtensionSetterAST::readProperty_mAbstractExtensionSetterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -2429,7 +2429,7 @@ GALGAS_lstring GALGAS_abstractExtensionSetterAST::readProperty_mAbstractExtensio
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListAST GALGAS_abstractExtensionSetterAST::readProperty_mAbstractExtensionSetterFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListAST GALGAS_abstractExtensionSetterAST::readProperty_mAbstractExtensionSetterFormalParameterList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalParameterListAST () ;
   }else{
@@ -2758,7 +2758,7 @@ GALGAS_formalParameterListForGeneration GALGAS_abstractExtensionSetterForGenerat
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_abstractExtensionSetterForGeneration::readProperty_mReceiverType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry GALGAS_abstractExtensionSetterForGeneration::readProperty_mReceiverType (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_unifiedTypeMap_2D_entry () ;
   }else{
@@ -2770,7 +2770,7 @@ GALGAS_unifiedTypeMap_2D_entry GALGAS_abstractExtensionSetterForGeneration::read
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_abstractExtensionSetterForGeneration::readProperty_mAbstractExtensionSetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_abstractExtensionSetterForGeneration::readProperty_mAbstractExtensionSetterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -2782,7 +2782,7 @@ GALGAS_string GALGAS_abstractExtensionSetterForGeneration::readProperty_mAbstrac
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListForGeneration GALGAS_abstractExtensionSetterForGeneration::readProperty_mAbstractExtensionSetterFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListForGeneration GALGAS_abstractExtensionSetterForGeneration::readProperty_mAbstractExtensionSetterFormalParameterList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalParameterListForGeneration () ;
   }else{
@@ -3177,7 +3177,7 @@ GALGAS_location GALGAS_extensionGetterAST::getter_mEndOfReaderLocation (UNUSED_L
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_extensionGetterAST::readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_extensionGetterAST::readProperty_mTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -3189,7 +3189,7 @@ GALGAS_lstring GALGAS_extensionGetterAST::readProperty_mTypeName (C_Compiler * C
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_extensionGetterAST::readProperty_mExtensionGetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_extensionGetterAST::readProperty_mExtensionGetterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -3201,7 +3201,7 @@ GALGAS_lstring GALGAS_extensionGetterAST::readProperty_mExtensionGetterName (C_C
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalInputParameterListAST GALGAS_extensionGetterAST::readProperty_mExtensionGetterFormalInputParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalInputParameterListAST GALGAS_extensionGetterAST::readProperty_mExtensionGetterFormalInputParameterList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalInputParameterListAST () ;
   }else{
@@ -3213,7 +3213,7 @@ GALGAS_formalInputParameterListAST GALGAS_extensionGetterAST::readProperty_mExte
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_extensionGetterAST::readProperty_mExtensionGetterReturnedTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_extensionGetterAST::readProperty_mExtensionGetterReturnedTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -3225,7 +3225,7 @@ GALGAS_lstring GALGAS_extensionGetterAST::readProperty_mExtensionGetterReturnedT
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_extensionGetterAST::readProperty_mExtensionGetterReturnedVariableName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_extensionGetterAST::readProperty_mExtensionGetterReturnedVariableName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -3237,7 +3237,7 @@ GALGAS_lstring GALGAS_extensionGetterAST::readProperty_mExtensionGetterReturnedV
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListAST GALGAS_extensionGetterAST::readProperty_mExtensionGetterInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListAST GALGAS_extensionGetterAST::readProperty_mExtensionGetterInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticInstructionListAST () ;
   }else{
@@ -3249,7 +3249,7 @@ GALGAS_semanticInstructionListAST GALGAS_extensionGetterAST::readProperty_mExten
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_extensionGetterAST::readProperty_mEndOfReaderLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_extensionGetterAST::readProperty_mEndOfReaderLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -3679,7 +3679,7 @@ GALGAS_semanticInstructionListForGeneration GALGAS_extensionGetterForGeneration:
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_extensionGetterForGeneration::readProperty_mReceiverType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry GALGAS_extensionGetterForGeneration::readProperty_mReceiverType (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_unifiedTypeMap_2D_entry () ;
   }else{
@@ -3691,7 +3691,7 @@ GALGAS_unifiedTypeMap_2D_entry GALGAS_extensionGetterForGeneration::readProperty
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_extensionGetterForGeneration::readProperty_mExtensionGetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_extensionGetterForGeneration::readProperty_mExtensionGetterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -3703,7 +3703,7 @@ GALGAS_string GALGAS_extensionGetterForGeneration::readProperty_mExtensionGetter
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_extensionGetterForGeneration::readProperty_mImplementedAsFunction (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_extensionGetterForGeneration::readProperty_mImplementedAsFunction (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_bool () ;
   }else{
@@ -3715,7 +3715,7 @@ GALGAS_bool GALGAS_extensionGetterForGeneration::readProperty_mImplementedAsFunc
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_extensionGetterForGeneration::readProperty_mResultType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry GALGAS_extensionGetterForGeneration::readProperty_mResultType (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_unifiedTypeMap_2D_entry () ;
   }else{
@@ -3727,7 +3727,7 @@ GALGAS_unifiedTypeMap_2D_entry GALGAS_extensionGetterForGeneration::readProperty
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_extensionGetterForGeneration::readProperty_mResultVarCppName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_extensionGetterForGeneration::readProperty_mResultVarCppName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -3739,7 +3739,7 @@ GALGAS_string GALGAS_extensionGetterForGeneration::readProperty_mResultVarCppNam
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalInputParameterListForGeneration GALGAS_extensionGetterForGeneration::readProperty_mExtensionGetterFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalInputParameterListForGeneration GALGAS_extensionGetterForGeneration::readProperty_mExtensionGetterFormalParameterList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalInputParameterListForGeneration () ;
   }else{
@@ -3751,7 +3751,7 @@ GALGAS_formalInputParameterListForGeneration GALGAS_extensionGetterForGeneration
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_typedPropertyList GALGAS_extensionGetterForGeneration::readProperty_mTypedAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList GALGAS_extensionGetterForGeneration::readProperty_mTypedAttributeList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_typedPropertyList () ;
   }else{
@@ -3763,7 +3763,7 @@ GALGAS_typedPropertyList GALGAS_extensionGetterForGeneration::readProperty_mType
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListForGeneration GALGAS_extensionGetterForGeneration::readProperty_mSemanticInstructionListForGeneration (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListForGeneration GALGAS_extensionGetterForGeneration::readProperty_mSemanticInstructionListForGeneration (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticInstructionListForGeneration () ;
   }else{
@@ -4144,7 +4144,7 @@ GALGAS_location GALGAS_extensionMethodAST::getter_mEndOfMethodLocation (UNUSED_L
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_extensionMethodAST::readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_extensionMethodAST::readProperty_mTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -4156,7 +4156,7 @@ GALGAS_lstring GALGAS_extensionMethodAST::readProperty_mTypeName (C_Compiler * C
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_extensionMethodAST::readProperty_mExtensionMethodName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_extensionMethodAST::readProperty_mExtensionMethodName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -4168,7 +4168,7 @@ GALGAS_lstring GALGAS_extensionMethodAST::readProperty_mExtensionMethodName (C_C
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListAST GALGAS_extensionMethodAST::readProperty_mExtensionMethodFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListAST GALGAS_extensionMethodAST::readProperty_mExtensionMethodFormalParameterList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalParameterListAST () ;
   }else{
@@ -4180,7 +4180,7 @@ GALGAS_formalParameterListAST GALGAS_extensionMethodAST::readProperty_mExtension
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListAST GALGAS_extensionMethodAST::readProperty_mExtensionMethodInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListAST GALGAS_extensionMethodAST::readProperty_mExtensionMethodInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticInstructionListAST () ;
   }else{
@@ -4192,7 +4192,7 @@ GALGAS_semanticInstructionListAST GALGAS_extensionMethodAST::readProperty_mExten
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_extensionMethodAST::readProperty_mEndOfMethodLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_extensionMethodAST::readProperty_mEndOfMethodLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -4580,7 +4580,7 @@ GALGAS_semanticInstructionListForGeneration GALGAS_extensionMethodForGeneration:
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_extensionMethodForGeneration::readProperty_mReceiverType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry GALGAS_extensionMethodForGeneration::readProperty_mReceiverType (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_unifiedTypeMap_2D_entry () ;
   }else{
@@ -4592,7 +4592,7 @@ GALGAS_unifiedTypeMap_2D_entry GALGAS_extensionMethodForGeneration::readProperty
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_extensionMethodForGeneration::readProperty_mExtensionMethodName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_extensionMethodForGeneration::readProperty_mExtensionMethodName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -4604,7 +4604,7 @@ GALGAS_string GALGAS_extensionMethodForGeneration::readProperty_mExtensionMethod
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_extensionMethodForGeneration::readProperty_mImplementedAsFunction (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_extensionMethodForGeneration::readProperty_mImplementedAsFunction (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_bool () ;
   }else{
@@ -4616,7 +4616,7 @@ GALGAS_bool GALGAS_extensionMethodForGeneration::readProperty_mImplementedAsFunc
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListForGeneration GALGAS_extensionMethodForGeneration::readProperty_mExtensionMethodFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListForGeneration GALGAS_extensionMethodForGeneration::readProperty_mExtensionMethodFormalParameterList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalParameterListForGeneration () ;
   }else{
@@ -4628,7 +4628,7 @@ GALGAS_formalParameterListForGeneration GALGAS_extensionMethodForGeneration::rea
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_typedPropertyList GALGAS_extensionMethodForGeneration::readProperty_mTypedAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList GALGAS_extensionMethodForGeneration::readProperty_mTypedAttributeList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_typedPropertyList () ;
   }else{
@@ -4640,7 +4640,7 @@ GALGAS_typedPropertyList GALGAS_extensionMethodForGeneration::readProperty_mType
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListForGeneration GALGAS_extensionMethodForGeneration::readProperty_mSemanticInstructionListForGeneration (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListForGeneration GALGAS_extensionMethodForGeneration::readProperty_mSemanticInstructionListForGeneration (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticInstructionListForGeneration () ;
   }else{
@@ -5013,7 +5013,7 @@ GALGAS_location GALGAS_extensionSetterAST::getter_mEndOfSetterDeclarationLocatio
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_extensionSetterAST::readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_extensionSetterAST::readProperty_mTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -5025,7 +5025,7 @@ GALGAS_lstring GALGAS_extensionSetterAST::readProperty_mTypeName (C_Compiler * C
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_extensionSetterAST::readProperty_mExtensionSetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_extensionSetterAST::readProperty_mExtensionSetterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -5037,7 +5037,7 @@ GALGAS_lstring GALGAS_extensionSetterAST::readProperty_mExtensionSetterName (C_C
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListAST GALGAS_extensionSetterAST::readProperty_mExtensionSetterFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListAST GALGAS_extensionSetterAST::readProperty_mExtensionSetterFormalParameterList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalParameterListAST () ;
   }else{
@@ -5049,7 +5049,7 @@ GALGAS_formalParameterListAST GALGAS_extensionSetterAST::readProperty_mExtension
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListAST GALGAS_extensionSetterAST::readProperty_mExtensionSetterInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListAST GALGAS_extensionSetterAST::readProperty_mExtensionSetterInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticInstructionListAST () ;
   }else{
@@ -5061,7 +5061,7 @@ GALGAS_semanticInstructionListAST GALGAS_extensionSetterAST::readProperty_mExten
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_extensionSetterAST::readProperty_mEndOfSetterDeclarationLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_extensionSetterAST::readProperty_mEndOfSetterDeclarationLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -5449,7 +5449,7 @@ GALGAS_semanticInstructionListForGeneration GALGAS_extensionSetterForGeneration:
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_extensionSetterForGeneration::readProperty_mReceiverType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry GALGAS_extensionSetterForGeneration::readProperty_mReceiverType (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_unifiedTypeMap_2D_entry () ;
   }else{
@@ -5461,7 +5461,7 @@ GALGAS_unifiedTypeMap_2D_entry GALGAS_extensionSetterForGeneration::readProperty
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_extensionSetterForGeneration::readProperty_mExtensionSetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_extensionSetterForGeneration::readProperty_mExtensionSetterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -5473,7 +5473,7 @@ GALGAS_string GALGAS_extensionSetterForGeneration::readProperty_mExtensionSetter
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_extensionSetterForGeneration::readProperty_mImplementedAsFunction (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_extensionSetterForGeneration::readProperty_mImplementedAsFunction (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_bool () ;
   }else{
@@ -5485,7 +5485,7 @@ GALGAS_bool GALGAS_extensionSetterForGeneration::readProperty_mImplementedAsFunc
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListForGeneration GALGAS_extensionSetterForGeneration::readProperty_mExtensionSetterFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListForGeneration GALGAS_extensionSetterForGeneration::readProperty_mExtensionSetterFormalParameterList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalParameterListForGeneration () ;
   }else{
@@ -5497,7 +5497,7 @@ GALGAS_formalParameterListForGeneration GALGAS_extensionSetterForGeneration::rea
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_typedPropertyList GALGAS_extensionSetterForGeneration::readProperty_mTypedAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList GALGAS_extensionSetterForGeneration::readProperty_mTypedAttributeList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_typedPropertyList () ;
   }else{
@@ -5509,7 +5509,7 @@ GALGAS_typedPropertyList GALGAS_extensionSetterForGeneration::readProperty_mType
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListForGeneration GALGAS_extensionSetterForGeneration::readProperty_mSemanticInstructionListForGeneration (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListForGeneration GALGAS_extensionSetterForGeneration::readProperty_mSemanticInstructionListForGeneration (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticInstructionListForGeneration () ;
   }else{
@@ -5865,7 +5865,7 @@ GALGAS_lstring GALGAS_overridingAbstractExtensionGetterAST::getter_mAbstractExte
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_overridingAbstractExtensionGetterAST::readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_overridingAbstractExtensionGetterAST::readProperty_mTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -5877,7 +5877,7 @@ GALGAS_lstring GALGAS_overridingAbstractExtensionGetterAST::readProperty_mTypeNa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_overridingAbstractExtensionGetterAST::readProperty_mAbstractExtensionGetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_overridingAbstractExtensionGetterAST::readProperty_mAbstractExtensionGetterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -5889,7 +5889,7 @@ GALGAS_lstring GALGAS_overridingAbstractExtensionGetterAST::readProperty_mAbstra
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalInputParameterListAST GALGAS_overridingAbstractExtensionGetterAST::readProperty_mAbstractExtensionGetterFormalInputParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalInputParameterListAST GALGAS_overridingAbstractExtensionGetterAST::readProperty_mAbstractExtensionGetterFormalInputParameterList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalInputParameterListAST () ;
   }else{
@@ -5901,7 +5901,7 @@ GALGAS_formalInputParameterListAST GALGAS_overridingAbstractExtensionGetterAST::
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_overridingAbstractExtensionGetterAST::readProperty_mAbstractExtensionGetterReturnedTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_overridingAbstractExtensionGetterAST::readProperty_mAbstractExtensionGetterReturnedTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -6262,7 +6262,7 @@ void GALGAS_overridingAbstractExtensionMethodAST::setter_setMOverridingExtension
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_overridingAbstractExtensionMethodAST::readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_overridingAbstractExtensionMethodAST::readProperty_mTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -6274,7 +6274,7 @@ GALGAS_lstring GALGAS_overridingAbstractExtensionMethodAST::readProperty_mTypeNa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_overridingAbstractExtensionMethodAST::readProperty_mOverridingExtensionMethodName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_overridingAbstractExtensionMethodAST::readProperty_mOverridingExtensionMethodName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -6286,7 +6286,7 @@ GALGAS_lstring GALGAS_overridingAbstractExtensionMethodAST::readProperty_mOverri
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListAST GALGAS_overridingAbstractExtensionMethodAST::readProperty_mOverridingExtensionMethodFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListAST GALGAS_overridingAbstractExtensionMethodAST::readProperty_mOverridingExtensionMethodFormalParameterList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalParameterListAST () ;
   }else{
@@ -6610,7 +6610,7 @@ GALGAS_formalParameterListAST GALGAS_overridingAbstractExtensionSetterAST::gette
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_overridingAbstractExtensionSetterAST::readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_overridingAbstractExtensionSetterAST::readProperty_mTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -6622,7 +6622,7 @@ GALGAS_lstring GALGAS_overridingAbstractExtensionSetterAST::readProperty_mTypeNa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_overridingAbstractExtensionSetterAST::readProperty_mOverridingExtensionSetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_overridingAbstractExtensionSetterAST::readProperty_mOverridingExtensionSetterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -6634,7 +6634,7 @@ GALGAS_lstring GALGAS_overridingAbstractExtensionSetterAST::readProperty_mOverri
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListAST GALGAS_overridingAbstractExtensionSetterAST::readProperty_mOverridingExtensionSetterFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListAST GALGAS_overridingAbstractExtensionSetterAST::readProperty_mOverridingExtensionSetterFormalParameterList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalParameterListAST () ;
   }else{
@@ -7026,7 +7026,7 @@ GALGAS_location GALGAS_overridingExtensionGetterAST::getter_mEndOfReaderLocation
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_overridingExtensionGetterAST::readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_overridingExtensionGetterAST::readProperty_mTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -7038,7 +7038,7 @@ GALGAS_lstring GALGAS_overridingExtensionGetterAST::readProperty_mTypeName (C_Co
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_overridingExtensionGetterAST::readProperty_mOverridingExtensionGetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_overridingExtensionGetterAST::readProperty_mOverridingExtensionGetterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -7050,7 +7050,7 @@ GALGAS_lstring GALGAS_overridingExtensionGetterAST::readProperty_mOverridingExte
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalInputParameterListAST GALGAS_overridingExtensionGetterAST::readProperty_mOverridingExtensionGetterFormalInputParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalInputParameterListAST GALGAS_overridingExtensionGetterAST::readProperty_mOverridingExtensionGetterFormalInputParameterList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalInputParameterListAST () ;
   }else{
@@ -7062,7 +7062,7 @@ GALGAS_formalInputParameterListAST GALGAS_overridingExtensionGetterAST::readProp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_overridingExtensionGetterAST::readProperty_mOverridingExtensionGetterReturnedTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_overridingExtensionGetterAST::readProperty_mOverridingExtensionGetterReturnedTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -7074,7 +7074,7 @@ GALGAS_lstring GALGAS_overridingExtensionGetterAST::readProperty_mOverridingExte
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_overridingExtensionGetterAST::readProperty_mOverridingExtensionGetterReturnedVariableName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_overridingExtensionGetterAST::readProperty_mOverridingExtensionGetterReturnedVariableName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -7086,7 +7086,7 @@ GALGAS_lstring GALGAS_overridingExtensionGetterAST::readProperty_mOverridingExte
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListAST GALGAS_overridingExtensionGetterAST::readProperty_mOverridingExtensionGetterInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListAST GALGAS_overridingExtensionGetterAST::readProperty_mOverridingExtensionGetterInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticInstructionListAST () ;
   }else{
@@ -7098,7 +7098,7 @@ GALGAS_semanticInstructionListAST GALGAS_overridingExtensionGetterAST::readPrope
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_overridingExtensionGetterAST::readProperty_mEndOfReaderLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_overridingExtensionGetterAST::readProperty_mEndOfReaderLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -7528,7 +7528,7 @@ GALGAS_semanticInstructionListForGeneration GALGAS_overrideExtensionGetterForGen
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_overrideExtensionGetterForGeneration::readProperty_mReceiverType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry GALGAS_overrideExtensionGetterForGeneration::readProperty_mReceiverType (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_unifiedTypeMap_2D_entry () ;
   }else{
@@ -7540,7 +7540,7 @@ GALGAS_unifiedTypeMap_2D_entry GALGAS_overrideExtensionGetterForGeneration::read
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_overrideExtensionGetterForGeneration::readProperty_mBaseTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_overrideExtensionGetterForGeneration::readProperty_mBaseTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -7552,7 +7552,7 @@ GALGAS_string GALGAS_overrideExtensionGetterForGeneration::readProperty_mBaseTyp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_overrideExtensionGetterForGeneration::readProperty_mOverridingExtensionGetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_overrideExtensionGetterForGeneration::readProperty_mOverridingExtensionGetterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -7564,7 +7564,7 @@ GALGAS_string GALGAS_overrideExtensionGetterForGeneration::readProperty_mOverrid
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_overrideExtensionGetterForGeneration::readProperty_mResultType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry GALGAS_overrideExtensionGetterForGeneration::readProperty_mResultType (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_unifiedTypeMap_2D_entry () ;
   }else{
@@ -7576,7 +7576,7 @@ GALGAS_unifiedTypeMap_2D_entry GALGAS_overrideExtensionGetterForGeneration::read
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_overrideExtensionGetterForGeneration::readProperty_mResultVarCppName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_overrideExtensionGetterForGeneration::readProperty_mResultVarCppName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -7588,7 +7588,7 @@ GALGAS_string GALGAS_overrideExtensionGetterForGeneration::readProperty_mResultV
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalInputParameterListForGeneration GALGAS_overrideExtensionGetterForGeneration::readProperty_mOverridingExtensionGetterFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalInputParameterListForGeneration GALGAS_overrideExtensionGetterForGeneration::readProperty_mOverridingExtensionGetterFormalParameterList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalInputParameterListForGeneration () ;
   }else{
@@ -7600,7 +7600,7 @@ GALGAS_formalInputParameterListForGeneration GALGAS_overrideExtensionGetterForGe
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_typedPropertyList GALGAS_overrideExtensionGetterForGeneration::readProperty_mTypedAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList GALGAS_overrideExtensionGetterForGeneration::readProperty_mTypedAttributeList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_typedPropertyList () ;
   }else{
@@ -7612,7 +7612,7 @@ GALGAS_typedPropertyList GALGAS_overrideExtensionGetterForGeneration::readProper
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListForGeneration GALGAS_overrideExtensionGetterForGeneration::readProperty_mSemanticInstructionListForGeneration (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListForGeneration GALGAS_overrideExtensionGetterForGeneration::readProperty_mSemanticInstructionListForGeneration (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticInstructionListForGeneration () ;
   }else{
@@ -7993,7 +7993,7 @@ GALGAS_location GALGAS_overridingExtensionMethodAST::getter_mEndOfMethodLocation
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_overridingExtensionMethodAST::readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_overridingExtensionMethodAST::readProperty_mTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -8005,7 +8005,7 @@ GALGAS_lstring GALGAS_overridingExtensionMethodAST::readProperty_mTypeName (C_Co
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_overridingExtensionMethodAST::readProperty_mOverridingExtensionMethodName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_overridingExtensionMethodAST::readProperty_mOverridingExtensionMethodName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -8017,7 +8017,7 @@ GALGAS_lstring GALGAS_overridingExtensionMethodAST::readProperty_mOverridingExte
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListAST GALGAS_overridingExtensionMethodAST::readProperty_mOverridingExtensionMethodFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListAST GALGAS_overridingExtensionMethodAST::readProperty_mOverridingExtensionMethodFormalParameterList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalParameterListAST () ;
   }else{
@@ -8029,7 +8029,7 @@ GALGAS_formalParameterListAST GALGAS_overridingExtensionMethodAST::readProperty_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListAST GALGAS_overridingExtensionMethodAST::readProperty_mOverridingExtensionMethodInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListAST GALGAS_overridingExtensionMethodAST::readProperty_mOverridingExtensionMethodInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticInstructionListAST () ;
   }else{
@@ -8041,7 +8041,7 @@ GALGAS_semanticInstructionListAST GALGAS_overridingExtensionMethodAST::readPrope
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_overridingExtensionMethodAST::readProperty_mEndOfMethodLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_overridingExtensionMethodAST::readProperty_mEndOfMethodLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -8429,7 +8429,7 @@ GALGAS_semanticInstructionListForGeneration GALGAS_overridingExtensionMethodForG
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_overridingExtensionMethodForGeneration::readProperty_mReceiverType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry GALGAS_overridingExtensionMethodForGeneration::readProperty_mReceiverType (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_unifiedTypeMap_2D_entry () ;
   }else{
@@ -8441,7 +8441,7 @@ GALGAS_unifiedTypeMap_2D_entry GALGAS_overridingExtensionMethodForGeneration::re
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_overridingExtensionMethodForGeneration::readProperty_mBaseTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_overridingExtensionMethodForGeneration::readProperty_mBaseTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -8453,7 +8453,7 @@ GALGAS_string GALGAS_overridingExtensionMethodForGeneration::readProperty_mBaseT
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_overridingExtensionMethodForGeneration::readProperty_mExtensionMethodName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_overridingExtensionMethodForGeneration::readProperty_mExtensionMethodName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -8465,7 +8465,7 @@ GALGAS_string GALGAS_overridingExtensionMethodForGeneration::readProperty_mExten
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListForGeneration GALGAS_overridingExtensionMethodForGeneration::readProperty_mExtensionMethodFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListForGeneration GALGAS_overridingExtensionMethodForGeneration::readProperty_mExtensionMethodFormalParameterList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalParameterListForGeneration () ;
   }else{
@@ -8477,7 +8477,7 @@ GALGAS_formalParameterListForGeneration GALGAS_overridingExtensionMethodForGener
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_typedPropertyList GALGAS_overridingExtensionMethodForGeneration::readProperty_mTypedAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList GALGAS_overridingExtensionMethodForGeneration::readProperty_mTypedAttributeList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_typedPropertyList () ;
   }else{
@@ -8489,7 +8489,7 @@ GALGAS_typedPropertyList GALGAS_overridingExtensionMethodForGeneration::readProp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListForGeneration GALGAS_overridingExtensionMethodForGeneration::readProperty_mSemanticInstructionListForGeneration (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListForGeneration GALGAS_overridingExtensionMethodForGeneration::readProperty_mSemanticInstructionListForGeneration (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticInstructionListForGeneration () ;
   }else{
@@ -8862,7 +8862,7 @@ GALGAS_location GALGAS_overridingExtensionSetterAST::getter_mEndOfSetterDeclarat
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_overridingExtensionSetterAST::readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_overridingExtensionSetterAST::readProperty_mTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -8874,7 +8874,7 @@ GALGAS_lstring GALGAS_overridingExtensionSetterAST::readProperty_mTypeName (C_Co
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_overridingExtensionSetterAST::readProperty_mOverridingExtensionSetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_overridingExtensionSetterAST::readProperty_mOverridingExtensionSetterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -8886,7 +8886,7 @@ GALGAS_lstring GALGAS_overridingExtensionSetterAST::readProperty_mOverridingExte
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListAST GALGAS_overridingExtensionSetterAST::readProperty_mOverridingExtensionSetterFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListAST GALGAS_overridingExtensionSetterAST::readProperty_mOverridingExtensionSetterFormalParameterList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalParameterListAST () ;
   }else{
@@ -8898,7 +8898,7 @@ GALGAS_formalParameterListAST GALGAS_overridingExtensionSetterAST::readProperty_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListAST GALGAS_overridingExtensionSetterAST::readProperty_mOverridingExtensionSetterInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListAST GALGAS_overridingExtensionSetterAST::readProperty_mOverridingExtensionSetterInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticInstructionListAST () ;
   }else{
@@ -8910,7 +8910,7 @@ GALGAS_semanticInstructionListAST GALGAS_overridingExtensionSetterAST::readPrope
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_overridingExtensionSetterAST::readProperty_mEndOfSetterDeclarationLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_overridingExtensionSetterAST::readProperty_mEndOfSetterDeclarationLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -9298,7 +9298,7 @@ GALGAS_semanticInstructionListForGeneration GALGAS_overridingExtensionSetterForG
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_overridingExtensionSetterForGeneration::readProperty_mReceiverType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry GALGAS_overridingExtensionSetterForGeneration::readProperty_mReceiverType (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_unifiedTypeMap_2D_entry () ;
   }else{
@@ -9310,7 +9310,7 @@ GALGAS_unifiedTypeMap_2D_entry GALGAS_overridingExtensionSetterForGeneration::re
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_overridingExtensionSetterForGeneration::readProperty_mBaseTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_overridingExtensionSetterForGeneration::readProperty_mBaseTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -9322,7 +9322,7 @@ GALGAS_string GALGAS_overridingExtensionSetterForGeneration::readProperty_mBaseT
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_overridingExtensionSetterForGeneration::readProperty_mExtensionSetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_overridingExtensionSetterForGeneration::readProperty_mExtensionSetterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -9334,7 +9334,7 @@ GALGAS_string GALGAS_overridingExtensionSetterForGeneration::readProperty_mExten
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListForGeneration GALGAS_overridingExtensionSetterForGeneration::readProperty_mExtensionSetterFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListForGeneration GALGAS_overridingExtensionSetterForGeneration::readProperty_mExtensionSetterFormalParameterList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalParameterListForGeneration () ;
   }else{
@@ -9346,7 +9346,7 @@ GALGAS_formalParameterListForGeneration GALGAS_overridingExtensionSetterForGener
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_typedPropertyList GALGAS_overridingExtensionSetterForGeneration::readProperty_mTypedAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList GALGAS_overridingExtensionSetterForGeneration::readProperty_mTypedAttributeList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_typedPropertyList () ;
   }else{
@@ -9358,7 +9358,7 @@ GALGAS_typedPropertyList GALGAS_overridingExtensionSetterForGeneration::readProp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListForGeneration GALGAS_overridingExtensionSetterForGeneration::readProperty_mSemanticInstructionListForGeneration (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListForGeneration GALGAS_overridingExtensionSetterForGeneration::readProperty_mSemanticInstructionListForGeneration (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticInstructionListForGeneration () ;
   }else{
@@ -9716,7 +9716,7 @@ void GALGAS_outputActualParameterAST::setter_setMEndOfExpressionLocation (GALGAS
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_outputActualParameterAST::readProperty_mActualSelector (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_outputActualParameterAST::readProperty_mActualSelector (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -9728,7 +9728,7 @@ GALGAS_lstring GALGAS_outputActualParameterAST::readProperty_mActualSelector (C_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_outputActualParameterAST::readProperty_mOutputActualParameterExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_outputActualParameterAST::readProperty_mOutputActualParameterExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -9740,7 +9740,7 @@ GALGAS_semanticExpressionAST GALGAS_outputActualParameterAST::readProperty_mOutp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_outputActualParameterAST::readProperty_mEndOfExpressionLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_outputActualParameterAST::readProperty_mEndOfExpressionLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -10089,7 +10089,7 @@ void GALGAS_outputInputActualParameterAST::setter_setMStructAttributeList (GALGA
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_outputInputActualParameterAST::readProperty_mActualSelector (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_outputInputActualParameterAST::readProperty_mActualSelector (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -10101,7 +10101,7 @@ GALGAS_lstring GALGAS_outputInputActualParameterAST::readProperty_mActualSelecto
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_outputInputActualParameterAST::readProperty_mOutputInputActualParameterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_outputInputActualParameterAST::readProperty_mOutputInputActualParameterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -10113,7 +10113,7 @@ GALGAS_lstring GALGAS_outputInputActualParameterAST::readProperty_mOutputInputAc
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstringlist GALGAS_outputInputActualParameterAST::readProperty_mStructAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_outputInputActualParameterAST::readProperty_mStructAttributeList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstringlist () ;
   }else{
@@ -10406,7 +10406,7 @@ void GALGAS_outputInputSingleJokerParameterAST::setter_setMActualSelector (GALGA
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_outputInputSingleJokerParameterAST::readProperty_mActualSelector (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_outputInputSingleJokerParameterAST::readProperty_mActualSelector (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -10719,7 +10719,7 @@ void GALGAS_inputActualExistingVariableParameterAST::setter_setMInputActualParam
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_inputActualExistingVariableParameterAST::readProperty_mActualSelector (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_inputActualExistingVariableParameterAST::readProperty_mActualSelector (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -10731,7 +10731,7 @@ GALGAS_lstring GALGAS_inputActualExistingVariableParameterAST::readProperty_mAct
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_inputActualExistingVariableParameterAST::readProperty_mInputActualParameterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_inputActualExistingVariableParameterAST::readProperty_mInputActualParameterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -11048,7 +11048,7 @@ void GALGAS_inputActualSelfPropertyParameterAST::setter_setMInputActualSelfPrope
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_inputActualSelfPropertyParameterAST::readProperty_mActualSelector (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_inputActualSelfPropertyParameterAST::readProperty_mActualSelector (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -11060,7 +11060,7 @@ GALGAS_lstring GALGAS_inputActualSelfPropertyParameterAST::readProperty_mActualS
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_inputActualSelfPropertyParameterAST::readProperty_mInputActualSelfPropertyName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_inputActualSelfPropertyParameterAST::readProperty_mInputActualSelfPropertyName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -11405,7 +11405,7 @@ void GALGAS_inputActualNewVariableParameterAST::setter_setMInputActualParameterN
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_inputActualNewVariableParameterAST::readProperty_mActualSelector (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_inputActualNewVariableParameterAST::readProperty_mActualSelector (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -11417,7 +11417,7 @@ GALGAS_lstring GALGAS_inputActualNewVariableParameterAST::readProperty_mActualSe
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_inputActualNewVariableParameterAST::readProperty_mInputOptionalActualTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_inputActualNewVariableParameterAST::readProperty_mInputOptionalActualTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -11429,7 +11429,7 @@ GALGAS_lstring GALGAS_inputActualNewVariableParameterAST::readProperty_mInputOpt
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_inputActualNewVariableParameterAST::readProperty_mInputActualParameterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_inputActualNewVariableParameterAST::readProperty_mInputActualParameterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -11806,7 +11806,7 @@ void GALGAS_inputActualNewConstantParameterAST::setter_setMMarkedAsUnused (GALGA
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_inputActualNewConstantParameterAST::readProperty_mActualSelector (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_inputActualNewConstantParameterAST::readProperty_mActualSelector (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -11818,7 +11818,7 @@ GALGAS_lstring GALGAS_inputActualNewConstantParameterAST::readProperty_mActualSe
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_inputActualNewConstantParameterAST::readProperty_mInputOptionalActualTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_inputActualNewConstantParameterAST::readProperty_mInputOptionalActualTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -11830,7 +11830,7 @@ GALGAS_lstring GALGAS_inputActualNewConstantParameterAST::readProperty_mInputOpt
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_inputActualNewConstantParameterAST::readProperty_mInputActualParameterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_inputActualNewConstantParameterAST::readProperty_mInputActualParameterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -11842,7 +11842,7 @@ GALGAS_lstring GALGAS_inputActualNewConstantParameterAST::readProperty_mInputAct
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_inputActualNewConstantParameterAST::readProperty_mMarkedAsUnused (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_inputActualNewConstantParameterAST::readProperty_mMarkedAsUnused (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_bool () ;
   }else{
@@ -12139,7 +12139,7 @@ void GALGAS_inputSingleJokerActualParameterAST::setter_setMActualSelector (GALGA
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_inputSingleJokerActualParameterAST::readProperty_mActualSelector (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_inputSingleJokerActualParameterAST::readProperty_mActualSelector (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -12424,7 +12424,7 @@ void GALGAS_inputParameterVariable::setter_setMActualParameterName (GALGAS_lstri
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_inputParameterVariable::readProperty_mActualParameterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_inputParameterVariable::readProperty_mActualParameterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -12737,7 +12737,7 @@ void GALGAS_inputParameterDeclaredVariable::setter_setMActualParameterName (GALG
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_inputParameterDeclaredVariable::readProperty_mActualParameterTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_inputParameterDeclaredVariable::readProperty_mActualParameterTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -12749,7 +12749,7 @@ GALGAS_lstring GALGAS_inputParameterDeclaredVariable::readProperty_mActualParame
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_inputParameterDeclaredVariable::readProperty_mActualParameterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_inputParameterDeclaredVariable::readProperty_mActualParameterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -13066,7 +13066,7 @@ void GALGAS_inputParameterDeclaredConstant::setter_setMActualParameterName (GALG
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_inputParameterDeclaredConstant::readProperty_mActualParameterTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_inputParameterDeclaredConstant::readProperty_mActualParameterTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -13078,7 +13078,7 @@ GALGAS_lstring GALGAS_inputParameterDeclaredConstant::readProperty_mActualParame
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_inputParameterDeclaredConstant::readProperty_mActualParameterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_inputParameterDeclaredConstant::readProperty_mActualParameterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -13428,7 +13428,7 @@ void GALGAS_externRoutineDeclarationAST::setter_setMFormalArgumentList (GALGAS_f
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_externRoutineDeclarationAST::readProperty_mIsInternal (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_externRoutineDeclarationAST::readProperty_mIsInternal (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_bool () ;
   }else{
@@ -13440,7 +13440,7 @@ GALGAS_bool GALGAS_externRoutineDeclarationAST::readProperty_mIsInternal (C_Comp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_externRoutineDeclarationAST::readProperty_mRoutineName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_externRoutineDeclarationAST::readProperty_mRoutineName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -13452,7 +13452,7 @@ GALGAS_lstring GALGAS_externRoutineDeclarationAST::readProperty_mRoutineName (C_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListAST GALGAS_externRoutineDeclarationAST::readProperty_mFormalArgumentList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListAST GALGAS_externRoutineDeclarationAST::readProperty_mFormalArgumentList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalParameterListAST () ;
   }else{
@@ -13796,7 +13796,7 @@ void GALGAS_procDeclarationAST::setter_setMEndOfRoutineInstructionList (GALGAS_l
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListAST GALGAS_procDeclarationAST::readProperty_mRoutineInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListAST GALGAS_procDeclarationAST::readProperty_mRoutineInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticInstructionListAST () ;
   }else{
@@ -13808,7 +13808,7 @@ GALGAS_semanticInstructionListAST GALGAS_procDeclarationAST::readProperty_mRouti
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_procDeclarationAST::readProperty_mEndOfRoutineInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_procDeclarationAST::readProperty_mEndOfRoutineInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -14170,7 +14170,7 @@ void GALGAS_externFunctionDeclarationAST::setter_setMResultTypeName (GALGAS_lstr
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_externFunctionDeclarationAST::readProperty_mFunctionName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_externFunctionDeclarationAST::readProperty_mFunctionName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -14182,7 +14182,7 @@ GALGAS_lstring GALGAS_externFunctionDeclarationAST::readProperty_mFunctionName (
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalInputParameterListAST GALGAS_externFunctionDeclarationAST::readProperty_mFormalArgumentList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_formalInputParameterListAST GALGAS_externFunctionDeclarationAST::readProperty_mFormalArgumentList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_formalInputParameterListAST () ;
   }else{
@@ -14194,7 +14194,7 @@ GALGAS_formalInputParameterListAST GALGAS_externFunctionDeclarationAST::readProp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_externFunctionDeclarationAST::readProperty_mResultTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_externFunctionDeclarationAST::readProperty_mResultTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -14622,7 +14622,7 @@ void GALGAS_functionDeclarationAST::setter_setMIsUsefull (GALGAS_bool inValue
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_functionDeclarationAST::readProperty_mResultVariableName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_functionDeclarationAST::readProperty_mResultVariableName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -14634,7 +14634,7 @@ GALGAS_lstring GALGAS_functionDeclarationAST::readProperty_mResultVariableName (
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListAST GALGAS_functionDeclarationAST::readProperty_mFunctionInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListAST GALGAS_functionDeclarationAST::readProperty_mFunctionInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticInstructionListAST () ;
   }else{
@@ -14646,7 +14646,7 @@ GALGAS_semanticInstructionListAST GALGAS_functionDeclarationAST::readProperty_mF
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_functionDeclarationAST::readProperty_mEndOfFunctionInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_functionDeclarationAST::readProperty_mEndOfFunctionInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -14658,7 +14658,7 @@ GALGAS_location GALGAS_functionDeclarationAST::readProperty_mEndOfFunctionInstru
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_functionDeclarationAST::readProperty_mIsInternal (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_functionDeclarationAST::readProperty_mIsInternal (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_bool () ;
   }else{
@@ -14670,7 +14670,7 @@ GALGAS_bool GALGAS_functionDeclarationAST::readProperty_mIsInternal (C_Compiler 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_functionDeclarationAST::readProperty_mIsUsefull (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_functionDeclarationAST::readProperty_mIsUsefull (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_bool () ;
   }else{
@@ -14778,6 +14778,118 @@ GALGAS_functionDeclarationAST GALGAS_functionDeclarationAST::extractObject (cons
       result = *p ;
     }else{
       inCompiler->castError ("functionDeclarationAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_functionDeclarationAST_2D_weak::objectCompare (const GALGAS_functionDeclarationAST_2D_weak & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
+    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_functionDeclarationAST_2D_weak::GALGAS_functionDeclarationAST_2D_weak (void) :
+GALGAS_externFunctionDeclarationAST_2D_weak () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_functionDeclarationAST_2D_weak & GALGAS_functionDeclarationAST_2D_weak::operator = (const GALGAS_functionDeclarationAST & inSource) {
+  cPtr_weakReference_class * proxyPtr = NULL ;
+  acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
+  if (p != NULL) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mObjectPtr, proxyPtr) ;
+  return *this ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_functionDeclarationAST_2D_weak::GALGAS_functionDeclarationAST_2D_weak (const GALGAS_functionDeclarationAST & inSource) :
+GALGAS_externFunctionDeclarationAST_2D_weak (inSource) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_functionDeclarationAST_2D_weak GALGAS_functionDeclarationAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+  GALGAS_functionDeclarationAST_2D_weak result ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_functionDeclarationAST GALGAS_functionDeclarationAST_2D_weak::bang_functionDeclarationAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_functionDeclarationAST result ;
+  if (mObjectPtr != NULL) {
+    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
+    acStrongPtr_class * strongPtr = p->strongObject () ;
+    if (strongPtr == NULL) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_functionDeclarationAST) ;
+      result = GALGAS_functionDeclarationAST ((cPtr_functionDeclarationAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@functionDeclarationAST-weak type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_functionDeclarationAST_2D_weak ("functionDeclarationAST-weak",
+                                                       & kTypeDescriptor_GALGAS_externFunctionDeclarationAST_2D_weak) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_functionDeclarationAST_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_functionDeclarationAST_2D_weak ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_functionDeclarationAST_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_functionDeclarationAST_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_functionDeclarationAST_2D_weak GALGAS_functionDeclarationAST_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                            C_Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_functionDeclarationAST_2D_weak result ;
+  const GALGAS_functionDeclarationAST_2D_weak * p = (const GALGAS_functionDeclarationAST_2D_weak *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_functionDeclarationAST_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("functionDeclarationAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

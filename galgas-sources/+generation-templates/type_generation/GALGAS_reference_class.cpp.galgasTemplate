@@ -149,7 +149,7 @@ end
 
 for () in CURRENT_PROPERTY_LIST do
 %//----------------------------------------------------------------------------------------------------------------------\n\n%
-  %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::readProperty_%![mPropertyName identifierRepresentation]% (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {\n%
+  %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::readProperty_%![mPropertyName identifierRepresentation]% (void) const {\n%
     %  if (NULL == mObjectPtr) {\n%
     %    return GALGAS_%![mPropertyTypeEntry identifierRepresentation]% () ;\n%
     %  }else{\n%

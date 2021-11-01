@@ -1816,7 +1816,7 @@ GALGAS_templateExpressionListAST GALGAS_templateConstructorAST::getter_mExpressi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_templateConstructorAST::readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_templateConstructorAST::readProperty_mTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -1828,7 +1828,7 @@ GALGAS_lstring GALGAS_templateConstructorAST::readProperty_mTypeName (C_Compiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_templateConstructorAST::readProperty_mConstructorName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_templateConstructorAST::readProperty_mConstructorName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -1840,7 +1840,7 @@ GALGAS_lstring GALGAS_templateConstructorAST::readProperty_mConstructorName (C_C
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionListAST GALGAS_templateConstructorAST::readProperty_mExpressionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionListAST GALGAS_templateConstructorAST::readProperty_mExpressionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionListAST () ;
   }else{
@@ -2156,7 +2156,7 @@ GALGAS_templateExpressionListAST GALGAS_templateFileWrapperTemplateCallAST::gett
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_templateFileWrapperTemplateCallAST::readProperty_mFileWrapperName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_templateFileWrapperTemplateCallAST::readProperty_mFileWrapperName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -2168,7 +2168,7 @@ GALGAS_lstring GALGAS_templateFileWrapperTemplateCallAST::readProperty_mFileWrap
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_templateFileWrapperTemplateCallAST::readProperty_mTemplateName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_templateFileWrapperTemplateCallAST::readProperty_mTemplateName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -2180,7 +2180,7 @@ GALGAS_lstring GALGAS_templateFileWrapperTemplateCallAST::readProperty_mTemplate
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionListAST GALGAS_templateFileWrapperTemplateCallAST::readProperty_mOutExpressionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionListAST GALGAS_templateFileWrapperTemplateCallAST::readProperty_mOutExpressionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionListAST () ;
   }else{
@@ -2487,7 +2487,7 @@ GALGAS_templateExpressionListAST GALGAS_templateExtensionTemplateCallAST::getter
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateExtensionTemplateCallAST::readProperty_mExpressionValue (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateExtensionTemplateCallAST::readProperty_mExpressionValue (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -2499,7 +2499,7 @@ GALGAS_templateExpressionAST GALGAS_templateExtensionTemplateCallAST::readProper
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_templateExtensionTemplateCallAST::readProperty_mTemplateName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_templateExtensionTemplateCallAST::readProperty_mTemplateName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -2511,7 +2511,7 @@ GALGAS_lstring GALGAS_templateExtensionTemplateCallAST::readProperty_mTemplateNa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionListAST GALGAS_templateExtensionTemplateCallAST::readProperty_mOutExpressionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionListAST GALGAS_templateExtensionTemplateCallAST::readProperty_mOutExpressionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionListAST () ;
   }else{
@@ -2810,7 +2810,7 @@ GALGAS_location GALGAS_templateLiteralStringExpressionAST::getter_mLocation (UNU
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_stringlist GALGAS_templateLiteralStringExpressionAST::readProperty_mLiteralStringList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_stringlist GALGAS_templateLiteralStringExpressionAST::readProperty_mLiteralStringList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_stringlist () ;
   }else{
@@ -2822,7 +2822,7 @@ GALGAS_stringlist GALGAS_templateLiteralStringExpressionAST::readProperty_mLiter
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateLiteralStringExpressionAST::readProperty_mLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateLiteralStringExpressionAST::readProperty_mLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -3125,7 +3125,7 @@ GALGAS_lstring GALGAS_structFieldAccessTemplateExpressionAST::getter_mStructFiel
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_structFieldAccessTemplateExpressionAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_structFieldAccessTemplateExpressionAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -3137,7 +3137,7 @@ GALGAS_location GALGAS_structFieldAccessTemplateExpressionAST::readProperty_mOpe
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_structFieldAccessTemplateExpressionAST::readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_structFieldAccessTemplateExpressionAST::readProperty_mExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -3149,7 +3149,7 @@ GALGAS_templateExpressionAST GALGAS_structFieldAccessTemplateExpressionAST::read
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_structFieldAccessTemplateExpressionAST::readProperty_mStructFieldName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_structFieldAccessTemplateExpressionAST::readProperty_mStructFieldName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -3465,7 +3465,7 @@ GALGAS_lstring GALGAS_templateOptionAccessAST::getter_mGetterName (UNUSED_LOCATI
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_templateOptionAccessAST::readProperty_mOptionComponentName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_templateOptionAccessAST::readProperty_mOptionComponentName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -3477,7 +3477,7 @@ GALGAS_lstring GALGAS_templateOptionAccessAST::readProperty_mOptionComponentName
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_templateOptionAccessAST::readProperty_mOptionName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_templateOptionAccessAST::readProperty_mOptionName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -3489,7 +3489,7 @@ GALGAS_lstring GALGAS_templateOptionAccessAST::readProperty_mOptionName (C_Compi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_templateOptionAccessAST::readProperty_mGetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_templateOptionAccessAST::readProperty_mGetterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -3812,7 +3812,7 @@ GALGAS_lstring GALGAS_templateTestDynamicClassAST::getter_mTypeName (UNUSED_LOCA
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateTestDynamicClassAST::readProperty_mReceiverExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateTestDynamicClassAST::readProperty_mReceiverExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -3824,7 +3824,7 @@ GALGAS_templateExpressionAST GALGAS_templateTestDynamicClassAST::readProperty_mR
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateTestDynamicClassAST::readProperty_mEndOfReceiverExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateTestDynamicClassAST::readProperty_mEndOfReceiverExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -3836,7 +3836,7 @@ GALGAS_location GALGAS_templateTestDynamicClassAST::readProperty_mEndOfReceiverE
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_dynamicTypeComparisonKind GALGAS_templateTestDynamicClassAST::readProperty_mTypeComparisonKind (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_dynamicTypeComparisonKind GALGAS_templateTestDynamicClassAST::readProperty_mTypeComparisonKind (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_dynamicTypeComparisonKind () ;
   }else{
@@ -3848,7 +3848,7 @@ GALGAS_dynamicTypeComparisonKind GALGAS_templateTestDynamicClassAST::readPropert
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_templateTestDynamicClassAST::readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_templateTestDynamicClassAST::readProperty_mTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -4151,7 +4151,7 @@ GALGAS_templateExpressionListAST GALGAS_templateFunctionCallAST::getter_mExpress
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_templateFunctionCallAST::readProperty_mFunctionName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_templateFunctionCallAST::readProperty_mFunctionName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -4163,7 +4163,7 @@ GALGAS_lstring GALGAS_templateFunctionCallAST::readProperty_mFunctionName (C_Com
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionListAST GALGAS_templateFunctionCallAST::readProperty_mExpressionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionListAST GALGAS_templateFunctionCallAST::readProperty_mExpressionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionListAST () ;
   }else{
@@ -4441,7 +4441,7 @@ GALGAS_lstring GALGAS_templateVarInExpressionAST::getter_mVarName (UNUSED_LOCATI
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_templateVarInExpressionAST::readProperty_mVarName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_templateVarInExpressionAST::readProperty_mVarName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -4715,7 +4715,7 @@ GALGAS_string GALGAS_templateInstructionStringAST::getter_mTemplateString (UNUSE
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_templateInstructionStringAST::readProperty_mTemplateString (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_templateInstructionStringAST::readProperty_mTemplateString (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -5094,7 +5094,7 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionForeachAST::getter_m
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_templateInstructionForeachAST::readProperty_mIsAscending (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_templateInstructionForeachAST::readProperty_mIsAscending (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_bool () ;
   }else{
@@ -5106,7 +5106,7 @@ GALGAS_bool GALGAS_templateInstructionForeachAST::readProperty_mIsAscending (C_C
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateInstructionForeachAST::readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateInstructionForeachAST::readProperty_mExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -5118,7 +5118,7 @@ GALGAS_templateExpressionAST GALGAS_templateInstructionForeachAST::readProperty_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_templateInstructionForeachAST::readProperty_mPrefix (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_templateInstructionForeachAST::readProperty_mPrefix (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -5130,7 +5130,7 @@ GALGAS_string GALGAS_templateInstructionForeachAST::readProperty_mPrefix (C_Comp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionListAST GALGAS_templateInstructionForeachAST::readProperty_mBeforeInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionListAST GALGAS_templateInstructionForeachAST::readProperty_mBeforeInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateInstructionListAST () ;
   }else{
@@ -5142,7 +5142,7 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionForeachAST::readProp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionListAST GALGAS_templateInstructionForeachAST::readProperty_mDoInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionListAST GALGAS_templateInstructionForeachAST::readProperty_mDoInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateInstructionListAST () ;
   }else{
@@ -5154,7 +5154,7 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionForeachAST::readProp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_templateInstructionForeachAST::readProperty_mIndexIdentifier (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_templateInstructionForeachAST::readProperty_mIndexIdentifier (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -5166,7 +5166,7 @@ GALGAS_lstring GALGAS_templateInstructionForeachAST::readProperty_mIndexIdentifi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionListAST GALGAS_templateInstructionForeachAST::readProperty_mBetweenInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionListAST GALGAS_templateInstructionForeachAST::readProperty_mBetweenInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateInstructionListAST () ;
   }else{
@@ -5178,7 +5178,7 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionForeachAST::readProp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionListAST GALGAS_templateInstructionForeachAST::readProperty_mAfterInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionListAST GALGAS_templateInstructionForeachAST::readProperty_mAfterInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateInstructionListAST () ;
   }else{
@@ -10737,7 +10737,7 @@ GALGAS_string GALGAS_templateInstructionStringForGeneration::getter_mTemplateStr
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_templateInstructionStringForGeneration::readProperty_mTemplateString (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_templateInstructionStringForGeneration::readProperty_mTemplateString (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -12202,7 +12202,7 @@ GALGAS_location GALGAS_templateGetterCallInExpressionAST::getter_mExpressionLoca
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateGetterCallInExpressionAST::readProperty_mReceiverExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateGetterCallInExpressionAST::readProperty_mReceiverExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
@@ -12214,7 +12214,7 @@ GALGAS_templateExpressionAST GALGAS_templateGetterCallInExpressionAST::readPrope
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_templateGetterCallInExpressionAST::readProperty_mGetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_templateGetterCallInExpressionAST::readProperty_mGetterName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -12226,7 +12226,7 @@ GALGAS_lstring GALGAS_templateGetterCallInExpressionAST::readProperty_mGetterNam
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionListAST GALGAS_templateGetterCallInExpressionAST::readProperty_mExpressionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionListAST GALGAS_templateGetterCallInExpressionAST::readProperty_mExpressionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateExpressionListAST () ;
   }else{
@@ -12238,7 +12238,7 @@ GALGAS_templateExpressionListAST GALGAS_templateGetterCallInExpressionAST::readP
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateGetterCallInExpressionAST::readProperty_mExpressionLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateGetterCallInExpressionAST::readProperty_mExpressionLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -12524,7 +12524,7 @@ GALGAS_lstring GALGAS_lexicalImplicitRuleAST::getter_mListName (UNUSED_LOCATION_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_lexicalImplicitRuleAST::readProperty_mListName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalImplicitRuleAST::readProperty_mListName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -12798,7 +12798,7 @@ GALGAS_lstring GALGAS_lexicalCharacterSetMatchAST::getter_mCharacterSetName (UNU
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_lexicalCharacterSetMatchAST::readProperty_mCharacterSetName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalCharacterSetMatchAST::readProperty_mCharacterSetName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -13072,7 +13072,7 @@ GALGAS_lchar GALGAS_lexicalCharacterMatchAST::getter_mCharacter (UNUSED_LOCATION
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lchar GALGAS_lexicalCharacterMatchAST::readProperty_mCharacter (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lchar GALGAS_lexicalCharacterMatchAST::readProperty_mCharacter (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lchar () ;
   }else{
@@ -13363,7 +13363,7 @@ GALGAS_lchar GALGAS_lexicalCharacterIntervalMatchAST::getter_mUpperBound (UNUSED
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lchar GALGAS_lexicalCharacterIntervalMatchAST::readProperty_mLowerBound (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lchar GALGAS_lexicalCharacterIntervalMatchAST::readProperty_mLowerBound (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lchar () ;
   }else{
@@ -13375,7 +13375,7 @@ GALGAS_lchar GALGAS_lexicalCharacterIntervalMatchAST::readProperty_mLowerBound (
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lchar GALGAS_lexicalCharacterIntervalMatchAST::readProperty_mUpperBound (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lchar GALGAS_lexicalCharacterIntervalMatchAST::readProperty_mUpperBound (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lchar () ;
   }else{
@@ -13653,7 +13653,7 @@ GALGAS_lstring GALGAS_lexicalStringMatchAST::getter_mString (UNUSED_LOCATION_ARG
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_lexicalStringMatchAST::readProperty_mString (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalStringMatchAST::readProperty_mString (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -13944,7 +13944,7 @@ GALGAS_lstring GALGAS_lexicalStringNotMatchAST::getter_mErrorMessage (UNUSED_LOC
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_lexicalStringNotMatchAST::readProperty_mString (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalStringNotMatchAST::readProperty_mString (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -13956,7 +13956,7 @@ GALGAS_lstring GALGAS_lexicalStringNotMatchAST::readProperty_mString (C_Compiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_lexicalStringNotMatchAST::readProperty_mErrorMessage (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalStringNotMatchAST::readProperty_mErrorMessage (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -14234,7 +14234,7 @@ GALGAS_lstring GALGAS_lexicalSimpleSendInstructionAST::getter_mSentTerminal (UNU
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_lexicalSimpleSendInstructionAST::readProperty_mSentTerminal (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalSimpleSendInstructionAST::readProperty_mSentTerminal (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -14508,7 +14508,7 @@ GALGAS_lstring GALGAS_lexicalSendTerminalByDefaultAST::getter_mDefaultSentTermin
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_lexicalSendTerminalByDefaultAST::readProperty_mDefaultSentTerminal (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalSendTerminalByDefaultAST::readProperty_mDefaultSentTerminal (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -14782,7 +14782,7 @@ GALGAS_lstring GALGAS_lexicalErrorByDefaultAST::getter_mDefaultErrorMessageName 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_lexicalErrorByDefaultAST::readProperty_mDefaultErrorMessageName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalErrorByDefaultAST::readProperty_mDefaultErrorMessageName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -15090,7 +15090,7 @@ GALGAS_lstringlist GALGAS_lexicalRoutineInstructionAST::getter_mErrorMessageList
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_lexicalRoutineInstructionAST::readProperty_mRoutineName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalRoutineInstructionAST::readProperty_mRoutineName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
@@ -15102,7 +15102,7 @@ GALGAS_lstring GALGAS_lexicalRoutineInstructionAST::readProperty_mRoutineName (C
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineCallActualArgumentListAST GALGAS_lexicalRoutineInstructionAST::readProperty_mActualArgumentList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalRoutineCallActualArgumentListAST GALGAS_lexicalRoutineInstructionAST::readProperty_mActualArgumentList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lexicalRoutineCallActualArgumentListAST () ;
   }else{
@@ -15114,7 +15114,7 @@ GALGAS_lexicalRoutineCallActualArgumentListAST GALGAS_lexicalRoutineInstructionA
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstringlist GALGAS_lexicalRoutineInstructionAST::readProperty_mErrorMessageList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_lexicalRoutineInstructionAST::readProperty_mErrorMessageList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstringlist () ;
   }else{
@@ -15401,7 +15401,7 @@ GALGAS_lstring GALGAS_lexicalAttributeInputOutputArgumentAST::getter_mAttributeN
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_lexicalAttributeInputOutputArgumentAST::readProperty_mAttributeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalAttributeInputOutputArgumentAST::readProperty_mAttributeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{

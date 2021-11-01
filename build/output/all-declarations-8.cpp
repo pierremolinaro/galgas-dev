@@ -221,7 +221,7 @@ GALGAS_semanticExpressionAST GALGAS_leftShiftExpressionAST::getter_mRightExpress
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_leftShiftExpressionAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_leftShiftExpressionAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -233,7 +233,7 @@ GALGAS_location GALGAS_leftShiftExpressionAST::readProperty_mOperatorLocation (C
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_leftShiftExpressionAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_leftShiftExpressionAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -245,7 +245,7 @@ GALGAS_semanticExpressionAST GALGAS_leftShiftExpressionAST::readProperty_mLeftEx
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_leftShiftExpressionAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_leftShiftExpressionAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -552,7 +552,7 @@ GALGAS_semanticExpressionAST GALGAS_addExpressionAST::getter_mRightExpression (U
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_addExpressionAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_addExpressionAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -564,7 +564,7 @@ GALGAS_location GALGAS_addExpressionAST::readProperty_mOperatorLocation (C_Compi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_addExpressionAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_addExpressionAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -576,7 +576,7 @@ GALGAS_semanticExpressionAST GALGAS_addExpressionAST::readProperty_mLeftExpressi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_addExpressionAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_addExpressionAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -883,7 +883,7 @@ GALGAS_semanticExpressionAST GALGAS_addExpressionNoOverflowAST::getter_mRightExp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_addExpressionNoOverflowAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_addExpressionNoOverflowAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -895,7 +895,7 @@ GALGAS_location GALGAS_addExpressionNoOverflowAST::readProperty_mOperatorLocatio
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_addExpressionNoOverflowAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_addExpressionNoOverflowAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -907,7 +907,7 @@ GALGAS_semanticExpressionAST GALGAS_addExpressionNoOverflowAST::readProperty_mLe
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_addExpressionNoOverflowAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_addExpressionNoOverflowAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -1214,7 +1214,7 @@ GALGAS_semanticExpressionAST GALGAS_subExpressionAST::getter_mRightExpression (U
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_subExpressionAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_subExpressionAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -1226,7 +1226,7 @@ GALGAS_location GALGAS_subExpressionAST::readProperty_mOperatorLocation (C_Compi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_subExpressionAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_subExpressionAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -1238,7 +1238,7 @@ GALGAS_semanticExpressionAST GALGAS_subExpressionAST::readProperty_mLeftExpressi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_subExpressionAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_subExpressionAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -1545,7 +1545,7 @@ GALGAS_semanticExpressionAST GALGAS_subExpressionNoOverflowAST::getter_mRightExp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_subExpressionNoOverflowAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_subExpressionNoOverflowAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -1557,7 +1557,7 @@ GALGAS_location GALGAS_subExpressionNoOverflowAST::readProperty_mOperatorLocatio
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_subExpressionNoOverflowAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_subExpressionNoOverflowAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -1569,7 +1569,7 @@ GALGAS_semanticExpressionAST GALGAS_subExpressionNoOverflowAST::readProperty_mLe
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_subExpressionNoOverflowAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_subExpressionNoOverflowAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -2296,7 +2296,7 @@ void GALGAS_multiplicationExpressionAST::setter_setMRightExpression (GALGAS_sema
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_multiplicationExpressionAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_multiplicationExpressionAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -2308,7 +2308,7 @@ GALGAS_location GALGAS_multiplicationExpressionAST::readProperty_mOperatorLocati
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -2320,7 +2320,7 @@ GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionAST::readProperty_mL
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -2660,7 +2660,7 @@ void GALGAS_multiplicationExpressionNoOverflowAST::setter_setMRightExpression (G
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_multiplicationExpressionNoOverflowAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_multiplicationExpressionNoOverflowAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -2672,7 +2672,7 @@ GALGAS_location GALGAS_multiplicationExpressionNoOverflowAST::readProperty_mOper
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionNoOverflowAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionNoOverflowAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -2684,7 +2684,7 @@ GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionNoOverflowAST::readP
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionNoOverflowAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionNoOverflowAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -3024,7 +3024,7 @@ void GALGAS_divisionExpressionAST::setter_setMRightExpression (GALGAS_semanticEx
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_divisionExpressionAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_divisionExpressionAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -3036,7 +3036,7 @@ GALGAS_location GALGAS_divisionExpressionAST::readProperty_mOperatorLocation (C_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_divisionExpressionAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_divisionExpressionAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -3048,7 +3048,7 @@ GALGAS_semanticExpressionAST GALGAS_divisionExpressionAST::readProperty_mLeftExp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_divisionExpressionAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_divisionExpressionAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -3388,7 +3388,7 @@ void GALGAS_divisionExpressionNoOverflowAST::setter_setMRightExpression (GALGAS_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_divisionExpressionNoOverflowAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_divisionExpressionNoOverflowAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -3400,7 +3400,7 @@ GALGAS_location GALGAS_divisionExpressionNoOverflowAST::readProperty_mOperatorLo
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_divisionExpressionNoOverflowAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_divisionExpressionNoOverflowAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -3412,7 +3412,7 @@ GALGAS_semanticExpressionAST GALGAS_divisionExpressionNoOverflowAST::readPropert
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_divisionExpressionNoOverflowAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_divisionExpressionNoOverflowAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -3752,7 +3752,7 @@ void GALGAS_moduloExpressionAST::setter_setMRightExpression (GALGAS_semanticExpr
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_moduloExpressionAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_moduloExpressionAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -3764,7 +3764,7 @@ GALGAS_location GALGAS_moduloExpressionAST::readProperty_mOperatorLocation (C_Co
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_moduloExpressionAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_moduloExpressionAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -3776,7 +3776,7 @@ GALGAS_semanticExpressionAST GALGAS_moduloExpressionAST::readProperty_mLeftExpre
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_moduloExpressionAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_moduloExpressionAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -4704,7 +4704,7 @@ void GALGAS_expressionCollectionValue::setter_setMExpressionLocation (GALGAS_loc
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_expressionCollectionValue::readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_expressionCollectionValue::readProperty_mExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -4716,7 +4716,7 @@ GALGAS_semanticExpressionAST GALGAS_expressionCollectionValue::readProperty_mExp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_expressionCollectionValue::readProperty_mExpressionLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_expressionCollectionValue::readProperty_mExpressionLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -5033,7 +5033,7 @@ void GALGAS_expressionListCollectionValue::setter_setMEndOfExpressionLocation (G
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_actualOutputExpressionList GALGAS_expressionListCollectionValue::readProperty_mExpressionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_actualOutputExpressionList GALGAS_expressionListCollectionValue::readProperty_mExpressionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_actualOutputExpressionList () ;
   }else{
@@ -5045,7 +5045,7 @@ GALGAS_actualOutputExpressionList GALGAS_expressionListCollectionValue::readProp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_expressionListCollectionValue::readProperty_mEndOfExpressionLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_expressionListCollectionValue::readProperty_mEndOfExpressionLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -5847,7 +5847,7 @@ void GALGAS_abstractCollectionValueElementForGeneration::setter_setMExpressionLo
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_abstractCollectionValueElementForGeneration::readProperty_mExpressionLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_abstractCollectionValueElementForGeneration::readProperty_mExpressionLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -6181,7 +6181,7 @@ void GALGAS_expressionListCollectionForGeneration::setter_setMExpressionList (GA
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionListForGeneration GALGAS_expressionListCollectionForGeneration::readProperty_mExpressionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionListForGeneration GALGAS_expressionListCollectionForGeneration::readProperty_mExpressionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionListForGeneration () ;
   }else{
@@ -6458,7 +6458,7 @@ GALGAS_location GALGAS_selfInExpressionAST::getter_mSelfLocation (UNUSED_LOCATIO
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_selfInExpressionAST::readProperty_mSelfLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_selfInExpressionAST::readProperty_mSelfLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -6741,7 +6741,7 @@ GALGAS_semanticExpressionAST GALGAS_notExpressionAST::getter_mExpression (UNUSED
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_notExpressionAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_notExpressionAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -6753,7 +6753,7 @@ GALGAS_location GALGAS_notExpressionAST::readProperty_mOperatorLocation (C_Compi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_notExpressionAST::readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_notExpressionAST::readProperty_mExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -7040,7 +7040,7 @@ GALGAS_semanticExpressionAST GALGAS_tildeExpressionAST::getter_mExpression (UNUS
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_tildeExpressionAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_tildeExpressionAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -7052,7 +7052,7 @@ GALGAS_location GALGAS_tildeExpressionAST::readProperty_mOperatorLocation (C_Com
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_tildeExpressionAST::readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_tildeExpressionAST::readProperty_mExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -7361,7 +7361,7 @@ void GALGAS_bangExpressionAST::setter_setMExpression (GALGAS_semanticExpressionA
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_bangExpressionAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_bangExpressionAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -7373,7 +7373,7 @@ GALGAS_location GALGAS_bangExpressionAST::readProperty_mOperatorLocation (C_Comp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_bangExpressionAST::readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_bangExpressionAST::readProperty_mExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -7660,7 +7660,7 @@ GALGAS_semanticExpressionAST GALGAS_unaryWrappingMinusExpressionAST::getter_mExp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_unaryWrappingMinusExpressionAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_unaryWrappingMinusExpressionAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -7672,7 +7672,7 @@ GALGAS_location GALGAS_unaryWrappingMinusExpressionAST::readProperty_mOperatorLo
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_unaryWrappingMinusExpressionAST::readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_unaryWrappingMinusExpressionAST::readProperty_mExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -7975,7 +7975,7 @@ GALGAS_semanticExpressionAST GALGAS_orExpressionAST::getter_mRightExpression (UN
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_orExpressionAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_orExpressionAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -7987,7 +7987,7 @@ GALGAS_location GALGAS_orExpressionAST::readProperty_mOperatorLocation (C_Compil
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_orExpressionAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_orExpressionAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -7999,7 +7999,7 @@ GALGAS_semanticExpressionAST GALGAS_orExpressionAST::readProperty_mLeftExpressio
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_orExpressionAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_orExpressionAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -8306,7 +8306,7 @@ GALGAS_semanticExpressionAST GALGAS_orShortExpressionAST::getter_mRightExpressio
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_orShortExpressionAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_orShortExpressionAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -8318,7 +8318,7 @@ GALGAS_location GALGAS_orShortExpressionAST::readProperty_mOperatorLocation (C_C
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_orShortExpressionAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_orShortExpressionAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -8330,7 +8330,7 @@ GALGAS_semanticExpressionAST GALGAS_orShortExpressionAST::readProperty_mLeftExpr
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_orShortExpressionAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_orShortExpressionAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -8637,7 +8637,7 @@ GALGAS_semanticExpressionAST GALGAS_xorExpressionAST::getter_mRightExpression (U
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_xorExpressionAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_xorExpressionAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -8649,7 +8649,7 @@ GALGAS_location GALGAS_xorExpressionAST::readProperty_mOperatorLocation (C_Compi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_xorExpressionAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_xorExpressionAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -8661,7 +8661,7 @@ GALGAS_semanticExpressionAST GALGAS_xorExpressionAST::readProperty_mLeftExpressi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_xorExpressionAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_xorExpressionAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -8968,7 +8968,7 @@ GALGAS_semanticExpressionAST GALGAS_closedSliceExpressionAST::getter_mRightExpre
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_closedSliceExpressionAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_closedSliceExpressionAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -8980,7 +8980,7 @@ GALGAS_location GALGAS_closedSliceExpressionAST::readProperty_mOperatorLocation 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_closedSliceExpressionAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_closedSliceExpressionAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -8992,7 +8992,7 @@ GALGAS_semanticExpressionAST GALGAS_closedSliceExpressionAST::readProperty_mLeft
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_closedSliceExpressionAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_closedSliceExpressionAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -9299,7 +9299,7 @@ GALGAS_semanticExpressionAST GALGAS_openedSliceExpressionAST::getter_mRightExpre
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_openedSliceExpressionAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_openedSliceExpressionAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -9311,7 +9311,7 @@ GALGAS_location GALGAS_openedSliceExpressionAST::readProperty_mOperatorLocation 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_openedSliceExpressionAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_openedSliceExpressionAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -9323,7 +9323,7 @@ GALGAS_semanticExpressionAST GALGAS_openedSliceExpressionAST::readProperty_mLeft
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_openedSliceExpressionAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_openedSliceExpressionAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -9663,7 +9663,7 @@ void GALGAS_andShortExpressionAST::setter_setMRightExpression (GALGAS_semanticEx
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_andShortExpressionAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_andShortExpressionAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -9675,7 +9675,7 @@ GALGAS_location GALGAS_andShortExpressionAST::readProperty_mOperatorLocation (C_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_andShortExpressionAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_andShortExpressionAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -9687,7 +9687,7 @@ GALGAS_semanticExpressionAST GALGAS_andShortExpressionAST::readProperty_mLeftExp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_andShortExpressionAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_andShortExpressionAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -10027,7 +10027,7 @@ void GALGAS_andExpressionAST::setter_setMRightExpression (GALGAS_semanticExpress
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_andExpressionAST::readProperty_mOperatorLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_andExpressionAST::readProperty_mOperatorLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -10039,7 +10039,7 @@ GALGAS_location GALGAS_andExpressionAST::readProperty_mOperatorLocation (C_Compi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_andExpressionAST::readProperty_mLeftExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_andExpressionAST::readProperty_mLeftExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -10051,7 +10051,7 @@ GALGAS_semanticExpressionAST GALGAS_andExpressionAST::readProperty_mLeftExpressi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_andExpressionAST::readProperty_mRightExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_andExpressionAST::readProperty_mRightExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -11327,7 +11327,7 @@ GALGAS_location GALGAS_structuredCastInstructionAST::getter_mEndOfCastInstructio
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_structuredCastInstructionAST::readProperty_mCastExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_structuredCastInstructionAST::readProperty_mCastExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -11339,7 +11339,7 @@ GALGAS_semanticExpressionAST GALGAS_structuredCastInstructionAST::readProperty_m
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_castInstructionBranchListAST GALGAS_structuredCastInstructionAST::readProperty_mCastInstructionBranchList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_castInstructionBranchListAST GALGAS_structuredCastInstructionAST::readProperty_mCastInstructionBranchList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_castInstructionBranchListAST () ;
   }else{
@@ -11351,7 +11351,7 @@ GALGAS_castInstructionBranchListAST GALGAS_structuredCastInstructionAST::readPro
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListAST GALGAS_structuredCastInstructionAST::readProperty_mElseInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListAST GALGAS_structuredCastInstructionAST::readProperty_mElseInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticInstructionListAST () ;
   }else{
@@ -11363,7 +11363,7 @@ GALGAS_semanticInstructionListAST GALGAS_structuredCastInstructionAST::readPrope
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_structuredCastInstructionAST::readProperty_mEndOfCastInstruction (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_structuredCastInstructionAST::readProperty_mEndOfCastInstruction (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -12269,7 +12269,7 @@ GALGAS_lstringlist GALGAS_dropInstructionAST::getter_mDropList (UNUSED_LOCATION_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstringlist GALGAS_dropInstructionAST::readProperty_mDropList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_dropInstructionAST::readProperty_mDropList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstringlist () ;
   }else{
@@ -13384,7 +13384,7 @@ GALGAS_fixitListAST GALGAS_errorInstructionAST::getter_mFixitListAST (UNUSED_LOC
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_errorInstructionAST::readProperty_mLocationExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_errorInstructionAST::readProperty_mLocationExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -13396,7 +13396,7 @@ GALGAS_semanticExpressionAST GALGAS_errorInstructionAST::readProperty_mLocationE
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_errorInstructionAST::readProperty_mMessageExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_errorInstructionAST::readProperty_mMessageExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -13408,7 +13408,7 @@ GALGAS_semanticExpressionAST GALGAS_errorInstructionAST::readProperty_mMessageEx
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstringlist GALGAS_errorInstructionAST::readProperty_mBuiltVariableList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_errorInstructionAST::readProperty_mBuiltVariableList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstringlist () ;
   }else{
@@ -13420,7 +13420,7 @@ GALGAS_lstringlist GALGAS_errorInstructionAST::readProperty_mBuiltVariableList (
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_fixitListAST GALGAS_errorInstructionAST::readProperty_mFixitListAST (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_fixitListAST GALGAS_errorInstructionAST::readProperty_mFixitListAST (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_fixitListAST () ;
   }else{
@@ -15348,7 +15348,7 @@ GALGAS_location GALGAS_enumeratedCollectionCstListInExpAST::getter_mEndOfEnumera
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_forInstructionEnumeratedObjectElementListAST GALGAS_enumeratedCollectionCstListInExpAST::readProperty_mElementList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_forInstructionEnumeratedObjectElementListAST GALGAS_enumeratedCollectionCstListInExpAST::readProperty_mElementList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_forInstructionEnumeratedObjectElementListAST () ;
   }else{
@@ -15360,7 +15360,7 @@ GALGAS_forInstructionEnumeratedObjectElementListAST GALGAS_enumeratedCollectionC
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_enumeratedCollectionCstListInExpAST::readProperty_mEndsWithEllipsis (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_enumeratedCollectionCstListInExpAST::readProperty_mEndsWithEllipsis (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_bool () ;
   }else{
@@ -15372,7 +15372,7 @@ GALGAS_bool GALGAS_enumeratedCollectionCstListInExpAST::readProperty_mEndsWithEl
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_enumeratedCollectionCstListInExpAST::readProperty_mEnumeratedExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_enumeratedCollectionCstListInExpAST::readProperty_mEnumeratedExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
@@ -15384,7 +15384,7 @@ GALGAS_semanticExpressionAST GALGAS_enumeratedCollectionCstListInExpAST::readPro
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_enumeratedCollectionCstListInExpAST::readProperty_mEndOfEnumerationExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_enumeratedCollectionCstListInExpAST::readProperty_mEndOfEnumerationExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{

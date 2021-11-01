@@ -7002,7 +7002,7 @@ GALGAS_luint GALGAS_templateLiteralUIntExpressionAST::getter_mLiteralInt (UNUSED
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_luint GALGAS_templateLiteralUIntExpressionAST::readProperty_mLiteralInt (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_luint GALGAS_templateLiteralUIntExpressionAST::readProperty_mLiteralInt (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_luint () ;
   }else{
@@ -7276,7 +7276,7 @@ GALGAS_lsint GALGAS_templateLiteralSIntExpressionAST::getter_mLiteralInt (UNUSED
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lsint GALGAS_templateLiteralSIntExpressionAST::readProperty_mLiteralInt (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lsint GALGAS_templateLiteralSIntExpressionAST::readProperty_mLiteralInt (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lsint () ;
   }else{
@@ -7550,7 +7550,7 @@ GALGAS_luint_36__34_ GALGAS_templateLiteralUInt_36__34_ExpressionAST::getter_mLi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_luint_36__34_ GALGAS_templateLiteralUInt_36__34_ExpressionAST::readProperty_mLiteralInt (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_luint_36__34_ GALGAS_templateLiteralUInt_36__34_ExpressionAST::readProperty_mLiteralInt (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_luint_36__34_ () ;
   }else{
@@ -7824,7 +7824,7 @@ GALGAS_lsint_36__34_ GALGAS_templateLiteralSInt_36__34_ExpressionAST::getter_mLi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lsint_36__34_ GALGAS_templateLiteralSInt_36__34_ExpressionAST::readProperty_mLiteralInt (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lsint_36__34_ GALGAS_templateLiteralSInt_36__34_ExpressionAST::readProperty_mLiteralInt (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lsint_36__34_ () ;
   }else{
@@ -8098,7 +8098,7 @@ GALGAS_lchar GALGAS_templateLiteralCharExpressionAST::getter_mLiteralChar (UNUSE
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lchar GALGAS_templateLiteralCharExpressionAST::readProperty_mLiteralChar (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lchar GALGAS_templateLiteralCharExpressionAST::readProperty_mLiteralChar (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lchar () ;
   }else{
@@ -8372,7 +8372,7 @@ GALGAS_ldouble GALGAS_templateLiteralDoubleExpressionAST::getter_mLiteralDouble 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_ldouble GALGAS_templateLiteralDoubleExpressionAST::readProperty_mLiteralDouble (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_ldouble GALGAS_templateLiteralDoubleExpressionAST::readProperty_mLiteralDouble (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_ldouble () ;
   }else{
@@ -8651,7 +8651,7 @@ void GALGAS_semanticExpressionForGeneration::setter_setMLocation (GALGAS_locatio
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_semanticExpressionForGeneration::readProperty_mResultType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry GALGAS_semanticExpressionForGeneration::readProperty_mResultType (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_unifiedTypeMap_2D_entry () ;
   }else{
@@ -8663,7 +8663,7 @@ GALGAS_unifiedTypeMap_2D_entry GALGAS_semanticExpressionForGeneration::readPrope
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_semanticExpressionForGeneration::readProperty_mLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_semanticExpressionForGeneration::readProperty_mLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -8831,7 +8831,7 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateBlockInstructionForGe
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionForGeneration GALGAS_templateBlockInstructionForGeneration::readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionForGeneration GALGAS_templateBlockInstructionForGeneration::readProperty_mExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionForGeneration () ;
   }else{
@@ -8843,7 +8843,7 @@ GALGAS_semanticExpressionForGeneration GALGAS_templateBlockInstructionForGenerat
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_templateBlockInstructionForGeneration::readProperty_mLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateBlockInstructionForGeneration::readProperty_mLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -8855,7 +8855,7 @@ GALGAS_location GALGAS_templateBlockInstructionForGeneration::readProperty_mLoca
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionListForGeneration GALGAS_templateBlockInstructionForGeneration::readProperty_mBlockInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionListForGeneration GALGAS_templateBlockInstructionForGeneration::readProperty_mBlockInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateInstructionListForGeneration () ;
   }else{
@@ -9242,7 +9242,7 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionForeachFor
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_templateInstructionForeachForGeneration::readProperty_mIsAscending (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_templateInstructionForeachForGeneration::readProperty_mIsAscending (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_bool () ;
   }else{
@@ -9254,7 +9254,7 @@ GALGAS_bool GALGAS_templateInstructionForeachForGeneration::readProperty_mIsAsce
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionForGeneration GALGAS_templateInstructionForeachForGeneration::readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionForGeneration GALGAS_templateInstructionForeachForGeneration::readProperty_mExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionForGeneration () ;
   }else{
@@ -9266,7 +9266,7 @@ GALGAS_semanticExpressionForGeneration GALGAS_templateInstructionForeachForGener
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_templateInstructionForeachForGeneration::readProperty_mEnumeratorCppName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_templateInstructionForeachForGeneration::readProperty_mEnumeratorCppName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -9278,7 +9278,7 @@ GALGAS_string GALGAS_templateInstructionForeachForGeneration::readProperty_mEnum
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionForeachForGeneration::readProperty_mBeforeInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionForeachForGeneration::readProperty_mBeforeInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateInstructionListForGeneration () ;
   }else{
@@ -9290,7 +9290,7 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionForeachFor
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionForeachForGeneration::readProperty_mDoInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionForeachForGeneration::readProperty_mDoInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateInstructionListForGeneration () ;
   }else{
@@ -9302,7 +9302,7 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionForeachFor
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_templateInstructionForeachForGeneration::readProperty_mIndexCppName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_templateInstructionForeachForGeneration::readProperty_mIndexCppName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -9314,7 +9314,7 @@ GALGAS_string GALGAS_templateInstructionForeachForGeneration::readProperty_mInde
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionForeachForGeneration::readProperty_mBetweenInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionForeachForGeneration::readProperty_mBetweenInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateInstructionListForGeneration () ;
   }else{
@@ -9326,7 +9326,7 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionForeachFor
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionForeachForGeneration::readProperty_mAfterInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionForeachForGeneration::readProperty_mAfterInstructionList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateInstructionListForGeneration () ;
   }else{
@@ -9807,7 +9807,7 @@ GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_templateInstructionSwitchForGeneration::readProperty_mEnumType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry GALGAS_templateInstructionSwitchForGeneration::readProperty_mEnumType (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_unifiedTypeMap_2D_entry () ;
   }else{
@@ -9819,7 +9819,7 @@ GALGAS_unifiedTypeMap_2D_entry GALGAS_templateInstructionSwitchForGeneration::re
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionForGeneration GALGAS_templateInstructionSwitchForGeneration::readProperty_mSwitchExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionForGeneration GALGAS_templateInstructionSwitchForGeneration::readProperty_mSwitchExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionForGeneration () ;
   }else{
@@ -9831,7 +9831,7 @@ GALGAS_semanticExpressionForGeneration GALGAS_templateInstructionSwitchForGenera
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructionSwitchForGeneration::readProperty_mTemplateInstructionSwitchBranchList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructionSwitchForGeneration::readProperty_mTemplateInstructionSwitchBranchList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_templateInstructionSwitchBranchListForGeneration () ;
   }else{
@@ -10274,7 +10274,7 @@ void GALGAS_optionComponentForGeneration::setter_setMStringListOptionMap (GALGAS
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_optionComponentForGeneration::readProperty_mIsPredefined (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_optionComponentForGeneration::readProperty_mIsPredefined (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_bool () ;
   }else{
@@ -10286,7 +10286,7 @@ GALGAS_bool GALGAS_optionComponentForGeneration::readProperty_mIsPredefined (C_C
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_optionComponentForGeneration::readProperty_mOptionComponentName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_optionComponentForGeneration::readProperty_mOptionComponentName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -10298,7 +10298,7 @@ GALGAS_string GALGAS_optionComponentForGeneration::readProperty_mOptionComponent
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_commandLineOptionMap GALGAS_optionComponentForGeneration::readProperty_mBoolOptionMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_commandLineOptionMap GALGAS_optionComponentForGeneration::readProperty_mBoolOptionMap (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_commandLineOptionMap () ;
   }else{
@@ -10310,7 +10310,7 @@ GALGAS_commandLineOptionMap GALGAS_optionComponentForGeneration::readProperty_mB
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_commandLineOptionMap GALGAS_optionComponentForGeneration::readProperty_mUIntOptionMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_commandLineOptionMap GALGAS_optionComponentForGeneration::readProperty_mUIntOptionMap (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_commandLineOptionMap () ;
   }else{
@@ -10322,7 +10322,7 @@ GALGAS_commandLineOptionMap GALGAS_optionComponentForGeneration::readProperty_mU
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_commandLineOptionMap GALGAS_optionComponentForGeneration::readProperty_mStringOptionMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_commandLineOptionMap GALGAS_optionComponentForGeneration::readProperty_mStringOptionMap (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_commandLineOptionMap () ;
   }else{
@@ -10334,7 +10334,7 @@ GALGAS_commandLineOptionMap GALGAS_optionComponentForGeneration::readProperty_mS
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_commandLineOptionMap GALGAS_optionComponentForGeneration::readProperty_mStringListOptionMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_commandLineOptionMap GALGAS_optionComponentForGeneration::readProperty_mStringListOptionMap (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_commandLineOptionMap () ;
   }else{
@@ -10656,7 +10656,7 @@ GALGAS_uint GALGAS_arrayTypeForGeneration::getter_mDimension (UNUSED_LOCATION_AR
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_arrayTypeForGeneration::readProperty_mElementTypeEntry (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry GALGAS_arrayTypeForGeneration::readProperty_mElementTypeEntry (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_unifiedTypeMap_2D_entry () ;
   }else{
@@ -10668,7 +10668,7 @@ GALGAS_unifiedTypeMap_2D_entry GALGAS_arrayTypeForGeneration::readProperty_mElem
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_arrayTypeForGeneration::readProperty_mDimension (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_arrayTypeForGeneration::readProperty_mDimension (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_uint () ;
   }else{
@@ -11192,7 +11192,7 @@ void GALGAS_castInExpressionForGeneration::setter_setMCastType (GALGAS_unifiedTy
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionForGeneration GALGAS_castInExpressionForGeneration::readProperty_mReceiverExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionForGeneration GALGAS_castInExpressionForGeneration::readProperty_mReceiverExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionForGeneration () ;
   }else{
@@ -11204,7 +11204,7 @@ GALGAS_semanticExpressionForGeneration GALGAS_castInExpressionForGeneration::rea
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_castInExpressionForGeneration::readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_castInExpressionForGeneration::readProperty_mTypeName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -11216,7 +11216,7 @@ GALGAS_string GALGAS_castInExpressionForGeneration::readProperty_mTypeName (C_Co
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_castInExpressionForGeneration::readProperty_mCastType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entry GALGAS_castInExpressionForGeneration::readProperty_mCastType (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_unifiedTypeMap_2D_entry () ;
   }else{
@@ -11512,7 +11512,7 @@ void GALGAS_outputActualParameterForGeneration::setter_setMOutputActualParameter
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionForGeneration GALGAS_outputActualParameterForGeneration::readProperty_mOutputActualParameterExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionForGeneration GALGAS_outputActualParameterForGeneration::readProperty_mOutputActualParameterExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionForGeneration () ;
   }else{
@@ -11855,7 +11855,7 @@ void GALGAS_ifExpressionForGeneration::setter_setMElseExpression (GALGAS_semanti
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionForGeneration GALGAS_ifExpressionForGeneration::readProperty_mIfExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionForGeneration GALGAS_ifExpressionForGeneration::readProperty_mIfExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionForGeneration () ;
   }else{
@@ -11867,7 +11867,7 @@ GALGAS_semanticExpressionForGeneration GALGAS_ifExpressionForGeneration::readPro
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionForGeneration GALGAS_ifExpressionForGeneration::readProperty_mThenExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionForGeneration GALGAS_ifExpressionForGeneration::readProperty_mThenExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionForGeneration () ;
   }else{
@@ -11879,7 +11879,7 @@ GALGAS_semanticExpressionForGeneration GALGAS_ifExpressionForGeneration::readPro
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionForGeneration GALGAS_ifExpressionForGeneration::readProperty_mElseExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionForGeneration GALGAS_ifExpressionForGeneration::readProperty_mElseExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionForGeneration () ;
   }else{
@@ -12168,7 +12168,7 @@ GALGAS_semanticExpressionForGeneration GALGAS_unaryMinusExpressionForGeneration:
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionForGeneration GALGAS_unaryMinusExpressionForGeneration::readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionForGeneration GALGAS_unaryMinusExpressionForGeneration::readProperty_mExpression (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticExpressionForGeneration () ;
   }else{
@@ -12497,7 +12497,7 @@ void GALGAS_varInExpressionForGeneration::setter_setMNameForCheckingFormalParame
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_varInExpressionForGeneration::readProperty_mCppVarName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_varInExpressionForGeneration::readProperty_mCppVarName (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -12509,7 +12509,7 @@ GALGAS_string GALGAS_varInExpressionForGeneration::readProperty_mCppVarName (C_C
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_varInExpressionForGeneration::readProperty_mNameForCheckingFormalParameterUsing (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_varInExpressionForGeneration::readProperty_mNameForCheckingFormalParameterUsing (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -13396,7 +13396,7 @@ GALGAS_string GALGAS_literalStringExpressionForGeneration::getter_mString (UNUSE
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_literalStringExpressionForGeneration::readProperty_mString (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_literalStringExpressionForGeneration::readProperty_mString (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
   }else{
@@ -13686,7 +13686,7 @@ GALGAS_char GALGAS_literalCharExpressionForGeneration::getter_mCharacter (UNUSED
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_char GALGAS_literalCharExpressionForGeneration::readProperty_mCharacter (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_char GALGAS_literalCharExpressionForGeneration::readProperty_mCharacter (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_char () ;
   }else{
@@ -13976,7 +13976,7 @@ GALGAS_double GALGAS_literalDoubleExpressionForGeneration::getter_mValue (UNUSED
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_double GALGAS_literalDoubleExpressionForGeneration::readProperty_mValue (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_double GALGAS_literalDoubleExpressionForGeneration::readProperty_mValue (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_double () ;
   }else{
@@ -14256,7 +14256,7 @@ GALGAS_lbigint GALGAS_literalBigIntExpressionAST::getter_mValue (UNUSED_LOCATION
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lbigint GALGAS_literalBigIntExpressionAST::readProperty_mValue (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lbigint GALGAS_literalBigIntExpressionAST::readProperty_mValue (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lbigint () ;
   }else{
@@ -14551,7 +14551,7 @@ void GALGAS_literalUIntExpressionForGeneration::setter_setMValue (GALGAS_uint in
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_literalUIntExpressionForGeneration::readProperty_mValue (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_literalUIntExpressionForGeneration::readProperty_mValue (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_uint () ;
   }else{
@@ -14841,7 +14841,7 @@ GALGAS_uint_36__34_ GALGAS_literalUInt_36__34_ExpressionForGeneration::getter_mV
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_ GALGAS_literalUInt_36__34_ExpressionForGeneration::readProperty_mValue (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_uint_36__34_ GALGAS_literalUInt_36__34_ExpressionForGeneration::readProperty_mValue (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_uint_36__34_ () ;
   }else{
@@ -15131,7 +15131,7 @@ GALGAS_sint GALGAS_literalSIntExpressionForGeneration::getter_mValue (UNUSED_LOC
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_sint GALGAS_literalSIntExpressionForGeneration::readProperty_mValue (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_sint GALGAS_literalSIntExpressionForGeneration::readProperty_mValue (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_sint () ;
   }else{

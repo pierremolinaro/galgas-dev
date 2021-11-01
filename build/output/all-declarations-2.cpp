@@ -167,7 +167,7 @@ GALGAS_location GALGAS_abstractLexicalRoutineActualArgumentAST::getter_mActualPa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_abstractLexicalRoutineActualArgumentAST::readProperty_mActualPassingModeLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_abstractLexicalRoutineActualArgumentAST::readProperty_mActualPassingModeLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -1032,7 +1032,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST GALGAS_lexicalFormalInputA
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST GALGAS_lexicalFormalInputArgumentAST::readProperty_mRoutineOrFunctionFormalInputArgument (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST GALGAS_lexicalFormalInputArgumentAST::readProperty_mRoutineOrFunctionFormalInputArgument (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST () ;
   }else{
@@ -1726,7 +1726,7 @@ GALGAS_location GALGAS_lexicalCurrentCharacterInputArgumentAST::getter_mLocation
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_lexicalCurrentCharacterInputArgumentAST::readProperty_mLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_lexicalCurrentCharacterInputArgumentAST::readProperty_mLocation (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_location () ;
   }else{
@@ -12421,7 +12421,7 @@ GALGAS_lexicalFunctionExpressionAST GALGAS_lexicalFunctionOrExpressionAST::gette
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionExpressionAST GALGAS_lexicalFunctionOrExpressionAST::readProperty_mLeftOperand (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalFunctionExpressionAST GALGAS_lexicalFunctionOrExpressionAST::readProperty_mLeftOperand (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lexicalFunctionExpressionAST () ;
   }else{
@@ -12433,7 +12433,7 @@ GALGAS_lexicalFunctionExpressionAST GALGAS_lexicalFunctionOrExpressionAST::readP
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionExpressionAST GALGAS_lexicalFunctionOrExpressionAST::readProperty_mRightOperand (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalFunctionExpressionAST GALGAS_lexicalFunctionOrExpressionAST::readProperty_mRightOperand (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lexicalFunctionExpressionAST () ;
   }else{
