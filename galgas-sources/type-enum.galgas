@@ -167,7 +167,7 @@ override method @enumDeclarationAST enterInSemanticContext
         !mConstantName.location
         !true
         !.isBasicFinal
-#        !.constantMethod
+        !.constantMethod
         !""
       ]
     end

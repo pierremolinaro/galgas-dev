@@ -275,50 +275,50 @@ private proc compileProject
 #------------------------------------ Check entity usefulness
   checkUsefulEntities (!usefulEntitiesGraph !usefulnessRootEntities !productDirectory)
 #------------------------------------ Check entity usefulness
-  if [option galgas_cli_options.warningOnPropertyMethodCollision value] then
-    for (lkey
-         3*
-         kind
-         3*
-         @typedPropertyList propertyList
-         @constructorMap constructorMap
-         @getterMap getterMap
-         @setterMap setterMap
-         @instanceMethodMap instanceMethodMap
-         14*) in semanticContext.mTypeMap do
-      var methodNameSet = @stringset {}
-      for (* propertyName 2*) in propertyList do
-        if [methodNameSet hasKey !propertyName] then
-          warning propertyName : "type " + kind + " @" + lkey + ": property name collision"
-        end
-        methodNameSet += !propertyName.string
-      end
-      for (initializerName 3*) in constructorMap do
-        if [methodNameSet hasKey !initializerName.string] then
-          warning initializerName : "type " + kind + " @" + lkey + ": initializer name collision"
-        end
-        methodNameSet += !initializerName.string
-      end
-      for (getterName 7*) in getterMap do
-        if [methodNameSet hasKey !getterName.string] then
-          warning getterName : "type " + kind + " @" + lkey + ": getter name collision"
-        end
-        methodNameSet += !getterName.string
-      end
-      for (setterName 5*) in setterMap do
-        if [methodNameSet hasKey !setterName.string] then
-          warning setterName : "type " + kind + " @" + lkey + ": setter name collision"
-        end
-        methodNameSet += !setterName.string
-      end
-      for (methodName 6*) in instanceMethodMap do
-        if [methodNameSet hasKey !methodName.string] then
-          warning methodName : "type " + kind + " @" + lkey + ": method name collision"
-        end
-        methodNameSet += !methodName.string
-      end
-    end
-  end
+#  if [option galgas_cli_options.warningOnPropertyMethodCollision value] then
+#    for (lkey
+#         3*
+#         kind
+#         3*
+#         @typedPropertyList unused propertyList
+#         @constructorMap unused constructorMap
+#         @getterMap unused getterMap
+#         @setterMap setterMap
+#         @instanceMethodMap instanceMethodMap
+#         14*) in semanticContext.mTypeMap do
+#      var methodNameSet = @stringset {}
+#      for (* propertyName 2*) in propertyList do
+#        if [methodNameSet hasKey !propertyName] then
+#          warning propertyName : "type " + kind + " @" + lkey + ": property name collision"
+#        end
+#        methodNameSet += !propertyName.string
+#      end
+#      for (initializerName 3*) in constructorMap do
+#        if [methodNameSet hasKey !initializerName.string] then
+#          warning initializerName : "type " + kind + " @" + lkey + ": initializer name collision"
+#        end
+#        methodNameSet += !initializerName.string
+#      end
+#      for (getterName 7*) in getterMap do
+#        if [methodNameSet hasKey !getterName.string] then
+#          warning getterName : "type " + kind + " @" + lkey + ": getter name collision"
+#        end
+#        methodNameSet += !getterName.string
+#      end
+#      for (setterName 5*) in setterMap do
+#        if [methodNameSet hasKey !setterName.string] then
+#          error setterName : "type " + kind + " @" + lkey + ": setter name collision"
+#        end
+#        methodNameSet += !setterName.string
+#      end
+#      for (methodName 6*) in instanceMethodMap do
+#        if [methodNameSet hasKey !methodName.string] then
+#          error methodName : "type " + kind + " @" + lkey + ": method name collision"
+#        end
+#        methodNameSet += !methodName.string
+#      end
+#    end
+#  end
 #------------------------------------ Build an HTML file that contains all declared types
   let typeDumpFilePath = [inProjectSourceFile stringByDeletingLastPathComponent]
          + "/build/helpers/" +  [inProjectSourceFile lastPathComponent] + ".html"

@@ -223,7 +223,7 @@ end
 #--- Methods
 if [type_mInstanceMethodMap count] > 0 then
   %<tr class="result_line"><td>Methods</td><td>%
-  for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument mQualifier mErrorMessage) in type_mInstanceMethodMap do
+  for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument mQualifier mutability mErrorMessage) in type_mInstanceMethodMap do
     switch mKind
     case definedAsMember :
     case definedAsExtension : %(extension) %

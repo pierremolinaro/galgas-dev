@@ -418,32 +418,6 @@ proc addExtensions
   ?!@instanceMethodMap ioInstanceMethodMap
   ?acceptSetters: let @bool inAcceptSetters
 {
-#------------------------  Extension methods
-  if [inExtensionMethodMapForBuildingContext hasKey !inTypeName.string] then
-    var @extensionMethodMapForType extensionMethodMapForType
-    [inExtensionMethodMapForBuildingContext searchKey !inTypeName ?extensionMethodMapForType]
-    for (lkey mFormalParameterList) in extensionMethodMapForType do
-      var formalArgumentList =@formalParameterSignature {}
-      for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
-        [@unifiedTypeMap-entry makeEntry
-          !?ioSemanticContext.mTypeMap
-          !mFormalArgumentTypeName
-          ?let @unifiedTypeMap-entry typeIndex
-        ]
-        formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
-      end
-      [!?ioInstanceMethodMap insertKey
-        !lkey
-        !@methodKind.definedAsExtension
-        !formalArgumentList
-        !lkey.location
-        !true
-        !@methodQualifier.isBasic
-#        !.constantMethod
-        !"" # No error message
-      ]
-    end
-  end
 #------------------------  Extension getters
   if [inExtensionGetterMapForBuildingContext hasKey !inTypeName.string] then
     [inExtensionGetterMapForBuildingContext searchKey !inTypeName ?let extensionGetterMapForType]
@@ -466,6 +440,32 @@ proc addExtensions
       ]
     end
   end
+#------------------------  Extension methods
+  if [inExtensionMethodMapForBuildingContext hasKey !inTypeName.string] then
+    var @extensionMethodMapForType extensionMethodMapForType
+    [inExtensionMethodMapForBuildingContext searchKey !inTypeName ?extensionMethodMapForType]
+    for (lkey mFormalParameterList) in extensionMethodMapForType do
+      var formalArgumentList =@formalParameterSignature {}
+      for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
+        [@unifiedTypeMap-entry makeEntry
+          !?ioSemanticContext.mTypeMap
+          !mFormalArgumentTypeName
+          ?let @unifiedTypeMap-entry typeIndex
+        ]
+        formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
+      end
+      [!?ioInstanceMethodMap insertKey
+        !lkey
+        !@methodKind.definedAsExtension
+        !formalArgumentList
+        !lkey.location
+        !true
+        !@methodQualifier.isBasic
+        !.constantMethod
+        !"" # No error message
+      ]
+    end
+  end
 #------------------------  Extension setters
   if [inExtensionSetterMapForBuildingContext hasKey !inTypeName.string] then
     var @extensionSetterMapForType extensionSetterMapForType
@@ -482,6 +482,16 @@ proc addExtensions
         !formalArgumentList
         !true
         !@methodQualifier.isBasic
+        !"" # No Error message
+      ]
+      [!?ioInstanceMethodMap insertKey
+        !lkey
+        !@methodKind.definedAsExtension
+        !formalArgumentList
+        !lkey.location
+        !true
+        !@methodQualifier.isBasic
+        !.mutatingMethod
         !"" # No Error message
       ]
       if not inAcceptSetters then

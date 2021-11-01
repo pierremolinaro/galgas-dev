@@ -12114,6 +12114,7 @@ mProperty_mParameterList (),
 mProperty_mDeclarationLocation (),
 mProperty_mHasCompilerArgument (),
 mProperty_mQualifier (),
+mProperty_mMutability (),
 mProperty_mErrorMessage () {
 }
 
@@ -12130,14 +12131,16 @@ GALGAS_instanceMethodMap_2D_element::GALGAS_instanceMethodMap_2D_element (const 
                                                                           const GALGAS_location & inOperand3,
                                                                           const GALGAS_bool & inOperand4,
                                                                           const GALGAS_methodQualifier & inOperand5,
-                                                                          const GALGAS_string & inOperand6) :
+                                                                          const GALGAS_instanceMethodMutability & inOperand6,
+                                                                          const GALGAS_string & inOperand7) :
 mProperty_lkey (inOperand0),
 mProperty_mKind (inOperand1),
 mProperty_mParameterList (inOperand2),
 mProperty_mDeclarationLocation (inOperand3),
 mProperty_mHasCompilerArgument (inOperand4),
 mProperty_mQualifier (inOperand5),
-mProperty_mErrorMessage (inOperand6) {
+mProperty_mMutability (inOperand6),
+mProperty_mErrorMessage (inOperand7) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12148,11 +12151,12 @@ GALGAS_instanceMethodMap_2D_element GALGAS_instanceMethodMap_2D_element::constru
                                                                                           const GALGAS_location & inOperand3,
                                                                                           const GALGAS_bool & inOperand4,
                                                                                           const GALGAS_methodQualifier & inOperand5,
-                                                                                          const GALGAS_string & inOperand6 
+                                                                                          const GALGAS_instanceMethodMutability & inOperand6,
+                                                                                          const GALGAS_string & inOperand7 
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_instanceMethodMap_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid ()) {
-    result = GALGAS_instanceMethodMap_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6) ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid ()) {
+    result = GALGAS_instanceMethodMap_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7) ;
   }
   return result ;
 }
@@ -12180,6 +12184,9 @@ typeComparisonResult GALGAS_instanceMethodMap_2D_element::objectCompare (const G
     result = mProperty_mQualifier.objectCompare (inOperand.mProperty_mQualifier) ;
   }
   if (result == kOperandEqual) {
+    result = mProperty_mMutability.objectCompare (inOperand.mProperty_mMutability) ;
+  }
+  if (result == kOperandEqual) {
     result = mProperty_mErrorMessage.objectCompare (inOperand.mProperty_mErrorMessage) ;
   }
   return result ;
@@ -12188,7 +12195,7 @@ typeComparisonResult GALGAS_instanceMethodMap_2D_element::objectCompare (const G
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_instanceMethodMap_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mKind.isValid () && mProperty_mParameterList.isValid () && mProperty_mDeclarationLocation.isValid () && mProperty_mHasCompilerArgument.isValid () && mProperty_mQualifier.isValid () && mProperty_mErrorMessage.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mKind.isValid () && mProperty_mParameterList.isValid () && mProperty_mDeclarationLocation.isValid () && mProperty_mHasCompilerArgument.isValid () && mProperty_mQualifier.isValid () && mProperty_mMutability.isValid () && mProperty_mErrorMessage.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12200,6 +12207,7 @@ void GALGAS_instanceMethodMap_2D_element::drop (void) {
   mProperty_mDeclarationLocation.drop () ;
   mProperty_mHasCompilerArgument.drop () ;
   mProperty_mQualifier.drop () ;
+  mProperty_mMutability.drop () ;
   mProperty_mErrorMessage.drop () ;
 }
 
@@ -12222,6 +12230,8 @@ void GALGAS_instanceMethodMap_2D_element::description (C_String & ioString,
     mProperty_mHasCompilerArgument.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mQualifier.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mMutability.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mErrorMessage.description (ioString, inIndentation+1) ;
   }

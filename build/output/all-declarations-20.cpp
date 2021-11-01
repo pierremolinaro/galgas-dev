@@ -14350,12 +14350,6 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_propertyAccessRequiresS
                                          "error-property-access-without-self",
                                          "'self' is required for accessing properties in getter, setter and methods") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_warningOnPropertyMethodCollision ("galgas_cli_options",
-                                         "warningOnPropertyMethodCollision",
-                                         0,
-                                         "warning-on-property-method-collision",
-                                         "warning on property, method, getter and setter name collisions") ;
-
 //----------------------------------------------------------------------------------------------------------------------
 //
 //                               UInt options                                                    

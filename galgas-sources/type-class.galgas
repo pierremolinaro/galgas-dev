@@ -87,7 +87,10 @@ syntax extension galgas3DeclarationsSyntax {
         !false # Is not predefined
         !className
         !.new {!className.string + weakSuffix () !className.location}
-        !if superClassName.string == "" then superClassName else .new {!superClassName.string + "-weak" !superClassName.location} end
+        !if superClassName.string == ""
+           then superClassName
+           else .new {!superClassName.string + "-weak" !superClassName.location}
+         end
         !classFeatureList
         !propertyList
       }
@@ -210,7 +213,7 @@ override method @classDeclarationAST enterInSemanticContext
     end
   #--- Mark all methods as inherited
     instanceMethodMap = {}
-    for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument * mErrorMessage) in inheritedMethodMap do
+    for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument * mutability mErrorMessage) in inheritedMethodMap do
       [!?instanceMethodMap insertKey
         !lkey
         !mKind
@@ -218,6 +221,7 @@ override method @classDeclarationAST enterInSemanticContext
         !mDeclarationLocation
         !mHasCompilerArgument
         !.isInherited
+        !mutability
         !mErrorMessage
       ] 
     end
@@ -288,16 +292,6 @@ override method @classDeclarationAST enterInSemanticContext
     end
     currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
     allTypedAttributeList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
-#    [!?getterMap insertKey
-#      !mPropertyName
-#      !@methodKind.definedAsMember
-#      !@functionSignature {} # No argument
-#      !@location.here
-#      !false # No Compiler argument
-#      !attributeTypeIndex # Returned type
-#      !@methodQualifier.isBasic
-#      !"" # No Error message
-#    ]
   end
 #--- set...attribute setter
   for (mPropertyTypeEntry mPropertyName mHasSetter *) in currentClassTypedPropertyList do

@@ -111,15 +111,6 @@ override method @structDeclarationAST enterInSemanticContext
   ]
 #--- Getters
   commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap)
-#  for (mPropertyTypeEntry mPropertyName * *) in typedPropertyList do
-#    enterBaseFinalGetterWithoutArgument (
-#      !?getterMap
-#      !?ioSemanticContext.mTypeMap 
-#      !getterName:mPropertyName.string
-#      !returnedTypeName:[mPropertyTypeEntry key]
-#      !hasCompilerArgument:false
-#    )
-#  end
 #--- Setters
   var @setterMap setterMap = {}
 #--- Instance methods

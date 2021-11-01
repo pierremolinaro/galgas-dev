@@ -285,7 +285,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
       !mDeclarationLocation
       !true #inHasLexiqueAndLocationArguments
       !@methodQualifier.isBasicFinal
-#      !.constantMethod
+      !.constantMethod
       !"" # No Error message
     ]
   end

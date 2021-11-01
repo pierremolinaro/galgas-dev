@@ -214,7 +214,7 @@ override method @dictDeclarationAST enterInSemanticContext
     !self.mDictTypeName.location
     !true
     !@methodQualifier.isBasic
-#    !.constantMethod
+    !.constantMethod
     !"" # No error message
   ]
 #--- Enter "attributeForKey" getters

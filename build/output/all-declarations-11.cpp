@@ -6332,7 +6332,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
       if (kBoolTrue == test_10) {
         temp_9 = var_superClassName_1986 ;
       }else if (kBoolFalse == test_10) {
-        temp_9 = GALGAS_lstring::constructor_new (var_superClassName_1986.readProperty_string ().add_operation (GALGAS_string ("-weak"), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 90)), var_superClassName_1986.readProperty_location ()  COMMA_SOURCE_FILE ("type-class.galgas", 90)) ;
+        temp_9 = GALGAS_lstring::constructor_new (var_superClassName_1986.readProperty_string ().add_operation (GALGAS_string ("-weak"), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 92)), var_superClassName_1986.readProperty_location ()  COMMA_SOURCE_FILE ("type-class.galgas", 92)) ;
       }
       ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_weakReferenceDeclarationAST::constructor_new (GALGAS_bool (false), var_className_1929, GALGAS_lstring::constructor_new (var_className_1929.readProperty_string ().add_operation (function_weakSuffix (inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 89)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 89)), var_className_1929.readProperty_location ()  COMMA_SOURCE_FILE ("type-class.galgas", 89)), temp_9, var_classFeatureList_2177, var_propertyList_2435  COMMA_SOURCE_FILE ("type-class.galgas", 86))  COMMA_SOURCE_FILE ("type-class.galgas", 86)) ;
     }

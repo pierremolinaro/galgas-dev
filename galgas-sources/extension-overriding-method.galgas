@@ -113,7 +113,7 @@ override method @overridingExtensionMethodAST semanticAnalysis
         ?inheritedDeclarationLocation
         ?*
         ?qualifier
-        ?*
+        ?2*
       ]
       if qualifier <= @methodQualifier. isBasicFinal then
         baseTypeName = [superType key]

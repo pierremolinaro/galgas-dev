@@ -526,7 +526,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !@location.here
     !true
     !@methodQualifier. isInherited
-#    !.constantMethod
+    !.constantMethod
     !"" # No error message
   ]
 #--- Handle search methods (methods if no state, setters if states)
@@ -539,7 +539,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
         !mSearchMethodName.location
         !true
         !@methodQualifier.isBasic
-#        !.constantMethod
+        !.constantMethod
         !"" # No error message
       ]
     end
@@ -589,7 +589,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
       !@location.here
       !true
       !@methodQualifier.isBasic
-#      !.constantMethod
+      !.constantMethod
       !"" # No error message
     ]
     for (mOverrideBlockName * *) in self.mMapOverrideBlockListAST do

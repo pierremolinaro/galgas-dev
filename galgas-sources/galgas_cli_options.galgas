@@ -85,8 +85,8 @@ option galgas_cli_options {
   @bool errorOldStyleCollectionInitializer : '\0', "error-old-syle-collection-initializer"
     -> "error on old style collection initializer"
 
-  @bool warningOnPropertyMethodCollision : '\0', "warning-on-property-method-collision"
-    -> "warning on property, method, getter and setter name collisions"
+#  @bool warningOnPropertyMethodCollision : '\0', "warning-on-property-method-collision"
+#    -> "warning on property, method, getter and setter name collisions"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

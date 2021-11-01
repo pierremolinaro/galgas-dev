@@ -4487,6 +4487,79 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterMap_2D_elemen
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//                                       Phase 1: @instanceMethodMutability enum                                       *
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_instanceMethodMutability : public AC_GALGAS_root {
+//--------------------------------- Default constructor
+  public: GALGAS_instanceMethodMutability (void) ;
+
+//--------------------------------- Enumeration
+  public: typedef enum {
+    kNotBuilt,
+    kEnum_constantMethod,
+    kEnum_mutatingMethod
+  } enumeration ;
+  
+//--------------------------------- Private data member
+  private: enumeration mEnum ;
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const { return kNotBuilt != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) { mEnum = kNotBuilt ; }
+  public: inline enumeration enumValue (void) const { return mEnum ; }
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_instanceMethodMutability extractObject (const GALGAS_object & inObject,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_instanceMethodMutability constructor_constantMethod (LOCATION_ARGS) ;
+
+  public: static class GALGAS_instanceMethodMutability constructor_mutatingMethod (LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_instanceMethodMutability & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isConstantMethod (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isMutatingMethod (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+  public: VIRTUAL_IN_DEBUG bool optional_constantMethod () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_mutatingMethod () const ;
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_instanceMethodMutability class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_instanceMethodMutability ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 // Phase 2: class for element of '@instanceMethodMap' map
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -4498,6 +4571,7 @@ class cMapElement_instanceMethodMap : public cMapElement {
   public: GALGAS_location mProperty_mDeclarationLocation ;
   public: GALGAS_bool mProperty_mHasCompilerArgument ;
   public: GALGAS_methodQualifier mProperty_mQualifier ;
+  public: GALGAS_instanceMethodMutability mProperty_mMutability ;
   public: GALGAS_string mProperty_mErrorMessage ;
 
 //--- Constructor
@@ -4507,6 +4581,7 @@ class cMapElement_instanceMethodMap : public cMapElement {
                                          const GALGAS_location & in_mDeclarationLocation,
                                          const GALGAS_bool & in_mHasCompilerArgument,
                                          const GALGAS_methodQualifier & in_mQualifier,
+                                         const GALGAS_instanceMethodMutability & in_mMutability,
                                          const GALGAS_string & in_mErrorMessage
                                          COMMA_LOCATION_ARGS) ;
 
@@ -4561,6 +4636,11 @@ class GALGAS_instanceMethodMap_2D_element : public AC_GALGAS_root {
     return mProperty_mQualifier ;
   }
 
+  public: GALGAS_instanceMethodMutability mProperty_mMutability ;
+  public: inline GALGAS_instanceMethodMutability readProperty_mMutability (void) const {
+    return mProperty_mMutability ;
+  }
+
   public: GALGAS_string mProperty_mErrorMessage ;
   public: inline GALGAS_string readProperty_mErrorMessage (void) const {
     return mProperty_mErrorMessage ;
@@ -4598,6 +4678,10 @@ class GALGAS_instanceMethodMap_2D_element : public AC_GALGAS_root {
     mProperty_mQualifier = inValue ;
   }
 
+  public: inline void setter_setMMutability (const GALGAS_instanceMethodMutability & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mMutability = inValue ;
+  }
+
   public: inline void setter_setMErrorMessage (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mErrorMessage = inValue ;
   }
@@ -4612,6 +4696,7 @@ class GALGAS_instanceMethodMap_2D_element : public AC_GALGAS_root {
                                                const GALGAS_location & in_mDeclarationLocation,
                                                const GALGAS_bool & in_mHasCompilerArgument,
                                                const GALGAS_methodQualifier & in_mQualifier,
+                                               const GALGAS_instanceMethodMutability & in_mMutability,
                                                const GALGAS_string & in_mErrorMessage) ;
 
 //-- Start of generic part --*
@@ -4631,7 +4716,8 @@ class GALGAS_instanceMethodMap_2D_element : public AC_GALGAS_root {
                                                                             const class GALGAS_location & inOperand3,
                                                                             const class GALGAS_bool & inOperand4,
                                                                             const class GALGAS_methodQualifier & inOperand5,
-                                                                            const class GALGAS_string & inOperand6
+                                                                            const class GALGAS_instanceMethodMutability & inOperand6,
+                                                                            const class GALGAS_string & inOperand7
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'

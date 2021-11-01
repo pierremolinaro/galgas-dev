@@ -9785,12 +9785,136 @@ GALGAS_setterMap GALGAS_setterMap::extractObject (const GALGAS_object & inObject
 
 //----------------------------------------------------------------------------------------------------------------------
 
+GALGAS_instanceMethodMutability::GALGAS_instanceMethodMutability (void) :
+mEnum (kNotBuilt) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_instanceMethodMutability GALGAS_instanceMethodMutability::constructor_constantMethod (UNUSED_LOCATION_ARGS) {
+  GALGAS_instanceMethodMutability result ;
+  result.mEnum = kEnum_constantMethod ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_instanceMethodMutability GALGAS_instanceMethodMutability::constructor_mutatingMethod (UNUSED_LOCATION_ARGS) {
+  GALGAS_instanceMethodMutability result ;
+  result.mEnum = kEnum_mutatingMethod ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_instanceMethodMutability::optional_constantMethod () const {
+  const bool ok = mEnum == kEnum_constantMethod ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_instanceMethodMutability::optional_mutatingMethod () const {
+  const bool ok = mEnum == kEnum_mutatingMethod ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static const char * gEnumNameArrayFor_instanceMethodMutability [3] = {
+  "(not built)",
+  "constantMethod",
+  "mutatingMethod"
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_instanceMethodMutability::getter_isConstantMethod (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_constantMethod == mEnum) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_instanceMethodMutability::getter_isMutatingMethod (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_mutatingMethod == mEnum) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_instanceMethodMutability::description (C_String & ioString,
+                                                   const int32_t /* inIndentation */) const {
+  ioString << "<enum @instanceMethodMutability: " << gEnumNameArrayFor_instanceMethodMutability [mEnum] ;
+  ioString << ">" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_instanceMethodMutability::objectCompare (const GALGAS_instanceMethodMutability & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (mEnum < inOperand.mEnum) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mEnum > inOperand.mEnum) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@instanceMethodMutability type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_instanceMethodMutability ("instanceMethodMutability",
+                                                 NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_instanceMethodMutability::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_instanceMethodMutability ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_instanceMethodMutability::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_instanceMethodMutability (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_instanceMethodMutability GALGAS_instanceMethodMutability::extractObject (const GALGAS_object & inObject,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_instanceMethodMutability result ;
+  const GALGAS_instanceMethodMutability * p = (const GALGAS_instanceMethodMutability *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_instanceMethodMutability *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("instanceMethodMutability", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 cMapElement_instanceMethodMap::cMapElement_instanceMethodMap (const GALGAS_lstring & inKey,
                                                               const GALGAS_methodKind & in_mKind,
                                                               const GALGAS_formalParameterSignature & in_mParameterList,
                                                               const GALGAS_location & in_mDeclarationLocation,
                                                               const GALGAS_bool & in_mHasCompilerArgument,
                                                               const GALGAS_methodQualifier & in_mQualifier,
+                                                              const GALGAS_instanceMethodMutability & in_mMutability,
                                                               const GALGAS_string & in_mErrorMessage
                                                               COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
@@ -9799,20 +9923,21 @@ mProperty_mParameterList (in_mParameterList),
 mProperty_mDeclarationLocation (in_mDeclarationLocation),
 mProperty_mHasCompilerArgument (in_mHasCompilerArgument),
 mProperty_mQualifier (in_mQualifier),
+mProperty_mMutability (in_mMutability),
 mProperty_mErrorMessage (in_mErrorMessage) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_instanceMethodMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mKind.isValid () && mProperty_mParameterList.isValid () && mProperty_mDeclarationLocation.isValid () && mProperty_mHasCompilerArgument.isValid () && mProperty_mQualifier.isValid () && mProperty_mErrorMessage.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mKind.isValid () && mProperty_mParameterList.isValid () && mProperty_mDeclarationLocation.isValid () && mProperty_mHasCompilerArgument.isValid () && mProperty_mQualifier.isValid () && mProperty_mMutability.isValid () && mProperty_mErrorMessage.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 cMapElement * cMapElement_instanceMethodMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_instanceMethodMap (mProperty_lkey, mProperty_mKind, mProperty_mParameterList, mProperty_mDeclarationLocation, mProperty_mHasCompilerArgument, mProperty_mQualifier, mProperty_mErrorMessage COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_instanceMethodMap (mProperty_lkey, mProperty_mKind, mProperty_mParameterList, mProperty_mDeclarationLocation, mProperty_mHasCompilerArgument, mProperty_mQualifier, mProperty_mMutability, mProperty_mErrorMessage COMMA_HERE)) ;
   return result ;
 }
 
@@ -9841,6 +9966,10 @@ void cMapElement_instanceMethodMap::description (C_String & ioString, const int3
   mProperty_mQualifier.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mMutability" ":" ;
+  mProperty_mMutability.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mErrorMessage" ":" ;
   mProperty_mErrorMessage.description (ioString, inIndentation) ;
 }
@@ -9864,6 +9993,9 @@ typeComparisonResult cMapElement_instanceMethodMap::compare (const cCollectionEl
   }
   if (kOperandEqual == result) {
     result = mProperty_mQualifier.objectCompare (operand->mProperty_mQualifier) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mMutability.objectCompare (operand->mProperty_mMutability) ;
   }
   if (kOperandEqual == result) {
     result = mProperty_mErrorMessage.objectCompare (operand->mProperty_mErrorMessage) ;
@@ -9924,11 +10056,12 @@ void GALGAS_instanceMethodMap::addAssign_operation (const GALGAS_lstring & inKey
                                                     const GALGAS_location & inArgument2,
                                                     const GALGAS_bool & inArgument3,
                                                     const GALGAS_methodQualifier & inArgument4,
-                                                    const GALGAS_string & inArgument5,
+                                                    const GALGAS_instanceMethodMutability & inArgument5,
+                                                    const GALGAS_string & inArgument6,
                                                     C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
   cMapElement_instanceMethodMap * p = NULL ;
-  macroMyNew (p, cMapElement_instanceMethodMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5 COMMA_HERE)) ;
+  macroMyNew (p, cMapElement_instanceMethodMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5, inArgument6 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -9945,11 +10078,12 @@ void GALGAS_instanceMethodMap::setter_insertKey (GALGAS_lstring inKey,
                                                  GALGAS_location inArgument2,
                                                  GALGAS_bool inArgument3,
                                                  GALGAS_methodQualifier inArgument4,
-                                                 GALGAS_string inArgument5,
+                                                 GALGAS_instanceMethodMutability inArgument5,
+                                                 GALGAS_string inArgument6,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
   cMapElement_instanceMethodMap * p = NULL ;
-  macroMyNew (p, cMapElement_instanceMethodMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5 COMMA_HERE)) ;
+  macroMyNew (p, cMapElement_instanceMethodMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5, inArgument6 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -9970,7 +10104,8 @@ void GALGAS_instanceMethodMap::method_searchKey (GALGAS_lstring inKey,
                                                  GALGAS_location & outArgument2,
                                                  GALGAS_bool & outArgument3,
                                                  GALGAS_methodQualifier & outArgument4,
-                                                 GALGAS_string & outArgument5,
+                                                 GALGAS_instanceMethodMutability & outArgument5,
+                                                 GALGAS_string & outArgument6,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
   const cMapElement_instanceMethodMap * p = (const cMapElement_instanceMethodMap *) performSearch (inKey,
@@ -9984,6 +10119,7 @@ void GALGAS_instanceMethodMap::method_searchKey (GALGAS_lstring inKey,
     outArgument3.drop () ;
     outArgument4.drop () ;
     outArgument5.drop () ;
+    outArgument6.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
     outArgument0 = p->mProperty_mKind ;
@@ -9991,7 +10127,8 @@ void GALGAS_instanceMethodMap::method_searchKey (GALGAS_lstring inKey,
     outArgument2 = p->mProperty_mDeclarationLocation ;
     outArgument3 = p->mProperty_mHasCompilerArgument ;
     outArgument4 = p->mProperty_mQualifier ;
-    outArgument5 = p->mProperty_mErrorMessage ;
+    outArgument5 = p->mProperty_mMutability ;
+    outArgument6 = p->mProperty_mErrorMessage ;
   }
 }
 
@@ -10007,7 +10144,8 @@ void GALGAS_instanceMethodMap::method_searchInheritedKey (GALGAS_lstring inKey,
                                                           GALGAS_location & outArgument2,
                                                           GALGAS_bool & outArgument3,
                                                           GALGAS_methodQualifier & outArgument4,
-                                                          GALGAS_string & outArgument5,
+                                                          GALGAS_instanceMethodMutability & outArgument5,
+                                                          GALGAS_string & outArgument6,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
   const cMapElement_instanceMethodMap * p = (const cMapElement_instanceMethodMap *) performSearch (inKey,
@@ -10021,6 +10159,7 @@ void GALGAS_instanceMethodMap::method_searchInheritedKey (GALGAS_lstring inKey,
     outArgument3.drop () ;
     outArgument4.drop () ;
     outArgument5.drop () ;
+    outArgument6.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
     outArgument0 = p->mProperty_mKind ;
@@ -10028,7 +10167,8 @@ void GALGAS_instanceMethodMap::method_searchInheritedKey (GALGAS_lstring inKey,
     outArgument2 = p->mProperty_mDeclarationLocation ;
     outArgument3 = p->mProperty_mHasCompilerArgument ;
     outArgument4 = p->mProperty_mQualifier ;
-    outArgument5 = p->mProperty_mErrorMessage ;
+    outArgument5 = p->mProperty_mMutability ;
+    outArgument6 = p->mProperty_mErrorMessage ;
   }
 }
 
@@ -10103,6 +10243,21 @@ GALGAS_methodQualifier GALGAS_instanceMethodMap::getter_mQualifierForKey (const 
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
     result = p->mProperty_mQualifier ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_instanceMethodMutability GALGAS_instanceMethodMap::getter_mMutabilityForKey (const GALGAS_string & inKey,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const {
+  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
+  const cMapElement_instanceMethodMap * p = (const cMapElement_instanceMethodMap *) attributes ;
+  GALGAS_instanceMethodMutability result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
+    result = p->mProperty_mMutability ;
   }
   return result ;
 }
@@ -10194,6 +10349,20 @@ void GALGAS_instanceMethodMap::setter_setMQualifierForKey (GALGAS_methodQualifie
 
 //----------------------------------------------------------------------------------------------------------------------
 
+void GALGAS_instanceMethodMap::setter_setMMutabilityForKey (GALGAS_instanceMethodMutability inAttributeValue,
+                                                            GALGAS_string inKey,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
+  cMapElement_instanceMethodMap * p = (cMapElement_instanceMethodMap *) attributes ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
+    p->mProperty_mMutability = inAttributeValue ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 void GALGAS_instanceMethodMap::setter_setMErrorMessageForKey (GALGAS_string inAttributeValue,
                                                               GALGAS_string inKey,
                                                               C_Compiler * inCompiler
@@ -10229,7 +10398,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_instanceMethodMap_2D_element cEnumerator_instanceMethodMap::current (LOCATION_ARGS) const {
   const cMapElement_instanceMethodMap * p = (const cMapElement_instanceMethodMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-  return GALGAS_instanceMethodMap_2D_element (p->mProperty_lkey, p->mProperty_mKind, p->mProperty_mParameterList, p->mProperty_mDeclarationLocation, p->mProperty_mHasCompilerArgument, p->mProperty_mQualifier, p->mProperty_mErrorMessage) ;
+  return GALGAS_instanceMethodMap_2D_element (p->mProperty_lkey, p->mProperty_mKind, p->mProperty_mParameterList, p->mProperty_mDeclarationLocation, p->mProperty_mHasCompilerArgument, p->mProperty_mQualifier, p->mProperty_mMutability, p->mProperty_mErrorMessage) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10282,6 +10451,14 @@ GALGAS_methodQualifier cEnumerator_instanceMethodMap::current_mQualifier (LOCATI
 
 //----------------------------------------------------------------------------------------------------------------------
 
+GALGAS_instanceMethodMutability cEnumerator_instanceMethodMap::current_mMutability (LOCATION_ARGS) const {
+  const cMapElement_instanceMethodMap * p = (const cMapElement_instanceMethodMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
+  return p->mProperty_mMutability ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 GALGAS_string cEnumerator_instanceMethodMap::current_mErrorMessage (LOCATION_ARGS) const {
   const cMapElement_instanceMethodMap * p = (const cMapElement_instanceMethodMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
@@ -10296,7 +10473,8 @@ bool GALGAS_instanceMethodMap::optional_searchKey (const GALGAS_string & inKey,
                                                    GALGAS_location & outArgument2,
                                                    GALGAS_bool & outArgument3,
                                                    GALGAS_methodQualifier & outArgument4,
-                                                   GALGAS_string & outArgument5) const {
+                                                   GALGAS_instanceMethodMutability & outArgument5,
+                                                   GALGAS_string & outArgument6) const {
   const cMapElement_instanceMethodMap * p = (const cMapElement_instanceMethodMap *) searchForKey (inKey) ;
   const bool result = NULL != p ;
   if (result) {
@@ -10306,7 +10484,8 @@ bool GALGAS_instanceMethodMap::optional_searchKey (const GALGAS_string & inKey,
     outArgument2 = p->mProperty_mDeclarationLocation ;
     outArgument3 = p->mProperty_mHasCompilerArgument ;
     outArgument4 = p->mProperty_mQualifier ;
-    outArgument5 = p->mProperty_mErrorMessage ;
+    outArgument5 = p->mProperty_mMutability ;
+    outArgument6 = p->mProperty_mErrorMessage ;
   }else{
     outArgument0.drop () ;
     outArgument1.drop () ;
@@ -10314,6 +10493,7 @@ bool GALGAS_instanceMethodMap::optional_searchKey (const GALGAS_string & inKey,
     outArgument3.drop () ;
     outArgument4.drop () ;
     outArgument5.drop () ;
+    outArgument6.drop () ;
   }
   return result ;
 }
@@ -12220,10 +12400,10 @@ GALGAS_string extensionGetter_string (const GALGAS_typeKindEnum & inObject,
     break ;
   case GALGAS_typeKindEnum::kEnum_classType:
     {
-      const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_11192 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
-      const GALGAS_bool extractedValue_11119_isReference = extractPtr_11192->mAssociatedValue0 ;
+      const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_11187 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
+      const GALGAS_bool extractedValue_11114_isReference = extractPtr_11187->mAssociatedValue0 ;
       GALGAS_string temp_1 ;
-      const enumGalgasBool test_2 = extractedValue_11119_isReference.boolEnum () ;
+      const enumGalgasBool test_2 = extractedValue_11114_isReference.boolEnum () ;
       if (kBoolTrue == test_2) {
         temp_1 = GALGAS_string ("reference class") ;
       }else if (kBoolFalse == test_2) {
