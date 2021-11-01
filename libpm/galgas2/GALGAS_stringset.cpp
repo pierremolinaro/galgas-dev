@@ -1061,7 +1061,7 @@ GALGAS_stringset GALGAS_stringset::constructor_setWithLStringList (const GALGAS_
     result = constructor_emptySet (THERE) ;
     cEnumerator_lstringlist enumerator (inStringList, kENUMERATION_UP) ;
     while (enumerator.hasCurrentObject ()) {
-      result.addAssign_operation (enumerator.current_mValue (THERE).getter_string(THERE) COMMA_THERE) ;
+      result.addAssign_operation (enumerator.current_mValue (THERE).mProperty_string COMMA_THERE) ;
       enumerator.gotoNextObject () ;
     }
     #ifndef DO_NOT_GENERATE_CHECKINGS

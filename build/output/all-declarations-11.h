@@ -10,6 +10,949 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Parser class 'galgas3ParameterArgumentSyntax' declaration
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cParser_galgas_33_ParameterArgumentSyntax {
+//--- Virtual destructor
+  public: virtual ~ cParser_galgas_33_ParameterArgumentSyntax (void) {}
+
+//--- Non terminal declarations
+  protected: virtual void nt_actual_5F_parameter_5F_list_ (class GALGAS_actualParameterListAST & outArgument0,
+                                                           class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_actual_5F_parameter_5F_list_parse (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_actual_5F_parameter_5F_list_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_expression_ (class GALGAS_semanticExpressionAST & outArgument0,
+                                          class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_expression_parse (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_expression_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_formal_5F_input_5F_parameter_5F_list_ (class GALGAS_formalInputParameterListAST & outArgument0,
+                                                                    class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_formal_5F_input_5F_parameter_5F_list_parse (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_formal_5F_input_5F_parameter_5F_list_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_formal_5F_parameter_5F_list_ (class GALGAS_formalParameterListAST & outArgument0,
+                                                           class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_formal_5F_parameter_5F_list_parse (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_formal_5F_parameter_5F_list_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+
+//--- Rule declarations
+  protected: void rule_galgas_33_ParameterArgumentSyntax_formal_5F_parameter_5F_list_i0_ (GALGAS_formalParameterListAST & outArgument0,
+                                                                                          C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected: void rule_galgas_33_ParameterArgumentSyntax_formal_5F_parameter_5F_list_i0_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected: void rule_galgas_33_ParameterArgumentSyntax_formal_5F_parameter_5F_list_i0_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected: void rule_galgas_33_ParameterArgumentSyntax_actual_5F_parameter_5F_list_i1_ (GALGAS_actualParameterListAST & outArgument0,
+                                                                                          C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected: void rule_galgas_33_ParameterArgumentSyntax_actual_5F_parameter_5F_list_i1_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected: void rule_galgas_33_ParameterArgumentSyntax_actual_5F_parameter_5F_list_i1_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected: void rule_galgas_33_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_i2_ (GALGAS_formalInputParameterListAST & outArgument0,
+                                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected: void rule_galgas_33_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_i2_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected: void rule_galgas_33_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_i2_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+
+
+//--- Select methods
+  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_0 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_1 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_2 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_3 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_4 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_5 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_6 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_7 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_8 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_9 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_10 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected: virtual int32_t select_galgas_33_ParameterArgumentSyntax_11 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @inputActualExistingVariableParameterAST reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_inputActualExistingVariableParameterAST : public GALGAS_actualParameterAST {
+//--------------------------------- Default constructor
+  public: GALGAS_inputActualExistingVariableParameterAST (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_inputActualExistingVariableParameterAST constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Embedded object pointer
+ public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
+   return (acStrongPtr_class *) mObjectPtr ;
+ }
+  
+//--------------------------------- Constructor from pointer
+  public: GALGAS_inputActualExistingVariableParameterAST (const class cPtr_inputActualExistingVariableParameterAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mActualSelector (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mInputActualParameterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_inputActualExistingVariableParameterAST extractObject (const GALGAS_object & inObject,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_inputActualExistingVariableParameterAST constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                       const class GALGAS_lstring & inOperand1
+                                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_inputActualExistingVariableParameterAST & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMActualSelector (class GALGAS_lstring inArgument0
+                                                           COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMInputActualParameterName (class GALGAS_lstring inArgument0
+                                                                     COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mActualSelector (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mInputActualParameterName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_inputActualExistingVariableParameterAST class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualExistingVariableParameterAST ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @inputActualExistingVariableParameterAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_inputActualExistingVariableParameterAST : public cPtr_actualParameterAST {
+//--- Properties
+  public: GALGAS_lstring mProperty_mActualSelector ;
+  public: GALGAS_lstring mProperty_mInputActualParameterName ;
+
+//--- Constructor
+  public: cPtr_inputActualExistingVariableParameterAST (const GALGAS_lstring & in_mActualSelector,
+                                                        const GALGAS_lstring & in_mInputActualParameterName
+                                                        COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @inputActualNewConstantParameterAST reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_inputActualNewConstantParameterAST : public GALGAS_actualParameterAST {
+//--------------------------------- Default constructor
+  public: GALGAS_inputActualNewConstantParameterAST (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_inputActualNewConstantParameterAST constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Embedded object pointer
+ public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
+   return (acStrongPtr_class *) mObjectPtr ;
+ }
+  
+//--------------------------------- Constructor from pointer
+  public: GALGAS_inputActualNewConstantParameterAST (const class cPtr_inputActualNewConstantParameterAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mActualSelector (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mInputOptionalActualTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mInputActualParameterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_bool readProperty_mMarkedAsUnused (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_inputActualNewConstantParameterAST extractObject (const GALGAS_object & inObject,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_inputActualNewConstantParameterAST constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                  const class GALGAS_lstring & inOperand1,
+                                                                                  const class GALGAS_lstring & inOperand2,
+                                                                                  const class GALGAS_bool & inOperand3
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_inputActualNewConstantParameterAST & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMActualSelector (class GALGAS_lstring inArgument0
+                                                           COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMInputActualParameterName (class GALGAS_lstring inArgument0
+                                                                     COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMInputOptionalActualTypeName (class GALGAS_lstring inArgument0
+                                                                        COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMMarkedAsUnused (class GALGAS_bool inArgument0
+                                                           COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mActualSelector (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mInputActualParameterName (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mInputOptionalActualTypeName (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mMarkedAsUnused (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_inputActualNewConstantParameterAST class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualNewConstantParameterAST ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @inputActualNewConstantParameterAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
+//--- Properties
+  public: GALGAS_lstring mProperty_mActualSelector ;
+  public: GALGAS_lstring mProperty_mInputOptionalActualTypeName ;
+  public: GALGAS_lstring mProperty_mInputActualParameterName ;
+  public: GALGAS_bool mProperty_mMarkedAsUnused ;
+
+//--- Constructor
+  public: cPtr_inputActualNewConstantParameterAST (const GALGAS_lstring & in_mActualSelector,
+                                                   const GALGAS_lstring & in_mInputOptionalActualTypeName,
+                                                   const GALGAS_lstring & in_mInputActualParameterName,
+                                                   const GALGAS_bool & in_mMarkedAsUnused
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @inputActualNewVariableParameterAST reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_inputActualNewVariableParameterAST : public GALGAS_actualParameterAST {
+//--------------------------------- Default constructor
+  public: GALGAS_inputActualNewVariableParameterAST (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_inputActualNewVariableParameterAST constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Embedded object pointer
+ public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
+   return (acStrongPtr_class *) mObjectPtr ;
+ }
+  
+//--------------------------------- Constructor from pointer
+  public: GALGAS_inputActualNewVariableParameterAST (const class cPtr_inputActualNewVariableParameterAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mActualSelector (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mInputOptionalActualTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mInputActualParameterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_inputActualNewVariableParameterAST extractObject (const GALGAS_object & inObject,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_inputActualNewVariableParameterAST constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                  const class GALGAS_lstring & inOperand1,
+                                                                                  const class GALGAS_lstring & inOperand2
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_inputActualNewVariableParameterAST & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMActualSelector (class GALGAS_lstring inArgument0
+                                                           COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMInputActualParameterName (class GALGAS_lstring inArgument0
+                                                                     COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMInputOptionalActualTypeName (class GALGAS_lstring inArgument0
+                                                                        COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mActualSelector (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mInputActualParameterName (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mInputOptionalActualTypeName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_inputActualNewVariableParameterAST class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualNewVariableParameterAST ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @inputActualNewVariableParameterAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
+//--- Properties
+  public: GALGAS_lstring mProperty_mActualSelector ;
+  public: GALGAS_lstring mProperty_mInputOptionalActualTypeName ;
+  public: GALGAS_lstring mProperty_mInputActualParameterName ;
+
+//--- Constructor
+  public: cPtr_inputActualNewVariableParameterAST (const GALGAS_lstring & in_mActualSelector,
+                                                   const GALGAS_lstring & in_mInputOptionalActualTypeName,
+                                                   const GALGAS_lstring & in_mInputActualParameterName
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @inputActualSelfPropertyParameterAST reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_inputActualSelfPropertyParameterAST : public GALGAS_actualParameterAST {
+//--------------------------------- Default constructor
+  public: GALGAS_inputActualSelfPropertyParameterAST (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_inputActualSelfPropertyParameterAST constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Embedded object pointer
+ public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
+   return (acStrongPtr_class *) mObjectPtr ;
+ }
+  
+//--------------------------------- Constructor from pointer
+  public: GALGAS_inputActualSelfPropertyParameterAST (const class cPtr_inputActualSelfPropertyParameterAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mActualSelector (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mInputActualSelfPropertyName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_inputActualSelfPropertyParameterAST extractObject (const GALGAS_object & inObject,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_inputActualSelfPropertyParameterAST constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                   const class GALGAS_lstring & inOperand1
+                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_inputActualSelfPropertyParameterAST & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMActualSelector (class GALGAS_lstring inArgument0
+                                                           COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMInputActualSelfPropertyName (class GALGAS_lstring inArgument0
+                                                                        COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mActualSelector (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mInputActualSelfPropertyName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_inputActualSelfPropertyParameterAST class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualSelfPropertyParameterAST ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @inputActualSelfPropertyParameterAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_inputActualSelfPropertyParameterAST : public cPtr_actualParameterAST {
+//--- Properties
+  public: GALGAS_lstring mProperty_mActualSelector ;
+  public: GALGAS_lstring mProperty_mInputActualSelfPropertyName ;
+
+//--- Constructor
+  public: cPtr_inputActualSelfPropertyParameterAST (const GALGAS_lstring & in_mActualSelector,
+                                                    const GALGAS_lstring & in_mInputActualSelfPropertyName
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @inputSingleJokerActualParameterAST reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_inputSingleJokerActualParameterAST : public GALGAS_actualParameterAST {
+//--------------------------------- Default constructor
+  public: GALGAS_inputSingleJokerActualParameterAST (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_inputSingleJokerActualParameterAST constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Embedded object pointer
+ public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
+   return (acStrongPtr_class *) mObjectPtr ;
+ }
+  
+//--------------------------------- Constructor from pointer
+  public: GALGAS_inputSingleJokerActualParameterAST (const class cPtr_inputSingleJokerActualParameterAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mActualSelector (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_inputSingleJokerActualParameterAST extractObject (const GALGAS_object & inObject,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_inputSingleJokerActualParameterAST constructor_new (const class GALGAS_lstring & inOperand0
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_inputSingleJokerActualParameterAST & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMActualSelector (class GALGAS_lstring inArgument0
+                                                           COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mActualSelector (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_inputSingleJokerActualParameterAST class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputSingleJokerActualParameterAST ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @inputSingleJokerActualParameterAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_inputSingleJokerActualParameterAST : public cPtr_actualParameterAST {
+//--- Properties
+  public: GALGAS_lstring mProperty_mActualSelector ;
+
+//--- Constructor
+  public: cPtr_inputSingleJokerActualParameterAST (const GALGAS_lstring & in_mActualSelector
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @outputActualParameterAST reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_outputActualParameterAST : public GALGAS_actualParameterAST {
+//--------------------------------- Default constructor
+  public: GALGAS_outputActualParameterAST (void) ;
+
+//--------------------------------- Embedded object pointer
+ public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
+   return (acStrongPtr_class *) mObjectPtr ;
+ }
+  
+//--------------------------------- Constructor from pointer
+  public: GALGAS_outputActualParameterAST (const class cPtr_outputActualParameterAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mActualSelector (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticExpressionAST readProperty_mOutputActualParameterExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOfExpressionLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_outputActualParameterAST extractObject (const GALGAS_object & inObject,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_outputActualParameterAST constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                        const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                        const class GALGAS_location & inOperand2
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_outputActualParameterAST & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMActualSelector (class GALGAS_lstring inArgument0
+                                                           COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMEndOfExpressionLocation (class GALGAS_location inArgument0
+                                                                    COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMOutputActualParameterExpression (class GALGAS_semanticExpressionAST inArgument0
+                                                                            COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mActualSelector (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_location getter_mEndOfExpressionLocation (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST getter_mOutputActualParameterExpression (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_outputActualParameterAST class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputActualParameterAST ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @outputActualParameterAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_outputActualParameterAST : public cPtr_actualParameterAST {
+//--- Properties
+  public: GALGAS_lstring mProperty_mActualSelector ;
+  public: GALGAS_semanticExpressionAST mProperty_mOutputActualParameterExpression ;
+  public: GALGAS_location mProperty_mEndOfExpressionLocation ;
+
+//--- Constructor
+  public: cPtr_outputActualParameterAST (const GALGAS_lstring & in_mActualSelector,
+                                         const GALGAS_semanticExpressionAST & in_mOutputActualParameterExpression,
+                                         const GALGAS_location & in_mEndOfExpressionLocation
+                                         COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @outputInputActualParameterAST reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_outputInputActualParameterAST : public GALGAS_actualParameterAST {
+//--------------------------------- Default constructor
+  public: GALGAS_outputInputActualParameterAST (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_outputInputActualParameterAST constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Embedded object pointer
+ public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
+   return (acStrongPtr_class *) mObjectPtr ;
+ }
+  
+//--------------------------------- Constructor from pointer
+  public: GALGAS_outputInputActualParameterAST (const class cPtr_outputInputActualParameterAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mActualSelector (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mOutputInputActualParameterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstringlist readProperty_mStructAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_outputInputActualParameterAST extractObject (const GALGAS_object & inObject,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_outputInputActualParameterAST constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                             const class GALGAS_lstring & inOperand1,
+                                                                             const class GALGAS_lstringlist & inOperand2
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_outputInputActualParameterAST & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMActualSelector (class GALGAS_lstring inArgument0
+                                                           COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMOutputInputActualParameterName (class GALGAS_lstring inArgument0
+                                                                           COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMStructAttributeList (class GALGAS_lstringlist inArgument0
+                                                                COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mActualSelector (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mOutputInputActualParameterName (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mStructAttributeList (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_outputInputActualParameterAST class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputActualParameterAST ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @outputInputActualParameterAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_outputInputActualParameterAST : public cPtr_actualParameterAST {
+//--- Properties
+  public: GALGAS_lstring mProperty_mActualSelector ;
+  public: GALGAS_lstring mProperty_mOutputInputActualParameterName ;
+  public: GALGAS_lstringlist mProperty_mStructAttributeList ;
+
+//--- Constructor
+  public: cPtr_outputInputActualParameterAST (const GALGAS_lstring & in_mActualSelector,
+                                              const GALGAS_lstring & in_mOutputInputActualParameterName,
+                                              const GALGAS_lstringlist & in_mStructAttributeList
+                                              COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @outputInputSingleJokerParameterAST reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_outputInputSingleJokerParameterAST : public GALGAS_actualParameterAST {
+//--------------------------------- Default constructor
+  public: GALGAS_outputInputSingleJokerParameterAST (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_outputInputSingleJokerParameterAST constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Embedded object pointer
+ public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
+   return (acStrongPtr_class *) mObjectPtr ;
+ }
+  
+//--------------------------------- Constructor from pointer
+  public: GALGAS_outputInputSingleJokerParameterAST (const class cPtr_outputInputSingleJokerParameterAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mActualSelector (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_outputInputSingleJokerParameterAST extractObject (const GALGAS_object & inObject,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_outputInputSingleJokerParameterAST constructor_new (const class GALGAS_lstring & inOperand0
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_outputInputSingleJokerParameterAST & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMActualSelector (class GALGAS_lstring inArgument0
+                                                           COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mActualSelector (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_outputInputSingleJokerParameterAST class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputSingleJokerParameterAST ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @outputInputSingleJokerParameterAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_outputInputSingleJokerParameterAST : public cPtr_actualParameterAST {
+//--- Properties
+  public: GALGAS_lstring mProperty_mActualSelector ;
+
+//--- Constructor
+  public: cPtr_outputInputSingleJokerParameterAST (const GALGAS_lstring & in_mActualSelector
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Parser class 'galgas3InstructionsSyntax' declaration
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -889,6 +1832,13 @@ class GALGAS_assignmentInstructionAST : public GALGAS_semanticInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_assignmentInstructionAST (const class cPtr_assignmentInstructionAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mTargetVariableName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mOptionalProperty (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticExpressionAST readProperty_mSourceExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -984,6 +1934,15 @@ class GALGAS_divEqualExpressionInstructionAST : public GALGAS_semanticInstructio
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_divEqualExpressionInstructionAST (const class cPtr_divEqualExpressionInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_bool readProperty_mPrefixedBySelf (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mReceiverName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstringlist readProperty_mStructAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticExpressionAST readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -1086,6 +2045,13 @@ class GALGAS_enumeratedCollectionImplicitVarInExpAST : public GALGAS_abstractEnu
 //--------------------------------- Constructor from pointer
   public: GALGAS_enumeratedCollectionImplicitVarInExpAST (const class cPtr_enumeratedCollectionImplicitVarInExpAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mPrefix (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticExpressionAST readProperty_mEnumeratedExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOfAnonymousEnumeration (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1179,6 +2145,15 @@ class GALGAS_enumeratedCollectionVarInExpAST : public GALGAS_abstractEnumeratedC
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_enumeratedCollectionVarInExpAST (const class cPtr_enumeratedCollectionVarInExpAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mEnumerationOptionalTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mEnumerationVariable (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticExpressionAST readProperty_mEnumeratedExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOfEnumerationExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -1281,6 +2256,13 @@ class GALGAS_externFunctionDeclarationAST : public GALGAS_semanticDeclarationAST
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_externFunctionDeclarationAST (const class cPtr_externFunctionDeclarationAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mFunctionName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_formalInputParameterListAST readProperty_mFormalArgumentList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mResultTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -1390,6 +2372,13 @@ class GALGAS_externRoutineDeclarationAST : public GALGAS_semanticDeclarationAST 
 //--------------------------------- Constructor from pointer
   public: GALGAS_externRoutineDeclarationAST (const class cPtr_externRoutineDeclarationAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_bool readProperty_mIsInternal (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mRoutineName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_formalParameterListAST readProperty_mFormalArgumentList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1494,6 +2483,33 @@ class GALGAS_forInstructionAST : public GALGAS_semanticInstructionAST {
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_forInstructionAST (const class cPtr_forInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_forInstructionEnumeratedObjectListAST readProperty_mEnumeratedObjectList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mIndexVariableName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticExpressionAST readProperty_mWhileExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOf_5F_while_5F_expression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticInstructionListAST readProperty_mBeforeInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOf_5F_before_5F_branch (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticInstructionListAST readProperty_mBetweenInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOf_5F_between_5F_branch (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticInstructionListAST readProperty_mDoInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOf_5F_do_5F_branch (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticInstructionListAST readProperty_mAfterInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOf_5F_after_5F_branch (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOf_5F_foreach_5F_instruction (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -1644,6 +2660,17 @@ class GALGAS_functionDeclarationAST : public GALGAS_externFunctionDeclarationAST
 //--------------------------------- Constructor from pointer
   public: GALGAS_functionDeclarationAST (const class cPtr_functionDeclarationAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mResultVariableName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticInstructionListAST readProperty_mFunctionInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOfFunctionInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_bool readProperty_mIsInternal (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_bool readProperty_mIsUsefull (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1771,6 +2798,19 @@ class GALGAS_grammarInFileInstructionAST : public GALGAS_semanticInstructionAST 
 //--------------------------------- Constructor from pointer
   public: GALGAS_grammarInFileInstructionAST (const class cPtr_grammarInFileInstructionAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mGrammarComponentName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mLabelName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticExpressionAST readProperty_mSourceExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOfSourceExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_actualParameterListAST readProperty_mActualParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult readProperty_mAbstractGrammarInstructionSyntaxDirectedTranslationResult (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1881,6 +2921,23 @@ class GALGAS_grammarInStringInstructionAST : public GALGAS_semanticInstructionAS
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_grammarInStringInstructionAST (const class cPtr_grammarInStringInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mGrammarComponentName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mLabelName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticExpressionAST readProperty_mSourceExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOfSourceExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticExpressionAST readProperty_mNameExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOfNameExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_actualParameterListAST readProperty_mActualParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult readProperty_mAbstractGrammarInstructionSyntaxDirectedTranslationResult (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -2006,6 +3063,11 @@ class GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : 
 //--------------------------------- Constructor from pointer
   public: GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst (const class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mActualParameterTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mActualParameterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -2097,6 +3159,11 @@ class GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar : pu
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar (const class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mActualParameterTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mActualParameterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -2190,6 +3257,9 @@ class GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar : public GAL
 //--------------------------------- Constructor from pointer
   public: GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar (const class cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mActualParameterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -2273,6 +3343,15 @@ class GALGAS_incDecInstructionAST : public GALGAS_semanticInstructionAST {
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_incDecInstructionAST (const class cPtr_incDecInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_bool readProperty_mPrefixedBySelf (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mReceiverName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstringlist readProperty_mStructAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_incDecKind readProperty_mKind (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -2386,6 +3465,15 @@ class GALGAS_incDecNoOVFInstructionAST : public GALGAS_semanticInstructionAST {
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_incDecNoOVFInstructionAST (const class cPtr_incDecNoOVFInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_bool readProperty_mPrefixedBySelf (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mReceiverName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstringlist readProperty_mStructAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_incDecKind readProperty_mKind (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -2503,6 +3591,11 @@ class GALGAS_inputParameterDeclaredConstant : public GALGAS_abstractInputParamet
 //--------------------------------- Constructor from pointer
   public: GALGAS_inputParameterDeclaredConstant (const class cPtr_inputParameterDeclaredConstant * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mActualParameterTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mActualParameterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -2600,6 +3693,11 @@ class GALGAS_inputParameterDeclaredVariable : public GALGAS_abstractInputParamet
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_inputParameterDeclaredVariable (const class cPtr_inputParameterDeclaredVariable * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mActualParameterTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mActualParameterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -2699,6 +3797,9 @@ class GALGAS_inputParameterVariable : public GALGAS_abstractInputParameter {
 //--------------------------------- Constructor from pointer
   public: GALGAS_inputParameterVariable (const class cPtr_inputParameterVariable * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mActualParameterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -2785,6 +3886,11 @@ class GALGAS_localConstantDeclarationWithAssignmentAST : public GALGAS_semanticI
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_localConstantDeclarationWithAssignmentAST (const class cPtr_localConstantDeclarationWithAssignmentAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mVariableName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticExpressionAST readProperty_mSourceExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -2877,6 +3983,11 @@ class GALGAS_localVariableDeclarationWithAssignmentAST : public GALGAS_semanticI
 //--------------------------------- Constructor from pointer
   public: GALGAS_localVariableDeclarationWithAssignmentAST (const class cPtr_localVariableDeclarationWithAssignmentAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mVariableName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticExpressionAST readProperty_mSourceExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -2967,6 +4078,15 @@ class GALGAS_localVariableOrConstantDeclarationWithAssignmentAST : public GALGAS
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_localVariableOrConstantDeclarationWithAssignmentAST (const class cPtr_localVariableOrConstantDeclarationWithAssignmentAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_bool readProperty_mIsConstant (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mOptionalTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mVariableName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticExpressionAST readProperty_mSourceExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -3069,6 +4189,13 @@ class GALGAS_methodCallInstructionAST : public GALGAS_semanticInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_methodCallInstructionAST (const class cPtr_methodCallInstructionAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_semanticExpressionAST readProperty_mReceiverExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mMethodName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_actualParameterListAST readProperty_mActualParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -3164,6 +4291,15 @@ class GALGAS_minusEqualExpressionInstructionAST : public GALGAS_semanticInstruct
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_minusEqualExpressionInstructionAST (const class cPtr_minusEqualExpressionInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_bool readProperty_mPrefixedBySelf (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mReceiverName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstringlist readProperty_mStructAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticExpressionAST readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -3265,6 +4401,15 @@ class GALGAS_mulEqualExpressionInstructionAST : public GALGAS_semanticInstructio
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_mulEqualExpressionInstructionAST (const class cPtr_mulEqualExpressionInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_bool readProperty_mPrefixedBySelf (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mReceiverName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstringlist readProperty_mStructAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticExpressionAST readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -3369,6 +4514,21 @@ class GALGAS_onceFunctionDeclarationAST : public GALGAS_semanticDeclarationAST {
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_onceFunctionDeclarationAST (const class cPtr_onceFunctionDeclarationAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mFunctionName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mResultTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mResultVariableName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticInstructionListAST readProperty_mFunctionInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOfFunctionInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_bool readProperty_mIsInternal (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_bool readProperty_mIsUsefull (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -3510,6 +4670,15 @@ class GALGAS_plusEqualElementsInstructionAST : public GALGAS_semanticInstruction
 //--------------------------------- Constructor from pointer
   public: GALGAS_plusEqualElementsInstructionAST (const class cPtr_plusEqualElementsInstructionAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_bool readProperty_mPrefixedBySelf (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mReceiverName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstringlist readProperty_mStructAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_actualOutputExpressionList readProperty_mExpressions (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -3610,6 +4779,15 @@ class GALGAS_plusEqualExpressionInstructionAST : public GALGAS_semanticInstructi
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_plusEqualExpressionInstructionAST (const class cPtr_plusEqualExpressionInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_bool readProperty_mPrefixedBySelf (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mReceiverName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstringlist readProperty_mStructAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticExpressionAST readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -3715,6 +4893,11 @@ class GALGAS_procCallInstructionAST : public GALGAS_semanticInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_procCallInstructionAST (const class cPtr_procCallInstructionAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mRoutineName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_actualParameterListAST readProperty_mActualParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -3808,6 +4991,11 @@ class GALGAS_procDeclarationAST : public GALGAS_externRoutineDeclarationAST {
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_procDeclarationAST (const class cPtr_procDeclarationAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_semanticInstructionListAST readProperty_mRoutineInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOfRoutineInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -3911,6 +5099,27 @@ class GALGAS_readAccessWithInstructionAST : public GALGAS_semanticInstructionAST
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_readAccessWithInstructionAST (const class cPtr_readAccessWithInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mPrefix (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticExpressionAST readProperty_mReceiverExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOfReceiverExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticExpressionAST readProperty_mKeyExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOfKeyExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mSearchMethodNameForErrorSignaling (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticInstructionListAST readProperty_mDoBranchInstructions (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOf_5F_do_5F_instructions (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticInstructionListAST readProperty_mElseBranchInstructions (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOf_5F_else_5F_instructions (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -4072,6 +5281,31 @@ class GALGAS_readWriteAccessWithInstructionAST : public GALGAS_semanticInstructi
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_readWriteAccessWithInstructionAST (const class cPtr_readWriteAccessWithInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mPrefix (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mReceiverName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_bool readProperty_mReceiverIsPrefixedBySelf (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstringlist readProperty_mFieldList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOfReceiverExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticExpressionAST readProperty_mKeyExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOfKeyExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mSearchMethodNameForErrorSignaling (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticInstructionListAST readProperty_m_5F_do_5F_Instructions (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOf_5F_do_5F_instructions (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticInstructionListAST readProperty_m_5F_else_5F_Instructions (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOf_5F_else_5F_instructions (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -4250,6 +5484,13 @@ class GALGAS_selfPropertyAssignmentInstructionAST : public GALGAS_semanticInstru
 //--------------------------------- Constructor from pointer
   public: GALGAS_selfPropertyAssignmentInstructionAST (const class cPtr_selfPropertyAssignmentInstructionAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mTargetSelfPropertyName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mOptionalProperty (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticExpressionAST readProperty_mSourceExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -4349,6 +5590,11 @@ class GALGAS_selfSetterCallInstructionAST : public GALGAS_semanticInstructionAST
 //--------------------------------- Constructor from pointer
   public: GALGAS_selfSetterCallInstructionAST (const class cPtr_selfSetterCallInstructionAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mSetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_actualParameterListAST readProperty_mActualParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -4442,6 +5688,19 @@ class GALGAS_setterCallInstructionAST : public GALGAS_semanticInstructionAST {
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_setterCallInstructionAST (const class cPtr_setterCallInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_bool readProperty_mPrefixedBySelf (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mReceiverName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstringlist readProperty_mReceiverStructProperties (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mTypeNameForCasting (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mSetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_actualParameterListAST readProperty_mActualParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -4557,6 +5816,13 @@ class GALGAS_typeMethodCallInstructionAST : public GALGAS_semanticInstructionAST
 //--------------------------------- Constructor from pointer
   public: GALGAS_typeMethodCallInstructionAST (const class cPtr_typeMethodCallInstructionAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mMethodName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_actualParameterListAST readProperty_mActualParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -4655,6 +5921,11 @@ class GALGAS_undefinedLocalConstantDeclarationAST : public GALGAS_semanticInstru
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_undefinedLocalConstantDeclarationAST (const class cPtr_undefinedLocalConstantDeclarationAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mConstantTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mConstantName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -5497,6 +6768,15 @@ class GALGAS_abstractExtensionGetterAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_abstractExtensionGetterAST (const class cPtr_abstractExtensionGetterAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mAbstractExtensionGetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_formalInputParameterListAST readProperty_mAbstractExtensionGetterFormalInputParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mAbstractExtensionGetterReturnedTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -5600,6 +6880,13 @@ class GALGAS_abstractExtensionMethodAST : public GALGAS_semanticDeclarationAST {
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_abstractExtensionMethodAST (const class cPtr_abstractExtensionMethodAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mAbstractExtensionMethodName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_formalParameterListAST readProperty_mAbstractExtensionMethodFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -5709,6 +6996,13 @@ class GALGAS_abstractExtensionSetterAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_abstractExtensionSetterAST (const class cPtr_abstractExtensionSetterAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mAbstractExtensionSetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_formalParameterListAST readProperty_mAbstractExtensionSetterFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -5807,6 +7101,13 @@ class GALGAS_arrayDeclarationAST : public GALGAS_semanticDeclarationAST {
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_arrayDeclarationAST (const class cPtr_arrayDeclarationAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mArrayTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mElementTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_luint readProperty_mDimension (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -5907,6 +7208,11 @@ class GALGAS_boolsetDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_boolsetDeclarationAST (const class cPtr_boolsetDeclarationAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mBoolsetTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstringlist readProperty_mFlagList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -6000,6 +7306,19 @@ class GALGAS_classDeclarationAST : public GALGAS_semanticDeclarationAST {
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_classDeclarationAST (const class cPtr_classDeclarationAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_bool readProperty_mIsAbstract (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_bool readProperty_mIsReference (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mClassTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mSuperClassName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstringlist readProperty_mClassFeatureList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_propertyInCollectionListAST readProperty_mPropertyList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -6115,6 +7434,15 @@ class GALGAS_dictDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_dictDeclarationAST (const class cPtr_dictDeclarationAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mDictTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mKeyTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstringlist readProperty_mAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_propertyInCollectionListAST readProperty_mPropertyList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -6219,6 +7547,13 @@ class GALGAS_enumDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_enumDeclarationAST (const class cPtr_enumDeclarationAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mEnumTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_enumConstantList readProperty_mConstantList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mDefaultConstantName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -6317,6 +7652,21 @@ class GALGAS_extensionGetterAST : public GALGAS_semanticDeclarationAST {
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_extensionGetterAST (const class cPtr_extensionGetterAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mExtensionGetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_formalInputParameterListAST readProperty_mExtensionGetterFormalInputParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mExtensionGetterReturnedTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mExtensionGetterReturnedVariableName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticInstructionListAST readProperty_mExtensionGetterInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOfReaderLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -6437,6 +7787,17 @@ class GALGAS_extensionMethodAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_extensionMethodAST (const class cPtr_extensionMethodAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mExtensionMethodName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_formalParameterListAST readProperty_mExtensionMethodFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticInstructionListAST readProperty_mExtensionMethodInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOfMethodLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -6546,6 +7907,17 @@ class GALGAS_extensionSetterAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_extensionSetterAST (const class cPtr_extensionSetterAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mExtensionSetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_formalParameterListAST readProperty_mExtensionSetterFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticInstructionListAST readProperty_mExtensionSetterInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOfSetterDeclarationLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -6654,6 +8026,21 @@ class GALGAS_externTypeDeclarationAST : public GALGAS_semanticDeclarationAST {
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_externTypeDeclarationAST (const class cPtr_externTypeDeclarationAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mExternTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_string readProperty_mCppPreDeclarationCode (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_string readProperty_mCppClassCode (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_externTypeConstructorList readProperty_mExternTypeConstructorList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_externTypeGetterList readProperty_mExternTypeGetterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_externTypeSetterList readProperty_mExternTypeSetterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_externTypeMethodList readProperty_mExternTypeMethodList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -6773,6 +8160,21 @@ class GALGAS_filewrapperDeclarationAST : public GALGAS_semanticDeclarationAST {
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_filewrapperDeclarationAST (const class cPtr_filewrapperDeclarationAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_bool readProperty_mIsInternal (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_string readProperty_mSourceFileAbsolutePath (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mFilewrapperName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mFilewrapperPath (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstringlist readProperty_mFilewrapperTextFileExtensionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstringlist readProperty_mFilewrapperBinaryFileExtensionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_filewrapperTemplateListAST readProperty_mFilewrapperTemplateList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -6914,6 +8316,13 @@ class GALGAS_graphDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_graphDeclarationAST (const class cPtr_graphDeclarationAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mGraphTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mAssociatedListTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_graphInsertModifierList readProperty_mInsertModifierList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -7022,6 +8431,11 @@ class GALGAS_listDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_listDeclarationAST (const class cPtr_listDeclarationAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mListTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_propertyInCollectionListAST readProperty_mPropertyList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -7116,6 +8530,11 @@ class GALGAS_listmapDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_listmapDeclarationAST (const class cPtr_listmapDeclarationAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mListmapTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mAssociatedListTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -7209,6 +8628,13 @@ class GALGAS_localVariableDeclarationAST : public GALGAS_semanticInstructionAST 
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_localVariableDeclarationAST (const class cPtr_localVariableDeclarationAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mVariableName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_bool readProperty_mIsUndefinedConstant (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -7308,6 +8734,21 @@ class GALGAS_mapDeclarationAST : public GALGAS_semanticDeclarationAST {
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_mapDeclarationAST (const class cPtr_mapDeclarationAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mMapTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstringlist readProperty_mAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_propertyInCollectionListAST readProperty_mPropertyList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_insertMethodListAST readProperty_mInsertMethodList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_mapSearchMethodListAST readProperty_mSearchMethodList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_mapRemoveMethodListAST readProperty_mRemoveMethodList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_insertOrReplaceDeclarationListAST readProperty_mInsertOrReplaceDeclarationListAST (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -7449,6 +8890,11 @@ class GALGAS_mapEntryDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_mapEntryDeclarationAST (const class cPtr_mapEntryDeclarationAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mMapEntryTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mAssociatedMapTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -7542,6 +8988,15 @@ class GALGAS_overridingAbstractExtensionGetterAST : public GALGAS_semanticDeclar
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_overridingAbstractExtensionGetterAST (const class cPtr_overridingAbstractExtensionGetterAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mAbstractExtensionGetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_formalInputParameterListAST readProperty_mAbstractExtensionGetterFormalInputParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mAbstractExtensionGetterReturnedTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -7646,6 +9101,13 @@ class GALGAS_overridingAbstractExtensionMethodAST : public GALGAS_semanticDeclar
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_overridingAbstractExtensionMethodAST (const class cPtr_overridingAbstractExtensionMethodAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mOverridingExtensionMethodName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_formalParameterListAST readProperty_mOverridingExtensionMethodFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -7755,6 +9217,13 @@ class GALGAS_overridingAbstractExtensionSetterAST : public GALGAS_semanticDeclar
 //--------------------------------- Constructor from pointer
   public: GALGAS_overridingAbstractExtensionSetterAST (const class cPtr_overridingAbstractExtensionSetterAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mOverridingExtensionSetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_formalParameterListAST readProperty_mOverridingExtensionSetterFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -7853,6 +9322,21 @@ class GALGAS_overridingExtensionGetterAST : public GALGAS_semanticDeclarationAST
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_overridingExtensionGetterAST (const class cPtr_overridingExtensionGetterAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mOverridingExtensionGetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_formalInputParameterListAST readProperty_mOverridingExtensionGetterFormalInputParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mOverridingExtensionGetterReturnedTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mOverridingExtensionGetterReturnedVariableName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticInstructionListAST readProperty_mOverridingExtensionGetterInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOfReaderLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -7973,6 +9457,17 @@ class GALGAS_overridingExtensionMethodAST : public GALGAS_semanticDeclarationAST
 //--------------------------------- Constructor from pointer
   public: GALGAS_overridingExtensionMethodAST (const class cPtr_overridingExtensionMethodAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mOverridingExtensionMethodName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_formalParameterListAST readProperty_mOverridingExtensionMethodFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticInstructionListAST readProperty_mOverridingExtensionMethodInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOfMethodLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -8082,6 +9577,17 @@ class GALGAS_overridingExtensionSetterAST : public GALGAS_semanticDeclarationAST
 //--------------------------------- Constructor from pointer
   public: GALGAS_overridingExtensionSetterAST (const class cPtr_overridingExtensionSetterAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mOverridingExtensionSetterName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_formalParameterListAST readProperty_mOverridingExtensionSetterFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_semanticInstructionListAST readProperty_mOverridingExtensionSetterInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_location readProperty_mEndOfSetterDeclarationLocation (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -8190,6 +9696,23 @@ class GALGAS_sharedMapDeclarationAST : public GALGAS_semanticDeclarationAST {
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_sharedMapDeclarationAST (const class cPtr_sharedMapDeclarationAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mMapTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstringlist readProperty_mAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_propertyInCollectionListAST readProperty_mPropertyList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_insertMethodListAST readProperty_mInsertMethodList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_mapSearchMethodListAST readProperty_mSearchMethodList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_mapStateList readProperty_mMapStateList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_mapOverrideBlockListAST readProperty_mMapOverrideBlockListAST (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_sharedMapAttributeListAST readProperty_mSharedMapAttributeListAST (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -8339,6 +9862,13 @@ class GALGAS_sortedListDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_sortedListDeclarationAST (const class cPtr_sortedListDeclarationAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mSortedListTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_propertyInCollectionListAST readProperty_mPropertyList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_sortedListSortDescriptorListAST readProperty_mSortDescriptorList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -8438,6 +9968,13 @@ class GALGAS_structDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_structDeclarationAST (const class cPtr_structDeclarationAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mStructTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_propertyInCollectionListAST readProperty_mStructurePropertyList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_string readProperty_mEnumeratedElementTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -8536,6 +10073,17 @@ class GALGAS_weakReferenceDeclarationAST : public GALGAS_semanticDeclarationAST 
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_weakReferenceDeclarationAST (const class cPtr_weakReferenceDeclarationAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mClassTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mWeakReferenceTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mSuperWeakReferenceTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstringlist readProperty_mClassFeatureList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_propertyInCollectionListAST readProperty_mPropertyList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -9213,6 +10761,9 @@ class GALGAS_lexicalAttributeInputArgumentAST : public GALGAS_lexicalRoutineOrFu
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalAttributeInputArgumentAST (const class cPtr_lexicalAttributeInputArgumentAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mAttributeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -9299,6 +10850,9 @@ class GALGAS_lexicalAttributeInputOutputArgumentAST : public GALGAS_abstractLexi
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalAttributeInputOutputArgumentAST (const class cPtr_lexicalAttributeInputOutputArgumentAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mAttributeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -9389,6 +10943,9 @@ class GALGAS_lexicalCharacterInputArgumentAST : public GALGAS_lexicalRoutineOrFu
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalCharacterInputArgumentAST (const class cPtr_lexicalCharacterInputArgumentAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lchar readProperty_mCharacter (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -9475,6 +11032,11 @@ class GALGAS_lexicalCharacterIntervalMatchAST : public GALGAS_lexicalExpressionA
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalCharacterIntervalMatchAST (const class cPtr_lexicalCharacterIntervalMatchAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lchar readProperty_mLowerBound (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lchar readProperty_mUpperBound (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -9568,6 +11130,9 @@ class GALGAS_lexicalCharacterMatchAST : public GALGAS_lexicalExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalCharacterMatchAST (const class cPtr_lexicalCharacterMatchAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lchar readProperty_mCharacter (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -9654,6 +11219,9 @@ class GALGAS_lexicalCharacterSetMatchAST : public GALGAS_lexicalExpressionAST {
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalCharacterSetMatchAST (const class cPtr_lexicalCharacterSetMatchAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mCharacterSetName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -9742,6 +11310,9 @@ class GALGAS_lexicalDropInstructionAST : public GALGAS_lexicalInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalDropInstructionAST (const class cPtr_lexicalDropInstructionAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mTerminalName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -9828,6 +11399,9 @@ class GALGAS_lexicalErrorByDefaultAST : public GALGAS_lexicalSendDefaultActionAS
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalErrorByDefaultAST (const class cPtr_lexicalErrorByDefaultAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mDefaultErrorMessageName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -9916,6 +11490,9 @@ class GALGAS_lexicalErrorInstructionAST : public GALGAS_lexicalInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalErrorInstructionAST (const class cPtr_lexicalErrorInstructionAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mErrorMessageName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -10003,6 +11580,9 @@ class GALGAS_lexicalFunctionCallAST : public GALGAS_lexicalFunctionExpressionAST
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalFunctionCallAST (const class cPtr_lexicalFunctionCallAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mCalledFunctionName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -10089,6 +11669,11 @@ class GALGAS_lexicalFunctionCharacterIntervalMatchAST : public GALGAS_lexicalFun
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalFunctionCharacterIntervalMatchAST (const class cPtr_lexicalFunctionCharacterIntervalMatchAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lchar readProperty_mLowerBound (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lchar readProperty_mUpperBound (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -10182,6 +11767,9 @@ class GALGAS_lexicalFunctionCharacterMatchAST : public GALGAS_lexicalFunctionExp
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalFunctionCharacterMatchAST (const class cPtr_lexicalFunctionCharacterMatchAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lchar readProperty_mCharacter (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -10268,6 +11856,11 @@ class GALGAS_lexicalFunctionInputArgumentAST : public GALGAS_lexicalRoutineOrFun
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalFunctionInputArgumentAST (const class cPtr_lexicalFunctionInputArgumentAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mFunctionName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lexicalFunctionCallActualArgumentListAST readProperty_mFunctionActualArgumentList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -10361,6 +11954,9 @@ class GALGAS_lexicalImplicitRuleAST : public GALGAS_abstractLexicalRuleAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalImplicitRuleAST (const class cPtr_lexicalImplicitRuleAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mListName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -10447,6 +12043,11 @@ class GALGAS_lexicalRewindInstructionAST : public GALGAS_lexicalInstructionAST {
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalRewindInstructionAST (const class cPtr_lexicalRewindInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mLexicalTagName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mTerminalName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -10539,6 +12140,13 @@ class GALGAS_lexicalRoutineInstructionAST : public GALGAS_lexicalInstructionAST 
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalRoutineInstructionAST (const class cPtr_lexicalRoutineInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mRoutineName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lexicalRoutineCallActualArgumentListAST readProperty_mActualArgumentList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstringlist readProperty_mErrorMessageList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -10637,6 +12245,9 @@ class GALGAS_lexicalSendTerminalByDefaultAST : public GALGAS_lexicalSendDefaultA
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalSendTerminalByDefaultAST (const class cPtr_lexicalSendTerminalByDefaultAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mDefaultSentTerminal (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -10723,6 +12334,9 @@ class GALGAS_lexicalSimpleSendInstructionAST : public GALGAS_lexicalInstructionA
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalSimpleSendInstructionAST (const class cPtr_lexicalSimpleSendInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mSentTerminal (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -10811,6 +12425,9 @@ class GALGAS_lexicalStringMatchAST : public GALGAS_lexicalExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalStringMatchAST (const class cPtr_lexicalStringMatchAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mString (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -10897,6 +12514,11 @@ class GALGAS_lexicalStringNotMatchAST : public GALGAS_lexicalExpressionAST {
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalStringNotMatchAST (const class cPtr_lexicalStringNotMatchAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mString (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mErrorMessage (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -10990,6 +12612,9 @@ class GALGAS_lexicalTagInstructionAST : public GALGAS_lexicalInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalTagInstructionAST (const class cPtr_lexicalTagInstructionAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mLexicalTagName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -11076,6 +12701,9 @@ class GALGAS_lexicalUnsignedInputArgumentAST : public GALGAS_lexicalRoutineOrFun
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalUnsignedInputArgumentAST (const class cPtr_lexicalUnsignedInputArgumentAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_luint readProperty_mUnsigned (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -11164,6 +12792,9 @@ class GALGAS_lexicalWarningInstructionAST : public GALGAS_lexicalInstructionAST 
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalWarningInstructionAST (const class cPtr_lexicalWarningInstructionAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mWarningMessageName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -11250,6 +12881,37 @@ class GALGAS_lexiqueComponentAST : public GALGAS_semanticDeclarationAST {
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexiqueComponentAST (const class cPtr_lexiqueComponentAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mLexiqueComponentName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_bool readProperty_mIsTemplate (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_metamodelTemplateDelimitorListAST readProperty_mTemplateDelimitorList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_templateReplacementListAST readProperty_mTemplateReplacementList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lexicalAttributeListAST readProperty_mLexicalAttributeList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lexicalStyleListAST readProperty_mLexicalStyleList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_terminalDeclarationListAST readProperty_mTerminalDeclarationList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lexicalMessageDeclarationListAST readProperty_mLexicalMessageDeclarationList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lexicalListDeclarationListAST readProperty_mLexicalListDeclarationList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lexicalRuleListAST readProperty_mLexicalRuleList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_externRoutineListAST readProperty_mExternRoutineList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_externFunctionListAST readProperty_mExternFunctionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_indexingListAST readProperty_mIndexingListAST (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mIndexingDirectory (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lexicalFunctionListAST readProperty_mLexicalFunctionListAST (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 

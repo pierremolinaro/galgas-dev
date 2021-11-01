@@ -880,7 +880,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
-    ?@typedPropertyList CURRENT_ATTRIBUTE_LIST
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
     ?@typedPropertyList ALL_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
 
@@ -888,7 +888,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
-    ?@typedPropertyList CURRENT_ATTRIBUTE_LIST
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
     ?@typedPropertyList ALL_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
 
@@ -896,7 +896,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
-    ?@typedPropertyList CURRENT_ATTRIBUTE_LIST
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
     ?@typedPropertyList ALL_ATTRIBUTE_LIST
     ?@typedPropertyList INHERITED_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
@@ -910,12 +910,13 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string SUPER_TYPE_IDENTIFIER
     ?@bool IS_ABSTRACT
     ?@bool HAS_DEFAULT_CONSTRUCTOR
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
 
   template referenceClassTypeHeader2part1 "GALGAS_reference_class.h2-part1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
-    ?@typedPropertyList CURRENT_ATTRIBUTE_LIST
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
     ?@typedPropertyList ALL_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
 
@@ -923,7 +924,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
-    ?@typedPropertyList CURRENT_ATTRIBUTE_LIST
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
     ?@typedPropertyList ALL_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
 
@@ -931,7 +932,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
-    ?@typedPropertyList CURRENT_ATTRIBUTE_LIST
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
     ?@typedPropertyList ALL_ATTRIBUTE_LIST
     ?@typedPropertyList INHERITED_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
@@ -948,7 +949,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string CLASS_TYPE_IDENTIFIER
     ?@string WEAK_REF_TYPE_IDENTIFIER
     ?@string SUPER_WEAK_REF_TYPE_IDENTIFIER
-    ?@typedPropertyList CURRENT_ATTRIBUTE_LIST
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
     ?@typedPropertyList ALL_ATTRIBUTE_LIST
     ?@typedPropertyList INHERITED_ATTRIBUTE_LIST
 #    ?@bool IS_ABSTRACT

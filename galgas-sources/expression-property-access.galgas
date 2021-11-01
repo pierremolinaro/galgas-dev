@@ -97,8 +97,15 @@ override method @structPropertyAccessExpressionForGeneration generateExpression
   !@string outCppExpression {
   [self.mResultType addHeaderFileName !?ioInclusionSet]
 #--- Operand
-  [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string operand]
+  [self.mExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string operand
+  ]
 #--- Generate
+#  outCppExpression = operand + ".mProperty_" + [self.mStructFieldName identifierRepresentation]
   outCppExpression = operand + ".getter_" + [self.mStructFieldName identifierRepresentation] + " (HERE)"
 }
 

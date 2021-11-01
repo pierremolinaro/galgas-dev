@@ -26,3 +26,8 @@ end
 //--------------------------------- Constructor from pointer
   public: GALGAS_%!TYPE_IDENTIFIER% (const class cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) ;
 
+//--------------------------------- Property read access
+%
+for () in CURRENT_PROPERTY_LIST do
+  %  public: class GALGAS_%![mPropertyTypeEntry identifierRepresentation]% readProperty_%![mPropertyName identifierRepresentation]% (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;\n\n%
+end

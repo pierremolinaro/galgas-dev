@@ -10,6 +10,155 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+// Phase 1: @predefinedTypeAST reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_predefinedTypeAST : public GALGAS_semanticDeclarationAST {
+//--------------------------------- Default constructor
+  public: GALGAS_predefinedTypeAST (void) ;
+
+//--------------------------------- Embedded object pointer
+ public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
+   return (acStrongPtr_class *) mObjectPtr ;
+ }
+  
+//--------------------------------- Constructor from pointer
+  public: GALGAS_predefinedTypeAST (const class cPtr_predefinedTypeAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_string readProperty_mPredefinedTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_predefinedTypeKindEnum readProperty_mKind (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_predefinedTypeAST extractObject (const GALGAS_object & inObject,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_predefinedTypeAST & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMKind (class GALGAS_predefinedTypeKindEnum inArgument0
+                                                 COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMPredefinedTypeName (class GALGAS_string inArgument0
+                                                               COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_predefinedTypeKindEnum getter_mKind (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_string getter_mPredefinedTypeName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_predefinedTypeAST class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypeAST ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @predefinedTypeAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_predefinedTypeAST : public cPtr_semanticDeclarationAST {
+//--- Properties
+  public: GALGAS_string mProperty_mPredefinedTypeName ;
+  public: GALGAS_predefinedTypeKindEnum mProperty_mKind ;
+
+//--- Constructor
+  public: cPtr_predefinedTypeAST (const GALGAS_bool & in_mIsPredefined,
+                                  const GALGAS_string & in_mPredefinedTypeName,
+                                  const GALGAS_predefinedTypeKindEnum & in_mKind
+                                  COMMA_LOCATION_ARGS) ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const = 0 ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const = 0 ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @predefinedTypeAST_2D_weak weak reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_predefinedTypeAST_2D_weak : public GALGAS_semanticDeclarationAST_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_predefinedTypeAST_2D_weak (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_predefinedTypeAST_2D_weak constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_predefinedTypeAST_2D_weak (const class GALGAS_predefinedTypeAST & inSource) ;
+
+  public: GALGAS_predefinedTypeAST_2D_weak & operator = (const class GALGAS_predefinedTypeAST & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_predefinedTypeAST bang_predefinedTypeAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_predefinedTypeAST_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_predefinedTypeAST_2D_weak constructor_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_predefinedTypeAST_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_predefinedTypeAST_2D_weak class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypeAST_2D_weak ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 // Phase 1: @applicationPredefinedTypeAST reference class
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -26,6 +175,7 @@ class GALGAS_applicationPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_applicationPredefinedTypeAST (const class cPtr_applicationPredefinedTypeAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -167,6 +317,7 @@ class GALGAS_bigintPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_bigintPredefinedTypeAST (const class cPtr_bigintPredefinedTypeAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -308,6 +459,7 @@ class GALGAS_objectPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_objectPredefinedTypeAST (const class cPtr_objectPredefinedTypeAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -449,6 +601,7 @@ class GALGAS_filewrapperPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_filewrapperPredefinedTypeAST (const class cPtr_filewrapperPredefinedTypeAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -590,6 +743,7 @@ class GALGAS_binarysetPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_binarysetPredefinedTypeAST (const class cPtr_binarysetPredefinedTypeAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -731,6 +885,7 @@ class GALGAS_boolPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_boolPredefinedTypeAST (const class cPtr_boolPredefinedTypeAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -872,6 +1027,7 @@ class GALGAS_uintPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_uintPredefinedTypeAST (const class cPtr_uintPredefinedTypeAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1013,6 +1169,7 @@ class GALGAS_uint_36__34_PredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_uint_36__34_PredefinedTypeAST (const class cPtr_uint_36__34_PredefinedTypeAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1154,6 +1311,7 @@ class GALGAS_sintPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_sintPredefinedTypeAST (const class cPtr_sintPredefinedTypeAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1295,6 +1453,7 @@ class GALGAS_sint_36__34_PredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_sint_36__34_PredefinedTypeAST (const class cPtr_sint_36__34_PredefinedTypeAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1436,6 +1595,7 @@ class GALGAS_charPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_charPredefinedTypeAST (const class cPtr_charPredefinedTypeAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1577,6 +1737,7 @@ class GALGAS_doublePredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_doublePredefinedTypeAST (const class cPtr_doublePredefinedTypeAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1718,6 +1879,7 @@ class GALGAS_stringPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_stringPredefinedTypeAST (const class cPtr_stringPredefinedTypeAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1859,6 +2021,7 @@ class GALGAS_locationPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_locationPredefinedTypeAST (const class cPtr_locationPredefinedTypeAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -2000,6 +2163,7 @@ class GALGAS_stringsetPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_stringsetPredefinedTypeAST (const class cPtr_stringsetPredefinedTypeAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -2141,6 +2305,7 @@ class GALGAS_functionPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_functionPredefinedTypeAST (const class cPtr_functionPredefinedTypeAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -2282,6 +2447,7 @@ class GALGAS_typePredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_typePredefinedTypeAST (const class cPtr_typePredefinedTypeAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -2423,6 +2589,7 @@ class GALGAS_dataPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_dataPredefinedTypeAST (const class cPtr_dataPredefinedTypeAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -2564,6 +2731,7 @@ class GALGAS_timerPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_timerPredefinedTypeAST (const class cPtr_timerPredefinedTypeAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -3108,8 +3276,14 @@ class cMapElement_grammarLabelMap : public cMapElement {
 class GALGAS_grammarLabelMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_lkey ;
+  }
 
   public: GALGAS_formalParameterSignature mProperty_mLabelSignature ;
+  public: inline GALGAS_formalParameterSignature readProperty_mLabelSignature (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mLabelSignature ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3222,12 +3396,24 @@ class cMapElement_grammarMap : public cMapElement {
 class GALGAS_grammarMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_lkey ;
+  }
 
   public: GALGAS_grammarLabelMap mProperty_mLabelMap ;
+  public: inline GALGAS_grammarLabelMap readProperty_mLabelMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mLabelMap ;
+  }
 
   public: GALGAS_bool mProperty_mHasIndexing ;
+  public: inline GALGAS_bool readProperty_mHasIndexing (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mHasIndexing ;
+  }
 
   public: GALGAS_bool mProperty_mHasTranslateFeature ;
+  public: inline GALGAS_bool readProperty_mHasTranslateFeature (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mHasTranslateFeature ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3354,10 +3540,19 @@ class cMapElement_routineMap : public cMapElement {
 class GALGAS_routineMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_lkey ;
+  }
 
   public: GALGAS_formalParameterSignature mProperty_mRoutineSignature ;
+  public: inline GALGAS_formalParameterSignature readProperty_mRoutineSignature (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mRoutineSignature ;
+  }
 
   public: GALGAS_bool mProperty_mIsInternal ;
+  public: inline GALGAS_bool readProperty_mIsInternal (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mIsInternal ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3478,12 +3673,24 @@ class cMapElement_functionMap : public cMapElement {
 class GALGAS_functionMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_lkey ;
+  }
 
   public: GALGAS_functionSignature mProperty_mFunctionSignature ;
+  public: inline GALGAS_functionSignature readProperty_mFunctionSignature (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mFunctionSignature ;
+  }
 
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mResultType ;
+  public: inline GALGAS_unifiedTypeMap_2D_entry readProperty_mResultType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mResultType ;
+  }
 
   public: GALGAS_bool mProperty_mIsInternal ;
+  public: inline GALGAS_bool readProperty_mIsInternal (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mIsInternal ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3765,14 +3972,29 @@ class cMapElement_wrapperFileMap : public cMapElement {
 class GALGAS_wrapperFileMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_lkey ;
+  }
 
   public: GALGAS_string mProperty_mAbsoluteFilePath ;
+  public: inline GALGAS_string readProperty_mAbsoluteFilePath (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mAbsoluteFilePath ;
+  }
 
   public: GALGAS_bool mProperty_mIsTextFile ;
+  public: inline GALGAS_bool readProperty_mIsTextFile (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mIsTextFile ;
+  }
 
   public: GALGAS_uint mProperty_mWrapperDirectoryIndex ;
+  public: inline GALGAS_uint readProperty_mWrapperDirectoryIndex (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mWrapperDirectoryIndex ;
+  }
 
   public: GALGAS_uint mProperty_mWrapperFileIndex ;
+  public: inline GALGAS_uint readProperty_mWrapperFileIndex (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mWrapperFileIndex ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4046,12 +4268,24 @@ class cMapElement_wrapperDirectoryMap : public cMapElement {
 class GALGAS_wrapperDirectoryMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_lkey ;
+  }
 
   public: GALGAS_wrapperFileMap mProperty_mRegularFileMap ;
+  public: inline GALGAS_wrapperFileMap readProperty_mRegularFileMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mRegularFileMap ;
+  }
 
   public: GALGAS_wrapperDirectoryMap mProperty_mDirectoryMap ;
+  public: inline GALGAS_wrapperDirectoryMap readProperty_mDirectoryMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mDirectoryMap ;
+  }
 
   public: GALGAS_uint mProperty_mWrapperDirectoryIndex ;
+  public: inline GALGAS_uint readProperty_mWrapperDirectoryIndex (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mWrapperDirectoryIndex ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4301,10 +4535,19 @@ class cMapElement_filewrapperTemplateMap : public cMapElement {
 class GALGAS_filewrapperTemplateMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_lkey ;
+  }
 
   public: GALGAS_functionSignature mProperty_mTemplateSignature ;
+  public: inline GALGAS_functionSignature readProperty_mTemplateSignature (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mTemplateSignature ;
+  }
 
   public: GALGAS_lstring mProperty_mFilewrapperTemplatePath ;
+  public: inline GALGAS_lstring readProperty_mFilewrapperTemplatePath (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mFilewrapperTemplatePath ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4431,18 +4674,39 @@ class cMapElement_filewrapperMap : public cMapElement {
 class GALGAS_filewrapperMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_lkey ;
+  }
 
   public: GALGAS_lstring mProperty_mFilewrapperPath ;
+  public: inline GALGAS_lstring readProperty_mFilewrapperPath (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mFilewrapperPath ;
+  }
 
   public: GALGAS_lstringlist mProperty_mFilewrapperExtensionList ;
+  public: inline GALGAS_lstringlist readProperty_mFilewrapperExtensionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mFilewrapperExtensionList ;
+  }
 
   public: GALGAS_wrapperFileMap mProperty_mFilewrapperFileMap ;
+  public: inline GALGAS_wrapperFileMap readProperty_mFilewrapperFileMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mFilewrapperFileMap ;
+  }
 
   public: GALGAS_wrapperDirectoryMap mProperty_mFilewrapperDirectoryMap ;
+  public: inline GALGAS_wrapperDirectoryMap readProperty_mFilewrapperDirectoryMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mFilewrapperDirectoryMap ;
+  }
 
   public: GALGAS_filewrapperTemplateMap mProperty_mFilewrapperTemplateMap ;
+  public: inline GALGAS_filewrapperTemplateMap readProperty_mFilewrapperTemplateMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mFilewrapperTemplateMap ;
+  }
 
   public: GALGAS_bool mProperty_mIsInternal ;
+  public: inline GALGAS_bool readProperty_mIsInternal (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mIsInternal ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4599,16 +4863,34 @@ class cMapElement_optionComponentMapForSemanticAnalysis : public cMapElement {
 class GALGAS_optionComponentMapForSemanticAnalysis_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_lkey ;
+  }
 
   public: GALGAS_bool mProperty_mIsPredefined ;
+  public: inline GALGAS_bool readProperty_mIsPredefined (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mIsPredefined ;
+  }
 
   public: GALGAS_commandLineOptionMap mProperty_mBoolOptionMap ;
+  public: inline GALGAS_commandLineOptionMap readProperty_mBoolOptionMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mBoolOptionMap ;
+  }
 
   public: GALGAS_commandLineOptionMap mProperty_mUIntOptionMap ;
+  public: inline GALGAS_commandLineOptionMap readProperty_mUIntOptionMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mUIntOptionMap ;
+  }
 
   public: GALGAS_commandLineOptionMap mProperty_mStringOptionMap ;
+  public: inline GALGAS_commandLineOptionMap readProperty_mStringOptionMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mStringOptionMap ;
+  }
 
   public: GALGAS_commandLineOptionMap mProperty_mStringListOptionMap ;
+  public: inline GALGAS_commandLineOptionMap readProperty_mStringListOptionMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mStringListOptionMap ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4753,12 +5035,24 @@ class cMapElement_lexiqueComponentMapForSemanticAnalysis : public cMapElement {
 class GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_lkey ;
+  }
 
   public: GALGAS_terminalMap mProperty_mTerminalMap ;
+  public: inline GALGAS_terminalMap readProperty_mTerminalMap (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mTerminalMap ;
+  }
 
   public: GALGAS_indexingListAST mProperty_mIndexingListAST ;
+  public: inline GALGAS_indexingListAST readProperty_mIndexingListAST (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mIndexingListAST ;
+  }
 
   public: GALGAS_lstring mProperty_mIndexingDirectory ;
+  public: inline GALGAS_lstring readProperty_mIndexingDirectory (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mIndexingDirectory ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4889,14 +5183,29 @@ class cMapElement_syntaxComponentMap : public cMapElement {
 class GALGAS_syntaxComponentMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_lkey ;
+  }
 
   public: GALGAS_lstring mProperty_mLexiqueName ;
+  public: inline GALGAS_lstring readProperty_mLexiqueName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mLexiqueName ;
+  }
 
   public: GALGAS_nonterminalDeclarationListAST mProperty_mNonterminalDeclarationList ;
+  public: inline GALGAS_nonterminalDeclarationListAST readProperty_mNonterminalDeclarationList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mNonterminalDeclarationList ;
+  }
 
   public: GALGAS_syntaxRuleListAST mProperty_mRuleList ;
+  public: inline GALGAS_syntaxRuleListAST readProperty_mRuleList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mRuleList ;
+  }
 
   public: GALGAS_bool mProperty_mHasTranslateFeature ;
+  public: inline GALGAS_bool readProperty_mHasTranslateFeature (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mHasTranslateFeature ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5129,8 +5438,14 @@ class cMapElement_extensionMethodMapForType : public cMapElement {
 class GALGAS_extensionMethodMapForType_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_lkey ;
+  }
 
   public: GALGAS_formalParameterListAST mProperty_mFormalParameterList ;
+  public: inline GALGAS_formalParameterListAST readProperty_mFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mFormalParameterList ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5348,8 +5663,14 @@ class cMapElement_extensionMethodMapForBuildingContext : public cMapElement {
 class GALGAS_extensionMethodMapForBuildingContext_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_lkey ;
+  }
 
   public: GALGAS_extensionMethodMapForType mProperty_mExtensionMethodMapForType ;
+  public: inline GALGAS_extensionMethodMapForType readProperty_mExtensionMethodMapForType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mExtensionMethodMapForType ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5558,8 +5879,14 @@ class cMapElement_extensionSetterMapForType : public cMapElement {
 class GALGAS_extensionSetterMapForType_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_lkey ;
+  }
 
   public: GALGAS_formalParameterListAST mProperty_mFormalParameterList ;
+  public: inline GALGAS_formalParameterListAST readProperty_mFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mFormalParameterList ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5777,8 +6104,14 @@ class cMapElement_extensionSetterMapForBuildingContext : public cMapElement {
 class GALGAS_extensionSetterMapForBuildingContext_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_lkey ;
+  }
 
   public: GALGAS_extensionSetterMapForType mProperty_mExtensionSetterMapForType ;
+  public: inline GALGAS_extensionSetterMapForType readProperty_mExtensionSetterMapForType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mExtensionSetterMapForType ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -6002,10 +6335,19 @@ class cMapElement_extensionGetterMapForType : public cMapElement {
 class GALGAS_extensionGetterMapForType_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_lkey ;
+  }
 
   public: GALGAS_lstring mProperty_mResultTypeName ;
+  public: inline GALGAS_lstring readProperty_mResultTypeName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mResultTypeName ;
+  }
 
   public: GALGAS_formalInputParameterListAST mProperty_mInputFormalParameterList ;
+  public: inline GALGAS_formalInputParameterListAST readProperty_mInputFormalParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mInputFormalParameterList ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -6231,8 +6573,14 @@ class cMapElement_extensionGetterMapForBuildingContext : public cMapElement {
 class GALGAS_extensionGetterMapForBuildingContext_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_lkey ;
+  }
 
   public: GALGAS_extensionGetterMapForType mProperty_mExtensionGetterMapForType ;
+  public: inline GALGAS_extensionGetterMapForType readProperty_mExtensionGetterMapForType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mExtensionGetterMapForType ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -6486,6 +6834,9 @@ class cMapElement_wrapperExtensionMap : public cMapElement {
 class GALGAS_wrapperExtensionMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_lkey ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -6832,6 +7183,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticExpressionL
 class GALGAS_semanticExpressionListForGeneration_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
+  public: inline GALGAS_semanticExpressionForGeneration readProperty_mExpression (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mExpression ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -7044,6 +7398,9 @@ class GALGAS_actualParameterForGeneration : public AC_GALGAS_reference_class {
 //--------------------------------- Constructor from pointer
   public: GALGAS_actualParameterForGeneration (const class cPtr_actualParameterForGeneration * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mFormalArgumentType (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -7115,6 +7472,9 @@ class cPtr_actualParameterForGeneration : public acStrongPtr_class {
 class GALGAS_actualParameterListForGeneration_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_actualParameterForGeneration mProperty_mActualParameter ;
+  public: inline GALGAS_actualParameterForGeneration readProperty_mActualParameter (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mActualParameter ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -7282,6 +7642,9 @@ class GALGAS_semanticBlockInstructionForGeneration : public GALGAS_semanticInstr
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_semanticBlockInstructionForGeneration (const class cPtr_semanticBlockInstructionForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_semanticInstructionListForGeneration readProperty_mInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -7570,8 +7933,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listOfSemanticInstr
 class GALGAS_listOfSemanticInstructionListForGeneration_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_semanticInstructionListForGeneration mProperty_mInstructionList ;
+  public: inline GALGAS_semanticInstructionListForGeneration readProperty_mInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mInstructionList ;
+  }
 
   public: GALGAS_location mProperty_mEndOfInstructionList ;
+  public: inline GALGAS_location readProperty_mEndOfInstructionList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mEndOfInstructionList ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -7661,6 +8030,7 @@ class GALGAS_semanticDeclarationForGeneration : public AC_GALGAS_reference_class
 //--------------------------------- Constructor from pointer
   public: GALGAS_semanticDeclarationForGeneration (const class cPtr_semanticDeclarationForGeneration * inSourcePtr) ;
 
+//--------------------------------- Property read access
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -7815,88 +8185,4 @@ void callExtensionMethod_appendPrimitiveTypePreDeclaration (const class cPtr_sem
                                                             GALGAS_string & io_ioHeader,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Abstract extension getter '@semanticDeclarationForGeneration implementationCppFileName'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_string (*enterExtensionGetter_semanticDeclarationForGeneration_implementationCppFileName) (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                                                                                class C_Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_implementationCppFileName (const int32_t inClassIndex,
-                                                     enterExtensionGetter_semanticDeclarationForGeneration_implementationCppFileName inMethod) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_string callExtensionGetter_implementationCppFileName (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                                   C_Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Abstract extension getter '@semanticDeclarationForGeneration hasCppHeaderFile'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_bool (*enterExtensionGetter_semanticDeclarationForGeneration_hasCppHeaderFile) (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                                                                     class C_Compiler * inCompiler
-                                                                                                     COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_hasCppHeaderFile (const int32_t inClassIndex,
-                                            enterExtensionGetter_semanticDeclarationForGeneration_hasCppHeaderFile inMethod) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_bool callExtensionGetter_hasCppHeaderFile (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                        C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Abstract extension getter '@semanticDeclarationForGeneration isPredefined'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_bool (*enterExtensionGetter_semanticDeclarationForGeneration_isPredefined) (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                                                                 class C_Compiler * inCompiler
-                                                                                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_isPredefined (const int32_t inClassIndex,
-                                        enterExtensionGetter_semanticDeclarationForGeneration_isPredefined inMethod) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_bool callExtensionGetter_isPredefined (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                    C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Abstract extension getter '@semanticDeclarationForGeneration headerKind'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_headerKind (*enterExtensionGetter_semanticDeclarationForGeneration_headerKind) (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                                                                     class C_Compiler * inCompiler
-                                                                                                     COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_headerKind (const int32_t inClassIndex,
-                                      enterExtensionGetter_semanticDeclarationForGeneration_headerKind inMethod) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_headerKind callExtensionGetter_headerKind (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                        C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
 

@@ -504,6 +504,7 @@ override method @classTypeForGeneration appendDeclaration1
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
       !self.mIsAbstract
       ![self.mSelfTypeEntry mDefaultConstructorName] != ""
+      !self.mTypedAttributeList
     ]
     outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
       ![self.mSelfTypeEntry  key]

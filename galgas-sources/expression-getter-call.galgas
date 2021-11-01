@@ -158,7 +158,8 @@ override method @getterCallExpressionAST analyzeSemanticExpression
     + [[self.mExpressions length] string] + " parameter(s)" : outExpression
   else
     var @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
-    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType *) in getterFormalArgumentTypeList do
+    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions,
+        (mFormalSelector mFormalArgumentType *) in getterFormalArgumentTypeList do
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
@@ -170,7 +171,6 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       if mFormalSelector.string != mActualSelector.string then
         let s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
         error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
-#        error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
       checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
       constructorEffectiveParameterList += !exp

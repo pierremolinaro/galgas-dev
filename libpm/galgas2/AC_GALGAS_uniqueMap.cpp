@@ -748,11 +748,11 @@ void cSharedUniqueMapRoot::enterEdge (cUniqueMapNode * inSource,
 //----------------------------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_uniqueMap::setter_enterEdge (const GALGAS_lstring & inSource,
-                                              const GALGAS_lstring & inTarget
-                                              COMMA_LOCATION_ARGS) {
-  if (isValid () && inSource.isValid () && inTarget.isValid( )) {
-    cUniqueMapNode * source = mSharedMap->performInsertEntry (inSource.getter_string (THERE).stringValue (), inSource.getter_location (THERE)) ;
-    cUniqueMapNode * target = mSharedMap->performInsertEntry (inTarget.getter_string (THERE).stringValue (), inTarget.getter_location (THERE)) ;
+                                            const GALGAS_lstring & inTarget
+                                            COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inSource.isValid () && inTarget.isValid ()) {
+    cUniqueMapNode * source = mSharedMap->performInsertEntry (inSource.mProperty_string.stringValue (), inSource.mProperty_location) ;
+    cUniqueMapNode * target = mSharedMap->performInsertEntry (inTarget.mProperty_string.stringValue (), inTarget.mProperty_location) ;
     mSharedMap->enterEdge (source, target) ;
   }
 }
@@ -2388,8 +2388,8 @@ void AC_GALGAS_sharedMapEntry::internalMakeEntry (AC_GALGAS_uniqueMap & ioMap,
                                                   COMMA_LOCATION_ARGS) {
   drop () ;
   if (inKey.isValid ()) {
-    cUniqueMapNode * node = ioMap.performInsertEntry (inKey.getter_string (THERE).stringValue (),
-                                                      inKey.getter_location (THERE)
+    cUniqueMapNode * node = ioMap.performInsertEntry (inKey.mProperty_string.stringValue (),
+                                                      inKey.mProperty_location
                                                       COMMA_THERE) ;
     macroValidPointer (node) ;
     attachEntryToMapNode (node) ;
@@ -2403,12 +2403,12 @@ void AC_GALGAS_sharedMapEntry::internalMakeOptionalEntry (AC_GALGAS_uniqueMap & 
                                                           COMMA_LOCATION_ARGS) {
   drop () ;
   if (inKey.isValid ()) {
-    const C_String key = inKey.getter_string (THERE).stringValue () ;
+    const C_String key = inKey.mProperty_string.stringValue () ;
     if (key.length() == 0) {
       makeNullEntry (THERE) ;
     }else{
       cUniqueMapNode * node = ioMap.performInsertEntry (key,
-                                                        inKey.getter_location (THERE)
+                                                        inKey.mProperty_location
                                                         COMMA_THERE) ;
       macroValidPointer (node) ;
       attachEntryToMapNode (node) ;

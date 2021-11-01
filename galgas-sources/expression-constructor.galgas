@@ -136,7 +136,8 @@ private proc analyzeConstructorInvocation
       + [[inInitializerEffectiveParameterExpressions length] string] + " parameter(s)"
     end
     outConstructorEffectiveParameterList = {}
-    for (mActualSelector mExpression mEndOfExpressionLocation) in inInitializerEffectiveParameterExpressions, (mFormalSelector mFormalArgumentType *) in constructorFormalArgumentTypeList do
+    for (mActualSelector mExpression mEndOfExpressionLocation) in inInitializerEffectiveParameterExpressions,
+        (mFormalSelector mFormalArgumentType *) in constructorFormalArgumentTypeList do
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
@@ -150,8 +151,6 @@ private proc analyzeConstructorInvocation
       if mFormalSelector.string != mActualSelector.string then
         let s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
         error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
-#        error mActualSelector 
-#         : "the selector should be '!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "'"
       end
     end
   end

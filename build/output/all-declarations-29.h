@@ -10,635 +10,305 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'updateLIBPMatPath'
+//Routine 'transformInstructionList'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_updateLIBPMatPath (const class GALGAS_string constinArgument0,
-                                class C_Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
+void routine_transformInstructionList (const class GALGAS_syntaxInstructionList constinArgument0,
+                                       class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioArgument1,
+                                       const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis constinArgument2,
+                                       class GALGAS_uint & ioArgument3,
+                                       class GALGAS_syntaxInstructionListForGrammarAnalysis & ioArgument4,
+                                       class C_Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'buildGalgas3SemanticContext'
+//Function 'compareSyntaxSignature'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_buildGalgas_33_SemanticContext (const class GALGAS_semanticDeclarationListAST constinArgument0,
-                                             const class GALGAS_location constinArgument1,
-                                             class GALGAS_semanticContext & outArgument2,
-                                             class GALGAS_semanticDeclarationListAST & outArgument3,
-                                             class C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'generateFewImplementationFiles'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateFewImplementationFiles (const class GALGAS_unifiedTypeMap constinArgument0,
-                                             const class GALGAS_string constinArgument1,
-                                             const class GALGAS_semanticDeclarationListForGeneration constinArgument2,
-                                             class GALGAS_stringlist & ioArgument3,
-                                             class GALGAS_stringset & ioArgument4,
-                                             class C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'generateFewImplementationFilesWithFewHeaders'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateFewImplementationFilesWithFewHeaders (const class GALGAS_unifiedTypeMap constinArgument0,
-                                                           const class GALGAS_string constinArgument1,
-                                                           const class GALGAS_semanticDeclarationListForGeneration constinArgument2,
-                                                           class GALGAS_stringlist & ioArgument3,
-                                                           class GALGAS_stringset & ioArgument4,
-                                                           class GALGAS_stringlist & ioArgument5,
-                                                           class C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'generateManyHeaders'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateManyHeaders (const class GALGAS_string constinArgument0,
-                                  const class GALGAS_semanticDeclarationListForGeneration constinArgument1,
-                                  class GALGAS_stringset & ioArgument2,
-                                  class GALGAS_stringlist & ioArgument3,
-                                  class C_Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'generateManyImplementationFiles'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateManyImplementationFiles (const class GALGAS_unifiedTypeMap constinArgument0,
-                                              const class GALGAS_string constinArgument1,
-                                              const class GALGAS_semanticDeclarationListForGeneration constinArgument2,
-                                              class GALGAS_stringlist & ioArgument3,
-                                              class GALGAS_stringset & ioArgument4,
-                                              class C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'generateOneBigHeader'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateOneBigHeader (const class GALGAS_string constinArgument0,
-                                   const class GALGAS_semanticDeclarationListForGeneration constinArgument1,
-                                   class GALGAS_stringset & ioArgument2,
-                                   class GALGAS_stringlist & ioArgument3,
-                                   class C_Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'buildHeader'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_buildHeader (const class GALGAS_headerCompositionMap constinArgument0,
-                          const class GALGAS_string constinArgument1,
-                          const class GALGAS_string constinArgument2,
-                          class GALGAS_headerRepartitionMap & ioArgument3,
-                          class GALGAS_string & ioArgument4,
-                          class C_Compiler * inCompiler
-                          COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Function 'definitionGroupAmount'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_uint function_definitionGroupAmount (class C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'targetGalgas3GenerationFileWrapper'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const char * gWrapperFileContent_0_targetGalgas_33_GenerationFileWrapper ;
-extern const char * gWrapperFileContent_1_targetGalgas_33_GenerationFileWrapper ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const cRegularFileWrapper gWrapperFile_0_targetGalgas_33_GenerationFileWrapper ;
-extern const cRegularFileWrapper gWrapperFile_1_targetGalgas_33_GenerationFileWrapper ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_targetGalgas_33_GenerationFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_1_targetGalgas_33_GenerationFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_2_targetGalgas_33_GenerationFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_3_targetGalgas_33_GenerationFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_4_targetGalgas_33_GenerationFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_5_targetGalgas_33_GenerationFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_6_targetGalgas_33_GenerationFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_7_targetGalgas_33_GenerationFileWrapper ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_macosx'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_macosx (class C_Compiler * inCompiler,
-                                                                                         const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                                         COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_macosx'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_macosx (class C_Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_macosx'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_macosx (class C_Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_macosx'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_macosx (class C_Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_macosx'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_macosx (class C_Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper install_macosx'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_5F_macosx (class C_Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper clean_macosx'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_macosx (class C_Compiler * inCompiler,
-                                                                                         const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                                         COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper clean_unix'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_unix (class C_Compiler * inCompiler,
-                                                                                       const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                                       COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_unix'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_unix (class C_Compiler * inCompiler,
-                                                                                       const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                                       COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_unix'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_unix (class C_Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_unix'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_unix (class C_Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_unix'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_unix (class C_Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_unix'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_unix (class C_Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper install_unix'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_5F_unix (class C_Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper clean_x86linux32_on_mac'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_33__32__5F_on_5F_mac (class C_Compiler * inCompiler,
-                                                                                                                      const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                                                                      COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_x86linux32_on_mac'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_x_38__36_linux_33__32__5F_on_5F_mac (class C_Compiler * inCompiler,
-                                                                                                                      const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                                                                      COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_x86linux32_on_mac'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
-                                                                                                                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_x86linux32_on_mac'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
-                                                                                                                               COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_x86linux32_on_mac'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
-                                                                                                                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_x86linux32_on_mac'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_x_38__36_linux_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
-                                                                                                                             COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper clean_x86linux64_on_mac'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_36__34__5F_on_5F_mac (class C_Compiler * inCompiler,
-                                                                                                                      const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                                                                      COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_x86linux64_on_mac'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_x_38__36_linux_36__34__5F_on_5F_mac (class C_Compiler * inCompiler,
-                                                                                                                      const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                                                                      COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_x86linux64_on_mac'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_36__34__5F_on_5F_mac (class C_Compiler * inCompiler
-                                                                                                                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_x86linux64_on_mac'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_36__34__5F_on_5F_mac (class C_Compiler * inCompiler
-                                                                                                                               COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_x86linux64_on_mac'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_36__34__5F_on_5F_mac (class C_Compiler * inCompiler
-                                                                                                                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_x86linux64_on_mac'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_x_38__36_linux_36__34__5F_on_5F_mac (class C_Compiler * inCompiler
-                                                                                                                             COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper clean_win32_on_mac'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_win_33__32__5F_on_5F_mac (class C_Compiler * inCompiler,
-                                                                                                           const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                                                           COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_win32_on_mac'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_win_33__32__5F_on_5F_mac (class C_Compiler * inCompiler,
-                                                                                                           const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                                                           COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_win32_on_mac'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_win_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
-                                                                                                                      COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_win32_on_mac'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_win_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
-                                                                                                                    COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_win32_on_mac'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_win_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
-                                                                                                                      COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_win32_on_mac'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_win_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
-                                                                                                                  COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper codeblocks_project'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_5F_project (class C_Compiler * inCompiler,
-                                                                                               const class GALGAS_string & in_PROJECT_5F_NAME,
-                                                                                               const class GALGAS_stringlist & in_TOOL_5F_CPP_5F_FILE_5F_LIST,
-                                                                                               const class GALGAS_string & in_LIBPM_5F_PATH,
-                                                                                               const class GALGAS_stringlist & in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST,
-                                                                                               const class GALGAS_stringset & in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET,
-                                                                                               const class GALGAS_bool & in_GENERATE_5F_FOR_5F_WINDOWS,
-                                                                                               const class GALGAS_string & in_PLATFORM,
-                                                                                               const class GALGAS_bool & in_VERBOSE_5F_OPTION
-                                                                                               COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_info_plist'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist (class C_Compiler * inCompiler,
-                                                                                                   const class GALGAS_string & in_PROJECT_5F_NAME,
-                                                                                                   const class GALGAS_string & in_APPLICATION_5F_BUNDLE_5F_BASE,
-                                                                                                   const class GALGAS_string & in_VERSION_5F_STRING,
-                                                                                                   const class GALGAS_stringset & in_HANDLED_5F_EXTENSION_5F_SET,
-                                                                                                   const class GALGAS_string & in_MACOSX_5F_DEPLOYMENT_5F_TARGET
-                                                                                                   COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_build_xcode'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_build_5F_xcode (class C_Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_info_plist_strings'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist_5F_strings (class C_Compiler * inCompiler,
-                                                                                                              const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                                                              COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper json_file_list'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_file_5F_list (class C_Compiler * inCompiler,
-                                                                                              const class GALGAS_stringset & in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET,
-                                                                                              const class GALGAS_stringlist & in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST,
-                                                                                              const class GALGAS_stringlist & in_MAKEFILE_5F_FILE_5F_LIST,
-                                                                                              const class GALGAS_stringlist & in_TOOL_5F_LINK_5F_LIST,
-                                                                                              const class GALGAS_string & in_LIBPM_5F_DIRECTORY_5F_PATH
-                                                                                              COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper project_header'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_project_5F_header (class C_Compiler * inCompiler,
-                                                                                           const class GALGAS_string & in_VERSION_5F_STRING
-                                                                                           COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'generateGalgasCodeBlocksWindowsTarget'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateGalgasCodeBlocksWindowsTarget (const class GALGAS_string constinArgument0,
-                                                    const class GALGAS_string constinArgument1,
-                                                    const class GALGAS_stringlist constinArgument2,
-                                                    const class GALGAS_string constinArgument3,
-                                                    const class GALGAS_stringlist constinArgument4,
-                                                    const class GALGAS_stringset constinArgument5,
-                                                    const class GALGAS_bool constinArgument6,
-                                                    class C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'generateGalgasCodeBlocksMacTarget'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateGalgasCodeBlocksMacTarget (const class GALGAS_string constinArgument0,
-                                                const class GALGAS_string constinArgument1,
-                                                const class GALGAS_stringlist constinArgument2,
-                                                const class GALGAS_string constinArgument3,
-                                                const class GALGAS_stringlist constinArgument4,
-                                                const class GALGAS_stringset constinArgument5,
-                                                const class GALGAS_bool constinArgument6,
-                                                class C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'generateGalgasCodeBlocksLinuxI686Target'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateGalgasCodeBlocksLinuxI_36__38__36_Target (const class GALGAS_string constinArgument0,
-                                                               const class GALGAS_string constinArgument1,
-                                                               const class GALGAS_stringlist constinArgument2,
-                                                               const class GALGAS_string constinArgument3,
-                                                               const class GALGAS_stringlist constinArgument4,
-                                                               const class GALGAS_stringset constinArgument5,
-                                                               const class GALGAS_bool constinArgument6,
-                                                               class C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'generateGalgasCodeBlocksLinuxX86_64Target'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateGalgasCodeBlocksLinuxX_38__36__5F__36__34_Target (const class GALGAS_string constinArgument0,
-                                                                       const class GALGAS_string constinArgument1,
-                                                                       const class GALGAS_stringlist constinArgument2,
-                                                                       const class GALGAS_string constinArgument3,
-                                                                       const class GALGAS_stringlist constinArgument4,
-                                                                       const class GALGAS_stringset constinArgument5,
-                                                                       const class GALGAS_bool constinArgument6,
-                                                                       class C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'generateGalgas3MinGWOnMacOSXTarget'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateGalgas_33_MinGWOnMacOSXTarget (const class GALGAS_string constinArgument0,
-                                                    const class GALGAS_string constinArgument1,
-                                                    class C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'generateGalgas3MakefileMacOSXTarget'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateGalgas_33_MakefileMacOSXTarget (const class GALGAS_string constinArgument0,
-                                                     const class GALGAS_string constinArgument1,
-                                                     class C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'generateGalgas3MakefileUnixTarget'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateGalgas_33_MakefileUnixTarget (const class GALGAS_string constinArgument0,
-                                                   const class GALGAS_string constinArgument1,
+class GALGAS_bool function_compareSyntaxSignature (const class GALGAS_semanticInstructionListForGeneration & constinArgument0,
+                                                   const class GALGAS_semanticInstructionListForGeneration & constinArgument1,
+                                                   const class GALGAS_location & constinArgument2,
                                                    class C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'generateGalgas3Linux32OnMacOSXTarget'
+//Routine 'groupSyntaxComponentsGalgas3'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_generateGalgas_33_Linux_33__32_OnMacOSXTarget (const class GALGAS_string constinArgument0,
-                                                            const class GALGAS_string constinArgument1,
-                                                            class C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
+void routine_groupSyntaxComponentsGalgas_33_ (const class GALGAS_galgas_33_SyntaxComponentListAST constinArgument0,
+                                              const class GALGAS_syntaxExtensions constinArgument1,
+                                              class GALGAS_semanticDeclarationListAST & ioArgument2,
+                                              class C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'generateGalgas3Linux64OnMacOSXTarget'
+//Function 'transformLabelMap'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_generateGalgas_33_Linux_36__34_OnMacOSXTarget (const class GALGAS_string constinArgument0,
-                                                            const class GALGAS_string constinArgument1,
-                                                            class C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
+class GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis function_transformLabelMap (const class GALGAS_nonTerminalLabelListAST & constinArgument0,
+                                                                                     class C_Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'grammarRulesInTexDocumentTemplate'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_grammarRulesInTexDocumentTemplate ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'grammarRulesInTexDocumentTemplate document'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_grammarRulesInTexDocumentTemplate_document (class C_Compiler * inCompiler,
+                                                                              const class GALGAS_string & in_DOCUMENT_5F_NAME,
+                                                                              const class GALGAS_string & in_TEX_5F_ESCAPED_5F_DOCUMENT_5F_NAME
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'programFileGenerationTemplate'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_programFileGenerationTemplate ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'programFileGenerationTemplate programFileImplementation'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_programFileGenerationTemplate_programFileImplementation (class C_Compiler * inCompiler,
+                                                                                           const class GALGAS_string & in_COMPONENT_5F_NAME,
+                                                                                           const class GALGAS_stringlist & in_IMPORTED_5F_COMPONENT_5F_LIST,
+                                                                                           const class GALGAS_string & in_BEFORE_5F_AFTER_5F_RULE_5F_IMPLEMENTATION_5F_STRING,
+                                                                                           const class GALGAS_programRuleList & in_PROGRAM_5F_RULE_5F_LIST,
+                                                                                           const class GALGAS_string & in_PROJECT_5F_VERSION_5F_STRING
+                                                                                           COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'compileBeforeClauseGalgas3'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_compileBeforeClauseGalgas_33_ (class GALGAS_lstringlist & ioArgument0,
+                                            class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                            const class GALGAS_analysisContext constinArgument2,
+                                            const class GALGAS_prologueEpilogueList constinArgument3,
+                                            class GALGAS_programListForGeneration & ioArgument4,
+                                            class C_Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'compileProgramRulesGalgas3'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_compileProgramRulesGalgas_33_ (class GALGAS_lstringlist & ioArgument0,
+                                            class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                            const class GALGAS_analysisContext constinArgument2,
+                                            const class GALGAS_programRuleList constinArgument3,
+                                            class GALGAS_programListForGeneration & ioArgument4,
+                                            class C_Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'compileAfterClauseGalgas3'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_compileAfterClauseGalgas_33_ (class GALGAS_lstringlist & ioArgument0,
+                                           class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                           const class GALGAS_analysisContext constinArgument2,
+                                           const class GALGAS_prologueEpilogueList constinArgument3,
+                                           class GALGAS_programListForGeneration & ioArgument4,
+                                           class C_Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'compileProgramComponentGalgas3'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_compileProgramComponentGalgas_33_ (class GALGAS_lstringlist & ioArgument0,
+                                                class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                                const class GALGAS_prologueEpilogueList constinArgument2,
+                                                const class GALGAS_programRuleList constinArgument3,
+                                                const class GALGAS_prologueEpilogueList constinArgument4,
+                                                const class GALGAS_semanticContext constinArgument5,
+                                                const class GALGAS_string constinArgument6,
+                                                class GALGAS_programComponentForGeneration & outArgument7,
+                                                class C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'checkGMP'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_checkGMP (class C_Compiler * inCompiler
+                       COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'displayUnicodeLexicalTestFunctions'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_displayUnicodeLexicalTestFunctions (class C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'parseAndAnalyzeProject'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_parseAndAnalyzeProject (const class GALGAS_lstring constinArgument0,
+                                     const class GALGAS_string constinArgument1,
+                                     class C_Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'compileProject'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_compileProject (const class GALGAS_lstring constinArgument0,
+                             const class GALGAS_string constinArgument1,
+                             const class GALGAS_galgas_33_ProjectComponentAST constinArgument2,
+                             class C_Compiler * inCompiler
+                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'typeDumpGenerationTemplate'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_typeDumpGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_1_typeDumpGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_2_typeDumpGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_3_typeDumpGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_4_typeDumpGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_5_typeDumpGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_6_typeDumpGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_7_typeDumpGenerationTemplate ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeDumpGenerationTemplate typeDump'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (class C_Compiler * inCompiler,
+                                                                       const class GALGAS_string & in_PROJECT_5F_NAME,
+                                                                       const class GALGAS_unifiedTypeMap & in_UNIFIED_5F_TYPE_5F_MAP,
+                                                                       const class GALGAS_stringset & in_FIRST_5F_LETTER_5F_SET,
+                                                                       const class GALGAS_string & in_TABLE_5F_OF_5F_TYPES_5F_STRING
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'linkForType'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_string function_linkForType (const class GALGAS_string & constinArgument0,
+                                          class C_Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'compileSemanticDeclarationsGalgas3'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_compileSemanticDeclarationsGalgas_33_ (class GALGAS_lstringlist & ioArgument0,
+                                                    class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                                    const class GALGAS_string constinArgument2,
+                                                    const class GALGAS_location constinArgument3,
+                                                    const class GALGAS_semanticDeclarationListAST constinArgument4,
+                                                    class GALGAS_semanticContext & outArgument5,
+                                                    class GALGAS_semanticDeclarationListForGeneration & outArgument6,
+                                                    class C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'performGalgas3ProjectGlobalCheckings'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_performGalgas_33_ProjectGlobalCheckings (const class GALGAS_semanticContext constinArgument0,
+                                                      const class GALGAS_semanticDeclarationListAST constinArgument1,
+                                                      class C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'projectGeneration'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_projectGeneration (const class GALGAS_unifiedTypeMap constinArgument0,
+                                const class GALGAS_string constinArgument1,
+                                const class GALGAS_optionComponentMapForGeneration constinArgument2,
+                                const class GALGAS_stringlist constinArgument3,
+                                const class GALGAS_semanticDeclarationListForGeneration constinArgument4,
+                                const class GALGAS_programRuleList constinArgument5,
+                                const class GALGAS_galgas_33_ProjectComponentAST constinArgument6,
+                                const class GALGAS_string constinArgument7,
+                                const class GALGAS_stringset constinArgument8,
+                                const class GALGAS_stringlist constinArgument9,
+                                const class GALGAS_stringlist constinArgument10,
+                                const class GALGAS_stringlist constinArgument11,
+                                const class GALGAS_stringlist constinArgument12,
+                                const class GALGAS_stringlist constinArgument13,
+                                class C_Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
 

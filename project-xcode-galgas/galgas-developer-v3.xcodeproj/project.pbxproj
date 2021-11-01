@@ -126,6 +126,10 @@
 		CF485327272469250063154F /* cPtr_weakReference_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF485324272469250063154F /* cPtr_weakReference_class.cpp */; };
 		CF4A1A592118A8B800BF7D12 /* all-declarations-27.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4A1A582118A8B800BF7D12 /* all-declarations-27.cpp */; };
 		CF4A1A5B2118A8EE00BF7D12 /* all-declarations-27.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4A1A582118A8B800BF7D12 /* all-declarations-27.cpp */; };
+		CF4C994D2730126F000A6A07 /* all-declarations-31.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4C994B2730126F000A6A07 /* all-declarations-31.cpp */; };
+		CF4C994E2730126F000A6A07 /* all-declarations-31.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4C994B2730126F000A6A07 /* all-declarations-31.cpp */; };
+		CF4C994F2730126F000A6A07 /* all-declarations-30.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4C994C2730126F000A6A07 /* all-declarations-30.cpp */; };
+		CF4C99502730126F000A6A07 /* all-declarations-30.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4C994C2730126F000A6A07 /* all-declarations-30.cpp */; };
 		CF4E85961FF3EB6200A28AE6 /* option-galgas-5F-cli-5F-options-cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1A80BD1D7AD2050012A113 /* option-galgas-5F-cli-5F-options-cocoa.m */; };
 		CF51F02315C9200E00387A48 /* PMDebug.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF51F02115C9200E00387A48 /* PMDebug.xib */; };
 		CF51F02715C9201800387A48 /* PMDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = CF51F02615C9201800387A48 /* PMDebug.m */; };
@@ -759,6 +763,10 @@
 		CF4A1A582118A8B800BF7D12 /* all-declarations-27.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-27.cpp"; sourceTree = "<group>"; };
 		CF4A1A5A2118A8C500BF7D12 /* all-declarations-27.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations-27.h"; sourceTree = "<group>"; };
 		CF4C28B91EC227F700DE807B /* switch-fallthrough.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "switch-fallthrough.h"; sourceTree = "<group>"; };
+		CF4C994B2730126F000A6A07 /* all-declarations-31.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-31.cpp"; sourceTree = "<group>"; };
+		CF4C994C2730126F000A6A07 /* all-declarations-30.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-30.cpp"; sourceTree = "<group>"; };
+		CF4C99512730127E000A6A07 /* all-declarations-30.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations-30.h"; sourceTree = "<group>"; };
+		CF4C99522730127E000A6A07 /* all-declarations-31.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations-31.h"; sourceTree = "<group>"; };
 		CF51F02515C9201800387A48 /* PMDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PMDebug.h; sourceTree = "<group>"; };
 		CF51F02615C9201800387A48 /* PMDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PMDebug.m; sourceTree = "<group>"; };
 		CF5522B82728473200EA9A4B /* GGSUpdateCocoaGalgas.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGSUpdateCocoaGalgas.xib; sourceTree = "<group>"; };
@@ -1248,6 +1256,8 @@
 		CF23743419967BEF0061D2D8 /* C++ files */ = {
 			isa = PBXGroup;
 			children = (
+				CF4C994C2730126F000A6A07 /* all-declarations-30.cpp */,
+				CF4C994B2730126F000A6A07 /* all-declarations-31.cpp */,
 				CF23743819967C4F0061D2D8 /* all-declarations-0.cpp */,
 				CF23743919967C4F0061D2D8 /* all-declarations-1.cpp */,
 				CF23743A19967C4F0061D2D8 /* all-declarations-2.cpp */,
@@ -1286,6 +1296,8 @@
 		CF23743519967BFC0061D2D8 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				CF4C99512730127E000A6A07 /* all-declarations-30.h */,
+				CF4C99522730127E000A6A07 /* all-declarations-31.h */,
 				CFB02C8619F3FC570011D03D /* all-declarations-0.h */,
 				CFB02C8719F3FC570011D03D /* all-declarations-1.h */,
 				CFB02C8819F3FC570011D03D /* all-declarations-2.h */,
@@ -2145,6 +2157,7 @@
 				CF92AD1312578D4C003F16F7 /* GALGAS_location.cpp in Sources */,
 				CF92343E1BADC5F3001032DA /* mpn-mul.c in Sources */,
 				CF92AD1412578D4C003F16F7 /* GALGAS_sint_36__34_.cpp in Sources */,
+				CF4C994D2730126F000A6A07 /* all-declarations-31.cpp in Sources */,
 				CF9E75311BADD83300DBEFEE /* mpn-toom_eval_pm1.c in Sources */,
 				CF9E75721BADDD4900DBEFEE /* mpn-nussbaumer_mul.c in Sources */,
 				CF23745A19967C4F0061D2D8 /* all-declarations-7.cpp in Sources */,
@@ -2202,6 +2215,7 @@
 				CF9FB045127A0A0200335160 /* C_galgas_class_inspector.cpp in Sources */,
 				CFA59E4F128EADA4000CD98B /* AC_GALGAS_uniqueMap.cpp in Sources */,
 				CFD94AD81290635400864538 /* buildPureBNFgrammar.cpp in Sources */,
+				CF4C994F2730126F000A6A07 /* all-declarations-30.cpp in Sources */,
 				CF9E75B41BAE12AC00DBEFEE /* mpz-cmp_si.c in Sources */,
 				CFD94AD91290635400864538 /* cDecisionTableElement.cpp in Sources */,
 				CF9E74F01BADD36200DBEFEE /* mpn-addmul_1.c in Sources */,
@@ -2415,6 +2429,7 @@
 				CF9E755C1BADDA0E00DBEFEE /* mpn-toom_interpolate_8pts.c in Sources */,
 				CF23745519967C4F0061D2D8 /* all-declarations-4.cpp in Sources */,
 				CF92AD2412578D64003F16F7 /* GALGAS_bool.cpp in Sources */,
+				CF4C994E2730126F000A6A07 /* all-declarations-31.cpp in Sources */,
 				CF9233EB1BADBD7C001032DA /* mpz-cmp.c in Sources */,
 				CF23747119967C4F0061D2D8 /* all-declarations-18.cpp in Sources */,
 				CF92AD2512578D65003F16F7 /* GALGAS_char.cpp in Sources */,
@@ -2472,6 +2487,7 @@
 				CF27F1E21279FE7A0068C230 /* C_galgas_CLI_Options.cpp in Sources */,
 				CF9233DD1BADBA1F001032DA /* mpz-add.c in Sources */,
 				CF9E75B51BAE12AC00DBEFEE /* mpz-cmp_si.c in Sources */,
+				CF4C99502730126F000A6A07 /* all-declarations-30.cpp in Sources */,
 				CF92343B1BADC452001032DA /* mpz-neg.c in Sources */,
 				CF9E75941BADE2BE00DBEFEE /* root-mp_minv_tab.c in Sources */,
 				CF23745119967C4F0061D2D8 /* all-declarations-2.cpp in Sources */,

@@ -82,6 +82,11 @@ class GALGAS_optionComponentDeclarationAST : public GALGAS_semanticDeclarationAS
 //--------------------------------- Constructor from pointer
   public: GALGAS_optionComponentDeclarationAST (const class cPtr_optionComponentDeclarationAST * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mOptionComponentName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_commandLineOptionListAST readProperty_mOptions (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -548,6 +553,15 @@ class GALGAS_nonterminalCallInstruction : public GALGAS_syntaxInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_nonterminalCallInstruction (const class cPtr_nonterminalCallInstruction * inSourcePtr) ;
 
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mNonterminalName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mLabelName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_actualParameterListAST readProperty_mActualParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult readProperty_mGrammarInstructionSyntaxDirectedTranslationResult (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -648,6 +662,17 @@ class GALGAS_terminalCheckInstruction : public GALGAS_syntaxInstructionAST {
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_terminalCheckInstruction (const class cPtr_terminalCheckInstruction * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mTerminalName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_actualInputParameterListAST readProperty_mActualInputParameterList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS__32_lstringlist readProperty_mIndexingKeyList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult readProperty_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult readProperty_mGrammarInstructionSyntaxDirectedTranslationToken (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -864,6 +889,23 @@ class GALGAS_galgas_33_GrammarComponentAST : public GALGAS_semanticDeclarationAS
   
 //--------------------------------- Constructor from pointer
   public: GALGAS_galgas_33_GrammarComponentAST (const class cPtr_galgas_33_GrammarComponentAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lbool readProperty_mHasIndexing (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mGrammarComponentName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mGrammarClass (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstringlist readProperty_mSyntaxComponents (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstring readProperty_mStartSymbolName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_nonTerminalLabelListAST readProperty_mStartSymbolLabelList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_lstringlist readProperty_mUnusedNonterminalList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  public: class GALGAS_bool readProperty_mHasTranslateFeature (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -1214,10 +1256,19 @@ class cMapElement_headerCompositionMap : public cMapElement {
 class GALGAS_headerCompositionMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_lkey ;
+  }
 
   public: GALGAS_stringset mProperty_mInclusion ;
+  public: inline GALGAS_stringset readProperty_mInclusion (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mInclusion ;
+  }
 
   public: GALGAS_string mProperty_mHeaderString ;
+  public: inline GALGAS_string readProperty_mHeaderString (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mHeaderString ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -1443,8 +1494,14 @@ class cMapElement_headerRepartitionMap : public cMapElement {
 class GALGAS_headerRepartitionMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_lkey ;
+  }
 
   public: GALGAS_string mProperty_mHeaderFileName ;
+  public: inline GALGAS_string readProperty_mHeaderFileName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mHeaderFileName ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -1662,8 +1719,14 @@ class cMapElement_projectQualifiedFeatureMap : public cMapElement {
 class GALGAS_projectQualifiedFeatureMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_lkey ;
+  }
 
   public: GALGAS_lstring mProperty_mFeatureValue ;
+  public: inline GALGAS_lstring readProperty_mFeatureValue (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mFeatureValue ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -1935,12 +1998,24 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeGroupList ;
 class GALGAS_XCodeGroupList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_string mProperty_mGroupReference ;
+  public: inline GALGAS_string readProperty_mGroupReference (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mGroupReference ;
+  }
 
   public: GALGAS_string mProperty_mGroupName ;
+  public: inline GALGAS_string readProperty_mGroupName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mGroupName ;
+  }
 
   public: GALGAS_string mProperty_mGroupPath ;
+  public: inline GALGAS_string readProperty_mGroupPath (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mGroupPath ;
+  }
 
   public: GALGAS_stringlist mProperty_mChildrenRefs ;
+  public: inline GALGAS_stringlist readProperty_mChildrenRefs (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mChildrenRefs ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -2361,26 +2436,59 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeToolTargetList
 class GALGAS_XCodeToolTargetList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_string mProperty_mTargetRef ;
+  public: inline GALGAS_string readProperty_mTargetRef (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mTargetRef ;
+  }
 
   public: GALGAS_string mProperty_mTargetName ;
+  public: inline GALGAS_string readProperty_mTargetName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mTargetName ;
+  }
 
   public: GALGAS_string mProperty_mProductFileReference ;
+  public: inline GALGAS_string readProperty_mProductFileReference (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mProductFileReference ;
+  }
 
   public: GALGAS_string mProperty_mProductFileName ;
+  public: inline GALGAS_string readProperty_mProductFileName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mProductFileName ;
+  }
 
   public: GALGAS_stringlist mProperty_mBuildPhaseRefList ;
+  public: inline GALGAS_stringlist readProperty_mBuildPhaseRefList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mBuildPhaseRefList ;
+  }
 
   public: GALGAS_string mProperty_mBuildPhaseRef ;
+  public: inline GALGAS_string readProperty_mBuildPhaseRef (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mBuildPhaseRef ;
+  }
 
   public: GALGAS_string mProperty_mBuildConfigurationListRef ;
+  public: inline GALGAS_string readProperty_mBuildConfigurationListRef (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mBuildConfigurationListRef ;
+  }
 
   public: GALGAS_stringlist mProperty_mBuildConfigurationSettingList ;
+  public: inline GALGAS_stringlist readProperty_mBuildConfigurationSettingList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mBuildConfigurationSettingList ;
+  }
 
   public: GALGAS_string mProperty_mBuildConfigurationRef ;
+  public: inline GALGAS_string readProperty_mBuildConfigurationRef (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mBuildConfigurationRef ;
+  }
 
   public: GALGAS_stringlist mProperty_mFrameworksFileRefList ;
+  public: inline GALGAS_stringlist readProperty_mFrameworksFileRefList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mFrameworksFileRefList ;
+  }
 
   public: GALGAS_string mProperty_mFrameworkBuildPhaseRef ;
+  public: inline GALGAS_string readProperty_mFrameworkBuildPhaseRef (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mFrameworkBuildPhaseRef ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -2914,32 +3022,74 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeAppTargetList 
 class GALGAS_XCodeAppTargetList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_string mProperty_mTargetRef ;
+  public: inline GALGAS_string readProperty_mTargetRef (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mTargetRef ;
+  }
 
   public: GALGAS_string mProperty_mTargetName ;
+  public: inline GALGAS_string readProperty_mTargetName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mTargetName ;
+  }
 
   public: GALGAS_string mProperty_mProductFileReference ;
+  public: inline GALGAS_string readProperty_mProductFileReference (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mProductFileReference ;
+  }
 
   public: GALGAS_string mProperty_mProductFileName ;
+  public: inline GALGAS_string readProperty_mProductFileName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mProductFileName ;
+  }
 
   public: GALGAS_stringlist mProperty_mBuildPhaseRefList ;
+  public: inline GALGAS_stringlist readProperty_mBuildPhaseRefList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mBuildPhaseRefList ;
+  }
 
   public: GALGAS_string mProperty_mBuildPhaseRef ;
+  public: inline GALGAS_string readProperty_mBuildPhaseRef (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mBuildPhaseRef ;
+  }
 
   public: GALGAS_string mProperty_mBuildConfigurationListRef ;
+  public: inline GALGAS_string readProperty_mBuildConfigurationListRef (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mBuildConfigurationListRef ;
+  }
 
   public: GALGAS_stringlist mProperty_mBuildConfigurationSettingList ;
+  public: inline GALGAS_stringlist readProperty_mBuildConfigurationSettingList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mBuildConfigurationSettingList ;
+  }
 
   public: GALGAS_string mProperty_mBuildConfigurationRef ;
+  public: inline GALGAS_string readProperty_mBuildConfigurationRef (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mBuildConfigurationRef ;
+  }
 
   public: GALGAS_stringlist mProperty_mFrameworksFileRefList ;
+  public: inline GALGAS_stringlist readProperty_mFrameworksFileRefList (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mFrameworksFileRefList ;
+  }
 
   public: GALGAS_string mProperty_mFrameworkBuildPhaseRef ;
+  public: inline GALGAS_string readProperty_mFrameworkBuildPhaseRef (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mFrameworkBuildPhaseRef ;
+  }
 
   public: GALGAS__32_stringlist mProperty_mDependentTargets ;
+  public: inline GALGAS__32_stringlist readProperty_mDependentTargets (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mDependentTargets ;
+  }
 
   public: GALGAS_string mProperty_mResourceBuildRef ;
+  public: inline GALGAS_string readProperty_mResourceBuildRef (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mResourceBuildRef ;
+  }
 
   public: GALGAS_stringlist mProperty_mResourceFileBuildRefs ;
+  public: inline GALGAS_stringlist readProperty_mResourceFileBuildRefs (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mResourceFileBuildRefs ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3288,10 +3438,19 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_BuildFileList ;
 class GALGAS_BuildFileList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GALGAS_string mProperty_mFileReference ;
+  public: inline GALGAS_string readProperty_mFileReference (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mFileReference ;
+  }
 
   public: GALGAS_string mProperty_mFileName ;
+  public: inline GALGAS_string readProperty_mFileName (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mFileName ;
+  }
 
   public: GALGAS_string mProperty_mBuildReference ;
+  public: inline GALGAS_string readProperty_mBuildReference (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+    return mProperty_mBuildReference ;
+  }
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;

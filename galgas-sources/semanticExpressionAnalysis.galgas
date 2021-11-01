@@ -197,33 +197,33 @@ proc checkDiadicOperator
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#    S E M A N T I C    C O N T E X T    F O R    A N A L Y S I S                                                      *
+#    S E M A N T I C    C O N T E X T    F O R    A N A L Y S I S
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @predefinedTypes {
-  public var @unifiedTypeMap-entry mLocationType
-  public var @unifiedTypeMap-entry mBoolType
-  public var @unifiedTypeMap-entry mCharType
-  public var @unifiedTypeMap-entry mStringType
-  public var @unifiedTypeMap-entry mUIntType
-  public var @unifiedTypeMap-entry mSIntType
-  public var @unifiedTypeMap-entry mUInt64Type
-  public var @unifiedTypeMap-entry mSInt64Type
-  public var @unifiedTypeMap-entry mDoubleType
-  public var @unifiedTypeMap-entry mLBoolType
-  public var @unifiedTypeMap-entry mLCharType
-  public var @unifiedTypeMap-entry mLStringType
-  public var @unifiedTypeMap-entry mLUIntType
-  public var @unifiedTypeMap-entry mLSIntType
-  public var @unifiedTypeMap-entry mLUInt64Type
-  public var @unifiedTypeMap-entry mLSInt64Type
-  public var @unifiedTypeMap-entry mLDoubleType
-  public var @unifiedTypeMap-entry mStringListType
-  public var @unifiedTypeMap-entry mLBigIntType
-  public var @unifiedTypeMap-entry mBigIntType
-  public var @unifiedTypeMap-entry mStringSetType
-  public var @unifiedTypeMap-entry mLStringListType
+  public let @unifiedTypeMap-entry mLocationType
+  public let @unifiedTypeMap-entry mBoolType
+  public let @unifiedTypeMap-entry mCharType
+  public let @unifiedTypeMap-entry mStringType
+  public let @unifiedTypeMap-entry mUIntType
+  public let @unifiedTypeMap-entry mSIntType
+  public let @unifiedTypeMap-entry mUInt64Type
+  public let @unifiedTypeMap-entry mSInt64Type
+  public let @unifiedTypeMap-entry mDoubleType
+  public let @unifiedTypeMap-entry mLBoolType
+  public let @unifiedTypeMap-entry mLCharType
+  public let @unifiedTypeMap-entry mLStringType
+  public let @unifiedTypeMap-entry mLUIntType
+  public let @unifiedTypeMap-entry mLSIntType
+  public let @unifiedTypeMap-entry mLUInt64Type
+  public let @unifiedTypeMap-entry mLSInt64Type
+  public let @unifiedTypeMap-entry mLDoubleType
+  public let @unifiedTypeMap-entry mStringListType
+  public let @unifiedTypeMap-entry mLBigIntType
+  public let @unifiedTypeMap-entry mBigIntType
+  public let @unifiedTypeMap-entry mStringSetType
+  public let @unifiedTypeMap-entry mLStringListType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

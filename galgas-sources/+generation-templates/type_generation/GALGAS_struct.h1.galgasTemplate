@@ -8,8 +8,12 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Properties
 %
 for () in PROPERTY_LIST do
-  %  public: GALGAS_%![mPropertyTypeEntry identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n\n%
-end%//--------------------------------- Accessors
+  %  public: GALGAS_%![mPropertyTypeEntry identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+  %  public: inline GALGAS_%![mPropertyTypeEntry identifierRepresentation]% readProperty_%![mPropertyName identifierRepresentation]% (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) const {\n%
+  %    return mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+  %  }\n\n%
+end
+%//--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
   public: VIRTUAL_IN_DEBUG void drop (void) ;
 

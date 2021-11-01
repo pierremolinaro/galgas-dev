@@ -1,6 +1,6 @@
 //--- Properties
 %
-  for () in CURRENT_ATTRIBUTE_LIST do
+  for () in CURRENT_PROPERTY_LIST do
     %  public: GALGAS_%![mPropertyTypeEntry identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   end
 %
