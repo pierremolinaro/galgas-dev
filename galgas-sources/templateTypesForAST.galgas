@@ -42,16 +42,6 @@ list @templateExpressionListAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   G E T T E R    C A L L    O P E R A N D 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @templateGetterCallInExpressionAST : @templateExpressionAST {
-  private let @templateExpressionAST mReceiverExpression
-  private let @lstring mGetterName
-  private let @templateExpressionListAST mExpressionList
-}
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   C O N S T R U C T O R                   
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

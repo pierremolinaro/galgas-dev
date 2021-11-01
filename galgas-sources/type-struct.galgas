@@ -109,9 +109,8 @@ override method @structDeclarationAST enterInSemanticContext
     !false
     !structTypeIndex
   ]
-#--- Readers
-  var @getterMap getterMap
-  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?getterMap)
+#--- Getters
+  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap)
   for (mPropertyTypeEntry mPropertyName * *) in typedPropertyList do
     enterBaseFinalGetterWithoutArgument (
       !?getterMap
@@ -121,7 +120,7 @@ override method @structDeclarationAST enterInSemanticContext
       !hasCompilerArgument:false
     )
   end
-#--- Modifiers
+#--- Setters
   var @setterMap setterMap = {}
 #--- Instance methods
   var @instanceMethodMap instanceMethodMap = {}

@@ -10,7 +10,7 @@
 //                    E X T E R N    R O U T I N E S                                             
 //----------------------------------------------------------------------------------------------------------------------
 %
-  for () in [LEXIQUE_ANALYSIS_CONTEXT mLexicalRoutineMessageMap] do
+  for () in LEXIQUE_ANALYSIS_CONTEXT.mLexicalRoutineMessageMap do
     if mIsExtern then
       %\nvoid scanner_routine_%![lkey string]% (C_Lexique & inLexique%
       for () in mLexicalRoutineFormalArgumentList do

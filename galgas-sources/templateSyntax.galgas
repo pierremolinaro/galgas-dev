@@ -431,15 +431,19 @@ rule <primary> !@templateExpressionAST outExpression {
     <output_expression_list> ?expressionList
     outExpression = @templateFileWrapperTemplateCallAST.new {!filewrapperName !templateName !expressionList}
   or #--------------------------------- Retter call
+    let startLocation = @location.here
     var @templateExpressionAST receiverExpression
     <expression> ?receiverExpression
     $identifier$ ?var  @lstring getterName
     var @templateExpressionListAST expressionList
     <output_expression_list> ?expressionList
+    let endLocation = @location.here
     outExpression = @templateGetterCallInExpressionAST.new {
       !receiverExpression
       !getterName
-      !expressionList}
+      !expressionList
+      ![startLocation union !endLocation]
+    }
   or
     $option$
     select

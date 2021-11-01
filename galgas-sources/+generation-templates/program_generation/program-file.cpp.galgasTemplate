@@ -87,7 +87,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
           for () in PROGRAM_RULE_LIST 
           do index IDX
             %if (fileExtension == %![mSourceFileExtension utf8Representation]%) {\n%
-            if [mReferenceGrammar string] == "" then
+            if mReferenceGrammar.string == "" then
             %          switch (executionMode ()) {\n%
             %          case kExecutionModeNormal :\n%
             %            routine_%!["programRule_" + [IDX string] identifierRepresentation]% (sourceFilePath, commonCompiler COMMA_HERE) ;\n%

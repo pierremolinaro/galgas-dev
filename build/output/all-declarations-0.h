@@ -5967,7 +5967,8 @@ class GALGAS_templateGetterCallInExpressionAST : public GALGAS_templateExpressio
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_templateGetterCallInExpressionAST constructor_new (const class GALGAS_templateExpressionAST & inOperand0,
                                                                                  const class GALGAS_lstring & inOperand1,
-                                                                                 const class GALGAS_templateExpressionListAST & inOperand2
+                                                                                 const class GALGAS_templateExpressionListAST & inOperand2,
+                                                                                 const class GALGAS_location & inOperand3
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5980,6 +5981,8 @@ class GALGAS_templateGetterCallInExpressionAST : public GALGAS_templateExpressio
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_templateExpressionListAST getter_mExpressionList (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_location getter_mExpressionLocation (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mGetterName (LOCATION_ARGS) const ;
 
@@ -6009,11 +6012,13 @@ class cPtr_templateGetterCallInExpressionAST : public cPtr_templateExpressionAST
   public: GALGAS_templateExpressionAST mProperty_mReceiverExpression ;
   public: GALGAS_lstring mProperty_mGetterName ;
   public: GALGAS_templateExpressionListAST mProperty_mExpressionList ;
+  public: GALGAS_location mProperty_mExpressionLocation ;
 
 //--- Constructor
   public: cPtr_templateGetterCallInExpressionAST (const GALGAS_templateExpressionAST & in_mReceiverExpression,
                                                   const GALGAS_lstring & in_mGetterName,
-                                                  const GALGAS_templateExpressionListAST & in_mExpressionList
+                                                  const GALGAS_templateExpressionListAST & in_mExpressionList,
+                                                  const GALGAS_location & in_mExpressionLocation
                                                   COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
