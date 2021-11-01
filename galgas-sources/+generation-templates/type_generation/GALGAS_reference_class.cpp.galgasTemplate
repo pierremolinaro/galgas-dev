@@ -120,19 +120,6 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
 end
 
 for () in CURRENT_PROPERTY_LIST do
-  %//----------------------------------------------------------------------------------------------------------------------\n\n%
-  %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
-  %  GALGAS_%![mPropertyTypeEntry identifierRepresentation]% result ;\n%
-  %  if (NULL != mObjectPtr) {\n%
-  %    const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
-  %    macroValidSharedObject (p, cPtr_%!TYPE_IDENTIFIER%) ;\n%
-  %    result = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
-  %  }\n%
-  %  return result ;\n%
-  %}\n\n%
-end
-
-for () in CURRENT_PROPERTY_LIST do
   if mHasSetter then
     %//----------------------------------------------------------------------------------------------------------------------\n\n%
     %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inValue\n%

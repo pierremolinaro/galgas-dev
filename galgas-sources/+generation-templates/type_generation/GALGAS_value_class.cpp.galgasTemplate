@@ -121,14 +121,14 @@ end
 
 for () in CURRENT_PROPERTY_LIST do
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
-  %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
-  %  GALGAS_%![mPropertyTypeEntry identifierRepresentation]% result ;\n%
-  %  if (NULL != mObjectPtr) {\n%
+  %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::readProperty_%![mPropertyName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
+  %  if (NULL == mObjectPtr) {\n%
+  %    return GALGAS_%![mPropertyTypeEntry identifierRepresentation]% () ;\n%
+  %  }else{\n%
   %    const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
   %    macroValidSharedObject (p, cPtr_%!TYPE_IDENTIFIER%) ;\n%
-  %    result = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+  %    return p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   %  }\n%
-  %  return result ;\n%
   %}\n\n%
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% cPtr_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%

@@ -218,7 +218,6 @@ override method @classDeclarationAST enterInSemanticContext
         !mDeclarationLocation
         !mHasCompilerArgument
         !.isInherited
-#        !mutatingStatus
         !mErrorMessage
       ] 
     end
@@ -289,16 +288,16 @@ override method @classDeclarationAST enterInSemanticContext
     end
     currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
     allTypedAttributeList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
-    [!?getterMap insertKey
-      !mPropertyName
-      !@methodKind.definedAsMember
-      !@functionSignature {} # No argument
-      !@location.here
-      !false # No Compiler argument
-      !attributeTypeIndex # Returned type
-      !@methodQualifier.isBasic
-      !"" # No Error message
-    ]
+#    [!?getterMap insertKey
+#      !mPropertyName
+#      !@methodKind.definedAsMember
+#      !@functionSignature {} # No argument
+#      !@location.here
+#      !false # No Compiler argument
+#      !attributeTypeIndex # Returned type
+#      !@methodQualifier.isBasic
+#      !"" # No Error message
+#    ]
   end
 #--- set...attribute setter
   for (mPropertyTypeEntry mPropertyName mHasSetter *) in currentClassTypedPropertyList do
@@ -483,7 +482,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
   private let @bool mIsReference
   private let @unifiedTypeMap-entry mSuperClass # Null if no super class
   private let @typedPropertyList mAllTypedAttributeList # Inherited followed by current attributes
-  private let @typedPropertyList mTypedAttributeList
+  private let @typedPropertyList mCurrentTypedAttributeList
   private let @bool mGenerateHeaderInSeparateFile # Significant only for classes
 }
 
@@ -504,7 +503,7 @@ override method @classTypeForGeneration appendDeclaration1
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
       !self.mIsAbstract
       ![self.mSelfTypeEntry mDefaultConstructorName] != ""
-      !self.mTypedAttributeList
+      !self.mCurrentTypedAttributeList
     ]
     outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
       ![self.mSelfTypeEntry  key]
@@ -528,6 +527,7 @@ override method @classTypeForGeneration appendDeclaration1
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
       !self.mIsAbstract
       ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
+      !self.mCurrentTypedAttributeList
     ]
     outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
       ![self.mSelfTypeEntry  key]
@@ -554,7 +554,7 @@ override method @classTypeForGeneration appendDeclaration2
   ?!@stringset ioInclusionSet
   !@string outHeader
 {
-  for (t 3*) in self.mTypedAttributeList do
+  for (t 3*) in self.mCurrentTypedAttributeList do
     [t addHeaderFileName !?ioInclusionSet]
   end
 
@@ -564,7 +564,7 @@ override method @classTypeForGeneration appendDeclaration2
         ![self.mSelfTypeEntry  key]
         ![self.mSelfTypeEntry  identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-        !self.mTypedAttributeList
+        !self.mCurrentTypedAttributeList
         !self.mAllTypedAttributeList
         !self.mIsAbstract
       ]
@@ -572,7 +572,7 @@ override method @classTypeForGeneration appendDeclaration2
         ![self.mSelfTypeEntry  key]
         ![self.mSelfTypeEntry  identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-        !self.mTypedAttributeList
+        !self.mCurrentTypedAttributeList
         !self.mAllTypedAttributeList
         !self.mIsAbstract
       ]
@@ -594,7 +594,7 @@ override method @classTypeForGeneration appendDeclaration2
         ![self.mSelfTypeEntry  key]
         ![self.mSelfTypeEntry  identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-        !self.mTypedAttributeList
+        !self.mCurrentTypedAttributeList
         !self.mAllTypedAttributeList
         !self.mIsAbstract
       ]
@@ -602,7 +602,7 @@ override method @classTypeForGeneration appendDeclaration2
         ![self.mSelfTypeEntry  key]
         ![self.mSelfTypeEntry  identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-        !self.mTypedAttributeList
+        !self.mCurrentTypedAttributeList
         !self.mAllTypedAttributeList
         !self.mIsAbstract
       ]
@@ -613,7 +613,7 @@ override method @classTypeForGeneration appendDeclaration2
         ![self.mSelfTypeEntry  key]
         ![self.mSelfTypeEntry  identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-        !self.mTypedAttributeList
+        !self.mCurrentTypedAttributeList
         !self.mAllTypedAttributeList
         !self.mIsAbstract
       ]
@@ -621,7 +621,7 @@ override method @classTypeForGeneration appendDeclaration2
         ![self.mSelfTypeEntry  key]
         ![self.mSelfTypeEntry  identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-        !self.mTypedAttributeList
+        !self.mCurrentTypedAttributeList
         !self.mAllTypedAttributeList
         !self.mIsAbstract
       ]
@@ -643,7 +643,7 @@ override method @classTypeForGeneration appendDeclaration2
         ![self.mSelfTypeEntry  key]
         ![self.mSelfTypeEntry  identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-        !self.mTypedAttributeList
+        !self.mCurrentTypedAttributeList
         !self.mAllTypedAttributeList
         !self.mIsAbstract
       ]
@@ -651,7 +651,7 @@ override method @classTypeForGeneration appendDeclaration2
         ![self.mSelfTypeEntry  key]
         ![self.mSelfTypeEntry  identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-        !self.mTypedAttributeList
+        !self.mCurrentTypedAttributeList
         !self.mAllTypedAttributeList
         !self.mIsAbstract
       ]
@@ -668,14 +668,14 @@ override method @classTypeForGeneration appendSpecificImplementation
 {
   [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
   let at = [self.mAllTypedAttributeList subListWithRange
-    !.new {!0 ![self.mAllTypedAttributeList length] - [self.mTypedAttributeList length]}
+    !.new {!0 ![self.mAllTypedAttributeList length] - [self.mCurrentTypedAttributeList length]}
   ]
   if self.mIsReference then
     outImplementation = [filewrapper typeGenerationTemplate.referenceClassTypeSpecificImplementation
       ![self.mSelfTypeEntry  key]
       ![self.mSelfTypeEntry  identifierRepresentation]
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-      !self.mTypedAttributeList
+      !self.mCurrentTypedAttributeList
       !self.mAllTypedAttributeList
       !at
       !self.mIsAbstract
@@ -686,7 +686,7 @@ override method @classTypeForGeneration appendSpecificImplementation
       ![self.mSelfTypeEntry  key]
       ![self.mSelfTypeEntry  identifierRepresentation]
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-      !self.mTypedAttributeList
+      !self.mCurrentTypedAttributeList
       !self.mAllTypedAttributeList
       !at
       !self.mIsAbstract
