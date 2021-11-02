@@ -579,6 +579,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_templateInstructionStringAST : public cPtr_templateInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_string mProperty_mTemplateString ;
 
@@ -934,6 +937,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_templateInstructionStringForGeneration : public cPtr_templateInstructionForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_string mProperty_mTemplateString ;
 

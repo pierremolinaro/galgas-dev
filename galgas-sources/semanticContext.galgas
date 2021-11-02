@@ -516,23 +516,23 @@ abstract method @semanticDeclarationAST enterInSemanticContext
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @predefinedTypeKindEnum defaultConstructorName
-  -> @string outName {
+  -> @string {
   switch self
   case predefined_bool, predefined_char,
        predefined_double, predefined_sint, predefined_sint64,
        predefined_string, predefined_uint, predefined_uint64
-    : outName = "default"
-  case predefined_binaryset : outName = "emptyBinarySet"
-  case predefined_stringset : outName = "emptySet"
-  case predefined_type : outName = ""
-  case predefined_application : outName = ""
-  case predefined_data : outName = "emptyData"
-  case predefined_location : outName = "nowhere"
-  case predefined_function : outName = ""
-  case predefined_object : outName = ""
-  case predefined_filewrapper : outName = ""
-  case predefined_bigint : outName = "zero"
-  case predefined_timer : outName = "start"
+    : result = "default"
+  case predefined_binaryset : result = "emptyBinarySet"
+  case predefined_stringset : result = "emptySet"
+  case predefined_type : result = ""
+  case predefined_application : result = ""
+  case predefined_data : result = "emptyData"
+  case predefined_location : result = "nowhere"
+  case predefined_function : result = ""
+  case predefined_object : result = ""
+  case predefined_filewrapper : result = ""
+  case predefined_bigint : result = "zero"
+  case predefined_timer : result = "start"
   end
 }
 

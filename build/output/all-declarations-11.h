@@ -942,6 +942,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentInstructi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_assignmentInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTargetVariableName ;
   public: GALGAS_lstring mProperty_mOptionalProperty ;
@@ -1042,6 +1045,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_divEqualExpressionI
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_divEqualExpressionInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_bool mProperty_mPrefixedBySelf ;
   public: GALGAS_lstring mProperty_mReceiverName ;
@@ -1140,6 +1146,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectio
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_enumeratedCollectionImplicitVarInExpAST : public cPtr_abstractEnumeratedCollectionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mPrefix ;
   public: GALGAS_semanticExpressionAST mProperty_mEnumeratedExpression ;
@@ -1238,6 +1247,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectio
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_enumeratedCollectionVarInExpAST : public cPtr_abstractEnumeratedCollectionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mEnumerationOptionalTypeName ;
   public: GALGAS_lstring mProperty_mEnumerationVariable ;
@@ -1348,6 +1360,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externFunctionDecla
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_externFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mFunctionName ;
   public: GALGAS_formalInputParameterListAST mProperty_mFormalArgumentList ;
@@ -1457,6 +1472,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externRoutineDeclar
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_externRoutineDeclarationAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_bool mProperty_mIsInternal ;
   public: GALGAS_lstring mProperty_mRoutineName ;
@@ -1584,6 +1602,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionAST ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_forInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_forInstructionEnumeratedObjectListAST mProperty_mEnumeratedObjectList ;
   public: GALGAS_lstring mProperty_mIndexVariableName ;
@@ -1728,6 +1749,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionDeclaration
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_functionDeclarationAST : public cPtr_externFunctionDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mResultVariableName ;
   public: GALGAS_semanticInstructionListAST mProperty_mFunctionInstructionList ;
@@ -1841,6 +1865,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInFileInstru
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_grammarInFileInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mGrammarComponentName ;
   public: GALGAS_lstring mProperty_mLabelName ;
@@ -1959,6 +1986,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInStringInst
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_grammarInStringInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mGrammarComponentName ;
   public: GALGAS_lstring mProperty_mLabelName ;
@@ -2065,6 +2095,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionS
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : public cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mActualParameterTypeName ;
   public: GALGAS_lstring mProperty_mActualParameterName ;
@@ -2158,6 +2191,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionS
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar : public cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mActualParameterTypeName ;
   public: GALGAS_lstring mProperty_mActualParameterName ;
@@ -2248,6 +2284,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionS
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar : public cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mActualParameterName ;
 
@@ -2355,6 +2394,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecInstructionAS
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_incDecInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_bool mProperty_mPrefixedBySelf ;
   public: GALGAS_lstring mProperty_mReceiverName ;
@@ -2469,6 +2511,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecNoOVFInstruct
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_incDecNoOVFInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_bool mProperty_mPrefixedBySelf ;
   public: GALGAS_lstring mProperty_mReceiverName ;
@@ -2573,6 +2618,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputParameterDecla
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_inputParameterDeclaredConstant : public cPtr_abstractInputParameter {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mActualParameterTypeName ;
   public: GALGAS_lstring mProperty_mActualParameterName ;
@@ -2672,6 +2720,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputParameterDecla
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_inputParameterDeclaredVariable : public cPtr_abstractInputParameter {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mActualParameterTypeName ;
   public: GALGAS_lstring mProperty_mActualParameterName ;
@@ -2765,6 +2816,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputParameterVaria
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_inputParameterVariable : public cPtr_abstractInputParameter {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mActualParameterName ;
 
@@ -2854,6 +2908,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localConstantDeclar
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_localConstantDeclarationWithAssignmentAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mVariableName ;
   public: GALGAS_semanticExpressionAST mProperty_mSourceExpression ;
@@ -2946,6 +3003,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableDeclar
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_localVariableDeclarationWithAssignmentAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mVariableName ;
   public: GALGAS_semanticExpressionAST mProperty_mSourceExpression ;
@@ -3044,6 +3104,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableOrCons
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_localVariableOrConstantDeclarationWithAssignmentAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_bool mProperty_mIsConstant ;
   public: GALGAS_lstring mProperty_mOptionalTypeName ;
@@ -3143,6 +3206,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_methodCallInstructi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_methodCallInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_semanticExpressionAST mProperty_mReceiverExpression ;
   public: GALGAS_lstring mProperty_mMethodName ;
@@ -3243,6 +3309,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_minusEqualExpressio
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_minusEqualExpressionInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_bool mProperty_mPrefixedBySelf ;
   public: GALGAS_lstring mProperty_mReceiverName ;
@@ -3345,6 +3414,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mulEqualExpressionI
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_mulEqualExpressionInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_bool mProperty_mPrefixedBySelf ;
   public: GALGAS_lstring mProperty_mReceiverName ;
@@ -3480,6 +3552,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_onceFunctionDeclara
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_onceFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mFunctionName ;
   public: GALGAS_lstring mProperty_mResultTypeName ;
@@ -3591,6 +3666,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusEqualElementsIn
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_plusEqualElementsInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_bool mProperty_mPrefixedBySelf ;
   public: GALGAS_lstring mProperty_mReceiverName ;
@@ -3693,6 +3771,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusEqualExpression
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_plusEqualExpressionInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_bool mProperty_mPrefixedBySelf ;
   public: GALGAS_lstring mProperty_mReceiverName ;
@@ -3792,6 +3873,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_procCallInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_procCallInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mRoutineName ;
   public: GALGAS_actualParameterListAST mProperty_mActualParameterList ;
@@ -3896,6 +3980,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_procDeclarationAST 
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_procDeclarationAST : public cPtr_externRoutineDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_semanticInstructionListAST mProperty_mRoutineInstructionList ;
   public: GALGAS_location mProperty_mEndOfRoutineInstructionList ;
@@ -4045,6 +4132,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_readAccessWithInstr
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_readAccessWithInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mPrefix ;
   public: GALGAS_semanticExpressionAST mProperty_mReceiverExpression ;
@@ -4219,6 +4309,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_readWriteAccessWith
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_readWriteAccessWithInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mPrefix ;
   public: GALGAS_lstring mProperty_mReceiverName ;
@@ -4334,6 +4427,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfPropertyAssignm
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_selfPropertyAssignmentInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTargetSelfPropertyName ;
   public: GALGAS_lstring mProperty_mOptionalProperty ;
@@ -4431,6 +4527,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfSetterCallInstr
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_selfSetterCallInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mSetterName ;
   public: GALGAS_actualParameterListAST mProperty_mActualParameterList ;
@@ -4538,6 +4637,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterCallInstructi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_setterCallInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_bool mProperty_mPrefixedBySelf ;
   public: GALGAS_lstring mProperty_mReceiverName ;
@@ -4644,6 +4746,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeMethodCallInstr
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_typeMethodCallInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mMethodName ;
@@ -4741,6 +4846,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_undefinedLocalConst
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_undefinedLocalConstantDeclarationAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mConstantTypeName ;
   public: GALGAS_lstring mProperty_mConstantName ;
@@ -5587,6 +5695,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionGe
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_abstractExtensionGetterAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mAbstractExtensionGetterName ;
@@ -5698,6 +5809,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionMe
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_abstractExtensionMethodAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mAbstractExtensionMethodName ;
@@ -5798,6 +5912,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionSe
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_abstractExtensionSetterAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mAbstractExtensionSetterName ;
@@ -5898,6 +6015,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_arrayDeclarationAST
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_arrayDeclarationAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mArrayTypeName ;
   public: GALGAS_lstring mProperty_mElementTypeName ;
@@ -5995,6 +6115,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolsetDeclarationA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_boolsetDeclarationAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mBoolsetTypeName ;
   public: GALGAS_lstringlist mProperty_mFlagList ;
@@ -6102,6 +6225,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classDeclarationAST
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_bool mProperty_mIsAbstract ;
   public: GALGAS_bool mProperty_mIsReference ;
@@ -6211,6 +6337,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dictDeclarationAST 
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_dictDeclarationAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mDictTypeName ;
   public: GALGAS_lstring mProperty_mKeyTypeName ;
@@ -6313,6 +6442,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumDeclarationAST 
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mEnumTypeName ;
   public: GALGAS_enumConstantList mProperty_mConstantList ;
@@ -6425,6 +6557,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterAST 
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mExtensionGetterName ;
@@ -6539,6 +6674,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodAST 
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mExtensionMethodName ;
@@ -6649,6 +6787,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterAST 
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mExtensionSetterName ;
@@ -6765,6 +6906,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeDeclarati
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_externTypeDeclarationAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mExternTypeName ;
   public: GALGAS_string mProperty_mCppPreDeclarationCode ;
@@ -6906,6 +7050,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperDeclarat
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_filewrapperDeclarationAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_bool mProperty_mIsInternal ;
   public: GALGAS_string mProperty_mSourceFileAbsolutePath ;
@@ -7023,6 +7170,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphDeclarationAST
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_graphDeclarationAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mGraphTypeName ;
   public: GALGAS_lstring mProperty_mAssociatedListTypeName ;
@@ -7120,6 +7270,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listDeclarationAST 
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_listDeclarationAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mListTypeName ;
   public: GALGAS_propertyInCollectionListAST mProperty_mPropertyList ;
@@ -7215,6 +7368,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listmapDeclarationA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_listmapDeclarationAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mListmapTypeName ;
   public: GALGAS_lstring mProperty_mAssociatedListTypeName ;
@@ -7313,6 +7469,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableDeclar
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_localVariableDeclarationAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mVariableName ;
@@ -7446,6 +7605,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapDeclarationAST ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_mapDeclarationAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mMapTypeName ;
   public: GALGAS_lstringlist mProperty_mAttributeList ;
@@ -7551,6 +7713,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapEntryDeclaration
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_mapEntryDeclarationAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mMapEntryTypeName ;
   public: GALGAS_lstring mProperty_mAssociatedMapTypeName ;
@@ -7652,6 +7817,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractE
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_overridingAbstractExtensionGetterAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mAbstractExtensionGetterName ;
@@ -7763,6 +7931,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractE
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_overridingAbstractExtensionMethodAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mOverridingExtensionMethodName ;
@@ -7863,6 +8034,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractE
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_overridingAbstractExtensionSetterAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mOverridingExtensionSetterName ;
@@ -7975,6 +8149,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtension
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_overridingExtensionGetterAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mOverridingExtensionGetterName ;
@@ -8089,6 +8266,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtension
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mOverridingExtensionMethodName ;
@@ -8199,6 +8379,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtension
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_overridingExtensionSetterAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mOverridingExtensionSetterName ;
@@ -8342,6 +8525,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sharedMapDeclaratio
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_sharedMapDeclarationAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mMapTypeName ;
   public: GALGAS_lstringlist mProperty_mAttributeList ;
@@ -8452,6 +8638,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListDeclarati
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_sortedListDeclarationAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mSortedListTypeName ;
   public: GALGAS_propertyInCollectionListAST mProperty_mPropertyList ;
@@ -8552,6 +8741,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structDeclarationAS
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_structDeclarationAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mStructTypeName ;
   public: GALGAS_propertyInCollectionListAST mProperty_mStructurePropertyList ;
@@ -8658,6 +8850,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_weakReferenceDeclar
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_weakReferenceDeclarationAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mClassTypeName ;
   public: GALGAS_lstring mProperty_mWeakReferenceTypeName ;
@@ -9322,6 +9517,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeInp
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalAttributeInputArgumentAST : public cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mAttributeName ;
 
@@ -9411,6 +9609,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeInp
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalAttributeInputOutputArgumentAST : public cPtr_abstractLexicalRoutineActualArgumentAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mAttributeName ;
 
@@ -9500,6 +9701,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterInp
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalCharacterInputArgumentAST : public cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lchar mProperty_mCharacter ;
 
@@ -9591,6 +9795,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterInt
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalCharacterIntervalMatchAST : public cPtr_lexicalExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lchar mProperty_mLowerBound ;
   public: GALGAS_lchar mProperty_mUpperBound ;
@@ -9681,6 +9888,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterMat
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalCharacterMatchAST : public cPtr_lexicalExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lchar mProperty_mCharacter ;
 
@@ -9769,6 +9979,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterSet
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalCharacterSetMatchAST : public cPtr_lexicalExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mCharacterSetName ;
 
@@ -9857,6 +10070,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalDropInstruct
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalDropInstructionAST : public cPtr_lexicalInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTerminalName ;
 
@@ -9945,6 +10161,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalErrorByDefau
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalErrorByDefaultAST : public cPtr_lexicalSendDefaultActionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mDefaultErrorMessageName ;
 
@@ -10033,6 +10252,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalErrorInstruc
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalErrorInstructionAST : public cPtr_lexicalInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mErrorMessageName ;
 
@@ -10121,6 +10343,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionCall
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalFunctionCallAST : public cPtr_lexicalFunctionExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mCalledFunctionName ;
 
@@ -10212,6 +10437,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionChar
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalFunctionCharacterIntervalMatchAST : public cPtr_lexicalFunctionExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lchar mProperty_mLowerBound ;
   public: GALGAS_lchar mProperty_mUpperBound ;
@@ -10302,6 +10530,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionChar
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalFunctionCharacterMatchAST : public cPtr_lexicalFunctionExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lchar mProperty_mCharacter ;
 
@@ -10393,6 +10624,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionInpu
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalFunctionInputArgumentAST : public cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mFunctionName ;
   public: GALGAS_lexicalFunctionCallActualArgumentListAST mProperty_mFunctionActualArgumentList ;
@@ -10483,6 +10717,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalImplicitRule
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalImplicitRuleAST : public cPtr_abstractLexicalRuleAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mListName ;
 
@@ -10574,6 +10811,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRewindInstru
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalRewindInstructionAST : public cPtr_lexicalInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mLexicalTagName ;
   public: GALGAS_lstring mProperty_mTerminalName ;
@@ -10670,6 +10910,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineInstr
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalRoutineInstructionAST : public cPtr_lexicalInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mRoutineName ;
   public: GALGAS_lexicalRoutineCallActualArgumentListAST mProperty_mActualArgumentList ;
@@ -10762,6 +11005,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendTerminal
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalSendTerminalByDefaultAST : public cPtr_lexicalSendDefaultActionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mDefaultSentTerminal ;
 
@@ -10850,6 +11096,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSimpleSendIn
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalSimpleSendInstructionAST : public cPtr_lexicalInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mSentTerminal ;
 
@@ -10938,6 +11187,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStringMatchA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalStringMatchAST : public cPtr_lexicalExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mString ;
 
@@ -11029,6 +11281,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStringNotMat
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalStringNotMatchAST : public cPtr_lexicalExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mString ;
   public: GALGAS_lstring mProperty_mErrorMessage ;
@@ -11119,6 +11374,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTagInstructi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalTagInstructionAST : public cPtr_lexicalInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mLexicalTagName ;
 
@@ -11207,6 +11465,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalUnsignedInpu
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalUnsignedInputArgumentAST : public cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_luint mProperty_mUnsigned ;
 
@@ -11295,6 +11556,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalWarningInstr
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalWarningInstructionAST : public cPtr_lexicalInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mWarningMessageName ;
 
@@ -11426,6 +11690,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueComponentAST
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mLexiqueComponentName ;
   public: GALGAS_bool mProperty_mIsTemplate ;

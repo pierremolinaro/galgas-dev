@@ -170,31 +170,31 @@ override method @selectInstructionForGeneration appendSyntaxSignature
 
 override getter @selectInstructionForGeneration compareInstructionSyntaxSignature
   ?let @semanticInstructionForGeneration inTestedInstruction
-  ->@bool outOk
+  ->@bool
 {
   cast inTestedInstruction
   case >= @selectInstructionForGeneration si :
-    outOk = true
-    if outOk & ([self.mListOfSemanticInstructionListForGeneration length] != [si.mListOfSemanticInstructionListForGeneration length]) then
+    result = true
+    if result & ([self.mListOfSemanticInstructionListForGeneration length] != [si.mListOfSemanticInstructionListForGeneration length]) then
       error si.mInstructionLocation
         :"syntax signature error; the reference 'select' instruction has "
         + [[self.mListOfSemanticInstructionListForGeneration length] string]
         + " 'while' branche(s), but this instruction has "
         + [[si.mListOfSemanticInstructionListForGeneration length] string]
-      outOk = false
+      result = false
     end
-    for (ref_mInstructionList *) in self.mListOfSemanticInstructionListForGeneration, (test_mInstructionList test_mEndOfInstructionList) in si.mListOfSemanticInstructionListForGeneration while outOk do
-      outOk = compareSyntaxSignature (!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList)    
+    for (ref_mInstructionList *) in self.mListOfSemanticInstructionListForGeneration, (test_mInstructionList test_mEndOfInstructionList) in si.mListOfSemanticInstructionListForGeneration while result do
+      result = compareSyntaxSignature (!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList)    
     end
   case >= @syntaxInstructionForGeneration si :
     error si.mInstructionLocation
       :"syntax signature error; the expected syntax instruction here is a 'select' instruction"
-    outOk = false
+    result = false
   else
     error self.mInstructionLocation : "internal error"
-    outOk = false
+    result = false
   end
-  if not outOk then
+  if not result then
     error self.mInstructionLocation
     :"reference syntax instruction is here"
   end  

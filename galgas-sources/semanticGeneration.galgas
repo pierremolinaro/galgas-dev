@@ -60,20 +60,20 @@ override method @grammarForGeneration appendSpecificImplementation
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @grammarForGeneration implementationCppFileName -> @string outName {
-  outName = "grammar-" + [self.mGrammarName fileNameRepresentation]
+override getter @grammarForGeneration implementationCppFileName -> @string {
+  result = "grammar-" + [self.mGrammarName fileNameRepresentation]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @grammarForGeneration hasCppHeaderFile -> @bool outHasHeader {
-  outHasHeader = false
+override getter @grammarForGeneration hasCppHeaderFile -> @bool {
+  result = false
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @grammarForGeneration headerKind -> @headerKind outHeaderKind {
-  outHeaderKind = @headerKind.oneHeader
+override getter @grammarForGeneration headerKind -> @headerKind {
+  result = @headerKind.oneHeader
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -86,20 +86,20 @@ override getter @grammarForGeneration isPredefined -> @bool {
 #! Syntax
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @syntaxDeclarationForGeneration implementationCppFileName -> @string outName {
-  outName = "syntax-" + [self.mSyntaxComponentName fileNameRepresentation]
+override getter @syntaxDeclarationForGeneration implementationCppFileName -> @string {
+  result = "syntax-" + [self.mSyntaxComponentName fileNameRepresentation]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @syntaxDeclarationForGeneration hasCppHeaderFile -> @bool outHasHeader {
-  outHasHeader = false
+override getter @syntaxDeclarationForGeneration hasCppHeaderFile -> @bool {
+  result = false
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @syntaxDeclarationForGeneration headerKind -> @headerKind outHeaderKind {
-  outHeaderKind = @headerKind.oneHeader
+override getter @syntaxDeclarationForGeneration headerKind -> @headerKind {
+  result = @headerKind.oneHeader
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -882,7 +882,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
     ?@typedPropertyList CURRENT_PROPERTY_LIST
-    ?@typedPropertyList ALL_ATTRIBUTE_LIST
+    ?@typedPropertyList ALL_PROPERTY_LIST
     ?@bool IS_ABSTRACT
 
   template valueClassTypeHeader2part2 "GALGAS_value_class.h2-part2.galgasTemplate"
@@ -890,7 +890,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
     ?@typedPropertyList CURRENT_PROPERTY_LIST
-    ?@typedPropertyList ALL_ATTRIBUTE_LIST
+    ?@typedPropertyList ALL_PROPERTY_LIST
     ?@bool IS_ABSTRACT
 
   template valueClassTypeSpecificImplementation "GALGAS_value_class.cpp.galgasTemplate"
@@ -898,7 +898,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
     ?@typedPropertyList CURRENT_PROPERTY_LIST
-    ?@typedPropertyList ALL_ATTRIBUTE_LIST
+    ?@typedPropertyList ALL_PROPERTY_LIST
     ?@typedPropertyList INHERITED_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
     ?@bool HAS_DEFAULT_CONSTRUCTOR
@@ -918,15 +918,16 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
     ?@typedPropertyList CURRENT_PROPERTY_LIST
-    ?@typedPropertyList ALL_ATTRIBUTE_LIST
+    ?@typedPropertyList ALL_PROPERTY_LIST
     ?@bool IS_ABSTRACT
+    ?@getterMap GETTER_MAP
 
   template referenceClassTypeHeader2part2 "GALGAS_reference_class.h2-part2.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
     ?@typedPropertyList CURRENT_PROPERTY_LIST
-    ?@typedPropertyList ALL_ATTRIBUTE_LIST
+    ?@typedPropertyList ALL_PROPERTY_LIST
     ?@bool IS_ABSTRACT
 
   template referenceClassTypeSpecificImplementation "GALGAS_reference_class.cpp.galgasTemplate"
@@ -934,7 +935,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
     ?@typedPropertyList CURRENT_PROPERTY_LIST
-    ?@typedPropertyList ALL_ATTRIBUTE_LIST
+    ?@typedPropertyList ALL_PROPERTY_LIST
     ?@typedPropertyList INHERITED_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
     ?@bool HAS_DEFAULT_CONSTRUCTOR
@@ -951,9 +952,8 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string WEAK_REF_TYPE_IDENTIFIER
     ?@string SUPER_WEAK_REF_TYPE_IDENTIFIER
     ?@typedPropertyList CURRENT_PROPERTY_LIST
-    ?@typedPropertyList ALL_ATTRIBUTE_LIST
+    ?@typedPropertyList ALL_PROPERTY_LIST
     ?@typedPropertyList INHERITED_ATTRIBUTE_LIST
-#    ?@bool IS_ABSTRACT
     ?@bool HAS_DEFAULT_CONSTRUCTOR
 }
 
@@ -1197,8 +1197,8 @@ override method @onceFunctionDeclarationForGeneration appendDeclaration1
 #! Semantic Type
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @semanticTypeForGeneration appendTypeGenericImplementation -> @string outImplementation {
-  outImplementation = [filewrapper typeGenerationTemplate.genericTypeImplementation
+override getter @semanticTypeForGeneration appendTypeGenericImplementation -> @string {
+  result = [filewrapper typeGenerationTemplate.genericTypeImplementation
     ![self.mSelfTypeEntry  key]
     ![self.mSelfTypeEntry  identifierRepresentation]
     ![self.mSelfTypeEntry  mSuperType]

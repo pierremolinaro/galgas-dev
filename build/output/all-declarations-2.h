@@ -68,6 +68,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractLexicalRout
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_abstractLexicalRoutineActualArgumentAST : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/* § public: virtual GALGAS_string getter_generateCocoaRoutineArgument (const GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const ; */
+/* § public: virtual GALGAS_string getter_generateRoutineArgument (C_Compiler * COMMA_LOCATION_ARGS) const ; */
 //--- Properties
   public: GALGAS_location mProperty_mActualPassingModeLocation ;
 
@@ -404,6 +410,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineOrFun
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/* § public: virtual GALGAS_string getter_generateCocoaRoutineOrFunctionArgument (C_Compiler * COMMA_LOCATION_ARGS) const ; */
+/* § public: virtual GALGAS_string getter_generateRoutineOrFunctionArgument (C_Compiler * COMMA_LOCATION_ARGS) const ; */
 //--- Properties
 
 //--- Constructor
@@ -541,6 +552,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFormalInputA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalFormalInputArgumentAST : public cPtr_abstractLexicalRoutineActualArgumentAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST mProperty_mRoutineOrFunctionFormalInputArgument ;
 
@@ -890,6 +904,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCurrentChara
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalCurrentCharacterInputArgumentAST : public cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_location mProperty_mLocation ;
 
@@ -1031,6 +1048,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalLogInstructi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalLogInstructionAST : public cPtr_lexicalInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -2702,6 +2722,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionExpr
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalFunctionExpressionAST : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/* § public: virtual GALGAS_bool getter_callsDefinedUnicodeTestFunctions (const GALGAS_stringset inDefinedUnicodeFunctionSet,
+           C_Compiler * COMMA_LOCATION_ARGS) const ; */
+/* § public: virtual GALGAS_string getter_generateForUnicodeTestFunctions (C_Compiler * COMMA_LOCATION_ARGS) const ; */
 //--- Properties
 
 //--- Constructor
@@ -7062,6 +7088,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionOrEx
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalFunctionOrExpressionAST : public cPtr_lexicalFunctionExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lexicalFunctionExpressionAST mProperty_mLeftOperand ;
   public: GALGAS_lexicalFunctionExpressionAST mProperty_mRightOperand ;

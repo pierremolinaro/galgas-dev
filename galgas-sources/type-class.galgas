@@ -561,6 +561,7 @@ override method @classTypeForGeneration appendDeclaration2
         !self.mCurrentTypedAttributeList
         !self.mAllTypedAttributeList
         !self.mIsAbstract
+        ![self.mSelfTypeEntry mGetterMap]
       ]
       let part2 = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part2
         ![self.mSelfTypeEntry  key]
@@ -591,6 +592,7 @@ override method @classTypeForGeneration appendDeclaration2
         !self.mCurrentTypedAttributeList
         !self.mAllTypedAttributeList
         !self.mIsAbstract
+        ![self.mSelfTypeEntry mGetterMap]
       ]
       outHeader += [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part2
         ![self.mSelfTypeEntry  key]
@@ -686,6 +688,56 @@ override method @classTypeForGeneration appendSpecificImplementation
       !self.mIsAbstract
       ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
     ]
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func generateClassGetterDeclaration ?let @lstring inGetterName
+                                    ?let @methodKind inKind
+                                    ?let @functionSignature inArgumentTypeList
+                                    ?let @bool inHasCompilerArgument
+                                    ?let @unifiedTypeMap-entry inReturnedType
+                                    ?let @methodQualifier inQualifier -> @string {
+  var generate = true
+  var suffix = ""
+#---
+  switch inQualifier
+  case isAbstract :
+    suffix = " = 0"
+  case isBasic :
+  case isBasicFinal :
+  case isInherited :
+    generate = false
+  case isOverriding :
+    suffix = " overriding = 0"
+  case isOverridingAbstract :
+    suffix = " overriding = 0"
+  end
+#---
+  result = ""
+  if generate then
+    result = "/* § public: virtual GALGAS_" + [inReturnedType identifierRepresentation]
+    result += " getter_" + [inGetterName identifierRepresentation] + " ("
+    var first = true
+    for formalArgument in inArgumentTypeList 
+    do
+      if first then
+        first = false
+      else
+        result += ",\n           "
+      end
+      result += "const GALGAS_" + [formalArgument.mFormalArgumentType identifierRepresentation] 
+      result += " " + formalArgument.mFormalArgumentName
+    end
+    if inHasCompilerArgument then
+      if not first then
+        result += ",\n           "
+      end
+      result += "C_Compiler *"
+      first = false
+    end
+    result += if first then "LOCATION_ARGS" else " COMMA_LOCATION_ARGS" end + ") const" + suffix + " ; */\n"
   end
 }
 

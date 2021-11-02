@@ -6,11 +6,11 @@
 %
 //--- Constructor
   public: cPtr_%!TYPE_IDENTIFIER% (%?^
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_ATTRIBUTE_LIST
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_PROPERTY_LIST
     do %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
     between %,\n%!^
   end
-  if [ALL_ATTRIBUTE_LIST length] > 0 then
+  if [ALL_PROPERTY_LIST length] > 0 then
     %\n%!^%COMMA_LOCATION_ARGS%
   else
     %LOCATION_ARGS%

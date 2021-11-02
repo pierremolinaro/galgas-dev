@@ -9,6 +9,9 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_repeatInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstructionForGrammarAnalysis {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- START OF USER ZONE 2
 
   public: virtual void printInstructionForGrammar (C_HTMLString & inHTMLfile) ;

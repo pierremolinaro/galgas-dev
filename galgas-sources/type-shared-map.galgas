@@ -328,8 +328,8 @@ override method @sharedMapDeclarationAST enterDeclarationInGraph
 
 #·······················································································································
 
-override getter @sharedMapDeclarationAST keyRepresentation -> @string outString {
-  outString = "shared map @" + self.mMapTypeName
+override getter @sharedMapDeclarationAST keyRepresentation -> @string result {
+  result = "shared map @" + self.mMapTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

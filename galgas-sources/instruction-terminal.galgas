@@ -201,24 +201,24 @@ override method @terminalCheckInstructionForGeneration appendSyntaxSignature
 
 override getter @terminalCheckInstructionForGeneration compareInstructionSyntaxSignature
   ?let @semanticInstructionForGeneration inTestedInstruction
-  ->@bool outOk
+  ->@bool
 {
   cast inTestedInstruction
   case >= @terminalCheckInstructionForGeneration si :
-    outOk = self.mTerminalName.string == si.mTerminalName.string
-    if not outOk then
+    result = self.mTerminalName.string == si.mTerminalName.string
+    if not result then
       error si.mInstructionLocation
       :"syntax signature error; the expected syntax instruction here is the '$" + self.mTerminalName + "$' terminal check"
     end
   case >= @syntaxInstructionForGeneration si :
     error si.mInstructionLocation
       :"syntax signature error; the expected syntax instruction here is the '$" + self.mTerminalName + "$' terminal check"
-    outOk = false
+    result = false
   else
     error self.mInstructionLocation : "internal error"
-    outOk = false
+    result = false
   end
-  if not outOk then
+  if not result then
     error self.mInstructionLocation
     :"reference syntax instruction is here"
   end  

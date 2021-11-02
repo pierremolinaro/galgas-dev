@@ -46,8 +46,8 @@ syntax extension galgas3DeclarationsSyntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @extensionSetterAST keyRepresentation
-  ->@string outString {
-  outString = "extension setter @" + self.mTypeName + " " + self.mExtensionSetterName
+  ->@string {
+  result = "extension setter @" + self.mTypeName + " " + self.mExtensionSetterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

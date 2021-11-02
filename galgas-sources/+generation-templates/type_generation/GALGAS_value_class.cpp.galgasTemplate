@@ -3,7 +3,7 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 %
-if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] == 0) then
+if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST length] == 0) then
 %typeComparisonResult cPtr_%!TYPE_IDENTIFIER%::dynamicObjectCompare (const acPtr_class * /* inOperandPtr */) const {
   return kOperandEqual ;
 }
@@ -11,12 +11,12 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] == 0) then
 //----------------------------------------------------------------------------------------------------------------------
 %end
 
-if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
+if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST length] > 0) then
 %typeComparisonResult cPtr_%!TYPE_IDENTIFIER%::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_%!TYPE_IDENTIFIER%) ;
-% for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_ATTRIBUTE_LIST do
+% for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_PROPERTY_LIST do
     %  if (kOperandEqual == result) {\n%
     %    result = mProperty_%![mPropertyName identifierRepresentation]%.objectCompare (p->mProperty_%![mPropertyName identifierRepresentation]%) ;\n%
     %  }\n%
@@ -57,8 +57,8 @@ GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_default (LOCATION_ARGS) {
   return GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
-if [ALL_ATTRIBUTE_LIST length] > 0 then
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_ATTRIBUTE_LIST do
+if [ALL_PROPERTY_LIST length] > 0 then
+for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_PROPERTY_LIST do
    %GALGAS_%![mPropertyTypeEntry identifierRepresentation]%::constructor_%![[mPropertyTypeEntry mDefaultConstructorName] identifierRepresentation]% (HERE)%
   between %,\n%!^
 end%\n%!^%COMMA_THERE%
@@ -79,7 +79,7 @@ GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const cPtr_%!TYPE_IDENTIFI
   macroNullOrValidSharedObject (inSourcePtr, cPtr_%!TYPE_IDENTIFIER%) ;
 }
 %
-if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] == 0) then
+if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST length] == 0) then
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (LOCATION_ARGS) {\n%
   %  GALGAS_%!TYPE_IDENTIFIER% result ;\n%
@@ -88,14 +88,14 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] == 0) then
   %}\n\n%
 end
 
-if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
+if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST length] > 0) then
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_ATTRIBUTE_LIST
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_PROPERTY_LIST
     do %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inAttribute_%![mPropertyName identifierRepresentation]
     between %,\n%!^
   end
-  if [ALL_ATTRIBUTE_LIST length] == 0 then
+  if [ALL_PROPERTY_LIST length] == 0 then
     %LOCATION_ARGS%  
   else
     %\n%!^%COMMA_LOCATION_ARGS%
@@ -103,13 +103,13 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
   %) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   if (%
-    for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_ATTRIBUTE_LIST
+    for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_PROPERTY_LIST
       do %inAttribute_%![mPropertyName identifierRepresentation]%.isValid ()%
       between % && %
     end
   %) {
     macroMyNew (result.mObjectPtr, cPtr_%!TYPE_IDENTIFIER% (%
-    for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_ATTRIBUTE_LIST
+    for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_PROPERTY_LIST
       do %inAttribute_%![mPropertyName identifierRepresentation]
       between %, %
     end
@@ -161,11 +161,11 @@ end
 //----------------------------------------------------------------------------------------------------------------------
 
 cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_ATTRIBUTE_LIST
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_PROPERTY_LIST
     do %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
     between %,\n%!^
   end
-  if [ALL_ATTRIBUTE_LIST length] > 0 then
+  if [ALL_PROPERTY_LIST length] > 0 then
     %\n%!^%COMMA_LOCATION_ARGS%
   else
     %LOCATION_ARGS%
@@ -194,7 +194,7 @@ if not IS_ABSTRACT then
   %const C_galgas_type_descriptor * cPtr_%!TYPE_IDENTIFIER%::classDescriptor (void) const {\n%
   %  return & kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ;\n%
   %}\n\n%
-  if [ALL_ATTRIBUTE_LIST length] == 0 then
+  if [ALL_PROPERTY_LIST length] == 0 then
     %void cPtr_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,\n%
                                !^%const int32_t /* inIndentation */) const {\n%
     %  ioString << "[@%!TYPE_NAME%]" ;\n%
@@ -203,7 +203,7 @@ if not IS_ABSTRACT then
     %void cPtr_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,\n%
                                !^%const int32_t inIndentation) const {\n%
     %  ioString << "[@%!TYPE_NAME%:" ;\n%
-    for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_ATTRIBUTE_LIST
+    for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_PROPERTY_LIST
       do %  mProperty_%![mPropertyName identifierRepresentation]%.description (ioString, inIndentation+1) ;\n%
       between %  ioString << ", " ;\n%
     end
@@ -218,7 +218,7 @@ if not IS_ABSTRACT then
 acPtr_class * cPtr_%!TYPE_IDENTIFIER%::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
   macroMyNew (ptr, cPtr_%!TYPE_IDENTIFIER% (%
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_ATTRIBUTE_LIST
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_PROPERTY_LIST
   do  %mProperty_%![mPropertyName identifierRepresentation]
   between %, %
   after % COMMA_%

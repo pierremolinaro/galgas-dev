@@ -1467,10 +1467,10 @@ static GALGAS_bool extensionGetter_semanticInstructionForGeneration_compareInstr
                                                                                                        const GALGAS_semanticInstructionForGeneration /* constinArgument_inTestedInstruction */,
                                                                                                        C_Compiler * /* inCompiler */
                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_bool result_outOk ; // Returned variable
-  result_outOk = GALGAS_bool (true) ;
+  GALGAS_bool result_result ; // Returned variable
+  result_result = GALGAS_bool (true) ;
 //---
-  return result_outOk ;
+  return result_result ;
 }
 
 

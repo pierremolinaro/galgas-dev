@@ -25,10 +25,10 @@ abstract getter @lexicalExpressionAST generateCocoaConditionCode
 
 override getter @lexicalOrExpressionAST generateCocoaConditionCode
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string outGeneratedCode {
-  outGeneratedCode = [self.mLeftOperand generateCocoaConditionCode !inLexiqueAnalysisContext]
-  outGeneratedCode += " || "
-  outGeneratedCode += [self.mRightOperand generateCocoaConditionCode !inLexiqueAnalysisContext]
+  -> @string result {
+  result = [self.mLeftOperand generateCocoaConditionCode !inLexiqueAnalysisContext]
+  result += " || "
+  result += [self.mRightOperand generateCocoaConditionCode !inLexiqueAnalysisContext]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

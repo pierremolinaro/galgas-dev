@@ -44,9 +44,9 @@ func syntaxSignatureOfInstructionList
 
 getter @semanticInstructionForGeneration compareInstructionSyntaxSignature
   ?let @semanticInstructionForGeneration unused inTestedInstruction
-  ->@bool outOk
+  ->@bool
 {
-  outOk = true
+  result = true
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

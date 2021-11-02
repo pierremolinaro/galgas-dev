@@ -302,6 +302,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_undefinedLocalConst
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_undefinedLocalConstantDeclarationForGeneration : public cPtr_semanticInstructionForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mTargetType ;
   public: GALGAS_string mProperty_mCppVariableName ;
@@ -563,6 +566,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_procCallInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_procCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mRoutineName ;
   public: GALGAS_actualParameterListForGeneration mProperty_mActualParameterList ;
@@ -848,6 +854,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterCallInstructi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_location mProperty_mInstructionLocation ;
   public: GALGAS_string mProperty_mReceiverCppName ;
@@ -1024,6 +1033,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfSetterCallInstr
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_selfSetterCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_string mProperty_mSelfCppName ;
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
@@ -1243,6 +1255,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeMethodCallInstr
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_typeMethodCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mMethodName ;
@@ -1452,6 +1467,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableDeclar
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_localVariableDeclarationForGeneration : public cPtr_semanticInstructionForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mVariableType ;
   public: GALGAS_string mProperty_mCppVariableName ;
@@ -1891,6 +1909,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckInstru
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_terminalCheckInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTerminalName ;
   public: GALGAS_string mProperty_mLexiqueIdentifier ;

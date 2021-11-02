@@ -11,8 +11,8 @@ refclass @dictDeclarationAST : @semanticDeclarationAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @dictDeclarationAST keyRepresentation ->@string outString {
-  outString = "dict @" + self.mDictTypeName
+override getter @dictDeclarationAST keyRepresentation ->@string {
+  result = "dict @" + self.mDictTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

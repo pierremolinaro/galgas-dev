@@ -128,6 +128,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionS
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_grammarInstructionSyntaxDirectedTranslationResultNone : public cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -270,6 +273,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionS
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_grammarInstructionSyntaxDirectedTranslationDropResult : public cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_location mProperty_mLocation ;
 
@@ -488,6 +494,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfIncDecInstructi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_selfIncDecInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_incDecKind mProperty_mKind ;
 
@@ -634,6 +643,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfIncDecNoOVFInst
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_selfIncDecNoOVFInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_incDecKind mProperty_mKind ;
 
@@ -1627,6 +1639,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifInstructionAST ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_ifInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_ifExpressionList mProperty_mExpressions ;
   public: GALGAS_semanticInstructionListAST mProperty_m_5F_then_5F_instructionList ;
@@ -2548,6 +2563,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifInstructionForGen
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_ifInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_location mProperty_mInstructionLocation ;
   public: GALGAS_ifTestListForGeneration mProperty_mExpressions ;
@@ -2936,6 +2954,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_logInstructionAST ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_logInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_logListAST mProperty_mLogList ;
 
@@ -3130,6 +3151,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_loopInstructionAST 
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_loopInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_semanticExpressionAST mProperty_mVariantExpression ;
   public: GALGAS_location mProperty_mEndOfVariantExpression ;
@@ -3877,6 +3901,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchInstructionAST
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_matchInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_semanticExpressionListAST mProperty_mMatchedExpressionList ;
   public: GALGAS_matchInstructionBranchListAST mProperty_mMatchInstructionBranchList ;
@@ -4523,6 +4550,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchInstructionFor
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_matchInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_semanticExpressionListForGeneration mProperty_mMatchedExpressionList ;
   public: GALGAS_matchInstructionBranchListForGeneration mProperty_mMatchInstructionBranchList ;
@@ -4669,6 +4699,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_messageInstructionA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_messageInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_semanticExpressionAST mProperty_mExpression ;
 
@@ -4812,6 +4845,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfAssignmentInstr
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_selfAssignmentInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_semanticExpressionAST mProperty_mSourceExpression ;
 
@@ -4958,6 +4994,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfPlusEqualElemen
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_selfPlusEqualElementsInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_actualOutputExpressionList mProperty_mExpressions ;
 
@@ -5101,6 +5140,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfPlusEqualExpres
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_selfPlusEqualExpressionInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_semanticExpressionAST mProperty_mExpression ;
 
@@ -5244,6 +5286,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfMinusEqualExpre
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_selfMinusEqualExpressionInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_semanticExpressionAST mProperty_mExpression ;
 
@@ -5387,6 +5432,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfMulEqualExpress
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_selfMulEqualExpressionInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_semanticExpressionAST mProperty_mExpression ;
 
@@ -5530,6 +5578,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfDivEqualExpress
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_selfDivEqualExpressionInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_semanticExpressionAST mProperty_mExpression ;
 
@@ -5979,6 +6030,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchInstructionAS
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_switchInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_semanticExpressionAST mProperty_mSwitchExpression ;
   public: GALGAS_location mProperty_mEndOfSwitchExpression ;
@@ -6440,6 +6494,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_warningInstructionA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_warningInstructionAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_semanticExpressionAST mProperty_mLocationExpression ;
   public: GALGAS_semanticExpressionAST mProperty_mMessageExpression ;
@@ -6596,6 +6653,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalInstruct
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_nonterminalInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_string mProperty_mNonterminalName ;
   public: GALGAS_string mProperty_mLabelName ;
@@ -6757,6 +6817,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstruction ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_repeatInstruction : public cPtr_syntaxInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_syntaxInstructionList mProperty_mRepeatedInstructionList ;
   public: GALGAS_location mProperty_mEndOf_5F_repeated_5F_instructions_5F_branch ;
@@ -6921,6 +6984,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstructionFo
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_repeatInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_string mProperty_mSyntaxComponentName ;
   public: GALGAS_uint mProperty_mChoiceIndex ;
@@ -7084,6 +7150,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selectInstruction ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_selectInstruction : public cPtr_syntaxInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_listOfSyntaxInstructionList mProperty_mSelectBranchList ;
   public: GALGAS_location mProperty_mEndOf_5F_select_5F_instruction ;
@@ -7247,6 +7316,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selectInstructionFo
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_selectInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_string mProperty_mSyntaxComponentName ;
   public: GALGAS_uint mProperty_mChoiceIndex ;
@@ -7409,6 +7481,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseLoopInstructio
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_parseLoopInstruction : public cPtr_syntaxInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_semanticExpressionAST mProperty_mVariantExpression ;
   public: GALGAS_location mProperty_mEndOfVariantExpression ;

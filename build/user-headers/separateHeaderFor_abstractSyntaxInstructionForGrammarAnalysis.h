@@ -12,6 +12,10 @@ class cVocabulary ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/* § public: virtual GALGAS_bool getter_isLinear (C_Compiler * COMMA_LOCATION_ARGS) const ; */
 //--- START OF USER ZONE 2
 
   public: virtual void printInstructionForGrammar (C_HTMLString & inHTMLfile) = 0 ;

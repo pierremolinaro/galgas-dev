@@ -279,7 +279,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
   + (void) cocoaDocumentWillClose: (OC_GGS_DocumentData *) inDocumentData {
     [OC_GGS_DocumentData saveAllDocuments] ;
     [inDocumentData detachFromCocoaDocument] ;
-    // removeFileEventStreamForDocument (inDocumentData) ; // §§
+    // removeFileEventStreamForDocument (inDocumentData) ; // ***
     for (OC_GGS_DocumentData * documentData in gDocumentDataDictionary.allValues.copy) {
       // NSLog (@"%lu for %@", documentData.textSyntaxColoring.displayDescriptorCount, documentData.fileURL) ;
       if (documentData.textSyntaxColoring.displayDescriptorCount == 0) {
@@ -383,13 +383,13 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 
   - (void) save {
     if (mTextSyntaxColoring.isDirty) {
- //     removeFileEventStreamForDocument (self) ;  // §§
+ //     removeFileEventStreamForDocument (self) ;  // ***
       if (nil == self.document) {
         [self performSaveToURL: nil] ;
       }else{
         [self.document saveDocument: nil] ;
       }
- //     addFileEventStreamForDocument (self) ;  // §§
+ //     addFileEventStreamForDocument (self) ;  // ***
     }
   }
 

@@ -10,6 +10,32 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Routine 'enterConstructorWith4Arguments'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterConstructorWith_34_Arguments (class GALGAS_constructorMap & ioArgument0,
+                                                class GALGAS_unifiedTypeMap & ioArgument1,
+                                                const class GALGAS_string constinArgument2,
+                                                const class GALGAS_string constinArgument3,
+                                                const class GALGAS_string constinArgument4,
+                                                const class GALGAS_string constinArgument5,
+                                                const class GALGAS_string constinArgument6,
+                                                const class GALGAS_string constinArgument7,
+                                                const class GALGAS_string constinArgument8,
+                                                const class GALGAS_string constinArgument9,
+                                                const class GALGAS_string constinArgument10,
+                                                const class GALGAS_string constinArgument11,
+                                                const class GALGAS_string constinArgument12,
+                                                const class GALGAS_string constinArgument13,
+                                                const class GALGAS_string constinArgument14,
+                                                const class GALGAS_string constinArgument15,
+                                                const class GALGAS_bool constinArgument16,
+                                                class C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Routine 'enterBaseFinalGetterWithArgument'
 //
 //----------------------------------------------------------------------------------------------------------------------

@@ -276,6 +276,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_templateInstructionGetColumnLocationForGeneration : public cPtr_templateInstructionForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -415,6 +418,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_templateInstructionGotoColumnLocationForGeneration : public cPtr_templateInstructionForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -852,6 +858,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMap_2D_e
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_semanticExpressionForGeneration : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/* § public: virtual GALGAS_bool getter_isTrueExpression (C_Compiler * COMMA_LOCATION_ARGS) const ; */
 //--- Properties
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mResultType ;
   public: GALGAS_location mProperty_mLocation ;
@@ -1023,6 +1033,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_templateInstructionIfForGeneration : public cPtr_templateInstructionForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_templateInstructionIfBranchListForGeneration mProperty_mTemplateInstructionIfBranchList ;
   public: GALGAS_templateInstructionListForGeneration mProperty_mElseInstructionList ;
@@ -6933,6 +6946,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclaration
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_semanticDeclarationAST : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/* § public: virtual GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const ; */
 //--- Properties
   public: GALGAS_bool mProperty_mIsPredefined ;
 
@@ -7065,6 +7082,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExpressionAS
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalExpressionAST : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/* § public: virtual GALGAS_string getter_generateCocoaConditionCode (const GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const ; */
+/* § public: virtual GALGAS_string getter_generateConditionCode (const GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const ; */
 //--- Properties
 
 //--- Constructor
@@ -7195,6 +7219,15 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalInstructionA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalInstructionAST : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/* § public: virtual GALGAS_string getter_generateCocoaInstructionCode (const GALGAS_string inScannerClassName,
+           const GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const ; */
+/* § public: virtual GALGAS_string getter_generateInstructionCode (const GALGAS_string inScannerClassName,
+           const GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const ; */
 //--- Properties
 
 //--- Constructor
@@ -8063,6 +8096,15 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractLexicalRule
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_abstractLexicalRuleAST : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/* § public: virtual GALGAS_string getter_generateCocoaCode (const GALGAS_string inScannerClassName,
+           const GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const ; */
+/* § public: virtual GALGAS_string getter_generateCode (const GALGAS_string inScannerClassName,
+           const GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const ; */
 //--- Properties
 
 //--- Constructor
@@ -8406,6 +8448,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitRule
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalExplicitRuleAST : public cPtr_abstractLexicalRuleAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lexicalExpressionAST mProperty_mLexicalRuleExpression ;
   public: GALGAS_lexicalInstructionListAST mProperty_mInstructionList ;
@@ -10421,6 +10466,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalOrExpression
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalOrExpressionAST : public cPtr_lexicalExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lexicalExpressionAST mProperty_mLeftOperand ;
   public: GALGAS_lexicalExpressionAST mProperty_mRightOperand ;
@@ -10785,6 +10833,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendDefaultA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalSendDefaultActionAST : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/* § public: virtual GALGAS_string getter_generateCocoaDefaultSendCode (const GALGAS_string inScannerClassName,
+           C_Compiler * COMMA_LOCATION_ARGS) const ; */
+/* § public: virtual GALGAS_string getter_generateDefaultSendCode (const GALGAS_string inScannerClassName,
+           C_Compiler * COMMA_LOCATION_ARGS) const ; */
 //--- Properties
 
 //--- Constructor
@@ -10924,6 +10979,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStructuredSe
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalStructuredSendInstructionAST : public cPtr_lexicalInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lexicalSendSearchListAST mProperty_mLexicalSendSearchList ;
   public: GALGAS_lexicalSendDefaultActionAST mProperty_mLexicalSendDefaultAction ;
@@ -11307,6 +11365,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRepeatInstru
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalRepeatInstructionAST : public cPtr_lexicalInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lexicalInstructionListAST mProperty_mRepeatedInstructionList ;
   public: GALGAS_lexicalWhileBranchListAST mProperty_mLexicalWhileBranchList ;
@@ -11690,6 +11751,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectInstru
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalSelectInstructionAST : public cPtr_lexicalInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lexicalSelectBranchListAST mProperty_mLexicalSelectBranchList ;
   public: GALGAS_lexicalInstructionListAST mProperty_mDefaultInstructionList ;

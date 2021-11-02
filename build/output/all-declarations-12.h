@@ -138,6 +138,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentDecl
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_optionComponentDeclarationAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mOptionComponentName ;
   public: GALGAS_commandLineOptionListAST mProperty_mOptions ;
@@ -605,6 +608,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalCallInst
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_nonterminalCallInstruction : public cPtr_syntaxInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mNonterminalName ;
   public: GALGAS_lstring mProperty_mLabelName ;
@@ -710,6 +716,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckInstru
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_terminalCheckInstruction : public cPtr_syntaxInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTerminalName ;
   public: GALGAS_actualInputParameterListAST mProperty_mActualInputParameterList ;
@@ -960,6 +969,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_GrammarCo
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_galgas_33_GrammarComponentAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lbool mProperty_mHasIndexing ;
   public: GALGAS_lstring mProperty_mGrammarComponentName ;

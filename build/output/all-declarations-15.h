@@ -154,6 +154,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterForG
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_extensionGetterForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
   public: GALGAS_string mProperty_mExtensionGetterName ;
@@ -387,6 +390,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodForG
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_extensionMethodForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
   public: GALGAS_string mProperty_mExtensionMethodName ;
@@ -616,6 +622,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterForG
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_extensionSetterForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
   public: GALGAS_string mProperty_mExtensionSetterName ;
@@ -1019,6 +1028,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideExtensionGe
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_overrideExtensionGetterForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
   public: GALGAS_string mProperty_mBaseTypeName ;
@@ -1252,6 +1264,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtension
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_overridingExtensionMethodForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
   public: GALGAS_string mProperty_mBaseTypeName ;
@@ -1481,6 +1496,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtension
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_overridingExtensionSetterForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
   public: GALGAS_string mProperty_mBaseTypeName ;
@@ -2617,6 +2635,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_SyntaxCom
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_galgas_33_SyntaxComponentAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mSyntaxComponentName ;
   public: GALGAS_lstring mProperty_mLexiqueName ;
@@ -2965,6 +2986,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputActualPa
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_outputInputActualParameterForGeneration : public cPtr_actualParameterForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_string mProperty_mOutputInputVariableCppName ;
   public: GALGAS_lstringlist mProperty_mStructAttributeList ;
@@ -3118,6 +3142,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualParamete
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_inputActualParameterForGeneration : public cPtr_actualParameterForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_string mProperty_mInputActualCppName ;
 
@@ -3267,6 +3294,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputJokerParameter
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_inputJokerParameterForGeneration : public cPtr_actualParameterForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_string mProperty_mInputActualCppName ;
 
@@ -3441,6 +3471,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueDeclarationF
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexiqueDeclarationForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_string mProperty_mLexiqueName ;
   public: GALGAS_string mProperty_mHeaderContents ;
@@ -3648,6 +3681,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarForGeneratio
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_grammarForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_string mProperty_mGrammarName ;
   public: GALGAS_string mProperty_mLexiqueName ;
@@ -3821,6 +3857,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routinePrototypeDec
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_routinePrototypeDeclarationForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_string mProperty_mRoutineName ;
   public: GALGAS_formalParameterListForGeneration mProperty_mFormalArgumentList ;
@@ -3982,6 +4021,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routineImplementati
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_routineImplementationForGeneration : public cPtr_routinePrototypeDeclarationForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_bool mProperty_mGenerateStatic ;
   public: GALGAS_semanticInstructionListForGeneration mProperty_mRoutineInstructionList ;

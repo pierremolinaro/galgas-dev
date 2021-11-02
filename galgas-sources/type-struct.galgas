@@ -59,8 +59,8 @@ override method @structDeclarationAST enterDeclarationInGraph
 #   KEY REPRESENTATION                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @structDeclarationAST keyRepresentation ->@string outString {
-  outString = "struct @" + self.mStructTypeName
+override getter @structDeclarationAST keyRepresentation ->@string result {
+  result = "struct @" + self.mStructTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

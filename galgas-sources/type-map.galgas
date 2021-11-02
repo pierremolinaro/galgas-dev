@@ -45,8 +45,8 @@ refclass @mapDeclarationAST : @semanticDeclarationAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @mapDeclarationAST keyRepresentation ->@string outString {
-  outString = "map @" + self.mMapTypeName
+override getter @mapDeclarationAST keyRepresentation ->@string result {
+  result = "map @" + self.mMapTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

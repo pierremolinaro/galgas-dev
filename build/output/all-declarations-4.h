@@ -5074,6 +5074,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxInstructionAS
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_syntaxInstructionAST : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_location mProperty_mInstructionLocation ;
 
@@ -5150,6 +5153,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_semanticInstructionAST : public cPtr_syntaxInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -5429,6 +5435,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_semanticInstructionForGeneration : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/* § public: virtual GALGAS_bool getter_compareInstructionSyntaxSignature (const GALGAS_semanticInstructionForGeneration inTestedInstruction,
+           C_Compiler * COMMA_LOCATION_ARGS) const ; */
 //--- Properties
 
 //--- Constructor
@@ -5573,6 +5584,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticExpressionA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_semanticExpressionAST : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -5957,6 +5971,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterAST 
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_actualParameterAST : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -6105,6 +6122,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputJokerPar
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_outputInputJokerParameterAST : public cPtr_actualParameterAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_location mProperty_mQualifierLocation ;
   public: GALGAS_uint mProperty_mJokerIndex ;
@@ -6260,6 +6280,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputJokerActualPar
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_inputJokerActualParameterAST : public cPtr_actualParameterAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_location mProperty_mQualifierLocation ;
   public: GALGAS_uint mProperty_mJokerIndex ;
@@ -6601,6 +6624,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractInputParame
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_abstractInputParameter : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -6737,6 +6763,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputParameterAnony
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_inputParameterAnonymousVariable : public cPtr_abstractInputParameter {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor

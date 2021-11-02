@@ -83,7 +83,7 @@ static NSMutableArray * gFileEventStreamArray = nil ;
         | kFSEventStreamCreateFlagUseCFTypes
         | kFSEventStreamCreateFlagWatchRoot
         | kFSEventStreamCreateFlagFileEvents
-        | kFSEventStreamCreateFlagMarkSelf // §§
+        | kFSEventStreamCreateFlagMarkSelf // ***
         | kFSEventStreamCreateFlagIgnoreSelf // Do not report events from current application
       ;
 //      const FSEventStreamCreateFlags creationFlags = kFSEventStreamCreateFlagNone ;

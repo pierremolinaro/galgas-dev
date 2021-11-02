@@ -68,8 +68,8 @@ override method @abstractExtensionMethodAST enterDeclarationInGraph
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @abstractExtensionMethodAST keyRepresentation
-  ->@string outString {
-  outString = "abstract extension method @" + self.mTypeName + " " + self.mAbstractExtensionMethodName
+  ->@string {
+  result = "abstract extension method @" + self.mTypeName + " " + self.mAbstractExtensionMethodName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

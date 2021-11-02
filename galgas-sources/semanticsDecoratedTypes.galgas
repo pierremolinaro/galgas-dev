@@ -200,8 +200,8 @@ abstract refclass @semanticDeclarationForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @semanticDeclarationForGeneration appendPrimitiveTypeDeclaration -> @string outHeader {
-  outHeader = ""
+getter @semanticDeclarationForGeneration appendPrimitiveTypeDeclaration -> @string {
+  result = ""
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -244,14 +244,14 @@ abstract refclass @semanticTypeForGeneration : @semanticDeclarationForGeneration
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @semanticTypeForGeneration implementationCppFileName -> @string outName {
-  outName = [self.mSelfTypeEntry  mHeaderFileName]
+override getter @semanticTypeForGeneration implementationCppFileName -> @string {
+  result = [self.mSelfTypeEntry  mHeaderFileName]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @semanticTypeForGeneration hasCppHeaderFile -> @bool outHasHeader {
-  outHasHeader = true
+override getter @semanticTypeForGeneration hasCppHeaderFile -> @bool {
+  result = true
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -262,8 +262,8 @@ override getter @semanticTypeForGeneration isPredefined -> @bool {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @semanticTypeForGeneration headerKind -> @headerKind outHeaderKind {
-  outHeaderKind = [self.mSelfTypeEntry  mHeaderKind]
+override getter @semanticTypeForGeneration headerKind -> @headerKind {
+  result = [self.mSelfTypeEntry  mHeaderKind]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -279,20 +279,20 @@ abstract refclass @semanticDeclarationWithHeaderForGeneration : @semanticDeclara
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @semanticDeclarationWithHeaderForGeneration implementationCppFileName -> @string outName {
-  outName = self.mImplementationCppFileName
+override getter @semanticDeclarationWithHeaderForGeneration implementationCppFileName -> @string {
+  result = self.mImplementationCppFileName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @semanticDeclarationWithHeaderForGeneration hasCppHeaderFile -> @bool outHasHeader {
-  outHasHeader = self.mHasHeader
+override getter @semanticDeclarationWithHeaderForGeneration hasCppHeaderFile -> @bool {
+  result = self.mHasHeader
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @semanticDeclarationWithHeaderForGeneration headerKind -> @headerKind outHeaderKind {
-  outHeaderKind = @headerKind.twoHeaders
+override getter @semanticDeclarationWithHeaderForGeneration headerKind -> @headerKind {
+  result = @headerKind.twoHeaders
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

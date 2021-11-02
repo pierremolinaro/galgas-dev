@@ -76,6 +76,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypeAST ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_predefinedTypeAST : public cPtr_semanticDeclarationAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/* § public: virtual GALGAS_operators getter_getSupportedOperatorFlags (C_Compiler * COMMA_LOCATION_ARGS) const ; */
 //--- Properties
   public: GALGAS_string mProperty_mPredefinedTypeName ;
   public: GALGAS_predefinedTypeKindEnum mProperty_mKind ;
@@ -217,6 +221,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_applicationPredefin
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_applicationPredefinedTypeAST : public cPtr_predefinedTypeAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -359,6 +366,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigintPredefinedTyp
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_bigintPredefinedTypeAST : public cPtr_predefinedTypeAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -501,6 +511,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectPredefinedTyp
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_objectPredefinedTypeAST : public cPtr_predefinedTypeAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -643,6 +656,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperPredefin
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_filewrapperPredefinedTypeAST : public cPtr_predefinedTypeAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -785,6 +801,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binarysetPredefined
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_binarysetPredefinedTypeAST : public cPtr_predefinedTypeAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -927,6 +946,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolPredefinedTypeA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_boolPredefinedTypeAST : public cPtr_predefinedTypeAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -1069,6 +1091,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintPredefinedTypeA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_uintPredefinedTypeAST : public cPtr_predefinedTypeAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -1211,6 +1236,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_Predefi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_uint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -1353,6 +1381,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sintPredefinedTypeA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_sintPredefinedTypeAST : public cPtr_predefinedTypeAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -1495,6 +1526,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint_36__34_Predefi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_sint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -1637,6 +1671,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_charPredefinedTypeA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_charPredefinedTypeAST : public cPtr_predefinedTypeAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -1779,6 +1816,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_doublePredefinedTyp
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_doublePredefinedTypeAST : public cPtr_predefinedTypeAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -1921,6 +1961,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringPredefinedTyp
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_stringPredefinedTypeAST : public cPtr_predefinedTypeAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -2063,6 +2106,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_locationPredefinedT
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_locationPredefinedTypeAST : public cPtr_predefinedTypeAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -2205,6 +2251,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringsetPredefined
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_stringsetPredefinedTypeAST : public cPtr_predefinedTypeAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -2347,6 +2396,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionPredefinedT
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_functionPredefinedTypeAST : public cPtr_predefinedTypeAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -2489,6 +2541,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typePredefinedTypeA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_typePredefinedTypeAST : public cPtr_predefinedTypeAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -2631,6 +2686,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dataPredefinedTypeA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_dataPredefinedTypeAST : public cPtr_predefinedTypeAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -2773,6 +2831,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_timerPredefinedType
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_timerPredefinedTypeAST : public cPtr_predefinedTypeAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -7315,6 +7376,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterForG
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_actualParameterForGeneration : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_unifiedTypeMap_2D_entry mProperty_mFormalArgumentType ;
 
@@ -7560,6 +7624,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticBlockInstru
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_semanticBlockInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_semanticInstructionListForGeneration mProperty_mInstructionList ;
 
@@ -7932,6 +7999,15 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclaration
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_semanticDeclarationForGeneration : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/* § public: virtual GALGAS_string getter_appendPrimitiveTypeDeclaration (C_Compiler * COMMA_LOCATION_ARGS) const ; */
+/* § public: virtual GALGAS_string getter_appendTypeGenericImplementation (C_Compiler * COMMA_LOCATION_ARGS) const ; */
+/* § public: virtual GALGAS_bool getter_hasCppHeaderFile (C_Compiler * COMMA_LOCATION_ARGS) const ; */
+/* § public: virtual GALGAS_headerKind getter_headerKind (C_Compiler * COMMA_LOCATION_ARGS) const ; */
+/* § public: virtual GALGAS_string getter_implementationCppFileName (C_Compiler * COMMA_LOCATION_ARGS) const ; */
+/* § public: virtual GALGAS_bool getter_isPredefined (C_Compiler * COMMA_LOCATION_ARGS) const ; */
 //--- Properties
 
 //--- Constructor

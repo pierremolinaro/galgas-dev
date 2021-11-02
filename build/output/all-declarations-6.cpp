@@ -11997,7 +11997,7 @@ void callExtensionMethod_enterInSemanticContext (const cPtr_semanticDeclarationA
 GALGAS_string extensionGetter_defaultConstructorName (const GALGAS_predefinedTypeKindEnum & inObject,
                                                       C_Compiler * /* inCompiler */
                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outName ; // Returned variable
+  GALGAS_string result_result ; // Returned variable
   const GALGAS_predefinedTypeKindEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
   case GALGAS_predefinedTypeKindEnum::kNotBuilt:
@@ -12011,67 +12011,67 @@ GALGAS_string extensionGetter_defaultConstructorName (const GALGAS_predefinedTyp
   case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_uint:
   case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_uint_36__34_:
     {
-      result_outName = GALGAS_string ("default") ;
+      result_result = GALGAS_string ("default") ;
     }
     break ;
   case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_binaryset:
     {
-      result_outName = GALGAS_string ("emptyBinarySet") ;
+      result_result = GALGAS_string ("emptyBinarySet") ;
     }
     break ;
   case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_stringset:
     {
-      result_outName = GALGAS_string ("emptySet") ;
+      result_result = GALGAS_string ("emptySet") ;
     }
     break ;
   case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_type:
     {
-      result_outName = GALGAS_string::makeEmptyString () ;
+      result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
   case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_application:
     {
-      result_outName = GALGAS_string::makeEmptyString () ;
+      result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
   case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_data:
     {
-      result_outName = GALGAS_string ("emptyData") ;
+      result_result = GALGAS_string ("emptyData") ;
     }
     break ;
   case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_location:
     {
-      result_outName = GALGAS_string ("nowhere") ;
+      result_result = GALGAS_string ("nowhere") ;
     }
     break ;
   case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_function:
     {
-      result_outName = GALGAS_string::makeEmptyString () ;
+      result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
   case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_object:
     {
-      result_outName = GALGAS_string::makeEmptyString () ;
+      result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
   case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_filewrapper:
     {
-      result_outName = GALGAS_string::makeEmptyString () ;
+      result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
   case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_bigint:
     {
-      result_outName = GALGAS_string ("zero") ;
+      result_result = GALGAS_string ("zero") ;
     }
     break ;
   case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_timer:
     {
-      result_outName = GALGAS_string ("start") ;
+      result_result = GALGAS_string ("start") ;
     }
     break ;
   }
 //---
-  return result_outName ;
+  return result_result ;
 }
 
 
@@ -14687,10 +14687,10 @@ GALGAS_string callExtensionGetter_appendPrimitiveTypeDeclaration (const cPtr_sem
 static GALGAS_string extensionGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (const cPtr_semanticDeclarationForGeneration * /* inObject */,
                                                                                                       C_Compiler * /* inCompiler */
                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outHeader ; // Returned variable
-  result_outHeader = GALGAS_string::makeEmptyString () ;
+  GALGAS_string result_result ; // Returned variable
+  result_result = GALGAS_string::makeEmptyString () ;
 //---
-  return result_outHeader ;
+  return result_result ;
 }
 
 

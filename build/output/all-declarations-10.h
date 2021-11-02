@@ -141,6 +141,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseRewindInstruct
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_parseRewindInstruction : public cPtr_syntaxInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_listOfSyntaxInstructionList mProperty_mParseRewindBranchList ;
   public: GALGAS_location mProperty_mEndOfParseDoInstruction ;
@@ -292,6 +295,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseRewindInstruct
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_parseRewindInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_listOfSemanticInstructionListForGeneration mProperty_mListOfSemanticInstructionListForGeneration ;
 
@@ -450,6 +456,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseWhenInstructio
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_parseWhenInstruction : public cPtr_syntaxInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_semanticExpressionAST mProperty_mWhenExpression ;
   public: GALGAS_location mProperty_mEndOfWhenExpression ;
@@ -603,6 +612,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxSendInstructi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_syntaxSendInstruction : public cPtr_syntaxInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_semanticExpressionAST mProperty_mExpression ;
 
@@ -5385,6 +5397,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInExpressionAST
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_castInExpressionAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_semanticExpressionAST mProperty_mReceiverExpression ;
   public: GALGAS_location mProperty_mEndOfReceiverExpression ;
@@ -5492,6 +5507,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_collectionValueAST 
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_collectionValueAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_collectionValueElementList mProperty_mElementList ;
@@ -5593,6 +5611,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_constructorExpressi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_constructorExpressionAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mConstructorName ;
@@ -5687,6 +5708,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_defaultConstructorE
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_defaultConstructorExpressionAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
 
@@ -5784,6 +5808,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperInExpres
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_filewrapperInExpressionAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mFilewrapperName ;
   public: GALGAS_lstring mProperty_mFilewrapperPath ;
@@ -5877,6 +5904,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperObjectIn
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_filewrapperObjectInstanciationInExpressionAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mFilewrapperName ;
 
@@ -5980,6 +6010,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplate
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_filewrapperTemplateInExpressionAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mFilewrapperName ;
   public: GALGAS_lstring mProperty_mFilewrapperTemplateName ;
@@ -6075,6 +6108,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionCallExpress
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_functionCallExpressionAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mFunctionName ;
   public: GALGAS_actualOutputExpressionList mProperty_mExpressionList ;
@@ -6171,6 +6207,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterCallExpressio
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_getterCallExpressionAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_semanticExpressionAST mProperty_mReceiver ;
   public: GALGAS_lstring mProperty_mGetterName ;
@@ -6268,6 +6307,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueIntrospectio
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexiqueIntrospectionExpressionAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mLexiqueComponentName ;
   public: GALGAS_lstring mProperty_mLexiqueGetterName ;
@@ -6358,6 +6400,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalBigIntExpres
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_literalBigIntExpressionAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lbigint mProperty_mValue ;
 
@@ -6446,6 +6491,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalCharExpressi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_literalCharExpressionAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lchar mProperty_mCharacter ;
 
@@ -6534,6 +6582,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalDoubleExpres
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_literalDoubleExpressionAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_ldouble mProperty_mValue ;
 
@@ -6622,6 +6673,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalSIntExpressi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_literalSIntExpressionAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lsint mProperty_mValue ;
 
@@ -6710,6 +6764,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalSInt_36__34_
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_literalSInt_36__34_ExpressionAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lsint_36__34_ mProperty_mValue ;
 
@@ -6798,6 +6855,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalTypeInExpres
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_literalTypeInExpressionAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mLiteralTypeName ;
 
@@ -6886,6 +6946,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalUIntExpressi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_literalUIntExpressionAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_luint mProperty_mValue ;
 
@@ -6974,6 +7037,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalUInt_36__34_
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_literalUInt_36__34_ExpressionAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_luint_36__34_ mProperty_mValue ;
 
@@ -7068,6 +7134,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionExpressionAST
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_optionExpressionAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mOptionComponentName ;
   public: GALGAS_lstring mProperty_mOptionEntryName ;
@@ -7172,6 +7241,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structPropertyAcces
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_structPropertyAccessExpressionAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
   public: GALGAS_semanticExpressionAST mProperty_mExpression ;
@@ -7270,6 +7342,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_testDynamicClassInE
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_testDynamicClassInExpressionAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_semanticExpressionAST mProperty_mReceiverExpression ;
   public: GALGAS_location mProperty_mEndOfReceiverExpression ;
@@ -7367,6 +7442,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varInExpressionAST 
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_varInExpressionAST : public cPtr_semanticExpressionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mVarName ;
 
@@ -7556,6 +7634,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualExisting
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_inputActualExistingVariableParameterAST : public cPtr_actualParameterAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
   public: GALGAS_lstring mProperty_mInputActualParameterName ;
@@ -7667,6 +7748,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualNewConst
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
   public: GALGAS_lstring mProperty_mInputOptionalActualTypeName ;
@@ -7776,6 +7860,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualNewVaria
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
   public: GALGAS_lstring mProperty_mInputOptionalActualTypeName ;
@@ -7877,6 +7964,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualSelfProp
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_inputActualSelfPropertyParameterAST : public cPtr_actualParameterAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
   public: GALGAS_lstring mProperty_mInputActualSelfPropertyName ;
@@ -7970,6 +8060,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputSingleJokerAct
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_inputSingleJokerActualParameterAST : public cPtr_actualParameterAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
 
@@ -8070,6 +8163,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputActualParamet
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_outputActualParameterAST : public cPtr_actualParameterAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
   public: GALGAS_semanticExpressionAST mProperty_mOutputActualParameterExpression ;
@@ -8177,6 +8273,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputActualPa
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_outputInputActualParameterAST : public cPtr_actualParameterAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
   public: GALGAS_lstring mProperty_mOutputInputActualParameterName ;
@@ -8272,6 +8371,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputSingleJo
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_outputInputSingleJokerParameterAST : public cPtr_actualParameterAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
 
