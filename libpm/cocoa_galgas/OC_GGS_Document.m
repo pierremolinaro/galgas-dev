@@ -750,52 +750,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-#pragma mark Tracking File Document changes
-
-//----------------------------------------------------------------------------------------------------------------------
-
-- (NSDate *) sourceFileModificationDateInFileSystem {
-  NSURL * fileURL = [self fileURL] ;
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  NSDate * date = [NSDate date] ;
-  if ([fileURL isFileURL]) {
-    NSFileManager * fm = [NSFileManager new] ;
-    NSDictionary * fileAttributes = [fm attributesOfItemAtPath:[fileURL path] error:NULL] ;
-    date = [fileAttributes objectForKey:NSFileModificationDate] ;
-  }
-  return date ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-- (void) updateFromFileSystem: (id) inUnusedArgument {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  [NSApp
-    beginSheet:mUpdateFromFileSystemPanel
-    modalForWindow:[self windowForSheet]
-    modalDelegate:nil
-    didEndSelector:NULL
-    contextInfo:NULL
-  ] ;
-//--- Read new content
-  NSString * source = [[NSString alloc]
-    initWithContentsOfURL:[self fileURL]
-    encoding:NSUTF8StringEncoding
-    error:nil
-  ] ;
-  if (source != nil) {
-//    [mDelegateForSyntaxColoring setSourceString:source] ;
-  }
-//---
-  [mUpdateFromFileSystemPanel orderOut:self] ;
-  [NSApp endSheet:mUpdateFromFileSystemPanel] ;   
-}
-//----------------------------------------------------------------------------------------------------------------------
-
 #pragma mark Document Save
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2251,6 +2205,60 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   }
   return YES ;
 }
+
+//----------------------------------------------------------------------------------------------------------------------
+
+// #pragma mark Tracking File Document changes
+
+//----------------------------------------------------------------------------------------------------------------------
+
+//  - (void) presentedItemDidChange {
+//  // [caution] This method can be called from any thread.
+//  // [caution] DO NOT invoke `super.presentedItemDidChange()` that reverts document automatically if autosavesInPlace is enable.
+//  //        super.presentedItemDidChange()
+//    NSBeep () ;
+////    DispatchQueue.main.async { self.presentedItemDidChange_onMainThread () }
+//  }
+
+//----------------------------------------------------------------------------------------------------------------------
+//  private func presentedItemDidChange_onMainThread () {
+//    if let currentFileURL = self.fileURL {
+//      var optionalNewText : String? = nil
+//      var optionalFileModificationDate : Date? = nil
+//      var coordinatorError : NSError? = nil
+//      let coordinator = NSFileCoordinator (filePresenter: self)
+//      coordinator.coordinate (readingItemAt: currentFileURL, options: .withoutChanges, error: &coordinatorError) { (newURL) in
+//        do {
+//        //--- ignore if file's modificationDate is the same as document's modificationDate
+//          optionalFileModificationDate = try FileManager.default.attributesOfItem (atPath: newURL.path)[.modificationDate] as? Date
+//          if optionalFileModificationDate != self.fileModificationDate {
+//         //--- check if file contents was changed from the stored file data
+//            let data = try Data (contentsOf: newURL, options: [.mappedIfSafe])
+//            let text = String (data: data, encoding: .utf8)!
+//            if text != self.mText {
+//              optionalNewText = text
+//            }
+//          }
+//        }catch{
+//          return assertionFailure (error.localizedDescription)
+//        }
+//      }
+//      if let error = coordinatorError {
+//        assertionFailure (error.localizedDescription)
+//      }
+//      if let newText = optionalNewText {
+//        DispatchQueue.main.async {
+//          if let lastModificationDate = self.fileModificationDate,
+//             let fileModificationDate = optionalFileModificationDate,
+//             lastModificationDate < fileModificationDate {
+//            self.fileModificationDate = fileModificationDate
+//            self.mText = newText
+//            self.mTextView?.string = self.mText
+//          }
+//        }
+//      }
+//    }
+//  }
 
 //----------------------------------------------------------------------------------------------------------------------
 
