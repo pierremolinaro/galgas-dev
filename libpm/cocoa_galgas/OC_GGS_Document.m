@@ -18,7 +18,6 @@
 
 #import "OC_GGS_Document.h"
 #import "OC_GGS_ApplicationDelegate.h"
-#import "OC_GGS_RulerViewForTextView.h"
 #import "OC_Lexique.h"
 #import "F_CocoaWrapperForGalgas.h"
 #import "PMIssueDescriptor.h"
@@ -2168,7 +2167,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-- (NSDragOperation) tableView:(NSTableView*)tv
+- (NSDragOperation) tableView: (NSTableView*)tv
                     validateDrop:(id <NSDraggingInfo>)info
                     proposedRow:(NSInteger)row
                     proposedDropOperation:(NSTableViewDropOperation)op {

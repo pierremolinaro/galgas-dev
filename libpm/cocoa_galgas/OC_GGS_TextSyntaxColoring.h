@@ -34,8 +34,8 @@
   @private double mMaxAscender ; // Only mMaxAscender is observable
   @private double mMaxLeadingMinusDescender ; // leading - descender (because descender is < 0)
 
-  @private NSUInteger mSavePointUndoStackCount ;
-  @private NSUInteger mSavePointRedoStackCount ;
+//  @private NSUInteger mSavePointUndoStackCount ;
+//  @private NSUInteger mSavePointRedoStackCount ;
   
 //--- Undo manager
   @private PMUndoManager * mUndoManager ;
