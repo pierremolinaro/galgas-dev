@@ -107,7 +107,7 @@ override method @abstractExtensionMethodAST semanticAnalysis
     error self.mAbstractExtensionMethodName: "cannot declare an abstract extension method: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Compute method signature
-  var formalParameterListForGeneration =@formalParameterListForGeneration {}
+  var formalParameterListForGeneration = @formalParameterListForGeneration {}
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mAbstractExtensionMethodFormalParameterList do
     formalParameterListForGeneration +=
       !mFormalSelector
@@ -174,7 +174,7 @@ override method @abstractExtensionMethodForGeneration appendDeclaration1
 
 #·······················································································································
 
-override getter @abstractExtensionMethodForGeneration headerKind ->@headerKind {
+override getter @abstractExtensionMethodForGeneration headerKind -> @headerKind {
   result = @headerKind.oneHeader
 }
 

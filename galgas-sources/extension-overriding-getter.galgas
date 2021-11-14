@@ -72,8 +72,8 @@ override method @overridingExtensionGetterAST enterDeclarationInGraph
 #   KEY REPRESENTATION                      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @overridingExtensionGetterAST keyRepresentation -> @string outString {
-  outString = "overriding extension getter @" + self.mTypeName + " " + self.mOverridingExtensionGetterName
+override getter @overridingExtensionGetterAST keyRepresentation -> @string {
+  result = "overriding extension getter @" + self.mTypeName + " " + self.mOverridingExtensionGetterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

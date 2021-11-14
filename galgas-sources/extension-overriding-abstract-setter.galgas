@@ -38,9 +38,8 @@ syntax extension galgas3DeclarationsSyntax {
 #   KEY REPRESENTATION                      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @overridingAbstractExtensionSetterAST keyRepresentation
-  ->@string outString {
-  outString = "overriding extension setter @" + self.mTypeName + " " + self.mOverridingExtensionSetterName
+override getter @overridingAbstractExtensionSetterAST keyRepresentation -> @string {
+  result = "overriding extension setter @" + self.mTypeName + " " + self.mOverridingExtensionSetterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
