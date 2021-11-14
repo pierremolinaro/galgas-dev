@@ -694,7 +694,7 @@ override method @classTypeForGeneration appendSpecificImplementation
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func generateClassGetterDeclaration ?let @lstring inGetterName
-                                    ?let @methodKind inKind
+#                                    ?let @methodKind inKind
                                     ?let @functionSignature inArgumentTypeList
                                     ?let @bool inHasCompilerArgument
                                     ?let @unifiedTypeMap-entry inReturnedType

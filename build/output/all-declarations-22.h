@@ -654,11 +654,10 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_string function_generateClassGetterDeclaration (const class GALGAS_lstring & constinArgument0,
-                                                             const class GALGAS_methodKind & constinArgument1,
-                                                             const class GALGAS_functionSignature & constinArgument2,
-                                                             const class GALGAS_bool & constinArgument3,
-                                                             const class GALGAS_unifiedTypeMap_2D_entry & constinArgument4,
-                                                             const class GALGAS_methodQualifier & constinArgument5,
+                                                             const class GALGAS_functionSignature & constinArgument1,
+                                                             const class GALGAS_bool & constinArgument2,
+                                                             const class GALGAS_unifiedTypeMap_2D_entry & constinArgument3,
+                                                             const class GALGAS_methodQualifier & constinArgument4,
                                                              class C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 

@@ -9,7 +9,7 @@ class cPtr_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %acS
 //----------------------------------------------------------------------------------------------------------------------
 
 %
-for (lkey kind argumentTypeList * hasCompilerArgument returnedType qualifier *) in GETTER_MAP do
-  !generateClassGetterDeclaration (!lkey !kind !argumentTypeList !hasCompilerArgument !returnedType !qualifier)
+for (lkey * argumentTypeList * hasCompilerArgument returnedType qualifier *) in GETTER_MAP do
+  !generateClassGetterDeclaration (!lkey !argumentTypeList !hasCompilerArgument !returnedType !qualifier)
 end
 %

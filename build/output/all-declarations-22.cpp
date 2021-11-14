@@ -3816,7 +3816,6 @@ C_PrologueEpilogue gMethod_classTypeForGeneration_appendSpecificImplementation (
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string function_generateClassGetterDeclaration (const GALGAS_lstring & constinArgument_inGetterName,
-                                                       const GALGAS_methodKind & /* constinArgument_inKind */,
                                                        const GALGAS_functionSignature & constinArgument_inArgumentTypeList,
                                                        const GALGAS_bool & constinArgument_inHasCompilerArgument,
                                                        const GALGAS_unifiedTypeMap_2D_entry & constinArgument_inReturnedType,
@@ -3824,14 +3823,14 @@ GALGAS_string function_generateClassGetterDeclaration (const GALGAS_lstring & co
                                                        C_Compiler * inCompiler
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_result ; // Returned variable
-  GALGAS_bool var_generate_27708 = GALGAS_bool (true) ;
-  GALGAS_string var_suffix_27728 = GALGAS_string::makeEmptyString () ;
+  GALGAS_bool var_generate_27709 = GALGAS_bool (true) ;
+  GALGAS_string var_suffix_27729 = GALGAS_string::makeEmptyString () ;
   switch (constinArgument_inQualifier.enumValue ()) {
   case GALGAS_methodQualifier::kNotBuilt:
     break ;
   case GALGAS_methodQualifier::kEnum_isAbstract:
     {
-      var_suffix_27728 = GALGAS_string (" = 0") ;
+      var_suffix_27729 = GALGAS_string (" = 0") ;
     }
     break ;
   case GALGAS_methodQualifier::kEnum_isBasic:
@@ -3844,44 +3843,44 @@ GALGAS_string function_generateClassGetterDeclaration (const GALGAS_lstring & co
     break ;
   case GALGAS_methodQualifier::kEnum_isInherited:
     {
-      var_generate_27708 = GALGAS_bool (false) ;
+      var_generate_27709 = GALGAS_bool (false) ;
     }
     break ;
   case GALGAS_methodQualifier::kEnum_isOverriding:
     {
-      var_suffix_27728 = GALGAS_string (" overriding = 0") ;
+      var_suffix_27729 = GALGAS_string (" overriding = 0") ;
     }
     break ;
   case GALGAS_methodQualifier::kEnum_isOverridingAbstract:
     {
-      var_suffix_27728 = GALGAS_string (" overriding = 0") ;
+      var_suffix_27729 = GALGAS_string (" overriding = 0") ;
     }
     break ;
   }
   result_result = GALGAS_string::makeEmptyString () ;
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
-    test_0 = var_generate_27708.boolEnum () ;
+    test_0 = var_generate_27709.boolEnum () ;
     if (kBoolTrue == test_0) {
       result_result = GALGAS_string ("/* \xC2""\xA7"" public: virtual GALGAS_").add_operation (constinArgument_inReturnedType.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 720)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 720)) ;
       result_result.plusAssign_operation(GALGAS_string (" getter_").add_operation (constinArgument_inGetterName.readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("type-class.galgas", 721)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 721)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 721)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 721)) ;
-      GALGAS_bool var_first_28214 = GALGAS_bool (true) ;
-      cEnumerator_functionSignature enumerator_28266 (constinArgument_inArgumentTypeList, kENUMERATION_UP) ;
-      while (enumerator_28266.hasCurrentObject ()) {
+      GALGAS_bool var_first_28215 = GALGAS_bool (true) ;
+      cEnumerator_functionSignature enumerator_28267 (constinArgument_inArgumentTypeList, kENUMERATION_UP) ;
+      while (enumerator_28267.hasCurrentObject ()) {
         enumGalgasBool test_1 = kBoolTrue ;
         if (kBoolTrue == test_1) {
-          test_1 = var_first_28214.boolEnum () ;
+          test_1 = var_first_28215.boolEnum () ;
           if (kBoolTrue == test_1) {
-            var_first_28214 = GALGAS_bool (false) ;
+            var_first_28215 = GALGAS_bool (false) ;
           }
         }
         if (kBoolFalse == test_1) {
           result_result.plusAssign_operation(GALGAS_string (",\n"
             "           "), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 728)) ;
         }
-        result_result.plusAssign_operation(GALGAS_string ("const GALGAS_").add_operation (enumerator_28266.current (HERE).readProperty_mFormalArgumentType ().getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 730)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 730)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 730)) ;
-        result_result.plusAssign_operation(GALGAS_string (" ").add_operation (enumerator_28266.current (HERE).readProperty_mFormalArgumentName (), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 731)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 731)) ;
-        enumerator_28266.gotoNextObject () ;
+        result_result.plusAssign_operation(GALGAS_string ("const GALGAS_").add_operation (enumerator_28267.current (HERE).readProperty_mFormalArgumentType ().getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 730)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 730)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 730)) ;
+        result_result.plusAssign_operation(GALGAS_string (" ").add_operation (enumerator_28267.current (HERE).readProperty_mFormalArgumentName (), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 731)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 731)) ;
+        enumerator_28267.gotoNextObject () ;
       }
       enumGalgasBool test_2 = kBoolTrue ;
       if (kBoolTrue == test_2) {
@@ -3889,24 +3888,24 @@ GALGAS_string function_generateClassGetterDeclaration (const GALGAS_lstring & co
         if (kBoolTrue == test_2) {
           enumGalgasBool test_3 = kBoolTrue ;
           if (kBoolTrue == test_3) {
-            test_3 = var_first_28214.operator_not (SOURCE_FILE ("type-class.galgas", 734)).boolEnum () ;
+            test_3 = var_first_28215.operator_not (SOURCE_FILE ("type-class.galgas", 734)).boolEnum () ;
             if (kBoolTrue == test_3) {
               result_result.plusAssign_operation(GALGAS_string (",\n"
                 "           "), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 735)) ;
             }
           }
           result_result.plusAssign_operation(GALGAS_string ("C_Compiler *"), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 737)) ;
-          var_first_28214 = GALGAS_bool (false) ;
+          var_first_28215 = GALGAS_bool (false) ;
         }
       }
       GALGAS_string temp_4 ;
-      const enumGalgasBool test_5 = var_first_28214.boolEnum () ;
+      const enumGalgasBool test_5 = var_first_28215.boolEnum () ;
       if (kBoolTrue == test_5) {
         temp_4 = GALGAS_string ("LOCATION_ARGS") ;
       }else if (kBoolFalse == test_5) {
         temp_4 = GALGAS_string (" COMMA_LOCATION_ARGS") ;
       }
-      result_result.plusAssign_operation(temp_4.add_operation (GALGAS_string (") const"), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 740)).add_operation (var_suffix_27728, inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 740)).add_operation (GALGAS_string (" ; */\n"), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 740)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 740)) ;
+      result_result.plusAssign_operation(temp_4.add_operation (GALGAS_string (") const"), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 740)).add_operation (var_suffix_27729, inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 740)).add_operation (GALGAS_string (" ; */\n"), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 740)), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 740)) ;
     }
   }
 //---
@@ -3918,9 +3917,8 @@ GALGAS_string function_generateClassGetterDeclaration (const GALGAS_lstring & co
 //  Function introspection                                                                       
 //----------------------------------------------------------------------------------------------------------------------
 
-static const C_galgas_type_descriptor * functionArgs_generateClassGetterDeclaration [7] = {
+static const C_galgas_type_descriptor * functionArgs_generateClassGetterDeclaration [6] = {
   & kTypeDescriptor_GALGAS_lstring,
-  & kTypeDescriptor_GALGAS_methodKind,
   & kTypeDescriptor_GALGAS_functionSignature,
   & kTypeDescriptor_GALGAS_bool,
   & kTypeDescriptor_GALGAS_unifiedTypeMap_2D_entry,
@@ -3937,19 +3935,16 @@ static GALGAS_object functionWithGenericHeader_generateClassGetterDeclaration (C
   const GALGAS_lstring operand0 = GALGAS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
                                                                  inCompiler
                                                                  COMMA_THERE) ;
-  const GALGAS_methodKind operand1 = GALGAS_methodKind::extractObject (inEffectiveParameterArray.objectAtIndex (1 COMMA_HERE),
-                                                                       inCompiler
-                                                                       COMMA_THERE) ;
-  const GALGAS_functionSignature operand2 = GALGAS_functionSignature::extractObject (inEffectiveParameterArray.objectAtIndex (2 COMMA_HERE),
+  const GALGAS_functionSignature operand1 = GALGAS_functionSignature::extractObject (inEffectiveParameterArray.objectAtIndex (1 COMMA_HERE),
                                                                                      inCompiler
                                                                                      COMMA_THERE) ;
-  const GALGAS_bool operand3 = GALGAS_bool::extractObject (inEffectiveParameterArray.objectAtIndex (3 COMMA_HERE),
+  const GALGAS_bool operand2 = GALGAS_bool::extractObject (inEffectiveParameterArray.objectAtIndex (2 COMMA_HERE),
                                                            inCompiler
                                                            COMMA_THERE) ;
-  const GALGAS_unifiedTypeMap_2D_entry operand4 = GALGAS_unifiedTypeMap_2D_entry::extractObject (inEffectiveParameterArray.objectAtIndex (4 COMMA_HERE),
+  const GALGAS_unifiedTypeMap_2D_entry operand3 = GALGAS_unifiedTypeMap_2D_entry::extractObject (inEffectiveParameterArray.objectAtIndex (3 COMMA_HERE),
                                                                                                  inCompiler
                                                                                                  COMMA_THERE) ;
-  const GALGAS_methodQualifier operand5 = GALGAS_methodQualifier::extractObject (inEffectiveParameterArray.objectAtIndex (5 COMMA_HERE),
+  const GALGAS_methodQualifier operand4 = GALGAS_methodQualifier::extractObject (inEffectiveParameterArray.objectAtIndex (4 COMMA_HERE),
                                                                                  inCompiler
                                                                                  COMMA_THERE) ;
   return function_generateClassGetterDeclaration (operand0,
@@ -3957,7 +3952,6 @@ static GALGAS_object functionWithGenericHeader_generateClassGetterDeclaration (C
                                                   operand2,
                                                   operand3,
                                                   operand4,
-                                                  operand5,
                                                   inCompiler
                                                   COMMA_THERE).getter_object (THERE) ;
 }
@@ -3967,7 +3961,7 @@ static GALGAS_object functionWithGenericHeader_generateClassGetterDeclaration (C
 C_galgas_function_descriptor functionDescriptor_generateClassGetterDeclaration ("generateClassGetterDeclaration",
                                                                                 functionWithGenericHeader_generateClassGetterDeclaration,
                                                                                 & kTypeDescriptor_GALGAS_string,
-                                                                                6,
+                                                                                5,
                                                                                 functionArgs_generateClassGetterDeclaration) ;
 
 //----------------------------------------------------------------------------------------------------------------------
