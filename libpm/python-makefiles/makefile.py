@@ -25,8 +25,10 @@
 # 3.1: may 26th, 2018
 #        Added tolerance in secondary dependency file syntax:
 # 3.2: december 16th, 2019
-#             added test (job.mReturnCode != None) lines 771 and 779
-#             post command displayed is aligned
+#        added test (job.mReturnCode != None) lines 771 and 779
+#        post command displayed is aligned
+# 3.3: november 19th, 2021
+#        accelerated job construction
 #
 #———————————————————————————————————————————————————————————————————————————————————————————————————
 # http://www.diveintopython3.net/porting-code-to-python-3-with-2to3.html
@@ -624,12 +626,12 @@ class Make:
   #--- If there are errors, return immediatly
     if self.mErrorCount != 0 :
       return False
-  #--- Target already in job list ?
-    if self.existsJobForTarget (target) :
-      return True # yes, return target will be built
   #--- Target has been evaluated: no need to build it
     if target in self.mAlreadyBuildTargetSet :
       return False # no, return target will not be built
+  #--- Target already in job list ?
+    if self.existsJobForTarget (target) :
+      return True # yes, return target will be built
   #--- Find a rule for making the target
     absTarget = os.path.abspath (target)
     rule = None
@@ -670,11 +672,6 @@ class Make:
           if targetDateModification < dependenceDateModification:
             appendToJobList = True
             break
-  #--- Check for secondary dependancy files
-#     if not appendToJobList:
-#       targetDateModification = modificationDateForFile (self.mModificationDateDictionary, absTarget)
-#       if targetDateModification < rule.mSecondaryMostRecentModificationDate:
-#         appendToJobList = True
   #--- Append to job list
     if appendToJobList:
       self.mJobList.append (Job (
@@ -911,9 +908,7 @@ class Make:
     if self.mSelectedGoal in self.mGoals :
       (targetList, message) = self.mGoals [self.mSelectedGoal]
       for target in targetList:
-#         print ("makeJob " + target)
         self.makeJob (target)
-#         print ("done")
       self.runJobs (maxConcurrentJobs, showCommand)
       if self.mErrorCount > 0:
         for rule in self.mRuleList:
