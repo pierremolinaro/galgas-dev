@@ -926,7 +926,7 @@ static NSInteger search_into_galgas_33_Scanner_galgasKeyWordList (NSString * inS
         mTokenCode = galgas3Scanner_1_commentMark ;
       }else{
         do {
-          if (scanningOk && ([self testForInputFromChar:1 toChar:9] || [self testForInputChar:11] || [self testForInputChar:12] || [self testForInputFromChar:14 toChar:65533])) {
+          if (scanningOk && ([self testForInputFromChar:1 toChar:9] || [self testForInputChar:11] || [self testForInputChar:12] || [self testForInputFromChar:14 toChar:1114111])) {
           }else{
             mLoop = NO ;
           }

@@ -35,6 +35,7 @@
 		CF1C0C9514E8477100F79BD0 /* AC_FileHandleForWriting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1C0C9314E8477100F79BD0 /* AC_FileHandleForWriting.cpp */; };
 		CF1C0C9914E8502300F79BD0 /* C_BinaryFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1C0C9714E8502300F79BD0 /* C_BinaryFileWrite.cpp */; };
 		CF1C0C9A14E8502300F79BD0 /* C_BinaryFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1C0C9714E8502300F79BD0 /* C_BinaryFileWrite.cpp */; };
+		CF1FF313276B4BAD00F984CE /* OC_GGS_Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFFE6C8E14861DFB00FD9FF8 /* OC_GGS_Document.xib */; };
 		CF206C091D54772A00CC4135 /* C_IssueWithFixIt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF206C071D54772A00CC4135 /* C_IssueWithFixIt.cpp */; };
 		CF206C0A1D54772A00CC4135 /* C_IssueWithFixIt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF206C071D54772A00CC4135 /* C_IssueWithFixIt.cpp */; };
 		CF23744C19967C4F0061D2D8 /* all-declarations-0.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF23743819967C4F0061D2D8 /* all-declarations-0.cpp */; };
@@ -579,7 +580,6 @@
 		CFFC0F2111EDC44200C97B85 /* C_BDD-find-or-add.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFC0F1411EDC44200C97B85 /* C_BDD-find-or-add.cpp */; };
 		CFFC0F2211EDC44200C97B85 /* C_BDD-single-operand-ops.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFC0F1611EDC44200C97B85 /* C_BDD-single-operand-ops.cpp */; };
 		CFFCE7BD14686081009DB6D5 /* PMIssueDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFCE7BC14686081009DB6D5 /* PMIssueDescriptor.m */; };
-		CFFE6C9014861DFB00FD9FF8 /* OC_GGS_Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFFE6C8E14861DFB00FD9FF8 /* OC_GGS_Document.xib */; };
 		CFFF84021E3295A900D52CF4 /* displayUnicodeLexicalTestFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFF84011E3295A900D52CF4 /* displayUnicodeLexicalTestFunctions.cpp */; };
 		CFFF84031E3295A900D52CF4 /* displayUnicodeLexicalTestFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFF84011E3295A900D52CF4 /* displayUnicodeLexicalTestFunctions.cpp */; };
 /* End PBXBuildFile section */
@@ -1938,7 +1938,7 @@
 		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1310;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					CF6DF12309E3F23700506859 = {
@@ -1998,10 +1998,10 @@
 				CF6DF22909E3F3A700506859 /* Credits.rtf in Resources */,
 				CF6DF22A09E3F3A700506859 /* InfoPlist.strings in Resources */,
 				CF6DF22B09E3F3A700506859 /* galgasApplication.icns in Resources */,
+				CF1FF313276B4BAD00F984CE /* OC_GGS_Document.xib in Resources */,
 				CF6DF22C09E3F3A700506859 /* galgasDocuments.icns in Resources */,
 				CF6DF23009E3F3A700506859 /* I_Stop.tiff in Resources */,
 				CF06F5CB1049592F005F03FA /* MainMenu.xib in Resources */,
-				CFFE6C9014861DFB00FD9FF8 /* OC_GGS_Document.xib in Resources */,
 				CF51F02315C9200E00387A48 /* PMDebug.xib in Resources */,
 				CF5522B92728473200EA9A4B /* GGSUpdateCocoaGalgas.xib in Resources */,
 			);
@@ -2739,7 +2739,6 @@
 		CF6DF18E09E3F23700506859 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = x86_64;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
@@ -2757,7 +2756,6 @@
 		CF6DF20409E3F30400506859 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = x86_64;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -2776,7 +2774,6 @@
 		CF6DF25409E3F3A700506859 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = x86_64;
 				CLANG_WARN_CXX0X_EXTENSIONS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;

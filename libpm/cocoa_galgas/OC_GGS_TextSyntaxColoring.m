@@ -275,7 +275,7 @@
       data = [defaults dataForKey:name] ;
       if (data != nil) {
         NSFont * font = (NSFont *) [NSUnarchiver unarchiveObjectWithData:data] ;
-        [attributeDictionary setObject:font forKey: NSFontAttributeName] ;
+        [attributeDictionary setObject: font forKey: NSFontAttributeName] ;
       }
     //--- Add dictionary
       [mFontAttributesDictionaryArray addObject: attributeDictionary] ;
@@ -467,13 +467,13 @@
       name: NSTextStorageDidProcessEditingNotification
       object:mSourceTextStorage
     ]; */
- //   [mSourceTextStorage beginEditing] ;
+    [mSourceTextStorage beginEditing] ;
   //--- Change default style ?
     if (inChangedColorIndex == 0) {
       const NSRange allTextRange = {0, [mSourceTextStorage length]} ;
       [mSourceTextStorage
         setAttributes:[mFontAttributesDictionaryArray objectAtIndex:0]
-        range:allTextRange
+        range: allTextRange
       ] ;
       for (NSUInteger i=0 ; i<[mTokenArray count] ; i++) {
         OC_Token * token = [mTokenArray objectAtIndex:i] ;
@@ -522,9 +522,9 @@
         }
       }
     }
-/*    [mSourceTextStorage endEditing] ;
+    [mSourceTextStorage endEditing] ;
   //--- Resinstall observer
-    [[NSNotificationCenter defaultCenter]
+ /*   [[NSNotificationCenter defaultCenter]
       addObserver:self
       selector:@selector(textStorageDidProcessEditingNotification:)
       name: NSTextStorageDidProcessEditingNotification
@@ -644,8 +644,8 @@
         NSLog (@"PERFORM REMOVE ATTRIBUTE range [%lu, %lu] text length %lu", eraseRange.location, eraseRange.length, textLength) ;
       #endif
       [mSourceTextStorage
-        setAttributes:[mFontAttributesDictionaryArray objectAtIndex:0]
-        range:eraseRange
+        setAttributes: [mFontAttributesDictionaryArray objectAtIndex:0]
+        range: eraseRange
       ] ;
       #ifdef DEBUG_MESSAGES
         NSLog (@"mSourceTextStorage setAttributes DONE") ;
@@ -901,15 +901,8 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-//  NSArray * undoStack = mUndoManager.undoStack ;
-//  NSArray * redoStack = mUndoManager.redoStack ;
-  //NSLog (@"undoManagerCheckPointNotification: undoStack %lu, redoStack %lu", undoStack.count, redoStack.count) ;
 //---
   isDirty = mTimerForAutosaving != nil ;
-//    (mSavePointUndoStackCount != undoStack.count)
-//  ||
-//    (mSavePointRedoStackCount != redoStack.count)
-//  ;
   for (OC_GGS_TextDisplayDescriptor * textDisplayDescriptor in mTextDisplayDescriptorSet) {
     textDisplayDescriptor.isDirty = isDirty ;
   }
@@ -921,11 +914,6 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-//  NSArray * undoStack = mUndoManager.undoStack ;
-//  mSavePointUndoStackCount = undoStack.count ;
-//  NSArray * redoStack = mUndoManager.redoStack ;
-//  mSavePointRedoStackCount = redoStack.count ;
-  // NSLog (@"documentHasBeenSaved: undoStack %lu, redoStack %lu", mSavePointUndoStackCount, mSavePointRedoStackCount) ;
   [self undoManagerCheckPointNotification:nil] ;
 }
 

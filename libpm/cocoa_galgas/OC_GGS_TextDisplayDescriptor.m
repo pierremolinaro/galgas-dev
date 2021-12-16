@@ -70,9 +70,9 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  const BOOL show = [[NSUserDefaults standardUserDefaults] boolForKey:@"PMShowInvisibleCharacters"] ;
-  [mTextView.layoutManager setShowsInvisibleCharacters:show] ;
-  [mTextView setNeedsDisplay:YES] ;
+  const BOOL show = [[NSUserDefaults standardUserDefaults] boolForKey: @"PMShowInvisibleCharacters"] ;
+  [mTextView.layoutManager setShowsInvisibleCharacters: show] ;
+  [mTextView setNeedsDisplay: YES] ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -95,33 +95,46 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
     mDocumentUsedForDisplaying = inDocumentUsedForDisplaying ;
     mTextView = [[OC_GGS_TextView alloc]
       initWithFrame:NSMakeRect (0.0, 0.0, 10.0, 10.0)
-      documentUsedForDisplaying:inDocumentUsedForDisplaying
-      displayDescriptor:self
+      documentUsedForDisplaying: inDocumentUsedForDisplaying
+      displayDescriptor: self
     ] ;
+//    NSLog (@"Default font %@", mTextView.font) ;
+//    NSLog (@"Default attributes %@", mTextView.textStorage.attributeRuns) ;
     mTextView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
-    [mTextView setGrammarCheckingEnabled:NO] ;
-    [mTextView setContinuousSpellCheckingEnabled:NO] ;
     mTextView.allowsUndo = YES ;
-    [mTextView useAllLigatures:nil] ;
-    [mTextView setAlignment:NSNaturalTextAlignment] ;
-    [mTextView setAutomaticQuoteSubstitutionEnabled:NO] ;
-    mTextView.smartInsertDeleteEnabled = NO ;
-    [mTextView setAutomaticDashSubstitutionEnabled:NO] ;
-    [mTextView.layoutManager setAllowsNonContiguousLayout:NO] ;
-    [mTextView.layoutManager setUsesFontLeading:YES] ;
-    [mTextView.layoutManager setBackgroundLayoutEnabled:YES] ;
     mTextView.drawsBackground = NO ;
-    if ([mTextView respondsToSelector:@selector(setAutomaticTextReplacementEnabled:)]) {
-      [mTextView setValue:[NSNumber numberWithBool:NO] forKey:@"automaticTextReplacementEnabled"] ;
-    }
+    mTextView.grammarCheckingEnabled = NO ;
+    mTextView.continuousSpellCheckingEnabled = NO ;
+    [mTextView useAllLigatures: nil] ;
+//    mTextView.allowedInputSourceLocales = [NSArray arrayWithObject: NSAllRomanInputSourcesLocaleIdentifier] ;
+ //   mTextView.alignment = NSNaturalTextAlignment ;
+    mTextView.automaticQuoteSubstitutionEnabled = NO ;
+    mTextView.smartInsertDeleteEnabled = YES ;
+    mTextView.automaticDashSubstitutionEnabled = NO ;
+    mTextView.layoutManager.allowsNonContiguousLayout = YES ;
+    mTextView.layoutManager.usesFontLeading = YES ;
+    mTextView.layoutManager.backgroundLayoutEnabled = NO ;
+    mTextView.richText = YES ;
+    mTextView.importsGraphics = YES ;
+    mTextView.allowsImageEditing = YES ;
+    mTextView.layoutManager.usesScreenFonts = NO ;
+    mTextView.layoutManager.showsControlCharacters = YES ;
+//    mTextView.font = nil ; // [NSFont systemFontOfSize: 0.0] ;
+//    [mTextView.layoutManager setTypesetterBehavior: NSTypesetterLatestBehavior] ;
   //---
-    if ([mTextView respondsToSelector:@selector (setUsesFindBar:)]) {
-      [mTextView setValue:[NSNumber numberWithBool:YES] forKey:@"usesFindBar"] ;
-    }else{
-      mTextView.usesFindPanel = YES ;
-    }
+    mTextView.automaticTextReplacementEnabled = NO ;
+//    if ([mTextView respondsToSelector:@selector(setAutomaticTextReplacementEnabled:)]) {
+//      [mTextView setValue:[NSNumber numberWithBool:NO] forKey:@"automaticTextReplacementEnabled"] ;
+//    }
   //---
-    [mTextView setDelegate:self] ;
+    mTextView.usesFindPanel = YES ;
+//    if ([mTextView respondsToSelector:@selector (setUsesFindBar:)]) {
+//      [mTextView setValue:[NSNumber numberWithBool:YES] forKey:@"usesFindBar"] ;
+//    }else{
+//      mTextView.usesFindPanel = YES ;
+//    }
+  //---
+    [mTextView setDelegate: self] ;
   //---
     mScrollView = [[NSScrollView alloc] initWithFrame:NSMakeRect (0.0, 0.0, 100.0, 76.0)] ;
     mScrollView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;

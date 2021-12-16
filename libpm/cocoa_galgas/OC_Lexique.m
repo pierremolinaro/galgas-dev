@@ -97,6 +97,9 @@
     mPreviousChar = mCurrentChar ;
     mCurrentLocation ++ ;
     mCurrentChar = [mSourceString characterAtIndex:mCurrentLocation] ;
+//    if (55357 == mCurrentChar) {
+//      NSLog (@"mCurrentChar %u", mCurrentChar) ;
+//    }
   }else{
     mCurrentLocation = [mSourceString length] ;
     mPreviousChar = mCurrentChar ;
@@ -528,8 +531,8 @@
 //--- Parse 
   *outUpperIndexToRedrawInStyleArray = *outLowerIndexToRedrawInStyleArray ;
   search = YES ;
-  mCurrentChar = [mSourceString characterAtIndex:mCurrentLocation] ;
-  mPreviousChar = (mCurrentLocation == 0) ? '\0' : [mSourceString characterAtIndex:mCurrentLocation - 1] ;
+  mCurrentChar = [mSourceString characterAtIndex: mCurrentLocation] ;
+  mPreviousChar = (mCurrentLocation == 0) ? '\0' : [mSourceString characterAtIndex: mCurrentLocation - 1] ;
   while (search) {
     #ifdef DEBUG_MESSAGES
       NSLog (@"  parseLexicalTokenForLexicalColoring from %lu, character '%C', mMatchedTemplateDelimiterIndex %ld",

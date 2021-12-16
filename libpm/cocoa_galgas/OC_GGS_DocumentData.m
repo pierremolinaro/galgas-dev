@@ -241,7 +241,6 @@ static NSMutableDictionary * gDocumentDataDictionary ;
       fileURL = inDocumentURL ;
       mFileEncoding = NSUTF8StringEncoding ;
       [self readDocumentFromFile] ;
-      // addFileEventStreamForDocument (self) ;  // §§
     }
     return self ;
   }

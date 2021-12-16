@@ -124,6 +124,8 @@
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   [super windowControllerDidLoadNib: inWindowController];
+//---
+//  mDisplayDescriptorTableViewHigh.columnAutoresizingStyle = NSTableViewFirstColumnOnlyAutoresizingStyle ;
 //--- Tell to window controller that closing the source text window closes the document
   [inWindowController setShouldCloseDocument: YES] ;
 //--- Set up windows location
