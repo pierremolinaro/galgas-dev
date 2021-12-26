@@ -513,7 +513,7 @@ getter @string cStringRepresentation -> @string
 
 Retourne la valeur du récepteur sous la forme d'une chaîne UTF-8, c'est-à-dire qu'un caractère « \texttt{"} » a été inséré au début et à la fin.
 
-Le caractère « \texttt{"} » est échappé en « \texttt{\textbackslash"} », le caractère « \texttt{\textbackslash} » est échappé en « \texttt{\textbackslash\textbackslash} ».
+Le caractère « \texttt{"} » est échappé en « \texttt{\textbackslash"} », le caractère « \texttt{\textbackslash} » est échappé en « \texttt{\textbackslash\textbackslash} ». Le caractère de code ASCII \texttt{0x0D} (« \emph{Carriage Return} ») est écrit sous la forme d'un anti slash suivi du caractère \texttt{"n"}. 
 
 
 
@@ -1616,7 +1616,7 @@ getter @string utf8Representation -> @string
 
 Retourne la valeur du récepteur sous la forme d'une chaîne UTF-8, c'est-à-dire qu'un caractère « \texttt{"} » a été inséré au début et à la fin. Tous les 150 caractères, la séquence « \texttt{"\textbackslash n~~"} » est insérée.
 
-Les caractères non-ASCII sont échappés
+Les caractères non-ASCII sont échappés.
 
 Le caractère « \texttt{"} » est échappé en « \texttt{\textbackslash"} », le caractère « \texttt{\textbackslash} » est échappé en « \texttt{\textbackslash\textbackslash} ».
 

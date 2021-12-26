@@ -1494,6 +1494,9 @@ C_String C_String::utf8RepresentationEnclosedWithin (const utf32 inCharacter) co
     if (UNICODE_VALUE (c) == '\\') {
       s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
       s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
+    }else if (UNICODE_VALUE (c) == '\n') {
+      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
+      s.appendUnicodeCharacter ('n' COMMA_HERE) ;
     }else if (c == inCharacter) {
       s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
       s.appendUnicodeCharacter (inCharacter COMMA_HERE) ;
