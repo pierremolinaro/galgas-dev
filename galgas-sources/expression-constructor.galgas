@@ -48,6 +48,10 @@ syntax extension galgas3ExpressionSyntax {
       ${$
       <output_expression_list> ?expressionList
       $}$
+    or
+      $($
+      <output_expression_list> ?expressionList
+      $)$
     end
     let endOfExpression = @location.here
     outExpression = @constructorExpressionAST.new {
