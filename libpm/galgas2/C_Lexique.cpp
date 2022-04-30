@@ -505,6 +505,7 @@ void C_Lexique::lexicalError (const C_String & inLexicalErrorMessage
 //----------------------------------------------------------------------------------------------------------------------
 
 void C_Lexique::parsingError (const TC_UniqueArray <int16_t> & inExpectedTerminalsArray,
+                              const cToken * inCurrentTokenPtr,
                               const int16_t inCurrentTokenCode
                               COMMA_LOCATION_ARGS) {
 //--- Build error message
@@ -517,7 +518,11 @@ void C_Lexique::parsingError (const TC_UniqueArray <int16_t> & inExpectedTermina
 //--- Sort expected token name array
   expectedTokenNames.sortArrayUsingCompareMethod () ;
 //--- Signal error
-  signalParsingError (this, sourceText (), C_IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <C_FixItDescription> ()), foundTokenMessage, expectedTokenNames COMMA_THERE) ;
+  signalParsingError (this,
+                      sourceText (),
+                      C_IssueWithFixIt (inCurrentTokenPtr->mStartLocation, inCurrentTokenPtr->mEndLocation, TC_Array <C_FixItDescription> ()),
+                      foundTokenMessage,
+                      expectedTokenNames COMMA_THERE) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -937,7 +942,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
                  << "\n" ;
               indentationForParseOnly ++ ;
             }
-            listForSecondPassParsing.insertAtBottom ((int16_t) (choice + 1)) ;
+            listForSecondPassParsing.insertAtBottom (int16_t (choice + 1)) ;
           }else{ // Syntax error
             TC_UniqueArray <int16_t> expectedTerminalsArray (100 COMMA_HERE) ;
             buildExpectedTerminalsArrayOnSyntaxError (errorProgramCounter,
@@ -953,14 +958,14 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
             #ifdef TRACE_LL1_PARSING
               co << expectedTerminalsArray.count () << " Token(s) in syntax error message\n" ; co.flush () ;
             #endif
-            parsingError (expectedTerminalsArray, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
+            parsingError (expectedTerminalsArray, tokenPtr, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
             result = loop = false ;
             listForSecondPassParsing.makeListEmpty () ;
           }
         }
     //--- It is a terminal symbol
       }else if (instruction > 0) {
-        const int16_t terminalSymbol = (int16_t) (instruction - 1) ;
+        const int16_t terminalSymbol = int16_t (instruction - 1) ;
         if (currentToken == terminalSymbol) {
           if (executionModeIsSyntaxAnalysisOnly ()) {
             indentForParseOnly (indentationForParseOnly) ;
@@ -996,7 +1001,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
                                                     inDecisionTable,
                                                     inDecisionTableIndexes,
                                                     expectedTerminalsArray) ;
-          parsingError (expectedTerminalsArray, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
+          parsingError (expectedTerminalsArray, tokenPtr, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
           result = loop = false ;
           listForSecondPassParsing.makeListEmpty () ;
         }
@@ -1033,7 +1038,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
                                                   inDecisionTable,
                                                   inDecisionTableIndexes,
                                                   expectedTerminalsArray) ;     
-        parsingError (expectedTerminalsArray, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
+        parsingError (expectedTerminalsArray, tokenPtr, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
         result = loop = false ;
         listForSecondPassParsing.makeListEmpty () ;
       }
@@ -1338,7 +1343,7 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
             expectedTerminalsArray.appendObject (expectedTerminal) ;
           }
         }
-        parsingError (expectedTerminalsArray, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
+        parsingError (expectedTerminalsArray, tokenPtr, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
       }
     }
     if (result) {

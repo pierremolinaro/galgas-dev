@@ -134,15 +134,16 @@ class C_Lexique : public C_Compiler {
   protected: void unknownCharacterLexicalError (LOCATION_ARGS) ;
 
   public: void lexicalError (const C_String & inLexicalErrorMessage
-                              COMMA_LOCATION_ARGS) ;
+                             COMMA_LOCATION_ARGS) ;
 
 //--- Signal a lexical warning
   protected: void lexicalWarning (const C_String & messageAlerte COMMA_LOCATION_ARGS) ;
 
 //--- Handling syntax error
   protected: void parsingError (const TC_UniqueArray <int16_t> & inExpectedTerminalsArray,
-                                 const int16_t inCurrentTokenCode
-                                 COMMA_LOCATION_ARGS) ;
+                                const cToken * inCurrentTokenPtr,
+                                const int16_t inCurrentTokenCode
+                                COMMA_LOCATION_ARGS) ;
 
 //--- Get message for terminal
   protected: virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const = 0 ;

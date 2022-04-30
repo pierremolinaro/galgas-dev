@@ -124,12 +124,10 @@ syntax galgas3SyntaxComponentSyntax (galgas3Scanner) {
   }
 
   #·····················································································································
-  #      S Y N T A X    R U L E    D E C L A R A T I O N                                                                 *
+  #      S Y N T A X    R U L E    D E C L A R A T I O N
   #·····················································································································
 
-  rule <syntax_rule_label>
-    ?let @lstring inLabelName
-    ?!@syntaxRuleLabelListAST ioLabelList {
+  rule <syntax_rule_label> ?let @lstring inLabelName ?!@syntaxRuleLabelListAST ioLabelList {
     var @formalParameterListAST mFormalParameters
     <formal_parameter_list> ? mFormalParameters
     let endOfArguments = @location.here

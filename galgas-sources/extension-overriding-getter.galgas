@@ -78,7 +78,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
     ${$
     <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
-    let @location endOfInstructionList = @location.here
+    let @location endOfInstructionList = .here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST.new {
       !false # Is not predefined

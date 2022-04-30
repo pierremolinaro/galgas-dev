@@ -439,6 +439,7 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
 
   rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList {
     outFormalInputParameterList = {}
+    $($
     repeat
     while
       var @bool isConstant
@@ -465,6 +466,7 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
         !mIsUnused
         !isConstant
     end
+    $)$
   }
 
   #·····················································································································
