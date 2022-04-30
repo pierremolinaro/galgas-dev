@@ -4118,33 +4118,71 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     cEnumerator_stringset enumerator_1040 (in_HANDLED_5F_EXTENSION_5F_SET, kENUMERATION_UP) ;
     while (enumerator_1040.hasCurrentObject ()) {
       result << "  <dict>\n"
-        "   <key>CFBundleTypeIconFile</key>\n"
-        "   <string>" ;
+        "      <key>CFBundleTypeIconFile</key>\n"
+        "      <string>" ;
       result << enumerator_1040.current_key (HERE).stringValue () ;
       result << "_icns</string>\n"
-        "   <key>CFBundleTypeExtensions</key>\n"
-        "   <array>\n"
-        "    <string>" ;
-      result << enumerator_1040.current_key (HERE).stringValue () ;
-      result << "</string>\n"
-        "   </array>\n"
-        "   <key>CFBundleTypeName</key>\n"
-        "   <string>" ;
+        "      <key>CFBundleTypeIconSystemGenerated</key>\n"
+        "      <integer>0</integer>\n"
+        "      <key>CFBundleTypeName</key>\n"
+        "      <string>" ;
       result << in_PROJECT_5F_NAME.stringValue () ;
       result << " Source</string>\n"
-        "   <key>CFBundleTypeOSTypes</key>\n"
-        "   <array>\n"
-        "    <string>TEXT</string>\n"
-        "   </array>\n"
-        "   <key>CFBundleTypeRole</key>\n"
-        "   <string>Editor</string>\n"
-        "   <key>LSTypeIsPackage</key>\n"
-        "   <false/>\n"
-        "   <key>NSDocumentClass</key>\n"
-        "   <string>OC_GGS_Document</string>\n"
+        "      <key>CFBundleTypeRole</key>\n"
+        "      <string>Editor</string>\n"
+        "      <key>LSHandlerRank</key>\n"
+        "      <string>Default</string>\n"
+        "      <key>LSItemContentTypes</key>\n"
+        "      <array>\n"
+        "        <string>$(PRODUCT_BUNDLE_IDENTIFIER)." ;
+      result << enumerator_1040.current_key (HERE).stringValue () ;
+      result << "</string>\n"
+        "      </array>\n"
+        "      <key>NSDocumentClass</key>\n"
+        "      <string>OC_GGS_Document</string>\n"
         "  </dict>\n" ;
       index_1040_.increment () ;
       enumerator_1040.gotoNextObject () ;
+    }
+  }
+  result << "\n"
+    " </array>\n"
+    " <key>UTExportedTypeDeclarations</key>\n"
+    " <array>\n" ;
+  GALGAS_uint index_1716_ (0) ;
+  if (in_HANDLED_5F_EXTENSION_5F_SET.isValid ()) {
+    cEnumerator_stringset enumerator_1716 (in_HANDLED_5F_EXTENSION_5F_SET, kENUMERATION_UP) ;
+    while (enumerator_1716.hasCurrentObject ()) {
+      result << "  <dict>\n"
+        "    <key>UTTypeConformsTo</key>\n"
+        "    <array>\n"
+        "      <string>public.text</string>\n"
+        "    </array>\n"
+        "    <key>UTTypeDescription</key>\n"
+        "    <string>" ;
+      result << enumerator_1716.current_key (HERE).stringValue () ;
+      result << "</string>\n"
+        "    <key>UTTypeIcons</key>\n"
+        "    <dict>\n"
+        "      <key>UTTypeIconBadgeName</key>\n"
+        "      <string>galgasDocuments</string>\n"
+        "    </dict>\n"
+        "    <key>UTTypeIdentifier</key>\n"
+        "    <string>$(PRODUCT_BUNDLE_IDENTIFIER)." ;
+      result << enumerator_1716.current_key (HERE).stringValue () ;
+      result << "</string>\n"
+        "    <key>UTTypeTagSpecification</key>\n"
+        "    <dict>\n"
+        "      <key>public.filename-extension</key>\n"
+        "      <array>\n"
+        "        <string>" ;
+      result << enumerator_1716.current_key (HERE).stringValue () ;
+      result << "</string>\n"
+        "      </array>\n"
+        "    </dict>\n"
+        "  </dict>\n" ;
+      index_1716_.increment () ;
+      enumerator_1716.gotoNextObject () ;
     }
   }
   result << "\n"

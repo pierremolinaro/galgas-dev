@@ -30,24 +30,49 @@
  <array>
 %for (key) in HANDLED_EXTENSION_SET do
 %  <dict>
-   <key>CFBundleTypeIconFile</key>
-   <string>%!key%_icns</string>
-   <key>CFBundleTypeExtensions</key>
-   <array>
+      <key>CFBundleTypeIconFile</key>
+      <string>%!key%_icns</string>
+      <key>CFBundleTypeIconSystemGenerated</key>
+      <integer>0</integer>
+      <key>CFBundleTypeName</key>
+      <string>%!PROJECT_NAME% Source</string>
+      <key>CFBundleTypeRole</key>
+      <string>Editor</string>
+      <key>LSHandlerRank</key>
+      <string>Default</string>
+      <key>LSItemContentTypes</key>
+      <array>
+        <string>$(PRODUCT_BUNDLE_IDENTIFIER).%!key%</string>
+      </array>
+      <key>NSDocumentClass</key>
+      <string>OC_GGS_Document</string>
+  </dict>
+%end%
+ </array>
+ <key>UTExportedTypeDeclarations</key>
+ <array>
+%for (key) in HANDLED_EXTENSION_SET do
+%  <dict>
+    <key>UTTypeConformsTo</key>
+    <array>
+      <string>public.text</string>
+    </array>
+    <key>UTTypeDescription</key>
     <string>%!key%</string>
-   </array>
-   <key>CFBundleTypeName</key>
-   <string>%!PROJECT_NAME% Source</string>
-   <key>CFBundleTypeOSTypes</key>
-   <array>
-    <string>TEXT</string>
-   </array>
-   <key>CFBundleTypeRole</key>
-   <string>Editor</string>
-   <key>LSTypeIsPackage</key>
-   <false/>
-   <key>NSDocumentClass</key>
-   <string>OC_GGS_Document</string>
+    <key>UTTypeIcons</key>
+    <dict>
+      <key>UTTypeIconBadgeName</key>
+      <string>galgasDocuments</string>
+    </dict>
+    <key>UTTypeIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER).%!key%</string>
+    <key>UTTypeTagSpecification</key>
+    <dict>
+      <key>public.filename-extension</key>
+      <array>
+        <string>%!key%</string>
+      </array>
+    </dict>
   </dict>
 %end%
  </array>
