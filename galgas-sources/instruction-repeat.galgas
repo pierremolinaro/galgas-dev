@@ -53,6 +53,47 @@ syntax extension galgas3SyntaxComponentSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4SyntaxComponentSyntax {
+
+  #·····················································································································
+
+  rule <syntax_instruction>
+    !@syntaxInstructionAST outInstruction {
+    $repeat$
+    let mRepeatInstructionLocation = @location.here
+    <syntax_instruction_list> ?let @syntaxInstructionList mRepeatedInstructionList
+    let endOf_repeated_instructions = @location.here
+    var mRepeatBranchList =@listOfSyntaxInstructionList {}
+    repeat
+      $while$
+      <syntax_instruction_list> ?let @syntaxInstructionList mInstructionList
+      mRepeatBranchList += ! mInstructionList !@location.here
+    while
+    end
+    $end$
+    let endOf_repeat_instruction = @location.here
+    select
+    or
+      $%attribute$ ?let @lstring terminator
+      if terminator.string != "repeat" then
+        error terminator : "the terminator attribute should be '%repeat'" fixit { replace "%repeat" }
+      end
+    end
+    outInstruction = @repeatInstruction.new {
+      !mRepeatInstructionLocation
+      !mRepeatedInstructionList
+      !endOf_repeated_instructions
+      !mRepeatBranchList
+      !endOf_repeat_instruction
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! TRANSFORM
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

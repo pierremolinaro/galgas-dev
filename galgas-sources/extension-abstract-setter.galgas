@@ -35,6 +35,30 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $abstract$
+    $setter$
+    $@type$ ?var  @lstring className indexing typeReferenceAbstractExtensionSetter
+    $identifier$ ?var  @lstring setterName indexing abstractExtensionSetterDefinition
+    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST.new {
+      !false # Is not predefined
+      !className
+      !setterName
+      !formalParameterList
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH                          
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

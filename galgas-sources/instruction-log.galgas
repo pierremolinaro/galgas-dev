@@ -57,6 +57,46 @@ syntax extension galgas3InstructionsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4InstructionsSyntax {
+
+  #·····················································································································
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $log$
+    let instructionLocation = @location.here
+    var @logListAST logList = {}
+    repeat
+      select
+        $identifier$ ?let loggedVariableName
+        logList += !loggedVariableName !@varInExpressionAST.new {!loggedVariableName}
+      or
+        $self$
+        $.$
+        $identifier$ ?let propertyName
+        logList +=
+         !propertyName
+         !@structPropertyAccessExpressionAST.new {!propertyName.location !@selfInExpressionAST.new {!propertyName.location} !propertyName}
+      or
+        $"string"$ ?let logMessage
+        $:$
+        <expression> ?let logExpression
+        logList += !logMessage !logExpression
+      end
+    while
+      $,$
+    end
+    outInstruction = @logInstructionAST.new {
+      !instructionLocation
+      !logList
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
   

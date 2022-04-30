@@ -75,6 +75,52 @@ syntax extension galgas3ExpressionSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <expression> !@semanticExpressionAST outExpression {
+    <expression_or> ?outExpression
+    select
+    or
+      let endOfReceiverExpression = @location.here
+      $is$
+      var @dynamicTypeComparisonKind kind
+      select
+        $==$
+        kind = .equal
+      or
+        $>=$
+        kind = .inherited
+      or
+        $>$
+        kind = .strictlyInherited
+      end
+      $@type$ ?let typeName
+      outExpression = @testDynamicClassInExpressionAST.new {
+        !outExpression
+        !endOfReceiverExpression
+        !kind
+        !typeName
+      }
+    or
+      let endOfReceiverExpression = @location.here
+      $as$
+      $@type$ ?let typeName
+      outExpression = @castInExpressionAST.new {
+        !outExpression
+        !endOfReceiverExpression
+        !typeName
+      }
+    end
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -49,6 +49,45 @@ syntax extension galgas3SyntaxComponentSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4SyntaxComponentSyntax {
+
+  #·····················································································································
+
+  rule <syntax_instruction>
+    !@syntaxInstructionAST outInstruction {
+    $select$
+    let mSelectInstructionLocation = @location.here
+    var mSelectBranchList =@listOfSyntaxInstructionList {}
+    <syntax_instruction_list> ?let @syntaxInstructionList il
+    mSelectBranchList += !il !@location.here
+    repeat
+      $or$
+      <syntax_instruction_list> ?let @syntaxInstructionList instructionList
+      mSelectBranchList += !instructionList !@location.here
+    while
+    end
+    $end$
+    let endOf_select_instruction = @location.here
+    select
+    or
+      $%attribute$ ?let @lstring terminator
+      if terminator.string != "select" then
+        error terminator : "the terminator attribute should be '%select'" fixit { replace "%select" }
+      end
+    end
+    outInstruction = @selectInstruction.new {
+      !mSelectInstructionLocation
+      !mSelectBranchList
+      !endOf_select_instruction
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! TRANSFORM
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

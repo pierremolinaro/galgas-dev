@@ -102,6 +102,81 @@ syntax extension galgas3InstructionsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4InstructionsSyntax {
+
+  #·····················································································································
+
+  rule <issue_fixit> !@fixitListAST outFixitListAST {
+    outFixitListAST = {}
+    select
+    or
+      $fixit$
+      ${$
+      var hasFixItRemove = false
+      repeat
+      while
+        $remove$
+        if hasFixItRemove then
+          warning .here : "duplicated action" fixit { remove }
+        else
+          outFixitListAST += !.fixItRemove
+          hasFixItRemove = true
+        end
+      while
+        $replace$
+        let errorLocation = @location.here
+        <expression> ?let @semanticExpressionAST expression
+        outFixitListAST += !.fixItReplace {!exp:expression !errorLocation:errorLocation}
+      while
+        $after$
+        let errorLocation = @location.here
+        <expression> ?let @semanticExpressionAST expression
+        outFixitListAST += !.fixItInsertAfter {!exp:expression !errorLocation:errorLocation}
+      while
+        $before$
+        let errorLocation = @location.here
+        <expression> ?let @semanticExpressionAST expression
+        outFixitListAST += !.fixItInsertBefore {!exp:expression !errorLocation:errorLocation}
+      end
+      $}$
+    end
+  }
+
+  #·····················································································································
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $error$
+    let instructionLocation = @location.here
+    <expression> ?let @semanticExpressionAST mReceiverExpression
+    $:$
+    <expression> ?let @semanticExpressionAST mErrorExpression
+    var mBuiltVariableList =@lstringlist {}
+    select
+    or
+      $:$
+      repeat
+       $identifier$ ?let builtVariableName
+       mBuiltVariableList += !builtVariableName
+      while
+        $,$
+      end
+    end
+    <issue_fixit> ?let @fixitListAST fixitListAST
+    outInstruction = @errorInstructionAST.new {
+      !instructionLocation
+      !mReceiverExpression
+      !mErrorExpression
+      !mBuiltVariableList
+      !fixitListAST
+    }
+  }  
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

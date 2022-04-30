@@ -36,6 +36,31 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $override$
+    $abstract$
+    $method$
+    $@type$ ?var  @lstring className indexing typeReferenceOverrideAbstractExtensionMethod
+    $identifier$ ?var  @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
+    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST.new {
+      !false # Is not predefined
+      !className
+      !mMethodName
+      !formalParameterList
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   KEY REPRESENTATION                      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

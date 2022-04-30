@@ -1,0 +1,405 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#                                           
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                                                                      *
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                           
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                 
+#                                           
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax galgas3DeclarationsSyntax (galgas3Scanner) {
+
+  #·····················································································································
+
+  rule <declaration_with_private>
+    ?let @bool inIsInternal
+    ?!@galgas3DeclarationAST ioDeclarations
+
+  #·····················································································································
+  #          Start symbol                     
+  #·····················································································································
+
+  rule <start_symbol> ?!@galgas3DeclarationAST ioDeclarations {
+    repeat
+    while
+      $;$
+    while
+      <declaration> !?ioDeclarations
+    end
+  }
+
+  #·····················································································································
+  #          Rules prototypes                 
+  #·····················································································································
+
+  rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList
+  
+  rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList
+  
+  rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
+
+  #·····················································································································
+  #    A T T R I B U T E    I N    C O L L E C T I O N
+  #·····················································································································
+
+  rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
+    var @bool isPublic
+    select
+      isPublic = true
+    or
+      $public$
+      isPublic = true
+    or
+      $private$
+      isPublic = false
+    end
+    var @bool isConstant
+    select
+      $var$
+      isConstant = false
+    or
+      $let$
+      isConstant = true
+    end
+    $@type$ ?let attributeTypeName
+    $identifier$ ?let attributeName
+    var featureList = @lstringlist {}
+    repeat
+    while
+      $%attribute$ ?let @lstring featureName
+      featureList += !featureName
+    end
+    ioAttributeInCollectionList +=
+      !isConstant: isConstant
+      !attributeTypeName
+      !attributeName
+      !isPublic
+      !featureList
+  }
+
+  #·····················································································································
+
+  rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
+    $@type$ ?let propertyTypeName
+    $identifier$ ?let propertyName
+    var featureList = @lstringlist {}
+    repeat
+    while
+      $%attribute$ ?let @lstring featureName
+      featureList += !featureName
+    end
+    ioAttributeInCollectionList +=
+      !isConstant: false
+      !propertyTypeName
+      !propertyName
+      !true
+      !featureList
+    if [option galgas_cli_options.errorOldStylePropertyDeclaration value] then
+      let errorLocation = [propertyTypeName.location union !propertyName.location]
+      error errorLocation
+      : "old style property declaration (due to '--error-old-style-property-declaration' option)"
+      fixit { replace "public var @" + propertyTypeName + " " + propertyName }
+    end
+  }
+
+
+  #·····················································································································
+  #! Filewrapper Declaration
+  #·····················································································································
+
+  rule <declaration_with_private>
+    ?let @bool inIsInternal
+    ?!@galgas3DeclarationAST ioDeclarations
+  {
+    $filewrapper$
+    $identifier$ ?var  @lstring mFilewrapperName indexing filewrapperDefinition
+    $in$
+    $"string"$ ?var  @lstring mFilewrapperPath
+    <filewrapper_text_files> ?let filewrapperTextFileExtensionList
+    <filewrapper_binary_files> ?let filewrapperBinaryFileExtensionList
+    <filewrapper_templates> ?let filewrapperTemplateList
+    ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST.new {
+      !false # Is not predefined
+      !inIsInternal
+      !@string.stringWithSourceFilePath
+      !mFilewrapperName
+      !mFilewrapperPath
+      !filewrapperTextFileExtensionList
+      !filewrapperBinaryFileExtensionList
+      !filewrapperTemplateList
+    }
+  }
+
+  #·····················································································································
+
+  rule <filewrapper_text_files> !@lstringlist outFilewrapperTextFileExtensionList {
+    outFilewrapperTextFileExtensionList = {}
+    ${$
+    select
+    or
+      repeat
+        $"string"$ ?var @lstring pathExtension
+        outFilewrapperTextFileExtensionList += !pathExtension
+      while
+        $,$
+      end
+    end
+    $}$
+  }
+
+  #·····················································································································
+
+  rule <filewrapper_binary_files> !@lstringlist outFilewrapperBinaryFileExtensionList {
+    outFilewrapperBinaryFileExtensionList = {}
+    ${$
+    select
+    or
+      repeat
+        $"string"$ ?var @lstring pathExtension
+        outFilewrapperBinaryFileExtensionList += !pathExtension
+      while
+        $,$
+      end
+    end
+    $}$
+  }
+
+  #·····················································································································
+
+  rule <filewrapper_templates> !@filewrapperTemplateListAST outFilewrapperTemplateList {
+    ${$
+    outFilewrapperTemplateList = {}
+    repeat
+    while
+      $template$
+      $identifier$ ?let mFilewrapperTemplateName
+      $"string"$ ?let mFilewrapperTemplatePath
+      var @formalTemplateInputParameterListAST filewrapperTemplateFormalInputParameters = {}
+      repeat
+      while
+        $?$ ?let selector
+        $@type$ ?var  @lstring typeName
+        var @bool isUnused
+        select
+          isUnused = false
+        or
+          $unused$
+          isUnused = true
+        end
+        $identifier$ ?let argumentName
+        filewrapperTemplateFormalInputParameters += !selector !typeName !argumentName !isUnused
+      end
+      outFilewrapperTemplateList +=
+        !mFilewrapperTemplateName
+        !mFilewrapperTemplatePath
+        !filewrapperTemplateFormalInputParameters
+    end
+    $}$
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax galgas4DeclarationsSyntax (galgas3Scanner) {
+
+  #·····················································································································
+
+  rule <declaration_with_private>
+    ?let @bool inIsInternal
+    ?!@galgas3DeclarationAST ioDeclarations
+
+  #·····················································································································
+  #          Start symbol                     
+  #·····················································································································
+
+  rule <start_symbol> ?!@galgas3DeclarationAST ioDeclarations {
+    repeat
+    while
+      $;$
+    while
+      <declaration> !?ioDeclarations
+    end
+  }
+
+  #·····················································································································
+  #          Rules prototypes                 
+  #·····················································································································
+
+  rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList
+  
+  rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList
+  
+  rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
+
+  #·····················································································································
+  #    A T T R I B U T E    I N    C O L L E C T I O N
+  #·····················································································································
+
+  rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
+    var @bool isPublic
+    select
+      isPublic = true
+    or
+      $public$
+      isPublic = true
+    or
+      $private$
+      isPublic = false
+    end
+    var @bool isConstant
+    select
+      $var$
+      isConstant = false
+    or
+      $let$
+      isConstant = true
+    end
+    $@type$ ?let attributeTypeName
+    $identifier$ ?let attributeName
+    var featureList = @lstringlist {}
+    repeat
+    while
+      $%attribute$ ?let @lstring featureName
+      featureList += !featureName
+    end
+    ioAttributeInCollectionList +=
+      !isConstant: isConstant
+      !attributeTypeName
+      !attributeName
+      !isPublic
+      !featureList
+  }
+
+  #·····················································································································
+
+#  rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
+#    $@type$ ?let propertyTypeName
+#    $identifier$ ?let propertyName
+#    var featureList = @lstringlist {}
+#    repeat
+#    while
+#      $%attribute$ ?let @lstring featureName
+#      featureList += !featureName
+#    end
+#    ioAttributeInCollectionList +=
+#      !isConstant: false
+#      !propertyTypeName
+#      !propertyName
+#      !true
+#      !featureList
+#    if [option galgas_cli_options.errorOldStylePropertyDeclaration value] then
+#      let errorLocation = [propertyTypeName.location union !propertyName.location]
+#      error errorLocation
+#      : "old style property declaration (due to '--error-old-style-property-declaration' option)"
+#      fixit { replace "public var @" + propertyTypeName + " " + propertyName }
+#    end
+#  }
+
+  #·····················································································································
+  #! Filewrapper Declaration
+  #·····················································································································
+
+  rule <declaration_with_private>
+    ?let @bool inIsInternal
+    ?!@galgas3DeclarationAST ioDeclarations
+  {
+    $filewrapper$
+    $identifier$ ?var  @lstring mFilewrapperName indexing filewrapperDefinition
+    $in$
+    $"string"$ ?var  @lstring mFilewrapperPath
+    <filewrapper_text_files> ?let filewrapperTextFileExtensionList
+    <filewrapper_binary_files> ?let filewrapperBinaryFileExtensionList
+    <filewrapper_templates> ?let filewrapperTemplateList
+    ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST.new {
+      !false # Is not predefined
+      !inIsInternal
+      !@string.stringWithSourceFilePath
+      !mFilewrapperName
+      !mFilewrapperPath
+      !filewrapperTextFileExtensionList
+      !filewrapperBinaryFileExtensionList
+      !filewrapperTemplateList
+    }
+  }
+
+  #·····················································································································
+
+  rule <filewrapper_text_files> !@lstringlist outFilewrapperTextFileExtensionList {
+    outFilewrapperTextFileExtensionList = {}
+    ${$
+    select
+    or
+      repeat
+        $"string"$ ?var @lstring pathExtension
+        outFilewrapperTextFileExtensionList += !pathExtension
+      while
+        $,$
+      end
+    end
+    $}$
+  }
+
+  #·····················································································································
+
+  rule <filewrapper_binary_files> !@lstringlist outFilewrapperBinaryFileExtensionList {
+    outFilewrapperBinaryFileExtensionList = {}
+    ${$
+    select
+    or
+      repeat
+        $"string"$ ?var @lstring pathExtension
+        outFilewrapperBinaryFileExtensionList += !pathExtension
+      while
+        $,$
+      end
+    end
+    $}$
+  }
+
+  #·····················································································································
+
+  rule <filewrapper_templates> !@filewrapperTemplateListAST outFilewrapperTemplateList {
+    ${$
+    outFilewrapperTemplateList = {}
+    repeat
+    while
+      $template$
+      $identifier$ ?let mFilewrapperTemplateName
+      $"string"$ ?let mFilewrapperTemplatePath
+      var @formalTemplateInputParameterListAST filewrapperTemplateFormalInputParameters = {}
+      repeat
+      while
+        $?$ ?let selector
+        $@type$ ?var  @lstring typeName
+        var @bool isUnused
+        select
+          isUnused = false
+        or
+          $unused$
+          isUnused = true
+        end
+        $identifier$ ?let argumentName
+        filewrapperTemplateFormalInputParameters += !selector !typeName !argumentName !isUnused
+      end
+      outFilewrapperTemplateList +=
+        !mFilewrapperTemplateName
+        !mFilewrapperTemplatePath
+        !filewrapperTemplateFormalInputParameters
+    end
+    $}$
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

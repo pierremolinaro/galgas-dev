@@ -91,6 +91,69 @@ syntax galgas3OptionComponentSyntax (galgas3Scanner) {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+syntax galgas4OptionComponentSyntax (galgas3Scanner) {
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $option$
+    $identifier$ ?let @lstring optionComponentName
+    ${$
+    var @commandLineOptionListAST options = {}
+    repeat
+    while 
+      <option_declaration> !?options
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@optionComponentDeclarationAST.new {
+      !false
+      !optionComponentName
+      !options
+    }
+  }
+
+  #·····················································································································
+
+  rule <option_declaration> ?!@commandLineOptionListAST ioCommandLineOptionList {
+    $@type$ ?var @lstring mOptionTypeName
+    $identifier$ ?var @lstring mOptionInternalName
+    $:$
+    $'char'$ ?var @lchar mOptionInvocationLetter
+    $,$
+    $"string"$ ?var @lstring mOptionInvocationString
+    $->$
+    $"string"$ ?var @lstring mOptionComment
+    var defaultValue =@lstring.new{!"" !@location.here}
+    var @optionDefaultValueEnumAST optionDefaultValueKind
+    select
+      optionDefaultValueKind = @optionDefaultValueEnumAST. noDefaultValue
+    or
+      $default$
+      select
+        $"string"$ ? defaultValue
+        optionDefaultValueKind = @optionDefaultValueEnumAST. stringDefaultValue
+      or
+        $uint32$ ?var  @luint v
+        defaultValue = @lstring.new {![v.uint string] !v.location}
+        optionDefaultValueKind = @optionDefaultValueEnumAST. unsignedDefaultValue
+      end
+    end
+    ioCommandLineOptionList +=
+      !mOptionTypeName
+      !mOptionInternalName
+      !mOptionInvocationLetter
+      !mOptionInvocationString
+      !mOptionComment
+      !defaultValue
+      !optionDefaultValueKind
+  }
+
+  #·····················································································································
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! ENTER IN GRAPH
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

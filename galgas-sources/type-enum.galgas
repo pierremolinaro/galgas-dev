@@ -21,6 +21,8 @@ list @enumConstantList {
 
 syntax extension galgas3DeclarationsSyntax {
 
+  #·····················································································································
+
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $enum$
     $@type$ ?let mEnumTypeName indexing enumDefinition
@@ -59,6 +61,58 @@ syntax extension galgas3DeclarationsSyntax {
       !defaultConstantName
     }
   }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $enum$
+    $@type$ ?let mEnumTypeName indexing enumDefinition
+    ${$
+    var @enumConstantList mConstantList = {}
+    repeat
+      $case$
+      $identifier$ ?let constantName
+      var @2lstringlist associatedValueTypeList = {}
+      select
+      or
+        $($
+        repeat
+          $@type$ ?let associatedValueType
+          $identifier$ ?let associatedValueName
+          associatedValueTypeList += !associatedValueType !associatedValueName
+        while
+        end
+        $)$
+      end
+      mConstantList += !constantName !associatedValueTypeList
+    while
+    end
+    var @lstring defaultConstantName
+    select
+      defaultConstantName = ["" nowhere]
+    or
+      $default$
+      $identifier$ ?defaultConstantName
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@enumDeclarationAST.new {
+      !false # Is not predefined
+      !mEnumTypeName
+      !mConstantList
+      !defaultConstantName
+    }
+  }
+
+
+  #·····················································································································
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

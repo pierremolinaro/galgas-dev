@@ -4873,79 +4873,6 @@ class cPtr_undefinedLocalConstantDeclarationAST : public cPtr_semanticInstructio
 
 } ;
 
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//                               Bool options                                                    
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkEntityUsefulness ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_gmp ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_displayUnicodeLexicalTestFunctions ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorAnomynousForInstructionEnumeratedObject ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorClassDeclaration ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorEllipsisInEnumeratedObject ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStyleCollectionInitializer ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStyleLocalVarDeclaration ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStylePropertyDeclaration ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorPropertyGetterCall ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorValueClassDeclaration ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateManyFiles ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateOneHeader ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateSharedMapAutomatonDotFiles ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLTypeListFile ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedLexicalActions ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//                               UInt options                                                    
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-extern C_UIntCommandLineOption gOption_galgas_5F_cli_5F_options_macosxSDK ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//                              String options                                                   
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_cppCompile ;
-
-extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_create_5F_project ;
-
-extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_extractLIBPMOption ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//                              String List options                                              
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-//----------------------------------------------------------------------------------------------------------------------
-
 //----------------------------------------------------------------------------------------------------------------------
 //
 //Parser class 'galgas3DeclarationsSyntax' declaration
@@ -6493,6 +6420,8 @@ class GALGAS_extensionGetterAST : public GALGAS_semanticDeclarationAST {
   public: GALGAS_extensionGetterAST (const class cPtr_extensionGetterAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
+  public: class GALGAS_bool readProperty_requiresSelfForAccessingProperty (void) const ;
+
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
 
   public: class GALGAS_lstring readProperty_mExtensionGetterName (void) const ;
@@ -6519,13 +6448,14 @@ class GALGAS_extensionGetterAST : public GALGAS_semanticDeclarationAST {
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_extensionGetterAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                  const class GALGAS_lstring & inOperand1,
+                                                                  const class GALGAS_bool & inOperand1,
                                                                   const class GALGAS_lstring & inOperand2,
-                                                                  const class GALGAS_formalInputParameterListAST & inOperand3,
-                                                                  const class GALGAS_lstring & inOperand4,
+                                                                  const class GALGAS_lstring & inOperand3,
+                                                                  const class GALGAS_formalInputParameterListAST & inOperand4,
                                                                   const class GALGAS_lstring & inOperand5,
-                                                                  const class GALGAS_semanticInstructionListAST & inOperand6,
-                                                                  const class GALGAS_location & inOperand7
+                                                                  const class GALGAS_lstring & inOperand6,
+                                                                  const class GALGAS_semanticInstructionListAST & inOperand7,
+                                                                  const class GALGAS_location & inOperand8
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -6561,6 +6491,7 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
+  public: GALGAS_bool mProperty_requiresSelfForAccessingProperty ;
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mExtensionGetterName ;
   public: GALGAS_formalInputParameterListAST mProperty_mExtensionGetterFormalInputParameterList ;
@@ -6571,6 +6502,7 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
 
 //--- Constructor
   public: cPtr_extensionGetterAST (const GALGAS_bool & in_mIsPredefined,
+                                   const GALGAS_bool & in_requiresSelfForAccessingProperty,
                                    const GALGAS_lstring & in_mTypeName,
                                    const GALGAS_lstring & in_mExtensionGetterName,
                                    const GALGAS_formalInputParameterListAST & in_mExtensionGetterFormalInputParameterList,
@@ -6616,6 +6548,8 @@ class GALGAS_extensionMethodAST : public GALGAS_semanticDeclarationAST {
   public: GALGAS_extensionMethodAST (const class cPtr_extensionMethodAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
+  public: class GALGAS_bool readProperty_requiresSelfForAccessingProperty (void) const ;
+
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
 
   public: class GALGAS_lstring readProperty_mExtensionMethodName (void) const ;
@@ -6638,11 +6572,12 @@ class GALGAS_extensionMethodAST : public GALGAS_semanticDeclarationAST {
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_extensionMethodAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                  const class GALGAS_lstring & inOperand1,
+                                                                  const class GALGAS_bool & inOperand1,
                                                                   const class GALGAS_lstring & inOperand2,
-                                                                  const class GALGAS_formalParameterListAST & inOperand3,
-                                                                  const class GALGAS_semanticInstructionListAST & inOperand4,
-                                                                  const class GALGAS_location & inOperand5
+                                                                  const class GALGAS_lstring & inOperand3,
+                                                                  const class GALGAS_formalParameterListAST & inOperand4,
+                                                                  const class GALGAS_semanticInstructionListAST & inOperand5,
+                                                                  const class GALGAS_location & inOperand6
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -6678,6 +6613,7 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
+  public: GALGAS_bool mProperty_requiresSelfForAccessingProperty ;
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mExtensionMethodName ;
   public: GALGAS_formalParameterListAST mProperty_mExtensionMethodFormalParameterList ;
@@ -6686,6 +6622,7 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
 
 //--- Constructor
   public: cPtr_extensionMethodAST (const GALGAS_bool & in_mIsPredefined,
+                                   const GALGAS_bool & in_requiresSelfForAccessingProperty,
                                    const GALGAS_lstring & in_mTypeName,
                                    const GALGAS_lstring & in_mExtensionMethodName,
                                    const GALGAS_formalParameterListAST & in_mExtensionMethodFormalParameterList,
@@ -6729,6 +6666,8 @@ class GALGAS_extensionSetterAST : public GALGAS_semanticDeclarationAST {
   public: GALGAS_extensionSetterAST (const class cPtr_extensionSetterAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
+  public: class GALGAS_bool readProperty_requiresSelfForAccessingProperty (void) const ;
+
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
 
   public: class GALGAS_lstring readProperty_mExtensionSetterName (void) const ;
@@ -6751,11 +6690,12 @@ class GALGAS_extensionSetterAST : public GALGAS_semanticDeclarationAST {
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_extensionSetterAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                  const class GALGAS_lstring & inOperand1,
+                                                                  const class GALGAS_bool & inOperand1,
                                                                   const class GALGAS_lstring & inOperand2,
-                                                                  const class GALGAS_formalParameterListAST & inOperand3,
-                                                                  const class GALGAS_semanticInstructionListAST & inOperand4,
-                                                                  const class GALGAS_location & inOperand5
+                                                                  const class GALGAS_lstring & inOperand3,
+                                                                  const class GALGAS_formalParameterListAST & inOperand4,
+                                                                  const class GALGAS_semanticInstructionListAST & inOperand5,
+                                                                  const class GALGAS_location & inOperand6
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -6791,6 +6731,7 @@ class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
+  public: GALGAS_bool mProperty_requiresSelfForAccessingProperty ;
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mExtensionSetterName ;
   public: GALGAS_formalParameterListAST mProperty_mExtensionSetterFormalParameterList ;
@@ -6799,6 +6740,7 @@ class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
 
 //--- Constructor
   public: cPtr_extensionSetterAST (const GALGAS_bool & in_mIsPredefined,
+                                   const GALGAS_bool & in_requiresSelfForAccessingProperty,
                                    const GALGAS_lstring & in_mTypeName,
                                    const GALGAS_lstring & in_mExtensionSetterName,
                                    const GALGAS_formalParameterListAST & in_mExtensionSetterFormalParameterList,
@@ -8085,6 +8027,8 @@ class GALGAS_overridingExtensionGetterAST : public GALGAS_semanticDeclarationAST
   public: GALGAS_overridingExtensionGetterAST (const class cPtr_overridingExtensionGetterAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
+  public: class GALGAS_bool readProperty_requiresSelfForAccessingProperty (void) const ;
+
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
 
   public: class GALGAS_lstring readProperty_mOverridingExtensionGetterName (void) const ;
@@ -8111,13 +8055,14 @@ class GALGAS_overridingExtensionGetterAST : public GALGAS_semanticDeclarationAST
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_overridingExtensionGetterAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                            const class GALGAS_lstring & inOperand1,
+                                                                            const class GALGAS_bool & inOperand1,
                                                                             const class GALGAS_lstring & inOperand2,
-                                                                            const class GALGAS_formalInputParameterListAST & inOperand3,
-                                                                            const class GALGAS_lstring & inOperand4,
+                                                                            const class GALGAS_lstring & inOperand3,
+                                                                            const class GALGAS_formalInputParameterListAST & inOperand4,
                                                                             const class GALGAS_lstring & inOperand5,
-                                                                            const class GALGAS_semanticInstructionListAST & inOperand6,
-                                                                            const class GALGAS_location & inOperand7
+                                                                            const class GALGAS_lstring & inOperand6,
+                                                                            const class GALGAS_semanticInstructionListAST & inOperand7,
+                                                                            const class GALGAS_location & inOperand8
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8153,6 +8098,7 @@ class cPtr_overridingExtensionGetterAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
+  public: GALGAS_bool mProperty_requiresSelfForAccessingProperty ;
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mOverridingExtensionGetterName ;
   public: GALGAS_formalInputParameterListAST mProperty_mOverridingExtensionGetterFormalInputParameterList ;
@@ -8163,6 +8109,7 @@ class cPtr_overridingExtensionGetterAST : public cPtr_semanticDeclarationAST {
 
 //--- Constructor
   public: cPtr_overridingExtensionGetterAST (const GALGAS_bool & in_mIsPredefined,
+                                             const GALGAS_bool & in_requiresSelfForAccessingProperty,
                                              const GALGAS_lstring & in_mTypeName,
                                              const GALGAS_lstring & in_mOverridingExtensionGetterName,
                                              const GALGAS_formalInputParameterListAST & in_mOverridingExtensionGetterFormalInputParameterList,
@@ -8208,6 +8155,8 @@ class GALGAS_overridingExtensionMethodAST : public GALGAS_semanticDeclarationAST
   public: GALGAS_overridingExtensionMethodAST (const class cPtr_overridingExtensionMethodAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
+  public: class GALGAS_bool readProperty_requiresSelfForAccessingProperty (void) const ;
+
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
 
   public: class GALGAS_lstring readProperty_mOverridingExtensionMethodName (void) const ;
@@ -8230,11 +8179,12 @@ class GALGAS_overridingExtensionMethodAST : public GALGAS_semanticDeclarationAST
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_overridingExtensionMethodAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                            const class GALGAS_lstring & inOperand1,
+                                                                            const class GALGAS_bool & inOperand1,
                                                                             const class GALGAS_lstring & inOperand2,
-                                                                            const class GALGAS_formalParameterListAST & inOperand3,
-                                                                            const class GALGAS_semanticInstructionListAST & inOperand4,
-                                                                            const class GALGAS_location & inOperand5
+                                                                            const class GALGAS_lstring & inOperand3,
+                                                                            const class GALGAS_formalParameterListAST & inOperand4,
+                                                                            const class GALGAS_semanticInstructionListAST & inOperand5,
+                                                                            const class GALGAS_location & inOperand6
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8270,6 +8220,7 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
+  public: GALGAS_bool mProperty_requiresSelfForAccessingProperty ;
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mOverridingExtensionMethodName ;
   public: GALGAS_formalParameterListAST mProperty_mOverridingExtensionMethodFormalParameterList ;
@@ -8278,6 +8229,7 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
 
 //--- Constructor
   public: cPtr_overridingExtensionMethodAST (const GALGAS_bool & in_mIsPredefined,
+                                             const GALGAS_bool & in_requiresSelfForAccessingProperty,
                                              const GALGAS_lstring & in_mTypeName,
                                              const GALGAS_lstring & in_mOverridingExtensionMethodName,
                                              const GALGAS_formalParameterListAST & in_mOverridingExtensionMethodFormalParameterList,
@@ -8321,6 +8273,8 @@ class GALGAS_overridingExtensionSetterAST : public GALGAS_semanticDeclarationAST
   public: GALGAS_overridingExtensionSetterAST (const class cPtr_overridingExtensionSetterAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
+  public: class GALGAS_bool readProperty_requiresSelfForAccessingProperty (void) const ;
+
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
 
   public: class GALGAS_lstring readProperty_mOverridingExtensionSetterName (void) const ;
@@ -8343,11 +8297,12 @@ class GALGAS_overridingExtensionSetterAST : public GALGAS_semanticDeclarationAST
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_overridingExtensionSetterAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                            const class GALGAS_lstring & inOperand1,
+                                                                            const class GALGAS_bool & inOperand1,
                                                                             const class GALGAS_lstring & inOperand2,
-                                                                            const class GALGAS_formalParameterListAST & inOperand3,
-                                                                            const class GALGAS_semanticInstructionListAST & inOperand4,
-                                                                            const class GALGAS_location & inOperand5
+                                                                            const class GALGAS_lstring & inOperand3,
+                                                                            const class GALGAS_formalParameterListAST & inOperand4,
+                                                                            const class GALGAS_semanticInstructionListAST & inOperand5,
+                                                                            const class GALGAS_location & inOperand6
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8383,6 +8338,7 @@ class cPtr_overridingExtensionSetterAST : public cPtr_semanticDeclarationAST {
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
+  public: GALGAS_bool mProperty_requiresSelfForAccessingProperty ;
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mOverridingExtensionSetterName ;
   public: GALGAS_formalParameterListAST mProperty_mOverridingExtensionSetterFormalParameterList ;
@@ -8391,6 +8347,7 @@ class cPtr_overridingExtensionSetterAST : public cPtr_semanticDeclarationAST {
 
 //--- Constructor
   public: cPtr_overridingExtensionSetterAST (const GALGAS_bool & in_mIsPredefined,
+                                             const GALGAS_bool & in_requiresSelfForAccessingProperty,
                                              const GALGAS_lstring & in_mTypeName,
                                              const GALGAS_lstring & in_mOverridingExtensionSetterName,
                                              const GALGAS_formalParameterListAST & in_mOverridingExtensionSetterFormalParameterList,

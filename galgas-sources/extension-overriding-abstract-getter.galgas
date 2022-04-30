@@ -45,6 +45,39 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $override$
+    $abstract$
+    $getter$
+    $@type$ ?let className indexing typeReferenceOverrideAbstractExtensionGetter
+    $identifier$ ?let mGetterName indexing overrideAbstractExtensionGetterDefinition
+    <formal_input_parameter_list> ?let @formalInputParameterListAST mFormalInputParameterList
+    $->$
+    $@type$ ?var  @lstring mReturnedTypeName
+    select
+      $identifier$ ? let idf
+      warning idf : "an identifier is no longer required here" fixit { remove }
+    or
+    end
+    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST.new {
+      !false # Is not predefined
+      !className
+      !mGetterName
+      !mFormalInputParameterList
+      !mReturnedTypeName
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   KEY REPRESENTATION                      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

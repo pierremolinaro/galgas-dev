@@ -32,6 +32,29 @@ syntax extension galgas3InstructionsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4InstructionsSyntax {
+
+  #·····················································································································
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $drop$
+    let instructionLocation = @location.here
+    var @lstringlist dropList = {}
+    repeat
+      $identifier$ ?let variableName
+      dropList += !variableName
+    while
+      $,$
+    end
+    outInstruction = @dropInstructionAST.new {!instructionLocation !dropList}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

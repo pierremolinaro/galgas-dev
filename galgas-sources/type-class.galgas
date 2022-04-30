@@ -21,6 +21,8 @@ func weakSuffix -> @string { result = "-weak" }
 
 syntax extension galgas3DeclarationsSyntax {
 
+  #·····················································································································
+
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     var @bool isAbstract
     select
@@ -96,6 +98,94 @@ syntax extension galgas3DeclarationsSyntax {
       }
     end
   }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    var @bool isAbstract
+    select
+      isAbstract = false
+    or
+      $abstract$
+      isAbstract = true
+    end
+#    var @bool isReference
+    $class$
+#    select
+#      $class$
+#      if [option galgas_cli_options.errorClassDeclaration value] then
+#        error .here : "'class' declaration is obsolete, use 'valueclass'"
+#      else
+#        warning .here : "'class' declaration is obsolete, use 'valueclass'"
+#      end
+#      isReference = false
+#    or
+#      $valueclass$
+#      isReference = false
+#    or
+#      $refclass$
+#      isReference = true
+#    end
+#    if not isReference && [option galgas_cli_options.errorValueClassDeclaration value] then
+#      error .here : "'value class' is obsolete, use 'refclass'"
+#    end
+    $@type$ ?let @lstring className indexing classDefinition
+    var @lstring superClassName # Empty if no super class
+    select
+      superClassName = ["" nowhere]
+    or
+      $:$
+      $@type$ ? superClassName indexing classReferencedAsSuperClass
+    end
+    var classFeatureList = @lstringlist {}
+    repeat
+    while
+      $%attribute$ ?var  @lstring classFeatureName
+      classFeatureList += !classFeatureName
+    end
+    ${$
+    var @string mClassMessage = ""
+  #--- Class properties
+    var @propertyInCollectionListAST propertyList = {}
+    repeat
+    while
+      <property_declaration> !? propertyList
+    while
+      $;$
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@classDeclarationAST.new {
+      !false # Is not predefined
+      !isAbstract
+      !true
+      !className
+      !superClassName # Empty if no super class
+      !classFeatureList
+      !propertyList
+    }
+  #--- Assiciated Weak Type
+    ioDeclarations.mDeclarationList += !@weakReferenceDeclarationAST.new {
+      !false # Is not predefined
+      !className
+      !.new {!className.string + weakSuffix () !className.location}
+      !if superClassName.string == ""
+         then superClassName
+         else .new {!superClassName.string + "-weak" !superClassName.location}
+       end
+      !classFeatureList
+      !propertyList
+    }
+  }
+
+  #·····················································································································
 
 }
 

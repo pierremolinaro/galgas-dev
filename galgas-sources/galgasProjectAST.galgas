@@ -1,0 +1,28 @@
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                           
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                 
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @galgas3QualifiedFeatureList {
+  public var @lstring mFeatureName
+  public var @lstring mFeatureValue
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct @galgas3ProjectComponentAST {
+  public var @lstringlist mProjectSourceList
+  public var @luint mMajorVersion
+  public var @luint mMinorVersion
+  public var @luint mRevisionVersion
+  public var @lstringlist mGenerationFeatureList
+  public var @galgas3QualifiedFeatureList mQualifiedFeatureList
+  public var @lstring mTargetName
+  public var @location mEndOfSourceFile
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

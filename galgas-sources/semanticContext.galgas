@@ -207,19 +207,19 @@ map @syntaxComponentMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @semanticContext {
-  public var @unifiedTypeMap mTypeMap
-  public var @routineMap mRoutineMap
-  public var @functionMap mFunctionMap
-  public var @filewrapperMap mFilewrapperMap
-  public var @grammarMap mGrammarMap
-  public var @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis
-  public var @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis
-  public var @syntaxComponentMap mSyntaxComponentMapForSemanticAnalysis
+  public var @unifiedTypeMap mTypeMap %selector
+  public var @routineMap mRoutineMap %selector
+  public var @functionMap mFunctionMap %selector
+  public var @filewrapperMap mFilewrapperMap %selector
+  public var @grammarMap mGrammarMap %selector
+  public var @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis %selector
+  public var @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis %selector
+  public var @syntaxComponentMap mSyntaxComponentMapForSemanticAnalysis %selector
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#    E X T E N S I O N    M E T H O D    M A P                                                                           *
+#    E X T E N S I O N    M E T H O D    M A P
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

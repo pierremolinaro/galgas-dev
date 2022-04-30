@@ -13,6 +13,8 @@ refclass @listDeclarationAST : @semanticDeclarationAST {
 
 syntax extension galgas3DeclarationsSyntax {
 
+  #·····················································································································
+
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $list$
     $@type$ ?var @lstring listTypeName indexing listDefinition, structDefinition "-element"
@@ -33,6 +35,39 @@ syntax extension galgas3DeclarationsSyntax {
       !propertyList
     }
   }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $list$
+    $@type$ ?var @lstring listTypeName indexing listDefinition, structDefinition "-element"
+    ${$
+    var @propertyInCollectionListAST propertyList = {}
+    repeat
+      <property_declaration> !?propertyList
+      select
+      or
+        $;$
+      end
+    while
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@listDeclarationAST.new {
+      !false # Is not predefined
+      !listTypeName
+      !propertyList
+    }
+  }
+
+  #·····················································································································
 
 }
 

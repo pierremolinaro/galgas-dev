@@ -76,6 +76,64 @@ syntax extension galgas3ExpressionSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4ExpressionSyntax {
+
+  #·····················································································································
+
+  rule <optional_type> !@lstring outTypeName {
+    select
+      outTypeName = .new {!"" !.here}
+    or
+      $@type$ ?outTypeName indexing typeReferenceInConstructor
+    end
+  }
+  
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+  #--- Type name
+    <optional_type> ?let @lstring typeName
+    $.$
+    let startOfExpression = @location.here
+  #--- Constructor name
+    $identifier$ ?let @lstring constructorName
+  #--- Actual arguments
+    var @actualOutputExpressionList expressionList
+    select
+      expressionList = {}
+    or
+      ${$
+      <output_expression_list> ?expressionList
+      $}$
+    or
+      $($
+      <output_expression_list> ?expressionList
+      $)$
+    end
+    let endOfExpression = @location.here
+    outExpression = @constructorExpressionAST.new {
+      !typeName
+      !constructorName
+      !expressionList
+      ![startOfExpression union !endOfExpression]
+    }
+  }
+  
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    <optional_type> ?let @lstring typeName
+    $.$
+    $default$
+    outExpression = @defaultConstructorExpressionAST.new {!typeName}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -162,9 +220,9 @@ private proc analyzeConstructorInvocation
   if [option galgas_cli_options.errorOldStyleCollectionInitializer value] && ([inInitializerEffectiveParameterExpressions length] == 0) then
     let oldInitializers = @stringset {!"emptyList", !"emptyMap", !"emptySortedList", !"emptyDict"}
     if [oldInitializers hasKey !inConstructorName.string] then
-    error inLocationForOldStyleCollectionInitializerError
-    : "old style collection initializer call (due to '--error-old-syle-collection-initializer' option)"
-    fixit { replace " {}" }
+      error inLocationForOldStyleCollectionInitializerError
+      : "old style collection initializer call (due to '--error-old-syle-collection-initializer' option)"
+      fixit { replace " {}" }
     end
   end
 }

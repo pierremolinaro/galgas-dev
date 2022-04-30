@@ -174,7 +174,6 @@ proc analyzeRoutineBody
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @formalParameterListAST inRoutineSignatureAST
-#  ?localConstantList: let @localConstantList inLocalConstantList
   ?nonMutablePropertyList: let @typedPropertyList inNonMutableTypedAttributeList
   ?mutablePropertyList: let @typedPropertyList inMutableTypedAttributeList
   ?let @semanticInstructionListAST inInstructionList
@@ -183,16 +182,9 @@ proc analyzeRoutineBody
   !@formalParameterListForGeneration outRoutineSignature
 {
   var variableMap = @localVarManager.default
-#--- Declare local constants
-#  for (mType mName mNoWarningIfUnused mCppName) in inLocalConstantList do
-#    if mNoWarningIfUnused then
-#      [!?variableMap insertUsedLocalConstant !mName !mType !mCppName !inAnalysisContext.mSelfObjectCppName]
-#    else
-#      [!?variableMap insertLocalConstant !mName !mType !mCppName !inAnalysisContext.mSelfObjectCppName]
-#    end
-#  end
 #--- Enter non mutable instance attributes
-  if not [option galgas_cli_options.propertyAccessRequiresSelf value] then
+#  if not [option galgas_cli_options.propertyAccessRequiresSelf value] then
+  if not inAnalysisContext.requiresSelfForAccessingProperty then
     for (mPropertyTypeEntry mPropertyName * *) in inNonMutableTypedAttributeList do
       [!?variableMap insertNonMutableProperty
         !mPropertyName
@@ -203,7 +195,8 @@ proc analyzeRoutineBody
     end
   end
 #--- Enter mutable instance attributes
-  if not [option galgas_cli_options.propertyAccessRequiresSelf value] then
+#  if not [option galgas_cli_options.propertyAccessRequiresSelf value] then
+  if not inAnalysisContext.requiresSelfForAccessingProperty then
     for (mPropertyTypeEntry mPropertyName * *) in inMutableTypedAttributeList do
       [!?variableMap insertMutableProperty
         !mPropertyName
@@ -322,13 +315,13 @@ override method @procDeclarationAST semanticAnalysis
     !""
     !selfType: .none
     !""
+    !requiresSelfForAccessingProperty: true # self.requiresSelfForAccessingProperty
   }
   analyzeRoutineBody (
     !nameForUsefulness
     !?ioUsefulEntitiesGraph
     !analysisContext
     !self.mFormalArgumentList
-#    !localConstantList: {}
     !nonMutablePropertyList: @typedPropertyList {}
     !mutablePropertyList: @typedPropertyList {}
     !self.mRoutineInstructionList
@@ -369,7 +362,8 @@ proc analyzeFunctionBody
 {
   var variableMap = @localVarManager.default
 #--- Enter instance attributes
-  if not [option galgas_cli_options.propertyAccessRequiresSelf value] then
+#  if not [option galgas_cli_options.propertyAccessRequiresSelf value] then
+  if not inAnalysisContext.requiresSelfForAccessingProperty then
     for (mPropertyTypeEntry mPropertyName * *) in inTypedAttributeList do
       [!?variableMap insertNonMutableProperty
         !mPropertyName
@@ -457,6 +451,7 @@ override method @functionDeclarationAST semanticAnalysis
     !""
     !selfType: .none
     !""
+    !requiresSelfForAccessingProperty: true # self.requiresSelfForAccessingProperty
   }
   analyzeFunctionBody (
     !nameForUsefulness
@@ -514,6 +509,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
     !""
     !selfType: .none
     !""
+    !requiresSelfForAccessingProperty: true # self.requiresSelfForAccessingProperty
   }
   analyzeFunctionBody (
     !nameForUsefulness
@@ -1809,6 +1805,7 @@ proc semanticAnalysisOfSyntaxComponent
     !""
     !selfType: .none
     !""
+    !requiresSelfForAccessingProperty: false # self.requiresSelfForAccessingProperty
   }
 #--- Rule list
   var @uint selectMethodCount = 0

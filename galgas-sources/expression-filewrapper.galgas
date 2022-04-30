@@ -63,6 +63,45 @@ syntax extension galgas3ExpressionSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    $[$
+    $filewrapper$
+    $identifier$ ?let filewrapperName indexing filewrapperReference
+    select
+      outExpression = @filewrapperObjectInstanciationInExpressionAST.new {
+        !filewrapperName
+      }
+    or
+      $.$
+      select
+        $"string"$ ?let @lstring filePath
+        outExpression = @filewrapperInExpressionAST.new {
+          !filewrapperName
+          !filePath
+        }
+      or
+        $identifier$ ?let @lstring filewrapperTemplateName
+        <output_expression_list> ?let @actualOutputExpressionList expressionList
+        outExpression = @filewrapperTemplateInExpressionAST.new {
+          !filewrapperName
+          !filewrapperTemplateName
+          !expressionList
+        }
+      end
+    end
+    $]$
+  }  
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

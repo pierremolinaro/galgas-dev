@@ -31,6 +31,26 @@ syntax extension galgas3ExpressionSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <factor> !@semanticExpressionAST outExpression {
+    <primary> ? outExpression
+    repeat
+    while
+      $.$
+      $identifier$ ?let structFieldName
+      outExpression = @structPropertyAccessExpressionAST.new {!structFieldName.location !outExpression !structFieldName}
+    end
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

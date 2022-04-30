@@ -89,6 +89,70 @@ syntax extension galgas3ExpressionSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <relation_factor> !@semanticExpressionAST outExpression {
+    <simple_expression> ? outExpression
+    repeat
+    while
+      let operatorLocation = @location.here
+      $==$
+      let leftOperand = outExpression
+      <simple_expression> ?let rightOperand
+      outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.equal !rightOperand}
+    while
+      let operatorLocation = @location.here
+      $!=$
+      let leftOperand = outExpression
+      <simple_expression> ?let rightOperand
+      outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.notEqual !rightOperand}
+    while
+      let operatorLocation = @location.here
+      $<=$
+      let leftOperand = outExpression
+      <simple_expression> ?let rightOperand
+      outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.lowerOrEqual !rightOperand}
+    while
+      let operatorLocation = @location.here
+      $>=$
+      let leftOperand = outExpression
+      <simple_expression> ?let rightOperand
+      outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.greaterOrEqual !rightOperand}
+    while
+      let operatorLocation = @location.here
+      $>$
+      let leftOperand = outExpression
+      <simple_expression> ?let rightOperand
+      outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.greaterThan !rightOperand}
+    while
+      let operatorLocation = @location.here
+      $<$
+      let leftOperand = outExpression
+      <simple_expression> ?let rightOperand
+      outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.lowerThan !rightOperand}
+    while
+      let operatorLocation = @location.here
+      $===$
+      let leftOperand = outExpression
+      <simple_expression> ?let rightOperand
+      outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.sameInstance !rightOperand}
+    while
+      let operatorLocation = @location.here
+      $!==$
+      let leftOperand = outExpression
+      <simple_expression> ?let rightOperand
+      outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.differentInstances !rightOperand}
+    end
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

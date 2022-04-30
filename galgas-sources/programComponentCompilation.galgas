@@ -203,6 +203,7 @@ proc compileProgramComponentGalgas3
     !""
     !selfType: .none
     !""
+    !requiresSelfForAccessingProperty: false # self.requiresSelfForAccessingProperty
   }
 #--- Analyse 'before' instructions
   var @programListForGeneration decoratedDeclarationListForGeneration = {}

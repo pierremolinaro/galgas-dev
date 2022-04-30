@@ -49,6 +49,45 @@ syntax extension galgas3SyntaxComponentSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4SyntaxComponentSyntax {
+
+  #·····················································································································
+
+  rule <syntax_instruction> !@syntaxInstructionAST outInstruction {
+    $parse$
+    let instructionLocation = @location.here
+    $do$
+    var mParseDoBranchList =@listOfSyntaxInstructionList {}
+    <syntax_instruction_list> ?let @syntaxInstructionList il
+    mParseDoBranchList += !il !@location.here
+    repeat
+      $rewind$
+      <syntax_instruction_list> ?let @syntaxInstructionList instructionList
+      mParseDoBranchList += !instructionList !@location.here
+    while
+    end
+    $end$
+    let endOfInstruction = @location.here
+    select
+    or
+      $%attribute$ ?let @lstring terminator
+      if terminator.string != "parse" then
+        error terminator : "the terminator attribute should be '%parse'" fixit { replace "%parse" }
+      end
+    end
+    outInstruction = @parseRewindInstruction.new {
+      !instructionLocation
+      !mParseDoBranchList
+      !endOfInstruction
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! TRANSFORM
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

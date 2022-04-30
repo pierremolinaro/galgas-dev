@@ -76,6 +76,49 @@ syntax extension galgas3ExpressionSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    $uint32$ ?let @luint literalInt
+    outExpression = @literalUIntExpressionAST.new {!literalInt}
+  }
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    $sint32_S$ ?let @lsint literalInt
+    outExpression = @literalSIntExpressionAST.new {!literalInt}
+  }
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    $uint64_L$ ?let @luint64 literalInt
+    outExpression = @literalUInt64ExpressionAST.new {!literalInt}
+  }
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    $sint64_LS$ ?let @lsint64 literalInt
+    outExpression = @literalSInt64ExpressionAST.new {!literalInt}
+  }
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    $bigint_G$ ?let @lbigint literalInt
+    outExpression = @literalBigIntExpressionAST.new {!literalInt}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

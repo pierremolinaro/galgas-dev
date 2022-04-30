@@ -178,6 +178,132 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·····················································································································
+  
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $map$
+  #--- Map type name
+    $@type$ ?var  @lstring mMapTypeName indexing mapDefinition, structDefinition "-element"
+  #--- Map attributes
+    var @lstringlist mapAttributeList = {}
+    repeat
+    while
+      $%attribute$ ?let attribute
+      mapAttributeList += !attribute
+    end
+  #--- Map properties
+    ${$
+    var propertyList =@propertyInCollectionListAST {}
+    var mInsertMethodList =@insertMethodListAST {}
+    var @mapSearchMethodListAST mSearchMethodList = {}
+    var @mapRemoveMethodListAST mRemoveMethodList = {}
+    var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = {}
+    repeat
+    while
+      <property_declaration> !? propertyList
+    while
+      <map_insert_setter_declaration> !? mInsertMethodList
+    while
+      <search_declaration> !?mSearchMethodList
+    while
+      <remove_declaration> !?mRemoveMethodList
+    while
+      <insert_or_replace_declaration> !?insertOrReplaceDeclarationListAST
+    while
+      $;$
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@mapDeclarationAST.new {
+      !false # Is not predefined
+      !mMapTypeName
+      !mapAttributeList
+      !propertyList
+      !mInsertMethodList
+      !mSearchMethodList
+      !mRemoveMethodList
+      !insertOrReplaceDeclarationListAST
+    }
+  }
+  
+  #·····················································································································
+
+  rule <search_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
+    $search$
+    $identifier$ ?var  @lstring methodName
+    var @bool locationAttribute
+    select
+      locationAttribute = false
+    or
+      $%attribute$ ?let attribute
+      if attribute.string == "location" then
+        locationAttribute = true
+      else
+        error attribute : "only the %location is allowed here" : locationAttribute fixit { replace "%location" }
+      end
+    end
+    $error$
+    $message$
+    $"string"$ ?var  @lstring errorMessage
+    ioMapSearchMethodListAST += !methodName !errorMessage !.new {!"" !.here} !locationAttribute
+  }
+
+  #·····················································································································
+
+  rule <remove_declaration> ?!@mapRemoveMethodListAST ioMapRemoveMethodListAST {
+    $remove$
+    $identifier$ ?var  @lstring mMethodName
+    $error$
+    $message$
+    $"string"$ ?var  @lstring mErrorMessage
+    ioMapRemoveMethodListAST += !mMethodName !mErrorMessage
+  }
+
+  #·····················································································································
+
+  rule <insert_or_replace_declaration> ?!@insertOrReplaceDeclarationListAST ioInsertOrReplaceDeclarationListAST {
+    $insert$
+    $or$
+    $replace$
+    ioInsertOrReplaceDeclarationListAST += !@location.here
+  }
+
+  #·····················································································································
+
+  rule <map_insert_setter_declaration> ?!@insertMethodListAST ioMapMethodList {
+    $insert$
+    $identifier$ ?var  @lstring mMethodName
+    var @lstring stateName
+    select
+      stateName = @lstring.new {!"" !@location.here}
+    or
+      $state$
+      $identifier$ ? stateName
+    end
+    $error$
+    $message$
+    $"string"$ ?var  @lstring mErrorMessage
+    var @lstring mShadowErrorMessage
+    select
+      mShadowErrorMessage = @lstring.new {!"" !@location.here}
+    or
+      $,$
+      $"string"$ ? mShadowErrorMessage
+    end
+    ioMapMethodList +=
+      !mMethodName
+      !mErrorMessage
+      !mShadowErrorMessage
+      !stateName
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   ASSOCIATED ELEMENT                      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

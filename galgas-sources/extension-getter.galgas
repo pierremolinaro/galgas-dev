@@ -3,6 +3,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @extensionGetterAST : @semanticDeclarationAST {
+  private let @bool requiresSelfForAccessingProperty %selector
   private let @lstring mTypeName
   private let @lstring mExtensionGetterName
   private let @formalInputParameterListAST mExtensionGetterFormalInputParameterList
@@ -40,6 +41,48 @@ syntax extension galgas3DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@extensionGetterAST.new {
       !false # Is not predefined
+      !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
+      !className
+      !mMethodName
+      !mFormalInputParameterList
+      !mReturnedTypeName
+      !resultVariableName
+      !routineInstructionList
+      !endOfInstructionList
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $getter$
+    $@type$ ?var  @lstring className indexing typeReferenceExtensionGetter
+    $identifier$ ?var  @lstring mMethodName indexing extensionGetterDefinition
+    var @formalInputParameterListAST mFormalInputParameterList
+    <formal_input_parameter_list> ? mFormalInputParameterList
+    $->$
+    $@type$ ?var  @lstring mReturnedTypeName
+    var @lstring resultVariableName
+    select
+      $identifier$ ?resultVariableName
+    or
+      resultVariableName = .new {!"result" !.here}
+    end
+    ${$
+    <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
+    let @location endOfInstructionList = @location.here
+    $}$
+    ioDeclarations.mDeclarationList += !@extensionGetterAST.new {
+      !false # Is not predefined
+      !requiresSelfForAccessingProperty: true
       !className
       !mMethodName
       !mFormalInputParameterList
@@ -143,6 +186,7 @@ override method @extensionGetterAST semanticAnalysis
     !selfObjectName
     !selfType: .available {!type:  selfType !mutable: false !mutableproperties: false}
     !selfObjectAccessor
+    !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
   }
   var @unifiedTypeMap-entry returnType
   var @string returnVariableCppName

@@ -123,6 +123,100 @@ syntax extension galgas3InstructionsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4InstructionsSyntax {
+
+  #·····················································································································
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $switch$
+    let instructionLocation = @location.here
+    <expression> ?let switchExpression
+    let endOfSwitchExpression = @location.here
+    var @switchBranchesAST switchBranches = {}
+    repeat
+      $case$
+      <switch_case>
+        ?let @lstringlist constantNameList
+        ?let @switchExtractedValuesListAST associatedValuesExtraction
+      $:$
+      <semantic_instruction_list> ?let instructions
+      switchBranches += !constantNameList !associatedValuesExtraction !instructions !@location.here
+    while
+    end
+    $end$
+    let endOfSwitchInstruction = @location.here
+    select
+    or
+      $%attribute$ ?let @lstring terminator
+      if terminator.string != "switch" then
+        error terminator : "the terminator attribute should be '%switch'" fixit { replace "%switch" }
+      end
+    end
+    outInstruction = @switchInstructionAST.new {
+      !instructionLocation
+      !switchExpression
+      !endOfSwitchExpression
+      !switchBranches
+      !endOfSwitchInstruction
+    }
+  }
+
+  #·····················································································································
+
+  rule <switch_case>
+    !@lstringlist outConstantNameList
+    !@switchExtractedValuesListAST outAssociatedValuesExtraction
+  {
+    outConstantNameList = {}
+    repeat
+      $identifier$ ?let @lstring constantName
+      outConstantNameList += !constantName
+    while
+      $,$
+    end
+    outAssociatedValuesExtraction = {}
+    select
+    or
+      $($
+      repeat
+        select
+          $uint32$ ?let n
+          $*$
+          for * in 0 ..< n.uint do
+            outAssociatedValuesExtraction += !["" nowhere] !["" nowhere] !false
+          end
+         or
+          $*$
+          outAssociatedValuesExtraction += !["" nowhere] !["" nowhere] !false
+         or
+          var @lstring typeName
+          select
+            $@type$ ?typeName
+          or
+            typeName = ["" nowhere]
+          end
+          var @bool constantMarkedAsUnused
+          select
+            constantMarkedAsUnused = false
+          or
+            $unused$
+            constantMarkedAsUnused = true
+          end
+          $identifier$ ?let @lstring constantName
+          outAssociatedValuesExtraction += !typeName !constantName !constantMarkedAsUnused
+        end
+      while
+      end
+      $)$
+    end
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

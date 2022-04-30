@@ -55,6 +55,47 @@ syntax extension galgas3SyntaxComponentSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4SyntaxComponentSyntax {
+
+  #·····················································································································
+
+  rule <syntax_instruction>
+    !@syntaxInstructionAST outInstruction {
+    $parse$
+    let instructionLocation = @location.here
+    $loop$
+    <expression> ?let @semanticExpressionAST variantExpression
+    let endOfVariantExpression = @location.here
+    $while$
+    <expression> ?let @semanticExpressionAST whileExpression
+    let endOfWhileExpression = @location.here
+    $do$
+    <syntax_instruction_list> ?let @syntaxInstructionList instructionList
+    $end$
+    let endOfInstructionList = @location.here
+    select
+    or
+      $%attribute$ ?let @lstring terminator
+      if terminator.string != "parse" then
+        error terminator : "the terminator attribute should be '%parse'" fixit { replace "%parse" }
+      end
+    end
+    outInstruction = @parseLoopInstruction.new {
+      !instructionLocation
+      !variantExpression
+      !endOfVariantExpression
+      !whileExpression
+      !endOfWhileExpression
+      !instructionList
+      !endOfInstructionList}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! TRANSFORM
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

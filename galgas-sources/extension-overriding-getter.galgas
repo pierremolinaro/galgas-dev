@@ -3,6 +3,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @overridingExtensionGetterAST : @semanticDeclarationAST {
+  private let @bool requiresSelfForAccessingProperty %selector
   private let @lstring mTypeName
   private let @lstring mOverridingExtensionGetterName
   private let @formalInputParameterListAST mOverridingExtensionGetterFormalInputParameterList
@@ -40,6 +41,48 @@ syntax extension galgas3DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST.new {
       !false # Is not predefined
+      !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
+      !className
+      !mMethodName
+      !formalInputParameterList
+      !mReturnedTypeName
+      !resultVariableName
+      !routineInstructionList
+      !endOfInstructionList
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $override$
+    $getter$
+    $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionGetter
+    $identifier$ ?let @lstring mMethodName indexing overrideExtensionGetterDefinition
+    <formal_input_parameter_list> ?let formalInputParameterList
+    $->$
+    $@type$ ?var  @lstring mReturnedTypeName
+    var @lstring resultVariableName
+    select
+      $identifier$ ?resultVariableName
+    or
+      resultVariableName = .new {!"result" !.here}
+    end
+    ${$
+    <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
+    let @location endOfInstructionList = @location.here
+    $}$
+    ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST.new {
+      !false # Is not predefined
+      !requiresSelfForAccessingProperty: true
       !className
       !mMethodName
       !formalInputParameterList
@@ -146,6 +189,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
     !"object"
     !selfType: .available {!type: selfType !mutable: false !mutableproperties: true}
     !"object."
+    !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
   }
   analyzeFunctionBody (
     !nameForUsefulness

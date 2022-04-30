@@ -196,6 +196,155 @@ syntax extension galgas3InstructionsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4InstructionsSyntax {
+
+  #·····················································································································
+
+  rule <expression_or> !@semanticExpressionAST outExpression
+
+  #·····················································································································
+
+  rule <if_instruction_core> !@semanticInstructionAST outInstruction {
+    let instructionLocation = @location.here
+    <if_expression> ?let testExpression
+    $then$
+    <semantic_instruction_list> ?let then_instructionList
+    let endOf_then_branchLocation = @location.here
+    var @semanticInstructionListAST else_instructionList
+    select
+      else_instructionList = @semanticInstructionListAST {}
+    or
+      $else$
+      <semantic_instruction_list> ? else_instructionList
+    or
+      $elsif$
+      <if_instruction_core> ?let instruction
+      else_instructionList = {!instruction}
+    end
+    outInstruction = @ifInstructionAST.new {
+      !instructionLocation
+      !testExpression
+      !then_instructionList
+      !endOf_then_branchLocation
+      !else_instructionList
+      !@location.here
+    }
+  }
+  
+  #·····················································································································
+  
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $if$
+    <if_instruction_core> ?outInstruction
+    $end$
+    select
+    or
+      $%attribute$ ?let @lstring terminator
+      if terminator.string != "if" then
+        error terminator : "the terminator attribute should be '%if'" fixit { replace "%if" }
+      end
+    end
+  }
+
+  #·····················································································································
+
+  rule <if_expression> !@ifExpressionList outExpressionList {
+    outExpressionList = {}
+    repeat
+      select
+        $let$
+        $identifier$ ?let constantName
+        $=$
+        <expression_or> ?let expression
+        let endOfReceiverExpression = @location.here
+        select
+          outExpressionList += !.letExp {
+            !constantName: constantName
+            !exp: expression
+            !endOfExp: endOfReceiverExpression
+            !typeName: ["" here]
+          }
+        or
+          $as$
+          $@type$ ?let @lstring typeName
+          outExpressionList += !.letExp {
+            !constantName: constantName
+            !exp: expression
+            !endOfExp: endOfReceiverExpression
+            !typeName: typeName
+          }
+        end
+      or
+        $let$
+        $[$
+        <expression> ?let @semanticExpressionAST receiverExpression
+        $identifier$ ?let @lstring optionalMethodName
+        var @optionalMethodActualArgumentList optionalMethodActualArgumentList = {}
+        repeat
+        while
+          $!$ ?let selector
+          <expression> ?let expression
+          optionalMethodActualArgumentList += !selector !.actualOutput {!expression: expression !location: .here}
+        while
+          $?$ ?let selector
+          select
+            $let$
+            var @lstring typeName 
+            select
+              typeName = ["" nowhere]
+            or
+              $@type$ ?typeName  
+            end
+            $identifier$ ?let constantName
+            optionalMethodActualArgumentList += !selector !.actualLetInput {!typeName: typeName !constantName: constantName}
+          or
+            $var$
+            var @lstring typeName 
+            select
+              typeName = ["" nowhere]
+            or
+              $@type$ ?typeName  
+            end
+           $identifier$ ?let variableName
+            optionalMethodActualArgumentList += !selector !.actualVarInput {!typeName: typeName !variableName: variableName}
+          or
+            $*$
+            optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: true !location: .here !idx: 0}
+          or
+            $uint32$ ?let repetitionCount
+            $*$
+            if selector.string != "" then
+              error selector : "the selector should be '?'"  fixit { replace "?" }
+            end
+            if repetitionCount.uint == 0 then
+              error repetitionCount : "the repetition count should be > 0"
+            end
+            for i in 0 ..< repetitionCount.uint do
+              optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: false !location: .here !idx: i}
+            end
+          end
+        end
+        $]$
+        outExpressionList += !.optionalMethodCall {
+          !receiver: receiverExpression 
+          !optionalMethodName: optionalMethodName
+          !parameters: optionalMethodActualArgumentList
+        }
+      or
+        <expression> ?let expression
+        outExpressionList += !.regularExp {!exp: expression}
+      end
+    while
+      $,$
+    end
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

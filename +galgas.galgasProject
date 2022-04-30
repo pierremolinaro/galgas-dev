@@ -32,7 +32,7 @@ project (3:4:5) -> "galgas" {
 #  "galgas-sources/json.galgas"
 
 #--- Command Line Options
-  "galgas-sources/galgas_cli_options.galgas"
+  "galgas-sources/galgasCommandLineOptions.galgas"
 
 #--- Cocoa Interface
   "galgas-sources/cocoaGalgas.galgas"
@@ -52,7 +52,7 @@ project (3:4:5) -> "galgas" {
   "galgas-sources/template-switch-instruction.galgas"
 
 #--- Lexique Component
-  "galgas-sources/galgas3LexiqueComponentSyntax.galgas"
+  "galgas-sources/galgasLexiqueComponentSyntax.galgas"
   "galgas-sources/lexiqueTypesForAST.galgas"
   "galgas-sources/lexiqueSemantics.galgas"
   "galgas-sources/lexicalUnicodeTestFunctions.galgas"
@@ -150,7 +150,7 @@ project (3:4:5) -> "galgas" {
   "galgas-sources/expression-or.galgas"
   "galgas-sources/expression-and.galgas"
 
-  "galgas-sources/galgas3ExpressionSyntax.galgas"
+  "galgas-sources/galgasExpressionSyntax.galgas"
   "galgas-sources/semanticExpressionAnalysis.galgas"
 
 #--- Instructions
@@ -203,31 +203,31 @@ project (3:4:5) -> "galgas" {
   "galgas-sources/programComponentCompilation.galgas"
 
 #--- Main program
-  "galgas-sources/galgas_prgm.galgas"
+  "galgas-sources/galgasProgram.galgas"
 
 #--- Project component
   "galgas-sources/projectGlobalCheckings.galgas"
   "galgas-sources/libpmHandling.galgas"
 #
 #--- GALGAS Project
-  "galgas-sources/galgas3Scanner.galgas"
-  "galgas-sources/galgas3ProjectSyntax.galgas"
-  "galgas-sources/galgas3ProjectGrammar.galgas"
-  "galgas-sources/galgas3projectAST.galgas"
+  "galgas-sources/galgasScanner.galgas"
+  "galgas-sources/galgasProjectSyntax.galgas"
+  "galgas-sources/galgasProjectGrammar.galgas"
+  "galgas-sources/galgasProjectAST.galgas"
 
 #--- GALGAS File
-  "galgas-sources/galgas3ParameterArgumentSyntax.galgas"
-  "galgas-sources/galgas3InstructionsSyntax.galgas"
-  "galgas-sources/galgas3DeclarationsSyntax.galgas"
-  "galgas-sources/galgas3SyntaxComponentSyntax.galgas"
-  "galgas-sources/galgas3GrammarComponentSyntax.galgas"
-  "galgas-sources/galgas3ProgramDeclarations.galgas"
-  "galgas-sources/galgas3Grammar.galgas"
+  "galgas-sources/galgasParameterArgumentSyntax.galgas"
+  "galgas-sources/galgasInstructionsSyntax.galgas"
+  "galgas-sources/galgasDeclarationsSyntax.galgas"
+  "galgas-sources/galgasSyntaxComponentSyntax.galgas"
+  "galgas-sources/galgasGrammarComponentSyntax.galgas"
+  "galgas-sources/galgasProgramDeclarations.galgas"
+  "galgas-sources/galgasGrammar.galgas"
 
-  "galgas-sources/galgas3SemanticDeclarationCompilation.galgas"
+  "galgas-sources/galgasSemanticDeclarationCompilation.galgas"
 
   "galgas-sources/XcodeProjectNewGeneration.galgas"
-  "galgas-sources/galgas3TargetGeneration.galgas"
+  "galgas-sources/galgasTargetGeneration.galgas"
 
 #--- Hand coded sources
   %tool-source : "hand_coded_sources/cDecisionTableElement.cpp"

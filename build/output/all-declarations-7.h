@@ -2497,6 +2497,11 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
     return mProperty_mSelfObjectCppPrefixForAccessingProperty ;
   }
 
+  public: GALGAS_bool mProperty_requiresSelfForAccessingProperty ;
+  public: inline GALGAS_bool readProperty_requiresSelfForAccessingProperty (void) const {
+    return mProperty_requiresSelfForAccessingProperty ;
+  }
+
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
   public: VIRTUAL_IN_DEBUG void drop (void) ;
@@ -2525,6 +2530,10 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
     mProperty_mSelfObjectCppPrefixForAccessingProperty = inValue ;
   }
 
+  public: inline void setter_setRequiresSelfForAccessingProperty (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_requiresSelfForAccessingProperty = inValue ;
+  }
+
 //--------------------------------- Virtual destructor (in debug mode)
   public: virtual ~ GALGAS_analysisContext (void) ;
 
@@ -2533,7 +2542,8 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
                                   const GALGAS_predefinedTypes & in_mPredefinedTypes,
                                   const GALGAS_string & in_mSelfObjectCppName,
                                   const GALGAS_selfAvailability & in_selfType,
-                                  const GALGAS_string & in_mSelfObjectCppPrefixForAccessingProperty) ;
+                                  const GALGAS_string & in_mSelfObjectCppPrefixForAccessingProperty,
+                                  const GALGAS_bool & in_requiresSelfForAccessingProperty) ;
 
 //-- Start of generic part --*
 
@@ -2550,7 +2560,8 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
                                                                const class GALGAS_predefinedTypes & inOperand1,
                                                                const class GALGAS_string & inOperand2,
                                                                const class GALGAS_selfAvailability & inOperand3,
-                                                               const class GALGAS_string & inOperand4
+                                                               const class GALGAS_string & inOperand4,
+                                                               const class GALGAS_bool & inOperand5
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'

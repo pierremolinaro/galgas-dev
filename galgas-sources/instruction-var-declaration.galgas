@@ -40,6 +40,35 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $var$
+    $@type$ ?let typeName
+    $identifier$ ?let variableName
+    outInstruction = @localVariableDeclarationAST.new {!typeName.location !typeName !variableName !false}
+  }
+
+  #·····················································································································
+
+#  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+#    $@type$ ?let typeName
+#    $identifier$ ?let variableName
+#    outInstruction = @localVariableDeclarationAST.new {!typeName.location !typeName !variableName !false}
+#    if [option galgas_cli_options.errorOldStyleLocalVarDeclaration value] then
+#      error typeName : "old style local variable declaration (due to '--error-old-style-local-var-declaration' option)"
+#      fixit { replace "var @" + typeName }
+#    end
+#  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

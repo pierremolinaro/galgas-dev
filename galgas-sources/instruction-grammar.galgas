@@ -174,6 +174,112 @@ syntax extension galgas3InstructionsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4InstructionsSyntax {
+
+  #·····················································································································
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $grammar$
+    let instructionLocation = @location.here
+    $identifier$ ?let @lstring grammarComponentName indexing grammarComponentReference
+    var @lstring labelName
+    select
+      labelName = @lstring.new {!"" !@location.here}
+    or
+      $label$
+      $identifier$ ?labelName
+    end
+    <grammar_instruction_core> !instructionLocation !grammarComponentName !labelName ?outInstruction
+  }
+  
+  #·····················································································································
+
+  rule <grammar_instruction_core>
+    ?let @location inInstructionLocation
+    ?let @lstring inGrammarComponentName
+    ?let @lstring inLabelName
+    !@semanticInstructionAST outInstruction
+  {
+    $in$
+    <expression> ?let @semanticExpressionAST mSourceExpression
+    let endOfSourceExpression = @location.here
+    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+  #--- Get syntax directed translation result string
+    var @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
+    select
+      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
+    or
+      $:>$
+      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
+    end
+    outInstruction = @grammarInFileInstructionAST.new {
+      !inInstructionLocation
+      !inGrammarComponentName
+      !inLabelName
+      !mSourceExpression
+      !endOfSourceExpression
+      !actualParameterList
+      !grammarInstructionSyntaxDirectedTranslationResult
+    }
+  }
+
+  #·····················································································································
+
+  rule <grammar_instruction_core>
+    ?let @location inInstructionLocation
+    ?let @lstring inGrammarComponentName
+    ?let @lstring inLabelName
+    !@semanticInstructionAST outInstruction
+  {
+    $on$
+    var @semanticExpressionAST sourceExpression
+    var @location endOfSourceExpression
+    var @semanticExpressionAST nameExpression
+    var @location endOfNameExpression
+    select
+      <expression> ?sourceExpression
+      endOfSourceExpression = .here
+      nameExpression = @literalStringExpressionAST.new {!.here !{!""}}
+      endOfNameExpression = .here
+      warning .here : "obsolete syntax, use '... on (source_string, name_string) ...'"
+        + " instead of '... on source_string ...' ; you can use empty string \"\" for name_string"
+    or
+      $($
+      <expression> ?sourceExpression
+      endOfSourceExpression = .here
+      $,$
+      <expression> ?nameExpression
+      endOfNameExpression = .here
+      $)$
+    end
+    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+  #--- Get syntax directed translation result string
+    var @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
+    select
+      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
+    or
+      $:>$
+      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
+    end
+    outInstruction = @grammarInStringInstructionAST.new {
+      !inInstructionLocation
+      !inGrammarComponentName
+      !inLabelName
+      !sourceExpression
+      !endOfSourceExpression
+      !nameExpression
+      !endOfNameExpression
+      !actualParameterList
+      !grammarInstructionSyntaxDirectedTranslationResult
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

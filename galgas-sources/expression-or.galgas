@@ -89,6 +89,52 @@ syntax extension galgas3ExpressionSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <expression_or> !@semanticExpressionAST outExpression {
+    <expression_and> ? outExpression
+    repeat
+    while
+      let operatorLocation = @location.here
+      $|$
+      let leftOperand = outExpression
+      <expression_and> ?let rightOperand
+      outExpression = @orExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+    while
+      let operatorLocation = @location.here
+      $||$
+      let leftOperand = outExpression
+      <expression_and> ?let rightOperand
+      outExpression = @orShortExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+    while
+      let operatorLocation = @location.here
+      $^$
+      let leftOperand = outExpression
+      <expression_and> ?let rightOperand
+      outExpression = @xorExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+    while
+      let operatorLocation = @location.here
+      $...$
+      let leftOperand = outExpression
+      <expression_and> ?let rightOperand
+      outExpression = @closedSliceExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+    while
+      let operatorLocation = @location.here
+      $..<$
+      let leftOperand = outExpression
+      <expression_and> ?let rightOperand
+      outExpression = @openedSliceExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+    end
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

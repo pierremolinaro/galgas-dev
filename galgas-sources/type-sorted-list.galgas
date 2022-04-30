@@ -69,6 +69,61 @@ syntax extension galgas3DeclarationsSyntax {
   }
 
   #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <declaration>
+    ?!@galgas3DeclarationAST ioDeclarations
+  {
+    $sortedlist$
+    $@type$ ?let sortedListTypeName indexing sortedListDefinition, structDefinition "-element"
+    ${$
+    var @propertyInCollectionListAST attributeList = {}
+    repeat
+    while
+      <property_declaration> !? attributeList
+    while
+      $;$
+    end
+    $}$
+    ${$
+    var @sortedListSortDescriptorListAST sortDescriptorList = {}
+    repeat
+      <sortedlist_sort_descriptor> !? sortDescriptorList
+    while
+      $,$
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@sortedListDeclarationAST.new {
+      !false # Is not predefined
+      !sortedListTypeName
+      !attributeList
+      !sortDescriptorList
+    }
+  }
+
+  #·····················································································································
+
+  rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList {
+    $identifier$ ?var  @lstring mSortedAttributeName
+    var @bool mAscending
+    select
+      $<$
+      mAscending = true
+    or
+      $>$
+      mAscending = false
+    end
+    ioSortedListSortDescriptorList += !mSortedAttributeName !mAscending
+  }
+
+  #·····················································································································
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

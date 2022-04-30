@@ -13,6 +13,8 @@ refclass @boolsetDeclarationAST : @semanticDeclarationAST {
 
 syntax extension galgas3DeclarationsSyntax {
 
+  #·····················································································································
+
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $boolset$
     $@type$ ?let @lstring boolsetTypeName indexing structDefinition
@@ -31,6 +33,37 @@ syntax extension galgas3DeclarationsSyntax {
       !slotList
     }
   }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $boolset$
+    $@type$ ?let @lstring boolsetTypeName indexing structDefinition
+    ${$
+    var @lstringlist slotList = {}
+    repeat
+      $identifier$ ?let slotName
+      slotList += !slotName
+    while
+      $,$
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@boolsetDeclarationAST.new {
+      !false # Is not predefined
+      !boolsetTypeName
+      !slotList
+    }
+  }
+
+  #·····················································································································
 
 }
 

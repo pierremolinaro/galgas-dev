@@ -178,6 +178,129 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $extern$
+    $@type$ ?var  @lstring externTypeName indexing externTypeDefinition
+    <externtype_cpp_predeclaration> ?let cppPredeclarationCode
+    <externtype_cpp_classdeclaration> ?let cppClassCode
+    ${$
+    var @externTypeConstructorList externTypeConstructorList =  {}
+    var @externTypeGetterList externTypeGetterList = {}
+    var @externTypeSetterList externTypeSetterList = {}
+    var @externTypeMethodList externTypeMethodList = {}
+    repeat
+    while
+      <externtype_constructor> !?externTypeConstructorList
+    while
+      <externtype_getter> !?externTypeGetterList
+    while
+      <externtype_setter> !?externTypeSetterList
+    while
+      <externtype_method> !?externTypeMethodList
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@externTypeDeclarationAST.new {
+      !false # Is not predefined
+      !externTypeName
+      !cppPredeclarationCode
+      !cppClassCode
+      !externTypeConstructorList
+      !externTypeGetterList
+      !externTypeSetterList
+      !externTypeMethodList
+    }
+  }
+
+  #·····················································································································
+ 
+  rule <externtype_cpp_predeclaration> !@string outCppPredeclarationCode {
+    ${$
+    outCppPredeclarationCode = ""
+    repeat
+    while
+      $"string"$ ?var  @lstring cppPredeclarationCodeElement
+      outCppPredeclarationCode += cppPredeclarationCodeElement.string
+    end
+    $}$
+  }
+
+  #·····················································································································
+ 
+  rule <externtype_cpp_classdeclaration> !@string outCppClassCode {
+    ${$
+    outCppClassCode = ""
+    repeat
+    while
+      $"string"$ ?var  @lstring cppPredeclarationCodeElement
+      outCppClassCode += cppPredeclarationCodeElement.string
+    end
+    $}$
+  }
+
+  #·····················································································································
+
+  rule <externtype_constructor> ?!@externTypeConstructorList ioExternTypeConstructorList {
+    $constructor$
+    $identifier$ ?let @lstring constructorName
+    var @typeNameFormalParameterNameList argumentTypeList = {}
+    repeat
+    while
+      $?$ ?let selector
+      $@type$ ?let @lstring argumentTypeName
+      $identifier$ ?let @lstring argumentName
+      argumentTypeList += !selector !argumentTypeName !argumentName
+    end
+    $->$
+    $@type$ ?let @lstring resultTypeName
+    ioExternTypeConstructorList += !constructorName !resultTypeName !argumentTypeList
+  }
+
+  #·····················································································································
+
+  rule <externtype_getter> ?!@externTypeGetterList ioExternTypeGetterList {
+    $getter$
+    $identifier$ ?let @lstring getterName
+    var @typeNameFormalParameterNameList argumentTypeList = {}
+    repeat
+    while
+      $?$ ?let selector
+      $@type$ ?let @lstring argumentTypeName
+      $identifier$ ?let @lstring argumentName
+      argumentTypeList += !selector !argumentTypeName !argumentName
+    end
+    $->$
+    $@type$ ?let @lstring resultTypeName
+    ioExternTypeGetterList += !getterName !resultTypeName !argumentTypeList
+  }
+
+  #·····················································································································
+
+  rule <externtype_setter> ?!@externTypeSetterList ioExternTypeSetterList {
+    $setter$
+    $identifier$ ?let @lstring setterName
+    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+    ioExternTypeSetterList += !setterName !formalParameterList
+  }
+
+  #·····················································································································
+
+  rule <externtype_method> ?!@externTypeMethodList ioExternTypeMethodList {
+    $method$
+    $identifier$ ?let @lstring methodName
+    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+    ioExternTypeMethodList += !methodName !formalParameterList !.here
+  }
+
+  #·····················································································································
+ 
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH                          
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

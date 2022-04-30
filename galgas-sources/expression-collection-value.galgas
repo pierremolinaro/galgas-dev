@@ -86,6 +86,57 @@ syntax extension galgas3ExpressionSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    <optional_type> ?let @lstring typeName
+    ${$
+    var @collectionValueElementList elementList = {}
+    select
+    or
+      repeat
+        <collection_value_element> ?let @abstractCollectionValueElement element
+        elementList += !element
+      while
+        $,$
+      end
+    end
+    outExpression = @collectionValueAST.new {
+      !typeName
+      !elementList
+      !.here
+    }  
+    $}$
+  }
+  
+  #·····················································································································
+  
+  rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
+    var @actualOutputExpressionList expressionList = {}
+    repeat
+      $!$ ?let selector
+      <expression> ?let @semanticExpressionAST expression
+      expressionList += !selector !expression !@location.here
+    while
+    end
+    outValueElement = @expressionListCollectionValue.new {!expressionList !@location.here}
+  }
+  
+  #·····················································································································
+  
+  rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
+    <expression> ?let @semanticExpressionAST expression
+    outValueElement = @expressionCollectionValue.new {!expression !@location.here}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

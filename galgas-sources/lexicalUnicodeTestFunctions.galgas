@@ -112,6 +112,62 @@ syntax extension galgas3LexiqueComponentSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4LexiqueComponentSyntax {
+
+  #·····················································································································
+
+  rule <lexical_function_declaration> ?!@lexicalFunctionListAST ioLexicalFunctionListAST {
+    $func$
+    $identifier$ ?let functionName
+    $:$
+    <lexical_function_expression> ?let @lexicalFunctionExpressionAST expression
+    ioLexicalFunctionListAST += !functionName !expression
+  }
+
+  #·····················································································································
+
+  rule <lexical_function_expression> !@lexicalFunctionExpressionAST outExpression {
+    <lexical_function_term> ?outExpression
+  }
+
+  #·····················································································································
+
+  rule <lexical_function_term> !@lexicalFunctionExpressionAST outExpression {
+    <lexical_function_factor> ?outExpression
+    repeat
+    while
+      $|$
+      <lexical_function_factor> ?let rightExpression
+      outExpression = @lexicalFunctionOrExpressionAST.new {!outExpression !rightExpression}
+    end
+  }
+
+  #·····················································································································
+
+  rule <lexical_function_factor> !@lexicalFunctionExpressionAST outExpression {
+    $'char'$ ?let character
+    select
+      outExpression = @lexicalFunctionCharacterMatchAST.new {!character}
+    or
+      $->$
+      $'char'$ ?let upperBound
+      outExpression = @lexicalFunctionCharacterIntervalMatchAST.new {!character !upperBound}
+    end
+  }
+
+  #·····················································································································
+
+  rule <lexical_function_factor> !@lexicalFunctionExpressionAST outExpression {
+    $identifier$ ?let functionName
+    outExpression = @lexicalFunctionCallAST.new {!functionName}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC ANALYSIS                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

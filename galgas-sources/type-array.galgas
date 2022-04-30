@@ -14,6 +14,8 @@ refclass @arrayDeclarationAST : @semanticDeclarationAST {
 
 syntax extension galgas3DeclarationsSyntax {
 
+  #·····················································································································
+
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $array$
   #--- Map type name
@@ -30,6 +32,35 @@ syntax extension galgas3DeclarationsSyntax {
       !dimension
     }
   }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $array$
+  #--- Map type name
+    $@type$ ?let @lstring arrayTypeName indexing arrayTypeDefinition
+    $:$
+    $@type$ ?var  @lstring elementListTypeName indexing arrayElementTypeReference
+    $[$
+    $uint32$ ?var  @luint dimension
+    $]$
+    ioDeclarations.mDeclarationList += !@arrayDeclarationAST.new {
+      !false # Is not predefined
+      !arrayTypeName
+      !elementListTypeName
+      !dimension
+    }
+  }
+
+  #·····················································································································
 
 }
 

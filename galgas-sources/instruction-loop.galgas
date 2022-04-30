@@ -69,6 +69,58 @@ syntax extension galgas3InstructionsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4InstructionsSyntax {
+
+  #·····················································································································
+
+  rule <semantic_instruction>
+    !@semanticInstructionAST outInstruction {
+    $loop$
+    let instructionLocation = @location.here
+  #--- Variant
+    $($
+    <expression> ?var @semanticExpressionAST mVariantExpression
+    let mEndOfVariantExpression = @location.here
+    $)$
+  #---
+    <semantic_instruction_list> ?var @semanticInstructionListAST mFirstInstructions
+  #---
+    let mEndOfFirstInstructions = @location.here
+    $while$
+    <expression> ?let @semanticExpressionAST mLoopExpression
+    let mEndOfLoopExpression = @location.here
+    $do$
+    <semantic_instruction_list> ?let @semanticInstructionListAST mSecondInstructions
+    let mEndOfSecondInstructions = @location.here
+    $end$
+    select
+    or
+      $%attribute$ ?let @lstring terminator
+      if terminator.string != "loop" then
+        error terminator : "the terminator attribute should be '%loop'" fixit { replace "%loop" }
+      end
+    end
+    let mEndOfLoopInstruction = @location.here
+    outInstruction = @loopInstructionAST.new {
+      !instructionLocation
+      !mVariantExpression
+      !mEndOfVariantExpression
+      !mFirstInstructions
+      !mEndOfFirstInstructions
+      !mLoopExpression
+      !mEndOfLoopExpression
+      !mSecondInstructions
+      !mEndOfSecondInstructions
+      !mEndOfLoopInstruction
+    }
+  }  
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

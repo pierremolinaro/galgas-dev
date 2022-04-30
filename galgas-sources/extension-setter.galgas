@@ -3,6 +3,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @extensionSetterAST : @semanticDeclarationAST {
+  private let @bool requiresSelfForAccessingProperty %selector
   private let @lstring mTypeName
   private let @lstring mExtensionSetterName
   private let @formalParameterListAST mExtensionSetterFormalParameterList
@@ -29,6 +30,37 @@ syntax extension galgas3DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@extensionSetterAST.new {
       !false # Is not predefined
+      !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
+      !className
+      !setterName
+      !formalParameterList
+      !routineInstructionList
+      !endOfSetterLocation
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $setter$
+    $@type$ ?var  @lstring className indexing typeReferenceExtensionSetter
+    $identifier$ ?var  @lstring setterName indexing extensionSetterDefinition
+    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+    ${$
+    <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
+    let @location endOfSetterLocation = @location.here
+    $}$
+    ioDeclarations.mDeclarationList += !@extensionSetterAST.new {
+      !false # Is not predefined
+      !requiresSelfForAccessingProperty: true
       !className
       !setterName
       !formalParameterList
@@ -131,6 +163,7 @@ override method @extensionSetterAST semanticAnalysis
     !selfObjectName
     !selfType: .available {!type:  selfType !mutable: true !mutableproperties: true}
     !selfObjectAccessor
+    !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
   }
   analyzeRoutineBody (
     !nameForUsefulness

@@ -34,7 +34,7 @@ refclass @enumeratedCollectionVarInExpAST : @abstractEnumeratedCollectionAST {
 
 refclass @enumeratedCollectionCstListInExpAST : @abstractEnumeratedCollectionAST {
   private let @forInstructionEnumeratedObjectElementListAST mElementList
-  private let @bool mEndsWithEllipsis
+  private let @bool mEndsWithEllipsis %selector
   private let @semanticExpressionAST mEnumeratedExpression
   private let @location mEndOfEnumerationExpression
 }
@@ -137,7 +137,226 @@ syntax extension galgas3InstructionsSyntax {
     <expression> ?let @semanticExpressionAST enumeratedExpression
     outEnumeratedObject = @enumeratedCollectionCstListInExpAST.new {
       !elementList
-      !endsWithEllipsis
+      !mEndsWithEllipsis: false
+      !enumeratedExpression
+      !location
+    }
+  }
+  
+  #·····················································································································
+  
+  rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
+    var @lstring typeName
+    select
+      typeName = ["" nowhere]
+    or
+      $@type$ ?typeName
+    end
+    @lstring enumerationVariable
+    select
+      $*$
+      enumerationVariable = ["" here]
+    or
+      $identifier$ ?enumerationVariable
+    end
+    $in$
+    <expression> ?let @semanticExpressionAST enumeratedExpression
+    outEnumeratedObject = @enumeratedCollectionVarInExpAST.new {
+      !typeName
+      !enumerationVariable
+      !enumeratedExpression
+      !@location.here
+    }
+  }
+  
+  #·····················································································································
+  
+  rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
+    $($
+    let startLocation = @location.here
+    $)$
+    var @lstring prefix
+    select
+      prefix = ["" nowhere]
+    or
+      $identifier$ ?prefix
+    end
+    let endLocation = @location.here
+    $in$
+    <expression> ?let @semanticExpressionAST enumeratedExpression
+    outEnumeratedObject = @enumeratedCollectionImplicitVarInExpAST.new {
+      !prefix
+      !enumeratedExpression
+      ![startLocation union !endLocation]
+    }
+  }
+  
+  #·····················································································································
+  
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $for$
+    let instructionLocation = @location.here
+    var mEnumeratedObjectList =@forInstructionEnumeratedObjectListAST {}
+    repeat
+      var @bool ascending
+      select
+        ascending = true
+      or
+        $>$
+        ascending = false
+      end
+      <for_instruction_enumerated_object> ?let @abstractEnumeratedCollectionAST enumeratedObject
+      mEnumeratedObjectList += !ascending !enumeratedObject
+    while
+      $,$
+    end
+    var @semanticExpressionAST mWhileExpression
+    select
+      mWhileExpression = @trueExpressionAST.new {!@location.here}
+    or
+      $while$
+      <expression> ? mWhileExpression
+    end
+    let endof_while_expression = @location.here
+    var @semanticInstructionListAST mBeforeInstructionList
+    select
+      mBeforeInstructionList = @semanticInstructionListAST {}
+    or
+      $before$
+      <semantic_instruction_list> ? mBeforeInstructionList
+    end
+    let endof_before_branch = @location.here
+    $do$
+    var @lstring indexVariableName
+    select
+      indexVariableName = @lstring.new {!"" !@location.here}
+    or
+      $($
+      $identifier$ ? indexVariableName
+      $)$
+    end
+    var @semanticInstructionListAST mDoInstructionList
+    <semantic_instruction_list> ? mDoInstructionList
+    let endof_do_branch = @location.here
+    var @semanticInstructionListAST mBetweenInstructionList
+    select
+      mBetweenInstructionList = @semanticInstructionListAST {}
+    or
+      $between$
+      <semantic_instruction_list> ? mBetweenInstructionList
+    end
+    let endof_between_branch = @location.here
+    var @semanticInstructionListAST mAfterInstructionList
+    select
+      mAfterInstructionList = @semanticInstructionListAST {}
+    or
+      $after$
+      <semantic_instruction_list> ? mAfterInstructionList
+    end
+    let endof_after_branch = @location.here
+    $end$
+    select
+    or
+      $%attribute$ ?let @lstring terminator
+      if terminator.string != "for" then
+        error terminator : "the terminator attribute should be '%for'" fixit { replace "%for" }
+      end
+    end
+    let endof_foreach_instruction = @location.here
+    outInstruction = @forInstructionAST.new {
+      !instructionLocation
+      !mEnumeratedObjectList
+      !indexVariableName
+      !mWhileExpression
+      !endof_while_expression
+      !mBeforeInstructionList
+      !endof_before_branch
+      !mBetweenInstructionList
+      !endof_between_branch
+      !mDoInstructionList
+      !endof_do_branch
+      !mAfterInstructionList
+      !endof_after_branch
+      !endof_foreach_instruction
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4InstructionsSyntax {
+
+  #·····················································································································
+  
+  rule <for_instruction_element> ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
+    $uint32$ ?let @luint count
+    $*$
+    var n = count.uint
+    if n == 0 then
+      error count: "this value should be > 0"
+    end
+    loop( n) while n > 0 do
+      ioElementList += !["" nowhere] !true !["" nowhere]
+      n --
+    end
+  }
+  
+  #·····················································································································
+  
+  rule <for_instruction_element> ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
+    var @lstring typeName
+    select
+      typeName = ["" nowhere]
+    or
+      $@type$ ?typeName
+    end
+    select
+      $*$
+      ioElementList += !typeName !true !["" here]
+    or
+      var @bool isUnused
+      select
+        isUnused = false
+      or
+        $unused$
+        isUnused = true
+      end
+      $identifier$ ?let @lstring constantName
+      ioElementList += !typeName !isUnused !constantName
+    end
+  }
+  
+  #·····················································································································
+  
+  rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
+    $($
+    var elementList = @forInstructionEnumeratedObjectElementListAST {}
+#    var @bool endsWithEllipsis
+#    select
+#      $...$
+#      endsWithEllipsis = true
+#    or
+      repeat
+        <for_instruction_element> !?elementList
+      while
+      end
+#      select
+#        endsWithEllipsis = false
+#      or
+#        $...$
+#        endsWithEllipsis = true
+#      end
+#    end
+    let location = @location.here
+    $)$
+    $in$
+    <expression> ?let @semanticExpressionAST enumeratedExpression
+    outEnumeratedObject = @enumeratedCollectionCstListInExpAST.new {
+      !elementList
+      !mEndsWithEllipsis: false
       !enumeratedExpression
       !location
     }

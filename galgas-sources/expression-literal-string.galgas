@@ -30,6 +30,26 @@ syntax extension galgas3ExpressionSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    var @stringlist literalStringList = {}
+    repeat
+      $"string"$ ?let literalString
+      literalStringList += !literalString.string
+    while
+    end
+    outExpression = @literalStringExpressionAST.new {!@location.here !literalStringList}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

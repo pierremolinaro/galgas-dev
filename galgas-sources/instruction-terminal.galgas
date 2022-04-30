@@ -70,6 +70,63 @@ syntax extension galgas3SyntaxComponentSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4SyntaxComponentSyntax {
+
+  #·····················································································································
+
+  rule <syntax_instruction> !@syntaxInstructionAST outInstruction {
+    $\$terminal\$$ ?let @lstring terminalName indexing terminalReference
+    <actual_input_parameter_list> ?let @actualInputParameterListAST actualInputParameterList
+    <terminal_instruction_indexing> ?let indexNameList
+  #--- Get syntax directed translation result string
+    var @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+    var @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingToken
+    select
+      grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor = @grammarInstructionSyntaxDirectedTranslationResultNone.new
+      grammarInstructionSyntaxDirectedTranslationPreceedingToken = @grammarInstructionSyntaxDirectedTranslationResultNone.new
+    or
+      $:>$
+      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingToken
+    end
+    outInstruction = @terminalCheckInstruction.new {
+      !terminalName.location
+      !terminalName
+      !actualInputParameterList
+      !indexNameList
+      !grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+      !grammarInstructionSyntaxDirectedTranslationPreceedingToken
+    }
+  }
+
+  #·····················································································································
+
+  rule <terminal_instruction_indexing> !@2lstringlist outIndexNameList {
+    outIndexNameList = {}
+    select
+    or
+      $indexing$
+      repeat
+        $identifier$ ?let @lstring indexName indexing indexingNameReference
+        var @lstring postfixName
+        select
+          postfixName = ["" nowhere]
+        or
+          $"string"$ ?postfixName
+        end
+        outIndexNameList += !indexName !postfixName
+      while
+        $,$
+      end
+    end
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! TRANSFORM
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

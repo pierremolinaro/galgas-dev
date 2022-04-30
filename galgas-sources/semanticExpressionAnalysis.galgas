@@ -31,6 +31,7 @@ struct @analysisContext {
   public let @string mSelfObjectCppName
   public let @selfAvailability selfType %selector
   public let @string mSelfObjectCppPrefixForAccessingProperty # i.e. "ioObject->", ...
+  public let @bool requiresSelfForAccessingProperty %selector
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

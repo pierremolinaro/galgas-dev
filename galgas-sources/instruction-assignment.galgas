@@ -73,6 +73,60 @@ syntax extension galgas3InstructionsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4InstructionsSyntax {
+
+  #·····················································································································
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $identifier$ ?let mTargetVariableName
+    var @lstring optionalProperty
+    select
+      optionalProperty = ["" nowhere]
+    or
+      $.$
+      $identifier$ ?let attributeName
+      optionalProperty = attributeName
+    end
+    $=$
+    <expression> ?let @semanticExpressionAST mSourceExpression
+    outInstruction = @assignmentInstructionAST.new {
+      !mTargetVariableName.location
+      !mTargetVariableName
+      !optionalProperty
+      !mSourceExpression
+     }
+  }
+
+  #·····················································································································
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $self$
+    $.$
+    $identifier$ ?let mTargetVariableName
+    var @lstring optionalProperty
+    select
+      optionalProperty = ["" nowhere]
+    or
+      $.$
+      $identifier$ ?let attributeName
+      optionalProperty = attributeName
+    end
+    $=$
+    <expression> ?let @semanticExpressionAST mSourceExpression
+    outInstruction = @selfPropertyAssignmentInstructionAST.new {
+      !mTargetVariableName.location
+      !mTargetVariableName
+      !optionalProperty
+      !mSourceExpression
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

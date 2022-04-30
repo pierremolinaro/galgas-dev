@@ -1,8 +1,10 @@
+
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @extensionMethodAST : @semanticDeclarationAST {
+  private let @bool requiresSelfForAccessingProperty %selector
   private let @lstring mTypeName
   private let @lstring mExtensionMethodName
   private let @formalParameterListAST mExtensionMethodFormalParameterList
@@ -29,6 +31,37 @@ syntax extension galgas3DeclarationsSyntax {
     $}$
     ioDeclarations.mDeclarationList += !@extensionMethodAST.new {
       !false # Is not predefined
+      !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
+      !className
+      !mMethodName
+      !formalParameterList
+      !routineInstructionList
+      !endOfMethodLocation
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $method$
+    $@type$ ?var  @lstring className indexing typeReferenceExtensionMethod
+    $identifier$ ?var  @lstring mMethodName indexing extensionMethodDefinition
+    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+    ${$
+    <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
+    let endOfMethodLocation = @location.here
+    $}$
+    ioDeclarations.mDeclarationList += !@extensionMethodAST.new {
+      !false # Is not predefined
+      !requiresSelfForAccessingProperty: true
       !className
       !mMethodName
       !formalParameterList
@@ -134,6 +167,7 @@ override method @extensionMethodAST semanticAnalysis
     !selfObjectName
     !selfType: .available {!type:  selfType !mutable: false !mutableproperties: isReferenceClass}
     !selfObjectAccessor
+    !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
   }
   var isRefClass = false
   if let [[selfType mTypeKindEnum] classType ?isReference: let reference] then
@@ -154,7 +188,7 @@ override method @extensionMethodAST semanticAnalysis
     !nameForUsefulness
     !?ioUsefulEntitiesGraph
     !analysisContext
-    ! self.mExtensionMethodFormalParameterList
+    !self.mExtensionMethodFormalParameterList
     !nonMutablePropertyList: nonMutableProperties
     !mutablePropertyList: mutableProperties
     !self.mExtensionMethodInstructionList

@@ -148,6 +148,106 @@ syntax extension galgas3InstructionsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4InstructionsSyntax {
+
+  #·····················································································································
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    <semantic_instruction_beginning_with_identifier> !prefixedBySelf: false ?outInstruction
+  }
+  #·····················································································································
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $self$
+    $.$
+    <semantic_instruction_beginning_with_identifier> !prefixedBySelf: true ?outInstruction
+  }
+
+  #·····················································································································
+
+  rule <semantic_instruction_beginning_with_identifier>
+        ?prefixedBySelf: let @bool inHasSelfPrefix
+        !@semanticInstructionAST outInstruction
+  {
+    $identifier$ ?let @lstring receiverName
+    let instructionLocation = @location.here
+    var @lstringlist mStructAttributeList = {}
+    repeat
+    while
+      $.$
+      $identifier$ ?let attributeName
+      mStructAttributeList += !attributeName
+    end
+    select
+      $-=$
+      <expression> ?let @semanticExpressionAST expression
+      outInstruction = @minusEqualExpressionInstructionAST.new {
+        !instructionLocation
+        !inHasSelfPrefix
+        !receiverName
+        !mStructAttributeList
+        !expression
+      }
+    or
+      $+=$
+      select
+        <non_empty_output_expression_list> ?let @actualOutputExpressionList expressionList
+        outInstruction = @plusEqualElementsInstructionAST.new {
+          !instructionLocation
+          !inHasSelfPrefix
+          !receiverName
+          !mStructAttributeList
+          !expressionList
+        }
+      or
+        <expression> ?let @semanticExpressionAST expression
+        outInstruction = @plusEqualExpressionInstructionAST.new {
+          !instructionLocation
+          !inHasSelfPrefix
+          !receiverName
+          !mStructAttributeList
+          !expression
+        }
+      end
+    or
+      $*=$
+      <expression> ?let @semanticExpressionAST expression
+      outInstruction = @mulEqualExpressionInstructionAST.new {
+        !instructionLocation
+        !inHasSelfPrefix
+        !receiverName
+        !mStructAttributeList
+        !expression
+      }
+    or
+      $/=$
+      <expression> ?let @semanticExpressionAST expression
+      outInstruction = @divEqualExpressionInstructionAST.new {
+        !instructionLocation
+        !inHasSelfPrefix
+        !receiverName
+        !mStructAttributeList
+        !expression
+      }
+    end
+  }  
+
+  #·····················································································································
+
+  rule <non_empty_output_expression_list> !@actualOutputExpressionList outExpressionList {
+    outExpressionList = {}
+    repeat
+      $!$ ?let selector
+      <expression> ?let @semanticExpressionAST expression
+      outExpressionList += !selector !expression !@location.here
+    while
+    end
+  }
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

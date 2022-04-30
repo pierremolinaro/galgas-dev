@@ -39,6 +39,33 @@ syntax extension galgas3ExpressionSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4ExpressionSyntax {
+
+  #·····················································································································
+
+  rule <primary> !@semanticExpressionAST outExpression {
+    $if$
+    <expression> ?let ifExpression
+    let operatorLocation = @location.here
+    $then$
+    <expression> ?let thenExpression
+    $else$
+    <expression> ?let elseExpression
+    $end$
+    outExpression = @ifExpressionAST.new {
+      !operatorLocation
+      !ifExpression
+      !thenExpression
+      !elseExpression
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

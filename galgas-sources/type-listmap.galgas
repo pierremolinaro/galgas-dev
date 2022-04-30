@@ -13,6 +13,8 @@ refclass @listmapDeclarationAST : @semanticDeclarationAST {
 
 syntax extension galgas3DeclarationsSyntax {
 
+  #·····················································································································
+
   rule <declaration>
    ?!@galgas3DeclarationAST ioDeclarations {
     $listmap$
@@ -25,6 +27,30 @@ syntax extension galgas3DeclarationsSyntax {
       !mListmapTypeName
       !mAssociatedListTypeName}
   }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <declaration>  ?!@galgas3DeclarationAST ioDeclarations {
+    $listmap$
+    $@type$ ?var  @lstring mListmapTypeName indexing listmapDefinition
+    $($
+    $@type$ ?var  @lstring mAssociatedListTypeName
+    $)$
+    ioDeclarations.mDeclarationList += !@listmapDeclarationAST.new {
+      !false # Is not predefined
+      !mListmapTypeName
+      !mAssociatedListTypeName}
+  }
+
+  #·····················································································································
 
 }
 

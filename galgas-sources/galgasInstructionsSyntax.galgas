@@ -1,0 +1,520 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#                                           
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                                                                      *
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                           
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                 
+#                                           
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax galgas3InstructionsSyntax (galgas3Scanner) {
+
+  #·····················································································································
+  #          Rules prototypes                 
+  #·····················································································································
+
+  rule <expression> !@semanticExpressionAST outExpression
+  
+  rule <if_expression> !@ifExpressionList outExpressionList
+  
+  rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList
+  
+  rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
+
+  #·····················································································································
+  #    S E M A N T I C    I N S T R U C T I O N    L I S T
+  #·····················································································································
+
+  rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList {
+    outInstructionsList = @semanticInstructionListAST {}
+    repeat
+    while
+      $;$
+    while
+      <semantic_instruction> ?let @semanticInstructionAST instruction
+      outInstructionsList += !instruction
+    end
+  }
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    var @bool isLocal
+    select
+      isLocal = false
+    or
+      $private$
+      isLocal = true
+    end
+    <declaration_with_private> !isLocal !?ioDeclarations
+  }
+
+  #·····················································································································
+  #    E X T E R N    R O U T I N E    D E C L A R A T I O N
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $extern$
+    $proc$
+    $identifier$ ?let @lstring mActionName indexing routineDefinition
+    <formal_parameter_list> ?let @formalParameterListAST mFormalParameterList
+    ioDeclarations.mDeclarationList += !@externRoutineDeclarationAST.new {
+      !false # Is not predefined
+      !false # Is not internal
+      !mActionName
+      !mFormalParameterList
+    }
+  }
+
+  #·····················································································································
+  #    R O U T I N E    D E C L A R A T I O N 
+  #·····················································································································
+
+  rule <declaration_with_private>
+    ?let @bool inIsPrivate
+    ?!@galgas3DeclarationAST ioDeclarations
+  {
+    $proc$
+    $identifier$ ?let mRoutineName indexing routineDefinition
+    <formal_parameter_list> ?var @formalParameterListAST mFormalParameterList
+    ${$
+    <semantic_instruction_list> ?var @semanticInstructionListAST mRoutineInstructionList
+    $}$
+    let endOfInstructionList = @location.here
+    ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
+      !false # Is not predefined
+      !inIsPrivate
+      !mRoutineName
+      !mFormalParameterList
+      !mRoutineInstructionList
+      !endOfInstructionList
+    }
+  }
+
+  #·····················································································································
+  #    F U N C T I O N    D E C L A R A T I O N                                                                          *
+  #·····················································································································
+
+  rule  <declaration_with_private>
+    ?let @bool inIsPrivate
+    ?!@galgas3DeclarationAST ioDeclarations
+  {
+    $func$
+    var isOnce = false
+    var isUsefull = false
+    repeat
+    while
+      $%attribute$ ?let @lstring attribute
+      if attribute.string == "once" then
+        if isOnce then
+          error attribute : "duplicate attribute" fixit { remove }
+        end
+        isOnce = true
+      elsif attribute.string == "usefull" then
+        if isUsefull then
+          error attribute : "duplicate attribute" fixit { remove }
+        end
+        isUsefull = true
+      else
+        error attribute : "invalid attribute" fixit { replace "%once" replace "%usefull" }
+      end
+    end
+    $identifier$ ?let functionName indexing functionDefinition
+    <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
+    if isOnce, ([formalInputParameterList length] > 0) then
+      error functionName: "an 'once' function should has no argument"
+    end
+    $->$
+    $@type$ ?let resultTypeName
+    var @lstring resultVariableName
+    select
+      $identifier$ ?resultVariableName
+    or
+      resultVariableName = .new {!"result" !.here}
+    end
+    ${$
+    <semantic_instruction_list> ?var @semanticInstructionListAST functionInstructionList
+    $}$
+    let endOfFunctionInstructionList = @location.here
+    if isOnce then
+      ioDeclarations.mDeclarationList += !@onceFunctionDeclarationAST.new {
+        !false # Is not predefined
+        !functionName
+        !resultTypeName
+        !resultVariableName
+        !functionInstructionList
+        !endOfFunctionInstructionList
+        !inIsPrivate
+        !isUsefull
+      }
+    else
+      ioDeclarations.mDeclarationList += !@functionDeclarationAST.new {
+        !false # Is not predefined
+        !functionName
+        !formalInputParameterList
+        !resultTypeName
+        !resultVariableName
+        !functionInstructionList
+        !endOfFunctionInstructionList
+        !inIsPrivate
+        !isUsefull
+      }
+    end
+  }
+
+  #·····················································································································
+  #    E X T E R N    F U N C T I O N    D E C L A R A T I O N                                                           *
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $extern$
+    $func$
+    $identifier$ ?let mActionName indexing functionDefinition
+    <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
+    $->$
+    $@type$ ?let resultTypeName
+    ioDeclarations.mDeclarationList += !@externFunctionDeclarationAST.new {
+      !false # Is not predefined
+      !mActionName
+      !formalInputParameterList
+      !resultTypeName
+    }
+  }
+
+  #·····················································································································
+  #    M E T H O D    C A L L    I N S T R U C T I O N
+  #·····················································································································
+
+  rule <actual_parameter_list> !@actualParameterListAST outActualParameterList
+
+  #·····················································································································
+
+  rule <syntax_directed_translation_result> !@abstractGrammarInstructionSyntaxDirectedTranslationResult result {
+    $?$ ?let selector
+    if selector.string != "" then
+      error selector : "the selector should be '?'" fixit { replace "?" }
+    end
+    select
+      $*$
+      result = @grammarInstructionSyntaxDirectedTranslationDropResult.new {!@location.here}
+    or
+      $@type$ ?let actualParameterTypeName
+      $identifier$ ?let actualParameterName
+      result = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar.new {!actualParameterTypeName !actualParameterName}
+    or
+      $let$
+      $@type$ ?let actualParameterTypeName
+      $identifier$ ?let actualParameterName
+      result = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.new {!actualParameterTypeName !actualParameterName}
+    or
+      $identifier$ ?let actualParameterName
+      result = @grammarInstructionSyntaxDirectedTranslationResultInVar.new {!actualParameterName}
+    end
+  }
+
+  #·····················································································································
+
+  rule <actual_input_parameter_list> !@actualInputParameterListAST outActualInputParameterList {
+    outActualInputParameterList = @actualInputParameterListAST {}
+    repeat
+    while
+      $?$ ?let selector
+      $*$
+      outActualInputParameterList += !selector !@inputParameterAnonymousVariable.new
+    while
+      $?$ ?let selector
+      $var$
+      var @lstring actualParameterTypeName
+      select
+        actualParameterTypeName = ["" nowhere]
+      or
+        $@type$ ?actualParameterTypeName
+      end
+      $identifier$ ?let actualParameterName
+      outActualInputParameterList +=
+        !selector
+        !@inputParameterDeclaredVariable.new {!actualParameterTypeName !actualParameterName}
+    while
+      $?$ ?let selector
+      $let$
+      var @lstring actualParameterTypeName
+      select
+        actualParameterTypeName = ["" nowhere]
+      or
+        $@type$ ?actualParameterTypeName
+      end
+      $identifier$ ?let actualParameterName
+      outActualInputParameterList +=
+        !selector
+        !@inputParameterDeclaredConstant.new {!actualParameterTypeName !actualParameterName}
+    while
+      $?$ ?let selector
+      $identifier$ ?let actualParameterName
+      outActualInputParameterList += !selector !@inputParameterVariable.new {!actualParameterName}
+    end
+  }  
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax galgas4InstructionsSyntax (galgas3Scanner) {
+
+  #·····················································································································
+  #          Rules prototypes                 
+  #·····················································································································
+
+  rule <expression> !@semanticExpressionAST outExpression
+  
+  rule <if_expression> !@ifExpressionList outExpressionList
+  
+  rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList
+  
+  rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
+
+  #·····················································································································
+  #    S E M A N T I C    I N S T R U C T I O N    L I S T
+  #·····················································································································
+
+  rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList {
+    outInstructionsList = @semanticInstructionListAST {}
+    repeat
+    while
+      $;$
+    while
+      <semantic_instruction> ?let @semanticInstructionAST instruction
+      outInstructionsList += !instruction
+    end
+  }
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    var @bool isLocal
+    select
+      isLocal = false
+    or
+      $private$
+      isLocal = true
+    end
+    <declaration_with_private> !isLocal !?ioDeclarations
+  }
+
+  #·····················································································································
+  #    E X T E R N    R O U T I N E    D E C L A R A T I O N
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $extern$
+    $proc$
+    $identifier$ ?let @lstring mActionName indexing routineDefinition
+    <formal_parameter_list> ?let @formalParameterListAST mFormalParameterList
+    ioDeclarations.mDeclarationList += !@externRoutineDeclarationAST.new {
+      !false # Is not predefined
+      !false # Is not internal
+      !mActionName
+      !mFormalParameterList
+    }
+  }
+
+  #·····················································································································
+  #    R O U T I N E    D E C L A R A T I O N 
+  #·····················································································································
+
+  rule <declaration_with_private>
+    ?let @bool inIsPrivate
+    ?!@galgas3DeclarationAST ioDeclarations
+  {
+    $proc$
+    $identifier$ ?let mRoutineName indexing routineDefinition
+    <formal_parameter_list> ?var @formalParameterListAST mFormalParameterList
+    ${$
+    <semantic_instruction_list> ?var @semanticInstructionListAST mRoutineInstructionList
+    $}$
+    let endOfInstructionList = @location.here
+    ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
+      !false # Is not predefined
+      !inIsPrivate
+      !mRoutineName
+      !mFormalParameterList
+      !mRoutineInstructionList
+      !endOfInstructionList
+    }
+  }
+
+  #·····················································································································
+  #    F U N C T I O N    D E C L A R A T I O N                                                                          *
+  #·····················································································································
+
+  rule  <declaration_with_private>
+    ?let @bool inIsPrivate
+    ?!@galgas3DeclarationAST ioDeclarations
+  {
+    $func$
+    var isOnce = false
+    var isUsefull = false
+    repeat
+    while
+      $%attribute$ ?let @lstring attribute
+      if attribute.string == "once" then
+        if isOnce then
+          error attribute : "duplicate attribute" fixit { remove }
+        end
+        isOnce = true
+      elsif attribute.string == "usefull" then
+        if isUsefull then
+          error attribute : "duplicate attribute" fixit { remove }
+        end
+        isUsefull = true
+      else
+        error attribute : "invalid attribute" fixit { replace "%once" replace "%usefull" }
+      end
+    end
+    $identifier$ ?let functionName indexing functionDefinition
+    <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
+    if isOnce, ([formalInputParameterList length] > 0) then
+      error functionName: "an 'once' function should has no argument"
+    end
+    $->$
+    $@type$ ?let resultTypeName
+    var @lstring resultVariableName
+    select
+      $identifier$ ?resultVariableName
+    or
+      resultVariableName = .new {!"result" !.here}
+    end
+    ${$
+    <semantic_instruction_list> ?var @semanticInstructionListAST functionInstructionList
+    $}$
+    let endOfFunctionInstructionList = @location.here
+    if isOnce then
+      ioDeclarations.mDeclarationList += !@onceFunctionDeclarationAST.new {
+        !false # Is not predefined
+        !functionName
+        !resultTypeName
+        !resultVariableName
+        !functionInstructionList
+        !endOfFunctionInstructionList
+        !inIsPrivate
+        !isUsefull
+      }
+    else
+      ioDeclarations.mDeclarationList += !@functionDeclarationAST.new {
+        !false # Is not predefined
+        !functionName
+        !formalInputParameterList
+        !resultTypeName
+        !resultVariableName
+        !functionInstructionList
+        !endOfFunctionInstructionList
+        !inIsPrivate
+        !isUsefull
+      }
+    end
+  }
+
+  #·····················································································································
+  #    E X T E R N    F U N C T I O N    D E C L A R A T I O N                                                           *
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $extern$
+    $func$
+    $identifier$ ?let mActionName indexing functionDefinition
+    <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
+    $->$
+    $@type$ ?let resultTypeName
+    ioDeclarations.mDeclarationList += !@externFunctionDeclarationAST.new {
+      !false # Is not predefined
+      !mActionName
+      !formalInputParameterList
+      !resultTypeName
+    }
+  }
+
+  #·····················································································································
+  #    M E T H O D    C A L L    I N S T R U C T I O N
+  #·····················································································································
+
+  rule <actual_parameter_list> !@actualParameterListAST outActualParameterList
+
+  #·····················································································································
+
+  rule <syntax_directed_translation_result> !@abstractGrammarInstructionSyntaxDirectedTranslationResult result {
+    $?$ ?let selector
+    if selector.string != "" then
+      error selector : "the selector should be '?'" fixit { replace "?" }
+    end
+    select
+      $*$
+      result = @grammarInstructionSyntaxDirectedTranslationDropResult.new {!@location.here}
+    or
+      $@type$ ?let actualParameterTypeName
+      $identifier$ ?let actualParameterName
+      result = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar.new {!actualParameterTypeName !actualParameterName}
+    or
+      $let$
+      $@type$ ?let actualParameterTypeName
+      $identifier$ ?let actualParameterName
+      result = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.new {!actualParameterTypeName !actualParameterName}
+    or
+      $identifier$ ?let actualParameterName
+      result = @grammarInstructionSyntaxDirectedTranslationResultInVar.new {!actualParameterName}
+    end
+  }
+
+  #·····················································································································
+
+  rule <actual_input_parameter_list> !@actualInputParameterListAST outActualInputParameterList {
+    outActualInputParameterList = @actualInputParameterListAST {}
+    repeat
+    while
+      $?$ ?let selector
+      $*$
+      outActualInputParameterList += !selector !@inputParameterAnonymousVariable.new
+    while
+      $?$ ?let selector
+      $var$
+      var @lstring actualParameterTypeName
+      select
+        actualParameterTypeName = ["" nowhere]
+      or
+        $@type$ ?actualParameterTypeName
+      end
+      $identifier$ ?let actualParameterName
+      outActualInputParameterList +=
+        !selector
+        !@inputParameterDeclaredVariable.new {!actualParameterTypeName !actualParameterName}
+    while
+      $?$ ?let selector
+      $let$
+      var @lstring actualParameterTypeName
+      select
+        actualParameterTypeName = ["" nowhere]
+      or
+        $@type$ ?actualParameterTypeName
+      end
+      $identifier$ ?let actualParameterName
+      outActualInputParameterList +=
+        !selector
+        !@inputParameterDeclaredConstant.new {!actualParameterTypeName !actualParameterName}
+    while
+      $?$ ?let selector
+      $identifier$ ?let actualParameterName
+      outActualInputParameterList += !selector !@inputParameterVariable.new {!actualParameterName}
+    end
+  }  
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

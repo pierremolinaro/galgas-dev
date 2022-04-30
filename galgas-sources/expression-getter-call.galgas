@@ -3,6 +3,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @getterCallExpressionAST : @semanticExpressionAST {
+  private let @bool errorOnGetterCallInsteadOfPropertyRead %selector
   private let @semanticExpressionAST mReceiver
   private let @lstring mGetterName
   private let @actualOutputExpressionList mExpressions
@@ -29,6 +30,37 @@ syntax extension galgas3ExpressionSyntax {
     $]$
     let endLocation = @location.here
     outExpression = @getterCallExpressionAST.new {
+      !errorOnGetterCallInsteadOfPropertyRead: [option galgas_cli_options.errorPropertyGetterCall value]
+      !receiverExpression
+      !getterName
+      !expressionList
+      ![startLocation union !endLocation]
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    $[$
+  #--- Get source identity characteristics
+    let startLocation = @location.here
+    <expression> ?let @semanticExpressionAST receiverExpression
+  #--- Get getter name
+    $identifier$ ?let @lstring getterName
+  #--- Actual parameters
+    <output_expression_list> ?let @actualOutputExpressionList expressionList
+    $]$
+    let endLocation = @location.here
+    outExpression = @getterCallExpressionAST.new {
+      !errorOnGetterCallInsteadOfPropertyRead: true
       !receiverExpression
       !getterName
       !expressionList
@@ -84,7 +116,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
     if getterErrorMessage != "" then
       error self.mGetterName : getterErrorMessage
     end
-    if [option galgas_cli_options.errorPropertyGetterCall value]
+    if self.errorOnGetterCallInsteadOfPropertyRead # [option galgas_cli_options.errorPropertyGetterCall value]
       && [[receiverType mPropertyMap] hasKey !self.mGetterName.string]
       && ([self.mExpressions length] == 0) then
       error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
@@ -135,7 +167,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       !receiverExpression
       !self.mGetterName.string
     }
-    if [option galgas_cli_options.errorPropertyGetterCall value] then
+    if self.errorOnGetterCallInsteadOfPropertyRead then # [option galgas_cli_options.errorPropertyGetterCall value] then
       error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
     end
 #--------------------------------------- not found, old style search
