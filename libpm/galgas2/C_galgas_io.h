@@ -98,7 +98,6 @@ class cToken {
   public: C_LocationInSource mEndLocation ;
   public: C_String mTemplateStringBeforeToken ; // Template string before the token
   public: C_String mSeparatorStringBeforeToken ;
-//  public: bool mIsOptional ;
   public: int16_t mTokenCode ;
 
   public: cToken (void) ;
@@ -151,6 +150,7 @@ int32_t totalWarningCount (void) ;
  
 void signalParsingError (C_Compiler * inCompiler,
                          const C_SourceTextInString & inSourceText,
+                         const C_LocationInSource & inPreviousTokenEndLocation,
                          const C_IssueWithFixIt & inIssue,
                          const C_String & inFoundTokenMessage,
                          const TC_UniqueArray <C_String> & inAcceptedTokenNames

@@ -1229,6 +1229,38 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//       ALL DOCUMENT EXTENSIONS
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+- (NSSet *) allExtensionsOfCurrentApplication {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+//  NSMutableArray * allTypes = [NSMutableArray new] ;
+  NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary] ;
+//  NSLog (@"infoDictionary %@", infoDictionary) ;
+//  NSArray * allDocumentTypes = [infoDictionary objectForKey: @"CFBundleDocumentTypes"] ;
+  NSArray * exportedTypeDeclarations = [infoDictionary objectForKey: @"UTExportedTypeDeclarations"] ;
+//  NSLog (@"exportedTypeDeclarations %@", exportedTypeDeclarations) ;
+  NSMutableSet * extensionSet = [NSMutableSet new] ;
+  for (NSDictionary * exportedType in exportedTypeDeclarations) {
+    NSDictionary * tagSpecifDictionary = [exportedType objectForKey: @"UTTypeTagSpecification"] ;
+    NSArray * fileExtensions = [tagSpecifDictionary objectForKey: @"public.filename-extension"] ;
+    if (fileExtensions.count > 0) {
+      [extensionSet addObjectsFromArray: fileExtensions] ;
+    }
+//    for (NSString * extension in fileExtensions) {
+//      NSLog (@"  extension %@", extension) ;
+//    }
+//    [allTypes addObjectsFromArray:a] ;
+  }
+  return extensionSet ;
+//  return allTypes ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //       A C T I O N    N E W  D O C U M E N T                                                   
 //
 //----------------------------------------------------------------------------------------------------------------------

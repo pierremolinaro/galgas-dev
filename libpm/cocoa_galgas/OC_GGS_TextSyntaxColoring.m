@@ -1038,27 +1038,6 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-- (NSSet *) handledExtensions {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  NSMutableSet * result = [NSMutableSet new] ;
-//--- Get Info.plist file
-  NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary] ;
-  // NSLog (@"infoDictionary '%@'", infoDictionary) ;
-  NSArray * allDocumentTypes = [infoDictionary objectForKey:@"CFBundleDocumentTypes"] ;
-  // NSLog (@"allDocumentTypes '%@'", allDocumentTypes) ;
-  for (NSDictionary * docTypeDict in allDocumentTypes) {
-    // NSLog (@"docTypeDict '%@'", docTypeDict) ;
-    NSArray * documentTypeExtensions = [docTypeDict objectForKey:@"CFBundleTypeExtensions"] ;
-    // NSLog (@"documentTypeExtensions '%@'", documentTypeExtensions) ;
-    [result addObjectsFromArray:documentTypeExtensions] ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 - (BOOL) sourceFile:(NSString *) inFile1
          newerThanFile: (NSString *) inFile2 {
   #ifdef DEBUG_MESSAGES
@@ -1122,8 +1101,8 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
       // NSLog (@"indexingDirectory '%@'", indexingDirectory) ;
     }
   //--- Handled extensions
-    NSSet * handledExtensions = [self handledExtensions] ;
-    // NSLog (@"handledExtensions '%@'", handledExtensions) ;
+    NSSet * handledExtensions = gCocoaApplicationDelegate.allExtensionsOfCurrentApplication ;
+    // NSLog (@"***** handledExtensions '%@'", handledExtensions) ;
   //--- All files in source directory
     NSFileManager * fm = [[NSFileManager alloc] init] ;
     NSArray * files = [fm contentsOfDirectoryAtPath:sourceDirectory error:NULL] ;
@@ -1185,7 +1164,6 @@ static NSInteger numericSort (NSString * inOperand1,
 // Every plist list is a dictionary: the key is the indexed to token; the 
 // associated value is an NSArray of NSString that has the following format:
 //   "kind:line:locationIndex:length:sourceFileFullPath"
-
 //----------------------------------------------------------------------------------------------------------------------
 
 - (void) appendIndexingToMenu: (NSMenu *) inMenu

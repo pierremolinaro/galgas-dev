@@ -48,10 +48,6 @@ syntax extension galgas3ExpressionSyntax {
       ${$
       <output_expression_list> ?expressionList
       $}$
-    or
-      $($
-      <output_expression_list> ?expressionList
-      $)$
     end
     let endOfExpression = @location.here
     outExpression = @constructorExpressionAST.new {
@@ -104,8 +100,10 @@ syntax extension galgas4ExpressionSyntax {
       expressionList = {}
     or
       ${$
+#      error .here : "'{' is obsolete here, use '('" fixit { replace "(" }
       <output_expression_list> ?expressionList
       $}$
+#      error .here : "'}' is obsolete here, use '('" fixit { replace "(" }
     or
       $($
       <output_expression_list> ?expressionList

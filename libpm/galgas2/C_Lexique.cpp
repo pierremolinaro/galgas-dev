@@ -505,6 +505,7 @@ void C_Lexique::lexicalError (const C_String & inLexicalErrorMessage
 //----------------------------------------------------------------------------------------------------------------------
 
 void C_Lexique::parsingError (const TC_UniqueArray <int16_t> & inExpectedTerminalsArray,
+                              const cToken * inPreviousTokenPtr,
                               const cToken * inCurrentTokenPtr,
                               const int16_t inCurrentTokenCode
                               COMMA_LOCATION_ARGS) {
@@ -520,6 +521,7 @@ void C_Lexique::parsingError (const TC_UniqueArray <int16_t> & inExpectedTermina
 //--- Signal error
   signalParsingError (this,
                       sourceText (),
+                      (inPreviousTokenPtr == NULL) ? C_LocationInSource () : inPreviousTokenPtr->mEndLocation,
                       C_IssueWithFixIt (inCurrentTokenPtr->mStartLocation, inCurrentTokenPtr->mEndLocation, TC_Array <C_FixItDescription> ()),
                       foundTokenMessage,
                       expectedTokenNames COMMA_THERE) ;
@@ -820,6 +822,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
     }
   //---
     int32_t indentationForParseOnly = 0 ;
+    cToken * previousTokenPtr = NULL ;
     cToken * tokenPtr = mFirstToken ;
     if (executionModeIsSyntaxAnalysisOnly ()) {
       co << "*** PERFORM TOP-DOWN PARSING ONLY (--mode=syntax-only option) ***\n" ;
@@ -832,7 +835,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
     result = true ;
     int16_t programCounter = inProgramCounterInitialValue ;
     int16_t errorProgramCounter = inProgramCounterInitialValue ;
-    int16_t currentToken = (tokenPtr != NULL) ? tokenPtr->mTokenCode : ((int16_t) -1) ;
+    int16_t currentToken = (tokenPtr != NULL) ? tokenPtr->mTokenCode : int16_t (-1) ;
     if (tokenPtr == NULL) {
       mCurrentLocation.resetLocation () ;
     }else{
@@ -844,6 +847,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
         if (tokenPtr == NULL) {
           currentToken = 0 ; // 0 means end of source file
         }else{
+          previousTokenPtr = tokenPtr ;
           tokenPtr = tokenPtr->mNextToken ;
           currentToken = (tokenPtr != NULL) ? tokenPtr->mTokenCode : ((int16_t) 0) ;
           if (tokenPtr != NULL) {
@@ -958,7 +962,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
             #ifdef TRACE_LL1_PARSING
               co << expectedTerminalsArray.count () << " Token(s) in syntax error message\n" ; co.flush () ;
             #endif
-            parsingError (expectedTerminalsArray, tokenPtr, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
+            parsingError (expectedTerminalsArray, previousTokenPtr, tokenPtr, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
             result = loop = false ;
             listForSecondPassParsing.makeListEmpty () ;
           }
@@ -1001,7 +1005,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
                                                     inDecisionTable,
                                                     inDecisionTableIndexes,
                                                     expectedTerminalsArray) ;
-          parsingError (expectedTerminalsArray, tokenPtr, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
+          parsingError (expectedTerminalsArray, previousTokenPtr, tokenPtr, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
           result = loop = false ;
           listForSecondPassParsing.makeListEmpty () ;
         }
@@ -1038,7 +1042,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
                                                   inDecisionTable,
                                                   inDecisionTableIndexes,
                                                   expectedTerminalsArray) ;     
-        parsingError (expectedTerminalsArray, tokenPtr, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
+        parsingError (expectedTerminalsArray, previousTokenPtr, tokenPtr, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
         result = loop = false ;
         listForSecondPassParsing.makeListEmpty () ;
       }
@@ -1173,7 +1177,7 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
     stack.appendObject (0) ; // Enter initial state
     int32_t errorSignalingUselessEntryOnTopOfStack = 0 ;
     TC_Array <int16_t> poppedErrors (1000 COMMA_HERE)  ;
-    
+    cToken * previousTokenPtr = NULL ;
     cToken * tokenPtr = mFirstToken ;
 
     int16_t currentToken = int16_t (-1) ;
@@ -1190,6 +1194,7 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
         if (tokenPtr == NULL) {
           currentToken = 0 ; // 0 means end of source file
         }else{
+          previousTokenPtr = tokenPtr ;
           tokenPtr = tokenPtr->mNextToken ;
           currentToken = 0 ;
           if (tokenPtr != NULL) {
@@ -1343,7 +1348,7 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
             expectedTerminalsArray.appendObject (expectedTerminal) ;
           }
         }
-        parsingError (expectedTerminalsArray, tokenPtr, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
+        parsingError (expectedTerminalsArray, previousTokenPtr, tokenPtr, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
       }
     }
     if (result) {

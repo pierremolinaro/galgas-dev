@@ -255,6 +255,7 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
 
   rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList {
     outFormalParameterList = {}
+    $($
     repeat
     while
       var @lstring selector
@@ -289,6 +290,7 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
         !mFormalParameterName
         !mIsUnused
     end
+    $)$
   }
 
   #·····················································································································

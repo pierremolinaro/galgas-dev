@@ -1688,11 +1688,12 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   }
   // NSLog (@"directoryPathArray %@", directoryPathArray) ;
 //------------------------- Explore dirs
+  NSArray * extensionArray = gCocoaApplicationDelegate.allExtensionsOfCurrentApplication.allObjects ;
   for (NSString * directoryPath in directoryPathArray) {
     [self
       recursiveSearchInDirectory:directoryPath
       recursive:YES
-      extensionList: self.allTypesOfCurrentApplication
+      extensionList: extensionArray
     ] ;
   }
 }
@@ -1736,11 +1737,12 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   }
   // NSLog (@"directoryPathArray %@", directoryPathArray) ;
 //------------------------- Explore dirs
+  NSArray * extensionArray = gCocoaApplicationDelegate.allExtensionsOfCurrentApplication.allObjects ;
   for (NSString * directoryPath in directoryPathArray) {
     [self
       recursiveSearchInDirectory:directoryPath
-      recursive:YES
-      extensionList:self.allTypesOfCurrentApplication
+      recursive: YES
+      extensionList: extensionArray
     ] ;
   }
 }
@@ -1774,34 +1776,6 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
       }
     }
   }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-- (NSArray *) allTypesOfCurrentApplication {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-//  NSMutableArray * allTypes = [NSMutableArray new] ;
-  NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary] ;
-//  NSLog (@"infoDictionary %@", infoDictionary) ;
-//  NSArray * allDocumentTypes = [infoDictionary objectForKey: @"CFBundleDocumentTypes"] ;
-  NSArray * exportedTypeDeclarations = [infoDictionary objectForKey: @"UTExportedTypeDeclarations"] ;
-//  NSLog (@"exportedTypeDeclarations %@", exportedTypeDeclarations) ;
-  NSMutableSet * extensionSet = [NSMutableSet new] ;
-  for (NSDictionary * exportedType in exportedTypeDeclarations) {
-    NSDictionary * tagSpecifDictionary = [exportedType objectForKey: @"UTTypeTagSpecification"] ;
-    NSArray * fileExtensions = [tagSpecifDictionary objectForKey: @"public.filename-extension"] ;
-    if (fileExtensions.count > 0) {
-      [extensionSet addObjectsFromArray: fileExtensions] ;
-    }
-//    for (NSString * extension in fileExtensions) {
-//      NSLog (@"  extension %@", extension) ;
-//    }
-//    [allTypes addObjectsFromArray:a] ;
-  }
-  return [extensionSet allObjects] ;
-//  return allTypes ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
