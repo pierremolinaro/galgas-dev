@@ -28,7 +28,7 @@ syntax extension galgas3DeclarationsSyntax {
     $identifier$ ?let @lstring mMethodName indexing overrideExtensionGetterDefinition
     <formal_input_parameter_list> ?let formalInputParameterList
     $->$
-    $@type$ ?var  @lstring mReturnedTypeName
+    $@type$ ?let @lstring mReturnedTypeName
     var @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -69,7 +69,7 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ ?let @lstring mMethodName indexing overrideExtensionGetterDefinition
     <formal_input_parameter_list> ?let formalInputParameterList
     $->$
-    $@type$ ?var  @lstring mReturnedTypeName
+    $@type$ ?let @lstring mReturnedTypeName
     var @lstring resultVariableName
     select
       $identifier$ ?resultVariableName

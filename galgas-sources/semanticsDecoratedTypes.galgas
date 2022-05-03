@@ -1,19 +1,19 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  Copyright (C) 2007, ..., 2019 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2007, ..., 2019 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
-#  License as published by the Free Software Foundation.                                                               *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
 #                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#           I N S T R U C T I O N    G E N E R A T I O N                                                               *
+#           I N S T R U C T I O N    G E N E R A T I O N
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -81,7 +81,7 @@ refclass @castInExpressionForGeneration : @semanticExpressionForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  F O R M A L    P A R A M E T E R    L I S T                                                                         *
+#  F O R M A L    P A R A M E T E R    L I S T   
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -95,7 +95,7 @@ list @formalParameterListForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  F O R M A L    I N P U T    P A R A M E T E R    L I S T                                                            *
+#  F O R M A L    I N P U T    P A R A M E T E R    L I S T                                                    
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -268,7 +268,7 @@ override getter @semanticTypeForGeneration headerKind -> @headerKind {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#    D E C L A R A T I O N    W I T H   H E A D E R    S P E C                                                         *
+#    D E C L A R A T I O N    W I T H   H E A D E R    S P E C                                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -317,7 +317,7 @@ refclass @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGen
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#   A C T I O N ,    M E T H O D    S I G N A T U R E                                                                  *
+#   A C T I O N ,    M E T H O D    S I G N A T U R E   
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -328,7 +328,7 @@ list @signatureForGrammarAnalysis {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  N O N    T E R M I N A L    S Y M B O L    M A P                                                                    *
+#  N O N    T E R M I N A L    S Y M B O L    M A P     
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -387,7 +387,7 @@ refclass @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHea
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#    R O U T I N E    I M P L E M E N T A T I O N                                                                      *
+#    R O U T I N E    I M P L E M E N T A T I O N
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -398,7 +398,7 @@ refclass @routineImplementationForGeneration : @routinePrototypeDeclarationForGe
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#    F U N C T I O N    D E C L A R A T I O N                                                                          *
+#    F U N C T I O N    D E C L A R A T I O N    
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -410,7 +410,7 @@ refclass @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHe
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#    F U N C T I O N    I M P L E M E N T A T I O N                                                                    *
+#    F U N C T I O N    I M P L E M E N T A T I O N     
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -421,7 +421,7 @@ refclass @functionImplementationForGeneration : @functionPrototypeDeclarationFor
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#    O N C E    F U N C T I O N    D E C L A R A T I O N                                                               *
+#    O N C E    F U N C T I O N    D E C L A R A T I O N
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -434,7 +434,7 @@ refclass @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHeaderF
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  T E R M I N A L    C H E C K    I N S T R U C T I O N                                                               *
+#  T E R M I N A L    C H E C K    I N S T R U C T I O N
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -463,7 +463,7 @@ refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#    F I L E W R A P P E R    D E C L A R A T I O N                                                                    *
+#    F I L E W R A P P E R    D E C L A R A T I O N     
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

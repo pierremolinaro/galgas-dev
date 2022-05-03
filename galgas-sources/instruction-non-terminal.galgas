@@ -69,7 +69,9 @@ syntax extension galgas4SyntaxComponentSyntax {
       $identifier$ ? mLabelName
     end
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleReference
+    $($
     <actual_parameter_list> ?let @actualParameterListAST mActualParameterList
+    $)$
   #--- Get syntax directed translation result string
     var @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select

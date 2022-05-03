@@ -23,12 +23,12 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $getter$
-    $@type$ ?var  @lstring className indexing typeReferenceExtensionGetter
-    $identifier$ ?var  @lstring mMethodName indexing extensionGetterDefinition
+    $@type$ ?let @lstring className indexing typeReferenceExtensionGetter
+    $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition
     var @formalInputParameterListAST mFormalInputParameterList
     <formal_input_parameter_list> ? mFormalInputParameterList
     $->$
-    $@type$ ?var  @lstring mReturnedTypeName
+    $@type$ ?let @lstring mReturnedTypeName
     var @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -64,12 +64,12 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $getter$
-    $@type$ ?var  @lstring className indexing typeReferenceExtensionGetter
-    $identifier$ ?var  @lstring mMethodName indexing extensionGetterDefinition
+    $@type$ ?let @lstring className indexing typeReferenceExtensionGetter
+    $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition
     var @formalInputParameterListAST mFormalInputParameterList
     <formal_input_parameter_list> ? mFormalInputParameterList
     $->$
-    $@type$ ?var  @lstring mReturnedTypeName
+    $@type$ ?let @lstring mReturnedTypeName
     var @lstring resultVariableName
     select
       $identifier$ ?resultVariableName

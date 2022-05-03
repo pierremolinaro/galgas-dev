@@ -21,8 +21,8 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $setter$
-    $@type$ ?var  @lstring className indexing typeReferenceExtensionSetter
-    $identifier$ ?var  @lstring setterName indexing extensionSetterDefinition
+    $@type$ ?let @lstring className indexing typeReferenceExtensionSetter
+    $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
     <formal_parameter_list> ?let @formalParameterListAST formalParameterList
     ${$
     <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
@@ -51,8 +51,8 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $setter$
-    $@type$ ?var  @lstring className indexing typeReferenceExtensionSetter
-    $identifier$ ?var  @lstring setterName indexing extensionSetterDefinition
+    $@type$ ?let @lstring className indexing typeReferenceExtensionSetter
+    $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
     <formal_parameter_list> ?let @formalParameterListAST formalParameterList
     ${$
     <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
@@ -77,8 +77,7 @@ syntax extension galgas4DeclarationsSyntax {
 #   KEY REPRESENTATION                      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @extensionSetterAST keyRepresentation
-  ->@string {
+override getter @extensionSetterAST keyRepresentation -> @string {
   result = "extension setter @" + self.mTypeName + " " + self.mExtensionSetterName
 }
 
@@ -118,8 +117,7 @@ override method @extensionSetterAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-  ?!@semanticContext unused ioSemanticContext
-{
+  ?!@semanticContext unused ioSemanticContext {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -155,8 +153,8 @@ override method @extensionSetterAST semanticAnalysis
     implementedAsFunction = true
   end
 #--- Analyze instruction list
-  var formalParameterListForGeneration =@formalParameterListForGeneration {}
-  var @semanticInstructionListForGeneration semanticInstructionListForGeneration
+#  var formalParameterListForGeneration = @formalParameterListForGeneration {}
+#  var @semanticInstructionListForGeneration semanticInstructionListForGeneration
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
@@ -174,8 +172,8 @@ override method @extensionSetterAST semanticAnalysis
     !mutablePropertyList: [selfType mAllTypedPropertyList]
     !self.mExtensionSetterInstructionList
     !self.mEndOfSetterDeclarationLocation
-    ?semanticInstructionListForGeneration
-    ?formalParameterListForGeneration
+    ?let semanticInstructionListForGeneration
+    ?let formalParameterListForGeneration
   )
 #---
   ioSemanticDeclarationListForGeneration +=

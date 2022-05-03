@@ -1,14 +1,14 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  Copyright (C) 2014, ..., 2022 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2014, ..., 2022 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
-#  License as published by the Free Software Foundation.                                                               *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
 #                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -28,8 +28,8 @@ syntax galgas3GrammarComponentSyntax (galgas3Scanner) {
       $indexing$
     end
     $grammar$
-    $identifier$ ?var  @lstring mGrammarName indexing grammarComponentDefinition
-    $"string"$ ?var  @lstring mGrammarClass
+    $identifier$ ?let @lstring mGrammarName indexing grammarComponentDefinition
+    $"string"$ ?let @lstring mGrammarClass
   #--- Feature translate
     var @bool hasTranslateFeature
     select
@@ -46,7 +46,7 @@ syntax galgas3GrammarComponentSyntax (galgas3Scanner) {
     var @lstringlist syntaxComponents = {}
     repeat
       $syntax$
-      $identifier$ ?var  @lstring syntaxComponent
+      $identifier$ ?let @lstring syntaxComponent
       syntaxComponents += !syntaxComponent
     while
     end
@@ -65,7 +65,7 @@ syntax galgas3GrammarComponentSyntax (galgas3Scanner) {
     repeat
     while
       $unused$
-      $<non_terminal>$ ?var  @lstring nonterminalSymbolName
+      $<non_terminal>$ ?let @lstring nonterminalSymbolName
       mUnusedNonterminalList += ! nonterminalSymbolName
     end
   #---
@@ -198,8 +198,8 @@ syntax galgas4GrammarComponentSyntax (galgas3Scanner) {
       $indexing$
     end
     $grammar$
-    $identifier$ ?var  @lstring mGrammarName indexing grammarComponentDefinition
-    $"string"$ ?var  @lstring mGrammarClass
+    $identifier$ ?let @lstring mGrammarName indexing grammarComponentDefinition
+    $"string"$ ?let @lstring mGrammarClass
   #--- Feature translate
     var @bool hasTranslateFeature
     select
@@ -216,7 +216,7 @@ syntax galgas4GrammarComponentSyntax (galgas3Scanner) {
     var @lstringlist syntaxComponents = {}
     repeat
       $syntax$
-      $identifier$ ?var  @lstring syntaxComponent
+      $identifier$ ?let @lstring syntaxComponent
       syntaxComponents += !syntaxComponent
     while
     end
@@ -235,7 +235,7 @@ syntax galgas4GrammarComponentSyntax (galgas3Scanner) {
     repeat
     while
       $unused$
-      $<non_terminal>$ ?var  @lstring nonterminalSymbolName
+      $<non_terminal>$ ?let @lstring nonterminalSymbolName
       mUnusedNonterminalList += ! nonterminalSymbolName
     end
   #---

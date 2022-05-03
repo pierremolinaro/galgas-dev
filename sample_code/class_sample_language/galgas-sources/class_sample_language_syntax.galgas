@@ -7,12 +7,12 @@ rule <start_symbol> !@declarationListAST outDeclarationListAST {
   repeat
   while
     $class$
-    $identifier$ ?var  @lstring className indexing classDefinition
+    $identifier$ ?let @lstring className indexing classDefinition
     select
       outDeclarationListAST += !@classWithoutSuperClassAST.new { !className}
     or
       $:$
-      $identifier$ ?var  @lstring superClassName indexing superClassReference
+      $identifier$ ?let @lstring superClassName indexing superClassReference
       outDeclarationListAST += !@classWithSuperClassAST.new { !className !superClassName}
     end
     $;$

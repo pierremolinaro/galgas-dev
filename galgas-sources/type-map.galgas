@@ -60,7 +60,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $map$
   #--- Map type name
-    $@type$ ?var  @lstring mMapTypeName indexing mapDefinition, structDefinition "-element"
+    $@type$ ?let @lstring mMapTypeName indexing mapDefinition, structDefinition "-element"
   #--- Map attributes
     var @lstringlist mapAttributeList = {}
     repeat
@@ -106,7 +106,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <search_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
     $search$
-    $identifier$ ?var  @lstring methodName
+    $identifier$ ?let @lstring methodName
     var @bool locationAttribute
     select
       locationAttribute = false
@@ -120,7 +120,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $error$
     $message$
-    $"string"$ ?var  @lstring errorMessage
+    $"string"$ ?let @lstring errorMessage
     ioMapSearchMethodListAST += !methodName !errorMessage !.new {!"" !.here} !locationAttribute
   }
 
@@ -128,10 +128,10 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <remove_declaration> ?!@mapRemoveMethodListAST ioMapRemoveMethodListAST {
     $remove$
-    $identifier$ ?var  @lstring mMethodName
+    $identifier$ ?let @lstring mMethodName
     $error$
     $message$
-    $"string"$ ?var  @lstring mErrorMessage
+    $"string"$ ?let @lstring mErrorMessage
     ioMapRemoveMethodListAST += !mMethodName !mErrorMessage
   }
 
@@ -148,7 +148,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <map_insert_setter_declaration> ?!@insertMethodListAST ioMapMethodList {
     $insert$
-    $identifier$ ?var  @lstring mMethodName
+    $identifier$ ?let @lstring mMethodName
     var @lstring stateName
     select
       stateName = @lstring.new {!"" !@location.here}
@@ -158,7 +158,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $error$
     $message$
-    $"string"$ ?var  @lstring mErrorMessage
+    $"string"$ ?let @lstring mErrorMessage
     var @lstring mShadowErrorMessage
     select
       mShadowErrorMessage = @lstring.new {!"" !@location.here}
@@ -186,7 +186,7 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $map$
   #--- Map type name
-    $@type$ ?var  @lstring mMapTypeName indexing mapDefinition, structDefinition "-element"
+    $@type$ ?let @lstring mMapTypeName indexing mapDefinition, structDefinition "-element"
   #--- Map attributes
     var @lstringlist mapAttributeList = {}
     repeat
@@ -232,7 +232,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <search_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
     $search$
-    $identifier$ ?var  @lstring methodName
+    $identifier$ ?let @lstring methodName
     var @bool locationAttribute
     select
       locationAttribute = false
@@ -246,7 +246,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $error$
     $message$
-    $"string"$ ?var  @lstring errorMessage
+    $"string"$ ?let @lstring errorMessage
     ioMapSearchMethodListAST += !methodName !errorMessage !.new {!"" !.here} !locationAttribute
   }
 
@@ -254,10 +254,10 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <remove_declaration> ?!@mapRemoveMethodListAST ioMapRemoveMethodListAST {
     $remove$
-    $identifier$ ?var  @lstring mMethodName
+    $identifier$ ?let @lstring mMethodName
     $error$
     $message$
-    $"string"$ ?var  @lstring mErrorMessage
+    $"string"$ ?let @lstring mErrorMessage
     ioMapRemoveMethodListAST += !mMethodName !mErrorMessage
   }
 
@@ -274,7 +274,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <map_insert_setter_declaration> ?!@insertMethodListAST ioMapMethodList {
     $insert$
-    $identifier$ ?var  @lstring mMethodName
+    $identifier$ ?let @lstring mMethodName
     var @lstring stateName
     select
       stateName = @lstring.new {!"" !@location.here}
@@ -284,7 +284,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $error$
     $message$
-    $"string"$ ?var  @lstring mErrorMessage
+    $"string"$ ?let @lstring mErrorMessage
     var @lstring mShadowErrorMessage
     select
       mShadowErrorMessage = @lstring.new {!"" !@location.here}
@@ -595,8 +595,7 @@ override method @mapDeclarationAST enterInSemanticContext
   end
 #---------- Handle "insertOrReplace" setter
   if [self.mInsertOrReplaceDeclarationListAST length] >= 1 then
-    var @location insertOrReplaceLocation
-    [self.mInsertOrReplaceDeclarationListAST first ?insertOrReplaceLocation]
+    [self.mInsertOrReplaceDeclarationListAST first ?let insertOrReplaceLocation]
     [!?setterMap insertOrReplace
       !@lstring.new {!"insertOrReplace" !insertOrReplaceLocation}
       !@methodKind.definedAsMember
@@ -727,7 +726,7 @@ override method @mapDeclarationAST semanticAnalysis
   for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    var @unifiedTypeMap-entry t = .searchKey{!inSemanticContext.mTypeMap !mPropertyTypeName}
+    let @unifiedTypeMap-entry t = .searchKey{!inSemanticContext.mTypeMap !mPropertyTypeName}
     let hasSetter = true
     let hasSelector = false
     typedAttributeList +=
@@ -771,8 +770,7 @@ override method @mapDeclarationAST semanticAnalysis
   end
   let @bool hasInsertOrReplaceModifier = [self.mInsertOrReplaceDeclarationListAST length] > 0
   if hasInsertOrReplaceModifier & [insertMethodMap hasKey !"insertOrReplace"] then
-    var @location insertOrReplaceDeclarationLocation
-    [self.mInsertOrReplaceDeclarationListAST first ?insertOrReplaceDeclarationLocation]
+    [self.mInsertOrReplaceDeclarationListAST first ?let insertOrReplaceDeclarationLocation]
     error insertOrReplaceDeclarationLocation : "the insertOrReplace' setter cannot be declared : an insert setter or a remove setter has been declared with this name"
   end
 #--- Enter map declaration

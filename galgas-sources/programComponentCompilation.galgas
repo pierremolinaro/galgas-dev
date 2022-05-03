@@ -2,14 +2,14 @@
 #                                           
 #  Program component compilation            
 #                                           
-#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
-#  License as published by the Free Software Foundation.                                                               *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
 #                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -20,7 +20,7 @@ list @programListForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#           G E N E R A T I O N    F I L E W R A P P E R S                                                             *
+#           G E N E R A T I O N    F I L E W R A P P E R S                                                     
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -37,7 +37,7 @@ private filewrapper programFileGenerationTemplate in "+generation-templates/prog
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#           C O M P I L E    ' B E F O R E '                                                                           *
+#           C O M P I L E    ' B E F O R E '     
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -84,7 +84,7 @@ proc compileBeforeClauseGalgas3
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#           C O M P I L E    P R O G R A M    R U L E S                                                                *
+#           C O M P I L E    P R O G R A M    R U L E S 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -182,7 +182,7 @@ proc compileAfterClauseGalgas3
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#           C O M P I L E    P R O G R A M    C O M P O N E N T                                                        *
+#           C O M P I L E    P R O G R A M    C O M P O N E N T                                                
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

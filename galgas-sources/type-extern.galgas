@@ -62,7 +62,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $extern$
-    $@type$ ?var  @lstring externTypeName indexing externTypeDefinition
+    $@type$ ?let @lstring externTypeName indexing externTypeDefinition
     <externtype_cpp_predeclaration> ?let cppPredeclarationCode
     <externtype_cpp_classdeclaration> ?let cppClassCode
     ${$
@@ -100,7 +100,7 @@ syntax extension galgas3DeclarationsSyntax {
     outCppPredeclarationCode = ""
     repeat
     while
-      $"string"$ ?var  @lstring cppPredeclarationCodeElement
+      $"string"$ ?let @lstring cppPredeclarationCodeElement
       outCppPredeclarationCode += cppPredeclarationCodeElement.string
     end
     $}$
@@ -113,7 +113,7 @@ syntax extension galgas3DeclarationsSyntax {
     outCppClassCode = ""
     repeat
     while
-      $"string"$ ?var  @lstring cppPredeclarationCodeElement
+      $"string"$ ?let @lstring cppPredeclarationCodeElement
       outCppClassCode += cppPredeclarationCodeElement.string
     end
     $}$
@@ -185,7 +185,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $extern$
-    $@type$ ?var  @lstring externTypeName indexing externTypeDefinition
+    $@type$ ?let @lstring externTypeName indexing externTypeDefinition
     <externtype_cpp_predeclaration> ?let cppPredeclarationCode
     <externtype_cpp_classdeclaration> ?let cppClassCode
     ${$
@@ -223,7 +223,7 @@ syntax extension galgas4DeclarationsSyntax {
     outCppPredeclarationCode = ""
     repeat
     while
-      $"string"$ ?var  @lstring cppPredeclarationCodeElement
+      $"string"$ ?let @lstring cppPredeclarationCodeElement
       outCppPredeclarationCode += cppPredeclarationCodeElement.string
     end
     $}$
@@ -236,7 +236,7 @@ syntax extension galgas4DeclarationsSyntax {
     outCppClassCode = ""
     repeat
     while
-      $"string"$ ?var  @lstring cppPredeclarationCodeElement
+      $"string"$ ?let @lstring cppPredeclarationCodeElement
       outCppClassCode += cppPredeclarationCodeElement.string
     end
     $}$

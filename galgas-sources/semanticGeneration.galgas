@@ -2,15 +2,15 @@
 #                                           
 #  Generate predefined types                
 #                                           
-#  Copyright (C) 2010, ..., 2021 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2010, ..., 2021 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
-#  License as published by the Free Software Foundation.                                                               *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
 #                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -218,7 +218,7 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-# P R O C E D U R E    I M P L E M E N T A T I O N                                                                     *
+# P R O C E D U R E    I M P L E M E N T A T I O N      
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -339,7 +339,7 @@ proc generateProcedure
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-# F U N C T I O N    I M P L E M E N A T I O N                                                                         *
+# F U N C T I O N    I M P L E M E N A T I O N   
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -424,7 +424,7 @@ proc generateFunction
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-# E X T E N S I O N    M O D I F I E R    I M P L E M E N T A T I O N                                                  *
+# E X T E N S I O N    M O D I F I E R    I M P L E M E N T A T I O N                                          
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -520,7 +520,7 @@ proc generateExtensionSetter
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-# E X T E N S I O N    M E T H O D    I M P L E M E N T A T I O N                                                      *
+# E X T E N S I O N    M E T H O D    I M P L E M E N T A T I O N                                              
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -636,7 +636,7 @@ proc generateExtensionMethod
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-# E X T E N S I O N    R E A D E R    I M P L E M E N T A T I O N                                                      *
+# E X T E N S I O N    R E A D E R    I M P L E M E N T A T I O N                                              
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -959,7 +959,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#           G E N E R A T I O N    F I L E W R A P P E R S                                                             *
+#           G E N E R A T I O N    F I L E W R A P P E R S                                                     
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1583,7 +1583,7 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#           G E N E R A T I O N    F I L E W R A P P E R S                                                             *
+#           G E N E R A T I O N    F I L E W R A P P E R S                                                     
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

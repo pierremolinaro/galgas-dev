@@ -2,15 +2,15 @@
 #                                           
 #  shared map type                          
 #                                           
-#  Copyright (C) 2015, ..., 2015 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2015, ..., 2015 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
-#  License as published by the Free Software Foundation.                                                               *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
 #                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -91,6 +91,9 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $shared$
     $map$
+    if [option galgas_cli_options.errorOldStylePropertyDeclaration value] then
+      warning .here : "This type is not handled in GALGAS 4"
+    end
   #--- Map type name
     $@type$ ?let @lstring mMapTypeName indexing uniquemapDefinition, mapEntryDefinition "-entry"
     let mapEntryTypeName = @lstring.new {!mMapTypeName.string + "-entry" !mMapTypeName.location}
@@ -150,16 +153,16 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <shared_map_override> ?!@mapOverrideBlockListAST ioMapOverrideBlockListAST {
     $override$
-    $identifier$ ?var  @lstring overrideBlockName
+    $identifier$ ?let @lstring overrideBlockName
     var @mapOverrideBlockDescriptorAST mapOverrideBlockDescriptor1AST = {}
     ${$
     repeat
     while
-      $identifier$ ?var  @lstring sourceState1
+      $identifier$ ?let @lstring sourceState1
       $:$
-      $identifier$ ?var  @lstring sourceState2
+      $identifier$ ?let @lstring sourceState2
       $->$
-      $identifier$ ?var  @lstring targetState
+      $identifier$ ?let @lstring targetState
       var @mapAutomatonMessageKind messageKind
       var @lstring messageText
       select
@@ -181,11 +184,11 @@ syntax extension galgas3DeclarationsSyntax {
     ${$
     repeat
     while
-      $identifier$ ?var  @lstring sourceState1
+      $identifier$ ?let @lstring sourceState1
       $:$
-      $identifier$ ?var  @lstring sourceState2
+      $identifier$ ?let @lstring sourceState2
       $->$
-      $identifier$ ?var  @lstring targetState
+      $identifier$ ?let @lstring targetState
       var @mapAutomatonMessageKind messageKind
       var @lstring messageText
       select
@@ -236,7 +239,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $error$
     $message$
-    $"string"$ ?var  @lstring mErrorMessage
+    $"string"$ ?let @lstring mErrorMessage
     ioMapSearchMethodListAST +=
       !mMethodName
       !mErrorMessage
@@ -310,229 +313,229 @@ syntax extension galgas3DeclarationsSyntax {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax extension galgas4DeclarationsSyntax {
-
-  #·····················································································································
-
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
-    $shared$
-    $map$
-  #--- Map type name
-    $@type$ ?let @lstring mMapTypeName indexing uniquemapDefinition, mapEntryDefinition "-entry"
-    let mapEntryTypeName = @lstring.new {!mMapTypeName.string + "-entry" !mMapTypeName.location}
-  #--- Map attributes
-    var @lstringlist mapAttributeList = {}
-    repeat
-    while
-      $%attribute$ ?let attribute
-      mapAttributeList += !attribute
-    end
-  #--- Map properties
-    ${$
-    var @propertyInCollectionListAST propertyList = {}
-    var @insertMethodListAST mInsertMethodList = {}
-    var @mapSearchMethodListAST mSearchMethodList = {}
-    var @mapStateList mapStateList = {}
-    var @mapOverrideBlockListAST mapOverrideBlockListAST = {}
-    var @sharedMapAttributeListAST sharedMapAttributeListAST = {} 
-    repeat
-    while
-      <shared_map_state_list> !?mapStateList
-    while
-      <shared_map_attribute> !?sharedMapAttributeListAST
-    while
-      <property_declaration> !?propertyList
-    while
-      <map_insert_setter_declaration> !?mInsertMethodList
-    while
-      <shared_map_search_method_declaration> !?mSearchMethodList
-    while
-      <shared_map_override> !?mapOverrideBlockListAST
-    while
-      $;$
-    end
-    $}$
-  #--- Declare map
-    ioDeclarations.mDeclarationList += !@sharedMapDeclarationAST.new {
-      !false # Is not predefined
-      !mMapTypeName
-      !mapAttributeList
-      !propertyList
-      !mInsertMethodList
-      !mSearchMethodList
-      !mapStateList
-      !mapOverrideBlockListAST
-      !sharedMapAttributeListAST
-    }
-  #--- Declare map entry
-    ioDeclarations.mDeclarationList += !@mapEntryDeclarationAST.new {
-      !false # Is not predefined
-      !mapEntryTypeName
-      !mMapTypeName
-    }
-  }
-
-  #·····················································································································
-
-  rule <shared_map_override> ?!@mapOverrideBlockListAST ioMapOverrideBlockListAST {
-    $override$
-    $identifier$ ?var  @lstring overrideBlockName
-    var @mapOverrideBlockDescriptorAST mapOverrideBlockDescriptor1AST = {}
-    ${$
-    repeat
-    while
-      $identifier$ ?var  @lstring sourceState1
-      $:$
-      $identifier$ ?var  @lstring sourceState2
-      $->$
-      $identifier$ ?var  @lstring targetState
-      var @mapAutomatonMessageKind messageKind
-      var @lstring messageText
-      select
-        messageKind = @mapAutomatonMessageKind.noMessage
-        messageText = @lstring.new {!"" !@location.here}
-      or
-        $warning$
-        messageKind = @mapAutomatonMessageKind.warningMessage
-        $"string"$ ? messageText
-      or
-        $error$
-        messageKind = @mapAutomatonMessageKind.errorMessage
-        $"string"$ ? messageText
-      end
-      mapOverrideBlockDescriptor1AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText
-    end
-    $}$
-    var mapOverrideBlockDescriptor2AST =@mapOverrideBlockDescriptorAST {}
-    ${$
-    repeat
-    while
-      $identifier$ ?var  @lstring sourceState1
-      $:$
-      $identifier$ ?var  @lstring sourceState2
-      $->$
-      $identifier$ ?var  @lstring targetState
-      var @mapAutomatonMessageKind messageKind
-      var @lstring messageText
-      select
-        messageKind = @mapAutomatonMessageKind.noMessage
-        messageText = @lstring.new {!"" !@location.here}
-      or
-        $warning$
-        messageKind = @mapAutomatonMessageKind.warningMessage
-        $"string"$ ? messageText
-      or
-        $error$
-        messageKind = @mapAutomatonMessageKind.errorMessage
-        $"string"$ ? messageText
-      end
-      mapOverrideBlockDescriptor2AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText
-    end
-    $}$
-    ioMapOverrideBlockListAST += !overrideBlockName !mapOverrideBlockDescriptor1AST !mapOverrideBlockDescriptor2AST
-  }
-
-  #·····················································································································
-
-  rule <shared_map_attribute> ?!@sharedMapAttributeListAST ioSharedMapAttributeListAST {
-    var @bool isError
-    select
-      $error$
-      isError = true
-    or
-      $warning$
-      isError = false
-    end
-    $%attribute$ ?let attributeName
-    $"string"$ ?let messageText
-    ioSharedMapAttributeListAST += !attributeName !isError !messageText
-  }
-
-  #·····················································································································
-
-  rule <shared_map_search_method_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
-    $search$
-    $identifier$ ?let @lstring mMethodName
-    var @lstring actionName
-    select
-      actionName = @lstring.new {!"" !@location.here}
-    or
-      $do$
-      $identifier$ ? actionName
-    end
-    $error$
-    $message$
-    $"string"$ ?var  @lstring mErrorMessage
-    ioMapSearchMethodListAST +=
-      !mMethodName
-      !mErrorMessage
-      !actionName
-      !false
-  }
-  
-  #·····················································································································
-
-  rule <shared_map_state_list> ?!@mapStateList ioMapStateList {
-    $state$
-    $identifier$ ?let @lstring stateName
-    var @mapAutomatonMessageKind stateMessageKind
-    var @lstring stateMessage
-    select
-      stateMessageKind = .noMessage
-      stateMessage = @lstring.new {!"" !@location.here}
-    or
-      $warning$
-      $"string"$ ? stateMessage
-      stateMessageKind = .warningMessage
-    or
-      $error$
-      $"string"$ ? stateMessage
-      stateMessageKind = .errorMessage
-    end
-    ${$
-    var @mapStateTransitionList transitionList = {}
-    repeat
-    while
-      <shared_map_state_transition> !?transitionList
-    end
-    ioMapStateList +=
-      !stateName
-      !stateMessageKind
-      !stateMessage
-      !transitionList
-    $}$
-  }
-
-  #·····················································································································
-
-  rule <shared_map_state_transition> ?!@mapStateTransitionList ioTransitionList {
-    $identifier$ ?let @lstring actionName
-    $->$
-    $identifier$ ?let @lstring targetStateName
-    var @mapAutomatonMessageKind transitionMessageKind
-    var @lstring transitionMessage
-    select
-      transitionMessageKind = .noMessage
-      transitionMessage = .new {!"" !.here}
-    or
-      $warning$
-      $"string"$ ? transitionMessage
-      transitionMessageKind = .warningMessage
-    or
-      $error$
-      $"string"$ ? transitionMessage
-      transitionMessageKind = .errorMessage
-    end
-    ioTransitionList +=
-      !actionName
-      !targetStateName
-      !transitionMessageKind
-      !transitionMessage
-  }
-
-  #·····················································································································
-
-}
+#syntax extension galgas4DeclarationsSyntax {
+#
+#  #·····················································································································
+#
+#  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+#    $shared$
+#    $map$
+#  #--- Map type name
+#    $@type$ ?let @lstring mMapTypeName indexing uniquemapDefinition, mapEntryDefinition "-entry"
+#    let mapEntryTypeName = @lstring.new {!mMapTypeName.string + "-entry" !mMapTypeName.location}
+#  #--- Map attributes
+#    var @lstringlist mapAttributeList = {}
+#    repeat
+#    while
+#      $%attribute$ ?let attribute
+#      mapAttributeList += !attribute
+#    end
+#  #--- Map properties
+#    ${$
+#    var @propertyInCollectionListAST propertyList = {}
+#    var @insertMethodListAST mInsertMethodList = {}
+#    var @mapSearchMethodListAST mSearchMethodList = {}
+#    var @mapStateList mapStateList = {}
+#    var @mapOverrideBlockListAST mapOverrideBlockListAST = {}
+#    var @sharedMapAttributeListAST sharedMapAttributeListAST = {} 
+#    repeat
+#    while
+#      <shared_map_state_list> !?mapStateList
+#    while
+#      <shared_map_attribute> !?sharedMapAttributeListAST
+#    while
+#      <property_declaration> !?propertyList
+#    while
+#      <map_insert_setter_declaration> !?mInsertMethodList
+#    while
+#      <shared_map_search_method_declaration> !?mSearchMethodList
+#    while
+#      <shared_map_override> !?mapOverrideBlockListAST
+#    while
+#      $;$
+#    end
+#    $}$
+#  #--- Declare map
+#    ioDeclarations.mDeclarationList += !@sharedMapDeclarationAST.new {
+#      !false # Is not predefined
+#      !mMapTypeName
+#      !mapAttributeList
+#      !propertyList
+#      !mInsertMethodList
+#      !mSearchMethodList
+#      !mapStateList
+#      !mapOverrideBlockListAST
+#      !sharedMapAttributeListAST
+#    }
+#  #--- Declare map entry
+#    ioDeclarations.mDeclarationList += !@mapEntryDeclarationAST.new {
+#      !false # Is not predefined
+#      !mapEntryTypeName
+#      !mMapTypeName
+#    }
+#  }
+#
+#  #·····················································································································
+#
+#  rule <shared_map_override> ?!@mapOverrideBlockListAST ioMapOverrideBlockListAST {
+#    $override$
+#    $identifier$ ?let @lstring overrideBlockName
+#    var @mapOverrideBlockDescriptorAST mapOverrideBlockDescriptor1AST = {}
+#    ${$
+#    repeat
+#    while
+#      $identifier$ ?let @lstring sourceState1
+#      $:$
+#      $identifier$ ?let @lstring sourceState2
+#      $->$
+#      $identifier$ ?let @lstring targetState
+#      var @mapAutomatonMessageKind messageKind
+#      var @lstring messageText
+#      select
+#        messageKind = @mapAutomatonMessageKind.noMessage
+#        messageText = @lstring.new {!"" !@location.here}
+#      or
+#        $warning$
+#        messageKind = @mapAutomatonMessageKind.warningMessage
+#        $"string"$ ? messageText
+#      or
+#        $error$
+#        messageKind = @mapAutomatonMessageKind.errorMessage
+#        $"string"$ ? messageText
+#      end
+#      mapOverrideBlockDescriptor1AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText
+#    end
+#    $}$
+#    var mapOverrideBlockDescriptor2AST =@mapOverrideBlockDescriptorAST {}
+#    ${$
+#    repeat
+#    while
+#      $identifier$ ?let @lstring sourceState1
+#      $:$
+#      $identifier$ ?let @lstring sourceState2
+#      $->$
+#      $identifier$ ?let @lstring targetState
+#      var @mapAutomatonMessageKind messageKind
+#      var @lstring messageText
+#      select
+#        messageKind = @mapAutomatonMessageKind.noMessage
+#        messageText = @lstring.new {!"" !@location.here}
+#      or
+#        $warning$
+#        messageKind = @mapAutomatonMessageKind.warningMessage
+#        $"string"$ ? messageText
+#      or
+#        $error$
+#        messageKind = @mapAutomatonMessageKind.errorMessage
+#        $"string"$ ? messageText
+#      end
+#      mapOverrideBlockDescriptor2AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText
+#    end
+#    $}$
+#    ioMapOverrideBlockListAST += !overrideBlockName !mapOverrideBlockDescriptor1AST !mapOverrideBlockDescriptor2AST
+#  }
+#
+#  #·····················································································································
+#
+#  rule <shared_map_attribute> ?!@sharedMapAttributeListAST ioSharedMapAttributeListAST {
+#    var @bool isError
+#    select
+#      $error$
+#      isError = true
+#    or
+#      $warning$
+#      isError = false
+#    end
+#    $%attribute$ ?let attributeName
+#    $"string"$ ?let messageText
+#    ioSharedMapAttributeListAST += !attributeName !isError !messageText
+#  }
+#
+#  #·····················································································································
+#
+#  rule <shared_map_search_method_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
+#    $search$
+#    $identifier$ ?let @lstring mMethodName
+#    var @lstring actionName
+#    select
+#      actionName = @lstring.new {!"" !@location.here}
+#    or
+#      $do$
+#      $identifier$ ? actionName
+#    end
+#    $error$
+#    $message$
+#    $"string"$ ?let @lstring mErrorMessage
+#    ioMapSearchMethodListAST +=
+#      !mMethodName
+#      !mErrorMessage
+#      !actionName
+#      !false
+#  }
+#  
+#  #·····················································································································
+#
+#  rule <shared_map_state_list> ?!@mapStateList ioMapStateList {
+#    $state$
+#    $identifier$ ?let @lstring stateName
+#    var @mapAutomatonMessageKind stateMessageKind
+#    var @lstring stateMessage
+#    select
+#      stateMessageKind = .noMessage
+#      stateMessage = @lstring.new {!"" !@location.here}
+#    or
+#      $warning$
+#      $"string"$ ? stateMessage
+#      stateMessageKind = .warningMessage
+#    or
+#      $error$
+#      $"string"$ ? stateMessage
+#      stateMessageKind = .errorMessage
+#    end
+#    ${$
+#    var @mapStateTransitionList transitionList = {}
+#    repeat
+#    while
+#      <shared_map_state_transition> !?transitionList
+#    end
+#    ioMapStateList +=
+#      !stateName
+#      !stateMessageKind
+#      !stateMessage
+#      !transitionList
+#    $}$
+#  }
+#
+#  #·····················································································································
+#
+#  rule <shared_map_state_transition> ?!@mapStateTransitionList ioTransitionList {
+#    $identifier$ ?let @lstring actionName
+#    $->$
+#    $identifier$ ?let @lstring targetStateName
+#    var @mapAutomatonMessageKind transitionMessageKind
+#    var @lstring transitionMessage
+#    select
+#      transitionMessageKind = .noMessage
+#      transitionMessage = .new {!"" !.here}
+#    or
+#      $warning$
+#      $"string"$ ? transitionMessage
+#      transitionMessageKind = .warningMessage
+#    or
+#      $error$
+#      $"string"$ ? transitionMessage
+#      transitionMessageKind = .errorMessage
+#    end
+#    ioTransitionList +=
+#      !actionName
+#      !targetStateName
+#      !transitionMessageKind
+#      !transitionMessage
+#  }
+#
+#  #·····················································································································
+#
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH                          

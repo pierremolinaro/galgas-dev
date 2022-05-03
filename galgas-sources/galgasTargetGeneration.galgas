@@ -1,8 +1,8 @@
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
-#  License as published by the Free Software Foundation.                                                               *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
 #                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -341,7 +341,7 @@ proc updateGalgas3Targets
 #---------------------------------------- Check target names, file base name uniqueness, and build target file list
   var @stringset guiSourceSet_app = .setWithStringList {!inAppProductFileList}
 #---
-  var @stringset sourceFileSet = {}
+#  var @stringset sourceFileSet = {}
 #--- Parse features
   var @stringset availableGenerationFeatures = {}
   availableGenerationFeatures += !"quietOutputByDefault"
@@ -582,7 +582,7 @@ proc updateGalgas3Targets
   #--- Enumerate icons files in "userResources" directory
     let userResourceDir = projectDirectory + "/xcode-project/userResources"
     [userResourceDir makeDirectory]
-    var @stringlist extensionList = {!"icns"}
+    let @stringlist extensionList = {!"icns"}
     let resourceFiles = [userResourceDir regularFilesWithExtensions !false !extensionList]
   #--- Build pathes
     let newIntermediateFilePath = [inProjectSourceFilePath stringByDeletingLastPathComponent] + "/build/output/file-list-for-xcode-project.txt"

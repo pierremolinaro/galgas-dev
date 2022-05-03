@@ -1,14 +1,14 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  Copyright (C) 2007, ..., 2015 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2007, ..., 2015 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
-#  License as published by the Free Software Foundation.                                                               *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
 #                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -25,7 +25,7 @@ list @semanticExpressionListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#   F O R M A L    A R G U M E N T S    P A S S I N G    M O D E S                                                     *
+#   F O R M A L    A R G U M E N T S    P A S S I N G    M O D E S                                             
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -60,7 +60,7 @@ getter @formalArgumentPassingModeAST formalArgumentMessage -> @string {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  F O R M A L    P A R A M E T E R    L I S T                                                                         *
+#  F O R M A L    P A R A M E T E R    L I S T   
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -74,7 +74,7 @@ list @formalParameterListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  F O R M A L    I N P U T    P A R A M E T E R    L I S T                                                            *
+#  F O R M A L    I N P U T    P A R A M E T E R    L I S T                                                    
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -176,7 +176,7 @@ list @actualParameterListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  A C T U A L    I N P U T    P A R A M E T E R    L I S T                                                            *
+#  A C T U A L    I N P U T    P A R A M E T E R    L I S T                                                    
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -240,7 +240,7 @@ list @semanticDeclarationListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#    E X T E R N    R O U T I N E    D E C L A R A T I O N                                                             *
+#    E X T E R N    R O U T I N E    D E C L A R A T I O N                                                     
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -263,7 +263,7 @@ refclass @procDeclarationAST : @externRoutineDeclarationAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#    E X T E R N    F U N C T I O N    D E C L A R A T I O N                                                           *
+#    E X T E R N    F U N C T I O N    D E C L A R A T I O N                                                   
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -275,7 +275,7 @@ refclass @externFunctionDeclarationAST : @semanticDeclarationAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#    F U N C T I O N    D E C L A R A T I O N                                                                          *
+#    F U N C T I O N    D E C L A R A T I O N    
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -289,7 +289,7 @@ refclass @functionDeclarationAST : @externFunctionDeclarationAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#    O N C E    F U N C T I O N    D E C L A R A T I O N                                                               *
+#    O N C E    F U N C T I O N    D E C L A R A T I O N
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -319,7 +319,7 @@ list @propertyInCollectionListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#    F I L E W R A P P E R    D E C L A R A T I O N                                                                    *
+#    F I L E W R A P P E R    D E C L A R A T I O N     
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -401,7 +401,7 @@ list @listOfSyntaxInstructionList {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#   S Y N T A X    C O M P O N E N T    A S T                                                                          *
+#   S Y N T A X    C O M P O N E N T    A S T    
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

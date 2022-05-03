@@ -34,12 +34,12 @@ rule <start_symbol>
   end
 #--- XML header
   $<?$
-  $name$ ?var  @lstring name
+  $name$ ?let @lstring name
   repeat
   while 
-    $name$ ?var  @lstring attributeName
+    $name$ ?let @lstring attributeName
     $=$
-    $value$ ?var  @lstring attributeValue
+    $value$ ?let @lstring attributeValue
   end
   $?>$
 #--- Element list
@@ -85,7 +85,7 @@ rule <element>
   ?let @bool unused inDoNotCondenseWhiteSpaces
   ?let @bool inPrintDuringParsing
   ?let @string inIndendation {
-  $comment$ ?var  @lstring commentString
+  $comment$ ?let @lstring commentString
   if inIncludeComments then
     var node =@xmlNode.new{
       !@xmlNodeType. comment
@@ -119,13 +119,13 @@ rule <element>
   ?let @bool inPrintDuringParsing
   ?let @string inIndendation {
   $<$
-  $name$ ?var  @lstring name
+  $name$ ?let @lstring name
   var @xmlAttributeMap attributeMap = {}
   repeat
   while 
-    $name$ ?var  @lstring attributeName
+    $name$ ?let @lstring attributeName
     $=$
-    $value$ ?var  @lstring attributeValue
+    $value$ ?let @lstring attributeValue
     [!?attributeMap insertKey !attributeName !attributeValue]
   end
 
@@ -168,7 +168,7 @@ rule <element>
       !inIndendation
     )
     $</$
-    $name$ ?var  @lstring closingName
+    $name$ ?let @lstring closingName
     if closingName.string != name.string then
       error closingName:"incorrect closing tag </" + closingName + "> instead of </" + name + ">"
     end

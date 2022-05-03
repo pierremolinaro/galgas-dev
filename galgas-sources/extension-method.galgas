@@ -22,8 +22,8 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $method$
-    $@type$ ?var  @lstring className indexing typeReferenceExtensionMethod
-    $identifier$ ?var  @lstring mMethodName indexing extensionMethodDefinition
+    $@type$ ?let @lstring className indexing typeReferenceExtensionMethod
+    $identifier$ ?let @lstring mMethodName indexing extensionMethodDefinition
     <formal_parameter_list> ?let @formalParameterListAST formalParameterList
     ${$
     <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
@@ -52,8 +52,8 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $method$
-    $@type$ ?var  @lstring className indexing typeReferenceExtensionMethod
-    $identifier$ ?var  @lstring mMethodName indexing extensionMethodDefinition
+    $@type$ ?let @lstring className indexing typeReferenceExtensionMethod
+    $identifier$ ?let @lstring mMethodName indexing extensionMethodDefinition
     <formal_parameter_list> ?let @formalParameterListAST formalParameterList
     ${$
     <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList

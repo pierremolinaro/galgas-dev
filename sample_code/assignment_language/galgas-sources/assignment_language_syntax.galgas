@@ -38,10 +38,10 @@ rule <expression_factor> !@expressionAST outExpressionAST {
     <expression> ?outExpressionAST
     $)$
   or
-    $identifier$ ?var  @lstring varName
+    $identifier$ ?let @lstring varName
     outExpressionAST = @varInExpressionAST.new { !varName}
   or
-    $uint32$ ?var  @luint constant
+    $uint32$ ?let @luint constant
     outExpressionAST = @cstInExpressionAST.new { !constant}
   end
 }
@@ -49,13 +49,13 @@ rule <expression_factor> !@expressionAST outExpressionAST {
 
 rule <instruction> ?!@instructionListAST ioInstructionList {
   $int$
-  $identifier$ ?var  @lstring varName
+  $identifier$ ?let @lstring varName
   $;$
   ioInstructionList += !@varDeclarationAST.new { !varName}
 }
 
 rule <instruction> ?!@instructionListAST ioInstructionList {
-  $identifier$ ?var  @lstring targetVarName
+  $identifier$ ?let @lstring targetVarName
   $:=$
   var @expressionAST expression
   <expression> ? expression
@@ -65,7 +65,7 @@ rule <instruction> ?!@instructionListAST ioInstructionList {
 
 rule <instruction> ?!@instructionListAST ioInstructionList {
   $print$
-  $identifier$ ?var  @lstring targetVarName
+  $identifier$ ?let @lstring targetVarName
   $;$
   ioInstructionList += !@printVariableAST.new { !targetVarName}
 }

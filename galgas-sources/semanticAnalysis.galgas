@@ -1,19 +1,19 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  Copyright (C) 2007, ..., 2015 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2007, ..., 2015 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
-#  License as published by the Free Software Foundation.                                                               *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
 #                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#    C H E C K    M E T H O D    S I G N A T U R E                                                                     *
+#    C H E C K    M E T H O D    S I G N A T U R E      
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -61,7 +61,7 @@ proc checkMethodSignatures
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#    C H E C K    G E T T E R    S I G N A T U R E                                                                     *
+#    C H E C K    G E T T E R    S I G N A T U R E      
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -103,7 +103,7 @@ proc checkGetterSignatures
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#    D E C L A R A T I O N    S E M A N T I C    A N A L Y S I S                                                       *
+#    D E C L A R A T I O N    S E M A N T I C    A N A L Y S I S                                               
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -179,8 +179,7 @@ proc analyzeRoutineBody
   ?let @semanticInstructionListAST inInstructionList
   ?let @location inEndOfMethodLocation
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
-  !@formalParameterListForGeneration outRoutineSignature
-{
+  !@formalParameterListForGeneration outRoutineSignature {
   var variableMap = @localVarManager.default
 #--- Enter non mutable instance attributes
 #  if not [option galgas_cli_options.propertyAccessRequiresSelf value] then
@@ -307,8 +306,6 @@ override method @procDeclarationAST semanticAnalysis
   let nameForUsefulness = procedureNameForUsefulEntitiesGraph (!self.mRoutineName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Instruction list
-  var formalArgumentList =@formalParameterListForGeneration {}
-  var @semanticInstructionListForGeneration instructionList
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
@@ -326,8 +323,8 @@ override method @procDeclarationAST semanticAnalysis
     !mutablePropertyList: @typedPropertyList {}
     !self.mRoutineInstructionList
     !self.mEndOfRoutineInstructionList
-    ?instructionList
-    ?formalArgumentList
+    ?let instructionList
+    ?let formalArgumentList
   )
 #---
   ioSemanticDeclarationListForGeneration +=
@@ -441,10 +438,6 @@ override method @functionDeclarationAST semanticAnalysis
     ioUsefulnessRootEntities += !nameForUsefulness
   end
 #--- Analyse function body  
-  var @semanticInstructionListForGeneration semanticInstructionListForGeneration
-  var @formalInputParameterListForGeneration formalInputParameterList
-  var @unifiedTypeMap-entry returnType
-  var @string resultVariableCppName
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
@@ -464,10 +457,10 @@ override method @functionDeclarationAST semanticAnalysis
     !self.mResultVariableName
     !self.mResultTypeName
     !self.mEndOfFunctionInstructionList
-    ?formalInputParameterList
-    ?returnType
-    ?resultVariableCppName
-    ?semanticInstructionListForGeneration
+    ?let formalInputParameterList
+    ?let returnType
+    ?let resultVariableCppName
+    ?let semanticInstructionListForGeneration
   )
 #---
   ioSemanticDeclarationListForGeneration +=
@@ -500,9 +493,6 @@ override method @onceFunctionDeclarationAST semanticAnalysis
     ioUsefulnessRootEntities += !nameForUsefulness
   end
 #--- Analyse function body  
-  var @semanticInstructionListForGeneration semanticInstructionListForGeneration
-  var @unifiedTypeMap-entry returnType
-  var @string resultVariableCppName
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
@@ -523,9 +513,9 @@ override method @onceFunctionDeclarationAST semanticAnalysis
     !self.mResultTypeName
     !self.mEndOfFunctionInstructionList
     ?*
-    ?returnType
-    ?resultVariableCppName
-    ?semanticInstructionListForGeneration
+    ?let returnType
+    ?let resultVariableCppName
+    ?let semanticInstructionListForGeneration
   )
 #---
   ioSemanticDeclarationListForGeneration +=
@@ -541,7 +531,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#     F I L E W R A P P E R    A N A L Y S I S                                                                         *
+#     F I L E W R A P P E R    A N A L Y S I S   
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -596,7 +586,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
       var @templateVariableMap templateVariableMap = {}
       var @formalInputParameterListForGeneration filewrapperTemplateFormalInputParameters = {}
       for (mFormalTemplateSelector mFormalArgumentTypeName mFormalArgumentName *) in mFilewrapperTemplateFormalInputParameters do
-        var type =@unifiedTypeMap-entry.searchKey{!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
+        let type = @unifiedTypeMap-entry.searchKey{!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
         let @string cppVarName = "in_" + [mFormalArgumentName.string identifierRepresentation]
         [!?templateVariableMap insertKey !mFormalArgumentName !type !cppVarName]
         filewrapperTemplateFormalInputParameters += !mFormalTemplateSelector !type !cppVarName !mFormalArgumentName !true
@@ -762,7 +752,6 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     end
   end
 #------------------------ Get lexique component, for knowing if there are "indexing" declaration
-  var @stringset lexiqueComponentSet = {}
   [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
     !lexiqueComponentName
     ?* # @terminalMap inTerminalMap
@@ -893,8 +882,7 @@ override method @lexiqueComponentAST semanticAnalysis
   for (mRoutineName mLexicalRoutineFormalArgumentList mErrorMessageList) in self.mExternRoutineList do
     var lexicalRoutineFormalArgumentList =@lexicalRoutineFormalArgumentList {}
     for (mPassingMode mLexicalTypeName mFormalArgumentName) in mLexicalRoutineFormalArgumentList do
-      var @lexicalTypeEnum lexicalFormalArgumentType
-      [lexicalTypeMap searchKey !mLexicalTypeName ?lexicalFormalArgumentType]
+      [lexicalTypeMap searchKey !mLexicalTypeName ?let lexicalFormalArgumentType]
       lexicalRoutineFormalArgumentList += !mPassingMode !lexicalFormalArgumentType !mFormalArgumentName.string
     end
     [!?lexicalRoutineMap insertKey !mRoutineName !lexicalRoutineFormalArgumentList !mErrorMessageList !true]
@@ -906,12 +894,10 @@ override method @lexiqueComponentAST semanticAnalysis
   for (mFunctionName mLexicalFunctionFormalArgumentList mReturnedTypeName) in self.mExternFunctionList do
     var @lexicalFunctionFormalArgumentList lexicalFunctionFormalArgumentList = {}
     for (mLexicalTypeName mFormalArgumentName) in mLexicalFunctionFormalArgumentList do
-      var @lexicalTypeEnum lexicalFormalArgumentType
-      [lexicalTypeMap searchKey !mLexicalTypeName ?lexicalFormalArgumentType]
+      [lexicalTypeMap searchKey !mLexicalTypeName ?let lexicalFormalArgumentType]
       lexicalFunctionFormalArgumentList += !lexicalFormalArgumentType !mFormalArgumentName.string
     end
-    var @lexicalTypeEnum returnedArgumentType
-    [lexicalTypeMap searchKey !mReturnedTypeName ? returnedArgumentType]
+    [lexicalTypeMap searchKey !mReturnedTypeName ?let returnedArgumentType]
     [!?lexicalFunctionMap insertKey !mFunctionName !lexicalFunctionFormalArgumentList !returnedArgumentType !"" !true]
   end
 #--------------------------------------- Unicode test functions
@@ -949,10 +935,9 @@ override method @lexiqueComponentAST semanticAnalysis
     if [mStyle.string length] > 0 then
       [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
     end
-    var argumentTypeList =@lexicalSentValueList {}
+    var argumentTypeList = @lexicalSentValueList {}
     for (mFormalSelector mAttributeName) in mSentAttributeList do
-      var @lexicalTypeEnum attributeLexicalType
-      [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
+      [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
     [!?lexiqueAnalysisContext.mTerminalMap insertKey !mName !argumentTypeList]
@@ -986,16 +971,15 @@ override method @lexiqueComponentAST semanticAnalysis
     if [mStyle.string length] > 0 then
       [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
     end
-    var argumentTypeList =@lexicalSentValueList {}
+    var argumentTypeList = @lexicalSentValueList {}
     for (mFormalSelector mAttributeName) in mSentAttributeList do
-      var @lexicalTypeEnum attributeLexicalType
-      [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
+      [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
     var @lexicalExplicitTokenListMap lexicalTokenListMap = {}
-    var tokenSortedlist =@tokenSortedlist {}
+    var tokenSortedlist = @tokenSortedlist {}
     for (mEntrySpelling mTerminalSpelling mAttributeList) in mEntryList do
-      var @string syntaxErrorMessage = [mSyntaxErrorMessage.string stringByReplacingStringByString !"%K" !mTerminalSpelling.string]
+      let syntaxErrorMessage = [mSyntaxErrorMessage.string stringByReplacingStringByString !"%K" !mTerminalSpelling.string]
       var isEndOfTemplateMark = false
       var atomicSelection = true
       for (mValue) in mAttributeList do
@@ -1238,7 +1222,7 @@ refclass @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#           G E N E R A T I O N    F I L E W R A P P E R S                                                             *
+#           G E N E R A T I O N    F I L E W R A P P E R S                                                     
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1260,7 +1244,7 @@ filewrapper syntaxFileGenerationTemplate in "+generation-templates/syntax_genera
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#           B U I L D    N O N T E R M I N A L    M A P                                                                *
+#           B U I L D    N O N T E R M I N A L    M A P 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1334,7 +1318,7 @@ proc buildNonterminalDeclarationsMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#    S Y N T A X    I N S T R U C T I O N    A N A L Y S I S                                                           *
+#    S Y N T A X    I N S T R U C T I O N    A N A L Y S I S                                                   
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1730,7 +1714,7 @@ proc semanticAnalysisOfRuleLabel
   end
 #--- Semantic analysis of instruction list
   outInstructionListForGeneration = @semanticInstructionListForGeneration {}
-  var localVariableCppNameList =@stringlist {}
+#  var localVariableCppNameList =@stringlist {}
   for (mInstruction) in inSyntaxInstructionList do
     [mInstruction analyzeSyntaxInstruction
       !inUsefulnessCallerEntityName
@@ -1753,7 +1737,7 @@ proc semanticAnalysisOfRuleLabel
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#           S E M A N T I C    A N A L Y S I S                                                                         *
+#           S E M A N T I C    A N A L Y S I S   
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1818,9 +1802,6 @@ proc semanticAnalysisOfSyntaxComponent
     [nonterminalMap searchKey !mNonterminalName ?*]
     for (mLabelName mFormalArguments mEndOfArgumentLocation mSyntaxInstructionList mEndOfInstructionList) in mLabelList do
       localSelectMethodCount = selectMethodCount
-      var @formalParameterListForGeneration signatureForGeneration
-      var @formalParameterSignature signature
-      var @semanticInstructionListForGeneration instructionListForGeneration
       semanticAnalysisOfRuleLabel (
         !inSyntaxComponentUsefulnessName
         !?ioUsefulEntitiesGraph
@@ -1835,9 +1816,9 @@ proc semanticAnalysisOfSyntaxComponent
         !mEndOfInstructionList
         !inIndexNameSet
         !?localSelectMethodCount
-        ?signatureForGeneration
-        ?signature
-        ?instructionListForGeneration
+        ?let signatureForGeneration
+        ?let signature
+        ?let instructionListForGeneration
       )
       ruleLabelImplementationList +=
         !mLabelName

@@ -334,22 +334,10 @@ syntax extension galgas4InstructionsSyntax {
   rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
     $($
     var elementList = @forInstructionEnumeratedObjectElementListAST {}
-#    var @bool endsWithEllipsis
-#    select
-#      $...$
-#      endsWithEllipsis = true
-#    or
-      repeat
-        <for_instruction_element> !?elementList
-      while
-      end
-#      select
-#        endsWithEllipsis = false
-#      or
-#        $...$
-#        endsWithEllipsis = true
-#      end
-#    end
+    repeat
+      <for_instruction_element> !?elementList
+    while
+    end
     let location = @location.here
     $)$
     $in$

@@ -1,16 +1,16 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  semantics definitions for semantics component                                                                       *
+#  semantics definitions for semantics component 
 #                                           
-#  Copyright (C) 1997, ..., 2017 Pierre Molinaro.                                                                      *
+#  Copyright (C) 1997, ..., 2017 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
-#  License as published by the Free Software Foundation.                                                               *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
 #                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -177,7 +177,7 @@ map @classMethodMap {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  E N U M E R A T I O N    D E S C R I P T O R    L I S T                                                             *
+#  E N U M E R A T I O N    D E S C R I P T O R    L I S T                                                     
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -201,7 +201,7 @@ list @typedPropertyList {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  P R E D E F I N E D    T Y P E    K I N D    E N U M E R A T I O N                                                  *
+#  P R E D E F I N E D    T Y P E    K I N D    E N U M E R A T I O N                                          
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -229,7 +229,7 @@ enum @predefinedTypeKindEnum {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  T Y P E    K I N D    E N U M E R A T I O N                                                                         *
+#  T Y P E    K I N D    E N U M E R A T I O N   
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -277,7 +277,7 @@ getter @typeKindEnum string -> @string {
 #                                           
 #  O P E R A T O R    Boolset               
 #                                           
-# This type is used for the mHandledOperatorFlags attribute of the @unifiedTypeMap map, for indicating the handled     *
+# This type is used for the mHandledOperatorFlags attribute of the @unifiedTypeMap map, for indicating the handled  
 # operators.                                
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -417,7 +417,7 @@ method @unifiedTypeMap-entry addHeaderFileName1 ?!@stringset ioInclusions {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  A S T   C L A S S E S    F O R    P R E D E F I N E D   T Y P E S                                                   *
+#  A S T   C L A S S E S    F O R    P R E D E F I N E D   T Y P E S                                           
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -522,7 +522,7 @@ method @predefinedTypeAST getAddAssignArgumentList
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  G E T    E N U M E R A T I O N    L I S T                                                                           *
+#  G E T    E N U M E R A T I O N    L I S T     
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

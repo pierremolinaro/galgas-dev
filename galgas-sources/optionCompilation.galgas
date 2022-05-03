@@ -72,7 +72,7 @@ syntax galgas3OptionComponentSyntax (galgas3Scanner) {
         $"string"$ ? defaultValue
         optionDefaultValueKind = @optionDefaultValueEnumAST. stringDefaultValue
       or
-        $uint32$ ?var  @luint v
+        $uint32$ ?let @luint v
         defaultValue = @lstring.new {![v.uint string] !v.location}
         optionDefaultValueKind = @optionDefaultValueEnumAST. unsignedDefaultValue
       end
@@ -135,7 +135,7 @@ syntax galgas4OptionComponentSyntax (galgas3Scanner) {
         $"string"$ ? defaultValue
         optionDefaultValueKind = @optionDefaultValueEnumAST. stringDefaultValue
       or
-        $uint32$ ?var  @luint v
+        $uint32$ ?let @luint v
         defaultValue = @lstring.new {![v.uint string] !v.location}
         optionDefaultValueKind = @optionDefaultValueEnumAST. unsignedDefaultValue
       end
@@ -410,7 +410,7 @@ map @commandLineOptionMap { # the key is the option identifier
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#         G E N E R A T I O N    T E M P L A T E S                                                                     *
+#         G E N E R A T I O N    T E M P L A T E S      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper optionGenerationTemplates in "+generation-templates/option_generation" {

@@ -141,9 +141,8 @@ override method @selectInstruction analyzeSyntaxInstruction
 #--- Begin block
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- 'or' blocks
-  var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration {}
+  var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration {}
   for (mSyntaxInstructionList mEndOf_instructions) in self.mSelectBranchList do
-    var @semanticInstructionListForGeneration instructionList
     analyzeSyntaxInstructionList (
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -158,7 +157,7 @@ override method @selectInstruction analyzeSyntaxInstruction
       !inIndexNameSet
       !?ioVariableMap
       !?ioSelectMethodCount
-      ?instructionList
+      ?let instructionList
     )
     listOfSemanticInstructionListForGeneration += !instructionList !mEndOf_instructions
   end

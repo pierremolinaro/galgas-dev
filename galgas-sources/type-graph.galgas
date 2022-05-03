@@ -26,19 +26,19 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration>
    ?!@galgas3DeclarationAST ioDeclarations {
     $graph$
-    $@type$ ?var  @lstring graphTypeName indexing graphDefinition
+    $@type$ ?let @lstring graphTypeName indexing graphDefinition
     $($
-    $@type$ ?var  @lstring associatedListTypeName
+    $@type$ ?let @lstring associatedListTypeName
     $)$
     ${$
     var graphInsertModifierList =@graphInsertModifierList {}
     repeat
     while
       $insert$
-      $identifier$ ?var  @lstring insertName
+      $identifier$ ?let @lstring insertName
       $error$
       $message$
-      $"string"$ ?var  @lstring errorMessage
+      $"string"$ ?let @lstring errorMessage
       graphInsertModifierList += !insertName !errorMessage
     end
     $}$
@@ -62,19 +62,19 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $graph$
-    $@type$ ?var  @lstring graphTypeName indexing graphDefinition
+    $@type$ ?let @lstring graphTypeName indexing graphDefinition
     $($
-    $@type$ ?var  @lstring associatedListTypeName
+    $@type$ ?let @lstring associatedListTypeName
     $)$
     ${$
     var graphInsertModifierList =@graphInsertModifierList {}
     repeat
     while
       $insert$
-      $identifier$ ?var  @lstring insertName
+      $identifier$ ?let @lstring insertName
       $error$
       $message$
-      $"string"$ ?var  @lstring errorMessage
+      $"string"$ ?let @lstring errorMessage
       graphInsertModifierList += !insertName !errorMessage
     end
     $}$

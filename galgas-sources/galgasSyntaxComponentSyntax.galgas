@@ -1,14 +1,14 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
-#  License as published by the Free Software Foundation.                                                               *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
 #                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -104,7 +104,7 @@ syntax galgas3SyntaxComponentSyntax (galgas3Scanner) {
   }
 
   #·····················································································································
-  #      N O N T E R M I N A L    D E C L A R A T I O N                                                                  *
+  #      N O N T E R M I N A L    D E C L A R A T I O N   
   #·····················································································································
 
   rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList {
@@ -146,7 +146,7 @@ syntax galgas3SyntaxComponentSyntax (galgas3Scanner) {
 
   rule <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList {
     $rule$
-    $<non_terminal>$ ?var  @lstring mNonterminalName indexing ruleDefinition
+    $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
     var labelName =@lstring.new{!"" !@location.here}
     var mLabelList =@syntaxRuleLabelListAST {}
     repeat
@@ -161,7 +161,7 @@ syntax galgas3SyntaxComponentSyntax (galgas3Scanner) {
   }
 
   #·····················································································································
-  #   S Y N T A X    I N S T R U C T I O N    L I S T                                                                    *
+  #   S Y N T A X    I N S T R U C T I O N    L I S T     
   #·····················································································································
 
   rule <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList {
@@ -179,7 +179,7 @@ syntax galgas3SyntaxComponentSyntax (galgas3Scanner) {
   }
 
   #·····················································································································
-  #   T E R M I N A L    C H E C K    I N S T R U C T I O N                                                              *
+  #   T E R M I N A L    C H E C K    I N S T R U C T I O N                                                      
   #·····················································································································
 
   rule <actual_input_parameter_list> !@actualInputParameterListAST outActualInputParameterList
@@ -285,7 +285,7 @@ syntax galgas4SyntaxComponentSyntax (galgas3Scanner) {
   }
 
   #·····················································································································
-  #      N O N T E R M I N A L    D E C L A R A T I O N                                                                  *
+  #      N O N T E R M I N A L    D E C L A R A T I O N   
   #·····················································································································
 
   rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList {
@@ -305,7 +305,7 @@ syntax galgas4SyntaxComponentSyntax (galgas3Scanner) {
   }
 
   #·····················································································································
-  #      S Y N T A X    R U L E    D E C L A R A T I O N                                                                 *
+  #      S Y N T A X    R U L E    D E C L A R A T I O N  
   #·····················································································································
 
   rule <syntax_rule_label>
@@ -329,7 +329,7 @@ syntax galgas4SyntaxComponentSyntax (galgas3Scanner) {
 
   rule <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList {
     $rule$
-    $<non_terminal>$ ?var  @lstring mNonterminalName indexing ruleDefinition
+    $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
     var labelName =@lstring.new{!"" !@location.here}
     var mLabelList =@syntaxRuleLabelListAST {}
     repeat
@@ -344,7 +344,7 @@ syntax galgas4SyntaxComponentSyntax (galgas3Scanner) {
   }
 
   #·····················································································································
-  #   S Y N T A X    I N S T R U C T I O N    L I S T                                                                    *
+  #   S Y N T A X    I N S T R U C T I O N    L I S T     
   #·····················································································································
 
   rule <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList {
@@ -362,7 +362,7 @@ syntax galgas4SyntaxComponentSyntax (galgas3Scanner) {
   }
 
   #·····················································································································
-  #   T E R M I N A L    C H E C K    I N S T R U C T I O N                                                              *
+  #   T E R M I N A L    C H E C K    I N S T R U C T I O N                                                      
   #·····················································································································
 
   rule <actual_input_parameter_list> !@actualInputParameterListAST outActualInputParameterList

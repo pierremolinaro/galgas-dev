@@ -1,14 +1,14 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
-#  License as published by the Free Software Foundation.                                                               *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
 #                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -82,9 +82,9 @@ syntax galgas3InstructionsSyntax (galgas3Scanner) {
   {
     $proc$
     $identifier$ ?let mRoutineName indexing routineDefinition
-    <formal_parameter_list> ?var @formalParameterListAST mFormalParameterList
+    <formal_parameter_list> ?let @formalParameterListAST mFormalParameterList
     ${$
-    <semantic_instruction_list> ?var @semanticInstructionListAST mRoutineInstructionList
+    <semantic_instruction_list> ?let @semanticInstructionListAST mRoutineInstructionList
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
@@ -98,7 +98,7 @@ syntax galgas3InstructionsSyntax (galgas3Scanner) {
   }
 
   #·····················································································································
-  #    F U N C T I O N    D E C L A R A T I O N                                                                          *
+  #    F U N C T I O N    D E C L A R A T I O N    
   #·····················································································································
 
   rule  <declaration_with_private>
@@ -139,7 +139,7 @@ syntax galgas3InstructionsSyntax (galgas3Scanner) {
       resultVariableName = .new {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list> ?var @semanticInstructionListAST functionInstructionList
+    <semantic_instruction_list> ?let @semanticInstructionListAST functionInstructionList
     $}$
     let endOfFunctionInstructionList = @location.here
     if isOnce then
@@ -169,7 +169,7 @@ syntax galgas3InstructionsSyntax (galgas3Scanner) {
   }
 
   #·····················································································································
-  #    E X T E R N    F U N C T I O N    D E C L A R A T I O N                                                           *
+  #    E X T E R N    F U N C T I O N    D E C L A R A T I O N                                                   
   #·····················································································································
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
@@ -351,7 +351,7 @@ syntax galgas4InstructionsSyntax (galgas3Scanner) {
   }
 
   #·····················································································································
-  #    F U N C T I O N    D E C L A R A T I O N                                                                          *
+  #    F U N C T I O N    D E C L A R A T I O N    
   #·····················································································································
 
   rule  <declaration_with_private>
@@ -422,7 +422,7 @@ syntax galgas4InstructionsSyntax (galgas3Scanner) {
   }
 
   #·····················································································································
-  #    E X T E R N    F U N C T I O N    D E C L A R A T I O N                                                           *
+  #    E X T E R N    F U N C T I O N    D E C L A R A T I O N                                                   
   #·····················································································································
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {

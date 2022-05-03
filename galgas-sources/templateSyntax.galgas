@@ -2,15 +2,15 @@
 #                                           
 #  Template parser                          
 #                                           
-#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
-#  License as published by the Free Software Foundation.                                                               *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
 #                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -28,17 +28,17 @@ rule <expression>
   <relation_term> ?outExpression
   repeat
   while
-    var @location operatorLocation = @location.here
+    let @location operatorLocation = @location.here
     $|$
-    var @templateExpressionAST leftOperand = outExpression
-    var @templateExpressionAST rightOperand
+    let @templateExpressionAST leftOperand = outExpression
+    let @templateExpressionAST rightOperand
     <relation_term> ?rightOperand
     outExpression = @templateOrOperationAST.new {!operatorLocation !leftOperand !rightOperand}
   while
-    var @location operatorLocation = @location.here
+    let @location operatorLocation = @location.here
     $^$
-    var @templateExpressionAST leftOperand = outExpression
-    var @templateExpressionAST rightOperand
+    let @templateExpressionAST leftOperand = outExpression
+    let @templateExpressionAST rightOperand
     <relation_term> ?rightOperand
     outExpression = @templateXorOperationAST.new {!operatorLocation !leftOperand !rightOperand}
   end
@@ -55,10 +55,10 @@ rule <relation_term>
   <relation_factor> ?outExpression
   repeat
   while
-    var @location operatorLocation = @location.here
+    let @location operatorLocation = @location.here
     $&$
-    var @templateExpressionAST leftOperand = outExpression
-    var @templateExpressionAST rightOperand
+    let @templateExpressionAST leftOperand = outExpression
+   let @templateExpressionAST rightOperand
     <relation_factor> ?rightOperand
     outExpression = @templateAndOperationAST.new {!operatorLocation !leftOperand !rightOperand}
   end
@@ -75,45 +75,45 @@ rule <relation_factor>
   <simple_expression> ?outExpression
   select
   or
-    var @location operatorLocation = @location.here
+    let @location operatorLocation = @location.here
     $==$
-    var @templateExpressionAST leftExpression = outExpression
-    var @templateExpressionAST rightExpression
+    let @templateExpressionAST leftExpression = outExpression
+    let @templateExpressionAST rightExpression
     <simple_expression> ?rightExpression
     outExpression = @templateEqualTestAST.new {!operatorLocation !leftExpression !rightExpression}
   or
-    var @location operatorLocation = @location.here
+    let @location operatorLocation = @location.here
     $!=$
-    var @templateExpressionAST leftExpression = outExpression
-    var @templateExpressionAST rightExpression
+    let @templateExpressionAST leftExpression = outExpression
+    let @templateExpressionAST rightExpression
     <simple_expression> ?rightExpression
     outExpression = @templateNonEqualTestAST.new {!operatorLocation !leftExpression !rightExpression}
   or
-    var @location operatorLocation = @location.here
+    let @location operatorLocation = @location.here
     $<=$
-    var @templateExpressionAST leftExpression = outExpression
-    var @templateExpressionAST rightExpression
+    let @templateExpressionAST leftExpression = outExpression
+    let @templateExpressionAST rightExpression
     <simple_expression> ?rightExpression
     outExpression = @templateInfOrEqualTestAST.new {!operatorLocation !leftExpression !rightExpression}
   or
-    var @location operatorLocation = @location.here
+    let @location operatorLocation = @location.here
     $>=$
-    var @templateExpressionAST leftExpression = outExpression
-    var @templateExpressionAST rightExpression
+    let @templateExpressionAST leftExpression = outExpression
+    let @templateExpressionAST rightExpression
     <simple_expression> ?rightExpression
     outExpression = @templateSupOrEqualTestAST.new {!operatorLocation !leftExpression !rightExpression}
   or
-    var @location operatorLocation = @location.here
+    let @location operatorLocation = @location.here
     $>$
-    var @templateExpressionAST leftExpression = outExpression
-    var @templateExpressionAST rightExpression
+    let @templateExpressionAST leftExpression = outExpression
+    let @templateExpressionAST rightExpression
     <simple_expression> ?rightExpression
     outExpression = @templateStrictSupTestAST.new {!operatorLocation !leftExpression !rightExpression}
   or
-    var @location operatorLocation = @location.here
+    let @location operatorLocation = @location.here
     $<$
-    var @templateExpressionAST leftExpression = outExpression
-    var @templateExpressionAST rightExpression
+    let @templateExpressionAST leftExpression = outExpression
+    let @templateExpressionAST rightExpression
     <simple_expression> ?rightExpression
     outExpression = @templateStrictInfTestAST.new {!operatorLocation !leftExpression !rightExpression}
   end
@@ -129,31 +129,31 @@ rule <simple_expression> !@templateExpressionAST outExpression {
   <term> ?outExpression
   repeat
   while 
-    var @location operatorLocation = @location.here
+    let @location operatorLocation = @location.here
     $<<$
-    var @templateExpressionAST leftExpression = outExpression
-    var @templateExpressionAST rightExpression
+    let @templateExpressionAST leftExpression = outExpression
+    let @templateExpressionAST rightExpression
     <term> ?rightExpression
     outExpression = @templateLeftShiftOperationAST.new {!operatorLocation !leftExpression !rightExpression}
   while 
-    var @location operatorLocation = @location.here
+    let @location operatorLocation = @location.here
     $>>$
-    var @templateExpressionAST leftExpression = outExpression
-    var @templateExpressionAST rightExpression
+    let @templateExpressionAST leftExpression = outExpression
+    let @templateExpressionAST rightExpression
     <term> ?rightExpression
     outExpression = @templateRightShiftOperationAST.new {!operatorLocation !leftExpression !rightExpression}
   while 
-    var @location operatorLocation = @location.here
+    let @location operatorLocation = @location.here
     $+$
-    var @templateExpressionAST leftExpression = outExpression
-    var @templateExpressionAST rightExpression
+    let @templateExpressionAST leftExpression = outExpression
+    let @templateExpressionAST rightExpression
     <term> ?rightExpression
     outExpression = @templateAddOperationAST.new {!operatorLocation !leftExpression !rightExpression}
   while 
-    var @location operatorLocation = @location.here
+    let @location operatorLocation = @location.here
     $-$
-    var @templateExpressionAST leftExpression = outExpression
-    var @templateExpressionAST rightExpression
+    let @templateExpressionAST leftExpression = outExpression
+    let @templateExpressionAST rightExpression
     <term> ?rightExpression
     outExpression = @templateSubOperationAST.new {!operatorLocation !leftExpression !rightExpression}
   end
@@ -170,24 +170,24 @@ rule <term>
   <factor> ?outExpression
   repeat
   while 
-    var @location operatorLocation = @location.here
+    let @location operatorLocation = @location.here
     $*$
-    var @templateExpressionAST leftExpression = outExpression
-    var @templateExpressionAST rightExpression
+    let @templateExpressionAST leftExpression = outExpression
+    let @templateExpressionAST rightExpression
     <factor> ?rightExpression
     outExpression = @templateMultiplyOperationAST.new {!operatorLocation !leftExpression !rightExpression}
   while 
-    var @location operatorLocation = @location.here
+    let @location operatorLocation = @location.here
     $/$
-    var @templateExpressionAST leftExpression = outExpression
-    var @templateExpressionAST rightExpression
+    let @templateExpressionAST leftExpression = outExpression
+    let @templateExpressionAST rightExpression
     <factor> ?rightExpression
     outExpression = @templateDivideOperationAST.new {!operatorLocation !leftExpression !rightExpression}
   while 
-    var @location operatorLocation = @location.here
+    let @location operatorLocation = @location.here
     $mod$
-    var @templateExpressionAST leftExpression = outExpression
-    var @templateExpressionAST rightExpression
+    let @templateExpressionAST leftExpression = outExpression
+    let @templateExpressionAST rightExpression
     <factor> ?rightExpression
     outExpression = @templateModuloOperationAST.new {!operatorLocation !leftExpression !rightExpression}
   end
@@ -215,11 +215,10 @@ rule <factor> !@templateExpressionAST outExpression {
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-rule <factor>
-  !@templateExpressionAST outExpression {
-  var @location operatorLocation = @location.here
+rule <factor> !@templateExpressionAST outExpression {
+  let @location operatorLocation = @location.here
   $-$
-  var @templateExpressionAST expression
+  let @templateExpressionAST expression
   <factor> ?expression
   outExpression = @templateUnaryMinusOperationAST.new {!operatorLocation !expression}
 }
@@ -230,11 +229,10 @@ rule <factor>
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-rule <factor>
-  !@templateExpressionAST outExpression {
-  var @location operatorLocation = @location.here
+rule <factor> !@templateExpressionAST outExpression {
+  let @location operatorLocation = @location.here
   $not$
-  var @templateExpressionAST ifCondition
+  let @templateExpressionAST ifCondition
   <factor> ?ifCondition
   outExpression = @templateNotOperatorAST.new {!operatorLocation !ifCondition}
 }
@@ -247,9 +245,9 @@ rule <factor>
 
 rule <factor>
   !@templateExpressionAST outExpression {
-  var @location operatorLocation = @location.here
+  let @location operatorLocation = @location.here
   $~$
-  var @templateExpressionAST ifCondition
+  let @templateExpressionAST ifCondition
   <factor> ?ifCondition
   outExpression = @templateLogicalNegateAST.new {!operatorLocation !ifCondition}
 }
@@ -261,7 +259,7 @@ rule <factor>
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary> !@templateExpressionAST outExpression {
-  $identifier$ ?var  @lstring identifier
+  $identifier$ ?let @lstring identifier
   outExpression = @templateVarInExpressionAST.new {!identifier}
 }
 
@@ -301,48 +299,48 @@ rule <primary> !@templateExpressionAST outExpression {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#   P R I M A R Y  :    a 32-bit unsigned literal integer value                                                        *
+#   P R I M A R Y  :    a 32-bit unsigned literal integer value                                                
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary> !@templateExpressionAST outExpression {
-  var @luint literalInt
+  let @luint literalInt
   $uint32$ ?literalInt
   outExpression = @templateLiteralUIntExpressionAST.new {!literalInt}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#   P R I M A R Y  :    a 32-bit signed literal integer value                                                          *
+#   P R I M A R Y  :    a 32-bit signed literal integer value                                                  
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary> !@templateExpressionAST outExpression {
-  var @lsint literalInt
+  let @lsint literalInt
   $sint32_S$ ?literalInt
   outExpression = @templateLiteralSIntExpressionAST.new {!literalInt}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#   P R I M A R Y  :    a 64-bit unsigned literal integer value                                                        *
+#   P R I M A R Y  :    a 64-bit unsigned literal integer value                                                
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary> !@templateExpressionAST outExpression {
-  var @luint64 literalInt
+  let @luint64 literalInt
   $uint64_L$ ?literalInt
   outExpression = @templateLiteralUInt64ExpressionAST.new {!literalInt}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#   P R I M A R Y  :    a 64-bit signed literal integer value                                                          *
+#   P R I M A R Y  :    a 64-bit signed literal integer value                                                  
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary> !@templateExpressionAST outExpression {
-  var @lsint64 literalInt
+  let @lsint64 literalInt
   $sint64_LS$ ?literalInt
   outExpression = @templateLiteralSInt64ExpressionAST.new {!literalInt}
 }
@@ -354,33 +352,32 @@ rule <primary> !@templateExpressionAST outExpression {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary> !@templateExpressionAST outExpression {
-  var @ldouble literalDouble
+  let @ldouble literalDouble
   $double.xxx$ ? literalDouble ?*
   outExpression = @templateLiteralDoubleExpressionAST.new {!literalDouble}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#   P R I M A R Y  :    a literal character value                                                                      *
+#   P R I M A R Y  :    a literal character value
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary> !@templateExpressionAST outExpression {
-  $'char'$ ?var @lchar literalChar
+  $'char'$ ?let @lchar literalChar
   outExpression = @templateLiteralCharExpressionAST.new {!literalChar}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#   P R I M A R Y  :    a literal character value                                                                      *
+#   P R I M A R Y  :    a literal character value
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary> !@templateExpressionAST outExpression {
   var @stringlist literalStringList = {}
   repeat
-    var @lstring literalString
-    $"string"$ ?literalString
+    $"string"$ ?let @lstring literalString
     literalStringList += !literalString.string
   while
   end
@@ -390,12 +387,12 @@ rule <primary> !@templateExpressionAST outExpression {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #                         F A C T O R       
-#   description          :   [expression description]                                                                  *
-#   getter call          :   [expression getter !... ]                                                                 *
-#   constructor call     :   [@class constructor !... ]                                                                *
-#   option value         :   [option option_component_name.option_name]                                                *
-#   filewrapper template :   [filewrapper fw.template_name !...]                                                       *
-#   extension template   :   [template expression template_name !...]                                                  *
+#   description          :   [expression description]   
+#   getter call          :   [expression getter !... ]  
+#   constructor call     :   [@class constructor !... ] 
+#   option value         :   [option option_component_name.option_name]                                        
+#   filewrapper template :   [filewrapper fw.template_name !...]                                               
+#   extension template   :   [template expression template_name !...]                                          
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -404,10 +401,10 @@ rule <primary> !@templateExpressionAST outExpression {
   select
   #--------------------------------- Template
     $template$
-    var @templateExpressionAST receiverExpression
+    let @templateExpressionAST receiverExpression
     <expression> ?receiverExpression
-    $identifier$ ?var  @lstring templateName
-    var @templateExpressionListAST expressionList
+    $identifier$ ?let @lstring templateName
+    let @templateExpressionListAST expressionList
     <output_expression_list> ?expressionList
     outExpression = @templateExtensionTemplateCallAST.new {
       !receiverExpression
@@ -416,9 +413,9 @@ rule <primary> !@templateExpressionAST outExpression {
     }
     $]$
   or #------------ Constructor call
-    $@type$ ?var @lstring typeName
-    $identifier$ ?var  @lstring constructorName
-    <output_expression_list> ?var @templateExpressionListAST expressionList
+    $@type$ ?let @lstring typeName
+    $identifier$ ?let @lstring constructorName
+    <output_expression_list> ?let @templateExpressionListAST expressionList
     outExpression = @templateConstructorAST.new {
       !typeName
       !constructorName
@@ -427,19 +424,19 @@ rule <primary> !@templateExpressionAST outExpression {
     $]$
   or #--------------------------------- Filewrapper
     $filewrapper$
-    $identifier$ ?var @lstring filewrapperName
+    $identifier$ ?let @lstring filewrapperName
     $.$
-    $identifier$ ?var @lstring templateName
-    var @templateExpressionListAST expressionList
+    $identifier$ ?let @lstring templateName
+    let @templateExpressionListAST expressionList
     <output_expression_list> ?expressionList
     $]$
     outExpression = @templateFileWrapperTemplateCallAST.new {!filewrapperName !templateName !expressionList}
   or #--------------------------------- Getter call
     let startLocation = @location.here
-    var @templateExpressionAST receiverExpression
+    let @templateExpressionAST receiverExpression
     <expression> ?receiverExpression
-    $identifier$ ?var  @lstring getterName
-    var @templateExpressionListAST expressionList
+    $identifier$ ?let @lstring getterName
+    let @templateExpressionListAST expressionList
     <output_expression_list> ?expressionList
     $]$
     let endLocation = @location.here
@@ -453,14 +450,14 @@ rule <primary> !@templateExpressionAST outExpression {
     $option$
     select
       $.$
-      $identifier$ ?var @lstring optionName
-      $identifier$ ?var @lstring getterName
+      $identifier$ ?let @lstring optionName
+      $identifier$ ?let @lstring getterName
       outExpression = @templateOptionAccessAST.new {!@lstring.new {!"galgas_builtin_options" !@location.here} !optionName !getterName}
     or
-      $identifier$ ?var @lstring optionComponentName
+      $identifier$ ?let @lstring optionComponentName
       $.$
-      $identifier$ ?var @lstring optionName
-      $identifier$ ?var @lstring getterName
+      $identifier$ ?let @lstring optionName
+      $identifier$ ?let @lstring getterName
       outExpression = @templateOptionAccessAST.new {!optionComponentName !optionName !getterName}
     end
     $]$
@@ -470,7 +467,7 @@ rule <primary> !@templateExpressionAST outExpression {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #                         F A C T O R       
-#   function call        :   function_name (!... )                                                                     *
+#   function call        :   function_name (!... )      
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -510,7 +507,7 @@ rule <primary> !@templateExpressionAST outExpression {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#   O U T P U T    E X P R E S S I O N    L I S T                                                                      *
+#   O U T P U T    E X P R E S S I O N    L I S T
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -519,8 +516,7 @@ rule <output_expression_list> !@templateExpressionListAST outExpressionList {
   repeat
   while
     $!$ ?let selector
-    var @templateExpressionAST expression
-    <expression> ?expression
+    <expression> ?let @templateExpressionAST expression
     outExpressionList += !selector !expression !@location.here
   end
 }
@@ -559,8 +555,7 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
 
 rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
   $block$
-  var @templateExpressionAST expression
-  <expression> ?expression
+  <expression> ?let @templateExpressionAST expression
   $:$
 #--- Instruction list
   var blockInstructionList =@templateInstructionListAST {}

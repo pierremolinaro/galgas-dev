@@ -2,15 +2,15 @@
 #                                           
 #  Grammar Semantics                        
 #                                           
-#  Copyright (C) 2009, ..., 2011 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2009, ..., 2011 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
-#  License as published by the Free Software Foundation.                                                               *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
 #                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -19,7 +19,7 @@
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#         Instruction abstract class for grammar component                                                             *
+#         Instruction abstract class for grammar component                                                     
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -30,7 +30,7 @@ abstract refclass @abstractSyntaxInstructionForGrammarAnalysis %generatedInSepar
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #        Syntax signature                   
-#      (sequence of terminal, nonterminal, select and repeat)                                                          *
+#      (sequence of terminal, nonterminal, select and repeat)                                                  
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -40,7 +40,7 @@ list @syntaxInstructionListForGrammarAnalysis {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#   Production rules list (for a grammar component)                                                                    *
+#   Production rules list (for a grammar component)     
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -60,7 +60,7 @@ map @unusedNonTerminalSymbolMapForGrammarAnalysis {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#             nonterminal symbols sorted list                                                                          *
+#             nonterminal symbols sorted list    
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -96,7 +96,7 @@ refclass @nonTerminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionF
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-# Liste of branches of a 'select' or 'repeat' instruction                                                              *
+# Liste of branches of a 'select' or 'repeat' instruction                                                      
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -106,7 +106,7 @@ list @branchListForGrammarAnalysis {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#   select instruction (for a grammar component)                                                                       *
+#   select instruction (for a grammar component) 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

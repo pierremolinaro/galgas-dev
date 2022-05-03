@@ -83,6 +83,9 @@ syntax extension galgas3InstructionsSyntax {
   
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $match$
+    if [option galgas_cli_options.errorOldStylePropertyDeclaration value] then
+      warning .here : "This instruction is not handled in GALGAS 4"
+    end
     var @semanticExpressionListAST matchedExpressionNameList = {}
     let instructionLocation = @location.here
     <expression> ?let @semanticExpressionAST receiverExpression
@@ -128,101 +131,101 @@ syntax extension galgas3InstructionsSyntax {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax extension galgas4InstructionsSyntax {
-
-  #·····················································································································
-  
-  rule <match_entry> ?!@matchEntryListAST ioMatchEntryList {
-    $identifier$ ?let enumerationConstantName
-    ioMatchEntryList +=
-      !false
-      !enumerationConstantName
-      !@lstring.new {!"" !@location.here}
-  }
-
-  #···················································································································
-  
-  rule <match_entry> ?!@matchEntryListAST ioMatchEntryList {
-    $@type$ ?let className
-    var @lstring localConstant
-    select
-      localConstant = @lstring.new {!"" !@location.here}
-    or
-      $identifier$ ?localConstant
-    end
-    ioMatchEntryList +=
-      !true
-      !className
-      !localConstant
-  }
-  
-  #···················································································································
-  
-  rule <match_instruction_branch> ?!@matchInstructionBranchListAST ioMatchInstructionBranchList {
-    $case$
-    var @matchEntryListAST mMatchEntryList = {}
-    repeat
-      <match_entry> !? mMatchEntryList
-    while
-      $,$
-    end
-    let endOfMatchEntryList = @location.here
-    $:$
-    var @semanticInstructionListAST mMatchBranchInstructionList
-    <semantic_instruction_list> ? mMatchBranchInstructionList
-    ioMatchInstructionBranchList +=
-      !mMatchEntryList
-      !endOfMatchEntryList
-      !mMatchBranchInstructionList
-      !@location.here
-  }
-  
-  #···················································································································
-  
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
-    $match$
-    var @semanticExpressionListAST matchedExpressionNameList = {}
-    let instructionLocation = @location.here
-    <expression> ?let @semanticExpressionAST receiverExpression
-    matchedExpressionNameList += !receiverExpression !@location.here
-    repeat
-      $,$
-      <expression> ?let @semanticExpressionAST expression
-      matchedExpressionNameList += !expression !@location.here
-    while
-    end
-    var @matchInstructionBranchListAST matchInstructionBranchList = {}
-    repeat
-      <match_instruction_branch> !? matchInstructionBranchList
-    while
-    end
-    var @semanticInstructionListAST elseInstructionList
-    select
-      elseInstructionList = {}
-    or
-      $else$
-      <semantic_instruction_list> ? elseInstructionList
-    end
-    $end$
-    let endOf_match_instruction = @location.here
-    select
-    or
-      $%attribute$ ?let @lstring terminator
-      if terminator.string != "match" then
-        error terminator : "the terminator attribute should be '%match'" fixit { replace "%match" }
-      end
-    end
-    outInstruction = @matchInstructionAST.new {
-      !instructionLocation
-      !matchedExpressionNameList
-      !matchInstructionBranchList
-      !elseInstructionList
-      !endOf_match_instruction}
-  }
-
-  #·····················································································································
-
-}
+#syntax extension galgas4InstructionsSyntax {
+#
+#  #·····················································································································
+#  
+#  rule <match_entry> ?!@matchEntryListAST ioMatchEntryList {
+#    $identifier$ ?let enumerationConstantName
+#    ioMatchEntryList +=
+#      !false
+#      !enumerationConstantName
+#      !@lstring.new {!"" !@location.here}
+#  }
+#
+#  #···················································································································
+#  
+#  rule <match_entry> ?!@matchEntryListAST ioMatchEntryList {
+#    $@type$ ?let className
+#    var @lstring localConstant
+#    select
+#      localConstant = @lstring.new {!"" !@location.here}
+#    or
+#      $identifier$ ?localConstant
+#    end
+#    ioMatchEntryList +=
+#      !true
+#      !className
+#      !localConstant
+#  }
+#  
+#  #···················································································································
+#  
+#  rule <match_instruction_branch> ?!@matchInstructionBranchListAST ioMatchInstructionBranchList {
+#    $case$
+#    var @matchEntryListAST mMatchEntryList = {}
+#    repeat
+#      <match_entry> !? mMatchEntryList
+#    while
+#      $,$
+#    end
+#    let endOfMatchEntryList = @location.here
+#    $:$
+#    var @semanticInstructionListAST mMatchBranchInstructionList
+#    <semantic_instruction_list> ? mMatchBranchInstructionList
+#    ioMatchInstructionBranchList +=
+#      !mMatchEntryList
+#      !endOfMatchEntryList
+#      !mMatchBranchInstructionList
+#      !@location.here
+#  }
+#  
+#  #···················································································································
+#  
+#  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+#    $match$
+#    var @semanticExpressionListAST matchedExpressionNameList = {}
+#    let instructionLocation = @location.here
+#    <expression> ?let @semanticExpressionAST receiverExpression
+#    matchedExpressionNameList += !receiverExpression !@location.here
+#    repeat
+#      $,$
+#      <expression> ?let @semanticExpressionAST expression
+#      matchedExpressionNameList += !expression !@location.here
+#    while
+#    end
+#    var @matchInstructionBranchListAST matchInstructionBranchList = {}
+#    repeat
+#      <match_instruction_branch> !? matchInstructionBranchList
+#    while
+#    end
+#    var @semanticInstructionListAST elseInstructionList
+#    select
+#      elseInstructionList = {}
+#    or
+#      $else$
+#      <semantic_instruction_list> ? elseInstructionList
+#    end
+#    $end$
+#    let endOf_match_instruction = @location.here
+#    select
+#    or
+#      $%attribute$ ?let @lstring terminator
+#      if terminator.string != "match" then
+#        error terminator : "the terminator attribute should be '%match'" fixit { replace "%match" }
+#      end
+#    end
+#    outInstruction = @matchInstructionAST.new {
+#      !instructionLocation
+#      !matchedExpressionNameList
+#      !matchInstructionBranchList
+#      !elseInstructionList
+#      !endOf_match_instruction}
+#  }
+#
+#  #·····················································································································
+#
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT

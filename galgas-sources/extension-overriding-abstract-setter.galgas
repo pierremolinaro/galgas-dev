@@ -20,8 +20,8 @@ syntax extension galgas3DeclarationsSyntax {
     $override$
     $abstract$
     $setter$
-    $@type$ ?var  @lstring className indexing typeReferenceOverrideAbstractExtensionSetter
-    $identifier$ ?var  @lstring setterName indexing overrideabstractExtensionSetterDefinition
+    $@type$ ?let @lstring className indexing typeReferenceOverrideAbstractExtensionSetter
+    $identifier$ ?let @lstring setterName indexing overrideabstractExtensionSetterDefinition
     <formal_parameter_list> ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST.new {
       !false # Is not predefined
@@ -44,8 +44,8 @@ syntax extension galgas4DeclarationsSyntax {
     $override$
     $abstract$
     $setter$
-    $@type$ ?var  @lstring className indexing typeReferenceOverrideAbstractExtensionSetter
-    $identifier$ ?var  @lstring setterName indexing overrideabstractExtensionSetterDefinition
+    $@type$ ?let @lstring className indexing typeReferenceOverrideAbstractExtensionSetter
+    $identifier$ ?let @lstring setterName indexing overrideabstractExtensionSetterDefinition
     <formal_parameter_list> ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST.new {
       !false # Is not predefined

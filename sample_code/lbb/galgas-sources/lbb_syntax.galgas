@@ -6,14 +6,14 @@ rule <start_symbol> !@programAST outProgramAST {
   var @boxInstanceListAST boxInstanceListAST = {}
   repeat
   while
-    $identifier$ ?var  @lstring boxTypeName
-    $identifier$ ?var  @lstring boxInstanceName
+    $identifier$ ?let @lstring boxTypeName
+    $identifier$ ?let @lstring boxInstanceName
     ${$
     var connectionList =@connectionlistAST {}
     repeat
-      $identifier$ ?var  @lstring boxInstanceName
+      $identifier$ ?let @lstring boxInstanceName
       $.$
-      $identifier$ ?var  @lstring portName
+      $identifier$ ?let @lstring portName
       connectionList += !boxInstanceName !portName
     while
       $,$
@@ -22,11 +22,11 @@ rule <start_symbol> !@programAST outProgramAST {
     boxInstanceListAST += !boxTypeName !boxInstanceName !connectionList
   while
     $type$
-    $identifier$ ?var  @lstring boxTypeName
+    $identifier$ ?let @lstring boxTypeName
     $=$
     var portNameList =@lstringlist {}
     repeat
-      $identifier$ ?var  @lstring portName
+      $identifier$ ?let @lstring portName
       portNameList += !portName
     while
       $,$

@@ -25,7 +25,7 @@ syntax extension galgas3DeclarationsSyntax {
     $identifier$ ?let mGetterName indexing overrideAbstractExtensionGetterDefinition
     <formal_input_parameter_list> ?let @formalInputParameterListAST mFormalInputParameterList
     $->$
-    $@type$ ?var  @lstring mReturnedTypeName
+    $@type$ ?let @lstring mReturnedTypeName
     select
       $identifier$ ? let idf
       warning idf : "an identifier is no longer required here" fixit { remove }
@@ -58,7 +58,7 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ ?let mGetterName indexing overrideAbstractExtensionGetterDefinition
     <formal_input_parameter_list> ?let @formalInputParameterListAST mFormalInputParameterList
     $->$
-    $@type$ ?var  @lstring mReturnedTypeName
+    $@type$ ?let @lstring mReturnedTypeName
     select
       $identifier$ ? let idf
       warning idf : "an identifier is no longer required here" fixit { remove }

@@ -2,15 +2,15 @@
 #                                           
 #  'lexique' component metamodel            
 #                                           
-#  Copyright (C) 2009, ..., 2015 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2009, ..., 2015 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
-#  License as published by the Free Software Foundation.                                                               *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
 #                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -29,7 +29,7 @@ getter @lexicalTypeEnum lexicalTypeBaseName -> @string {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                         buildLexicalRoutineMap                                                                       *
+#                         buildLexicalRoutineMap 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
@@ -482,7 +482,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                         buildLexicalFunctionMap                                                                      *
+#                         buildLexicalFunctionMap
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc buildLexicalFunctionMap !@lexicalFunctionMap outLexicalFunctionMap {
@@ -510,7 +510,7 @@ proc buildLexicalFunctionMap !@lexicalFunctionMap outLexicalFunctionMap {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                    printPredefinedLexicalActions                                                                     *
+#                    printPredefinedLexicalActions      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc printPredefinedLexicalActions {

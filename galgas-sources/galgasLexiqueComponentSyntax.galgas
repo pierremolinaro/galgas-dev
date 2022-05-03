@@ -1,14 +1,14 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
-#  License as published by the Free Software Foundation.                                                               *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
 #                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -118,7 +118,7 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
     var optionList =@lstringlist {}
     repeat
     while
-      $%attribute$ ?var  @lstring optionName
+      $%attribute$ ?let @lstring optionName
       optionList += !optionName
     end
     $...$
@@ -522,7 +522,7 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
     var @lstringlist optionList = {}
     select
     or
-      $%attribute$ ?var  @lstring optionName
+      $%attribute$ ?let @lstring optionName
       optionList += !optionName
     end
     var @lstring terminalSpelling
@@ -763,7 +763,7 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
     var optionList =@lstringlist {}
     repeat
     while
-      $%attribute$ ?var  @lstring optionName
+      $%attribute$ ?let @lstring optionName
       optionList += !optionName
     end
     $...$
@@ -1167,7 +1167,7 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
     var @lstringlist optionList = {}
     select
     or
-      $%attribute$ ?var  @lstring optionName
+      $%attribute$ ?let @lstring optionName
       optionList += !optionName
     end
     var @lstring terminalSpelling

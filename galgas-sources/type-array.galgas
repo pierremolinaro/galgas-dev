@@ -21,9 +21,9 @@ syntax extension galgas3DeclarationsSyntax {
   #--- Map type name
     $@type$ ?let @lstring arrayTypeName indexing arrayTypeDefinition
     $:$
-    $@type$ ?var  @lstring elementListTypeName indexing arrayElementTypeReference
+    $@type$ ?let @lstring elementListTypeName indexing arrayElementTypeReference
     $[$
-    $uint32$ ?var  @luint dimension
+    $uint32$ ?let @luint dimension
     $]$
     ioDeclarations.mDeclarationList += !@arrayDeclarationAST.new {
       !false # Is not predefined
@@ -48,9 +48,9 @@ syntax extension galgas4DeclarationsSyntax {
   #--- Map type name
     $@type$ ?let @lstring arrayTypeName indexing arrayTypeDefinition
     $:$
-    $@type$ ?var  @lstring elementListTypeName indexing arrayElementTypeReference
+    $@type$ ?let @lstring elementListTypeName indexing arrayElementTypeReference
     $[$
-    $uint32$ ?var  @luint dimension
+    $uint32$ ?let @luint dimension
     $]$
     ioDeclarations.mDeclarationList += !@arrayDeclarationAST.new {
       !false # Is not predefined

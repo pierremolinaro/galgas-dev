@@ -18,9 +18,9 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration>
    ?!@galgas3DeclarationAST ioDeclarations {
     $listmap$
-    $@type$ ?var  @lstring mListmapTypeName indexing listmapDefinition
+    $@type$ ?let @lstring mListmapTypeName indexing listmapDefinition
     $($
-    $@type$ ?var  @lstring mAssociatedListTypeName
+    $@type$ ?let @lstring mAssociatedListTypeName
     $)$
     ioDeclarations.mDeclarationList += !@listmapDeclarationAST.new {
       !false # Is not predefined
@@ -40,9 +40,9 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration>  ?!@galgas3DeclarationAST ioDeclarations {
     $listmap$
-    $@type$ ?var  @lstring mListmapTypeName indexing listmapDefinition
+    $@type$ ?let @lstring mListmapTypeName indexing listmapDefinition
     $($
-    $@type$ ?var  @lstring mAssociatedListTypeName
+    $@type$ ?let @lstring mAssociatedListTypeName
     $)$
     ioDeclarations.mDeclarationList += !@listmapDeclarationAST.new {
       !false # Is not predefined

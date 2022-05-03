@@ -185,8 +185,7 @@ override method @methodCallInstructionForGeneration generateInstruction
   var jokerParametersToReleaseList = @stringlist {}
   var inputVariableList = @stringlist {}
   for (mActualParameter) in self.mActualParameterList do
-    var @string parameterCppName
-    [mActualParameter generateActualParameter !?ioInclusionSet !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName]
+    [mActualParameter generateActualParameter !?ioInclusionSet !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?let parameterCppName]
     parameterCppNameList += !parameterCppName
   end
 #--- Generate method call

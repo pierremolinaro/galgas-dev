@@ -8,6 +8,1410 @@
 #include "all-declarations-0.h"
 
 //----------------------------------------------------------------------------------------------------------------------
+
+cMapElement_localVarManager::cMapElement_localVarManager (const GALGAS_lstring & inKey,
+                                                          const GALGAS_unifiedTypeMap_2D_entry & in_mType,
+                                                          const GALGAS_string & in_mCppName,
+                                                          const GALGAS_string & in_mNameForCheckingFormalParameterUsing
+                                                          COMMA_LOCATION_ARGS) :
+cMapElement (inKey COMMA_THERE),
+mProperty_mType (in_mType),
+mProperty_mCppName (in_mCppName),
+mProperty_mNameForCheckingFormalParameterUsing (in_mNameForCheckingFormalParameterUsing) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool cMapElement_localVarManager::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mType.isValid () && mProperty_mCppName.isValid () && mProperty_mNameForCheckingFormalParameterUsing.isValid () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+cMapElement * cMapElement_localVarManager::copy (void) {
+  cMapElement * result = NULL ;
+  macroMyNew (result, cMapElement_localVarManager (mProperty_lkey, mProperty_mType, mProperty_mCppName, mProperty_mNameForCheckingFormalParameterUsing COMMA_HERE)) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cMapElement_localVarManager::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mType" ":" ;
+  mProperty_mType.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mCppName" ":" ;
+  mProperty_mCppName.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mNameForCheckingFormalParameterUsing" ":" ;
+  mProperty_mNameForCheckingFormalParameterUsing.description (ioString, inIndentation) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cMapElement_localVarManager::compare (const cCollectionElement * inOperand) const {
+  cMapElement_localVarManager * operand = (cMapElement_localVarManager *) inOperand ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mType.objectCompare (operand->mProperty_mType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mCppName.objectCompare (operand->mProperty_mCppName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mNameForCheckingFormalParameterUsing.objectCompare (operand->mProperty_mNameForCheckingFormalParameterUsing) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_localVarManager::GALGAS_localVarManager (void) :
+AC_GALGAS_uniqueMap (kMapAutomatonNoIssue, "") {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_localVarManager::GALGAS_localVarManager (const GALGAS_localVarManager & inSource) :
+AC_GALGAS_uniqueMap (inSource) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_localVarManager & GALGAS_localVarManager::operator = (const GALGAS_localVarManager & inSource) {
+  * ((AC_GALGAS_uniqueMap *) this) = inSource ;
+  return * this ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_localVarManager GALGAS_localVarManager::constructor_emptySharedMap (LOCATION_ARGS) {
+  GALGAS_localVarManager result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//  Map automaton states                                                                         
+//----------------------------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  static const uint32_t kMapStateCount_localVarManager = 24 ;
+#endif
+static const uint32_t kMapState_localVarManager_constantInputFormalArgument = 14 ;
+static const uint32_t kMapState_localVarManager_constantInputFormalArgumentDeclaredAsUnused = 16 ;
+static const uint32_t kMapState_localVarManager_currentInstanceDroppedPropertyInModifier = 23 ;
+static const uint32_t kMapState_localVarManager_currentInstanceProperty = 21 ;
+static const uint32_t kMapState_localVarManager_currentInstancePropertyInModifier = 22 ;
+static const uint32_t kMapState_localVarManager_definedLocalVariable = 5 ;
+static const uint32_t kMapState_localVarManager_definedOutputFormalArgument = 9 ;
+static const uint32_t kMapState_localVarManager_droppedInputFormalArgument = 19 ;
+static const uint32_t kMapState_localVarManager_droppedInputOutputFormalArgument = 12 ;
+static const uint32_t kMapState_localVarManager_droppedLocalConstant = 3 ;
+static const uint32_t kMapState_localVarManager_droppedLocalVariable = 7 ;
+static const uint32_t kMapState_localVarManager_inputFormalArgumentDeclaredAsUnused = 20 ;
+static const uint32_t kMapState_localVarManager_inputFormalParameter = 17 ;
+static const uint32_t kMapState_localVarManager_inputOutputFormalArgumentDeclaredAsUnused = 13 ;
+static const uint32_t kMapState_localVarManager_localConstant = 1 ;
+static const uint32_t kMapState_localVarManager_readLocalConstant = 0 ;
+static const uint32_t kMapState_localVarManager_undefinedLocalConstant = 2 ;
+static const uint32_t kMapState_localVarManager_undefinedLocalVariable = 4 ;
+static const uint32_t kMapState_localVarManager_undefinedOutputFormalArgument = 8 ;
+static const uint32_t kMapState_localVarManager_unusedInputOutputFormalArgument = 10 ;
+static const uint32_t kMapState_localVarManager_usedConstantInputFormalArgument = 15 ;
+static const uint32_t kMapState_localVarManager_usedInputFormalArgument = 18 ;
+static const uint32_t kMapState_localVarManager_usedInputOutputFormalArgument = 11 ;
+static const uint32_t kMapState_localVarManager_usedLocalVariable = 6 ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//  Map automaton state names                                                                    
+//----------------------------------------------------------------------------------------------------------------------
+
+static const char * kMapStateNames_localVarManager [24] = {
+  "readLocalConstant",
+  "localConstant",
+  "undefinedLocalConstant",
+  "droppedLocalConstant",
+  "undefinedLocalVariable",
+  "definedLocalVariable",
+  "usedLocalVariable",
+  "droppedLocalVariable",
+  "undefinedOutputFormalArgument",
+  "definedOutputFormalArgument",
+  "unusedInputOutputFormalArgument",
+  "usedInputOutputFormalArgument",
+  "droppedInputOutputFormalArgument",
+  "inputOutputFormalArgumentDeclaredAsUnused",
+  "constantInputFormalArgument",
+  "usedConstantInputFormalArgument",
+  "constantInputFormalArgumentDeclaredAsUnused",
+  "inputFormalParameter",
+  "usedInputFormalArgument",
+  "droppedInputFormalArgument",
+  "inputFormalArgumentDeclaredAsUnused",
+  "currentInstanceProperty",
+  "currentInstancePropertyInModifier",
+  "currentInstanceDroppedPropertyInModifier"
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//  Map automaton actions                                                                        
+//----------------------------------------------------------------------------------------------------------------------
+
+static const uint32_t kMapActionCount_localVarManager = 5 ;
+static const uint32_t kMapAction_localVarManager_dropAccess = 3 ;
+static const uint32_t kMapAction_localVarManager_neutralAccess = 4 ;
+static const uint32_t kMapAction_localVarManager_readAccess = 0 ;
+static const uint32_t kMapAction_localVarManager_readWriteAccess = 2 ;
+static const uint32_t kMapAction_localVarManager_writeAccess = 1 ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//  Map automaton transitions                                                                    
+//----------------------------------------------------------------------------------------------------------------------
+
+static const cMapAutomatonTransition kMapTransitions_localVarManager [24 * 5] = {
+// State 'readLocalConstant', index 0 
+  {kMapState_localVarManager_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_readLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be written"}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_readLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be written"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'localConstant', index 1 
+  {kMapState_localVarManager_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_readLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be written"}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_readLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be written"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueWarning, "the constant value is unused"}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_localConstant /* 1 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'undefinedLocalConstant', index 2 
+  {kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "the constant is undefined"}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_localConstant /* 1 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "the constant is undefined"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueWarning, "the dropped constant is undefined"}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'droppedLocalConstant', index 3 
+  {kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "the constant has been dropped"}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_localConstant /* 1 */, kMapAutomatonIssueError, "the constant has been dropped"}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "the constant has been dropped"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapAutomatonIssueWarning, "the constant has been dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'undefinedLocalVariable', index 4 
+  {kMapState_localVarManager_undefinedLocalVariable /* 4 */, kMapAutomatonIssueError, "an undefined local variable cannot be read"}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_definedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_undefinedLocalVariable /* 4 */, kMapAutomatonIssueError, "an undefined local variable cannot be read"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_undefinedLocalVariable /* 4 */, kMapAutomatonIssueWarning, "the local variable has no value"}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_undefinedLocalVariable /* 4 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'definedLocalVariable', index 5 
+  {kMapState_localVarManager_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_definedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapAutomatonIssueWarning, "the local variable has been dropped without any read"}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_definedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'usedLocalVariable', index 6 
+  {kMapState_localVarManager_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_definedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_definedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'droppedLocalVariable', index 7 
+  {kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapAutomatonIssueError, "a dropped local variable cannot be read"}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_definedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_definedLocalVariable /* 5 */, kMapAutomatonIssueError, "a dropped local variable cannot be read"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapAutomatonIssueWarning, "the local variable is already dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'undefinedOutputFormalArgument', index 8 
+  {kMapState_localVarManager_undefinedOutputFormalArgument /* 8 */, kMapAutomatonIssueError, "an undefined output formal parameter cannot be read"}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_definedOutputFormalArgument /* 9 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_undefinedOutputFormalArgument /* 8 */, kMapAutomatonIssueError, "an undefined output formal parameter cannot be read"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_undefinedOutputFormalArgument /* 8 */, kMapAutomatonIssueWarning, "the output formal parameter has no value"}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_undefinedOutputFormalArgument /* 8 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'definedOutputFormalArgument', index 9 
+  {kMapState_localVarManager_definedOutputFormalArgument /* 9 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_definedOutputFormalArgument /* 9 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_definedOutputFormalArgument /* 9 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_undefinedOutputFormalArgument /* 8 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_definedOutputFormalArgument /* 9 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'unusedInputOutputFormalArgument', index 10 
+  {kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_unusedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'usedInputOutputFormalArgument', index 11 
+  {kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'droppedInputOutputFormalArgument', index 12 
+  {kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonIssueError, "a dropped input/output formal argument cannot be read"}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonIssueError, "a dropped input/output formal argument cannot be read"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonIssueWarning, "the input/output formal argument is already dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'inputOutputFormalArgumentDeclaredAsUnused', index 13 
+  {kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonIssueWarning, "the input/output formal parameter has been declared as unused"}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonIssueWarning, "the input/output formal parameter has been declared as unused"}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonIssueWarning, "the input/output formal parameter has been declared as unused"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonIssueWarning, "the input/output formal parameter has been declared as unused"}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'constantInputFormalArgument', index 14 
+  {kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_constantInputFormalArgument /* 14 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'usedConstantInputFormalArgument', index 15 
+  {kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'constantInputFormalArgumentDeclaredAsUnused', index 16 
+  {kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonIssueWarning, "the constant input formal parameter is declared as unused"}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_constantInputFormalArgumentDeclaredAsUnused /* 16 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'inputFormalParameter', index 17 
+  {kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_inputFormalParameter /* 17 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'usedInputFormalArgument', index 18 
+  {kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'droppedInputFormalArgument', index 19 
+  {kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapAutomatonIssueError, "a dropped input formal parameter cannot be read"}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapAutomatonIssueError, "a dropped input formal parameter cannot be read"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapAutomatonIssueWarning, "the input formal parameter is already dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'inputFormalArgumentDeclaredAsUnused', index 20 
+  {kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonIssueWarning, "the input formal parameter is declared as unused"}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonIssueWarning, "the input formal parameter is declared as unused"}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonIssueWarning, "the input formal parameter is declared as unused"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapAutomatonIssueWarning, "the input formal parameter is declared as unused"}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'currentInstanceProperty', index 21 
+  {kMapState_localVarManager_currentInstanceProperty /* 21 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_currentInstanceProperty /* 21 */, kMapAutomatonIssueError, "a property cannot be written within a method or a getter"}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_currentInstanceProperty /* 21 */, kMapAutomatonIssueError, "a property cannot be modified within a method or a getter"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_currentInstanceProperty /* 21 */, kMapAutomatonIssueError, "a property cannot be dropped within a method or a getter"}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_currentInstanceProperty /* 21 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'currentInstancePropertyInModifier', index 22 
+  {kMapState_localVarManager_currentInstancePropertyInModifier /* 22 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_currentInstancePropertyInModifier /* 22 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_currentInstancePropertyInModifier /* 22 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_currentInstanceDroppedPropertyInModifier /* 23 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_currentInstancePropertyInModifier /* 22 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'currentInstanceDroppedPropertyInModifier', index 23 
+  {kMapState_localVarManager_currentInstanceDroppedPropertyInModifier /* 23 */, kMapAutomatonIssueError, "the property cannot be read, it has been dropped"}, // for action 'readAccess', (index 0)
+  {kMapState_localVarManager_currentInstancePropertyInModifier /* 22 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_localVarManager_currentInstanceDroppedPropertyInModifier /* 23 */, kMapAutomatonIssueError, "the property cannot be read/written, it has been dropped"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_localVarManager_currentInstanceDroppedPropertyInModifier /* 23 */, kMapAutomatonIssueWarning, "the property is already dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_localVarManager_currentInstanceDroppedPropertyInModifier /* 23 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//  Map automaton final state issues                                                             
+//----------------------------------------------------------------------------------------------------------------------
+
+static const cMapAutomatonFinalIssue kMapAutomatonFinalIssue_localVarManager [24] = {
+  {kMapAutomatonNoIssue, ""},// state 'readLocalConstant' (index 0)
+  {kMapAutomatonIssueWarning, "the constant value is unused"},// state 'localConstant' (index 1)
+  {kMapAutomatonIssueWarning, "the constant value is unused"},// state 'undefinedLocalConstant' (index 2)
+  {kMapAutomatonNoIssue, ""},// state 'droppedLocalConstant' (index 3)
+  {kMapAutomatonIssueWarning, "the '%K' local variable is unused"},// state 'undefinedLocalVariable' (index 4)
+  {kMapAutomatonNoIssue, ""},// state 'definedLocalVariable' (index 5)
+  {kMapAutomatonNoIssue, ""},// state 'usedLocalVariable' (index 6)
+  {kMapAutomatonNoIssue, ""},// state 'droppedLocalVariable' (index 7)
+  {kMapAutomatonIssueError, "the '%K' output formal parameter is undefined"},// state 'undefinedOutputFormalArgument' (index 8)
+  {kMapAutomatonNoIssue, ""},// state 'definedOutputFormalArgument' (index 9)
+  {kMapAutomatonIssueWarning, "the '%K' input/output formal parameter is unused"},// state 'unusedInputOutputFormalArgument' (index 10)
+  {kMapAutomatonNoIssue, ""},// state 'usedInputOutputFormalArgument' (index 11)
+  {kMapAutomatonIssueError, "the '%K' input/ouput formal argument should be valuated at the end of the routine"},// state 'droppedInputOutputFormalArgument' (index 12)
+  {kMapAutomatonNoIssue, ""},// state 'inputOutputFormalArgumentDeclaredAsUnused' (index 13)
+  {kMapAutomatonIssueWarning, "the constant '%K' input formal parameter is not used and is not declared as unused"},// state 'constantInputFormalArgument' (index 14)
+  {kMapAutomatonNoIssue, ""},// state 'usedConstantInputFormalArgument' (index 15)
+  {kMapAutomatonNoIssue, ""},// state 'constantInputFormalArgumentDeclaredAsUnused' (index 16)
+  {kMapAutomatonIssueWarning, "the '%K' input formal parameter is not used and is not declared as unused"},// state 'inputFormalParameter' (index 17)
+  {kMapAutomatonNoIssue, ""},// state 'usedInputFormalArgument' (index 18)
+  {kMapAutomatonNoIssue, ""},// state 'droppedInputFormalArgument' (index 19)
+  {kMapAutomatonNoIssue, ""},// state 'inputFormalArgumentDeclaredAsUnused' (index 20)
+  {kMapAutomatonNoIssue, ""},// state 'currentInstanceProperty' (index 21)
+  {kMapAutomatonNoIssue, ""},// state 'currentInstancePropertyInModifier' (index 22)
+  {kMapAutomatonIssueWarning, "the '%K' property is in the dropped state at the end of the setter"},// state 'currentInstanceDroppedPropertyInModifier' (index 23)
+} ;
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_closeBranch (GALGAS_location inErrorLocation,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) {
+  closeBranch (inErrorLocation,
+               kMapAutomatonFinalIssue_localVarManager,
+               #ifndef DO_NOT_GENERATE_CHECKINGS
+                 kMapStateCount_localVarManager,
+               #endif
+               inCompiler COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::method_checkAutomatonStates (GALGAS_location inErrorLocation,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const {
+  checkAutomatonStates (inErrorLocation, kMapAutomatonFinalIssue_localVarManager, inCompiler COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//map override 'selectBlock'
+//----------------------------------------------------------------------------------------------------------------------
+
+static const cBranchOverrideTransformationDescriptor kBranchBehaviourForOverride_localVarManager_selectBlock [39] = {
+  {kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_localConstant /* 1 */, kMapState_localVarManager_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "this branch lets the '%K' constant defined, while previous ones do not define it"},
+  {kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "this branch lets the '%K' constant defined, while previous ones drop it"},
+  {kMapState_localVarManager_localConstant /* 1 */, kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_localConstant /* 1 */, kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueWarning, "this branch defines the '%K' constant, while previous ones let it undefined"},
+  {kMapState_localVarManager_localConstant /* 1 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "this branch let the '%K' constant defined, while previous ones drop it"},
+  {kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "this branch defines the '%K' variable, while previous ones let it undefined"},
+  {kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapState_localVarManager_localConstant /* 1 */, kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "this branch defines the '%K' variable, while previous ones let it undefined"},
+  {kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueWarning, "this branch lets the '%K' undefined, while previous ones drop it"},
+  {kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "this branch drops the '%K' constant, while previous ones let it defined"},
+  {kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_localConstant /* 1 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "this branch drops the '%K' constant, while previous ones let it defined"},
+  {kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueWarning, "this branch drops the '%K' constant, while previous ones let it undefined"},
+  {kMapState_localVarManager_undefinedLocalVariable /* 4 */, kMapState_localVarManager_definedLocalVariable /* 5 */, kMapState_localVarManager_definedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_undefinedLocalVariable /* 4 */, kMapState_localVarManager_usedLocalVariable /* 6 */, kMapState_localVarManager_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_undefinedLocalVariable /* 4 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_definedLocalVariable /* 5 */, kMapState_localVarManager_usedLocalVariable /* 6 */, kMapState_localVarManager_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_definedLocalVariable /* 5 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_usedLocalVariable /* 6 */, kMapState_localVarManager_definedLocalVariable /* 5 */, kMapState_localVarManager_definedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_usedLocalVariable /* 6 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapState_localVarManager_definedLocalVariable /* 5 */, kMapState_localVarManager_definedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapState_localVarManager_usedLocalVariable /* 6 */, kMapState_localVarManager_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_undefinedOutputFormalArgument /* 8 */, kMapState_localVarManager_definedOutputFormalArgument /* 9 */, kMapState_localVarManager_definedOutputFormalArgument /* 9 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_definedOutputFormalArgument /* 9 */, kMapState_localVarManager_undefinedOutputFormalArgument /* 8 */, kMapState_localVarManager_undefinedOutputFormalArgument /* 8 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_unusedInputOutputFormalArgument /* 10 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_unusedInputOutputFormalArgument /* 10 */, kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_constantInputFormalArgument /* 14 */, kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_constantInputFormalArgumentDeclaredAsUnused /* 16 */, kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_inputFormalParameter /* 17 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_inputFormalParameter /* 17 */, kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_currentInstancePropertyInModifier /* 22 */, kMapState_localVarManager_currentInstanceDroppedPropertyInModifier /* 23 */, kMapState_localVarManager_currentInstanceDroppedPropertyInModifier /* 23 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_currentInstanceDroppedPropertyInModifier /* 23 */, kMapState_localVarManager_currentInstancePropertyInModifier /* 22 */, kMapState_localVarManager_currentInstancePropertyInModifier /* 22 */, kMapAutomatonNoIssue, ""},
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static const cBranchOverrideCompatibilityDescriptor kBranchCombinationForOverride_localVarManager_selectBlock [50] = {
+  {kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_localConstant /* 1 */, kMapState_localVarManager_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "this branch lets the '%K' constant defined, while previous ones do not define it"},
+  {kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "this branch lets the '%K' constant defined, while previous ones drop it"},
+  {kMapState_localVarManager_localConstant /* 1 */, kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_localConstant /* 1 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "this branch let the '%K' constant defined, while previous ones drop it"},
+  {kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "this branch defines the '%K' variable, while previous ones let it undefined"},
+  {kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueWarning, "this branch lets the '%K' undefined, while previous ones drop it"},
+  {kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "this branch drops the '%K' constant, while previous ones let it defined"},
+  {kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_localConstant /* 1 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "this branch drops the '%K' constant, while previous ones let it defined"},
+  {kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueWarning, "this branch drops the '%K' constant, while previous ones let it undefined"},
+  {kMapState_localVarManager_undefinedLocalVariable /* 4 */, kMapState_localVarManager_definedLocalVariable /* 5 */, kMapState_localVarManager_definedLocalVariable /* 5 */, kMapAutomatonIssueError, "this branch defines the '%K' variable, while previous ones let it undefined"},
+  {kMapState_localVarManager_undefinedLocalVariable /* 4 */, kMapState_localVarManager_usedLocalVariable /* 6 */, kMapState_localVarManager_undefinedLocalVariable /* 4 */, kMapAutomatonIssueError, "this branch defines the '%K' variable, while previous ones let it undefined"},
+  {kMapState_localVarManager_undefinedLocalVariable /* 4 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_definedLocalVariable /* 5 */, kMapState_localVarManager_undefinedLocalVariable /* 4 */, kMapState_localVarManager_definedLocalVariable /* 5 */, kMapAutomatonIssueError, "this branch lets the '%K' variable undefined, while previous ones define it"},
+  {kMapState_localVarManager_definedLocalVariable /* 5 */, kMapState_localVarManager_usedLocalVariable /* 6 */, kMapState_localVarManager_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_definedLocalVariable /* 5 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapState_localVarManager_definedLocalVariable /* 5 */, kMapAutomatonIssueError, "this branch drops the '%K' variable, while previous ones let it defined"},
+  {kMapState_localVarManager_usedLocalVariable /* 6 */, kMapState_localVarManager_undefinedLocalVariable /* 4 */, kMapState_localVarManager_usedLocalVariable /* 6 */, kMapAutomatonIssueError, "this branch lets the '%K' variable undefined, while previous defines let it"},
+  {kMapState_localVarManager_usedLocalVariable /* 6 */, kMapState_localVarManager_definedLocalVariable /* 5 */, kMapState_localVarManager_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_usedLocalVariable /* 6 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapState_localVarManager_usedLocalVariable /* 6 */, kMapAutomatonIssueError, "this branch drops the '%K' variable, while previous ones let it defined"},
+  {kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapState_localVarManager_undefinedLocalVariable /* 4 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapState_localVarManager_definedLocalVariable /* 5 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapAutomatonIssueError, "this branch defines the '%K' variable, while previous ones drop it"},
+  {kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapState_localVarManager_usedLocalVariable /* 6 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapAutomatonIssueError, "this branch defines the '%K' variable, while previous ones drop it"},
+  {kMapState_localVarManager_undefinedOutputFormalArgument /* 8 */, kMapState_localVarManager_definedOutputFormalArgument /* 9 */, kMapState_localVarManager_definedOutputFormalArgument /* 9 */, kMapAutomatonIssueError, "this branch defines the '%K' output formal argument, while previous ones let it undefined"},
+  {kMapState_localVarManager_definedOutputFormalArgument /* 9 */, kMapState_localVarManager_undefinedOutputFormalArgument /* 8 */, kMapState_localVarManager_definedOutputFormalArgument /* 9 */, kMapAutomatonIssueError, "this branch lets the '%K' variable undefined, while previous ones define it"},
+  {kMapState_localVarManager_unusedInputOutputFormalArgument /* 10 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_unusedInputOutputFormalArgument /* 10 */, kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapState_localVarManager_unusedInputOutputFormalArgument /* 10 */, kMapAutomatonIssueError, "this branch drops the '%K' input/output formal argument, while previous ones let it undefined"},
+  {kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapState_localVarManager_unusedInputOutputFormalArgument /* 10 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonIssueError, "this branch drops the '%K' input/output formal argument, while previous ones let it defined"},
+  {kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapState_localVarManager_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapState_localVarManager_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapState_localVarManager_unusedInputOutputFormalArgument /* 10 */, kMapState_localVarManager_unusedInputOutputFormalArgument /* 10 */, kMapAutomatonIssueError, "this branch lets the '%K' input/output formal argument defined, while previous ones drop it"},
+  {kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonIssueError, "this branch lets the '%K' input/output formal argument defined, while previous ones drop it"},
+  {kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapState_localVarManager_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapState_localVarManager_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapAutomatonIssueError, "this branch lets the '%K' input formal argument defined, while previous ones drop it"},
+  {kMapState_localVarManager_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapState_localVarManager_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapState_localVarManager_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapAutomatonIssueError, "this branch drops the '%K' input formal argument defined, while previous ones let it defined"},
+  {kMapState_localVarManager_constantInputFormalArgument /* 14 */, kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapState_localVarManager_constantInputFormalArgument /* 14 */, kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapState_localVarManager_constantInputFormalArgumentDeclaredAsUnused /* 16 */, kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_constantInputFormalArgumentDeclaredAsUnused /* 16 */, kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_inputFormalParameter /* 17 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_inputFormalParameter /* 17 */, kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapState_localVarManager_inputFormalParameter /* 17 */, kMapAutomatonIssueError, "this branch drops the '%K' input formal argument, while previous let it defined"},
+  {kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapState_localVarManager_inputFormalParameter /* 17 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonIssueError, "this branch drops the '%K' input formal argument, while previous ones let it defined"},
+  {kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapState_localVarManager_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapState_localVarManager_inputFormalParameter /* 17 */, kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapAutomatonIssueError, "this branch drops the '%K' input formal argument, while previous ones let it defined"},
+  {kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonIssueError, "this branch defines the '%K' input formal argument, while previous ones let it dropped"},
+  {kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapState_localVarManager_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_currentInstancePropertyInModifier /* 22 */, kMapState_localVarManager_currentInstanceDroppedPropertyInModifier /* 23 */, kMapState_localVarManager_currentInstancePropertyInModifier /* 22 */, kMapAutomatonIssueError, "this branch drops the '%K' property, while previous ones let it defined"},
+  {kMapState_localVarManager_currentInstanceDroppedPropertyInModifier /* 23 */, kMapState_localVarManager_currentInstancePropertyInModifier /* 22 */, kMapState_localVarManager_currentInstancePropertyInModifier /* 22 */, kMapAutomatonIssueError, "this branch lets the '%K' property defined, while previous ones drop it"},
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_openOverrideForSelectBlock (C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  openOverride (kBranchBehaviourForOverride_localVarManager_selectBlock, 39,
+                kBranchCombinationForOverride_localVarManager_selectBlock, 50,
+                "selectBlock",
+                inCompiler
+                COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//map override 'repeatBlock'
+//----------------------------------------------------------------------------------------------------------------------
+
+static const cBranchOverrideTransformationDescriptor kBranchBehaviourForOverride_localVarManager_repeatBlock [39] = {
+  {kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_localConstant /* 1 */, kMapState_localVarManager_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapState_localVarManager_readLocalConstant /* 0 */, kMapAutomatonIssueError, "a branch lets the '%K' constant undefined"},
+  {kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "a branch lets the '%K' constant dropped"},
+  {kMapState_localVarManager_localConstant /* 1 */, kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_localConstant /* 1 */, kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "a branch lets the '%K' constant undefined"},
+  {kMapState_localVarManager_localConstant /* 1 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "a branch lets the '%K' constant dropped"},
+  {kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "the repeated branch should not define the '%K' variable"},
+  {kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapState_localVarManager_localConstant /* 1 */, kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "the repeated branch should not define the '%K' variable"},
+  {kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "a branch lets the '%K' constant dropped"},
+  {kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_localConstant /* 1 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "a branch lets the '%K' constant dropped"},
+  {kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_undefinedLocalVariable /* 4 */, kMapState_localVarManager_definedLocalVariable /* 5 */, kMapState_localVarManager_undefinedLocalVariable /* 4 */, kMapAutomatonIssueError, "the repeated branch should not define the '%K' variable"},
+  {kMapState_localVarManager_undefinedLocalVariable /* 4 */, kMapState_localVarManager_usedLocalVariable /* 6 */, kMapState_localVarManager_undefinedLocalVariable /* 4 */, kMapAutomatonIssueError, "the repeated branch should not define the '%K' variable"},
+  {kMapState_localVarManager_undefinedLocalVariable /* 4 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_definedLocalVariable /* 5 */, kMapState_localVarManager_usedLocalVariable /* 6 */, kMapState_localVarManager_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_definedLocalVariable /* 5 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapState_localVarManager_definedLocalVariable /* 5 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' variable"},
+  {kMapState_localVarManager_usedLocalVariable /* 6 */, kMapState_localVarManager_definedLocalVariable /* 5 */, kMapState_localVarManager_definedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_usedLocalVariable /* 6 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapState_localVarManager_usedLocalVariable /* 6 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' variable"},
+  {kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapState_localVarManager_definedLocalVariable /* 5 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' variable"},
+  {kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapState_localVarManager_usedLocalVariable /* 6 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapAutomatonIssueError, "the repeated branch should not define the dropped '%K' variable"},
+  {kMapState_localVarManager_undefinedOutputFormalArgument /* 8 */, kMapState_localVarManager_definedOutputFormalArgument /* 9 */, kMapState_localVarManager_undefinedOutputFormalArgument /* 8 */, kMapAutomatonIssueError, "the repeated branch should not define the '%K' output formal argument"},
+  {kMapState_localVarManager_definedOutputFormalArgument /* 9 */, kMapState_localVarManager_undefinedOutputFormalArgument /* 8 */, kMapState_localVarManager_definedOutputFormalArgument /* 9 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' output formal argument"},
+  {kMapState_localVarManager_unusedInputOutputFormalArgument /* 10 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_unusedInputOutputFormalArgument /* 10 */, kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapState_localVarManager_unusedInputOutputFormalArgument /* 10 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' input/output formal argument"},
+  {kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' input/output formal argument"},
+  {kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonIssueError, "the repeated branch should define the '%K' input formal argument"},
+  {kMapState_localVarManager_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapState_localVarManager_droppedInputOutputFormalArgument /* 12 */, kMapState_localVarManager_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' input/output formal argument"},
+  {kMapState_localVarManager_constantInputFormalArgument /* 14 */, kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_constantInputFormalArgumentDeclaredAsUnused /* 16 */, kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_inputFormalParameter /* 17 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_inputFormalParameter /* 17 */, kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapState_localVarManager_inputFormalParameter /* 17 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' input formal argument"},
+  {kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' input formal argument"},
+  {kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' input formal argument"},
+  {kMapState_localVarManager_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapState_localVarManager_droppedInputFormalArgument /* 19 */, kMapState_localVarManager_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' input formal argument"},
+  {kMapState_localVarManager_currentInstancePropertyInModifier /* 22 */, kMapState_localVarManager_currentInstanceDroppedPropertyInModifier /* 23 */, kMapState_localVarManager_currentInstancePropertyInModifier /* 22 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' property"},
+  {kMapState_localVarManager_currentInstanceDroppedPropertyInModifier /* 23 */, kMapState_localVarManager_currentInstancePropertyInModifier /* 22 */, kMapState_localVarManager_currentInstancePropertyInModifier /* 22 */, kMapAutomatonNoIssue, ""},
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static const cBranchOverrideCompatibilityDescriptor kBranchCombinationForOverride_localVarManager_repeatBlock [26] = {
+  {kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_localConstant /* 1 */, kMapState_localVarManager_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "a branch lets the '%K' constant dropped"},
+  {kMapState_localVarManager_localConstant /* 1 */, kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_localConstant /* 1 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "a branch lets the '%K' constant dropped"},
+  {kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueWarning, "a branch drops the '%K' constant, while other one lets it undefined"},
+  {kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_readLocalConstant /* 0 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "a branch lets the '%K' constant dropped"},
+  {kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_localConstant /* 1 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "a branch lets the '%K' constant dropped"},
+  {kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapState_localVarManager_undefinedLocalConstant /* 2 */, kMapState_localVarManager_droppedLocalConstant /* 3 */, kMapAutomatonIssueWarning, "a branch drops the '%K' constant, while other one lets it undefined"},
+  {kMapState_localVarManager_undefinedLocalVariable /* 4 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_definedLocalVariable /* 5 */, kMapState_localVarManager_usedLocalVariable /* 6 */, kMapState_localVarManager_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_usedLocalVariable /* 6 */, kMapState_localVarManager_definedLocalVariable /* 5 */, kMapState_localVarManager_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapState_localVarManager_undefinedLocalVariable /* 4 */, kMapState_localVarManager_droppedLocalVariable /* 7 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_unusedInputOutputFormalArgument /* 10 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapState_localVarManager_unusedInputOutputFormalArgument /* 10 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapState_localVarManager_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapState_localVarManager_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_constantInputFormalArgument /* 14 */, kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapState_localVarManager_constantInputFormalArgument /* 14 */, kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapState_localVarManager_constantInputFormalArgumentDeclaredAsUnused /* 16 */, kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_constantInputFormalArgumentDeclaredAsUnused /* 16 */, kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapState_localVarManager_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_inputFormalParameter /* 17 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapState_localVarManager_inputFormalParameter /* 17 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapState_localVarManager_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapState_localVarManager_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_currentInstancePropertyInModifier /* 22 */, kMapState_localVarManager_currentInstanceDroppedPropertyInModifier /* 23 */, kMapState_localVarManager_currentInstancePropertyInModifier /* 22 */, kMapAutomatonNoIssue, ""},
+  {kMapState_localVarManager_currentInstanceDroppedPropertyInModifier /* 23 */, kMapState_localVarManager_currentInstancePropertyInModifier /* 22 */, kMapState_localVarManager_currentInstancePropertyInModifier /* 22 */, kMapAutomatonNoIssue, ""},
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_openOverrideForRepeatBlock (C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  openOverride (kBranchBehaviourForOverride_localVarManager_repeatBlock, 39,
+                kBranchCombinationForOverride_localVarManager_repeatBlock, 26,
+                "repeatBlock",
+                inCompiler
+                COMMA_THERE) ;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_insertMutableProperty (GALGAS_lstring inKey,
+                                                           GALGAS_unifiedTypeMap_2D_entry inArgument0,
+                                                           GALGAS_string inArgument1,
+                                                           GALGAS_string inArgument2,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
+  cMapElement_localVarManager * p = NULL ;
+  macroMyNew (p, cMapElement_localVarManager (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "redefinition of '%K' property (previous declaration was in %L)" ;
+  insertInSharedMap (attributes,
+                     inCompiler,
+                     kMapState_localVarManager_currentInstancePropertyInModifier,
+                     kMapStateNames_localVarManager [kMapState_localVarManager_currentInstancePropertyInModifier],
+                     kInsertErrorMessage
+                     COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_insertNonMutableProperty (GALGAS_lstring inKey,
+                                                              GALGAS_unifiedTypeMap_2D_entry inArgument0,
+                                                              GALGAS_string inArgument1,
+                                                              GALGAS_string inArgument2,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
+  cMapElement_localVarManager * p = NULL ;
+  macroMyNew (p, cMapElement_localVarManager (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "redefinition of '%K' property (previous declaration was in %L)" ;
+  insertInSharedMap (attributes,
+                     inCompiler,
+                     kMapState_localVarManager_currentInstanceProperty,
+                     kMapStateNames_localVarManager [kMapState_localVarManager_currentInstanceProperty],
+                     kInsertErrorMessage
+                     COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_insertUndefinedLocalVariable (GALGAS_lstring inKey,
+                                                                  GALGAS_unifiedTypeMap_2D_entry inArgument0,
+                                                                  GALGAS_string inArgument1,
+                                                                  GALGAS_string inArgument2,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  cMapElement_localVarManager * p = NULL ;
+  macroMyNew (p, cMapElement_localVarManager (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "redefinition of '%K' variable (previous declaration was in %L)" ;
+  insertInSharedMap (attributes,
+                     inCompiler,
+                     kMapState_localVarManager_undefinedLocalVariable,
+                     kMapStateNames_localVarManager [kMapState_localVarManager_undefinedLocalVariable],
+                     kInsertErrorMessage
+                     COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_insertDefinedLocalVariable (GALGAS_lstring inKey,
+                                                                GALGAS_unifiedTypeMap_2D_entry inArgument0,
+                                                                GALGAS_string inArgument1,
+                                                                GALGAS_string inArgument2,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  cMapElement_localVarManager * p = NULL ;
+  macroMyNew (p, cMapElement_localVarManager (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "redefinition of '%K' variable (previous declaration was in %L)" ;
+  insertInSharedMap (attributes,
+                     inCompiler,
+                     kMapState_localVarManager_definedLocalVariable,
+                     kMapStateNames_localVarManager [kMapState_localVarManager_definedLocalVariable],
+                     kInsertErrorMessage
+                     COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_insertUndefinedLocalConstant (GALGAS_lstring inKey,
+                                                                  GALGAS_unifiedTypeMap_2D_entry inArgument0,
+                                                                  GALGAS_string inArgument1,
+                                                                  GALGAS_string inArgument2,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  cMapElement_localVarManager * p = NULL ;
+  macroMyNew (p, cMapElement_localVarManager (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "redefinition of '%K' variable (previous declaration was in %L)" ;
+  insertInSharedMap (attributes,
+                     inCompiler,
+                     kMapState_localVarManager_undefinedLocalConstant,
+                     kMapStateNames_localVarManager [kMapState_localVarManager_undefinedLocalConstant],
+                     kInsertErrorMessage
+                     COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_insertLocalConstant (GALGAS_lstring inKey,
+                                                         GALGAS_unifiedTypeMap_2D_entry inArgument0,
+                                                         GALGAS_string inArgument1,
+                                                         GALGAS_string inArgument2,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  cMapElement_localVarManager * p = NULL ;
+  macroMyNew (p, cMapElement_localVarManager (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "redefinition of '%K' variable (previous declaration was in %L)" ;
+  insertInSharedMap (attributes,
+                     inCompiler,
+                     kMapState_localVarManager_localConstant,
+                     kMapStateNames_localVarManager [kMapState_localVarManager_localConstant],
+                     kInsertErrorMessage
+                     COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_insertUsedLocalConstant (GALGAS_lstring inKey,
+                                                             GALGAS_unifiedTypeMap_2D_entry inArgument0,
+                                                             GALGAS_string inArgument1,
+                                                             GALGAS_string inArgument2,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  cMapElement_localVarManager * p = NULL ;
+  macroMyNew (p, cMapElement_localVarManager (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "redefinition of '%K' variable (previous declaration was in %L)" ;
+  insertInSharedMap (attributes,
+                     inCompiler,
+                     kMapState_localVarManager_readLocalConstant,
+                     kMapStateNames_localVarManager [kMapState_localVarManager_readLocalConstant],
+                     kInsertErrorMessage
+                     COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_insertInputFormalArgument (GALGAS_lstring inKey,
+                                                               GALGAS_unifiedTypeMap_2D_entry inArgument0,
+                                                               GALGAS_string inArgument1,
+                                                               GALGAS_string inArgument2,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) {
+  cMapElement_localVarManager * p = NULL ;
+  macroMyNew (p, cMapElement_localVarManager (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "redefinition of '%K' variable (previous declaration was in %L)" ;
+  insertInSharedMap (attributes,
+                     inCompiler,
+                     kMapState_localVarManager_inputFormalParameter,
+                     kMapStateNames_localVarManager [kMapState_localVarManager_inputFormalParameter],
+                     kInsertErrorMessage
+                     COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_insertInputFormalArgumentDeclaredAsUnused (GALGAS_lstring inKey,
+                                                                               GALGAS_unifiedTypeMap_2D_entry inArgument0,
+                                                                               GALGAS_string inArgument1,
+                                                                               GALGAS_string inArgument2,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) {
+  cMapElement_localVarManager * p = NULL ;
+  macroMyNew (p, cMapElement_localVarManager (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "redefinition of '%K' variable (previous declaration was in %L)" ;
+  insertInSharedMap (attributes,
+                     inCompiler,
+                     kMapState_localVarManager_inputFormalArgumentDeclaredAsUnused,
+                     kMapStateNames_localVarManager [kMapState_localVarManager_inputFormalArgumentDeclaredAsUnused],
+                     kInsertErrorMessage
+                     COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_insertConstantInputFormalArgument (GALGAS_lstring inKey,
+                                                                       GALGAS_unifiedTypeMap_2D_entry inArgument0,
+                                                                       GALGAS_string inArgument1,
+                                                                       GALGAS_string inArgument2,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
+  cMapElement_localVarManager * p = NULL ;
+  macroMyNew (p, cMapElement_localVarManager (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "redefinition of '%K' variable (previous declaration was in %L)" ;
+  insertInSharedMap (attributes,
+                     inCompiler,
+                     kMapState_localVarManager_constantInputFormalArgument,
+                     kMapStateNames_localVarManager [kMapState_localVarManager_constantInputFormalArgument],
+                     kInsertErrorMessage
+                     COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_insertConstantInputFormalArgumentDeclaredAsUnused (GALGAS_lstring inKey,
+                                                                                       GALGAS_unifiedTypeMap_2D_entry inArgument0,
+                                                                                       GALGAS_string inArgument1,
+                                                                                       GALGAS_string inArgument2,
+                                                                                       C_Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) {
+  cMapElement_localVarManager * p = NULL ;
+  macroMyNew (p, cMapElement_localVarManager (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "redefinition of '%K' variable (previous declaration was in %L)" ;
+  insertInSharedMap (attributes,
+                     inCompiler,
+                     kMapState_localVarManager_constantInputFormalArgumentDeclaredAsUnused,
+                     kMapStateNames_localVarManager [kMapState_localVarManager_constantInputFormalArgumentDeclaredAsUnused],
+                     kInsertErrorMessage
+                     COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_insertOutputFormalArgument (GALGAS_lstring inKey,
+                                                                GALGAS_unifiedTypeMap_2D_entry inArgument0,
+                                                                GALGAS_string inArgument1,
+                                                                GALGAS_string inArgument2,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  cMapElement_localVarManager * p = NULL ;
+  macroMyNew (p, cMapElement_localVarManager (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "redefinition of '%K' variable (previous declaration was in %L)" ;
+  insertInSharedMap (attributes,
+                     inCompiler,
+                     kMapState_localVarManager_undefinedOutputFormalArgument,
+                     kMapStateNames_localVarManager [kMapState_localVarManager_undefinedOutputFormalArgument],
+                     kInsertErrorMessage
+                     COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_insertInputOutputFormalArgument (GALGAS_lstring inKey,
+                                                                     GALGAS_unifiedTypeMap_2D_entry inArgument0,
+                                                                     GALGAS_string inArgument1,
+                                                                     GALGAS_string inArgument2,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) {
+  cMapElement_localVarManager * p = NULL ;
+  macroMyNew (p, cMapElement_localVarManager (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "redefinition of '%K' variable (previous declaration was in %L)" ;
+  insertInSharedMap (attributes,
+                     inCompiler,
+                     kMapState_localVarManager_unusedInputOutputFormalArgument,
+                     kMapStateNames_localVarManager [kMapState_localVarManager_unusedInputOutputFormalArgument],
+                     kInsertErrorMessage
+                     COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_insertInputOutputFormalArgumentDeclaredAsUnused (GALGAS_lstring inKey,
+                                                                                     GALGAS_unifiedTypeMap_2D_entry inArgument0,
+                                                                                     GALGAS_string inArgument1,
+                                                                                     GALGAS_string inArgument2,
+                                                                                     C_Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) {
+  cMapElement_localVarManager * p = NULL ;
+  macroMyNew (p, cMapElement_localVarManager (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "redefinition of '%K' variable (previous declaration was in %L)" ;
+  insertInSharedMap (attributes,
+                     inCompiler,
+                     kMapState_localVarManager_inputOutputFormalArgumentDeclaredAsUnused,
+                     kMapStateNames_localVarManager [kMapState_localVarManager_inputOutputFormalArgumentDeclaredAsUnused],
+                     kInsertErrorMessage
+                     COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const char * kSearchErrorMessage_localVarManager_searchForReadAccess = "the '%K' variable is not declared" ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_searchForReadAccess (GALGAS_lstring inKey,
+                                                         GALGAS_unifiedTypeMap_2D_entry & outArgument0,
+                                                         GALGAS_string & outArgument1,
+                                                         GALGAS_string & outArgument2,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  const cMapElement_localVarManager * p = (const cMapElement_localVarManager *) performSearch (inKey,
+                                                                                                 inCompiler,
+                                                                                                 kMapAction_localVarManager_readAccess,
+                                                                                                 kMapTransitions_localVarManager,
+                                                                                                 kMapActionCount_localVarManager,
+                                                                                                 #ifndef DO_NOT_GENERATE_CHECKINGS
+                                                                                                   kMapStateCount_localVarManager,
+                                                                                                 #endif
+                                                                                                 kSearchErrorMessage_localVarManager_searchForReadAccess
+                                                                                                 COMMA_THERE) ;
+  if (NULL == p) {
+    outArgument0.drop () ;
+    outArgument1.drop () ;
+    outArgument2.drop () ;
+  }else{
+    macroValidSharedObject (p, cMapElement_localVarManager) ;
+    outArgument0 = p->mProperty_mType ;
+    outArgument1 = p->mProperty_mCppName ;
+    outArgument2 = p->mProperty_mNameForCheckingFormalParameterUsing ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const char * kSearchErrorMessage_localVarManager_searchForWriteAccess = "the '%K' variable is not declared" ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_searchForWriteAccess (GALGAS_lstring inKey,
+                                                          GALGAS_unifiedTypeMap_2D_entry & outArgument0,
+                                                          GALGAS_string & outArgument1,
+                                                          GALGAS_string & outArgument2,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
+  const cMapElement_localVarManager * p = (const cMapElement_localVarManager *) performSearch (inKey,
+                                                                                                 inCompiler,
+                                                                                                 kMapAction_localVarManager_writeAccess,
+                                                                                                 kMapTransitions_localVarManager,
+                                                                                                 kMapActionCount_localVarManager,
+                                                                                                 #ifndef DO_NOT_GENERATE_CHECKINGS
+                                                                                                   kMapStateCount_localVarManager,
+                                                                                                 #endif
+                                                                                                 kSearchErrorMessage_localVarManager_searchForWriteAccess
+                                                                                                 COMMA_THERE) ;
+  if (NULL == p) {
+    outArgument0.drop () ;
+    outArgument1.drop () ;
+    outArgument2.drop () ;
+  }else{
+    macroValidSharedObject (p, cMapElement_localVarManager) ;
+    outArgument0 = p->mProperty_mType ;
+    outArgument1 = p->mProperty_mCppName ;
+    outArgument2 = p->mProperty_mNameForCheckingFormalParameterUsing ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const char * kSearchErrorMessage_localVarManager_searchForReadWriteAccess = "the '%K' variable is not declared" ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_searchForReadWriteAccess (GALGAS_lstring inKey,
+                                                              GALGAS_unifiedTypeMap_2D_entry & outArgument0,
+                                                              GALGAS_string & outArgument1,
+                                                              GALGAS_string & outArgument2,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
+  const cMapElement_localVarManager * p = (const cMapElement_localVarManager *) performSearch (inKey,
+                                                                                                 inCompiler,
+                                                                                                 kMapAction_localVarManager_readWriteAccess,
+                                                                                                 kMapTransitions_localVarManager,
+                                                                                                 kMapActionCount_localVarManager,
+                                                                                                 #ifndef DO_NOT_GENERATE_CHECKINGS
+                                                                                                   kMapStateCount_localVarManager,
+                                                                                                 #endif
+                                                                                                 kSearchErrorMessage_localVarManager_searchForReadWriteAccess
+                                                                                                 COMMA_THERE) ;
+  if (NULL == p) {
+    outArgument0.drop () ;
+    outArgument1.drop () ;
+    outArgument2.drop () ;
+  }else{
+    macroValidSharedObject (p, cMapElement_localVarManager) ;
+    outArgument0 = p->mProperty_mType ;
+    outArgument1 = p->mProperty_mCppName ;
+    outArgument2 = p->mProperty_mNameForCheckingFormalParameterUsing ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const char * kSearchErrorMessage_localVarManager_searchForDropAccess = "the '%K' variable is not declared" ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_searchForDropAccess (GALGAS_lstring inKey,
+                                                         GALGAS_unifiedTypeMap_2D_entry & outArgument0,
+                                                         GALGAS_string & outArgument1,
+                                                         GALGAS_string & outArgument2,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  const cMapElement_localVarManager * p = (const cMapElement_localVarManager *) performSearch (inKey,
+                                                                                                 inCompiler,
+                                                                                                 kMapAction_localVarManager_dropAccess,
+                                                                                                 kMapTransitions_localVarManager,
+                                                                                                 kMapActionCount_localVarManager,
+                                                                                                 #ifndef DO_NOT_GENERATE_CHECKINGS
+                                                                                                   kMapStateCount_localVarManager,
+                                                                                                 #endif
+                                                                                                 kSearchErrorMessage_localVarManager_searchForDropAccess
+                                                                                                 COMMA_THERE) ;
+  if (NULL == p) {
+    outArgument0.drop () ;
+    outArgument1.drop () ;
+    outArgument2.drop () ;
+  }else{
+    macroValidSharedObject (p, cMapElement_localVarManager) ;
+    outArgument0 = p->mProperty_mType ;
+    outArgument1 = p->mProperty_mCppName ;
+    outArgument2 = p->mProperty_mNameForCheckingFormalParameterUsing ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const char * kSearchErrorMessage_localVarManager_neutralAccess = "the '%K' variable is not declared" ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_neutralAccess (GALGAS_lstring inKey,
+                                                   GALGAS_unifiedTypeMap_2D_entry & outArgument0,
+                                                   GALGAS_string & outArgument1,
+                                                   GALGAS_string & outArgument2,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
+  const cMapElement_localVarManager * p = (const cMapElement_localVarManager *) performSearch (inKey,
+                                                                                                 inCompiler,
+                                                                                                 kMapAction_localVarManager_neutralAccess,
+                                                                                                 kMapTransitions_localVarManager,
+                                                                                                 kMapActionCount_localVarManager,
+                                                                                                 #ifndef DO_NOT_GENERATE_CHECKINGS
+                                                                                                   kMapStateCount_localVarManager,
+                                                                                                 #endif
+                                                                                                 kSearchErrorMessage_localVarManager_neutralAccess
+                                                                                                 COMMA_THERE) ;
+  if (NULL == p) {
+    outArgument0.drop () ;
+    outArgument1.drop () ;
+    outArgument2.drop () ;
+  }else{
+    macroValidSharedObject (p, cMapElement_localVarManager) ;
+    outArgument0 = p->mProperty_mType ;
+    outArgument1 = p->mProperty_mCppName ;
+    outArgument2 = p->mProperty_mNameForCheckingFormalParameterUsing ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_unifiedTypeMap_2D_entry GALGAS_localVarManager::getter_mTypeForKey (const GALGAS_string & inKey,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) const {
+  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
+  const cMapElement_localVarManager * p = (const cMapElement_localVarManager *) attributes ;
+  GALGAS_unifiedTypeMap_2D_entry result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_localVarManager) ;
+    result = p->mProperty_mType ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_localVarManager::getter_mCppNameForKey (const GALGAS_string & inKey,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const {
+  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
+  const cMapElement_localVarManager * p = (const cMapElement_localVarManager *) attributes ;
+  GALGAS_string result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_localVarManager) ;
+    result = p->mProperty_mCppName ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_localVarManager::getter_mNameForCheckingFormalParameterUsingForKey (const GALGAS_string & inKey,
+                                                                                         C_Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) const {
+  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
+  const cMapElement_localVarManager * p = (const cMapElement_localVarManager *) attributes ;
+  GALGAS_string result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_localVarManager) ;
+    result = p->mProperty_mNameForCheckingFormalParameterUsing ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_setMTypeForKey (GALGAS_unifiedTypeMap_2D_entry inAttributeValue,
+                                                    GALGAS_string inKey,
+                                                    C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) {
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cMapElement_localVarManager * p = (cMapElement_localVarManager *) attributes ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_localVarManager) ;
+    p->mProperty_mType = inAttributeValue ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_setMCppNameForKey (GALGAS_string inAttributeValue,
+                                                       GALGAS_string inKey,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) {
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cMapElement_localVarManager * p = (cMapElement_localVarManager *) attributes ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_localVarManager) ;
+    p->mProperty_mCppName = inAttributeValue ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager::setter_setMNameForCheckingFormalParameterUsingForKey (GALGAS_string inAttributeValue,
+                                                                                   GALGAS_string inKey,
+                                                                                   C_Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) {
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cMapElement_localVarManager * p = (cMapElement_localVarManager *) attributes ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_localVarManager) ;
+    p->mProperty_mNameForCheckingFormalParameterUsing = inAttributeValue ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+cMapElement_localVarManager * GALGAS_localVarManager::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+                                                                                         const GALGAS_string & inKey
+                                                                                         COMMA_LOCATION_ARGS) {
+  cMapElement_localVarManager * result = (cMapElement_localVarManager *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  macroNullOrValidSharedObject (result, cMapElement_localVarManager) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+cEnumerator_localVarManager::cEnumerator_localVarManager (const GALGAS_localVarManager & inEnumeratedObject,
+                                                          const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator (inOrder) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lstring cEnumerator_localVarManager::current_lkey (LOCATION_ARGS) const {
+  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement) ;
+  return p->mProperty_lkey ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_unifiedTypeMap_2D_entry cEnumerator_localVarManager::current_mType (LOCATION_ARGS) const {
+  const cMapElement_localVarManager * p = (const cMapElement_localVarManager *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_localVarManager) ;
+  return p->mProperty_mType ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string cEnumerator_localVarManager::current_mCppName (LOCATION_ARGS) const {
+  const cMapElement_localVarManager * p = (const cMapElement_localVarManager *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_localVarManager) ;
+  return p->mProperty_mCppName ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string cEnumerator_localVarManager::current_mNameForCheckingFormalParameterUsing (LOCATION_ARGS) const {
+  const cMapElement_localVarManager * p = (const cMapElement_localVarManager *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_localVarManager) ;
+  return p->mProperty_mNameForCheckingFormalParameterUsing ;
+}
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@localVarManager type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_localVarManager ("localVarManager",
+                                        NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_localVarManager::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_localVarManager ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_localVarManager::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_localVarManager (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_localVarManager GALGAS_localVarManager::extractObject (const GALGAS_object & inObject,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_localVarManager result ;
+  const GALGAS_localVarManager * p = (const GALGAS_localVarManager *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_localVarManager *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("localVarManager", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_localVarManager_2D_entry::GALGAS_localVarManager_2D_entry (void) :
+AC_GALGAS_sharedMapEntry () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_localVarManager_2D_entry GALGAS_localVarManager_2D_entry::constructor_null (LOCATION_ARGS) {
+  GALGAS_localVarManager_2D_entry result ;
+  result.makeNullEntry (THERE) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager_2D_entry::class_method_makeOptionalEntry (GALGAS_localVarManager & ioMap,
+                                                                      GALGAS_lstring inKey,
+                                                                      GALGAS_localVarManager_2D_entry & outEntry
+                                                                      COMMA_LOCATION_ARGS) {
+  outEntry.internalMakeOptionalEntry (ioMap, inKey COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager_2D_entry::class_method_makeEntry (GALGAS_localVarManager & ioMap,
+                                                              GALGAS_lstring inKey,
+                                                              GALGAS_localVarManager_2D_entry & outEntry
+                                                              COMMA_LOCATION_ARGS) {
+  outEntry.internalMakeEntry (ioMap, inKey COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_localVarManager_2D_entry::class_method_makeEntryFromString (GALGAS_localVarManager & ioMap,
+                                                                        GALGAS_string inKey,
+                                                                        GALGAS_localVarManager_2D_entry & outEntry
+                                                                        COMMA_LOCATION_ARGS) {
+  outEntry.internalMakeEntryFromString (ioMap, inKey COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_unifiedTypeMap_2D_entry GALGAS_localVarManager_2D_entry::getter_mType (C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_entry result ;
+  const cMapElement_localVarManager * p = (const cMapElement_localVarManager *) getAttributeListPointer (inCompiler, "mType" COMMA_THERE) ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_localVarManager) ;
+    result = p->mProperty_mType;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_localVarManager_2D_entry::getter_mCppName (C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  const cMapElement_localVarManager * p = (const cMapElement_localVarManager *) getAttributeListPointer (inCompiler, "mCppName" COMMA_THERE) ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_localVarManager) ;
+    result = p->mProperty_mCppName;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_localVarManager_2D_entry::getter_mNameForCheckingFormalParameterUsing (C_Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  const cMapElement_localVarManager * p = (const cMapElement_localVarManager *) getAttributeListPointer (inCompiler, "mNameForCheckingFormalParameterUsing" COMMA_THERE) ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_localVarManager) ;
+    result = p->mProperty_mNameForCheckingFormalParameterUsing;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_localVarManager_2D_entry GALGAS_localVarManager_2D_entry::constructor_searchForReadAccess (const GALGAS_localVarManager & inMap,
+                                                                                                  const GALGAS_lstring & inKey,
+                                                                                                  C_Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_localVarManager_2D_entry result ;
+  result.internalMakeRegularEntryBySearchingKey (inMap, inKey, kSearchErrorMessage_localVarManager_searchForReadAccess, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_localVarManager_2D_entry GALGAS_localVarManager_2D_entry::constructor_searchForWriteAccess (const GALGAS_localVarManager & inMap,
+                                                                                                   const GALGAS_lstring & inKey,
+                                                                                                   C_Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) {
+  GALGAS_localVarManager_2D_entry result ;
+  result.internalMakeRegularEntryBySearchingKey (inMap, inKey, kSearchErrorMessage_localVarManager_searchForWriteAccess, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_localVarManager_2D_entry GALGAS_localVarManager_2D_entry::constructor_searchForReadWriteAccess (const GALGAS_localVarManager & inMap,
+                                                                                                       const GALGAS_lstring & inKey,
+                                                                                                       C_Compiler * inCompiler
+                                                                                                       COMMA_LOCATION_ARGS) {
+  GALGAS_localVarManager_2D_entry result ;
+  result.internalMakeRegularEntryBySearchingKey (inMap, inKey, kSearchErrorMessage_localVarManager_searchForReadWriteAccess, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_localVarManager_2D_entry GALGAS_localVarManager_2D_entry::constructor_searchForDropAccess (const GALGAS_localVarManager & inMap,
+                                                                                                  const GALGAS_lstring & inKey,
+                                                                                                  C_Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_localVarManager_2D_entry result ;
+  result.internalMakeRegularEntryBySearchingKey (inMap, inKey, kSearchErrorMessage_localVarManager_searchForDropAccess, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_localVarManager_2D_entry GALGAS_localVarManager_2D_entry::constructor_neutralAccess (const GALGAS_localVarManager & inMap,
+                                                                                            const GALGAS_lstring & inKey,
+                                                                                            C_Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_localVarManager_2D_entry result ;
+  result.internalMakeRegularEntryBySearchingKey (inMap, inKey, kSearchErrorMessage_localVarManager_neutralAccess, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@localVarManager-entry type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_localVarManager_2D_entry ("localVarManager-entry",
+                                                 NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_localVarManager_2D_entry::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_localVarManager_2D_entry ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_localVarManager_2D_entry::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_localVarManager_2D_entry (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_localVarManager_2D_entry GALGAS_localVarManager_2D_entry::extractObject (const GALGAS_object & inObject,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_localVarManager_2D_entry result ;
+  const GALGAS_localVarManager_2D_entry * p = (const GALGAS_localVarManager_2D_entry *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_localVarManager_2D_entry *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("localVarManager-entry", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 //
 //     L E X I Q U E                                                                             
 //
@@ -11977,6 +13381,268 @@ GALGAS_templateRightShiftOperationAST_2D_weak GALGAS_templateRightShiftOperation
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+// @templateInstructionStringAST reference class
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_templateInstructionStringAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_templateInstructionStringAST * p = (const cPtr_templateInstructionStringAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_templateInstructionStringAST) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mTemplateString.objectCompare (p->mProperty_mTemplateString) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_templateInstructionStringAST::objectCompare (const GALGAS_templateInstructionStringAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionStringAST::GALGAS_templateInstructionStringAST (void) :
+GALGAS_templateInstructionAST () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionStringAST GALGAS_templateInstructionStringAST::constructor_default (LOCATION_ARGS) {
+  return GALGAS_templateInstructionStringAST::constructor_new (GALGAS_string::constructor_default (HERE)
+                                                               COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionStringAST::GALGAS_templateInstructionStringAST (const cPtr_templateInstructionStringAST * inSourcePtr) :
+GALGAS_templateInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionStringAST) ;
+}
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionStringAST GALGAS_templateInstructionStringAST::constructor_new (const GALGAS_string & inAttribute_mTemplateString
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_templateInstructionStringAST result ;
+  if (inAttribute_mTemplateString.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_templateInstructionStringAST (inAttribute_mTemplateString COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_templateInstructionStringAST::readProperty_mTemplateString (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_string () ;
+  }else{
+    cPtr_templateInstructionStringAST * p = (cPtr_templateInstructionStringAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionStringAST) ;
+    return p->mProperty_mTemplateString ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//Pointer class for @templateInstructionStringAST class
+//----------------------------------------------------------------------------------------------------------------------
+
+cPtr_templateInstructionStringAST::cPtr_templateInstructionStringAST (const GALGAS_string & in_mTemplateString
+                                                                      COMMA_LOCATION_ARGS) :
+cPtr_templateInstructionAST (THERE),
+mProperty_mTemplateString (in_mTemplateString) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_templateInstructionStringAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionStringAST ;
+}
+
+void cPtr_templateInstructionStringAST::description (C_String & ioString,
+                                                     const int32_t inIndentation) const {
+  ioString << "[@templateInstructionStringAST:" ;
+  mProperty_mTemplateString.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_templateInstructionStringAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_templateInstructionStringAST (mProperty_mTemplateString COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@templateInstructionStringAST type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_templateInstructionStringAST ("templateInstructionStringAST",
+                                                     & kTypeDescriptor_GALGAS_templateInstructionAST) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_templateInstructionStringAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionStringAST ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_templateInstructionStringAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_templateInstructionStringAST (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionStringAST GALGAS_templateInstructionStringAST::extractObject (const GALGAS_object & inObject,
+                                                                                        C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_templateInstructionStringAST result ;
+  const GALGAS_templateInstructionStringAST * p = (const GALGAS_templateInstructionStringAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_templateInstructionStringAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateInstructionStringAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_templateInstructionStringAST_2D_weak::objectCompare (const GALGAS_templateInstructionStringAST_2D_weak & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
+    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionStringAST_2D_weak::GALGAS_templateInstructionStringAST_2D_weak (void) :
+GALGAS_templateInstructionAST_2D_weak () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionStringAST_2D_weak & GALGAS_templateInstructionStringAST_2D_weak::operator = (const GALGAS_templateInstructionStringAST & inSource) {
+  cPtr_weakReference_class * proxyPtr = NULL ;
+  acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
+  if (p != NULL) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mObjectPtr, proxyPtr) ;
+  return *this ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionStringAST_2D_weak::GALGAS_templateInstructionStringAST_2D_weak (const GALGAS_templateInstructionStringAST & inSource) :
+GALGAS_templateInstructionAST_2D_weak (inSource) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionStringAST_2D_weak GALGAS_templateInstructionStringAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+  GALGAS_templateInstructionStringAST_2D_weak result ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionStringAST GALGAS_templateInstructionStringAST_2D_weak::bang_templateInstructionStringAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_templateInstructionStringAST result ;
+  if (mObjectPtr != NULL) {
+    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
+    acStrongPtr_class * strongPtr = p->strongObject () ;
+    if (strongPtr == NULL) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_templateInstructionStringAST) ;
+      result = GALGAS_templateInstructionStringAST ((cPtr_templateInstructionStringAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@templateInstructionStringAST-weak type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_templateInstructionStringAST_2D_weak ("templateInstructionStringAST-weak",
+                                                             & kTypeDescriptor_GALGAS_templateInstructionAST_2D_weak) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_templateInstructionStringAST_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionStringAST_2D_weak ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_templateInstructionStringAST_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_templateInstructionStringAST_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionStringAST_2D_weak GALGAS_templateInstructionStringAST_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                                        C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_templateInstructionStringAST_2D_weak result ;
+  const GALGAS_templateInstructionStringAST_2D_weak * p = (const GALGAS_templateInstructionStringAST_2D_weak *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_templateInstructionStringAST_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateInstructionStringAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 // @templateInstructionExpressionAST reference class
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13495,2336 +15161,6 @@ GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchList
       result = *p ;
     }else{
       inCompiler->castError ("templateInstructionIfBranchListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-// @templateInstructionIfAST reference class
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult cPtr_templateInstructionIfAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_templateInstructionIfAST * p = (const cPtr_templateInstructionIfAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_templateInstructionIfAST) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mTemplateInstructionIfBranchList.objectCompare (p->mProperty_mTemplateInstructionIfBranchList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mElseInstructionList.objectCompare (p->mProperty_mElseInstructionList) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-typeComparisonResult GALGAS_templateInstructionIfAST::objectCompare (const GALGAS_templateInstructionIfAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionIfAST::GALGAS_templateInstructionIfAST (void) :
-GALGAS_templateInstructionAST () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionIfAST GALGAS_templateInstructionIfAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_templateInstructionIfAST::constructor_new (GALGAS_templateInstructionIfBranchListAST::constructor_emptyList (HERE),
-                                                           GALGAS_templateInstructionListAST::constructor_emptyList (HERE)
-                                                           COMMA_THERE) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionIfAST::GALGAS_templateInstructionIfAST (const cPtr_templateInstructionIfAST * inSourcePtr) :
-GALGAS_templateInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionIfAST) ;
-}
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionIfAST GALGAS_templateInstructionIfAST::constructor_new (const GALGAS_templateInstructionIfBranchListAST & inAttribute_mTemplateInstructionIfBranchList,
-                                                                                  const GALGAS_templateInstructionListAST & inAttribute_mElseInstructionList
-                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_templateInstructionIfAST result ;
-  if (inAttribute_mTemplateInstructionIfBranchList.isValid () && inAttribute_mElseInstructionList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateInstructionIfAST (inAttribute_mTemplateInstructionIfBranchList, inAttribute_mElseInstructionList COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfAST::readProperty_mTemplateInstructionIfBranchList (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_templateInstructionIfBranchListAST () ;
-  }else{
-    cPtr_templateInstructionIfAST * p = (cPtr_templateInstructionIfAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateInstructionIfAST) ;
-    return p->mProperty_mTemplateInstructionIfBranchList ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionListAST GALGAS_templateInstructionIfAST::readProperty_mElseInstructionList (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_templateInstructionListAST () ;
-  }else{
-    cPtr_templateInstructionIfAST * p = (cPtr_templateInstructionIfAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateInstructionIfAST) ;
-    return p->mProperty_mElseInstructionList ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//Pointer class for @templateInstructionIfAST class
-//----------------------------------------------------------------------------------------------------------------------
-
-cPtr_templateInstructionIfAST::cPtr_templateInstructionIfAST (const GALGAS_templateInstructionIfBranchListAST & in_mTemplateInstructionIfBranchList,
-                                                              const GALGAS_templateInstructionListAST & in_mElseInstructionList
-                                                              COMMA_LOCATION_ARGS) :
-cPtr_templateInstructionAST (THERE),
-mProperty_mTemplateInstructionIfBranchList (in_mTemplateInstructionIfBranchList),
-mProperty_mElseInstructionList (in_mElseInstructionList) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_templateInstructionIfAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionIfAST ;
-}
-
-void cPtr_templateInstructionIfAST::description (C_String & ioString,
-                                                 const int32_t inIndentation) const {
-  ioString << "[@templateInstructionIfAST:" ;
-  mProperty_mTemplateInstructionIfBranchList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mElseInstructionList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_templateInstructionIfAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateInstructionIfAST (mProperty_mTemplateInstructionIfBranchList, mProperty_mElseInstructionList COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@templateInstructionIfAST type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionIfAST ("templateInstructionIfAST",
-                                                 & kTypeDescriptor_GALGAS_templateInstructionAST) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_templateInstructionIfAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionIfAST ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_templateInstructionIfAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_templateInstructionIfAST (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionIfAST GALGAS_templateInstructionIfAST::extractObject (const GALGAS_object & inObject,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_templateInstructionIfAST result ;
-  const GALGAS_templateInstructionIfAST * p = (const GALGAS_templateInstructionIfAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_templateInstructionIfAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("templateInstructionIfAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_templateInstructionIfAST_2D_weak::objectCompare (const GALGAS_templateInstructionIfAST_2D_weak & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
-    const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionIfAST_2D_weak::GALGAS_templateInstructionIfAST_2D_weak (void) :
-GALGAS_templateInstructionAST_2D_weak () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionIfAST_2D_weak & GALGAS_templateInstructionIfAST_2D_weak::operator = (const GALGAS_templateInstructionIfAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
-  acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
-  if (p != NULL) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mObjectPtr, proxyPtr) ;
-  return *this ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionIfAST_2D_weak::GALGAS_templateInstructionIfAST_2D_weak (const GALGAS_templateInstructionIfAST & inSource) :
-GALGAS_templateInstructionAST_2D_weak (inSource) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionIfAST_2D_weak GALGAS_templateInstructionIfAST_2D_weak::constructor_nil (LOCATION_ARGS) {
-  GALGAS_templateInstructionIfAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionIfAST GALGAS_templateInstructionIfAST_2D_weak::bang_templateInstructionIfAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GALGAS_templateInstructionIfAST result ;
-  if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
-    if (strongPtr == NULL) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_templateInstructionIfAST) ;
-      result = GALGAS_templateInstructionIfAST ((cPtr_templateInstructionIfAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@templateInstructionIfAST-weak type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionIfAST_2D_weak ("templateInstructionIfAST-weak",
-                                                         & kTypeDescriptor_GALGAS_templateInstructionAST_2D_weak) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_templateInstructionIfAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionIfAST_2D_weak ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_templateInstructionIfAST_2D_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_templateInstructionIfAST_2D_weak (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionIfAST_2D_weak GALGAS_templateInstructionIfAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                C_Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_templateInstructionIfAST_2D_weak result ;
-  const GALGAS_templateInstructionIfAST_2D_weak * p = (const GALGAS_templateInstructionIfAST_2D_weak *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_templateInstructionIfAST_2D_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("templateInstructionIfAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_expression_i0_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                                 C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  nt_relation_5F_term_ (outArgument_outExpression, inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_templateSyntax_0 (inCompiler)) {
-    case 2: {
-      GALGAS_location var_operatorLocation_1823 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 31)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__7C_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 32)) ;
-      GALGAS_templateExpressionAST var_leftOperand_1891 = outArgument_outExpression ;
-      GALGAS_templateExpressionAST var_rightOperand_1951 ;
-      nt_relation_5F_term_ (var_rightOperand_1951, inCompiler) ;
-      outArgument_outExpression = GALGAS_templateOrOperationAST::constructor_new (var_operatorLocation_1823, var_leftOperand_1891, var_rightOperand_1951  COMMA_SOURCE_FILE ("templateSyntax.galgas", 36)) ;
-    } break ;
-    case 3: {
-      GALGAS_location var_operatorLocation_2123 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 38)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__5E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 39)) ;
-      GALGAS_templateExpressionAST var_leftOperand_2191 = outArgument_outExpression ;
-      GALGAS_templateExpressionAST var_rightOperand_2251 ;
-      nt_relation_5F_term_ (var_rightOperand_2251, inCompiler) ;
-      outArgument_outExpression = GALGAS_templateXorOperationAST::constructor_new (var_operatorLocation_2123, var_leftOperand_2191, var_rightOperand_2251  COMMA_SOURCE_FILE ("templateSyntax.galgas", 43)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_expression_i0_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  nt_relation_5F_term_parse (inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_templateSyntax_0 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__7C_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 32)) ;
-      nt_relation_5F_term_parse (inCompiler) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__5E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 39)) ;
-      nt_relation_5F_term_parse (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_relation_5F_term_i1_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                                       C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  nt_relation_5F_factor_ (outArgument_outExpression, inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_templateSyntax_1 (inCompiler)) {
-    case 2: {
-      GALGAS_location var_operatorLocation_2918 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 58)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__26_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 59)) ;
-      GALGAS_templateExpressionAST var_leftOperand_2986 = outArgument_outExpression ;
-      GALGAS_templateExpressionAST var_rightOperand_3046 ;
-      nt_relation_5F_factor_ (var_rightOperand_3046, inCompiler) ;
-      outArgument_outExpression = GALGAS_templateAndOperationAST::constructor_new (var_operatorLocation_2918, var_leftOperand_2986, var_rightOperand_3046  COMMA_SOURCE_FILE ("templateSyntax.galgas", 63)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_relation_5F_term_i1_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  nt_relation_5F_factor_parse (inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_templateSyntax_1 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__26_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 59)) ;
-      nt_relation_5F_factor_parse (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_relation_5F_factor_i2_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                                         C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  nt_simple_5F_expression_ (outArgument_outExpression, inCompiler) ;
-  switch (select_templateSyntax_2 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    GALGAS_location var_operatorLocation_3716 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 78)) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3D__3D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 79)) ;
-    GALGAS_templateExpressionAST var_leftExpression_3788 = outArgument_outExpression ;
-    GALGAS_templateExpressionAST var_rightExpression_3851 ;
-    nt_simple_5F_expression_ (var_rightExpression_3851, inCompiler) ;
-    outArgument_outExpression = GALGAS_templateEqualTestAST::constructor_new (var_operatorLocation_3716, var_leftExpression_3788, var_rightExpression_3851  COMMA_SOURCE_FILE ("templateSyntax.galgas", 83)) ;
-  } break ;
-  case 3: {
-    GALGAS_location var_operatorLocation_4031 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 85)) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__21__3D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 86)) ;
-    GALGAS_templateExpressionAST var_leftExpression_4103 = outArgument_outExpression ;
-    GALGAS_templateExpressionAST var_rightExpression_4166 ;
-    nt_simple_5F_expression_ (var_rightExpression_4166, inCompiler) ;
-    outArgument_outExpression = GALGAS_templateNonEqualTestAST::constructor_new (var_operatorLocation_4031, var_leftExpression_4103, var_rightExpression_4166  COMMA_SOURCE_FILE ("templateSyntax.galgas", 90)) ;
-  } break ;
-  case 4: {
-    GALGAS_location var_operatorLocation_4349 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 92)) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3C__3D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 93)) ;
-    GALGAS_templateExpressionAST var_leftExpression_4421 = outArgument_outExpression ;
-    GALGAS_templateExpressionAST var_rightExpression_4484 ;
-    nt_simple_5F_expression_ (var_rightExpression_4484, inCompiler) ;
-    outArgument_outExpression = GALGAS_templateInfOrEqualTestAST::constructor_new (var_operatorLocation_4349, var_leftExpression_4421, var_rightExpression_4484  COMMA_SOURCE_FILE ("templateSyntax.galgas", 97)) ;
-  } break ;
-  case 5: {
-    GALGAS_location var_operatorLocation_4669 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 99)) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3E__3D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 100)) ;
-    GALGAS_templateExpressionAST var_leftExpression_4741 = outArgument_outExpression ;
-    GALGAS_templateExpressionAST var_rightExpression_4804 ;
-    nt_simple_5F_expression_ (var_rightExpression_4804, inCompiler) ;
-    outArgument_outExpression = GALGAS_templateSupOrEqualTestAST::constructor_new (var_operatorLocation_4669, var_leftExpression_4741, var_rightExpression_4804  COMMA_SOURCE_FILE ("templateSyntax.galgas", 104)) ;
-  } break ;
-  case 6: {
-    GALGAS_location var_operatorLocation_4989 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 106)) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 107)) ;
-    GALGAS_templateExpressionAST var_leftExpression_5060 = outArgument_outExpression ;
-    GALGAS_templateExpressionAST var_rightExpression_5123 ;
-    nt_simple_5F_expression_ (var_rightExpression_5123, inCompiler) ;
-    outArgument_outExpression = GALGAS_templateStrictSupTestAST::constructor_new (var_operatorLocation_4989, var_leftExpression_5060, var_rightExpression_5123  COMMA_SOURCE_FILE ("templateSyntax.galgas", 111)) ;
-  } break ;
-  case 7: {
-    GALGAS_location var_operatorLocation_5307 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 113)) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3C_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 114)) ;
-    GALGAS_templateExpressionAST var_leftExpression_5378 = outArgument_outExpression ;
-    GALGAS_templateExpressionAST var_rightExpression_5441 ;
-    nt_simple_5F_expression_ (var_rightExpression_5441, inCompiler) ;
-    outArgument_outExpression = GALGAS_templateStrictInfTestAST::constructor_new (var_operatorLocation_5307, var_leftExpression_5378, var_rightExpression_5441  COMMA_SOURCE_FILE ("templateSyntax.galgas", 118)) ;
-  } break ;
-  default:
-    break ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_relation_5F_factor_i2_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  nt_simple_5F_expression_parse (inCompiler) ;
-  switch (select_templateSyntax_2 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3D__3D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 79)) ;
-    nt_simple_5F_expression_parse (inCompiler) ;
-  } break ;
-  case 3: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__21__3D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 86)) ;
-    nt_simple_5F_expression_parse (inCompiler) ;
-  } break ;
-  case 4: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3C__3D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 93)) ;
-    nt_simple_5F_expression_parse (inCompiler) ;
-  } break ;
-  case 5: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3E__3D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 100)) ;
-    nt_simple_5F_expression_parse (inCompiler) ;
-  } break ;
-  case 6: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 107)) ;
-    nt_simple_5F_expression_parse (inCompiler) ;
-  } break ;
-  case 7: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3C_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 114)) ;
-    nt_simple_5F_expression_parse (inCompiler) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_simple_5F_expression_i3_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                                           C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  nt_term_ (outArgument_outExpression, inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_templateSyntax_3 (inCompiler)) {
-    case 2: {
-      GALGAS_location var_operatorLocation_6114 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 132)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3C__3C_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 133)) ;
-      GALGAS_templateExpressionAST var_leftExpression_6186 = outArgument_outExpression ;
-      GALGAS_templateExpressionAST var_rightExpression_6249 ;
-      nt_term_ (var_rightExpression_6249, inCompiler) ;
-      outArgument_outExpression = GALGAS_templateLeftShiftOperationAST::constructor_new (var_operatorLocation_6114, var_leftExpression_6186, var_rightExpression_6249  COMMA_SOURCE_FILE ("templateSyntax.galgas", 137)) ;
-    } break ;
-    case 3: {
-      GALGAS_location var_operatorLocation_6429 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 139)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3E__3E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 140)) ;
-      GALGAS_templateExpressionAST var_leftExpression_6501 = outArgument_outExpression ;
-      GALGAS_templateExpressionAST var_rightExpression_6564 ;
-      nt_term_ (var_rightExpression_6564, inCompiler) ;
-      outArgument_outExpression = GALGAS_templateRightShiftOperationAST::constructor_new (var_operatorLocation_6429, var_leftExpression_6501, var_rightExpression_6564  COMMA_SOURCE_FILE ("templateSyntax.galgas", 144)) ;
-    } break ;
-    case 4: {
-      GALGAS_location var_operatorLocation_6745 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 146)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2B_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 147)) ;
-      GALGAS_templateExpressionAST var_leftExpression_6816 = outArgument_outExpression ;
-      GALGAS_templateExpressionAST var_rightExpression_6879 ;
-      nt_term_ (var_rightExpression_6879, inCompiler) ;
-      outArgument_outExpression = GALGAS_templateAddOperationAST::constructor_new (var_operatorLocation_6745, var_leftExpression_6816, var_rightExpression_6879  COMMA_SOURCE_FILE ("templateSyntax.galgas", 151)) ;
-    } break ;
-    case 5: {
-      GALGAS_location var_operatorLocation_7053 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 153)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 154)) ;
-      GALGAS_templateExpressionAST var_leftExpression_7124 = outArgument_outExpression ;
-      GALGAS_templateExpressionAST var_rightExpression_7187 ;
-      nt_term_ (var_rightExpression_7187, inCompiler) ;
-      outArgument_outExpression = GALGAS_templateSubOperationAST::constructor_new (var_operatorLocation_7053, var_leftExpression_7124, var_rightExpression_7187  COMMA_SOURCE_FILE ("templateSyntax.galgas", 158)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_simple_5F_expression_i3_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  nt_term_parse (inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_templateSyntax_3 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3C__3C_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 133)) ;
-      nt_term_parse (inCompiler) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3E__3E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 140)) ;
-      nt_term_parse (inCompiler) ;
-    } break ;
-    case 4: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2B_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 147)) ;
-      nt_term_parse (inCompiler) ;
-    } break ;
-    case 5: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 154)) ;
-      nt_term_parse (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_term_i4_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                           C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  nt_factor_ (outArgument_outExpression, inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_templateSyntax_4 (inCompiler)) {
-    case 2: {
-      GALGAS_location var_operatorLocation_7837 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 173)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2A_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 174)) ;
-      GALGAS_templateExpressionAST var_leftExpression_7908 = outArgument_outExpression ;
-      GALGAS_templateExpressionAST var_rightExpression_7971 ;
-      nt_factor_ (var_rightExpression_7971, inCompiler) ;
-      outArgument_outExpression = GALGAS_templateMultiplyOperationAST::constructor_new (var_operatorLocation_7837, var_leftExpression_7908, var_rightExpression_7971  COMMA_SOURCE_FILE ("templateSyntax.galgas", 178)) ;
-    } break ;
-    case 3: {
-      GALGAS_location var_operatorLocation_8152 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 180)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2F_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 181)) ;
-      GALGAS_templateExpressionAST var_leftExpression_8223 = outArgument_outExpression ;
-      GALGAS_templateExpressionAST var_rightExpression_8286 ;
-      nt_factor_ (var_rightExpression_8286, inCompiler) ;
-      outArgument_outExpression = GALGAS_templateDivideOperationAST::constructor_new (var_operatorLocation_8152, var_leftExpression_8223, var_rightExpression_8286  COMMA_SOURCE_FILE ("templateSyntax.galgas", 185)) ;
-    } break ;
-    case 4: {
-      GALGAS_location var_operatorLocation_8465 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 187)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_mod COMMA_SOURCE_FILE ("templateSyntax.galgas", 188)) ;
-      GALGAS_templateExpressionAST var_leftExpression_8538 = outArgument_outExpression ;
-      GALGAS_templateExpressionAST var_rightExpression_8601 ;
-      nt_factor_ (var_rightExpression_8601, inCompiler) ;
-      outArgument_outExpression = GALGAS_templateModuloOperationAST::constructor_new (var_operatorLocation_8465, var_leftExpression_8538, var_rightExpression_8601  COMMA_SOURCE_FILE ("templateSyntax.galgas", 192)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_term_i4_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  nt_factor_parse (inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_templateSyntax_4 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2A_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 174)) ;
-      nt_factor_parse (inCompiler) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2F_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 181)) ;
-      nt_factor_parse (inCompiler) ;
-    } break ;
-    case 4: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_mod COMMA_SOURCE_FILE ("templateSyntax.galgas", 188)) ;
-      nt_factor_parse (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_factor_i5_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                             C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  nt_primary_ (outArgument_outExpression, inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_templateSyntax_5 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 206)) ;
-      GALGAS_lstring var_structFieldName_9276 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 207)) ;
-      outArgument_outExpression = GALGAS_structFieldAccessTemplateExpressionAST::constructor_new (var_structFieldName_9276.readProperty_location (), outArgument_outExpression, var_structFieldName_9276  COMMA_SOURCE_FILE ("templateSyntax.galgas", 208)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_factor_i5_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  nt_primary_parse (inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_templateSyntax_5 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 206)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 207)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_factor_i6_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                             C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_location var_operatorLocation_9876 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 220)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 221)) ;
-  GALGAS_templateExpressionAST var_expression_9939 ;
-  nt_factor_ (var_expression_9939, inCompiler) ;
-  outArgument_outExpression = GALGAS_templateUnaryMinusOperationAST::constructor_new (var_operatorLocation_9876, var_expression_9939  COMMA_SOURCE_FILE ("templateSyntax.galgas", 224)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_factor_i6_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 221)) ;
-  nt_factor_parse (inCompiler) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_factor_i7_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                             C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_location var_operatorLocation_10518 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 235)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_not COMMA_SOURCE_FILE ("templateSyntax.galgas", 236)) ;
-  GALGAS_templateExpressionAST var_ifCondition_10584 ;
-  nt_factor_ (var_ifCondition_10584, inCompiler) ;
-  outArgument_outExpression = GALGAS_templateNotOperatorAST::constructor_new (var_operatorLocation_10518, var_ifCondition_10584  COMMA_SOURCE_FILE ("templateSyntax.galgas", 239)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_factor_i7_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_not COMMA_SOURCE_FILE ("templateSyntax.galgas", 236)) ;
-  nt_factor_parse (inCompiler) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_factor_i8_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                             C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_location var_operatorLocation_11157 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 250)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__7E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 251)) ;
-  GALGAS_templateExpressionAST var_ifCondition_11221 ;
-  nt_factor_ (var_ifCondition_11221, inCompiler) ;
-  outArgument_outExpression = GALGAS_templateLogicalNegateAST::constructor_new (var_operatorLocation_11157, var_ifCondition_11221  COMMA_SOURCE_FILE ("templateSyntax.galgas", 254)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_factor_i8_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__7E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 251)) ;
-  nt_factor_parse (inCompiler) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i9_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                              C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_lstring var_identifier_11803 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 264)) ;
-  outArgument_outExpression = GALGAS_templateVarInExpressionAST::constructor_new (var_identifier_11803  COMMA_SOURCE_FILE ("templateSyntax.galgas", 265)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i9_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 264)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i10_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                               C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__28_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 275)) ;
-  nt_expression_ (outArgument_outExpression, inCompiler) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 277)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i10_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__28_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 275)) ;
-  nt_expression_parse (inCompiler) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 277)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i11_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                               C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_true COMMA_SOURCE_FILE ("templateSyntax.galgas", 287)) ;
-  outArgument_outExpression = GALGAS_templateTrueBoolAST::constructor_new (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 288))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 288)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i11_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_true COMMA_SOURCE_FILE ("templateSyntax.galgas", 287)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i12_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                               C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_false COMMA_SOURCE_FILE ("templateSyntax.galgas", 298)) ;
-  outArgument_outExpression = GALGAS_templateFalseBoolAST::constructor_new (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 299))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 299)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i12_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_false COMMA_SOURCE_FILE ("templateSyntax.galgas", 298)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i13_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                               C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_luint var_literalInt_13895 ;
-  var_literalInt_13895 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_uint_33__32_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 310)) ;
-  outArgument_outExpression = GALGAS_templateLiteralUIntExpressionAST::constructor_new (var_literalInt_13895  COMMA_SOURCE_FILE ("templateSyntax.galgas", 311)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i13_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_uint_33__32_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 310)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i14_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                               C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_lsint var_literalInt_14524 ;
-  var_literalInt_14524 = inCompiler->synthetizedAttribute_sint_33__32_value () ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_sint_33__32__5F_S COMMA_SOURCE_FILE ("templateSyntax.galgas", 322)) ;
-  outArgument_outExpression = GALGAS_templateLiteralSIntExpressionAST::constructor_new (var_literalInt_14524  COMMA_SOURCE_FILE ("templateSyntax.galgas", 323)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i14_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_sint_33__32__5F_S COMMA_SOURCE_FILE ("templateSyntax.galgas", 322)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i15_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                               C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_luint_36__34_ var_literalInt_15157 ;
-  var_literalInt_15157 = inCompiler->synthetizedAttribute_uint_36__34_value () ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_uint_36__34__5F_L COMMA_SOURCE_FILE ("templateSyntax.galgas", 334)) ;
-  outArgument_outExpression = GALGAS_templateLiteralUInt_36__34_ExpressionAST::constructor_new (var_literalInt_15157  COMMA_SOURCE_FILE ("templateSyntax.galgas", 335)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i15_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_uint_36__34__5F_L COMMA_SOURCE_FILE ("templateSyntax.galgas", 334)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i16_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                               C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_lsint_36__34_ var_literalInt_15792 ;
-  var_literalInt_15792 = inCompiler->synthetizedAttribute_sint_36__34_value () ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_sint_36__34__5F_LS COMMA_SOURCE_FILE ("templateSyntax.galgas", 346)) ;
-  outArgument_outExpression = GALGAS_templateLiteralSInt_36__34_ExpressionAST::constructor_new (var_literalInt_15792  COMMA_SOURCE_FILE ("templateSyntax.galgas", 347)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i16_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_sint_36__34__5F_LS COMMA_SOURCE_FILE ("templateSyntax.galgas", 346)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i17_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                               C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_ldouble var_literalDouble_16355 ;
-  var_literalDouble_16355 = inCompiler->synthetizedAttribute_floatValue () ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_double_2E_xxx COMMA_SOURCE_FILE ("templateSyntax.galgas", 358)) ;
-  outArgument_outExpression = GALGAS_templateLiteralDoubleExpressionAST::constructor_new (var_literalDouble_16355  COMMA_SOURCE_FILE ("templateSyntax.galgas", 359)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i17_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_double_2E_xxx COMMA_SOURCE_FILE ("templateSyntax.galgas", 358)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i18_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                               C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_lchar var_literalChar_17011 = inCompiler->synthetizedAttribute_charValue () ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__27_char_27_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 369)) ;
-  outArgument_outExpression = GALGAS_templateLiteralCharExpressionAST::constructor_new (var_literalChar_17011  COMMA_SOURCE_FILE ("templateSyntax.galgas", 370)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i18_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__27_char_27_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 369)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i19_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                               C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_stringlist var_literalStringList_17630 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("templateSyntax.galgas", 380)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    GALGAS_lstring var_literalString_17675 ;
-    var_literalString_17675 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 383)) ;
-    var_literalStringList_17630.addAssign_operation (var_literalString_17675.readProperty_string ()  COMMA_SOURCE_FILE ("templateSyntax.galgas", 384)) ;
-    switch (select_templateSyntax_6 (inCompiler)) {
-    case 2: {
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  outArgument_outExpression = GALGAS_templateLiteralStringExpressionAST::constructor_new (var_literalStringList_17630, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 387))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 387)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i19_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 383)) ;
-    switch (select_templateSyntax_6 (inCompiler)) {
-    case 2: {
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i20_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                               C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__5B_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 403)) ;
-  switch (select_templateSyntax_7 (inCompiler)) {
-  case 1: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_template COMMA_SOURCE_FILE ("templateSyntax.galgas", 406)) ;
-    GALGAS_templateExpressionAST var_receiverExpression_19149 ;
-    nt_expression_ (var_receiverExpression_19149, inCompiler) ;
-    GALGAS_lstring var_templateName_19231 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 409)) ;
-    GALGAS_templateExpressionListAST var_expressionList_19281 ;
-    nt_output_5F_expression_5F_list_ (var_expressionList_19281, inCompiler) ;
-    outArgument_outExpression = GALGAS_templateExtensionTemplateCallAST::constructor_new (var_receiverExpression_19149, var_templateName_19231, var_expressionList_19281  COMMA_SOURCE_FILE ("templateSyntax.galgas", 412)) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__5D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 417)) ;
-  } break ;
-  case 2: {
-    GALGAS_lstring var_typeName_19539 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__40_type COMMA_SOURCE_FILE ("templateSyntax.galgas", 419)) ;
-    GALGAS_lstring var_constructorName_19587 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 420)) ;
-    GALGAS_templateExpressionListAST var_expressionList_19663 ;
-    nt_output_5F_expression_5F_list_ (var_expressionList_19663, inCompiler) ;
-    outArgument_outExpression = GALGAS_templateConstructorAST::constructor_new (var_typeName_19539, var_constructorName_19587, var_expressionList_19663  COMMA_SOURCE_FILE ("templateSyntax.galgas", 422)) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__5D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 427)) ;
-  } break ;
-  case 3: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_filewrapper COMMA_SOURCE_FILE ("templateSyntax.galgas", 429)) ;
-    GALGAS_lstring var_filewrapperName_19905 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 430)) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 431)) ;
-    GALGAS_lstring var_templateName_19957 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 432)) ;
-    GALGAS_templateExpressionListAST var_expressionList_20007 ;
-    nt_output_5F_expression_5F_list_ (var_expressionList_20007, inCompiler) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__5D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 435)) ;
-    outArgument_outExpression = GALGAS_templateFileWrapperTemplateCallAST::constructor_new (var_filewrapperName_19905, var_templateName_19957, var_expressionList_20007  COMMA_SOURCE_FILE ("templateSyntax.galgas", 436)) ;
-  } break ;
-  case 4: {
-    GALGAS_location var_startLocation_20243 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 438)) ;
-    GALGAS_templateExpressionAST var_receiverExpression_20310 ;
-    nt_expression_ (var_receiverExpression_20310, inCompiler) ;
-    GALGAS_lstring var_getterName_20390 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 441)) ;
-    GALGAS_templateExpressionListAST var_expressionList_20440 ;
-    nt_output_5F_expression_5F_list_ (var_expressionList_20440, inCompiler) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__5D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 444)) ;
-    GALGAS_location var_endLocation_20513 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 445)) ;
-    outArgument_outExpression = GALGAS_templateGetterCallInExpressionAST::constructor_new (var_receiverExpression_20310, var_getterName_20390, var_expressionList_20440, var_startLocation_20243.getter_union (var_endLocation_20513, inCompiler COMMA_SOURCE_FILE ("templateSyntax.galgas", 450))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 446)) ;
-  } break ;
-  case 5: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_option COMMA_SOURCE_FILE ("templateSyntax.galgas", 453)) ;
-    switch (select_templateSyntax_8 (inCompiler)) {
-    case 1: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 455)) ;
-      GALGAS_lstring var_optionName_20788 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 456)) ;
-      GALGAS_lstring var_getterName_20832 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 457)) ;
-      outArgument_outExpression = GALGAS_templateOptionAccessAST::constructor_new (GALGAS_lstring::constructor_new (GALGAS_string ("galgas_builtin_options"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 458))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 458)), var_optionName_20788, var_getterName_20832  COMMA_SOURCE_FILE ("templateSyntax.galgas", 458)) ;
-    } break ;
-    case 2: {
-      GALGAS_lstring var_optionComponentName_21027 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 460)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 461)) ;
-      GALGAS_lstring var_optionName_21081 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 462)) ;
-      GALGAS_lstring var_getterName_21125 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 463)) ;
-      outArgument_outExpression = GALGAS_templateOptionAccessAST::constructor_new (var_optionComponentName_21027, var_optionName_21081, var_getterName_21125  COMMA_SOURCE_FILE ("templateSyntax.galgas", 464)) ;
-    } break ;
-    default:
-      break ;
-    }
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__5D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 466)) ;
-  } break ;
-  default:
-    break ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i20_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__5B_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 403)) ;
-  switch (select_templateSyntax_7 (inCompiler)) {
-  case 1: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_template COMMA_SOURCE_FILE ("templateSyntax.galgas", 406)) ;
-    nt_expression_parse (inCompiler) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 409)) ;
-    nt_output_5F_expression_5F_list_parse (inCompiler) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__5D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 417)) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__40_type COMMA_SOURCE_FILE ("templateSyntax.galgas", 419)) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 420)) ;
-    nt_output_5F_expression_5F_list_parse (inCompiler) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__5D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 427)) ;
-  } break ;
-  case 3: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_filewrapper COMMA_SOURCE_FILE ("templateSyntax.galgas", 429)) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 430)) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 431)) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 432)) ;
-    nt_output_5F_expression_5F_list_parse (inCompiler) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__5D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 435)) ;
-  } break ;
-  case 4: {
-    nt_expression_parse (inCompiler) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 441)) ;
-    nt_output_5F_expression_5F_list_parse (inCompiler) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__5D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 444)) ;
-  } break ;
-  case 5: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_option COMMA_SOURCE_FILE ("templateSyntax.galgas", 453)) ;
-    switch (select_templateSyntax_8 (inCompiler)) {
-    case 1: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 455)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 456)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 457)) ;
-    } break ;
-    case 2: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 460)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 461)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 462)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 463)) ;
-    } break ;
-    default:
-      break ;
-    }
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__5D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 466)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i21_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                               C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_lstring var_functionName_21844 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 478)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__28_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 479)) ;
-  GALGAS_templateExpressionListAST var_expressionList_21924 ;
-  nt_output_5F_expression_5F_list_ (var_expressionList_21924, inCompiler) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 481)) ;
-  outArgument_outExpression = GALGAS_templateFunctionCallAST::constructor_new (var_functionName_21844, var_expressionList_21924  COMMA_SOURCE_FILE ("templateSyntax.galgas", 482)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i21_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 478)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__28_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 479)) ;
-  nt_output_5F_expression_5F_list_parse (inCompiler) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 481)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i22_ (GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                               C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  nt_primary_ (outArgument_outExpression, inCompiler) ;
-  GALGAS_location var_endOfReceiverExpression_22256 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 489)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_is COMMA_SOURCE_FILE ("templateSyntax.galgas", 490)) ;
-  GALGAS_dynamicTypeComparisonKind var_kind_22318 ;
-  switch (select_templateSyntax_9 (inCompiler)) {
-  case 1: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3D__3D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 493)) ;
-    var_kind_22318 = GALGAS_dynamicTypeComparisonKind::constructor_equal (SOURCE_FILE ("templateSyntax.galgas", 494)) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3E__3D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 496)) ;
-    var_kind_22318 = GALGAS_dynamicTypeComparisonKind::constructor_inherited (SOURCE_FILE ("templateSyntax.galgas", 497)) ;
-  } break ;
-  case 3: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 499)) ;
-    var_kind_22318 = GALGAS_dynamicTypeComparisonKind::constructor_strictlyInherited (SOURCE_FILE ("templateSyntax.galgas", 500)) ;
-  } break ;
-  default:
-    break ;
-  }
-  GALGAS_lstring var_typeName_22472 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__40_type COMMA_SOURCE_FILE ("templateSyntax.galgas", 502)) ;
-  outArgument_outExpression = GALGAS_templateTestDynamicClassAST::constructor_new (outArgument_outExpression, var_endOfReceiverExpression_22256, var_kind_22318, var_typeName_22472  COMMA_SOURCE_FILE ("templateSyntax.galgas", 503)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_primary_i22_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  nt_primary_parse (inCompiler) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_is COMMA_SOURCE_FILE ("templateSyntax.galgas", 490)) ;
-  switch (select_templateSyntax_9 (inCompiler)) {
-  case 1: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3D__3D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 493)) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3E__3D_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 496)) ;
-  } break ;
-  case 3: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 499)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__40_type COMMA_SOURCE_FILE ("templateSyntax.galgas", 502)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_output_5F_expression_5F_list_i23_ (GALGAS_templateExpressionListAST & outArgument_outExpressionList,
-                                                                                    C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outExpressionList.drop () ; // Release 'out' argument
-  outArgument_outExpressionList = GALGAS_templateExpressionListAST::constructor_emptyList (SOURCE_FILE ("templateSyntax.galgas", 518)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_templateSyntax_10 (inCompiler)) {
-    case 2: {
-      GALGAS_lstring var_selector_23200 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__21_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 521)) ;
-      GALGAS_templateExpressionAST var_expression_23242 ;
-      nt_expression_ (var_expression_23242, inCompiler) ;
-      outArgument_outExpressionList.addAssign_operation (var_selector_23200, var_expression_23242, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 524))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 524)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_output_5F_expression_5F_list_i23_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_templateSyntax_10 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__21_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 521)) ;
-      nt_expression_parse (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i24_ (GALGAS_templateInstructionListAST & ioArgument_ioResultingInstructionList,
-                                                                               C_Lexique_galgasTemplateScanner * inCompiler) {
-  GALGAS_lstring var_selector_23828 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__21_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 535)) ;
-  enumGalgasBool test_0 = kBoolTrue ;
-  if (kBoolTrue == test_0) {
-    test_0 = GALGAS_bool (kIsNotEqual, var_selector_23828.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-    if (kBoolTrue == test_0) {
-      TC_Array <C_FixItDescription> fixItArray1 ;
-      appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string ("!")) ;
-      inCompiler->emitSemanticError (var_selector_23828.readProperty_location (), GALGAS_string ("the selector should be '!'"), fixItArray1  COMMA_SOURCE_FILE ("templateSyntax.galgas", 537)) ;
-    }
-  }
-  GALGAS_templateExpressionAST var_expression_23996 ;
-  nt_expression_ (var_expression_23996, inCompiler) ;
-  ioArgument_ioResultingInstructionList.addAssign_operation (GALGAS_templateInstructionExpressionAST::constructor_new (var_expression_23996, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 541))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 541))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 541)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i24_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__21_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 535)) ;
-  nt_expression_parse (inCompiler) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i25_ (GALGAS_templateInstructionListAST & ioArgument_ioResultingInstructionList,
-                                                                               C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3F__5E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 547)) ;
-  ioArgument_ioResultingInstructionList.addAssign_operation (GALGAS_templateInstructionGetColumnLocationAST::constructor_new (SOURCE_FILE ("templateSyntax.galgas", 548))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 548)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i25_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3F__5E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 547)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i26_ (GALGAS_templateInstructionListAST & ioArgument_ioResultingInstructionList,
-                                                                               C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__21__5E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 554)) ;
-  ioArgument_ioResultingInstructionList.addAssign_operation (GALGAS_templateInstructionGotoColumnLocationAST::constructor_new (SOURCE_FILE ("templateSyntax.galgas", 555))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 555)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i26_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__21__5E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 554)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i27_ (GALGAS_templateInstructionListAST & ioArgument_ioResultingInstructionList,
-                                                                               C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_block COMMA_SOURCE_FILE ("templateSyntax.galgas", 561)) ;
-  GALGAS_templateExpressionAST var_expression_24954 ;
-  nt_expression_ (var_expression_24954, inCompiler) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3A_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 564)) ;
-  GALGAS_templateInstructionListAST var_blockInstructionList_25036 = GALGAS_templateInstructionListAST::constructor_emptyList (SOURCE_FILE ("templateSyntax.galgas", 566)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    {
-    routine_enterTemplateString (var_blockInstructionList_25036, inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 568)) ;
-    }
-    switch (select_templateSyntax_11 (inCompiler)) {
-    case 2: {
-      nt_template_5F_instruction_ (var_blockInstructionList_25036, inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("templateSyntax.galgas", 573)) ;
-  ioArgument_ioResultingInstructionList.addAssign_operation (GALGAS_templateBlockInstructionAST::constructor_new (var_expression_24954, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 576)), var_blockInstructionList_25036  COMMA_SOURCE_FILE ("templateSyntax.galgas", 574))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 574)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i27_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_block COMMA_SOURCE_FILE ("templateSyntax.galgas", 561)) ;
-  nt_expression_parse (inCompiler) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3A_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 564)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_templateSyntax_11 (inCompiler)) {
-    case 2: {
-      nt_template_5F_instruction_parse (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("templateSyntax.galgas", 573)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i28_ (GALGAS_templateInstructionListAST & ioArgument_ioResultingInstructionList,
-                                                                               C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_if COMMA_SOURCE_FILE ("templateSyntax.galgas", 583)) ;
-  GALGAS_templateInstructionIfBranchListAST var_templateInstructionIfBranchList_25588 = GALGAS_templateInstructionIfBranchListAST::constructor_emptyList (SOURCE_FILE ("templateSyntax.galgas", 584)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    GALGAS_templateExpressionAST var_expression_25670 ;
-    nt_expression_ (var_expression_25670, inCompiler) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_then COMMA_SOURCE_FILE ("templateSyntax.galgas", 587)) ;
-    GALGAS_templateInstructionListAST var_instructionList_25733 = GALGAS_templateInstructionListAST::constructor_emptyList (SOURCE_FILE ("templateSyntax.galgas", 588)) ;
-    bool repeatFlag_1 = true ;
-    while (repeatFlag_1) {
-      {
-      routine_enterTemplateString (var_instructionList_25733, inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 590)) ;
-      }
-      switch (select_templateSyntax_13 (inCompiler)) {
-      case 2: {
-        nt_template_5F_instruction_ (var_instructionList_25733, inCompiler) ;
-      } break ;
-      default:
-        repeatFlag_1 = false ;
-        break ;
-      }
-    }
-    var_templateInstructionIfBranchList_25588.addAssign_operation (var_expression_25670, var_instructionList_25733  COMMA_SOURCE_FILE ("templateSyntax.galgas", 594)) ;
-    switch (select_templateSyntax_12 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_elsif COMMA_SOURCE_FILE ("templateSyntax.galgas", 596)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  GALGAS_templateInstructionListAST var_elseInstructionList_26018 = GALGAS_templateInstructionListAST::constructor_emptyList (SOURCE_FILE ("templateSyntax.galgas", 599)) ;
-  switch (select_templateSyntax_14 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_else COMMA_SOURCE_FILE ("templateSyntax.galgas", 602)) ;
-    bool repeatFlag_2 = true ;
-    while (repeatFlag_2) {
-      {
-      routine_enterTemplateString (var_elseInstructionList_26018, inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 604)) ;
-      }
-      switch (select_templateSyntax_15 (inCompiler)) {
-      case 2: {
-        nt_template_5F_instruction_ (var_elseInstructionList_26018, inCompiler) ;
-      } break ;
-      default:
-        repeatFlag_2 = false ;
-        break ;
-      }
-    }
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("templateSyntax.galgas", 610)) ;
-  ioArgument_ioResultingInstructionList.addAssign_operation (GALGAS_templateInstructionIfAST::constructor_new (var_templateInstructionIfBranchList_25588, var_elseInstructionList_26018  COMMA_SOURCE_FILE ("templateSyntax.galgas", 611))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 611)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i28_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_if COMMA_SOURCE_FILE ("templateSyntax.galgas", 583)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    nt_expression_parse (inCompiler) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_then COMMA_SOURCE_FILE ("templateSyntax.galgas", 587)) ;
-    bool repeatFlag_1 = true ;
-    while (repeatFlag_1) {
-      switch (select_templateSyntax_13 (inCompiler)) {
-      case 2: {
-        nt_template_5F_instruction_parse (inCompiler) ;
-      } break ;
-      default:
-        repeatFlag_1 = false ;
-        break ;
-      }
-    }
-    switch (select_templateSyntax_12 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_elsif COMMA_SOURCE_FILE ("templateSyntax.galgas", 596)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  switch (select_templateSyntax_14 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_else COMMA_SOURCE_FILE ("templateSyntax.galgas", 602)) ;
-    bool repeatFlag_2 = true ;
-    while (repeatFlag_2) {
-      switch (select_templateSyntax_15 (inCompiler)) {
-      case 2: {
-        nt_template_5F_instruction_parse (inCompiler) ;
-      } break ;
-      default:
-        repeatFlag_2 = false ;
-        break ;
-      }
-    }
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("templateSyntax.galgas", 610)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_template_5F_parser_5F_start_5F_symbol_i29_ (GALGAS_templateInstructionListAST & outArgument_outResultingInstructionList,
-                                                                                             C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outResultingInstructionList.drop () ; // Release 'out' argument
-  outArgument_outResultingInstructionList = GALGAS_templateInstructionListAST::constructor_emptyList (SOURCE_FILE ("templateSyntax.galgas", 619)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    {
-    routine_enterTemplateString (outArgument_outResultingInstructionList, inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 621)) ;
-    }
-    switch (select_templateSyntax_16 (inCompiler)) {
-    case 2: {
-      nt_template_5F_instruction_ (outArgument_outResultingInstructionList, inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_template_5F_parser_5F_start_5F_symbol_i29_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_templateSyntax_16 (inCompiler)) {
-    case 2: {
-      nt_template_5F_instruction_parse (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_element_i30_ (GALGAS_lstringlist & ioArgument_ioElementList,
-                                                                                     C_Lexique_galgasTemplateScanner * inCompiler) {
-  GALGAS_luint var_count_1584 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_uint_33__32_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 32)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2A_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 33)) ;
-  GALGAS_uint var_n_1602 = var_count_1584.readProperty_uint () ;
-  enumGalgasBool test_0 = kBoolTrue ;
-  if (kBoolTrue == test_0) {
-    test_0 = GALGAS_bool (kIsEqual, var_n_1602.objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-    if (kBoolTrue == test_0) {
-      TC_Array <C_FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (var_count_1584.readProperty_location (), GALGAS_string ("this value should be > 0"), fixItArray1  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 36)) ;
-    }
-  }
-  if (var_n_1602.isValid ()) {
-    uint32_t variant_1697 = var_n_1602.uintValue () ;
-    bool loop_1697 = true ;
-    while (loop_1697) {
-      loop_1697 = GALGAS_bool (kIsStrictSup, var_n_1602.objectCompare (GALGAS_uint ((uint32_t) 0U))).isValid () ;
-      if (loop_1697) {
-        loop_1697 = GALGAS_bool (kIsStrictSup, var_n_1602.objectCompare (GALGAS_uint ((uint32_t) 0U))).boolValue () ;
-      }
-      if (loop_1697 && (0 == variant_1697)) {
-        loop_1697 = false ;
-        inCompiler->loopRunTimeVariantError (SOURCE_FILE ("template-for-instruction.galgas", 38)) ;
-      }
-      if (loop_1697) {
-        variant_1697 -- ;
-        ioArgument_ioElementList.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("template-for-instruction.galgas", 39))  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 39)) ;
-        var_n_1602.decrement_operation (inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 40)) ;
-      }
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_element_i30_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_uint_33__32_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 32)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2A_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 33)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_element_i31_ (GALGAS_lstringlist & ioArgument_ioElementList,
-                                                                                     C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2A_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 47)) ;
-  ioArgument_ioElementList.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("template-for-instruction.galgas", 48))  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 48)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_element_i31_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2A_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 47)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_element_i32_ (GALGAS_lstringlist & ioArgument_ioElementList,
-                                                                                     C_Lexique_galgasTemplateScanner * inCompiler) {
-  GALGAS_lstring var_constantName_2240 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-for-instruction.galgas", 54)) ;
-  ioArgument_ioElementList.addAssign_operation (var_constantName_2240  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 55)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_element_i32_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-for-instruction.galgas", 54)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_enumerated_5F_object_i33_ (GALGAS_templateInstructionForEnumerationAST & outArgument_outEnumeratedObject,
-                                                                                                  GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                                                                  C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outEnumeratedObject.drop () ; // Release 'out' argument
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__28_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 62)) ;
-  GALGAS_location var_start_2613 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 63)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 64)) ;
-  GALGAS_location var_endLocation_2658 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 65)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_in COMMA_SOURCE_FILE ("template-for-instruction.galgas", 66)) ;
-  nt_expression_ (outArgument_outExpression, inCompiler) ;
-  GALGAS_string var_foreachPrefix_2746 ;
-  switch (select_templateSyntax_17 (inCompiler)) {
-  case 1: {
-    var_foreachPrefix_2746 = GALGAS_string::makeEmptyString () ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3A_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 72)) ;
-    GALGAS_lstring var_prefixString_2845 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-for-instruction.galgas", 73)) ;
-    var_foreachPrefix_2746 = var_prefixString_2845.readProperty_string () ;
-  } break ;
-  default:
-    break ;
-  }
-  outArgument_outEnumeratedObject = GALGAS_templateInstructionForEnumerationAST::constructor_implicit (var_foreachPrefix_2746, var_start_2613.getter_union (var_endLocation_2658, inCompiler COMMA_SOURCE_FILE ("template-for-instruction.galgas", 76))  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 76)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_enumerated_5F_object_i33_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__28_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 62)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 64)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_in COMMA_SOURCE_FILE ("template-for-instruction.galgas", 66)) ;
-  nt_expression_parse (inCompiler) ;
-  switch (select_templateSyntax_17 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3A_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 72)) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-for-instruction.galgas", 73)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_enumerated_5F_object_i34_ (GALGAS_templateInstructionForEnumerationAST & outArgument_outEnumeratedObject,
-                                                                                                  GALGAS_templateExpressionAST & outArgument_outExpression,
-                                                                                                  C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outEnumeratedObject.drop () ; // Release 'out' argument
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_lstringlist var_enumeration_3339 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("template-for-instruction.galgas", 83)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__28_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 84)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    nt_for_5F_instruction_5F_element_ (var_enumeration_3339, inCompiler) ;
-    switch (select_templateSyntax_18 (inCompiler)) {
-    case 2: {
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  GALGAS_location var_endOfProperties_3464 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 89)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 90)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_in COMMA_SOURCE_FILE ("template-for-instruction.galgas", 91)) ;
-  nt_expression_ (outArgument_outExpression, inCompiler) ;
-  switch (select_templateSyntax_19 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3A_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 95)) ;
-    GALGAS_location var_startLocation_3582 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 96)) ;
-    GALGAS_lstring var_prefixString_3645 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-for-instruction.galgas", 97)) ;
-    TC_Array <C_FixItDescription> fixItArray1 ;
-    appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string::makeEmptyString ()) ;
-    inCompiler->emitSemanticError (var_prefixString_3645.readProperty_location ().getter_union (var_startLocation_3582, inCompiler COMMA_SOURCE_FILE ("template-for-instruction.galgas", 98)), GALGAS_string ("useless prefix"), fixItArray1  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 98)) ;
-  } break ;
-  default:
-    break ;
-  }
-  outArgument_outEnumeratedObject = GALGAS_templateInstructionForEnumerationAST::constructor_explicit (var_enumeration_3339, var_endOfProperties_3464  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 101)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_enumerated_5F_object_i34_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__28_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 84)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    nt_for_5F_instruction_5F_element_parse (inCompiler) ;
-    switch (select_templateSyntax_18 (inCompiler)) {
-    case 2: {
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 90)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_in COMMA_SOURCE_FILE ("template-for-instruction.galgas", 91)) ;
-  nt_expression_parse (inCompiler) ;
-  switch (select_templateSyntax_19 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3A_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 95)) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-for-instruction.galgas", 97)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i35_ (GALGAS_templateInstructionListAST & ioArgument_ioResultingInstructionList,
-                                                                               C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_for COMMA_SOURCE_FILE ("template-for-instruction.galgas", 107)) ;
-  GALGAS_bool var_ascending_4106 ;
-  switch (select_templateSyntax_20 (inCompiler)) {
-  case 1: {
-    var_ascending_4106 = GALGAS_bool (true) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3C_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 112)) ;
-    var_ascending_4106 = GALGAS_bool (true) ;
-  } break ;
-  case 3: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3E_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 115)) ;
-    var_ascending_4106 = GALGAS_bool (false) ;
-  } break ;
-  default:
-    break ;
-  }
-  GALGAS_templateInstructionForEnumerationAST var_enumeratedProperties_4295 ;
-  GALGAS_templateExpressionAST var_expression_4311 ;
-  nt_for_5F_instruction_5F_enumerated_5F_object_ (var_enumeratedProperties_4295, var_expression_4311, inCompiler) ;
-  GALGAS_templateInstructionListAST var_beforeInstructionList_4389 = GALGAS_templateInstructionListAST::constructor_emptyList (SOURCE_FILE ("template-for-instruction.galgas", 120)) ;
-  switch (select_templateSyntax_21 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_before COMMA_SOURCE_FILE ("template-for-instruction.galgas", 123)) ;
-    bool repeatFlag_0 = true ;
-    while (repeatFlag_0) {
-      {
-      routine_enterTemplateString (var_beforeInstructionList_4389, inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 125)) ;
-      }
-      switch (select_templateSyntax_22 (inCompiler)) {
-      case 2: {
-        nt_template_5F_instruction_ (var_beforeInstructionList_4389, inCompiler) ;
-      } break ;
-      default:
-        repeatFlag_0 = false ;
-        break ;
-      }
-    }
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_do COMMA_SOURCE_FILE ("template-for-instruction.galgas", 131)) ;
-  GALGAS_lstring var_indexIdentifier_4637 ;
-  switch (select_templateSyntax_23 (inCompiler)) {
-  case 1: {
-    var_indexIdentifier_4637 = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 134))  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 134)) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_index COMMA_SOURCE_FILE ("template-for-instruction.galgas", 136)) ;
-    var_indexIdentifier_4637 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-for-instruction.galgas", 137)) ;
-  } break ;
-  default:
-    break ;
-  }
-  GALGAS_templateInstructionListAST var_doInstructionList_4827 = GALGAS_templateInstructionListAST::constructor_emptyList (SOURCE_FILE ("template-for-instruction.galgas", 139)) ;
-  bool repeatFlag_1 = true ;
-  while (repeatFlag_1) {
-    {
-    routine_enterTemplateString (var_doInstructionList_4827, inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 141)) ;
-    }
-    switch (select_templateSyntax_24 (inCompiler)) {
-    case 2: {
-      nt_template_5F_instruction_ (var_doInstructionList_4827, inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_1 = false ;
-      break ;
-    }
-  }
-  GALGAS_templateInstructionListAST var_betweenInstructionList_5038 = GALGAS_templateInstructionListAST::constructor_emptyList (SOURCE_FILE ("template-for-instruction.galgas", 146)) ;
-  switch (select_templateSyntax_25 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_between COMMA_SOURCE_FILE ("template-for-instruction.galgas", 149)) ;
-    bool repeatFlag_2 = true ;
-    while (repeatFlag_2) {
-      {
-      routine_enterTemplateString (var_betweenInstructionList_5038, inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 151)) ;
-      }
-      switch (select_templateSyntax_26 (inCompiler)) {
-      case 2: {
-        nt_template_5F_instruction_ (var_betweenInstructionList_5038, inCompiler) ;
-      } break ;
-      default:
-        repeatFlag_2 = false ;
-        break ;
-      }
-    }
-  } break ;
-  default:
-    break ;
-  }
-  GALGAS_templateInstructionListAST var_afterInstructionList_5307 = GALGAS_templateInstructionListAST::constructor_emptyList (SOURCE_FILE ("template-for-instruction.galgas", 157)) ;
-  switch (select_templateSyntax_27 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_after COMMA_SOURCE_FILE ("template-for-instruction.galgas", 160)) ;
-    bool repeatFlag_3 = true ;
-    while (repeatFlag_3) {
-      {
-      routine_enterTemplateString (var_afterInstructionList_5307, inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 162)) ;
-      }
-      switch (select_templateSyntax_28 (inCompiler)) {
-      case 2: {
-        nt_template_5F_instruction_ (var_beforeInstructionList_4389, inCompiler) ;
-      } break ;
-      default:
-        repeatFlag_3 = false ;
-        break ;
-      }
-    }
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("template-for-instruction.galgas", 168)) ;
-  ioArgument_ioResultingInstructionList.addAssign_operation (GALGAS_templateInstructionForeachAST::constructor_new (var_ascending_4106, var_expression_4311, var_enumeratedProperties_4295, var_beforeInstructionList_4389, var_doInstructionList_4827, var_indexIdentifier_4637, var_betweenInstructionList_5038, var_afterInstructionList_5307  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 169))  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 169)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i35_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_for COMMA_SOURCE_FILE ("template-for-instruction.galgas", 107)) ;
-  switch (select_templateSyntax_20 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3C_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 112)) ;
-  } break ;
-  case 3: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3E_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 115)) ;
-  } break ;
-  default:
-    break ;
-  }
-  nt_for_5F_instruction_5F_enumerated_5F_object_parse (inCompiler) ;
-  switch (select_templateSyntax_21 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_before COMMA_SOURCE_FILE ("template-for-instruction.galgas", 123)) ;
-    bool repeatFlag_0 = true ;
-    while (repeatFlag_0) {
-      switch (select_templateSyntax_22 (inCompiler)) {
-      case 2: {
-        nt_template_5F_instruction_parse (inCompiler) ;
-      } break ;
-      default:
-        repeatFlag_0 = false ;
-        break ;
-      }
-    }
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_do COMMA_SOURCE_FILE ("template-for-instruction.galgas", 131)) ;
-  switch (select_templateSyntax_23 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_index COMMA_SOURCE_FILE ("template-for-instruction.galgas", 136)) ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-for-instruction.galgas", 137)) ;
-  } break ;
-  default:
-    break ;
-  }
-  bool repeatFlag_1 = true ;
-  while (repeatFlag_1) {
-    switch (select_templateSyntax_24 (inCompiler)) {
-    case 2: {
-      nt_template_5F_instruction_parse (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_1 = false ;
-      break ;
-    }
-  }
-  switch (select_templateSyntax_25 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_between COMMA_SOURCE_FILE ("template-for-instruction.galgas", 149)) ;
-    bool repeatFlag_2 = true ;
-    while (repeatFlag_2) {
-      switch (select_templateSyntax_26 (inCompiler)) {
-      case 2: {
-        nt_template_5F_instruction_parse (inCompiler) ;
-      } break ;
-      default:
-        repeatFlag_2 = false ;
-        break ;
-      }
-    }
-  } break ;
-  default:
-    break ;
-  }
-  switch (select_templateSyntax_27 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_after COMMA_SOURCE_FILE ("template-for-instruction.galgas", 160)) ;
-    bool repeatFlag_3 = true ;
-    while (repeatFlag_3) {
-      switch (select_templateSyntax_28 (inCompiler)) {
-      case 2: {
-        nt_template_5F_instruction_parse (inCompiler) ;
-      } break ;
-      default:
-        repeatFlag_3 = false ;
-        break ;
-      }
-    }
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("template-for-instruction.galgas", 168)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i36_ (GALGAS_templateInstructionListAST & ioArgument_ioResultingInstructionList,
-                                                                               C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_switch COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 29)) ;
-  GALGAS_templateExpressionAST var_switchExpression_1470 ;
-  nt_expression_ (var_switchExpression_1470, inCompiler) ;
-  GALGAS_location var_endOfSwitchExpression_1510 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 32)) ;
-  GALGAS_templateInstructionSwitchBranchListAST var_templateInstructionSwitchBranchList_1632 = GALGAS_templateInstructionSwitchBranchListAST::constructor_emptyList (SOURCE_FILE ("template-switch-instruction.galgas", 34)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_templateSyntax_29 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_case COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 37)) ;
-      GALGAS_lstringlist var_constantNameList_1734 ;
-      GALGAS_switchExtractedValuesListAST var_associatedValuesExtraction_1804 ;
-      nt_switch_5F_case_ (var_constantNameList_1734, var_associatedValuesExtraction_1804, inCompiler) ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3A_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 41)) ;
-      GALGAS_templateInstructionListAST var_instructionList_1868 = GALGAS_templateInstructionListAST::constructor_emptyList (SOURCE_FILE ("template-switch-instruction.galgas", 42)) ;
-      bool repeatFlag_1 = true ;
-      while (repeatFlag_1) {
-        {
-        routine_enterTemplateString (var_instructionList_1868, inCompiler  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 44)) ;
-        }
-        switch (select_templateSyntax_30 (inCompiler)) {
-        case 2: {
-          nt_template_5F_instruction_ (var_instructionList_1868, inCompiler) ;
-        } break ;
-        default:
-          repeatFlag_1 = false ;
-          break ;
-        }
-      }
-      var_templateInstructionSwitchBranchList_1632.addAssign_operation (var_constantNameList_1734, var_associatedValuesExtraction_1804, var_instructionList_1868, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 48))  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 48)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 50)) ;
-  ioArgument_ioResultingInstructionList.addAssign_operation (GALGAS_templateInstructionSwitchAST::constructor_new (var_switchExpression_1470, var_endOfSwitchExpression_1510, var_templateInstructionSwitchBranchList_1632  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 52))  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 52)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i36_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_switch COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 29)) ;
-  nt_expression_parse (inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_templateSyntax_29 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_case COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 37)) ;
-      nt_switch_5F_case_parse (inCompiler) ;
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3A_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 41)) ;
-      bool repeatFlag_1 = true ;
-      while (repeatFlag_1) {
-        switch (select_templateSyntax_30 (inCompiler)) {
-        case 2: {
-          nt_template_5F_instruction_parse (inCompiler) ;
-        } break ;
-        default:
-          repeatFlag_1 = false ;
-          break ;
-        }
-      }
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 50)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i37_ (GALGAS_lstringlist & outArgument_outConstantNameList,
-                                                                      GALGAS_switchExtractedValuesListAST & outArgument_outAssociatedValuesExtraction,
-                                                                      C_Lexique_galgasTemplateScanner * inCompiler) {
-  outArgument_outConstantNameList.drop () ; // Release 'out' argument
-  outArgument_outAssociatedValuesExtraction.drop () ; // Release 'out' argument
-  outArgument_outConstantNameList = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("template-switch-instruction.galgas", 65)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    GALGAS_lstring var_constantName_2659 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 67)) ;
-    outArgument_outConstantNameList.addAssign_operation (var_constantName_2659  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 68)) ;
-    switch (select_templateSyntax_31 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2C_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 70)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  outArgument_outAssociatedValuesExtraction = GALGAS_switchExtractedValuesListAST::constructor_emptyList (SOURCE_FILE ("template-switch-instruction.galgas", 72)) ;
-  switch (select_templateSyntax_32 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__28_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 75)) ;
-    bool repeatFlag_1 = true ;
-    while (repeatFlag_1) {
-      switch (select_templateSyntax_34 (inCompiler)) {
-      case 1: {
-        GALGAS_luint var_n_2851 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
-        inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_uint_33__32_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 78)) ;
-        inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2A_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 79)) ;
-        cEnumerator_range enumerator_2897 (GALGAS_range (GALGAS_uint ((uint32_t) 0U), var_n_2851.readProperty_uint ().substract_operation (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 80))), kENUMERATION_UP) ;
-        while (enumerator_2897.hasCurrentObject ()) {
-          outArgument_outAssociatedValuesExtraction.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("template-switch-instruction.galgas", 81)), GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("template-switch-instruction.galgas", 81)), GALGAS_bool (false)  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 81)) ;
-          enumerator_2897.gotoNextObject () ;
-        }
-      } break ;
-      case 2: {
-        inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2A_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 84)) ;
-        outArgument_outAssociatedValuesExtraction.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("template-switch-instruction.galgas", 85)), GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("template-switch-instruction.galgas", 85)), GALGAS_bool (false)  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 85)) ;
-      } break ;
-      case 3: {
-        GALGAS_lstring var_typeName_3142 ;
-        switch (select_templateSyntax_35 (inCompiler)) {
-        case 1: {
-          var_typeName_3142 = inCompiler->synthetizedAttribute_tokenString () ;
-          inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__40_type COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 89)) ;
-        } break ;
-        case 2: {
-          var_typeName_3142 = GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("template-switch-instruction.galgas", 91)) ;
-        } break ;
-        default:
-          break ;
-        }
-        GALGAS_bool var_constantMarkedAsUnused_3295 ;
-        switch (select_templateSyntax_36 (inCompiler)) {
-        case 1: {
-          var_constantMarkedAsUnused_3295 = GALGAS_bool (false) ;
-        } break ;
-        case 2: {
-          inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_unused COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 97)) ;
-          var_constantMarkedAsUnused_3295 = GALGAS_bool (true) ;
-        } break ;
-        default:
-          break ;
-        }
-        GALGAS_lstring var_constantName_3495 = inCompiler->synthetizedAttribute_tokenString () ;
-        inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 100)) ;
-        outArgument_outAssociatedValuesExtraction.addAssign_operation (var_typeName_3142, var_constantName_3495, var_constantMarkedAsUnused_3295  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 101)) ;
-      } break ;
-      default:
-        break ;
-      }
-      switch (select_templateSyntax_33 (inCompiler)) {
-      case 2: {
-      } break ;
-      default:
-        repeatFlag_1 = false ;
-        break ;
-      }
-    }
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 105)) ;
-  } break ;
-  default:
-    break ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i37_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 67)) ;
-    switch (select_templateSyntax_31 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2C_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 70)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  switch (select_templateSyntax_32 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__28_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 75)) ;
-    bool repeatFlag_1 = true ;
-    while (repeatFlag_1) {
-      switch (select_templateSyntax_34 (inCompiler)) {
-      case 1: {
-        inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_uint_33__32_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 78)) ;
-        inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2A_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 79)) ;
-      } break ;
-      case 2: {
-        inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2A_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 84)) ;
-      } break ;
-      case 3: {
-        switch (select_templateSyntax_35 (inCompiler)) {
-        case 1: {
-          inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__40_type COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 89)) ;
-        } break ;
-        case 2: {
-        } break ;
-        default:
-          break ;
-        }
-        switch (select_templateSyntax_36 (inCompiler)) {
-        case 1: {
-        } break ;
-        case 2: {
-          inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_unused COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 97)) ;
-        } break ;
-        default:
-          break ;
-        }
-        inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 100)) ;
-      } break ;
-      default:
-        break ;
-      }
-      switch (select_templateSyntax_33 (inCompiler)) {
-      case 2: {
-      } break ;
-      default:
-        repeatFlag_1 = false ;
-        break ;
-      }
-    }
-    inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 105)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->resetTemplateString () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-// @templateInstructionForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
-
-
-
-typeComparisonResult GALGAS_templateInstructionForGeneration::objectCompare (const GALGAS_templateInstructionForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionForGeneration::GALGAS_templateInstructionForGeneration (void) :
-AC_GALGAS_reference_class () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionForGeneration::GALGAS_templateInstructionForGeneration (const cPtr_templateInstructionForGeneration * inSourcePtr) :
-AC_GALGAS_reference_class (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionForGeneration) ;
-}
-//----------------------------------------------------------------------------------------------------------------------
-//Pointer class for @templateInstructionForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
-
-cPtr_templateInstructionForGeneration::cPtr_templateInstructionForGeneration (LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@templateInstructionForGeneration type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionForGeneration ("templateInstructionForGeneration",
-                                                         NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_templateInstructionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionForGeneration ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_templateInstructionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_templateInstructionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionForGeneration GALGAS_templateInstructionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                C_Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_templateInstructionForGeneration result ;
-  const GALGAS_templateInstructionForGeneration * p = (const GALGAS_templateInstructionForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_templateInstructionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("templateInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_templateInstructionForGeneration_2D_weak::objectCompare (const GALGAS_templateInstructionForGeneration_2D_weak & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
-    const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionForGeneration_2D_weak::GALGAS_templateInstructionForGeneration_2D_weak (void) :
-AC_GALGAS_weak_reference () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionForGeneration_2D_weak & GALGAS_templateInstructionForGeneration_2D_weak::operator = (const GALGAS_templateInstructionForGeneration & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
-  acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
-  if (p != NULL) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mObjectPtr, proxyPtr) ;
-  return *this ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionForGeneration_2D_weak::GALGAS_templateInstructionForGeneration_2D_weak (const GALGAS_templateInstructionForGeneration & inSource) :
-AC_GALGAS_weak_reference (inSource) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionForGeneration_2D_weak GALGAS_templateInstructionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
-  GALGAS_templateInstructionForGeneration_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionForGeneration GALGAS_templateInstructionForGeneration_2D_weak::bang_templateInstructionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GALGAS_templateInstructionForGeneration result ;
-  if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
-    if (strongPtr == NULL) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_templateInstructionForGeneration) ;
-      result = GALGAS_templateInstructionForGeneration ((cPtr_templateInstructionForGeneration *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@templateInstructionForGeneration-weak type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionForGeneration_2D_weak ("templateInstructionForGeneration-weak",
-                                                                 NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_templateInstructionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2D_weak ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_templateInstructionForGeneration_2D_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_templateInstructionForGeneration_2D_weak (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionForGeneration_2D_weak GALGAS_templateInstructionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                C_Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_templateInstructionForGeneration_2D_weak result ;
-  const GALGAS_templateInstructionForGeneration_2D_weak * p = (const GALGAS_templateInstructionForGeneration_2D_weak *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_templateInstructionForGeneration_2D_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("templateInstructionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

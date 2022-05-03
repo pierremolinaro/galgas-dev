@@ -164,10 +164,8 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
 
-  rule <switch_case>
-    !@lstringlist outConstantNameList
-    !@switchExtractedValuesListAST outAssociatedValuesExtraction
-  {
+  rule <switch_case> !@lstringlist outConstantNameList
+                     !@switchExtractedValuesListAST outAssociatedValuesExtraction {
     outConstantNameList = {}
     repeat
       $identifier$ ?let @lstring constantName
@@ -263,6 +261,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap openOverrideForSelectBlock]
   var @switchBranchesForGeneration switchBranchesForGeneration = {}
   for (mSwitchConstantList mAssociatedValuesExtraction mInstructions mEndOfBranch) in self.mBranches do
+    [!?ioVariableMap openBranch]
     var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = {}
     var @bool firstConstant = true
     for (mValue) in mSwitchConstantList do
@@ -309,17 +308,18 @@ override method @switchInstructionAST analyzeSemanticInstruction
       end
       firstConstant = false
     end
-    analyzeSemanticInstructionList (
+    analyzeSemanticInstructionListWithoutBranch (
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !@localConstantList {}
       !@localInitializedVariableList {}
       !mInstructions
-      !mEndOfBranch
+#      !mEndOfBranch
       !?ioVariableMap
       ?let @semanticInstructionListForGeneration instructionList
     )
+    [!?ioVariableMap closeBranch !mEndOfBranch]
     switchBranchesForGeneration += !mSwitchConstantList !extractedAssociatedValuesForGeneration ![mEndOfBranch locationIndex] !instructionList
   end
   [!?ioVariableMap closeOverride !self.mEndOf_switch_instruction]

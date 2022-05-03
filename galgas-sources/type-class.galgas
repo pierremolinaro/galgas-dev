@@ -61,7 +61,7 @@ syntax extension galgas3DeclarationsSyntax {
     var classFeatureList =@lstringlist {}
     repeat
     while
-      $%attribute$ ?var  @lstring classFeatureName
+      $%attribute$ ?let @lstring classFeatureName
       classFeatureList += !classFeatureName
     end
     ${$
@@ -148,7 +148,7 @@ syntax extension galgas4DeclarationsSyntax {
     var classFeatureList = @lstringlist {}
     repeat
     while
-      $%attribute$ ?var  @lstring classFeatureName
+      $%attribute$ ?let @lstring classFeatureName
       classFeatureList += !classFeatureName
     end
     ${$
@@ -252,21 +252,17 @@ override method @classDeclarationAST enterInSemanticContext
     end
   else
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mSuperClassName ?superClassIndex]
-    var @typeKindEnum typeKindEnum
-    var @getterMap inheritedGetterMap
-    var @setterMap inheritedSetterMap
-    var @instanceMethodMap inheritedMethodMap
     [ioSemanticContext.mTypeMap searchKey
       !self.mSuperClassName
       ?3*
-      ?typeKindEnum
+      ?let typeKindEnum
       ?*
       ?inheritedTypedPropertyList
       ?attributeMap
       ?2*
-      ?inheritedGetterMap
-      ?inheritedSetterMap
-      ?inheritedMethodMap
+      ?let inheritedGetterMap
+      ?let inheritedSetterMap
+      ?let inheritedMethodMap
       ?9*
       ?generateHeaderInSeparateFile
       ?4*

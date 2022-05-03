@@ -2,15 +2,15 @@
 #                                           
 #  Template Abstract Syntax Tree types      
 #                                           
-#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
-#  License as published by the Free Software Foundation.                                                               *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
 #                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -52,7 +52,7 @@ refclass @templateConstructorAST : @templateExpressionAST {
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   F I L E W R A P P E R    T E M P L A T E     C A L L                                                               *
+#   F I L E W R A P P E R    T E M P L A T E     C A L L
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateFileWrapperTemplateCallAST : @templateExpressionAST {
@@ -62,7 +62,7 @@ refclass @templateFileWrapperTemplateCallAST : @templateExpressionAST {
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   E X T E N S I O N    T E M P L A T E     C A L L                                                                     *
+#   E X T E N S I O N    T E M P L A T E     C A L L      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateExtensionTemplateCallAST : @templateExpressionAST {
@@ -219,7 +219,7 @@ refclass @templateAddOperationAST : @templateExpressionAST {
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   S U B S T R A C T I O N    O P E R A T I O N                                                                       *
+#   S U B S T R A C T I O N    O P E R A T I O N 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateSubOperationAST : @templateExpressionAST {
@@ -229,7 +229,7 @@ refclass @templateSubOperationAST : @templateExpressionAST {
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   M U L T I P L I C A T I O N    O P E R A T I O N                                                                   *
+#   M U L T I P L I C A T I O N    O P E R A T I O N    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateMultiplyOperationAST : @templateExpressionAST {

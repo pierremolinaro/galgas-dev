@@ -2,15 +2,15 @@
 #                                           
 #  Variable Manager.                        
 #                                           
-#  Copyright (C) 2010, ..., 2021 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2010, ..., 2022 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
-#  License as published by the Free Software Foundation.                                                               *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
 #                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -21,9 +21,15 @@ setter @localVarManager insertUsedLocalConstant
               ?let @lstring inVarName 
               ?let @unifiedTypeMap-entry inType
               ?let @string inCppName
-              ?let @string inNameForCheckingFormalParameterUsing
-{
-  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.constant !.modified]
+              ?let @string inNameForCheckingFormalParameterUsing {
+  [!?self.mCurrentManager insertKey
+    !inVarName
+    !inType
+    !inCppName
+    !inNameForCheckingFormalParameterUsing
+    !.constant
+    !.modified
+  ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -34,7 +40,14 @@ setter @localVarManager insertLocalConstant
               ?let @string inCppName
               ?let @string inNameForCheckingFormalParameterUsing
 {
-  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.constant !.initialized]
+  [!?self.mCurrentManager insertKey
+    !inVarName
+    !inType
+    !inCppName
+    !inNameForCheckingFormalParameterUsing
+    !.constant
+    !.initialized
+  ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -45,18 +58,30 @@ setter @localVarManager insertUndefinedLocalConstant
               ?let @string inCppName
               ?let @string inNameForCheckingFormalParameterUsing
 {
-  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.constant !.unvaluated {!usedInSubscope: false}]
+  [!?self.mCurrentManager insertKey
+    !inVarName
+    !inType
+    !inCppName
+    !inNameForCheckingFormalParameterUsing
+    !.constant
+    !.unvaluated {!usedInSubscope: false}
+  ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager insertDefinedLocalVariable
-              ?let @lstring inVarName 
-              ?let @unifiedTypeMap-entry inType
-              ?let @string inCppName
-              ?let @string inNameForCheckingFormalParameterUsing
-{
-  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.constant !.unvaluated {!usedInSubscope: false}]
+setter @localVarManager insertDefinedLocalVariable ?let @lstring inVarName 
+                                                   ?let @unifiedTypeMap-entry inType
+                                                   ?let @string inCppName
+                                                   ?let @string inNameForCheckingFormalParameterUsing {
+  [!?self.mCurrentManager insertKey
+    !inVarName
+    !inType
+    !inCppName
+    !inNameForCheckingFormalParameterUsing
+    !.none
+    !.initialized
+  ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -67,7 +92,14 @@ setter @localVarManager insertUndefinedLocalVariable
               ?let @string inCppName
               ?let @string inNameForCheckingFormalParameterUsing
 {
-  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.none !.initialized]
+  [!?self.mCurrentManager insertKey
+    !inVarName
+    !inType
+    !inCppName
+    !inNameForCheckingFormalParameterUsing
+    !.none
+    !.unvaluated {!usedInSubscope: false}
+  ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -78,18 +110,30 @@ setter @localVarManager insertInputFormalArgumentDeclaredAsUnused
               ?let @string inCppName
               ?let @string inNameForCheckingFormalParameterUsing
 {
-  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.none !.initialized]
+  [!?self.mCurrentManager insertKey
+    !inVarName
+    !inType
+    !inCppName
+    !inNameForCheckingFormalParameterUsing
+    !.none
+    !.initialized
+  ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager insertInputFormalArgument
-              ?let @lstring inVarName 
-              ?let @unifiedTypeMap-entry inType
-              ?let @string inCppName
-              ?let @string inNameForCheckingFormalParameterUsing
-{
-  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.none !.initialized]
+setter @localVarManager insertInputFormalArgument ?let @lstring inVarName 
+                                                  ?let @unifiedTypeMap-entry inType
+                                                  ?let @string inCppName
+                                                  ?let @string inNameForCheckingFormalParameterUsing {
+  [!?self.mCurrentManager insertKey
+    !inVarName
+    !inType
+    !inCppName
+    !inNameForCheckingFormalParameterUsing
+    !.none
+    !.initialized
+  ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -98,9 +142,15 @@ setter @localVarManager insertOutputFormalArgument
               ?let @lstring inVarName 
               ?let @unifiedTypeMap-entry inType
               ?let @string inCppName
-              ?let @string inNameForCheckingFormalParameterUsing
-{
-  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.shouldBeInitialized !.unvaluated {!usedInSubscope: false}]
+              ?let @string inNameForCheckingFormalParameterUsing {
+  [!?self.mCurrentManager insertKey
+    !inVarName
+    !inType
+    !inCppName
+    !inNameForCheckingFormalParameterUsing
+    !.shouldBeInitialized | .noWarningOnNonMutation
+    !.unvaluated {!usedInSubscope: false}
+  ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -111,7 +161,14 @@ setter @localVarManager insertInputOutputFormalArgumentDeclaredAsUnused
               ?let @string inCppName
               ?let @string inNameForCheckingFormalParameterUsing
 {
-  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.none !.initialized]
+  [!?self.mCurrentManager insertKey
+    !inVarName
+    !inType
+    !inCppName
+    !inNameForCheckingFormalParameterUsing
+    !.noWarningOnNonMutation
+    !.initialized
+  ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -122,7 +179,14 @@ setter @localVarManager insertInputOutputFormalArgument
               ?let @string inCppName
               ?let @string inNameForCheckingFormalParameterUsing
 {
-  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.none !.initialized]
+  [!?self.mCurrentManager insertKey
+    !inVarName
+    !inType
+    !inCppName
+    !inNameForCheckingFormalParameterUsing
+    !.none
+    !.initialized
+  ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -133,7 +197,14 @@ setter @localVarManager insertConstantInputFormalArgumentDeclaredAsUnused
               ?let @string inCppName
               ?let @string inNameForCheckingFormalParameterUsing
 {
-  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.constant !.initialized]
+  [!?self.mCurrentManager insertKey
+    !inVarName
+    !inType
+    !inCppName
+    !inNameForCheckingFormalParameterUsing
+    !.constant
+    !.initialized
+  ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -144,7 +215,14 @@ setter @localVarManager insertConstantInputFormalArgument
               ?let @string inCppName
               ?let @string inNameForCheckingFormalParameterUsing
 {
-  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.constant !.initialized]
+  [!?self.mCurrentManager insertKey
+    !inVarName
+    !inType
+    !inCppName
+    !inNameForCheckingFormalParameterUsing
+    !.constant
+    !.initialized
+  ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -155,7 +233,14 @@ setter @localVarManager insertNonMutableProperty
               ?let @string inCppName
               ?let @string inNameForCheckingFormalParameterUsing
 {
-  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.constant !.initialized]
+  [!?self.mCurrentManager insertKey
+    !inVarName
+    !inType
+    !inCppName
+    !inNameForCheckingFormalParameterUsing
+    !.constant | .noWarningOnNonMutation
+    !.initialized
+  ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -166,7 +251,14 @@ setter @localVarManager insertMutableProperty
               ?let @string inCppName
               ?let @string inNameForCheckingFormalParameterUsing
 {
-  [!?self.mCurrentManager insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !.none !.initialized]
+  [!?self.mCurrentManager insertKey
+    !inVarName
+    !inType
+    !inCppName
+    !inNameForCheckingFormalParameterUsing
+    !.noWarningOnNonMutation
+    !.initialized
+  ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -230,20 +322,20 @@ map @scopeLocalVarMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @localVarMapListForLLVM {
-  @scopeLocalVarMap mMap
+  public var @scopeLocalVarMap mMap
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @localVarManager {
-  private @currentVarManager mCurrentManager
+  private var @currentVarManager mCurrentManager
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @currentVarManager {
-  private @scopeLocalVarMap mLocalVarMap
-  private @localVarMapListForLLVM mSubMaps
+  private var @scopeLocalVarMap mLocalVarMap
+  private var @localVarMapListForLLVM mSubMaps
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -262,12 +354,10 @@ getter @localVarValuation string -> @string {
 #! NEUTRAL ACCESS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager neutralAccess
-          ?let @lstring inVarName
-          !@unifiedTypeMap-entry outType
-          !@string outCppName
-          !@string outNameForCheckingFormalParameterUsing
-{
+setter @localVarManager neutralAccess ?let @lstring inVarName
+                                      !@unifiedTypeMap-entry outType
+                                      !@string outCppName
+                                      !@string outNameForCheckingFormalParameterUsing {
   [!?self.mCurrentManager neutralAccess !inVarName ?outType ?outCppName ? outNameForCheckingFormalParameterUsing]
 }
 
@@ -277,8 +367,7 @@ setter @currentVarManager neutralAccess
           ?let @lstring inVarName
           !@unifiedTypeMap-entry outType
           !@string outCppName
-          !@string outNameForCheckingFormalParameterUsing
-{
+          !@string outNameForCheckingFormalParameterUsing {
   if let [self.mLocalVarMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?2*] then
     outType = type
     outCppName = cppName
@@ -300,7 +389,7 @@ setter @localVarMapListForLLVM neutralAccess
   if inIndex >= [self length] then
     error inVarName : "Undefined variable" : outType, outCppName, outNameForCheckingFormalParameterUsing
   else
-    var localMap = [self mMapAtIndex !inIndex]
+    let localMap = [self mMapAtIndex !inIndex]
     if let [localMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?2*] then
       outType = type
       outCppName = cppName
@@ -345,12 +434,10 @@ setter @scopeLocalVarMap dropAccess ?let @lstring inVarName
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager searchForDropAccess
-          ?let @lstring inVarName
-          !@unifiedTypeMap-entry outType
-          !@string outCppName
-          !@string outNameForCheckingFormalParameterUsing
-{
+setter @localVarManager searchForDropAccess ?let @lstring inVarName
+                                            !@unifiedTypeMap-entry outType
+                                            !@string outCppName
+                                            !@string outNameForCheckingFormalParameterUsing {
   [!?self.mCurrentManager searchForDropAccess !inVarName ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
 }
 
@@ -682,13 +769,19 @@ setter @currentVarManager closeScope ?let @location inErrorLocation {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @currentVarManager insertKey ?let @lstring inVarName 
-                                  ?let @unifiedTypeMap-entry inType
-                                  ?let @string inCppName
-                                  ?let @string inNameForCheckingFormalParameterUsing
-                                  ?let @localVariableAttributes inAttributes
-                                  ?let @localVarValuation inState
-{
-  [!?self.mLocalVarMap insertKey !inVarName !inType !inCppName !inNameForCheckingFormalParameterUsing !inAttributes !inState]
+                                    ?let @unifiedTypeMap-entry inType
+                                    ?let @string inCppName
+                                    ?let @string inNameForCheckingFormalParameterUsing
+                                    ?let @localVariableAttributes inAttributes
+                                    ?let @localVarValuation inState {
+  [!?self.mLocalVarMap insertKey
+    !inVarName
+    !inType
+    !inCppName
+    !inNameForCheckingFormalParameterUsing
+    !inAttributes
+    !inState
+  ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -757,8 +850,8 @@ getter @currentVarManager string -> @string {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @localVarValuation combineValuationWith ?let @localVarValuation inOther 
-                                              !@localVarValuation outResult
-                                              ?!@string unused ioErrorMessage {
+                                               !@localVarValuation outResult
+                                               ?!@string unused ioErrorMessage {
   switch self
   case invalid :
     outResult = self

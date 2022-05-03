@@ -532,7 +532,7 @@ proc generateAllGuiComponentsGalgas3
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#         G E N E R A T I O N    T E M P L A T E S                                                                     *
+#         G E N E R A T I O N    T E M P L A T E S      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper guiGenerationTemplates in "+generation-templates/gui_generation" {

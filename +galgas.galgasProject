@@ -31,6 +31,9 @@ project (3:4:5) -> "galgas" {
 #--- JSON Parser
 #  "galgas-sources/json.galgas"
 
+#  "galgas-sources/variable-manager.galgas"
+  "galgas-sources/variable-manager-ex.galgas"
+
 #--- Command Line Options
   "galgas-sources/galgasCommandLineOptions.galgas"
 
@@ -115,8 +118,6 @@ project (3:4:5) -> "galgas" {
   "galgas-sources/semanticGeneration.galgas"
   "galgas-sources/predefinedTypes.galgas"
   "galgas-sources/useful-entities-computation.galgas"
-#  "galgas-sources/variable-manager.galgas"
-  "galgas-sources/variable-manager-ex.galgas"
 
 #--- Expressions
   "galgas-sources/expression-if.galgas"
@@ -208,7 +209,7 @@ project (3:4:5) -> "galgas" {
 #--- Project component
   "galgas-sources/projectGlobalCheckings.galgas"
   "galgas-sources/libpmHandling.galgas"
-#
+
 #--- GALGAS Project
   "galgas-sources/galgasScanner.galgas"
   "galgas-sources/galgasProjectSyntax.galgas"

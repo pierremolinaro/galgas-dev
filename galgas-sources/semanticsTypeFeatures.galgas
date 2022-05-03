@@ -1,21 +1,21 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  semantics definitions for semantics component                                                                       *
+#  semantics definitions for semantics component 
 #                                           
-#  Copyright (C) 1997, ..., 2015 Pierre Molinaro.                                                                      *
+#  Copyright (C) 1997, ..., 2015 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
-#  License as published by the Free Software Foundation.                                                               *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
 #                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  G E T    E N U M E R A T I O N    L I S T                                                                           *
+#  G E T    E N U M E R A T I O N    L I S T     
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -67,7 +67,7 @@ override method @stringsetPredefinedTypeAST getSetterMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  G E T    S U P P O R T E D    O P E R A T O R    F L A G S                                                          *
+#  G E T    S U P P O R T E D    O P E R A T O R    F L A G S                                                  
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

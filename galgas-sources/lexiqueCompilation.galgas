@@ -2,15 +2,15 @@
 #                                           
 #  'lexique' component metamodel            
 #                                           
-#  Copyright (C) 2007, ..., 2015 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2007, ..., 2015 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
-#  License as published by the Free Software Foundation.                                                               *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
 #                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -150,7 +150,7 @@ getter @lexicalTypeEnum cocoaReset -> @string {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                     checkLexicalDefaultAction                                                                        *
+#                     checkLexicalDefaultAction  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @lexicalSendDefaultActionAST checkLexicalDefaultAction
@@ -172,7 +172,7 @@ override method @lexicalErrorByDefaultAST checkLexicalDefaultAction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                       checkLexicalExpression                                                                         *
+#                       checkLexicalExpression   
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @lexicalExpressionAST checkLexicalExpression
@@ -224,7 +224,7 @@ override method @lexicalStringNotMatchAST checkLexicalExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                       checkLexicalFunctionCallArgument                                                               *
+#                       checkLexicalFunctionCallArgument
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalFunctionCallArgument
@@ -339,7 +339,7 @@ override method @lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgumen
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                       checkLexicalRoutineCallArgument                                                                *
+#                       checkLexicalRoutineCallArgument 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalRoutineCallArgument
@@ -454,7 +454,7 @@ override method @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                       checkLexicalRoutineCallArgument                                                                *
+#                       checkLexicalRoutineCallArgument 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument
@@ -506,7 +506,7 @@ override method @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                       checkLexicalInstruction                                                                        *
+#                       checkLexicalInstruction  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @lexicalInstructionAST checkLexicalInstruction
@@ -662,7 +662,7 @@ override method @lexicalWarningInstructionAST checkLexicalInstruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                         compileLexiqueComponent                                                                      *
+#                         compileLexiqueComponent
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @abstractLexicalRuleAST checkLexicalRule
@@ -687,7 +687,7 @@ override method @lexicalExplicitRuleAST checkLexicalRule
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#         G E N E R A T I O N    T E M P L A T E S                                                                     *
+#         G E N E R A T I O N    T E M P L A T E S      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique_generation" {

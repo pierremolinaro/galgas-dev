@@ -2,20 +2,20 @@
 #                                           
 #  Template semantics analysis              
 #                                           
-#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
-#  License as published by the Free Software Foundation.                                                               *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
 #                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 #  details.                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#   T E M P L A T E    A N A L Y S I S    C O N T E X T                                                                *
+#   T E M P L A T E    A N A L Y S I S    C O N T E X T 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -276,7 +276,7 @@ override method @templateConstructorAST templateExpressionAnalysis
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   F I L E W R A P P E R    T E M P L A T E     C A L L                                                               *
+#   F I L E W R A P P E R    T E M P L A T E     C A L L
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateFileWrapperTemplateCallAST templateExpressionAnalysis
@@ -869,7 +869,7 @@ override method @templateAddOperationAST templateExpressionAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   S U B S T R A C T I O N    O P E R A T I O N                                                                       *
+#   S U B S T R A C T I O N    O P E R A T I O N 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateSubOperationAST templateExpressionAnalysis
@@ -913,7 +913,7 @@ override method @templateSubOperationAST templateExpressionAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   M U L T I P L I C A T I O N    O P E R A T I O N                                                                   *
+#   M U L T I P L I C A T I O N    O P E R A T I O N    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateMultiplyOperationAST templateExpressionAnalysis
@@ -1078,7 +1078,7 @@ override method @templateUnaryMinusOperationAST templateExpressionAnalysis
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   S T R U C T    F I E L D    A C C E S S    O P E R A T I O N                                                       *
+#   S T R U C T    F I E L D    A C C E S S    O P E R A T I O N                                               
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @structFieldAccessTemplateExpressionAST templateExpressionAnalysis
