@@ -120,7 +120,7 @@ syntax galgas3GuiComponentSyntax (galgas3Scanner) {
   rule <gui_with_lexique_declaration> ?!@withLexiqueListAST ioWithLexiqueList {
     $with$
     $lexique$
-    $identifier$ ?var @lstring lexiqueReference
+    $identifier$ ?let @lstring lexiqueReference
     var @guiLabelListAST labels = {}
     var @guiSimpleAttributeListAST simpleAttributes = {}
     var @guiCompoundAttributeListAST compoundAttributes = {}
@@ -128,7 +128,7 @@ syntax galgas3GuiComponentSyntax (galgas3Scanner) {
     repeat
     while
       $label$
-      var @uint displayStyle
+      let @uint displayStyle
       select
         displayStyle = 0
       or
@@ -138,7 +138,7 @@ syntax galgas3GuiComponentSyntax (galgas3Scanner) {
       var @terminalLabelListAST terminalList = {}
       repeat
         $\$terminal\$$ ?let  @lstring terminal
-        var @uint displayFlags
+        let @uint displayFlags
         select
           displayFlags = 0 # Default
         or
@@ -164,20 +164,20 @@ syntax galgas3GuiComponentSyntax (galgas3Scanner) {
       end
       labels += !displayStyle !terminalList !@location.here
     while
-      $identifier$ ?var @lstring key
-      $"string"$ ?var @lstring name
+      $identifier$ ?let @lstring key
+      $"string"$ ?let @lstring name
       $:$
       var value =@lstring.new{!"" !@location.here}
       repeat
-        $"string"$ ?var @lstring v
+        $"string"$ ?let @lstring v
         value = @lstring.new {!value.string + v.string !v.location}
       while
       end
       compoundAttributes += !key !name !value
     while
-      $identifier$ ?var @lstring name
+      $identifier$ ?let @lstring name
       $:$
-      $"string"$ ?var @lstring value
+      $"string"$ ?let @lstring value
       simpleAttributes += !name !value
     end
     $}$
@@ -189,7 +189,7 @@ syntax galgas3GuiComponentSyntax (galgas3Scanner) {
   rule <gui_with_option_declaration> ?!@lstringlist ioImportedOptionList {
     $with$
     $option$
-    $identifier$ ?var @lstring optionReference
+    $identifier$ ?let @lstring optionReference
     ioImportedOptionList += !optionReference
   }
 
@@ -200,7 +200,7 @@ syntax galgas3GuiComponentSyntax (galgas3Scanner) {
     $:$
     var mValue = @lstring.new {!"" !.here}
     repeat
-      $"string"$ ?var @lstring value
+      $"string"$ ?let @lstring value
       mValue = @lstring.new {!mValue.string + value.string !value.location}
     while
     end
@@ -246,7 +246,7 @@ syntax galgas4GuiComponentSyntax (galgas3Scanner) {
   rule <gui_with_lexique_declaration> ?!@withLexiqueListAST ioWithLexiqueList {
     $with$
     $lexique$
-    $identifier$ ?var @lstring lexiqueReference
+    $identifier$ ?let @lstring lexiqueReference
     var @guiLabelListAST labels = {}
     var @guiSimpleAttributeListAST simpleAttributes = {}
     var @guiCompoundAttributeListAST compoundAttributes = {}
@@ -254,7 +254,7 @@ syntax galgas4GuiComponentSyntax (galgas3Scanner) {
     repeat
     while
       $label$
-      var @uint displayStyle
+      let @uint displayStyle
       select
         displayStyle = 0
       or
@@ -264,7 +264,7 @@ syntax galgas4GuiComponentSyntax (galgas3Scanner) {
       var @terminalLabelListAST terminalList = {}
       repeat
         $\$terminal\$$ ?let  @lstring terminal
-        var @uint displayFlags
+        let @uint displayFlags
         select
           displayFlags = 0 # Default
         or
@@ -290,20 +290,20 @@ syntax galgas4GuiComponentSyntax (galgas3Scanner) {
       end
       labels += !displayStyle !terminalList !@location.here
     while
-      $identifier$ ?var @lstring key
-      $"string"$ ?var @lstring name
+      $identifier$ ?let @lstring key
+      $"string"$ ?let @lstring name
       $:$
       var value =@lstring.new{!"" !@location.here}
       repeat
-        $"string"$ ?var @lstring v
+        $"string"$ ?let @lstring v
         value = @lstring.new {!value.string + v.string !v.location}
       while
       end
       compoundAttributes += !key !name !value
     while
-      $identifier$ ?var @lstring name
+      $identifier$ ?let @lstring name
       $:$
-      $"string"$ ?var @lstring value
+      $"string"$ ?let @lstring value
       simpleAttributes += !name !value
     end
     $}$
@@ -315,7 +315,7 @@ syntax galgas4GuiComponentSyntax (galgas3Scanner) {
   rule <gui_with_option_declaration> ?!@lstringlist ioImportedOptionList {
     $with$
     $option$
-    $identifier$ ?var @lstring optionReference
+    $identifier$ ?let @lstring optionReference
     ioImportedOptionList += !optionReference
   }
 
@@ -326,7 +326,7 @@ syntax galgas4GuiComponentSyntax (galgas3Scanner) {
     $:$
     var mValue = @lstring.new {!"" !.here}
     repeat
-      $"string"$ ?var @lstring value
+      $"string"$ ?let @lstring value
       mValue = @lstring.new {!mValue.string + value.string !value.location}
     while
     end
@@ -421,7 +421,7 @@ private proc guiComponentSemanticAnalysis
   #--- Check lexique
     [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
       !mLexiqueFileName
-      ?var @terminalMap terminalMap
+      ?let @terminalMap terminalMap
       ?2*
     ]
   #--- Build terminal symbol set

@@ -33,7 +33,7 @@ syntax extension galgas3InstructionsSyntax {
     if selector.string != "" then
       error selector : "an empty selector '!?' is required here"
     end
-    var @bool prefixedBySelf
+    let @bool prefixedBySelf
     select
       prefixedBySelf = false
     or
@@ -49,7 +49,7 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ?let structAttribute
       mReceiverStructAttributes += !structAttribute
     end
-    var @lstring typeNameForCasting
+    let @lstring typeNameForCasting
     select
       typeNameForCasting = ["" nowhere]
     or
@@ -107,7 +107,7 @@ syntax extension galgas4InstructionsSyntax {
     if selector.string != "" then
       error selector : "an empty selector '!?' is required here"
     end
-    var @bool prefixedBySelf
+    let @bool prefixedBySelf
     select
       prefixedBySelf = false
     or
@@ -123,7 +123,7 @@ syntax extension galgas4InstructionsSyntax {
       $identifier$ ?let structAttribute
       mReceiverStructAttributes += !structAttribute
     end
-    var @lstring typeNameForCasting
+    let @lstring typeNameForCasting
     select
       typeNameForCasting = ["" nowhere]
     or
@@ -195,15 +195,14 @@ override method @selfSetterCallInstructionAST enterInstructionInSemanticContext
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @setterCallInstructionAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
-{
+                        ?let @lstring inUsefulnessCallerEntityName
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                        ?let @analysisContext inAnalysisContext
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                        ?!@localVarManager ioVariableMap {
   var @unifiedTypeMap-entry receiverType
-  var @string targetVariableCppName
-  var @string nameForCheckingFormalParameterUsing
+  let @string targetVariableCppName
+  let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
     if let [inAnalysisContext.selfType available
         ?type: let selfType
@@ -225,23 +224,6 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
       : "'self' not available in this context"
       : receiverType, targetVariableCppName, nameForCheckingFormalParameterUsing
     end
-
-#    if [inAnalysisContext.nonMutableSelfType isNull] then
-#      error self.mReceiverName: "'self' cannot be used in this context"
-#      : receiverType, nameForCheckingFormalParameterUsing, targetVariableCppName
-#    elsif [inAnalysisContext.mutableSelfType isNull] then
-#      error self.mReceiverName: "'self' object is not mutable"
-#      : receiverType, nameForCheckingFormalParameterUsing, targetVariableCppName
-#    else
-#      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
-#      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?receiverType]
-#      if isConstant then
-#        error self.mReceiverName: "a constant property cannot be modified"
-#      end
-#      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
-#      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
-#        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
-#    end
   else
     [!?ioVariableMap searchForReadWriteAccess
        !self.mReceiverName
@@ -270,7 +252,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
     end
   end
 #--- Type cast ?
-  var @unifiedTypeMap-entry castType
+  let @unifiedTypeMap-entry castType
   if self.mTypeNameForCasting.string != "" then
     castType = .searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeNameForCasting}
     checkAssignmentTypes (!receiverType !castType !self.mTypeNameForCasting.location)
@@ -351,10 +333,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
       error self.mSetterName : "'self' not mutable in this context"
     end
   #--- Get setter signature
-    var @formalParameterSignature routineSignature
-    var @bool hasCompilerArgument
-    var @methodKind kind
-    [[selfType mSetterMap] searchKey !self.mSetterName ?kind ?routineSignature ?hasCompilerArgument ?* ?*]
+    [[selfType mSetterMap] searchKey !self.mSetterName ?let kind ?let routineSignature ?let hasCompilerArgument ?* ?*]
   #--- Check effective parameters
     analyzeRoutineArguments (
       !inUsefulnessCallerEntityName

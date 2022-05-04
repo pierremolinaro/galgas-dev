@@ -152,8 +152,8 @@ proc buildGalgasSemanticContext
     [semanticTypePrecedenceGraph topologicalSort
       ?outSortedSemanticDeclarationListAST
       ?*
-      ?var @semanticDeclarationListAST unsortedSemanticDeclarationListAST
-      ?var @lstringlist unsortedNodeKeyList
+      ?let @semanticDeclarationListAST unsortedSemanticDeclarationListAST
+      ?* # let @lstringlist unsortedNodeKeyList
     ]
     if [unsortedSemanticDeclarationListAST length] > 0 then
       var s = "semantic analysis not performed, " + [[unsortedSemanticDeclarationListAST length] string] + " declarations are involved in circular definition:"
@@ -386,7 +386,7 @@ private proc generateManyHeaders
     end
   end
 #-------------------------------------- all-declarations.h
-  var headerString = [filewrapper semanticFileGenerationTemplate.semanticFileHeader
+  let headerString = [filewrapper semanticFileGenerationTemplate.semanticFileHeader
     !"all-declarations"
     !headerInclusionList1 + headerInclusionList2
   ]

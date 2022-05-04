@@ -107,7 +107,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <search_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
     $search$
     $identifier$ ?let @lstring methodName
-    var @bool locationAttribute
+    let @bool locationAttribute
     select
       locationAttribute = false
     or
@@ -149,7 +149,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <map_insert_setter_declaration> ?!@insertMethodListAST ioMapMethodList {
     $insert$
     $identifier$ ?let @lstring mMethodName
-    var @lstring stateName
+    let @lstring stateName
     select
       stateName = @lstring.new {!"" !@location.here}
     or
@@ -159,7 +159,7 @@ syntax extension galgas3DeclarationsSyntax {
     $error$
     $message$
     $"string"$ ?let @lstring mErrorMessage
-    var @lstring mShadowErrorMessage
+    let @lstring mShadowErrorMessage
     select
       mShadowErrorMessage = @lstring.new {!"" !@location.here}
     or
@@ -233,7 +233,7 @@ syntax extension galgas4DeclarationsSyntax {
   rule <search_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
     $search$
     $identifier$ ?let @lstring methodName
-    var @bool locationAttribute
+    let @bool locationAttribute
     select
       locationAttribute = false
     or
@@ -275,7 +275,7 @@ syntax extension galgas4DeclarationsSyntax {
   rule <map_insert_setter_declaration> ?!@insertMethodListAST ioMapMethodList {
     $insert$
     $identifier$ ?let @lstring mMethodName
-    var @lstring stateName
+    let @lstring stateName
     select
       stateName = @lstring.new {!"" !@location.here}
     or
@@ -285,7 +285,7 @@ syntax extension galgas4DeclarationsSyntax {
     $error$
     $message$
     $"string"$ ?let @lstring mErrorMessage
-    var @lstring mShadowErrorMessage
+    let @lstring mShadowErrorMessage
     select
       mShadowErrorMessage = @lstring.new {!"" !@location.here}
     or

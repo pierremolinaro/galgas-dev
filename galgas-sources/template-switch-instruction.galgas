@@ -84,13 +84,13 @@ syntax extension templateSyntax {
           $*$
           outAssociatedValuesExtraction += !["" nowhere] !["" nowhere] !false
          or
-          var @lstring typeName
+          let @lstring typeName
           select
             $@type$ ?typeName
           or
             typeName = ["" nowhere]
           end
-          var @bool constantMarkedAsUnused
+          let @bool constantMarkedAsUnused
           select
             constantMarkedAsUnused = false
           or
@@ -121,12 +121,11 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
   ?!@templateInstructionListForGeneration ioInstructionList
 {
 #---
-  var @semanticExpressionForGeneration switchExpression
   [self.mSwitchExpression templateExpressionAnalysis 
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?switchExpression
+    ?let switchExpression
   ]
   if [switchExpression.mResultType mTypeKindEnum] != .enumType then
     error switchExpression.mLocation : "'switch' expression type should be an enumeration (it is a "

@@ -157,7 +157,6 @@ override method @repeatInstruction analyzeSyntaxInstruction
 #--- Begin block
   [!?ioVariableMap openOverrideForRepeatBlock]
 #--- Repeated instructions
-  var @semanticInstructionListForGeneration repeated_instructionList
   analyzeSyntaxInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -172,7 +171,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
     !inIndexNameSet
     !?ioVariableMap
     !?ioSelectMethodCount
-    ?repeated_instructionList
+    ?let repeated_instructionList
   )
 #--- 'while' blocks
   var @listOfSemanticInstructionListForGeneration listOfSemanticInstructionListForGeneration = {}

@@ -162,7 +162,7 @@ override method @structDeclarationAST enterInSemanticContext
     !acceptSetters: true
   )
 #--- Enumeration by "for" instruction
-  var @unifiedTypeMap-entry enumeratedType
+  let @unifiedTypeMap-entry enumeratedType
   if self.mEnumeratedElementTypeName == "" then
     enumeratedType = @unifiedTypeMap-entry.null
   else

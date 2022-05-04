@@ -68,12 +68,11 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 {
 #--- Expression analysis
-  var @semanticExpressionForGeneration receiverExpression
   [self.mReceiverExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?receiverExpression
+    ?let receiverExpression
   ]
   let @unifiedTypeMap-entry receiverType = receiverExpression.mResultType
   #--------------------------------------- Property ?
@@ -219,9 +218,9 @@ override method @templateConstructorAST templateExpressionAnalysis
 #--- Get constructor map from type map
   let @constructorMap constructorMap = [constructorType mConstructorMap]
 #--- Search contructor
-  var @unifiedTypeMap-entry returnedType
-  var @bool hasCompilerArgument
-  var @functionSignature constructorFormalArgumentTypeList
+  let @unifiedTypeMap-entry returnedType
+  let @bool hasCompilerArgument
+  let @functionSignature constructorFormalArgumentTypeList
   with self.mConstructorName.string in constructorMap  do
     constructorFormalArgumentTypeList = mArgumentTypeList
     hasCompilerArgument = mHasCompilerArgument
@@ -546,12 +545,11 @@ override method @templateNotOperatorAST templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 {
 #--- Expression analysis
-  var @semanticExpressionForGeneration expression
   [self.mExpression templateExpressionAnalysis 
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?expression
+    ?let expression
   ]
 #--- Check operator availability
   let @unifiedTypeMap-entry type = expression.mResultType
@@ -578,12 +576,11 @@ override method @templateLogicalNegateAST templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 {
 #--- Expression analysis
-  var @semanticExpressionForGeneration expression
   [self.mExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?expression
+    ?let expression
   ]
 #--- Check operator availability
   let @unifiedTypeMap-entry type = expression.mResultType
@@ -609,12 +606,11 @@ override method @templateTestDynamicClassAST templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 {
 #--- Receiver expression analysis
-  var @semanticExpressionForGeneration expression
   [self.mReceiverExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?expression
+    ?let expression
   ]
 #--- Get type information
    let castType = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
@@ -657,7 +653,7 @@ override method @templateOptionAccessAST templateExpressionAnalysis
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
   [inAnalysisContext.mSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
     !self.mOptionComponentName
-    ?var @bool optionComponentIsPredefined
+    ?let @bool optionComponentIsPredefined
     ?let @commandLineOptionMap boolOptionMap
     ?let @commandLineOptionMap uintOptionMap
     ?let @commandLineOptionMap stringOptionMap
@@ -814,9 +810,7 @@ override method @templateVarInExpressionAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression
 {
-  var @unifiedTypeMap-entry type
-  var @string sourceVariableCppName
-  [inAnalysisContext.mTemplateVariableMap searchKey !self.mVarName ?type ?sourceVariableCppName]
+  [inAnalysisContext.mTemplateVariableMap searchKey !self.mVarName ?let type ?let sourceVariableCppName]
   outExpression = @varInExpressionForGeneration.new {
     !type
     !self.mVarName.location
@@ -1055,12 +1049,11 @@ override method @templateUnaryMinusOperationAST templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 {
 #--- Expression analysis
-  var @semanticExpressionForGeneration expression
   [self.mExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?expression
+    ?let expression
   ]
 #--- Check operator availability
   let @unifiedTypeMap-entry type = expression.mResultType
@@ -1517,12 +1510,11 @@ override method @templateInstructionExpressionAST templateInstructionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   ?!@templateInstructionListForGeneration ioInstructionList
 {
-  var @semanticExpressionForGeneration expression
   [self.mExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?expression
+    ?let expression
   ]
   if [expression.mResultType key] != "string" then
     error self.mLocation:"expression type should be '@string' (it is '@" + [expression.mResultType key] + "')"
@@ -1538,12 +1530,11 @@ override method @templateBlockInstructionAST templateInstructionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   ?!@templateInstructionListForGeneration ioInstructionList
 {
-  var @semanticExpressionForGeneration expression
   [self.mExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?expression
+    ?let expression
   ]
   if [expression.mResultType key] != "uint" then
     error self.mLocation:"expression type should be '@uint' (it is '@" + [expression.mResultType key] + "')"
@@ -1592,12 +1583,11 @@ override method @templateInstructionIfAST templateInstructionAnalysis
 {
   var templateInstructionIfBranchList =@templateInstructionIfBranchListForGeneration {}
   for (mExpression mInstructionList) in self.mTemplateInstructionIfBranchList do
-    var @semanticExpressionForGeneration expression
     [mExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
       !inAnalysisContext
-      ?expression
+      ?let expression
     ]
     if [expression.mResultType key] != "bool" then
       error expression.mLocation : "'if' expression type should be '@bool' (it is '@" + [expression.mResultType key] + "')"

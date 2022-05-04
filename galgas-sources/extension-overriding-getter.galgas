@@ -29,7 +29,7 @@ syntax extension galgas3DeclarationsSyntax {
     <formal_input_parameter_list> ?let formalInputParameterList
     $->$
     $@type$ ?let @lstring mReturnedTypeName
-    var @lstring resultVariableName
+    let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
     or
@@ -70,7 +70,7 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_input_parameter_list> ?let formalInputParameterList
     $->$
     $@type$ ?let @lstring mReturnedTypeName
-    var @lstring resultVariableName
+    let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
     or

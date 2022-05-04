@@ -442,8 +442,7 @@ proc addExtensions
   end
 #------------------------  Extension methods
   if [inExtensionMethodMapForBuildingContext hasKey !inTypeName.string] then
-    var @extensionMethodMapForType extensionMethodMapForType
-    [inExtensionMethodMapForBuildingContext searchKey !inTypeName ?extensionMethodMapForType]
+    [inExtensionMethodMapForBuildingContext searchKey !inTypeName ?let extensionMethodMapForType]
     for (lkey mFormalParameterList) in extensionMethodMapForType do
       var formalArgumentList =@formalParameterSignature {}
       for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
@@ -468,8 +467,7 @@ proc addExtensions
   end
 #------------------------  Extension setters
   if [inExtensionSetterMapForBuildingContext hasKey !inTypeName.string] then
-    var @extensionSetterMapForType extensionSetterMapForType
-    [inExtensionSetterMapForBuildingContext searchKey !inTypeName ?extensionSetterMapForType]
+    [inExtensionSetterMapForBuildingContext searchKey !inTypeName ?let extensionSetterMapForType]
     for (lkey mFormalParameterList) in extensionSetterMapForType do
       var @formalParameterSignature formalArgumentList = {}
       for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
@@ -559,14 +557,14 @@ proc recursivelyEnumerateDirectories
   !@wrapperDirectoryMap outWrapperDirectoryMap
   ?!@uint ioWrapperFileIndex
   ?!@uint ioWrapperDirectoryIndex {
-  var @uint currentDirectoryIndex = ioWrapperDirectoryIndex
+  let @uint currentDirectoryIndex = ioWrapperDirectoryIndex
   ioWrapperDirectoryIndex ++
 #--- Enumerates regular files
-  var @stringlist files = [inAbsoluteSourcePath regularFiles !false]
+  let @stringlist files = [inAbsoluteSourcePath regularFiles !false]
   outWrapperFileMap = {}
   for (mValue) in files do
     if [inTextFileExtensionMap hasKey ![mValue pathExtension]] then
-      var @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
+      let @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
       [!?outWrapperFileMap insertKey
         !@lstring.new {!mValue !@location.here}
         !absoluteFilePath
@@ -576,7 +574,7 @@ proc recursivelyEnumerateDirectories
       ]
       ioWrapperFileIndex ++
     elsif [inBinaryFileExtensionMap hasKey ![mValue pathExtension]] then
-      var @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
+      let @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
       [!?outWrapperFileMap insertKey
         !@lstring.new {!mValue !@location.here}
         !absoluteFilePath
@@ -588,19 +586,17 @@ proc recursivelyEnumerateDirectories
     end
   end
 #--- Enumerates regular directories
-  var @stringlist directories = [inAbsoluteSourcePath directories !false]
+  let @stringlist directories = [inAbsoluteSourcePath directories !false]
   outWrapperDirectoryMap = {}
   for (mValue) in directories do
-    var @wrapperFileMap internalWrapperFileMap
-    var @wrapperDirectoryMap internalWrapperDirectoryMap
-    var @uint theDirectoryIndex = ioWrapperDirectoryIndex
+    let @uint theDirectoryIndex = ioWrapperDirectoryIndex
     recursivelyEnumerateDirectories (
       !inAbsoluteSourcePath + "/" + mValue
       !inPathInWrapper + mValue + "/"
       !inTextFileExtensionMap
       !inBinaryFileExtensionMap
-      ?internalWrapperFileMap
-      ?internalWrapperDirectoryMap
+      ?let internalWrapperFileMap
+      ?let internalWrapperDirectoryMap
       !?ioWrapperFileIndex
       !?ioWrapperDirectoryIndex
     )
@@ -650,9 +646,9 @@ override method @filewrapperDeclarationAST enterInSemanticContext
     end
   end
 #--- Enumerate filewrapper files
-  var @wrapperFileMap regularRootFileMap
-  var @wrapperDirectoryMap wrapperDirectoryMap
-  var @string absoluteSourcePath
+  let @wrapperFileMap regularRootFileMap
+  let @wrapperDirectoryMap wrapperDirectoryMap
+  let @string absoluteSourcePath
   if [self.mFilewrapperPath.string firstCharacterOrNul] == '/' then
     absoluteSourcePath = self.mFilewrapperPath.string
   else
@@ -841,8 +837,7 @@ override method @lexiqueComponentAST enterInSemanticContext
   for (mName mSentAttributeList * * *) in self.mTerminalDeclarationList do
     var argumentTypeList =@lexicalSentValueList {}
     for (mFormalSelector mAttributeName) in mSentAttributeList do
-      var @lexicalTypeEnum attributeLexicalType
-      [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
+      [lexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
     [!?terminalMap insertKey !mName !argumentTypeList]
@@ -851,8 +846,7 @@ override method @lexiqueComponentAST enterInSemanticContext
   for (* * * mSentAttributeList mEntryList) in self.mLexicalListDeclarationList do
     var argumentTypeList =@lexicalSentValueList {}
     for (mFormalSelector mAttributeName) in mSentAttributeList do
-      var @lexicalTypeEnum attributeLexicalType
-      [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
+      [lexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
     for (* mTerminalSpelling *) in mEntryList do

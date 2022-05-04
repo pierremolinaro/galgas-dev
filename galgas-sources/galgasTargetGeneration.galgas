@@ -305,7 +305,7 @@ proc updateGalgas3Targets
     toolCppFileList += !"C_galgas_quiet_option.cpp"
   end
 #----------------------------------------------------------- macCodeSign
-  var @lstring macCodeSign
+  let @lstring macCodeSign
   with "macCodeSign" in inProjectQualifiedFeatureMap  do
     if mFeatureValue.string == "" then
       error mFeatureValue:"the %macCodeSign attribute should not be empty" : macCodeSign
@@ -316,7 +316,7 @@ proc updateGalgas3Targets
     macCodeSign = ["" nowhere]
   end
 #----------------------------------------------------------- MacOSDeployment
-  var @string MACOSX_DEPLOYMENT_TARGET
+  let @string MACOSX_DEPLOYMENT_TARGET
   with "MacOSDeployment" in inProjectQualifiedFeatureMap  do
     if mFeatureValue.string == "" then
       error mFeatureValue:"the %MacOSDeployment attribute should not be empty" : MACOSX_DEPLOYMENT_TARGET
@@ -327,7 +327,7 @@ proc updateGalgas3Targets
     MACOSX_DEPLOYMENT_TARGET = ["10.10" nowhere]
   end
 #----------------------------------------------------------- LIBPM path
-  var @string libpmPath
+  let @string libpmPath
   with "libpmAtPath" in inProjectQualifiedFeatureMap  do
     if mFeatureValue.string == "" then
       error mFeatureValue:"the libpm path should not be empty" : libpmPath
@@ -339,9 +339,6 @@ proc updateGalgas3Targets
     libpmPath = "../build/libpm"
   end
 #---------------------------------------- Check target names, file base name uniqueness, and build target file list
-  var @stringset guiSourceSet_app = .setWithStringList {!inAppProductFileList}
-#---
-#  var @stringset sourceFileSet = {}
 #--- Parse features
   var @stringset availableGenerationFeatures = {}
   availableGenerationFeatures += !"quietOutputByDefault"
@@ -553,7 +550,7 @@ proc updateGalgas3Targets
     let dir = projectDirectory + "/xcode-project"
     [dir makeDirectory]
   #--- Info.plist
-    var @string applicationBundleBase
+    let @string applicationBundleBase
     with "applicationBundleBase" in inProjectQualifiedFeatureMap  do
       applicationBundleBase = mFeatureValue.string
     else

@@ -100,7 +100,7 @@ override method @arrayDeclarationAST enterInSemanticContext
   var @constructorMap constructorMap = {}
   commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   var @setterMap setterMap ={}
-  var @instanceMethodMap instanceMethodMap = {}
+  let @instanceMethodMap instanceMethodMap = {}
 #--- 
   [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"bool" ?let boolType]
 #--- 

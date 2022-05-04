@@ -18,7 +18,7 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
   #·····················································································································
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
-    var @bool isTemplate
+    let @bool isTemplate
     select
       isTemplate = true
       $template$
@@ -29,7 +29,7 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
   #--- Lexique Component Name
     $identifier$ ?let @lstring lexiqueComponentName
   #--- Enable indexing ?
-    var @lstring indexingDirectory
+    let @lstring indexingDirectory
     select
       indexingDirectory = ["" nowhere]
     or
@@ -104,9 +104,9 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
 
   rule <lexical_indexing_declaration> ?!@indexingListAST ioIndexingListAST {
     $indexing$
-    $identifier$ ?var @lstring indexName indexing indexingNameDefinition
+    $identifier$ ?let @lstring indexName indexing indexingNameDefinition
     $:$
-    $"string"$ ?var @lstring indexComment
+    $"string"$ ?let @lstring indexComment
     ioIndexingListAST += !indexName !indexComment
   }
 
@@ -130,9 +130,9 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
 
   rule <template_replacement> ?!@templateReplacementListAST ioTemplateReplacement {
     $replace$
-    $"string"$ ?var @lstring matchString
-    var @lstring replacementString
-    var @lstring replacementFunction
+    $"string"$ ?let @lstring matchString
+    let @lstring replacementString
+    let @lstring replacementFunction
     select
       $...$
       $"string"$ ?replacementString
@@ -210,7 +210,7 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
     while
       $search$
     end
-    var @lexicalSendDefaultActionAST lexicalSendDefaultAction
+    let @lexicalSendDefaultActionAST lexicalSendDefaultAction
     select
       $\$terminal\$$ ?let @lstring defaultSentTerminal
       lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST.new {!defaultSentTerminal}
@@ -311,8 +311,8 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
         error selector : "the selector should be '!?'" fixit { replace "!?" }
       end
       let passingModeLocation = @location.here
-      $identifier$ ?var @lstring attributeName
-      var arg = @lexicalAttributeInputOutputArgumentAST.new{!passingModeLocation !attributeName}
+      $identifier$ ?let @lstring attributeName
+      let arg = @lexicalAttributeInputOutputArgumentAST.new{!passingModeLocation !attributeName}
       actualArgumentList += !arg
     end
     var @lstringlist errorMessageList = {}
@@ -336,14 +336,14 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
   #·····················································································································
 
   rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
-    $'char'$ ?var @lchar character
+    $'char'$ ?let @lchar character
     outEffectiveArgument = @lexicalCharacterInputArgumentAST.new {!character}
   }
 
   #·····················································································································
 
   rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
-    $uint32$ ?var @luint unsignedValue
+    $uint32$ ?let @luint unsignedValue
     outEffectiveArgument = @lexicalUnsignedInputArgumentAST.new {!unsignedValue}
   }
 
@@ -494,7 +494,7 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
       $identifier$ ?let sentAttribute
       sentAttributeList += !selector !sentAttribute
     end
-    var @lstring theStyle # Empty string if no style
+    let @lstring theStyle # Empty string if no style
     select
       $style$
       $identifier$ ? theStyle
@@ -518,14 +518,14 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
   #·····················································································································
 
   rule <lexical_list_entry> ?!@lexicalListEntryListAST ioLexicalListEntryList {
-    $"string"$ ?var @lstring entrySpelling
+    $"string"$ ?let @lstring entrySpelling
     var @lstringlist optionList = {}
     select
     or
       $%attribute$ ?let @lstring optionName
       optionList += !optionName
     end
-    var @lstring terminalSpelling
+    let @lstring terminalSpelling
     select
       $->$
       $\$terminal\$$ ? terminalSpelling
@@ -594,11 +594,11 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
   rule <extern_routine_declaration> ?!@externRoutineListAST ioExternRoutineList {
     $extern$
     $proc$
-    $identifier$ ?var @lstring routineName
+    $identifier$ ?let @lstring routineName
     var lexicalRoutineFormalArgumentList =@lexicalExternRoutineFormalArgumentListAST {}
     repeat
     while
-      var @lexicalArgumentModeAST lexicalArgumentMode
+      let @lexicalArgumentModeAST lexicalArgumentMode
       select
         $?!$ ?let selector
         if selector.string != "" then
@@ -612,8 +612,8 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
         end
         lexicalArgumentMode = @lexicalArgumentModeAST. lexicalInputMode
       end
-      $@type$ ?var @lstring lexicalTypeName
-      $identifier$ ?var @lstring formalArgumentName
+      $@type$ ?let @lstring lexicalTypeName
+      $identifier$ ?let @lstring formalArgumentName
       lexicalRoutineFormalArgumentList += !lexicalArgumentMode !lexicalTypeName !formalArgumentName
     end
     var @stringlist errorMessageList = {}
@@ -621,7 +621,7 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
     or
       $error$
       repeat
-        $identifier$ ?var @lstring errorMessageName
+        $identifier$ ?let @lstring errorMessageName
         errorMessageList += !errorMessageName.string
       while
         $,$
@@ -635,7 +635,7 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
   rule <extern_function_declaration> ?!@externFunctionListAST ioExternFunctionList {
     $extern$
     $func$
-    $identifier$ ?var @lstring functionName
+    $identifier$ ?let @lstring functionName
     var lexicalFunctionFormalArgumentList =@lexicalExternFunctionFormalArgumentListAST {}
     repeat
     while
@@ -643,12 +643,12 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
       if selector.string != "" then
         error selector : "the selector should be '?'"  fixit { replace "?" }
       end
-      $@type$ ?var @lstring lexicalTypeName
-      $identifier$ ?var @lstring formalArgumentName
+      $@type$ ?let @lstring lexicalTypeName
+      $identifier$ ?let @lstring formalArgumentName
       lexicalFunctionFormalArgumentList += !lexicalTypeName !formalArgumentName
     end
     $->$
-    $@type$ ?var @lstring returnedTypeName
+    $@type$ ?let @lstring returnedTypeName
     ioExternFunctionList += !functionName !lexicalFunctionFormalArgumentList !returnedTypeName
   }
 
@@ -663,7 +663,7 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
   #·····················································································································
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
-    var @bool isTemplate
+    let @bool isTemplate
     select
       isTemplate = true
       $template$
@@ -674,7 +674,7 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
   #--- Lexique Component Name
     $identifier$ ?let @lstring lexiqueComponentName
   #--- Enable indexing ?
-    var @lstring indexingDirectory
+    let @lstring indexingDirectory
     select
       indexingDirectory = ["" nowhere]
     or
@@ -749,9 +749,9 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
 
   rule <lexical_indexing_declaration> ?!@indexingListAST ioIndexingListAST {
     $indexing$
-    $identifier$ ?var @lstring indexName indexing indexingNameDefinition
+    $identifier$ ?let @lstring indexName indexing indexingNameDefinition
     $:$
-    $"string"$ ?var @lstring indexComment
+    $"string"$ ?let @lstring indexComment
     ioIndexingListAST += !indexName !indexComment
   }
 
@@ -775,9 +775,9 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
 
   rule <template_replacement> ?!@templateReplacementListAST ioTemplateReplacement {
     $replace$
-    $"string"$ ?var @lstring matchString
-    var @lstring replacementString
-    var @lstring replacementFunction
+    $"string"$ ?let @lstring matchString
+    let @lstring replacementString
+    let @lstring replacementFunction
     select
       $...$
       $"string"$ ?replacementString
@@ -855,7 +855,7 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
     while
       $search$
     end
-    var @lexicalSendDefaultActionAST lexicalSendDefaultAction
+    let @lexicalSendDefaultActionAST lexicalSendDefaultAction
     select
       $\$terminal\$$ ?let @lstring defaultSentTerminal
       lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST.new {!defaultSentTerminal}
@@ -956,8 +956,8 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
         error selector : "the selector should be '!?'" fixit { replace "!?" }
       end
       let passingModeLocation = @location.here
-      $identifier$ ?var @lstring attributeName
-      var arg = @lexicalAttributeInputOutputArgumentAST.new{!passingModeLocation !attributeName}
+      $identifier$ ?let @lstring attributeName
+      let arg = @lexicalAttributeInputOutputArgumentAST.new{!passingModeLocation !attributeName}
       actualArgumentList += !arg
     end
     var @lstringlist errorMessageList = {}
@@ -981,14 +981,14 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
   #·····················································································································
 
   rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
-    $'char'$ ?var @lchar character
+    $'char'$ ?let @lchar character
     outEffectiveArgument = @lexicalCharacterInputArgumentAST.new {!character}
   }
 
   #·····················································································································
 
   rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
-    $uint32$ ?var @luint unsignedValue
+    $uint32$ ?let @luint unsignedValue
     outEffectiveArgument = @lexicalUnsignedInputArgumentAST.new {!unsignedValue}
   }
 
@@ -1139,7 +1139,7 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
       $identifier$ ?let sentAttribute
       sentAttributeList += !selector !sentAttribute
     end
-    var @lstring theStyle # Empty string if no style
+    let @lstring theStyle # Empty string if no style
     select
       $style$
       $identifier$ ? theStyle
@@ -1163,14 +1163,14 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
   #·····················································································································
 
   rule <lexical_list_entry> ?!@lexicalListEntryListAST ioLexicalListEntryList {
-    $"string"$ ?var @lstring entrySpelling
+    $"string"$ ?let @lstring entrySpelling
     var @lstringlist optionList = {}
     select
     or
       $%attribute$ ?let @lstring optionName
       optionList += !optionName
     end
-    var @lstring terminalSpelling
+    let @lstring terminalSpelling
     select
       $->$
       $\$terminal\$$ ? terminalSpelling
@@ -1239,11 +1239,11 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
   rule <extern_routine_declaration> ?!@externRoutineListAST ioExternRoutineList {
     $extern$
     $proc$
-    $identifier$ ?var @lstring routineName
+    $identifier$ ?let @lstring routineName
     var lexicalRoutineFormalArgumentList =@lexicalExternRoutineFormalArgumentListAST {}
     repeat
     while
-      var @lexicalArgumentModeAST lexicalArgumentMode
+      let @lexicalArgumentModeAST lexicalArgumentMode
       select
         $?!$ ?let selector
         if selector.string != "" then
@@ -1257,8 +1257,8 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
         end
         lexicalArgumentMode = @lexicalArgumentModeAST. lexicalInputMode
       end
-      $@type$ ?var @lstring lexicalTypeName
-      $identifier$ ?var @lstring formalArgumentName
+      $@type$ ?let @lstring lexicalTypeName
+      $identifier$ ?let @lstring formalArgumentName
       lexicalRoutineFormalArgumentList += !lexicalArgumentMode !lexicalTypeName !formalArgumentName
     end
     var @stringlist errorMessageList = {}
@@ -1266,7 +1266,7 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
     or
       $error$
       repeat
-        $identifier$ ?var @lstring errorMessageName
+        $identifier$ ?let @lstring errorMessageName
         errorMessageList += !errorMessageName.string
       while
         $,$
@@ -1280,7 +1280,7 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
   rule <extern_function_declaration> ?!@externFunctionListAST ioExternFunctionList {
     $extern$
     $func$
-    $identifier$ ?var @lstring functionName
+    $identifier$ ?let @lstring functionName
     var lexicalFunctionFormalArgumentList =@lexicalExternFunctionFormalArgumentListAST {}
     repeat
     while
@@ -1288,12 +1288,12 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
       if selector.string != "" then
         error selector : "the selector should be '?'"  fixit { replace "?" }
       end
-      $@type$ ?var @lstring lexicalTypeName
-      $identifier$ ?var @lstring formalArgumentName
+      $@type$ ?let @lstring lexicalTypeName
+      $identifier$ ?let @lstring formalArgumentName
       lexicalFunctionFormalArgumentList += !lexicalTypeName !formalArgumentName
     end
     $->$
-    $@type$ ?var @lstring returnedTypeName
+    $@type$ ?let @lstring returnedTypeName
     ioExternFunctionList += !functionName !lexicalFunctionFormalArgumentList !returnedTypeName
   }
 

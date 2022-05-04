@@ -195,8 +195,8 @@ override method @comparisonExpressionAST analyzeSemanticExpression
 #--- Operator name
   let isComparable = [[leftType mHandledOperatorFlags] isComparable]
   let isReferenceEquatable = [[leftType mHandledOperatorFlags] isReferenceEquatable]
-  var @bool operatorIsAvailable
-  var @string operatorName
+  let @bool operatorIsAvailable
+  let @string operatorName
   switch self.mComparison
   case equal :
     operatorName = "=="
@@ -279,7 +279,7 @@ override method @comparisonExpressionForGeneration generateExpression
     ?let rightTemporaryOperand
   ]
 #--- Operator name
-  var @string operatorName
+  let @string operatorName
   switch self.mComparison
   case equal, sameInstance : operatorName = "kIsEqual"
   case notEqual, differentInstances : operatorName = "kIsNotEqual"

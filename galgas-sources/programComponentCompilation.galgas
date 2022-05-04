@@ -107,20 +107,17 @@ private proc compileProgramRulesGalgas3
       !mSourceFileVariableName
       !mSourceFileVariableNameIsUnused
     }
-    var @semanticInstructionListForGeneration semanticInstructionListForGeneration
-    var @formalParameterListForGeneration routineSignature
     analyzeRoutineBody (
       !usefulnessName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !argumentList
-#      !localConstantList: {} # No local constant
       !nonMutablePropertyList: @typedPropertyList {} # No attribute (not a method)
       !mutablePropertyList: @typedPropertyList {} # No attribute (not a method)
       !mInstructionList
       !mEndOfInstructionList
-      ?semanticInstructionListForGeneration
-      ?routineSignature
+      ?let semanticInstructionListForGeneration
+      ?let routineSignature
     )
     ioDecoratedDeclarationListForGeneration +=
       !@routineImplementationForGeneration.new {

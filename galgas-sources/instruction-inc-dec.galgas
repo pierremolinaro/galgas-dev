@@ -283,8 +283,8 @@ override method @incDecInstructionAST analyzeSemanticInstruction
 {
 #--- Check target variable
   var @unifiedTypeMap-entry targetType
-  var @string targetVariableCppName
-  var @string nameForCheckingFormalParameterUsing
+  let @string targetVariableCppName
+  let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
     if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: let mutableProperties] then
       if not selfIsMutable then
@@ -368,8 +368,7 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
 {
 #--- Check target variable
   var @unifiedTypeMap-entry targetType
-  var @string targetVariableCppName
-  [!?ioVariableMap searchForReadWriteAccess !self.mReceiverName ?targetType ?targetVariableCppName ?*]
+  [!?ioVariableMap searchForReadWriteAccess !self.mReceiverName ?targetType ?let targetVariableCppName ?*]
   for (mValue) in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]

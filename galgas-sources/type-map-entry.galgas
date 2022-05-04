@@ -39,11 +39,11 @@ override method @mapEntryDeclarationAST enterInSemanticContext
   [ioSemanticContext.mTypeMap searchKey
     !self.mAssociatedMapTypeName
     ?3*
-    ?var @typeKindEnum typeKindEnum
+    ?let @typeKindEnum typeKindEnum
     ?3*
     ?var @typedPropertyList mapTypedAttributeList
     ?11*
-    ?var @mapSearchMethodListAST searchMethodList
+    ?let @mapSearchMethodListAST searchMethodList
     ?6*
   ]
   if typeKindEnum != @typeKindEnum.sharedMapType then

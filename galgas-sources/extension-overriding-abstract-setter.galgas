@@ -118,14 +118,13 @@ override method @overridingAbstractExtensionSetterAST semanticAnalysis
 #--- Find base type name
   var @string baseTypeName = ""
   var @unifiedTypeMap-entry superType = [selfType mSuperType]
-  var inheritedSignature =@formalParameterSignature {}
-  var @location inheritedDeclarationLocation = @location.here
+  var inheritedSignature = @formalParameterSignature {}
+  let inheritedDeclarationLocation = @location.here
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mSetterMap] hasKey !self.mOverridingExtensionSetterName.string] then
-      var @methodQualifier qualifier
-      [[superType mSetterMap] searchKey !self.mOverridingExtensionSetterName ?* ?inheritedSignature ?* ?qualifier ?*]
-      if qualifier <= @methodQualifier. isBasicFinal then
+      [[superType mSetterMap] searchKey !self.mOverridingExtensionSetterName ?* ?inheritedSignature ?* ?let qualifier ?*]
+      if qualifier <= @methodQualifier.isBasicFinal then
         baseTypeName = [superType key]
       end
     end
@@ -136,12 +135,11 @@ override method @overridingAbstractExtensionSetterAST semanticAnalysis
   end
 #--- Analyze formal argument list
   var variableMap = @localVarManager.default
-  var @formalParameterListForGeneration formalParameterListForGeneration
   buildLocalVariableMapAndSignature (
     !inSemanticContext
     !self.mOverridingExtensionSetterFormalParameterList
     !?variableMap
-    ?formalParameterListForGeneration
+    ?let formalParameterListForGeneration
   )
 #--- Check Signature
   if baseTypeName != "" then

@@ -110,12 +110,12 @@ override method @listmapDeclarationAST enterInSemanticContext
   [ioSemanticContext.mTypeMap searchKey
     !self.mAssociatedListTypeName
     ?3*
-    ?var @typeKindEnum typeKindEnum
+    ?let @typeKindEnum typeKindEnum
     ?*
     ?var @typedPropertyList listTypedAttributeList
     ?20*
   ]
-  if typeKindEnum != @typeKindEnum. listType then
+  if typeKindEnum != @typeKindEnum.listType then
     error self.mAssociatedListTypeName : "the '@" + self.mAssociatedListTypeName + "' type should be a list type"
     listTypedAttributeList = @typedPropertyList {}
   end

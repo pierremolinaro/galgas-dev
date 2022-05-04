@@ -63,14 +63,13 @@ override method @messageInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze source expression
-  var @semanticExpressionForGeneration expression
   [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
-    ?expression
+    ?let expression
   ]
 #--- Check message type is @string
   if expression.mResultType != inAnalysisContext.mPredefinedTypes.mStringType then

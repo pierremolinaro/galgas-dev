@@ -163,8 +163,8 @@ syntax extension galgas3DeclarationsSyntax {
       $identifier$ ?let @lstring sourceState2
       $->$
       $identifier$ ?let @lstring targetState
-      var @mapAutomatonMessageKind messageKind
-      var @lstring messageText
+      let @mapAutomatonMessageKind messageKind
+      let @lstring messageText
       select
         messageKind = @mapAutomatonMessageKind.noMessage
         messageText = @lstring.new {!"" !@location.here}
@@ -189,8 +189,8 @@ syntax extension galgas3DeclarationsSyntax {
       $identifier$ ?let @lstring sourceState2
       $->$
       $identifier$ ?let @lstring targetState
-      var @mapAutomatonMessageKind messageKind
-      var @lstring messageText
+      let @mapAutomatonMessageKind messageKind
+      let @lstring messageText
       select
         messageKind = @mapAutomatonMessageKind.noMessage
         messageText = @lstring.new {!"" !@location.here}
@@ -212,7 +212,7 @@ syntax extension galgas3DeclarationsSyntax {
   #·····················································································································
 
   rule <shared_map_attribute> ?!@sharedMapAttributeListAST ioSharedMapAttributeListAST {
-    var @bool isError
+    let @bool isError
     select
       $error$
       isError = true
@@ -230,7 +230,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <shared_map_search_method_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
     $search$
     $identifier$ ?let @lstring mMethodName
-    var @lstring actionName
+    let @lstring actionName
     select
       actionName = @lstring.new {!"" !@location.here}
     or
@@ -252,8 +252,8 @@ syntax extension galgas3DeclarationsSyntax {
   rule <shared_map_state_list> ?!@mapStateList ioMapStateList {
     $state$
     $identifier$ ?let @lstring stateName
-    var @mapAutomatonMessageKind stateMessageKind
-    var @lstring stateMessage
+    let @mapAutomatonMessageKind stateMessageKind
+    let @lstring stateMessage
     select
       stateMessageKind = .noMessage
       stateMessage = @lstring.new {!"" !@location.here}
@@ -286,8 +286,8 @@ syntax extension galgas3DeclarationsSyntax {
     $identifier$ ?let @lstring actionName
     $->$
     $identifier$ ?let @lstring targetStateName
-    var @mapAutomatonMessageKind transitionMessageKind
-    var @lstring transitionMessage
+    let @mapAutomatonMessageKind transitionMessageKind
+    let @lstring transitionMessage
     select
       transitionMessageKind = .noMessage
       transitionMessage = .new {!"" !.here}
@@ -1168,7 +1168,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
         !mMessageKind
         !mTransitionMessage.string
     end
-    var @stringset forgottenAssociations = neededAssociations - handledAssociations
+    let @stringset forgottenAssociations = neededAssociations - handledAssociations
     if [forgottenAssociations count] > 0 then
       var @string s = ""
       for (key) in forgottenAssociations do
@@ -1222,7 +1222,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
         !mTransitionMessage.string
     end
     if [forgottenAssociations count] == 0 then # Check only if all associations are defined
-      var @stringset forgottenCombinaisons = neededCombinaisons - definedCombinaisons
+      let @stringset forgottenCombinaisons = neededCombinaisons - definedCombinaisons
       if [forgottenCombinaisons count] > 0 then
         var @string s = ""
         for (key) in forgottenCombinaisons do

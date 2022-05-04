@@ -63,14 +63,13 @@ override method @unaryWrappingMinusExpressionAST analyzeSemanticExpression
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Expression analysis
-  var @semanticExpressionForGeneration expression
   [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
-    ?expression
+    ?let expression
   ]
 #--- Check operator availability
   let @unifiedTypeMap-entry type = expression.mResultType

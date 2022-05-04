@@ -62,7 +62,7 @@ syntax extension galgas3InstructionsSyntax {
     $then$
     <semantic_instruction_list> ?let then_instructionList
     let endOf_then_branchLocation = @location.here
-    var @semanticInstructionListAST else_instructionList
+    let @semanticInstructionListAST else_instructionList
     select
       else_instructionList = @semanticInstructionListAST {}
     or
@@ -141,7 +141,7 @@ syntax extension galgas3InstructionsSyntax {
           $?$ ?let selector
           select
             $let$
-            var @lstring typeName 
+            let @lstring typeName 
             select
               typeName = ["" nowhere]
             or
@@ -151,7 +151,7 @@ syntax extension galgas3InstructionsSyntax {
             optionalMethodActualArgumentList += !selector !.actualLetInput {!typeName: typeName !constantName: constantName}
           or
             $var$
-            var @lstring typeName 
+            let @lstring typeName 
             select
               typeName = ["" nowhere]
             or
@@ -211,7 +211,7 @@ syntax extension galgas4InstructionsSyntax {
     $then$
     <semantic_instruction_list> ?let then_instructionList
     let endOf_then_branchLocation = @location.here
-    var @semanticInstructionListAST else_instructionList
+    let @semanticInstructionListAST else_instructionList
     select
       else_instructionList = @semanticInstructionListAST {}
     or
@@ -290,7 +290,7 @@ syntax extension galgas4InstructionsSyntax {
           $?$ ?let selector
           select
             $let$
-            var @lstring typeName 
+            let @lstring typeName 
             select
               typeName = ["" nowhere]
             or
@@ -300,7 +300,7 @@ syntax extension galgas4InstructionsSyntax {
             optionalMethodActualArgumentList += !selector !.actualLetInput {!typeName: typeName !constantName: constantName}
           or
             $var$
-            var @lstring typeName 
+            let @lstring typeName 
             select
               typeName = ["" nowhere]
             or
@@ -376,7 +376,7 @@ override method @ifInstructionAST enterInstructionInSemanticContext ?!@unifiedTy
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-# l'expression a peut être de la forme let varA = exp as @T ; idem pout-r b
+# l'expression a peut être de la forme let varA = exp as @T ; idem pour b
 #
 # L'instruction : IF a, b THEN X ELSE Y END est analysée par :
 #
@@ -527,8 +527,9 @@ override method @ifInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !@localConstantList {}
-    !@localInitializedVariableList {}
+    !localConstantList: {}
+    !localInitializedVariableListWarnsIfNotMutated: {}
+    !localInitializedVariableListNoWarnsIfNotMutated: {}
     !self.m_then_instructionList
     !?ioVariableMap
     ?let then_instructionList
@@ -545,8 +546,9 @@ override method @ifInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !@localConstantList {}
-    !@localInitializedVariableList {}
+    !localConstantList: {}
+    !localInitializedVariableListWarnsIfNotMutated: {}
+    !localInitializedVariableListNoWarnsIfNotMutated: {}
     !self.m_else_instructionList
     !self.mEndOf_if_instruction
     !?ioVariableMap
@@ -583,7 +585,7 @@ private proc analyzeOptionalMethodCall
     !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
-    ?@semanticExpressionForGeneration receiverExpression
+    ?let @semanticExpressionForGeneration receiverExpression
   ]
   [!?ioVariableMap openOverrideForSelectBlock]
   [!?ioVariableMap openBranch]
@@ -591,7 +593,7 @@ private proc analyzeOptionalMethodCall
   let @unifiedTypeMap-entry receiverType = receiverExpression.mResultType
   let @optionalMethodMap optionalMethodMap = [receiverType mOptionalMethodMap]
 #--- Search optional method
-  var @optionalMethodSignature optionalMethodSignature
+  let @optionalMethodSignature optionalMethodSignature
   with inOptionalMethodName.string in optionalMethodMap do
     optionalMethodSignature = mArgumentTypeList
   else
@@ -660,6 +662,7 @@ private proc analyzeOptionalMethodCall
          + "_" + [variableName.location locationIndex]
         [!?ioVariableMap insertDefinedLocalVariable
           !variableName
+          !warnsIfNotMutated: true
           !formalType
           !targetVariableCppName
           !targetVariableCppName

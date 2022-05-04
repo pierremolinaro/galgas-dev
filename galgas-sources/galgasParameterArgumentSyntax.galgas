@@ -27,8 +27,8 @@ syntax galgas3ParameterArgumentSyntax (galgas3Scanner) {
     outFormalParameterList = {}
     repeat
     while
-      var @lstring selector
-      var @formalArgumentPassingModeAST mFormalParameterPassingMode
+      let @lstring selector
+      let @formalArgumentPassingModeAST mFormalParameterPassingMode
       select
         $?$ ?selector
         mFormalParameterPassingMode = @formalArgumentPassingModeAST. argumentIn
@@ -43,15 +43,15 @@ syntax galgas3ParameterArgumentSyntax (galgas3Scanner) {
         $!$ ?selector
         mFormalParameterPassingMode = @formalArgumentPassingModeAST. argumentOut
       end
-      $@type$ ?var @lstring mFormalParameterTypeName
-      var @bool mIsUnused
+      $@type$ ?let @lstring mFormalParameterTypeName
+      let @bool mIsUnused
       select
         mIsUnused = false
       or
         $unused$
         mIsUnused = true
       end
-      $identifier$ ?var @lstring mFormalParameterName
+      $identifier$ ?let @lstring mFormalParameterName
       outFormalParameterList +=
         !selector
         !mFormalParameterPassingMode
@@ -74,8 +74,7 @@ syntax galgas3ParameterArgumentSyntax (galgas3Scanner) {
         $*$
         outActualParameterList += !@inputSingleJokerActualParameterAST.new {!selector}
       or
-        var @luint count
-        $uint32$ ? count
+        $uint32$ ?let count
         $*$
         var n = count.uint
         if selector.string != "" then
@@ -102,13 +101,12 @@ syntax galgas3ParameterArgumentSyntax (galgas3Scanner) {
       }
     while
       $!?$ ?let selector
-      var @lstring outputInputActualParameterName
-      $identifier$ ?outputInputActualParameterName
+      $identifier$ ?let outputInputActualParameterName
       var structAttributeList =@lstringlist {}
       repeat
       while
         $.$
-        $identifier$ ?var structAttributeName
+        $identifier$ ?let structAttributeName
         structAttributeList += !structAttributeName
       end
       outActualParameterList += !@outputInputActualParameterAST.new { 
@@ -156,7 +154,7 @@ syntax galgas3ParameterArgumentSyntax (galgas3Scanner) {
     while  # input parameter, new variable
       $?$ ?let selector
       $var$
-      var @lstring declarationTypeName
+      let @lstring declarationTypeName
       select
         declarationTypeName = ["" nowhere]
       or
@@ -180,13 +178,13 @@ syntax galgas3ParameterArgumentSyntax (galgas3Scanner) {
     while # input parameter, new constant
       $?$ ?let selector
       $let$
-      var @lstring declarationTypeName
+      let @lstring declarationTypeName
       select
         declarationTypeName = ["" nowhere]
       or
         $@type$ ?declarationTypeName
       end
-      var @bool markedAsUnused
+      let @bool markedAsUnused
       select
         markedAsUnused = false
       or
@@ -211,7 +209,7 @@ syntax galgas3ParameterArgumentSyntax (galgas3Scanner) {
     outFormalInputParameterList = {}
     repeat
     while
-      var @bool isConstant
+      let @bool isConstant
       $?$ ?let selector
       select
         isConstant = false
@@ -219,15 +217,15 @@ syntax galgas3ParameterArgumentSyntax (galgas3Scanner) {
         $let$
         isConstant = true
       end
-      $@type$ ?var @lstring mFormalParameterTypeName
-      var @bool mIsUnused
+      $@type$ ?let @lstring mFormalParameterTypeName
+      let @bool mIsUnused
       select
         mIsUnused = false
       or
         $unused$
         mIsUnused = true
       end
-      $identifier$ ?var @lstring mFormalParameterName
+      $identifier$ ?let @lstring mFormalParameterName
       outFormalInputParameterList +=
         !selector
         !mFormalParameterTypeName
@@ -258,8 +256,8 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
     $($
     repeat
     while
-      var @lstring selector
-      var @formalArgumentPassingModeAST mFormalParameterPassingMode
+      let @lstring selector
+      let @formalArgumentPassingModeAST mFormalParameterPassingMode
       select
         $?$ ?selector
         mFormalParameterPassingMode = @formalArgumentPassingModeAST. argumentIn
@@ -274,15 +272,15 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
         $!$ ?selector
         mFormalParameterPassingMode = @formalArgumentPassingModeAST. argumentOut
       end
-      $@type$ ?var @lstring mFormalParameterTypeName
-      var @bool mIsUnused
+      $@type$ ?let @lstring mFormalParameterTypeName
+      let @bool mIsUnused
       select
         mIsUnused = false
       or
         $unused$
         mIsUnused = true
       end
-      $identifier$ ?var @lstring mFormalParameterName
+      $identifier$ ?let @lstring mFormalParameterName
       outFormalParameterList +=
         !selector
         !mFormalParameterPassingMode
@@ -306,8 +304,7 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
         $*$
         outActualParameterList += !@inputSingleJokerActualParameterAST.new {!selector}
       or
-        var @luint count
-        $uint32$ ? count
+        $uint32$ ?let count
         $*$
         var n = count.uint
         if selector.string != "" then
@@ -334,13 +331,12 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
       }
     while
       $!?$ ?let selector
-      var @lstring outputInputActualParameterName
-      $identifier$ ?outputInputActualParameterName
+      $identifier$ ?let outputInputActualParameterName
       var structAttributeList =@lstringlist {}
       repeat
       while
         $.$
-        $identifier$ ?var structAttributeName
+        $identifier$ ?let structAttributeName
         structAttributeList += !structAttributeName
       end
       outActualParameterList += !@outputInputActualParameterAST.new { 
@@ -388,7 +384,7 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
     while  # input parameter, new variable
       $?$ ?let selector
       $var$
-      var @lstring declarationTypeName
+      let @lstring declarationTypeName
       select
         declarationTypeName = ["" nowhere]
       or
@@ -412,13 +408,13 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
     while # input parameter, new constant
       $?$ ?let selector
       $let$
-      var @lstring declarationTypeName
+      let @lstring declarationTypeName
       select
         declarationTypeName = ["" nowhere]
       or
         $@type$ ?declarationTypeName
       end
-      var @bool markedAsUnused
+      let @bool markedAsUnused
       select
         markedAsUnused = false
       or
@@ -444,7 +440,7 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
     $($
     repeat
     while
-      var @bool isConstant
+      let @bool isConstant
       $?$ ?let selector
       select
         isConstant = false
@@ -452,15 +448,15 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
         $let$
         isConstant = true
       end
-      $@type$ ?var @lstring mFormalParameterTypeName
-      var @bool mIsUnused
+      $@type$ ?let @lstring mFormalParameterTypeName
+      let @bool mIsUnused
       select
         mIsUnused = false
       or
         $unused$
         mIsUnused = true
       end
-      $identifier$ ?var @lstring mFormalParameterName
+      $identifier$ ?let @lstring mFormalParameterName
       outFormalInputParameterList +=
         !selector
         !mFormalParameterTypeName

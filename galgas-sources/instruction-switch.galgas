@@ -96,13 +96,13 @@ syntax extension galgas3InstructionsSyntax {
           $*$
           outAssociatedValuesExtraction += !["" nowhere] !["" nowhere] !false
          or
-          var @lstring typeName
+          let @lstring typeName
           select
             $@type$ ?typeName
           or
             typeName = ["" nowhere]
           end
-          var @bool constantMarkedAsUnused
+          let @bool constantMarkedAsUnused
           select
             constantMarkedAsUnused = false
           or
@@ -188,13 +188,13 @@ syntax extension galgas4InstructionsSyntax {
           $*$
           outAssociatedValuesExtraction += !["" nowhere] !["" nowhere] !false
          or
-          var @lstring typeName
+          let @lstring typeName
           select
             $@type$ ?typeName
           or
             typeName = ["" nowhere]
           end
-          var @bool constantMarkedAsUnused
+          let @bool constantMarkedAsUnused
           select
             constantMarkedAsUnused = false
           or
@@ -239,14 +239,13 @@ override method @switchInstructionAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap
 {
 #--- Analyze switch expression
-  var @semanticExpressionForGeneration switchExpression
   [self.mSwitchExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
-    ?switchExpression
+    ?let switchExpression
   ]
 #--- Check switch expression type is and enum instance
   if [switchExpression.mResultType mTypeKindEnum] != @typeKindEnum. enumType then
@@ -312,10 +311,10 @@ override method @switchInstructionAST analyzeSemanticInstruction
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
-      !@localConstantList {}
-      !@localInitializedVariableList {}
+      !localConstantList: {}
+      !localInitializedVariableListWarnsIfNotMutated: {}
+      !localInitializedVariableListNoWarnsIfNotMutated: {}
       !mInstructions
-#      !mEndOfBranch
       !?ioVariableMap
       ?let @semanticInstructionListForGeneration instructionList
     )

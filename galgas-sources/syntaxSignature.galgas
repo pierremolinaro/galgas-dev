@@ -62,7 +62,7 @@ func compareSyntaxSignature
      outOk = [ref_mInstruction compareInstructionSyntaxSignature !test_mInstruction]
   end
   if outOk & ([inReferenceSignature length] < [inTestedSignature length]) then
-    var @semanticInstructionForGeneration instruction = [inTestedSignature mInstructionAtIndex ![inReferenceSignature length]]
+    let @semanticInstructionForGeneration instruction = [inTestedSignature mInstructionAtIndex ![inReferenceSignature length]]
     cast instruction
     case >= @syntaxInstructionForGeneration si :
       error si.mInstructionLocation
@@ -73,7 +73,7 @@ func compareSyntaxSignature
   elsif outOk & ([inReferenceSignature length] > [inTestedSignature length]) then
     error inErrorLocation
     :"syntax signature error, missing instruction; this branch has less syntax instructions than reference branch"
-    var @semanticInstructionForGeneration instruction = [inReferenceSignature mInstructionAtIndex ![inTestedSignature length]]
+    let @semanticInstructionForGeneration instruction = [inReferenceSignature mInstructionAtIndex ![inTestedSignature length]]
     cast instruction
     case >= @syntaxInstructionForGeneration si :
       error si.mInstructionLocation

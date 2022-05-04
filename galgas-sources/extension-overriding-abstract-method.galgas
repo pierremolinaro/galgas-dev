@@ -126,14 +126,13 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mInstanceMethodMap] hasKey !self.mOverridingExtensionMethodName.string] then
-      var @methodQualifier qualifier
       [[superType mInstanceMethodMap] searchKey
         !self.mOverridingExtensionMethodName
         ?*
         ?inheritedSignature
         ?inheritedDeclarationLocation
         ?*
-        ?qualifier
+        ?let qualifier
         ?2*
       ]
       if qualifier <= @methodQualifier. isBasicFinal then
@@ -147,12 +146,11 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
   end
 #--- Analyze formal argument list
   var variableMap = @localVarManager.default
-  var @formalParameterListForGeneration formalParameterListForGeneration
   buildLocalVariableMapAndSignature (
     !inSemanticContext
     !self.mOverridingExtensionMethodFormalParameterList
     !?variableMap
-    ?formalParameterListForGeneration
+    ?let formalParameterListForGeneration
   )
 #--- Check Signature
   if baseTypeName != "" then

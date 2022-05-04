@@ -50,8 +50,9 @@ proc analyzeSemanticInstructionList
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-  ?let @localConstantList inLocalConstantList
-  ?let @localInitializedVariableList inLocalInitializedVariableList
+  ?localConstantList: let @localConstantList inLocalConstantList
+  ?localInitializedVariableListWarnsIfNotMutated: let @localInitializedVariableList inLocalInitializedVariableList
+  ?localInitializedVariableListNoWarnsIfNotMutated: let @localInitializedVariableList inLocalInitializedVariableListNoWarns
   ?let @semanticInstructionListAST inSemanticInstructionListAST
   ?let @location inEndOfBranchLocation
   ?!@localVarManager ioVariableMap
@@ -64,8 +65,9 @@ proc analyzeSemanticInstructionList
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !inLocalConstantList
-    !inLocalInitializedVariableList
+    !localConstantList: inLocalConstantList
+    !localInitializedVariableListWarnsIfNotMutated: inLocalInitializedVariableList
+    !localInitializedVariableListNoWarnsIfNotMutated: inLocalInitializedVariableListNoWarns
     !inSemanticInstructionListAST
     !?ioVariableMap
     ?outInstructionListForGeneration
@@ -80,8 +82,9 @@ proc analyzeSemanticInstructionListWithoutBranch
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-  ?let @localConstantList inLocalConstantList
-  ?let @localInitializedVariableList inLocalInitializedVariableList
+  ?localConstantList: let @localConstantList inLocalConstantList
+  ?localInitializedVariableListWarnsIfNotMutated: let @localInitializedVariableList inLocalInitializedVariableList
+  ?localInitializedVariableListNoWarnsIfNotMutated: let @localInitializedVariableList inLocalInitializedVariableListNoWarns
   ?let @semanticInstructionListAST inSemanticInstructionListAST
   ?!@localVarManager ioVariableMap
   !@semanticInstructionListForGeneration outInstructionListForGeneration
@@ -97,7 +100,10 @@ proc analyzeSemanticInstructionListWithoutBranch
   end
 #--- Declare local variables
   for (mType mName mCppName) in inLocalInitializedVariableList do
-    [!?ioVariableMap insertDefinedLocalVariable !mName !mType !mCppName !mCppName]
+    [!?ioVariableMap insertDefinedLocalVariable !mName !warnsIfNotMutated: true !mType !mCppName !mCppName]
+  end
+  for (mType mName mCppName) in inLocalInitializedVariableListNoWarns do
+    [!?ioVariableMap insertDefinedLocalVariable !mName !warnsIfNotMutated: false !mType !mCppName !mCppName]
   end
 #--- Instruction list
   for (mInstruction) in inSemanticInstructionListAST do
@@ -201,8 +207,7 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
 #    error self.mActualSelector : "the selector should be '!?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
   end
 #--- Analyze input/output variable
-  var @string variableCppName
-  [!?ioVariableMap searchForReadWriteAccess !self.mOutputInputActualParameterName ?var @unifiedTypeMap-entry parameterType ?variableCppName ?*]
+  [!?ioVariableMap searchForReadWriteAccess !self.mOutputInputActualParameterName ?var @unifiedTypeMap-entry parameterType ?let variableCppName ?*]
   var typeList = @unifiedTypeMapEntryList.listWithValue {!parameterType}
   for (mValue) in self.mStructAttributeList do
     let propertyMap = [parameterType mPropertyMap]
@@ -391,7 +396,7 @@ override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
       error self.mInputActualSelfPropertyName : "'self' not mutable in this context"
     end
     let propertyMap = [selfType mPropertyMap]
-    [propertyMap searchKey !self.mInputActualSelfPropertyName ?2* ?var parameterType]
+    [propertyMap searchKey !self.mInputActualSelfPropertyName ?2* ?let parameterType]
     let targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
      + "mProperty_"+ [self.mInputActualSelfPropertyName.string identifierRepresentation]
   #--- Check type
@@ -476,6 +481,7 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
   let targetVariableCppName = "var_" + [self.mInputActualParameterName identifierRepresentation] + "_" + [self.mInputActualParameterName.location locationIndex]
   [!?ioVariableMap insertDefinedLocalVariable
     !self.mInputActualParameterName
+    !warnsIfNotMutated: true
     !inFormalArgumentType
     !targetVariableCppName
     !targetVariableCppName
@@ -860,7 +866,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   end
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location locationIndex]
   let type = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mActualParameterTypeName}
-  [!?ioVariableMap insertDefinedLocalVariable !self.mActualParameterName !type !cppName !cppName]
+  [!?ioVariableMap insertDefinedLocalVariable !self.mActualParameterName !warnsIfNotMutated: true !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
   if expectedType != type then
     error self.mActualParameterName

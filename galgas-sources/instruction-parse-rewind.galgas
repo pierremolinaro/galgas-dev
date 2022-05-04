@@ -152,8 +152,7 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
   end
 #--- Check syntax signature of branches
   var @listOfSemanticInstructionListForGeneration tempListOfBranches = listOfSemanticInstructionListForGeneration
-  var @semanticInstructionListForGeneration instructionList
-  [!?tempListOfBranches popFirst ?instructionList ?*]
+  [!?tempListOfBranches popFirst ?let instructionList ?*]
   let @semanticInstructionListForGeneration referenceSignature = syntaxSignatureOfInstructionList (!"parse" !instructionList)
   var @bool ok = true
   for (mInstructionList mEndOfInstructionList) in tempListOfBranches while ok do

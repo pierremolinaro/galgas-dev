@@ -252,24 +252,24 @@ override method @predefinedTypeAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext
 {
   let optionalMethodMap = @optionalMethodMap {}
-  [self getConstructorMap !?ioSemanticContext.mTypeMap ?var @constructorMap constructorMap]
+  [self getConstructorMap !?ioSemanticContext.mTypeMap ?let @constructorMap constructorMap]
   [self getGetterMap !?ioSemanticContext.mTypeMap ?var @getterMap getterMap]
   [self getSetterMap !?ioSemanticContext.mTypeMap ?var @setterMap setterMap]
   [self getInstanceMethodMap !?ioSemanticContext.mTypeMap ?var @instanceMethodMap instanceMethodMap]
-  [self getClassMethodMap !?ioSemanticContext.mTypeMap ?var @classMethodMap classMethodMap]
-  [self getAddAssignArgumentList !?ioSemanticContext.mTypeMap ?var @functionSignature addAssignArgumentList]
+  [self getClassMethodMap !?ioSemanticContext.mTypeMap ?let @classMethodMap classMethodMap]
+  [self getAddAssignArgumentList !?ioSemanticContext.mTypeMap ?let @functionSignature addAssignArgumentList]
   [self getEnumerationList
     !?ioSemanticContext.mTypeMap
-    ?var @enumerationDescriptorList enumerationList
-    ?var @string enumeratedTypeName
+    ?let @enumerationDescriptorList enumerationList
+    ?let @string enumeratedTypeName
   ]
   [@unifiedTypeMap-entry makeEntryFromString
     !?ioSemanticContext.mTypeMap
     !self.mPredefinedTypeName
-    ?var @unifiedTypeMap-entry selfTypeEntry
+    ?let @unifiedTypeMap-entry selfTypeEntry
   ]
 #--- Enumeration
-  var @unifiedTypeMap-entry enumeratedTypeEntry
+  let @unifiedTypeMap-entry enumeratedTypeEntry
   if enumeratedTypeName == "" then
     enumeratedTypeEntry = @unifiedTypeMap-entry.null
   else

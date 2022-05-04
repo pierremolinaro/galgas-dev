@@ -355,7 +355,7 @@ override method @dictDeclarationAST enterInSemanticContext
 #   SEMANTIC ANALYSIS                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc check_K_escapeCharacters ?@lstring inString {  #--- Check escape sequences : only %K or %%
+proc check_K_escapeCharacters ?let @lstring inString {  #--- Check escape sequences : only %K or %%
   for components in [inString.string componentsSeparatedByString !"%%"] do
     var @stringlist explodedArray = [components.mValue componentsSeparatedByString !"%"]
     [!?explodedArray popFirst ?*]
@@ -372,7 +372,7 @@ proc check_K_escapeCharacters ?@lstring inString {  #--- Check escape sequences 
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc check_K_L_escapeCharacters ?@lstring inString {  #--- Check escape sequences : only %K, %L or %%
+proc check_K_L_escapeCharacters ?let @lstring inString {  #--- Check escape sequences : only %K, %L or %%
   for components in [inString.string componentsSeparatedByString !"%%"] do
     var @stringlist explodedArray = [components.mValue componentsSeparatedByString !"%"]
     [!?explodedArray popFirst ?*]
@@ -417,7 +417,7 @@ override method @dictDeclarationAST semanticAnalysis
   for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    var @unifiedTypeMap-entry t = .searchKey{!inSemanticContext.mTypeMap !mPropertyTypeName}
+    let @unifiedTypeMap-entry t = .searchKey{!inSemanticContext.mTypeMap !mPropertyTypeName}
     let hasSetter = true
     let hasSelector = false
     typedAttributeList +=

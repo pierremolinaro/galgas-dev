@@ -139,9 +139,9 @@ override method @extensionSetterAST semanticAnalysis
   [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 #--- Self type
   let @unifiedTypeMap-entry selfType = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mTypeName}
-  var @string selfObjectName
-  var @string selfObjectAccessor
-  var @bool implementedAsFunction
+  let @string selfObjectName
+  let @string selfObjectAccessor
+  let @bool implementedAsFunction
 #--- Check self type is a class
   if [[selfType mTypeKindEnum] isClassType] then
     selfObjectName = "object"
@@ -153,8 +153,6 @@ override method @extensionSetterAST semanticAnalysis
     implementedAsFunction = true
   end
 #--- Analyze instruction list
-#  var formalParameterListForGeneration = @formalParameterListForGeneration {}
-#  var @semanticInstructionListForGeneration semanticInstructionListForGeneration
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes

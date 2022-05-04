@@ -77,7 +77,7 @@ syntax extension galgas3InstructionsSyntax {
     $grammar$
     let instructionLocation = @location.here
     $identifier$ ?let @lstring grammarComponentName indexing grammarComponentReference
-    var @lstring labelName
+    let @lstring labelName
     select
       labelName = @lstring.new {!"" !@location.here}
     or
@@ -100,7 +100,7 @@ syntax extension galgas3InstructionsSyntax {
     let endOfSourceExpression = @location.here
     <actual_parameter_list> ?let @actualParameterListAST actualParameterList
   #--- Get syntax directed translation result string
-    var @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
+    let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or
@@ -127,10 +127,10 @@ syntax extension galgas3InstructionsSyntax {
     !@semanticInstructionAST outInstruction
   {
     $on$
-    var @semanticExpressionAST sourceExpression
-    var @location endOfSourceExpression
-    var @semanticExpressionAST nameExpression
-    var @location endOfNameExpression
+    let @semanticExpressionAST sourceExpression
+    let @location endOfSourceExpression
+    let @semanticExpressionAST nameExpression
+    let @location endOfNameExpression
     select
       <expression> ?sourceExpression
       endOfSourceExpression = .here
@@ -149,7 +149,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     <actual_parameter_list> ?let @actualParameterListAST actualParameterList
   #--- Get syntax directed translation result string
-    var @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
+    let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or
@@ -183,7 +183,7 @@ syntax extension galgas4InstructionsSyntax {
     $grammar$
     let instructionLocation = @location.here
     $identifier$ ?let @lstring grammarComponentName indexing grammarComponentReference
-    var @lstring labelName
+    let @lstring labelName
     select
       labelName = @lstring.new {!"" !@location.here}
     or
@@ -206,7 +206,7 @@ syntax extension galgas4InstructionsSyntax {
     let endOfSourceExpression = @location.here
     <actual_parameter_list> ?let @actualParameterListAST actualParameterList
   #--- Get syntax directed translation result string
-    var @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
+    let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or
@@ -233,10 +233,10 @@ syntax extension galgas4InstructionsSyntax {
     !@semanticInstructionAST outInstruction
   {
     $on$
-    var @semanticExpressionAST sourceExpression
-    var @location endOfSourceExpression
-    var @semanticExpressionAST nameExpression
-    var @location endOfNameExpression
+    let @semanticExpressionAST sourceExpression
+    let @location endOfSourceExpression
+    let @semanticExpressionAST nameExpression
+    let @location endOfNameExpression
     select
       <expression> ?sourceExpression
       endOfSourceExpression = .here
@@ -255,7 +255,7 @@ syntax extension galgas4InstructionsSyntax {
     end
     <actual_parameter_list> ?let @actualParameterListAST actualParameterList
   #--- Get syntax directed translation result string
-    var @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
+    let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or

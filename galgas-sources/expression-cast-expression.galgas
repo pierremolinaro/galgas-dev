@@ -40,7 +40,7 @@ syntax extension galgas3ExpressionSyntax {
     or
       let endOfReceiverExpression = @location.here
       $is$
-      var @dynamicTypeComparisonKind kind
+      let @dynamicTypeComparisonKind kind
       select
         $==$
         kind = .equal
@@ -86,7 +86,7 @@ syntax extension galgas4ExpressionSyntax {
     or
       let endOfReceiverExpression = @location.here
       $is$
-      var @dynamicTypeComparisonKind kind
+      let @dynamicTypeComparisonKind kind
       select
         $==$
         kind = .equal
@@ -141,14 +141,13 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
 #--- Receiver expression analysis
-  var @semanticExpressionForGeneration expression
   [self.mReceiverExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
-    ?expression
+    ?let expression
   ]
 #--- Get type information
    let castType = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
@@ -204,7 +203,7 @@ override method @castInExpressionAST analyzeSemanticExpression
     !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext 
     !?ioVariableMap
-    ?var @semanticExpressionForGeneration expression
+    ?let @semanticExpressionForGeneration expression
    ]
 #--- Get type information
    let type = @unifiedTypeMap-entry. searchKey {
@@ -274,7 +273,7 @@ override method @testDynamicClassInExpressionForGeneration generateExpression
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
-    ?var @string receiverExpression
+    ?let @string receiverExpression
   ]
 #--- Generated test
   [self.mCastType addHeaderFileName !?ioInclusionSet]
@@ -314,7 +313,7 @@ override method @castInExpressionForGeneration generateExpression
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
-    ?var @string receiverExpression
+    ?let @string receiverExpression
   ]
 #---
   ioGeneratedCode += "GALGAS_" + [self.mTypeName identifierRepresentation]
@@ -364,7 +363,7 @@ override method @extractObjectInExpressionForGeneration generateExpression
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
-    ?var @string receiverExpression
+    ?let @string receiverExpression
   ]
 #--- Generate code
   outCppExpression = "GALGAS_" + [self.mResultType identifierRepresentation]

@@ -68,8 +68,7 @@ proc enterConstructorWith2Arguments
   ?resultTypeName:let @string inReturnedTypeName
   ?hasLexiqueArg:let @bool inHasLexiqueArgument
 {
-  var @unifiedTypeMap-entry returnedTypeIndex
-  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
+  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
   var argumentTypeList =@functionSignature {}
   var @unifiedTypeMap-entry t
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t]

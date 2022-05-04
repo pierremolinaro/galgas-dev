@@ -112,8 +112,7 @@ override method @tildeExpressionForGeneration generateExpression
   !@string outCppExpression {
   [self.mExpression.mResultType addHeaderFileName !?ioInclusionSet]
 #--- Operand
-  var @string operand
-  [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?operand]
+  [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let operand]
 #--- Generate
   outCppExpression = operand + ".operator_tilde (" + [self.mLocation sourceFile] + ")"
 }

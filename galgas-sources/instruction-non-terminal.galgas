@@ -18,7 +18,7 @@ syntax extension galgas3SyntaxComponentSyntax {
   #·····················································································································
 
   rule <syntax_instruction> !@syntaxInstructionAST outInstruction {
-    var @lstring mLabelName # No label : empty string
+    let @lstring mLabelName # No label : empty string
     select
       mLabelName = @lstring.new {!"" !@location.here}
     or
@@ -31,7 +31,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleReference
     <actual_parameter_list> ?let @actualParameterListAST mActualParameterList
   #--- Get syntax directed translation result string
-    var @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
+    let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or
@@ -58,7 +58,7 @@ syntax extension galgas4SyntaxComponentSyntax {
   #·····················································································································
 
   rule <syntax_instruction> !@syntaxInstructionAST outInstruction {
-    var @lstring mLabelName # No label : empty string
+    let @lstring mLabelName # No label : empty string
     select
       mLabelName = @lstring.new {!"" !@location.here}
     or
@@ -73,7 +73,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     <actual_parameter_list> ?let @actualParameterListAST mActualParameterList
     $)$
   #--- Get syntax directed translation result string
-    var @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
+    let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or
@@ -102,8 +102,7 @@ override method @nonterminalCallInstruction transformInstruction
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
   ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
-  var @uint nonTerminalSymbolIndex
-  [inNonTerminalSymbolMap searchKey !self.mNonterminalName ?nonTerminalSymbolIndex ?*]
+  [inNonTerminalSymbolMap searchKey !self.mNonterminalName ?let nonTerminalSymbolIndex ?*]
   ioSyntaxInstructionList += !@nonTerminalInstructionForGrammarAnalysis.new {
     !self.mInstructionLocation
     !self.mNonterminalName
@@ -130,7 +129,7 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
   ?!@uint unused ioSelectMethodCount
 {
   [inNonterminalMap searchKey !self.mNonterminalName ?let @nonterminalLabelMap labelMap]
-  var @formalParameterSignature signature
+  let @formalParameterSignature signature
   if self.mLabelName.string == "parse" then
     signature = {}
   else

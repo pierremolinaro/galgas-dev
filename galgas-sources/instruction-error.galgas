@@ -459,7 +459,7 @@ override method @errorInstructionForGeneration generateInstruction
     !?ioUnusedVariableCppNameSet
     !inGenerateSyntaxDirectedTranslationString
     !?ioGeneratedCode
-    ?@string fixItArrayCppName
+    ?let @string fixItArrayCppName
   ]
 #--- Generate error instruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]

@@ -65,7 +65,7 @@ syntax extension templateSyntax {
     let endLocation = @location.here
     $in$
     <expression> ?outExpression
-    var @string foreachPrefix
+    let @string foreachPrefix
     select
       foreachPrefix = ""
     or
@@ -105,7 +105,7 @@ syntax extension templateSyntax {
 
   rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
     $for$
-    var @bool ascending
+    let @bool ascending
     select
       ascending = true
     or
@@ -129,7 +129,7 @@ syntax extension templateSyntax {
     end
   #--- Do block
     $do$
-    var @lstring indexIdentifier
+    let @lstring indexIdentifier
     select
       indexIdentifier = @lstring.new {!"" !@location.here}
     or
@@ -193,12 +193,11 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
   ?!@templateInstructionListForGeneration ioInstructionList
 {
 #--- Foreach expression
-  var @semanticExpressionForGeneration expression
   [self.mExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?expression
+    ?let expression
   ]
 #--- Check expression is enumerable
   let @enumerationDescriptorList enumerationDescriptor = [expression.mResultType mEnumerationDescriptor] # Empty List if cannot be enumerated
@@ -327,8 +326,7 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@bool ioUseColumnMarker {
 #---
-  var @string foreachVarCppName
-  [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?foreachVarCppName]
+  [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let foreachVarCppName]
 #--- Index
   if [self.mIndexCppName length] > 0 then
     ioGeneratedCode += "GALGAS_uint " + self.mIndexCppName + " (0) ;\n"

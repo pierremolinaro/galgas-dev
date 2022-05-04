@@ -46,7 +46,7 @@ syntax extension galgas3InstructionsSyntax {
   
   rule <match_entry> ?!@matchEntryListAST ioMatchEntryList {
     $@type$ ?let className
-    var @lstring localConstant
+    let @lstring localConstant
     select
       localConstant = @lstring.new {!"" !@location.here}
     or
@@ -70,8 +70,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     let endOfMatchEntryList = @location.here
     $:$
-    var @semanticInstructionListAST mMatchBranchInstructionList
-    <semantic_instruction_list> ? mMatchBranchInstructionList
+    <semantic_instruction_list> ?let mMatchBranchInstructionList
     ioMatchInstructionBranchList +=
       !mMatchEntryList
       !endOfMatchEntryList
@@ -101,7 +100,7 @@ syntax extension galgas3InstructionsSyntax {
       <match_instruction_branch> !? matchInstructionBranchList
     while
     end
-    var @semanticInstructionListAST elseInstructionList
+    let @semanticInstructionListAST elseInstructionList
     select
       elseInstructionList = {}
     or
@@ -322,33 +321,33 @@ override method @matchInstructionAST analyzeSemanticInstruction
       + [[mMatchEntryList length] string]
     end
   #--- Instruction list
-    var @semanticInstructionListForGeneration instructionList
     analyzeSemanticInstructionList (
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
-      !localConstantList
-      !{}
+      !localConstantList: localConstantList
+      !localInitializedVariableListWarnsIfNotMutated: {}
+      !localInitializedVariableListNoWarnsIfNotMutated: {}
       !mMatchBranchInstructionList
       !mEndOf_instructionList
       !?ioVariableMap
-      ?instructionList
+      ?let instructionList
     )
   #---
     matchInstructionBranchList += !matchListForGeneration !instructionList
   end
 #--- 'else' branch
-  var @semanticInstructionListForGeneration elseInstructionList
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !{}
-    !{}
+    !localConstantList: {}
+    !localInitializedVariableListWarnsIfNotMutated: {}
+    !localInitializedVariableListNoWarnsIfNotMutated: {}
     !self.mElseInstructionList
     !self.mEndOf_match_instruction
     !?ioVariableMap
-    ?elseInstructionList
+    ?let elseInstructionList
   )
 #---
   [!?ioVariableMap closeOverride !self.mEndOf_match_instruction]

@@ -88,7 +88,7 @@ syntax extension galgas3InstructionsSyntax {
   #·····················································································································
   
   rule <for_instruction_element> ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
-    var @lstring typeName
+    let @lstring typeName
     select
       typeName = ["" nowhere]
     or
@@ -98,7 +98,7 @@ syntax extension galgas3InstructionsSyntax {
       $*$
       ioElementList += !typeName !true !["" here]
     or
-      var @bool isUnused
+      let @bool isUnused
       select
         isUnused = false
       or
@@ -115,7 +115,7 @@ syntax extension galgas3InstructionsSyntax {
   rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
     $($
     var elementList = @forInstructionEnumeratedObjectElementListAST {}
-    var @bool endsWithEllipsis
+    let @bool endsWithEllipsis
     select
       $...$
       endsWithEllipsis = true
@@ -146,13 +146,13 @@ syntax extension galgas3InstructionsSyntax {
   #·····················································································································
   
   rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
-    var @lstring typeName
+    let @lstring typeName
     select
       typeName = ["" nowhere]
     or
       $@type$ ?typeName
     end
-    @lstring enumerationVariable
+    let @lstring enumerationVariable
     select
       $*$
       enumerationVariable = ["" here]
@@ -175,7 +175,7 @@ syntax extension galgas3InstructionsSyntax {
     $($
     let startLocation = @location.here
     $)$
-    var @lstring prefix
+    let @lstring prefix
     select
       prefix = ["" nowhere]
     or
@@ -198,7 +198,7 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
     var mEnumeratedObjectList =@forInstructionEnumeratedObjectListAST {}
     repeat
-      var @bool ascending
+      let @bool ascending
       select
         ascending = true
       or
@@ -210,7 +210,7 @@ syntax extension galgas3InstructionsSyntax {
     while
       $,$
     end
-    var @semanticExpressionAST mWhileExpression
+    let @semanticExpressionAST mWhileExpression
     select
       mWhileExpression = @trueExpressionAST.new {!@location.here}
     or
@@ -218,7 +218,7 @@ syntax extension galgas3InstructionsSyntax {
       <expression> ? mWhileExpression
     end
     let endof_while_expression = @location.here
-    var @semanticInstructionListAST mBeforeInstructionList
+    let @semanticInstructionListAST mBeforeInstructionList
     select
       mBeforeInstructionList = @semanticInstructionListAST {}
     or
@@ -227,7 +227,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     let endof_before_branch = @location.here
     $do$
-    var @lstring indexVariableName
+    let @lstring indexVariableName
     select
       indexVariableName = @lstring.new {!"" !@location.here}
     or
@@ -235,10 +235,9 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ? indexVariableName
       $)$
     end
-    var @semanticInstructionListAST mDoInstructionList
-    <semantic_instruction_list> ? mDoInstructionList
+    <semantic_instruction_list> ?let mDoInstructionList
     let endof_do_branch = @location.here
-    var @semanticInstructionListAST mBetweenInstructionList
+    let @semanticInstructionListAST mBetweenInstructionList
     select
       mBetweenInstructionList = @semanticInstructionListAST {}
     or
@@ -246,7 +245,7 @@ syntax extension galgas3InstructionsSyntax {
       <semantic_instruction_list> ? mBetweenInstructionList
     end
     let endof_between_branch = @location.here
-    var @semanticInstructionListAST mAfterInstructionList
+    let @semanticInstructionListAST mAfterInstructionList
     select
       mAfterInstructionList = @semanticInstructionListAST {}
     or
@@ -307,7 +306,7 @@ syntax extension galgas4InstructionsSyntax {
   #·····················································································································
   
   rule <for_instruction_element> ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
-    var @lstring typeName
+    let @lstring typeName
     select
       typeName = ["" nowhere]
     or
@@ -317,7 +316,7 @@ syntax extension galgas4InstructionsSyntax {
       $*$
       ioElementList += !typeName !true !["" here]
     or
-      var @bool isUnused
+      let @bool isUnused
       select
         isUnused = false
       or
@@ -353,13 +352,13 @@ syntax extension galgas4InstructionsSyntax {
   #·····················································································································
   
   rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
-    var @lstring typeName
+    let @lstring typeName
     select
       typeName = ["" nowhere]
     or
       $@type$ ?typeName
     end
-    @lstring enumerationVariable
+    let @lstring enumerationVariable
     select
       $*$
       enumerationVariable = ["" here]
@@ -382,7 +381,7 @@ syntax extension galgas4InstructionsSyntax {
     $($
     let startLocation = @location.here
     $)$
-    var @lstring prefix
+    let @lstring prefix
     select
       prefix = ["" nowhere]
     or
@@ -405,7 +404,7 @@ syntax extension galgas4InstructionsSyntax {
     let instructionLocation = @location.here
     var mEnumeratedObjectList =@forInstructionEnumeratedObjectListAST {}
     repeat
-      var @bool ascending
+      let @bool ascending
       select
         ascending = true
       or
@@ -417,7 +416,7 @@ syntax extension galgas4InstructionsSyntax {
     while
       $,$
     end
-    var @semanticExpressionAST mWhileExpression
+    let @semanticExpressionAST mWhileExpression
     select
       mWhileExpression = @trueExpressionAST.new {!@location.here}
     or
@@ -425,7 +424,7 @@ syntax extension galgas4InstructionsSyntax {
       <expression> ? mWhileExpression
     end
     let endof_while_expression = @location.here
-    var @semanticInstructionListAST mBeforeInstructionList
+    let @semanticInstructionListAST mBeforeInstructionList
     select
       mBeforeInstructionList = @semanticInstructionListAST {}
     or
@@ -434,7 +433,7 @@ syntax extension galgas4InstructionsSyntax {
     end
     let endof_before_branch = @location.here
     $do$
-    var @lstring indexVariableName
+    let @lstring indexVariableName
     select
       indexVariableName = @lstring.new {!"" !@location.here}
     or
@@ -442,10 +441,9 @@ syntax extension galgas4InstructionsSyntax {
       $identifier$ ? indexVariableName
       $)$
     end
-    var @semanticInstructionListAST mDoInstructionList
-    <semantic_instruction_list> ? mDoInstructionList
+    <semantic_instruction_list> ?let mDoInstructionList
     let endof_do_branch = @location.here
-    var @semanticInstructionListAST mBetweenInstructionList
+    let @semanticInstructionListAST mBetweenInstructionList
     select
       mBetweenInstructionList = @semanticInstructionListAST {}
     or
@@ -453,7 +451,7 @@ syntax extension galgas4InstructionsSyntax {
       <semantic_instruction_list> ? mBetweenInstructionList
     end
     let endof_between_branch = @location.here
-    var @semanticInstructionListAST mAfterInstructionList
+    let @semanticInstructionListAST mAfterInstructionList
     select
       mAfterInstructionList = @semanticInstructionListAST {}
     or
@@ -722,32 +720,32 @@ override method @forInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap openBranch]
 #--- 'before' branch
   [!?ioVariableMap openOverrideForRepeatBlock]
-  var @semanticInstructionListForGeneration before_instructionList
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !@localConstantList {}
-    !@localInitializedVariableList {}
+    !localConstantList: {}
+    !localInitializedVariableListWarnsIfNotMutated: {}
+    !localInitializedVariableListNoWarnsIfNotMutated: {}
     !self.mBeforeInstructionList
     !self.mEndOf_before_branch
     !?ioVariableMap
-    ?before_instructionList
+    ?let before_instructionList
   )
   [!?ioVariableMap closeOverride !self.mEndOf_before_branch]
 #--- 'between' branch
   [!?ioVariableMap openOverrideForRepeatBlock]
-  var @semanticInstructionListForGeneration between_instructionList
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !@localConstantList {}
-    !@localInitializedVariableList {}
+    !localConstantList: {}
+    !localInitializedVariableListWarnsIfNotMutated: {}
+    !localInitializedVariableListNoWarnsIfNotMutated: {}
     !self.mBetweenInstructionList
     !self.mEndOf_between_branch
     !?ioVariableMap
-    ?between_instructionList
+    ?let between_instructionList
   )
   [!?ioVariableMap closeOverride !self.mEndOf_between_branch]
 #--- 'after' branch
@@ -756,8 +754,9 @@ override method @forInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !@localConstantList {}
-    !@localInitializedVariableList {}
+    !localConstantList: {}
+    !localInitializedVariableListWarnsIfNotMutated: {}
+    !localInitializedVariableListNoWarnsIfNotMutated: {}
     !self.mAfterInstructionList
     !self.mEndOf_after_branch
     !?ioVariableMap
@@ -816,7 +815,6 @@ override method @forInstructionAST analyzeSemanticInstruction
 #--- Handle index
   [!?ioVariableMap openOverrideForRepeatBlock]
   var @string indexCppName = ""
-#  var @localConstantList indexDeclaration = {}
   if self.mIndexVariableName.string != "" then
     indexCppName = "index_" + [self.mInstructionLocation locationIndex]
     localConstantListForDoBranch +=
@@ -826,17 +824,17 @@ override method @forInstructionAST analyzeSemanticInstruction
       !indexCppName
   end
 #--- 'do' branch
-  var @semanticInstructionListForGeneration do_instructionList
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !localConstantListForDoBranch # indexDeclaration
-    !{}
+    !localConstantList: localConstantListForDoBranch # indexDeclaration
+    !localInitializedVariableListWarnsIfNotMutated: {}
+    !localInitializedVariableListNoWarnsIfNotMutated: {}
     !self.mDoInstructionList
     !self.mEndOf_do_branch
     !?ioVariableMap
-    ?do_instructionList
+    ?let do_instructionList
   )
 #--- End override
   [!?ioVariableMap closeOverride !self.mEndOf_foreach_instruction]
@@ -892,13 +890,12 @@ override method @forInstructionForGeneration generateInstruction
 {
   var @stringlist enumerationVarCppNameList = {}
   for (* mEnumeratedExpression *) in self.mEnumeratedObjectList do
-    var @string enumerationVar
     [mEnumeratedExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
-      ?enumerationVar
+      ?let enumerationVar
     ]
     enumerationVarCppNameList += !enumerationVar
   end
@@ -919,8 +916,7 @@ override method @forInstructionForGeneration generateInstruction
     if whileExpressionIsAllwaysTrue then
       ioGeneratedCode += "const bool " + boolVarCppName + " = true ;\n"
     else
-      var @string whileVar
-      [self.mWhileExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVar]
+      [self.mWhileExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let whileVar]
       ioGeneratedCode += "bool " + boolVarCppName + " = " + whileVar + ".isValidAndTrue () ;\n"
     end
     ioGeneratedCode += "if ("
@@ -966,13 +962,12 @@ override method @forInstructionForGeneration generateInstruction
       between ioGeneratedCode += " && "
       end
       ioGeneratedCode += ") {\n"
-      var @string whileVar
       [self.mWhileExpression generateExpression
         !?ioGeneratedCode
         !?ioInclusionSet
         !?ioTemporaryVariableIndex
         !?ioUnusedVariableCppNameSet
-        ?whileVar
+        ?let whileVar
       ]
       ioGeneratedCode += "    " + boolVarCppName + " = " + whileVar + ".isValidAndTrue () ;\n"
       ioGeneratedCode += "  }\n"

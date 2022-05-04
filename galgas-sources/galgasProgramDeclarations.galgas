@@ -63,7 +63,7 @@ syntax galgas3ProgramDeclarations (galgas3Scanner) {
     $message$
     $"string"$ ?let @lstring mSourceFileHelp
   #--- Reference grammar
-    var @lstring referenceGrammar
+    let @lstring referenceGrammar
     select
       referenceGrammar = ["" nowhere]
     or
@@ -82,7 +82,7 @@ syntax galgas3ProgramDeclarations (galgas3Scanner) {
         error typeName : "the only type allowed here is '@lstring'"
       end
     end
-    var @bool isUnused
+    let @bool isUnused
     select
       isUnused = false
     or
@@ -159,7 +159,7 @@ syntax galgas4ProgramDeclarations (galgas3Scanner) {
     $message$
     $"string"$ ?let @lstring mSourceFileHelp
   #--- Reference grammar
-    var @lstring referenceGrammar
+    let @lstring referenceGrammar
     select
       referenceGrammar = ["" nowhere]
     or
@@ -178,7 +178,7 @@ syntax galgas4ProgramDeclarations (galgas3Scanner) {
         error typeName : "the only type allowed here is '@lstring'"
       end
     end
-    var @bool isUnused
+    let @bool isUnused
     select
       isUnused = false
     or

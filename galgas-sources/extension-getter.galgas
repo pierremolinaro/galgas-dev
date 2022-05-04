@@ -25,11 +25,10 @@ syntax extension galgas3DeclarationsSyntax {
     $getter$
     $@type$ ?let @lstring className indexing typeReferenceExtensionGetter
     $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition
-    var @formalInputParameterListAST mFormalInputParameterList
-    <formal_input_parameter_list> ? mFormalInputParameterList
+    <formal_input_parameter_list> ?let mFormalInputParameterList
     $->$
     $@type$ ?let @lstring mReturnedTypeName
-    var @lstring resultVariableName
+    let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
     or
@@ -66,11 +65,10 @@ syntax extension galgas4DeclarationsSyntax {
     $getter$
     $@type$ ?let @lstring className indexing typeReferenceExtensionGetter
     $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition
-    var @formalInputParameterListAST mFormalInputParameterList
-    <formal_input_parameter_list> ? mFormalInputParameterList
+    <formal_input_parameter_list> ?let mFormalInputParameterList
     $->$
     $@type$ ?let @lstring mReturnedTypeName
-    var @lstring resultVariableName
+    let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
     or
@@ -166,9 +164,9 @@ override method @extensionGetterAST semanticAnalysis
   [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 #--- Self type
   let @unifiedTypeMap-entry selfType = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mTypeName}
-  var @string selfObjectName
-  var @string selfObjectAccessor
-  var @bool implementedAsFunction
+  let @string selfObjectName
+  let @string selfObjectAccessor
+  let @bool implementedAsFunction
 #--- Check self type is a class
   if [[selfType mTypeKindEnum] isClassType] then
     selfObjectName = "object"
@@ -188,10 +186,6 @@ override method @extensionGetterAST semanticAnalysis
     !selfObjectAccessor
     !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
   }
-  var @unifiedTypeMap-entry returnType
-  var @string returnVariableCppName
-  var @formalInputParameterListForGeneration formalParameterListForGeneration
-  var @semanticInstructionListForGeneration semanticInstructionListForGeneration
   analyzeFunctionBody (
     !nameForUsefulness
     !?ioUsefulEntitiesGraph
@@ -206,10 +200,10 @@ override method @extensionGetterAST semanticAnalysis
     !self.mExtensionGetterReturnedVariableName
     !self.mExtensionGetterReturnedTypeName
     !self.mEndOfReaderLocation
-    ?formalParameterListForGeneration
-    ?returnType
-    ?returnVariableCppName
-    ?semanticInstructionListForGeneration
+    ?let formalParameterListForGeneration
+    ?let returnType
+    ?let returnVariableCppName
+    ?let semanticInstructionListForGeneration
   )
 #---
   ioSemanticDeclarationListForGeneration +=

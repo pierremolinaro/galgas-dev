@@ -54,16 +54,16 @@ syntax galgas3OptionComponentSyntax (galgas3Scanner) {
   #·····················································································································
 
   rule <option_declaration> ?!@commandLineOptionListAST ioCommandLineOptionList {
-    $@type$ ?var @lstring mOptionTypeName
-    $identifier$ ?var @lstring mOptionInternalName
+    $@type$ ?let @lstring mOptionTypeName
+    $identifier$ ?let @lstring mOptionInternalName
     $:$
-    $'char'$ ?var @lchar mOptionInvocationLetter
+    $'char'$ ?let @lchar mOptionInvocationLetter
     $,$
-    $"string"$ ?var @lstring mOptionInvocationString
+    $"string"$ ?let @lstring mOptionInvocationString
     $->$
-    $"string"$ ?var @lstring mOptionComment
+    $"string"$ ?let @lstring mOptionComment
     var defaultValue =@lstring.new{!"" !@location.here}
-    var @optionDefaultValueEnumAST optionDefaultValueKind
+    let @optionDefaultValueEnumAST optionDefaultValueKind
     select
       optionDefaultValueKind = @optionDefaultValueEnumAST. noDefaultValue
     or
@@ -117,16 +117,16 @@ syntax galgas4OptionComponentSyntax (galgas3Scanner) {
   #·····················································································································
 
   rule <option_declaration> ?!@commandLineOptionListAST ioCommandLineOptionList {
-    $@type$ ?var @lstring mOptionTypeName
-    $identifier$ ?var @lstring mOptionInternalName
+    $@type$ ?let @lstring mOptionTypeName
+    $identifier$ ?let @lstring mOptionInternalName
     $:$
-    $'char'$ ?var @lchar mOptionInvocationLetter
+    $'char'$ ?let @lchar mOptionInvocationLetter
     $,$
-    $"string"$ ?var @lstring mOptionInvocationString
+    $"string"$ ?let @lstring mOptionInvocationString
     $->$
-    $"string"$ ?var @lstring mOptionComment
+    $"string"$ ?let @lstring mOptionComment
     var defaultValue =@lstring.new{!"" !@location.here}
-    var @optionDefaultValueEnumAST optionDefaultValueKind
+    let @optionDefaultValueEnumAST optionDefaultValueKind
     select
       optionDefaultValueKind = @optionDefaultValueEnumAST. noDefaultValue
     or

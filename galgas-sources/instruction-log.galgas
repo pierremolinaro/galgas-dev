@@ -120,14 +120,13 @@ override method @logInstructionAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap {
   for (mLogMessage mLogExpression) in self.mLogList do
   #--- Analyze source expression
-    var @semanticExpressionForGeneration expression
     [mLogExpression analyzeSemanticExpression
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inferenceType: @unifiedTypeMap-entry.null
       !inAnalysisContext
       !?ioVariableMap
-      ?expression
+      ?let expression
     ]
   #--- Generate instruction
     ioInstructionListForGeneration += !@logInstructionForGeneration.new {

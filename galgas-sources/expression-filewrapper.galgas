@@ -240,7 +240,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #--- Parse filewrapper path
   var @stringlist directoryList
-  var @string fileName
+  let @string fileName
   if [self.mFilewrapperPath length] == 0 then
     error self.mFilewrapperPath : "path is empty" : directoryList, fileName
   elsif [self.mFilewrapperPath firstCharacterOrNul] == '/' then
@@ -268,10 +268,9 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
   end
 #--- Search for file
   var @string builtPath = ""
-  loop( [filewrapperDirectoryMap count] + 1)
+  loop ([filewrapperDirectoryMap count] + 1)
   while [directoryList length] > 0 do
-    var @string directoryName
-    [!?directoryList popFirst ?directoryName]
+    [!?directoryList popFirst ?let directoryName]
     builtPath += directoryName + "/"
     if [filewrapperDirectoryMap hasKey !directoryName] then
       [filewrapperDirectoryMap searchKey
@@ -285,8 +284,8 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
       directoryList = @stringlist {} # For exiting loop
     end
   end
-  var @uint fileIndex
-  var @bool isTextFile
+  let @uint fileIndex
+  let @bool isTextFile
   if [filewrapperFileMap hasKey !fileName] then
     [filewrapperFileMap searchKey !@lstring.new {!fileName !@location.here} ?* ?isTextFile ?* ?fileIndex]
   else
@@ -347,13 +346,12 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
   ioInclusionSet += !"filewrapper-" + self.mFilewrapperName
   var parameterList =@stringlist {}
   for (mExpression) in self.mActualOutputParameterList do
-    var @string parameter
     [mExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
-      ?parameter
+      ?let parameter
     ]
     parameterList += !parameter  
   end

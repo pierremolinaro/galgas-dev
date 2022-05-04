@@ -35,7 +35,7 @@ syntax galgas3SyntaxComponentSyntax (galgas3Scanner) {
     $syntax$
     $identifier$ ?let @lstring syntaxComponentName
   #--- Imported lexique
-    var @lstring importedLexiqueReference
+    let @lstring importedLexiqueReference
     select
       importedLexiqueReference = ["" nowhere]
     or
@@ -44,7 +44,7 @@ syntax galgas3SyntaxComponentSyntax (galgas3Scanner) {
       $)$
     end
   #--- Feature 'translate'
-    var @bool hasTranslateFeature
+    let @bool hasTranslateFeature
     select
       hasTranslateFeature = false
     or
@@ -58,7 +58,7 @@ syntax galgas3SyntaxComponentSyntax (galgas3Scanner) {
   #--- Loop on declarations
     var nonterminalDeclarationList =@nonterminalDeclarationListAST {}
     var ruleList =@syntaxRuleListAST {}
-    var mSemanticDeclarations =@semanticDeclarationListAST {}
+    let mSemanticDeclarations =@semanticDeclarationListAST {}
     repeat
     while
       <nonterminal_declaration> !? nonterminalDeclarationList
@@ -87,7 +87,7 @@ syntax galgas3SyntaxComponentSyntax (galgas3Scanner) {
   #--- Loop on declarations
     var nonterminalDeclarationList =@nonterminalDeclarationListAST {}
     var ruleList =@syntaxRuleListAST {}
-    var mSemanticDeclarations =@semanticDeclarationListAST {}
+    let mSemanticDeclarations =@semanticDeclarationListAST {}
     repeat
     while
       <nonterminal_declaration> !? nonterminalDeclarationList
@@ -128,8 +128,7 @@ syntax galgas3SyntaxComponentSyntax (galgas3Scanner) {
   #·····················································································································
 
   rule <syntax_rule_label> ?let @lstring inLabelName ?!@syntaxRuleLabelListAST ioLabelList {
-    var @formalParameterListAST mFormalParameters
-    <formal_parameter_list> ? mFormalParameters
+    <formal_parameter_list> ?let mFormalParameters
     let endOfArguments = @location.here
     ${$
     <syntax_instruction_list> ?let @syntaxInstructionList mSyntaxInstructionList
@@ -216,7 +215,7 @@ syntax galgas4SyntaxComponentSyntax (galgas3Scanner) {
     $syntax$
     $identifier$ ?let @lstring syntaxComponentName
   #--- Imported lexique
-    var @lstring importedLexiqueReference
+    let @lstring importedLexiqueReference
     select
       importedLexiqueReference = ["" nowhere]
     or
@@ -225,7 +224,7 @@ syntax galgas4SyntaxComponentSyntax (galgas3Scanner) {
       $)$
     end
   #--- Feature 'translate'
-    var @bool hasTranslateFeature
+    let @bool hasTranslateFeature
     select
       hasTranslateFeature = false
     or
@@ -238,8 +237,7 @@ syntax galgas4SyntaxComponentSyntax (galgas3Scanner) {
     ${$
   #--- Loop on declarations
     var nonterminalDeclarationList =@nonterminalDeclarationListAST {}
-    var ruleList =@syntaxRuleListAST {}
-    var mSemanticDeclarations =@semanticDeclarationListAST {}
+    var ruleList = @syntaxRuleListAST {}
     repeat
     while
       <nonterminal_declaration> !? nonterminalDeclarationList
@@ -268,7 +266,6 @@ syntax galgas4SyntaxComponentSyntax (galgas3Scanner) {
   #--- Loop on declarations
     var nonterminalDeclarationList =@nonterminalDeclarationListAST {}
     var ruleList =@syntaxRuleListAST {}
-    var mSemanticDeclarations =@semanticDeclarationListAST {}
     repeat
     while
       <nonterminal_declaration> !? nonterminalDeclarationList
@@ -308,11 +305,8 @@ syntax galgas4SyntaxComponentSyntax (galgas3Scanner) {
   #      S Y N T A X    R U L E    D E C L A R A T I O N  
   #·····················································································································
 
-  rule <syntax_rule_label>
-    ?let @lstring inLabelName
-    ?!@syntaxRuleLabelListAST ioLabelList {
-    var @formalParameterListAST mFormalParameters
-    <formal_parameter_list> ? mFormalParameters
+  rule <syntax_rule_label> ?let @lstring inLabelName ?!@syntaxRuleLabelListAST ioLabelList {
+    <formal_parameter_list> ?let mFormalParameters
     let endOfArguments = @location.here
     ${$
     <syntax_instruction_list> ?let @syntaxInstructionList mSyntaxInstructionList

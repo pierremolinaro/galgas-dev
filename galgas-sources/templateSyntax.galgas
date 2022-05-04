@@ -485,7 +485,7 @@ rule <primary> !@templateExpressionAST outExpression {
   <primary> ?outExpression
   let @location endOfReceiverExpression = @location.here
   $is$
-  var @dynamicTypeComparisonKind kind
+  let @dynamicTypeComparisonKind kind
   select
     $==$
     kind = .equal

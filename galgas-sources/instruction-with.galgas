@@ -45,7 +45,7 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
     <expression> ?let @semanticExpressionAST keyExpression
     let endOfKeyExpression = @location.here
-    var @lstring withPrefix
+    let @lstring withPrefix
     select
       withPrefix = @lstring.new {!"" !@location.here}
     or
@@ -75,7 +75,7 @@ syntax extension galgas3InstructionsSyntax {
   {
     <expression> ?let @semanticExpressionAST receiverExpression
     let endOfReceiverExpression = @location.here
-    var @lstring searchMethodNameForErrorSignaling
+    let @lstring searchMethodNameForErrorSignaling
     select
       searchMethodNameForErrorSignaling = ["" nowhere]
     or
@@ -86,7 +86,7 @@ syntax extension galgas3InstructionsSyntax {
     $do$
     <semantic_instruction_list> ?let @semanticInstructionListAST mDoBranchInstructions
     let endOfDoInstructions = @location.here
-    var @semanticInstructionListAST mElseBranchInstructions
+    let @semanticInstructionListAST mElseBranchInstructions
     select
       mElseBranchInstructions = {}
     or
@@ -124,7 +124,7 @@ syntax extension galgas3InstructionsSyntax {
     if selector.string != "" then
       error selector : "an empty selector '!?' is required here"
     end
-    var @bool targetIsPrefixedBySelf
+    let @bool targetIsPrefixedBySelf
     select
       targetIsPrefixedBySelf = false
     or
@@ -141,7 +141,7 @@ syntax extension galgas3InstructionsSyntax {
       structAttributeList += !mStructFieldName
     end
     let endOfReceiverExpression = @location.here
-    var @lstring searchMethodNameForErrorSignaling
+    let @lstring searchMethodNameForErrorSignaling
     select
       searchMethodNameForErrorSignaling = ["" nowhere]
     or
@@ -152,7 +152,7 @@ syntax extension galgas3InstructionsSyntax {
     $do$
     <semantic_instruction_list> ?let @semanticInstructionListAST mDoBranchInstructions
     let endOf_do_instructions = @location.here
-    var @semanticInstructionListAST mElseBranchInstructions
+    let @semanticInstructionListAST mElseBranchInstructions
     select
       mElseBranchInstructions = {}
     or
@@ -195,7 +195,7 @@ syntax extension galgas4InstructionsSyntax {
     let instructionLocation = @location.here
     <expression> ?let @semanticExpressionAST keyExpression
     let endOfKeyExpression = @location.here
-    var @lstring withPrefix
+    let @lstring withPrefix
     select
       withPrefix = @lstring.new {!"" !@location.here}
     or
@@ -225,7 +225,7 @@ syntax extension galgas4InstructionsSyntax {
   {
     <expression> ?let @semanticExpressionAST receiverExpression
     let endOfReceiverExpression = @location.here
-    var @lstring searchMethodNameForErrorSignaling
+    let @lstring searchMethodNameForErrorSignaling
     select
       searchMethodNameForErrorSignaling = ["" nowhere]
     or
@@ -236,7 +236,7 @@ syntax extension galgas4InstructionsSyntax {
     $do$
     <semantic_instruction_list> ?let @semanticInstructionListAST mDoBranchInstructions
     let endOfDoInstructions = @location.here
-    var @semanticInstructionListAST mElseBranchInstructions
+    let @semanticInstructionListAST mElseBranchInstructions
     select
       mElseBranchInstructions = {}
     or
@@ -274,7 +274,7 @@ syntax extension galgas4InstructionsSyntax {
     if selector.string != "" then
       error selector : "an empty selector '!?' is required here"
     end
-    var @bool targetIsPrefixedBySelf
+    let @bool targetIsPrefixedBySelf
     select
       targetIsPrefixedBySelf = false
     or
@@ -291,7 +291,7 @@ syntax extension galgas4InstructionsSyntax {
       structAttributeList += !mStructFieldName
     end
     let endOfReceiverExpression = @location.here
-    var @lstring searchMethodNameForErrorSignaling
+    let @lstring searchMethodNameForErrorSignaling
     select
       searchMethodNameForErrorSignaling = ["" nowhere]
     or
@@ -302,7 +302,7 @@ syntax extension galgas4InstructionsSyntax {
     $do$
     <semantic_instruction_list> ?let @semanticInstructionListAST mDoBranchInstructions
     let endOf_do_instructions = @location.here
-    var @semanticInstructionListAST mElseBranchInstructions
+    let @semanticInstructionListAST mElseBranchInstructions
     select
       mElseBranchInstructions = {}
     or
@@ -434,8 +434,9 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !localConstantList
-    !{}
+    !localConstantList: localConstantList
+    !localInitializedVariableListWarnsIfNotMutated: {}
+    !localInitializedVariableListNoWarnsIfNotMutated: {}
     !self.mDoBranchInstructions
     !self.mEndOf_do_instructions
     !?ioVariableMap
@@ -446,8 +447,9 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !{}
-    !{}
+    !localConstantList: {}
+    !localInitializedVariableListWarnsIfNotMutated: {}
+    !localInitializedVariableListNoWarnsIfNotMutated: {}
     !self.mElseBranchInstructions
     !self.mEndOf_else_instructions
     !?ioVariableMap
@@ -469,12 +471,11 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
 #······················································································································*
 
 override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
-{
+                                ?let @lstring inUsefulnessCallerEntityName
+                                ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                ?let @analysisContext inAnalysisContext
+                                ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                                ?!@localVarManager ioVariableMap {
 #--- Analyze source expression
   [self.mKeyExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
@@ -498,12 +499,12 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   let objectArrayCppName = "objectArray_" + [self.mInstructionLocation locationIndex]
 #--- Read/write access to receiver variable
   var @unifiedTypeMap-entry targetType
-  var @string receiverVariableCppName
+  let @string receiverVariableCppName
   if self.mReceiverIsPrefixedBySelf then
     if let [inAnalysisContext.selfType available
-      ?type:  let selfType
-      ?mutable: *
-      ?mutableproperties: let propertiesAreMutable] then
+                        ?type:  let selfType
+                        ?mutable: *
+                        ?mutableproperties: let propertiesAreMutable] then
       let propertyMap = [selfType mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       if isConstant then
@@ -516,21 +517,6 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     else
       error self.mReceiverName: "'self' cannot be used in this context" : targetType, receiverVariableCppName
     end
-#    if [inAnalysisContext.nonMutableSelfType isNull] then
-#      error self.mReceiverName: "'self' cannot be used in this context"
-#      : targetType, receiverVariableCppName
-#    elsif [inAnalysisContext.mutableSelfType isNull] then
-#      error self.mReceiverName: "'self' object is not mutable"
-#      : targetType, receiverVariableCppName
-#    else
-#      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
-#      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
-#      if isConstant then
-#        error self.mReceiverName: "a constant property cannot be modified"
-#      end
-#      receiverVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
-#       + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
-#    end
   else
     [!?ioVariableMap searchForReadWriteAccess
       !self.mReceiverName
@@ -583,25 +569,26 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !localConstantList
-    !localInitializedVariableList
+    !localConstantList: localConstantList
+    !localInitializedVariableListWarnsIfNotMutated: {}
+    !localInitializedVariableListNoWarnsIfNotMutated: localInitializedVariableList
     !self.m_do_Instructions
     !self.mEndOf_do_instructions
     !?ioVariableMap
     ?let @semanticInstructionListForGeneration do_instructionList
   )
 #--- else branch
-  var @semanticInstructionListForGeneration else_instructionList
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !{}
-    !{}
+    !localConstantList: {}
+    !localInitializedVariableListWarnsIfNotMutated: {}
+    !localInitializedVariableListNoWarnsIfNotMutated: {}
     !self.m_else_Instructions
     !self.mEndOf_else_instructions
     !?ioVariableMap
-    ?else_instructionList
+    ?let else_instructionList
   )
   [!?ioVariableMap closeOverride !self.mEndOf_else_instructions]
 #--- Generate instruction

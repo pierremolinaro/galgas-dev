@@ -24,14 +24,14 @@ syntax extension galgas3DeclarationsSyntax {
   #·····················································································································
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
-    var @bool isAbstract
+    let @bool isAbstract
     select
       isAbstract = false
     or
       $abstract$
       isAbstract = true
     end
-    var @bool isReference
+    let @bool isReference
     select
       $class$
       if [option galgas_cli_options.errorClassDeclaration value] then
@@ -51,7 +51,7 @@ syntax extension galgas3DeclarationsSyntax {
       error .here : "'value class' is obsolete, use 'refclass'"
     end
     $@type$ ?let @lstring className indexing classDefinition
-    var @lstring superClassName # Empty if no super class
+    let @lstring superClassName # Empty if no super class
     select
       superClassName = ["" nowhere]
     or
@@ -65,7 +65,7 @@ syntax extension galgas3DeclarationsSyntax {
       classFeatureList += !classFeatureName
     end
     ${$
-    var @string mClassMessage = ""
+    let @string mClassMessage = ""
   #--- Class properties
     var @propertyInCollectionListAST propertyList = {}
     repeat
@@ -110,35 +110,16 @@ syntax extension galgas4DeclarationsSyntax {
   #·····················································································································
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
-    var @bool isAbstract
+    let @bool isAbstract
     select
       isAbstract = false
     or
       $abstract$
       isAbstract = true
     end
-#    var @bool isReference
     $class$
-#    select
-#      $class$
-#      if [option galgas_cli_options.errorClassDeclaration value] then
-#        error .here : "'class' declaration is obsolete, use 'valueclass'"
-#      else
-#        warning .here : "'class' declaration is obsolete, use 'valueclass'"
-#      end
-#      isReference = false
-#    or
-#      $valueclass$
-#      isReference = false
-#    or
-#      $refclass$
-#      isReference = true
-#    end
-#    if not isReference && [option galgas_cli_options.errorValueClassDeclaration value] then
-#      error .here : "'value class' is obsolete, use 'refclass'"
-#    end
     $@type$ ?let @lstring className indexing classDefinition
-    var @lstring superClassName # Empty if no super class
+    let @lstring superClassName # Empty if no super class
     select
       superClassName = ["" nowhere]
     or
@@ -152,7 +133,7 @@ syntax extension galgas4DeclarationsSyntax {
       classFeatureList += !classFeatureName
     end
     ${$
-    var @string mClassMessage = ""
+    let @string mClassMessage = ""
   #--- Class properties
     var @propertyInCollectionListAST propertyList = {}
     repeat
@@ -232,10 +213,10 @@ override method @classDeclarationAST enterInSemanticContext
   var @getterMap getterMap
   var @setterMap setterMap
   var @instanceMethodMap instanceMethodMap
-  var @typedPropertyList inheritedTypedPropertyList
+  let @typedPropertyList inheritedTypedPropertyList
   var @propertyMap attributeMap = {}
 #--- Handle super class
-  var @unifiedTypeMap-entry superClassIndex
+  let @unifiedTypeMap-entry superClassIndex
   var @bool generateHeaderInSeparateFile
   if self.mSuperClassName.string == "" then
     superClassIndex = @unifiedTypeMap-entry.null
@@ -349,7 +330,7 @@ override method @classDeclarationAST enterInSemanticContext
   [@unifiedTypeMap-entry makeEntry
      !?ioSemanticContext.mTypeMap
      !self.mClassTypeName
-     ?var @unifiedTypeMap-entry classIndex
+     ?let @unifiedTypeMap-entry classIndex
   ]
 #--- Constructors
   var @constructorMap constructorMap = {}

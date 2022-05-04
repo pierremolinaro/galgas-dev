@@ -208,8 +208,6 @@
 		CF873F6A1A32333C0014C45A /* C_StringListCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF873F681A32333C0014C45A /* C_StringListCommandLineOption.cpp */; };
 		CF873F6B1A32333C0014C45A /* C_StringListCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF873F681A32333C0014C45A /* C_StringListCommandLineOption.cpp */; };
 		CF8D51990E46334400CFF259 /* GGSUpdateCocoaGalgas.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8D51950E46334400CFF259 /* GGSUpdateCocoaGalgas.m */; };
-		CF9120EA2821A32E00161C81 /* all-declarations-32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9120E92821A32E00161C81 /* all-declarations-32.cpp */; };
-		CF9120EB2821A32E00161C81 /* all-declarations-32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9120E92821A32E00161C81 /* all-declarations-32.cpp */; };
 		CF9233C11BADAE68001032DA /* mpz-get_si.c in Sources */ = {isa = PBXBuildFile; fileRef = CF9233C01BADAE68001032DA /* mpz-get_si.c */; };
 		CF9233C21BADAE68001032DA /* mpz-get_si.c in Sources */ = {isa = PBXBuildFile; fileRef = CF9233C01BADAE68001032DA /* mpz-get_si.c */; };
 		CF9233C41BADAEB3001032DA /* mpz-get_ui.c in Sources */ = {isa = PBXBuildFile; fileRef = CF9233C31BADAEB3001032DA /* mpz-get_ui.c */; };
@@ -865,8 +863,6 @@
 		CF8A32121278D21600E3EDC9 /* cTemplateDelimiter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = cTemplateDelimiter.h; sourceTree = "<group>"; };
 		CF8D51940E46334400CFF259 /* GGSUpdateCocoaGalgas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGSUpdateCocoaGalgas.h; sourceTree = "<group>"; };
 		CF8D51950E46334400CFF259 /* GGSUpdateCocoaGalgas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGSUpdateCocoaGalgas.m; sourceTree = "<group>"; };
-		CF9120E82821A32D00161C81 /* all-declarations-32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations-32.h"; sourceTree = "<group>"; };
-		CF9120E92821A32E00161C81 /* all-declarations-32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-32.cpp"; sourceTree = "<group>"; };
 		CF9231E01BADA84D001032DA /* gmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gmp.h; sourceTree = "<group>"; };
 		CF9233BF1BADAA57001032DA /* gmp-impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "gmp-impl.h"; sourceTree = "<group>"; };
 		CF9233C01BADAE68001032DA /* mpz-get_si.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-get_si.c"; sourceTree = "<group>"; };
@@ -1313,8 +1309,6 @@
 				CFE6ECCC281D69C80079AA96 /* all-declarations-30.h */,
 				CFE6ECCB281D69C80079AA96 /* all-declarations-31.cpp */,
 				CFE6ECCD281D69C80079AA96 /* all-declarations-31.h */,
-				CF9120E92821A32E00161C81 /* all-declarations-32.cpp */,
-				CF9120E82821A32D00161C81 /* all-declarations-32.h */,
 				CF4C995327301EDA000A6A07 /* all-declarations.h */,
 				CF12C0BD1D043E610060778F /* all-predefined-types.cpp */,
 				CF4C996B27301EDB000A6A07 /* all-predefined-types.h */,
@@ -2217,7 +2211,6 @@
 				CF92344B1BADC719001032DA /* mpn-tdiv_qr.c in Sources */,
 				CF9233C71BADAEDD001032DA /* mpz-export.c in Sources */,
 				CF9E75AE1BAE11DD00DBEFEE /* mpz-fdiv_q_ui.c in Sources */,
-				CF9120EA2821A32E00161C81 /* all-declarations-32.cpp in Sources */,
 				CF9E75A61BADF2B000DBEFEE /* 64-mp_bases.c in Sources */,
 				CF9E75771BADDDA900DBEFEE /* mpn-lshiftc.c in Sources */,
 				CF92340D1BADBFF6001032DA /* mpz-com.c in Sources */,
@@ -2490,7 +2483,6 @@
 				CF9234141BADBFF6001032DA /* mpz-tdiv_qr.c in Sources */,
 				CF9E75AF1BAE11DD00DBEFEE /* mpz-fdiv_q_ui.c in Sources */,
 				CFB02C8319F3FC2F0011D03D /* all-declarations-23.cpp in Sources */,
-				CF9120EB2821A32E00161C81 /* all-declarations-32.cpp in Sources */,
 				CF9E75A71BADF2B000DBEFEE /* 64-mp_bases.c in Sources */,
 				CF92344C1BADC719001032DA /* mpn-tdiv_qr.c in Sources */,
 				CF9233C81BADAEDD001032DA /* mpz-export.c in Sources */,

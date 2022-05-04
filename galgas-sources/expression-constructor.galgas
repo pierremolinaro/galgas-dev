@@ -41,7 +41,7 @@ syntax extension galgas3ExpressionSyntax {
   #--- Constructor name
     $identifier$ ?let @lstring constructorName
   #--- Actual arguments
-    var @actualOutputExpressionList expressionList
+    let @actualOutputExpressionList expressionList
     select
       expressionList = {}
     or
@@ -95,7 +95,7 @@ syntax extension galgas4ExpressionSyntax {
   #--- Constructor name
     $identifier$ ?let @lstring constructorName
   #--- Actual arguments
-    var @actualOutputExpressionList expressionList
+    let @actualOutputExpressionList expressionList
     select
       expressionList = {}
     or
@@ -171,7 +171,7 @@ private proc analyzeConstructorInvocation
   #--- Get constructor map from type map
     let @constructorMap constructorMap = [outConstructorType mConstructorMap]
   #--- Search contructor
-    var @functionSignature constructorFormalArgumentTypeList
+    let @functionSignature constructorFormalArgumentTypeList
     with inConstructorName.string in constructorMap  do
       constructorFormalArgumentTypeList = mArgumentTypeList
       outHasCompilerArgument = mHasCompilerArgument

@@ -52,7 +52,7 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext
 {
 #--- Handle super class
-  var @unifiedTypeMap-entry superClassIndex
+  let @unifiedTypeMap-entry superClassIndex
   var @bool generateHeaderInSeparateFile
   if self.mSuperWeakReferenceTypeName.string == "" then
     superClassIndex = @unifiedTypeMap-entry.null
@@ -64,18 +64,14 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
     end
   else
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mSuperWeakReferenceTypeName ?superClassIndex]
-    var @typeKindEnum typeKindEnum
-    var @getterMap inheritedGetterMap
-    var @setterMap inheritedSetterMap
-    var @instanceMethodMap inheritedMethodMap
     [ioSemanticContext.mTypeMap searchKey
       !self.mSuperWeakReferenceTypeName
       ?3*
-      ?typeKindEnum
+      ?let typeKindEnum
       ?5*
-      ?inheritedGetterMap
-      ?inheritedSetterMap
-      ?inheritedMethodMap
+      ?let inheritedGetterMap
+      ?let inheritedSetterMap
+      ?let inheritedMethodMap
       ?9*
       ?generateHeaderInSeparateFile
       ?4*
@@ -89,7 +85,7 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
   [@unifiedTypeMap-entry makeEntry
      !?ioSemanticContext.mTypeMap
      !self.mWeakReferenceTypeName
-     ?var @unifiedTypeMap-entry weakReferenceIndex
+     ?let @unifiedTypeMap-entry weakReferenceIndex
   ]
 #--- Constructors
   var @constructorMap constructorMap = {}

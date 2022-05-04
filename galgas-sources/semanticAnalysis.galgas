@@ -136,7 +136,7 @@ proc buildLocalVariableMapAndSignature
   outRoutineSignature = @formalParameterListForGeneration {}
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in inRoutineSignatureAST do
     let type = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
-    var @string formalArgumentCppName
+    let @string formalArgumentCppName
     switch mFormalArgumentPassingMode
     case argumentIn :
       formalArgumentCppName = "inArgument_" + [mFormalArgumentName.string identifierRepresentation]
@@ -556,7 +556,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
     ?2*
   ]
 #--- Build absolute path
-  var @string absoluteSourcePath
+  let @string absoluteSourcePath
   if [self.mFilewrapperPath.string firstCharacterOrNul] == '/' then
     absoluteSourcePath = self.mFilewrapperPath.string
   else
@@ -1389,7 +1389,7 @@ override method @inputParameterVariable analyzeInputParameter
   ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
   ?!@localVarManager ioVariableMap {
   [!?ioVariableMap searchForWriteAccess !self.mActualParameterName ?let @unifiedTypeMap-entry type ?let @string cppName ?*]
-  var @unifiedTypeMap-entry expectedType
+  let @unifiedTypeMap-entry expectedType
   switch inRequiredLexicalType
   case lexicalType_string : expectedType = inAnalysisContext.mPredefinedTypes.mLStringType
   case lexicalType_char : expectedType = inAnalysisContext.mPredefinedTypes.mLCharType
@@ -1420,7 +1420,7 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
   ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
   ?!@localVarManager ioVariableMap {
 #--- Expected type
-  var @unifiedTypeMap-entry expectedType
+  let @unifiedTypeMap-entry expectedType
   switch inRequiredLexicalType
   case lexicalType_string : expectedType = inAnalysisContext.mPredefinedTypes.mLStringType
   case lexicalType_char : expectedType = inAnalysisContext.mPredefinedTypes.mLCharType
@@ -1442,7 +1442,7 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
   end
 #--- Create local variable
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location locationIndex]
-  [!?ioVariableMap insertDefinedLocalVariable !self.mActualParameterName !expectedType !cppName !cppName]
+  [!?ioVariableMap insertDefinedLocalVariable !self.mActualParameterName !warnsIfNotMutated: true !expectedType !cppName !cppName]
   ioTerminalCheckAssignementList +=
     ![expectedType key]
     !cppName
@@ -1458,7 +1458,7 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
   ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
   ?!@localVarManager ioVariableMap {
 #--- Expected type
-  var @unifiedTypeMap-entry expectedType
+  let @unifiedTypeMap-entry expectedType
   switch inRequiredLexicalType
   case lexicalType_string : expectedType = inAnalysisContext.mPredefinedTypes.mLStringType
   case lexicalType_char : expectedType = inAnalysisContext.mPredefinedTypes.mLCharType
@@ -1543,7 +1543,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   end
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location locationIndex]
   let type = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mActualParameterTypeName}
-  [!?ioVariableMap insertDefinedLocalVariable !self.mActualParameterName !type !cppName !cppName]
+  [!?ioVariableMap insertDefinedLocalVariable !self.mActualParameterName !warnsIfNotMutated: true !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
   if expectedType != type then
     error self.mActualParameterName

@@ -49,7 +49,7 @@ syntax galgas3DeclarationsSyntax (galgas3Scanner) {
   #·····················································································································
 
   rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
-    var @bool isPublic
+    let @bool isPublic
     select
       isPublic = true
     or
@@ -59,7 +59,7 @@ syntax galgas3DeclarationsSyntax (galgas3Scanner) {
       $private$
       isPublic = false
     end
-    var @bool isConstant
+    let @bool isConstant
     select
       $var$
       isConstant = false
@@ -144,7 +144,7 @@ syntax galgas3DeclarationsSyntax (galgas3Scanner) {
     select
     or
       repeat
-        $"string"$ ?var @lstring pathExtension
+        $"string"$ ?let @lstring pathExtension
         outFilewrapperTextFileExtensionList += !pathExtension
       while
         $,$
@@ -161,7 +161,7 @@ syntax galgas3DeclarationsSyntax (galgas3Scanner) {
     select
     or
       repeat
-        $"string"$ ?var @lstring pathExtension
+        $"string"$ ?let @lstring pathExtension
         outFilewrapperBinaryFileExtensionList += !pathExtension
       while
         $,$
@@ -185,7 +185,7 @@ syntax galgas3DeclarationsSyntax (galgas3Scanner) {
       while
         $?$ ?let selector
         $@type$ ?let @lstring typeName
-        var @bool isUnused
+        let @bool isUnused
         select
           isUnused = false
         or
@@ -245,7 +245,7 @@ syntax galgas4DeclarationsSyntax (galgas3Scanner) {
   #·····················································································································
 
   rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
-    var @bool isPublic
+    let @bool isPublic
     select
       isPublic = true
     or
@@ -255,7 +255,7 @@ syntax galgas4DeclarationsSyntax (galgas3Scanner) {
       $private$
       isPublic = false
     end
-    var @bool isConstant
+    let @bool isConstant
     select
       $var$
       isConstant = false
@@ -339,7 +339,7 @@ syntax galgas4DeclarationsSyntax (galgas3Scanner) {
     select
     or
       repeat
-        $"string"$ ?var @lstring pathExtension
+        $"string"$ ?let @lstring pathExtension
         outFilewrapperTextFileExtensionList += !pathExtension
       while
         $,$
@@ -356,7 +356,7 @@ syntax galgas4DeclarationsSyntax (galgas3Scanner) {
     select
     or
       repeat
-        $"string"$ ?var @lstring pathExtension
+        $"string"$ ?let @lstring pathExtension
         outFilewrapperBinaryFileExtensionList += !pathExtension
       while
         $,$
@@ -380,7 +380,7 @@ syntax galgas4DeclarationsSyntax (galgas3Scanner) {
       while
         $?$ ?let selector
         $@type$ ?let @lstring typeName
-        var @bool isUnused
+        let @bool isUnused
         select
           isUnused = false
         or

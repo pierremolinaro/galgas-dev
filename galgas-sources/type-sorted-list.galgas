@@ -57,7 +57,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList {
     $identifier$ ?let @lstring mSortedAttributeName
-    var @bool mAscending
+    let @bool mAscending
     select
       $<$
       mAscending = true
@@ -112,7 +112,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList {
     $identifier$ ?let @lstring mSortedAttributeName
-    var @bool mAscending
+    let @bool mAscending
     select
       $<$
       mAscending = true

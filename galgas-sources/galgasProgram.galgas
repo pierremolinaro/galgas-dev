@@ -257,8 +257,8 @@ private proc compileProject
   var @lstringlist usefulnessRootEntities = {}
   let buildDirectory = [inProjectSourceFile stringByDeletingLastPathComponent] + "/build"
   let productDirectory = buildDirectory + "/output"
-  var @stringlist appProductFileList = {}
-  var @semanticContext semanticContext = .default
+  let @stringlist appProductFileList = {}
+  let @semanticContext semanticContext
   var @semanticDeclarationListForGeneration semanticDeclarationSortedListForGeneration
   if @uint.errorCount == 0 then
     compileSemanticDeclarationsGalgas (
@@ -272,9 +272,10 @@ private proc compileProject
     )
   else
     semanticDeclarationSortedListForGeneration = {}
+    semanticContext = .default
   end
 #---------------------------------- Compile GUI components
-  var @optionComponentMapForGeneration optionComponentMapForGeneration
+  let @optionComponentMapForGeneration optionComponentMapForGeneration
   if @uint.errorCount == 0 then
     compileAllGuiComponentFromASTGalgas3 (
       !declarationAST.mGUIComponentList

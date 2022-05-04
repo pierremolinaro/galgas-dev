@@ -514,12 +514,11 @@ proc buildLexicalAttributeMap
   ?!@lexicalAttributeMap ioLexicalAttributeMap {
   for (mTypeName mName) in inLexicalAttributeList do
     if [inLexicalTypeMap hasKey !mTypeName.string] then
-      [inLexicalTypeMap searchKey !mTypeName ?var @lexicalTypeEnum lexicalType]
+      [inLexicalTypeMap searchKey !mTypeName ?let @lexicalTypeEnum lexicalType]
       [!?ioLexicalAttributeMap insertKey !mName !lexicalType]
     else
       var @string m = ""
       m += "the @" + mTypeName + " type is not a valid lexical attribute type; are allowed:"
-      var @bool firstLoop = true
       for (lkey *) in inLexicalTypeMap do
         m += " @" + lkey
       between

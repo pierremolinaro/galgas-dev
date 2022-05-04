@@ -381,8 +381,7 @@ override getter @lexicalImplicitRuleAST generateCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string {
-  var @tokenSortedlist tokenSortedList
-  [inLexiqueAnalysisContext.mLexicalTokenListMap searchKey !self.mListName ?* ?tokenSortedList ?*]
+  [inLexiqueAnalysisContext.mLexicalTokenListMap searchKey !self.mListName ?* ?let tokenSortedList ?*]
   result = ""
   for > (* mName mTerminalName) in tokenSortedList do
     result += "if (testForInputUTF32String (kUnicodeString_" + inScannerClassName + "_"

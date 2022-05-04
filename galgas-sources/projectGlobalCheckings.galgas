@@ -96,7 +96,7 @@ proc checkextensionSetterDefinitionForClass
   let @unifiedTypeMapEntryList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
   for (mType) in descendantClasses do
     let @lstring descendantClassName = [mType lkey]
-    var @lstringlist overridingMethods = [inOverridingExtensionMethodListMap listForKey !descendantClassName.string]
+    let @lstringlist overridingMethods = [inOverridingExtensionMethodListMap listForKey !descendantClassName.string]
     var @bool found = false
     for (mValue) in overridingMethods while not found do
       found = inAbstractExtensionSetterName.string == mValue.string
@@ -133,7 +133,7 @@ proc checkExtensionMethodDefinitionForClass
   let @unifiedTypeMapEntryList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
   for (mType) in descendantClasses do
     let @lstring descendantClassName = [mType lkey]
-    var @lstringlist overridingMethods = [inOverridingExtensionMethodListMap listForKey !descendantClassName.string]
+    let @lstringlist overridingMethods = [inOverridingExtensionMethodListMap listForKey !descendantClassName.string]
     var @bool found = false
     for (mValue) in overridingMethods while not found do
       found = inAbstractExtensionMethodName.string == mValue.string
@@ -169,8 +169,8 @@ proc checkExtensionGetterDefinitionForClass
 {
   let @unifiedTypeMapEntryList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
   for (mType) in descendantClasses do
-    var @lstring descendantClassName = [mType lkey]
-    var @lstringlist overridingReaders = [inOverridingExtensionGetterListMap listForKey !descendantClassName.string]
+    let @lstring descendantClassName = [mType lkey]
+    let @lstringlist overridingReaders = [inOverridingExtensionGetterListMap listForKey !descendantClassName.string]
     var @bool found = false
     for (mValue) in overridingReaders while not found do
       found = inAbstractExtensionGetterName.string == mValue.string

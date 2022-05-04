@@ -157,7 +157,7 @@ override method @collectionValueAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
 #--- Type
-  var @unifiedTypeMap-entry targetType
+  let @unifiedTypeMap-entry targetType
   if self.mTypeName.string == "" then
     targetType = inType
   else

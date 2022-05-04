@@ -17,7 +17,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $list$
-    $@type$ ?var @lstring listTypeName indexing listDefinition, structDefinition "-element"
+    $@type$ ?let @lstring listTypeName indexing listDefinition, structDefinition "-element"
     ${$
     var @propertyInCollectionListAST propertyList = {}
     repeat
@@ -48,7 +48,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $list$
-    $@type$ ?var @lstring listTypeName indexing listDefinition, structDefinition "-element"
+    $@type$ ?let @lstring listTypeName indexing listDefinition, structDefinition "-element"
     ${$
     var @propertyInCollectionListAST propertyList = {}
     repeat

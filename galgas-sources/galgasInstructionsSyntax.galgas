@@ -45,7 +45,7 @@ syntax galgas3InstructionsSyntax (galgas3Scanner) {
   #·····················································································································
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
-    var @bool isLocal
+    let @bool isLocal
     select
       isLocal = false
     or
@@ -132,7 +132,7 @@ syntax galgas3InstructionsSyntax (galgas3Scanner) {
     end
     $->$
     $@type$ ?let resultTypeName
-    var @lstring resultVariableName
+    let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
     or
@@ -230,7 +230,7 @@ syntax galgas3InstructionsSyntax (galgas3Scanner) {
     while
       $?$ ?let selector
       $var$
-      var @lstring actualParameterTypeName
+      let @lstring actualParameterTypeName
       select
         actualParameterTypeName = ["" nowhere]
       or
@@ -243,7 +243,7 @@ syntax galgas3InstructionsSyntax (galgas3Scanner) {
     while
       $?$ ?let selector
       $let$
-      var @lstring actualParameterTypeName
+      let @lstring actualParameterTypeName
       select
         actualParameterTypeName = ["" nowhere]
       or
@@ -298,7 +298,7 @@ syntax galgas4InstructionsSyntax (galgas3Scanner) {
   #·····················································································································
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
-    var @bool isLocal
+    let @bool isLocal
     select
       isLocal = false
     or
@@ -335,9 +335,9 @@ syntax galgas4InstructionsSyntax (galgas3Scanner) {
   {
     $proc$
     $identifier$ ?let mRoutineName indexing routineDefinition
-    <formal_parameter_list> ?var @formalParameterListAST mFormalParameterList
+    <formal_parameter_list> ?let @formalParameterListAST mFormalParameterList
     ${$
-    <semantic_instruction_list> ?var @semanticInstructionListAST mRoutineInstructionList
+    <semantic_instruction_list> ?let @semanticInstructionListAST mRoutineInstructionList
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
@@ -385,14 +385,14 @@ syntax galgas4InstructionsSyntax (galgas3Scanner) {
     end
     $->$
     $@type$ ?let resultTypeName
-    var @lstring resultVariableName
+    let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
     or
       resultVariableName = .new {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list> ?var @semanticInstructionListAST functionInstructionList
+    <semantic_instruction_list> ?let @semanticInstructionListAST functionInstructionList
     $}$
     let endOfFunctionInstructionList = @location.here
     if isOnce then
@@ -483,7 +483,7 @@ syntax galgas4InstructionsSyntax (galgas3Scanner) {
     while
       $?$ ?let selector
       $var$
-      var @lstring actualParameterTypeName
+      let @lstring actualParameterTypeName
       select
         actualParameterTypeName = ["" nowhere]
       or
@@ -496,7 +496,7 @@ syntax galgas4InstructionsSyntax (galgas3Scanner) {
     while
       $?$ ?let selector
       $let$
-      var @lstring actualParameterTypeName
+      let @lstring actualParameterTypeName
       select
         actualParameterTypeName = ["" nowhere]
       or

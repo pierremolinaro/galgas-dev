@@ -138,14 +138,13 @@ override method @overridingExtensionMethodAST semanticAnalysis
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mInstanceMethodMap] hasKey !self.mOverridingExtensionMethodName.string] then
-      var @methodQualifier qualifier
       [[superType mInstanceMethodMap] searchKey
         !self.mOverridingExtensionMethodName
         ?*
         ?inheritedSignature
         ?inheritedDeclarationLocation
         ?*
-        ?qualifier
+        ?let qualifier
         ?2*
       ]
       if qualifier <= @methodQualifier. isBasicFinal then
@@ -158,8 +157,6 @@ override method @overridingExtensionMethodAST semanticAnalysis
     error self.mOverridingExtensionMethodName:"this method is not declared by a super class"
   end
 #--- Analyze instruction list
-  var formalParameterListForGeneration =@formalParameterListForGeneration {}
-  var @semanticInstructionListForGeneration semanticInstructionListForGeneration
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
@@ -192,8 +189,8 @@ override method @overridingExtensionMethodAST semanticAnalysis
     !mutablePropertyList: mutableProperties
     !self.mOverridingExtensionMethodInstructionList
     !self.mEndOfMethodLocation
-    ?semanticInstructionListForGeneration
-    ?formalParameterListForGeneration
+    ?let semanticInstructionListForGeneration
+    ?let formalParameterListForGeneration
   )
 #--- Check Signature
   if baseTypeName != "" then

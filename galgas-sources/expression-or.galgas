@@ -336,7 +336,7 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
     !inferenceType:  inAnalysisContext.mPredefinedTypes.mUIntType
     !inAnalysisContext
     !?ioVariableMap
-    ?@semanticExpressionForGeneration rightExpression
+    ?let @semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
   let @unifiedTypeMap-entry leftType = leftExpression.mResultType
@@ -391,7 +391,7 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
     !inferenceType:  inAnalysisContext.mPredefinedTypes.mUIntType
     !inAnalysisContext
     !?ioVariableMap
-    ?@semanticExpressionForGeneration rightExpression
+    ?let @semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
   let @unifiedTypeMap-entry leftType = leftExpression.mResultType

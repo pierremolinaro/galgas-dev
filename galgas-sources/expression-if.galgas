@@ -97,24 +97,22 @@ override method @ifExpressionAST analyzeSemanticExpression
     ?let @semanticExpressionForGeneration if_expression
   ]
 #--- 'then' expression analysis
-  var @semanticExpressionForGeneration then_expression
   [self.mThenExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inType
     !inAnalysisContext
     !?ioVariableMap
-    ?then_expression
+    ?let then_expression
   ]
 #--- 'else' expression analysis
-  var @semanticExpressionForGeneration else_expression
   [self.mElseExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inType
     !inAnalysisContext
     !?ioVariableMap
-    ?else_expression
+    ?let else_expression
   ]
 #--- Check 'if' expression is boolean
   if [if_expression.mResultType key] != "bool" then

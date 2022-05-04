@@ -328,7 +328,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
   var @constructorMap constructorMap = {}
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap = {}
-  var @classMethodMap classMethodMap = {}
+  let @classMethodMap classMethodMap = {}
 #--- Constructors
   for (mConstructorName mResultTypeName mParameterList) in self.mExternTypeConstructorList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mResultTypeName ?let returnedTypeEntry]
@@ -392,11 +392,10 @@ override method @externTypeDeclarationAST enterInSemanticContext
   for (mMethodName mFormalParameterList mDeclarationLocation) in self.mExternTypeMethodList do
     var routineSignature =@formalParameterSignature {}
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
-      var @unifiedTypeMap-entry parameterTypeIndex
       [@unifiedTypeMap-entry makeEntry
         !?ioSemanticContext.mTypeMap
         !mFormalArgumentTypeName
-        ?parameterTypeIndex
+        ?let parameterTypeIndex
       ]
       routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
     end

@@ -29,7 +29,7 @@ syntax extension galgas3InstructionsSyntax {
   
   rule <cast_instruction_branch> ?!@castInstructionBranchListAST ioCastInstructionBranchList {
     $case$
-    var @dynamicTypeComparisonKind kind
+    let @dynamicTypeComparisonKind kind
     select
       $==$
       kind = .equal
@@ -41,7 +41,7 @@ syntax extension galgas3InstructionsSyntax {
       kind = .strictlyInherited
     end
     $@type$ ?let mTypeName
-    var @lstring mConstantVarName # Empty string if no constant var
+    let @lstring mConstantVarName # Empty string if no constant var
     select
       $identifier$ ?mConstantVarName
     or
@@ -236,14 +236,13 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Expression
-  var @semanticExpressionForGeneration castExpression
   [self.mCastExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
-    ?castExpression
+    ?let castExpression
   ]
 #--- Begin override for analyze loop instruction list
   [!?ioVariableMap openOverrideForSelectBlock]
@@ -265,7 +264,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
       :"the '@" + mTypeName + "' is not a descendant of the '@" + [castExpression.mResultType key] + "' type of the cast expression"
     end
   #--- Declare a local constant ?
-    var @string localConstantName
+    let @string localConstantName
     var localConstantList =@localConstantList {}
     if [mConstantVarName length] > 0 then
       localConstantName = "cast_" + [mConstantVarName.location locationIndex] + "_" + mConstantVarName
@@ -278,32 +277,32 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
       localConstantName = "" # No constant
     end
   #--- Analyze instruction list
-    var @semanticInstructionListForGeneration instructionList
     analyzeSemanticInstructionList (
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
-      !localConstantList
-      !{}
+      !localConstantList: localConstantList
+      !localInitializedVariableListWarnsIfNotMutated: {}
+      !localInitializedVariableListNoWarnsIfNotMutated: {}
       !mInstructionList
       !mEndOfInstructions
       !?ioVariableMap
-      ?instructionList
+      ?let instructionList
     )
     castBranchList += !mTypeComparisonKind !type !localConstantName !instructionList
   end
 #--- else or default branch
-  var @semanticInstructionListForGeneration else_instructionList
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !{}
-    !{}
+    !localConstantList: {}
+    !localInitializedVariableListWarnsIfNotMutated: {}
+    !localInitializedVariableListNoWarnsIfNotMutated: {}
     !self.mElseInstructionList
     !self.mEndOfCastInstruction
     !?ioVariableMap
-    ?else_instructionList
+    ?let else_instructionList
   )
 #--- End override
   [!?ioVariableMap closeOverride !self.mEndOfCastInstruction]

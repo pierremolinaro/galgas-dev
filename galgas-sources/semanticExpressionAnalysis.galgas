@@ -100,7 +100,7 @@ proc checkAssignmentTypeWithImplicitGetterCall
     [[inSourceType mGetterMap] searchKey
       ![inTargetType lkey]
       ?let kind
-      ?var @functionSignature argumentTypeList
+      ?let @functionSignature argumentTypeList
       ?*
       ?let hasCompilerArgument
       ?let returnedType
@@ -166,7 +166,7 @@ proc checkDiadicOperator
       [[inRightType mGetterMap] searchKey
         ![inLeftType lkey]
         ?let kind
-        ?var @functionSignature argumentTypeList
+        ?let @functionSignature argumentTypeList
         ?*
         ?let hasCompilerArgument
         ?let returnedType

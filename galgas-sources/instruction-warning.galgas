@@ -20,7 +20,7 @@ syntax extension galgas3InstructionsSyntax {
     !@semanticInstructionAST outInstruction {
     $warning$
     let instructionLocation = @location.here
-    <expression> ?var @semanticExpressionAST mReceiverExpression
+    <expression> ?let @semanticExpressionAST mReceiverExpression
     $:$
     <expression> ?let @semanticExpressionAST mWarningExpression
     <issue_fixit> ?let @fixitListAST fixitListAST
@@ -45,7 +45,7 @@ syntax extension galgas4InstructionsSyntax {
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $warning$
     let instructionLocation = @location.here
-    <expression> ?var @semanticExpressionAST mReceiverExpression
+    <expression> ?let @semanticExpressionAST mReceiverExpression
     $:$
     <expression> ?let @semanticExpressionAST mWarningExpression
     <issue_fixit> ?let @fixitListAST fixitListAST
@@ -126,8 +126,7 @@ override method @warningInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode
  {
 #--- Receiver expression
-  var @string receiverCppVarName
-  [self.mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverCppVarName]
+  [self.mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let receiverCppVarName]
 #--- Receiver expression
   [self.mWarningExpression generateExpression
     !?ioGeneratedCode
@@ -143,7 +142,7 @@ override method @warningInstructionForGeneration generateInstruction
     !?ioUnusedVariableCppNameSet
     !inGenerateSyntaxDirectedTranslationString
     !?ioGeneratedCode
-    ?@string fixItArrayCppName
+    ?let fixItArrayCppName
   ]
 #--- Generate warning instruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]

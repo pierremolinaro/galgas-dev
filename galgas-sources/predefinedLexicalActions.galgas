@@ -515,8 +515,7 @@ proc buildLexicalFunctionMap !@lexicalFunctionMap outLexicalFunctionMap {
 
 proc printPredefinedLexicalActions {
 #--------------------------------------- Build lexical routine map
-  var @lexicalRoutineMap lexicalRoutineMap
-  buildLexicalRoutineMap ( ?lexicalRoutineMap )
+  buildLexicalRoutineMap (?let lexicalRoutineMap)
 #--------------------------------------- Display lexical routines
   var @string s = ""
   s += "**************** Prefined lexical routines  ****************\n"
@@ -533,8 +532,7 @@ proc printPredefinedLexicalActions {
     s += " ;\n\n"
   end
 #--------------------------------------- Build lexical function map
-  var @lexicalFunctionMap lexicalFunctionMap
-  buildLexicalFunctionMap (?lexicalFunctionMap )
+  buildLexicalFunctionMap (?let lexicalFunctionMap )
 #--------------------------------------- Display lexical functions
   s += "**************** Prefined lexical functions ****************\n"
   for (lkey mLexicalTypeList mReturnedLexicalType mReplacementFunctionName *) in lexicalFunctionMap do

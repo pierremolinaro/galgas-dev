@@ -46,7 +46,7 @@ syntax extension galgas3DeclarationsSyntax {
       mConstantList += !constantName !associatedValueTypeList
     while
     end
-    var @lstring defaultConstantName
+    let @lstring defaultConstantName
     select
       defaultConstantName = ["" nowhere]
     or
@@ -95,7 +95,7 @@ syntax extension galgas4DeclarationsSyntax {
       mConstantList += !constantName !associatedValueTypeList
     while
     end
-    var @lstring defaultConstantName
+    let @lstring defaultConstantName
     select
       defaultConstantName = ["" nowhere]
     or
@@ -167,7 +167,7 @@ override method @enumDeclarationAST enterInSemanticContext
   var @constructorMap constructorMap = {}
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap = {}
-  var @classMethodMap classMethodMap = {}
+  let @classMethodMap classMethodMap = {}
   var @optionalMethodMap optionalMethodMap = {}
 #--- currentType type index
   [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mEnumTypeName ?let enumTypeEntry]

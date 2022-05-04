@@ -191,8 +191,7 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
     outImplementation += parseCode
   #--- Generate indexing code
     if self.mHasIndexing then
-      var @semanticInstructionListForGeneration instructionList
-      [mLabelImplementationList first ?* ?* ?* ?* ?instructionList]
+      [mLabelImplementationList first ?* ?* ?* ?* ?let instructionList]
       let @string ruleName = "cParser_" + [self.mSyntaxComponentName identifierRepresentation]
       + "::rule_" + [self.mSyntaxComponentName identifierRepresentation] + "_"
       + [mNonterminalName identifierRepresentation]
@@ -226,7 +225,7 @@ proc generateProcedure
   ?static:let @bool inGenerateStatic
   ?let @string inProcedureName
   ?!@stringset ioInclusionSet
-  ?@formalParameterListForGeneration inFormalArgumentList
+  ?let @formalParameterListForGeneration inFormalArgumentList
   ?let @semanticInstructionListForGeneration inInstructionList
   ?let @bool inProcedureIsConst
   ?let @string inCompilerTypeName

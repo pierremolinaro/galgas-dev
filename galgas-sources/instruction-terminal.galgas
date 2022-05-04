@@ -23,8 +23,8 @@ syntax extension galgas3SyntaxComponentSyntax {
     <actual_input_parameter_list> ?let @actualInputParameterListAST actualInputParameterList
     <terminal_instruction_indexing> ?let indexNameList
   #--- Get syntax directed translation result string
-    var @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
-    var @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingToken
+    let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+    let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingToken
     select
       grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor = @grammarInstructionSyntaxDirectedTranslationResultNone.new
       grammarInstructionSyntaxDirectedTranslationPreceedingToken = @grammarInstructionSyntaxDirectedTranslationResultNone.new
@@ -52,7 +52,7 @@ syntax extension galgas3SyntaxComponentSyntax {
       $indexing$
       repeat
         $identifier$ ?let @lstring indexName indexing indexingNameReference
-        var @lstring postfixName
+        let @lstring postfixName
         select
           postfixName = ["" nowhere]
         or
@@ -80,8 +80,8 @@ syntax extension galgas4SyntaxComponentSyntax {
     <actual_input_parameter_list> ?let @actualInputParameterListAST actualInputParameterList
     <terminal_instruction_indexing> ?let indexNameList
   #--- Get syntax directed translation result string
-    var @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
-    var @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingToken
+    let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+    let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingToken
     select
       grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor = @grammarInstructionSyntaxDirectedTranslationResultNone.new
       grammarInstructionSyntaxDirectedTranslationPreceedingToken = @grammarInstructionSyntaxDirectedTranslationResultNone.new
@@ -109,7 +109,7 @@ syntax extension galgas4SyntaxComponentSyntax {
       $indexing$
       repeat
         $identifier$ ?let @lstring indexName indexing indexingNameReference
-        var @lstring postfixName
+        let @lstring postfixName
         select
           postfixName = ["" nowhere]
         or
@@ -135,7 +135,7 @@ override method @terminalCheckInstruction transformInstruction
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
   ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
-  var @uint terminalSymbolIndex
+  let @uint terminalSymbolIndex
   with self.mTerminalName.string in ioActuallyUsedTerminalSymbolMap  do
     terminalSymbolIndex = mTerminalIndex
   else

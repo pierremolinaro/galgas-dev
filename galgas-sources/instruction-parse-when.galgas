@@ -196,20 +196,18 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   ?!@localVarManager ioVariableMap
   ?!@uint ioSelectMethodCount {
 #--- When expression
-  var @semanticExpressionForGeneration when_expression
   [self.mWhenExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMap-entry.null
     !inAnalysisContext
     !?ioVariableMap
-    ?when_expression
+    ?let when_expression
   ]
 #--- Begin block
   [!?ioVariableMap openOverrideForRepeatBlock]
 #--- 'when' branch
   var @uint localSelectMethodCount = ioSelectMethodCount
-  var @semanticInstructionListForGeneration when_instructionListForGeneration
   analyzeSyntaxInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -224,10 +222,9 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
     !inIndexNameSet
     !?ioVariableMap
     !?localSelectMethodCount
-    ?when_instructionListForGeneration
+    ?let when_instructionListForGeneration
   )
 #--- 'else' branch
-  var @semanticInstructionListForGeneration else_instructionListForGeneration
   analyzeSyntaxInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -242,7 +239,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
     !inIndexNameSet
     !?ioVariableMap
     !?ioSelectMethodCount
-    ?else_instructionListForGeneration
+    ?let else_instructionListForGeneration
   )
 #--- End block
   [!?ioVariableMap closeOverride !self.mEndOfElseInstructionList]
@@ -293,8 +290,7 @@ override method @parseWhenInstructionForGeneration generateInstruction
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 {
-  var @string sourceVar
-  [self.mWhenExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar]
+  [self.mWhenExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let sourceVar]
   ioGeneratedCode += "if (" + sourceVar + ".isValidAndTrue ()) {\n"
   generateInstructionList (
     !?ioInclusionSet

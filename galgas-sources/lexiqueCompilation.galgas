@@ -237,10 +237,9 @@ override method @lexicalAttributeInputArgumentAST checkLexicalFunctionCallArgume
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 #--- Check attribute definition
-  var @lexicalTypeEnum attributeLexicalType
   [ioLexiqueAnalysisContext.mLexicalAttributeMap searchKey
     !self.mAttributeName
-    ?attributeLexicalType
+    ?let attributeLexicalType
   ]
 #--- Type check
   if attributeLexicalType != inLexicalRoutineFormalArgumentType then
@@ -300,14 +299,11 @@ override method @lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgumen
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 #--- Check attribute definition
-  var @lexicalFunctionFormalArgumentList lexicalFormalTypeList
-  var @lexicalTypeEnum returnedLexicalFormalType
-  var @string replacementFunctionName
   [ioLexiqueAnalysisContext.mLexicalFunctionMap searchKey
     !self.mFunctionName
-    ?lexicalFormalTypeList
-    ?returnedLexicalFormalType
-    ?replacementFunctionName
+    ?let lexicalFormalTypeList
+    ?let returnedLexicalFormalType
+    ?let replacementFunctionName
     ?*
   ]
 #--- Obsolete function ?
@@ -352,10 +348,9 @@ override method @lexicalAttributeInputArgumentAST checkLexicalRoutineCallArgumen
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 #--- Check attribute definition
-  var @lexicalTypeEnum attributeLexicalType
   [ioLexiqueAnalysisContext.mLexicalAttributeMap searchKey
     !self.mAttributeName
-    ?attributeLexicalType
+    ?let attributeLexicalType
   ]
 #--- Type check
   if attributeLexicalType != inLexicalRoutineFormalArgumentType then
@@ -415,14 +410,11 @@ override method @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 #--- Check attribute definition
-  var @lexicalFunctionFormalArgumentList lexicalFormalTypeList
-  var @lexicalTypeEnum returnedLexicalFormalType
-  var @string replacementFunctionName
   [ioLexiqueAnalysisContext.mLexicalFunctionMap searchKey
     !self.mFunctionName
-    ?lexicalFormalTypeList
-    ?returnedLexicalFormalType
-    ?replacementFunctionName
+    ?let lexicalFormalTypeList
+    ?let returnedLexicalFormalType
+    ?let replacementFunctionName
     ?*
   ]
 #--- Obsolete function ?
@@ -469,10 +461,9 @@ override method @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallA
   ?@lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 #--- Check attribute definition
-  var @lexicalTypeEnum attributeLexicalType
   [ioLexiqueAnalysisContext.mLexicalAttributeMap searchKey
     !self.mAttributeName
-    ?attributeLexicalType
+    ?let attributeLexicalType
   ]
 #--- Type check
   if attributeLexicalType != inLexicalRoutineFormalArgumentType then
@@ -500,7 +491,7 @@ override method @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument
     !inLexicalRoutineFormalArgumentType
   ]
 #--- Passing mode check
-  if inLexicalRoutineFormalArgumentMode != @lexicalArgumentModeAST. lexicalInputMode then
+  if inLexicalRoutineFormalArgumentMode != @lexicalArgumentModeAST.lexicalInputMode then
     error self.mActualPassingModeLocation:"the output/input mode (!?) is required here, not an input mode"
   end
 }
@@ -574,12 +565,10 @@ override method @lexicalSelectInstructionAST checkLexicalInstruction
 override method @lexicalRoutineInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap {
-  var @lexicalRoutineFormalArgumentList lexicalRoutineFormalArgumentList
-  var @stringlist routineErrorMessageList
   [ioLexiqueAnalysisContext.mLexicalRoutineMessageMap searchKey
     !self.mRoutineName
-    ?lexicalRoutineFormalArgumentList
-    ?routineErrorMessageList
+    ?let lexicalRoutineFormalArgumentList
+    ?let routineErrorMessageList
     ?*
   ]
 #--- Check actual argument count
