@@ -5715,6 +5715,8 @@ class GALGAS_localVariableAttributes : public AC_GALGAS_root {
 
   public: static class GALGAS_localVariableAttributes constructor_constant (LOCATION_ARGS) ;
 
+  public: static class GALGAS_localVariableAttributes constructor_declaredAsUnused (LOCATION_ARGS) ;
+
   public: static class GALGAS_localVariableAttributes constructor_noWarningOnNonMutation (LOCATION_ARGS) ;
 
   public: static class GALGAS_localVariableAttributes constructor_none (LOCATION_ARGS) ;
@@ -5756,6 +5758,8 @@ class GALGAS_localVariableAttributes : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_all (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_constant (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_declaredAsUnused (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_noWarningOnNonMutation (LOCATION_ARGS) const ;
 

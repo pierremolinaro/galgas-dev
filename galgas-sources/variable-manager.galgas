@@ -107,7 +107,7 @@ setter @localVarManager insertInputFormalArgumentDeclaredAsUnused ?let @lstring 
     !inType
     !inCppName
     !inNameForCheckingFormalParameterUsing
-    !.none
+    !.declaredAsUnused
     !.initialized
   ]
 }
@@ -155,7 +155,7 @@ setter @localVarManager insertInputOutputFormalArgumentDeclaredAsUnused ?let @ls
     !inType
     !inCppName
     !inNameForCheckingFormalParameterUsing
-    !.noWarningOnNonMutation
+    !. declaredAsUnused  |.noWarningOnNonMutation
     !.initialized
   ]
 }
@@ -297,7 +297,7 @@ setter @localVarManager closeBranch ?let @location inEndOfBranchLocation {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 boolset @localVariableAttributes {
-  constant, shouldBeInitialized, noWarningOnNonMutation
+  constant, shouldBeInitialized, noWarningOnNonMutation, declaredAsUnused
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -796,7 +796,7 @@ method @localVarValuation checkFinalState ?let @lstring inVarName ?let @localVar
       warning inVarName : "variable '" + inVarName + "' was never used; consider removing it"
     end
   case initialized : # The variable has been written once
-    if not [inAttributes constant] && not [inAttributes noWarningOnNonMutation] then
+    if not [inAttributes constant] && not [inAttributes noWarningOnNonMutation] && not [inAttributes declaredAsUnused] then
       warning inVarName : "variable '" + inVarName + "' was never read; consider removing it"
     end
   case read :
