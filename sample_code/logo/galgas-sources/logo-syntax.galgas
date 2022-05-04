@@ -5,11 +5,11 @@ syntax logo_syntax (logo_lexique) {
   rule <pen_direction> ?!@instructionList il {
     select
       $UP$
-      var @instruction ins = @penUp.new
+      let @instruction ins = @penUp.new
       il += !ins
     or
       $DOWN$
-      var @instruction ins = @penDown.new
+      let @instruction ins = @penDown.new
       il += !ins
     end
   }
@@ -36,8 +36,7 @@ syntax logo_syntax (logo_lexique) {
     or
       $CALL$
       $identifier$ ?let @lstring routineName indexing routineCall
-      var @instructionList routineContent = {}
-      [ioTableRoutines searchKey !routineName ?routineContent]
+      [ioTableRoutines searchKey !routineName ?let routineContent]
       for i in routineContent do
         il += !i.mInstruction
       end

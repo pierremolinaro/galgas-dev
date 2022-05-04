@@ -28,7 +28,7 @@ rule <start_symbol>
   ?let @bool inIncludeComments
   ?let @bool inDoNotCondenseWhiteSpaces
   ?let @bool inPrintDuringParsing {
-  var @string s = @string. retrieveAndResetTemplateString
+  let @string s = @string. retrieveAndResetTemplateString
   if [s length] > 0 then
     error @location.here: "No character is allowed before XML header"
   end
@@ -87,7 +87,7 @@ rule <element>
   ?let @string inIndendation {
   $comment$ ?let @lstring commentString
   if inIncludeComments then
-    var node =@xmlNode.new{
+    let node =@xmlNode.new{
       !@xmlNodeType. comment
       !commentString.string
       !{}
@@ -96,7 +96,7 @@ rule <element>
     ioNodes += !node
   end
   if inPrintDuringParsing then
-    var @string discartedMessage
+    let @string discartedMessage
     if inIncludeComments then
       discartedMessage = ""
     else
@@ -174,7 +174,7 @@ rule <element>
     end
     $>$
   end
-  var node =@xmlNode.new{
+  let node =@xmlNode.new{
     !@xmlNodeType. element
     !name.string
     !attributeMap
@@ -194,16 +194,16 @@ proc addText
   ?let @bool inDoNotCondenseWhiteSpaces
   ?let @bool inPrintDuringParsing
   ?let @string inIndendation {
-  var @string s = @string. retrieveAndResetTemplateString
-  var @string trimmedString = [s stringByTrimmingWhiteSpaces]
+  let @string s = @string. retrieveAndResetTemplateString
+  let @string trimmedString = [s stringByTrimmingWhiteSpaces]
   if [trimmedString length] > 0 then
-    var @string ls
+    let @string ls
     if inDoNotCondenseWhiteSpaces then
       ls = s
     else
       ls = trimmedString
     end
-    var node =@xmlNode.new{
+    let node =@xmlNode.new{
       !@xmlNodeType. text
       !ls
       !{}
@@ -211,7 +211,7 @@ proc addText
     }
     ioNodes += !node
     if inPrintDuringParsing then
-      var @string s = inIndendation + "TEXT " + "'" + ls + "'\n"
+      let @string s = inIndendation + "TEXT " + "'" + ls + "'\n"
       message s
     end
   end

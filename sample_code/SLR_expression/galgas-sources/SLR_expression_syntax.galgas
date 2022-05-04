@@ -18,17 +18,14 @@ rule <Constant>
   !@uint outValue
 
 rule <StartSymbol> {
-  var @cExpression expressionTree
-  var @uint value
-  <Expression> ?expressionTree ?value
+  <Expression> ?let expressionTree ?let value
   log value
 }
   
 rule <Constant>
   !@cExpression outExpressionTree
   !@uint outValue {
-  var @luint cst
-  $number$ ? cst
+  $number$ ?let cst
   outExpressionTree = @cConst.new { !cst}
   outValue = cst.uint
 }
@@ -41,9 +38,7 @@ rule <Expression>
   or 
     <Expression> ?outExpressionTree ?outValue
     $+$
-    var @cExpression rightOperand
-    var @uint v
-    <Terme> ?rightOperand ?v
+    <Terme> ?let rightOperand ?let v
     outExpressionTree = @cAdd.new { ! outExpressionTree !rightOperand}
     outValue = outValue + v
   end
@@ -57,9 +52,7 @@ rule <Terme>
   or 
     <Terme> ?outExpressionTree ?outValue
     $*$
-    var @cExpression rightOperand
-    var @uint v
-    <Facteur> ?rightOperand ?v
+    <Facteur> ?let rightOperand ?let v
     outExpressionTree = @cAdd.new { ! outExpressionTree !rightOperand}
     outValue = outValue * v
   end

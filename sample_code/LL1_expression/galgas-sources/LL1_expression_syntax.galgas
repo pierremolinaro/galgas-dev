@@ -20,7 +20,7 @@ rule <Expression>
   <Terme> ?outExpressionTree ?outValue
   repeat
   while 
-    $+$ :> ?@string sep ?@string token
+    $+$ :> ?let @string sep ?let @string token
     send sep
     <Terme> ?let @cExpression rightOperand ?let @uint v
     send token
@@ -35,7 +35,7 @@ rule <Terme>
   <Facteur> ?outExpressionTree ?outValue
   repeat
   while 
-    $*$ :> ?@string sep ?@string token
+    $*$ :> ?let @string sep ?let @string token
     send sep
     <Facteur> ?let @cExpression rightOperand ?let @uint v
     send token

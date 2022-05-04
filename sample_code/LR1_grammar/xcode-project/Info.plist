@@ -29,24 +29,48 @@
  <key>CFBundleDocumentTypes</key>
  <array>
   <dict>
-   <key>CFBundleTypeIconFile</key>
-   <string>LR1_grammar_icns</string>
-   <key>CFBundleTypeExtensions</key>
-   <array>
+      <key>CFBundleTypeIconFile</key>
+      <string>LR1_grammar_icns</string>
+      <key>CFBundleTypeIconSystemGenerated</key>
+      <integer>0</integer>
+      <key>CFBundleTypeName</key>
+      <string>LR1_grammar Source</string>
+      <key>CFBundleTypeRole</key>
+      <string>Editor</string>
+      <key>LSHandlerRank</key>
+      <string>Default</string>
+      <key>LSItemContentTypes</key>
+      <array>
+        <string>$(PRODUCT_BUNDLE_IDENTIFIER).LR1_grammar</string>
+      </array>
+      <key>NSDocumentClass</key>
+      <string>OC_GGS_Document</string>
+  </dict>
+
+ </array>
+ <key>UTExportedTypeDeclarations</key>
+ <array>
+  <dict>
+    <key>UTTypeConformsTo</key>
+    <array>
+      <string>public.text</string>
+    </array>
+    <key>UTTypeDescription</key>
     <string>LR1_grammar</string>
-   </array>
-   <key>CFBundleTypeName</key>
-   <string>LR1_grammar Source</string>
-   <key>CFBundleTypeOSTypes</key>
-   <array>
-    <string>TEXT</string>
-   </array>
-   <key>CFBundleTypeRole</key>
-   <string>Editor</string>
-   <key>LSTypeIsPackage</key>
-   <false/>
-   <key>NSDocumentClass</key>
-   <string>OC_GGS_Document</string>
+    <key>UTTypeIcons</key>
+    <dict>
+      <key>UTTypeIconBadgeName</key>
+      <string>galgasDocuments</string>
+    </dict>
+    <key>UTTypeIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER).LR1_grammar</string>
+    <key>UTTypeTagSpecification</key>
+    <dict>
+      <key>public.filename-extension</key>
+      <array>
+        <string>LR1_grammar</string>
+      </array>
+    </dict>
   </dict>
 
  </array>
