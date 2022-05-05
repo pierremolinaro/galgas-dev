@@ -1,0 +1,23 @@
+
+
+#-----------------------------------------------------------------------------
+
+shared map @maTable {
+  public var @uint mAttribut
+  insert insertKey error message "internal error"
+}
+
+#-----------------------------------------------------------------------------
+
+proc testsuite_mapentry {
+message "*************************************** begin of mapentry test\n"
+  var @maTable table = .emptySharedMap
+  let @maTable-entry entry
+  [@maTable-entry makeEntryFromString !?table !"abc" ?entry]
+  log "[table count]": [table count]
+  log "Entry: " : entry
+  log "[table unsolvedEntryCount]": [table unsolvedEntryCount]
+}
+
+#-----------------------------------------------------------------------------
+

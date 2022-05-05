@@ -1,0 +1,15 @@
+
+
+refclass @TestExtensionMethod {}
+
+method @TestExtensionMethod method1 {
+}
+
+getter @TestExtensionMethod reader1 -> @uint result {
+  result = 2
+}
+
+method @TestExtensionMethod method2 !@uint result {
+  result = [self reader1]
+}
+

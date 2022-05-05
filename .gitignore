@@ -1,3 +1,4 @@
+
 ## Mac hidden files:
 .DS_Store
 
@@ -6,7 +7,9 @@
 *.list
 *.o
 *.dep
-testsuite/*
+
+testsuite/build/**
+
 project-xcode-galgas/build-developer-v3/*
 project-xcode-galgas/galgas-developer-v3.xcodeproj/xcuserdata/*
 project-xcode-galgas/galgas-developer-v3.xcodeproj/project.xcworkspace/*
