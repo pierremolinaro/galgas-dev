@@ -207,6 +207,8 @@ syntax galgas4SyntaxComponentSyntax (galgas3Scanner) {
   
   rule <actual_parameter_list> !@actualParameterListAST outActualParameterList
 
+  rule <actual_parameter_list_within_parenthesis> !@actualParameterListAST outActualParameterList
+  
   #·····················································································································
   #      S Y N T A X    C O M P O N E N T     
   #·····················································································································

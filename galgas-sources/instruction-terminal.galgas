@@ -77,7 +77,14 @@ syntax extension galgas4SyntaxComponentSyntax {
 
   rule <syntax_instruction> !@syntaxInstructionAST outInstruction {
     $\$terminal\$$ ?let @lstring terminalName indexing terminalReference
-    <actual_input_parameter_list> ?let @actualInputParameterListAST actualInputParameterList
+    let @actualInputParameterListAST actualInputParameterList
+    select
+      actualInputParameterList = {}
+    or
+      $($
+      <actual_input_parameter_list> ?actualInputParameterList
+      $)$
+    end
     <terminal_instruction_indexing> ?let indexNameList
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor

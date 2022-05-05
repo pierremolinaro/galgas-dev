@@ -733,6 +733,13 @@ class cParser_galgas_34_SyntaxComponentSyntax {
 
   protected: virtual void nt_actual_5F_parameter_5F_list_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
 
+  protected: virtual void nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_ (class GALGAS_actualParameterListAST & outArgument0,
+                                                                                    class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_parse (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
   protected: virtual void nt_branchOfParseWhithInstruction_ (class GALGAS_syntaxInstructionList & outArgument0,
                                                              class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
 
@@ -984,6 +991,8 @@ class cParser_galgas_34_SyntaxComponentSyntax {
   protected: virtual int32_t select_galgas_34_SyntaxComponentSyntax_19 (C_Lexique_galgas_33_Scanner *) = 0 ;
 
   protected: virtual int32_t select_galgas_34_SyntaxComponentSyntax_20 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_SyntaxComponentSyntax_21 (C_Lexique_galgas_33_Scanner *) = 0 ;
 
 
 } ;

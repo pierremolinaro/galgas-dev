@@ -100,14 +100,18 @@ syntax extension galgas4ExpressionSyntax {
       expressionList = {}
     or
       ${$
-#      error .here : "'{' is obsolete here, use '('" fixit { replace "(" }
+      error .here : "'{' is obsolete here, use '('" #GGS4
       <output_expression_list> ?expressionList
       $}$
-#      error .here : "'}' is obsolete here, use '('" fixit { replace "(" }
     or
       $($
       <output_expression_list> ?expressionList
-      $)$
+      select
+        $)$
+      or
+        $}$
+        error .here : "'}' is obsolete here, use ')'" #GGS4
+      end
     end
     let endOfExpression = @location.here
     outExpression = @constructorExpressionAST.new {

@@ -1,0 +1,231 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @loopInstructionWithoutVariantAST : @semanticInstructionAST {
+  public var @semanticInstructionListAST mFirstInstructions
+  public var @location mEndOfFirstInstructions
+  public var @semanticExpressionAST mLoopExpression
+  public var @location mEndOfLoopExpression
+  public var @semanticInstructionListAST mSecondInstructions
+  public var @location mEndOfSecondInstructions
+  public var @location mEndOfLoopInstruction
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3InstructionsSyntax {
+
+  #·····················································································································
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $loop$
+    let instructionLocation = @location.here
+    <semantic_instruction_list> ?let @semanticInstructionListAST firstInstructions
+  #---
+    let endOfFirstInstructions = @location.here
+    $while$
+    <expression> ?let @semanticExpressionAST loopExpression
+    let endOfLoopExpression = @location.here
+    $do$
+    <semantic_instruction_list> ?let @semanticInstructionListAST secondInstructions
+    let endOfSecondInstructions = @location.here
+    $end$
+    select
+    or
+      $%attribute$ ?let @lstring terminator
+      if terminator.string != "loop" then
+        error terminator : "the terminator attribute should be '%loop'" fixit { replace "%loop" }
+      end
+    end
+    let endOfLoopInstruction = @location.here
+    outInstruction = @loopInstructionWithoutVariantAST.new {
+      !instructionLocation
+      !firstInstructions
+      !endOfFirstInstructions
+      !loopExpression
+      !endOfLoopExpression
+      !secondInstructions
+      !endOfSecondInstructions
+      !endOfLoopInstruction
+    }
+  }  
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4InstructionsSyntax {
+
+  #·····················································································································
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $loop$
+    let instructionLocation = @location.here
+    <semantic_instruction_list> ?let @semanticInstructionListAST firstInstructions
+  #---
+    let endOfFirstInstructions = @location.here
+    $while$
+    <expression> ?let @semanticExpressionAST loopExpression
+    let endOfLoopExpression = @location.here
+    $do$
+    <semantic_instruction_list> ?let @semanticInstructionListAST secondInstructions
+    let endOfSecondInstructions = @location.here
+    $end$
+    select
+    or
+      $%attribute$ ?let @lstring terminator
+      if terminator.string != "loop" then
+        error terminator : "the terminator attribute should be '%loop'" fixit { replace "%loop" }
+      end
+    end
+    let endOfLoopInstruction = @location.here
+    outInstruction = @loopInstructionWithoutVariantAST.new {
+      !instructionLocation
+      !firstInstructions
+      !endOfFirstInstructions
+      !loopExpression
+      !endOfLoopExpression
+      !secondInstructions
+      !endOfSecondInstructions
+      !endOfLoopInstruction
+    }
+  }  
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CONTEXT
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @loopInstructionWithoutVariantAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  [self.mLoopExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mFirstInstructions enterInstructionListInSemanticContext !?ioTypeMap]
+  [self.mSecondInstructions enterInstructionListInSemanticContext !?ioTypeMap]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @loopInstructionWithoutVariantAST analyzeSemanticInstruction
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@localVarManager ioVariableMap {
+#--- Loop expression
+  [self.mLoopExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inferenceType: @unifiedTypeMap-entry.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let loopExpression
+  ]
+#--- Check loop expression type is @bool
+  if loopExpression.mResultType != inAnalysisContext.mPredefinedTypes.mBoolType then
+    error self.mEndOfLoopExpression
+    : "the loop expression type should be '@" + [inAnalysisContext.mPredefinedTypes.mBoolType key] + "', but it has '@" + [loopExpression.mResultType key] + "' type"
+  end
+#--- Begin override for analyze loop instruction list
+  [!?ioVariableMap openOverrideForRepeatBlock]
+#--- First branch
+  analyzeSemanticInstructionList (
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    !localConstantList: {}
+    !localInitializedVariableListWarnsIfNotMutated: {}
+    !localInitializedVariableListNoWarnsIfNotMutated: {}
+    !self.mFirstInstructions
+    !self.mEndOfFirstInstructions
+    !?ioVariableMap
+    ?let first_instructionList
+  )
+#--- Second branch
+  analyzeSemanticInstructionList (
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    !localConstantList: {}
+    !localInitializedVariableListWarnsIfNotMutated: {}
+    !localInitializedVariableListNoWarnsIfNotMutated: {}
+    !self.mSecondInstructions
+    !self.mEndOfSecondInstructions
+    !?ioVariableMap
+    ?let second_instructionList
+  )
+#--- End override
+  [!?ioVariableMap closeOverride !self.mEndOfLoopInstruction]
+#--- Generate instruction
+  ioInstructionListForGeneration += !@loopInstructionWithoutVariantForGeneration.new {
+    !self.mInstructionLocation
+    !first_instructionList
+    !loopExpression
+    !second_instructionList
+  }
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @loopInstructionWithoutVariantForGeneration : @semanticInstructionForGeneration {
+  public var @location mInstructionLocation
+  public var @semanticInstructionListForGeneration mFirstInstructions
+  public var @semanticExpressionForGeneration mLoopExpression
+  public var @semanticInstructionListForGeneration mSecondInstructions
+}
+
+#······················································································································*
+
+override method @loopInstructionWithoutVariantForGeneration generateInstruction ?!@stringset ioInclusionSet
+                                                                                ?!@uint ioTemporaryVariableIndex
+                                                                                ?!@stringset ioUnusedVariableCppNameSet
+                                                                                ?let @bool inGenerateSyntaxDirectedTranslationString
+                                                                                ?!@string ioGeneratedCode {
+  let @string loopVar = "loop_" + [[self.mInstructionLocation locationIndex] string]
+  ioGeneratedCode += "bool " + loopVar + " = true ;\n"
+  ioGeneratedCode += "while (" + loopVar + ") {\n"
+  [!?ioGeneratedCode incIndentation !2]
+  generateInstructionList (
+    !?ioInclusionSet
+    !self.mFirstInstructions
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
+  )
+  [self.mLoopExpression generateExpression
+     !?ioGeneratedCode
+     !?ioInclusionSet
+     !?ioTemporaryVariableIndex
+     !?ioUnusedVariableCppNameSet
+     ?let loopExpressionVar
+  ]
+  ioGeneratedCode += loopVar + " = " + loopExpressionVar + ".isValid () ;\n"
+                   + "if (" + loopVar + ") {\n"
+                   + "  " + loopVar + " = " + loopExpressionVar + ".boolValue () ;\n"
+                   + "}\n"
+  ioGeneratedCode += "if (" + loopVar + ") {\n"
+  generateInstructionList (
+    !?ioInclusionSet
+    !self.mSecondInstructions
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
+  )
+  ioGeneratedCode += "}\n"
+  [!?ioGeneratedCode decIndentation !2]
+  ioGeneratedCode += "}\n"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

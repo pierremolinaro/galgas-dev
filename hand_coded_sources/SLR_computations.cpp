@@ -712,8 +712,8 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
           ioCppFileContents << ", " ;
         }
         ioCppFileContents << "C_Lexique_" << inLexiqueName.identifierRepresentation () << "::kToken_"
-                       << inVocabulary.getSymbol (j COMMA_HERE).identifierRepresentation ()
-                       << ", " ;
+                          << inVocabulary.getSymbol (j COMMA_HERE).identifierRepresentation ()
+                          << ", " ;
         if (decision == cDecisionTableElement::kDecisionReduce) { // Reduce action
           ioCppFileContents << "REDUCE (" << cStringWithSigned (parameter) << ")" ;
         }else if (decision == cDecisionTableElement::kDecisionShift) { // Shift action
@@ -1162,7 +1162,7 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
   const int32_t terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
   for (int32_t ts=terminalSymbolsCount ; ts<inVocabulary.getAllSymbolsCount () ; ts++) {
     if (inVocabulary.needToGenerateChoice (ts COMMA_HERE)) {
-      ioCppFileContents.appendCppTitleComment (C_String ("'") + inVocabulary.getSymbol (ts COMMA_HERE) +"' non terminal implementation") ;
+      ioCppFileContents.appendCppTitleComment (C_String ("'") + inVocabulary.getSymbol (ts COMMA_HERE) + "' non terminal implementation") ;
       ioCppFileContents << "int32_t cGrammar_" << inTargetFileName.identifierRepresentation ()
               << "::" << inVocabulary.getSymbol (ts COMMA_HERE) << " ("
               << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
@@ -1359,7 +1359,7 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
           ioHTMLFileContents << " *** CONFLICT (" << symbol << ") ***" ;
           ioHTMLFileContents.outputRawData ("</span>") ;
         }
-        conflictCount ++ ;
+        conflictCount += 1 ;
       }
       SLRdecisionTable (state, terminal COMMA_HERE) = cDecisionTableElement::acceptDecision () ;
       if (inPopulateHTMLHelperString) {
@@ -1374,8 +1374,8 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
         if (inPopulateHTMLHelperString) {
           ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
           ioHTMLFileContents << "Action [S"
-                      << cStringWithSigned (state)
-                      << ", " ;
+                             << cStringWithSigned (state)
+                             << ", " ;
           inVocabulary.printInFile (ioHTMLFileContents, terminal COMMA_HERE) ;
           ioHTMLFileContents << "] : reduce by " ;
           inVocabulary.printInFile (ioHTMLFileContents, leftNonTerminal COMMA_HERE) ;
@@ -1383,18 +1383,17 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
         }
         if (! SLRdecisionTable (state, terminal COMMA_HERE).isInUndefinedState ()) {
           if (inPopulateHTMLHelperString) {
-            const C_String symbol = inVocabulary.getSymbol (SLRdecisionTable (state, terminal COMMA_HERE).parameter () COMMA_HERE) ;
             ioHTMLFileContents.outputRawData ("<span class=\"error\">") ;
-            ioHTMLFileContents << " *** CONFLICT (" << symbol << ") ***" ;
+            ioHTMLFileContents << " *** CONFLICT ***" ;
             ioHTMLFileContents.outputRawData ("</span>") ;
           }
-          conflictCount ++ ;
+          conflictCount += 1 ;
         }
         if (inPopulateHTMLHelperString) {
           ioHTMLFileContents.outputRawData ("</td></tr>") ;
         }
         SLRdecisionTable (state, terminal COMMA_HERE) = cDecisionTableElement::reduceDecision (productionIndex) ;
-        reduceActions ++ ;
+        reduceActions += 1 ;
       }    
     }
   }

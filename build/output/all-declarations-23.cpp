@@ -8,6 +8,436 @@
 #include "all-declarations-23.h"
 
 //----------------------------------------------------------------------------------------------------------------------
+// @templateInstructionExpressionForGeneration reference class
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_templateInstructionExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_templateInstructionExpressionForGeneration * p = (const cPtr_templateInstructionExpressionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_templateInstructionExpressionForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mExpression.objectCompare (p->mProperty_mExpression) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_templateInstructionExpressionForGeneration::objectCompare (const GALGAS_templateInstructionExpressionForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionExpressionForGeneration::GALGAS_templateInstructionExpressionForGeneration (void) :
+GALGAS_templateInstructionForGeneration () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionExpressionForGeneration::GALGAS_templateInstructionExpressionForGeneration (const cPtr_templateInstructionExpressionForGeneration * inSourcePtr) :
+GALGAS_templateInstructionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionExpressionForGeneration) ;
+}
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionExpressionForGeneration GALGAS_templateInstructionExpressionForGeneration::constructor_new (const GALGAS_semanticExpressionForGeneration & inAttribute_mExpression
+                                                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_templateInstructionExpressionForGeneration result ;
+  if (inAttribute_mExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_templateInstructionExpressionForGeneration (inAttribute_mExpression COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_semanticExpressionForGeneration GALGAS_templateInstructionExpressionForGeneration::readProperty_mExpression (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_semanticExpressionForGeneration () ;
+  }else{
+    cPtr_templateInstructionExpressionForGeneration * p = (cPtr_templateInstructionExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateInstructionExpressionForGeneration) ;
+    return p->mProperty_mExpression ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//Pointer class for @templateInstructionExpressionForGeneration class
+//----------------------------------------------------------------------------------------------------------------------
+
+cPtr_templateInstructionExpressionForGeneration::cPtr_templateInstructionExpressionForGeneration (const GALGAS_semanticExpressionForGeneration & in_mExpression
+                                                                                                  COMMA_LOCATION_ARGS) :
+cPtr_templateInstructionForGeneration (THERE),
+mProperty_mExpression (in_mExpression) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_templateInstructionExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration ;
+}
+
+void cPtr_templateInstructionExpressionForGeneration::description (C_String & ioString,
+                                                                   const int32_t inIndentation) const {
+  ioString << "[@templateInstructionExpressionForGeneration:" ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_templateInstructionExpressionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_templateInstructionExpressionForGeneration (mProperty_mExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@templateInstructionExpressionForGeneration type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration ("templateInstructionExpressionForGeneration",
+                                                                   & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_templateInstructionExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_templateInstructionExpressionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_templateInstructionExpressionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionExpressionForGeneration GALGAS_templateInstructionExpressionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                                    C_Compiler * inCompiler
+                                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_templateInstructionExpressionForGeneration result ;
+  const GALGAS_templateInstructionExpressionForGeneration * p = (const GALGAS_templateInstructionExpressionForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_templateInstructionExpressionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateInstructionExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_templateInstructionExpressionForGeneration_2D_weak::objectCompare (const GALGAS_templateInstructionExpressionForGeneration_2D_weak & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
+    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionExpressionForGeneration_2D_weak::GALGAS_templateInstructionExpressionForGeneration_2D_weak (void) :
+GALGAS_templateInstructionForGeneration_2D_weak () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionExpressionForGeneration_2D_weak & GALGAS_templateInstructionExpressionForGeneration_2D_weak::operator = (const GALGAS_templateInstructionExpressionForGeneration & inSource) {
+  cPtr_weakReference_class * proxyPtr = NULL ;
+  acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
+  if (p != NULL) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mObjectPtr, proxyPtr) ;
+  return *this ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionExpressionForGeneration_2D_weak::GALGAS_templateInstructionExpressionForGeneration_2D_weak (const GALGAS_templateInstructionExpressionForGeneration & inSource) :
+GALGAS_templateInstructionForGeneration_2D_weak (inSource) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionExpressionForGeneration_2D_weak GALGAS_templateInstructionExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+  GALGAS_templateInstructionExpressionForGeneration_2D_weak result ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionExpressionForGeneration GALGAS_templateInstructionExpressionForGeneration_2D_weak::bang_templateInstructionExpressionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_templateInstructionExpressionForGeneration result ;
+  if (mObjectPtr != NULL) {
+    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
+    acStrongPtr_class * strongPtr = p->strongObject () ;
+    if (strongPtr == NULL) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_templateInstructionExpressionForGeneration) ;
+      result = GALGAS_templateInstructionExpressionForGeneration ((cPtr_templateInstructionExpressionForGeneration *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@templateInstructionExpressionForGeneration-weak type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration_2D_weak ("templateInstructionExpressionForGeneration-weak",
+                                                                           & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2D_weak) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_templateInstructionExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration_2D_weak ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_templateInstructionExpressionForGeneration_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_templateInstructionExpressionForGeneration_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionExpressionForGeneration_2D_weak GALGAS_templateInstructionExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                                                                    C_Compiler * inCompiler
+                                                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_templateInstructionExpressionForGeneration_2D_weak result ;
+  const GALGAS_templateInstructionExpressionForGeneration_2D_weak * p = (const GALGAS_templateInstructionExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_templateInstructionExpressionForGeneration_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateInstructionExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                               Bool options                                                    
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkEntityUsefulness ("galgas_cli_options",
+                                         "checkEntityUsefulness",
+                                         0,
+                                         "check-usefulness",
+                                         "Check Entity Usefulness") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_gmp ("galgas_cli_options",
+                                         "check_gmp",
+                                         0,
+                                         "check-gmp",
+                                         "Run a GMP check") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_displayUnicodeLexicalTestFunctions ("galgas_cli_options",
+                                         "displayUnicodeLexicalTestFunctions",
+                                         0,
+                                         "display-lexical-test-functions",
+                                         "Display Unicode Lexical Test Functions") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams ("galgas_cli_options",
+                                         "emitSyntaxDiagrams",
+                                         0,
+                                         "emit-syntax-diagrams",
+                                         "Emit grammar syntax diagrams in TEX files") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorAnomynousForInstructionEnumeratedObject ("galgas_cli_options",
+                                         "errorAnomynousForInstructionEnumeratedObject",
+                                         0,
+                                         "error-anonymous-for-instruction",
+                                         "error on anonymous 'for' instruction enumerated object ('for () in ...')") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorClassDeclaration ("galgas_cli_options",
+                                         "errorClassDeclaration",
+                                         0,
+                                         "error-class-declaration",
+                                         "'class' declaration is obsolete use 'valueclass'") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorEllipsisInEnumeratedObject ("galgas_cli_options",
+                                         "errorEllipsisInEnumeratedObject",
+                                         0,
+                                         "error-ellipsis-in-for-instruction",
+                                         "error on ellipsis in enumerated object ('for (x y ...) in xxx')") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStyleCollectionInitializer ("galgas_cli_options",
+                                         "errorOldStyleCollectionInitializer",
+                                         0,
+                                         "error-old-syle-collection-initializer",
+                                         "error on old style collection initializer") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStyleLocalVarDeclaration ("galgas_cli_options",
+                                         "errorOldStyleLocalVarDeclaration",
+                                         0,
+                                         "error-old-style-local-var-declaration",
+                                         "error on old style local variable declaration") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStylePropertyDeclaration ("galgas_cli_options",
+                                         "errorOldStylePropertyDeclaration",
+                                         0,
+                                         "error-old-style-property-declaration",
+                                         "error on old style property declaration") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorPropertyGetterCall ("galgas_cli_options",
+                                         "errorPropertyGetterCall",
+                                         0,
+                                         "error-property-getter-call",
+                                         "error on calling property getter (instead of dot notation)") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorValueClassDeclaration ("galgas_cli_options",
+                                         "errorValueClassDeclaration",
+                                         0,
+                                         "error-value-class-declaration",
+                                         "error on 'value class' declaration") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateManyFiles ("galgas_cli_options",
+                                         "generateManyFiles",
+                                         0,
+                                         "generate-many-cpp-files",
+                                         "Generate many C++ implementation files") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateOneHeader ("galgas_cli_options",
+                                         "generateOneHeader",
+                                         0,
+                                         "generate-one-cpp-header",
+                                         "Generate one C++ header file for all declarations") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateSharedMapAutomatonDotFiles ("galgas_cli_options",
+                                         "generateSharedMapAutomatonDotFiles",
+                                         0,
+                                         "generate-shared-map-automaton-dot-files",
+                                         "Generate shared map automaton dot files") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLTypeListFile ("galgas_cli_options",
+                                         "outputHTMLTypeListFile",
+                                         84,
+                                         "output-html-type-dump-file",
+                                         "Output a HTML file that contains all defined types") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile ("galgas_cli_options",
+                                         "outputHTMLgrammarFile",
+                                         0,
+                                         "output-html-grammar-file",
+                                         "Output a HTML file for every grammar component") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedLexicalActions ("galgas_cli_options",
+                                         "printPredefinedLexicalActions",
+                                         0,
+                                         "print-predefined-lexical-actions",
+                                         "Print the list of predefined lexical routines and functions") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf ("galgas_cli_options",
+                                         "propertyAccessRequiresSelf",
+                                         0,
+                                         "error-property-access-without-self",
+                                         "'self' is required for accessing properties in getter, setter and methods") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_warningNotGalgas_34_Feature ("galgas_cli_options",
+                                         "warningNotGalgas4Feature",
+                                         0,
+                                         "warns-on-feature-not-handled-in-galgas4",
+                                         "warns on feature not handled in galgas 4") ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                               UInt options                                                    
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+C_UIntCommandLineOption gOption_galgas_5F_cli_5F_options_macosxSDK ("galgas_cli_options",
+                                         "macosxSDK",
+                                         0,
+                                         "macosx",
+                                         "Generate an Xcode project for OS X",
+                                         0) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                              String options                                                   
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_cppCompile ("galgas_cli_options",
+                                         "cppCompile",
+                                         0,
+                                         "compile",
+                                         "Perform C++ compilation on 'string' target",
+                                         "") ;
+
+C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_create_5F_project ("galgas_cli_options",
+                                         "create_project",
+                                         0,
+                                         "create-project",
+                                         "Create a new GALGAS Project",
+                                         "") ;
+
+C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_extractLIBPMOption ("galgas_cli_options",
+                                         "extractLIBPMOption",
+                                         0,
+                                         "extract-libpm",
+                                         "Extract embedded LIBPM at given path",
+                                         "") ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                              String List options                                              
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
 //
 //Filewrapper 'projectCreationFileWrapper'
 //

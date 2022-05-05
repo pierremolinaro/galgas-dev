@@ -52,16 +52,14 @@ mDecision (inDecision) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-cDecisionTableElement cDecisionTableElement::
-shiftDecision (const int32_t inNextState) {
+cDecisionTableElement cDecisionTableElement::shiftDecision (const int32_t inNextState) {
   cDecisionTableElement d (inNextState, kDecisionShift) ;
   return d ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-cDecisionTableElement cDecisionTableElement::
-reduceDecision (const int32_t inReduceProduction) {
+cDecisionTableElement cDecisionTableElement::reduceDecision (const int32_t inReduceProduction) {
   cDecisionTableElement d (inReduceProduction, kDecisionReduce) ;
   return d ;
 }

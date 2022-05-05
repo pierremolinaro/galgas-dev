@@ -316,7 +316,9 @@ syntax galgas4InstructionsSyntax (galgas3Scanner) {
     $extern$
     $proc$
     $identifier$ ?let @lstring mActionName indexing routineDefinition
+    $($
     <formal_parameter_list> ?let @formalParameterListAST mFormalParameterList
+    $)$
     ioDeclarations.mDeclarationList += !@externRoutineDeclarationAST.new {
       !false # Is not predefined
       !false # Is not internal
@@ -429,7 +431,9 @@ syntax galgas4InstructionsSyntax (galgas3Scanner) {
     $extern$
     $func$
     $identifier$ ?let mActionName indexing functionDefinition
+    $($
     <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
+    $)$
     $->$
     $@type$ ?let resultTypeName
     ioDeclarations.mDeclarationList += !@externFunctionDeclarationAST.new {
@@ -445,6 +449,8 @@ syntax galgas4InstructionsSyntax (galgas3Scanner) {
   #·····················································································································
 
   rule <actual_parameter_list> !@actualParameterListAST outActualParameterList
+
+  rule <actual_parameter_list_within_parenthesis> !@actualParameterListAST outActualParameterList
 
   #·····················································································································
 
@@ -468,7 +474,7 @@ syntax galgas4InstructionsSyntax (galgas3Scanner) {
     or
       $identifier$ ?let actualParameterName
       result = @grammarInstructionSyntaxDirectedTranslationResultInVar.new {!actualParameterName}
-    end
+    end  
   }
 
   #·····················································································································

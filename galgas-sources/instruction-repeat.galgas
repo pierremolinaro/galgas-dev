@@ -58,8 +58,7 @@ syntax extension galgas4SyntaxComponentSyntax {
 
   #·····················································································································
 
-  rule <syntax_instruction>
-    !@syntaxInstructionAST outInstruction {
+  rule <syntax_instruction> !@syntaxInstructionAST outInstruction {
     $repeat$
     let mRepeatInstructionLocation = @location.here
     <syntax_instruction_list> ?let @syntaxInstructionList mRepeatedInstructionList

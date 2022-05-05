@@ -295,6 +295,14 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
   #  A C T U A L    P A R A M E T E R    L I S T
   #·····················································································································
 
+  rule <actual_parameter_list_within_parenthesis> !@actualParameterListAST outActualParameterList {
+    $($
+    <actual_parameter_list> ? outActualParameterList
+    $)$
+  }
+  
+  #·····················································································································
+
   rule <actual_parameter_list> !@actualParameterListAST outActualParameterList {
     outActualParameterList = {}
     repeat

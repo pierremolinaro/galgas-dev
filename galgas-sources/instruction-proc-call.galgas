@@ -39,9 +39,7 @@ syntax extension galgas4InstructionsSyntax {
 
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $identifier$ ?let mRoutineName indexing routineCall
-    $($
-    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
-    $)$
+    <actual_parameter_list_within_parenthesis> ?let @actualParameterListAST actualParameterList
     outInstruction = @procCallInstructionAST.new {
       !mRoutineName.location
       !mRoutineName

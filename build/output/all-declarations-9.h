@@ -3359,13 +3359,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_logInstructionAST_2
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @loopInstructionAST reference class
+// Phase 1: @loopInstructionWithVariantAST reference class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_loopInstructionAST : public GALGAS_semanticInstructionAST {
+class GALGAS_loopInstructionWithVariantAST : public GALGAS_semanticInstructionAST {
 //--------------------------------- Default constructor
-  public: GALGAS_loopInstructionAST (void) ;
+  public: GALGAS_loopInstructionWithVariantAST (void) ;
 
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
@@ -3373,7 +3373,7 @@ class GALGAS_loopInstructionAST : public GALGAS_semanticInstructionAST {
  }
   
 //--------------------------------- Constructor from pointer
-  public: GALGAS_loopInstructionAST (const class cPtr_loopInstructionAST * inSourcePtr) ;
+  public: GALGAS_loopInstructionWithVariantAST (const class cPtr_loopInstructionWithVariantAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
   public: class GALGAS_semanticExpressionAST readProperty_mVariantExpression (void) const ;
@@ -3400,25 +3400,25 @@ class GALGAS_loopInstructionAST : public GALGAS_semanticInstructionAST {
   protected: virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_loopInstructionAST extractObject (const GALGAS_object & inObject,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_loopInstructionWithVariantAST extractObject (const GALGAS_object & inObject,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_loopInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                  const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                  const class GALGAS_location & inOperand2,
-                                                                  const class GALGAS_semanticInstructionListAST & inOperand3,
-                                                                  const class GALGAS_location & inOperand4,
-                                                                  const class GALGAS_semanticExpressionAST & inOperand5,
-                                                                  const class GALGAS_location & inOperand6,
-                                                                  const class GALGAS_semanticInstructionListAST & inOperand7,
-                                                                  const class GALGAS_location & inOperand8,
-                                                                  const class GALGAS_location & inOperand9
-                                                                  COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_loopInstructionWithVariantAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                             const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                             const class GALGAS_location & inOperand2,
+                                                                             const class GALGAS_semanticInstructionListAST & inOperand3,
+                                                                             const class GALGAS_location & inOperand4,
+                                                                             const class GALGAS_semanticExpressionAST & inOperand5,
+                                                                             const class GALGAS_location & inOperand6,
+                                                                             const class GALGAS_semanticInstructionListAST & inOperand7,
+                                                                             const class GALGAS_location & inOperand8,
+                                                                             const class GALGAS_location & inOperand9
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_loopInstructionAST & inOperand) const ;
+  public: typeComparisonResult objectCompare (const GALGAS_loopInstructionWithVariantAST & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMEndOfFirstInstructions (class GALGAS_location inArgument0
@@ -3459,20 +3459,20 @@ class GALGAS_loopInstructionAST : public GALGAS_semanticInstructionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_loopInstructionAST class
+} ; // End of GALGAS_loopInstructionWithVariantAST class
 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_loopInstructionAST ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_loopInstructionWithVariantAST ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 2: pointer class for @loopInstructionAST class
+// Phase 2: pointer class for @loopInstructionWithVariantAST class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class cPtr_loopInstructionAST : public cPtr_semanticInstructionAST {
+class cPtr_loopInstructionWithVariantAST : public cPtr_semanticInstructionAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3488,17 +3488,17 @@ class cPtr_loopInstructionAST : public cPtr_semanticInstructionAST {
   public: GALGAS_location mProperty_mEndOfLoopInstruction ;
 
 //--- Constructor
-  public: cPtr_loopInstructionAST (const GALGAS_location & in_mInstructionLocation,
-                                   const GALGAS_semanticExpressionAST & in_mVariantExpression,
-                                   const GALGAS_location & in_mEndOfVariantExpression,
-                                   const GALGAS_semanticInstructionListAST & in_mFirstInstructions,
-                                   const GALGAS_location & in_mEndOfFirstInstructions,
-                                   const GALGAS_semanticExpressionAST & in_mLoopExpression,
-                                   const GALGAS_location & in_mEndOfLoopExpression,
-                                   const GALGAS_semanticInstructionListAST & in_mSecondInstructions,
-                                   const GALGAS_location & in_mEndOfSecondInstructions,
-                                   const GALGAS_location & in_mEndOfLoopInstruction
-                                   COMMA_LOCATION_ARGS) ;
+  public: cPtr_loopInstructionWithVariantAST (const GALGAS_location & in_mInstructionLocation,
+                                              const GALGAS_semanticExpressionAST & in_mVariantExpression,
+                                              const GALGAS_location & in_mEndOfVariantExpression,
+                                              const GALGAS_semanticInstructionListAST & in_mFirstInstructions,
+                                              const GALGAS_location & in_mEndOfFirstInstructions,
+                                              const GALGAS_semanticExpressionAST & in_mLoopExpression,
+                                              const GALGAS_location & in_mEndOfLoopExpression,
+                                              const GALGAS_semanticInstructionListAST & in_mSecondInstructions,
+                                              const GALGAS_location & in_mEndOfSecondInstructions,
+                                              const GALGAS_location & in_mEndOfLoopInstruction
+                                              COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
@@ -3516,24 +3516,24 @@ class cPtr_loopInstructionAST : public cPtr_semanticInstructionAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @loopInstructionAST_2D_weak weak reference class
+// Phase 1: @loopInstructionWithVariantAST_2D_weak weak reference class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_loopInstructionAST_2D_weak : public GALGAS_semanticInstructionAST_2D_weak {
+class GALGAS_loopInstructionWithVariantAST_2D_weak : public GALGAS_semanticInstructionAST_2D_weak {
 //--------------------------------- Default constructor
-  public: GALGAS_loopInstructionAST_2D_weak (void) ;
+  public: GALGAS_loopInstructionWithVariantAST_2D_weak (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public: static GALGAS_loopInstructionAST_2D_weak constructor_default (LOCATION_ARGS) ;
+  public: static GALGAS_loopInstructionWithVariantAST_2D_weak constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_loopInstructionAST_2D_weak (const class GALGAS_loopInstructionAST & inSource) ;
+  public: GALGAS_loopInstructionWithVariantAST_2D_weak (const class GALGAS_loopInstructionWithVariantAST & inSource) ;
 
-  public: GALGAS_loopInstructionAST_2D_weak & operator = (const class GALGAS_loopInstructionAST & inSource) ;
+  public: GALGAS_loopInstructionWithVariantAST_2D_weak & operator = (const class GALGAS_loopInstructionWithVariantAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_loopInstructionAST bang_loopInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_loopInstructionWithVariantAST bang_loopInstructionWithVariantAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of generic part --*
 
@@ -3541,15 +3541,15 @@ class GALGAS_loopInstructionAST_2D_weak : public GALGAS_semanticInstructionAST_2
   protected: virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_loopInstructionAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_loopInstructionWithVariantAST_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                             C_Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_loopInstructionAST_2D_weak constructor_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_loopInstructionWithVariantAST_2D_weak constructor_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_loopInstructionAST_2D_weak & inOperand) const ;
+  public: typeComparisonResult objectCompare (const GALGAS_loopInstructionWithVariantAST_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -3563,12 +3563,209 @@ class GALGAS_loopInstructionAST_2D_weak : public GALGAS_semanticInstructionAST_2
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_loopInstructionAST_2D_weak class
+} ; // End of GALGAS_loopInstructionWithVariantAST_2D_weak class
 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_loopInstructionAST_2D_weak ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_loopInstructionWithVariantAST_2D_weak ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @loopInstructionWithoutVariantAST reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_loopInstructionWithoutVariantAST : public GALGAS_semanticInstructionAST {
+//--------------------------------- Default constructor
+  public: GALGAS_loopInstructionWithoutVariantAST (void) ;
+
+//--------------------------------- Embedded object pointer
+ public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
+   return (acStrongPtr_class *) mObjectPtr ;
+ }
+  
+//--------------------------------- Constructor from pointer
+  public: GALGAS_loopInstructionWithoutVariantAST (const class cPtr_loopInstructionWithoutVariantAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_semanticInstructionListAST readProperty_mFirstInstructions (void) const ;
+
+  public: class GALGAS_location readProperty_mEndOfFirstInstructions (void) const ;
+
+  public: class GALGAS_semanticExpressionAST readProperty_mLoopExpression (void) const ;
+
+  public: class GALGAS_location readProperty_mEndOfLoopExpression (void) const ;
+
+  public: class GALGAS_semanticInstructionListAST readProperty_mSecondInstructions (void) const ;
+
+  public: class GALGAS_location readProperty_mEndOfSecondInstructions (void) const ;
+
+  public: class GALGAS_location readProperty_mEndOfLoopInstruction (void) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_loopInstructionWithoutVariantAST extractObject (const GALGAS_object & inObject,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_loopInstructionWithoutVariantAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                                const class GALGAS_semanticInstructionListAST & inOperand1,
+                                                                                const class GALGAS_location & inOperand2,
+                                                                                const class GALGAS_semanticExpressionAST & inOperand3,
+                                                                                const class GALGAS_location & inOperand4,
+                                                                                const class GALGAS_semanticInstructionListAST & inOperand5,
+                                                                                const class GALGAS_location & inOperand6,
+                                                                                const class GALGAS_location & inOperand7
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_loopInstructionWithoutVariantAST & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMEndOfFirstInstructions (class GALGAS_location inArgument0
+                                                                   COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMEndOfLoopExpression (class GALGAS_location inArgument0
+                                                                COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMEndOfLoopInstruction (class GALGAS_location inArgument0
+                                                                 COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMEndOfSecondInstructions (class GALGAS_location inArgument0
+                                                                    COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMFirstInstructions (class GALGAS_semanticInstructionListAST inArgument0
+                                                              COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMLoopExpression (class GALGAS_semanticExpressionAST inArgument0
+                                                           COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMSecondInstructions (class GALGAS_semanticInstructionListAST inArgument0
+                                                               COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_loopInstructionWithoutVariantAST class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_loopInstructionWithoutVariantAST ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @loopInstructionWithoutVariantAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_loopInstructionWithoutVariantAST : public cPtr_semanticInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+//--- Properties
+  public: GALGAS_semanticInstructionListAST mProperty_mFirstInstructions ;
+  public: GALGAS_location mProperty_mEndOfFirstInstructions ;
+  public: GALGAS_semanticExpressionAST mProperty_mLoopExpression ;
+  public: GALGAS_location mProperty_mEndOfLoopExpression ;
+  public: GALGAS_semanticInstructionListAST mProperty_mSecondInstructions ;
+  public: GALGAS_location mProperty_mEndOfSecondInstructions ;
+  public: GALGAS_location mProperty_mEndOfLoopInstruction ;
+
+//--- Constructor
+  public: cPtr_loopInstructionWithoutVariantAST (const GALGAS_location & in_mInstructionLocation,
+                                                 const GALGAS_semanticInstructionListAST & in_mFirstInstructions,
+                                                 const GALGAS_location & in_mEndOfFirstInstructions,
+                                                 const GALGAS_semanticExpressionAST & in_mLoopExpression,
+                                                 const GALGAS_location & in_mEndOfLoopExpression,
+                                                 const GALGAS_semanticInstructionListAST & in_mSecondInstructions,
+                                                 const GALGAS_location & in_mEndOfSecondInstructions,
+                                                 const GALGAS_location & in_mEndOfLoopInstruction
+                                                 COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @loopInstructionWithoutVariantAST_2D_weak weak reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_loopInstructionWithoutVariantAST_2D_weak : public GALGAS_semanticInstructionAST_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_loopInstructionWithoutVariantAST_2D_weak (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_loopInstructionWithoutVariantAST_2D_weak constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_loopInstructionWithoutVariantAST_2D_weak (const class GALGAS_loopInstructionWithoutVariantAST & inSource) ;
+
+  public: GALGAS_loopInstructionWithoutVariantAST_2D_weak & operator = (const class GALGAS_loopInstructionWithoutVariantAST & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_loopInstructionWithoutVariantAST bang_loopInstructionWithoutVariantAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_loopInstructionWithoutVariantAST_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_loopInstructionWithoutVariantAST_2D_weak constructor_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_loopInstructionWithoutVariantAST_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_loopInstructionWithoutVariantAST_2D_weak class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_loopInstructionWithoutVariantAST_2D_weak ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -7169,229 +7366,4 @@ class cPtr_repeatInstruction : public cPtr_syntaxInstructionAST {
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
 
 } ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @repeatInstruction_2D_weak weak reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_repeatInstruction_2D_weak : public GALGAS_syntaxInstructionAST_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_repeatInstruction_2D_weak (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_repeatInstruction_2D_weak constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_repeatInstruction_2D_weak (const class GALGAS_repeatInstruction & inSource) ;
-
-  public: GALGAS_repeatInstruction_2D_weak & operator = (const class GALGAS_repeatInstruction & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_repeatInstruction bang_repeatInstruction_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_repeatInstruction_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_repeatInstruction_2D_weak constructor_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_repeatInstruction_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_repeatInstruction_2D_weak class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstruction_2D_weak ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @repeatInstructionForGeneration reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_repeatInstructionForGeneration : public GALGAS_syntaxInstructionForGeneration {
-//--------------------------------- Default constructor
-  public: GALGAS_repeatInstructionForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_repeatInstructionForGeneration constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
-//--------------------------------- Constructor from pointer
-  public: GALGAS_repeatInstructionForGeneration (const class cPtr_repeatInstructionForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property read access
-  public: class GALGAS_string readProperty_mSyntaxComponentName (void) const ;
-
-  public: class GALGAS_uint readProperty_mChoiceIndex (void) const ;
-
-  public: class GALGAS_semanticInstructionListForGeneration readProperty_m_5F_repeated_5F_instructionList (void) const ;
-
-  public: class GALGAS_location readProperty_mEndOfRepeatedInstructions (void) const ;
-
-  public: class GALGAS_listOfSemanticInstructionListForGeneration readProperty_mListOfSemanticInstructionListForGeneration (void) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_repeatInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_repeatInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                              const class GALGAS_string & inOperand1,
-                                                                              const class GALGAS_uint & inOperand2,
-                                                                              const class GALGAS_semanticInstructionListForGeneration & inOperand3,
-                                                                              const class GALGAS_location & inOperand4,
-                                                                              const class GALGAS_listOfSemanticInstructionListForGeneration & inOperand5
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_repeatInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_repeatInstructionForGeneration class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstructionForGeneration ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @repeatInstructionForGeneration class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class cPtr_repeatInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
-
-//----------------------------------------------------------------------------------------------------------------------
-
-//--- Properties
-  public: GALGAS_string mProperty_mSyntaxComponentName ;
-  public: GALGAS_uint mProperty_mChoiceIndex ;
-  public: GALGAS_semanticInstructionListForGeneration mProperty_m_5F_repeated_5F_instructionList ;
-  public: GALGAS_location mProperty_mEndOfRepeatedInstructions ;
-  public: GALGAS_listOfSemanticInstructionListForGeneration mProperty_mListOfSemanticInstructionListForGeneration ;
-
-//--- Constructor
-  public: cPtr_repeatInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                               const GALGAS_string & in_mSyntaxComponentName,
-                                               const GALGAS_uint & in_mChoiceIndex,
-                                               const GALGAS_semanticInstructionListForGeneration & in_m_5F_repeated_5F_instructionList,
-                                               const GALGAS_location & in_mEndOfRepeatedInstructions,
-                                               const GALGAS_listOfSemanticInstructionListForGeneration & in_mListOfSemanticInstructionListForGeneration
-                                               COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
-
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @repeatInstructionForGeneration_2D_weak weak reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_repeatInstructionForGeneration_2D_weak : public GALGAS_syntaxInstructionForGeneration_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_repeatInstructionForGeneration_2D_weak (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_repeatInstructionForGeneration_2D_weak constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_repeatInstructionForGeneration_2D_weak (const class GALGAS_repeatInstructionForGeneration & inSource) ;
-
-  public: GALGAS_repeatInstructionForGeneration_2D_weak & operator = (const class GALGAS_repeatInstructionForGeneration & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_repeatInstructionForGeneration bang_repeatInstructionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_repeatInstructionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_repeatInstructionForGeneration_2D_weak constructor_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_repeatInstructionForGeneration_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_repeatInstructionForGeneration_2D_weak class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstructionForGeneration_2D_weak ;
 

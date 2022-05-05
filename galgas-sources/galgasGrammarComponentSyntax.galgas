@@ -221,8 +221,8 @@ syntax galgas4GrammarComponentSyntax (galgas3Scanner) {
     while
     end
   #--- Root symbol
-    $<non_terminal>$ ?let @lstring  mStartSymbol indexing ruleReference
-    var mLabelList =@nonTerminalLabelListAST {}
+    $<non_terminal>$ ?let @lstring startSymbol indexing ruleReference
+    var mLabelList = @nonTerminalLabelListAST {}
     <grammar_start_symbol_label> !@lstring.new {!"" !@location.here} !?mLabelList
     repeat
     while
@@ -246,7 +246,7 @@ syntax galgas4GrammarComponentSyntax (galgas3Scanner) {
       !mGrammarName
       !mGrammarClass
       !syntaxComponents
-      !mStartSymbol
+      !startSymbol
       !mLabelList
       !mUnusedNonterminalList
       !hasTranslateFeature}
@@ -254,20 +254,21 @@ syntax galgas4GrammarComponentSyntax (galgas3Scanner) {
 
   #·····················································································································
 
-  rule <grammar_start_symbol_label>
-    ?let @lstring inLabelName
-    ?!@nonTerminalLabelListAST ioLabelList {
+  rule <grammar_start_symbol_label> ?let @lstring inLabelName
+                                    ?!@nonTerminalLabelListAST ioLabelList {
     var @stringset argumentNameSet = {}
-    var @formalParameterListAST mFormalParameterList = {}
+    var @formalParameterListAST formalParameterList = {}
+    $($
     repeat
     while
-      <label_formal_parameter> ?let argumentName !?mFormalParameterList
+      <label_formal_parameter> ?let argumentName !?formalParameterList
       if [argumentNameSet hasKey !argumentName.string] then
         error argumentName: "there is already an argument named '" + argumentName + "'"
       end
       argumentNameSet += !argumentName.string
     end
-    ioLabelList += !inLabelName !mFormalParameterList !.here
+    $)$
+    ioLabelList += !inLabelName !formalParameterList !.here
   }
 
   #·····················································································································

@@ -127,26 +127,13 @@ syntax extension galgas3InstructionsSyntax {
     !@semanticInstructionAST outInstruction
   {
     $on$
-    let @semanticExpressionAST sourceExpression
-    let @location endOfSourceExpression
-    let @semanticExpressionAST nameExpression
-    let @location endOfNameExpression
-    select
-      <expression> ?sourceExpression
-      endOfSourceExpression = .here
-      nameExpression = @literalStringExpressionAST.new {!.here !{!""}}
-      endOfNameExpression = .here
-      warning .here : "obsolete syntax, use '... on (source_string, name_string) ...'"
-        + " instead of '... on source_string ...' ; you can use empty string \"\" for name_string"
-    or
-      $($
-      <expression> ?sourceExpression
-      endOfSourceExpression = .here
-      $,$
-      <expression> ?nameExpression
-      endOfNameExpression = .here
-      $)$
-    end
+    $($
+    <expression> ?let @semanticExpressionAST sourceExpression
+    let @location endOfSourceExpression = .here
+    $,$
+    <expression> ?let @semanticExpressionAST nameExpression
+    let @location endOfNameExpression = .here
+    $)$
     <actual_parameter_list> ?let @actualParameterListAST actualParameterList
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
@@ -183,6 +170,7 @@ syntax extension galgas4InstructionsSyntax {
     $grammar$
     let instructionLocation = @location.here
     $identifier$ ?let @lstring grammarComponentName indexing grammarComponentReference
+    <actual_parameter_list_within_parenthesis> ?let @actualParameterListAST actualParameterList
     let @lstring labelName
     select
       labelName = @lstring.new {!"" !@location.here}
@@ -190,21 +178,19 @@ syntax extension galgas4InstructionsSyntax {
       $label$
       $identifier$ ?labelName
     end
-    <grammar_instruction_core> !instructionLocation !grammarComponentName !labelName ?outInstruction
+    <grammar_instruction_core> !instructionLocation !actualParameterList !grammarComponentName !labelName ?outInstruction
   }
   
   #·····················································································································
 
-  rule <grammar_instruction_core>
-    ?let @location inInstructionLocation
-    ?let @lstring inGrammarComponentName
-    ?let @lstring inLabelName
-    !@semanticInstructionAST outInstruction
-  {
+  rule <grammar_instruction_core> ?let @location inInstructionLocation
+                                  ?let @actualParameterListAST actualParameterList
+                                  ?let @lstring inGrammarComponentName
+                                  ?let @lstring inLabelName
+                                  !@semanticInstructionAST outInstruction {
     $in$
-    <expression> ?let @semanticExpressionAST mSourceExpression
+    <expression> ?let @semanticExpressionAST sourceExpression
     let endOfSourceExpression = @location.here
-    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
@@ -217,7 +203,7 @@ syntax extension galgas4InstructionsSyntax {
       !inInstructionLocation
       !inGrammarComponentName
       !inLabelName
-      !mSourceExpression
+      !sourceExpression
       !endOfSourceExpression
       !actualParameterList
       !grammarInstructionSyntaxDirectedTranslationResult
@@ -226,34 +212,17 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
 
-  rule <grammar_instruction_core>
-    ?let @location inInstructionLocation
-    ?let @lstring inGrammarComponentName
-    ?let @lstring inLabelName
-    !@semanticInstructionAST outInstruction
-  {
+  rule <grammar_instruction_core> ?let @location inInstructionLocation
+                                  ?let @actualParameterListAST actualParameterList
+                                  ?let @lstring inGrammarComponentName
+                                  ?let @lstring inLabelName
+                                  !@semanticInstructionAST outInstruction {
     $on$
-    let @semanticExpressionAST sourceExpression
-    let @location endOfSourceExpression
-    let @semanticExpressionAST nameExpression
-    let @location endOfNameExpression
-    select
-      <expression> ?sourceExpression
-      endOfSourceExpression = .here
-      nameExpression = @literalStringExpressionAST.new {!.here !{!""}}
-      endOfNameExpression = .here
-      warning .here : "obsolete syntax, use '... on (source_string, name_string) ...'"
-        + " instead of '... on source_string ...' ; you can use empty string \"\" for name_string"
-    or
-      $($
-      <expression> ?sourceExpression
-      endOfSourceExpression = .here
-      $,$
-      <expression> ?nameExpression
-      endOfNameExpression = .here
-      $)$
-    end
-    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+    <expression> ?let @semanticExpressionAST sourceExpression
+    let @location endOfSourceExpression = .here
+    $:$
+    <expression> ?let @semanticExpressionAST nameExpression
+    let @location endOfNameExpression = .here
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select

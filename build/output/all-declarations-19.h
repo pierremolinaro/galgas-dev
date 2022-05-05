@@ -44,6 +44,17 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
   public: virtual void nt_actual_5F_parameter_5F_list_ (GALGAS_actualParameterListAST & outArgument0,
                                                         C_Lexique_galgas_33_Scanner * inCompiler) ;
 
+//------------------------------------- 'actual_parameter_list_within_parenthesis' non terminal
+//--- 'parse' label
+  public: virtual void nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//--- indexing
+  public: virtual void nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_ (GALGAS_actualParameterListAST & outArgument0,
+                                                                                 C_Lexique_galgas_33_Scanner * inCompiler) ;
+
 //------------------------------------- 'branchOfParseWhithInstruction' non terminal
 //--- 'parse' label
   public: virtual void nt_branchOfParseWhithInstruction_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
@@ -307,9 +318,10 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
 
 //----------- '' label
   public: virtual void nt_grammar_5F_instruction_5F_core_ (const GALGAS_location inArgument0,
-                                                           const GALGAS_lstring inArgument1,
+                                                           const GALGAS_actualParameterListAST inArgument1,
                                                            const GALGAS_lstring inArgument2,
-                                                           GALGAS_semanticInstructionAST & outArgument3,
+                                                           const GALGAS_lstring inArgument3,
+                                                           GALGAS_semanticInstructionAST & outArgument4,
                                                            C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //------------------------------------- 'grammar_start_symbol_label' non terminal
@@ -1018,6 +1030,8 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
 
   public: virtual int32_t select_galgas_34_ExpressionSyntax_16 (C_Lexique_galgas_33_Scanner *) ;
 
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_17 (C_Lexique_galgas_33_Scanner *) ;
+
   public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_0 (C_Lexique_galgas_33_Scanner *) ;
 
   public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_1 (C_Lexique_galgas_33_Scanner *) ;
@@ -1403,6 +1417,8 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
   public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_19 (C_Lexique_galgas_33_Scanner *) ;
 
   public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_20 (C_Lexique_galgas_33_Scanner *) ;
+
+  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_21 (C_Lexique_galgas_33_Scanner *) ;
 
   public: virtual int32_t select_galgas_34_GrammarComponentSyntax_0 (C_Lexique_galgas_33_Scanner *) ;
 
