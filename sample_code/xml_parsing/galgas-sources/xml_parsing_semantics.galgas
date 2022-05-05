@@ -7,7 +7,7 @@ proc listUnicodeCharacterProperties {
   var @uint unicodeValue = 0
   var @uint matchedValue = 0
   var @bool found = false
-  loop( 0x10000 - unicodeValue)
+  loop (0x10000 - unicodeValue)
   while unicodeValue < 0x10000 do
     if [unicodeValue isUnicodeValueAssigned] then
       if found then
@@ -27,7 +27,7 @@ proc listUnicodeCharacterProperties {
 
   message "---- Unicode Letters\n"
   unicodeValue = 0
-  loop( 0x10000 - unicodeValue)
+  loop (0x10000 - unicodeValue)
   while unicodeValue < 0x10000 do
     if [unicodeValue isUnicodeValueAssigned] then
       let c =@char.unicodeCharacterWithUnsigned{! unicodeValue}
@@ -45,7 +45,7 @@ proc listUnicodeCharacterProperties {
 
   message "---- Unicode Numbers\n"
   unicodeValue = 0
-  loop( 0x10000 - unicodeValue)
+  loop (0x10000 - unicodeValue)
   while unicodeValue < 0x10000 do
     if [unicodeValue isUnicodeValueAssigned] then
       let c =@char.unicodeCharacterWithUnsigned{! unicodeValue}
@@ -58,7 +58,7 @@ proc listUnicodeCharacterProperties {
 
   message "---- Unicode Separators\n"
   unicodeValue = 0
-  loop( 0x10000 - unicodeValue)
+  loop (0x10000 - unicodeValue)
   while unicodeValue < 0x10000 do
     if [unicodeValue isUnicodeValueAssigned] then
       let c =@char.unicodeCharacterWithUnsigned{! unicodeValue}
@@ -71,7 +71,7 @@ proc listUnicodeCharacterProperties {
 
   message "---- Unicode Punctuation\n"
   unicodeValue = 0
-  loop( 0x10000 - unicodeValue)
+  loop (0x10000 - unicodeValue)
   while unicodeValue < 0x10000 do
     if [unicodeValue isUnicodeValueAssigned] then
       let c =@char.unicodeCharacterWithUnsigned{! unicodeValue}
@@ -84,7 +84,7 @@ proc listUnicodeCharacterProperties {
 
   message "---- Unicode Command\n"
   unicodeValue = 0
-  loop( 0x10000 - unicodeValue)
+  loop (0x10000 - unicodeValue)
   while unicodeValue < 0x10000 do
     if [unicodeValue isUnicodeValueAssigned] then
       let c =@char.unicodeCharacterWithUnsigned{! unicodeValue}
@@ -97,10 +97,10 @@ proc listUnicodeCharacterProperties {
 
   message "---- Unicode Mark\n"
   unicodeValue = 0
-  loop( 0x10000 - unicodeValue)
+  loop (0x10000 - unicodeValue)
   while unicodeValue < 0x10000 do
     if [unicodeValue isUnicodeValueAssigned] then
-      let c =@char.unicodeCharacterWithUnsigned{! unicodeValue}
+      let c = @char.unicodeCharacterWithUnsigned{! unicodeValue}
       if [c isUnicodeMark] then
         message "  - " + [unicodeValue hexString] + ", name: '" + [c unicodeName] + "'\n"
       end

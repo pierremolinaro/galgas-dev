@@ -9,7 +9,7 @@ case . "lbb"
 message "a source text file with the .lbb extension"
 ?sourceFilePath:@lstring inSourceFile {
 #--- Build AST
-  grammar lbb_grammar in inSourceFile ?let programAST
+  grammar lbb_grammar (?let programAST) in inSourceFile
 #--- Build box type map
   var @boxTypeMap boxTypeMap = {}
   for (mBoxTypeName mPortNameList) in  programAST.mBoxTypeListAST do

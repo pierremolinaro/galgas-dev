@@ -329,7 +329,7 @@ override method @extensionGetterForGeneration appendSpecificImplementation
     [self.mReceiverType addHeaderFileName !?ioInclusionSet]
     var @unifiedTypeMap-entry baseType = self.mReceiverType
     var @bool searching = true
-    loop( @uint. max) while searching do
+    loop (@uint. max) while searching do
       if not [[baseType mSuperType] isNull] then
         if [[[baseType mSuperType] mGetterMap] hasKey !self.mExtensionGetterName] then
           baseType = [baseType mSuperType]

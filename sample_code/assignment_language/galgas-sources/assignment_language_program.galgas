@@ -9,8 +9,7 @@ case . "assignment_language"
 message "a source text file with the .assignment_language extension"
 grammar assignment_language_grammar
 ?sourceFilePath:@lstring inSourceFile {
-  var @programAST programAST
-  grammar assignment_language_grammar in inSourceFile ?programAST
+  grammar assignment_language_grammar (?let programAST) in inSourceFile
 #--- Semantic analysis
   var @variableMap variableMap = .emptySharedMap
   var @instructionListForGeneration instructionListForGeneration = {}

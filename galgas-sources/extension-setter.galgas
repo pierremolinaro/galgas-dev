@@ -291,7 +291,7 @@ override method @extensionSetterForGeneration appendSpecificImplementation
   else
     var @unifiedTypeMap-entry baseType = self.mReceiverType
     var @bool searching = true
-    loop( @uint. max) while searching do
+    loop (@uint. max) while searching do
       if not [[baseType mSuperType] isNull] then
         if [[[baseType mSuperType] mSetterMap] hasKey !self.mExtensionSetterName] then
           baseType = [baseType mSuperType]

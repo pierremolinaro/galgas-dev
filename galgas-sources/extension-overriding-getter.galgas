@@ -160,7 +160,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
   var @functionSignature inheritedSignature = {}
   var inheritedReturnType =@unifiedTypeMap-entry.null{}
   var @location inheritedDeclarationLocation = @location.here
-  loop( [inSemanticContext.mTypeMap count] + 1)
+  loop ([inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mGetterMap] hasKey !self.mOverridingExtensionGetterName.string] then
       [[superType mGetterMap] searchKey

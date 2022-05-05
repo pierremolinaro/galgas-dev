@@ -580,8 +580,8 @@ override method @filewrapperDeclarationAST semanticAnalysis
       end
       let absoluteTemplatePath = absoluteSourcePath + "/" + mFilewrapperTemplatePath
     #--- Parse template
-      grammar templateGrammar in @lstring.new {!absoluteTemplatePath !mFilewrapperTemplatePath.location}
-        ?let @templateInstructionListAST resultingInstructionList
+      grammar templateGrammar (?let @templateInstructionListAST resultingInstructionList)
+         in @lstring.new {!absoluteTemplatePath !mFilewrapperTemplatePath.location}
     #--- Build template variable map
       var @templateVariableMap templateVariableMap = {}
       var @formalInputParameterListForGeneration filewrapperTemplateFormalInputParameters = {}
@@ -746,7 +746,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
       !?addedNonTerminalCount
     )
     var @uint i = 0
-    loop( addedNonTerminalCount) while i < (addedNonTerminalCount - addedNonTerminalCountRef) do
+    loop (addedNonTerminalCount) while i < (addedNonTerminalCount - addedNonTerminalCountRef) do
       nonTerminalToAddList += !syntaxComponentName !i
       i++
     end

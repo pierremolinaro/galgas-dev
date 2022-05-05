@@ -156,7 +156,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
   #--- Check expression type is a descendant of named type
     var @unifiedTypeMap-entry t = castType
     var @bool found = t == expression.mResultType
-    loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
+    loop ([inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
     while (not found) & not [[t mSuperType] isNull] do
       t = [t mSuperType]
       found = t == expression.mResultType
@@ -215,7 +215,7 @@ override method @castInExpressionAST analyzeSemanticExpression
   #--- Check expression type is a descendant of named type
     var @unifiedTypeMap-entry t = type
     var @bool found = t == expression.mResultType
-    loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
+    loop ([inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
     while (not found) & not [[t mSuperType] isNull] do
       t = [t mSuperType]
       found = t == expression.mResultType

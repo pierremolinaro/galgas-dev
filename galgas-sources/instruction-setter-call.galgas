@@ -194,21 +194,20 @@ override method @selfSetterCallInstructionAST enterInstructionInSemanticContext
 #! SEMANTICS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @setterCallInstructionAST analyzeSemanticInstruction
-                        ?let @lstring inUsefulnessCallerEntityName
-                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                        ?let @analysisContext inAnalysisContext
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                        ?!@localVarManager ioVariableMap {
+override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
+                                                          ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                                          ?let @analysisContext inAnalysisContext
+                                                          ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                                                          ?!@localVarManager ioVariableMap {
   var @unifiedTypeMap-entry receiverType
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
     if let [inAnalysisContext.selfType available
-        ?type: let selfType
-        ?mutable: let selfIsMutable
-        ?mutableproperties: *] then
-      if not selfIsMutable then
+                    ?type: let selfType
+                    ?mutable: let selfIsMutable
+                    ?mutableproperties: *] then
+      if not selfIsMutable && not [[selfType mTypeKindEnum] isClassType] then
         error self.mSetterName : "'self' not mutable in this context"
       end
       let propertyMap = [selfType mPropertyMap]

@@ -129,7 +129,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
   var baseType = receiverExpression.mResultType
   var searching = true
   if @uint. errorCount == 0 then
-    loop( @uint. max) while searching do
+    loop (@uint. max) while searching do
       if [[baseType mSuperType] isNull] then
         searching = false
       else

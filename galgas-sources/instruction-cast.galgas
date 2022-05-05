@@ -254,7 +254,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   #--- Check named type is a descendant of receiver type
     var @unifiedTypeMap-entry t = type
     var @bool found = t == castExpression.mResultType
-    loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
+    loop ([inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
     while (not found) & not [[t mSuperType] isNull] do
       t = [t mSuperType]
       found = t == castExpression.mResultType

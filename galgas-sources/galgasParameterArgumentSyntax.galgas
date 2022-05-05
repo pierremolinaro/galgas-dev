@@ -83,7 +83,7 @@ syntax galgas3ParameterArgumentSyntax (galgas3Scanner) {
        if n == 0 then
           error count: "the count value should be > 0"
         else
-          loop( n)
+          loop (n)
           while n > 0 do
             outActualParameterList += !@inputJokerActualParameterAST.new {!selector.location !n}
             n -= 1
@@ -129,7 +129,7 @@ syntax galgas3ParameterArgumentSyntax (galgas3Scanner) {
       if n == 0 then
         error count: "the count value should be > 0"
       else
-        loop( n)
+        loop (n)
         while n > 0 do
           outActualParameterList += !@outputInputJokerParameterAST.new {!selector.location !n}
           n -= 1
@@ -321,7 +321,7 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
        if n == 0 then
           error count: "the count value should be > 0"
         else
-          loop( n)
+          loop (n)
           while n > 0 do
             outActualParameterList += !@inputJokerActualParameterAST.new {!selector.location !n}
             n -= 1
@@ -367,7 +367,7 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
       if n == 0 then
         error count: "the count value should be > 0"
       else
-        loop( n)
+        loop (n)
         while n > 0 do
           outActualParameterList += !@outputInputJokerParameterAST.new {!selector.location !n}
           n -= 1

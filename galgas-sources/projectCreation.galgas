@@ -63,7 +63,7 @@ proc projectCreation
     let @string projectName = [inProjectPath lastPathComponent]
     var @bool ok = [[projectName characterAtIndex !0] isalpha]
     var @uint idx = 1
-    loop( [projectName length])
+    loop ([projectName length])
     while (idx < [projectName length]) & ok do
       let @char c = [projectName characterAtIndex !idx]
       ok = [c isalnum] | (c == '_')

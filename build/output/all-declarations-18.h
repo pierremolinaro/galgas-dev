@@ -3749,10 +3749,25 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
 
 //----------- '' label
   public: virtual void nt_grammar_5F_instruction_5F_core_ (const GALGAS_location inArgument0,
-                                                           const GALGAS_lstring inArgument1,
+                                                           const GALGAS_actualParameterListAST inArgument1,
                                                            const GALGAS_lstring inArgument2,
-                                                           GALGAS_semanticInstructionAST & outArgument3,
+                                                           const GALGAS_lstring inArgument3,
+                                                           GALGAS_semanticInstructionAST & outArgument4,
                                                            C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//------------------------------------- 'grammar_instruction_core_obsolete' non terminal
+//--- 'parse' label
+  public: virtual void nt_grammar_5F_instruction_5F_core_5F_obsolete_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//--- indexing
+  public: virtual void nt_grammar_5F_instruction_5F_core_5F_obsolete_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_grammar_5F_instruction_5F_core_5F_obsolete_ (const GALGAS_location inArgument0,
+                                                                       const GALGAS_lstring inArgument1,
+                                                                       const GALGAS_lstring inArgument2,
+                                                                       GALGAS_semanticInstructionAST & outArgument3,
+                                                                       C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //------------------------------------- 'grammar_start_symbol_label' non terminal
 //--- 'parse' label
@@ -4730,6 +4745,12 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public: virtual int32_t select_galgas_33_InstructionsSyntax_83 (C_Lexique_galgas_33_Scanner *) ;
 
   public: virtual int32_t select_galgas_33_InstructionsSyntax_84 (C_Lexique_galgas_33_Scanner *) ;
+
+  public: virtual int32_t select_galgas_33_InstructionsSyntax_85 (C_Lexique_galgas_33_Scanner *) ;
+
+  public: virtual int32_t select_galgas_33_InstructionsSyntax_86 (C_Lexique_galgas_33_Scanner *) ;
+
+  public: virtual int32_t select_galgas_33_InstructionsSyntax_87 (C_Lexique_galgas_33_Scanner *) ;
 
   public: virtual int32_t select_galgas_33_DeclarationsSyntax_0 (C_Lexique_galgas_33_Scanner *) ;
 

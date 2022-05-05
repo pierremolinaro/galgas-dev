@@ -738,7 +738,7 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_program 
     "\?sourceFilePath:@lstring inSourceFile {\n"
     "  grammar " ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "_grammar in inSourceFile\n"
+  result << "_grammar () in inSourceFile\n"
     "}\n"
     "\n"
     "#--- Epilogue routine\n"

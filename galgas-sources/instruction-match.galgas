@@ -283,7 +283,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
             let namedType = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeNameOrEnumerationConstantName}
             var @unifiedTypeMap-entry t = type
             var @bool found = t == namedType
-            loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
+            loop ([inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
             while (not found) & not [[t mSuperType] isNull] do
               t = [t mSuperType]
               found = t == namedType

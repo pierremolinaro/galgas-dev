@@ -120,7 +120,7 @@ override method @overridingAbstractExtensionSetterAST semanticAnalysis
   var @unifiedTypeMap-entry superType = [selfType mSuperType]
   var inheritedSignature = @formalParameterSignature {}
   let inheritedDeclarationLocation = @location.here
-  loop( [inSemanticContext.mTypeMap count] + 1)
+  loop ([inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mSetterMap] hasKey !self.mOverridingExtensionSetterName.string] then
       [[superType mSetterMap] searchKey !self.mOverridingExtensionSetterName ?* ?inheritedSignature ?* ?let qualifier ?*]

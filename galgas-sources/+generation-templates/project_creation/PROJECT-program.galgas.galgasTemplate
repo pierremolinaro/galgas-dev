@@ -7,7 +7,7 @@ case . "%!PROJECT_NAME%"
 message "a source text file with the .%!PROJECT_NAME% extension"
 grammar %!PROJECT_NAME%_grammar
 ?sourceFilePath:@lstring inSourceFile {
-  grammar %!PROJECT_NAME%_grammar in inSourceFile
+  grammar %!PROJECT_NAME%_grammar () in inSourceFile
 }
 
 #--- Epilogue routine

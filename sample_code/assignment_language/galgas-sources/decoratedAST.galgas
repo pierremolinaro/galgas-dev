@@ -91,8 +91,7 @@ override method @varDeclarationAST semanticAnalysis
 override method @printVariableAST semanticAnalysis
   ?!@variableMap ioVariableMap
   ?!@instructionListForGeneration ioInstructionListForGeneration {
-  var @string cppName
-  [!?ioVariableMap searchForReadAccess !self.mVarName ?cppName]
+  [!?ioVariableMap searchForReadAccess !self.mVarName ?let cppName]
   ioInstructionListForGeneration += !@printVariableForGeneration.new { !self.mVarName.string !cppName}
 }
 
@@ -102,11 +101,9 @@ override method @assignmentAST semanticAnalysis
   ?!@variableMap ioVariableMap
   ?!@instructionListForGeneration ioInstructionListForGeneration {
 #--- Expression
-  var @expressionForGeneration expression
-  [self.mSourceExpression expSemanticAnalysis !?ioVariableMap ?expression]
+  [self.mSourceExpression expSemanticAnalysis !?ioVariableMap ?let expression]
 #--- Target variable
-  var @string cppName
-  [!?ioVariableMap searchForWriteAccess !self.mTargetVarName ?cppName]
+  [!?ioVariableMap searchForWriteAccess !self.mTargetVarName ?let cppName]
 #---
   ioInstructionListForGeneration += !@assignmentForGeneration.new { !cppName !expression}
 }
@@ -122,8 +119,7 @@ abstract method @expressionAST expSemanticAnalysis
 override method @varInExpressionAST expSemanticAnalysis
   ?!@variableMap ioVariableMap
   !@expressionForGeneration outExpression {
-  var @string cppName
-  [!?ioVariableMap searchForReadAccess !self.mVarName ?cppName]
+  [!?ioVariableMap searchForReadAccess !self.mVarName ?let cppName]
   outExpression = @varInExpressionForGeneration.new { !cppName}
 }
 
@@ -141,11 +137,9 @@ override method @additionAST expSemanticAnalysis
   ?!@variableMap ioVariableMap
   !@expressionForGeneration outExpression {
 #--- Left expression
-  var @expressionForGeneration leftExpression
-  [self.mLeftExpression expSemanticAnalysis !?ioVariableMap ?leftExpression]
+  [self.mLeftExpression expSemanticAnalysis !?ioVariableMap ?let leftExpression]
 #--- Right expression
-  var @expressionForGeneration rightExpression
-  [self.mRightExpression expSemanticAnalysis !?ioVariableMap ?rightExpression]
+  [self.mRightExpression expSemanticAnalysis !?ioVariableMap ?let rightExpression]
 #---
   outExpression = @diadicForGeneration.new {
     !leftExpression
@@ -159,11 +153,9 @@ override method @multiplicationAST expSemanticAnalysis
   ?!@variableMap ioVariableMap
   !@expressionForGeneration outExpression {
 #--- Left expression
-  var @expressionForGeneration leftExpression
-  [self.mLeftExpression expSemanticAnalysis !?ioVariableMap ?leftExpression]
+  [self.mLeftExpression expSemanticAnalysis !?ioVariableMap ?let leftExpression]
 #--- Right expression
-  var @expressionForGeneration rightExpression
-  [self.mRightExpression expSemanticAnalysis !?ioVariableMap ?rightExpression]
+  [self.mRightExpression expSemanticAnalysis !?ioVariableMap ?let rightExpression]
 #---
   outExpression = @diadicForGeneration.new {
     !leftExpression

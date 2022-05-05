@@ -135,7 +135,7 @@ override method @overridingExtensionMethodAST semanticAnalysis
   var @unifiedTypeMap-entry superType = [selfType mSuperType]
   var inheritedSignature =@formalParameterSignature {}
   var @location inheritedDeclarationLocation = @location.here
-  loop( [inSemanticContext.mTypeMap count] + 1)
+  loop ([inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mInstanceMethodMap] hasKey !self.mOverridingExtensionMethodName.string] then
       [[superType mInstanceMethodMap] searchKey

@@ -8,8 +8,7 @@ message "an '.class_sample_language' source file"
 grammar class_sample_language_grammar
 ?sourceFilePath:@lstring inSourceFile {
 #--- Build Abstract Syntax Tree
-  grammar class_sample_language_grammar in inSourceFile
-    ?let declarationListAST
+  grammar class_sample_language_grammar (?let declarationListAST) in inSourceFile
 #--- Build dependence graph
   var inheritanceGraph =@inheritanceGraph.emptyGraph{}
   for (mDeclaration) in  declarationListAST do

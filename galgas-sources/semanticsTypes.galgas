@@ -388,7 +388,7 @@ shared map @unifiedTypeMap {
 
 getter @unifiedTypeMap-entry baseType -> @unifiedTypeMap-entry outBaseType {
   outBaseType = self
-  loop( @uint. max) while not [[outBaseType mSuperType] isNull] do
+  loop (@uint. max) while not [[outBaseType mSuperType] isNull] do
     outBaseType = [outBaseType mSuperType]
   end
 }

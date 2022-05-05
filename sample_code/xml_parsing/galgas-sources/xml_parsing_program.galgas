@@ -12,12 +12,12 @@ before {
 case . "xml_file"
 message "an XML text file with the .xml_file extension"
 ?sourceFilePath:@lstring inSourceFile {
-  var @xmlNodeList rootNodes
-  grammar xml_parsing_grammar in inSourceFile
-    ?rootNodes
+  grammar xml_parsing_grammar (
+    ?let rootNodes
     !true # Include comments
     !false # Condense White spaces
     !true
+  ) in inSourceFile
   log rootNodes
   logXMLNodes ( !rootNodes )
 }

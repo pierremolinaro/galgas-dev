@@ -119,7 +119,7 @@ case . "galgasTemplate"
 message "a GALGAS Template source file"
 grammar templateGrammar
 ?sourceFilePath:@lstring inSourceFile {
-  grammar templateGrammar in inSourceFile ?*
+  grammar templateGrammar (?*) in inSourceFile
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -148,7 +148,7 @@ private proc parseAndAnalyzeProject
   if @application.verboseOutput then
     message "*** Parsing project files\n"
   end
-  grammar galgas3ProjectGrammar in inProjectSourceFile ?let @galgas3ProjectComponentAST projectComponentAST
+  grammar galgas3ProjectGrammar (?let @galgas3ProjectComponentAST projectComponentAST) in inProjectSourceFile
   if [option.mode value] == "" then
     compileProject (!inProjectSourceFile !inSourceToAnalyze !projectComponentAST)
   #--- C++ compilation
@@ -184,10 +184,10 @@ private proc compileProject
   for (mValue) in inProjectComponentAST.mProjectSourceList do
     if [mValue pathExtension] == "galgas" then
       let absoluteSourcePath = [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]]
-      grammar galgas3Grammar in @lstring.new {!absoluteSourcePath !mValue.location} !?declarationAST
+      grammar galgas3Grammar (!?declarationAST) in @lstring.new {!absoluteSourcePath !mValue.location}
     elsif [mValue pathExtension] == "ggs" then
       let absoluteSourcePath = [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]]
-      grammar galgas4Grammar in @lstring.new {!absoluteSourcePath !mValue.location} !?declarationAST
+      grammar galgas4Grammar (!?declarationAST) in @lstring.new {!absoluteSourcePath !mValue.location}
     else
       error mValue: "only \".galgas\" or \".ggs\" extensions are allowed here"
     end

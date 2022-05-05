@@ -400,31 +400,31 @@ static const UInt16 * gPopUpData_0_galgas_33_Scanner [30] = {
 - (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {
   static NSString * kTextMacroContent [8] = {
     @"refclass @aClassName : @superClassName {\n"
-  "  @aType mAnAttribute\n"
+  "  public var @aType mAnAttribute\n"
   "}\n",
     @"enum @aType {\n"
   "  constant1, constant2\n"
   "}\n",
     @"list @type {\n"
-  "  @aType mAnAttribute\n"
+  "  public var @aType mAnAttribute\n"
   "}\n",
     @"list @type {\n"
-  "  @aType mAnAttribute\n"
+  "  public var @aType mAnAttribute\n"
   "}\n"
   "listmap @myListMap (@aList)\n",
     @"map @type {\n"
-  "  @aType mAnAttribute\n"
+  "  public var @aType mAnAttribute\n"
   "  insert insertKey error message \"the '%K' key is already declared in %L\"\n"
   "  search searchKey error message \"there is no '%K' key\"\n"
   "}\n",
     @"sortedlist @type {\n"
-  "  @string mFirstAttribute\n"
-  "  @bool mSecondAttribute\n"
+  "  public var @string mFirstAttribute\n"
+  "  public var @bool mSecondAttribute\n"
   "}{\n"
   "  mFirstAttribute >, mSecondAttribute <\n"
   "}\n",
     @"struct @type {\n"
-  "  @aType mAnAttribute\n"
+  "  public var @aType mAnAttribute\n"
   "}\n",
     NULL
   } ;

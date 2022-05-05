@@ -523,14 +523,13 @@ proc generateExtensionSetter
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc generateExtensionMethod
-  ?let @unifiedTypeMap-entry inReceiverType
-  ?let @string inBaseClassName
-  ?!@stringset ioInclusionSet
-  ?let @string inMethodName
-  ?let @formalParameterListForGeneration inFormalArgumentList
-  ?let @semanticInstructionListForGeneration inInstructionList
-  !@string outGeneratedCode {
+proc generateExtensionMethod ?let @unifiedTypeMap-entry inReceiverType
+                             ?let @string inBaseClassName
+                             ?!@stringset ioInclusionSet
+                             ?let @string inMethodName
+                             ?let @formalParameterListForGeneration inFormalArgumentList
+                             ?let @semanticInstructionListForGeneration inInstructionList
+                             !@string outGeneratedCode {
   let className = [inReceiverType key]
 #--- Build unused variable set
   var @stringset unusedVariableCppNameSet = {}
@@ -556,7 +555,7 @@ proc generateExtensionMethod
 #--- Generate inclusions
   var @unifiedTypeMap-entry baseType = inReceiverType
   var @bool searching = true
-  loop( @uint. max) while searching do
+  loop (@uint. max) while searching do
     if not [[baseType mSuperType] isNull] then
       if [[[baseType mSuperType] mInstanceMethodMap] hasKey !inMethodName] then
         baseType = [baseType mSuperType]
@@ -622,7 +621,8 @@ proc generateExtensionMethod
 #--- Generate routine body
   if not currentObjectIsUnused then
     if inBaseClassName == "" then
-      outGeneratedCode += "  const cPtr_" + [className identifierRepresentation] + " * object = inObject ;\n"
+      # outGeneratedCode += "  const cPtr_" + [className identifierRepresentation] + " * object = inObject ; // A\n"
+      outGeneratedCode += "  auto object = (cPtr_" + [className identifierRepresentation] + " *) inObject ; // A\n"
     else
       outGeneratedCode += "  const cPtr_" + [className identifierRepresentation] + " * object = (const cPtr_" + [className identifierRepresentation] + " *) inObject ;\n"
     end
@@ -677,7 +677,7 @@ proc generateExtensionGetter
   [inReceiverType addHeaderFileName !?ioInclusionSet]
   var @unifiedTypeMap-entry baseType = inReceiverType
   var @bool searching = true
-  loop( @uint. max) while searching do
+  loop (@uint. max) while searching do
     if not [[baseType mSuperType] isNull] then
       if [[[baseType mSuperType] mGetterMap] hasKey !inGetterName] then
         baseType = [baseType mSuperType]

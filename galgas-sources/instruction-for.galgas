@@ -79,7 +79,7 @@ syntax extension galgas3InstructionsSyntax {
     if n == 0 then
       error count: "this value should be > 0"
     end
-    loop( n) while n > 0 do
+    loop (n) while n > 0 do
       ioElementList += !["" nowhere] !true !["" nowhere]
       n --
     end
@@ -297,7 +297,7 @@ syntax extension galgas4InstructionsSyntax {
     if n == 0 then
       error count: "this value should be > 0"
     end
-    loop( n) while n > 0 do
+    loop (n) while n > 0 do
       ioElementList += !["" nowhere] !true !["" nowhere]
       n --
     end
