@@ -207,7 +207,8 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
                     ?type: let selfType
                     ?mutable: let selfIsMutable
                     ?mutableproperties: *] then
-      if not selfIsMutable && not [[selfType mTypeKindEnum] isClassType] then
+      if let [[selfType mTypeKindEnum] classType ?isReference: let isReference], isReference then
+      elsif not selfIsMutable then
         error self.mSetterName : "'self' not mutable in this context"
       end
       let propertyMap = [selfType mPropertyMap]
