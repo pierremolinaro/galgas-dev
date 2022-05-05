@@ -10,99 +10,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @predefinedTypeAST reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_predefinedTypeAST : public GALGAS_semanticDeclarationAST {
-//--------------------------------- Default constructor
-  public: GALGAS_predefinedTypeAST (void) ;
-
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
-//--------------------------------- Constructor from pointer
-  public: GALGAS_predefinedTypeAST (const class cPtr_predefinedTypeAST * inSourcePtr) ;
-
-//--------------------------------- Property read access
-  public: class GALGAS_string readProperty_mPredefinedTypeName (void) const ;
-
-  public: class GALGAS_predefinedTypeKindEnum readProperty_mKind (void) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_predefinedTypeAST extractObject (const GALGAS_object & inObject,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_predefinedTypeAST & inOperand) const ;
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_setMKind (class GALGAS_predefinedTypeKindEnum inArgument0
-                                                 COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMPredefinedTypeName (class GALGAS_string inArgument0
-                                                               COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_predefinedTypeAST class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypeAST ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @predefinedTypeAST class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class cPtr_predefinedTypeAST : public cPtr_semanticDeclarationAST {
-
-//----------------------------------------------------------------------------------------------------------------------
-
-/* § public: virtual GALGAS_operators getter_getSupportedOperatorFlags (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-//--- Properties
-  public: GALGAS_string mProperty_mPredefinedTypeName ;
-  public: GALGAS_predefinedTypeKindEnum mProperty_mKind ;
-
-//--- Constructor
-  public: cPtr_predefinedTypeAST (const GALGAS_bool & in_mIsPredefined,
-                                  const GALGAS_string & in_mPredefinedTypeName,
-                                  const GALGAS_predefinedTypeKindEnum & in_mKind
-                                  COMMA_LOCATION_ARGS) ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const = 0 ;
-
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const = 0 ;
-
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 // Phase 1: @predefinedTypeAST_2D_weak weak reference class
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -8144,4 +8051,46 @@ void enterExtensionGetter_implementationCppFileName (const int32_t inClassIndex,
 class GALGAS_string callExtensionGetter_implementationCppFileName (const class cPtr_semanticDeclarationForGeneration * inObject,
                                                                    C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@semanticDeclarationForGeneration hasCppHeaderFile'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_bool (*enterExtensionGetter_semanticDeclarationForGeneration_hasCppHeaderFile) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                     class C_Compiler * inCompiler
+                                                                                                     COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_hasCppHeaderFile (const int32_t inClassIndex,
+                                            enterExtensionGetter_semanticDeclarationForGeneration_hasCppHeaderFile inMethod) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_bool callExtensionGetter_hasCppHeaderFile (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@semanticDeclarationForGeneration isPredefined'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_bool (*enterExtensionGetter_semanticDeclarationForGeneration_isPredefined) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                 class C_Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_isPredefined (const int32_t inClassIndex,
+                                        enterExtensionGetter_semanticDeclarationForGeneration_isPredefined inMethod) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_bool callExtensionGetter_isPredefined (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                    C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
 

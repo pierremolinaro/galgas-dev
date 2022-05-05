@@ -18,10 +18,10 @@ abstract refclass @semanticExpressionAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-list @semanticExpressionListAST {
-  public var @semanticExpressionAST mExpression
-  public var @location mEndOfExpressionLocation
-}
+#list @semanticExpressionListAST {
+#  public var @semanticExpressionAST mExpression
+#  public var @location mEndOfExpressionLocation
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           

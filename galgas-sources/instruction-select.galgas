@@ -210,8 +210,9 @@ override getter @selectInstructionForGeneration compareInstructionSyntaxSignatur
   ?let @semanticInstructionForGeneration inTestedInstruction
   ->@bool
 {
-  cast inTestedInstruction
-  case >= @selectInstructionForGeneration si :
+  if let si = inTestedInstruction as @selectInstructionForGeneration then
+#  cast inTestedInstruction
+#  case >= @selectInstructionForGeneration si :
     result = true
     if result & ([self.mListOfSemanticInstructionListForGeneration length] != [si.mListOfSemanticInstructionListForGeneration length]) then
       error si.mInstructionLocation
@@ -221,10 +222,12 @@ override getter @selectInstructionForGeneration compareInstructionSyntaxSignatur
         + [[si.mListOfSemanticInstructionListForGeneration length] string]
       result = false
     end
-    for (ref_mInstructionList *) in self.mListOfSemanticInstructionListForGeneration, (test_mInstructionList test_mEndOfInstructionList) in si.mListOfSemanticInstructionListForGeneration while result do
+    for (ref_mInstructionList *) in self.mListOfSemanticInstructionListForGeneration,
+        (test_mInstructionList test_mEndOfInstructionList) in si.mListOfSemanticInstructionListForGeneration while result do
       result = compareSyntaxSignature (!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList)    
     end
-  case >= @syntaxInstructionForGeneration si :
+  elsif let si = inTestedInstruction as @syntaxInstructionForGeneration then
+#  case >= @syntaxInstructionForGeneration si :
     error si.mInstructionLocation
       :"syntax signature error; the expected syntax instruction here is a 'select' instruction"
     result = false

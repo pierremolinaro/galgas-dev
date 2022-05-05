@@ -249,11 +249,10 @@ override method @repeatInstructionForGeneration appendSyntaxSignature
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @repeatInstructionForGeneration compareInstructionSyntaxSignature
-  ?let @semanticInstructionForGeneration inTestedInstruction
-  ->@bool
-{
-  cast inTestedInstruction
-  case >= @repeatInstructionForGeneration si :
+  ?let @semanticInstructionForGeneration inTestedInstruction ->@bool {
+  if let si = inTestedInstruction as @repeatInstructionForGeneration then
+#  cast inTestedInstruction
+#  case >= @repeatInstructionForGeneration si :
     result = compareSyntaxSignature (!self.m_repeated_instructionList !si.m_repeated_instructionList !si.mEndOfRepeatedInstructions)
     if result & ([self.mListOfSemanticInstructionListForGeneration length] != [si.mListOfSemanticInstructionListForGeneration length]) then
       error si.mInstructionLocation
@@ -266,7 +265,8 @@ override getter @repeatInstructionForGeneration compareInstructionSyntaxSignatur
     for (ref_mInstructionList *) in self.mListOfSemanticInstructionListForGeneration, (test_mInstructionList test_mEndOfInstructionList) in si.mListOfSemanticInstructionListForGeneration while result do
       result = compareSyntaxSignature (!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList)    
     end
-  case >= @syntaxInstructionForGeneration si :
+  elsif let si = inTestedInstruction as @syntaxInstructionForGeneration then
+#  case >= @syntaxInstructionForGeneration si :
     error si.mInstructionLocation
       :"syntax signature error; the expected syntax instruction here is a 'repeat' instruction"
     result = false

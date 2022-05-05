@@ -153,7 +153,6 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "log",
   "loop",
   "map",
-  "match",
   "message",
   "method",
   "mod",

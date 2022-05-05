@@ -36,26 +36,20 @@ instruction1 ;;;; instruction2
 \section{Instruction de déclaration de variable}
 
 
-Une déclaration de variable peut citer une \ggs+expression+ qui lui fournit sa valeur initiale. Dans le cas contraire, la variable est \emph{non construite} jusqu'à ce qu'une valeur lui soit affectée.
+Une déclaration de variable peut citer une \ggs+expression+ qui lui fournit sa valeur initiale. Dans le cas contraire, la variable est \emph{non initialisée} jusqu'à ce qu'une valeur lui soit affectée.
 
 Les deux formes de déclaration sont donc~:
 \begin{itemize}
-\item déclaration d'une variable \emph{non construite}~: « \ggs+var @type variable+ »~;
-\item déclaration d'une variable \emph{construite}~: « \ggs+var @type variable = expression+ ».
+\item déclaration d'une variable \emph{non initialisée}~: « \ggs+var @type variable+ »~;
+\item déclaration d'une variable \emph{initialisée}~: « \ggs+var @type variable = expression+ ».
 \end{itemize}
 
 
 \subsection{Déclaration « \texttt{var @type variable} »}
 
-La forme générale de déclaration d'une variable \emph{non construite} est~:
+La forme générale de déclaration d'une variable \emph{non initialisée} est~:
 \begin{galgasbox}
 var @type variable
-\end{galgasbox}
-
-
-On peut alléger l'écriture en ommettant le mot clé \ggs+var+~:
-\begin{galgasbox}
-@type variable
 \end{galgasbox}
 
 
@@ -63,24 +57,14 @@ On peut alléger l'écriture en ommettant le mot clé \ggs+var+~:
 
 
 
-La forme générale de déclaration d'une variable \emph{construite} est~:
+La forme générale de déclaration d'une variable \emph{initialisée} est~:
 \begin{galgasbox}
 var @type variable = expression
 \end{galgasbox}
 
-On peut alléger l'écriture en ommettant le mot clé \ggs+var+~:
-\begin{galgasbox}
-@type variable = expression
-\end{galgasbox}
-
-On peut omettre le type (mais il faut alors garder le mot-clé \ggs+var+), à la condition que l'expression puisse fournir l'information de type. Par exemple, dans l'écriture suivante~:
+On peut omettre le type, à la condition que l'expression puisse fournir l'information de type. Par exemple, dans l'écriture suivante~:
 \begin{galgas}
-var @string s = "Hello"
-\end{galgas}
-
-L'expression est une chaîne de caractères, dont le type est \ggs+@string+. On peut donc omettre l'annotation de type dans l'instruction~:
-\begin{galgas}
-var s = "Hello"
+var s = "Hello" # Type implicite @string
 \end{galgas}
 
 
@@ -130,11 +114,16 @@ var sl = .here # Erreur : le type est indéterminé
 
 \section{Instruction de déclaration de constante}
 
-La forme générale de cette instruction est la suivante~:
+Une déclaration de constante peut citer une \ggs+expression+ qui lui fournit sa valeur initiale. Dans le cas contraire, la variable est \emph{non initialisée} jusqu'à ce qu'une valeur lui soit affectée.
 
-\begin{galgasbox}
-let @type nom = expression
-\end{galgasbox}
+Les deux formes de déclaration sont donc~:
+\begin{itemize}
+\item déclaration d'une constante \emph{initialisée}~: « \ggs+let @type constante = expression+ ».
+\item déclaration d'une constante \emph{non initialisée}~: « \ggs+let @type constante+ »~;
+\end{itemize}
+
+\subsection{Déclaration d'une constante initialisée}
+
 
 Le mot clé \ggs+let+ caractérise une déclaration de constante. L'annotation de type peut être omis si le type peut être déduit de l'expression, comme pour l'instruction de déclaration de variable (\refSubsectionPage{declarationVariableAvecExpression}). On peut donc reprendre les exemples de la section précédente~:
 \begin{galgas}
@@ -188,11 +177,27 @@ let sl = .here # Erreur : le type est indéterminé
 \end{galgas}
 
 
+\subsection{Déclaration d'une constante non initialisée}
 
+Il est possible de déclarer une constante sans fournir de valeur initiale. Une seule affectation est alors permise.
 
+\begin{galgas}
+let @string s
+...
+s = "Hello"
+...
+s = "World" # Erreur sémantique, une constante ne peut pas être modifiée
+\end{galgas}
 
-
-
+L'intérêt est de pouvoir initialiser la constante dans chaque branche d'une instruction sélective~:
+\begin{galgas}
+let @string s
+if ... then
+  s = "Hello 1"
+else
+  s = "Hello 2"
+end
+\end{galgas}
 
 
 
@@ -1587,8 +1592,8 @@ L'instruction \ggs+grammar+ permet d'exécuter l'analyse d'un texte par une gram
 grammar
   nom_grammaire
   label_grammaire # Optionnel
+  (liste_parametres)
   in expression # Chemin du fichier source
-  liste_parametres
   traduction_dirigee_par_la_syntaxe # Optionnel
 \end{galgasbox}
 
@@ -1596,8 +1601,8 @@ Le mot réservé \ggs!in! caractérise la localisation de la chaîne source dans
 \begin{itemize}
   \item \ggs+nom_grammaire+ est un identificateur nommant la grammaire, c'est le nom d'un composant grammaire du projet~;
   \item \ggs+label_grammaire+ est optionnel, et permet d'exécuter une variante des règles de production (voir \refSectionPage{analysePlusieursPhases})~;
-  \item \ggs+expression+ est une valeur de type \ggs+@lstring+, dont le champ \ggs+string+ désigne un fichier source, par un chemin relatif ou absolu, et dont le champ \ggs+location+ est la position de signalement d'erreur si le fichier source ne peut pas être lu~;
   \item \ggs+liste_parametres+ est une liste de paramètres effectifs (en entrée, sortie, ou sortie/entrée), en accord avec la liste des arguments formels de l'axiome de la grammaire~;
+  \item \ggs+expression+ est une valeur de type \ggs+@lstring+, dont le champ \ggs+string+ désigne un fichier source, par un chemin relatif ou absolu, et dont le champ \ggs+location+ est la position de signalement d'erreur si le fichier source ne peut pas être lu~;
   \item \ggs+traduction_dirigee_par_la_syntaxe+ est optionnel, et permet d'obtenir la chaîne source traduite lors d'une \emph{traduction dirigée par la syntaxe} (voir \refSectionPage{instructionGrammarEtTraductionDirigeeParLaSyntaxe}).
 \end{itemize}
 
@@ -1605,13 +1610,13 @@ Prenons l'exemple d'un composant grammaire~:
 \begin{galgas}
 grammar maGrammaire "SLR" {
   syntax ...
-   <start_symbol> ?!@declarationAST ioDeclarations
+   <start_symbol> (?!@declarationAST ioDeclarations)
 }
 \end{galgas}
 
 L'instruction grammaire s'écrit alors~:
 \begin{galgas}
-grammar maGrammaire in fichierSource !?ioDeclarations
+grammar maGrammaire (!?ioDeclarations) in fichierSource
 \end{galgas}
 
 Cette instruction est typiquement utilisé dans une règle d'analyse de fichier source (\refChapterPage{regleAnalyseFichierSource})~:
@@ -1619,9 +1624,10 @@ Cette instruction est typiquement utilisé dans une règle d'analyse de fichier 
 \begin{galgas}
 case . "monExtension"
 message "un fichier source"
-?@lstring inSourceFile {
+grammar maGrammaire
+?sourceFilePath: @lstring inSourceFile {
   var declaration = @declarationList {}
-  grammar maGrammaire in inSourceFile !?ioDeclarations
+  grammar maGrammaire (!?ioDeclarations) in inSourceFile
   ...
 }
 \end{galgas}
@@ -1634,8 +1640,8 @@ message "un fichier source"
 grammar
   nom_grammaire
   label_grammaire # Optionnel
-  on (chaine_source, nom_associe)
-  liste_parametres
+  (liste_parametres)
+  on chaine_source : nom_associe
   traduction_dirigee_par_la_syntaxe # Optionnel
 \end{galgasbox}
 
@@ -1643,9 +1649,9 @@ Le mot réservé \ggs!on! caractérise la localisation de la chaîne source dans
 \begin{itemize}
   \item \ggs+nom_grammaire+ est un identificateur nommant la grammaire, c'est le nom d'un composant grammaire du projet~;
   \item \ggs+label_grammaire+ est optionnel, et permet d'exécuter une variante des règles de production (voir \refSectionPage{analysePlusieursPhases})~;
+  \item \ggs+liste_parametres+ est une liste de paramètres effectifs (en entrée, sortie, ou sortie/entrée), en accord avec la liste des arguments formels de l'axiome de la grammaire~;
   \item \ggs+chaine_source+ est une expression de type \ggs!@string!, qui contient directement la chaîne source à analyser~;
   \item \ggs+nom_associe+ est une expression de type \ggs!@string!, qui est utilisé lorsque \ggs!@location.here! est appelé~: \ggs![@location.here file]! renvoie la valeur transmise dans \ggs+nom_associe+~;
-  \item \ggs+liste_parametres+ est une liste de paramètres effectifs (en entrée, sortie, ou sortie/entrée), en accord avec la liste des arguments formels de l'axiome de la grammaire~;
   \item \ggs+traduction_dirigee_par_la_syntaxe+ est optionnel, et permet d'obtenir la chaîne source traduite lors d'une \emph{traduction dirigée par la syntaxe} (voir \refSectionPage{instructionGrammarEtTraductionDirigeeParLaSyntaxe}).
 \end{itemize}
 

@@ -197,14 +197,13 @@ override method @nonterminalInstructionForGeneration appendSyntaxSignature
 override getter @nonterminalInstructionForGeneration compareInstructionSyntaxSignature
   ?let @semanticInstructionForGeneration inTestedInstruction
   ->@bool {
-  cast inTestedInstruction
-  case >= @nonterminalInstructionForGeneration si :
+  if let si = inTestedInstruction as @nonterminalInstructionForGeneration then
     result = self.mNonterminalName == si.mNonterminalName
     if not result then
       error si.mInstructionLocation
       :"syntax signature error; the expected syntax instruction here is the '<" + self.mNonterminalName + ">' nonterminal invocation"
     end
-  case >= @syntaxInstructionForGeneration si :
+  elsif let si = inTestedInstruction as @syntaxInstructionForGeneration then
     error si.mInstructionLocation
       :"syntax signature error; the expected syntax instruction here is the '<" + self.mNonterminalName + ">' nonterminal invocation"
     result = false
