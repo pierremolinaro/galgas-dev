@@ -214,13 +214,13 @@ print ("ANNÉE : \(ANNÉE)")
   remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev-master/libpm/command_line_interface")
   remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev-master/build")
 //-------------------- Vérifier les programmes d'exemple
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev-master/sample_code/-build-all-macosx.command", [])
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev-master/sample_code/+build-all-macosx.command", [])
   runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas-dev-master/sample_code"])
 //-------------------- Exécuter les tests
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev-master/testsuite/_run_testsuite.command", [])
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev-master/testsuite/+run-test-suite.command", [])
   runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas-dev-master/testsuite"])
 //-------------------- Vérifier la création de projet
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev-master/-verifier-create-galgas.command", [])
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev-master/+verifier-create-galgas.command", [])
 //-------------------- Construire la documentation Latex
   let latexDir = DISTRIBUTION_DIR + "/galgas-dev-master/galgas-documentation-latex-sources"
   let directoryEnumerator = fm.enumerator (atPath: latexDir)
