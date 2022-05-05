@@ -184,7 +184,7 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
     + if [self.mActualInputParameterList length] > 1 then "s" else "" end
   end
 #---
-  var terminalCheckAssignementList =@terminalCheckAssignementList {}
+  var terminalCheckAssignementList = @terminalCheckAssignementList {}
   for (mActualSelector mInputParameter) in self.mActualInputParameterList, (mLexicalFormalSelector mLexicalAttributeName mLexicalType) in sentAttributeList do
     [mInputParameter analyzeInputParameter
       !inAnalysisContext

@@ -229,10 +229,10 @@ print ("ANNÉE : \(ANNÉE)")
       remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, file: latexDir + "/" + filename)
     }
   }
-  runCommand (latexDir + "/-build.command", [])
+  runCommand (latexDir + "/+build.command", [])
   runCommand ("/bin/cp", [latexDir + "/galgas-book.pdf", "galgas-\(VERSION_GALGAS).pdf"])
   runCommand ("/bin/rm", ["-fr", latexDir])
-//-------------------- Créer le répertoire rtecevant les outils ligne de commande
+//-------------------- Créer le répertoire recevant les outils ligne de commande
   let cliToolsDir = DISTRIBUTION_DIR + "/galgas-\(VERSION_GALGAS)-tools"
   runCommand ("/bin/mkdir", [cliToolsDir])
 //-------------------- Créer l'archive de l'executable osx (release et debug)

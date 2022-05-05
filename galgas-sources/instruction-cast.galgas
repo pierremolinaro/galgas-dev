@@ -90,7 +90,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     let instructionLocation = @location.here
     <expression> ?let @semanticExpressionAST expression
-    var mCastInstructionBranchList =@castInstructionBranchListAST {}
+    var mCastInstructionBranchList = @castInstructionBranchListAST {}
     repeat
       <cast_instruction_branch> !? mCastInstructionBranchList
     while
@@ -184,7 +184,7 @@ syntax extension galgas3InstructionsSyntax {
 #    $cast$
 #    let instructionLocation = @location.here
 #    <expression> ?let @semanticExpressionAST expression
-#    var mCastInstructionBranchList =@castInstructionBranchListAST {}
+#    var mCastInstructionBranchList = @castInstructionBranchListAST {}
 #    repeat
 #      <cast_instruction_branch> !? mCastInstructionBranchList
 #    while
@@ -247,7 +247,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
 #--- Begin override for analyze loop instruction list
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- Branches
-  var castBranchList =@castInstructionBranchListForGeneration {}
+  var castBranchList = @castInstructionBranchListForGeneration {}
   for (mTypeName mConstantVarName mInstructionList mTypeComparisonKind mEndOfInstructions) in self.mCastInstructionBranchList do
   #--- Get named type
     let type = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
@@ -265,7 +265,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     end
   #--- Declare a local constant ?
     let @string localConstantName
-    var localConstantList =@localConstantList {}
+    var localConstantList = @localConstantList {}
     if [mConstantVarName length] > 0 then
       localConstantName = "cast_" + [mConstantVarName.location locationIndex] + "_" + mConstantVarName
       localConstantList +=

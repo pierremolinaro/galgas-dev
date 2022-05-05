@@ -62,7 +62,7 @@ syntax extension galgas3InstructionsSyntax {
 
   rule <semantic_instruction_inc_dec> ?prefixedBySelf: let @bool inPrefixedBySelf !@semanticInstructionAST outInstruction {
     $identifier$ ?let mReceiverName
-    var mStructAttributeList =@lstringlist {}
+    var mStructAttributeList = @lstringlist {}
     repeat
     while
       $.$
@@ -166,7 +166,7 @@ syntax extension galgas4InstructionsSyntax {
 
   rule <semantic_instruction_inc_dec> ?prefixedBySelf: let @bool inPrefixedBySelf !@semanticInstructionAST outInstruction {
     $identifier$ ?let mReceiverName
-    var mStructAttributeList =@lstringlist {}
+    var mStructAttributeList = @lstringlist {}
     repeat
     while
       $.$

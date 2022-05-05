@@ -390,7 +390,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
   end
 #--- Methods
   for (mMethodName mFormalParameterList mDeclarationLocation) in self.mExternTypeMethodList do
-    var routineSignature =@formalParameterSignature {}
+    var routineSignature = @formalParameterSignature {}
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
       [@unifiedTypeMap-entry makeEntry
         !?ioSemanticContext.mTypeMap

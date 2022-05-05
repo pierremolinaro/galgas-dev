@@ -241,7 +241,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
   let nameForUsefulness = functionNameForUsefulEntitiesGraph (!self.mFunctionName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #---
-  var formalArgumentList =@formalInputParameterListForGeneration {}
+  var formalArgumentList = @formalInputParameterListForGeneration {}
   for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in self.mFormalArgumentList do
     formalArgumentList +=
       !mFormalSelector
@@ -274,7 +274,7 @@ override method @externRoutineDeclarationAST semanticAnalysis
   let nameForUsefulness = procedureNameForUsefulEntitiesGraph (!self.mRoutineName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #---
-  var formalArgumentList =@formalParameterListForGeneration {}
+  var formalArgumentList = @formalParameterListForGeneration {}
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mFormalArgumentList do
     formalArgumentList +=
       !mFormalSelector
@@ -592,7 +592,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
         filewrapperTemplateFormalInputParameters += !mFormalTemplateSelector !type !cppVarName !mFormalArgumentName !true
       end
     #--- Analyze template
-      var templateInstructionListForGeneration =@templateInstructionListForGeneration {}
+      var templateInstructionListForGeneration = @templateInstructionListForGeneration {}
       let templateAnalysisContext = @templateAnalysisContext.new {
         !inSemanticContext
         !inPredefinedTypes
@@ -880,7 +880,7 @@ override method @lexiqueComponentAST semanticAnalysis
   buildLexicalRoutineMap ( ?lexicalRoutineMap )
 #--------------------------------------- Add extern routines
   for (mRoutineName mLexicalRoutineFormalArgumentList mErrorMessageList) in self.mExternRoutineList do
-    var lexicalRoutineFormalArgumentList =@lexicalRoutineFormalArgumentList {}
+    var lexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList {}
     for (mPassingMode mLexicalTypeName mFormalArgumentName) in mLexicalRoutineFormalArgumentList do
       [lexicalTypeMap searchKey !mLexicalTypeName ?let lexicalFormalArgumentType]
       lexicalRoutineFormalArgumentList += !mPassingMode !lexicalFormalArgumentType !mFormalArgumentName.string
@@ -1301,10 +1301,10 @@ proc buildNonterminalDeclarationsMap
   outNonterminalDeclarationMap = @nonterminalMap {}
 #--- Nonterminal declaration list
   for (mNonterminalName mLabels) in inNonterminalDeclarationList do
-    var nonterminalLabelMap =@nonterminalLabelMap {}
+    var nonterminalLabelMap = @nonterminalLabelMap {}
     for (mLabelName mFormalArgumentList mEndOfArgumentLocation) in mLabels do
-      var signatureForGeneration =@formalParameterListForGeneration {}
-      var signature =@formalParameterSignature {}
+      var signatureForGeneration = @formalParameterListForGeneration {}
+      var signature = @formalParameterSignature {}
       for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalArgumentList do
         let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
         signatureForGeneration += !mFormalSelector !mFormalArgumentPassingMode !t !mFormalArgumentName !mFormalArgumentName.string
@@ -1714,7 +1714,7 @@ proc semanticAnalysisOfRuleLabel
   end
 #--- Semantic analysis of instruction list
   outInstructionListForGeneration = @semanticInstructionListForGeneration {}
-#  var localVariableCppNameList =@stringlist {}
+#  var localVariableCppNameList = @stringlist {}
   for (mInstruction) in inSyntaxInstructionList do
     [mInstruction analyzeSyntaxInstruction
       !inUsefulnessCallerEntityName

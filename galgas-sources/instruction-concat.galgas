@@ -740,7 +740,7 @@ override method @plusEqualnstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode {
 #--- Parameters
   [self.mTargetType addHeaderFileName !?ioInclusionSet]
-  var parameterList =@stringlist {}
+  var parameterList = @stringlist {}
   for (mExpression) in self.mExpressionList do
     [mExpression generateExpression
       !?ioGeneratedCode

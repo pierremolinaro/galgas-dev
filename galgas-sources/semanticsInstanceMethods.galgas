@@ -69,7 +69,7 @@ private proc enterInstanceMethodWithInputArgument
 #{
 #  @unifiedTypeMap-entry argumentTypeIndex
 #  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?argumentTypeIndex]
-#  var argList =@formalParameterSignature {}
+#  var argList = @formalParameterSignature {}
 #  argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentOut !inOutputArgumentName
 #  [!?ioInstanceMethodMap insertKey
 #    !inInstanceMethodName

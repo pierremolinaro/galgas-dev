@@ -761,7 +761,7 @@ override method @templateFunctionCallAST templateExpressionAnalysis
       + " effective argument(s)"
     : outExpression
   else
-    var semanticExpressionListForGeneration =@semanticExpressionListForGeneration {}
+    var semanticExpressionListForGeneration = @semanticExpressionListForGeneration {}
     for (mFormalSelector mFormalArgumentType *) in functionSignature, (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList do
       [mExpression templateExpressionAnalysis
         !inUsefulnessCallerEntityName
@@ -1539,7 +1539,7 @@ override method @templateBlockInstructionAST templateInstructionAnalysis
   if [expression.mResultType key] != "uint" then
     error self.mLocation:"expression type should be '@uint' (it is '@" + [expression.mResultType key] + "')"
   end
-  var blockInstructionList =@templateInstructionListForGeneration {}
+  var blockInstructionList = @templateInstructionListForGeneration {}
   templateInstructionListAnalysis (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -1581,7 +1581,7 @@ override method @templateInstructionIfAST templateInstructionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   ?!@templateInstructionListForGeneration ioInstructionList
 {
-  var templateInstructionIfBranchList =@templateInstructionIfBranchListForGeneration {}
+  var templateInstructionIfBranchList = @templateInstructionIfBranchListForGeneration {}
   for (mExpression mInstructionList) in self.mTemplateInstructionIfBranchList do
     [mExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
@@ -1592,7 +1592,7 @@ override method @templateInstructionIfAST templateInstructionAnalysis
     if [expression.mResultType key] != "bool" then
       error expression.mLocation : "'if' expression type should be '@bool' (it is '@" + [expression.mResultType key] + "')"
     end
-    var instructionList =@templateInstructionListForGeneration {}
+    var instructionList = @templateInstructionListForGeneration {}
     templateInstructionListAnalysis (
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -1603,7 +1603,7 @@ override method @templateInstructionIfAST templateInstructionAnalysis
     templateInstructionIfBranchList += !expression !instructionList
   end
 #---
-  var elseInstructionList =@templateInstructionListForGeneration {}
+  var elseInstructionList = @templateInstructionListForGeneration {}
   templateInstructionListAnalysis (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph

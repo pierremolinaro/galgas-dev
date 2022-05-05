@@ -344,7 +344,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
   !@string outCppExpression {
 #---
   ioInclusionSet += !"filewrapper-" + self.mFilewrapperName
-  var parameterList =@stringlist {}
+  var parameterList = @stringlist {}
   for (mExpression) in self.mActualOutputParameterList do
     [mExpression generateExpression
       !?ioGeneratedCode

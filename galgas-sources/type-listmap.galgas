@@ -60,7 +60,7 @@ syntax extension galgas4DeclarationsSyntax {
 
 override method @listmapDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
-  var structAttributeList =@propertyInCollectionListAST {}
+  var structAttributeList = @propertyInCollectionListAST {}
   structAttributeList +=
     !isConstant: false
     !["string" nowhere]
@@ -168,11 +168,11 @@ override method @listmapDeclarationAST enterInSemanticContext
     !hasLexiqueArg:false
   )
 #--- Enumerator description
-  var enumeratorDescriptor =@enumerationDescriptorList {}
+  var enumeratorDescriptor = @enumerationDescriptorList {}
   enumeratorDescriptor += !stringTypeIndex !"key"
   enumeratorDescriptor += !associatedListTypeIndex !"mList"
 #--- Add assign operator description
-  var addAssignOperatorDescription =@functionSignature {}
+  var addAssignOperatorDescription = @functionSignature {}
   addAssignOperatorDescription += !["" nowhere] !stringTypeIndex !"inKey"
   for (mPropertyTypeEntry mPropertyName * *) in listTypedAttributeList do
     addAssignOperatorDescription += !["" nowhere] !mPropertyTypeEntry !mPropertyName.string

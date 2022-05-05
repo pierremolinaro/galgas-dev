@@ -31,7 +31,7 @@ syntax extension galgas3DeclarationsSyntax {
     $@type$ ?let @lstring associatedListTypeName
     $)$
     ${$
-    var graphInsertModifierList =@graphInsertModifierList {}
+    var graphInsertModifierList = @graphInsertModifierList {}
     repeat
     while
       $insert$
@@ -67,7 +67,7 @@ syntax extension galgas4DeclarationsSyntax {
     $@type$ ?let @lstring associatedListTypeName
     $)$
     ${$
-    var graphInsertModifierList =@graphInsertModifierList {}
+    var graphInsertModifierList = @graphInsertModifierList {}
     repeat
     while
       $insert$

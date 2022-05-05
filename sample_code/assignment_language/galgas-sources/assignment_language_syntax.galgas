@@ -68,7 +68,7 @@ rule <instruction> ?!@instructionListAST ioInstructionList {
 }
 
 rule <start_symbol> !@programAST programAST {
-  var programInstructionList =@instructionListAST {}
+  var programInstructionList = @instructionListAST {}
   repeat
   while 
     <instruction> !?programInstructionList

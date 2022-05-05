@@ -10,7 +10,7 @@ grammar class_sample_language_grammar
 #--- Build Abstract Syntax Tree
   grammar class_sample_language_grammar (?let declarationListAST) in inSourceFile
 #--- Build dependence graph
-  var inheritanceGraph =@inheritanceGraph.emptyGraph{}
+  var inheritanceGraph = @inheritanceGraph.emptyGraph{}
   for (mDeclaration) in  declarationListAST do
     [mDeclaration buildGraph !?inheritanceGraph]
   end

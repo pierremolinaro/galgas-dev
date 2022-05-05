@@ -74,13 +74,6 @@ override method @bangExpressionAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   let @unifiedTypeMap-entry type = expression.mResultType
-#  if let exp = expression as @literalBigIntExpressionForGeneration then
-#    outExpression = @literalBigIntExpressionForGeneration.new {
-#      ![exp mResultType]
-#      ![exp mLocation]
-#      !~ [exp mValue]
-#    }
-#  elsif not [[type mHandledOperatorFlags] prefixTildeOperator] then
   if let [[type mTypeKindEnum] weakReferenceType ?referenceType: let classIndex] then
     outExpression = @bangExpressionForGeneration.new {
       !classIndex
@@ -106,12 +99,11 @@ refclass @bangExpressionForGeneration : @semanticExpressionForGeneration {
 
 #·····················································································································
 
-override method @bangExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
+override method @bangExpressionForGeneration generateExpression ?!@string ioGeneratedCode
+                                                                ?!@stringset ioInclusionSet
+                                                                ?!@uint ioTemporaryVariableIndex
+                                                                ?!@stringset ioUnusedVariableCppNameSet
+                                                                !@string outCppExpression {
   [self.mExpression.mResultType addHeaderFileName !?ioInclusionSet]
 #--- Operand
   [self.mExpression generateExpression

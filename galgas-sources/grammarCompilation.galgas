@@ -112,7 +112,7 @@ proc handleNonTerminalDeclarationsFromRuleList
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis
   ?let @syntaxRuleListAST inRuleList {
   for (mNonterminalName mLabelList) in inRuleList do
-    var nonTerminalLabelListAST =@nonTerminalLabelListAST {}
+    var nonTerminalLabelListAST = @nonTerminalLabelListAST {}
     for (mLabelName mFormalArguments mEndOfArgumentLocation * *) in mLabelList do
       nonTerminalLabelListAST += 
         !mLabelName
@@ -182,13 +182,13 @@ proc buildRuleList
   ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
   ?!@syntaxComponentListForGrammarAnalysis ioSyntaxComponentListForGrammarAnalysis
   ?!@uint ioAddedNonTerminalCount {
-  var productionRulesList =@productionRuleListForGrammarAnalysis {}
+  var productionRulesList = @productionRuleListForGrammarAnalysis {}
   for (mNonterminalName mLabelList) in inRuleList do
     [inNonTerminalMapForGrammarAnalysis searchKey !mNonterminalName ?let nonTerminalIndex ?let nonterminalSymbolParametersMap]
   #--- Retrieve instruction list from first label
     let @syntaxInstructionList parsedSyntaxInstructionList [mLabelList first ?* ?* ?* ?parsedSyntaxInstructionList ?*]
   #--- Transform instruction list
-    var instructionList =@syntaxInstructionListForGrammarAnalysis {}
+    var instructionList = @syntaxInstructionListForGrammarAnalysis {}
     transformInstructionList (
       !parsedSyntaxInstructionList
       !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap

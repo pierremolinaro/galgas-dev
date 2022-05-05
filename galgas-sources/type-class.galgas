@@ -58,7 +58,7 @@ syntax extension galgas3DeclarationsSyntax {
       $:$
       $@type$ ? superClassName indexing classReferencedAsSuperClass
     end
-    var classFeatureList =@lstringlist {}
+    var classFeatureList = @lstringlist {}
     repeat
     while
       $%attribute$ ?let @lstring classFeatureName

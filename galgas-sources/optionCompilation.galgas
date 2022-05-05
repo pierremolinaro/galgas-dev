@@ -62,7 +62,7 @@ syntax galgas3OptionComponentSyntax (galgas3Scanner) {
     $"string"$ ?let @lstring mOptionInvocationString
     $->$
     $"string"$ ?let @lstring mOptionComment
-    var defaultValue =@lstring.new{!"" !@location.here}
+    var defaultValue = @lstring.new{!"" !@location.here}
     let @optionDefaultValueEnumAST optionDefaultValueKind
     select
       optionDefaultValueKind = @optionDefaultValueEnumAST. noDefaultValue
@@ -125,7 +125,7 @@ syntax galgas4OptionComponentSyntax (galgas3Scanner) {
     $"string"$ ?let @lstring mOptionInvocationString
     $->$
     $"string"$ ?let @lstring mOptionComment
-    var defaultValue =@lstring.new{!"" !@location.here}
+    var defaultValue = @lstring.new{!"" !@location.here}
     let @optionDefaultValueEnumAST optionDefaultValueKind
     select
       optionDefaultValueKind = @optionDefaultValueEnumAST. noDefaultValue

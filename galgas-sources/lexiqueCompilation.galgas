@@ -531,12 +531,12 @@ override method @lexicalRepeatInstructionAST checkLexicalInstruction
   ?!@lexicalTagMap ioTagMap {
   for (mWhileExpression mWhileInstructionList) in self.mLexicalWhileBranchList do
     [mWhileExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
-    var tagMap =@lexicalTagMap.mapWithMapToOverride{!ioTagMap}
+    var tagMap = @lexicalTagMap.mapWithMapToOverride{!ioTagMap}
     for (mInstruction) in mWhileInstructionList do
       [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
     end
   end
-  var tagMap =@lexicalTagMap.mapWithMapToOverride{!ioTagMap}
+  var tagMap = @lexicalTagMap.mapWithMapToOverride{!ioTagMap}
   for (mInstruction) in self.mRepeatedInstructionList do
     [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
   end
@@ -549,12 +549,12 @@ override method @lexicalSelectInstructionAST checkLexicalInstruction
   ?!@lexicalTagMap  ioTagMap {
   for (mSelectExpression mSelectInstructionList) in self.mLexicalSelectBranchList do
     [mSelectExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
-    var tagMap =@lexicalTagMap.mapWithMapToOverride{!ioTagMap}
+    var tagMap = @lexicalTagMap.mapWithMapToOverride{!ioTagMap}
     for (mInstruction) in mSelectInstructionList do
       [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
     end
   end
-  var tagMap =@lexicalTagMap.mapWithMapToOverride{!ioTagMap}
+  var tagMap = @lexicalTagMap.mapWithMapToOverride{!ioTagMap}
   for (mInstruction) in self.mDefaultInstructionList do
     [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
   end

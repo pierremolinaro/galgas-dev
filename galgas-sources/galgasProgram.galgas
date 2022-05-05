@@ -17,14 +17,14 @@
 
 before { #--- Generate project
   let creationProjectName = [option galgas_cli_options.create_project value]
-  projectCreation ( !creationProjectName )
+  projectCreation (!creationProjectName)
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 before { #--- Print predefined lexical action
   if [option galgas_cli_options.printPredefinedLexicalActions value] then
-    printPredefinedLexicalActions ( )
+    printPredefinedLexicalActions ()
   end
 }
 
@@ -175,11 +175,9 @@ private proc parseAndAnalyzeProject
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private proc compileProject
-  ?let @lstring inProjectSourceFile
-  ?let @string inSourceToAnalyze
-  ?let @galgas3ProjectComponentAST inProjectComponentAST
-{
+private proc compileProject ?let @lstring inProjectSourceFile
+                            ?let @string inSourceToAnalyze
+                            ?let @galgas3ProjectComponentAST inProjectComponentAST {
   var @galgas3DeclarationAST declarationAST = .default
   for (mValue) in inProjectComponentAST.mProjectSourceList do
     if [mValue pathExtension] == "galgas" then

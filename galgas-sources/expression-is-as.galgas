@@ -48,6 +48,8 @@ syntax extension galgas3ExpressionSyntax {
         $>=$
         kind = .inherited
       or
+        kind = .inherited
+      or
         $>$
         kind = .strictlyInherited
       end
@@ -92,6 +94,8 @@ syntax extension galgas4ExpressionSyntax {
         kind = .equal
       or
         $>=$
+        kind = .inherited
+      or
         kind = .inherited
       or
         $>$

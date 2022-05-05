@@ -41,7 +41,7 @@ private proc appendPredefined2StringListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs
   ?!@lstringlist ioUsefulnessRootEntities 
 {
-  var attributeList =@propertyInCollectionListAST {}
+  var attributeList = @propertyInCollectionListAST {}
   attributeList +=
     !isConstant: false 
     !@lstring.new {!"string" !@location.here}
@@ -98,7 +98,7 @@ private proc appendStructASTForTypeWithLocation
   ?let @string inElementTypeName
   ?!@lstringlist ioUsefulnessRootEntities 
 {
-  var attributeList =@propertyInCollectionListAST {}
+  var attributeList = @propertyInCollectionListAST {}
   attributeList += 
     !isConstant: false 
     !@lstring.new {!inElementTypeName !@location.here}

@@ -307,9 +307,9 @@ override method @enumDeclarationAST semanticAnalysis
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mEnumTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Constant list
-  var constantList =@stringlist {}
+  var constantList = @stringlist {}
   var @enumConstantListForGeneration enumConstantListForGeneration = {}
-  var constantMap =@constantIndexMap {}
+  var constantMap = @constantIndexMap {}
   for (mConstantName mAssociatedValueDefinitionList) in self.mConstantList do
     constantList += !mConstantName.string
     var @unifiedTypeMapEntryList associatedTypeList = {}

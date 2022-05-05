@@ -164,7 +164,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !"" # No Error message
   ]
 #--- Modifiers
-  var setterFormalArgumentList =@formalParameterSignature {}
+  var setterFormalArgumentList = @formalParameterSignature {}
   setterFormalArgumentList += !["" nowhere] !elementTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !"InValue"
   idx = 0
   loop (self.mDimension.uint) while idx < self.mDimension.uint do
@@ -320,7 +320,7 @@ override method @arrayTypeForGeneration appendSpecificImplementation
   [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
   [self.mElementTypeEntry addHeaderFileName !?ioInclusionSet]
 
-  var suffixList =@stringlist {}
+  var suffixList = @stringlist {}
   var @uint idx = 0
   loop (self.mDimension) while idx < self.mDimension do
     suffixList += ![idx string]

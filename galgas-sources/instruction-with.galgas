@@ -133,7 +133,7 @@ syntax extension galgas3InstructionsSyntax {
       targetIsPrefixedBySelf = true
     end
     $identifier$ ?let targetObjectName
-    var structAttributeList =@lstringlist {}
+    var structAttributeList = @lstringlist {}
     repeat
     while
       $.$
@@ -283,7 +283,7 @@ syntax extension galgas4InstructionsSyntax {
       targetIsPrefixedBySelf = true
     end
     $identifier$ ?let targetObjectName
-    var structAttributeList =@lstringlist {}
+    var structAttributeList = @lstringlist {}
     repeat
     while
       $.$
@@ -416,7 +416,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
 #--- Enter in a select block
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- 'do' branch : add attributes as constant
-  var localConstantList =@localConstantList {}
+  var localConstantList = @localConstantList {}
   for (mPropertyTypeEntry mPropertyName * *) in [receiverType mCurrentTypedPropertyList] do
     localConstantList +=
       !mPropertyTypeEntry

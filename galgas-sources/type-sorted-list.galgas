@@ -322,7 +322,7 @@ override method @sortedListDeclarationAST semanticAnalysis
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!self.mSortedListTypeName.string + "-element" !self.mSortedListTypeName})
   [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !elementTypeNameForUsefulness]
 #--- Attribute
-  var typedAttributeList =@typedPropertyList {}
+  var typedAttributeList = @typedPropertyList {}
   var @propertyIndexMap attributeMap = {}
   for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)

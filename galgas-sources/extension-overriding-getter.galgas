@@ -158,7 +158,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
   var @string baseTypeName = ""
   var @unifiedTypeMap-entry superType = [selfType mSuperType]
   var @functionSignature inheritedSignature = {}
-  var inheritedReturnType =@unifiedTypeMap-entry.null{}
+  var inheritedReturnType = @unifiedTypeMap-entry.null{}
   var @location inheritedDeclarationLocation = @location.here
   loop ([inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do

@@ -410,7 +410,7 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
   end
 #--- Check syntax directed translation result parameter
   let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + [self.mGrammarComponentName.location locationIndex]
-  var assignementList =@stringlist {}
+  var assignementList = @stringlist {}
   [self.mAbstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
     !inAnalysisContext
     !hasTranslateFeature
@@ -499,7 +499,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
   end
 #--- Check syntax directed translation result parameter
   let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + [self.mGrammarComponentName.location locationIndex]
-  var assignementList =@stringlist {}
+  var assignementList = @stringlist {}
   [self.mAbstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
     !inAnalysisContext
     !hasTranslateFeature
@@ -555,9 +555,9 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
       ?let @string sourceVar
     ]
   #--- Parameters
-    var parameterCppNameList =@stringlist {}
-    var jokerParametersToReleaseList =@stringlist {}
-    var inputVariableList =@stringlist {}
+    var parameterCppNameList = @stringlist {}
+    var jokerParametersToReleaseList = @stringlist {}
+    var inputVariableList = @stringlist {}
     for (mActualParameter) in self.mActualParameterList do
       [mActualParameter generateActualParameter
         !?ioInclusionSet
@@ -569,7 +569,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
         ?let @string parameterCppName
       ]
       parameterCppNameList += !parameterCppName
-      if (mActualParameter is >= @inputActualParameterForGeneration) then
+      if mActualParameter is @inputActualParameterForGeneration then
         ioGeneratedCode += parameterCppName + ".drop () ;\n"
       end
     end
@@ -634,9 +634,9 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
       ?let @string nameVar
     ]
   #--- Parameters
-    var parameterCppNameList =@stringlist {}
-    var jokerParametersToReleaseList =@stringlist {}
-    var inputVariableList =@stringlist {}
+    var parameterCppNameList = @stringlist {}
+    var jokerParametersToReleaseList = @stringlist {}
+    var inputVariableList = @stringlist {}
     for (mActualParameter) in self.mActualParameterList do
       [mActualParameter generateActualParameter
          !?ioInclusionSet
@@ -648,7 +648,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
          ?let @string parameterCppName
       ]
       parameterCppNameList += !parameterCppName
-      if (mActualParameter is >= @inputActualParameterForGeneration) then
+      if mActualParameter is @inputActualParameterForGeneration then
         ioGeneratedCode += parameterCppName + ".drop () ;\n"
       end
     end

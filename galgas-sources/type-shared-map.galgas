@@ -180,7 +180,7 @@ syntax extension galgas3DeclarationsSyntax {
       mapOverrideBlockDescriptor1AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText
     end
     $}$
-    var mapOverrideBlockDescriptor2AST =@mapOverrideBlockDescriptorAST {}
+    var mapOverrideBlockDescriptor2AST = @mapOverrideBlockDescriptorAST {}
     ${$
     repeat
     while
@@ -406,7 +406,7 @@ syntax extension galgas3DeclarationsSyntax {
 #      mapOverrideBlockDescriptor1AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText
 #    end
 #    $}$
-#    var mapOverrideBlockDescriptor2AST =@mapOverrideBlockDescriptorAST {}
+#    var mapOverrideBlockDescriptor2AST = @mapOverrideBlockDescriptorAST {}
 #    ${$
 #    repeat
 #    while
@@ -745,7 +745,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !"" # No error message
   ]
 #--------------------------- topologicalSort Method
-  var topologicalSortFormalArgumentList =@formalParameterSignature {}
+  var topologicalSortFormalArgumentList = @formalParameterSignature {}
   topologicalSortFormalArgumentList += !["" nowhere] !lstringlistTypeIndex !.argumentOut !"outSortedLKeys"
   topologicalSortFormalArgumentList += !["" nowhere] !lstringlistTypeIndex !.argumentOut !"outUnsortedLKeys"
   [!?instanceMethodMap insertKey
@@ -1466,7 +1466,7 @@ override method @sharedMapTypeForGeneration appendSpecificImplementation
                   !@string outImplementation
 {
   [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
-  var keySortedList =@keySortedList {}
+  var keySortedList = @keySortedList {}
   for (lkey mStateIndex *) in self.mMapAutomatonStateMap do
     keySortedList += !lkey.string !mStateIndex
   end

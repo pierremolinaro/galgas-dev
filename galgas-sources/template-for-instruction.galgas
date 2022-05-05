@@ -205,7 +205,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     error expression.mLocation : "expression of '@" + [expression.mResultType key] + "' cannot be enumerated"
   end
 #--- Before instructions
-  var beforeInstructionList =@templateInstructionListForGeneration {}
+  var beforeInstructionList = @templateInstructionListForGeneration {}
   templateInstructionListAnalysis (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph

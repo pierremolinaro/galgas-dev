@@ -278,7 +278,7 @@ override method @listDeclarationAST enterInSemanticContext
   drop setterOutputFormalArgumentList
   for (mPropertyTypeEntry mPropertyName mHasSetter *) in typedAttributeList do
     if mHasSetter then
-      var setterFormalArgumentList =@formalParameterSignature {}
+      var setterFormalArgumentList = @formalParameterSignature {}
       setterFormalArgumentList += !["" nowhere] !mPropertyTypeEntry !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
       setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
       [!?setterMap insertOrReplace

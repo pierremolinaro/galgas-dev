@@ -115,7 +115,7 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
   rule <template_delimitor> ?!@metamodelTemplateDelimitorListAST ioTemplateDelimitorList {
     $template$
     $"string"$ ?let @lstring startString
-    var optionList =@lstringlist {}
+    var optionList = @lstringlist {}
     repeat
     while
       $%attribute$ ?let @lstring optionName
@@ -505,7 +505,7 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
     $message$
     $"string"$ ?let @lstring errorMessage
     ${$
-    var entryList =@lexicalListEntryListAST {}
+    var entryList = @lexicalListEntryListAST {}
     repeat
       <lexical_list_entry> !?entryList
     while
@@ -547,7 +547,7 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
 
   rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationList {
     $\$terminal\$$ ?let @lstring name indexing terminalDeclaration
-    var sentAttributeList =@sentLexicalAttributeListAST {}
+    var sentAttributeList = @sentLexicalAttributeListAST {}
     repeat
     while
       $!$ ?let selector
@@ -595,7 +595,7 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
     $extern$
     $proc$
     $identifier$ ?let @lstring routineName
-    var lexicalRoutineFormalArgumentList =@lexicalExternRoutineFormalArgumentListAST {}
+    var lexicalRoutineFormalArgumentList = @lexicalExternRoutineFormalArgumentListAST {}
     repeat
     while
       let @lexicalArgumentModeAST lexicalArgumentMode
@@ -636,7 +636,7 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
     $extern$
     $func$
     $identifier$ ?let @lstring functionName
-    var lexicalFunctionFormalArgumentList =@lexicalExternFunctionFormalArgumentListAST {}
+    var lexicalFunctionFormalArgumentList = @lexicalExternFunctionFormalArgumentListAST {}
     repeat
     while
       $?$ ?let selector
@@ -760,7 +760,7 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
   rule <template_delimitor> ?!@metamodelTemplateDelimitorListAST ioTemplateDelimitorList {
     $template$
     $"string"$ ?let @lstring startString
-    var optionList =@lstringlist {}
+    var optionList = @lstringlist {}
     repeat
     while
       $%attribute$ ?let @lstring optionName
@@ -1150,7 +1150,7 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
     $message$
     $"string"$ ?let @lstring errorMessage
     ${$
-    var entryList =@lexicalListEntryListAST {}
+    var entryList = @lexicalListEntryListAST {}
     repeat
       <lexical_list_entry> !?entryList
     while
@@ -1192,7 +1192,7 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
 
   rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationList {
     $\$terminal\$$ ?let @lstring name indexing terminalDeclaration
-    var sentAttributeList =@sentLexicalAttributeListAST {}
+    var sentAttributeList = @sentLexicalAttributeListAST {}
     repeat
     while
       $!$ ?let selector
@@ -1240,7 +1240,7 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
     $extern$
     $proc$
     $identifier$ ?let @lstring routineName
-    var lexicalRoutineFormalArgumentList =@lexicalExternRoutineFormalArgumentListAST {}
+    var lexicalRoutineFormalArgumentList = @lexicalExternRoutineFormalArgumentListAST {}
     repeat
     while
       let @lexicalArgumentModeAST lexicalArgumentMode
@@ -1281,7 +1281,7 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
     $extern$
     $func$
     $identifier$ ?let @lstring functionName
-    var lexicalFunctionFormalArgumentList =@lexicalExternFunctionFormalArgumentListAST {}
+    var lexicalFunctionFormalArgumentList = @lexicalExternFunctionFormalArgumentListAST {}
     repeat
     while
       $?$ ?let selector

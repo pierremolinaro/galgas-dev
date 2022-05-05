@@ -196,7 +196,7 @@ syntax extension galgas3InstructionsSyntax {
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $for$
     let instructionLocation = @location.here
-    var mEnumeratedObjectList =@forInstructionEnumeratedObjectListAST {}
+    var mEnumeratedObjectList = @forInstructionEnumeratedObjectListAST {}
     repeat
       let @bool ascending
       select
@@ -402,7 +402,7 @@ syntax extension galgas4InstructionsSyntax {
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $for$
     let instructionLocation = @location.here
-    var mEnumeratedObjectList =@forInstructionEnumeratedObjectListAST {}
+    var mEnumeratedObjectList = @forInstructionEnumeratedObjectListAST {}
     repeat
       let @bool ascending
       select

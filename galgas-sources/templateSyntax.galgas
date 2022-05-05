@@ -558,7 +558,7 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
   <expression> ?let @templateExpressionAST expression
   $:$
 #--- Instruction list
-  var blockInstructionList =@templateInstructionListAST {}
+  var blockInstructionList = @templateInstructionListAST {}
   repeat
     enterTemplateString (!?blockInstructionList)
   while
@@ -576,7 +576,7 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
 
 rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
   $if$
-  var templateInstructionIfBranchList =@templateInstructionIfBranchListAST {}
+  var templateInstructionIfBranchList = @templateInstructionIfBranchListAST {}
   repeat
     <expression> ?let expression
     $then$

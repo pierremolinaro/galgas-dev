@@ -87,7 +87,7 @@ rule <element>
   ?let @string inIndendation {
   $comment$ ?let @lstring commentString
   if inIncludeComments then
-    let node =@xmlNode.new{
+    let node = @xmlNode.new{
       !@xmlNodeType. comment
       !commentString.string
       !{}
@@ -150,7 +150,7 @@ rule <element>
     message s
   end
 
-  var nodeList =@xmlNodeList {}
+  var nodeList = @xmlNodeList {}
   select
     $/>$
   or
@@ -174,7 +174,7 @@ rule <element>
     end
     $>$
   end
-  let node =@xmlNode.new{
+  let node = @xmlNode.new{
     !@xmlNodeType. element
     !name.string
     !attributeMap
@@ -203,7 +203,7 @@ proc addText
     else
       ls = trimmedString
     end
-    let node =@xmlNode.new{
+    let node = @xmlNode.new{
       !@xmlNodeType. text
       !ls
       !{}

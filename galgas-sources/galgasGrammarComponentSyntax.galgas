@@ -52,7 +52,7 @@ syntax galgas3GrammarComponentSyntax (galgas3Scanner) {
     end
   #--- Root symbol
     $<non_terminal>$ ?let @lstring  mStartSymbol indexing ruleReference
-    var mLabelList =@nonTerminalLabelListAST {}
+    var mLabelList = @nonTerminalLabelListAST {}
     <grammar_start_symbol_label> !@lstring.new {!"" !@location.here} !?mLabelList
     repeat
     while
@@ -61,7 +61,7 @@ syntax galgas3GrammarComponentSyntax (galgas3Scanner) {
       <grammar_start_symbol_label> !labelName !?mLabelList
      end
   #--- Unused non terminal symbols
-    var mUnusedNonterminalList =@lstringlist {}
+    var mUnusedNonterminalList = @lstringlist {}
     repeat
     while
       $unused$
@@ -231,7 +231,7 @@ syntax galgas4GrammarComponentSyntax (galgas3Scanner) {
       <grammar_start_symbol_label> !labelName !?mLabelList
      end
   #--- Unused non terminal symbols
-    var mUnusedNonterminalList =@lstringlist {}
+    var mUnusedNonterminalList = @lstringlist {}
     repeat
     while
       $unused$

@@ -56,9 +56,9 @@ syntax galgas3SyntaxComponentSyntax (galgas3Scanner) {
     end
     ${$
   #--- Loop on declarations
-    var nonterminalDeclarationList =@nonterminalDeclarationListAST {}
-    var ruleList =@syntaxRuleListAST {}
-    let mSemanticDeclarations =@semanticDeclarationListAST {}
+    var nonterminalDeclarationList = @nonterminalDeclarationListAST {}
+    var ruleList = @syntaxRuleListAST {}
+    let mSemanticDeclarations = @semanticDeclarationListAST {}
     repeat
     while
       <nonterminal_declaration> !? nonterminalDeclarationList
@@ -85,9 +85,9 @@ syntax galgas3SyntaxComponentSyntax (galgas3Scanner) {
     $identifier$ ?let @lstring syntaxComponentName
     ${$
   #--- Loop on declarations
-    var nonterminalDeclarationList =@nonterminalDeclarationListAST {}
-    var ruleList =@syntaxRuleListAST {}
-    let mSemanticDeclarations =@semanticDeclarationListAST {}
+    var nonterminalDeclarationList = @nonterminalDeclarationListAST {}
+    var ruleList = @syntaxRuleListAST {}
+    let mSemanticDeclarations = @semanticDeclarationListAST {}
     repeat
     while
       <nonterminal_declaration> !? nonterminalDeclarationList
@@ -146,8 +146,8 @@ syntax galgas3SyntaxComponentSyntax (galgas3Scanner) {
   rule <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList {
     $rule$
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
-    var labelName =@lstring.new{!"" !@location.here}
-    var mLabelList =@syntaxRuleLabelListAST {}
+    var labelName = @lstring.new{!"" !@location.here}
+    var mLabelList = @syntaxRuleLabelListAST {}
     repeat
       <syntax_rule_label> !labelName !?mLabelList
     while
@@ -238,7 +238,7 @@ syntax galgas4SyntaxComponentSyntax (galgas3Scanner) {
     end
     ${$
   #--- Loop on declarations
-    var nonterminalDeclarationList =@nonterminalDeclarationListAST {}
+    var nonterminalDeclarationList = @nonterminalDeclarationListAST {}
     var ruleList = @syntaxRuleListAST {}
     repeat
     while
@@ -266,8 +266,8 @@ syntax galgas4SyntaxComponentSyntax (galgas3Scanner) {
     $identifier$ ?let @lstring syntaxComponentName
     ${$
   #--- Loop on declarations
-    var nonterminalDeclarationList =@nonterminalDeclarationListAST {}
-    var ruleList =@syntaxRuleListAST {}
+    var nonterminalDeclarationList = @nonterminalDeclarationListAST {}
+    var ruleList = @syntaxRuleListAST {}
     repeat
     while
       <nonterminal_declaration> !? nonterminalDeclarationList
@@ -326,8 +326,8 @@ syntax galgas4SyntaxComponentSyntax (galgas3Scanner) {
   rule <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList {
     $rule$
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
-    var labelName =@lstring.new{!"" !@location.here}
-    var mLabelList =@syntaxRuleLabelListAST {}
+    var labelName = @lstring.new{!"" !@location.here}
+    var mLabelList = @syntaxRuleLabelListAST {}
     repeat
       <syntax_rule_label> !labelName !?mLabelList
     while

@@ -42,7 +42,7 @@ syntax extension galgas3InstructionsSyntax {
       prefixedBySelf = true
     end
     $identifier$ ?let mReceiverName
-    var mReceiverStructAttributes =@lstringlist {}
+    var mReceiverStructAttributes = @lstringlist {}
     repeat
     while
       $.$
@@ -116,7 +116,7 @@ syntax extension galgas4InstructionsSyntax {
       prefixedBySelf = true
     end
     $identifier$ ?let mReceiverName
-    var mReceiverStructAttributes =@lstringlist {}
+    var mReceiverStructAttributes = @lstringlist {}
     repeat
     while
       $.$
@@ -483,9 +483,9 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
   ioGeneratedCode += "{\n"
   [!?ioUnusedVariableCppNameSet removeKey !self.mSelfCppName]
 #--- Parameters
-  var parameterCppNameList =@stringlist {}
-  var jokerParametersToReleaseList =@stringlist {}
-  var inputVariableList =@stringlist {}
+  var parameterCppNameList = @stringlist {}
+  var jokerParametersToReleaseList = @stringlist {}
+  var inputVariableList = @stringlist {}
   for (mActualParameter) in self.mActualParameterList do
     [mActualParameter generateActualParameter
       !?ioInclusionSet

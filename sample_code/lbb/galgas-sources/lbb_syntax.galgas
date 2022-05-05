@@ -2,14 +2,14 @@ syntax lbb_syntax (lbb_lexique) {
 
 
 rule <start_symbol> !@programAST outProgramAST {
-  var boxTypeListAST =@boxTypeListAST {}
+  var boxTypeListAST = @boxTypeListAST {}
   var @boxInstanceListAST boxInstanceListAST = {}
   repeat
   while
     $identifier$ ?let @lstring boxTypeName
     $identifier$ ?let @lstring boxInstanceName
     ${$
-    var connectionList =@connectionlistAST {}
+    var connectionList = @connectionlistAST {}
     repeat
       $identifier$ ?let @lstring boxInstanceName
       $.$
@@ -24,7 +24,7 @@ rule <start_symbol> !@programAST outProgramAST {
     $type$
     $identifier$ ?let @lstring boxTypeName
     $=$
-    var portNameList =@lstringlist {}
+    var portNameList = @lstringlist {}
     repeat
       $identifier$ ?let @lstring portName
       portNameList += !portName

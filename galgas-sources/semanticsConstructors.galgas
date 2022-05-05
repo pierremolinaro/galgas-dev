@@ -69,7 +69,7 @@ proc enterConstructorWith2Arguments
   ?hasLexiqueArg:let @bool inHasLexiqueArgument
 {
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
-  var argumentTypeList =@functionSignature {}
+  var argumentTypeList = @functionSignature {}
   var @unifiedTypeMap-entry t
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t]
   argumentTypeList += !["" nowhere] !t !inArgument1Name

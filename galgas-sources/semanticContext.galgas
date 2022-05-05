@@ -444,7 +444,7 @@ proc addExtensions
   if [inExtensionMethodMapForBuildingContext hasKey !inTypeName.string] then
     [inExtensionMethodMapForBuildingContext searchKey !inTypeName ?let extensionMethodMapForType]
     for (lkey mFormalParameterList) in extensionMethodMapForType do
-      var formalArgumentList =@formalParameterSignature {}
+      var formalArgumentList = @formalParameterSignature {}
       for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
         [@unifiedTypeMap-entry makeEntry
           !?ioSemanticContext.mTypeMap
@@ -692,7 +692,7 @@ override method @externRoutineDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
-  var routineSignature =@formalParameterSignature {}
+  var routineSignature = @formalParameterSignature {}
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mFormalArgumentList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
     routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
@@ -713,7 +713,7 @@ override method @procDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
-  var routineSignature =@formalParameterSignature {}
+  var routineSignature = @formalParameterSignature {}
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mFormalArgumentList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
     routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
@@ -736,7 +736,7 @@ override method @externFunctionDeclarationAST enterInSemanticContext # Handles a
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
-  var functionSignature =@functionSignature {}
+  var functionSignature = @functionSignature {}
   for (mFormalSelector mFormalArgumentTypeName * * *) in self.mFormalArgumentList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
     functionSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentTypeName.string
@@ -835,7 +835,7 @@ override method @lexiqueComponentAST enterInSemanticContext
 #--------------------------------------- 
   var @terminalMap terminalMap = {}
   for (mName mSentAttributeList * * *) in self.mTerminalDeclarationList do
-    var argumentTypeList =@lexicalSentValueList {}
+    var argumentTypeList = @lexicalSentValueList {}
     for (mFormalSelector mAttributeName) in mSentAttributeList do
       [lexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
@@ -844,7 +844,7 @@ override method @lexiqueComponentAST enterInSemanticContext
   end
 #---
   for (* * * mSentAttributeList mEntryList) in self.mLexicalListDeclarationList do
-    var argumentTypeList =@lexicalSentValueList {}
+    var argumentTypeList = @lexicalSentValueList {}
     for (mFormalSelector mAttributeName) in mSentAttributeList do
       [lexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType

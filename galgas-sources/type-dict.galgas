@@ -39,7 +39,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
   #--- Map properties
     ${$
-    var propertyList =@propertyInCollectionListAST {}
+    var propertyList = @propertyInCollectionListAST {}
     repeat
     while
       <property_declaration> !? propertyList
@@ -82,7 +82,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
   #--- Map properties
     ${$
-    var propertyList =@propertyInCollectionListAST {}
+    var propertyList = @propertyInCollectionListAST {}
     repeat
     while
       <property_declaration> !? propertyList
@@ -286,7 +286,7 @@ override method @dictDeclarationAST enterInSemanticContext
       !mPropertyTypeName
       ?let @unifiedTypeMap-entry attributeTypeIndex
     ]
-    var accessorFormalArgumentList =@formalParameterSignature {}
+    var accessorFormalArgumentList = @formalParameterSignature {}
     accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
     accessorFormalArgumentList += !["" nowhere] !keyTypeIndex !.argumentConstantIn !"key"
     [!?setterMap insertOrReplace

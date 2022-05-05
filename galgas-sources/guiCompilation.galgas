@@ -167,7 +167,7 @@ syntax galgas3GuiComponentSyntax (galgas3Scanner) {
       $identifier$ ?let @lstring key
       $"string"$ ?let @lstring name
       $:$
-      var value =@lstring.new{!"" !@location.here}
+      var value = @lstring.new{!"" !@location.here}
       repeat
         $"string"$ ?let @lstring v
         value = @lstring.new {!value.string + v.string !v.location}
@@ -293,7 +293,7 @@ syntax galgas4GuiComponentSyntax (galgas3Scanner) {
       $identifier$ ?let @lstring key
       $"string"$ ?let @lstring name
       $:$
-      var value =@lstring.new{!"" !@location.here}
+      var value = @lstring.new{!"" !@location.here}
       repeat
         $"string"$ ?let @lstring v
         value = @lstring.new {!value.string + v.string !v.location}

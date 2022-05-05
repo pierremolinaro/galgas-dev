@@ -102,7 +102,7 @@ syntax galgas3ParameterArgumentSyntax (galgas3Scanner) {
     while
       $!?$ ?let selector
       $identifier$ ?let outputInputActualParameterName
-      var structAttributeList =@lstringlist {}
+      var structAttributeList = @lstringlist {}
       repeat
       while
         $.$
@@ -340,7 +340,7 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
     while
       $!?$ ?let selector
       $identifier$ ?let outputInputActualParameterName
-      var structAttributeList =@lstringlist {}
+      var structAttributeList = @lstringlist {}
       repeat
       while
         $.$

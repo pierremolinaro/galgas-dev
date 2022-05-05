@@ -23,7 +23,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     let mRepeatInstructionLocation = @location.here
     <syntax_instruction_list> ?let @syntaxInstructionList mRepeatedInstructionList
     let endOf_repeated_instructions = @location.here
-    var mRepeatBranchList =@listOfSyntaxInstructionList {}
+    var mRepeatBranchList = @listOfSyntaxInstructionList {}
     repeat
       $while$
       <syntax_instruction_list> ?let @syntaxInstructionList mInstructionList
@@ -63,7 +63,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     let mRepeatInstructionLocation = @location.here
     <syntax_instruction_list> ?let @syntaxInstructionList mRepeatedInstructionList
     let endOf_repeated_instructions = @location.here
-    var mRepeatBranchList =@listOfSyntaxInstructionList {}
+    var mRepeatBranchList = @listOfSyntaxInstructionList {}
     repeat
       $while$
       <syntax_instruction_list> ?let @syntaxInstructionList mInstructionList
@@ -104,7 +104,7 @@ override method @repeatInstruction transformInstruction
   let @uint addedNonTerminalIndex = ioAddedNonTerminalIndex
   ioAddedNonTerminalIndex ++
 
-  var repeatedInstructionList =@syntaxInstructionListForGrammarAnalysis {}
+  var repeatedInstructionList = @syntaxInstructionListForGrammarAnalysis {}
   transformInstructionList (
     !self.mRepeatedInstructionList
     !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
@@ -112,10 +112,10 @@ override method @repeatInstruction transformInstruction
     !?addedTerminalIndex:ioAddedNonTerminalIndex
     !?repeatedInstructionList
   )
-  var repeatBranchList =@branchListForGrammarAnalysis.listWithValue{!repeatedInstructionList}
+  var repeatBranchList = @branchListForGrammarAnalysis.listWithValue{!repeatedInstructionList}
 
   for (mSyntaxInstructionList *) in self.mRepeatBranchList do
-    var syntaxInstructionList =@syntaxInstructionListForGrammarAnalysis {}
+    var syntaxInstructionList = @syntaxInstructionListForGrammarAnalysis {}
     transformInstructionList (
       !mSyntaxInstructionList
       !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
@@ -227,7 +227,7 @@ override method @repeatInstructionForGeneration appendSyntaxSignature
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration 
 {
   let repeated_instructionList = syntaxSignatureOfInstructionList (!inPosfix !self.m_repeated_instructionList)
-  var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration {}
+  var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration {}
   for (mInstructionList mEndOfInstructionList) in self.mListOfSemanticInstructionListForGeneration do
     listOfSemanticInstructionListForGeneration +=
       !syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)

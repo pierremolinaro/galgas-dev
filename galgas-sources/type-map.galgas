@@ -70,8 +70,8 @@ syntax extension galgas3DeclarationsSyntax {
     end
   #--- Map properties
     ${$
-    var propertyList =@propertyInCollectionListAST {}
-    var mInsertMethodList =@insertMethodListAST {}
+    var propertyList = @propertyInCollectionListAST {}
+    var mInsertMethodList = @insertMethodListAST {}
     var @mapSearchMethodListAST mSearchMethodList = {}
     var @mapRemoveMethodListAST mRemoveMethodList = {}
     var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = {}
@@ -196,8 +196,8 @@ syntax extension galgas4DeclarationsSyntax {
     end
   #--- Map properties
     ${$
-    var propertyList =@propertyInCollectionListAST {}
-    var mInsertMethodList =@insertMethodListAST {}
+    var propertyList = @propertyInCollectionListAST {}
+    var mInsertMethodList = @insertMethodListAST {}
     var @mapSearchMethodListAST mSearchMethodList = {}
     var @mapRemoveMethodListAST mRemoveMethodList = {}
     var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = {}
@@ -309,7 +309,7 @@ syntax extension galgas4DeclarationsSyntax {
 
 override method @mapDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
-  var structAttributeList =@propertyInCollectionListAST {}
+  var structAttributeList = @propertyInCollectionListAST {}
   structAttributeList +=
     !isConstant: false
     !["lstring" nowhere]

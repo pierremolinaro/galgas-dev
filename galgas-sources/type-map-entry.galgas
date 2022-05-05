@@ -99,7 +99,7 @@ override method @mapEntryDeclarationAST enterInSemanticContext
     !hasLexiqueArg:false
   )
 #--- Search methods of associated map as constructors
-  var constructorAttributeTypeList =@functionSignature {}
+  var constructorAttributeTypeList = @functionSignature {}
   constructorAttributeTypeList += !["" nowhere] !associatedMapTypeIndex !"inMap"
   constructorAttributeTypeList += !["" nowhere] !lstringTypeIndex !"inLKey"
   for (mSearchMethodName * * *) in searchMethodList do

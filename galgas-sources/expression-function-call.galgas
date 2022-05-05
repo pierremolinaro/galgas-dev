@@ -97,7 +97,7 @@ override method @functionCallExpressionAST analyzeSemanticExpression
       + " effective argument(s)"
     : outExpression
   else
-    var semanticExpressionListForGeneration =@semanticExpressionListForGeneration {}
+    var semanticExpressionListForGeneration = @semanticExpressionListForGeneration {}
     for (mFormalSelector mFormalArgumentType *) in functionSignature, (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList do
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
@@ -150,7 +150,7 @@ override method @functionCallExpressionForGeneration generateExpression
 #--- Add function header
   ioInclusionSet += !"func-" + [self.mFunctionName fileNameRepresentation]
 #---
-  var parameterList =@stringlist {}
+  var parameterList = @stringlist {}
   for (mExpression) in self.mExpressions do
     [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let parameter]
     parameterList += !parameter  

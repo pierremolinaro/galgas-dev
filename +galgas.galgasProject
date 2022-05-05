@@ -131,7 +131,7 @@ project (4:0:0) -> "galgas" {
   "galgas-sources/expression-comparison.galgas"
   "galgas-sources/expression-additive.galgas"
   "galgas-sources/expression-multiplicative.galgas"
-  "galgas-sources/expression-cast-expression.galgas"
+  "galgas-sources/expression-is-as.galgas"
   "galgas-sources/expression-option.galgas"
   "galgas-sources/expression-lexique.galgas"
   "galgas-sources/expression-filewrapper.galgas"
