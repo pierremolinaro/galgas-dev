@@ -19,11 +19,9 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @stringsetPredefinedTypeAST getEnumerationList
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@enumerationDescriptorList outEnumerationList
-  !@string outEnumeratedType
-{
+override method @stringsetPredefinedTypeAST getEnumerationList ?!@unifiedTypeMap ioUnifiedTypeMap
+                                                               !@enumerationDescriptorList outEnumerationList
+                                                               !@string outEnumeratedType {
   [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"string" ?let stringTypeIndex]
   outEnumerationList = {}
   outEnumerationList += !stringTypeIndex !"key"
@@ -82,7 +80,9 @@ override getter @bigintPredefinedTypeAST getSupportedOperatorFlags -> @operators
              .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator |
              .infixShiftOperator | .infixModOperator |
              .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator |
-             .incDecOperator | .isComparable
+             .incDecOperator | .isComparable |
+             .plusEqualOperatorWithExpression | .minusEqualOperatorWithExpression |
+             .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

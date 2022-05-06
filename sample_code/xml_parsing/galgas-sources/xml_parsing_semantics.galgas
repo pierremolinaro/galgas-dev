@@ -18,7 +18,7 @@ proc listUnicodeCharacterProperties {
       matchedValue = unicodeValue
       found = true
     end
-    unicodeValue ++
+    unicodeValue += 1
   end
   if found then
     message "  - [" + [matchedValue hexString] + ", " + [unicodeValue - 1 hexString] + "]\n"
@@ -40,7 +40,7 @@ proc listUnicodeCharacterProperties {
           + "'\n"
       end
     end
-    unicodeValue ++
+    unicodeValue += 1
   end
 
   message "---- Unicode Numbers\n"
@@ -53,7 +53,7 @@ proc listUnicodeCharacterProperties {
         message "  '" + [c string] + "' (" + [unicodeValue hexString] + "), name: '" + [c unicodeName] + "'\n"
       end
     end
-    unicodeValue ++
+    unicodeValue += 1
   end
 
   message "---- Unicode Separators\n"
@@ -66,7 +66,7 @@ proc listUnicodeCharacterProperties {
         message "  '" + [c string] + "' (" + [unicodeValue hexString] + "), name: '" + [c unicodeName] + "'\n"
       end
     end
-    unicodeValue ++
+    unicodeValue += 1
   end
 
   message "---- Unicode Punctuation\n"
@@ -79,7 +79,7 @@ proc listUnicodeCharacterProperties {
         message "  - " + [unicodeValue hexString] + ", name: '" + [c unicodeName] + "'\n"
       end
     end
-    unicodeValue ++
+    unicodeValue += 1
   end
 
   message "---- Unicode Command\n"
@@ -92,7 +92,7 @@ proc listUnicodeCharacterProperties {
         message "  - " + [unicodeValue hexString] + ", name: '" + [c unicodeName] + "'\n"
       end
     end
-    unicodeValue ++
+    unicodeValue += 1
   end
 
   message "---- Unicode Mark\n"
@@ -105,7 +105,7 @@ proc listUnicodeCharacterProperties {
         message "  - " + [unicodeValue hexString] + ", name: '" + [c unicodeName] + "'\n"
       end
     end
-    unicodeValue ++
+    unicodeValue += 1
   end
 
   message "---- Done.\n"

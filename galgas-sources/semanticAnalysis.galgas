@@ -748,7 +748,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     var @uint i = 0
     loop (addedNonTerminalCount) while i < (addedNonTerminalCount - addedNonTerminalCountRef) do
       nonTerminalToAddList += !syntaxComponentName !i
-      i++
+      i += 1
     end
   end
 #------------------------ Get lexique component, for knowing if there are "indexing" declaration
@@ -921,7 +921,7 @@ override method @lexiqueComponentAST semanticAnalysis
   var styleIndex = 1
   for (mName mComment) in self.mLexicalStyleList do
     [!?lexiqueAnalysisContext.mStyleMap insertKey !mName !mComment !styleIndex]
-    styleIndex ++
+    styleIndex += 1
   end
 #--------------------------------------- Build lexical attribute map
   buildLexicalAttributeMap (
@@ -1833,7 +1833,7 @@ proc semanticAnalysisOfSyntaxComponent
       !mNonterminalName.string
       !newRuleIndex
       !ruleLabelImplementationList
-    newRuleIndex ++
+    newRuleIndex += 1
   end
 #---
   outSyntaxDeclarationForGeneration = @syntaxDeclarationForGeneration.new {

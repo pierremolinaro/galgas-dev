@@ -767,18 +767,6 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
                                                                                        GALGAS_semanticInstructionAST & outArgument1,
                                                                                        C_Lexique_galgas_33_Scanner * inCompiler) ;
 
-//------------------------------------- 'semantic_instruction_inc_dec' non terminal
-//--- 'parse' label
-  public: virtual void nt_semantic_5F_instruction_5F_inc_5F_dec_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_semantic_5F_instruction_5F_inc_5F_dec_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_semantic_5F_instruction_5F_inc_5F_dec_ (const GALGAS_bool inArgument0,
-                                                                  GALGAS_semanticInstructionAST & outArgument1,
-                                                                  C_Lexique_galgas_33_Scanner * inCompiler) ;
-
 //------------------------------------- 'semantic_instruction_list' non terminal
 //--- 'parse' label
   public: virtual void nt_semantic_5F_instruction_5F_list_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
@@ -1193,12 +1181,6 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
   public: virtual int32_t select_galgas_34_InstructionsSyntax_67 (C_Lexique_galgas_33_Scanner *) ;
 
   public: virtual int32_t select_galgas_34_InstructionsSyntax_68 (C_Lexique_galgas_33_Scanner *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_69 (C_Lexique_galgas_33_Scanner *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_70 (C_Lexique_galgas_33_Scanner *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_71 (C_Lexique_galgas_33_Scanner *) ;
 
   public: virtual int32_t select_galgas_34_DeclarationsSyntax_0 (C_Lexique_galgas_33_Scanner *) ;
 

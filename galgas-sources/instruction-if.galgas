@@ -766,7 +766,7 @@ override method @ifInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode {
 #--- Generate test expression
   let testVar = "test_" + [ioTemporaryVariableIndex string]
-  ioTemporaryVariableIndex ++
+  ioTemporaryVariableIndex += 1
   ioGeneratedCode += "enumGalgasBool " + testVar + " = kBoolTrue ;\n"
   for (expression) in self.mExpressions do
     ioGeneratedCode += "if (kBoolTrue == " + testVar + ") {\n"

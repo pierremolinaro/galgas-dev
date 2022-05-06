@@ -110,7 +110,7 @@ override method @arrayDeclarationAST enterInSemanticContext
   var @uint idx = 0
   loop (self.mDimension.uint) while idx < self.mDimension.uint do
     uintArgs += !["" nowhere] !uintType !"inSize" + idx
-    idx ++
+    idx += 1
   end
 #--- Constructor
   [!?constructorMap insertKey
@@ -169,7 +169,7 @@ override method @arrayDeclarationAST enterInSemanticContext
   idx = 0
   loop (self.mDimension.uint) while idx < self.mDimension.uint do
     setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inIndex" + idx
-    idx ++
+    idx += 1
   end
   [!?setterMap insertKey
     !["setValueAtIndex" nowhere]
@@ -324,7 +324,7 @@ override method @arrayTypeForGeneration appendSpecificImplementation
   var @uint idx = 0
   loop (self.mDimension) while idx < self.mDimension do
     suffixList += ![idx string]
-    idx ++
+    idx += 1
   end
   outImplementation = [filewrapper typeGenerationTemplate.arrayTypeSpecificImplementation
     ![self.mSelfTypeEntry  key]

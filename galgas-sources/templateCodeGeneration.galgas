@@ -128,7 +128,8 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
   for (mExpression mInstructionList) in self.mTemplateInstructionIfBranchList do
   #--- IF expression
     [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let ifVarCppName]
-    let @string testVar = "test_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
+    let @string testVar = "test_" + [ioTemporaryVariableIndex string]
+    ioTemporaryVariableIndex += 1
     ioGeneratedCode += "const enumGalgasBool " + testVar + " = " + ifVarCppName + ".boolEnum () ;\n"
     ioGeneratedCode += "if (kBoolTrue == " + testVar + ") {\n"
     [!?ioGeneratedCode incIndentation !2]

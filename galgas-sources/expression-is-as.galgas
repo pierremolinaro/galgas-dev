@@ -310,7 +310,7 @@ override method @castInExpressionForGeneration generateExpression
 {
   [self.mCastType addHeaderFileName !?ioInclusionSet] 
   outCppExpression = "temp_" + [ioTemporaryVariableIndex string]
-  ioTemporaryVariableIndex ++
+  ioTemporaryVariableIndex += 1
 #--- Receiver expression
   [self.mReceiverExpression generateExpression
     !?ioGeneratedCode
@@ -360,7 +360,8 @@ override method @extractObjectInExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  outCppExpression = "temp_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
+  outCppExpression = "temp_" + [ioTemporaryVariableIndex string]
+  ioTemporaryVariableIndex += 1
 #--- Receiver expression
   [self.mReceiverExpression generateExpression
     !?ioGeneratedCode

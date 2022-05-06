@@ -37,7 +37,7 @@ syntax extension templateSyntax {
     end
     loop (n) while n > 0 do
       ioElementList += !["" nowhere]
-      n --
+      n -= 1
     end
   }
   

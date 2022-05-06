@@ -2023,6 +2023,26 @@ class GALGAS_bigint : public AC_GALGAS_root {
                                                                 class C_Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const ;
 
+//--------------------------------- += operator (with expression)
+  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_bigint inOperand,
+                                                       class C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- -= operator (with expression)
+  public: VIRTUAL_IN_DEBUG void minusAssign_operation (const GALGAS_bigint inOperand,
+                                                        class C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- *= operator (with expression)
+  public: VIRTUAL_IN_DEBUG void mulAssign_operation (const GALGAS_bigint inOperand,
+                                                      class C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- /= operator (with expression)
+  public: VIRTUAL_IN_DEBUG void divAssign_operation (const GALGAS_bigint inOperand,
+                                                      class C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
 //--------------------------------- & operator
   public: VIRTUAL_IN_DEBUG GALGAS_bigint operator_and (const GALGAS_bigint & inOperand
                                                        COMMA_LOCATION_ARGS) const ;

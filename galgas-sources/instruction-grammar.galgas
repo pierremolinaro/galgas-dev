@@ -162,7 +162,9 @@ syntax extension galgas3InstructionsSyntax {
   rule <semantic_instruction> !@semanticInstructionAST outInstruction { #obsolete
     $grammar$
     let instructionLocation = @location.here
-    warning instructionLocation : "obsolete 'grammar' instruction syntax"
+    if [option galgas_cli_options.errorOldStyleCollectionInitializer value] then
+      warning instructionLocation : "obsolete 'grammar' instruction syntax"
+    end
     $identifier$ ?let @lstring grammarComponentName indexing grammarComponentReference
     let @lstring labelName
     select

@@ -170,7 +170,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
               extractedAssociatedValuesForGeneration += !mType !cppName !associatedValueIndex
               [!?analysisContext.mTemplateVariableMap insertKey !mExtractedValueName !mType !cppName]
             end
-            associatedValueIndex ++
+            associatedValueIndex += 1
           end%for
         end
       else

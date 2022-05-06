@@ -37,7 +37,7 @@ proc testsuite_foreach_instruction {
     message "  before\n"
   do
     message "  do '" + s + "', n: " + [n string] + "\n"
-    n ++
+    n += 1
   between
     message "  between\n"
   after

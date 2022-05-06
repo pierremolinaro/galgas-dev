@@ -102,7 +102,7 @@ override method @repeatInstruction transformInstruction
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
   let @uint addedNonTerminalIndex = ioAddedNonTerminalIndex
-  ioAddedNonTerminalIndex ++
+  ioAddedNonTerminalIndex += 1
 
   var repeatedInstructionList = @syntaxInstructionListForGrammarAnalysis {}
   transformInstructionList (
@@ -152,7 +152,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
   ?!@uint ioSelectMethodCount
 {
   let @uint choiceIndex = ioSelectMethodCount
-  ioSelectMethodCount ++
+  ioSelectMethodCount += 1
 #--- Begin block
   [!?ioVariableMap openOverrideForRepeatBlock]
 #--- Repeated instructions
@@ -292,7 +292,7 @@ override method @repeatInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode
 {
   let @string repeatFlagCppName = "repeatFlag_" + [ioTemporaryVariableIndex string]
-  ioTemporaryVariableIndex ++
+  ioTemporaryVariableIndex += 1
   ioGeneratedCode += "bool " + repeatFlagCppName + " = true ;\n"
   ioGeneratedCode += "while (" + repeatFlagCppName + ") {\n"
   generateInstructionList (

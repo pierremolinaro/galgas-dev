@@ -97,7 +97,7 @@ override method @selectInstruction transformInstruction
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
   let @uint addedNonTerminalIndex = ioAddedNonTerminalIndex
-  ioAddedNonTerminalIndex ++
+  ioAddedNonTerminalIndex += 1
 
   var selectBranchList = @branchListForGrammarAnalysis {}
   for (mSyntaxInstructionList *) in self.mSelectBranchList do
@@ -137,7 +137,7 @@ override method @selectInstruction analyzeSyntaxInstruction
   ?!@localVarManager ioVariableMap
   ?!@uint ioSelectMethodCount {
   let @uint choiceIndex = ioSelectMethodCount
-  ioSelectMethodCount ++
+  ioSelectMethodCount += 1
 #--- Begin block
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- 'or' blocks

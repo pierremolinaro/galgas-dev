@@ -558,7 +558,7 @@ proc recursivelyEnumerateDirectories
   ?!@uint ioWrapperFileIndex
   ?!@uint ioWrapperDirectoryIndex {
   let @uint currentDirectoryIndex = ioWrapperDirectoryIndex
-  ioWrapperDirectoryIndex ++
+  ioWrapperDirectoryIndex += 1
 #--- Enumerates regular files
   let @stringlist files = [inAbsoluteSourcePath regularFiles !false]
   outWrapperFileMap = {}
@@ -572,7 +572,7 @@ proc recursivelyEnumerateDirectories
         !currentDirectoryIndex
         !ioWrapperFileIndex
       ]
-      ioWrapperFileIndex ++
+      ioWrapperFileIndex += 1
     elsif [inBinaryFileExtensionMap hasKey ![mValue pathExtension]] then
       let @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
       [!?outWrapperFileMap insertKey
@@ -582,7 +582,7 @@ proc recursivelyEnumerateDirectories
         !currentDirectoryIndex
         !ioWrapperFileIndex
       ]
-      ioWrapperFileIndex ++
+      ioWrapperFileIndex += 1
     end
   end
 #--- Enumerates regular directories

@@ -380,7 +380,7 @@ method @fixitListForGeneration generateFixIt
   !@string outFixItArrayCppName
 {
   outFixItArrayCppName = "fixItArray" + ioTemporaryVariableIndex
-  ioTemporaryVariableIndex ++
+  ioTemporaryVariableIndex += 1
   ioGeneratedCode += "TC_Array <C_FixItDescription> " + outFixItArrayCppName + " ;\n"
   for (element) in self do
     switch (element)

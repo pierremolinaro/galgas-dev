@@ -400,7 +400,8 @@ override method @expressionCollectionForGeneration generateExpression
 #---
   [self.mResultType addHeaderFileName !?ioInclusionSet]
 #--- Create temporary variable variable
-  outCppExpression = "temp_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
+  outCppExpression = "temp_" + [ioTemporaryVariableIndex string]
+  ioTemporaryVariableIndex += 1
 #--- Declare variable and apply default constructor
   ioGeneratedCode += "GALGAS_" + [self.mResultType identifierRepresentation] + " " + outCppExpression
      + " = GALGAS_" +  [self.mResultType identifierRepresentation] + "::constructor_" + [[self.mResultType mDefaultConstructorName] identifierRepresentation] + " (" + [self.mLocation sourceFile] + ") ;\n"

@@ -39,7 +39,7 @@ proc testsuite_for_instruction {
     message "  before\n"
   do
     message "  do '" + xyz_mValue + "', n: " + [n string] + "\n"
-    n ++
+    n += 1
   between
     message "  between\n"
   after

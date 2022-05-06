@@ -146,107 +146,107 @@ syntax extension galgas3InstructionsSyntax {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax extension galgas4InstructionsSyntax {
-
-  #·····················································································································
-
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
-    <semantic_instruction_inc_dec> !prefixedBySelf: false ?outInstruction
-  }
-  
- #·····················································································································
-
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
-    $self$
-    $.$
-    <semantic_instruction_inc_dec> !prefixedBySelf: true ?outInstruction
-  }
-  
-  #·····················································································································
-
-  rule <semantic_instruction_inc_dec> ?prefixedBySelf: let @bool inPrefixedBySelf !@semanticInstructionAST outInstruction {
-    $identifier$ ?let mReceiverName
-    var mStructAttributeList = @lstringlist {}
-    repeat
-    while
-      $.$
-      $identifier$ ?let attributeName
-      mStructAttributeList += !attributeName
-    end
-    select
-      $++$
-      outInstruction = @incDecInstructionAST.new {
-        !mReceiverName.location
-        !inPrefixedBySelf
-        !mReceiverName
-        !mStructAttributeList
-        !.increment
-      }
-    or
-      $&++$
-      outInstruction = @incDecNoOVFInstructionAST.new {
-        !mReceiverName.location
-        !inPrefixedBySelf
-        !mReceiverName
-        !mStructAttributeList
-        !.increment
-      }
-    or
-      $&--$
-      outInstruction = @incDecNoOVFInstructionAST.new {
-        !mReceiverName.location
-        !inPrefixedBySelf
-        !mReceiverName
-        !mStructAttributeList
-        !.decrement
-      }
-    or
-      $--$
-      outInstruction = @incDecInstructionAST.new {
-        !mReceiverName.location
-        !inPrefixedBySelf
-        !mReceiverName
-        !mStructAttributeList
-        !.decrement
-      }
-    end
-  }
-
-  #·····················································································································
-
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
-    $self$
-    let instructionLocation = @location.here
-    select
-      $++$
-      outInstruction = @selfIncDecInstructionAST.new {
-        !instructionLocation
-        !.increment
-      }
-    or
-      $--$
-      outInstruction = @selfIncDecInstructionAST.new {
-        !instructionLocation
-        !.decrement
-      }
-    or
-      $&++$
-      outInstruction = @selfIncDecNoOVFInstructionAST.new {
-        !instructionLocation
-        !.increment
-      }
-    or
-      $&--$
-      outInstruction = @selfIncDecNoOVFInstructionAST.new {
-        !instructionLocation
-        !.decrement
-      }
-    end
-  }  
-
-  #·····················································································································
-
-}
+#syntax extension galgas4InstructionsSyntax {
+#
+#  #·····················································································································
+#
+#  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+#    <semantic_instruction_inc_dec> !prefixedBySelf: false ?outInstruction
+#  }
+#  
+# #·····················································································································
+#
+#  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+#    $self$
+#    $.$
+#    <semantic_instruction_inc_dec> !prefixedBySelf: true ?outInstruction
+#  }
+#  
+#  #·····················································································································
+#
+#  rule <semantic_instruction_inc_dec> ?prefixedBySelf: let @bool inPrefixedBySelf !@semanticInstructionAST outInstruction {
+#    $identifier$ ?let mReceiverName
+#    var mStructAttributeList = @lstringlist {}
+#    repeat
+#    while
+#      $.$
+#      $identifier$ ?let attributeName
+#      mStructAttributeList += !attributeName
+#    end
+#    select
+#      $++$
+#      outInstruction = @incDecInstructionAST.new {
+#        !mReceiverName.location
+#        !inPrefixedBySelf
+#        !mReceiverName
+#        !mStructAttributeList
+#        !.increment
+#      }
+#    or
+#      $&++$
+#      outInstruction = @incDecNoOVFInstructionAST.new {
+#        !mReceiverName.location
+#        !inPrefixedBySelf
+#        !mReceiverName
+#        !mStructAttributeList
+#        !.increment
+#      }
+#    or
+#      $&--$
+#      outInstruction = @incDecNoOVFInstructionAST.new {
+#        !mReceiverName.location
+#        !inPrefixedBySelf
+#        !mReceiverName
+#        !mStructAttributeList
+#        !.decrement
+#      }
+#    or
+#      $--$
+#      outInstruction = @incDecInstructionAST.new {
+#        !mReceiverName.location
+#        !inPrefixedBySelf
+#        !mReceiverName
+#        !mStructAttributeList
+#        !.decrement
+#      }
+#    end
+#  }
+#
+#  #·····················································································································
+#
+#  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+#    $self$
+#    let instructionLocation = @location.here
+#    select
+#      $++$
+#      outInstruction = @selfIncDecInstructionAST.new {
+#        !instructionLocation
+#        !.increment
+#      }
+#    or
+#      $--$
+#      outInstruction = @selfIncDecInstructionAST.new {
+#        !instructionLocation
+#        !.decrement
+#      }
+#    or
+#      $&++$
+#      outInstruction = @selfIncDecNoOVFInstructionAST.new {
+#        !instructionLocation
+#        !.increment
+#      }
+#    or
+#      $&--$
+#      outInstruction = @selfIncDecNoOVFInstructionAST.new {
+#        !instructionLocation
+#        !.decrement
+#      }
+#    end
+#  }  
+#
+#  #·····················································································································
+#
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT

@@ -80,7 +80,7 @@ setter @string concatList ?let@stringlist inList {
 }
 
 setter @uint64 increment {
-  self ++
+  self += 1
 }
 
 #----------------------------------------------------------------------------*

@@ -81,7 +81,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     loop (n) while n > 0 do
       ioElementList += !["" nowhere] !true !["" nowhere]
-      n --
+      n -= 1
     end
   }
   
@@ -299,7 +299,7 @@ syntax extension galgas4InstructionsSyntax {
     end
     loop (n) while n > 0 do
       ioElementList += !["" nowhere] !true !["" nowhere]
-      n --
+      n -= 1
     end
   }
   
@@ -912,7 +912,8 @@ override method @forInstructionForGeneration generateInstruction
     if self.mIndexVariableCppName != "" then
       ioGeneratedCode += "GALGAS_uint " + self.mIndexVariableCppName + " ((uint32_t) 0) ;\n"
     end
-    let boolVarCppName = "bool_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
+    let boolVarCppName = "bool_" + [ioTemporaryVariableIndex string]
+    ioTemporaryVariableIndex += 1
     if whileExpressionIsAllwaysTrue then
       ioGeneratedCode += "const bool " + boolVarCppName + " = true ;\n"
     else

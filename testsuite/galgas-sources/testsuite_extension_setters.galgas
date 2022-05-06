@@ -28,7 +28,7 @@ method @TestExtensionSetter setter3 ?let @uint inArg {
 
 method @TestExtensionSetter setter1 ?!@uint ioArg {
   self.mInteger = self.mInteger + ioArg
-  ioArg ++
+  ioArg += 1
 }
 
 

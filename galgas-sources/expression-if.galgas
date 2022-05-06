@@ -184,9 +184,11 @@ override method @ifExpressionForGeneration generateExpression
     ?let ifExpression
   ]
 #--- Result variable
-  outCppExpression = "temp_" + [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++
+  outCppExpression = "temp_" + [ioTemporaryVariableIndex string]
+  ioTemporaryVariableIndex += 1
   ioGeneratedCode += "GALGAS_" + [self.mThenExpression.mResultType identifierRepresentation] + " " + outCppExpression + " ;\n"
-  let testVar = "test_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
+  let testVar = "test_" + [ioTemporaryVariableIndex string]
+  ioTemporaryVariableIndex += 1
   ioGeneratedCode += "const enumGalgasBool " + testVar + " = " + ifExpression + ".boolEnum () ;\n"
   ioGeneratedCode += "if (kBoolTrue == " + testVar + ") {\n"
 #--- 'then' expression

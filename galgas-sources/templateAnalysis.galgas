@@ -133,7 +133,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
         for (mPropertyTypeEntry mPropertyName * *) in [receiverType mCurrentTypedPropertyList] do
           let @getterMap aMap = [mPropertyTypeEntry mGetterMap]
           with self.mGetterName.string in aMap  do
-            matchingReaderCount ++
+            matchingReaderCount += 1
             getterFormalArgumentTypeList = mArgumentTypeList
             hasCompilerArgument = mHasCompilerArgument
             returnedType = mReturnedType

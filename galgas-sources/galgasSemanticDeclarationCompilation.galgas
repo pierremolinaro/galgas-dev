@@ -530,7 +530,7 @@ private proc generateFewImplementationFiles
           !header + implementationString
         ]
         n = 0
-        fileIdx ++
+        fileIdx += 1
         implementationString = ""
         inclusionSet = {}
       end
@@ -637,7 +637,7 @@ private proc generateFewImplementationFilesWithFewHeaders
           !startOfHeader + headerString
         ]
       #---
-        fileIdx ++
+        fileIdx += 1
         implementationString = ""
         headerString = ""
         headerFileName = "all-declarations-" + fileIdx

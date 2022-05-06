@@ -128,7 +128,7 @@ private proc compileProgramRulesGalgas3
         !true # Generate static
         !semanticInstructionListForGeneration
       }
-    ruleIndex ++
+    ruleIndex += 1
   end
 }
 

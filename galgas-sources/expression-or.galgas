@@ -452,7 +452,8 @@ override method @orShortExpressionForGeneration generateExpression
     ?let @string leftTemporaryOperand
   ]
 #--- Generate Comparison
-  let testVar = "test_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
+  let testVar = "test_" + [ioTemporaryVariableIndex string]
+  ioTemporaryVariableIndex += 1
   ioGeneratedCode += "GALGAS_bool " + testVar + " = " + leftTemporaryOperand + " ;\n"
   ioGeneratedCode += "if (kBoolTrue != " + testVar + ".boolEnum ()) {\n"
 #--- Right operand

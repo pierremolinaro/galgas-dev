@@ -64,7 +64,7 @@ proc projectCreation ?let @string inProjectPath {
     while (idx < [projectName length]) & ok do
       let @char c = [projectName characterAtIndex !idx]
       ok = [c isalnum] | (c == '_')
-      idx ++
+      idx += 1
     end
     if not ok then
       message "** Cannot create GALGAS project: the project name '"

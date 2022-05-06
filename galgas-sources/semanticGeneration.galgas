@@ -110,16 +110,15 @@ override getter @syntaxDeclarationForGeneration isPredefined -> @bool {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @syntaxDeclarationForGeneration appendDeclaration1
-  ?!@stringset ioInclusionSet
-  !@string outHeader {
+override method @syntaxDeclarationForGeneration appendDeclaration1 ?!@stringset ioInclusionSet
+                                                                   !@string outHeader {
   ioInclusionSet += !"lexique-" + [self.mLexiqueName fileNameRepresentation]
   var selectMethodList = @uintlist {}
   var @uint idx = 0
   loop (self.mSelectMethodCount + 1)
   while idx < self.mSelectMethodCount do
     selectMethodList += !idx
-    idx ++
+    idx += 1
   end
   outHeader = [filewrapper syntaxFileGenerationTemplate.syntaxAnalyserClassDeclaration
     !self.mSyntaxComponentName
