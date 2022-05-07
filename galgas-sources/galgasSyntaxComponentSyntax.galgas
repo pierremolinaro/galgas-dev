@@ -58,7 +58,6 @@ syntax galgas3SyntaxComponentSyntax (galgas3Scanner) {
   #--- Loop on declarations
     var nonterminalDeclarationList = @nonterminalDeclarationListAST {}
     var ruleList = @syntaxRuleListAST {}
-    let mSemanticDeclarations = @semanticDeclarationListAST {}
     repeat
     while
       <nonterminal_declaration> !? nonterminalDeclarationList
@@ -87,7 +86,6 @@ syntax galgas3SyntaxComponentSyntax (galgas3Scanner) {
   #--- Loop on declarations
     var nonterminalDeclarationList = @nonterminalDeclarationListAST {}
     var ruleList = @syntaxRuleListAST {}
-    let mSemanticDeclarations = @semanticDeclarationListAST {}
     repeat
     while
       <nonterminal_declaration> !? nonterminalDeclarationList

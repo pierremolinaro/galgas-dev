@@ -184,7 +184,7 @@ proc buildRuleList
   ?!@uint ioAddedNonTerminalCount {
   var productionRulesList = @productionRuleListForGrammarAnalysis {}
   for (mNonterminalName mLabelList) in inRuleList do
-    [inNonTerminalMapForGrammarAnalysis searchKey !mNonterminalName ?let nonTerminalIndex ?let nonterminalSymbolParametersMap]
+    [inNonTerminalMapForGrammarAnalysis searchKey !mNonterminalName ?let nonTerminalIndex ?*]
   #--- Retrieve instruction list from first label
     let @syntaxInstructionList parsedSyntaxInstructionList [mLabelList first ?* ?* ?* ?parsedSyntaxInstructionList ?*]
   #--- Transform instruction list

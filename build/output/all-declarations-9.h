@@ -10,6 +10,64 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Abstract extension method '@abstractEnumeratedCollectionAST enterInSemanticContext'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef void (*extensionMethodSignature_abstractEnumeratedCollectionAST_enterInSemanticContext) (const class cPtr_abstractEnumeratedCollectionAST * inObject,
+                                                                                                 class GALGAS_unifiedTypeMap & ioArgument0,
+                                                                                                 class C_Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionMethod_enterInSemanticContext (const int32_t inClassIndex,
+                                                  extensionMethodSignature_abstractEnumeratedCollectionAST_enterInSemanticContext inMethod) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_enterInSemanticContext (const class cPtr_abstractEnumeratedCollectionAST * inObject,
+                                                 GALGAS_unifiedTypeMap & io_ioTypeMap,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@abstractEnumeratedCollectionAST analyzeEnumeration'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef void (*extensionMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration) (const class cPtr_abstractEnumeratedCollectionAST * inObject,
+                                                                                             const class GALGAS_lstring constinArgument0,
+                                                                                             class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                                                                             const class GALGAS_analysisContext constinArgument2,
+                                                                                             class GALGAS_localVarManager & ioArgument3,
+                                                                                             class GALGAS_localConstantList & ioArgument4,
+                                                                                             class GALGAS_string & outArgument5,
+                                                                                             class GALGAS_semanticExpressionForGeneration & outArgument6,
+                                                                                             class C_Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionMethod_analyzeEnumeration (const int32_t inClassIndex,
+                                              extensionMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration inMethod) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_analyzeEnumeration (const class cPtr_abstractEnumeratedCollectionAST * inObject,
+                                             const GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                             GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                             const GALGAS_analysisContext constin_inAnalysisContext,
+                                             GALGAS_localVarManager & io_ioVariableMap,
+                                             GALGAS_localConstantList & io_ioLocalConstantListForDoBranch,
+                                             GALGAS_string & out_outEnumeratorCppName,
+                                             GALGAS_semanticExpressionForGeneration & out_outEnumerationExpression,
+                                             C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 // Phase 1: @forInstructionEnumeratedObjectListForGeneration list
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -7323,118 +7381,4 @@ class GALGAS_bool callExtensionGetter_compareInstructionSyntaxSignature (const c
                                                                          const GALGAS_semanticInstructionForGeneration constin_inTestedInstruction,
                                                                          class C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @abstractSyntaxInstructionForGrammarAnalysis reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_abstractSyntaxInstructionForGrammarAnalysis : public AC_GALGAS_reference_class {
-//--------------------------------- Default constructor
-  public: GALGAS_abstractSyntaxInstructionForGrammarAnalysis (void) ;
-
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
-//--------------------------------- Constructor from pointer
-  public: GALGAS_abstractSyntaxInstructionForGrammarAnalysis (const class cPtr_abstractSyntaxInstructionForGrammarAnalysis * inSourcePtr) ;
-
-//--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mStartLocation (void) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_abstractSyntaxInstructionForGrammarAnalysis extractObject (const GALGAS_object & inObject,
-                                                                                   C_Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_abstractSyntaxInstructionForGrammarAnalysis & inOperand) const ;
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_setMStartLocation (class GALGAS_location inArgument0
-                                                          COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_abstractSyntaxInstructionForGrammarAnalysis class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis ;
-
-#include "separateHeaderFor_abstractSyntaxInstructionForGrammarAnalysis.h"
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @abstractSyntaxInstructionForGrammarAnalysis_2D_weak weak reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2D_weak : public AC_GALGAS_weak_reference {
-//--------------------------------- Default constructor
-  public: GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2D_weak (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2D_weak constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2D_weak (const class GALGAS_abstractSyntaxInstructionForGrammarAnalysis & inSource) ;
-
-  public: GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2D_weak & operator = (const class GALGAS_abstractSyntaxInstructionForGrammarAnalysis & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_abstractSyntaxInstructionForGrammarAnalysis bang_abstractSyntaxInstructionForGrammarAnalysis_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                           C_Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2D_weak constructor_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2D_weak class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2D_weak ;
 

@@ -328,7 +328,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
   var @constructorMap constructorMap = {}
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap = {}
-  let @classMethodMap classMethodMap = {}
+#  let @classMethodMap classMethodMap = {}
 #--- Constructors
   for (mConstructorName mResultTypeName mParameterList) in self.mExternTypeConstructorList do
     [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mResultTypeName ?let returnedTypeEntry]

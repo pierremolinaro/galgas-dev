@@ -290,6 +290,17 @@ void extensionSetter_neutralAccess (class GALGAS_localVarManager & ioObject,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Extension setter '@localVarManager searchForDropAccess'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void extensionSetter_searchForDropAccess (class GALGAS_localVarManager & ioObject,
+                                          const class GALGAS_lstring constin_inVarName,
+                                          class C_Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Extension setter '@localVarManager searchForWriteAccess'
 //
 //----------------------------------------------------------------------------------------------------------------------

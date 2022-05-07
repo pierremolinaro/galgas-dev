@@ -284,7 +284,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
 #--- Check target variable
   var @unifiedTypeMap-entry targetType
   let @string targetVariableCppName
-  let @string nameForCheckingFormalParameterUsing
+#  let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
     if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: let mutableProperties] then
       if not selfIsMutable then
@@ -292,7 +292,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
       end
       let propertyMap = [selfType mPropertyMap]
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
-      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
+#      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
       if isConstant then
@@ -303,7 +303,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
       end
     else
       error self.mInstructionLocation : "'self' not available in this context"
-      : targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
+      : targetType, targetVariableCppName #, nameForCheckingFormalParameterUsing
     end
 
   
@@ -328,7 +328,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
        !self.mReceiverName
        ?targetType
        ?targetVariableCppName
-       ?nameForCheckingFormalParameterUsing
+       ?* # nameForCheckingFormalParameterUsing
     ]  
   end
 #---

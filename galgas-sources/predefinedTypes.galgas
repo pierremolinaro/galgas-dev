@@ -266,7 +266,7 @@ override method @predefinedTypeAST enterInSemanticContext
   [@unifiedTypeMap-entry makeEntryFromString
     !?ioSemanticContext.mTypeMap
     !self.mPredefinedTypeName
-    ?let @unifiedTypeMap-entry selfTypeEntry
+    ?* #let @unifiedTypeMap-entry selfTypeEntry
   ]
 #--- Enumeration
   let @unifiedTypeMap-entry enumeratedTypeEntry

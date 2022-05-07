@@ -8,6 +8,261 @@
 #include "all-declarations-8.h"
 
 //----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_comparison::GALGAS_comparison (void) :
+mEnum (kNotBuilt) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_comparison GALGAS_comparison::constructor_equal (UNUSED_LOCATION_ARGS) {
+  GALGAS_comparison result ;
+  result.mEnum = kEnum_equal ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_comparison GALGAS_comparison::constructor_notEqual (UNUSED_LOCATION_ARGS) {
+  GALGAS_comparison result ;
+  result.mEnum = kEnum_notEqual ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_comparison GALGAS_comparison::constructor_lowerOrEqual (UNUSED_LOCATION_ARGS) {
+  GALGAS_comparison result ;
+  result.mEnum = kEnum_lowerOrEqual ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_comparison GALGAS_comparison::constructor_lowerThan (UNUSED_LOCATION_ARGS) {
+  GALGAS_comparison result ;
+  result.mEnum = kEnum_lowerThan ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_comparison GALGAS_comparison::constructor_greaterOrEqual (UNUSED_LOCATION_ARGS) {
+  GALGAS_comparison result ;
+  result.mEnum = kEnum_greaterOrEqual ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_comparison GALGAS_comparison::constructor_greaterThan (UNUSED_LOCATION_ARGS) {
+  GALGAS_comparison result ;
+  result.mEnum = kEnum_greaterThan ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_comparison GALGAS_comparison::constructor_sameInstance (UNUSED_LOCATION_ARGS) {
+  GALGAS_comparison result ;
+  result.mEnum = kEnum_sameInstance ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_comparison GALGAS_comparison::constructor_differentInstances (UNUSED_LOCATION_ARGS) {
+  GALGAS_comparison result ;
+  result.mEnum = kEnum_differentInstances ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_comparison::optional_equal () const {
+  const bool ok = mEnum == kEnum_equal ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_comparison::optional_notEqual () const {
+  const bool ok = mEnum == kEnum_notEqual ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_comparison::optional_lowerOrEqual () const {
+  const bool ok = mEnum == kEnum_lowerOrEqual ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_comparison::optional_lowerThan () const {
+  const bool ok = mEnum == kEnum_lowerThan ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_comparison::optional_greaterOrEqual () const {
+  const bool ok = mEnum == kEnum_greaterOrEqual ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_comparison::optional_greaterThan () const {
+  const bool ok = mEnum == kEnum_greaterThan ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_comparison::optional_sameInstance () const {
+  const bool ok = mEnum == kEnum_sameInstance ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_comparison::optional_differentInstances () const {
+  const bool ok = mEnum == kEnum_differentInstances ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static const char * gEnumNameArrayFor_comparison [9] = {
+  "(not built)",
+  "equal",
+  "notEqual",
+  "lowerOrEqual",
+  "lowerThan",
+  "greaterOrEqual",
+  "greaterThan",
+  "sameInstance",
+  "differentInstances"
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_comparison::getter_isEqual (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_equal == mEnum) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_comparison::getter_isNotEqual (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_notEqual == mEnum) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_comparison::getter_isLowerOrEqual (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lowerOrEqual == mEnum) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_comparison::getter_isLowerThan (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lowerThan == mEnum) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_comparison::getter_isGreaterOrEqual (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_greaterOrEqual == mEnum) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_comparison::getter_isGreaterThan (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_greaterThan == mEnum) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_comparison::getter_isSameInstance (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_sameInstance == mEnum) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_comparison::getter_isDifferentInstances (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_differentInstances == mEnum) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_comparison::description (C_String & ioString,
+                                     const int32_t /* inIndentation */) const {
+  ioString << "<enum @comparison: " << gEnumNameArrayFor_comparison [mEnum] ;
+  ioString << ">" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_comparison::objectCompare (const GALGAS_comparison & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (mEnum < inOperand.mEnum) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mEnum > inOperand.mEnum) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@comparison type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_comparison ("comparison",
+                                   NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_comparison::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_comparison ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_comparison::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_comparison (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_comparison GALGAS_comparison::extractObject (const GALGAS_object & inObject,
+                                                    C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_comparison result ;
+  const GALGAS_comparison * p = (const GALGAS_comparison *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_comparison *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("comparison", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 // @comparisonExpressionAST reference class
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11890,6 +12145,276 @@ GALGAS_castInstructionBranchListForGeneration GALGAS_castInstructionBranchListFo
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+// @dropInstructionAST reference class
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_dropInstructionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_dropInstructionAST * p = (const cPtr_dropInstructionAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_dropInstructionAST) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mInstructionLocation.objectCompare (p->mProperty_mInstructionLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mDropList.objectCompare (p->mProperty_mDropList) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_dropInstructionAST::objectCompare (const GALGAS_dropInstructionAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_dropInstructionAST::GALGAS_dropInstructionAST (void) :
+GALGAS_semanticInstructionAST () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_dropInstructionAST GALGAS_dropInstructionAST::constructor_default (LOCATION_ARGS) {
+  return GALGAS_dropInstructionAST::constructor_new (GALGAS_location::constructor_nowhere (HERE),
+                                                     GALGAS_lstringlist::constructor_emptyList (HERE)
+                                                     COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_dropInstructionAST::GALGAS_dropInstructionAST (const cPtr_dropInstructionAST * inSourcePtr) :
+GALGAS_semanticInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_dropInstructionAST) ;
+}
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_dropInstructionAST GALGAS_dropInstructionAST::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
+                                                                      const GALGAS_lstringlist & inAttribute_mDropList
+                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_dropInstructionAST result ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mDropList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_dropInstructionAST (inAttribute_mInstructionLocation, inAttribute_mDropList COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lstringlist GALGAS_dropInstructionAST::readProperty_mDropList (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_lstringlist () ;
+  }else{
+    cPtr_dropInstructionAST * p = (cPtr_dropInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_dropInstructionAST) ;
+    return p->mProperty_mDropList ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//Pointer class for @dropInstructionAST class
+//----------------------------------------------------------------------------------------------------------------------
+
+cPtr_dropInstructionAST::cPtr_dropInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                                  const GALGAS_lstringlist & in_mDropList
+                                                  COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
+mProperty_mDropList (in_mDropList) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_dropInstructionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_dropInstructionAST ;
+}
+
+void cPtr_dropInstructionAST::description (C_String & ioString,
+                                           const int32_t inIndentation) const {
+  ioString << "[@dropInstructionAST:" ;
+  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mDropList.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_dropInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_dropInstructionAST (mProperty_mInstructionLocation, mProperty_mDropList COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@dropInstructionAST type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_dropInstructionAST ("dropInstructionAST",
+                                           & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_dropInstructionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_dropInstructionAST ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_dropInstructionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_dropInstructionAST (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_dropInstructionAST GALGAS_dropInstructionAST::extractObject (const GALGAS_object & inObject,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_dropInstructionAST result ;
+  const GALGAS_dropInstructionAST * p = (const GALGAS_dropInstructionAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_dropInstructionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("dropInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_dropInstructionAST_2D_weak::objectCompare (const GALGAS_dropInstructionAST_2D_weak & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
+    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_dropInstructionAST_2D_weak::GALGAS_dropInstructionAST_2D_weak (void) :
+GALGAS_semanticInstructionAST_2D_weak () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_dropInstructionAST_2D_weak & GALGAS_dropInstructionAST_2D_weak::operator = (const GALGAS_dropInstructionAST & inSource) {
+  cPtr_weakReference_class * proxyPtr = NULL ;
+  acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
+  if (p != NULL) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mObjectPtr, proxyPtr) ;
+  return *this ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_dropInstructionAST_2D_weak::GALGAS_dropInstructionAST_2D_weak (const GALGAS_dropInstructionAST & inSource) :
+GALGAS_semanticInstructionAST_2D_weak (inSource) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_dropInstructionAST_2D_weak GALGAS_dropInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+  GALGAS_dropInstructionAST_2D_weak result ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_dropInstructionAST GALGAS_dropInstructionAST_2D_weak::bang_dropInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_dropInstructionAST result ;
+  if (mObjectPtr != NULL) {
+    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
+    acStrongPtr_class * strongPtr = p->strongObject () ;
+    if (strongPtr == NULL) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_dropInstructionAST) ;
+      result = GALGAS_dropInstructionAST ((cPtr_dropInstructionAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@dropInstructionAST-weak type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_dropInstructionAST_2D_weak ("dropInstructionAST-weak",
+                                                   & kTypeDescriptor_GALGAS_semanticInstructionAST_2D_weak) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_dropInstructionAST_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_dropInstructionAST_2D_weak ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_dropInstructionAST_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_dropInstructionAST_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_dropInstructionAST_2D_weak GALGAS_dropInstructionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_dropInstructionAST_2D_weak result ;
+  const GALGAS_dropInstructionAST_2D_weak * p = (const GALGAS_dropInstructionAST_2D_weak *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_dropInstructionAST_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("dropInstructionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumAssociatedValues_fixitElementAST_fixItReplace::cEnumAssociatedValues_fixitElementAST_fixItReplace (const GALGAS_semanticExpressionAST & inAssociatedValue0,
                                                                                                         const GALGAS_location & inAssociatedValue1
@@ -15369,133 +15894,5 @@ GALGAS_forInstructionEnumeratedObjectListAST GALGAS_forInstructionEnumeratedObje
     }  
   }
   return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@abstractEnumeratedCollectionAST enterInSemanticContext'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-static TC_UniqueArray <extensionMethodSignature_abstractEnumeratedCollectionAST_enterInSemanticContext> gExtensionMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_enterInSemanticContext (const int32_t inClassIndex,
-                                                  extensionMethodSignature_abstractEnumeratedCollectionAST_enterInSemanticContext inMethod) {
-  gExtensionMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-static void freeExtensionMethod_abstractEnumeratedCollectionAST_enterInSemanticContext (void) {
-  gExtensionMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext.free () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-C_PrologueEpilogue gMethod_abstractEnumeratedCollectionAST_enterInSemanticContext (NULL,
-                                                                                   freeExtensionMethod_abstractEnumeratedCollectionAST_enterInSemanticContext) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_enterInSemanticContext (const cPtr_abstractEnumeratedCollectionAST * inObject,
-                                                 GALGAS_unifiedTypeMap & io_ioTypeMap,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
-//--- Drop output arguments
-//--- Find method
-  if (NULL != inObject) {
-    macroValidSharedObject (inObject, cPtr_abstractEnumeratedCollectionAST) ;
-    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const int32_t classIndex = info->mSlotID ;
-    extensionMethodSignature_abstractEnumeratedCollectionAST_enterInSemanticContext f = NULL ;
-    if (classIndex < gExtensionMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext.count ()) {
-      f = gExtensionMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext (classIndex COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
-      while ((NULL == f) && (NULL != p)) {
-        if (p->mSlotID < gExtensionMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext.count ()) {
-          f = gExtensionMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext (p->mSlotID COMMA_HERE) ;
-        }
-        p = p->mSuperclassDescriptor ;
-      }
-      gExtensionMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
-    }else{
-      f (inObject, io_ioTypeMap, inCompiler COMMA_THERE) ;
-    }
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@abstractEnumeratedCollectionAST analyzeEnumeration'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-static TC_UniqueArray <extensionMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration> gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_analyzeEnumeration (const int32_t inClassIndex,
-                                              extensionMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration inMethod) {
-  gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-static void freeExtensionMethod_abstractEnumeratedCollectionAST_analyzeEnumeration (void) {
-  gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.free () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-C_PrologueEpilogue gMethod_abstractEnumeratedCollectionAST_analyzeEnumeration (NULL,
-                                                                               freeExtensionMethod_abstractEnumeratedCollectionAST_analyzeEnumeration) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_analyzeEnumeration (const cPtr_abstractEnumeratedCollectionAST * inObject,
-                                             const GALGAS_lstring constin_inUsefulnessCallerEntityName,
-                                             GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                             const GALGAS_analysisContext constin_inAnalysisContext,
-                                             GALGAS_localVarManager & io_ioVariableMap,
-                                             GALGAS_localConstantList & io_ioLocalConstantListForDoBranch,
-                                             GALGAS_string & out_outEnumeratorCppName,
-                                             GALGAS_semanticExpressionForGeneration & out_outEnumerationExpression,
-                                             C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
-//--- Drop output arguments
-  out_outEnumeratorCppName.drop () ;
-  out_outEnumerationExpression.drop () ;
-//--- Find method
-  if (NULL != inObject) {
-    macroValidSharedObject (inObject, cPtr_abstractEnumeratedCollectionAST) ;
-    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const int32_t classIndex = info->mSlotID ;
-    extensionMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration f = NULL ;
-    if (classIndex < gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.count ()) {
-      f = gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration (classIndex COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
-      while ((NULL == f) && (NULL != p)) {
-        if (p->mSlotID < gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.count ()) {
-          f = gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration (p->mSlotID COMMA_HERE) ;
-        }
-        p = p->mSuperclassDescriptor ;
-      }
-      gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
-    }else{
-      f (inObject, constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, io_ioVariableMap, io_ioLocalConstantListForDoBranch, out_outEnumeratorCppName, out_outEnumerationExpression, inCompiler COMMA_THERE) ;
-    }
-  }
 }
 

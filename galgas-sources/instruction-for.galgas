@@ -137,7 +137,7 @@ syntax extension galgas3InstructionsSyntax {
     <expression> ?let @semanticExpressionAST enumeratedExpression
     outEnumeratedObject = @enumeratedCollectionCstListInExpAST.new {
       !elementList
-      !mEndsWithEllipsis: false
+      !mEndsWithEllipsis: endsWithEllipsis
       !enumeratedExpression
       !location
     }

@@ -68,11 +68,7 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
       !self.mSuperWeakReferenceTypeName
       ?3*
       ?let typeKindEnum
-      ?5*
-      ?let inheritedGetterMap
-      ?let inheritedSetterMap
-      ?let inheritedMethodMap
-      ?9*
+      ?17*
       ?generateHeaderInSeparateFile
       ?4*
     ]

@@ -167,7 +167,7 @@ override method @enumDeclarationAST enterInSemanticContext
   var @constructorMap constructorMap = {}
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap = {}
-  let @classMethodMap classMethodMap = {}
+#  let @classMethodMap classMethodMap = {}
   var @optionalMethodMap optionalMethodMap = {}
 #--- currentType type index
   [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mEnumTypeName ?let enumTypeEntry]

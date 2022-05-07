@@ -105,7 +105,13 @@ syntax extension galgas3InstructionsSyntax {
     repeat
       select
         $let$
-        $identifier$ ?let constantName
+        let @lstring constantName
+        select
+          $identifier$ ?constantName
+        or
+          $*$
+          constantName = ["" here]
+        end
         $=$
         <expression_or> ?let expression
         let endOfReceiverExpression = @location.here
@@ -254,7 +260,13 @@ syntax extension galgas4InstructionsSyntax {
     repeat
       select
         $let$
-        $identifier$ ?let constantName
+        let @lstring constantName
+        select
+          $identifier$ ?constantName
+        or
+          $*$
+          constantName = ["" here]
+        end
         $=$
         <expression_or> ?let expression
         let endOfReceiverExpression = @location.here
@@ -496,13 +508,15 @@ override method @ifInstructionAST analyzeSemanticInstruction
       [!?ioVariableMap openOverrideForSelectBlock]
       [!?ioVariableMap openBranch]
       let targetVariableCppName = "var_" + [constantName identifierRepresentation]
-        + "_" + [constantName.location locationIndex]
-      [!?ioVariableMap insertLocalConstant
-        !constantName
-        !castType
-        !targetVariableCppName
-        !targetVariableCppName
-      ]
+            + "_" + [constantName.location locationIndex]
+      if constantName.string != "" then
+        [!?ioVariableMap insertLocalConstant
+          !constantName
+          !castType
+          !targetVariableCppName
+          !targetVariableCppName
+        ]
+      end
       testListForGeneration += !.letExp {
         !targetVarCppName: targetVariableCppName
         !exp: analyzedExpression

@@ -65,7 +65,6 @@ syntax extension galgas3DeclarationsSyntax {
       classFeatureList += !classFeatureName
     end
     ${$
-    let @string mClassMessage = ""
   #--- Class properties
     var @propertyInCollectionListAST propertyList = {}
     repeat
@@ -133,7 +132,6 @@ syntax extension galgas4DeclarationsSyntax {
       classFeatureList += !classFeatureName
     end
     ${$
-    let @string mClassMessage = ""
   #--- Class properties
     var @propertyInCollectionListAST propertyList = {}
     repeat
