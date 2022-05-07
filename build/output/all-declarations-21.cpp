@@ -8750,19 +8750,19 @@ GALGAS_outputActualParameterForGeneration_2D_weak GALGAS_outputActualParameterFo
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension method '@localVarManager insertUsedLocalConstant'
+//Extension method '@localVarManager insertDeclaredLocalVariable'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void extensionSetter_insertUsedLocalConstant (GALGAS_localVarManager & ioObject,
-                                              const GALGAS_lstring constinArgument_inVarName,
-                                              const GALGAS_unifiedTypeMap_2D_entry constinArgument_inType,
-                                              const GALGAS_string constinArgument_inCppName,
-                                              const GALGAS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                              C_Compiler * inCompiler
-                                              COMMA_UNUSED_LOCATION_ARGS) {
+void extensionSetter_insertDeclaredLocalVariable (GALGAS_localVarManager & ioObject,
+                                                  const GALGAS_lstring constinArgument_inVarName,
+                                                  const GALGAS_unifiedTypeMap_2D_entry constinArgument_inType,
+                                                  const GALGAS_string constinArgument_inCppName,
+                                                  const GALGAS_string constinArgument_inNameForCheckingFormalParameterUsing,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_constant (SOURCE_FILE ("variable-manager.galgas", 29)), GALGAS_localVarValuation::constructor_modified (SOURCE_FILE ("variable-manager.galgas", 30)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 24)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_none (SOURCE_FILE ("variable-manager.galgas", 29)), GALGAS_localVarValuation::constructor_declared (GALGAS_bool (false)  COMMA_SOURCE_FILE ("variable-manager.galgas", 30)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 24)) ;
   }
 }
 

@@ -5752,7 +5752,7 @@ class GALGAS_localVarValuation : public AC_GALGAS_root {
   public: typedef enum {
     kNotBuilt,
     kEnum_invalid,
-    kEnum_unvaluated,
+    kEnum_declared,
     kEnum_initialized,
     kEnum_read,
     kEnum_modified
@@ -5782,6 +5782,9 @@ class GALGAS_localVarValuation : public AC_GALGAS_root {
                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
+  public: static class GALGAS_localVarValuation constructor_declared (const class GALGAS_bool & inOperand0
+                                                                      COMMA_LOCATION_ARGS) ;
+
   public: static class GALGAS_localVarValuation constructor_initialized (LOCATION_ARGS) ;
 
   public: static class GALGAS_localVarValuation constructor_invalid (LOCATION_ARGS) ;
@@ -5789,9 +5792,6 @@ class GALGAS_localVarValuation : public AC_GALGAS_root {
   public: static class GALGAS_localVarValuation constructor_modified (LOCATION_ARGS) ;
 
   public: static class GALGAS_localVarValuation constructor_read (LOCATION_ARGS) ;
-
-  public: static class GALGAS_localVarValuation constructor_unvaluated (const class GALGAS_bool & inOperand0
-                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -5802,13 +5802,15 @@ class GALGAS_localVarValuation : public AC_GALGAS_root {
 //--------------------------------- Setters
 
 //--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_unvaluated (class GALGAS_bool & outArgument0,
-                                                   C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG void method_declared (class GALGAS_bool & outArgument0,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isDeclared (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isInitialized (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isInvalid (LOCATION_ARGS) const ;
@@ -5817,10 +5819,10 @@ class GALGAS_localVarValuation : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isRead (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isUnvaluated (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Optional Methods
+  public: VIRTUAL_IN_DEBUG bool optional_declared (class GALGAS_bool & outOperand0) const ;
+
   public: VIRTUAL_IN_DEBUG bool optional_initialized () const ;
 
   public: VIRTUAL_IN_DEBUG bool optional_invalid () const ;
@@ -5828,8 +5830,6 @@ class GALGAS_localVarValuation : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG bool optional_modified () const ;
 
   public: VIRTUAL_IN_DEBUG bool optional_read () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_unvaluated (class GALGAS_bool & outOperand0) const ;
 
 
 //--------------------------------- Introspection
@@ -5848,18 +5848,18 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVarValuation ;
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class cEnumAssociatedValues_localVarValuation_unvaluated : public cEnumAssociatedValues {
+class cEnumAssociatedValues_localVarValuation_declared : public cEnumAssociatedValues {
   public: const GALGAS_bool mAssociatedValue0 ;
 
 //--- Constructor
-  public: cEnumAssociatedValues_localVarValuation_unvaluated (const GALGAS_bool & inAssociatedValue0
-                                                              COMMA_LOCATION_ARGS) ;
+  public: cEnumAssociatedValues_localVarValuation_declared (const GALGAS_bool & inAssociatedValue0
+                                                            COMMA_LOCATION_ARGS) ;
 
   public: virtual void description (C_String & ioString,
                                     const int32_t inIndentation) const ;
   public: virtual typeComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_localVarValuation_unvaluated (void) {}
+  public: virtual ~ cEnumAssociatedValues_localVarValuation_declared (void) {}
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6343,48 +6343,6 @@ void extensionSetter_neutralAccess (class GALGAS_localVarMapListForLLVM & ioObje
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension setter '@scopeLocalVarMap dropAccess'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionSetter_dropAccess (class GALGAS_scopeLocalVarMap & ioObject,
-                                 const class GALGAS_lstring constin_inVarName,
-                                 const class GALGAS_localVariableAttributes constin_inAttributes,
-                                 const class GALGAS_localVarValuation constin_inValuation,
-                                 class C_Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension setter '@currentVarManager searchForDropAccess'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionSetter_searchForDropAccess (class GALGAS_currentVarManager & ioObject,
-                                          const class GALGAS_lstring constin_inVarName,
-                                          class GALGAS_unifiedTypeMap_2D_entry & out_outType,
-                                          class GALGAS_string & out_outCppName,
-                                          class GALGAS_string & out_outNameForCheckingFormalParameterUsing,
-                                          class C_Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension setter '@localVarMapListForLLVM dropAccess'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionSetter_dropAccess (class GALGAS_localVarMapListForLLVM & ioObject,
-                                 const class GALGAS_lstring constin_inVarName,
-                                 const class GALGAS_uint constin_inIndex,
-                                 class GALGAS_unifiedTypeMap_2D_entry & out_outType,
-                                 class GALGAS_string & out_outCppName,
-                                 class GALGAS_string & out_outNameForCheckingFormalParameterUsing,
-                                 class C_Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Extension setter '@currentVarManager searchForWriteAccess'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -6414,17 +6372,16 @@ void extensionSetter_writeAccessInSubMap (class GALGAS_localVarMapListForLLVM & 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension setter '@scopeLocalVarMap writeAccessInMap'
+//Extension setter '@localVarValuation writeTransition'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void extensionSetter_writeAccessInMap (class GALGAS_scopeLocalVarMap & ioObject,
-                                       const class GALGAS_lstring constin_inVarName,
-                                       const class GALGAS_bool constin_inOverridenMap,
-                                       const class GALGAS_localVariableAttributes constin_inAttributes,
-                                       const class GALGAS_localVarValuation constin_inValuation,
-                                       class C_Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) ;
+void extensionSetter_writeTransition (class GALGAS_localVarValuation & ioObject,
+                                      const class GALGAS_lstring constin_inVarName,
+                                      const class GALGAS_bool constin_inOverridenMap,
+                                      const class GALGAS_localVariableAttributes constin_inAttributes,
+                                      class C_Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -6457,15 +6414,14 @@ void extensionSetter_readAccess (class GALGAS_localVarMapListForLLVM & ioObject,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension setter '@scopeLocalVarMap readAccess'
+//Extension setter '@localVarValuation readTransition'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void extensionSetter_readAccess (class GALGAS_scopeLocalVarMap & ioObject,
-                                 const class GALGAS_lstring constin_inVarName,
-                                 const class GALGAS_localVarValuation constin_inValuation,
-                                 class C_Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
+void extensionSetter_readTransition (class GALGAS_localVarValuation & ioObject,
+                                     const class GALGAS_lstring constin_inVarName,
+                                     class C_Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -6498,16 +6454,16 @@ void extensionSetter_readWriteAccess (class GALGAS_localVarMapListForLLVM & ioOb
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension setter '@scopeLocalVarMap readWriteAccess'
+//Extension setter '@localVarValuation readWriteTransition'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void extensionSetter_readWriteAccess (class GALGAS_scopeLocalVarMap & ioObject,
-                                      const class GALGAS_lstring constin_inVarName,
-                                      const class GALGAS_localVariableAttributes constin_inAttributes,
-                                      const class GALGAS_localVarValuation constin_inValuation,
-                                      class C_Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
+void extensionSetter_readWriteTransition (class GALGAS_localVarValuation & ioObject,
+                                          const class GALGAS_lstring constin_inVarName,
+                                          const class GALGAS_bool constin_inOverridenMap,
+                                          const class GALGAS_localVariableAttributes constin_inAttributes,
+                                          class C_Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -7817,4 +7773,119 @@ class GALGAS_literalStringExpressionAST_2D_weak : public GALGAS_semanticExpressi
 //----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalStringExpressionAST_2D_weak ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                                              Phase 1: @comparison enum                                              *
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_comparison : public AC_GALGAS_root {
+//--------------------------------- Default constructor
+  public: GALGAS_comparison (void) ;
+
+//--------------------------------- Enumeration
+  public: typedef enum {
+    kNotBuilt,
+    kEnum_equal,
+    kEnum_notEqual,
+    kEnum_lowerOrEqual,
+    kEnum_lowerThan,
+    kEnum_greaterOrEqual,
+    kEnum_greaterThan,
+    kEnum_sameInstance,
+    kEnum_differentInstances
+  } enumeration ;
+  
+//--------------------------------- Private data member
+  private: enumeration mEnum ;
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const { return kNotBuilt != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) { mEnum = kNotBuilt ; }
+  public: inline enumeration enumValue (void) const { return mEnum ; }
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_comparison extractObject (const GALGAS_object & inObject,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_comparison constructor_differentInstances (LOCATION_ARGS) ;
+
+  public: static class GALGAS_comparison constructor_equal (LOCATION_ARGS) ;
+
+  public: static class GALGAS_comparison constructor_greaterOrEqual (LOCATION_ARGS) ;
+
+  public: static class GALGAS_comparison constructor_greaterThan (LOCATION_ARGS) ;
+
+  public: static class GALGAS_comparison constructor_lowerOrEqual (LOCATION_ARGS) ;
+
+  public: static class GALGAS_comparison constructor_lowerThan (LOCATION_ARGS) ;
+
+  public: static class GALGAS_comparison constructor_notEqual (LOCATION_ARGS) ;
+
+  public: static class GALGAS_comparison constructor_sameInstance (LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_comparison & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isDifferentInstances (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isEqual (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isGreaterOrEqual (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isGreaterThan (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isLowerOrEqual (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isLowerThan (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNotEqual (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isSameInstance (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+  public: VIRTUAL_IN_DEBUG bool optional_differentInstances () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_equal () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_greaterOrEqual () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_greaterThan () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_lowerOrEqual () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_lowerThan () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_notEqual () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_sameInstance () const ;
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_comparison class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparison ;
 

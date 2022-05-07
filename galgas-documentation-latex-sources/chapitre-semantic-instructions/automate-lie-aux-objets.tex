@@ -2,7 +2,7 @@
 %!TEX root = ../galgas-book.tex
 
 %--------------------------------------------------------------
-\chapter{Contrôle de l'accès aux objets}
+\chapter{Contrôle de l'accès aux variables et aux constantes}
 %-------------------------------------------------------------
 
 \tableDesMatieresLocaleDeProfondeurRelative{1}
@@ -54,6 +54,16 @@
   \path (#1) edge [loop #2, -stealth, thick, \RougeAutomate] node[draw=\RougeAutomate, rounded corners, fill=\FondAutomate] {\it#3} (#1) ;
 }
 
+%\newcommand\ActionInterdite[3]{
+%  \node[#2 of #1,draw=\RougeAutomate,thick,fill=\FondAutomate] (Z) {~};
+%  \draw[-stealth,thick,\RougeAutomate] (#1) edge node[draw=\RougeAutomate,rounded corners,fill=\FondAutomate] {\it #3} (Z);
+%}
+
+\newcommand\FlecheEtatInitial[2]{
+  \node[#2 of #1,draw=black,circle,thick,fill=\FondAutomate] (Z) {};
+  \draw[-stealth,thick,black] (Z) -- (#1);
+}
+
 %----------------------------------------------------------------------------------------------
 
 Le compilateur GALGAS effectue une surveillance très stricte des accès aux objets -- constantes, variables et paramètres formels. Il signale ainsi par des \emph{alertes} et des \emph{erreurs} tout violation des règles d'accès.
@@ -90,40 +100,6 @@ end
 
 
 
-\section{Constante locale}
-
-\begin{figure}[t]
-  \centering
-  \small
-  \begin{tikzpicture}
-    \EtatOrange{definedLocalConstant}{Defined Local constant}{0cm}{3cm}
-    \EtatOrange{undefinedLocalConstant}{Undefined local constant}{6cm}{3cm}
-    \EtatVert{readLocalConstant}{Read local constant}{0cm}{0cm}
-    \EtatVert{droppedLocalConstant}{Dropped local constant}{6cm}{0cm}
-
-    \FlecheVerte{definedLocalConstant}{read}{readLocalConstant}{bend right}
-    \FlecheVerte{readLocalConstant}{drop}{droppedLocalConstant}{bend right}
-    \FlecheVerte{undefinedLocalConstant}{write}{definedLocalConstant}{bend right}
-    \FlecheOrange{definedLocalConstant}{drop}{droppedLocalConstant}{}
-    \FlecheOrange{undefinedLocalConstant}{drop}{droppedLocalConstant}{bend left}
-    \BoucleRouge{definedLocalConstant}{left}{write, rw}
-    \BoucleRouge{readLocalConstant}{left}{write, rw}
-    \BoucleRouge{undefinedLocalConstant}{right}{read, rw}
-    \BoucleRouge{droppedLocalConstant}{right}{write, rw, read}
-    \BoucleVerte{readLocalConstant}{below}{read}
-    \BoucleOrange{droppedLocalConstant}{below}{drop}
-  \end{tikzpicture}
-  \caption{Automate des états d'une constante locale}
-  \labelFigure{automateEtatsConstanteLocale}
-\end{figure}
-
-
-
-
-
-
-
-
 
 
 
@@ -133,33 +109,72 @@ end
   \centering
   \small
   \begin{tikzpicture}
-    \EtatOrange{definedLocalVariable}{Defined Local variable}{0cm}{3cm}
-    \EtatOrange{undefinedLocalVariable}{Undefined local variable}{6cm}{3cm}
-    \EtatVert{readLocalVariable}{Read local variable}{0cm}{0cm}
-    \EtatVert{droppedLocalVariable}{Dropped local variable}{6cm}{0cm}
+    \EtatVert{INVALID_STATE}{Invalid}{0cm}{0cm}
+    \EtatOrange{DECLARED_STATE}{Declared}{3cm}{0cm}
+    \EtatOrange{INITIALIZED_STATE}{Initialized}{6cm}{0cm}
+    \EtatVert{READ_STATE}{Read}{9cm}{0cm}
+    
+    \FlecheEtatInitial{DECLARED_STATE}{above = 1cm}
+    \FlecheEtatInitial{INITIALIZED_STATE}{above = 1cm}
 
-    \FlecheVerte{readLocalVariable}{drop}{droppedLocalVariable}{bend right}
-    \FlecheVerte{undefinedLocalVariable}{write}{definedLocalVariable}{bend right}
-    \FlecheOrange{undefinedLocalVariable}{drop}{droppedLocalVariable}{bend left}
+    \FlecheVerte{DECLARED_STATE}{write}{INITIALIZED_STATE}{bend left}
+    \FlecheRouge{DECLARED_STATE}{read}{INVALID_STATE}{bend right}
+%    \ActionInterdite{DECLARED_STATE}{left = 2cm}{read}
 
-    \FlecheVerte{readLocalVariable}{write, rw}{definedLocalVariable}{bend right=35}
-    \FlecheVerte{definedLocalVariable}{read}{readLocalVariable}{bend right=35}
+    \BoucleOrange{INITIALIZED_STATE}{below}{write}
+    \FlecheVerte{INITIALIZED_STATE}{read}{READ_STATE}{bend left=35}
 
-    \FlecheOrange{definedLocalVariable}{drop}{droppedLocalVariable}{bend right=10}
-    \FlecheVerte{droppedLocalVariable}{write}{definedLocalVariable}{bend right=10}
+    \FlecheVerte{READ_STATE}{write}{INITIALIZED_STATE}{bend left=35}
+    \BoucleVerte{READ_STATE}{above}{read}
 
-    \BoucleOrange{definedLocalVariable}{left}{write}
-    \BoucleRouge{undefinedLocalVariable}{right}{read, rw}
-    \BoucleRouge{droppedLocalVariable}{right}{rw, read}
-    \BoucleVerte{readLocalVariable}{left}{read}
-    \BoucleVerte{definedLocalVariable}{above}{rw}
-    \BoucleOrange{droppedLocalVariable}{below}{drop}
+    \BoucleVerte{INVALID_STATE}{above}{read}
+    \BoucleVerte{INVALID_STATE}{below}{read}
   \end{tikzpicture}
   \caption{Automate des états d'une variable locale}
   \labelFigure{automateEtatsVariableLocale}
 \end{figure}
 
 
+
+
+
+
+
+
+
+
+\section{Constante locale}
+
+\begin{figure}[t]
+  \centering
+  \small
+  \begin{tikzpicture}
+    \EtatVert{INVALID_STATE}{Invalid}{0cm}{0cm}
+    \EtatOrange{DECLARED_STATE}{Declared}{3cm}{0cm}
+    \EtatOrange{INITIALIZED_STATE}{Initialized}{6cm}{0cm}
+    \EtatVert{READ_STATE}{Read}{9cm}{0cm}
+    
+    \FlecheEtatInitial{DECLARED_STATE}{above = 1cm}
+    \FlecheEtatInitial{INITIALIZED_STATE}{above = 1cm}
+
+    \FlecheVerte{DECLARED_STATE}{write}{INITIALIZED_STATE}{bend left}
+    \FlecheRouge{DECLARED_STATE}{read}{INVALID_STATE}{bend right}
+
+%    \ActionInterdite{INITIALIZED_STATE}{below = 1cm}{write}
+    \FlecheRouge{INITIALIZED_STATE}{write}{INVALID_STATE}{bend left= 20}
+    \FlecheVerte{INITIALIZED_STATE}{read}{READ_STATE}{bend left=35}
+
+    \FlecheRouge{READ_STATE}{write}{INVALID_STATE}{bend left}
+%    \ActionInterdite{READ_STATE}{below = 1cm}{write}
+    \BoucleVerte{READ_STATE}{above}{read}
+
+
+    \BoucleVerte{INVALID_STATE}{above}{read}
+    \BoucleVerte{INVALID_STATE}{below}{read}
+  \end{tikzpicture}
+  \caption{Automate des états d'une constante locale}
+  \labelFigure{automateEtatsConstanteLocale}
+\end{figure}
 
 
 

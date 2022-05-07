@@ -1553,17 +1553,17 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputActualParamet
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager insertUsedLocalConstant'
+//Extension setter '@localVarManager insertDeclaredLocalVariable'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void extensionSetter_insertUsedLocalConstant (class GALGAS_localVarManager & ioObject,
-                                              const class GALGAS_lstring constin_inVarName,
-                                              const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
-                                              const class GALGAS_string constin_inCppName,
-                                              const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
-                                              class C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
+void extensionSetter_insertDeclaredLocalVariable (class GALGAS_localVarManager & ioObject,
+                                                  const class GALGAS_lstring constin_inVarName,
+                                                  const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
+                                                  const class GALGAS_string constin_inCppName,
+                                                  const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
+                                                  class C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //

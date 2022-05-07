@@ -100,10 +100,10 @@ proc analyzeSemanticInstructionListWithoutBranch
   end
 #--- Declare local variables
   for (mType mName mCppName) in inLocalInitializedVariableList do
-    [!?ioVariableMap insertDefinedLocalVariable !mName !warnsIfNotMutated: true !mType !mCppName !mCppName]
+    [!?ioVariableMap insertInitializedLocalVariable !mName !warnsIfNotMutated: true !mType !mCppName !mCppName]
   end
   for (mType mName mCppName) in inLocalInitializedVariableListNoWarns do
-    [!?ioVariableMap insertDefinedLocalVariable !mName !warnsIfNotMutated: false !mType !mCppName !mCppName]
+    [!?ioVariableMap insertInitializedLocalVariable !mName !warnsIfNotMutated: false !mType !mCppName !mCppName]
   end
 #--- Instruction list
   for (mInstruction) in inSemanticInstructionListAST do
@@ -479,7 +479,7 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
   end
 #--- Declare local variable
   let targetVariableCppName = "var_" + [self.mInputActualParameterName identifierRepresentation] + "_" + [self.mInputActualParameterName.location locationIndex]
-  [!?ioVariableMap insertDefinedLocalVariable
+  [!?ioVariableMap insertInitializedLocalVariable
     !self.mInputActualParameterName
     !warnsIfNotMutated: true
     !inFormalArgumentType
@@ -866,7 +866,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   end
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location locationIndex]
   let type = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mActualParameterTypeName}
-  [!?ioVariableMap insertDefinedLocalVariable !self.mActualParameterName !warnsIfNotMutated: true !type !cppName !cppName]
+  [!?ioVariableMap insertInitializedLocalVariable !self.mActualParameterName !warnsIfNotMutated: true !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
   if expectedType != type then
     error self.mActualParameterName

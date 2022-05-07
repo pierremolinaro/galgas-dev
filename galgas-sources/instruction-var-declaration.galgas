@@ -81,7 +81,12 @@ override method @localVariableDeclarationAST analyzeSemanticInstruction
   if self.mIsUndefinedConstant then
     [!?ioVariableMap insertUndefinedLocalConstant !self.mVariableName !targetType !targetVariableCppName !targetVariableCppName]
   else
-    [!?ioVariableMap insertUndefinedLocalVariable !self.mVariableName !targetType !targetVariableCppName !targetVariableCppName]
+    [!?ioVariableMap insertDeclaredLocalVariable
+      !self.mVariableName
+      !targetType
+      !targetVariableCppName
+      !targetVariableCppName
+    ]
   end
 #--- Generate instruction
   ioInstructionListForGeneration += !@localVariableDeclarationForGeneration.new {

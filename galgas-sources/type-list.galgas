@@ -275,7 +275,7 @@ override method @listDeclarationAST enterInSemanticContext
     !@methodQualifier.isBasic
     !""
   ]
-  drop setterOutputFormalArgumentList
+#  drop setterOutputFormalArgumentList
   for (mPropertyTypeEntry mPropertyName mHasSetter *) in typedAttributeList do
     if mHasSetter then
       var setterFormalArgumentList = @formalParameterSignature {}
@@ -301,7 +301,7 @@ override method @listDeclarationAST enterInSemanticContext
     !@methodQualifier.isBasic
     !"" # No error message
   ]
-  drop setterInputFormalArgumentList
+#  drop setterInputFormalArgumentList
 #--- Add extensions
   addExtensions (
     !inExtensionMethodMapForBuildingContext

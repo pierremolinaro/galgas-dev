@@ -41,6 +41,35 @@ void callExtensionMethod_analyzeGrammarInstructionSDT (const class cPtr_abstract
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Extension setter '@localVarManager insertInitializedLocalVariable'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertInitializedLocalVariable (class GALGAS_localVarManager & ioObject,
+                                                     const class GALGAS_lstring constin_inVarName,
+                                                     const class GALGAS_bool constin_inWarnsIfNotMutated,
+                                                     const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
+                                                     const class GALGAS_string constin_inCppName,
+                                                     const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
+                                                     class C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension setter '@localVarManager insertUsedLocalConstant'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertUsedLocalConstant (class GALGAS_localVarManager & ioObject,
+                                              const class GALGAS_lstring constin_inVarName,
+                                              const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
+                                              const class GALGAS_string constin_inCppName,
+                                              const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
+                                              class C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Extension setter '@localVarManager insertLocalConstant'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -60,35 +89,6 @@ void extensionSetter_insertLocalConstant (class GALGAS_localVarManager & ioObjec
 //----------------------------------------------------------------------------------------------------------------------
 
 void extensionSetter_insertUndefinedLocalConstant (class GALGAS_localVarManager & ioObject,
-                                                   const class GALGAS_lstring constin_inVarName,
-                                                   const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
-                                                   const class GALGAS_string constin_inCppName,
-                                                   const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
-                                                   class C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension setter '@localVarManager insertDefinedLocalVariable'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertDefinedLocalVariable (class GALGAS_localVarManager & ioObject,
-                                                 const class GALGAS_lstring constin_inVarName,
-                                                 const class GALGAS_bool constin_inWarnsIfNotMutated,
-                                                 const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
-                                                 const class GALGAS_string constin_inCppName,
-                                                 const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
-                                                 class C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension setter '@localVarManager insertUndefinedLocalVariable'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertUndefinedLocalVariable (class GALGAS_localVarManager & ioObject,
                                                    const class GALGAS_lstring constin_inVarName,
                                                    const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
                                                    const class GALGAS_string constin_inCppName,
@@ -287,20 +287,6 @@ void extensionSetter_neutralAccess (class GALGAS_localVarManager & ioObject,
                                     class GALGAS_string & out_outNameForCheckingFormalParameterUsing,
                                     class C_Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension setter '@localVarManager searchForDropAccess'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionSetter_searchForDropAccess (class GALGAS_localVarManager & ioObject,
-                                          const class GALGAS_lstring constin_inVarName,
-                                          class GALGAS_unifiedTypeMap_2D_entry & out_outType,
-                                          class GALGAS_string & out_outCppName,
-                                          class GALGAS_string & out_outNameForCheckingFormalParameterUsing,
-                                          class C_Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //

@@ -560,7 +560,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
       !objectArrayCppName + "->mProperty_" + [mPropertyName identifierRepresentation]
   end
   let localConstantList = @localConstantList {
-    !@unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !["lstring" nowhere]}
+    !@unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !["lstring" nowhere]}
     !@lstring.new {!self.mPrefix.string + "lkey" !self.mEndOfReceiverExpression}
     !true # Do not warn if unused
     !objectArrayCppName + "->mProperty_lkey"

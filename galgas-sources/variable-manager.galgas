@@ -17,6 +17,39 @@
 #! TOP LEVEL SETTERS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+setter @localVarManager insertDeclaredLocalVariable ?let @lstring inVarName 
+                                                    ?let @unifiedTypeMap-entry inType
+                                                    ?let @string inCppName
+                                                    ?let @string inNameForCheckingFormalParameterUsing {
+  [!?self.mCurrentManager insertKey
+    !inVarName
+    !inType
+    !inCppName
+    !inNameForCheckingFormalParameterUsing
+    !.none
+    !.declared {!usedInSubscope: false}
+  ]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager insertInitializedLocalVariable ?let @lstring inVarName
+                                                       ?warnsIfNotMutated: let @bool inWarnsIfNotMutated
+                                                       ?let @unifiedTypeMap-entry inType
+                                                       ?let @string inCppName
+                                                       ?let @string inNameForCheckingFormalParameterUsing {
+  [!?self.mCurrentManager insertKey
+    !inVarName
+    !inType
+    !inCppName
+    !inNameForCheckingFormalParameterUsing
+    !if inWarnsIfNotMutated then .none else .noWarningOnNonMutation end
+    !.initialized
+  ]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 setter @localVarManager insertUsedLocalConstant ?let @lstring inVarName 
                                                 ?let @unifiedTypeMap-entry inType
                                                 ?let @string inCppName
@@ -59,40 +92,7 @@ setter @localVarManager insertUndefinedLocalConstant ?let @lstring inVarName
     !inCppName
     !inNameForCheckingFormalParameterUsing
     !.constant
-    !.unvaluated {!usedInSubscope: false}
-  ]
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-setter @localVarManager insertDefinedLocalVariable ?let @lstring inVarName
-                                                   ?warnsIfNotMutated: let @bool inWarnsIfNotMutated
-                                                   ?let @unifiedTypeMap-entry inType
-                                                   ?let @string inCppName
-                                                   ?let @string inNameForCheckingFormalParameterUsing {
-  [!?self.mCurrentManager insertKey
-    !inVarName
-    !inType
-    !inCppName
-    !inNameForCheckingFormalParameterUsing
-    !if inWarnsIfNotMutated then .none else .noWarningOnNonMutation end
-    !.initialized
-  ]
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-setter @localVarManager insertUndefinedLocalVariable ?let @lstring inVarName 
-                                                     ?let @unifiedTypeMap-entry inType
-                                                     ?let @string inCppName
-                                                     ?let @string inNameForCheckingFormalParameterUsing {
-  [!?self.mCurrentManager insertKey
-    !inVarName
-    !inType
-    !inCppName
-    !inNameForCheckingFormalParameterUsing
-    !.none
-    !.unvaluated {!usedInSubscope: false}
+    !.declared {!usedInSubscope: false}
   ]
 }
 
@@ -140,7 +140,7 @@ setter @localVarManager insertOutputFormalArgument ?let @lstring inVarName
     !inCppName
     !inNameForCheckingFormalParameterUsing
     !.shouldBeInitialized | .noWarningOnNonMutation
-    !.unvaluated {!usedInSubscope: false}
+    !.declared {!usedInSubscope: false}
   ]
 }
 
@@ -155,7 +155,7 @@ setter @localVarManager insertInputOutputFormalArgumentDeclaredAsUnused ?let @ls
     !inType
     !inCppName
     !inNameForCheckingFormalParameterUsing
-    !. declaredAsUnused  |.noWarningOnNonMutation
+    !.declaredAsUnused  |.noWarningOnNonMutation
     !.initialized
   ]
 }
@@ -304,7 +304,7 @@ boolset @localVariableAttributes {
 
 enum @localVarValuation {
   case invalid #--- Error state, for disabled further error messages
-  case unvaluated (@bool usedInSubscope) # The variable has no value
+  case declared (@bool usedInSubscope) # The variable has no value
   case initialized # The variable has been written once
   case read # The variable has been written, and read
   case modified # The variable has been rewritten
@@ -362,7 +362,7 @@ struct @currentVarManager {
 getter @localVarValuation string -> @string {
   switch self
   case invalid : result = "invalid"
-  case unvaluated (*) : result = "unvaluated"
+  case declared (*) : result = "declared"
   case initialized : result = "initialized"
   case read : result = "read"
   case modified : result = "modified"
@@ -420,87 +420,87 @@ setter @localVarMapListForLLVM neutralAccess ?let @lstring inVarName
 #! DROP ACCESS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @scopeLocalVarMap dropAccess ?let @lstring inVarName
-                                    ?let @localVariableAttributes unused inAttributes
-                                    ?let @localVarValuation inValuation {
-  switch inValuation
-  case invalid : #--- Error state, for disabled further error messages
-  case unvaluated (*) : # The variable has no value
-     error inVarName : "variable '" + inVarName + "' cannot be dropped, it has no value"
-     [!?self setMStateForKey !.invalid !inVarName]
-  case initialized : # The variable has been written once
-    #[!?self setMStateForKey !.invalid !inVarName]
-#    if [inAttributes constant] then
-#     # error inVarName : "constant '" + inVarName + "' cannot be mutated"
-#      [!?self setMStateForKey !.invalid !inVarName]
-#    elsif not [inAttributes noWarningOnNonMutation] then
-#      warning inVarName : "variable '" + inVarName + "' was written to, but never read"
-#    end
-  case read : # The variable has been written, and read
-#    if [inAttributes constant] then
-#      error inVarName : "constant '" + inVarName + "' cannot be mutated"
-#      [!?self setMStateForKey !.invalid !inVarName]
+#setter @scopeLocalVarMap dropAccess ?let @lstring inVarName
+#                                    ?let @localVariableAttributes unused inAttributes
+#                                    ?let @localVarValuation inValuation {
+#  switch inValuation
+#  case invalid : #--- Error state, for disabled further error messages
+#  case declared (*) : # The variable has no value
+#     error inVarName : "variable '" + inVarName + "' cannot be dropped, it has no value"
+#     [!?self setMStateForKey !.invalid !inVarName]
+#  case initialized : # The variable has been written once
+#    #[!?self setMStateForKey !.invalid !inVarName]
+##    if [inAttributes constant] then
+##     # error inVarName : "constant '" + inVarName + "' cannot be mutated"
+##      [!?self setMStateForKey !.invalid !inVarName]
+##    elsif not [inAttributes noWarningOnNonMutation] then
+##      warning inVarName : "variable '" + inVarName + "' was written to, but never read"
+##    end
+#  case read : # The variable has been written, and read
+##    if [inAttributes constant] then
+##      error inVarName : "constant '" + inVarName + "' cannot be mutated"
+##      [!?self setMStateForKey !.invalid !inVarName]
+##    else
+##      [!?self setMStateForKey !.modified !inVarName]
+##    end
+#  case modified : # The variable has been rewritten
+#    # ok
+#  end
+#}
+#
+##———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#setter @localVarManager searchForDropAccess ?let @lstring inVarName
+#                                            !@unifiedTypeMap-entry outType
+#                                            !@string outCppName
+#                                            !@string outNameForCheckingFormalParameterUsing {
+#  [!?self.mCurrentManager searchForDropAccess !inVarName ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
+#}
+#
+##———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#setter @currentVarManager searchForDropAccess ?let @lstring inVarName
+#                                              !@unifiedTypeMap-entry outType
+#                                              !@string outCppName
+#                                              !@string outNameForCheckingFormalParameterUsing {
+#  if let [self.mLocalVarMap searchKey
+#    !inVarName
+#    ?let type
+#    ?let cppName
+#    ?let nameForCheckingFormalParameterUsing
+#    ?let attributes
+#    ?let valuation] then
+#    [!?self.mLocalVarMap dropAccess !inVarName !attributes !valuation]
+#    outType = type
+#    outCppName = cppName
+#    outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
+#  else
+#    [!?self.mSubMaps dropAccess !inVarName !0 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
+#  end
+#}
+#
+##———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#setter @localVarMapListForLLVM dropAccess ?let @lstring inVarName
+#                                          ?let @uint inIndex
+#                                          !@unifiedTypeMap-entry outType
+#                                          !@string outCppName
+#                                          !@string outNameForCheckingFormalParameterUsing {
+#  if inIndex >= [self length] then
+#    error inVarName : "Undefined variable" : outType, outCppName, outNameForCheckingFormalParameterUsing
+#  else
+#    var localMap = [self mMapAtIndex !inIndex]
+#    if let [localMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?let attributes ?let valuation] then
+#      [!?localMap dropAccess !inVarName !attributes !valuation]
+#      outType = type
+#      outCppName = cppName
+#      outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
+#      [!?self setMMapAtIndex !localMap !inIndex]
 #    else
-#      [!?self setMStateForKey !.modified !inVarName]
+#      [!?self dropAccess !inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
 #    end
-  case modified : # The variable has been rewritten
-    # ok
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-setter @localVarManager searchForDropAccess ?let @lstring inVarName
-                                            !@unifiedTypeMap-entry outType
-                                            !@string outCppName
-                                            !@string outNameForCheckingFormalParameterUsing {
-  [!?self.mCurrentManager searchForDropAccess !inVarName ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-setter @currentVarManager searchForDropAccess ?let @lstring inVarName
-                                              !@unifiedTypeMap-entry outType
-                                              !@string outCppName
-                                              !@string outNameForCheckingFormalParameterUsing {
-  if let [self.mLocalVarMap searchKey
-    !inVarName
-    ?let type
-    ?let cppName
-    ?let nameForCheckingFormalParameterUsing
-    ?let attributes
-    ?let valuation] then
-    [!?self.mLocalVarMap dropAccess !inVarName !attributes !valuation]
-    outType = type
-    outCppName = cppName
-    outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
-  else
-    [!?self.mSubMaps dropAccess !inVarName !0 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-setter @localVarMapListForLLVM dropAccess ?let @lstring inVarName
-                                          ?let @uint inIndex
-                                          !@unifiedTypeMap-entry outType
-                                          !@string outCppName
-                                          !@string outNameForCheckingFormalParameterUsing {
-  if inIndex >= [self length] then
-    error inVarName : "Undefined variable" : outType, outCppName, outNameForCheckingFormalParameterUsing
-  else
-    var localMap = [self mMapAtIndex !inIndex]
-    if let [localMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?let attributes ?let valuation] then
-      [!?localMap dropAccess !inVarName !attributes !valuation]
-      outType = type
-      outCppName = cppName
-      outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
-      [!?self setMMapAtIndex !localMap !inIndex]
-    else
-      [!?self dropAccess !inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
-    end
-  end
-}
+#  end
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! WRITE ACCESS
@@ -526,7 +526,11 @@ setter @currentVarManager searchForWriteAccess ?let @lstring inVarName
             ?let nameForCheckingFormalParameterUsing
             ?let attributes
             ?let valuation] then
-    [!?self.mLocalVarMap writeAccessInMap !inVarName !inOverridenMap: false !attributes !valuation]
+    var newValuation = valuation
+    [!?newValuation writeTransition !inVarName !inOverridenMap: false !attributes]
+    if newValuation != valuation then
+      [!?self.mLocalVarMap setMStateForKey !newValuation !inVarName]
+    end
     outType = type
     outCppName = cppName
     outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
@@ -547,12 +551,22 @@ setter @localVarMapListForLLVM writeAccessInSubMap ?let @lstring inVarName
   else
     var localMap = [self mMapAtIndex !inIndex]
     if let [localMap searchKey
-             !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?let attributes ?let valuation] then
-      [!?localMap writeAccessInMap !inVarName !inOverridenMap: true !attributes !valuation]
+             !inVarName
+             ?let type
+             ?let cppName
+             ?let nameForCheckingFormalParameterUsing
+             ?let attributes
+             ?let valuation
+           ] then
+      var newValuation = valuation
+      [!?newValuation writeTransition !inVarName !inOverridenMap: true !attributes]
+      if newValuation != valuation then
+        [!?localMap setMStateForKey !newValuation !inVarName]
+        [!?self setMMapAtIndex !localMap !inIndex]
+      end
       outType = type
       outCppName = cppName
       outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
-      [!?self setMMapAtIndex !localMap !inIndex]
     else
       [!?self writeAccessInSubMap !inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
     end
@@ -561,29 +575,28 @@ setter @localVarMapListForLLVM writeAccessInSubMap ?let @lstring inVarName
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @scopeLocalVarMap writeAccessInMap ?let @lstring inVarName
+setter @localVarValuation writeTransition ?let @lstring inVarName
                                           ?inOverridenMap: let @bool inOverridenMap
-                                          ?let @localVariableAttributes inAttributes
-                                          ?let @localVarValuation inValuation {
-  switch inValuation
+                                          ?let @localVariableAttributes inAttributes {
+  switch self
   case invalid : #--- Error state, for disabled further error messages
-  case unvaluated (*) : # The variable has no value
-    [!?self setMStateForKey !.initialized !inVarName]
+  case declared (*) : # The variable has no value
+    self = .initialized
   case initialized : # The variable has been written once
     if [inAttributes constant] then
       error inVarName : "constant '" + inVarName + "' cannot be mutated"
-      [!?self setMStateForKey !.invalid !inVarName]
+      self = .invalid
     elsif not [inAttributes noWarningOnNonMutation] && not inOverridenMap then
       warning inVarName : "variable '" + inVarName + "' was written to, but never read"
     else
-      [!?self setMStateForKey !.modified !inVarName]
+      self = .modified
     end
   case read : # The variable has been written, and read
     if [inAttributes constant] then
       error inVarName : "constant '" + inVarName + "' cannot be mutated"
-      [!?self setMStateForKey !.invalid !inVarName]
+      self = .invalid
     else
-      [!?self setMStateForKey !.modified !inVarName]
+      self = .modified
     end
   case modified : # The variable has been rewritten
     # ok
@@ -608,10 +621,14 @@ setter @currentVarManager searchForReadAccess ?let @lstring inVarName
                                               !@string outCppName
                                               !@string outNameForCheckingFormalParameterUsing {
   if let [self.mLocalVarMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?* ?let valuation] then
-    [!?self.mLocalVarMap readAccess !inVarName !valuation]
+    var newValuation = valuation
+    [!?newValuation readTransition !inVarName]
     outType = type
     outCppName = cppName
     outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
+    if newValuation != valuation then
+      [!?self.mLocalVarMap setMStateForKey !newValuation !inVarName]
+    end
   else
     [!?self.mSubMaps readAccess !inVarName !0 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
   end
@@ -629,11 +646,15 @@ setter @localVarMapListForLLVM readAccess ?let @lstring inVarName
   else
     var localMap = [self mMapAtIndex !inIndex]
     if let [localMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?* ?let valuation] then
-      [!?localMap readAccess !inVarName !valuation]
+      var newValuation = valuation
+      [!?newValuation readTransition !inVarName]
       outType = type
       outCppName = cppName
       outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
-      [!?self setMMapAtIndex !localMap !inIndex]
+      if newValuation != valuation then
+        [!?localMap setMStateForKey !newValuation !inVarName]
+        [!?self setMMapAtIndex !localMap !inIndex]
+      end
     else
       [!?self readAccess !inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
     end
@@ -642,14 +663,14 @@ setter @localVarMapListForLLVM readAccess ?let @lstring inVarName
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @scopeLocalVarMap readAccess ?let @lstring inVarName ?let @localVarValuation inValuation {
-  switch inValuation
+setter @localVarValuation readTransition ?let @lstring inVarName {
+  switch self
   case invalid :
-  case unvaluated (*) : # The variable has no value
+  case declared (*) : # The variable has no value
     error inVarName : "variable '" + inVarName + "' used before being initialized"
-    [!?self setMStateForKey !.invalid !inVarName]
+    self = .invalid
   case initialized: # The variable has been written once
-    [!?self setMStateForKey !.read !inVarName]
+    self = .read
   case read : # The variable has been written, and read
     # Ok
   case modified : # The variable has been rewritten
@@ -674,8 +695,18 @@ setter @currentVarManager searchForReadWriteAccess ?let @lstring inVarName
                                                    !@unifiedTypeMap-entry outType
                                                    !@string outCppName
                                                    !@string outNameForCheckingFormalParameterUsing {
-  if let [self.mLocalVarMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?let inAttributes ?let valuation] then
-    [!?self.mLocalVarMap readWriteAccess !inVarName !inAttributes !valuation]
+  if let [self.mLocalVarMap searchKey
+           !inVarName
+           ?let type
+           ?let cppName
+           ?let nameForCheckingFormalParameterUsing
+           ?let inAttributes
+           ?let valuation] then
+    var newValuation = valuation
+    [!?newValuation readWriteTransition !inVarName !inOverridenMap: false !inAttributes]
+    if newValuation != valuation then
+      [!?self.mLocalVarMap setMStateForKey !newValuation !inVarName]
+    end
     outType = type
     outCppName = cppName
     outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
@@ -695,12 +726,22 @@ setter @localVarMapListForLLVM readWriteAccess ?let @lstring inVarName
     error inVarName : "Undefined variable" : outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     var localMap = [self mMapAtIndex !inIndex]
-    if let [localMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?let inAttributes  ?let valuation] then
-      [!?localMap readWriteAccess !inVarName !inAttributes !valuation]
+    if let [localMap searchKey
+              !inVarName
+              ?let type
+              ?let cppName
+              ?let nameForCheckingFormalParameterUsing
+              ?let inAttributes
+              ?let valuation] then
+      var newValuation = valuation
+      [!?newValuation readWriteTransition !inVarName !inOverridenMap: true !inAttributes]
+      if newValuation != valuation then
+        [!?localMap setMStateForKey !newValuation !inVarName]
+        [!?self setMMapAtIndex !localMap !inIndex]
+      end
       outType = type
       outCppName = cppName
       outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
-      [!?self setMMapAtIndex !localMap !inIndex]
     else
       [!?self readWriteAccess !inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
     end
@@ -709,31 +750,11 @@ setter @localVarMapListForLLVM readWriteAccess ?let @lstring inVarName
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @scopeLocalVarMap readWriteAccess ?let @lstring inVarName
-                                         ?let @localVariableAttributes inAttributes
-                                         ?let @localVarValuation inValuation {
-  switch inValuation
-  case invalid :
-  case unvaluated (*) : # The variable has no value
-    error inVarName : "variable '" + inVarName + "' used before being initialized"
-    [!?self setMStateForKey !.invalid !inVarName]
-  case initialized : # The variable has been written once
-    if [inAttributes constant] then
-      error inVarName : "constant '" + inVarName + "' cannot be mutated"
-     [!?self setMStateForKey !.invalid !inVarName]
-   else
-     [!?self setMStateForKey !.modified !inVarName]
-    end
-  case read : # The variable has been written, and read
-    if [inAttributes constant] then
-      error inVarName : "constant '" + inVarName + "' cannot be mutated"
-     [!?self setMStateForKey !.invalid !inVarName]
-    else
-      [!?self setMStateForKey !.modified !inVarName]
-    end
-  case modified : # The variable has been rewritten
-    # Ok
-  end
+setter @localVarValuation readWriteTransition ?let @lstring inVarName
+                                              ?inOverridenMap: let @bool inOverridenMap
+                                              ?let @localVariableAttributes inAttributes {
+  [!?self readTransition !inVarName]
+  [!?self writeTransition !inVarName !inOverridenMap: inOverridenMap !inAttributes]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -787,7 +808,7 @@ setter @currentVarManager insertKey ?let @lstring inVarName
 method @localVarValuation checkFinalState ?let @lstring inVarName ?let @localVariableAttributes inAttributes {
   switch self
   case invalid :
-  case unvaluated (usedInOtherBlock) : # The variable has no value
+  case declared (usedInOtherBlock) : # The variable has no value
     if [inAttributes shouldBeInitialized] then
       error inVarName : "variable '" + inVarName + "' should be initialized"
     elsif usedInOtherBlock then
@@ -851,23 +872,23 @@ method @localVarValuation combineValuationWith ?let @localVarValuation inOther
   switch self
   case invalid :
     outResult = self
-  case unvaluated (usedInSubscope) :
+  case declared (usedInSubscope) :
     switch inOther
     case invalid :
       outResult = inOther
-    case unvaluated (otherUsedInSubscope) :
-      outResult = .unvaluated {!usedInSubscope: usedInSubscope | otherUsedInSubscope}
+    case declared (otherUsedInSubscope) :
+      outResult = .declared {!usedInSubscope: usedInSubscope | otherUsedInSubscope}
     case initialized :
-      outResult = .unvaluated {!usedInSubscope: true} # §
+      outResult = .declared {!usedInSubscope: true} # §
     case read, modified :
-      outResult = .unvaluated {!usedInSubscope: true} # §
+      outResult = .declared {!usedInSubscope: true} # §
     end
   case initialized :
     switch inOther
     case invalid :
       outResult = inOther
-    case unvaluated (otherUsedInSubscope) :
-      outResult = .unvaluated {!usedInSubscope: otherUsedInSubscope}
+    case declared (otherUsedInSubscope) :
+      outResult = .declared {!usedInSubscope: otherUsedInSubscope}
     case initialized, read, modified :
       outResult = inOther
     end
@@ -875,8 +896,8 @@ method @localVarValuation combineValuationWith ?let @localVarValuation inOther
     switch inOther
     case invalid :
       outResult = inOther
-    case unvaluated (*) :
-      outResult = .unvaluated {!usedInSubscope: true} # § inOther
+    case declared (*) :
+      outResult = .declared {!usedInSubscope: true} # § inOther
     case initialized :
       outResult = self
     case read, modified :
@@ -886,8 +907,8 @@ method @localVarValuation combineValuationWith ?let @localVarValuation inOther
     switch inOther
     case invalid :
       outResult = inOther
-    case unvaluated (*) :
-      outResult = .unvaluated {!usedInSubscope: true} # § inOther
+    case declared (*) :
+      outResult = .declared {!usedInSubscope: true} # § inOther
     case initialized, read, modified :
       outResult = self
 #    case initialized :

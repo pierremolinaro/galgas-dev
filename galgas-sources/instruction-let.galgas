@@ -232,7 +232,13 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
   if self.mIsConstant then
     [!?ioVariableMap insertLocalConstant !self.mVariableName !targetType !targetVariableCppName !targetVariableCppName]
   else
-    [!?ioVariableMap insertDefinedLocalVariable !self.mVariableName !warnsIfNotMutated: true !targetType !targetVariableCppName !targetVariableCppName]
+    [!?ioVariableMap insertInitializedLocalVariable
+      !self.mVariableName
+      !warnsIfNotMutated: true
+      !targetType
+      !targetVariableCppName
+      !targetVariableCppName
+    ]
   end
 #--- Check assignment type compatibility
   checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
