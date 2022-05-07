@@ -269,7 +269,7 @@ setter @localVarManager closeOverride ?let @location unused inEndOfBranchLocatio
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager openBranch {
-  [!?self.mCurrentManager openScope !{}]
+  [!?self.mCurrentManager openScope]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -420,36 +420,6 @@ setter @localVarMapListForLLVM neutralAccess ?let @lstring inVarName
 #! DROP ACCESS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @scopeLocalVarMap dropAccess ?let @lstring inVarName
-                                    ?let @localVariableAttributes unused inAttributes
-                                    ?let @localVarValuation inValuation {
-  switch inValuation
-  case invalid : #--- Error state, for disabled further error messages
-  case declared (*) : # The variable has no value
-     error inVarName : "variable '" + inVarName + "' cannot be dropped, it has no value"
-     [!?self setMStateForKey !.invalid !inVarName]
-  case initialized : # The variable has been written once
-    #[!?self setMStateForKey !.invalid !inVarName]
-#    if [inAttributes constant] then
-#     # error inVarName : "constant '" + inVarName + "' cannot be mutated"
-#      [!?self setMStateForKey !.invalid !inVarName]
-#    elsif not [inAttributes noWarningOnNonMutation] then
-#      warning inVarName : "variable '" + inVarName + "' was written to, but never read"
-#    end
-  case read : # The variable has been written, and read
-#    if [inAttributes constant] then
-#      error inVarName : "constant '" + inVarName + "' cannot be mutated"
-#      [!?self setMStateForKey !.invalid !inVarName]
-#    else
-#      [!?self setMStateForKey !.mutated !inVarName]
-#    end
-  case mutated : # The variable has been rewritten
-    # ok
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 setter @localVarManager searchForDropAccess ?let @lstring inVarName {
   [!?self.mCurrentManager searchForDropAccess !inVarName]
 }
@@ -470,29 +440,12 @@ setter @currentVarManager searchForDropAccess ?let @lstring inVarName {
       found = [subMap hasKey !inVarName.string]
     end
     if found then
-       error inVarName : "variable '" + inVarName + "' is not declared in current scope, but in an overrided scope"   
+      error inVarName : "variable '" + inVarName + "' is not declared in current scope, but in an overrided scope"   
     else
       error inVarName : "variable '" + inVarName + "' is not declared"
     end
   end
 }
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#setter @localVarMapListForLLVM dropAccess ?let @lstring inVarName
-#                                          ?let @uint inIndex {
-#  if inIndex >= [self length] then
-#    error inVarName : "Undefined variable"
-#  else
-#    var localMap = [self mMapAtIndex !inIndex]
-#    if let [localMap searchKey !inVarName ?3* ?let attributes ?let valuation] then
-#      [!?localMap dropAccess !inVarName !attributes !valuation]
-#      [!?self setMMapAtIndex !localMap !inIndex]
-#    else
-#      [!?self dropAccess !inVarName !inIndex + 1]
-#    end
-#  end
-#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! WRITE ACCESS
@@ -612,7 +565,13 @@ setter @currentVarManager searchForReadAccess ?let @lstring inVarName
                                               !@unifiedTypeMap-entry outType
                                               !@string outCppName
                                               !@string outNameForCheckingFormalParameterUsing {
-  if let [self.mLocalVarMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?* ?let valuation] then
+  if let [self.mLocalVarMap searchKey
+                   !inVarName
+                   ?let type
+                   ?let cppName
+                   ?let nameForCheckingFormalParameterUsing
+                   ?*
+                   ?let valuation] then
     var newValuation = valuation
     [!?newValuation readTransition !inVarName]
     outType = type
@@ -637,7 +596,13 @@ setter @localVarMapListForLLVM readAccess ?let @lstring inVarName
     error inVarName : "Undefined variable" : outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     var localMap = [self mMapAtIndex !inIndex]
-    if let [localMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?* ?let valuation] then
+    if let [localMap searchKey
+                        !inVarName
+                        ?let type
+                        ?let cppName
+                        ?let nameForCheckingFormalParameterUsing
+                        ?*
+                        ?let valuation] then
       var newValuation = valuation
       [!?newValuation readTransition !inVarName]
       outType = type
@@ -753,14 +718,9 @@ setter @localVarValuation readWriteTransition ?let @lstring inVarName
 #! SCOPE
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @currentVarManager openScope ?let @lstringlist inTransferedLocalVariableList {
-  var localMap = self.mLocalVarMap
+setter @currentVarManager openScope {
+  [!?self.mSubMaps insertAtIndex !self.mLocalVarMap !0]
   self.mLocalVarMap = {}
-  for (variable) in inTransferedLocalVariableList do
-    [!?localMap removeKey !variable ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?let kind ?let valuation]
-    [!?self.mLocalVarMap insertKey !variable !type !cppName !nameForCheckingFormalParameterUsing !kind !valuation]
-  end
-  [!?self.mSubMaps insertAtIndex !localMap !0]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

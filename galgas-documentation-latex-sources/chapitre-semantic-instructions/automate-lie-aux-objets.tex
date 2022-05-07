@@ -18,40 +18,45 @@
 \newcommand\RougeAutomate{Red}
 
 \newcommand\EtatVert[4]{
-  \node[draw=\VertAutomate,thick,fill=\FondAutomate,chamfered rectangle] (#1) at (#3, #4) {\small #2};
+  \node[draw=\VertAutomate,thick,fill=\FondAutomate,chamfered rectangle] (#1) at (#3, #4) {\tt\small #2};
 }
 
 \newcommand\EtatOrange[4]{
-  \node[draw=\OrangeAutomate,thick,fill=\FondAutomate,chamfered rectangle] (#1) at (#3, #4) {\small #2};
+  \node[draw=\OrangeAutomate,thick,fill=\FondAutomate,chamfered rectangle] (#1) at (#3, #4) {\tt\small #2};
 }
 
 \newcommand\EtatRouge[4]{
-  \node[draw=\RougeAutomate,thick,fill=\FondAutomate,chamfered rectangle] (#1) at (#3, #4) {\small #2};
+  \node[draw=\RougeAutomate,thick,fill=\FondAutomate,chamfered rectangle] (#1) at (#3, #4) {\tt\small #2};
 }
 
 \newcommand\FlecheVerte[4]{
-  \draw [-stealth, thick, \VertAutomate] (#1) edge[#4] node[draw=\VertAutomate, rounded corners, fill=\FondAutomate] {\it #2} (#3) ;
+  \draw [-stealth, thick, \VertAutomate]
+    (#1) edge[#4] node[draw=\VertAutomate,rounded corners,fill=\FondAutomate] {\tt\small #2} (#3) ;
 }
 
 \newcommand\FlecheOrange[4]{
-  \draw [-stealth, thick, \OrangeAutomate] (#1) edge[#4] node[draw=\OrangeAutomate, rounded corners, fill=\FondAutomate] {\it#2} (#3) ;
+  \draw [-stealth, thick, \OrangeAutomate]
+    (#1) edge[#4] node[draw=\OrangeAutomate,rounded corners,fill=\FondAutomate] {\tt\small#2} (#3) ;
 }
 
 \newcommand\FlecheRouge[4]{
-  \draw [-stealth, thick, \RougeAutomate] (#1) edge[#4] node[draw=\RougeAutomate, rounded corners, fill=\FondAutomate] {\it#2} (#3) ;
+  \draw [-stealth, thick, \RougeAutomate]
+    (#1) edge[#4] node[draw=\RougeAutomate,rounded corners,fill=\FondAutomate] {\tt\small#2} (#3) ;
 }
 
-
 \newcommand\BoucleVerte[3]{
-  \path (#1) edge [loop #2, -stealth, thick, \VertAutomate] node[draw=\VertAutomate, rounded corners, fill=\FondAutomate] {\it#3} (#1) ;
+  \path (#1) edge [loop #2,-stealth, thick, \VertAutomate] node[draw=\VertAutomate,rounded corners,fill=\FondAutomate]
+    {\tt\small#3} (#1) ;
 }
 
 \newcommand\BoucleOrange[3]{
-  \path (#1) edge [loop #2, -stealth, thick, \OrangeAutomate] node[draw=\OrangeAutomate, rounded corners, fill=\FondAutomate] {\it#3} (#1) ;
+  \path (#1) edge [loop #2,-stealth, thick, \OrangeAutomate] node[draw=\OrangeAutomate,rounded corners,fill=\FondAutomate]
+    {\tt\small#3} (#1) ;
 }
 
 \newcommand\BoucleRouge[3]{
-  \path (#1) edge [loop #2, -stealth, thick, \RougeAutomate] node[draw=\RougeAutomate, rounded corners, fill=\FondAutomate] {\it#3} (#1) ;
+  \path (#1) edge [loop #2,-stealth, thick, \RougeAutomate] node[draw=\RougeAutomate,rounded corners,fill=\FondAutomate]
+    {\tt\small#3} (#1) ;
 }
 
 %\newcommand\ActionInterdite[3]{
@@ -73,12 +78,13 @@ On peut illustrer le résultat de cette surveillance par le fragment de code sui
 var @uint x
 if condition then
   x = 2
-end # Une erreur de compilation est déclenchée ici
+end
+let y = x # Une erreur de compilation est déclenchée ici
 \end{galgas}
 
 Quelle serait la valeur de la variable \ggs!x! à l'issue de l'exécution de ce code ? Si \ggs!condition! est vrai, \ggs!x! vaut $2$ ; sinon, \ggs!x! n'a pas de valeur.
 
-Le compilateur GALGAS détecte cette situation et émet un message d'erreur à l'issue de l'analyse sémantique de l'instruction \ggs!if!. Pour que l'analyse sémantique ne détecte pas d'erreur, il faut soit que les deux branches affectent une valeur à \ggs!x! :
+Le compilateur GALGAS détecte cette situation et considère que la variable est initialisée si elle l'est par toutes les branches de l'instruction \ggs!if!. Dans le cas contraire, comme ci-dessus, elle est considérée comme non initialisée. Aussi sa lecture déclenche un message d'erreur. Pour que l'analyse sémantique ne détecte pas d'erreur, il faut donc que les deux branches affectent une valeur à \ggs!x! :
 
 \begin{galgas}
 var @uint x
@@ -87,8 +93,10 @@ if condition then
 else
   x = 4
 end
+let y = x # Ok
 \end{galgas}
 
+Pour contrôler le bon usage des variables et des constantes locales, le compilateur GALGAS associe pendant la compilation un automate d'états finis à chaque variable locale. 
 
 
 
@@ -105,17 +113,23 @@ end
 
 \section{Variable locale}
 
-\begin{figure}[t]
+L'automate d'états finis associé à une variable locale est présenté à la \refFigure{}{automateEtatsVariableLocale}. C'est la forme la plus générale, les autres automates s'en déduisent.
+
+
+\begin{figure}[ht!]
   \centering
   \small
   \begin{tikzpicture}
-    \EtatVert{INVALID_STATE}{Invalid}{0cm}{0cm}
-    \EtatOrange{DECLARED_STATE}{Declared}{3cm}{0cm}
-    \EtatOrange{INITIALIZED_STATE}{Initialized}{6cm}{0cm}
-    \EtatVert{READ_STATE}{Read}{9cm}{0cm}
+    \EtatVert{INVALID_STATE}{INVALID}{0cm}{0cm}
+    \EtatOrange{DECLARED_STATE}{DECLARED}{3cm}{0cm}
+    \EtatOrange{INITIALIZED_STATE}{INITIALIZED}{6cm}{0cm}
+    \EtatOrange{READ_STATE}{READ}{9cm}{0cm}
+    \EtatVert{MUTATED_STATE}{MUTATED}{12cm}{0cm}
     
     \FlecheEtatInitial{DECLARED_STATE}{above = 1cm}
-    \FlecheEtatInitial{INITIALIZED_STATE}{above = 1cm}
+
+    \BoucleVerte{INVALID_STATE}{above}{read}
+    \BoucleVerte{INVALID_STATE}{below}{write}
 
     \FlecheVerte{DECLARED_STATE}{write}{INITIALIZED_STATE}{bend left}
     \FlecheRouge{DECLARED_STATE}{read}{INVALID_STATE}{bend right}
@@ -124,11 +138,11 @@ end
     \BoucleOrange{INITIALIZED_STATE}{below}{write}
     \FlecheVerte{INITIALIZED_STATE}{read}{READ_STATE}{bend left=35}
 
-    \FlecheVerte{READ_STATE}{write}{INITIALIZED_STATE}{bend left=35}
+    \FlecheVerte{READ_STATE}{write}{MUTATED_STATE}{bend left=35}
     \BoucleVerte{READ_STATE}{above}{read}
 
-    \BoucleVerte{INVALID_STATE}{above}{read}
-    \BoucleVerte{INVALID_STATE}{below}{read}
+    \BoucleVerte{MUTATED_STATE}{above}{read}
+    \BoucleVerte{MUTATED_STATE}{below}{write}
   \end{tikzpicture}
   \caption{Automate des états d'une variable locale}
   \labelFigure{automateEtatsVariableLocale}
@@ -136,26 +150,87 @@ end
 
 
 
+Les états sont les suivants~:
+\begin{itemize}
+  \item \texttt{INVALID}, une erreur d'accès a été détectée ; 
+  \item \texttt{DECLARED}, état d'une variable déclarée non initialisée ;
+  \item \texttt{INITIALIZED}, état d'une variable déclarée et initialisée, mais jamais lue ;
+  \item \texttt{READ}, état d'une variable déclarée, initialisée, lue au moins une fois, mais jamais modifiée ;
+  \item \texttt{MUTATED}, état d'une variable déclarée, initialisée, et modifiée au moins une fois.
+\end{itemize}
 
+Un état initial est désigné par une flèche noire. La déclaration d'une variable locale place son automate dans l'état \texttt{DECLARED}~:
 
+\begin{galgas}
+var @uint x # État 'declared'
+\end{galgas}
 
+Il y a deux actions possibles~:
+\begin{itemize}
+  \item l'action \texttt{write}, qui exprime l'affectation d'une valeur à la variable~;
+  \item l'action \texttt{read}, qui exprime la lecture de la valeur de la variable.
+\end{itemize}
 
+L'automate est \emph{complet}, c'est-à-dire que les deux actions sont prises en compte dans tous les états.
+
+Les transitions sont présentées en couleur, selon leur validité~:
+\begin{itemize}
+  \item \emph{vert}, la transition est correcte et ne donne lieu à aucune émission de message d'alerte ou d'erreur~;
+  \item \emph{orange}, la transition est correcte et mais donne lieu à l'émission d'un message d'alerte~;
+  \item \emph{rouge}, la transition est incorrecte et donne lieu à l'émission d'un message d'erreur.
+\end{itemize}
+
+Ainsi, la lecture d'une variable dans l'état \texttt{DECLARED} est une erreur~: en effet, la variable n'a pas de valeur. La transition correspondante est donc en rouge. Voici un exemple qui illustre cette situation~:
+\begin{galgas}
+var @uint x # État 'declared'
+var y = x # Erreur, x n'a pas de valeur
+\end{galgas}
+
+L'écriture d'une variable qui est dans l'état \texttt{INITIALIZED} n'est pas une erreur, mais révèle une anomalie~: la valeur écrasée n'a jamais été lue~; un message d'alerte est donc émis. Par exemple :
+\begin{galgas}
+var @uint x = 2 # État 'initialized'
+var x = 3 # Alerte, l'initialisation de x à 2 est inutile
+\end{galgas}
+
+Remarquons que les actions \texttt{read} et \texttt{write} sont acceptées silencieusement dans l'état \texttt{INVALID}~: en effet, on arrive dans cet état après l'occurrence d'une erreur qui a été signalée à l'utilisateur, en acceptant silencieusement on n'émet pas de message d'erreur à chaque accès à la variable.
+
+Enfin, l'état final de l'automate. À la fin de la portée de la variable, son automate est supprimé. Au moment de sa suppression, son état courant est considéré comme son état final. Trois situations peuvent survenir, qui sont reflètées la couleur du cadre de l'état~:
+\begin{itemize}
+  \item \emph{verte}, l'état final est correct et ne donne lieu à aucune émission de message d'alerte ou d'erreur~;
+  \item \emph{orange}, l'état final est correct et mais donne lieu à l'émission d'un message d'alerte~;
+  \item \emph{rouge}, l'état final est incorrect et donne lieu à l'émission d'un message d'erreur.
+\end{itemize}
+
+Ainsi, l'état \texttt{READ} est un état final correct pour une variable locale. L'état \texttt{INVALIDE} est aussi silencieusement accepté, être dans cet état signifie qu'un message d'erreur a déjà été émis pour cette variable.
+
+L'état \texttt{DECLARED} comme état final signifie que la variable a été déclarée, sans être initialisée~: la variable est inutile, et un message d'alerte est émis.
+
+L'état \texttt{INITIALIZED} comme état final signifie que la variable a été déclarée, initialisée, mais jamais lue~: comme précédemment, la variable est inutile, et un message d'alerte est émis.
+
+L'état \texttt{READ} comme état final signifie que la variable a été déclarée, initialisée, lue, mais jamais modifiée~: c'est en fait une constante et un message d'alerte est émis, qui suggère de transformer la variable locale en constante locale.
 
 
 
 \section{Constante locale}
 
-\begin{figure}[t]
+L'automate d'états finis associé à une constante locale est présenté à la \refFigure{}{automateEtatsConstanteLocale}. Une constante locale peut être écrite une seule fois, à partir de l'état \texttt{DECLARED}. En conséquence, une action \texttt{write} à partir des états \texttt{INITIALIZED} et \texttt{READ} est une erreur (elle apparaît en rouge) et redirige vers l'état \texttt{INVALID}. L'état \texttt{MUTATED} n'est plus accessible, et a été supprimé de la \refFigure{}{automateEtatsConstanteLocale}.
+
+
+
+
+\begin{figure}[ht!]
   \centering
   \small
   \begin{tikzpicture}
-    \EtatVert{INVALID_STATE}{Invalid}{0cm}{0cm}
-    \EtatOrange{DECLARED_STATE}{Declared}{3cm}{0cm}
-    \EtatOrange{INITIALIZED_STATE}{Initialized}{6cm}{0cm}
-    \EtatVert{READ_STATE}{Read}{9cm}{0cm}
+    \EtatVert{INVALID_STATE}{INVALID}{0cm}{0cm}
+    \EtatOrange{DECLARED_STATE}{DECLARED}{3cm}{0cm}
+    \EtatOrange{INITIALIZED_STATE}{INITIALIZED}{6cm}{0cm}
+    \EtatVert{READ_STATE}{READ}{9cm}{0cm}
     
     \FlecheEtatInitial{DECLARED_STATE}{above = 1cm}
-    \FlecheEtatInitial{INITIALIZED_STATE}{above = 1cm}
+
+    \BoucleVerte{INVALID_STATE}{above}{read}
+    \BoucleVerte{INVALID_STATE}{below}{write}
 
     \FlecheVerte{DECLARED_STATE}{write}{INITIALIZED_STATE}{bend left}
     \FlecheRouge{DECLARED_STATE}{read}{INVALID_STATE}{bend right}
@@ -167,10 +242,6 @@ end
     \FlecheRouge{READ_STATE}{write}{INVALID_STATE}{bend left}
 %    \ActionInterdite{READ_STATE}{below = 1cm}{write}
     \BoucleVerte{READ_STATE}{above}{read}
-
-
-    \BoucleVerte{INVALID_STATE}{above}{read}
-    \BoucleVerte{INVALID_STATE}{below}{read}
   \end{tikzpicture}
   \caption{Automate des états d'une constante locale}
   \labelFigure{automateEtatsConstanteLocale}
@@ -184,7 +255,7 @@ end
 
 \section{Paramètre formel constant en entrée}
 
-\begin{figure}[t]
+\begin{figure}[ht!]
   \centering
   \small
   \begin{tikzpicture}
@@ -222,7 +293,7 @@ end
 
 \section{Paramètre formel variable en entrée}
 
-\begin{figure}[t]
+\begin{figure}[ht!]
   \centering
   \small
   \begin{tikzpicture}
@@ -268,7 +339,7 @@ end
 
 \section{Paramètre formel en entrée / sortie}
 
-\begin{figure}[t]
+\begin{figure}[ht!]
   \centering
   \small
   \begin{tikzpicture}
@@ -312,7 +383,7 @@ end
 \section{Paramètre formel en sortie}
 
 
-\begin{figure}[t]
+\begin{figure}[ht!]
   \centering
   \small
   \begin{tikzpicture}
