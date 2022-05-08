@@ -132,7 +132,7 @@ block 2 :
 end
 %}
 
-%for (mInsertMethodName mErrorMessage mShadowErrorMessage mInitialStateName) in INSERT_METHOD_LIST do
+%for (mInsertMethodName mErrorMessage mShadowErrorMessage) in INSERT_METHOD_LIST do
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::setter_%![mInsertMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
     for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST

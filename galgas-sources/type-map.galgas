@@ -6,7 +6,7 @@ list @insertMethodListAST {
   public var @lstring mInsertMethodName
   public var @lstring mErrorMessage
   public var @lstring mShadowErrorMessage
-  public var @lstring mInitialStateName
+#  public var @lstring mInitialStateName
 }
 
 #·······················································································································
@@ -14,7 +14,6 @@ list @insertMethodListAST {
 list @mapSearchMethodListAST {
   public var @lstring mSearchMethodName
   public var @lstring mErrorMessage
-#  public var @lstring mActionName
   public var @bool mLocationAttribute
 }
 
@@ -149,13 +148,13 @@ syntax extension galgas3DeclarationsSyntax {
   rule <map_insert_setter_declaration> ?!@insertMethodListAST ioMapMethodList {
     $insert$
     $identifier$ ?let @lstring mMethodName
-    let @lstring stateName
-#    select
-      stateName = @lstring.new {!"" !@location.here}
-#    or
-#      $state$
-#      $identifier$ ? stateName
-#    end
+#    let @lstring stateName
+##    select
+#      stateName = @lstring.new {!"" !@location.here}
+##    or
+##      $state$
+##      $identifier$ ? stateName
+##    end
     $error$
     $message$
     $"string"$ ?let @lstring mErrorMessage
@@ -170,7 +169,7 @@ syntax extension galgas3DeclarationsSyntax {
       !mMethodName
       !mErrorMessage
       !mShadowErrorMessage
-      !stateName
+#      !stateName
   }
 
   #·····················································································································
@@ -275,9 +274,9 @@ syntax extension galgas4DeclarationsSyntax {
   rule <map_insert_setter_declaration> ?!@insertMethodListAST ioMapMethodList {
     $insert$
     $identifier$ ?let @lstring mMethodName
-    let @lstring stateName
-#    select
-      stateName = @lstring.new {!"" !@location.here}
+#    let @lstring stateName
+##    select
+#      stateName = @lstring.new {!"" !@location.here}
 #    or
 #      $state$
 #      $identifier$ ? stateName
@@ -296,7 +295,7 @@ syntax extension galgas4DeclarationsSyntax {
       !mMethodName
       !mErrorMessage
       !mShadowErrorMessage
-      !stateName
+#      !stateName
   }
 
   #·····················································································································
@@ -528,7 +527,7 @@ override method @mapDeclarationAST enterInSemanticContext
       !mPropertyName.string
   end
 #--- Handle insert setters
-  for (mInsertMethodName * * *) in self.mInsertMethodList do
+  for (mInsertMethodName * *) in self.mInsertMethodList do
     if [setterMap hasKey !mInsertMethodName.string] then
       error mInsertMethodName:"the '" + mInsertMethodName + "' insert method is already declared"
     else
@@ -746,7 +745,7 @@ override method @mapDeclarationAST semanticAnalysis
   end
 #--- Enter insert setters
   var @insertMethodMap insertMethodMap = {}
-  for (mInsertMethodName mErrorMessage mShadowErrorMessage *) in self.mInsertMethodList do
+  for (mInsertMethodName mErrorMessage mShadowErrorMessage) in self.mInsertMethodList do
     [!?insertMethodMap insertKey !mInsertMethodName]
     check_K_L_escapeCharacters ( !mErrorMessage )
     check_K_L_escapeCharacters ( !mShadowErrorMessage )

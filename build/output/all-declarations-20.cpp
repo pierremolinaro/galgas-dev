@@ -7297,8 +7297,7 @@ GALGAS_graphInsertModifierList_2D_element GALGAS_graphInsertModifierList_2D_elem
 GALGAS_insertMethodListAST_2D_element::GALGAS_insertMethodListAST_2D_element (void) :
 mProperty_mInsertMethodName (),
 mProperty_mErrorMessage (),
-mProperty_mShadowErrorMessage (),
-mProperty_mInitialStateName () {
+mProperty_mShadowErrorMessage () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7310,19 +7309,16 @@ GALGAS_insertMethodListAST_2D_element::~ GALGAS_insertMethodListAST_2D_element (
 
 GALGAS_insertMethodListAST_2D_element::GALGAS_insertMethodListAST_2D_element (const GALGAS_lstring & inOperand0,
                                                                               const GALGAS_lstring & inOperand1,
-                                                                              const GALGAS_lstring & inOperand2,
-                                                                              const GALGAS_lstring & inOperand3) :
+                                                                              const GALGAS_lstring & inOperand2) :
 mProperty_mInsertMethodName (inOperand0),
 mProperty_mErrorMessage (inOperand1),
-mProperty_mShadowErrorMessage (inOperand2),
-mProperty_mInitialStateName (inOperand3) {
+mProperty_mShadowErrorMessage (inOperand2) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_insertMethodListAST_2D_element GALGAS_insertMethodListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_insertMethodListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                                GALGAS_lstring::constructor_default (HERE),
                                                 GALGAS_lstring::constructor_default (HERE),
                                                 GALGAS_lstring::constructor_default (HERE)) ;
 }
@@ -7331,12 +7327,11 @@ GALGAS_insertMethodListAST_2D_element GALGAS_insertMethodListAST_2D_element::con
 
 GALGAS_insertMethodListAST_2D_element GALGAS_insertMethodListAST_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
                                                                                               const GALGAS_lstring & inOperand1,
-                                                                                              const GALGAS_lstring & inOperand2,
-                                                                                              const GALGAS_lstring & inOperand3 
+                                                                                              const GALGAS_lstring & inOperand2 
                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_insertMethodListAST_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_insertMethodListAST_2D_element (inOperand0, inOperand1, inOperand2, inOperand3) ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    result = GALGAS_insertMethodListAST_2D_element (inOperand0, inOperand1, inOperand2) ;
   }
   return result ;
 }
@@ -7354,16 +7349,13 @@ typeComparisonResult GALGAS_insertMethodListAST_2D_element::objectCompare (const
   if (result == kOperandEqual) {
     result = mProperty_mShadowErrorMessage.objectCompare (inOperand.mProperty_mShadowErrorMessage) ;
   }
-  if (result == kOperandEqual) {
-    result = mProperty_mInitialStateName.objectCompare (inOperand.mProperty_mInitialStateName) ;
-  }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_insertMethodListAST_2D_element::isValid (void) const {
-  return mProperty_mInsertMethodName.isValid () && mProperty_mErrorMessage.isValid () && mProperty_mShadowErrorMessage.isValid () && mProperty_mInitialStateName.isValid () ;
+  return mProperty_mInsertMethodName.isValid () && mProperty_mErrorMessage.isValid () && mProperty_mShadowErrorMessage.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7372,7 +7364,6 @@ void GALGAS_insertMethodListAST_2D_element::drop (void) {
   mProperty_mInsertMethodName.drop () ;
   mProperty_mErrorMessage.drop () ;
   mProperty_mShadowErrorMessage.drop () ;
-  mProperty_mInitialStateName.drop () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7388,8 +7379,6 @@ void GALGAS_insertMethodListAST_2D_element::description (C_String & ioString,
     mProperty_mErrorMessage.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mShadowErrorMessage.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mInitialStateName.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }

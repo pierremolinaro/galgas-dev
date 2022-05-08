@@ -488,7 +488,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
       !mPropertyName.string
   end
 #-------------------------- Insert Modifiers
-  for (mInsertMethodName * * *) in self.mInsertMethodList do
+  for (mInsertMethodName * *) in self.mInsertMethodList do
     if [setterMap hasKey !mInsertMethodName.string] then
       error mInsertMethodName:"the '" + mInsertMethodName + "' insert method is already declared"
     else
