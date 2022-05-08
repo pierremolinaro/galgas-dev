@@ -102,7 +102,7 @@ override method @mapEntryDeclarationAST enterInSemanticContext
   var constructorAttributeTypeList = @functionSignature {}
   constructorAttributeTypeList += !["" nowhere] !associatedMapTypeIndex !"inMap"
   constructorAttributeTypeList += !["" nowhere] !lstringTypeIndex !"inLKey"
-  for (mSearchMethodName * * *) in searchMethodList do
+  for (mSearchMethodName * *) in searchMethodList do
     [!?constructorMap insertKey
       !mSearchMethodName
       !constructorAttributeTypeList

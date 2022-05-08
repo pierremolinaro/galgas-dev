@@ -14,7 +14,7 @@ list @insertMethodListAST {
 list @mapSearchMethodListAST {
   public var @lstring mSearchMethodName
   public var @lstring mErrorMessage
-  public var @lstring mActionName
+#  public var @lstring mActionName
   public var @bool mLocationAttribute
 }
 
@@ -121,7 +121,7 @@ syntax extension galgas3DeclarationsSyntax {
     $error$
     $message$
     $"string"$ ?let @lstring errorMessage
-    ioMapSearchMethodListAST += !methodName !errorMessage !.new {!"" !.here} !locationAttribute
+    ioMapSearchMethodListAST += !methodName !errorMessage !locationAttribute
   }
 
   #·····················································································································
@@ -247,7 +247,7 @@ syntax extension galgas4DeclarationsSyntax {
     $error$
     $message$
     $"string"$ ?let @lstring errorMessage
-    ioMapSearchMethodListAST += !methodName !errorMessage !.new {!"" !.here} !locationAttribute
+    ioMapSearchMethodListAST += !methodName !errorMessage !locationAttribute
   }
 
   #·····················································································································
@@ -558,7 +558,7 @@ override method @mapDeclarationAST enterInSemanticContext
     end
   end
 #--- Handle search methods (methods if no state, setters if states)
-  for (mSearchMethodName * * mLocationAttribute) in self.mSearchMethodList do
+  for (mSearchMethodName * mLocationAttribute) in self.mSearchMethodList do
     var searchMethodFormalArgumentList = removeMethodFormalArgumentList
     if mLocationAttribute then
       searchMethodFormalArgumentList +=
@@ -753,7 +753,7 @@ override method @mapDeclarationAST semanticAnalysis
   end
 #--- Enter search methods
   var @searchMethodMap searchMethodMap = {}
-  for (mSearchMethodName mErrorMessage * *) in self.mSearchMethodList do
+  for (mSearchMethodName mErrorMessage *) in self.mSearchMethodList do
     [!?searchMethodMap insertKey !mSearchMethodName]
     check_K_escapeCharacters ( !mErrorMessage )
   end

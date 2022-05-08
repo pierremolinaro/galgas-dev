@@ -157,7 +157,7 @@ end
   %}\n\n%
 end
 
-for (mSearchMethodName mErrorMessage mActionName mLocationAttribute) in SEARCH_METHOD_LIST do
+for (mSearchMethodName mErrorMessage mLocationAttribute) in SEARCH_METHOD_LIST do
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %const char * kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]% = %![mErrorMessage utf8Representation]% ;\n\n%
   %//----------------------------------------------------------------------------------------------------------------------\n\n%

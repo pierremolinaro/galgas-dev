@@ -93,7 +93,7 @@ syntax extension galgas3DeclarationsSyntax {
     ioMapSearchMethodListAST +=
       !mMethodName
       !mErrorMessage
-      !.new {!"" !@location.here} # actionName
+#      !.new {!"" !@location.here} # actionName
       !false
   }
   
@@ -530,7 +530,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   ]
 #--- Handle search methods (methods if no state, setters if states)
 #  if [self.mMapStateList length] == 0 then
-    for (mSearchMethodName * * *) in self.mSearchMethodList do
+    for (mSearchMethodName * *) in self.mSearchMethodList do
       [!?instanceMethodMap insertKey
         !mSearchMethodName
         !@methodKind.definedAsMember

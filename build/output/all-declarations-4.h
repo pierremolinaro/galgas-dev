@@ -1675,11 +1675,6 @@ class GALGAS_mapSearchMethodListAST_2D_element : public AC_GALGAS_root {
     return mProperty_mErrorMessage ;
   }
 
-  public: GALGAS_lstring mProperty_mActionName ;
-  public: inline GALGAS_lstring readProperty_mActionName (void) const {
-    return mProperty_mActionName ;
-  }
-
   public: GALGAS_bool mProperty_mLocationAttribute ;
   public: inline GALGAS_bool readProperty_mLocationAttribute (void) const {
     return mProperty_mLocationAttribute ;
@@ -1704,10 +1699,6 @@ class GALGAS_mapSearchMethodListAST_2D_element : public AC_GALGAS_root {
     mProperty_mErrorMessage = inValue ;
   }
 
-  public: inline void setter_setMActionName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mActionName = inValue ;
-  }
-
   public: inline void setter_setMLocationAttribute (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mLocationAttribute = inValue ;
   }
@@ -1718,7 +1709,6 @@ class GALGAS_mapSearchMethodListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GALGAS_mapSearchMethodListAST_2D_element (const GALGAS_lstring & in_mSearchMethodName,
                                                     const GALGAS_lstring & in_mErrorMessage,
-                                                    const GALGAS_lstring & in_mActionName,
                                                     const GALGAS_bool & in_mLocationAttribute) ;
 
 //-- Start of generic part --*
@@ -1734,8 +1724,7 @@ class GALGAS_mapSearchMethodListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_mapSearchMethodListAST_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                                  const class GALGAS_lstring & inOperand1,
-                                                                                 const class GALGAS_lstring & inOperand2,
-                                                                                 const class GALGAS_bool & inOperand3
+                                                                                 const class GALGAS_bool & inOperand2
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'

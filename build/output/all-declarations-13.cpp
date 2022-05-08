@@ -12053,18 +12053,18 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_dec
 void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_declaration_i21_ (GALGAS_galgas_33_DeclarationAST & ioArgument_ioDeclarations,
                                                                                                C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_map COMMA_SOURCE_FILE ("type-map.galgas", 187)) ;
-  GALGAS_lstring var_mMapTypeName_6634 = inCompiler->synthetizedAttribute_tokenString () ;
+  GALGAS_lstring var_mMapTypeName_6616 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->enterIndexing (C_Lexique_galgas_33_Scanner::kIndexing_mapDefinition, "") ;
   inCompiler->enterIndexing (C_Lexique_galgas_33_Scanner::kIndexing_structDefinition, "-element") ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__40_type COMMA_SOURCE_FILE ("type-map.galgas", 189)) ;
-  GALGAS_lstringlist var_mapAttributeList_6746 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("type-map.galgas", 191)) ;
+  GALGAS_lstringlist var_mapAttributeList_6728 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("type-map.galgas", 191)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_galgas_34_DeclarationsSyntax_30 (inCompiler)) {
     case 2: {
-      GALGAS_lstring var_attribute_6806 = inCompiler->synthetizedAttribute_tokenString () ;
+      GALGAS_lstring var_attribute_6788 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__25_attribute COMMA_SOURCE_FILE ("type-map.galgas", 194)) ;
-      var_mapAttributeList_6746.addAssign_operation (var_attribute_6806  COMMA_SOURCE_FILE ("type-map.galgas", 195)) ;
+      var_mapAttributeList_6728.addAssign_operation (var_attribute_6788  COMMA_SOURCE_FILE ("type-map.galgas", 195)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -12072,28 +12072,28 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_dec
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7B_ COMMA_SOURCE_FILE ("type-map.galgas", 198)) ;
-  GALGAS_propertyInCollectionListAST var_propertyList_6902 = GALGAS_propertyInCollectionListAST::constructor_emptyList (SOURCE_FILE ("type-map.galgas", 199)) ;
-  GALGAS_insertMethodListAST var_mInsertMethodList_6962 = GALGAS_insertMethodListAST::constructor_emptyList (SOURCE_FILE ("type-map.galgas", 200)) ;
-  GALGAS_mapSearchMethodListAST var_mSearchMethodList_7038 = GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("type-map.galgas", 201)) ;
-  GALGAS_mapRemoveMethodListAST var_mRemoveMethodList_7093 = GALGAS_mapRemoveMethodListAST::constructor_emptyList (SOURCE_FILE ("type-map.galgas", 202)) ;
-  GALGAS_insertOrReplaceDeclarationListAST var_insertOrReplaceDeclarationListAST_7175 = GALGAS_insertOrReplaceDeclarationListAST::constructor_emptyList (SOURCE_FILE ("type-map.galgas", 203)) ;
+  GALGAS_propertyInCollectionListAST var_propertyList_6884 = GALGAS_propertyInCollectionListAST::constructor_emptyList (SOURCE_FILE ("type-map.galgas", 199)) ;
+  GALGAS_insertMethodListAST var_mInsertMethodList_6944 = GALGAS_insertMethodListAST::constructor_emptyList (SOURCE_FILE ("type-map.galgas", 200)) ;
+  GALGAS_mapSearchMethodListAST var_mSearchMethodList_7020 = GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("type-map.galgas", 201)) ;
+  GALGAS_mapRemoveMethodListAST var_mRemoveMethodList_7075 = GALGAS_mapRemoveMethodListAST::constructor_emptyList (SOURCE_FILE ("type-map.galgas", 202)) ;
+  GALGAS_insertOrReplaceDeclarationListAST var_insertOrReplaceDeclarationListAST_7157 = GALGAS_insertOrReplaceDeclarationListAST::constructor_emptyList (SOURCE_FILE ("type-map.galgas", 203)) ;
   bool repeatFlag_1 = true ;
   while (repeatFlag_1) {
     switch (select_galgas_34_DeclarationsSyntax_31 (inCompiler)) {
     case 2: {
-      nt_property_5F_declaration_ (var_propertyList_6902, inCompiler) ;
+      nt_property_5F_declaration_ (var_propertyList_6884, inCompiler) ;
     } break ;
     case 3: {
-      nt_map_5F_insert_5F_setter_5F_declaration_ (var_mInsertMethodList_6962, inCompiler) ;
+      nt_map_5F_insert_5F_setter_5F_declaration_ (var_mInsertMethodList_6944, inCompiler) ;
     } break ;
     case 4: {
-      nt_search_5F_declaration_ (var_mSearchMethodList_7038, inCompiler) ;
+      nt_search_5F_declaration_ (var_mSearchMethodList_7020, inCompiler) ;
     } break ;
     case 5: {
-      nt_remove_5F_declaration_ (var_mRemoveMethodList_7093, inCompiler) ;
+      nt_remove_5F_declaration_ (var_mRemoveMethodList_7075, inCompiler) ;
     } break ;
     case 6: {
-      nt_insert_5F_or_5F_replace_5F_declaration_ (var_insertOrReplaceDeclarationListAST_7175, inCompiler) ;
+      nt_insert_5F_or_5F_replace_5F_declaration_ (var_insertOrReplaceDeclarationListAST_7157, inCompiler) ;
     } break ;
     case 7: {
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__3B_ COMMA_SOURCE_FILE ("type-map.galgas", 216)) ;
@@ -12104,7 +12104,7 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_dec
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7D_ COMMA_SOURCE_FILE ("type-map.galgas", 218)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_mapDeclarationAST::constructor_new (GALGAS_bool (false), var_mMapTypeName_6634, var_mapAttributeList_6746, var_propertyList_6902, var_mInsertMethodList_6962, var_mSearchMethodList_7038, var_mRemoveMethodList_7093, var_insertOrReplaceDeclarationListAST_7175  COMMA_SOURCE_FILE ("type-map.galgas", 219))  COMMA_SOURCE_FILE ("type-map.galgas", 219)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_mapDeclarationAST::constructor_new (GALGAS_bool (false), var_mMapTypeName_6616, var_mapAttributeList_6728, var_propertyList_6884, var_mInsertMethodList_6944, var_mSearchMethodList_7020, var_mRemoveMethodList_7075, var_insertOrReplaceDeclarationListAST_7157  COMMA_SOURCE_FILE ("type-map.galgas", 219))  COMMA_SOURCE_FILE ("type-map.galgas", 219)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12209,28 +12209,28 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_dec
 void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_search_5F_declaration_i22_ (GALGAS_mapSearchMethodListAST & ioArgument_ioMapSearchMethodListAST,
                                                                                                          C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_search COMMA_SOURCE_FILE ("type-map.galgas", 234)) ;
-  GALGAS_lstring var_methodName_8098 = inCompiler->synthetizedAttribute_tokenString () ;
+  GALGAS_lstring var_methodName_8080 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("type-map.galgas", 235)) ;
-  GALGAS_bool var_locationAttribute_8130 ;
+  GALGAS_bool var_locationAttribute_8112 ;
   switch (select_galgas_34_DeclarationsSyntax_32 (inCompiler)) {
   case 1: {
-    var_locationAttribute_8130 = GALGAS_bool (false) ;
+    var_locationAttribute_8112 = GALGAS_bool (false) ;
   } break ;
   case 2: {
-    GALGAS_lstring var_attribute_8214 = inCompiler->synthetizedAttribute_tokenString () ;
+    GALGAS_lstring var_attribute_8196 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__25_attribute COMMA_SOURCE_FILE ("type-map.galgas", 240)) ;
     enumGalgasBool test_0 = kBoolTrue ;
     if (kBoolTrue == test_0) {
-      test_0 = GALGAS_bool (kIsEqual, var_attribute_8214.readProperty_string ().objectCompare (GALGAS_string ("location"))).boolEnum () ;
+      test_0 = GALGAS_bool (kIsEqual, var_attribute_8196.readProperty_string ().objectCompare (GALGAS_string ("location"))).boolEnum () ;
       if (kBoolTrue == test_0) {
-        var_locationAttribute_8130 = GALGAS_bool (true) ;
+        var_locationAttribute_8112 = GALGAS_bool (true) ;
       }
     }
     if (kBoolFalse == test_0) {
       TC_Array <C_FixItDescription> fixItArray1 ;
       appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string ("%location")) ;
-      inCompiler->emitSemanticError (var_attribute_8214.readProperty_location (), GALGAS_string ("only the %location is allowed here"), fixItArray1  COMMA_SOURCE_FILE ("type-map.galgas", 244)) ;
-      var_locationAttribute_8130.drop () ; // Release error dropped variable
+      inCompiler->emitSemanticError (var_attribute_8196.readProperty_location (), GALGAS_string ("only the %location is allowed here"), fixItArray1  COMMA_SOURCE_FILE ("type-map.galgas", 244)) ;
+      var_locationAttribute_8112.drop () ; // Release error dropped variable
     }
   } break ;
   default:
@@ -12238,9 +12238,9 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_sea
   }
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_error COMMA_SOURCE_FILE ("type-map.galgas", 247)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_message COMMA_SOURCE_FILE ("type-map.galgas", 248)) ;
-  GALGAS_lstring var_errorMessage_8502 = inCompiler->synthetizedAttribute_tokenString () ;
+  GALGAS_lstring var_errorMessage_8484 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("type-map.galgas", 249)) ;
-  ioArgument_ioMapSearchMethodListAST.addAssign_operation (var_methodName_8098, var_errorMessage_8502, GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-map.galgas", 250))  COMMA_SOURCE_FILE ("type-map.galgas", 250)), var_locationAttribute_8130  COMMA_SOURCE_FILE ("type-map.galgas", 250)) ;
+  ioArgument_ioMapSearchMethodListAST.addAssign_operation (var_methodName_8080, var_errorMessage_8484, var_locationAttribute_8112  COMMA_SOURCE_FILE ("type-map.galgas", 250)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12287,13 +12287,13 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_sea
 void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_remove_5F_declaration_i23_ (GALGAS_mapRemoveMethodListAST & ioArgument_ioMapRemoveMethodListAST,
                                                                                                          C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_remove COMMA_SOURCE_FILE ("type-map.galgas", 256)) ;
-  GALGAS_lstring var_mMethodName_8862 = inCompiler->synthetizedAttribute_tokenString () ;
+  GALGAS_lstring var_mMethodName_8825 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("type-map.galgas", 257)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_error COMMA_SOURCE_FILE ("type-map.galgas", 258)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_message COMMA_SOURCE_FILE ("type-map.galgas", 259)) ;
-  GALGAS_lstring var_mErrorMessage_8931 = inCompiler->synthetizedAttribute_tokenString () ;
+  GALGAS_lstring var_mErrorMessage_8894 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("type-map.galgas", 260)) ;
-  ioArgument_ioMapRemoveMethodListAST.addAssign_operation (var_mMethodName_8862, var_mErrorMessage_8931  COMMA_SOURCE_FILE ("type-map.galgas", 261)) ;
+  ioArgument_ioMapRemoveMethodListAST.addAssign_operation (var_mMethodName_8825, var_mErrorMessage_8894  COMMA_SOURCE_FILE ("type-map.galgas", 261)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12349,28 +12349,28 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_ins
 void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_map_5F_insert_5F_setter_5F_declaration_i25_ (GALGAS_insertMethodListAST & ioArgument_ioMapMethodList,
                                                                                                                           C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_insert COMMA_SOURCE_FILE ("type-map.galgas", 276)) ;
-  GALGAS_lstring var_mMethodName_9590 = inCompiler->synthetizedAttribute_tokenString () ;
+  GALGAS_lstring var_mMethodName_9553 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("type-map.galgas", 277)) ;
-  GALGAS_lstring var_stateName_9617 ;
-  var_stateName_9617 = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-map.galgas", 280))  COMMA_SOURCE_FILE ("type-map.galgas", 280)) ;
+  GALGAS_lstring var_stateName_9580 ;
+  var_stateName_9580 = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-map.galgas", 280))  COMMA_SOURCE_FILE ("type-map.galgas", 280)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_error COMMA_SOURCE_FILE ("type-map.galgas", 285)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_message COMMA_SOURCE_FILE ("type-map.galgas", 286)) ;
-  GALGAS_lstring var_mErrorMessage_9815 = inCompiler->synthetizedAttribute_tokenString () ;
+  GALGAS_lstring var_mErrorMessage_9778 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("type-map.galgas", 287)) ;
-  GALGAS_lstring var_mShadowErrorMessage_9852 ;
+  GALGAS_lstring var_mShadowErrorMessage_9815 ;
   switch (select_galgas_34_DeclarationsSyntax_33 (inCompiler)) {
   case 1: {
-    var_mShadowErrorMessage_9852 = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-map.galgas", 290))  COMMA_SOURCE_FILE ("type-map.galgas", 290)) ;
+    var_mShadowErrorMessage_9815 = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-map.galgas", 290))  COMMA_SOURCE_FILE ("type-map.galgas", 290)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2C_ COMMA_SOURCE_FILE ("type-map.galgas", 292)) ;
-    var_mShadowErrorMessage_9852 = inCompiler->synthetizedAttribute_tokenString () ;
+    var_mShadowErrorMessage_9815 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("type-map.galgas", 293)) ;
   } break ;
   default:
     break ;
   }
-  ioArgument_ioMapMethodList.addAssign_operation (var_mMethodName_9590, var_mErrorMessage_9815, var_mShadowErrorMessage_9852, var_stateName_9617  COMMA_SOURCE_FILE ("type-map.galgas", 295)) ;
+  ioArgument_ioMapMethodList.addAssign_operation (var_mMethodName_9553, var_mErrorMessage_9778, var_mShadowErrorMessage_9815, var_stateName_9580  COMMA_SOURCE_FILE ("type-map.galgas", 295)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
