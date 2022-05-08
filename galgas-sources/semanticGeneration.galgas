@@ -932,9 +932,9 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
-    ?@typedPropertyList CURRENT_PROPERTY_LIST
-    ?@typedPropertyList ALL_PROPERTY_LIST
-    ?@typedPropertyList INHERITED_ATTRIBUTE_LIST
+    ?currentPropertyList: @typedPropertyList CURRENT_PROPERTY_LIST
+    ?allPropertyList: @typedPropertyList ALL_PROPERTY_LIST
+    ?inheritedPropertyList: @typedPropertyList INHERITED_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
     ?@bool HAS_DEFAULT_CONSTRUCTOR
 

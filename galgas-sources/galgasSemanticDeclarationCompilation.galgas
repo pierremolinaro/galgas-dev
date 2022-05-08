@@ -153,7 +153,7 @@ proc buildGalgasSemanticContext
       ?outSortedSemanticDeclarationListAST
       ?*
       ?let @semanticDeclarationListAST unsortedSemanticDeclarationListAST
-      ?* # let @lstringlist unsortedNodeKeyList
+      ?*
     ]
     if [unsortedSemanticDeclarationListAST length] > 0 then
       var s = "semantic analysis not performed, " + [[unsortedSemanticDeclarationListAST length] string] + " declarations are involved in circular definition:"

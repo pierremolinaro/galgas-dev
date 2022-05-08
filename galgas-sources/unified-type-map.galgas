@@ -19,6 +19,127 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+map @unifiedTypeMapNew {
+  public var @unifiedTypeMapEntry mEntry
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @unifiedTypeMapEntry {
+  public var @bool mIsSolved
+  public var @bool mIsPredefined
+  public var @bool mIsConcrete # false if abstract class
+#  public var @unifiedTypeMapEntry-weak mSuperType
+  public var @typeKindEnum mTypeKindEnum
+  public var @bool mSupportCollectionValue
+  public var @typedPropertyList mAllTypedPropertyList
+  public var @propertyMap mPropertyMap # struct, class
+  public var @typedPropertyList mCurrentTypedPropertyList
+  public var @constructorMap mConstructorMap
+  public var @getterMap mGetterMap
+  public var @setterMap mSetterMap
+  public var @instanceMethodMap mInstanceMethodMap
+  public var @classMethodMap mClassMethodMap
+  public var @optionalMethodMap mOptionalMethodMap
+  public var @enumerationDescriptorList mEnumerationDescriptor # Empty List if cannot be enumerated
+  public var @operators mHandledOperatorFlags
+  public var @functionSignature mAddAssignOperatorArguments # Empty list if += operator is not supported
+  public var @constantIndexMap mEnumConstantMap
+  public var @enumConstantList mEnumConstantList
+  public var @mapSearchMethodListAST mMapSearchMethodList # For a map, the list of search methods
+  public var @mapSearchMethodListAST mMapEntrySearchConstructorList # For a map entry, the list of search methods of the associated map
+  public var @bool mGenerateHeaderInSeparateFile # Significant only for classes
+#  public var @unifiedTypeMapEntry-weak mTypeForEnumeratedElement
+  public var @string mDefaultConstructorName # Used in [@xxx default] (empty string if no default constructor)
+  public var @string mHeaderFileName # Name of C++ header file that contains type declaration
+  public var @headerKind mHeaderKind
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#getter @unifiedTypeMapEntry isNull -> @bool {
+#  result = [self.mEntryEnum isUnsolved]
+#}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#getter @unifiedTypeMapEntry mIsPredefined -> @bool {
+#  switch self.mEntryEnum
+#  case unsolved :
+#    error .nowhere : "unsolved type" : result
+#  case solved (isPredefined 25*) :
+#    result = isPredefined
+#  end
+#}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#getter @unifiedTypeMapEntry mSuperType -> @unifiedTypeMapEntry {
+#  switch self.mEntryEnum
+#  case unsolved :
+#    error .nowhere : "unsolved type" : result
+#  case solved (2* superType 23*) :
+#    result = superType
+#  end
+#}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#getter @unifiedTypeMapEntry mHeaderKind -> @headerKind {
+#  switch self.mEntryEnum
+#  case unsolved :
+#    error .nowhere : "unsolved type" : result
+#  case solved (25* headerKind) :
+#    result = headerKind
+#  end
+#}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#getter @unifiedTypeMapEntry mHeaderFileName -> @string {
+#  switch self.mEntryEnum
+#  case unsolved :
+#    error .nowhere : "unsolved type" : result
+#  case solved (24* headerFileName *) :
+#    result = headerFileName
+#  end
+#}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#getter @unifiedTypeMapEntry baseType -> @unifiedTypeMapEntry outBaseType {
+#  outBaseType = self
+#  loop (@uint. max) while not [[outBaseType mSuperType] isNull] do
+#    outBaseType = [outBaseType mSuperType]
+#  end
+#}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#method @unifiedTypeMapEntry addHeaderFileName ?!@stringset ioInclusions {
+#  if (not [self mIsPredefined]) & ([self mHeaderKind] != @headerKind.noHeader) then
+#    ioInclusions += ![self mHeaderFileName]
+#  end
+#}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#method @unifiedTypeMap-entry addHeaderFileName1 ?!@stringset ioInclusions {
+#  if not [self mIsPredefined] then
+#    switch [self mHeaderKind]
+#    case noHeader :
+#    case oneHeader :
+#      ioInclusions += ![self mHeaderFileName]
+#    case twoHeaders :
+#      ioInclusions += ![self mHeaderFileName] + "-1"
+#    end
+#  end
+#}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   OLD
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 shared map @unifiedTypeMap {
   public var @bool mIsPredefined
   public var @bool mIsConcrete # false if abstract class
