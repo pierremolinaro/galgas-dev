@@ -50,60 +50,6 @@ class cSharedEntry ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                    Data structures for map automaton                                          
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef enum {
-  kMapAutomatonNoIssue,
-  kMapAutomatonIssueWarning,
-  kMapAutomatonIssueError
-} mapAutomatonIssueEnum ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class cMapAutomatonFinalIssue {
-  public: const mapAutomatonIssueEnum mIssue ;
-  public: const char * mIssueMessage ;
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class cMapAutomatonTransition {
-  public: const uint32_t mTargetStateIndex ;
-  public: const mapAutomatonIssueEnum mIssue ;
-  public: const char * mIssueMessage ;
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class cBranchOverrideTransformationDescriptor {
-  public: const uint32_t mFirstStateIndex ;
-  public: const uint32_t mLastStateIndex ;
-  public: const uint32_t mResultingStateIndex ;
-  public: const mapAutomatonIssueEnum mIssue ;
-  public: const char * mIssueMessage ;
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class cBranchOverrideCompatibilityDescriptor {
-  public: const uint32_t mFirstCandidateStateIndex ;
-  public: const uint32_t mSecondCandidateStateIndex ;
-  public: const uint32_t mResultingStateIndex ;
-  public: const mapAutomatonIssueEnum mIssue ;
-  public: const char * mIssueMessage ;
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class cOverrideStateDescriptor {
-  public: uint32_t mInitialStateIndex ;
-  public: uint32_t mResultingStateIndex ;
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //     M A P    P R O X Y                                                                        
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -218,22 +164,20 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
 
 //--------------------------------- 'enterEdge' modifier declaration
   public: VIRTUAL_IN_DEBUG void setter_enterEdge (const GALGAS_lstring & inSource,
-                                                     const GALGAS_lstring & inTarget
-                                                     COMMA_LOCATION_ARGS) ;
+                                                  const GALGAS_lstring & inTarget
+                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- 'topologicalSort' method declaration
   public: VIRTUAL_IN_DEBUG void method_topologicalSort (GALGAS_lstringlist & outSortedKeys,
-                                                         GALGAS_lstringlist & outUnsortedKeys,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
+                                                        GALGAS_lstringlist & outUnsortedKeys,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Insert
   protected: VIRTUAL_IN_DEBUG void insertInSharedMap (capCollectionElement & inAttributes,
-                                                       C_Compiler * inCompiler,
-                                                       const uint32_t inInitialState,
-                                                       const char * inInitialStateName,
-                                                       const char * inInsertErrorMessage
-                                                       COMMA_LOCATION_ARGS) ;
+                                                      C_Compiler * inCompiler,
+                                                      const char * inInsertErrorMessage
+                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Search for 'with' read only instruction
   public: VIRTUAL_IN_DEBUG const cCollectionElement * readAccessForWithInstruction (const GALGAS_string & inKey) const ;
@@ -242,23 +186,12 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
   protected: VIRTUAL_IN_DEBUG cUniqueMapNode * searchEntryInMap (const C_String & inKey) const ;
 
   public: VIRTUAL_IN_DEBUG void findNearestKey (const C_String & inKey,
-                                                 TC_UniqueArray <C_String> & ioNearestKeyArray) const ;
+                                                TC_UniqueArray <C_String> & ioNearestKeyArray) const ;
 
   protected: VIRTUAL_IN_DEBUG const cCollectionElement * performSearch (const GALGAS_lstring & inKey,
-                                                                         C_Compiler * inCompiler,
-                                                                         const char * inSearchErrorMessage
-                                                                         COMMA_LOCATION_ARGS) const ;
-
-  protected: VIRTUAL_IN_DEBUG const cCollectionElement * performSearch (const GALGAS_lstring & inKey,
-                                                                         C_Compiler * inCompiler,
-                                                                         const uint32_t inActionIndex,
-                                                                         const cMapAutomatonTransition inTransitionArray [],
-                                                                         const uint32_t inAutomatonActionCount,
-                                                                         #ifndef DO_NOT_GENERATE_CHECKINGS
-                                                                           const uint32_t inAutomatonStateCount,
-                                                                         #endif
-                                                                         const char * inSearchErrorMessage
-                                                                         COMMA_LOCATION_ARGS) ;
+                                                                        C_Compiler * inCompiler,
+                                                                        const char * inSearchErrorMessage
+                                                                        COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG const cMapElement * searchForReadingAttribute (const GALGAS_string & inKey,
                                                                               C_Compiler * inCompiler
@@ -308,48 +241,12 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
 
 //--------------------------------- Internal methods for inserting proxy
   protected: VIRTUAL_IN_DEBUG cUniqueMapNode * performInsertEntry (const C_String & inKey,
-                                                                    const GALGAS_location & inLocation
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Check Map Automatons state
-  public: VIRTUAL_IN_DEBUG void checkAutomatonStates (const GALGAS_location & inErrorLocation,
-                                                       const cMapAutomatonFinalIssue inAutomatonFinalIssueArray [],
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Open override for block
-  public: VIRTUAL_IN_DEBUG void openOverride (const cBranchOverrideTransformationDescriptor inBranchBehaviourArray [],
-                                               const uint32_t inBranchBehaviourSize,
-                                               const cBranchOverrideCompatibilityDescriptor inBranchCombinationArray [],
-                                               const uint32_t inBranchCombinationSize,
-                                               const char * inBlockName,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Close override for block
-  public: VIRTUAL_IN_DEBUG void setter_closeOverride (const GALGAS_location & inErrorLocation,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Branch Handling
-  public: VIRTUAL_IN_DEBUG void setter_openBranch (C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void closeBranch (const GALGAS_location & inErrorLocation,
-                                              const cMapAutomatonFinalIssue inAutomatonFinalIssueArray [],
-                                              #ifndef DO_NOT_GENERATE_CHECKINGS
-                                                const uint32_t inAutomatonStateCount,
-                                              #endif
-                                              C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
+                                                                   const GALGAS_location & inLocation
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Attributes
   private: cSharedUniqueMapRoot * mSharedMap ;
   
-//--------------------------------- Handle shadow
-  protected: mapAutomatonIssueEnum mShadowBehaviour ;
-  protected: C_String mShadowMessage ;
-
 //--------------------------------- Friend
   friend class AC_GALGAS_sharedMapEntry ;
 } ;

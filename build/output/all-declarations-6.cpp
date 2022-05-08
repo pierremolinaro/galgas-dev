@@ -11060,8 +11060,6 @@ void GALGAS_unifiedTypeMap::setter_insertKey (GALGAS_lstring inKey,
   const char * kInsertErrorMessage = "the '@%K' type has been already declared in %L" ;
   insertInSharedMap (attributes,
                      inCompiler,
-                     0,
-                     NULL,
                      kInsertErrorMessage
                      COMMA_THERE) ;
 }

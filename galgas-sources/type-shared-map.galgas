@@ -18,11 +18,11 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @sharedMapDeclarationAST : @semanticDeclarationAST {
-  public var @lstring mMapTypeName
-  public var @lstringlist mAttributeList
-  public var @propertyInCollectionListAST mPropertyList
-  public var @insertMethodListAST mInsertMethodList
-  public var @mapSearchMethodListAST mSearchMethodList
+  public let @lstring mMapTypeName
+  public let @lstringlist mAttributeList
+  public let @propertyInCollectionListAST mPropertyList
+  public let @insertMethodListAST mInsertMethodList
+  public let @mapSearchMethodListAST mSearchMethodList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -93,7 +93,6 @@ syntax extension galgas3DeclarationsSyntax {
     ioMapSearchMethodListAST +=
       !mMethodName
       !mErrorMessage
-#      !.new {!"" !@location.here} # actionName
       !false
   }
   
@@ -449,13 +448,6 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !returnedTypeName:"lstringlist"
     !hasCompilerArgument:false
   )
-  enterInheritedGetterWithoutArgument (
-    !?getterMap
-    !?ioSemanticContext.mTypeMap
-    !getterName:"edgeGraphvizRepresentation"
-    !returnedTypeName:"string"
-    !hasCompilerArgument:false
-  )
 #--- Handle attributes
   var @typedPropertyList typedAttributeList = {}
   var @formalParameterSignature insertMethodFormalArgumentList = {}
@@ -529,79 +521,18 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !"" # No error message
   ]
 #--- Handle search methods (methods if no state, setters if states)
-#  if [self.mMapStateList length] == 0 then
-    for (mSearchMethodName * *) in self.mSearchMethodList do
-      [!?instanceMethodMap insertKey
-        !mSearchMethodName
-        !@methodKind.definedAsMember
-        !removeMethodFormalArgumentList
-        !mSearchMethodName.location
-        !true
-        !@methodQualifier.isBasic
-        !.constantMethod
-        !"" # No error message
-      ]
-    end
-#  else
-#    for (mSearchMethodName * * *) in self.mSearchMethodList do
-#      [!?setterMap insertKey
-#        !mSearchMethodName
-#        !@methodKind.definedAsMember
-#        !removeMethodFormalArgumentList
-#        !true
-#        !@methodQualifier.isBasic
-#        !"" # No error message
-#      ]
-#    end
-#  end
-#--- Enter "enterBranch" and "exitBranch" setters (only if there are states)
-#  if [self.mMapStateList length] > 0 then
-#    [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"location" ?let locationTypeIndex]
-#    [!?setterMap insertKey
-#      !@lstring.new {!"openBranch" !@location.here}
-#      !@methodKind.definedAsMember
-#      !{}
-#      !true
-#      !@methodQualifier. isInherited
-#      !"" # No error message
-#    ]
-#    [!?setterMap insertKey
-#      !@lstring.new {!"closeBranch" !@location.here}
-#      !@methodKind.definedAsMember
-#      !@formalParameterSignature. listWithValue {!["" nowhere] !locationTypeIndex !.argumentIn !"inErrorLocation"}
-#      !true
-#      !@methodQualifier.isBasic
-#      !"" # No error message
-#    ]
-#    [!?setterMap insertKey
-#      !@lstring.new {!"closeOverride" !@location.here}
-#      !@methodKind.definedAsMember
-#      !@formalParameterSignature. listWithValue {!["" nowhere] !locationTypeIndex !.argumentIn !"inErrorLocation"}
-#      !true
-#      !@methodQualifier. isInherited
-#      !"" # No error message
-#    ]
-#    [!?instanceMethodMap insertKey
-#      !@lstring.new {!"checkAutomatonStates" !@location.here}
-#      !@methodKind.definedAsMember
-#      !@formalParameterSignature. listWithValue {!["" nowhere] !locationTypeIndex !.argumentIn !"inErrorLocation"}
-#      !@location.here
-#      !true
-#      !@methodQualifier.isBasic
-#      !.constantMethod
-#      !"" # No error message
-#    ]
-#    for (mOverrideBlockName * *) in self.mMapOverrideBlockListAST do
-#      [!?setterMap insertKey
-#        !@lstring.new {!"openOverrideFor" + [mOverrideBlockName stringByCapitalizingFirstCharacter] !@location.here}
-#        !@methodKind.definedAsMember
-#        !{}
-#        !true
-#        !@methodQualifier.isBasic
-#        !"" # No error message
-#      ]
-#    end
-#  end
+  for (mSearchMethodName * *) in self.mSearchMethodList do
+    [!?instanceMethodMap insertKey
+      !mSearchMethodName
+      !@methodKind.definedAsMember
+      !removeMethodFormalArgumentList
+      !mSearchMethodName.location
+      !true
+      !@methodQualifier.isBasic
+      !.constantMethod
+      !"" # No error message
+    ]
+  end
 #--- Enter "attributeForKey" getters
   for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     let accessorName = @lstring.new {!mPropertyName.string + "ForKey" !mPropertyName.location}

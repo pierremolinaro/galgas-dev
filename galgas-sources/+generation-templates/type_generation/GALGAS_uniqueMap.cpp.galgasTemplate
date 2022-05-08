@@ -113,8 +113,6 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptySharedMap 
     %const char * kInsertErrorMessage = %![mErrorMessage utf8Representation]% ;\n%
     %insertInSharedMap (attributes,
                    inCompiler,
-                   0,
-                   NULL,
                    kInsertErrorMessage
                    COMMA_THERE) ;\n%
   end
