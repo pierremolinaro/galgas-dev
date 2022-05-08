@@ -43,7 +43,7 @@ setter @localVarManager insertInitializedLocalVariable ?let @lstring inVarName
     !inType
     !inCppName
     !inNameForCheckingFormalParameterUsing
-    !if inWarnsIfNotMutated then .none else .noWarningOnNonMutation end
+    !if inWarnsIfNotMutated then .none else .acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState end
     !.initialized
   ]
 }
@@ -59,39 +59,39 @@ setter @localVarManager insertUsedLocalConstant ?let @lstring inVarName
     !inType
     !inCppName
     !inNameForCheckingFormalParameterUsing
-    !.constant
-    !.mutated
+    !.rejectWriteInInitializedAndReadStates | .acceptReadStateAsFinalState
+    !.read
   ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager insertLocalConstant ?let @lstring inVarName 
-                                            ?let @unifiedTypeMap-entry inType
-                                            ?let @string inCppName
-                                            ?let @string inNameForCheckingFormalParameterUsing {
+setter @localVarManager insertInitializedLocalConstant ?let @lstring inVarName 
+                                                       ?let @unifiedTypeMap-entry inType
+                                                       ?let @string inCppName
+                                                       ?let @string inNameForCheckingFormalParameterUsing {
   [!?self.mCurrentManager insertKey
     !inVarName
     !inType
     !inCppName
     !inNameForCheckingFormalParameterUsing
-    !.constant
+    !.rejectWriteInInitializedAndReadStates | .acceptReadStateAsFinalState
     !.initialized
   ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @localVarManager insertUndefinedLocalConstant ?let @lstring inVarName 
-                                                     ?let @unifiedTypeMap-entry inType
-                                                     ?let @string inCppName
-                                                     ?let @string inNameForCheckingFormalParameterUsing {
+setter @localVarManager insertDeclaredLocalConstant ?let @lstring inVarName 
+                                                    ?let @unifiedTypeMap-entry inType
+                                                    ?let @string inCppName
+                                                    ?let @string inNameForCheckingFormalParameterUsing {
   [!?self.mCurrentManager insertKey
     !inVarName
     !inType
     !inCppName
     !inNameForCheckingFormalParameterUsing
-    !.constant
+    !.rejectWriteInInitializedAndReadStates | .acceptReadStateAsFinalState
     !.declared {!usedInSubscope: false}
   ]
 }
@@ -107,7 +107,7 @@ setter @localVarManager insertInputFormalArgumentDeclaredAsUnused ?let @lstring 
     !inType
     !inCppName
     !inNameForCheckingFormalParameterUsing
-    !.declaredAsUnused
+    !.acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState
     !.initialized
   ]
 }
@@ -123,7 +123,7 @@ setter @localVarManager insertInputFormalArgument ?let @lstring inVarName
     !inType
     !inCppName
     !inNameForCheckingFormalParameterUsing
-    !.noWarningOnNonMutation
+    !.acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState
     !.initialized
   ]
 }
@@ -139,7 +139,7 @@ setter @localVarManager insertOutputFormalArgument ?let @lstring inVarName
     !inType
     !inCppName
     !inNameForCheckingFormalParameterUsing
-    !.shouldBeInitialized | .noWarningOnNonMutation
+    !.rejectDeclaredStateAsFinalState | .acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState
     !.declared {!usedInSubscope: false}
   ]
 }
@@ -155,7 +155,7 @@ setter @localVarManager insertInputOutputFormalArgumentDeclaredAsUnused ?let @ls
     !inType
     !inCppName
     !inNameForCheckingFormalParameterUsing
-    !.declaredAsUnused  |.noWarningOnNonMutation
+    !.acceptInitializedStateAsFinalState
     !.initialized
   ]
 }
@@ -171,7 +171,7 @@ setter @localVarManager insertInputOutputFormalArgument ?let @lstring inVarName
     !inType
     !inCppName
     !inNameForCheckingFormalParameterUsing
-    !.noWarningOnNonMutation
+    !.acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState
     !.initialized
   ]
 }
@@ -187,7 +187,7 @@ setter @localVarManager insertConstantInputFormalArgumentDeclaredAsUnused ?let @
     !inType
     !inCppName
     !inNameForCheckingFormalParameterUsing
-    !.constant | .declaredAsUnused
+    !.rejectWriteInInitializedAndReadStates | .acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState
     !.initialized
   ]
 }
@@ -203,7 +203,7 @@ setter @localVarManager insertConstantInputFormalArgument ?let @lstring inVarNam
     !inType
     !inCppName
     !inNameForCheckingFormalParameterUsing
-    !.constant
+    !.rejectWriteInInitializedAndReadStates | .acceptReadStateAsFinalState
     !.initialized
   ]
 }
@@ -219,7 +219,7 @@ setter @localVarManager insertNonMutableProperty ?let @lstring inVarName
     !inType
     !inCppName
     !inNameForCheckingFormalParameterUsing
-    !.constant | .noWarningOnNonMutation
+    !.rejectWriteInInitializedAndReadStates | .acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState
     !.initialized
   ]
 }
@@ -235,7 +235,7 @@ setter @localVarManager insertMutableProperty ?let @lstring inVarName
     !inType
     !inCppName
     !inNameForCheckingFormalParameterUsing
-    !.noWarningOnNonMutation
+    !.acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState
     !.initialized
   ]
 }
@@ -297,7 +297,10 @@ setter @localVarManager closeBranch ?let @location inEndOfBranchLocation {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 boolset @localVariableAttributes {
-  constant, shouldBeInitialized, noWarningOnNonMutation, declaredAsUnused
+  rejectWriteInInitializedAndReadStates,
+  rejectDeclaredStateAsFinalState,
+  acceptInitializedStateAsFinalState,
+  acceptReadStateAsFinalState
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -355,18 +358,6 @@ struct @localVarManager {
 struct @currentVarManager {
   private var @scopeLocalVarMap mLocalVarMap
   private var @localVarMapListForLLVM mSubMaps
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @localVarValuation string -> @string {
-  switch self
-  case invalid : result = "invalid"
-  case declared (*) : result = "declared"
-  case initialized : result = "initialized"
-  case read : result = "read"
-  case mutated : result = "mutated"
-  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -528,16 +519,16 @@ setter @localVarValuation writeTransition ?let @lstring inVarName
   case declared (*) : # The variable has no value
     self = .initialized
   case initialized : # The variable has been written once
-    if [inAttributes constant] then
+    if [inAttributes rejectWriteInInitializedAndReadStates] then
       error inVarName : "constant '" + inVarName + "' cannot be mutated"
       self = .invalid
-    elsif not [inAttributes noWarningOnNonMutation] && not inOverridenMap then
+    elsif not [inAttributes acceptInitializedStateAsFinalState] && not inOverridenMap then
       warning inVarName : "variable '" + inVarName + "' was written to, but never read"
     else
       self = .mutated
     end
   case read : # The variable has been written, and read
-    if [inAttributes constant] then
+    if [inAttributes rejectWriteInInitializedAndReadStates] then
       error inVarName : "constant '" + inVarName + "' cannot be mutated"
       self = .invalid
     else
@@ -761,7 +752,7 @@ method @localVarValuation checkFinalState ?let @lstring inVarName ?let @localVar
   switch self
   case invalid :
   case declared (usedInOtherBlock) : # The variable has no value
-    if [inAttributes shouldBeInitialized] then
+    if [inAttributes rejectDeclaredStateAsFinalState] then
       error inVarName : "variable '" + inVarName + "' should be initialized"
     elsif usedInOtherBlock then
       warning inVarName : "variable '" + inVarName + "' is only used  in sub scope; consider moving it"
@@ -769,11 +760,11 @@ method @localVarValuation checkFinalState ?let @lstring inVarName ?let @localVar
       warning inVarName : "variable '" + inVarName + "' was never used; consider removing it"
     end
   case initialized : # The variable has been written once
-    if not [inAttributes noWarningOnNonMutation] && not [inAttributes declaredAsUnused] then
+    if not [inAttributes acceptInitializedStateAsFinalState] then
       warning inVarName : "variable '" + inVarName + "' was never read; consider removing it"
     end
   case read :
-    if not [inAttributes constant] && not [inAttributes noWarningOnNonMutation] then
+    if not [inAttributes acceptReadStateAsFinalState] then
       warning inVarName : "variable '" + inVarName + "' was never mutated; consider declaring it as 'let'"
     end
   case mutated :
@@ -799,19 +790,6 @@ method @localVarManager checkAutomatonStates ?let @location inErrorLocation {
 
 method @currentVarManager checkAutomatonStates ?let @location inErrorLocation {
   [self.mLocalVarMap checkFinalStates !inErrorLocation]
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! STRING GETTER
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @currentVarManager string -> @string {
-  result = "keys {"
-  for (varName 5*) in self.mLocalVarMap
-    do result += varName
-    between result += ", "
-  end
-  result += "}"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

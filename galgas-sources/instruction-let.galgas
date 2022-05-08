@@ -167,7 +167,7 @@ override method @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction
 {
   let targetType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mConstantTypeName}
   let targetVariableCppName = "var_" + [self.mConstantName identifierRepresentation] + "_" + [self.mConstantName.location locationIndex]
-  [!?ioVariableMap insertUndefinedLocalConstant
+  [!?ioVariableMap insertDeclaredLocalConstant
     !self.mConstantName
     !targetType
     !targetVariableCppName
@@ -199,7 +199,7 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
   ]
 #--- Enter target variable
   let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location locationIndex]
-  [!?ioVariableMap insertLocalConstant !self.mVariableName !expression.mResultType !targetVariableCppName !targetVariableCppName]
+  [!?ioVariableMap insertInitializedLocalConstant !self.mVariableName !expression.mResultType !targetVariableCppName !targetVariableCppName]
 #--- Generate instruction
   ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
     !expression.mResultType
@@ -230,7 +230,12 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
 #--- Check target variable
   let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location locationIndex]
   if self.mIsConstant then
-    [!?ioVariableMap insertLocalConstant !self.mVariableName !targetType !targetVariableCppName !targetVariableCppName]
+    [!?ioVariableMap insertInitializedLocalConstant
+      !self.mVariableName
+      !targetType
+      !targetVariableCppName
+      !targetVariableCppName
+    ]
   else
     [!?ioVariableMap insertInitializedLocalVariable
       !self.mVariableName

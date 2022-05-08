@@ -33,6 +33,7 @@ gui cocoa {
     label $after$, ${$
     label $map$, $@type$
     label $shared$, $map$, $@type$
+    label $boolset$, $@type$
     label $list$, $@type$
     label $sortedlist$, $@type$
     label $enum$, $@type$

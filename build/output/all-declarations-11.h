@@ -2498,8 +2498,6 @@ class GALGAS_localVariableDeclarationAST : public GALGAS_semanticInstructionAST 
 
   public: class GALGAS_lstring readProperty_mVariableName (void) const ;
 
-  public: class GALGAS_bool readProperty_mIsUndefinedConstant (void) const ;
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -2513,8 +2511,7 @@ class GALGAS_localVariableDeclarationAST : public GALGAS_semanticInstructionAST 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_localVariableDeclarationAST constructor_new (const class GALGAS_location & inOperand0,
                                                                            const class GALGAS_lstring & inOperand1,
-                                                                           const class GALGAS_lstring & inOperand2,
-                                                                           const class GALGAS_bool & inOperand3
+                                                                           const class GALGAS_lstring & inOperand2
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2552,13 +2549,11 @@ class cPtr_localVariableDeclarationAST : public cPtr_semanticInstructionAST {
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mVariableName ;
-  public: GALGAS_bool mProperty_mIsUndefinedConstant ;
 
 //--- Constructor
   public: cPtr_localVariableDeclarationAST (const GALGAS_location & in_mInstructionLocation,
                                             const GALGAS_lstring & in_mTypeName,
-                                            const GALGAS_lstring & in_mVariableName,
-                                            const GALGAS_bool & in_mIsUndefinedConstant
+                                            const GALGAS_lstring & in_mVariableName
                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

@@ -1486,7 +1486,7 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
   end
 #--- Create local constant
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location locationIndex]
-  [!?ioVariableMap insertLocalConstant !self.mActualParameterName !expectedType !cppName !cppName]
+  [!?ioVariableMap insertInitializedLocalConstant !self.mActualParameterName !expectedType !cppName !cppName]
 #---
   ioTerminalCheckAssignementList +=
     ![expectedType key]
@@ -1575,7 +1575,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   end
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location locationIndex]
   let type = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mActualParameterTypeName}
-  [!?ioVariableMap insertLocalConstant !self.mActualParameterName !type !cppName !cppName]
+  [!?ioVariableMap insertInitializedLocalConstant !self.mActualParameterName !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
   if expectedType != type then
     error self.mActualParameterName

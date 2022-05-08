@@ -5,7 +5,6 @@
 refclass @localVariableDeclarationAST : @semanticInstructionAST {
   private let @lstring mTypeName
   private let @lstring mVariableName
-  private let @bool mIsUndefinedConstant
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -20,7 +19,7 @@ syntax extension galgas3DeclarationsSyntax {
     $var$
     $@type$ ?let typeName
     $identifier$ ?let variableName
-    outInstruction = @localVariableDeclarationAST.new {!typeName.location !typeName !variableName !false}
+    outInstruction = @localVariableDeclarationAST.new {!typeName.location !typeName !variableName}
   }
 
   #·····················································································································
@@ -28,7 +27,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $@type$ ?let typeName
     $identifier$ ?let variableName
-    outInstruction = @localVariableDeclarationAST.new {!typeName.location !typeName !variableName !false}
+    outInstruction = @localVariableDeclarationAST.new {!typeName.location !typeName !variableName}
     if [option galgas_cli_options.errorOldStyleLocalVarDeclaration value] then
       error typeName : "old style local variable declaration (due to '--error-old-style-local-var-declaration' option)"
       fixit { replace "var @" + typeName }
@@ -49,7 +48,7 @@ syntax extension galgas4DeclarationsSyntax {
     $var$
     $@type$ ?let typeName
     $identifier$ ?let variableName
-    outInstruction = @localVariableDeclarationAST.new {!typeName.location !typeName !variableName !false}
+    outInstruction = @localVariableDeclarationAST.new {!typeName.location !typeName !variableName}
   }
 
   #·····················································································································
@@ -78,16 +77,12 @@ override method @localVariableDeclarationAST analyzeSemanticInstruction
 #--- Check target variable
   let targetType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
   let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location locationIndex]
-  if self.mIsUndefinedConstant then
-    [!?ioVariableMap insertUndefinedLocalConstant !self.mVariableName !targetType !targetVariableCppName !targetVariableCppName]
-  else
-    [!?ioVariableMap insertDeclaredLocalVariable
-      !self.mVariableName
-      !targetType
-      !targetVariableCppName
-      !targetVariableCppName
-    ]
-  end
+  [!?ioVariableMap insertDeclaredLocalVariable
+    !self.mVariableName
+    !targetType
+    !targetVariableCppName
+    !targetVariableCppName
+  ]
 #--- Generate instruction
   ioInstructionListForGeneration += !@localVariableDeclarationForGeneration.new {
     !targetType

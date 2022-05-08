@@ -70,31 +70,31 @@ void extensionSetter_insertUsedLocalConstant (class GALGAS_localVarManager & ioO
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager insertLocalConstant'
+//Extension setter '@localVarManager insertInitializedLocalConstant'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void extensionSetter_insertLocalConstant (class GALGAS_localVarManager & ioObject,
-                                          const class GALGAS_lstring constin_inVarName,
-                                          const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
-                                          const class GALGAS_string constin_inCppName,
-                                          const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
-                                          class C_Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
+void extensionSetter_insertInitializedLocalConstant (class GALGAS_localVarManager & ioObject,
+                                                     const class GALGAS_lstring constin_inVarName,
+                                                     const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
+                                                     const class GALGAS_string constin_inCppName,
+                                                     const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
+                                                     class C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension setter '@localVarManager insertUndefinedLocalConstant'
+//Extension setter '@localVarManager insertDeclaredLocalConstant'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void extensionSetter_insertUndefinedLocalConstant (class GALGAS_localVarManager & ioObject,
-                                                   const class GALGAS_lstring constin_inVarName,
-                                                   const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
-                                                   const class GALGAS_string constin_inCppName,
-                                                   const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
-                                                   class C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
+void extensionSetter_insertDeclaredLocalConstant (class GALGAS_localVarManager & ioObject,
+                                                  const class GALGAS_lstring constin_inVarName,
+                                                  const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
+                                                  const class GALGAS_string constin_inCppName,
+                                                  const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
+                                                  class C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //

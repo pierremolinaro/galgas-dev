@@ -5669,17 +5669,17 @@ class GALGAS_localVariableAttributes : public AC_GALGAS_root {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
+  public: static class GALGAS_localVariableAttributes constructor_acceptInitializedStateAsFinalState (LOCATION_ARGS) ;
+
+  public: static class GALGAS_localVariableAttributes constructor_acceptReadStateAsFinalState (LOCATION_ARGS) ;
+
   public: static class GALGAS_localVariableAttributes constructor_all (LOCATION_ARGS) ;
-
-  public: static class GALGAS_localVariableAttributes constructor_constant (LOCATION_ARGS) ;
-
-  public: static class GALGAS_localVariableAttributes constructor_declaredAsUnused (LOCATION_ARGS) ;
-
-  public: static class GALGAS_localVariableAttributes constructor_noWarningOnNonMutation (LOCATION_ARGS) ;
 
   public: static class GALGAS_localVariableAttributes constructor_none (LOCATION_ARGS) ;
 
-  public: static class GALGAS_localVariableAttributes constructor_shouldBeInitialized (LOCATION_ARGS) ;
+  public: static class GALGAS_localVariableAttributes constructor_rejectDeclaredStateAsFinalState (LOCATION_ARGS) ;
+
+  public: static class GALGAS_localVariableAttributes constructor_rejectWriteInInitializedAndReadStates (LOCATION_ARGS) ;
 
 //--------------------------------- & operator
   public: VIRTUAL_IN_DEBUG GALGAS_localVariableAttributes operator_and (const GALGAS_localVariableAttributes & inOperand
@@ -5713,17 +5713,17 @@ class GALGAS_localVariableAttributes : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_acceptInitializedStateAsFinalState (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_acceptReadStateAsFinalState (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_all (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_constant (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_declaredAsUnused (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_noWarningOnNonMutation (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_none (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_shouldBeInitialized (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_rejectDeclaredStateAsFinalState (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_rejectWriteInInitializedAndReadStates (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods
@@ -6304,16 +6304,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_openedOverrideList_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension getter '@localVarValuation string' (as function)
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_string extensionGetter_string (const class GALGAS_localVarValuation & inObject,
-                                            class C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Extension setter '@currentVarManager neutralAccess'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -6546,16 +6536,6 @@ void extensionMethod_checkAutomatonStates (const class GALGAS_currentVarManager 
                                            const class GALGAS_location constin_inErrorLocation,
                                            class C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension getter '@currentVarManager string' (as function)
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_string extensionGetter_string (const class GALGAS_currentVarManager & inObject,
-                                            class C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //

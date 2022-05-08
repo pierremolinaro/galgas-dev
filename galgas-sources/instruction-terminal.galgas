@@ -264,9 +264,7 @@ override method @terminalCheckInstructionForGeneration appendSyntaxSignature
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @terminalCheckInstructionForGeneration compareInstructionSyntaxSignature
-  ?let @semanticInstructionForGeneration inTestedInstruction
-  ->@bool
-{
+  ?let @semanticInstructionForGeneration inTestedInstruction -> @bool {
   if let si = inTestedInstruction as @terminalCheckInstructionForGeneration then
 #  cast inTestedInstruction
 #  case >= @terminalCheckInstructionForGeneration si :

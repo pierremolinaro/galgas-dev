@@ -510,7 +510,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
       let targetVariableCppName = "var_" + [constantName identifierRepresentation]
             + "_" + [constantName.location locationIndex]
       if constantName.string != "" then
-        [!?ioVariableMap insertLocalConstant
+        [!?ioVariableMap insertInitializedLocalConstant
           !constantName
           !castType
           !targetVariableCppName
@@ -649,7 +649,7 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
         end
         let targetVariableCppName = "var_" + [constantName identifierRepresentation]
          + "_" + [constantName.location locationIndex]
-        [!?ioVariableMap insertLocalConstant
+        [!?ioVariableMap insertInitializedLocalConstant
           !constantName
           !formalType
           !targetVariableCppName
