@@ -195,8 +195,7 @@ class AC_GALGAS_sharedMapEntry : public AC_GALGAS_root {
 
 class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
 //--------------------------------- Constructor
-  protected: AC_GALGAS_uniqueMap (const mapAutomatonIssueEnum inShadowBehaviour,
-                                   const C_String & inShadowMessage) ;
+  protected: AC_GALGAS_uniqueMap (void) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ AC_GALGAS_uniqueMap (void) ;

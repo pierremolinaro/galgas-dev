@@ -150,12 +150,12 @@ syntax extension galgas3DeclarationsSyntax {
     $insert$
     $identifier$ ?let @lstring mMethodName
     let @lstring stateName
-    select
+#    select
       stateName = @lstring.new {!"" !@location.here}
-    or
-      $state$
-      $identifier$ ? stateName
-    end
+#    or
+#      $state$
+#      $identifier$ ? stateName
+#    end
     $error$
     $message$
     $"string"$ ?let @lstring mErrorMessage
@@ -276,12 +276,12 @@ syntax extension galgas4DeclarationsSyntax {
     $insert$
     $identifier$ ?let @lstring mMethodName
     let @lstring stateName
-    select
+#    select
       stateName = @lstring.new {!"" !@location.here}
-    or
-      $state$
-      $identifier$ ? stateName
-    end
+#    or
+#      $state$
+#      $identifier$ ? stateName
+#    end
     $error$
     $message$
     $"string"$ ?let @lstring mErrorMessage

@@ -370,12 +370,11 @@ cUniqueMapNode::~cUniqueMapNode (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-AC_GALGAS_uniqueMap::AC_GALGAS_uniqueMap (const mapAutomatonIssueEnum inShadowBehaviour,
-                                          const C_String & inShadowMessage) :
+AC_GALGAS_uniqueMap::AC_GALGAS_uniqueMap (void) :
 AC_GALGAS_root (),
 mSharedMap (NULL),
-mShadowBehaviour (inShadowBehaviour),
-mShadowMessage (inShadowMessage) {
+mShadowBehaviour (kMapAutomatonNoIssue),
+mShadowMessage ("") {
 }
 
 //----------------------------------------------------------------------------------------------------------------------

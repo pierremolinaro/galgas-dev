@@ -35,10 +35,10 @@ override method @weakReferenceDeclarationAST enterDeclarationInGraph
       !@lstring.new {!"@" + self.mSuperWeakReferenceTypeName !self.mSuperWeakReferenceTypeName.location}
     ]
   end
-  [!?ioSemanticTypePrecedenceGraph addEdge
-    !key
-    !@lstring.new {!"@" + self.mClassTypeName !self.mClassTypeName.location}
-  ]
+#  [!?ioSemanticTypePrecedenceGraph addEdge
+#    !key
+#    !@lstring.new {!"@" + self.mClassTypeName !self.mClassTypeName.location}
+#  ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -253,10 +253,8 @@ refclass @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @weakReferenceTypeForGeneration appendDeclaration1
-  ?!@stringset ioInclusionSet
-  !@string outHeader
-{
+override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset ioInclusionSet
+                                                                   !@string outHeader {
   if not [self.mSuperClass isNull] then
     [self.mSuperClass addHeaderFileName !?ioInclusionSet]
   end

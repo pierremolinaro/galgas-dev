@@ -19,41 +19,41 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-map @unifiedTypeMapNew {
-  public var @unifiedTypeMapEntry mEntry
-}
+#map @unifiedTypeMapNew {
+#  public var @unifiedTypeMapEntry mEntry
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @unifiedTypeMapEntry {
-  public var @bool mIsSolved
-  public var @bool mIsPredefined
-  public var @bool mIsConcrete # false if abstract class
-#  public var @unifiedTypeMapEntry-weak mSuperType
-  public var @typeKindEnum mTypeKindEnum
-  public var @bool mSupportCollectionValue
-  public var @typedPropertyList mAllTypedPropertyList
-  public var @propertyMap mPropertyMap # struct, class
-  public var @typedPropertyList mCurrentTypedPropertyList
-  public var @constructorMap mConstructorMap
-  public var @getterMap mGetterMap
-  public var @setterMap mSetterMap
-  public var @instanceMethodMap mInstanceMethodMap
-  public var @classMethodMap mClassMethodMap
-  public var @optionalMethodMap mOptionalMethodMap
-  public var @enumerationDescriptorList mEnumerationDescriptor # Empty List if cannot be enumerated
-  public var @operators mHandledOperatorFlags
-  public var @functionSignature mAddAssignOperatorArguments # Empty list if += operator is not supported
-  public var @constantIndexMap mEnumConstantMap
-  public var @enumConstantList mEnumConstantList
-  public var @mapSearchMethodListAST mMapSearchMethodList # For a map, the list of search methods
-  public var @mapSearchMethodListAST mMapEntrySearchConstructorList # For a map entry, the list of search methods of the associated map
-  public var @bool mGenerateHeaderInSeparateFile # Significant only for classes
-#  public var @unifiedTypeMapEntry-weak mTypeForEnumeratedElement
-  public var @string mDefaultConstructorName # Used in [@xxx default] (empty string if no default constructor)
-  public var @string mHeaderFileName # Name of C++ header file that contains type declaration
-  public var @headerKind mHeaderKind
-}
+#refclass @unifiedTypeMapEntry {
+#  public var @bool mIsSolved
+#  public var @bool mIsPredefined
+#  public var @bool mIsConcrete # false if abstract class
+##  public var @unifiedTypeMapEntry-weak mSuperType
+#  public var @typeKindEnum mTypeKindEnum
+#  public var @bool mSupportCollectionValue
+#  public var @typedPropertyList mAllTypedPropertyList
+#  public var @propertyMap mPropertyMap # struct, class
+#  public var @typedPropertyList mCurrentTypedPropertyList
+#  public var @constructorMap mConstructorMap
+#  public var @getterMap mGetterMap
+#  public var @setterMap mSetterMap
+#  public var @instanceMethodMap mInstanceMethodMap
+#  public var @classMethodMap mClassMethodMap
+#  public var @optionalMethodMap mOptionalMethodMap
+#  public var @enumerationDescriptorList mEnumerationDescriptor # Empty List if cannot be enumerated
+#  public var @operators mHandledOperatorFlags
+#  public var @functionSignature mAddAssignOperatorArguments # Empty list if += operator is not supported
+#  public var @constantIndexMap mEnumConstantMap
+#  public var @enumConstantList mEnumConstantList
+#  public var @mapSearchMethodListAST mMapSearchMethodList # For a map, the list of search methods
+#  public var @mapSearchMethodListAST mMapEntrySearchConstructorList # For a map entry, the list of search methods of the associated map
+#  public var @bool mGenerateHeaderInSeparateFile # Significant only for classes
+##  public var @unifiedTypeMapEntry-weak mTypeForEnumeratedElement
+#  public var @string mDefaultConstructorName # Used in [@xxx default] (empty string if no default constructor)
+#  public var @string mHeaderFileName # Name of C++ header file that contains type declaration
+#  public var @headerKind mHeaderKind
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

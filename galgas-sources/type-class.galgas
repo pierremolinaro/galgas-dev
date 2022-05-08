@@ -150,7 +150,7 @@ syntax extension galgas4DeclarationsSyntax {
       !classFeatureList
       !propertyList
     }
-  #--- Assiciated Weak Type
+  #--- Associated Weak Type
     ioDeclarations.mDeclarationList += !@weakReferenceDeclarationAST.new {
       !false # Is not predefined
       !className
@@ -187,19 +187,20 @@ override method @classDeclarationAST enterDeclarationInGraph
 {
   let key = @lstring.new {!"@" + self.mClassTypeName !self.mClassTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+#--- Add edge from super class
   if self.mSuperClassName.string != "" then
     [!?ioSemanticTypePrecedenceGraph addEdge
       !key
       !.new {!"@" + self.mSuperClassName !self.mSuperClassName.location}
     ]
   end
-#  if not self.mIsReference then
-    for (* mPropertyTypeName * * *) in self.mPropertyList do
-      [!?ioSemanticTypePrecedenceGraph addEdge
-        !key !@lstring.new {!"@" + mPropertyTypeName !self.mSuperClassName.location}
-      ]
-    end
-#  end
+#--- Add edge from property types
+  for (* mPropertyTypeName * * *) in self.mPropertyList do
+    [!?ioSemanticTypePrecedenceGraph addEdge
+      !key
+      !@lstring.new {!"@" + mPropertyTypeName !self.mSuperClassName.location}
+    ]
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -706,11 +707,6 @@ override method @classTypeForGeneration appendSpecificImplementation ?let @unifi
                                                                      ?!@stringset ioInclusionSet
                                                                      !@string outImplementation {
   [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
-#  if self.mIsReference then
-#    for (type 3*) in self.mAllTypedAttributeList do
-#      [type addHeaderFileName !?ioInclusionSet]
-#    end
-#  end
 
   let at = [self.mAllTypedAttributeList subListWithRange
     !.new {!0 ![self.mAllTypedAttributeList length] - [self.mCurrentTypedAttributeList length]}
