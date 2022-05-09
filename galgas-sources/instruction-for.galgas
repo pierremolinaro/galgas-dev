@@ -647,10 +647,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
       for (mOptionalTypeName mDeclaredAsUnused mOptionalConstantName) in self.mElementList, (mEnumeratedType mEnumerationName) in enumerationDescriptorList do
         if mOptionalConstantName.string != "" then # Empty string if joker
           if mOptionalTypeName.string != "" then
-            let foundType = @unifiedTypeMap-entry.searchKey {
-              !inAnalysisContext.mSemanticContext.mTypeMap
-              !mOptionalTypeName
-            }
+            let foundType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !mOptionalTypeName]
             if foundType != mEnumeratedType then
               error mOptionalTypeName : "incorrect '@" + [foundType key] + "' type: '@" + [mEnumeratedType key] + "' type required here"
             end
@@ -695,10 +692,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   end
 #--- Check enumeration type
   if self.mEnumerationOptionalTypeName.string != "" then
-    let explicitType = @unifiedTypeMap-entry.searchKey {
-      !inAnalysisContext.mSemanticContext.mTypeMap
-      !self.mEnumerationOptionalTypeName
-    }
+    let explicitType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mEnumerationOptionalTypeName]
     if [enumeratedElementType key] != [explicitType key] then
       error self.mEnumerationOptionalTypeName: "the '@" + [enumeratedElementType key] + "' type is expected here"
     end

@@ -47,7 +47,7 @@ syntax extension galgas4ExpressionSyntax {
 override method @literalTypeInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [@unifiedTypeMap-entry makeEntry !?ioTypeMap !self.mLiteralTypeName ?*]
+  [!?ioTypeMap makeEntry !self.mLiteralTypeName ?*]
 }
 
 #·····················································································································
@@ -65,9 +65,9 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
 #--- Get constructor map from type map
   [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mLiteralTypeName ?26*]
 #---
-  let type = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mLiteralTypeName}
+  let type = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mLiteralTypeName]
   outExpression = @literalTypeInExpressionForGeneration.new {
-    !@unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !.new {!"type" !.here}}
+    ![inAnalysisContext.mSemanticContext.mTypeMap searchKey !.new {!"type" !.here}]
     !self.mLiteralTypeName.location
     !type
   }

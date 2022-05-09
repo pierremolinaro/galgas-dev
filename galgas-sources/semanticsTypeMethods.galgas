@@ -23,7 +23,7 @@ private proc enterClassMethodWithInputArgument
   ?argName:let @string inArgumentName
   ?compilerArgument:let @bool inHasCompilerArgument
 {
-  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgumentTypeName ?let argumentTypeIndex]
+  [!?ioUnifiedTypeMap makeEntryFromString !inArgumentTypeName ?let argumentTypeIndex]
   var @formalParameterSignature argList = {}
   argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inArgumentName
   [!?ioClassMethodMap insertOrReplace
@@ -49,13 +49,13 @@ private proc enterClassMethodWith3InputArguments
 {
   var @formalParameterSignature argList = {}
 #--- Argument 1
-  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgumentTypeName1 ?let argumentTypeIndex1]
+  [!?ioUnifiedTypeMap makeEntryFromString !inArgumentTypeName1 ?let argumentTypeIndex1]
   argList += !["" nowhere] !argumentTypeIndex1 !.argumentConstantIn !inArgumentName1
 #--- Argument 2
-  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgumentTypeName2 ?let argumentTypeIndex2]
+  [!?ioUnifiedTypeMap makeEntryFromString !inArgumentTypeName2 ?let argumentTypeIndex2]
   argList += !["" nowhere] !argumentTypeIndex2 !.argumentConstantIn !inArgumentName2
 #--- Argument 3
-  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inArgumentTypeName3 ?let argumentTypeIndex3]
+  [!?ioUnifiedTypeMap makeEntryFromString !inArgumentTypeName3 ?let argumentTypeIndex3]
   argList += !["" nowhere] !argumentTypeIndex3 !.argumentConstantIn !inArgumentName3
 #---
   [!?ioClassMethodMap insertOrReplace !.new {!inClassMethodName !.here} !argList !inHasCompilerArgument]
@@ -70,7 +70,7 @@ private proc enterClassMethodWithStringInputArgument
   ?argName:let @string inStringArgumentName
   ?compilerArg:let @bool inHasCompilerArgument
 {
-  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"string" ?let argumentTypeIndex]
+  [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let argumentTypeIndex]
   var @formalParameterSignature argList = {}
   argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inStringArgumentName
   [!?ioClassMethodMap insertOrReplace
@@ -177,8 +177,8 @@ override method @stringPredefinedTypeAST getClassMethodMap
     !argName:"inDirectoryPath"
     !compilerArg:true
   )
-  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"string" ?let @unifiedTypeMap-entry stringType]
-  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"bool" ?let @unifiedTypeMap-entry boolType]
+  [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let @unifiedTypeMap-entry stringType]
+  [!?ioUnifiedTypeMap makeEntryFromString !"bool" ?let @unifiedTypeMap-entry boolType]
 #--- Generate file
   var @formalParameterSignature argList = {}
   argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inStartPath"

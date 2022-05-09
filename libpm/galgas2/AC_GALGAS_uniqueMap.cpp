@@ -292,6 +292,7 @@ mSharedMap (NULL) {
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_uniqueMap & AC_GALGAS_uniqueMap::operator = (const AC_GALGAS_uniqueMap & inSource) {
+//  printf ("AFFECTATION\n") ;
   macroAssignSharedObject (mSharedMap, inSource.mSharedMap) ;
   return *this ;
 }

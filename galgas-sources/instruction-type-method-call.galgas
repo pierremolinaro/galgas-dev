@@ -79,7 +79,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Get type method map for the named type
-  let type = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
+  let type = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- Get type method signature
   [[type mClassMethodMap] searchKey !self.mMethodName ?let routineSignature ?let hasCompilerArgument]
 #--- Check effective parameters
@@ -93,7 +93,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
     !self.mActualParameterList
     !?ioVariableMap
     !?ioInstructionListForGeneration
-    ?let  @actualParameterListForGeneration actualParameterListForGeneration
+    ?let @actualParameterListForGeneration actualParameterListForGeneration
   )
 #--- Generate instructions
   ioInstructionListForGeneration += !@typeMethodCallInstructionForGeneration.new {

@@ -101,7 +101,7 @@ override method @listDeclarationAST enterInSemanticContext
 #--- Handle attributes
   var @typedPropertyList typedAttributeList = {}
   for (* mPropertyTypeName mPropertyName isPublic mAttributeList) in self.mPropertyList do
-    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     var hasSelector = false
     for (mValue) in mAttributeList do
       if mValue.string == "setter" then
@@ -122,12 +122,11 @@ override method @listDeclarationAST enterInSemanticContext
     typedAttributeList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
   end
 #--- uint type index
-  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"uint" ?let uintType]
+  [!?ioSemanticContext.mTypeMap makeEntryFromString !"uint" ?let uintType]
 #--- List type index
-  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mListTypeName ?let listTypeIndex]
+  [!?ioSemanticContext.mTypeMap makeEntry  !self.mListTypeName ?let listTypeIndex]
 #--- Element type index
-  [@unifiedTypeMap-entry makeEntry
-    !?ioSemanticContext.mTypeMap
+  [!?ioSemanticContext.mTypeMap makeEntry
     !@lstring.new {!self.mListTypeName.string + elementTypeNameSuffix () !self.mListTypeName.location}
     ?let @unifiedTypeMap-entry listElementTypeIndex
   ]
@@ -136,7 +135,7 @@ override method @listDeclarationAST enterInSemanticContext
   var @functionSignature constructorAttributeTypeList = {}
   var @formalParameterSignature setterOutputFormalArgumentList = {}
   var @formalParameterSignature setterInputFormalArgumentList = {}
-  for (mPropertyTypeEntry mPropertyName * mHasSelector) in typedAttributeList do
+  for (mPropertyTypeEntry @lstring mPropertyName * mHasSelector) in typedAttributeList do
     let selector = if mHasSelector then mPropertyName.string else "" end
     enumerationDescriptor += !mPropertyTypeEntry !mPropertyName.string
     constructorAttributeTypeList +=
@@ -170,7 +169,7 @@ override method @listDeclarationAST enterInSemanticContext
     !listTypeIndex
   ]
 #--- Readers
-  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
@@ -392,7 +391,7 @@ override method @listDeclarationAST semanticAnalysis
   for (* mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
+    let t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
     let hasSetter = mIsPublic
     var hasSelector = false
     for (mValue) in mAttributeList do
@@ -419,12 +418,12 @@ override method @listDeclarationAST semanticAnalysis
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #---
-  let selfType = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mListTypeName}
+  let selfType = [inSemanticContext.mTypeMap searchKey !self.mListTypeName]
   ioSemanticDeclarationListForGeneration +=
     !"list type " + self.mListTypeName
     !@listTypeForGeneration.new {
       !selfType
-      !.searchKey {!inSemanticContext.mTypeMap !.new {!self.mListTypeName.string + elementTypeNameSuffix () !self.mListTypeName.location}}
+      ![inSemanticContext.mTypeMap searchKey !.new {!self.mListTypeName.string + elementTypeNameSuffix () !self.mListTypeName.location}]
       !typedAttributeList
     }
 }
@@ -486,9 +485,9 @@ override method @listTypeForGeneration appendDeclaration1
 #·······················································································································
 
 override method @listTypeForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation {
+                                        ?let @unifiedTypeMap unused inTypeMap
+                                        ?!@stringset ioInclusionSet
+                                        !@string outImplementation {
   for (t 3*) in self.mTypedAttributeList do
     [t addHeaderFileName !?ioInclusionSet]
   end

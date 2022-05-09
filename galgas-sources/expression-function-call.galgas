@@ -114,7 +114,7 @@ override method @functionCallExpressionAST analyzeSemanticExpression
         !?expression
       )
       if mFormalSelector.string != mActualSelector.string then
-        let s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
+        let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
         error mActualSelector : "the selector should be '" + s + "'"
         fixit { replace s }
       end

@@ -324,18 +324,18 @@ override method @externTypeDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #---
-  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   var @constructorMap constructorMap = {}
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap = {}
 #  let @classMethodMap classMethodMap = {}
 #--- Constructors
   for (mConstructorName mResultTypeName mParameterList) in self.mExternTypeConstructorList do
-    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mResultTypeName ?let returnedTypeEntry]
+    [!?ioSemanticContext.mTypeMap makeEntry !mResultTypeName ?let returnedTypeEntry]
   #---
     var @functionSignature arguments = {}
     for (mFormalSelector mFormalParameterTypeName mFormalParameterName) in mParameterList do
-      [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalParameterTypeName ?let argumentTypeEntry]
+      [!?ioSemanticContext.mTypeMap makeEntry !mFormalParameterTypeName ?let argumentTypeEntry]
       arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string
     end
   #---
@@ -348,11 +348,11 @@ override method @externTypeDeclarationAST enterInSemanticContext
   end
 #--- Getters
   for (mGetterName mResultTypeName mParameterList) in self.mExternTypeGetterList do
-    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mResultTypeName ?let returnedTypeEntry]
+    [!?ioSemanticContext.mTypeMap makeEntry !mResultTypeName ?let returnedTypeEntry]
   #---
     var @functionSignature arguments = {}
     for (mFormalSelector mFormalParameterTypeName mFormalParameterName) in mParameterList do
-      [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalParameterTypeName ?let argumentTypeEntry]
+      [!?ioSemanticContext.mTypeMap makeEntry !mFormalParameterTypeName ?let argumentTypeEntry]
       arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string
     end
   #---
@@ -371,8 +371,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
   for (mSetterName mFormalParameterList) in self.mExternTypeSetterList do
     var @formalParameterSignature routineSignature = {}
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
-      [@unifiedTypeMap-entry makeEntry
-        !?ioSemanticContext.mTypeMap
+      [!?ioSemanticContext.mTypeMap makeEntry
         !mFormalArgumentTypeName
         ?let @unifiedTypeMap-entry parameterTypeIndex
       ]
@@ -392,8 +391,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
   for (mMethodName mFormalParameterList mDeclarationLocation) in self.mExternTypeMethodList do
     var routineSignature = @formalParameterSignature {}
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
-      [@unifiedTypeMap-entry makeEntry
-        !?ioSemanticContext.mTypeMap
+      [!?ioSemanticContext.mTypeMap makeEntry
         !mFormalArgumentTypeName
         ?let parameterTypeIndex
       ]
@@ -462,7 +460,7 @@ override method @externTypeDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"extern type " + self.mExternTypeName
     !@externTypeDeclarationForGeneration.new {
-      !.searchKey {!inSemanticContext.mTypeMap !self.mExternTypeName}
+      ![inSemanticContext.mTypeMap searchKey !self.mExternTypeName]
       !self.mExternTypeName.string
       !self.mCppPreDeclarationCode
       !self.mCppClassCode

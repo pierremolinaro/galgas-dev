@@ -116,32 +116,27 @@ override method @graphDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- string type Entry
-  [@unifiedTypeMap-entry makeEntryFromString
-    !?ioSemanticContext.mTypeMap
+  [!?ioSemanticContext.mTypeMap makeEntryFromString
     !"string"
     ?let @unifiedTypeMap-entry stringTypeEntry
   ]
 #--- lstring type Entry
-  [@unifiedTypeMap-entry makeEntryFromString
-    !?ioSemanticContext.mTypeMap
+  [!?ioSemanticContext.mTypeMap makeEntryFromString
     !"lstring"
     ?let @unifiedTypeMap-entry lstringTypeEntry
   ]
 #--- Graph type Entry
-  [@unifiedTypeMap-entry makeEntry
-    !?ioSemanticContext.mTypeMap
+  [!?ioSemanticContext.mTypeMap makeEntry
     !self.mGraphTypeName
     ?let @unifiedTypeMap-entry graphTypeEntry
   ]
 #--- Associated list type Entry
-  [@unifiedTypeMap-entry makeEntry
-    !?ioSemanticContext.mTypeMap
+  [!?ioSemanticContext.mTypeMap makeEntry
     !self.mAssociatedListTypeName
     ?let @unifiedTypeMap-entry associatedListTypeEntry
   ]
 #--- @lstringlist type Entry
-  [@unifiedTypeMap-entry makeEntryFromString
-    !?ioSemanticContext.mTypeMap
+  [!?ioSemanticContext.mTypeMap makeEntryFromString
     !"lstringlist"
     ?let @unifiedTypeMap-entry lstringListTypeEntry
   ]
@@ -150,7 +145,6 @@ override method @graphDeclarationAST enterInSemanticContext
   var @constructorMap constructorMap = {}
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap = {}
-#  let @classMethodMap classMethodMap = {}
 #--- Methods 'topologicalSort', 'depthFirstTopologicalSort'
   var formalParameterList = @formalParameterSignature {}
   formalParameterList += 
@@ -483,11 +477,11 @@ override method @graphDeclarationAST semanticAnalysis
   let associatedTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mAssociatedListTypeName)
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !associatedTypeNameForUsefulness]
 #---
-  let graphTypeEntry = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mGraphTypeName}
-  let associatedListTypeEntry = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mAssociatedListTypeName}
-  let associatedListElementTypeEntry = @unifiedTypeMap-entry.searchKey { 
-    !inSemanticContext.mTypeMap
-    !@lstring.new {!self.mAssociatedListTypeName.string +elementTypeNameSuffix () !self.mAssociatedListTypeName.location}}
+  let graphTypeEntry = [inSemanticContext.mTypeMap searchKey !self.mGraphTypeName]
+  let associatedListTypeEntry = [inSemanticContext.mTypeMap searchKey !self.mAssociatedListTypeName]
+  let associatedListElementTypeEntry = [inSemanticContext.mTypeMap searchKey
+    !@lstring.new {!self.mAssociatedListTypeName.string +elementTypeNameSuffix () !self.mAssociatedListTypeName.location}
+  ]
   if [associatedListTypeEntry mTypeKindEnum] != @typeKindEnum. listType then
     error self.mAssociatedListTypeName: "the '@" + self.mAssociatedListTypeName + "' type should be a list"
   end
@@ -497,7 +491,7 @@ override method @graphDeclarationAST semanticAnalysis
     if [reservedModifierNames hasKey !mInsertModifierName.string] then
       error mInsertModifierName : "the '" + mInsertModifierName + "' setter name is reserved for a graph type"
     end
-    check_K_L_escapeCharacters ( !mInsertErrorMessage )
+    check_K_L_escapeCharacters (!mInsertErrorMessage )
   end
 #---
   ioSemanticDeclarationListForGeneration +=

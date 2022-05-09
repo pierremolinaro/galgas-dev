@@ -29,7 +29,7 @@ list @functionSignature {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-list @unifiedTypeMapEntryList {
+list @unifiedTypeMap-entryList {
   public var @unifiedTypeMap-entry mType
 }
 
@@ -341,7 +341,7 @@ enum @headerKind {
 
 map @constantIndexMap {
   public var @uint mIndex
-  public var @unifiedTypeMapEntryList mAssociatedTypeList
+  public var @unifiedTypeMap-entryList mAssociatedTypeList
   insert insertKey error message "the '%K' constant is already declared"
   search searchKey error message "the '%K' constant is not declared"
 }

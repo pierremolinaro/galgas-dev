@@ -156,7 +156,7 @@ GALGAS_headerKind GALGAS_headerKind::extractObject (const GALGAS_object & inObje
 
 cMapElement_constantIndexMap::cMapElement_constantIndexMap (const GALGAS_lstring & inKey,
                                                             const GALGAS_uint & in_mIndex,
-                                                            const GALGAS_unifiedTypeMapEntryList & in_mAssociatedTypeList
+                                                            const GALGAS_unifiedTypeMap_2D_entryList & in_mAssociatedTypeList
                                                             COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
 mProperty_mIndex (in_mIndex),
@@ -253,7 +253,7 @@ GALGAS_constantIndexMap GALGAS_constantIndexMap::getter_overriddenMap (C_Compile
 
 void GALGAS_constantIndexMap::addAssign_operation (const GALGAS_lstring & inKey,
                                                    const GALGAS_uint & inArgument0,
-                                                   const GALGAS_unifiedTypeMapEntryList & inArgument1,
+                                                   const GALGAS_unifiedTypeMap_2D_entryList & inArgument1,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) {
   cMapElement_constantIndexMap * p = NULL ;
@@ -270,7 +270,7 @@ void GALGAS_constantIndexMap::addAssign_operation (const GALGAS_lstring & inKey,
 
 void GALGAS_constantIndexMap::setter_insertKey (GALGAS_lstring inKey,
                                                 GALGAS_uint inArgument0,
-                                                GALGAS_unifiedTypeMapEntryList inArgument1,
+                                                GALGAS_unifiedTypeMap_2D_entryList inArgument1,
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) {
   cMapElement_constantIndexMap * p = NULL ;
@@ -291,7 +291,7 @@ const char * kSearchErrorMessage_constantIndexMap_searchKey = "the '%K' constant
 
 void GALGAS_constantIndexMap::method_searchKey (GALGAS_lstring inKey,
                                                 GALGAS_uint & outArgument0,
-                                                GALGAS_unifiedTypeMapEntryList & outArgument1,
+                                                GALGAS_unifiedTypeMap_2D_entryList & outArgument1,
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
   const cMapElement_constantIndexMap * p = (const cMapElement_constantIndexMap *) performSearch (inKey,
@@ -325,12 +325,12 @@ GALGAS_uint GALGAS_constantIndexMap::getter_mIndexForKey (const GALGAS_string & 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapEntryList GALGAS_constantIndexMap::getter_mAssociatedTypeListForKey (const GALGAS_string & inKey,
-                                                                                          C_Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entryList GALGAS_constantIndexMap::getter_mAssociatedTypeListForKey (const GALGAS_string & inKey,
+                                                                                              C_Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
   const cMapElement_constantIndexMap * p = (const cMapElement_constantIndexMap *) attributes ;
-  GALGAS_unifiedTypeMapEntryList result ;
+  GALGAS_unifiedTypeMap_2D_entryList result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_constantIndexMap) ;
     result = p->mProperty_mAssociatedTypeList ;
@@ -354,7 +354,7 @@ void GALGAS_constantIndexMap::setter_setMIndexForKey (GALGAS_uint inAttributeVal
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_constantIndexMap::setter_setMAssociatedTypeListForKey (GALGAS_unifiedTypeMapEntryList inAttributeValue,
+void GALGAS_constantIndexMap::setter_setMAssociatedTypeListForKey (GALGAS_unifiedTypeMap_2D_entryList inAttributeValue,
                                                                    GALGAS_string inKey,
                                                                    C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
@@ -410,7 +410,7 @@ GALGAS_uint cEnumerator_constantIndexMap::current_mIndex (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapEntryList cEnumerator_constantIndexMap::current_mAssociatedTypeList (LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_entryList cEnumerator_constantIndexMap::current_mAssociatedTypeList (LOCATION_ARGS) const {
   const cMapElement_constantIndexMap * p = (const cMapElement_constantIndexMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_constantIndexMap) ;
   return p->mProperty_mAssociatedTypeList ;
@@ -420,7 +420,7 @@ GALGAS_unifiedTypeMapEntryList cEnumerator_constantIndexMap::current_mAssociated
 
 bool GALGAS_constantIndexMap::optional_searchKey (const GALGAS_string & inKey,
                                                   GALGAS_uint & outArgument0,
-                                                  GALGAS_unifiedTypeMapEntryList & outArgument1) const {
+                                                  GALGAS_unifiedTypeMap_2D_entryList & outArgument1) const {
   const cMapElement_constantIndexMap * p = (const cMapElement_constantIndexMap *) searchForKey (inKey) ;
   const bool result = NULL != p ;
   if (result) {
@@ -11013,7 +11013,7 @@ GALGAS_unifiedTypeMap & GALGAS_unifiedTypeMap::operator = (const GALGAS_unifiedT
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap GALGAS_unifiedTypeMap::constructor_emptySharedMap (LOCATION_ARGS) {
+GALGAS_unifiedTypeMap GALGAS_unifiedTypeMap::constructor_emptyMap (LOCATION_ARGS) {
   GALGAS_unifiedTypeMap result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;

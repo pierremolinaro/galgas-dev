@@ -13,15 +13,13 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc compileSemanticDeclarationsGalgas
-  ?!@lstringlist ioUsefulnessRootEntities 
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @string inProductDirectory
-  ?let @location inEndOfProjectSourceFile
-  ?let @semanticDeclarationListAST inSemanticDeclarationList
-  !@semanticContext outSemanticContext
-  !@semanticDeclarationListForGeneration outSemanticDeclarationSortedListForGeneration
-{
+proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities 
+                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                            ?let @string inProductDirectory
+                            ?let @location inEndOfProjectSourceFile
+                            ?let @semanticDeclarationListAST inSemanticDeclarationList
+                            !@semanticContext outSemanticContext
+                            !@semanticDeclarationListForGeneration outSemanticDeclarationSortedListForGeneration {
   if @application.verboseOutput then
     message "*** Building semantic context\n"
   end
@@ -105,12 +103,10 @@ proc compileSemanticDeclarationsGalgas
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc buildGalgasSemanticContext
-  ?let @semanticDeclarationListAST inSemanticDeclarationList
-  ?let @location inEndOfProjectSourceFile
-  !@semanticContext outSemanticContext
-  !@semanticDeclarationListAST outSortedSemanticDeclarationListAST
-{
+private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSemanticDeclarationList
+                                        ?let @location inEndOfProjectSourceFile
+                                        !@semanticContext outSemanticContext
+                                        !@semanticDeclarationListAST outSortedSemanticDeclarationListAST {
 #------ Create associated type (@TYPE-element) for lists, maps, ...
   var @semanticDeclarationListAST semanticDeclarationList = inSemanticDeclarationList
   for declaration in inSemanticDeclarationList do
@@ -166,7 +162,7 @@ proc buildGalgasSemanticContext
       outSortedSemanticDeclarationListAST += extensionOverrideDefinitionList
     #--- Build initial semantic context
       outSemanticContext = @semanticContext.new {
-        !mTypeMap: .emptySharedMap
+        !mTypeMap: .emptyMap
         !mRoutineMap: {}
         !mFunctionMap: {}
         !mFilewrapperMap: {}

@@ -490,7 +490,7 @@ class GALGAS_outputInputActualParameterForGeneration : public GALGAS_actualParam
 
   public: class GALGAS_lstringlist readProperty_mStructAttributeList (void) const ;
 
-  public: class GALGAS_unifiedTypeMapEntryList readProperty_mTypeList (void) const ;
+  public: class GALGAS_unifiedTypeMap_2D_entryList readProperty_mTypeList (void) const ;
 
 //-- Start of generic part --*
 
@@ -506,7 +506,7 @@ class GALGAS_outputInputActualParameterForGeneration : public GALGAS_actualParam
   public: static class GALGAS_outputInputActualParameterForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
                                                                                        const class GALGAS_string & inOperand1,
                                                                                        const class GALGAS_lstringlist & inOperand2,
-                                                                                       const class GALGAS_unifiedTypeMapEntryList & inOperand3
+                                                                                       const class GALGAS_unifiedTypeMap_2D_entryList & inOperand3
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -519,7 +519,7 @@ class GALGAS_outputInputActualParameterForGeneration : public GALGAS_actualParam
   public: VIRTUAL_IN_DEBUG void setter_setMStructAttributeList (class GALGAS_lstringlist inArgument0
                                                                 COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMTypeList (class GALGAS_unifiedTypeMapEntryList inArgument0
+  public: VIRTUAL_IN_DEBUG void setter_setMTypeList (class GALGAS_unifiedTypeMap_2D_entryList inArgument0
                                                      COMMA_LOCATION_ARGS) ;
 
 
@@ -553,13 +553,13 @@ class cPtr_outputInputActualParameterForGeneration : public cPtr_actualParameter
 //--- Properties
   public: GALGAS_string mProperty_mOutputInputVariableCppName ;
   public: GALGAS_lstringlist mProperty_mStructAttributeList ;
-  public: GALGAS_unifiedTypeMapEntryList mProperty_mTypeList ;
+  public: GALGAS_unifiedTypeMap_2D_entryList mProperty_mTypeList ;
 
 //--- Constructor
   public: cPtr_outputInputActualParameterForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mFormalArgumentType,
                                                         const GALGAS_string & in_mOutputInputVariableCppName,
                                                         const GALGAS_lstringlist & in_mStructAttributeList,
-                                                        const GALGAS_unifiedTypeMapEntryList & in_mTypeList
+                                                        const GALGAS_unifiedTypeMap_2D_entryList & in_mTypeList
                                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

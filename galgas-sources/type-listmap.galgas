@@ -121,13 +121,13 @@ override method @listmapDeclarationAST enterInSemanticContext
   end
 #---
   var @constructorMap constructorMap ={}
-  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap = {}
 #--- Associated map type index
-  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mAssociatedListTypeName ?let associatedListTypeIndex]
+  [!?ioSemanticContext.mTypeMap makeEntry  !self.mAssociatedListTypeName ?let associatedListTypeIndex]
 #--- currentType type index
-  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"string" ?let stringTypeIndex]
+  [!?ioSemanticContext.mTypeMap makeEntryFromString !"string" ?let stringTypeIndex]
 #--- Getters
   enterInheritedGetterWithoutArgument (
     !?getterMap
@@ -190,8 +190,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !acceptSetters: true
   )
 #--- Element type index
-  [@unifiedTypeMap-entry makeEntry
-    !?ioSemanticContext.mTypeMap
+  [!?ioSemanticContext.mTypeMap makeEntry
     !@lstring.new {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}
     ?let @unifiedTypeMap-entry listElementTypeIndex
   ]
@@ -263,10 +262,10 @@ override method @listmapDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"list map " + self.mListmapTypeName
     !@listmapTypeForGeneration.new {
-      !.searchKey {!inSemanticContext.mTypeMap !self.mListmapTypeName}
-      !.searchKey {!inSemanticContext.mTypeMap !self.mAssociatedListTypeName}
+      ![inSemanticContext.mTypeMap searchKey !self.mListmapTypeName]
+      ![inSemanticContext.mTypeMap searchKey !self.mAssociatedListTypeName]
       !listTypeAttributeList
-      !.searchKey {!inSemanticContext.mTypeMap !@lstring.new {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}}
+      ![inSemanticContext.mTypeMap searchKey !@lstring.new {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}]
     }
 }
 

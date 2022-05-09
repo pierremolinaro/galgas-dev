@@ -52,7 +52,7 @@ proc internal_logXMLNodes
       between ioString += ", "
       end
       ioString += "}\n"
-      internal_logXMLNodes ( !node.nodeList ! inIndentationString + " " !?ioString )
+      internal_logXMLNodes (!node.nodeList ! inIndentationString + " " !?ioString )
     case text :
       ioString += "TEXT '" + node.name + "'\n"
     case comment :
@@ -65,7 +65,7 @@ proc internal_logXMLNodes
 
 proc logXMLNodes ?let @xmlNodeList inNodeList {
   var @string s = ""
-  internal_logXMLNodes ( !inNodeList !"" !?s )
+  internal_logXMLNodes (!inNodeList !"" !?s )
   message s
 }
 

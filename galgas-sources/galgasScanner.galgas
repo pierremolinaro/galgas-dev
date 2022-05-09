@@ -275,13 +275,13 @@ rule '0'->'9' {
   end
   select
   case 'S' | 's' :
-    convertDecimalStringIntoSInt ( !tokenString !?sint32value error decimalNumberTooLarge, internalError )
+    convertDecimalStringIntoSInt (!tokenString !?sint32value error decimalNumberTooLarge, internalError )
     send $sint32_S$
   case "LS" :
-    convertDecimalStringIntoSInt64 ( !tokenString !?sint64value error decimalNumberTooLarge, internalError )
+    convertDecimalStringIntoSInt64 (!tokenString !?sint64value error decimalNumberTooLarge, internalError )
     send $sint64_LS$
   case 'L' :
-    convertDecimalStringIntoUInt64 ( !tokenString !?uint64value error decimalNumberTooLarge, internalError )
+    convertDecimalStringIntoUInt64 (!tokenString !?uint64value error decimalNumberTooLarge, internalError )
     send $uint64_L$
   case 'G' :
     convertDecimalStringIntoBigInt (!tokenString !?bigintValue error internalError )
@@ -293,10 +293,10 @@ rule '0'->'9' {
       enterCharacterIntoString (!?tokenString !* )
     while '_' :
     end
-    convertStringToDouble ( !tokenString !?floatValue error floatNumberConversionError )
+    convertStringToDouble (!tokenString !?floatValue error floatNumberConversionError )
     send $double.xxx$
   default
-    convertDecimalStringIntoUInt ( !tokenString !?uint32value error decimalNumberTooLarge, internalError )
+    convertDecimalStringIntoUInt (!tokenString !?uint32value error decimalNumberTooLarge, internalError )
     send $uint32$
   end
 }
@@ -319,7 +319,7 @@ rule '.' {
       enterCharacterIntoString (!?tokenString !* )
     while '_' :
     end
-    convertStringToDouble ( !tokenString !?floatValue error floatNumberConversionError )
+    convertStringToDouble (!tokenString !?floatValue error floatNumberConversionError )
     send $double.xxx$
   default
     select
@@ -425,16 +425,16 @@ rule '\'' {
     case 'u' :
       select
       case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-        enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+        enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
         select
         case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-          enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+          enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
           select
           case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-           enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+           enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
             select
             case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-              enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+              enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
               convertUnsignedNumberToUnicodeChar (!?uint32value !?charValue error unassignedUnicodeValue )
             default
               error invalideUnicodeDefinition4
@@ -451,28 +451,28 @@ rule '\'' {
     case 'U' :
       select
       case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-        enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+        enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
         select
         case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-          enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+          enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
           select
           case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-            enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+            enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
             select
             case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-              enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+              enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
               select
               case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-                enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+                enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
                 select
                 case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-                  enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+                  enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
                   select
                   case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-                   enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+                   enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
                     select
                     case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-                      enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+                      enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
                       convertUnsignedNumberToUnicodeChar (!?uint32value !?charValue error unassignedUnicodeValue )
                     default
                       error invalideUnicodeDefinition8
@@ -743,16 +743,16 @@ rule '"' {
     case 'u' :
       select
       case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-        enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+        enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
         select
         case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-          enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+          enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
           select
           case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-           enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+           enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
             select
             case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-              enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+              enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
               convertUnsignedNumberToUnicodeChar (!?uint32value !?charValue error unassignedUnicodeValue )
               enterCharacterIntoString (!?tokenString !charValue )
             default
@@ -770,28 +770,28 @@ rule '"' {
     case 'U' :
       select
       case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-        enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+        enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
         select
         case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-          enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+          enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
           select
           case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-            enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+            enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
             select
             case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-              enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+              enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
               select
               case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-                enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+                enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
                 select
                 case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-                  enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+                  enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
                   select
                   case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-                   enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+                   enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
                     select
                     case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-                      enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
+                      enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
                       convertUnsignedNumberToUnicodeChar (!?uint32value !?charValue error unassignedUnicodeValue )
                       enterCharacterIntoString (!?tokenString !charValue )
                     default

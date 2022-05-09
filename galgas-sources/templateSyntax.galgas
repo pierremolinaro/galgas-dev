@@ -626,7 +626,7 @@ rule <template_parser_start_symbol> !@templateInstructionListAST outResultingIns
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterTemplateString ?!@templateInstructionListAST outResultingInstructionList {
-  let s = @string.retrieveAndResetTemplateString
+  let @string s = @string.retrieveAndResetTemplateString
   if [s length] > 0 then
     outResultingInstructionList += !@templateInstructionStringAST.new {!s}
   end

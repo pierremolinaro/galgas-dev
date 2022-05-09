@@ -85,7 +85,7 @@ proc checkGetterSignatures
   else
     for (ref_mFormalSelector ref_mFormalArgumentType *) in inReferenceSignature, (mFormalSelector mFormalArgumentType * mFormalArgumentName *) in inTestedSignature do
       if mFormalSelector.string != ref_mFormalSelector.string then
-        let s = "?" + if ref_mFormalSelector.string != "" then ref_mFormalSelector.string + ":" else "" end
+        let @string s = "?" + if ref_mFormalSelector.string != "" then ref_mFormalSelector.string + ":" else "" end
         error mFormalSelector : "the selector should be '" + s + "'" fixit { replace s }
 #        error mFormalSelector
 #        : "the selector should be '?" + ref_mFormalSelector
@@ -135,7 +135,7 @@ proc buildLocalVariableMapAndSignature
 {
   outRoutineSignature = @formalParameterListForGeneration {}
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in inRoutineSignatureAST do
-    let type = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
+    let type = [inSemanticContext.mTypeMap searchKey !mFormalArgumentTypeName]
     let @string formalArgumentCppName
     switch mFormalArgumentPassingMode
     case argumentIn :
@@ -245,7 +245,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
   for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in self.mFormalArgumentList do
     formalArgumentList +=
       !mFormalSelector
-      !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
+      ![inSemanticContext.mTypeMap searchKey !mFormalArgumentTypeName]
       !mFormalArgumentName.string
       !mFormalArgumentName
       !mIsConstant
@@ -257,7 +257,8 @@ override method @externFunctionDeclarationAST semanticAnalysis
       !"func-" + [self.mFunctionName fileNameRepresentation]
       !self.mFunctionName.string
       !formalArgumentList
-      !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mResultTypeName}}
+      ![inSemanticContext.mTypeMap searchKey !self.mResultTypeName]
+   }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -279,7 +280,7 @@ override method @externRoutineDeclarationAST semanticAnalysis
     formalArgumentList +=
       !mFormalSelector
       !mFormalArgumentPassingMode
-      !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
+      ![inSemanticContext.mTypeMap searchKey !mFormalArgumentTypeName]
       !mFormalArgumentName
       !mFormalArgumentName.string
   end
@@ -373,7 +374,7 @@ proc analyzeFunctionBody
 #--- Enter formal parameters
   outSignatureForGeneration = @formalInputParameterListForGeneration {}
   for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName mIsUnused mIsConstant) in inFunctionSignature do
-    let parameterType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mFormalArgumentTypeName}
+    let parameterType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !mFormalArgumentTypeName]
     if mIsConstant then
       let @string cppName = "constinArgument_" + [mFormalArgumentName.string identifierRepresentation]
       outSignatureForGeneration +=
@@ -403,7 +404,7 @@ proc analyzeFunctionBody
     end
   end
 #--- Enter return variable
-  outReturnedType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !inResultTypeName}
+  outReturnedType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !inResultTypeName]
   outResultVariableCppName = "result_" + [inReturnVariableName identifierRepresentation]
   [!?variableMap insertOutputFormalArgument !inReturnVariableName !outReturnedType !outResultVariableCppName !outResultVariableCppName]
 #---  Analyze instruction list
@@ -586,7 +587,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
       var @templateVariableMap templateVariableMap = {}
       var @formalInputParameterListForGeneration filewrapperTemplateFormalInputParameters = {}
       for (mFormalTemplateSelector mFormalArgumentTypeName mFormalArgumentName *) in mFilewrapperTemplateFormalInputParameters do
-        let type = @unifiedTypeMap-entry.searchKey{!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
+        let type = [inSemanticContext.mTypeMap searchKey !mFormalArgumentTypeName]
         let @string cppVarName = "in_" + [mFormalArgumentName.string identifierRepresentation]
         [!?templateVariableMap insertKey !mFormalArgumentName !type !cppVarName]
         filewrapperTemplateFormalInputParameters += !mFormalTemplateSelector !type !cppVarName !mFormalArgumentName !true
@@ -808,7 +809,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
       for (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in mFormalParametersList do
         switch mFormalArgumentPassingModeForGrammarAnalysis
         case argumentIn, argumentConstantIn :
-          let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mGalgasTypeNameForGrammarAnalysis}
+          let t = [inSemanticContext.mTypeMap searchKey !mGalgasTypeNameForGrammarAnalysis]
           [t addHeaderFileName !?implementationFileHeader]
         case argumentInOut, argumentOut :
         end
@@ -1143,28 +1144,28 @@ override method @lexiqueComponentAST semanticAnalysis
 
 func buildPredefinedTypes ?let @semanticContext inSemanticContext -> @predefinedTypes outPredefinedTypes {
   outPredefinedTypes = .new {
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"location"  !.here}}
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"bool"       !.here}}
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"char"       !.here}}
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"string"     !.here}}
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"uint"       !.here}}
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"sint"       !.here}}
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"uint64"     !.here}}
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"sint64"     !.here}}
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"double"     !.here}}
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"lbool"      !.here}}
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"lchar"      !.here}}
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"lstring"    !.here}}
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"luint"      !.here}}
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"lsint"      !.here}}
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"luint64"    !.here}}
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"lsint64"    !.here}}
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"ldouble"    !.here}}
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"stringlist" !.here}}
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"lbigint"    !.here}}
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"bigint"     !.here}}
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"stringset"  !.here}}
-    !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !.new {!"lstringlist"!.here}}
+    ![inSemanticContext.mTypeMap searchKey !.new {!"location" !.here}]
+    ![inSemanticContext.mTypeMap searchKey !.new {!"bool"       !.here}]
+    ![inSemanticContext.mTypeMap searchKey !.new {!"char"       !.here}]
+    ![inSemanticContext.mTypeMap searchKey !.new {!"string"     !.here}]
+    ![inSemanticContext.mTypeMap searchKey !.new {!"uint"       !.here}]
+    ![inSemanticContext.mTypeMap searchKey !.new {!"sint"       !.here}]
+    ![inSemanticContext.mTypeMap searchKey !.new {!"uint64"     !.here}]
+    ![inSemanticContext.mTypeMap searchKey !.new {!"sint64"     !.here}]
+    ![inSemanticContext.mTypeMap searchKey !.new {!"double"     !.here}]
+    ![inSemanticContext.mTypeMap searchKey !.new {!"lbool"      !.here}]
+    ![inSemanticContext.mTypeMap searchKey !.new {!"lchar"      !.here}]
+    ![inSemanticContext.mTypeMap searchKey !.new {!"lstring"    !.here}]
+    ![inSemanticContext.mTypeMap searchKey !.new {!"luint"      !.here}]
+    ![inSemanticContext.mTypeMap searchKey !.new {!"lsint"      !.here}]
+    ![inSemanticContext.mTypeMap searchKey !.new {!"luint64"    !.here}]
+    ![inSemanticContext.mTypeMap searchKey !.new {!"lsint64"    !.here}]
+    ![inSemanticContext.mTypeMap searchKey !.new {!"ldouble"    !.here}]
+    ![inSemanticContext.mTypeMap searchKey !.new {!"stringlist" !.here}]
+    ![inSemanticContext.mTypeMap searchKey !.new {!"lbigint"    !.here}]
+    ![inSemanticContext.mTypeMap searchKey !.new {!"bigint"     !.here}]
+    ![inSemanticContext.mTypeMap searchKey !.new {!"stringset"  !.here}]
+    ![inSemanticContext.mTypeMap searchKey !.new {!"lstringlist"!.here}]
   }
 }
 
@@ -1306,13 +1307,13 @@ proc buildNonterminalDeclarationsMap
       var signatureForGeneration = @formalParameterListForGeneration {}
       var signature = @formalParameterSignature {}
       for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalArgumentList do
-        let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
+        let t = [inSemanticContext.mTypeMap searchKey !mFormalArgumentTypeName]
         signatureForGeneration += !mFormalSelector !mFormalArgumentPassingMode !t !mFormalArgumentName !mFormalArgumentName.string
         signature += !mFormalSelector !t !mFormalArgumentPassingMode !mFormalArgumentName.string
       end
       [!?nonterminalLabelMap insertKey !mLabelName !signatureForGeneration !signature !mEndOfArgumentLocation]
     end
-    enterNonterminalNonTerminalInMapAndCheck ( !mNonterminalName !nonterminalLabelMap !?outNonterminalDeclarationMap )
+    enterNonterminalNonTerminalInMapAndCheck (!mNonterminalName !nonterminalLabelMap !?outNonterminalDeclarationMap )
   end
 }
 
@@ -1433,7 +1434,7 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
   end
 #--- Type is named, or should be infered ?
   if self.mActualParameterTypeName.string != "" then
-    let type = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mActualParameterTypeName}
+    let type = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mActualParameterTypeName]
     if expectedType != type then
       error self.mActualParameterName
       : "the '" + self.mActualParameterName + "' formal argument has the '@" + [type key]
@@ -1477,7 +1478,7 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
   end
 #--- Type is named, or should be infered ?
   if self.mActualParameterTypeName.string != "" then
-    let type = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mActualParameterTypeName}
+    let type = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mActualParameterTypeName]
     if expectedType != type then
       error self.mActualParameterName
       : "the '" + self.mActualParameterName + "' formal argument has the '@" + [type key]
@@ -1548,7 +1549,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
     error self.mActualParameterName : "the ':>' construct requires the syntax component to be declared with 'translate' feature"
   end
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location locationIndex]
-  let type = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mActualParameterTypeName}
+  let type = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mActualParameterTypeName]
   [!?ioVariableMap insertInitializedLocalVariable
     !self.mActualParameterName
     !warnsIfNotMutated: true
@@ -1574,7 +1575,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
     error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location locationIndex]
-  let type = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mActualParameterTypeName}
+  let type = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mActualParameterTypeName]
   [!?ioVariableMap insertInitializedLocalConstant !self.mActualParameterName !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
   if expectedType != type then
@@ -1753,7 +1754,7 @@ proc semanticAnalysisOfRuleLabel
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc semanticAnalysisOfSyntaxComponent
+private proc semanticAnalysisOfSyntaxComponent
   ?let @lstring inSyntaxComponentUsefulnessName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @nonterminalDeclarationListAST inNonterminalDeclarationList
@@ -1781,7 +1782,7 @@ proc semanticAnalysisOfSyntaxComponent
       var @formalParameterListForGeneration signatureForGeneration = {}
       var @formalParameterSignature signature = {}
       for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalArguments do
-        let type = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
+        let type = [inSemanticContext.mTypeMap searchKey !mFormalArgumentTypeName]
         signatureForGeneration +=
           !mFormalSelector
           !mFormalArgumentPassingMode
@@ -1792,7 +1793,7 @@ proc semanticAnalysisOfSyntaxComponent
       end
       [!?nonterminalLabelMap insertKey !mLabelName !signatureForGeneration !signature !mEndOfArgumentLocation]
     end
-      enterNonterminalNonTerminalInMapAndCheck ( !mNonterminalName !nonterminalLabelMap !?nonterminalMap )
+      enterNonterminalNonTerminalInMapAndCheck (!mNonterminalName !nonterminalLabelMap !?nonterminalMap )
   end
 #--- Analysis context
   let analysisContext = @analysisContext.new {
@@ -1801,7 +1802,7 @@ proc semanticAnalysisOfSyntaxComponent
     !""
     !selfType: .none
     !""
-    !requiresSelfForAccessingProperty: false # self.requiresSelfForAccessingProperty
+    !requiresSelfForAccessingProperty: false
   }
 #--- Rule list
   var @uint selectMethodCount = 0

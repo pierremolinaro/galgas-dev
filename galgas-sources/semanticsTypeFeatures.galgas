@@ -22,7 +22,7 @@
 override method @stringsetPredefinedTypeAST getEnumerationList ?!@unifiedTypeMap ioUnifiedTypeMap
                                                                !@enumerationDescriptorList outEnumerationList
                                                                !@string outEnumeratedType {
-  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"string" ?let stringTypeIndex]
+  [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let stringTypeIndex]
   outEnumerationList = {}
   outEnumerationList += !stringTypeIndex !"key"
   outEnumeratedType = "string"
@@ -35,7 +35,7 @@ override method @dataPredefinedTypeAST getEnumerationList
   !@enumerationDescriptorList outEnumerationList
   !@string outEnumeratedType
 {
-  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"uint" ?let uintTypeIndex]
+  [!?ioUnifiedTypeMap makeEntryFromString !"uint" ?let uintTypeIndex]
   outEnumerationList = {}
   outEnumerationList += !uintTypeIndex !"data"
   outEnumeratedType = "uint"
@@ -51,12 +51,12 @@ override method @stringsetPredefinedTypeAST getSetterMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@setterMap outSetterMap
 {
-  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"string" ?let stringType]
+  [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let stringType]
   outSetterMap = {}
   [!?outSetterMap insertKey
     !@lstring.new {!"removeKey" !@location.here}
     !@methodKind. definedAsMember
-    !@formalParameterSignature. listWithValue {!["" nowhere] !stringType !.argumentIn !"inKey"}
+    !@formalParameterSignature.listWithValue {!["" nowhere] !stringType !.argumentIn !"inKey"}
     !false # No Compiler argument
     !@methodQualifier. isBasic
     !""
@@ -231,7 +231,7 @@ override method @stringsetPredefinedTypeAST getAddAssignArgumentList
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@functionSignature outAddAssignArgumentList
 {
-  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"string" ?let @unifiedTypeMap-entry stringTypeIndex]
+  [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let @unifiedTypeMap-entry stringTypeIndex]
   outAddAssignArgumentList = {!["" nowhere] !stringTypeIndex !"inString"}
 }
 

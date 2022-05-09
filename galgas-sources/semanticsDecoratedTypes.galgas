@@ -139,7 +139,7 @@ refclass @outputActualParameterForGeneration : @actualParameterForGeneration {
 refclass @outputInputActualParameterForGeneration : @actualParameterForGeneration {
   public var @string mOutputInputVariableCppName
   public var @lstringlist mStructAttributeList
-  public var @unifiedTypeMapEntryList mTypeList
+  public var @unifiedTypeMap-entryList mTypeList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

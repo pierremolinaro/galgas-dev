@@ -150,7 +150,7 @@ override method @dictDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- key type index
-  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !self.mKeyTypeName ?let keyTypeIndex]
+  [!?ioSemanticContext.mTypeMap makeEntryFromString !self.mKeyTypeName ?let keyTypeIndex]
 #--- Enumeration description
   var enumerationDescriptor = @enumerationDescriptorList.listWithValue {!keyTypeIndex !"key"}
 #--- Attributes
@@ -167,7 +167,7 @@ override method @dictDeclarationAST enterInSemanticContext
   end
 #---
   var @constructorMap constructorMap = {}
-  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap = {}
 #--- Constructors
@@ -215,9 +215,9 @@ override method @dictDeclarationAST enterInSemanticContext
     ![if usesSelectorsInInsertAndSearch then "key" else "" end nowhere]
     !keyTypeIndex
     !"inKey"
-  var typesToIncludeInHeaderCompilation = @unifiedTypeMapEntryList {}
+  var typesToIncludeInHeaderCompilation = @unifiedTypeMap-entryList {}
   for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
-    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true
     let hasSelector = false
     argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
@@ -263,7 +263,7 @@ override method @dictDeclarationAST enterInSemanticContext
 #--- Enter "attributeForKey" getters
   for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     let accessorName = @lstring.new {!mPropertyName.string + "ForKey" !mPropertyName.location}
-    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
       !accessorName
       !@methodKind.definedAsMember
@@ -281,8 +281,7 @@ override method @dictDeclarationAST enterInSemanticContext
       !"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "ForKey"
       !mPropertyName.location
     }
-    [@unifiedTypeMap-entry makeEntry
-      !?ioSemanticContext.mTypeMap
+    [!?ioSemanticContext.mTypeMap makeEntry
       !mPropertyTypeName
       ?let @unifiedTypeMap-entry attributeTypeIndex
     ]
@@ -311,8 +310,7 @@ override method @dictDeclarationAST enterInSemanticContext
     !acceptSetters: true
   )
 #--- Element type index
-  [@unifiedTypeMap-entry makeEntry
-    !?ioSemanticContext.mTypeMap
+  [!?ioSemanticContext.mTypeMap makeEntry
     !@lstring.new {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}
     ?let @unifiedTypeMap-entry elementTypeEntry
   ]
@@ -417,7 +415,7 @@ override method @dictDeclarationAST semanticAnalysis
   for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    let @unifiedTypeMap-entry t = .searchKey{!inSemanticContext.mTypeMap !mPropertyTypeName}
+    let @unifiedTypeMap-entry t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
     let hasSetter = true
     let hasSelector = false
     typedAttributeList +=
@@ -439,8 +437,8 @@ override method @dictDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"dict " + self.mDictTypeName
     !@dictTypeForGeneration.new {
-      !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mDictTypeName}
-      !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !@lstring.new {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}}
+      ![inSemanticContext.mTypeMap searchKey !self.mDictTypeName]
+      ![inSemanticContext.mTypeMap searchKey !@lstring.new {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}]
       !self.mDictTypeName
       !typedAttributeList
       !self.mKeyTypeName

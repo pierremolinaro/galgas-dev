@@ -126,9 +126,9 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
 #  let nameForUsefulness = getterNameForUsefulEntitiesGraph (!self.mTypeName !mAbstractExtensionGetterReturnedTypeName)
 #  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMap-entry selfType = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mTypeName}
+  let @unifiedTypeMap-entry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- Return type
-  let returnType = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mAbstractExtensionGetterReturnedTypeName}
+  let returnType = [inSemanticContext.mTypeMap searchKey !self.mAbstractExtensionGetterReturnedTypeName]
 #--- Check type is an abstract class
   if not [[selfType mTypeKindEnum] isClassType] then
     error self.mAbstractExtensionGetterName: "cannot declare a extension getter: '@" + [selfType key] + "' is not a class"
@@ -169,7 +169,7 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
     for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in self.mAbstractExtensionGetterFormalInputParameterList do
       formalParameterListForGeneration +=
         !mFormalSelector
-        !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
+        ![inSemanticContext.mTypeMap searchKey !mFormalArgumentTypeName]
         !mFormalArgumentName.string
         !mFormalArgumentName
         !mIsConstant

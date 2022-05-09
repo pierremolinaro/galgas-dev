@@ -367,7 +367,7 @@ override method @ifInstructionAST enterInstructionInSemanticContext ?!@unifiedTy
       [exp enterExpressionInSemanticContext !?ioTypeMap]
     case letExp (* exp * @lstring typeName) :
       [exp enterExpressionInSemanticContext !?ioTypeMap]
-      [@unifiedTypeMap-entry makeEntry !?ioTypeMap !typeName ?*]
+      [!?ioTypeMap makeEntry !typeName ?*]
     case optionalMethodCall (receiverExpression * parameters) :
       [receiverExpression enterExpressionInSemanticContext !?ioTypeMap]
       for (* parameter) in parameters do
@@ -457,7 +457,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
         if typeName.string == "" then
           error typeName.location : "on a class object, the 'as' clause is required" : castType, testType
         else
-          castType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !typeName}
+          castType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !typeName]
           testType = castType
         #--- Check expression type is a descendant of named type
           var @unifiedTypeMap-entry t = castType
@@ -477,7 +477,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
         if typeName.string == "" then
           castType = classType
         else
-          castType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !typeName}
+          castType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !typeName]
         end
         testType = castType
         var @unifiedTypeMap-entry t = castType
@@ -636,7 +636,7 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
           ?@semanticExpressionForGeneration exp
         ]
         if formalSelector.string != actualSelector.string then
-          let s = "!" + if formalSelector.string != "" then formalSelector.string + ":" else "" end
+          let @string s = "!" + if formalSelector.string != "" then formalSelector.string + ":" else "" end
           error actualSelector : "the selector should be '" + s + "'" fixit { replace s }
         end
         checkAssignmentTypeWithImplicitGetterCall (!formalType !exp.mResultType !location !?exp)
@@ -657,7 +657,7 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
         ]
         actualParameterList += !.actualLetInput {!typeName: [formalType key] !constantName: targetVariableCppName}
         if formalSelector.string != actualSelector.string then
-          let s = "?" + if formalSelector.string != "" then formalSelector.string + ":" else "" end
+          let @string s = "?" + if formalSelector.string != "" then formalSelector.string + ":" else "" end
           error actualSelector : "the selector should be '" + s + "'" fixit { replace s }
         end
       case actualVarInput (@lstring actualTypeName @lstring variableName) :
@@ -677,14 +677,14 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
         ]
         actualParameterList += !.actualVarInput {!typeName: [formalType key] !variableName: targetVariableCppName}
         if formalSelector.string != actualSelector.string then
-          let s = "?" + if formalSelector.string != "" then formalSelector.string + ":" else "" end
+          let @string s = "?" + if formalSelector.string != "" then formalSelector.string + ":" else "" end
           error actualSelector : "the selector should be '" + s + "'" fixit { replace s }
         end
       case actualInputJoker (checkSelector location idx) :
         let targetVariableCppName = "var_unused_" + idx + "_" + [location locationIndex]
         actualParameterList += !.actualVarInput {!typeName: [formalType key] !variableName: targetVariableCppName}
         if checkSelector && (formalSelector.string != actualSelector.string) then
-          let s = "?" + if formalSelector.string != "" then formalSelector.string + ":" else "" end
+          let @string s = "?" + if formalSelector.string != "" then formalSelector.string + ":" else "" end
           error actualSelector : "the selector should be '" + s + "'" fixit { replace s }
         end
       end

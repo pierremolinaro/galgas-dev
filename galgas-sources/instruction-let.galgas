@@ -138,18 +138,16 @@ override method @undefinedLocalConstantDeclarationAST enterInstructionInSemantic
 
   
 override method @localConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
+  ?!@unifiedTypeMap ioTypeMap {
   [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #······················································································································*
 
 override method @localVariableOrConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
+  ?!@unifiedTypeMap ioTypeMap {
   if self.mOptionalTypeName.string != "" then
-    [@unifiedTypeMap-entry makeEntry !?ioTypeMap !self.mOptionalTypeName ?*]
+    [!?ioTypeMap makeEntry !self.mOptionalTypeName ?*]
   end
   [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
@@ -159,14 +157,14 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST enterInstru
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction
-  ?let @lstring unused inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
-{
-  let targetType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mConstantTypeName}
-  let targetVariableCppName = "var_" + [self.mConstantName identifierRepresentation] + "_" + [self.mConstantName.location locationIndex]
+                                          ?let @lstring unused inUsefulnessCallerEntityName
+                                          ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+                                          ?let @analysisContext inAnalysisContext
+                                          ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                                          ?!@localVarManager ioVariableMap {
+  let targetType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mConstantTypeName]
+  let targetVariableCppName = "var_" + [self.mConstantName identifierRepresentation]
+                            + "_" + [self.mConstantName.location locationIndex]
   [!?ioVariableMap insertDeclaredLocalConstant
     !self.mConstantName
     !targetType
@@ -183,23 +181,29 @@ override method @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction
 #······················································································································*
 
 override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap {
+                            ?let @lstring inUsefulnessCallerEntityName
+                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                            ?let @analysisContext inAnalysisContext
+                            ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                            ?!@localVarManager ioVariableMap {
 #--- Analyze source expression
   [self.mSourceExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMap-entry.null
+    !inferenceType: .null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration expression
   ]
 #--- Enter target variable
-  let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location locationIndex]
-  [!?ioVariableMap insertInitializedLocalConstant !self.mVariableName !expression.mResultType !targetVariableCppName !targetVariableCppName]
+  let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation]
+                                     + "_" + [self.mVariableName.location locationIndex]
+  [!?ioVariableMap insertInitializedLocalConstant
+    !self.mVariableName
+    !expression.mResultType
+    !targetVariableCppName
+    !targetVariableCppName
+  ]
 #--- Generate instruction
   ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
     !expression.mResultType
@@ -211,13 +215,12 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
 #······················································································································*
 
 override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
-{
-  let targetType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mOptionalTypeName}
+                            ?let @lstring inUsefulnessCallerEntityName
+                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                            ?let @analysisContext inAnalysisContext
+                            ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                            ?!@localVarManager ioVariableMap {
+  let targetType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mOptionalTypeName]
 #--- Analyze source expression
   [self.mSourceExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
@@ -228,7 +231,8 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
     ?@semanticExpressionForGeneration expression
   ]
 #--- Check target variable
-  let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location locationIndex]
+  let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation]
+                            + "_" + [self.mVariableName.location locationIndex]
   if self.mIsConstant then
     [!?ioVariableMap insertInitializedLocalConstant
       !self.mVariableName

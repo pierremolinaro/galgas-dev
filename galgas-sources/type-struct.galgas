@@ -115,15 +115,15 @@ override method @structDeclarationAST enterInSemanticContext
 {
   let optionalMethodMap = @optionalMethodMap {}
 #--- Struct type index
-  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mStructTypeName ?let structTypeIndex]
+  [!?ioSemanticContext.mTypeMap makeEntry  !self.mStructTypeName ?let structTypeIndex]
 #--- Constructors and property map
   var @propertyMap propertyMap = {}
   var @constructorMap constructorMap = {}
   var @functionSignature constructorPropertyTypeList = {}
   var @typedPropertyList typedPropertyList = {}
-  var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
+  var @unifiedTypeMap-entryList typesToIncludeInHeaderCompilation = {}
   for (isConstant mPropertyTypeName mPropertyName isPublic mAttributeList) in self.mStructurePropertyList do
-    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let propertyTypeEntry]
+    [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let propertyTypeEntry]
     var @lstring selector = ["" nowhere]
     for (mValue) in mAttributeList do
       if mValue.string == selectorFeatureForNewConstructor () then
@@ -166,8 +166,7 @@ override method @structDeclarationAST enterInSemanticContext
   if self.mEnumeratedElementTypeName == "" then
     enumeratedType = @unifiedTypeMap-entry.null
   else
-   [@unifiedTypeMap-entry makeEntryFromString
-     !?ioSemanticContext.mTypeMap
+   [!?ioSemanticContext.mTypeMap makeEntryFromString
      !self.mEnumeratedElementTypeName
      ?enumeratedType
     ]
@@ -244,7 +243,7 @@ override method @structDeclarationAST semanticAnalysis
   for (* mPropertyTypeName mPropertyName * mAttributeList) in self.mStructurePropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]
-    let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
+    let t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
     var hasSelector = false
     for (mValue) in mAttributeList do
       if mValue.string != selectorFeatureForNewConstructor () then
@@ -274,7 +273,7 @@ override method @structDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"struct " + self.mStructTypeName
     !@structTypeForGeneration.new {
-      !.searchKey {!inSemanticContext.mTypeMap !self.mStructTypeName}
+      ![inSemanticContext.mTypeMap searchKey !self.mStructTypeName]
       !typedPropertyList
     }
 }

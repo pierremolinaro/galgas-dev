@@ -5599,7 +5599,7 @@ GALGAS_outputInputActualParameterForGeneration GALGAS_outputInputActualParameter
   return GALGAS_outputInputActualParameterForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE),
                                                                           GALGAS_string::constructor_default (HERE),
                                                                           GALGAS_lstringlist::constructor_emptyList (HERE),
-                                                                          GALGAS_unifiedTypeMapEntryList::constructor_emptyList (HERE)
+                                                                          GALGAS_unifiedTypeMap_2D_entryList::constructor_emptyList (HERE)
                                                                           COMMA_THERE) ;
 }
 
@@ -5614,7 +5614,7 @@ GALGAS_actualParameterForGeneration (inSourcePtr) {
 GALGAS_outputInputActualParameterForGeneration GALGAS_outputInputActualParameterForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mFormalArgumentType,
                                                                                                                 const GALGAS_string & inAttribute_mOutputInputVariableCppName,
                                                                                                                 const GALGAS_lstringlist & inAttribute_mStructAttributeList,
-                                                                                                                const GALGAS_unifiedTypeMapEntryList & inAttribute_mTypeList
+                                                                                                                const GALGAS_unifiedTypeMap_2D_entryList & inAttribute_mTypeList
                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_outputInputActualParameterForGeneration result ;
   if (inAttribute_mFormalArgumentType.isValid () && inAttribute_mOutputInputVariableCppName.isValid () && inAttribute_mStructAttributeList.isValid () && inAttribute_mTypeList.isValid ()) {
@@ -5647,7 +5647,7 @@ void GALGAS_outputInputActualParameterForGeneration::setter_setMStructAttributeL
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_outputInputActualParameterForGeneration::setter_setMTypeList (GALGAS_unifiedTypeMapEntryList inValue
+void GALGAS_outputInputActualParameterForGeneration::setter_setMTypeList (GALGAS_unifiedTypeMap_2D_entryList inValue
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (NULL != mObjectPtr) {
     cPtr_outputInputActualParameterForGeneration * p = (cPtr_outputInputActualParameterForGeneration *) mObjectPtr ;
@@ -5682,9 +5682,9 @@ GALGAS_lstringlist GALGAS_outputInputActualParameterForGeneration::readProperty_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapEntryList GALGAS_outputInputActualParameterForGeneration::readProperty_mTypeList (void) const {
+GALGAS_unifiedTypeMap_2D_entryList GALGAS_outputInputActualParameterForGeneration::readProperty_mTypeList (void) const {
   if (NULL == mObjectPtr) {
-    return GALGAS_unifiedTypeMapEntryList () ;
+    return GALGAS_unifiedTypeMap_2D_entryList () ;
   }else{
     cPtr_outputInputActualParameterForGeneration * p = (cPtr_outputInputActualParameterForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_outputInputActualParameterForGeneration) ;
@@ -5699,7 +5699,7 @@ GALGAS_unifiedTypeMapEntryList GALGAS_outputInputActualParameterForGeneration::r
 cPtr_outputInputActualParameterForGeneration::cPtr_outputInputActualParameterForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mFormalArgumentType,
                                                                                             const GALGAS_string & in_mOutputInputVariableCppName,
                                                                                             const GALGAS_lstringlist & in_mStructAttributeList,
-                                                                                            const GALGAS_unifiedTypeMapEntryList & in_mTypeList
+                                                                                            const GALGAS_unifiedTypeMap_2D_entryList & in_mTypeList
                                                                                             COMMA_LOCATION_ARGS) :
 cPtr_actualParameterForGeneration (in_mFormalArgumentType COMMA_THERE),
 mProperty_mOutputInputVariableCppName (in_mOutputInputVariableCppName),
@@ -10567,21 +10567,21 @@ GALGAS_unifiedTypeMap_2D_entry extensionGetter_baseType (const GALGAS_unifiedTyp
   GALGAS_unifiedTypeMap_2D_entry result_outBaseType ; // Returned variable
   const GALGAS_unifiedTypeMap_2D_entry temp_0 = inObject ;
   result_outBaseType = temp_0 ;
-  if (GALGAS_uint::constructor_max (SOURCE_FILE ("unified-type-map.galgas", 179)).isValid ()) {
-    uint32_t variant_8275 = GALGAS_uint::constructor_max (SOURCE_FILE ("unified-type-map.galgas", 179)).uintValue () ;
-    bool loop_8275 = true ;
-    while (loop_8275) {
-      loop_8275 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 179)).getter_isNull (SOURCE_FILE ("unified-type-map.galgas", 179)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 179)).isValid () ;
-      if (loop_8275) {
-        loop_8275 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 179)).getter_isNull (SOURCE_FILE ("unified-type-map.galgas", 179)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 179)).boolValue () ;
+  if (GALGAS_uint::constructor_max (SOURCE_FILE ("unified-type-map-old.galgas", 84)).isValid ()) {
+    uint32_t variant_4420 = GALGAS_uint::constructor_max (SOURCE_FILE ("unified-type-map-old.galgas", 84)).uintValue () ;
+    bool loop_4420 = true ;
+    while (loop_4420) {
+      loop_4420 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("unified-type-map-old.galgas", 84)).getter_isNull (SOURCE_FILE ("unified-type-map-old.galgas", 84)).operator_not (SOURCE_FILE ("unified-type-map-old.galgas", 84)).isValid () ;
+      if (loop_4420) {
+        loop_4420 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("unified-type-map-old.galgas", 84)).getter_isNull (SOURCE_FILE ("unified-type-map-old.galgas", 84)).operator_not (SOURCE_FILE ("unified-type-map-old.galgas", 84)).boolValue () ;
       }
-      if (loop_8275 && (0 == variant_8275)) {
-        loop_8275 = false ;
-        inCompiler->loopRunTimeVariantError (SOURCE_FILE ("unified-type-map.galgas", 179)) ;
+      if (loop_4420 && (0 == variant_4420)) {
+        loop_4420 = false ;
+        inCompiler->loopRunTimeVariantError (SOURCE_FILE ("unified-type-map-old.galgas", 84)) ;
       }
-      if (loop_8275) {
-        variant_8275 -- ;
-        result_outBaseType = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 180)) ;
+      if (loop_4420) {
+        variant_4420 -- ;
+        result_outBaseType = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("unified-type-map-old.galgas", 85)) ;
       }
     }
   }
@@ -10606,10 +10606,10 @@ void extensionMethod_addHeaderFileName (const GALGAS_unifiedTypeMap_2D_entry inO
   if (kBoolTrue == test_0) {
     const GALGAS_unifiedTypeMap_2D_entry temp_1 = inObject ;
     const GALGAS_unifiedTypeMap_2D_entry temp_2 = inObject ;
-    test_0 = temp_1.getter_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 187)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 187)).operator_and (GALGAS_bool (kIsNotEqual, temp_2.getter_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 187)).objectCompare (GALGAS_headerKind::constructor_noHeader (SOURCE_FILE ("unified-type-map.galgas", 187)))) COMMA_SOURCE_FILE ("unified-type-map.galgas", 187)).boolEnum () ;
+    test_0 = temp_1.getter_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("unified-type-map-old.galgas", 92)).operator_not (SOURCE_FILE ("unified-type-map-old.galgas", 92)).operator_and (GALGAS_bool (kIsNotEqual, temp_2.getter_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("unified-type-map-old.galgas", 92)).objectCompare (GALGAS_headerKind::constructor_noHeader (SOURCE_FILE ("unified-type-map-old.galgas", 92)))) COMMA_SOURCE_FILE ("unified-type-map-old.galgas", 92)).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_unifiedTypeMap_2D_entry temp_3 = inObject ;
-      ioArgument_ioInclusions.addAssign_operation (temp_3.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 188))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 188)) ;
+      ioArgument_ioInclusions.addAssign_operation (temp_3.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("unified-type-map-old.galgas", 93))  COMMA_SOURCE_FILE ("unified-type-map-old.galgas", 93)) ;
     }
   }
 }
@@ -10628,10 +10628,10 @@ void extensionMethod_addHeaderFileName_31_ (const GALGAS_unifiedTypeMap_2D_entry
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_unifiedTypeMap_2D_entry temp_1 = inObject ;
-    test_0 = temp_1.getter_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 195)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 195)).boolEnum () ;
+    test_0 = temp_1.getter_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("unified-type-map-old.galgas", 100)).operator_not (SOURCE_FILE ("unified-type-map-old.galgas", 100)).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_unifiedTypeMap_2D_entry temp_2 = inObject ;
-      switch (temp_2.getter_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 196)).enumValue ()) {
+      switch (temp_2.getter_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("unified-type-map-old.galgas", 101)).enumValue ()) {
       case GALGAS_headerKind::kNotBuilt:
         break ;
       case GALGAS_headerKind::kEnum_noHeader:
@@ -10641,13 +10641,13 @@ void extensionMethod_addHeaderFileName_31_ (const GALGAS_unifiedTypeMap_2D_entry
       case GALGAS_headerKind::kEnum_oneHeader:
         {
           const GALGAS_unifiedTypeMap_2D_entry temp_3 = inObject ;
-          ioArgument_ioInclusions.addAssign_operation (temp_3.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 199))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 199)) ;
+          ioArgument_ioInclusions.addAssign_operation (temp_3.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("unified-type-map-old.galgas", 104))  COMMA_SOURCE_FILE ("unified-type-map-old.galgas", 104)) ;
         }
         break ;
       case GALGAS_headerKind::kEnum_twoHeaders:
         {
           const GALGAS_unifiedTypeMap_2D_entry temp_4 = inObject ;
-          ioArgument_ioInclusions.addAssign_operation (temp_4.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 201)).add_operation (GALGAS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 201))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 201)) ;
+          ioArgument_ioInclusions.addAssign_operation (temp_4.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("unified-type-map-old.galgas", 106)).add_operation (GALGAS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("unified-type-map-old.galgas", 106))  COMMA_SOURCE_FILE ("unified-type-map-old.galgas", 106)) ;
         }
         break ;
       }

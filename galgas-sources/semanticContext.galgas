@@ -424,10 +424,10 @@ proc addExtensions
     for (lkey mResultTypeName mInputFormalParameterList) in extensionGetterMapForType do
       var @functionSignature formalArgumentList = {}
       for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * *) in mInputFormalParameterList do
-        [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let typeIndex]
+        [!?ioSemanticContext.mTypeMap makeEntry  !mFormalArgumentTypeName ?let typeIndex]
         formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentName.string
       end
-      [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mResultTypeName ?let returnedType]
+      [!?ioSemanticContext.mTypeMap makeEntry  !mResultTypeName ?let returnedType]
       [!?ioGetterMap insertKey
         !lkey
         !@methodKind.definedAsExtension
@@ -446,8 +446,7 @@ proc addExtensions
     for (lkey mFormalParameterList) in extensionMethodMapForType do
       var formalArgumentList = @formalParameterSignature {}
       for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
-        [@unifiedTypeMap-entry makeEntry
-          !?ioSemanticContext.mTypeMap
+        [!?ioSemanticContext.mTypeMap makeEntry
           !mFormalArgumentTypeName
           ?let @unifiedTypeMap-entry typeIndex
         ]
@@ -471,7 +470,7 @@ proc addExtensions
     for (lkey mFormalParameterList) in extensionSetterMapForType do
       var @formalParameterSignature formalArgumentList = {}
       for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
-        [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let typeIndex]
+        [!?ioSemanticContext.mTypeMap makeEntry  !mFormalArgumentTypeName ?let typeIndex]
         formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
       end
       [!?ioSetterMap insertKey
@@ -622,7 +621,7 @@ override method @filewrapperDeclarationAST enterInSemanticContext
   for (mFilewrapperTemplateName mFilewrapperTemplatePath mFilewrapperTemplateFormalInputParameters) in self.mFilewrapperTemplateList do
     var @functionSignature templateSignature = {}
     for (mFormalTemplateSelector mFormalArgumentTypeName mFormalArgumentName *) in mFilewrapperTemplateFormalInputParameters do
-      [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
+      [!?ioSemanticContext.mTypeMap makeEntry  !mFormalArgumentTypeName ?let parameterTypeIndex]
       templateSignature += !mFormalTemplateSelector !parameterTypeIndex !mFormalArgumentName.string
     end
     [!?filewrapperTemplateMap insertKey
@@ -694,7 +693,7 @@ override method @externRoutineDeclarationAST enterInSemanticContext
 #--- Build signature
   var routineSignature = @formalParameterSignature {}
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mFormalArgumentList do
-    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
+    [!?ioSemanticContext.mTypeMap makeEntry  !mFormalArgumentTypeName ?let parameterTypeIndex]
     routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
   end
 #--- Enter routine in routine map
@@ -715,7 +714,7 @@ override method @procDeclarationAST enterInSemanticContext
 #--- Build signature
   var routineSignature = @formalParameterSignature {}
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mFormalArgumentList do
-    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
+    [!?ioSemanticContext.mTypeMap makeEntry  !mFormalArgumentTypeName ?let parameterTypeIndex]
     routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
   end
 #--- Enter types for instruction list
@@ -738,11 +737,11 @@ override method @externFunctionDeclarationAST enterInSemanticContext # Handles a
 #--- Build signature
   var functionSignature = @functionSignature {}
   for (mFormalSelector mFormalArgumentTypeName * * *) in self.mFormalArgumentList do
-    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
+    [!?ioSemanticContext.mTypeMap makeEntry  !mFormalArgumentTypeName ?let parameterTypeIndex]
     functionSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentTypeName.string
   end
 #--- Result type
-  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mResultTypeName ?let resultTypeIndex]
+  [!?ioSemanticContext.mTypeMap makeEntry  !self.mResultTypeName ?let resultTypeIndex]
 #--- Enter function in routine map
   [!?ioSemanticContext.mFunctionMap insertKey
     !self.mFunctionName
@@ -760,7 +759,7 @@ override method @onceFunctionDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Result type
-  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mResultTypeName ?let @unifiedTypeMap-entry resultTypeIndex]
+  [!?ioSemanticContext.mTypeMap makeEntry  !self.mResultTypeName ?let @unifiedTypeMap-entry resultTypeIndex]
 #--- Enter function in routine map
   [!?ioSemanticContext.mFunctionMap insertKey !self.mFunctionName !{} !resultTypeIndex !self.mIsInternal]
 }
@@ -796,7 +795,7 @@ override method @galgas3GrammarComponentAST enterInSemanticContext
   #--- Analyze signature
     var @formalParameterSignature formalArgumentList = {}
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalArgumentList do
-      [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let argumentType]
+      [!?ioSemanticContext.mTypeMap makeEntry  !mFormalArgumentTypeName ?let argumentType]
       formalArgumentList +=
         !mFormalSelector
         !argumentType

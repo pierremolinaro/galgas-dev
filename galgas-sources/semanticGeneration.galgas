@@ -48,7 +48,7 @@ override method @grammarForGeneration appendSpecificImplementation
       for (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in mFormalParametersList do
         switch mFormalArgumentPassingModeForGrammarAnalysis
         case argumentConstantIn, argumentIn :
-          let t = @unifiedTypeMap-entry. searchKey {!inUnifiedTypeMap !mGalgasTypeNameForGrammarAnalysis}
+          let t = [inUnifiedTypeMap searchKey !mGalgasTypeNameForGrammarAnalysis]
           [t addHeaderFileName !?ioInclusionSet]
         case argumentInOut, argumentOut :
         end     
@@ -1748,7 +1748,7 @@ proc generatePredefinedTypeFiles
   for (* mDeclaration) in inSemanticDeclarationListForGeneration do
     if [mDeclaration isPredefined] then
       generatedCode += [mDeclaration appendTypeGenericImplementation]
-      [mDeclaration appendSpecificImplementation !@unifiedTypeMap.emptySharedMap !?* ?let @string code]
+      [mDeclaration appendSpecificImplementation !.emptyMap !?* ?let @string code]
       generatedCode += code
     end
   end

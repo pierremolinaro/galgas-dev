@@ -164,7 +164,7 @@ override method @outputActualParameterAST checkAgainstFormalArgument
     + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
   else
     if inFormalSelector.string != self.mActualSelector.string then
-      let s = "!" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
+      let @string s = "!" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
      end
     [self.mOutputActualParameterExpression analyzeSemanticExpression
@@ -202,13 +202,13 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
     :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
     + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
   elsif inFormalSelector.string != self.mActualSelector.string then
-    let s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
+    let @string s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
     error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
 #    error self.mActualSelector : "the selector should be '!?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
   end
 #--- Analyze input/output variable
   [!?ioVariableMap searchForReadWriteAccess !self.mOutputInputActualParameterName ?var @unifiedTypeMap-entry parameterType ?let variableCppName ?*]
-  var typeList = @unifiedTypeMapEntryList.listWithValue {!parameterType}
+  var typeList = @unifiedTypeMap-entryList.listWithValue {!parameterType}
   for (mValue) in self.mStructAttributeList do
     let propertyMap = [parameterType mPropertyMap]
     [propertyMap searchKey
@@ -263,7 +263,7 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
     :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
     + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
   elsif inFormalSelector.string != self.mActualSelector.string then
-    let s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
+    let @string s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
     error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
 #    error self.mActualSelector : "the selector should be '!?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
   end
@@ -282,7 +282,7 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
     !inFormalArgumentType
     !cppVarName
     !{}
-    !@unifiedTypeMapEntryList. listWithValue {!inFormalArgumentType}}
+    !@unifiedTypeMap-entryList. listWithValue {!inFormalArgumentType}}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -318,7 +318,7 @@ override method @outputInputJokerParameterAST checkAgainstFormalArgument
     !inFormalArgumentType
     !cppVarName
     !{}
-    !@unifiedTypeMapEntryList. listWithValue {!inFormalArgumentType}}
+    !@unifiedTypeMap-entryList. listWithValue {!inFormalArgumentType}}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -339,7 +339,7 @@ override method @inputActualExistingVariableParameterAST checkAgainstFormalArgum
     :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
     + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
   elsif inFormalSelector.string != self.mActualSelector.string then
-    let s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
+    let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
     error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
 #     error self.mActualSelector : "the selector should be '?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
   end
@@ -387,7 +387,7 @@ override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
     :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
     + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
   elsif inFormalSelector.string != self.mActualSelector.string then
-    let s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
+    let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
     error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
   end
   
@@ -460,17 +460,14 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
     :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
     + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
   elsif inFormalSelector.string != self.mActualSelector.string then
-    let s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
+    let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
     error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
 #     error self.mActualSelector : "the selector should be '?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
   end
 #--- Analyze or infer type
 
   if self.mInputOptionalActualTypeName.string != "" then
-    let parameterType = @unifiedTypeMap-entry.searchKey {
-      !inAnalysisContext.mSemanticContext.mTypeMap
-      !self.mInputOptionalActualTypeName
-    }
+    let parameterType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mInputOptionalActualTypeName]
     if inFormalArgumentType != parameterType then
       error self.mInputActualParameterName
       :"the parameter object has the '@" + [parameterType key]
@@ -522,16 +519,13 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
     :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
     + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
   elsif inFormalSelector.string != self.mActualSelector.string then
-    let s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
+    let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
     error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
 #     error self.mActualSelector : "the selector should be '?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
   end
 #--- Analyze or infer type
   if self.mInputOptionalActualTypeName.string != "" then
-    let parameterType = @unifiedTypeMap-entry.searchKey {
-      !inAnalysisContext.mSemanticContext.mTypeMap
-      !self.mInputOptionalActualTypeName
-    }
+    let parameterType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mInputOptionalActualTypeName]
     if inFormalArgumentType != parameterType then
       error self.mInputActualParameterName
       :"the parameter object has the '@" + [parameterType key]
@@ -591,7 +585,7 @@ override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
     :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
     + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
   elsif inFormalSelector.string != self.mActualSelector.string then
-    let s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
+    let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
     error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
 #     error self.mActualSelector : "the selector should be '?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
   else
@@ -865,7 +859,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
     error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location locationIndex]
-  let type = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mActualParameterTypeName}
+  let type = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mActualParameterTypeName]
   [!?ioVariableMap insertInitializedLocalVariable !self.mActualParameterName !warnsIfNotMutated: true !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
   if expectedType != type then
@@ -888,7 +882,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
     error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location locationIndex]
-  let type = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mActualParameterTypeName}
+  let type = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mActualParameterTypeName]
   [!?ioVariableMap insertInitializedLocalConstant !self.mActualParameterName !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
   if expectedType != type then

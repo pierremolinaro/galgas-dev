@@ -92,7 +92,7 @@ private proc generateGalgasCodeBlocksWindowsTarget
 {
   let @string dir = inProjectDirectory + "/project-codeblocks-windows"
   [dir makeDirectory]
-  let s = [filewrapper targetGalgas3GenerationFileWrapper.codeblocks_project
+  let @string s = [filewrapper targetGalgas3GenerationFileWrapper.codeblocks_project
     !inProjectName
     !inToolCppFileList
     !inLIBPMpath
@@ -118,7 +118,7 @@ private proc generateGalgasCodeBlocksMacTarget
 {
   let @string dir = inProjectDirectory + "/project-codeblocks-mac"
   [dir makeDirectory]
-  let s = [filewrapper targetGalgas3GenerationFileWrapper.codeblocks_project
+  let @string s = [filewrapper targetGalgas3GenerationFileWrapper.codeblocks_project
     !inProjectName
     !inToolCppFileList
     !inLIBPMpath
@@ -144,7 +144,7 @@ private proc generateGalgasCodeBlocksLinuxI686Target
  {
   let @string dir = inProjectDirectory + "/project-codeblocks-linux32"
   [dir makeDirectory]
-  let s = [filewrapper targetGalgas3GenerationFileWrapper.codeblocks_project
+  let @string s = [filewrapper targetGalgas3GenerationFileWrapper.codeblocks_project
     !inProjectName
     !inToolCppFileList
     !inLIBPMpath
@@ -170,7 +170,7 @@ private proc generateGalgasCodeBlocksLinuxX86_64Target
 {
   let @string dir = inProjectDirectory + "/project-codeblocks-linux64"
   [dir makeDirectory]
-  let s = [filewrapper targetGalgas3GenerationFileWrapper.codeblocks_project
+  let @string s = [filewrapper targetGalgas3GenerationFileWrapper.codeblocks_project
     !inProjectName
     !inToolCppFileList
     !inLIBPMpath

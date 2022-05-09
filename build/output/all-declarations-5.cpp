@@ -14343,10 +14343,10 @@ GALGAS_string extensionGetter_string (const GALGAS_typeKindEnum & inObject,
     break ;
   case GALGAS_typeKindEnum::kEnum_classType:
     {
-      const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_10871 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
-      const GALGAS_bool extractedValue_10798_isReference = extractPtr_10871->mAssociatedValue0 ;
+      const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_10872 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
+      const GALGAS_bool extractedValue_10799_isReference = extractPtr_10872->mAssociatedValue0 ;
       GALGAS_string temp_1 ;
-      const enumGalgasBool test_2 = extractedValue_10798_isReference.boolEnum () ;
+      const enumGalgasBool test_2 = extractedValue_10799_isReference.boolEnum () ;
       if (kBoolTrue == test_2) {
         temp_1 = GALGAS_string ("reference class") ;
       }else if (kBoolFalse == test_2) {

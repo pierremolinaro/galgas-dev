@@ -10157,41 +10157,41 @@ GALGAS_functionSignature_2D_element GALGAS_functionSignature_2D_element::extract
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapEntryList_2D_element::GALGAS_unifiedTypeMapEntryList_2D_element (void) :
+GALGAS_unifiedTypeMap_2D_entryList_2D_element::GALGAS_unifiedTypeMap_2D_entryList_2D_element (void) :
 mProperty_mType () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapEntryList_2D_element::~ GALGAS_unifiedTypeMapEntryList_2D_element (void) {
+GALGAS_unifiedTypeMap_2D_entryList_2D_element::~ GALGAS_unifiedTypeMap_2D_entryList_2D_element (void) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapEntryList_2D_element::GALGAS_unifiedTypeMapEntryList_2D_element (const GALGAS_unifiedTypeMap_2D_entry & inOperand0) :
+GALGAS_unifiedTypeMap_2D_entryList_2D_element::GALGAS_unifiedTypeMap_2D_entryList_2D_element (const GALGAS_unifiedTypeMap_2D_entry & inOperand0) :
 mProperty_mType (inOperand0) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapEntryList_2D_element GALGAS_unifiedTypeMapEntryList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_unifiedTypeMapEntryList_2D_element (GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE)) ;
+GALGAS_unifiedTypeMap_2D_entryList_2D_element GALGAS_unifiedTypeMap_2D_entryList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_unifiedTypeMap_2D_entryList_2D_element (GALGAS_unifiedTypeMap_2D_entry::constructor_null (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapEntryList_2D_element GALGAS_unifiedTypeMapEntryList_2D_element::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inOperand0 
-                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapEntryList_2D_element result ;
+GALGAS_unifiedTypeMap_2D_entryList_2D_element GALGAS_unifiedTypeMap_2D_entryList_2D_element::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inOperand0 
+                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_unifiedTypeMap_2D_entryList_2D_element result ;
   if (inOperand0.isValid ()) {
-    result = GALGAS_unifiedTypeMapEntryList_2D_element (inOperand0) ;
+    result = GALGAS_unifiedTypeMap_2D_entryList_2D_element (inOperand0) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_unifiedTypeMapEntryList_2D_element::objectCompare (const GALGAS_unifiedTypeMapEntryList_2D_element & inOperand) const {
+typeComparisonResult GALGAS_unifiedTypeMap_2D_entryList_2D_element::objectCompare (const GALGAS_unifiedTypeMap_2D_entryList_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mProperty_mType.objectCompare (inOperand.mProperty_mType) ;
@@ -10201,21 +10201,21 @@ typeComparisonResult GALGAS_unifiedTypeMapEntryList_2D_element::objectCompare (c
 
 //----------------------------------------------------------------------------------------------------------------------
 
-bool GALGAS_unifiedTypeMapEntryList_2D_element::isValid (void) const {
+bool GALGAS_unifiedTypeMap_2D_entryList_2D_element::isValid (void) const {
   return mProperty_mType.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMapEntryList_2D_element::drop (void) {
+void GALGAS_unifiedTypeMap_2D_entryList_2D_element::drop (void) {
   mProperty_mType.drop () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMapEntryList_2D_element::description (C_String & ioString,
-                                                             const int32_t inIndentation) const {
-  ioString << "<struct @unifiedTypeMapEntryList-element:" ;
+void GALGAS_unifiedTypeMap_2D_entryList_2D_element::description (C_String & ioString,
+                                                                 const int32_t inIndentation) const {
+  ioString << "<struct @unifiedTypeMap-entryList-element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
@@ -10226,42 +10226,42 @@ void GALGAS_unifiedTypeMapEntryList_2D_element::description (C_String & ioString
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@unifiedTypeMapEntryList-element type
+//@unifiedTypeMap-entryList-element type
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_unifiedTypeMapEntryList_2D_element ("unifiedTypeMapEntryList-element",
-                                                           NULL) ;
+kTypeDescriptor_GALGAS_unifiedTypeMap_2D_entryList_2D_element ("unifiedTypeMap-entryList-element",
+                                                               NULL) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_unifiedTypeMapEntryList_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_unifiedTypeMapEntryList_2D_element ;
+const C_galgas_type_descriptor * GALGAS_unifiedTypeMap_2D_entryList_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_unifiedTypeMap_2D_entryList_2D_element ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_unifiedTypeMapEntryList_2D_element::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_unifiedTypeMap_2D_entryList_2D_element::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_unifiedTypeMapEntryList_2D_element (*this)) ;
+    macroMyNew (result, GALGAS_unifiedTypeMap_2D_entryList_2D_element (*this)) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapEntryList_2D_element GALGAS_unifiedTypeMapEntryList_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapEntryList_2D_element result ;
-  const GALGAS_unifiedTypeMapEntryList_2D_element * p = (const GALGAS_unifiedTypeMapEntryList_2D_element *) inObject.embeddedObject () ;
+GALGAS_unifiedTypeMap_2D_entryList_2D_element GALGAS_unifiedTypeMap_2D_entryList_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                            C_Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_unifiedTypeMap_2D_entryList_2D_element result ;
+  const GALGAS_unifiedTypeMap_2D_entryList_2D_element * p = (const GALGAS_unifiedTypeMap_2D_entryList_2D_element *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_unifiedTypeMapEntryList_2D_element *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_unifiedTypeMap_2D_entryList_2D_element *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("unifiedTypeMapEntryList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("unifiedTypeMap-entryList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -11888,7 +11888,7 @@ GALGAS_constantIndexMap_2D_element::~ GALGAS_constantIndexMap_2D_element (void) 
 
 GALGAS_constantIndexMap_2D_element::GALGAS_constantIndexMap_2D_element (const GALGAS_lstring & inOperand0,
                                                                         const GALGAS_uint & inOperand1,
-                                                                        const GALGAS_unifiedTypeMapEntryList & inOperand2) :
+                                                                        const GALGAS_unifiedTypeMap_2D_entryList & inOperand2) :
 mProperty_lkey (inOperand0),
 mProperty_mIndex (inOperand1),
 mProperty_mAssociatedTypeList (inOperand2) {
@@ -11899,14 +11899,14 @@ mProperty_mAssociatedTypeList (inOperand2) {
 GALGAS_constantIndexMap_2D_element GALGAS_constantIndexMap_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_constantIndexMap_2D_element (GALGAS_lstring::constructor_default (HERE),
                                              GALGAS_uint::constructor_default (HERE),
-                                             GALGAS_unifiedTypeMapEntryList::constructor_emptyList (HERE)) ;
+                                             GALGAS_unifiedTypeMap_2D_entryList::constructor_emptyList (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_constantIndexMap_2D_element GALGAS_constantIndexMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
                                                                                         const GALGAS_uint & inOperand1,
-                                                                                        const GALGAS_unifiedTypeMapEntryList & inOperand2 
+                                                                                        const GALGAS_unifiedTypeMap_2D_entryList & inOperand2 
                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_constantIndexMap_2D_element result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {

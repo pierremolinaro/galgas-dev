@@ -362,9 +362,9 @@ override method @sharedMapDeclarationAST enterInSemanticContext
 {
   let optionalMethodMap = @optionalMethodMap {}
 #--- string type index
-  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"string" ?let stringTypeIndex]
+  [!?ioSemanticContext.mTypeMap makeEntryFromString !"string" ?let stringTypeIndex]
 #--- lstring type index
-  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"lstring" ?let lstringTypeIndex]
+  [!?ioSemanticContext.mTypeMap makeEntryFromString !"lstring" ?let lstringTypeIndex]
 #--- Enumeration description
   var @enumerationDescriptorList enumerationDescriptor = {!lstringTypeIndex !"lkey"}
 #--- Attributes
@@ -388,7 +388,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   enterConstructorWithoutArgument (
     !?constructorMap
     !?ioSemanticContext.mTypeMap
-    !name:"emptySharedMap"
+    !name:"emptyMap"
     !resultTypeName:self.mMapTypeName.string
     !hasLexiqueArg:false
   )
@@ -461,7 +461,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !.argumentConstantIn
     !"inLKey"
   for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
-    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true
     let hasSelector = false
     typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
@@ -492,32 +492,6 @@ override method @sharedMapDeclarationAST enterInSemanticContext
       ]
     end
   end
-#--------------------------- EnterEdge setter
-#  var enterEdgeFormalArgumentList = @formalParameterSignature {}
-#  enterEdgeFormalArgumentList += !["" nowhere] !lstringTypeIndex !.argumentConstantIn !"inSource"
-#  enterEdgeFormalArgumentList += !["" nowhere] !lstringTypeIndex !.argumentConstantIn !"inTarget"
-#  [!?setterMap insertOrReplace
-#    !["enterEdge" nowhere]
-#    !@methodKind.definedAsMember
-#    !enterEdgeFormalArgumentList
-#    !false
-#    !@methodQualifier. isInherited
-#    !"" # No error message
-#  ]
-#--------------------------- topologicalSort Method
-#  var topologicalSortFormalArgumentList = @formalParameterSignature {}
-#  topologicalSortFormalArgumentList += !["" nowhere] !lstringlistTypeIndex !.argumentOut !"outSortedLKeys"
-#  topologicalSortFormalArgumentList += !["" nowhere] !lstringlistTypeIndex !.argumentOut !"outUnsortedLKeys"
-#  [!?instanceMethodMap insertKey
-#    !["topologicalSort" nowhere]
-#    !@methodKind.definedAsMember
-#    !topologicalSortFormalArgumentList
-#    !@location.here
-#    !true
-#    !@methodQualifier. isInherited
-#    !.constantMethod
-#    !"" # No error message
-#  ]
 #--- Handle search methods (methods if no state, setters if states)
   for (mSearchMethodName * *) in self.mSearchMethodList do
     [!?instanceMethodMap insertKey
@@ -534,7 +508,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
 #--- Enter "attributeForKey" getters
   for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     let accessorName = @lstring.new {!mPropertyName.string + "ForKey" !mPropertyName.location}
-    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
       !accessorName
       !@methodKind.definedAsMember
@@ -549,7 +523,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
 #---------- Enter "set...Attribute...forKey" setters, and 'with' accessor parameter
   for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     let accessorName = @lstring.new {!"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "ForKey" !mPropertyName.location}
-    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     var @formalParameterSignature accessorFormalArgumentList = {}
     accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
     accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !.argumentConstantIn !mPropertyName.string
@@ -600,7 +574,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !{}
     !false # Do not generate header in separate file
     !@unifiedTypeMap-entry.null # Type for enumerated element for "for" instruction
-    !"emptySharedMap"
+    !"emptyMap"
     !"sharedmap-" + [self.mMapTypeName fileNameRepresentation]
     !@headerKind.twoHeaders
   ]
@@ -629,7 +603,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
   for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
+    let t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
     let hasSetter = true
     let hasSelector = false
     typedAttributeList +=
@@ -673,11 +647,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
 #--- Enter search methods
   var @searchMethodMap searchMethodMap = {}
   for searchMethod in self.mSearchMethodList do
-#    if [self.mMapStateList length] == 0 then
-#      [!?searchMethodMap insertKey !searchMethod.mSearchMethodName]
-#    else
-      [!?searchMethodMap insertKey !searchMethod.mSearchMethodName]
-#    end
+    [!?searchMethodMap insertKey !searchMethod.mSearchMethodName]
   #--- Check error message escape sequences : only %K or %%
     for errorMessageComponent in [searchMethod.mErrorMessage.string componentsSeparatedByString !"%%"] do
       var @stringlist explodedArray = [errorMessageComponent.mValue componentsSeparatedByString !"%"]
@@ -696,7 +666,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"shared map " + self.mMapTypeName
     !@sharedMapTypeForGeneration.new {
-      !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mMapTypeName}
+      ![inSemanticContext.mTypeMap searchKey !self.mMapTypeName]
       !typedAttributeList
       !self.mInsertMethodList
       !self.mSearchMethodList
@@ -711,13 +681,6 @@ refclass @sharedMapTypeForGeneration : @semanticTypeForGeneration {
   public var @typedPropertyList mTypedAttributeList
   public var @insertMethodListAST mInsertMethodList
   public var @mapSearchMethodListAST mSearchMethodList
-#  public var @mapAutomatonStateMap mMapAutomatonStateMap
-#  public var @mapAutomatonActionMap mMapAutomatonActionMap
-#  public var @mapStateSortedList mMapStateSortedList
-#  public var @mapOverrideList mMapOverrideList
-#---
-#  public var @mapAutomatonMessageKind mShadowBehaviour
-#  public var @string mShadowMessage
 }
 
 #·······················································································································

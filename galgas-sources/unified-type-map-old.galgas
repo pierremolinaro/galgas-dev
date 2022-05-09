@@ -1,0 +1,111 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#                                           
+#  semantics definitions for semantics component 
+#                                           
+#  Copyright (C) 1997, ..., 2017 Pierre Molinaro.
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
+#                                           
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+#  details.                                 
+#                                           
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#                                           
+#  U N I F I E D    T Y P E    M A P        
+#                                           
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+shared map @unifiedTypeMap {
+  public var @bool mIsPredefined
+  public var @bool mIsConcrete # false if abstract class
+  public var @unifiedTypeMap-entry mSuperType
+  public var @typeKindEnum mTypeKindEnum
+  public var @bool mSupportCollectionValue
+  public var @typedPropertyList mAllTypedPropertyList
+  public var @propertyMap mPropertyMap # struct, class
+  public var @typedPropertyList mCurrentTypedPropertyList
+  public var @constructorMap mConstructorMap
+  public var @getterMap mGetterMap
+  public var @setterMap mSetterMap
+  public var @instanceMethodMap mInstanceMethodMap
+  public var @classMethodMap mClassMethodMap
+  public var @optionalMethodMap mOptionalMethodMap
+  public var @enumerationDescriptorList mEnumerationDescriptor # Empty List if cannot be enumerated
+  public var @operators mHandledOperatorFlags
+  public var @functionSignature mAddAssignOperatorArguments # Empty list if += operator is not supported
+  public var @constantIndexMap mEnumConstantMap
+  public var @enumConstantList mEnumConstantList
+  public var @mapSearchMethodListAST mMapSearchMethodList # For a map, the list of search methods
+  public var @mapSearchMethodListAST mMapEntrySearchConstructorList # For a map entry, the list of search methods of the associated map
+  public var @bool mGenerateHeaderInSeparateFile # Significant only for classes
+  public var @unifiedTypeMap-entry mTypeForEnumeratedElement
+  public var @string mDefaultConstructorName # Used in [@xxx default] (empty string if no default constructor)
+  public var @string mHeaderFileName # Name of C++ header file that contains type declaration
+  public var @headerKind mHeaderKind
+
+  insert insertKey error message "the '@%K' type has been already declared in %L"
+  search searchKey error message "the '@%K' type is not declared"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @unifiedTypeMapEntryList {
+  @unifiedTypeMap-entry mEntry
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+getter @unifiedTypeMap searchKey ?let @lstring inLKey -> @unifiedTypeMap-entry {
+  result = @unifiedTypeMap-entry.searchKey {!self !inLKey}
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @unifiedTypeMap makeEntry ?let @lstring inLKey !@unifiedTypeMap-entry outEntry {
+  var v = self
+  [@unifiedTypeMap-entry makeEntry !?v !inLKey ?outEntry]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @unifiedTypeMap makeEntryFromString ?let @string inKey !@unifiedTypeMap-entry outEntry {
+  var v = self
+  [@unifiedTypeMap-entry makeEntryFromString !?v !inKey ?outEntry]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+getter @unifiedTypeMap-entry baseType -> @unifiedTypeMap-entry outBaseType {
+  outBaseType = self
+  loop (@uint. max) while not [[outBaseType mSuperType] isNull] do
+    outBaseType = [outBaseType mSuperType]
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+method @unifiedTypeMap-entry addHeaderFileName ?!@stringset ioInclusions {
+  if (not [self mIsPredefined]) & ([self mHeaderKind] != @headerKind.noHeader) then
+    ioInclusions += ![self mHeaderFileName]
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+method @unifiedTypeMap-entry addHeaderFileName1 ?!@stringset ioInclusions {
+  if not [self mIsPredefined] then
+    switch [self mHeaderKind]
+    case noHeader :
+    case oneHeader :
+      ioInclusions += ![self mHeaderFileName]
+    case twoHeaders :
+      ioInclusions += ![self mHeaderFileName] + "-1"
+    end
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

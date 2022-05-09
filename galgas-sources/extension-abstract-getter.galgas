@@ -141,7 +141,7 @@ override method @abstractExtensionGetterAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Self type
-  let @unifiedTypeMap-entry selfType = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mTypeName}
+  let @unifiedTypeMap-entry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- Check self type is an abstract class
   if not [[selfType mTypeKindEnum] isClassType] then
     error self.mAbstractExtensionGetterName: "cannot declare an extension getter: '@" + [selfType key] + "' is not a class"
@@ -153,7 +153,7 @@ override method @abstractExtensionGetterAST semanticAnalysis
   for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in self.mAbstractExtensionGetterFormalInputParameterList do
     formalParameterListForGeneration +=
       !mFormalSelector
-      !.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
+      ![inSemanticContext.mTypeMap searchKey !mFormalArgumentTypeName]
       !mFormalArgumentName.string
       !mFormalArgumentName
       !mIsConstant
@@ -166,7 +166,7 @@ override method @abstractExtensionGetterAST semanticAnalysis
       !"getter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mAbstractExtensionGetterName fileNameRepresentation]
       !selfType
       !self.mAbstractExtensionGetterName.string
-      !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mAbstractExtensionGetterReturnedTypeName}
+      ![inSemanticContext.mTypeMap searchKey !self.mAbstractExtensionGetterReturnedTypeName]
       !formalParameterListForGeneration
     }
 }

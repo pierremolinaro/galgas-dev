@@ -154,7 +154,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
     ?let expression
   ]
 #--- Get type information
-   let castType = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
+   let castType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- This type is either a class
   if [[expression.mResultType mTypeKindEnum] isClassType] then
   #--- Check expression type is a descendant of named type
@@ -210,10 +210,7 @@ override method @castInExpressionAST analyzeSemanticExpression
     ?let @semanticExpressionForGeneration expression
    ]
 #--- Get type information
-   let type = @unifiedTypeMap-entry. searchKey {
-     !inAnalysisContext.mSemanticContext.mTypeMap
-     !self.mTypeName
-   }
+   let type = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- This type is an @object type
   if [[expression.mResultType mTypeKindEnum] isClassType]then
   #--- Check expression type is a descendant of named type

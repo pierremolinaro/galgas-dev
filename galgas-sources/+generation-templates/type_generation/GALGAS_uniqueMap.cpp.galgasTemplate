@@ -84,7 +84,7 @@ GALGAS_%!TYPE_IDENTIFIER% & GALGAS_%!TYPE_IDENTIFIER%::operator = (const GALGAS_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptySharedMap (LOCATION_ARGS) {
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;

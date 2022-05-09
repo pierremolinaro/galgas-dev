@@ -93,18 +93,22 @@ override method @arrayDeclarationAST enterInSemanticContext
     error self.mDimension: "the dimension of an array should be > 0"
   end
 #--- array type
-  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mArrayTypeName ?let arrayTypeIndex]
+#  [!?ioSemanticContext.mTypeMap makeEntry  !self.mArrayTypeName ?let arrayTypeIndex]
+  [!?ioSemanticContext.mTypeMap makeEntry !self.mArrayTypeName ?let arrayTypeIndex]
 #--- element type
-  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mElementTypeName ?let elementTypeIndex]
+  [!?ioSemanticContext.mTypeMap makeEntry !self.mElementTypeName ?let elementTypeIndex]
+#  [!?ioSemanticContext.mTypeMap makeEntry  !self.mElementTypeName ?let elementTypeIndex]
 #---
   var @constructorMap constructorMap = {}
-  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   var @setterMap setterMap ={}
   let @instanceMethodMap instanceMethodMap = {}
 #--- 
-  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"bool" ?let boolType]
+#  [!?ioSemanticContext.mTypeMap makeEntryFromString !"bool" ?let boolType]
+  [!?ioSemanticContext.mTypeMap makeEntry !.new {!"bool" !.nowhere} ?let boolType]
 #--- 
-  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"uint" ?let uintType]
+#  [!?ioSemanticContext.mTypeMap makeEntryFromString !"uint" ?let uintType]
+  [!?ioSemanticContext.mTypeMap makeEntry !.new {!"uint" !.nowhere} ?let uintType]
 #---
   var @functionSignature uintArgs = {}
   var @uint idx = 0
@@ -268,8 +272,8 @@ override method @arrayDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"array " + self.mArrayTypeName
     !@arrayTypeForGeneration.new {
-      !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mArrayTypeName}
-      !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mElementTypeName}
+      ![inSemanticContext.mTypeMap searchKey !self.mArrayTypeName]
+      ![inSemanticContext.mTypeMap searchKey !self.mElementTypeName]
       !self.mDimension.uint
     }
 }

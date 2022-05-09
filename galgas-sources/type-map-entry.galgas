@@ -53,18 +53,18 @@ override method @mapEntryDeclarationAST enterInSemanticContext
 #---
   let optionalMethodMap = @optionalMethodMap {}
   var @constructorMap constructorMap = {}
-  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap ={}
   var @classMethodMap classMethodMap = {}
 #--- Associated map type index
-  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mAssociatedMapTypeName ?let associatedMapTypeIndex]
+  [!?ioSemanticContext.mTypeMap makeEntry !self.mAssociatedMapTypeName ?let associatedMapTypeIndex]
 #--- string type index
-  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"string" ?let stringTypeIndex]
+  [!?ioSemanticContext.mTypeMap makeEntryFromString !"string" ?let stringTypeIndex]
 #--- lstring type index
-  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"lstring" ?let lstringTypeIndex]
+  [!?ioSemanticContext.mTypeMap makeEntryFromString !"lstring" ?let lstringTypeIndex]
 #--- Handle map type name
-  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mMapEntryTypeName ?let mapEntryTypeIndex]
+  [!?ioSemanticContext.mTypeMap makeEntry !self.mMapEntryTypeName ?let mapEntryTypeIndex]
 #--- class methods : makeEntry, makeOptionalEntry
   var @formalParameterSignature argList = {}
   argList += !["" nowhere] !associatedMapTypeIndex !@formalArgumentPassingModeAST.argumentInOut !"ioMap"
@@ -249,8 +249,8 @@ override method @mapEntryDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"map entry " + self.mMapEntryTypeName
     !@mapEntryTypeForGeneration.new {
-      !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mMapEntryTypeName}
-      !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mAssociatedMapTypeName}
+      ![inSemanticContext.mTypeMap searchKey !self.mMapEntryTypeName]
+      ![inSemanticContext.mTypeMap searchKey !self.mAssociatedMapTypeName]
       !listTypeAttributeList
       !searchMethodList
     }

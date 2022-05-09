@@ -358,11 +358,11 @@ override method @mapDeclarationAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext
 {
 #--- string type index
-  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"string" ?let stringTypeIndex]
+  [!?ioSemanticContext.mTypeMap makeEntryFromString !"string" ?let stringTypeIndex]
 #--- location type index
-  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"location" ?let locationTypeEntry]
+  [!?ioSemanticContext.mTypeMap makeEntryFromString !"location" ?let locationTypeEntry]
 #--- lstring type index
-  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"lstring" ?let lstringTypeIndex]
+  [!?ioSemanticContext.mTypeMap makeEntryFromString !"lstring" ?let lstringTypeIndex]
 #--- Enumeration description
   var @enumerationDescriptorList enumerationDescriptor = {!lstringTypeIndex !"lkey"}
 #--- Attributes
@@ -385,7 +385,7 @@ override method @mapDeclarationAST enterInSemanticContext
   end
 #---
   var @constructorMap constructorMap = {}
-  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap)
+  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap)
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap = {}
 #--- Constructors
@@ -492,9 +492,9 @@ override method @mapDeclarationAST enterInSemanticContext
     !lstringTypeIndex
     !@formalArgumentPassingModeAST.argumentConstantIn
     !"inLKey"
-  var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
+  var @unifiedTypeMap-entryList typesToIncludeInHeaderCompilation = {}
   for (* mPropertyTypeName mPropertyName * mAttributeList) in self.mPropertyList do
-    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true
     var hasSelector = false
     for (attribute) in mAttributeList do
@@ -579,7 +579,7 @@ override method @mapDeclarationAST enterInSemanticContext
 #--- Enter "attributeForKey" getters
   for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     let accessorName = @lstring.new {!mPropertyName.string + "ForKey" !mPropertyName.location}
-    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
       !accessorName
       !@methodKind.definedAsMember
@@ -609,8 +609,7 @@ override method @mapDeclarationAST enterInSemanticContext
       !"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "ForKey"
       !mPropertyName.location
     }
-    [@unifiedTypeMap-entry makeEntry
-      !?ioSemanticContext.mTypeMap
+    [!?ioSemanticContext.mTypeMap makeEntry
       !mPropertyTypeName
       ?let @unifiedTypeMap-entry attributeTypeIndex
     ]
@@ -642,8 +641,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !acceptSetters: true
   )
 #--- Element type index
-  [@unifiedTypeMap-entry makeEntry
-    !?ioSemanticContext.mTypeMap
+  [!?ioSemanticContext.mTypeMap makeEntry
     !@lstring.new {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName.location}
     ?let @unifiedTypeMap-entry elementTypeEntry
   ]
@@ -724,7 +722,7 @@ override method @mapDeclarationAST semanticAnalysis
   for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    let @unifiedTypeMap-entry t = .searchKey{!inSemanticContext.mTypeMap !mPropertyTypeName}
+    let @unifiedTypeMap-entry t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
     let hasSetter = true
     let hasSelector = false
     typedAttributeList +=
@@ -746,19 +744,19 @@ override method @mapDeclarationAST semanticAnalysis
   var @insertMethodMap insertMethodMap = {}
   for (mInsertMethodName mErrorMessage mShadowErrorMessage) in self.mInsertMethodList do
     [!?insertMethodMap insertKey !mInsertMethodName]
-    check_K_L_escapeCharacters ( !mErrorMessage )
-    check_K_L_escapeCharacters ( !mShadowErrorMessage )
+    check_K_L_escapeCharacters (!mErrorMessage )
+    check_K_L_escapeCharacters (!mShadowErrorMessage )
   end
 #--- Enter search methods
   var @searchMethodMap searchMethodMap = {}
   for (mSearchMethodName mErrorMessage *) in self.mSearchMethodList do
     [!?searchMethodMap insertKey !mSearchMethodName]
-    check_K_escapeCharacters ( !mErrorMessage )
+    check_K_escapeCharacters (!mErrorMessage )
   end
 #--- Enter remove methods
   for (mMethodName mErrorMessage) in self.mRemoveMethodList do
     [!?insertMethodMap insertKey !mMethodName]
-    check_K_escapeCharacters ( !mErrorMessage )
+    check_K_escapeCharacters (!mErrorMessage )
   end
 #--- Warn for duplicated declarations or 'insertOrReplace' setter
   for (mInsertOrReplaceDeclarationLocation) in self.mInsertOrReplaceDeclarationListAST do(IDX)
@@ -775,8 +773,8 @@ override method @mapDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"map " + self.mMapTypeName
     !@mapTypeForGeneration.new {
-      !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mMapTypeName}
-      !@unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !@lstring.new {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName.location}}
+      ![inSemanticContext.mTypeMap searchKey !self.mMapTypeName]
+      ![inSemanticContext.mTypeMap searchKey !@lstring.new {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName.location}]
       !self.mMapTypeName
       !typedAttributeList
       !self.mInsertMethodList

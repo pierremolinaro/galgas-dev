@@ -42,7 +42,7 @@ private proc enterInstanceMethodWithInputArgument
   ?methodName:let @string inInstanceMethodName
   ?let @bool inHasCompilerArgument
 {
-  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?let argumentTypeIndex]
+  [!?ioUnifiedTypeMap makeEntryFromString !inInputArgumentTypeName ?let argumentTypeIndex]
   var @formalParameterSignature argList = {}
   argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !inInputArgumentName
   [!?ioInstanceMethodMap insertKey
@@ -56,31 +56,6 @@ private proc enterInstanceMethodWithInputArgument
     !"" # No error message
   ]
 }
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#proc enterInstanceMethodWithOutputArgument
-#  ?!@instanceMethodMap ioInstanceMethodMap
-#  ?!@unifiedTypeMap ioUnifiedTypeMap
-#  ?outputArgTypeName:let @string inOutputArgumentTypeName
-#  ?outputArgName:let @string inOutputArgumentName
-#  ?methodName:let @lstring inInstanceMethodName
-#  ?let @bool inHasCompilerArgument
-#{
-#  @unifiedTypeMap-entry argumentTypeIndex
-#  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?argumentTypeIndex]
-#  var argList = @formalParameterSignature {}
-#  argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentOut !inOutputArgumentName
-#  [!?ioInstanceMethodMap insertKey
-#    !inInstanceMethodName
-#    !@methodKind. definedAsMember
-#    !argList
-#    ![inInstanceMethodName location]
-#    !inHasCompilerArgument
-#    !@methodQualifier. isBasic
-#    !"" # No error message
-#  ]
-#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -105,9 +80,9 @@ override method @dataPredefinedTypeAST getInstanceMethodMap
     !true
   )
   var @formalParameterSignature argList = {}
-  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"string" ?@unifiedTypeMap-entry t]
+  [!?ioUnifiedTypeMap makeEntryFromString !"string" ?@unifiedTypeMap-entry t]
   argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
-  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"bool" ?t]
+  [!?ioUnifiedTypeMap makeEntryFromString !"bool" ?t]
   argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentOut !"outFileModified"
   [!?outInstanceMethodMap insertKey
     !@lstring.new {!"writeToFileWhenDifferentContents" !@location.here}
@@ -175,9 +150,9 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
   )
 #--- writeToFileWhenDifferentContents, writeToExecutableFileWhenDifferentContents
   var @formalParameterSignature argList = {}
-  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"string" ?@unifiedTypeMap-entry t]
+  [!?ioUnifiedTypeMap makeEntryFromString !"string" ?@unifiedTypeMap-entry t]
   argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
-  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"bool" ?t]
+  [!?ioUnifiedTypeMap makeEntryFromString !"bool" ?t]
   argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentOut !"outFileModified"
   [!?outInstanceMethodMap insertKey
     !@lstring.new {!"writeToFileWhenDifferentContents" !@location.here}
@@ -209,7 +184,7 @@ override method @bigintPredefinedTypeAST getInstanceMethodMap
 {
   outInstanceMethodMap = {}
 #--- divide, floorDivide, ceilDivide
-  [@unifiedTypeMap-entry makeEntryFromString !?ioUnifiedTypeMap !"bigint" ?let bigIntType]
+  [!?ioUnifiedTypeMap makeEntryFromString !"bigint" ?let bigIntType]
   var @formalParameterSignature argList = {}
   argList += !["" nowhere] !bigIntType !.argumentConstantIn !"inDivisor"
   argList += !["quotient" nowhere] !bigIntType !.argumentOut !"outQuotient"

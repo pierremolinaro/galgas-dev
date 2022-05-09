@@ -170,15 +170,15 @@ override method @enumDeclarationAST enterInSemanticContext
 #  let @classMethodMap classMethodMap = {}
   var @optionalMethodMap optionalMethodMap = {}
 #--- currentType type index
-  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mEnumTypeName ?let enumTypeEntry]
+  [!?ioSemanticContext.mTypeMap makeEntry  !self.mEnumTypeName ?let enumTypeEntry]
 #--- Constructors
   var @constantIndexMap constantMap = {}
   var @bool hasAssociatedValues = false
   for (mConstantName mAssociatedValueDefinitionList) in self.mConstantList do
-    var @unifiedTypeMapEntryList associatedTypeList = {}
+    var @unifiedTypeMap-entryList associatedTypeList = {}
     var @functionSignature argumentTypeList = {}
     for (typeName selectorName) in mAssociatedValueDefinitionList do
-      [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !typeName ?let associatedTypeEntry]
+      [!?ioSemanticContext.mTypeMap makeEntry  !typeName ?let associatedTypeEntry]
       argumentTypeList += !selectorName !associatedTypeEntry !typeName.string
       associatedTypeList += !associatedTypeEntry
       hasAssociatedValues = true
@@ -195,7 +195,7 @@ override method @enumDeclarationAST enterInSemanticContext
   for (mConstantName mAssociatedValueDefinitionList) in self.mConstantList do
     var @optionalMethodSignature argumentTypeList = {}
     for (typeName selectorName) in mAssociatedValueDefinitionList do
-      [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !typeName ?let associatedTypeEntry]
+      [!?ioSemanticContext.mTypeMap makeEntry  !typeName ?let associatedTypeEntry]
       argumentTypeList += !false !selectorName !associatedTypeEntry !typeName.string
     end
     [!?optionalMethodMap insertKey
@@ -206,10 +206,10 @@ override method @enumDeclarationAST enterInSemanticContext
 #--- Optional methods
   for (mConstantName mAssociatedValueDefinitionList) in self.mConstantList do
     if [mAssociatedValueDefinitionList length] > 0 then
-      var @unifiedTypeMapEntryList associatedTypeList = {}
+      var @unifiedTypeMap-entryList associatedTypeList = {}
       var @formalParameterSignature argumentTypeList = {}
       for (typeName selectorName) in mAssociatedValueDefinitionList do
-        [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !typeName ?let associatedTypeEntry]
+        [!?ioSemanticContext.mTypeMap makeEntry  !typeName ?let associatedTypeEntry]
         argumentTypeList += !selectorName !associatedTypeEntry !.argumentOut !typeName.string
         associatedTypeList += !associatedTypeEntry
         hasAssociatedValues = true
@@ -312,12 +312,12 @@ override method @enumDeclarationAST semanticAnalysis
   var constantMap = @constantIndexMap {}
   for (mConstantName mAssociatedValueDefinitionList) in self.mConstantList do
     constantList += !mConstantName.string
-    var @unifiedTypeMapEntryList associatedTypeList = {}
+    var @unifiedTypeMap-entryList associatedTypeList = {}
     var @stringset associatedValueNameSet = {}
     for (mValue0 mValue1) in mAssociatedValueDefinitionList do
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mValue0)
       [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-      let associatedTypeEntry = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mValue0}
+      let associatedTypeEntry = [inSemanticContext.mTypeMap searchKey !mValue0]
       associatedTypeList += !associatedTypeEntry
       if [associatedValueNameSet hasKey !mValue1.string] then
         error mValue1 : "duplicated name"
@@ -328,7 +328,7 @@ override method @enumDeclarationAST semanticAnalysis
     enumConstantListForGeneration += !mConstantName.string !associatedTypeList
   end
 #---
-  let selfType = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mEnumTypeName}
+  let selfType = [inSemanticContext.mTypeMap searchKey !self.mEnumTypeName]
   ioSemanticDeclarationListForGeneration +=
     !"enum " + self.mEnumTypeName
     !@enumTypeForGeneration.new {
@@ -343,7 +343,7 @@ override method @enumDeclarationAST semanticAnalysis
 
 list @enumConstantListForGeneration {
   public var @string mConstantName
-  public var @unifiedTypeMapEntryList mAssociatedValueTypeList
+  public var @unifiedTypeMap-entryList mAssociatedValueTypeList
 }
 
 #·······················································································································

@@ -175,10 +175,9 @@ override method @sortedListDeclarationAST enterInSemanticContext
 {
   let optionalMethodMap = @optionalMethodMap {}
 #--- Type index
-  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mSortedListTypeName ?let listTypeIndex]
+  [!?ioSemanticContext.mTypeMap makeEntry  !self.mSortedListTypeName ?let listTypeIndex]
 #--- Element type index
-  [@unifiedTypeMap-entry makeEntry
-    !?ioSemanticContext.mTypeMap
+  [!?ioSemanticContext.mTypeMap makeEntry
     !@lstring.new {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName.location}
     ?let @unifiedTypeMap-entry listElementTypeIndex
   ]
@@ -188,7 +187,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
   var @formalParameterSignature setterFormalArgumentList = {}
   var @typedPropertyList typedAttributeList = {}
   for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
-    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true
     let hasSelector = false
     typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
@@ -212,7 +211,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !listTypeIndex
   ]
 #--- Readers
-  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
@@ -327,7 +326,7 @@ override method @sortedListDeclarationAST semanticAnalysis
   for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !propertyTypeNameForUsefulness]
-    let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
+    let t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
     let hasSetter = true
     let hasSelector = true
     typedAttributeList +=
@@ -352,8 +351,8 @@ override method @sortedListDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"sorted list " + self.mSortedListTypeName
     !@sortedListTypeForGeneration.new {
-      !.searchKey {!inSemanticContext.mTypeMap !self.mSortedListTypeName}
-      !.searchKey {!inSemanticContext.mTypeMap !.new {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName}}
+      ![inSemanticContext.mTypeMap searchKey !self.mSortedListTypeName]
+      ![inSemanticContext.mTypeMap searchKey !.new {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName}]
       !typedAttributeList
       !sortDescriptorList
     }

@@ -512,7 +512,7 @@ proc generateAllGuiComponentsGalgas3
     let fileName = "gui-" + lkey + ".m"
     ioApplicationSourceSet += !fileName
     ioAllProductFileSet += !fileName
-    let s = [filewrapper guiGenerationTemplates.gui_implementation
+    let @string s = [filewrapper guiGenerationTemplates.gui_implementation
       !mGuiComponentContext
       !inQuietOutputByDefault
       !mGuiComponentContext.mBuildRunOption

@@ -254,7 +254,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
 #--- Type cast ?
   let @unifiedTypeMap-entry castType
   if self.mTypeNameForCasting.string != "" then
-    castType = .searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeNameForCasting}
+    castType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mTypeNameForCasting]
     checkAssignmentTypes (!receiverType !castType !self.mTypeNameForCasting.location)
   else 
     castType = receiverType

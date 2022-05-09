@@ -78,7 +78,7 @@ proc projectCreation ?let @string inProjectPath {
       end
     end
     if ok then
-      performProjectCreation ( !inProjectPath )
+      performProjectCreation (!inProjectPath )
     end
   end
 }

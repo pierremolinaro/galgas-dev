@@ -263,8 +263,7 @@ override method @predefinedTypeAST enterInSemanticContext
     ?let @enumerationDescriptorList enumerationList
     ?let @string enumeratedTypeName
   ]
-  [@unifiedTypeMap-entry makeEntryFromString
-    !?ioSemanticContext.mTypeMap
+  [!?ioSemanticContext.mTypeMap makeEntryFromString
     !self.mPredefinedTypeName
     ?* #let @unifiedTypeMap-entry selfTypeEntry
   ]
@@ -273,7 +272,7 @@ override method @predefinedTypeAST enterInSemanticContext
   if enumeratedTypeName == "" then
     enumeratedTypeEntry = @unifiedTypeMap-entry.null
   else
-    [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !enumeratedTypeName ?enumeratedTypeEntry]
+    [!?ioSemanticContext.mTypeMap makeEntryFromString!enumeratedTypeName ?enumeratedTypeEntry]
   end
 #--- Add Categories
   addExtensions (
@@ -336,13 +335,10 @@ override method @predefinedTypeAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"Predefined type " + self.mPredefinedTypeName
     !@primitiveTypeForGeneration.new {
-      !.searchKey {!inSemanticContext.mTypeMap !.new {!self.mPredefinedTypeName !.here}}
+      ![inSemanticContext.mTypeMap searchKey !.new {!self.mPredefinedTypeName !.here}]
       !self.mPredefinedTypeName
       !self.mKind
     }
-#    !"Predefined type " + mPredefinedTypeName
-#    !if mPredefinedTypeName == "stringset" then "Predefined type stringlist" else "" end
-#    !""
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

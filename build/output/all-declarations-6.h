@@ -17,12 +17,12 @@
 class cMapElement_constantIndexMap : public cMapElement {
 //--- Map attributes
   public: GALGAS_uint mProperty_mIndex ;
-  public: GALGAS_unifiedTypeMapEntryList mProperty_mAssociatedTypeList ;
+  public: GALGAS_unifiedTypeMap_2D_entryList mProperty_mAssociatedTypeList ;
 
 //--- Constructor
   public: cMapElement_constantIndexMap (const GALGAS_lstring & inKey,
                                         const GALGAS_uint & in_mIndex,
-                                        const GALGAS_unifiedTypeMapEntryList & in_mAssociatedTypeList
+                                        const GALGAS_unifiedTypeMap_2D_entryList & in_mAssociatedTypeList
                                         COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
@@ -56,8 +56,8 @@ class GALGAS_constantIndexMap_2D_element : public AC_GALGAS_root {
     return mProperty_mIndex ;
   }
 
-  public: GALGAS_unifiedTypeMapEntryList mProperty_mAssociatedTypeList ;
-  public: inline GALGAS_unifiedTypeMapEntryList readProperty_mAssociatedTypeList (void) const {
+  public: GALGAS_unifiedTypeMap_2D_entryList mProperty_mAssociatedTypeList ;
+  public: inline GALGAS_unifiedTypeMap_2D_entryList readProperty_mAssociatedTypeList (void) const {
     return mProperty_mAssociatedTypeList ;
   }
 
@@ -80,7 +80,7 @@ class GALGAS_constantIndexMap_2D_element : public AC_GALGAS_root {
     mProperty_mIndex = inValue ;
   }
 
-  public: inline void setter_setMAssociatedTypeList (const GALGAS_unifiedTypeMapEntryList & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMAssociatedTypeList (const GALGAS_unifiedTypeMap_2D_entryList & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mAssociatedTypeList = inValue ;
   }
 
@@ -90,7 +90,7 @@ class GALGAS_constantIndexMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GALGAS_constantIndexMap_2D_element (const GALGAS_lstring & in_lkey,
                                               const GALGAS_uint & in_mIndex,
-                                              const GALGAS_unifiedTypeMapEntryList & in_mAssociatedTypeList) ;
+                                              const GALGAS_unifiedTypeMap_2D_entryList & in_mAssociatedTypeList) ;
 
 //-- Start of generic part --*
 
@@ -105,7 +105,7 @@ class GALGAS_constantIndexMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_constantIndexMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                            const class GALGAS_uint & inOperand1,
-                                                                           const class GALGAS_unifiedTypeMapEntryList & inOperand2
+                                                                           const class GALGAS_unifiedTypeMap_2D_entryList & inOperand2
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'

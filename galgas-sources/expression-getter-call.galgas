@@ -139,7 +139,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
           ?@semanticExpressionForGeneration exp
         ]
         if mFormalSelector.string != mActualSelector.string then
-          let s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
+          let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
           error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
         end
         checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
@@ -180,10 +180,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       var kind = @methodKind.definedAsExtension
       let @stringlist fieldList = {}
       for (propertyTypeEntry propertyName * *) in [receiverType mCurrentTypedPropertyList] do
-        let propertyType = @unifiedTypeMap-entry.searchKey {
-          !inAnalysisContext.mSemanticContext.mTypeMap
-          !.new {![propertyTypeEntry key] !.here}
-        }
+        let propertyType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !.new {![propertyTypeEntry key] !.here}]
         let aMap = [propertyType mGetterMap]
         with self.mGetterName.string in aMap  do
           if [propertyType key] == propertyName.string then
@@ -238,7 +235,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
             ?@semanticExpressionForGeneration exp
           ]
           if mFormalSelector.string != mActualSelector.string then
-            let s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
+            let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
             error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
           end
           checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)

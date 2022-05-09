@@ -60,7 +60,7 @@ syntax extension galgas4DeclarationsSyntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @localVariableDeclarationAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [@unifiedTypeMap-entry makeEntry !?ioTypeMap !self.mTypeName ?*]
+  [!?ioTypeMap makeEntry !self.mTypeName ?*]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -75,7 +75,7 @@ override method @localVariableDeclarationAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap
 {
 #--- Check target variable
-  let targetType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
+  let targetType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mTypeName]
   let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location locationIndex]
   [!?ioVariableMap insertDeclaredLocalVariable
     !self.mVariableName

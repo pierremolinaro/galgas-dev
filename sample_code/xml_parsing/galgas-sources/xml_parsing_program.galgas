@@ -19,7 +19,7 @@ message "an XML text file with the .xml_file extension"
     !true
   ) in inSourceFile
   log rootNodes
-  logXMLNodes ( !rootNodes )
+  logXMLNodes (!rootNodes )
 }
 
 #--- Epilogue routine

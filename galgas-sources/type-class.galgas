@@ -235,7 +235,7 @@ override method @classDeclarationAST enterInSemanticContext
       end
     end
   else
-    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mSuperClassName ?superClassIndex]
+    [!?ioSemanticContext.mTypeMap  makeEntry !self.mSuperClassName ?superClassIndex]
     [ioSemanticContext.mTypeMap searchKey
       !self.mSuperClassName
       ?3*
@@ -305,7 +305,7 @@ override method @classDeclarationAST enterInSemanticContext
       !mPropertyName.string
   end
   for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
-    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    [!?ioSemanticContext.mTypeMap makeEntry !mPropertyTypeName ?let attributeTypeIndex]
     var hasSelector = false
     for (attribute) in mAttributeList do
       if attribute.string == "selector" then
@@ -330,8 +330,7 @@ override method @classDeclarationAST enterInSemanticContext
     end
   end
 #--- Current class Index
-  [@unifiedTypeMap-entry makeEntry
-     !?ioSemanticContext.mTypeMap
+  [!?ioSemanticContext.mTypeMap makeEntry
      !self.mClassTypeName
      ?let @unifiedTypeMap-entry classIndex
   ]
@@ -349,7 +348,7 @@ override method @classDeclarationAST enterInSemanticContext
   var @typedPropertyList currentClassTypedPropertyList = {}
   var @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
   for (* mPropertyTypeName mPropertyName isPublic mAttributeList) in self.mPropertyList do
-    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    [!?ioSemanticContext.mTypeMap makeEntry !mPropertyTypeName ?let attributeTypeIndex]
     var hasSelector = false
     for (mValue) in mAttributeList do
       if mValue.string == "setter" then
@@ -451,11 +450,11 @@ override method @classDeclarationAST semanticAnalysis
     [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !weakRefTypeNameForUsefulness]
   end
 #------ Self type
-  let @unifiedTypeMap-entry selfType = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mClassTypeName}
+  let @unifiedTypeMap-entry selfType = [inSemanticContext.mTypeMap searchKey !self.mClassTypeName]
 #--- Super class type
-  let superClassEntry = if self.mSuperClassName.string == ""
+  let @unifiedTypeMap-entry superClassEntry = if self.mSuperClassName.string == ""
     then @unifiedTypeMap-entry.null
-    else @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mSuperClassName}
+    else [inSemanticContext.mTypeMap searchKey !self.mSuperClassName]
   end
 #------ check "reference" status:
 # a base class can be freely declared as shared or not
@@ -501,7 +500,7 @@ override method @classDeclarationAST semanticAnalysis
   for (* mPropertyTypeName mPropertyName isPublic mAttributeList) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
-    let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
+    let t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
     var hasSelector = false
     for (mValue) in mAttributeList while not hasSelector do
       hasSelector = mValue.string == "selector"
@@ -600,7 +599,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
 
   if self.mIsReference then
     if self.mGenerateHeaderInSeparateFile then
-      let part1 = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part1
+      let @string part1 = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part1
         ![self.mSelfTypeEntry key]
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
@@ -609,7 +608,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
         !self.mIsAbstract
         ![self.mSelfTypeEntry mGetterMap]
       ]
-      let part2 = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part2
+      let @string part2 = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part2
         ![self.mSelfTypeEntry key]
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
@@ -617,7 +616,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
         !self.mAllTypedAttributeList
         !self.mIsAbstract
       ]
-      let headerFileName = "separateHeaderFor_" + [self.mSelfTypeEntry identifierRepresentation] + ".h"
+      let @string headerFileName = "separateHeaderFor_" + [self.mSelfTypeEntry identifierRepresentation] + ".h"
       [@string generateFileWithPattern
         !startPath:inOutputDirectory + "/../user-headers"
         !fileName:headerFileName
@@ -651,7 +650,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
     end
   else
     if self.mGenerateHeaderInSeparateFile then
-      let part1 = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part1
+      let @string part1 = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part1
         ![self.mSelfTypeEntry key]
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
@@ -659,7 +658,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
         !self.mAllTypedAttributeList
         !self.mIsAbstract
       ]
-      let part2 = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part2
+      let @string part2 = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part2
         ![self.mSelfTypeEntry key]
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
@@ -667,7 +666,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
         !self.mAllTypedAttributeList
         !self.mIsAbstract
       ]
-      let headerFileName = "separateHeaderFor_" + [self.mSelfTypeEntry identifierRepresentation] + ".h"
+      let @string headerFileName = "separateHeaderFor_" + [self.mSelfTypeEntry identifierRepresentation] + ".h"
       [@string generateFileWithPattern
         !startPath:inOutputDirectory + "/../user-headers"
         !fileName:headerFileName

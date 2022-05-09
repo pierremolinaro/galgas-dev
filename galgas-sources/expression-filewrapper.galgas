@@ -138,7 +138,7 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
   end
 #---
   outExpression = @filewrapperInExpressionForGeneration.new {
-    !@unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {!"filewrapper" !self.mFilewrapperName.location}}
+    ![inAnalysisContext.mSemanticContext.mTypeMap searchKey !@lstring.new {!"filewrapper" !self.mFilewrapperName.location}]
     !self.mFilewrapperName.location
     !self.mFilewrapperName.string
     !filewrapperPath.string}
@@ -194,7 +194,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
     effectiveParameterList = {}
     for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType *) in templateSignature do
       if mFormalSelector.string != mActualSelector.string then
-        let s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
+        let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
         error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
 #        error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
@@ -297,7 +297,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
   outExpression = @filewrapperStaticPathInExpressionForGeneration.new {
     !if isTextFile
       then inAnalysisContext.mPredefinedTypes.mStringType
-      else @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {!"data" !@location.here}}
+      else [inAnalysisContext.mSemanticContext.mTypeMap searchKey !@lstring.new {!"data" !@location.here}]
      end
     !self.mFilewrapperName.location
     !self.mFilewrapperName.string

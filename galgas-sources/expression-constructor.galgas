@@ -142,7 +142,9 @@ syntax extension galgas4ExpressionSyntax {
 override method @constructorExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [@unifiedTypeMap-entry makeOptionalEntry !?ioTypeMap !self.mTypeName ?*]
+  if self.mTypeName.string != "" then
+    [!?ioTypeMap makeEntry !self.mTypeName ?*]
+  end
   [self.mExpressions enterInSemanticContext !?ioTypeMap]
 }
 
@@ -165,7 +167,7 @@ private proc analyzeConstructorInvocation
 {
   outConstructorType = inType
   if inTypeName.string != "" then
-    outConstructorType = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !inTypeName}
+    outConstructorType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !inTypeName]
   end
   if [outConstructorType isNull] then
     error inTypeName
@@ -213,7 +215,7 @@ private proc analyzeConstructorInvocation
       checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
       outConstructorEffectiveParameterList += !exp
       if mFormalSelector.string != mActualSelector.string then
-        let s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
+        let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
         error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
       end
     end
@@ -275,7 +277,7 @@ override method @defaultConstructorExpressionAST enterExpressionInSemanticContex
   ?!@unifiedTypeMap ioTypeMap
 {
   if self.mTypeName.string != "" then
-    [@unifiedTypeMap-entry makeEntry !?ioTypeMap !self.mTypeName ?*]
+    [!?ioTypeMap makeEntry !self.mTypeName ?*]
   end
 }
 
@@ -291,7 +293,7 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
 {
   var type = inType
   if self.mTypeName.string != "" then
-    type = @unifiedTypeMap-entry.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
+    type = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mTypeName]
   end
   if [type isNull] then
     error self.mTypeName : "cannot infer type" : outExpression

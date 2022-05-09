@@ -175,9 +175,10 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
       + [[self.mExpressionList length] string] + " parameter(s)" : outExpression
     else
       var @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
-      for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList, (mFormalSelector mFormalArgumentType *) in getterFormalArgumentTypeList do
+      for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList,
+          (mFormalSelector mFormalArgumentType *) in getterFormalArgumentTypeList do
         if mFormalSelector.string != mActualSelector.string then
-          let s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
+          let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
           error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
   #        error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
         end
@@ -214,7 +215,8 @@ override method @templateConstructorAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression
 {
-  let @unifiedTypeMap-entry constructorType = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
+#  let @unifiedTypeMap-entry constructorType = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
+  let @unifiedTypeMap-entry constructorType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- Get constructor map from type map
   let @constructorMap constructorMap = [constructorType mConstructorMap]
 #--- Search contructor
@@ -249,7 +251,7 @@ override method @templateConstructorAST templateExpressionAnalysis
     constructorEffectiveParameterList = @semanticExpressionListForGeneration {}
     for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList, (mFormalSelector mFormalArgumentType *) in constructorFormalArgumentTypeList do
       if mFormalSelector.string != mActualSelector.string then
-        let s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
+        let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
         error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
 #        error mActualSelector
 #          : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
@@ -613,7 +615,8 @@ override method @templateTestDynamicClassAST templateExpressionAnalysis
     ?let expression
   ]
 #--- Get type information
-   let castType = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
+#   let castType = @unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
+   let castType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- This type is either a class
   if [[expression.mResultType mTypeKindEnum] isClassType] then
   #--- Check expression type is a descendant of named type
@@ -772,7 +775,7 @@ override method @templateFunctionCallAST templateExpressionAnalysis
       checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !expression.mResultType !mEndOfExpressionLocation !?expression)
       semanticExpressionListForGeneration += !expression
       if mFormalSelector.string != mActualSelector.string then
-        let s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
+        let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
         error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
 #        error mActualSelector : "the selector should be '!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "'"
       end
@@ -1133,9 +1136,9 @@ override method @templateEqualTestAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMap-entry leftType = leftExpression.mResultType
   let @unifiedTypeMap-entry rightType = rightExpression.mResultType
-  if [leftType lkey].string != [rightType lkey].string then
+  if [leftType key] != [rightType key] then
     error self.mOperatorLocation
-    : "left operand type is '@" + [leftType lkey] + "', right operand type is '@" + [rightType lkey] + "': '==' operator requires the types are the same"
+    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '==' operator requires the types are the same"
     :outExpression
   else
   #--- Generate expression
@@ -1174,7 +1177,7 @@ override method @templateNonEqualTestAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMap-entry leftType = leftExpression.mResultType
   let @unifiedTypeMap-entry rightType = rightExpression.mResultType
-  if [leftType lkey].string != [rightType lkey].string then
+  if [leftType key] != [rightType key] then
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '!=' operator requires the types are the same"
     :outExpression

@@ -63,7 +63,7 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
       end
     end
   else
-    [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mSuperWeakReferenceTypeName ?superClassIndex]
+    [!?ioSemanticContext.mTypeMap makeEntry  !self.mSuperWeakReferenceTypeName ?superClassIndex]
     [ioSemanticContext.mTypeMap searchKey
       !self.mSuperWeakReferenceTypeName
       ?3*
@@ -78,8 +78,7 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
     end
   end
 #--- Current class Index
-  [@unifiedTypeMap-entry makeEntry
-     !?ioSemanticContext.mTypeMap
+  [!?ioSemanticContext.mTypeMap makeEntry
      !self.mWeakReferenceTypeName
      ?let @unifiedTypeMap-entry weakReferenceIndex
   ]
@@ -116,7 +115,7 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
     error lkey : "a weak reference does not support extension"
   end
 #--- Enter in type map
-  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mClassTypeName ?let classIndex]
+  [!?ioSemanticContext.mTypeMap makeEntry  !self.mClassTypeName ?let classIndex]
   [!?ioSemanticContext.mTypeMap insertKey
     !self.mWeakReferenceTypeName
     !self.mIsPredefined
@@ -168,11 +167,11 @@ override method @weakReferenceDeclarationAST semanticAnalysis
     [!?ioUsefulEntitiesGraph addEdge !weakRefTypeNameForUsefulness !superWeakRefNameForUsefulness]
   end
 #------ Self type
-  let @unifiedTypeMap-entry selfType = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mWeakReferenceTypeName}
+  let @unifiedTypeMap-entry selfType = [inSemanticContext.mTypeMap searchKey !self.mWeakReferenceTypeName]
 #--- Super class type
-  let superClassEntry = if self.mSuperWeakReferenceTypeName.string == ""
+  let @unifiedTypeMap-entry superClassEntry = if self.mSuperWeakReferenceTypeName.string == ""
     then @unifiedTypeMap-entry.null
-    else @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !self.mSuperWeakReferenceTypeName}
+    else [inSemanticContext.mTypeMap searchKey !self.mSuperWeakReferenceTypeName]
   end
 #------ Super type, and class features
 # A class that has a super may not have any feature
@@ -205,7 +204,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
   for (* mPropertyTypeName mPropertyName isPublic attributeList) in self.mPropertyList do
-    let t = @unifiedTypeMap-entry.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
+    let t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
     var hasSelector = false
     for (mValue) in attributeList while not hasSelector do
       hasSelector = mValue.string == "selector"
@@ -223,10 +222,9 @@ override method @weakReferenceDeclarationAST semanticAnalysis
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #------
-  let @unifiedTypeMap-entry referenceClassType = @unifiedTypeMap-entry.searchKey {
-    !inSemanticContext.mTypeMap
+  let @unifiedTypeMap-entry referenceClassType = [inSemanticContext.mTypeMap searchKey
     !self.mClassTypeName
-  }
+  ]
   ioSemanticDeclarationListForGeneration +=
     !"weak reference " + self.mWeakReferenceTypeName
     !@weakReferenceTypeForGeneration.new {

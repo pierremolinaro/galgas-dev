@@ -127,7 +127,7 @@ override method @boolsetDeclarationAST enterInSemanticContext
     slotNameSet += !slotName
   end  
 #--- boolset type index
-  [@unifiedTypeMap-entry makeEntry !?ioSemanticContext.mTypeMap !self.mBoolsetTypeName ?let boolsetTypeIndex]
+  [!?ioSemanticContext.mTypeMap makeEntry !self.mBoolsetTypeName ?let boolsetTypeIndex]
 #--- Constructors and attribute map
   commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?@getterMap getterMap)
   var @constructorMap constructorMap = {}
@@ -225,7 +225,7 @@ override method @boolsetDeclarationAST semanticAnalysis
 {
 #--- Check flags count
   if [self.mFlagList length] > 64 then
-    let s = [self.mFlagList mValueAtIndex !64]
+    let @location s = [self.mFlagList mValueAtIndex !64]
     error s : "max flags count is 64 (here: " + [self.mFlagList length] + ")"
   end
 #--- Useful entities graph
@@ -234,7 +234,7 @@ override method @boolsetDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"boolset " + self.mBoolsetTypeName
     !@boolsetTypeForGeneration.new {
-      !.searchKey {!inSemanticContext.mTypeMap !self.mBoolsetTypeName}
+      ![inSemanticContext.mTypeMap searchKey !self.mBoolsetTypeName]
       !self.mFlagList
     }
 }

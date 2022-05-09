@@ -11,7 +11,7 @@ list keyWordList style keywordsStyle error message "the '%K' keyword"{
 
 rule 'a'->'z' | 'A'->'Z' {
   repeat
-    enterCharacterIntoString ( !?tokenString !* )
+    enterCharacterIntoString (!?tokenString !* )
   while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
   end
   send search tokenString in keyWordList default $identifier$

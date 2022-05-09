@@ -81,7 +81,7 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
   end
 #---
   outExpression = @lexiqueIntrospectionForGeneration.new {
-    !@unifiedTypeMap-entry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !["stringlist" nowhere]}
+    ![inAnalysisContext.mSemanticContext.mTypeMap searchKey !["stringlist" nowhere]]
     !self.mLexiqueComponentName.location
     !self.mLexiqueComponentName.string
     !self.mLexiqueGetterName.string}
