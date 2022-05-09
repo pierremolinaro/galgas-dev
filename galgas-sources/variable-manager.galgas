@@ -316,11 +316,11 @@ enum @localVarValuation {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @scopeLocalVarMap {
-  @unifiedTypeMap-entry mType
-  @string mCppName
-  @string mNameForCheckingFormalParameterUsing
-  @localVariableAttributes mAttributes
-  @localVarValuation mState
+  private var @unifiedTypeMap-entry mType
+  private var @string mCppName
+  private var @string mNameForCheckingFormalParameterUsing
+  private var @localVariableAttributes mAttributes
+  private var @localVarValuation mState
   insert insertKey error message "the '%K' local variable is already declared"
   search searchKey error message "there is no '%K' local variable"
   remove removeKey error message "there is no '%K' local variable"

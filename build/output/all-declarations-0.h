@@ -122,7 +122,6 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
    kToken_filewrapper,
    kToken_fixit,
    kToken_for,
-   kToken_foreach,
    kToken_func,
    kToken_getter,
    kToken_grammar,
@@ -262,7 +261,7 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
   protected: virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const ;
 
 //--- Get terminal count
-  public: virtual int16_t terminalVocabularyCount (void) const { return 143 ; }
+  public: virtual int16_t terminalVocabularyCount (void) const { return 142 ; }
 
 //--- Get Token String
   public: virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;

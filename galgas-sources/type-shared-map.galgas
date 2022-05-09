@@ -18,11 +18,11 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @sharedMapDeclarationAST : @semanticDeclarationAST {
-  public let @lstring mMapTypeName
-  public let @lstringlist mAttributeList
-  public let @propertyInCollectionListAST mPropertyList
-  public let @insertMethodListAST mInsertMethodList
-  public let @mapSearchMethodListAST mSearchMethodList
+  private let @lstring mMapTypeName
+  private let @lstringlist mAttributeList
+  private let @propertyInCollectionListAST mPropertyList
+  private let @insertMethodListAST mInsertMethodList
+  private let @mapSearchMethodListAST mSearchMethodList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -365,8 +365,6 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"string" ?let stringTypeIndex]
 #--- lstring type index
   [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"lstring" ?let lstringTypeIndex]
-#--- lstringlist type index
-  [@unifiedTypeMap-entry makeEntryFromString !?ioSemanticContext.mTypeMap !"lstringlist" ?let lstringlistTypeIndex]
 #--- Enumeration description
   var @enumerationDescriptorList enumerationDescriptor = {!lstringTypeIndex !"lkey"}
 #--- Attributes
@@ -495,31 +493,31 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     end
   end
 #--------------------------- EnterEdge setter
-  var enterEdgeFormalArgumentList = @formalParameterSignature {}
-  enterEdgeFormalArgumentList += !["" nowhere] !lstringTypeIndex !.argumentConstantIn !"inSource"
-  enterEdgeFormalArgumentList += !["" nowhere] !lstringTypeIndex !.argumentConstantIn !"inTarget"
-  [!?setterMap insertOrReplace
-    !["enterEdge" nowhere]
-    !@methodKind.definedAsMember
-    !enterEdgeFormalArgumentList
-    !false
-    !@methodQualifier. isInherited
-    !"" # No error message
-  ]
+#  var enterEdgeFormalArgumentList = @formalParameterSignature {}
+#  enterEdgeFormalArgumentList += !["" nowhere] !lstringTypeIndex !.argumentConstantIn !"inSource"
+#  enterEdgeFormalArgumentList += !["" nowhere] !lstringTypeIndex !.argumentConstantIn !"inTarget"
+#  [!?setterMap insertOrReplace
+#    !["enterEdge" nowhere]
+#    !@methodKind.definedAsMember
+#    !enterEdgeFormalArgumentList
+#    !false
+#    !@methodQualifier. isInherited
+#    !"" # No error message
+#  ]
 #--------------------------- topologicalSort Method
-  var topologicalSortFormalArgumentList = @formalParameterSignature {}
-  topologicalSortFormalArgumentList += !["" nowhere] !lstringlistTypeIndex !.argumentOut !"outSortedLKeys"
-  topologicalSortFormalArgumentList += !["" nowhere] !lstringlistTypeIndex !.argumentOut !"outUnsortedLKeys"
-  [!?instanceMethodMap insertKey
-    !["topologicalSort" nowhere]
-    !@methodKind.definedAsMember
-    !topologicalSortFormalArgumentList
-    !@location.here
-    !true
-    !@methodQualifier. isInherited
-    !.constantMethod
-    !"" # No error message
-  ]
+#  var topologicalSortFormalArgumentList = @formalParameterSignature {}
+#  topologicalSortFormalArgumentList += !["" nowhere] !lstringlistTypeIndex !.argumentOut !"outSortedLKeys"
+#  topologicalSortFormalArgumentList += !["" nowhere] !lstringlistTypeIndex !.argumentOut !"outUnsortedLKeys"
+#  [!?instanceMethodMap insertKey
+#    !["topologicalSort" nowhere]
+#    !@methodKind.definedAsMember
+#    !topologicalSortFormalArgumentList
+#    !@location.here
+#    !true
+#    !@methodQualifier. isInherited
+#    !.constantMethod
+#    !"" # No error message
+#  ]
 #--- Handle search methods (methods if no state, setters if states)
   for (mSearchMethodName * *) in self.mSearchMethodList do
     [!?instanceMethodMap insertKey

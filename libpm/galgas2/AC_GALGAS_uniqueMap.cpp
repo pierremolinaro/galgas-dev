@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2008, ..., 2021 Pierre Molinaro.
+//  Copyright (C) 2008, ..., 2022 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -32,24 +32,6 @@
 class cUniqueMapNode ;
 
 //----------------------------------------------------------------------------------------------------------------------
-
-class structDependanceEdge {
-  public: cUniqueMapNode * mSource ;
-  public: cUniqueMapNode * mTarget ;
-}  ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-static bool operator == (const structDependanceEdge & inOperand1,
-                         const structDependanceEdge & inOperand2) {
-  return
-    (inOperand1.mSource == inOperand2.mSource)
-  &&
-    (inOperand1.mTarget == inOperand2.mTarget)
-  ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //  c S h a r e d M a p R o o t                                                                  
 //
@@ -60,18 +42,7 @@ class cSharedUniqueMapRoot : public C_SharedObject {
   private: cUniqueMapNode * mRoot ;
   private: uint32_t mNodeCount ;
   protected: cSharedUniqueMapRoot * mOverridenMap ;
-  private: TC_UniqueArray <structDependanceEdge> mDependenceEdges ;
 
-//--- For automaton and block overrides
-//  public: const cBranchOverrideTransformationDescriptor * mBranchBehaviourArray ;
-//  public: uint32_t mBranchBehaviourArraySize ;
-//  public: const cBranchOverrideCompatibilityDescriptor * mBranchCombinationArray ;
-//  public: uint32_t mBranchCombinationArraySize ;
-//  public: const char * mOverrideName ;
-//  public: uint32_t mBeginBranchCount ;
-//  public: uint32_t mEndBranchCount ;
-//  public: uint32_t mStateArrayLevel ;
-  
 //--------------------------------- Accessors
   public: inline const cUniqueMapNode * root (void) const { return mRoot ; }
   public: inline uint32_t count (void) const { return mNodeCount ; }
@@ -86,17 +57,6 @@ class cSharedUniqueMapRoot : public C_SharedObject {
   private: cSharedUniqueMapRoot (const cSharedUniqueMapRoot &) ;
   private: cSharedUniqueMapRoot & operator = (const cSharedUniqueMapRoot &) ;
 
-//--------------------------------- EnterEdge
-  public: void enterEdge (cUniqueMapNode * inSource,
-                          cUniqueMapNode * inTarget) ;
-
-//--------------------------------- Edge graphviz representation
-  public: VIRTUAL_IN_DEBUG C_String edgeGraphvizRepresentation (void) const ;
-
-//--------------------------------- internalTopologicalSort
-  public: VIRTUAL_IN_DEBUG void internalTopologicalSort (GALGAS_lstringlist & outSortedNodeKeyList,
-                                                         GALGAS_lstringlist & outUnsortedNodeKeyList) const ;
-
 //--------------------------------- Unsolved Entry Count
   public: VIRTUAL_IN_DEBUG uint32_t unsolvedEntryCount (void) const ;
 
@@ -108,7 +68,6 @@ class cSharedUniqueMapRoot : public C_SharedObject {
 //--------------------------------- Insert
   protected: VIRTUAL_IN_DEBUG cUniqueMapNode * performInsert (capCollectionElement & inAttributes,
                                                               C_Compiler * inCompiler,
-//                                                              const uint32_t inInitialState,
                                                               const char * inInsertErrorMessage
                                                               COMMA_LOCATION_ARGS) ;
 
@@ -166,38 +125,6 @@ class cSharedUniqueMapRoot : public C_SharedObject {
 
   protected: VIRTUAL_IN_DEBUG void unsolvedEntryKeyList (GALGAS_lstringlist & ioList) const ;
 
-//--------------------------------- Check Map Automatons state
-//  public: VIRTUAL_IN_DEBUG void checkAutomatonStates (const GALGAS_location & inErrorLocation,
-//                                                      const cMapAutomatonFinalIssue inAutomatonFinalIssueArray [],
-//                                                      C_Compiler * inCompiler
-//                                                      COMMA_LOCATION_ARGS) const ;
-//
-////--------------------------------- Begin override for block
-//  public: VIRTUAL_IN_DEBUG void openOverride (const cBranchOverrideTransformationDescriptor inBranchBehaviourArray [],
-//                                              const uint32_t inBranchBehaviourSize,
-//                                              const cBranchOverrideCompatibilityDescriptor inBranchCombinationArray [],
-//                                              const uint32_t inBranchCombinationSize,
-//                                              const char * inBlockName,
-//                                              C_Compiler * inCompiler
-//                                              COMMA_LOCATION_ARGS) ;
-//
-////--------------------------------- End override for block
-//  public: VIRTUAL_IN_DEBUG void closeOverride (const GALGAS_location & inErrorLocation,
-//                                               C_Compiler * inCompiler
-//                                               COMMA_LOCATION_ARGS) ;
-//
-////--------------------------------- Branch Handling
-//  public: VIRTUAL_IN_DEBUG void openBranch (C_Compiler * inCompiler
-//                                            COMMA_LOCATION_ARGS) ;
-//
-//  public: VIRTUAL_IN_DEBUG void closeBranch (const GALGAS_location & inErrorLocation,
-//                                             const cMapAutomatonFinalIssue inAutomatonFinalIssueArray [],
-//                                             #ifndef DO_NOT_GENERATE_CHECKINGS
-//                                               const uint32_t inAutomatonStateCount,
-//                                             #endif
-//                                             C_Compiler * inCompiler
-//                                             COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Check Map
   #ifndef DO_NOT_GENERATE_CHECKINGS
     private: VIRTUAL_IN_DEBUG void checkMap (LOCATION_ARGS) const ;
@@ -246,14 +173,9 @@ class cUniqueMapNode {
   public: capCollectionElement mAttributes ;
   private: cSharedEntry * mEntry ;
   public: TC_UniqueArray <GALGAS_location> mInvocationLocationArray ;
-//--- For state
-//  public: uint32_t mCurrentState ;
-//  public: cOverrideStateDescriptor * mStateArray ;
-//  public: uint32_t mStateArraySize ;
 
 //--- Constructor
   public: cUniqueMapNode (const C_String & inKey,
-//                          const uint32_t inInitialState,
                           capCollectionElement & inAttributes) ;
 
 //--- Solved ?
@@ -279,8 +201,7 @@ cSharedUniqueMapRoot::cSharedUniqueMapRoot (LOCATION_ARGS) :
 C_SharedObject (THERE),
 mRoot (NULL),
 mNodeCount (0),
-mOverridenMap (NULL),
-mDependenceEdges () {
+mOverridenMap (NULL) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -293,7 +214,6 @@ cSharedUniqueMapRoot::~ cSharedUniqueMapRoot (void) {
 //----------------------------------------------------------------------------------------------------------------------
 
 cUniqueMapNode::cUniqueMapNode (const C_String & inKey,
-//                                const uint32_t inInitialState,
                                 capCollectionElement & inAttributes) :
 mInfPtr (NULL),
 mSupPtr (NULL),
@@ -675,198 +595,6 @@ void AC_GALGAS_uniqueMap::insertInSharedMap (capCollectionElement & inAttributes
                                                              inInsertErrorMessage
                                                              COMMA_THERE) ;
   }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Modifier enterEdge
-#endif
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void cSharedUniqueMapRoot::enterEdge (cUniqueMapNode * inSource,
-                                      cUniqueMapNode * inTarget) {
-  const structDependanceEdge e = {inSource, inTarget} ;
-  mDependenceEdges.appendObjectIfUnique (e) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void AC_GALGAS_uniqueMap::setter_enterEdge (const GALGAS_lstring & inSource,
-                                            const GALGAS_lstring & inTarget
-                                            COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inSource.isValid () && inTarget.isValid ()) {
-    cUniqueMapNode * source = mSharedMap->performInsertEntry (inSource.mProperty_string.stringValue (), inSource.mProperty_location) ;
-    cUniqueMapNode * target = mSharedMap->performInsertEntry (inTarget.mProperty_string.stringValue (), inTarget.mProperty_location) ;
-    mSharedMap->enterEdge (source, target) ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Modifier enterEdge
-#endif
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class cTopologicalSortElement {
-  public: uint32_t mDependencyCount ;
-  public: TC_Array <int32_t> mDependenceArray ; // Node indexes of nodes after current node
-  public: int32_t mExplorationLink ;
-  public: GALGAS_lstring mKey ;
-
-//--- Constructor
-  public: cTopologicalSortElement (void) ;
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-cTopologicalSortElement::cTopologicalSortElement (void) :
-mDependencyCount (0),
-mDependenceArray (),
-mExplorationLink (-1),
-mKey () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-static void enterNodes (const cUniqueMapNode * inNode,
-                        TC_UniqueArray <cTopologicalSortElement> & ioArray,
-                        TC_UniqueArray <const cUniqueMapNode *> & ioNodeArray) {
-  if (NULL != inNode) {
-    enterNodes (inNode->mInfPtr, ioArray, ioNodeArray) ;
-    ioNodeArray.appendObject (inNode) ;
-    const int32_t idx = ioArray.count () ;
-    ioArray.appendObject (cTopologicalSortElement ()) ;
-    GALGAS_lstring lkey ;
-    lkey.mProperty_string = inNode->mKey ;
-    lkey.mProperty_location = inNode->mDefinitionLocation ;
-    ioArray (idx COMMA_HERE).mKey = lkey ;
-    enterNodes (inNode->mSupPtr, ioArray, ioNodeArray) ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void cSharedUniqueMapRoot::internalTopologicalSort (GALGAS_lstringlist & outSortedNodeKeyList,
-                                                    GALGAS_lstringlist & outUnsortedNodeKeyList) const {
-//--- Enter nodes
-  TC_UniqueArray <const cUniqueMapNode *> nodeArray ;
-  TC_UniqueArray <cTopologicalSortElement> array ;
-  enterNodes (mRoot, array, nodeArray) ;
-//--- Enter arcs
-  for (int32_t i=0 ; i<mDependenceEdges.count () ; i++) {
-    const int32_t sourceNodeID = nodeArray.indexOfFirstObjectEqualTo (mDependenceEdges (i COMMA_HERE).mSource) ;
-    const int32_t targetNodeID = nodeArray.indexOfFirstObjectEqualTo (mDependenceEdges (i COMMA_HERE).mTarget) ;
-    cTopologicalSortElement & source = array (sourceNodeID COMMA_HERE) ;
-    cTopologicalSortElement & target = array (targetNodeID COMMA_HERE) ;
-    source.mDependencyCount ++ ;
-    target.mDependenceArray.appendObject (sourceNodeID) ;
-  }
-//--- Make exploration link
-  for (int32_t i=1 ; i<array.count () ; i++) {
-    array (i-1 COMMA_HERE).mExplorationLink = i ;
-  }
-  int32_t theRoot = (mNodeCount > 0) ? 0 : -1 ;
-//--- Display
- /*  printf ("*** Working array:\n") ;
-    for (int32_t i=0 ; i<array.count () ; i++) {
-      cTopologicalSortElement & entry = array (i COMMA_HERE) ;
-      printf ("#%d '%s' dep %d :", i, entry.mKey.getter_string (HERE).stringValue ().cString (HERE), entry.mDependencyCount) ;
-      for (int32_t j=0 ; j<entry.mDependenceArray.count () ; j++) {
-        printf (" %d", entry.mDependenceArray (j COMMA_HERE)) ;
-      }
-      printf ("\n") ;
-    } */
-//--- Loop for accumulating sorted nodes
-  outSortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
-  bool loop = true ;
-  while (loop) {
-    loop = false ;
-    int32_t p = theRoot ;
-    theRoot = -1 ;
-    while (p >= 0) {
-      cTopologicalSortElement & entry = array (p COMMA_HERE) ;
-      const int32_t next = entry.mExplorationLink ;
-      if (0 == entry.mDependencyCount) {
-        loop = true ;
-        for (int32_t i=0 ; i<entry.mDependenceArray.count () ; i++) {
-          array (entry.mDependenceArray (i COMMA_HERE) COMMA_HERE).mDependencyCount -- ;
-        }
-        outSortedNodeKeyList.addAssign_operation (entry.mKey COMMA_HERE) ;
-      }else{
-        entry.mExplorationLink = theRoot ;
-        theRoot = p ;
-      }
-      p = next ;
-    }
-  }
-//--- Add unsorted nodes
-  outUnsortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
-  int32_t p = theRoot ;
-  while (p >= 0) {
-    cTopologicalSortElement & entry = array (p COMMA_HERE) ;
-    outUnsortedNodeKeyList.addAssign_operation (entry.mKey COMMA_HERE) ;
-    p = entry.mExplorationLink ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void AC_GALGAS_uniqueMap::method_topologicalSort (GALGAS_lstringlist & outSortedKeys,
-                                                  GALGAS_lstringlist & outUnsortedKeys,
-                                                  C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
-  outSortedKeys.drop () ;
-  outUnsortedKeys.drop () ;
-  if (isValid ()) {
-    uint32_t undefinedNodeCount = mSharedMap->unsolvedEntryCount () ;
-    if (0 != undefinedNodeCount) {
-      C_String s ;
-      s << "Cannot apply graph topologicalSort: there " ;
-      if (undefinedNodeCount > 1) {
-        s << "are " << cStringWithUnsigned (undefinedNodeCount) << " undefined nodes" ;
-      }else{
-        s << "is 1 undefined node" ;
-      }
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }else{
-      mSharedMap->internalTopologicalSort (outSortedKeys, outUnsortedKeys) ;
-    }
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Reader edgeGraphvizRepresentation
-#endif
-
-//----------------------------------------------------------------------------------------------------------------------
-
-C_String cSharedUniqueMapRoot::edgeGraphvizRepresentation (void) const {
-  C_String s ;
-  s << "digraph G {\n" ;
-  for (int32_t i=0 ; i<mDependenceEdges.count () ; i++) {
-    const structDependanceEdge edge = mDependenceEdges (i COMMA_HERE) ;
-    s << "  \"" << edge.mSource->mKey
-      << "\" -> \"" << edge.mTarget->mKey
-      << "\" ;\n" ;
-  }  
-  s << "}\n" ;
-  return s ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string AC_GALGAS_uniqueMap::getter_edgeGraphvizRepresentation (UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
-  if (isValid ()) {
-    result = GALGAS_string (mSharedMap->edgeGraphvizRepresentation ()) ;
-  }
-  return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

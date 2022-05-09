@@ -6,7 +6,6 @@ list @insertMethodListAST {
   public var @lstring mInsertMethodName
   public var @lstring mErrorMessage
   public var @lstring mShadowErrorMessage
-#  public var @lstring mInitialStateName
 }
 
 #·······················································································································
@@ -33,13 +32,13 @@ list @insertOrReplaceDeclarationListAST {
 #·······················································································································
 
 refclass @mapDeclarationAST : @semanticDeclarationAST {
-  public var @lstring mMapTypeName
-  public var @lstringlist mAttributeList
-  public var @propertyInCollectionListAST mPropertyList
-  public var @insertMethodListAST mInsertMethodList
-  public var @mapSearchMethodListAST mSearchMethodList
-  public var @mapRemoveMethodListAST mRemoveMethodList
-  public var @insertOrReplaceDeclarationListAST mInsertOrReplaceDeclarationListAST
+  private let @lstring mMapTypeName
+  private let @lstringlist mAttributeList
+  private let @propertyInCollectionListAST mPropertyList
+  private let @insertMethodListAST mInsertMethodList
+  private let @mapSearchMethodListAST mSearchMethodList
+  private let @mapRemoveMethodListAST mRemoveMethodList
+  private let @insertOrReplaceDeclarationListAST mInsertOrReplaceDeclarationListAST
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -793,14 +792,14 @@ override method @mapDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @mapTypeForGeneration : @semanticTypeForGeneration {
-  public var @unifiedTypeMap-entry mElementTypeEntry
-  public var @lstring mMapTypeName
-  public var @typedPropertyList mTypedAttributeList
-  public var @insertMethodListAST mInsertMethodList
-  public var @mapSearchMethodListAST mSearchMethodList
-  public var @mapRemoveMethodListAST mRemoveMethodList
-  public var @bool mHasInsertOrReplaceModifier
-  public var @bool mActivateSuggestions
+  private let @unifiedTypeMap-entry mElementTypeEntry
+  private let @lstring mMapTypeName
+  private let @typedPropertyList mTypedAttributeList
+  private let @insertMethodListAST mInsertMethodList
+  private let @mapSearchMethodListAST mSearchMethodList
+  private let @mapRemoveMethodListAST mRemoveMethodList
+  private let @bool mHasInsertOrReplaceModifier
+  private let @bool mActivateSuggestions
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2008, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 2008, ..., 2022 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -162,17 +162,6 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
 //--- Create a new map
   protected: VIRTUAL_IN_DEBUG void makeNewEmptyMap (LOCATION_ARGS) ;
 
-//--------------------------------- 'enterEdge' modifier declaration
-  public: VIRTUAL_IN_DEBUG void setter_enterEdge (const GALGAS_lstring & inSource,
-                                                  const GALGAS_lstring & inTarget
-                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- 'topologicalSort' method declaration
-  public: VIRTUAL_IN_DEBUG void method_topologicalSort (GALGAS_lstringlist & outSortedKeys,
-                                                        GALGAS_lstringlist & outUnsortedKeys,
-                                                        C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Insert
   protected: VIRTUAL_IN_DEBUG void insertInSharedMap (capCollectionElement & inAttributes,
                                                       C_Compiler * inCompiler,
@@ -194,27 +183,25 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
                                                                         COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG const cMapElement * searchForReadingAttribute (const GALGAS_string & inKey,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const ;
+                                                                             C_Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG cMapElement * searchForReadWriteAttribute (const GALGAS_string & inKey,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
   protected: VIRTUAL_IN_DEBUG cMapElement * searchForReadWriteAttribute (const GALGAS_lstring & inKey,
-                                                                          C_Compiler * inCompiler,
-                                                                          const char * inSearchErrorMessage
-                                                                          COMMA_LOCATION_ARGS) ;
+                                                                         C_Compiler * inCompiler,
+                                                                         const char * inSearchErrorMessage
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Readers
   public: VIRTUAL_IN_DEBUG GALGAS_bool getter_hasKey (const GALGAS_string & inKey
-                                                       COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG GALGAS_string getter_edgeGraphvizRepresentation (LOCATION_ARGS) const ;
+                                                      COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG GALGAS_location getter_locationForKey (const GALGAS_string & inKey,
-                                                                   C_Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const ;
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG GALGAS_stringset getter_allKeys (LOCATION_ARGS) const ;
 
@@ -231,7 +218,7 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
+                                             const int32_t inIndentation) const ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const AC_GALGAS_uniqueMap & inOperand) const ;
