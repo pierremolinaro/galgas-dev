@@ -269,14 +269,6 @@ refclass @unifiedTypeMapElementClass {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @unifiedTypeMap-entry {
-  case null
-#  case entry (@unifiedTypeMapElementClass-weak entry)
-  case element (@unifiedTypeMapElementClass element)
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 enum @typeDefinition {
   case unsolved
   case solved (@unifiedTypeDefinition definition)
@@ -312,6 +304,14 @@ struct @unifiedTypeDefinition {
   public let @string mDefaultConstructorName # Used in [@xxx default] (empty string if no default constructor)
   public let @string mHeaderFileName # Name of C++ header file that contains type declaration
   public let @headerKind mHeaderKind
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum @unifiedTypeMap-entry {
+  case null
+#  case element (@unifiedTypeMapElementClass-weak element)
+  case element (@unifiedTypeMapElementClass element)
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

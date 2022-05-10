@@ -56,6 +56,19 @@ mObjectPtr (NULL) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+AC_GALGAS_weak_reference & AC_GALGAS_weak_reference::operator = (const AC_GALGAS_reference_class & inSource) {
+  acStrongPtr_class * ptr = (acStrongPtr_class *) inSource.ptr () ;
+  if (ptr == NULL) {
+    macroDetachSharedObject (mObjectPtr) ;
+  }else{
+    cPtr_weakReference_class * proxy = ptr->getProxy () ;
+    macroAssignSharedObject (mObjectPtr, proxy) ;
+  }
+  return *this ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 AC_GALGAS_weak_reference::~AC_GALGAS_weak_reference (void) {
   macroDetachSharedObject (mObjectPtr) ;
 }

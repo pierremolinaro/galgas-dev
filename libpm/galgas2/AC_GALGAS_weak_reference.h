@@ -42,6 +42,7 @@ class AC_GALGAS_weak_reference : public AC_GALGAS_root { // AC_GALGAS_weak_refer
 
 //--- Constructor from strong reference
   protected: AC_GALGAS_weak_reference (const AC_GALGAS_reference_class & inSource) ;
+  protected: AC_GALGAS_weak_reference & operator = (const AC_GALGAS_reference_class & inSource) ;
 
 //--- Destructor
   protected: virtual ~ AC_GALGAS_weak_reference (void) ;

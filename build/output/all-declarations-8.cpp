@@ -782,9 +782,9 @@ GALGAS_unifiedTypeDefinition extensionGetter_definition (const GALGAS_unifiedTyp
     break ;
   case GALGAS_unifiedTypeMap_2D_entry::kEnum_element:
     {
-      const cEnumAssociatedValues_unifiedTypeMap_2D_entry_element * extractPtr_21787 = (const cEnumAssociatedValues_unifiedTypeMap_2D_entry_element *) (temp_0.unsafePointer ()) ;
-      const GALGAS_unifiedTypeMapElementClass extractedValue_21620_element = extractPtr_21787->mAssociatedValue0 ;
-      switch (extractedValue_21620_element.readProperty_mDefinition ().enumValue ()) {
+      const cEnumAssociatedValues_unifiedTypeMap_2D_entry_element * extractPtr_21791 = (const cEnumAssociatedValues_unifiedTypeMap_2D_entry_element *) (temp_0.unsafePointer ()) ;
+      const GALGAS_unifiedTypeMapElementClass extractedValue_21624_element = extractPtr_21791->mAssociatedValue0 ;
+      switch (extractedValue_21624_element.readProperty_mDefinition ().enumValue ()) {
       case GALGAS_typeDefinition::kNotBuilt:
         break ;
       case GALGAS_typeDefinition::kEnum_unsolved:
@@ -796,9 +796,9 @@ GALGAS_unifiedTypeDefinition extensionGetter_definition (const GALGAS_unifiedTyp
         break ;
       case GALGAS_typeDefinition::kEnum_solved:
         {
-          const cEnumAssociatedValues_typeDefinition_solved * extractPtr_21779 = (const cEnumAssociatedValues_typeDefinition_solved *) (extractedValue_21620_element.readProperty_mDefinition ().unsafePointer ()) ;
-          const GALGAS_unifiedTypeDefinition extractedValue_21750_definition = extractPtr_21779->mAssociatedValue0 ;
-          result_result = extractedValue_21750_definition ;
+          const cEnumAssociatedValues_typeDefinition_solved * extractPtr_21783 = (const cEnumAssociatedValues_typeDefinition_solved *) (extractedValue_21624_element.readProperty_mDefinition ().unsafePointer ()) ;
+          const GALGAS_unifiedTypeDefinition extractedValue_21754_definition = extractPtr_21783->mAssociatedValue0 ;
+          result_result = extractedValue_21754_definition ;
         }
         break ;
       }
@@ -1375,13 +1375,13 @@ GALGAS_unifiedTypeMap_2D_entry extensionGetter_baseType (const GALGAS_unifiedTyp
   GALGAS_unifiedTypeMap_2D_entry result_outBaseType ; // Returned variable
   const GALGAS_unifiedTypeMap_2D_entry temp_0 = inObject ;
   result_outBaseType = temp_0 ;
-  bool loop_29287 = true ;
-  while (loop_29287) {
-    loop_29287 = extensionGetter_mSuperType (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 693)).getter_isNull (SOURCE_FILE ("unified-type-map.galgas", 693)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 693)).isValid () ;
-    if (loop_29287) {
-      loop_29287 = extensionGetter_mSuperType (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 693)).getter_isNull (SOURCE_FILE ("unified-type-map.galgas", 693)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 693)).boolValue () ;
+  bool loop_29291 = true ;
+  while (loop_29291) {
+    loop_29291 = extensionGetter_mSuperType (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 693)).getter_isNull (SOURCE_FILE ("unified-type-map.galgas", 693)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 693)).isValid () ;
+    if (loop_29291) {
+      loop_29291 = extensionGetter_mSuperType (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 693)).getter_isNull (SOURCE_FILE ("unified-type-map.galgas", 693)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 693)).boolValue () ;
     }
-    if (loop_29287) {
+    if (loop_29291) {
       result_outBaseType = extensionGetter_mSuperType (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 694)) ;
     }
   }
