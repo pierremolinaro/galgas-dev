@@ -36,10 +36,15 @@ class acStrongPtr_class ;
 
 class AC_GALGAS_weak_reference : public AC_GALGAS_root { // AC_GALGAS_weak_reference est une classe abstraite
 //--- Properties
-  protected: cPtr_weakReference_proxy * mObjectPtr ;
+  protected: cPtr_weakReference_proxy * mProxyPtr ;
+  public: acStrongPtr_class * ptr (void) const ;
 
 //--- Default constructor
   protected: AC_GALGAS_weak_reference (void) ;
+
+//--- Handle copy
+  protected: AC_GALGAS_weak_reference (const AC_GALGAS_weak_reference & inSource) ;
+  protected: AC_GALGAS_weak_reference & operator = (const AC_GALGAS_weak_reference & inSource) ;
 
 //--- Constructor from strong reference
   protected: AC_GALGAS_weak_reference (const AC_GALGAS_reference_class & inSource) ;
@@ -49,17 +54,10 @@ class AC_GALGAS_weak_reference : public AC_GALGAS_root { // AC_GALGAS_weak_refer
   protected: virtual ~ AC_GALGAS_weak_reference (void) ;
 
 //--- Is valid
-  public: virtual bool isValid (void) const { return NULL != mObjectPtr ; }
+  public: virtual bool isValid (void) const { return NULL != mProxyPtr ; }
 
 //--- Drop
   public: virtual void drop (void) ;
-
-//--- Get a pointer on strong object
-  public: const acStrongPtr_class * ptr (void) const ;
-
-//--- Handle copy
-  protected: AC_GALGAS_weak_reference (const AC_GALGAS_weak_reference & inSource) ;
-  protected: AC_GALGAS_weak_reference & operator = (const AC_GALGAS_weak_reference & inSource) ;
 
 //--- Dynamic Type Descriptor
   public: virtual const C_galgas_type_descriptor * dynamicTypeDescriptor (void) const ;

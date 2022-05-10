@@ -38,8 +38,8 @@ class cPtr_weakReference_proxy : public acPtr_class {
   public: virtual ~ cPtr_weakReference_proxy (void) ;
 
 //--- Private property
-  private: acStrongPtr_class * mStrongObject ;
-  public: acStrongPtr_class * strongObject (void) const { return mStrongObject ; }
+  private: acStrongPtr_class * mStrongObjectPtr ;
+  public: acStrongPtr_class * strongObject (void) const { return mStrongObjectPtr ; }
 
 //--- Virtual methods from acPtr_class
   public: virtual void description (C_String &, const int32_t) const {} // Never invoked

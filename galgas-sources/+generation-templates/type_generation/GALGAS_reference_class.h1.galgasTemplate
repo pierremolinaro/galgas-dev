@@ -18,12 +18,7 @@ class GALGAS_%!TYPE_IDENTIFIER% : public %
 
 %
 end
-%//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
-//--------------------------------- Constructor from pointer
+%//--------------------------------- Constructor from pointer
   public: GALGAS_%!TYPE_IDENTIFIER% (const class cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) ;
 
 //--------------------------------- Property read access

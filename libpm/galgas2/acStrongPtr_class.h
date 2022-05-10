@@ -38,7 +38,7 @@ class acStrongPtr_class : public acPtr_class {
   public: virtual ~ acStrongPtr_class (void) ;
 
 //--- Private property
-  private: cPtr_weakReference_proxy * mProxy ;
+  private: cPtr_weakReference_proxy * mProxyPtr ;
 
 //--- Get proxy
   public: cPtr_weakReference_proxy * getProxy (void) ;

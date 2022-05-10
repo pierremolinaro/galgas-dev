@@ -26,26 +26,26 @@
 
 acStrongPtr_class::acStrongPtr_class (LOCATION_ARGS) :
 acPtr_class (THERE),
-mProxy (NULL) {
+mProxyPtr (NULL) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 acStrongPtr_class::~ acStrongPtr_class (void) {
-  if (mProxy != NULL) {
-    mProxy->mStrongObject = NULL ;
-    macroDetachSharedObject (mProxy) ;
+  if (mProxyPtr != NULL) {
+    mProxyPtr->mStrongObjectPtr = NULL ;
+    macroDetachSharedObject (mProxyPtr) ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 cPtr_weakReference_proxy * acStrongPtr_class::getProxy (void) {
-  if (mProxy == NULL) {
-    macroMyNew (mProxy, cPtr_weakReference_proxy (HERE)) ;
-    mProxy->mStrongObject = this ;
+  if (mProxyPtr == NULL) {
+    macroMyNew (mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    mProxyPtr->mStrongObjectPtr = this ;
   }
-  return mProxy ;
+  return mProxyPtr ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

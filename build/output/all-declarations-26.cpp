@@ -11540,12 +11540,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_referenceClassTypeHeade
       "\n" ;
   }else if (kBoolFalse == test_1) {
   }
-  result << "//--------------------------------- Embedded object pointer\n"
-    " public: inline acStrongPtr_class * embeddedObjectPtr (void) const {\n"
-    "   return (acStrongPtr_class *) mObjectPtr ;\n"
-    " }\n"
-    "  \n"
-    "//--------------------------------- Constructor from pointer\n"
+  result << "//--------------------------------- Constructor from pointer\n"
     "  public: GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (const class cPtr_" ;
@@ -11553,18 +11548,18 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_referenceClassTypeHeade
   result << " * inSourcePtr) ;\n"
     "\n"
     "//--------------------------------- Property read access\n" ;
-  GALGAS_uint index_1247_ (0) ;
+  GALGAS_uint index_1067_ (0) ;
   if (in_CURRENT_5F_PROPERTY_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_1247 (in_CURRENT_5F_PROPERTY_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_1247.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_1067 (in_CURRENT_5F_PROPERTY_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_1067.hasCurrentObject ()) {
       result << "  public: class GALGAS_" ;
-      result << extensionGetter_identifierRepresentation (enumerator_1247.current_mPropertyTypeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_reference_class.h1.galgasTemplate", 32)).stringValue () ;
+      result << extensionGetter_identifierRepresentation (enumerator_1067.current_mPropertyTypeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_reference_class.h1.galgasTemplate", 27)).stringValue () ;
       result << " readProperty_" ;
-      result << enumerator_1247.current_mPropertyName (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_reference_class.h1.galgasTemplate", 32)).stringValue () ;
+      result << enumerator_1067.current_mPropertyName (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_reference_class.h1.galgasTemplate", 27)).stringValue () ;
       result << " (void) const ;\n"
         "\n" ;
-      index_1247_.increment () ;
-      enumerator_1247.gotoNextObject () ;
+      index_1067_.increment () ;
+      enumerator_1067.gotoNextObject () ;
     }
   }
   return GALGAS_string (result) ;
@@ -12339,16 +12334,16 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeS
   result << " & inOperand) const {\n"
     "  typeComparisonResult result = kOperandNotValid ;\n"
     "  if (isValid () && inOperand.isValid ()) {\n"
-    "    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;\n"
-    "    const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;\n"
-    "    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;\n"
-    "    const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;\n"
+    "    cPtr_weakReference_proxy * myPtr = mProxyPtr ;\n"
+    "    const size_t myObjectPtr = size_t (myPtr) ;\n"
+    "    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;\n"
+    "    const size_t operandObjectPtr = size_t (operandPtr) ;\n"
     "    if (myObjectPtr < operandObjectPtr) {\n"
     "      result = kFirstOperandLowerThanSecond ;\n"
     "    }else if (myObjectPtr > operandObjectPtr) {\n"
     "      result = kFirstOperandGreaterThanSecond ;\n"
     "    }else{\n"
-    "      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;\n"
+    "      result = kOperandEqual ;\n"
     "    }\n"
     "  }\n"
     "  return result ;\n"
@@ -12381,11 +12376,11 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeS
   result << in_CLASS_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " & inSource) {\n"
     "  cPtr_weakReference_proxy * proxyPtr = NULL ;\n"
-    "  acStrongPtr_class * p = inSource.embeddedObjectPtr () ;\n"
+    "  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;\n"
     "  if (p != NULL) {\n"
     "    proxyPtr = p->getProxy () ;\n"
     "  }\n"
-    "  macroAssignSharedObject (mObjectPtr, proxyPtr) ;\n"
+    "  macroAssignSharedObject (mProxyPtr, proxyPtr) ;\n"
     "  return *this ;\n"
     "}\n"
     "\n"
@@ -12418,7 +12413,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeS
     "  GALGAS_" ;
   result << in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " result ;\n"
-    "  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;\n"
+    "  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;\n"
     "  return result ;\n"
     "}\n"
     "\n"
@@ -12434,8 +12429,8 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeS
     "  GALGAS_" ;
   result << in_CLASS_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " result ;\n"
-    "  if (mObjectPtr != NULL) {\n"
-    "    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;\n"
+    "  if (mProxyPtr != NULL) {\n"
+    "    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;\n"
     "    if (strongPtr == NULL) {\n"
     "      inCompiler->onTheFlySemanticError (\"weak reference is nil\" COMMA_THERE) ;\n"
     "    }else{\n"

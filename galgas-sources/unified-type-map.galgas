@@ -37,11 +37,11 @@ setter @unifiedTypeMap makeEntry ?let @lstring inLKey !@unifiedTypeMap-entry out
   if inLKey.string == "" then
     outEntry = .null
   elsif let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
-    outEntry = .element {!element: element !weakElement: element}
+    outEntry = .element {!weakElement: element}
   else
     let newElement = @unifiedTypeMapElementClass.new {!.unsolved}
     [!?self internalInsertKey !inLKey !newElement]
-    outEntry = .element {!element: newElement !weakElement: newElement}
+    outEntry = .element {!weakElement: newElement}
   end
 }
 
@@ -51,11 +51,11 @@ setter @unifiedTypeMap makeEntryFromString ?let @string inKey !@unifiedTypeMap-e
   if inKey == "" then
     outEntry = .null
   elsif let [self searchKey !inKey ?let @unifiedTypeMapElementClass element] then
-    outEntry = .element {!element: element !weakElement: element}
+    outEntry = .element {!weakElement: element}
   else
     let newElement = @unifiedTypeMapElementClass.new {!.unsolved}
     [!?self internalInsertKey !.new {!inKey !.nowhere} !newElement]
-    outEntry = .element {!element: newElement !weakElement: newElement}
+    outEntry = .element {!weakElement: newElement}
   end
 }
 
@@ -65,7 +65,7 @@ getter @unifiedTypeMap searchKey ?let @lstring inLKey -> @unifiedTypeMap-entry {
   if inLKey.string == "" then
     result = .null
   elsif let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
-    result = .element {!element: element !weakElement: element}
+    result = .element {!weakElement: element}
   else
     error inLKey : "there is not '@" + inLKey + "' type" : result
   end
@@ -310,7 +310,8 @@ struct @unifiedTypeDefinition {
 
 enum @unifiedTypeMap-entry {
   case null
-  case element (@unifiedTypeMapElementClass element @unifiedTypeMapElementClass      weakElement)
+  case element (@unifiedTypeMapElementClass-weak weakElement)
+#  case element (@unifiedTypeMapElementClass element @unifiedTypeMapElementClass-weak weakElement)
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -486,40 +487,28 @@ getter @unifiedTypeMapElementClass mHeaderFileName -> @string {
 # @unifiedTypeMap-entry getters
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#proc azert ?let @unifiedTypeMapElementClass-weak inMeuh {
-#  let @unifiedTypeMapElementClass-weak w = inMeuh
-#}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 getter @unifiedTypeMap-entry definition -> @unifiedTypeDefinition {
   switch self
   case null :
     error .nowhere : "null type" : result
-  case element (element *) :
-#    azert (!element)
-#    let @unifiedTypeMapElementClass-weak w = element
-#    if let p = w then
-#    else
-#      message "*************************** nil\n"
+#  case element (element *) :
+#    switch element.mDefinition
+#    case unsolved :
+#      error .nowhere : "unsolved type" : result
+#    case solved (definition) :
+#      result = definition
 #    end
-    switch element.mDefinition
-    case unsolved :
-      error .nowhere : "unsolved type" : result
-    case solved (definition) :
-      result = definition
+  case element (weakElement) :
+    if let type = weakElement then
+      switch type.mDefinition
+      case unsolved :
+        error .nowhere : "unsolved type" : result
+      case solved (definition) :
+        result = definition
+      end
+    else
+      error .nowhere : "nil type" : result
     end
-#  case entry (weakTypeRef) :
-#    if let type = weakTypeRef then
-#      switch type.mDefinition
-#      case unsolved :
-#        error .nowhere : "unsolved type" : result
-#      case solved (definition) :
-#        result = definition
-#      end
-#    else
-#      error .nowhere : "nil type" : result
-#    end
   end
 }
 

@@ -4,7 +4,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     %//----------------------------------------------------------------------------------------------------------------------\n\n%
     %cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName%::cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% (%?^
     for (mType) in mAssociatedValueTypeList
-    do index idx %const GALGAS_%![mType identifierRepresentation]% & inAssociatedValue%![idx string]
+    do index idx %const GALGAS_%![mType identifierRepresentation]% inAssociatedValue%![idx string]
     between %,\n%!^
     end
     %\n%!^%COMMA_LOCATION_ARGS) :\n%

@@ -117,7 +117,6 @@ project (4:0:0) -> "galgas" {
   "galgas-sources/useful-entities-computation.galgas"
   "galgas-sources/variable-manager.galgas"
   "galgas-sources/unified-type-map.galgas"
-#  "galgas-sources/unified-type-map-old.galgas"
 
 #--- Expressions
   "galgas-sources/expression-if.galgas"

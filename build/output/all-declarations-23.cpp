@@ -9841,7 +9841,7 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_32_ (C_C
             while (enumerator_916.hasCurrentObject ()) {
               result << "const GALGAS_" ;
               result << extensionGetter_identifierRepresentation (enumerator_916.current_mType (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_enum.h2.galgasTemplate", 18)).stringValue () ;
-              result << " & inAssociatedValue" ;
+              result << " inAssociatedValue" ;
               result << index_916_idx.getter_string (SOURCE_FILE ("GALGAS_enum.h2.galgasTemplate", 18)).stringValue () ;
               if (enumerator_916.hasNextObject ()) {
                 result << ",\n" ;
@@ -9918,7 +9918,7 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
           while (enumerator_432.hasCurrentObject ()) {
             result << "const GALGAS_" ;
             result << extensionGetter_identifierRepresentation (enumerator_432.current_mType (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 7)).stringValue () ;
-            result << " & inAssociatedValue" ;
+            result << " inAssociatedValue" ;
             result << index_432_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 7)).stringValue () ;
             if (enumerator_432.hasNextObject ()) {
               result << ",\n" ;
@@ -9932,18 +9932,18 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
         result.appendSpacesUntilColumn (columnMarker) ;
         result << "COMMA_LOCATION_ARGS) :\n"
           "cEnumAssociatedValues (THERE)" ;
-        GALGAS_uint index_674_idx (0) ;
+        GALGAS_uint index_672_idx (0) ;
         if (enumerator_65.current_mAssociatedValueTypeList (HERE).isValid ()) {
-          cEnumerator_unifiedTypeMap_2D_entryList enumerator_674 (enumerator_65.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
-          while (enumerator_674.hasCurrentObject ()) {
+          cEnumerator_unifiedTypeMap_2D_entryList enumerator_672 (enumerator_65.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
+          while (enumerator_672.hasCurrentObject ()) {
             result << ",\n"
               "mAssociatedValue" ;
-            result << index_674_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 13)).stringValue () ;
+            result << index_672_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 13)).stringValue () ;
             result << " (inAssociatedValue" ;
-            result << index_674_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 13)).stringValue () ;
+            result << index_672_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 13)).stringValue () ;
             result << ")" ;
-            index_674_idx.increment () ;
-            enumerator_674.gotoNextObject () ;
+            index_672_idx.increment () ;
+            enumerator_672.gotoNextObject () ;
           }
         }
         result << " {\n"
@@ -9961,15 +9961,15 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
         result.appendSpacesUntilColumn (columnMarker) ;
         result << "const int32_t inIndentation) const {\n"
           "  ioString << \"(\\n\" ;\n" ;
-        GALGAS_uint index_1181_idx (0) ;
+        GALGAS_uint index_1179_idx (0) ;
         if (enumerator_65.current_mAssociatedValueTypeList (HERE).isValid ()) {
-          cEnumerator_unifiedTypeMap_2D_entryList enumerator_1181 (enumerator_65.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
-          while (enumerator_1181.hasCurrentObject ()) {
+          cEnumerator_unifiedTypeMap_2D_entryList enumerator_1179 (enumerator_65.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
+          while (enumerator_1179.hasCurrentObject ()) {
             result << "  mAssociatedValue" ;
-            result << index_1181_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 22)).stringValue () ;
+            result << index_1179_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 22)).stringValue () ;
             result << ".description (ioString, inIndentation) ;\n" ;
-            index_1181_idx.increment () ;
-            enumerator_1181.gotoNextObject () ;
+            index_1179_idx.increment () ;
+            enumerator_1179.gotoNextObject () ;
           }
         }
         result << "  ioString << \")\" ;\n"
@@ -9993,19 +9993,19 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
         result << " *> (inOperand) ;\n"
           "  macroValidPointer (ptr) ;\n"
           "  typeComparisonResult result = kOperandEqual ;\n" ;
-        GALGAS_uint index_1915_idx (0) ;
+        GALGAS_uint index_1913_idx (0) ;
         if (enumerator_65.current_mAssociatedValueTypeList (HERE).isValid ()) {
-          cEnumerator_unifiedTypeMap_2D_entryList enumerator_1915 (enumerator_65.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
-          while (enumerator_1915.hasCurrentObject ()) {
+          cEnumerator_unifiedTypeMap_2D_entryList enumerator_1913 (enumerator_65.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
+          while (enumerator_1913.hasCurrentObject ()) {
             result << "  if (result == kOperandEqual) {\n"
               "    result = mAssociatedValue" ;
-            result << index_1915_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 33)).stringValue () ;
+            result << index_1913_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 33)).stringValue () ;
             result << ".objectCompare (ptr->mAssociatedValue" ;
-            result << index_1915_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 33)).stringValue () ;
+            result << index_1913_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 33)).stringValue () ;
             result << ") ;\n"
               "  }\n" ;
-            index_1915_idx.increment () ;
-            enumerator_1915.gotoNextObject () ;
+            index_1913_idx.increment () ;
+            enumerator_1913.gotoNextObject () ;
           }
         }
         result << "  return result ;\n"
@@ -10032,10 +10032,10 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
   result << "mEnum (kNotBuilt) {\n"
     "}\n"
     "\n" ;
-  GALGAS_uint index_2479_ (0) ;
+  GALGAS_uint index_2477_ (0) ;
   if (in_CONSTANT_5F_LIST.isValid ()) {
-    cEnumerator_enumConstantListForGeneration enumerator_2479 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_2479.hasCurrentObject ()) {
+    cEnumerator_enumConstantListForGeneration enumerator_2477 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_2477.hasCurrentObject ()) {
       result << "//----------------------------------------------------------------------------------------------------------------------\n"
         "\n"
         "GALGAS_" ;
@@ -10043,27 +10043,27 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
       result << " GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << "::constructor_" ;
-      result << enumerator_2479.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 54)).stringValue () ;
+      result << enumerator_2477.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 54)).stringValue () ;
       result << " (" ;
       columnMarker = result.currentColumn () ;
-      const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_2479.current_mAssociatedValueTypeList (HERE).getter_length (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 55)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+      const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_2477.current_mAssociatedValueTypeList (HERE).getter_length (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 55)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_2) {
         result << "UNUSED_LOCATION_ARGS" ;
       }else if (kBoolFalse == test_2) {
-        GALGAS_uint index_2869_idx (0) ;
-        if (enumerator_2479.current_mAssociatedValueTypeList (HERE).isValid ()) {
-          cEnumerator_unifiedTypeMap_2D_entryList enumerator_2869 (enumerator_2479.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
-          while (enumerator_2869.hasCurrentObject ()) {
+        GALGAS_uint index_2867_idx (0) ;
+        if (enumerator_2477.current_mAssociatedValueTypeList (HERE).isValid ()) {
+          cEnumerator_unifiedTypeMap_2D_entryList enumerator_2867 (enumerator_2477.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
+          while (enumerator_2867.hasCurrentObject ()) {
             result << "const GALGAS_" ;
-            result << extensionGetter_identifierRepresentation (enumerator_2869.current_mType (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 59)).stringValue () ;
+            result << extensionGetter_identifierRepresentation (enumerator_2867.current_mType (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 59)).stringValue () ;
             result << " & inAssociatedValue" ;
-            result << index_2869_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 59)).stringValue () ;
-            if (enumerator_2869.hasNextObject ()) {
+            result << index_2867_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 59)).stringValue () ;
+            if (enumerator_2867.hasNextObject ()) {
               result << ",\n" ;
               result.appendSpacesUntilColumn (columnMarker) ;
             }
-            index_2869_idx.increment () ;
-            enumerator_2869.gotoNextObject () ;
+            index_2867_idx.increment () ;
+            enumerator_2867.gotoNextObject () ;
           }
         }
         result << "\n" ;
@@ -10074,48 +10074,48 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
         "  GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << " result ;\n" ;
-      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_2479.current_mAssociatedValueTypeList (HERE).getter_length (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 66)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_2477.current_mAssociatedValueTypeList (HERE).getter_length (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 66)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_3) {
         result << "  result.mEnum = kEnum_" ;
-        result << enumerator_2479.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 67)).stringValue () ;
+        result << enumerator_2477.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 67)).stringValue () ;
         result << " ;\n" ;
       }else if (kBoolFalse == test_3) {
         result << "  if (" ;
-        GALGAS_uint index_3279_idx (0) ;
-        if (enumerator_2479.current_mAssociatedValueTypeList (HERE).isValid ()) {
-          cEnumerator_unifiedTypeMap_2D_entryList enumerator_3279 (enumerator_2479.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
-          while (enumerator_3279.hasCurrentObject ()) {
+        GALGAS_uint index_3277_idx (0) ;
+        if (enumerator_2477.current_mAssociatedValueTypeList (HERE).isValid ()) {
+          cEnumerator_unifiedTypeMap_2D_entryList enumerator_3277 (enumerator_2477.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
+          while (enumerator_3277.hasCurrentObject ()) {
             result << "inAssociatedValue" ;
-            result << index_3279_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 71)).stringValue () ;
+            result << index_3277_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 71)).stringValue () ;
             result << ".isValid ()" ;
-            if (enumerator_3279.hasNextObject ()) {
+            if (enumerator_3277.hasNextObject ()) {
               result << " && " ;
             }
-            index_3279_idx.increment () ;
-            enumerator_3279.gotoNextObject () ;
+            index_3277_idx.increment () ;
+            enumerator_3277.gotoNextObject () ;
           }
         }
         result << ") {\n"
           "    result.mEnum = kEnum_" ;
-        result << enumerator_2479.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 75)).stringValue () ;
+        result << enumerator_2477.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 75)).stringValue () ;
         result << " ;\n"
           "    cEnumAssociatedValues * ptr = NULL ;\n"
           "    macroMyNew (ptr, cEnumAssociatedValues_" ;
         result << in_TYPE_5F_IDENTIFIER.stringValue () ;
         result << "_" ;
-        result << enumerator_2479.current_mConstantName (HERE).stringValue () ;
+        result << enumerator_2477.current_mConstantName (HERE).stringValue () ;
         result << " (" ;
-        GALGAS_uint index_3640_idx (0) ;
-        if (enumerator_2479.current_mAssociatedValueTypeList (HERE).isValid ()) {
-          cEnumerator_unifiedTypeMap_2D_entryList enumerator_3640 (enumerator_2479.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
-          while (enumerator_3640.hasCurrentObject ()) {
+        GALGAS_uint index_3638_idx (0) ;
+        if (enumerator_2477.current_mAssociatedValueTypeList (HERE).isValid ()) {
+          cEnumerator_unifiedTypeMap_2D_entryList enumerator_3638 (enumerator_2477.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
+          while (enumerator_3638.hasCurrentObject ()) {
             result << "inAssociatedValue" ;
-            result << index_3640_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 79)).stringValue () ;
-            if (enumerator_3640.hasNextObject ()) {
+            result << index_3638_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 79)).stringValue () ;
+            if (enumerator_3638.hasNextObject ()) {
               result << ", " ;
             }
-            index_3640_idx.increment () ;
-            enumerator_3640.gotoNextObject () ;
+            index_3638_idx.increment () ;
+            enumerator_3638.gotoNextObject () ;
           }
         }
         result << " COMMA_THERE)) ;\n"
@@ -10126,36 +10126,36 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
       result << "  return result ;\n"
         "}\n"
         "\n" ;
-      index_2479_.increment () ;
-      enumerator_2479.gotoNextObject () ;
+      index_2477_.increment () ;
+      enumerator_2477.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_3945_ (0) ;
+  GALGAS_uint index_3943_ (0) ;
   if (in_CONSTANT_5F_LIST.isValid ()) {
-    cEnumerator_enumConstantListForGeneration enumerator_3945 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_3945.hasCurrentObject ()) {
-      const enumGalgasBool test_4 = GALGAS_bool (kIsStrictSup, enumerator_3945.current_mAssociatedValueTypeList (HERE).getter_length (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 92)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    cEnumerator_enumConstantListForGeneration enumerator_3943 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_3943.hasCurrentObject ()) {
+      const enumGalgasBool test_4 = GALGAS_bool (kIsStrictSup, enumerator_3943.current_mAssociatedValueTypeList (HERE).getter_length (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 92)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_4) {
         result << "//----------------------------------------------------------------------------------------------------------------------\n"
           "\n"
           "void GALGAS_" ;
         result << in_TYPE_5F_IDENTIFIER.stringValue () ;
         result << "::method_" ;
-        result << enumerator_3945.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 94)).stringValue () ;
+        result << enumerator_3943.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 94)).stringValue () ;
         result << " (" ;
         columnMarker = result.currentColumn () ;
-        GALGAS_uint index_4274_idx (0) ;
-        if (enumerator_3945.current_mAssociatedValueTypeList (HERE).isValid ()) {
-          cEnumerator_unifiedTypeMap_2D_entryList enumerator_4274 (enumerator_3945.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
-          while (enumerator_4274.hasCurrentObject ()) {
+        GALGAS_uint index_4272_idx (0) ;
+        if (enumerator_3943.current_mAssociatedValueTypeList (HERE).isValid ()) {
+          cEnumerator_unifiedTypeMap_2D_entryList enumerator_4272 (enumerator_3943.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
+          while (enumerator_4272.hasCurrentObject ()) {
             result << "GALGAS_" ;
-            result << extensionGetter_identifierRepresentation (enumerator_4274.current_mType (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 96)).stringValue () ;
+            result << extensionGetter_identifierRepresentation (enumerator_4272.current_mType (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 96)).stringValue () ;
             result << " & outAssociatedValue" ;
-            result << index_4274_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 96)).stringValue () ;
+            result << index_4272_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 96)).stringValue () ;
             result << ",\n" ;
             result.appendSpacesUntilColumn (columnMarker) ;
-            index_4274_idx.increment () ;
-            enumerator_4274.gotoNextObject () ;
+            index_4272_idx.increment () ;
+            enumerator_4272.gotoNextObject () ;
           }
         }
         result.appendSpacesUntilColumn (columnMarker) ;
@@ -10163,47 +10163,47 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
         result.appendSpacesUntilColumn (columnMarker) ;
         result << "COMMA_LOCATION_ARGS) const {\n"
           "  if (mEnum != kEnum_" ;
-        result << enumerator_3945.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 100)).stringValue () ;
+        result << enumerator_3943.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 100)).stringValue () ;
         result << ") {\n" ;
-        GALGAS_uint index_4580_idx (0) ;
-        if (enumerator_3945.current_mAssociatedValueTypeList (HERE).isValid ()) {
-          cEnumerator_unifiedTypeMap_2D_entryList enumerator_4580 (enumerator_3945.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
-          while (enumerator_4580.hasCurrentObject ()) {
+        GALGAS_uint index_4578_idx (0) ;
+        if (enumerator_3943.current_mAssociatedValueTypeList (HERE).isValid ()) {
+          cEnumerator_unifiedTypeMap_2D_entryList enumerator_4578 (enumerator_3943.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
+          while (enumerator_4578.hasCurrentObject ()) {
             result << "    outAssociatedValue" ;
-            result << index_4580_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 102)).stringValue () ;
+            result << index_4578_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 102)).stringValue () ;
             result << ".drop () ;\n" ;
-            index_4580_idx.increment () ;
-            enumerator_4580.gotoNextObject () ;
+            index_4578_idx.increment () ;
+            enumerator_4578.gotoNextObject () ;
           }
         }
         result << "    C_String s ;\n"
           "    s << \"method @" ;
         result << in_TYPE_5F_IDENTIFIER.stringValue () ;
         result << " " ;
-        result << enumerator_3945.current_mConstantName (HERE).stringValue () ;
+        result << enumerator_3943.current_mConstantName (HERE).stringValue () ;
         result << " invoked with an invalid enum value\" ;\n"
           "    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n"
           "  }else{\n"
           "    const cEnumAssociatedValues_" ;
         result << in_TYPE_5F_IDENTIFIER.stringValue () ;
         result << "_" ;
-        result << enumerator_3945.current_mConstantName (HERE).stringValue () ;
+        result << enumerator_3943.current_mConstantName (HERE).stringValue () ;
         result << " * ptr = (const cEnumAssociatedValues_" ;
         result << in_TYPE_5F_IDENTIFIER.stringValue () ;
         result << "_" ;
-        result << enumerator_3945.current_mConstantName (HERE).stringValue () ;
+        result << enumerator_3943.current_mConstantName (HERE).stringValue () ;
         result << " *) unsafePointer () ;\n" ;
-        GALGAS_uint index_5083_idx (0) ;
-        if (enumerator_3945.current_mAssociatedValueTypeList (HERE).isValid ()) {
-          cEnumerator_unifiedTypeMap_2D_entryList enumerator_5083 (enumerator_3945.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
-          while (enumerator_5083.hasCurrentObject ()) {
+        GALGAS_uint index_5081_idx (0) ;
+        if (enumerator_3943.current_mAssociatedValueTypeList (HERE).isValid ()) {
+          cEnumerator_unifiedTypeMap_2D_entryList enumerator_5081 (enumerator_3943.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
+          while (enumerator_5081.hasCurrentObject ()) {
             result << "    outAssociatedValue" ;
-            result << index_5083_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 110)).stringValue () ;
+            result << index_5081_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 110)).stringValue () ;
             result << " = ptr->mAssociatedValue" ;
-            result << index_5083_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 110)).stringValue () ;
+            result << index_5081_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 110)).stringValue () ;
             result << " ;\n" ;
-            index_5083_idx.increment () ;
-            enumerator_5083.gotoNextObject () ;
+            index_5081_idx.increment () ;
+            enumerator_5081.gotoNextObject () ;
           }
         }
         result << "  }\n"
@@ -10211,70 +10211,70 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
           "\n" ;
       }else if (kBoolFalse == test_4) {
       }
-      index_3945_.increment () ;
-      enumerator_3945.gotoNextObject () ;
+      index_3943_.increment () ;
+      enumerator_3943.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_5281_ (0) ;
+  GALGAS_uint index_5279_ (0) ;
   if (in_CONSTANT_5F_LIST.isValid ()) {
-    cEnumerator_enumConstantListForGeneration enumerator_5281 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_5281.hasCurrentObject ()) {
+    cEnumerator_enumConstantListForGeneration enumerator_5279 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_5279.hasCurrentObject ()) {
       result << "//----------------------------------------------------------------------------------------------------------------------\n"
         "\n"
         "bool GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << "::optional_" ;
-      result << enumerator_5281.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 120)).stringValue () ;
+      result << enumerator_5279.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 120)).stringValue () ;
       result << " (" ;
       columnMarker = result.currentColumn () ;
-      GALGAS_uint index_5568_idx (0) ;
-      if (enumerator_5281.current_mAssociatedValueTypeList (HERE).isValid ()) {
-        cEnumerator_unifiedTypeMap_2D_entryList enumerator_5568 (enumerator_5281.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
-        while (enumerator_5568.hasCurrentObject ()) {
+      GALGAS_uint index_5566_idx (0) ;
+      if (enumerator_5279.current_mAssociatedValueTypeList (HERE).isValid ()) {
+        cEnumerator_unifiedTypeMap_2D_entryList enumerator_5566 (enumerator_5279.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
+        while (enumerator_5566.hasCurrentObject ()) {
           result << "GALGAS_" ;
-          result << extensionGetter_identifierRepresentation (enumerator_5568.current_mType (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 123)).stringValue () ;
+          result << extensionGetter_identifierRepresentation (enumerator_5566.current_mType (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 123)).stringValue () ;
           result << " & outAssociatedValue" ;
-          result << index_5568_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 123)).stringValue () ;
-          if (enumerator_5568.hasNextObject ()) {
+          result << index_5566_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 123)).stringValue () ;
+          if (enumerator_5566.hasNextObject ()) {
             result << ",\n" ;
             result.appendSpacesUntilColumn (columnMarker) ;
           }
-          index_5568_idx.increment () ;
-          enumerator_5568.gotoNextObject () ;
+          index_5566_idx.increment () ;
+          enumerator_5566.gotoNextObject () ;
         }
       }
       result << ") const {\n"
         "  const bool ok = mEnum == kEnum_" ;
-      result << enumerator_5281.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 128)).stringValue () ;
+      result << enumerator_5279.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 128)).stringValue () ;
       result << " ;\n" ;
-      const enumGalgasBool test_5 = GALGAS_bool (kIsStrictSup, enumerator_5281.current_mAssociatedValueTypeList (HERE).getter_length (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 129)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+      const enumGalgasBool test_5 = GALGAS_bool (kIsStrictSup, enumerator_5279.current_mAssociatedValueTypeList (HERE).getter_length (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 129)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_5) {
         result << "  if (ok) {\n"
           "    const auto * ptr = (const cEnumAssociatedValues_" ;
         result << in_TYPE_5F_IDENTIFIER.stringValue () ;
         result << "_" ;
-        result << enumerator_5281.current_mConstantName (HERE).stringValue () ;
+        result << enumerator_5279.current_mConstantName (HERE).stringValue () ;
         result << " *) unsafePointer () ;\n"
           "    // const cEnumAssociatedValues_" ;
         result << in_TYPE_5F_IDENTIFIER.stringValue () ;
         result << "_" ;
-        result << enumerator_5281.current_mConstantName (HERE).stringValue () ;
+        result << enumerator_5279.current_mConstantName (HERE).stringValue () ;
         result << " * ptr = (const cEnumAssociatedValues_" ;
         result << in_TYPE_5F_IDENTIFIER.stringValue () ;
         result << "_" ;
-        result << enumerator_5281.current_mConstantName (HERE).stringValue () ;
+        result << enumerator_5279.current_mConstantName (HERE).stringValue () ;
         result << " *) unsafePointer () ;\n" ;
-        GALGAS_uint index_6227_idx (0) ;
-        if (enumerator_5281.current_mAssociatedValueTypeList (HERE).isValid ()) {
-          cEnumerator_unifiedTypeMap_2D_entryList enumerator_6227 (enumerator_5281.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
-          while (enumerator_6227.hasCurrentObject ()) {
+        GALGAS_uint index_6225_idx (0) ;
+        if (enumerator_5279.current_mAssociatedValueTypeList (HERE).isValid ()) {
+          cEnumerator_unifiedTypeMap_2D_entryList enumerator_6225 (enumerator_5279.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
+          while (enumerator_6225.hasCurrentObject ()) {
             result << "    outAssociatedValue" ;
-            result << index_6227_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 134)).stringValue () ;
+            result << index_6225_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 134)).stringValue () ;
             result << " = ptr->mAssociatedValue" ;
-            result << index_6227_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 134)).stringValue () ;
+            result << index_6225_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 134)).stringValue () ;
             result << " ;\n" ;
-            index_6227_idx.increment () ;
-            enumerator_6227.gotoNextObject () ;
+            index_6225_idx.increment () ;
+            enumerator_6225.gotoNextObject () ;
           }
         }
         result << "  }\n" ;
@@ -10283,8 +10283,8 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
       result << "  return ok ;\n"
         "}\n"
         "\n" ;
-      index_5281_.increment () ;
-      enumerator_5281.gotoNextObject () ;
+      index_5279_.increment () ;
+      enumerator_5279.gotoNextObject () ;
     }
   }
   result << "//----------------------------------------------------------------------------------------------------------------------\n"
@@ -10295,38 +10295,38 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
   result << in_CONSTANT_5F_LIST.getter_length (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 144)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 144)).getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 144)).stringValue () ;
   result << "] = {\n"
     "  \"(not built)\"" ;
-  GALGAS_uint index_6705_ (0) ;
+  GALGAS_uint index_6703_ (0) ;
   if (in_CONSTANT_5F_LIST.isValid ()) {
-    cEnumerator_enumConstantListForGeneration enumerator_6705 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_6705.hasCurrentObject ()) {
+    cEnumerator_enumConstantListForGeneration enumerator_6703 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_6703.hasCurrentObject ()) {
       result << ",\n"
         "  " ;
-      result << enumerator_6705.current_mConstantName (HERE).getter_utf_38_Representation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 147)).stringValue () ;
-      index_6705_.increment () ;
-      enumerator_6705.gotoNextObject () ;
+      result << enumerator_6703.current_mConstantName (HERE).getter_utf_38_Representation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 147)).stringValue () ;
+      index_6703_.increment () ;
+      enumerator_6703.gotoNextObject () ;
     }
   }
   result << "\n"
     "} ;\n"
     "\n" ;
-  GALGAS_uint index_6825_ (0) ;
+  GALGAS_uint index_6823_ (0) ;
   if (in_CONSTANT_5F_LIST.isValid ()) {
-    cEnumerator_enumConstantListForGeneration enumerator_6825 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_6825.hasCurrentObject ()) {
+    cEnumerator_enumConstantListForGeneration enumerator_6823 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_6823.hasCurrentObject ()) {
       result << "//----------------------------------------------------------------------------------------------------------------------\n"
         "\n"
         "GALGAS_bool GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << "::getter_is" ;
-      result << enumerator_6825.current_mConstantName (HERE).getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 155)).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 155)).stringValue () ;
+      result << enumerator_6823.current_mConstantName (HERE).getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 155)).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 155)).stringValue () ;
       result << " (UNUSED_LOCATION_ARGS) const {\n"
         "  return GALGAS_bool (kNotBuilt != mEnum, kEnum_" ;
-      result << enumerator_6825.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 156)).stringValue () ;
+      result << enumerator_6823.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 156)).stringValue () ;
       result << " == mEnum) ;\n"
         "}\n"
         "\n" ;
-      index_6825_.increment () ;
-      enumerator_6825.gotoNextObject () ;
+      index_6823_.increment () ;
+      enumerator_6823.gotoNextObject () ;
     }
   }
   result << "//----------------------------------------------------------------------------------------------------------------------\n"

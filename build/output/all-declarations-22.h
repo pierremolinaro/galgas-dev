@@ -21,11 +21,6 @@ class GALGAS_optionComponentForGeneration : public GALGAS_semanticDeclarationWit
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_optionComponentForGeneration constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_optionComponentForGeneration (const class cPtr_optionComponentForGeneration * inSourcePtr) ;
 
@@ -212,11 +207,6 @@ class GALGAS_arrayTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Default constructor
   public: GALGAS_arrayTypeForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_arrayTypeForGeneration (const class cPtr_arrayTypeForGeneration * inSourcePtr) ;
 

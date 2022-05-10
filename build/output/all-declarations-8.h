@@ -10,557 +10,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension setter '@currentVarManager combineManagerWith'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionSetter_combineManagerWith (class GALGAS_currentVarManager & ioObject,
-                                         const class GALGAS_currentVarManager constin_inOtherManager,
-                                         const class GALGAS_location constin_inErrorLocation,
-                                         class C_Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension getter '@unifiedTypeMap unsolvedEntryList' (as function)
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_lstringlist extensionGetter_unsolvedEntryList (const class GALGAS_unifiedTypeMap & inObject,
-                                                            class C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//                                            Phase 1: @typeDefinition enum                                            *
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_typeDefinition : public AC_GALGAS_root {
-//--------------------------------- Default constructor
-  public: GALGAS_typeDefinition (void) ;
-
-//--------------------------------- Enumeration
-  public: typedef enum {
-    kNotBuilt,
-    kEnum_unsolved,
-    kEnum_solved
-  } enumeration ;
-  
-//--------------------------------- Private data member
-  private: AC_GALGAS_enumAssociatedValues mAssociatedValues ;
-  public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
-    return mAssociatedValues.unsafePointer () ;
-  }
-
-  private: enumeration mEnum ;
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const { return kNotBuilt != mEnum ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) { mEnum = kNotBuilt ; }
-  public: inline enumeration enumValue (void) const { return mEnum ; }
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_typeDefinition extractObject (const GALGAS_object & inObject,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_typeDefinition constructor_solved (const class GALGAS_unifiedTypeDefinition & inOperand0
-                                                                 COMMA_LOCATION_ARGS) ;
-
-  public: static class GALGAS_typeDefinition constructor_unsolved (LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeDefinition & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_solved (class GALGAS_unifiedTypeDefinition & outArgument0,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isSolved (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isUnsolved (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_solved (class GALGAS_unifiedTypeDefinition & outOperand0) const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_unsolved () const ;
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_typeDefinition class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDefinition ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @unifiedTypeDefinition struct
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GALGAS_lstring mProperty_mLKey ;
-  public: inline GALGAS_lstring readProperty_mLKey (void) const {
-    return mProperty_mLKey ;
-  }
-
-  public: GALGAS_bool mProperty_mIsPredefined ;
-  public: inline GALGAS_bool readProperty_mIsPredefined (void) const {
-    return mProperty_mIsPredefined ;
-  }
-
-  public: GALGAS_bool mProperty_mIsConcrete ;
-  public: inline GALGAS_bool readProperty_mIsConcrete (void) const {
-    return mProperty_mIsConcrete ;
-  }
-
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mSuperType ;
-  public: inline GALGAS_unifiedTypeMap_2D_entry readProperty_mSuperType (void) const {
-    return mProperty_mSuperType ;
-  }
-
-  public: GALGAS_typeKindEnum mProperty_mTypeKindEnum ;
-  public: inline GALGAS_typeKindEnum readProperty_mTypeKindEnum (void) const {
-    return mProperty_mTypeKindEnum ;
-  }
-
-  public: GALGAS_bool mProperty_mSupportCollectionValue ;
-  public: inline GALGAS_bool readProperty_mSupportCollectionValue (void) const {
-    return mProperty_mSupportCollectionValue ;
-  }
-
-  public: GALGAS_typedPropertyList mProperty_mAllTypedPropertyList ;
-  public: inline GALGAS_typedPropertyList readProperty_mAllTypedPropertyList (void) const {
-    return mProperty_mAllTypedPropertyList ;
-  }
-
-  public: GALGAS_propertyMap mProperty_mPropertyMap ;
-  public: inline GALGAS_propertyMap readProperty_mPropertyMap (void) const {
-    return mProperty_mPropertyMap ;
-  }
-
-  public: GALGAS_typedPropertyList mProperty_mCurrentTypedPropertyList ;
-  public: inline GALGAS_typedPropertyList readProperty_mCurrentTypedPropertyList (void) const {
-    return mProperty_mCurrentTypedPropertyList ;
-  }
-
-  public: GALGAS_constructorMap mProperty_mConstructorMap ;
-  public: inline GALGAS_constructorMap readProperty_mConstructorMap (void) const {
-    return mProperty_mConstructorMap ;
-  }
-
-  public: GALGAS_getterMap mProperty_mGetterMap ;
-  public: inline GALGAS_getterMap readProperty_mGetterMap (void) const {
-    return mProperty_mGetterMap ;
-  }
-
-  public: GALGAS_setterMap mProperty_mSetterMap ;
-  public: inline GALGAS_setterMap readProperty_mSetterMap (void) const {
-    return mProperty_mSetterMap ;
-  }
-
-  public: GALGAS_instanceMethodMap mProperty_mInstanceMethodMap ;
-  public: inline GALGAS_instanceMethodMap readProperty_mInstanceMethodMap (void) const {
-    return mProperty_mInstanceMethodMap ;
-  }
-
-  public: GALGAS_classMethodMap mProperty_mClassMethodMap ;
-  public: inline GALGAS_classMethodMap readProperty_mClassMethodMap (void) const {
-    return mProperty_mClassMethodMap ;
-  }
-
-  public: GALGAS_optionalMethodMap mProperty_mOptionalMethodMap ;
-  public: inline GALGAS_optionalMethodMap readProperty_mOptionalMethodMap (void) const {
-    return mProperty_mOptionalMethodMap ;
-  }
-
-  public: GALGAS_enumerationDescriptorList mProperty_mEnumerationDescriptor ;
-  public: inline GALGAS_enumerationDescriptorList readProperty_mEnumerationDescriptor (void) const {
-    return mProperty_mEnumerationDescriptor ;
-  }
-
-  public: GALGAS_operators mProperty_mHandledOperatorFlags ;
-  public: inline GALGAS_operators readProperty_mHandledOperatorFlags (void) const {
-    return mProperty_mHandledOperatorFlags ;
-  }
-
-  public: GALGAS_functionSignature mProperty_mAddAssignOperatorArguments ;
-  public: inline GALGAS_functionSignature readProperty_mAddAssignOperatorArguments (void) const {
-    return mProperty_mAddAssignOperatorArguments ;
-  }
-
-  public: GALGAS_constantIndexMap mProperty_mEnumConstantMap ;
-  public: inline GALGAS_constantIndexMap readProperty_mEnumConstantMap (void) const {
-    return mProperty_mEnumConstantMap ;
-  }
-
-  public: GALGAS_enumConstantList mProperty_mEnumConstantList ;
-  public: inline GALGAS_enumConstantList readProperty_mEnumConstantList (void) const {
-    return mProperty_mEnumConstantList ;
-  }
-
-  public: GALGAS_mapSearchMethodListAST mProperty_mMapSearchMethodList ;
-  public: inline GALGAS_mapSearchMethodListAST readProperty_mMapSearchMethodList (void) const {
-    return mProperty_mMapSearchMethodList ;
-  }
-
-  public: GALGAS_mapSearchMethodListAST mProperty_mMapEntrySearchConstructorList ;
-  public: inline GALGAS_mapSearchMethodListAST readProperty_mMapEntrySearchConstructorList (void) const {
-    return mProperty_mMapEntrySearchConstructorList ;
-  }
-
-  public: GALGAS_bool mProperty_mGenerateHeaderInSeparateFile ;
-  public: inline GALGAS_bool readProperty_mGenerateHeaderInSeparateFile (void) const {
-    return mProperty_mGenerateHeaderInSeparateFile ;
-  }
-
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mTypeForEnumeratedElement ;
-  public: inline GALGAS_unifiedTypeMap_2D_entry readProperty_mTypeForEnumeratedElement (void) const {
-    return mProperty_mTypeForEnumeratedElement ;
-  }
-
-  public: GALGAS_string mProperty_mDefaultConstructorName ;
-  public: inline GALGAS_string readProperty_mDefaultConstructorName (void) const {
-    return mProperty_mDefaultConstructorName ;
-  }
-
-  public: GALGAS_string mProperty_mHeaderFileName ;
-  public: inline GALGAS_string readProperty_mHeaderFileName (void) const {
-    return mProperty_mHeaderFileName ;
-  }
-
-  public: GALGAS_headerKind mProperty_mHeaderKind ;
-  public: inline GALGAS_headerKind readProperty_mHeaderKind (void) const {
-    return mProperty_mHeaderKind ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
-  public: VIRTUAL_IN_DEBUG void drop (void) ;
-
-//--------------------------------- Default constructor
-  public: GALGAS_unifiedTypeDefinition (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMLKey (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mLKey = inValue ;
-  }
-
-  public: inline void setter_setMIsPredefined (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mIsPredefined = inValue ;
-  }
-
-  public: inline void setter_setMIsConcrete (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mIsConcrete = inValue ;
-  }
-
-  public: inline void setter_setMSuperType (const GALGAS_unifiedTypeMap_2D_entry & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mSuperType = inValue ;
-  }
-
-  public: inline void setter_setMTypeKindEnum (const GALGAS_typeKindEnum & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mTypeKindEnum = inValue ;
-  }
-
-  public: inline void setter_setMSupportCollectionValue (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mSupportCollectionValue = inValue ;
-  }
-
-  public: inline void setter_setMAllTypedPropertyList (const GALGAS_typedPropertyList & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mAllTypedPropertyList = inValue ;
-  }
-
-  public: inline void setter_setMPropertyMap (const GALGAS_propertyMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mPropertyMap = inValue ;
-  }
-
-  public: inline void setter_setMCurrentTypedPropertyList (const GALGAS_typedPropertyList & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mCurrentTypedPropertyList = inValue ;
-  }
-
-  public: inline void setter_setMConstructorMap (const GALGAS_constructorMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mConstructorMap = inValue ;
-  }
-
-  public: inline void setter_setMGetterMap (const GALGAS_getterMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mGetterMap = inValue ;
-  }
-
-  public: inline void setter_setMSetterMap (const GALGAS_setterMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mSetterMap = inValue ;
-  }
-
-  public: inline void setter_setMInstanceMethodMap (const GALGAS_instanceMethodMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mInstanceMethodMap = inValue ;
-  }
-
-  public: inline void setter_setMClassMethodMap (const GALGAS_classMethodMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mClassMethodMap = inValue ;
-  }
-
-  public: inline void setter_setMOptionalMethodMap (const GALGAS_optionalMethodMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mOptionalMethodMap = inValue ;
-  }
-
-  public: inline void setter_setMEnumerationDescriptor (const GALGAS_enumerationDescriptorList & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mEnumerationDescriptor = inValue ;
-  }
-
-  public: inline void setter_setMHandledOperatorFlags (const GALGAS_operators & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mHandledOperatorFlags = inValue ;
-  }
-
-  public: inline void setter_setMAddAssignOperatorArguments (const GALGAS_functionSignature & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mAddAssignOperatorArguments = inValue ;
-  }
-
-  public: inline void setter_setMEnumConstantMap (const GALGAS_constantIndexMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mEnumConstantMap = inValue ;
-  }
-
-  public: inline void setter_setMEnumConstantList (const GALGAS_enumConstantList & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mEnumConstantList = inValue ;
-  }
-
-  public: inline void setter_setMMapSearchMethodList (const GALGAS_mapSearchMethodListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mMapSearchMethodList = inValue ;
-  }
-
-  public: inline void setter_setMMapEntrySearchConstructorList (const GALGAS_mapSearchMethodListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mMapEntrySearchConstructorList = inValue ;
-  }
-
-  public: inline void setter_setMGenerateHeaderInSeparateFile (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mGenerateHeaderInSeparateFile = inValue ;
-  }
-
-  public: inline void setter_setMTypeForEnumeratedElement (const GALGAS_unifiedTypeMap_2D_entry & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mTypeForEnumeratedElement = inValue ;
-  }
-
-  public: inline void setter_setMDefaultConstructorName (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mDefaultConstructorName = inValue ;
-  }
-
-  public: inline void setter_setMHeaderFileName (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mHeaderFileName = inValue ;
-  }
-
-  public: inline void setter_setMHeaderKind (const GALGAS_headerKind & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mHeaderKind = inValue ;
-  }
-
-//--------------------------------- Virtual destructor (in debug mode)
-  public: virtual ~ GALGAS_unifiedTypeDefinition (void) ;
-
-//--------------------------------- Native constructor
-  public: GALGAS_unifiedTypeDefinition (const GALGAS_lstring & in_mLKey,
-                                        const GALGAS_bool & in_mIsPredefined,
-                                        const GALGAS_bool & in_mIsConcrete,
-                                        const GALGAS_unifiedTypeMap_2D_entry & in_mSuperType,
-                                        const GALGAS_typeKindEnum & in_mTypeKindEnum,
-                                        const GALGAS_bool & in_mSupportCollectionValue,
-                                        const GALGAS_typedPropertyList & in_mAllTypedPropertyList,
-                                        const GALGAS_propertyMap & in_mPropertyMap,
-                                        const GALGAS_typedPropertyList & in_mCurrentTypedPropertyList,
-                                        const GALGAS_constructorMap & in_mConstructorMap,
-                                        const GALGAS_getterMap & in_mGetterMap,
-                                        const GALGAS_setterMap & in_mSetterMap,
-                                        const GALGAS_instanceMethodMap & in_mInstanceMethodMap,
-                                        const GALGAS_classMethodMap & in_mClassMethodMap,
-                                        const GALGAS_optionalMethodMap & in_mOptionalMethodMap,
-                                        const GALGAS_enumerationDescriptorList & in_mEnumerationDescriptor,
-                                        const GALGAS_operators & in_mHandledOperatorFlags,
-                                        const GALGAS_functionSignature & in_mAddAssignOperatorArguments,
-                                        const GALGAS_constantIndexMap & in_mEnumConstantMap,
-                                        const GALGAS_enumConstantList & in_mEnumConstantList,
-                                        const GALGAS_mapSearchMethodListAST & in_mMapSearchMethodList,
-                                        const GALGAS_mapSearchMethodListAST & in_mMapEntrySearchConstructorList,
-                                        const GALGAS_bool & in_mGenerateHeaderInSeparateFile,
-                                        const GALGAS_unifiedTypeMap_2D_entry & in_mTypeForEnumeratedElement,
-                                        const GALGAS_string & in_mDefaultConstructorName,
-                                        const GALGAS_string & in_mHeaderFileName,
-                                        const GALGAS_headerKind & in_mHeaderKind) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_unifiedTypeDefinition extractObject (const GALGAS_object & inObject,
-                                                             C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_unifiedTypeDefinition constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                     const class GALGAS_bool & inOperand1,
-                                                                     const class GALGAS_bool & inOperand2,
-                                                                     const class GALGAS_unifiedTypeMap_2D_entry & inOperand3,
-                                                                     const class GALGAS_typeKindEnum & inOperand4,
-                                                                     const class GALGAS_bool & inOperand5,
-                                                                     const class GALGAS_typedPropertyList & inOperand6,
-                                                                     const class GALGAS_propertyMap & inOperand7,
-                                                                     const class GALGAS_typedPropertyList & inOperand8,
-                                                                     const class GALGAS_constructorMap & inOperand9,
-                                                                     const class GALGAS_getterMap & inOperand10,
-                                                                     const class GALGAS_setterMap & inOperand11,
-                                                                     const class GALGAS_instanceMethodMap & inOperand12,
-                                                                     const class GALGAS_classMethodMap & inOperand13,
-                                                                     const class GALGAS_optionalMethodMap & inOperand14,
-                                                                     const class GALGAS_enumerationDescriptorList & inOperand15,
-                                                                     const class GALGAS_operators & inOperand16,
-                                                                     const class GALGAS_functionSignature & inOperand17,
-                                                                     const class GALGAS_constantIndexMap & inOperand18,
-                                                                     const class GALGAS_enumConstantList & inOperand19,
-                                                                     const class GALGAS_mapSearchMethodListAST & inOperand20,
-                                                                     const class GALGAS_mapSearchMethodListAST & inOperand21,
-                                                                     const class GALGAS_bool & inOperand22,
-                                                                     const class GALGAS_unifiedTypeMap_2D_entry & inOperand23,
-                                                                     const class GALGAS_string & inOperand24,
-                                                                     const class GALGAS_string & inOperand25,
-                                                                     const class GALGAS_headerKind & inOperand26
-                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_unifiedTypeDefinition & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_unifiedTypeDefinition class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeDefinition ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 2: @typeDefinition enum, associated values
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class cEnumAssociatedValues_typeDefinition_solved : public cEnumAssociatedValues {
-  public: const GALGAS_unifiedTypeDefinition mAssociatedValue0 ;
-
-//--- Constructor
-  public: cEnumAssociatedValues_typeDefinition_solved (const GALGAS_unifiedTypeDefinition & inAssociatedValue0
-                                                       COMMA_LOCATION_ARGS) ;
-
-  public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
-  public: virtual typeComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
-
-  public: virtual ~ cEnumAssociatedValues_typeDefinition_solved (void) {}
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @unifiedTypeMapElementClass class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class cPtr_unifiedTypeMapElementClass : public acStrongPtr_class {
-
-//----------------------------------------------------------------------------------------------------------------------
-
-/* § public: virtual GALGAS_unifiedTypeDefinition getter_definition (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_lstring getter_lkey (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_functionSignature getter_mAddAssignOperatorArguments (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_typedPropertyList getter_mAllTypedPropertyList (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_classMethodMap getter_mClassMethodMap (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_constructorMap getter_mConstructorMap (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_typedPropertyList getter_mCurrentTypedPropertyList (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_string getter_mDefaultConstructorName (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_enumConstantList getter_mEnumConstantList (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_constantIndexMap getter_mEnumConstantMap (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_enumerationDescriptorList getter_mEnumerationDescriptor (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_bool getter_mGenerateHeaderInSeparateFile (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_getterMap getter_mGetterMap (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_operators getter_mHandledOperatorFlags (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_string getter_mHeaderFileName (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_headerKind getter_mHeaderKind (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_instanceMethodMap getter_mInstanceMethodMap (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_bool getter_mIsConcrete (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_mapSearchMethodListAST getter_mMapEntrySearchConstructorList (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_mapSearchMethodListAST getter_mMapSearchMethodList (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_optionalMethodMap getter_mOptionalMethodMap (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_propertyMap getter_mPropertyMap (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_setterMap getter_mSetterMap (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_unifiedTypeMap_2D_entry getter_mSuperType (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_bool getter_mSupportCollectionValue (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_unifiedTypeMap_2D_entry getter_mTypeForEnumeratedElement (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_typeKindEnum getter_mTypeKindEnum (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-//--- Properties
-  public: GALGAS_typeDefinition mProperty_mDefinition ;
-
-//--- Constructor
-  public: cPtr_unifiedTypeMapElementClass (const GALGAS_typeDefinition & in_mDefinition
-                                           COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
-
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension setter '@unifiedTypeMap makeEntry'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionSetter_makeEntry (class GALGAS_unifiedTypeMap & ioObject,
-                                const class GALGAS_lstring constin_inLKey,
-                                class GALGAS_unifiedTypeMap_2D_entry & out_outEntry,
-                                class C_Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Extension setter '@unifiedTypeMap makeEntryFromString'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -655,62 +104,6 @@ void extensionMethod_searchKey (const class GALGAS_unifiedTypeMap inObject,
                                 class GALGAS_headerKind & out_outHeaderKind,
                                 class C_Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @unifiedTypeMapElementClass_2D_weak weak reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_unifiedTypeMapElementClass_2D_weak : public AC_GALGAS_weak_reference {
-//--------------------------------- Default constructor
-  public: GALGAS_unifiedTypeMapElementClass_2D_weak (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_unifiedTypeMapElementClass_2D_weak constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_unifiedTypeMapElementClass_2D_weak (const class GALGAS_unifiedTypeMapElementClass & inSource) ;
-
-  public: GALGAS_unifiedTypeMapElementClass_2D_weak & operator = (const class GALGAS_unifiedTypeMapElementClass & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_unifiedTypeMapElementClass bang_unifiedTypeMapElementClass_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_unifiedTypeMapElementClass_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_unifiedTypeMapElementClass_2D_weak constructor_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_unifiedTypeMapElementClass_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_unifiedTypeMapElementClass_2D_weak class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapElementClass_2D_weak ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -1054,11 +447,6 @@ class GALGAS_ifExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default constructor
   public: GALGAS_ifExpressionAST (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_ifExpressionAST (const class cPtr_ifExpressionAST * inSourcePtr) ;
 
@@ -1225,11 +613,6 @@ class GALGAS_ifExpressionForGeneration : public GALGAS_semanticExpressionForGene
 //--------------------------------- Default constructor
   public: GALGAS_ifExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_ifExpressionForGeneration (const class cPtr_ifExpressionForGeneration * inSourcePtr) ;
 
@@ -1392,11 +775,6 @@ class GALGAS_unaryPlusExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default constructor
   public: GALGAS_unaryPlusExpressionAST (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_unaryPlusExpressionAST (const class cPtr_unaryPlusExpressionAST * inSourcePtr) ;
 
@@ -1541,11 +919,6 @@ class GALGAS_unaryMinusExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default constructor
   public: GALGAS_unaryMinusExpressionAST (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_unaryMinusExpressionAST (const class cPtr_unaryMinusExpressionAST * inSourcePtr) ;
 
@@ -1690,11 +1063,6 @@ class GALGAS_unaryMinusExpressionForGeneration : public GALGAS_semanticExpressio
 //--------------------------------- Default constructor
   public: GALGAS_unaryMinusExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_unaryMinusExpressionForGeneration (const class cPtr_unaryMinusExpressionForGeneration * inSourcePtr) ;
 
@@ -1841,11 +1209,6 @@ class GALGAS_varInExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_varInExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_varInExpressionAST (const class cPtr_varInExpressionAST * inSourcePtr) ;
 
@@ -1988,11 +1351,6 @@ class GALGAS_varInExpressionForGeneration : public GALGAS_semanticExpressionForG
 //--------------------------------- Default constructor
   public: GALGAS_varInExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_varInExpressionForGeneration (const class cPtr_varInExpressionForGeneration * inSourcePtr) ;
 
@@ -2425,11 +1783,6 @@ class GALGAS_trueExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_trueExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_trueExpressionAST (const class cPtr_trueExpressionAST * inSourcePtr) ;
 
@@ -2572,11 +1925,6 @@ class GALGAS_falseExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_falseExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_falseExpressionAST (const class cPtr_falseExpressionAST * inSourcePtr) ;
 
@@ -2716,11 +2064,6 @@ class GALGAS_trueExpressionForGeneration : public GALGAS_semanticExpressionForGe
 //--------------------------------- Default constructor
   public: GALGAS_trueExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_trueExpressionForGeneration (const class cPtr_trueExpressionForGeneration * inSourcePtr) ;
 
@@ -2859,11 +2202,6 @@ class GALGAS_falseExpressionForGeneration : public GALGAS_semanticExpressionForG
 //--------------------------------- Default constructor
   public: GALGAS_falseExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_falseExpressionForGeneration (const class cPtr_falseExpressionForGeneration * inSourcePtr) ;
 
@@ -3005,11 +2343,6 @@ class GALGAS_literalStringExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_literalStringExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalStringExpressionAST (const class cPtr_literalStringExpressionAST * inSourcePtr) ;
 
@@ -3154,11 +2487,6 @@ class GALGAS_literalStringExpressionForGeneration : public GALGAS_semanticExpres
 //--------------------------------- Default constructor
   public: GALGAS_literalStringExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalStringExpressionForGeneration (const class cPtr_literalStringExpressionForGeneration * inSourcePtr) ;
 
@@ -3305,11 +2633,6 @@ class GALGAS_literalCharExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_literalCharExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalCharExpressionAST (const class cPtr_literalCharExpressionAST * inSourcePtr) ;
 
@@ -3449,11 +2772,6 @@ class GALGAS_literalCharExpressionForGeneration : public GALGAS_semanticExpressi
 //--------------------------------- Default constructor
   public: GALGAS_literalCharExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalCharExpressionForGeneration (const class cPtr_literalCharExpressionForGeneration * inSourcePtr) ;
 
@@ -3600,11 +2918,6 @@ class GALGAS_literalDoubleExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_literalDoubleExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalDoubleExpressionAST (const class cPtr_literalDoubleExpressionAST * inSourcePtr) ;
 
@@ -3744,11 +3057,6 @@ class GALGAS_literalDoubleExpressionForGeneration : public GALGAS_semanticExpres
 //--------------------------------- Default constructor
   public: GALGAS_literalDoubleExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalDoubleExpressionForGeneration (const class cPtr_literalDoubleExpressionForGeneration * inSourcePtr) ;
 
@@ -3895,11 +3203,6 @@ class GALGAS_literalUIntExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_literalUIntExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalUIntExpressionAST (const class cPtr_literalUIntExpressionAST * inSourcePtr) ;
 
@@ -4042,11 +3345,6 @@ class GALGAS_literalUInt_36__34_ExpressionAST : public GALGAS_semanticExpression
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_literalUInt_36__34_ExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalUInt_36__34_ExpressionAST (const class cPtr_literalUInt_36__34_ExpressionAST * inSourcePtr) ;
 
@@ -4189,11 +3487,6 @@ class GALGAS_literalSIntExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_literalSIntExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalSIntExpressionAST (const class cPtr_literalSIntExpressionAST * inSourcePtr) ;
 
@@ -4336,11 +3629,6 @@ class GALGAS_literalSInt_36__34_ExpressionAST : public GALGAS_semanticExpression
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_literalSInt_36__34_ExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalSInt_36__34_ExpressionAST (const class cPtr_literalSInt_36__34_ExpressionAST * inSourcePtr) ;
 
@@ -4483,11 +3771,6 @@ class GALGAS_literalBigIntExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_literalBigIntExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalBigIntExpressionAST (const class cPtr_literalBigIntExpressionAST * inSourcePtr) ;
 
@@ -4627,11 +3910,6 @@ class GALGAS_literalUIntExpressionForGeneration : public GALGAS_semanticExpressi
 //--------------------------------- Default constructor
   public: GALGAS_literalUIntExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalUIntExpressionForGeneration (const class cPtr_literalUIntExpressionForGeneration * inSourcePtr) ;
 
@@ -4778,11 +4056,6 @@ class GALGAS_literalUInt_36__34_ExpressionForGeneration : public GALGAS_semantic
 //--------------------------------- Default constructor
   public: GALGAS_literalUInt_36__34_ExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalUInt_36__34_ExpressionForGeneration (const class cPtr_literalUInt_36__34_ExpressionForGeneration * inSourcePtr) ;
 
@@ -4926,11 +4199,6 @@ class GALGAS_literalSIntExpressionForGeneration : public GALGAS_semanticExpressi
 //--------------------------------- Default constructor
   public: GALGAS_literalSIntExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalSIntExpressionForGeneration (const class cPtr_literalSIntExpressionForGeneration * inSourcePtr) ;
 
@@ -5074,11 +4342,6 @@ class GALGAS_literalSInt_36__34_ExpressionForGeneration : public GALGAS_semantic
 //--------------------------------- Default constructor
   public: GALGAS_literalSInt_36__34_ExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalSInt_36__34_ExpressionForGeneration (const class cPtr_literalSInt_36__34_ExpressionForGeneration * inSourcePtr) ;
 
@@ -5222,11 +4485,6 @@ class GALGAS_literalBigIntExpressionForGeneration : public GALGAS_semanticExpres
 //--------------------------------- Default constructor
   public: GALGAS_literalBigIntExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalBigIntExpressionForGeneration (const class cPtr_literalBigIntExpressionForGeneration * inSourcePtr) ;
 
@@ -5488,11 +4746,6 @@ class GALGAS_comparisonExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default constructor
   public: GALGAS_comparisonExpressionAST (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_comparisonExpressionAST (const class cPtr_comparisonExpressionAST * inSourcePtr) ;
 
@@ -5659,11 +4912,6 @@ class GALGAS_comparisonExpressionForGeneration : public GALGAS_semanticExpressio
 //--------------------------------- Default constructor
   public: GALGAS_comparisonExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_comparisonExpressionForGeneration (const class cPtr_comparisonExpressionForGeneration * inSourcePtr) ;
 
@@ -5826,11 +5074,6 @@ class GALGAS_rightShiftExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default constructor
   public: GALGAS_rightShiftExpressionAST (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_rightShiftExpressionAST (const class cPtr_rightShiftExpressionAST * inSourcePtr) ;
 
@@ -5980,11 +5223,6 @@ class GALGAS_leftShiftExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default constructor
   public: GALGAS_leftShiftExpressionAST (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_leftShiftExpressionAST (const class cPtr_leftShiftExpressionAST * inSourcePtr) ;
 
@@ -6134,11 +5372,6 @@ class GALGAS_addExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default constructor
   public: GALGAS_addExpressionAST (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_addExpressionAST (const class cPtr_addExpressionAST * inSourcePtr) ;
 
@@ -6288,11 +5521,6 @@ class GALGAS_addExpressionNoOverflowAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default constructor
   public: GALGAS_addExpressionNoOverflowAST (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_addExpressionNoOverflowAST (const class cPtr_addExpressionNoOverflowAST * inSourcePtr) ;
 
@@ -6442,11 +5670,6 @@ class GALGAS_subExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default constructor
   public: GALGAS_subExpressionAST (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_subExpressionAST (const class cPtr_subExpressionAST * inSourcePtr) ;
 
@@ -6596,11 +5819,6 @@ class GALGAS_subExpressionNoOverflowAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default constructor
   public: GALGAS_subExpressionNoOverflowAST (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_subExpressionNoOverflowAST (const class cPtr_subExpressionNoOverflowAST * inSourcePtr) ;
 
@@ -6907,11 +6125,6 @@ class GALGAS_binaryOperatorExpressionForGeneration : public GALGAS_semanticExpre
 //--------------------------------- Default constructor
   public: GALGAS_binaryOperatorExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_binaryOperatorExpressionForGeneration (const class cPtr_binaryOperatorExpressionForGeneration * inSourcePtr) ;
 
@@ -7074,11 +6287,6 @@ class GALGAS_multiplicationExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default constructor
   public: GALGAS_multiplicationExpressionAST (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_multiplicationExpressionAST (const class cPtr_multiplicationExpressionAST * inSourcePtr) ;
 
@@ -7237,11 +6445,6 @@ class GALGAS_multiplicationExpressionNoOverflowAST : public GALGAS_semanticExpre
 //--------------------------------- Default constructor
   public: GALGAS_multiplicationExpressionNoOverflowAST (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_multiplicationExpressionNoOverflowAST (const class cPtr_multiplicationExpressionNoOverflowAST * inSourcePtr) ;
 
@@ -7400,11 +6603,6 @@ class GALGAS_divisionExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default constructor
   public: GALGAS_divisionExpressionAST (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_divisionExpressionAST (const class cPtr_divisionExpressionAST * inSourcePtr) ;
 
@@ -7563,11 +6761,6 @@ class GALGAS_divisionExpressionNoOverflowAST : public GALGAS_semanticExpressionA
 //--------------------------------- Default constructor
   public: GALGAS_divisionExpressionNoOverflowAST (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_divisionExpressionNoOverflowAST (const class cPtr_divisionExpressionNoOverflowAST * inSourcePtr) ;
 
@@ -7726,11 +6919,6 @@ class GALGAS_moduloExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default constructor
   public: GALGAS_moduloExpressionAST (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_moduloExpressionAST (const class cPtr_moduloExpressionAST * inSourcePtr) ;
 
@@ -7889,11 +7077,6 @@ class GALGAS_testDynamicClassInExpressionAST : public GALGAS_semanticExpressionA
 //--------------------------------- Default constructor
   public: GALGAS_testDynamicClassInExpressionAST (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_testDynamicClassInExpressionAST (const class cPtr_testDynamicClassInExpressionAST * inSourcePtr) ;
 
@@ -8048,11 +7231,6 @@ class GALGAS_castInExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default constructor
   public: GALGAS_castInExpressionAST (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_castInExpressionAST (const class cPtr_castInExpressionAST * inSourcePtr) ;
 
@@ -8202,11 +7380,6 @@ class GALGAS_testDynamicClassInExpressionForGeneration : public GALGAS_semanticE
 //--------------------------------- Default constructor
   public: GALGAS_testDynamicClassInExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_testDynamicClassInExpressionForGeneration (const class cPtr_testDynamicClassInExpressionForGeneration * inSourcePtr) ;
 
@@ -8360,11 +7533,6 @@ class GALGAS_extractObjectInExpressionForGeneration : public GALGAS_semanticExpr
 //--------------------------------- Default constructor
   public: GALGAS_extractObjectInExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_extractObjectInExpressionForGeneration (const class cPtr_extractObjectInExpressionForGeneration * inSourcePtr) ;
 
@@ -8516,11 +7684,6 @@ class GALGAS_optionExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_optionExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_optionExpressionAST (const class cPtr_optionExpressionAST * inSourcePtr) ;
 
@@ -8670,11 +7833,6 @@ class GALGAS_optionValueExpressionForGeneration : public GALGAS_semanticExpressi
 //--------------------------------- Default constructor
   public: GALGAS_optionValueExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_optionValueExpressionForGeneration (const class cPtr_optionValueExpressionForGeneration * inSourcePtr) ;
 
@@ -8828,11 +7986,6 @@ class GALGAS_optionCharExpressionForGeneration : public GALGAS_semanticExpressio
 //--------------------------------- Default constructor
   public: GALGAS_optionCharExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_optionCharExpressionForGeneration (const class cPtr_optionCharExpressionForGeneration * inSourcePtr) ;
 
@@ -8986,11 +8139,6 @@ class GALGAS_optionStringExpressionForGeneration : public GALGAS_semanticExpress
 //--------------------------------- Default constructor
   public: GALGAS_optionStringExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_optionStringExpressionForGeneration (const class cPtr_optionStringExpressionForGeneration * inSourcePtr) ;
 
@@ -9144,11 +8292,6 @@ class GALGAS_optionCommentExpressionForGeneration : public GALGAS_semanticExpres
 //--------------------------------- Default constructor
   public: GALGAS_optionCommentExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_optionCommentExpressionForGeneration (const class cPtr_optionCommentExpressionForGeneration * inSourcePtr) ;
 
@@ -9305,11 +8448,6 @@ class GALGAS_lexiqueIntrospectionExpressionAST : public GALGAS_semanticExpressio
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_lexiqueIntrospectionExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexiqueIntrospectionExpressionAST (const class cPtr_lexiqueIntrospectionExpressionAST * inSourcePtr) ;
 
@@ -9454,11 +8592,6 @@ class GALGAS_lexiqueIntrospectionForGeneration : public GALGAS_semanticExpressio
 //--------------------------------- Default constructor
   public: GALGAS_lexiqueIntrospectionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexiqueIntrospectionForGeneration (const class cPtr_lexiqueIntrospectionForGeneration * inSourcePtr) ;
 
@@ -9610,11 +8743,6 @@ class GALGAS_filewrapperObjectInstanciationInExpressionAST : public GALGAS_seman
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_filewrapperObjectInstanciationInExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_filewrapperObjectInstanciationInExpressionAST (const class cPtr_filewrapperObjectInstanciationInExpressionAST * inSourcePtr) ;
 
@@ -9760,11 +8888,6 @@ class GALGAS_filewrapperInExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_filewrapperInExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_filewrapperInExpressionAST (const class cPtr_filewrapperInExpressionAST * inSourcePtr) ;
 
@@ -9918,11 +9041,6 @@ class GALGAS_filewrapperTemplateInExpressionAST : public GALGAS_semanticExpressi
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_filewrapperTemplateInExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_filewrapperTemplateInExpressionAST (const class cPtr_filewrapperTemplateInExpressionAST * inSourcePtr) ;
 
@@ -10081,11 +9199,6 @@ class GALGAS_filewrapperInExpressionForGeneration : public GALGAS_semanticExpres
 //--------------------------------- Default constructor
   public: GALGAS_filewrapperInExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_filewrapperInExpressionForGeneration (const class cPtr_filewrapperInExpressionForGeneration * inSourcePtr) ;
 
@@ -10240,11 +9353,6 @@ class GALGAS_filewrapperTemplateInExpressionForGeneration : public GALGAS_semant
 //--------------------------------- Default constructor
   public: GALGAS_filewrapperTemplateInExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_filewrapperTemplateInExpressionForGeneration (const class cPtr_filewrapperTemplateInExpressionForGeneration * inSourcePtr) ;
 
@@ -10407,11 +9515,6 @@ class GALGAS_filewrapperStaticPathInExpressionForGeneration : public GALGAS_sema
 //--------------------------------- Default constructor
   public: GALGAS_filewrapperStaticPathInExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_filewrapperStaticPathInExpressionForGeneration (const class cPtr_filewrapperStaticPathInExpressionForGeneration * inSourcePtr) ;
 
@@ -10574,11 +9677,6 @@ class GALGAS_getterCallExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default constructor
   public: GALGAS_getterCallExpressionAST (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_getterCallExpressionAST (const class cPtr_getterCallExpressionAST * inSourcePtr) ;
 
@@ -10738,11 +9836,6 @@ class GALGAS_getterCallExpressionForGeneration : public GALGAS_semanticExpressio
 //--------------------------------- Default constructor
   public: GALGAS_getterCallExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_getterCallExpressionForGeneration (const class cPtr_getterCallExpressionForGeneration * inSourcePtr) ;
 
@@ -10932,11 +10025,6 @@ class GALGAS_constructorExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_constructorExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_constructorExpressionAST (const class cPtr_constructorExpressionAST * inSourcePtr) ;
 
@@ -11094,11 +10182,6 @@ class GALGAS_defaultConstructorExpressionAST : public GALGAS_semanticExpressionA
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_defaultConstructorExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_defaultConstructorExpressionAST (const class cPtr_defaultConstructorExpressionAST * inSourcePtr) ;
 
@@ -11238,11 +10321,6 @@ class GALGAS_constructorExpressionForGeneration : public GALGAS_semanticExpressi
 //--------------------------------- Default constructor
   public: GALGAS_constructorExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_constructorExpressionForGeneration (const class cPtr_constructorExpressionForGeneration * inSourcePtr) ;
 
@@ -11401,11 +10479,6 @@ class GALGAS_defaultConstructorExpressionForGeneration : public GALGAS_semanticE
 //--------------------------------- Default constructor
   public: GALGAS_defaultConstructorExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_defaultConstructorExpressionForGeneration (const class cPtr_defaultConstructorExpressionForGeneration * inSourcePtr) ;
 
@@ -11547,11 +10620,6 @@ class GALGAS_functionCallExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_functionCallExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_functionCallExpressionAST (const class cPtr_functionCallExpressionAST * inSourcePtr) ;
 
@@ -11696,11 +10764,6 @@ class GALGAS_functionCallExpressionForGeneration : public GALGAS_semanticExpress
 //--------------------------------- Default constructor
   public: GALGAS_functionCallExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_functionCallExpressionForGeneration (const class cPtr_functionCallExpressionForGeneration * inSourcePtr) ;
 
@@ -11852,11 +10915,6 @@ class GALGAS_literalTypeInExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_literalTypeInExpressionAST constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalTypeInExpressionAST (const class cPtr_literalTypeInExpressionAST * inSourcePtr) ;
 
@@ -11996,11 +11054,6 @@ class GALGAS_literalTypeInExpressionForGeneration : public GALGAS_semanticExpres
 //--------------------------------- Default constructor
   public: GALGAS_literalTypeInExpressionForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_literalTypeInExpressionForGeneration (const class cPtr_literalTypeInExpressionForGeneration * inSourcePtr) ;
 
@@ -12278,11 +11331,6 @@ class GALGAS_abstractCollectionValueElement : public AC_GALGAS_reference_class {
 //--------------------------------- Default constructor
   public: GALGAS_abstractCollectionValueElement (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_abstractCollectionValueElement (const class cPtr_abstractCollectionValueElement * inSourcePtr) ;
 
@@ -12481,11 +11529,6 @@ class GALGAS_expressionCollectionValue : public GALGAS_abstractCollectionValueEl
 //--------------------------------- Default constructor
   public: GALGAS_expressionCollectionValue (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_expressionCollectionValue (const class cPtr_expressionCollectionValue * inSourcePtr) ;
 
@@ -12639,11 +11682,6 @@ class GALGAS_expressionListCollectionValue : public GALGAS_abstractCollectionVal
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_expressionListCollectionValue constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_expressionListCollectionValue (const class cPtr_expressionListCollectionValue * inSourcePtr) ;
 
@@ -12797,11 +11835,6 @@ class GALGAS_collectionValueAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_collectionValueAST constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_collectionValueAST (const class cPtr_collectionValueAST * inSourcePtr) ;
 
@@ -13150,11 +12183,6 @@ class GALGAS_abstractCollectionValueElementForGeneration : public AC_GALGAS_refe
 //--------------------------------- Default constructor
   public: GALGAS_abstractCollectionValueElementForGeneration (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_abstractCollectionValueElementForGeneration (const class cPtr_abstractCollectionValueElementForGeneration * inSourcePtr) ;
 
@@ -13349,4 +12377,272 @@ class GALGAS_abstractCollectionValueElementForGeneration_2D_weak : public AC_GAL
 //----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractCollectionValueElementForGeneration_2D_weak ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@abstractCollectionValueElementForGeneration generateCollectionElementCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef void (*extensionMethodSignature_abstractCollectionValueElementForGeneration_generateCollectionElementCode) (const class cPtr_abstractCollectionValueElementForGeneration * inObject,
+                                                                                                                    const class GALGAS_unifiedTypeMap_2D_entry constinArgument0,
+                                                                                                                    class GALGAS_string & ioArgument1,
+                                                                                                                    class GALGAS_stringset & ioArgument2,
+                                                                                                                    class GALGAS_uint & ioArgument3,
+                                                                                                                    class GALGAS_stringset & ioArgument4,
+                                                                                                                    const class GALGAS_string constinArgument5,
+                                                                                                                    class C_Compiler * inCompiler
+                                                                                                                    COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionMethod_generateCollectionElementCode (const int32_t inClassIndex,
+                                                         extensionMethodSignature_abstractCollectionValueElementForGeneration_generateCollectionElementCode inMethod) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_generateCollectionElementCode (const class cPtr_abstractCollectionValueElementForGeneration * inObject,
+                                                        const GALGAS_unifiedTypeMap_2D_entry constin_inTargetType,
+                                                        GALGAS_string & io_ioGeneratedCode,
+                                                        GALGAS_stringset & io_ioInclusionSet,
+                                                        GALGAS_uint & io_ioTemporaryVariableIndex,
+                                                        GALGAS_stringset & io_ioUnusedVariableCppNameSet,
+                                                        const GALGAS_string constin_inCppTargetVar,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @expressionCollectionValueForGeneration reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_expressionCollectionValueForGeneration : public GALGAS_abstractCollectionValueElementForGeneration {
+//--------------------------------- Default constructor
+  public: GALGAS_expressionCollectionValueForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_expressionCollectionValueForGeneration (const class cPtr_expressionCollectionValueForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_semanticExpressionForGeneration readProperty_mExpression (void) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_expressionCollectionValueForGeneration extractObject (const GALGAS_object & inObject,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_expressionCollectionValueForGeneration constructor_new (const class GALGAS_location & inOperand0,
+                                                                                      const class GALGAS_semanticExpressionForGeneration & inOperand1
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_expressionCollectionValueForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMExpression (class GALGAS_semanticExpressionForGeneration inArgument0
+                                                       COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_expressionCollectionValueForGeneration class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionCollectionValueForGeneration ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @expressionCollectionValueForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_expressionCollectionValueForGeneration : public cPtr_abstractCollectionValueElementForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+//--- Properties
+  public: GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
+
+//--- Constructor
+  public: cPtr_expressionCollectionValueForGeneration (const GALGAS_location & in_mExpressionLocation,
+                                                       const GALGAS_semanticExpressionForGeneration & in_mExpression
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @expressionCollectionValueForGeneration_2D_weak weak reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_expressionCollectionValueForGeneration_2D_weak : public GALGAS_abstractCollectionValueElementForGeneration_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_expressionCollectionValueForGeneration_2D_weak (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_expressionCollectionValueForGeneration_2D_weak constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_expressionCollectionValueForGeneration_2D_weak (const class GALGAS_expressionCollectionValueForGeneration & inSource) ;
+
+  public: GALGAS_expressionCollectionValueForGeneration_2D_weak & operator = (const class GALGAS_expressionCollectionValueForGeneration & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_expressionCollectionValueForGeneration bang_expressionCollectionValueForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_expressionCollectionValueForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_expressionCollectionValueForGeneration_2D_weak constructor_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_expressionCollectionValueForGeneration_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_expressionCollectionValueForGeneration_2D_weak class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionCollectionValueForGeneration_2D_weak ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @expressionListCollectionForGeneration reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_expressionListCollectionForGeneration : public GALGAS_abstractCollectionValueElementForGeneration {
+//--------------------------------- Default constructor
+  public: GALGAS_expressionListCollectionForGeneration (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_expressionListCollectionForGeneration constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_expressionListCollectionForGeneration (const class cPtr_expressionListCollectionForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_semanticExpressionListForGeneration readProperty_mExpressionList (void) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_expressionListCollectionForGeneration extractObject (const GALGAS_object & inObject,
+                                                                             C_Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_expressionListCollectionForGeneration constructor_new (const class GALGAS_location & inOperand0,
+                                                                                     const class GALGAS_semanticExpressionListForGeneration & inOperand1
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_expressionListCollectionForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMExpressionList (class GALGAS_semanticExpressionListForGeneration inArgument0
+                                                           COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_expressionListCollectionForGeneration class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionListCollectionForGeneration ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @expressionListCollectionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_expressionListCollectionForGeneration : public cPtr_abstractCollectionValueElementForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+//--- Properties
+  public: GALGAS_semanticExpressionListForGeneration mProperty_mExpressionList ;
+
+//--- Constructor
+  public: cPtr_expressionListCollectionForGeneration (const GALGAS_location & in_mExpressionLocation,
+                                                      const GALGAS_semanticExpressionListForGeneration & in_mExpressionList
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
 

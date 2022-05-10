@@ -53,6 +53,10 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "--output-html-grammar-file"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--no-file-generation"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
