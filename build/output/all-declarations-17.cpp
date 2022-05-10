@@ -11047,9 +11047,9 @@ static GALGAS_unifiedTypeDefinition extensionGetter_unifiedTypeMapElementClass_d
     break ;
   case GALGAS_typeDefinition::kEnum_solved:
     {
-      const cEnumAssociatedValues_typeDefinition_solved * extractPtr_14859 = (const cEnumAssociatedValues_typeDefinition_solved *) (temp_0.readProperty_mDefinition ().unsafePointer ()) ;
-      const GALGAS_unifiedTypeDefinition extractedValue_14832_definition = extractPtr_14859->mAssociatedValue0 ;
-      result_result = extractedValue_14832_definition ;
+      const cEnumAssociatedValues_typeDefinition_solved * extractPtr_14864 = (const cEnumAssociatedValues_typeDefinition_solved *) (temp_0.readProperty_mDefinition ().unsafePointer ()) ;
+      const GALGAS_unifiedTypeDefinition extractedValue_14837_definition = extractPtr_14864->mAssociatedValue0 ;
+      result_result = extractedValue_14837_definition ;
     }
     break ;
   }

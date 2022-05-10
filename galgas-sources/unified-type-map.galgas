@@ -310,7 +310,7 @@ struct @unifiedTypeDefinition {
 
 enum @unifiedTypeMap-entry {
   case null
-  case element (@unifiedTypeMapElementClass element @unifiedTypeMapElementClass weakElement)
+  case element (@unifiedTypeMapElementClass element @unifiedTypeMapElementClass      weakElement)
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
