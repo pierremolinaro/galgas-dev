@@ -64,14 +64,13 @@ end
 !TABLE_OF_TYPES_STRING%
 </p>
 <table class="result">
-%for (type_lkey type_mIsPredefined type_mIsConcrete type_mSuperType type_mTypeKindEnum type_mSupportCollectionValue type_mAllTypedPropertyList type_mPropertyMap type_mCurrentTypedPropertyList type_mConstructorMap type_mGetterMap type_mSetterMap type_mInstanceMethodMap type_mClassMethodMap type_mOptionalMethodMap type_mEnumerationDescriptor type_mHandledOperatorFlags type_mAddAssignOperatorArguments type_mEnumConstantMap type_mEnumConstantList type_mMapSearchMethodList type_mMapEntrySearchConstructorList type_mGenerateHeaderInSeparateFile type_mTypeForEnumeratedElement type_mDefaultConstructorName type_mHeaderFileName type_mHeaderKind) in UNIFIED_TYPE_MAP do%
+%for (type_lkey element) in UNIFIED_TYPE_MAP do%
 <tr><td colspan="2" class="result_title"><a name="%!type_lkey.string%">@%!type_lkey.string%</a></td></tr>
-
 <tr class="result_line">
   <td>Kind</td>
   <td>
-    %if not type_mIsConcrete then%abstract %end
-    switch type_mTypeKindEnum
+    %if not [element mIsConcrete] then%abstract %end
+    switch [element mTypeKindEnum]
     case classType (*) : %class%
     case enumType : %enum%
     case listType : %list%
@@ -89,102 +88,102 @@ end
     case weakReferenceType (*) : %weak reference%
     end%
 </td></tr>
-%if not [type_mSuperType isNull] then
-%<tr class="result_line"><td>Superclass</td><td>%!linkForType (![type_mSuperType key])%</td></tr>% 
+%if not [[element mSuperType] isNull] then
+%<tr class="result_line"><td>Superclass</td><td>%!linkForType (![[element mSuperType] key])%</td></tr>% 
 end%
 <tr class="result_line"><td>Operators</td>
   <td>
-    %if [type_mHandledOperatorFlags infixAddOperator] then
+    %if [[element mHandledOperatorFlags] infixAddOperator] then
       %addition: %!linkForType (!type_lkey.string)% + %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [type_mHandledOperatorFlags infixSubOperator] then
+    if [[element mHandledOperatorFlags] infixSubOperator] then
       %substraction: %!linkForType (!type_lkey.string)% - %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [type_mHandledOperatorFlags infixMulOperator] then
+    if [[element mHandledOperatorFlags] infixMulOperator] then
       %multiplication: %!linkForType (!type_lkey.string)% * %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [type_mHandledOperatorFlags infixDivOperator] then
+    if [[element mHandledOperatorFlags] infixDivOperator] then
       %division: %!linkForType (!type_lkey.string)% / %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [type_mHandledOperatorFlags infixModOperator] then
+    if [[element mHandledOperatorFlags] infixModOperator] then
       %modulo: %!linkForType (!type_lkey.string)% <b>mod</b> %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [type_mHandledOperatorFlags infixShiftOperator] then
+    if [[element mHandledOperatorFlags] infixShiftOperator] then
       %left shift: %!linkForType (!type_lkey.string)% &lt;&lt; %!linkForType (!"uint")% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
       %left shift: %!linkForType (!type_lkey.string)% &lt;&lt; %!linkForType (!"bigint")% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
       %right shift: %!linkForType (!type_lkey.string)% &gt;&gt; %!linkForType (!"uint")% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
       %right shift: %!linkForType (!type_lkey.string)% &gt;&gt; %!linkForType (!"bigint")% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [type_mHandledOperatorFlags prefixPlusOperator] then
+    if [[element mHandledOperatorFlags] prefixPlusOperator] then
       %prefix +: + %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [type_mHandledOperatorFlags prefixMinusOperator] then
+    if [[element mHandledOperatorFlags] prefixMinusOperator] then
       %prefix -: - %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [type_mHandledOperatorFlags prefixTildeOperator] then
+    if [[element mHandledOperatorFlags] prefixTildeOperator] then
       %bit wise negation: ~ %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [type_mHandledOperatorFlags infixAndOperator] then
+    if [[element mHandledOperatorFlags] infixAndOperator] then
       %boolean and: %!linkForType (!type_lkey.string)% &amp; %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [type_mHandledOperatorFlags infixOrOperator] then
+    if [[element mHandledOperatorFlags] infixOrOperator] then
       %inclusive or: %!linkForType (!type_lkey.string)% | %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [type_mHandledOperatorFlags infixXorOperator] then
+    if [[element mHandledOperatorFlags] infixXorOperator] then
       %exclusive or: %!linkForType (!type_lkey.string)% ^ %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [type_mHandledOperatorFlags prefixNotOperator] then
+    if [[element mHandledOperatorFlags] prefixNotOperator] then
       %boolean negation: <b>not</b> %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
     %equality test: %!linkForType (!type_lkey.string)% == %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!"bool")%<br><br>%
     %inequality test: %!linkForType (!type_lkey.string)% != %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!"bool")%<br><br>%
-    if [type_mHandledOperatorFlags isComparable] then
+    if [[element mHandledOperatorFlags] isComparable] then
       %lower than test: %!linkForType (!type_lkey.string)% &lt; %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!"bool")%<br><br>%
       %lower or equal test: %!linkForType (!type_lkey.string)% &lt;= %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!"bool")%<br><br>%
       %greater than test: %!linkForType (!type_lkey.string)% &gt; %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!"bool")%<br><br>%
       %greater or equal test: %!linkForType (!type_lkey.string)% &gt;= %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!"bool")%<br><br>%
     end
-    if [type_mHandledOperatorFlags plusEqualOperatorWithExpression] then
+    if [[element mHandledOperatorFlags] plusEqualOperatorWithExpression] then
       %+= instruction: %!linkForType (!type_lkey.string)% += %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [type_mHandledOperatorFlags minusEqualOperatorWithExpression] then
+    if [[element mHandledOperatorFlags] minusEqualOperatorWithExpression] then
       %-= instruction: %!linkForType (!type_lkey.string)% -= %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [type_mHandledOperatorFlags mulEqualOperatorWithExpression] then
+    if [[element mHandledOperatorFlags] mulEqualOperatorWithExpression] then
       %*= instruction: %!linkForType (!type_lkey.string)% *= %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [type_mHandledOperatorFlags divEqualOperatorWithExpression] then
+    if [[element mHandledOperatorFlags] divEqualOperatorWithExpression] then
       %/= instruction: %!linkForType (!type_lkey.string)% /= %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [type_mHandledOperatorFlags incDecOperator] then
+    if [[element mHandledOperatorFlags] incDecOperator] then
       %incrementation instruction: %!linkForType (!type_lkey.string)% ++<br><br>%
       %decrementation instruction: %!linkForType (!type_lkey.string)% --<br><br>%
     end
   %
 </td></tr>
 % 
-if [type_mAddAssignOperatorArguments length] > 0 then
+if [[element mAddAssignOperatorArguments] length] > 0 then
   %<tr class="result_line"><td>+= !... !...</td><td>%
-  for (mFormalSelector mFormalArgumentType mFormalArgumentName) in type_mAddAssignOperatorArguments do
+  for (mFormalSelector mFormalArgumentType mFormalArgumentName) in [element mAddAssignOperatorArguments] do
     %<span class="selecteur">?%if mFormalSelector.string != "" then !mFormalSelector.string + ":" end%</span>%
     !linkForType (![mFormalArgumentType key])% % !mFormalArgumentName %<br>%
   end
   %</td></tr>%
 end
-if [type_mEnumerationDescriptor length] > 0 then
+if [[element mEnumerationDescriptor] length] > 0 then
   %<tr class="result_line"><td><b>for</b> constants</td><td>%
-  for (mEnumeratedType mEnumerationName) in type_mEnumerationDescriptor do
+  for (mEnumeratedType mEnumerationName) in [element mEnumerationDescriptor] do
     !linkForType (![mEnumeratedType key])% %!mEnumerationName%<br>%
   end
   %</td></tr>%
 end
-if not [type_mTypeForEnumeratedElement isNull] then
-  %<tr class="result_line"><td><b>for</b> enumeration type</td><td>%!linkForType (![type_mTypeForEnumeratedElement key])%</td></tr>%
+if not [[element mTypeForEnumeratedElement] isNull] then
+  %<tr class="result_line"><td><b>for</b> enumeration type</td><td>%!linkForType (![[element mTypeForEnumeratedElement] key])%</td></tr>%
 end
 #--- Constructors
-if [type_mConstructorMap count] > 0 then
+if [[element mConstructorMap] count] > 0 then
   %<tr class="result_line"><td>Constructors</td><td>%
-  for (lkey mArgumentTypeList mHasCompilerArgument mReturnedType) in type_mConstructorMap do
+  for (lkey mArgumentTypeList mHasCompilerArgument mReturnedType) in [element mConstructorMap] do
     %<b>constructor</b> %!lkey.string
     for (mFormalSelector mFormalArgumentType mFormalArgumentName) in mArgumentTypeList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
@@ -195,9 +194,9 @@ if [type_mConstructorMap count] > 0 then
   end
 end
 #--- Readers
-if [type_mGetterMap count] > 0 then
+if [[element mGetterMap] count] > 0 then
   %<tr class="result_line"><td>Getters</td><td>%
-  for (lkey mKind mArgumentTypeList mDeclarationLocation mHasCompilerArgument mReturnedType mQualifier mErrorMessage) in type_mGetterMap do
+  for (lkey mKind mArgumentTypeList mDeclarationLocation mHasCompilerArgument mReturnedType mQualifier mErrorMessage) in [element mGetterMap] do
     switch mKind
     case definedAsMember :
     case definedAsExtension : %(extension) %
@@ -221,9 +220,9 @@ if [type_mGetterMap count] > 0 then
   %</td></tr>%
 end
 #--- Methods
-if [type_mInstanceMethodMap count] > 0 then
+if [[element mInstanceMethodMap] count] > 0 then
   %<tr class="result_line"><td>Methods</td><td>%
-  for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument mQualifier mutability mErrorMessage) in type_mInstanceMethodMap do
+  for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument mQualifier mutability mErrorMessage) in [element mInstanceMethodMap] do
     switch mKind
     case definedAsMember :
     case definedAsExtension : %(extension) %
@@ -253,9 +252,9 @@ if [type_mInstanceMethodMap count] > 0 then
   %</td></tr>%
 end
 #--- Modifiers
-if [type_mSetterMap count] > 0 then
+if [[element mSetterMap] count] > 0 then
   %<tr class="result_line"><td>Setters</td><td>%
-  for (lkey mKind mParameterList mHasCompilerArgument mQualifier mErrorMessage) in type_mSetterMap do
+  for (lkey mKind mParameterList mHasCompilerArgument mQualifier mErrorMessage) in [element mSetterMap] do
     switch mKind
     case definedAsMember :
     case definedAsExtension : %(extension) %
@@ -285,10 +284,10 @@ if [type_mSetterMap count] > 0 then
   %</td></tr>%
 end
 #--- type proc
-if [type_mClassMethodMap count] > 0 then
+if [[element mClassMethodMap] count] > 0 then
   %<tr class="result_line"><td>Type procs</td><td>%
-  for (lkey mParameterList mHasCompilerArgument) in type_mClassMethodMap do
-    %<b>proc</b> @%!type_lkey.string% %!lkey.string
+  for (lkey mParameterList mHasCompilerArgument) in [element mClassMethodMap] do
+    %<b>proc</b> @%!lkey.string% %!lkey.string
     for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in mParameterList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       switch mFormalArgumentPassingMode

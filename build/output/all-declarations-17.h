@@ -10,6 +10,123 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+// Phase 1: @overridingExtensionMethodForGeneration reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_overridingExtensionMethodForGeneration : public GALGAS_semanticDeclarationWithHeaderForGeneration {
+//--------------------------------- Default constructor
+  public: GALGAS_overridingExtensionMethodForGeneration (void) ;
+
+//--------------------------------- Embedded object pointer
+ public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
+   return (acStrongPtr_class *) mObjectPtr ;
+ }
+  
+//--------------------------------- Constructor from pointer
+  public: GALGAS_overridingExtensionMethodForGeneration (const class cPtr_overridingExtensionMethodForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReceiverType (void) const ;
+
+  public: class GALGAS_string readProperty_mBaseTypeName (void) const ;
+
+  public: class GALGAS_string readProperty_mExtensionMethodName (void) const ;
+
+  public: class GALGAS_formalParameterListForGeneration readProperty_mExtensionMethodFormalParameterList (void) const ;
+
+  public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
+
+  public: class GALGAS_semanticInstructionListForGeneration readProperty_mSemanticInstructionListForGeneration (void) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_overridingExtensionMethodForGeneration extractObject (const GALGAS_object & inObject,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_overridingExtensionMethodForGeneration constructor_new (const class GALGAS_bool & inOperand0,
+                                                                                      const class GALGAS_string & inOperand1,
+                                                                                      const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+                                                                                      const class GALGAS_string & inOperand3,
+                                                                                      const class GALGAS_string & inOperand4,
+                                                                                      const class GALGAS_formalParameterListForGeneration & inOperand5,
+                                                                                      const class GALGAS_typedPropertyList & inOperand6,
+                                                                                      const class GALGAS_semanticInstructionListForGeneration & inOperand7
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_overridingExtensionMethodForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_overridingExtensionMethodForGeneration class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionMethodForGeneration ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @overridingExtensionMethodForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_overridingExtensionMethodForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+//--- Properties
+  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
+  public: GALGAS_string mProperty_mBaseTypeName ;
+  public: GALGAS_string mProperty_mExtensionMethodName ;
+  public: GALGAS_formalParameterListForGeneration mProperty_mExtensionMethodFormalParameterList ;
+  public: GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
+  public: GALGAS_semanticInstructionListForGeneration mProperty_mSemanticInstructionListForGeneration ;
+
+//--- Constructor
+  public: cPtr_overridingExtensionMethodForGeneration (const GALGAS_bool & in_mHasHeader,
+                                                       const GALGAS_string & in_mImplementationCppFileName,
+                                                       const GALGAS_unifiedTypeMap_2D_entry & in_mReceiverType,
+                                                       const GALGAS_string & in_mBaseTypeName,
+                                                       const GALGAS_string & in_mExtensionMethodName,
+                                                       const GALGAS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
+                                                       const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                       const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 // Phase 1: @overridingExtensionMethodForGeneration_2D_weak weak reference class
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -73,9 +190,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtension
 class GALGAS_overridingExtensionSetterForGeneration : public GALGAS_semanticDeclarationWithHeaderForGeneration {
 //--------------------------------- Default constructor
   public: GALGAS_overridingExtensionSetterForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_overridingExtensionSetterForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
@@ -239,41 +353,6 @@ class GALGAS_overridingExtensionSetterForGeneration_2D_weak : public GALGAS_sema
 //----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionSetterForGeneration_2D_weak ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@actualParameterForGeneration generateActualParameter'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef void (*extensionMethodSignature_actualParameterForGeneration_generateActualParameter) (const class cPtr_actualParameterForGeneration * inObject,
-                                                                                               class GALGAS_stringset & ioArgument0,
-                                                                                               class GALGAS_uint & ioArgument1,
-                                                                                               class GALGAS_string & ioArgument2,
-                                                                                               class GALGAS_stringlist & ioArgument3,
-                                                                                               class GALGAS_stringlist & ioArgument4,
-                                                                                               class GALGAS_stringset & ioArgument5,
-                                                                                               class GALGAS_string & outArgument6,
-                                                                                               class C_Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_generateActualParameter (const int32_t inClassIndex,
-                                                   extensionMethodSignature_actualParameterForGeneration_generateActualParameter inMethod) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_generateActualParameter (const class cPtr_actualParameterForGeneration * inObject,
-                                                  GALGAS_stringset & io_ioInclusionSet,
-                                                  GALGAS_uint & io_ioTemporaryVariableIndex,
-                                                  GALGAS_string & io_ioImplementation,
-                                                  GALGAS_stringlist & io_ioJokerParametersToReleaseList,
-                                                  GALGAS_stringlist & io_ioOutputVariableList,
-                                                  GALGAS_stringset & io_ioUnusedVariableCppNameSet,
-                                                  GALGAS_string & out_outCppName,
-                                                  C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -1017,9 +1096,6 @@ class GALGAS_functionPrototypeDeclarationForGeneration : public GALGAS_semanticD
 //--------------------------------- Default constructor
   public: GALGAS_functionPrototypeDeclarationForGeneration (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_functionPrototypeDeclarationForGeneration constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
    return (acStrongPtr_class *) mObjectPtr ;
@@ -1187,9 +1263,6 @@ class GALGAS_functionImplementationForGeneration : public GALGAS_functionPrototy
 //--------------------------------- Default constructor
   public: GALGAS_functionImplementationForGeneration (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_functionImplementationForGeneration constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
    return (acStrongPtr_class *) mObjectPtr ;
@@ -1354,9 +1427,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionImplementat
 class GALGAS_onceFunctionDeclarationForGeneration : public GALGAS_semanticDeclarationWithHeaderForGeneration {
 //--------------------------------- Default constructor
   public: GALGAS_onceFunctionDeclarationForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_onceFunctionDeclarationForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
@@ -2374,33 +2444,568 @@ void extensionMethod_checkAutomatonStates (const class GALGAS_localVarManager in
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension getter '@unifiedTypeMap-entry baseType' (as function)
+//Extension getter '@unifiedTypeMapElementClass definition'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_unifiedTypeMap_2D_entry extensionGetter_baseType (const class GALGAS_unifiedTypeMap_2D_entry & inObject,
+typedef class GALGAS_unifiedTypeDefinition (*enterExtensionGetter_unifiedTypeMapElementClass_definition) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                          C_Compiler * inCompiler
+                                                                                                          COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_definition (const int32_t inClassIndex,
+                                      enterExtensionGetter_unifiedTypeMapElementClass_definition inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_unifiedTypeDefinition callExtensionGetter_definition (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                                   class C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass lkey'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_lstring (*enterExtensionGetter_unifiedTypeMapElementClass_lkey) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_lkey (const int32_t inClassIndex,
+                                enterExtensionGetter_unifiedTypeMapElementClass_lkey inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_lstring callExtensionGetter_lkey (const cPtr_unifiedTypeMapElementClass * inObject,
+                                               class C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mIsConcrete'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_bool (*enterExtensionGetter_unifiedTypeMapElementClass_mIsConcrete) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mIsConcrete (const int32_t inClassIndex,
+                                       enterExtensionGetter_unifiedTypeMapElementClass_mIsConcrete inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_bool callExtensionGetter_mIsConcrete (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                   class C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mSuperType'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_unifiedTypeMap_2D_entry (*enterExtensionGetter_unifiedTypeMapElementClass_mSuperType) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                            C_Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mSuperType (const int32_t inClassIndex,
+                                      enterExtensionGetter_unifiedTypeMapElementClass_mSuperType inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_unifiedTypeMap_2D_entry callExtensionGetter_mSuperType (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                                     class C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mTypeKindEnum'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_typeKindEnum (*enterExtensionGetter_unifiedTypeMapElementClass_mTypeKindEnum) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                    C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mTypeKindEnum (const int32_t inClassIndex,
+                                         enterExtensionGetter_unifiedTypeMapElementClass_mTypeKindEnum inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_typeKindEnum callExtensionGetter_mTypeKindEnum (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                             class C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mSupportCollectionValue'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_bool (*enterExtensionGetter_unifiedTypeMapElementClass_mSupportCollectionValue) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                      C_Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mSupportCollectionValue (const int32_t inClassIndex,
+                                                   enterExtensionGetter_unifiedTypeMapElementClass_mSupportCollectionValue inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_bool callExtensionGetter_mSupportCollectionValue (const cPtr_unifiedTypeMapElementClass * inObject,
                                                                class C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension method '@unifiedTypeMap-entry addHeaderFileName'
+//Extension getter '@unifiedTypeMapElementClass mAllTypedPropertyList'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void extensionMethod_addHeaderFileName (const class GALGAS_unifiedTypeMap_2D_entry inObject,
-                                        class GALGAS_stringset & io_ioInclusions,
-                                        class C_Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) ;
+typedef class GALGAS_typedPropertyList (*enterExtensionGetter_unifiedTypeMapElementClass_mAllTypedPropertyList) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                                 C_Compiler * inCompiler
+                                                                                                                 COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mAllTypedPropertyList (const int32_t inClassIndex,
+                                                 enterExtensionGetter_unifiedTypeMapElementClass_mAllTypedPropertyList inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_typedPropertyList callExtensionGetter_mAllTypedPropertyList (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                                          class C_Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension method '@unifiedTypeMap-entry addHeaderFileName1'
+//Extension getter '@unifiedTypeMapElementClass mPropertyMap'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void extensionMethod_addHeaderFileName_31_ (const class GALGAS_unifiedTypeMap_2D_entry inObject,
-                                            class GALGAS_stringset & io_ioInclusions,
-                                            class C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
+typedef class GALGAS_propertyMap (*enterExtensionGetter_unifiedTypeMapElementClass_mPropertyMap) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                  C_Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mPropertyMap (const int32_t inClassIndex,
+                                        enterExtensionGetter_unifiedTypeMapElementClass_mPropertyMap inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_propertyMap callExtensionGetter_mPropertyMap (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                           class C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mCurrentTypedPropertyList'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_typedPropertyList (*enterExtensionGetter_unifiedTypeMapElementClass_mCurrentTypedPropertyList) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                                     C_Compiler * inCompiler
+                                                                                                                     COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mCurrentTypedPropertyList (const int32_t inClassIndex,
+                                                     enterExtensionGetter_unifiedTypeMapElementClass_mCurrentTypedPropertyList inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_typedPropertyList callExtensionGetter_mCurrentTypedPropertyList (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                                              class C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mConstructorMap'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_constructorMap (*enterExtensionGetter_unifiedTypeMapElementClass_mConstructorMap) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                        C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mConstructorMap (const int32_t inClassIndex,
+                                           enterExtensionGetter_unifiedTypeMapElementClass_mConstructorMap inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_constructorMap callExtensionGetter_mConstructorMap (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                                 class C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mGetterMap'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_getterMap (*enterExtensionGetter_unifiedTypeMapElementClass_mGetterMap) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                              C_Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mGetterMap (const int32_t inClassIndex,
+                                      enterExtensionGetter_unifiedTypeMapElementClass_mGetterMap inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_getterMap callExtensionGetter_mGetterMap (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                       class C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mSetterMap'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_setterMap (*enterExtensionGetter_unifiedTypeMapElementClass_mSetterMap) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                              C_Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mSetterMap (const int32_t inClassIndex,
+                                      enterExtensionGetter_unifiedTypeMapElementClass_mSetterMap inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_setterMap callExtensionGetter_mSetterMap (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                       class C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mInstanceMethodMap'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_instanceMethodMap (*enterExtensionGetter_unifiedTypeMapElementClass_mInstanceMethodMap) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                              C_Compiler * inCompiler
+                                                                                                              COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mInstanceMethodMap (const int32_t inClassIndex,
+                                              enterExtensionGetter_unifiedTypeMapElementClass_mInstanceMethodMap inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_instanceMethodMap callExtensionGetter_mInstanceMethodMap (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                                       class C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mClassMethodMap'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_classMethodMap (*enterExtensionGetter_unifiedTypeMapElementClass_mClassMethodMap) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                        C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mClassMethodMap (const int32_t inClassIndex,
+                                           enterExtensionGetter_unifiedTypeMapElementClass_mClassMethodMap inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_classMethodMap callExtensionGetter_mClassMethodMap (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                                 class C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mOptionalMethodMap'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_optionalMethodMap (*enterExtensionGetter_unifiedTypeMapElementClass_mOptionalMethodMap) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                              C_Compiler * inCompiler
+                                                                                                              COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mOptionalMethodMap (const int32_t inClassIndex,
+                                              enterExtensionGetter_unifiedTypeMapElementClass_mOptionalMethodMap inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_optionalMethodMap callExtensionGetter_mOptionalMethodMap (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                                       class C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mEnumerationDescriptor'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_enumerationDescriptorList (*enterExtensionGetter_unifiedTypeMapElementClass_mEnumerationDescriptor) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                                          C_Compiler * inCompiler
+                                                                                                                          COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mEnumerationDescriptor (const int32_t inClassIndex,
+                                                  enterExtensionGetter_unifiedTypeMapElementClass_mEnumerationDescriptor inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_enumerationDescriptorList callExtensionGetter_mEnumerationDescriptor (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                   class C_Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mHandledOperatorFlags'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_operators (*enterExtensionGetter_unifiedTypeMapElementClass_mHandledOperatorFlags) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                         C_Compiler * inCompiler
+                                                                                                         COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mHandledOperatorFlags (const int32_t inClassIndex,
+                                                 enterExtensionGetter_unifiedTypeMapElementClass_mHandledOperatorFlags inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_operators callExtensionGetter_mHandledOperatorFlags (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                                  class C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mAddAssignOperatorArguments'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_functionSignature (*enterExtensionGetter_unifiedTypeMapElementClass_mAddAssignOperatorArguments) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                                       C_Compiler * inCompiler
+                                                                                                                       COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mAddAssignOperatorArguments (const int32_t inClassIndex,
+                                                       enterExtensionGetter_unifiedTypeMapElementClass_mAddAssignOperatorArguments inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_functionSignature callExtensionGetter_mAddAssignOperatorArguments (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                class C_Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mEnumConstantMap'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_constantIndexMap (*enterExtensionGetter_unifiedTypeMapElementClass_mEnumConstantMap) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                           C_Compiler * inCompiler
+                                                                                                           COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mEnumConstantMap (const int32_t inClassIndex,
+                                            enterExtensionGetter_unifiedTypeMapElementClass_mEnumConstantMap inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_constantIndexMap callExtensionGetter_mEnumConstantMap (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                                    class C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mEnumConstantList'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_enumConstantList (*enterExtensionGetter_unifiedTypeMapElementClass_mEnumConstantList) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                            C_Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mEnumConstantList (const int32_t inClassIndex,
+                                             enterExtensionGetter_unifiedTypeMapElementClass_mEnumConstantList inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_enumConstantList callExtensionGetter_mEnumConstantList (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                                     class C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mMapSearchMethodList'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_mapSearchMethodListAST (*enterExtensionGetter_unifiedTypeMapElementClass_mMapSearchMethodList) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                                     C_Compiler * inCompiler
+                                                                                                                     COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mMapSearchMethodList (const int32_t inClassIndex,
+                                                enterExtensionGetter_unifiedTypeMapElementClass_mMapSearchMethodList inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_mapSearchMethodListAST callExtensionGetter_mMapSearchMethodList (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                                              class C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mMapEntrySearchConstructorList'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_mapSearchMethodListAST (*enterExtensionGetter_unifiedTypeMapElementClass_mMapEntrySearchConstructorList) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                                               C_Compiler * inCompiler
+                                                                                                                               COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mMapEntrySearchConstructorList (const int32_t inClassIndex,
+                                                          enterExtensionGetter_unifiedTypeMapElementClass_mMapEntrySearchConstructorList inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_mapSearchMethodListAST callExtensionGetter_mMapEntrySearchConstructorList (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                        class C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mGenerateHeaderInSeparateFile'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_bool (*enterExtensionGetter_unifiedTypeMapElementClass_mGenerateHeaderInSeparateFile) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                            C_Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mGenerateHeaderInSeparateFile (const int32_t inClassIndex,
+                                                         enterExtensionGetter_unifiedTypeMapElementClass_mGenerateHeaderInSeparateFile inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_bool callExtensionGetter_mGenerateHeaderInSeparateFile (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                                     class C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mTypeForEnumeratedElement'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_unifiedTypeMap_2D_entry (*enterExtensionGetter_unifiedTypeMapElementClass_mTypeForEnumeratedElement) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                                           C_Compiler * inCompiler
+                                                                                                                           COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mTypeForEnumeratedElement (const int32_t inClassIndex,
+                                                     enterExtensionGetter_unifiedTypeMapElementClass_mTypeForEnumeratedElement inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_unifiedTypeMap_2D_entry callExtensionGetter_mTypeForEnumeratedElement (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                    class C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mDefaultConstructorName'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_string (*enterExtensionGetter_unifiedTypeMapElementClass_mDefaultConstructorName) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                        C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mDefaultConstructorName (const int32_t inClassIndex,
+                                                   enterExtensionGetter_unifiedTypeMapElementClass_mDefaultConstructorName inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_string callExtensionGetter_mDefaultConstructorName (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                                 class C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mHeaderKind'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_headerKind (*enterExtensionGetter_unifiedTypeMapElementClass_mHeaderKind) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                C_Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mHeaderKind (const int32_t inClassIndex,
+                                       enterExtensionGetter_unifiedTypeMapElementClass_mHeaderKind inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_headerKind callExtensionGetter_mHeaderKind (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                         class C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapElementClass mHeaderFileName'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef class GALGAS_string (*enterExtensionGetter_unifiedTypeMapElementClass_mHeaderFileName) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                C_Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) ;
+ 
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionGetter_mHeaderFileName (const int32_t inClassIndex,
+                                           enterExtensionGetter_unifiedTypeMapElementClass_mHeaderFileName inGetter) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_string callExtensionGetter_mHeaderFileName (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                         class C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
 

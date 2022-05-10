@@ -305,9 +305,6 @@ class GALGAS_boolsetTypeForGeneration : public GALGAS_semanticTypeForGeneration 
 //--------------------------------- Default constructor
   public: GALGAS_boolsetTypeForGeneration (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_boolsetTypeForGeneration constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
    return (acStrongPtr_class *) mObjectPtr ;
@@ -453,9 +450,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolsetTypeForGener
 class GALGAS_classTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Default constructor
   public: GALGAS_classTypeForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_classTypeForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
@@ -628,9 +622,6 @@ class GALGAS_weakReferenceTypeForGeneration : public GALGAS_semanticTypeForGener
 //--------------------------------- Default constructor
   public: GALGAS_weakReferenceTypeForGeneration (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_weakReferenceTypeForGeneration constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
    return (acStrongPtr_class *) mObjectPtr ;
@@ -797,9 +788,6 @@ class GALGAS_enumTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Default constructor
   public: GALGAS_enumTypeForGeneration (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_enumTypeForGeneration constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
    return (acStrongPtr_class *) mObjectPtr ;
@@ -945,9 +933,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumTypeForGenerati
 class GALGAS_externTypeDeclarationForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Default constructor
   public: GALGAS_externTypeDeclarationForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_externTypeDeclarationForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
@@ -1104,9 +1089,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeDeclarati
 class GALGAS_graphDeclarationForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Default constructor
   public: GALGAS_graphDeclarationForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_graphDeclarationForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
@@ -1273,9 +1255,6 @@ class GALGAS_listTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Default constructor
   public: GALGAS_listTypeForGeneration (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_listTypeForGeneration constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
    return (acStrongPtr_class *) mObjectPtr ;
@@ -1426,9 +1405,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listTypeForGenerati
 class GALGAS_listmapTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Default constructor
   public: GALGAS_listmapTypeForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_listmapTypeForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
@@ -1585,9 +1561,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listmapTypeForGener
 class GALGAS_dictTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Default constructor
   public: GALGAS_dictTypeForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_dictTypeForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
@@ -1749,9 +1722,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dictTypeForGenerati
 class GALGAS_mapTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Default constructor
   public: GALGAS_mapTypeForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_mapTypeForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
@@ -1934,9 +1904,6 @@ class GALGAS_mapEntryTypeForGeneration : public GALGAS_semanticTypeForGeneration
 //--------------------------------- Default constructor
   public: GALGAS_mapEntryTypeForGeneration (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_mapEntryTypeForGeneration constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
    return (acStrongPtr_class *) mObjectPtr ;
@@ -2092,9 +2059,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapEntryTypeForGene
 class GALGAS_sharedMapTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Default constructor
   public: GALGAS_sharedMapTypeForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_sharedMapTypeForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
@@ -2261,9 +2225,6 @@ class GALGAS_sortedListTypeForGeneration : public GALGAS_semanticTypeForGenerati
 //--------------------------------- Default constructor
   public: GALGAS_sortedListTypeForGeneration (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_sortedListTypeForGeneration constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
    return (acStrongPtr_class *) mObjectPtr ;
@@ -2420,9 +2381,6 @@ class GALGAS_structTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Default constructor
   public: GALGAS_structTypeForGeneration (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_structTypeForGeneration constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
    return (acStrongPtr_class *) mObjectPtr ;
@@ -2568,9 +2526,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structTypeForGenera
 class GALGAS_abstractExtensionGetterForGeneration : public GALGAS_semanticDeclarationWithHeaderForGeneration {
 //--------------------------------- Default constructor
   public: GALGAS_abstractExtensionGetterForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_abstractExtensionGetterForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
@@ -2734,9 +2689,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionGe
 class GALGAS_abstractExtensionMethodForGeneration : public GALGAS_semanticDeclarationWithHeaderForGeneration {
 //--------------------------------- Default constructor
   public: GALGAS_abstractExtensionMethodForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_abstractExtensionMethodForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
@@ -2905,9 +2857,6 @@ class GALGAS_abstractExtensionSetterForGeneration : public GALGAS_semanticDeclar
 //--------------------------------- Default constructor
   public: GALGAS_abstractExtensionSetterForGeneration (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_abstractExtensionSetterForGeneration constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
    return (acStrongPtr_class *) mObjectPtr ;
@@ -3065,9 +3014,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionSe
 class GALGAS_extensionGetterForGeneration : public GALGAS_semanticDeclarationWithHeaderForGeneration {
 //--------------------------------- Default constructor
   public: GALGAS_extensionGetterForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_extensionGetterForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
@@ -3252,9 +3198,6 @@ class GALGAS_extensionMethodForGeneration : public GALGAS_semanticDeclarationWit
 //--------------------------------- Default constructor
   public: GALGAS_extensionMethodForGeneration (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_extensionMethodForGeneration constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
    return (acStrongPtr_class *) mObjectPtr ;
@@ -3427,9 +3370,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodForG
 class GALGAS_extensionSetterForGeneration : public GALGAS_semanticDeclarationWithHeaderForGeneration {
 //--------------------------------- Default constructor
   public: GALGAS_extensionSetterForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_extensionSetterForGeneration constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
@@ -3604,9 +3544,6 @@ class GALGAS_overrideExtensionGetterForGeneration : public GALGAS_semanticDeclar
 //--------------------------------- Default constructor
   public: GALGAS_overrideExtensionGetterForGeneration (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_overrideExtensionGetterForGeneration constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Embedded object pointer
  public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
    return (acStrongPtr_class *) mObjectPtr ;
@@ -3779,124 +3716,4 @@ class GALGAS_overrideExtensionGetterForGeneration_2D_weak : public GALGAS_semant
 //----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration_2D_weak ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @overridingExtensionMethodForGeneration reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_overridingExtensionMethodForGeneration : public GALGAS_semanticDeclarationWithHeaderForGeneration {
-//--------------------------------- Default constructor
-  public: GALGAS_overridingExtensionMethodForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_overridingExtensionMethodForGeneration constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
-//--------------------------------- Constructor from pointer
-  public: GALGAS_overridingExtensionMethodForGeneration (const class cPtr_overridingExtensionMethodForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReceiverType (void) const ;
-
-  public: class GALGAS_string readProperty_mBaseTypeName (void) const ;
-
-  public: class GALGAS_string readProperty_mExtensionMethodName (void) const ;
-
-  public: class GALGAS_formalParameterListForGeneration readProperty_mExtensionMethodFormalParameterList (void) const ;
-
-  public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
-
-  public: class GALGAS_semanticInstructionListForGeneration readProperty_mSemanticInstructionListForGeneration (void) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_overridingExtensionMethodForGeneration extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_overridingExtensionMethodForGeneration constructor_new (const class GALGAS_bool & inOperand0,
-                                                                                      const class GALGAS_string & inOperand1,
-                                                                                      const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
-                                                                                      const class GALGAS_string & inOperand3,
-                                                                                      const class GALGAS_string & inOperand4,
-                                                                                      const class GALGAS_formalParameterListForGeneration & inOperand5,
-                                                                                      const class GALGAS_typedPropertyList & inOperand6,
-                                                                                      const class GALGAS_semanticInstructionListForGeneration & inOperand7
-                                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_overridingExtensionMethodForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_overridingExtensionMethodForGeneration class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionMethodForGeneration ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @overridingExtensionMethodForGeneration class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class cPtr_overridingExtensionMethodForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
-
-//----------------------------------------------------------------------------------------------------------------------
-
-//--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
-  public: GALGAS_string mProperty_mBaseTypeName ;
-  public: GALGAS_string mProperty_mExtensionMethodName ;
-  public: GALGAS_formalParameterListForGeneration mProperty_mExtensionMethodFormalParameterList ;
-  public: GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
-  public: GALGAS_semanticInstructionListForGeneration mProperty_mSemanticInstructionListForGeneration ;
-
-//--- Constructor
-  public: cPtr_overridingExtensionMethodForGeneration (const GALGAS_bool & in_mHasHeader,
-                                                       const GALGAS_string & in_mImplementationCppFileName,
-                                                       const GALGAS_unifiedTypeMap_2D_entry & in_mReceiverType,
-                                                       const GALGAS_string & in_mBaseTypeName,
-                                                       const GALGAS_string & in_mExtensionMethodName,
-                                                       const GALGAS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
-                                                       const GALGAS_typedPropertyList & in_mTypedAttributeList,
-                                                       const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
-
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
 

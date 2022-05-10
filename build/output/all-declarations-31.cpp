@@ -127,7 +127,7 @@ void routine_compileSemanticDeclarationsGalgas (GALGAS_lstringlist & ioArgument_
       inCompiler->printMessage (GALGAS_string ("*** Semantic analysis\n")  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 77)) ;
     }
   }
-  cEnumerator_lstringlist enumerator_4114 (outArgument_outSemanticContext.readProperty_mTypeMap ().getter_unsolvedEntryList (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 80)), kENUMERATION_UP) ;
+  cEnumerator_lstringlist enumerator_4114 (extensionGetter_unsolvedEntryList (outArgument_outSemanticContext.readProperty_mTypeMap (), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 80)), kENUMERATION_UP) ;
   while (enumerator_4114.hasCurrentObject ()) {
     TC_Array <C_FixItDescription> fixItArray2 ;
     inCompiler->emitSemanticError (enumerator_4114.current (HERE).readProperty_mValue ().readProperty_location (), GALGAS_string ("the '@").add_operation (enumerator_4114.current (HERE).readProperty_mValue ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 81)).add_operation (GALGAS_string ("' type is undefined"), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 81)), fixItArray2  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 81)) ;

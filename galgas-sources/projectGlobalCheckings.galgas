@@ -48,6 +48,12 @@ method @semanticDeclarationAST buildExtensionListMaps
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+list @unifiedTypeMapEntryList {
+  @unifiedTypeMap-entry mEntry
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 listmap @descendantClassListMap (@unifiedTypeMapEntryList)
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -206,13 +212,21 @@ proc performGalgas3ProjectGlobalCheckings
 #------ Build descendant type list map
 # For every type, a list of its directed descendants is associated
   var @descendantClassListMap descendantClassListMap = {}
-  for (lkey * * mSuperType * * * * * * * * * * * * * * * * * * * * * * *) in inSemanticContext.mTypeMap do
-     if not [mSuperType isNull] then
+  for (lkey element) in inSemanticContext.mTypeMap do
+     let superType = [element mSuperType]
+     if not [superType isNull] then
        descendantClassListMap +=
-         ![mSuperType key]
-         !@unifiedTypeMap-entry. searchKey {!inSemanticContext.mTypeMap !lkey}
+         ![superType key]
+         ![inSemanticContext.mTypeMap searchKey !lkey]
      end
   end
+#  for (lkey * * mSuperType * * * * * * * * * * * * * * * * * * * * * * *) in inSemanticContext.mTypeMap do
+#     if not [mSuperType isNull] then
+#       descendantClassListMap +=
+#         ![mSuperType key]
+#         !@unifiedTypeMap-entry. searchKey {!inSemanticContext.mTypeMap !lkey}
+#     end
+#  end
 #--- Build Extension method listmaps
   var @genericExtensionMethodListMap abstractExtensionMethodListMap = {}
   var @genericExtensionMethodListMap extensionMethodListMap = {}
@@ -402,28 +416,6 @@ proc performGalgas3ProjectGlobalCheckings
       end
     end
   end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#           G E N E R A T I O N    F I L E W R A P P E R S                                                     
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-filewrapper typeDumpGenerationTemplate in "+generation-templates/target_generation" {
-}{
-}{
-  template typeDump "typeDump.html.galgasTemplate"
-    ?@string PROJECT_NAME
-    ?@unifiedTypeMap UNIFIED_TYPE_MAP
-    ?@stringset FIRST_LETTER_SET
-    ?@string TABLE_OF_TYPES_STRING
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func linkForType ?let @string inTypeName -> @string {
-  result = "<a class=\"header_link\" href=\"#" + inTypeName + "\">@" + inTypeName + "</a>"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

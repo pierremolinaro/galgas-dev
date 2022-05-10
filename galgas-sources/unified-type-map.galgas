@@ -37,11 +37,11 @@ setter @unifiedTypeMap makeEntry ?let @lstring inLKey !@unifiedTypeMap-entry out
   if inLKey.string == "" then
     outEntry = .null
   elsif let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
-    outEntry = .entry {!entry: element}
+    outEntry = .element {!element: element}
   else
     let newElement = @unifiedTypeMapElementClass.new {!.unsolved}
     [!?self internalInsertKey !inLKey !newElement]
-    outEntry = .entry {!entry: newElement}
+    outEntry = .element {!element: newElement}
   end
 }
 
@@ -51,11 +51,11 @@ setter @unifiedTypeMap makeEntryFromString ?let @string inKey !@unifiedTypeMap-e
   if inKey == "" then
     outEntry = .null
   elsif let [self searchKey !inKey ?let @unifiedTypeMapElementClass element] then
-    outEntry = .entry {!entry: element}
+    outEntry = .element {!element: element}
   else
     let newElement = @unifiedTypeMapElementClass.new {!.unsolved}
     [!?self internalInsertKey !.new {!inKey !.nowhere} !newElement]
-    outEntry = .entry {!entry: newElement}
+    outEntry = .element {!element: newElement}
   end
 }
 
@@ -65,7 +65,7 @@ getter @unifiedTypeMap searchKey ?let @lstring inLKey -> @unifiedTypeMap-entry {
   if inLKey.string == "" then
     result = .null
   elsif let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
-    result = .entry {!entry: element}
+    result = .element {!element: element}
   else
     error inLKey : "there is not '@" + inLKey + "' type" : result
   end
@@ -271,7 +271,8 @@ refclass @unifiedTypeMapElementClass {
 
 enum @unifiedTypeMap-entry {
   case null
-  case entry (@unifiedTypeMapElementClass-weak entry)
+#  case entry (@unifiedTypeMapElementClass-weak entry)
+  case element (@unifiedTypeMapElementClass element)
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -490,17 +491,24 @@ getter @unifiedTypeMap-entry definition -> @unifiedTypeDefinition {
   switch self
   case null :
     error .nowhere : "null type" : result
-  case entry (weakTypeRef) :
-    if let type = weakTypeRef then
-      switch type.mDefinition
-      case unsolved :
-        error .nowhere : "unsolved type" : result
-      case solved (definition) :
-        result = definition
-      end
-    else
-      error .nowhere : "nil type" : result
+  case element (element) :
+    switch element.mDefinition
+    case unsolved :
+      error .nowhere : "unsolved type" : result
+    case solved (definition) :
+      result = definition
     end
+#  case entry (weakTypeRef) :
+#    if let type = weakTypeRef then
+#      switch type.mDefinition
+#      case unsolved :
+#        error .nowhere : "unsolved type" : result
+#      case solved (definition) :
+#        result = definition
+#      end
+#    else
+#      error .nowhere : "nil type" : result
+#    end
   end
 }
 

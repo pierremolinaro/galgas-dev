@@ -352,12 +352,12 @@ private proc compileProject ?let @lstring inProjectSourceFile
          + "/build/helpers/" +  [inProjectSourceFile lastPathComponent] + ".html"
   if [option galgas_cli_options.outputHTMLTypeListFile value] then
     var @stringset firstLetterSet = {}
-    for (lkey 26*) in semanticContext.mTypeMap do
+    for (lkey *) in semanticContext.mTypeMap do
       firstLetterSet += ![[lkey.string characterAtIndex!0] string]
     end
     var @string tableOfTypeString = ""
     var @char currentFirstLetter = ' '
-    for (type_lkey 26*) in semanticContext.mTypeMap do
+    for (type_lkey *) in semanticContext.mTypeMap do
       if currentFirstLetter != [type_lkey.string characterAtIndex !0] then
         currentFirstLetter = [type_lkey.string characterAtIndex !0]
         tableOfTypeString += "<br><a name=\"" + [currentFirstLetter uint] + "\"><b>" + currentFirstLetter + "</b></a><br>"
@@ -523,6 +523,28 @@ private proc projectGeneration
       [@string deleteFile !productDirectory + "/" + key]
     end
   end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#                                           
+#           G E N E R A T I O N    F I L E W R A P P E R S                                                     
+#                                           
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+filewrapper typeDumpGenerationTemplate in "+generation-templates/target_generation" {
+}{
+}{
+  template typeDump "typeDump.html.galgasTemplate"
+    ?@string PROJECT_NAME
+    ?@unifiedTypeMap UNIFIED_TYPE_MAP
+    ?@stringset FIRST_LETTER_SET
+    ?@string TABLE_OF_TYPES_STRING
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func linkForType ?let @string inTypeName -> @string {
+  result = "<a class=\"header_link\" href=\"#" + inTypeName + "\">@" + inTypeName + "</a>"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
