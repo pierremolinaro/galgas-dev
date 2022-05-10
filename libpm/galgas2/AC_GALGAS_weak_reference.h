@@ -29,20 +29,21 @@
 class C_String ;
 class C_galgas_type_descriptor ;
 class AC_GALGAS_reference_class ;
-class acPtr_class ;
+class cPtr_weakReference_proxy ;
+class acStrongPtr_class ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
 class AC_GALGAS_weak_reference : public AC_GALGAS_root { // AC_GALGAS_weak_reference est une classe abstraite
 //--- Properties
-  protected: acPtr_class * mObjectPtr ;
+  protected: cPtr_weakReference_proxy * mObjectPtr ;
 
 //--- Default constructor
   protected: AC_GALGAS_weak_reference (void) ;
 
 //--- Constructor from strong reference
   protected: AC_GALGAS_weak_reference (const AC_GALGAS_reference_class & inSource) ;
-  protected: AC_GALGAS_weak_reference & operator = (const AC_GALGAS_reference_class & inSource) ;
+  private: AC_GALGAS_weak_reference & operator = (const AC_GALGAS_reference_class &) = delete ;
 
 //--- Destructor
   protected: virtual ~ AC_GALGAS_weak_reference (void) ;
@@ -54,7 +55,7 @@ class AC_GALGAS_weak_reference : public AC_GALGAS_root { // AC_GALGAS_weak_refer
   public: virtual void drop (void) ;
 
 //--- Get a pointer on strong object
-  public: const acPtr_class * ptr (void) const ;
+  public: const acStrongPtr_class * ptr (void) const ;
 
 //--- Handle copy
   protected: AC_GALGAS_weak_reference (const AC_GALGAS_weak_reference & inSource) ;

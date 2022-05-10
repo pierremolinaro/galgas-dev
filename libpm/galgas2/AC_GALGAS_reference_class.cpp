@@ -19,7 +19,7 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 #include "galgas2/AC_GALGAS_reference_class.h"
-#include "galgas2/acPtr_class.h"
+#include "galgas2/acStrongPtr_class.h"
 #include "galgas2/C_galgas_type_descriptor.h"
 #include "strings/C_String.h"
 
@@ -42,10 +42,10 @@ mObjectPtr (NULL) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-AC_GALGAS_reference_class::AC_GALGAS_reference_class (const acPtr_class * inPointer) :
+AC_GALGAS_reference_class::AC_GALGAS_reference_class (const acStrongPtr_class * inPointer) :
 AC_GALGAS_root (),
 mObjectPtr (NULL) {
-  macroAssignSharedObject (mObjectPtr, (acPtr_class *) inPointer) ;
+  macroAssignSharedObject (mObjectPtr, (acStrongPtr_class *) inPointer) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

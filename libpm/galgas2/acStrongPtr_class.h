@@ -26,7 +26,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class cPtr_weakReference_class ;
+class cPtr_weakReference_proxy ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -38,17 +38,17 @@ class acStrongPtr_class : public acPtr_class {
   public: virtual ~ acStrongPtr_class (void) ;
 
 //--- Private property
-  private: cPtr_weakReference_class * mProxy ;
+  private: cPtr_weakReference_proxy * mProxy ;
 
 //--- Get proxy
-  public: cPtr_weakReference_class * getProxy (void) ;
+  public: cPtr_weakReference_proxy * getProxy (void) ;
 
 //--- No Copy
   private: acStrongPtr_class (const acStrongPtr_class &) = delete ;
   private: acStrongPtr_class & operator = (const acStrongPtr_class &) = delete ;
 
 //--- Friend
-  friend class cPtr_weakReference_class ;
+  friend class cPtr_weakReference_proxy ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------

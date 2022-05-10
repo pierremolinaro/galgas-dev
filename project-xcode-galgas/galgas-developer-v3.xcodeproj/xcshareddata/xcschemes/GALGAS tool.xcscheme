@@ -57,7 +57,7 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--output-html-grammar-file"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--max-warnings=10000"

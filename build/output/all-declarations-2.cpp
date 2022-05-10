@@ -98,9 +98,9 @@ GALGAS_lexicalSendDefaultActionAST GALGAS_lexicalSendDefaultActionAST::extractOb
 typeComparisonResult GALGAS_lexicalSendDefaultActionAST_2D_weak::objectCompare (const GALGAS_lexicalSendDefaultActionAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -122,7 +122,7 @@ AC_GALGAS_weak_reference () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalSendDefaultActionAST_2D_weak & GALGAS_lexicalSendDefaultActionAST_2D_weak::operator = (const GALGAS_lexicalSendDefaultActionAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -141,7 +141,7 @@ AC_GALGAS_weak_reference (inSource) {
 
 GALGAS_lexicalSendDefaultActionAST_2D_weak GALGAS_lexicalSendDefaultActionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalSendDefaultActionAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -150,8 +150,7 @@ GALGAS_lexicalSendDefaultActionAST_2D_weak GALGAS_lexicalSendDefaultActionAST_2D
 GALGAS_lexicalSendDefaultActionAST GALGAS_lexicalSendDefaultActionAST_2D_weak::bang_lexicalSendDefaultActionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalSendDefaultActionAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -373,9 +372,9 @@ GALGAS_lexicalStructuredSendInstructionAST GALGAS_lexicalStructuredSendInstructi
 typeComparisonResult GALGAS_lexicalStructuredSendInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalStructuredSendInstructionAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -397,7 +396,7 @@ GALGAS_lexicalInstructionAST_2D_weak () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalStructuredSendInstructionAST_2D_weak & GALGAS_lexicalStructuredSendInstructionAST_2D_weak::operator = (const GALGAS_lexicalStructuredSendInstructionAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -416,7 +415,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 GALGAS_lexicalStructuredSendInstructionAST_2D_weak GALGAS_lexicalStructuredSendInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalStructuredSendInstructionAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -425,8 +424,7 @@ GALGAS_lexicalStructuredSendInstructionAST_2D_weak GALGAS_lexicalStructuredSendI
 GALGAS_lexicalStructuredSendInstructionAST GALGAS_lexicalStructuredSendInstructionAST_2D_weak::bang_lexicalStructuredSendInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalStructuredSendInstructionAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -485,9 +483,9 @@ GALGAS_lexicalStructuredSendInstructionAST_2D_weak GALGAS_lexicalStructuredSendI
 typeComparisonResult GALGAS_lexicalSimpleSendInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalSimpleSendInstructionAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -509,7 +507,7 @@ GALGAS_lexicalInstructionAST_2D_weak () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalSimpleSendInstructionAST_2D_weak & GALGAS_lexicalSimpleSendInstructionAST_2D_weak::operator = (const GALGAS_lexicalSimpleSendInstructionAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -528,7 +526,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 GALGAS_lexicalSimpleSendInstructionAST_2D_weak GALGAS_lexicalSimpleSendInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalSimpleSendInstructionAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -537,8 +535,7 @@ GALGAS_lexicalSimpleSendInstructionAST_2D_weak GALGAS_lexicalSimpleSendInstructi
 GALGAS_lexicalSimpleSendInstructionAST GALGAS_lexicalSimpleSendInstructionAST_2D_weak::bang_lexicalSimpleSendInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalSimpleSendInstructionAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -597,9 +594,9 @@ GALGAS_lexicalSimpleSendInstructionAST_2D_weak GALGAS_lexicalSimpleSendInstructi
 typeComparisonResult GALGAS_lexicalSendTerminalByDefaultAST_2D_weak::objectCompare (const GALGAS_lexicalSendTerminalByDefaultAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -621,7 +618,7 @@ GALGAS_lexicalSendDefaultActionAST_2D_weak () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalSendTerminalByDefaultAST_2D_weak & GALGAS_lexicalSendTerminalByDefaultAST_2D_weak::operator = (const GALGAS_lexicalSendTerminalByDefaultAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -640,7 +637,7 @@ GALGAS_lexicalSendDefaultActionAST_2D_weak (inSource) {
 
 GALGAS_lexicalSendTerminalByDefaultAST_2D_weak GALGAS_lexicalSendTerminalByDefaultAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalSendTerminalByDefaultAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -649,8 +646,7 @@ GALGAS_lexicalSendTerminalByDefaultAST_2D_weak GALGAS_lexicalSendTerminalByDefau
 GALGAS_lexicalSendTerminalByDefaultAST GALGAS_lexicalSendTerminalByDefaultAST_2D_weak::bang_lexicalSendTerminalByDefaultAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalSendTerminalByDefaultAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -709,9 +705,9 @@ GALGAS_lexicalSendTerminalByDefaultAST_2D_weak GALGAS_lexicalSendTerminalByDefau
 typeComparisonResult GALGAS_lexicalErrorByDefaultAST_2D_weak::objectCompare (const GALGAS_lexicalErrorByDefaultAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -733,7 +729,7 @@ GALGAS_lexicalSendDefaultActionAST_2D_weak () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalErrorByDefaultAST_2D_weak & GALGAS_lexicalErrorByDefaultAST_2D_weak::operator = (const GALGAS_lexicalErrorByDefaultAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -752,7 +748,7 @@ GALGAS_lexicalSendDefaultActionAST_2D_weak (inSource) {
 
 GALGAS_lexicalErrorByDefaultAST_2D_weak GALGAS_lexicalErrorByDefaultAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalErrorByDefaultAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -761,8 +757,7 @@ GALGAS_lexicalErrorByDefaultAST_2D_weak GALGAS_lexicalErrorByDefaultAST_2D_weak:
 GALGAS_lexicalErrorByDefaultAST GALGAS_lexicalErrorByDefaultAST_2D_weak::bang_lexicalErrorByDefaultAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalErrorByDefaultAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -1474,9 +1469,9 @@ GALGAS_lexicalRepeatInstructionAST GALGAS_lexicalRepeatInstructionAST::extractOb
 typeComparisonResult GALGAS_lexicalRepeatInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalRepeatInstructionAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -1498,7 +1493,7 @@ GALGAS_lexicalInstructionAST_2D_weak () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRepeatInstructionAST_2D_weak & GALGAS_lexicalRepeatInstructionAST_2D_weak::operator = (const GALGAS_lexicalRepeatInstructionAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -1517,7 +1512,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 GALGAS_lexicalRepeatInstructionAST_2D_weak GALGAS_lexicalRepeatInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalRepeatInstructionAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -1526,8 +1521,7 @@ GALGAS_lexicalRepeatInstructionAST_2D_weak GALGAS_lexicalRepeatInstructionAST_2D
 GALGAS_lexicalRepeatInstructionAST GALGAS_lexicalRepeatInstructionAST_2D_weak::bang_lexicalRepeatInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalRepeatInstructionAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -2239,9 +2233,9 @@ GALGAS_lexicalSelectInstructionAST GALGAS_lexicalSelectInstructionAST::extractOb
 typeComparisonResult GALGAS_lexicalSelectInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalSelectInstructionAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -2263,7 +2257,7 @@ GALGAS_lexicalInstructionAST_2D_weak () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalSelectInstructionAST_2D_weak & GALGAS_lexicalSelectInstructionAST_2D_weak::operator = (const GALGAS_lexicalSelectInstructionAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -2282,7 +2276,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 GALGAS_lexicalSelectInstructionAST_2D_weak GALGAS_lexicalSelectInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalSelectInstructionAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -2291,8 +2285,7 @@ GALGAS_lexicalSelectInstructionAST_2D_weak GALGAS_lexicalSelectInstructionAST_2D
 GALGAS_lexicalSelectInstructionAST GALGAS_lexicalSelectInstructionAST_2D_weak::bang_lexicalSelectInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalSelectInstructionAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -2451,9 +2444,9 @@ GALGAS_abstractLexicalRoutineActualArgumentAST GALGAS_abstractLexicalRoutineActu
 typeComparisonResult GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak::objectCompare (const GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -2475,7 +2468,7 @@ AC_GALGAS_weak_reference () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak & GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak::operator = (const GALGAS_abstractLexicalRoutineActualArgumentAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -2494,7 +2487,7 @@ AC_GALGAS_weak_reference (inSource) {
 
 GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -2503,8 +2496,7 @@ GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak GALGAS_abstractLexicalRou
 GALGAS_abstractLexicalRoutineActualArgumentAST GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak::bang_abstractLexicalRoutineActualArgumentAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_abstractLexicalRoutineActualArgumentAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -2980,9 +2972,9 @@ GALGAS_lexicalRoutineCallActualArgumentListAST GALGAS_lexicalRoutineCallActualAr
 typeComparisonResult GALGAS_lexicalRoutineInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalRoutineInstructionAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -3004,7 +2996,7 @@ GALGAS_lexicalInstructionAST_2D_weak () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineInstructionAST_2D_weak & GALGAS_lexicalRoutineInstructionAST_2D_weak::operator = (const GALGAS_lexicalRoutineInstructionAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -3023,7 +3015,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 GALGAS_lexicalRoutineInstructionAST_2D_weak GALGAS_lexicalRoutineInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalRoutineInstructionAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -3032,8 +3024,7 @@ GALGAS_lexicalRoutineInstructionAST_2D_weak GALGAS_lexicalRoutineInstructionAST_
 GALGAS_lexicalRoutineInstructionAST GALGAS_lexicalRoutineInstructionAST_2D_weak::bang_lexicalRoutineInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalRoutineInstructionAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -3092,9 +3083,9 @@ GALGAS_lexicalRoutineInstructionAST_2D_weak GALGAS_lexicalRoutineInstructionAST_
 typeComparisonResult GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak::objectCompare (const GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -3116,7 +3107,7 @@ GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak & GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak::operator = (const GALGAS_lexicalAttributeInputOutputArgumentAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -3135,7 +3126,7 @@ GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak (inSource) {
 
 GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -3144,8 +3135,7 @@ GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak GALGAS_lexicalAttributeInp
 GALGAS_lexicalAttributeInputOutputArgumentAST GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak::bang_lexicalAttributeInputOutputArgumentAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalAttributeInputOutputArgumentAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -3290,9 +3280,9 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST GALGAS_lexicalRoutineOrFun
 typeComparisonResult GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak::objectCompare (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -3314,7 +3304,7 @@ AC_GALGAS_weak_reference () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak & GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak::operator = (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -3333,7 +3323,7 @@ AC_GALGAS_weak_reference (inSource) {
 
 GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -3342,8 +3332,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak GALGAS_lexicalRout
 GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak::bang_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -3552,9 +3541,9 @@ GALGAS_lexicalFormalInputArgumentAST GALGAS_lexicalFormalInputArgumentAST::extra
 typeComparisonResult GALGAS_lexicalFormalInputArgumentAST_2D_weak::objectCompare (const GALGAS_lexicalFormalInputArgumentAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -3576,7 +3565,7 @@ GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFormalInputArgumentAST_2D_weak & GALGAS_lexicalFormalInputArgumentAST_2D_weak::operator = (const GALGAS_lexicalFormalInputArgumentAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -3595,7 +3584,7 @@ GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak (inSource) {
 
 GALGAS_lexicalFormalInputArgumentAST_2D_weak GALGAS_lexicalFormalInputArgumentAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalFormalInputArgumentAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -3604,8 +3593,7 @@ GALGAS_lexicalFormalInputArgumentAST_2D_weak GALGAS_lexicalFormalInputArgumentAS
 GALGAS_lexicalFormalInputArgumentAST GALGAS_lexicalFormalInputArgumentAST_2D_weak::bang_lexicalFormalInputArgumentAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalFormalInputArgumentAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -4081,9 +4069,9 @@ GALGAS_lexicalFunctionCallActualArgumentListAST GALGAS_lexicalFunctionCallActual
 typeComparisonResult GALGAS_lexicalAttributeInputArgumentAST_2D_weak::objectCompare (const GALGAS_lexicalAttributeInputArgumentAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -4105,7 +4093,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalAttributeInputArgumentAST_2D_weak & GALGAS_lexicalAttributeInputArgumentAST_2D_weak::operator = (const GALGAS_lexicalAttributeInputArgumentAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -4124,7 +4112,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak (inSource) {
 
 GALGAS_lexicalAttributeInputArgumentAST_2D_weak GALGAS_lexicalAttributeInputArgumentAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalAttributeInputArgumentAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -4133,8 +4121,7 @@ GALGAS_lexicalAttributeInputArgumentAST_2D_weak GALGAS_lexicalAttributeInputArgu
 GALGAS_lexicalAttributeInputArgumentAST GALGAS_lexicalAttributeInputArgumentAST_2D_weak::bang_lexicalAttributeInputArgumentAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalAttributeInputArgumentAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -4193,9 +4180,9 @@ GALGAS_lexicalAttributeInputArgumentAST_2D_weak GALGAS_lexicalAttributeInputArgu
 typeComparisonResult GALGAS_lexicalCharacterInputArgumentAST_2D_weak::objectCompare (const GALGAS_lexicalCharacterInputArgumentAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -4217,7 +4204,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalCharacterInputArgumentAST_2D_weak & GALGAS_lexicalCharacterInputArgumentAST_2D_weak::operator = (const GALGAS_lexicalCharacterInputArgumentAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -4236,7 +4223,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak (inSource) {
 
 GALGAS_lexicalCharacterInputArgumentAST_2D_weak GALGAS_lexicalCharacterInputArgumentAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalCharacterInputArgumentAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -4245,8 +4232,7 @@ GALGAS_lexicalCharacterInputArgumentAST_2D_weak GALGAS_lexicalCharacterInputArgu
 GALGAS_lexicalCharacterInputArgumentAST GALGAS_lexicalCharacterInputArgumentAST_2D_weak::bang_lexicalCharacterInputArgumentAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalCharacterInputArgumentAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -4305,9 +4291,9 @@ GALGAS_lexicalCharacterInputArgumentAST_2D_weak GALGAS_lexicalCharacterInputArgu
 typeComparisonResult GALGAS_lexicalUnsignedInputArgumentAST_2D_weak::objectCompare (const GALGAS_lexicalUnsignedInputArgumentAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -4329,7 +4315,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalUnsignedInputArgumentAST_2D_weak & GALGAS_lexicalUnsignedInputArgumentAST_2D_weak::operator = (const GALGAS_lexicalUnsignedInputArgumentAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -4348,7 +4334,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak (inSource) {
 
 GALGAS_lexicalUnsignedInputArgumentAST_2D_weak GALGAS_lexicalUnsignedInputArgumentAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalUnsignedInputArgumentAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -4357,8 +4343,7 @@ GALGAS_lexicalUnsignedInputArgumentAST_2D_weak GALGAS_lexicalUnsignedInputArgume
 GALGAS_lexicalUnsignedInputArgumentAST GALGAS_lexicalUnsignedInputArgumentAST_2D_weak::bang_lexicalUnsignedInputArgumentAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalUnsignedInputArgumentAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -4567,9 +4552,9 @@ GALGAS_lexicalCurrentCharacterInputArgumentAST GALGAS_lexicalCurrentCharacterInp
 typeComparisonResult GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak::objectCompare (const GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -4591,7 +4576,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak & GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak::operator = (const GALGAS_lexicalCurrentCharacterInputArgumentAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -4610,7 +4595,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak (inSource) {
 
 GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -4619,8 +4604,7 @@ GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak GALGAS_lexicalCurrentChar
 GALGAS_lexicalCurrentCharacterInputArgumentAST GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak::bang_lexicalCurrentCharacterInputArgumentAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalCurrentCharacterInputArgumentAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -4679,9 +4663,9 @@ GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak GALGAS_lexicalCurrentChar
 typeComparisonResult GALGAS_lexicalFunctionInputArgumentAST_2D_weak::objectCompare (const GALGAS_lexicalFunctionInputArgumentAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -4703,7 +4687,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionInputArgumentAST_2D_weak & GALGAS_lexicalFunctionInputArgumentAST_2D_weak::operator = (const GALGAS_lexicalFunctionInputArgumentAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -4722,7 +4706,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak (inSource) {
 
 GALGAS_lexicalFunctionInputArgumentAST_2D_weak GALGAS_lexicalFunctionInputArgumentAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalFunctionInputArgumentAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -4731,8 +4715,7 @@ GALGAS_lexicalFunctionInputArgumentAST_2D_weak GALGAS_lexicalFunctionInputArgume
 GALGAS_lexicalFunctionInputArgumentAST GALGAS_lexicalFunctionInputArgumentAST_2D_weak::bang_lexicalFunctionInputArgumentAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalFunctionInputArgumentAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -4791,9 +4774,9 @@ GALGAS_lexicalFunctionInputArgumentAST_2D_weak GALGAS_lexicalFunctionInputArgume
 typeComparisonResult GALGAS_lexicalDropInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalDropInstructionAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -4815,7 +4798,7 @@ GALGAS_lexicalInstructionAST_2D_weak () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalDropInstructionAST_2D_weak & GALGAS_lexicalDropInstructionAST_2D_weak::operator = (const GALGAS_lexicalDropInstructionAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -4834,7 +4817,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 GALGAS_lexicalDropInstructionAST_2D_weak GALGAS_lexicalDropInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalDropInstructionAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -4843,8 +4826,7 @@ GALGAS_lexicalDropInstructionAST_2D_weak GALGAS_lexicalDropInstructionAST_2D_wea
 GALGAS_lexicalDropInstructionAST GALGAS_lexicalDropInstructionAST_2D_weak::bang_lexicalDropInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalDropInstructionAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -4903,9 +4885,9 @@ GALGAS_lexicalDropInstructionAST_2D_weak GALGAS_lexicalDropInstructionAST_2D_wea
 typeComparisonResult GALGAS_lexicalErrorInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalErrorInstructionAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -4927,7 +4909,7 @@ GALGAS_lexicalInstructionAST_2D_weak () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalErrorInstructionAST_2D_weak & GALGAS_lexicalErrorInstructionAST_2D_weak::operator = (const GALGAS_lexicalErrorInstructionAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -4946,7 +4928,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 GALGAS_lexicalErrorInstructionAST_2D_weak GALGAS_lexicalErrorInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalErrorInstructionAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -4955,8 +4937,7 @@ GALGAS_lexicalErrorInstructionAST_2D_weak GALGAS_lexicalErrorInstructionAST_2D_w
 GALGAS_lexicalErrorInstructionAST GALGAS_lexicalErrorInstructionAST_2D_weak::bang_lexicalErrorInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalErrorInstructionAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -5015,9 +4996,9 @@ GALGAS_lexicalErrorInstructionAST_2D_weak GALGAS_lexicalErrorInstructionAST_2D_w
 typeComparisonResult GALGAS_lexicalWarningInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalWarningInstructionAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -5039,7 +5020,7 @@ GALGAS_lexicalInstructionAST_2D_weak () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalWarningInstructionAST_2D_weak & GALGAS_lexicalWarningInstructionAST_2D_weak::operator = (const GALGAS_lexicalWarningInstructionAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -5058,7 +5039,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 GALGAS_lexicalWarningInstructionAST_2D_weak GALGAS_lexicalWarningInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalWarningInstructionAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -5067,8 +5048,7 @@ GALGAS_lexicalWarningInstructionAST_2D_weak GALGAS_lexicalWarningInstructionAST_
 GALGAS_lexicalWarningInstructionAST GALGAS_lexicalWarningInstructionAST_2D_weak::bang_lexicalWarningInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalWarningInstructionAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -5127,9 +5107,9 @@ GALGAS_lexicalWarningInstructionAST_2D_weak GALGAS_lexicalWarningInstructionAST_
 typeComparisonResult GALGAS_lexicalTagInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalTagInstructionAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -5151,7 +5131,7 @@ GALGAS_lexicalInstructionAST_2D_weak () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTagInstructionAST_2D_weak & GALGAS_lexicalTagInstructionAST_2D_weak::operator = (const GALGAS_lexicalTagInstructionAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -5170,7 +5150,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 GALGAS_lexicalTagInstructionAST_2D_weak GALGAS_lexicalTagInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalTagInstructionAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -5179,8 +5159,7 @@ GALGAS_lexicalTagInstructionAST_2D_weak GALGAS_lexicalTagInstructionAST_2D_weak:
 GALGAS_lexicalTagInstructionAST GALGAS_lexicalTagInstructionAST_2D_weak::bang_lexicalTagInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalTagInstructionAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -5239,9 +5218,9 @@ GALGAS_lexicalTagInstructionAST_2D_weak GALGAS_lexicalTagInstructionAST_2D_weak:
 typeComparisonResult GALGAS_lexicalRewindInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalRewindInstructionAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -5263,7 +5242,7 @@ GALGAS_lexicalInstructionAST_2D_weak () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRewindInstructionAST_2D_weak & GALGAS_lexicalRewindInstructionAST_2D_weak::operator = (const GALGAS_lexicalRewindInstructionAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -5282,7 +5261,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 GALGAS_lexicalRewindInstructionAST_2D_weak GALGAS_lexicalRewindInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalRewindInstructionAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -5291,8 +5270,7 @@ GALGAS_lexicalRewindInstructionAST_2D_weak GALGAS_lexicalRewindInstructionAST_2D
 GALGAS_lexicalRewindInstructionAST GALGAS_lexicalRewindInstructionAST_2D_weak::bang_lexicalRewindInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalRewindInstructionAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -5475,9 +5453,9 @@ GALGAS_lexicalLogInstructionAST GALGAS_lexicalLogInstructionAST::extractObject (
 typeComparisonResult GALGAS_lexicalLogInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalLogInstructionAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -5499,7 +5477,7 @@ GALGAS_lexicalInstructionAST_2D_weak () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalLogInstructionAST_2D_weak & GALGAS_lexicalLogInstructionAST_2D_weak::operator = (const GALGAS_lexicalLogInstructionAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -5518,7 +5496,7 @@ GALGAS_lexicalInstructionAST_2D_weak (inSource) {
 
 GALGAS_lexicalLogInstructionAST_2D_weak GALGAS_lexicalLogInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexicalLogInstructionAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -5527,8 +5505,7 @@ GALGAS_lexicalLogInstructionAST_2D_weak GALGAS_lexicalLogInstructionAST_2D_weak:
 GALGAS_lexicalLogInstructionAST GALGAS_lexicalLogInstructionAST_2D_weak::bang_lexicalLogInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalLogInstructionAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -8925,9 +8902,9 @@ GALGAS_lexicalFunctionListAST GALGAS_lexicalFunctionListAST::extractObject (cons
 typeComparisonResult GALGAS_lexiqueComponentAST_2D_weak::objectCompare (const GALGAS_lexiqueComponentAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -8949,7 +8926,7 @@ GALGAS_semanticDeclarationAST_2D_weak () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexiqueComponentAST_2D_weak & GALGAS_lexiqueComponentAST_2D_weak::operator = (const GALGAS_lexiqueComponentAST & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -8968,7 +8945,7 @@ GALGAS_semanticDeclarationAST_2D_weak (inSource) {
 
 GALGAS_lexiqueComponentAST_2D_weak GALGAS_lexiqueComponentAST_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexiqueComponentAST_2D_weak result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -8977,8 +8954,7 @@ GALGAS_lexiqueComponentAST_2D_weak GALGAS_lexiqueComponentAST_2D_weak::construct
 GALGAS_lexiqueComponentAST GALGAS_lexiqueComponentAST_2D_weak::bang_lexiqueComponentAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexiqueComponentAST result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{

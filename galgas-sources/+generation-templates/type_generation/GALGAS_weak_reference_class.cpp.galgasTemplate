@@ -3,9 +3,9 @@
 typeComparisonResult GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;
+    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;
     const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;
-    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;
+    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;
     const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;
     if (myObjectPtr < operandObjectPtr) {
       result = kFirstOperandLowerThanSecond ;
@@ -30,7 +30,7 @@ GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% (void) :
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% & GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::operator = (const GALGAS_%!CLASS_TYPE_IDENTIFIER% & inSource) {
-  cPtr_weakReference_class * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
   acStrongPtr_class * p = inSource.embeddedObjectPtr () ;
   if (p != NULL) {
     proxyPtr = p->getProxy () ;
@@ -52,7 +52,7 @@ GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% (const GA
 
 GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::constructor_nil (LOCATION_ARGS) {
   GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
@@ -61,8 +61,7 @@ GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::construct
 GALGAS_%!CLASS_TYPE_IDENTIFIER% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::bang_%!WEAK_REF_TYPE_IDENTIFIER% (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_%!CLASS_TYPE_IDENTIFIER% result ;
   if (mObjectPtr != NULL) {
-    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-    acStrongPtr_class * strongPtr = p->strongObject () ;
+    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;
     if (strongPtr == NULL) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{

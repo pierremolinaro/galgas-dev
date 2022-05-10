@@ -19,7 +19,7 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 #include "galgas2/acStrongPtr_class.h"
-#include "galgas2/cPtr_weakReference_class.h"
+#include "galgas2/cPtr_weakReference_proxy.h"
 #include "utilities/cpp-allocation.h"
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -40,9 +40,9 @@ acStrongPtr_class::~ acStrongPtr_class (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-cPtr_weakReference_class * acStrongPtr_class::getProxy (void) {
+cPtr_weakReference_proxy * acStrongPtr_class::getProxy (void) {
   if (mProxy == NULL) {
-    macroMyNew (mProxy, cPtr_weakReference_class (HERE)) ;
+    macroMyNew (mProxy, cPtr_weakReference_proxy (HERE)) ;
     mProxy->mStrongObject = this ;
   }
   return mProxy ;

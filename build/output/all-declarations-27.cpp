@@ -4328,7 +4328,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_primitiveType
     "#include \"galgas2/AC_GALGAS_enumAssociatedValues.h\"\n"
     "#include \"galgas2/AC_GALGAS_graph.h\"\n"
     "#include \"galgas2/acStrongPtr_class.h\"\n"
-    "#include \"galgas2/cPtr_weakReference_class.h\"\n"
+    "#include \"galgas2/cPtr_weakReference_proxy.h\"\n"
     "#include \"galgas2/AC_GALGAS_weak_reference.h\"\n"
     "#include \"command_line_interface/C_BoolCommandLineOption.h\"\n"
     "#include \"command_line_interface/C_UIntCommandLineOption.h\"\n"

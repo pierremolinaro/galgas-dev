@@ -5526,8 +5526,8 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
       temp_77.addAssign_operation (GALGAS_string ("acPtr_class.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 966)) ;
       temp_77.addAssign_operation (GALGAS_string ("acStrongPtr_class.cpp")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 967)) ;
       temp_77.addAssign_operation (GALGAS_string ("acStrongPtr_class.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 968)) ;
-      temp_77.addAssign_operation (GALGAS_string ("cPtr_weakReference_class.cpp")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 969)) ;
-      temp_77.addAssign_operation (GALGAS_string ("cPtr_weakReference_class.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 970)) ;
+      temp_77.addAssign_operation (GALGAS_string ("cPtr_weakReference_proxy.cpp")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 969)) ;
+      temp_77.addAssign_operation (GALGAS_string ("cPtr_weakReference_proxy.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 970)) ;
       temp_77.addAssign_operation (GALGAS_string ("C_Compiler.cpp")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 971)) ;
       temp_77.addAssign_operation (GALGAS_string ("C_Compiler.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 972)) ;
       temp_77.addAssign_operation (GALGAS_string ("C_galgas_class_inspector.cpp")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 973)) ;

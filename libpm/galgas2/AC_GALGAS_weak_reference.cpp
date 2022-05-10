@@ -19,7 +19,7 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 #include "galgas2/AC_GALGAS_weak_reference.h"
-#include "galgas2/cPtr_weakReference_class.h"
+#include "galgas2/cPtr_weakReference_proxy.h"
 #include "galgas2/AC_GALGAS_reference_class.h"
 #include "galgas2/acStrongPtr_class.h"
 #include "galgas2/C_galgas_type_descriptor.h"
@@ -49,22 +49,9 @@ AC_GALGAS_root (),
 mObjectPtr (NULL) {
   acStrongPtr_class * ptr = (acStrongPtr_class *) inSource.ptr () ;
   if (ptr != NULL) {
-    cPtr_weakReference_class * proxy = ptr->getProxy () ;
+    cPtr_weakReference_proxy * proxy = ptr->getProxy () ;
     macroAssignSharedObject (mObjectPtr, proxy) ;
   }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_weak_reference & AC_GALGAS_weak_reference::operator = (const AC_GALGAS_reference_class & inSource) {
-  acStrongPtr_class * ptr = (acStrongPtr_class *) inSource.ptr () ;
-  if (ptr == NULL) {
-    macroDetachSharedObject (mObjectPtr) ;
-  }else{
-    cPtr_weakReference_class * proxy = ptr->getProxy () ;
-    macroAssignSharedObject (mObjectPtr, proxy) ;
-  }
-  return *this ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -81,10 +68,10 @@ void AC_GALGAS_weak_reference::drop (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-AC_GALGAS_weak_reference::AC_GALGAS_weak_reference (const AC_GALGAS_weak_reference & inSource) :
+AC_GALGAS_weak_reference::AC_GALGAS_weak_reference (const AC_GALGAS_weak_reference &) :
 AC_GALGAS_root (),
 mObjectPtr (NULL) {
-  macroAssignSharedObject (mObjectPtr, inSource.mObjectPtr) ;
+//  macroAssignSharedObject (mObjectPtr, inSource.mObjectPtr) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -96,11 +83,10 @@ AC_GALGAS_weak_reference & AC_GALGAS_weak_reference::operator = (const AC_GALGAS
 
 //----------------------------------------------------------------------------------------------------------------------
 
-const acPtr_class * AC_GALGAS_weak_reference::ptr (void) const {
-   acPtr_class * result = NULL ;
+const acStrongPtr_class * AC_GALGAS_weak_reference::ptr (void) const {
+   acStrongPtr_class * result = NULL ;
    if (mObjectPtr != NULL) {
-     cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;
-     result = p->strongObject () ;
+     result = mObjectPtr->strongObject () ;
    }
    return result ;
 }
@@ -116,7 +102,7 @@ void AC_GALGAS_weak_reference::description (C_String & ioString,
   if (ptr == NULL) {
     ioString << "not built" ;
   }else{
-    cPtr_weakReference_class * proxy = ptr->getProxy () ;
+    cPtr_weakReference_proxy * proxy = ptr->getProxy () ;
     if (proxy == NULL) {
       ioString << "nil" ;
     }else{

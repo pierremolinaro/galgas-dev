@@ -12339,9 +12339,9 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeS
   result << " & inOperand) const {\n"
     "  typeComparisonResult result = kOperandNotValid ;\n"
     "  if (isValid () && inOperand.isValid ()) {\n"
-    "    cPtr_weakReference_class * myPtr = (cPtr_weakReference_class *) mObjectPtr ;\n"
+    "    cPtr_weakReference_proxy * myPtr = (cPtr_weakReference_proxy *) mObjectPtr ;\n"
     "    const size_t myObjectPtr = size_t (myPtr->strongObject ()) ;\n"
-    "    cPtr_weakReference_class * operandPtr = (cPtr_weakReference_class *) inOperand.mObjectPtr ;\n"
+    "    cPtr_weakReference_proxy * operandPtr = (cPtr_weakReference_proxy *) inOperand.mObjectPtr ;\n"
     "    const size_t operandObjectPtr = size_t (operandPtr->strongObject ()) ;\n"
     "    if (myObjectPtr < operandObjectPtr) {\n"
     "      result = kFirstOperandLowerThanSecond ;\n"
@@ -12380,7 +12380,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeS
   result << "::operator = (const GALGAS_" ;
   result << in_CLASS_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " & inSource) {\n"
-    "  cPtr_weakReference_class * proxyPtr = NULL ;\n"
+    "  cPtr_weakReference_proxy * proxyPtr = NULL ;\n"
     "  acStrongPtr_class * p = inSource.embeddedObjectPtr () ;\n"
     "  if (p != NULL) {\n"
     "    proxyPtr = p->getProxy () ;\n"
@@ -12418,7 +12418,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeS
     "  GALGAS_" ;
   result << in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " result ;\n"
-    "  macroMyNew (result.mObjectPtr, cPtr_weakReference_class (THERE)) ;\n"
+    "  macroMyNew (result.mObjectPtr, cPtr_weakReference_proxy (THERE)) ;\n"
     "  return result ;\n"
     "}\n"
     "\n"
@@ -12435,8 +12435,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeS
   result << in_CLASS_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " result ;\n"
     "  if (mObjectPtr != NULL) {\n"
-    "    cPtr_weakReference_class * p = (cPtr_weakReference_class *) mObjectPtr ;\n"
-    "    acStrongPtr_class * strongPtr = p->strongObject () ;\n"
+    "    acStrongPtr_class * strongPtr = mObjectPtr->strongObject () ;\n"
     "    if (strongPtr == NULL) {\n"
     "      inCompiler->onTheFlySemanticError (\"weak reference is nil\" COMMA_THERE) ;\n"
     "    }else{\n"

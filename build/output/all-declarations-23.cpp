@@ -9054,31 +9054,31 @@ static void extensionMethod_weakReferenceDeclarationAST_enterInSemanticContext (
   cEnumerator_getterMap enumerator_4510 (var_getterMap_4118, kENUMERATION_UP) ;
   while (enumerator_4510.hasCurrentObject ()) {
     TC_Array <C_FixItDescription> fixItArray13 ;
-    inCompiler->emitSemanticError (enumerator_4510.current_lkey (HERE).readProperty_location (), GALGAS_string ("a weak referencev does not support extension"), fixItArray13  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 109)) ;
+    inCompiler->emitSemanticError (enumerator_4510.current_lkey (HERE).readProperty_location (), GALGAS_string ("a weak reference does not support extension"), fixItArray13  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 109)) ;
     enumerator_4510.gotoNextObject () ;
   }
-  cEnumerator_setterMap enumerator_4612 (var_setterMap_4150, kENUMERATION_UP) ;
-  while (enumerator_4612.hasCurrentObject ()) {
+  cEnumerator_setterMap enumerator_4611 (var_setterMap_4150, kENUMERATION_UP) ;
+  while (enumerator_4611.hasCurrentObject ()) {
     TC_Array <C_FixItDescription> fixItArray14 ;
-    inCompiler->emitSemanticError (enumerator_4612.current_lkey (HERE).readProperty_location (), GALGAS_string ("a weak referencev does not support extension"), fixItArray14  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 112)) ;
-    enumerator_4612.gotoNextObject () ;
+    inCompiler->emitSemanticError (enumerator_4611.current_lkey (HERE).readProperty_location (), GALGAS_string ("a weak reference does not support extension"), fixItArray14  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 112)) ;
+    enumerator_4611.gotoNextObject () ;
   }
-  cEnumerator_instanceMethodMap enumerator_4714 (var_instanceMethodMap_4198, kENUMERATION_UP) ;
-  while (enumerator_4714.hasCurrentObject ()) {
+  cEnumerator_instanceMethodMap enumerator_4712 (var_instanceMethodMap_4198, kENUMERATION_UP) ;
+  while (enumerator_4712.hasCurrentObject ()) {
     TC_Array <C_FixItDescription> fixItArray15 ;
-    inCompiler->emitSemanticError (enumerator_4714.current_lkey (HERE).readProperty_location (), GALGAS_string ("a weak reference does not support extension"), fixItArray15  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 115)) ;
-    enumerator_4714.gotoNextObject () ;
+    inCompiler->emitSemanticError (enumerator_4712.current_lkey (HERE).readProperty_location (), GALGAS_string ("a weak reference does not support extension"), fixItArray15  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 115)) ;
+    enumerator_4712.gotoNextObject () ;
   }
-  GALGAS_unifiedTypeMap_2D_entry var_classIndex_4911 ;
+  GALGAS_unifiedTypeMap_2D_entry var_classIndex_4909 ;
   {
   const GALGAS_weakReferenceDeclarationAST temp_16 = object ;
-  extensionSetter_makeEntry (ioArgument_ioSemanticContext.mProperty_mTypeMap, temp_16.readProperty_mClassTypeName (), var_classIndex_4911, inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 118)) ;
+  extensionSetter_makeEntry (ioArgument_ioSemanticContext.mProperty_mTypeMap, temp_16.readProperty_mClassTypeName (), var_classIndex_4909, inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 118)) ;
   }
   {
   const GALGAS_weakReferenceDeclarationAST temp_17 = object ;
   const GALGAS_weakReferenceDeclarationAST temp_18 = object ;
   const GALGAS_weakReferenceDeclarationAST temp_19 = object ;
-  extensionSetter_insertKey (ioArgument_ioSemanticContext.mProperty_mTypeMap, temp_17.readProperty_mWeakReferenceTypeName (), temp_18.readProperty_mIsPredefined (), GALGAS_bool (true), var_superClassIndex_2879, GALGAS_typeKindEnum::constructor_weakReferenceType (var_classIndex_4911  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 124)), GALGAS_bool (false), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("type-weak-reference.galgas", 126)), GALGAS_propertyMap::constructor_emptyMap (SOURCE_FILE ("type-weak-reference.galgas", 127)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("type-weak-reference.galgas", 128)), var_constructorMap_3924, GALGAS_getterMap::constructor_emptyMap (SOURCE_FILE ("type-weak-reference.galgas", 130)), GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("type-weak-reference.galgas", 131)), GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("type-weak-reference.galgas", 132)), GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("type-weak-reference.galgas", 133)), GALGAS_optionalMethodMap::constructor_emptyMap (SOURCE_FILE ("type-weak-reference.galgas", 134)), GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("type-weak-reference.galgas", 135)), GALGAS_operators::constructor_isReferenceEquatable (SOURCE_FILE ("type-weak-reference.galgas", 136)), GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("type-weak-reference.galgas", 137)), GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("type-weak-reference.galgas", 138)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("type-weak-reference.galgas", 139)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("type-weak-reference.galgas", 140)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("type-weak-reference.galgas", 141)), var_generateHeaderInSeparateFile_2920, GALGAS_unifiedTypeMap_2D_entry::constructor_null (SOURCE_FILE ("type-weak-reference.galgas", 143)), GALGAS_string ("nil"), GALGAS_string ("weak-reference-").add_operation (temp_19.readProperty_mWeakReferenceTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("type-weak-reference.galgas", 145)), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 145)), GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("type-weak-reference.galgas", 146)), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 119)) ;
+  extensionSetter_insertKey (ioArgument_ioSemanticContext.mProperty_mTypeMap, temp_17.readProperty_mWeakReferenceTypeName (), temp_18.readProperty_mIsPredefined (), GALGAS_bool (true), var_superClassIndex_2879, GALGAS_typeKindEnum::constructor_weakReferenceType (var_classIndex_4909  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 124)), GALGAS_bool (false), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("type-weak-reference.galgas", 126)), GALGAS_propertyMap::constructor_emptyMap (SOURCE_FILE ("type-weak-reference.galgas", 127)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("type-weak-reference.galgas", 128)), var_constructorMap_3924, GALGAS_getterMap::constructor_emptyMap (SOURCE_FILE ("type-weak-reference.galgas", 130)), GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("type-weak-reference.galgas", 131)), GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("type-weak-reference.galgas", 132)), GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("type-weak-reference.galgas", 133)), GALGAS_optionalMethodMap::constructor_emptyMap (SOURCE_FILE ("type-weak-reference.galgas", 134)), GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("type-weak-reference.galgas", 135)), GALGAS_operators::constructor_isReferenceEquatable (SOURCE_FILE ("type-weak-reference.galgas", 136)), GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("type-weak-reference.galgas", 137)), GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("type-weak-reference.galgas", 138)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("type-weak-reference.galgas", 139)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("type-weak-reference.galgas", 140)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("type-weak-reference.galgas", 141)), var_generateHeaderInSeparateFile_2920, GALGAS_unifiedTypeMap_2D_entry::constructor_null (SOURCE_FILE ("type-weak-reference.galgas", 143)), GALGAS_string ("nil"), GALGAS_string ("weak-reference-").add_operation (temp_19.readProperty_mWeakReferenceTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("type-weak-reference.galgas", 145)), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 145)), GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("type-weak-reference.galgas", 146)), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 119)) ;
   }
 }
 
@@ -9111,9 +9111,9 @@ static void extensionMethod_weakReferenceDeclarationAST_semanticAnalysis (const 
   const cPtr_weakReferenceDeclarationAST * object = (const cPtr_weakReferenceDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_weakReferenceDeclarationAST) ;
   const GALGAS_weakReferenceDeclarationAST temp_0 = object ;
-  GALGAS_lstring var_weakRefTypeNameForUsefulness_6450 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_mWeakReferenceTypeName (), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 163)) ;
+  GALGAS_lstring var_weakRefTypeNameForUsefulness_6448 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_mWeakReferenceTypeName (), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 163)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_weakRefTypeNameForUsefulness_6450, var_weakRefTypeNameForUsefulness_6450, inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 164)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_weakRefTypeNameForUsefulness_6448, var_weakRefTypeNameForUsefulness_6448, inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 164)) ;
   }
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
@@ -9121,14 +9121,14 @@ static void extensionMethod_weakReferenceDeclarationAST_semanticAnalysis (const 
     test_1 = GALGAS_bool (kIsNotEqual, temp_2.readProperty_mSuperWeakReferenceTypeName ().readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GALGAS_weakReferenceDeclarationAST temp_3 = object ;
-      GALGAS_lstring var_superWeakRefNameForUsefulness_6704 = function_typeNameForUsefulEntitiesGraph (temp_3.readProperty_mSuperWeakReferenceTypeName (), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 166)) ;
+      GALGAS_lstring var_superWeakRefNameForUsefulness_6702 = function_typeNameForUsefulEntitiesGraph (temp_3.readProperty_mSuperWeakReferenceTypeName (), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 166)) ;
       {
-      ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_weakRefTypeNameForUsefulness_6450, var_superWeakRefNameForUsefulness_6704 COMMA_SOURCE_FILE ("type-weak-reference.galgas", 167)) ;
+      ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_weakRefTypeNameForUsefulness_6448, var_superWeakRefNameForUsefulness_6702 COMMA_SOURCE_FILE ("type-weak-reference.galgas", 167)) ;
       }
     }
   }
   const GALGAS_weakReferenceDeclarationAST temp_4 = object ;
-  GALGAS_unifiedTypeMap_2D_entry var_selfType_6933 = extensionGetter_searchKey (constinArgument_inSemanticContext.readProperty_mTypeMap (), temp_4.readProperty_mWeakReferenceTypeName (), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 170)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_selfType_6931 = extensionGetter_searchKey (constinArgument_inSemanticContext.readProperty_mTypeMap (), temp_4.readProperty_mWeakReferenceTypeName (), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 170)) ;
   const GALGAS_weakReferenceDeclarationAST temp_5 = object ;
   GALGAS_unifiedTypeMap_2D_entry temp_6 ;
   const enumGalgasBool test_7 = GALGAS_bool (kIsEqual, temp_5.readProperty_mSuperWeakReferenceTypeName ().readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
@@ -9138,93 +9138,93 @@ static void extensionMethod_weakReferenceDeclarationAST_semanticAnalysis (const 
     const GALGAS_weakReferenceDeclarationAST temp_8 = object ;
     temp_6 = extensionGetter_searchKey (constinArgument_inSemanticContext.readProperty_mTypeMap (), temp_8.readProperty_mSuperWeakReferenceTypeName (), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 174)) ;
   }
-  GALGAS_unifiedTypeMap_2D_entry var_superClassEntry_7069 = temp_6 ;
-  GALGAS_typedPropertyList var_allAttributeList_7454 ;
+  GALGAS_unifiedTypeMap_2D_entry var_superClassEntry_7067 = temp_6 ;
+  GALGAS_typedPropertyList var_allAttributeList_7452 ;
   enumGalgasBool test_9 = kBoolTrue ;
   if (kBoolTrue == test_9) {
-    test_9 = GALGAS_bool (kIsEqual, var_superClassEntry_7069.objectCompare (GALGAS_unifiedTypeMap_2D_entry::constructor_null (SOURCE_FILE ("type-weak-reference.galgas", 180)))).boolEnum () ;
+    test_9 = GALGAS_bool (kIsEqual, var_superClassEntry_7067.objectCompare (GALGAS_unifiedTypeMap_2D_entry::constructor_null (SOURCE_FILE ("type-weak-reference.galgas", 180)))).boolEnum () ;
     if (kBoolTrue == test_9) {
-      var_allAttributeList_7454 = GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("type-weak-reference.galgas", 181)) ;
-      GALGAS_bool var_generatedInSeparateFileFeature_7560 = GALGAS_bool (false) ;
+      var_allAttributeList_7452 = GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("type-weak-reference.galgas", 181)) ;
+      GALGAS_bool var_generatedInSeparateFileFeature_7558 = GALGAS_bool (false) ;
       enumGalgasBool test_10 = kBoolTrue ;
       if (kBoolTrue == test_10) {
         const GALGAS_weakReferenceDeclarationAST temp_11 = object ;
         test_10 = GALGAS_bool (kIsStrictSup, temp_11.readProperty_mClassFeatureList ().getter_length (SOURCE_FILE ("type-weak-reference.galgas", 183)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
         if (kBoolTrue == test_10) {
           const GALGAS_weakReferenceDeclarationAST temp_12 = object ;
-          cEnumerator_lstringlist enumerator_7634 (temp_12.readProperty_mClassFeatureList (), kENUMERATION_UP) ;
-          while (enumerator_7634.hasCurrentObject ()) {
+          cEnumerator_lstringlist enumerator_7632 (temp_12.readProperty_mClassFeatureList (), kENUMERATION_UP) ;
+          while (enumerator_7632.hasCurrentObject ()) {
             enumGalgasBool test_13 = kBoolTrue ;
             if (kBoolTrue == test_13) {
-              test_13 = GALGAS_bool (kIsEqual, enumerator_7634.current_mValue (HERE).readProperty_string ().objectCompare (GALGAS_string ("generatedInSeparateFile"))).boolEnum () ;
+              test_13 = GALGAS_bool (kIsEqual, enumerator_7632.current_mValue (HERE).readProperty_string ().objectCompare (GALGAS_string ("generatedInSeparateFile"))).boolEnum () ;
               if (kBoolTrue == test_13) {
                 enumGalgasBool test_14 = kBoolTrue ;
                 if (kBoolTrue == test_14) {
-                  test_14 = var_generatedInSeparateFileFeature_7560.boolEnum () ;
+                  test_14 = var_generatedInSeparateFileFeature_7558.boolEnum () ;
                   if (kBoolTrue == test_14) {
                     TC_Array <C_FixItDescription> fixItArray15 ;
-                    inCompiler->emitSemanticError (enumerator_7634.current_mValue (HERE).readProperty_location (), GALGAS_string ("the 'generatedInSeparateFile' is already named"), fixItArray15  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 187)) ;
+                    inCompiler->emitSemanticError (enumerator_7632.current_mValue (HERE).readProperty_location (), GALGAS_string ("the 'generatedInSeparateFile' is already named"), fixItArray15  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 187)) ;
                   }
                 }
-                var_generatedInSeparateFileFeature_7560 = GALGAS_bool (true) ;
+                var_generatedInSeparateFileFeature_7558 = GALGAS_bool (true) ;
               }
             }
             if (kBoolFalse == test_13) {
               TC_Array <C_FixItDescription> fixItArray16 ;
-              inCompiler->emitSemanticError (enumerator_7634.current_mValue (HERE).readProperty_location (), GALGAS_string ("only the 'generatedInSeparateFile' attribute is allowed here"), fixItArray16  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 191)) ;
+              inCompiler->emitSemanticError (enumerator_7632.current_mValue (HERE).readProperty_location (), GALGAS_string ("only the 'generatedInSeparateFile' attribute is allowed here"), fixItArray16  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 191)) ;
             }
-            enumerator_7634.gotoNextObject () ;
+            enumerator_7632.gotoNextObject () ;
           }
         }
       }
     }
   }
   if (kBoolFalse == test_9) {
-    var_allAttributeList_7454 = extensionGetter_mAllTypedPropertyList (var_superClassEntry_7069, inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 196)) ;
+    var_allAttributeList_7452 = extensionGetter_mAllTypedPropertyList (var_superClassEntry_7067, inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 196)) ;
     enumGalgasBool test_17 = kBoolTrue ;
     if (kBoolTrue == test_17) {
       const GALGAS_weakReferenceDeclarationAST temp_18 = object ;
       test_17 = GALGAS_bool (kIsStrictSup, temp_18.readProperty_mClassFeatureList ().getter_length (SOURCE_FILE ("type-weak-reference.galgas", 197)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_17) {
         const GALGAS_weakReferenceDeclarationAST temp_19 = object ;
-        cEnumerator_lstringlist enumerator_8173 (temp_19.readProperty_mClassFeatureList (), kENUMERATION_UP) ;
-        while (enumerator_8173.hasCurrentObject ()) {
+        cEnumerator_lstringlist enumerator_8171 (temp_19.readProperty_mClassFeatureList (), kENUMERATION_UP) ;
+        while (enumerator_8171.hasCurrentObject ()) {
           TC_Array <C_FixItDescription> fixItArray20 ;
-          inCompiler->emitSemanticError (enumerator_8173.current_mValue (HERE).readProperty_location (), GALGAS_string ("a class that has a super class does not accept any feature"), fixItArray20  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 199)) ;
-          enumerator_8173.gotoNextObject () ;
+          inCompiler->emitSemanticError (enumerator_8171.current_mValue (HERE).readProperty_location (), GALGAS_string ("a class that has a super class does not accept any feature"), fixItArray20  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 199)) ;
+          enumerator_8171.gotoNextObject () ;
         }
       }
     }
   }
-  GALGAS_typedPropertyList var_typedAttributeList_8378 = GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("type-weak-reference.galgas", 204)) ;
-  GALGAS_propertyIndexMap var_attributeMap_8420 = GALGAS_propertyIndexMap::constructor_emptyMap (SOURCE_FILE ("type-weak-reference.galgas", 205)) ;
+  GALGAS_typedPropertyList var_typedAttributeList_8376 = GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("type-weak-reference.galgas", 204)) ;
+  GALGAS_propertyIndexMap var_attributeMap_8418 = GALGAS_propertyIndexMap::constructor_emptyMap (SOURCE_FILE ("type-weak-reference.galgas", 205)) ;
   const GALGAS_weakReferenceDeclarationAST temp_21 = object ;
-  cEnumerator_propertyInCollectionListAST enumerator_8489 (temp_21.readProperty_mPropertyList (), kENUMERATION_UP) ;
-  while (enumerator_8489.hasCurrentObject ()) {
-    GALGAS_unifiedTypeMap_2D_entry var_t_8525 = extensionGetter_searchKey (constinArgument_inSemanticContext.readProperty_mTypeMap (), enumerator_8489.current_mPropertyTypeName (HERE), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 207)) ;
-    GALGAS_bool var_hasSelector_8605 = GALGAS_bool (false) ;
-    cEnumerator_lstringlist enumerator_8629 (enumerator_8489.current_mAttributeList (HERE), kENUMERATION_UP) ;
-    bool bool_22 = var_hasSelector_8605.operator_not (SOURCE_FILE ("type-weak-reference.galgas", 209)).isValidAndTrue () ;
-    if (enumerator_8629.hasCurrentObject () && bool_22) {
-      while (enumerator_8629.hasCurrentObject () && bool_22) {
-        var_hasSelector_8605 = GALGAS_bool (kIsEqual, enumerator_8629.current_mValue (HERE).readProperty_string ().objectCompare (GALGAS_string ("selector"))) ;
-        enumerator_8629.gotoNextObject () ;
-        if (enumerator_8629.hasCurrentObject ()) {
-          bool_22 = var_hasSelector_8605.operator_not (SOURCE_FILE ("type-weak-reference.galgas", 209)).isValidAndTrue () ;
+  cEnumerator_propertyInCollectionListAST enumerator_8487 (temp_21.readProperty_mPropertyList (), kENUMERATION_UP) ;
+  while (enumerator_8487.hasCurrentObject ()) {
+    GALGAS_unifiedTypeMap_2D_entry var_t_8523 = extensionGetter_searchKey (constinArgument_inSemanticContext.readProperty_mTypeMap (), enumerator_8487.current_mPropertyTypeName (HERE), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 207)) ;
+    GALGAS_bool var_hasSelector_8603 = GALGAS_bool (false) ;
+    cEnumerator_lstringlist enumerator_8627 (enumerator_8487.current_mAttributeList (HERE), kENUMERATION_UP) ;
+    bool bool_22 = var_hasSelector_8603.operator_not (SOURCE_FILE ("type-weak-reference.galgas", 209)).isValidAndTrue () ;
+    if (enumerator_8627.hasCurrentObject () && bool_22) {
+      while (enumerator_8627.hasCurrentObject () && bool_22) {
+        var_hasSelector_8603 = GALGAS_bool (kIsEqual, enumerator_8627.current_mValue (HERE).readProperty_string ().objectCompare (GALGAS_string ("selector"))) ;
+        enumerator_8627.gotoNextObject () ;
+        if (enumerator_8627.hasCurrentObject ()) {
+          bool_22 = var_hasSelector_8603.operator_not (SOURCE_FILE ("type-weak-reference.galgas", 209)).isValidAndTrue () ;
         }
       }
     }
-    var_typedAttributeList_8378.addAssign_operation (var_t_8525, enumerator_8489.current_mPropertyName (HERE), enumerator_8489.current_mIsPublic (HERE), var_hasSelector_8605  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 212)) ;
-    var_allAttributeList_7454.addAssign_operation (var_t_8525, enumerator_8489.current_mPropertyName (HERE), enumerator_8489.current_mIsPublic (HERE), var_hasSelector_8605  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 217)) ;
+    var_typedAttributeList_8376.addAssign_operation (var_t_8523, enumerator_8487.current_mPropertyName (HERE), enumerator_8487.current_mIsPublic (HERE), var_hasSelector_8603  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 212)) ;
+    var_allAttributeList_7452.addAssign_operation (var_t_8523, enumerator_8487.current_mPropertyName (HERE), enumerator_8487.current_mIsPublic (HERE), var_hasSelector_8603  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 217)) ;
     {
-    var_attributeMap_8420.setter_insertKey (enumerator_8489.current_mPropertyName (HERE), var_t_8525, inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 222)) ;
+    var_attributeMap_8418.setter_insertKey (enumerator_8487.current_mPropertyName (HERE), var_t_8523, inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 222)) ;
     }
-    enumerator_8489.gotoNextObject () ;
+    enumerator_8487.gotoNextObject () ;
   }
   const GALGAS_weakReferenceDeclarationAST temp_23 = object ;
-  GALGAS_unifiedTypeMap_2D_entry var_referenceClassType_9018 = extensionGetter_searchKey (constinArgument_inSemanticContext.readProperty_mTypeMap (), temp_23.readProperty_mClassTypeName (), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 225)) ;
+  GALGAS_unifiedTypeMap_2D_entry var_referenceClassType_9016 = extensionGetter_searchKey (constinArgument_inSemanticContext.readProperty_mTypeMap (), temp_23.readProperty_mClassTypeName (), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 225)) ;
   const GALGAS_weakReferenceDeclarationAST temp_24 = object ;
-  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("weak reference ").add_operation (temp_24.readProperty_mWeakReferenceTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 229)), GALGAS_weakReferenceTypeForGeneration::constructor_new (var_selfType_6933, var_referenceClassType_9018, var_superClassEntry_7069, var_allAttributeList_7454, var_typedAttributeList_8378, extensionGetter_mGenerateHeaderInSeparateFile (var_selfType_6933, inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 236))  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 230))  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 228)) ;
+  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("weak reference ").add_operation (temp_24.readProperty_mWeakReferenceTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 229)), GALGAS_weakReferenceTypeForGeneration::constructor_new (var_selfType_6931, var_referenceClassType_9016, var_superClassEntry_7067, var_allAttributeList_7452, var_typedAttributeList_8376, extensionGetter_mGenerateHeaderInSeparateFile (var_selfType_6931, inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 236))  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 230))  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 228)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

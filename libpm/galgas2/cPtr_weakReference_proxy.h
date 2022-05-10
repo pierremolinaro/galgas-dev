@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  cPtr_weakReference_class : Base class for reference class class
+//  cPtr_weakReference_proxy : Base class for reference class class
 //
 //  This file is part of libpm library
 //
@@ -30,16 +30,16 @@ class acStrongPtr_class ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class cPtr_weakReference_class : public acPtr_class {
+class cPtr_weakReference_proxy : public acPtr_class {
 //--- Public default constructor
-  public: cPtr_weakReference_class (LOCATION_ARGS) ;
+  public: cPtr_weakReference_proxy (LOCATION_ARGS) ;
 
 //--- Destructor
-  public: virtual ~ cPtr_weakReference_class (void) ;
+  public: virtual ~ cPtr_weakReference_proxy (void) ;
 
 //--- Private property
   private: acStrongPtr_class * mStrongObject ;
-  public: acStrongPtr_class * strongObject (void) const { return mStrongObject ; } ;
+  public: acStrongPtr_class * strongObject (void) const { return mStrongObject ; }
 
 //--- Virtual methods from acPtr_class
   public: virtual void description (C_String &, const int32_t) const {} // Never invoked
@@ -53,8 +53,8 @@ class cPtr_weakReference_class : public acPtr_class {
   public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- No Copy
-  private: cPtr_weakReference_class (const cPtr_weakReference_class &) = delete ;
-  private: cPtr_weakReference_class & operator = (const cPtr_weakReference_class &) = delete ;
+  private: cPtr_weakReference_proxy (const cPtr_weakReference_proxy &) = delete ;
+  private: cPtr_weakReference_proxy & operator = (const cPtr_weakReference_proxy &) = delete ;
 
 //--- Friend
   friend class acStrongPtr_class ;

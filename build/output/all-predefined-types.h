@@ -23,7 +23,7 @@
 #include "galgas2/AC_GALGAS_enumAssociatedValues.h"
 #include "galgas2/AC_GALGAS_graph.h"
 #include "galgas2/acStrongPtr_class.h"
-#include "galgas2/cPtr_weakReference_class.h"
+#include "galgas2/cPtr_weakReference_proxy.h"
 #include "galgas2/AC_GALGAS_weak_reference.h"
 #include "command_line_interface/C_BoolCommandLineOption.h"
 #include "command_line_interface/C_UIntCommandLineOption.h"

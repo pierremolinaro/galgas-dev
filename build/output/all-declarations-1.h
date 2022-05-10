@@ -303,7 +303,8 @@ class GALGAS_unifiedTypeMap_2D_entry : public AC_GALGAS_root {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_unifiedTypeMap_2D_entry constructor_element (const class GALGAS_unifiedTypeMapElementClass & inOperand0
+  public: static class GALGAS_unifiedTypeMap_2D_entry constructor_element (const class GALGAS_unifiedTypeMapElementClass & inOperand0,
+                                                                           const class GALGAS_unifiedTypeMapElementClass & inOperand1
                                                                            COMMA_LOCATION_ARGS) ;
 
   public: static class GALGAS_unifiedTypeMap_2D_entry constructor_null (LOCATION_ARGS) ;
@@ -318,6 +319,7 @@ class GALGAS_unifiedTypeMap_2D_entry : public AC_GALGAS_root {
 
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_element (class GALGAS_unifiedTypeMapElementClass & outArgument0,
+                                                class GALGAS_unifiedTypeMapElementClass & outArgument1,
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const ;
 
@@ -330,7 +332,8 @@ class GALGAS_unifiedTypeMap_2D_entry : public AC_GALGAS_root {
 
 
 //--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_element (class GALGAS_unifiedTypeMapElementClass & outOperand0) const ;
+  public: VIRTUAL_IN_DEBUG bool optional_element (class GALGAS_unifiedTypeMapElementClass & outOperand0,
+                                                  class GALGAS_unifiedTypeMapElementClass & outOperand1) const ;
 
   public: VIRTUAL_IN_DEBUG bool optional_null () const ;
 
@@ -353,9 +356,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMap_2D_e
 
 class cEnumAssociatedValues_unifiedTypeMap_2D_entry_element : public cEnumAssociatedValues {
   public: const GALGAS_unifiedTypeMapElementClass mAssociatedValue0 ;
+  public: const GALGAS_unifiedTypeMapElementClass mAssociatedValue1 ;
 
 //--- Constructor
-  public: cEnumAssociatedValues_unifiedTypeMap_2D_entry_element (const GALGAS_unifiedTypeMapElementClass & inAssociatedValue0
+  public: cEnumAssociatedValues_unifiedTypeMap_2D_entry_element (const GALGAS_unifiedTypeMapElementClass & inAssociatedValue0,
+                                                                 const GALGAS_unifiedTypeMapElementClass & inAssociatedValue1
                                                                  COMMA_LOCATION_ARGS) ;
 
   public: virtual void description (C_String & ioString,

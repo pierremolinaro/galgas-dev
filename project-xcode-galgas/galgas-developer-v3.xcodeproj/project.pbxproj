@@ -123,8 +123,8 @@
 		CF45B187239AF8C400F16511 /* all-declarations-28.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF45B175239AF1FD00F16511 /* all-declarations-28.cpp */; };
 		CF4853222724629A0063154F /* acStrongPtr_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4853202724629A0063154F /* acStrongPtr_class.cpp */; };
 		CF4853232724629A0063154F /* acStrongPtr_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4853202724629A0063154F /* acStrongPtr_class.cpp */; };
-		CF485326272469250063154F /* cPtr_weakReference_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF485324272469250063154F /* cPtr_weakReference_class.cpp */; };
-		CF485327272469250063154F /* cPtr_weakReference_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF485324272469250063154F /* cPtr_weakReference_class.cpp */; };
+		CF485326272469250063154F /* cPtr_weakReference_proxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF485324272469250063154F /* cPtr_weakReference_proxy.cpp */; };
+		CF485327272469250063154F /* cPtr_weakReference_proxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF485324272469250063154F /* cPtr_weakReference_proxy.cpp */; };
 		CF4A1A592118A8B800BF7D12 /* all-declarations-27.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4A1A582118A8B800BF7D12 /* all-declarations-27.cpp */; };
 		CF4A1A5B2118A8EE00BF7D12 /* all-declarations-27.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4A1A582118A8B800BF7D12 /* all-declarations-27.cpp */; };
 		CF4E85961FF3EB6200A28AE6 /* option-galgas-5F-cli-5F-options-cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1A80BD1D7AD2050012A113 /* option-galgas-5F-cli-5F-options-cocoa.m */; };
@@ -744,8 +744,8 @@
 		CF45B175239AF1FD00F16511 /* all-declarations-28.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-28.cpp"; sourceTree = "<group>"; };
 		CF4853202724629A0063154F /* acStrongPtr_class.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = acStrongPtr_class.cpp; sourceTree = "<group>"; };
 		CF4853212724629A0063154F /* acStrongPtr_class.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = acStrongPtr_class.h; sourceTree = "<group>"; };
-		CF485324272469250063154F /* cPtr_weakReference_class.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cPtr_weakReference_class.cpp; sourceTree = "<group>"; };
-		CF485325272469250063154F /* cPtr_weakReference_class.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cPtr_weakReference_class.h; sourceTree = "<group>"; };
+		CF485324272469250063154F /* cPtr_weakReference_proxy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cPtr_weakReference_proxy.cpp; sourceTree = "<group>"; };
+		CF485325272469250063154F /* cPtr_weakReference_proxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cPtr_weakReference_proxy.h; sourceTree = "<group>"; };
 		CF4A1A582118A8B800BF7D12 /* all-declarations-27.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-27.cpp"; sourceTree = "<group>"; };
 		CF4C28B91EC227F700DE807B /* switch-fallthrough.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "switch-fallthrough.h"; sourceTree = "<group>"; };
 		CF4C995327301EDA000A6A07 /* all-declarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations.h"; sourceTree = "<group>"; };
@@ -1567,8 +1567,8 @@
 				CF8A32111278D21600E3EDC9 /* cProductionNameDescriptor.h */,
 				CFF8BEFC126614D9001B7E61 /* cPtr_object.cpp */,
 				CFF8BEFD126614D9001B7E61 /* cPtr_object.h */,
-				CF485324272469250063154F /* cPtr_weakReference_class.cpp */,
-				CF485325272469250063154F /* cPtr_weakReference_class.h */,
+				CF485324272469250063154F /* cPtr_weakReference_proxy.cpp */,
+				CF485325272469250063154F /* cPtr_weakReference_proxy.h */,
 				CF3D9FC71257733E0037D473 /* cSortedListElement.cpp */,
 				CF3D9FC81257733E0037D473 /* cSortedListElement.h */,
 				CF8A32121278D21600E3EDC9 /* cTemplateDelimiter.h */,
@@ -2280,7 +2280,7 @@
 				CFB3190817B3C553009424C2 /* C_UIntSet.cpp in Sources */,
 				CF9233D11BADB4C0001032DA /* mpz-xor.c in Sources */,
 				CF802963192A8FB00048D8CC /* C_CRC32.cpp in Sources */,
-				CF485326272469250063154F /* cPtr_weakReference_class.cpp in Sources */,
+				CF485326272469250063154F /* cPtr_weakReference_proxy.cpp in Sources */,
 				CF079F9D192E418B008FEFF6 /* C_Relation.cpp in Sources */,
 				CF079F9F192E418B008FEFF6 /* C_RelationSingleType.cpp in Sources */,
 				CF23747219967C4F0061D2D8 /* all-declarations-19.cpp in Sources */,
@@ -2552,7 +2552,7 @@
 				CF9233F11BADBD7C001032DA /* mpz-setbit.c in Sources */,
 				CFB3190917B3C553009424C2 /* C_UIntSet.cpp in Sources */,
 				CF9233D21BADB4C0001032DA /* mpz-xor.c in Sources */,
-				CF485327272469250063154F /* cPtr_weakReference_class.cpp in Sources */,
+				CF485327272469250063154F /* cPtr_weakReference_proxy.cpp in Sources */,
 				CF802964192A8FB00048D8CC /* C_CRC32.cpp in Sources */,
 				CF079F9E192E418B008FEFF6 /* C_Relation.cpp in Sources */,
 				CF079FA0192E418B008FEFF6 /* C_RelationSingleType.cpp in Sources */,
