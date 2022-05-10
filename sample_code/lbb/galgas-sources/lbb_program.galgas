@@ -23,7 +23,7 @@ message "a source text file with the .lbb extension"
     [!?boxTypeMap insertKey !mBoxTypeName !mPortNameList]
   end
 #--- Build box map and connections
-  var @boxInstanceMap boxInstanceMap = .emptySharedMap
+  var @boxInstanceMap boxInstanceMap = .emptyMap
   for (mBoxTypeName mBoxInstanceName mConnectionList) in  programAST.mBoxInstanceListAST do
     [boxTypeMap searchKey !mBoxTypeName ?let portNameList]
     if [portNameList length] != [mConnectionList length] then

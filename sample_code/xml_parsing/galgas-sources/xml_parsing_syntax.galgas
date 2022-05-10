@@ -34,12 +34,12 @@ rule <start_symbol>
   end
 #--- XML header
   $<?$
-  $name$ ?let @lstring name
+  $name$ ?* # let @lstring name
   repeat
   while 
-    $name$ ?let @lstring attributeName
+    $name$ ?* # let @lstring attributeName
     $=$
-    $value$ ?let @lstring attributeValue
+    $value$ ?* # let @lstring attributeValue
   end
   $?>$
 #--- Element list

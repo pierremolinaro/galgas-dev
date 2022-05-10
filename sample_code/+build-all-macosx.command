@@ -4,11 +4,11 @@ DIR=`dirname $0` &&
 #----------------- Build GALGAS command tool
 cd $DIR/../makefile-macosx && python build+release.py &&
 #----------------- Assignment language
-$DIR/../makefile-macosx/galgas --generate-many-cpp-files --Werror ${DIR}/assignment_language/+asl.galgasProject &&
-python ${DIR}/assignment_language/makefile-macosx/build.py &&
-${DIR}/assignment_language/makefile-macosx/asl ${DIR}/assignment_language/example.assignment_language &&
-gcc ${DIR}/assignment_language/example.c -o ${DIR}/assignment_language/example &&
-${DIR}/assignment_language/example &&
+# $DIR/../makefile-macosx/galgas --generate-many-cpp-files --Werror ${DIR}/assignment_language/+asl.galgasProject &&
+# python ${DIR}/assignment_language/makefile-macosx/build.py &&
+# ${DIR}/assignment_language/makefile-macosx/asl ${DIR}/assignment_language/example.assignment_language &&
+# gcc ${DIR}/assignment_language/example.c -o ${DIR}/assignment_language/example &&
+# ${DIR}/assignment_language/example &&
 #----------------- LOGO
 $DIR/../makefile-macosx/galgas --generate-many-cpp-files --Werror ${DIR}/logo/+logo.galgasProject &&
 python ${DIR}/logo/makefile-macosx/build.py &&

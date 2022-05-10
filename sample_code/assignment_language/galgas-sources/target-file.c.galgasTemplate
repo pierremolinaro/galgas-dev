@@ -1,9 +1,0 @@
-#include <stdio.h>
-
-int main (void) {
-%
-for (mInstruction) in INSTRUCTION_LIST do
-  %  %![mInstruction generateCcode]% ;\n%
-end
-%  return 0 ;
-}

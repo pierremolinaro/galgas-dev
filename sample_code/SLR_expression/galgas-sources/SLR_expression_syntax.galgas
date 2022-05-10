@@ -18,7 +18,7 @@ rule <Constant>
   !@uint outValue
 
 rule <StartSymbol> {
-  <Expression> ?let expressionTree ?let value
+  <Expression> ?let unused expressionTree ?let value
   log value
 }
   

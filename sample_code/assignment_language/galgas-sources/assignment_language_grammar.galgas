@@ -1,6 +1,0 @@
-grammar assignment_language_grammar "LL1" {
-syntax assignment_language_syntax
-
- <start_symbol> !@programAST programAST
-
-}
