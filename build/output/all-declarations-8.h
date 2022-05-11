@@ -20,26 +20,6 @@ class GALGAS_unifiedTypeDefinition extensionGetter_definition (const class GALGA
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension getter '@unifiedTypeMapEntry lkey' (as function)
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_lstring extensionGetter_lkey (const class GALGAS_unifiedTypeMapEntry & inObject,
-                                           class C_Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension getter '@unifiedTypeMapEntry key' (as function)
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_string extensionGetter_key (const class GALGAS_unifiedTypeMapEntry & inObject,
-                                         class C_Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Extension getter '@unifiedTypeMapEntry identifierRepresentation' (as function)
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -47,26 +27,6 @@ class GALGAS_string extensionGetter_key (const class GALGAS_unifiedTypeMapEntry 
 class GALGAS_string extensionGetter_identifierRepresentation (const class GALGAS_unifiedTypeMapEntry & inObject,
                                                               class C_Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension getter '@unifiedTypeMapEntry mIsPredefined' (as function)
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_bool extensionGetter_mIsPredefined (const class GALGAS_unifiedTypeMapEntry & inObject,
-                                                 class C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension getter '@unifiedTypeMapEntry mIsConcrete' (as function)
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_bool extensionGetter_mIsConcrete (const class GALGAS_unifiedTypeMapEntry & inObject,
-                                               class C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //

@@ -261,7 +261,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     end
     if not found then
       error mTypeName
-      :"the '@" + mTypeName + "' is not a descendant of the '@" + [castExpression.mResultType key] + "' type of the cast expression"
+      :"the '@" + mTypeName + "' is not a descendant of the '@" + [castExpression.mResultType definition].mTypeName.string + "' type of the cast expression"
     end
   #--- Declare a local constant ?
     let @string localConstantName

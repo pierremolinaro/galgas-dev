@@ -57,7 +57,7 @@ proc checkAssignmentTypes
   end
   if not ok then
     error inErrorLocation
-     : "target object type is '@" + [inTargetType key] + "' and cannot be assigned from an '@" + [inSourceType key] + "' object"
+     : "target object type is '@" + [inTargetType definition].mTypeName.string + "' and cannot be assigned from an '@" + [inSourceType definition].mTypeName.string + "' object"
   end
 }
 
@@ -84,7 +84,7 @@ proc checkAssignmentTypeWithImplicitGetterCall
     end
   end
 #--- Check for a direct property access or for a conversion getter
-  if not ok, let [[inSourceType mPropertyMap] searchKey ![inTargetType key] ?let isPublic ?* ?let propertyType] then
+  if not ok, let [[inSourceType mPropertyMap] searchKey ![inTargetType definition].mTypeName.string ?let isPublic ?* ?let propertyType] then
     if not isPublic then
       error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
     end
@@ -92,13 +92,13 @@ proc checkAssignmentTypeWithImplicitGetterCall
       !propertyType
       !inErrorLocation
       !ioExpression
-      ![inTargetType key] 
+      ![inTargetType definition].mTypeName.string 
     }
     ioExpression = conversionExpression
     ok = propertyType == inTargetType
-  elsif (not ok) && [[inSourceType mGetterMap] hasKey ![inTargetType key]] then
+  elsif (not ok) && [[inSourceType mGetterMap] hasKey ![inTargetType definition].mTypeName.string] then
     [[inSourceType mGetterMap] searchKey
-      ![inTargetType lkey]
+      ![inTargetType definition].mTypeName
       ?let kind
       ?let @functionSignature argumentTypeList
       ?*
@@ -114,7 +114,7 @@ proc checkAssignmentTypeWithImplicitGetterCall
       !kind
       !ioExpression
       !{}
-      ![inTargetType key]
+      ![inTargetType definition].mTypeName.string
       !{}
       !hasCompilerArgument
     }
@@ -122,9 +122,9 @@ proc checkAssignmentTypeWithImplicitGetterCall
   end
   if not ok then
     error inErrorLocation
-     : "target object type is '@" + [inTargetType key] + "' and cannot be assigned from an '@" + [inSourceType key]
+     : "target object type is '@" + [inTargetType definition].mTypeName.string + "' and cannot be assigned from an '@" + [inSourceType definition].mTypeName.string
      + "' object; this type have no '"
-    + [inTargetType key] + "' getter without argument that returns a '@" + [inTargetType key] + "' object"
+    + [inTargetType definition].mTypeName.string + "' getter without argument that returns a '@" + [inTargetType definition].mTypeName.string + "' object"
   end
 }
 
@@ -140,8 +140,8 @@ proc checkDiadicOperator
 {
   if not inOperandIsHandled then
     error inErrorLocation
-    : "left operand type is '@" + [inLeftType key] + "' and does not accept '" + inOperatorNameForErrorMessage 
-      + "' operator (right operand type is '@" + [inRightType key] + ")"
+    : "left operand type is '@" + [inLeftType definition].mTypeName.string + "' and does not accept '" + inOperatorNameForErrorMessage 
+      + "' operator (right operand type is '@" + [inRightType definition].mTypeName.string + ")"
   else
     var @unifiedTypeMapEntry rightType = inRightType
     var @bool ok = inLeftType == rightType
@@ -150,7 +150,7 @@ proc checkDiadicOperator
       ok = inLeftType == rightType
     end
 #--- Check for a direct property access or for a conversion getter
-    if not ok, let [[inRightType mPropertyMap] searchKey ![inLeftType key] ?let isPublic ?* ?let propertyType] then
+    if not ok, let [[inRightType mPropertyMap] searchKey ![inLeftType definition].mTypeName.string ?let isPublic ?* ?let propertyType] then
       if not isPublic then
         error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
       end
@@ -158,13 +158,13 @@ proc checkDiadicOperator
         !propertyType
         !inErrorLocation
         !ioRightExpression
-        ![inLeftType key] 
+        ![inLeftType definition].mTypeName.string 
       }
       ioRightExpression = conversionExpression
       ok = propertyType == inLeftType
-    elsif (not ok) && [[inRightType mGetterMap] hasKey ![inLeftType key]] then
+    elsif (not ok) && [[inRightType mGetterMap] hasKey ![inLeftType definition].mTypeName.string] then
       [[inRightType mGetterMap] searchKey
-        ![inLeftType lkey]
+        ![inLeftType definition].mTypeName
         ?let kind
         ?let @functionSignature argumentTypeList
         ?*
@@ -180,7 +180,7 @@ proc checkDiadicOperator
         !kind
         !ioRightExpression
         !{}
-        ![inLeftType key]
+        ![inLeftType definition].mTypeName.string
         !{}
         !hasCompilerArgument
       }
@@ -188,10 +188,10 @@ proc checkDiadicOperator
     end
     if not ok then
       error inErrorLocation
-      : "left operand type of '" + inOperatorNameForErrorMessage + "' operator is '@" + [inLeftType key]
-      + "', right operand type is '@" + [inRightType key]
+      : "left operand type of '" + inOperatorNameForErrorMessage + "' operator is '@" + [inLeftType definition].mTypeName.string
+      + "', right operand type is '@" + [inRightType definition].mTypeName.string
       + "', it should be either the same, either inherits from left operand type, either have a '"
-      + [inLeftType key] + "' getter without argument that returns a '@" + [inLeftType key] + "' object"
+      + [inLeftType definition].mTypeName.string + "' getter without argument that returns a '@" + [inLeftType definition].mTypeName.string + "' object"
     end
   end
 }

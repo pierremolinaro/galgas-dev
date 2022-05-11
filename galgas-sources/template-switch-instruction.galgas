@@ -161,8 +161,8 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
           var associatedValueIndex = 0
           for (mType) in associatedTypeList, (mExtractedValueTypeName mExtractedValueName *) in mAssociatedValuesExtraction do
             if mExtractedValueTypeName.string != "" then # Explicit type ?
-              if [mType key] != mExtractedValueTypeName.string then
-                error mExtractedValueTypeName : "the required type is '@" + [mType key] + "'"
+              if [mType definition].mTypeName.string != mExtractedValueTypeName.string then
+                error mExtractedValueTypeName : "the required type is '@" + [mType definition].mTypeName.string + "'"
               end
             end
             if firstConstant & (mExtractedValueName.string != "") then
@@ -175,7 +175,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
         end
       else
         error mValue
-        :"'" + mValue + "' is not a constant of '@" + [switchExpression.mResultType key] + "' enumeration type"
+        :"'" + mValue + "' is not a constant of '@" + [switchExpression.mResultType definition].mTypeName.string + "' enumeration type"
       end
       firstConstant = false
     end

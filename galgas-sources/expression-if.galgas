@@ -136,13 +136,13 @@ override method @ifExpressionAST analyzeSemanticExpression
     ?let else_expression
   ]
 #--- Check 'if' expression is boolean
-  if [if_expression.mResultType key] != "bool" then
+  if [if_expression.mResultType definition].mTypeName.string != "bool" then
     error self.mOperatorLocation
-    :"the test expression type is '@" + [if_expression.mResultType key] + "', it should be '@bool'"
+    :"the test expression type is '@" + [if_expression.mResultType definition].mTypeName.string + "', it should be '@bool'"
     :outExpression
   elsif then_expression.mResultType != else_expression.mResultType then
     error self.mOperatorLocation
-    :"operand expression types are '@" + [then_expression.mResultType key] + "' and '@"+ [else_expression.mResultType key] + "': they should be the same"
+    :"operand expression types are '@" + [then_expression.mResultType definition].mTypeName.string + "' and '@"+ [else_expression.mResultType definition].mTypeName.string + "': they should be the same"
     :outExpression
   else
   #--- Generate expression

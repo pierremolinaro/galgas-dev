@@ -75,6 +75,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
     ?let receiverExpression
   ]
   let @unifiedTypeMapEntry receiverType = receiverExpression.mResultType
+  let receiverTypeName = [receiverType definition].mTypeName.string
   #--------------------------------------- Property ?
   if [[receiverType mTypeKindEnum] isStructType] || [[receiverType mTypeKindEnum] isClassType],
      [self.mExpressionList length] == 0,
@@ -143,7 +144,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
         end
         if matchingReaderCount == 0 then
           error self.mGetterName
-          : "the '@"+ [receiverType key] + "' struct type does not define the '" + self.mGetterName.string
+          : "the '@" + receiverTypeName + "' struct type does not define the '" + self.mGetterName.string
           + "' getter, and none of its fields defines it"
           : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
         elsif matchingReaderCount > 1 then
@@ -153,24 +154,24 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
             between s += ", "
           end
           error self.mGetterName
-          : "the '@"+ [receiverType key] + "' struct type does not define the '" + self.mGetterName.string
+          : "the '@"+ receiverTypeName + "' struct type does not define the '" + self.mGetterName.string
           + "' getter, and several of its fields defines it:" + s + " (exactly one field should define it)"
           : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
         end
       elsif [getterMap count] == 0 then
         error self.mGetterName
-        : "the '@"+ [receiverType key] + "' type does not define any getter"
+        : "the '@"+ receiverTypeName + "' type does not define any getter"
         : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       else
         error self.mGetterName
-        : "the '@"+ [receiverType key] + "' type does not define the '" + self.mGetterName + "' getter"
+        : "the '@"+ receiverTypeName + "' type does not define the '" + self.mGetterName + "' getter"
         : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
         fixit { replace [getterMap keyList] }
       end
     end
   #--- Analysis arguments
     if [self.mExpressionList length] != [getterFormalArgumentTypeList length] then
-      error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + [receiverType key] + "' requires "
+      error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + receiverTypeName + "' requires "
       + [[getterFormalArgumentTypeList length] string] + " parameter(s), while this call has "
       + [[self.mExpressionList length] string] + " parameter(s)" : outExpression
     else
@@ -180,7 +181,6 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
         if mFormalSelector.string != mActualSelector.string then
           let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
           error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
-  #        error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
         end
         [mExpression templateExpressionAnalysis
           !inUsefulnessCallerEntityName
@@ -243,7 +243,7 @@ override method @templateConstructorAST templateExpressionAnalysis
   var @semanticExpressionListForGeneration constructorEffectiveParameterList
   if [self.mExpressionList length] != [constructorFormalArgumentTypeList length] then
     error self.mConstructorName
-    : "calling the '" + self.mConstructorName + "' constructor of '@" + [constructorType key] + "' requires "
+    : "calling the '" + self.mConstructorName + "' constructor of '@" + [constructorType definition].mTypeName.string + "' requires "
     + [[constructorFormalArgumentTypeList length] string] + " parameter(s), while this call has "
     + [[self.mExpressionList length] string] + " parameter(s)" 
     : constructorEffectiveParameterList
@@ -557,7 +557,7 @@ override method @templateNotOperatorAST templateExpressionAnalysis
   let @unifiedTypeMapEntry type = expression.mResultType
   if not [[type mHandledOperatorFlags] prefixNotOperator] then
     error self.mOperatorLocation
-    : "operand type is '@" + [type key] + "' and does not support the 'not' operator"
+    : "operand type is '@" + [type definition].mTypeName.string + "' and does not support the 'not' operator"
     :outExpression
   else
   #--- Generate expression
@@ -588,7 +588,7 @@ override method @templateLogicalNegateAST templateExpressionAnalysis
   let @unifiedTypeMapEntry type = expression.mResultType
   if not [[type mHandledOperatorFlags] prefixTildeOperator] then
     error self.mOperatorLocation
-    : "operand type is '@" + [type key] + "' and does not support the '~' operator"
+    : "operand type is '@" + [type definition].mTypeName.string + "' and does not support the '~' operator"
     :outExpression
   else
   #--- Generate expression
@@ -629,11 +629,11 @@ override method @templateTestDynamicClassAST templateExpressionAnalysis
     end
     if not found then
       error self.mTypeName
-      :"the '@" + self.mTypeName + "' is not a descendant of the '@" + [expression.mResultType key] + "' type of the cast expression"
+      :"the '@" + self.mTypeName + "' is not a descendant of the '@" + [expression.mResultType definition].mTypeName.string + "' type of the cast expression"
     end
   else
     error expression.mLocation: "expression should be a class instance: it is an @"
-     +  [expression.mResultType key] + " instance"
+     +  [expression.mResultType definition].mTypeName.string + " instance"
   end
 #--- Generate expression
   outExpression = @testDynamicClassInExpressionForGeneration.new {
@@ -1062,7 +1062,7 @@ override method @templateUnaryMinusOperationAST templateExpressionAnalysis
   let @unifiedTypeMapEntry type = expression.mResultType
   if not [[type mHandledOperatorFlags] prefixMinusOperator] then
     error self.mOperatorLocation
-    : "operand type is '@" + [type key] + "' and does not support the prefix minus operator"
+    : "operand type is '@" + [type definition].mTypeName.string + "' and does not support the prefix minus operator"
     :outExpression
   else
   #--- Generate expression
@@ -1136,9 +1136,9 @@ override method @templateEqualTestAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if [leftType key] != [rightType key] then
+  if [leftType definition].mTypeName.string != [rightType definition].mTypeName.string then
     error self.mOperatorLocation
-    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '==' operator requires the types are the same"
+    : "left operand type is '@" + [leftType definition].mTypeName.string + "', right operand type is '@" + [rightType definition].mTypeName.string + "': '==' operator requires the types are the same"
     :outExpression
   else
   #--- Generate expression
@@ -1177,9 +1177,9 @@ override method @templateNonEqualTestAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if [leftType key] != [rightType key] then
+  if [leftType definition].mTypeName.string != [rightType definition].mTypeName.string then
     error self.mOperatorLocation
-    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '!=' operator requires the types are the same"
+    : "left operand type is '@" + [leftType definition].mTypeName.string + "', right operand type is '@" + [rightType definition].mTypeName.string + "': '!=' operator requires the types are the same"
     :outExpression
   else
   #--- Generate expression
@@ -1220,11 +1220,11 @@ override method @templateStrictInfTestAST templateExpressionAnalysis
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
   if not [[leftType mHandledOperatorFlags] isComparable] then
     error self.mOperatorLocation
-    : "left operand type is '@" + [leftType key] + "' and does not support the '<' operator"
+    : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not support the '<' operator"
     :outExpression
-  elsif [leftType key] != [rightType key] then
+  elsif [leftType definition].mTypeName.string != [rightType definition].mTypeName.string then
     error self.mOperatorLocation
-    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '<' operator requires the types are the same"
+    : "left operand type is '@" + [leftType definition].mTypeName.string + "', right operand type is '@" + [rightType definition].mTypeName.string + "': '<' operator requires the types are the same"
     :outExpression
   else
   #--- Generate expression
@@ -1265,11 +1265,11 @@ override method @templateInfOrEqualTestAST templateExpressionAnalysis
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
   if not [[leftType mHandledOperatorFlags] isComparable] then
     error self.mOperatorLocation
-    : "left operand type is '@" + [leftType key] + "' and does not support the '<=' operator"
+    : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not support the '<=' operator"
     :outExpression
-  elsif [leftType key] != [rightType key] then
+  elsif [leftType definition].mTypeName.string != [rightType definition].mTypeName.string then
     error self.mOperatorLocation
-    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '<=' operator requires the types are the same"
+    : "left operand type is '@" + [leftType definition].mTypeName.string + "', right operand type is '@" + [rightType definition].mTypeName.string + "': '<=' operator requires the types are the same"
     :outExpression
   else
   #--- Generate expression
@@ -1310,11 +1310,11 @@ override method @templateStrictSupTestAST templateExpressionAnalysis
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
   if not [[leftType mHandledOperatorFlags] isComparable] then
     error self.mOperatorLocation
-    : "left operand type is '@" + [leftType key] + "' and does not support the '>' operator"
+    : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not support the '>' operator"
     :outExpression
-  elsif [leftType key] != [rightType key] then
+  elsif [leftType definition].mTypeName.string != [rightType definition].mTypeName.string then
     error self.mOperatorLocation
-    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '>' operator requires the types are the same"
+    : "left operand type is '@" + [leftType definition].mTypeName.string + "', right operand type is '@" + [rightType definition].mTypeName.string + "': '>' operator requires the types are the same"
     :outExpression
   else
   #--- Generate expression
@@ -1355,11 +1355,11 @@ override method @templateSupOrEqualTestAST templateExpressionAnalysis
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
   if not [[leftType mHandledOperatorFlags] isComparable] then
     error self.mOperatorLocation
-    : "left operand type is '@" + [leftType key] + "' and does not support the '>=' operator"
+    : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not support the '>=' operator"
     :outExpression
-  elsif [leftType key] != [rightType key] then
+  elsif [leftType definition].mTypeName.string != [rightType definition].mTypeName.string then
     error self.mOperatorLocation
-    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '>=' operator requires the types are the same"
+    : "left operand type is '@" + [leftType definition].mTypeName.string + "', right operand type is '@" + [rightType definition].mTypeName.string + "': '>=' operator requires the types are the same"
     :outExpression
   else
   #--- Generate expression
@@ -1400,11 +1400,11 @@ override method @templateLeftShiftOperationAST templateExpressionAnalysis
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
   if not [[leftType mHandledOperatorFlags] infixShiftOperator] then
     error self.mOperatorLocation
-    : "left operand type is '@" + [leftType key] + "' and does not support a shift operator"
+    : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not support a shift operator"
     :outExpression
-  elsif [rightType key] != "uint" then
+  elsif [rightType definition].mTypeName.string != "uint" then
     error self.mOperatorLocation
-    : "for a shift operator, right operand type should be '@uint': it is '@" + [rightType key] + "'"
+    : "for a shift operator, right operand type should be '@uint': it is '@" + [rightType definition].mTypeName.string + "'"
     :outExpression
   else
   #--- Generate expression
@@ -1445,11 +1445,11 @@ override method @templateRightShiftOperationAST templateExpressionAnalysis
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
   if not [[leftType mHandledOperatorFlags] infixShiftOperator] then
     error self.mOperatorLocation
-    : "left operand type is '@" + [leftType key] + "' and does not support a shift operator"
+    : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not support a shift operator"
     :outExpression
-  elsif [rightType key] != "uint" then
+  elsif [rightType definition].mTypeName.string != "uint" then
     error self.mOperatorLocation
-    : "for a shift operator, right operand type should be '@uint': it is '@" + [rightType key] + "'"
+    : "for a shift operator, right operand type should be '@uint': it is '@" + [rightType definition].mTypeName.string + "'"
     :outExpression
   else
   #--- Generate expression
@@ -1519,8 +1519,8 @@ override method @templateInstructionExpressionAST templateInstructionAnalysis
     !inAnalysisContext
     ?let expression
   ]
-  if [expression.mResultType key] != "string" then
-    error self.mLocation:"expression type should be '@string' (it is '@" + [expression.mResultType key] + "')"
+  if [expression.mResultType definition].mTypeName.string != "string" then
+    error self.mLocation:"expression type should be '@string' (it is '@" + [expression.mResultType definition].mTypeName.string + "')"
   end
   ioInstructionList += !@templateInstructionExpressionForGeneration.new {!expression}
 }
@@ -1539,8 +1539,8 @@ override method @templateBlockInstructionAST templateInstructionAnalysis
     !inAnalysisContext
     ?let expression
   ]
-  if [expression.mResultType key] != "uint" then
-    error self.mLocation:"expression type should be '@uint' (it is '@" + [expression.mResultType key] + "')"
+  if [expression.mResultType definition].mTypeName.string != "uint" then
+    error self.mLocation:"expression type should be '@uint' (it is '@" + [expression.mResultType definition].mTypeName.string + "')"
   end
   var blockInstructionList = @templateInstructionListForGeneration {}
   templateInstructionListAnalysis (
@@ -1592,8 +1592,8 @@ override method @templateInstructionIfAST templateInstructionAnalysis
       !inAnalysisContext
       ?let expression
     ]
-    if [expression.mResultType key] != "bool" then
-      error expression.mLocation : "'if' expression type should be '@bool' (it is '@" + [expression.mResultType key] + "')"
+    if [expression.mResultType definition].mTypeName.string != "bool" then
+      error expression.mLocation : "'if' expression type should be '@bool' (it is '@" + [expression.mResultType definition].mTypeName.string + "')"
     end
     var instructionList = @templateInstructionListForGeneration {}
     templateInstructionListAnalysis (

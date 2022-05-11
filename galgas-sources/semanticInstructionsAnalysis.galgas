@@ -228,8 +228,8 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
 #--- Check type
   if inFormalArgumentType != parameterType then
     error self.mOutputInputActualParameterName
-    :"the parameter object has the '@" + [parameterType key]
-    + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType key] + "'"
+    :"the parameter object has the '@" + [parameterType definition].mTypeName.string
+    + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType definition].mTypeName.string + "'"
   end
 #--- Check for exclusive access
   if [ioExclusiveVariableSet hasKey !self.mOutputInputActualParameterName.string] then
@@ -269,7 +269,7 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
   end
   let defaultConstructorName = [inFormalArgumentType mDefaultConstructorName]
   if defaultConstructorName == "" then
-    error self.mActualSelector : "the formal parameter type @" + [inFormalArgumentType key] + " should support the default constructor"
+    error self.mActualSelector : "the formal parameter type @" + [inFormalArgumentType definition].mTypeName.string + " should support the default constructor"
   end
 #--- Generate actual parameter
   let cppVarName = "joker_" + [self.mActualSelector.location locationIndex]
@@ -305,7 +305,7 @@ override method @outputInputJokerParameterAST checkAgainstFormalArgument
   end
   let defaultConstructorName = [inFormalArgumentType mDefaultConstructorName]
   if defaultConstructorName == "" then
-    error self.mQualifierLocation : "the formal parameter type @" + [inFormalArgumentType key] + " should support the default constructor"
+    error self.mQualifierLocation : "the formal parameter type @" + [inFormalArgumentType definition].mTypeName.string + " should support the default constructor"
   end
 #--- Generate actual parameter
   let cppVarName = "joker_" + [self.mQualifierLocation locationIndex] + "_" + self.mJokerIndex
@@ -352,8 +352,8 @@ override method @inputActualExistingVariableParameterAST checkAgainstFormalArgum
 #--- Check type
   if inFormalArgumentType != parameterType then
     error self.mInputActualParameterName
-    :"the parameter object has the '@" + [parameterType key]
-    + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType key] + "'"
+    :"the parameter object has the '@" + [parameterType definition].mTypeName.string
+    + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType definition].mTypeName.string + "'"
   end
 #--- Check for exclusive access
   if [ioExclusiveVariableSet hasKey !self.mInputActualParameterName.string] then
@@ -402,8 +402,8 @@ override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
   #--- Check type
     if inFormalArgumentType != parameterType then
       error self.mInputActualSelfPropertyName
-      :"the parameter object has the '@" + [parameterType key]
-      + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType key] + "'"
+      :"the parameter object has the '@" + [parameterType definition].mTypeName.string
+      + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType definition].mTypeName.string + "'"
     end
   #--- Generate actual parameter
     ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
@@ -414,30 +414,6 @@ override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
   else
     error self.mInputActualSelfPropertyName : "'self' not available in this context"
   end
-  
-  
-  
-#  var @unifiedTypeMapEntry parameterType
-#  var @string targetVariableCppName
-#  if [inAnalysisContext.mutableSelfType isNull] then
-#    error self.mInputActualSelfPropertyName: "'self' cannot be used in this context"
-#    : parameterType, targetVariableCppName
-#  else
-#    let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
-#    [propertyMap searchKey !self.mInputActualSelfPropertyName ?2* ?parameterType]
-#    targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [self.mInputActualSelfPropertyName.string identifierRepresentation]
-#  end
-##--- Check type
-#  if inFormalArgumentType != parameterType then
-#    error self.mInputActualSelfPropertyName
-#    :"the parameter object has the '@" + [parameterType key]
-#    + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType key] + "'"
-#  end
-##--- Generate actual parameter
-#  ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
-#    !parameterType
-#    !targetVariableCppName
-#  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -470,8 +446,8 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
     let parameterType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mInputOptionalActualTypeName]
     if inFormalArgumentType != parameterType then
       error self.mInputActualParameterName
-      :"the parameter object has the '@" + [parameterType key]
-      + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType key] + "'"
+      :"the parameter object has the '@" + [parameterType definition].mTypeName.string
+      + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType definition].mTypeName.string + "'"
     end
   end
 #--- Declare local variable
@@ -528,8 +504,8 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
     let parameterType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mInputOptionalActualTypeName]
     if inFormalArgumentType != parameterType then
       error self.mInputActualParameterName
-      :"the parameter object has the '@" + [parameterType key]
-      + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType key] + "'"
+      :"the parameter object has the '@" + [parameterType definition].mTypeName.string
+      + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType definition].mTypeName.string + "'"
     end
   end
 #--- Declare local constant
@@ -751,12 +727,12 @@ proc checkExpressionIsBoolean
         }
       else
         error inErrorLocation
-        : "the '@"+ [expressionType key] + "' struct type defines an attribute named 'bool', but its type is not '@bool'"
+        : "the '@"+ [expressionType definition].mTypeName.string + "' struct type defines an attribute named 'bool', but its type is not '@bool'"
         : outExpression
       end
     else
       error inErrorLocation
-      : "the '@"+ [expressionType key] + "' struct type does not define an attribute named 'bool'"
+      : "the '@"+ [expressionType definition].mTypeName.string + "' struct type does not define an attribute named 'bool'"
       : outExpression
     end
   else
@@ -782,11 +758,11 @@ proc checkExpressionIsBoolean
     else
       if [[expressionType mGetterMap] count] == 0 then
         error inErrorLocation
-        : "the expression type is not '@bool', but '@"+ [expressionType key] + "', and this type does not define the 'bool' getter"
+        : "the expression type is not '@bool', but '@"+ [expressionType definition].mTypeName.string + "', and this type does not define the 'bool' getter"
         : outExpression
       else
         error inErrorLocation
-        : "the expression type is not '@bool', but '@"+ [expressionType key] + "', and this type does not define the 'bool' getter "
+        : "the expression type is not '@bool', but '@"+ [expressionType definition].mTypeName.string + "', and this type does not define the 'bool' getter "
         : outExpression
         fixit { replace [[expressionType mGetterMap] keyList] }
       end

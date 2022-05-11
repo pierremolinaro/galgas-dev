@@ -293,26 +293,27 @@ refclass @arrayTypeForGeneration : @semanticTypeForGeneration {
 override method @arrayTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
+  let selfTypeDefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper typeGenerationTemplate.arrayTypeHeader1
-    ![self.mSelfTypeEntry  key]
-    ![self.mSelfTypeEntry  identifierRepresentation]
+    !selfTypeDefinition.mTypeName.string
+    ![self.mSelfTypeEntry identifierRepresentation]
     ![self.mElementTypeEntry identifierRepresentation]
     !self.mDimension
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![self.mSelfTypeEntry  key]
-    ![self.mSelfTypeEntry  identifierRepresentation]
-    ![self.mSelfTypeEntry  mIsConcrete]
-    ![self.mSelfTypeEntry  mConstructorMap]
-    ![self.mSelfTypeEntry  mGetterMap]
-    ![self.mSelfTypeEntry  mSetterMap]
-    ![self.mSelfTypeEntry  mInstanceMethodMap]
-    ![self.mSelfTypeEntry  mClassMethodMap]
-    ![self.mSelfTypeEntry  mOptionalMethodMap]
-    ![self.mSelfTypeEntry  mEnumerationDescriptor]
-    ![self.mSelfTypeEntry  mHandledOperatorFlags]
-    ![self.mSelfTypeEntry  mAddAssignOperatorArguments]
-    ![self.mSelfTypeEntry  mTypeForEnumeratedElement]
+    !selfTypeDefinition.mTypeName.string
+    ![selfTypeDefinition.mTypeName.string identifierRepresentation]
+    !selfTypeDefinition.mIsConcrete
+    !selfTypeDefinition.mConstructorMap
+    !selfTypeDefinition.mGetterMap
+    !selfTypeDefinition.mSetterMap
+    !selfTypeDefinition.mInstanceMethodMap
+    !selfTypeDefinition.mClassMethodMap
+    !selfTypeDefinition.mOptionalMethodMap
+    !selfTypeDefinition.mEnumerationDescriptor
+    !selfTypeDefinition.mHandledOperatorFlags
+    !selfTypeDefinition.mAddAssignOperatorArguments
+    !selfTypeDefinition.mTypeForEnumeratedElement
   ]
  }
 
@@ -322,7 +323,8 @@ override method @arrayTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
+  let selfTypeDefinition = [self.mSelfTypeEntry definition]
+  [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
   [self.mElementTypeEntry addHeaderFileName !?ioInclusionSet]
 
   var suffixList = @stringlist {}
@@ -332,8 +334,8 @@ override method @arrayTypeForGeneration appendSpecificImplementation
     idx += 1
   end
   outImplementation = [filewrapper typeGenerationTemplate.arrayTypeSpecificImplementation
-    ![self.mSelfTypeEntry  key]
-    ![self.mSelfTypeEntry  identifierRepresentation]
+    !selfTypeDefinition.mTypeName.string
+    ![self.mSelfTypeEntry identifierRepresentation]
     ![self.mElementTypeEntry identifierRepresentation]
     !self.mDimension
     !suffixList

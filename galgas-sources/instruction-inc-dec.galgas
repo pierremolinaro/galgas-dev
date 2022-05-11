@@ -345,7 +345,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
 #--- Check target type accepts incrementation
   if not [[targetType mHandledOperatorFlags] incDecOperator] then
     error self.mInstructionLocation
-    :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '++', '--' operators"
+    :"the target object has the '@" + [targetType definition].mTypeName.string + "' type, but this type does not support the '++', '--' operators"
   end
 #--- Generate instruction
   ioInstructionListForGeneration += !@incDecInstructionForGeneration.new {
@@ -382,7 +382,7 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
 #--- Check target type accepts incrementation
   if not [[targetType mHandledOperatorFlags] incDecOperator] then
     error self.mInstructionLocation
-    :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '&++', '&--' operators"
+    :"the target object has the '@" + [targetType definition].mTypeName.string + "' type, but this type does not support the '&++', '&--' operators"
   end
 #--- Generate instruction
   ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration.new {
@@ -410,7 +410,7 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
   #--- Check target type accepts incrementation
     if not [[selfType mHandledOperatorFlags] incDecOperator] then
       error self.mInstructionLocation
-      :"the target object has the '@" + [selfType key] + "' type, but this type does not support the '&++' and  '&--' operators"
+      :"the target object has the '@" + [selfType definition].mTypeName.string + "' type, but this type does not support the '&++' and  '&--' operators"
     end
   #--- Generate instruction
     ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration.new {
@@ -423,29 +423,6 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
   else
     error self.mInstructionLocation : "'self' not available in this context"
   end
-
-#--- Analyze "self", as receiver expression
-#  var @unifiedTypeMapEntry selfTypeEntry
-#  var @string selfObjectCppName
-#  if [inAnalysisContext.mutableSelfType isNull] then
-#    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
-#  else
-#    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-#    selfTypeEntry = inAnalysisContext.mutableSelfType
-#  end
-##--- Check target type accepts incrementation
-#  if not [[selfTypeEntry mHandledOperatorFlags] incDecOperator] then
-#    error self.mInstructionLocation
-#    :"the target object has the '@" + [selfTypeEntry key] + "' type, but this type does not support the '&++' and  '&--' operators"
-#  end
-##--- Generate instruction
-#  ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration.new {
-#    !self.mInstructionLocation
-#    !selfObjectCppName
-#    !selfTypeEntry
-#    !{}
-#    !self.mKind
-#   }
 }
 
 #·····················································································································*
@@ -464,7 +441,7 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
   #--- Check target type accepts incrementation
     if not [[selfType mHandledOperatorFlags] incDecOperator] then
       error self.mInstructionLocation
-      :"the target object has the '@" + [selfType key] + "' type, but this type does not support the '++' and  '--' operators"
+      :"the target object has the '@" + [selfType definition].mTypeName.string + "' type, but this type does not support the '++' and  '--' operators"
     end
   #--- Generate instruction
     ioInstructionListForGeneration += !@incDecInstructionForGeneration.new {
@@ -477,31 +454,6 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
   else
     error self.mInstructionLocation : "'self' not available in this context"
   end
-
-
-
-#--- Analyze "self", as receiver expression
-#  var @unifiedTypeMapEntry selfTypeEntry
-#  var @string selfObjectCppName
-#  if [inAnalysisContext.mutableSelfType isNull] then
-#    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
-#  else
-#    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-#    selfTypeEntry = inAnalysisContext.mutableSelfType
-#  end
-##--- Check target type accepts incrementation
-#  if not [[selfTypeEntry mHandledOperatorFlags] incDecOperator] then
-#    error self.mInstructionLocation
-#    :"the target object has the '@" + [selfTypeEntry key] + "' type, but this type does not support the '++' and  '--' operators"
-#  end
-##--- Generate instruction
-#  ioInstructionListForGeneration += !@incDecInstructionForGeneration.new {
-#    !self.mInstructionLocation
-#    !selfObjectCppName
-#    !selfTypeEntry
-#    !{}
-#    !self.mKind
-#   }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

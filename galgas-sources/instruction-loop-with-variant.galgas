@@ -151,7 +151,7 @@ override method @loopInstructionWithVariantAST analyzeSemanticInstruction
 #--- Check variant expression type is @uint
   if variantExpression.mResultType != inAnalysisContext.mPredefinedTypes.mUIntType then
     error self.mEndOfVariantExpression
-    : "the variant expression type should be '@" + [inAnalysisContext.mPredefinedTypes.mUIntType key] + "', but it has '@" + [variantExpression.mResultType key] + "' type"
+    : "the variant expression type should be '@" + [inAnalysisContext.mPredefinedTypes.mUIntType definition].mTypeName.string + "', but it has '@" + [variantExpression.mResultType definition].mTypeName.string + "' type"
   end
 #--- Loop expression
   [self.mLoopExpression analyzeSemanticExpression
@@ -165,7 +165,7 @@ override method @loopInstructionWithVariantAST analyzeSemanticInstruction
 #--- Check loop expression type is @bool
   if loopExpression.mResultType != inAnalysisContext.mPredefinedTypes.mBoolType then
     error self.mEndOfLoopExpression
-    : "the loop expression type should be '@" + [inAnalysisContext.mPredefinedTypes.mBoolType key] + "', but it has '@" + [loopExpression.mResultType key] + "' type"
+    : "the loop expression type should be '@" + [inAnalysisContext.mPredefinedTypes.mBoolType definition].mTypeName.string + "', but it has '@" + [loopExpression.mResultType definition].mTypeName.string + "' type"
   end
 #--- Begin override for analyze loop instruction list
   [!?ioVariableMap openOverrideForRepeatBlock]

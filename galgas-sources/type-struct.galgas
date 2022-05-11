@@ -174,7 +174,7 @@ override method @structDeclarationAST enterInSemanticContext
 #--- Generate a "default" constructor ?
   var @string defaultConstructorName = "default"
   for (mPropertyTypeEntry * * *) in typedPropertyList while defaultConstructorName != "" do
-    if ([mPropertyTypeEntry mDefaultConstructorName] == "") | not [mPropertyTypeEntry mIsConcrete] then
+    if ([mPropertyTypeEntry mDefaultConstructorName] == "") | not [mPropertyTypeEntry definition].mIsConcrete then
       defaultConstructorName = ""
     end
   end  
@@ -314,27 +314,27 @@ override method @structTypeForGeneration appendDeclaration1
   for (t 3*) in self.mTypedPropertyList do
     [t addHeaderFileName1 !?ioInclusionSet]
   end
-
+  let selfTypedefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper boolsetGenerationTemplate.structTypeHeader1
-    ![self.mSelfTypeEntry  key]
+    !selfTypedefinition.mTypeName.string
     ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mTypedPropertyList
-    ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
+    !selfTypedefinition.mDefaultConstructorName != ""
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![self.mSelfTypeEntry  key]
-    ![self.mSelfTypeEntry  identifierRepresentation]
-    ![self.mSelfTypeEntry  mIsConcrete]
-    ![self.mSelfTypeEntry  mConstructorMap]
-    ![self.mSelfTypeEntry  mGetterMap]
-    ![self.mSelfTypeEntry  mSetterMap]
-    ![self.mSelfTypeEntry  mInstanceMethodMap]
-    ![self.mSelfTypeEntry  mClassMethodMap]
-    ![self.mSelfTypeEntry  mOptionalMethodMap]
-    ![self.mSelfTypeEntry  mEnumerationDescriptor]
-    ![self.mSelfTypeEntry  mHandledOperatorFlags]
-    ![self.mSelfTypeEntry  mAddAssignOperatorArguments]
-    ![self.mSelfTypeEntry  mTypeForEnumeratedElement]
+    !selfTypedefinition.mTypeName.string
+    ![self.mSelfTypeEntry identifierRepresentation]
+    !selfTypedefinition.mIsConcrete
+    !selfTypedefinition.mConstructorMap
+    !selfTypedefinition.mGetterMap
+    !selfTypedefinition.mSetterMap
+    !selfTypedefinition.mInstanceMethodMap
+    !selfTypedefinition.mClassMethodMap
+    !selfTypedefinition.mOptionalMethodMap
+    !selfTypedefinition.mEnumerationDescriptor
+    !selfTypedefinition.mHandledOperatorFlags
+    !selfTypedefinition.mAddAssignOperatorArguments
+    !selfTypedefinition.mTypeForEnumeratedElement
   ]
  }
 
@@ -345,12 +345,13 @@ override method @structTypeForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
+  [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
+  let selfTypedefinition = [self.mSelfTypeEntry definition]
   outImplementation = [filewrapper boolsetGenerationTemplate.structTypeSpecificImplementation
-    ![self.mSelfTypeEntry  key]
+    !selfTypedefinition.mTypeName.string
     ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mTypedPropertyList
-    ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
+    !selfTypedefinition.mDefaultConstructorName != ""
   ]
  }
 

@@ -166,9 +166,9 @@ override method @collectionValueAST analyzeSemanticExpression
   if targetType == .null then
     error self.mTypeName : "Cannot infer type" : outExpression
   elsif not [targetType mSupportCollectionValue] then
-    error self.mTypeName : "the @" + [targetType key] + " type does not support collection value" : outExpression
+    error self.mTypeName : "the @" + [targetType definition].mTypeName.string + " type does not support collection value" : outExpression
   else
-    let usefulnessName = typeNameForUsefulEntitiesGraph (!.new {![targetType key] !self.mEndOfCollectionValue})
+    let usefulnessName = typeNameForUsefulEntitiesGraph (!.new {![targetType definition].mTypeName.string !self.mEndOfCollectionValue})
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
     if [self.mElementList length] == 0 then
       outExpression = @defaultConstructorExpressionForGeneration.new {
@@ -259,7 +259,7 @@ override method @expressionListCollectionValue analyze
   let @functionSignature formalParameterTypeList = [inElementType mAddAssignOperatorArguments]
   var @semanticExpressionListForGeneration semanticExpressionListForGeneration
   if [formalParameterTypeList length] != [self.mExpressionList length] then
-    error self.mEndOfExpressionLocation: "element of of '@" + [inElementType key] + "' requires "
+    error self.mEndOfExpressionLocation: "element of of '@" + [inElementType definition].mTypeName.string + "' requires "
     + [formalParameterTypeList length] + " parameter(s), while this list has "
     + [self.mExpressionList length] + " element(s)" : semanticExpressionListForGeneration
   else

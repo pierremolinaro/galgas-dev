@@ -271,25 +271,26 @@ override method @boolsetTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader
 {
+  let typedefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper structGenerationTemplate.boolsetTypeHeader1
-    ![self.mSelfTypeEntry  key]
-    ![self.mSelfTypeEntry  identifierRepresentation]
+    !typedefinition.mTypeName.string
+    ![typedefinition.mTypeName.string identifierRepresentation]
     !self.mFlagList
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![self.mSelfTypeEntry  key]
-    ![self.mSelfTypeEntry  identifierRepresentation]
-    ![self.mSelfTypeEntry  mIsConcrete]
-    ![self.mSelfTypeEntry  mConstructorMap]
-    ![self.mSelfTypeEntry  mGetterMap]
-    ![self.mSelfTypeEntry  mSetterMap]
-    ![self.mSelfTypeEntry  mInstanceMethodMap]
-    ![self.mSelfTypeEntry  mClassMethodMap]
-    ![self.mSelfTypeEntry  mOptionalMethodMap]
-    ![self.mSelfTypeEntry  mEnumerationDescriptor]
-    ![self.mSelfTypeEntry  mHandledOperatorFlags]
-    ![self.mSelfTypeEntry  mAddAssignOperatorArguments]
-    ![self.mSelfTypeEntry  mTypeForEnumeratedElement]
+    !typedefinition.mTypeName.string
+    ![typedefinition.mTypeName.string identifierRepresentation]
+    !typedefinition.mIsConcrete
+    !typedefinition.mConstructorMap
+    !typedefinition.mGetterMap
+    !typedefinition.mSetterMap
+    !typedefinition.mInstanceMethodMap
+    !typedefinition.mClassMethodMap
+    !typedefinition.mOptionalMethodMap
+    !typedefinition.mEnumerationDescriptor
+    !typedefinition.mHandledOperatorFlags
+    !typedefinition.mAddAssignOperatorArguments
+    !typedefinition.mTypeForEnumeratedElement
   ]
  }
 
@@ -302,7 +303,7 @@ override method @boolsetTypeForGeneration appendSpecificImplementation
 {
   [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper structGenerationTemplate.boolsetTypeSpecificImplementation
-    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  definition].mTypeName.string
     ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mFlagList
     !(1G << [self.mFlagList length]) - 1G

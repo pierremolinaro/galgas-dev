@@ -129,7 +129,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
   let @unifiedTypeMapEntry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- Check self type is a class
   if not [[selfType mTypeKindEnum] isClassType] then
-    error self.mOverridingExtensionSetterName: "cannot declare a extension setter: '@" + [selfType key] + "' is not a class"
+    error self.mOverridingExtensionSetterName: "cannot declare a extension setter: '@" + [selfType definition].mTypeName.string + "' is not a class"
   end
 #--- Find base type name
   var @string baseTypeName = ""
@@ -141,7 +141,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
     if [[superType mSetterMap] hasKey !self.mOverridingExtensionSetterName.string] then
       [[superType mSetterMap] searchKey !self.mOverridingExtensionSetterName ?* ?inheritedSignature ?* ?let qualifier ?*]
       if qualifier <= @methodQualifier.isBasicFinal then
-        baseTypeName = [superType key]
+        baseTypeName = [superType definition].mTypeName.string
       end
     end
     superType = [superType mSuperType]
@@ -243,7 +243,7 @@ override method @overridingExtensionSetterForGeneration appendSpecificImplementa
   ?!@stringset ioInclusionSet
   !@string outImplementation {
   generateExtensionSetter (
-    ![self.mReceiverType key]
+    ![self.mReceiverType definition].mTypeName.string
     !self.mBaseTypeName
     !self.mExtensionSetterName
     !?ioInclusionSet
@@ -264,10 +264,10 @@ override method @overridingExtensionSetterForGeneration appendSpecificImplementa
       searching = false
     end  
   end
-  ioInclusionSet += !"setter-" + [[baseType key] fileNameRepresentation]+ "-" + [self.mExtensionSetterName fileNameRepresentation]
+  ioInclusionSet += !"setter-" + [[baseType definition].mTypeName.string fileNameRepresentation]+ "-" + [self.mExtensionSetterName fileNameRepresentation]
   [self.mReceiverType addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingExtensionSetterImplementation
-    ![self.mReceiverType key]
+    ![self.mReceiverType definition].mTypeName.string
     !self.mExtensionSetterName
     !methodImplementation
   ] 

@@ -251,7 +251,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
   if [switchExpression.mResultType mTypeKindEnum] != @typeKindEnum. enumType then
     error self.mEndOfSwitchExpression
     : "the switch expression type should be an instance of an enumeration type (the '@"
-      + [switchExpression.mResultType key] + "' type is not an enumeration type)"
+      + [switchExpression.mResultType definition].mTypeName.string + "' type is not an enumeration type)"
   end
 #--- Enum constant map
   let enumConstantMap = [switchExpression.mResultType mEnumConstantMap]
@@ -285,8 +285,8 @@ override method @switchInstructionAST analyzeSemanticInstruction
           var associatedValueIndex = 0
           for (mType) in associatedTypeList, (mExtractedValueTypeName mExtractedValueName mMarkedAsUnused) in mAssociatedValuesExtraction do
             if mExtractedValueTypeName.string != "" then # Explicit type ?
-              if [mType key] != mExtractedValueTypeName.string then
-                error mExtractedValueTypeName : "the required type is '@" + [mType key] + "'"
+              if [mType definition].mTypeName.string != mExtractedValueTypeName.string then
+                error mExtractedValueTypeName : "the required type is '@" + [mType definition].mTypeName.string + "'"
               end
             end
             if firstConstant & (mExtractedValueName.string != "") then
@@ -303,7 +303,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
         end
       else
         error mValue
-        :"'" + mValue + "' is not a constant of '@" + [switchExpression.mResultType key] + "' enumeration type"
+        :"'" + mValue + "' is not a constant of '@" + [switchExpression.mResultType definition].mTypeName.string + "' enumeration type"
       end
       firstConstant = false
     end

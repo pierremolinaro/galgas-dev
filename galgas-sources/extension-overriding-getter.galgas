@@ -152,7 +152,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
   let @unifiedTypeMapEntry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- Check self type is a class
   if not [[selfType mTypeKindEnum] isClassType] then
-    error self.mOverridingExtensionGetterName: "cannot declare a extension getter: '@" + [selfType key] + "' is not a class"
+    error self.mOverridingExtensionGetterName: "cannot declare a extension getter: '@" + [selfType definition].mTypeName.string + "' is not a class"
   end
 #--- Find base type name
   var @string baseTypeName = ""
@@ -174,7 +174,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
         ?*
       ]
       if qualifier <= @methodQualifier. isBasicFinal then
-        baseTypeName = [superType key]
+        baseTypeName = [superType definition].mTypeName.string
       end
     end
     superType = [superType mSuperType]
@@ -296,12 +296,12 @@ override method @overrideExtensionGetterForGeneration appendSpecificImplementati
     !self.mOverridingExtensionGetterFormalParameterList
     !self.mSemanticInstructionListForGeneration
     !"C_Compiler"
-    ![self.mResultType key]
+    ![self.mResultType definition].mTypeName.string
     !self.mResultVarCppName
     ?let @string extensionReaderCode
   )
   outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingExtensionGetterImplementation
-    ![self.mReceiverType key]
+    ![self.mReceiverType definition].mTypeName.string
     !self.mOverridingExtensionGetterName
     !self.mResultType
     !extensionReaderCode

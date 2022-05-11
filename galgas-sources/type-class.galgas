@@ -556,10 +556,10 @@ override method @classTypeForGeneration appendDeclaration1 ?!@stringset ioInclus
   if not [self.mSuperClass isNull] then
     [self.mSuperClass addHeaderFileName !?ioInclusionSet]
   end
-
+  let selfTypeDefinition = [self.mSelfTypeEntry definition]
   if self.mIsReference then
     outHeader = [filewrapper typeGenerationTemplate.referenceClassTypeHeader1
-      ![self.mSelfTypeEntry key]
+      !selfTypeDefinition.mTypeName.string
       ![self.mSelfTypeEntry identifierRepresentation]
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
       !self.mIsAbstract
@@ -568,7 +568,7 @@ override method @classTypeForGeneration appendDeclaration1 ?!@stringset ioInclus
     ]
   else
     outHeader = [filewrapper typeGenerationTemplate.valueClassTypeHeader1
-      ![self.mSelfTypeEntry key]
+      !selfTypeDefinition.mTypeName.string
       ![self.mSelfTypeEntry identifierRepresentation]
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
       !self.mIsAbstract
@@ -577,19 +577,19 @@ override method @classTypeForGeneration appendDeclaration1 ?!@stringset ioInclus
     ]  
   end
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![self.mSelfTypeEntry key]
+    !selfTypeDefinition.mTypeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
-    ![self.mSelfTypeEntry mIsConcrete]
-    ![self.mSelfTypeEntry mConstructorMap]
-    ![self.mSelfTypeEntry mGetterMap]
-    ![self.mSelfTypeEntry mSetterMap]
-    ![self.mSelfTypeEntry mInstanceMethodMap]
-    ![self.mSelfTypeEntry mClassMethodMap]
-    ![self.mSelfTypeEntry mOptionalMethodMap]
-    ![self.mSelfTypeEntry mEnumerationDescriptor]
-    ![self.mSelfTypeEntry mHandledOperatorFlags]
-    ![self.mSelfTypeEntry mAddAssignOperatorArguments]
-    ![self.mSelfTypeEntry mTypeForEnumeratedElement]
+    !selfTypeDefinition.mIsConcrete
+    !selfTypeDefinition.mConstructorMap
+    !selfTypeDefinition.mGetterMap
+    !selfTypeDefinition.mSetterMap
+    !selfTypeDefinition.mInstanceMethodMap
+    !selfTypeDefinition.mClassMethodMap
+    !selfTypeDefinition.mOptionalMethodMap
+    !selfTypeDefinition.mEnumerationDescriptor
+    !selfTypeDefinition.mHandledOperatorFlags
+    !selfTypeDefinition.mAddAssignOperatorArguments
+    !selfTypeDefinition.mTypeForEnumeratedElement
   ]
 }
 
@@ -601,11 +601,11 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
   for (t 3*) in self.mCurrentTypedAttributeList do
     [t addHeaderFileName !?ioInclusionSet]
   end
-
+  let typedefinition = [self.mSelfTypeEntry definition]
   if self.mIsReference then
     if self.mGenerateHeaderInSeparateFile then
       let @string part1 = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part1
-        ![self.mSelfTypeEntry key]
+        !typedefinition.mTypeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mCurrentTypedAttributeList
@@ -614,7 +614,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
         ![self.mSelfTypeEntry mGetterMap]
       ]
       let @string part2 = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part2
-        ![self.mSelfTypeEntry key]
+        !typedefinition.mTypeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mCurrentTypedAttributeList
@@ -636,7 +636,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
       outHeader = "#include \"" + headerFileName + "\"\n\n"
     else
       outHeader = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part1
-        ![self.mSelfTypeEntry key]
+        !typedefinition.mTypeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mCurrentTypedAttributeList
@@ -645,7 +645,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
         ![self.mSelfTypeEntry mGetterMap]
       ]
       outHeader += [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part2
-        ![self.mSelfTypeEntry key]
+        !typedefinition.mTypeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mCurrentTypedAttributeList
@@ -656,7 +656,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
   else
     if self.mGenerateHeaderInSeparateFile then
       let @string part1 = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part1
-        ![self.mSelfTypeEntry key]
+        !typedefinition.mTypeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mCurrentTypedAttributeList
@@ -664,7 +664,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
         !self.mIsAbstract
       ]
       let @string part2 = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part2
-        ![self.mSelfTypeEntry key]
+        !typedefinition.mTypeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mCurrentTypedAttributeList
@@ -686,7 +686,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
       outHeader = "#include \"" + headerFileName + "\"\n\n"
     else
       outHeader = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part1
-        ![self.mSelfTypeEntry key]
+        !typedefinition.mTypeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mCurrentTypedAttributeList
@@ -694,7 +694,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
         !self.mIsAbstract
       ]
       outHeader += [filewrapper typeGenerationTemplate.valueClassTypeHeader2part2
-        ![self.mSelfTypeEntry key]
+        !typedefinition.mTypeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mCurrentTypedAttributeList
@@ -711,13 +711,13 @@ override method @classTypeForGeneration appendSpecificImplementation ?let @unifi
                                                                      ?!@stringset ioInclusionSet
                                                                      !@string outImplementation {
   [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
-
+  let typedefinition = [self.mSelfTypeEntry definition]
   let at = [self.mAllTypedAttributeList subListWithRange
     !.new {!0 ![self.mAllTypedAttributeList length] - [self.mCurrentTypedAttributeList length]}
   ]
   if self.mIsReference then
     outImplementation = [filewrapper typeGenerationTemplate.referenceClassTypeSpecificImplementation
-      ![self.mSelfTypeEntry key]
+      !typedefinition.mTypeName.string
       ![self.mSelfTypeEntry identifierRepresentation]
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
       !currentPropertyList: self.mCurrentTypedAttributeList
@@ -728,7 +728,7 @@ override method @classTypeForGeneration appendSpecificImplementation ?let @unifi
     ]
   else
     outImplementation = [filewrapper typeGenerationTemplate.valueClassTypeSpecificImplementation
-      ![self.mSelfTypeEntry key]
+      !typedefinition.mTypeName.string
       ![self.mSelfTypeEntry identifierRepresentation]
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
       !self.mCurrentTypedAttributeList

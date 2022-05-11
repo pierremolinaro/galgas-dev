@@ -3337,18 +3337,6 @@ class cPtr_unifiedTypeMapElementClass : public acStrongPtr_class {
 //----------------------------------------------------------------------------------------------------------------------
 
 /* § public: virtual GALGAS_unifiedTypeDefinition getter_definition (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_functionSignature getter_mAddAssignOperatorArguments (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_classMethodMap getter_mClassMethodMap (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_constructorMap getter_mConstructorMap (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_enumerationDescriptorList getter_mEnumerationDescriptor (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_getterMap getter_mGetterMap (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_operators getter_mHandledOperatorFlags (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_instanceMethodMap getter_mInstanceMethodMap (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_bool getter_mIsConcrete (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_setterMap getter_mSetterMap (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_unifiedTypeMapEntry getter_mSuperType (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_unifiedTypeMapEntry getter_mTypeForEnumeratedElement (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_typeKindEnum getter_mTypeKindEnum (C_Compiler * COMMA_LOCATION_ARGS) const ; */
 //--- Properties
   public: GALGAS_typeDefinition mProperty_mDefinition ;
 

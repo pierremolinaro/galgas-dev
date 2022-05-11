@@ -340,11 +340,11 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
-  if [leftType key] != "uint" then
+  if [leftType definition].mTypeName.string != "uint" then
     error leftExpression.mLocation : "the left expression or '...' operator should an @uint"
   end
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if [rightType key] != "uint" then
+  if [rightType definition].mTypeName.string != "uint" then
     error rightExpression.mLocation : "the right expression or '...' operator should an @uint"
   end
 #--- Generate expression
@@ -395,11 +395,11 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
-  if [leftType key] != "uint" then
+  if [leftType definition].mTypeName.string != "uint" then
     error leftExpression.mLocation : "the left expression or '...' operator should an @uint"
   end
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if [rightType key] != "uint" then
+  if [rightType definition].mTypeName.string != "uint" then
     error rightExpression.mLocation : "the right expression or '...' operator should an @uint"
   end
 #--- Generate expression

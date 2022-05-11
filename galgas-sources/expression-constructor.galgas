@@ -185,11 +185,11 @@ private proc analyzeConstructorInvocation
     else
       if [constructorMap count] == 0 then
         error inConstructorName
-        : "the '@"+ [outConstructorType key] + "' type does not define any constructor"
+        : "the '@"+ [outConstructorType definition].mTypeName.string + "' type does not define any constructor"
         : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
       else
         error inConstructorName
-        : "the '@"+ [outConstructorType key] + "' type does not define the '" + inConstructorName + "' constructor"
+        : "the '@"+ [outConstructorType definition].mTypeName.string + "' type does not define the '" + inConstructorName + "' constructor"
         : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
         fixit { replace [constructorMap keyList] }
       end
@@ -197,7 +197,7 @@ private proc analyzeConstructorInvocation
   #--- Analysis arguments
     if [inInitializerEffectiveParameterExpressions length] != [constructorFormalArgumentTypeList length] then
       error inConstructorName
-      : "calling the '" + inConstructorName + "' constructor of '@" + [outConstructorType key] + "' requires "
+      : "calling the '" + inConstructorName + "' constructor of '@" + [outConstructorType definition].mTypeName.string + "' requires "
       + [[constructorFormalArgumentTypeList length] string] + " parameter(s), while this call has "
       + [[inInitializerEffectiveParameterExpressions length] string] + " parameter(s)"
     end
@@ -256,9 +256,9 @@ override method @constructorExpressionAST analyzeSemanticExpression
     ?let @semanticExpressionListForGeneration constructorEffectiveParameterList
     ?let @bool hasCompilerArgument
   )
-  let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![constructorType key] !self.mTypeName})
+  let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![constructorType definition].mTypeName.string !self.mTypeName})
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !constructorTypeUsefulnessName]
-  let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![returnedType key] !self.mTypeName})
+  let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![returnedType definition].mTypeName.string !self.mTypeName})
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !returnedTypeUsefulnessName]
 #---
   outExpression = @constructorExpressionForGeneration.new {
@@ -299,13 +299,13 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
     error self.mTypeName : "cannot infer type" : outExpression
   else
   #--- Check type accepts default constructor
-    if not [type mIsConcrete] then
+    if not [type definition].mIsConcrete then
       error self.mTypeName: "an abstract class does not support the default constructor"
     elsif [type mDefaultConstructorName] == "" then
       error self.mTypeName: "this class does not support the default constructor"
     end
   #---
-    let usefulnessName = typeNameForUsefulEntitiesGraph (!.new {![type key] !self.mTypeName})
+    let usefulnessName = typeNameForUsefulEntitiesGraph (!.new {![type definition].mTypeName.string !self.mTypeName})
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
   #---
     outExpression = @defaultConstructorExpressionForGeneration.new {

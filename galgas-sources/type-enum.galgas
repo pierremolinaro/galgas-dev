@@ -388,26 +388,27 @@ override method @enumTypeForGeneration appendDeclaration1
   for (* mAssociatedValueTypeList) in self.mConstantList while not hasAssociatedValues do
     hasAssociatedValues = [mAssociatedValueTypeList length] > 0
   end
+  let selfTypedefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper enumGenerationTemplate.enumTypeHeader1
-    ![self.mSelfTypeEntry  key]
-    ![self.mSelfTypeEntry  identifierRepresentation]
+    !selfTypedefinition.mTypeName.string
+    ![selfTypedefinition.mTypeName.string identifierRepresentation]
     !self.mConstantList
     !hasAssociatedValues
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![self.mSelfTypeEntry  key]
-    ![self.mSelfTypeEntry  identifierRepresentation]
-    ![self.mSelfTypeEntry  mIsConcrete]
-    ![self.mSelfTypeEntry  mConstructorMap]
-    ![self.mSelfTypeEntry  mGetterMap]
-    ![self.mSelfTypeEntry  mSetterMap]
-    ![self.mSelfTypeEntry  mInstanceMethodMap]
-    ![self.mSelfTypeEntry  mClassMethodMap]
-    ![self.mSelfTypeEntry  mOptionalMethodMap]
-    ![self.mSelfTypeEntry  mEnumerationDescriptor]
-    ![self.mSelfTypeEntry  mHandledOperatorFlags]
-    ![self.mSelfTypeEntry  mAddAssignOperatorArguments]
-    ![self.mSelfTypeEntry  mTypeForEnumeratedElement]
+    !selfTypedefinition.mTypeName.string
+    ![selfTypedefinition.mTypeName.string identifierRepresentation]
+    !selfTypedefinition.mIsConcrete
+    !selfTypedefinition.mConstructorMap
+    !selfTypedefinition.mGetterMap
+    !selfTypedefinition.mSetterMap
+    !selfTypedefinition.mInstanceMethodMap
+    !selfTypedefinition.mClassMethodMap
+    !selfTypedefinition.mOptionalMethodMap
+    !selfTypedefinition.mEnumerationDescriptor
+    !selfTypedefinition.mHandledOperatorFlags
+    !selfTypedefinition.mAddAssignOperatorArguments
+    !selfTypedefinition.mTypeForEnumeratedElement
   ]
  }
 
@@ -427,9 +428,10 @@ override method @enumTypeForGeneration appendDeclaration2
       [mType addHeaderFileName1 !?ioInclusionSet]
     end
   end
+  let selfTypedefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper enumGenerationTemplate.enumTypeHeader2
-    ![self.mSelfTypeEntry  key]
-    ![self.mSelfTypeEntry  identifierRepresentation]
+    !selfTypedefinition.mTypeName.string
+    ![selfTypedefinition.mTypeName.string identifierRepresentation]
     !self.mConstantList
     !hasAssociatedValues
   ]
@@ -446,10 +448,11 @@ override method @enumTypeForGeneration appendSpecificImplementation
   for (* mAssociatedValueTypeList) in self.mConstantList while not hasAssociatedValues do
     hasAssociatedValues = [mAssociatedValueTypeList length] > 0
   end
-  [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
+  [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
+  let selfTypedefinition = [self.mSelfTypeEntry definition]
   outImplementation = [filewrapper enumGenerationTemplate.enumTypeSpecificImplementation
-    ![self.mSelfTypeEntry  key]
-    ![self.mSelfTypeEntry  identifierRepresentation]
+    !selfTypedefinition.mTypeName.string
+    ![selfTypedefinition.mTypeName.string identifierRepresentation]
     !self.mConstantList
     !hasAssociatedValues
   ]

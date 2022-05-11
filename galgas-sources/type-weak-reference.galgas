@@ -260,27 +260,27 @@ override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset 
     [self.mSuperClass addHeaderFileName !?ioInclusionSet]
   end
   [self.mReferenceClassType addHeaderFileName !?ioInclusionSet]
-
+  let typedefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper typeGenerationTemplate.weakReferenceClassTypeHeader1
     ![self.mReferenceClassType identifierRepresentation]
     ![self.mSelfTypeEntry identifierRepresentation]
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-    ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
+    !typedefinition.mDefaultConstructorName != ""
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![self.mSelfTypeEntry  key]
-    ![self.mSelfTypeEntry  identifierRepresentation]
-    ![self.mSelfTypeEntry  mIsConcrete]
-    ![self.mSelfTypeEntry  mConstructorMap]
-    ![self.mSelfTypeEntry  mGetterMap]
-    ![self.mSelfTypeEntry  mSetterMap]
-    ![self.mSelfTypeEntry  mInstanceMethodMap]
-    ![self.mSelfTypeEntry  mClassMethodMap]
-    ![self.mSelfTypeEntry  mOptionalMethodMap]
-    ![self.mSelfTypeEntry  mEnumerationDescriptor]
-    ![self.mSelfTypeEntry  mHandledOperatorFlags]
-    ![self.mSelfTypeEntry  mAddAssignOperatorArguments]
-    ![self.mSelfTypeEntry  mTypeForEnumeratedElement]
+    !typedefinition.mTypeName.string
+    ![typedefinition.mTypeName.string identifierRepresentation]
+    !typedefinition.mIsConcrete
+    !typedefinition.mConstructorMap
+    !typedefinition.mGetterMap
+    !typedefinition.mSetterMap
+    !typedefinition.mInstanceMethodMap
+    !typedefinition.mClassMethodMap
+    !typedefinition.mOptionalMethodMap
+    !typedefinition.mEnumerationDescriptor
+    !typedefinition.mHandledOperatorFlags
+    !typedefinition.mAddAssignOperatorArguments
+    !typedefinition.mTypeForEnumeratedElement
   ]
  }
 
@@ -292,14 +292,15 @@ override method @weakReferenceTypeForGeneration appendSpecificImplementation
   !@string outImplementation
 {
   [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
+  let typedefinition = [self.mSelfTypeEntry definition]
   outImplementation = [filewrapper typeGenerationTemplate.weakReferenceClassTypeSpecificImplementation
     ![self.mReferenceClassType identifierRepresentation]
-    ![self.mSelfTypeEntry identifierRepresentation]
+    ![typedefinition.mTypeName.string identifierRepresentation]
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
     !self.mTypedAttributeList
     !self.mAllTypedPropertyList
     ![self.mAllTypedPropertyList subListWithRange !.new {!0 ![self.mAllTypedPropertyList length] - [self.mTypedAttributeList length]}]
-    ![self.mSelfTypeEntry  mDefaultConstructorName] != ""
+    !typedefinition.mDefaultConstructorName != ""
   ]
 }
 

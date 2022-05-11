@@ -131,9 +131,9 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
   let returnType = [inSemanticContext.mTypeMap searchKey !self.mAbstractExtensionGetterReturnedTypeName]
 #--- Check type is an abstract class
   if not [[selfType mTypeKindEnum] isClassType] then
-    error self.mAbstractExtensionGetterName: "cannot declare a extension getter: '@" + [selfType key] + "' is not a class"
-  elsif [selfType mIsConcrete] then
-    error self.mAbstractExtensionGetterName: "cannot declare an abstract extension getter: '@" + [selfType key] + "' is not an abstract class"
+    error self.mAbstractExtensionGetterName: "cannot declare a extension getter: '@" + [selfType definition].mTypeName.string + "' is not a class"
+  elsif [selfType definition].mIsConcrete then
+    error self.mAbstractExtensionGetterName: "cannot declare an abstract extension getter: '@" + [selfType definition].mTypeName.string + "' is not an abstract class"
   end
 #--- Find base type name
   var @string baseTypeName = ""
@@ -155,7 +155,7 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
         ?*
       ]
       if qualifier <= @methodQualifier. isBasicFinal then
-        baseTypeName = [superType key]
+        baseTypeName = [superType definition].mTypeName.string
       end
     end
     superType = [superType mSuperType]

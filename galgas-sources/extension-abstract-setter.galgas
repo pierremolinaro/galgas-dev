@@ -126,9 +126,9 @@ override method @abstractExtensionSetterAST semanticAnalysis
   let @unifiedTypeMapEntry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- Check self type is an abstract class
   if not [[selfType mTypeKindEnum] isClassType] then
-    error self.mAbstractExtensionSetterName: "cannot declare a extension setter: '@" + [selfType key] + "' is not a class"
-  elsif [selfType mIsConcrete] then
-    error self.mAbstractExtensionSetterName: "cannot declare an abstract extension setter: '@" + [selfType key] + "' is not an abstract class"
+    error self.mAbstractExtensionSetterName: "cannot declare a extension setter: '@" + [selfType definition].mTypeName.string + "' is not a class"
+  elsif [selfType definition].mIsConcrete then
+    error self.mAbstractExtensionSetterName: "cannot declare an abstract extension setter: '@" + [selfType definition].mTypeName.string + "' is not an abstract class"
   end
 #--- Compute setter signature
   var formalParameterListForGeneration = @formalParameterListForGeneration {}
@@ -197,7 +197,7 @@ override method @abstractExtensionSetterForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   outHeader = [filewrapper semanticComponentGenerationTemplate.abstractExtensionSetterDeclaration
-    ![self.mReceiverType key]
+    ![self.mReceiverType definition].mTypeName.string
     !self.mAbstractExtensionSetterName
     !self.mAbstractExtensionSetterFormalParameterList
   ] 
@@ -210,13 +210,13 @@ override method @abstractExtensionSetterForGeneration appendSpecificImplementati
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  ioInclusionSet += !"setter-" + [[self.mReceiverType key] fileNameRepresentation] + "-" + [self.mAbstractExtensionSetterName fileNameRepresentation]
+  ioInclusionSet += !"setter-" + [[self.mReceiverType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mAbstractExtensionSetterName fileNameRepresentation]
   [self.mReceiverType addHeaderFileName !?ioInclusionSet]
   for (* * mFormalArgumentType * *) in self.mAbstractExtensionSetterFormalParameterList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
   outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionSetterImplementation
-    ![self.mReceiverType key]
+    ![self.mReceiverType definition].mTypeName.string
     !self.mAbstractExtensionSetterName
     !self.mAbstractExtensionSetterFormalParameterList
   ] 

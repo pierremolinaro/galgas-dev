@@ -123,7 +123,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
     end
   #--- Analysis arguments
     if [self.mExpressions length] != [getterFormalArgumentTypeList length] then
-      error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + [receiverType key] + "' requires "
+      error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + [receiverType definition].mTypeName.string + "' requires "
       + [[getterFormalArgumentTypeList length] string] + " parameter(s), while this call has "
       + [[self.mExpressions length] string] + " parameter(s)" : outExpression
     else
@@ -180,10 +180,10 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       var kind = @methodKind.definedAsExtension
       let @stringlist fieldList = {}
       for (propertyTypeEntry propertyName * *) in [receiverType mCurrentTypedPropertyList] do
-        let propertyType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !.new {![propertyTypeEntry key] !.here}]
+        let propertyType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !.new {![propertyTypeEntry definition].mTypeName.string !.here}]
         let aMap = [propertyType mGetterMap]
         with self.mGetterName.string in aMap  do
-          if [propertyType key] == propertyName.string then
+          if [propertyType definition].mTypeName.string == propertyName.string then
             matchingReaderCount += 1
             getterFormalArgumentTypeList = mArgumentTypeList
             hasCompilerArgument = mHasCompilerArgument
@@ -203,7 +203,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       end
       if matchingReaderCount == 0 then
         error self.mGetterName
-        : "the '@"+ [receiverType key] + "' struct type does not define the '" + self.mGetterName.string
+        : "the '@"+ [receiverType definition].mTypeName.string + "' struct type does not define the '" + self.mGetterName.string
         + "' getter, and none of its fields defines it"
         : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       elsif matchingReaderCount > 1 then
@@ -213,13 +213,13 @@ override method @getterCallExpressionAST analyzeSemanticExpression
           between s += ", "
         end
         error self.mGetterName
-        : "the '@"+ [receiverType key] + "' struct type does not define the '" + self.mGetterName.string
+        : "the '@"+ [receiverType definition].mTypeName.string + "' struct type does not define the '" + self.mGetterName.string
         + "' getter, and several of its fields defines it:" + s + " (exactly one field should define it)"
         : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       end
     #--- Analysis arguments
       if [self.mExpressions length] != [getterFormalArgumentTypeList length] then
-        error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + [receiverType key] + "' requires "
+        error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + [receiverType definition].mTypeName.string + "' requires "
         + [[getterFormalArgumentTypeList length] string] + " parameter(s), while this call has "
         + [[self.mExpressions length] string] + " parameter(s)" : outExpression
       else
@@ -254,11 +254,11 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       end
     elsif [[receiverType mGetterMap] count] == 0 then
       error self.mGetterName
-      : "the '@"+ [receiverType key] + "' type does not define any getter"
+      : "the '@"+ [receiverType definition].mTypeName.string + "' type does not define any getter"
       : outExpression
     else
       error self.mGetterName
-      : "the '@"+ [receiverType key] + "' type does not define the '" + self.mGetterName + "' getter "
+      : "the '@"+ [receiverType definition].mTypeName.string + "' type does not define the '" + self.mGetterName + "' getter "
       : outExpression
       fixit { replace [[receiverType mGetterMap] keyList] }
     end
@@ -326,7 +326,7 @@ override method @getterCallExpressionForGeneration generateExpression
         searching = false
       end  
     end
-    ioInclusionSet += !"getter-" + [[baseType key] fileNameRepresentation] + "-" + [self.mGetterName fileNameRepresentation]
+    ioInclusionSet += !"getter-" + [[baseType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mGetterName fileNameRepresentation]
     [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
     if [[self.mReceiverExpression.mResultType mTypeKindEnum] isClassType] then
       outCppExpression = "callExtensionGetter_" + [self.mGetterName identifierRepresentation]

@@ -425,7 +425,7 @@ override method @setterCallInstructionForGeneration generateInstruction
 #--- Generate method call
   switch self.mKind
   case definedAsExtension :
-    ioInclusionSet += !"setter-" + [[self.mMethodBaseType key] fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
+    ioInclusionSet += !"setter-" + [[self.mMethodBaseType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
     if [[self.mReceiverType mTypeKindEnum] isClassType] then
       if ([[self.mReceiverType mAllTypedPropertyList] length] > 0) then #  & [mReceiverType mIsConcrete] then
         ioGeneratedCode += receiverCppName + ".insulate (HERE) ;\n"
@@ -433,14 +433,14 @@ override method @setterCallInstructionForGeneration generateInstruction
       let pointerUniqueName = "ptr_" + [self.mInstructionLocation locationIndex]
       ioGeneratedCode += "cPtr_" + [self.mReceiverType identifierRepresentation] + " * " + pointerUniqueName
       ioGeneratedCode += " = (cPtr_" + [self.mReceiverType identifierRepresentation] + " *) " + receiverCppName + ".ptr () ;\n"
-      if [self.mCastType key] != [self.mReceiverType key] then
-        ioInclusionSet += !"class-" + [[self.mCastType key] fileNameRepresentation]
+      if [self.mCastType definition].mTypeName.string != [self.mReceiverType definition].mTypeName.string then
+        ioInclusionSet += !"class-" + [[self.mCastType definition].mTypeName.string fileNameRepresentation]
         ioGeneratedCode += "if ((NULL != " + pointerUniqueName
                         + ") && (dynamic_cast <cPtr_" + [self.mCastType identifierRepresentation] + " *> ("
                         + pointerUniqueName + ") == NULL)) {\n"
         [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
         ioGeneratedCode += "  " + compilerCppName () + "->onTheFlyRunTimeError (\"cannot cast to '@" 
-                        + [self.mCastType key] + "'\"" + [self.mInstructionLocation commaSourceFile] + ") ;\n"
+                        + [self.mCastType definition].mTypeName.string + "'\"" + [self.mInstructionLocation commaSourceFile] + ") ;\n"
         ioGeneratedCode += "  " + pointerUniqueName + " = NULL ;\n"
         ioGeneratedCode += "}\n"
       end
@@ -500,7 +500,7 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
 #--- Generate setter call
   switch self.mKind
   case definedAsExtension :
-    ioInclusionSet += !"setter-" + [[self.mReceiverType key] fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
+    ioInclusionSet += !"setter-" + [[self.mReceiverType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
     if [[self.mReceiverType mTypeKindEnum] isClassType] then
       ioGeneratedCode += "callExtensionSetter_" + [self.mSetterName identifierRepresentation] + " (" + self.mSelfCppName + ", "
     else

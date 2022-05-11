@@ -167,11 +167,11 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
     end
     if not found then
       error self.mTypeName
-      :"the '@" + self.mTypeName + "' is not a descendant of the '@" + [expression.mResultType key] + "' type of the cast expression"
+      :"the '@" + self.mTypeName + "' is not a descendant of the '@" + [expression.mResultType definition].mTypeName.string + "' type of the cast expression"
     end
   else
     error expression.mLocation: "expression should be a class instance: it is an @"
-     +  [expression.mResultType key] + " instance"
+     +  [expression.mResultType definition].mTypeName.string + " instance"
   end
 #--- Generate expression
   outExpression = @testDynamicClassInExpressionForGeneration.new {
@@ -224,15 +224,15 @@ override method @castInExpressionAST analyzeSemanticExpression
     if not found then
       error self.mTypeName
       :"the '@" + self.mTypeName + "' is not a descendant of the '@"
-      + [expression.mResultType key] + "' type of the cast expression"
+      + [expression.mResultType definition].mTypeName.string + "' type of the cast expression"
     end
-  elsif [expression.mResultType key] != "object" then
+  elsif [expression.mResultType definition].mTypeName.string != "object" then
     error expression.mLocation:
       "cast expression should be a class instance or an @object instance: it is an @"
-     +  [expression.mResultType key] + " instance"
+     +  [expression.mResultType definition].mTypeName.string + " instance"
   end
 #--- Generate expression
-  if [expression.mResultType key] == "object" then
+  if [expression.mResultType definition].mTypeName.string == "object" then
     outExpression = @extractObjectInExpressionForGeneration.new {
       !type
       !self.mEndOfReceiverExpression
@@ -267,7 +267,7 @@ override method @testDynamicClassInExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  let typeNameRepresentation = [[self.mCastType key] identifierRepresentation]
+  let typeNameRepresentation = [[self.mCastType definition].mTypeName.string identifierRepresentation]
 #--- Receiver expression
   [self.mReceiverExpression generateExpression
     !?ioGeneratedCode

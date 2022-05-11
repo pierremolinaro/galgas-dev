@@ -10,22 +10,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'generateExtensionSetter'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateExtensionSetter (const class GALGAS_string constinArgument0,
-                                      const class GALGAS_string constinArgument1,
-                                      const class GALGAS_string constinArgument2,
-                                      class GALGAS_stringset & ioArgument3,
-                                      const class GALGAS_formalParameterListForGeneration constinArgument4,
-                                      const class GALGAS_semanticInstructionListForGeneration constinArgument5,
-                                      class GALGAS_string & outArgument6,
-                                      class C_Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Routine 'checkGetterSignatures'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -414,4 +398,36 @@ void routine_analyzeSemanticInstructionListWithoutBranch (const class GALGAS_lst
                                                           class GALGAS_semanticInstructionListForGeneration & outArgument8,
                                                           class C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'analyzeRoutineArguments'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_analyzeRoutineArguments (const class GALGAS_lstring constinArgument0,
+                                      class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                      const class GALGAS_analysisContext constinArgument2,
+                                      const class GALGAS_lstring constinArgument3,
+                                      const class GALGAS_string constinArgument4,
+                                      const class GALGAS_formalParameterSignature constinArgument5,
+                                      const class GALGAS_actualParameterListAST constinArgument6,
+                                      class GALGAS_localVarManager & ioArgument7,
+                                      class GALGAS_semanticInstructionListForGeneration & ioArgument8,
+                                      class GALGAS_actualParameterListForGeneration & outArgument9,
+                                      class C_Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'checkExpressionIsBoolean'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_checkExpressionIsBoolean (const class GALGAS_analysisContext constinArgument0,
+                                       const class GALGAS_location constinArgument1,
+                                       const class GALGAS_semanticExpressionForGeneration constinArgument2,
+                                       class GALGAS_semanticExpressionForGeneration & outArgument3,
+                                       class C_Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) ;
 

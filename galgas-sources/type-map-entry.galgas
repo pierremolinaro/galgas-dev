@@ -294,24 +294,25 @@ override method @mapEntryTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader
 {
+  let selfTypedefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper mapEntryGenerationTemplate.mapEntryTypeHeader1
-    ![self.mSelfTypeEntry  key]
-    ![self.mSelfTypeEntry  identifierRepresentation]
+    !selfTypedefinition.mTypeName.string
+    ![self.mSelfTypeEntry identifierRepresentation]
   ] 
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![self.mSelfTypeEntry  key]
-    ![self.mSelfTypeEntry  identifierRepresentation]
-    ![self.mSelfTypeEntry  mIsConcrete]
-    ![self.mSelfTypeEntry  mConstructorMap]
-    ![self.mSelfTypeEntry  mGetterMap]
-    ![self.mSelfTypeEntry  mSetterMap]
-    ![self.mSelfTypeEntry  mInstanceMethodMap]
-    ![self.mSelfTypeEntry  mClassMethodMap]
-    ![self.mSelfTypeEntry  mOptionalMethodMap]
-    ![self.mSelfTypeEntry  mEnumerationDescriptor]
-    ![self.mSelfTypeEntry  mHandledOperatorFlags]
-    ![self.mSelfTypeEntry  mAddAssignOperatorArguments]
-    ![self.mSelfTypeEntry  mTypeForEnumeratedElement]
+    !selfTypedefinition.mTypeName.string
+    ![self.mSelfTypeEntry identifierRepresentation]
+    !selfTypedefinition.mIsConcrete
+    !selfTypedefinition.mConstructorMap
+    !selfTypedefinition.mGetterMap
+    !selfTypedefinition.mSetterMap
+    !selfTypedefinition.mInstanceMethodMap
+    !selfTypedefinition.mClassMethodMap
+    !selfTypedefinition.mOptionalMethodMap
+    !selfTypedefinition.mEnumerationDescriptor
+    !selfTypedefinition.mHandledOperatorFlags
+    !selfTypedefinition.mAddAssignOperatorArguments
+    !selfTypedefinition.mTypeForEnumeratedElement
   ]
 }
 
@@ -323,8 +324,9 @@ override method @mapEntryTypeForGeneration appendSpecificImplementation
   !@string outImplementation {
   [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
   [self.mAssociatedMapTypeEntry addHeaderFileName !?ioInclusionSet]
+  let selfTypedefinition = [self.mSelfTypeEntry definition]
   outImplementation = [filewrapper mapEntryGenerationTemplate.mapEntryTypeSpecificImplementation
-    ![self.mSelfTypeEntry  key]
+    !selfTypedefinition.mTypeName.string
     ![self.mSelfTypeEntry  identifierRepresentation]
     ![self.mAssociatedMapTypeEntry identifierRepresentation]
     !self.mAssociatedMapTypedAttributeList

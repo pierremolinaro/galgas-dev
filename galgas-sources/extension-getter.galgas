@@ -210,7 +210,7 @@ override method @extensionGetterAST semanticAnalysis
     !"extension getter " + self.mExtensionGetterName
     !@extensionGetterForGeneration.new {
       !true # Generate Cpp header file
-      !"getter-" + [[selfType key] fileNameRepresentation] + "-" + [self.mExtensionGetterName fileNameRepresentation]
+      !"getter-" + [[selfType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mExtensionGetterName fileNameRepresentation]
       !selfType
       !self.mExtensionGetterName.string
       !implementedAsFunction
@@ -272,14 +272,14 @@ override method @extensionGetterForGeneration appendDeclaration1
   !@string outHeader {
   if self.mImplementedAsFunction then
     outHeader = [filewrapper semanticComponentGenerationTemplate.extensionGetterAsFunctionDeclaration
-      ![self.mReceiverType key]
+      ![self.mReceiverType definition].mTypeName.string
       !self.mExtensionGetterName
       !self.mExtensionGetterFormalParameterList
       ![self.mResultType identifierRepresentation]
     ] 
   else
     outHeader = [filewrapper semanticComponentGenerationTemplate.extensionGetterDeclaration
-      ![self.mReceiverType key]
+      ![self.mReceiverType definition].mTypeName.string
       !self.mExtensionGetterName
       !self.mExtensionGetterFormalParameterList
       !self.mResultType
@@ -308,7 +308,7 @@ override method @extensionGetterForGeneration appendSpecificImplementation
       !true  
       !0    
     ]
-    ioInclusionSet += !"getter-" + [[self.mReceiverType key] fileNameRepresentation] + "-" + [self.mExtensionGetterName fileNameRepresentation]
+    ioInclusionSet += !"getter-" + [[self.mReceiverType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mExtensionGetterName fileNameRepresentation]
     generateFunction (
       !"extensionGetter_" + [self.mExtensionGetterName identifierRepresentation]
       !?ioInclusionSet
@@ -321,7 +321,7 @@ override method @extensionGetterForGeneration appendSpecificImplementation
       ?let @string code
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionGetterAsFunctionImplementation
-      ![self.mReceiverType key]
+      ![self.mReceiverType definition].mTypeName.string
       !self.mExtensionGetterName
       !code
     ] 
@@ -340,7 +340,7 @@ override method @extensionGetterForGeneration appendSpecificImplementation
         searching = false
       end  
     end
-    ioInclusionSet += !"getter-" + [[baseType key] fileNameRepresentation] + "-" + [self.mExtensionGetterName fileNameRepresentation]
+    ioInclusionSet += !"getter-" + [[baseType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mExtensionGetterName fileNameRepresentation]
     generateExtensionGetter (
       !self.mReceiverType
       !""
@@ -349,12 +349,12 @@ override method @extensionGetterForGeneration appendSpecificImplementation
       !self.mExtensionGetterFormalParameterList
       !self.mSemanticInstructionListForGeneration
       !"C_Compiler"
-      ![self.mResultType key]
+      ![self.mResultType definition].mTypeName.string
       !self.mResultVarCppName
       ?let @string extensionGetterCode
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionGetterImplementation
-      ![self.mReceiverType key]
+      ![self.mReceiverType definition].mTypeName.string
       !self.mExtensionGetterName
       !self.mExtensionGetterFormalParameterList
       !self.mResultType

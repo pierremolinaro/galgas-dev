@@ -79,11 +79,11 @@ override method @bangExpressionAST analyzeSemanticExpression
       !classIndex
       !self.mOperatorLocation
       !expression
-      ![type key]
+      ![type definition].mTypeName.string
     }
   else
     error self.mOperatorLocation
-    : "operand type is '@" + [type key] + "' and does not support the '°' operator"
+    : "operand type is '@" + [type definition].mTypeName.string + "' and does not support the '°' operator"
     : outExpression
   end
 }

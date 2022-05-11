@@ -335,7 +335,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
 #--- Check target variable type support '+= exp' operator
   if not [[targetType mHandledOperatorFlags] plusEqualOperatorWithExpression] then
     error self.mInstructionLocation
-    :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '+=' operator"
+    :"the target object has the '@" + [targetType definition].mTypeName.string + "' type, but this type does not support the '+=' operator"
   end
 #--- Analyze source expression
   [self.mExpression analyzeSemanticExpression
@@ -414,7 +414,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
 #--- Check target variable type support '-= exp' operator
   if not [[targetType mHandledOperatorFlags] minusEqualOperatorWithExpression] then
     error self.mInstructionLocation
-    :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '-=' operator"
+    :"the target object has the '@" + [targetType definition].mTypeName.string + "' type, but this type does not support the '-=' operator"
   end
 #--- Analyze source expression
   [self.mExpression analyzeSemanticExpression
@@ -500,7 +500,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
 #--- Check target variable type support '*= exp' operator
   if [[targetType mHandledOperatorFlags] mulEqualOperatorWithExpression] then
     error self.mInstructionLocation
-    :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '*=' operator"
+    :"the target object has the '@" + [targetType definition].mTypeName.string + "' type, but this type does not support the '*=' operator"
   end
 #--- Analyze source expression
   [self.mExpression analyzeSemanticExpression
@@ -580,7 +580,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
 #--- Check target variable type support '/= exp' operator
   if [[targetType mHandledOperatorFlags] divEqualOperatorWithExpression] then
     error self.mInstructionLocation
-    :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '/=' operator"
+    :"the target object has the '@" + [targetType definition].mTypeName.string + "' type, but this type does not support the '/=' operator"
   end
 #--- Analyze source expression
   [self.mExpression analyzeSemanticExpression
@@ -679,11 +679,11 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
   let addAssignOperatorArguments= [targetType mAddAssignOperatorArguments] # Empty list if += operator is not supported
   if [addAssignOperatorArguments length] == 0 then
     error self.mInstructionLocation
-    :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '+=' operator"
+    :"the target object has the '@" + [targetType definition].mTypeName.string + "' type, but this type does not support the '+=' operator"
 #--- Analyze source expressions
   elsif [self.mExpressions length] != [addAssignOperatorArguments length] then
     error self.mInstructionLocation
-    : "calling the '+=' operator on an '@" + [targetType key] + "' object requires "
+    : "calling the '+=' operator on an '@" + [targetType definition].mTypeName.string + "' object requires "
     + [[addAssignOperatorArguments length] string] + " parameter(s), while this invocation has "
     + [[self.mExpressions length] string] + " parameter(s)"
   else

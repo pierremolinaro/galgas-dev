@@ -172,78 +172,6 @@ getter @unifiedTypeMapElementClass definition -> @unifiedTypeDefinition {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mIsConcrete -> @bool {
-  result = [self definition].mIsConcrete
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mSuperType -> @unifiedTypeMapEntry {
-  result = [self definition].mSuperType
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mTypeKindEnum -> @typeKindEnum {
-  result = [self definition].mTypeKindEnum
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mConstructorMap -> @constructorMap {
-  result = [self definition].mConstructorMap
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mGetterMap -> @getterMap {
-  result = [self definition].mGetterMap
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mSetterMap -> @setterMap {
-  result = [self definition].mSetterMap
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mInstanceMethodMap -> @instanceMethodMap {
-  result = [self definition].mInstanceMethodMap
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mClassMethodMap -> @classMethodMap {
-  result = [self definition].mClassMethodMap
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mEnumerationDescriptor -> @enumerationDescriptorList {
-  result = [self definition].mEnumerationDescriptor
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mHandledOperatorFlags -> @operators {
-  result = [self definition].mHandledOperatorFlags
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mAddAssignOperatorArguments -> @functionSignature {
-  result = [self definition].mAddAssignOperatorArguments
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mTypeForEnumeratedElement -> @unifiedTypeMapEntry {
-  result = [self definition].mTypeForEnumeratedElement
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! @unifiedTypeMapEntry getters
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -267,32 +195,8 @@ getter @unifiedTypeMapEntry definition -> @unifiedTypeDefinition {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMapEntry lkey -> @lstring {
-  result = [self definition].mTypeName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapEntry key -> @string {
-  result = [self definition].mTypeName.string
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 getter @unifiedTypeMapEntry identifierRepresentation -> @string {
   result = [[self definition].mTypeName.string identifierRepresentation]
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapEntry mIsPredefined -> @bool {
-  result = [self definition].mIsPredefined
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapEntry mIsConcrete -> @bool {
-  result = [self definition].mIsConcrete
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -451,7 +355,7 @@ getter @unifiedTypeMapEntry baseType -> @unifiedTypeMapEntry outBaseType {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @unifiedTypeMapEntry addHeaderFileName ?!@stringset ioInclusions {
-  if (not [self mIsPredefined]) & ([self mHeaderKind] != .noHeader) then
+  if (not [self definition].mIsPredefined) & ([self mHeaderKind] != .noHeader) then
     ioInclusions += ![self mHeaderFileName]
   end
 }
@@ -459,7 +363,7 @@ method @unifiedTypeMapEntry addHeaderFileName ?!@stringset ioInclusions {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @unifiedTypeMapEntry addHeaderFileName1 ?!@stringset ioInclusions {
-  if not [self mIsPredefined] then
+  if not [self definition].mIsPredefined then
     switch [self mHeaderKind]
     case noHeader :
     case oneHeader :

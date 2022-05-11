@@ -529,7 +529,7 @@ proc generateExtensionMethod ?let @unifiedTypeMapEntry inReceiverType
                              ?let @formalParameterListForGeneration inFormalArgumentList
                              ?let @semanticInstructionListForGeneration inInstructionList
                              !@string outGeneratedCode {
-  let className = [inReceiverType key]
+  let className = [inReceiverType definition].mTypeName.string
 #--- Build unused variable set
   var @stringset unusedVariableCppNameSet = {}
   unusedVariableCppNameSet += !compilerCppName ()
@@ -565,7 +565,7 @@ proc generateExtensionMethod ?let @unifiedTypeMapEntry inReceiverType
       searching = false
     end  
   end
-  ioInclusionSet += !"method-" + [[baseType key] fileNameRepresentation] + "-" + [inMethodName fileNameRepresentation]
+  ioInclusionSet += !"method-" + [[baseType definition].mTypeName.string fileNameRepresentation] + "-" + [inMethodName fileNameRepresentation]
   [inReceiverType addHeaderFileName !?ioInclusionSet]
   for (* * mFormalArgumentType * *) in inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
@@ -650,7 +650,7 @@ proc generateExtensionGetter
   ?let @string inResultVariableCppName
   !@string outGeneratedCode
 {
-  let className = [inReceiverType key]
+  let className = [inReceiverType definition].mTypeName.string
 #--- Build unused variable set
   var @stringset unusedVariableCppNameSet = {}
   unusedVariableCppNameSet += !compilerCppName ()
@@ -687,7 +687,7 @@ proc generateExtensionGetter
       searching = false
     end  
   end
-  ioInclusionSet += !"getter-" + [[baseType key] fileNameRepresentation] + "-" + [inGetterName fileNameRepresentation]
+  ioInclusionSet += !"getter-" + [[baseType definition].mTypeName.string fileNameRepresentation] + "-" + [inGetterName fileNameRepresentation]
   [inReceiverType addHeaderFileName !?ioInclusionSet]
   for (* mFormalArgumentType * * *) in inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
@@ -1188,7 +1188,7 @@ override method @onceFunctionDeclarationForGeneration appendDeclaration1
 
 override getter @semanticTypeForGeneration appendTypeGenericImplementation -> @string {
   result = [filewrapper typeGenerationTemplate.genericTypeImplementation
-    ![self.mSelfTypeEntry  key]
+    ![self.mSelfTypeEntry  definition].mTypeName.string
     ![self.mSelfTypeEntry  identifierRepresentation]
     ![self.mSelfTypeEntry  mSuperType]
     ![self.mSelfTypeEntry  mHandledOperatorFlags]
@@ -1667,20 +1667,21 @@ override getter @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @s
   case predefined_timer :
     outHeader = [filewrapper predefinedTypeGenerationTemplate.timer_type]
   end
+  let selfTypeDefinition = [self.mSelfTypeEntry definition]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![self.mSelfTypeEntry  key]
-    ![self.mSelfTypeEntry  identifierRepresentation]
-    ![self.mSelfTypeEntry  mIsConcrete]
-    ![self.mSelfTypeEntry  mConstructorMap]
-    ![self.mSelfTypeEntry  mGetterMap]
-    ![self.mSelfTypeEntry  mSetterMap]
-    ![self.mSelfTypeEntry  mInstanceMethodMap]
-    ![self.mSelfTypeEntry  mClassMethodMap]
-    ![self.mSelfTypeEntry  mOptionalMethodMap]
-    ![self.mSelfTypeEntry  mEnumerationDescriptor]
-    ![self.mSelfTypeEntry  mHandledOperatorFlags]
-    ![self.mSelfTypeEntry  mAddAssignOperatorArguments]
-    ![self.mSelfTypeEntry  mTypeForEnumeratedElement]
+    !selfTypeDefinition.mTypeName.string
+    ![self.mSelfTypeEntry identifierRepresentation]
+    !selfTypeDefinition.mIsConcrete
+    !selfTypeDefinition.mConstructorMap
+    !selfTypeDefinition.mGetterMap
+    !selfTypeDefinition.mSetterMap
+    !selfTypeDefinition.mInstanceMethodMap
+    !selfTypeDefinition.mClassMethodMap
+    !selfTypeDefinition.mOptionalMethodMap
+    !selfTypeDefinition.mEnumerationDescriptor
+    !selfTypeDefinition.mHandledOperatorFlags
+    !selfTypeDefinition.mAddAssignOperatorArguments
+    !selfTypeDefinition.mTypeForEnumeratedElement
   ]
 }
 

@@ -132,7 +132,7 @@ override method @loopInstructionWithoutVariantAST analyzeSemanticInstruction
 #--- Check loop expression type is @bool
   if loopExpression.mResultType != inAnalysisContext.mPredefinedTypes.mBoolType then
     error self.mEndOfLoopExpression
-    : "the loop expression type should be '@" + [inAnalysisContext.mPredefinedTypes.mBoolType key] + "', but it has '@" + [loopExpression.mResultType key] + "' type"
+    : "the loop expression type should be '@" + [inAnalysisContext.mPredefinedTypes.mBoolType definition].mTypeName.string + "', but it has '@" + [loopExpression.mResultType definition].mTypeName.string + "' type"
   end
 #--- Begin override for analyze loop instruction list
   [!?ioVariableMap openOverrideForRepeatBlock]

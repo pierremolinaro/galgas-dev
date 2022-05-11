@@ -279,7 +279,7 @@ proc analyzeErrorOrWarningInstruction
        && (expression.mResultType != inAnalysisContext.mPredefinedTypes.mLStringListType)
        && (expression.mResultType != inAnalysisContext.mPredefinedTypes.mStringSetType)
        && (expression.mResultType != inAnalysisContext.mPredefinedTypes.mStringType) then
-        error errorLocation : "expression type is @" + [expression.mResultType key]
+        error errorLocation : "expression type is @" + [expression.mResultType definition].mTypeName.string
          + ", it should be an @string, @stringset, @stringlist or @lstringlist"
       end
       outFixitListForGeneration += !.fixItReplace {!exp:expression}
@@ -296,7 +296,7 @@ proc analyzeErrorOrWarningInstruction
        && (expression.mResultType != inAnalysisContext.mPredefinedTypes.mLStringListType)
        && (expression.mResultType != inAnalysisContext.mPredefinedTypes.mStringSetType)
        && (expression.mResultType != inAnalysisContext.mPredefinedTypes.mStringType) then
-        error errorLocation : "expression type is @" + [expression.mResultType key]
+        error errorLocation : "expression type is @" + [expression.mResultType definition].mTypeName.string
          + ", it should be an @string, @stringset, @stringlist or @lstringlist"
       end
       outFixitListForGeneration += !.fixItInsertBefore {!exp:expression}
@@ -313,7 +313,7 @@ proc analyzeErrorOrWarningInstruction
        && (expression.mResultType != inAnalysisContext.mPredefinedTypes.mLStringListType)
        && (expression.mResultType != inAnalysisContext.mPredefinedTypes.mStringSetType)
        && (expression.mResultType != inAnalysisContext.mPredefinedTypes.mStringType) then
-        error errorLocation : "expression type is @" + [expression.mResultType key]
+        error errorLocation : "expression type is @" + [expression.mResultType definition].mTypeName.string
          + ", it should be an @string, @stringset, @stringlist or @lstringlist"
       end
       outFixitListForGeneration += !.fixItInsertAfter {!exp:expression}
@@ -322,7 +322,7 @@ proc analyzeErrorOrWarningInstruction
 #--- Check message expression type is @string
   if outMessageExpression.mResultType != inAnalysisContext.mPredefinedTypes.mStringType then
     error inErrorLocation
-    :"the " + inErrorOrWarningString + " message expression type is '@" + [outMessageExpression.mResultType key]
+    :"the " + inErrorOrWarningString + " message expression type is '@" + [outMessageExpression.mResultType definition].mTypeName.string
      + "'; it should be of the '@string' type"
   end
 }

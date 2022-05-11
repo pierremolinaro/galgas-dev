@@ -82,7 +82,7 @@ override method @tildeExpressionAST analyzeSemanticExpression
     }
   elsif not [[type mHandledOperatorFlags] prefixTildeOperator] then
     error self.mOperatorLocation
-    : "operand type is '@" + [type key] + "' and does not support the '~' operator"
+    : "operand type is '@" + [type definition].mTypeName.string + "' and does not support the '~' operator"
     :outExpression
   else
   #--- Generate expression
