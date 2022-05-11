@@ -130,21 +130,21 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
 #--- Return type
   let returnType = [inSemanticContext.mTypeMap searchKey !self.mAbstractExtensionGetterReturnedTypeName]
 #--- Check type is an abstract class
-  if not [[selfType mTypeKindEnum] isClassType] then
+  if not [[selfType definition].mTypeKindEnum isClassType] then
     error self.mAbstractExtensionGetterName: "cannot declare a extension getter: '@" + [selfType definition].mTypeName.string + "' is not a class"
   elsif [selfType definition].mIsConcrete then
     error self.mAbstractExtensionGetterName: "cannot declare an abstract extension getter: '@" + [selfType definition].mTypeName.string + "' is not an abstract class"
   end
 #--- Find base type name
   var @string baseTypeName = ""
-  var @unifiedTypeMapEntry superType = [selfType mSuperType]
+  var @unifiedTypeMapEntry superType = [selfType definition].mSuperType
   var @functionSignature inheritedSignature = {}
   var @unifiedTypeMapEntry inheritedReturnType = .null{}
   var @location inheritedDeclarationLocation = @location.here
   loop ([inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType mGetterMap] hasKey !self.mAbstractExtensionGetterName.string] then
-      [[superType mGetterMap] searchKey
+    if [[superType definition].mGetterMap hasKey !self.mAbstractExtensionGetterName.string] then
+      [[superType definition].mGetterMap searchKey
         !self.mAbstractExtensionGetterName
         ?*
         ?inheritedSignature
@@ -158,7 +158,7 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
         baseTypeName = [superType definition].mTypeName.string
       end
     end
-    superType = [superType mSuperType]
+    superType = [superType definition].mSuperType
   end
   if baseTypeName == "" then
     error self.mAbstractExtensionGetterName:"this getter is not declared by a super class"

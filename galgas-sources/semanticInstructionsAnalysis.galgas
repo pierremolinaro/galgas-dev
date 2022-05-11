@@ -204,13 +204,12 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
   elsif inFormalSelector.string != self.mActualSelector.string then
     let @string s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
     error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
-#    error self.mActualSelector : "the selector should be '!?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
   end
 #--- Analyze input/output variable
   [!?ioVariableMap searchForReadWriteAccess !self.mOutputInputActualParameterName ?var @unifiedTypeMapEntry parameterType ?let variableCppName ?*]
   var typeList = @unifiedTypeMapEntryList.listWithValue {!parameterType}
   for (mValue) in self.mStructAttributeList do
-    let propertyMap = [parameterType mPropertyMap]
+    let propertyMap = [parameterType definition].mPropertyMap
     [propertyMap searchKey
       !mValue
       ?let isPublic
@@ -267,7 +266,7 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
     error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
 #    error self.mActualSelector : "the selector should be '!?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
   end
-  let defaultConstructorName = [inFormalArgumentType mDefaultConstructorName]
+  let defaultConstructorName = [inFormalArgumentType definition].mDefaultConstructorName
   if defaultConstructorName == "" then
     error self.mActualSelector : "the formal parameter type @" + [inFormalArgumentType definition].mTypeName.string + " should support the default constructor"
   end
@@ -303,7 +302,7 @@ override method @outputInputJokerParameterAST checkAgainstFormalArgument
     :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
     + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
   end
-  let defaultConstructorName = [inFormalArgumentType mDefaultConstructorName]
+  let defaultConstructorName = [inFormalArgumentType definition].mDefaultConstructorName
   if defaultConstructorName == "" then
     error self.mQualifierLocation : "the formal parameter type @" + [inFormalArgumentType definition].mTypeName.string + " should support the default constructor"
   end
@@ -395,7 +394,7 @@ override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
     if not selfIsMutable then
       error self.mInputActualSelfPropertyName : "'self' not mutable in this context"
     end
-    let propertyMap = [selfType mPropertyMap]
+    let propertyMap = [selfType definition].mPropertyMap
     [propertyMap searchKey !self.mInputActualSelfPropertyName ?2* ?let parameterType]
     let targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
      + "mProperty_"+ [self.mInputActualSelfPropertyName.string identifierRepresentation]
@@ -707,9 +706,9 @@ proc checkExpressionIsBoolean
   let boolType = inAnalysisContext.mPredefinedTypes.mBoolType
   if expressionType == boolType then
     outExpression = inExpression
-  elsif [expressionType mTypeKindEnum] == @typeKindEnum. structType then
-    if [[expressionType mPropertyMap] hasKey !"bool"] then
-      [[expressionType mPropertyMap] searchKey
+  elsif [expressionType definition].mTypeKindEnum == .structType then
+    if [[expressionType definition].mPropertyMap hasKey !"bool"] then
+      [[expressionType definition].mPropertyMap searchKey
         !@lstring.new {!"bool" !inErrorLocation}
         ?let isPublic 
         ?*
@@ -736,7 +735,7 @@ proc checkExpressionIsBoolean
       : outExpression
     end
   else
-    with "bool" in [expressionType mGetterMap]  do
+    with "bool" in [expressionType definition].mGetterMap do
       if mReturnedType != boolType then
         error inErrorLocation: "the expression type is not @bool, it handles a 'bool' getter, but it does not return a '@bool' value" : outExpression
       elsif [mArgumentTypeList length] > 0 then
@@ -756,7 +755,7 @@ proc checkExpressionIsBoolean
         }
       end
     else
-      if [[expressionType mGetterMap] count] == 0 then
+      if [[expressionType definition].mGetterMap count] == 0 then
         error inErrorLocation
         : "the expression type is not '@bool', but '@"+ [expressionType definition].mTypeName.string + "', and this type does not define the 'bool' getter"
         : outExpression
@@ -764,7 +763,7 @@ proc checkExpressionIsBoolean
         error inErrorLocation
         : "the expression type is not '@bool', but '@"+ [expressionType definition].mTypeName.string + "', and this type does not define the 'bool' getter "
         : outExpression
-        fixit { replace [[expressionType mGetterMap] keyList] }
+        fixit { replace [[expressionType definition].mGetterMap keyList] }
       end
     end
   end

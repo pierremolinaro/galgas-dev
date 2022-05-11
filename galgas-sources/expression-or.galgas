@@ -177,7 +177,7 @@ let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   checkDiadicOperator (
     !leftType
     !rightExpression.mResultType
-    ![[leftType mHandledOperatorFlags] infixOrOperator]
+    ![[leftType definition].mHandledOperatorFlags infixOrOperator]
     !"|"
     !self.mOperatorLocation
     !?rightExpression
@@ -232,7 +232,7 @@ override method @orShortExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     !rightExpression.mResultType
-    ![[leftType mHandledOperatorFlags] infixOrOperator]
+    ![[leftType definition].mHandledOperatorFlags infixOrOperator]
     !"|"
     !self.mOperatorLocation
     !?rightExpression
@@ -286,7 +286,7 @@ override method @xorExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     !rightExpression.mResultType
-    ![[leftType mHandledOperatorFlags] infixXorOperator]
+    ![[leftType definition].mHandledOperatorFlags infixXorOperator]
     !"^"
     !self.mOperatorLocation
     !?rightExpression

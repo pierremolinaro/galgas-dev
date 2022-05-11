@@ -94,7 +94,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     ?let @semanticExpressionForGeneration receiverExpression
   ]
 #--- Get type method signature
-  [[receiverExpression.mResultType mInstanceMethodMap] searchKey
+  [[receiverExpression.mResultType definition].mInstanceMethodMap searchKey
     !self.mMethodName
     ?let kind
     ?let routineSignature
@@ -130,11 +130,11 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
   var searching = true
   if @uint. errorCount == 0 then
     loop (@uint. max) while searching do
-      if [[baseType mSuperType] isNull] then
+      if [[baseType definition].mSuperType isNull] then
         searching = false
       else
-        if [[[baseType mSuperType] mInstanceMethodMap] hasKey !self.mMethodName.string] then
-          baseType = [baseType mSuperType]
+        if [[[baseType definition].mSuperType definition].mInstanceMethodMap hasKey !self.mMethodName.string] then
+          baseType = [baseType definition].mSuperType
         else
           searching = false
         end
@@ -192,7 +192,7 @@ override method @methodCallInstructionForGeneration generateInstruction
   switch self.mKind
   case definedAsExtension :
     ioInclusionSet += !"method-" + [[self.mMethodBaseType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mMethodName fileNameRepresentation]
-    if [[self.mReceiverType mTypeKindEnum] isClassType] then
+    if [[self.mReceiverType definition].mTypeKindEnum isClassType] then
       ioGeneratedCode += "callExtensionMethod_" + [self.mMethodName identifierRepresentation]
                       + " ((const cPtr_" + [self.mReceiverExpression.mResultType identifierRepresentation]
                       + " *) " + receiverCppName + ".ptr (), "

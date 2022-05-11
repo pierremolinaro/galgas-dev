@@ -117,7 +117,7 @@ override method @andExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     !rightExpression.mResultType
-    ![[leftType mHandledOperatorFlags] infixAndOperator]
+    ![[leftType definition].mHandledOperatorFlags infixAndOperator]
     !"&"
     !self.mOperatorLocation
     !?rightExpression
@@ -173,7 +173,7 @@ override method @andShortExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     !rightExpression.mResultType
-    ![[leftType mHandledOperatorFlags] infixAndOperator]
+    ![[leftType definition].mHandledOperatorFlags infixAndOperator]
     !"&"
     !self.mOperatorLocation
     !?rightExpression

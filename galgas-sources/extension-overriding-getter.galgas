@@ -151,19 +151,19 @@ override method @overridingExtensionGetterAST semanticAnalysis
 #--- Self type
   let @unifiedTypeMapEntry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- Check self type is a class
-  if not [[selfType mTypeKindEnum] isClassType] then
+  if not [[selfType definition].mTypeKindEnum isClassType] then
     error self.mOverridingExtensionGetterName: "cannot declare a extension getter: '@" + [selfType definition].mTypeName.string + "' is not a class"
   end
 #--- Find base type name
   var @string baseTypeName = ""
-  var @unifiedTypeMapEntry superType = [selfType mSuperType]
+  var @unifiedTypeMapEntry superType = [selfType definition].mSuperType
   var @functionSignature inheritedSignature = {}
   var inheritedReturnType = @unifiedTypeMapEntry.null{}
   var @location inheritedDeclarationLocation = @location.here
   loop ([inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType mGetterMap] hasKey !self.mOverridingExtensionGetterName.string] then
-      [[superType mGetterMap] searchKey
+    if [[superType definition].mGetterMap hasKey !self.mOverridingExtensionGetterName.string] then
+      [[superType definition].mGetterMap searchKey
         !self.mOverridingExtensionGetterName
         ?*
         ?inheritedSignature
@@ -177,7 +177,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
         baseTypeName = [superType definition].mTypeName.string
       end
     end
-    superType = [superType mSuperType]
+    superType = [superType definition].mSuperType
   end
   if baseTypeName == "" then
     error self.mOverridingExtensionGetterName:"this getter is not declared by a super class"
@@ -196,8 +196,8 @@ override method @overridingExtensionGetterAST semanticAnalysis
     !?ioUsefulEntitiesGraph
     !analysisContext
     !self.mOverridingExtensionGetterFormalInputParameterList
-    !if [[selfType mTypeKindEnum] isClassType] | ([selfType mTypeKindEnum] == @typeKindEnum. structType)
-       then [selfType mAllTypedPropertyList]
+    !if [[selfType definition].mTypeKindEnum isClassType] | ([selfType definition].mTypeKindEnum == .structType)
+       then [selfType definition].mAllTypedPropertyList
        else {}
      end
     !"object->"
@@ -233,7 +233,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
       !returnType
       !returnVariableCppName
       !formalParameterListForGeneration
-      ![selfType mAllTypedPropertyList]
+      ![selfType definition].mAllTypedPropertyList
       !semanticInstructionListForGeneration
     }
 }

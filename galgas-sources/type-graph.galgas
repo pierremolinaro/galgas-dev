@@ -351,7 +351,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !lstringTypeEntry
     !@formalArgumentPassingModeAST.argumentIn
     !"inLKey"
-  for (* mFormalArgumentType mFormalArgumentName) in [associatedListTypeEntry mAddAssignOperatorArguments] do
+  for (* mFormalArgumentType mFormalArgumentName) in [associatedListTypeEntry definition].mAddAssignOperatorArguments do
     formalParameterList +=
       !["" nowhere]
       !mFormalArgumentType
@@ -483,7 +483,7 @@ override method @graphDeclarationAST semanticAnalysis
   let associatedListElementTypeEntry = [inSemanticContext.mTypeMap searchKey
     !@lstring.new {!self.mAssociatedListTypeName.string +elementTypeNameSuffix () !self.mAssociatedListTypeName.location}
   ]
-  if [associatedListTypeEntry mTypeKindEnum] != @typeKindEnum. listType then
+  if [associatedListTypeEntry definition].mTypeKindEnum != @typeKindEnum. listType then
     error self.mAssociatedListTypeName: "the '@" + self.mAssociatedListTypeName + "' type should be a list"
   end
 #--- Analyze insert methods

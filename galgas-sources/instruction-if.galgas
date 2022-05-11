@@ -453,7 +453,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
       var castType = @unifiedTypeMapEntry.null
       var testType = @unifiedTypeMapEntry.null
     #--- Check this is a class
-      if [[analyzedExpression.mResultType mTypeKindEnum] isClassType] then
+      if [[analyzedExpression.mResultType definition].mTypeKindEnum isClassType] then
         if typeName.string == "" then
           error typeName.location : "on a class object, the 'as' clause is required" : castType, testType
         else
@@ -463,8 +463,8 @@ override method @ifInstructionAST analyzeSemanticInstruction
           var @unifiedTypeMapEntry t = castType
           var @bool found = t == analyzedExpression.mResultType
           loop ([inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
-          while (not found) & not [[t mSuperType] isNull] do
-            t = [t mSuperType]
+          while (not found) & not [[t definition].mSuperType isNull] do
+            t = [t definition].mSuperType
             found = t == analyzedExpression.mResultType
           end
           if not found then
@@ -473,7 +473,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
               + "' type of the cast expression"
           end
         end
-      elsif let [[analyzedExpression.mResultType mTypeKindEnum] weakReferenceType ?referenceType: let classType] then
+      elsif let [[analyzedExpression.mResultType definition].mTypeKindEnum weakReferenceType ?referenceType: let classType] then
         if typeName.string == "" then
           castType = classType
         else
@@ -483,16 +483,16 @@ override method @ifInstructionAST analyzeSemanticInstruction
         var @unifiedTypeMapEntry t = castType
         var @bool found = t == analyzedExpression.mResultType
         if found then
-          [[castType mTypeKindEnum] weakReferenceType ?referenceType: testType]
+          [[castType definition].mTypeKindEnum weakReferenceType ?referenceType: testType]
         elsif t == classType then
           found = true
         end
         loop ([inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
-        while (not found) & not [[t mSuperType] isNull] do
-          t = [t mSuperType]
+        while (not found) & not [[t definition].mSuperType isNull] do
+          t = [t definition].mSuperType
           if t == analyzedExpression.mResultType then
             found = true
-            [[castType mTypeKindEnum] weakReferenceType ?referenceType: testType]
+            [[castType definition].mTypeKindEnum weakReferenceType ?referenceType: testType]
           elsif t == classType then
             found = true
           end
@@ -603,7 +603,7 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
   [!?ioVariableMap openBranch]
 #--- Get optional method map
   let @unifiedTypeMapEntry receiverType = receiverExpression.mResultType
-  let @optionalMethodMap optionalMethodMap = [receiverType mOptionalMethodMap]
+  let @optionalMethodMap optionalMethodMap = [receiverType definition].mOptionalMethodMap
 #--- Search optional method
   let @optionalMethodSignature optionalMethodSignature
   with inOptionalMethodName.string in optionalMethodMap do

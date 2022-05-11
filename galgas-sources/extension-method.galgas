@@ -148,7 +148,7 @@ override method @extensionMethodAST semanticAnalysis
   let @bool implementedAsFunction
 #--- Check self type is a class
   var isReferenceClass = false
-  if let [[selfType mTypeKindEnum] classType ?isReference: let isReference] then
+  if let [[selfType definition].mTypeKindEnum classType ?isReference: let isReference] then
     isReferenceClass = isReference
     selfObjectName = "object"
     selfObjectAccessor = "object->"
@@ -168,18 +168,18 @@ override method @extensionMethodAST semanticAnalysis
     !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
   }
   var isRefClass = false
-  if let [[selfType mTypeKindEnum] classType ?isReference: let reference] then
+  if let [[selfType definition].mTypeKindEnum classType ?isReference: let reference] then
     isRefClass = reference
   end
   var mutableProperties = @typedPropertyList {}
   var nonMutableProperties = @typedPropertyList {}
-  if [selfType mTypeKindEnum] == .structType then
-    nonMutableProperties = [selfType mAllTypedPropertyList]
-  elsif let [[selfType mTypeKindEnum] classType ?isReference: let isReference] then
+  if [selfType definition].mTypeKindEnum == .structType then
+    nonMutableProperties = [selfType definition].mAllTypedPropertyList
+  elsif let [[selfType definition].mTypeKindEnum classType ?isReference: let isReference] then
     if isReference then
-      mutableProperties = [selfType mAllTypedPropertyList]
+      mutableProperties = [selfType definition].mAllTypedPropertyList
     else
-      nonMutableProperties = [selfType mAllTypedPropertyList]
+      nonMutableProperties = [selfType definition].mAllTypedPropertyList
     end
   end
   analyzeRoutineBody (
@@ -204,7 +204,7 @@ override method @extensionMethodAST semanticAnalysis
       !self.mExtensionMethodName.string
       !implementedAsFunction
       !formalParameterListForGeneration
-      ![selfType mAllTypedPropertyList]
+      ![selfType definition].mAllTypedPropertyList
       !semanticInstructionListForGeneration
     }
 }
@@ -313,9 +313,9 @@ override method @extensionMethodForGeneration appendSpecificImplementation
     var @unifiedTypeMapEntry baseType = self.mReceiverType
     var @bool searching = true
     loop (@uint.max) while searching do
-      if not [[baseType mSuperType] isNull] then
-        if [[[baseType mSuperType] mInstanceMethodMap] hasKey !self.mExtensionMethodName] then
-          baseType = [baseType mSuperType]
+      if not [[baseType definition].mSuperType isNull] then
+        if [[[baseType definition].mSuperType definition].mInstanceMethodMap hasKey !self.mExtensionMethodName] then
+          baseType = [baseType definition].mSuperType
         else
           searching = false
         end

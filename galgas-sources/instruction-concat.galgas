@@ -299,7 +299,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
       if not mutableProperties then
         error self.mInstructionLocation : "property not mutable in this context"
       end
-      let propertyMap = [selfType mPropertyMap]
+      let propertyMap = [selfType definition].mPropertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
@@ -323,7 +323,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
     ]
   end
   for (mValue) in self.mStructAttributeList do
-    let propertyMap = [targetType mPropertyMap]
+    let propertyMap = [targetType definition].mPropertyMap
     [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
     if not isPublic then
       error mValue : " inaccessible property (due to its 'private' qualifier)"
@@ -333,7 +333,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
     end
   end
 #--- Check target variable type support '+= exp' operator
-  if not [[targetType mHandledOperatorFlags] plusEqualOperatorWithExpression] then
+  if not [[targetType definition].mHandledOperatorFlags plusEqualOperatorWithExpression] then
     error self.mInstructionLocation
     :"the target object has the '@" + [targetType definition].mTypeName.string + "' type, but this type does not support the '+=' operator"
   end
@@ -378,7 +378,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
       if not selfIsMutable then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
-      let propertyMap = [selfType mPropertyMap]
+      let propertyMap = [selfType definition].mPropertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
@@ -402,7 +402,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
     ]
   end
   for (mValue) in self.mStructAttributeList do
-    let propertyMap = [targetType mPropertyMap]
+    let propertyMap = [targetType definition].mPropertyMap
     [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
     if not isPublic then
       error mValue : " inaccessible property (due to its 'private' qualifier)"
@@ -412,7 +412,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
     end
   end
 #--- Check target variable type support '-= exp' operator
-  if not [[targetType mHandledOperatorFlags] minusEqualOperatorWithExpression] then
+  if not [[targetType definition].mHandledOperatorFlags minusEqualOperatorWithExpression] then
     error self.mInstructionLocation
     :"the target object has the '@" + [targetType definition].mTypeName.string + "' type, but this type does not support the '-=' operator"
   end
@@ -457,7 +457,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
       if not selfIsMutable then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
-      let propertyMap = [selfType mPropertyMap]
+      let propertyMap = [selfType definition].mPropertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
@@ -481,14 +481,8 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
     ]
   end
 #--- Check target variable
-#  [!?ioVariableMap searchForReadWriteAccess
-#    !self.mReceiverName 
-#    ?@unifiedTypeMapEntry targetType
-#    ?@string targetVariableCppName
-#    ?@string nameForCheckingFormalParameterUsing
-#  ]
   for (mValue) in self.mStructAttributeList do
-    let propertyMap = [targetType mPropertyMap]
+    let propertyMap = [targetType definition].mPropertyMap
     [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
     if not isPublic then
       error mValue : " inaccessible property (due to its 'private' qualifier)"
@@ -498,7 +492,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
     end
   end
 #--- Check target variable type support '*= exp' operator
-  if [[targetType mHandledOperatorFlags] mulEqualOperatorWithExpression] then
+  if [[targetType definition].mHandledOperatorFlags mulEqualOperatorWithExpression] then
     error self.mInstructionLocation
     :"the target object has the '@" + [targetType definition].mTypeName.string + "' type, but this type does not support the '*=' operator"
   end
@@ -543,7 +537,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
       if not selfIsMutable then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
-      let propertyMap = [selfType mPropertyMap]
+      let propertyMap = [selfType definition].mPropertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
@@ -568,7 +562,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
   end
 #--- Check target variable
   for (mValue) in self.mStructAttributeList do
-    let propertyMap = [targetType mPropertyMap]
+    let propertyMap = [targetType definition].mPropertyMap
     [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
     if not isPublic then
       error mValue : " inaccessible property (due to its 'private' qualifier)"
@@ -578,7 +572,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
     end
   end
 #--- Check target variable type support '/= exp' operator
-  if [[targetType mHandledOperatorFlags] divEqualOperatorWithExpression] then
+  if [[targetType definition].mHandledOperatorFlags divEqualOperatorWithExpression] then
     error self.mInstructionLocation
     :"the target object has the '@" + [targetType definition].mTypeName.string + "' type, but this type does not support the '/=' operator"
   end
@@ -623,7 +617,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
       if not selfIsMutable then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
-      let propertyMap = [selfType mPropertyMap]
+      let propertyMap = [selfType definition].mPropertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
@@ -638,24 +632,6 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
       error self.mInstructionLocation : "'self' not available in this context"
       : targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
     end
-
-
-#    if [inAnalysisContext.nonMutableSelfType isNull] then
-#      error self.mReceiverName: "'self' cannot be used in this context"
-#      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-#    elsif [inAnalysisContext.mutableSelfType isNull] then
-#      error self.mReceiverName: "'self' object is not mutable"
-#      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-#    else
-#      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
-#      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
-#      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
-#      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
-#        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
-#      if isConstant then
-#        error self.mReceiverName : "a constant property cannot be modified"
-#      end
-#    end
   else
     [!?ioVariableMap searchForReadWriteAccess
       !self.mReceiverName
@@ -666,7 +642,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
   end
 #--- Check target variable
   for (mValue) in self.mStructAttributeList do
-    let propertyMap = [targetType mPropertyMap]
+    let propertyMap = [targetType definition].mPropertyMap
     [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
     if not isPublic then
       error mValue : " inaccessible property (due to its 'private' qualifier)"
@@ -676,7 +652,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
     end
   end
 #--- Check target variable type support '+=' operator
-  let addAssignOperatorArguments= [targetType mAddAssignOperatorArguments] # Empty list if += operator is not supported
+  let addAssignOperatorArguments= [targetType definition].mAddAssignOperatorArguments # Empty list if += operator is not supported
   if [addAssignOperatorArguments length] == 0 then
     error self.mInstructionLocation
     :"the target object has the '@" + [targetType definition].mTypeName.string + "' type, but this type does not support the '+=' operator"
@@ -764,7 +740,7 @@ override method @plusEqualnstructionForGeneration generateInstruction
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
-  if [[self.mTargetType mHandledOperatorFlags] plusEqualOperatorWithFieldListNeedsCompilerArg] then
+  if [[self.mTargetType definition].mHandledOperatorFlags plusEqualOperatorWithFieldListNeedsCompilerArg] then
     ioGeneratedCode  += ", " + compilerCppName ()
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   end

@@ -10242,31 +10242,38 @@ void extensionSetter_closeOverride (GALGAS_localVarManager & ioObject,
                                     const GALGAS_location /* constinArgument_inEndOfBranchLocation */,
                                     C_Compiler * inCompiler
                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_overrideKind var_savedManager_12039 ;
-  {
-  ioObject.mProperty_mOverridenManagers.setter_popLast (var_savedManager_12039, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 260)) ;
-  }
-  switch (var_savedManager_12039.enumValue ()) {
-  case GALGAS_overrideKind::kNotBuilt:
-    break ;
-  case GALGAS_overrideKind::kEnum_selectOverrideFirstBranch:
-    {
-      const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch * extractPtr_12138 = (const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch *) (var_savedManager_12039.unsafePointer ()) ;
-      const GALGAS_currentVarManager extractedValue_12135_savedManager = extractPtr_12138->mAssociatedValue0 ;
+  enumGalgasBool test_0 = kBoolTrue ;
+  if (kBoolTrue == test_0) {
+    const GALGAS_localVarManager temp_1 = ioObject ;
+    test_0 = GALGAS_bool (kIsStrictSup, temp_1.readProperty_mOverridenManagers ().getter_length (SOURCE_FILE ("variable-manager.galgas", 260)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    if (kBoolTrue == test_0) {
+      GALGAS_overrideKind var_savedManager_12088 ;
+      {
+      ioObject.mProperty_mOverridenManagers.setter_popLast (var_savedManager_12088, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 261)) ;
+      }
+      switch (var_savedManager_12088.enumValue ()) {
+      case GALGAS_overrideKind::kNotBuilt:
+        break ;
+      case GALGAS_overrideKind::kEnum_selectOverrideFirstBranch:
+        {
+          const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch * extractPtr_12191 = (const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch *) (var_savedManager_12088.unsafePointer ()) ;
+          const GALGAS_currentVarManager extractedValue_12188_savedManager = extractPtr_12191->mAssociatedValue0 ;
+        }
+        break ;
+      case GALGAS_overrideKind::kEnum_selectOverrideNextBranches:
+        {
+          const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches * extractPtr_12352 = (const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches *) (var_savedManager_12088.unsafePointer ()) ;
+          const GALGAS_currentVarManager extractedValue_12267_savedManager = extractPtr_12352->mAssociatedValue0 ;
+          const GALGAS_currentVarManager extractedValue_12303_referenceManager = extractPtr_12352->mAssociatedValue1 ;
+          ioObject.mProperty_mCurrentManager = extractedValue_12303_referenceManager ;
+        }
+        break ;
+      case GALGAS_overrideKind::kEnum_repeatOverride:
+        {
+        }
+        break ;
+      }
     }
-    break ;
-  case GALGAS_overrideKind::kEnum_selectOverrideNextBranches:
-    {
-      const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches * extractPtr_12295 = (const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches *) (var_savedManager_12039.unsafePointer ()) ;
-      const GALGAS_currentVarManager extractedValue_12212_savedManager = extractPtr_12295->mAssociatedValue0 ;
-      const GALGAS_currentVarManager extractedValue_12248_referenceManager = extractPtr_12295->mAssociatedValue1 ;
-      ioObject.mProperty_mCurrentManager = extractedValue_12248_referenceManager ;
-    }
-    break ;
-  case GALGAS_overrideKind::kEnum_repeatOverride:
-    {
-    }
-    break ;
   }
 }
 
@@ -10281,7 +10288,7 @@ void extensionSetter_openBranch (GALGAS_localVarManager & ioObject,
                                  C_Compiler * inCompiler
                                  COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_openScope (ioObject.mProperty_mCurrentManager, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 272)) ;
+  extensionSetter_openScope (ioObject.mProperty_mCurrentManager, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 274)) ;
   }
 }
 
@@ -10297,43 +10304,50 @@ void extensionSetter_closeBranch (GALGAS_localVarManager & ioObject,
                                   C_Compiler * inCompiler
                                   COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_closeScope (ioObject.mProperty_mCurrentManager, constinArgument_inEndOfBranchLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 278)) ;
+  extensionSetter_closeScope (ioObject.mProperty_mCurrentManager, constinArgument_inEndOfBranchLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 280)) ;
   }
-  GALGAS_overrideKind var_savedManager_12845 ;
-  {
-  ioObject.mProperty_mOverridenManagers.setter_popLast (var_savedManager_12845, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 280)) ;
-  }
-  switch (var_savedManager_12845.enumValue ()) {
-  case GALGAS_overrideKind::kNotBuilt:
-    break ;
-  case GALGAS_overrideKind::kEnum_selectOverrideFirstBranch:
-    {
-      const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch * extractPtr_13107 = (const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch *) (var_savedManager_12845.unsafePointer ()) ;
-      const GALGAS_currentVarManager extractedValue_12934_savedManager = extractPtr_13107->mAssociatedValue0 ;
-      const GALGAS_localVarManager temp_0 = ioObject ;
-      ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::constructor_selectOverrideNextBranches (extractedValue_12934_savedManager, temp_0.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas", 283))  COMMA_SOURCE_FILE ("variable-manager.galgas", 283)) ;
-      ioObject.mProperty_mCurrentManager = extractedValue_12934_savedManager ;
-    }
-    break ;
-  case GALGAS_overrideKind::kEnum_selectOverrideNextBranches:
-    {
-      const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches * extractPtr_13550 = (const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches *) (var_savedManager_12845.unsafePointer ()) ;
-      const GALGAS_currentVarManager extractedValue_13174_savedManager = extractPtr_13550->mAssociatedValue0 ;
-      const GALGAS_currentVarManager extractedValue_13210_referenceManager = extractPtr_13550->mAssociatedValue1 ;
-      const GALGAS_localVarManager temp_1 = ioObject ;
-      GALGAS_currentVarManager var_newReferenceManager_13241 = temp_1.readProperty_mCurrentManager () ;
+  enumGalgasBool test_0 = kBoolTrue ;
+  if (kBoolTrue == test_0) {
+    const GALGAS_localVarManager temp_1 = ioObject ;
+    test_0 = GALGAS_bool (kIsStrictSup, temp_1.readProperty_mOverridenManagers ().getter_length (SOURCE_FILE ("variable-manager.galgas", 282)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    if (kBoolTrue == test_0) {
+      GALGAS_overrideKind var_savedManager_12961 ;
       {
-      extensionSetter_combineManagerWith (var_newReferenceManager_13241, extractedValue_13210_referenceManager, constinArgument_inEndOfBranchLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 287)) ;
+      ioObject.mProperty_mOverridenManagers.setter_popLast (var_savedManager_12961, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 283)) ;
       }
-      ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::constructor_selectOverrideNextBranches (extractedValue_13174_savedManager, var_newReferenceManager_13241  COMMA_SOURCE_FILE ("variable-manager.galgas", 288))  COMMA_SOURCE_FILE ("variable-manager.galgas", 288)) ;
-      ioObject.mProperty_mCurrentManager = extractedValue_13174_savedManager ;
+      switch (var_savedManager_12961.enumValue ()) {
+      case GALGAS_overrideKind::kNotBuilt:
+        break ;
+      case GALGAS_overrideKind::kEnum_selectOverrideFirstBranch:
+        {
+          const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch * extractPtr_13231 = (const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch *) (var_savedManager_12961.unsafePointer ()) ;
+          const GALGAS_currentVarManager extractedValue_13054_savedManager = extractPtr_13231->mAssociatedValue0 ;
+          const GALGAS_localVarManager temp_2 = ioObject ;
+          ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::constructor_selectOverrideNextBranches (extractedValue_13054_savedManager, temp_2.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas", 286))  COMMA_SOURCE_FILE ("variable-manager.galgas", 286)) ;
+          ioObject.mProperty_mCurrentManager = extractedValue_13054_savedManager ;
+        }
+        break ;
+      case GALGAS_overrideKind::kEnum_selectOverrideNextBranches:
+        {
+          const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches * extractPtr_13684 = (const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches *) (var_savedManager_12961.unsafePointer ()) ;
+          const GALGAS_currentVarManager extractedValue_13300_savedManager = extractPtr_13684->mAssociatedValue0 ;
+          const GALGAS_currentVarManager extractedValue_13336_referenceManager = extractPtr_13684->mAssociatedValue1 ;
+          const GALGAS_localVarManager temp_3 = ioObject ;
+          GALGAS_currentVarManager var_newReferenceManager_13369 = temp_3.readProperty_mCurrentManager () ;
+          {
+          extensionSetter_combineManagerWith (var_newReferenceManager_13369, extractedValue_13336_referenceManager, constinArgument_inEndOfBranchLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 290)) ;
+          }
+          ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::constructor_selectOverrideNextBranches (extractedValue_13300_savedManager, var_newReferenceManager_13369  COMMA_SOURCE_FILE ("variable-manager.galgas", 291))  COMMA_SOURCE_FILE ("variable-manager.galgas", 291)) ;
+          ioObject.mProperty_mCurrentManager = extractedValue_13300_savedManager ;
+        }
+        break ;
+      case GALGAS_overrideKind::kEnum_repeatOverride:
+        {
+          ioObject.mProperty_mOverridenManagers.addAssign_operation (var_savedManager_12961  COMMA_SOURCE_FILE ("variable-manager.galgas", 294)) ;
+        }
+        break ;
+      }
     }
-    break ;
-  case GALGAS_overrideKind::kEnum_repeatOverride:
-    {
-      ioObject.mProperty_mOverridenManagers.addAssign_operation (var_savedManager_12845  COMMA_SOURCE_FILE ("variable-manager.galgas", 291)) ;
-    }
-    break ;
   }
 }
 
@@ -10355,7 +10369,7 @@ void extensionSetter_neutralAccess (GALGAS_localVarManager & ioObject,
   outArgument_outCppName.drop () ; // Release 'out' argument
   outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release 'out' argument
   {
-  extensionSetter_neutralAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 371)) ;
+  extensionSetter_neutralAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 375)) ;
   }
 }
 
@@ -10371,7 +10385,7 @@ void extensionSetter_searchForDropAccess (GALGAS_localVarManager & ioObject,
                                           C_Compiler * inCompiler
                                           COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_searchForDropAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 415)) ;
+  extensionSetter_searchForDropAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 419)) ;
   }
 }
 
@@ -10393,7 +10407,7 @@ void extensionSetter_searchForWriteAccess (GALGAS_localVarManager & ioObject,
   outArgument_outCppName.drop () ; // Release 'out' argument
   outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release 'out' argument
   {
-  extensionSetter_searchForWriteAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 449)) ;
+  extensionSetter_searchForWriteAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 453)) ;
   }
 }
 
@@ -10415,7 +10429,7 @@ void extensionSetter_searchForReadAccess (GALGAS_localVarManager & ioObject,
   outArgument_outCppName.drop () ; // Release 'out' argument
   outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release 'out' argument
   {
-  extensionSetter_searchForReadAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 550)) ;
+  extensionSetter_searchForReadAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 554)) ;
   }
 }
 
@@ -10437,7 +10451,7 @@ void extensionSetter_searchForReadWriteAccess (GALGAS_localVarManager & ioObject
   outArgument_outCppName.drop () ; // Release 'out' argument
   outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release 'out' argument
   {
-  extensionSetter_searchForReadWriteAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 637)) ;
+  extensionSetter_searchForReadWriteAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 641)) ;
   }
 }
 
@@ -10453,7 +10467,7 @@ void extensionMethod_checkAutomatonStates (const GALGAS_localVarManager inObject
                                            C_Compiler * inCompiler
                                            COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_localVarManager temp_0 = inObject ;
-  extensionMethod_checkAutomatonStates (temp_0.readProperty_mCurrentManager (), constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 786)) ;
+  extensionMethod_checkAutomatonStates (temp_0.readProperty_mCurrentManager (), constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 792)) ;
 }
 
 

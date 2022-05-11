@@ -394,7 +394,7 @@ override method @classDeclarationAST enterInSemanticContext
 #--- Generate a "default" constructor ?
   var @string defaultConstructorName = if self.mIsAbstract then "" else "default" end
   for (propertyTypeEntry 3*) in allTypedAttributeList while defaultConstructorName != "" do
-    if [propertyTypeEntry mDefaultConstructorName] == "" then 
+    if [propertyTypeEntry definition].mDefaultConstructorName == "" then 
       defaultConstructorName = ""
     end
   end
@@ -465,7 +465,7 @@ override method @classDeclarationAST semanticAnalysis
 # a base class can be freely declared as shared or not
 # a class should the same 'reference' status as its super class
   if superClassEntry != .null then
-    [[superClassEntry mTypeKindEnum] classType ?isReference: let superClassIsReference]
+    [[superClassEntry definition].mTypeKindEnum classType ?isReference: let superClassIsReference]
     if superClassIsReference & not self.mIsReference then
       error self.mClassTypeName : "this class should be declared by 'refClass', as its super class"
     elsif not superClassIsReference & self.mIsReference then
@@ -492,7 +492,7 @@ override method @classDeclarationAST semanticAnalysis
       end
     end
   else
-    allAttributeList = [superClassEntry mAllTypedPropertyList]
+    allAttributeList = [superClassEntry definition].mAllTypedPropertyList
     if [self.mClassFeatureList length] > 0 then
       for (mValue) in self.mClassFeatureList do
         error mValue:"a class that has a super class does not accept any feature"
@@ -532,7 +532,7 @@ override method @classDeclarationAST semanticAnalysis
       !superClassEntry
       !allAttributeList
       !typedAttributeList
-      ![selfType mGenerateHeaderInSeparateFile]
+      ![selfType definition].mGenerateHeaderInSeparateFile
     }
 }
 
@@ -563,7 +563,7 @@ override method @classTypeForGeneration appendDeclaration1 ?!@stringset ioInclus
       ![self.mSelfTypeEntry identifierRepresentation]
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
       !self.mIsAbstract
-      ![self.mSelfTypeEntry mDefaultConstructorName] != ""
+      ![self.mSelfTypeEntry definition].mDefaultConstructorName != ""
       !self.mCurrentTypedAttributeList
     ]
   else
@@ -572,7 +572,7 @@ override method @classTypeForGeneration appendDeclaration1 ?!@stringset ioInclus
       ![self.mSelfTypeEntry identifierRepresentation]
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
       !self.mIsAbstract
-      ![self.mSelfTypeEntry mDefaultConstructorName] != ""
+      ![self.mSelfTypeEntry definition].mDefaultConstructorName != ""
       !self.mCurrentTypedAttributeList
     ]  
   end
@@ -611,7 +611,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
         !self.mCurrentTypedAttributeList
         !self.mAllTypedAttributeList
         !self.mIsAbstract
-        ![self.mSelfTypeEntry mGetterMap]
+        ![self.mSelfTypeEntry definition].mGetterMap
       ]
       let @string part2 = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part2
         !typedefinition.mTypeName.string
@@ -642,7 +642,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
         !self.mCurrentTypedAttributeList
         !self.mAllTypedAttributeList
         !self.mIsAbstract
-        ![self.mSelfTypeEntry mGetterMap]
+        ![self.mSelfTypeEntry definition].mGetterMap
       ]
       outHeader += [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part2
         !typedefinition.mTypeName.string
@@ -724,7 +724,7 @@ override method @classTypeForGeneration appendSpecificImplementation ?let @unifi
       !allPropertyList: self.mAllTypedAttributeList
       !inheritedPropertyList: at
       !self.mIsAbstract
-      ![self.mSelfTypeEntry mDefaultConstructorName] != ""
+      ![self.mSelfTypeEntry definition].mDefaultConstructorName != ""
     ]
   else
     outImplementation = [filewrapper typeGenerationTemplate.valueClassTypeSpecificImplementation
@@ -735,7 +735,7 @@ override method @classTypeForGeneration appendSpecificImplementation ?let @unifi
       !self.mAllTypedAttributeList
       !at
       !self.mIsAbstract
-      ![self.mSelfTypeEntry mDefaultConstructorName] != ""
+      ![self.mSelfTypeEntry definition].mDefaultConstructorName != ""
     ]
   end
 }

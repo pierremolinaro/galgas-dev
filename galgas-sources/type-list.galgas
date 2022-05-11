@@ -500,7 +500,7 @@ override method @listTypeForGeneration appendSpecificImplementation
     !selfTypedefinition.mTypeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !self.mTypedAttributeList
-    ![[self.mSelfTypeEntry mTypeForEnumeratedElement] identifierRepresentation]
+    ![[self.mSelfTypeEntry definition].mTypeForEnumeratedElement identifierRepresentation]
   ]
  }
 

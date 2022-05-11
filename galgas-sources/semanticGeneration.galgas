@@ -555,9 +555,9 @@ proc generateExtensionMethod ?let @unifiedTypeMapEntry inReceiverType
   var @unifiedTypeMapEntry baseType = inReceiverType
   var @bool searching = true
   loop (@uint. max) while searching do
-    if not [[baseType mSuperType] isNull] then
-      if [[[baseType mSuperType] mInstanceMethodMap] hasKey !inMethodName] then
-        baseType = [baseType mSuperType]
+    if not [[baseType definition].mSuperType isNull] then
+      if [[[baseType definition].mSuperType definition].mInstanceMethodMap hasKey !inMethodName] then
+        baseType = [baseType definition].mSuperType
       else
         searching = false
       end
@@ -677,9 +677,9 @@ proc generateExtensionGetter
   var @unifiedTypeMapEntry baseType = inReceiverType
   var @bool searching = true
   loop (@uint. max) while searching do
-    if not [[baseType mSuperType] isNull] then
-      if [[[baseType mSuperType] mGetterMap] hasKey !inGetterName] then
-        baseType = [baseType mSuperType]
+    if not [[baseType definition].mSuperType isNull] then
+      if [[[baseType definition].mSuperType definition].mGetterMap hasKey !inGetterName] then
+        baseType = [baseType definition].mSuperType
       else
         searching = false
       end
@@ -1187,11 +1187,12 @@ override method @onceFunctionDeclarationForGeneration appendDeclaration1
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticTypeForGeneration appendTypeGenericImplementation -> @string {
+  let selfTypeDefinition = [self.mSelfTypeEntry  definition]
   result = [filewrapper typeGenerationTemplate.genericTypeImplementation
-    ![self.mSelfTypeEntry  definition].mTypeName.string
+    !selfTypeDefinition.mTypeName.string
     ![self.mSelfTypeEntry  identifierRepresentation]
-    ![self.mSelfTypeEntry  mSuperType]
-    ![self.mSelfTypeEntry  mHandledOperatorFlags]
+    !selfTypeDefinition.mSuperType
+    !selfTypeDefinition.mHandledOperatorFlags
   ]
 }
 

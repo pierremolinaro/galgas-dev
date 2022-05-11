@@ -245,7 +245,7 @@ abstract refclass @semanticTypeForGeneration : @semanticDeclarationForGeneration
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticTypeForGeneration implementationCppFileName -> @string {
-  result = [self.mSelfTypeEntry  mHeaderFileName]
+  result = [self.mSelfTypeEntry definition].mHeaderFileName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -263,7 +263,7 @@ override getter @semanticTypeForGeneration isPredefined -> @bool {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticTypeForGeneration headerKind -> @headerKind {
-  result = [self.mSelfTypeEntry  mHeaderKind]
+  result = [self.mSelfTypeEntry definition].mHeaderKind
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -257,12 +257,14 @@ setter @localVarManager openOverrideForRepeatBlock {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager closeOverride ?let @location unused inEndOfBranchLocation {
-  [!?self.mOverridenManagers popLast ?let savedManager]
-  switch savedManager
-  case selectOverrideFirstBranch (@currentVarManager unused savedManager) :
-  case selectOverrideNextBranches (@currentVarManager unused savedManager @currentVarManager referenceManager) :
-    self.mCurrentManager = referenceManager
-  case repeatOverride :
+  if [self.mOverridenManagers length] > 0 then
+    [!?self.mOverridenManagers popLast ?let savedManager]
+    switch savedManager
+    case selectOverrideFirstBranch (@currentVarManager unused savedManager) :
+    case selectOverrideNextBranches (@currentVarManager unused savedManager @currentVarManager referenceManager) :
+      self.mCurrentManager = referenceManager
+    case repeatOverride :
+    end
   end
 }
 
@@ -277,18 +279,20 @@ setter @localVarManager openBranch {
 setter @localVarManager closeBranch ?let @location inEndOfBranchLocation {
   [!?self.mCurrentManager closeScope !inEndOfBranchLocation]
 #---
-  [!?self.mOverridenManagers popLast ?let savedManager]
-  switch savedManager
-  case selectOverrideFirstBranch (@currentVarManager savedManager) :
-    self.mOverridenManagers += !.selectOverrideNextBranches {!savedManager: savedManager !referenceManager: self.mCurrentManager}
-    self.mCurrentManager = savedManager
-  case selectOverrideNextBranches (@currentVarManager savedManager @currentVarManager referenceManager) :
-    var newReferenceManager = self.mCurrentManager
-    [!?newReferenceManager combineManagerWith !otherManager: referenceManager !errorLocation: inEndOfBranchLocation]
-    self.mOverridenManagers += !.selectOverrideNextBranches {!savedManager: savedManager !referenceManager: newReferenceManager}
-    self.mCurrentManager = savedManager
-  case repeatOverride :
-    self.mOverridenManagers += !savedManager
+  if [self.mOverridenManagers length] > 0 then
+    [!?self.mOverridenManagers popLast ?let savedManager]
+    switch savedManager
+    case selectOverrideFirstBranch (@currentVarManager savedManager) :
+      self.mOverridenManagers += !.selectOverrideNextBranches {!savedManager: savedManager !referenceManager: self.mCurrentManager}
+      self.mCurrentManager = savedManager
+    case selectOverrideNextBranches (@currentVarManager savedManager @currentVarManager referenceManager) :
+      var newReferenceManager = self.mCurrentManager
+      [!?newReferenceManager combineManagerWith !otherManager: referenceManager !errorLocation: inEndOfBranchLocation]
+      self.mOverridenManagers += !.selectOverrideNextBranches {!savedManager: savedManager !referenceManager: newReferenceManager}
+      self.mCurrentManager = savedManager
+    case repeatOverride :
+      self.mOverridenManagers += !savedManager
+    end
   end
 }
 
@@ -721,7 +725,9 @@ setter @currentVarManager closeScope ?let @location inErrorLocation {
   if [self.mSubMaps length] == 0 then
     error inErrorLocation : "EMPTY SUBMAPS"
   end
-  [!?self.mSubMaps popFirst ?self.mLocalVarMap]
+  if [self.mSubMaps length] > 0 then
+    [!?self.mSubMaps popFirst ?self.mLocalVarMap]
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

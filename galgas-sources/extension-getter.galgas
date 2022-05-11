@@ -168,7 +168,7 @@ override method @extensionGetterAST semanticAnalysis
   let @string selfObjectAccessor
   let @bool implementedAsFunction
 #--- Check self type is a class
-  if [[selfType mTypeKindEnum] isClassType] then
+  if [[selfType definition].mTypeKindEnum isClassType] then
     selfObjectName = "object"
     selfObjectAccessor = "object->"
     implementedAsFunction = false
@@ -191,8 +191,8 @@ override method @extensionGetterAST semanticAnalysis
     !?ioUsefulEntitiesGraph
     !analysisContext
     !self.mExtensionGetterFormalInputParameterList
-    !if [[selfType mTypeKindEnum] isClassType] | ([selfType mTypeKindEnum] == .structType) | ([selfType mTypeKindEnum] == .sharedMapEntryType)
-       then [selfType mAllTypedPropertyList]
+    !if [[selfType definition].mTypeKindEnum isClassType] | ([selfType definition].mTypeKindEnum == .structType) | ([selfType definition].mTypeKindEnum == .sharedMapEntryType)
+       then [selfType definition].mAllTypedPropertyList
        else @typedPropertyList {}
      end
     !selfObjectAccessor
@@ -217,7 +217,7 @@ override method @extensionGetterAST semanticAnalysis
       !returnType
       !returnVariableCppName
       !formalParameterListForGeneration
-      ![selfType mAllTypedPropertyList]
+      ![selfType definition].mAllTypedPropertyList
       !semanticInstructionListForGeneration
     }
 }
@@ -330,9 +330,9 @@ override method @extensionGetterForGeneration appendSpecificImplementation
     var @unifiedTypeMapEntry baseType = self.mReceiverType
     var @bool searching = true
     loop (@uint. max) while searching do
-      if not [[baseType mSuperType] isNull] then
-        if [[[baseType mSuperType] mGetterMap] hasKey !self.mExtensionGetterName] then
-          baseType = [baseType mSuperType]
+      if not [[baseType definition].mSuperType isNull] then
+        if [[[baseType definition].mSuperType definition].mGetterMap hasKey !self.mExtensionGetterName] then
+          baseType = [baseType definition].mSuperType
         else
           searching = false
         end

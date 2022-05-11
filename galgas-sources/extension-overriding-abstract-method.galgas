@@ -113,20 +113,20 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
 #--- Self type
   let @unifiedTypeMapEntry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- Check type is an abstract class
-  if not [[selfType mTypeKindEnum] isClassType] then
+  if not [[selfType definition].mTypeKindEnum isClassType] then
     error self.mOverridingExtensionMethodName: "cannot declare a extension method: '@" + [selfType definition].mTypeName.string + "' is not a class"
   elsif [selfType definition].mIsConcrete then
     error self.mOverridingExtensionMethodName: "cannot declare an abstract extension method: '@" + [selfType definition].mTypeName.string + "' is not an abstract class"
   end
 #--- Find base type name
   var @string baseTypeName = ""
-  var @unifiedTypeMapEntry superType = [selfType mSuperType]
+  var @unifiedTypeMapEntry superType = [selfType definition].mSuperType
   var inheritedSignature = @formalParameterSignature {}
   var @location inheritedDeclarationLocation = @location.here
   loop ([inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType mInstanceMethodMap] hasKey !self.mOverridingExtensionMethodName.string] then
-      [[superType mInstanceMethodMap] searchKey
+    if [[superType definition].mInstanceMethodMap hasKey !self.mOverridingExtensionMethodName.string] then
+      [[superType definition].mInstanceMethodMap searchKey
         !self.mOverridingExtensionMethodName
         ?*
         ?inheritedSignature
@@ -139,7 +139,7 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
         baseTypeName = [superType definition].mTypeName.string
       end
     end
-    superType = [superType mSuperType]
+    superType = [superType definition].mSuperType
   end
   if baseTypeName == "" then
     error self.mOverridingExtensionMethodName:"this getter is not declared by a super class"

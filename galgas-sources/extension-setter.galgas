@@ -143,7 +143,7 @@ override method @extensionSetterAST semanticAnalysis
   let @string selfObjectAccessor
   let @bool implementedAsFunction
 #--- Check self type is a class
-  if [[selfType mTypeKindEnum] isClassType] then
+  if [[selfType definition].mTypeKindEnum isClassType] then
     selfObjectName = "object"
     selfObjectAccessor = "object->"
     implementedAsFunction = false
@@ -167,7 +167,7 @@ override method @extensionSetterAST semanticAnalysis
     !analysisContext
     !self.mExtensionSetterFormalParameterList
     !nonMutablePropertyList: {}
-    !mutablePropertyList: [selfType mAllTypedPropertyList]
+    !mutablePropertyList: [selfType definition].mAllTypedPropertyList
     !self.mExtensionSetterInstructionList
     !self.mEndOfSetterDeclarationLocation
     ?let semanticInstructionListForGeneration
@@ -183,7 +183,7 @@ override method @extensionSetterAST semanticAnalysis
       !self.mExtensionSetterName.string
       !implementedAsFunction
       !formalParameterListForGeneration
-      ![selfType mAllTypedPropertyList]
+      ![selfType definition].mAllTypedPropertyList
       !semanticInstructionListForGeneration}
 }
 
@@ -292,9 +292,9 @@ override method @extensionSetterForGeneration appendSpecificImplementation
     var @unifiedTypeMapEntry baseType = self.mReceiverType
     var @bool searching = true
     loop (@uint. max) while searching do
-      if not [[baseType mSuperType] isNull] then
-        if [[[baseType mSuperType] mSetterMap] hasKey !self.mExtensionSetterName] then
-          baseType = [baseType mSuperType]
+      if not [[baseType definition].mSuperType isNull] then
+        if [[[baseType definition].mSuperType definition].mSetterMap hasKey !self.mExtensionSetterName] then
+          baseType = [baseType definition].mSuperType
         else
           searching = false
         end

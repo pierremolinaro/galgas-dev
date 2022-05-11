@@ -290,7 +290,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
       if not selfIsMutable then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
-      let propertyMap = [selfType mPropertyMap]
+      let propertyMap = [selfType definition].mPropertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
 #      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
@@ -333,7 +333,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
   end
 #---
   for (mValue) in self.mStructAttributeList do
-    let propertyMap = [targetType mPropertyMap]
+    let propertyMap = [targetType definition].mPropertyMap
     [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
     if not isPublic then
       error mValue : " inaccessible property (due to its 'private' qualifier)"
@@ -343,7 +343,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
     end
   end
 #--- Check target type accepts incrementation
-  if not [[targetType mHandledOperatorFlags] incDecOperator] then
+  if not [[targetType definition].mHandledOperatorFlags incDecOperator] then
     error self.mInstructionLocation
     :"the target object has the '@" + [targetType definition].mTypeName.string + "' type, but this type does not support the '++', '--' operators"
   end
@@ -370,7 +370,7 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
   var @unifiedTypeMapEntry targetType
   [!?ioVariableMap searchForReadWriteAccess !self.mReceiverName ?targetType ?let targetVariableCppName ?*]
   for (mValue) in self.mStructAttributeList do
-    let propertyMap = [targetType mPropertyMap]
+    let propertyMap = [targetType definition].mPropertyMap
     [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
     if not isPublic then
       error mValue : " inaccessible property (due to its 'private' qualifier)"
@@ -380,7 +380,7 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
     end
   end
 #--- Check target type accepts incrementation
-  if not [[targetType mHandledOperatorFlags] incDecOperator] then
+  if not [[targetType definition].mHandledOperatorFlags incDecOperator] then
     error self.mInstructionLocation
     :"the target object has the '@" + [targetType definition].mTypeName.string + "' type, but this type does not support the '&++', '&--' operators"
   end
@@ -408,7 +408,7 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
   #--- Check target type accepts incrementation
-    if not [[selfType mHandledOperatorFlags] incDecOperator] then
+    if not [[selfType definition].mHandledOperatorFlags incDecOperator] then
       error self.mInstructionLocation
       :"the target object has the '@" + [selfType definition].mTypeName.string + "' type, but this type does not support the '&++' and  '&--' operators"
     end
@@ -439,7 +439,7 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
   #--- Check target type accepts incrementation
-    if not [[selfType mHandledOperatorFlags] incDecOperator] then
+    if not [[selfType definition].mHandledOperatorFlags incDecOperator] then
       error self.mInstructionLocation
       :"the target object has the '@" + [selfType definition].mTypeName.string + "' type, but this type does not support the '++' and  '--' operators"
     end

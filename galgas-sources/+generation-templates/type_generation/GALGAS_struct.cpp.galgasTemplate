@@ -33,7 +33,7 @@ end
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_%!TYPE_IDENTIFIER% (%?^
 for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in PROPERTY_LIST do
-   %GALGAS_%![mPropertyTypeEntry identifierRepresentation]%::constructor_%![[mPropertyTypeEntry mDefaultConstructorName] identifierRepresentation]% (HERE)%
+   %GALGAS_%![mPropertyTypeEntry identifierRepresentation]%::constructor_%![[mPropertyTypeEntry definition].mDefaultConstructorName identifierRepresentation]% (HERE)%
   between %,\n%!^
 end%) ;
 }

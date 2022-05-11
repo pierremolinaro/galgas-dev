@@ -196,7 +196,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
       end
     end
   else
-    allAttributeList = [superClassEntry mAllTypedPropertyList]
+    allAttributeList = [superClassEntry definition].mAllTypedPropertyList
     if [self.mClassFeatureList length] > 0 then
       for (mValue) in self.mClassFeatureList do
         error mValue:"a class that has a super class does not accept any feature"
@@ -236,7 +236,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
       !superClassEntry
       !allAttributeList
       !typedAttributeList
-      ![selfType mGenerateHeaderInSeparateFile]
+      ![selfType definition].mGenerateHeaderInSeparateFile
     }
 }
 

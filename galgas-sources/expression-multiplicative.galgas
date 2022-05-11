@@ -177,7 +177,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     !rightExpression.mResultType
-    ![[leftType mHandledOperatorFlags] infixMulOperatorNoOVF]
+    ![[leftType definition].mHandledOperatorFlags infixMulOperatorNoOVF]
     !"&*"
     !self.mOperatorLocation
     !?rightExpression
@@ -234,7 +234,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     !rightExpression.mResultType
-    ![[leftType mHandledOperatorFlags] infixMulOperator]
+    ![[leftType definition].mHandledOperatorFlags infixMulOperator]
     !"*"
     !self.mOperatorLocation
     !?rightExpression
@@ -290,7 +290,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     !rightExpression.mResultType
-    ![[leftType mHandledOperatorFlags] infixDivOperatorNoOVF]
+    ![[leftType definition].mHandledOperatorFlags infixDivOperatorNoOVF]
     !"&/"
     !self.mOperatorLocation
     !?rightExpression
@@ -346,7 +346,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     !rightExpression.mResultType
-    ![[leftType mHandledOperatorFlags] infixDivOperator]
+    ![[leftType definition].mHandledOperatorFlags infixDivOperator]
     !"/"
     !self.mOperatorLocation
     !?rightExpression
@@ -402,7 +402,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     !rightExpression.mResultType
-    ![[leftType mHandledOperatorFlags] infixModOperator]
+    ![[leftType definition].mHandledOperatorFlags infixModOperator]
     !"mod"
     !self.mOperatorLocation
     !?rightExpression

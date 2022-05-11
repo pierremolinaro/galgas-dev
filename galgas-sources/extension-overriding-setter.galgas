@@ -128,23 +128,23 @@ override method @overridingExtensionSetterAST semanticAnalysis
 #--- Self type
   let @unifiedTypeMapEntry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- Check self type is a class
-  if not [[selfType mTypeKindEnum] isClassType] then
+  if not [[selfType definition].mTypeKindEnum isClassType] then
     error self.mOverridingExtensionSetterName: "cannot declare a extension setter: '@" + [selfType definition].mTypeName.string + "' is not a class"
   end
 #--- Find base type name
   var @string baseTypeName = ""
-  var @unifiedTypeMapEntry superType = [selfType mSuperType]
+  var @unifiedTypeMapEntry superType = [selfType definition].mSuperType
   var inheritedSignature = @formalParameterSignature {}
   let @location inheritedDeclarationLocation = @location.here
   loop ([inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType mSetterMap] hasKey !self.mOverridingExtensionSetterName.string] then
-      [[superType mSetterMap] searchKey !self.mOverridingExtensionSetterName ?* ?inheritedSignature ?* ?let qualifier ?*]
+    if [[superType definition].mSetterMap hasKey !self.mOverridingExtensionSetterName.string] then
+      [[superType definition].mSetterMap searchKey !self.mOverridingExtensionSetterName ?* ?inheritedSignature ?* ?let qualifier ?*]
       if qualifier <= @methodQualifier.isBasicFinal then
         baseTypeName = [superType definition].mTypeName.string
       end
     end
-    superType = [superType mSuperType]
+    superType = [superType definition].mSuperType
   end
   if baseTypeName == "" then
     error self.mOverridingExtensionSetterName:"this setter is not declared by a super class"
@@ -164,7 +164,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
     !analysisContext
     !self.mOverridingExtensionSetterFormalParameterList
     !nonMutablePropertyList: @typedPropertyList {}
-    !mutablePropertyList: [selfType mAllTypedPropertyList]
+    !mutablePropertyList: [selfType definition].mAllTypedPropertyList
     !self.mOverridingExtensionSetterInstructionList
     !self.mEndOfSetterDeclarationLocation
     ?let semanticInstructionListForGeneration
@@ -189,7 +189,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
       !baseTypeName
       !self.mOverridingExtensionSetterName.string
       !formalParameterListForGeneration
-      ![selfType mAllTypedPropertyList]
+      ![selfType definition].mAllTypedPropertyList
       !semanticInstructionListForGeneration
     }
 }
@@ -254,9 +254,9 @@ override method @overridingExtensionSetterForGeneration appendSpecificImplementa
   var @unifiedTypeMapEntry baseType = self.mReceiverType
   var @bool searching = true
   loop (@uint. max) while searching do
-    if not [[baseType mSuperType] isNull] then
-      if [[[baseType mSuperType] mSetterMap] hasKey !self.mExtensionSetterName] then
-        baseType = [baseType mSuperType]
+    if not [[baseType definition].mSuperType isNull] then
+      if [[[baseType definition].mSuperType definition].mSetterMap hasKey !self.mExtensionSetterName] then
+        baseType = [baseType definition].mSuperType
       else
         searching = false
       end

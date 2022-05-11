@@ -77,7 +77,7 @@ override method @notExpressionAST analyzeSemanticExpression
     outExpression = @falseExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !self.mOperatorLocation}
   elsif expression is == @falseExpressionForGeneration then
     outExpression = @trueExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !self.mOperatorLocation}
-  elsif not [[type mHandledOperatorFlags] prefixNotOperator] then
+  elsif not [[type definition].mHandledOperatorFlags prefixNotOperator] then
     error self.mOperatorLocation
     : "operand type is '@" + [type definition].mTypeName.string + "' and does not support the 'not' operator"
     :outExpression

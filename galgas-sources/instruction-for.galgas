@@ -562,7 +562,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
   ]
 #--- Check object can be enumerated
   outEnumeratorCppName = "enumerator_" + [self.mEndOfAnonymousEnumeration locationIndex]
-  let enumerationDescriptorList = [outEnumerationExpression.mResultType mEnumerationDescriptor]
+  let enumerationDescriptorList = [outEnumerationExpression.mResultType definition].mEnumerationDescriptor
   if [enumerationDescriptorList length] == 0 then
     error self.mEndOfAnonymousEnumeration : "an '@" + [outEnumerationExpression.mResultType definition].mTypeName.string + "' object cannot be enumerated"
   end
@@ -608,13 +608,13 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
   ]
 #--- Check object can be enumerated
   outEnumeratorCppName = "enumerator_" + [self.mEndOfEnumerationExpression locationIndex]
-  let enumerationDescriptorList = [outEnumerationExpression.mResultType mEnumerationDescriptor]
+  let enumerationDescriptorList = [outEnumerationExpression.mResultType definition].mEnumerationDescriptor
   if [enumerationDescriptorList length] == 0 then
     error self.mEndOfEnumerationExpression : "an '@" + [outEnumerationExpression.mResultType definition].mTypeName.string + "' object cannot be enumerated"
   else
 #--- Arguments
     if ([self.mElementList length] == 0) & not self.mEndsWithEllipsis then
-      let currentTypedAttributeList = [outEnumerationExpression.mResultType mEnumerationDescriptor]
+      let currentTypedAttributeList = [outEnumerationExpression.mResultType definition].mEnumerationDescriptor
       for (mEnumeratedType mEnumerationName) in currentTypedAttributeList do 
        [!?ioVariableMap insertUsedLocalConstant
          !@lstring.new {!mEnumerationName !self.mEndOfEnumerationExpression}
@@ -684,7 +684,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   ]
 #--- Check object can be enumerated
   outEnumeratorCppName = "enumerator_" + [self.mEndOfEnumerationExpression locationIndex]
-  let enumeratedElementType = [outEnumerationExpression.mResultType mTypeForEnumeratedElement]
+  let enumeratedElementType = [outEnumerationExpression.mResultType definition].mTypeForEnumeratedElement
   if [enumeratedElementType isNull] then
     error self.mEndOfEnumerationExpression : "an '@" + [outEnumerationExpression.mResultType definition].mTypeName.string + "' object cannot be enumerated"
   elsif self.mEnumerationVariable.string != "" then

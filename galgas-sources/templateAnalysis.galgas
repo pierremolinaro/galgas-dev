@@ -77,9 +77,9 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
   let @unifiedTypeMapEntry receiverType = receiverExpression.mResultType
   let receiverTypeName = [receiverType definition].mTypeName.string
   #--------------------------------------- Property ?
-  if [[receiverType mTypeKindEnum] isStructType] || [[receiverType mTypeKindEnum] isClassType],
+  if [[receiverType definition].mTypeKindEnum isStructType] || [[receiverType definition].mTypeKindEnum isClassType],
      [self.mExpressionList length] == 0,
-     let [[receiverType mPropertyMap] searchKey !self.mGetterName ?let isPublic ?* ?let propertyType] then
+     let [[receiverType definition].mPropertyMap searchKey !self.mGetterName ?let isPublic ?* ?let propertyType] then
     if [option galgas_cli_options.errorPropertyGetterCall value] then
       error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
     end
@@ -108,7 +108,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
 #    end
   else
   #--- Get getter map
-    let @getterMap getterMap = [receiverType mGetterMap]
+    let @getterMap getterMap = [receiverType definition].mGetterMap
   #--- Search contructor
     var @functionSignature getterFormalArgumentTypeList
     var @methodKind kind
@@ -126,13 +126,13 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
       ]
     else
       var @uint matchingReaderCount = 0
-      if [receiverType mTypeKindEnum] == @typeKindEnum. structType then
+      if [receiverType definition].mTypeKindEnum == @typeKindEnum. structType then
         getterFormalArgumentTypeList ={}
         hasCompilerArgument = true
         returnedType = @unifiedTypeMapEntry.null
         kind = @methodKind. definedAsMember
-        for (mPropertyTypeEntry mPropertyName * *) in [receiverType mCurrentTypedPropertyList] do
-          let @getterMap aMap = [mPropertyTypeEntry mGetterMap]
+        for (mPropertyTypeEntry mPropertyName * *) in [receiverType definition].mCurrentTypedPropertyList do
+          let @getterMap aMap = [mPropertyTypeEntry definition].mGetterMap
           with self.mGetterName.string in aMap  do
             matchingReaderCount += 1
             getterFormalArgumentTypeList = mArgumentTypeList
@@ -215,10 +215,9 @@ override method @templateConstructorAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression
 {
-#  let @unifiedTypeMapEntry constructorType = @unifiedTypeMapEntry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
   let @unifiedTypeMapEntry constructorType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- Get constructor map from type map
-  let @constructorMap constructorMap = [constructorType mConstructorMap]
+  let @constructorMap constructorMap = [constructorType definition].mConstructorMap
 #--- Search contructor
   let @unifiedTypeMapEntry returnedType
   let @bool hasCompilerArgument
@@ -318,7 +317,7 @@ override method @templateAndOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     !rightExpression.mResultType
-    ![[leftType mHandledOperatorFlags] infixAndOperator]
+    ![[leftType definition].mHandledOperatorFlags infixAndOperator]
     !"&"
     !self.mOperatorLocation
     !?rightExpression
@@ -360,7 +359,7 @@ override method @templateOrOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     !rightExpression.mResultType
-    ![[leftType mHandledOperatorFlags] infixOrOperator]
+    ![[leftType definition].mHandledOperatorFlags infixOrOperator]
     !"|"
     !self.mOperatorLocation
     !?rightExpression
@@ -402,7 +401,7 @@ override method @templateXorOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     !rightExpression.mResultType
-    ![[leftType mHandledOperatorFlags] infixXorOperator]
+    ![[leftType definition].mHandledOperatorFlags infixXorOperator]
     !"^"
     !self.mOperatorLocation
     !?rightExpression
@@ -555,7 +554,7 @@ override method @templateNotOperatorAST templateExpressionAnalysis
   ]
 #--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if not [[type mHandledOperatorFlags] prefixNotOperator] then
+  if not [[type definition].mHandledOperatorFlags prefixNotOperator] then
     error self.mOperatorLocation
     : "operand type is '@" + [type definition].mTypeName.string + "' and does not support the 'not' operator"
     :outExpression
@@ -586,7 +585,7 @@ override method @templateLogicalNegateAST templateExpressionAnalysis
   ]
 #--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if not [[type mHandledOperatorFlags] prefixTildeOperator] then
+  if not [[type definition].mHandledOperatorFlags prefixTildeOperator] then
     error self.mOperatorLocation
     : "operand type is '@" + [type definition].mTypeName.string + "' and does not support the '~' operator"
     :outExpression
@@ -618,13 +617,13 @@ override method @templateTestDynamicClassAST templateExpressionAnalysis
 #   let castType = @unifiedTypeMapEntry. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
    let castType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- This type is either a class
-  if [[expression.mResultType mTypeKindEnum] isClassType] then
+  if [[expression.mResultType definition].mTypeKindEnum isClassType] then
   #--- Check expression type is a descendant of named type
     var @unifiedTypeMapEntry t = castType
     var @bool found = t == expression.mResultType
     loop ([inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
-    while (not found) & not [[t mSuperType] isNull] do
-      t = [t mSuperType]
+    while (not found) & not [[t definition].mSuperType isNull] do
+      t = [t definition].mSuperType
       found = t == expression.mResultType
     end
     if not found then
@@ -850,7 +849,7 @@ override method @templateAddOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     !rightExpression.mResultType
-    ![[leftType mHandledOperatorFlags] infixAddOperator]
+    ![[leftType definition].mHandledOperatorFlags infixAddOperator]
     !"+"
     !self.mOperatorLocation
     !?rightExpression
@@ -894,7 +893,7 @@ override method @templateSubOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     !rightExpression.mResultType
-    ![[leftType mHandledOperatorFlags] infixSubOperator]
+    ![[leftType definition].mHandledOperatorFlags infixSubOperator]
     !"-"
     !self.mOperatorLocation
     !?rightExpression
@@ -938,7 +937,7 @@ override method @templateMultiplyOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     !rightExpression.mResultType
-    ![[leftType mHandledOperatorFlags] infixMulOperator]
+    ![[leftType definition].mHandledOperatorFlags infixMulOperator]
     !"*"
     !self.mOperatorLocation
     !?rightExpression
@@ -982,7 +981,7 @@ override method @templateDivideOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     !rightExpression.mResultType
-    ![[leftType mHandledOperatorFlags] infixDivOperator]
+    ![[leftType definition].mHandledOperatorFlags infixDivOperator]
     !"/"
     !self.mOperatorLocation
     !?rightExpression
@@ -1026,7 +1025,7 @@ override method @templateModuloOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     !rightExpression.mResultType
-    ![[leftType mHandledOperatorFlags] infixModOperator]
+    ![[leftType definition].mHandledOperatorFlags infixModOperator]
     !"mod"
     !self.mOperatorLocation
     !?rightExpression
@@ -1060,7 +1059,7 @@ override method @templateUnaryMinusOperationAST templateExpressionAnalysis
   ]
 #--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if not [[type mHandledOperatorFlags] prefixMinusOperator] then
+  if not [[type definition].mHandledOperatorFlags prefixMinusOperator] then
     error self.mOperatorLocation
     : "operand type is '@" + [type definition].mTypeName.string + "' and does not support the prefix minus operator"
     :outExpression
@@ -1092,10 +1091,10 @@ override method @structFieldAccessTemplateExpressionAST templateExpressionAnalys
   ]
 #--- Check field access availability
   var @unifiedTypeMapEntry type = expression.mResultType
-  if ([type mTypeKindEnum] != .structType) && not [[type mTypeKindEnum] isClassType] then
+  if ([type definition].mTypeKindEnum != .structType) && not [[type definition].mTypeKindEnum isClassType] then
     error self.mStructFieldName:"the '.' operator requires the receiver to be a struct ou a class"
   end
-  let propertyMap = [type mPropertyMap]
+  let propertyMap = [type definition].mPropertyMap
   [propertyMap searchKey !self.mStructFieldName ?let isPublic ?* ?type]
   if not isPublic then
     error self.mStructFieldName : " inaccessible property (due to its 'private' qualifier)"
@@ -1218,7 +1217,7 @@ override method @templateStrictInfTestAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if not [[leftType mHandledOperatorFlags] isComparable] then
+  if not [[leftType definition].mHandledOperatorFlags isComparable] then
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not support the '<' operator"
     :outExpression
@@ -1263,7 +1262,7 @@ override method @templateInfOrEqualTestAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if not [[leftType mHandledOperatorFlags] isComparable] then
+  if not [[leftType definition].mHandledOperatorFlags isComparable] then
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not support the '<=' operator"
     :outExpression
@@ -1308,7 +1307,7 @@ override method @templateStrictSupTestAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if not [[leftType mHandledOperatorFlags] isComparable] then
+  if not [[leftType definition].mHandledOperatorFlags isComparable] then
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not support the '>' operator"
     :outExpression
@@ -1353,7 +1352,7 @@ override method @templateSupOrEqualTestAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if not [[leftType mHandledOperatorFlags] isComparable] then
+  if not [[leftType definition].mHandledOperatorFlags isComparable] then
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not support the '>=' operator"
     :outExpression
@@ -1398,7 +1397,7 @@ override method @templateLeftShiftOperationAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if not [[leftType mHandledOperatorFlags] infixShiftOperator] then
+  if not [[leftType definition].mHandledOperatorFlags infixShiftOperator] then
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not support a shift operator"
     :outExpression
@@ -1443,7 +1442,7 @@ override method @templateRightShiftOperationAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if not [[leftType mHandledOperatorFlags] infixShiftOperator] then
+  if not [[leftType definition].mHandledOperatorFlags infixShiftOperator] then
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not support a shift operator"
     :outExpression

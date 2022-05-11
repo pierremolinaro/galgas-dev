@@ -199,8 +199,8 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     !inAnalysisContext
     ?let expression
   ]
-#--- Check expression is enumerable
-  let @enumerationDescriptorList enumerationDescriptor = [expression.mResultType mEnumerationDescriptor] # Empty List if cannot be enumerated
+#--- Check expression is enumerable (empty List if cannot be enumerated)
+  let @enumerationDescriptorList enumerationDescriptor = [expression.mResultType definition].mEnumerationDescriptor
   if [enumerationDescriptor length] == 0 then
     error expression.mLocation : "expression of '@" + [expression.mResultType definition].mTypeName.string + "' cannot be enumerated"
   end

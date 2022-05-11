@@ -174,7 +174,7 @@ override method @structDeclarationAST enterInSemanticContext
 #--- Generate a "default" constructor ?
   var @string defaultConstructorName = "default"
   for (mPropertyTypeEntry * * *) in typedPropertyList while defaultConstructorName != "" do
-    if ([mPropertyTypeEntry mDefaultConstructorName] == "") | not [mPropertyTypeEntry definition].mIsConcrete then
+    if ([mPropertyTypeEntry definition].mDefaultConstructorName == "") | not [mPropertyTypeEntry definition].mIsConcrete then
       defaultConstructorName = ""
     end
   end  

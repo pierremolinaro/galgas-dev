@@ -125,7 +125,7 @@ override method @abstractExtensionSetterAST semanticAnalysis
 #--- Self type
   let @unifiedTypeMapEntry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- Check self type is an abstract class
-  if not [[selfType mTypeKindEnum] isClassType] then
+  if not [[selfType definition].mTypeKindEnum isClassType] then
     error self.mAbstractExtensionSetterName: "cannot declare a extension setter: '@" + [selfType definition].mTypeName.string + "' is not a class"
   elsif [selfType definition].mIsConcrete then
     error self.mAbstractExtensionSetterName: "cannot declare an abstract extension setter: '@" + [selfType definition].mTypeName.string + "' is not an abstract class"

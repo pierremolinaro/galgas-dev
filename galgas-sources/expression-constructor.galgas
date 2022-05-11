@@ -175,7 +175,7 @@ private proc analyzeConstructorInvocation
     : outReturnedType, outConstructorType, outConstructorEffectiveParameterList, outHasCompilerArgument
   else
   #--- Get constructor map from type map
-    let @constructorMap constructorMap = [outConstructorType mConstructorMap]
+    let @constructorMap constructorMap = [outConstructorType definition].mConstructorMap
   #--- Search contructor
     let @functionSignature constructorFormalArgumentTypeList
     with inConstructorName.string in constructorMap  do
@@ -301,7 +301,7 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
   #--- Check type accepts default constructor
     if not [type definition].mIsConcrete then
       error self.mTypeName: "an abstract class does not support the default constructor"
-    elsif [type mDefaultConstructorName] == "" then
+    elsif [type definition].mDefaultConstructorName == "" then
       error self.mTypeName: "this class does not support the default constructor"
     end
   #---
@@ -388,7 +388,7 @@ override method @defaultConstructorExpressionForGeneration generateExpression
   outCppExpression =
     "GALGAS_"  + [self.mResultType identifierRepresentation]
   + "::constructor_"
-  + [[self.mResultType mDefaultConstructorName] identifierRepresentation]
+  + [[self.mResultType definition].mDefaultConstructorName identifierRepresentation]
   + " (" + [self.mLocation sourceFile] + ")"
 }
 

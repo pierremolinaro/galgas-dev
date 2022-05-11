@@ -156,13 +156,13 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
 #--- Get type information
    let castType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- This type is either a class
-  if [[expression.mResultType mTypeKindEnum] isClassType] then
+  if [[expression.mResultType definition].mTypeKindEnum isClassType] then
   #--- Check expression type is a descendant of named type
     var @unifiedTypeMapEntry t = castType
     var @bool found = t == expression.mResultType
     loop ([inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
-    while (not found) & not [[t mSuperType] isNull] do
-      t = [t mSuperType]
+    while (not found) & not [[t definition].mSuperType isNull] do
+      t = [t definition].mSuperType
       found = t == expression.mResultType
     end
     if not found then
@@ -212,13 +212,13 @@ override method @castInExpressionAST analyzeSemanticExpression
 #--- Get type information
    let type = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- This type is an @object type
-  if [[expression.mResultType mTypeKindEnum] isClassType]then
+  if [[expression.mResultType definition].mTypeKindEnum isClassType]then
   #--- Check expression type is a descendant of named type
     var @unifiedTypeMapEntry t = type
     var @bool found = t == expression.mResultType
     loop ([inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
-    while (not found) & not [[t mSuperType] isNull] do
-      t = [t mSuperType]
+    while (not found) & not [[t definition].mSuperType isNull] do
+      t = [t definition].mSuperType
       found = t == expression.mResultType
     end
     if not found then

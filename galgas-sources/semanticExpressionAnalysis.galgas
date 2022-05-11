@@ -43,15 +43,15 @@ proc checkAssignmentTypes
 {
   var @unifiedTypeMapEntry sourceType = inSourceType
   var @bool ok = inTargetType == sourceType
-  loop (@uint.max) while (not ok) & (not [[sourceType mSuperType] isNull]) do
-    sourceType = [sourceType mSuperType]
+  loop (@uint.max) while (not ok) & (not [[sourceType definition].mSuperType isNull]) do
+    sourceType = [sourceType definition].mSuperType
     ok = inTargetType == sourceType
   end
-  if not ok, let [[inTargetType mTypeKindEnum] weakReferenceType ?referenceType: let targetType] then
+  if not ok, let [[inTargetType definition].mTypeKindEnum weakReferenceType ?referenceType: let targetType] then
     sourceType = inSourceType
     ok = targetType == sourceType
-    loop (@uint.max) while (not ok) & (not [[sourceType mSuperType] isNull]) do
-      sourceType = [sourceType mSuperType]
+    loop (@uint.max) while (not ok) & (not [[sourceType definition].mSuperType isNull]) do
+      sourceType = [sourceType definition].mSuperType
       ok = targetType == sourceType
     end
   end
@@ -71,20 +71,20 @@ proc checkAssignmentTypeWithImplicitGetterCall
 {
   var @unifiedTypeMapEntry sourceType = inSourceType
   var @bool ok = inTargetType == inSourceType
-  loop (@uint.max) while (not ok) & (not [[sourceType mSuperType] isNull]) do
-    sourceType = [sourceType mSuperType]
+  loop (@uint.max) while (not ok) & (not [[sourceType definition].mSuperType isNull]) do
+    sourceType = [sourceType definition].mSuperType
     ok = inTargetType == sourceType
   end
-  if not ok, let [[inTargetType mTypeKindEnum] weakReferenceType ?referenceType: let targetType] then
+  if not ok, let [[inTargetType definition].mTypeKindEnum weakReferenceType ?referenceType: let targetType] then
     sourceType = inSourceType
     ok = targetType == sourceType
-    loop (@uint.max) while (not ok) & (not [[sourceType mSuperType] isNull]) do
-      sourceType = [sourceType mSuperType]
+    loop (@uint.max) while (not ok) & (not [[sourceType definition].mSuperType isNull]) do
+      sourceType = [sourceType definition].mSuperType
       ok = targetType == sourceType
     end
   end
 #--- Check for a direct property access or for a conversion getter
-  if not ok, let [[inSourceType mPropertyMap] searchKey ![inTargetType definition].mTypeName.string ?let isPublic ?* ?let propertyType] then
+  if not ok, let [[inSourceType definition].mPropertyMap searchKey ![inTargetType definition].mTypeName.string ?let isPublic ?* ?let propertyType] then
     if not isPublic then
       error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
     end
@@ -96,8 +96,8 @@ proc checkAssignmentTypeWithImplicitGetterCall
     }
     ioExpression = conversionExpression
     ok = propertyType == inTargetType
-  elsif (not ok) && [[inSourceType mGetterMap] hasKey ![inTargetType definition].mTypeName.string] then
-    [[inSourceType mGetterMap] searchKey
+  elsif (not ok) && [[inSourceType definition].mGetterMap hasKey ![inTargetType definition].mTypeName.string] then
+    [[inSourceType definition].mGetterMap searchKey
       ![inTargetType definition].mTypeName
       ?let kind
       ?let @functionSignature argumentTypeList
@@ -145,12 +145,12 @@ proc checkDiadicOperator
   else
     var @unifiedTypeMapEntry rightType = inRightType
     var @bool ok = inLeftType == rightType
-    loop (@uint.max) while (not ok) & (not [[rightType mSuperType] isNull]) do
-      rightType = [rightType mSuperType]
+    loop (@uint.max) while (not ok) & (not [[rightType definition].mSuperType isNull]) do
+      rightType = [rightType definition].mSuperType
       ok = inLeftType == rightType
     end
 #--- Check for a direct property access or for a conversion getter
-    if not ok, let [[inRightType mPropertyMap] searchKey ![inLeftType definition].mTypeName.string ?let isPublic ?* ?let propertyType] then
+    if not ok, let [[inRightType definition].mPropertyMap searchKey ![inLeftType definition].mTypeName.string ?let isPublic ?* ?let propertyType] then
       if not isPublic then
         error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
       end
@@ -162,8 +162,8 @@ proc checkDiadicOperator
       }
       ioRightExpression = conversionExpression
       ok = propertyType == inLeftType
-    elsif (not ok) && [[inRightType mGetterMap] hasKey ![inLeftType definition].mTypeName.string] then
-      [[inRightType mGetterMap] searchKey
+    elsif (not ok) && [[inRightType definition].mGetterMap hasKey ![inLeftType definition].mTypeName.string] then
+      [[inRightType definition].mGetterMap searchKey
         ![inLeftType definition].mTypeName
         ?let kind
         ?let @functionSignature argumentTypeList

@@ -104,7 +104,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
   ]
   let @unifiedTypeMapEntry receiverType = receiverExpression.mResultType
 #--------------------------------------- Search getter
-  if let [[receiverType mGetterMap] searchKey
+  if let [[receiverType definition].mGetterMap searchKey
       !self.mGetterName.string
       ?let kind
       ?let getterFormalArgumentTypeList
@@ -117,7 +117,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       error self.mGetterName : getterErrorMessage
     end
     if self.errorOnGetterCallInsteadOfPropertyRead # [option galgas_cli_options.errorPropertyGetterCall value]
-      && [[receiverType mPropertyMap] hasKey !self.mGetterName.string]
+      && [[receiverType definition].mPropertyMap hasKey !self.mGetterName.string]
       && ([self.mExpressions length] == 0) then
       error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
     end
@@ -157,7 +157,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       }
     end
 #--------------------------------------- The getter does not exist, it is a property ?
-  elsif [self.mExpressions length] == 0, let [[receiverType mPropertyMap] searchKey !self.mGetterName.string ?let isPublic ?* ?let propertyType] then
+  elsif [self.mExpressions length] == 0, let [[receiverType definition].mPropertyMap searchKey !self.mGetterName.string ?let isPublic ?* ?let propertyType] then
     if not isPublic then
       error self.mGetterName : " inaccessible property (due to its 'private' qualifier)"
     end
@@ -173,15 +173,15 @@ override method @getterCallExpressionAST analyzeSemanticExpression
 #--------------------------------------- not found, old style search
   else
     var @uint matchingReaderCount = 0
-    if [receiverType mTypeKindEnum] == @typeKindEnum.structType then
+    if [receiverType definition].mTypeKindEnum == .structType then
       var @functionSignature getterFormalArgumentTypeList = {}
       var hasCompilerArgument = true
       var returnedType = @unifiedTypeMapEntry.null
       var kind = @methodKind.definedAsExtension
       let @stringlist fieldList = {}
-      for (propertyTypeEntry propertyName * *) in [receiverType mCurrentTypedPropertyList] do
+      for (propertyTypeEntry propertyName * *) in [receiverType definition].mCurrentTypedPropertyList do
         let propertyType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !.new {![propertyTypeEntry definition].mTypeName.string !.here}]
-        let aMap = [propertyType mGetterMap]
+        let aMap = [propertyType definition].mGetterMap
         with self.mGetterName.string in aMap  do
           if [propertyType definition].mTypeName.string == propertyName.string then
             matchingReaderCount += 1
@@ -252,7 +252,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
           !hasCompilerArgument
         }
       end
-    elsif [[receiverType mGetterMap] count] == 0 then
+    elsif [[receiverType definition].mGetterMap count] == 0 then
       error self.mGetterName
       : "the '@"+ [receiverType definition].mTypeName.string + "' type does not define any getter"
       : outExpression
@@ -260,7 +260,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       error self.mGetterName
       : "the '@"+ [receiverType definition].mTypeName.string + "' type does not define the '" + self.mGetterName + "' getter "
       : outExpression
-      fixit { replace [[receiverType mGetterMap] keyList] }
+      fixit { replace [[receiverType definition].mGetterMap keyList] }
     end
   end
 }
@@ -316,9 +316,9 @@ override method @getterCallExpressionForGeneration generateExpression
    [baseType addHeaderFileName !?ioInclusionSet]
     var @bool searching = true
     loop (@uint.max) while searching do
-      if not [[baseType mSuperType] isNull] then
-        if [[[baseType mSuperType] mGetterMap] hasKey !self.mGetterName] then
-          baseType = [baseType mSuperType]
+      if not [[baseType definition].mSuperType isNull] then
+        if [[[baseType definition].mSuperType definition].mGetterMap hasKey !self.mGetterName] then
+          baseType = [baseType definition].mSuperType
         else
           searching = false
         end
@@ -328,7 +328,7 @@ override method @getterCallExpressionForGeneration generateExpression
     end
     ioInclusionSet += !"getter-" + [[baseType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mGetterName fileNameRepresentation]
     [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
-    if [[self.mReceiverExpression.mResultType mTypeKindEnum] isClassType] then
+    if [[self.mReceiverExpression.mResultType definition].mTypeKindEnum isClassType] then
       outCppExpression = "callExtensionGetter_" + [self.mGetterName identifierRepresentation]
          + " ((const cPtr_" + [self.mReceiverExpression.mResultType identifierRepresentation] + " *) " + receiverCppName + ".ptr (), "
     else

@@ -73,7 +73,7 @@ override method @unaryWrappingMinusExpressionAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if not [[type mHandledOperatorFlags] prefixMinusOperatorNoOVF] then
+  if not [[type definition].mHandledOperatorFlags prefixMinusOperatorNoOVF] then
     error self.mOperatorLocation
     : "operand type is '@" + [type definition].mTypeName.string + "' and does not support the prefix minus operator"
     :outExpression

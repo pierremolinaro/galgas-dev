@@ -380,7 +380,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
 #--- Check search method
   if self.mSearchMethodNameForErrorSignaling.string != "" then
     var @bool found = false
-    for (mSearchMethodName * *) in [receiverType mMapSearchMethodList] while not found do
+    for (mSearchMethodName * *) in [receiverType definition].mMapSearchMethodList while not found do
       found = mSearchMethodName.string == self.mSearchMethodNameForErrorSignaling.string
     end
     if not found then
@@ -410,14 +410,14 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
 #--- Object Array cpp name
   let objectArrayCppName = "objectArray_" + [self.mInstructionLocation locationIndex]
 #--- Check this type handle 'with' access
-  if not [[receiverType mHandledOperatorFlags] supportWithAccessor] then
+  if not [[receiverType definition].mHandledOperatorFlags supportWithAccessor] then
     error self.mEndOfReceiverExpression : "the '@"+ [receiverType definition].mTypeName.string + "' type cannot be used in a 'with' instruction"
   end  
 #--- Enter in a select block
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- 'do' branch : add attributes as constant
   var localConstantList = @localConstantList {}
-  for (mPropertyTypeEntry mPropertyName * *) in [receiverType mCurrentTypedPropertyList] do
+  for (mPropertyTypeEntry mPropertyName * *) in [receiverType definition].mCurrentTypedPropertyList do
     localConstantList +=
       !mPropertyTypeEntry
       !@lstring.new {!self.mPrefix.string + mPropertyName !self.mEndOfReceiverExpression}
@@ -505,7 +505,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
                         ?type:  let selfType
                         ?mutable: *
                         ?mutableproperties: let propertiesAreMutable] then
-      let propertyMap = [selfType mPropertyMap]
+      let propertyMap = [selfType definition].mPropertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       if isConstant then
         error self.mReceiverName: "a constant property cannot be modified"
@@ -526,7 +526,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     ]
   end
   for (value) in self.mFieldList do
-    let propertyMap = [targetType mPropertyMap]
+    let propertyMap = [targetType definition].mPropertyMap
     [propertyMap searchKey !value ?let isPublic ?let isConstant ?targetType]
     if not isPublic then
       error value : "inaccessible property (due to 'private' qualifier)"
@@ -536,13 +536,13 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     end
   end
 #--- Check this type handle 'with' access
-  if not [[targetType mHandledOperatorFlags] supportWithAccessor] then
+  if not [[targetType definition].mHandledOperatorFlags supportWithAccessor] then
     error self.mEndOfReceiverExpression : "the '@"+ [targetType definition].mTypeName.string + "' type cannot be used in a 'with' instruction"
   end  
 #--- Check search method
   if self.mSearchMethodNameForErrorSignaling.string != "" then
     var @bool found = false
-    for (mSearchMethodName * *) in [targetType mMapSearchMethodList] while not found do
+    for (mSearchMethodName * *) in [targetType definition].mMapSearchMethodList while not found do
       found = mSearchMethodName.string == self.mSearchMethodNameForErrorSignaling.string
     end
     if not found then
@@ -553,7 +553,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- 'do' branch
   var @localInitializedVariableList localInitializedVariableList = {}
-  for (mPropertyTypeEntry mPropertyName * *) in [targetType mCurrentTypedPropertyList] do
+  for (mPropertyTypeEntry mPropertyName * *) in [targetType definition].mCurrentTypedPropertyList do
     localInitializedVariableList +=
       !mPropertyTypeEntry
       !@lstring.new {!self.mPrefix.string + mPropertyName !self.mEndOfReceiverExpression}
