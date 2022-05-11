@@ -98,7 +98,7 @@ proc enterInheritedGetterWith2Arguments
 {
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   var @functionSignature argList = {}
-  [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?@unifiedTypeMap-entry t]
+  [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?@unifiedTypeMapEntry t]
   argList += !["" nowhere] !t !inArgument1Name
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument2TypeName ?t]
   argList += !["" nowhere] !t !inArgument2Name
@@ -205,7 +205,7 @@ proc enterBaseGetterWith2Arguments
 {
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   var @functionSignature argList = {}
-  [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?@unifiedTypeMap-entry t]
+  [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?@unifiedTypeMapEntry t]
   argList += !["" nowhere] !t !inArgument1Name
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument2TypeName ?t]
   argList += !["" nowhere] !t !inArgument2Name
@@ -236,7 +236,7 @@ proc enterBaseFinalGetterWith2Arguments
 {
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   var @functionSignature argList = {}
-  [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?@unifiedTypeMap-entry t]
+  [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?@unifiedTypeMapEntry t]
   argList += !["" nowhere] !t !inArgument1Name
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument2TypeName ?t]
   argList += !["" nowhere] !t !inArgument2Name
@@ -269,7 +269,7 @@ proc enterBaseFinalGetterWith3Arguments
 {
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   var @functionSignature argList = {}
-  [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?@unifiedTypeMap-entry t]
+  [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?@unifiedTypeMapEntry t]
   argList += !["" nowhere] !t !inArgument1Name
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument2TypeName ?t]
   argList += !["" nowhere] !t !inArgument2Name

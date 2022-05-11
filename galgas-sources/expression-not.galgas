@@ -58,7 +58,7 @@ override method @notExpressionAST enterExpressionInSemanticContext
 override method @notExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry unused inType
+  ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
@@ -66,13 +66,13 @@ override method @notExpressionAST analyzeSemanticExpression
   [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let expression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-entry type = expression.mResultType
+  let @unifiedTypeMapEntry type = expression.mResultType
   if expression is == @trueExpressionForGeneration then
     outExpression = @falseExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !self.mOperatorLocation}
   elsif expression is == @falseExpressionForGeneration then

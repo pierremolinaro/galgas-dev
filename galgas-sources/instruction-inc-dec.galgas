@@ -282,7 +282,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap
 {
 #--- Check target variable
-  var @unifiedTypeMap-entry targetType
+  var @unifiedTypeMapEntry targetType
   let @string targetVariableCppName
 #  let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
@@ -367,7 +367,7 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap
 {
 #--- Check target variable
-  var @unifiedTypeMap-entry targetType
+  var @unifiedTypeMapEntry targetType
   [!?ioVariableMap searchForReadWriteAccess !self.mReceiverName ?targetType ?let targetVariableCppName ?*]
   for (mValue) in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
@@ -425,7 +425,7 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
   end
 
 #--- Analyze "self", as receiver expression
-#  var @unifiedTypeMap-entry selfTypeEntry
+#  var @unifiedTypeMapEntry selfTypeEntry
 #  var @string selfObjectCppName
 #  if [inAnalysisContext.mutableSelfType isNull] then
 #    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
@@ -481,7 +481,7 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
 
 
 #--- Analyze "self", as receiver expression
-#  var @unifiedTypeMap-entry selfTypeEntry
+#  var @unifiedTypeMapEntry selfTypeEntry
 #  var @string selfObjectCppName
 #  if [inAnalysisContext.mutableSelfType isNull] then
 #    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
@@ -511,7 +511,7 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
 refclass @incDecInstructionForGeneration : @semanticInstructionForGeneration {
   public var @location mInstructionLocation
   public var @string mReceiverCppName
-  public var @unifiedTypeMap-entry mReceiverType
+  public var @unifiedTypeMapEntry mReceiverType
   public var @lstringlist mStructAttributeList
   public var @incDecKind mKind
 }
@@ -521,7 +521,7 @@ refclass @incDecInstructionForGeneration : @semanticInstructionForGeneration {
 refclass @incDecNoOVFInstructionForGeneration : @semanticInstructionForGeneration {
   public var @location mInstructionLocation
   public var @string mReceiverCppName
-  public var @unifiedTypeMap-entry mReceiverType
+  public var @unifiedTypeMapEntry mReceiverType
   public var @lstringlist mStructAttributeList
   public var @incDecKind mKind
 }

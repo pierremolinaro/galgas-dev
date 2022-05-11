@@ -107,15 +107,17 @@ override method @listmapDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Check associated map is really a list
-  [ioSemanticContext.mTypeMap searchKey
-    !self.mAssociatedListTypeName
-    ?3*
-    ?let @typeKindEnum typeKindEnum
-    ?*
-    ?var @typedPropertyList listTypedAttributeList
-    ?20*
-  ]
-  if typeKindEnum != @typeKindEnum.listType then
+  [ioSemanticContext.mTypeMap searchType !self.mAssociatedListTypeName ?let associatedTypeDefinition]
+  var @typedPropertyList listTypedAttributeList = associatedTypeDefinition.mAllTypedPropertyList
+#  [ioSemanticContext.mTypeMap searchKey
+#    !self.mAssociatedListTypeName
+#    ?3*
+#    ?let @typeKindEnum typeKindEnum
+#    ?*
+#    ?var @typedPropertyList listTypedAttributeList
+#    ?20*
+#  ]
+  if associatedTypeDefinition.mTypeKindEnum != @typeKindEnum.listType then
     error self.mAssociatedListTypeName : "the '@" + self.mAssociatedListTypeName + "' type should be a list type"
     listTypedAttributeList = @typedPropertyList {}
   end
@@ -192,14 +194,14 @@ override method @listmapDeclarationAST enterInSemanticContext
 #--- Element type index
   [!?ioSemanticContext.mTypeMap makeEntry
     !@lstring.new {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}
-    ?let @unifiedTypeMap-entry listElementTypeIndex
+    ?let @unifiedTypeMapEntry listElementTypeIndex
   ]
 #--- Enter type in type map
-  [!?ioSemanticContext.mTypeMap insertKey
+  let typeDefinition = @unifiedTypeDefinition.new {
     !self.mListmapTypeName
     !self.mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-entry.null
+    !@unifiedTypeMapEntry.null
     !@typeKindEnum. arrayType
     !true # Support collection value
     !@typedPropertyList {}
@@ -223,7 +225,8 @@ override method @listmapDeclarationAST enterInSemanticContext
     !"emptyMap" # Default constructor
     !"listmap-" + [self.mListmapTypeName fileNameRepresentation]
     !@headerKind.oneHeader
-  ]
+  }
+  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -246,16 +249,17 @@ override method @listmapDeclarationAST semanticAnalysis
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!self.mListmapTypeName.string + "-element" !self.mListmapTypeName})
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #--- Check associated list is actually a list
-  [inSemanticContext.mTypeMap searchKey
-    !self.mAssociatedListTypeName
-    ?3*
-    ?let @typeKindEnum typeKindEnum
-    ?*
-    ?let @typedPropertyList listTypeAttributeList
-    ?20*
-  ]
+  [inSemanticContext.mTypeMap searchType !self.mAssociatedListTypeName ?let associatedTypeDefinition]
+#  [inSemanticContext.mTypeMap searchKey
+#    !self.mAssociatedListTypeName
+#    ?3*
+#    ?let @typeKindEnum typeKindEnum
+#    ?*
+#    ?let @typedPropertyList listTypeAttributeList
+#    ?20*
+#  ]
 #---
-  if typeKindEnum != .listType then
+  if associatedTypeDefinition.mTypeKindEnum != .listType then
     error self.mAssociatedListTypeName : "associated type should be a list type"
   end
 #---
@@ -264,7 +268,7 @@ override method @listmapDeclarationAST semanticAnalysis
     !@listmapTypeForGeneration.new {
       ![inSemanticContext.mTypeMap searchKey !self.mListmapTypeName]
       ![inSemanticContext.mTypeMap searchKey !self.mAssociatedListTypeName]
-      !listTypeAttributeList
+      !associatedTypeDefinition.mAllTypedPropertyList
       ![inSemanticContext.mTypeMap searchKey !@lstring.new {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}]
     }
 }
@@ -274,9 +278,9 @@ override method @listmapDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @listmapTypeForGeneration : @semanticTypeForGeneration {
-  private let @unifiedTypeMap-entry mAssociatedListTypeIndex
+  private let @unifiedTypeMapEntry mAssociatedListTypeIndex
   private let @typedPropertyList mAssociatedListTypedAttributeList
-  private let @unifiedTypeMap-entry mAssociatedListMapElementTypeIndex
+  private let @unifiedTypeMapEntry mAssociatedListMapElementTypeIndex
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

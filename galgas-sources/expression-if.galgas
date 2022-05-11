@@ -103,7 +103,7 @@ override method @ifExpressionAST enterExpressionInSemanticContext
 override method @ifExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry inType
+  ?inferenceType: let @unifiedTypeMapEntry inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression

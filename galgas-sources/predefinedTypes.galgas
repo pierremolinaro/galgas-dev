@@ -265,12 +265,12 @@ override method @predefinedTypeAST enterInSemanticContext
   ]
   [!?ioSemanticContext.mTypeMap makeEntryFromString
     !self.mPredefinedTypeName
-    ?* #let @unifiedTypeMap-entry selfTypeEntry
+    ?* #let @unifiedTypeMapEntry selfTypeEntry
   ]
 #--- Enumeration
-  let @unifiedTypeMap-entry enumeratedTypeEntry
+  let @unifiedTypeMapEntry enumeratedTypeEntry
   if enumeratedTypeName == "" then
-    enumeratedTypeEntry = @unifiedTypeMap-entry.null
+    enumeratedTypeEntry = @unifiedTypeMapEntry.null
   else
     [!?ioSemanticContext.mTypeMap makeEntryFromString!enumeratedTypeName ?enumeratedTypeEntry]
   end
@@ -287,11 +287,11 @@ override method @predefinedTypeAST enterInSemanticContext
     !acceptSetters: true
   )
 #---
-  [!?ioSemanticContext.mTypeMap insertKey
+  let typeDefinition = @unifiedTypeDefinition.new {
     !@lstring.new {!self.mPredefinedTypeName !@location.here}
     !self.mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-entry.null
+    !@unifiedTypeMapEntry.null
     !@typeKindEnum. predefinedType
     !self.mPredefinedTypeName == "stringset" # Only @stringset supports collection value
     !@typedPropertyList {}
@@ -315,7 +315,8 @@ override method @predefinedTypeAST enterInSemanticContext
     ![self.mKind defaultConstructorName]
     !"galgas2/predefined-types"
     !@headerKind.twoHeaders
-  ]
+  }
+  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

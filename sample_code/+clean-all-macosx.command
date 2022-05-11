@@ -1,10 +1,6 @@
 #!/bin/sh
 set -x
 DIR=`dirname $0` &&
-#----------------- Assignment
-${DIR}/assignment_language/makefile-macosx/clean.py &&
-rm -fr ${DIR}/assignment_language/build &&
-cd ${DIR}/assignment_language/xcode-project && rm -fr build
 #----------------- Pascal
 ${DIR}/pascal/makefile-macosx/clean.py &&
 rm -fr ${DIR}/pascal/build &&

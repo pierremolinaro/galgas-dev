@@ -211,7 +211,7 @@ class GALGAS_arrayTypeForGeneration : public GALGAS_semanticTypeForGeneration {
   public: GALGAS_arrayTypeForGeneration (const class cPtr_arrayTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mElementTypeEntry (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mElementTypeEntry (void) const ;
 
   public: class GALGAS_uint readProperty_mDimension (void) const ;
 
@@ -226,8 +226,8 @@ class GALGAS_arrayTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_arrayTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
-                                                                      const class GALGAS_unifiedTypeMap_2D_entry & inOperand1,
+  public: static class GALGAS_arrayTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                      const class GALGAS_unifiedTypeMapEntry & inOperand1,
                                                                       const class GALGAS_uint & inOperand2
                                                                       COMMA_LOCATION_ARGS) ;
 
@@ -264,12 +264,12 @@ class cPtr_arrayTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mElementTypeEntry ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mElementTypeEntry ;
   public: GALGAS_uint mProperty_mDimension ;
 
 //--- Constructor
-  public: cPtr_arrayTypeForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
-                                       const GALGAS_unifiedTypeMap_2D_entry & in_mElementTypeEntry,
+  public: cPtr_arrayTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                       const GALGAS_unifiedTypeMapEntry & in_mElementTypeEntry,
                                        const GALGAS_uint & in_mDimension
                                        COMMA_LOCATION_ARGS) ;
 
@@ -351,7 +351,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_arrayTypeForGenerat
 
 void extensionSetter_insertDeclaredLocalVariable (class GALGAS_localVarManager & ioObject,
                                                   const class GALGAS_lstring constin_inVarName,
-                                                  const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
+                                                  const class GALGAS_unifiedTypeMapEntry constin_inType,
                                                   const class GALGAS_string constin_inCppName,
                                                   const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
                                                   class C_Compiler * inCompiler
@@ -492,8 +492,8 @@ void routine_projectCreation (const class GALGAS_string constinArgument0,
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_checkAssignmentTypeWithImplicitGetterCall (const class GALGAS_unifiedTypeMap_2D_entry constinArgument0,
-                                                        const class GALGAS_unifiedTypeMap_2D_entry constinArgument1,
+void routine_checkAssignmentTypeWithImplicitGetterCall (const class GALGAS_unifiedTypeMapEntry constinArgument0,
+                                                        const class GALGAS_unifiedTypeMapEntry constinArgument1,
                                                         const class GALGAS_location constinArgument2,
                                                         class GALGAS_semanticExpressionForGeneration & ioArgument3,
                                                         class C_Compiler * inCompiler
@@ -505,8 +505,8 @@ void routine_checkAssignmentTypeWithImplicitGetterCall (const class GALGAS_unifi
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_checkDiadicOperator (const class GALGAS_unifiedTypeMap_2D_entry constinArgument0,
-                                  const class GALGAS_unifiedTypeMap_2D_entry constinArgument1,
+void routine_checkDiadicOperator (const class GALGAS_unifiedTypeMapEntry constinArgument0,
+                                  const class GALGAS_unifiedTypeMapEntry constinArgument1,
                                   const class GALGAS_bool constinArgument2,
                                   const class GALGAS_string constinArgument3,
                                   const class GALGAS_location constinArgument4,

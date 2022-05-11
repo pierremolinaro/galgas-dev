@@ -128,7 +128,7 @@ override method @listDeclarationAST enterInSemanticContext
 #--- Element type index
   [!?ioSemanticContext.mTypeMap makeEntry
     !@lstring.new {!self.mListTypeName.string + elementTypeNameSuffix () !self.mListTypeName.location}
-    ?let @unifiedTypeMap-entry listElementTypeIndex
+    ?let @unifiedTypeMapEntry listElementTypeIndex
   ]
 #--- Property description
   var @enumerationDescriptorList enumerationDescriptor = {}
@@ -314,11 +314,11 @@ override method @listDeclarationAST enterInSemanticContext
     !acceptSetters: true
   )
 #--- Enter in type map
-  [!?ioSemanticContext.mTypeMap insertKey
+  let typeDefinition = @unifiedTypeDefinition.new {
     !self.mListTypeName
     !self.mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-entry.null
+    !@unifiedTypeMapEntry.null
     !@typeKindEnum. listType
     !true # Support collection value
     !typedAttributeList
@@ -342,7 +342,8 @@ override method @listDeclarationAST enterInSemanticContext
     !"emptyList" # Default constructor
     !"list-" + [self.mListTypeName fileNameRepresentation]
     !@headerKind.oneHeader
-  ]
+  }
+  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
 }
 
 #·······················································································································
@@ -433,7 +434,7 @@ override method @listDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @listTypeForGeneration : @semanticTypeForGeneration {
-  private let @unifiedTypeMap-entry mListElementTypeIndex
+  private let @unifiedTypeMapEntry mListElementTypeIndex
   private let @typedPropertyList mTypedAttributeList
 }
 

@@ -179,7 +179,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
 #--- Element type index
   [!?ioSemanticContext.mTypeMap makeEntry
     !@lstring.new {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName.location}
-    ?let @unifiedTypeMap-entry listElementTypeIndex
+    ?let @unifiedTypeMapEntry listElementTypeIndex
   ]
 #--- Enumeration description
   var @enumerationDescriptorList enumerationDescriptor = {}
@@ -272,11 +272,11 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !acceptSetters: true
   )
 #--- Enter in type map
-  [!?ioSemanticContext.mTypeMap insertKey
+  let typeDefinition = @unifiedTypeDefinition.new {
     !self.mSortedListTypeName
     !self.mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-entry.null
+    !@unifiedTypeMapEntry.null
     !@typeKindEnum. sortedListType
     !true # Support collection value
     !typedAttributeList
@@ -300,7 +300,8 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !"emptySortedList" # Default constructor
     !"-sortedlist-" + [self.mSortedListTypeName fileNameRepresentation]
     !@headerKind.oneHeader
-  ]
+  }
+  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -340,7 +341,7 @@ override method @sortedListDeclarationAST semanticAnalysis
   var @stringset attributesUsedForSorting = {}
   var @sortDescriptorListForGeneration sortDescriptorList = {}
   for (mSortedAttributeName mAscending) in self.mSortDescriptorList do
-    [attributeMap searchKey !mSortedAttributeName ?let @unifiedTypeMap-entry type]
+    [attributeMap searchKey !mSortedAttributeName ?let @unifiedTypeMapEntry type]
     sortDescriptorList += !type !mSortedAttributeName.string !mAscending
     if [attributesUsedForSorting hasKey !mSortedAttributeName.string] then
       error mSortedAttributeName : "the '" + mSortedAttributeName + "' is already used for sorting"
@@ -363,7 +364,7 @@ override method @sortedListDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @sortDescriptorListForGeneration {
-  public var @unifiedTypeMap-entry mAttributeTypeIndex
+  public var @unifiedTypeMapEntry mAttributeTypeIndex
   public var @string mAttributeName
   public var @bool mAscendingOrder
 }
@@ -371,7 +372,7 @@ list @sortDescriptorListForGeneration {
 #·······················································································································
 
 refclass @sortedListTypeForGeneration : @semanticTypeForGeneration {
-  private let @unifiedTypeMap-entry mListElementTypeIndex
+  private let @unifiedTypeMapEntry mListElementTypeIndex
   private let @typedPropertyList mTypedAttributeList
   private let @sortDescriptorListForGeneration mSortDescriptorList
 }

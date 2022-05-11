@@ -1319,7 +1319,7 @@ GALGAS_templateVariableMap_2D_element::~ GALGAS_templateVariableMap_2D_element (
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateVariableMap_2D_element::GALGAS_templateVariableMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                                              const GALGAS_unifiedTypeMap_2D_entry & inOperand1,
+                                                                              const GALGAS_unifiedTypeMapEntry & inOperand1,
                                                                               const GALGAS_string & inOperand2) :
 mProperty_lkey (inOperand0),
 mProperty_mType (inOperand1),
@@ -1329,7 +1329,7 @@ mProperty_mCppName (inOperand2) {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateVariableMap_2D_element GALGAS_templateVariableMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                              const GALGAS_unifiedTypeMap_2D_entry & inOperand1,
+                                                                                              const GALGAS_unifiedTypeMapEntry & inOperand1,
                                                                                               const GALGAS_string & inOperand2 
                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateVariableMap_2D_element result ;
@@ -10011,7 +10011,7 @@ GALGAS_functionSignature_2D_element::~ GALGAS_functionSignature_2D_element (void
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_functionSignature_2D_element::GALGAS_functionSignature_2D_element (const GALGAS_lstring & inOperand0,
-                                                                          const GALGAS_unifiedTypeMap_2D_entry & inOperand1,
+                                                                          const GALGAS_unifiedTypeMapEntry & inOperand1,
                                                                           const GALGAS_string & inOperand2) :
 mProperty_mFormalSelector (inOperand0),
 mProperty_mFormalArgumentType (inOperand1),
@@ -10021,7 +10021,7 @@ mProperty_mFormalArgumentName (inOperand2) {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_functionSignature_2D_element GALGAS_functionSignature_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                          const GALGAS_unifiedTypeMap_2D_entry & inOperand1,
+                                                                                          const GALGAS_unifiedTypeMapEntry & inOperand1,
                                                                                           const GALGAS_string & inOperand2 
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_functionSignature_2D_element result ;
@@ -10140,7 +10140,7 @@ GALGAS_constructorMap_2D_element::~ GALGAS_constructorMap_2D_element (void) {
 GALGAS_constructorMap_2D_element::GALGAS_constructorMap_2D_element (const GALGAS_lstring & inOperand0,
                                                                     const GALGAS_functionSignature & inOperand1,
                                                                     const GALGAS_bool & inOperand2,
-                                                                    const GALGAS_unifiedTypeMap_2D_entry & inOperand3) :
+                                                                    const GALGAS_unifiedTypeMapEntry & inOperand3) :
 mProperty_lkey (inOperand0),
 mProperty_mArgumentTypeList (inOperand1),
 mProperty_mHasCompilerArgument (inOperand2),
@@ -10152,7 +10152,7 @@ mProperty_mReturnedType (inOperand3) {
 GALGAS_constructorMap_2D_element GALGAS_constructorMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
                                                                                     const GALGAS_functionSignature & inOperand1,
                                                                                     const GALGAS_bool & inOperand2,
-                                                                                    const GALGAS_unifiedTypeMap_2D_entry & inOperand3 
+                                                                                    const GALGAS_unifiedTypeMapEntry & inOperand3 
                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_constructorMap_2D_element result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
@@ -10275,7 +10275,7 @@ GALGAS_optionalMethodSignature_2D_element::~ GALGAS_optionalMethodSignature_2D_e
 
 GALGAS_optionalMethodSignature_2D_element::GALGAS_optionalMethodSignature_2D_element (const GALGAS_bool & inOperand0,
                                                                                       const GALGAS_lstring & inOperand1,
-                                                                                      const GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+                                                                                      const GALGAS_unifiedTypeMapEntry & inOperand2,
                                                                                       const GALGAS_string & inOperand3) :
 mProperty_mInputArgument (inOperand0),
 mProperty_mFormalSelector (inOperand1),
@@ -10287,7 +10287,7 @@ mProperty_mFormalArgumentName (inOperand3) {
 
 GALGAS_optionalMethodSignature_2D_element GALGAS_optionalMethodSignature_2D_element::constructor_new (const GALGAS_bool & inOperand0,
                                                                                                       const GALGAS_lstring & inOperand1,
-                                                                                                      const GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+                                                                                                      const GALGAS_unifiedTypeMapEntry & inOperand2,
                                                                                                       const GALGAS_string & inOperand3 
                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_optionalMethodSignature_2D_element result ;
@@ -10541,7 +10541,7 @@ GALGAS_getterMap_2D_element::GALGAS_getterMap_2D_element (const GALGAS_lstring &
                                                           const GALGAS_functionSignature & inOperand2,
                                                           const GALGAS_location & inOperand3,
                                                           const GALGAS_bool & inOperand4,
-                                                          const GALGAS_unifiedTypeMap_2D_entry & inOperand5,
+                                                          const GALGAS_unifiedTypeMapEntry & inOperand5,
                                                           const GALGAS_methodQualifier & inOperand6,
                                                           const GALGAS_string & inOperand7) :
 mProperty_lkey (inOperand0),
@@ -10561,7 +10561,7 @@ GALGAS_getterMap_2D_element GALGAS_getterMap_2D_element::constructor_new (const 
                                                                           const GALGAS_functionSignature & inOperand2,
                                                                           const GALGAS_location & inOperand3,
                                                                           const GALGAS_bool & inOperand4,
-                                                                          const GALGAS_unifiedTypeMap_2D_entry & inOperand5,
+                                                                          const GALGAS_unifiedTypeMapEntry & inOperand5,
                                                                           const GALGAS_methodQualifier & inOperand6,
                                                                           const GALGAS_string & inOperand7 
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
@@ -10709,7 +10709,7 @@ GALGAS_formalParameterSignature_2D_element::~ GALGAS_formalParameterSignature_2D
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterSignature_2D_element::GALGAS_formalParameterSignature_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                        const GALGAS_unifiedTypeMap_2D_entry & inOperand1,
+                                                                                        const GALGAS_unifiedTypeMapEntry & inOperand1,
                                                                                         const GALGAS_formalArgumentPassingModeAST & inOperand2,
                                                                                         const GALGAS_string & inOperand3) :
 mProperty_mFormalSelector (inOperand0),
@@ -10721,7 +10721,7 @@ mProperty_mFormalArgumentName (inOperand3) {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterSignature_2D_element GALGAS_formalParameterSignature_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                                        const GALGAS_unifiedTypeMap_2D_entry & inOperand1,
+                                                                                                        const GALGAS_unifiedTypeMapEntry & inOperand1,
                                                                                                         const GALGAS_formalArgumentPassingModeAST & inOperand2,
                                                                                                         const GALGAS_string & inOperand3 
                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
@@ -11310,7 +11310,7 @@ GALGAS_typedPropertyList_2D_element::~ GALGAS_typedPropertyList_2D_element (void
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_typedPropertyList_2D_element::GALGAS_typedPropertyList_2D_element (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+GALGAS_typedPropertyList_2D_element::GALGAS_typedPropertyList_2D_element (const GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                           const GALGAS_lstring & inOperand1,
                                                                           const GALGAS_bool & inOperand2,
                                                                           const GALGAS_bool & inOperand3) :
@@ -11322,7 +11322,7 @@ mProperty_mHasSelector (inOperand3) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_typedPropertyList_2D_element GALGAS_typedPropertyList_2D_element::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+GALGAS_typedPropertyList_2D_element GALGAS_typedPropertyList_2D_element::constructor_new (const GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                                           const GALGAS_lstring & inOperand1,
                                                                                           const GALGAS_bool & inOperand2,
                                                                                           const GALGAS_bool & inOperand3 
@@ -11449,7 +11449,7 @@ GALGAS_propertyMap_2D_element::~ GALGAS_propertyMap_2D_element (void) {
 GALGAS_propertyMap_2D_element::GALGAS_propertyMap_2D_element (const GALGAS_lstring & inOperand0,
                                                               const GALGAS_bool & inOperand1,
                                                               const GALGAS_bool & inOperand2,
-                                                              const GALGAS_unifiedTypeMap_2D_entry & inOperand3) :
+                                                              const GALGAS_unifiedTypeMapEntry & inOperand3) :
 mProperty_lkey (inOperand0),
 mProperty_mIsPublic (inOperand1),
 mProperty_mIsConstant (inOperand2),
@@ -11461,7 +11461,7 @@ mProperty_mPropertyType (inOperand3) {
 GALGAS_propertyMap_2D_element GALGAS_propertyMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
                                                                               const GALGAS_bool & inOperand1,
                                                                               const GALGAS_bool & inOperand2,
-                                                                              const GALGAS_unifiedTypeMap_2D_entry & inOperand3 
+                                                                              const GALGAS_unifiedTypeMapEntry & inOperand3 
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_propertyMap_2D_element result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
@@ -11583,7 +11583,7 @@ GALGAS_constantIndexMap_2D_element::~ GALGAS_constantIndexMap_2D_element (void) 
 
 GALGAS_constantIndexMap_2D_element::GALGAS_constantIndexMap_2D_element (const GALGAS_lstring & inOperand0,
                                                                         const GALGAS_uint & inOperand1,
-                                                                        const GALGAS_unifiedTypeMap_2D_entryList & inOperand2) :
+                                                                        const GALGAS_unifiedTypeMapEntryList & inOperand2) :
 mProperty_lkey (inOperand0),
 mProperty_mIndex (inOperand1),
 mProperty_mAssociatedTypeList (inOperand2) {
@@ -11594,14 +11594,14 @@ mProperty_mAssociatedTypeList (inOperand2) {
 GALGAS_constantIndexMap_2D_element GALGAS_constantIndexMap_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_constantIndexMap_2D_element (GALGAS_lstring::constructor_default (HERE),
                                              GALGAS_uint::constructor_default (HERE),
-                                             GALGAS_unifiedTypeMap_2D_entryList::constructor_emptyList (HERE)) ;
+                                             GALGAS_unifiedTypeMapEntryList::constructor_emptyList (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_constantIndexMap_2D_element GALGAS_constantIndexMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
                                                                                         const GALGAS_uint & inOperand1,
-                                                                                        const GALGAS_unifiedTypeMap_2D_entryList & inOperand2 
+                                                                                        const GALGAS_unifiedTypeMapEntryList & inOperand2 
                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_constantIndexMap_2D_element result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
@@ -12120,7 +12120,7 @@ GALGAS_functionMap_2D_element::~ GALGAS_functionMap_2D_element (void) {
 
 GALGAS_functionMap_2D_element::GALGAS_functionMap_2D_element (const GALGAS_lstring & inOperand0,
                                                               const GALGAS_functionSignature & inOperand1,
-                                                              const GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+                                                              const GALGAS_unifiedTypeMapEntry & inOperand2,
                                                               const GALGAS_bool & inOperand3) :
 mProperty_lkey (inOperand0),
 mProperty_mFunctionSignature (inOperand1),
@@ -12132,7 +12132,7 @@ mProperty_mIsInternal (inOperand3) {
 
 GALGAS_functionMap_2D_element GALGAS_functionMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
                                                                               const GALGAS_functionSignature & inOperand1,
-                                                                              const GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+                                                                              const GALGAS_unifiedTypeMapEntry & inOperand2,
                                                                               const GALGAS_bool & inOperand3 
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_functionMap_2D_element result ;
@@ -14305,7 +14305,7 @@ GALGAS_formalParameterListForGeneration_2D_element::~ GALGAS_formalParameterList
 
 GALGAS_formalParameterListForGeneration_2D_element::GALGAS_formalParameterListForGeneration_2D_element (const GALGAS_lstring & inOperand0,
                                                                                                         const GALGAS_formalArgumentPassingModeAST & inOperand1,
-                                                                                                        const GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+                                                                                                        const GALGAS_unifiedTypeMapEntry & inOperand2,
                                                                                                         const GALGAS_lstring & inOperand3,
                                                                                                         const GALGAS_string & inOperand4) :
 mProperty_mFormalSelector (inOperand0),
@@ -14319,7 +14319,7 @@ mProperty_mFormalArgumentCppName (inOperand4) {
 
 GALGAS_formalParameterListForGeneration_2D_element GALGAS_formalParameterListForGeneration_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
                                                                                                                         const GALGAS_formalArgumentPassingModeAST & inOperand1,
-                                                                                                                        const GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+                                                                                                                        const GALGAS_unifiedTypeMapEntry & inOperand2,
                                                                                                                         const GALGAS_lstring & inOperand3,
                                                                                                                         const GALGAS_string & inOperand4 
                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
@@ -14450,7 +14450,7 @@ GALGAS_formalInputParameterListForGeneration_2D_element::~ GALGAS_formalInputPar
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_formalInputParameterListForGeneration_2D_element::GALGAS_formalInputParameterListForGeneration_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                                                  const GALGAS_unifiedTypeMap_2D_entry & inOperand1,
+                                                                                                                  const GALGAS_unifiedTypeMapEntry & inOperand1,
                                                                                                                   const GALGAS_string & inOperand2,
                                                                                                                   const GALGAS_lstring & inOperand3,
                                                                                                                   const GALGAS_bool & inOperand4) :
@@ -14464,7 +14464,7 @@ mProperty_mIsConstant (inOperand4) {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_formalInputParameterListForGeneration_2D_element GALGAS_formalInputParameterListForGeneration_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                                                                  const GALGAS_unifiedTypeMap_2D_entry & inOperand1,
+                                                                                                                                  const GALGAS_unifiedTypeMapEntry & inOperand1,
                                                                                                                                   const GALGAS_string & inOperand2,
                                                                                                                                   const GALGAS_lstring & inOperand3,
                                                                                                                                   const GALGAS_bool & inOperand4 
@@ -14967,7 +14967,7 @@ GALGAS_localConstantList_2D_element::~ GALGAS_localConstantList_2D_element (void
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_localConstantList_2D_element::GALGAS_localConstantList_2D_element (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+GALGAS_localConstantList_2D_element::GALGAS_localConstantList_2D_element (const GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                           const GALGAS_lstring & inOperand1,
                                                                           const GALGAS_bool & inOperand2,
                                                                           const GALGAS_string & inOperand3) :
@@ -14979,7 +14979,7 @@ mProperty_mCppName (inOperand3) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_localConstantList_2D_element GALGAS_localConstantList_2D_element::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+GALGAS_localConstantList_2D_element GALGAS_localConstantList_2D_element::constructor_new (const GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                                           const GALGAS_lstring & inOperand1,
                                                                                           const GALGAS_bool & inOperand2,
                                                                                           const GALGAS_string & inOperand3 
@@ -15102,7 +15102,7 @@ GALGAS_localInitializedVariableList_2D_element::~ GALGAS_localInitializedVariabl
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_localInitializedVariableList_2D_element::GALGAS_localInitializedVariableList_2D_element (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+GALGAS_localInitializedVariableList_2D_element::GALGAS_localInitializedVariableList_2D_element (const GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                                                 const GALGAS_lstring & inOperand1,
                                                                                                 const GALGAS_string & inOperand2) :
 mProperty_mType (inOperand0),
@@ -15112,7 +15112,7 @@ mProperty_mCppName (inOperand2) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_localInitializedVariableList_2D_element GALGAS_localInitializedVariableList_2D_element::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+GALGAS_localInitializedVariableList_2D_element GALGAS_localInitializedVariableList_2D_element::constructor_new (const GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                                                                 const GALGAS_lstring & inOperand1,
                                                                                                                 const GALGAS_string & inOperand2 
                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {

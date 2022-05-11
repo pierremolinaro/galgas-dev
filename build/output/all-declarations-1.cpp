@@ -2080,7 +2080,7 @@ GALGAS_templateInstructionIfForGeneration_2D_weak GALGAS_templateInstructionIfFo
 //----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_templateVariableMap::cMapElement_templateVariableMap (const GALGAS_lstring & inKey,
-                                                                  const GALGAS_unifiedTypeMap_2D_entry & in_mType,
+                                                                  const GALGAS_unifiedTypeMapEntry & in_mType,
                                                                   const GALGAS_string & in_mCppName
                                                                   COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
@@ -2177,7 +2177,7 @@ GALGAS_templateVariableMap GALGAS_templateVariableMap::getter_overriddenMap (C_C
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_templateVariableMap::addAssign_operation (const GALGAS_lstring & inKey,
-                                                      const GALGAS_unifiedTypeMap_2D_entry & inArgument0,
+                                                      const GALGAS_unifiedTypeMapEntry & inArgument0,
                                                       const GALGAS_string & inArgument1,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) {
@@ -2194,7 +2194,7 @@ void GALGAS_templateVariableMap::addAssign_operation (const GALGAS_lstring & inK
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_templateVariableMap::setter_insertKey (GALGAS_lstring inKey,
-                                                   GALGAS_unifiedTypeMap_2D_entry inArgument0,
+                                                   GALGAS_unifiedTypeMapEntry inArgument0,
                                                    GALGAS_string inArgument1,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) {
@@ -2215,7 +2215,7 @@ const char * kSearchErrorMessage_templateVariableMap_searchKey = "the '%K' varia
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_templateVariableMap::method_searchKey (GALGAS_lstring inKey,
-                                                   GALGAS_unifiedTypeMap_2D_entry & outArgument0,
+                                                   GALGAS_unifiedTypeMapEntry & outArgument0,
                                                    GALGAS_string & outArgument1,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const {
@@ -2235,12 +2235,12 @@ void GALGAS_templateVariableMap::method_searchKey (GALGAS_lstring inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_templateVariableMap::getter_mTypeForKey (const GALGAS_string & inKey,
-                                                                               C_Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMapEntry GALGAS_templateVariableMap::getter_mTypeForKey (const GALGAS_string & inKey,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
   const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) attributes ;
-  GALGAS_unifiedTypeMap_2D_entry result ;
+  GALGAS_unifiedTypeMapEntry result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_templateVariableMap) ;
     result = p->mProperty_mType ;
@@ -2265,7 +2265,7 @@ GALGAS_string GALGAS_templateVariableMap::getter_mCppNameForKey (const GALGAS_st
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_templateVariableMap::setter_setMTypeForKey (GALGAS_unifiedTypeMap_2D_entry inAttributeValue,
+void GALGAS_templateVariableMap::setter_setMTypeForKey (GALGAS_unifiedTypeMapEntry inAttributeValue,
                                                         GALGAS_string inKey,
                                                         C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
@@ -2327,7 +2327,7 @@ GALGAS_lstring cEnumerator_templateVariableMap::current_lkey (LOCATION_ARGS) con
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry cEnumerator_templateVariableMap::current_mType (LOCATION_ARGS) const {
+GALGAS_unifiedTypeMapEntry cEnumerator_templateVariableMap::current_mType (LOCATION_ARGS) const {
   const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_templateVariableMap) ;
   return p->mProperty_mType ;
@@ -2344,7 +2344,7 @@ GALGAS_string cEnumerator_templateVariableMap::current_mCppName (LOCATION_ARGS) 
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_templateVariableMap::optional_searchKey (const GALGAS_string & inKey,
-                                                     GALGAS_unifiedTypeMap_2D_entry & outArgument0,
+                                                     GALGAS_unifiedTypeMapEntry & outArgument0,
                                                      GALGAS_string & outArgument1) const {
   const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) searchForKey (inKey) ;
   const bool result = NULL != p ;
@@ -2404,16 +2404,16 @@ GALGAS_templateVariableMap GALGAS_templateVariableMap::extractObject (const GALG
 
 //----------------------------------------------------------------------------------------------------------------------
 
-cEnumAssociatedValues_unifiedTypeMap_2D_entry_element::cEnumAssociatedValues_unifiedTypeMap_2D_entry_element (const GALGAS_unifiedTypeMapElementClass_2D_weak inAssociatedValue0
-                                                                                                              COMMA_LOCATION_ARGS) :
+cEnumAssociatedValues_unifiedTypeMapEntry_element::cEnumAssociatedValues_unifiedTypeMapEntry_element (const GALGAS_unifiedTypeMapElementClass_2D_weak inAssociatedValue0
+                                                                                                      COMMA_LOCATION_ARGS) :
 cEnumAssociatedValues (THERE),
 mAssociatedValue0 (inAssociatedValue0) {
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void cEnumAssociatedValues_unifiedTypeMap_2D_entry_element::description (C_String & ioString,
-                                                                         const int32_t inIndentation) const {
+void cEnumAssociatedValues_unifiedTypeMapEntry_element::description (C_String & ioString,
+                                                                     const int32_t inIndentation) const {
   ioString << "(\n" ;
   mAssociatedValue0.description (ioString, inIndentation) ;
   ioString << ")" ;
@@ -2421,8 +2421,8 @@ void cEnumAssociatedValues_unifiedTypeMap_2D_entry_element::description (C_Strin
 
 //----------------------------------------------------------------------------------------------------------------------
 
-typeComparisonResult cEnumAssociatedValues_unifiedTypeMap_2D_entry_element::compare (const cEnumAssociatedValues * inOperand) const {
-  const cEnumAssociatedValues_unifiedTypeMap_2D_entry_element * ptr = dynamic_cast<const cEnumAssociatedValues_unifiedTypeMap_2D_entry_element *> (inOperand) ;
+typeComparisonResult cEnumAssociatedValues_unifiedTypeMapEntry_element::compare (const cEnumAssociatedValues * inOperand) const {
+  const cEnumAssociatedValues_unifiedTypeMapEntry_element * ptr = dynamic_cast<const cEnumAssociatedValues_unifiedTypeMapEntry_element *> (inOperand) ;
   macroValidPointer (ptr) ;
   typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
@@ -2433,28 +2433,28 @@ typeComparisonResult cEnumAssociatedValues_unifiedTypeMap_2D_entry_element::comp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry::GALGAS_unifiedTypeMap_2D_entry (void) :
+GALGAS_unifiedTypeMapEntry::GALGAS_unifiedTypeMapEntry (void) :
 mAssociatedValues (),
 mEnum (kNotBuilt) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_unifiedTypeMap_2D_entry::constructor_null (UNUSED_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMap_2D_entry result ;
+GALGAS_unifiedTypeMapEntry GALGAS_unifiedTypeMapEntry::constructor_null (UNUSED_LOCATION_ARGS) {
+  GALGAS_unifiedTypeMapEntry result ;
   result.mEnum = kEnum_null ;
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_unifiedTypeMap_2D_entry::constructor_element (const GALGAS_unifiedTypeMapElementClass_2D_weak & inAssociatedValue0
-                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMap_2D_entry result ;
+GALGAS_unifiedTypeMapEntry GALGAS_unifiedTypeMapEntry::constructor_element (const GALGAS_unifiedTypeMapElementClass_2D_weak & inAssociatedValue0
+                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_unifiedTypeMapEntry result ;
   if (inAssociatedValue0.isValid ()) {
     result.mEnum = kEnum_element ;
     cEnumAssociatedValues * ptr = NULL ;
-    macroMyNew (ptr, cEnumAssociatedValues_unifiedTypeMap_2D_entry_element (inAssociatedValue0 COMMA_THERE)) ;
+    macroMyNew (ptr, cEnumAssociatedValues_unifiedTypeMapEntry_element (inAssociatedValue0 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
     macroDetachSharedObject (ptr) ;
   }
@@ -2463,34 +2463,34 @@ GALGAS_unifiedTypeMap_2D_entry GALGAS_unifiedTypeMap_2D_entry::constructor_eleme
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMap_2D_entry::method_element (GALGAS_unifiedTypeMapElementClass_2D_weak & outAssociatedValue0,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const {
+void GALGAS_unifiedTypeMapEntry::method_element (GALGAS_unifiedTypeMapElementClass_2D_weak & outAssociatedValue0,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_element) {
     outAssociatedValue0.drop () ;
     C_String s ;
-    s << "method @unifiedTypeMap_2D_entry element invoked with an invalid enum value" ;
+    s << "method @unifiedTypeMapEntry element invoked with an invalid enum value" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    const cEnumAssociatedValues_unifiedTypeMap_2D_entry_element * ptr = (const cEnumAssociatedValues_unifiedTypeMap_2D_entry_element *) unsafePointer () ;
+    const cEnumAssociatedValues_unifiedTypeMapEntry_element * ptr = (const cEnumAssociatedValues_unifiedTypeMapEntry_element *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-bool GALGAS_unifiedTypeMap_2D_entry::optional_null () const {
+bool GALGAS_unifiedTypeMapEntry::optional_null () const {
   const bool ok = mEnum == kEnum_null ;
   return ok ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-bool GALGAS_unifiedTypeMap_2D_entry::optional_element (GALGAS_unifiedTypeMapElementClass_2D_weak & outAssociatedValue0) const {
+bool GALGAS_unifiedTypeMapEntry::optional_element (GALGAS_unifiedTypeMapElementClass_2D_weak & outAssociatedValue0) const {
   const bool ok = mEnum == kEnum_element ;
   if (ok) {
-    const auto * ptr = (const cEnumAssociatedValues_unifiedTypeMap_2D_entry_element *) unsafePointer () ;
-    // const cEnumAssociatedValues_unifiedTypeMap_2D_entry_element * ptr = (const cEnumAssociatedValues_unifiedTypeMap_2D_entry_element *) unsafePointer () ;
+    const auto * ptr = (const cEnumAssociatedValues_unifiedTypeMapEntry_element *) unsafePointer () ;
+    // const cEnumAssociatedValues_unifiedTypeMapEntry_element * ptr = (const cEnumAssociatedValues_unifiedTypeMapEntry_element *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;
@@ -2498,7 +2498,7 @@ bool GALGAS_unifiedTypeMap_2D_entry::optional_element (GALGAS_unifiedTypeMapElem
 
 //----------------------------------------------------------------------------------------------------------------------
 
-static const char * gEnumNameArrayFor_unifiedTypeMap_2D_entry [3] = {
+static const char * gEnumNameArrayFor_unifiedTypeMapEntry [3] = {
   "(not built)",
   "null",
   "element"
@@ -2506,28 +2506,28 @@ static const char * gEnumNameArrayFor_unifiedTypeMap_2D_entry [3] = {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_unifiedTypeMap_2D_entry::getter_isNull (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_unifiedTypeMapEntry::getter_isNull (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_null == mEnum) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_unifiedTypeMap_2D_entry::getter_isElement (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_unifiedTypeMapEntry::getter_isElement (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_element == mEnum) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMap_2D_entry::description (C_String & ioString,
-                                                  const int32_t inIndentation) const {
-  ioString << "<enum @unifiedTypeMap-entry: " << gEnumNameArrayFor_unifiedTypeMap_2D_entry [mEnum] ;
+void GALGAS_unifiedTypeMapEntry::description (C_String & ioString,
+                                              const int32_t inIndentation) const {
+  ioString << "<enum @unifiedTypeMapEntry: " << gEnumNameArrayFor_unifiedTypeMapEntry [mEnum] ;
   mAssociatedValues.description (ioString, inIndentation) ;
   ioString << ">" ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_unifiedTypeMap_2D_entry::objectCompare (const GALGAS_unifiedTypeMap_2D_entry & inOperand) const {
+typeComparisonResult GALGAS_unifiedTypeMapEntry::objectCompare (const GALGAS_unifiedTypeMapEntry & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
     if (mEnum < inOperand.mEnum) {
@@ -2543,42 +2543,42 @@ typeComparisonResult GALGAS_unifiedTypeMap_2D_entry::objectCompare (const GALGAS
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@unifiedTypeMap-entry type
+//@unifiedTypeMapEntry type
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_unifiedTypeMap_2D_entry ("unifiedTypeMap-entry",
-                                                NULL) ;
+kTypeDescriptor_GALGAS_unifiedTypeMapEntry ("unifiedTypeMapEntry",
+                                            NULL) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_unifiedTypeMap_2D_entry::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_unifiedTypeMap_2D_entry ;
+const C_galgas_type_descriptor * GALGAS_unifiedTypeMapEntry::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_unifiedTypeMapEntry ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_unifiedTypeMap_2D_entry::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_unifiedTypeMapEntry::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_unifiedTypeMap_2D_entry (*this)) ;
+    macroMyNew (result, GALGAS_unifiedTypeMapEntry (*this)) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_unifiedTypeMap_2D_entry::extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMap_2D_entry result ;
-  const GALGAS_unifiedTypeMap_2D_entry * p = (const GALGAS_unifiedTypeMap_2D_entry *) inObject.embeddedObject () ;
+GALGAS_unifiedTypeMapEntry GALGAS_unifiedTypeMapEntry::extractObject (const GALGAS_object & inObject,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_unifiedTypeMapEntry result ;
+  const GALGAS_unifiedTypeMapEntry * p = (const GALGAS_unifiedTypeMapEntry *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_unifiedTypeMap_2D_entry *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_unifiedTypeMapEntry *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("unifiedTypeMap-entry", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("unifiedTypeMapEntry", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -2618,28 +2618,28 @@ GALGAS_predefinedTypes::~ GALGAS_predefinedTypes (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_predefinedTypes::GALGAS_predefinedTypes (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand1,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand2,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand3,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand4,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand5,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand6,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand7,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand8,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand9,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand10,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand11,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand12,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand13,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand14,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand15,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand16,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand17,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand18,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand19,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand20,
-                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand21) :
+GALGAS_predefinedTypes::GALGAS_predefinedTypes (const GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                const GALGAS_unifiedTypeMapEntry & inOperand1,
+                                                const GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                const GALGAS_unifiedTypeMapEntry & inOperand3,
+                                                const GALGAS_unifiedTypeMapEntry & inOperand4,
+                                                const GALGAS_unifiedTypeMapEntry & inOperand5,
+                                                const GALGAS_unifiedTypeMapEntry & inOperand6,
+                                                const GALGAS_unifiedTypeMapEntry & inOperand7,
+                                                const GALGAS_unifiedTypeMapEntry & inOperand8,
+                                                const GALGAS_unifiedTypeMapEntry & inOperand9,
+                                                const GALGAS_unifiedTypeMapEntry & inOperand10,
+                                                const GALGAS_unifiedTypeMapEntry & inOperand11,
+                                                const GALGAS_unifiedTypeMapEntry & inOperand12,
+                                                const GALGAS_unifiedTypeMapEntry & inOperand13,
+                                                const GALGAS_unifiedTypeMapEntry & inOperand14,
+                                                const GALGAS_unifiedTypeMapEntry & inOperand15,
+                                                const GALGAS_unifiedTypeMapEntry & inOperand16,
+                                                const GALGAS_unifiedTypeMapEntry & inOperand17,
+                                                const GALGAS_unifiedTypeMapEntry & inOperand18,
+                                                const GALGAS_unifiedTypeMapEntry & inOperand19,
+                                                const GALGAS_unifiedTypeMapEntry & inOperand20,
+                                                const GALGAS_unifiedTypeMapEntry & inOperand21) :
 mProperty_mLocationType (inOperand0),
 mProperty_mBoolType (inOperand1),
 mProperty_mCharType (inOperand2),
@@ -2666,28 +2666,28 @@ mProperty_mLStringListType (inOperand21) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_predefinedTypes GALGAS_predefinedTypes::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand1,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand2,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand3,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand4,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand5,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand6,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand7,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand8,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand9,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand10,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand11,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand12,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand13,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand14,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand15,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand16,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand17,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand18,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand19,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand20,
-                                                                const GALGAS_unifiedTypeMap_2D_entry & inOperand21 
+GALGAS_predefinedTypes GALGAS_predefinedTypes::constructor_new (const GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand1,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand3,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand4,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand5,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand6,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand7,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand8,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand9,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand10,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand11,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand12,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand13,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand14,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand15,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand16,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand17,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand18,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand19,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand20,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand21 
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_predefinedTypes result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid () && inOperand13.isValid () && inOperand14.isValid () && inOperand15.isValid () && inOperand16.isValid () && inOperand17.isValid () && inOperand18.isValid () && inOperand19.isValid () && inOperand20.isValid () && inOperand21.isValid ()) {
@@ -5762,7 +5762,7 @@ class cCollectionElement_extractedAssociatedValuesForGeneration : public cCollec
   public: GALGAS_extractedAssociatedValuesForGeneration_2D_element mObject ;
 
 //--- Constructors
-  public: cCollectionElement_extractedAssociatedValuesForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mType,
+  public: cCollectionElement_extractedAssociatedValuesForGeneration (const GALGAS_unifiedTypeMapEntry & in_mType,
                                                                      const GALGAS_string & in_mCppName,
                                                                      const GALGAS_uint & in_mIndex
                                                                      COMMA_LOCATION_ARGS) ;
@@ -5783,7 +5783,7 @@ class cCollectionElement_extractedAssociatedValuesForGeneration : public cCollec
 
 //----------------------------------------------------------------------------------------------------------------------
 
-cCollectionElement_extractedAssociatedValuesForGeneration::cCollectionElement_extractedAssociatedValuesForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mType,
+cCollectionElement_extractedAssociatedValuesForGeneration::cCollectionElement_extractedAssociatedValuesForGeneration (const GALGAS_unifiedTypeMapEntry & in_mType,
                                                                                                                       const GALGAS_string & in_mCppName,
                                                                                                                       const GALGAS_uint & in_mIndex
                                                                                                                       COMMA_LOCATION_ARGS) :
@@ -5857,7 +5857,7 @@ GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesFo
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesForGeneration::constructor_listWithValue (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesForGeneration::constructor_listWithValue (const GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                                                                         const GALGAS_string & inOperand1,
                                                                                                                         const GALGAS_uint & inOperand2
                                                                                                                         COMMA_LOCATION_ARGS) {
@@ -5874,7 +5874,7 @@ GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesFo
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_extractedAssociatedValuesForGeneration::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                                               const GALGAS_unifiedTypeMap_2D_entry & in_mType,
+                                                                               const GALGAS_unifiedTypeMapEntry & in_mType,
                                                                                const GALGAS_string & in_mCppName,
                                                                                const GALGAS_uint & in_mIndex
                                                                                COMMA_LOCATION_ARGS) {
@@ -5888,7 +5888,7 @@ void GALGAS_extractedAssociatedValuesForGeneration::makeAttributesFromObjects (c
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extractedAssociatedValuesForGeneration::addAssign_operation (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+void GALGAS_extractedAssociatedValuesForGeneration::addAssign_operation (const GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                          const GALGAS_string & inOperand1,
                                                                          const GALGAS_uint & inOperand2
                                                                          COMMA_LOCATION_ARGS) {
@@ -5927,7 +5927,7 @@ void GALGAS_extractedAssociatedValuesForGeneration::setter_append (GALGAS_extrac
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extractedAssociatedValuesForGeneration::setter_insertAtIndex (const GALGAS_unifiedTypeMap_2D_entry inOperand0,
+void GALGAS_extractedAssociatedValuesForGeneration::setter_insertAtIndex (const GALGAS_unifiedTypeMapEntry inOperand0,
                                                                           const GALGAS_string inOperand1,
                                                                           const GALGAS_uint inOperand2,
                                                                           const GALGAS_uint inInsertionIndex,
@@ -5949,7 +5949,7 @@ void GALGAS_extractedAssociatedValuesForGeneration::setter_insertAtIndex (const 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extractedAssociatedValuesForGeneration::setter_removeAtIndex (GALGAS_unifiedTypeMap_2D_entry & outOperand0,
+void GALGAS_extractedAssociatedValuesForGeneration::setter_removeAtIndex (GALGAS_unifiedTypeMapEntry & outOperand0,
                                                                           GALGAS_string & outOperand1,
                                                                           GALGAS_uint & outOperand2,
                                                                           const GALGAS_uint inRemoveIndex,
@@ -5986,7 +5986,7 @@ void GALGAS_extractedAssociatedValuesForGeneration::setter_removeAtIndex (GALGAS
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extractedAssociatedValuesForGeneration::setter_popFirst (GALGAS_unifiedTypeMap_2D_entry & outOperand0,
+void GALGAS_extractedAssociatedValuesForGeneration::setter_popFirst (GALGAS_unifiedTypeMapEntry & outOperand0,
                                                                      GALGAS_string & outOperand1,
                                                                      GALGAS_uint & outOperand2,
                                                                      C_Compiler * inCompiler
@@ -6008,7 +6008,7 @@ void GALGAS_extractedAssociatedValuesForGeneration::setter_popFirst (GALGAS_unif
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extractedAssociatedValuesForGeneration::setter_popLast (GALGAS_unifiedTypeMap_2D_entry & outOperand0,
+void GALGAS_extractedAssociatedValuesForGeneration::setter_popLast (GALGAS_unifiedTypeMapEntry & outOperand0,
                                                                     GALGAS_string & outOperand1,
                                                                     GALGAS_uint & outOperand2,
                                                                     C_Compiler * inCompiler
@@ -6030,7 +6030,7 @@ void GALGAS_extractedAssociatedValuesForGeneration::setter_popLast (GALGAS_unifi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extractedAssociatedValuesForGeneration::method_first (GALGAS_unifiedTypeMap_2D_entry & outOperand0,
+void GALGAS_extractedAssociatedValuesForGeneration::method_first (GALGAS_unifiedTypeMapEntry & outOperand0,
                                                                   GALGAS_string & outOperand1,
                                                                   GALGAS_uint & outOperand2,
                                                                   C_Compiler * inCompiler
@@ -6052,7 +6052,7 @@ void GALGAS_extractedAssociatedValuesForGeneration::method_first (GALGAS_unified
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extractedAssociatedValuesForGeneration::method_last (GALGAS_unifiedTypeMap_2D_entry & outOperand0,
+void GALGAS_extractedAssociatedValuesForGeneration::method_last (GALGAS_unifiedTypeMapEntry & outOperand0,
                                                                  GALGAS_string & outOperand1,
                                                                  GALGAS_uint & outOperand2,
                                                                  C_Compiler * inCompiler
@@ -6125,7 +6125,7 @@ void GALGAS_extractedAssociatedValuesForGeneration::plusAssign_operation (const 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extractedAssociatedValuesForGeneration::setter_setMTypeAtIndex (GALGAS_unifiedTypeMap_2D_entry inOperand,
+void GALGAS_extractedAssociatedValuesForGeneration::setter_setMTypeAtIndex (GALGAS_unifiedTypeMapEntry inOperand,
                                                                             GALGAS_uint inIndex,
                                                                             C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
@@ -6139,12 +6139,12 @@ void GALGAS_extractedAssociatedValuesForGeneration::setter_setMTypeAtIndex (GALG
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_extractedAssociatedValuesForGeneration::getter_mTypeAtIndex (const GALGAS_uint & inIndex,
-                                                                                                   C_Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMapEntry GALGAS_extractedAssociatedValuesForGeneration::getter_mTypeAtIndex (const GALGAS_uint & inIndex,
+                                                                                               C_Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_extractedAssociatedValuesForGeneration * p = (cCollectionElement_extractedAssociatedValuesForGeneration *) attributes.ptr () ;
-  GALGAS_unifiedTypeMap_2D_entry result ;
+  GALGAS_unifiedTypeMapEntry result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
     result = p->mObject.mProperty_mType ;
@@ -6231,7 +6231,7 @@ GALGAS_extractedAssociatedValuesForGeneration_2D_element cEnumerator_extractedAs
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry cEnumerator_extractedAssociatedValuesForGeneration::current_mType (LOCATION_ARGS) const {
+GALGAS_unifiedTypeMapEntry cEnumerator_extractedAssociatedValuesForGeneration::current_mType (LOCATION_ARGS) const {
   const cCollectionElement_extractedAssociatedValuesForGeneration * p = (const cCollectionElement_extractedAssociatedValuesForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
   return p->mObject.mProperty_mType ;

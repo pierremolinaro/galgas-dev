@@ -23,14 +23,8 @@ func %once generateFewHeaderFiles -> @bool {
 
 list @functionSignature {
   public var @lstring mFormalSelector
-  public var @unifiedTypeMap-entry mFormalArgumentType
+  public var @unifiedTypeMapEntry mFormalArgumentType
   public var @string mFormalArgumentName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-list @unifiedTypeMap-entryList {
-  public var @unifiedTypeMap-entry mType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -42,7 +36,7 @@ list @unifiedTypeMap-entryList {
 map @constructorMap {
   public var @functionSignature mArgumentTypeList
   public var @bool mHasCompilerArgument
-  public var @unifiedTypeMap-entry mReturnedType
+  public var @unifiedTypeMapEntry mReturnedType
   insert or replace
   insert insertKey error message "the '%K' constructor has been already defined"
   search searchKey error message "the '%K' constuctor is not declared"
@@ -75,7 +69,7 @@ enum @methodKind {
 list @optionalMethodSignature {
   public var @bool mInputArgument # true -> input, false -> output
   public var @lstring mFormalSelector
-  public var @unifiedTypeMap-entry mFormalArgumentType
+  public var @unifiedTypeMapEntry mFormalArgumentType
   public var @string mFormalArgumentName
 }
 
@@ -99,7 +93,7 @@ map @getterMap {
   public var @functionSignature mArgumentTypeList
   public var @location mDeclarationLocation
   public var @bool mHasCompilerArgument
-  public var @unifiedTypeMap-entry mReturnedType
+  public var @unifiedTypeMapEntry mReturnedType
   public var @methodQualifier mQualifier
   public var @string mErrorMessage # If not empty, calling the method raises an error with this message
  
@@ -117,7 +111,7 @@ map @getterMap {
 
 list @formalParameterSignature {
   public var @lstring mFormalSelector
-  public var @unifiedTypeMap-entry mFormalArgumentType
+  public var @unifiedTypeMapEntry mFormalArgumentType
   public var @formalArgumentPassingModeAST mFormalArgumentPassingMode
   public var @string mFormalArgumentName
 }
@@ -182,7 +176,7 @@ map @classMethodMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @enumerationDescriptorList {
-  public var @unifiedTypeMap-entry mEnumeratedType
+  public var @unifiedTypeMapEntry mEnumeratedType
   public var @string mEnumerationName
 }
 
@@ -193,7 +187,7 @@ list @enumerationDescriptorList {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @typedPropertyList {
-  public var @unifiedTypeMap-entry mPropertyTypeEntry
+  public var @unifiedTypeMapEntry mPropertyTypeEntry
   public var @lstring mPropertyName
   public var @bool mHasSetter
   public var @bool mHasSelector
@@ -235,7 +229,7 @@ enum @predefinedTypeKindEnum {
 
 enum @typeKindEnum {
   case classType (@bool isReference)
-  case weakReferenceType (@unifiedTypeMap-entry referenceType)
+  case weakReferenceType (@unifiedTypeMapEntry referenceType)
   case enumType 
   case listType 
   case sortedListType 
@@ -326,7 +320,7 @@ boolset @operators {
 map @propertyMap {
   public var @bool mIsPublic
   public var @bool mIsConstant
-  public var @unifiedTypeMap-entry mPropertyType
+  public var @unifiedTypeMapEntry mPropertyType
   insert insertKey error message "the '%K' property has been already declared in %L"
   search searchKey error message "the '%K' property is not declared"
 }
@@ -341,7 +335,7 @@ enum @headerKind {
 
 map @constantIndexMap {
   public var @uint mIndex
-  public var @unifiedTypeMap-entryList mAssociatedTypeList
+  public var @unifiedTypeMapEntryList mAssociatedTypeList
   insert insertKey error message "the '%K' constant is already declared"
   search searchKey error message "the '%K' constant is not declared"
 }

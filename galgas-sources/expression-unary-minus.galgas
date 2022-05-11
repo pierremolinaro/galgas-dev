@@ -58,7 +58,7 @@ override method @unaryMinusExpressionAST enterExpressionInSemanticContext
 override method @unaryMinusExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry unused inType
+  ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -67,13 +67,13 @@ override method @unaryMinusExpressionAST analyzeSemanticExpression
   [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration expression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-entry type = expression.mResultType
+  let @unifiedTypeMapEntry type = expression.mResultType
   if let exp = expression as @literalBigIntExpressionForGeneration then
     outExpression = @literalBigIntExpressionForGeneration.new {
       !exp.mResultType

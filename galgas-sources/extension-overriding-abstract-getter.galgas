@@ -126,7 +126,7 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
 #  let nameForUsefulness = getterNameForUsefulEntitiesGraph (!self.mTypeName !mAbstractExtensionGetterReturnedTypeName)
 #  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMap-entry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
+  let @unifiedTypeMapEntry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- Return type
   let returnType = [inSemanticContext.mTypeMap searchKey !self.mAbstractExtensionGetterReturnedTypeName]
 #--- Check type is an abstract class
@@ -137,9 +137,9 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
   end
 #--- Find base type name
   var @string baseTypeName = ""
-  var @unifiedTypeMap-entry superType = [selfType mSuperType]
+  var @unifiedTypeMapEntry superType = [selfType mSuperType]
   var @functionSignature inheritedSignature = {}
-  var @unifiedTypeMap-entry inheritedReturnType = .null{}
+  var @unifiedTypeMapEntry inheritedReturnType = .null{}
   var @location inheritedDeclarationLocation = @location.here
   loop ([inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do

@@ -168,7 +168,7 @@ override method @comparisonExpressionAST enterExpressionInSemanticContext
 override method @comparisonExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry inInferenceType
+  ?inferenceType: let @unifiedTypeMapEntry inInferenceType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -182,7 +182,7 @@ override method @comparisonExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?let @semanticExpressionForGeneration leftExpression
   ]
-  let @unifiedTypeMap-entry leftType = leftExpression.mResultType
+  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName

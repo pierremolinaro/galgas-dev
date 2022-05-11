@@ -115,7 +115,7 @@ override method @filewrapperObjectInstanciationInExpressionAST enterExpressionIn
 override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry unused inType
+  ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -159,7 +159,7 @@ override method @filewrapperTemplateInExpressionAST enterExpressionInSemanticCon
 override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry unused inType
+  ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -231,7 +231,7 @@ override method @filewrapperInExpressionAST enterExpressionInSemanticContext
 override method @filewrapperInExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry unused inType
+  ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression

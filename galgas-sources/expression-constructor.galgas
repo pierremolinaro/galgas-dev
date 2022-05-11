@@ -153,15 +153,15 @@ override method @constructorExpressionAST enterExpressionInSemanticContext
 private proc analyzeConstructorInvocation
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-entry inType
+  ?let @unifiedTypeMapEntry inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager ioVariableMap
   ?let @lstring inTypeName
   ?let @lstring inConstructorName
   ?let @actualOutputExpressionList inInitializerEffectiveParameterExpressions
   ?let @location inLocationForOldStyleCollectionInitializerError
-  !@unifiedTypeMap-entry outReturnedType
-  !@unifiedTypeMap-entry outConstructorType
+  !@unifiedTypeMapEntry outReturnedType
+  !@unifiedTypeMapEntry outConstructorType
   !@semanticExpressionListForGeneration outConstructorEffectiveParameterList
   !@bool outHasCompilerArgument
 {
@@ -236,7 +236,7 @@ private proc analyzeConstructorInvocation
 override method @constructorExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry inType
+  ?inferenceType: let @unifiedTypeMapEntry inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -251,8 +251,8 @@ override method @constructorExpressionAST analyzeSemanticExpression
     !self.mConstructorName
     !self.mExpressions
     !self.locationForOldStyleCollectionInitializerError
-    ?let @unifiedTypeMap-entry returnedType
-    ?let @unifiedTypeMap-entry constructorType
+    ?let @unifiedTypeMapEntry returnedType
+    ?let @unifiedTypeMapEntry constructorType
     ?let @semanticExpressionListForGeneration constructorEffectiveParameterList
     ?let @bool hasCompilerArgument
   )
@@ -286,7 +286,7 @@ override method @defaultConstructorExpressionAST enterExpressionInSemanticContex
 override method @defaultConstructorExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry inType
+  ?inferenceType: let @unifiedTypeMapEntry inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -320,7 +320,7 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @constructorExpressionForGeneration : @semanticExpressionForGeneration {
-  private let @unifiedTypeMap-entry mConstructorType
+  private let @unifiedTypeMapEntry mConstructorType
   private let @string mConstructorName
   private let @semanticExpressionListForGeneration mEffectiveParameterList
   private let @bool mHasCompilerArgument

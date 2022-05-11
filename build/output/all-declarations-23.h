@@ -354,7 +354,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
                                                                                   const class GALGAS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
                                                                                   const class GALGAS_operators & in_SUPPORTED_5F_OPERATORS,
                                                                                   const class GALGAS_functionSignature & in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST,
-                                                                                  const class GALGAS_unifiedTypeMap_2D_entry & in_ENUMERATED_5F_OBJECT_5F_TYPE
+                                                                                  const class GALGAS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -366,7 +366,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_genericTypeImplementation (class C_Compiler * inCompiler,
                                                                                     const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                     const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                    const class GALGAS_unifiedTypeMap_2D_entry & in_SUPER_5F_TYPE_5F_INDEX,
+                                                                                    const class GALGAS_unifiedTypeMapEntry & in_SUPER_5F_TYPE_5F_INDEX,
                                                                                     const class GALGAS_operators & in_SUPPORTED_5F_OPERATORS
                                                                                     COMMA_LOCATION_ARGS) ;
 
@@ -401,9 +401,9 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeHeader_31_ (cl
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplementation (class C_Compiler * inCompiler,
-                                                                                          const class GALGAS_unifiedTypeMap_2D_entry & in_TYPE,
+                                                                                          const class GALGAS_unifiedTypeMapEntry & in_TYPE,
                                                                                           const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                          const class GALGAS_unifiedTypeMap_2D_entry & in_ASSOCIATED_5F_LIST_5F_TYPE,
+                                                                                          const class GALGAS_unifiedTypeMapEntry & in_ASSOCIATED_5F_LIST_5F_TYPE,
                                                                                           const class GALGAS_graphInsertModifierList & in_INSERT_5F_MODIFIER_5F_LIST
                                                                                           COMMA_LOCATION_ARGS) ;
 
@@ -768,7 +768,7 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
 class GALGAS_string function_generateClassGetterDeclaration (const class GALGAS_lstring & constinArgument0,
                                                              const class GALGAS_functionSignature & constinArgument1,
                                                              const class GALGAS_bool & constinArgument2,
-                                                             const class GALGAS_unifiedTypeMap_2D_entry & constinArgument3,
+                                                             const class GALGAS_unifiedTypeMapEntry & constinArgument3,
                                                              const class GALGAS_methodQualifier & constinArgument4,
                                                              class C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;

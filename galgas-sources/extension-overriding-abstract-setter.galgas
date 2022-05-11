@@ -108,7 +108,7 @@ override method @overridingAbstractExtensionSetterAST semanticAnalysis
 #  let nameForUsefulness = setterNameForUsefulEntitiesGraph (!self.mTypeName !mOverridingExtensionSetterName)
 #  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMap-entry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
+  let @unifiedTypeMapEntry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- Check type is an abstract class
   if not [[selfType mTypeKindEnum] isClassType] then
     error self.mOverridingExtensionSetterName: "cannot declare a extension setter: '@" + [selfType key] + "' is not a class"
@@ -117,7 +117,7 @@ override method @overridingAbstractExtensionSetterAST semanticAnalysis
   end
 #--- Find base type name
   var @string baseTypeName = ""
-  var @unifiedTypeMap-entry superType = [selfType mSuperType]
+  var @unifiedTypeMapEntry superType = [selfType mSuperType]
   var inheritedSignature = @formalParameterSignature {}
   let inheritedDeclarationLocation = @location.here
   loop ([inSemanticContext.mTypeMap count] + 1)

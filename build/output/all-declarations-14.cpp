@@ -11903,7 +11903,7 @@ GALGAS_enumConstantListForGeneration_2D_element::~ GALGAS_enumConstantListForGen
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_enumConstantListForGeneration_2D_element::GALGAS_enumConstantListForGeneration_2D_element (const GALGAS_string & inOperand0,
-                                                                                                  const GALGAS_unifiedTypeMap_2D_entryList & inOperand1) :
+                                                                                                  const GALGAS_unifiedTypeMapEntryList & inOperand1) :
 mProperty_mConstantName (inOperand0),
 mProperty_mAssociatedValueTypeList (inOperand1) {
 }
@@ -11912,13 +11912,13 @@ mProperty_mAssociatedValueTypeList (inOperand1) {
 
 GALGAS_enumConstantListForGeneration_2D_element GALGAS_enumConstantListForGeneration_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_enumConstantListForGeneration_2D_element (GALGAS_string::constructor_default (HERE),
-                                                          GALGAS_unifiedTypeMap_2D_entryList::constructor_emptyList (HERE)) ;
+                                                          GALGAS_unifiedTypeMapEntryList::constructor_emptyList (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_enumConstantListForGeneration_2D_element GALGAS_enumConstantListForGeneration_2D_element::constructor_new (const GALGAS_string & inOperand0,
-                                                                                                                  const GALGAS_unifiedTypeMap_2D_entryList & inOperand1 
+                                                                                                                  const GALGAS_unifiedTypeMapEntryList & inOperand1 
                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_enumConstantListForGeneration_2D_element result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
@@ -12138,7 +12138,7 @@ GALGAS_sortDescriptorListForGeneration_2D_element::~ GALGAS_sortDescriptorListFo
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_sortDescriptorListForGeneration_2D_element::GALGAS_sortDescriptorListForGeneration_2D_element (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+GALGAS_sortDescriptorListForGeneration_2D_element::GALGAS_sortDescriptorListForGeneration_2D_element (const GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                                                       const GALGAS_string & inOperand1,
                                                                                                       const GALGAS_bool & inOperand2) :
 mProperty_mAttributeTypeIndex (inOperand0),
@@ -12148,7 +12148,7 @@ mProperty_mAscendingOrder (inOperand2) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_sortDescriptorListForGeneration_2D_element GALGAS_sortDescriptorListForGeneration_2D_element::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+GALGAS_sortDescriptorListForGeneration_2D_element GALGAS_sortDescriptorListForGeneration_2D_element::constructor_new (const GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                                                                       const GALGAS_string & inOperand1,
                                                                                                                       const GALGAS_bool & inOperand2 
                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
@@ -13044,112 +13044,6 @@ GALGAS_prologueEpilogueList_2D_element GALGAS_prologueEpilogueList_2D_element::e
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entryList_2D_element::GALGAS_unifiedTypeMap_2D_entryList_2D_element (void) :
-mProperty_mType () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_unifiedTypeMap_2D_entryList_2D_element::~ GALGAS_unifiedTypeMap_2D_entryList_2D_element (void) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_unifiedTypeMap_2D_entryList_2D_element::GALGAS_unifiedTypeMap_2D_entryList_2D_element (const GALGAS_unifiedTypeMap_2D_entry & inOperand0) :
-mProperty_mType (inOperand0) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_unifiedTypeMap_2D_entryList_2D_element GALGAS_unifiedTypeMap_2D_entryList_2D_element::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inOperand0 
-                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMap_2D_entryList_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_unifiedTypeMap_2D_entryList_2D_element (inOperand0) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_unifiedTypeMap_2D_entryList_2D_element::objectCompare (const GALGAS_unifiedTypeMap_2D_entryList_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mProperty_mType.objectCompare (inOperand.mProperty_mType) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_unifiedTypeMap_2D_entryList_2D_element::isValid (void) const {
-  return mProperty_mType.isValid () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_unifiedTypeMap_2D_entryList_2D_element::drop (void) {
-  mProperty_mType.drop () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_unifiedTypeMap_2D_entryList_2D_element::description (C_String & ioString,
-                                                                 const int32_t inIndentation) const {
-  ioString << "<struct @unifiedTypeMap-entryList-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mProperty_mType.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@unifiedTypeMap-entryList-element type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_unifiedTypeMap_2D_entryList_2D_element ("unifiedTypeMap-entryList-element",
-                                                               NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_unifiedTypeMap_2D_entryList_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_unifiedTypeMap_2D_entryList_2D_element ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_unifiedTypeMap_2D_entryList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_unifiedTypeMap_2D_entryList_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_unifiedTypeMap_2D_entryList_2D_element GALGAS_unifiedTypeMap_2D_entryList_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                            C_Compiler * inCompiler
-                                                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMap_2D_entryList_2D_element result ;
-  const GALGAS_unifiedTypeMap_2D_entryList_2D_element * p = (const GALGAS_unifiedTypeMap_2D_entryList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_unifiedTypeMap_2D_entryList_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("unifiedTypeMap-entryList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_enumerationDescriptorList_2D_element::GALGAS_enumerationDescriptorList_2D_element (void) :
 mProperty_mEnumeratedType (),
 mProperty_mEnumerationName () {
@@ -13162,7 +13056,7 @@ GALGAS_enumerationDescriptorList_2D_element::~ GALGAS_enumerationDescriptorList_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_enumerationDescriptorList_2D_element::GALGAS_enumerationDescriptorList_2D_element (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+GALGAS_enumerationDescriptorList_2D_element::GALGAS_enumerationDescriptorList_2D_element (const GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                                           const GALGAS_string & inOperand1) :
 mProperty_mEnumeratedType (inOperand0),
 mProperty_mEnumerationName (inOperand1) {
@@ -13170,7 +13064,7 @@ mProperty_mEnumerationName (inOperand1) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_enumerationDescriptorList_2D_element GALGAS_enumerationDescriptorList_2D_element::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+GALGAS_enumerationDescriptorList_2D_element GALGAS_enumerationDescriptorList_2D_element::constructor_new (const GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                                                           const GALGAS_string & inOperand1 
                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_enumerationDescriptorList_2D_element result ;

@@ -52,7 +52,7 @@ list @templateInstructionListForGeneration {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @semanticExpressionForGeneration {
-  public var @unifiedTypeMap-entry mResultType
+  public var @unifiedTypeMapEntry mResultType
   public var @location mLocation
 }
 
@@ -76,7 +76,7 @@ list @semanticExpressionListForGeneration {
 refclass @castInExpressionForGeneration : @semanticExpressionForGeneration {
   public var @semanticExpressionForGeneration mReceiverExpression
   public var @string mTypeName
-  public var @unifiedTypeMap-entry mCastType
+  public var @unifiedTypeMapEntry mCastType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -88,7 +88,7 @@ refclass @castInExpressionForGeneration : @semanticExpressionForGeneration {
 list @formalParameterListForGeneration {
   public var @lstring mFormalSelector
   public var @formalArgumentPassingModeAST mFormalArgumentPassingMode
-  public var @unifiedTypeMap-entry mFormalArgumentType
+  public var @unifiedTypeMapEntry mFormalArgumentType
   public var @lstring mFormalArgumentName
   public var @string mFormalArgumentCppName
 }
@@ -101,7 +101,7 @@ list @formalParameterListForGeneration {
 
 list @formalInputParameterListForGeneration {
   public var @lstring mFormalSelector
-  public var @unifiedTypeMap-entry mFormalArgumentType
+  public var @unifiedTypeMapEntry mFormalArgumentType
   public var @string mFormalArgumentCppName
   public var @lstring mFormalArgumentName
   public var @bool mIsConstant
@@ -114,7 +114,7 @@ list @formalInputParameterListForGeneration {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @actualParameterForGeneration {
-  public var @unifiedTypeMap-entry mFormalArgumentType
+  public var @unifiedTypeMapEntry mFormalArgumentType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -139,7 +139,7 @@ refclass @outputActualParameterForGeneration : @actualParameterForGeneration {
 refclass @outputInputActualParameterForGeneration : @actualParameterForGeneration {
   public var @string mOutputInputVariableCppName
   public var @lstringlist mStructAttributeList
-  public var @unifiedTypeMap-entryList mTypeList
+  public var @unifiedTypeMapEntryList mTypeList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -239,7 +239,7 @@ list @semanticDeclarationListForGeneration {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @semanticTypeForGeneration : @semanticDeclarationForGeneration {
-  public var @unifiedTypeMap-entry mSelfTypeEntry
+  public var @unifiedTypeMapEntry mSelfTypeEntry
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -405,7 +405,7 @@ refclass @routineImplementationForGeneration : @routinePrototypeDeclarationForGe
 refclass @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public var @string mFunctionName
   public var @formalInputParameterListForGeneration mFormalArgumentList
-  public var @unifiedTypeMap-entry mReturnType
+  public var @unifiedTypeMapEntry mReturnType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -427,7 +427,7 @@ refclass @functionImplementationForGeneration : @functionPrototypeDeclarationFor
 
 refclass @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public var @string mFunctionName
-  public var @unifiedTypeMap-entry mReturnType
+  public var @unifiedTypeMapEntry mReturnType
   public var @string mResultVariableCppName
   public var @semanticInstructionListForGeneration mFunctionInstructionList
 }

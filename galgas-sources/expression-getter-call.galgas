@@ -88,7 +88,7 @@ override method @getterCallExpressionAST enterExpressionInSemanticContext
 override method @getterCallExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry unused inType
+  ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -97,12 +97,12 @@ override method @getterCallExpressionAST analyzeSemanticExpression
   [self.mReceiver analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration receiverExpression
   ]
-  let @unifiedTypeMap-entry receiverType = receiverExpression.mResultType
+  let @unifiedTypeMapEntry receiverType = receiverExpression.mResultType
 #--------------------------------------- Search getter
   if let [[receiverType mGetterMap] searchKey
       !self.mGetterName.string
@@ -110,7 +110,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       ?let getterFormalArgumentTypeList
       ?*
       ?let @bool hasCompilerArgument
-      ?let @unifiedTypeMap-entry returnedType
+      ?let @unifiedTypeMapEntry returnedType
       ?*
       ?let @string getterErrorMessage] then
     if getterErrorMessage != "" then
@@ -176,7 +176,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
     if [receiverType mTypeKindEnum] == @typeKindEnum.structType then
       var @functionSignature getterFormalArgumentTypeList = {}
       var hasCompilerArgument = true
-      var returnedType = @unifiedTypeMap-entry.null
+      var returnedType = @unifiedTypeMapEntry.null
       var kind = @methodKind.definedAsExtension
       let @stringlist fieldList = {}
       for (propertyTypeEntry propertyName * *) in [receiverType mCurrentTypedPropertyList] do
@@ -312,7 +312,7 @@ override method @getterCallExpressionForGeneration generateExpression
 #--- Generate Reader call
   switch self.mKind
   case definedAsExtension :
-    var @unifiedTypeMap-entry baseType = self.mReceiverExpression.mResultType
+    var @unifiedTypeMapEntry baseType = self.mReceiverExpression.mResultType
    [baseType addHeaderFileName !?ioInclusionSet]
     var @bool searching = true
     loop (@uint.max) while searching do

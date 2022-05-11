@@ -22,7 +22,7 @@ class GALGAS_overridingExtensionMethodForGeneration : public GALGAS_semanticDecl
   public: GALGAS_overridingExtensionMethodForGeneration (const class cPtr_overridingExtensionMethodForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReceiverType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
 
   public: class GALGAS_string readProperty_mBaseTypeName (void) const ;
 
@@ -47,7 +47,7 @@ class GALGAS_overridingExtensionMethodForGeneration : public GALGAS_semanticDecl
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_overridingExtensionMethodForGeneration constructor_new (const class GALGAS_bool & inOperand0,
                                                                                       const class GALGAS_string & inOperand1,
-                                                                                      const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+                                                                                      const class GALGAS_unifiedTypeMapEntry & inOperand2,
                                                                                       const class GALGAS_string & inOperand3,
                                                                                       const class GALGAS_string & inOperand4,
                                                                                       const class GALGAS_formalParameterListForGeneration & inOperand5,
@@ -88,7 +88,7 @@ class cPtr_overridingExtensionMethodForGeneration : public cPtr_semanticDeclarat
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
   public: GALGAS_string mProperty_mBaseTypeName ;
   public: GALGAS_string mProperty_mExtensionMethodName ;
   public: GALGAS_formalParameterListForGeneration mProperty_mExtensionMethodFormalParameterList ;
@@ -98,7 +98,7 @@ class cPtr_overridingExtensionMethodForGeneration : public cPtr_semanticDeclarat
 //--- Constructor
   public: cPtr_overridingExtensionMethodForGeneration (const GALGAS_bool & in_mHasHeader,
                                                        const GALGAS_string & in_mImplementationCppFileName,
-                                                       const GALGAS_unifiedTypeMap_2D_entry & in_mReceiverType,
+                                                       const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
                                                        const GALGAS_string & in_mBaseTypeName,
                                                        const GALGAS_string & in_mExtensionMethodName,
                                                        const GALGAS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
@@ -190,7 +190,7 @@ class GALGAS_overridingExtensionSetterForGeneration : public GALGAS_semanticDecl
   public: GALGAS_overridingExtensionSetterForGeneration (const class cPtr_overridingExtensionSetterForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReceiverType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
 
   public: class GALGAS_string readProperty_mBaseTypeName (void) const ;
 
@@ -215,7 +215,7 @@ class GALGAS_overridingExtensionSetterForGeneration : public GALGAS_semanticDecl
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_overridingExtensionSetterForGeneration constructor_new (const class GALGAS_bool & inOperand0,
                                                                                       const class GALGAS_string & inOperand1,
-                                                                                      const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+                                                                                      const class GALGAS_unifiedTypeMapEntry & inOperand2,
                                                                                       const class GALGAS_string & inOperand3,
                                                                                       const class GALGAS_string & inOperand4,
                                                                                       const class GALGAS_formalParameterListForGeneration & inOperand5,
@@ -256,7 +256,7 @@ class cPtr_overridingExtensionSetterForGeneration : public cPtr_semanticDeclarat
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
   public: GALGAS_string mProperty_mBaseTypeName ;
   public: GALGAS_string mProperty_mExtensionSetterName ;
   public: GALGAS_formalParameterListForGeneration mProperty_mExtensionSetterFormalParameterList ;
@@ -266,7 +266,7 @@ class cPtr_overridingExtensionSetterForGeneration : public cPtr_semanticDeclarat
 //--- Constructor
   public: cPtr_overridingExtensionSetterForGeneration (const GALGAS_bool & in_mHasHeader,
                                                        const GALGAS_string & in_mImplementationCppFileName,
-                                                       const GALGAS_unifiedTypeMap_2D_entry & in_mReceiverType,
+                                                       const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
                                                        const GALGAS_string & in_mBaseTypeName,
                                                        const GALGAS_string & in_mExtensionSetterName,
                                                        const GALGAS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
@@ -1074,7 +1074,7 @@ class GALGAS_functionPrototypeDeclarationForGeneration : public GALGAS_semanticD
 
   public: class GALGAS_formalInputParameterListForGeneration readProperty_mFormalArgumentList (void) const ;
 
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReturnType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mReturnType (void) const ;
 
 //-- Start of generic part --*
 
@@ -1091,7 +1091,7 @@ class GALGAS_functionPrototypeDeclarationForGeneration : public GALGAS_semanticD
                                                                                          const class GALGAS_string & inOperand1,
                                                                                          const class GALGAS_string & inOperand2,
                                                                                          const class GALGAS_formalInputParameterListForGeneration & inOperand3,
-                                                                                         const class GALGAS_unifiedTypeMap_2D_entry & inOperand4
+                                                                                         const class GALGAS_unifiedTypeMapEntry & inOperand4
                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1104,7 +1104,7 @@ class GALGAS_functionPrototypeDeclarationForGeneration : public GALGAS_semanticD
   public: VIRTUAL_IN_DEBUG void setter_setMFunctionName (class GALGAS_string inArgument0
                                                          COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMReturnType (class GALGAS_unifiedTypeMap_2D_entry inArgument0
+  public: VIRTUAL_IN_DEBUG void setter_setMReturnType (class GALGAS_unifiedTypeMapEntry inArgument0
                                                        COMMA_LOCATION_ARGS) ;
 
 
@@ -1138,14 +1138,14 @@ class cPtr_functionPrototypeDeclarationForGeneration : public cPtr_semanticDecla
 //--- Properties
   public: GALGAS_string mProperty_mFunctionName ;
   public: GALGAS_formalInputParameterListForGeneration mProperty_mFormalArgumentList ;
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReturnType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mReturnType ;
 
 //--- Constructor
   public: cPtr_functionPrototypeDeclarationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                           const GALGAS_string & in_mImplementationCppFileName,
                                                           const GALGAS_string & in_mFunctionName,
                                                           const GALGAS_formalInputParameterListForGeneration & in_mFormalArgumentList,
-                                                          const GALGAS_unifiedTypeMap_2D_entry & in_mReturnType
+                                                          const GALGAS_unifiedTypeMapEntry & in_mReturnType
                                                           COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -1251,7 +1251,7 @@ class GALGAS_functionImplementationForGeneration : public GALGAS_functionPrototy
                                                                                    const class GALGAS_string & inOperand1,
                                                                                    const class GALGAS_string & inOperand2,
                                                                                    const class GALGAS_formalInputParameterListForGeneration & inOperand3,
-                                                                                   const class GALGAS_unifiedTypeMap_2D_entry & inOperand4,
+                                                                                   const class GALGAS_unifiedTypeMapEntry & inOperand4,
                                                                                    const class GALGAS_string & inOperand5,
                                                                                    const class GALGAS_semanticInstructionListForGeneration & inOperand6
                                                                                    COMMA_LOCATION_ARGS) ;
@@ -1303,7 +1303,7 @@ class cPtr_functionImplementationForGeneration : public cPtr_functionPrototypeDe
                                                     const GALGAS_string & in_mImplementationCppFileName,
                                                     const GALGAS_string & in_mFunctionName,
                                                     const GALGAS_formalInputParameterListForGeneration & in_mFormalArgumentList,
-                                                    const GALGAS_unifiedTypeMap_2D_entry & in_mReturnType,
+                                                    const GALGAS_unifiedTypeMapEntry & in_mReturnType,
                                                     const GALGAS_string & in_mResultVariableCppName,
                                                     const GALGAS_semanticInstructionListForGeneration & in_mFunctionInstructionList
                                                     COMMA_LOCATION_ARGS) ;
@@ -1394,7 +1394,7 @@ class GALGAS_onceFunctionDeclarationForGeneration : public GALGAS_semanticDeclar
 //--------------------------------- Property read access
   public: class GALGAS_string readProperty_mFunctionName (void) const ;
 
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReturnType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mReturnType (void) const ;
 
   public: class GALGAS_string readProperty_mResultVariableCppName (void) const ;
 
@@ -1414,7 +1414,7 @@ class GALGAS_onceFunctionDeclarationForGeneration : public GALGAS_semanticDeclar
   public: static class GALGAS_onceFunctionDeclarationForGeneration constructor_new (const class GALGAS_bool & inOperand0,
                                                                                     const class GALGAS_string & inOperand1,
                                                                                     const class GALGAS_string & inOperand2,
-                                                                                    const class GALGAS_unifiedTypeMap_2D_entry & inOperand3,
+                                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand3,
                                                                                     const class GALGAS_string & inOperand4,
                                                                                     const class GALGAS_semanticInstructionListForGeneration & inOperand5
                                                                                     COMMA_LOCATION_ARGS) ;
@@ -1432,7 +1432,7 @@ class GALGAS_onceFunctionDeclarationForGeneration : public GALGAS_semanticDeclar
   public: VIRTUAL_IN_DEBUG void setter_setMResultVariableCppName (class GALGAS_string inArgument0
                                                                   COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMReturnType (class GALGAS_unifiedTypeMap_2D_entry inArgument0
+  public: VIRTUAL_IN_DEBUG void setter_setMReturnType (class GALGAS_unifiedTypeMapEntry inArgument0
                                                        COMMA_LOCATION_ARGS) ;
 
 
@@ -1465,7 +1465,7 @@ class cPtr_onceFunctionDeclarationForGeneration : public cPtr_semanticDeclaratio
 
 //--- Properties
   public: GALGAS_string mProperty_mFunctionName ;
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReturnType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mReturnType ;
   public: GALGAS_string mProperty_mResultVariableCppName ;
   public: GALGAS_semanticInstructionListForGeneration mProperty_mFunctionInstructionList ;
 
@@ -1473,7 +1473,7 @@ class cPtr_onceFunctionDeclarationForGeneration : public cPtr_semanticDeclaratio
   public: cPtr_onceFunctionDeclarationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                      const GALGAS_string & in_mImplementationCppFileName,
                                                      const GALGAS_string & in_mFunctionName,
-                                                     const GALGAS_unifiedTypeMap_2D_entry & in_mReturnType,
+                                                     const GALGAS_unifiedTypeMapEntry & in_mReturnType,
                                                      const GALGAS_string & in_mResultVariableCppName,
                                                      const GALGAS_semanticInstructionListForGeneration & in_mFunctionInstructionList
                                                      COMMA_LOCATION_ARGS) ;
@@ -1577,7 +1577,7 @@ class GALGAS_primitiveTypeForGeneration : public GALGAS_semanticTypeForGeneratio
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_primitiveTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+  public: static class GALGAS_primitiveTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                           const class GALGAS_string & inOperand1,
                                                                           const class GALGAS_predefinedTypeKindEnum & inOperand2
                                                                           COMMA_LOCATION_ARGS) ;
@@ -1625,7 +1625,7 @@ class cPtr_primitiveTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: GALGAS_predefinedTypeKindEnum mProperty_mKind ;
 
 //--- Constructor
-  public: cPtr_primitiveTypeForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
+  public: cPtr_primitiveTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                            const GALGAS_string & in_mPredefinedTypeName,
                                            const GALGAS_predefinedTypeKindEnum & in_mKind
                                            COMMA_LOCATION_ARGS) ;
@@ -2078,7 +2078,7 @@ void callExtensionMethod_analyzeGrammarInstructionSDT (const class cPtr_abstract
 void extensionSetter_insertInitializedLocalVariable (class GALGAS_localVarManager & ioObject,
                                                      const class GALGAS_lstring constin_inVarName,
                                                      const class GALGAS_bool constin_inWarnsIfNotMutated,
-                                                     const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
+                                                     const class GALGAS_unifiedTypeMapEntry constin_inType,
                                                      const class GALGAS_string constin_inCppName,
                                                      const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
                                                      class C_Compiler * inCompiler
@@ -2092,7 +2092,7 @@ void extensionSetter_insertInitializedLocalVariable (class GALGAS_localVarManage
 
 void extensionSetter_insertUsedLocalConstant (class GALGAS_localVarManager & ioObject,
                                               const class GALGAS_lstring constin_inVarName,
-                                              const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
+                                              const class GALGAS_unifiedTypeMapEntry constin_inType,
                                               const class GALGAS_string constin_inCppName,
                                               const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
                                               class C_Compiler * inCompiler
@@ -2106,7 +2106,7 @@ void extensionSetter_insertUsedLocalConstant (class GALGAS_localVarManager & ioO
 
 void extensionSetter_insertInitializedLocalConstant (class GALGAS_localVarManager & ioObject,
                                                      const class GALGAS_lstring constin_inVarName,
-                                                     const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
+                                                     const class GALGAS_unifiedTypeMapEntry constin_inType,
                                                      const class GALGAS_string constin_inCppName,
                                                      const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
                                                      class C_Compiler * inCompiler
@@ -2120,7 +2120,7 @@ void extensionSetter_insertInitializedLocalConstant (class GALGAS_localVarManage
 
 void extensionSetter_insertDeclaredLocalConstant (class GALGAS_localVarManager & ioObject,
                                                   const class GALGAS_lstring constin_inVarName,
-                                                  const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
+                                                  const class GALGAS_unifiedTypeMapEntry constin_inType,
                                                   const class GALGAS_string constin_inCppName,
                                                   const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
                                                   class C_Compiler * inCompiler
@@ -2134,7 +2134,7 @@ void extensionSetter_insertDeclaredLocalConstant (class GALGAS_localVarManager &
 
 void extensionSetter_insertInputFormalArgumentDeclaredAsUnused (class GALGAS_localVarManager & ioObject,
                                                                 const class GALGAS_lstring constin_inVarName,
-                                                                const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
+                                                                const class GALGAS_unifiedTypeMapEntry constin_inType,
                                                                 const class GALGAS_string constin_inCppName,
                                                                 const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
                                                                 class C_Compiler * inCompiler
@@ -2148,7 +2148,7 @@ void extensionSetter_insertInputFormalArgumentDeclaredAsUnused (class GALGAS_loc
 
 void extensionSetter_insertInputFormalArgument (class GALGAS_localVarManager & ioObject,
                                                 const class GALGAS_lstring constin_inVarName,
-                                                const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
+                                                const class GALGAS_unifiedTypeMapEntry constin_inType,
                                                 const class GALGAS_string constin_inCppName,
                                                 const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
                                                 class C_Compiler * inCompiler
@@ -2162,7 +2162,7 @@ void extensionSetter_insertInputFormalArgument (class GALGAS_localVarManager & i
 
 void extensionSetter_insertOutputFormalArgument (class GALGAS_localVarManager & ioObject,
                                                  const class GALGAS_lstring constin_inVarName,
-                                                 const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
+                                                 const class GALGAS_unifiedTypeMapEntry constin_inType,
                                                  const class GALGAS_string constin_inCppName,
                                                  const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
                                                  class C_Compiler * inCompiler
@@ -2176,7 +2176,7 @@ void extensionSetter_insertOutputFormalArgument (class GALGAS_localVarManager & 
 
 void extensionSetter_insertInputOutputFormalArgumentDeclaredAsUnused (class GALGAS_localVarManager & ioObject,
                                                                       const class GALGAS_lstring constin_inVarName,
-                                                                      const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
+                                                                      const class GALGAS_unifiedTypeMapEntry constin_inType,
                                                                       const class GALGAS_string constin_inCppName,
                                                                       const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
                                                                       class C_Compiler * inCompiler
@@ -2190,7 +2190,7 @@ void extensionSetter_insertInputOutputFormalArgumentDeclaredAsUnused (class GALG
 
 void extensionSetter_insertInputOutputFormalArgument (class GALGAS_localVarManager & ioObject,
                                                       const class GALGAS_lstring constin_inVarName,
-                                                      const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
+                                                      const class GALGAS_unifiedTypeMapEntry constin_inType,
                                                       const class GALGAS_string constin_inCppName,
                                                       const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
                                                       class C_Compiler * inCompiler
@@ -2204,7 +2204,7 @@ void extensionSetter_insertInputOutputFormalArgument (class GALGAS_localVarManag
 
 void extensionSetter_insertConstantInputFormalArgumentDeclaredAsUnused (class GALGAS_localVarManager & ioObject,
                                                                         const class GALGAS_lstring constin_inVarName,
-                                                                        const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
+                                                                        const class GALGAS_unifiedTypeMapEntry constin_inType,
                                                                         const class GALGAS_string constin_inCppName,
                                                                         const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
                                                                         class C_Compiler * inCompiler
@@ -2218,7 +2218,7 @@ void extensionSetter_insertConstantInputFormalArgumentDeclaredAsUnused (class GA
 
 void extensionSetter_insertConstantInputFormalArgument (class GALGAS_localVarManager & ioObject,
                                                         const class GALGAS_lstring constin_inVarName,
-                                                        const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
+                                                        const class GALGAS_unifiedTypeMapEntry constin_inType,
                                                         const class GALGAS_string constin_inCppName,
                                                         const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
                                                         class C_Compiler * inCompiler
@@ -2232,7 +2232,7 @@ void extensionSetter_insertConstantInputFormalArgument (class GALGAS_localVarMan
 
 void extensionSetter_insertNonMutableProperty (class GALGAS_localVarManager & ioObject,
                                                const class GALGAS_lstring constin_inVarName,
-                                               const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
+                                               const class GALGAS_unifiedTypeMapEntry constin_inType,
                                                const class GALGAS_string constin_inCppName,
                                                const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
                                                class C_Compiler * inCompiler
@@ -2246,7 +2246,7 @@ void extensionSetter_insertNonMutableProperty (class GALGAS_localVarManager & io
 
 void extensionSetter_insertMutableProperty (class GALGAS_localVarManager & ioObject,
                                             const class GALGAS_lstring constin_inVarName,
-                                            const class GALGAS_unifiedTypeMap_2D_entry constin_inType,
+                                            const class GALGAS_unifiedTypeMapEntry constin_inType,
                                             const class GALGAS_string constin_inCppName,
                                             const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
                                             class C_Compiler * inCompiler
@@ -2312,7 +2312,7 @@ void extensionSetter_closeBranch (class GALGAS_localVarManager & ioObject,
 
 void extensionSetter_neutralAccess (class GALGAS_localVarManager & ioObject,
                                     const class GALGAS_lstring constin_inVarName,
-                                    class GALGAS_unifiedTypeMap_2D_entry & out_outType,
+                                    class GALGAS_unifiedTypeMapEntry & out_outType,
                                     class GALGAS_string & out_outCppName,
                                     class GALGAS_string & out_outNameForCheckingFormalParameterUsing,
                                     class C_Compiler * inCompiler
@@ -2337,7 +2337,7 @@ void extensionSetter_searchForDropAccess (class GALGAS_localVarManager & ioObjec
 
 void extensionSetter_searchForWriteAccess (class GALGAS_localVarManager & ioObject,
                                            const class GALGAS_lstring constin_inVarName,
-                                           class GALGAS_unifiedTypeMap_2D_entry & out_outType,
+                                           class GALGAS_unifiedTypeMapEntry & out_outType,
                                            class GALGAS_string & out_outCppName,
                                            class GALGAS_string & out_outNameForCheckingFormalParameterUsing,
                                            class C_Compiler * inCompiler
@@ -2351,7 +2351,7 @@ void extensionSetter_searchForWriteAccess (class GALGAS_localVarManager & ioObje
 
 void extensionSetter_searchForReadAccess (class GALGAS_localVarManager & ioObject,
                                           const class GALGAS_lstring constin_inVarName,
-                                          class GALGAS_unifiedTypeMap_2D_entry & out_outType,
+                                          class GALGAS_unifiedTypeMapEntry & out_outType,
                                           class GALGAS_string & out_outCppName,
                                           class GALGAS_string & out_outNameForCheckingFormalParameterUsing,
                                           class C_Compiler * inCompiler
@@ -2365,7 +2365,7 @@ void extensionSetter_searchForReadAccess (class GALGAS_localVarManager & ioObjec
 
 void extensionSetter_searchForReadWriteAccess (class GALGAS_localVarManager & ioObject,
                                                const class GALGAS_lstring constin_inVarName,
-                                               class GALGAS_unifiedTypeMap_2D_entry & out_outType,
+                                               class GALGAS_unifiedTypeMapEntry & out_outType,
                                                class GALGAS_string & out_outCppName,
                                                class GALGAS_string & out_outNameForCheckingFormalParameterUsing,
                                                class C_Compiler * inCompiler
@@ -2405,27 +2405,6 @@ class GALGAS_unifiedTypeDefinition callExtensionGetter_definition (const cPtr_un
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension getter '@unifiedTypeMapElementClass lkey'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_lstring (*enterExtensionGetter_unifiedTypeMapElementClass_lkey) (const class cPtr_unifiedTypeMapElementClass * inObject,
-                                                                                      C_Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) ;
- 
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_lkey (const int32_t inClassIndex,
-                                enterExtensionGetter_unifiedTypeMapElementClass_lkey inGetter) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_lstring callExtensionGetter_lkey (const cPtr_unifiedTypeMapElementClass * inObject,
-                                               class C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Extension getter '@unifiedTypeMapElementClass mIsConcrete'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -2451,9 +2430,9 @@ class GALGAS_bool callExtensionGetter_mIsConcrete (const cPtr_unifiedTypeMapElem
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-typedef class GALGAS_unifiedTypeMap_2D_entry (*enterExtensionGetter_unifiedTypeMapElementClass_mSuperType) (const class cPtr_unifiedTypeMapElementClass * inObject,
-                                                                                                            C_Compiler * inCompiler
-                                                                                                            COMMA_LOCATION_ARGS) ;
+typedef class GALGAS_unifiedTypeMapEntry (*enterExtensionGetter_unifiedTypeMapElementClass_mSuperType) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                        C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) ;
  
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2462,9 +2441,9 @@ void enterExtensionGetter_mSuperType (const int32_t inClassIndex,
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_unifiedTypeMap_2D_entry callExtensionGetter_mSuperType (const cPtr_unifiedTypeMapElementClass * inObject,
-                                                                     class C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
+class GALGAS_unifiedTypeMapEntry callExtensionGetter_mSuperType (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                                 class C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -2486,90 +2465,6 @@ void enterExtensionGetter_mTypeKindEnum (const int32_t inClassIndex,
 class GALGAS_typeKindEnum callExtensionGetter_mTypeKindEnum (const cPtr_unifiedTypeMapElementClass * inObject,
                                                              class C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension getter '@unifiedTypeMapElementClass mSupportCollectionValue'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_bool (*enterExtensionGetter_unifiedTypeMapElementClass_mSupportCollectionValue) (const class cPtr_unifiedTypeMapElementClass * inObject,
-                                                                                                      C_Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) ;
- 
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_mSupportCollectionValue (const int32_t inClassIndex,
-                                                   enterExtensionGetter_unifiedTypeMapElementClass_mSupportCollectionValue inGetter) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_bool callExtensionGetter_mSupportCollectionValue (const cPtr_unifiedTypeMapElementClass * inObject,
-                                                               class C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension getter '@unifiedTypeMapElementClass mAllTypedPropertyList'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_typedPropertyList (*enterExtensionGetter_unifiedTypeMapElementClass_mAllTypedPropertyList) (const class cPtr_unifiedTypeMapElementClass * inObject,
-                                                                                                                 C_Compiler * inCompiler
-                                                                                                                 COMMA_LOCATION_ARGS) ;
- 
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_mAllTypedPropertyList (const int32_t inClassIndex,
-                                                 enterExtensionGetter_unifiedTypeMapElementClass_mAllTypedPropertyList inGetter) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_typedPropertyList callExtensionGetter_mAllTypedPropertyList (const cPtr_unifiedTypeMapElementClass * inObject,
-                                                                          class C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension getter '@unifiedTypeMapElementClass mPropertyMap'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_propertyMap (*enterExtensionGetter_unifiedTypeMapElementClass_mPropertyMap) (const class cPtr_unifiedTypeMapElementClass * inObject,
-                                                                                                  C_Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) ;
- 
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_mPropertyMap (const int32_t inClassIndex,
-                                        enterExtensionGetter_unifiedTypeMapElementClass_mPropertyMap inGetter) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_propertyMap callExtensionGetter_mPropertyMap (const cPtr_unifiedTypeMapElementClass * inObject,
-                                                           class C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension getter '@unifiedTypeMapElementClass mCurrentTypedPropertyList'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_typedPropertyList (*enterExtensionGetter_unifiedTypeMapElementClass_mCurrentTypedPropertyList) (const class cPtr_unifiedTypeMapElementClass * inObject,
-                                                                                                                     C_Compiler * inCompiler
-                                                                                                                     COMMA_LOCATION_ARGS) ;
- 
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_mCurrentTypedPropertyList (const int32_t inClassIndex,
-                                                     enterExtensionGetter_unifiedTypeMapElementClass_mCurrentTypedPropertyList inGetter) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_typedPropertyList callExtensionGetter_mCurrentTypedPropertyList (const cPtr_unifiedTypeMapElementClass * inObject,
-                                                                              class C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -2678,27 +2573,6 @@ class GALGAS_classMethodMap callExtensionGetter_mClassMethodMap (const cPtr_unif
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension getter '@unifiedTypeMapElementClass mOptionalMethodMap'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_optionalMethodMap (*enterExtensionGetter_unifiedTypeMapElementClass_mOptionalMethodMap) (const class cPtr_unifiedTypeMapElementClass * inObject,
-                                                                                                              C_Compiler * inCompiler
-                                                                                                              COMMA_LOCATION_ARGS) ;
- 
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_mOptionalMethodMap (const int32_t inClassIndex,
-                                              enterExtensionGetter_unifiedTypeMapElementClass_mOptionalMethodMap inGetter) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_optionalMethodMap callExtensionGetter_mOptionalMethodMap (const cPtr_unifiedTypeMapElementClass * inObject,
-                                                                       class C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Extension getter '@unifiedTypeMapElementClass mEnumerationDescriptor'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -2762,118 +2636,13 @@ class GALGAS_functionSignature callExtensionGetter_mAddAssignOperatorArguments (
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension getter '@unifiedTypeMapElementClass mEnumConstantMap'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_constantIndexMap (*enterExtensionGetter_unifiedTypeMapElementClass_mEnumConstantMap) (const class cPtr_unifiedTypeMapElementClass * inObject,
-                                                                                                           C_Compiler * inCompiler
-                                                                                                           COMMA_LOCATION_ARGS) ;
- 
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_mEnumConstantMap (const int32_t inClassIndex,
-                                            enterExtensionGetter_unifiedTypeMapElementClass_mEnumConstantMap inGetter) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_constantIndexMap callExtensionGetter_mEnumConstantMap (const cPtr_unifiedTypeMapElementClass * inObject,
-                                                                    class C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension getter '@unifiedTypeMapElementClass mEnumConstantList'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_enumConstantList (*enterExtensionGetter_unifiedTypeMapElementClass_mEnumConstantList) (const class cPtr_unifiedTypeMapElementClass * inObject,
-                                                                                                            C_Compiler * inCompiler
-                                                                                                            COMMA_LOCATION_ARGS) ;
- 
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_mEnumConstantList (const int32_t inClassIndex,
-                                             enterExtensionGetter_unifiedTypeMapElementClass_mEnumConstantList inGetter) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_enumConstantList callExtensionGetter_mEnumConstantList (const cPtr_unifiedTypeMapElementClass * inObject,
-                                                                     class C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension getter '@unifiedTypeMapElementClass mMapSearchMethodList'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_mapSearchMethodListAST (*enterExtensionGetter_unifiedTypeMapElementClass_mMapSearchMethodList) (const class cPtr_unifiedTypeMapElementClass * inObject,
-                                                                                                                     C_Compiler * inCompiler
-                                                                                                                     COMMA_LOCATION_ARGS) ;
- 
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_mMapSearchMethodList (const int32_t inClassIndex,
-                                                enterExtensionGetter_unifiedTypeMapElementClass_mMapSearchMethodList inGetter) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_mapSearchMethodListAST callExtensionGetter_mMapSearchMethodList (const cPtr_unifiedTypeMapElementClass * inObject,
-                                                                              class C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension getter '@unifiedTypeMapElementClass mMapEntrySearchConstructorList'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_mapSearchMethodListAST (*enterExtensionGetter_unifiedTypeMapElementClass_mMapEntrySearchConstructorList) (const class cPtr_unifiedTypeMapElementClass * inObject,
-                                                                                                                               C_Compiler * inCompiler
-                                                                                                                               COMMA_LOCATION_ARGS) ;
- 
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_mMapEntrySearchConstructorList (const int32_t inClassIndex,
-                                                          enterExtensionGetter_unifiedTypeMapElementClass_mMapEntrySearchConstructorList inGetter) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_mapSearchMethodListAST callExtensionGetter_mMapEntrySearchConstructorList (const cPtr_unifiedTypeMapElementClass * inObject,
-                                                                                        class C_Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension getter '@unifiedTypeMapElementClass mGenerateHeaderInSeparateFile'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_bool (*enterExtensionGetter_unifiedTypeMapElementClass_mGenerateHeaderInSeparateFile) (const class cPtr_unifiedTypeMapElementClass * inObject,
-                                                                                                            C_Compiler * inCompiler
-                                                                                                            COMMA_LOCATION_ARGS) ;
- 
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_mGenerateHeaderInSeparateFile (const int32_t inClassIndex,
-                                                         enterExtensionGetter_unifiedTypeMapElementClass_mGenerateHeaderInSeparateFile inGetter) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_bool callExtensionGetter_mGenerateHeaderInSeparateFile (const cPtr_unifiedTypeMapElementClass * inObject,
-                                                                     class C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Extension getter '@unifiedTypeMapElementClass mTypeForEnumeratedElement'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-typedef class GALGAS_unifiedTypeMap_2D_entry (*enterExtensionGetter_unifiedTypeMapElementClass_mTypeForEnumeratedElement) (const class cPtr_unifiedTypeMapElementClass * inObject,
-                                                                                                                           C_Compiler * inCompiler
-                                                                                                                           COMMA_LOCATION_ARGS) ;
+typedef class GALGAS_unifiedTypeMapEntry (*enterExtensionGetter_unifiedTypeMapElementClass_mTypeForEnumeratedElement) (const class cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                                                       C_Compiler * inCompiler
+                                                                                                                       COMMA_LOCATION_ARGS) ;
  
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2882,72 +2651,9 @@ void enterExtensionGetter_mTypeForEnumeratedElement (const int32_t inClassIndex,
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_unifiedTypeMap_2D_entry callExtensionGetter_mTypeForEnumeratedElement (const cPtr_unifiedTypeMapElementClass * inObject,
-                                                                                    class C_Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension getter '@unifiedTypeMapElementClass mDefaultConstructorName'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_string (*enterExtensionGetter_unifiedTypeMapElementClass_mDefaultConstructorName) (const class cPtr_unifiedTypeMapElementClass * inObject,
-                                                                                                        C_Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) ;
- 
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_mDefaultConstructorName (const int32_t inClassIndex,
-                                                   enterExtensionGetter_unifiedTypeMapElementClass_mDefaultConstructorName inGetter) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_string callExtensionGetter_mDefaultConstructorName (const cPtr_unifiedTypeMapElementClass * inObject,
-                                                                 class C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension getter '@unifiedTypeMapElementClass mHeaderKind'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_headerKind (*enterExtensionGetter_unifiedTypeMapElementClass_mHeaderKind) (const class cPtr_unifiedTypeMapElementClass * inObject,
-                                                                                                C_Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) ;
- 
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_mHeaderKind (const int32_t inClassIndex,
-                                       enterExtensionGetter_unifiedTypeMapElementClass_mHeaderKind inGetter) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_headerKind callExtensionGetter_mHeaderKind (const cPtr_unifiedTypeMapElementClass * inObject,
-                                                         class C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension getter '@unifiedTypeMapElementClass mHeaderFileName'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_string (*enterExtensionGetter_unifiedTypeMapElementClass_mHeaderFileName) (const class cPtr_unifiedTypeMapElementClass * inObject,
-                                                                                                C_Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) ;
- 
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_mHeaderFileName (const int32_t inClassIndex,
-                                           enterExtensionGetter_unifiedTypeMapElementClass_mHeaderFileName inGetter) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_string callExtensionGetter_mHeaderFileName (const cPtr_unifiedTypeMapElementClass * inObject,
-                                                         class C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
+class GALGAS_unifiedTypeMapEntry callExtensionGetter_mTypeForEnumeratedElement (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                                                class C_Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //

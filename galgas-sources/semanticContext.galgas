@@ -102,7 +102,7 @@ map @routineMap {
 
 map @functionMap {
   public var @functionSignature mFunctionSignature
-  public var @unifiedTypeMap-entry mResultType
+  public var @unifiedTypeMapEntry mResultType
   public var @bool mIsInternal
   insert insertKey error message "the '%K' function has been already declared in %L"
   search searchKey error message "the '%K' function is not declared"
@@ -448,7 +448,7 @@ proc addExtensions
       for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
         [!?ioSemanticContext.mTypeMap makeEntry
           !mFormalArgumentTypeName
-          ?let @unifiedTypeMap-entry typeIndex
+          ?let @unifiedTypeMapEntry typeIndex
         ]
         formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
       end
@@ -759,7 +759,7 @@ override method @onceFunctionDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Result type
-  [!?ioSemanticContext.mTypeMap makeEntry  !self.mResultTypeName ?let @unifiedTypeMap-entry resultTypeIndex]
+  [!?ioSemanticContext.mTypeMap makeEntry  !self.mResultTypeName ?let @unifiedTypeMapEntry resultTypeIndex]
 #--- Enter function in routine map
   [!?ioSemanticContext.mFunctionMap insertKey !self.mFunctionName !{} !resultTypeIndex !self.mIsInternal]
 }

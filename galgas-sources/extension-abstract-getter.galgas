@@ -141,7 +141,7 @@ override method @abstractExtensionGetterAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Self type
-  let @unifiedTypeMap-entry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
+  let @unifiedTypeMapEntry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- Check self type is an abstract class
   if not [[selfType mTypeKindEnum] isClassType] then
     error self.mAbstractExtensionGetterName: "cannot declare an extension getter: '@" + [selfType key] + "' is not a class"
@@ -197,9 +197,9 @@ override method @abstractExtensionGetterAST buildExtensionListMaps
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @abstractExtensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  private let @unifiedTypeMap-entry mReceiverType
+  private let @unifiedTypeMapEntry mReceiverType
   private let @string mAbstractExtensionGetterName
-  private let @unifiedTypeMap-entry mResultType
+  private let @unifiedTypeMapEntry mResultType
   private let @formalInputParameterListForGeneration mAbstractExtensionGetterFormalParameterList
 }
 

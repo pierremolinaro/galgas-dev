@@ -64,7 +64,7 @@ override method @structPropertyAccessExpressionAST enterExpressionInSemanticCont
 override method @structPropertyAccessExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry unused inType
+  ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
@@ -72,13 +72,13 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
   [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration expression
   ]
 #--- Check field access availability
-  let @unifiedTypeMap-entry expressionType = expression.mResultType
+  let @unifiedTypeMapEntry expressionType = expression.mResultType
   if (not [[expressionType mTypeKindEnum] isStructType]) & (not [[expressionType mTypeKindEnum] isClassType]) then
     error self.mPropertyName: "the '.' operator requires the receiver to be a struct or a class"
   end

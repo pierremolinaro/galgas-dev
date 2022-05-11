@@ -146,7 +146,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
           :"the '" + mValue + "' constant is already named in this switch instruction"
         end
         constantsNamedInSwitchInstruction += !mValue.string
-        [enumConstantMap searchKey !mValue ?* ?let @unifiedTypeMap-entryList associatedTypeList]
+        [enumConstantMap searchKey !mValue ?* ?let @unifiedTypeMapEntryList associatedTypeList]
         if ([associatedTypeList length] > 0) & ([mAssociatedValuesExtraction length] == 0) then
           error mValue
             :"the associated values of '" + mValue + "' constant should be extracted"
@@ -225,7 +225,7 @@ list @templateInstructionSwitchBranchListForGeneration {
 #·······················································································································
 
 refclass @templateInstructionSwitchForGeneration : @templateInstructionForGeneration {
-  private let @unifiedTypeMap-entry mEnumType
+  private let @unifiedTypeMapEntry mEnumType
   private let @semanticExpressionForGeneration mSwitchExpression
   private let @templateInstructionSwitchBranchListForGeneration mTemplateInstructionSwitchBranchList
 }

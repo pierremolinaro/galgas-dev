@@ -221,7 +221,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-#  var @unifiedTypeMap-entry selfTypeEntry
+#  var @unifiedTypeMapEntry selfTypeEntry
 #  var @string selfObjectCppName
   if let [inAnalysisContext.selfType available
       ?type: let selfType
@@ -290,7 +290,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-#  var @unifiedTypeMap-entry selfTypeEntry
+#  var @unifiedTypeMapEntry selfTypeEntry
 #  var @string selfObjectCppName
   if let [inAnalysisContext.selfType available
       ?type: let selfType
@@ -346,7 +346,7 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-#  var @unifiedTypeMap-entry selfTypeEntry
+#  var @unifiedTypeMapEntry selfTypeEntry
 #  var @string selfObjectCppName
   if let [inAnalysisContext.selfType available
       ?type: let selfType
@@ -402,7 +402,7 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-#  var @unifiedTypeMap-entry selfTypeEntry
+#  var @unifiedTypeMapEntry selfTypeEntry
 #  var @string selfObjectCppName
   if let [inAnalysisContext.selfType available
       ?type: let selfType
@@ -458,7 +458,7 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-#  var @unifiedTypeMap-entry selfTypeEntry
+#  var @unifiedTypeMapEntry selfTypeEntry
 #  var @string selfObjectCppName
   if let [inAnalysisContext.selfType available
       ?type: let selfType

@@ -80,7 +80,7 @@ override method @dataPredefinedTypeAST getInstanceMethodMap
     !true
   )
   var @formalParameterSignature argList = {}
-  [!?ioUnifiedTypeMap makeEntryFromString !"string" ?@unifiedTypeMap-entry t]
+  [!?ioUnifiedTypeMap makeEntryFromString !"string" ?@unifiedTypeMapEntry t]
   argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
   [!?ioUnifiedTypeMap makeEntryFromString !"bool" ?t]
   argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentOut !"outFileModified"
@@ -150,7 +150,7 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
   )
 #--- writeToFileWhenDifferentContents, writeToExecutableFileWhenDifferentContents
   var @formalParameterSignature argList = {}
-  [!?ioUnifiedTypeMap makeEntryFromString !"string" ?@unifiedTypeMap-entry t]
+  [!?ioUnifiedTypeMap makeEntryFromString !"string" ?@unifiedTypeMapEntry t]
   argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
   [!?ioUnifiedTypeMap makeEntryFromString !"bool" ?t]
   argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentOut !"outFileModified"

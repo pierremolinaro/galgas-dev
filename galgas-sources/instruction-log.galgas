@@ -123,7 +123,7 @@ override method @logInstructionAST analyzeSemanticInstruction
     [mLogExpression analyzeSemanticExpression
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
-      !inferenceType: @unifiedTypeMap-entry.null
+      !inferenceType: @unifiedTypeMapEntry.null
       !inAnalysisContext
       !?ioVariableMap
       ?let expression

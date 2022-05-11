@@ -231,7 +231,7 @@ override method @stringsetPredefinedTypeAST getAddAssignArgumentList
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@functionSignature outAddAssignArgumentList
 {
-  [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let @unifiedTypeMap-entry stringTypeIndex]
+  [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let @unifiedTypeMapEntry stringTypeIndex]
   outAddAssignArgumentList = {!["" nowhere] !stringTypeIndex !"inString"}
 }
 

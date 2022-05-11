@@ -160,13 +160,13 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
 
 refclass @methodCallInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
-  private let @unifiedTypeMap-entry mReceiverType
+  private let @unifiedTypeMapEntry mReceiverType
   private let @semanticExpressionForGeneration mReceiverExpression
   private let @string mMethodName
   private let @methodKind mKind
   private let @actualParameterListForGeneration mActualParameterList
   private let @bool mHasCompilerArgument
-  private let @unifiedTypeMap-entry mMethodBaseType
+  private let @unifiedTypeMapEntry mMethodBaseType
 }
 
 #·····················································································································*

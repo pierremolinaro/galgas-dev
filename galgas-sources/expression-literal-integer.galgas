@@ -132,7 +132,7 @@ override method @literalUIntExpressionAST enterExpressionInSemanticContext
 override method @literalUIntExpressionAST analyzeSemanticExpression
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry unused inType
+  ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -156,7 +156,7 @@ override method @literalUInt64ExpressionAST enterExpressionInSemanticContext
 override method @literalUInt64ExpressionAST analyzeSemanticExpression
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry unused inType
+  ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -180,7 +180,7 @@ override method @literalSIntExpressionAST enterExpressionInSemanticContext
 override method @literalSIntExpressionAST analyzeSemanticExpression
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry unused inType
+  ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -200,7 +200,7 @@ override method @literalSInt64ExpressionAST enterExpressionInSemanticContext
 override method @literalSInt64ExpressionAST analyzeSemanticExpression
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry unused inType
+  ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -224,7 +224,7 @@ override method @literalBigIntExpressionAST enterExpressionInSemanticContext
 override method @literalBigIntExpressionAST analyzeSemanticExpression
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry unused inType
+  ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression

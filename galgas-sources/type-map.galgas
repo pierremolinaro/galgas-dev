@@ -492,7 +492,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !lstringTypeIndex
     !@formalArgumentPassingModeAST.argumentConstantIn
     !"inLKey"
-  var @unifiedTypeMap-entryList typesToIncludeInHeaderCompilation = {}
+  var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
   for (* mPropertyTypeName mPropertyName * mAttributeList) in self.mPropertyList do
     [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true
@@ -611,7 +611,7 @@ override method @mapDeclarationAST enterInSemanticContext
     }
     [!?ioSemanticContext.mTypeMap makeEntry
       !mPropertyTypeName
-      ?let @unifiedTypeMap-entry attributeTypeIndex
+      ?let @unifiedTypeMapEntry attributeTypeIndex
     ]
     var @formalParameterSignature accessorFormalArgumentList = {}
     accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
@@ -643,10 +643,10 @@ override method @mapDeclarationAST enterInSemanticContext
 #--- Element type index
   [!?ioSemanticContext.mTypeMap makeEntry
     !@lstring.new {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName.location}
-    ?let @unifiedTypeMap-entry elementTypeEntry
+    ?let @unifiedTypeMapEntry elementTypeEntry
   ]
 #--- Enter in type map
-  [!?ioSemanticContext.mTypeMap insertKey
+  let typeDefinition = @unifiedTypeDefinition.new {
     !self.mMapTypeName
     !self.mIsPredefined
     !true # Concrete Type
@@ -674,7 +674,8 @@ override method @mapDeclarationAST enterInSemanticContext
     !"emptyMap"
     !"map-" + [self.mMapTypeName fileNameRepresentation]
     !@headerKind.twoHeaders
-  ]
+  }
+  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -722,7 +723,7 @@ override method @mapDeclarationAST semanticAnalysis
   for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    let @unifiedTypeMap-entry t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
+    let @unifiedTypeMapEntry t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
     let hasSetter = true
     let hasSelector = false
     typedAttributeList +=
@@ -790,7 +791,7 @@ override method @mapDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @mapTypeForGeneration : @semanticTypeForGeneration {
-  private let @unifiedTypeMap-entry mElementTypeEntry
+  private let @unifiedTypeMapEntry mElementTypeEntry
   private let @lstring mMapTypeName
   private let @typedPropertyList mTypedAttributeList
   private let @insertMethodListAST mInsertMethodList

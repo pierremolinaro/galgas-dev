@@ -11423,7 +11423,7 @@ class cCollectionElement_typedPropertyList : public cCollectionElement {
   public: GALGAS_typedPropertyList_2D_element mObject ;
 
 //--- Constructors
-  public: cCollectionElement_typedPropertyList (const GALGAS_unifiedTypeMap_2D_entry & in_mPropertyTypeEntry,
+  public: cCollectionElement_typedPropertyList (const GALGAS_unifiedTypeMapEntry & in_mPropertyTypeEntry,
                                                 const GALGAS_lstring & in_mPropertyName,
                                                 const GALGAS_bool & in_mHasSetter,
                                                 const GALGAS_bool & in_mHasSelector
@@ -11445,7 +11445,7 @@ class cCollectionElement_typedPropertyList : public cCollectionElement {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-cCollectionElement_typedPropertyList::cCollectionElement_typedPropertyList (const GALGAS_unifiedTypeMap_2D_entry & in_mPropertyTypeEntry,
+cCollectionElement_typedPropertyList::cCollectionElement_typedPropertyList (const GALGAS_unifiedTypeMapEntry & in_mPropertyTypeEntry,
                                                                             const GALGAS_lstring & in_mPropertyName,
                                                                             const GALGAS_bool & in_mHasSetter,
                                                                             const GALGAS_bool & in_mHasSelector
@@ -11524,7 +11524,7 @@ GALGAS_typedPropertyList GALGAS_typedPropertyList::constructor_emptyList (UNUSED
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_typedPropertyList GALGAS_typedPropertyList::constructor_listWithValue (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+GALGAS_typedPropertyList GALGAS_typedPropertyList::constructor_listWithValue (const GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                               const GALGAS_lstring & inOperand1,
                                                                               const GALGAS_bool & inOperand2,
                                                                               const GALGAS_bool & inOperand3
@@ -11542,7 +11542,7 @@ GALGAS_typedPropertyList GALGAS_typedPropertyList::constructor_listWithValue (co
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_typedPropertyList::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                          const GALGAS_unifiedTypeMap_2D_entry & in_mPropertyTypeEntry,
+                                                          const GALGAS_unifiedTypeMapEntry & in_mPropertyTypeEntry,
                                                           const GALGAS_lstring & in_mPropertyName,
                                                           const GALGAS_bool & in_mHasSetter,
                                                           const GALGAS_bool & in_mHasSelector
@@ -11558,7 +11558,7 @@ void GALGAS_typedPropertyList::makeAttributesFromObjects (capCollectionElement &
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_typedPropertyList::addAssign_operation (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+void GALGAS_typedPropertyList::addAssign_operation (const GALGAS_unifiedTypeMapEntry & inOperand0,
                                                     const GALGAS_lstring & inOperand1,
                                                     const GALGAS_bool & inOperand2,
                                                     const GALGAS_bool & inOperand3
@@ -11598,7 +11598,7 @@ void GALGAS_typedPropertyList::setter_append (GALGAS_typedPropertyList_2D_elemen
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_typedPropertyList::setter_insertAtIndex (const GALGAS_unifiedTypeMap_2D_entry inOperand0,
+void GALGAS_typedPropertyList::setter_insertAtIndex (const GALGAS_unifiedTypeMapEntry inOperand0,
                                                      const GALGAS_lstring inOperand1,
                                                      const GALGAS_bool inOperand2,
                                                      const GALGAS_bool inOperand3,
@@ -11621,7 +11621,7 @@ void GALGAS_typedPropertyList::setter_insertAtIndex (const GALGAS_unifiedTypeMap
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_typedPropertyList::setter_removeAtIndex (GALGAS_unifiedTypeMap_2D_entry & outOperand0,
+void GALGAS_typedPropertyList::setter_removeAtIndex (GALGAS_unifiedTypeMapEntry & outOperand0,
                                                      GALGAS_lstring & outOperand1,
                                                      GALGAS_bool & outOperand2,
                                                      GALGAS_bool & outOperand3,
@@ -11663,7 +11663,7 @@ void GALGAS_typedPropertyList::setter_removeAtIndex (GALGAS_unifiedTypeMap_2D_en
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_typedPropertyList::setter_popFirst (GALGAS_unifiedTypeMap_2D_entry & outOperand0,
+void GALGAS_typedPropertyList::setter_popFirst (GALGAS_unifiedTypeMapEntry & outOperand0,
                                                 GALGAS_lstring & outOperand1,
                                                 GALGAS_bool & outOperand2,
                                                 GALGAS_bool & outOperand3,
@@ -11688,7 +11688,7 @@ void GALGAS_typedPropertyList::setter_popFirst (GALGAS_unifiedTypeMap_2D_entry &
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_typedPropertyList::setter_popLast (GALGAS_unifiedTypeMap_2D_entry & outOperand0,
+void GALGAS_typedPropertyList::setter_popLast (GALGAS_unifiedTypeMapEntry & outOperand0,
                                                GALGAS_lstring & outOperand1,
                                                GALGAS_bool & outOperand2,
                                                GALGAS_bool & outOperand3,
@@ -11713,7 +11713,7 @@ void GALGAS_typedPropertyList::setter_popLast (GALGAS_unifiedTypeMap_2D_entry & 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_typedPropertyList::method_first (GALGAS_unifiedTypeMap_2D_entry & outOperand0,
+void GALGAS_typedPropertyList::method_first (GALGAS_unifiedTypeMapEntry & outOperand0,
                                              GALGAS_lstring & outOperand1,
                                              GALGAS_bool & outOperand2,
                                              GALGAS_bool & outOperand3,
@@ -11738,7 +11738,7 @@ void GALGAS_typedPropertyList::method_first (GALGAS_unifiedTypeMap_2D_entry & ou
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_typedPropertyList::method_last (GALGAS_unifiedTypeMap_2D_entry & outOperand0,
+void GALGAS_typedPropertyList::method_last (GALGAS_unifiedTypeMapEntry & outOperand0,
                                             GALGAS_lstring & outOperand1,
                                             GALGAS_bool & outOperand2,
                                             GALGAS_bool & outOperand3,
@@ -11814,7 +11814,7 @@ void GALGAS_typedPropertyList::plusAssign_operation (const GALGAS_typedPropertyL
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_typedPropertyList::setter_setMPropertyTypeEntryAtIndex (GALGAS_unifiedTypeMap_2D_entry inOperand,
+void GALGAS_typedPropertyList::setter_setMPropertyTypeEntryAtIndex (GALGAS_unifiedTypeMapEntry inOperand,
                                                                     GALGAS_uint inIndex,
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
@@ -11828,12 +11828,12 @@ void GALGAS_typedPropertyList::setter_setMPropertyTypeEntryAtIndex (GALGAS_unifi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_typedPropertyList::getter_mPropertyTypeEntryAtIndex (const GALGAS_uint & inIndex,
-                                                                                           C_Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMapEntry GALGAS_typedPropertyList::getter_mPropertyTypeEntryAtIndex (const GALGAS_uint & inIndex,
+                                                                                       C_Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_typedPropertyList * p = (cCollectionElement_typedPropertyList *) attributes.ptr () ;
-  GALGAS_unifiedTypeMap_2D_entry result ;
+  GALGAS_unifiedTypeMapEntry result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_typedPropertyList) ;
     result = p->mObject.mProperty_mPropertyTypeEntry ;
@@ -11949,7 +11949,7 @@ GALGAS_typedPropertyList_2D_element cEnumerator_typedPropertyList::current (LOCA
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry cEnumerator_typedPropertyList::current_mPropertyTypeEntry (LOCATION_ARGS) const {
+GALGAS_unifiedTypeMapEntry cEnumerator_typedPropertyList::current_mPropertyTypeEntry (LOCATION_ARGS) const {
   const cCollectionElement_typedPropertyList * p = (const cCollectionElement_typedPropertyList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_typedPropertyList) ;
   return p->mObject.mProperty_mPropertyTypeEntry ;
@@ -12740,7 +12740,7 @@ class cCollectionElement_enumConstantListForGeneration : public cCollectionEleme
 
 //--- Constructors
   public: cCollectionElement_enumConstantListForGeneration (const GALGAS_string & in_mConstantName,
-                                                            const GALGAS_unifiedTypeMap_2D_entryList & in_mAssociatedValueTypeList
+                                                            const GALGAS_unifiedTypeMapEntryList & in_mAssociatedValueTypeList
                                                             COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_enumConstantListForGeneration (const GALGAS_enumConstantListForGeneration_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
@@ -12760,7 +12760,7 @@ class cCollectionElement_enumConstantListForGeneration : public cCollectionEleme
 //----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_enumConstantListForGeneration::cCollectionElement_enumConstantListForGeneration (const GALGAS_string & in_mConstantName,
-                                                                                                    const GALGAS_unifiedTypeMap_2D_entryList & in_mAssociatedValueTypeList
+                                                                                                    const GALGAS_unifiedTypeMapEntryList & in_mAssociatedValueTypeList
                                                                                                     COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mConstantName, in_mAssociatedValueTypeList) {
@@ -12829,7 +12829,7 @@ GALGAS_enumConstantListForGeneration GALGAS_enumConstantListForGeneration::const
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_enumConstantListForGeneration GALGAS_enumConstantListForGeneration::constructor_listWithValue (const GALGAS_string & inOperand0,
-                                                                                                      const GALGAS_unifiedTypeMap_2D_entryList & inOperand1
+                                                                                                      const GALGAS_unifiedTypeMapEntryList & inOperand1
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_enumConstantListForGeneration result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
@@ -12845,7 +12845,7 @@ GALGAS_enumConstantListForGeneration GALGAS_enumConstantListForGeneration::const
 
 void GALGAS_enumConstantListForGeneration::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                       const GALGAS_string & in_mConstantName,
-                                                                      const GALGAS_unifiedTypeMap_2D_entryList & in_mAssociatedValueTypeList
+                                                                      const GALGAS_unifiedTypeMapEntryList & in_mAssociatedValueTypeList
                                                                       COMMA_LOCATION_ARGS) {
   cCollectionElement_enumConstantListForGeneration * p = NULL ;
   macroMyNew (p, cCollectionElement_enumConstantListForGeneration (in_mConstantName,
@@ -12857,7 +12857,7 @@ void GALGAS_enumConstantListForGeneration::makeAttributesFromObjects (capCollect
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_enumConstantListForGeneration::addAssign_operation (const GALGAS_string & inOperand0,
-                                                                const GALGAS_unifiedTypeMap_2D_entryList & inOperand1
+                                                                const GALGAS_unifiedTypeMapEntryList & inOperand1
                                                                 COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inOperand0.isValid () && inOperand1.isValid ()) {
@@ -12895,7 +12895,7 @@ void GALGAS_enumConstantListForGeneration::setter_append (GALGAS_enumConstantLis
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_enumConstantListForGeneration::setter_insertAtIndex (const GALGAS_string inOperand0,
-                                                                 const GALGAS_unifiedTypeMap_2D_entryList inOperand1,
+                                                                 const GALGAS_unifiedTypeMapEntryList inOperand1,
                                                                  const GALGAS_uint inInsertionIndex,
                                                                  C_Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
@@ -12916,7 +12916,7 @@ void GALGAS_enumConstantListForGeneration::setter_insertAtIndex (const GALGAS_st
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_enumConstantListForGeneration::setter_removeAtIndex (GALGAS_string & outOperand0,
-                                                                 GALGAS_unifiedTypeMap_2D_entryList & outOperand1,
+                                                                 GALGAS_unifiedTypeMapEntryList & outOperand1,
                                                                  const GALGAS_uint inRemoveIndex,
                                                                  C_Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
@@ -12948,7 +12948,7 @@ void GALGAS_enumConstantListForGeneration::setter_removeAtIndex (GALGAS_string &
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_enumConstantListForGeneration::setter_popFirst (GALGAS_string & outOperand0,
-                                                            GALGAS_unifiedTypeMap_2D_entryList & outOperand1,
+                                                            GALGAS_unifiedTypeMapEntryList & outOperand1,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
@@ -12967,7 +12967,7 @@ void GALGAS_enumConstantListForGeneration::setter_popFirst (GALGAS_string & outO
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_enumConstantListForGeneration::setter_popLast (GALGAS_string & outOperand0,
-                                                           GALGAS_unifiedTypeMap_2D_entryList & outOperand1,
+                                                           GALGAS_unifiedTypeMapEntryList & outOperand1,
                                                            C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
@@ -12986,7 +12986,7 @@ void GALGAS_enumConstantListForGeneration::setter_popLast (GALGAS_string & outOp
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_enumConstantListForGeneration::method_first (GALGAS_string & outOperand0,
-                                                         GALGAS_unifiedTypeMap_2D_entryList & outOperand1,
+                                                         GALGAS_unifiedTypeMapEntryList & outOperand1,
                                                          C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
@@ -13005,7 +13005,7 @@ void GALGAS_enumConstantListForGeneration::method_first (GALGAS_string & outOper
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_enumConstantListForGeneration::method_last (GALGAS_string & outOperand0,
-                                                        GALGAS_unifiedTypeMap_2D_entryList & outOperand1,
+                                                        GALGAS_unifiedTypeMapEntryList & outOperand1,
                                                         C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
@@ -13103,7 +13103,7 @@ GALGAS_string GALGAS_enumConstantListForGeneration::getter_mConstantNameAtIndex 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_enumConstantListForGeneration::setter_setMAssociatedValueTypeListAtIndex (GALGAS_unifiedTypeMap_2D_entryList inOperand,
+void GALGAS_enumConstantListForGeneration::setter_setMAssociatedValueTypeListAtIndex (GALGAS_unifiedTypeMapEntryList inOperand,
                                                                                       GALGAS_uint inIndex,
                                                                                       C_Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) {
@@ -13117,12 +13117,12 @@ void GALGAS_enumConstantListForGeneration::setter_setMAssociatedValueTypeListAtI
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entryList GALGAS_enumConstantListForGeneration::getter_mAssociatedValueTypeListAtIndex (const GALGAS_uint & inIndex,
-                                                                                                                 C_Compiler * inCompiler
-                                                                                                                 COMMA_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMapEntryList GALGAS_enumConstantListForGeneration::getter_mAssociatedValueTypeListAtIndex (const GALGAS_uint & inIndex,
+                                                                                                             C_Compiler * inCompiler
+                                                                                                             COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_enumConstantListForGeneration * p = (cCollectionElement_enumConstantListForGeneration *) attributes.ptr () ;
-  GALGAS_unifiedTypeMap_2D_entryList result ;
+  GALGAS_unifiedTypeMapEntryList result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_enumConstantListForGeneration) ;
     result = p->mObject.mProperty_mAssociatedValueTypeList ;
@@ -13159,7 +13159,7 @@ GALGAS_string cEnumerator_enumConstantListForGeneration::current_mConstantName (
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entryList cEnumerator_enumConstantListForGeneration::current_mAssociatedValueTypeList (LOCATION_ARGS) const {
+GALGAS_unifiedTypeMapEntryList cEnumerator_enumConstantListForGeneration::current_mAssociatedValueTypeList (LOCATION_ARGS) const {
   const cCollectionElement_enumConstantListForGeneration * p = (const cCollectionElement_enumConstantListForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_enumConstantListForGeneration) ;
   return p->mObject.mProperty_mAssociatedValueTypeList ;
@@ -13213,17 +13213,17 @@ GALGAS_enumConstantListForGeneration GALGAS_enumConstantListForGeneration::extra
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Class for element of '@unifiedTypeMap_2D_entryList' list
+//Class for element of '@unifiedTypeMapEntryList' list
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class cCollectionElement_unifiedTypeMap_2D_entryList : public cCollectionElement {
-  public: GALGAS_unifiedTypeMap_2D_entryList_2D_element mObject ;
+class cCollectionElement_unifiedTypeMapEntryList : public cCollectionElement {
+  public: GALGAS_unifiedTypeMapEntryList_2D_element mObject ;
 
 //--- Constructors
-  public: cCollectionElement_unifiedTypeMap_2D_entryList (const GALGAS_unifiedTypeMap_2D_entry & in_mType
-                                                          COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_unifiedTypeMap_2D_entryList (const GALGAS_unifiedTypeMap_2D_entryList_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_unifiedTypeMapEntryList (const GALGAS_unifiedTypeMapEntry & in_mEntry
+                                                      COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_unifiedTypeMapEntryList (const GALGAS_unifiedTypeMapEntryList_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -13240,77 +13240,77 @@ class cCollectionElement_unifiedTypeMap_2D_entryList : public cCollectionElement
 
 //----------------------------------------------------------------------------------------------------------------------
 
-cCollectionElement_unifiedTypeMap_2D_entryList::cCollectionElement_unifiedTypeMap_2D_entryList (const GALGAS_unifiedTypeMap_2D_entry & in_mType
-                                                                                                COMMA_LOCATION_ARGS) :
+cCollectionElement_unifiedTypeMapEntryList::cCollectionElement_unifiedTypeMapEntryList (const GALGAS_unifiedTypeMapEntry & in_mEntry
+                                                                                        COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mType) {
+mObject (in_mEntry) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-cCollectionElement_unifiedTypeMap_2D_entryList::cCollectionElement_unifiedTypeMap_2D_entryList (const GALGAS_unifiedTypeMap_2D_entryList_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement_unifiedTypeMapEntryList::cCollectionElement_unifiedTypeMapEntryList (const GALGAS_unifiedTypeMapEntryList_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (inElement.mProperty_mType) {
+mObject (inElement.mProperty_mEntry) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_unifiedTypeMap_2D_entryList::isValid (void) const {
+bool cCollectionElement_unifiedTypeMapEntryList::isValid (void) const {
   return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_unifiedTypeMap_2D_entryList::copy (void) {
+cCollectionElement * cCollectionElement_unifiedTypeMapEntryList::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_unifiedTypeMap_2D_entryList (mObject.mProperty_mType COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_unifiedTypeMapEntryList (mObject.mProperty_mEntry COMMA_HERE)) ;
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void cCollectionElement_unifiedTypeMap_2D_entryList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_unifiedTypeMapEntryList::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mType" ":" ;
-  mObject.mProperty_mType.description (ioString, inIndentation) ;
+  ioString << "mEntry" ":" ;
+  mObject.mProperty_mEntry.description (ioString, inIndentation) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-typeComparisonResult cCollectionElement_unifiedTypeMap_2D_entryList::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_unifiedTypeMap_2D_entryList * operand = (cCollectionElement_unifiedTypeMap_2D_entryList *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_unifiedTypeMap_2D_entryList) ;
+typeComparisonResult cCollectionElement_unifiedTypeMapEntryList::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_unifiedTypeMapEntryList * operand = (cCollectionElement_unifiedTypeMapEntryList *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_unifiedTypeMapEntryList) ;
   return mObject.objectCompare (operand->mObject) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entryList::GALGAS_unifiedTypeMap_2D_entryList (void) :
+GALGAS_unifiedTypeMapEntryList::GALGAS_unifiedTypeMapEntryList (void) :
 AC_GALGAS_list () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entryList::GALGAS_unifiedTypeMap_2D_entryList (const capCollectionElementArray & inSharedArray) :
+GALGAS_unifiedTypeMapEntryList::GALGAS_unifiedTypeMapEntryList (const capCollectionElementArray & inSharedArray) :
 AC_GALGAS_list (inSharedArray) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entryList GALGAS_unifiedTypeMap_2D_entryList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_unifiedTypeMap_2D_entryList  (capCollectionElementArray ()) ;
+GALGAS_unifiedTypeMapEntryList GALGAS_unifiedTypeMapEntryList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_unifiedTypeMapEntryList  (capCollectionElementArray ()) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entryList GALGAS_unifiedTypeMap_2D_entryList::constructor_listWithValue (const GALGAS_unifiedTypeMap_2D_entry & inOperand0
-                                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMap_2D_entryList result ;
+GALGAS_unifiedTypeMapEntryList GALGAS_unifiedTypeMapEntryList::constructor_listWithValue (const GALGAS_unifiedTypeMapEntry & inOperand0
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_unifiedTypeMapEntryList result ;
   if (inOperand0.isValid ()) {
-    result = GALGAS_unifiedTypeMap_2D_entryList (capCollectionElementArray ()) ;
+    result = GALGAS_unifiedTypeMapEntryList (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
-    GALGAS_unifiedTypeMap_2D_entryList::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
+    GALGAS_unifiedTypeMapEntryList::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
     result.appendObject (attributes) ;
   }
   return result ;
@@ -13318,23 +13318,23 @@ GALGAS_unifiedTypeMap_2D_entryList GALGAS_unifiedTypeMap_2D_entryList::construct
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMap_2D_entryList::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                                    const GALGAS_unifiedTypeMap_2D_entry & in_mType
-                                                                    COMMA_LOCATION_ARGS) {
-  cCollectionElement_unifiedTypeMap_2D_entryList * p = NULL ;
-  macroMyNew (p, cCollectionElement_unifiedTypeMap_2D_entryList (in_mType COMMA_THERE)) ;
+void GALGAS_unifiedTypeMapEntryList::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mEntry
+                                                                COMMA_LOCATION_ARGS) {
+  cCollectionElement_unifiedTypeMapEntryList * p = NULL ;
+  macroMyNew (p, cCollectionElement_unifiedTypeMapEntryList (in_mEntry COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMap_2D_entryList::addAssign_operation (const GALGAS_unifiedTypeMap_2D_entry & inOperand0
-                                                              COMMA_LOCATION_ARGS) {
+void GALGAS_unifiedTypeMapEntryList::addAssign_operation (const GALGAS_unifiedTypeMapEntry & inOperand0
+                                                          COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inOperand0.isValid ()) {
       cCollectionElement * p = NULL ;
-      macroMyNew (p, cCollectionElement_unifiedTypeMap_2D_entryList (inOperand0 COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_unifiedTypeMapEntryList (inOperand0 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -13347,13 +13347,13 @@ void GALGAS_unifiedTypeMap_2D_entryList::addAssign_operation (const GALGAS_unifi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMap_2D_entryList::setter_append (GALGAS_unifiedTypeMap_2D_entryList_2D_element inElement,
-                                                        C_Compiler * /* inCompiler */
-                                                        COMMA_LOCATION_ARGS) {
+void GALGAS_unifiedTypeMapEntryList::setter_append (GALGAS_unifiedTypeMapEntryList_2D_element inElement,
+                                                    C_Compiler * /* inCompiler */
+                                                    COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inElement.isValid ()) {
       cCollectionElement * p = NULL ;
-      macroMyNew (p, cCollectionElement_unifiedTypeMap_2D_entryList (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_unifiedTypeMapEntryList (inElement COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -13366,14 +13366,14 @@ void GALGAS_unifiedTypeMap_2D_entryList::setter_append (GALGAS_unifiedTypeMap_2D
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMap_2D_entryList::setter_insertAtIndex (const GALGAS_unifiedTypeMap_2D_entry inOperand0,
-                                                               const GALGAS_uint inInsertionIndex,
-                                                               C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) {
+void GALGAS_unifiedTypeMapEntryList::setter_insertAtIndex (const GALGAS_unifiedTypeMapEntry inOperand0,
+                                                           const GALGAS_uint inInsertionIndex,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid ()) {
       cCollectionElement * p = NULL ;
-      macroMyNew (p, cCollectionElement_unifiedTypeMap_2D_entryList (inOperand0 COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_unifiedTypeMapEntryList (inOperand0 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -13386,21 +13386,21 @@ void GALGAS_unifiedTypeMap_2D_entryList::setter_insertAtIndex (const GALGAS_unif
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMap_2D_entryList::setter_removeAtIndex (GALGAS_unifiedTypeMap_2D_entry & outOperand0,
-                                                               const GALGAS_uint inRemoveIndex,
-                                                               C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) {
+void GALGAS_unifiedTypeMapEntryList::setter_removeAtIndex (GALGAS_unifiedTypeMapEntry & outOperand0,
+                                                           const GALGAS_uint inRemoveIndex,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
       capCollectionElement attributes ;
       removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_unifiedTypeMap_2D_entryList * p = (cCollectionElement_unifiedTypeMap_2D_entryList *) attributes.ptr () ;
+      cCollectionElement_unifiedTypeMapEntryList * p = (cCollectionElement_unifiedTypeMapEntryList *) attributes.ptr () ;
       if (NULL == p) {
         outOperand0.drop () ;
         drop () ;
       }else{
-        macroValidSharedObject (p, cCollectionElement_unifiedTypeMap_2D_entryList) ;
-        outOperand0 = p->mObject.mProperty_mType ;
+        macroValidSharedObject (p, cCollectionElement_unifiedTypeMapEntryList) ;
+        outOperand0 = p->mObject.mProperty_mEntry ;
       }
     }else{
       outOperand0.drop () ;
@@ -13413,74 +13413,74 @@ void GALGAS_unifiedTypeMap_2D_entryList::setter_removeAtIndex (GALGAS_unifiedTyp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMap_2D_entryList::setter_popFirst (GALGAS_unifiedTypeMap_2D_entry & outOperand0,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
+void GALGAS_unifiedTypeMapEntryList::setter_popFirst (GALGAS_unifiedTypeMapEntry & outOperand0,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_unifiedTypeMap_2D_entryList * p = (cCollectionElement_unifiedTypeMap_2D_entryList *) attributes.ptr () ;
+  cCollectionElement_unifiedTypeMapEntryList * p = (cCollectionElement_unifiedTypeMapEntryList *) attributes.ptr () ;
   if (NULL == p) {
     outOperand0.drop () ;
   }else{
-    macroValidSharedObject (p, cCollectionElement_unifiedTypeMap_2D_entryList) ;
-    outOperand0 = p->mObject.mProperty_mType ;
+    macroValidSharedObject (p, cCollectionElement_unifiedTypeMapEntryList) ;
+    outOperand0 = p->mObject.mProperty_mEntry ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMap_2D_entryList::setter_popLast (GALGAS_unifiedTypeMap_2D_entry & outOperand0,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
+void GALGAS_unifiedTypeMapEntryList::setter_popLast (GALGAS_unifiedTypeMapEntry & outOperand0,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_unifiedTypeMap_2D_entryList * p = (cCollectionElement_unifiedTypeMap_2D_entryList *) attributes.ptr () ;
+  cCollectionElement_unifiedTypeMapEntryList * p = (cCollectionElement_unifiedTypeMapEntryList *) attributes.ptr () ;
   if (NULL == p) {
     outOperand0.drop () ;
   }else{
-    macroValidSharedObject (p, cCollectionElement_unifiedTypeMap_2D_entryList) ;
-    outOperand0 = p->mObject.mProperty_mType ;
+    macroValidSharedObject (p, cCollectionElement_unifiedTypeMapEntryList) ;
+    outOperand0 = p->mObject.mProperty_mEntry ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMap_2D_entryList::method_first (GALGAS_unifiedTypeMap_2D_entry & outOperand0,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
+void GALGAS_unifiedTypeMapEntryList::method_first (GALGAS_unifiedTypeMapEntry & outOperand0,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_unifiedTypeMap_2D_entryList * p = (cCollectionElement_unifiedTypeMap_2D_entryList *) attributes.ptr () ;
+  cCollectionElement_unifiedTypeMapEntryList * p = (cCollectionElement_unifiedTypeMapEntryList *) attributes.ptr () ;
   if (NULL == p) {
     outOperand0.drop () ;
   }else{
-    macroValidSharedObject (p, cCollectionElement_unifiedTypeMap_2D_entryList) ;
-    outOperand0 = p->mObject.mProperty_mType ;
+    macroValidSharedObject (p, cCollectionElement_unifiedTypeMapEntryList) ;
+    outOperand0 = p->mObject.mProperty_mEntry ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMap_2D_entryList::method_last (GALGAS_unifiedTypeMap_2D_entry & outOperand0,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const {
+void GALGAS_unifiedTypeMapEntryList::method_last (GALGAS_unifiedTypeMapEntry & outOperand0,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_unifiedTypeMap_2D_entryList * p = (cCollectionElement_unifiedTypeMap_2D_entryList *) attributes.ptr () ;
+  cCollectionElement_unifiedTypeMapEntryList * p = (cCollectionElement_unifiedTypeMapEntryList *) attributes.ptr () ;
   if (NULL == p) {
     outOperand0.drop () ;
   }else{
-    macroValidSharedObject (p, cCollectionElement_unifiedTypeMap_2D_entryList) ;
-    outOperand0 = p->mObject.mProperty_mType ;
+    macroValidSharedObject (p, cCollectionElement_unifiedTypeMapEntryList) ;
+    outOperand0 = p->mObject.mProperty_mEntry ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entryList GALGAS_unifiedTypeMap_2D_entryList::add_operation (const GALGAS_unifiedTypeMap_2D_entryList & inOperand,
-                                                                                      C_Compiler * /* inCompiler */
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMap_2D_entryList result ;
+GALGAS_unifiedTypeMapEntryList GALGAS_unifiedTypeMapEntryList::add_operation (const GALGAS_unifiedTypeMapEntryList & inOperand,
+                                                                              C_Compiler * /* inCompiler */
+                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMapEntryList result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
     result.appendList (inOperand) ;
@@ -13490,67 +13490,67 @@ GALGAS_unifiedTypeMap_2D_entryList GALGAS_unifiedTypeMap_2D_entryList::add_opera
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entryList GALGAS_unifiedTypeMap_2D_entryList::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                                C_Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMap_2D_entryList result = GALGAS_unifiedTypeMap_2D_entryList::constructor_emptyList (THERE) ;
+GALGAS_unifiedTypeMapEntryList GALGAS_unifiedTypeMapEntryList::getter_subListWithRange (const GALGAS_range & inRange,
+                                                                                        C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMapEntryList result = GALGAS_unifiedTypeMapEntryList::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entryList GALGAS_unifiedTypeMap_2D_entryList::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                                C_Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMap_2D_entryList result = GALGAS_unifiedTypeMap_2D_entryList::constructor_emptyList (THERE) ;
+GALGAS_unifiedTypeMapEntryList GALGAS_unifiedTypeMapEntryList::getter_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                                        C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMapEntryList result = GALGAS_unifiedTypeMapEntryList::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entryList GALGAS_unifiedTypeMap_2D_entryList::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                              C_Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMap_2D_entryList result = GALGAS_unifiedTypeMap_2D_entryList::constructor_emptyList (THERE) ;
+GALGAS_unifiedTypeMapEntryList GALGAS_unifiedTypeMapEntryList::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMapEntryList result = GALGAS_unifiedTypeMapEntryList::constructor_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMap_2D_entryList::plusAssign_operation (const GALGAS_unifiedTypeMap_2D_entryList inOperand,
-                                                               C_Compiler * /* inCompiler */
-                                                               COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_unifiedTypeMapEntryList::plusAssign_operation (const GALGAS_unifiedTypeMapEntryList inOperand,
+                                                           C_Compiler * /* inCompiler */
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMap_2D_entryList::setter_setMTypeAtIndex (GALGAS_unifiedTypeMap_2D_entry inOperand,
-                                                                 GALGAS_uint inIndex,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
-  cCollectionElement_unifiedTypeMap_2D_entryList * p = (cCollectionElement_unifiedTypeMap_2D_entryList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+void GALGAS_unifiedTypeMapEntryList::setter_setMEntryAtIndex (GALGAS_unifiedTypeMapEntry inOperand,
+                                                              GALGAS_uint inIndex,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
+  cCollectionElement_unifiedTypeMapEntryList * p = (cCollectionElement_unifiedTypeMapEntryList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_unifiedTypeMap_2D_entryList) ;
+    macroValidSharedObject (p, cCollectionElement_unifiedTypeMapEntryList) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mType = inOperand ;
+    p->mObject.mProperty_mEntry = inOperand ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_unifiedTypeMap_2D_entryList::getter_mTypeAtIndex (const GALGAS_uint & inIndex,
-                                                                                        C_Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMapEntry GALGAS_unifiedTypeMapEntryList::getter_mEntryAtIndex (const GALGAS_uint & inIndex,
+                                                                                 C_Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_unifiedTypeMap_2D_entryList * p = (cCollectionElement_unifiedTypeMap_2D_entryList *) attributes.ptr () ;
-  GALGAS_unifiedTypeMap_2D_entry result ;
+  cCollectionElement_unifiedTypeMapEntryList * p = (cCollectionElement_unifiedTypeMapEntryList *) attributes.ptr () ;
+  GALGAS_unifiedTypeMapEntry result ;
   if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_unifiedTypeMap_2D_entryList) ;
-    result = p->mObject.mProperty_mType ;
+    macroValidSharedObject (p, cCollectionElement_unifiedTypeMapEntryList) ;
+    result = p->mObject.mProperty_mEntry ;
   }
   return result ;
 }
@@ -13559,27 +13559,27 @@ GALGAS_unifiedTypeMap_2D_entry GALGAS_unifiedTypeMap_2D_entryList::getter_mTypeA
 
 //----------------------------------------------------------------------------------------------------------------------
 
-cEnumerator_unifiedTypeMap_2D_entryList::cEnumerator_unifiedTypeMap_2D_entryList (const GALGAS_unifiedTypeMap_2D_entryList & inEnumeratedObject,
-                                                                                  const typeEnumerationOrder inOrder) :
+cEnumerator_unifiedTypeMapEntryList::cEnumerator_unifiedTypeMapEntryList (const GALGAS_unifiedTypeMapEntryList & inEnumeratedObject,
+                                                                          const typeEnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entryList_2D_element cEnumerator_unifiedTypeMap_2D_entryList::current (LOCATION_ARGS) const {
-  const cCollectionElement_unifiedTypeMap_2D_entryList * p = (const cCollectionElement_unifiedTypeMap_2D_entryList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_unifiedTypeMap_2D_entryList) ;
+GALGAS_unifiedTypeMapEntryList_2D_element cEnumerator_unifiedTypeMapEntryList::current (LOCATION_ARGS) const {
+  const cCollectionElement_unifiedTypeMapEntryList * p = (const cCollectionElement_unifiedTypeMapEntryList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_unifiedTypeMapEntryList) ;
   return p->mObject ;
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry cEnumerator_unifiedTypeMap_2D_entryList::current_mType (LOCATION_ARGS) const {
-  const cCollectionElement_unifiedTypeMap_2D_entryList * p = (const cCollectionElement_unifiedTypeMap_2D_entryList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_unifiedTypeMap_2D_entryList) ;
-  return p->mObject.mProperty_mType ;
+GALGAS_unifiedTypeMapEntry cEnumerator_unifiedTypeMapEntryList::current_mEntry (LOCATION_ARGS) const {
+  const cCollectionElement_unifiedTypeMapEntryList * p = (const cCollectionElement_unifiedTypeMapEntryList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_unifiedTypeMapEntryList) ;
+  return p->mObject.mProperty_mEntry ;
 }
 
 
@@ -13587,42 +13587,42 @@ GALGAS_unifiedTypeMap_2D_entry cEnumerator_unifiedTypeMap_2D_entryList::current_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@unifiedTypeMap-entryList type
+//@unifiedTypeMapEntryList type
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_unifiedTypeMap_2D_entryList ("unifiedTypeMap-entryList",
-                                                    NULL) ;
+kTypeDescriptor_GALGAS_unifiedTypeMapEntryList ("unifiedTypeMapEntryList",
+                                                NULL) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_unifiedTypeMap_2D_entryList::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_unifiedTypeMap_2D_entryList ;
+const C_galgas_type_descriptor * GALGAS_unifiedTypeMapEntryList::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_unifiedTypeMapEntryList ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_unifiedTypeMap_2D_entryList::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_unifiedTypeMapEntryList::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_unifiedTypeMap_2D_entryList (*this)) ;
+    macroMyNew (result, GALGAS_unifiedTypeMapEntryList (*this)) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entryList GALGAS_unifiedTypeMap_2D_entryList::extractObject (const GALGAS_object & inObject,
-                                                                                      C_Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMap_2D_entryList result ;
-  const GALGAS_unifiedTypeMap_2D_entryList * p = (const GALGAS_unifiedTypeMap_2D_entryList *) inObject.embeddedObject () ;
+GALGAS_unifiedTypeMapEntryList GALGAS_unifiedTypeMapEntryList::extractObject (const GALGAS_object & inObject,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_unifiedTypeMapEntryList result ;
+  const GALGAS_unifiedTypeMapEntryList * p = (const GALGAS_unifiedTypeMapEntryList *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_unifiedTypeMap_2D_entryList *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_unifiedTypeMapEntryList *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("unifiedTypeMap-entryList", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("unifiedTypeMapEntryList", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

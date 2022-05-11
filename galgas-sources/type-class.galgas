@@ -219,10 +219,10 @@ override method @classDeclarationAST enterInSemanticContext
   let @typedPropertyList inheritedTypedPropertyList
   var @propertyMap attributeMap = {}
 #--- Handle super class
-  let @unifiedTypeMap-entry superClassIndex
+  let @unifiedTypeMapEntry superClassIndex
   var @bool generateHeaderInSeparateFile
   if self.mSuperClassName.string == "" then
-    superClassIndex = @unifiedTypeMap-entry.null
+    superClassIndex = @unifiedTypeMapEntry.null
     commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?getterMap )
     setterMap = {}
     instanceMethodMap = {}
@@ -235,29 +235,33 @@ override method @classDeclarationAST enterInSemanticContext
       end
     end
   else
-    [!?ioSemanticContext.mTypeMap  makeEntry !self.mSuperClassName ?superClassIndex]
-    [ioSemanticContext.mTypeMap searchKey
-      !self.mSuperClassName
-      ?3*
-      ?let typeKindEnum
-      ?*
-      ?inheritedTypedPropertyList
-      ?attributeMap
-      ?2*
-      ?let inheritedGetterMap
-      ?let inheritedSetterMap
-      ?let inheritedMethodMap
-      ?9*
-      ?generateHeaderInSeparateFile
-      ?4*
-    ]
+    [!?ioSemanticContext.mTypeMap makeEntry !self.mSuperClassName ?superClassIndex]
+    [ioSemanticContext.mTypeMap searchType !self.mSuperClassName ?let superTypeDefinition]
+    inheritedTypedPropertyList = superTypeDefinition.mAllTypedPropertyList
+    attributeMap = superTypeDefinition.mPropertyMap
+    generateHeaderInSeparateFile = superTypeDefinition.mGenerateHeaderInSeparateFile
+#    [ioSemanticContext.mTypeMap searchKey
+#      !self.mSuperClassName
+#      ?3*
+#      ?let typeKindEnum
+#      ?*
+#      ?inheritedTypedPropertyList
+#      ?attributeMap
+#      ?2*
+#      ?let inheritedGetterMap
+#      ?let inheritedSetterMap
+#      ?let inheritedMethodMap
+#      ?9*
+#      ?generateHeaderInSeparateFile
+#      ?4*
+#    ]
   #---
-    if not [typeKindEnum isClassType] then
+    if not [superTypeDefinition.mTypeKindEnum isClassType] then
       error self.mSuperClassName : "the @" + self.mSuperClassName + " should be a class type"
     end
   #--- Mark all setters as inherited
     setterMap = {}
-    for (lkey mKind mParameterList mHasCompilerArgument * *) in inheritedSetterMap do
+    for (lkey mKind mParameterList mHasCompilerArgument * *) in superTypeDefinition.mSetterMap do
       [!?setterMap insertKey
         !lkey
         !mKind
@@ -269,7 +273,7 @@ override method @classDeclarationAST enterInSemanticContext
     end
   #--- Mark all getters as inherited
     getterMap = {}
-    for (lkey mKind mArgumentTypeList mDeclarationLocation mHasCompilerArgument mReturnedType * mErrorMessage) in inheritedGetterMap do
+    for (lkey mKind mArgumentTypeList mDeclarationLocation mHasCompilerArgument mReturnedType * mErrorMessage) in superTypeDefinition.mGetterMap do
       [!?getterMap insertKey
         !lkey
         !mKind
@@ -283,7 +287,7 @@ override method @classDeclarationAST enterInSemanticContext
     end
   #--- Mark all methods as inherited
     instanceMethodMap = {}
-    for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument * mutability mErrorMessage) in inheritedMethodMap do
+    for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument * mutability mErrorMessage) in superTypeDefinition.mInstanceMethodMap do
       [!?instanceMethodMap insertKey
         !lkey
         !mKind
@@ -332,7 +336,7 @@ override method @classDeclarationAST enterInSemanticContext
 #--- Current class Index
   [!?ioSemanticContext.mTypeMap makeEntry
      !self.mClassTypeName
-     ?let @unifiedTypeMap-entry classIndex
+     ?let @unifiedTypeMapEntry classIndex
   ]
 #--- Constructors
   var @constructorMap constructorMap = {}
@@ -395,7 +399,7 @@ override method @classDeclarationAST enterInSemanticContext
     end
   end
 #--- Enter in type map
-  [!?ioSemanticContext.mTypeMap insertKey
+  let typeDefinition = @unifiedTypeDefinition.new {
     !self.mClassTypeName
     !self.mIsPredefined
     !not self.mIsAbstract # Concrete Type
@@ -419,11 +423,12 @@ override method @classDeclarationAST enterInSemanticContext
     !{}
     !{}
     !generateHeaderInSeparateFile
-    !@unifiedTypeMap-entry.null # Type for enumerated element for "for" instruction
+    !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
     !defaultConstructorName # Default constructor name
     !"class-" + [self.mClassTypeName fileNameRepresentation]
     !@headerKind.twoHeaders
-  ]
+  }
+  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -450,10 +455,10 @@ override method @classDeclarationAST semanticAnalysis
     [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !weakRefTypeNameForUsefulness]
   end
 #------ Self type
-  let @unifiedTypeMap-entry selfType = [inSemanticContext.mTypeMap searchKey !self.mClassTypeName]
+  let @unifiedTypeMapEntry selfType = [inSemanticContext.mTypeMap searchKey !self.mClassTypeName]
 #--- Super class type
-  let @unifiedTypeMap-entry superClassEntry = if self.mSuperClassName.string == ""
-    then @unifiedTypeMap-entry.null
+  let @unifiedTypeMapEntry superClassEntry = if self.mSuperClassName.string == ""
+    then @unifiedTypeMapEntry.null
     else [inSemanticContext.mTypeMap searchKey !self.mSuperClassName]
   end
 #------ check "reference" status:
@@ -538,7 +543,7 @@ override method @classDeclarationAST semanticAnalysis
 refclass @classTypeForGeneration : @semanticTypeForGeneration {
   private let @bool mIsAbstract
   private let @bool mIsReference
-  private let @unifiedTypeMap-entry mSuperClass # Null if no super class
+  private let @unifiedTypeMapEntry mSuperClass # Null if no super class
   private let @typedPropertyList mAllTypedAttributeList # Inherited followed by current attributes
   private let @typedPropertyList mCurrentTypedAttributeList
   private let @bool mGenerateHeaderInSeparateFile # Significant only for classes
@@ -741,7 +746,7 @@ func generateClassGetterDeclaration ?let @lstring inGetterName
 #                                    ?let @methodKind inKind
                                     ?let @functionSignature inArgumentTypeList
                                     ?let @bool inHasCompilerArgument
-                                    ?let @unifiedTypeMap-entry inReturnedType
+                                    ?let @unifiedTypeMapEntry inReturnedType
                                     ?let @methodQualifier inQualifier -> @string {
   var generate = true
   var suffix = ""

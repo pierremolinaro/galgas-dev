@@ -29,7 +29,7 @@ abstract method @semanticInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @localConstantList {
-  public var @unifiedTypeMap-entry mType
+  public var @unifiedTypeMapEntry mType
   public var @lstring mName
   public var @bool mNoWarningIfUnused
   public var @string mCppName
@@ -38,7 +38,7 @@ list @localConstantList {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @localInitializedVariableList {
-  public var @unifiedTypeMap-entry mType
+  public var @unifiedTypeMapEntry mType
 #  public var @bool mIsUnused
   public var @lstring mName
   public var @string mCppName
@@ -124,7 +124,7 @@ abstract method @actualParameterAST checkAgainstFormalArgument
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @lstring inFormalSelector
-  ?let @unifiedTypeMap-entry inFormalArgumentType
+  ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@localVarManager ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -149,7 +149,7 @@ override method @outputActualParameterAST checkAgainstFormalArgument
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @lstring inFormalSelector
-  ?let @unifiedTypeMap-entry inFormalArgumentType
+  ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@localVarManager ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -191,7 +191,7 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?let @lstring inFormalSelector
-  ?let @unifiedTypeMap-entry inFormalArgumentType
+  ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@localVarManager ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -207,8 +207,8 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
 #    error self.mActualSelector : "the selector should be '!?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
   end
 #--- Analyze input/output variable
-  [!?ioVariableMap searchForReadWriteAccess !self.mOutputInputActualParameterName ?var @unifiedTypeMap-entry parameterType ?let variableCppName ?*]
-  var typeList = @unifiedTypeMap-entryList.listWithValue {!parameterType}
+  [!?ioVariableMap searchForReadWriteAccess !self.mOutputInputActualParameterName ?var @unifiedTypeMapEntry parameterType ?let variableCppName ?*]
+  var typeList = @unifiedTypeMapEntryList.listWithValue {!parameterType}
   for (mValue) in self.mStructAttributeList do
     let propertyMap = [parameterType mPropertyMap]
     [propertyMap searchKey
@@ -252,7 +252,7 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?let @lstring inFormalSelector
-  ?let @unifiedTypeMap-entry inFormalArgumentType
+  ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@localVarManager unused ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -282,7 +282,7 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
     !inFormalArgumentType
     !cppVarName
     !{}
-    !@unifiedTypeMap-entryList. listWithValue {!inFormalArgumentType}}
+    !@unifiedTypeMapEntryList. listWithValue {!inFormalArgumentType}}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -292,7 +292,7 @@ override method @outputInputJokerParameterAST checkAgainstFormalArgument
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?let @lstring unused inFormalSelector
-  ?let @unifiedTypeMap-entry inFormalArgumentType
+  ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@localVarManager unused ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -318,7 +318,7 @@ override method @outputInputJokerParameterAST checkAgainstFormalArgument
     !inFormalArgumentType
     !cppVarName
     !{}
-    !@unifiedTypeMap-entryList. listWithValue {!inFormalArgumentType}}
+    !@unifiedTypeMapEntryList. listWithValue {!inFormalArgumentType}}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -328,7 +328,7 @@ override method @inputActualExistingVariableParameterAST checkAgainstFormalArgum
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?let @lstring inFormalSelector
-  ?let @unifiedTypeMap-entry inFormalArgumentType
+  ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@localVarManager ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -375,7 +375,7 @@ override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @lstring inFormalSelector
-  ?let @unifiedTypeMap-entry inFormalArgumentType
+  ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@localVarManager unused ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -417,7 +417,7 @@ override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
   
   
   
-#  var @unifiedTypeMap-entry parameterType
+#  var @unifiedTypeMapEntry parameterType
 #  var @string targetVariableCppName
 #  if [inAnalysisContext.mutableSelfType isNull] then
 #    error self.mInputActualSelfPropertyName: "'self' cannot be used in this context"
@@ -447,7 +447,7 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @lstring inFormalSelector
-  ?let @unifiedTypeMap-entry inFormalArgumentType
+  ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@localVarManager ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -506,7 +506,7 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @lstring inFormalSelector
-  ?let @unifiedTypeMap-entry inFormalArgumentType
+  ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@localVarManager ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -574,7 +574,7 @@ override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?let @lstring inFormalSelector
-  ?let @unifiedTypeMap-entry inFormalArgumentType
+  ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@localVarManager unused ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -604,7 +604,7 @@ override method @inputJokerActualParameterAST checkAgainstFormalArgument
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?let @lstring unused inFormalSelector
-  ?let @unifiedTypeMap-entry inFormalArgumentType
+  ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@localVarManager unused ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -737,7 +737,7 @@ proc checkExpressionIsBoolean
         !@lstring.new {!"bool" !inErrorLocation}
         ?let isPublic 
         ?*
-        ?let @unifiedTypeMap-entry attributeType
+        ?let @unifiedTypeMapEntry attributeType
       ]
       if not isPublic then
         error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
@@ -837,7 +837,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
   if not inHasTranslateFeature then
     error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
-  [!?ioVariableMap searchForWriteAccess !self.mActualParameterName ?let @unifiedTypeMap-entry type ?let @string cppName ?*]
+  [!?ioVariableMap searchForWriteAccess !self.mActualParameterName ?let @unifiedTypeMapEntry type ?let @string cppName ?*]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
   if expectedType != type then
     error self.mActualParameterName

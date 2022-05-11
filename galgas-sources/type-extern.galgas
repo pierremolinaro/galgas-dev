@@ -373,7 +373,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
       [!?ioSemanticContext.mTypeMap makeEntry
         !mFormalArgumentTypeName
-        ?let @unifiedTypeMap-entry parameterTypeIndex
+        ?let @unifiedTypeMapEntry parameterTypeIndex
       ]
       routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
     end
@@ -410,11 +410,11 @@ override method @externTypeDeclarationAST enterInSemanticContext
     ]
   end
 #--- Enter type in type map
-  [!?ioSemanticContext.mTypeMap insertKey
+  let typeDefinition = @unifiedTypeDefinition.new {
     !self.mExternTypeName
     !self.mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-entry.null
+    !@unifiedTypeMapEntry.null
     !@typeKindEnum. externType
     !false # Does not support collection value
     !{}
@@ -434,11 +434,12 @@ override method @externTypeDeclarationAST enterInSemanticContext
     !{}
     !{}
     !false # Do not generate header in separate file
-    !@unifiedTypeMap-entry.null # Type for enumerated element for "for" instruction
+    !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
     !"default" # Default constructor
     !"externtype-" + [self.mExternTypeName fileNameRepresentation]
     !@headerKind.oneHeader
-  ]
+  }
+  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

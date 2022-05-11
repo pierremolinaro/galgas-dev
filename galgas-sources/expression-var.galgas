@@ -52,14 +52,14 @@ override method @varInExpressionAST enterExpressionInSemanticContext
 override method @varInExpressionAST analyzeSemanticExpression
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry unused inType
+  ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext unused inAnalysisContext
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   [!?ioVariableMap searchForReadAccess
     !self.mVarName
-    ?let @unifiedTypeMap-entry type
+    ?let @unifiedTypeMapEntry type
     ?let @string sourceVariableCppName
     ?let @string nameForCheckingFormalParameterUsing
   ]

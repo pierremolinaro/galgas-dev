@@ -291,7 +291,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   ?!@localVarManager ioVariableMap
 {
 #--- Check target variable, or self.property
-  var @unifiedTypeMap-entry targetType
+  var @unifiedTypeMapEntry targetType
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
@@ -370,7 +370,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
   ?!@localVarManager ioVariableMap
 {
 #--- Check target variable, or self.property
-  var @unifiedTypeMap-entry targetType
+  var @unifiedTypeMapEntry targetType
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
@@ -449,7 +449,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
   ?!@localVarManager ioVariableMap
 {
 #--- Check target variable, or self.property
-  var @unifiedTypeMap-entry targetType
+  var @unifiedTypeMapEntry targetType
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
@@ -483,7 +483,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
 #--- Check target variable
 #  [!?ioVariableMap searchForReadWriteAccess
 #    !self.mReceiverName 
-#    ?@unifiedTypeMap-entry targetType
+#    ?@unifiedTypeMapEntry targetType
 #    ?@string targetVariableCppName
 #    ?@string nameForCheckingFormalParameterUsing
 #  ]
@@ -535,7 +535,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
   ?!@localVarManager ioVariableMap
 {
 #--- Check target variable, or self.property
-  var @unifiedTypeMap-entry targetType
+  var @unifiedTypeMapEntry targetType
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
@@ -615,7 +615,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
   ?!@localVarManager ioVariableMap
 {
 #--- Check target variable, or self.property
-  var @unifiedTypeMap-entry targetType
+  var @unifiedTypeMapEntry targetType
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
@@ -723,7 +723,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
 
 refclass @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
   private let @string mReceiverCppName
-  private let @unifiedTypeMap-entry mTargetType
+  private let @unifiedTypeMapEntry mTargetType
   private let @string mNameForCheckingFormalParameterUsing
   private let @location mInstructionLocation
   private let @lstringlist mStructAttributeList
@@ -775,7 +775,7 @@ override method @plusEqualnstructionForGeneration generateInstruction
 
 refclass @opEqualInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
-  private let @unifiedTypeMap-entry mTargetType
+  private let @unifiedTypeMapEntry mTargetType
   private let @string mTargetVariableCppName
   private let @string mNameForCheckingFormalParameterUsing
   private let @lstringlist mStructAttributeList

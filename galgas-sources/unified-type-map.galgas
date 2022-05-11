@@ -15,272 +15,11 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-map @unifiedTypeMap {
-  public var @unifiedTypeMapElementClass mElement
-  insert internalInsertKey error message "the '%K' key is already declared in %L"
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMap unsolvedEntryList -> @lstringlist {
-  result = {}
-  for (lkey element) in self do
-    if [element.mDefinition isUnsolved] then
-      result += !lkey
-    end
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-setter @unifiedTypeMap makeEntry ?let @lstring inLKey !@unifiedTypeMap-entry outEntry {
-  if inLKey.string == "" then
-    outEntry = .null
-  elsif let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
-    outEntry = .element {!weakElement: element}
-  else
-    let newElement = @unifiedTypeMapElementClass.new {!.unsolved}
-    [!?self internalInsertKey !inLKey !newElement]
-    outEntry = .element {!weakElement: newElement}
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-setter @unifiedTypeMap makeEntryFromString ?let @string inKey !@unifiedTypeMap-entry outEntry {
-  if inKey == "" then
-    outEntry = .null
-  elsif let [self searchKey !inKey ?let @unifiedTypeMapElementClass element] then
-    outEntry = .element {!weakElement: element}
-  else
-    let newElement = @unifiedTypeMapElementClass.new {!.unsolved}
-    [!?self internalInsertKey !.new {!inKey !.nowhere} !newElement]
-    outEntry = .element {!weakElement: newElement}
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMap searchKey ?let @lstring inLKey -> @unifiedTypeMap-entry {
-  if inLKey.string == "" then
-    result = .null
-  elsif let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
-    result = .element {!weakElement: element}
-  else
-    error inLKey : "there is not '@" + inLKey + "' type" : result
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-setter @unifiedTypeMap insertKey ?let @lstring inLKey
-                                 ?let @bool inIsPredefined
-                                 ?let @bool inIsConcrete
-                                 ?let @unifiedTypeMap-entry inSuperType
-                                 ?let @typeKindEnum inTypeKindEnum
-                                 ?let @bool inSupportCollectionValue
-                                 ?let @typedPropertyList inAllTypedPropertyList
-                                 ?let @propertyMap inPropertyMap 
-                                 ?let @typedPropertyList inCurrentTypedPropertyList
-                                 ?let @constructorMap inConstructorMap
-                                 ?let @getterMap inGetterMap
-                                 ?let @setterMap inSetterMap
-                                 ?let @instanceMethodMap inInstanceMethodMap
-                                 ?let @classMethodMap inClassMethodMap
-                                 ?let @optionalMethodMap inOptionalMethodMap
-                                 ?let @enumerationDescriptorList inEnumerationDescriptor
-                                 ?let @operators inHandledOperatorFlags
-                                 ?let @functionSignature inAddAssignOperatorArguments
-                                 ?let @constantIndexMap inEnumConstantMap
-                                 ?let @enumConstantList inEnumConstantList
-                                 ?let @mapSearchMethodListAST inMapSearchMethodList
-                                 ?let @mapSearchMethodListAST inMapEntrySearchConstructorList
-                                 ?let @bool inGenerateHeaderInSeparateFile 
-                                 ?let @unifiedTypeMap-entry inTypeForEnumeratedElement
-                                 ?let @string inDefaultConstructorName 
-                                 ?let @string inHeaderFileName 
-                                 ?let @headerKind inHeaderKind {
-  let definition = @unifiedTypeDefinition.new {
-    !inLKey
-    !inIsPredefined
-    !inIsConcrete
-    !inSuperType
-    !inTypeKindEnum
-    !inSupportCollectionValue
-    !inAllTypedPropertyList
-    !inPropertyMap 
-    !inCurrentTypedPropertyList
-    !inConstructorMap
-    !inGetterMap
-    !inSetterMap
-    !inInstanceMethodMap
-    !inClassMethodMap
-    !inOptionalMethodMap
-    !inEnumerationDescriptor
-    !inHandledOperatorFlags
-    !inAddAssignOperatorArguments
-    !inEnumConstantMap
-    !inEnumConstantList
-    !inMapSearchMethodList
-    !inMapEntrySearchConstructorList
-    !inGenerateHeaderInSeparateFile 
-    !inTypeForEnumeratedElement
-    !inDefaultConstructorName 
-    !inHeaderFileName 
-    !inHeaderKind 
-  }
-  if let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
-    switch element.mDefinition
-    case solved (*) :
-      error inLKey : "type already defined"
-    case unsolved :
-      var e = element
-      e.mDefinition = .solved {!definition: definition}
-    end
-  else
-    let newElement = @unifiedTypeMapElementClass.new {!.solved {!definition: definition}}
-    [!?self internalInsertKey !inLKey !newElement]
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-method @unifiedTypeMap searchKey ?let @lstring inLKey
-                                 !@bool outIsPredefined
-                                 !@bool outIsConcrete
-                                 !@unifiedTypeMap-entry outSuperType
-                                 !@typeKindEnum outTypeKindEnum
-                                 !@bool outSupportCollectionValue
-                                 !@typedPropertyList outAllTypedPropertyList
-                                 !@propertyMap outPropertyMap 
-                                 !@typedPropertyList outCurrentTypedPropertyList
-                                 !@constructorMap outConstructorMap
-                                 !@getterMap outGetterMap
-                                 !@setterMap outSetterMap
-                                 !@instanceMethodMap outInstanceMethodMap
-                                 !@classMethodMap outClassMethodMap
-                                 !@optionalMethodMap outOptionalMethodMap
-                                 !@enumerationDescriptorList outEnumerationDescriptor
-                                 !@operators outHandledOperatorFlags
-                                 !@functionSignature outAddAssignOperatorArguments
-                                 !@constantIndexMap outEnumConstantMap
-                                 !@enumConstantList outEnumConstantList
-                                 !@mapSearchMethodListAST outMapSearchMethodList
-                                 !@mapSearchMethodListAST outMapEntrySearchConstructorList
-                                 !@bool outGenerateHeaderInSeparateFile 
-                                 !@unifiedTypeMap-entry outTypeForEnumeratedElement
-                                 !@string outDefaultConstructorName 
-                                 !@string outHeaderFileName 
-                                 !@headerKind outHeaderKind {
-  if let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
-    switch element.mDefinition
-    case solved (definition) :
-      outIsPredefined = definition.mIsPredefined
-      outIsConcrete = definition.mIsConcrete
-      outSuperType = definition.mSuperType
-      outTypeKindEnum = definition.mTypeKindEnum
-      outSupportCollectionValue = definition.mSupportCollectionValue
-      outAllTypedPropertyList = definition.mAllTypedPropertyList
-      outPropertyMap = definition.mPropertyMap
-      outCurrentTypedPropertyList = definition.mCurrentTypedPropertyList
-      outConstructorMap = definition.mConstructorMap
-      outGetterMap = definition.mGetterMap
-      outSetterMap = definition.mSetterMap 
-      outInstanceMethodMap = definition.mInstanceMethodMap
-      outClassMethodMap = definition.mClassMethodMap
-      outOptionalMethodMap = definition.mOptionalMethodMap
-      outEnumerationDescriptor = definition.mEnumerationDescriptor
-      outHandledOperatorFlags = definition.mHandledOperatorFlags
-      outAddAssignOperatorArguments = definition.mAddAssignOperatorArguments
-      outEnumConstantMap = definition.mEnumConstantMap
-      outEnumConstantList = definition.mEnumConstantList
-      outMapSearchMethodList = definition.mMapSearchMethodList
-      outMapEntrySearchConstructorList = definition.mMapEntrySearchConstructorList
-      outGenerateHeaderInSeparateFile = definition.mGenerateHeaderInSeparateFile
-      outTypeForEnumeratedElement = definition.mTypeForEnumeratedElement
-      outDefaultConstructorName = definition.mDefaultConstructorName
-      outHeaderFileName = definition.mHeaderFileName
-      outHeaderKind = definition.mHeaderKind
-    case unsolved :
-      error inLKey : "unsolved type" :
-        outIsPredefined,
-        outIsConcrete,
-        outSuperType,
-        outTypeKindEnum,
-        outSupportCollectionValue,
-        outAllTypedPropertyList,
-        outPropertyMap,
-        outCurrentTypedPropertyList,
-        outConstructorMap,
-        outGetterMap,
-        outSetterMap,
-        outInstanceMethodMap,
-        outClassMethodMap,
-        outOptionalMethodMap,
-        outEnumerationDescriptor,
-        outHandledOperatorFlags,
-        outAddAssignOperatorArguments,
-        outEnumConstantMap,
-        outEnumConstantList,
-        outMapSearchMethodList,
-        outMapEntrySearchConstructorList,
-        outGenerateHeaderInSeparateFile,
-        outTypeForEnumeratedElement,
-        outDefaultConstructorName,
-        outHeaderFileName,
-        outHeaderKind
-    end
-  else
-    error inLKey : "there is not '@" + inLKey + "' type" : 
-      outIsPredefined,
-      outIsConcrete,
-      outSuperType,
-      outTypeKindEnum,
-      outSupportCollectionValue,
-      outAllTypedPropertyList,
-      outPropertyMap,
-      outCurrentTypedPropertyList,
-      outConstructorMap,
-      outGetterMap,
-      outSetterMap,
-      outInstanceMethodMap,
-      outClassMethodMap,
-      outOptionalMethodMap,
-      outEnumerationDescriptor,
-      outHandledOperatorFlags,
-      outAddAssignOperatorArguments,
-      outEnumConstantMap,
-      outEnumConstantList,
-      outMapSearchMethodList,
-      outMapEntrySearchConstructorList,
-      outGenerateHeaderInSeparateFile,
-      outTypeForEnumeratedElement,
-      outDefaultConstructorName,
-      outHeaderFileName,
-      outHeaderKind
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @unifiedTypeMapElementClass {
-  public var @typeDefinition mDefinition
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum @typeDefinition {
-  case unsolved
-  case solved (@unifiedTypeDefinition definition)
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 struct @unifiedTypeDefinition {
-  public let @lstring mLKey
+  public let @lstring mTypeName
   public let @bool mIsPredefined
   public let @bool mIsConcrete # false if abstract class
-  public let @unifiedTypeMap-entry mSuperType
+  public let @unifiedTypeMapEntry mSuperType
   public let @typeKindEnum mTypeKindEnum
   public let @bool mSupportCollectionValue
   public let @typedPropertyList mAllTypedPropertyList
@@ -300,7 +39,7 @@ struct @unifiedTypeDefinition {
   public let @mapSearchMethodListAST mMapSearchMethodList # For a map, the list of search methods
   public let @mapSearchMethodListAST mMapEntrySearchConstructorList # For a map entry, the list of search methods of the associated map
   public let @bool mGenerateHeaderInSeparateFile # Significant only for classes
-  public let @unifiedTypeMap-entry mTypeForEnumeratedElement
+  public let @unifiedTypeMapEntry mTypeForEnumeratedElement
   public let @string mDefaultConstructorName # Used in [@xxx default] (empty string if no default constructor)
   public let @string mHeaderFileName # Name of C++ header file that contains type declaration
   public let @headerKind mHeaderKind
@@ -308,10 +47,115 @@ struct @unifiedTypeDefinition {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @unifiedTypeMap-entry {
+getter @unifiedTypeMap unsolvedEntryList -> @lstringlist {
+  result = {}
+  for (lkey element) in self do
+    if [element.mDefinition isUnsolved] then
+      result += !lkey
+    end
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @unifiedTypeMap makeEntry ?let @lstring inLKey !@unifiedTypeMapEntry outEntry {
+  if inLKey.string == "" then
+    outEntry = .null
+  elsif let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
+    outEntry = .element {!weakElement: element}
+  else
+    let newElement = @unifiedTypeMapElementClass.new {!.unsolved}
+    [!?self internalInsertKey !inLKey !newElement]
+    outEntry = .element {!weakElement: newElement}
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @unifiedTypeMap makeEntryFromString ?let @string inKey !@unifiedTypeMapEntry outEntry {
+  if inKey == "" then
+    outEntry = .null
+  elsif let [self searchKey !inKey ?let @unifiedTypeMapElementClass element] then
+    outEntry = .element {!weakElement: element}
+  else
+    let newElement = @unifiedTypeMapElementClass.new {!.unsolved}
+    [!?self internalInsertKey !.new {!inKey !.nowhere} !newElement]
+    outEntry = .element {!weakElement: newElement}
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+getter @unifiedTypeMap searchKey ?let @lstring inLKey -> @unifiedTypeMapEntry {
+  if inLKey.string == "" then
+    result = .null
+  elsif let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
+    result = .element {!weakElement: element}
+  else
+    error inLKey : "there is not '@" + inLKey + "' type" : result
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @unifiedTypeMap insertType ?let @unifiedTypeDefinition inTypeDefinition {
+  if let [self searchKey !inTypeDefinition.mTypeName ?let @unifiedTypeMapElementClass element] then
+    switch element.mDefinition
+    case solved (*) :
+      error inTypeDefinition.mTypeName : "type already defined"
+    case unsolved :
+      var e = element
+      e.mDefinition = .solved {!definition: inTypeDefinition}
+    end
+  else
+    let newElement = @unifiedTypeMapElementClass.new {!.solved {!definition: inTypeDefinition}}
+    [!?self internalInsertKey !inTypeDefinition.mTypeName !newElement]
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+method @unifiedTypeMap searchType ?let @lstring inLKey
+                                  !@unifiedTypeDefinition outTypeDefinition {
+  if let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
+    switch element.mDefinition
+    case solved (definition) :
+      outTypeDefinition = definition
+    case unsolved :
+      error inLKey : "unsolved type" : outTypeDefinition
+    end
+  else
+    error inLKey : "there is not '@" + inLKey + "' type" : outTypeDefinition
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! Types
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+map @unifiedTypeMap {
+  private var @unifiedTypeMapElementClass mElement
+  insert internalInsertKey error message "the '%K' key is already declared in %L"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @unifiedTypeMapElementClass {
+  public var @typeDefinition mDefinition
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum @typeDefinition {
+  case unsolved
+  case solved (@unifiedTypeDefinition definition)
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum @unifiedTypeMapEntry {
   case null
   case element (@unifiedTypeMapElementClass-weak weakElement)
-#  case element (@unifiedTypeMapElementClass element @unifiedTypeMapElementClass-weak weakElement)
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -329,19 +173,13 @@ getter @unifiedTypeMapElementClass definition -> @unifiedTypeDefinition {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMapElementClass lkey -> @lstring {
-  result = [self definition].mLKey
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 getter @unifiedTypeMapElementClass mIsConcrete -> @bool {
   result = [self definition].mIsConcrete
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMapElementClass mSuperType -> @unifiedTypeMap-entry {
+getter @unifiedTypeMapElementClass mSuperType -> @unifiedTypeMapEntry {
   result = [self definition].mSuperType
 }
 
@@ -349,30 +187,6 @@ getter @unifiedTypeMapElementClass mSuperType -> @unifiedTypeMap-entry {
 
 getter @unifiedTypeMapElementClass mTypeKindEnum -> @typeKindEnum {
   result = [self definition].mTypeKindEnum
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mSupportCollectionValue -> @bool {
-  result = [self definition].mSupportCollectionValue
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mAllTypedPropertyList -> @typedPropertyList {
-  result = [self definition].mAllTypedPropertyList
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mPropertyMap -> @propertyMap {
-  result = [self definition].mPropertyMap
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mCurrentTypedPropertyList -> @typedPropertyList {
-  result = [self definition].mCurrentTypedPropertyList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -407,12 +221,6 @@ getter @unifiedTypeMapElementClass mClassMethodMap -> @classMethodMap {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMapElementClass mOptionalMethodMap -> @optionalMethodMap {
-  result = [self definition].mOptionalMethodMap
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 getter @unifiedTypeMapElementClass mEnumerationDescriptor -> @enumerationDescriptorList {
   result = [self definition].mEnumerationDescriptor
 }
@@ -431,73 +239,18 @@ getter @unifiedTypeMapElementClass mAddAssignOperatorArguments -> @functionSigna
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMapElementClass mEnumConstantMap -> @constantIndexMap {
-  result = [self definition].mEnumConstantMap
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mEnumConstantList -> @enumConstantList {
-  result = [self definition].mEnumConstantList
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mMapSearchMethodList -> @mapSearchMethodListAST {
-  result = [self definition].mMapSearchMethodList
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mMapEntrySearchConstructorList -> @mapSearchMethodListAST {
-  result = [self definition].mMapEntrySearchConstructorList
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mGenerateHeaderInSeparateFile -> @bool {
-  result = [self definition].mGenerateHeaderInSeparateFile
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mTypeForEnumeratedElement -> @unifiedTypeMap-entry {
+getter @unifiedTypeMapElementClass mTypeForEnumeratedElement -> @unifiedTypeMapEntry {
   result = [self definition].mTypeForEnumeratedElement
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mDefaultConstructorName -> @string {
-  result = [self definition].mDefaultConstructorName
-}
-
+#! @unifiedTypeMapEntry getters
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMapElementClass mHeaderKind -> @headerKind {
-  result = [self definition].mHeaderKind
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapElementClass mHeaderFileName -> @string {
-  result = [self definition].mHeaderFileName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-# @unifiedTypeMap-entry getters
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMap-entry definition -> @unifiedTypeDefinition {
+getter @unifiedTypeMapEntry definition -> @unifiedTypeDefinition {
   switch self
   case null :
     error .nowhere : "null type" : result
-#  case element (element *) :
-#    switch element.mDefinition
-#    case unsolved :
-#      error .nowhere : "unsolved type" : result
-#    case solved (definition) :
-#      result = definition
-#    end
   case element (weakElement) :
     if let type = weakElement then
       switch type.mDefinition
@@ -514,181 +267,181 @@ getter @unifiedTypeMap-entry definition -> @unifiedTypeDefinition {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry lkey -> @lstring {
-  result = [self definition].mLKey
+getter @unifiedTypeMapEntry lkey -> @lstring {
+  result = [self definition].mTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry key -> @string {
-  result = [self definition].mLKey.string
+getter @unifiedTypeMapEntry key -> @string {
+  result = [self definition].mTypeName.string
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry identifierRepresentation -> @string {
-  result = [[self definition].mLKey.string identifierRepresentation]
+getter @unifiedTypeMapEntry identifierRepresentation -> @string {
+  result = [[self definition].mTypeName.string identifierRepresentation]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mIsPredefined -> @bool {
+getter @unifiedTypeMapEntry mIsPredefined -> @bool {
   result = [self definition].mIsPredefined
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mIsConcrete -> @bool {
+getter @unifiedTypeMapEntry mIsConcrete -> @bool {
   result = [self definition].mIsConcrete
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mSuperType -> @unifiedTypeMap-entry {
+getter @unifiedTypeMapEntry mSuperType -> @unifiedTypeMapEntry {
   result = [self definition].mSuperType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mTypeKindEnum -> @typeKindEnum {
+getter @unifiedTypeMapEntry mTypeKindEnum -> @typeKindEnum {
   result = [self definition].mTypeKindEnum
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mSupportCollectionValue -> @bool {
+getter @unifiedTypeMapEntry mSupportCollectionValue -> @bool {
   result = [self definition].mSupportCollectionValue
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mAllTypedPropertyList -> @typedPropertyList {
+getter @unifiedTypeMapEntry mAllTypedPropertyList -> @typedPropertyList {
   result = [self definition].mAllTypedPropertyList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mPropertyMap -> @propertyMap {
+getter @unifiedTypeMapEntry mPropertyMap -> @propertyMap {
   result = [self definition].mPropertyMap
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mCurrentTypedPropertyList -> @typedPropertyList {
+getter @unifiedTypeMapEntry mCurrentTypedPropertyList -> @typedPropertyList {
   result = [self definition].mCurrentTypedPropertyList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mConstructorMap -> @constructorMap {
+getter @unifiedTypeMapEntry mConstructorMap -> @constructorMap {
   result = [self definition].mConstructorMap
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mGetterMap -> @getterMap {
+getter @unifiedTypeMapEntry mGetterMap -> @getterMap {
   result = [self definition].mGetterMap
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mSetterMap -> @setterMap {
+getter @unifiedTypeMapEntry mSetterMap -> @setterMap {
   result = [self definition].mSetterMap
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mInstanceMethodMap -> @instanceMethodMap {
+getter @unifiedTypeMapEntry mInstanceMethodMap -> @instanceMethodMap {
   result = [self definition].mInstanceMethodMap
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mClassMethodMap -> @classMethodMap {
+getter @unifiedTypeMapEntry mClassMethodMap -> @classMethodMap {
   result = [self definition].mClassMethodMap
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mOptionalMethodMap -> @optionalMethodMap {
+getter @unifiedTypeMapEntry mOptionalMethodMap -> @optionalMethodMap {
   result = [self definition].mOptionalMethodMap
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mEnumerationDescriptor -> @enumerationDescriptorList {
+getter @unifiedTypeMapEntry mEnumerationDescriptor -> @enumerationDescriptorList {
   result = [self definition].mEnumerationDescriptor
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mHandledOperatorFlags -> @operators {
+getter @unifiedTypeMapEntry mHandledOperatorFlags -> @operators {
   result = [self definition].mHandledOperatorFlags
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mAddAssignOperatorArguments -> @functionSignature {
+getter @unifiedTypeMapEntry mAddAssignOperatorArguments -> @functionSignature {
   result = [self definition].mAddAssignOperatorArguments
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mEnumConstantMap -> @constantIndexMap {
+getter @unifiedTypeMapEntry mEnumConstantMap -> @constantIndexMap {
   result = [self definition].mEnumConstantMap
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mEnumConstantList -> @enumConstantList {
+getter @unifiedTypeMapEntry mEnumConstantList -> @enumConstantList {
   result = [self definition].mEnumConstantList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mMapSearchMethodList -> @mapSearchMethodListAST {
+getter @unifiedTypeMapEntry mMapSearchMethodList -> @mapSearchMethodListAST {
   result = [self definition].mMapSearchMethodList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mMapEntrySearchConstructorList -> @mapSearchMethodListAST {
+getter @unifiedTypeMapEntry mMapEntrySearchConstructorList -> @mapSearchMethodListAST {
   result = [self definition].mMapEntrySearchConstructorList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mGenerateHeaderInSeparateFile -> @bool {
+getter @unifiedTypeMapEntry mGenerateHeaderInSeparateFile -> @bool {
   result = [self definition].mGenerateHeaderInSeparateFile
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mTypeForEnumeratedElement -> @unifiedTypeMap-entry {
+getter @unifiedTypeMapEntry mTypeForEnumeratedElement -> @unifiedTypeMapEntry {
   result = [self definition].mTypeForEnumeratedElement
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mDefaultConstructorName -> @string {
+getter @unifiedTypeMapEntry mDefaultConstructorName -> @string {
   result = [self definition].mDefaultConstructorName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mHeaderKind -> @headerKind {
+getter @unifiedTypeMapEntry mHeaderKind -> @headerKind {
   result = [self definition].mHeaderKind
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry mHeaderFileName -> @string {
+getter @unifiedTypeMapEntry mHeaderFileName -> @string {
   result = [self definition].mHeaderFileName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMap-entry baseType -> @unifiedTypeMap-entry outBaseType {
+getter @unifiedTypeMapEntry baseType -> @unifiedTypeMapEntry outBaseType {
   outBaseType = self
   loop while not [[outBaseType mSuperType] isNull] do
     outBaseType = [outBaseType mSuperType]
@@ -697,7 +450,7 @@ getter @unifiedTypeMap-entry baseType -> @unifiedTypeMap-entry outBaseType {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-method @unifiedTypeMap-entry addHeaderFileName ?!@stringset ioInclusions {
+method @unifiedTypeMapEntry addHeaderFileName ?!@stringset ioInclusions {
   if (not [self mIsPredefined]) & ([self mHeaderKind] != .noHeader) then
     ioInclusions += ![self mHeaderFileName]
   end
@@ -705,7 +458,7 @@ method @unifiedTypeMap-entry addHeaderFileName ?!@stringset ioInclusions {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-method @unifiedTypeMap-entry addHeaderFileName1 ?!@stringset ioInclusions {
+method @unifiedTypeMapEntry addHeaderFileName1 ?!@stringset ioInclusions {
   if not [self mIsPredefined] then
     switch [self mHeaderKind]
     case noHeader :

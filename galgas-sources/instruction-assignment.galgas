@@ -156,7 +156,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap
 {
 #--- Get target variable type
-  var @unifiedTypeMap-entry targetType
+  var @unifiedTypeMapEntry targetType
   if self.mOptionalProperty.string == "" then
     [!?ioVariableMap neutralAccess
       !self.mTargetVariableName
@@ -286,7 +286,7 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
-  private let @unifiedTypeMap-entry mTargetType
+  private let @unifiedTypeMapEntry mTargetType
   private let @string mTargetCppName
   private let @string mNameForCheckingFormalParameterUsing
   private let @string mOptionalProperty

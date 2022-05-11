@@ -151,12 +151,12 @@ override method @collectionValueAST enterExpressionInSemanticContext ?!@unifiedT
 override method @collectionValueAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry inType
+  ?inferenceType: let @unifiedTypeMapEntry inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Type
-  let @unifiedTypeMap-entry targetType
+  let @unifiedTypeMapEntry targetType
   if self.mTypeName.string == "" then
     targetType = inType
   else
@@ -219,7 +219,7 @@ abstract method @abstractCollectionValueElement analyze
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-  ?let @unifiedTypeMap-entry inElementType
+  ?let @unifiedTypeMapEntry inElementType
   ?!@localVarManager ioVariableMap
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
 
@@ -229,7 +229,7 @@ override method @expressionCollectionValue analyze
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-  ?let @unifiedTypeMap-entry inElementType
+  ?let @unifiedTypeMapEntry inElementType
   ?!@localVarManager ioVariableMap
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
 {
@@ -253,7 +253,7 @@ override method @expressionListCollectionValue analyze
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-  ?let @unifiedTypeMap-entry inElementType
+  ?let @unifiedTypeMapEntry inElementType
   ?!@localVarManager ioVariableMap
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration {
   let @functionSignature formalParameterTypeList = [inElementType mAddAssignOperatorArguments]
@@ -305,7 +305,7 @@ abstract refclass @abstractCollectionValueElementForGeneration {
 #·····················································································································
 
 abstract method @abstractCollectionValueElementForGeneration generateCollectionElementCode
-  ?let @unifiedTypeMap-entry inTargetType
+  ?let @unifiedTypeMapEntry inTargetType
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
@@ -321,7 +321,7 @@ refclass @expressionCollectionValueForGeneration : @abstractCollectionValueEleme
 #·····················································································································
 
 override method @expressionCollectionValueForGeneration generateCollectionElementCode
-  ?let @unifiedTypeMap-entry unused inTargetType
+  ?let @unifiedTypeMapEntry unused inTargetType
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
@@ -350,7 +350,7 @@ refclass @expressionListCollectionForGeneration : @abstractCollectionValueElemen
 #·····················································································································
 
 override method @expressionListCollectionForGeneration generateCollectionElementCode
-  ?let @unifiedTypeMap-entry inTargetType
+  ?let @unifiedTypeMapEntry inTargetType
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex

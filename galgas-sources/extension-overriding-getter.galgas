@@ -149,16 +149,16 @@ override method @overridingExtensionGetterAST semanticAnalysis
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
   [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMap-entry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
+  let @unifiedTypeMapEntry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- Check self type is a class
   if not [[selfType mTypeKindEnum] isClassType] then
     error self.mOverridingExtensionGetterName: "cannot declare a extension getter: '@" + [selfType key] + "' is not a class"
   end
 #--- Find base type name
   var @string baseTypeName = ""
-  var @unifiedTypeMap-entry superType = [selfType mSuperType]
+  var @unifiedTypeMapEntry superType = [selfType mSuperType]
   var @functionSignature inheritedSignature = {}
-  var inheritedReturnType = @unifiedTypeMap-entry.null{}
+  var inheritedReturnType = @unifiedTypeMapEntry.null{}
   var @location inheritedDeclarationLocation = @location.here
   loop ([inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
@@ -206,7 +206,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
     !self.mOverridingExtensionGetterReturnedTypeName
     !self.mEndOfReaderLocation
     ?let @formalInputParameterListForGeneration formalParameterListForGeneration
-    ?let @unifiedTypeMap-entry returnType
+    ?let @unifiedTypeMapEntry returnType
     ?let @string returnVariableCppName
     ?let @semanticInstructionListForGeneration semanticInstructionListForGeneration
   )
@@ -265,10 +265,10 @@ override method @overridingExtensionGetterAST buildExtensionListMaps
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @overrideExtensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  private let @unifiedTypeMap-entry mReceiverType
+  private let @unifiedTypeMapEntry mReceiverType
   private let @string mBaseTypeName
   private let @string mOverridingExtensionGetterName
-  private let @unifiedTypeMap-entry mResultType
+  private let @unifiedTypeMapEntry mResultType
   private let @string mResultVarCppName
   private let @formalInputParameterListForGeneration mOverridingExtensionGetterFormalParameterList
   private let @typedPropertyList mTypedAttributeList

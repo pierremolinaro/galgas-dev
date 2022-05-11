@@ -179,7 +179,7 @@ override method @boolsetDeclarationAST enterInSemanticContext
   let operators = @operators.infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator
     | .generateDescriptionGetterUtilityMethod | .infixSubOperator | .isComparable
 #--- Enter in type map
-  [!?ioSemanticContext.mTypeMap insertKey
+  let typeDefinition = @unifiedTypeDefinition.new {
     !self.mBoolsetTypeName
     !self.mIsPredefined
     !true # Concrete Type
@@ -207,7 +207,8 @@ override method @boolsetDeclarationAST enterInSemanticContext
     !"none" # Default constructor name
     !"boolset-" + [self.mBoolsetTypeName fileNameRepresentation]
     !.oneHeader
-  ]
+  }
+  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
 }
 
 

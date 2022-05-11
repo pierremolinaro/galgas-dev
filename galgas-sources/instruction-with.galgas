@@ -371,7 +371,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   [self.mReceiverExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration receiverExpression
@@ -392,7 +392,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   [self.mKeyExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration keyExpression
@@ -480,7 +480,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   [self.mKeyExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration keyExpression
@@ -498,7 +498,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
 #--- Object Array cpp name
   let objectArrayCppName = "objectArray_" + [self.mInstructionLocation locationIndex]
 #--- Read/write access to receiver variable
-  var @unifiedTypeMap-entry targetType
+  var @unifiedTypeMapEntry targetType
   let @string receiverVariableCppName
   if self.mReceiverIsPrefixedBySelf then
     if let [inAnalysisContext.selfType available
@@ -624,7 +624,7 @@ refclass @readOnlyWithInstructionForGeneration : @semanticInstructionForGenerati
 refclass @readWriteWithInstructionForGeneration : @semanticInstructionForGeneration {
   public var @location mInstructionLocation
   public var @string mReceiverVariableCppName
-  public var @unifiedTypeMap-entry mReceiverType
+  public var @unifiedTypeMapEntry mReceiverType
   public var @lstringlist mStructAttributeList
   public var @string mObjectArrayCppName
   public var @semanticExpressionForGeneration mKeyExpression

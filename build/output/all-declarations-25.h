@@ -31,10 +31,10 @@ void routine_generateExtensionSetter (const class GALGAS_string constinArgument0
 //----------------------------------------------------------------------------------------------------------------------
 
 void routine_checkGetterSignatures (const class GALGAS_formalInputParameterListForGeneration constinArgument0,
-                                    const class GALGAS_unifiedTypeMap_2D_entry constinArgument1,
+                                    const class GALGAS_unifiedTypeMapEntry constinArgument1,
                                     const class GALGAS_location constinArgument2,
                                     const class GALGAS_functionSignature constinArgument3,
-                                    const class GALGAS_unifiedTypeMap_2D_entry constinArgument4,
+                                    const class GALGAS_unifiedTypeMapEntry constinArgument4,
                                     const class GALGAS_location constinArgument5,
                                     class C_Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;

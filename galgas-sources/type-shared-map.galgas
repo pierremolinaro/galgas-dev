@@ -549,11 +549,11 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !acceptSetters: true
   )
 #--- Enter in type map
-  [!?ioSemanticContext.mTypeMap insertKey
+  let typeDefinition = @unifiedTypeDefinition.new {
     !self.mMapTypeName
     !self.mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-entry.null
+    !@unifiedTypeMapEntry.null
     !@typeKindEnum.sharedMapType
     !false # Does not support collection value
     !{}
@@ -573,11 +573,12 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !self.mSearchMethodList
     !{}
     !false # Do not generate header in separate file
-    !@unifiedTypeMap-entry.null # Type for enumerated element for "for" instruction
+    !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
     !"emptyMap"
     !"sharedmap-" + [self.mMapTypeName fileNameRepresentation]
     !@headerKind.twoHeaders
-  ]
+  }
+  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

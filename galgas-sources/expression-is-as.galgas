@@ -139,7 +139,7 @@ override method @testDynamicClassInExpressionAST enterExpressionInSemanticContex
 override method @testDynamicClassInExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry unused inType
+  ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -148,7 +148,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
   [self.mReceiverExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let expression
@@ -158,7 +158,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
 #--- This type is either a class
   if [[expression.mResultType mTypeKindEnum] isClassType] then
   #--- Check expression type is a descendant of named type
-    var @unifiedTypeMap-entry t = castType
+    var @unifiedTypeMapEntry t = castType
     var @bool found = t == expression.mResultType
     loop ([inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
     while (not found) & not [[t mSuperType] isNull] do
@@ -195,7 +195,7 @@ override method @castInExpressionAST enterExpressionInSemanticContext
 override method @castInExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry unused inType
+  ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -204,7 +204,7 @@ override method @castInExpressionAST analyzeSemanticExpression
   [self.mReceiverExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext 
     !?ioVariableMap
     ?let @semanticExpressionForGeneration expression
@@ -214,7 +214,7 @@ override method @castInExpressionAST analyzeSemanticExpression
 #--- This type is an @object type
   if [[expression.mResultType mTypeKindEnum] isClassType]then
   #--- Check expression type is a descendant of named type
-    var @unifiedTypeMap-entry t = type
+    var @unifiedTypeMapEntry t = type
     var @bool found = t == expression.mResultType
     loop ([inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
     while (not found) & not [[t mSuperType] isNull] do
@@ -256,7 +256,7 @@ override method @castInExpressionAST analyzeSemanticExpression
 refclass @testDynamicClassInExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mReceiverExpression
   private let @dynamicTypeComparisonKind mTypeComparisonKind
-  private let @unifiedTypeMap-entry mCastType
+  private let @unifiedTypeMapEntry mCastType
 }
 
 #·····················································································································

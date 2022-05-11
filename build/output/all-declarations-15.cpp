@@ -1095,7 +1095,7 @@ GALGAS_castInstructionBranchListForGeneration_2D_element::~ GALGAS_castInstructi
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_castInstructionBranchListForGeneration_2D_element::GALGAS_castInstructionBranchListForGeneration_2D_element (const GALGAS_dynamicTypeComparisonKind & inOperand0,
-                                                                                                                    const GALGAS_unifiedTypeMap_2D_entry & inOperand1,
+                                                                                                                    const GALGAS_unifiedTypeMapEntry & inOperand1,
                                                                                                                     const GALGAS_string & inOperand2,
                                                                                                                     const GALGAS_semanticInstructionListForGeneration & inOperand3) :
 mProperty_mTypeComparisonKind (inOperand0),
@@ -1107,7 +1107,7 @@ mProperty_mInstructionList (inOperand3) {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_castInstructionBranchListForGeneration_2D_element GALGAS_castInstructionBranchListForGeneration_2D_element::constructor_new (const GALGAS_dynamicTypeComparisonKind & inOperand0,
-                                                                                                                                    const GALGAS_unifiedTypeMap_2D_entry & inOperand1,
+                                                                                                                                    const GALGAS_unifiedTypeMapEntry & inOperand1,
                                                                                                                                     const GALGAS_string & inOperand2,
                                                                                                                                     const GALGAS_semanticInstructionListForGeneration & inOperand3 
                                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
@@ -2020,7 +2020,7 @@ GALGAS_extractedAssociatedValuesForGeneration_2D_element::~ GALGAS_extractedAsso
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extractedAssociatedValuesForGeneration_2D_element::GALGAS_extractedAssociatedValuesForGeneration_2D_element (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+GALGAS_extractedAssociatedValuesForGeneration_2D_element::GALGAS_extractedAssociatedValuesForGeneration_2D_element (const GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                                                                     const GALGAS_string & inOperand1,
                                                                                                                     const GALGAS_uint & inOperand2) :
 mProperty_mType (inOperand0),
@@ -2030,7 +2030,7 @@ mProperty_mIndex (inOperand2) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extractedAssociatedValuesForGeneration_2D_element GALGAS_extractedAssociatedValuesForGeneration_2D_element::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+GALGAS_extractedAssociatedValuesForGeneration_2D_element GALGAS_extractedAssociatedValuesForGeneration_2D_element::constructor_new (const GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                                                                                     const GALGAS_string & inOperand1,
                                                                                                                                     const GALGAS_uint & inOperand2 
                                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
@@ -2848,13 +2848,13 @@ GALGAS_unifiedTypeMapEntryList_2D_element::~ GALGAS_unifiedTypeMapEntryList_2D_e
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapEntryList_2D_element::GALGAS_unifiedTypeMapEntryList_2D_element (const GALGAS_unifiedTypeMap_2D_entry & inOperand0) :
+GALGAS_unifiedTypeMapEntryList_2D_element::GALGAS_unifiedTypeMapEntryList_2D_element (const GALGAS_unifiedTypeMapEntry & inOperand0) :
 mProperty_mEntry (inOperand0) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapEntryList_2D_element GALGAS_unifiedTypeMapEntryList_2D_element::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inOperand0 
+GALGAS_unifiedTypeMapEntryList_2D_element GALGAS_unifiedTypeMapEntryList_2D_element::constructor_new (const GALGAS_unifiedTypeMapEntry & inOperand0 
                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntryList_2D_element result ;
   if (inOperand0.isValid ()) {
@@ -11392,7 +11392,7 @@ AC_GALGAS_reference_class (inSourcePtr) {
 }
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_semanticExpressionForGeneration::setter_setMResultType (GALGAS_unifiedTypeMap_2D_entry inValue
+void GALGAS_semanticExpressionForGeneration::setter_setMResultType (GALGAS_unifiedTypeMapEntry inValue
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   if (NULL != mObjectPtr) {
     cPtr_semanticExpressionForGeneration * p = (cPtr_semanticExpressionForGeneration *) mObjectPtr ;
@@ -11414,9 +11414,9 @@ void GALGAS_semanticExpressionForGeneration::setter_setMLocation (GALGAS_locatio
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_semanticExpressionForGeneration::readProperty_mResultType (void) const {
+GALGAS_unifiedTypeMapEntry GALGAS_semanticExpressionForGeneration::readProperty_mResultType (void) const {
   if (NULL == mObjectPtr) {
-    return GALGAS_unifiedTypeMap_2D_entry () ;
+    return GALGAS_unifiedTypeMapEntry () ;
   }else{
     cPtr_semanticExpressionForGeneration * p = (cPtr_semanticExpressionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_semanticExpressionForGeneration) ;
@@ -11440,7 +11440,7 @@ GALGAS_location GALGAS_semanticExpressionForGeneration::readProperty_mLocation (
 //Pointer class for @semanticExpressionForGeneration class
 //----------------------------------------------------------------------------------------------------------------------
 
-cPtr_semanticExpressionForGeneration::cPtr_semanticExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mResultType,
+cPtr_semanticExpressionForGeneration::cPtr_semanticExpressionForGeneration (const GALGAS_unifiedTypeMapEntry & in_mResultType,
                                                                             const GALGAS_location & in_mLocation
                                                                             COMMA_LOCATION_ARGS) :
 acStrongPtr_class (THERE),
@@ -12686,7 +12686,7 @@ GALGAS_templateInstructionForGeneration (inSourcePtr) {
 }
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionSwitchForGeneration GALGAS_templateInstructionSwitchForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_entry & inAttribute_mEnumType,
+GALGAS_templateInstructionSwitchForGeneration GALGAS_templateInstructionSwitchForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mEnumType,
                                                                                                               const GALGAS_semanticExpressionForGeneration & inAttribute_mSwitchExpression,
                                                                                                               const GALGAS_templateInstructionSwitchBranchListForGeneration & inAttribute_mTemplateInstructionSwitchBranchList
                                                                                                               COMMA_LOCATION_ARGS) {
@@ -12699,9 +12699,9 @@ GALGAS_templateInstructionSwitchForGeneration GALGAS_templateInstructionSwitchFo
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_entry GALGAS_templateInstructionSwitchForGeneration::readProperty_mEnumType (void) const {
+GALGAS_unifiedTypeMapEntry GALGAS_templateInstructionSwitchForGeneration::readProperty_mEnumType (void) const {
   if (NULL == mObjectPtr) {
-    return GALGAS_unifiedTypeMap_2D_entry () ;
+    return GALGAS_unifiedTypeMapEntry () ;
   }else{
     cPtr_templateInstructionSwitchForGeneration * p = (cPtr_templateInstructionSwitchForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateInstructionSwitchForGeneration) ;
@@ -12737,7 +12737,7 @@ GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructi
 //Pointer class for @templateInstructionSwitchForGeneration class
 //----------------------------------------------------------------------------------------------------------------------
 
-cPtr_templateInstructionSwitchForGeneration::cPtr_templateInstructionSwitchForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mEnumType,
+cPtr_templateInstructionSwitchForGeneration::cPtr_templateInstructionSwitchForGeneration (const GALGAS_unifiedTypeMapEntry & in_mEnumType,
                                                                                           const GALGAS_semanticExpressionForGeneration & in_mSwitchExpression,
                                                                                           const GALGAS_templateInstructionSwitchBranchListForGeneration & in_mTemplateInstructionSwitchBranchList
                                                                                           COMMA_LOCATION_ARGS) :

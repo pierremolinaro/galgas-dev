@@ -138,7 +138,7 @@ override method @extensionSetterAST semanticAnalysis
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
   [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMap-entry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
+  let @unifiedTypeMapEntry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
   let @string selfObjectName
   let @string selfObjectAccessor
   let @bool implementedAsFunction
@@ -215,7 +215,7 @@ override method @extensionSetterAST buildExtensionListMaps
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @extensionSetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  private let @unifiedTypeMap-entry mReceiverType
+  private let @unifiedTypeMapEntry mReceiverType
   private let @string mExtensionSetterName
   private let @bool mImplementedAsFunction
   private let @formalParameterListForGeneration mExtensionSetterFormalParameterList
@@ -289,7 +289,7 @@ override method @extensionSetterForGeneration appendSpecificImplementation
       !code
     ] 
   else
-    var @unifiedTypeMap-entry baseType = self.mReceiverType
+    var @unifiedTypeMapEntry baseType = self.mReceiverType
     var @bool searching = true
     loop (@uint. max) while searching do
       if not [[baseType mSuperType] isNull] then

@@ -90,7 +90,7 @@ override method @optionExpressionAST enterExpressionInSemanticContext
 override method @optionExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry unused inType
+  ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -107,7 +107,7 @@ override method @optionExpressionAST analyzeSemanticExpression
     ?let @commandLineOptionMap stringListOptionMap
   ]
   var @bool found = [boolOptionMap hasKey !self.mOptionEntryName.string]
-  var @unifiedTypeMap-entry returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
+  var @unifiedTypeMapEntry returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
   if not found then
     found = [uintOptionMap hasKey !self.mOptionEntryName.string]
     returnedType = inAnalysisContext.mPredefinedTypes.mUIntType

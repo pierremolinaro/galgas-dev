@@ -36,17 +36,19 @@ override method @mapEntryDeclarationAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext
 {
 #--- Check associated map is really a map
-  [ioSemanticContext.mTypeMap searchKey
-    !self.mAssociatedMapTypeName
-    ?3*
-    ?let @typeKindEnum typeKindEnum
-    ?3*
-    ?var @typedPropertyList mapTypedAttributeList
-    ?11*
-    ?let @mapSearchMethodListAST searchMethodList
-    ?6*
-  ]
-  if typeKindEnum != @typeKindEnum.sharedMapType then
+  [ioSemanticContext.mTypeMap searchType !self.mAssociatedMapTypeName ?let associatedMapTypeDefinition]
+  var @typedPropertyList mapTypedAttributeList = associatedMapTypeDefinition.mCurrentTypedPropertyList
+#  [ioSemanticContext.mTypeMap searchKey
+#    !self.mAssociatedMapTypeName
+#    ?3*
+#    ?let @typeKindEnum typeKindEnum
+#    ?3*
+#    ?var @typedPropertyList mapTypedAttributeList
+#    ?11*
+#    ?let @mapSearchMethodListAST searchMethodList
+#    ?6*
+#  ]
+  if associatedMapTypeDefinition.mTypeKindEnum != @typeKindEnum.sharedMapType then
     error self.mAssociatedMapTypeName : "the @" + self.mAssociatedMapTypeName + " should be an unique map type"
     mapTypedAttributeList = {}
   end
@@ -102,7 +104,7 @@ override method @mapEntryDeclarationAST enterInSemanticContext
   var constructorAttributeTypeList = @functionSignature {}
   constructorAttributeTypeList += !["" nowhere] !associatedMapTypeIndex !"inMap"
   constructorAttributeTypeList += !["" nowhere] !lstringTypeIndex !"inLKey"
-  for (mSearchMethodName * *) in searchMethodList do
+  for (mSearchMethodName * *) in associatedMapTypeDefinition.mMapSearchMethodList do
     [!?constructorMap insertKey
       !mSearchMethodName
       !constructorAttributeTypeList
@@ -190,11 +192,11 @@ override method @mapEntryDeclarationAST enterInSemanticContext
     !acceptSetters: true
   )
 #--- Enter type in type map
-  [!?ioSemanticContext.mTypeMap insertKey
+  let typeDefinition = @unifiedTypeDefinition.new {
     !self.mMapEntryTypeName
     !self.mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-entry.null
+    !@unifiedTypeMapEntry.null
     !@typeKindEnum.sharedMapEntryType
     !false # Does not support collection value
     !mapTypedAttributeList
@@ -212,13 +214,14 @@ override method @mapEntryDeclarationAST enterInSemanticContext
     !{}
     !{}
     !{}
-    !searchMethodList
+    !associatedMapTypeDefinition.mMapSearchMethodList
     !false # Do not generate header in separate file
-    !@unifiedTypeMap-entry.null # Type for enumerated element for "for" instruction
+    !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
     !"null" # Default constructor
     !"mapentry-" + [self.mMapEntryTypeName fileNameRepresentation]
     !@headerKind.oneHeader
-  ]
+  }
+  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -237,22 +240,23 @@ override method @mapEntryDeclarationAST semanticAnalysis
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mMapEntryTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Get attribute list of associated map
-  [inSemanticContext.mTypeMap searchKey
-    !self.mAssociatedMapTypeName
-    ?7*
-    ?let @typedPropertyList listTypeAttributeList
-    ?11*
-    ?let @mapSearchMethodListAST searchMethodList
-    ?6*
-  ]
+  [inSemanticContext.mTypeMap searchType !self.mAssociatedMapTypeName ?let associatedMapTypeDefinition]
+#  [inSemanticContext.mTypeMap searchKey
+#    !self.mAssociatedMapTypeName
+#    ?7*
+#    ?let @typedPropertyList listTypeAttributeList
+#    ?11*
+#    ?let @mapSearchMethodListAST searchMethodList
+#    ?6*
+#  ]
 #---
   ioSemanticDeclarationListForGeneration +=
     !"map entry " + self.mMapEntryTypeName
     !@mapEntryTypeForGeneration.new {
       ![inSemanticContext.mTypeMap searchKey !self.mMapEntryTypeName]
       ![inSemanticContext.mTypeMap searchKey !self.mAssociatedMapTypeName]
-      !listTypeAttributeList
-      !searchMethodList
+      !associatedMapTypeDefinition.mCurrentTypedPropertyList
+      !associatedMapTypeDefinition.mMapSearchMethodList
     }
 }
 
@@ -261,7 +265,7 @@ override method @mapEntryDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @mapEntryTypeForGeneration : @semanticTypeForGeneration {
-  private let @unifiedTypeMap-entry mAssociatedMapTypeEntry
+  private let @unifiedTypeMapEntry mAssociatedMapTypeEntry
   private let @typedPropertyList mAssociatedMapTypedAttributeList
   private let @mapSearchMethodListAST mSearchMethodList
 }

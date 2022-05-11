@@ -10,324 +10,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @selfIncDecNoOVFInstructionAST reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_selfIncDecNoOVFInstructionAST : public GALGAS_semanticInstructionAST {
-//--------------------------------- Default constructor
-  public: GALGAS_selfIncDecNoOVFInstructionAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_selfIncDecNoOVFInstructionAST (const class cPtr_selfIncDecNoOVFInstructionAST * inSourcePtr) ;
-
-//--------------------------------- Property read access
-  public: class GALGAS_incDecKind readProperty_mKind (void) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_selfIncDecNoOVFInstructionAST extractObject (const GALGAS_object & inObject,
-                                                                     C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_selfIncDecNoOVFInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                             const class GALGAS_incDecKind & inOperand1
-                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_selfIncDecNoOVFInstructionAST & inOperand) const ;
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_setMKind (class GALGAS_incDecKind inArgument0
-                                                 COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_selfIncDecNoOVFInstructionAST class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfIncDecNoOVFInstructionAST ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @selfIncDecNoOVFInstructionAST class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class cPtr_selfIncDecNoOVFInstructionAST : public cPtr_semanticInstructionAST {
-
-//----------------------------------------------------------------------------------------------------------------------
-
-//--- Properties
-  public: GALGAS_incDecKind mProperty_mKind ;
-
-//--- Constructor
-  public: cPtr_selfIncDecNoOVFInstructionAST (const GALGAS_location & in_mInstructionLocation,
-                                              const GALGAS_incDecKind & in_mKind
-                                              COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
-
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @selfIncDecNoOVFInstructionAST_2D_weak weak reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_selfIncDecNoOVFInstructionAST_2D_weak : public GALGAS_semanticInstructionAST_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_selfIncDecNoOVFInstructionAST_2D_weak (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_selfIncDecNoOVFInstructionAST_2D_weak constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_selfIncDecNoOVFInstructionAST_2D_weak (const class GALGAS_selfIncDecNoOVFInstructionAST & inSource) ;
-
-  public: GALGAS_selfIncDecNoOVFInstructionAST_2D_weak & operator = (const class GALGAS_selfIncDecNoOVFInstructionAST & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_selfIncDecNoOVFInstructionAST bang_selfIncDecNoOVFInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_selfIncDecNoOVFInstructionAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                             C_Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_selfIncDecNoOVFInstructionAST_2D_weak constructor_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_selfIncDecNoOVFInstructionAST_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_selfIncDecNoOVFInstructionAST_2D_weak class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfIncDecNoOVFInstructionAST_2D_weak ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @incDecInstructionForGeneration reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_incDecInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--------------------------------- Default constructor
-  public: GALGAS_incDecInstructionForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_incDecInstructionForGeneration (const class cPtr_incDecInstructionForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mInstructionLocation (void) const ;
-
-  public: class GALGAS_string readProperty_mReceiverCppName (void) const ;
-
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReceiverType (void) const ;
-
-  public: class GALGAS_lstringlist readProperty_mStructAttributeList (void) const ;
-
-  public: class GALGAS_incDecKind readProperty_mKind (void) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_incDecInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_incDecInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                              const class GALGAS_string & inOperand1,
-                                                                              const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
-                                                                              const class GALGAS_lstringlist & inOperand3,
-                                                                              const class GALGAS_incDecKind & inOperand4
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_incDecInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_setMInstructionLocation (class GALGAS_location inArgument0
-                                                                COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMKind (class GALGAS_incDecKind inArgument0
-                                                 COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMReceiverCppName (class GALGAS_string inArgument0
-                                                            COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMReceiverType (class GALGAS_unifiedTypeMap_2D_entry inArgument0
-                                                         COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMStructAttributeList (class GALGAS_lstringlist inArgument0
-                                                                COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_incDecInstructionForGeneration class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecInstructionForGeneration ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @incDecInstructionForGeneration class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class cPtr_incDecInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
-
-//----------------------------------------------------------------------------------------------------------------------
-
-//--- Properties
-  public: GALGAS_location mProperty_mInstructionLocation ;
-  public: GALGAS_string mProperty_mReceiverCppName ;
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
-  public: GALGAS_lstringlist mProperty_mStructAttributeList ;
-  public: GALGAS_incDecKind mProperty_mKind ;
-
-//--- Constructor
-  public: cPtr_incDecInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                               const GALGAS_string & in_mReceiverCppName,
-                                               const GALGAS_unifiedTypeMap_2D_entry & in_mReceiverType,
-                                               const GALGAS_lstringlist & in_mStructAttributeList,
-                                               const GALGAS_incDecKind & in_mKind
-                                               COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
-
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @incDecInstructionForGeneration_2D_weak weak reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_incDecInstructionForGeneration_2D_weak : public GALGAS_semanticInstructionForGeneration_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_incDecInstructionForGeneration_2D_weak (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_incDecInstructionForGeneration_2D_weak constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_incDecInstructionForGeneration_2D_weak (const class GALGAS_incDecInstructionForGeneration & inSource) ;
-
-  public: GALGAS_incDecInstructionForGeneration_2D_weak & operator = (const class GALGAS_incDecInstructionForGeneration & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_incDecInstructionForGeneration bang_incDecInstructionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_incDecInstructionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_incDecInstructionForGeneration_2D_weak constructor_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_incDecInstructionForGeneration_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_incDecInstructionForGeneration_2D_weak class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecInstructionForGeneration_2D_weak ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 // Phase 1: @incDecNoOVFInstructionForGeneration reference class
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -344,7 +26,7 @@ class GALGAS_incDecNoOVFInstructionForGeneration : public GALGAS_semanticInstruc
 
   public: class GALGAS_string readProperty_mReceiverCppName (void) const ;
 
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReceiverType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
 
   public: class GALGAS_lstringlist readProperty_mStructAttributeList (void) const ;
 
@@ -363,7 +45,7 @@ class GALGAS_incDecNoOVFInstructionForGeneration : public GALGAS_semanticInstruc
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_incDecNoOVFInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
                                                                                    const class GALGAS_string & inOperand1,
-                                                                                   const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+                                                                                   const class GALGAS_unifiedTypeMapEntry & inOperand2,
                                                                                    const class GALGAS_lstringlist & inOperand3,
                                                                                    const class GALGAS_incDecKind & inOperand4
                                                                                    COMMA_LOCATION_ARGS) ;
@@ -381,7 +63,7 @@ class GALGAS_incDecNoOVFInstructionForGeneration : public GALGAS_semanticInstruc
   public: VIRTUAL_IN_DEBUG void setter_setMReceiverCppName (class GALGAS_string inArgument0
                                                             COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMReceiverType (class GALGAS_unifiedTypeMap_2D_entry inArgument0
+  public: VIRTUAL_IN_DEBUG void setter_setMReceiverType (class GALGAS_unifiedTypeMapEntry inArgument0
                                                          COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMStructAttributeList (class GALGAS_lstringlist inArgument0
@@ -418,14 +100,14 @@ class cPtr_incDecNoOVFInstructionForGeneration : public cPtr_semanticInstruction
 //--- Properties
   public: GALGAS_location mProperty_mInstructionLocation ;
   public: GALGAS_string mProperty_mReceiverCppName ;
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
   public: GALGAS_lstringlist mProperty_mStructAttributeList ;
   public: GALGAS_incDecKind mProperty_mKind ;
 
 //--- Constructor
   public: cPtr_incDecNoOVFInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
                                                     const GALGAS_string & in_mReceiverCppName,
-                                                    const GALGAS_unifiedTypeMap_2D_entry & in_mReceiverType,
+                                                    const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
                                                     const GALGAS_lstringlist & in_mStructAttributeList,
                                                     const GALGAS_incDecKind & in_mKind
                                                     COMMA_LOCATION_ARGS) ;
@@ -1543,8 +1225,8 @@ class GALGAS_ifTestForGeneration : public AC_GALGAS_root {
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_ifTestForGeneration constructor_letExp (const class GALGAS_string & inOperand0,
                                                                       const class GALGAS_semanticExpressionForGeneration & inOperand1,
-                                                                      const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
-                                                                      const class GALGAS_unifiedTypeMap_2D_entry & inOperand3
+                                                                      const class GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                                      const class GALGAS_unifiedTypeMapEntry & inOperand3
                                                                       COMMA_LOCATION_ARGS) ;
 
   public: static class GALGAS_ifTestForGeneration constructor_optionalMethodCall (const class GALGAS_semanticExpressionForGeneration & inOperand0,
@@ -1566,8 +1248,8 @@ class GALGAS_ifTestForGeneration : public AC_GALGAS_root {
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_letExp (class GALGAS_string & outArgument0,
                                                class GALGAS_semanticExpressionForGeneration & outArgument1,
-                                               class GALGAS_unifiedTypeMap_2D_entry & outArgument2,
-                                               class GALGAS_unifiedTypeMap_2D_entry & outArgument3,
+                                               class GALGAS_unifiedTypeMapEntry & outArgument2,
+                                               class GALGAS_unifiedTypeMapEntry & outArgument3,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const ;
 
@@ -1594,8 +1276,8 @@ class GALGAS_ifTestForGeneration : public AC_GALGAS_root {
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_letExp (class GALGAS_string & outOperand0,
                                                  class GALGAS_semanticExpressionForGeneration & outOperand1,
-                                                 class GALGAS_unifiedTypeMap_2D_entry & outOperand2,
-                                                 class GALGAS_unifiedTypeMap_2D_entry & outOperand3) const ;
+                                                 class GALGAS_unifiedTypeMapEntry & outOperand2,
+                                                 class GALGAS_unifiedTypeMapEntry & outOperand3) const ;
 
   public: VIRTUAL_IN_DEBUG bool optional_optionalMethodCall (class GALGAS_semanticExpressionForGeneration & outOperand0,
                                                              class GALGAS_lstring & outOperand1,
@@ -1773,14 +1455,14 @@ class cEnumAssociatedValues_ifTestForGeneration_regular : public cEnumAssociated
 class cEnumAssociatedValues_ifTestForGeneration_letExp : public cEnumAssociatedValues {
   public: const GALGAS_string mAssociatedValue0 ;
   public: const GALGAS_semanticExpressionForGeneration mAssociatedValue1 ;
-  public: const GALGAS_unifiedTypeMap_2D_entry mAssociatedValue2 ;
-  public: const GALGAS_unifiedTypeMap_2D_entry mAssociatedValue3 ;
+  public: const GALGAS_unifiedTypeMapEntry mAssociatedValue2 ;
+  public: const GALGAS_unifiedTypeMapEntry mAssociatedValue3 ;
 
 //--- Constructor
   public: cEnumAssociatedValues_ifTestForGeneration_letExp (const GALGAS_string inAssociatedValue0,
                                                             const GALGAS_semanticExpressionForGeneration inAssociatedValue1,
-                                                            const GALGAS_unifiedTypeMap_2D_entry inAssociatedValue2,
-                                                            const GALGAS_unifiedTypeMap_2D_entry inAssociatedValue3
+                                                            const GALGAS_unifiedTypeMapEntry inAssociatedValue2,
+                                                            const GALGAS_unifiedTypeMapEntry inAssociatedValue3
                                                             COMMA_LOCATION_ARGS) ;
 
   public: virtual void description (C_String & ioString,
@@ -2880,7 +2562,7 @@ class GALGAS_undefinedLocalConstantDeclarationForGeneration : public GALGAS_sema
   public: GALGAS_undefinedLocalConstantDeclarationForGeneration (const class cPtr_undefinedLocalConstantDeclarationForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mTargetType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mTargetType (void) const ;
 
   public: class GALGAS_string readProperty_mCppVariableName (void) const ;
 
@@ -2895,7 +2577,7 @@ class GALGAS_undefinedLocalConstantDeclarationForGeneration : public GALGAS_sema
                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_undefinedLocalConstantDeclarationForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+  public: static class GALGAS_undefinedLocalConstantDeclarationForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                                               const class GALGAS_string & inOperand1
                                                                                               COMMA_LOCATION_ARGS) ;
 
@@ -2932,11 +2614,11 @@ class cPtr_undefinedLocalConstantDeclarationForGeneration : public cPtr_semantic
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mTargetType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mTargetType ;
   public: GALGAS_string mProperty_mCppVariableName ;
 
 //--- Constructor
-  public: cPtr_undefinedLocalConstantDeclarationForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mTargetType,
+  public: cPtr_undefinedLocalConstantDeclarationForGeneration (const GALGAS_unifiedTypeMapEntry & in_mTargetType,
                                                                const GALGAS_string & in_mCppVariableName
                                                                COMMA_LOCATION_ARGS) ;
 
@@ -3024,7 +2706,7 @@ class GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration
   public: GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration (const class cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mTargetType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mTargetType (void) const ;
 
   public: class GALGAS_bool readProperty_mIsConstant (void) const ;
 
@@ -3043,7 +2725,7 @@ class GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration
                                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+  public: static class GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                                                                    const class GALGAS_bool & inOperand1,
                                                                                                                    const class GALGAS_string & inOperand2,
                                                                                                                    const class GALGAS_semanticExpressionForGeneration & inOperand3
@@ -3082,13 +2764,13 @@ class cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration :
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mTargetType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mTargetType ;
   public: GALGAS_bool mProperty_mIsConstant ;
   public: GALGAS_string mProperty_mCppVariableName ;
   public: GALGAS_semanticExpressionForGeneration mProperty_mSourceExpression ;
 
 //--- Constructor
-  public: cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mTargetType,
+  public: cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration (const GALGAS_unifiedTypeMapEntry & in_mTargetType,
                                                                                     const GALGAS_bool & in_mIsConstant,
                                                                                     const GALGAS_string & in_mCppVariableName,
                                                                                     const GALGAS_semanticExpressionForGeneration & in_mSourceExpression
@@ -4887,7 +4569,7 @@ class GALGAS_methodCallInstructionForGeneration : public GALGAS_semanticInstruct
 //--------------------------------- Property read access
   public: class GALGAS_location readProperty_mInstructionLocation (void) const ;
 
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReceiverType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
 
   public: class GALGAS_semanticExpressionForGeneration readProperty_mReceiverExpression (void) const ;
 
@@ -4899,7 +4581,7 @@ class GALGAS_methodCallInstructionForGeneration : public GALGAS_semanticInstruct
 
   public: class GALGAS_bool readProperty_mHasCompilerArgument (void) const ;
 
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mMethodBaseType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mMethodBaseType (void) const ;
 
 //-- Start of generic part --*
 
@@ -4913,13 +4595,13 @@ class GALGAS_methodCallInstructionForGeneration : public GALGAS_semanticInstruct
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_methodCallInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                                  const class GALGAS_unifiedTypeMap_2D_entry & inOperand1,
+                                                                                  const class GALGAS_unifiedTypeMapEntry & inOperand1,
                                                                                   const class GALGAS_semanticExpressionForGeneration & inOperand2,
                                                                                   const class GALGAS_string & inOperand3,
                                                                                   const class GALGAS_methodKind & inOperand4,
                                                                                   const class GALGAS_actualParameterListForGeneration & inOperand5,
                                                                                   const class GALGAS_bool & inOperand6,
-                                                                                  const class GALGAS_unifiedTypeMap_2D_entry & inOperand7
+                                                                                  const class GALGAS_unifiedTypeMapEntry & inOperand7
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -4956,23 +4638,23 @@ class cPtr_methodCallInstructionForGeneration : public cPtr_semanticInstructionF
 
 //--- Properties
   public: GALGAS_location mProperty_mInstructionLocation ;
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
   public: GALGAS_semanticExpressionForGeneration mProperty_mReceiverExpression ;
   public: GALGAS_string mProperty_mMethodName ;
   public: GALGAS_methodKind mProperty_mKind ;
   public: GALGAS_actualParameterListForGeneration mProperty_mActualParameterList ;
   public: GALGAS_bool mProperty_mHasCompilerArgument ;
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mMethodBaseType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mMethodBaseType ;
 
 //--- Constructor
   public: cPtr_methodCallInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                   const GALGAS_unifiedTypeMap_2D_entry & in_mReceiverType,
+                                                   const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
                                                    const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
                                                    const GALGAS_string & in_mMethodName,
                                                    const GALGAS_methodKind & in_mKind,
                                                    const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
                                                    const GALGAS_bool & in_mHasCompilerArgument,
-                                                   const GALGAS_unifiedTypeMap_2D_entry & in_mMethodBaseType
+                                                   const GALGAS_unifiedTypeMapEntry & in_mMethodBaseType
                                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -6530,9 +6212,9 @@ class GALGAS_setterCallInstructionForGeneration : public GALGAS_semanticInstruct
 
   public: class GALGAS_lstringlist readProperty_mReceiverStructAttributes (void) const ;
 
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mCastType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mCastType (void) const ;
 
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReceiverType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
 
   public: class GALGAS_lstring readProperty_mSetterName (void) const ;
 
@@ -6542,7 +6224,7 @@ class GALGAS_setterCallInstructionForGeneration : public GALGAS_semanticInstruct
 
   public: class GALGAS_bool readProperty_mHasCompilerArgument (void) const ;
 
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mMethodBaseType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mMethodBaseType (void) const ;
 
 //-- Start of generic part --*
 
@@ -6559,13 +6241,13 @@ class GALGAS_setterCallInstructionForGeneration : public GALGAS_semanticInstruct
                                                                                   const class GALGAS_string & inOperand1,
                                                                                   const class GALGAS_string & inOperand2,
                                                                                   const class GALGAS_lstringlist & inOperand3,
-                                                                                  const class GALGAS_unifiedTypeMap_2D_entry & inOperand4,
-                                                                                  const class GALGAS_unifiedTypeMap_2D_entry & inOperand5,
+                                                                                  const class GALGAS_unifiedTypeMapEntry & inOperand4,
+                                                                                  const class GALGAS_unifiedTypeMapEntry & inOperand5,
                                                                                   const class GALGAS_lstring & inOperand6,
                                                                                   const class GALGAS_methodKind & inOperand7,
                                                                                   const class GALGAS_actualParameterListForGeneration & inOperand8,
                                                                                   const class GALGAS_bool & inOperand9,
-                                                                                  const class GALGAS_unifiedTypeMap_2D_entry & inOperand10
+                                                                                  const class GALGAS_unifiedTypeMapEntry & inOperand10
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -6605,26 +6287,26 @@ class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionF
   public: GALGAS_string mProperty_mReceiverCppName ;
   public: GALGAS_string mProperty_mReceiverBaseName ;
   public: GALGAS_lstringlist mProperty_mReceiverStructAttributes ;
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mCastType ;
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mCastType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
   public: GALGAS_lstring mProperty_mSetterName ;
   public: GALGAS_methodKind mProperty_mKind ;
   public: GALGAS_actualParameterListForGeneration mProperty_mActualParameterList ;
   public: GALGAS_bool mProperty_mHasCompilerArgument ;
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mMethodBaseType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mMethodBaseType ;
 
 //--- Constructor
   public: cPtr_setterCallInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
                                                    const GALGAS_string & in_mReceiverCppName,
                                                    const GALGAS_string & in_mReceiverBaseName,
                                                    const GALGAS_lstringlist & in_mReceiverStructAttributes,
-                                                   const GALGAS_unifiedTypeMap_2D_entry & in_mCastType,
-                                                   const GALGAS_unifiedTypeMap_2D_entry & in_mReceiverType,
+                                                   const GALGAS_unifiedTypeMapEntry & in_mCastType,
+                                                   const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
                                                    const GALGAS_lstring & in_mSetterName,
                                                    const GALGAS_methodKind & in_mKind,
                                                    const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
                                                    const GALGAS_bool & in_mHasCompilerArgument,
-                                                   const GALGAS_unifiedTypeMap_2D_entry & in_mMethodBaseType
+                                                   const GALGAS_unifiedTypeMapEntry & in_mMethodBaseType
                                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -6713,7 +6395,7 @@ class GALGAS_selfSetterCallInstructionForGeneration : public GALGAS_semanticInst
 //--------------------------------- Property read access
   public: class GALGAS_string readProperty_mSelfCppName (void) const ;
 
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReceiverType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
 
   public: class GALGAS_lstring readProperty_mSetterName (void) const ;
 
@@ -6735,7 +6417,7 @@ class GALGAS_selfSetterCallInstructionForGeneration : public GALGAS_semanticInst
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_selfSetterCallInstructionForGeneration constructor_new (const class GALGAS_string & inOperand0,
-                                                                                      const class GALGAS_unifiedTypeMap_2D_entry & inOperand1,
+                                                                                      const class GALGAS_unifiedTypeMapEntry & inOperand1,
                                                                                       const class GALGAS_lstring & inOperand2,
                                                                                       const class GALGAS_methodKind & inOperand3,
                                                                                       const class GALGAS_actualParameterListForGeneration & inOperand4,
@@ -6776,7 +6458,7 @@ class cPtr_selfSetterCallInstructionForGeneration : public cPtr_semanticInstruct
 
 //--- Properties
   public: GALGAS_string mProperty_mSelfCppName ;
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
   public: GALGAS_lstring mProperty_mSetterName ;
   public: GALGAS_methodKind mProperty_mKind ;
   public: GALGAS_actualParameterListForGeneration mProperty_mActualParameterList ;
@@ -6784,7 +6466,7 @@ class cPtr_selfSetterCallInstructionForGeneration : public cPtr_semanticInstruct
 
 //--- Constructor
   public: cPtr_selfSetterCallInstructionForGeneration (const GALGAS_string & in_mSelfCppName,
-                                                       const GALGAS_unifiedTypeMap_2D_entry & in_mReceiverType,
+                                                       const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
                                                        const GALGAS_lstring & in_mSetterName,
                                                        const GALGAS_methodKind & in_mKind,
                                                        const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
@@ -7625,7 +7307,7 @@ class GALGAS_switchInstructionForGeneration : public GALGAS_semanticInstructionF
   public: GALGAS_switchInstructionForGeneration (const class cPtr_switchInstructionForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mEnumType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mEnumType (void) const ;
 
   public: class GALGAS_semanticExpressionForGeneration readProperty_mSwitchExpression (void) const ;
 
@@ -7642,7 +7324,7 @@ class GALGAS_switchInstructionForGeneration : public GALGAS_semanticInstructionF
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_switchInstructionForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+  public: static class GALGAS_switchInstructionForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                               const class GALGAS_semanticExpressionForGeneration & inOperand1,
                                                                               const class GALGAS_switchBranchesForGeneration & inOperand2
                                                                               COMMA_LOCATION_ARGS) ;
@@ -7680,12 +7362,12 @@ class cPtr_switchInstructionForGeneration : public cPtr_semanticInstructionForGe
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mEnumType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mEnumType ;
   public: GALGAS_semanticExpressionForGeneration mProperty_mSwitchExpression ;
   public: GALGAS_switchBranchesForGeneration mProperty_mBranches ;
 
 //--- Constructor
-  public: cPtr_switchInstructionForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mEnumType,
+  public: cPtr_switchInstructionForGeneration (const GALGAS_unifiedTypeMapEntry & in_mEnumType,
                                                const GALGAS_semanticExpressionForGeneration & in_mSwitchExpression,
                                                const GALGAS_switchBranchesForGeneration & in_mBranches
                                                COMMA_LOCATION_ARGS) ;
@@ -8234,7 +7916,7 @@ class GALGAS_localVariableDeclarationForGeneration : public GALGAS_semanticInstr
   public: GALGAS_localVariableDeclarationForGeneration (const class cPtr_localVariableDeclarationForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mVariableType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mVariableType (void) const ;
 
   public: class GALGAS_string readProperty_mCppVariableName (void) const ;
 
@@ -8249,7 +7931,7 @@ class GALGAS_localVariableDeclarationForGeneration : public GALGAS_semanticInstr
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_localVariableDeclarationForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+  public: static class GALGAS_localVariableDeclarationForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                                      const class GALGAS_string & inOperand1
                                                                                      COMMA_LOCATION_ARGS) ;
 
@@ -8286,11 +7968,11 @@ class cPtr_localVariableDeclarationForGeneration : public cPtr_semanticInstructi
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mVariableType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mVariableType ;
   public: GALGAS_string mProperty_mCppVariableName ;
 
 //--- Constructor
-  public: cPtr_localVariableDeclarationForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mVariableType,
+  public: cPtr_localVariableDeclarationForGeneration (const GALGAS_unifiedTypeMapEntry & in_mVariableType,
                                                       const GALGAS_string & in_mCppVariableName
                                                       COMMA_LOCATION_ARGS) ;
 
@@ -9492,7 +9174,7 @@ class GALGAS_readWriteWithInstructionForGeneration : public GALGAS_semanticInstr
 
   public: class GALGAS_string readProperty_mReceiverVariableCppName (void) const ;
 
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReceiverType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
 
   public: class GALGAS_lstringlist readProperty_mStructAttributeList (void) const ;
 
@@ -9519,7 +9201,7 @@ class GALGAS_readWriteWithInstructionForGeneration : public GALGAS_semanticInstr
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_readWriteWithInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
                                                                                      const class GALGAS_string & inOperand1,
-                                                                                     const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+                                                                                     const class GALGAS_unifiedTypeMapEntry & inOperand2,
                                                                                      const class GALGAS_lstringlist & inOperand3,
                                                                                      const class GALGAS_string & inOperand4,
                                                                                      const class GALGAS_semanticExpressionForGeneration & inOperand5,
@@ -9547,7 +9229,7 @@ class GALGAS_readWriteWithInstructionForGeneration : public GALGAS_semanticInstr
   public: VIRTUAL_IN_DEBUG void setter_setMObjectArrayCppName (class GALGAS_string inArgument0
                                                                COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMReceiverType (class GALGAS_unifiedTypeMap_2D_entry inArgument0
+  public: VIRTUAL_IN_DEBUG void setter_setMReceiverType (class GALGAS_unifiedTypeMapEntry inArgument0
                                                          COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMReceiverVariableCppName (class GALGAS_string inArgument0
@@ -9590,7 +9272,7 @@ class cPtr_readWriteWithInstructionForGeneration : public cPtr_semanticInstructi
 //--- Properties
   public: GALGAS_location mProperty_mInstructionLocation ;
   public: GALGAS_string mProperty_mReceiverVariableCppName ;
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
   public: GALGAS_lstringlist mProperty_mStructAttributeList ;
   public: GALGAS_string mProperty_mObjectArrayCppName ;
   public: GALGAS_semanticExpressionForGeneration mProperty_mKeyExpression ;
@@ -9601,7 +9283,7 @@ class cPtr_readWriteWithInstructionForGeneration : public cPtr_semanticInstructi
 //--- Constructor
   public: cPtr_readWriteWithInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
                                                       const GALGAS_string & in_mReceiverVariableCppName,
-                                                      const GALGAS_unifiedTypeMap_2D_entry & in_mReceiverType,
+                                                      const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
                                                       const GALGAS_lstringlist & in_mStructAttributeList,
                                                       const GALGAS_string & in_mObjectArrayCppName,
                                                       const GALGAS_semanticExpressionForGeneration & in_mKeyExpression,
@@ -10413,4 +10095,384 @@ class cPtr_selectInstruction : public cPtr_syntaxInstructionAST {
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
 
 } ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @selectInstruction_2D_weak weak reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_selectInstruction_2D_weak : public GALGAS_syntaxInstructionAST_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_selectInstruction_2D_weak (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_selectInstruction_2D_weak constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_selectInstruction_2D_weak (const class GALGAS_selectInstruction & inSource) ;
+
+  public: GALGAS_selectInstruction_2D_weak & operator = (const class GALGAS_selectInstruction & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_selectInstruction bang_selectInstruction_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_selectInstruction_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_selectInstruction_2D_weak constructor_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_selectInstruction_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_selectInstruction_2D_weak class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selectInstruction_2D_weak ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @selectInstructionForGeneration reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_selectInstructionForGeneration : public GALGAS_syntaxInstructionForGeneration {
+//--------------------------------- Default constructor
+  public: GALGAS_selectInstructionForGeneration (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_selectInstructionForGeneration constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_selectInstructionForGeneration (const class cPtr_selectInstructionForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_string readProperty_mSyntaxComponentName (void) const ;
+
+  public: class GALGAS_uint readProperty_mChoiceIndex (void) const ;
+
+  public: class GALGAS_listOfSemanticInstructionListForGeneration readProperty_mListOfSemanticInstructionListForGeneration (void) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_selectInstructionForGeneration extractObject (const GALGAS_object & inObject,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_selectInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
+                                                                              const class GALGAS_string & inOperand1,
+                                                                              const class GALGAS_uint & inOperand2,
+                                                                              const class GALGAS_listOfSemanticInstructionListForGeneration & inOperand3
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_selectInstructionForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMChoiceIndex (class GALGAS_uint inArgument0
+                                                        COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMListOfSemanticInstructionListForGeneration (class GALGAS_listOfSemanticInstructionListForGeneration inArgument0
+                                                                                       COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMSyntaxComponentName (class GALGAS_string inArgument0
+                                                                COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_selectInstructionForGeneration class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selectInstructionForGeneration ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @selectInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_selectInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+//--- Properties
+  public: GALGAS_string mProperty_mSyntaxComponentName ;
+  public: GALGAS_uint mProperty_mChoiceIndex ;
+  public: GALGAS_listOfSemanticInstructionListForGeneration mProperty_mListOfSemanticInstructionListForGeneration ;
+
+//--- Constructor
+  public: cPtr_selectInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
+                                               const GALGAS_string & in_mSyntaxComponentName,
+                                               const GALGAS_uint & in_mChoiceIndex,
+                                               const GALGAS_listOfSemanticInstructionListForGeneration & in_mListOfSemanticInstructionListForGeneration
+                                               COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @selectInstructionForGeneration_2D_weak weak reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_selectInstructionForGeneration_2D_weak : public GALGAS_syntaxInstructionForGeneration_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_selectInstructionForGeneration_2D_weak (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_selectInstructionForGeneration_2D_weak constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_selectInstructionForGeneration_2D_weak (const class GALGAS_selectInstructionForGeneration & inSource) ;
+
+  public: GALGAS_selectInstructionForGeneration_2D_weak & operator = (const class GALGAS_selectInstructionForGeneration & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_selectInstructionForGeneration bang_selectInstructionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_selectInstructionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_selectInstructionForGeneration_2D_weak constructor_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_selectInstructionForGeneration_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_selectInstructionForGeneration_2D_weak class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selectInstructionForGeneration_2D_weak ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @terminalCheckInstruction reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_terminalCheckInstruction : public GALGAS_syntaxInstructionAST {
+//--------------------------------- Default constructor
+  public: GALGAS_terminalCheckInstruction (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_terminalCheckInstruction (const class cPtr_terminalCheckInstruction * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mTerminalName (void) const ;
+
+  public: class GALGAS_actualInputParameterListAST readProperty_mActualInputParameterList (void) const ;
+
+  public: class GALGAS__32_lstringlist readProperty_mIndexingKeyList (void) const ;
+
+  public: class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult readProperty_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor (void) const ;
+
+  public: class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult readProperty_mGrammarInstructionSyntaxDirectedTranslationToken (void) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_terminalCheckInstruction extractObject (const GALGAS_object & inObject,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_terminalCheckInstruction constructor_new (const class GALGAS_location & inOperand0,
+                                                                        const class GALGAS_lstring & inOperand1,
+                                                                        const class GALGAS_actualInputParameterListAST & inOperand2,
+                                                                        const class GALGAS__32_lstringlist & inOperand3,
+                                                                        const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand4,
+                                                                        const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand5
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_terminalCheckInstruction & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_terminalCheckInstruction class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckInstruction ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @terminalCheckInstruction class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_terminalCheckInstruction : public cPtr_syntaxInstructionAST {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+//--- Properties
+  public: GALGAS_lstring mProperty_mTerminalName ;
+  public: GALGAS_actualInputParameterListAST mProperty_mActualInputParameterList ;
+  public: GALGAS__32_lstringlist mProperty_mIndexingKeyList ;
+  public: GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult mProperty_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor ;
+  public: GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult mProperty_mGrammarInstructionSyntaxDirectedTranslationToken ;
+
+//--- Constructor
+  public: cPtr_terminalCheckInstruction (const GALGAS_location & in_mInstructionLocation,
+                                         const GALGAS_lstring & in_mTerminalName,
+                                         const GALGAS_actualInputParameterListAST & in_mActualInputParameterList,
+                                         const GALGAS__32_lstringlist & in_mIndexingKeyList,
+                                         const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor,
+                                         const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationToken
+                                         COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @terminalCheckInstruction_2D_weak weak reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_terminalCheckInstruction_2D_weak : public GALGAS_syntaxInstructionAST_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_terminalCheckInstruction_2D_weak (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_terminalCheckInstruction_2D_weak constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_terminalCheckInstruction_2D_weak (const class GALGAS_terminalCheckInstruction & inSource) ;
+
+  public: GALGAS_terminalCheckInstruction_2D_weak & operator = (const class GALGAS_terminalCheckInstruction & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_terminalCheckInstruction bang_terminalCheckInstruction_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_terminalCheckInstruction_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_terminalCheckInstruction_2D_weak constructor_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_terminalCheckInstruction_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_terminalCheckInstruction_2D_weak class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckInstruction_2D_weak ;
 

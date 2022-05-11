@@ -265,14 +265,14 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @undefinedLocalConstantDeclarationForGeneration : @semanticInstructionForGeneration {
-  private let @unifiedTypeMap-entry mTargetType
+  private let @unifiedTypeMapEntry mTargetType
   private let @string mCppVariableName
 }
 
 #······················································································································*
 
 refclass @localVariableOrConstantDeclarationWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
-  private let @unifiedTypeMap-entry mTargetType
+  private let @unifiedTypeMapEntry mTargetType
   private let @bool mIsConstant
   private let @string mCppVariableName
   private let @semanticExpressionForGeneration mSourceExpression

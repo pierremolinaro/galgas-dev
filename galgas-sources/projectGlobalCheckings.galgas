@@ -49,7 +49,7 @@ method @semanticDeclarationAST buildExtensionListMaps
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @unifiedTypeMapEntryList {
-  @unifiedTypeMap-entry mEntry
+  @unifiedTypeMapEntry mEntry
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -224,7 +224,7 @@ proc performGalgas3ProjectGlobalCheckings
 #     if not [mSuperType isNull] then
 #       descendantClassListMap +=
 #         ![mSuperType key]
-#         !@unifiedTypeMap-entry. searchKey {!inSemanticContext.mTypeMap !lkey}
+#         !@unifiedTypeMapEntry. searchKey {!inSemanticContext.mTypeMap !lkey}
 #     end
 #  end
 #--- Build Extension method listmaps

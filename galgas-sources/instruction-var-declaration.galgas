@@ -95,7 +95,7 @@ override method @localVariableDeclarationAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @localVariableDeclarationForGeneration : @semanticInstructionForGeneration {
-  private let @unifiedTypeMap-entry mVariableType
+  private let @unifiedTypeMapEntry mVariableType
   private let @string mCppVariableName
 }
 

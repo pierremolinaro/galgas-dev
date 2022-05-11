@@ -76,7 +76,7 @@ proc enterModifierWith2InputArguments
   ?compilerArg:let @bool inHasCompilerArgument
 {
   var @formalParameterSignature argList = {}
-  [!?ioUnifiedTypeMap makeEntryFromString !inInputArgument1TypeName ?@unifiedTypeMap-entry argumentTypeIndex]
+  [!?ioUnifiedTypeMap makeEntryFromString !inInputArgument1TypeName ?@unifiedTypeMapEntry argumentTypeIndex]
   argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inInputArgument1Name
   [!?ioUnifiedTypeMap makeEntryFromString !inInputArgument2TypeName ?argumentTypeIndex]
   argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inInputArgument2Name

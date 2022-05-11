@@ -175,7 +175,7 @@ override method @enumDeclarationAST enterInSemanticContext
   var @constantIndexMap constantMap = {}
   var @bool hasAssociatedValues = false
   for (mConstantName mAssociatedValueDefinitionList) in self.mConstantList do
-    var @unifiedTypeMap-entryList associatedTypeList = {}
+    var @unifiedTypeMapEntryList associatedTypeList = {}
     var @functionSignature argumentTypeList = {}
     for (typeName selectorName) in mAssociatedValueDefinitionList do
       [!?ioSemanticContext.mTypeMap makeEntry  !typeName ?let associatedTypeEntry]
@@ -206,7 +206,7 @@ override method @enumDeclarationAST enterInSemanticContext
 #--- Optional methods
   for (mConstantName mAssociatedValueDefinitionList) in self.mConstantList do
     if [mAssociatedValueDefinitionList length] > 0 then
-      var @unifiedTypeMap-entryList associatedTypeList = {}
+      var @unifiedTypeMapEntryList associatedTypeList = {}
       var @formalParameterSignature argumentTypeList = {}
       for (typeName selectorName) in mAssociatedValueDefinitionList do
         [!?ioSemanticContext.mTypeMap makeEntry  !typeName ?let associatedTypeEntry]
@@ -260,11 +260,11 @@ override method @enumDeclarationAST enterInSemanticContext
     end
   end
 #--- Enter type in type map
-  [!?ioSemanticContext.mTypeMap insertKey
+  let typeDefinition = @unifiedTypeDefinition.new {
     !self.mEnumTypeName
     !self.mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-entry.null
+    !@unifiedTypeMapEntry.null
     !@typeKindEnum.enumType
     !false # Does not support collection value
     !{}
@@ -284,11 +284,12 @@ override method @enumDeclarationAST enterInSemanticContext
     !{}
     !{}
     !false # Do not generate header in separate file
-    !@unifiedTypeMap-entry.null # Type for enumerated element for "for" instruction
+    !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
     !defaultConstructorName
     !"enum-" + [self.mEnumTypeName fileNameRepresentation]
     !if hasAssociatedValues then @headerKind.twoHeaders else @headerKind.oneHeader end
-  ]
+  }
+  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -312,7 +313,7 @@ override method @enumDeclarationAST semanticAnalysis
   var constantMap = @constantIndexMap {}
   for (mConstantName mAssociatedValueDefinitionList) in self.mConstantList do
     constantList += !mConstantName.string
-    var @unifiedTypeMap-entryList associatedTypeList = {}
+    var @unifiedTypeMapEntryList associatedTypeList = {}
     var @stringset associatedValueNameSet = {}
     for (mValue0 mValue1) in mAssociatedValueDefinitionList do
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mValue0)
@@ -343,7 +344,7 @@ override method @enumDeclarationAST semanticAnalysis
 
 list @enumConstantListForGeneration {
   public var @string mConstantName
-  public var @unifiedTypeMap-entryList mAssociatedValueTypeList
+  public var @unifiedTypeMapEntryList mAssociatedValueTypeList
 }
 
 #·······················································································································

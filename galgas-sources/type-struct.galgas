@@ -121,7 +121,7 @@ override method @structDeclarationAST enterInSemanticContext
   var @constructorMap constructorMap = {}
   var @functionSignature constructorPropertyTypeList = {}
   var @typedPropertyList typedPropertyList = {}
-  var @unifiedTypeMap-entryList typesToIncludeInHeaderCompilation = {}
+  var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
   for (isConstant mPropertyTypeName mPropertyName isPublic mAttributeList) in self.mStructurePropertyList do
     [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let propertyTypeEntry]
     var @lstring selector = ["" nowhere]
@@ -162,9 +162,9 @@ override method @structDeclarationAST enterInSemanticContext
     !acceptSetters: true
   )
 #--- Enumeration by "for" instruction
-  let @unifiedTypeMap-entry enumeratedType
+  let @unifiedTypeMapEntry enumeratedType
   if self.mEnumeratedElementTypeName == "" then
-    enumeratedType = @unifiedTypeMap-entry.null
+    enumeratedType = @unifiedTypeMapEntry.null
   else
    [!?ioSemanticContext.mTypeMap makeEntryFromString
      !self.mEnumeratedElementTypeName
@@ -179,11 +179,11 @@ override method @structDeclarationAST enterInSemanticContext
     end
   end  
 #--- Enter in type map
-  [!?ioSemanticContext.mTypeMap insertKey
+  let typeDefinition = @unifiedTypeDefinition.new {
     !self.mStructTypeName
     !self.mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-entry.null
+    !@unifiedTypeMapEntry.null
     !@typeKindEnum.structType
     !false # Does not support collection value
     !typedPropertyList
@@ -207,7 +207,8 @@ override method @structDeclarationAST enterInSemanticContext
     !defaultConstructorName # Default constructor
     !"struct-" + [self.mStructTypeName fileNameRepresentation]
     !@headerKind.oneHeader
-  ]
+  }
+  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -347,7 +347,7 @@ proc generateFunction
   ?let @formalInputParameterListForGeneration inFormalArgumentList
   ?let @semanticInstructionListForGeneration inInstructionList
   ?let @string inCompilerTypeName
-  ?let @unifiedTypeMap-entry inResultType
+  ?let @unifiedTypeMapEntry inResultType
   ?let @string inResultVariableCppName
   ?let @bool inIsStatic
   !@string outGeneratedCode
@@ -522,7 +522,7 @@ proc generateExtensionSetter
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc generateExtensionMethod ?let @unifiedTypeMap-entry inReceiverType
+proc generateExtensionMethod ?let @unifiedTypeMapEntry inReceiverType
                              ?let @string inBaseClassName
                              ?!@stringset ioInclusionSet
                              ?let @string inMethodName
@@ -552,7 +552,7 @@ proc generateExtensionMethod ?let @unifiedTypeMap-entry inReceiverType
   end
   [!?routineBody decIndentation !2]
 #--- Generate inclusions
-  var @unifiedTypeMap-entry baseType = inReceiverType
+  var @unifiedTypeMapEntry baseType = inReceiverType
   var @bool searching = true
   loop (@uint. max) while searching do
     if not [[baseType mSuperType] isNull] then
@@ -639,7 +639,7 @@ proc generateExtensionMethod ?let @unifiedTypeMap-entry inReceiverType
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateExtensionGetter
-  ?let @unifiedTypeMap-entry inReceiverType
+  ?let @unifiedTypeMapEntry inReceiverType
   ?let @string inBaseClassName
   ?!@stringset ioInclusionSet
   ?let @string inGetterName
@@ -674,7 +674,7 @@ proc generateExtensionGetter
   [!?routineBody decIndentation !2]
 #--- Generate inclusions
   [inReceiverType addHeaderFileName !?ioInclusionSet]
-  var @unifiedTypeMap-entry baseType = inReceiverType
+  var @unifiedTypeMapEntry baseType = inReceiverType
   var @bool searching = true
   loop (@uint. max) while searching do
     if not [[baseType mSuperType] isNull] then
@@ -775,12 +775,12 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST # Empty List if cannot be enumerated
     ?@operators SUPPORTED_OPERATORS
     ?@functionSignature ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
-    ?@unifiedTypeMap-entry ENUMERATED_OBJECT_TYPE
+    ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE
 
   template genericTypeImplementation "generic-type.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@unifiedTypeMap-entry SUPER_TYPE_INDEX
+    ?@unifiedTypeMapEntry SUPER_TYPE_INDEX
     ?@operators SUPPORTED_OPERATORS
 
 #---------- Extern Type
@@ -796,9 +796,9 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_IDENTIFIER
 
   template graphTypeSpecificImplementation "GALGAS_graph.cpp.galgasTemplate"
-    ?@unifiedTypeMap-entry TYPE
+    ?@unifiedTypeMapEntry TYPE
     ?@string TYPE_IDENTIFIER
-    ?@unifiedTypeMap-entry ASSOCIATED_LIST_TYPE
+    ?@unifiedTypeMapEntry ASSOCIATED_LIST_TYPE
     ?@graphInsertModifierList INSERT_MODIFIER_LIST
 
 #---------- Array
@@ -960,31 +960,31 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
-    ?@unifiedTypeMap-entry RETURN_TYPE
+    ?@unifiedTypeMapEntry RETURN_TYPE
   
   template abstractExtensionGetterImplementation "abstract-extension-getter.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
-    ?@unifiedTypeMap-entry RETURN_TYPE
+    ?@unifiedTypeMapEntry RETURN_TYPE
   
   template extensionGetterDeclaration "extension-getter.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
-    ?@unifiedTypeMap-entry RETURN_TYPE
+    ?@unifiedTypeMapEntry RETURN_TYPE
 
   template extensionGetterImplementation "extension-getter.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
-    ?@unifiedTypeMap-entry RETURN_TYPE
+    ?@unifiedTypeMapEntry RETURN_TYPE
     ?@string GETTER_IMPLEMENTATION
   
   template overridingExtensionGetterImplementation "overriding-extension-getter.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
-    ?@unifiedTypeMap-entry RETURN_TYPE
+    ?@unifiedTypeMapEntry RETURN_TYPE
     ?@string GETTER_IMPLEMENTATION
   
 #------------ Extension setter
@@ -1022,7 +1022,7 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
   
   template abstractExtensionMethodImplementation "abstract-extension-method.cpp.galgasTemplate"
-    ?@unifiedTypeMap-entry RECEIVER_TYPE
+    ?@unifiedTypeMapEntry RECEIVER_TYPE
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
   

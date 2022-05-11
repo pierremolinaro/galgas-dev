@@ -118,27 +118,27 @@ override method @graphDeclarationAST enterInSemanticContext
 #--- string type Entry
   [!?ioSemanticContext.mTypeMap makeEntryFromString
     !"string"
-    ?let @unifiedTypeMap-entry stringTypeEntry
+    ?let @unifiedTypeMapEntry stringTypeEntry
   ]
 #--- lstring type Entry
   [!?ioSemanticContext.mTypeMap makeEntryFromString
     !"lstring"
-    ?let @unifiedTypeMap-entry lstringTypeEntry
+    ?let @unifiedTypeMapEntry lstringTypeEntry
   ]
 #--- Graph type Entry
   [!?ioSemanticContext.mTypeMap makeEntry
     !self.mGraphTypeName
-    ?let @unifiedTypeMap-entry graphTypeEntry
+    ?let @unifiedTypeMapEntry graphTypeEntry
   ]
 #--- Associated list type Entry
   [!?ioSemanticContext.mTypeMap makeEntry
     !self.mAssociatedListTypeName
-    ?let @unifiedTypeMap-entry associatedListTypeEntry
+    ?let @unifiedTypeMapEntry associatedListTypeEntry
   ]
 #--- @lstringlist type Entry
   [!?ioSemanticContext.mTypeMap makeEntryFromString
     !"lstringlist"
-    ?let @unifiedTypeMap-entry lstringListTypeEntry
+    ?let @unifiedTypeMapEntry lstringListTypeEntry
   ]
 #---
   commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
@@ -428,11 +428,11 @@ override method @graphDeclarationAST enterInSemanticContext
     !acceptSetters: true
   )
 #--- Enter type in type map
-  [!?ioSemanticContext.mTypeMap insertKey
+  let typeDefinition = @unifiedTypeDefinition.new {
     !self.mGraphTypeName
     !self.mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-entry.null
+    !@unifiedTypeMapEntry.null
     !@typeKindEnum. graphType
     !false # Does not support collection value
     !@typedPropertyList {}
@@ -452,11 +452,12 @@ override method @graphDeclarationAST enterInSemanticContext
     !@mapSearchMethodListAST {}
     !@mapSearchMethodListAST {}
     !false # Do not generate header in separate file
-    !@unifiedTypeMap-entry.null # Type for enumerated element for "for" instruction
+    !.null # Type for enumerated element for "for" instruction
     !"emptyGraph" # Default constructor
     !"graph-" + [self.mGraphTypeName fileNameRepresentation]
     !@headerKind.oneHeader
-  ]
+  }
+  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -509,8 +510,8 @@ override method @graphDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @graphDeclarationForGeneration : @semanticTypeForGeneration {
-  public var @unifiedTypeMap-entry mAssociatedListTypeEntry
-  public var @unifiedTypeMap-entry mAssociatedListElementTypeEntry
+  public var @unifiedTypeMapEntry mAssociatedListTypeEntry
+  public var @unifiedTypeMapEntry mAssociatedListElementTypeEntry
   public var @graphInsertModifierList mInsertModifierList
 }
 

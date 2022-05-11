@@ -23,7 +23,7 @@ proc enterConstructorWithoutArgument
 {
   [!?ioUnifiedTypeMap makeEntryFromString
     !inReturnedTypeName
-    ?let @unifiedTypeMap-entry returnedTypeIndex
+    ?let @unifiedTypeMapEntry returnedTypeIndex
   ]
   [!?ioConstructorMap insertOrReplace
     !@lstring.new {!inConstructorName !@location.here}
@@ -69,7 +69,7 @@ proc enterConstructorWith2Arguments
 {
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   var argumentTypeList = @functionSignature {}
-  var @unifiedTypeMap-entry t
+  var @unifiedTypeMapEntry t
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?t]
   argumentTypeList += !["" nowhere] !t !inArgument1Name
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument2TypeName ?t]

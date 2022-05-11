@@ -123,7 +123,7 @@ override method @abstractExtensionMethodAST semanticAnalysis
 #  let nameForUsefulness = methodNameForUsefulEntitiesGraph (!self.mTypeName !self.mAbstractExtensionMethodName)
 #  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMap-entry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
+  let @unifiedTypeMapEntry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- Check self type is an abstract class
   if not [[selfType mTypeKindEnum] isClassType]then
     error self.mAbstractExtensionMethodName: "cannot declare a extension method: '@" + [selfType key] + "' is not a class"
@@ -179,7 +179,7 @@ override method @abstractExtensionMethodAST buildExtensionListMaps
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @abstractExtensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  public var @unifiedTypeMap-entry mReceiverType
+  public var @unifiedTypeMapEntry mReceiverType
   public var @string mAbstractExtensionMethodName
   public var @formalParameterListForGeneration mAbstractExtensionMethodFormalParameterList
 }

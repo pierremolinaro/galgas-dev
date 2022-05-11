@@ -164,7 +164,7 @@ class GALGAS_semanticTypeForGeneration : public GALGAS_semanticDeclarationForGen
   public: GALGAS_semanticTypeForGeneration (const class cPtr_semanticTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mSelfTypeEntry (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mSelfTypeEntry (void) const ;
 
 //-- Start of generic part --*
 
@@ -180,7 +180,7 @@ class GALGAS_semanticTypeForGeneration : public GALGAS_semanticDeclarationForGen
   public: typeComparisonResult objectCompare (const GALGAS_semanticTypeForGeneration & inOperand) const ;
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_setMSelfTypeEntry (class GALGAS_unifiedTypeMap_2D_entry inArgument0
+  public: VIRTUAL_IN_DEBUG void setter_setMSelfTypeEntry (class GALGAS_unifiedTypeMapEntry inArgument0
                                                           COMMA_LOCATION_ARGS) ;
 
 
@@ -212,10 +212,10 @@ class cPtr_semanticTypeForGeneration : public cPtr_semanticDeclarationForGenerat
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mSelfTypeEntry ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mSelfTypeEntry ;
 
 //--- Constructor
-  public: cPtr_semanticTypeForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry
+  public: cPtr_semanticTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry
                                           COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
@@ -312,7 +312,7 @@ class GALGAS_boolsetTypeForGeneration : public GALGAS_semanticTypeForGeneration 
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_boolsetTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+  public: static class GALGAS_boolsetTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                         const class GALGAS_lstringlist & inOperand1
                                                                         COMMA_LOCATION_ARGS) ;
 
@@ -352,7 +352,7 @@ class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: GALGAS_lstringlist mProperty_mFlagList ;
 
 //--- Constructor
-  public: cPtr_boolsetTypeForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
+  public: cPtr_boolsetTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                          const GALGAS_lstringlist & in_mFlagList
                                          COMMA_LOCATION_ARGS) ;
 
@@ -444,7 +444,7 @@ class GALGAS_classTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
   public: class GALGAS_bool readProperty_mIsReference (void) const ;
 
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mSuperClass (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mSuperClass (void) const ;
 
   public: class GALGAS_typedPropertyList readProperty_mAllTypedAttributeList (void) const ;
 
@@ -463,10 +463,10 @@ class GALGAS_classTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_classTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+  public: static class GALGAS_classTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                       const class GALGAS_bool & inOperand1,
                                                                       const class GALGAS_bool & inOperand2,
-                                                                      const class GALGAS_unifiedTypeMap_2D_entry & inOperand3,
+                                                                      const class GALGAS_unifiedTypeMapEntry & inOperand3,
                                                                       const class GALGAS_typedPropertyList & inOperand4,
                                                                       const class GALGAS_typedPropertyList & inOperand5,
                                                                       const class GALGAS_bool & inOperand6
@@ -507,16 +507,16 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Properties
   public: GALGAS_bool mProperty_mIsAbstract ;
   public: GALGAS_bool mProperty_mIsReference ;
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mSuperClass ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mSuperClass ;
   public: GALGAS_typedPropertyList mProperty_mAllTypedAttributeList ;
   public: GALGAS_typedPropertyList mProperty_mCurrentTypedAttributeList ;
   public: GALGAS_bool mProperty_mGenerateHeaderInSeparateFile ;
 
 //--- Constructor
-  public: cPtr_classTypeForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
+  public: cPtr_classTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                        const GALGAS_bool & in_mIsAbstract,
                                        const GALGAS_bool & in_mIsReference,
-                                       const GALGAS_unifiedTypeMap_2D_entry & in_mSuperClass,
+                                       const GALGAS_unifiedTypeMapEntry & in_mSuperClass,
                                        const GALGAS_typedPropertyList & in_mAllTypedAttributeList,
                                        const GALGAS_typedPropertyList & in_mCurrentTypedAttributeList,
                                        const GALGAS_bool & in_mGenerateHeaderInSeparateFile
@@ -606,9 +606,9 @@ class GALGAS_weakReferenceTypeForGeneration : public GALGAS_semanticTypeForGener
   public: GALGAS_weakReferenceTypeForGeneration (const class cPtr_weakReferenceTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReferenceClassType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mReferenceClassType (void) const ;
 
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mSuperClass (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mSuperClass (void) const ;
 
   public: class GALGAS_typedPropertyList readProperty_mAllTypedPropertyList (void) const ;
 
@@ -627,9 +627,9 @@ class GALGAS_weakReferenceTypeForGeneration : public GALGAS_semanticTypeForGener
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_weakReferenceTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
-                                                                              const class GALGAS_unifiedTypeMap_2D_entry & inOperand1,
-                                                                              const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+  public: static class GALGAS_weakReferenceTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                              const class GALGAS_unifiedTypeMapEntry & inOperand1,
+                                                                              const class GALGAS_unifiedTypeMapEntry & inOperand2,
                                                                               const class GALGAS_typedPropertyList & inOperand3,
                                                                               const class GALGAS_typedPropertyList & inOperand4,
                                                                               const class GALGAS_bool & inOperand5
@@ -668,16 +668,16 @@ class cPtr_weakReferenceTypeForGeneration : public cPtr_semanticTypeForGeneratio
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReferenceClassType ;
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mSuperClass ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mReferenceClassType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mSuperClass ;
   public: GALGAS_typedPropertyList mProperty_mAllTypedPropertyList ;
   public: GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
   public: GALGAS_bool mProperty_mGenerateHeaderInSeparateFile ;
 
 //--- Constructor
-  public: cPtr_weakReferenceTypeForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
-                                               const GALGAS_unifiedTypeMap_2D_entry & in_mReferenceClassType,
-                                               const GALGAS_unifiedTypeMap_2D_entry & in_mSuperClass,
+  public: cPtr_weakReferenceTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                               const GALGAS_unifiedTypeMapEntry & in_mReferenceClassType,
+                                               const GALGAS_unifiedTypeMapEntry & in_mSuperClass,
                                                const GALGAS_typedPropertyList & in_mAllTypedPropertyList,
                                                const GALGAS_typedPropertyList & in_mTypedAttributeList,
                                                const GALGAS_bool & in_mGenerateHeaderInSeparateFile
@@ -780,7 +780,7 @@ class GALGAS_enumTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_enumTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+  public: static class GALGAS_enumTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                      const class GALGAS_enumConstantListForGeneration & inOperand1
                                                                      COMMA_LOCATION_ARGS) ;
 
@@ -820,7 +820,7 @@ class cPtr_enumTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: GALGAS_enumConstantListForGeneration mProperty_mConstantList ;
 
 //--- Constructor
-  public: cPtr_enumTypeForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
+  public: cPtr_enumTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                       const GALGAS_enumConstantListForGeneration & in_mConstantList
                                       COMMA_LOCATION_ARGS) ;
 
@@ -925,7 +925,7 @@ class GALGAS_externTypeDeclarationForGeneration : public GALGAS_semanticTypeForG
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_externTypeDeclarationForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+  public: static class GALGAS_externTypeDeclarationForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                                   const class GALGAS_string & inOperand1,
                                                                                   const class GALGAS_string & inOperand2,
                                                                                   const class GALGAS_string & inOperand3
@@ -969,7 +969,7 @@ class cPtr_externTypeDeclarationForGeneration : public cPtr_semanticTypeForGener
   public: GALGAS_string mProperty_mCppClassCode ;
 
 //--- Constructor
-  public: cPtr_externTypeDeclarationForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
+  public: cPtr_externTypeDeclarationForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                    const GALGAS_string & in_mExternTypeName,
                                                    const GALGAS_string & in_mCppPreDeclarationCode,
                                                    const GALGAS_string & in_mCppClassCode
@@ -1059,9 +1059,9 @@ class GALGAS_graphDeclarationForGeneration : public GALGAS_semanticTypeForGenera
   public: GALGAS_graphDeclarationForGeneration (const class cPtr_graphDeclarationForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mAssociatedListTypeEntry (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mAssociatedListTypeEntry (void) const ;
 
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mAssociatedListElementTypeEntry (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mAssociatedListElementTypeEntry (void) const ;
 
   public: class GALGAS_graphInsertModifierList readProperty_mInsertModifierList (void) const ;
 
@@ -1076,9 +1076,9 @@ class GALGAS_graphDeclarationForGeneration : public GALGAS_semanticTypeForGenera
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_graphDeclarationForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
-                                                                             const class GALGAS_unifiedTypeMap_2D_entry & inOperand1,
-                                                                             const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+  public: static class GALGAS_graphDeclarationForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                             const class GALGAS_unifiedTypeMapEntry & inOperand1,
+                                                                             const class GALGAS_unifiedTypeMapEntry & inOperand2,
                                                                              const class GALGAS_graphInsertModifierList & inOperand3
                                                                              COMMA_LOCATION_ARGS) ;
 
@@ -1086,10 +1086,10 @@ class GALGAS_graphDeclarationForGeneration : public GALGAS_semanticTypeForGenera
   public: typeComparisonResult objectCompare (const GALGAS_graphDeclarationForGeneration & inOperand) const ;
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_setMAssociatedListElementTypeEntry (class GALGAS_unifiedTypeMap_2D_entry inArgument0
+  public: VIRTUAL_IN_DEBUG void setter_setMAssociatedListElementTypeEntry (class GALGAS_unifiedTypeMapEntry inArgument0
                                                                            COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMAssociatedListTypeEntry (class GALGAS_unifiedTypeMap_2D_entry inArgument0
+  public: VIRTUAL_IN_DEBUG void setter_setMAssociatedListTypeEntry (class GALGAS_unifiedTypeMapEntry inArgument0
                                                                     COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMInsertModifierList (class GALGAS_graphInsertModifierList inArgument0
@@ -1124,14 +1124,14 @@ class cPtr_graphDeclarationForGeneration : public cPtr_semanticTypeForGeneration
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mAssociatedListTypeEntry ;
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mAssociatedListElementTypeEntry ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mAssociatedListTypeEntry ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mAssociatedListElementTypeEntry ;
   public: GALGAS_graphInsertModifierList mProperty_mInsertModifierList ;
 
 //--- Constructor
-  public: cPtr_graphDeclarationForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
-                                              const GALGAS_unifiedTypeMap_2D_entry & in_mAssociatedListTypeEntry,
-                                              const GALGAS_unifiedTypeMap_2D_entry & in_mAssociatedListElementTypeEntry,
+  public: cPtr_graphDeclarationForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                              const GALGAS_unifiedTypeMapEntry & in_mAssociatedListTypeEntry,
+                                              const GALGAS_unifiedTypeMapEntry & in_mAssociatedListElementTypeEntry,
                                               const GALGAS_graphInsertModifierList & in_mInsertModifierList
                                               COMMA_LOCATION_ARGS) ;
 
@@ -1219,7 +1219,7 @@ class GALGAS_listTypeForGeneration : public GALGAS_semanticTypeForGeneration {
   public: GALGAS_listTypeForGeneration (const class cPtr_listTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mListElementTypeIndex (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mListElementTypeIndex (void) const ;
 
   public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
 
@@ -1234,8 +1234,8 @@ class GALGAS_listTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_listTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
-                                                                     const class GALGAS_unifiedTypeMap_2D_entry & inOperand1,
+  public: static class GALGAS_listTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                     const class GALGAS_unifiedTypeMapEntry & inOperand1,
                                                                      const class GALGAS_typedPropertyList & inOperand2
                                                                      COMMA_LOCATION_ARGS) ;
 
@@ -1272,12 +1272,12 @@ class cPtr_listTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mListElementTypeIndex ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mListElementTypeIndex ;
   public: GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
 
 //--- Constructor
-  public: cPtr_listTypeForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
-                                      const GALGAS_unifiedTypeMap_2D_entry & in_mListElementTypeIndex,
+  public: cPtr_listTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                      const GALGAS_unifiedTypeMapEntry & in_mListElementTypeIndex,
                                       const GALGAS_typedPropertyList & in_mTypedAttributeList
                                       COMMA_LOCATION_ARGS) ;
 
@@ -1365,11 +1365,11 @@ class GALGAS_listmapTypeForGeneration : public GALGAS_semanticTypeForGeneration 
   public: GALGAS_listmapTypeForGeneration (const class cPtr_listmapTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mAssociatedListTypeIndex (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mAssociatedListTypeIndex (void) const ;
 
   public: class GALGAS_typedPropertyList readProperty_mAssociatedListTypedAttributeList (void) const ;
 
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mAssociatedListMapElementTypeIndex (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mAssociatedListMapElementTypeIndex (void) const ;
 
 //-- Start of generic part --*
 
@@ -1382,10 +1382,10 @@ class GALGAS_listmapTypeForGeneration : public GALGAS_semanticTypeForGeneration 
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_listmapTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
-                                                                        const class GALGAS_unifiedTypeMap_2D_entry & inOperand1,
+  public: static class GALGAS_listmapTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                        const class GALGAS_unifiedTypeMapEntry & inOperand1,
                                                                         const class GALGAS_typedPropertyList & inOperand2,
-                                                                        const class GALGAS_unifiedTypeMap_2D_entry & inOperand3
+                                                                        const class GALGAS_unifiedTypeMapEntry & inOperand3
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1421,15 +1421,15 @@ class cPtr_listmapTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mAssociatedListTypeIndex ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mAssociatedListTypeIndex ;
   public: GALGAS_typedPropertyList mProperty_mAssociatedListTypedAttributeList ;
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mAssociatedListMapElementTypeIndex ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mAssociatedListMapElementTypeIndex ;
 
 //--- Constructor
-  public: cPtr_listmapTypeForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
-                                         const GALGAS_unifiedTypeMap_2D_entry & in_mAssociatedListTypeIndex,
+  public: cPtr_listmapTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                         const GALGAS_unifiedTypeMapEntry & in_mAssociatedListTypeIndex,
                                          const GALGAS_typedPropertyList & in_mAssociatedListTypedAttributeList,
-                                         const GALGAS_unifiedTypeMap_2D_entry & in_mAssociatedListMapElementTypeIndex
+                                         const GALGAS_unifiedTypeMapEntry & in_mAssociatedListMapElementTypeIndex
                                          COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -1516,7 +1516,7 @@ class GALGAS_dictTypeForGeneration : public GALGAS_semanticTypeForGeneration {
   public: GALGAS_dictTypeForGeneration (const class cPtr_dictTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mElementTypeEntry (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mElementTypeEntry (void) const ;
 
   public: class GALGAS_lstring readProperty_mDictTypeName (void) const ;
 
@@ -1535,8 +1535,8 @@ class GALGAS_dictTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_dictTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
-                                                                     const class GALGAS_unifiedTypeMap_2D_entry & inOperand1,
+  public: static class GALGAS_dictTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                     const class GALGAS_unifiedTypeMapEntry & inOperand1,
                                                                      const class GALGAS_lstring & inOperand2,
                                                                      const class GALGAS_typedPropertyList & inOperand3,
                                                                      const class GALGAS_lstring & inOperand4
@@ -1575,14 +1575,14 @@ class cPtr_dictTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mElementTypeEntry ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mElementTypeEntry ;
   public: GALGAS_lstring mProperty_mDictTypeName ;
   public: GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
   public: GALGAS_lstring mProperty_mKeyTypeName ;
 
 //--- Constructor
-  public: cPtr_dictTypeForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
-                                      const GALGAS_unifiedTypeMap_2D_entry & in_mElementTypeEntry,
+  public: cPtr_dictTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                      const GALGAS_unifiedTypeMapEntry & in_mElementTypeEntry,
                                       const GALGAS_lstring & in_mDictTypeName,
                                       const GALGAS_typedPropertyList & in_mTypedAttributeList,
                                       const GALGAS_lstring & in_mKeyTypeName
@@ -1672,7 +1672,7 @@ class GALGAS_mapTypeForGeneration : public GALGAS_semanticTypeForGeneration {
   public: GALGAS_mapTypeForGeneration (const class cPtr_mapTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mElementTypeEntry (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mElementTypeEntry (void) const ;
 
   public: class GALGAS_lstring readProperty_mMapTypeName (void) const ;
 
@@ -1699,8 +1699,8 @@ class GALGAS_mapTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_mapTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
-                                                                    const class GALGAS_unifiedTypeMap_2D_entry & inOperand1,
+  public: static class GALGAS_mapTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand1,
                                                                     const class GALGAS_lstring & inOperand2,
                                                                     const class GALGAS_typedPropertyList & inOperand3,
                                                                     const class GALGAS_insertMethodListAST & inOperand4,
@@ -1743,7 +1743,7 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mElementTypeEntry ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mElementTypeEntry ;
   public: GALGAS_lstring mProperty_mMapTypeName ;
   public: GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
   public: GALGAS_insertMethodListAST mProperty_mInsertMethodList ;
@@ -1753,8 +1753,8 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: GALGAS_bool mProperty_mActivateSuggestions ;
 
 //--- Constructor
-  public: cPtr_mapTypeForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
-                                     const GALGAS_unifiedTypeMap_2D_entry & in_mElementTypeEntry,
+  public: cPtr_mapTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                     const GALGAS_unifiedTypeMapEntry & in_mElementTypeEntry,
                                      const GALGAS_lstring & in_mMapTypeName,
                                      const GALGAS_typedPropertyList & in_mTypedAttributeList,
                                      const GALGAS_insertMethodListAST & in_mInsertMethodList,
@@ -1848,7 +1848,7 @@ class GALGAS_mapEntryTypeForGeneration : public GALGAS_semanticTypeForGeneration
   public: GALGAS_mapEntryTypeForGeneration (const class cPtr_mapEntryTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mAssociatedMapTypeEntry (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mAssociatedMapTypeEntry (void) const ;
 
   public: class GALGAS_typedPropertyList readProperty_mAssociatedMapTypedAttributeList (void) const ;
 
@@ -1865,8 +1865,8 @@ class GALGAS_mapEntryTypeForGeneration : public GALGAS_semanticTypeForGeneration
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_mapEntryTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
-                                                                         const class GALGAS_unifiedTypeMap_2D_entry & inOperand1,
+  public: static class GALGAS_mapEntryTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                         const class GALGAS_unifiedTypeMapEntry & inOperand1,
                                                                          const class GALGAS_typedPropertyList & inOperand2,
                                                                          const class GALGAS_mapSearchMethodListAST & inOperand3
                                                                          COMMA_LOCATION_ARGS) ;
@@ -1904,13 +1904,13 @@ class cPtr_mapEntryTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mAssociatedMapTypeEntry ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mAssociatedMapTypeEntry ;
   public: GALGAS_typedPropertyList mProperty_mAssociatedMapTypedAttributeList ;
   public: GALGAS_mapSearchMethodListAST mProperty_mSearchMethodList ;
 
 //--- Constructor
-  public: cPtr_mapEntryTypeForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
-                                          const GALGAS_unifiedTypeMap_2D_entry & in_mAssociatedMapTypeEntry,
+  public: cPtr_mapEntryTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                          const GALGAS_unifiedTypeMapEntry & in_mAssociatedMapTypeEntry,
                                           const GALGAS_typedPropertyList & in_mAssociatedMapTypedAttributeList,
                                           const GALGAS_mapSearchMethodListAST & in_mSearchMethodList
                                           COMMA_LOCATION_ARGS) ;
@@ -2016,7 +2016,7 @@ class GALGAS_sharedMapTypeForGeneration : public GALGAS_semanticTypeForGeneratio
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_sharedMapTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+  public: static class GALGAS_sharedMapTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                           const class GALGAS_typedPropertyList & inOperand1,
                                                                           const class GALGAS_insertMethodListAST & inOperand2,
                                                                           const class GALGAS_mapSearchMethodListAST & inOperand3
@@ -2069,7 +2069,7 @@ class cPtr_sharedMapTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: GALGAS_mapSearchMethodListAST mProperty_mSearchMethodList ;
 
 //--- Constructor
-  public: cPtr_sharedMapTypeForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
+  public: cPtr_sharedMapTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                            const GALGAS_typedPropertyList & in_mTypedAttributeList,
                                            const GALGAS_insertMethodListAST & in_mInsertMethodList,
                                            const GALGAS_mapSearchMethodListAST & in_mSearchMethodList
@@ -2159,7 +2159,7 @@ class GALGAS_sortedListTypeForGeneration : public GALGAS_semanticTypeForGenerati
   public: GALGAS_sortedListTypeForGeneration (const class cPtr_sortedListTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mListElementTypeIndex (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mListElementTypeIndex (void) const ;
 
   public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
 
@@ -2176,8 +2176,8 @@ class GALGAS_sortedListTypeForGeneration : public GALGAS_semanticTypeForGenerati
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_sortedListTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
-                                                                           const class GALGAS_unifiedTypeMap_2D_entry & inOperand1,
+  public: static class GALGAS_sortedListTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                           const class GALGAS_unifiedTypeMapEntry & inOperand1,
                                                                            const class GALGAS_typedPropertyList & inOperand2,
                                                                            const class GALGAS_sortDescriptorListForGeneration & inOperand3
                                                                            COMMA_LOCATION_ARGS) ;
@@ -2215,13 +2215,13 @@ class cPtr_sortedListTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mListElementTypeIndex ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mListElementTypeIndex ;
   public: GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
   public: GALGAS_sortDescriptorListForGeneration mProperty_mSortDescriptorList ;
 
 //--- Constructor
-  public: cPtr_sortedListTypeForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
-                                            const GALGAS_unifiedTypeMap_2D_entry & in_mListElementTypeIndex,
+  public: cPtr_sortedListTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                            const GALGAS_unifiedTypeMapEntry & in_mListElementTypeIndex,
                                             const GALGAS_typedPropertyList & in_mTypedAttributeList,
                                             const GALGAS_sortDescriptorListForGeneration & in_mSortDescriptorList
                                             COMMA_LOCATION_ARGS) ;
@@ -2323,7 +2323,7 @@ class GALGAS_structTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_structTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_entry & inOperand0,
+  public: static class GALGAS_structTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                        const class GALGAS_typedPropertyList & inOperand1
                                                                        COMMA_LOCATION_ARGS) ;
 
@@ -2363,7 +2363,7 @@ class cPtr_structTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: GALGAS_typedPropertyList mProperty_mTypedPropertyList ;
 
 //--- Constructor
-  public: cPtr_structTypeForGeneration (const GALGAS_unifiedTypeMap_2D_entry & in_mSelfTypeEntry,
+  public: cPtr_structTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                         const GALGAS_typedPropertyList & in_mTypedPropertyList
                                         COMMA_LOCATION_ARGS) ;
 
@@ -2451,11 +2451,11 @@ class GALGAS_abstractExtensionGetterForGeneration : public GALGAS_semanticDeclar
   public: GALGAS_abstractExtensionGetterForGeneration (const class cPtr_abstractExtensionGetterForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReceiverType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
 
   public: class GALGAS_string readProperty_mAbstractExtensionGetterName (void) const ;
 
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mResultType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mResultType (void) const ;
 
   public: class GALGAS_formalInputParameterListForGeneration readProperty_mAbstractExtensionGetterFormalParameterList (void) const ;
 
@@ -2472,9 +2472,9 @@ class GALGAS_abstractExtensionGetterForGeneration : public GALGAS_semanticDeclar
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_abstractExtensionGetterForGeneration constructor_new (const class GALGAS_bool & inOperand0,
                                                                                     const class GALGAS_string & inOperand1,
-                                                                                    const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+                                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand2,
                                                                                     const class GALGAS_string & inOperand3,
-                                                                                    const class GALGAS_unifiedTypeMap_2D_entry & inOperand4,
+                                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand4,
                                                                                     const class GALGAS_formalInputParameterListForGeneration & inOperand5
                                                                                     COMMA_LOCATION_ARGS) ;
 
@@ -2511,17 +2511,17 @@ class cPtr_abstractExtensionGetterForGeneration : public cPtr_semanticDeclaratio
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
   public: GALGAS_string mProperty_mAbstractExtensionGetterName ;
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mResultType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mResultType ;
   public: GALGAS_formalInputParameterListForGeneration mProperty_mAbstractExtensionGetterFormalParameterList ;
 
 //--- Constructor
   public: cPtr_abstractExtensionGetterForGeneration (const GALGAS_bool & in_mHasHeader,
                                                      const GALGAS_string & in_mImplementationCppFileName,
-                                                     const GALGAS_unifiedTypeMap_2D_entry & in_mReceiverType,
+                                                     const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
                                                      const GALGAS_string & in_mAbstractExtensionGetterName,
-                                                     const GALGAS_unifiedTypeMap_2D_entry & in_mResultType,
+                                                     const GALGAS_unifiedTypeMapEntry & in_mResultType,
                                                      const GALGAS_formalInputParameterListForGeneration & in_mAbstractExtensionGetterFormalParameterList
                                                      COMMA_LOCATION_ARGS) ;
 
@@ -2609,7 +2609,7 @@ class GALGAS_abstractExtensionMethodForGeneration : public GALGAS_semanticDeclar
   public: GALGAS_abstractExtensionMethodForGeneration (const class cPtr_abstractExtensionMethodForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReceiverType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
 
   public: class GALGAS_string readProperty_mAbstractExtensionMethodName (void) const ;
 
@@ -2628,7 +2628,7 @@ class GALGAS_abstractExtensionMethodForGeneration : public GALGAS_semanticDeclar
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_abstractExtensionMethodForGeneration constructor_new (const class GALGAS_bool & inOperand0,
                                                                                     const class GALGAS_string & inOperand1,
-                                                                                    const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+                                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand2,
                                                                                     const class GALGAS_string & inOperand3,
                                                                                     const class GALGAS_formalParameterListForGeneration & inOperand4
                                                                                     COMMA_LOCATION_ARGS) ;
@@ -2643,7 +2643,7 @@ class GALGAS_abstractExtensionMethodForGeneration : public GALGAS_semanticDeclar
   public: VIRTUAL_IN_DEBUG void setter_setMAbstractExtensionMethodName (class GALGAS_string inArgument0
                                                                         COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMReceiverType (class GALGAS_unifiedTypeMap_2D_entry inArgument0
+  public: VIRTUAL_IN_DEBUG void setter_setMReceiverType (class GALGAS_unifiedTypeMapEntry inArgument0
                                                          COMMA_LOCATION_ARGS) ;
 
 
@@ -2675,14 +2675,14 @@ class cPtr_abstractExtensionMethodForGeneration : public cPtr_semanticDeclaratio
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
   public: GALGAS_string mProperty_mAbstractExtensionMethodName ;
   public: GALGAS_formalParameterListForGeneration mProperty_mAbstractExtensionMethodFormalParameterList ;
 
 //--- Constructor
   public: cPtr_abstractExtensionMethodForGeneration (const GALGAS_bool & in_mHasHeader,
                                                      const GALGAS_string & in_mImplementationCppFileName,
-                                                     const GALGAS_unifiedTypeMap_2D_entry & in_mReceiverType,
+                                                     const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
                                                      const GALGAS_string & in_mAbstractExtensionMethodName,
                                                      const GALGAS_formalParameterListForGeneration & in_mAbstractExtensionMethodFormalParameterList
                                                      COMMA_LOCATION_ARGS) ;
@@ -2771,7 +2771,7 @@ class GALGAS_abstractExtensionSetterForGeneration : public GALGAS_semanticDeclar
   public: GALGAS_abstractExtensionSetterForGeneration (const class cPtr_abstractExtensionSetterForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReceiverType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
 
   public: class GALGAS_string readProperty_mAbstractExtensionSetterName (void) const ;
 
@@ -2790,7 +2790,7 @@ class GALGAS_abstractExtensionSetterForGeneration : public GALGAS_semanticDeclar
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_abstractExtensionSetterForGeneration constructor_new (const class GALGAS_bool & inOperand0,
                                                                                     const class GALGAS_string & inOperand1,
-                                                                                    const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+                                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand2,
                                                                                     const class GALGAS_string & inOperand3,
                                                                                     const class GALGAS_formalParameterListForGeneration & inOperand4
                                                                                     COMMA_LOCATION_ARGS) ;
@@ -2828,14 +2828,14 @@ class cPtr_abstractExtensionSetterForGeneration : public cPtr_semanticDeclaratio
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
   public: GALGAS_string mProperty_mAbstractExtensionSetterName ;
   public: GALGAS_formalParameterListForGeneration mProperty_mAbstractExtensionSetterFormalParameterList ;
 
 //--- Constructor
   public: cPtr_abstractExtensionSetterForGeneration (const GALGAS_bool & in_mHasHeader,
                                                      const GALGAS_string & in_mImplementationCppFileName,
-                                                     const GALGAS_unifiedTypeMap_2D_entry & in_mReceiverType,
+                                                     const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
                                                      const GALGAS_string & in_mAbstractExtensionSetterName,
                                                      const GALGAS_formalParameterListForGeneration & in_mAbstractExtensionSetterFormalParameterList
                                                      COMMA_LOCATION_ARGS) ;
@@ -2924,13 +2924,13 @@ class GALGAS_extensionGetterForGeneration : public GALGAS_semanticDeclarationWit
   public: GALGAS_extensionGetterForGeneration (const class cPtr_extensionGetterForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReceiverType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
 
   public: class GALGAS_string readProperty_mExtensionGetterName (void) const ;
 
   public: class GALGAS_bool readProperty_mImplementedAsFunction (void) const ;
 
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mResultType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mResultType (void) const ;
 
   public: class GALGAS_string readProperty_mResultVarCppName (void) const ;
 
@@ -2953,10 +2953,10 @@ class GALGAS_extensionGetterForGeneration : public GALGAS_semanticDeclarationWit
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_extensionGetterForGeneration constructor_new (const class GALGAS_bool & inOperand0,
                                                                             const class GALGAS_string & inOperand1,
-                                                                            const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+                                                                            const class GALGAS_unifiedTypeMapEntry & inOperand2,
                                                                             const class GALGAS_string & inOperand3,
                                                                             const class GALGAS_bool & inOperand4,
-                                                                            const class GALGAS_unifiedTypeMap_2D_entry & inOperand5,
+                                                                            const class GALGAS_unifiedTypeMapEntry & inOperand5,
                                                                             const class GALGAS_string & inOperand6,
                                                                             const class GALGAS_formalInputParameterListForGeneration & inOperand7,
                                                                             const class GALGAS_typedPropertyList & inOperand8,
@@ -2996,10 +2996,10 @@ class cPtr_extensionGetterForGeneration : public cPtr_semanticDeclarationWithHea
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
   public: GALGAS_string mProperty_mExtensionGetterName ;
   public: GALGAS_bool mProperty_mImplementedAsFunction ;
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mResultType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mResultType ;
   public: GALGAS_string mProperty_mResultVarCppName ;
   public: GALGAS_formalInputParameterListForGeneration mProperty_mExtensionGetterFormalParameterList ;
   public: GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
@@ -3008,10 +3008,10 @@ class cPtr_extensionGetterForGeneration : public cPtr_semanticDeclarationWithHea
 //--- Constructor
   public: cPtr_extensionGetterForGeneration (const GALGAS_bool & in_mHasHeader,
                                              const GALGAS_string & in_mImplementationCppFileName,
-                                             const GALGAS_unifiedTypeMap_2D_entry & in_mReceiverType,
+                                             const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
                                              const GALGAS_string & in_mExtensionGetterName,
                                              const GALGAS_bool & in_mImplementedAsFunction,
-                                             const GALGAS_unifiedTypeMap_2D_entry & in_mResultType,
+                                             const GALGAS_unifiedTypeMapEntry & in_mResultType,
                                              const GALGAS_string & in_mResultVarCppName,
                                              const GALGAS_formalInputParameterListForGeneration & in_mExtensionGetterFormalParameterList,
                                              const GALGAS_typedPropertyList & in_mTypedAttributeList,
@@ -3102,7 +3102,7 @@ class GALGAS_extensionMethodForGeneration : public GALGAS_semanticDeclarationWit
   public: GALGAS_extensionMethodForGeneration (const class cPtr_extensionMethodForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReceiverType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
 
   public: class GALGAS_string readProperty_mExtensionMethodName (void) const ;
 
@@ -3127,7 +3127,7 @@ class GALGAS_extensionMethodForGeneration : public GALGAS_semanticDeclarationWit
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_extensionMethodForGeneration constructor_new (const class GALGAS_bool & inOperand0,
                                                                             const class GALGAS_string & inOperand1,
-                                                                            const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+                                                                            const class GALGAS_unifiedTypeMapEntry & inOperand2,
                                                                             const class GALGAS_string & inOperand3,
                                                                             const class GALGAS_bool & inOperand4,
                                                                             const class GALGAS_formalParameterListForGeneration & inOperand5,
@@ -3168,7 +3168,7 @@ class cPtr_extensionMethodForGeneration : public cPtr_semanticDeclarationWithHea
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
   public: GALGAS_string mProperty_mExtensionMethodName ;
   public: GALGAS_bool mProperty_mImplementedAsFunction ;
   public: GALGAS_formalParameterListForGeneration mProperty_mExtensionMethodFormalParameterList ;
@@ -3178,7 +3178,7 @@ class cPtr_extensionMethodForGeneration : public cPtr_semanticDeclarationWithHea
 //--- Constructor
   public: cPtr_extensionMethodForGeneration (const GALGAS_bool & in_mHasHeader,
                                              const GALGAS_string & in_mImplementationCppFileName,
-                                             const GALGAS_unifiedTypeMap_2D_entry & in_mReceiverType,
+                                             const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
                                              const GALGAS_string & in_mExtensionMethodName,
                                              const GALGAS_bool & in_mImplementedAsFunction,
                                              const GALGAS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
@@ -3270,7 +3270,7 @@ class GALGAS_extensionSetterForGeneration : public GALGAS_semanticDeclarationWit
   public: GALGAS_extensionSetterForGeneration (const class cPtr_extensionSetterForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReceiverType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
 
   public: class GALGAS_string readProperty_mExtensionSetterName (void) const ;
 
@@ -3295,7 +3295,7 @@ class GALGAS_extensionSetterForGeneration : public GALGAS_semanticDeclarationWit
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_extensionSetterForGeneration constructor_new (const class GALGAS_bool & inOperand0,
                                                                             const class GALGAS_string & inOperand1,
-                                                                            const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+                                                                            const class GALGAS_unifiedTypeMapEntry & inOperand2,
                                                                             const class GALGAS_string & inOperand3,
                                                                             const class GALGAS_bool & inOperand4,
                                                                             const class GALGAS_formalParameterListForGeneration & inOperand5,
@@ -3336,7 +3336,7 @@ class cPtr_extensionSetterForGeneration : public cPtr_semanticDeclarationWithHea
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
   public: GALGAS_string mProperty_mExtensionSetterName ;
   public: GALGAS_bool mProperty_mImplementedAsFunction ;
   public: GALGAS_formalParameterListForGeneration mProperty_mExtensionSetterFormalParameterList ;
@@ -3346,7 +3346,7 @@ class cPtr_extensionSetterForGeneration : public cPtr_semanticDeclarationWithHea
 //--- Constructor
   public: cPtr_extensionSetterForGeneration (const GALGAS_bool & in_mHasHeader,
                                              const GALGAS_string & in_mImplementationCppFileName,
-                                             const GALGAS_unifiedTypeMap_2D_entry & in_mReceiverType,
+                                             const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
                                              const GALGAS_string & in_mExtensionSetterName,
                                              const GALGAS_bool & in_mImplementedAsFunction,
                                              const GALGAS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
@@ -3438,13 +3438,13 @@ class GALGAS_overrideExtensionGetterForGeneration : public GALGAS_semanticDeclar
   public: GALGAS_overrideExtensionGetterForGeneration (const class cPtr_overrideExtensionGetterForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mReceiverType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
 
   public: class GALGAS_string readProperty_mBaseTypeName (void) const ;
 
   public: class GALGAS_string readProperty_mOverridingExtensionGetterName (void) const ;
 
-  public: class GALGAS_unifiedTypeMap_2D_entry readProperty_mResultType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mResultType (void) const ;
 
   public: class GALGAS_string readProperty_mResultVarCppName (void) const ;
 
@@ -3467,10 +3467,10 @@ class GALGAS_overrideExtensionGetterForGeneration : public GALGAS_semanticDeclar
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_overrideExtensionGetterForGeneration constructor_new (const class GALGAS_bool & inOperand0,
                                                                                     const class GALGAS_string & inOperand1,
-                                                                                    const class GALGAS_unifiedTypeMap_2D_entry & inOperand2,
+                                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand2,
                                                                                     const class GALGAS_string & inOperand3,
                                                                                     const class GALGAS_string & inOperand4,
-                                                                                    const class GALGAS_unifiedTypeMap_2D_entry & inOperand5,
+                                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand5,
                                                                                     const class GALGAS_string & inOperand6,
                                                                                     const class GALGAS_formalInputParameterListForGeneration & inOperand7,
                                                                                     const class GALGAS_typedPropertyList & inOperand8,
@@ -3510,10 +3510,10 @@ class cPtr_overrideExtensionGetterForGeneration : public cPtr_semanticDeclaratio
 //----------------------------------------------------------------------------------------------------------------------
 
 //--- Properties
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mReceiverType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
   public: GALGAS_string mProperty_mBaseTypeName ;
   public: GALGAS_string mProperty_mOverridingExtensionGetterName ;
-  public: GALGAS_unifiedTypeMap_2D_entry mProperty_mResultType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mResultType ;
   public: GALGAS_string mProperty_mResultVarCppName ;
   public: GALGAS_formalInputParameterListForGeneration mProperty_mOverridingExtensionGetterFormalParameterList ;
   public: GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
@@ -3522,10 +3522,10 @@ class cPtr_overrideExtensionGetterForGeneration : public cPtr_semanticDeclaratio
 //--- Constructor
   public: cPtr_overrideExtensionGetterForGeneration (const GALGAS_bool & in_mHasHeader,
                                                      const GALGAS_string & in_mImplementationCppFileName,
-                                                     const GALGAS_unifiedTypeMap_2D_entry & in_mReceiverType,
+                                                     const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
                                                      const GALGAS_string & in_mBaseTypeName,
                                                      const GALGAS_string & in_mOverridingExtensionGetterName,
-                                                     const GALGAS_unifiedTypeMap_2D_entry & in_mResultType,
+                                                     const GALGAS_unifiedTypeMapEntry & in_mResultType,
                                                      const GALGAS_string & in_mResultVarCppName,
                                                      const GALGAS_formalInputParameterListForGeneration & in_mOverridingExtensionGetterFormalParameterList,
                                                      const GALGAS_typedPropertyList & in_mTypedAttributeList,

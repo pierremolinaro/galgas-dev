@@ -21,7 +21,7 @@
 
 enum @selfAvailability {
   case none
-  case available (@unifiedTypeMap-entry type @bool mutable @bool mutableproperties)
+  case available (@unifiedTypeMapEntry type @bool mutable @bool mutableproperties)
 }
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -37,11 +37,11 @@ struct @analysisContext {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkAssignmentTypes
-  ?let @unifiedTypeMap-entry inTargetType
-  ?let @unifiedTypeMap-entry inSourceType
+  ?let @unifiedTypeMapEntry inTargetType
+  ?let @unifiedTypeMapEntry inSourceType
   ?let @location inErrorLocation
 {
-  var @unifiedTypeMap-entry sourceType = inSourceType
+  var @unifiedTypeMapEntry sourceType = inSourceType
   var @bool ok = inTargetType == sourceType
   loop (@uint.max) while (not ok) & (not [[sourceType mSuperType] isNull]) do
     sourceType = [sourceType mSuperType]
@@ -64,12 +64,12 @@ proc checkAssignmentTypes
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkAssignmentTypeWithImplicitGetterCall
-  ?let @unifiedTypeMap-entry inTargetType
-  ?let @unifiedTypeMap-entry inSourceType
+  ?let @unifiedTypeMapEntry inTargetType
+  ?let @unifiedTypeMapEntry inSourceType
   ?let @location inErrorLocation
   ?!@semanticExpressionForGeneration ioExpression
 {
-  var @unifiedTypeMap-entry sourceType = inSourceType
+  var @unifiedTypeMapEntry sourceType = inSourceType
   var @bool ok = inTargetType == inSourceType
   loop (@uint.max) while (not ok) & (not [[sourceType mSuperType] isNull]) do
     sourceType = [sourceType mSuperType]
@@ -131,8 +131,8 @@ proc checkAssignmentTypeWithImplicitGetterCall
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkDiadicOperator
-  ?let @unifiedTypeMap-entry inLeftType
-  ?let @unifiedTypeMap-entry inRightType
+  ?let @unifiedTypeMapEntry inLeftType
+  ?let @unifiedTypeMapEntry inRightType
   ?let @bool inOperandIsHandled
   ?let @string inOperatorNameForErrorMessage
   ?let @location inErrorLocation
@@ -143,7 +143,7 @@ proc checkDiadicOperator
     : "left operand type is '@" + [inLeftType key] + "' and does not accept '" + inOperatorNameForErrorMessage 
       + "' operator (right operand type is '@" + [inRightType key] + ")"
   else
-    var @unifiedTypeMap-entry rightType = inRightType
+    var @unifiedTypeMapEntry rightType = inRightType
     var @bool ok = inLeftType == rightType
     loop (@uint.max) while (not ok) & (not [[rightType mSuperType] isNull]) do
       rightType = [rightType mSuperType]
@@ -203,28 +203,28 @@ proc checkDiadicOperator
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @predefinedTypes {
-  public let @unifiedTypeMap-entry mLocationType
-  public let @unifiedTypeMap-entry mBoolType
-  public let @unifiedTypeMap-entry mCharType
-  public let @unifiedTypeMap-entry mStringType
-  public let @unifiedTypeMap-entry mUIntType
-  public let @unifiedTypeMap-entry mSIntType
-  public let @unifiedTypeMap-entry mUInt64Type
-  public let @unifiedTypeMap-entry mSInt64Type
-  public let @unifiedTypeMap-entry mDoubleType
-  public let @unifiedTypeMap-entry mLBoolType
-  public let @unifiedTypeMap-entry mLCharType
-  public let @unifiedTypeMap-entry mLStringType
-  public let @unifiedTypeMap-entry mLUIntType
-  public let @unifiedTypeMap-entry mLSIntType
-  public let @unifiedTypeMap-entry mLUInt64Type
-  public let @unifiedTypeMap-entry mLSInt64Type
-  public let @unifiedTypeMap-entry mLDoubleType
-  public let @unifiedTypeMap-entry mStringListType
-  public let @unifiedTypeMap-entry mLBigIntType
-  public let @unifiedTypeMap-entry mBigIntType
-  public let @unifiedTypeMap-entry mStringSetType
-  public let @unifiedTypeMap-entry mLStringListType
+  public let @unifiedTypeMapEntry mLocationType
+  public let @unifiedTypeMapEntry mBoolType
+  public let @unifiedTypeMapEntry mCharType
+  public let @unifiedTypeMapEntry mStringType
+  public let @unifiedTypeMapEntry mUIntType
+  public let @unifiedTypeMapEntry mSIntType
+  public let @unifiedTypeMapEntry mUInt64Type
+  public let @unifiedTypeMapEntry mSInt64Type
+  public let @unifiedTypeMapEntry mDoubleType
+  public let @unifiedTypeMapEntry mLBoolType
+  public let @unifiedTypeMapEntry mLCharType
+  public let @unifiedTypeMapEntry mLStringType
+  public let @unifiedTypeMapEntry mLUIntType
+  public let @unifiedTypeMapEntry mLSIntType
+  public let @unifiedTypeMapEntry mLUInt64Type
+  public let @unifiedTypeMapEntry mLSInt64Type
+  public let @unifiedTypeMapEntry mLDoubleType
+  public let @unifiedTypeMapEntry mStringListType
+  public let @unifiedTypeMapEntry mLBigIntType
+  public let @unifiedTypeMapEntry mBigIntType
+  public let @unifiedTypeMapEntry mStringSetType
+  public let @unifiedTypeMapEntry mLStringListType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -236,7 +236,7 @@ struct @predefinedTypes {
 abstract method @semanticExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMap-entry inType
+  ?inferenceType: let @unifiedTypeMapEntry inType
   ?let @analysisContext inAnalysisContext
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression

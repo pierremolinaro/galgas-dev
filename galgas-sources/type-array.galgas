@@ -220,11 +220,11 @@ override method @arrayDeclarationAST enterInSemanticContext
     !""
   ]
 #--- Enter in semantic context
-  [!?ioSemanticContext.mTypeMap insertKey
+  let typeDefinition = @unifiedTypeDefinition.new {
     !self.mArrayTypeName
     !self.mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-entry.null
+    !@unifiedTypeMapEntry.null
     !@typeKindEnum. listMapType
     !false # Does not support collection value
     !@typedPropertyList {}
@@ -244,11 +244,12 @@ override method @arrayDeclarationAST enterInSemanticContext
     !@mapSearchMethodListAST {}
     !@mapSearchMethodListAST {}
     !false # Do not generate header in separate file
-    !@unifiedTypeMap-entry.null # Type for enumerated element for "for" instruction
+    !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
     !"" # No default constructor
     !"array-" + [self.mArrayTypeName fileNameRepresentation]
     !@headerKind.oneHeader
-  ]
+  }
+  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -283,7 +284,7 @@ override method @arrayDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @arrayTypeForGeneration : @semanticTypeForGeneration {
-  private let @unifiedTypeMap-entry mElementTypeEntry
+  private let @unifiedTypeMapEntry mElementTypeEntry
   private let @uint mDimension
 }
 

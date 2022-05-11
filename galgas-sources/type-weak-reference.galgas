@@ -52,10 +52,10 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext
 {
 #--- Handle super class
-  let @unifiedTypeMap-entry superClassIndex
+  let @unifiedTypeMapEntry superClassIndex
   var @bool generateHeaderInSeparateFile
   if self.mSuperWeakReferenceTypeName.string == "" then
-    superClassIndex = @unifiedTypeMap-entry.null
+    superClassIndex = @unifiedTypeMapEntry.null
     generateHeaderInSeparateFile = false
     for (mValue) in self.mClassFeatureList do
       if mValue.string == "generatedInSeparateFile" then
@@ -63,24 +63,26 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
       end
     end
   else
-    [!?ioSemanticContext.mTypeMap makeEntry  !self.mSuperWeakReferenceTypeName ?superClassIndex]
-    [ioSemanticContext.mTypeMap searchKey
-      !self.mSuperWeakReferenceTypeName
-      ?3*
-      ?let typeKindEnum
-      ?17*
-      ?generateHeaderInSeparateFile
-      ?4*
-    ]
+    [!?ioSemanticContext.mTypeMap makeEntry !self.mSuperWeakReferenceTypeName ?superClassIndex]
+    [ioSemanticContext.mTypeMap searchType !self.mSuperWeakReferenceTypeName ?let superTypeDefinition]
+    generateHeaderInSeparateFile = superTypeDefinition.mGenerateHeaderInSeparateFile
+#    [ioSemanticContext.mTypeMap searchKey
+#      !self.mSuperWeakReferenceTypeName
+#      ?3*
+#      ?let typeKindEnum
+#      ?17*
+#      ?generateHeaderInSeparateFile
+#      ?4*
+#    ]
   #---
-    if not [typeKindEnum isWeakReferenceType] then
+    if not [superTypeDefinition.mTypeKindEnum isWeakReferenceType] then
       error self.mSuperWeakReferenceTypeName : "the @" + self.mSuperWeakReferenceTypeName + " should be a weak reference type"
     end
   end
 #--- Current class Index
   [!?ioSemanticContext.mTypeMap makeEntry
      !self.mWeakReferenceTypeName
-     ?let @unifiedTypeMap-entry weakReferenceIndex
+     ?let @unifiedTypeMapEntry weakReferenceIndex
   ]
 #--- Constructors
   var @constructorMap constructorMap = {}
@@ -116,7 +118,7 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
   end
 #--- Enter in type map
   [!?ioSemanticContext.mTypeMap makeEntry  !self.mClassTypeName ?let classIndex]
-  [!?ioSemanticContext.mTypeMap insertKey
+  let typeDefinition = @unifiedTypeDefinition.new {
     !self.mWeakReferenceTypeName
     !self.mIsPredefined
     !true # Concrete Type
@@ -140,11 +142,12 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
     !{}
     !{}
     !generateHeaderInSeparateFile
-    !@unifiedTypeMap-entry.null # Type for enumerated element for "for" instruction
+    !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
     !"nil" # Default constructor
     !"weak-reference-" + [self.mWeakReferenceTypeName fileNameRepresentation]
     !@headerKind.oneHeader
-  ]
+  }
+  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -167,10 +170,10 @@ override method @weakReferenceDeclarationAST semanticAnalysis
     [!?ioUsefulEntitiesGraph addEdge !weakRefTypeNameForUsefulness !superWeakRefNameForUsefulness]
   end
 #------ Self type
-  let @unifiedTypeMap-entry selfType = [inSemanticContext.mTypeMap searchKey !self.mWeakReferenceTypeName]
+  let @unifiedTypeMapEntry selfType = [inSemanticContext.mTypeMap searchKey !self.mWeakReferenceTypeName]
 #--- Super class type
-  let @unifiedTypeMap-entry superClassEntry = if self.mSuperWeakReferenceTypeName.string == ""
-    then @unifiedTypeMap-entry.null
+  let @unifiedTypeMapEntry superClassEntry = if self.mSuperWeakReferenceTypeName.string == ""
+    then @unifiedTypeMapEntry.null
     else [inSemanticContext.mTypeMap searchKey !self.mSuperWeakReferenceTypeName]
   end
 #------ Super type, and class features
@@ -222,7 +225,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #------
-  let @unifiedTypeMap-entry referenceClassType = [inSemanticContext.mTypeMap searchKey
+  let @unifiedTypeMapEntry referenceClassType = [inSemanticContext.mTypeMap searchKey
     !self.mClassTypeName
   ]
   ioSemanticDeclarationListForGeneration +=
@@ -242,8 +245,8 @@ override method @weakReferenceDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
-  private let @unifiedTypeMap-entry mReferenceClassType
-  private let @unifiedTypeMap-entry mSuperClass # Null if no super class
+  private let @unifiedTypeMapEntry mReferenceClassType
+  private let @unifiedTypeMapEntry mSuperClass # Null if no super class
   private let @typedPropertyList mAllTypedPropertyList # Inherited followed by current attributes
   private let @typedPropertyList mTypedAttributeList
   private let @bool mGenerateHeaderInSeparateFile # Significant only for classes

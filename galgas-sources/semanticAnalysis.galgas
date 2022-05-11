@@ -67,10 +67,10 @@ proc checkMethodSignatures
 
 proc checkGetterSignatures
   ?let @formalInputParameterListForGeneration inTestedSignature
-  ?let @unifiedTypeMap-entry inReturnType
+  ?let @unifiedTypeMapEntry inReturnType
   ?let @location inErrorLocation
   ?let @functionSignature inReferenceSignature
-  ?let @unifiedTypeMap-entry inInheritedReturnType
+  ?let @unifiedTypeMapEntry inInheritedReturnType
   ?let @location inReferenceLocation {
   if [inReturnType key] != [inInheritedReturnType key] then
     error inErrorLocation : "the return type is '@"
@@ -118,7 +118,7 @@ abstract method @semanticDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @propertyIndexMap {
-  public var @unifiedTypeMap-entry mPropertyTypeIndex
+  public var @unifiedTypeMapEntry mPropertyTypeIndex
   insert insertKey error message "the '%K' attribute is already declared"
   search searchKey error message "the '%K' attribute is not declared"
 }
@@ -354,7 +354,7 @@ proc analyzeFunctionBody
   ?let @lstring inResultTypeName
   ?let @location inEndOfFunctionLocation
   !@formalInputParameterListForGeneration outSignatureForGeneration
-  !@unifiedTypeMap-entry outReturnedType
+  !@unifiedTypeMapEntry outReturnedType
   !@string outResultVariableCppName
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
 {
@@ -1389,8 +1389,8 @@ override method @inputParameterVariable analyzeInputParameter
   ?let @string inLexicalAttributeName
   ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
   ?!@localVarManager ioVariableMap {
-  [!?ioVariableMap searchForWriteAccess !self.mActualParameterName ?let @unifiedTypeMap-entry type ?let @string cppName ?*]
-  let @unifiedTypeMap-entry expectedType
+  [!?ioVariableMap searchForWriteAccess !self.mActualParameterName ?let @unifiedTypeMapEntry type ?let @string cppName ?*]
+  let @unifiedTypeMapEntry expectedType
   switch inRequiredLexicalType
   case lexicalType_string : expectedType = inAnalysisContext.mPredefinedTypes.mLStringType
   case lexicalType_char : expectedType = inAnalysisContext.mPredefinedTypes.mLCharType
@@ -1421,7 +1421,7 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
   ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
   ?!@localVarManager ioVariableMap {
 #--- Expected type
-  let @unifiedTypeMap-entry expectedType
+  let @unifiedTypeMapEntry expectedType
   switch inRequiredLexicalType
   case lexicalType_string : expectedType = inAnalysisContext.mPredefinedTypes.mLStringType
   case lexicalType_char : expectedType = inAnalysisContext.mPredefinedTypes.mLCharType
@@ -1465,7 +1465,7 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
   ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
   ?!@localVarManager ioVariableMap {
 #--- Expected type
-  let @unifiedTypeMap-entry expectedType
+  let @unifiedTypeMapEntry expectedType
   switch inRequiredLexicalType
   case lexicalType_string : expectedType = inAnalysisContext.mPredefinedTypes.mLStringType
   case lexicalType_char : expectedType = inAnalysisContext.mPredefinedTypes.mLCharType
@@ -1530,7 +1530,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
   if not inHasTranslateFeature then
     error self.mActualParameterName : "the ':>' construct requires the syntax component to be declared with 'translate' feature"
   end
-  [!?ioVariableMap searchForWriteAccess !self.mActualParameterName ?let @unifiedTypeMap-entry type ?* ?*]
+  [!?ioVariableMap searchForWriteAccess !self.mActualParameterName ?let @unifiedTypeMapEntry type ?* ?*]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
   if expectedType != type then
     error self.mActualParameterName

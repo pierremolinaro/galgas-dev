@@ -450,8 +450,8 @@ override method @ifInstructionAST analyzeSemanticInstruction
         ?let analyzedExpression
       ]
     #--- Get type information
-      var castType = @unifiedTypeMap-entry.null
-      var testType = @unifiedTypeMap-entry.null
+      var castType = @unifiedTypeMapEntry.null
+      var testType = @unifiedTypeMapEntry.null
     #--- Check this is a class
       if [[analyzedExpression.mResultType mTypeKindEnum] isClassType] then
         if typeName.string == "" then
@@ -460,7 +460,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
           castType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !typeName]
           testType = castType
         #--- Check expression type is a descendant of named type
-          var @unifiedTypeMap-entry t = castType
+          var @unifiedTypeMapEntry t = castType
           var @bool found = t == analyzedExpression.mResultType
           loop ([inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
           while (not found) & not [[t mSuperType] isNull] do
@@ -480,7 +480,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
           castType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !typeName]
         end
         testType = castType
-        var @unifiedTypeMap-entry t = castType
+        var @unifiedTypeMapEntry t = castType
         var @bool found = t == analyzedExpression.mResultType
         if found then
           [[castType mTypeKindEnum] weakReferenceType ?referenceType: testType]
@@ -594,7 +594,7 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
   [inReceiverExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMap-entry.null
+    !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration receiverExpression
@@ -602,7 +602,7 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
   [!?ioVariableMap openOverrideForSelectBlock]
   [!?ioVariableMap openBranch]
 #--- Get optional method map
-  let @unifiedTypeMap-entry receiverType = receiverExpression.mResultType
+  let @unifiedTypeMapEntry receiverType = receiverExpression.mResultType
   let @optionalMethodMap optionalMethodMap = [receiverType mOptionalMethodMap]
 #--- Search optional method
   let @optionalMethodSignature optionalMethodSignature
@@ -722,8 +722,8 @@ enum @ifTestForGeneration {
   case regular (@semanticExpressionForGeneration exp)
   case letExp (@string targetVarCppName
                @semanticExpressionForGeneration exp
-               @unifiedTypeMap-entry targetType
-               @unifiedTypeMap-entry testType)
+               @unifiedTypeMapEntry targetType
+               @unifiedTypeMapEntry testType)
   case optionalMethodCall (
     @semanticExpressionForGeneration receiverExpression
     @lstring optionalMethodName

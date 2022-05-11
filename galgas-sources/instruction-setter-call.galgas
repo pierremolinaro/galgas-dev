@@ -199,7 +199,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
                                                           ?let @analysisContext inAnalysisContext
                                                           ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                                                           ?!@localVarManager ioVariableMap {
-  var @unifiedTypeMap-entry receiverType
+  var @unifiedTypeMapEntry receiverType
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
@@ -252,7 +252,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
     end
   end
 #--- Type cast ?
-  let @unifiedTypeMap-entry castType
+  let @unifiedTypeMapEntry castType
   if self.mTypeNameForCasting.string != "" then
     castType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mTypeNameForCasting]
     checkAssignmentTypes (!receiverType !castType !self.mTypeNameForCasting.location)
@@ -370,20 +370,20 @@ refclass @setterCallInstructionForGeneration : @semanticInstructionForGeneration
   private let @string mReceiverCppName
   private let @string mReceiverBaseName
   private let @lstringlist mReceiverStructAttributes
-  private let @unifiedTypeMap-entry mCastType
-  private let @unifiedTypeMap-entry mReceiverType
+  private let @unifiedTypeMapEntry mCastType
+  private let @unifiedTypeMapEntry mReceiverType
   private let @lstring mSetterName
   private let @methodKind mKind
   private let @actualParameterListForGeneration mActualParameterList
   private let @bool mHasCompilerArgument
-  private let @unifiedTypeMap-entry mMethodBaseType
+  private let @unifiedTypeMapEntry mMethodBaseType
 }
 
 #·····················································································································*
 
 refclass @selfSetterCallInstructionForGeneration : @semanticInstructionForGeneration {
   private let @string mSelfCppName
-  private let @unifiedTypeMap-entry mReceiverType
+  private let @unifiedTypeMapEntry mReceiverType
   private let @lstring mSetterName
   private let @methodKind mKind
   private let @actualParameterListForGeneration mActualParameterList

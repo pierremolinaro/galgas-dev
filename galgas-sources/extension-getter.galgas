@@ -163,7 +163,7 @@ override method @extensionGetterAST semanticAnalysis
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
   [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMap-entry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
+  let @unifiedTypeMapEntry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
   let @string selfObjectName
   let @string selfObjectAccessor
   let @bool implementedAsFunction
@@ -249,10 +249,10 @@ override method @extensionGetterAST buildExtensionListMaps
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  private let @unifiedTypeMap-entry mReceiverType
+  private let @unifiedTypeMapEntry mReceiverType
   private let @string mExtensionGetterName
   private let @bool mImplementedAsFunction
-  private let @unifiedTypeMap-entry mResultType
+  private let @unifiedTypeMapEntry mResultType
   private let @string mResultVarCppName
   private let @formalInputParameterListForGeneration mExtensionGetterFormalParameterList
   private let @typedPropertyList mTypedAttributeList
@@ -327,7 +327,7 @@ override method @extensionGetterForGeneration appendSpecificImplementation
     ] 
   else
     [self.mReceiverType addHeaderFileName !?ioInclusionSet]
-    var @unifiedTypeMap-entry baseType = self.mReceiverType
+    var @unifiedTypeMapEntry baseType = self.mReceiverType
     var @bool searching = true
     loop (@uint. max) while searching do
       if not [[baseType mSuperType] isNull] then
