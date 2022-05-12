@@ -15,38 +15,6 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct @unifiedTypeDefinition {
-  public let @lstring mTypeName
-  public let @bool mIsPredefined
-  public let @bool mIsConcrete # false if abstract class
-  public let @unifiedTypeMapEntry mSuperType
-  public let @typeKindEnum mTypeKindEnum
-  public let @bool mSupportCollectionValue
-  public let @typedPropertyList mAllTypedPropertyList
-  public let @propertyMap mPropertyMap # struct, class
-  public let @typedPropertyList mCurrentTypedPropertyList
-  public let @constructorMap mConstructorMap
-  public let @getterMap mGetterMap
-  public let @setterMap mSetterMap
-  public let @instanceMethodMap mInstanceMethodMap
-  public let @classMethodMap mClassMethodMap
-  public let @optionalMethodMap mOptionalMethodMap
-  public let @enumerationDescriptorList mEnumerationDescriptor # Empty List if cannot be enumerated
-  public let @operators mHandledOperatorFlags
-  public let @functionSignature mAddAssignOperatorArguments # Empty list if += operator is not supported
-  public let @constantIndexMap mEnumConstantMap
-  public let @enumConstantList mEnumConstantList
-  public let @mapSearchMethodListAST mMapSearchMethodList # For a map, the list of search methods
-  public let @mapSearchMethodListAST mMapEntrySearchConstructorList # For a map entry, the list of search methods of the associated map
-  public let @bool mGenerateHeaderInSeparateFile # Significant only for classes
-  public let @unifiedTypeMapEntry mTypeForEnumeratedElement
-  public let @string mDefaultConstructorName # Used in [@xxx default] (empty string if no default constructor)
-  public let @string mHeaderFileName # Name of C++ header file that contains type declaration
-  public let @headerKind mHeaderKind
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 getter @unifiedTypeMap unsolvedEntryList -> @lstringlist {
   result = {}
   for (lkey element) in self do
@@ -189,43 +157,6 @@ getter @unifiedTypeMapEntry definition -> @unifiedTypeDefinition {
       end
     else
       error .nowhere : "nil type" : result
-    end
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapEntry identifierRepresentation -> @string {
-  result = [[self definition].mTypeName.string identifierRepresentation]
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapEntry baseType -> @unifiedTypeMapEntry outBaseType {
-  outBaseType = self
-  loop while not [[outBaseType definition].mSuperType isNull] do
-    outBaseType = [outBaseType definition].mSuperType
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-method @unifiedTypeMapEntry addHeaderFileName ?!@stringset ioInclusions {
-  if (not [self definition].mIsPredefined) & ([self definition].mHeaderKind != .noHeader) then
-    ioInclusions += ![self definition].mHeaderFileName
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-method @unifiedTypeMapEntry addHeaderFileName1 ?!@stringset ioInclusions {
-  if not [self definition].mIsPredefined then
-    switch [self definition].mHeaderKind
-    case noHeader :
-    case oneHeader :
-      ioInclusions += ![self definition].mHeaderFileName
-    case twoHeaders :
-      ioInclusions += ![self definition].mHeaderFileName + "-1"
     end
   end
 }

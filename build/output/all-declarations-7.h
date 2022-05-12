@@ -7345,6 +7345,58 @@ void extensionSetter_combineManagerWith (class GALGAS_currentVarManager & ioObje
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Extension getter '@unifiedTypeMapEntry identifierRepresentation' (as function)
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_string extensionGetter_identifierRepresentation (const class GALGAS_unifiedTypeMapEntry & inObject,
+                                                              class C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapEntry definition' (as function)
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_unifiedTypeDefinition extensionGetter_definition (const class GALGAS_unifiedTypeMapEntry & inObject,
+                                                               class C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMapEntry baseType' (as function)
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_unifiedTypeMapEntry extensionGetter_baseType (const class GALGAS_unifiedTypeMapEntry & inObject,
+                                                           class C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension method '@unifiedTypeMapEntry addHeaderFileName'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void extensionMethod_addHeaderFileName (const class GALGAS_unifiedTypeMapEntry inObject,
+                                        class GALGAS_stringset & io_ioInclusions,
+                                        class C_Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension method '@unifiedTypeMapEntry addHeaderFileName1'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void extensionMethod_addHeaderFileName_31_ (const class GALGAS_unifiedTypeMapEntry inObject,
+                                            class GALGAS_stringset & io_ioInclusions,
+                                            class C_Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Extension getter '@unifiedTypeMap unsolvedEntryList' (as function)
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -7396,18 +7448,6 @@ class GALGAS_unifiedTypeMapEntry extensionGetter_searchKey (const class GALGAS_u
 
 void extensionSetter_insertType (class GALGAS_unifiedTypeMap & ioObject,
                                  const class GALGAS_unifiedTypeDefinition constin_inTypeDefinition,
-                                 class C_Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension method '@unifiedTypeMap searchType'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionMethod_searchType (const class GALGAS_unifiedTypeMap inObject,
-                                 const class GALGAS_lstring constin_inLKey,
-                                 class GALGAS_unifiedTypeDefinition & out_outTypeDefinition,
                                  class C_Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 

@@ -14116,6 +14116,115 @@ void extensionSetter_combineManagerWith (GALGAS_currentVarManager & ioObject,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Extension Getter '@unifiedTypeMapEntry identifierRepresentation'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string extensionGetter_identifierRepresentation (const GALGAS_unifiedTypeMapEntry & inObject,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result_result ; // Returned variable
+  const GALGAS_unifiedTypeMapEntry temp_0 = inObject ;
+  result_result = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-definition.galgas", 51)).readProperty_mTypeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-type-definition.galgas", 51)) ;
+//---
+  return result_result ;
+}
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension Getter '@unifiedTypeMapEntry baseType'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_unifiedTypeMapEntry extensionGetter_baseType (const GALGAS_unifiedTypeMapEntry & inObject,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_unifiedTypeMapEntry result_outBaseType ; // Returned variable
+  const GALGAS_unifiedTypeMapEntry temp_0 = inObject ;
+  result_outBaseType = temp_0 ;
+  bool loop_3268 = true ;
+  while (loop_3268) {
+    loop_3268 = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-definition.galgas", 58)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("unified-type-definition.galgas", 58)).operator_not (SOURCE_FILE ("unified-type-definition.galgas", 58)).isValid () ;
+    if (loop_3268) {
+      loop_3268 = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-definition.galgas", 58)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("unified-type-definition.galgas", 58)).operator_not (SOURCE_FILE ("unified-type-definition.galgas", 58)).boolValue () ;
+    }
+    if (loop_3268) {
+      result_outBaseType = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-definition.galgas", 59)).readProperty_mSuperType () ;
+    }
+  }
+//---
+  return result_outBaseType ;
+}
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension method '@unifiedTypeMapEntry addHeaderFileName'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void extensionMethod_addHeaderFileName (const GALGAS_unifiedTypeMapEntry inObject,
+                                        GALGAS_stringset & ioArgument_ioInclusions,
+                                        C_Compiler * inCompiler
+                                        COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_unifiedTypeMapEntry temp_0 = inObject ;
+  GALGAS_unifiedTypeDefinition var_typeDefinition_3606 = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-definition.galgas", 66)) ;
+  enumGalgasBool test_1 = kBoolTrue ;
+  if (kBoolTrue == test_1) {
+    test_1 = var_typeDefinition_3606.readProperty_mIsPredefined ().operator_not (SOURCE_FILE ("unified-type-definition.galgas", 67)).operator_and (GALGAS_bool (kIsNotEqual, var_typeDefinition_3606.readProperty_mHeaderKind ().objectCompare (GALGAS_headerKind::constructor_noHeader (SOURCE_FILE ("unified-type-definition.galgas", 67)))) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 67)).boolEnum () ;
+    if (kBoolTrue == test_1) {
+      ioArgument_ioInclusions.addAssign_operation (var_typeDefinition_3606.readProperty_mHeaderFileName ()  COMMA_SOURCE_FILE ("unified-type-definition.galgas", 68)) ;
+    }
+  }
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension method '@unifiedTypeMapEntry addHeaderFileName1'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void extensionMethod_addHeaderFileName_31_ (const GALGAS_unifiedTypeMapEntry inObject,
+                                            GALGAS_stringset & ioArgument_ioInclusions,
+                                            C_Compiler * inCompiler
+                                            COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_unifiedTypeMapEntry temp_0 = inObject ;
+  GALGAS_unifiedTypeDefinition var_typeDefinition_3994 = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-definition.galgas", 75)) ;
+  enumGalgasBool test_1 = kBoolTrue ;
+  if (kBoolTrue == test_1) {
+    test_1 = var_typeDefinition_3994.readProperty_mIsPredefined ().operator_not (SOURCE_FILE ("unified-type-definition.galgas", 76)).boolEnum () ;
+    if (kBoolTrue == test_1) {
+      switch (var_typeDefinition_3994.readProperty_mHeaderKind ().enumValue ()) {
+      case GALGAS_headerKind::kNotBuilt:
+        break ;
+      case GALGAS_headerKind::kEnum_noHeader:
+        {
+        }
+        break ;
+      case GALGAS_headerKind::kEnum_oneHeader:
+        {
+          ioArgument_ioInclusions.addAssign_operation (var_typeDefinition_3994.readProperty_mHeaderFileName ()  COMMA_SOURCE_FILE ("unified-type-definition.galgas", 80)) ;
+        }
+        break ;
+      case GALGAS_headerKind::kEnum_twoHeaders:
+        {
+          ioArgument_ioInclusions.addAssign_operation (var_typeDefinition_3994.readProperty_mHeaderFileName ().add_operation (GALGAS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("unified-type-definition.galgas", 82))  COMMA_SOURCE_FILE ("unified-type-definition.galgas", 82)) ;
+        }
+        break ;
+      }
+    }
+  }
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Extension Getter '@unifiedTypeMap unsolvedEntryList'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -14124,18 +14233,18 @@ GALGAS_lstringlist extensionGetter_unsolvedEntryList (const GALGAS_unifiedTypeMa
                                                       C_Compiler * /* inCompiler */
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lstringlist result_result ; // Returned variable
-  result_result = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("unified-type-map.galgas", 51)) ;
+  result_result = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("unified-type-map.galgas", 19)) ;
   const GALGAS_unifiedTypeMap temp_0 = inObject ;
-  cEnumerator_unifiedTypeMap enumerator_2994 (temp_0, kENUMERATION_UP) ;
-  while (enumerator_2994.hasCurrentObject ()) {
+  cEnumerator_unifiedTypeMap enumerator_1193 (temp_0, kENUMERATION_UP) ;
+  while (enumerator_1193.hasCurrentObject ()) {
     enumGalgasBool test_1 = kBoolTrue ;
     if (kBoolTrue == test_1) {
-      test_1 = enumerator_2994.current_mElement (HERE).readProperty_mDefinition ().getter_isUnsolved (SOURCE_FILE ("unified-type-map.galgas", 53)).boolEnum () ;
+      test_1 = enumerator_1193.current_mElement (HERE).readProperty_mDefinition ().getter_isUnsolved (SOURCE_FILE ("unified-type-map.galgas", 21)).boolEnum () ;
       if (kBoolTrue == test_1) {
-        result_result.addAssign_operation (enumerator_2994.current_lkey (HERE)  COMMA_SOURCE_FILE ("unified-type-map.galgas", 54)) ;
+        result_result.addAssign_operation (enumerator_1193.current_lkey (HERE)  COMMA_SOURCE_FILE ("unified-type-map.galgas", 22)) ;
       }
     }
-    enumerator_2994.gotoNextObject () ;
+    enumerator_1193.gotoNextObject () ;
   }
 //---
   return result_result ;
@@ -14160,28 +14269,28 @@ void extensionSetter_makeEntry (GALGAS_unifiedTypeMap & ioObject,
   if (kBoolTrue == test_0) {
     test_0 = GALGAS_bool (kIsEqual, constinArgument_inLKey.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_0) {
-      outArgument_outEntry = GALGAS_unifiedTypeMapEntry::constructor_null (SOURCE_FILE ("unified-type-map.galgas", 63)) ;
+      outArgument_outEntry = GALGAS_unifiedTypeMapEntry::constructor_null (SOURCE_FILE ("unified-type-map.galgas", 31)) ;
     }
   }
   if (kBoolFalse == test_0) {
     enumGalgasBool test_1 = kBoolTrue ;
     if (kBoolTrue == test_1) {
       const GALGAS_unifiedTypeMap temp_2 = ioObject ;
-      GALGAS_unifiedTypeMapElementClass var_element_3427 ;
-      const bool optionalResult3378 = temp_2.optional_searchKey (constinArgument_inLKey.readProperty_string (), var_element_3427) ;
-      if (!optionalResult3378) {
+      GALGAS_unifiedTypeMapElementClass var_element_1626 ;
+      const bool optionalResult1577 = temp_2.optional_searchKey (constinArgument_inLKey.readProperty_string (), var_element_1626) ;
+      if (!optionalResult1577) {
         test_1 = kBoolFalse ;
       }
       if (kBoolTrue == test_1) {
-        outArgument_outEntry = GALGAS_unifiedTypeMapEntry::constructor_element (var_element_3427  COMMA_SOURCE_FILE ("unified-type-map.galgas", 65)) ;
+        outArgument_outEntry = GALGAS_unifiedTypeMapEntry::constructor_element (var_element_1626  COMMA_SOURCE_FILE ("unified-type-map.galgas", 33)) ;
       }
     }
     if (kBoolFalse == test_1) {
-      GALGAS_unifiedTypeMapElementClass var_newElement_3507 = GALGAS_unifiedTypeMapElementClass::constructor_new (GALGAS_typeDefinition::constructor_unsolved (SOURCE_FILE ("unified-type-map.galgas", 67))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 67)) ;
+      GALGAS_unifiedTypeMapElementClass var_newElement_1706 = GALGAS_unifiedTypeMapElementClass::constructor_new (GALGAS_typeDefinition::constructor_unsolved (SOURCE_FILE ("unified-type-map.galgas", 35))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 35)) ;
       {
-      ioObject.setter_internalInsertKey (constinArgument_inLKey, var_newElement_3507, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 68)) ;
+      ioObject.setter_internalInsertKey (constinArgument_inLKey, var_newElement_1706, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 36)) ;
       }
-      outArgument_outEntry = GALGAS_unifiedTypeMapEntry::constructor_element (var_newElement_3507  COMMA_SOURCE_FILE ("unified-type-map.galgas", 69)) ;
+      outArgument_outEntry = GALGAS_unifiedTypeMapEntry::constructor_element (var_newElement_1706  COMMA_SOURCE_FILE ("unified-type-map.galgas", 37)) ;
     }
   }
 }
@@ -14203,28 +14312,28 @@ void extensionSetter_makeEntryFromString (GALGAS_unifiedTypeMap & ioObject,
   if (kBoolTrue == test_0) {
     test_0 = GALGAS_bool (kIsEqual, constinArgument_inKey.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_0) {
-      outArgument_outEntry = GALGAS_unifiedTypeMapEntry::constructor_null (SOURCE_FILE ("unified-type-map.galgas", 77)) ;
+      outArgument_outEntry = GALGAS_unifiedTypeMapEntry::constructor_null (SOURCE_FILE ("unified-type-map.galgas", 45)) ;
     }
   }
   if (kBoolFalse == test_0) {
     enumGalgasBool test_1 = kBoolTrue ;
     if (kBoolTrue == test_1) {
       const GALGAS_unifiedTypeMap temp_2 = ioObject ;
-      GALGAS_unifiedTypeMapElementClass var_element_4001 ;
-      const bool optionalResult3953 = temp_2.optional_searchKey (constinArgument_inKey, var_element_4001) ;
-      if (!optionalResult3953) {
+      GALGAS_unifiedTypeMapElementClass var_element_2200 ;
+      const bool optionalResult2152 = temp_2.optional_searchKey (constinArgument_inKey, var_element_2200) ;
+      if (!optionalResult2152) {
         test_1 = kBoolFalse ;
       }
       if (kBoolTrue == test_1) {
-        outArgument_outEntry = GALGAS_unifiedTypeMapEntry::constructor_element (var_element_4001  COMMA_SOURCE_FILE ("unified-type-map.galgas", 79)) ;
+        outArgument_outEntry = GALGAS_unifiedTypeMapEntry::constructor_element (var_element_2200  COMMA_SOURCE_FILE ("unified-type-map.galgas", 47)) ;
       }
     }
     if (kBoolFalse == test_1) {
-      GALGAS_unifiedTypeMapElementClass var_newElement_4081 = GALGAS_unifiedTypeMapElementClass::constructor_new (GALGAS_typeDefinition::constructor_unsolved (SOURCE_FILE ("unified-type-map.galgas", 81))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 81)) ;
+      GALGAS_unifiedTypeMapElementClass var_newElement_2280 = GALGAS_unifiedTypeMapElementClass::constructor_new (GALGAS_typeDefinition::constructor_unsolved (SOURCE_FILE ("unified-type-map.galgas", 49))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 49)) ;
       {
-      ioObject.setter_internalInsertKey (GALGAS_lstring::constructor_new (constinArgument_inKey, GALGAS_location::constructor_nowhere (SOURCE_FILE ("unified-type-map.galgas", 82))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 82)), var_newElement_4081, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 82)) ;
+      ioObject.setter_internalInsertKey (GALGAS_lstring::constructor_new (constinArgument_inKey, GALGAS_location::constructor_nowhere (SOURCE_FILE ("unified-type-map.galgas", 50))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 50)), var_newElement_2280, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 50)) ;
       }
-      outArgument_outEntry = GALGAS_unifiedTypeMapEntry::constructor_element (var_newElement_4081  COMMA_SOURCE_FILE ("unified-type-map.galgas", 83)) ;
+      outArgument_outEntry = GALGAS_unifiedTypeMapEntry::constructor_element (var_newElement_2280  COMMA_SOURCE_FILE ("unified-type-map.galgas", 51)) ;
     }
   }
 }
@@ -14245,25 +14354,25 @@ GALGAS_unifiedTypeMapEntry extensionGetter_searchKey (const GALGAS_unifiedTypeMa
   if (kBoolTrue == test_0) {
     test_0 = GALGAS_bool (kIsEqual, constinArgument_inLKey.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_0) {
-      result_result = GALGAS_unifiedTypeMapEntry::constructor_null (SOURCE_FILE ("unified-type-map.galgas", 91)) ;
+      result_result = GALGAS_unifiedTypeMapEntry::constructor_null (SOURCE_FILE ("unified-type-map.galgas", 59)) ;
     }
   }
   if (kBoolFalse == test_0) {
     enumGalgasBool test_1 = kBoolTrue ;
     if (kBoolTrue == test_1) {
       const GALGAS_unifiedTypeMap temp_2 = inObject ;
-      GALGAS_unifiedTypeMapElementClass var_element_4584 ;
-      const bool optionalResult4535 = temp_2.optional_searchKey (constinArgument_inLKey.readProperty_string (), var_element_4584) ;
-      if (!optionalResult4535) {
+      GALGAS_unifiedTypeMapElementClass var_element_2783 ;
+      const bool optionalResult2734 = temp_2.optional_searchKey (constinArgument_inLKey.readProperty_string (), var_element_2783) ;
+      if (!optionalResult2734) {
         test_1 = kBoolFalse ;
       }
       if (kBoolTrue == test_1) {
-        result_result = GALGAS_unifiedTypeMapEntry::constructor_element (var_element_4584  COMMA_SOURCE_FILE ("unified-type-map.galgas", 93)) ;
+        result_result = GALGAS_unifiedTypeMapEntry::constructor_element (var_element_2783  COMMA_SOURCE_FILE ("unified-type-map.galgas", 61)) ;
       }
     }
     if (kBoolFalse == test_1) {
       TC_Array <C_FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GALGAS_string ("there is not '@").add_operation (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 95)).add_operation (GALGAS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 95)), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 95)) ;
+      inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GALGAS_string ("there is not '@").add_operation (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 63)).add_operation (GALGAS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 63)), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 63)) ;
       result_result.drop () ; // Release error dropped variable
     }
   }
@@ -14287,267 +14396,36 @@ void extensionSetter_insertType (GALGAS_unifiedTypeMap & ioObject,
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_unifiedTypeMap temp_1 = ioObject ;
-    GALGAS_unifiedTypeMapElementClass var_element_5015 ;
-    const bool optionalResult4946 = temp_1.optional_searchKey (constinArgument_inTypeDefinition.readProperty_mTypeName ().readProperty_string (), var_element_5015) ;
-    if (!optionalResult4946) {
+    GALGAS_unifiedTypeMapElementClass var_element_3214 ;
+    const bool optionalResult3145 = temp_1.optional_searchKey (constinArgument_inTypeDefinition.readProperty_mTypeName ().readProperty_string (), var_element_3214) ;
+    if (!optionalResult3145) {
       test_0 = kBoolFalse ;
     }
     if (kBoolTrue == test_0) {
-      switch (var_element_5015.readProperty_mDefinition ().enumValue ()) {
+      switch (var_element_3214.readProperty_mDefinition ().enumValue ()) {
       case GALGAS_typeDefinition::kNotBuilt:
         break ;
       case GALGAS_typeDefinition::kEnum_solved:
         {
           TC_Array <C_FixItDescription> fixItArray2 ;
-          inCompiler->emitSemanticError (constinArgument_inTypeDefinition.readProperty_mTypeName ().readProperty_location (), GALGAS_string ("type already defined"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas", 105)) ;
+          inCompiler->emitSemanticError (constinArgument_inTypeDefinition.readProperty_mTypeName ().readProperty_location (), GALGAS_string ("type already defined"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas", 73)) ;
         }
         break ;
       case GALGAS_typeDefinition::kEnum_unsolved:
         {
-          GALGAS_unifiedTypeMapElementClass var_e_5170 = var_element_5015 ;
-          var_e_5170.setter_setMDefinition (GALGAS_typeDefinition::constructor_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas", 108)) COMMA_SOURCE_FILE ("unified-type-map.galgas", 108)) ;
+          GALGAS_unifiedTypeMapElementClass var_e_3369 = var_element_3214 ;
+          var_e_3369.setter_setMDefinition (GALGAS_typeDefinition::constructor_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas", 76)) COMMA_SOURCE_FILE ("unified-type-map.galgas", 76)) ;
         }
         break ;
       }
     }
   }
   if (kBoolFalse == test_0) {
-    GALGAS_unifiedTypeMapElementClass var_newElement_5276 = GALGAS_unifiedTypeMapElementClass::constructor_new (GALGAS_typeDefinition::constructor_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas", 111))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 111)) ;
+    GALGAS_unifiedTypeMapElementClass var_newElement_3475 = GALGAS_unifiedTypeMapElementClass::constructor_new (GALGAS_typeDefinition::constructor_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas", 79))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 79)) ;
     {
-    ioObject.setter_internalInsertKey (constinArgument_inTypeDefinition.readProperty_mTypeName (), var_newElement_5276, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 112)) ;
+    ioObject.setter_internalInsertKey (constinArgument_inTypeDefinition.readProperty_mTypeName (), var_newElement_3475, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 80)) ;
     }
   }
 }
 
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension method '@unifiedTypeMap searchType'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionMethod_searchType (const GALGAS_unifiedTypeMap inObject,
-                                 const GALGAS_lstring constinArgument_inLKey,
-                                 GALGAS_unifiedTypeDefinition & outArgument_outTypeDefinition,
-                                 C_Compiler * inCompiler
-                                 COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outTypeDefinition.drop () ; // Release 'out' argument
-  enumGalgasBool test_0 = kBoolTrue ;
-  if (kBoolTrue == test_0) {
-    const GALGAS_unifiedTypeMap temp_1 = inObject ;
-    GALGAS_unifiedTypeMapElementClass var_element_5762 ;
-    const bool optionalResult5713 = temp_1.optional_searchKey (constinArgument_inLKey.readProperty_string (), var_element_5762) ;
-    if (!optionalResult5713) {
-      test_0 = kBoolFalse ;
-    }
-    if (kBoolTrue == test_0) {
-      switch (var_element_5762.readProperty_mDefinition ().enumValue ()) {
-      case GALGAS_typeDefinition::kNotBuilt:
-        break ;
-      case GALGAS_typeDefinition::kEnum_solved:
-        {
-          const cEnumAssociatedValues_typeDefinition_solved * extractPtr_5867 = (const cEnumAssociatedValues_typeDefinition_solved *) (var_element_5762.readProperty_mDefinition ().unsafePointer ()) ;
-          const GALGAS_unifiedTypeDefinition extractedValue_5827_definition = extractPtr_5867->mAssociatedValue0 ;
-          outArgument_outTypeDefinition = extractedValue_5827_definition ;
-        }
-        break ;
-      case GALGAS_typeDefinition::kEnum_unsolved:
-        {
-          TC_Array <C_FixItDescription> fixItArray2 ;
-          inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GALGAS_string ("unsolved type"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas", 125)) ;
-          outArgument_outTypeDefinition.drop () ; // Release error dropped variable
-        }
-        break ;
-      }
-    }
-  }
-  if (kBoolFalse == test_0) {
-    TC_Array <C_FixItDescription> fixItArray3 ;
-    inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GALGAS_string ("there is not '@").add_operation (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 128)).add_operation (GALGAS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 128)), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 128)) ;
-    outArgument_outTypeDefinition.drop () ; // Release error dropped variable
-  }
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-cEnumAssociatedValues_typeDefinition_solved::cEnumAssociatedValues_typeDefinition_solved (const GALGAS_unifiedTypeDefinition inAssociatedValue0
-                                                                                          COMMA_LOCATION_ARGS) :
-cEnumAssociatedValues (THERE),
-mAssociatedValue0 (inAssociatedValue0) {
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void cEnumAssociatedValues_typeDefinition_solved::description (C_String & ioString,
-                                                               const int32_t inIndentation) const {
-  ioString << "(\n" ;
-  mAssociatedValue0.description (ioString, inIndentation) ;
-  ioString << ")" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult cEnumAssociatedValues_typeDefinition_solved::compare (const cEnumAssociatedValues * inOperand) const {
-  const cEnumAssociatedValues_typeDefinition_solved * ptr = dynamic_cast<const cEnumAssociatedValues_typeDefinition_solved *> (inOperand) ;
-  macroValidPointer (ptr) ;
-  typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAssociatedValue0.objectCompare (ptr->mAssociatedValue0) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_typeDefinition::GALGAS_typeDefinition (void) :
-mAssociatedValues (),
-mEnum (kNotBuilt) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_typeDefinition GALGAS_typeDefinition::constructor_unsolved (UNUSED_LOCATION_ARGS) {
-  GALGAS_typeDefinition result ;
-  result.mEnum = kEnum_unsolved ;
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_typeDefinition GALGAS_typeDefinition::constructor_solved (const GALGAS_unifiedTypeDefinition & inAssociatedValue0
-                                                                 COMMA_LOCATION_ARGS) {
-  GALGAS_typeDefinition result ;
-  if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_solved ;
-    cEnumAssociatedValues * ptr = NULL ;
-    macroMyNew (ptr, cEnumAssociatedValues_typeDefinition_solved (inAssociatedValue0 COMMA_THERE)) ;
-    result.mAssociatedValues.setPointer (ptr) ;
-    macroDetachSharedObject (ptr) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_typeDefinition::method_solved (GALGAS_unifiedTypeDefinition & outAssociatedValue0,
-                                           C_Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_solved) {
-    outAssociatedValue0.drop () ;
-    C_String s ;
-    s << "method @typeDefinition solved invoked with an invalid enum value" ;
-    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-  }else{
-    const cEnumAssociatedValues_typeDefinition_solved * ptr = (const cEnumAssociatedValues_typeDefinition_solved *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_typeDefinition::optional_unsolved () const {
-  const bool ok = mEnum == kEnum_unsolved ;
-  return ok ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_typeDefinition::optional_solved (GALGAS_unifiedTypeDefinition & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_solved ;
-  if (ok) {
-    const auto * ptr = (const cEnumAssociatedValues_typeDefinition_solved *) unsafePointer () ;
-    // const cEnumAssociatedValues_typeDefinition_solved * ptr = (const cEnumAssociatedValues_typeDefinition_solved *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-  }
-  return ok ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-static const char * gEnumNameArrayFor_typeDefinition [3] = {
-  "(not built)",
-  "unsolved",
-  "solved"
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_typeDefinition::getter_isUnsolved (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_unsolved == mEnum) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_typeDefinition::getter_isSolved (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_solved == mEnum) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_typeDefinition::description (C_String & ioString,
-                                         const int32_t inIndentation) const {
-  ioString << "<enum @typeDefinition: " << gEnumNameArrayFor_typeDefinition [mEnum] ;
-  mAssociatedValues.description (ioString, inIndentation) ;
-  ioString << ">" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_typeDefinition::objectCompare (const GALGAS_typeDefinition & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    if (mEnum < inOperand.mEnum) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mEnum > inOperand.mEnum) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mAssociatedValues.objectCompare (inOperand.mAssociatedValues) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@typeDefinition type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_typeDefinition ("typeDefinition",
-                                       NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_typeDefinition::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_typeDefinition ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_typeDefinition::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_typeDefinition (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_typeDefinition GALGAS_typeDefinition::extractObject (const GALGAS_object & inObject,
-                                                            C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_typeDefinition result ;
-  const GALGAS_typeDefinition * p = (const GALGAS_typeDefinition *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_typeDefinition *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("typeDefinition", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
 

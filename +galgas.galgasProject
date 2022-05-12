@@ -116,6 +116,7 @@ project (4:0:0) -> "galgas" {
   "galgas-sources/predefinedTypes.galgas"
   "galgas-sources/useful-entities-computation.galgas"
   "galgas-sources/variable-manager.galgas"
+  "galgas-sources/unified-type-definition.galgas"
   "galgas-sources/unified-type-map.galgas"
 
 #--- Expressions

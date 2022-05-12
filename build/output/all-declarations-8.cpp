@@ -8,6 +8,237 @@
 #include "all-declarations-8.h"
 
 //----------------------------------------------------------------------------------------------------------------------
+//
+//Extension method '@unifiedTypeMap searchType'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void extensionMethod_searchType (const GALGAS_unifiedTypeMap inObject,
+                                 const GALGAS_lstring constinArgument_inLKey,
+                                 GALGAS_unifiedTypeDefinition & outArgument_outTypeDefinition,
+                                 C_Compiler * inCompiler
+                                 COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outTypeDefinition.drop () ; // Release 'out' argument
+  enumGalgasBool test_0 = kBoolTrue ;
+  if (kBoolTrue == test_0) {
+    const GALGAS_unifiedTypeMap temp_1 = inObject ;
+    GALGAS_unifiedTypeMapElementClass var_element_3961 ;
+    const bool optionalResult3912 = temp_1.optional_searchKey (constinArgument_inLKey.readProperty_string (), var_element_3961) ;
+    if (!optionalResult3912) {
+      test_0 = kBoolFalse ;
+    }
+    if (kBoolTrue == test_0) {
+      switch (var_element_3961.readProperty_mDefinition ().enumValue ()) {
+      case GALGAS_typeDefinition::kNotBuilt:
+        break ;
+      case GALGAS_typeDefinition::kEnum_solved:
+        {
+          const cEnumAssociatedValues_typeDefinition_solved * extractPtr_4066 = (const cEnumAssociatedValues_typeDefinition_solved *) (var_element_3961.readProperty_mDefinition ().unsafePointer ()) ;
+          const GALGAS_unifiedTypeDefinition extractedValue_4026_definition = extractPtr_4066->mAssociatedValue0 ;
+          outArgument_outTypeDefinition = extractedValue_4026_definition ;
+        }
+        break ;
+      case GALGAS_typeDefinition::kEnum_unsolved:
+        {
+          TC_Array <C_FixItDescription> fixItArray2 ;
+          inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GALGAS_string ("unsolved type"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas", 93)) ;
+          outArgument_outTypeDefinition.drop () ; // Release error dropped variable
+        }
+        break ;
+      }
+    }
+  }
+  if (kBoolFalse == test_0) {
+    TC_Array <C_FixItDescription> fixItArray3 ;
+    inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GALGAS_string ("there is not '@").add_operation (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 96)).add_operation (GALGAS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 96)), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 96)) ;
+    outArgument_outTypeDefinition.drop () ; // Release error dropped variable
+  }
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+cEnumAssociatedValues_typeDefinition_solved::cEnumAssociatedValues_typeDefinition_solved (const GALGAS_unifiedTypeDefinition inAssociatedValue0
+                                                                                          COMMA_LOCATION_ARGS) :
+cEnumAssociatedValues (THERE),
+mAssociatedValue0 (inAssociatedValue0) {
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cEnumAssociatedValues_typeDefinition_solved::description (C_String & ioString,
+                                                               const int32_t inIndentation) const {
+  ioString << "(\n" ;
+  mAssociatedValue0.description (ioString, inIndentation) ;
+  ioString << ")" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cEnumAssociatedValues_typeDefinition_solved::compare (const cEnumAssociatedValues * inOperand) const {
+  const cEnumAssociatedValues_typeDefinition_solved * ptr = dynamic_cast<const cEnumAssociatedValues_typeDefinition_solved *> (inOperand) ;
+  macroValidPointer (ptr) ;
+  typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAssociatedValue0.objectCompare (ptr->mAssociatedValue0) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_typeDefinition::GALGAS_typeDefinition (void) :
+mAssociatedValues (),
+mEnum (kNotBuilt) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_typeDefinition GALGAS_typeDefinition::constructor_unsolved (UNUSED_LOCATION_ARGS) {
+  GALGAS_typeDefinition result ;
+  result.mEnum = kEnum_unsolved ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_typeDefinition GALGAS_typeDefinition::constructor_solved (const GALGAS_unifiedTypeDefinition & inAssociatedValue0
+                                                                 COMMA_LOCATION_ARGS) {
+  GALGAS_typeDefinition result ;
+  if (inAssociatedValue0.isValid ()) {
+    result.mEnum = kEnum_solved ;
+    cEnumAssociatedValues * ptr = NULL ;
+    macroMyNew (ptr, cEnumAssociatedValues_typeDefinition_solved (inAssociatedValue0 COMMA_THERE)) ;
+    result.mAssociatedValues.setPointer (ptr) ;
+    macroDetachSharedObject (ptr) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_typeDefinition::method_solved (GALGAS_unifiedTypeDefinition & outAssociatedValue0,
+                                           C_Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) const {
+  if (mEnum != kEnum_solved) {
+    outAssociatedValue0.drop () ;
+    C_String s ;
+    s << "method @typeDefinition solved invoked with an invalid enum value" ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const cEnumAssociatedValues_typeDefinition_solved * ptr = (const cEnumAssociatedValues_typeDefinition_solved *) unsafePointer () ;
+    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_typeDefinition::optional_unsolved () const {
+  const bool ok = mEnum == kEnum_unsolved ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_typeDefinition::optional_solved (GALGAS_unifiedTypeDefinition & outAssociatedValue0) const {
+  const bool ok = mEnum == kEnum_solved ;
+  if (ok) {
+    const auto * ptr = (const cEnumAssociatedValues_typeDefinition_solved *) unsafePointer () ;
+    // const cEnumAssociatedValues_typeDefinition_solved * ptr = (const cEnumAssociatedValues_typeDefinition_solved *) unsafePointer () ;
+    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+  }
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static const char * gEnumNameArrayFor_typeDefinition [3] = {
+  "(not built)",
+  "unsolved",
+  "solved"
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_typeDefinition::getter_isUnsolved (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_unsolved == mEnum) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_typeDefinition::getter_isSolved (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_solved == mEnum) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_typeDefinition::description (C_String & ioString,
+                                         const int32_t inIndentation) const {
+  ioString << "<enum @typeDefinition: " << gEnumNameArrayFor_typeDefinition [mEnum] ;
+  mAssociatedValues.description (ioString, inIndentation) ;
+  ioString << ">" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_typeDefinition::objectCompare (const GALGAS_typeDefinition & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (mEnum < inOperand.mEnum) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mEnum > inOperand.mEnum) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mAssociatedValues.objectCompare (inOperand.mAssociatedValues) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@typeDefinition type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_typeDefinition ("typeDefinition",
+                                       NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_typeDefinition::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_typeDefinition ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_typeDefinition::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_typeDefinition (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_typeDefinition GALGAS_typeDefinition::extractObject (const GALGAS_object & inObject,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_typeDefinition result ;
+  const GALGAS_typeDefinition * p = (const GALGAS_typeDefinition *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_typeDefinition *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("typeDefinition", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_unifiedTypeMapElementClass_2D_weak::objectCompare (const GALGAS_unifiedTypeMapElementClass_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -135,36 +366,36 @@ GALGAS_unifiedTypeDefinition extensionGetter_definition (const GALGAS_unifiedTyp
   case GALGAS_unifiedTypeMapEntry::kEnum_null:
     {
       TC_Array <C_FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (GALGAS_location::constructor_nowhere (SOURCE_FILE ("unified-type-map.galgas", 181)), GALGAS_string ("null type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas", 181)) ;
+      inCompiler->emitSemanticError (GALGAS_location::constructor_nowhere (SOURCE_FILE ("unified-type-map.galgas", 149)), GALGAS_string ("null type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas", 149)) ;
       result_result.drop () ; // Release error dropped variable
     }
     break ;
   case GALGAS_unifiedTypeMapEntry::kEnum_element:
     {
-      const cEnumAssociatedValues_unifiedTypeMapEntry_element * extractPtr_8319 = (const cEnumAssociatedValues_unifiedTypeMapEntry_element *) (temp_0.unsafePointer ()) ;
-      const GALGAS_unifiedTypeMapElementClass_2D_weak extractedValue_8048_weakElement = extractPtr_8319->mAssociatedValue0 ;
+      const cEnumAssociatedValues_unifiedTypeMapEntry_element * extractPtr_6518 = (const cEnumAssociatedValues_unifiedTypeMapEntry_element *) (temp_0.unsafePointer ()) ;
+      const GALGAS_unifiedTypeMapElementClass_2D_weak extractedValue_6247_weakElement = extractPtr_6518->mAssociatedValue0 ;
       enumGalgasBool test_2 = kBoolTrue ;
       if (kBoolTrue == test_2) {
-        GALGAS_unifiedTypeMapElementClass var_type_8067 (dynamic_cast <const cPtr_unifiedTypeMapElementClass *> (extractedValue_8048_weakElement.ptr ())) ;
-        if (NULL == var_type_8067.ptr ()) {
+        GALGAS_unifiedTypeMapElementClass var_type_6266 (dynamic_cast <const cPtr_unifiedTypeMapElementClass *> (extractedValue_6247_weakElement.ptr ())) ;
+        if (NULL == var_type_6266.ptr ()) {
           test_2 = kBoolFalse ;
         }
         if (kBoolTrue == test_2) {
-          switch (var_type_8067.readProperty_mDefinition ().enumValue ()) {
+          switch (var_type_6266.readProperty_mDefinition ().enumValue ()) {
           case GALGAS_typeDefinition::kNotBuilt:
             break ;
           case GALGAS_typeDefinition::kEnum_unsolved:
             {
               TC_Array <C_FixItDescription> fixItArray3 ;
-              inCompiler->emitSemanticError (GALGAS_location::constructor_nowhere (SOURCE_FILE ("unified-type-map.galgas", 186)), GALGAS_string ("unsolved type"), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 186)) ;
+              inCompiler->emitSemanticError (GALGAS_location::constructor_nowhere (SOURCE_FILE ("unified-type-map.galgas", 154)), GALGAS_string ("unsolved type"), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 154)) ;
               result_result.drop () ; // Release error dropped variable
             }
             break ;
           case GALGAS_typeDefinition::kEnum_solved:
             {
-              const cEnumAssociatedValues_typeDefinition_solved * extractPtr_8249 = (const cEnumAssociatedValues_typeDefinition_solved *) (var_type_8067.readProperty_mDefinition ().unsafePointer ()) ;
-              const GALGAS_unifiedTypeDefinition extractedValue_8218_definition = extractPtr_8249->mAssociatedValue0 ;
-              result_result = extractedValue_8218_definition ;
+              const cEnumAssociatedValues_typeDefinition_solved * extractPtr_6448 = (const cEnumAssociatedValues_typeDefinition_solved *) (var_type_6266.readProperty_mDefinition ().unsafePointer ()) ;
+              const GALGAS_unifiedTypeDefinition extractedValue_6417_definition = extractPtr_6448->mAssociatedValue0 ;
+              result_result = extractedValue_6417_definition ;
             }
             break ;
           }
@@ -172,7 +403,7 @@ GALGAS_unifiedTypeDefinition extensionGetter_definition (const GALGAS_unifiedTyp
       }
       if (kBoolFalse == test_2) {
         TC_Array <C_FixItDescription> fixItArray4 ;
-        inCompiler->emitSemanticError (GALGAS_location::constructor_nowhere (SOURCE_FILE ("unified-type-map.galgas", 191)), GALGAS_string ("nil type"), fixItArray4  COMMA_SOURCE_FILE ("unified-type-map.galgas", 191)) ;
+        inCompiler->emitSemanticError (GALGAS_location::constructor_nowhere (SOURCE_FILE ("unified-type-map.galgas", 159)), GALGAS_string ("nil type"), fixItArray4  COMMA_SOURCE_FILE ("unified-type-map.galgas", 159)) ;
         result_result.drop () ; // Release error dropped variable
       }
     }
@@ -183,118 +414,6 @@ GALGAS_unifiedTypeDefinition extensionGetter_definition (const GALGAS_unifiedTyp
 }
 
 
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@unifiedTypeMapEntry identifierRepresentation'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string extensionGetter_identifierRepresentation (const GALGAS_unifiedTypeMapEntry & inObject,
-                                                        C_Compiler * inCompiler
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_result ; // Returned variable
-  const GALGAS_unifiedTypeMapEntry temp_0 = inObject ;
-  result_result = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 199)).readProperty_mTypeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-type-map.galgas", 199)) ;
-//---
-  return result_result ;
-}
-
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@unifiedTypeMapEntry baseType'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_unifiedTypeMapEntry extensionGetter_baseType (const GALGAS_unifiedTypeMapEntry & inObject,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapEntry result_outBaseType ; // Returned variable
-  const GALGAS_unifiedTypeMapEntry temp_0 = inObject ;
-  result_outBaseType = temp_0 ;
-  bool loop_8817 = true ;
-  while (loop_8817) {
-    loop_8817 = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 206)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("unified-type-map.galgas", 206)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 206)).isValid () ;
-    if (loop_8817) {
-      loop_8817 = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 206)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("unified-type-map.galgas", 206)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 206)).boolValue () ;
-    }
-    if (loop_8817) {
-      result_outBaseType = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 207)).readProperty_mSuperType () ;
-    }
-  }
-//---
-  return result_outBaseType ;
-}
-
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension method '@unifiedTypeMapEntry addHeaderFileName'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionMethod_addHeaderFileName (const GALGAS_unifiedTypeMapEntry inObject,
-                                        GALGAS_stringset & ioArgument_ioInclusions,
-                                        C_Compiler * inCompiler
-                                        COMMA_UNUSED_LOCATION_ARGS) {
-  enumGalgasBool test_0 = kBoolTrue ;
-  if (kBoolTrue == test_0) {
-    const GALGAS_unifiedTypeMapEntry temp_1 = inObject ;
-    const GALGAS_unifiedTypeMapEntry temp_2 = inObject ;
-    test_0 = extensionGetter_definition (temp_1, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 214)).readProperty_mIsPredefined ().operator_not (SOURCE_FILE ("unified-type-map.galgas", 214)).operator_and (GALGAS_bool (kIsNotEqual, extensionGetter_definition (temp_2, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 214)).readProperty_mHeaderKind ().objectCompare (GALGAS_headerKind::constructor_noHeader (SOURCE_FILE ("unified-type-map.galgas", 214)))) COMMA_SOURCE_FILE ("unified-type-map.galgas", 214)).boolEnum () ;
-    if (kBoolTrue == test_0) {
-      const GALGAS_unifiedTypeMapEntry temp_3 = inObject ;
-      ioArgument_ioInclusions.addAssign_operation (extensionGetter_definition (temp_3, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 215)).readProperty_mHeaderFileName ()  COMMA_SOURCE_FILE ("unified-type-map.galgas", 215)) ;
-    }
-  }
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension method '@unifiedTypeMapEntry addHeaderFileName1'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionMethod_addHeaderFileName_31_ (const GALGAS_unifiedTypeMapEntry inObject,
-                                            GALGAS_stringset & ioArgument_ioInclusions,
-                                            C_Compiler * inCompiler
-                                            COMMA_UNUSED_LOCATION_ARGS) {
-  enumGalgasBool test_0 = kBoolTrue ;
-  if (kBoolTrue == test_0) {
-    const GALGAS_unifiedTypeMapEntry temp_1 = inObject ;
-    test_0 = extensionGetter_definition (temp_1, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 222)).readProperty_mIsPredefined ().operator_not (SOURCE_FILE ("unified-type-map.galgas", 222)).boolEnum () ;
-    if (kBoolTrue == test_0) {
-      const GALGAS_unifiedTypeMapEntry temp_2 = inObject ;
-      switch (extensionGetter_definition (temp_2, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 223)).readProperty_mHeaderKind ().enumValue ()) {
-      case GALGAS_headerKind::kNotBuilt:
-        break ;
-      case GALGAS_headerKind::kEnum_noHeader:
-        {
-        }
-        break ;
-      case GALGAS_headerKind::kEnum_oneHeader:
-        {
-          const GALGAS_unifiedTypeMapEntry temp_3 = inObject ;
-          ioArgument_ioInclusions.addAssign_operation (extensionGetter_definition (temp_3, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 226)).readProperty_mHeaderFileName ()  COMMA_SOURCE_FILE ("unified-type-map.galgas", 226)) ;
-        }
-        break ;
-      case GALGAS_headerKind::kEnum_twoHeaders:
-        {
-          const GALGAS_unifiedTypeMapEntry temp_4 = inObject ;
-          ioArgument_ioInclusions.addAssign_operation (extensionGetter_definition (temp_4, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 228)).readProperty_mHeaderFileName ().add_operation (GALGAS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 228))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 228)) ;
-        }
-        break ;
-      }
-    }
-  }
-}
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -16041,117 +16160,6 @@ GALGAS_notExpressionAST_2D_weak GALGAS_notExpressionAST_2D_weak::extractObject (
       result = *p ;
     }else{
       inCompiler->castError ("notExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_notExpressionForGeneration_2D_weak::objectCompare (const GALGAS_notExpressionForGeneration_2D_weak & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = kOperandEqual ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_notExpressionForGeneration_2D_weak::GALGAS_notExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_notExpressionForGeneration_2D_weak & GALGAS_notExpressionForGeneration_2D_weak::operator = (const GALGAS_notExpressionForGeneration & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = NULL ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != NULL) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_notExpressionForGeneration_2D_weak::GALGAS_notExpressionForGeneration_2D_weak (const GALGAS_notExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_notExpressionForGeneration_2D_weak GALGAS_notExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
-  GALGAS_notExpressionForGeneration_2D_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_notExpressionForGeneration GALGAS_notExpressionForGeneration_2D_weak::bang_notExpressionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GALGAS_notExpressionForGeneration result ;
-  if (mProxyPtr != NULL) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == NULL) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_notExpressionForGeneration) ;
-      result = GALGAS_notExpressionForGeneration ((cPtr_notExpressionForGeneration *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@notExpressionForGeneration-weak type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_notExpressionForGeneration_2D_weak ("notExpressionForGeneration-weak",
-                                                           & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_notExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_notExpressionForGeneration_2D_weak ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_notExpressionForGeneration_2D_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_notExpressionForGeneration_2D_weak (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_notExpressionForGeneration_2D_weak GALGAS_notExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_notExpressionForGeneration_2D_weak result ;
-  const GALGAS_notExpressionForGeneration_2D_weak * p = (const GALGAS_notExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_notExpressionForGeneration_2D_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("notExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

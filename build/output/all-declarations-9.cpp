@@ -8,6 +8,117 @@
 #include "all-declarations-9.h"
 
 //----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_notExpressionForGeneration_2D_weak::objectCompare (const GALGAS_notExpressionForGeneration_2D_weak & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_notExpressionForGeneration_2D_weak::GALGAS_notExpressionForGeneration_2D_weak (void) :
+GALGAS_semanticExpressionForGeneration_2D_weak () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_notExpressionForGeneration_2D_weak & GALGAS_notExpressionForGeneration_2D_weak::operator = (const GALGAS_notExpressionForGeneration & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != NULL) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_notExpressionForGeneration_2D_weak::GALGAS_notExpressionForGeneration_2D_weak (const GALGAS_notExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_notExpressionForGeneration_2D_weak GALGAS_notExpressionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+  GALGAS_notExpressionForGeneration_2D_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_notExpressionForGeneration GALGAS_notExpressionForGeneration_2D_weak::bang_notExpressionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_notExpressionForGeneration result ;
+  if (mProxyPtr != NULL) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == NULL) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_notExpressionForGeneration) ;
+      result = GALGAS_notExpressionForGeneration ((cPtr_notExpressionForGeneration *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@notExpressionForGeneration-weak type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_notExpressionForGeneration_2D_weak ("notExpressionForGeneration-weak",
+                                                           & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_notExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_notExpressionForGeneration_2D_weak ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_notExpressionForGeneration_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_notExpressionForGeneration_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_notExpressionForGeneration_2D_weak GALGAS_notExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                                    C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_notExpressionForGeneration_2D_weak result ;
+  const GALGAS_notExpressionForGeneration_2D_weak * p = (const GALGAS_notExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_notExpressionForGeneration_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("notExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 // @tildeExpressionAST reference class
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15122,384 +15233,6 @@ GALGAS_incDecNoOVFInstructionForGeneration_2D_weak GALGAS_incDecNoOVFInstruction
       result = *p ;
     }else{
       inCompiler->castError ("incDecNoOVFInstructionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-cEnumAssociatedValues_ifExpressionKind_regularExp::cEnumAssociatedValues_ifExpressionKind_regularExp (const GALGAS_semanticExpressionAST inAssociatedValue0
-                                                                                                      COMMA_LOCATION_ARGS) :
-cEnumAssociatedValues (THERE),
-mAssociatedValue0 (inAssociatedValue0) {
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void cEnumAssociatedValues_ifExpressionKind_regularExp::description (C_String & ioString,
-                                                                     const int32_t inIndentation) const {
-  ioString << "(\n" ;
-  mAssociatedValue0.description (ioString, inIndentation) ;
-  ioString << ")" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult cEnumAssociatedValues_ifExpressionKind_regularExp::compare (const cEnumAssociatedValues * inOperand) const {
-  const cEnumAssociatedValues_ifExpressionKind_regularExp * ptr = dynamic_cast<const cEnumAssociatedValues_ifExpressionKind_regularExp *> (inOperand) ;
-  macroValidPointer (ptr) ;
-  typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAssociatedValue0.objectCompare (ptr->mAssociatedValue0) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-cEnumAssociatedValues_ifExpressionKind_letExp::cEnumAssociatedValues_ifExpressionKind_letExp (const GALGAS_lstring inAssociatedValue0,
-                                                                                              const GALGAS_semanticExpressionAST inAssociatedValue1,
-                                                                                              const GALGAS_location inAssociatedValue2,
-                                                                                              const GALGAS_lstring inAssociatedValue3
-                                                                                              COMMA_LOCATION_ARGS) :
-cEnumAssociatedValues (THERE),
-mAssociatedValue0 (inAssociatedValue0),
-mAssociatedValue1 (inAssociatedValue1),
-mAssociatedValue2 (inAssociatedValue2),
-mAssociatedValue3 (inAssociatedValue3) {
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void cEnumAssociatedValues_ifExpressionKind_letExp::description (C_String & ioString,
-                                                                 const int32_t inIndentation) const {
-  ioString << "(\n" ;
-  mAssociatedValue0.description (ioString, inIndentation) ;
-  mAssociatedValue1.description (ioString, inIndentation) ;
-  mAssociatedValue2.description (ioString, inIndentation) ;
-  mAssociatedValue3.description (ioString, inIndentation) ;
-  ioString << ")" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult cEnumAssociatedValues_ifExpressionKind_letExp::compare (const cEnumAssociatedValues * inOperand) const {
-  const cEnumAssociatedValues_ifExpressionKind_letExp * ptr = dynamic_cast<const cEnumAssociatedValues_ifExpressionKind_letExp *> (inOperand) ;
-  macroValidPointer (ptr) ;
-  typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAssociatedValue0.objectCompare (ptr->mAssociatedValue0) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAssociatedValue1.objectCompare (ptr->mAssociatedValue1) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAssociatedValue2.objectCompare (ptr->mAssociatedValue2) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAssociatedValue3.objectCompare (ptr->mAssociatedValue3) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-cEnumAssociatedValues_ifExpressionKind_optionalMethodCall::cEnumAssociatedValues_ifExpressionKind_optionalMethodCall (const GALGAS_semanticExpressionAST inAssociatedValue0,
-                                                                                                                      const GALGAS_lstring inAssociatedValue1,
-                                                                                                                      const GALGAS_optionalMethodActualArgumentList inAssociatedValue2
-                                                                                                                      COMMA_LOCATION_ARGS) :
-cEnumAssociatedValues (THERE),
-mAssociatedValue0 (inAssociatedValue0),
-mAssociatedValue1 (inAssociatedValue1),
-mAssociatedValue2 (inAssociatedValue2) {
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void cEnumAssociatedValues_ifExpressionKind_optionalMethodCall::description (C_String & ioString,
-                                                                             const int32_t inIndentation) const {
-  ioString << "(\n" ;
-  mAssociatedValue0.description (ioString, inIndentation) ;
-  mAssociatedValue1.description (ioString, inIndentation) ;
-  mAssociatedValue2.description (ioString, inIndentation) ;
-  ioString << ")" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult cEnumAssociatedValues_ifExpressionKind_optionalMethodCall::compare (const cEnumAssociatedValues * inOperand) const {
-  const cEnumAssociatedValues_ifExpressionKind_optionalMethodCall * ptr = dynamic_cast<const cEnumAssociatedValues_ifExpressionKind_optionalMethodCall *> (inOperand) ;
-  macroValidPointer (ptr) ;
-  typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAssociatedValue0.objectCompare (ptr->mAssociatedValue0) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAssociatedValue1.objectCompare (ptr->mAssociatedValue1) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAssociatedValue2.objectCompare (ptr->mAssociatedValue2) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_ifExpressionKind::GALGAS_ifExpressionKind (void) :
-mAssociatedValues (),
-mEnum (kNotBuilt) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_ifExpressionKind GALGAS_ifExpressionKind::constructor_regularExp (const GALGAS_semanticExpressionAST & inAssociatedValue0
-                                                                         COMMA_LOCATION_ARGS) {
-  GALGAS_ifExpressionKind result ;
-  if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_regularExp ;
-    cEnumAssociatedValues * ptr = NULL ;
-    macroMyNew (ptr, cEnumAssociatedValues_ifExpressionKind_regularExp (inAssociatedValue0 COMMA_THERE)) ;
-    result.mAssociatedValues.setPointer (ptr) ;
-    macroDetachSharedObject (ptr) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_ifExpressionKind GALGAS_ifExpressionKind::constructor_letExp (const GALGAS_lstring & inAssociatedValue0,
-                                                                     const GALGAS_semanticExpressionAST & inAssociatedValue1,
-                                                                     const GALGAS_location & inAssociatedValue2,
-                                                                     const GALGAS_lstring & inAssociatedValue3
-                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_ifExpressionKind result ;
-  if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid () && inAssociatedValue2.isValid () && inAssociatedValue3.isValid ()) {
-    result.mEnum = kEnum_letExp ;
-    cEnumAssociatedValues * ptr = NULL ;
-    macroMyNew (ptr, cEnumAssociatedValues_ifExpressionKind_letExp (inAssociatedValue0, inAssociatedValue1, inAssociatedValue2, inAssociatedValue3 COMMA_THERE)) ;
-    result.mAssociatedValues.setPointer (ptr) ;
-    macroDetachSharedObject (ptr) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_ifExpressionKind GALGAS_ifExpressionKind::constructor_optionalMethodCall (const GALGAS_semanticExpressionAST & inAssociatedValue0,
-                                                                                 const GALGAS_lstring & inAssociatedValue1,
-                                                                                 const GALGAS_optionalMethodActualArgumentList & inAssociatedValue2
-                                                                                 COMMA_LOCATION_ARGS) {
-  GALGAS_ifExpressionKind result ;
-  if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid () && inAssociatedValue2.isValid ()) {
-    result.mEnum = kEnum_optionalMethodCall ;
-    cEnumAssociatedValues * ptr = NULL ;
-    macroMyNew (ptr, cEnumAssociatedValues_ifExpressionKind_optionalMethodCall (inAssociatedValue0, inAssociatedValue1, inAssociatedValue2 COMMA_THERE)) ;
-    result.mAssociatedValues.setPointer (ptr) ;
-    macroDetachSharedObject (ptr) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_ifExpressionKind::method_regularExp (GALGAS_semanticExpressionAST & outAssociatedValue0,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_regularExp) {
-    outAssociatedValue0.drop () ;
-    C_String s ;
-    s << "method @ifExpressionKind regularExp invoked with an invalid enum value" ;
-    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-  }else{
-    const cEnumAssociatedValues_ifExpressionKind_regularExp * ptr = (const cEnumAssociatedValues_ifExpressionKind_regularExp *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_ifExpressionKind::method_letExp (GALGAS_lstring & outAssociatedValue0,
-                                             GALGAS_semanticExpressionAST & outAssociatedValue1,
-                                             GALGAS_location & outAssociatedValue2,
-                                             GALGAS_lstring & outAssociatedValue3,
-                                             C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_letExp) {
-    outAssociatedValue0.drop () ;
-    outAssociatedValue1.drop () ;
-    outAssociatedValue2.drop () ;
-    outAssociatedValue3.drop () ;
-    C_String s ;
-    s << "method @ifExpressionKind letExp invoked with an invalid enum value" ;
-    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-  }else{
-    const cEnumAssociatedValues_ifExpressionKind_letExp * ptr = (const cEnumAssociatedValues_ifExpressionKind_letExp *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-    outAssociatedValue1 = ptr->mAssociatedValue1 ;
-    outAssociatedValue2 = ptr->mAssociatedValue2 ;
-    outAssociatedValue3 = ptr->mAssociatedValue3 ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_ifExpressionKind::method_optionalMethodCall (GALGAS_semanticExpressionAST & outAssociatedValue0,
-                                                         GALGAS_lstring & outAssociatedValue1,
-                                                         GALGAS_optionalMethodActualArgumentList & outAssociatedValue2,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_optionalMethodCall) {
-    outAssociatedValue0.drop () ;
-    outAssociatedValue1.drop () ;
-    outAssociatedValue2.drop () ;
-    C_String s ;
-    s << "method @ifExpressionKind optionalMethodCall invoked with an invalid enum value" ;
-    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-  }else{
-    const cEnumAssociatedValues_ifExpressionKind_optionalMethodCall * ptr = (const cEnumAssociatedValues_ifExpressionKind_optionalMethodCall *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-    outAssociatedValue1 = ptr->mAssociatedValue1 ;
-    outAssociatedValue2 = ptr->mAssociatedValue2 ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_ifExpressionKind::optional_regularExp (GALGAS_semanticExpressionAST & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_regularExp ;
-  if (ok) {
-    const auto * ptr = (const cEnumAssociatedValues_ifExpressionKind_regularExp *) unsafePointer () ;
-    // const cEnumAssociatedValues_ifExpressionKind_regularExp * ptr = (const cEnumAssociatedValues_ifExpressionKind_regularExp *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-  }
-  return ok ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_ifExpressionKind::optional_letExp (GALGAS_lstring & outAssociatedValue0,
-                                               GALGAS_semanticExpressionAST & outAssociatedValue1,
-                                               GALGAS_location & outAssociatedValue2,
-                                               GALGAS_lstring & outAssociatedValue3) const {
-  const bool ok = mEnum == kEnum_letExp ;
-  if (ok) {
-    const auto * ptr = (const cEnumAssociatedValues_ifExpressionKind_letExp *) unsafePointer () ;
-    // const cEnumAssociatedValues_ifExpressionKind_letExp * ptr = (const cEnumAssociatedValues_ifExpressionKind_letExp *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-    outAssociatedValue1 = ptr->mAssociatedValue1 ;
-    outAssociatedValue2 = ptr->mAssociatedValue2 ;
-    outAssociatedValue3 = ptr->mAssociatedValue3 ;
-  }
-  return ok ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_ifExpressionKind::optional_optionalMethodCall (GALGAS_semanticExpressionAST & outAssociatedValue0,
-                                                           GALGAS_lstring & outAssociatedValue1,
-                                                           GALGAS_optionalMethodActualArgumentList & outAssociatedValue2) const {
-  const bool ok = mEnum == kEnum_optionalMethodCall ;
-  if (ok) {
-    const auto * ptr = (const cEnumAssociatedValues_ifExpressionKind_optionalMethodCall *) unsafePointer () ;
-    // const cEnumAssociatedValues_ifExpressionKind_optionalMethodCall * ptr = (const cEnumAssociatedValues_ifExpressionKind_optionalMethodCall *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-    outAssociatedValue1 = ptr->mAssociatedValue1 ;
-    outAssociatedValue2 = ptr->mAssociatedValue2 ;
-  }
-  return ok ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-static const char * gEnumNameArrayFor_ifExpressionKind [4] = {
-  "(not built)",
-  "regularExp",
-  "letExp",
-  "optionalMethodCall"
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_ifExpressionKind::getter_isRegularExp (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_regularExp == mEnum) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_ifExpressionKind::getter_isLetExp (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_letExp == mEnum) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_ifExpressionKind::getter_isOptionalMethodCall (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_optionalMethodCall == mEnum) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_ifExpressionKind::description (C_String & ioString,
-                                           const int32_t inIndentation) const {
-  ioString << "<enum @ifExpressionKind: " << gEnumNameArrayFor_ifExpressionKind [mEnum] ;
-  mAssociatedValues.description (ioString, inIndentation) ;
-  ioString << ">" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_ifExpressionKind::objectCompare (const GALGAS_ifExpressionKind & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    if (mEnum < inOperand.mEnum) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mEnum > inOperand.mEnum) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mAssociatedValues.objectCompare (inOperand.mAssociatedValues) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@ifExpressionKind type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_ifExpressionKind ("ifExpressionKind",
-                                         NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_ifExpressionKind::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_ifExpressionKind ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_ifExpressionKind::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_ifExpressionKind (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_ifExpressionKind GALGAS_ifExpressionKind::extractObject (const GALGAS_object & inObject,
-                                                                C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_ifExpressionKind result ;
-  const GALGAS_ifExpressionKind * p = (const GALGAS_ifExpressionKind *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_ifExpressionKind *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("ifExpressionKind", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

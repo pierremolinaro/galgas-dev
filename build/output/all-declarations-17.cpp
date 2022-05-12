@@ -11055,15 +11055,15 @@ static GALGAS_unifiedTypeDefinition extensionGetter_unifiedTypeMapElementClass_d
   case GALGAS_typeDefinition::kEnum_unsolved:
     {
       TC_Array <C_FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (GALGAS_location::constructor_nowhere (SOURCE_FILE ("unified-type-map.galgas", 168)), GALGAS_string ("unsolved type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas", 168)) ;
+      inCompiler->emitSemanticError (GALGAS_location::constructor_nowhere (SOURCE_FILE ("unified-type-map.galgas", 136)), GALGAS_string ("unsolved type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas", 136)) ;
       result_result.drop () ; // Release error dropped variable
     }
     break ;
   case GALGAS_typeDefinition::kEnum_solved:
     {
-      const cEnumAssociatedValues_typeDefinition_solved * extractPtr_7599 = (const cEnumAssociatedValues_typeDefinition_solved *) (temp_0.readProperty_mDefinition ().unsafePointer ()) ;
-      const GALGAS_unifiedTypeDefinition extractedValue_7572_definition = extractPtr_7599->mAssociatedValue0 ;
-      result_result = extractedValue_7572_definition ;
+      const cEnumAssociatedValues_typeDefinition_solved * extractPtr_5798 = (const cEnumAssociatedValues_typeDefinition_solved *) (temp_0.readProperty_mDefinition ().unsafePointer ()) ;
+      const GALGAS_unifiedTypeDefinition extractedValue_5771_definition = extractPtr_5798->mAssociatedValue0 ;
+      result_result = extractedValue_5771_definition ;
     }
     break ;
   }

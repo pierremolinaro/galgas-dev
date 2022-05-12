@@ -10,55 +10,15 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension getter '@unifiedTypeMapEntry definition' (as function)
+//Extension method '@unifiedTypeMap searchType'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_unifiedTypeDefinition extensionGetter_definition (const class GALGAS_unifiedTypeMapEntry & inObject,
-                                                               class C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension getter '@unifiedTypeMapEntry identifierRepresentation' (as function)
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_string extensionGetter_identifierRepresentation (const class GALGAS_unifiedTypeMapEntry & inObject,
-                                                              class C_Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension getter '@unifiedTypeMapEntry baseType' (as function)
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_unifiedTypeMapEntry extensionGetter_baseType (const class GALGAS_unifiedTypeMapEntry & inObject,
-                                                           class C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension method '@unifiedTypeMapEntry addHeaderFileName'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionMethod_addHeaderFileName (const class GALGAS_unifiedTypeMapEntry inObject,
-                                        class GALGAS_stringset & io_ioInclusions,
-                                        class C_Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension method '@unifiedTypeMapEntry addHeaderFileName1'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionMethod_addHeaderFileName_31_ (const class GALGAS_unifiedTypeMapEntry inObject,
-                                            class GALGAS_stringset & io_ioInclusions,
-                                            class C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
+void extensionMethod_searchType (const class GALGAS_unifiedTypeMap inObject,
+                                 const class GALGAS_lstring constin_inLKey,
+                                 class GALGAS_unifiedTypeDefinition & out_outTypeDefinition,
+                                 class C_Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -13211,147 +13171,4 @@ class GALGAS_notExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2D_w
 //----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notExpressionAST_2D_weak ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @notExpressionForGeneration reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_notExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
-//--------------------------------- Default constructor
-  public: GALGAS_notExpressionForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_notExpressionForGeneration (const class cPtr_notExpressionForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property read access
-  public: class GALGAS_semanticExpressionForGeneration readProperty_mExpression (void) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_notExpressionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_notExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                          const class GALGAS_location & inOperand1,
-                                                                          const class GALGAS_semanticExpressionForGeneration & inOperand2
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_notExpressionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_notExpressionForGeneration class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notExpressionForGeneration ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @notExpressionForGeneration class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class cPtr_notExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-
-//----------------------------------------------------------------------------------------------------------------------
-
-//--- Properties
-  public: GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
-
-//--- Constructor
-  public: cPtr_notExpressionForGeneration (const GALGAS_unifiedTypeMapEntry & in_mResultType,
-                                           const GALGAS_location & in_mLocation,
-                                           const GALGAS_semanticExpressionForGeneration & in_mExpression
-                                           COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
-
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @notExpressionForGeneration_2D_weak weak reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_notExpressionForGeneration_2D_weak : public GALGAS_semanticExpressionForGeneration_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_notExpressionForGeneration_2D_weak (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_notExpressionForGeneration_2D_weak constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_notExpressionForGeneration_2D_weak (const class GALGAS_notExpressionForGeneration & inSource) ;
-
-  public: GALGAS_notExpressionForGeneration_2D_weak & operator = (const class GALGAS_notExpressionForGeneration & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_notExpressionForGeneration bang_notExpressionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_notExpressionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_notExpressionForGeneration_2D_weak constructor_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_notExpressionForGeneration_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_notExpressionForGeneration_2D_weak class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notExpressionForGeneration_2D_weak ;
 
