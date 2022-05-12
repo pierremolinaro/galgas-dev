@@ -26,7 +26,6 @@
 #include "AC_GALGAS_list.cpp"
 #include "AC_GALGAS_sortedlist.cpp"
 #include "AC_GALGAS_map.cpp"
-#include "AC_GALGAS_uniqueMap.cpp"
 #include "AC_GALGAS_reference_class.cpp"
 #include "AC_GALGAS_value_class.cpp"
 #include "AC_GALGAS_graph.cpp"

@@ -186,103 +186,6 @@ void routine_enterInheritedGetterWith_32_Arguments (class GALGAS_getterMap & ioA
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Filewrapper 'mapEntryGenerationTemplate'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_mapEntryGenerationTemplate ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'mapEntryGenerationTemplate mapEntryTypeHeader1'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_mapEntryGenerationTemplate_mapEntryTypeHeader_31_ (class C_Compiler * inCompiler,
-                                                                                     const class GALGAS_string & in_TYPE_5F_NAME,
-                                                                                     const class GALGAS_string & in_TYPE_5F_IDENTIFIER
-                                                                                     COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'mapEntryGenerationTemplate mapEntryTypeSpecificImplementation'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_mapEntryGenerationTemplate_mapEntryTypeSpecificImplementation (class C_Compiler * inCompiler,
-                                                                                                 const class GALGAS_string & in_TYPE_5F_NAME,
-                                                                                                 const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                                 const class GALGAS_string & in_ASSOCIATED_5F_MAP_5F_TYPE_5F_IDENTIFIER,
-                                                                                                 const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
-                                                                                                 const class GALGAS_mapSearchMethodListAST & in_SEARCH_5F_METHOD_5F_LIST
-                                                                                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'sharedMapGenerationTemplate'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_sharedMapGenerationTemplate ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'sharedMapGenerationTemplate uniqueMapTypeHeader1'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_sharedMapGenerationTemplate_uniqueMapTypeHeader_31_ (class C_Compiler * inCompiler,
-                                                                                       const class GALGAS_string & in_TYPE_5F_NAME,
-                                                                                       const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                       const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
-                                                                                       const class GALGAS_mapSearchMethodListAST & in_SEARCH_5F_METHOD_5F_LIST
-                                                                                       COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'sharedMapGenerationTemplate uniqueMapTypeHeader2'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_sharedMapGenerationTemplate_uniqueMapTypeHeader_32_ (class C_Compiler * inCompiler,
-                                                                                       const class GALGAS_string & in_TYPE_5F_NAME,
-                                                                                       const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                       const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST
-                                                                                       COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'sharedMapGenerationTemplate uniqueMapTypeSpecificImplementation'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_sharedMapGenerationTemplate_uniqueMapTypeSpecificImplementation (class C_Compiler * inCompiler,
-                                                                                                   const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                                   const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
-                                                                                                   const class GALGAS_insertMethodListAST & in_INSERT_5F_METHOD_5F_LIST,
-                                                                                                   const class GALGAS_mapSearchMethodListAST & in_SEARCH_5F_METHOD_5F_LIST
-                                                                                                   COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'sortedListGenerationTemplate'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -924,4 +827,45 @@ void routine_generateExtensionSetter (const class GALGAS_string constinArgument0
                                       class GALGAS_string & outArgument6,
                                       class C_Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'checkGetterSignatures'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_checkGetterSignatures (const class GALGAS_formalInputParameterListForGeneration constinArgument0,
+                                    const class GALGAS_unifiedTypeMapEntry constinArgument1,
+                                    const class GALGAS_location constinArgument2,
+                                    const class GALGAS_functionSignature constinArgument3,
+                                    const class GALGAS_unifiedTypeMapEntry constinArgument4,
+                                    const class GALGAS_location constinArgument5,
+                                    class C_Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'buildLocalVariableMapAndSignature'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_buildLocalVariableMapAndSignature (const class GALGAS_semanticContext constinArgument0,
+                                                const class GALGAS_formalParameterListAST constinArgument1,
+                                                class GALGAS_localVarManager & ioArgument2,
+                                                class GALGAS_formalParameterListForGeneration & outArgument3,
+                                                class C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'checkMethodSignatures'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_checkMethodSignatures (const class GALGAS_formalParameterListForGeneration constinArgument0,
+                                    const class GALGAS_location constinArgument1,
+                                    const class GALGAS_formalParameterSignature constinArgument2,
+                                    const class GALGAS_location constinArgument3,
+                                    class C_Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
 

@@ -958,8 +958,6 @@ proc updateGalgas3Targets
         !"AC_GALGAS_root.h",
         !"AC_GALGAS_sortedlist.cpp",
         !"AC_GALGAS_sortedlist.h",
-        !"AC_GALGAS_uniqueMap.cpp",
-        !"AC_GALGAS_uniqueMap.h",
         !"AC_GALGAS_weak_reference.cpp",
         !"AC_GALGAS_weak_reference.h",
         !"acPtr_class.cpp",

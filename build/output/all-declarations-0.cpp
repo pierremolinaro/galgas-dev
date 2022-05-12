@@ -399,9 +399,6 @@ static const char * gSyntaxErrorMessage_galgasTemplateScanner_then = "the 'then'
 //--- Syntax error message for terminal '$true$' :
 static const char * gSyntaxErrorMessage_galgasTemplateScanner_true = "the 'true' keyword" ;
 
-//--- Syntax error message for terminal '$shared$' :
-static const char * gSyntaxErrorMessage_galgasTemplateScanner_shared = "the 'shared' keyword" ;
-
 //--- Syntax error message for terminal '$unused$' :
 static const char * gSyntaxErrorMessage_galgasTemplateScanner_unused = "the 'unused' keyword" ;
 
@@ -528,8 +525,8 @@ static const char * gSyntaxErrorMessage_galgasTemplateScanner__26__2F_ = "the '&
 
 C_String C_Lexique_galgasTemplateScanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
   C_String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 143)) {
-    static const char * syntaxErrorMessageArray [143] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 142)) {
+    static const char * syntaxErrorMessageArray [142] = {kEndOfSourceLexicalErrorMessage,
         gSyntaxErrorMessage_galgasTemplateScanner_identifier,
         gSyntaxErrorMessage_galgasTemplateScanner__40_type,
         gSyntaxErrorMessage_galgasTemplateScanner_double_2E_xxx,
@@ -631,7 +628,6 @@ C_String C_Lexique_galgasTemplateScanner::getMessageForTerminal (const int16_t i
         gSyntaxErrorMessage_galgasTemplateScanner_template,
         gSyntaxErrorMessage_galgasTemplateScanner_then,
         gSyntaxErrorMessage_galgasTemplateScanner_true,
-        gSyntaxErrorMessage_galgasTemplateScanner_shared,
         gSyntaxErrorMessage_galgasTemplateScanner_unused,
         gSyntaxErrorMessage_galgasTemplateScanner_var,
         gSyntaxErrorMessage_galgasTemplateScanner_warning,
@@ -1663,17 +1659,6 @@ static const utf32 kUnicodeString_galgasTemplateScanner_setter [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$shared$'
-static const utf32 kUnicodeString_galgasTemplateScanner_shared [] = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
 //--- Unicode string for '$sortedlist$'
 static const utf32 kUnicodeString_galgasTemplateScanner_sortedlist [] = {
   TO_UNICODE ('s'),
@@ -1905,7 +1890,7 @@ int16_t C_Lexique_galgasTemplateScanner::search_into_galgasDelimitorsList (const
 //             Key words table 'galgasKeyWordList'      
 //----------------------------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasTemplateScanner_galgasKeyWordList = 86 ;
+static const int32_t ktable_size_galgasTemplateScanner_galgasKeyWordList = 85 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasTemplateScanner_galgasKeyWordList [ktable_size_galgasTemplateScanner_galgasKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_do, 2, C_Lexique_galgasTemplateScanner::kToken_do),
@@ -1969,7 +1954,6 @@ static const C_unicode_lexique_table_entry ktable_for_galgasTemplateScanner_galg
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_search, 6, C_Lexique_galgasTemplateScanner::kToken_search),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_select, 6, C_Lexique_galgasTemplateScanner::kToken_select),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_setter, 6, C_Lexique_galgasTemplateScanner::kToken_setter),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_shared, 6, C_Lexique_galgasTemplateScanner::kToken_shared),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_struct, 6, C_Lexique_galgasTemplateScanner::kToken_struct),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_switch, 6, C_Lexique_galgasTemplateScanner::kToken_switch),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_syntax, 6, C_Lexique_galgasTemplateScanner::kToken_syntax),
@@ -2550,11 +2534,6 @@ C_String C_Lexique_galgasTemplateScanner::getCurrentTokenString (const cToken * 
       s.appendCString ("true") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
-    case kToken_shared:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("shared") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
     case kToken_unused:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("unused") ;
@@ -2784,7 +2763,7 @@ static const cTemplateDelimiter galgasTemplateScanner_kTemplateReplacementArray 
 //            Terminal Symbols as end of script in template mark                                 
 //----------------------------------------------------------------------------------------------------------------------
 
-static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [142] = {
+static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [141] = {
   false /* identifier */,
   false /* @type */,
   false /* double.xxx */,
@@ -2886,7 +2865,6 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [142] = {
   false /* template */,
   false /* then */,
   false /* true */,
-  false /* shared */,
   false /* unused */,
   false /* var */,
   false /* warning */,
@@ -3958,7 +3936,6 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("template") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("then") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("true") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("shared") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("unused") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("var") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("warning") COMMA_THERE) ;
@@ -4115,7 +4092,6 @@ static void getKeywordsForIdentifier_galgasTemplateScanner (const C_String & inI
     ioList.appendObject ("search") ;
     ioList.appendObject ("select") ;
     ioList.appendObject ("setter") ;
-    ioList.appendObject ("shared") ;
     ioList.appendObject ("struct") ;
     ioList.appendObject ("switch") ;
     ioList.appendObject ("syntax") ;
@@ -4155,7 +4131,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasTemplateScanner, getKeywordsForI
 //----------------------------------------------------------------------------------------------------------------------
 
 uint32_t C_Lexique_galgasTemplateScanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [143] = {0,
+  static const uint32_t kTerminalSymbolStyles [142] = {0,
     0 /* galgasTemplateScanner_1_identifier */,
     10 /* galgasTemplateScanner_1__40_type */,
     7 /* galgasTemplateScanner_1_double_2E_xxx */,
@@ -4257,7 +4233,6 @@ uint32_t C_Lexique_galgasTemplateScanner::styleIndexForTerminal (const int32_t i
     1 /* galgasTemplateScanner_1_template */,
     1 /* galgasTemplateScanner_1_then */,
     1 /* galgasTemplateScanner_1_true */,
-    1 /* galgasTemplateScanner_1_shared */,
     1 /* galgasTemplateScanner_1_unused */,
     1 /* galgasTemplateScanner_1_var */,
     1 /* galgasTemplateScanner_1_warning */,

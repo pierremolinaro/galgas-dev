@@ -313,12 +313,6 @@ override getter @predefinedTypeAST keyRepresentation
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @mapEntryDeclarationAST keyRepresentation -> @string {
-  result = "map entry @" + self.mMapEntryTypeName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 override getter @enumDeclarationAST keyRepresentation
   ->@string {
   result = "enum @" + self.mEnumTypeName

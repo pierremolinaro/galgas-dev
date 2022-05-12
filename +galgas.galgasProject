@@ -79,8 +79,6 @@ project (4:0:0) -> "galgas" {
   "galgas-sources/type-listmap.galgas"
   "galgas-sources/type-dict.galgas"
   "galgas-sources/type-map.galgas"
-  "galgas-sources/type-map-entry.galgas"
-  "galgas-sources/type-shared-map.galgas"
   "galgas-sources/type-sorted-list.galgas"
   "galgas-sources/type-struct.galgas"
 

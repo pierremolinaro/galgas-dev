@@ -17,7 +17,6 @@
 #include "galgas2/AC_GALGAS_list.h"
 #include "galgas2/AC_GALGAS_sortedlist.h"
 #include "galgas2/AC_GALGAS_map.h"
-#include "galgas2/AC_GALGAS_uniqueMap.h"
 #include "galgas2/AC_GALGAS_reference_class.h"
 #include "galgas2/AC_GALGAS_value_class.h"
 #include "galgas2/AC_GALGAS_enumAssociatedValues.h"
