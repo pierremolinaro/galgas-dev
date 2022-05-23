@@ -536,6 +536,8 @@ OC_Lexique * tokenizerForExtension (const NSString * inExtension) {
     result = [OC_Tokenizer_1_galgasTemplateScanner new] ;
   }else if ([inExtension isEqualToString:@"ggs"]) {
     result = [OC_Tokenizer_0_galgas3Scanner new] ;
+  }else if ([inExtension isEqualToString:@"ggsTemplate"]) {
+    result = [OC_Tokenizer_1_galgasTemplateScanner new] ;
   }
   return result ;
 }
