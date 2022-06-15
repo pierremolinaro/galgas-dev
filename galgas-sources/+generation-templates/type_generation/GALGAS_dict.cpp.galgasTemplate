@@ -59,12 +59,13 @@ class cSharedDictRoot_%!TYPE_IDENTIFIER% : public C_SharedObject {
   protected: VIRTUAL_IN_DEBUG void copyFrom (const cSharedDictRoot_%!TYPE_IDENTIFIER% * inSource) ;
 
 //--------------------------------- Insert
-  protected: VIRTUAL_IN_DEBUG void performInsert (const GALGAS_%!TYPE_IDENTIFIER%_2D_element & inNewNode) {
+  protected: VIRTUAL_IN_DEBUG void performInsert (const GALGAS_%!TYPE_IDENTIFIER%_2D_element & inNewNode,
+                                                  const bool inEntryOverrideAllowed) {
     macroUniqueSharedObject (this) ;
     bool extension = false ;
-    bool entryAdded = false ;
-    recursiveAddEntry (mRoot, inNewNode, entryAdded, extension) ;
-    if (entryAdded) {
+    bool entryAlreadyInDict = false ;
+    recursiveAddEntry (mRoot, inNewNode, entryAlreadyInDict, extension, inEntryOverrideAllowed) ;
+    if (!entryAlreadyInDict) {
       mCount ++ ;
     }
     #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -110,9 +111,10 @@ class cSharedDictRoot_%!TYPE_IDENTIFIER% : public C_SharedObject {
   }
 
   protected: static void recursiveAddEntry (cNode_%!TYPE_IDENTIFIER% * & ioRootPtr,
-                                             const GALGAS_%!TYPE_IDENTIFIER%_2D_element & inNewNode,
-                                             bool & outEntryAdded,
-                                             bool & ioExtension) {
+                                            const GALGAS_%!TYPE_IDENTIFIER%_2D_element & inNewNode,
+                                            bool & outEntryAlreadyPresent,
+                                            bool & ioExtension,
+                                            const bool inEntryOverrideAllowed) {
     if (ioRootPtr == NULL) {
       macroMyNew (ioRootPtr, cNode_%!TYPE_IDENTIFIER% (inNewNode.mProperty_key%
 for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST
@@ -120,12 +122,12 @@ for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPER
 end
       %)) ;
       ioExtension = true ;
-      outEntryAdded = true ;
+      outEntryAlreadyPresent = false ;
     }else{
       macroValidPointer (ioRootPtr) ;
       const typeComparisonResult comparaison = ioRootPtr->mProperty_key.objectCompare (inNewNode.mProperty_key) ;
       if (comparaison == kFirstOperandGreaterThanSecond) {
-        recursiveAddEntry (ioRootPtr->mInfPtr, inNewNode, outEntryAdded, ioExtension) ;
+        recursiveAddEntry (ioRootPtr->mInfPtr, inNewNode, outEntryAlreadyPresent, ioExtension, inEntryOverrideAllowed) ;
         if (ioExtension) {
           ioRootPtr->mBalance++;
           if (ioRootPtr->mBalance == 0) {
@@ -139,7 +141,7 @@ end
           }
         }
       }else if (comparaison == kFirstOperandLowerThanSecond) {
-        recursiveAddEntry (ioRootPtr->mSupPtr, inNewNode, outEntryAdded, ioExtension) ;
+        recursiveAddEntry (ioRootPtr->mSupPtr, inNewNode, outEntryAlreadyPresent, ioExtension, inEntryOverrideAllowed) ;
         if (ioExtension) {
           ioRootPtr->mBalance-- ;
           if (ioRootPtr->mBalance == 0) {
@@ -154,12 +156,14 @@ end
         }
       }else{  // Found
         ioExtension = false ;
-        outEntryAdded = false ;
+        outEntryAlreadyPresent = true ;
+        if (inEntryOverrideAllowed) {
 %
 for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST
-  do %        ioRootPtr->mProperty_%![mPropertyName identifierRepresentation]% = inNewNode.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+  do %          ioRootPtr->mProperty_%![mPropertyName identifierRepresentation]% = inNewNode.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
 end
-%      }
+%        }
+      }
     }
   }
 
@@ -498,7 +502,8 @@ end
   if (isValid () && newElement.isValid ()) {
     insulate (THERE) ;
     macroUniqueSharedObject (mSharedDict) ;
-    mSharedDict->performInsert (newElement) ;
+    const bool entryOverrideAllowed = true ;
+    mSharedDict->performInsert (newElement, entryOverrideAllowed) ;
   }
 }
 
