@@ -596,8 +596,25 @@ proc updateGalgas3Targets
   #--- Default build configuration
     var @stringlist xcodeSettingList = {
       !"ALWAYS_SEARCH_USER_PATHS = NO",
-      !"ARCHS = \"$(ARCHS_STANDARD_64_BIT)\"",
+#      !"ARCHS = \"$(ARCHS_STANDARD_64_BIT)\"",
+      !"CLANG_CXX_LANGUAGE_STANDARD = \"c++14\"",
+      !"CLANG_ENABLE_OBJC_ARC = YES",
+      !"CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES",
+      !"CLANG_WARN_COMMA = YES",
+      !"CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES",
+      !"CLANG_WARN_EMPTY_BODY = YES",
+      !"CLANG_WARN_INFINITE_RECURSION = YES",
+      !"CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES",
+      !"CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES",
+      !"CLANG_WARN_RANGE_LOOP_ANALYSIS = YES",
+      !"CLANG_WARN_STRICT_PROTOTYPES = YES",
+      !"CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES",
+      !"CLANG_WARN_SUSPICIOUS_MOVE = YES",
+      !"CLANG_WARN_UNREACHABLE_CODE = YES",
+      !"CLANG_WARN__DUPLICATE_METHOD_MATCH = YES",
       !"GCC_GENERATE_DEBUGGING_SYMBOLS = NO",
+      !"GCC_NO_COMMON_BLOCKS = YES",
+      !"ENABLE_STRICT_OBJC_MSGSEND = YES",
       !"GCC_PRECOMPILE_PREFIX_HEADER = YES",
       !"GCC_THREADSAFE_STATICS = NO",
       !"GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES",
@@ -620,6 +637,7 @@ proc updateGalgas3Targets
       !"GCC_WARN_SHADOW = YES",
       !"GCC_WARN_SIGN_COMPARE = YES",
       !"GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES",
+      !"GCC_WARN_UNDECLARED_SELECTOR = YES",
       !"GCC_WARN_UNINITIALIZED_AUTOS = YES",
       !"GCC_WARN_UNKNOWN_PRAGMAS = YES",
       !"GCC_WARN_UNUSED_FUNCTION = YES",
@@ -1362,6 +1380,7 @@ proc updateGalgas3Targets
     [!?xcodeProject placeGroupAsMainGroup !groupRef:frameworkGroupRef]
   #--- Add Mach O release target
     var @stringlist settingList = {
+      !"CODE_SIGN_IDENTITY = \"-\"",
       !"GCC_OPTIMIZATION_LEVEL = 2",
       !"GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)",
       !"GCC_WARN_UNUSED_PARAMETER = YES"
@@ -1386,6 +1405,7 @@ proc updateGalgas3Targets
     ]
   #--- Add Mach O debug target
     settingList = {
+      !"CODE_SIGN_IDENTITY = \"-\"",
       !"GCC_OPTIMIZATION_LEVEL = 0",
       !"GCC_GENERATE_DEBUGGING_SYMBOLS = YES",
       !"GCC_PREPROCESSOR_DEFINITIONS = ()",
@@ -1411,6 +1431,7 @@ proc updateGalgas3Targets
     ]
   #--- Add Cocoa target
     var @stringlist configurationSettingList = {
+      !"CODE_SIGN_IDENTITY = \"-\"",
       !"GCC_OPTIMIZATION_LEVEL = 0",
       !"GCC_PREPROCESSOR_DEFINITIONS = ()"
     }

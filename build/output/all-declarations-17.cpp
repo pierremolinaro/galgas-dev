@@ -9103,7 +9103,7 @@ void extensionSetter_insertUsedLocalConstant (GALGAS_localVarManager & ioObject,
                                               C_Compiler * inCompiler
                                               COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 62)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 62)) COMMA_SOURCE_FILE ("variable-manager.galgas", 62)), GALGAS_localVarValuation::constructor_read (SOURCE_FILE ("variable-manager.galgas", 63)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 57)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 64)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 64)) COMMA_SOURCE_FILE ("variable-manager.galgas", 64)), GALGAS_localVarValuation::constructor_read (SOURCE_FILE ("variable-manager.galgas", 65)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 59)) ;
   }
 }
 
@@ -9122,7 +9122,7 @@ void extensionSetter_insertInitializedLocalConstant (GALGAS_localVarManager & io
                                                      C_Compiler * inCompiler
                                                      COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 78)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 78)) COMMA_SOURCE_FILE ("variable-manager.galgas", 78)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 79)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 73)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 80)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 80)) COMMA_SOURCE_FILE ("variable-manager.galgas", 80)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 81)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 75)) ;
   }
 }
 
@@ -9141,7 +9141,7 @@ void extensionSetter_insertDeclaredLocalConstant (GALGAS_localVarManager & ioObj
                                                   C_Compiler * inCompiler
                                                   COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 94)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 94)) COMMA_SOURCE_FILE ("variable-manager.galgas", 94)), GALGAS_localVarValuation::constructor_declared (GALGAS_bool (false)  COMMA_SOURCE_FILE ("variable-manager.galgas", 95)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 89)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 96)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 96)) COMMA_SOURCE_FILE ("variable-manager.galgas", 96)), GALGAS_localVarValuation::constructor_declared (GALGAS_bool (false)  COMMA_SOURCE_FILE ("variable-manager.galgas", 97)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 91)) ;
   }
 }
 
@@ -9160,7 +9160,7 @@ void extensionSetter_insertInputFormalArgumentDeclaredAsUnused (GALGAS_localVarM
                                                                 C_Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 110)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 110)) COMMA_SOURCE_FILE ("variable-manager.galgas", 110)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 111)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 105)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 114)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 114)) COMMA_SOURCE_FILE ("variable-manager.galgas", 114)).operator_or (GALGAS_localVariableAttributes::constructor_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 114)) COMMA_SOURCE_FILE ("variable-manager.galgas", 114)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 115)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 109)) ;
   }
 }
 
@@ -9179,64 +9179,7 @@ void extensionSetter_insertInputFormalArgument (GALGAS_localVarManager & ioObjec
                                                 C_Compiler * inCompiler
                                                 COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 126)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 126)) COMMA_SOURCE_FILE ("variable-manager.galgas", 126)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 127)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 121)) ;
-  }
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager insertOutputFormalArgument'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertOutputFormalArgument (GALGAS_localVarManager & ioObject,
-                                                 const GALGAS_lstring constinArgument_inVarName,
-                                                 const GALGAS_unifiedTypeMapEntry constinArgument_inType,
-                                                 const GALGAS_string constinArgument_inCppName,
-                                                 const GALGAS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectDeclaredStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 142)).operator_or (GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 142)) COMMA_SOURCE_FILE ("variable-manager.galgas", 142)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 142)) COMMA_SOURCE_FILE ("variable-manager.galgas", 142)), GALGAS_localVarValuation::constructor_declared (GALGAS_bool (false)  COMMA_SOURCE_FILE ("variable-manager.galgas", 143)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 137)) ;
-  }
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager insertInputOutputFormalArgumentDeclaredAsUnused'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertInputOutputFormalArgumentDeclaredAsUnused (GALGAS_localVarManager & ioObject,
-                                                                      const GALGAS_lstring constinArgument_inVarName,
-                                                                      const GALGAS_unifiedTypeMapEntry constinArgument_inType,
-                                                                      const GALGAS_string constinArgument_inCppName,
-                                                                      const GALGAS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 158)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 159)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 153)) ;
-  }
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension method '@localVarManager insertInputOutputFormalArgument'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertInputOutputFormalArgument (GALGAS_localVarManager & ioObject,
-                                                      const GALGAS_lstring constinArgument_inVarName,
-                                                      const GALGAS_unifiedTypeMapEntry constinArgument_inType,
-                                                      const GALGAS_string constinArgument_inCppName,
-                                                      const GALGAS_string constinArgument_inNameForCheckingFormalParameterUsing,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 174)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 174)) COMMA_SOURCE_FILE ("variable-manager.galgas", 174)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 175)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 169)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 130)).operator_or (GALGAS_localVariableAttributes::constructor_suggestDeclareUnusedParameterAsUnused (SOURCE_FILE ("variable-manager.galgas", 130)) COMMA_SOURCE_FILE ("variable-manager.galgas", 130)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 131)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 125)) ;
   }
 }
 
@@ -9255,7 +9198,7 @@ void extensionSetter_insertConstantInputFormalArgumentDeclaredAsUnused (GALGAS_l
                                                                         C_Compiler * inCompiler
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 190)).operator_or (GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 190)) COMMA_SOURCE_FILE ("variable-manager.galgas", 190)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 190)) COMMA_SOURCE_FILE ("variable-manager.galgas", 190)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 191)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 185)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 146)).operator_or (GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 146)) COMMA_SOURCE_FILE ("variable-manager.galgas", 146)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 146)) COMMA_SOURCE_FILE ("variable-manager.galgas", 146)).operator_or (GALGAS_localVariableAttributes::constructor_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 146)) COMMA_SOURCE_FILE ("variable-manager.galgas", 146)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 147)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 141)) ;
   }
 }
 
@@ -9274,7 +9217,64 @@ void extensionSetter_insertConstantInputFormalArgument (GALGAS_localVarManager &
                                                         C_Compiler * inCompiler
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 206)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 206)) COMMA_SOURCE_FILE ("variable-manager.galgas", 206)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 207)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 201)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 162)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 162)) COMMA_SOURCE_FILE ("variable-manager.galgas", 162)).operator_or (GALGAS_localVariableAttributes::constructor_suggestDeclareUnusedParameterAsUnused (SOURCE_FILE ("variable-manager.galgas", 162)) COMMA_SOURCE_FILE ("variable-manager.galgas", 162)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 163)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 157)) ;
+  }
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension method '@localVarManager insertOutputFormalArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertOutputFormalArgument (GALGAS_localVarManager & ioObject,
+                                                 const GALGAS_lstring constinArgument_inVarName,
+                                                 const GALGAS_unifiedTypeMapEntry constinArgument_inType,
+                                                 const GALGAS_string constinArgument_inCppName,
+                                                 const GALGAS_string constinArgument_inNameForCheckingFormalParameterUsing,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  {
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectDeclaredStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 180)).operator_or (GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 180)) COMMA_SOURCE_FILE ("variable-manager.galgas", 180)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 180)) COMMA_SOURCE_FILE ("variable-manager.galgas", 180)), GALGAS_localVarValuation::constructor_declared (GALGAS_bool (false)  COMMA_SOURCE_FILE ("variable-manager.galgas", 181)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 175)) ;
+  }
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension method '@localVarManager insertInputOutputFormalArgumentDeclaredAsUnused'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertInputOutputFormalArgumentDeclaredAsUnused (GALGAS_localVarManager & ioObject,
+                                                                      const GALGAS_lstring constinArgument_inVarName,
+                                                                      const GALGAS_unifiedTypeMapEntry constinArgument_inType,
+                                                                      const GALGAS_string constinArgument_inCppName,
+                                                                      const GALGAS_string constinArgument_inNameForCheckingFormalParameterUsing,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  {
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 198)).operator_or (GALGAS_localVariableAttributes::constructor_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 198)) COMMA_SOURCE_FILE ("variable-manager.galgas", 198)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 199)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 193)) ;
+  }
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension method '@localVarManager insertInputOutputFormalArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertInputOutputFormalArgument (GALGAS_localVarManager & ioObject,
+                                                      const GALGAS_lstring constinArgument_inVarName,
+                                                      const GALGAS_unifiedTypeMapEntry constinArgument_inType,
+                                                      const GALGAS_string constinArgument_inCppName,
+                                                      const GALGAS_string constinArgument_inNameForCheckingFormalParameterUsing,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  {
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 214)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 214)) COMMA_SOURCE_FILE ("variable-manager.galgas", 214)).operator_or (GALGAS_localVariableAttributes::constructor_suggestDeclareUnusedParameterAsUnused (SOURCE_FILE ("variable-manager.galgas", 214)) COMMA_SOURCE_FILE ("variable-manager.galgas", 214)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 215)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 209)) ;
   }
 }
 
@@ -9293,7 +9293,7 @@ void extensionSetter_insertNonMutableProperty (GALGAS_localVarManager & ioObject
                                                C_Compiler * inCompiler
                                                COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 222)).operator_or (GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 222)) COMMA_SOURCE_FILE ("variable-manager.galgas", 222)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 222)) COMMA_SOURCE_FILE ("variable-manager.galgas", 222)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 223)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 217)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 232)).operator_or (GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 232)) COMMA_SOURCE_FILE ("variable-manager.galgas", 232)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 232)) COMMA_SOURCE_FILE ("variable-manager.galgas", 232)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 233)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 227)) ;
   }
 }
 
@@ -9312,7 +9312,7 @@ void extensionSetter_insertMutableProperty (GALGAS_localVarManager & ioObject,
                                             C_Compiler * inCompiler
                                             COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 238)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 238)) COMMA_SOURCE_FILE ("variable-manager.galgas", 238)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 239)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 233)) ;
+  extensionSetter_insertKey (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 248)).operator_or (GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 248)) COMMA_SOURCE_FILE ("variable-manager.galgas", 248)), GALGAS_localVarValuation::constructor_initialized (SOURCE_FILE ("variable-manager.galgas", 249)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 243)) ;
   }
 }
 
@@ -9327,7 +9327,7 @@ void extensionSetter_openOverrideForSelectBlock (GALGAS_localVarManager & ioObje
                                                  C_Compiler * /* inCompiler */
                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_localVarManager temp_0 = ioObject ;
-  ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::constructor_selectOverrideFirstBranch (temp_0.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas", 248))  COMMA_SOURCE_FILE ("variable-manager.galgas", 248)) ;
+  ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::constructor_selectOverrideFirstBranch (temp_0.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas", 258))  COMMA_SOURCE_FILE ("variable-manager.galgas", 258)) ;
 }
 
 
@@ -9340,7 +9340,7 @@ void extensionSetter_openOverrideForSelectBlock (GALGAS_localVarManager & ioObje
 void extensionSetter_openOverrideForRepeatBlock (GALGAS_localVarManager & ioObject,
                                                  C_Compiler * /* inCompiler */
                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::constructor_repeatOverride (SOURCE_FILE ("variable-manager.galgas", 254))  COMMA_SOURCE_FILE ("variable-manager.galgas", 254)) ;
+  ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::constructor_repeatOverride (SOURCE_FILE ("variable-manager.galgas", 264))  COMMA_SOURCE_FILE ("variable-manager.galgas", 264)) ;
 }
 
 
@@ -9357,27 +9357,27 @@ void extensionSetter_closeOverride (GALGAS_localVarManager & ioObject,
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_localVarManager temp_1 = ioObject ;
-    test_0 = GALGAS_bool (kIsStrictSup, temp_1.readProperty_mOverridenManagers ().getter_length (SOURCE_FILE ("variable-manager.galgas", 260)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    test_0 = GALGAS_bool (kIsStrictSup, temp_1.readProperty_mOverridenManagers ().getter_length (SOURCE_FILE ("variable-manager.galgas", 270)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
     if (kBoolTrue == test_0) {
-      GALGAS_overrideKind var_savedManager_12088 ;
+      GALGAS_overrideKind var_savedManager_12945 ;
       {
-      ioObject.mProperty_mOverridenManagers.setter_popLast (var_savedManager_12088, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 261)) ;
+      ioObject.mProperty_mOverridenManagers.setter_popLast (var_savedManager_12945, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 271)) ;
       }
-      switch (var_savedManager_12088.enumValue ()) {
+      switch (var_savedManager_12945.enumValue ()) {
       case GALGAS_overrideKind::kNotBuilt:
         break ;
       case GALGAS_overrideKind::kEnum_selectOverrideFirstBranch:
         {
-          const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch * extractPtr_12191 = (const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch *) (var_savedManager_12088.unsafePointer ()) ;
-          const GALGAS_currentVarManager extractedValue_12188_savedManager = extractPtr_12191->mAssociatedValue0 ;
+          const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch * extractPtr_13048 = (const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch *) (var_savedManager_12945.unsafePointer ()) ;
+          const GALGAS_currentVarManager extractedValue_13045_savedManager = extractPtr_13048->mAssociatedValue0 ;
         }
         break ;
       case GALGAS_overrideKind::kEnum_selectOverrideNextBranches:
         {
-          const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches * extractPtr_12352 = (const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches *) (var_savedManager_12088.unsafePointer ()) ;
-          const GALGAS_currentVarManager extractedValue_12267_savedManager = extractPtr_12352->mAssociatedValue0 ;
-          const GALGAS_currentVarManager extractedValue_12303_referenceManager = extractPtr_12352->mAssociatedValue1 ;
-          ioObject.mProperty_mCurrentManager = extractedValue_12303_referenceManager ;
+          const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches * extractPtr_13209 = (const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches *) (var_savedManager_12945.unsafePointer ()) ;
+          const GALGAS_currentVarManager extractedValue_13124_savedManager = extractPtr_13209->mAssociatedValue0 ;
+          const GALGAS_currentVarManager extractedValue_13160_referenceManager = extractPtr_13209->mAssociatedValue1 ;
+          ioObject.mProperty_mCurrentManager = extractedValue_13160_referenceManager ;
         }
         break ;
       case GALGAS_overrideKind::kEnum_repeatOverride:
@@ -9400,7 +9400,7 @@ void extensionSetter_openBranch (GALGAS_localVarManager & ioObject,
                                  C_Compiler * inCompiler
                                  COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_openScope (ioObject.mProperty_mCurrentManager, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 274)) ;
+  extensionSetter_openScope (ioObject.mProperty_mCurrentManager, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 284)) ;
   }
 }
 
@@ -9416,46 +9416,46 @@ void extensionSetter_closeBranch (GALGAS_localVarManager & ioObject,
                                   C_Compiler * inCompiler
                                   COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_closeScope (ioObject.mProperty_mCurrentManager, constinArgument_inEndOfBranchLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 280)) ;
+  extensionSetter_closeScope (ioObject.mProperty_mCurrentManager, constinArgument_inEndOfBranchLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 290)) ;
   }
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_localVarManager temp_1 = ioObject ;
-    test_0 = GALGAS_bool (kIsStrictSup, temp_1.readProperty_mOverridenManagers ().getter_length (SOURCE_FILE ("variable-manager.galgas", 282)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    test_0 = GALGAS_bool (kIsStrictSup, temp_1.readProperty_mOverridenManagers ().getter_length (SOURCE_FILE ("variable-manager.galgas", 292)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
     if (kBoolTrue == test_0) {
-      GALGAS_overrideKind var_savedManager_12961 ;
+      GALGAS_overrideKind var_savedManager_13818 ;
       {
-      ioObject.mProperty_mOverridenManagers.setter_popLast (var_savedManager_12961, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 283)) ;
+      ioObject.mProperty_mOverridenManagers.setter_popLast (var_savedManager_13818, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 293)) ;
       }
-      switch (var_savedManager_12961.enumValue ()) {
+      switch (var_savedManager_13818.enumValue ()) {
       case GALGAS_overrideKind::kNotBuilt:
         break ;
       case GALGAS_overrideKind::kEnum_selectOverrideFirstBranch:
         {
-          const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch * extractPtr_13231 = (const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch *) (var_savedManager_12961.unsafePointer ()) ;
-          const GALGAS_currentVarManager extractedValue_13054_savedManager = extractPtr_13231->mAssociatedValue0 ;
+          const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch * extractPtr_14088 = (const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch *) (var_savedManager_13818.unsafePointer ()) ;
+          const GALGAS_currentVarManager extractedValue_13911_savedManager = extractPtr_14088->mAssociatedValue0 ;
           const GALGAS_localVarManager temp_2 = ioObject ;
-          ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::constructor_selectOverrideNextBranches (extractedValue_13054_savedManager, temp_2.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas", 286))  COMMA_SOURCE_FILE ("variable-manager.galgas", 286)) ;
-          ioObject.mProperty_mCurrentManager = extractedValue_13054_savedManager ;
+          ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::constructor_selectOverrideNextBranches (extractedValue_13911_savedManager, temp_2.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas", 296))  COMMA_SOURCE_FILE ("variable-manager.galgas", 296)) ;
+          ioObject.mProperty_mCurrentManager = extractedValue_13911_savedManager ;
         }
         break ;
       case GALGAS_overrideKind::kEnum_selectOverrideNextBranches:
         {
-          const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches * extractPtr_13684 = (const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches *) (var_savedManager_12961.unsafePointer ()) ;
-          const GALGAS_currentVarManager extractedValue_13300_savedManager = extractPtr_13684->mAssociatedValue0 ;
-          const GALGAS_currentVarManager extractedValue_13336_referenceManager = extractPtr_13684->mAssociatedValue1 ;
+          const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches * extractPtr_14541 = (const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches *) (var_savedManager_13818.unsafePointer ()) ;
+          const GALGAS_currentVarManager extractedValue_14157_savedManager = extractPtr_14541->mAssociatedValue0 ;
+          const GALGAS_currentVarManager extractedValue_14193_referenceManager = extractPtr_14541->mAssociatedValue1 ;
           const GALGAS_localVarManager temp_3 = ioObject ;
-          GALGAS_currentVarManager var_newReferenceManager_13369 = temp_3.readProperty_mCurrentManager () ;
+          GALGAS_currentVarManager var_newReferenceManager_14226 = temp_3.readProperty_mCurrentManager () ;
           {
-          extensionSetter_combineManagerWith (var_newReferenceManager_13369, extractedValue_13336_referenceManager, constinArgument_inEndOfBranchLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 290)) ;
+          extensionSetter_combineManagerWith (var_newReferenceManager_14226, extractedValue_14193_referenceManager, constinArgument_inEndOfBranchLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 300)) ;
           }
-          ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::constructor_selectOverrideNextBranches (extractedValue_13300_savedManager, var_newReferenceManager_13369  COMMA_SOURCE_FILE ("variable-manager.galgas", 291))  COMMA_SOURCE_FILE ("variable-manager.galgas", 291)) ;
-          ioObject.mProperty_mCurrentManager = extractedValue_13300_savedManager ;
+          ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::constructor_selectOverrideNextBranches (extractedValue_14157_savedManager, var_newReferenceManager_14226  COMMA_SOURCE_FILE ("variable-manager.galgas", 301))  COMMA_SOURCE_FILE ("variable-manager.galgas", 301)) ;
+          ioObject.mProperty_mCurrentManager = extractedValue_14157_savedManager ;
         }
         break ;
       case GALGAS_overrideKind::kEnum_repeatOverride:
         {
-          ioObject.mProperty_mOverridenManagers.addAssign_operation (var_savedManager_12961  COMMA_SOURCE_FILE ("variable-manager.galgas", 294)) ;
+          ioObject.mProperty_mOverridenManagers.addAssign_operation (var_savedManager_13818  COMMA_SOURCE_FILE ("variable-manager.galgas", 304)) ;
         }
         break ;
       }
@@ -9481,7 +9481,7 @@ void extensionSetter_neutralAccess (GALGAS_localVarManager & ioObject,
   outArgument_outCppName.drop () ; // Release 'out' argument
   outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release 'out' argument
   {
-  extensionSetter_neutralAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 375)) ;
+  extensionSetter_neutralAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 387)) ;
   }
 }
 
@@ -9497,7 +9497,7 @@ void extensionSetter_searchForDropAccess (GALGAS_localVarManager & ioObject,
                                           C_Compiler * inCompiler
                                           COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_searchForDropAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 419)) ;
+  extensionSetter_searchForDropAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 431)) ;
   }
 }
 
@@ -9519,7 +9519,7 @@ void extensionSetter_searchForWriteAccess (GALGAS_localVarManager & ioObject,
   outArgument_outCppName.drop () ; // Release 'out' argument
   outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release 'out' argument
   {
-  extensionSetter_searchForWriteAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 453)) ;
+  extensionSetter_searchForWriteAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 465)) ;
   }
 }
 
@@ -9541,7 +9541,7 @@ void extensionSetter_searchForReadAccess (GALGAS_localVarManager & ioObject,
   outArgument_outCppName.drop () ; // Release 'out' argument
   outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release 'out' argument
   {
-  extensionSetter_searchForReadAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 554)) ;
+  extensionSetter_searchForReadAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 572)) ;
   }
 }
 
@@ -9563,7 +9563,7 @@ void extensionSetter_searchForReadWriteAccess (GALGAS_localVarManager & ioObject
   outArgument_outCppName.drop () ; // Release 'out' argument
   outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release 'out' argument
   {
-  extensionSetter_searchForReadWriteAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 641)) ;
+  extensionSetter_searchForReadWriteAccess (ioObject.mProperty_mCurrentManager, constinArgument_inVarName, outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 670)) ;
   }
 }
 
@@ -9579,7 +9579,7 @@ void extensionMethod_checkAutomatonStates (const GALGAS_localVarManager inObject
                                            C_Compiler * inCompiler
                                            COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_localVarManager temp_0 = inObject ;
-  extensionMethod_checkAutomatonStates (temp_0.readProperty_mCurrentManager (), constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 792)) ;
+  extensionMethod_checkAutomatonStates (temp_0.readProperty_mCurrentManager (), constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 823)) ;
 }
 
 

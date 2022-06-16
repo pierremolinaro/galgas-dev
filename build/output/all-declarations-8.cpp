@@ -9,6 +9,96 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Extension Getter '@unifiedTypeMap searchKey'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_unifiedTypeMapEntry extensionGetter_searchKey (const GALGAS_unifiedTypeMap & inObject,
+                                                      const GALGAS_lstring & constinArgument_inLKey,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_unifiedTypeMapEntry result_result ; // Returned variable
+  enumGalgasBool test_0 = kBoolTrue ;
+  if (kBoolTrue == test_0) {
+    test_0 = GALGAS_bool (kIsEqual, constinArgument_inLKey.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+    if (kBoolTrue == test_0) {
+      result_result = GALGAS_unifiedTypeMapEntry::constructor_null (SOURCE_FILE ("unified-type-map.galgas", 59)) ;
+    }
+  }
+  if (kBoolFalse == test_0) {
+    enumGalgasBool test_1 = kBoolTrue ;
+    if (kBoolTrue == test_1) {
+      const GALGAS_unifiedTypeMap temp_2 = inObject ;
+      GALGAS_unifiedTypeMapElementClass var_element_2783 ;
+      const bool optionalResult2734 = temp_2.optional_searchKey (constinArgument_inLKey.readProperty_string (), var_element_2783) ;
+      if (!optionalResult2734) {
+        test_1 = kBoolFalse ;
+      }
+      if (kBoolTrue == test_1) {
+        result_result = GALGAS_unifiedTypeMapEntry::constructor_element (var_element_2783  COMMA_SOURCE_FILE ("unified-type-map.galgas", 61)) ;
+      }
+    }
+    if (kBoolFalse == test_1) {
+      TC_Array <C_FixItDescription> fixItArray3 ;
+      inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GALGAS_string ("there is not '@").add_operation (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 63)).add_operation (GALGAS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 63)), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 63)) ;
+      result_result.drop () ; // Release error dropped variable
+    }
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension method '@unifiedTypeMap insertType'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertType (GALGAS_unifiedTypeMap & ioObject,
+                                 const GALGAS_unifiedTypeDefinition constinArgument_inTypeDefinition,
+                                 C_Compiler * inCompiler
+                                 COMMA_UNUSED_LOCATION_ARGS) {
+  enumGalgasBool test_0 = kBoolTrue ;
+  if (kBoolTrue == test_0) {
+    const GALGAS_unifiedTypeMap temp_1 = ioObject ;
+    GALGAS_unifiedTypeMapElementClass var_element_3214 ;
+    const bool optionalResult3145 = temp_1.optional_searchKey (constinArgument_inTypeDefinition.readProperty_mTypeName ().readProperty_string (), var_element_3214) ;
+    if (!optionalResult3145) {
+      test_0 = kBoolFalse ;
+    }
+    if (kBoolTrue == test_0) {
+      switch (var_element_3214.readProperty_mDefinition ().enumValue ()) {
+      case GALGAS_typeDefinition::kNotBuilt:
+        break ;
+      case GALGAS_typeDefinition::kEnum_solved:
+        {
+          TC_Array <C_FixItDescription> fixItArray2 ;
+          inCompiler->emitSemanticError (constinArgument_inTypeDefinition.readProperty_mTypeName ().readProperty_location (), GALGAS_string ("type already defined"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas", 73)) ;
+        }
+        break ;
+      case GALGAS_typeDefinition::kEnum_unsolved:
+        {
+          GALGAS_unifiedTypeMapElementClass var_e_3369 = var_element_3214 ;
+          var_e_3369.setter_setMDefinition (GALGAS_typeDefinition::constructor_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas", 76)) COMMA_SOURCE_FILE ("unified-type-map.galgas", 76)) ;
+        }
+        break ;
+      }
+    }
+  }
+  if (kBoolFalse == test_0) {
+    GALGAS_unifiedTypeMapElementClass var_newElement_3475 = GALGAS_unifiedTypeMapElementClass::constructor_new (GALGAS_typeDefinition::constructor_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas", 79))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 79)) ;
+    {
+    ioObject.setter_internalInsertKey (constinArgument_inTypeDefinition.readProperty_mTypeName (), var_newElement_3475, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 80)) ;
+    }
+  }
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Extension method '@unifiedTypeMap searchType'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -16049,117 +16139,6 @@ GALGAS_notExpressionAST GALGAS_notExpressionAST::extractObject (const GALGAS_obj
       result = *p ;
     }else{
       inCompiler->castError ("notExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_notExpressionAST_2D_weak::objectCompare (const GALGAS_notExpressionAST_2D_weak & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = kOperandEqual ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_notExpressionAST_2D_weak::GALGAS_notExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_notExpressionAST_2D_weak & GALGAS_notExpressionAST_2D_weak::operator = (const GALGAS_notExpressionAST & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = NULL ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != NULL) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_notExpressionAST_2D_weak::GALGAS_notExpressionAST_2D_weak (const GALGAS_notExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_notExpressionAST_2D_weak GALGAS_notExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
-  GALGAS_notExpressionAST_2D_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_notExpressionAST GALGAS_notExpressionAST_2D_weak::bang_notExpressionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GALGAS_notExpressionAST result ;
-  if (mProxyPtr != NULL) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == NULL) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_notExpressionAST) ;
-      result = GALGAS_notExpressionAST ((cPtr_notExpressionAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@notExpressionAST-weak type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_notExpressionAST_2D_weak ("notExpressionAST-weak",
-                                                 & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_notExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_notExpressionAST_2D_weak ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_notExpressionAST_2D_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_notExpressionAST_2D_weak (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_notExpressionAST_2D_weak GALGAS_notExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_notExpressionAST_2D_weak result ;
-  const GALGAS_notExpressionAST_2D_weak * p = (const GALGAS_notExpressionAST_2D_weak *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_notExpressionAST_2D_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("notExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

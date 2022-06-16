@@ -338,7 +338,6 @@ for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRe
 %    %!mBuildConfigurationRef% /* Default */ = {\n%
 %      isa = XCBuildConfiguration;\n%
 %      buildSettings = {\n%
-%        ARCHS = "$(NATIVE_ARCH_ACTUAL)";\n%
 %        ONLY_ACTIVE_ARCH = YES;\n%
 for (mValue) in mBuildConfigurationSettingList do
 %      %!mValue% ;\n%

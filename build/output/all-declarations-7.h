@@ -6450,6 +6450,10 @@ class GALGAS_localVariableAttributes : public AC_GALGAS_root {
 
   public: static class GALGAS_localVariableAttributes constructor_rejectWriteInInitializedAndReadStates (LOCATION_ARGS) ;
 
+  public: static class GALGAS_localVariableAttributes constructor_suggestDeclareUnusedParameterAsUnused (LOCATION_ARGS) ;
+
+  public: static class GALGAS_localVariableAttributes constructor_warnsOnAnyAcces (LOCATION_ARGS) ;
+
 //--------------------------------- & operator
   public: VIRTUAL_IN_DEBUG GALGAS_localVariableAttributes operator_and (const GALGAS_localVariableAttributes & inOperand
                                                                         COMMA_LOCATION_ARGS) const ;
@@ -6493,6 +6497,10 @@ class GALGAS_localVariableAttributes : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_rejectDeclaredStateAsFinalState (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_rejectWriteInInitializedAndReadStates (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_suggestDeclareUnusedParameterAsUnused (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_warnsOnAnyAcces (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods
@@ -7202,6 +7210,7 @@ void extensionSetter_readAccess (class GALGAS_localVarMapListForLLVM & ioObject,
 
 void extensionSetter_readTransition (class GALGAS_localVarValuation & ioObject,
                                      const class GALGAS_lstring constin_inVarName,
+                                     const class GALGAS_localVariableAttributes constin_inAttributes,
                                      class C_Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
@@ -7428,26 +7437,4 @@ void extensionSetter_makeEntryFromString (class GALGAS_unifiedTypeMap & ioObject
                                           class GALGAS_unifiedTypeMapEntry & out_outEntry,
                                           class C_Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension getter '@unifiedTypeMap searchKey' (as function)
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_unifiedTypeMapEntry extensionGetter_searchKey (const class GALGAS_unifiedTypeMap & inObject,
-                                                            const class GALGAS_lstring & constinArgument0,
-                                                            class C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension setter '@unifiedTypeMap insertType'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertType (class GALGAS_unifiedTypeMap & ioObject,
-                                 const class GALGAS_unifiedTypeDefinition constin_inTypeDefinition,
-                                 class C_Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
 

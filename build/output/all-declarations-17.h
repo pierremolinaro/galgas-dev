@@ -1876,6 +1876,34 @@ void extensionSetter_insertInputFormalArgument (class GALGAS_localVarManager & i
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Extension setter '@localVarManager insertConstantInputFormalArgumentDeclaredAsUnused'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertConstantInputFormalArgumentDeclaredAsUnused (class GALGAS_localVarManager & ioObject,
+                                                                        const class GALGAS_lstring constin_inVarName,
+                                                                        const class GALGAS_unifiedTypeMapEntry constin_inType,
+                                                                        const class GALGAS_string constin_inCppName,
+                                                                        const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
+                                                                        class C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension setter '@localVarManager insertConstantInputFormalArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertConstantInputFormalArgument (class GALGAS_localVarManager & ioObject,
+                                                        const class GALGAS_lstring constin_inVarName,
+                                                        const class GALGAS_unifiedTypeMapEntry constin_inType,
+                                                        const class GALGAS_string constin_inCppName,
+                                                        const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
+                                                        class C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Extension setter '@localVarManager insertOutputFormalArgument'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -1915,34 +1943,6 @@ void extensionSetter_insertInputOutputFormalArgument (class GALGAS_localVarManag
                                                       const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
                                                       class C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension setter '@localVarManager insertConstantInputFormalArgumentDeclaredAsUnused'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertConstantInputFormalArgumentDeclaredAsUnused (class GALGAS_localVarManager & ioObject,
-                                                                        const class GALGAS_lstring constin_inVarName,
-                                                                        const class GALGAS_unifiedTypeMapEntry constin_inType,
-                                                                        const class GALGAS_string constin_inCppName,
-                                                                        const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
-                                                                        class C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension setter '@localVarManager insertConstantInputFormalArgument'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertConstantInputFormalArgument (class GALGAS_localVarManager & ioObject,
-                                                        const class GALGAS_lstring constin_inVarName,
-                                                        const class GALGAS_unifiedTypeMapEntry constin_inType,
-                                                        const class GALGAS_string constin_inCppName,
-                                                        const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
-                                                        class C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //

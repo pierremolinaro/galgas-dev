@@ -127,12 +127,10 @@ map @propertyIndexMap {
 #         M A P                             
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc buildLocalVariableMapAndSignature
-  ?let @semanticContext inSemanticContext
-  ?let @formalParameterListAST inRoutineSignatureAST
-  ?!@localVarManager ioVariableMap
-  !@formalParameterListForGeneration outRoutineSignature
-{
+proc buildLocalVariableMapAndSignature ?let @semanticContext inSemanticContext
+                                       ?let @formalParameterListAST inRoutineSignatureAST
+                                       ?!@localVarManager ioVariableMap
+                                       !@formalParameterListForGeneration outRoutineSignature {
   outRoutineSignature = @formalParameterListForGeneration {}
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in inRoutineSignatureAST do
     let type = [inSemanticContext.mTypeMap searchKey !mFormalArgumentTypeName]
@@ -151,16 +149,36 @@ proc buildLocalVariableMapAndSignature
     case argumentInOut :
       formalArgumentCppName = "ioArgument_" + [mFormalArgumentName.string identifierRepresentation]
       if mIsUnused then
-        [!?ioVariableMap insertInputOutputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName]
+        [!?ioVariableMap insertInputOutputFormalArgumentDeclaredAsUnused
+          !mFormalArgumentName
+          !type
+          !formalArgumentCppName
+          !formalArgumentCppName
+        ]
       else
-        [!?ioVariableMap insertInputOutputFormalArgument !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName]
+        [!?ioVariableMap insertInputOutputFormalArgument
+          !mFormalArgumentName
+          !type
+          !formalArgumentCppName
+          !formalArgumentCppName
+        ]
       end
     case argumentConstantIn :
       formalArgumentCppName = "constinArgument_" + [mFormalArgumentName.string identifierRepresentation]
       if mIsUnused then
-        [!?ioVariableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName]
+        [!?ioVariableMap insertConstantInputFormalArgumentDeclaredAsUnused
+          !mFormalArgumentName
+          !type
+          !formalArgumentCppName
+          !formalArgumentCppName
+        ]
       else
-        [!?ioVariableMap insertConstantInputFormalArgument !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName]
+        [!?ioVariableMap insertConstantInputFormalArgument
+          !mFormalArgumentName
+          !type
+          !formalArgumentCppName
+          !formalArgumentCppName
+        ]
       end
     end
     outRoutineSignature += !mFormalSelector !mFormalArgumentPassingMode !type !mFormalArgumentName !formalArgumentCppName
@@ -169,20 +187,18 @@ proc buildLocalVariableMapAndSignature
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc analyzeRoutineBody
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-  ?let @formalParameterListAST inRoutineSignatureAST
-  ?nonMutablePropertyList: let @typedPropertyList inNonMutableTypedAttributeList
-  ?mutablePropertyList: let @typedPropertyList inMutableTypedAttributeList
-  ?let @semanticInstructionListAST inInstructionList
-  ?let @location inEndOfMethodLocation
-  !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
-  !@formalParameterListForGeneration outRoutineSignature {
+proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                        ?let @analysisContext inAnalysisContext
+                        ?let @formalParameterListAST inRoutineSignatureAST
+                        ?nonMutablePropertyList: let @typedPropertyList inNonMutableTypedAttributeList
+                        ?mutablePropertyList: let @typedPropertyList inMutableTypedAttributeList
+                        ?let @semanticInstructionListAST inInstructionList
+                        ?let @location inEndOfMethodLocation
+                        !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
+                        !@formalParameterListForGeneration outRoutineSignature {
   var variableMap = @localVarManager.default
 #--- Enter non mutable instance attributes
-#  if not [option galgas_cli_options.propertyAccessRequiresSelf value] then
   if not inAnalysisContext.requiresSelfForAccessingProperty then
     for (mPropertyTypeEntry mPropertyName * *) in inNonMutableTypedAttributeList do
       [!?variableMap insertNonMutableProperty
@@ -194,7 +210,6 @@ proc analyzeRoutineBody
     end
   end
 #--- Enter mutable instance attributes
-#  if not [option galgas_cli_options.propertyAccessRequiresSelf value] then
   if not inAnalysisContext.requiresSelfForAccessingProperty then
     for (mPropertyTypeEntry mPropertyName * *) in inMutableTypedAttributeList do
       [!?variableMap insertMutableProperty
