@@ -5,7 +5,7 @@
 \chapterLabel{Le type \texttt{graph}}{typeGraph}
 %-------------------------------------------------------------
 
-\tableDesMatieresLocaleDeProfondeurRelative{1}
+\tableDesMatieresLocaleDeProfondeurRelative{2}
 
 
 Le type \ggs+graph+ permet de faire des opérations sur les graphes orientés.
@@ -229,6 +229,16 @@ getter locationForKey ?@string inNodeName -> @location
 \end{galgas}
 
 Ce getter retourne la localisation de la définition du nœud \texttt{inNodeName} ; si il n'est pas défini, une erreur d'exécution est déclenchée et une valeur \emph{poison} est retournée.
+
+
+\subsection{Getter \texttt{nodeList}}
+
+\begin{galgas}
+getter nodeList -> @nom_liste_information
+\end{galgas}
+
+Ce \emph{getter} retourne la liste des nœuds du graphe. L'ordre est imprévisible.
+
 
 
 

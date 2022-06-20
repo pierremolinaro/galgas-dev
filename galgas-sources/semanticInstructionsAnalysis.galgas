@@ -39,7 +39,6 @@ list @localConstantList {
 
 list @localInitializedVariableList {
   public var @unifiedTypeMapEntry mType
-#  public var @bool mIsUnused
   public var @lstring mName
   public var @string mCppName
 }
@@ -187,26 +186,32 @@ override method @outputActualParameterAST checkAgainstFormalArgument
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputActualParameterAST checkAgainstFormalArgument
-  ?let @lstring unused inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?let @analysisContext unused inAnalysisContext
-  ?let @lstring inFormalSelector
-  ?let @unifiedTypeMapEntry inFormalArgumentType
-  ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-  ?!@localVarManager ioVariableMap
-  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
-  ?!@stringset ioExclusiveVariableSet
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
-  if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentInOut then
+                            ?let @lstring unused inUsefulnessCallerEntityName
+                            ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+                            ?let @analysisContext unused inAnalysisContext
+                            ?let @lstring inFormalSelector
+                            ?let @unifiedTypeMapEntry inFormalArgumentType
+                            ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
+                            ?!@localVarManager ioVariableMap
+                            ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+                            ?!@stringset ioExclusiveVariableSet
+                            ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
+  if inFormalArgumentPassingMode != .argumentInOut then
     error self.mActualSelector
     :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
-    + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+    + "' passing mode: this parameter should be passed with '"
+    + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
   elsif inFormalSelector.string != self.mActualSelector.string then
     let @string s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
     error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
   end
 #--- Analyze input/output variable
-  [!?ioVariableMap searchForReadWriteAccess !self.mOutputInputActualParameterName ?var @unifiedTypeMapEntry parameterType ?let variableCppName ?*]
+  [!?ioVariableMap searchForReadWriteAccess
+    !self.mOutputInputActualParameterName
+    ?var @unifiedTypeMapEntry parameterType
+    ?let variableCppName
+    ?*
+  ]
   var typeList = @unifiedTypeMapEntryList.listWithValue {!parameterType}
   for (mValue) in self.mStructAttributeList do
     let propertyMap = [parameterType definition].mPropertyMap
@@ -228,7 +233,8 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
   if inFormalArgumentType != parameterType then
     error self.mOutputInputActualParameterName
     :"the parameter object has the '@" + [parameterType definition].mTypeName.string
-    + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType definition].mTypeName.string + "'"
+    + "', it should be the same as the corresponding formal argument: '@"
+    + [inFormalArgumentType definition].mTypeName.string + "'"
   end
 #--- Check for exclusive access
   if [ioExclusiveVariableSet hasKey !self.mOutputInputActualParameterName.string] then
@@ -241,7 +247,8 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
     !parameterType
     !variableCppName
     !self.mStructAttributeList
-    !typeList}
+    !typeList
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -281,22 +288,74 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
     !inFormalArgumentType
     !cppVarName
     !{}
-    !@unifiedTypeMapEntryList. listWithValue {!inFormalArgumentType}}
+    !@unifiedTypeMapEntryList.listWithValue {!inFormalArgumentType}
+  }
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @outputInputSelfParameterAST checkAgainstFormalArgument
+                          ?let @lstring unused inUsefulnessCallerEntityName
+                          ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+                          ?let @analysisContext inAnalysisContext
+                          ?let @lstring inFormalSelector
+                          ?let @unifiedTypeMapEntry inFormalArgumentType
+                          ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
+                          ?!@localVarManager unused ioVariableMap
+                          ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+                          ?!@stringset unused ioExclusiveVariableSet
+                          ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
+  if inFormalArgumentPassingMode != .argumentInOut then
+    error self.mActualSelector
+    :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+    + "' passing mode: this parameter should be passed with '"
+    + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+  elsif inFormalSelector.string != self.mActualSelector.string then
+    let @string s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
+    error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+  end
+#  let defaultConstructorName = [inFormalArgumentType definition].mDefaultConstructorName
+#  if defaultConstructorName == "" then
+#    error self.mActualSelector
+#    : "the formal parameter type @" + [inFormalArgumentType definition].mTypeName.string
+#    + " should support the default constructor"
+#  end
+#--- Analyze self
+  if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties:*] then
+    if not selfIsMutable then
+      error self.mActualSelector : "'self' not mutable in this context"
+    end
+  #--- Check type
+    if inFormalArgumentType != selfType then
+      error self.mActualSelector
+      :"the parameter object has the '@" + [selfType definition].mTypeName.string
+      + "', it should be the same as the corresponding formal argument: '@"
+      + [inFormalArgumentType definition].mTypeName.string + "'"
+  end
+    ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration.new {
+      !inFormalArgumentType
+      !"ioObject"
+      !{}
+      !@unifiedTypeMapEntryList.listWithValue {!inFormalArgumentType}
+    }
+  else
+    error self.mActualSelector : "'self' not available in this context"
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputJokerParameterAST checkAgainstFormalArgument
-  ?let @lstring unused inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?let @analysisContext unused inAnalysisContext
-  ?let @lstring unused inFormalSelector
-  ?let @unifiedTypeMapEntry inFormalArgumentType
-  ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-  ?!@localVarManager unused ioVariableMap
-  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
-  ?!@stringset unused ioExclusiveVariableSet
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
+                                            ?let @lstring unused inUsefulnessCallerEntityName
+                                            ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+                                            ?let @analysisContext unused inAnalysisContext
+                                            ?let @lstring unused inFormalSelector
+                                            ?let @unifiedTypeMapEntry inFormalArgumentType
+                                            ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
+                                            ?!@localVarManager unused ioVariableMap
+                                            ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+                                            ?!@stringset unused ioExclusiveVariableSet
+                                            ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
   if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentInOut then
     error self.mQualifierLocation
     :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
@@ -656,18 +715,21 @@ override method @outputInputSingleJokerParameterAST enterParameterInSemanticCont
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc analyzeRoutineArguments
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-  ?let @lstring inRoutineName
-  ?invokedEntityNameForErrorSignaling: let @string inInvokedEntityName
-  ?let @formalParameterSignature inRoutineSignature
-  ?let @actualParameterListAST inActualParameterList
-  ?!@localVarManager ioVariableMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  !@actualParameterListForGeneration outActualParameterListForGeneration
-{
+override method @outputInputSelfParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+proc analyzeRoutineArguments  ?let @lstring inUsefulnessCallerEntityName
+                              ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                              ?let @analysisContext inAnalysisContext
+                              ?let @lstring inRoutineName
+                              ?invokedEntityNameForErrorSignaling: let @string inInvokedEntityName
+                              ?let @formalParameterSignature inRoutineSignature
+                              ?let @actualParameterListAST inActualParameterList
+                              ?!@localVarManager ioVariableMap
+                              ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                              !@actualParameterListForGeneration outActualParameterListForGeneration {
   if [inRoutineSignature length] != [inActualParameterList length] then
     error inRoutineName
     :"the " + inInvokedEntityName + " defines " + [[inRoutineSignature length] string] 

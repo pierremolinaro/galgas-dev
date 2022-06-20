@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2008, ..., 2016 Pierre Molinaro.
+//  Copyright (C) 2008, ..., 2022 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -38,16 +38,18 @@ class cGraphNode {
 
 //--- Constructors
   public: cGraphNode (const C_String & inKey,
-                       const uint32_t inNodeID) ;
+                      const uint32_t inNodeID) ;
 
   public: cGraphNode (cGraphNode * inNode) ;
+
+  public: void accumulateNodes (capCollectionElementArray & outNodeList) const ;
 
 //--- Destructor
   public: virtual ~ cGraphNode (void) ;
 
 //--- No copy
-  private: cGraphNode (const cGraphNode &) ;
-  private: cGraphNode & operator = (const cGraphNode &) ;
+  private: cGraphNode (const cGraphNode &) = delete ;
+  private: cGraphNode & operator = (const cGraphNode &) = delete ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -141,6 +143,8 @@ class cSharedGraph : public C_SharedObject {
                           const GALGAS_stringset & inNodesToExclude,
                           C_Compiler * inCompiler
                           COMMA_LOCATION_ARGS) const ;
+
+  public: void graph (capCollectionElementArray & outNodeList) const ;
 
   public: GALGAS_stringlist keyList (void) const ;
 
@@ -492,6 +496,42 @@ static const cGraphNode * findNode (const C_String & inKey,
     }else{
       result = inNode ;
     }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark graph
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cGraphNode::accumulateNodes (capCollectionElementArray & outNodeList) const {
+  outNodeList.appendObject (mAttributes) ;
+  if (mInfPtr != nullptr) {
+    mInfPtr->accumulateNodes (outNodeList) ;
+  }
+  if (mSupPtr != nullptr) {
+    mSupPtr->accumulateNodes (outNodeList) ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cSharedGraph::graph (capCollectionElementArray & outNodeList) const {
+  if (mRoot != nullptr) {
+    mRoot->accumulateNodes (outNodeList) ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+capCollectionElementArray AC_GALGAS_graph::graph (void) const {
+  capCollectionElementArray result ;
+  if (isValid ()) {
+    mSharedGraph->graph (result) ;
   }
   return result ;
 }

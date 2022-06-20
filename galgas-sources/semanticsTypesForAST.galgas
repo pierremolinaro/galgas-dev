@@ -119,6 +119,12 @@ refclass @outputInputSingleJokerParameterAST : @actualParameterAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+refclass @outputInputSelfParameterAST : @actualParameterAST {
+  public var @lstring mActualSelector
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 refclass @outputInputJokerParameterAST : @actualParameterAST {
   public var @location mQualifierLocation
   public var @uint mJokerIndex

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment version="101300" identifier="macosx"/>
+        <deployment version="101000" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -513,7 +513,7 @@
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <clipView key="contentView" id="YXG-Ic-pAi">
                                                                     <rect key="frame" x="1" y="1" width="478" height="390"/>
-                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <customView id="865">
                                                                             <rect key="frame" x="0.0" y="0.0" width="478" height="390"/>
@@ -531,7 +531,7 @@
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </scroller>
                                                             </scrollView>
-                                                            <button fixedFrame="YES" id="1229" customClass="PMFontButton">
+                                                            <button id="1229" customClass="PMFontButton">
                                                                 <rect key="frame" x="17" y="11" width="200" height="22"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 <buttonCell key="cell" type="square" title="Set Font…" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1230">
@@ -601,7 +601,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <clipView key="contentView" id="5gk-E9-kkp">
                                                         <rect key="frame" x="1" y="1" width="518" height="343"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <customView id="742">
                                                                 <rect key="frame" x="0.0" y="0.0" width="518" height="343"/>
@@ -624,7 +624,7 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <clipView key="contentView" id="PSe-Tl-FO0">
                                                         <rect key="frame" x="1" y="1" width="503" height="82"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" id="746">
                                                                 <rect key="frame" x="0.0" y="0.0" width="503" height="84"/>
@@ -1387,7 +1387,7 @@
                                                         <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
-                                                    <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="1225">
+                                                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="1225">
                                                         <rect key="frame" x="504" y="1" width="15" height="82"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
@@ -1398,7 +1398,7 @@
                                                 <real value="250"/>
                                             </holdingPriorities>
                                         </splitView>
-                                        <button fixedFrame="YES" id="1535">
+                                        <button id="1535">
                                             <rect key="frame" x="371" y="469" width="168" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Prefix with 'time' Utility" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="1536">
@@ -1459,7 +1459,7 @@
                             </textFieldCell>
                         </textField>
                         <popUpButton verticalHuggingPriority="750" id="1095">
-                            <rect key="frame" x="71" y="1" width="243" height="26"/>
+                            <rect key="frame" x="70" y="1" width="243" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1098" id="1217">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>

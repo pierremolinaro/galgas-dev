@@ -13087,6 +13087,16 @@ GALGAS_semanticTypePrecedenceGraph GALGAS_semanticTypePrecedenceGraph::getter_su
 
 //----------------------------------------------------------------------------------------------------------------------
 
+GALGAS_semanticDeclarationListAST GALGAS_semanticTypePrecedenceGraph::getter_nodeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticDeclarationListAST resultingList ;
+  if (isValid ()) {
+    resultingList = graph () ;
+  }
+  return resultingList ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 GALGAS_lstringlist GALGAS_semanticTypePrecedenceGraph::getter_accessibleNodesFrom (const GALGAS_lstringlist & inStartKeyList,
                                                                                    const GALGAS_stringset & inNodesToExclude,
                                                                                    C_Compiler * inCompiler

@@ -99,35 +99,6 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
   else
     error self.mInstructionLocation : "'self' not available in this context"
   end
-
-##--- Analyze source expression
-#  [self.mSourceExpression analyzeSemanticExpression
-#    !inUsefulnessCallerEntityName
-#    !?ioUsefulEntitiesGraph
-#    !inferenceType: inAnalysisContext.mutableSelfType
-#    !inAnalysisContext
-#    !?ioVariableMap
-#    ?@semanticExpressionForGeneration expression
-#  ]
-##--- Analyze "self", as receiver expression
-#  if [inAnalysisContext.nonMutableSelfType isNull] then
-#    error self.mInstructionLocation: "'self' cannot be used in this context"
-#  elsif [inAnalysisContext.mutableSelfType isNull] then
-#    error self.mInstructionLocation: "'self' object is not mutable"
-#  elsif [[inAnalysisContext.mutableSelfType mTypeKindEnum] isClassType] then
-#    error self.mInstructionLocation: "'self' assignment is not allowed for class instances"
-#  end
-##--- Check assignment type compatibility
-#  checkAssignmentTypeWithImplicitGetterCall (!inAnalysisContext.mutableSelfType !expression.mResultType !self.mInstructionLocation !?expression)
-##--- Generate instruction
-#  ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
-#    !inAnalysisContext.mutableSelfType
-#    !inAnalysisContext.mSelfObjectCppName
-#    !inAnalysisContext.mSelfObjectCppName
-#    !["" nowhere]
-#    !expression
-#    !self.mInstructionLocation
-#  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

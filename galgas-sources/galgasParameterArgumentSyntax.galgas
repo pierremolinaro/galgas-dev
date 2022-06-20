@@ -69,6 +69,15 @@ syntax galgas3ParameterArgumentSyntax (galgas3Scanner) {
     outActualParameterList = {}
     repeat
     while
+      $!$ ?let selector
+      <expression> ?let @semanticExpressionAST e
+      let @location endOfExpressionLocation = @location.here
+      outActualParameterList += !@outputActualParameterAST.new {
+        !selector
+        !e
+        !endOfExpressionLocation
+      }
+    while
       $?$ ?let selector
       select
         $*$
@@ -91,14 +100,9 @@ syntax galgas3ParameterArgumentSyntax (galgas3Scanner) {
         end
       end
     while
-      $!$ ?let selector
-      <expression> ?let @semanticExpressionAST e
-      let @location endOfExpressionLocation = @location.here
-      outActualParameterList += !@outputActualParameterAST.new {
-        !selector
-        !e
-        !endOfExpressionLocation
-      }
+      $!?$ ?let selector
+      $self$
+      outActualParameterList += !@outputInputSelfParameterAST.new {!selector}
     while
       $!?$ ?let selector
       $identifier$ ?let outputInputActualParameterName
@@ -329,15 +333,6 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
         end
       end
     while
-      $!$ ?let selector
-      <expression> ?let @semanticExpressionAST e
-      let @location endOfExpressionLocation = @location.here
-      outActualParameterList += !@outputActualParameterAST.new {
-        !selector
-        !e
-        !endOfExpressionLocation
-      }
-    while
       $!?$ ?let selector
       $identifier$ ?let outputInputActualParameterName
       var structAttributeList = @lstringlist {}
@@ -358,6 +353,10 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
       outActualParameterList += !@outputInputSingleJokerParameterAST.new {!selector}
     while
       $!?$ ?let selector
+      $self$
+      outActualParameterList += !@outputInputSelfParameterAST.new {!selector}
+    while
+      $!?$ ?let selector
       $uint32$ ?let @luint count
       $*$
       var n = count.uint
@@ -373,6 +372,15 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
           n -= 1
         end
       end
+    while
+      $!$ ?let selector
+      <expression> ?let @semanticExpressionAST e
+      let @location endOfExpressionLocation = @location.here
+      outActualParameterList += !@outputActualParameterAST.new {
+        !selector
+        !e
+        !endOfExpressionLocation
+      }
     while # input parameter, existing variable
       $?$ ?let selector
       $identifier$ ?let inputActualParameterName

@@ -231,6 +231,14 @@ override method @graphDeclarationAST enterInSemanticContext
     !"" # No error message
   ]
 #  drop formalParameterList
+#--- Getter 'nodeList'
+  enterBaseFinalGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName: "nodeList"
+    !returnedTypeName: self.mAssociatedListTypeName
+    !hasCompilerArgument: false # No compiler argument
+  )
 #--- Getter 'reversedGraph'
   enterBaseFinalGetterWithoutArgument (
     !?getterMap

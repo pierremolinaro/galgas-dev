@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2010, ..., 2015 Pierre Molinaro.
+//  Copyright (C) 2008, ..., 2022 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -105,6 +105,9 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
                                               const GALGAS_stringset & inNodesToExclude,
                                               C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
+
+
+  protected: VIRTUAL_IN_DEBUG capCollectionElementArray graph (void) const ;
 
   private: VIRTUAL_IN_DEBUG void insulateGraph (LOCATION_ARGS) ;
 

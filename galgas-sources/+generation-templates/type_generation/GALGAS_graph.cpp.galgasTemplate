@@ -120,6 +120,16 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subgraphFromNodes (%
 
 //----------------------------------------------------------------------------------------------------------------------
 
+GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_nodeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% resultingList ;
+  if (isValid ()) {
+    resultingList = graph () ;
+  }
+  return resultingList ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 GALGAS_lstringlist GALGAS_%!TYPE_IDENTIFIER%::getter_accessibleNodesFrom (%?^%const GALGAS_lstringlist & inStartKeyList,
                                         %!^%const GALGAS_stringset & inNodesToExclude,
                                         %!^%C_Compiler * inCompiler

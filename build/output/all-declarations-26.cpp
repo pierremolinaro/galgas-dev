@@ -4750,6 +4750,22 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplem
     "\n"
     "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
+    "GALGAS_" ;
+  result << extensionGetter_identifierRepresentation (in_ASSOCIATED_5F_LIST_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 123)).stringValue () ;
+  result << " GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::getter_nodeList (UNUSED_LOCATION_ARGS) const {\n"
+    "  GALGAS_" ;
+  result << extensionGetter_identifierRepresentation (in_ASSOCIATED_5F_LIST_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 124)).stringValue () ;
+  result << " resultingList ;\n"
+    "  if (isValid ()) {\n"
+    "    resultingList = graph () ;\n"
+    "  }\n"
+    "  return resultingList ;\n"
+    "}\n"
+    "\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "\n"
     "GALGAS_lstringlist GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::getter_accessibleNodesFrom (" ;
