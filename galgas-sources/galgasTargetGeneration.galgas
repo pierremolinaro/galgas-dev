@@ -861,8 +861,8 @@ proc updateGalgas3Targets
         !"PMIssueInRuler.m",
         !"PMSearchResultDescriptor.h",
         !"PMSearchResultDescriptor.m",
-        !"PMTableViewRefusesFirstResponder.h",
-        !"PMTableViewRefusesFirstResponder.m",
+#        !"PMTableViewRefusesFirstResponder.h",
+#        !"PMTableViewRefusesFirstResponder.m",
         !"PMUndoManager.h",
         !"PMUndoManager.m"
       }

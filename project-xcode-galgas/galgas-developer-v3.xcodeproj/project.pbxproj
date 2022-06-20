@@ -24,7 +24,6 @@
 		CF079FA0192E418B008FEFF6 /* C_RelationSingleType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF079F9B192E418B008FEFF6 /* C_RelationSingleType.cpp */; };
 		CF12C0BE1D043E610060778F /* all-predefined-types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF12C0BD1D043E610060778F /* all-predefined-types.cpp */; };
 		CF12C0C01D043E8B0060778F /* all-predefined-types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF12C0BD1D043E610060778F /* all-predefined-types.cpp */; };
-		CF13F11A1861CD5700A875A4 /* PMTableViewRefusesFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = CF13F1191861CD5700A875A4 /* PMTableViewRefusesFirstResponder.m */; };
 		CF1A10A22724188400C765C6 /* AC_GALGAS_reference_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1A10A02724188400C765C6 /* AC_GALGAS_reference_class.cpp */; };
 		CF1A10A32724188400C765C6 /* AC_GALGAS_reference_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1A10A02724188400C765C6 /* AC_GALGAS_reference_class.cpp */; };
 		CF1AA5911979A9240095B745 /* C_HTMLString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1AA58F1979A9240095B745 /* C_HTMLString.cpp */; };
@@ -641,8 +640,6 @@
 		CF079F9C192E418B008FEFF6 /* C_RelationSingleType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = C_RelationSingleType.h; path = bdd/C_RelationSingleType.h; sourceTree = "<group>"; };
 		CF085E4E11176CDA00A23487 /* GALGAS_location.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_location.cpp; sourceTree = "<group>"; };
 		CF12C0BD1D043E610060778F /* all-predefined-types.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-predefined-types.cpp"; sourceTree = "<group>"; };
-		CF13F1181861CD5700A875A4 /* PMTableViewRefusesFirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTableViewRefusesFirstResponder.h; sourceTree = "<group>"; };
-		CF13F1191861CD5700A875A4 /* PMTableViewRefusesFirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTableViewRefusesFirstResponder.m; sourceTree = "<group>"; };
 		CF1A10A02724188400C765C6 /* AC_GALGAS_reference_class.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_GALGAS_reference_class.cpp; sourceTree = "<group>"; };
 		CF1A10A12724188400C765C6 /* AC_GALGAS_reference_class.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AC_GALGAS_reference_class.h; sourceTree = "<group>"; };
 		CF1A80BC1D7AD2050012A113 /* option-galgas-5F-cli-5F-options-cocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "option-galgas-5F-cli-5F-options-cocoa.h"; sourceTree = "<group>"; };
@@ -1638,8 +1635,6 @@
 				CFB697DE1483D47900BCAE41 /* PMIssueInRuler.m */,
 				CF273B07186741EF00DD528D /* PMSearchResultDescriptor.h */,
 				CF273B08186741EF00DD528D /* PMSearchResultDescriptor.m */,
-				CF13F1181861CD5700A875A4 /* PMTableViewRefusesFirstResponder.h */,
-				CF13F1191861CD5700A875A4 /* PMTableViewRefusesFirstResponder.m */,
 				CFBF7004179ACAD400789D8A /* PMUndoManager.h */,
 				CFBF7005179ACAD400789D8A /* PMUndoManager.m */,
 			);
@@ -2583,7 +2578,6 @@
 				CF51F02715C9201800387A48 /* PMDebug.m in Sources */,
 				CFCAEE67160E5D3D0081F715 /* OC_GGS_ApplicationDelegate.m in Sources */,
 				CFBF7006179ACAD400789D8A /* PMUndoManager.m in Sources */,
-				CF13F11A1861CD5700A875A4 /* PMTableViewRefusesFirstResponder.m in Sources */,
 				CF273B09186741EF00DD528D /* PMSearchResultDescriptor.m in Sources */,
 				CF301BD01ECE410D006796F6 /* PMOkButtonForPanel.m in Sources */,
 			);
