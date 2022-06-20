@@ -136,18 +136,25 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
   //---
     [mTextView setDelegate: self] ;
   //---
-    mScrollView = [[NSScrollView alloc] initWithFrame:NSMakeRect (0.0, 0.0, 100.0, 76.0)] ;
+    mScrollView = [[NSScrollView alloc] initWithFrame: NSMakeRect (0.0, 0.0, 100.0, 76.0)] ;
+    [mScrollView setScrollsDynamically: YES] ;
     mScrollView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
-    [mScrollView setHasVerticalScroller:YES] ;
     mScrollView.borderType = NSBezelBorder ;
+  //--- Vertical Ruler
     mRulerView = [OC_GGS_RulerViewForTextView new] ;
-    [mScrollView setVerticalRulerView:mRulerView] ;
-    [mScrollView.verticalRulerView setRuleThickness:50.0] ;
-    [mScrollView setRulersVisible:YES] ;
-//    [mScrollView setHasVerticalRuler:YES] ;
+//    mRulerView = [[OC_GGS_RulerViewForTextView alloc]
+//      initWithScrollView: mScrollView
+//      orientation: NSVerticalRuler
+//    ] ;
+    [mScrollView setVerticalRulerView: mRulerView] ;
+    [mScrollView.verticalRulerView setRuleThickness: 50.0] ;
+    [mScrollView setHasVerticalRuler:YES] ;
+    [mScrollView setRulersVisible: YES] ;
+  //--- Vertical scroller
     OC_GGS_Scroller * scroller = [OC_GGS_Scroller new] ;
-    [scroller setIsSourceTextViewScroller:YES] ;
-    [mScrollView setVerticalScroller:scroller] ;
+    [scroller setIsSourceTextViewScroller: YES] ;
+    [mScrollView setVerticalScroller: scroller] ;
+    [mScrollView setHasVerticalScroller: YES] ;
     mScrollView.documentView = mTextView ;
   //--- Pop up Button
     mEntryListPopUpButton = [[NSPopUpButton alloc] initWithFrame:NSMakeRect (5.0, 78.0, 90.0, 22.0)] ;
@@ -156,8 +163,8 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
   //--- Define enclosing view
     mEnclosingView = [[NSView alloc] initWithFrame:NSMakeRect (0.0, 0.0, 100.0, 100.0)] ;
     mEnclosingView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
-    [mEnclosingView addSubview:mScrollView] ;
-    [mEnclosingView addSubview:mEntryListPopUpButton] ;
+    [mEnclosingView addSubview: mScrollView] ;
+    [mEnclosingView addSubview: mEntryListPopUpButton] ;
   //--- Add "Show Invisible Character" preference observer
     [[NSUserDefaultsController sharedUserDefaultsController]
       addObserver:self
