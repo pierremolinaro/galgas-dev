@@ -682,7 +682,7 @@ proc updateGalgas3Targets
       [!?xcodeProject addGroupWithFiles
         !groupName:"Frameworks (App)"
         !groupPath:"/System/Library/Frameworks"
-        !fileNames:@stringset. setWithStringList {!inHandCodedLinkAppFileList}
+        !fileNames: .setWithStringList {!inHandCodedLinkAppFileList}
         !?cFileRefs:*
         !?cppFileRefs:*
         !?mFileRefs:*
@@ -861,8 +861,8 @@ proc updateGalgas3Targets
         !"PMIssueInRuler.m",
         !"PMSearchResultDescriptor.h",
         !"PMSearchResultDescriptor.m",
-#        !"PMTableViewRefusesFirstResponder.h",
-#        !"PMTableViewRefusesFirstResponder.m",
+        !"PMTableViewHandlesContextualMenu.h",
+        !"PMTableViewHandlesContextualMenu.m",
         !"PMUndoManager.h",
         !"PMUndoManager.m"
       }

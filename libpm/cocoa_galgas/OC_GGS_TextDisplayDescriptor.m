@@ -109,7 +109,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
 //    mTextView.allowedInputSourceLocales = [NSArray arrayWithObject: NSAllRomanInputSourcesLocaleIdentifier] ;
  //   mTextView.alignment = NSNaturalTextAlignment ;
     mTextView.automaticQuoteSubstitutionEnabled = NO ;
-    mTextView.smartInsertDeleteEnabled = YES ;
+    mTextView.smartInsertDeleteEnabled = NO ;
     mTextView.automaticDashSubstitutionEnabled = NO ;
     mTextView.layoutManager.allowsNonContiguousLayout = YES ;
     mTextView.layoutManager.usesFontLeading = YES ;
@@ -119,20 +119,11 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
     mTextView.allowsImageEditing = YES ;
     mTextView.layoutManager.usesScreenFonts = NO ;
     mTextView.layoutManager.showsControlCharacters = YES ;
-//    mTextView.font = nil ; // [NSFont systemFontOfSize: 0.0] ;
-//    [mTextView.layoutManager setTypesetterBehavior: NSTypesetterLatestBehavior] ;
   //---
     mTextView.automaticTextReplacementEnabled = NO ;
-//    if ([mTextView respondsToSelector:@selector(setAutomaticTextReplacementEnabled:)]) {
-//      [mTextView setValue:[NSNumber numberWithBool:NO] forKey:@"automaticTextReplacementEnabled"] ;
-//    }
   //---
-    mTextView.usesFindPanel = YES ;
-//    if ([mTextView respondsToSelector:@selector (setUsesFindBar:)]) {
-//      [mTextView setValue:[NSNumber numberWithBool:YES] forKey:@"usesFindBar"] ;
-//    }else{
-//      mTextView.usesFindPanel = YES ;
-//    }
+//    mTextView.usesFindPanel = YES ;
+    mTextView.usesFindBar = YES ;
   //---
     [mTextView setDelegate: self] ;
   //---
@@ -142,10 +133,6 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
     mScrollView.borderType = NSBezelBorder ;
   //--- Vertical Ruler
     mRulerView = [OC_GGS_RulerViewForTextView new] ;
-//    mRulerView = [[OC_GGS_RulerViewForTextView alloc]
-//      initWithScrollView: mScrollView
-//      orientation: NSVerticalRuler
-//    ] ;
     [mScrollView setVerticalRulerView: mRulerView] ;
     [mScrollView.verticalRulerView setRuleThickness: 50.0] ;
     [mScrollView setHasVerticalRuler:YES] ;

@@ -553,6 +553,7 @@
 		CFD94B681290677400864538 /* grammarComputations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD94B641290677400864538 /* grammarComputations.cpp */; };
 		CFDACD081003D0B60096A8E5 /* F_mainForLIBPM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDACD051003D0B60096A8E5 /* F_mainForLIBPM.cpp */; };
 		CFDACD091003D0B60096A8E5 /* F_mainForLIBPM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDACD051003D0B60096A8E5 /* F_mainForLIBPM.cpp */; };
+		CFDC3A4A28622A6D00F12E26 /* PMTableViewHandlesContextualMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDC3A4828622A6D00F12E26 /* PMTableViewHandlesContextualMenu.m */; };
 		CFE167840E8E7A2B00AFDAFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE167820E8E7A2B00AFDAFC /* main.m */; };
 		CFE6ECD1281D69C80079AA96 /* all-declarations-30.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE6ECCE281D69C80079AA96 /* all-declarations-30.cpp */; };
 		CFE6ECD2281D69C80079AA96 /* all-declarations-30.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE6ECCE281D69C80079AA96 /* all-declarations-30.cpp */; };
@@ -1091,6 +1092,8 @@
 		CFDAC3E4192E76F000347EEC /* TC_FIFO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_FIFO.h; sourceTree = "<group>"; };
 		CFDAC3E5192E780200347EEC /* TC_LinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_LinkedList.h; sourceTree = "<group>"; };
 		CFDACD051003D0B60096A8E5 /* F_mainForLIBPM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = F_mainForLIBPM.cpp; sourceTree = "<group>"; };
+		CFDC3A4828622A6D00F12E26 /* PMTableViewHandlesContextualMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTableViewHandlesContextualMenu.m; sourceTree = "<group>"; };
+		CFDC3A4928622A6D00F12E26 /* PMTableViewHandlesContextualMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTableViewHandlesContextualMenu.h; sourceTree = "<group>"; };
 		CFE10E73111738CF00E972AA /* GALGAS_char.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_char.cpp; sourceTree = "<group>"; };
 		CFE167820E8E7A2B00AFDAFC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; };
 		CFE6ECCC281D69C80079AA96 /* all-declarations-30.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations-30.h"; sourceTree = "<group>"; };
@@ -1635,6 +1638,8 @@
 				CFB697DE1483D47900BCAE41 /* PMIssueInRuler.m */,
 				CF273B07186741EF00DD528D /* PMSearchResultDescriptor.h */,
 				CF273B08186741EF00DD528D /* PMSearchResultDescriptor.m */,
+				CFDC3A4928622A6D00F12E26 /* PMTableViewHandlesContextualMenu.h */,
+				CFDC3A4828622A6D00F12E26 /* PMTableViewHandlesContextualMenu.m */,
 				CFBF7004179ACAD400789D8A /* PMUndoManager.h */,
 				CFBF7005179ACAD400789D8A /* PMUndoManager.m */,
 			);
@@ -2573,6 +2578,7 @@
 				CF59565C15C81988000E6B8B /* OC_GGS_DocumentData.m in Sources */,
 				CFA941E0272040EC00B52A16 /* OC_GGS_ColorTransformer.m in Sources */,
 				CF4E85961FF3EB6200A28AE6 /* option-galgas-5F-cli-5F-options-cocoa.m in Sources */,
+				CFDC3A4A28622A6D00F12E26 /* PMTableViewHandlesContextualMenu.m in Sources */,
 				CF9DE67E15C8766700D44EE3 /* OC_GGS_RulerViewForBuildOutput.m in Sources */,
 				CF2378C919967DF10061D2D8 /* gui-cocoa.m in Sources */,
 				CF51F02715C9201800387A48 /* PMDebug.m in Sources */,

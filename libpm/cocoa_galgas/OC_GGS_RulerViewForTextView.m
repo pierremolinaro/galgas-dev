@@ -61,13 +61,14 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-//- (void) drawMarkersInRect: (NSRect) inRect {
-//}
+- (void) drawRect: (NSRect) inRect { // Indispensable sous Monterey ?
+  [self drawHashMarksAndLabelsInRect: inRect] ;
+}
 
 //----------------------------------------------------------------------------------------------------------------------
 
 - (void) drawHashMarksAndLabelsInRect: (NSRect) inRect {
-  [super drawHashMarksAndLabelsInRect: inRect] ;
+//  [super drawHashMarksAndLabelsInRect: inRect] ;
 //  NSLog (@"baselineLocation %g", self.baselineLocation) ;
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s %p [%g, %g ; %g, %g]", __PRETTY_FUNCTION__, self, inRect.origin.x, inRect.origin.y, inRect.size.width, inRect.size.height) ;

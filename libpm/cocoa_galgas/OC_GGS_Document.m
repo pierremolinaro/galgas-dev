@@ -2,7 +2,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2003, ..., 2019 Pierre Molinaro.
+//  Copyright (C) 2003, ..., 2022 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -124,8 +124,6 @@
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   [super windowControllerDidLoadNib: inWindowController];
-//---
-//  mDisplayDescriptorTableViewHigh.columnAutoresizingStyle = NSTableViewFirstColumnOnlyAutoresizingStyle ;
 //--- Tell to window controller that closing the source text window closes the document
   [inWindowController setShouldCloseDocument: YES] ;
 //--- Set up windows location
@@ -227,12 +225,9 @@
 //---
   mDisplayDescriptorTableViewHigh.target = self ;
   mDisplayDescriptorTableViewHigh.action = @selector (clickOnSourceTableViewHigh:) ;
-  [mDisplayDescriptorTableViewHigh setDataSource:self] ;
+  mDisplayDescriptorTableViewHigh.dataSource = self ;
   [mDisplayDescriptorTableViewHigh
-    registerForDraggedTypes:[NSArray arrayWithObjects:
-      (NSString*)kUTTypeFileURL,
-      nil
-    ]
+    registerForDraggedTypes: [NSArray arrayWithObject: (NSString*) kUTTypeFileURL]
   ] ;
 //---
   [mBuildProgressIndicator startAnimation:nil] ;
@@ -1166,7 +1161,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     const NSInteger row = mDisplayDescriptorTableViewHigh.clickedRow ;
     if (row >= 0) {
       OC_GGS_TextDisplayDescriptor * desc = [mSourceDisplayArrayControllerHigh.arrangedObjects objectAtIndex: (NSUInteger) row] ;
-      [self removeSelectedTabAction:desc] ;
+      [self removeSelectedTabAction: desc] ;
     }
   }
 }
