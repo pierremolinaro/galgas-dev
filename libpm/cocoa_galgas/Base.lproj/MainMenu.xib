@@ -1441,43 +1441,6 @@
                 <outlet property="mToolPopUpButton" destination="404" id="416"/>
             </connections>
         </customObject>
-        <customView id="1094" userLabel="newDocumentAccessoryView">
-            <rect key="frame" x="0.0" y="0.0" width="376" height="60"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1104">
-                    <rect key="frame" x="29" y="15" width="318" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <textField verticalHuggingPriority="750" id="1102">
-                            <rect key="frame" x="4" y="7" width="65" height="17"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="File Type:" id="1218">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <popUpButton verticalHuggingPriority="750" id="1095">
-                            <rect key="frame" x="69" y="1" width="243" height="26"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1098" id="1217">
-                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="menu"/>
-                                <menu key="menu" title="OtherViews" id="1097">
-                                    <items>
-                                        <menuItem title="Item 1" state="on" id="1098"/>
-                                        <menuItem title="Item 2" id="1099"/>
-                                        <menuItem title="Item 3" id="1100"/>
-                                    </items>
-                                </menu>
-                            </popUpButtonCell>
-                        </popUpButton>
-                    </subviews>
-                </customView>
-            </subviews>
-            <point key="canvasLocation" x="139" y="537"/>
-        </customView>
         <customView id="1190" userLabel="NewDocumentAccessoryView">
             <rect key="frame" x="0.0" y="0.0" width="485" height="93"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>

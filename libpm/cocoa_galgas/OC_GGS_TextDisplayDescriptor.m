@@ -106,8 +106,6 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
     mTextView.grammarCheckingEnabled = NO ;
     mTextView.continuousSpellCheckingEnabled = NO ;
     [mTextView useAllLigatures: nil] ;
-//    mTextView.allowedInputSourceLocales = [NSArray arrayWithObject: NSAllRomanInputSourcesLocaleIdentifier] ;
- //   mTextView.alignment = NSNaturalTextAlignment ;
     mTextView.automaticQuoteSubstitutionEnabled = NO ;
     mTextView.smartInsertDeleteEnabled = NO ;
     mTextView.automaticDashSubstitutionEnabled = NO ;
@@ -119,10 +117,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
     mTextView.allowsImageEditing = YES ;
     mTextView.layoutManager.usesScreenFonts = NO ;
     mTextView.layoutManager.showsControlCharacters = YES ;
-  //---
     mTextView.automaticTextReplacementEnabled = NO ;
-  //---
-//    mTextView.usesFindPanel = YES ;
     mTextView.usesFindBar = YES ;
   //---
     [mTextView setDelegate: self] ;
@@ -160,14 +155,14 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
       context:NULL
     ] ;
     [self refreshShowInvisibleCharacters] ;
-    [documentData.textSyntaxColoring addDisplayDescriptor:self] ;
+    [documentData.textSyntaxColoring addDisplayDescriptor: self] ;
    //--- Set selection
     [[NSRunLoop mainRunLoop]
       performSelector: @selector (setSelectionAndScrollToVisibleAfterInit)
-      target:self
-      argument:nil
-      order:0
-      modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]
+      target: self
+      argument: nil
+      order: 0
+      modes: [NSArray arrayWithObject: NSDefaultRunLoopMode]
     ] ;
   }
   #ifdef DEBUG_MESSAGES
@@ -257,7 +252,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  if ([inKeyPath isEqualToString:@"values.PMShowInvisibleCharacters"]) {
+  if ([inKeyPath isEqualToString: @"values.PMShowInvisibleCharacters"]) {
     [self refreshShowInvisibleCharacters] ;
   }else{
     [super

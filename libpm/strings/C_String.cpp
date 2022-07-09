@@ -1862,9 +1862,9 @@ C_String C_String::md5 (void) const {
   MD5_Final (digest, &context);
 
 //  ::md5 ((uint8_t *) cString (HERE), (uint32_t) length (), digest);
-  char s [10] ;
+  char s [40] ;
   for (uint32_t i=0 ; i<16 ; i++) {
-    sprintf (s, "%02X", digest [i]) ;
+    snprintf (s, 40, "%02X", digest [i]) ;
     result << s ;
   }
   return result ;

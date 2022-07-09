@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21179.7" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="101200" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21179.7"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -157,7 +157,7 @@ Gw
                                         <autoresizingMask key="autoresizingMask"/>
                                         <clipView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="mzG-Gg-tSf">
                                             <rect key="frame" x="1" y="1" width="233" height="186"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" translatesAutoresizingMaskIntoConstraints="NO" id="735" customClass="PMTableViewHandlesContextualMenu">
                                                     <rect key="frame" x="0.0" y="0.0" width="233" height="186"/>
@@ -250,9 +250,9 @@ Gw
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" id="0Yx-gl-pYu">
                                             <rect key="frame" x="1" y="1" width="233" height="463"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" usesRuler="YES" spellingCorrection="YES" id="704">
+                                                <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesRuler="YES" spellingCorrection="YES" id="704">
                                                     <rect key="frame" x="0.0" y="0.0" width="234" height="463"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -934,15 +934,15 @@ Gw
                         </column>
                     </cells>
                 </matrix>
-                <scrollView focusRingType="none" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" id="888">
+                <scrollView focusRingType="none" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" id="888">
                     <rect key="frame" x="0.0" y="0.0" width="429" height="224"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="yzp-Zo-usN">
-                        <rect key="frame" x="1" y="1" width="412" height="207"/>
+                        <rect key="frame" x="1" y="1" width="412" height="222"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="systemDefault" viewBased="YES" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="893" id="891">
-                                <rect key="frame" x="0.0" y="0.0" width="412" height="207"/>
+                                <rect key="frame" x="0.0" y="0.0" width="412" height="222"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -987,7 +987,7 @@ Gw
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
-                                        <textFieldCell key="dataCell" controlSize="small" lineBreakMode="truncatingHead" truncatesLastVisibleLine="YES" selectable="YES" alignment="left" title="Text Cell" id="894">
+                                        <textFieldCell key="dataCell" controlSize="small" lineBreakMode="truncatingHead" selectable="YES" alignment="left" title="Text Cell" id="894">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1001,7 +1001,7 @@ Gw
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nAE-vo-Zuy">
                                                         <rect key="frame" x="0.0" y="1" width="361" height="14"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                        <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="euf-Pt-Ds7">
+                                                        <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingHead" sendsActionOnEndEditing="YES" title="Table View Cell" id="euf-Pt-Ds7">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1011,6 +1011,12 @@ Gw
                                                                 <binding destination="HLE-gn-wtm" name="value" keyPath="objectValue.foundItem" id="Clw-GE-6tZ"/>
                                                             </connections>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="HLE-gn-wtm" name="fontBold" keyPath="objectValue.boldDisplay" id="ffk-6B-jb9"/>
+                                                            <binding destination="HLE-gn-wtm" name="textColor" keyPath="objectValue.color" id="dTL-oY-x0q"/>
+                                                            <binding destination="HLE-gn-wtm" name="value" keyPath="objectValue.foundItem" id="Bkb-2h-tRO"/>
+                                                            <binding destination="HLE-gn-wtm" name="toolTip" keyPath="objectValue.foundItem" id="CNb-kF-SIH"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <connections>
@@ -1023,12 +1029,12 @@ Gw
                             </outlineView>
                         </subviews>
                     </clipView>
-                    <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="889">
-                        <rect key="frame" x="1" y="208" width="412" height="15"/>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="889">
+                        <rect key="frame" x="-100" y="-100" width="412" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="890">
-                        <rect key="frame" x="413" y="1" width="15" height="207"/>
+                        <rect key="frame" x="413" y="1" width="15" height="222"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>

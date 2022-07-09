@@ -324,7 +324,7 @@ proc updateGalgas3Targets
       MACOSX_DEPLOYMENT_TARGET = mFeatureValue
     end
   else
-    MACOSX_DEPLOYMENT_TARGET = ["10.10" nowhere]
+    MACOSX_DEPLOYMENT_TARGET = ["10.13" nowhere]
   end
 #----------------------------------------------------------- LIBPM path
   let @string libpmPath
@@ -351,16 +351,16 @@ proc updateGalgas3Targets
   availableGenerationFeatures += !"makefile-x86linux32-on-macosx"
   availableGenerationFeatures += !"makefile-x86linux64-on-macosx"
   availableGenerationFeatures += !"makefile-win32-on-macosx"
-  availableGenerationFeatures += !"SnowLeopard"
-  availableGenerationFeatures += !"Lion"
-  availableGenerationFeatures += !"MountainLion"
-  availableGenerationFeatures += !"Mavericks"
-  availableGenerationFeatures += !"Yosemite"
-  availableGenerationFeatures += !"ElCapitanYosemite"
-  availableGenerationFeatures += !"SierraElCapitan"
-  availableGenerationFeatures += !"ElCapitan"
-  availableGenerationFeatures += !"Sierra"
-  availableGenerationFeatures += !"LatestMacOS"
+#  availableGenerationFeatures += !"SnowLeopard"
+#  availableGenerationFeatures += !"Lion"
+#  availableGenerationFeatures += !"MountainLion"
+#  availableGenerationFeatures += !"Mavericks"
+#  availableGenerationFeatures += !"Yosemite"
+#  availableGenerationFeatures += !"ElCapitanYosemite"
+#  availableGenerationFeatures += !"SierraElCapitan"
+#  availableGenerationFeatures += !"ElCapitan"
+#  availableGenerationFeatures += !"Sierra"
+  availableGenerationFeatures += !"MacOS"
   var @stringset generationFeatures = {}
 #--- Check xcode target architectures
   var @string SDK = ""
@@ -369,66 +369,10 @@ proc updateGalgas3Targets
       if [generationFeatures hasKey !value.string] then
         error value: "duplicate '" + value + "' feature"
       end
-      let macOsDuplicateMessage = "the \"%SnowLeopard\", \"%Lion\", \"%MountainLion\", \"%Mavericks\","
-          " \"%Yosemite\", \"%ElCapitanYosemite\", \"%ElCapitan\", \"%ElCapitanSierra\", \"%Sierra\", \"%LatestMacOS\" are exclusive"
-    #--- SnowLeopard
-      if value.string == "SnowLeopard" then
+   #--- MacOS
+      if value.string == "MacOS" then
         if (SDK != "") then
-          error value: macOsDuplicateMessage
-        end
-        SDK = "macosx10.6"
-    #--- Lion
-      elsif value.string == "Lion" then
-        if (SDK != "") then
-          error value: macOsDuplicateMessage
-        end
-        SDK = "macosx10.7"
-    #--- Mountain Lion
-      elsif value.string == "MountainLion" then
-        if (SDK != "") then
-          error value: macOsDuplicateMessage
-        end
-        SDK = "macosx10.8"
-    #--- Mavericks
-      elsif value.string == "Mavericks" then
-        if (SDK != "") then
-          error value: macOsDuplicateMessage
-        end
-        SDK = "macosx10.9"
-    #--- Yosemite
-      elsif value.string == "Yosemite" then
-        if (SDK != "") then
-          error value: macOsDuplicateMessage
-        end
-        SDK = "macosx10.10"
-    #--- ElCapitanYosemite
-      elsif value.string == "ElCapitanYosemite" then
-        if (SDK != "") then
-          error value: macOsDuplicateMessage
-        end
-        SDK = "macosx10.11"
-    #--- ElCapitan
-      elsif value.string == "ElCapitan" then
-        if (SDK != "") then
-          error value: macOsDuplicateMessage
-        end
-        SDK = "macosx10.11"
-    #--- ElCapitan Sierra
-      elsif value.string == "SierraElCapitan" then
-        if (SDK != "") then
-          error value: macOsDuplicateMessage
-        end
-        SDK = "macosx10.12"
-    #--- Sierra
-      elsif value.string == "Sierra" then
-        if (SDK != "") then
-          error value: macOsDuplicateMessage
-        end
-        SDK = "macosx10.12"
-    #--- Lastest MacOS
-      elsif value.string == "LatestMacOS" then
-        if (SDK != "") then
-          error value: macOsDuplicateMessage
+          error value: "duplicated setting"
         end
         SDK = "macosx"
       else
@@ -444,14 +388,13 @@ proc updateGalgas3Targets
   end
 #--- Codesign without selecting OSX ?
   if (macCodeSign.string != "") && (SDK == "") then
-    error macCodeSign : "the %macCodeSign attribute implies the definition of an OS X target system:"
-     " \"%SnowLeopard\", \"%Lion\", \"%MountainLion\", \"%Mavericks\","
-     " \"%Yosemite\", \"%ElCapitanYosemite\", \"%ElCapitan\", \"%ElCapitanSierra\", \"%Sierra\", \"%LatestMacOS\""
+    error macCodeSign
+    : "the %macCodeSign attribute implies the definition of an OS X target system: \"%MacOS\""
   end
 #--- Generation of Xcode project given by command line option ?
-  if [option galgas_cli_options.macosxSDK value] != 0 then
-    SDK = "macosx10." + [option galgas_cli_options.macosxSDK value]
-  end
+#  if [option galgas_cli_options.macosxSDK value] != 0 then
+#    SDK = "macosx10." + [option galgas_cli_options.macosxSDK value]
+#  end
 #--- Check Cocoa features
   if SDK != "", not [inProjectQualifiedFeatureMap hasKey !"applicationBundleBase"] then
     warning @location.here: "For a Cocoa project, the \"applicationBundleBase\" feature should be set; for example: '%applicationBundleBase : \"fr.what\" ;'"
@@ -680,16 +623,16 @@ proc updateGalgas3Targets
     var @stringlist appFrameworksFileRefList = {}
     if [inHandCodedLinkAppFileList length] > 0 then
       [!?xcodeProject addGroupWithFiles
-        !groupName:"Frameworks (App)"
-        !groupPath:"/System/Library/Frameworks"
+        !groupName: "Frameworks (App)"
+        !groupPath: "/System/Library/Frameworks"
         !fileNames: .setWithStringList {!inHandCodedLinkAppFileList}
         !?cFileRefs:*
         !?cppFileRefs:*
         !?mFileRefs:*
         !?mmFileRefs:*
-        !?frameworkFileRefs:appFrameworksFileRefList
+        !?frameworkFileRefs: appFrameworksFileRefList
         !?resourceFileRefs:*
-        ?groupRef:let @string frameworkGroupRef
+        ?groupRef: let @string frameworkGroupRef
       ]
       [!?xcodeProject placeGroupAsMainGroup !groupRef:frameworkGroupRef]
     end

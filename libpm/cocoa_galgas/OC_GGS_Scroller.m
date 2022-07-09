@@ -122,14 +122,14 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 - (void) setDoubleValue: (double) inValue {
-  [super setDoubleValue:inValue] ;
+  [super setDoubleValue: inValue] ;
   [self setNeedsDisplay] ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 - (void) setKnobProportion: (CGFloat) inValue {
-  [super setKnobProportion:inValue] ;
+  [super setKnobProportion: inValue] ;
   [self setNeedsDisplay] ;
 }
 
