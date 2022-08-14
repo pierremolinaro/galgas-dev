@@ -15,13 +15,11 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc enterBaseFinalGetterWithoutArgument
-  ?!@getterMap ioGetterMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?getterName:let @string inGetterName
-  ?returnedTypeName:let @string inReturnedTypeName
-  ?hasCompilerArgument:let @bool inHasCompilerArgument
-{
+proc enterBaseFinalGetterWithoutArgument ?!@getterMap ioGetterMap
+                                         ?!@unifiedTypeMap ioUnifiedTypeMap
+                                         ?getterName:let @string inGetterName
+                                         ?returnedTypeName:let @string inReturnedTypeName
+                                         ?hasCompilerArgument:let @bool inHasCompilerArgument {
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   [!?ioGetterMap insertOrReplace
     !@lstring.new {!inGetterName !@location.here}

@@ -711,129 +711,6 @@ proc generateExtensionMethod ?let @unifiedTypeMapEntry inReceiverType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-# E X T E N S I O N    R E A D E R    I M P L E M E N T A T I O N                                              
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-proc generateExtensionGetterOld
-  ?let @unifiedTypeMapEntry inReceiverType
-  ?let @string inBaseClassName
-  ?!@stringset ioInclusionSet
-  ?let @string inGetterName
-  ?let @formalInputParameterListForGeneration inFormalArgumentList
-  ?let @semanticInstructionListForGeneration inInstructionList
-  ?let @string inCompilerTypeName
-  ?let @string inResultTypeName
-  ?let @string inResultVariableCppName
-  !@string outGeneratedCode
-{
-  let className = [inReceiverType definition].mTypeName.string
-#--- Build unused variable set
-  var @stringset unusedVariableCppNameSet = {}
-  unusedVariableCppNameSet += !compilerCppName ()
-  unusedVariableCppNameSet += !"object"
-  for (* * mFormalArgumentCppName * *) in inFormalArgumentList do
-    unusedVariableCppNameSet += !mFormalArgumentCppName
-  end
-#--- Generate body
-  var @uint temporaryVariableIndex = 0
-  var @string routineBody = ""
-  [!?routineBody incIndentation !2]
-  for (mInstruction) in inInstructionList do
-    [mInstruction generateInstruction
-      !?ioInclusionSet
-      !?temporaryVariableIndex
-      !?unusedVariableCppNameSet
-      !false # inGenerateSyntaxDirectedTranslationString
-      !?routineBody
-    ]
-  end
-  [!?routineBody decIndentation !2]
-#--- Generate inclusions
-  [inReceiverType addHeaderFileName !?ioInclusionSet]
-  var @unifiedTypeMapEntry baseType = inReceiverType
-  var @bool searching = true
-  loop (@uint. max) while searching do
-    if not [[baseType definition].mSuperType isNull] then
-      if [[[baseType definition].mSuperType definition].mGetterMap hasKey !inGetterName] then
-        baseType = [baseType definition].mSuperType
-      else
-        searching = false
-      end
-    else
-      searching = false
-    end  
-  end
-  ioInclusionSet += !"getter-" + [[baseType definition].mTypeName.string fileNameRepresentation] + "-" + [inGetterName fileNameRepresentation]
-  [inReceiverType addHeaderFileName !?ioInclusionSet]
-  for (* mFormalArgumentType * * *) in inFormalArgumentList do
-    [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
-  end
-#--- Generate header
-  outGeneratedCode = "static GALGAS_" + [inResultTypeName identifierRepresentation] + " extensionGetter_"
-  outGeneratedCode += [className identifierRepresentation] + "_" + [inGetterName identifierRepresentation] + " ("
-  let @uint colRef = [outGeneratedCode currentColumn]
-  if inBaseClassName == "" then
-    outGeneratedCode += "const cPtr_" + [className identifierRepresentation] + " * "
-  else
-    outGeneratedCode += "const cPtr_" + [inBaseClassName identifierRepresentation] + " * "
-  end
-  let @bool currentObjectIsUnused = [unusedVariableCppNameSet hasKey !"object"]
-  if currentObjectIsUnused then
-    outGeneratedCode += "/* inObject */"
-  else
-    outGeneratedCode += "inObject"
-  end
-  outGeneratedCode += ",\n"
-  [!?outGeneratedCode appendSpacesUntilColumn !colRef]
-#---
-  for (* mFormalArgumentType mFormalArgumentCppName * mIsConstant) in inFormalArgumentList do
-    if mIsConstant then
-      outGeneratedCode += "const GALGAS_" + [mFormalArgumentType identifierRepresentation] + " "
-    else
-      outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " "
-    end
-    if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
-      outGeneratedCode += "/* " + mFormalArgumentCppName + " */"
-    else
-      outGeneratedCode += mFormalArgumentCppName
-    end
-    outGeneratedCode += ",\n"
-    [!?outGeneratedCode appendSpacesUntilColumn !colRef]
-  end
-#--- Compiler argument
-  outGeneratedCode += inCompilerTypeName + " * "
-  if [unusedVariableCppNameSet hasKey !compilerCppName ()] then
-    outGeneratedCode += "/* " + compilerCppName () + " */"
-  else
-    outGeneratedCode += compilerCppName ()
-  end
-  outGeneratedCode += "\n"
-  [!?outGeneratedCode appendSpacesUntilColumn !colRef]
-  outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS)"
-  outGeneratedCode += " {\n"
-#--- Declare returned variable
-  outGeneratedCode += "  GALGAS_" + [inResultTypeName identifierRepresentation]
-                   +  " " + inResultVariableCppName + " ; // Returned variable\n"
-#--- Generate routine body
-  if not currentObjectIsUnused then
-    if inBaseClassName == "" then
-      outGeneratedCode += "  const cPtr_" + [className identifierRepresentation] + " * object = inObject ;\n"
-    else
-      outGeneratedCode += "  const cPtr_" + [className identifierRepresentation] + " * object = (const cPtr_" + [className identifierRepresentation] + " *) inObject ;\n"
-    end
-    outGeneratedCode += "  macroValidSharedObject (object, cPtr_" + [className identifierRepresentation] + ") ;\n"
-  end
-  outGeneratedCode += routineBody
-#--- Generate return instruction
-  outGeneratedCode += "//---\n"
-  outGeneratedCode += "  return " + inResultVariableCppName + " ;\n"
-#---
-  outGeneratedCode += "}\n\n"
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! Generation Filewrappers
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1056,16 +933,14 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
-    ?@string GETTER_IMPLEMENTATION_NEW
+    ?@string GETTER_IMPLEMENTATION
     ?@unifiedTypeMapEntry RETURN_TYPE
-    ?@string GETTER_IMPLEMENTATION_OLD
   
   template overridingExtensionGetterImplementation "overriding-extension-getter.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
-    ?@string GETTER_IMPLEMENTATION_NEW
-    ?@unifiedTypeMapEntry RETURN_TYPE
     ?@string GETTER_IMPLEMENTATION
+    ?@unifiedTypeMapEntry RETURN_TYPE
   
 #------------ Extension setter
   template abstractExtensionSetterDeclaration "abstract-extension-setter.h.galgasTemplate"

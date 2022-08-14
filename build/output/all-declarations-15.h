@@ -2663,9 +2663,7 @@ class GALGAS_extensionGetterForGeneration : public GALGAS_semanticDeclarationWit
 
   public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
 
-  public: class GALGAS_semanticInstructionListForGeneration readProperty_mSemanticInstructionListForGenerationOld (void) const ;
-
-  public: class GALGAS_semanticInstructionListForGeneration readProperty_mSemanticInstructionListForGenerationNew (void) const ;
+  public: class GALGAS_semanticInstructionListForGeneration readProperty_mSemanticInstructionListForGeneration (void) const ;
 
 //-- Start of generic part --*
 
@@ -2687,8 +2685,7 @@ class GALGAS_extensionGetterForGeneration : public GALGAS_semanticDeclarationWit
                                                                             const class GALGAS_string & inOperand6,
                                                                             const class GALGAS_formalInputParameterListForGeneration & inOperand7,
                                                                             const class GALGAS_typedPropertyList & inOperand8,
-                                                                            const class GALGAS_semanticInstructionListForGeneration & inOperand9,
-                                                                            const class GALGAS_semanticInstructionListForGeneration & inOperand10
+                                                                            const class GALGAS_semanticInstructionListForGeneration & inOperand9
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2734,8 +2731,7 @@ class cPtr_extensionGetterForGeneration : public cPtr_semanticDeclarationWithHea
   public: GALGAS_string mProperty_mResultVarCppName ;
   public: GALGAS_formalInputParameterListForGeneration mProperty_mExtensionGetterFormalParameterList ;
   public: GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
-  public: GALGAS_semanticInstructionListForGeneration mProperty_mSemanticInstructionListForGenerationOld ;
-  public: GALGAS_semanticInstructionListForGeneration mProperty_mSemanticInstructionListForGenerationNew ;
+  public: GALGAS_semanticInstructionListForGeneration mProperty_mSemanticInstructionListForGeneration ;
 
 //--- Constructor
   public: cPtr_extensionGetterForGeneration (const GALGAS_bool & in_mHasHeader,
@@ -2747,8 +2743,7 @@ class cPtr_extensionGetterForGeneration : public cPtr_semanticDeclarationWithHea
                                              const GALGAS_string & in_mResultVarCppName,
                                              const GALGAS_formalInputParameterListForGeneration & in_mExtensionGetterFormalParameterList,
                                              const GALGAS_typedPropertyList & in_mTypedAttributeList,
-                                             const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGenerationOld,
-                                             const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGenerationNew
+                                             const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
                                              COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

@@ -9,107 +9,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Overriding extension method '@structPropertyAccessExpressionAST enterExpressionInSemanticContext'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-static void extensionMethod_structPropertyAccessExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * /* inObject */,
-                                                                                                GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
-                                                                                                C_Compiler * /* inCompiler */
-                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-static void defineExtensionMethod_structPropertyAccessExpressionAST_enterExpressionInSemanticContext (void) {
-  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_structPropertyAccessExpressionAST.mSlotID,
-                                                         extensionMethod_structPropertyAccessExpressionAST_enterExpressionInSemanticContext) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-C_PrologueEpilogue gMethod_structPropertyAccessExpressionAST_enterExpressionInSemanticContext (defineExtensionMethod_structPropertyAccessExpressionAST_enterExpressionInSemanticContext, NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@structPropertyAccessExpressionAST analyzeSemanticExpression'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-static void extensionMethod_structPropertyAccessExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
-                                                                                         const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                                         GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                                         const GALGAS_unifiedTypeMapEntry /* constinArgument_inType */,
-                                                                                         const GALGAS_analysisContext constinArgument_inAnalysisContext,
-                                                                                         GALGAS_localVarManager & ioArgument_ioVariableMap,
-                                                                                         GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                                         C_Compiler * inCompiler
-                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_structPropertyAccessExpressionAST * object = (const cPtr_structPropertyAccessExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_structPropertyAccessExpressionAST) ;
-  GALGAS_semanticExpressionForGeneration var_expression_3124 ;
-  const GALGAS_structPropertyAccessExpressionAST temp_0 = object ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GALGAS_unifiedTypeMapEntry::constructor_null (SOURCE_FILE ("expression-property-access.galgas", 75)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_expression_3124, inCompiler COMMA_SOURCE_FILE ("expression-property-access.galgas", 72)) ;
-  GALGAS_unifiedTypeMapEntry var_expressionType_3207 = var_expression_3124.readProperty_mResultType () ;
-  enumGalgasBool test_1 = kBoolTrue ;
-  if (kBoolTrue == test_1) {
-    test_1 = extensionGetter_definition (var_expressionType_3207, inCompiler COMMA_SOURCE_FILE ("expression-property-access.galgas", 82)).readProperty_mTypeKindEnum ().getter_isStructType (SOURCE_FILE ("expression-property-access.galgas", 82)).operator_not (SOURCE_FILE ("expression-property-access.galgas", 82)).operator_and (extensionGetter_definition (var_expressionType_3207, inCompiler COMMA_SOURCE_FILE ("expression-property-access.galgas", 82)).readProperty_mTypeKindEnum ().getter_isClassType (SOURCE_FILE ("expression-property-access.galgas", 82)).operator_not (SOURCE_FILE ("expression-property-access.galgas", 82)) COMMA_SOURCE_FILE ("expression-property-access.galgas", 82)).boolEnum () ;
-    if (kBoolTrue == test_1) {
-      const GALGAS_structPropertyAccessExpressionAST temp_2 = object ;
-      TC_Array <C_FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.readProperty_mPropertyName ().readProperty_location (), GALGAS_string ("the '.' operator requires the receiver to be a struct or a class"), fixItArray3  COMMA_SOURCE_FILE ("expression-property-access.galgas", 83)) ;
-    }
-  }
-  GALGAS_propertyMap var_propertyMap_3490 = extensionGetter_definition (var_expressionType_3207, inCompiler COMMA_SOURCE_FILE ("expression-property-access.galgas", 85)).readProperty_mPropertyMap () ;
-  GALGAS_bool var_isPublic_3592 ;
-  GALGAS_unifiedTypeMapEntry var_type_3605 ;
-  const GALGAS_structPropertyAccessExpressionAST temp_4 = object ;
-  GALGAS_bool joker_3594 ; // Joker input parameter
-  var_propertyMap_3490.method_searchKey (temp_4.readProperty_mPropertyName (), var_isPublic_3592, joker_3594, var_type_3605, inCompiler COMMA_SOURCE_FILE ("expression-property-access.galgas", 86)) ;
-  enumGalgasBool test_5 = kBoolTrue ;
-  if (kBoolTrue == test_5) {
-    test_5 = var_isPublic_3592.boolEnum () ;
-    if (kBoolTrue == test_5) {
-    }
-  }
-  if (kBoolFalse == test_5) {
-    enumGalgasBool test_6 = kBoolTrue ;
-    if (kBoolTrue == test_6) {
-      GALGAS_unifiedTypeMapEntry var_selfType_3704 ;
-      GALGAS_bool var_unused_0_3708 ;
-      GALGAS_bool var_unused_1_3708 ;
-      const bool optionalResult3684 = constinArgument_inAnalysisContext.readProperty_selfType ().optional_available (var_selfType_3704, var_unused_0_3708, var_unused_1_3708) ;
-      if (!optionalResult3684) {
-        test_6 = kBoolFalse ;
-      }
-      if (kBoolTrue == test_6) {
-        test_6 = GALGAS_bool (kIsNotEqual, var_expressionType_3207.objectCompare (var_selfType_3704)).boolEnum () ;
-        if (kBoolTrue == test_6) {
-          const GALGAS_structPropertyAccessExpressionAST temp_7 = object ;
-          TC_Array <C_FixItDescription> fixItArray8 ;
-          inCompiler->emitSemanticError (temp_7.readProperty_mPropertyName ().readProperty_location (), GALGAS_string ("inaccessible property (due to its 'private' qualifier)"), fixItArray8  COMMA_SOURCE_FILE ("expression-property-access.galgas", 90)) ;
-        }
-      }
-    }
-  }
-  const GALGAS_structPropertyAccessExpressionAST temp_9 = object ;
-  const GALGAS_structPropertyAccessExpressionAST temp_10 = object ;
-  outArgument_outExpression = GALGAS_structPropertyAccessExpressionForGeneration::constructor_new (var_type_3605, temp_9.readProperty_mOperatorLocation (), var_expression_3124, temp_10.readProperty_mPropertyName ().readProperty_string ()  COMMA_SOURCE_FILE ("expression-property-access.galgas", 93)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-static void defineExtensionMethod_structPropertyAccessExpressionAST_analyzeSemanticExpression (void) {
-  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_structPropertyAccessExpressionAST.mSlotID,
-                                                  extensionMethod_structPropertyAccessExpressionAST_analyzeSemanticExpression) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-C_PrologueEpilogue gMethod_structPropertyAccessExpressionAST_analyzeSemanticExpression (defineExtensionMethod_structPropertyAccessExpressionAST_analyzeSemanticExpression, NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@structPropertyAccessExpressionForGeneration generateExpression'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -8310,4 +8209,75 @@ static void defineExtensionMethod_setterCallInstructionAST_analyzeSemanticInstru
 //----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_setterCallInstructionAST_analyzeSemanticInstruction (defineExtensionMethod_setterCallInstructionAST_analyzeSemanticInstruction, NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@selfSetterCallInstructionAST analyzeSemanticInstruction'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static void extensionMethod_selfSetterCallInstructionAST_analyzeSemanticInstruction (const cPtr_semanticInstructionAST * inObject,
+                                                                                     const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                                     GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                                     const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                                     GALGAS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
+                                                                                     GALGAS_localVarManager & ioArgument_ioVariableMap,
+                                                                                     C_Compiler * inCompiler
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_selfSetterCallInstructionAST * object = (const cPtr_selfSetterCallInstructionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_selfSetterCallInstructionAST) ;
+  enumGalgasBool test_0 = kBoolTrue ;
+  if (kBoolTrue == test_0) {
+    GALGAS_unifiedTypeMapEntry var_selfType_11668 ;
+    GALGAS_bool var_selfIsMutable_11702 ;
+    GALGAS_bool var_unused_0_11730 ;
+    const bool optionalResult11642 = constinArgument_inAnalysisContext.readProperty_selfType ().optional_available (var_selfType_11668, var_selfIsMutable_11702, var_unused_0_11730) ;
+    if (!optionalResult11642) {
+      test_0 = kBoolFalse ;
+    }
+    if (kBoolTrue == test_0) {
+      enumGalgasBool test_1 = kBoolTrue ;
+      if (kBoolTrue == test_1) {
+        test_1 = var_selfIsMutable_11702.operator_not (SOURCE_FILE ("instruction-setter-call.galgas", 332)).boolEnum () ;
+        if (kBoolTrue == test_1) {
+          const GALGAS_selfSetterCallInstructionAST temp_2 = object ;
+          TC_Array <C_FixItDescription> fixItArray3 ;
+          inCompiler->emitSemanticError (temp_2.readProperty_mSetterName ().readProperty_location (), GALGAS_string ("'self' not mutable in this context"), fixItArray3  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 333)) ;
+        }
+      }
+      GALGAS_methodKind var_kind_11946 ;
+      GALGAS_formalParameterSignature var_routineSignature_11968 ;
+      GALGAS_bool var_hasCompilerArgument_11993 ;
+      const GALGAS_selfSetterCallInstructionAST temp_4 = object ;
+      GALGAS_methodQualifier joker_11995 ; // Joker input parameter
+      GALGAS_string joker_11998 ; // Joker input parameter
+      extensionGetter_definition (var_selfType_11668, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 336)).readProperty_mSetterMap ().method_searchKey (temp_4.readProperty_mSetterName (), var_kind_11946, var_routineSignature_11968, var_hasCompilerArgument_11993, joker_11995, joker_11998, inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 336)) ;
+      GALGAS_actualParameterListForGeneration var_actualParameterListForGeneration_12461 ;
+      {
+      const GALGAS_selfSetterCallInstructionAST temp_5 = object ;
+      const GALGAS_selfSetterCallInstructionAST temp_6 = object ;
+      const GALGAS_selfSetterCallInstructionAST temp_7 = object ;
+      routine_analyzeRoutineArguments (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, temp_5.readProperty_mSetterName (), GALGAS_string ("'").add_operation (temp_6.readProperty_mSetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 343)).add_operation (GALGAS_string ("' setter header"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 343)), var_routineSignature_11968, temp_7.readProperty_mActualParameterList (), ioArgument_ioVariableMap, ioArgument_ioInstructionListForGeneration, var_actualParameterListForGeneration_12461, inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 338)) ;
+      }
+      const GALGAS_selfSetterCallInstructionAST temp_8 = object ;
+      ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_selfSetterCallInstructionForGeneration::constructor_new (constinArgument_inAnalysisContext.readProperty_mSelfObjectCppName (), var_selfType_11668, temp_8.readProperty_mSetterName (), var_kind_11946, var_actualParameterListForGeneration_12461, var_hasCompilerArgument_11993  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 351))  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 351)) ;
+    }
+  }
+  if (kBoolFalse == test_0) {
+    const GALGAS_selfSetterCallInstructionAST temp_9 = object ;
+    TC_Array <C_FixItDescription> fixItArray10 ;
+    inCompiler->emitSemanticError (temp_9.readProperty_mSetterName ().readProperty_location (), GALGAS_string ("'self' not available in this context"), fixItArray10  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 360)) ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void defineExtensionMethod_selfSetterCallInstructionAST_analyzeSemanticInstruction (void) {
+  enterExtensionMethod_analyzeSemanticInstruction (kTypeDescriptor_GALGAS_selfSetterCallInstructionAST.mSlotID,
+                                                   extensionMethod_selfSetterCallInstructionAST_analyzeSemanticInstruction) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_selfSetterCallInstructionAST_analyzeSemanticInstruction (defineExtensionMethod_selfSetterCallInstructionAST_analyzeSemanticInstruction, NULL) ;
 

@@ -271,9 +271,8 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
                                                                                                      const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                      const class GALGAS_string & in_GETTER_5F_NAME,
                                                                                                      const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                                     const class GALGAS_string & in_GETTER_5F_IMPLEMENTATION_5F_NEW,
-                                                                                                     const class GALGAS_unifiedTypeMapEntry & in_RETURN_5F_TYPE,
-                                                                                                     const class GALGAS_string & in_GETTER_5F_IMPLEMENTATION_5F_OLD
+                                                                                                     const class GALGAS_string & in_GETTER_5F_IMPLEMENTATION,
+                                                                                                     const class GALGAS_unifiedTypeMapEntry & in_RETURN_5F_TYPE
                                                                                                      COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -285,9 +284,8 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionGetterImplementation (class C_Compiler * inCompiler,
                                                                                                                const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                                const class GALGAS_string & in_GETTER_5F_NAME,
-                                                                                                               const class GALGAS_string & in_GETTER_5F_IMPLEMENTATION_5F_NEW,
-                                                                                                               const class GALGAS_unifiedTypeMapEntry & in_RETURN_5F_TYPE,
-                                                                                                               const class GALGAS_string & in_GETTER_5F_IMPLEMENTATION
+                                                                                                               const class GALGAS_string & in_GETTER_5F_IMPLEMENTATION,
+                                                                                                               const class GALGAS_unifiedTypeMapEntry & in_RETURN_5F_TYPE
                                                                                                                COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -633,25 +631,6 @@ void routine_generateExtensionGetterNew (const class GALGAS_string constinArgume
                                          const class GALGAS_unifiedTypeMapEntry constinArgument5,
                                          const class GALGAS_string constinArgument6,
                                          class GALGAS_string & outArgument7,
-                                         class C_Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'generateExtensionGetterOld'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateExtensionGetterOld (const class GALGAS_unifiedTypeMapEntry constinArgument0,
-                                         const class GALGAS_string constinArgument1,
-                                         class GALGAS_stringset & ioArgument2,
-                                         const class GALGAS_string constinArgument3,
-                                         const class GALGAS_formalInputParameterListForGeneration constinArgument4,
-                                         const class GALGAS_semanticInstructionListForGeneration constinArgument5,
-                                         const class GALGAS_string constinArgument6,
-                                         const class GALGAS_string constinArgument7,
-                                         const class GALGAS_string constinArgument8,
-                                         class GALGAS_string & outArgument9,
                                          class C_Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 

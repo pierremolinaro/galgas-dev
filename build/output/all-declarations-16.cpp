@@ -2001,10 +2001,7 @@ typeComparisonResult cPtr_overrideExtensionGetterForGeneration::dynamicObjectCom
     result = mProperty_mTypedAttributeList.objectCompare (p->mProperty_mTypedAttributeList) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mSemanticInstructionListForGenerationOld.objectCompare (p->mProperty_mSemanticInstructionListForGenerationOld) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mSemanticInstructionListForGenerationNew.objectCompare (p->mProperty_mSemanticInstructionListForGenerationNew) ;
+    result = mProperty_mSemanticInstructionListForGeneration.objectCompare (p->mProperty_mSemanticInstructionListForGeneration) ;
   }
   return result ;
 }
@@ -2051,12 +2048,11 @@ GALGAS_overrideExtensionGetterForGeneration GALGAS_overrideExtensionGetterForGen
                                                                                                           const GALGAS_string & inAttribute_mResultVarCppName,
                                                                                                           const GALGAS_formalInputParameterListForGeneration & inAttribute_mOverridingExtensionGetterFormalParameterList,
                                                                                                           const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
-                                                                                                          const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGenerationOld,
-                                                                                                          const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGenerationNew
+                                                                                                          const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_overrideExtensionGetterForGeneration result ;
-  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mBaseTypeName.isValid () && inAttribute_mOverridingExtensionGetterName.isValid () && inAttribute_mResultType.isValid () && inAttribute_mResultVarCppName.isValid () && inAttribute_mOverridingExtensionGetterFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGenerationOld.isValid () && inAttribute_mSemanticInstructionListForGenerationNew.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_overrideExtensionGetterForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mBaseTypeName, inAttribute_mOverridingExtensionGetterName, inAttribute_mResultType, inAttribute_mResultVarCppName, inAttribute_mOverridingExtensionGetterFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGenerationOld, inAttribute_mSemanticInstructionListForGenerationNew COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mBaseTypeName.isValid () && inAttribute_mOverridingExtensionGetterName.isValid () && inAttribute_mResultType.isValid () && inAttribute_mResultVarCppName.isValid () && inAttribute_mOverridingExtensionGetterFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_overrideExtensionGetterForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mBaseTypeName, inAttribute_mOverridingExtensionGetterName, inAttribute_mResultType, inAttribute_mResultVarCppName, inAttribute_mOverridingExtensionGetterFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
   }
   return result ;
 }
@@ -2147,25 +2143,13 @@ GALGAS_typedPropertyList GALGAS_overrideExtensionGetterForGeneration::readProper
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListForGeneration GALGAS_overrideExtensionGetterForGeneration::readProperty_mSemanticInstructionListForGenerationOld (void) const {
+GALGAS_semanticInstructionListForGeneration GALGAS_overrideExtensionGetterForGeneration::readProperty_mSemanticInstructionListForGeneration (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_semanticInstructionListForGeneration () ;
   }else{
     cPtr_overrideExtensionGetterForGeneration * p = (cPtr_overrideExtensionGetterForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_overrideExtensionGetterForGeneration) ;
-    return p->mProperty_mSemanticInstructionListForGenerationOld ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_semanticInstructionListForGeneration GALGAS_overrideExtensionGetterForGeneration::readProperty_mSemanticInstructionListForGenerationNew (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_semanticInstructionListForGeneration () ;
-  }else{
-    cPtr_overrideExtensionGetterForGeneration * p = (cPtr_overrideExtensionGetterForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overrideExtensionGetterForGeneration) ;
-    return p->mProperty_mSemanticInstructionListForGenerationNew ;
+    return p->mProperty_mSemanticInstructionListForGeneration ;
   }
 }
 
@@ -2182,8 +2166,7 @@ cPtr_overrideExtensionGetterForGeneration::cPtr_overrideExtensionGetterForGenera
                                                                                       const GALGAS_string & in_mResultVarCppName,
                                                                                       const GALGAS_formalInputParameterListForGeneration & in_mOverridingExtensionGetterFormalParameterList,
                                                                                       const GALGAS_typedPropertyList & in_mTypedAttributeList,
-                                                                                      const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGenerationOld,
-                                                                                      const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGenerationNew
+                                                                                      const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
                                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mProperty_mReceiverType (in_mReceiverType),
@@ -2193,8 +2176,7 @@ mProperty_mResultType (in_mResultType),
 mProperty_mResultVarCppName (in_mResultVarCppName),
 mProperty_mOverridingExtensionGetterFormalParameterList (in_mOverridingExtensionGetterFormalParameterList),
 mProperty_mTypedAttributeList (in_mTypedAttributeList),
-mProperty_mSemanticInstructionListForGenerationOld (in_mSemanticInstructionListForGenerationOld),
-mProperty_mSemanticInstructionListForGenerationNew (in_mSemanticInstructionListForGenerationNew) {
+mProperty_mSemanticInstructionListForGeneration (in_mSemanticInstructionListForGeneration) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2224,9 +2206,7 @@ void cPtr_overrideExtensionGetterForGeneration::description (C_String & ioString
   ioString << ", " ;
   mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mSemanticInstructionListForGenerationOld.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mSemanticInstructionListForGenerationNew.description (ioString, inIndentation+1) ;
+  mProperty_mSemanticInstructionListForGeneration.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -2234,7 +2214,7 @@ void cPtr_overrideExtensionGetterForGeneration::description (C_String & ioString
 
 acPtr_class * cPtr_overrideExtensionGetterForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_overrideExtensionGetterForGeneration (mProperty_mHasHeader, mProperty_mImplementationCppFileName, mProperty_mReceiverType, mProperty_mBaseTypeName, mProperty_mOverridingExtensionGetterName, mProperty_mResultType, mProperty_mResultVarCppName, mProperty_mOverridingExtensionGetterFormalParameterList, mProperty_mTypedAttributeList, mProperty_mSemanticInstructionListForGenerationOld, mProperty_mSemanticInstructionListForGenerationNew COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_overrideExtensionGetterForGeneration (mProperty_mHasHeader, mProperty_mImplementationCppFileName, mProperty_mReceiverType, mProperty_mBaseTypeName, mProperty_mOverridingExtensionGetterName, mProperty_mResultType, mProperty_mResultVarCppName, mProperty_mOverridingExtensionGetterFormalParameterList, mProperty_mTypedAttributeList, mProperty_mSemanticInstructionListForGeneration COMMA_THERE)) ;
   return ptr ;
 }
 

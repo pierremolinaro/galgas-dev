@@ -118,6 +118,7 @@
 		CF3FDE2114E6CD4E0040331C /* C_Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3FDE2014E6CD4E0040331C /* C_Data.cpp */; };
 		CF3FDE2214E6CD4E0040331C /* C_Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3FDE2014E6CD4E0040331C /* C_Data.cpp */; };
 		CF4398050ADFE1900085F47C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4398030ADFE1900085F47C /* WebKit.framework */; };
+		CF44240E28A915B200DF3CD1 /* galgas-debug in Resources */ = {isa = PBXBuildFile; fileRef = CF6DF20509E3F30400506859 /* galgas-debug */; };
 		CF45B184239AF8C300F16511 /* all-declarations-28.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF45B175239AF1FD00F16511 /* all-declarations-28.cpp */; };
 		CF45B187239AF8C400F16511 /* all-declarations-28.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF45B175239AF1FD00F16511 /* all-declarations-28.cpp */; };
 		CF4853222724629A0063154F /* acStrongPtr_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4853202724629A0063154F /* acStrongPtr_class.cpp */; };
@@ -582,6 +583,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CF44240C28A9159C00DF3CD1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF6DF19C09E3F30400506859;
+			remoteInfo = "GALGAS tool debug";
+		};
 		CF6DF25809E3F3C400506859 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
@@ -1909,6 +1917,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				CF44240D28A9159C00DF3CD1 /* PBXTargetDependency */,
 				CF6DF25909E3F3C400506859 /* PBXTargetDependency */,
 			);
 			name = "GALGAS Cocoa";
@@ -1978,6 +1987,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF44240E28A915B200DF3CD1 /* galgas-debug in Resources */,
 				CF560731199679270074A7B2 /* galgas in Resources */,
 				CF6DF22909E3F3A700506859 /* Credits.rtf in Resources */,
 				CF6DF22A09E3F3A700506859 /* InfoPlist.strings in Resources */,
@@ -2574,6 +2584,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		CF44240D28A9159C00DF3CD1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF6DF19C09E3F30400506859 /* GALGAS tool debug */;
+			targetProxy = CF44240C28A9159C00DF3CD1 /* PBXContainerItemProxy */;
+		};
 		CF6DF25909E3F3C400506859 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CF6DF12309E3F23700506859 /* GALGAS tool */;
