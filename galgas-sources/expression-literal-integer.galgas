@@ -252,7 +252,7 @@ override method @literalUIntExpressionForGeneration generateExpression
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  outCppExpression = "GALGAS_uint ((uint32_t) " + [self.mValue string]+ "U)"
+  outCppExpression = "GALGAS_uint (uint32_t (" + [self.mValue string]+ "U))"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -264,12 +264,12 @@ refclass @literalUInt64ExpressionForGeneration : @semanticExpressionForGeneratio
 #·····················································································································
 
 override method @literalUInt64ExpressionForGeneration generateExpression
-  ?!@string unused ioGeneratedCode
-  ?!@stringset unused ioInclusionSet
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
-  !@string outCppExpression {
-  outCppExpression = "GALGAS_uint_36__34_ ((uint64_t) " + [self.mValue string]+ "ULL)"
+                                                      ?!@string unused ioGeneratedCode
+                                                      ?!@stringset unused ioInclusionSet
+                                                      ?!@uint unused ioTemporaryVariableIndex
+                                                      ?!@stringset unused ioUnusedVariableCppNameSet
+                                                      !@string outCppExpression {
+  outCppExpression = "GALGAS_uint_36__34_ (uint64_t (" + [self.mValue string]+ "ULL))"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -286,7 +286,7 @@ override method @literalSIntExpressionForGeneration generateExpression
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  outCppExpression = "GALGAS_sint ((int32_t) " + [self.mValue string]+ "L)"
+  outCppExpression = "GALGAS_sint (int32_t (" + [self.mValue string]+ "L))"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -298,12 +298,12 @@ refclass @literalSInt64ExpressionForGeneration : @semanticExpressionForGeneratio
 #·····················································································································
 
 override method @literalSInt64ExpressionForGeneration generateExpression
-  ?!@string unused ioGeneratedCode
-  ?!@stringset unused ioInclusionSet
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
-  !@string outCppExpression {
-  outCppExpression = "GALGAS_sint_36__34_ ((int64_t) " + [self.mValue string]+ "LL)"
+                                                          ?!@string unused ioGeneratedCode
+                                                          ?!@stringset unused ioInclusionSet
+                                                          ?!@uint unused ioTemporaryVariableIndex
+                                                          ?!@stringset unused ioUnusedVariableCppNameSet
+                                                          !@string outCppExpression {
+  outCppExpression = "GALGAS_sint_36__34_ (int64_t (" + [self.mValue string]+ "LL))"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -315,12 +315,11 @@ refclass @literalBigIntExpressionForGeneration : @semanticExpressionForGeneratio
 #·····················································································································
 
 override method @literalBigIntExpressionForGeneration generateExpression
-  ?!@string unused ioGeneratedCode
-  ?!@stringset unused ioInclusionSet
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression
-{
+                                                          ?!@string unused ioGeneratedCode
+                                                          ?!@stringset unused ioInclusionSet
+                                                          ?!@uint unused ioTemporaryVariableIndex
+                                                          ?!@stringset ioUnusedVariableCppNameSet
+                                                          !@string outCppExpression {
   outCppExpression = "GALGAS_bigint (\"" + [self.mValue string]+ "\", "
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   outCppExpression += compilerCppName ()

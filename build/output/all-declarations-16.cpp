@@ -12949,7 +12949,7 @@ void extensionSetter_closeOverride (GALGAS_localVarManager & ioObject,
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_localVarManager temp_1 = ioObject ;
-    test_0 = GALGAS_bool (kIsStrictSup, temp_1.readProperty_mOverridenManagers ().getter_length (SOURCE_FILE ("variable-manager.galgas", 270)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    test_0 = GALGAS_bool (kIsStrictSup, temp_1.readProperty_mOverridenManagers ().getter_length (SOURCE_FILE ("variable-manager.galgas", 270)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       GALGAS_overrideKind var_savedManager_12945 ;
       {
@@ -13013,7 +13013,7 @@ void extensionSetter_closeBranch (GALGAS_localVarManager & ioObject,
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_localVarManager temp_1 = ioObject ;
-    test_0 = GALGAS_bool (kIsStrictSup, temp_1.readProperty_mOverridenManagers ().getter_length (SOURCE_FILE ("variable-manager.galgas", 292)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    test_0 = GALGAS_bool (kIsStrictSup, temp_1.readProperty_mOverridenManagers ().getter_length (SOURCE_FILE ("variable-manager.galgas", 292)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       GALGAS_overrideKind var_savedManager_13818 ;
       {

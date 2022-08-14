@@ -105,7 +105,8 @@ syntax extension galgas4InstructionsSyntax {
       !true # Is Constant
       !typeName
       !variableName
-      !sourceExpression}
+      !sourceExpression
+    }
   }
 
   #·····················································································································
@@ -294,12 +295,11 @@ override method @undefinedLocalConstantDeclarationForGeneration generateInstruct
 #······················································································································*
 
 override method @localVariableOrConstantDeclarationWithSourceExpressionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode
-{
+                                                    ?!@stringset ioInclusionSet
+                                                    ?!@uint ioTemporaryVariableIndex
+                                                    ?!@stringset ioUnusedVariableCppNameSet
+                                                    ?let @bool unused inGenerateSyntaxDirectedTranslationString
+                                                    ?!@string ioGeneratedCode {
   [self.mTargetType addHeaderFileName !?ioInclusionSet]
   [self.mSourceExpression generateExpression
      !?ioGeneratedCode

@@ -9955,7 +9955,7 @@ void extensionMethod_displayRuleVertically (const GALGAS_productionRuleListForGr
   GALGAS_string var_currentNode_6779 = GALGAS_string ("P0start") ;
   GALGAS_rowList var_rowArray_6815 = GALGAS_rowList::constructor_emptyList (SOURCE_FILE ("production-rules-in-tex.galgas", 165)) ;
   const GALGAS_productionRuleListForGrammarAnalysis_2D_element temp_0 = inObject ;
-  cEnumerator_range enumerator_6868 (GALGAS_range (GALGAS_uint ((uint32_t) 1U), temp_0.readProperty_mInstructionList ().getter_length (SOURCE_FILE ("production-rules-in-tex.galgas", 166)).substract_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 166))), kENUMERATION_UP) ;
+  cEnumerator_range enumerator_6868 (GALGAS_range (GALGAS_uint (uint32_t (1U)), temp_0.readProperty_mInstructionList ().getter_length (SOURCE_FILE ("production-rules-in-tex.galgas", 166)).substract_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 166))), kENUMERATION_UP) ;
   while (enumerator_6868.hasCurrentObject ()) {
     GALGAS__32_stringlist temp_1 = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("production-rules-in-tex.galgas", 167)) ;
     temp_1.addAssign_operation (GALGAS_string::makeEmptyString (), GALGAS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 167)) ;
@@ -9967,20 +9967,20 @@ void extensionMethod_displayRuleVertically (const GALGAS_productionRuleListForGr
   var_rowArray_6815.addAssign_operation (temp_2  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 169)) ;
   GALGAS_string var_arrows_6974 = GALGAS_string::makeEmptyString () ;
   GALGAS_string var_arrowStyle_7004 = GALGAS_string ("--") ;
-  GALGAS_uint var_unusedMaxUsedRowIndex_7039 = GALGAS_uint ((uint32_t) 0U) ;
+  GALGAS_uint var_unusedMaxUsedRowIndex_7039 = GALGAS_uint (uint32_t (0U)) ;
   const GALGAS_productionRuleListForGrammarAnalysis_2D_element temp_3 = inObject ;
   GALGAS_uint var_row_7062 = temp_3.readProperty_mInstructionList ().getter_length (SOURCE_FILE ("production-rules-in-tex.galgas", 173)) ;
   const GALGAS_productionRuleListForGrammarAnalysis_2D_element temp_4 = inObject ;
   cEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_7114 (temp_4.readProperty_mInstructionList (), kENUMERATION_UP) ;
   while (enumerator_7114.hasCurrentObject ()) {
-    var_row_7062.minusAssign_operation(GALGAS_uint ((uint32_t) 1U), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 175)) ;
-    GALGAS_uint var_column_7171 = GALGAS_uint ((uint32_t) 1U) ;
+    var_row_7062.minusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 175)) ;
+    GALGAS_uint var_column_7171 = GALGAS_uint (uint32_t (1U)) ;
     callExtensionMethod_tikzNodeForSyntaxInstruction ((const cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_7114.current_mInstruction (HERE).ptr (), var_rowArray_6815, var_row_7062, var_column_7171, var_currentNode_6779, var_arrowStyle_7004, var_arrows_6974, var_unusedMaxUsedRowIndex_7039, GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 177)) ;
     enumerator_7114.gotoNextObject () ;
   }
   GALGAS_string var_lastNodeName_7543 ;
   {
-  extensionSetter_appendRow (var_rowArray_6815, GALGAS_string ("[lastPoint] {}"), var_row_7062, GALGAS_uint ((uint32_t) 2U), var_lastNodeName_7543, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 189)) ;
+  extensionSetter_appendRow (var_rowArray_6815, GALGAS_string ("[lastPoint] {}"), var_row_7062, GALGAS_uint (uint32_t (2U)), var_lastNodeName_7543, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 189)) ;
   }
   var_arrows_6974.plusAssign_operation(GALGAS_string ("  \\draw[->] (").add_operation (var_currentNode_6779, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 190)).add_operation (GALGAS_string (") -- ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 190)).add_operation (var_lastNodeName_7543, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 190)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 190)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 190)) ;
   const GALGAS_productionRuleListForGrammarAnalysis_2D_element temp_5 = inObject ;

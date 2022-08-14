@@ -996,13 +996,13 @@ void extensionSetter_getReferenceKey (GALGAS_XcodeProjectDescriptor & ioObject,
     test_0 = GALGAS_bool (kIsEqual, temp_1.readProperty_mProjectObjectReference ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_XcodeProjectDescriptor temp_2 = ioObject ;
-      ioObject.mProperty_mProjectObjectReference = temp_2.readProperty_mSequenceNumber ().getter_string (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 363)).getter_md_35_ (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 363)).getter_rightSubString (GALGAS_uint ((uint32_t) 24U) COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 363)) ;
-      ioObject.mProperty_mSequenceNumber.plusAssign_operation(GALGAS_uint ((uint32_t) 1U), inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 364)) ;
+      ioObject.mProperty_mProjectObjectReference = temp_2.readProperty_mSequenceNumber ().getter_string (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 363)).getter_md_35_ (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 363)).getter_rightSubString (GALGAS_uint (uint32_t (24U)) COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 363)) ;
+      ioObject.mProperty_mSequenceNumber.plusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 364)) ;
     }
   }
   const GALGAS_XcodeProjectDescriptor temp_3 = ioObject ;
-  outArgument_outRef = temp_3.readProperty_mSequenceNumber ().getter_string (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 366)).getter_md_35_ (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 366)).getter_rightSubString (GALGAS_uint ((uint32_t) 24U) COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 366)) ;
-  ioObject.mProperty_mSequenceNumber.plusAssign_operation(GALGAS_uint ((uint32_t) 1U), inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 367)) ;
+  outArgument_outRef = temp_3.readProperty_mSequenceNumber ().getter_string (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 366)).getter_md_35_ (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 366)).getter_rightSubString (GALGAS_uint (uint32_t (24U)) COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 366)) ;
+  ioObject.mProperty_mSequenceNumber.plusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 367)) ;
 }
 
 

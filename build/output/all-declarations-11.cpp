@@ -2633,7 +2633,7 @@ void extensionMethod_tikzNodeForSyntaxInstruction (const GALGAS_syntaxInstructio
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_syntaxInstructionListForGrammarAnalysis temp_1 = inObject ;
-    test_0 = GALGAS_bool (kIsEqual, temp_1.getter_length (SOURCE_FILE ("production-rules-in-tex.galgas", 232)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    test_0 = GALGAS_bool (kIsEqual, temp_1.getter_length (SOURCE_FILE ("production-rules-in-tex.galgas", 232)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       GALGAS_string var_nodeName_9231 ;
       {
@@ -2642,7 +2642,7 @@ void extensionMethod_tikzNodeForSyntaxInstruction (const GALGAS_syntaxInstructio
       ioArgument_ioArrows.plusAssign_operation(GALGAS_string ("  \\draw (").add_operation (ioArgument_ioCurrentNode, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 239)).add_operation (GALGAS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 239)).add_operation (ioArgument_ioArrowShape, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 239)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 239)).add_operation (var_nodeName_9231, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 239)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 239)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 239)) ;
       ioArgument_ioCurrentNode = var_nodeName_9231 ;
       ioArgument_ioArrowShape = GALGAS_string ("--") ;
-      ioArgument_ioColumn.plusAssign_operation(GALGAS_uint ((uint32_t) 1U), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 242)) ;
+      ioArgument_ioColumn.plusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 242)) ;
     }
   }
   if (kBoolFalse == test_0) {
@@ -3156,7 +3156,7 @@ GALGAS_bool extensionGetter_displayVertically (const GALGAS_syntaxInstructionLis
                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool result_result ; // Returned variable
   const GALGAS_syntaxInstructionListForGrammarAnalysis temp_0 = inObject ;
-  result_result = GALGAS_bool (kIsStrictSup, temp_0.getter_length (SOURCE_FILE ("production-rules-in-tex.galgas", 564)).objectCompare (GALGAS_uint ((uint32_t) 4U))) ;
+  result_result = GALGAS_bool (kIsStrictSup, temp_0.getter_length (SOURCE_FILE ("production-rules-in-tex.galgas", 564)).objectCompare (GALGAS_uint (uint32_t (4U)))) ;
   const GALGAS_syntaxInstructionListForGrammarAnalysis temp_1 = inObject ;
   cEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_19864 (temp_1, kENUMERATION_UP) ;
   bool bool_2 = result_result.isValidAndTrue () ;
@@ -11792,7 +11792,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
         }
         enumGalgasBool test_3 = kBoolTrue ;
         if (kBoolTrue == test_3) {
-          test_3 = GALGAS_bool (kIsEqual, var_n_3582.objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+          test_3 = GALGAS_bool (kIsEqual, var_n_3582.objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
           if (kBoolTrue == test_3) {
             TC_Array <C_FixItDescription> fixItArray4 ;
             inCompiler->emitSemanticError (var_count_3556.readProperty_location (), GALGAS_string ("the count value should be > 0"), fixItArray4  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 93)) ;
@@ -11803,9 +11803,9 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
             uint32_t variant_3828 = var_n_3582.uintValue () ;
             bool loop_3828 = true ;
             while (loop_3828) {
-              loop_3828 = GALGAS_bool (kIsStrictSup, var_n_3582.objectCompare (GALGAS_uint ((uint32_t) 0U))).isValid () ;
+              loop_3828 = GALGAS_bool (kIsStrictSup, var_n_3582.objectCompare (GALGAS_uint (uint32_t (0U)))).isValid () ;
               if (loop_3828) {
-                loop_3828 = GALGAS_bool (kIsStrictSup, var_n_3582.objectCompare (GALGAS_uint ((uint32_t) 0U))).boolValue () ;
+                loop_3828 = GALGAS_bool (kIsStrictSup, var_n_3582.objectCompare (GALGAS_uint (uint32_t (0U)))).boolValue () ;
               }
               if (loop_3828 && (0 == variant_3828)) {
                 loop_3828 = false ;
@@ -11814,7 +11814,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
               if (loop_3828) {
                 variant_3828 -- ;
                 outArgument_outActualParameterList.addAssign_operation (GALGAS_inputJokerActualParameterAST::constructor_new (var_selector_3407.readProperty_location (), var_n_3582  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 97))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 97)) ;
-                var_n_3582.minusAssign_operation(GALGAS_uint ((uint32_t) 1U), inCompiler  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 98)) ;
+                var_n_3582.minusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 98)) ;
               }
             }
           }
@@ -11876,7 +11876,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
       }
       enumGalgasBool test_8 = kBoolTrue ;
       if (kBoolTrue == test_8) {
-        test_8 = GALGAS_bool (kIsEqual, var_n_4804.objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+        test_8 = GALGAS_bool (kIsEqual, var_n_4804.objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
         if (kBoolTrue == test_8) {
           TC_Array <C_FixItDescription> fixItArray9 ;
           inCompiler->emitSemanticError (var_count_4782.readProperty_location (), GALGAS_string ("the count value should be > 0"), fixItArray9  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 134)) ;
@@ -11887,9 +11887,9 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
           uint32_t variant_5039 = var_n_4804.uintValue () ;
           bool loop_5039 = true ;
           while (loop_5039) {
-            loop_5039 = GALGAS_bool (kIsStrictSup, var_n_4804.objectCompare (GALGAS_uint ((uint32_t) 0U))).isValid () ;
+            loop_5039 = GALGAS_bool (kIsStrictSup, var_n_4804.objectCompare (GALGAS_uint (uint32_t (0U)))).isValid () ;
             if (loop_5039) {
-              loop_5039 = GALGAS_bool (kIsStrictSup, var_n_4804.objectCompare (GALGAS_uint ((uint32_t) 0U))).boolValue () ;
+              loop_5039 = GALGAS_bool (kIsStrictSup, var_n_4804.objectCompare (GALGAS_uint (uint32_t (0U)))).boolValue () ;
             }
             if (loop_5039 && (0 == variant_5039)) {
               loop_5039 = false ;
@@ -11898,7 +11898,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
             if (loop_5039) {
               variant_5039 -- ;
               outArgument_outActualParameterList.addAssign_operation (GALGAS_outputInputJokerParameterAST::constructor_new (var_selector_4749.readProperty_location (), var_n_4804  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 138))  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 138)) ;
-              var_n_4804.minusAssign_operation(GALGAS_uint ((uint32_t) 1U), inCompiler  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 139)) ;
+              var_n_4804.minusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 139)) ;
             }
           }
         }
@@ -12598,7 +12598,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
   if (kBoolTrue == test_8) {
     test_8 = var_isOnce_4719.boolEnum () ;
     if (kBoolTrue == test_8) {
-      test_8 = GALGAS_bool (kIsStrictSup, var_formalInputParameterList_5435.getter_length (SOURCE_FILE ("galgasInstructionsSyntax.galgas", 130)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+      test_8 = GALGAS_bool (kIsStrictSup, var_formalInputParameterList_5435.getter_length (SOURCE_FILE ("galgasInstructionsSyntax.galgas", 130)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
       if (kBoolTrue == test_8) {
         TC_Array <C_FixItDescription> fixItArray9 ;
         inCompiler->emitSemanticError (var_functionName_5314.readProperty_location (), GALGAS_string ("an 'once' function should has no argument"), fixItArray9  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 131)) ;
@@ -14022,7 +14022,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_for
   GALGAS_uint var_n_3641 = var_count_3623.readProperty_uint () ;
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
-    test_0 = GALGAS_bool (kIsEqual, var_n_3641.objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    test_0 = GALGAS_bool (kIsEqual, var_n_3641.objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray1 ;
       inCompiler->emitSemanticError (var_count_3623.readProperty_location (), GALGAS_string ("this value should be > 0"), fixItArray1  COMMA_SOURCE_FILE ("instruction-for.galgas", 80)) ;
@@ -14032,9 +14032,9 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_for
     uint32_t variant_3736 = var_n_3641.uintValue () ;
     bool loop_3736 = true ;
     while (loop_3736) {
-      loop_3736 = GALGAS_bool (kIsStrictSup, var_n_3641.objectCompare (GALGAS_uint ((uint32_t) 0U))).isValid () ;
+      loop_3736 = GALGAS_bool (kIsStrictSup, var_n_3641.objectCompare (GALGAS_uint (uint32_t (0U)))).isValid () ;
       if (loop_3736) {
-        loop_3736 = GALGAS_bool (kIsStrictSup, var_n_3641.objectCompare (GALGAS_uint ((uint32_t) 0U))).boolValue () ;
+        loop_3736 = GALGAS_bool (kIsStrictSup, var_n_3641.objectCompare (GALGAS_uint (uint32_t (0U)))).boolValue () ;
       }
       if (loop_3736 && (0 == variant_3736)) {
         loop_3736 = false ;
@@ -14043,7 +14043,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_for
       if (loop_3736) {
         variant_3736 -- ;
         ioArgument_ioElementList.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("instruction-for.galgas", 83)), GALGAS_bool (true), GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("instruction-for.galgas", 83))  COMMA_SOURCE_FILE ("instruction-for.galgas", 83)) ;
-        var_n_3641.minusAssign_operation(GALGAS_uint ((uint32_t) 1U), inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 84)) ;
+        var_n_3641.minusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 84)) ;
       }
     }
   }
@@ -15671,7 +15671,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_if_
           } break ;
           case 3: {
             inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2A_ COMMA_SOURCE_FILE ("instruction-if.galgas", 169)) ;
-            var_optionalMethodActualArgumentList_5048.addAssign_operation (var_selector_5305, GALGAS_optionalMethodActualArgument::constructor_actualInputJoker (GALGAS_bool (true), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 170)), GALGAS_uint ((uint32_t) 0U)  COMMA_SOURCE_FILE ("instruction-if.galgas", 170))  COMMA_SOURCE_FILE ("instruction-if.galgas", 170)) ;
+            var_optionalMethodActualArgumentList_5048.addAssign_operation (var_selector_5305, GALGAS_optionalMethodActualArgument::constructor_actualInputJoker (GALGAS_bool (true), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 170)), GALGAS_uint (uint32_t (0U))  COMMA_SOURCE_FILE ("instruction-if.galgas", 170))  COMMA_SOURCE_FILE ("instruction-if.galgas", 170)) ;
           } break ;
           case 4: {
             GALGAS_luint var_repetitionCount_6229 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
@@ -15688,13 +15688,13 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_if_
             }
             enumGalgasBool test_4 = kBoolTrue ;
             if (kBoolTrue == test_4) {
-              test_4 = GALGAS_bool (kIsEqual, var_repetitionCount_6229.readProperty_uint ().objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+              test_4 = GALGAS_bool (kIsEqual, var_repetitionCount_6229.readProperty_uint ().objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
               if (kBoolTrue == test_4) {
                 TC_Array <C_FixItDescription> fixItArray5 ;
                 inCompiler->emitSemanticError (var_repetitionCount_6229.readProperty_location (), GALGAS_string ("the repetition count should be > 0"), fixItArray5  COMMA_SOURCE_FILE ("instruction-if.galgas", 178)) ;
               }
             }
-            cEnumerator_range enumerator_6571 (GALGAS_range (GALGAS_uint ((uint32_t) 0U), var_repetitionCount_6229.readProperty_uint ().substract_operation (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 180))), kENUMERATION_UP) ;
+            cEnumerator_range enumerator_6571 (GALGAS_range (GALGAS_uint (uint32_t (0U)), var_repetitionCount_6229.readProperty_uint ().substract_operation (GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 180))), kENUMERATION_UP) ;
             while (enumerator_6571.hasCurrentObject ()) {
               var_optionalMethodActualArgumentList_5048.addAssign_operation (var_selector_5305, GALGAS_optionalMethodActualArgument::constructor_actualInputJoker (GALGAS_bool (false), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 181)), enumerator_6571.current (HERE)  COMMA_SOURCE_FILE ("instruction-if.galgas", 181))  COMMA_SOURCE_FILE ("instruction-if.galgas", 181)) ;
               enumerator_6571.gotoNextObject () ;
@@ -16978,7 +16978,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_swi
         GALGAS_luint var_n_3174 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
         inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_uint_33__32_ COMMA_SOURCE_FILE ("instruction-switch.galgas", 90)) ;
         inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2A_ COMMA_SOURCE_FILE ("instruction-switch.galgas", 91)) ;
-        cEnumerator_range enumerator_3220 (GALGAS_range (GALGAS_uint ((uint32_t) 0U), var_n_3174.readProperty_uint ().substract_operation (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 92))), kENUMERATION_UP) ;
+        cEnumerator_range enumerator_3220 (GALGAS_range (GALGAS_uint (uint32_t (0U)), var_n_3174.readProperty_uint ().substract_operation (GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 92))), kENUMERATION_UP) ;
         while (enumerator_3220.hasCurrentObject ()) {
           outArgument_outAssociatedValuesExtraction.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("instruction-switch.galgas", 93)), GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("instruction-switch.galgas", 93)), GALGAS_bool (false)  COMMA_SOURCE_FILE ("instruction-switch.galgas", 93)) ;
           enumerator_3220.gotoNextObject () ;

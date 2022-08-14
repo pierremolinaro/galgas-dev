@@ -104,22 +104,20 @@ refclass @unaryMinusExpressionForGeneration : @semanticExpressionForGeneration {
 
 #·······················································································································
 
-override method @unaryMinusExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression
-{
+override method @unaryMinusExpressionForGeneration generateExpression ?!@string ioGeneratedCode
+                                                                      ?!@stringset ioInclusionSet
+                                                                      ?!@uint ioTemporaryVariableIndex
+                                                                      ?!@stringset ioUnusedVariableCppNameSet
+                                                                      !@string outCppExpression {
   [self.mExpression.mResultType addHeaderFileName !?ioInclusionSet]
-#--- Left operand
+#--- Operand
   [self.mExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     ?let operand
-   ]
+  ]
 #--- Generate Comparison
   outCppExpression = operand + ".operator_unary_minus (" + compilerCppName () + [self.mLocation commaSourceFile] + ")"
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]

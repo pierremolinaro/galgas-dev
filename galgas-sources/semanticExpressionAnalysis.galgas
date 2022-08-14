@@ -63,68 +63,100 @@ proc checkAssignmentTypes
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc checkAssignmentTypeWithImplicitGetterCall
-  ?let @unifiedTypeMapEntry inTargetType
-  ?let @unifiedTypeMapEntry inSourceType
-  ?let @location inErrorLocation
-  ?!@semanticExpressionForGeneration ioExpression
-{
-  var @unifiedTypeMapEntry sourceType = inSourceType
-  var @bool ok = inTargetType == inSourceType
-  loop (@uint.max) while (not ok) & (not [[sourceType definition].mSuperType isNull]) do
-    sourceType = [sourceType definition].mSuperType
-    ok = inTargetType == sourceType
+proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTargetType
+                                                ?let @unifiedTypeMapEntry inSourceType
+                                                ?let @location inErrorLocation
+                                                ?!@semanticExpressionForGeneration ioExpression {
+  var handled = false
+  if let bigIntSource = ioExpression as @literalBigIntExpressionForGeneration then
+    if "uint" == [inTargetType definition].mTypeName then
+      let bigIntValue = bigIntSource.mValue
+      if (bigIntValue < 0G) | (bigIntValue >= (1G << 32)) then
+        error ioExpression.mLocation : "literal value does not fit in an @uint"
+      end
+      ioExpression = @literalUIntExpressionForGeneration.new {!inTargetType !ioExpression.mLocation ![bigIntValue uint]}
+      handled = true
+    elsif "sint" == [inTargetType definition].mTypeName then
+      let bigIntValue = bigIntSource.mValue
+      if (bigIntValue < -(1G << 31)) | (bigIntValue >= (1G << 31)) then
+        error ioExpression.mLocation : "literal value does not fit in an @sint"
+      end
+      ioExpression = @literalSIntExpressionForGeneration.new {!inTargetType !ioExpression.mLocation ![bigIntValue uint]}
+      handled = true
+    elsif "uint64" == [inTargetType definition].mTypeName then
+      let bigIntValue = bigIntSource.mValue
+      if (bigIntValue < 0G) | (bigIntValue >= (1G << 64)) then
+        error ioExpression.mLocation : "literal value does not fit in an @uint64"
+      end
+      ioExpression = @literalUInt64ExpressionForGeneration.new {!inTargetType !ioExpression.mLocation ![bigIntValue uint]}
+      handled = true
+    elsif "sint64" == [inTargetType definition].mTypeName then
+      let bigIntValue = bigIntSource.mValue
+      if (bigIntValue < -(1G << 63)) | (bigIntValue >= (1G << 63)) then
+        error ioExpression.mLocation : "literal value does not fit in an @sint64"
+      end
+      ioExpression = @literalSInt64ExpressionForGeneration.new {!inTargetType !ioExpression.mLocation ![bigIntValue uint]}
+      handled = true
+    end
   end
-  if not ok, let [[inTargetType definition].mTypeKindEnum weakReferenceType ?referenceType: let targetType] then
-    sourceType = inSourceType
-    ok = targetType == sourceType
+  if not handled then
+    var @unifiedTypeMapEntry sourceType = inSourceType
+    var @bool ok = inTargetType == inSourceType
     loop (@uint.max) while (not ok) & (not [[sourceType definition].mSuperType isNull]) do
       sourceType = [sourceType definition].mSuperType
+      ok = inTargetType == sourceType
+    end
+    if not ok, let [[inTargetType definition].mTypeKindEnum weakReferenceType ?referenceType: let targetType] then
+      sourceType = inSourceType
       ok = targetType == sourceType
+      loop (@uint.max) while (not ok) & (not [[sourceType definition].mSuperType isNull]) do
+        sourceType = [sourceType definition].mSuperType
+        ok = targetType == sourceType
+      end
     end
-  end
-#--- Check for a direct property access or for a conversion getter
-  if not ok, let [[inSourceType definition].mPropertyMap searchKey ![inTargetType definition].mTypeName.string ?let isPublic ?* ?let propertyType] then
-    if not isPublic then
-      error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
+  #--- Check for a direct property access or for a conversion getter
+    if not ok, let [[inSourceType definition].mPropertyMap searchKey ![inTargetType definition].mTypeName.string ?let isPublic ?* ?let propertyType] then
+      if not isPublic then
+        error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
+      end
+      let conversionExpression = @structPropertyAccessExpressionForGeneration.new {
+        !propertyType
+        !inErrorLocation
+        !ioExpression
+        ![inTargetType definition].mTypeName.string 
+      }
+      ioExpression = conversionExpression
+      ok = propertyType == inTargetType
+    elsif (not ok) && [[inSourceType definition].mGetterMap hasKey ![inTargetType definition].mTypeName.string] then
+      [[inSourceType definition].mGetterMap searchKey
+        ![inTargetType definition].mTypeName
+        ?let kind
+        ?let @functionSignature argumentTypeList
+        ?*
+        ?let hasCompilerArgument
+        ?let returnedType
+        ?2*
+      ]
+      ok = ([argumentTypeList length] == 0) & (returnedType == inTargetType)
+   #--- Add conversion expression
+      let conversionExpression = @getterCallExpressionForGeneration.new {
+        !inTargetType
+        !inErrorLocation
+        !kind
+        !ioExpression
+        !{}
+        ![inTargetType definition].mTypeName.string
+        !{}
+        !hasCompilerArgument
+      }
+      ioExpression = conversionExpression
     end
-    let conversionExpression = @structPropertyAccessExpressionForGeneration.new {
-      !propertyType
-      !inErrorLocation
-      !ioExpression
-      ![inTargetType definition].mTypeName.string 
-    }
-    ioExpression = conversionExpression
-    ok = propertyType == inTargetType
-  elsif (not ok) && [[inSourceType definition].mGetterMap hasKey ![inTargetType definition].mTypeName.string] then
-    [[inSourceType definition].mGetterMap searchKey
-      ![inTargetType definition].mTypeName
-      ?let kind
-      ?let @functionSignature argumentTypeList
-      ?*
-      ?let hasCompilerArgument
-      ?let returnedType
-      ?2*
-    ]
-    ok = ([argumentTypeList length] == 0) & (returnedType == inTargetType)
- #--- Add conversion expression
-    let conversionExpression = @getterCallExpressionForGeneration.new {
-      !inTargetType
-      !inErrorLocation
-      !kind
-      !ioExpression
-      !{}
-      ![inTargetType definition].mTypeName.string
-      !{}
-      !hasCompilerArgument
-    }
-    ioExpression = conversionExpression
-  end
-  if not ok then
-    error inErrorLocation
-     : "target object type is '@" + [inTargetType definition].mTypeName.string + "' and cannot be assigned from an '@" + [inSourceType definition].mTypeName.string
-     + "' object; this type have no '"
-    + [inTargetType definition].mTypeName.string + "' getter without argument that returns a '@" + [inTargetType definition].mTypeName.string + "' object"
+    if not ok then
+      error inErrorLocation
+       : "target object type is '@" + [inTargetType definition].mTypeName.string + "' and cannot be assigned from an '@" + [inSourceType definition].mTypeName.string
+       + "' object; this type have no '"
+      + [inTargetType definition].mTypeName.string + "' getter without argument that returns a '@" + [inTargetType definition].mTypeName.string + "' object"
+    end
   end
 }
 

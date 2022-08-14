@@ -56,6 +56,9 @@
                         <rect key="frame" x="202" y="77" width="91" height="22"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="408">
+                            <numberFormatter key="formatter" formatterBehavior="default10_4" localizesFormat="NO" usesGroupingSeparator="NO" lenient="YES" formatWidth="-1" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="42" id="151" userLabel="Formater for goto Line">
+                                <decimal key="minimum" value="1"/>
+                            </numberFormatter>
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -787,9 +790,6 @@ Gw
             </connections>
             <point key="canvasLocation" x="139" y="643.5"/>
         </window>
-        <numberFormatter formatterBehavior="default10_4" localizesFormat="NO" usesGroupingSeparator="NO" lenient="YES" formatWidth="-1" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="42" id="151" userLabel="Formater for goto Line">
-            <decimal key="minimum" value="1"/>
-        </numberFormatter>
         <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="204" userLabel="updateFromFS" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>

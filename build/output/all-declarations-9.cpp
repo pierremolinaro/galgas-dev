@@ -6265,7 +6265,7 @@ void extensionMethod_generateFixIt (const GALGAS_fixitListForGeneration inObject
                                     COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outFixItArrayCppName.drop () ; // Release 'out' argument
   outArgument_outFixItArrayCppName = GALGAS_string ("fixItArray").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("instruction-error.galgas", 382)), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 382)) ;
-  ioArgument_ioTemporaryVariableIndex.plusAssign_operation(GALGAS_uint ((uint32_t) 1U), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 383)) ;
+  ioArgument_ioTemporaryVariableIndex.plusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 383)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("TC_Array <C_FixItDescription> ").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 384)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 384)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 384)) ;
   const GALGAS_fixitListForGeneration temp_0 = inObject ;
   cEnumerator_fixitListForGeneration enumerator_14671 (temp_0, kENUMERATION_UP) ;

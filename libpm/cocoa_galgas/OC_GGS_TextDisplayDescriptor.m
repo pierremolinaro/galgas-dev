@@ -293,9 +293,8 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
     range.location = lastStartOfLine ;
     range.length = 0 ;
   }
-  NSBeep () ;
-  [mTextView setSelectedRange:range] ;
-  [mTextView scrollRangeToVisible:range] ;
+  [mTextView setSelectedRange: range] ;
+  [mTextView scrollRangeToVisible: range] ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

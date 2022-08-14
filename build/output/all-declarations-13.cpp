@@ -6111,11 +6111,11 @@ void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_gui
       GALGAS_uint var_displayStyle_8464 ;
       switch (select_galgas_34_GuiComponentSyntax_2 (inCompiler)) {
       case 1: {
-        var_displayStyle_8464 = GALGAS_uint ((uint32_t) 0U) ;
+        var_displayStyle_8464 = GALGAS_uint (uint32_t (0U)) ;
       } break ;
       case 2: {
         inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2A_ COMMA_SOURCE_FILE ("guiCompilation.galgas", 261)) ;
-        var_displayStyle_8464 = GALGAS_uint ((uint32_t) 1U) ;
+        var_displayStyle_8464 = GALGAS_uint (uint32_t (1U)) ;
       } break ;
       default:
         break ;
@@ -6128,11 +6128,11 @@ void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_gui
         GALGAS_uint var_displayFlags_8699 ;
         switch (select_galgas_34_GuiComponentSyntax_4 (inCompiler)) {
         case 1: {
-          var_displayFlags_8699 = GALGAS_uint ((uint32_t) 0U) ;
+          var_displayFlags_8699 = GALGAS_uint (uint32_t (0U)) ;
         } break ;
         case 2: {
           inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2D_ COMMA_SOURCE_FILE ("guiCompilation.galgas", 271)) ;
-          var_displayFlags_8699 = GALGAS_uint ((uint32_t) 65535U) ;
+          var_displayFlags_8699 = GALGAS_uint (uint32_t (65535U)) ;
         } break ;
         case 3: {
           inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__28_ COMMA_SOURCE_FILE ("guiCompilation.galgas", 274)) ;
@@ -6140,7 +6140,7 @@ void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_gui
           inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_uint_33__32_ COMMA_SOURCE_FILE ("guiCompilation.galgas", 275)) ;
           enumGalgasBool test_2 = kBoolTrue ;
           if (kBoolTrue == test_2) {
-            test_2 = GALGAS_bool (kIsSupOrEqual, var_leadingStrip_8893.readProperty_uint ().objectCompare (GALGAS_uint ((uint32_t) 15U))).boolEnum () ;
+            test_2 = GALGAS_bool (kIsSupOrEqual, var_leadingStrip_8893.readProperty_uint ().objectCompare (GALGAS_uint (uint32_t (15U)))).boolEnum () ;
             if (kBoolTrue == test_2) {
               TC_Array <C_FixItDescription> fixItArray3 ;
               inCompiler->emitSemanticError (var_leadingStrip_8893.readProperty_location (), GALGAS_string ("leading strip should be < 15"), fixItArray3  COMMA_SOURCE_FILE ("guiCompilation.galgas", 277)) ;
@@ -6151,13 +6151,13 @@ void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_gui
           inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_uint_33__32_ COMMA_SOURCE_FILE ("guiCompilation.galgas", 280)) ;
           enumGalgasBool test_4 = kBoolTrue ;
           if (kBoolTrue == test_4) {
-            test_4 = GALGAS_bool (kIsSupOrEqual, var_endingStrip_9068.readProperty_uint ().objectCompare (GALGAS_uint ((uint32_t) 15U))).boolEnum () ;
+            test_4 = GALGAS_bool (kIsSupOrEqual, var_endingStrip_9068.readProperty_uint ().objectCompare (GALGAS_uint (uint32_t (15U)))).boolEnum () ;
             if (kBoolTrue == test_4) {
               TC_Array <C_FixItDescription> fixItArray5 ;
               inCompiler->emitSemanticError (var_endingStrip_9068.readProperty_location (), GALGAS_string ("tail strip should be < 15"), fixItArray5  COMMA_SOURCE_FILE ("guiCompilation.galgas", 282)) ;
             }
           }
-          var_displayFlags_8699 = var_leadingStrip_8893.readProperty_uint ().left_shift_operation (GALGAS_uint ((uint32_t) 4U), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 284)).operator_or (var_endingStrip_9068.readProperty_uint () COMMA_SOURCE_FILE ("guiCompilation.galgas", 284)) ;
+          var_displayFlags_8699 = var_leadingStrip_8893.readProperty_uint ().left_shift_operation (GALGAS_uint (uint32_t (4U)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 284)).operator_or (var_endingStrip_9068.readProperty_uint () COMMA_SOURCE_FILE ("guiCompilation.galgas", 284)) ;
           inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__29_ COMMA_SOURCE_FILE ("guiCompilation.galgas", 285)) ;
         } break ;
         default:
