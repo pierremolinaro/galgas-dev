@@ -1,0 +1,56 @@
+{
+  "_buildCommand2" : {
+    "command" : "build",
+    "skipDependencies" : false,
+    "style" : "buildOnly"
+  },
+  "buildCommand" : "build",
+  "configuredTargets" : [
+    {
+      "guid" : "a936e7576217e73475f23c6fc95b5b03525802fbd139e8fc955d1956d0930729"
+    }
+  ],
+  "containerPath" : "/Volumes/dev-svn/galgas-dev/testsuite/xcode-project/testsuite.xcodeproj",
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "activeArchitecture" : "x86_64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "platform" : "macosx",
+      "sdk" : "macosx13.0",
+      "sdkVariant" : "macos",
+      "supportedArchitectures" : [
+        "x86_64h",
+        "x86_64"
+      ],
+      "targetArchitecture" : "x86_64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Volumes/dev-svn/galgas-dev/testsuite/xcode-project/build/Intermediates.noindex",
+      "buildProductsPath" : "/Volumes/dev-svn/galgas-dev/testsuite/xcode-project/build/Products",
+      "derivedDataPath" : "/Volumes/dev-svn/XCode-DerivedData",
+      "indexDataStoreFolderPath" : "/Volumes/dev-svn/XCode-DerivedData/testsuite-anyhtglfykcwxhfsdkdkeziwmqko/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Volumes/dev-svn/XCode-DerivedData/testsuite-anyhtglfykcwxhfsdkdkeziwmqko/Index.noindex/PrecompiledHeaders",
+      "pchPath" : "/Volumes/dev-svn/galgas-dev/testsuite/xcode-project/build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Default",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO"
+        }
+      }
+    }
+  },
+  "schemeCommand" : "launch",
+  "schemeCommand2" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

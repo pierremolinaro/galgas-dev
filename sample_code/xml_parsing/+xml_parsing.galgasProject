@@ -2,7 +2,7 @@ project (1:0:0) -> "xml_parsing" {
 #--- Targets
   %makefile-macosx
   %makefile-unix
-  %LatestMacOS
+  %MacOS
   %applicationBundleBase : "fr.what"
 #--- Sources
   "galgas-sources/xml_types.galgas"

@@ -888,18 +888,6 @@ void callExtensionMethod_checkUnicodeConstants (const class cPtr_lexicalFunction
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-typedef class GALGAS_bool (*enterExtensionGetter_lexicalFunctionExpressionAST_callsDefinedUnicodeTestFunctions) (const class cPtr_lexicalFunctionExpressionAST * inObject,
-                                                                                                                 const class GALGAS_stringset constinArgument0,
-                                                                                                                 class C_Compiler * inCompiler
-                                                                                                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_callsDefinedUnicodeTestFunctions (const int32_t inClassIndex,
-                                                            enterExtensionGetter_lexicalFunctionExpressionAST_callsDefinedUnicodeTestFunctions inMethod) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
 class GALGAS_bool callExtensionGetter_callsDefinedUnicodeTestFunctions (const class cPtr_lexicalFunctionExpressionAST * inObject,
                                                                         const GALGAS_stringset constin_inDefinedUnicodeFunctionSet,
                                                                         C_Compiler * inCompiler
@@ -909,17 +897,6 @@ class GALGAS_bool callExtensionGetter_callsDefinedUnicodeTestFunctions (const cl
 //
 //Abstract extension getter '@lexicalFunctionExpressionAST generateForUnicodeTestFunctions'
 //
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_string (*enterExtensionGetter_lexicalFunctionExpressionAST_generateForUnicodeTestFunctions) (const class cPtr_lexicalFunctionExpressionAST * inObject,
-                                                                                                                  class C_Compiler * inCompiler
-                                                                                                                  COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_generateForUnicodeTestFunctions (const int32_t inClassIndex,
-                                                           enterExtensionGetter_lexicalFunctionExpressionAST_generateForUnicodeTestFunctions inMethod) ;
-
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_string callExtensionGetter_generateForUnicodeTestFunctions (const class cPtr_lexicalFunctionExpressionAST * inObject,
@@ -940,18 +917,6 @@ class GALGAS_string extensionGetter_lexicalTypeBaseName (const class GALGAS_lexi
 //
 //Abstract extension getter '@lexicalExpressionAST generateConditionCode'
 //
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_string (*enterExtensionGetter_lexicalExpressionAST_generateConditionCode) (const class cPtr_lexicalExpressionAST * inObject,
-                                                                                                const class GALGAS_lexiqueAnalysisContext constinArgument0,
-                                                                                                class C_Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_generateConditionCode (const int32_t inClassIndex,
-                                                 enterExtensionGetter_lexicalExpressionAST_generateConditionCode inMethod) ;
-
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_string callExtensionGetter_generateConditionCode (const class cPtr_lexicalExpressionAST * inObject,
@@ -1159,17 +1124,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueAnalysisCont
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-typedef class GALGAS_string (*enterExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument) (const class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
-                                                                                                                                      class C_Compiler * inCompiler
-                                                                                                                                      COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_generateRoutineOrFunctionArgument (const int32_t inClassIndex,
-                                                             enterExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument inMethod) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
 class GALGAS_string callExtensionGetter_generateRoutineOrFunctionArgument (const class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
                                                                            C_Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
@@ -1178,17 +1132,6 @@ class GALGAS_string callExtensionGetter_generateRoutineOrFunctionArgument (const
 //
 //Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateRoutineArgument'
 //
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_string (*enterExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument) (const class cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
-                                                                                                                     class C_Compiler * inCompiler
-                                                                                                                     COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_generateRoutineArgument (const int32_t inClassIndex,
-                                                   enterExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument inMethod) ;
-
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_string callExtensionGetter_generateRoutineArgument (const class cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
@@ -1201,18 +1144,6 @@ class GALGAS_string callExtensionGetter_generateRoutineArgument (const class cPt
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-typedef class GALGAS_string (*enterExtensionGetter_lexicalSendDefaultActionAST_generateDefaultSendCode) (const class cPtr_lexicalSendDefaultActionAST * inObject,
-                                                                                                         const class GALGAS_string constinArgument0,
-                                                                                                         class C_Compiler * inCompiler
-                                                                                                         COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_generateDefaultSendCode (const int32_t inClassIndex,
-                                                   enterExtensionGetter_lexicalSendDefaultActionAST_generateDefaultSendCode inMethod) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
 class GALGAS_string callExtensionGetter_generateDefaultSendCode (const class cPtr_lexicalSendDefaultActionAST * inObject,
                                                                  const GALGAS_string constin_inScannerClassName,
                                                                  C_Compiler * inCompiler
@@ -1222,19 +1153,6 @@ class GALGAS_string callExtensionGetter_generateDefaultSendCode (const class cPt
 //
 //Abstract extension getter '@lexicalInstructionAST generateInstructionCode'
 //
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_string (*enterExtensionGetter_lexicalInstructionAST_generateInstructionCode) (const class cPtr_lexicalInstructionAST * inObject,
-                                                                                                   const class GALGAS_string constinArgument0,
-                                                                                                   const class GALGAS_lexiqueAnalysisContext constinArgument1,
-                                                                                                   class C_Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_generateInstructionCode (const int32_t inClassIndex,
-                                                   enterExtensionGetter_lexicalInstructionAST_generateInstructionCode inMethod) ;
-
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_string callExtensionGetter_generateInstructionCode (const class cPtr_lexicalInstructionAST * inObject,
@@ -1249,19 +1167,6 @@ class GALGAS_string callExtensionGetter_generateInstructionCode (const class cPt
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-typedef class GALGAS_string (*enterExtensionGetter_abstractLexicalRuleAST_generateCode) (const class cPtr_abstractLexicalRuleAST * inObject,
-                                                                                         const class GALGAS_string constinArgument0,
-                                                                                         const class GALGAS_lexiqueAnalysisContext constinArgument1,
-                                                                                         class C_Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_generateCode (const int32_t inClassIndex,
-                                        enterExtensionGetter_abstractLexicalRuleAST_generateCode inMethod) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
 class GALGAS_string callExtensionGetter_generateCode (const class cPtr_abstractLexicalRuleAST * inObject,
                                                       const GALGAS_string constin_inScannerClassName,
                                                       const GALGAS_lexiqueAnalysisContext constin_inLexiqueAnalysisContext,
@@ -1272,18 +1177,6 @@ class GALGAS_string callExtensionGetter_generateCode (const class cPtr_abstractL
 //
 //Abstract extension getter '@lexicalExpressionAST generateCocoaConditionCode'
 //
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_string (*enterExtensionGetter_lexicalExpressionAST_generateCocoaConditionCode) (const class cPtr_lexicalExpressionAST * inObject,
-                                                                                                     const class GALGAS_lexiqueAnalysisContext constinArgument0,
-                                                                                                     class C_Compiler * inCompiler
-                                                                                                     COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_generateCocoaConditionCode (const int32_t inClassIndex,
-                                                      enterExtensionGetter_lexicalExpressionAST_generateCocoaConditionCode inMethod) ;
-
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_string callExtensionGetter_generateCocoaConditionCode (const class cPtr_lexicalExpressionAST * inObject,
@@ -1297,17 +1190,6 @@ class GALGAS_string callExtensionGetter_generateCocoaConditionCode (const class 
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-typedef class GALGAS_string (*enterExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument) (const class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
-                                                                                                                                           class C_Compiler * inCompiler
-                                                                                                                                           COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_generateCocoaRoutineOrFunctionArgument (const int32_t inClassIndex,
-                                                                  enterExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument inMethod) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
 class GALGAS_string callExtensionGetter_generateCocoaRoutineOrFunctionArgument (const class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
                                                                                 C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) ;
@@ -1316,18 +1198,6 @@ class GALGAS_string callExtensionGetter_generateCocoaRoutineOrFunctionArgument (
 //
 //Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateCocoaRoutineArgument'
 //
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_string (*enterExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument) (const class cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
-                                                                                                                          const class GALGAS_lexiqueAnalysisContext constinArgument0,
-                                                                                                                          class C_Compiler * inCompiler
-                                                                                                                          COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_generateCocoaRoutineArgument (const int32_t inClassIndex,
-                                                        enterExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument inMethod) ;
-
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_string callExtensionGetter_generateCocoaRoutineArgument (const class cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
@@ -1341,18 +1211,6 @@ class GALGAS_string callExtensionGetter_generateCocoaRoutineArgument (const clas
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-typedef class GALGAS_string (*enterExtensionGetter_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode) (const class cPtr_lexicalSendDefaultActionAST * inObject,
-                                                                                                              const class GALGAS_string constinArgument0,
-                                                                                                              class C_Compiler * inCompiler
-                                                                                                              COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_generateCocoaDefaultSendCode (const int32_t inClassIndex,
-                                                        enterExtensionGetter_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode inMethod) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
 class GALGAS_string callExtensionGetter_generateCocoaDefaultSendCode (const class cPtr_lexicalSendDefaultActionAST * inObject,
                                                                       const GALGAS_string constin_inScannerClassName,
                                                                       C_Compiler * inCompiler
@@ -1362,19 +1220,6 @@ class GALGAS_string callExtensionGetter_generateCocoaDefaultSendCode (const clas
 //
 //Abstract extension getter '@lexicalInstructionAST generateCocoaInstructionCode'
 //
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_string (*enterExtensionGetter_lexicalInstructionAST_generateCocoaInstructionCode) (const class cPtr_lexicalInstructionAST * inObject,
-                                                                                                        const class GALGAS_string constinArgument0,
-                                                                                                        const class GALGAS_lexiqueAnalysisContext constinArgument1,
-                                                                                                        class C_Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_generateCocoaInstructionCode (const int32_t inClassIndex,
-                                                        enterExtensionGetter_lexicalInstructionAST_generateCocoaInstructionCode inMethod) ;
-
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_string callExtensionGetter_generateCocoaInstructionCode (const class cPtr_lexicalInstructionAST * inObject,
@@ -1387,19 +1232,6 @@ class GALGAS_string callExtensionGetter_generateCocoaInstructionCode (const clas
 //
 //Abstract extension getter '@abstractLexicalRuleAST generateCocoaCode'
 //
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_string (*enterExtensionGetter_abstractLexicalRuleAST_generateCocoaCode) (const class cPtr_abstractLexicalRuleAST * inObject,
-                                                                                              const class GALGAS_string constinArgument0,
-                                                                                              const class GALGAS_lexiqueAnalysisContext constinArgument1,
-                                                                                              class C_Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_generateCocoaCode (const int32_t inClassIndex,
-                                             enterExtensionGetter_abstractLexicalRuleAST_generateCocoaCode inMethod) ;
-
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_string callExtensionGetter_generateCocoaCode (const class cPtr_abstractLexicalRuleAST * inObject,

@@ -2,7 +2,7 @@ project (1:0:0) -> "LR1_grammar"{
 #--- Targets
   %makefile-macosx
   %makefile-unix
-  %LatestMacOS
+  %MacOS
   %applicationBundleBase : "fr.what"
 #--- Sources
   "galgas-sources/LR1_grammar_lexique.galgas"

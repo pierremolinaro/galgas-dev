@@ -2950,17 +2950,6 @@ void extensionMethod_checkAutomatonStates (const class GALGAS_localVarManager in
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-typedef class GALGAS_unifiedTypeDefinition (*enterExtensionGetter_unifiedTypeMapElementClass_definition) (const class cPtr_unifiedTypeMapElementClass * inObject,
-                                                                                                          C_Compiler * inCompiler
-                                                                                                          COMMA_LOCATION_ARGS) ;
- 
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_definition (const int32_t inClassIndex,
-                                      enterExtensionGetter_unifiedTypeMapElementClass_definition inGetter) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
 class GALGAS_unifiedTypeDefinition callExtensionGetter_definition (const cPtr_unifiedTypeMapElementClass * inObject,
                                                                    class C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;

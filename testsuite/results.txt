@@ -310,7 +310,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (105 types)
+--- Type list (103 types)
   @2lstringlist
   @2lstringlist-element
   @2stringlist
@@ -374,8 +374,6 @@ LOGGING r: <@uint:5>
   @luint64
   @luintlist
   @luintlist-element
-  @maTable
-  @maTable-entry
   @myList
   @myList-element
   @myListMap
@@ -424,10 +422,6 @@ Function 'functionTest' exists:true
 LOGGING object: 
 LOGGING y: <@uint:2>
 LOGGING result: 
-*************************************** begin of mapentry test
-LOGGING [table count]: <@uint:0>
-LOGGING Entry: : <@maTable-entry regular (key "abc", unsolved)>
-LOGGING [table unsolvedEntryCount]: <@uint:1>
 *************************************** begin of extension reader test
 LOGGING s: <@string:"-3-4-4">
 *************************************** begin of extension setter test

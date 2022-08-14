@@ -2,7 +2,7 @@ project (1:0:0) -> "LL1_expression" {
 #--- Targets
   %makefile-macosx
   %makefile-unix
-  %LatestMacOS
+  %MacOS
   %applicationBundleBase : "fr.what"
 #--- Sources
   "galgas-sources/LL1_expression_lexique.galgas"

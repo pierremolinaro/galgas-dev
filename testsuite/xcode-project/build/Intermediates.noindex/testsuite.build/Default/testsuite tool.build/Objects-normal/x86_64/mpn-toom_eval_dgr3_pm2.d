@@ -1,0 +1,5 @@
+dependencies: \
+  /Volumes/dev-svn/galgas-dev/testsuite/build/libpm/gmp/mpn-toom_eval_dgr3_pm2.c \
+  /Volumes/dev-svn/galgas-dev/testsuite/build/libpm/gmp/gmp.h \
+  /Volumes/dev-svn/galgas-dev/testsuite/build/libpm/gmp/gmp-impl.h \
+  /Volumes/dev-svn/galgas-dev/testsuite/build/libpm/gmp/64-mp_bases.h

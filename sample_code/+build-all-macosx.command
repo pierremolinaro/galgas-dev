@@ -18,8 +18,8 @@ ${DIR}/logo/makefile-macosx/logo  ${DIR}/logo/exemples-logo/hexagone.logo &&
 ${DIR}/logo/makefile-macosx/logo  ${DIR}/logo/exemples-logo/octogone.logo &&
 ${DIR}/logo/makefile-macosx/logo  ${DIR}/logo/exemples-logo/pentagone.logo &&
 #----------------- LBB
-$DIR/../makefile-macosx/galgas --generate-many-cpp-files --Werror ${DIR}/lbb/+lbb.galgasProject &&
-python ${DIR}/lbb/makefile-macosx/build.py &&
+# $DIR/../makefile-macosx/galgas --generate-many-cpp-files --Werror ${DIR}/lbb/+lbb.galgasProject &&
+# python ${DIR}/lbb/makefile-macosx/build.py &&
 #----------------- class_sample_language
 $DIR/../makefile-macosx/galgas --generate-many-cpp-files --Werror ${DIR}/class_sample_language/+class_sample_language.galgasProject &&
 python ${DIR}/class_sample_language/makefile-macosx/build.py &&

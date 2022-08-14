@@ -1,7 +1,7 @@
 project (1:0:0) -> "testsuite" {
   %makefile-macosx
   %makefile-win32-on-macosx
-  %LatestMacOS
+  %MacOS
   %applicationBundleBase : "fr.what"
 
   "galgas-sources/testsuite_lexique.galgas"
@@ -17,7 +17,7 @@ project (1:0:0) -> "testsuite" {
   "galgas-sources/testsuite_map.galgas"
   "galgas-sources/testsuite_functions.galgas"
   "galgas-sources/testsuite_introspection.galgas"
-  "galgas-sources/testsuite_mapentry.galgas"
+#  "galgas-sources/testsuite_mapentry.galgas"
   "galgas-sources/testsuite_extension_readers.galgas"
   "galgas-sources/testsuite_extension_methods.galgas"
   "galgas-sources/testsuite_extension_setters.galgas"

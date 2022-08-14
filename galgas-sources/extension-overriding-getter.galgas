@@ -222,7 +222,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
     ?let @formalInputParameterListForGeneration formalParameterListForGeneration
     ?let @unifiedTypeMapEntry returnType
     ?let @string returnVariableCppName
-    ?let @semanticInstructionListForGeneration semanticInstructionListForGenerationNew
+    ?let @semanticInstructionListForGeneration semanticInstructionListForGeneration
   )
 #--- Check Signature
   if baseTypeName != "" then
@@ -248,7 +248,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
       !returnVariableCppName
       !formalParameterListForGeneration
       ![selfType definition].mAllTypedPropertyList
-      !semanticInstructionListForGenerationNew
+      !semanticInstructionListForGeneration
     }
 }
 
@@ -301,6 +301,7 @@ override method @overrideExtensionGetterForGeneration appendSpecificImplementati
                                                               ?let @unifiedTypeMap unused inTypeMap
                                                               ?!@stringset ioInclusionSet
                                                               !@string outImplementation {
+  ioInclusionSet += !"class-" + [[self.mReceiverType definition].mTypeName.string fileNameRepresentation]
   generateExtensionGetterNew (
     !"cPtr_" + [[self.mReceiverType definition].mTypeName.string identifierRepresentation] + "::getter_" + [self.mOverridingExtensionGetterName identifierRepresentation]
     !?ioInclusionSet

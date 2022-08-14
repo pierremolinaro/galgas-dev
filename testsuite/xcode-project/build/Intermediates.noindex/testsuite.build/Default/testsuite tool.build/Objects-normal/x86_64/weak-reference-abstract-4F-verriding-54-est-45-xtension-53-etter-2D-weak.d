@@ -1,0 +1,66 @@
+dependencies: \
+  /Volumes/dev-svn/galgas-dev/testsuite/build/output/weak-reference-abstract-4F-verriding-54-est-45-xtension-53-etter-2D-weak.cpp \
+  ../build/libpm/galgas2/C_Compiler.h \
+  ../build/libpm/collections/TC_UniqueArray.h \
+  ../build/libpm/utilities/MF_Assert.h \
+  ../build/libpm/utilities/M_machine.h \
+  ../build/libpm/utilities/M_SourceLocation.h \
+  ../build/libpm/utilities/TF_Swap.h \
+  ../build/libpm/utilities/MF_MemoryControl.h \
+  ../build/libpm/utilities/cpp-allocation.h \
+  ../build/libpm/strings/C_String.h \
+  ../build/libpm/streams/C_ConsoleOut.h \
+  ../build/libpm/streams/C_ColoredConsole.h \
+  ../build/libpm/streams/AC_OutputStream.h \
+  ../build/libpm/strings/string_encodings.h \
+  ../build/libpm/utilities/C_Data.h \
+  ../build/libpm/collections/TC_Array.h \
+  ../build/libpm/utilities/C_SharedObject.h \
+  ../build/libpm/time/C_DateTime.h \
+  ../build/libpm/galgas2/C_LocationInSource.h \
+  ../build/libpm/galgas2/C_SourceTextInString.h \
+  ../build/libpm/galgas2/C_IssueWithFixIt.h \
+  ../build/libpm/galgas2/cIssueDescriptor.h \
+  ../build/libpm/galgas2/C_galgas_io.h \
+  ../build/libpm/galgas2/C_galgas_CLI_Options.h \
+  ../build/libpm/command_line_interface/C_BoolCommandLineOption.h \
+  ../build/libpm/command_line_interface/C_CommandLineOption.h \
+  ../build/libpm/command_line_interface/C_UIntCommandLineOption.h \
+  ../build/libpm/command_line_interface/C_StringCommandLineOption.h \
+  ../build/libpm/utilities/C_PrologueEpilogue.h \
+  ../build/output/weak-reference-abstract-4F-verriding-54-est-45-xtension-53-etter-2D-weak.h \
+  ../build/output/all-predefined-types.h ../build/libpm/time/C_Timer.h \
+  ../build/libpm/galgas2/AC_GALGAS_root.h \
+  ../build/libpm/galgas2/C_galgas_type_descriptor.h \
+  ../build/libpm/galgas2/typeComparisonResult.h \
+  ../build/libpm/galgas2/cGenericAbstractEnumerator.h \
+  ../build/libpm/galgas2/capCollectionElementArray.h \
+  ../build/libpm/galgas2/capCollectionElement.h \
+  ../build/libpm/galgas2/cEnumerator_range.h \
+  ../build/libpm/galgas2/AC_GALGAS_list.h \
+  ../build/libpm/galgas2/cCollectionElement.h \
+  ../build/libpm/galgas2/AC_GALGAS_sortedlist.h \
+  ../build/libpm/galgas2/AC_GALGAS_map.h \
+  ../build/libpm/galgas2/AC_GALGAS_reference_class.h \
+  ../build/libpm/galgas2/AC_GALGAS_value_class.h \
+  ../build/libpm/galgas2/AC_GALGAS_enumAssociatedValues.h \
+  ../build/libpm/galgas2/AC_GALGAS_graph.h \
+  ../build/libpm/galgas2/acStrongPtr_class.h \
+  ../build/libpm/galgas2/acPtr_class.h \
+  ../build/libpm/galgas2/cPtr_weakReference_proxy.h \
+  ../build/libpm/galgas2/AC_GALGAS_weak_reference.h \
+  ../build/libpm/command_line_interface/C_StringListCommandLineOption.h \
+  ../build/libpm/utilities/C_BigInt.h ../build/libpm/gmp/gmp.h \
+  ../build/libpm/bdd/C_BDD.h ../build/libpm/utilities/PMUInt128.h \
+  ../build/libpm/galgas2/cSortedListElement.h \
+  ../build/libpm/galgas2/capSortedListElement.h \
+  ../build/libpm/galgas2/C_galgas_function_descriptor.h \
+  ../build/libpm/galgas2/cObjectArray.h \
+  ../build/output/class-abstract-4F-verriding-54-est-45-xtension-53-etter.h \
+  ../build/output/class-abstract-4F-verriding-54-est-45-xtension-53-etter-1.h \
+  ../build/output/class--54-est-45-xtension-53-etter.h \
+  ../build/output/class--54-est-45-xtension-53-etter-1.h \
+  ../build/output/class-abstract-54-est-45-xtension-53-etter.h \
+  ../build/output/class-abstract-54-est-45-xtension-53-etter-1.h \
+  ../build/output/weak-reference--54-est-45-xtension-53-etter-2D-weak.h \
+  ../build/output/weak-reference-abstract-54-est-45-xtension-53-etter-2D-weak.h

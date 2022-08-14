@@ -1,0 +1,21 @@
+dependencies: \
+  /Volumes/dev-svn/galgas-dev/testsuite/build/libpm/streams/AC_OutputStream.cpp \
+  ../build/libpm/streams/AC_OutputStream.h \
+  ../build/libpm/utilities/MF_Assert.h \
+  ../build/libpm/utilities/M_machine.h \
+  ../build/libpm/utilities/M_SourceLocation.h \
+  ../build/libpm/strings/string_encodings.h \
+  ../build/libpm/strings/C_String.h \
+  ../build/libpm/collections/TC_UniqueArray.h \
+  ../build/libpm/utilities/TF_Swap.h \
+  ../build/libpm/utilities/MF_MemoryControl.h \
+  ../build/libpm/utilities/cpp-allocation.h \
+  ../build/libpm/streams/C_ConsoleOut.h \
+  /Volumes/dev-svn/galgas-dev/testsuite/build/libpm/streams/C_ColoredConsole.h \
+  ../build/libpm/utilities/C_Data.h \
+  ../build/libpm/collections/TC_Array.h \
+  ../build/libpm/utilities/C_SharedObject.h \
+  ../build/libpm/time/C_DateTime.h \
+  ../build/libpm/strings/unicode_character_cpp.h \
+  ../build/libpm/strings/unicode_character_base.h \
+  ../build/libpm/strings/unicode_string_routines.h

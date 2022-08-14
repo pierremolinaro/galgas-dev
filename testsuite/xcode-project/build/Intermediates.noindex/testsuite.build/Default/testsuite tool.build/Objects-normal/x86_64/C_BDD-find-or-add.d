@@ -1,0 +1,21 @@
+dependencies: \
+  /Volumes/dev-svn/galgas-dev/testsuite/build/libpm/bdd/C_BDD-find-or-add.cpp \
+  ../build/libpm/bdd/C_BDD.h ../build/libpm/utilities/M_machine.h \
+  ../build/libpm/utilities/PMUInt128.h ../build/libpm/strings/C_String.h \
+  ../build/libpm/utilities/M_SourceLocation.h \
+  ../build/libpm/collections/TC_UniqueArray.h \
+  ../build/libpm/utilities/MF_Assert.h \
+  ../build/libpm/utilities/TF_Swap.h \
+  ../build/libpm/utilities/MF_MemoryControl.h \
+  ../build/libpm/utilities/cpp-allocation.h \
+  ../build/libpm/streams/C_ConsoleOut.h \
+  ../build/libpm/streams/C_ColoredConsole.h \
+  ../build/libpm/streams/AC_OutputStream.h \
+  ../build/libpm/strings/string_encodings.h \
+  ../build/libpm/utilities/C_Data.h \
+  ../build/libpm/collections/TC_Array.h \
+  ../build/libpm/utilities/C_SharedObject.h \
+  ../build/libpm/time/C_DateTime.h ../build/libpm/utilities/C_BigInt.h \
+  ../build/libpm/gmp/gmp.h ../build/libpm/utilities/F_GetPrime.h \
+  ../build/libpm/utilities/C_PrologueEpilogue.h \
+  ../build/libpm/bdd/C_BDD-node.h ../build/libpm/time/C_Timer.h
