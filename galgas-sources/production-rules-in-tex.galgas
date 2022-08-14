@@ -29,7 +29,7 @@ filewrapper grammarRulesInTexDocumentTemplate in "+generation-templates/grammar_
 
 private func escapeForTex ?let @string inString -> @string result {
   result = ""
-  for idx in 0 ..< [inString length] do
+  for @uint idx in 0 ..< [inString length] do
     let c = [inString characterAtIndex !idx]
     if c == '_' then
       result += "\\_"
@@ -111,8 +111,8 @@ method @productionRuleListForGrammarAnalysis-element displayRule
   var @rowList rowArray = {!{!currentNode !"[firstPoint] {}"}}
   var @string arrows = ""
   var @string arrowStyle = "--"
-  var column = 1
-  var unusedMaxUsedRowIndex = 0 # Unused
+  var @uint column = 1
+  var @uint unusedMaxUsedRowIndex = 0 # Unused
   for (instruction) in self.mInstructionList do
     [instruction tikzNodeForSyntaxInstruction
       !?rowArray
@@ -169,11 +169,11 @@ method @productionRuleListForGrammarAnalysis-element displayRuleVertically
   rowArray += !{!currentNode !"[firstPoint] {}"}
   var @string arrows = ""
   var @string arrowStyle = "--"
-  var unusedMaxUsedRowIndex = 0 # Unused
+  var @uint unusedMaxUsedRowIndex = 0 # Unused
   var row = [self.mInstructionList length]
   for (instruction) in self.mInstructionList do
     row -= 1
-    var column = 1
+    var @uint column = 1
     [instruction tikzNodeForSyntaxInstruction
       !?rowArray
       !fromRow:row

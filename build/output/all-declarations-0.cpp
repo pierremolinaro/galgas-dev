@@ -16620,7 +16620,7 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_element_i
   GALGAS_uint var_n_1602 = var_count_1584.readProperty_uint () ;
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
-    test_0 = GALGAS_bool (kIsEqual, var_n_1602.objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+    test_0 = GALGAS_bool (kIsEqual, var_n_1602.objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 35)).getter_uint (inCompiler COMMA_SOURCE_FILE ("template-for-instruction.galgas", 35)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray1 ;
       inCompiler->emitSemanticError (var_count_1584.readProperty_location (), GALGAS_string ("this value should be > 0"), fixItArray1  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 36)) ;
@@ -16630,9 +16630,9 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_element_i
     uint32_t variant_1697 = var_n_1602.uintValue () ;
     bool loop_1697 = true ;
     while (loop_1697) {
-      loop_1697 = GALGAS_bool (kIsStrictSup, var_n_1602.objectCompare (GALGAS_uint (uint32_t (0U)))).isValid () ;
+      loop_1697 = GALGAS_bool (kIsStrictSup, var_n_1602.objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 38)).getter_uint (inCompiler COMMA_SOURCE_FILE ("template-for-instruction.galgas", 38)))).isValid () ;
       if (loop_1697) {
-        loop_1697 = GALGAS_bool (kIsStrictSup, var_n_1602.objectCompare (GALGAS_uint (uint32_t (0U)))).boolValue () ;
+        loop_1697 = GALGAS_bool (kIsStrictSup, var_n_1602.objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 38)).getter_uint (inCompiler COMMA_SOURCE_FILE ("template-for-instruction.galgas", 38)))).boolValue () ;
       }
       if (loop_1697 && (0 == variant_1697)) {
         loop_1697 = false ;

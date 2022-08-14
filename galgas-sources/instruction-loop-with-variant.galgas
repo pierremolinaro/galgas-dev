@@ -146,13 +146,19 @@ override method @loopInstructionWithVariantAST analyzeSemanticInstruction
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
     !?ioVariableMap
-    ?let variantExpression
+    ?var variantExpression
   ]
 #--- Check variant expression type is @uint
-  if variantExpression.mResultType != inAnalysisContext.mPredefinedTypes.mUIntType then
-    error self.mEndOfVariantExpression
-    : "the variant expression type should be '@" + [inAnalysisContext.mPredefinedTypes.mUIntType definition].mTypeName.string + "', but it has '@" + [variantExpression.mResultType definition].mTypeName.string + "' type"
-  end
+  checkAssignmentTypeWithImplicitGetterCall (
+    !inAnalysisContext.mPredefinedTypes.mUIntType
+    !variantExpression.mResultType
+    !variantExpression.mLocation
+    !?variantExpression
+  )
+#  if variantExpression.mResultType != inAnalysisContext.mPredefinedTypes.mUIntType then
+#    error self.mEndOfVariantExpression
+#    : "the variant expression type should be '@" + [inAnalysisContext.mPredefinedTypes.mUIntType definition].mTypeName.string + "', but it has '@" + [variantExpression.mResultType definition].mTypeName.string + "' type"
+#  end
 #--- Loop expression
   [self.mLoopExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName

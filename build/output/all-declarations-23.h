@@ -10,6 +10,16 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Routine 'check_K_escapeCharacters'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_check_5F_K_5F_escapeCharacters (const class GALGAS_lstring constinArgument0,
+                                             class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Function 'forbiddenKeysForMapAndDict'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -982,18 +992,4 @@ void routine_enterClassMethodWith_33_InputArguments (class GALGAS_classMethodMap
                                                      const class GALGAS_bool constinArgument9,
                                                      class C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'enterClassMethodWithStringInputArgument'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_enterClassMethodWithStringInputArgument (class GALGAS_classMethodMap & ioArgument0,
-                                                      class GALGAS_unifiedTypeMap & ioArgument1,
-                                                      const class GALGAS_string constinArgument2,
-                                                      const class GALGAS_string constinArgument3,
-                                                      const class GALGAS_bool constinArgument4,
-                                                      class C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
 

@@ -40,8 +40,9 @@ syntax extension galgas3ExpressionSyntax {
   
   rule <primary> !@semanticExpressionAST outExpression {
     $uint32$ ?let @luint literalInt
-    outExpression = @literalUIntExpressionAST.new {!literalInt}
-  }
+#    outExpression = @literalUIntExpressionAST.new {!literalInt}
+    outExpression = @literalBigIntExpressionAST.new {!.new {![literalInt.uint bigint] !literalInt.location}}
+ }
 
   #·····················································································································
   

@@ -247,7 +247,7 @@ proc generateProcedure
     end
   end
 #--- Generate body
-  var temporaryVariableIndex = 0
+  var @uint temporaryVariableIndex = 0
   var routineBody = ""
   [!?routineBody incIndentation !2]
   for (mInstruction) in inInstructionList do
@@ -520,7 +520,7 @@ proc generateExtensionSetter
     unusedVariableCppNameSet += !mFormalArgumentCppName
   end
 #--- Generate body
-  var temporaryVariableIndex = 0
+  var @uint temporaryVariableIndex = 0
   var routineBody = ""
   [!?routineBody incIndentation !2]
   for (mInstruction) in inInstructionList do
