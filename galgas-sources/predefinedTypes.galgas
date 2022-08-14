@@ -245,12 +245,11 @@ override method @predefinedTypeAST enterDeclarationInGraph
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @predefinedTypeAST enterInSemanticContext
+override method @predefinedTypeAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-  ?!@semanticContext ioSemanticContext
-{
+  ?!@semanticContext ioSemanticContext {
   let optionalMethodMap = @optionalMethodMap {}
   [self getConstructorMap !?ioSemanticContext.mTypeMap ?let @constructorMap constructorMap]
   [self getGetterMap !?ioSemanticContext.mTypeMap ?var @getterMap getterMap]
@@ -274,13 +273,14 @@ override method @predefinedTypeAST enterInSemanticContext
   else
     [!?ioSemanticContext.mTypeMap makeEntryFromString!enumeratedTypeName ?enumeratedTypeEntry]
   end
-#--- Add Categories
+#--- Add Extensions
   addExtensions (
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
     !@lstring.new {!self.mPredefinedTypeName !@location.here}
+    !isClass: false
     !?getterMap
     !?setterMap
     !?instanceMethodMap

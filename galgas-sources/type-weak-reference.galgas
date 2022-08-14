@@ -45,7 +45,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInGraph
 #   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @weakReferenceDeclarationAST enterInSemanticContext
+override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
@@ -102,6 +102,7 @@ override method @weakReferenceDeclarationAST enterInSemanticContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
     !self.mWeakReferenceTypeName
+    !isClass: false
     !?getterMap
     !?setterMap
     !?instanceMethodMap

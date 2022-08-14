@@ -110,7 +110,7 @@ override method @graphDeclarationAST enterDeclarationInGraph
 #   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @graphDeclarationAST enterInSemanticContext
+override method @graphDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
@@ -430,6 +430,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
     !self.mGraphTypeName
+    !isClass: false
     !?getterMap
     !?setterMap
     !?instanceMethodMap

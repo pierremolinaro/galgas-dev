@@ -107,7 +107,7 @@ private func %once selectorFeatureForNewConstructor -> @string {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @structDeclarationAST enterInSemanticContext
+override method @structDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
@@ -156,6 +156,7 @@ override method @structDeclarationAST enterInSemanticContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
     !self.mStructTypeName
+    !isClass: false
     !?getterMap
     !?setterMap
     !?instanceMethodMap

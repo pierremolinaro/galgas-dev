@@ -318,7 +318,7 @@ override method @externTypeDeclarationAST enterDeclarationInGraph
 #   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @externTypeDeclarationAST enterInSemanticContext
+override method @externTypeDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext

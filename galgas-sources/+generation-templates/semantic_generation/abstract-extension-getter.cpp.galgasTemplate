@@ -4,28 +4,6 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-static TC_UniqueArray <enterExtensionGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%> gExtensionGetterTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
-               %!^%enterExtensionGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% inGetter) {
-  gExtensionGetterTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-static void freeExtensionGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% (void) {
-  gExtensionGetterTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%.free () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-C_PrologueEpilogue gGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% (%?^%NULL,
-       %!^%freeExtensionGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_%![RETURN_TYPE identifierRepresentation]% callExtensionGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do
     %,\n%!^
@@ -38,34 +16,12 @@ GALGAS_%![RETURN_TYPE identifierRepresentation]% callExtensionGetter_%![GETTER_N
   %,\n%!^%C_Compiler * inCompiler%
   %\n%!^%COMMA_LOCATION_ARGS) {
   GALGAS_%![RETURN_TYPE identifierRepresentation]% result ;
-//--- Find Reader
-  if (NULL != inObject) {
-    macroValidSharedObject (inObject, cPtr_%![CLASS_NAME identifierRepresentation]%) ;
-    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const int32_t classIndex = info->mSlotID ;
-    enterExtensionGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% f = NULL ;
-    if (classIndex < gExtensionGetterTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%.count ()) {
-      f = gExtensionGetterTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% (classIndex COMMA_HERE) ;
-    }
-    if (NULL == f) {
-       const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
-       while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gExtensionGetterTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%.count ()) {
-           f = gExtensionGetterTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% (p->mSlotID COMMA_HERE) ;
-         }
-         p = p->mSuperclassDescriptor ;
-       }
-       gExtensionGetterTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
-    }else{
-      result = f (inObject, %
-      for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do
-        %in_%![mFormalArgumentName identifierRepresentation]%, %
-      end
-      %inCompiler COMMA_THERE) ;
-    }
+  if (nullptr != inObject) {
+    result = inObject->getter_%![GETTER_NAME identifierRepresentation]% (%
+  for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do
+    %in_%![mFormalArgumentName identifierRepresentation]%, %
+  end
+  %inCompiler COMMA_THERE) ;
   }
   return result ;
 }

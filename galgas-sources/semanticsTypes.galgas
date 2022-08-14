@@ -44,13 +44,14 @@ map @constructorMap {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @methodQualifier {
-  case isAbstract
+enum @methodQualifier { # NE PAS CHANGER L'ORDRE
+  case isVirtual
+  case isVirtualAbstract
   case isBasic
   case isBasicFinal
   case isInherited
-  case isOverriding
-  case isOverridingAbstract
+  case isVirtualOverriding
+  case isVirtualOverridingAbstract
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

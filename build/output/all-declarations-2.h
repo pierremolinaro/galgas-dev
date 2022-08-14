@@ -129,6 +129,16 @@ class cPtr_lexicalStructuredSendInstructionAST : public cPtr_lexicalInstructionA
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter generateCocoaInstructionCode
+  public: virtual class GALGAS_string getter_generateCocoaInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateInstructionCode
+  public: virtual class GALGAS_string getter_generateInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Properties
   public: GALGAS_lexicalSendSearchListAST mProperty_mLexicalSendSearchList ;
   public: GALGAS_lexicalSendDefaultActionAST mProperty_mLexicalSendDefaultAction ;
@@ -139,16 +149,16 @@ class cPtr_lexicalStructuredSendInstructionAST : public cPtr_lexicalInstructionA
                                                     COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -273,6 +283,16 @@ class cPtr_lexicalSimpleSendInstructionAST : public cPtr_lexicalInstructionAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter generateCocoaInstructionCode
+  public: virtual class GALGAS_string getter_generateCocoaInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateInstructionCode
+  public: virtual class GALGAS_string getter_generateInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Properties
   public: GALGAS_lstring mProperty_mSentTerminal ;
 
@@ -281,16 +301,16 @@ class cPtr_lexicalSimpleSendInstructionAST : public cPtr_lexicalInstructionAST {
                                                 COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -415,6 +435,14 @@ class cPtr_lexicalSendTerminalByDefaultAST : public cPtr_lexicalSendDefaultActio
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter generateCocoaDefaultSendCode
+  public: virtual class GALGAS_string getter_generateCocoaDefaultSendCode (const class GALGAS_string inScannerClassName,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateDefaultSendCode
+  public: virtual class GALGAS_string getter_generateDefaultSendCode (const class GALGAS_string inScannerClassName,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Properties
   public: GALGAS_lstring mProperty_mDefaultSentTerminal ;
 
@@ -423,16 +451,16 @@ class cPtr_lexicalSendTerminalByDefaultAST : public cPtr_lexicalSendDefaultActio
                                                 COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -557,6 +585,14 @@ class cPtr_lexicalErrorByDefaultAST : public cPtr_lexicalSendDefaultActionAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter generateCocoaDefaultSendCode
+  public: virtual class GALGAS_string getter_generateCocoaDefaultSendCode (const class GALGAS_string inScannerClassName,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateDefaultSendCode
+  public: virtual class GALGAS_string getter_generateDefaultSendCode (const class GALGAS_string inScannerClassName,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Properties
   public: GALGAS_lstring mProperty_mDefaultErrorMessageName ;
 
@@ -565,16 +601,16 @@ class cPtr_lexicalErrorByDefaultAST : public cPtr_lexicalSendDefaultActionAST {
                                          COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -936,6 +972,16 @@ class cPtr_lexicalRepeatInstructionAST : public cPtr_lexicalInstructionAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter generateCocoaInstructionCode
+  public: virtual class GALGAS_string getter_generateCocoaInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateInstructionCode
+  public: virtual class GALGAS_string getter_generateInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Properties
   public: GALGAS_lexicalInstructionListAST mProperty_mRepeatedInstructionList ;
   public: GALGAS_lexicalWhileBranchListAST mProperty_mLexicalWhileBranchList ;
@@ -946,16 +992,16 @@ class cPtr_lexicalRepeatInstructionAST : public cPtr_lexicalInstructionAST {
                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -1317,6 +1363,16 @@ class cPtr_lexicalSelectInstructionAST : public cPtr_lexicalInstructionAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter generateCocoaInstructionCode
+  public: virtual class GALGAS_string getter_generateCocoaInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateInstructionCode
+  public: virtual class GALGAS_string getter_generateInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Properties
   public: GALGAS_lexicalSelectBranchListAST mProperty_mLexicalSelectBranchList ;
   public: GALGAS_lexicalInstructionListAST mProperty_mDefaultInstructionList ;
@@ -1327,16 +1383,16 @@ class cPtr_lexicalSelectInstructionAST : public cPtr_lexicalInstructionAST {
                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -1454,9 +1510,13 @@ class cPtr_abstractLexicalRoutineActualArgumentAST : public acStrongPtr_class {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-/* § public: virtual GALGAS_string getter_generateCocoaRoutineArgument (const GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_string getter_generateRoutineArgument (C_Compiler * COMMA_LOCATION_ARGS) const ; */
+//--- Extension getter generateCocoaRoutineArgument
+  public: virtual class GALGAS_string getter_generateCocoaRoutineArgument (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+
+//--- Extension getter generateRoutineArgument
+  public: virtual class GALGAS_string getter_generateRoutineArgument (C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+
 //--- Properties
   public: GALGAS_location mProperty_mActualPassingModeLocation ;
 
@@ -1467,11 +1527,11 @@ class cPtr_abstractLexicalRoutineActualArgumentAST : public acStrongPtr_class {
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const = 0 ;
+                                    const int32_t inIndentation) const override = 0 ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override = 0 ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const = 0 ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
 
 } ;
 
@@ -1806,6 +1866,16 @@ class cPtr_lexicalRoutineInstructionAST : public cPtr_lexicalInstructionAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter generateCocoaInstructionCode
+  public: virtual class GALGAS_string getter_generateCocoaInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateInstructionCode
+  public: virtual class GALGAS_string getter_generateInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Properties
   public: GALGAS_lstring mProperty_mRoutineName ;
   public: GALGAS_lexicalRoutineCallActualArgumentListAST mProperty_mActualArgumentList ;
@@ -1818,16 +1888,16 @@ class cPtr_lexicalRoutineInstructionAST : public cPtr_lexicalInstructionAST {
                                              COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -1953,6 +2023,13 @@ class cPtr_lexicalAttributeInputOutputArgumentAST : public cPtr_abstractLexicalR
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter generateCocoaRoutineArgument
+  public: virtual class GALGAS_string getter_generateCocoaRoutineArgument (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateRoutineArgument
+  public: virtual class GALGAS_string getter_generateRoutineArgument (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Properties
   public: GALGAS_lstring mProperty_mAttributeName ;
 
@@ -1962,16 +2039,16 @@ class cPtr_lexicalAttributeInputOutputArgumentAST : public cPtr_abstractLexicalR
                                                        COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -2087,8 +2164,12 @@ class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST : public acStrongPtr_c
 
 //----------------------------------------------------------------------------------------------------------------------
 
-/* § public: virtual GALGAS_string getter_generateCocoaRoutineOrFunctionArgument (C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_string getter_generateRoutineOrFunctionArgument (C_Compiler * COMMA_LOCATION_ARGS) const ; */
+//--- Extension getter generateCocoaRoutineOrFunctionArgument
+  public: virtual class GALGAS_string getter_generateCocoaRoutineOrFunctionArgument (C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+
+//--- Extension getter generateRoutineOrFunctionArgument
+  public: virtual class GALGAS_string getter_generateRoutineOrFunctionArgument (C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+
 //--- Properties
 
 //--- Constructor
@@ -2097,11 +2178,11 @@ class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST : public acStrongPtr_c
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const = 0 ;
+                                    const int32_t inIndentation) const override = 0 ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override = 0 ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const = 0 ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
 
 } ;
 
@@ -2224,6 +2305,13 @@ class cPtr_lexicalFormalInputArgumentAST : public cPtr_abstractLexicalRoutineAct
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter generateCocoaRoutineArgument
+  public: virtual class GALGAS_string getter_generateCocoaRoutineArgument (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateRoutineArgument
+  public: virtual class GALGAS_string getter_generateRoutineArgument (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Properties
   public: GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST mProperty_mRoutineOrFunctionFormalInputArgument ;
 
@@ -2233,16 +2321,16 @@ class cPtr_lexicalFormalInputArgumentAST : public cPtr_abstractLexicalRoutineAct
                                               COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -2571,6 +2659,12 @@ class cPtr_lexicalAttributeInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter generateCocoaRoutineOrFunctionArgument
+  public: virtual class GALGAS_string getter_generateCocoaRoutineOrFunctionArgument (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateRoutineOrFunctionArgument
+  public: virtual class GALGAS_string getter_generateRoutineOrFunctionArgument (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Properties
   public: GALGAS_lstring mProperty_mAttributeName ;
 
@@ -2579,16 +2673,16 @@ class cPtr_lexicalAttributeInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -2713,6 +2807,12 @@ class cPtr_lexicalCharacterInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter generateCocoaRoutineOrFunctionArgument
+  public: virtual class GALGAS_string getter_generateCocoaRoutineOrFunctionArgument (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateRoutineOrFunctionArgument
+  public: virtual class GALGAS_string getter_generateRoutineOrFunctionArgument (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Properties
   public: GALGAS_lchar mProperty_mCharacter ;
 
@@ -2721,16 +2821,16 @@ class cPtr_lexicalCharacterInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -2855,6 +2955,12 @@ class cPtr_lexicalUnsignedInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter generateCocoaRoutineOrFunctionArgument
+  public: virtual class GALGAS_string getter_generateCocoaRoutineOrFunctionArgument (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateRoutineOrFunctionArgument
+  public: virtual class GALGAS_string getter_generateRoutineOrFunctionArgument (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Properties
   public: GALGAS_luint mProperty_mUnsigned ;
 
@@ -2863,16 +2969,16 @@ class cPtr_lexicalUnsignedInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
                                                 COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -2997,6 +3103,12 @@ class cPtr_lexicalCurrentCharacterInputArgumentAST : public cPtr_lexicalRoutineO
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter generateCocoaRoutineOrFunctionArgument
+  public: virtual class GALGAS_string getter_generateCocoaRoutineOrFunctionArgument (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateRoutineOrFunctionArgument
+  public: virtual class GALGAS_string getter_generateRoutineOrFunctionArgument (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Properties
   public: GALGAS_location mProperty_mLocation ;
 
@@ -3005,16 +3117,16 @@ class cPtr_lexicalCurrentCharacterInputArgumentAST : public cPtr_lexicalRoutineO
                                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -3142,6 +3254,12 @@ class cPtr_lexicalFunctionInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter generateCocoaRoutineOrFunctionArgument
+  public: virtual class GALGAS_string getter_generateCocoaRoutineOrFunctionArgument (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateRoutineOrFunctionArgument
+  public: virtual class GALGAS_string getter_generateRoutineOrFunctionArgument (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Properties
   public: GALGAS_lstring mProperty_mFunctionName ;
   public: GALGAS_lexicalFunctionCallActualArgumentListAST mProperty_mFunctionActualArgumentList ;
@@ -3152,16 +3270,16 @@ class cPtr_lexicalFunctionInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
                                                 COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -3286,6 +3404,16 @@ class cPtr_lexicalDropInstructionAST : public cPtr_lexicalInstructionAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter generateCocoaInstructionCode
+  public: virtual class GALGAS_string getter_generateCocoaInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateInstructionCode
+  public: virtual class GALGAS_string getter_generateInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTerminalName ;
 
@@ -3294,16 +3422,16 @@ class cPtr_lexicalDropInstructionAST : public cPtr_lexicalInstructionAST {
                                           COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -3428,6 +3556,16 @@ class cPtr_lexicalErrorInstructionAST : public cPtr_lexicalInstructionAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter generateCocoaInstructionCode
+  public: virtual class GALGAS_string getter_generateCocoaInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateInstructionCode
+  public: virtual class GALGAS_string getter_generateInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Properties
   public: GALGAS_lstring mProperty_mErrorMessageName ;
 
@@ -3436,16 +3574,16 @@ class cPtr_lexicalErrorInstructionAST : public cPtr_lexicalInstructionAST {
                                            COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -3570,6 +3708,16 @@ class cPtr_lexicalWarningInstructionAST : public cPtr_lexicalInstructionAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter generateCocoaInstructionCode
+  public: virtual class GALGAS_string getter_generateCocoaInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateInstructionCode
+  public: virtual class GALGAS_string getter_generateInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Properties
   public: GALGAS_lstring mProperty_mWarningMessageName ;
 
@@ -3578,16 +3726,16 @@ class cPtr_lexicalWarningInstructionAST : public cPtr_lexicalInstructionAST {
                                              COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -3712,6 +3860,16 @@ class cPtr_lexicalTagInstructionAST : public cPtr_lexicalInstructionAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter generateCocoaInstructionCode
+  public: virtual class GALGAS_string getter_generateCocoaInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateInstructionCode
+  public: virtual class GALGAS_string getter_generateInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Properties
   public: GALGAS_lstring mProperty_mLexicalTagName ;
 
@@ -3720,16 +3878,16 @@ class cPtr_lexicalTagInstructionAST : public cPtr_lexicalInstructionAST {
                                          COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -3857,6 +4015,16 @@ class cPtr_lexicalRewindInstructionAST : public cPtr_lexicalInstructionAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter generateCocoaInstructionCode
+  public: virtual class GALGAS_string getter_generateCocoaInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateInstructionCode
+  public: virtual class GALGAS_string getter_generateInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Properties
   public: GALGAS_lstring mProperty_mLexicalTagName ;
   public: GALGAS_lstring mProperty_mTerminalName ;
@@ -3867,16 +4035,16 @@ class cPtr_lexicalRewindInstructionAST : public cPtr_lexicalInstructionAST {
                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -3998,22 +4166,32 @@ class cPtr_lexicalLogInstructionAST : public cPtr_lexicalInstructionAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter generateCocoaInstructionCode
+  public: virtual class GALGAS_string getter_generateCocoaInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateInstructionCode
+  public: virtual class GALGAS_string getter_generateInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Properties
 
 //--- Constructor
   public: cPtr_lexicalLogInstructionAST (LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -5667,9 +5845,13 @@ class cPtr_lexicalFunctionExpressionAST : public acStrongPtr_class {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-/* § public: virtual GALGAS_bool getter_callsDefinedUnicodeTestFunctions (const GALGAS_stringset inDefinedUnicodeFunctionSet,
-           C_Compiler * COMMA_LOCATION_ARGS) const ; */
-/* § public: virtual GALGAS_string getter_generateForUnicodeTestFunctions (C_Compiler * COMMA_LOCATION_ARGS) const ; */
+//--- Extension getter callsDefinedUnicodeTestFunctions
+  public: virtual class GALGAS_bool getter_callsDefinedUnicodeTestFunctions (const class GALGAS_stringset inDefinedUnicodeFunctionSet,
+           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+
+//--- Extension getter generateForUnicodeTestFunctions
+  public: virtual class GALGAS_string getter_generateForUnicodeTestFunctions (C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+
 //--- Properties
 
 //--- Constructor
@@ -5678,11 +5860,11 @@ class cPtr_lexicalFunctionExpressionAST : public acStrongPtr_class {
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const = 0 ;
+                                    const int32_t inIndentation) const override = 0 ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override = 0 ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const = 0 ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
 
 } ;
 
@@ -5875,6 +6057,9 @@ class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter keyRepresentation
+  public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Properties
   public: GALGAS_lstring mProperty_mLexiqueComponentName ;
   public: GALGAS_bool mProperty_mIsTemplate ;
@@ -5912,16 +6097,16 @@ class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {
                                     COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 

@@ -112,6 +112,7 @@ override method @abstractExtensionGetterAST enterDeclarationInGraph
       !self.mAbstractExtensionGetterName
       !self.mAbstractExtensionGetterReturnedTypeName
       !self.mAbstractExtensionGetterFormalInputParameterList
+      !.isVirtualAbstract
     ]
   end
 }
@@ -120,7 +121,7 @@ override method @abstractExtensionGetterAST enterDeclarationInGraph
 #   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @abstractExtensionGetterAST enterInSemanticContext
+override method @abstractExtensionGetterAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
@@ -144,9 +145,11 @@ override method @abstractExtensionGetterAST semanticAnalysis
   let @unifiedTypeMapEntry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
 #--- Check self type is an abstract class
   if not [[selfType definition].mTypeKindEnum isClassType] then
-    error self.mAbstractExtensionGetterName: "cannot declare an extension getter: '@" + [selfType definition].mTypeName.string + "' is not a class"
+    error self.mAbstractExtensionGetterName
+      : "cannot declare an extension getter: '@" + [selfType definition].mTypeName.string + "' is not a class"
   elsif [selfType definition].mIsConcrete then
-    error self.mAbstractExtensionGetterName: "cannot declare an abstract extension getter: '@" + [selfType definition].mTypeName.string + "' is not an abstract class"
+    error self.mAbstractExtensionGetterName
+      : "cannot declare an abstract extension getter: '@" + [selfType definition].mTypeName.string + "' is not an abstract class"
   end
 #--- Compute method signature
   var @formalInputParameterListForGeneration formalParameterListForGeneration = {}
@@ -230,7 +233,9 @@ override method @abstractExtensionGetterForGeneration appendSpecificImplementati
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  ioInclusionSet += !"getter-" + [[self.mReceiverType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mAbstractExtensionGetterName fileNameRepresentation]
+  ioInclusionSet += !"getter-"
+    + [[self.mReceiverType definition].mTypeName.string fileNameRepresentation]
+    + "-" + [self.mAbstractExtensionGetterName fileNameRepresentation]
   [self.mResultType addHeaderFileName !?ioInclusionSet]
   [self.mReceiverType addHeaderFileName !?ioInclusionSet]
   for (* mFormalArgumentType * * *) in self.mAbstractExtensionGetterFormalParameterList do

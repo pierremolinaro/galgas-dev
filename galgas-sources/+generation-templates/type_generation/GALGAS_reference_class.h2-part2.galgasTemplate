@@ -19,7 +19,7 @@
 
 %if not IS_ABSTRACT then
 %//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 %end
 %//--- Attribute accessors
@@ -28,21 +28,21 @@
 if IS_ABSTRACT then
 %//--- Description
   public: virtual void description (%?^%C_String & ioString,
-                           %!^%const int32_t inIndentation) const = 0 ;
+                           %!^%const int32_t inIndentation) const override = 0 ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override = 0 ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const = 0 ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
 %
 
 else
 %//--- Description
   public: virtual void description (%?^%C_String & ioString,
-                           %!^%const int32_t inIndentation) const ;
+                           %!^%const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 %
 end
 

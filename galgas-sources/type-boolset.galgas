@@ -105,7 +105,7 @@ private func %once forbiddenKeysForBoolset -> @stringset {
 
 #·······················································································································
 
-override method @boolsetDeclarationAST enterInSemanticContext
+override method @boolsetDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
@@ -170,6 +170,7 @@ override method @boolsetDeclarationAST enterInSemanticContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
     !self.mBoolsetTypeName
+    !isClass: false
     !?getterMap
     !?setterMap
     !?instanceMethodMap

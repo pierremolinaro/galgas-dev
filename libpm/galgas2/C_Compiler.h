@@ -22,6 +22,10 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
+#define NEW_GETTER
+
+//----------------------------------------------------------------------------------------------------------------------
+
 #include "collections/TC_UniqueArray.h"
 #include "strings/C_String.h"
 #include "utilities/C_SharedObject.h"
@@ -50,12 +54,12 @@ class C_galgas_type_descriptor ;
 class C_Compiler : public C_SharedObject {
 //--- Constructor and destructor
   public: C_Compiler (C_Compiler * inCallerCompiler
-                       COMMA_LOCATION_ARGS) ;
+                      COMMA_LOCATION_ARGS) ;
   public: virtual ~ C_Compiler (void) ;
 
 //--- No copy
-  private: C_Compiler (const C_Compiler &) ;
-  private: C_Compiler & operator = (const C_Compiler &) ;
+  private: C_Compiler (const C_Compiler &) = delete ;
+  private: C_Compiler & operator = (const C_Compiler &) = delete ;
 
 //--- Caller compiler (is NULL for top compiler)
   protected: C_Compiler * mCallerCompiler ;

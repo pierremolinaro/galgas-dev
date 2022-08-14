@@ -218,7 +218,7 @@ if not [SUPPORTED_OPERATORS doNotGenererateObjectCompare] then
 %
 for (lkey mKind mParameterList mHasCompilerArgument mQualifier mErrorMessage) in MODIFIER_MAP do
   if mKind == [@methodKind definedAsMember] then
-    if (mErrorMessage == "") & ((mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal])) then
+    if (mErrorMessage == "") & ((mQualifier == [@methodQualifier isVirtualAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal])) then
       %  public: VIRTUAL_IN_DEBUG void setter_%![lkey.string identifierRepresentation]% (%?^
       for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in mParameterList do index IDX
         if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -256,7 +256,7 @@ end
 %
 for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument mQualifier mutability mErrorMessage) in INSTANCE_METHOD_MAP do
   if mKind == [@methodKind definedAsMember] then
-    if (mErrorMessage == "") & ((mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal])) then
+    if (mErrorMessage == "") & ((mQualifier == [@methodQualifier isVirtualAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal])) then
       %  public: VIRTUAL_IN_DEBUG void method_%![lkey.string identifierRepresentation]% (%?^
       for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in mParameterList do index IDX
         if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -328,27 +328,8 @@ end
 for (lkey kind argumentTypeList * hasCompilerArgument returnedType qualifier errorMessage) in GETTER_MAP do
   switch kind 
   case definedAsExtension :
-#      %  /* EXTENSION public: virtual class GALGAS_% ![mReturnedType identifierRepresentation] % getter_% ![[lkey string] identifierRepresentation] % (%?^
-#      for () in mArgumentTypeList
-#        do index IDX %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & constinOperand% ![IDX string]
-#        between %,\n% !^
-#      end
-#      if [mArgumentTypeList length] == 0 then
-#        if mHasCompilerArgument then
-#          %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
-#        else
-#          %LOCATION_ARGS%
-#        end
-#      else
-#        if mHasCompilerArgument then
-#          %,\n% !^ %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
-#        else
-#          %\n% !^ %COMMA_LOCATION_ARGS%
-#        end
-#      end
-#      %) const ; */\n\n%
   case definedAsMember :
-    if (errorMessage == "") & ((qualifier == [@methodQualifier isAbstract]) | (qualifier == [@methodQualifier isBasic]) | (qualifier == [@methodQualifier isBasicFinal])) then
+    if (errorMessage == "") & ((qualifier == [@methodQualifier isVirtualAbstract]) | (qualifier == [@methodQualifier isBasic]) | (qualifier == [@methodQualifier isBasicFinal])) then
       %  public: VIRTUAL_IN_DEBUG class GALGAS_% ![returnedType identifierRepresentation] % getter_% ![lkey.string identifierRepresentation] % (%?^
       for (mFormalSelector mFormalArgumentType mFormalArgumentName) in argumentTypeList
         do index IDX %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & constinOperand% ![IDX string]

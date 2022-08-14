@@ -167,7 +167,7 @@ override method @sortedListDeclarationAST addAssociatedElement
 
 #·······················································································································
 
-override method @sortedListDeclarationAST enterInSemanticContext
+override method @sortedListDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
@@ -266,6 +266,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
     !self.mSortedListTypeName
+    !isClass: false
     !?getterMap
     !?setterMap
     !?instanceMethodMap

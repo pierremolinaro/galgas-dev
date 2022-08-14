@@ -5603,7 +5603,7 @@ GALGAS_lexicalArgumentModeAST GALGAS_lexicalArgumentModeAST::extractObject (cons
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string extensionGetter_lexicalFormalModeName (const GALGAS_lexicalArgumentModeAST & inObject,
-                                                     C_Compiler * /* inCompiler */
+                                                     C_Compiler *
                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalArgumentModeAST temp_0 = inObject ;
@@ -5635,7 +5635,7 @@ GALGAS_string extensionGetter_lexicalFormalModeName (const GALGAS_lexicalArgumen
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string extensionGetter_cppConstInFormalArgument (const GALGAS_lexicalArgumentModeAST & inObject,
-                                                        C_Compiler * /* inCompiler */
+                                                        C_Compiler *
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalArgumentModeAST temp_0 = inObject ;
@@ -5667,7 +5667,7 @@ GALGAS_string extensionGetter_cppConstInFormalArgument (const GALGAS_lexicalArgu
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string extensionGetter_cppReferenceInFormalArgument (const GALGAS_lexicalArgumentModeAST & inObject,
-                                                            C_Compiler * /* inCompiler */
+                                                            C_Compiler *
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalArgumentModeAST temp_0 = inObject ;
@@ -5699,7 +5699,7 @@ GALGAS_string extensionGetter_cppReferenceInFormalArgument (const GALGAS_lexical
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string extensionGetter_cocoaPointerInFormalArgument (const GALGAS_lexicalArgumentModeAST & inObject,
-                                                            C_Compiler * /* inCompiler */
+                                                            C_Compiler *
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalArgumentModeAST temp_0 = inObject ;

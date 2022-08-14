@@ -10,368 +10,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @optionComponentForGeneration reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_optionComponentForGeneration : public GALGAS_semanticDeclarationWithHeaderForGeneration {
-//--------------------------------- Default constructor
-  public: GALGAS_optionComponentForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_optionComponentForGeneration constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_optionComponentForGeneration (const class cPtr_optionComponentForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property read access
-  public: class GALGAS_bool readProperty_mIsPredefined (void) const ;
-
-  public: class GALGAS_string readProperty_mOptionComponentName (void) const ;
-
-  public: class GALGAS_commandLineOptionMap readProperty_mBoolOptionMap (void) const ;
-
-  public: class GALGAS_commandLineOptionMap readProperty_mUIntOptionMap (void) const ;
-
-  public: class GALGAS_commandLineOptionMap readProperty_mStringOptionMap (void) const ;
-
-  public: class GALGAS_commandLineOptionMap readProperty_mStringListOptionMap (void) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_optionComponentForGeneration extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_optionComponentForGeneration constructor_new (const class GALGAS_bool & inOperand0,
-                                                                            const class GALGAS_string & inOperand1,
-                                                                            const class GALGAS_bool & inOperand2,
-                                                                            const class GALGAS_string & inOperand3,
-                                                                            const class GALGAS_commandLineOptionMap & inOperand4,
-                                                                            const class GALGAS_commandLineOptionMap & inOperand5,
-                                                                            const class GALGAS_commandLineOptionMap & inOperand6,
-                                                                            const class GALGAS_commandLineOptionMap & inOperand7
-                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_optionComponentForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_setMBoolOptionMap (class GALGAS_commandLineOptionMap inArgument0
-                                                          COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMIsPredefined (class GALGAS_bool inArgument0
-                                                         COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMOptionComponentName (class GALGAS_string inArgument0
-                                                                COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMStringListOptionMap (class GALGAS_commandLineOptionMap inArgument0
-                                                                COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMStringOptionMap (class GALGAS_commandLineOptionMap inArgument0
-                                                            COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMUIntOptionMap (class GALGAS_commandLineOptionMap inArgument0
-                                                          COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_optionComponentForGeneration class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentForGeneration ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @optionComponentForGeneration class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
-
-//----------------------------------------------------------------------------------------------------------------------
-
-//--- Properties
-  public: GALGAS_bool mProperty_mIsPredefined ;
-  public: GALGAS_string mProperty_mOptionComponentName ;
-  public: GALGAS_commandLineOptionMap mProperty_mBoolOptionMap ;
-  public: GALGAS_commandLineOptionMap mProperty_mUIntOptionMap ;
-  public: GALGAS_commandLineOptionMap mProperty_mStringOptionMap ;
-  public: GALGAS_commandLineOptionMap mProperty_mStringListOptionMap ;
-
-//--- Constructor
-  public: cPtr_optionComponentForGeneration (const GALGAS_bool & in_mHasHeader,
-                                             const GALGAS_string & in_mImplementationCppFileName,
-                                             const GALGAS_bool & in_mIsPredefined,
-                                             const GALGAS_string & in_mOptionComponentName,
-                                             const GALGAS_commandLineOptionMap & in_mBoolOptionMap,
-                                             const GALGAS_commandLineOptionMap & in_mUIntOptionMap,
-                                             const GALGAS_commandLineOptionMap & in_mStringOptionMap,
-                                             const GALGAS_commandLineOptionMap & in_mStringListOptionMap
-                                             COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
-
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @optionComponentForGeneration_2D_weak weak reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_optionComponentForGeneration_2D_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_optionComponentForGeneration_2D_weak (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_optionComponentForGeneration_2D_weak constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_optionComponentForGeneration_2D_weak (const class GALGAS_optionComponentForGeneration & inSource) ;
-
-  public: GALGAS_optionComponentForGeneration_2D_weak & operator = (const class GALGAS_optionComponentForGeneration & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_optionComponentForGeneration bang_optionComponentForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_optionComponentForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_optionComponentForGeneration_2D_weak constructor_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_optionComponentForGeneration_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_optionComponentForGeneration_2D_weak class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentForGeneration_2D_weak ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @arrayTypeForGeneration reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_arrayTypeForGeneration : public GALGAS_semanticTypeForGeneration {
-//--------------------------------- Default constructor
-  public: GALGAS_arrayTypeForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_arrayTypeForGeneration (const class cPtr_arrayTypeForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property read access
-  public: class GALGAS_unifiedTypeMapEntry readProperty_mElementTypeEntry (void) const ;
-
-  public: class GALGAS_uint readProperty_mDimension (void) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_arrayTypeForGeneration extractObject (const GALGAS_object & inObject,
-                                                              C_Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_arrayTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                      const class GALGAS_unifiedTypeMapEntry & inOperand1,
-                                                                      const class GALGAS_uint & inOperand2
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_arrayTypeForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_arrayTypeForGeneration class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_arrayTypeForGeneration ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @arrayTypeForGeneration class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class cPtr_arrayTypeForGeneration : public cPtr_semanticTypeForGeneration {
-
-//----------------------------------------------------------------------------------------------------------------------
-
-//--- Properties
-  public: GALGAS_unifiedTypeMapEntry mProperty_mElementTypeEntry ;
-  public: GALGAS_uint mProperty_mDimension ;
-
-//--- Constructor
-  public: cPtr_arrayTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                       const GALGAS_unifiedTypeMapEntry & in_mElementTypeEntry,
-                                       const GALGAS_uint & in_mDimension
-                                       COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
-
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @arrayTypeForGeneration_2D_weak weak reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_arrayTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGeneration_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_arrayTypeForGeneration_2D_weak (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_arrayTypeForGeneration_2D_weak constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_arrayTypeForGeneration_2D_weak (const class GALGAS_arrayTypeForGeneration & inSource) ;
-
-  public: GALGAS_arrayTypeForGeneration_2D_weak & operator = (const class GALGAS_arrayTypeForGeneration & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_arrayTypeForGeneration bang_arrayTypeForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_arrayTypeForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_arrayTypeForGeneration_2D_weak constructor_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_arrayTypeForGeneration_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_arrayTypeForGeneration_2D_weak class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_arrayTypeForGeneration_2D_weak ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension setter '@localVarManager insertDeclaredLocalVariable'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertDeclaredLocalVariable (class GALGAS_localVarManager & ioObject,
-                                                  const class GALGAS_lstring constin_inVarName,
-                                                  const class GALGAS_unifiedTypeMapEntry constin_inType,
-                                                  const class GALGAS_string constin_inCppName,
-                                                  const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
-                                                  class C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension method '@productionRuleListForGrammarAnalysis-element displayRule'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionMethod_displayRule (const class GALGAS_productionRuleListForGrammarAnalysis_2D_element inObject,
-                                  const class GALGAS_string constin_inSyntaxCompnentName,
-                                  class GALGAS_string & io_ioGeneratedCode,
-                                  class C_Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'projectCreationFileWrapper'
+//Filewrapper 'lexiqueGenerationTemplates'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -384,243 +23,891 @@ void extensionMethod_displayRule (const class GALGAS_productionRuleListForGramma
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extern const cDirectoryWrapper gWrapperDirectory_0_projectCreationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_0_lexiqueGenerationTemplates ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'projectCreationFileWrapper PROJECT_project'
+//Filewrapper template 'lexiqueGenerationTemplates newHeaderZone2'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_project (class C_Compiler * inCompiler,
-                                                                                 const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'projectCreationFileWrapper PROJECT_cocoa'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_cocoa (class C_Compiler * inCompiler,
-                                                                               const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'projectCreationFileWrapper PROJECT_grammar'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_grammar (class C_Compiler * inCompiler,
-                                                                                 const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'projectCreationFileWrapper PROJECT_lexique'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_lexique (class C_Compiler * inCompiler,
-                                                                                 const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'projectCreationFileWrapper PROJECT_options'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_options (class C_Compiler * inCompiler,
-                                                                                 const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'projectCreationFileWrapper PROJECT_program'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_program (class C_Compiler * inCompiler,
-                                                                                 const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'projectCreationFileWrapper PROJECT_semantics'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_semantics (class C_Compiler * inCompiler,
-                                                                                   const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                                   COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'projectCreationFileWrapper PROJECT_syntax'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_syntax (class C_Compiler * inCompiler,
-                                                                                const class GALGAS_string & in_PROJECT_5F_NAME
+GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newHeaderZone_32_ (class C_Compiler * inCompiler,
+                                                                                const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
+                                                                                const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
+                                                                                const class GALGAS_metamodelTemplateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'performProjectCreation'
+//Filewrapper template 'lexiqueGenerationTemplates newHeaderZone3'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_performProjectCreation (const class GALGAS_string constinArgument0,
-                                     class C_Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newHeaderZone_33_ (class C_Compiler * inCompiler,
+                                                                                const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
+                                                                                const class GALGAS_lexicalListDeclarationListAST & in_DELIMITOR_5F_LIST_5F_LIST,
+                                                                                const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
+                                                                                const class GALGAS_indexingListAST & in_INDEXING_5F_LIST,
+                                                                                const class GALGAS_lexicalFunctionListAST & in_UNICODE_5F_TEST_5F_FUNCTIONS
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'projectCreation'
+//Filewrapper template 'lexiqueGenerationTemplates newImplementationZone2Galgas3'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_projectCreation (const class GALGAS_string constinArgument0,
-                              class C_Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newImplementationZone_32_Galgas_33_ (class C_Compiler * inCompiler,
+                                                                                                  const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
+                                                                                                  const class GALGAS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
+                                                                                                  const class GALGAS_lexicalMessageMap & in_LEXICAL_5F_MESSAGE_5F_MAP,
+                                                                                                  const class GALGAS_terminalList & in_TERMINAL_5F_LIST,
+                                                                                                  const class GALGAS_lexicalExplicitTokenListMapMap & in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP,
+                                                                                                  const class GALGAS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
+                                                                                                  const class GALGAS_lexicalRuleListAST & in_LEXICAL_5F_RULE_5F_LIST,
+                                                                                                  const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
+                                                                                                  const class GALGAS_string & in_INDEXING_5F_DIRECTORY,
+                                                                                                  const class GALGAS_metamodelTemplateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                                  const class GALGAS_string & in_LEXIQUE_5F_COMPONENT_5F_NAME,
+                                                                                                  const class GALGAS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
+                                                                                                  const class GALGAS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST,
+                                                                                                  const class GALGAS_lexicalFunctionListAST & in_UNICODE_5F_TEST_5F_FUNCTIONS
+                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'checkAssignmentTypeWithImplicitGetterCall'
+//Filewrapper template 'lexiqueGenerationTemplates cocoaHeaderZone2'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_checkAssignmentTypeWithImplicitGetterCall (const class GALGAS_unifiedTypeMapEntry constinArgument0,
-                                                        const class GALGAS_unifiedTypeMapEntry constinArgument1,
-                                                        const class GALGAS_location constinArgument2,
-                                                        class GALGAS_semanticExpressionForGeneration & ioArgument3,
-                                                        class C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaHeaderZone_32_ (class C_Compiler * inCompiler,
+                                                                                  const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                  const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
+                                                                                  const class GALGAS_lexicalFunctionListAST & in_UNICODE_5F_TEST_5F_FUNCTIONS
+                                                                                  COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'checkDiadicOperator'
+//Filewrapper template 'lexiqueGenerationTemplates cocoaHeaderZone3'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_checkDiadicOperator (const class GALGAS_unifiedTypeMapEntry constinArgument0,
-                                  const class GALGAS_unifiedTypeMapEntry constinArgument1,
-                                  const class GALGAS_bool constinArgument2,
-                                  const class GALGAS_string constinArgument3,
-                                  const class GALGAS_location constinArgument4,
-                                  class GALGAS_semanticExpressionForGeneration & ioArgument5,
-                                  class C_Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaHeaderZone_33_ (class C_Compiler * inCompiler,
+                                                                                  const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                  const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT
+                                                                                  COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Function 'optionNameForUsefulEntitiesGraph'
+//Filewrapper template 'lexiqueGenerationTemplates cocoaImplementationZone2'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_lstring function_optionNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
-                                                                class C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementationZone_32_ (class C_Compiler * inCompiler,
+                                                                                          const class GALGAS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
+                                                                                          const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                          const class GALGAS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
+                                                                                          const class GALGAS_lexicalMessageMap & in_LEXICAL_5F_MESSAGE_5F_MAP,
+                                                                                          const class GALGAS_terminalList & in_TERMINAL_5F_LIST,
+                                                                                          const class GALGAS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
+                                                                                          const class GALGAS_lexicalRuleListAST & in_LEXICAL_5F_RULE_5F_LIST,
+                                                                                          const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
+                                                                                          const class GALGAS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
+                                                                                          const class GALGAS_string & in_INDEXING_5F_DIRECTORY,
+                                                                                          const class GALGAS_indexingListAST & in_INDEXING_5F_LIST,
+                                                                                          const class GALGAS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST,
+                                                                                          const class GALGAS_metamodelTemplateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                          const class GALGAS_lexicalFunctionListAST & in_UNICODE_5F_TEST_5F_FUNCTIONS
+                                                                                          COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Function 'functionNameForUsefulEntitiesGraph'
+//Filewrapper 'optionGenerationTemplates'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_lstring function_functionNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
-                                                                  class C_Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_optionGenerationTemplates ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'templateInstructionListAnalysis'
+//Filewrapper template 'optionGenerationTemplates optionHeaderZone3'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_templateInstructionListAnalysis (const class GALGAS_lstring constinArgument0,
-                                              class GALGAS_usefulEntitiesGraph & ioArgument1,
-                                              const class GALGAS_templateAnalysisContext constinArgument2,
-                                              const class GALGAS_templateInstructionListAST constinArgument3,
-                                              class GALGAS_templateInstructionListForGeneration & ioArgument4,
-                                              class C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (class C_Compiler * inCompiler,
+                                                                                  const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
+                                                                                  const class GALGAS_commandLineOptionMap & in_BOOL_5F_OPTION_5F_MAP,
+                                                                                  const class GALGAS_commandLineOptionMap & in_UINT_5F_OPTION_5F_MAP,
+                                                                                  const class GALGAS_commandLineOptionMap & in_STRING_5F_OPTION_5F_MAP,
+                                                                                  const class GALGAS_commandLineOptionMap & in_STRING_5F_LIST_5F_OPTION_5F_MAP
+                                                                                  COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'templateCodeGenerationForListInstruction'
+//Filewrapper template 'optionGenerationTemplates optionImplementationGalgas3'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_templateCodeGenerationForListInstruction (const class GALGAS_templateInstructionListForGeneration constinArgument0,
-                                                       class GALGAS_string & ioArgument1,
-                                                       class GALGAS_stringset & ioArgument2,
-                                                       class GALGAS_uint & ioArgument3,
-                                                       class GALGAS_stringset & ioArgument4,
-                                                       class GALGAS_bool & ioArgument5,
-                                                       class C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationGalgas_33_ (class C_Compiler * inCompiler,
+                                                                                            const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
+                                                                                            const class GALGAS_commandLineOptionMap & in_BOOL_5F_OPTION_5F_MAP,
+                                                                                            const class GALGAS_commandLineOptionMap & in_UINT_5F_OPTION_5F_MAP,
+                                                                                            const class GALGAS_commandLineOptionMap & in_STRING_5F_OPTION_5F_MAP,
+                                                                                            const class GALGAS_commandLineOptionMap & in_STRING_5F_LIST_5F_OPTION_5F_MAP
+                                                                                            COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Function 'buildLexicalTypeMap'
+//Filewrapper template 'optionGenerationTemplates optionHeaderCocoaZone2'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_lexicalTypeMap function_buildLexicalTypeMap (class C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_32_ (class C_Compiler * inCompiler,
+                                                                                       const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME
+                                                                                       COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'buildLexicalAttributeMap'
+//Filewrapper template 'optionGenerationTemplates optionHeaderCocoaZone3'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_buildLexicalAttributeMap (const class GALGAS_lexicalTypeMap constinArgument0,
-                                       const class GALGAS_lexicalAttributeListAST constinArgument1,
-                                       class GALGAS_lexicalAttributeMap & ioArgument2,
-                                       class C_Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_33_ (class C_Compiler * inCompiler,
+                                                                                       const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME
+                                                                                       COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'lexicalUnicodeTestFunctionAnalysis'
+//Filewrapper template 'optionGenerationTemplates optionImplementationCocoa'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_lexicalUnicodeTestFunctionAnalysis (const class GALGAS_lexicalFunctionListAST constinArgument0,
-                                                 class GALGAS_stringset & outArgument1,
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationCocoa (class C_Compiler * inCompiler,
+                                                                                       const class GALGAS_string & in_OPTION_5F_HEADER_5F_FILE_5F_NAME,
+                                                                                       const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
+                                                                                       const class GALGAS_commandLineOptionMap & in_BOOL_5F_OPTION_5F_MAP,
+                                                                                       const class GALGAS_commandLineOptionMap & in_UINT_5F_OPTION_5F_MAP,
+                                                                                       const class GALGAS_commandLineOptionMap & in_STRING_5F_OPTION_5F_MAP,
+                                                                                       const class GALGAS_commandLineOptionMap & in_STRING_5F_LIST_5F_OPTION_5F_MAP
+                                                                                       COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'compileAllGuiComponentFromASTGalgas3'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_compileAllGuiComponentFromASTGalgas_33_ (const class GALGAS_galgas_33_GUIComponentListAST constinArgument0,
+                                                      const class GALGAS_semanticContext constinArgument1,
+                                                      class GALGAS_optionComponentMapForGeneration & outArgument2,
+                                                      class C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'guiComponentSemanticAnalysis'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_guiComponentSemanticAnalysis (const class GALGAS_galgas_33_GUIComponentListAST_2D_element constinArgument0,
+                                           const class GALGAS_semanticContext constinArgument1,
+                                           class GALGAS_optionComponentMapForGeneration & ioArgument2,
+                                           class C_Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'generateAllGuiComponentsGalgas3'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_generateAllGuiComponentsGalgas_33_ (const class GALGAS_optionComponentMapForGeneration constinArgument0,
+                                                 const class GALGAS_string constinArgument1,
+                                                 const class GALGAS_bool constinArgument2,
+                                                 class GALGAS_stringlist & ioArgument3,
+                                                 class GALGAS_stringset & ioArgument4,
                                                  class C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'buildLexicalRoutineMap'
+//Filewrapper 'guiGenerationTemplates'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_buildLexicalRoutineMap (class GALGAS_lexicalRoutineMap & outArgument0,
-                                     class C_Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_guiGenerationTemplates ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'buildLexicalFunctionMap'
+//Filewrapper template 'guiGenerationTemplates gui_implementation'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_buildLexicalFunctionMap (class GALGAS_lexicalFunctionMap & outArgument0,
-                                      class C_Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (class C_Compiler * inCompiler,
+                                                                                const class GALGAS_guiAnalysisContext & in_GUI_5F_CONTEXT,
+                                                                                const class GALGAS_bool & in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT,
+                                                                                const class GALGAS_string & in_BUILD_5F_RUN_5F_OPTION
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'printPredefinedLexicalActions'
+//Routine 'commonGetterMapForAllTypes'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_printPredefinedLexicalActions (class C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
+void routine_commonGetterMapForAllTypes (class GALGAS_unifiedTypeMap & ioArgument0,
+                                         class GALGAS_getterMap & outArgument1,
+                                         class C_Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterBaseGetterWithArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterBaseGetterWithArgument (class GALGAS_getterMap & ioArgument0,
+                                          class GALGAS_unifiedTypeMap & ioArgument1,
+                                          const class GALGAS_string constinArgument2,
+                                          const class GALGAS_string constinArgument3,
+                                          const class GALGAS_string constinArgument4,
+                                          const class GALGAS_string constinArgument5,
+                                          const class GALGAS_bool constinArgument6,
+                                          class C_Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterBaseGetterWithoutArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterBaseGetterWithoutArgument (class GALGAS_getterMap & ioArgument0,
+                                             class GALGAS_unifiedTypeMap & ioArgument1,
+                                             const class GALGAS_string constinArgument2,
+                                             const class GALGAS_string constinArgument3,
+                                             const class GALGAS_bool constinArgument4,
+                                             class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'typeNameForUsefulEntitiesGraph'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_lstring function_typeNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
+                                                              class C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'typeGenerationTemplate'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_typeGenerationTemplate ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate unifiedClassBodyForType'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (class C_Compiler * inCompiler,
+                                                                                  const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                  const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                  const class GALGAS_bool & in_IS_5F_CONCRETE,
+                                                                                  const class GALGAS_constructorMap & in_CONSTRUCTOR_5F_MAP,
+                                                                                  const class GALGAS_getterMap & in_GETTER_5F_MAP,
+                                                                                  const class GALGAS_setterMap & in_MODIFIER_5F_MAP,
+                                                                                  const class GALGAS_instanceMethodMap & in_INSTANCE_5F_METHOD_5F_MAP,
+                                                                                  const class GALGAS_classMethodMap & in_CLASS_5F_METHOD_5F_MAP,
+                                                                                  const class GALGAS_optionalMethodMap & in_OPTIONAL_5F_METHOD_5F_MAP,
+                                                                                  const class GALGAS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
+                                                                                  const class GALGAS_operators & in_SUPPORTED_5F_OPERATORS,
+                                                                                  const class GALGAS_functionSignature & in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST,
+                                                                                  const class GALGAS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate genericTypeImplementation'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_genericTypeImplementation (class C_Compiler * inCompiler,
+                                                                                    const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                    const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                    const class GALGAS_unifiedTypeMapEntry & in_SUPER_5F_TYPE_5F_INDEX,
+                                                                                    const class GALGAS_operators & in_SUPPORTED_5F_OPERATORS
+                                                                                    COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate externTypeHeader1'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_externTypeHeader_31_ (class C_Compiler * inCompiler,
+                                                                               const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                               const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                               const class GALGAS_string & in_PRE_5F_DECLARATION,
+                                                                               const class GALGAS_string & in_CODE
+                                                                               COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate graphTypeHeader1'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeHeader_31_ (class C_Compiler * inCompiler,
+                                                                              const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                              const class GALGAS_string & in_TYPE_5F_IDENTIFIER
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate graphTypeSpecificImplementation'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplementation (class C_Compiler * inCompiler,
+                                                                                          const class GALGAS_unifiedTypeMapEntry & in_TYPE,
+                                                                                          const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                          const class GALGAS_unifiedTypeMapEntry & in_ASSOCIATED_5F_LIST_5F_TYPE,
+                                                                                          const class GALGAS_graphInsertModifierList & in_INSERT_5F_MODIFIER_5F_LIST
+                                                                                          COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate arrayTypeHeader1'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeHeader_31_ (class C_Compiler * inCompiler,
+                                                                              const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                              const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                              const class GALGAS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
+                                                                              const class GALGAS_uint & in_DIMENSION
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate arrayTypeSpecificImplementation'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplementation (class C_Compiler * inCompiler,
+                                                                                          const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                          const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                          const class GALGAS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
+                                                                                          const class GALGAS_uint & in_DIMENSION,
+                                                                                          const class GALGAS_stringlist & in_DIMENSION_5F_LIST
+                                                                                          COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate listmapTypeHeader1'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeHeader_31_ (class C_Compiler * inCompiler,
+                                                                                const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                const class GALGAS_string & in_TYPE_5F_IDENTIFIER
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate listmapTypeSpecificImplementation'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImplementation (class C_Compiler * inCompiler,
+                                                                                            const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                            const class GALGAS_string & in_ASSOCIATED_5F_LIST_5F_TYPE_5F_IDENTIFIER,
+                                                                                            const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST
+                                                                                            COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate mapTypeHeader1'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeHeader_31_ (class C_Compiler * inCompiler,
+                                                                            const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                            const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                            const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
+                                                                            const class GALGAS_mapSearchMethodListAST & in_SEARCH_5F_METHOD_5F_LIST
+                                                                            COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate mapTypeHeader2'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeHeader_32_ (class C_Compiler * inCompiler,
+                                                                            const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                            const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                            const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST
+                                                                            COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate mapTypeSpecificImplementation'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplementation (class C_Compiler * inCompiler,
+                                                                                        const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                        const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
+                                                                                        const class GALGAS_insertMethodListAST & in_INSERT_5F_METHOD_5F_LIST,
+                                                                                        const class GALGAS_mapSearchMethodListAST & in_SEARCH_5F_METHOD_5F_LIST,
+                                                                                        const class GALGAS_mapRemoveMethodListAST & in_REMOVE_5F_METHOD_5F_LIST,
+                                                                                        const class GALGAS_bool & in_HAS_5F_INSERT_5F_OR_5F_REPLACE,
+                                                                                        const class GALGAS_bool & in_ACTIVATE_5F_REMPLACEMENT_5F_SUGGESTIONS
+                                                                                        COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate dictTypeHeader1'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_dictTypeHeader_31_ (class C_Compiler * inCompiler,
+                                                                             const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                             const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                             const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate dictTypeSpecificImplementation'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_dictTypeSpecificImplementation (class C_Compiler * inCompiler,
+                                                                                         const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                         const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
+                                                                                         const class GALGAS_string & in_KEY_5F_TYPE_5F_IDENTIFIER
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate valueClassTypeHeader1'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_valueClassTypeHeader_31_ (class C_Compiler * inCompiler,
+                                                                                   const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                   const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                   const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
+                                                                                   const class GALGAS_bool & in_IS_5F_ABSTRACT,
+                                                                                   const class GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR,
+                                                                                   const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST
+                                                                                   COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate valueClassTypeHeader2part1'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_valueClassTypeHeader_32_part_31_ (class C_Compiler * inCompiler,
+                                                                                           const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                           const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                           const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
+                                                                                           const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
+                                                                                           const class GALGAS_typedPropertyList & in_ALL_5F_PROPERTY_5F_LIST,
+                                                                                           const class GALGAS_bool & in_IS_5F_ABSTRACT
+                                                                                           COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate valueClassTypeHeader2part2'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_valueClassTypeHeader_32_part_32_ (class C_Compiler * inCompiler,
+                                                                                           const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                           const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                           const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
+                                                                                           const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
+                                                                                           const class GALGAS_typedPropertyList & in_ALL_5F_PROPERTY_5F_LIST,
+                                                                                           const class GALGAS_bool & in_IS_5F_ABSTRACT
+                                                                                           COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate valueClassTypeSpecificImplementation'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_valueClassTypeSpecificImplementation (class C_Compiler * inCompiler,
+                                                                                               const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                               const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                               const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
+                                                                                               const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
+                                                                                               const class GALGAS_typedPropertyList & in_ALL_5F_PROPERTY_5F_LIST,
+                                                                                               const class GALGAS_typedPropertyList & in_INHERITED_5F_ATTRIBUTE_5F_LIST,
+                                                                                               const class GALGAS_bool & in_IS_5F_ABSTRACT,
+                                                                                               const class GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR
+                                                                                               COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate referenceClassTypeHeader1'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_referenceClassTypeHeader_31_ (class C_Compiler * inCompiler,
+                                                                                       const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                       const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                       const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
+                                                                                       const class GALGAS_bool & in_IS_5F_ABSTRACT,
+                                                                                       const class GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR,
+                                                                                       const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST
+                                                                                       COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate referenceClassTypeHeader2part1'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_referenceClassTypeHeader_32_part_31_ (class C_Compiler * inCompiler,
+                                                                                               const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                               const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                               const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
+                                                                                               const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
+                                                                                               const class GALGAS_typedPropertyList & in_ALL_5F_PROPERTY_5F_LIST,
+                                                                                               const class GALGAS_bool & in_IS_5F_ABSTRACT,
+                                                                                               const class GALGAS_getterMap & in_GETTER_5F_MAP
+                                                                                               COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate referenceClassTypeHeader2part2'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_referenceClassTypeHeader_32_part_32_ (class C_Compiler * inCompiler,
+                                                                                               const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                               const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                               const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
+                                                                                               const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
+                                                                                               const class GALGAS_typedPropertyList & in_ALL_5F_PROPERTY_5F_LIST,
+                                                                                               const class GALGAS_bool & in_IS_5F_ABSTRACT
+                                                                                               COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate referenceClassTypeSpecificImplementation'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_referenceClassTypeSpecificImplementation (class C_Compiler * inCompiler,
+                                                                                                   const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                                   const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                                   const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
+                                                                                                   const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
+                                                                                                   const class GALGAS_typedPropertyList & in_ALL_5F_PROPERTY_5F_LIST,
+                                                                                                   const class GALGAS_typedPropertyList & in_INHERITED_5F_ATTRIBUTE_5F_LIST,
+                                                                                                   const class GALGAS_bool & in_IS_5F_ABSTRACT,
+                                                                                                   const class GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR
+                                                                                                   COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate weakReferenceClassTypeHeader1'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeHeader_31_ (class C_Compiler * inCompiler,
+                                                                                           const class GALGAS_string & in_CLASS_5F_TYPE_5F_IDENTIFIER,
+                                                                                           const class GALGAS_string & in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER,
+                                                                                           const class GALGAS_string & in_SUPER_5F_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER,
+                                                                                           const class GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR
+                                                                                           COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'typeGenerationTemplate weakReferenceClassTypeSpecificImplementation'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeSpecificImplementation (class C_Compiler * inCompiler,
+                                                                                                       const class GALGAS_string & in_CLASS_5F_TYPE_5F_IDENTIFIER,
+                                                                                                       const class GALGAS_string & in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER,
+                                                                                                       const class GALGAS_string & in_SUPER_5F_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER,
+                                                                                                       const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
+                                                                                                       const class GALGAS_typedPropertyList & in_ALL_5F_PROPERTY_5F_LIST,
+                                                                                                       const class GALGAS_typedPropertyList & in_INHERITED_5F_ATTRIBUTE_5F_LIST,
+                                                                                                       const class GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR
+                                                                                                       COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'forbiddenKeysForBoolset'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_stringset function_forbiddenKeysForBoolset (class C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'addExtensions'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_addExtensions (const class GALGAS_extensionMethodMapForBuildingContext constinArgument0,
+                            const class GALGAS_extensionGetterMapForBuildingContext constinArgument1,
+                            const class GALGAS_extensionSetterMapForBuildingContext constinArgument2,
+                            class GALGAS_semanticContext & ioArgument3,
+                            const class GALGAS_lstring constinArgument4,
+                            const class GALGAS_bool constinArgument5,
+                            class GALGAS_getterMap & ioArgument6,
+                            class GALGAS_setterMap & ioArgument7,
+                            class GALGAS_instanceMethodMap & ioArgument8,
+                            const class GALGAS_bool constinArgument9,
+                            class C_Compiler * inCompiler
+                            COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterBaseFinalGetterWithoutArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterBaseFinalGetterWithoutArgument (class GALGAS_getterMap & ioArgument0,
+                                                  class GALGAS_unifiedTypeMap & ioArgument1,
+                                                  const class GALGAS_string constinArgument2,
+                                                  const class GALGAS_string constinArgument3,
+                                                  const class GALGAS_bool constinArgument4,
+                                                  class C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'structGenerationTemplate'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_structGenerationTemplate ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'structGenerationTemplate boolsetTypeHeader1'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (class C_Compiler * inCompiler,
+                                                                                  const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                  const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                  const class GALGAS_lstringlist & in_SLOT_5F_LIST
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'structGenerationTemplate boolsetTypeSpecificImplementation'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImplementation (class C_Compiler * inCompiler,
+                                                                                              const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                              const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                              const class GALGAS_lstringlist & in_SLOT_5F_LIST,
+                                                                                              const class GALGAS_bigint & in_FULL_5F_SET
+                                                                                              COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'generateClassGetterDeclaration'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_string function_generateClassGetterDeclaration (const class GALGAS_lstring & constinArgument0,
+                                                             const class GALGAS_functionSignature & constinArgument1,
+                                                             const class GALGAS_bool & constinArgument2,
+                                                             const class GALGAS_unifiedTypeMapEntry & constinArgument3,
+                                                             const class GALGAS_methodQualifier & constinArgument4,
+                                                             class C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'enumGenerationTemplate'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_enumGenerationTemplate ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'enumGenerationTemplate enumTypeHeader1'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_31_ (class C_Compiler * inCompiler,
+                                                                             const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                             const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                             const class GALGAS_enumConstantListForGeneration & in_CONSTANT_5F_LIST,
+                                                                             const class GALGAS_bool & in_HAS_5F_ASSOCIATED_5F_VALUES
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'enumGenerationTemplate enumTypeHeader2'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_32_ (class C_Compiler * inCompiler,
+                                                                             const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                             const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                             const class GALGAS_enumConstantListForGeneration & in_CONSTANT_5F_LIST,
+                                                                             const class GALGAS_bool & in_HAS_5F_ASSOCIATED_5F_VALUES
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'enumGenerationTemplate enumTypeSpecificImplementation'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImplementation (class C_Compiler * inCompiler,
+                                                                                         const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                         const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                         const class GALGAS_enumConstantListForGeneration & in_CONSTANT_5F_LIST,
+                                                                                         const class GALGAS_bool & in_HAS_5F_ASSOCIATED_5F_VALUES
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterBaseGetterWith2Arguments'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterBaseGetterWith_32_Arguments (class GALGAS_getterMap & ioArgument0,
+                                               class GALGAS_unifiedTypeMap & ioArgument1,
+                                               const class GALGAS_string constinArgument2,
+                                               const class GALGAS_string constinArgument3,
+                                               const class GALGAS_string constinArgument4,
+                                               const class GALGAS_string constinArgument5,
+                                               const class GALGAS_string constinArgument6,
+                                               const class GALGAS_string constinArgument7,
+                                               const class GALGAS_bool constinArgument8,
+                                               class C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterInheritedGetterWithArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterInheritedGetterWithArgument (class GALGAS_getterMap & ioArgument0,
+                                               class GALGAS_unifiedTypeMap & ioArgument1,
+                                               const class GALGAS_string constinArgument2,
+                                               const class GALGAS_string constinArgument3,
+                                               const class GALGAS_string constinArgument4,
+                                               const class GALGAS_string constinArgument5,
+                                               const class GALGAS_bool constinArgument6,
+                                               class C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterInheritedGetterWithoutArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterInheritedGetterWithoutArgument (class GALGAS_getterMap & ioArgument0,
+                                                  class GALGAS_unifiedTypeMap & ioArgument1,
+                                                  const class GALGAS_string constinArgument2,
+                                                  const class GALGAS_string constinArgument3,
+                                                  const class GALGAS_bool constinArgument4,
+                                                  class C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'elementTypeNameSuffix'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_string function_elementTypeNameSuffix (class C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'check_K_L_escapeCharacters'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_check_5F_K_5F_L_5F_escapeCharacters (const class GALGAS_lstring constinArgument0,
+                                                  class C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterConstructorWithoutArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterConstructorWithoutArgument (class GALGAS_constructorMap & ioArgument0,
+                                              class GALGAS_unifiedTypeMap & ioArgument1,
+                                              const class GALGAS_string constinArgument2,
+                                              const class GALGAS_string constinArgument3,
+                                              const class GALGAS_bool constinArgument4,
+                                              class C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
 

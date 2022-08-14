@@ -243,14 +243,14 @@ map @extensionMethodMapForBuildingContext {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionSetterMapForType {
-  public var @formalParameterListAST mFormalParameterList
+  public let @formalParameterListAST mFormalParameterList
   insert insertKey error message "the '%K' setter has been already declared in %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionSetterMapForBuildingContext {
-  public var @extensionSetterMapForType mExtensionSetterMapForType
+  public let @extensionSetterMapForType mExtensionSetterMapForType
   insert insertKey error message "internal error"
   search searchKey error message "internal error"
 }
@@ -262,15 +262,16 @@ map @extensionSetterMapForBuildingContext {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionGetterMapForType {
-  public var @lstring mResultTypeName
-  public var @formalInputParameterListAST mInputFormalParameterList
+  public let @lstring mResultTypeName
+  public let @formalInputParameterListAST mInputFormalParameterList
+  public let @methodQualifier mQualifier
   insert insertKey error message "the '%K' getter has been already declared in %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionGetterMapForBuildingContext {
-  public var @extensionGetterMapForType mExtensionGetterMapForType
+  public let @extensionGetterMapForType mExtensionGetterMapForType
   insert insertKey error message "internal error"
   search searchKey error message "internal error"
 }
@@ -390,8 +391,7 @@ override getter @externFunctionDeclarationAST keyRepresentation
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @externRoutineDeclarationAST keyRepresentation
-  ->@string {
+override getter @externRoutineDeclarationAST keyRepresentation -> @string {
   result = "extern routine " + self.mRoutineName
 }
 
@@ -401,37 +401,57 @@ override getter @externRoutineDeclarationAST keyRepresentation
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc addExtensions
-  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-  ?!@semanticContext ioSemanticContext
-  ?let @lstring inTypeName
-  ?!@getterMap ioGetterMap
-  ?!@setterMap ioSetterMap
-  ?!@instanceMethodMap ioInstanceMethodMap
-  ?acceptSetters: let @bool inAcceptSetters
-{
+proc addExtensions ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+                   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+                   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+                   ?!@semanticContext ioSemanticContext
+                   ?let @lstring inTypeName
+                   ?isClass: let @bool inIsClass
+                   ?!@getterMap ioGetterMap
+                   ?!@setterMap ioSetterMap
+                   ?!@instanceMethodMap ioInstanceMethodMap
+                   ?acceptSetters: let @bool inAcceptSetters {
 #------------------------  Extension getters
   if [inExtensionGetterMapForBuildingContext hasKey !inTypeName.string] then
     [inExtensionGetterMapForBuildingContext searchKey !inTypeName ?let extensionGetterMapForType]
-    for (lkey mResultTypeName mInputFormalParameterList) in extensionGetterMapForType do
+    for (lkey mResultTypeName mInputFormalParameterList qualifier) in extensionGetterMapForType do
       var @functionSignature formalArgumentList = {}
       for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * *) in mInputFormalParameterList do
-        [!?ioSemanticContext.mTypeMap makeEntry  !mFormalArgumentTypeName ?let typeIndex]
+        [!?ioSemanticContext.mTypeMap makeEntry !mFormalArgumentTypeName ?let typeIndex]
         formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentName.string
       end
-      [!?ioSemanticContext.mTypeMap makeEntry  !mResultTypeName ?let returnedType]
-      [!?ioGetterMap insertKey
-        !lkey
-        !@methodKind.definedAsExtension
-        !formalArgumentList
-        !lkey.location
-        !true
-        !returnedType
-        !@methodQualifier.isBasic
-        !"" # No Error message
-      ]
+      [!?ioSemanticContext.mTypeMap makeEntry !mResultTypeName ?let returnedType]
+      if qualifier == .isVirtualOverriding then
+        if [ioGetterMap hasKey !lkey] then
+          [!?ioGetterMap setMQualifierForKey !.isVirtualOverriding !lkey]
+        end
+      elsif qualifier == .isVirtualOverridingAbstract then
+        if [ioGetterMap hasKey !lkey] then
+          [!?ioGetterMap setMQualifierForKey !.isVirtualOverridingAbstract !lkey]
+        end
+      elsif inIsClass & (qualifier == .isBasic) then
+        [!?ioGetterMap insertKey
+          !lkey
+          !.definedAsExtension
+          !formalArgumentList
+          !lkey.location
+          !true
+          !returnedType
+          !.isVirtual
+          !"" # No Error message
+        ]
+      else
+        [!?ioGetterMap insertKey
+          !lkey
+          !.definedAsExtension
+          !formalArgumentList
+          !lkey.location
+          !true
+          !returnedType
+          !qualifier
+          !"" # No Error message
+        ]
+      end
     end
   end
 #------------------------  Extension methods
@@ -498,7 +518,7 @@ proc addExtensions
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract method @semanticDeclarationAST enterInSemanticContext
+abstract method @semanticDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
@@ -604,7 +624,7 @@ proc recursivelyEnumerateDirectories
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @filewrapperDeclarationAST enterInSemanticContext
+override method @filewrapperDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
@@ -679,7 +699,7 @@ override method @filewrapperDeclarationAST enterInSemanticContext
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @externRoutineDeclarationAST enterInSemanticContext
+override method @externRoutineDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
@@ -700,7 +720,7 @@ override method @externRoutineDeclarationAST enterInSemanticContext
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @procDeclarationAST enterInSemanticContext
+override method @procDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
@@ -723,7 +743,7 @@ override method @procDeclarationAST enterInSemanticContext
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @externFunctionDeclarationAST enterInSemanticContext # Handles also function declaration
+override method @externFunctionDeclarationAST enterDeclarationInSemanticContext # Handles also function declaration
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
@@ -747,7 +767,7 @@ override method @externFunctionDeclarationAST enterInSemanticContext # Handles a
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @onceFunctionDeclarationAST enterInSemanticContext
+override method @onceFunctionDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
@@ -760,7 +780,7 @@ override method @onceFunctionDeclarationAST enterInSemanticContext
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @galgas3SyntaxComponentAST enterInSemanticContext
+override method @galgas3SyntaxComponentAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
@@ -777,7 +797,7 @@ override method @galgas3SyntaxComponentAST enterInSemanticContext
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @galgas3GrammarComponentAST enterInSemanticContext
+override method @galgas3GrammarComponentAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
@@ -812,7 +832,7 @@ override method @galgas3GrammarComponentAST enterInSemanticContext
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @lexiqueComponentAST enterInSemanticContext
+override method @lexiqueComponentAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext

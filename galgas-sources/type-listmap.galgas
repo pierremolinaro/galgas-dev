@@ -101,7 +101,7 @@ override method @listmapDeclarationAST enterDeclarationInGraph
 #   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @listmapDeclarationAST enterInSemanticContext
+override method @listmapDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
@@ -186,6 +186,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
     !self.mListmapTypeName
+    !isClass: false
     !?getterMap
     !?setterMap
     !?instanceMethodMap

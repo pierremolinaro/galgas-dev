@@ -12,23 +12,26 @@ class cPtr_selectInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//--- Extension getter isLinear
+  public: virtual class GALGAS_bool getter_isLinear (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- START OF USER ZONE 2
 
-  public: virtual void printInstructionForGrammar (C_HTMLString & inHTMLfile) ;
+  public: virtual void printInstructionForGrammar (C_HTMLString & inHTMLfile) override ;
 
 
   public: virtual void fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
                                                   const C_String & inSyntaxComponentName,
-                                                  int32_t & ioCount) ;
+                                                  int32_t & ioCount) override ;
 
   public: virtual void buildRightDerivation (const int32_t inTerminalSymbolsCount,
                                               const int32_t inOriginalGrammarSymbolCount,
-                                              TC_UniqueArray <int16_t> & ioInstructionsList) ;
+                                              TC_UniqueArray <int16_t> & ioInstructionsList) override ;
 
   public: virtual void buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
                                                          const int32_t inOriginalGrammarSymbolCount,
                                                          const C_String & inSyntaxComponentName,
-                                                         cPureBNFproductionsList & ioProductions) ;
+                                                         cPureBNFproductionsList & ioProductions) override ;
 
 //--- END OF USER ZONE 2
 //--- Properties
@@ -42,16 +45,16 @@ class cPtr_selectInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
                                                     COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 

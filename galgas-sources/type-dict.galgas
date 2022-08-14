@@ -144,7 +144,7 @@ override method @dictDeclarationAST enterDeclarationInGraph
 #   ENTER IN SEMANTIC CONTEXT               
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @dictDeclarationAST enterInSemanticContext
+override method @dictDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
@@ -304,6 +304,7 @@ override method @dictDeclarationAST enterInSemanticContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
     !self.mDictTypeName
+    !isClass: false
     !?getterMap
     !?setterMap
     !?instanceMethodMap

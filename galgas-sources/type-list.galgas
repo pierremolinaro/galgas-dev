@@ -92,7 +92,7 @@ override method @listDeclarationAST enterDeclarationInGraph
 #   SEMANTIC ANALYSIS                       
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @listDeclarationAST enterInSemanticContext
+override method @listDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
@@ -308,6 +308,7 @@ override method @listDeclarationAST enterInSemanticContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
     !self.mListTypeName
+    !isClass: false
     !?getterMap
     !?setterMap
     !?instanceMethodMap

@@ -351,7 +351,7 @@ override method @mapDeclarationAST enterDeclarationInGraph
 #   ENTER IN SEMANTIC CONTEXT               
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @mapDeclarationAST enterInSemanticContext
+override method @mapDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
@@ -547,10 +547,10 @@ override method @mapDeclarationAST enterInSemanticContext
     else
       [!?setterMap insertOrReplace
         !mMethodName
-        !@methodKind.definedAsMember
+        !.definedAsMember
         !removeMethodFormalArgumentList
         !true
-        !@methodQualifier.isBasic
+        !.isBasic
         !""
       ]
     end
@@ -567,11 +567,11 @@ override method @mapDeclarationAST enterInSemanticContext
     end
     [!?instanceMethodMap insertKey
       !mSearchMethodName
-      !@methodKind.definedAsMember
+      !.definedAsMember
       !searchMethodFormalArgumentList
       !mSearchMethodName.location
       !true
-      !@methodQualifier.isBasic
+      !.isBasic
       !.constantMethod
       !"" # No error message
     ]
@@ -582,12 +582,12 @@ override method @mapDeclarationAST enterInSemanticContext
     [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
       !accessorName
-      !@methodKind.definedAsMember
+      !.definedAsMember
       !@functionSignature {!["" nowhere] !stringTypeIndex !"inKey"}
-      !@location.here
+      !.here
       !true
       !attributeTypeIndex
-      !@methodQualifier.isBasic
+      !.isBasic
       !"" # No Error message
     ]
   end
@@ -596,10 +596,10 @@ override method @mapDeclarationAST enterInSemanticContext
     [self.mInsertOrReplaceDeclarationListAST first ?let insertOrReplaceLocation]
     [!?setterMap insertOrReplace
       !@lstring.new {!"insertOrReplace" !insertOrReplaceLocation}
-      !@methodKind.definedAsMember
+      !.definedAsMember
       !insertMethodFormalArgumentList
       !false
-      !@methodQualifier.isBasic
+      !.isBasic
       !"" # No error message
     ]
   end
@@ -628,13 +628,14 @@ override method @mapDeclarationAST enterInSemanticContext
 #--- Add Optional method
   var optionalMethodMap = @optionalMethodMap {}
   [!?optionalMethodMap insertKey !["searchKey" nowhere] !optionalMethodSignature]
-#--- Add Categories
+#--- Add extensions
   addExtensions (
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
     !self.mMapTypeName
+    !isClass: false
     !?getterMap
     !?setterMap
     !?instanceMethodMap
@@ -768,14 +769,15 @@ override method @mapDeclarationAST semanticAnalysis
   let @bool hasInsertOrReplaceModifier = [self.mInsertOrReplaceDeclarationListAST length] > 0
   if hasInsertOrReplaceModifier & [insertMethodMap hasKey !"insertOrReplace"] then
     [self.mInsertOrReplaceDeclarationListAST first ?let insertOrReplaceDeclarationLocation]
-    error insertOrReplaceDeclarationLocation : "the insertOrReplace' setter cannot be declared : an insert setter or a remove setter has been declared with this name"
+    error insertOrReplaceDeclarationLocation 
+      : "the insertOrReplace' setter cannot be declared : an insert setter or a remove setter has been declared with this name"
   end
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=
     !"map " + self.mMapTypeName
     !@mapTypeForGeneration.new {
       ![inSemanticContext.mTypeMap searchKey !self.mMapTypeName]
-      ![inSemanticContext.mTypeMap searchKey !@lstring.new {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName.location}]
+      ![inSemanticContext.mTypeMap searchKey !.new {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName}]
       !self.mMapTypeName
       !typedAttributeList
       !self.mInsertMethodList

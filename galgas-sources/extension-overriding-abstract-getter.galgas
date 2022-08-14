@@ -90,19 +90,34 @@ override getter @overridingAbstractExtensionGetterAST keyRepresentation  -> @str
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionGetterAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList {
+                                  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+                                  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+                                  ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext
+                                  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+                                  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList {
   ioExtensionOverrideDefinitionList += !self
+#---
+  if not [ioExtensionGetterMapForBuildingContext hasKey !self.mTypeName.string] then
+    [!?ioExtensionGetterMapForBuildingContext insertKey
+      !self.mTypeName
+      !{}
+    ]
+  end
+  with self.mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
+    [!?mExtensionGetterMapForType insertKey
+      !self.mAbstractExtensionGetterName
+      !self.mAbstractExtensionGetterReturnedTypeName
+      !self.mAbstractExtensionGetterFormalInputParameterList
+      !.isVirtualOverridingAbstract
+    ]
+   end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @overridingAbstractExtensionGetterAST enterInSemanticContext
+override method @overridingAbstractExtensionGetterAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext

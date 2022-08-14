@@ -15,7 +15,9 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acStrongPtr_clas
 
 //----------------------------------------------------------------------------------------------------------------------
 
-/* § public: virtual GALGAS_bool getter_isLinear (C_Compiler * COMMA_LOCATION_ARGS) const ; */
+//--- Extension getter isLinear
+  public: virtual class GALGAS_bool getter_isLinear (C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+
 //--- START OF USER ZONE 2
 
   public: virtual void printInstructionForGrammar (C_HTMLString & inHTMLfile) = 0 ;
@@ -44,11 +46,11 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acStrongPtr_clas
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const = 0 ;
+                                    const int32_t inIndentation) const override = 0 ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override = 0 ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const = 0 ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
 
 } ;
 

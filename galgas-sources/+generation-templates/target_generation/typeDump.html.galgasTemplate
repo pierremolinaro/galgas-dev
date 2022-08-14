@@ -202,12 +202,13 @@ if [[element definition].mGetterMap count] > 0 then
     case definedAsExtension : %(extension) %
     end
     switch mQualifier
-    case isAbstract : %<b>abstract</b> %
+    case isVirtualAbstract : %<b>abstract</b> %
     case isBasic :
     case isBasicFinal :
     case isInherited :
-    case isOverriding : %<b>override</b> %
-    case isOverridingAbstract : %<b>abstract override</b> %
+    case isVirtual :
+    case isVirtualOverriding : %<b>override</b> %
+    case isVirtualOverridingAbstract : %<b>abstract override</b> %
     end
     %<b>getter</b> %!lkey.string
     for (mFormalSelector mFormalArgumentType mFormalArgumentName) in mArgumentTypeList do
@@ -228,12 +229,13 @@ if [[element definition].mInstanceMethodMap count] > 0 then
     case definedAsExtension : %(extension) %
     end
     switch mQualifier
-    case isAbstract : %<b>abstract</b> %
+    case isVirtualAbstract : %<b>abstract</b> %
     case isBasic :
     case isBasicFinal :
     case isInherited :
-    case isOverriding : %<b>override</b> %
-    case isOverridingAbstract : %<b>abstract override</b> %
+    case isVirtual :
+    case isVirtualOverriding : %<b>override</b> %
+    case isVirtualOverridingAbstract : %<b>abstract override</b> %
     end
     %<b>method</b> %!lkey.string
     for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in mParameterList do
@@ -260,12 +262,13 @@ if [[element definition].mSetterMap count] > 0 then
     case definedAsExtension : %(extension) %
     end
     switch mQualifier
-    case isAbstract : %<b>abstract</b> %
+    case isVirtualAbstract : %<b>abstract</b> %
     case isBasic :
     case isBasicFinal :
     case isInherited :
-    case isOverriding : %<b>override</b> %
-    case isOverridingAbstract : %<b>abstract override</b> %
+    case isVirtual :
+    case isVirtualOverriding : %<b>override</b> %
+    case isVirtualOverridingAbstract : %<b>abstract override</b> %
     end
     %<b>setter</b> %!lkey.string
     for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in mParameterList do

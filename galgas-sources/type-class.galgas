@@ -179,12 +179,11 @@ override getter @classDeclarationAST keyRepresentation -> @string {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @classDeclarationAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
-{
+                                  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+                                  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+                                  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+                                  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+                                  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + self.mClassTypeName !self.mClassTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
 #--- Add edge from super class
@@ -207,12 +206,11 @@ override method @classDeclarationAST enterDeclarationInGraph
 #   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @classDeclarationAST enterInSemanticContext
-  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-  ?!@semanticContext ioSemanticContext
-{
+override method @classDeclarationAST enterDeclarationInSemanticContext
+                                      ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+                                      ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+                                      ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+                                      ?!@semanticContext ioSemanticContext {
   var @getterMap getterMap
   var @setterMap setterMap
   var @instanceMethodMap instanceMethodMap
@@ -240,21 +238,6 @@ override method @classDeclarationAST enterInSemanticContext
     inheritedTypedPropertyList = superTypeDefinition.mAllTypedPropertyList
     attributeMap = superTypeDefinition.mPropertyMap
     generateHeaderInSeparateFile = superTypeDefinition.mGenerateHeaderInSeparateFile
-#    [ioSemanticContext.mTypeMap searchKey
-#      !self.mSuperClassName
-#      ?3*
-#      ?let typeKindEnum
-#      ?*
-#      ?inheritedTypedPropertyList
-#      ?attributeMap
-#      ?2*
-#      ?let inheritedGetterMap
-#      ?let inheritedSetterMap
-#      ?let inheritedMethodMap
-#      ?9*
-#      ?generateHeaderInSeparateFile
-#      ?4*
-#    ]
   #---
     if not [superTypeDefinition.mTypeKindEnum isClassType] then
       error self.mSuperClassName : "the @" + self.mSuperClassName + " should be a class type"
@@ -273,7 +256,8 @@ override method @classDeclarationAST enterInSemanticContext
     end
   #--- Mark all getters as inherited
     getterMap = {}
-    for (lkey mKind mArgumentTypeList mDeclarationLocation mHasCompilerArgument mReturnedType * mErrorMessage) in superTypeDefinition.mGetterMap do
+    for (lkey mKind mArgumentTypeList mDeclarationLocation mHasCompilerArgument mReturnedType * mErrorMessage)
+          in superTypeDefinition.mGetterMap do
       [!?getterMap insertKey
         !lkey
         !mKind
@@ -287,7 +271,8 @@ override method @classDeclarationAST enterInSemanticContext
     end
   #--- Mark all methods as inherited
     instanceMethodMap = {}
-    for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument * mutability mErrorMessage) in superTypeDefinition.mInstanceMethodMap do
+    for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument * mutability mErrorMessage)
+      in superTypeDefinition.mInstanceMethodMap do
       [!?instanceMethodMap insertKey
         !lkey
         !mKind
@@ -386,6 +371,7 @@ override method @classDeclarationAST enterInSemanticContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
     !self.mClassTypeName
+    !isClass: true
     !?getterMap
     !?setterMap
     !?instanceMethodMap
@@ -436,13 +422,12 @@ override method @classDeclarationAST enterInSemanticContext
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @classDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities 
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-  ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
-{
+                                      ?!@lstringlist unused ioUsefulnessRootEntities 
+                                      ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                      ?let @string unused inProductDirectory
+                                      ?let @semanticContext inSemanticContext
+                                      ?let @predefinedTypes unused inPredefinedTypes
+                                      ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
 #--- Useful entities graph
   let classTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mClassTypeName)
   [!?ioUsefulEntitiesGraph addNode !classTypeNameForUsefulness !classTypeNameForUsefulness]
@@ -743,30 +728,32 @@ override method @classTypeForGeneration appendSpecificImplementation ?let @unifi
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func generateClassGetterDeclaration ?let @lstring inGetterName
-#                                    ?let @methodKind inKind
                                     ?let @functionSignature inArgumentTypeList
                                     ?let @bool inHasCompilerArgument
                                     ?let @unifiedTypeMapEntry inReturnedType
                                     ?let @methodQualifier inQualifier -> @string {
-  var generate = true
+  var generateMethodDeclaration = true
   var suffix = ""
 #---
   switch inQualifier
-  case isAbstract :
+  case isVirtualAbstract :
     suffix = " = 0"
-  case isBasic :
-  case isBasicFinal :
+  case isVirtual :
+  case isBasic, isBasicFinal :
+    generateMethodDeclaration = false
   case isInherited :
-    generate = false
-  case isOverriding :
-    suffix = " overriding = 0"
-  case isOverridingAbstract :
-    suffix = " overriding = 0"
+    generateMethodDeclaration = false
+  case isVirtualOverriding :
+    suffix = " override"
+  case isVirtualOverridingAbstract :
+    suffix = " override = 0"
   end
 #---
   result = ""
-  if generate then
-    result = "/* § public: virtual GALGAS_" + [inReturnedType identifierRepresentation]
+  if generateMethodDeclaration then
+ #   result  = "  #ifdef NEW_GETTER\n"
+    result = "//--- Extension getter " + inGetterName + "\n"
+    result += "  public: virtual class GALGAS_" + [inReturnedType identifierRepresentation]
     result += " getter_" + [inGetterName identifierRepresentation] + " ("
     var first = true
     for formalArgument in inArgumentTypeList 
@@ -776,7 +763,7 @@ func generateClassGetterDeclaration ?let @lstring inGetterName
       else
         result += ",\n           "
       end
-      result += "const GALGAS_" + [formalArgument.mFormalArgumentType identifierRepresentation] 
+      result += "const class GALGAS_" + [formalArgument.mFormalArgumentType identifierRepresentation] 
       result += " " + formalArgument.mFormalArgumentName
     end
     if inHasCompilerArgument then
@@ -786,7 +773,9 @@ func generateClassGetterDeclaration ?let @lstring inGetterName
       result += "C_Compiler *"
       first = false
     end
-    result += if first then "LOCATION_ARGS" else " COMMA_LOCATION_ARGS" end + ") const" + suffix + " ; */\n"
+    result += if first then "LOCATION_ARGS" else " COMMA_LOCATION_ARGS" end + ") const"
+    result += suffix + " ;\n\n"
+#    result += "  #endif\n\n"
   end
 }
 
