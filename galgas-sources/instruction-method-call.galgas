@@ -110,7 +110,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
   switch mutability
   case constantMethod :
   case mutatingMethod :
-    error self.mMethodName : "not handled yet"
+#    error self.mMethodName : "not handled yet"
   end
 #--- Check effective parameters
   analyzeRoutineArguments (

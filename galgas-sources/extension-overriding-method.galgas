@@ -89,12 +89,26 @@ override getter @overridingExtensionMethodAST keyRepresentation -> @string {
 
 override method @overridingExtensionMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList
 {
   ioExtensionOverrideDefinitionList += !self
+#---
+  if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
+    [!?ioExtensionMethodMapForBuildingContext insertKey
+      ! self.mTypeName
+      !{}
+    ]
+  end
+  with self.mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
+    [!?mExtensionMethodMapForType insertKey
+      !self.mOverridingExtensionMethodName
+      ! self.mOverridingExtensionMethodFormalParameterList
+      !.isVirtualOverriding
+    ]
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -160,9 +174,9 @@ override method @overridingExtensionMethodAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !"object"
+    !"this"
     !selfType: .available {!type: selfType !mutable: false !mutableproperties: true}
-    !"object->"
+    !"this->"
     !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
   }
   var isRefClass = false
@@ -260,12 +274,11 @@ override getter @overridingExtensionMethodForGeneration headerKind ->@headerKind
 #·······················································································································
 
 override method @overridingExtensionMethodForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation {
-  generateExtensionMethod (
+                                                            ?let @unifiedTypeMap unused inTypeMap
+                                                            ?!@stringset ioInclusionSet
+                                                            !@string outImplementation {
+  generateExtensionMethodNew (
     !self.mReceiverType
-    !self.mBaseTypeName
     !?ioInclusionSet
     !self.mExtensionMethodName
     !self.mExtensionMethodFormalParameterList

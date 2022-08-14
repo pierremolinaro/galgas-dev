@@ -321,14 +321,15 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionOrEx
 
 class cPtr_lexicalFunctionOrExpressionAST : public cPtr_lexicalFunctionExpressionAST {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter callsDefinedUnicodeTestFunctions
   public: virtual class GALGAS_bool getter_callsDefinedUnicodeTestFunctions (const class GALGAS_stringset inDefinedUnicodeFunctionSet,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter generateForUnicodeTestFunctions
   public: virtual class GALGAS_string getter_generateForUnicodeTestFunctions (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method checkUnicodeConstants
+  public: virtual void method_checkUnicodeConstants (C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_lexicalFunctionExpressionAST mProperty_mLeftOperand ;
@@ -472,14 +473,15 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionCall
 
 class cPtr_lexicalFunctionCallAST : public cPtr_lexicalFunctionExpressionAST {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter callsDefinedUnicodeTestFunctions
   public: virtual class GALGAS_bool getter_callsDefinedUnicodeTestFunctions (const class GALGAS_stringset inDefinedUnicodeFunctionSet,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter generateForUnicodeTestFunctions
   public: virtual class GALGAS_string getter_generateForUnicodeTestFunctions (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method checkUnicodeConstants
+  public: virtual void method_checkUnicodeConstants (C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mCalledFunctionName ;
@@ -621,14 +623,15 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionChar
 
 class cPtr_lexicalFunctionCharacterMatchAST : public cPtr_lexicalFunctionExpressionAST {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter callsDefinedUnicodeTestFunctions
   public: virtual class GALGAS_bool getter_callsDefinedUnicodeTestFunctions (const class GALGAS_stringset inDefinedUnicodeFunctionSet,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter generateForUnicodeTestFunctions
   public: virtual class GALGAS_string getter_generateForUnicodeTestFunctions (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method checkUnicodeConstants
+  public: virtual void method_checkUnicodeConstants (C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_lchar mProperty_mCharacter ;
@@ -773,14 +776,15 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionChar
 
 class cPtr_lexicalFunctionCharacterIntervalMatchAST : public cPtr_lexicalFunctionExpressionAST {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter callsDefinedUnicodeTestFunctions
   public: virtual class GALGAS_bool getter_callsDefinedUnicodeTestFunctions (const class GALGAS_stringset inDefinedUnicodeFunctionSet,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter generateForUnicodeTestFunctions
   public: virtual class GALGAS_string getter_generateForUnicodeTestFunctions (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method checkUnicodeConstants
+  public: virtual void method_checkUnicodeConstants (C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_lchar mProperty_mLowerBound ;
@@ -865,17 +869,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionChar
 //
 //Abstract extension method '@lexicalFunctionExpressionAST checkUnicodeConstants'
 //
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef void (*extensionMethodSignature_lexicalFunctionExpressionAST_checkUnicodeConstants) (const class cPtr_lexicalFunctionExpressionAST * inObject,
-                                                                                             class C_Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_checkUnicodeConstants (const int32_t inClassIndex,
-                                                 extensionMethodSignature_lexicalFunctionExpressionAST_checkUnicodeConstants inMethod) ;
-
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_checkUnicodeConstants (const class cPtr_lexicalFunctionExpressionAST * inObject,
@@ -1336,18 +1329,6 @@ class GALGAS_string extensionGetter_cocoaReset (const class GALGAS_lexicalTypeEn
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-typedef void (*extensionMethodSignature_lexicalSendDefaultActionAST_checkLexicalDefaultAction) (const class cPtr_lexicalSendDefaultActionAST * inObject,
-                                                                                                class GALGAS_lexiqueAnalysisContext & ioArgument0,
-                                                                                                class C_Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_checkLexicalDefaultAction (const int32_t inClassIndex,
-                                                     extensionMethodSignature_lexicalSendDefaultActionAST_checkLexicalDefaultAction inMethod) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
 void callExtensionMethod_checkLexicalDefaultAction (const class cPtr_lexicalSendDefaultActionAST * inObject,
                                                     GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
                                                     C_Compiler * inCompiler
@@ -1359,18 +1340,6 @@ void callExtensionMethod_checkLexicalDefaultAction (const class cPtr_lexicalSend
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-typedef void (*extensionMethodSignature_lexicalExpressionAST_checkLexicalExpression) (const class cPtr_lexicalExpressionAST * inObject,
-                                                                                      class GALGAS_lexiqueAnalysisContext & ioArgument0,
-                                                                                      class C_Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_checkLexicalExpression (const int32_t inClassIndex,
-                                                  extensionMethodSignature_lexicalExpressionAST_checkLexicalExpression inMethod) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
 void callExtensionMethod_checkLexicalExpression (const class cPtr_lexicalExpressionAST * inObject,
                                                  GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
                                                  C_Compiler * inCompiler
@@ -1380,19 +1349,6 @@ void callExtensionMethod_checkLexicalExpression (const class cPtr_lexicalExpress
 //
 //Abstract extension method '@lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalFunctionCallArgument'
 //
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef void (*extensionMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument) (const class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
-                                                                                                                          class GALGAS_lexiqueAnalysisContext & ioArgument0,
-                                                                                                                          class GALGAS_lexicalTypeEnum inArgument1,
-                                                                                                                          class C_Compiler * inCompiler
-                                                                                                                          COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_checkLexicalFunctionCallArgument (const int32_t inClassIndex,
-                                                            extensionMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument inMethod) ;
-
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_checkLexicalFunctionCallArgument (const class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
@@ -1407,19 +1363,6 @@ void callExtensionMethod_checkLexicalFunctionCallArgument (const class cPtr_lexi
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-typedef void (*extensionMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument) (const class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
-                                                                                                                         class GALGAS_lexiqueAnalysisContext & ioArgument0,
-                                                                                                                         class GALGAS_lexicalTypeEnum inArgument1,
-                                                                                                                         class C_Compiler * inCompiler
-                                                                                                                         COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_checkLexicalRoutineCallArgument (const int32_t inClassIndex,
-                                                           extensionMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument inMethod) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
 void callExtensionMethod_checkLexicalRoutineCallArgument (const class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
                                                           GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
                                                           GALGAS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
@@ -1430,20 +1373,6 @@ void callExtensionMethod_checkLexicalRoutineCallArgument (const class cPtr_lexic
 //
 //Abstract extension method '@abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument'
 //
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef void (*extensionMethodSignature_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument) (const class cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
-                                                                                                                  class GALGAS_lexiqueAnalysisContext & ioArgument0,
-                                                                                                                  class GALGAS_lexicalArgumentModeAST inArgument1,
-                                                                                                                  class GALGAS_lexicalTypeEnum inArgument2,
-                                                                                                                  class C_Compiler * inCompiler
-                                                                                                                  COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_checkLexicalRoutineCallArgument (const int32_t inClassIndex,
-                                                           extensionMethodSignature_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument inMethod) ;
-
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_checkLexicalRoutineCallArgument (const class cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
@@ -1459,19 +1388,6 @@ void callExtensionMethod_checkLexicalRoutineCallArgument (const class cPtr_abstr
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-typedef void (*extensionMethodSignature_lexicalInstructionAST_checkLexicalInstruction) (const class cPtr_lexicalInstructionAST * inObject,
-                                                                                        class GALGAS_lexiqueAnalysisContext & ioArgument0,
-                                                                                        class GALGAS_lexicalTagMap & ioArgument1,
-                                                                                        class C_Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_checkLexicalInstruction (const int32_t inClassIndex,
-                                                   extensionMethodSignature_lexicalInstructionAST_checkLexicalInstruction inMethod) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
 void callExtensionMethod_checkLexicalInstruction (const class cPtr_lexicalInstructionAST * inObject,
                                                   GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
                                                   GALGAS_lexicalTagMap & io_ioTagMap,
@@ -1482,18 +1398,6 @@ void callExtensionMethod_checkLexicalInstruction (const class cPtr_lexicalInstru
 //
 //Abstract extension method '@abstractLexicalRuleAST checkLexicalRule'
 //
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef void (*extensionMethodSignature_abstractLexicalRuleAST_checkLexicalRule) (const class cPtr_abstractLexicalRuleAST * inObject,
-                                                                                  class GALGAS_lexiqueAnalysisContext & ioArgument0,
-                                                                                  class C_Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_checkLexicalRule (const int32_t inClassIndex,
-                                            extensionMethodSignature_abstractLexicalRuleAST_checkLexicalRule inMethod) ;
-
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_checkLexicalRule (const class cPtr_abstractLexicalRuleAST * inObject,
@@ -2038,10 +1942,32 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentDecl
 
 class cPtr_optionComponentDeclarationAST : public cPtr_semanticDeclarationAST {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter keyRepresentation
   public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method enterDeclarationInGraph
+  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
+           class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
+           class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method enterDeclarationInSemanticContext
+  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+           const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+           const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticContext & ioSemanticContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method semanticAnalysis
+  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
+           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
+           const class GALGAS_string inProductDirectory,
+           const class GALGAS_semanticContext inSemanticContext,
+           const class GALGAS_predefinedTypes inPredefinedTypes,
+           class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mOptionComponentName ;
@@ -5618,10 +5544,32 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_arrayDeclarationAST
 
 class cPtr_arrayDeclarationAST : public cPtr_semanticDeclarationAST {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter keyRepresentation
   public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method enterDeclarationInGraph
+  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
+           class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
+           class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method enterDeclarationInSemanticContext
+  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+           const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+           const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticContext & ioSemanticContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method semanticAnalysis
+  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
+           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
+           const class GALGAS_string inProductDirectory,
+           const class GALGAS_semanticContext inSemanticContext,
+           const class GALGAS_predefinedTypes inPredefinedTypes,
+           class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mArrayTypeName ;
@@ -5772,10 +5720,32 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolsetDeclarationA
 
 class cPtr_boolsetDeclarationAST : public cPtr_semanticDeclarationAST {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter keyRepresentation
   public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method enterDeclarationInGraph
+  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
+           class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
+           class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method enterDeclarationInSemanticContext
+  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+           const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+           const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticContext & ioSemanticContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method semanticAnalysis
+  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
+           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
+           const class GALGAS_string inProductDirectory,
+           const class GALGAS_semanticContext inSemanticContext,
+           const class GALGAS_predefinedTypes inPredefinedTypes,
+           class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mBoolsetTypeName ;
@@ -6263,10 +6233,32 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classDeclarationAST
 
 class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter keyRepresentation
   public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method enterDeclarationInGraph
+  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
+           class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
+           class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method enterDeclarationInSemanticContext
+  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+           const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+           const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticContext & ioSemanticContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method semanticAnalysis
+  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
+           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
+           const class GALGAS_string inProductDirectory,
+           const class GALGAS_semanticContext inSemanticContext,
+           const class GALGAS_predefinedTypes inPredefinedTypes,
+           class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_bool mProperty_mIsAbstract ;
@@ -6535,10 +6527,32 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_weakReferenceDeclar
 
 class cPtr_weakReferenceDeclarationAST : public cPtr_semanticDeclarationAST {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter keyRepresentation
   public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method enterDeclarationInGraph
+  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
+           class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
+           class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method enterDeclarationInSemanticContext
+  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+           const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+           const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticContext & ioSemanticContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method semanticAnalysis
+  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
+           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
+           const class GALGAS_string inProductDirectory,
+           const class GALGAS_semanticContext inSemanticContext,
+           const class GALGAS_predefinedTypes inPredefinedTypes,
+           class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mClassTypeName ;
@@ -6780,10 +6794,32 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumDeclarationAST 
 
 class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter keyRepresentation
   public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method enterDeclarationInGraph
+  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
+           class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
+           class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method enterDeclarationInSemanticContext
+  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+           const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+           const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticContext & ioSemanticContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method semanticAnalysis
+  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
+           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
+           const class GALGAS_string inProductDirectory,
+           const class GALGAS_semanticContext inSemanticContext,
+           const class GALGAS_predefinedTypes inPredefinedTypes,
+           class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mEnumTypeName ;
@@ -8810,10 +8846,32 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeDeclarati
 
 class cPtr_externTypeDeclarationAST : public cPtr_semanticDeclarationAST {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter keyRepresentation
   public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method enterDeclarationInGraph
+  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
+           class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
+           class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method enterDeclarationInSemanticContext
+  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+           const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+           const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticContext & ioSemanticContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method semanticAnalysis
+  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
+           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
+           const class GALGAS_string inProductDirectory,
+           const class GALGAS_semanticContext inSemanticContext,
+           const class GALGAS_predefinedTypes inPredefinedTypes,
+           class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mExternTypeName ;

@@ -63,13 +63,15 @@ syntax extension galgas4DeclarationsSyntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @abstractExtensionMethodAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
-{
-  let key = @lstring.new {!"extension method @" + self.mTypeName + " " + self.mAbstractExtensionMethodName !self.mAbstractExtensionMethodName.location}
+                                  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+                                  ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext
+                                  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+                                  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+                                  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  let key = @lstring.new {
+    !"extension method @" + self.mTypeName + " " + self.mAbstractExtensionMethodName
+    !self.mAbstractExtensionMethodName.location
+  }
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName !self.mTypeName.location}]
 #---
@@ -83,6 +85,7 @@ override method @abstractExtensionMethodAST enterDeclarationInGraph
     [!?mExtensionMethodMapForType insertKey
       !self.mAbstractExtensionMethodName
       !self.mAbstractExtensionMethodFormalParameterList
+      !.isVirtualAbstract
     ]
   end
 }
@@ -91,8 +94,7 @@ override method @abstractExtensionMethodAST enterDeclarationInGraph
 #   KEY REPRESENTATION                      
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @abstractExtensionMethodAST keyRepresentation
-  ->@string {
+override getter @abstractExtensionMethodAST keyRepresentation -> @string {
   result = "abstract extension method @" + self.mTypeName + " " + self.mAbstractExtensionMethodName
 }
 
@@ -148,8 +150,8 @@ override method @abstractExtensionMethodAST semanticAnalysis
       !"method-" + [[selfType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mAbstractExtensionMethodName fileNameRepresentation]
       !selfType
       !self.mAbstractExtensionMethodName.string
-      !formalParameterListForGeneration}
-#    !"~"
+      !formalParameterListForGeneration
+    }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -205,9 +207,9 @@ override getter @abstractExtensionMethodForGeneration headerKind -> @headerKind 
 #·······················································································································
 
 override method @abstractExtensionMethodForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation {
+                                                                            ?let @unifiedTypeMap unused inTypeMap
+                                                                            ?!@stringset ioInclusionSet
+                                                                            !@string outImplementation {
   ioInclusionSet += !"method-" + [[self.mReceiverType definition].mTypeName.string fileNameRepresentation]+ "-" + [self.mAbstractExtensionMethodName fileNameRepresentation]
   [self.mReceiverType addHeaderFileName !?ioInclusionSet]
   for (* * mFormalArgumentType * *) in self.mAbstractExtensionMethodFormalParameterList do

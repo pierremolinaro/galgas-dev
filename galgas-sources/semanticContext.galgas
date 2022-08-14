@@ -2,7 +2,7 @@
 #                                           
 #  semantics definitions for semantics component 
 #                                           
-#  Copyright (C) 2010, ..., 2014 Pierre Molinaro.
+#  Copyright (C) 2010, ..., 2022 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
@@ -66,7 +66,7 @@ method @semanticInstructionListAST enterInstructionListInSemanticContext
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @grammarLabelMap {
-  public var @formalParameterSignature mLabelSignature
+  public let @formalParameterSignature mLabelSignature
   insert insertKey error message "the '%K' grammar label has been already declared in %L"
   search searchKey error message "the '%K' grammar label is not declared"
 }
@@ -74,9 +74,9 @@ map @grammarLabelMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @grammarMap {
-  public var @grammarLabelMap mLabelMap
-  public var @bool mHasIndexing
-  public var @bool mHasTranslateFeature
+  public let @grammarLabelMap mLabelMap
+  public let @bool mHasIndexing
+  public let @bool mHasTranslateFeature
   insert insertGrammar error message "the '%K' grammar has been already declared in %L"
   search searchKey error message "the '%K' grammar is not declared"
 }
@@ -88,8 +88,8 @@ map @grammarMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @routineMap {
-  public var @formalParameterSignature mRoutineSignature
-  public var @bool mIsInternal
+  public let @formalParameterSignature mRoutineSignature
+  public let @bool mIsInternal
   insert insertKey error message "the '%K' routine has been already declared in %L"
   search searchKey error message "the '%K' routine is not declared"
 }
@@ -101,9 +101,9 @@ map @routineMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @functionMap {
-  public var @functionSignature mFunctionSignature
-  public var @unifiedTypeMapEntry mResultType
-  public var @bool mIsInternal
+  public let @functionSignature mFunctionSignature
+  public let @unifiedTypeMapEntry mResultType
+  public let @bool mIsInternal
   insert insertKey error message "the '%K' function has been already declared in %L"
   search searchKey error message "the '%K' function is not declared"
 }
@@ -115,10 +115,10 @@ map @functionMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @wrapperFileMap { # Key is file name
-  public var @string mAbsoluteFilePath
-  public var @bool mIsTextFile # true: text file, false: binary file
-  public var @uint mWrapperDirectoryIndex
-  public var @uint mWrapperFileIndex
+  public let @string mAbsoluteFilePath
+  public let @bool mIsTextFile # true: text file, false: binary file
+  public let @uint mWrapperDirectoryIndex
+  public let @uint mWrapperFileIndex
   insert insertKey error message "INTERNAL ERROR"
   search searchKey error message "INTERNAL ERROR"
 }
@@ -126,9 +126,9 @@ map @wrapperFileMap { # Key is file name
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @wrapperDirectoryMap { # Key is directory name
-  public var @wrapperFileMap mRegularFileMap
-  public var @wrapperDirectoryMap mDirectoryMap
-  public var @uint mWrapperDirectoryIndex
+  public let @wrapperFileMap mRegularFileMap
+  public let @wrapperDirectoryMap mDirectoryMap
+  public let @uint mWrapperDirectoryIndex
   insert insertKey error message "INTERNAL ERROR"
   search searchKey error message "INTERNAL ERROR"
 }
@@ -136,8 +136,8 @@ map @wrapperDirectoryMap { # Key is directory name
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @filewrapperTemplateMap {
-  public var @functionSignature mTemplateSignature
-  public var @lstring mFilewrapperTemplatePath
+  public let @functionSignature mTemplateSignature
+  public let @lstring mFilewrapperTemplatePath
   insert insertKey error message "the '%K' filewrapper template has been already declared in %L"
   search searchKey error message "the '%K' filewrapper template is not declared"
 }
@@ -145,12 +145,12 @@ map @filewrapperTemplateMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @filewrapperMap {
-  public var @lstring mFilewrapperPath
-  public var @lstringlist mFilewrapperExtensionList
-  public var @wrapperFileMap mFilewrapperFileMap
-  public var @wrapperDirectoryMap mFilewrapperDirectoryMap
-  public var @filewrapperTemplateMap mFilewrapperTemplateMap
-  public var @bool mIsInternal
+  public let @lstring mFilewrapperPath
+  public let @lstringlist mFilewrapperExtensionList
+  public let @wrapperFileMap mFilewrapperFileMap
+  public let @wrapperDirectoryMap mFilewrapperDirectoryMap
+  public let @filewrapperTemplateMap mFilewrapperTemplateMap
+  public let @bool mIsInternal
   insert insertKey error message "the '%K' filewrapper has been already declared in %L"
   search searchKey error message "the '%K' filewrapper is not declared"
 }
@@ -162,11 +162,11 @@ map @filewrapperMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @optionComponentMapForSemanticAnalysis {
-  public var @bool mIsPredefined
-  public var @commandLineOptionMap mBoolOptionMap
-  public var @commandLineOptionMap mUIntOptionMap
-  public var @commandLineOptionMap mStringOptionMap
-  public var @commandLineOptionMap mStringListOptionMap
+  public let @bool mIsPredefined
+  public let @commandLineOptionMap mBoolOptionMap
+  public let @commandLineOptionMap mUIntOptionMap
+  public let @commandLineOptionMap mStringOptionMap
+  public let @commandLineOptionMap mStringListOptionMap
   insert insertKey error message "redefinition of the '%K' option component: it has been already declared in %L"
   search searchKey error message "the '%K' option component is not imported"
 }
@@ -178,9 +178,9 @@ map @optionComponentMapForSemanticAnalysis {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexiqueComponentMapForSemanticAnalysis {
-  public var @terminalMap mTerminalMap
-  public var @indexingListAST mIndexingListAST
-  public var @lstring mIndexingDirectory
+  public let @terminalMap mTerminalMap
+  public let @indexingListAST mIndexingListAST
+  public let @lstring mIndexingDirectory
   insert insertKey error message "redefinition of the '%K' lexique component: it has been already declared in %L"
   search searchKey error message "the '%K' lexique component is not imported"
 }
@@ -192,10 +192,10 @@ map @lexiqueComponentMapForSemanticAnalysis {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @syntaxComponentMap {
-  public var @lstring mLexiqueName 
-  public var @nonterminalDeclarationListAST mNonterminalDeclarationList
-  public var @syntaxRuleListAST mRuleList
-  public var @bool mHasTranslateFeature
+  public let @lstring mLexiqueName 
+  public let @nonterminalDeclarationListAST mNonterminalDeclarationList
+  public let @syntaxRuleListAST mRuleList
+  public let @bool mHasTranslateFeature
   insert insertKey error message "the '%K' syntax component has already been parsed"
   search searchKey error message "the '%K' syntax component is not parsed"
 }
@@ -224,14 +224,15 @@ struct @semanticContext {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionMethodMapForType {
-  public var @formalParameterListAST mFormalParameterList
+  public let @formalParameterListAST mFormalParameterList
+  public let @methodQualifier mQualifier
   insert insertKey error message "the '%K' method has been already declared in %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionMethodMapForBuildingContext {
-  public var @extensionMethodMapForType mExtensionMethodMapForType
+  public let @extensionMethodMapForType mExtensionMethodMapForType
   insert insertKey error message "internal error"
   search searchKey error message "internal error"
 }
@@ -457,25 +458,47 @@ proc addExtensions ?let @extensionMethodMapForBuildingContext inExtensionMethodM
 #------------------------  Extension methods
   if [inExtensionMethodMapForBuildingContext hasKey !inTypeName.string] then
     [inExtensionMethodMapForBuildingContext searchKey !inTypeName ?let extensionMethodMapForType]
-    for (lkey mFormalParameterList) in extensionMethodMapForType do
+    for (lkey mFormalParameterList qualifier) in extensionMethodMapForType do
       var formalArgumentList = @formalParameterSignature {}
-      for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
+      for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *)
+              in mFormalParameterList do
         [!?ioSemanticContext.mTypeMap makeEntry
           !mFormalArgumentTypeName
           ?let @unifiedTypeMapEntry typeIndex
         ]
         formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
       end
-      [!?ioInstanceMethodMap insertKey
-        !lkey
-        !@methodKind.definedAsExtension
-        !formalArgumentList
-        !lkey.location
-        !true
-        !@methodQualifier.isBasic
-        !.constantMethod
-        !"" # No error message
-      ]
+      if qualifier == .isVirtualOverriding then
+        if [ioInstanceMethodMap hasKey !lkey] then
+          [!?ioInstanceMethodMap setMQualifierForKey !.isVirtualOverriding !lkey]
+        end
+      elsif qualifier == .isVirtualOverridingAbstract then
+        if [ioInstanceMethodMap hasKey !lkey] then
+          [!?ioInstanceMethodMap setMQualifierForKey !.isVirtualOverridingAbstract !lkey]
+        end
+      elsif inIsClass & (qualifier == .isBasic) then
+        [!?ioInstanceMethodMap insertKey
+          !lkey
+          !.definedAsExtension
+          !formalArgumentList
+          !lkey.location
+          !true
+          !.isVirtual
+          !.constantMethod
+          !"" # No Error message
+        ]
+      else
+        [!?ioInstanceMethodMap insertKey
+          !lkey
+          !@methodKind.definedAsExtension
+          !formalArgumentList
+          !lkey.location
+          !true
+          !qualifier
+          !.constantMethod
+          !"" # No error message
+        ]
+      end
     end
   end
 #------------------------  Extension setters

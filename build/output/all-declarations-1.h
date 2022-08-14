@@ -62,7 +62,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 class cPtr_templateInstructionForGeneration : public acStrongPtr_class {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension method templateCodeGeneration
+  public: virtual void method_templateCodeGeneration (class GALGAS_string & ioGeneratedCode,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_uint & ioTemporaryVariableIndex,
+           class GALGAS_stringset & ioUnusedVariableCppNameSet,
+           class GALGAS_bool & ioUseColumnMarker,
+           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Properties
 
@@ -3334,8 +3340,6 @@ class cEnumAssociatedValues_typeDefinition_solved : public cEnumAssociatedValues
 
 class cPtr_unifiedTypeMapElementClass : public acStrongPtr_class {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter definition
   public: virtual class GALGAS_unifiedTypeDefinition getter_definition (C_Compiler * COMMA_LOCATION_ARGS) const ;
 
@@ -3444,10 +3448,16 @@ class cEnumAssociatedValues_unifiedTypeMapEntry_element : public cEnumAssociated
 
 class cPtr_semanticExpressionForGeneration : public acStrongPtr_class {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter isTrueExpression
   public: virtual class GALGAS_bool getter_isTrueExpression (C_Compiler * COMMA_LOCATION_ARGS) const ;
+
+//--- Extension method generateExpression
+  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_uint & ioTemporaryVariableIndex,
+           class GALGAS_stringset & ioUnusedVariableCppNameSet,
+           class GALGAS_string & outCppExpression,
+           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Properties
   public: GALGAS_unifiedTypeMapEntry mProperty_mResultType ;
@@ -3529,7 +3539,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 class cPtr_templateInstructionExpressionForGeneration : public cPtr_templateInstructionForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension method templateCodeGeneration
+  public: virtual void method_templateCodeGeneration (class GALGAS_string & ioGeneratedCode,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_uint & ioTemporaryVariableIndex,
+           class GALGAS_stringset & ioUnusedVariableCppNameSet,
+           class GALGAS_bool & ioUseColumnMarker,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
@@ -3878,7 +3894,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateBlockInstru
 
 class cPtr_templateBlockInstructionForGeneration : public cPtr_templateInstructionForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension method templateCodeGeneration
+  public: virtual void method_templateCodeGeneration (class GALGAS_string & ioGeneratedCode,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_uint & ioTemporaryVariableIndex,
+           class GALGAS_stringset & ioUnusedVariableCppNameSet,
+           class GALGAS_bool & ioUseColumnMarker,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
@@ -4021,7 +4043,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 class cPtr_templateInstructionGetColumnLocationForGeneration : public cPtr_templateInstructionForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension method templateCodeGeneration
+  public: virtual void method_templateCodeGeneration (class GALGAS_string & ioGeneratedCode,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_uint & ioTemporaryVariableIndex,
+           class GALGAS_stringset & ioUnusedVariableCppNameSet,
+           class GALGAS_bool & ioUseColumnMarker,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
 
@@ -4158,7 +4186,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 class cPtr_templateInstructionGotoColumnLocationForGeneration : public cPtr_templateInstructionForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension method templateCodeGeneration
+  public: virtual void method_templateCodeGeneration (class GALGAS_string & ioGeneratedCode,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_uint & ioTemporaryVariableIndex,
+           class GALGAS_stringset & ioUnusedVariableCppNameSet,
+           class GALGAS_bool & ioUseColumnMarker,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
 
@@ -4535,7 +4569,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 class cPtr_templateInstructionIfForGeneration : public cPtr_templateInstructionForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension method templateCodeGeneration
+  public: virtual void method_templateCodeGeneration (class GALGAS_string & ioGeneratedCode,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_uint & ioTemporaryVariableIndex,
+           class GALGAS_stringset & ioUnusedVariableCppNameSet,
+           class GALGAS_bool & ioUseColumnMarker,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_templateInstructionIfBranchListForGeneration mProperty_mTemplateInstructionIfBranchList ;
@@ -5166,21 +5206,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypes ;
 //
 //Abstract extension method '@templateExpressionAST templateExpressionAnalysis'
 //
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef void (*extensionMethodSignature_templateExpressionAST_templateExpressionAnalysis) (const class cPtr_templateExpressionAST * inObject,
-                                                                                           const class GALGAS_lstring constinArgument0,
-                                                                                           class GALGAS_usefulEntitiesGraph & ioArgument1,
-                                                                                           const class GALGAS_templateAnalysisContext constinArgument2,
-                                                                                           class GALGAS_semanticExpressionForGeneration & outArgument3,
-                                                                                           class C_Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_templateExpressionAnalysis (const int32_t inClassIndex,
-                                                      extensionMethodSignature_templateExpressionAST_templateExpressionAnalysis inMethod) ;
-
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_templateExpressionAnalysis (const class cPtr_templateExpressionAST * inObject,
@@ -6712,21 +6737,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateGetterCallI
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-typedef void (*extensionMethodSignature_templateInstructionAST_templateInstructionAnalysis) (const class cPtr_templateInstructionAST * inObject,
-                                                                                             const class GALGAS_lstring constinArgument0,
-                                                                                             class GALGAS_usefulEntitiesGraph & ioArgument1,
-                                                                                             const class GALGAS_templateAnalysisContext constinArgument2,
-                                                                                             class GALGAS_templateInstructionListForGeneration & ioArgument3,
-                                                                                             class C_Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_templateInstructionAnalysis (const int32_t inClassIndex,
-                                                       extensionMethodSignature_templateInstructionAST_templateInstructionAnalysis inMethod) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
 void callExtensionMethod_templateInstructionAnalysis (const class cPtr_templateInstructionAST * inObject,
                                                       const GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                       GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
@@ -6739,22 +6749,6 @@ void callExtensionMethod_templateInstructionAnalysis (const class cPtr_templateI
 //
 //Abstract extension method '@templateInstructionForGeneration templateCodeGeneration'
 //
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef void (*extensionMethodSignature_templateInstructionForGeneration_templateCodeGeneration) (const class cPtr_templateInstructionForGeneration * inObject,
-                                                                                                  class GALGAS_string & ioArgument0,
-                                                                                                  class GALGAS_stringset & ioArgument1,
-                                                                                                  class GALGAS_uint & ioArgument2,
-                                                                                                  class GALGAS_stringset & ioArgument3,
-                                                                                                  class GALGAS_bool & ioArgument4,
-                                                                                                  class C_Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_templateCodeGeneration (const int32_t inClassIndex,
-                                                  extensionMethodSignature_templateInstructionForGeneration_templateCodeGeneration inMethod) ;
-
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_templateCodeGeneration (const class cPtr_templateInstructionForGeneration * inObject,
@@ -6903,7 +6897,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 class cPtr_templateInstructionForeachForGeneration : public cPtr_templateInstructionForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension method templateCodeGeneration
+  public: virtual void method_templateCodeGeneration (class GALGAS_string & ioGeneratedCode,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_uint & ioTemporaryVariableIndex,
+           class GALGAS_stringset & ioUnusedVariableCppNameSet,
+           class GALGAS_bool & ioUseColumnMarker,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_bool mProperty_mIsAscending ;
@@ -7880,7 +7880,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 class cPtr_templateInstructionSwitchForGeneration : public cPtr_templateInstructionForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension method templateCodeGeneration
+  public: virtual void method_templateCodeGeneration (class GALGAS_string & ioGeneratedCode,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_uint & ioTemporaryVariableIndex,
+           class GALGAS_stringset & ioUnusedVariableCppNameSet,
+           class GALGAS_bool & ioUseColumnMarker,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_unifiedTypeMapEntry mProperty_mEnumType ;
@@ -8019,10 +8025,51 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclaration
 
 class cPtr_semanticDeclarationAST : public acStrongPtr_class {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter keyRepresentation
   public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+
+//--- Extension method addAssociatedElement
+  public: virtual void method_addAssociatedElement (class GALGAS_semanticDeclarationListAST & ioSemanticDeclarationList,
+           C_Compiler * COMMA_LOCATION_ARGS) const ;
+
+//--- Extension method buildExtensionListMaps
+  public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
+           class GALGAS_genericExtensionMethodListMap & ioExtensionSettierListMap,
+           class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionSetterListMap,
+           class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionSetterListMap,
+           class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionMethodListMapAST,
+           class GALGAS_genericExtensionMethodListMap & ioExtensionMethodListMap,
+           class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionMethodListMap,
+           class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionMethodListMap,
+           class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionGetterListMap,
+           class GALGAS_genericExtensionMethodListMap & ioExtensionGetterListMap,
+           class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionGetterListMap,
+           class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionGetterListMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const ;
+
+//--- Extension method enterDeclarationInGraph
+  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
+           class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
+           class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
+           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+
+//--- Extension method enterDeclarationInSemanticContext
+  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+           const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+           const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticContext & ioSemanticContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+
+//--- Extension method semanticAnalysis
+  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
+           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
+           const class GALGAS_string inProductDirectory,
+           const class GALGAS_semanticContext inSemanticContext,
+           const class GALGAS_predefinedTypes inPredefinedTypes,
+           class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
+           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Properties
   public: GALGAS_bool mProperty_mIsPredefined ;
@@ -8152,14 +8199,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExpressionAS
 
 class cPtr_lexicalExpressionAST : public acStrongPtr_class {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter generateCocoaConditionCode
   public: virtual class GALGAS_string getter_generateCocoaConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Extension getter generateConditionCode
   public: virtual class GALGAS_string getter_generateConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+
+//--- Extension method checkLexicalExpression
+  public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Properties
@@ -8288,8 +8337,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalInstructionA
 
 class cPtr_lexicalInstructionAST : public acStrongPtr_class {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter generateCocoaInstructionCode
   public: virtual class GALGAS_string getter_generateCocoaInstructionCode (const class GALGAS_string inScannerClassName,
            const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
@@ -8298,6 +8345,11 @@ class cPtr_lexicalInstructionAST : public acStrongPtr_class {
 //--- Extension getter generateInstructionCode
   public: virtual class GALGAS_string getter_generateInstructionCode (const class GALGAS_string inScannerClassName,
            const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+
+//--- Extension method checkLexicalInstruction
+  public: virtual void method_checkLexicalInstruction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
+           class GALGAS_lexicalTagMap & ioTagMap,
            C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Properties
@@ -9164,8 +9216,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractLexicalRule
 
 class cPtr_abstractLexicalRuleAST : public acStrongPtr_class {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter generateCocoaCode
   public: virtual class GALGAS_string getter_generateCocoaCode (const class GALGAS_string inScannerClassName,
            const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
@@ -9174,6 +9224,10 @@ class cPtr_abstractLexicalRuleAST : public acStrongPtr_class {
 //--- Extension getter generateCode
   public: virtual class GALGAS_string getter_generateCode (const class GALGAS_string inScannerClassName,
            const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+
+//--- Extension method checkLexicalRule
+  public: virtual void method_checkLexicalRule (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Properties
@@ -9515,8 +9569,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalImplicitRule
 
 class cPtr_lexicalImplicitRuleAST : public cPtr_abstractLexicalRuleAST {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter generateCocoaCode
   public: virtual class GALGAS_string getter_generateCocoaCode (const class GALGAS_string inScannerClassName,
            const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
@@ -9525,6 +9577,10 @@ class cPtr_lexicalImplicitRuleAST : public cPtr_abstractLexicalRuleAST {
 //--- Extension getter generateCode
   public: virtual class GALGAS_string getter_generateCode (const class GALGAS_string inScannerClassName,
            const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method checkLexicalRule
+  public: virtual void method_checkLexicalRule (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
@@ -9667,8 +9723,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitRule
 
 class cPtr_lexicalExplicitRuleAST : public cPtr_abstractLexicalRuleAST {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter generateCocoaCode
   public: virtual class GALGAS_string getter_generateCocoaCode (const class GALGAS_string inScannerClassName,
            const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
@@ -9677,6 +9731,10 @@ class cPtr_lexicalExplicitRuleAST : public cPtr_abstractLexicalRuleAST {
 //--- Extension getter generateCode
   public: virtual class GALGAS_string getter_generateCode (const class GALGAS_string inScannerClassName,
            const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method checkLexicalRule
+  public: virtual void method_checkLexicalRule (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
@@ -11690,14 +11748,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalOrExpression
 
 class cPtr_lexicalOrExpressionAST : public cPtr_lexicalExpressionAST {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter generateCocoaConditionCode
   public: virtual class GALGAS_string getter_generateCocoaConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter generateConditionCode
   public: virtual class GALGAS_string getter_generateConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method checkLexicalExpression
+  public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
@@ -11842,14 +11902,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterSet
 
 class cPtr_lexicalCharacterSetMatchAST : public cPtr_lexicalExpressionAST {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter generateCocoaConditionCode
   public: virtual class GALGAS_string getter_generateCocoaConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter generateConditionCode
   public: virtual class GALGAS_string getter_generateConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method checkLexicalExpression
+  public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
@@ -11992,14 +12054,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterMat
 
 class cPtr_lexicalCharacterMatchAST : public cPtr_lexicalExpressionAST {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter generateCocoaConditionCode
   public: virtual class GALGAS_string getter_generateCocoaConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter generateConditionCode
   public: virtual class GALGAS_string getter_generateConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method checkLexicalExpression
+  public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
@@ -12145,14 +12209,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterInt
 
 class cPtr_lexicalCharacterIntervalMatchAST : public cPtr_lexicalExpressionAST {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter generateCocoaConditionCode
   public: virtual class GALGAS_string getter_generateCocoaConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter generateConditionCode
   public: virtual class GALGAS_string getter_generateConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method checkLexicalExpression
+  public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
@@ -12297,14 +12363,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStringMatchA
 
 class cPtr_lexicalStringMatchAST : public cPtr_lexicalExpressionAST {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter generateCocoaConditionCode
   public: virtual class GALGAS_string getter_generateCocoaConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter generateConditionCode
   public: virtual class GALGAS_string getter_generateConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method checkLexicalExpression
+  public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
@@ -12450,14 +12518,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStringNotMat
 
 class cPtr_lexicalStringNotMatchAST : public cPtr_lexicalExpressionAST {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter generateCocoaConditionCode
   public: virtual class GALGAS_string getter_generateCocoaConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter generateConditionCode
   public: virtual class GALGAS_string getter_generateConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method checkLexicalExpression
+  public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
@@ -12820,14 +12890,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendDefaultA
 
 class cPtr_lexicalSendDefaultActionAST : public acStrongPtr_class {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter generateCocoaDefaultSendCode
   public: virtual class GALGAS_string getter_generateCocoaDefaultSendCode (const class GALGAS_string inScannerClassName,
            C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Extension getter generateDefaultSendCode
   public: virtual class GALGAS_string getter_generateDefaultSendCode (const class GALGAS_string inScannerClassName,
+           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+
+//--- Extension method checkLexicalDefaultAction
+  public: virtual void method_checkLexicalDefaultAction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Properties
@@ -12843,6 +12915,163 @@ class cPtr_lexicalSendDefaultActionAST : public acStrongPtr_class {
   public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override = 0 ;
 
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @lexicalSendDefaultActionAST_2D_weak weak reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_lexicalSendDefaultActionAST_2D_weak : public AC_GALGAS_weak_reference {
+//--------------------------------- Default constructor
+  public: GALGAS_lexicalSendDefaultActionAST_2D_weak (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_lexicalSendDefaultActionAST_2D_weak constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_lexicalSendDefaultActionAST_2D_weak (const class GALGAS_lexicalSendDefaultActionAST & inSource) ;
+
+  public: GALGAS_lexicalSendDefaultActionAST_2D_weak & operator = (const class GALGAS_lexicalSendDefaultActionAST & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_lexicalSendDefaultActionAST bang_lexicalSendDefaultActionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_lexicalSendDefaultActionAST_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_lexicalSendDefaultActionAST_2D_weak constructor_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_lexicalSendDefaultActionAST_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_lexicalSendDefaultActionAST_2D_weak class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST_2D_weak ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @lexicalStructuredSendInstructionAST reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_lexicalStructuredSendInstructionAST : public GALGAS_lexicalInstructionAST {
+//--------------------------------- Default constructor
+  public: GALGAS_lexicalStructuredSendInstructionAST (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_lexicalStructuredSendInstructionAST (const class cPtr_lexicalStructuredSendInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lexicalSendSearchListAST readProperty_mLexicalSendSearchList (void) const ;
+
+  public: class GALGAS_lexicalSendDefaultActionAST readProperty_mLexicalSendDefaultAction (void) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_lexicalStructuredSendInstructionAST extractObject (const GALGAS_object & inObject,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_lexicalStructuredSendInstructionAST constructor_new (const class GALGAS_lexicalSendSearchListAST & inOperand0,
+                                                                                   const class GALGAS_lexicalSendDefaultActionAST & inOperand1
+                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_lexicalStructuredSendInstructionAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_lexicalStructuredSendInstructionAST class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStructuredSendInstructionAST ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @lexicalStructuredSendInstructionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_lexicalStructuredSendInstructionAST : public cPtr_lexicalInstructionAST {
+
+//--- Extension getter generateCocoaInstructionCode
+  public: virtual class GALGAS_string getter_generateCocoaInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter generateInstructionCode
+  public: virtual class GALGAS_string getter_generateInstructionCode (const class GALGAS_string inScannerClassName,
+           const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method checkLexicalInstruction
+  public: virtual void method_checkLexicalInstruction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
+           class GALGAS_lexicalTagMap & ioTagMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Properties
+  public: GALGAS_lexicalSendSearchListAST mProperty_mLexicalSendSearchList ;
+  public: GALGAS_lexicalSendDefaultActionAST mProperty_mLexicalSendDefaultAction ;
+
+//--- Constructor
+  public: cPtr_lexicalStructuredSendInstructionAST (const GALGAS_lexicalSendSearchListAST & in_mLexicalSendSearchList,
+                                                    const GALGAS_lexicalSendDefaultActionAST & in_mLexicalSendDefaultAction
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 

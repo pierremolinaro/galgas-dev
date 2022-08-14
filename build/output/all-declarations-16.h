@@ -85,10 +85,19 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodForG
 
 class cPtr_extensionMethodForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter headerKind
   public: virtual class GALGAS_headerKind getter_headerKind (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendDeclaration1
+  public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outHeader,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendSpecificImplementation
+  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outImplementation,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
@@ -256,10 +265,19 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterForG
 
 class cPtr_extensionSetterForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter headerKind
   public: virtual class GALGAS_headerKind getter_headerKind (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendDeclaration1
+  public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outHeader,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendSpecificImplementation
+  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outImplementation,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
@@ -433,10 +451,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideExtensionGe
 
 class cPtr_overrideExtensionGetterForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter headerKind
   public: virtual class GALGAS_headerKind getter_headerKind (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendSpecificImplementation
+  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outImplementation,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
@@ -608,10 +630,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtension
 
 class cPtr_overridingExtensionMethodForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter headerKind
   public: virtual class GALGAS_headerKind getter_headerKind (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendSpecificImplementation
+  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outImplementation,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
@@ -779,10 +805,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtension
 
 class cPtr_overridingExtensionSetterForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter headerKind
   public: virtual class GALGAS_headerKind getter_headerKind (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendSpecificImplementation
+  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outImplementation,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
@@ -965,10 +995,25 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueDeclarationF
 
 class cPtr_lexiqueDeclarationForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter headerKind
   public: virtual class GALGAS_headerKind getter_headerKind (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendDeclaration1
+  public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outHeader,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendSpecificFiles
+  public: virtual void method_appendSpecificFiles (const class GALGAS_string inProductDirectory,
+           class GALGAS_stringset & ioAllProductFileSet,
+           class GALGAS_stringlist & ioCocoaProductFileList,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendSpecificImplementation
+  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outImplementation,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_string mProperty_mLexiqueName ;
@@ -1173,8 +1218,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarForGeneratio
 
 class cPtr_grammarForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter hasCppHeaderFile
   public: virtual class GALGAS_bool getter_hasCppHeaderFile (C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -1186,6 +1229,17 @@ class cPtr_grammarForGeneration : public cPtr_semanticDeclarationWithHeaderForGe
 
 //--- Extension getter isPredefined
   public: virtual class GALGAS_bool getter_isPredefined (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendDeclaration1
+  public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outHeader,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendSpecificImplementation
+  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outImplementation,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_string mProperty_mGrammarName ;
@@ -1356,10 +1410,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routinePrototypeDec
 
 class cPtr_routinePrototypeDeclarationForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter headerKind
   public: virtual class GALGAS_headerKind getter_headerKind (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendDeclaration1
+  public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outHeader,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_string mProperty_mRoutineName ;
@@ -1518,7 +1575,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routineImplementati
 
 class cPtr_routineImplementationForGeneration : public cPtr_routinePrototypeDeclarationForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension method appendSpecificImplementation
+  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outImplementation,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_bool mProperty_mGenerateStatic ;
@@ -1680,10 +1741,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionPrototypeDe
 
 class cPtr_functionPrototypeDeclarationForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter headerKind
   public: virtual class GALGAS_headerKind getter_headerKind (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendDeclaration1
+  public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outHeader,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_string mProperty_mFunctionName ;
@@ -1842,7 +1906,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionImplementat
 
 class cPtr_functionImplementationForGeneration : public cPtr_functionPrototypeDeclarationForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension method appendSpecificImplementation
+  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outImplementation,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_string mProperty_mResultVariableCppName ;
@@ -2011,10 +2079,19 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_onceFunctionDeclara
 
 class cPtr_onceFunctionDeclarationForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter headerKind
   public: virtual class GALGAS_headerKind getter_headerKind (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendDeclaration1
+  public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outHeader,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendSpecificImplementation
+  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outImplementation,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_string mProperty_mFunctionName ;
@@ -2171,10 +2248,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_primitiveTypeForGen
 
 class cPtr_primitiveTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter appendPrimitiveTypeDeclaration
   public: virtual class GALGAS_string getter_appendPrimitiveTypeDeclaration (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendPrimitiveTypePreDeclaration
+  public: virtual void method_appendPrimitiveTypePreDeclaration (class GALGAS_string & ioHeader,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_string mProperty_mPredefinedTypeName ;
@@ -2348,10 +2427,19 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperDeclarat
 
 class cPtr_filewrapperDeclarationForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter headerKind
   public: virtual class GALGAS_headerKind getter_headerKind (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendDeclaration1
+  public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outHeader,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendSpecificImplementation
+  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outImplementation,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_string mProperty_mFilewrapperName ;
@@ -2514,10 +2602,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_programComponentFor
 
 class cPtr_programComponentForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter headerKind
   public: virtual class GALGAS_headerKind getter_headerKind (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendSpecificImplementation
+  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outImplementation,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_stringset mProperty_mInclusionSet ;
@@ -2604,22 +2696,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_programComponentFor
 //
 //Abstract extension method '@abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT'
 //
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef void (*extensionMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT) (const class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
-                                                                                                                                 const class GALGAS_analysisContext constinArgument0,
-                                                                                                                                 const class GALGAS_bool constinArgument1,
-                                                                                                                                 const class GALGAS_string constinArgument2,
-                                                                                                                                 class GALGAS_stringlist & ioArgument3,
-                                                                                                                                 class GALGAS_localVarManager & ioArgument4,
-                                                                                                                                 class C_Compiler * inCompiler
-                                                                                                                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_analyzeGrammarInstructionSDT (const int32_t inClassIndex,
-                                                        extensionMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT inMethod) ;
-
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_analyzeGrammarInstructionSDT (const class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,

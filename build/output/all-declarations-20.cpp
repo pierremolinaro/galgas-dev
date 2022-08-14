@@ -13323,7 +13323,8 @@ GALGAS_syntaxComponentMap_2D_element GALGAS_syntaxComponentMap_2D_element::extra
 
 GALGAS_extensionMethodMapForType_2D_element::GALGAS_extensionMethodMapForType_2D_element (void) :
 mProperty_lkey (),
-mProperty_mFormalParameterList () {
+mProperty_mFormalParameterList (),
+mProperty_mQualifier () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -13334,26 +13335,22 @@ GALGAS_extensionMethodMapForType_2D_element::~ GALGAS_extensionMethodMapForType_
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodMapForType_2D_element::GALGAS_extensionMethodMapForType_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                          const GALGAS_formalParameterListAST & inOperand1) :
+                                                                                          const GALGAS_formalParameterListAST & inOperand1,
+                                                                                          const GALGAS_methodQualifier & inOperand2) :
 mProperty_lkey (inOperand0),
-mProperty_mFormalParameterList (inOperand1) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_extensionMethodMapForType_2D_element GALGAS_extensionMethodMapForType_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_extensionMethodMapForType_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                                      GALGAS_formalParameterListAST::constructor_emptyList (HERE)) ;
+mProperty_mFormalParameterList (inOperand1),
+mProperty_mQualifier (inOperand2) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodMapForType_2D_element GALGAS_extensionMethodMapForType_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                                          const GALGAS_formalParameterListAST & inOperand1 
+                                                                                                          const GALGAS_formalParameterListAST & inOperand1,
+                                                                                                          const GALGAS_methodQualifier & inOperand2 
                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_extensionMethodMapForType_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_extensionMethodMapForType_2D_element (inOperand0, inOperand1) ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    result = GALGAS_extensionMethodMapForType_2D_element (inOperand0, inOperand1, inOperand2) ;
   }
   return result ;
 }
@@ -13368,13 +13365,16 @@ typeComparisonResult GALGAS_extensionMethodMapForType_2D_element::objectCompare 
   if (result == kOperandEqual) {
     result = mProperty_mFormalParameterList.objectCompare (inOperand.mProperty_mFormalParameterList) ;
   }
+  if (result == kOperandEqual) {
+    result = mProperty_mQualifier.objectCompare (inOperand.mProperty_mQualifier) ;
+  }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_extensionMethodMapForType_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mFormalParameterList.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mFormalParameterList.isValid () && mProperty_mQualifier.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -13382,6 +13382,7 @@ bool GALGAS_extensionMethodMapForType_2D_element::isValid (void) const {
 void GALGAS_extensionMethodMapForType_2D_element::drop (void) {
   mProperty_lkey.drop () ;
   mProperty_mFormalParameterList.drop () ;
+  mProperty_mQualifier.drop () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -13395,6 +13396,8 @@ void GALGAS_extensionMethodMapForType_2D_element::description (C_String & ioStri
     mProperty_lkey.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mFormalParameterList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mQualifier.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }

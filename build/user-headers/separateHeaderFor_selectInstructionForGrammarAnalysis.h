@@ -10,10 +10,19 @@
 
 class cPtr_selectInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstructionForGrammarAnalysis {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- Extension getter isLinear
   public: virtual class GALGAS_bool getter_isLinear (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method tikzNodeForSyntaxInstruction
+  public: virtual void method_tikzNodeForSyntaxInstruction (class GALGAS_rowList & ioRowList,
+           const class GALGAS_uint inRow,
+           class GALGAS_uint & ioColumn,
+           class GALGAS_string & ioCurrentNode,
+           class GALGAS_string & ioArrowShape,
+           class GALGAS_string & ioArrows,
+           class GALGAS_uint & ioMaxUsedRowIndex,
+           const class GALGAS_bool inDebug,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- START OF USER ZONE 2
 

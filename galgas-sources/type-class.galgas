@@ -597,6 +597,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
         !self.mAllTypedAttributeList
         !self.mIsAbstract
         ![self.mSelfTypeEntry definition].mGetterMap
+        ![self.mSelfTypeEntry definition].mInstanceMethodMap
       ]
       let @string part2 = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part2
         !typedefinition.mTypeName.string
@@ -628,6 +629,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
         !self.mAllTypedAttributeList
         !self.mIsAbstract
         ![self.mSelfTypeEntry definition].mGetterMap
+        ![self.mSelfTypeEntry definition].mInstanceMethodMap
       ]
       outHeader += [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part2
         !typedefinition.mTypeName.string
@@ -751,7 +753,6 @@ func generateClassGetterDeclaration ?let @lstring inGetterName
 #---
   result = ""
   if generateMethodDeclaration then
- #   result  = "  #ifdef NEW_GETTER\n"
     result = "//--- Extension getter " + inGetterName + "\n"
     result += "  public: virtual class GALGAS_" + [inReturnedType identifierRepresentation]
     result += " getter_" + [inGetterName identifierRepresentation] + " ("
@@ -774,6 +775,72 @@ func generateClassGetterDeclaration ?let @lstring inGetterName
       first = false
     end
     result += if first then "LOCATION_ARGS" else " COMMA_LOCATION_ARGS" end + ") const"
+    result += suffix + " ;\n\n"
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
+                                            ?let @formalParameterSignature inArgumentTypeList
+                                            ?let @instanceMethodMutability inMutability
+                                            ?let @bool inHasCompilerArgument
+                                            ?let @methodQualifier inQualifier -> @string {
+  var generateMethodDeclaration = true
+  var suffix = ""
+#---
+  switch inQualifier
+  case isVirtualAbstract :
+    suffix = " = 0"
+  case isVirtual :
+  case isBasic, isBasicFinal :
+    generateMethodDeclaration = false
+  case isInherited :
+    generateMethodDeclaration = false
+  case isVirtualOverriding :
+    suffix = " override"
+  case isVirtualOverridingAbstract :
+    suffix = " override = 0"
+  end
+#---
+  result = ""
+  if generateMethodDeclaration then
+#    result  = "  #ifdef NEW_METHOD\n"
+    result += "//--- Extension method " + inMethodName + "\n"
+    result += "  public: virtual void method_" + [inMethodName identifierRepresentation] + " ("
+    var first = true
+    for formalArgument in inArgumentTypeList 
+    do
+      if first then
+        first = false
+      else
+        result += ",\n           "
+      end
+      switch formalArgument.mFormalArgumentPassingMode 
+      case argumentConstantIn :
+        result += "const class GALGAS_" + [formalArgument.mFormalArgumentType identifierRepresentation]
+      case argumentInOut :
+        result += "class GALGAS_" + [formalArgument.mFormalArgumentType identifierRepresentation] + " &"
+      case argumentOut :
+        result += "class GALGAS_" + [formalArgument.mFormalArgumentType identifierRepresentation] + " &"
+      case argumentIn :
+        result += "class GALGAS_" + [formalArgument.mFormalArgumentType identifierRepresentation]
+      end
+      result += " " + formalArgument.mFormalArgumentName
+    end
+    if inHasCompilerArgument then
+      if not first then
+        result += ",\n           "
+      end
+      result += "C_Compiler *"
+      first = false
+    end
+    result += if first then "LOCATION_ARGS" else " COMMA_LOCATION_ARGS" end + ")"
+    switch inMutability
+    case constantMethod :
+      result += " const"
+    case mutatingMethod :
+    end
     result += suffix + " ;\n\n"
 #    result += "  #endif\n\n"
   end

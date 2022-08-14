@@ -4,30 +4,6 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-typedef void (*extensionMethodSignature_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%) (%?^
-%const class cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
-  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in FORMAL_ARGUMENT_LIST do index IDX
-    %,\n%!^
-    if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
-    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-      %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
-    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-      %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
-    else # argumentIn
-      %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
-    end
-  end
-  %,\n%!^%class C_Compiler * inCompiler%
-  %\n %!^%COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
-               %!^%extensionMethodSignature_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% inMethod) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
 void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const class cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in FORMAL_ARGUMENT_LIST do
     %,\n%!^

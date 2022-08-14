@@ -4,28 +4,6 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-static TC_UniqueArray <extensionMethodSignature_%![[RECEIVER_TYPE definition].mTypeName.string identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%> gExtensionMethodTable_%![[RECEIVER_TYPE definition].mTypeName.string identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
-               %!^%extensionMethodSignature_%![[RECEIVER_TYPE definition].mTypeName.string identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% inMethod) {
-  gExtensionMethodTable_%![[RECEIVER_TYPE definition].mTypeName.string identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-static void freeExtensionMethod_%![[RECEIVER_TYPE definition].mTypeName.string identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (void) {
-  gExtensionMethodTable_%![[RECEIVER_TYPE definition].mTypeName.string identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.free () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-C_PrologueEpilogue gMethod_%![[RECEIVER_TYPE definition].mTypeName.string identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (%?^%NULL,
-       %!^%freeExtensionMethod_%![[RECEIVER_TYPE definition].mTypeName.string identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
 void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cPtr_%![[RECEIVER_TYPE definition].mTypeName.string identifierRepresentation]% * inObject%
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in FORMAL_ARGUMENT_LIST do
     %,\n%!^
@@ -49,42 +27,21 @@ void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cP
     end
   end
 %//--- Find method
-  if (NULL != inObject) {
+  if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_%![[RECEIVER_TYPE definition].mTypeName.string identifierRepresentation]%) ;
-    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const int32_t classIndex = info->mSlotID ;
-    extensionMethodSignature_%![[RECEIVER_TYPE definition].mTypeName.string identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% f = NULL ;
-    if (classIndex < gExtensionMethodTable_%![[RECEIVER_TYPE definition].mTypeName.string identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.count ()) {
-      f = gExtensionMethodTable_%![[RECEIVER_TYPE definition].mTypeName.string identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (classIndex COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
-      while ((NULL == f) && (NULL != p)) {
-        if (p->mSlotID < gExtensionMethodTable_%![[RECEIVER_TYPE definition].mTypeName.string identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.count ()) {
-          f = gExtensionMethodTable_%![[RECEIVER_TYPE definition].mTypeName.string identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (p->mSlotID COMMA_HERE) ;
-        }
-        p = p->mSuperclassDescriptor ;
-      }
-      gExtensionMethodTable_%![[RECEIVER_TYPE definition].mTypeName.string identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
-    }else{
-      f (inObject, %
-      for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in FORMAL_ARGUMENT_LIST do
-        if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-          %constin_%![mFormalArgumentName identifierRepresentation]
-        elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-          %io_%![mFormalArgumentName identifierRepresentation]
-        elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-          %out_%![mFormalArgumentName identifierRepresentation]
-        else # argumentIn
-          %in_%![mFormalArgumentName identifierRepresentation]
-        end
-        %, %
+    inObject->method_%![METHOD_NAME identifierRepresentation]% (%
+    for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in FORMAL_ARGUMENT_LIST do
+      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+        %constin_%![mFormalArgumentName identifierRepresentation]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+        %io_%![mFormalArgumentName identifierRepresentation]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+        %out_%![mFormalArgumentName identifierRepresentation]
+      else # argumentIn
+        %in_%![mFormalArgumentName identifierRepresentation]
       end
-      %inCompiler COMMA_THERE) ;
-    }
+      %, %
+    end
+    %inCompiler COMMA_THERE) ;
   }
 }
-

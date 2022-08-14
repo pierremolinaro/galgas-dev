@@ -74,12 +74,26 @@ override getter @overridingAbstractExtensionMethodAST keyRepresentation -> @stri
 
 override method @overridingAbstractExtensionMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList
 {
   ioExtensionOverrideDefinitionList += !self
+#---
+  if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
+    [!?ioExtensionMethodMapForBuildingContext insertKey
+      ! self.mTypeName
+      !{}
+    ]
+  end
+  with self.mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
+    [!?mExtensionMethodMapForType insertKey
+      !self.mOverridingExtensionMethodName
+      ! self.mOverridingExtensionMethodFormalParameterList
+      !.isVirtualOverridingAbstract
+    ]
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

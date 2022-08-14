@@ -2906,28 +2906,6 @@ GALGAS_predefinedTypes GALGAS_predefinedTypes::extractObject (const GALGAS_objec
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-static TC_UniqueArray <extensionMethodSignature_templateExpressionAST_templateExpressionAnalysis> gExtensionMethodTable_templateExpressionAST_templateExpressionAnalysis ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_templateExpressionAnalysis (const int32_t inClassIndex,
-                                                      extensionMethodSignature_templateExpressionAST_templateExpressionAnalysis inMethod) {
-  gExtensionMethodTable_templateExpressionAST_templateExpressionAnalysis.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-static void freeExtensionMethod_templateExpressionAST_templateExpressionAnalysis (void) {
-  gExtensionMethodTable_templateExpressionAST_templateExpressionAnalysis.free () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-C_PrologueEpilogue gMethod_templateExpressionAST_templateExpressionAnalysis (NULL,
-                                                                             freeExtensionMethod_templateExpressionAST_templateExpressionAnalysis) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
 void callExtensionMethod_templateExpressionAnalysis (const cPtr_templateExpressionAST * inObject,
                                                      const GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                      GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
@@ -2938,32 +2916,11 @@ void callExtensionMethod_templateExpressionAnalysis (const cPtr_templateExpressi
 //--- Drop output arguments
   out_outExpression.drop () ;
 //--- Find method
-  if (NULL != inObject) {
+  if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_templateExpressionAST) ;
-    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const int32_t classIndex = info->mSlotID ;
-    extensionMethodSignature_templateExpressionAST_templateExpressionAnalysis f = NULL ;
-    if (classIndex < gExtensionMethodTable_templateExpressionAST_templateExpressionAnalysis.count ()) {
-      f = gExtensionMethodTable_templateExpressionAST_templateExpressionAnalysis (classIndex COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
-      while ((NULL == f) && (NULL != p)) {
-        if (p->mSlotID < gExtensionMethodTable_templateExpressionAST_templateExpressionAnalysis.count ()) {
-          f = gExtensionMethodTable_templateExpressionAST_templateExpressionAnalysis (p->mSlotID COMMA_HERE) ;
-        }
-        p = p->mSuperclassDescriptor ;
-      }
-      gExtensionMethodTable_templateExpressionAST_templateExpressionAnalysis.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
-    }else{
-      f (inObject, constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, out_outExpression, inCompiler COMMA_THERE) ;
-    }
+    inObject->method_templateExpressionAnalysis (constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, out_outExpression, inCompiler COMMA_THERE) ;
   }
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_templateGetterCallInExpressionAST_2D_weak::objectCompare (const GALGAS_templateGetterCallInExpressionAST_2D_weak & inOperand) const {
@@ -3081,28 +3038,6 @@ GALGAS_templateGetterCallInExpressionAST_2D_weak GALGAS_templateGetterCallInExpr
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-static TC_UniqueArray <extensionMethodSignature_templateInstructionAST_templateInstructionAnalysis> gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_templateInstructionAnalysis (const int32_t inClassIndex,
-                                                       extensionMethodSignature_templateInstructionAST_templateInstructionAnalysis inMethod) {
-  gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-static void freeExtensionMethod_templateInstructionAST_templateInstructionAnalysis (void) {
-  gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis.free () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-C_PrologueEpilogue gMethod_templateInstructionAST_templateInstructionAnalysis (NULL,
-                                                                               freeExtensionMethod_templateInstructionAST_templateInstructionAnalysis) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
 void callExtensionMethod_templateInstructionAnalysis (const cPtr_templateInstructionAST * inObject,
                                                       const GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                       GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
@@ -3112,58 +3047,15 @@ void callExtensionMethod_templateInstructionAnalysis (const cPtr_templateInstruc
                                                       COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
-  if (NULL != inObject) {
+  if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_templateInstructionAST) ;
-    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const int32_t classIndex = info->mSlotID ;
-    extensionMethodSignature_templateInstructionAST_templateInstructionAnalysis f = NULL ;
-    if (classIndex < gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis.count ()) {
-      f = gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis (classIndex COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
-      while ((NULL == f) && (NULL != p)) {
-        if (p->mSlotID < gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis.count ()) {
-          f = gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis (p->mSlotID COMMA_HERE) ;
-        }
-        p = p->mSuperclassDescriptor ;
-      }
-      gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
-    }else{
-      f (inObject, constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, io_ioInstructionList, inCompiler COMMA_THERE) ;
-    }
+    inObject->method_templateInstructionAnalysis (constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, io_ioInstructionList, inCompiler COMMA_THERE) ;
   }
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 //
 //Abstract extension method '@templateInstructionForGeneration templateCodeGeneration'
 //
-//----------------------------------------------------------------------------------------------------------------------
-
-static TC_UniqueArray <extensionMethodSignature_templateInstructionForGeneration_templateCodeGeneration> gExtensionMethodTable_templateInstructionForGeneration_templateCodeGeneration ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_templateCodeGeneration (const int32_t inClassIndex,
-                                                  extensionMethodSignature_templateInstructionForGeneration_templateCodeGeneration inMethod) {
-  gExtensionMethodTable_templateInstructionForGeneration_templateCodeGeneration.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-static void freeExtensionMethod_templateInstructionForGeneration_templateCodeGeneration (void) {
-  gExtensionMethodTable_templateInstructionForGeneration_templateCodeGeneration.free () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-C_PrologueEpilogue gMethod_templateInstructionForGeneration_templateCodeGeneration (NULL,
-                                                                                    freeExtensionMethod_templateInstructionForGeneration_templateCodeGeneration) ;
-
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_templateCodeGeneration (const cPtr_templateInstructionForGeneration * inObject,
@@ -3176,32 +3068,11 @@ void callExtensionMethod_templateCodeGeneration (const cPtr_templateInstructionF
                                                  COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
-  if (NULL != inObject) {
+  if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_templateInstructionForGeneration) ;
-    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const int32_t classIndex = info->mSlotID ;
-    extensionMethodSignature_templateInstructionForGeneration_templateCodeGeneration f = NULL ;
-    if (classIndex < gExtensionMethodTable_templateInstructionForGeneration_templateCodeGeneration.count ()) {
-      f = gExtensionMethodTable_templateInstructionForGeneration_templateCodeGeneration (classIndex COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
-      while ((NULL == f) && (NULL != p)) {
-        if (p->mSlotID < gExtensionMethodTable_templateInstructionForGeneration_templateCodeGeneration.count ()) {
-          f = gExtensionMethodTable_templateInstructionForGeneration_templateCodeGeneration (p->mSlotID COMMA_HERE) ;
-        }
-        p = p->mSuperclassDescriptor ;
-      }
-      gExtensionMethodTable_templateInstructionForGeneration_templateCodeGeneration.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
-    }else{
-      f (inObject, io_ioGeneratedCode, io_ioInclusionSet, io_ioTemporaryVariableIndex, io_ioUnusedVariableCppNameSet, io_ioUseColumnMarker, inCompiler COMMA_THERE) ;
-    }
+    inObject->method_templateCodeGeneration (io_ioGeneratedCode, io_ioInclusionSet, io_ioTemporaryVariableIndex, io_ioUnusedVariableCppNameSet, io_ioUseColumnMarker, inCompiler COMMA_THERE) ;
   }
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 
 cEnumAssociatedValues_templateInstructionForEnumerationAST_implicit::cEnumAssociatedValues_templateInstructionForEnumerationAST_implicit (const GALGAS_string inAssociatedValue0,
@@ -14718,6 +14589,280 @@ GALGAS_lexicalSendDefaultActionAST GALGAS_lexicalSendDefaultActionAST::extractOb
       result = *p ;
     }else{
       inCompiler->castError ("lexicalSendDefaultActionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_lexicalSendDefaultActionAST_2D_weak::objectCompare (const GALGAS_lexicalSendDefaultActionAST_2D_weak & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalSendDefaultActionAST_2D_weak::GALGAS_lexicalSendDefaultActionAST_2D_weak (void) :
+AC_GALGAS_weak_reference () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalSendDefaultActionAST_2D_weak & GALGAS_lexicalSendDefaultActionAST_2D_weak::operator = (const GALGAS_lexicalSendDefaultActionAST & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != NULL) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalSendDefaultActionAST_2D_weak::GALGAS_lexicalSendDefaultActionAST_2D_weak (const GALGAS_lexicalSendDefaultActionAST & inSource) :
+AC_GALGAS_weak_reference (inSource) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalSendDefaultActionAST_2D_weak GALGAS_lexicalSendDefaultActionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+  GALGAS_lexicalSendDefaultActionAST_2D_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalSendDefaultActionAST GALGAS_lexicalSendDefaultActionAST_2D_weak::bang_lexicalSendDefaultActionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalSendDefaultActionAST result ;
+  if (mProxyPtr != NULL) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == NULL) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_lexicalSendDefaultActionAST) ;
+      result = GALGAS_lexicalSendDefaultActionAST ((cPtr_lexicalSendDefaultActionAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@lexicalSendDefaultActionAST-weak type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST_2D_weak ("lexicalSendDefaultActionAST-weak",
+                                                            NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_lexicalSendDefaultActionAST_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST_2D_weak ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_lexicalSendDefaultActionAST_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lexicalSendDefaultActionAST_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalSendDefaultActionAST_2D_weak GALGAS_lexicalSendDefaultActionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                                      C_Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalSendDefaultActionAST_2D_weak result ;
+  const GALGAS_lexicalSendDefaultActionAST_2D_weak * p = (const GALGAS_lexicalSendDefaultActionAST_2D_weak *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_lexicalSendDefaultActionAST_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalSendDefaultActionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+// @lexicalStructuredSendInstructionAST reference class
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_lexicalStructuredSendInstructionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_lexicalStructuredSendInstructionAST * p = (const cPtr_lexicalStructuredSendInstructionAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_lexicalStructuredSendInstructionAST) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mLexicalSendSearchList.objectCompare (p->mProperty_mLexicalSendSearchList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLexicalSendDefaultAction.objectCompare (p->mProperty_mLexicalSendDefaultAction) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_lexicalStructuredSendInstructionAST::objectCompare (const GALGAS_lexicalStructuredSendInstructionAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalStructuredSendInstructionAST::GALGAS_lexicalStructuredSendInstructionAST (void) :
+GALGAS_lexicalInstructionAST () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalStructuredSendInstructionAST::GALGAS_lexicalStructuredSendInstructionAST (const cPtr_lexicalStructuredSendInstructionAST * inSourcePtr) :
+GALGAS_lexicalInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalStructuredSendInstructionAST) ;
+}
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalStructuredSendInstructionAST GALGAS_lexicalStructuredSendInstructionAST::constructor_new (const GALGAS_lexicalSendSearchListAST & inAttribute_mLexicalSendSearchList,
+                                                                                                        const GALGAS_lexicalSendDefaultActionAST & inAttribute_mLexicalSendDefaultAction
+                                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalStructuredSendInstructionAST result ;
+  if (inAttribute_mLexicalSendSearchList.isValid () && inAttribute_mLexicalSendDefaultAction.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_lexicalStructuredSendInstructionAST (inAttribute_mLexicalSendSearchList, inAttribute_mLexicalSendDefaultAction COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalSendSearchListAST GALGAS_lexicalStructuredSendInstructionAST::readProperty_mLexicalSendSearchList (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_lexicalSendSearchListAST () ;
+  }else{
+    cPtr_lexicalStructuredSendInstructionAST * p = (cPtr_lexicalStructuredSendInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexicalStructuredSendInstructionAST) ;
+    return p->mProperty_mLexicalSendSearchList ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalSendDefaultActionAST GALGAS_lexicalStructuredSendInstructionAST::readProperty_mLexicalSendDefaultAction (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_lexicalSendDefaultActionAST () ;
+  }else{
+    cPtr_lexicalStructuredSendInstructionAST * p = (cPtr_lexicalStructuredSendInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexicalStructuredSendInstructionAST) ;
+    return p->mProperty_mLexicalSendDefaultAction ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//Pointer class for @lexicalStructuredSendInstructionAST class
+//----------------------------------------------------------------------------------------------------------------------
+
+cPtr_lexicalStructuredSendInstructionAST::cPtr_lexicalStructuredSendInstructionAST (const GALGAS_lexicalSendSearchListAST & in_mLexicalSendSearchList,
+                                                                                    const GALGAS_lexicalSendDefaultActionAST & in_mLexicalSendDefaultAction
+                                                                                    COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (THERE),
+mProperty_mLexicalSendSearchList (in_mLexicalSendSearchList),
+mProperty_mLexicalSendDefaultAction (in_mLexicalSendDefaultAction) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_lexicalStructuredSendInstructionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalStructuredSendInstructionAST ;
+}
+
+void cPtr_lexicalStructuredSendInstructionAST::description (C_String & ioString,
+                                                            const int32_t inIndentation) const {
+  ioString << "[@lexicalStructuredSendInstructionAST:" ;
+  mProperty_mLexicalSendSearchList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLexicalSendDefaultAction.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_lexicalStructuredSendInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_lexicalStructuredSendInstructionAST (mProperty_mLexicalSendSearchList, mProperty_mLexicalSendDefaultAction COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@lexicalStructuredSendInstructionAST type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_lexicalStructuredSendInstructionAST ("lexicalStructuredSendInstructionAST",
+                                                            & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_lexicalStructuredSendInstructionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalStructuredSendInstructionAST ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_lexicalStructuredSendInstructionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lexicalStructuredSendInstructionAST (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalStructuredSendInstructionAST GALGAS_lexicalStructuredSendInstructionAST::extractObject (const GALGAS_object & inObject,
+                                                                                                      C_Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalStructuredSendInstructionAST result ;
+  const GALGAS_lexicalStructuredSendInstructionAST * p = (const GALGAS_lexicalStructuredSendInstructionAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_lexicalStructuredSendInstructionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalStructuredSendInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

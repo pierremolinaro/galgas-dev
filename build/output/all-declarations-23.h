@@ -10,58 +10,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Filewrapper 'listGenerationTemplate'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_listGenerationTemplate ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'listGenerationTemplate listTypeHeader1'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeHeader_31_ (class C_Compiler * inCompiler,
-                                                                             const class GALGAS_string & in_TYPE_5F_NAME,
-                                                                             const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                             const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST
-                                                                             COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'listGenerationTemplate listTypeSpecificImplementation'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImplementation (class C_Compiler * inCompiler,
-                                                                                         const class GALGAS_string & in_TYPE_5F_NAME,
-                                                                                         const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                         const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
-                                                                                         const class GALGAS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER
-                                                                                         COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'check_K_escapeCharacters'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_check_5F_K_5F_escapeCharacters (const class GALGAS_lstring constinArgument0,
-                                             class C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Function 'forbiddenKeysForMapAndDict'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -685,19 +633,18 @@ void routine_analyzeRoutineBody (const class GALGAS_lstring constinArgument0,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'generateExtensionMethod'
+//Routine 'generateExtensionMethodNew'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_generateExtensionMethod (const class GALGAS_unifiedTypeMapEntry constinArgument0,
-                                      const class GALGAS_string constinArgument1,
-                                      class GALGAS_stringset & ioArgument2,
-                                      const class GALGAS_string constinArgument3,
-                                      const class GALGAS_formalParameterListForGeneration constinArgument4,
-                                      const class GALGAS_semanticInstructionListForGeneration constinArgument5,
-                                      class GALGAS_string & outArgument6,
-                                      class C_Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
+void routine_generateExtensionMethodNew (const class GALGAS_unifiedTypeMapEntry constinArgument0,
+                                         class GALGAS_stringset & ioArgument1,
+                                         const class GALGAS_string constinArgument2,
+                                         const class GALGAS_formalParameterListForGeneration constinArgument3,
+                                         const class GALGAS_semanticInstructionListForGeneration constinArgument4,
+                                         class GALGAS_string & outArgument5,
+                                         class C_Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -795,4 +742,258 @@ void routine_checkMethodSignatures (const class GALGAS_formalParameterListForGen
 
 class GALGAS_bool function_generateFewHeaderFiles (class C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterConstructorWith2Arguments'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterConstructorWith_32_Arguments (class GALGAS_constructorMap & ioArgument0,
+                                                class GALGAS_unifiedTypeMap & ioArgument1,
+                                                const class GALGAS_string constinArgument2,
+                                                const class GALGAS_string constinArgument3,
+                                                const class GALGAS_string constinArgument4,
+                                                const class GALGAS_string constinArgument5,
+                                                const class GALGAS_string constinArgument6,
+                                                const class GALGAS_string constinArgument7,
+                                                const class GALGAS_bool constinArgument8,
+                                                class C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterConstructorWith3Arguments'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterConstructorWith_33_Arguments (class GALGAS_constructorMap & ioArgument0,
+                                                class GALGAS_unifiedTypeMap & ioArgument1,
+                                                const class GALGAS_string constinArgument2,
+                                                const class GALGAS_string constinArgument3,
+                                                const class GALGAS_string constinArgument4,
+                                                const class GALGAS_string constinArgument5,
+                                                const class GALGAS_string constinArgument6,
+                                                const class GALGAS_string constinArgument7,
+                                                const class GALGAS_string constinArgument8,
+                                                const class GALGAS_string constinArgument9,
+                                                const class GALGAS_bool constinArgument10,
+                                                class C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterConstructorWith4Arguments'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterConstructorWith_34_Arguments (class GALGAS_constructorMap & ioArgument0,
+                                                class GALGAS_unifiedTypeMap & ioArgument1,
+                                                const class GALGAS_string constinArgument2,
+                                                const class GALGAS_string constinArgument3,
+                                                const class GALGAS_string constinArgument4,
+                                                const class GALGAS_string constinArgument5,
+                                                const class GALGAS_string constinArgument6,
+                                                const class GALGAS_string constinArgument7,
+                                                const class GALGAS_string constinArgument8,
+                                                const class GALGAS_string constinArgument9,
+                                                const class GALGAS_string constinArgument10,
+                                                const class GALGAS_string constinArgument11,
+                                                const class GALGAS_string constinArgument12,
+                                                const class GALGAS_string constinArgument13,
+                                                const class GALGAS_string constinArgument14,
+                                                const class GALGAS_string constinArgument15,
+                                                const class GALGAS_bool constinArgument16,
+                                                class C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterBaseFinalGetterWithArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterBaseFinalGetterWithArgument (class GALGAS_getterMap & ioArgument0,
+                                               class GALGAS_unifiedTypeMap & ioArgument1,
+                                               const class GALGAS_string constinArgument2,
+                                               const class GALGAS_string constinArgument3,
+                                               const class GALGAS_string constinArgument4,
+                                               const class GALGAS_string constinArgument5,
+                                               const class GALGAS_bool constinArgument6,
+                                               class C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterBaseFinalGetterWith2Arguments'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterBaseFinalGetterWith_32_Arguments (class GALGAS_getterMap & ioArgument0,
+                                                    class GALGAS_unifiedTypeMap & ioArgument1,
+                                                    const class GALGAS_string constinArgument2,
+                                                    const class GALGAS_string constinArgument3,
+                                                    const class GALGAS_string constinArgument4,
+                                                    const class GALGAS_string constinArgument5,
+                                                    const class GALGAS_string constinArgument6,
+                                                    const class GALGAS_string constinArgument7,
+                                                    const class GALGAS_bool constinArgument8,
+                                                    class C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterBaseFinalGetterWith3Arguments'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterBaseFinalGetterWith_33_Arguments (class GALGAS_getterMap & ioArgument0,
+                                                    class GALGAS_unifiedTypeMap & ioArgument1,
+                                                    const class GALGAS_string constinArgument2,
+                                                    const class GALGAS_string constinArgument3,
+                                                    const class GALGAS_string constinArgument4,
+                                                    const class GALGAS_string constinArgument5,
+                                                    const class GALGAS_string constinArgument6,
+                                                    const class GALGAS_string constinArgument7,
+                                                    const class GALGAS_string constinArgument8,
+                                                    const class GALGAS_string constinArgument9,
+                                                    const class GALGAS_bool constinArgument10,
+                                                    class C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterModifierWithInputArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterModifierWithInputArgument (class GALGAS_setterMap & ioArgument0,
+                                             class GALGAS_unifiedTypeMap & ioArgument1,
+                                             const class GALGAS_string constinArgument2,
+                                             const class GALGAS_string constinArgument3,
+                                             const class GALGAS_string constinArgument4,
+                                             const class GALGAS_bool constinArgument5,
+                                             class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterModifierWithOutputAndInputArguments'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterModifierWithOutputAndInputArguments (class GALGAS_setterMap & ioArgument0,
+                                                       class GALGAS_unifiedTypeMap & ioArgument1,
+                                                       const class GALGAS_string constinArgument2,
+                                                       const class GALGAS_string constinArgument3,
+                                                       const class GALGAS_string constinArgument4,
+                                                       const class GALGAS_string constinArgument5,
+                                                       const class GALGAS_string constinArgument6,
+                                                       const class GALGAS_bool constinArgument7,
+                                                       class C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterModifierWith2InputArguments'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterModifierWith_32_InputArguments (class GALGAS_setterMap & ioArgument0,
+                                                  class GALGAS_unifiedTypeMap & ioArgument1,
+                                                  const class GALGAS_string constinArgument2,
+                                                  const class GALGAS_string constinArgument3,
+                                                  const class GALGAS_string constinArgument4,
+                                                  const class GALGAS_string constinArgument5,
+                                                  const class GALGAS_string constinArgument6,
+                                                  const class GALGAS_bool constinArgument7,
+                                                  class C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterModifierWithoutArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterModifierWithoutArgument (class GALGAS_setterMap & ioArgument0,
+                                           const class GALGAS_string constinArgument1,
+                                           const class GALGAS_bool constinArgument2,
+                                           class C_Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterInstanceMethodWithoutArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterInstanceMethodWithoutArgument (class GALGAS_instanceMethodMap & ioArgument0,
+                                                 const class GALGAS_string constinArgument1,
+                                                 const class GALGAS_bool constinArgument2,
+                                                 class C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterInstanceMethodWithInputArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterInstanceMethodWithInputArgument (class GALGAS_instanceMethodMap & ioArgument0,
+                                                   class GALGAS_unifiedTypeMap & ioArgument1,
+                                                   const class GALGAS_string constinArgument2,
+                                                   const class GALGAS_string constinArgument3,
+                                                   const class GALGAS_string constinArgument4,
+                                                   const class GALGAS_bool constinArgument5,
+                                                   class C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterClassMethodWithInputArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterClassMethodWithInputArgument (class GALGAS_classMethodMap & ioArgument0,
+                                                class GALGAS_unifiedTypeMap & ioArgument1,
+                                                const class GALGAS_string constinArgument2,
+                                                const class GALGAS_string constinArgument3,
+                                                const class GALGAS_string constinArgument4,
+                                                const class GALGAS_bool constinArgument5,
+                                                class C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterClassMethodWith3InputArguments'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterClassMethodWith_33_InputArguments (class GALGAS_classMethodMap & ioArgument0,
+                                                     class GALGAS_unifiedTypeMap & ioArgument1,
+                                                     const class GALGAS_string constinArgument2,
+                                                     const class GALGAS_string constinArgument3,
+                                                     const class GALGAS_string constinArgument4,
+                                                     const class GALGAS_string constinArgument5,
+                                                     const class GALGAS_string constinArgument6,
+                                                     const class GALGAS_string constinArgument7,
+                                                     const class GALGAS_string constinArgument8,
+                                                     const class GALGAS_bool constinArgument9,
+                                                     class C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterClassMethodWithStringInputArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterClassMethodWithStringInputArgument (class GALGAS_classMethodMap & ioArgument0,
+                                                      class GALGAS_unifiedTypeMap & ioArgument1,
+                                                      const class GALGAS_string constinArgument2,
+                                                      const class GALGAS_string constinArgument3,
+                                                      const class GALGAS_bool constinArgument4,
+                                                      class C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
 

@@ -612,7 +612,8 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_referenceClassTypeHeade
                                                                                                const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
                                                                                                const class GALGAS_typedPropertyList & in_ALL_5F_PROPERTY_5F_LIST,
                                                                                                const class GALGAS_bool & in_IS_5F_ABSTRACT,
-                                                                                               const class GALGAS_getterMap & in_GETTER_5F_MAP
+                                                                                               const class GALGAS_getterMap & in_GETTER_5F_MAP,
+                                                                                               const class GALGAS_instanceMethodMap & in_INSTANCE_5F_METHOD_5F_MAP
                                                                                                COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -776,6 +777,20 @@ class GALGAS_string function_generateClassGetterDeclaration (const class GALGAS_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Function 'generateClassInstanceMethodDeclaration'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_string function_generateClassInstanceMethodDeclaration (const class GALGAS_lstring & constinArgument0,
+                                                                     const class GALGAS_formalParameterSignature & constinArgument1,
+                                                                     const class GALGAS_instanceMethodMutability & constinArgument2,
+                                                                     const class GALGAS_bool & constinArgument3,
+                                                                     const class GALGAS_methodQualifier & constinArgument4,
+                                                                     class C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Filewrapper 'enumGenerationTemplate'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -910,4 +925,56 @@ void routine_enterConstructorWithoutArgument (class GALGAS_constructorMap & ioAr
                                               const class GALGAS_bool constinArgument4,
                                               class C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'listGenerationTemplate'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_listGenerationTemplate ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'listGenerationTemplate listTypeHeader1'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeHeader_31_ (class C_Compiler * inCompiler,
+                                                                             const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                             const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                             const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'listGenerationTemplate listTypeSpecificImplementation'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImplementation (class C_Compiler * inCompiler,
+                                                                                         const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                         const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                         const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
+                                                                                         const class GALGAS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'check_K_escapeCharacters'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_check_5F_K_5F_escapeCharacters (const class GALGAS_lstring constinArgument0,
+                                             class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
 

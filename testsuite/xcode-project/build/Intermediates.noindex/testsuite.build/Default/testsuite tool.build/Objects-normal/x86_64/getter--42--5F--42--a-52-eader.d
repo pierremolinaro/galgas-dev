@@ -28,6 +28,8 @@ dependencies: \
   ../build/libpm/command_line_interface/C_UIntCommandLineOption.h \
   ../build/libpm/command_line_interface/C_StringCommandLineOption.h \
   ../build/libpm/utilities/C_PrologueEpilogue.h \
+  ../build/output/class--42--5F--42-.h \
+  ../build/output/class--42--5F--42--1.h \
   ../build/output/all-predefined-types.h ../build/libpm/time/C_Timer.h \
   ../build/libpm/galgas2/AC_GALGAS_root.h \
   ../build/libpm/galgas2/C_galgas_type_descriptor.h \
@@ -54,4 +56,6 @@ dependencies: \
   ../build/libpm/galgas2/cSortedListElement.h \
   ../build/libpm/galgas2/capSortedListElement.h \
   ../build/libpm/galgas2/C_galgas_function_descriptor.h \
-  ../build/libpm/galgas2/cObjectArray.h
+  ../build/libpm/galgas2/cObjectArray.h \
+  ../build/output/class--41--5F--41-.h \
+  ../build/output/class--41--5F--41--1.h

@@ -88,13 +88,15 @@ override getter @extensionMethodAST keyRepresentation
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @extensionMethodAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
-{
-  let key = @lstring.new {!"extension method @" + self.mTypeName + " " + self.mExtensionMethodName !self.mExtensionMethodName.location}
+                                ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+                                ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext
+                                ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+                                ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+                                ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  let key = @lstring.new {
+    !"extension method @" + self.mTypeName + " " + self.mExtensionMethodName
+    !self.mExtensionMethodName.location
+  }
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName !self.mTypeName.location}]
 #---
@@ -108,6 +110,7 @@ override method @extensionMethodAST enterDeclarationInGraph
     [!?mExtensionMethodMapForType insertKey
       !self.mExtensionMethodName
       ! self.mExtensionMethodFormalParameterList
+      !.isBasic
     ]
   end
 }
@@ -143,28 +146,28 @@ override method @extensionMethodAST semanticAnalysis
   [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 #--- Self type
   let @unifiedTypeMapEntry selfType = [inSemanticContext.mTypeMap searchKey ! self.mTypeName]
-  let @string selfObjectName
-  let @string selfObjectAccessor
+  let @string selfObjectNameNew
+  let @string selfObjectAccessorNew
   let @bool implementedAsFunction
 #--- Check self type is a class
   var isReferenceClass = false
   if let [[selfType definition].mTypeKindEnum classType ?isReference: let isReference] then
     isReferenceClass = isReference
-    selfObjectName = "object"
-    selfObjectAccessor = "object->"
+    selfObjectNameNew = "this"
+    selfObjectAccessorNew = "this->"
     implementedAsFunction = false
   else
-    selfObjectName = "inObject"
-    selfObjectAccessor = "inObject."
+    selfObjectNameNew = "inObject"
+    selfObjectAccessorNew = "inObject."
     implementedAsFunction = true
   end
 #--- Analyze instruction list
-  let analysisContext = @analysisContext.new {
+  let analysisContextNew = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !selfObjectName
+    !selfObjectNameNew
     !selfType: .available {!type:  selfType !mutable: false !mutableproperties: isReferenceClass}
-    !selfObjectAccessor
+    !selfObjectAccessorNew
     !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
   }
   var isRefClass = false
@@ -185,7 +188,7 @@ override method @extensionMethodAST semanticAnalysis
   analyzeRoutineBody (
     !nameForUsefulness
     !?ioUsefulEntitiesGraph
-    !analysisContext
+    !analysisContextNew
     !self.mExtensionMethodFormalParameterList
     !nonMutablePropertyList: nonMutableProperties
     !mutablePropertyList: mutableProperties
@@ -323,10 +326,11 @@ override method @extensionMethodForGeneration appendSpecificImplementation
         searching = false
       end  
     end
-    ioInclusionSet += !"method-" + [[baseType definition].mTypeName.string fileNameRepresentation]+ "-" + [self.mExtensionMethodName fileNameRepresentation]
-    generateExtensionMethod (
+    ioInclusionSet +=
+      !"method-" + [[baseType definition].mTypeName.string fileNameRepresentation]
+      + "-" + [self.mExtensionMethodName fileNameRepresentation]
+    generateExtensionMethodNew (
       !self.mReceiverType
-      !""
       !?ioInclusionSet
       !self.mExtensionMethodName
       !self.mExtensionMethodFormalParameterList

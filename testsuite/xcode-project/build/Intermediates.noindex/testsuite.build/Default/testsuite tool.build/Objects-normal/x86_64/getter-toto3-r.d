@@ -27,4 +27,35 @@ dependencies: \
   ../build/libpm/command_line_interface/C_CommandLineOption.h \
   ../build/libpm/command_line_interface/C_UIntCommandLineOption.h \
   ../build/libpm/command_line_interface/C_StringCommandLineOption.h \
-  ../build/libpm/utilities/C_PrologueEpilogue.h
+  ../build/libpm/utilities/C_PrologueEpilogue.h \
+  ../build/output/class-toto3.h ../build/output/class-toto3-1.h \
+  ../build/output/all-predefined-types.h ../build/libpm/time/C_Timer.h \
+  ../build/libpm/galgas2/AC_GALGAS_root.h \
+  ../build/libpm/galgas2/C_galgas_type_descriptor.h \
+  ../build/libpm/galgas2/typeComparisonResult.h \
+  ../build/libpm/galgas2/cGenericAbstractEnumerator.h \
+  ../build/libpm/galgas2/capCollectionElementArray.h \
+  ../build/libpm/galgas2/capCollectionElement.h \
+  ../build/libpm/galgas2/cEnumerator_range.h \
+  ../build/libpm/galgas2/AC_GALGAS_list.h \
+  ../build/libpm/galgas2/cCollectionElement.h \
+  ../build/libpm/galgas2/AC_GALGAS_sortedlist.h \
+  ../build/libpm/galgas2/AC_GALGAS_map.h \
+  ../build/libpm/galgas2/AC_GALGAS_reference_class.h \
+  ../build/libpm/galgas2/AC_GALGAS_value_class.h \
+  ../build/libpm/galgas2/AC_GALGAS_enumAssociatedValues.h \
+  ../build/libpm/galgas2/AC_GALGAS_graph.h \
+  ../build/libpm/galgas2/acStrongPtr_class.h \
+  ../build/libpm/galgas2/acPtr_class.h \
+  ../build/libpm/galgas2/cPtr_weakReference_proxy.h \
+  ../build/libpm/galgas2/AC_GALGAS_weak_reference.h \
+  ../build/libpm/command_line_interface/C_StringListCommandLineOption.h \
+  ../build/libpm/utilities/C_BigInt.h ../build/libpm/gmp/gmp.h \
+  ../build/libpm/bdd/C_BDD.h ../build/libpm/utilities/PMUInt128.h \
+  ../build/libpm/galgas2/cSortedListElement.h \
+  ../build/libpm/galgas2/capSortedListElement.h \
+  ../build/libpm/galgas2/C_galgas_function_descriptor.h \
+  ../build/libpm/galgas2/cObjectArray.h ../build/output/class-toto2.h \
+  ../build/output/class-toto2-1.h ../build/output/class-toto1.h \
+  ../build/output/class-toto1-1.h ../build/output/class-toto.h \
+  ../build/output/class-toto-1.h
