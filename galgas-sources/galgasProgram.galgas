@@ -161,7 +161,7 @@ private proc parseAndAnalyzeProject
         let buildFile = [inProjectSourceFile stringByDeletingLastPathComponent] + "/" + cppCompilationTarget + "/build.py"
         if [buildFile fileExists] then
           let resultCode = ["python " + buildFile system]
-          if resultCode != 0S then
+          if resultCode != 0 then
           error ["" nowhere] : "Running '" + buildFile + "' returns " + resultCode
           end
         else
