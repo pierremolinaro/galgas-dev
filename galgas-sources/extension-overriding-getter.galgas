@@ -64,7 +64,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $override$
-    $getter$
+    $func$
     $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionGetter
     $.$
     $identifier$ ?let @lstring mMethodName indexing overrideExtensionGetterDefinition

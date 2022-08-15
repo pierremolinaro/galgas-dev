@@ -258,20 +258,19 @@ void routine_emitProductionRulesInTexFile (const class GALGAS_string constinArgu
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_grammarAnalysisAndGeneration (const class GALGAS_stringset constinArgument0,
+void routine_grammarAnalysisAndGeneration (const class GALGAS_lstring constinArgument0,
                                            const class GALGAS_lstring constinArgument1,
-                                           const class GALGAS_lstring constinArgument2,
-                                           const class GALGAS_uint constinArgument3,
-                                           const class GALGAS_string constinArgument4,
-                                           const class GALGAS_terminalSymbolsMapForGrammarAnalysis constinArgument5,
-                                           const class GALGAS_syntaxComponentListForGrammarAnalysis constinArgument6,
-                                           const class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis constinArgument7,
-                                           const class GALGAS_string constinArgument8,
-                                           const class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis constinArgument9,
-                                           const class GALGAS_bool constinArgument10,
-                                           const class GALGAS_string constinArgument11,
+                                           const class GALGAS_uint constinArgument2,
+                                           const class GALGAS_string constinArgument3,
+                                           const class GALGAS_terminalSymbolsMapForGrammarAnalysis constinArgument4,
+                                           const class GALGAS_syntaxComponentListForGrammarAnalysis constinArgument5,
+                                           const class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis constinArgument6,
+                                           const class GALGAS_string constinArgument7,
+                                           const class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis constinArgument8,
+                                           const class GALGAS_bool constinArgument9,
+                                           const class GALGAS_string constinArgument10,
+                                           class GALGAS_string & outArgument11,
                                            class GALGAS_string & outArgument12,
-                                           class GALGAS_string & outArgument13,
                                            class C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 

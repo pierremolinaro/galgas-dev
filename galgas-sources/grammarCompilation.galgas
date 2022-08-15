@@ -235,7 +235,6 @@ filewrapper grammarGenerationTemplate in "+generation-templates/grammar_generati
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extern proc grammarAnalysisAndGeneration
-  ?let @stringset inImplementationFileHeaderSet
   ?let @lstring inGrammarName
   ?let @lstring inGrammarClass
   ?let @uint startSymbolIndex

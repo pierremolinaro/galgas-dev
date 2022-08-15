@@ -52,7 +52,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $override$
-    $method$
+    $proc$
     $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionMethodDefinition
     $.$
     $identifier$ ?let @lstring mMethodName indexing overrideExtensionMethodDefinition

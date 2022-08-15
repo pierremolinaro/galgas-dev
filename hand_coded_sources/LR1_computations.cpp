@@ -1104,8 +1104,7 @@ class c_LR1_automaton_transition {
 //----------------------------------------------------------------------------------------------------------------------
 
 static void
-generate_LR1_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
-                               const cPureBNFproductionsList & inProductionRules,
+generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules,
                                const cVocabulary & inVocabulary,
                                const TC_UniqueArray2 <cDecisionTableElement> & inSLRdecisionTable,
                                const TC_FIFO <c_LR1_automaton_transition> & inTransitionList,
@@ -1122,9 +1121,6 @@ generate_LR1_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
   ioCppFileContents << "#include \"files/C_FileManager.h\"\n\n" ;
 
   ioCppFileContents.appendCppHyphenLineComment () ;
-  for (int32_t i=0 ; i<inImplementationFileHeaderList.count () ; i++) {
-    ioCppFileContents << "#include \"" << inImplementationFileHeaderList (i COMMA_HERE) << ".h\"\n" ;
-  }
   ioCppFileContents << "\n" ;
 
 //--- Print non-terminal symbols --------------------------------------
@@ -1698,8 +1694,7 @@ compute_LR1_automation (const cPureBNFproductionsList & inProductionRules,
 //----------------------------------------------------------------------------------------------------------------------
 
 void
-LR1_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
-                  const cPureBNFproductionsList & inProductionRules,
+LR1_computations (const cPureBNFproductionsList & inProductionRules,
                   const cVocabulary & inVocabulary,
                   C_HTMLString & ioHTMLFileContents,
                   const bool inPopulateHTMLHelperString,
@@ -1898,7 +1893,7 @@ LR1_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
     if (conflictCount == 0) {
       co << "ok.\n" ;
     }else{
-      co << "error.\n" ;
+      co << "error, " << cStringWithSigned (conflictCount) << " conflict" << ((conflictCount > 1) ? "s" : "") << ".\n" ;
     }
     co.flush () ;
   }
@@ -1929,8 +1924,7 @@ LR1_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
   }
 //--- Generate C++ file
   if (conflictCount == 0) {
-    generate_LR1_grammar_cpp_file (inImplementationFileHeaderList,
-                                   inProductionRules,
+    generate_LR1_grammar_cpp_file (inProductionRules,
                                    inVocabulary,
                                    SLRdecisionTable,
                                    transitionList,

@@ -50,7 +50,8 @@ syntax extension galgas4DeclarationsSyntax {
   #·····················································································································
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
-    $setter$
+    $mutating$
+    $proc$
     $@type$ ?let @lstring className indexing typeReferenceExtensionSetter
     $.$
     $identifier$ ?let @lstring setterName indexing extensionSetterDefinition

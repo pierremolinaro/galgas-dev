@@ -34,8 +34,7 @@ class C_Relation ;
 //----------------------------------------------------------------------------------------------------------------------
 
 void
-LL1_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
-                  const cPureBNFproductionsList & inPureBNFproductions,
+LL1_computations (const cPureBNFproductionsList & inPureBNFproductions,
                   C_HTMLString & ioHTMLFileContents,
                   const bool inPopulateHTMLHelperString,
                   const cVocabulary & inVocabulary,

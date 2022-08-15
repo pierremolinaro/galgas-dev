@@ -433,8 +433,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
 //----------------------------------------------------------------------------------------------------------------------
 
 static void
-generate_LL1_grammar_Cpp_file (const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
-                               const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
+generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                                const uint32_t inOriginalGrammarStartSymbol,
                                const C_String & inTargetFileName,
                                C_String & ioCppFileContents,
@@ -450,9 +449,6 @@ generate_LL1_grammar_Cpp_file (const TC_UniqueArray <C_String> & inImplementatio
   ioCppFileContents << "#include \"files/C_FileManager.h\"\n\n" ;
 
   ioCppFileContents.appendCppHyphenLineComment () ;
-  for (int32_t i=0 ; i<inImplementationFileHeaderList.count () ; i++) {
-    ioCppFileContents << "#include \"" << inImplementationFileHeaderList (i COMMA_HERE) << ".h\"\n" ;
-  }
   ioCppFileContents << "\n" ;
 
 //--- Generate LL(1) tables
@@ -887,8 +883,7 @@ generate_LL1_grammar_Cpp_file (const TC_UniqueArray <C_String> & inImplementatio
 //----------------------------------------------------------------------------------------------------------------------
 
 void
-LL1_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
-                  const cPureBNFproductionsList & inPureBNFproductions,
+LL1_computations (const cPureBNFproductionsList & inPureBNFproductions,
                   C_HTMLString & ioHTMLFileContents,
                   const bool inPopulateHTMLHelperString,
                   const cVocabulary & inVocabulary,
@@ -925,8 +920,7 @@ LL1_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
 
 //--- Generate C++ file
   if (outOk) {
-    generate_LL1_grammar_Cpp_file (inImplementationFileHeaderList,
-                                   inNonTerminalSymbolSortedListForGrammarAnalysis,
+    generate_LL1_grammar_Cpp_file (inNonTerminalSymbolSortedListForGrammarAnalysis,
                                    inOriginalGrammarStartSymbol,
                                    inTargetFileName,
                                    ioCppFileContents,

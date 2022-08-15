@@ -51,7 +51,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $abstract$
-    $getter$
+    $func$
     $@type$ ?let className indexing typeReferenceAbstractExtensionGetter
     $.$
     $identifier$ ?let mGetterName indexing abstractExtensionGetterDefinition

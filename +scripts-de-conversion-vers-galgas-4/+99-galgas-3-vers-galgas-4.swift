@@ -76,10 +76,10 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
 
 //--------------------------------------------------------------------------------------------------
 
-func erreurSyntaxeRemplacement (errorMessageLines inLines : [String],
-                                semanticErrorMessage inSemanticErrorMessage : String,
-                                replacementString inReplacementString : String,
-                                handled ioHandled : inout Bool) {
+func erreurSemantiqueRemplacement (errorMessageLines inLines : [String],
+                                   semanticErrorMessage inSemanticErrorMessage : String,
+                                   replacementString inReplacementString : String,
+                                   handled ioHandled : inout Bool) {
   var lineIndex = 0
   var found = false
   while (lineIndex < (inLines.count - 1)) && !found {
@@ -105,6 +105,48 @@ func erreurSyntaxeRemplacement (errorMessageLines inLines : [String],
     print ("  Préfixe '\(préfixe)'")
     var suffixe = ligneConcernée
     suffixe.removeFirst (premierCaractère + 1)
+    print ("  Suffixe '\(suffixe)'")
+    let ligneModifiée = préfixe + inReplacementString + suffixe
+    print ("  ligne modifiée '\(ligneModifiée)'")
+    lignesDuFichier [ligne - 1] = ligneModifiée
+    let newContents = lignesDuFichier.joined (separator: "\n")
+    let data : Data = newContents.data (using: .utf8, allowLossyConversion: false)!
+    try! data.write (to: URL (fileURLWithPath: fichier), options: .atomic)
+    ioHandled = true
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func erreurSyntaxeRemplacement (errorMessageLines inLines : [String],
+                                semanticErrorMessage inSemanticErrorMessage : String,
+                                replacementString inReplacementString : String,
+                                handled ioHandled : inout Bool) {
+  var lineIndex = 0
+  var found = false
+  while (lineIndex < (inLines.count - 1)) && !found {
+    found = inLines [lineIndex].hasPrefix ("syntax error #1: " + inSemanticErrorMessage)
+    lineIndex += 1
+  }
+  if found {
+    let errorMessageLine = inLines [lineIndex - 2]
+    print ("  Message : '\(errorMessageLine)'")
+    let c = errorMessageLine.components (separatedBy: ":")
+    assert (c.count == 5)
+    let fichier = c [0]
+    let ligne = Int (c [1])!
+    let premierCaractère = Int (c[2])! - 1
+    let dernierCaractère = Int (c[3])! - 1
+    print (BOLD_BLUE + "  Erreur détectée : ligne \(ligne), premier caractère \(premierCaractère), dernier \(dernierCaractère)" + ENDC)
+    let contents = try! String (contentsOf: URL (fileURLWithPath: fichier), encoding: .utf8)
+    var lignesDuFichier = contents.components (separatedBy: "\n")
+    let ligneConcernée = lignesDuFichier [ligne - 1]
+    print ("  line concernée '\(ligneConcernée)'")
+    var préfixe = ligneConcernée
+    préfixe.removeLast (ligneConcernée.count - premierCaractère)
+    print ("  Préfixe '\(préfixe)'")
+    var suffixe = ligneConcernée
+    suffixe.removeFirst (dernierCaractère + 1)
     print ("  Suffixe '\(suffixe)'")
     let ligneModifiée = préfixe + inReplacementString + suffixe
     print ("  ligne modifiée '\(ligneModifiée)'")
@@ -204,10 +246,19 @@ func traduire (projetGALGAS inCheminFichierGALGAS : String) -> (Bool, Int) {
         erreurSyntaxeInsérerChaîne (errorMessageLines: lines, chaîneAttendue: ".", handled: &handled)
       }
       if !handled {
-        erreurSyntaxeRemplacement (errorMessageLines: lines, semanticErrorMessage: "'{' is obsolete here, use '('", replacementString: "(", handled: &handled)
+        erreurSemantiqueRemplacement (errorMessageLines: lines, semanticErrorMessage: "'{' is obsolete here, use '('", replacementString: "(", handled: &handled)
       }
       if !handled {
-        erreurSyntaxeRemplacement (errorMessageLines: lines, semanticErrorMessage: "'}' is obsolete here, use ')'", replacementString: ")", handled: &handled)
+        erreurSemantiqueRemplacement (errorMessageLines: lines, semanticErrorMessage: "'}' is obsolete here, use ')'", replacementString: ")", handled: &handled)
+      }
+      if !handled {
+        erreurSyntaxeRemplacement (errorMessageLines: lines, semanticErrorMessage: "found the 'method' keyword, expected:", replacementString: "proc", handled: &handled)
+      }
+      if !handled {
+        erreurSyntaxeRemplacement (errorMessageLines: lines, semanticErrorMessage: "found the 'getter' keyword, expected:", replacementString: "func", handled: &handled)
+      }
+      if !handled {
+        erreurSyntaxeRemplacement (errorMessageLines: lines, semanticErrorMessage: "found the 'setter' keyword, expected:", replacementString: "mutating proc", handled: &handled)
       }
       if handled {
         nombreModifications += 1

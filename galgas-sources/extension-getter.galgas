@@ -62,7 +62,7 @@ syntax extension galgas4DeclarationsSyntax {
   #·····················································································································
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
-    $getter$
+    $func$
     $@type$ ?let @lstring className indexing typeReferenceExtensionGetter
     $.$
     $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition

@@ -837,7 +837,6 @@ override method @galgas3GrammarComponentAST semanticAnalysis
 #---------------------------------------------------------- Analyze grammar
   let HTMLFilePath = inProductDirectory + "/../helpers/" + self.mGrammarComponentName + ".html"
   grammarAnalysisAndGeneration (
-    !{}
     !self.mGrammarComponentName
     !self.mGrammarClass
     !startSymbolIndex

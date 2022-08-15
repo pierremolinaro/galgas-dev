@@ -285,7 +285,6 @@ static const char k_default_style [] = {
 static void
 analyzeGrammar (C_Compiler * inCompiler,
                 const C_String & inHTMLFileName,
-                const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
                 const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                 const GALGAS_lstring & inTargetFileName,
                 const GALGAS_lstring & inGrammarClass,
@@ -532,8 +531,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   if ((errorFlag == kNoError)
    && ((grammarClass == kDefaultBehavior) || (grammarClass == kLL1grammar))) {
     bool ok = false ;
-    LL1_computations (inImplementationFileHeaderList,
-                      pureBNFproductions,
+    LL1_computations (pureBNFproductions,
                       outHTMLHelperFileContents,
                       inPopulateHTMLHelperString,
                       vocabulary,
@@ -558,8 +556,7 @@ analyzeGrammar (C_Compiler * inCompiler,
         ||
      ((errorFlag == kNoError) && (grammarClass == kSLRgrammar))) {
     bool ok = false ;
-    SLR_computations (inImplementationFileHeaderList,
-                      pureBNFproductions,
+    SLR_computations (pureBNFproductions,
                       vocabulary,
                       outHTMLHelperFileContents,
                       inPopulateHTMLHelperString,
@@ -585,8 +582,7 @@ analyzeGrammar (C_Compiler * inCompiler,
         ||
      ((errorFlag == kNoError) && (grammarClass == kLR1grammar))) {
     bool ok = false ;
-    LR1_computations (inImplementationFileHeaderList,
-                      pureBNFproductions,
+    LR1_computations (pureBNFproductions,
                       vocabulary,
                       outHTMLHelperFileContents,
                       inPopulateHTMLHelperString,
@@ -607,7 +603,6 @@ analyzeGrammar (C_Compiler * inCompiler,
       errorFlag = kGrammarNotLR1 ;
     }
   }
-
 //--- Final step ---------------------------------------------------------------------
   C_BDD::markAndSweepUnusedNodes () ;
   if (errorFlag != kNoError) {
@@ -647,15 +642,13 @@ analyzeGrammar (C_Compiler * inCompiler,
   }else{
     outHTMLHelperFileContents.appendCppTitleComment ("OK (no error, no warning)", "title") ;
   }
-  
   outHTMLHelperFileContents.writeEndCode () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 void
-routine_grammarAnalysisAndGeneration (const GALGAS_stringset inImplementationFileHeaderSet,
-                                      const GALGAS_lstring inTargetFileName,
+routine_grammarAnalysisAndGeneration (const GALGAS_lstring inTargetFileName,
                                       const GALGAS_lstring inGrammarClass,
                                       const GALGAS_uint inOriginalGrammarStartSymbol,
                                       const GALGAS_string inLexiqueName,
@@ -682,19 +675,11 @@ routine_grammarAnalysisAndGeneration (const GALGAS_stringset inImplementationFil
 
     const GALGAS_location inErrorLocation = inTargetFileName.mProperty_location ;
 
-    TC_UniqueArray <C_String> implementationFileHeaderList ;
-    cEnumerator_stringset enumerator_30239 (inImplementationFileHeaderSet, kENUMERATION_UP) ;
-    while (enumerator_30239.hasCurrentObject ()) {
-      implementationFileHeaderList.appendObject (enumerator_30239.current_key (HERE).stringValue()) ;
-      enumerator_30239.gotoNextObject () ;
-    }
-
     C_HTMLString HTMLHelperFileContents ;
     C_String CppFileContents ;
     const bool populateHTMLHelperString = gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile.mValue ;
     analyzeGrammar (inCompiler,
                     inHTMLFileName.stringValue (),
-                    implementationFileHeaderList,
                     inUnusedNonTerminalSymbolsForGrammar,
                     inTargetFileName,
                     inGrammarClass,

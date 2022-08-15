@@ -44,7 +44,7 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $override$
     $abstract$
-    $method$
+    $proc$
     $@type$ ?let @lstring className indexing typeReferenceOverrideAbstractExtensionMethod
     $.$
     $identifier$ ?let @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition

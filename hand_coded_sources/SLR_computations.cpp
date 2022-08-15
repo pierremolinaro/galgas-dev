@@ -644,8 +644,7 @@ mTargetState (inTargetState) {
 //----------------------------------------------------------------------------------------------------------------------
 
 static void
-generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
-                               const cPureBNFproductionsList & inProductionRules,
+generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules,
                                const cVocabulary & inVocabulary,
                                const TC_UniqueArray2 <cDecisionTableElement> & inSLRdecisionTable,
                                const TC_FIFO <c_LR0_automaton_transition> & inTransitionList,
@@ -663,9 +662,6 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
   ioCppFileContents << "#include \"files/C_FileManager.h\"\n\n" ;
 
   ioCppFileContents.appendCppHyphenLineComment () ;
-  for (int32_t i=0 ; i<inImplementationFileHeaderList.count () ; i++) {
-    ioCppFileContents << "#include \"" << inImplementationFileHeaderList (i COMMA_HERE) << ".h\"\n" ;
-  }
   ioCppFileContents << "\n" ;
 
 //--- Print non-terminal symbols --------------------------------------
@@ -1230,8 +1226,7 @@ compute_LR0_automation (const cPureBNFproductionsList & inProductionRules,
 //----------------------------------------------------------------------------------------------------------------------
 
 void
-SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
-                  const cPureBNFproductionsList & inProductionRules,
+SLR_computations (const cPureBNFproductionsList & inProductionRules,
                   const cVocabulary & inVocabulary,
                   C_HTMLString & ioHTMLFileContents,
                   const bool inPopulateHTMLHelperString,
@@ -1450,8 +1445,7 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
   }
 //--- Generate C++ file
   if (conflictCount == 0) {
-    generate_SLR_grammar_cpp_file (inImplementationFileHeaderList,
-                                   inProductionRules,
+    generate_SLR_grammar_cpp_file (inProductionRules,
                                    inVocabulary,
                                    SLRdecisionTable,
                                    transitionList,

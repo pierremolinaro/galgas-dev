@@ -43,19 +43,6 @@ syntax galgas3InstructionsSyntax (galgas3Scanner) {
   }
 
   #·····················································································································
-
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
-    let @bool isLocal
-    select
-      isLocal = false
-    or
-      $private$
-      isLocal = true
-    end
-    <declaration_with_private> !isLocal !?ioDeclarations
-  }
-
-  #·····················································································································
   #    E X T E R N    R O U T I N E    D E C L A R A T I O N
   #·····················································································································
 
@@ -76,10 +63,7 @@ syntax galgas3InstructionsSyntax (galgas3Scanner) {
   #    R O U T I N E    D E C L A R A T I O N 
   #·····················································································································
 
-  rule <declaration_with_private>
-    ?let @bool inIsPrivate
-    ?!@galgas3DeclarationAST ioDeclarations
-  {
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $proc$
     $identifier$ ?let mRoutineName indexing routineDefinition
     <formal_parameter_list> ?let @formalParameterListAST mFormalParameterList
@@ -89,7 +73,27 @@ syntax galgas3InstructionsSyntax (galgas3Scanner) {
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
       !false # Is not predefined
-      !inIsPrivate
+      !false # private
+      !mRoutineName
+      !mFormalParameterList
+      !mRoutineInstructionList
+      !endOfInstructionList
+    }
+  }
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $private$
+    $proc$
+    $identifier$ ?let mRoutineName indexing routineDefinition
+    <formal_parameter_list> ?let @formalParameterListAST mFormalParameterList
+    ${$
+    <semantic_instruction_list> ?let @semanticInstructionListAST mRoutineInstructionList
+    $}$
+    let endOfInstructionList = @location.here
+    ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
+      !false # Is not predefined
+      !true # private
       !mRoutineName
       !mFormalParameterList
       !mRoutineInstructionList
@@ -101,10 +105,7 @@ syntax galgas3InstructionsSyntax (galgas3Scanner) {
   #    F U N C T I O N    D E C L A R A T I O N    
   #·····················································································································
 
-  rule <declaration_with_private>
-    ?let @bool inIsPrivate
-    ?!@galgas3DeclarationAST ioDeclarations
-  {
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $func$
     var isOnce = false
     var isUsefull = false
@@ -150,7 +151,7 @@ syntax galgas3InstructionsSyntax (galgas3Scanner) {
         !resultVariableName
         !functionInstructionList
         !endOfFunctionInstructionList
-        !inIsPrivate
+        !false # private
         !isUsefull
       }
     else
@@ -162,7 +163,74 @@ syntax galgas3InstructionsSyntax (galgas3Scanner) {
         !resultVariableName
         !functionInstructionList
         !endOfFunctionInstructionList
-        !inIsPrivate
+        !false # private
+        !isUsefull
+      }
+    end
+  }
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $private$
+    $func$
+    var isOnce = false
+    var isUsefull = false
+    repeat
+    while
+      $%attribute$ ?let @lstring attribute
+      if attribute.string == "once" then
+        if isOnce then
+          error attribute : "duplicate attribute" fixit { remove }
+        end
+        isOnce = true
+      elsif attribute.string == "usefull" then
+        if isUsefull then
+          error attribute : "duplicate attribute" fixit { remove }
+        end
+        isUsefull = true
+      else
+        error attribute : "invalid attribute" fixit { replace "%once" replace "%usefull" }
+      end
+    end
+    $identifier$ ?let functionName indexing functionDefinition
+    <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
+    if isOnce, ([formalInputParameterList length] > 0) then
+      error functionName: "an 'once' function should has no argument"
+    end
+    $->$
+    $@type$ ?let resultTypeName
+    let @lstring resultVariableName
+    select
+      $identifier$ ?resultVariableName
+    or
+      resultVariableName = .new {!"result" !.here}
+    end
+    ${$
+    <semantic_instruction_list> ?let @semanticInstructionListAST functionInstructionList
+    $}$
+    let endOfFunctionInstructionList = @location.here
+    if isOnce then
+      ioDeclarations.mDeclarationList += !@onceFunctionDeclarationAST.new {
+        !false # Is not predefined
+        !functionName
+        !resultTypeName
+        !resultVariableName
+        !functionInstructionList
+        !endOfFunctionInstructionList
+        !true # private
+        !isUsefull
+      }
+    else
+      ioDeclarations.mDeclarationList += !@functionDeclarationAST.new {
+        !false # Is not predefined
+        !functionName
+        !formalInputParameterList
+        !resultTypeName
+        !resultVariableName
+        !functionInstructionList
+        !endOfFunctionInstructionList
+        !true # private
         !isUsefull
       }
     end
@@ -296,19 +364,6 @@ syntax galgas4InstructionsSyntax (galgas3Scanner) {
   }
 
   #·····················································································································
-
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
-    let @bool isLocal
-    select
-      isLocal = false
-    or
-      $private$
-      isLocal = true
-    end
-    <declaration_with_private> !isLocal !?ioDeclarations
-  }
-
-  #·····················································································································
   #    E X T E R N    R O U T I N E    D E C L A R A T I O N
   #·····················································································································
 
@@ -331,10 +386,7 @@ syntax galgas4InstructionsSyntax (galgas3Scanner) {
   #    R O U T I N E    D E C L A R A T I O N 
   #·····················································································································
 
-  rule <declaration_with_private>
-    ?let @bool inIsPrivate
-    ?!@galgas3DeclarationAST ioDeclarations
-  {
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $proc$
     $identifier$ ?let mRoutineName indexing routineDefinition
     <formal_parameter_list> ?let @formalParameterListAST mFormalParameterList
@@ -344,7 +396,28 @@ syntax galgas4InstructionsSyntax (galgas3Scanner) {
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
       !false # Is not predefined
-      !inIsPrivate
+      !false
+      !mRoutineName
+      !mFormalParameterList
+      !mRoutineInstructionList
+      !endOfInstructionList
+    }
+  }
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $private$
+    $proc$
+    $identifier$ ?let mRoutineName indexing routineDefinition
+    <formal_parameter_list> ?let @formalParameterListAST mFormalParameterList
+    ${$
+    <semantic_instruction_list> ?let @semanticInstructionListAST mRoutineInstructionList
+    $}$
+    let endOfInstructionList = @location.here
+    ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
+      !false # Is not predefined
+      !true
       !mRoutineName
       !mFormalParameterList
       !mRoutineInstructionList
@@ -356,10 +429,7 @@ syntax galgas4InstructionsSyntax (galgas3Scanner) {
   #    F U N C T I O N    D E C L A R A T I O N    
   #·····················································································································
 
-  rule  <declaration_with_private>
-    ?let @bool inIsPrivate
-    ?!@galgas3DeclarationAST ioDeclarations
-  {
+  rule  <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $func$
     var isOnce = false
     var isUsefull = false
@@ -405,7 +475,7 @@ syntax galgas4InstructionsSyntax (galgas3Scanner) {
         !resultVariableName
         !functionInstructionList
         !endOfFunctionInstructionList
-        !inIsPrivate
+        !false # Private
         !isUsefull
       }
     else
@@ -417,7 +487,74 @@ syntax galgas4InstructionsSyntax (galgas3Scanner) {
         !resultVariableName
         !functionInstructionList
         !endOfFunctionInstructionList
-        !inIsPrivate
+        !false # private
+        !isUsefull
+      }
+    end
+  }
+
+  #·····················································································································
+
+  rule  <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $private$
+    $func$
+    var isOnce = false
+    var isUsefull = false
+    repeat
+    while
+      $%attribute$ ?let @lstring attribute
+      if attribute.string == "once" then
+        if isOnce then
+          error attribute : "duplicate attribute" fixit { remove }
+        end
+        isOnce = true
+      elsif attribute.string == "usefull" then
+        if isUsefull then
+          error attribute : "duplicate attribute" fixit { remove }
+        end
+        isUsefull = true
+      else
+        error attribute : "invalid attribute" fixit { replace "%once" replace "%usefull" }
+      end
+    end
+    $identifier$ ?let functionName indexing functionDefinition
+    <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
+    if isOnce, ([formalInputParameterList length] > 0) then
+      error functionName: "an 'once' function should has no argument"
+    end
+    $->$
+    $@type$ ?let resultTypeName
+    let @lstring resultVariableName
+    select
+      $identifier$ ?resultVariableName
+    or
+      resultVariableName = .new {!"result" !.here}
+    end
+    ${$
+    <semantic_instruction_list> ?let @semanticInstructionListAST functionInstructionList
+    $}$
+    let endOfFunctionInstructionList = @location.here
+    if isOnce then
+      ioDeclarations.mDeclarationList += !@onceFunctionDeclarationAST.new {
+        !false # Is not predefined
+        !functionName
+        !resultTypeName
+        !resultVariableName
+        !functionInstructionList
+        !endOfFunctionInstructionList
+        !true # Private
+        !isUsefull
+      }
+    else
+      ioDeclarations.mDeclarationList += !@functionDeclarationAST.new {
+        !false # Is not predefined
+        !functionName
+        !formalInputParameterList
+        !resultTypeName
+        !resultVariableName
+        !functionInstructionList
+        !endOfFunctionInstructionList
+        !true # private
         !isUsefull
       }
     end

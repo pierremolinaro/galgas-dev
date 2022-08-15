@@ -16,12 +16,6 @@
 syntax galgas3DeclarationsSyntax (galgas3Scanner) {
 
   #·····················································································································
-
-  rule <declaration_with_private>
-    ?let @bool inIsInternal
-    ?!@galgas3DeclarationAST ioDeclarations
-
-  #·····················································································································
   #          Start symbol                     
   #·····················································································································
 
@@ -113,10 +107,7 @@ syntax galgas3DeclarationsSyntax (galgas3Scanner) {
   #! Filewrapper Declaration
   #·····················································································································
 
-  rule <declaration_with_private>
-    ?let @bool inIsInternal
-    ?!@galgas3DeclarationAST ioDeclarations
-  {
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $filewrapper$
     $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
     $in$
@@ -126,7 +117,29 @@ syntax galgas3DeclarationsSyntax (galgas3Scanner) {
     <filewrapper_templates> ?let filewrapperTemplateList
     ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST.new {
       !false # Is not predefined
-      !inIsInternal
+      !false # private
+      !@string.stringWithSourceFilePath
+      !mFilewrapperName
+      !mFilewrapperPath
+      !filewrapperTextFileExtensionList
+      !filewrapperBinaryFileExtensionList
+      !filewrapperTemplateList
+    }
+  }
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $private$
+    $filewrapper$
+    $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
+    $in$
+    $"string"$ ?let @lstring mFilewrapperPath
+    <filewrapper_text_files> ?let filewrapperTextFileExtensionList
+    <filewrapper_binary_files> ?let filewrapperBinaryFileExtensionList
+    <filewrapper_templates> ?let filewrapperTemplateList
+    ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST.new {
+      !false # Is not predefined
+      !true # private
       !@string.stringWithSourceFilePath
       !mFilewrapperName
       !mFilewrapperPath
@@ -210,12 +223,6 @@ syntax galgas3DeclarationsSyntax (galgas3Scanner) {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas4DeclarationsSyntax (galgas3Scanner) {
-
-  #·····················································································································
-
-  rule <declaration_with_private>
-    ?let @bool inIsInternal
-    ?!@galgas3DeclarationAST ioDeclarations
 
   #·····················································································································
   #          Start symbol                     
@@ -308,10 +315,7 @@ syntax galgas4DeclarationsSyntax (galgas3Scanner) {
   #! Filewrapper Declaration
   #·····················································································································
 
-  rule <declaration_with_private>
-    ?let @bool inIsInternal
-    ?!@galgas3DeclarationAST ioDeclarations
-  {
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $filewrapper$
     $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
     $in$
@@ -321,7 +325,29 @@ syntax galgas4DeclarationsSyntax (galgas3Scanner) {
     <filewrapper_templates> ?let filewrapperTemplateList
     ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST.new {
       !false # Is not predefined
-      !inIsInternal
+      !false # private
+      !@string.stringWithSourceFilePath
+      !mFilewrapperName
+      !mFilewrapperPath
+      !filewrapperTextFileExtensionList
+      !filewrapperBinaryFileExtensionList
+      !filewrapperTemplateList
+    }
+  }
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $private$
+    $filewrapper$
+    $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
+    $in$
+    $"string"$ ?let @lstring mFilewrapperPath
+    <filewrapper_text_files> ?let filewrapperTextFileExtensionList
+    <filewrapper_binary_files> ?let filewrapperBinaryFileExtensionList
+    <filewrapper_templates> ?let filewrapperTemplateList
+    ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST.new {
+      !false # Is not predefined
+      !true # private
       !@string.stringWithSourceFilePath
       !mFilewrapperName
       !mFilewrapperPath
