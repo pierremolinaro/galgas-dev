@@ -5,7 +5,7 @@
 refclass @arrayDeclarationAST : @semanticDeclarationAST {
   private let @lstring mArrayTypeName
   private let @lstring mElementTypeName
-  private let @luint mDimension
+  private let @lbigint mDimension
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -23,7 +23,7 @@ syntax extension galgas3DeclarationsSyntax {
     $:$
     $@type$ ?let @lstring elementListTypeName indexing arrayElementTypeReference
     $[$
-    $uint32$ ?let @luint dimension
+    $uint32$ ?let dimension
     $]$
     ioDeclarations.mDeclarationList += !@arrayDeclarationAST.new {
       !false # Is not predefined
@@ -50,7 +50,7 @@ syntax extension galgas4DeclarationsSyntax {
     $:$
     $@type$ ?let @lstring elementListTypeName indexing arrayElementTypeReference
     $[$
-    $uint32$ ?let @luint dimension
+    $uint32$ ?let dimension
     $]$
     ioDeclarations.mDeclarationList += !@arrayDeclarationAST.new {
       !false # Is not predefined
@@ -89,7 +89,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #---
-  if self.mDimension.uint == 0 then
+  if self.mDimension.bigint == 0 then
     error self.mDimension: "the dimension of an array should be > 0"
   end
 #--- array type
@@ -112,7 +112,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
 #---
   var @functionSignature uintArgs = {}
   var @uint idx = 0
-  loop (self.mDimension.uint) while idx < self.mDimension.uint do
+  loop (self.mDimension.bigint) while idx < self.mDimension.bigint do
     uintArgs += !["" nowhere] !uintType !"inSize" + idx
     idx += 1
   end
@@ -171,7 +171,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
   var setterFormalArgumentList = @formalParameterSignature {}
   setterFormalArgumentList += !["" nowhere] !elementTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !"InValue"
   idx = 0
-  loop (self.mDimension.uint) while idx < self.mDimension.uint do
+  loop (self.mDimension.bigint) while idx < self.mDimension.bigint do
     setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inIndex" + idx
     idx += 1
   end
@@ -275,7 +275,7 @@ override method @arrayDeclarationAST semanticAnalysis
     !@arrayTypeForGeneration.new {
       ![inSemanticContext.mTypeMap searchKey !self.mArrayTypeName]
       ![inSemanticContext.mTypeMap searchKey !self.mElementTypeName]
-      !self.mDimension.uint
+      !self.mDimension.bigint
     }
 }
 

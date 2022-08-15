@@ -10177,9 +10177,9 @@ void cGrammar_galgas_33_ProjectGrammar::nt_project_5F_header_indexing (C_Lexique
   rule_galgas_33_ProjectSyntax_project_5F_header_i0_indexing(inLexique) ;
 }
 
-void cGrammar_galgas_33_ProjectGrammar::nt_project_5F_header_ (GALGAS_luint & parameter_1,
-                                GALGAS_luint & parameter_2,
-                                GALGAS_luint & parameter_3,
+void cGrammar_galgas_33_ProjectGrammar::nt_project_5F_header_ (GALGAS_lbigint & parameter_1,
+                                GALGAS_lbigint & parameter_2,
+                                GALGAS_lbigint & parameter_3,
                                 GALGAS_lstring & parameter_4,
                                 C_Lexique_galgas_33_Scanner * inLexique) {
   rule_galgas_33_ProjectSyntax_project_5F_header_i0_(parameter_1, parameter_2, parameter_3, parameter_4, inLexique) ;
@@ -10349,9 +10349,9 @@ GALGAS_galgas_33_ProjectComponentAST::~ GALGAS_galgas_33_ProjectComponentAST (vo
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_galgas_33_ProjectComponentAST::GALGAS_galgas_33_ProjectComponentAST (const GALGAS_lstringlist & inOperand0,
-                                                                            const GALGAS_luint & inOperand1,
-                                                                            const GALGAS_luint & inOperand2,
-                                                                            const GALGAS_luint & inOperand3,
+                                                                            const GALGAS_lbigint & inOperand1,
+                                                                            const GALGAS_lbigint & inOperand2,
+                                                                            const GALGAS_lbigint & inOperand3,
                                                                             const GALGAS_lstringlist & inOperand4,
                                                                             const GALGAS_galgas_33_QualifiedFeatureList & inOperand5,
                                                                             const GALGAS_lstring & inOperand6,
@@ -10370,9 +10370,9 @@ mProperty_mEndOfSourceFile (inOperand7) {
 
 GALGAS_galgas_33_ProjectComponentAST GALGAS_galgas_33_ProjectComponentAST::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_galgas_33_ProjectComponentAST (GALGAS_lstringlist::constructor_emptyList (HERE),
-                                               GALGAS_luint::constructor_default (HERE),
-                                               GALGAS_luint::constructor_default (HERE),
-                                               GALGAS_luint::constructor_default (HERE),
+                                               GALGAS_lbigint::constructor_default (HERE),
+                                               GALGAS_lbigint::constructor_default (HERE),
+                                               GALGAS_lbigint::constructor_default (HERE),
                                                GALGAS_lstringlist::constructor_emptyList (HERE),
                                                GALGAS_galgas_33_QualifiedFeatureList::constructor_emptyList (HERE),
                                                GALGAS_lstring::constructor_default (HERE),
@@ -10382,9 +10382,9 @@ GALGAS_galgas_33_ProjectComponentAST GALGAS_galgas_33_ProjectComponentAST::const
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_galgas_33_ProjectComponentAST GALGAS_galgas_33_ProjectComponentAST::constructor_new (const GALGAS_lstringlist & inOperand0,
-                                                                                            const GALGAS_luint & inOperand1,
-                                                                                            const GALGAS_luint & inOperand2,
-                                                                                            const GALGAS_luint & inOperand3,
+                                                                                            const GALGAS_lbigint & inOperand1,
+                                                                                            const GALGAS_lbigint & inOperand2,
+                                                                                            const GALGAS_lbigint & inOperand3,
                                                                                             const GALGAS_lstringlist & inOperand4,
                                                                                             const GALGAS_galgas_33_QualifiedFeatureList & inOperand5,
                                                                                             const GALGAS_lstring & inOperand6,

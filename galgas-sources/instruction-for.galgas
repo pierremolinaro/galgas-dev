@@ -73,9 +73,9 @@ syntax extension galgas3InstructionsSyntax {
   #·····················································································································
   
   rule <for_instruction_element> ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
-    $uint32$ ?let @luint count
+    $uint32$ ?let count
     $*$
-    var n = count.uint
+    var n = [count.bigint uint]
     if n == 0 then
       error count: "this value should be > 0"
     end
@@ -291,9 +291,9 @@ syntax extension galgas4InstructionsSyntax {
   #·····················································································································
   
   rule <for_instruction_element> ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
-    $uint32$ ?let @luint count
+    $uint32$ ?let count
     $*$
-    var n = count.uint
+    var n = [count.bigint uint]
     if n == 0 then
       error count: "this value should be > 0"
     end

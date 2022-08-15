@@ -1084,7 +1084,7 @@ const cDirectoryWrapper gWrapperDirectory_0_xcodeProjectGenerationFilewrapper (
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C_Compiler * /* inCompiler */,
+GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C_Compiler * inCompiler,
                                                                                const GALGAS_string & in_PROJECT_5F_REF,
                                                                                const GALGAS_string & in_MAIN_5F_GROUP_5F_REF,
                                                                                const GALGAS_XCodeGroupList & in_GROUPS,
@@ -1424,7 +1424,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
     cEnumerator_XCodeToolTargetList enumerator_5275 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_5275.hasCurrentObject ()) {
-      const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, enumerator_5275.current_mFrameworksFileRefList (HERE).getter_length (SOURCE_FILE ("project.pbxproj.galgasTemplate", 139)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+      const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, enumerator_5275.current_mFrameworksFileRefList (HERE).getter_length (SOURCE_FILE ("project.pbxproj.galgasTemplate", 139)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("project.pbxproj.galgasTemplate", 139)).getter_uint (inCompiler COMMA_SOURCE_FILE ("project.pbxproj.galgasTemplate", 139)))).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "  " ;
         result << enumerator_5275.current_mFrameworkBuildPhaseRef (HERE).stringValue () ;
@@ -1557,7 +1557,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "      " ;
       result << enumerator_7266.current_mBuildPhaseRef (HERE).stringValue () ;
       result << " ,\n" ;
-      const enumGalgasBool test_1 = GALGAS_bool (kIsStrictSup, enumerator_7266.current_mFrameworksFileRefList (HERE).getter_length (SOURCE_FILE ("project.pbxproj.galgasTemplate", 200)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+      const enumGalgasBool test_1 = GALGAS_bool (kIsStrictSup, enumerator_7266.current_mFrameworksFileRefList (HERE).getter_length (SOURCE_FILE ("project.pbxproj.galgasTemplate", 200)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("project.pbxproj.galgasTemplate", 200)).getter_uint (inCompiler COMMA_SOURCE_FILE ("project.pbxproj.galgasTemplate", 200)))).boolEnum () ;
       if (kBoolTrue == test_1) {
         result << "      " ;
         result << enumerator_7266.current_mFrameworkBuildPhaseRef (HERE).stringValue () ;

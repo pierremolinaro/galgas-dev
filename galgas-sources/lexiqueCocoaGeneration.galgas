@@ -106,9 +106,8 @@ override getter @lexicalCharacterInputArgumentAST generateCocoaRoutineOrFunction
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalUnsignedInputArgumentAST generateCocoaRoutineOrFunctionArgument
-  -> @string outGeneratedCode {
-  outGeneratedCode = [self.mUnsigned.uint string]
+override getter @lexicalUnsignedInputArgumentAST generateCocoaRoutineOrFunctionArgument -> @string outGeneratedCode {
+  outGeneratedCode = [self.mUnsigned.bigint string]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

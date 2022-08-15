@@ -454,7 +454,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
             scanner_cocoa_routine_convertHexStringIntoBigInt (& scanningOk, mLexicalAttribute_tokenString, mLexicalAttribute_bigintValue) ;
             mTokenCode = galgasTemplateScanner_1_bigint_5F_G ;
           }else{
-            scanner_cocoa_routine_convertHexStringIntoUInt (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_uint32value) ;
+            scanner_cocoa_routine_convertHexStringIntoBigInt (& scanningOk, mLexicalAttribute_tokenString, mLexicalAttribute_bigintValue) ;
             mTokenCode = galgasTemplateScanner_1_uint_33__32_ ;
           }
         }else{
@@ -497,7 +497,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
           scanner_cocoa_routine_convertStringToDouble (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_floatValue) ;
           mTokenCode = galgasTemplateScanner_1_double_2E_xxx ;
         }else{
-          scanner_cocoa_routine_convertDecimalStringIntoUInt (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_uint32value) ;
+          scanner_cocoa_routine_convertDecimalStringIntoBigInt (& scanningOk, mLexicalAttribute_tokenString, mLexicalAttribute_bigintValue) ;
           mTokenCode = galgasTemplateScanner_1_uint_33__32_ ;
         }
       }else if (scanningOk && ([self testForInputChar:46])) {

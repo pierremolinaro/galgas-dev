@@ -968,3 +968,22 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
                                                                                          const class GALGAS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER
                                                                                          COMMA_LOCATION_ARGS) ;
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'check_K_escapeCharacters'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_check_5F_K_5F_escapeCharacters (const class GALGAS_lstring constinArgument0,
+                                             class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'forbiddenKeysForMapAndDict'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_stringset function_forbiddenKeysForMapAndDict (class C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+

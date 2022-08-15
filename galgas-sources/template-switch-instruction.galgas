@@ -77,7 +77,7 @@ syntax extension templateSyntax {
         select
           $uint32$ ?let n
           $*$
-          for * in 0 ..< n.uint do
+          for * in 0 ..< n.bigint do
             outAssociatedValuesExtraction += !["" nowhere] !["" nowhere] !false
           end
          or

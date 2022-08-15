@@ -304,8 +304,7 @@ rule <primary> !@templateExpressionAST outExpression {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary> !@templateExpressionAST outExpression {
-  let @luint literalInt
-  $uint32$ ?literalInt
+  $uint32$ ?let literalInt
   outExpression = @templateLiteralUIntExpressionAST.new {!literalInt}
 }
 

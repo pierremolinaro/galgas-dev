@@ -219,7 +219,7 @@ rule galgasUnicodeLetter {
 @double floatValue
 @bigint bigintValue
 $double.xxx$ !floatValue !tokenString  style floatStyle error message "a float number"
-$uint32$ !uint32value  style integerStyle error message "a 32-bit unsigned decimal number"
+$uint32$ !bigintValue  style integerStyle error message "a literal integer"
 $sint32_S$ !sint32value  style integerStyle error message "a 32-bit signed decimal number"
 $uint64_L$ !uint64value  style integerStyle error message "a 64-bit unsigned decimal number"
 $sint64_LS$ !sint64value  style integerStyle error message "a 64-bit signed decimal number"
@@ -256,7 +256,7 @@ rule "0x" {
       convertHexStringIntoBigInt (!tokenString !?bigintValue error internalError)
       send $bigint_G$
     default
-      convertHexStringIntoUInt (!tokenString !?uint32value error decimalNumberTooLarge, internalError)
+      convertHexStringIntoBigInt (!tokenString !?bigintValue error internalError)
       send $uint32$
     end
   default
@@ -294,7 +294,7 @@ rule '0'->'9' {
     convertStringToDouble (!tokenString !?floatValue error floatNumberConversionError )
     send $double.xxx$
   default
-    convertDecimalStringIntoUInt (!tokenString !?uint32value error decimalNumberTooLarge, internalError )
+    convertDecimalStringIntoBigInt (!tokenString !?bigintValue error internalError )
     send $uint32$
   end
 }

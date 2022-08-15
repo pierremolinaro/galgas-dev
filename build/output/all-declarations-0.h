@@ -2400,7 +2400,7 @@ class GALGAS_templateLiteralUIntExpressionAST : public GALGAS_templateExpression
   public: GALGAS_templateLiteralUIntExpressionAST (const class cPtr_templateLiteralUIntExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_luint readProperty_mLiteralInt (void) const ;
+  public: class GALGAS_lbigint readProperty_mLiteralInt (void) const ;
 
 //-- Start of generic part --*
 
@@ -2413,7 +2413,7 @@ class GALGAS_templateLiteralUIntExpressionAST : public GALGAS_templateExpression
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_templateLiteralUIntExpressionAST constructor_new (const class GALGAS_luint & inOperand0
+  public: static class GALGAS_templateLiteralUIntExpressionAST constructor_new (const class GALGAS_lbigint & inOperand0
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2454,10 +2454,10 @@ class cPtr_templateLiteralUIntExpressionAST : public cPtr_templateExpressionAST 
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
-  public: GALGAS_luint mProperty_mLiteralInt ;
+  public: GALGAS_lbigint mProperty_mLiteralInt ;
 
 //--- Constructor
-  public: cPtr_templateLiteralUIntExpressionAST (const GALGAS_luint & in_mLiteralInt
+  public: cPtr_templateLiteralUIntExpressionAST (const GALGAS_lbigint & in_mLiteralInt
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

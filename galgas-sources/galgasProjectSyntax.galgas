@@ -17,7 +17,7 @@
 
 syntax galgas3ProjectSyntax (galgas3Scanner) {
 
-rule <project_header> !@luint majorVersion !@luint minorVersion !@luint revisionVersion !@lstring targetName {
+rule <project_header> !@lbigint majorVersion !@lbigint minorVersion !@lbigint revisionVersion !@lstring targetName {
   $project$
   $($
   $uint32$ ?majorVersion
@@ -34,9 +34,9 @@ rule <project_header> !@luint majorVersion !@luint minorVersion !@luint revision
 
 rule <project_component_start_symbol> !@galgas3ProjectComponentAST outProjectComponentAST {
   <project_header>
-    ?let @luint majorVersion
-    ?let @luint minorVersion
-    ?let @luint revisionVersion
+    ?let @lbigint majorVersion
+    ?let @lbigint minorVersion
+    ?let @lbigint revisionVersion
     ?let @lstring targetName
   ${$
   var @lstringlist projectSourceList = {}

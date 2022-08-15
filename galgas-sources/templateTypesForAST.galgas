@@ -119,7 +119,7 @@ refclass @templateLiteralStringExpressionAST : @templateExpressionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateLiteralUIntExpressionAST : @templateExpressionAST {
-  private let @luint mLiteralInt
+  private let @lbigint mLiteralInt
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

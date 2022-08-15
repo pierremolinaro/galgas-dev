@@ -162,14 +162,12 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc checkDiadicOperator
-  ?let @unifiedTypeMapEntry inLeftType
-  ?let @unifiedTypeMapEntry inRightType
-  ?let @bool inOperandIsHandled
-  ?let @string inOperatorNameForErrorMessage
-  ?let @location inErrorLocation
-  ?!@semanticExpressionForGeneration ioRightExpression
-{
+proc checkDiadicOperator ?let @unifiedTypeMapEntry inLeftType
+                          ?let @unifiedTypeMapEntry inRightType
+                          ?let @bool inOperandIsHandled
+                          ?let @string inOperatorNameForErrorMessage
+                          ?let @location inErrorLocation
+                          ?!@semanticExpressionForGeneration ioRightExpression {
   if not inOperandIsHandled then
     error inErrorLocation
     : "left operand type is '@" + [inLeftType definition].mTypeName.string + "' and does not accept '" + inOperatorNameForErrorMessage 

@@ -343,7 +343,7 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
   #·····················································································································
 
   rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
-    $uint32$ ?let @luint unsignedValue
+    $uint32$ ?let unsignedValue
     outEffectiveArgument = @lexicalUnsignedInputArgumentAST.new {!unsignedValue}
   }
 
@@ -988,7 +988,7 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
   #·····················································································································
 
   rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
-    $uint32$ ?let @luint unsignedValue
+    $uint32$ ?let unsignedValue
     outEffectiveArgument = @lexicalUnsignedInputArgumentAST.new {!unsignedValue}
   }
 

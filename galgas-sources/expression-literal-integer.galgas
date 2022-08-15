@@ -2,9 +2,9 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @literalUIntExpressionAST : @semanticExpressionAST {
-  private let @luint mValue
-}
+#refclass @literalUIntExpressionAST : @semanticExpressionAST {
+#  private let @luint mValue
+#}
 
 #·····················································································································
 
@@ -39,9 +39,12 @@ syntax extension galgas3ExpressionSyntax {
   #·····················································································································
   
   rule <primary> !@semanticExpressionAST outExpression {
-    $uint32$ ?let @luint literalInt
+    $uint32$ ?let @lbigint literalInt
+    outExpression = @literalBigIntExpressionAST.new {!literalInt}
+
+#    $uint32$ ?let @luint literalInt
 #    outExpression = @literalUIntExpressionAST.new {!literalInt}
-    outExpression = @literalBigIntExpressionAST.new {!.new {![literalInt.uint bigint] !literalInt.location}}
+#    outExpression = @literalBigIntExpressionAST.new {!.new {![literalInt.uint bigint] !literalInt.location}}
  }
 
   #·····················································································································
@@ -84,8 +87,12 @@ syntax extension galgas4ExpressionSyntax {
   #·····················································································································
   
   rule <primary> !@semanticExpressionAST outExpression {
-    $uint32$ ?let @luint literalInt
-    outExpression = @literalUIntExpressionAST.new {!literalInt}
+    $uint32$ ?let @lbigint literalInt
+    outExpression = @literalBigIntExpressionAST.new {!literalInt}
+
+#    $uint32$ ?let @luint literalInt
+#    outExpression = @literalUIntExpressionAST.new {!literalInt}
+#    outExpression = @literalBigIntExpressionAST.new {!.new {![literalInt.uint bigint] !literalInt.location}}
   }
 
   #·····················································································································
@@ -111,10 +118,11 @@ syntax extension galgas4ExpressionSyntax {
 
   #·····················································································································
   
-  rule <primary> !@semanticExpressionAST outExpression {
-    $bigint_G$ ?let @lbigint literalInt
-    outExpression = @literalBigIntExpressionAST.new {!literalInt}
-  }
+#  rule <primary> !@semanticExpressionAST outExpression {
+#    $bigint_G$ ?let @lbigint literalInt
+#    outExpression = @literalBigIntExpressionAST.new {!literalInt}
+#    warning literalInt : "literal integer G suffix is obsolete: consider remving it"
+#  }
 
   #·····················································································································
 
@@ -124,27 +132,27 @@ syntax extension galgas4ExpressionSyntax {
 #! SEMANTICS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @literalUIntExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap unused ioTypeMap
-{
-}
+#override method @literalUIntExpressionAST enterExpressionInSemanticContext
+#  ?!@unifiedTypeMap unused ioTypeMap
+#{
+#}
 
 #·····················································································································
 
-override method @literalUIntExpressionAST analyzeSemanticExpression
-  ?let @lstring unused inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMapEntry unused inType
-  ?let @analysisContext inAnalysisContext
-  ?!@localVarManager unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression
-{
-  outExpression = @literalUIntExpressionForGeneration.new {
-    !inAnalysisContext.mPredefinedTypes.mUIntType
-    !self.mValue # [mValue location]
-    !self.mValue # [mValue uint]
-  }
-}
+#override method @literalUIntExpressionAST analyzeSemanticExpression
+#  ?let @lstring unused inUsefulnessCallerEntityName
+#  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+#  ?inferenceType: let @unifiedTypeMapEntry unused inType
+#  ?let @analysisContext inAnalysisContext
+#  ?!@localVarManager unused ioVariableMap
+#  !@semanticExpressionForGeneration outExpression
+#{
+#  outExpression = @literalUIntExpressionForGeneration.new {
+#    !inAnalysisContext.mPredefinedTypes.mUIntType
+#    !self.mValue # [mValue location]
+#    !self.mValue # [mValue uint]
+#  }
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

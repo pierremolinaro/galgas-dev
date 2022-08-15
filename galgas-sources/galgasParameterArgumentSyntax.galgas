@@ -85,7 +85,7 @@ syntax galgas3ParameterArgumentSyntax (galgas3Scanner) {
       or
         $uint32$ ?let count
         $*$
-        var n = count.uint
+        var n = [count.bigint uint]
         if selector.string != "" then
           error selector : "the selector should be '?'" fixit { replace "?" }
         end
@@ -124,9 +124,9 @@ syntax galgas3ParameterArgumentSyntax (galgas3Scanner) {
       outActualParameterList += !@outputInputSingleJokerParameterAST.new {!selector}
     while
       $!?$ ?let selector
-      $uint32$ ?let @luint count
+      $uint32$ ?let count
       $*$
-      var n = count.uint
+      var n = [count.bigint uint]
       if selector.string != "" then
         error selector : "the selector should be '!?'" fixit { replace "!?" }
       end
@@ -318,7 +318,7 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
       or
         $uint32$ ?let count
         $*$
-        var n = count.uint
+        var n = [count.bigint uint]
         if selector.string != "" then
           error selector : "the selector should be '?'" fixit { replace "?" }
         end
@@ -357,9 +357,9 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
       outActualParameterList += !@outputInputSelfParameterAST.new {!selector}
     while
       $!?$ ?let selector
-      $uint32$ ?let @luint count
+      $uint32$ ?let count
       $*$
-      var n = count.uint
+      var n = [count.bigint uint]
       if selector.string != "" then
         error selector : "the selector should be '!?'" fixit { replace "!?" }
       end

@@ -461,10 +461,11 @@ override method @templateLiteralUIntExpressionAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression
 {
-  outExpression = @literalUIntExpressionForGeneration.new {
-    !inAnalysisContext.mPredefinedTypes.mUIntType
+  outExpression = @literalBigIntExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mBigIntType
     !self.mLiteralInt.location
-    !self.mLiteralInt.uint}
+    !self.mLiteralInt.bigint
+  }
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1130,25 +1131,25 @@ override method @templateEqualTestAST templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?let @semanticExpressionForGeneration rightExpression
+    ?var @semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
-  let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if [leftType definition].mTypeName.string != [rightType definition].mTypeName.string then
-    error self.mOperatorLocation
-    : "left operand type is '@" + [leftType definition].mTypeName.string + "', right operand type is '@" + [rightType definition].mTypeName.string + "': '==' operator requires the types are the same"
-    :outExpression
-  else
-  #--- Generate expression
-    outExpression = @comparisonExpressionForGeneration.new {
-      !inAnalysisContext.mPredefinedTypes.mBoolType
-      !self.mOperatorLocation
-      !leftExpression
-      !.equal
-      !rightExpression
-    }
-  end
+  checkDiadicOperator (
+    !leftExpression.mResultType
+    !rightExpression.mResultType
+    !true
+    !"=="
+    !self.mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @comparisonExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mBoolType
+    !self.mOperatorLocation
+    !leftExpression
+    !.equal
+    !rightExpression
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1171,25 +1172,25 @@ override method @templateNonEqualTestAST templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?let @semanticExpressionForGeneration rightExpression
+    ?var @semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
-  let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if [leftType definition].mTypeName.string != [rightType definition].mTypeName.string then
-    error self.mOperatorLocation
-    : "left operand type is '@" + [leftType definition].mTypeName.string + "', right operand type is '@" + [rightType definition].mTypeName.string + "': '!=' operator requires the types are the same"
-    :outExpression
-  else
-  #--- Generate expression
-    outExpression = @comparisonExpressionForGeneration.new {
-      !inAnalysisContext.mPredefinedTypes.mBoolType
-      !self.mOperatorLocation
-      !leftExpression
-      !.notEqual
-      !rightExpression
-    }
-  end
+  checkDiadicOperator (
+    !leftExpression.mResultType
+    !rightExpression.mResultType
+    !true
+    !"!="
+    !self.mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @comparisonExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mBoolType
+    !self.mOperatorLocation
+    !leftExpression
+    !.notEqual
+    !rightExpression
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1212,29 +1213,25 @@ override method @templateStrictInfTestAST templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?let @semanticExpressionForGeneration rightExpression
+    ?var @semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
-  let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if not [[leftType definition].mHandledOperatorFlags isComparable] then
-    error self.mOperatorLocation
-    : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not support the '<' operator"
-    :outExpression
-  elsif [leftType definition].mTypeName.string != [rightType definition].mTypeName.string then
-    error self.mOperatorLocation
-    : "left operand type is '@" + [leftType definition].mTypeName.string + "', right operand type is '@" + [rightType definition].mTypeName.string + "': '<' operator requires the types are the same"
-    :outExpression
-  else
-  #--- Generate expression
-    outExpression = @comparisonExpressionForGeneration.new {
-      !inAnalysisContext.mPredefinedTypes.mBoolType
-      !self.mOperatorLocation
-      !leftExpression
-      !.lowerThan
-      !rightExpression
-    }
-  end
+  checkDiadicOperator (
+    !leftExpression.mResultType
+    !rightExpression.mResultType
+    !true
+    !"<"
+    !self.mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @comparisonExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mBoolType
+    !self.mOperatorLocation
+    !leftExpression
+    !.lowerThan
+    !rightExpression
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1257,29 +1254,25 @@ override method @templateInfOrEqualTestAST templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?let @semanticExpressionForGeneration rightExpression
+    ?var @semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
-  let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if not [[leftType definition].mHandledOperatorFlags isComparable] then
-    error self.mOperatorLocation
-    : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not support the '<=' operator"
-    :outExpression
-  elsif [leftType definition].mTypeName.string != [rightType definition].mTypeName.string then
-    error self.mOperatorLocation
-    : "left operand type is '@" + [leftType definition].mTypeName.string + "', right operand type is '@" + [rightType definition].mTypeName.string + "': '<=' operator requires the types are the same"
-    :outExpression
-  else
-  #--- Generate expression
-    outExpression = @comparisonExpressionForGeneration.new {
-      !inAnalysisContext.mPredefinedTypes.mBoolType
-      !self.mOperatorLocation
-      !leftExpression
-      !.lowerOrEqual
-      !rightExpression
-    }
-  end
+  checkDiadicOperator (
+    !leftExpression.mResultType
+    !rightExpression.mResultType
+    !true
+    !"<="
+    !self.mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @comparisonExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mBoolType
+    !self.mOperatorLocation
+    !leftExpression
+    !.lowerOrEqual
+    !rightExpression
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1302,29 +1295,25 @@ override method @templateStrictSupTestAST templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?let @semanticExpressionForGeneration rightExpression
+    ?var @semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
-  let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if not [[leftType definition].mHandledOperatorFlags isComparable] then
-    error self.mOperatorLocation
-    : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not support the '>' operator"
-    :outExpression
-  elsif [leftType definition].mTypeName.string != [rightType definition].mTypeName.string then
-    error self.mOperatorLocation
-    : "left operand type is '@" + [leftType definition].mTypeName.string + "', right operand type is '@" + [rightType definition].mTypeName.string + "': '>' operator requires the types are the same"
-    :outExpression
-  else
-  #--- Generate expression
-    outExpression = @comparisonExpressionForGeneration.new {
-      !inAnalysisContext.mPredefinedTypes.mBoolType
-      !self.mOperatorLocation
-      !leftExpression
-      !.greaterThan
-      !rightExpression
-    }
-  end
+  checkDiadicOperator (
+    !leftExpression.mResultType
+    !rightExpression.mResultType
+    !true
+    !">"
+    !self.mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @comparisonExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mBoolType
+    !self.mOperatorLocation
+    !leftExpression
+    !.greaterThan
+    !rightExpression
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1347,29 +1336,25 @@ override method @templateSupOrEqualTestAST templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?let @semanticExpressionForGeneration rightExpression
+    ?var @semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
-  let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if not [[leftType definition].mHandledOperatorFlags isComparable] then
-    error self.mOperatorLocation
-    : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not support the '>=' operator"
-    :outExpression
-  elsif [leftType definition].mTypeName.string != [rightType definition].mTypeName.string then
-    error self.mOperatorLocation
-    : "left operand type is '@" + [leftType definition].mTypeName.string + "', right operand type is '@" + [rightType definition].mTypeName.string + "': '>=' operator requires the types are the same"
-    :outExpression
-  else
-  #--- Generate expression
-    outExpression = @comparisonExpressionForGeneration.new {
-      !inAnalysisContext.mPredefinedTypes.mBoolType
-      !self.mOperatorLocation
-      !leftExpression
-      !.greaterOrEqual
-      !rightExpression
-    }
-  end
+  checkDiadicOperator (
+    !leftExpression.mResultType
+    !rightExpression.mResultType
+    !true
+    !">="
+    !self.mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @comparisonExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mBoolType
+    !self.mOperatorLocation
+    !leftExpression
+    !.greaterOrEqual
+    !rightExpression
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1536,9 +1521,21 @@ override method @templateBlockInstructionAST templateInstructionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?let expression
+    ?var expression
   ]
-  if [expression.mResultType definition].mTypeName.string != "uint" then
+  if [expression.mResultType definition].mTypeName.string == "bigint" then
+    let conversionExpression = @getterCallExpressionForGeneration.new {
+      !expression.mResultType
+      !expression.mLocation
+      !.definedAsMember
+      !expression
+      !{}
+      !"uint"
+      !{}
+      !true
+    }
+    expression = conversionExpression
+  elsif [expression.mResultType definition].mTypeName.string != "uint" then
     error self.mLocation:"expression type should be '@uint' (it is '@" + [expression.mResultType definition].mTypeName.string + "')"
   end
   var blockInstructionList = @templateInstructionListForGeneration {}

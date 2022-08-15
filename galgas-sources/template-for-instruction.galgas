@@ -29,9 +29,9 @@ syntax extension templateSyntax {
   #·····················································································································
   
   rule <for_instruction_element> ?!@lstringlist ioElementList {
-    $uint32$ ?let @luint count
+    $uint32$ ?let count
     $*$
-    var n = count.uint
+    var n = [count.bigint uint]
     if n == 0 then
       error count: "this value should be > 0"
     end

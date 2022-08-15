@@ -3300,9 +3300,9 @@ class cParser_galgas_33_ProjectSyntax {
 
   protected: virtual void nt_project_5F_component_5F_start_5F_symbol_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_project_5F_header_ (class GALGAS_luint & outArgument0,
-                                                 class GALGAS_luint & outArgument1,
-                                                 class GALGAS_luint & outArgument2,
+  protected: virtual void nt_project_5F_header_ (class GALGAS_lbigint & outArgument0,
+                                                 class GALGAS_lbigint & outArgument1,
+                                                 class GALGAS_lbigint & outArgument2,
                                                  class GALGAS_lstring & outArgument3,
                                                  class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
 
@@ -3312,9 +3312,9 @@ class cParser_galgas_33_ProjectSyntax {
 
 
 //--- Rule declarations
-  protected: void rule_galgas_33_ProjectSyntax_project_5F_header_i0_ (GALGAS_luint & outArgument0,
-                                                                      GALGAS_luint & outArgument1,
-                                                                      GALGAS_luint & outArgument2,
+  protected: void rule_galgas_33_ProjectSyntax_project_5F_header_i0_ (GALGAS_lbigint & outArgument0,
+                                                                      GALGAS_lbigint & outArgument1,
+                                                                      GALGAS_lbigint & outArgument2,
                                                                       GALGAS_lstring & outArgument3,
                                                                       C_Lexique_galgas_33_Scanner * inLexique) ;
 
@@ -3505,18 +3505,18 @@ class GALGAS_galgas_33_ProjectComponentAST : public AC_GALGAS_root {
     return mProperty_mProjectSourceList ;
   }
 
-  public: GALGAS_luint mProperty_mMajorVersion ;
-  public: inline GALGAS_luint readProperty_mMajorVersion (void) const {
+  public: GALGAS_lbigint mProperty_mMajorVersion ;
+  public: inline GALGAS_lbigint readProperty_mMajorVersion (void) const {
     return mProperty_mMajorVersion ;
   }
 
-  public: GALGAS_luint mProperty_mMinorVersion ;
-  public: inline GALGAS_luint readProperty_mMinorVersion (void) const {
+  public: GALGAS_lbigint mProperty_mMinorVersion ;
+  public: inline GALGAS_lbigint readProperty_mMinorVersion (void) const {
     return mProperty_mMinorVersion ;
   }
 
-  public: GALGAS_luint mProperty_mRevisionVersion ;
-  public: inline GALGAS_luint readProperty_mRevisionVersion (void) const {
+  public: GALGAS_lbigint mProperty_mRevisionVersion ;
+  public: inline GALGAS_lbigint readProperty_mRevisionVersion (void) const {
     return mProperty_mRevisionVersion ;
   }
 
@@ -3555,15 +3555,15 @@ class GALGAS_galgas_33_ProjectComponentAST : public AC_GALGAS_root {
     mProperty_mProjectSourceList = inValue ;
   }
 
-  public: inline void setter_setMMajorVersion (const GALGAS_luint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMMajorVersion (const GALGAS_lbigint & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mMajorVersion = inValue ;
   }
 
-  public: inline void setter_setMMinorVersion (const GALGAS_luint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMMinorVersion (const GALGAS_lbigint & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mMinorVersion = inValue ;
   }
 
-  public: inline void setter_setMRevisionVersion (const GALGAS_luint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMRevisionVersion (const GALGAS_lbigint & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mRevisionVersion = inValue ;
   }
 
@@ -3588,9 +3588,9 @@ class GALGAS_galgas_33_ProjectComponentAST : public AC_GALGAS_root {
 
 //--------------------------------- Native constructor
   public: GALGAS_galgas_33_ProjectComponentAST (const GALGAS_lstringlist & in_mProjectSourceList,
-                                                const GALGAS_luint & in_mMajorVersion,
-                                                const GALGAS_luint & in_mMinorVersion,
-                                                const GALGAS_luint & in_mRevisionVersion,
+                                                const GALGAS_lbigint & in_mMajorVersion,
+                                                const GALGAS_lbigint & in_mMinorVersion,
+                                                const GALGAS_lbigint & in_mRevisionVersion,
                                                 const GALGAS_lstringlist & in_mGenerationFeatureList,
                                                 const GALGAS_galgas_33_QualifiedFeatureList & in_mQualifiedFeatureList,
                                                 const GALGAS_lstring & in_mTargetName,
@@ -3608,9 +3608,9 @@ class GALGAS_galgas_33_ProjectComponentAST : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_galgas_33_ProjectComponentAST constructor_new (const class GALGAS_lstringlist & inOperand0,
-                                                                             const class GALGAS_luint & inOperand1,
-                                                                             const class GALGAS_luint & inOperand2,
-                                                                             const class GALGAS_luint & inOperand3,
+                                                                             const class GALGAS_lbigint & inOperand1,
+                                                                             const class GALGAS_lbigint & inOperand2,
+                                                                             const class GALGAS_lbigint & inOperand3,
                                                                              const class GALGAS_lstringlist & inOperand4,
                                                                              const class GALGAS_galgas_33_QualifiedFeatureList & inOperand5,
                                                                              const class GALGAS_lstring & inOperand6,

@@ -293,7 +293,7 @@ refclass @lexicalCharacterInputArgumentAST : @lexicalRoutineOrFunctionFormalInpu
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalUnsignedInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
-  private let @luint mUnsigned
+  private let @lbigint mUnsigned
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

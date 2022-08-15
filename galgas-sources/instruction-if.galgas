@@ -174,10 +174,10 @@ syntax extension galgas3InstructionsSyntax {
             if selector.string != "" then
               error selector : "the selector should be '?'"  fixit { replace "?" }
             end
-            if repetitionCount.uint == 0 then
+            if repetitionCount.bigint == 0 then
               error repetitionCount : "the repetition count should be > 0"
             end
-            for i in 0 ..< repetitionCount.uint do
+            for i in 0 ..< repetitionCount.bigint do
               optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: false !location: .here !idx: i}
             end
           end
@@ -329,10 +329,10 @@ syntax extension galgas4InstructionsSyntax {
             if selector.string != "" then
               error selector : "the selector should be '?'"  fixit { replace "?" }
             end
-            if repetitionCount.uint == 0 then
+            if repetitionCount.bigint == 0 then
               error repetitionCount : "the repetition count should be > 0"
             end
-            for i in 0 ..< repetitionCount.uint do
+            for i in 0 ..< repetitionCount.bigint do
               optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: false !location: .here !idx: i}
             end
           end

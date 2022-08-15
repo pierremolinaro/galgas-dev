@@ -78,9 +78,9 @@ class cGrammar_galgas_33_ProjectGrammar : public cParser_galgas_33_ProjectSyntax
   public: virtual void nt_project_5F_header_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_project_5F_header_ (GALGAS_luint & outArgument0,
-                                              GALGAS_luint & outArgument1,
-                                              GALGAS_luint & outArgument2,
+  public: virtual void nt_project_5F_header_ (GALGAS_lbigint & outArgument0,
+                                              GALGAS_lbigint & outArgument1,
+                                              GALGAS_lbigint & outArgument2,
                                               GALGAS_lstring & outArgument3,
                                               C_Lexique_galgas_33_Scanner * inCompiler) ;
 

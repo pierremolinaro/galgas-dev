@@ -113,9 +113,8 @@ override getter @lexicalCharacterInputArgumentAST generateRoutineOrFunctionArgum
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalUnsignedInputArgumentAST generateRoutineOrFunctionArgument
-  -> @string {
-  result = [self.mUnsigned.uint string]
+override getter @lexicalUnsignedInputArgumentAST generateRoutineOrFunctionArgument -> @string {
+  result = [self.mUnsigned.bigint string]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

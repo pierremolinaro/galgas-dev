@@ -5495,7 +5495,7 @@ class GALGAS_arrayDeclarationAST : public GALGAS_semanticDeclarationAST {
 
   public: class GALGAS_lstring readProperty_mElementTypeName (void) const ;
 
-  public: class GALGAS_luint readProperty_mDimension (void) const ;
+  public: class GALGAS_lbigint readProperty_mDimension (void) const ;
 
 //-- Start of generic part --*
 
@@ -5511,7 +5511,7 @@ class GALGAS_arrayDeclarationAST : public GALGAS_semanticDeclarationAST {
   public: static class GALGAS_arrayDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
                                                                    const class GALGAS_lstring & inOperand1,
                                                                    const class GALGAS_lstring & inOperand2,
-                                                                   const class GALGAS_luint & inOperand3
+                                                                   const class GALGAS_lbigint & inOperand3
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5574,13 +5574,13 @@ class cPtr_arrayDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Properties
   public: GALGAS_lstring mProperty_mArrayTypeName ;
   public: GALGAS_lstring mProperty_mElementTypeName ;
-  public: GALGAS_luint mProperty_mDimension ;
+  public: GALGAS_lbigint mProperty_mDimension ;
 
 //--- Constructor
   public: cPtr_arrayDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                     const GALGAS_lstring & in_mArrayTypeName,
                                     const GALGAS_lstring & in_mElementTypeName,
-                                    const GALGAS_luint & in_mDimension
+                                    const GALGAS_lbigint & in_mDimension
                                     COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

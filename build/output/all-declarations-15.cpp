@@ -3232,7 +3232,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST () {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalUnsignedInputArgumentAST GALGAS_lexicalUnsignedInputArgumentAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_lexicalUnsignedInputArgumentAST::constructor_new (GALGAS_luint::constructor_default (HERE)
+  return GALGAS_lexicalUnsignedInputArgumentAST::constructor_new (GALGAS_lbigint::constructor_default (HERE)
                                                                   COMMA_THERE) ;
 }
 
@@ -3244,7 +3244,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST (inSourcePtr) {
 }
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalUnsignedInputArgumentAST GALGAS_lexicalUnsignedInputArgumentAST::constructor_new (const GALGAS_luint & inAttribute_mUnsigned
+GALGAS_lexicalUnsignedInputArgumentAST GALGAS_lexicalUnsignedInputArgumentAST::constructor_new (const GALGAS_lbigint & inAttribute_mUnsigned
                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_lexicalUnsignedInputArgumentAST result ;
   if (inAttribute_mUnsigned.isValid ()) {
@@ -3255,9 +3255,9 @@ GALGAS_lexicalUnsignedInputArgumentAST GALGAS_lexicalUnsignedInputArgumentAST::c
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_luint GALGAS_lexicalUnsignedInputArgumentAST::readProperty_mUnsigned (void) const {
+GALGAS_lbigint GALGAS_lexicalUnsignedInputArgumentAST::readProperty_mUnsigned (void) const {
   if (NULL == mObjectPtr) {
-    return GALGAS_luint () ;
+    return GALGAS_lbigint () ;
   }else{
     cPtr_lexicalUnsignedInputArgumentAST * p = (cPtr_lexicalUnsignedInputArgumentAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_lexicalUnsignedInputArgumentAST) ;
@@ -3269,7 +3269,7 @@ GALGAS_luint GALGAS_lexicalUnsignedInputArgumentAST::readProperty_mUnsigned (voi
 //Pointer class for @lexicalUnsignedInputArgumentAST class
 //----------------------------------------------------------------------------------------------------------------------
 
-cPtr_lexicalUnsignedInputArgumentAST::cPtr_lexicalUnsignedInputArgumentAST (const GALGAS_luint & in_mUnsigned
+cPtr_lexicalUnsignedInputArgumentAST::cPtr_lexicalUnsignedInputArgumentAST (const GALGAS_lbigint & in_mUnsigned
                                                                             COMMA_LOCATION_ARGS) :
 cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (THERE),
 mProperty_mUnsigned (in_mUnsigned) {
@@ -5940,7 +5940,7 @@ GALGAS_arrayDeclarationAST GALGAS_arrayDeclarationAST::constructor_default (LOCA
   return GALGAS_arrayDeclarationAST::constructor_new (GALGAS_bool::constructor_default (HERE),
                                                       GALGAS_lstring::constructor_default (HERE),
                                                       GALGAS_lstring::constructor_default (HERE),
-                                                      GALGAS_luint::constructor_default (HERE)
+                                                      GALGAS_lbigint::constructor_default (HERE)
                                                       COMMA_THERE) ;
 }
 
@@ -5955,7 +5955,7 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 GALGAS_arrayDeclarationAST GALGAS_arrayDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                         const GALGAS_lstring & inAttribute_mArrayTypeName,
                                                                         const GALGAS_lstring & inAttribute_mElementTypeName,
-                                                                        const GALGAS_luint & inAttribute_mDimension
+                                                                        const GALGAS_lbigint & inAttribute_mDimension
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_arrayDeclarationAST result ;
   if (inAttribute_mIsPredefined.isValid () && inAttribute_mArrayTypeName.isValid () && inAttribute_mElementTypeName.isValid () && inAttribute_mDimension.isValid ()) {
@@ -5990,9 +5990,9 @@ GALGAS_lstring GALGAS_arrayDeclarationAST::readProperty_mElementTypeName (void) 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_luint GALGAS_arrayDeclarationAST::readProperty_mDimension (void) const {
+GALGAS_lbigint GALGAS_arrayDeclarationAST::readProperty_mDimension (void) const {
   if (NULL == mObjectPtr) {
-    return GALGAS_luint () ;
+    return GALGAS_lbigint () ;
   }else{
     cPtr_arrayDeclarationAST * p = (cPtr_arrayDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_arrayDeclarationAST) ;
@@ -6007,7 +6007,7 @@ GALGAS_luint GALGAS_arrayDeclarationAST::readProperty_mDimension (void) const {
 cPtr_arrayDeclarationAST::cPtr_arrayDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                     const GALGAS_lstring & in_mArrayTypeName,
                                                     const GALGAS_lstring & in_mElementTypeName,
-                                                    const GALGAS_luint & in_mDimension
+                                                    const GALGAS_lbigint & in_mDimension
                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mProperty_mArrayTypeName (in_mArrayTypeName),

@@ -285,9 +285,9 @@ private proc compileProject ?let @lstring inProjectSourceFile
   end
 #---------------------------------- Compile program declarations
   if @uint.errorCount == 0 then
-    let projectVersionString = [inProjectComponentAST.mMajorVersion.uint string]
-      + "." + inProjectComponentAST.mMinorVersion.uint
-      + "." + inProjectComponentAST.mRevisionVersion.uint
+    let projectVersionString = [inProjectComponentAST.mMajorVersion.bigint string]
+      + "." + inProjectComponentAST.mMinorVersion.bigint
+      + "." + inProjectComponentAST.mRevisionVersion.bigint
     compileProgramComponentGalgas3 (
       !?usefulnessRootEntities
       !?usefulEntitiesGraph
@@ -495,7 +495,7 @@ private proc projectGeneration
       !inProjectSourceFile
       !inProjectComponentAST.mTargetName.string
       !inProjectComponentAST.mEndOfSourceFile
-      ![inProjectComponentAST.mMajorVersion.uint string] + "." + inProjectComponentAST.mMinorVersion.uint + "." + inProjectComponentAST.mRevisionVersion.uint
+      ![inProjectComponentAST.mMajorVersion.bigint string] + "." + inProjectComponentAST.mMinorVersion.bigint + "." + inProjectComponentAST.mRevisionVersion.bigint
       !projectQualifiedFeatureMap
       !inProjectComponentAST.mGenerationFeatureList
       !quietOutputByDefault

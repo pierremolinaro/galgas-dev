@@ -2805,7 +2805,7 @@ class GALGAS_lexicalUnsignedInputArgumentAST : public GALGAS_lexicalRoutineOrFun
   public: GALGAS_lexicalUnsignedInputArgumentAST (const class cPtr_lexicalUnsignedInputArgumentAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_luint readProperty_mUnsigned (void) const ;
+  public: class GALGAS_lbigint readProperty_mUnsigned (void) const ;
 
 //-- Start of generic part --*
 
@@ -2818,7 +2818,7 @@ class GALGAS_lexicalUnsignedInputArgumentAST : public GALGAS_lexicalRoutineOrFun
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_lexicalUnsignedInputArgumentAST constructor_new (const class GALGAS_luint & inOperand0
+  public: static class GALGAS_lexicalUnsignedInputArgumentAST constructor_new (const class GALGAS_lbigint & inOperand0
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2868,10 +2868,10 @@ class cPtr_lexicalUnsignedInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
-  public: GALGAS_luint mProperty_mUnsigned ;
+  public: GALGAS_lbigint mProperty_mUnsigned ;
 
 //--- Constructor
-  public: cPtr_lexicalUnsignedInputArgumentAST (const GALGAS_luint & in_mUnsigned
+  public: cPtr_lexicalUnsignedInputArgumentAST (const GALGAS_lbigint & in_mUnsigned
                                                 COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

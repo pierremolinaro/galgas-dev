@@ -146,16 +146,16 @@ syntax galgas3GuiComponentSyntax (galgas3Scanner) {
           displayFlags = 0xFFFF # Do not diplay
         or
           $($
-          $uint32$ ?let @luint leadingStrip
-          if leadingStrip.uint >= 15 then
+          $uint32$ ?let leadingStrip
+          if leadingStrip.bigint >= 15 then
             error leadingStrip:"leading strip should be < 15"
           end
           $,$
-          $uint32$ ?let @luint endingStrip
-          if endingStrip.uint >= 15 then
+          $uint32$ ?let endingStrip
+          if endingStrip.bigint >= 15 then
             error endingStrip:"tail strip should be < 15"
           end
-          displayFlags = (leadingStrip.uint << 4) | endingStrip
+          displayFlags = (leadingStrip.bigint << 4) | endingStrip
          $)$
         end
         terminalList += !terminal !displayFlags
@@ -272,16 +272,16 @@ syntax galgas4GuiComponentSyntax (galgas3Scanner) {
           displayFlags = 0xFFFF # Do not diplay
         or
           $($
-          $uint32$ ?let @luint leadingStrip
-          if leadingStrip.uint >= 15 then
+          $uint32$ ?let leadingStrip
+          if leadingStrip.bigint >= 15 then
             error leadingStrip:"leading strip should be < 15"
           end
           $,$
-          $uint32$ ?let @luint endingStrip
-          if endingStrip.uint >= 15 then
+          $uint32$ ?let endingStrip
+          if endingStrip.bigint >= 15 then
             error endingStrip:"tail strip should be < 15"
           end
-          displayFlags = (leadingStrip.uint << 4) | endingStrip
+          displayFlags = (leadingStrip.bigint << 4) | endingStrip
          $)$
         end
         terminalList += !terminal !displayFlags
