@@ -9995,6 +9995,8 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   GALGAS_lbigint var_literalInt_2993 = inCompiler->synthetizedAttribute_bigintValue () ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_bigint_5F_G COMMA_SOURCE_FILE ("expression-literal-integer.galgas", 71)) ;
   outArgument_outExpression = GALGAS_literalBigIntExpressionAST::constructor_new (var_literalInt_2993  COMMA_SOURCE_FILE ("expression-literal-integer.galgas", 72)) ;
+  TC_Array <C_FixItDescription> fixItArray0 ;
+  inCompiler->emitSemanticWarning (var_literalInt_2993.readProperty_location (), GALGAS_string ("literal integer G suffix is obsolete: consider remving it"), fixItArray0  COMMA_SOURCE_FILE ("expression-literal-integer.galgas", 73)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

@@ -307,7 +307,7 @@ override method @boolsetTypeForGeneration appendSpecificImplementation
     ![self.mSelfTypeEntry  definition].mTypeName.string
     ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mFlagList
-    !(1G << [self.mFlagList length]) - 1G
+    !(1 << [self.mFlagList length]) - 1
   ]
  }
 

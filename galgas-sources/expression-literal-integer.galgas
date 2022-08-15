@@ -70,6 +70,7 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary> !@semanticExpressionAST outExpression {
     $bigint_G$ ?let @lbigint literalInt
     outExpression = @literalBigIntExpressionAST.new {!literalInt}
+    warning literalInt : "literal integer G suffix is obsolete: consider remving it"
   }
 
   #·····················································································································

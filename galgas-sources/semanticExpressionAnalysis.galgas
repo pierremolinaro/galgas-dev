@@ -71,28 +71,28 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
   if let bigIntSource = ioExpression as @literalBigIntExpressionForGeneration then
     if "uint" == [inTargetType definition].mTypeName then
       let bigIntValue = bigIntSource.mValue
-      if (bigIntValue < 0G) | (bigIntValue >= (1G << 32)) then
+      if (bigIntValue < 0) | (bigIntValue >= (1 << 32)) then
         error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint"
       end
       ioExpression = @literalUIntExpressionForGeneration.new {!inTargetType !ioExpression.mLocation ![bigIntValue uint]}
       handled = true
     elsif "sint" == [inTargetType definition].mTypeName then
       let bigIntValue = bigIntSource.mValue
-      if (bigIntValue < -(1G << 31)) | (bigIntValue >= (1G << 31)) then
+      if (bigIntValue < -(1 << 31)) | (bigIntValue >= (1 << 31)) then
         error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint"
       end
       ioExpression = @literalSIntExpressionForGeneration.new {!inTargetType !ioExpression.mLocation ![bigIntValue uint]}
       handled = true
     elsif "uint64" == [inTargetType definition].mTypeName then
       let bigIntValue = bigIntSource.mValue
-      if (bigIntValue < 0G) | (bigIntValue >= (1G << 64)) then
+      if (bigIntValue < 0) | (bigIntValue >= (1 << 64)) then
         error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint64"
       end
       ioExpression = @literalUInt64ExpressionForGeneration.new {!inTargetType !ioExpression.mLocation ![bigIntValue uint]}
       handled = true
     elsif "sint64" == [inTargetType definition].mTypeName then
       let bigIntValue = bigIntSource.mValue
-      if (bigIntValue < -(1G << 63)) | (bigIntValue >= (1G << 63)) then
+      if (bigIntValue < -(1 << 63)) | (bigIntValue >= (1 << 63)) then
         error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint64"
       end
       ioExpression = @literalSInt64ExpressionForGeneration.new {!inTargetType !ioExpression.mLocation ![bigIntValue uint]}
