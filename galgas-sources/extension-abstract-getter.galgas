@@ -53,6 +53,7 @@ syntax extension galgas4DeclarationsSyntax {
     $abstract$
     $getter$
     $@type$ ?let className indexing typeReferenceAbstractExtensionGetter
+    $.$
     $identifier$ ?let mGetterName indexing abstractExtensionGetterDefinition
     <formal_input_parameter_list> ?let @formalInputParameterListAST mFormalInputParameterList
     $->$

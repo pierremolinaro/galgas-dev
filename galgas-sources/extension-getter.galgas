@@ -64,6 +64,7 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $getter$
     $@type$ ?let @lstring className indexing typeReferenceExtensionGetter
+    $.$
     $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition
     <formal_input_parameter_list> ?let mFormalInputParameterList
     $->$

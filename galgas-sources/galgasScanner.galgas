@@ -155,6 +155,7 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "message",
   "method",
   "mod",
+  "mutating",
   "not",
   "on",
   "operator",

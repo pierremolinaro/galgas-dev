@@ -201,6 +201,9 @@ func traduire (projetGALGAS inCheminFichierGALGAS : String) -> (Bool, Int) {
         erreurSyntaxeInsérerChaîne (errorMessageLines: lines, chaîneAttendue: ")", handled: &handled)
       }
       if !handled {
+        erreurSyntaxeInsérerChaîne (errorMessageLines: lines, chaîneAttendue: ".", handled: &handled)
+      }
+      if !handled {
         erreurSyntaxeRemplacement (errorMessageLines: lines, semanticErrorMessage: "'{' is obsolete here, use '('", replacementString: "(", handled: &handled)
       }
       if !handled {

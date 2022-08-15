@@ -36,27 +36,27 @@ syntax extension galgas3DeclarationsSyntax {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax extension galgas4DeclarationsSyntax {
-
-  #·····················································································································
-
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
-    $override$
-    $abstract$
-    $setter$
-    $@type$ ?let @lstring className indexing typeReferenceOverrideAbstractExtensionSetter
-    $identifier$ ?let @lstring setterName indexing overrideabstractExtensionSetterDefinition
-    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
-    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST.new {
-      !false # Is not predefined
-      !className
-      !setterName
-      !formalParameterList}
-  }
-
-  #·····················································································································
-
-}
+#syntax extension galgas4DeclarationsSyntax {
+#
+#  #·····················································································································
+#
+#  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+#    $override$
+#    $abstract$
+#    $setter$
+#    $@type$ ?let @lstring className indexing typeReferenceOverrideAbstractExtensionSetter
+#    $identifier$ ?let @lstring setterName indexing overrideabstractExtensionSetterDefinition
+#    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+#    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST.new {
+#      !false # Is not predefined
+#      !className
+#      !setterName
+#      !formalParameterList}
+#  }
+#
+#  #·····················································································································
+#
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   KEY REPRESENTATION                      

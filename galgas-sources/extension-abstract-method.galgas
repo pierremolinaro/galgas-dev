@@ -44,6 +44,7 @@ syntax extension galgas4DeclarationsSyntax {
     $abstract$
     $method$
     $@type$ ?let @lstring className indexing typeReferenceAbstractExtensionMethod
+    $.$
     $identifier$ ?let @lstring mMethodName indexing abstractExtensionMethodDefinition
     <formal_parameter_list> ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST.new {

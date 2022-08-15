@@ -53,6 +53,7 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $method$
     $@type$ ?let @lstring className indexing typeReferenceExtensionMethod
+    $.$
     $identifier$ ?let @lstring mMethodName indexing extensionMethodDefinition
     <formal_parameter_list> ?let @formalParameterListAST formalParameterList
     ${$

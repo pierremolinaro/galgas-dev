@@ -95,7 +95,7 @@ static NSArray * kTemplateDefinitionArray_galgasTemplateScanner ;
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [141] = {
+static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [142] = {
   NO /* identifier */,
   NO /* @type */,
   NO /* double.xxx */,
@@ -168,6 +168,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [141] = {
   NO /* message */,
   NO /* method */,
   NO /* mod */,
+  NO /* mutating */,
   NO /* not */,
   NO /* on */,
   NO /* once */,
@@ -246,7 +247,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [141] = {
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgasKeyWordList [85] = {
+static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgasKeyWordList [86] = {
   {"do", galgasTemplateScanner_1_do},
   {"if", galgasTemplateScanner_1_if},
   {"in", galgasTemplateScanner_1_in},
@@ -325,6 +326,7 @@ static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgas
   {"warning", galgasTemplateScanner_1_warning},
   {"abstract", galgasTemplateScanner_1_abstract},
   {"indexing", galgasTemplateScanner_1_indexing},
+  {"mutating", galgasTemplateScanner_1_mutating},
   {"operator", galgasTemplateScanner_1_operator},
   {"override", galgasTemplateScanner_1_override},
   {"template", galgasTemplateScanner_1_template},
@@ -335,7 +337,7 @@ static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgas
 } ;
 
 static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString * inSearchedString) {
-  return searchStringInTable (inSearchedString, ktable_for_galgasTemplateScanner_galgasKeyWordList, 85) ;
+  return searchStringInTable (inSearchedString, ktable_for_galgasTemplateScanner_galgasKeyWordList, 86) ;
 }
 
 
@@ -966,7 +968,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 //----------------------------------------------------------------------------------------------------------------------
 
 - (NSUInteger) terminalVocabularyCount {
-  return 141 ;
+  return 142 ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -996,7 +998,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 //----------------------------------------------------------------------------------------------------------------------
 
 - (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal {
-  static const NSUInteger kTerminalSymbolStyles [142] = {0,
+  static const NSUInteger kTerminalSymbolStyles [143] = {0,
     0 /* galgasTemplateScanner_1_identifier */,
     10 /* galgasTemplateScanner_1__40_type */,
     7 /* galgasTemplateScanner_1_double_2E_xxx */,
@@ -1069,6 +1071,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
     1 /* galgasTemplateScanner_1_message */,
     1 /* galgasTemplateScanner_1_method */,
     1 /* galgasTemplateScanner_1_mod */,
+    1 /* galgasTemplateScanner_1_mutating */,
     1 /* galgasTemplateScanner_1_not */,
     1 /* galgasTemplateScanner_1_on */,
     1 /* galgasTemplateScanner_1_once */,
@@ -1149,7 +1152,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 //----------------------------------------------------------------------------------------------------------------------
 
 - (BOOL) atomicSelectionForToken: (NSUInteger) inTokenIndex {
-  static const BOOL kTerminalAtomicSelection [142] = {NO,
+  static const BOOL kTerminalAtomicSelection [143] = {NO,
     YES /* galgasTemplateScanner_1_identifier */,
     YES /* galgasTemplateScanner_1__40_type */,
     YES /* galgasTemplateScanner_1_double_2E_xxx */,
@@ -1222,6 +1225,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
     YES /* galgasTemplateScanner_1_message */,
     YES /* galgasTemplateScanner_1_method */,
     YES /* galgasTemplateScanner_1_mod */,
+    YES /* galgasTemplateScanner_1_mutating */,
     YES /* galgasTemplateScanner_1_not */,
     YES /* galgasTemplateScanner_1_on */,
     YES /* galgasTemplateScanner_1_once */,

@@ -66,6 +66,7 @@ syntax extension galgas4DeclarationsSyntax {
     $override$
     $getter$
     $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionGetter
+    $.$
     $identifier$ ?let @lstring mMethodName indexing overrideExtensionGetterDefinition
     <formal_input_parameter_list> ?let formalInputParameterList
     $->$

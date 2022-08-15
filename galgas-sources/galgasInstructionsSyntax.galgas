@@ -101,7 +101,7 @@ syntax galgas3InstructionsSyntax (galgas3Scanner) {
   #    F U N C T I O N    D E C L A R A T I O N    
   #·····················································································································
 
-  rule  <declaration_with_private>
+  rule <declaration_with_private>
     ?let @bool inIsPrivate
     ?!@galgas3DeclarationAST ioDeclarations
   {

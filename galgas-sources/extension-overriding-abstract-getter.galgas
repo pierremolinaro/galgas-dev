@@ -22,7 +22,6 @@ syntax extension galgas3DeclarationsSyntax {
     $abstract$
     $getter$
     $@type$ ?let className indexing typeReferenceOverrideAbstractExtensionGetter
-#    error className : "OVERRIDE ABSTRACT SETTER"
     $identifier$ ?let mGetterName indexing overrideAbstractExtensionGetterDefinition
     <formal_input_parameter_list> ?let @formalInputParameterListAST mFormalInputParameterList
     $->$
@@ -56,7 +55,7 @@ syntax extension galgas4DeclarationsSyntax {
     $abstract$
     $getter$
     $@type$ ?let className indexing typeReferenceOverrideAbstractExtensionGetter
-    error className : "OVERRIDE ABSTRACT SETTER"
+    $.$
     $identifier$ ?let mGetterName indexing overrideAbstractExtensionGetterDefinition
     <formal_input_parameter_list> ?let @formalInputParameterListAST mFormalInputParameterList
     $->$

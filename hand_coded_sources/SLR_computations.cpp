@@ -671,11 +671,11 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
 //--- Print non-terminal symbols --------------------------------------
   ioCppFileContents.appendCppTitleComment ("N O N    T E R M I N A L    N A M E S") ;
   ioCppFileContents << "static const char * gNonTerminalNames_" << inTargetFileName << " ["
-                 << cStringWithSigned (inVocabulary.getNonTerminalSymbolsCount ()) << "] = {\n" ;
+                    << cStringWithSigned (inVocabulary.getNonTerminalSymbolsCount ()) << "] = {\n" ;
   for (int32_t i=inVocabulary.getTerminalSymbolsCount () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
     ioCppFileContents << "  \"<" << inVocabulary.getSymbol (i COMMA_HERE) << ">\""
-                   << (((i+1)<inVocabulary.getAllSymbolsCount ()) ? "," : "")
-                   << "// Index " << cStringWithSigned (i - inVocabulary.getTerminalSymbolsCount ()) << "\n" ;
+                      << (((i+1)<inVocabulary.getAllSymbolsCount ()) ? "," : "")
+                      << "// Index " << cStringWithSigned (i - inVocabulary.getTerminalSymbolsCount ()) << "\n" ;
   }
   ioCppFileContents << "} ;\n\n" ;
 
