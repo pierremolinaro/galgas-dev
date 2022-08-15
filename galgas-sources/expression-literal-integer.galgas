@@ -60,6 +60,7 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary> !@semanticExpressionAST outExpression {
     $uint64_L$ ?let @luint64 literalInt
     outExpression = @literalUInt64ExpressionAST.new {!literalInt}
+    warning literalInt : "literal integer L suffix is obsolete: consider removing it"
   }
 
   #·····················································································································
@@ -67,6 +68,7 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary> !@semanticExpressionAST outExpression {
     $sint64_LS$ ?let @lsint64 literalInt
     outExpression = @literalSInt64ExpressionAST.new {!literalInt}
+    warning literalInt : "literal integer LS suffix is obsolete: consider removing it"
   }
 
   #·····················································································································
@@ -105,17 +107,19 @@ syntax extension galgas4ExpressionSyntax {
 
   #·····················································································································
   
-  rule <primary> !@semanticExpressionAST outExpression {
-    $uint64_L$ ?let @luint64 literalInt
-    outExpression = @literalUInt64ExpressionAST.new {!literalInt}
-  }
+#  rule <primary> !@semanticExpressionAST outExpression {
+#    $uint64_L$ ?let @luint64 literalInt
+#    outExpression = @literalUInt64ExpressionAST.new {!literalInt}
+#    warning literalInt : "literal integer L suffix is obsolete: consider removing it"
+#  }
 
   #·····················································································································
   
-  rule <primary> !@semanticExpressionAST outExpression {
-    $sint64_LS$ ?let @lsint64 literalInt
-    outExpression = @literalSInt64ExpressionAST.new {!literalInt}
-  }
+#  rule <primary> !@semanticExpressionAST outExpression {
+#    $sint64_LS$ ?let @lsint64 literalInt
+#    outExpression = @literalSInt64ExpressionAST.new {!literalInt}
+#    warning literalInt : "literal integer LS suffix is obsolete: consider removing it"
+#  }
 
   #·····················································································································
   

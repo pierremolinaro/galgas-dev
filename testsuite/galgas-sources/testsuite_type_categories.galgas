@@ -2,7 +2,7 @@
 
 proc testsuite_type_categories {
   message "*************************************** begin of type extension test\n"
-  log "Square of 7" : [7L square]
+  log "Square of 7" : [[7 uint64] square]
   var aList = @uintlist {}
   aList += !1
   aList += !2
@@ -11,7 +11,7 @@ proc testsuite_type_categories {
   log "Sum 1 + 2 + 3 + 4" : [aList sum]
   log "Hello !" : [@lstring.new {!"Hello" !.here} op]
   let @uint64 v
-  [7L square ?v]
+  [[7 uint64] square ?v]
   log v
   let @uint u
   [aList sum ?u]
@@ -24,8 +24,8 @@ proc testsuite_type_categories {
   log ls
   [!?aList appendSquare!9]
   log aList
-  var aList64 = @uint64list {!7L}
-  [!?aList64 prependSquare !5L]
+  var aList64 = @uint64list {!7}
+  [!?aList64 prependSquare !5]
 }
 
 #----------- Extension readers

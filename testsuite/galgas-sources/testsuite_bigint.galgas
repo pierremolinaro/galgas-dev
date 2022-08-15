@@ -5,9 +5,9 @@ proc testsuite_bigint_type {
   message "--- construction\n"
   message [@bigint.zero string] + "\n"
   message [1234 string] + "\n"
-  message [[-1234S bigint] string] + "\n"
-  message [[1234L bigint] string] + "\n"
-  message [[-1234LS bigint] string] + "\n"
+  message [-1234 string] + "\n"
+  message [[1234 sint] string] + "\n"
+  message [-1234 string] + "\n"
   message "--- getter string\n"
   message [-1234567890_1234567890_1234567890 string] + "\n"
   message "--- getter hexString\n"
@@ -190,21 +190,18 @@ proc testsuite_bigint_type {
   message [(-98765_43210_98765_43210) / 12345_67890_12345_67890 string] + "\n"
   message [(-98765_43210_98765_43210) / (-12345_67890_12345_67890) string] + "\n"
   message [98765_43210_98765_43210 / (-12345_67890_12345_67890) string] + "\n"
-  message [(-7S) / 2S string] + "\n" # -3
   message [(-7) / 2 string] + "\n" # -3
-  message [(-7S) / (-2S) string] + "\n" # 3
   message [(-7) / (-2) string] + "\n" # 3
-  message [7S / (-2S) string] + "\n" # -3
   message [7 / (-2) string] + "\n" # -3
   message "--- mod\n"
   message [9876543210 mod 1234567890 string] + "\n" # 90
   message [(-9876543210) mod 1234567890 string] + "\n" # -90
   message [(-9876543210) mod (-1234567890) string] + "\n"  # -90
   message [9876543210 mod (-1234567890) string] + "\n"  # 90
-  message [2000S mod 183S string] + "\n" # 170
-  message [(-2000S) mod 183S string] + "\n" # -170
-  message [(-2000S) mod (-183S) string] + "\n" # -170
-  message [2000S mod (-183S) string] + "\n" # 170
+  message [2000 mod 183 string] + "\n" # 170
+  message [(-2000) mod 183 string] + "\n" # -170
+  message [(-2000) mod (-183) string] + "\n" # -170
+  message [2000 mod (-183) string] + "\n" # 170
   message "--- divideBy\n"
   var @bigint quotient
   var @bigint remainder
@@ -285,29 +282,29 @@ proc testsuite_bigint_type {
   message "--- operator <<\n"
   message [0x1234567890 << 12 hexString] + "\n" # 0x1234567890000
   message [(-0x1234567890) << 12 hexString] + "\n" # -0x1234567890000
-  message [2000S << 2 string] + "\n" # 8000
-  message [(-2000S) << 2 string] + "\n" # -8000
+  message [2000 << 2 string] + "\n" # 8000
+  message [(-2000) << 2 string] + "\n" # -8000
   message "--- operator >>\n"
   message [0x1234567890 >> 12 hexString] + "\n" # 0x1234567
   message [(-0x1234567890) >> 12 hexString] + "\n" # -0x1234567
-  message [2000S >> 2 string] + "\n" # 500
-  message [(-2000S) >> 2 string] + "\n" # -500
+  message [2000 >> 2 string] + "\n" # 500
+  message [(-2000) >> 2 string] + "\n" # -500
   message [9 >> 1 string] + "\n" # 4
-  message [9S >> 1 string] + "\n" # 4
+  message [9 >> 1 string] + "\n" # 4
   message [7 >> 1 string] + "\n" # 3
-  message [7S >> 1 string] + "\n" # 3
+  message [7 >> 1 string] + "\n" # 3
   message [3 >> 1 string] + "\n" # 1
-  message [3S >> 1 string] + "\n" # 1
+  message [3 >> 1 string] + "\n" # 1
   message [1 >> 1 string] + "\n" # 0
-  message [1S >> 1 string] + "\n" # 0
+  message [1 >> 1 string] + "\n" # 0
   message [-9 >> 1 string] + "\n" # -5
-  message [-9S >> 1 string] + "\n" # -5
+  message [-9 >> 1 string] + "\n" # -5
   message [-7 >> 1 string] + "\n" # -4
-  message [-7S >> 1 string] + "\n" # -4
+  message [-7 >> 1 string] + "\n" # -4
   message [-3 >> 1 string] + "\n" # -2
-  message [-3S >> 1 string] + "\n" # -2
+  message [-3 >> 1 string] + "\n" # -2
   message [-1 >> 1 string] + "\n" # -1
-  message [-1S >> 1 string] + "\n" # -1
+  message [-1 >> 1 string] + "\n" # -1
   message "--- operator &\n"
   message [0x1234 & 0x4321 hexString] + "\n" # 0x220
   message [-0x1234 & 0x4321 hexString] + "\n" # 0x4100
