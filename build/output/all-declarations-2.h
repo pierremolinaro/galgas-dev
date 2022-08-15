@@ -140,7 +140,7 @@ class cPtr_lexicalSimpleSendInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Extension method checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTagMap & ioTagMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mSentTerminal ;
@@ -292,7 +292,7 @@ class cPtr_lexicalSendTerminalByDefaultAST : public cPtr_lexicalSendDefaultActio
 
 //--- Extension method checkLexicalDefaultAction
   public: virtual void method_checkLexicalDefaultAction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mDefaultSentTerminal ;
@@ -444,7 +444,7 @@ class cPtr_lexicalErrorByDefaultAST : public cPtr_lexicalSendDefaultActionAST {
 
 //--- Extension method checkLexicalDefaultAction
   public: virtual void method_checkLexicalDefaultAction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mDefaultErrorMessageName ;
@@ -836,7 +836,7 @@ class cPtr_lexicalRepeatInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Extension method checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTagMap & ioTagMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lexicalInstructionListAST mProperty_mRepeatedInstructionList ;
@@ -1230,7 +1230,7 @@ class cPtr_lexicalSelectInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Extension method checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTagMap & ioTagMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lexicalSelectBranchListAST mProperty_mLexicalSelectBranchList ;
@@ -1378,7 +1378,7 @@ class cPtr_abstractLexicalRoutineActualArgumentAST : public acStrongPtr_class {
   public: virtual void method_checkLexicalRoutineCallArgument (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode,
            class GALGAS_lexicalTypeEnum inLexicalRoutineFormalArgumentType,
-           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
   public: GALGAS_location mProperty_mActualPassingModeLocation ;
@@ -1740,7 +1740,7 @@ class cPtr_lexicalRoutineInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Extension method checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTagMap & ioTagMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mRoutineName ;
@@ -1898,7 +1898,7 @@ class cPtr_lexicalAttributeInputOutputArgumentAST : public cPtr_abstractLexicalR
   public: virtual void method_checkLexicalRoutineCallArgument (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode,
            class GALGAS_lexicalTypeEnum inLexicalRoutineFormalArgumentType,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mAttributeName ;
@@ -2041,12 +2041,12 @@ class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST : public acStrongPtr_c
 //--- Extension method checkLexicalFunctionCallArgument
   public: virtual void method_checkLexicalFunctionCallArgument (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTypeEnum inLexicalRoutineFormalArgumentType,
-           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension method checkLexicalRoutineCallArgument
   public: virtual void method_checkLexicalRoutineCallArgument (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTypeEnum inLexicalRoutineFormalArgumentType,
-           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
 
@@ -2192,7 +2192,7 @@ class cPtr_lexicalFormalInputArgumentAST : public cPtr_abstractLexicalRoutineAct
   public: virtual void method_checkLexicalRoutineCallArgument (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode,
            class GALGAS_lexicalTypeEnum inLexicalRoutineFormalArgumentType,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST mProperty_mRoutineOrFunctionFormalInputArgument ;
@@ -2548,12 +2548,12 @@ class cPtr_lexicalAttributeInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
 //--- Extension method checkLexicalFunctionCallArgument
   public: virtual void method_checkLexicalFunctionCallArgument (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTypeEnum inLexicalRoutineFormalArgumentType,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method checkLexicalRoutineCallArgument
   public: virtual void method_checkLexicalRoutineCallArgument (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTypeEnum inLexicalRoutineFormalArgumentType,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mAttributeName ;
@@ -2704,12 +2704,12 @@ class cPtr_lexicalCharacterInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
 //--- Extension method checkLexicalFunctionCallArgument
   public: virtual void method_checkLexicalFunctionCallArgument (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTypeEnum inLexicalRoutineFormalArgumentType,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method checkLexicalRoutineCallArgument
   public: virtual void method_checkLexicalRoutineCallArgument (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTypeEnum inLexicalRoutineFormalArgumentType,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lchar mProperty_mCharacter ;
@@ -2860,12 +2860,12 @@ class cPtr_lexicalUnsignedInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
 //--- Extension method checkLexicalFunctionCallArgument
   public: virtual void method_checkLexicalFunctionCallArgument (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTypeEnum inLexicalRoutineFormalArgumentType,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method checkLexicalRoutineCallArgument
   public: virtual void method_checkLexicalRoutineCallArgument (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTypeEnum inLexicalRoutineFormalArgumentType,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lbigint mProperty_mUnsigned ;
@@ -3016,12 +3016,12 @@ class cPtr_lexicalCurrentCharacterInputArgumentAST : public cPtr_lexicalRoutineO
 //--- Extension method checkLexicalFunctionCallArgument
   public: virtual void method_checkLexicalFunctionCallArgument (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTypeEnum inLexicalRoutineFormalArgumentType,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method checkLexicalRoutineCallArgument
   public: virtual void method_checkLexicalRoutineCallArgument (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTypeEnum inLexicalRoutineFormalArgumentType,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mLocation ;
@@ -3175,12 +3175,12 @@ class cPtr_lexicalFunctionInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
 //--- Extension method checkLexicalFunctionCallArgument
   public: virtual void method_checkLexicalFunctionCallArgument (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTypeEnum inLexicalRoutineFormalArgumentType,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method checkLexicalRoutineCallArgument
   public: virtual void method_checkLexicalRoutineCallArgument (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTypeEnum inLexicalRoutineFormalArgumentType,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mFunctionName ;
@@ -3337,7 +3337,7 @@ class cPtr_lexicalDropInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Extension method checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTagMap & ioTagMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mTerminalName ;
@@ -3492,7 +3492,7 @@ class cPtr_lexicalErrorInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Extension method checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTagMap & ioTagMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mErrorMessageName ;
@@ -3647,7 +3647,7 @@ class cPtr_lexicalWarningInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Extension method checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTagMap & ioTagMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mWarningMessageName ;
@@ -3802,7 +3802,7 @@ class cPtr_lexicalTagInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Extension method checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTagMap & ioTagMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mLexicalTagName ;
@@ -3960,7 +3960,7 @@ class cPtr_lexicalRewindInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Extension method checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTagMap & ioTagMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mLexicalTagName ;
@@ -4114,7 +4114,7 @@ class cPtr_lexicalLogInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Extension method checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTagMap & ioTagMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -5791,7 +5791,7 @@ class cPtr_lexicalFunctionExpressionAST : public acStrongPtr_class {
   public: virtual class GALGAS_string getter_generateForUnicodeTestFunctions (C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Extension method checkUnicodeConstants
-  public: virtual void method_checkUnicodeConstants (C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+  public: virtual void method_checkUnicodeConstants (C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
 
@@ -6005,14 +6005,14 @@ class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -6021,7 +6021,7 @@ class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {
            const class GALGAS_semanticContext inSemanticContext,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mLexiqueComponentName ;

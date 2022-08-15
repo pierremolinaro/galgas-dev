@@ -4606,13 +4606,13 @@ GALGAS_timerPredefinedTypeAST_2D_weak GALGAS_timerPredefinedTypeAST_2D_weak::ext
 void cPtr_predefinedTypeAST::method_getConstructorMap (GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
                                                        GALGAS_constructorMap & outArgument_outConstructorMap,
                                                        C_Compiler * /* inCompiler */
-                                                       COMMA_UNUSED_LOCATION_ARGS) const {
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outConstructorMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 400)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_getConstructorMap (const cPtr_predefinedTypeAST * inObject,
+void callExtensionMethod_getConstructorMap (cPtr_predefinedTypeAST * inObject,
                                             GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
                                             GALGAS_constructorMap & out_outConstructorMap,
                                             C_Compiler * inCompiler
@@ -4632,13 +4632,13 @@ void callExtensionMethod_getConstructorMap (const cPtr_predefinedTypeAST * inObj
 void cPtr_predefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
                                                   GALGAS_getterMap & outArgument_outGetterMap,
                                                   C_Compiler * /* inCompiler */
-                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outGetterMap = GALGAS_getterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 408)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_getGetterMap (const cPtr_predefinedTypeAST * inObject,
+void callExtensionMethod_getGetterMap (cPtr_predefinedTypeAST * inObject,
                                        GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
                                        GALGAS_getterMap & out_outGetterMap,
                                        C_Compiler * inCompiler
@@ -4658,13 +4658,13 @@ void callExtensionMethod_getGetterMap (const cPtr_predefinedTypeAST * inObject,
 void cPtr_predefinedTypeAST::method_getSetterMap (GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
                                                   GALGAS_setterMap & outArgument_outSetterMap,
                                                   C_Compiler * /* inCompiler */
-                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outSetterMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 416)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_getSetterMap (const cPtr_predefinedTypeAST * inObject,
+void callExtensionMethod_getSetterMap (cPtr_predefinedTypeAST * inObject,
                                        GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
                                        GALGAS_setterMap & out_outSetterMap,
                                        C_Compiler * inCompiler
@@ -4684,13 +4684,13 @@ void callExtensionMethod_getSetterMap (const cPtr_predefinedTypeAST * inObject,
 void cPtr_predefinedTypeAST::method_getInstanceMethodMap (GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
                                                           GALGAS_instanceMethodMap & outArgument_outInstanceMethodMap,
                                                           C_Compiler * /* inCompiler */
-                                                          COMMA_UNUSED_LOCATION_ARGS) const {
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outInstanceMethodMap = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 424)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_getInstanceMethodMap (const cPtr_predefinedTypeAST * inObject,
+void callExtensionMethod_getInstanceMethodMap (cPtr_predefinedTypeAST * inObject,
                                                GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
                                                GALGAS_instanceMethodMap & out_outInstanceMethodMap,
                                                C_Compiler * inCompiler
@@ -4710,13 +4710,13 @@ void callExtensionMethod_getInstanceMethodMap (const cPtr_predefinedTypeAST * in
 void cPtr_predefinedTypeAST::method_getClassMethodMap (GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
                                                        GALGAS_classMethodMap & outArgument_outClassMethodMap,
                                                        C_Compiler * /* inCompiler */
-                                                       COMMA_UNUSED_LOCATION_ARGS) const {
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outClassMethodMap = GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 432)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_getClassMethodMap (const cPtr_predefinedTypeAST * inObject,
+void callExtensionMethod_getClassMethodMap (cPtr_predefinedTypeAST * inObject,
                                             GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
                                             GALGAS_classMethodMap & out_outClassMethodMap,
                                             C_Compiler * inCompiler
@@ -4764,13 +4764,13 @@ GALGAS_operators callExtensionGetter_getSupportedOperatorFlags (const cPtr_prede
 void cPtr_predefinedTypeAST::method_getAddAssignArgumentList (GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
                                                               GALGAS_functionSignature & outArgument_outAddAssignArgumentList,
                                                               C_Compiler * /* inCompiler */
-                                                              COMMA_UNUSED_LOCATION_ARGS) const {
+                                                              COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outAddAssignArgumentList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 446)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_getAddAssignArgumentList (const cPtr_predefinedTypeAST * inObject,
+void callExtensionMethod_getAddAssignArgumentList (cPtr_predefinedTypeAST * inObject,
                                                    GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
                                                    GALGAS_functionSignature & out_outAddAssignArgumentList,
                                                    C_Compiler * inCompiler
@@ -4791,14 +4791,14 @@ void cPtr_predefinedTypeAST::method_getEnumerationList (GALGAS_unifiedTypeMap & 
                                                         GALGAS_enumerationDescriptorList & outArgument_outEnumerationList,
                                                         GALGAS_string & outArgument_outEnumeratedType,
                                                         C_Compiler * /* inCompiler */
-                                                        COMMA_UNUSED_LOCATION_ARGS) const {
+                                                        COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outEnumerationList = GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 460)) ;
   outArgument_outEnumeratedType = GALGAS_string::makeEmptyString () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_getEnumerationList (const cPtr_predefinedTypeAST * inObject,
+void callExtensionMethod_getEnumerationList (cPtr_predefinedTypeAST * inObject,
                                              GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
                                              GALGAS_enumerationDescriptorList & out_outEnumerationList,
                                              GALGAS_string & out_outEnumeratedType,
@@ -4866,7 +4866,7 @@ GALGAS_string extensionGetter_commaSourceFile (const GALGAS_location & inObject,
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_enterInstructionInSemanticContext (const cPtr_semanticInstructionAST * inObject,
+void callExtensionMethod_enterInstructionInSemanticContext (cPtr_semanticInstructionAST * inObject,
                                                             GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
@@ -4883,7 +4883,7 @@ void callExtensionMethod_enterInstructionInSemanticContext (const cPtr_semanticI
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
+void callExtensionMethod_enterExpressionInSemanticContext (cPtr_semanticExpressionAST * inObject,
                                                            GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                            C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
@@ -4907,7 +4907,7 @@ void extensionMethod_enterInstructionListInSemanticContext (const GALGAS_semanti
   const GALGAS_semanticInstructionListAST temp_0 = inObject ;
   cEnumerator_semanticInstructionListAST enumerator_2712 (temp_0, kENUMERATION_UP) ;
   while (enumerator_2712.hasCurrentObject ()) {
-    callExtensionMethod_enterInstructionInSemanticContext ((const cPtr_semanticInstructionAST *) enumerator_2712.current_mInstruction (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 58)) ;
+    callExtensionMethod_enterInstructionInSemanticContext ((cPtr_semanticInstructionAST *) enumerator_2712.current_mInstruction (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 58)) ;
     enumerator_2712.gotoNextObject () ;
   }
 }
@@ -11228,7 +11228,7 @@ GALGAS_string callExtensionGetter_keyRepresentation (const cPtr_semanticDeclarat
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_enterDeclarationInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
+void callExtensionMethod_enterDeclarationInSemanticContext (cPtr_semanticDeclarationAST * inObject,
                                                             const GALGAS_extensionMethodMapForBuildingContext constin_inExtensionMethodMapForBuildingContext,
                                                             const GALGAS_extensionGetterMapForBuildingContext constin_inExtensionGetterMapForBuildingContext,
                                                             const GALGAS_extensionSetterMapForBuildingContext constin_inExtensionSetterMapForBuildingContext,
@@ -11718,7 +11718,7 @@ GALGAS_semanticTypePrecedenceGraph GALGAS_semanticTypePrecedenceGraph::extractOb
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_enterDeclarationInGraph (const cPtr_semanticDeclarationAST * inObject,
+void callExtensionMethod_enterDeclarationInGraph (cPtr_semanticDeclarationAST * inObject,
                                                   GALGAS_semanticTypePrecedenceGraph & io_ioSemanticTypePrecedenceGraph,
                                                   GALGAS_extensionMethodMapForBuildingContext & io_ioExtensionMethodMapForBuildingContext,
                                                   GALGAS_extensionGetterMapForBuildingContext & io_ioExtensionGetterMapForBuildingContext,
@@ -11741,12 +11741,12 @@ void callExtensionMethod_enterDeclarationInGraph (const cPtr_semanticDeclaration
 
 void cPtr_semanticDeclarationAST::method_addAssociatedElement (GALGAS_semanticDeclarationListAST & /* ioArgument_ioSemanticDeclarationList */,
                                                                C_Compiler * /* inCompiler */
-                                                               COMMA_UNUSED_LOCATION_ARGS) const {
+                                                               COMMA_UNUSED_LOCATION_ARGS) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_addAssociatedElement (const cPtr_semanticDeclarationAST * inObject,
+void callExtensionMethod_addAssociatedElement (cPtr_semanticDeclarationAST * inObject,
                                                GALGAS_semanticDeclarationListAST & io_ioSemanticDeclarationList,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
@@ -12622,7 +12622,7 @@ GALGAS_actualParameterForGeneration_2D_weak GALGAS_actualParameterForGeneration_
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_generateActualParameter (const cPtr_actualParameterForGeneration * inObject,
+void callExtensionMethod_generateActualParameter (cPtr_actualParameterForGeneration * inObject,
                                                   GALGAS_stringset & io_ioInclusionSet,
                                                   GALGAS_uint & io_ioTemporaryVariableIndex,
                                                   GALGAS_string & io_ioImplementation,
@@ -14249,7 +14249,7 @@ GALGAS_semanticInstructionForGeneration_2D_weak GALGAS_semanticInstructionForGen
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_generateInstruction (const cPtr_semanticInstructionForGeneration * inObject,
+void callExtensionMethod_generateInstruction (cPtr_semanticInstructionForGeneration * inObject,
                                               GALGAS_stringset & io_ioInclusionSet,
                                               GALGAS_uint & io_ioTemporaryVariableIndex,
                                               GALGAS_stringset & io_ioUnusedVariableCppNameSet,

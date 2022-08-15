@@ -68,7 +68,7 @@ class cPtr_templateInstructionForGeneration : public acStrongPtr_class {
            class GALGAS_uint & ioTemporaryVariableIndex,
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            class GALGAS_bool & ioUseColumnMarker,
-           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
 
@@ -3457,7 +3457,7 @@ class cPtr_semanticExpressionForGeneration : public acStrongPtr_class {
            class GALGAS_uint & ioTemporaryVariableIndex,
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            class GALGAS_string & outCppExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
   public: GALGAS_unifiedTypeMapEntry mProperty_mResultType ;
@@ -3545,7 +3545,7 @@ class cPtr_templateInstructionExpressionForGeneration : public cPtr_templateInst
            class GALGAS_uint & ioTemporaryVariableIndex,
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            class GALGAS_bool & ioUseColumnMarker,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
@@ -3900,7 +3900,7 @@ class cPtr_templateBlockInstructionForGeneration : public cPtr_templateInstructi
            class GALGAS_uint & ioTemporaryVariableIndex,
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            class GALGAS_bool & ioUseColumnMarker,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
@@ -4049,7 +4049,7 @@ class cPtr_templateInstructionGetColumnLocationForGeneration : public cPtr_templ
            class GALGAS_uint & ioTemporaryVariableIndex,
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            class GALGAS_bool & ioUseColumnMarker,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -4192,7 +4192,7 @@ class cPtr_templateInstructionGotoColumnLocationForGeneration : public cPtr_temp
            class GALGAS_uint & ioTemporaryVariableIndex,
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            class GALGAS_bool & ioUseColumnMarker,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -4575,7 +4575,7 @@ class cPtr_templateInstructionIfForGeneration : public cPtr_templateInstructionF
            class GALGAS_uint & ioTemporaryVariableIndex,
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            class GALGAS_bool & ioUseColumnMarker,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_templateInstructionIfBranchListForGeneration mProperty_mTemplateInstructionIfBranchList ;
@@ -5208,7 +5208,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypes ;
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_templateExpressionAnalysis (const class cPtr_templateExpressionAST * inObject,
+void callExtensionMethod_templateExpressionAnalysis (class cPtr_templateExpressionAST * inObject,
                                                      const GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                      GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                      const GALGAS_templateAnalysisContext constin_inAnalysisContext,
@@ -6737,7 +6737,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateGetterCallI
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_templateInstructionAnalysis (const class cPtr_templateInstructionAST * inObject,
+void callExtensionMethod_templateInstructionAnalysis (class cPtr_templateInstructionAST * inObject,
                                                       const GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                       GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                       const GALGAS_templateAnalysisContext constin_inAnalysisContext,
@@ -6751,7 +6751,7 @@ void callExtensionMethod_templateInstructionAnalysis (const class cPtr_templateI
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_templateCodeGeneration (const class cPtr_templateInstructionForGeneration * inObject,
+void callExtensionMethod_templateCodeGeneration (class cPtr_templateInstructionForGeneration * inObject,
                                                  GALGAS_string & io_ioGeneratedCode,
                                                  GALGAS_stringset & io_ioInclusionSet,
                                                  GALGAS_uint & io_ioTemporaryVariableIndex,
@@ -6903,7 +6903,7 @@ class cPtr_templateInstructionForeachForGeneration : public cPtr_templateInstruc
            class GALGAS_uint & ioTemporaryVariableIndex,
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            class GALGAS_bool & ioUseColumnMarker,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_bool mProperty_mIsAscending ;
@@ -7886,7 +7886,7 @@ class cPtr_templateInstructionSwitchForGeneration : public cPtr_templateInstruct
            class GALGAS_uint & ioTemporaryVariableIndex,
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            class GALGAS_bool & ioUseColumnMarker,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_unifiedTypeMapEntry mProperty_mEnumType ;
@@ -8030,7 +8030,7 @@ class cPtr_semanticDeclarationAST : public acStrongPtr_class {
 
 //--- Extension method addAssociatedElement
   public: virtual void method_addAssociatedElement (class GALGAS_semanticDeclarationListAST & ioSemanticDeclarationList,
-           C_Compiler * COMMA_LOCATION_ARGS) const ;
+           C_Compiler * COMMA_LOCATION_ARGS) ;
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
@@ -8045,7 +8045,7 @@ class cPtr_semanticDeclarationAST : public acStrongPtr_class {
            class GALGAS_genericExtensionMethodListMap & ioExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionGetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionGetterListMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const ;
+           C_Compiler * COMMA_LOCATION_ARGS) ;
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
@@ -8053,14 +8053,14 @@ class cPtr_semanticDeclarationAST : public acStrongPtr_class {
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
            class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension method enterDeclarationInSemanticContext
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
            class GALGAS_semanticContext & ioSemanticContext,
-           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension method semanticAnalysis
   public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
@@ -8069,7 +8069,7 @@ class cPtr_semanticDeclarationAST : public acStrongPtr_class {
            const class GALGAS_semanticContext inSemanticContext,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
   public: GALGAS_bool mProperty_mIsPredefined ;
@@ -8209,7 +8209,7 @@ class cPtr_lexicalExpressionAST : public acStrongPtr_class {
 
 //--- Extension method checkLexicalExpression
   public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
-           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
 
@@ -8350,7 +8350,7 @@ class cPtr_lexicalInstructionAST : public acStrongPtr_class {
 //--- Extension method checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTagMap & ioTagMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
 
@@ -9228,7 +9228,7 @@ class cPtr_abstractLexicalRuleAST : public acStrongPtr_class {
 
 //--- Extension method checkLexicalRule
   public: virtual void method_checkLexicalRule (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
-           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
 
@@ -9581,7 +9581,7 @@ class cPtr_lexicalImplicitRuleAST : public cPtr_abstractLexicalRuleAST {
 
 //--- Extension method checkLexicalRule
   public: virtual void method_checkLexicalRule (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mListName ;
@@ -9735,7 +9735,7 @@ class cPtr_lexicalExplicitRuleAST : public cPtr_abstractLexicalRuleAST {
 
 //--- Extension method checkLexicalRule
   public: virtual void method_checkLexicalRule (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lexicalExpressionAST mProperty_mLexicalRuleExpression ;
@@ -11758,7 +11758,7 @@ class cPtr_lexicalOrExpressionAST : public cPtr_lexicalExpressionAST {
 
 //--- Extension method checkLexicalExpression
   public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lexicalExpressionAST mProperty_mLeftOperand ;
@@ -11912,7 +11912,7 @@ class cPtr_lexicalCharacterSetMatchAST : public cPtr_lexicalExpressionAST {
 
 //--- Extension method checkLexicalExpression
   public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mCharacterSetName ;
@@ -12064,7 +12064,7 @@ class cPtr_lexicalCharacterMatchAST : public cPtr_lexicalExpressionAST {
 
 //--- Extension method checkLexicalExpression
   public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lchar mProperty_mCharacter ;
@@ -12219,7 +12219,7 @@ class cPtr_lexicalCharacterIntervalMatchAST : public cPtr_lexicalExpressionAST {
 
 //--- Extension method checkLexicalExpression
   public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lchar mProperty_mLowerBound ;
@@ -12373,7 +12373,7 @@ class cPtr_lexicalStringMatchAST : public cPtr_lexicalExpressionAST {
 
 //--- Extension method checkLexicalExpression
   public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mString ;
@@ -12528,7 +12528,7 @@ class cPtr_lexicalStringNotMatchAST : public cPtr_lexicalExpressionAST {
 
 //--- Extension method checkLexicalExpression
   public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mString ;
@@ -12900,7 +12900,7 @@ class cPtr_lexicalSendDefaultActionAST : public acStrongPtr_class {
 
 //--- Extension method checkLexicalDefaultAction
   public: virtual void method_checkLexicalDefaultAction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
-           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
 
@@ -13050,7 +13050,7 @@ class cPtr_lexicalStructuredSendInstructionAST : public cPtr_lexicalInstructionA
 //--- Extension method checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
            class GALGAS_lexicalTagMap & ioTagMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lexicalSendSearchListAST mProperty_mLexicalSendSearchList ;

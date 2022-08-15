@@ -783,7 +783,7 @@ func generateClassGetterDeclaration ?let @lstring inGetterName
 
 func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
                                             ?let @formalParameterSignature inArgumentTypeList
-                                            ?let @instanceMethodMutability inMutability
+#                                            ?let @instanceMethodMutability inMutability
                                             ?let @bool inHasCompilerArgument
                                             ?let @methodQualifier inQualifier -> @string {
   var generateMethodDeclaration = true
@@ -805,7 +805,6 @@ func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
 #---
   result = ""
   if generateMethodDeclaration then
-#    result  = "  #ifdef NEW_METHOD\n"
     result += "//--- Extension method " + inMethodName + "\n"
     result += "  public: virtual void method_" + [inMethodName identifierRepresentation] + " ("
     var first = true
@@ -836,13 +835,12 @@ func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
       first = false
     end
     result += if first then "LOCATION_ARGS" else " COMMA_LOCATION_ARGS" end + ")"
-    switch inMutability
-    case constantMethod :
-      result += " const"
-    case mutatingMethod :
-    end
+#    switch inMutability
+#    case constantMethod :
+#      result += " const"
+#    case mutatingMethod :
+#    end
     result += suffix + " ;\n\n"
-#    result += "  #endif\n\n"
   end
 }
 

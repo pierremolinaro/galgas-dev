@@ -1034,7 +1034,7 @@ GALGAS_lexicalFunctionCharacterIntervalMatchAST_2D_weak GALGAS_lexicalFunctionCh
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_checkUnicodeConstants (const cPtr_lexicalFunctionExpressionAST * inObject,
+void callExtensionMethod_checkUnicodeConstants (cPtr_lexicalFunctionExpressionAST * inObject,
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
@@ -1908,7 +1908,7 @@ GALGAS_string extensionGetter_cocoaReset (const GALGAS_lexicalTypeEnum & inObjec
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_checkLexicalDefaultAction (const cPtr_lexicalSendDefaultActionAST * inObject,
+void callExtensionMethod_checkLexicalDefaultAction (cPtr_lexicalSendDefaultActionAST * inObject,
                                                     GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
                                                     C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
@@ -1925,7 +1925,7 @@ void callExtensionMethod_checkLexicalDefaultAction (const cPtr_lexicalSendDefaul
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_checkLexicalExpression (const cPtr_lexicalExpressionAST * inObject,
+void callExtensionMethod_checkLexicalExpression (cPtr_lexicalExpressionAST * inObject,
                                                  GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
@@ -1942,7 +1942,7 @@ void callExtensionMethod_checkLexicalExpression (const cPtr_lexicalExpressionAST
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_checkLexicalFunctionCallArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
+void callExtensionMethod_checkLexicalFunctionCallArgument (cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
                                                            GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
                                                            GALGAS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
                                                            C_Compiler * inCompiler
@@ -1960,7 +1960,7 @@ void callExtensionMethod_checkLexicalFunctionCallArgument (const cPtr_lexicalRou
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_checkLexicalRoutineCallArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
+void callExtensionMethod_checkLexicalRoutineCallArgument (cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
                                                           GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
                                                           GALGAS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
                                                           C_Compiler * inCompiler
@@ -1978,7 +1978,7 @@ void callExtensionMethod_checkLexicalRoutineCallArgument (const cPtr_lexicalRout
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_checkLexicalRoutineCallArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
+void callExtensionMethod_checkLexicalRoutineCallArgument (cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
                                                           GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
                                                           GALGAS_lexicalArgumentModeAST in_inLexicalRoutineFormalArgumentMode,
                                                           GALGAS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
@@ -1997,7 +1997,7 @@ void callExtensionMethod_checkLexicalRoutineCallArgument (const cPtr_abstractLex
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_checkLexicalInstruction (const cPtr_lexicalInstructionAST * inObject,
+void callExtensionMethod_checkLexicalInstruction (cPtr_lexicalInstructionAST * inObject,
                                                   GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
                                                   GALGAS_lexicalTagMap & io_ioTagMap,
                                                   C_Compiler * inCompiler
@@ -2015,7 +2015,7 @@ void callExtensionMethod_checkLexicalInstruction (const cPtr_lexicalInstructionA
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_checkLexicalRule (const cPtr_abstractLexicalRuleAST * inObject,
+void callExtensionMethod_checkLexicalRule (cPtr_abstractLexicalRuleAST * inObject,
                                            GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
                                            C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) {

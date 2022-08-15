@@ -4,7 +4,7 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cPtr_%![[RECEIVER_TYPE definition].mTypeName.string identifierRepresentation]% * inObject%
+void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%cPtr_%![[RECEIVER_TYPE definition].mTypeName.string identifierRepresentation]% * inObject%
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then

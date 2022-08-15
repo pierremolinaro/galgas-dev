@@ -83,29 +83,29 @@ class cPtr_semanticDeclarationForGeneration : public acStrongPtr_class {
 //--- Extension method appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
            class GALGAS_string & outHeader,
-           C_Compiler * COMMA_LOCATION_ARGS) const ;
+           C_Compiler * COMMA_LOCATION_ARGS) ;
 
 //--- Extension method appendDeclaration2
   public: virtual void method_appendDeclaration_32_ (const class GALGAS_string inOutputDirectory,
            class GALGAS_stringset & ioInclusionSet,
            class GALGAS_string & outHeader,
-           C_Compiler * COMMA_LOCATION_ARGS) const ;
+           C_Compiler * COMMA_LOCATION_ARGS) ;
 
 //--- Extension method appendPrimitiveTypePreDeclaration
   public: virtual void method_appendPrimitiveTypePreDeclaration (class GALGAS_string & ioHeader,
-           C_Compiler * COMMA_LOCATION_ARGS) const ;
+           C_Compiler * COMMA_LOCATION_ARGS) ;
 
 //--- Extension method appendSpecificFiles
   public: virtual void method_appendSpecificFiles (const class GALGAS_string inProductDirectory,
            class GALGAS_stringset & ioAllProductFileSet,
            class GALGAS_stringlist & ioCocoaProductFileList,
-           C_Compiler * COMMA_LOCATION_ARGS) const ;
+           C_Compiler * COMMA_LOCATION_ARGS) ;
 
 //--- Extension method appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
            class GALGAS_stringset & ioInclusionSet,
            class GALGAS_string & outImplementation,
-           C_Compiler * COMMA_LOCATION_ARGS) const ;
+           C_Compiler * COMMA_LOCATION_ARGS) ;
 
 //--- Properties
 
@@ -195,7 +195,7 @@ class GALGAS_string callExtensionGetter_appendPrimitiveTypeDeclaration (const cP
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_appendPrimitiveTypePreDeclaration (const class cPtr_semanticDeclarationForGeneration * inObject,
+void callExtensionMethod_appendPrimitiveTypePreDeclaration (class cPtr_semanticDeclarationForGeneration * inObject,
                                                             GALGAS_string & io_ioHeader,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
@@ -2087,7 +2087,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplate
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_appendDeclaration_31_ (const class cPtr_semanticDeclarationForGeneration * inObject,
+void callExtensionMethod_appendDeclaration_31_ (class cPtr_semanticDeclarationForGeneration * inObject,
                                                 GALGAS_stringset & io_ioInclusionSet,
                                                 GALGAS_string & out_outHeader,
                                                 C_Compiler * inCompiler
@@ -2099,7 +2099,7 @@ void callExtensionMethod_appendDeclaration_31_ (const class cPtr_semanticDeclara
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_appendDeclaration_32_ (const class cPtr_semanticDeclarationForGeneration * inObject,
+void callExtensionMethod_appendDeclaration_32_ (class cPtr_semanticDeclarationForGeneration * inObject,
                                                 const GALGAS_string constin_inOutputDirectory,
                                                 GALGAS_stringset & io_ioInclusionSet,
                                                 GALGAS_string & out_outHeader,
@@ -2122,7 +2122,7 @@ class GALGAS_string callExtensionGetter_appendTypeGenericImplementation (const c
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_appendSpecificImplementation (const class cPtr_semanticDeclarationForGeneration * inObject,
+void callExtensionMethod_appendSpecificImplementation (class cPtr_semanticDeclarationForGeneration * inObject,
                                                        const GALGAS_unifiedTypeMap constin_inUnifiedTypeMap,
                                                        GALGAS_stringset & io_ioInclusionSet,
                                                        GALGAS_string & out_outImplementation,
@@ -2135,7 +2135,7 @@ void callExtensionMethod_appendSpecificImplementation (const class cPtr_semantic
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_appendSpecificFiles (const class cPtr_semanticDeclarationForGeneration * inObject,
+void callExtensionMethod_appendSpecificFiles (class cPtr_semanticDeclarationForGeneration * inObject,
                                               const GALGAS_string constin_inProductDirectory,
                                               GALGAS_stringset & io_ioAllProductFileSet,
                                               GALGAS_stringlist & io_ioCocoaProductFileList,
@@ -2148,7 +2148,7 @@ void callExtensionMethod_appendSpecificFiles (const class cPtr_semanticDeclarati
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_analyzeSemanticInstruction (const class cPtr_semanticInstructionAST * inObject,
+void callExtensionMethod_analyzeSemanticInstruction (class cPtr_semanticInstructionAST * inObject,
                                                      const GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                      GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                      const GALGAS_analysisContext constin_inAnalysisContext,
@@ -3545,7 +3545,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localInitializedVar
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_checkAgainstFormalArgument (const class cPtr_actualParameterAST * inObject,
+void callExtensionMethod_checkAgainstFormalArgument (class cPtr_actualParameterAST * inObject,
                                                      const GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                      GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                      const GALGAS_analysisContext constin_inAnalysisContext,
@@ -3575,7 +3575,7 @@ class GALGAS_string extensionGetter_correspondingEffectiveParameterString (const
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_enterParameterInSemanticContext (const class cPtr_actualParameterAST * inObject,
+void callExtensionMethod_enterParameterInSemanticContext (class cPtr_actualParameterAST * inObject,
                                                           GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
@@ -3640,20 +3640,20 @@ class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult : public ac
            const class GALGAS_string inSyntaxDirectedTranslationResultVarName,
            class GALGAS_stringlist & ioAssignementList,
            class GALGAS_localVarManager & ioVariableMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension method analyzeSDT
   public: virtual void method_analyzeSDT (const class GALGAS_analysisContext inAnalysisContext,
            const class GALGAS_bool inHasTranslateFeature,
            class GALGAS_localVarManager & ioVariableMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension method generateCode
   public: virtual void method_generateCode (const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
            const class GALGAS_string inAccessMethodName,
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            class GALGAS_string & ioGeneratedCode,
-           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
 
@@ -3677,7 +3677,7 @@ class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult : public ac
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_semanticAnalysis (const class cPtr_semanticDeclarationAST * inObject,
+void callExtensionMethod_semanticAnalysis (class cPtr_semanticDeclarationAST * inObject,
                                            GALGAS_lstringlist & io_ioUsefulnessRootEntities,
                                            GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                            const GALGAS_string constin_inProductDirectory,
@@ -5112,13 +5112,13 @@ class cPtr_syntaxDeclarationForGeneration : public cPtr_semanticDeclarationForGe
 //--- Extension method appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
            class GALGAS_string & outHeader,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method appendSpecificImplementation
   public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
            class GALGAS_stringset & ioInclusionSet,
            class GALGAS_string & outImplementation,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_string mProperty_mSyntaxComponentName ;
@@ -5215,7 +5215,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxDeclarationFo
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_analyzeSyntaxInstruction (const class cPtr_syntaxInstructionAST * inObject,
+void callExtensionMethod_analyzeSyntaxInstruction (class cPtr_syntaxInstructionAST * inObject,
                                                    const GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                    GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                    const GALGAS_analysisContext constin_inAnalysisContext,
@@ -5237,7 +5237,7 @@ void callExtensionMethod_analyzeSyntaxInstruction (const class cPtr_syntaxInstru
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_analyzeInputParameter (const class cPtr_abstractInputParameter * inObject,
+void callExtensionMethod_analyzeInputParameter (class cPtr_abstractInputParameter * inObject,
                                                 const GALGAS_analysisContext constin_inAnalysisContext,
                                                 const GALGAS_lexicalTypeEnum constin_inRequiredLexicalType,
                                                 const GALGAS_string constin_inLexicalAttributeName,
@@ -5252,7 +5252,7 @@ void callExtensionMethod_analyzeInputParameter (const class cPtr_abstractInputPa
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_analyzeSDT (const class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
+void callExtensionMethod_analyzeSDT (class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
                                      const GALGAS_analysisContext constin_inAnalysisContext,
                                      const GALGAS_bool constin_inHasTranslateFeature,
                                      GALGAS_localVarManager & io_ioVariableMap,
@@ -5265,7 +5265,7 @@ void callExtensionMethod_analyzeSDT (const class cPtr_abstractGrammarInstruction
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_generateCode (const class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
+void callExtensionMethod_generateCode (class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
                                        const GALGAS_bool constin_inGenerateSyntaxDirectedTranslationString,
                                        const GALGAS_string constin_inAccessMethodName,
                                        GALGAS_stringset & io_ioUnusedVariableCppNameSet,
@@ -6639,11 +6639,11 @@ class cPtr_ifExpressionAST : public cPtr_semanticExpressionAST {
            const class GALGAS_analysisContext inAnalysisContext,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -6811,7 +6811,7 @@ class cPtr_ifExpressionForGeneration : public cPtr_semanticExpressionForGenerati
            class GALGAS_uint & ioTemporaryVariableIndex,
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            class GALGAS_string & outCppExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mIfExpression ;
@@ -6966,11 +6966,11 @@ class cPtr_unaryPlusExpressionAST : public cPtr_semanticExpressionAST {
            const class GALGAS_analysisContext inAnalysisContext,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -7121,11 +7121,11 @@ class cPtr_unaryMinusExpressionAST : public cPtr_semanticExpressionAST {
            const class GALGAS_analysisContext inAnalysisContext,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -7274,7 +7274,7 @@ class cPtr_unaryMinusExpressionForGeneration : public cPtr_semanticExpressionFor
            class GALGAS_uint & ioTemporaryVariableIndex,
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            class GALGAS_string & outCppExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
@@ -7428,11 +7428,11 @@ class cPtr_varInExpressionAST : public cPtr_semanticExpressionAST {
            const class GALGAS_analysisContext inAnalysisContext,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mVarName ;
@@ -7588,7 +7588,7 @@ class cPtr_varInExpressionForGeneration : public cPtr_semanticExpressionForGener
            class GALGAS_uint & ioTemporaryVariableIndex,
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            class GALGAS_string & outCppExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_string mProperty_mCppVarName ;
@@ -8016,11 +8016,11 @@ class cPtr_trueExpressionAST : public cPtr_semanticExpressionAST {
            const class GALGAS_analysisContext inAnalysisContext,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mLocation ;
@@ -8169,11 +8169,11 @@ class cPtr_falseExpressionAST : public cPtr_semanticExpressionAST {
            const class GALGAS_analysisContext inAnalysisContext,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
   public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mLocation ;

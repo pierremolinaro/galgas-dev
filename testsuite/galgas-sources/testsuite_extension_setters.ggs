@@ -1,0 +1,87 @@
+
+
+proc testsuite_extension_setters() {
+  message "*************************************** begin of extension setter test\n"
+  let v = @TestExtensionSetter.new (!1 !"Hello")
+  var @uint u = 2
+  let @string s = " World"
+  [v setter2 !?u !s]
+  log u, v
+  let w = @overridingTestExtensionSetter.new (!1 !"" !"" !2)
+  [w m]
+#--- Test type cast in setter call
+  typeCastInSetterCall ()
+}
+
+abstract class @abstractTestExtensionSetter {
+  public var @uint mInteger
+}
+
+class @TestExtensionSetter : @abstractTestExtensionSetter {
+  public var @string mString
+}
+
+proc @TestExtensionSetter.setter3 (?let @uint inArg) {
+  [!?self.mString appendSpacesUntilColumn !inArg]
+}
+
+
+proc @TestExtensionSetter.setter1 (?!@uint ioArg) {
+  self.mInteger = self.mInteger + ioArg
+  ioArg += 1
+}
+
+
+class @overridingTestExtensionSetter : @abstractOverridingTestExtensionSetter {
+  public var @uint mOtherInteger
+}
+
+
+proc @TestExtensionSetter.setter2 (?!@uint ioArg ?let@string inS) {
+  [self setter1 !?ioArg]
+  self.mString += inS
+}
+
+abstract proc @abstractTestExtensionSetter.m()
+
+override proc @TestExtensionSetter.m() { }
+
+override proc @overridingTestExtensionSetter.m() { }
+
+override abstract proc @abstractOverridingTestExtensionSetter.m()
+
+abstract class @abstractOverridingTestExtensionSetter : @TestExtensionSetter {
+  public var @string mOtherString
+}
+
+#class @adjMat{
+#   public var @uint dim
+#   public var @stringlist nodes
+#}
+#
+#proc @adjMat.addNode() {
+#   let tmp = @stringlist {}
+#   self.nodes = tmp
+#}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   TYPE CAST IN SETTER CALL                
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+private proc typeCastInSetterCall() {
+  let @baseClassForTypeCastInSetterCall object = @inheritedClassForTypeCastInSetterCall.new
+  [object as @inheritedClassForTypeCastInSetterCall unSetter]
+
+}
+
+class @baseClassForTypeCastInSetterCall {}
+
+class @inheritedClassForTypeCastInSetterCall : @baseClassForTypeCastInSetterCall {}
+
+proc @inheritedClassForTypeCastInSetterCall.unSetter() {
+  message "Appel @inheritedClassForTypeCastInSetterCall unSetter\n"
+}
+
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

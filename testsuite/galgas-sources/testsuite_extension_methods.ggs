@@ -1,0 +1,22 @@
+
+
+class @TestExtensionMethod {}
+
+proc @TestExtensionMethod.method1() {
+}
+
+func @TestExtensionMethod.reader1() -> @uint result {
+  result = 2
+}
+
+proc @TestExtensionMethod.method2 (!@uint result) {
+  result = [self reader1]
+}
+
+proc testsuite_extension_methods () {
+  message "*************************************** begin of extension procs\n"
+  let c = @TestExtensionMethod.new
+  [c method1]
+  [c method2 ?let v]
+  message [v string] + "\n"
+}

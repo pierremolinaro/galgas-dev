@@ -783,9 +783,8 @@ class GALGAS_string function_generateClassGetterDeclaration (const class GALGAS_
 
 class GALGAS_string function_generateClassInstanceMethodDeclaration (const class GALGAS_lstring & constinArgument0,
                                                                      const class GALGAS_formalParameterSignature & constinArgument1,
-                                                                     const class GALGAS_instanceMethodMutability & constinArgument2,
-                                                                     const class GALGAS_bool & constinArgument3,
-                                                                     const class GALGAS_methodQualifier & constinArgument4,
+                                                                     const class GALGAS_bool & constinArgument2,
+                                                                     const class GALGAS_methodQualifier & constinArgument3,
                                                                      class C_Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 

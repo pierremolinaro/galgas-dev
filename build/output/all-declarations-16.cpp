@@ -8404,7 +8404,7 @@ GALGAS_galgas_33_GrammarComponentAST GALGAS_galgas_33_GrammarComponentAST::extra
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
+void callExtensionMethod_generateExpression (cPtr_semanticExpressionForGeneration * inObject,
                                              GALGAS_string & io_ioGeneratedCode,
                                              GALGAS_stringset & io_ioInclusionSet,
                                              GALGAS_uint & io_ioTemporaryVariableIndex,
@@ -12516,7 +12516,7 @@ GALGAS_programComponentForGeneration_2D_weak GALGAS_programComponentForGeneratio
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_analyzeGrammarInstructionSDT (const cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
+void callExtensionMethod_analyzeGrammarInstructionSDT (cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
                                                        const GALGAS_analysisContext constin_inAnalysisContext,
                                                        const GALGAS_bool constin_inHasTranslateFeature,
                                                        const GALGAS_string constin_inSyntaxDirectedTranslationResultVarName,

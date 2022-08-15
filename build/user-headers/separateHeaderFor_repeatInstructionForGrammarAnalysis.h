@@ -22,7 +22,7 @@ class cPtr_repeatInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
            class GALGAS_string & ioArrows,
            class GALGAS_uint & ioMaxUsedRowIndex,
            const class GALGAS_bool inDebug,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- START OF USER ZONE 2
 

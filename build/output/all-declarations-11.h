@@ -1578,7 +1578,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalSymbolsMapF
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_transformInstruction (const class cPtr_syntaxInstructionAST * inObject,
+void callExtensionMethod_transformInstruction (class cPtr_syntaxInstructionAST * inObject,
                                                GALGAS_terminalSymbolsMapForGrammarAnalysis & io_ioActuallyUsedTerminalSymbolMap,
                                                const GALGAS_nonTerminalSymbolMapForGrammarAnalysis constin_inNonTerminalSymbolMap,
                                                GALGAS_uint & io_ioAddedNonTerminalIndex,
@@ -1744,7 +1744,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_rowList ;
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_tikzNodeForSyntaxInstruction (const class cPtr_abstractSyntaxInstructionForGrammarAnalysis * inObject,
+void callExtensionMethod_tikzNodeForSyntaxInstruction (class cPtr_abstractSyntaxInstructionForGrammarAnalysis * inObject,
                                                        GALGAS_rowList & io_ioRowList,
                                                        const GALGAS_uint constin_inRow,
                                                        GALGAS_uint & io_ioColumn,
@@ -2224,7 +2224,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_genericExtensionMet
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_buildExtensionListMaps (const class cPtr_semanticDeclarationAST * inObject,
+void callExtensionMethod_buildExtensionListMaps (class cPtr_semanticDeclarationAST * inObject,
                                                  GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionSetterListMap,
                                                  GALGAS_genericExtensionMethodListMap & io_ioExtensionSettierListMap,
                                                  GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionSetterListMap,

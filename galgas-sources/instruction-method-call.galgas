@@ -194,7 +194,7 @@ override method @methodCallInstructionForGeneration generateInstruction
     ioInclusionSet += !"method-" + [[self.mMethodBaseType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mMethodName fileNameRepresentation]
     if [[self.mReceiverType definition].mTypeKindEnum isClassType] then
       ioGeneratedCode += "callExtensionMethod_" + [self.mMethodName identifierRepresentation]
-                      + " ((const cPtr_" + [self.mReceiverExpression.mResultType identifierRepresentation]
+                      + " ((cPtr_" + [self.mReceiverExpression.mResultType identifierRepresentation]
                       + " *) " + receiverCppName + ".ptr (), "
     else
       ioGeneratedCode += "extensionMethod_" + [self.mMethodName identifierRepresentation]

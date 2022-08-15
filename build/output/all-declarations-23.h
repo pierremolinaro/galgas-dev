@@ -988,3 +988,12 @@ void routine_enterClassMethodWithStringInputArgument (class GALGAS_classMethodMa
                                                       class C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'compilerCppName'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_string function_compilerCppName (class C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+

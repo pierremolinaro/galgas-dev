@@ -11014,7 +11014,7 @@ GALGAS_collectionValueAST_2D_weak GALGAS_collectionValueAST_2D_weak::extractObje
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_enterInSemanticContext (const cPtr_abstractCollectionValueElement * inObject,
+void callExtensionMethod_enterInSemanticContext (cPtr_abstractCollectionValueElement * inObject,
                                                  GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
@@ -11031,7 +11031,7 @@ void callExtensionMethod_enterInSemanticContext (const cPtr_abstractCollectionVa
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_analyze (const cPtr_abstractCollectionValueElement * inObject,
+void callExtensionMethod_analyze (cPtr_abstractCollectionValueElement * inObject,
                                   const GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                   GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                   const GALGAS_analysisContext constin_inAnalysisContext,
@@ -11692,7 +11692,7 @@ GALGAS_abstractCollectionValueElementForGeneration_2D_weak GALGAS_abstractCollec
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_generateCollectionElementCode (const cPtr_abstractCollectionValueElementForGeneration * inObject,
+void callExtensionMethod_generateCollectionElementCode (cPtr_abstractCollectionValueElementForGeneration * inObject,
                                                         const GALGAS_unifiedTypeMapEntry constin_inTargetType,
                                                         GALGAS_string & io_ioGeneratedCode,
                                                         GALGAS_stringset & io_ioInclusionSet,

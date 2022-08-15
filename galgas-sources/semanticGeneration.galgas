@@ -650,21 +650,8 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
 #--- Generate header
   outGeneratedCode = "void cPtr_" + [className identifierRepresentation] + "::method_" + [inMethodName identifierRepresentation] + " ("
   let @uint colRef = [outGeneratedCode currentColumn]
-#  if inBaseClassName == "" then
-#    outGeneratedCode += "const cPtr_" + [className identifierRepresentation] + " * "
-#  else
-#    outGeneratedCode += "const cPtr_" + [inBaseClassName identifierRepresentation] + " * "
-#  end
-#  let @bool currentObjectIsUnused = [unusedVariableCppNameSet hasKey !"object"]
-#  if currentObjectIsUnused then
-#    outGeneratedCode += "/* inObject */"
-#  else
-#    outGeneratedCode += "inObject"
-#  end
 #---
   for (* mFormalArgumentPassingMode mFormalArgumentType * mFormalArgumentCppName) in inFormalArgumentList do
-#    outGeneratedCode += ",\n"
-#    [!?outGeneratedCode appendSpacesUntilColumn !colRef]
     switch mFormalArgumentPassingMode 
     case argumentConstantIn :
       outGeneratedCode += "const GALGAS_" + [mFormalArgumentType identifierRepresentation] + " "
@@ -684,8 +671,6 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
     [!?outGeneratedCode appendSpacesUntilColumn !colRef]
   end
 #--- Compiler argument
-#  outGeneratedCode += ",\n"
-#  [!?outGeneratedCode appendSpacesUntilColumn !colRef]
   outGeneratedCode += "C_Compiler * "
   if [unusedVariableCppNameSet hasKey !compilerCppName ()] then
     outGeneratedCode += "/* " + compilerCppName () + " */"
@@ -695,17 +680,8 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
   outGeneratedCode += "\n"
   [!?outGeneratedCode appendSpacesUntilColumn !colRef]
   outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS"
-  outGeneratedCode += ") const {\n"
+  outGeneratedCode += ") {\n"
 #--- Generate routine body
-#  if not currentObjectIsUnused then
-#    if inBaseClassName == "" then
-#      # outGeneratedCode += "  const cPtr_" + [className identifierRepresentation] + " * object = inObject ; // A\n"
-#      outGeneratedCode += "  auto object = (cPtr_" + [className identifierRepresentation] + " *) inObject ; // A\n"
-#    else
-#      outGeneratedCode += "  const cPtr_" + [className identifierRepresentation] + " * object = (const cPtr_" + [className identifierRepresentation] + " *) inObject ;\n"
-#    end
-#    outGeneratedCode += "  macroValidSharedObject (object, cPtr_" + [className identifierRepresentation] + ") ;\n"
-#  end
   outGeneratedCode += routineBody
 #---
   outGeneratedCode += "}"

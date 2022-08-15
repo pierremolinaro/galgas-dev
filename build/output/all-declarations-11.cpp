@@ -2599,7 +2599,7 @@ GALGAS_terminalSymbolsMapForGrammarAnalysis GALGAS_terminalSymbolsMapForGrammarA
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_transformInstruction (const cPtr_syntaxInstructionAST * inObject,
+void callExtensionMethod_transformInstruction (cPtr_syntaxInstructionAST * inObject,
                                                GALGAS_terminalSymbolsMapForGrammarAnalysis & io_ioActuallyUsedTerminalSymbolMap,
                                                const GALGAS_nonTerminalSymbolMapForGrammarAnalysis constin_inNonTerminalSymbolMap,
                                                GALGAS_uint & io_ioAddedNonTerminalIndex,
@@ -2649,7 +2649,7 @@ void extensionMethod_tikzNodeForSyntaxInstruction (const GALGAS_syntaxInstructio
     const GALGAS_syntaxInstructionListForGrammarAnalysis temp_2 = inObject ;
     cEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_9461 (temp_2, kENUMERATION_UP) ;
     while (enumerator_9461.hasCurrentObject ()) {
-      callExtensionMethod_tikzNodeForSyntaxInstruction ((const cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_9461.current_mInstruction (HERE).ptr (), ioArgument_ioRowList, constinArgument_inRow, ioArgument_ioColumn, ioArgument_ioCurrentNode, ioArgument_ioArrowShape, ioArgument_ioArrows, ioArgument_ioMaxUsedRowIndex, constinArgument_inDebug, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 245)) ;
+      callExtensionMethod_tikzNodeForSyntaxInstruction ((cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_9461.current_mInstruction (HERE).ptr (), ioArgument_ioRowList, constinArgument_inRow, ioArgument_ioColumn, ioArgument_ioCurrentNode, ioArgument_ioArrowShape, ioArgument_ioArrows, ioArgument_ioMaxUsedRowIndex, constinArgument_inDebug, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 245)) ;
       enumerator_9461.gotoNextObject () ;
     }
   }
@@ -3127,7 +3127,7 @@ void extensionSetter_appendRow (GALGAS_rowList & ioObject,
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_tikzNodeForSyntaxInstruction (const cPtr_abstractSyntaxInstructionForGrammarAnalysis * inObject,
+void callExtensionMethod_tikzNodeForSyntaxInstruction (cPtr_abstractSyntaxInstructionForGrammarAnalysis * inObject,
                                                        GALGAS_rowList & io_ioRowList,
                                                        const GALGAS_uint constin_inRow,
                                                        GALGAS_uint & io_ioColumn,
@@ -3736,12 +3736,12 @@ void cPtr_semanticDeclarationAST::method_buildExtensionListMaps (GALGAS_genericE
                                                                  GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingExtensionGetterListMap */,
                                                                  GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingAbstractExtensionGetterListMap */,
                                                                  C_Compiler * /* inCompiler */
-                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_buildExtensionListMaps (const cPtr_semanticDeclarationAST * inObject,
+void callExtensionMethod_buildExtensionListMaps (cPtr_semanticDeclarationAST * inObject,
                                                  GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionSetterListMap,
                                                  GALGAS_genericExtensionMethodListMap & io_ioExtensionSettierListMap,
                                                  GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionSetterListMap,

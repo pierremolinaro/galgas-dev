@@ -1,0 +1,37 @@
+
+
+abstract class @A_A {}
+
+class @B_B : @A_A {}
+
+abstract func @A_A.aReader( ?@uint inA ?let@string inB) -> @string
+
+override func @B_B.aReader( ?@uint inA ?let@string inB) -> @string {
+  inA += 1
+  result = inB + inA
+}
+
+func @B_B.otherReader( ?@uint inA ?let@string inB) -> @string {
+  inA += 1
+  result = inB + inA + [self aReader !inA !inB] + [self aReader !inA !inB]
+}
+
+#abstract class @C_C : @B_B {}
+#
+#override abstract func @C_C.aReader( ?@uint inA ?let@string inB) -> @string
+
+abstract func @A_A.location() -> @location
+
+override func @B_B.location() -> @location outLocation { outLocation = .here}
+
+
+proc testsuite_extension_readers() {
+  message "*************************************** begin of extension reader test\n"
+  let @B_B b = .new
+  let @string s = [b otherReader !2 !"-"]
+  log s
+  if false then
+    error b : "non displayed message"
+  end
+}
+

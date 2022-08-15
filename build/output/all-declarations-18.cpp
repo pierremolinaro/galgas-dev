@@ -9975,7 +9975,7 @@ void extensionMethod_displayRuleVertically (const GALGAS_productionRuleListForGr
   while (enumerator_7138.hasCurrentObject ()) {
     var_row_7086.minusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 175)) ;
     GALGAS_uint var_column_7201 = GALGAS_uint (uint32_t (1U)) ;
-    callExtensionMethod_tikzNodeForSyntaxInstruction ((const cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_7138.current_mInstruction (HERE).ptr (), var_rowArray_6833, var_row_7086, var_column_7201, var_currentNode_6797, var_arrowStyle_7022, var_arrows_6992, var_unusedMaxUsedRowIndex_7063, GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 177)) ;
+    callExtensionMethod_tikzNodeForSyntaxInstruction ((cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_7138.current_mInstruction (HERE).ptr (), var_rowArray_6833, var_row_7086, var_column_7201, var_currentNode_6797, var_arrowStyle_7022, var_arrows_6992, var_unusedMaxUsedRowIndex_7063, GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 177)) ;
     enumerator_7138.gotoNextObject () ;
   }
   GALGAS_string var_lastNodeName_7573 ;

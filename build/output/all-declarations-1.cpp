@@ -2906,7 +2906,7 @@ GALGAS_predefinedTypes GALGAS_predefinedTypes::extractObject (const GALGAS_objec
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_templateExpressionAnalysis (const cPtr_templateExpressionAST * inObject,
+void callExtensionMethod_templateExpressionAnalysis (cPtr_templateExpressionAST * inObject,
                                                      const GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                      GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                      const GALGAS_templateAnalysisContext constin_inAnalysisContext,
@@ -3038,7 +3038,7 @@ GALGAS_templateGetterCallInExpressionAST_2D_weak GALGAS_templateGetterCallInExpr
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_templateInstructionAnalysis (const cPtr_templateInstructionAST * inObject,
+void callExtensionMethod_templateInstructionAnalysis (cPtr_templateInstructionAST * inObject,
                                                       const GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                       GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                       const GALGAS_templateAnalysisContext constin_inAnalysisContext,
@@ -3058,7 +3058,7 @@ void callExtensionMethod_templateInstructionAnalysis (const cPtr_templateInstruc
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_templateCodeGeneration (const cPtr_templateInstructionForGeneration * inObject,
+void callExtensionMethod_templateCodeGeneration (cPtr_templateInstructionForGeneration * inObject,
                                                  GALGAS_string & io_ioGeneratedCode,
                                                  GALGAS_stringset & io_ioInclusionSet,
                                                  GALGAS_uint & io_ioTemporaryVariableIndex,

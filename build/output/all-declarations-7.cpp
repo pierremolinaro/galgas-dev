@@ -240,12 +240,12 @@ GALGAS_string callExtensionGetter_appendPrimitiveTypeDeclaration (const cPtr_sem
 
 void cPtr_semanticDeclarationForGeneration::method_appendPrimitiveTypePreDeclaration (GALGAS_string & /* ioArgument_ioHeader */,
                                                                                       C_Compiler * /* inCompiler */
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_appendPrimitiveTypePreDeclaration (const cPtr_semanticDeclarationForGeneration * inObject,
+void callExtensionMethod_appendPrimitiveTypePreDeclaration (cPtr_semanticDeclarationForGeneration * inObject,
                                                             GALGAS_string & io_ioHeader,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
@@ -3685,13 +3685,13 @@ GALGAS_filewrapperTemplateListForGeneration GALGAS_filewrapperTemplateListForGen
 void cPtr_semanticDeclarationForGeneration::method_appendDeclaration_31_ (GALGAS_stringset & /* ioArgument_ioInclusionSet */,
                                                                           GALGAS_string & outArgument_outHeader,
                                                                           C_Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outHeader = GALGAS_string::makeEmptyString () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_appendDeclaration_31_ (const cPtr_semanticDeclarationForGeneration * inObject,
+void callExtensionMethod_appendDeclaration_31_ (cPtr_semanticDeclarationForGeneration * inObject,
                                                 GALGAS_stringset & io_ioInclusionSet,
                                                 GALGAS_string & out_outHeader,
                                                 C_Compiler * inCompiler
@@ -3712,13 +3712,13 @@ void cPtr_semanticDeclarationForGeneration::method_appendDeclaration_32_ (const 
                                                                           GALGAS_stringset & /* ioArgument_ioInclusionSet */,
                                                                           GALGAS_string & outArgument_outHeader,
                                                                           C_Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outHeader = GALGAS_string::makeEmptyString () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_appendDeclaration_32_ (const cPtr_semanticDeclarationForGeneration * inObject,
+void callExtensionMethod_appendDeclaration_32_ (cPtr_semanticDeclarationForGeneration * inObject,
                                                 const GALGAS_string constin_inOutputDirectory,
                                                 GALGAS_stringset & io_ioInclusionSet,
                                                 GALGAS_string & out_outHeader,
@@ -3768,13 +3768,13 @@ void cPtr_semanticDeclarationForGeneration::method_appendSpecificImplementation 
                                                                                  GALGAS_stringset & /* ioArgument_ioInclusionSet */,
                                                                                  GALGAS_string & outArgument_outImplementation,
                                                                                  C_Compiler * /* inCompiler */
-                                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outImplementation = GALGAS_string::makeEmptyString () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_appendSpecificImplementation (const cPtr_semanticDeclarationForGeneration * inObject,
+void callExtensionMethod_appendSpecificImplementation (cPtr_semanticDeclarationForGeneration * inObject,
                                                        const GALGAS_unifiedTypeMap constin_inUnifiedTypeMap,
                                                        GALGAS_stringset & io_ioInclusionSet,
                                                        GALGAS_string & out_outImplementation,
@@ -3796,12 +3796,12 @@ void cPtr_semanticDeclarationForGeneration::method_appendSpecificFiles (const GA
                                                                         GALGAS_stringset & /* ioArgument_ioAllProductFileSet */,
                                                                         GALGAS_stringlist & /* ioArgument_ioCocoaProductFileList */,
                                                                         C_Compiler * /* inCompiler */
-                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
+                                                                        COMMA_UNUSED_LOCATION_ARGS) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_appendSpecificFiles (const cPtr_semanticDeclarationForGeneration * inObject,
+void callExtensionMethod_appendSpecificFiles (cPtr_semanticDeclarationForGeneration * inObject,
                                               const GALGAS_string constin_inProductDirectory,
                                               GALGAS_stringset & io_ioAllProductFileSet,
                                               GALGAS_stringlist & io_ioCocoaProductFileList,
@@ -3818,7 +3818,7 @@ void callExtensionMethod_appendSpecificFiles (const cPtr_semanticDeclarationForG
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_analyzeSemanticInstruction (const cPtr_semanticInstructionAST * inObject,
+void callExtensionMethod_analyzeSemanticInstruction (cPtr_semanticInstructionAST * inObject,
                                                      const GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                      GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                      const GALGAS_analysisContext constin_inAnalysisContext,
@@ -4998,7 +4998,7 @@ GALGAS_localInitializedVariableList GALGAS_localInitializedVariableList::extract
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_checkAgainstFormalArgument (const cPtr_actualParameterAST * inObject,
+void callExtensionMethod_checkAgainstFormalArgument (cPtr_actualParameterAST * inObject,
                                                      const GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                      GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                      const GALGAS_analysisContext constin_inAnalysisContext,
@@ -5066,7 +5066,7 @@ GALGAS_string extensionGetter_correspondingEffectiveParameterString (const GALGA
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_enterParameterInSemanticContext (const cPtr_actualParameterAST * inObject,
+void callExtensionMethod_enterParameterInSemanticContext (cPtr_actualParameterAST * inObject,
                                                           GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
@@ -5169,7 +5169,7 @@ GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult GALGAS_abstract
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_semanticAnalysis (const cPtr_semanticDeclarationAST * inObject,
+void callExtensionMethod_semanticAnalysis (cPtr_semanticDeclarationAST * inObject,
                                            GALGAS_lstringlist & io_ioUsefulnessRootEntities,
                                            GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                            const GALGAS_string constin_inProductDirectory,
@@ -7800,7 +7800,7 @@ GALGAS_syntaxDeclarationForGeneration_2D_weak GALGAS_syntaxDeclarationForGenerat
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_analyzeSyntaxInstruction (const cPtr_syntaxInstructionAST * inObject,
+void callExtensionMethod_analyzeSyntaxInstruction (cPtr_syntaxInstructionAST * inObject,
                                                    const GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                    GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                    const GALGAS_analysisContext constin_inAnalysisContext,
@@ -7828,7 +7828,7 @@ void callExtensionMethod_analyzeSyntaxInstruction (const cPtr_syntaxInstructionA
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_analyzeInputParameter (const cPtr_abstractInputParameter * inObject,
+void callExtensionMethod_analyzeInputParameter (cPtr_abstractInputParameter * inObject,
                                                 const GALGAS_analysisContext constin_inAnalysisContext,
                                                 const GALGAS_lexicalTypeEnum constin_inRequiredLexicalType,
                                                 const GALGAS_string constin_inLexicalAttributeName,
@@ -7849,7 +7849,7 @@ void callExtensionMethod_analyzeInputParameter (const cPtr_abstractInputParamete
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_analyzeSDT (const cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
+void callExtensionMethod_analyzeSDT (cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
                                      const GALGAS_analysisContext constin_inAnalysisContext,
                                      const GALGAS_bool constin_inHasTranslateFeature,
                                      GALGAS_localVarManager & io_ioVariableMap,
@@ -7868,7 +7868,7 @@ void callExtensionMethod_analyzeSDT (const cPtr_abstractGrammarInstructionSyntax
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_generateCode (const cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
+void callExtensionMethod_generateCode (cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
                                        const GALGAS_bool constin_inGenerateSyntaxDirectedTranslationString,
                                        const GALGAS_string constin_inAccessMethodName,
                                        GALGAS_stringset & io_ioUnusedVariableCppNameSet,
@@ -14424,7 +14424,7 @@ void extensionMethod_enterInSemanticContext (const GALGAS_actualOutputExpression
   const GALGAS_actualOutputExpressionList temp_0 = inObject ;
   cEnumerator_actualOutputExpressionList enumerator_2313 (temp_0, kENUMERATION_UP) ;
   while (enumerator_2313.hasCurrentObject ()) {
-    callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) enumerator_2313.current_mExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 61)) ;
+    callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) enumerator_2313.current_mExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 61)) ;
     enumerator_2313.gotoNextObject () ;
   }
 }

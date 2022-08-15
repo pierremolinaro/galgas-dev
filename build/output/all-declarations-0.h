@@ -333,7 +333,7 @@ class cPtr_templateInstructionAST : public acStrongPtr_class {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_templateInstructionListForGeneration & ioInstructionList,
-           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
 
@@ -670,7 +670,7 @@ class cPtr_templateExpressionAST : public acStrongPtr_class {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
 
@@ -1082,7 +1082,7 @@ class cPtr_templateConstructorAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mTypeName ;
@@ -1239,7 +1239,7 @@ class cPtr_templateFileWrapperTemplateCallAST : public cPtr_templateExpressionAS
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mFileWrapperName ;
@@ -1393,7 +1393,7 @@ class cPtr_templateExtensionTemplateCallAST : public cPtr_templateExpressionAST 
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_templateExpressionAST mProperty_mExpressionValue ;
@@ -1547,7 +1547,7 @@ class cPtr_templateAndOperationAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -1701,7 +1701,7 @@ class cPtr_templateOrOperationAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -1855,7 +1855,7 @@ class cPtr_templateXorOperationAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -2006,7 +2006,7 @@ class cPtr_templateTrueBoolAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mLocation ;
@@ -2153,7 +2153,7 @@ class cPtr_templateFalseBoolAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mLocation ;
@@ -2303,7 +2303,7 @@ class cPtr_templateLiteralStringExpressionAST : public cPtr_templateExpressionAS
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_stringlist mProperty_mLiteralStringList ;
@@ -2452,7 +2452,7 @@ class cPtr_templateLiteralUIntExpressionAST : public cPtr_templateExpressionAST 
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lbigint mProperty_mLiteralInt ;
@@ -2599,7 +2599,7 @@ class cPtr_templateLiteralSIntExpressionAST : public cPtr_templateExpressionAST 
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lsint mProperty_mLiteralInt ;
@@ -2746,7 +2746,7 @@ class cPtr_templateLiteralUInt_36__34_ExpressionAST : public cPtr_templateExpres
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_luint_36__34_ mProperty_mLiteralInt ;
@@ -2893,7 +2893,7 @@ class cPtr_templateLiteralSInt_36__34_ExpressionAST : public cPtr_templateExpres
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lsint_36__34_ mProperty_mLiteralInt ;
@@ -3040,7 +3040,7 @@ class cPtr_templateLiteralCharExpressionAST : public cPtr_templateExpressionAST 
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lchar mProperty_mLiteralChar ;
@@ -3187,7 +3187,7 @@ class cPtr_templateLiteralDoubleExpressionAST : public cPtr_templateExpressionAS
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_ldouble mProperty_mLiteralDouble ;
@@ -3337,7 +3337,7 @@ class cPtr_structFieldAccessTemplateExpressionAST : public cPtr_templateExpressi
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -3488,7 +3488,7 @@ class cPtr_templateNotOperatorAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -3637,7 +3637,7 @@ class cPtr_templateLogicalNegateAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -3792,7 +3792,7 @@ class cPtr_templateOptionAccessAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mOptionComponentName ;
@@ -4029,7 +4029,7 @@ class cPtr_templateTestDynamicClassAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_templateExpressionAST mProperty_mReceiverExpression ;
@@ -4185,7 +4185,7 @@ class cPtr_templateFunctionCallAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mFunctionName ;
@@ -4334,7 +4334,7 @@ class cPtr_templateVarInExpressionAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mVarName ;
@@ -4484,7 +4484,7 @@ class cPtr_templateAddOperationAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -4638,7 +4638,7 @@ class cPtr_templateSubOperationAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -4792,7 +4792,7 @@ class cPtr_templateMultiplyOperationAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -4946,7 +4946,7 @@ class cPtr_templateDivideOperationAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -5100,7 +5100,7 @@ class cPtr_templateModuloOperationAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -5251,7 +5251,7 @@ class cPtr_templateUnaryMinusOperationAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -5403,7 +5403,7 @@ class cPtr_templateEqualTestAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -5557,7 +5557,7 @@ class cPtr_templateNonEqualTestAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -5711,7 +5711,7 @@ class cPtr_templateStrictInfTestAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -5865,7 +5865,7 @@ class cPtr_templateInfOrEqualTestAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -6019,7 +6019,7 @@ class cPtr_templateStrictSupTestAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -6173,7 +6173,7 @@ class cPtr_templateSupOrEqualTestAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -6327,7 +6327,7 @@ class cPtr_templateLeftShiftOperationAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -6481,7 +6481,7 @@ class cPtr_templateRightShiftOperationAST : public cPtr_templateExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
@@ -6632,7 +6632,7 @@ class cPtr_templateInstructionStringAST : public cPtr_templateInstructionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_templateInstructionListForGeneration & ioInstructionList,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_string mProperty_mTemplateString ;
@@ -6779,7 +6779,7 @@ class cPtr_templateInstructionExpressionAST : public cPtr_templateInstructionAST
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_templateInstructionListForGeneration & ioInstructionList,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_templateExpressionAST mProperty_mExpression ;
@@ -6931,7 +6931,7 @@ class cPtr_templateBlockInstructionAST : public cPtr_templateInstructionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_templateInstructionListForGeneration & ioInstructionList,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_templateExpressionAST mProperty_mExpression ;
@@ -7079,7 +7079,7 @@ class cPtr_templateInstructionGetColumnLocationAST : public cPtr_templateInstruc
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_templateInstructionListForGeneration & ioInstructionList,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -7221,7 +7221,7 @@ class cPtr_templateInstructionGotoColumnLocationAST : public cPtr_templateInstru
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_templateInstructionListForGeneration & ioInstructionList,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -7603,7 +7603,7 @@ class cPtr_templateInstructionIfAST : public cPtr_templateInstructionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_templateInstructionListForGeneration & ioInstructionList,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_templateInstructionIfBranchListAST mProperty_mTemplateInstructionIfBranchList ;
@@ -8111,7 +8111,7 @@ class cPtr_templateGetterCallInExpressionAST : public cPtr_templateExpressionAST
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_templateExpressionAST mProperty_mReceiverExpression ;
@@ -8360,7 +8360,7 @@ class cPtr_templateInstructionForeachAST : public cPtr_templateInstructionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_templateInstructionListForGeneration & ioInstructionList,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_bool mProperty_mIsAscending ;
@@ -8659,7 +8659,7 @@ class cPtr_templateInstructionSwitchAST : public cPtr_templateInstructionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
            class GALGAS_templateInstructionListForGeneration & ioInstructionList,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_templateExpressionAST mProperty_mSwitchExpression ;

@@ -25,7 +25,7 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acStrongPtr_clas
            class GALGAS_string & ioArrows,
            class GALGAS_uint & ioMaxUsedRowIndex,
            const class GALGAS_bool inDebug,
-           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- START OF USER ZONE 2
 

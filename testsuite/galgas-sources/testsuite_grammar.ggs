@@ -1,0 +1,6 @@
+grammar testsuite_grammar "LL1" {
+syntax testsuite_syntax
+
+ <start_symbol>()
+
+}

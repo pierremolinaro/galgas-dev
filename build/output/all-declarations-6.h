@@ -74,22 +74,22 @@ class cPtr_bigintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension method getConstructorMap
   public: virtual void method_getConstructorMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_constructorMap & outConstructorMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getGetterMap
   public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_getterMap & outGetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getInstanceMethodMap
   public: virtual void method_getInstanceMethodMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_instanceMethodMap & outInstanceMethodMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getSetterMap
   public: virtual void method_getSetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_setterMap & outSetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -235,7 +235,7 @@ class cPtr_objectPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension method getGetterMap
   public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_getterMap & outGetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -381,12 +381,12 @@ class cPtr_filewrapperPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension method getGetterMap
   public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_getterMap & outGetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getSetterMap
   public: virtual void method_getSetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_setterMap & outSetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -532,17 +532,17 @@ class cPtr_binarysetPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension method getClassMethodMap
   public: virtual void method_getClassMethodMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_classMethodMap & outClassMethodMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getConstructorMap
   public: virtual void method_getConstructorMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_constructorMap & outConstructorMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getGetterMap
   public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_getterMap & outGetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -688,7 +688,7 @@ class cPtr_boolPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension method getGetterMap
   public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_getterMap & outGetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -834,17 +834,17 @@ class cPtr_uintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension method getClassMethodMap
   public: virtual void method_getClassMethodMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_classMethodMap & outClassMethodMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getConstructorMap
   public: virtual void method_getConstructorMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_constructorMap & outConstructorMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getGetterMap
   public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_getterMap & outGetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -990,12 +990,12 @@ class cPtr_uint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension method getConstructorMap
   public: virtual void method_getConstructorMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_constructorMap & outConstructorMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getGetterMap
   public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_getterMap & outGetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -1141,12 +1141,12 @@ class cPtr_sintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension method getConstructorMap
   public: virtual void method_getConstructorMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_constructorMap & outConstructorMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getGetterMap
   public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_getterMap & outGetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -1292,12 +1292,12 @@ class cPtr_sint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension method getConstructorMap
   public: virtual void method_getConstructorMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_constructorMap & outConstructorMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getGetterMap
   public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_getterMap & outGetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -1443,12 +1443,12 @@ class cPtr_charPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension method getConstructorMap
   public: virtual void method_getConstructorMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_constructorMap & outConstructorMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getGetterMap
   public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_getterMap & outGetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -1594,12 +1594,12 @@ class cPtr_doublePredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension method getConstructorMap
   public: virtual void method_getConstructorMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_constructorMap & outConstructorMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getGetterMap
   public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_getterMap & outGetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -1745,27 +1745,27 @@ class cPtr_stringPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension method getClassMethodMap
   public: virtual void method_getClassMethodMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_classMethodMap & outClassMethodMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getConstructorMap
   public: virtual void method_getConstructorMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_constructorMap & outConstructorMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getGetterMap
   public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_getterMap & outGetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getInstanceMethodMap
   public: virtual void method_getInstanceMethodMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_instanceMethodMap & outInstanceMethodMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getSetterMap
   public: virtual void method_getSetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_setterMap & outSetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -1911,12 +1911,12 @@ class cPtr_locationPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension method getConstructorMap
   public: virtual void method_getConstructorMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_constructorMap & outConstructorMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getGetterMap
   public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_getterMap & outGetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -2062,28 +2062,28 @@ class cPtr_stringsetPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension method getAddAssignArgumentList
   public: virtual void method_getAddAssignArgumentList (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_functionSignature & outAddAssignArgumentList,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getConstructorMap
   public: virtual void method_getConstructorMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_constructorMap & outConstructorMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getEnumerationList
   public: virtual void method_getEnumerationList (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_enumerationDescriptorList & outEnumerationList,
            class GALGAS_string & outEnumeratedType,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getGetterMap
   public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_getterMap & outGetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getSetterMap
   public: virtual void method_getSetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_setterMap & outSetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -2229,12 +2229,12 @@ class cPtr_functionPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension method getConstructorMap
   public: virtual void method_getConstructorMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_constructorMap & outConstructorMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getGetterMap
   public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_getterMap & outGetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -2380,12 +2380,12 @@ class cPtr_typePredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension method getConstructorMap
   public: virtual void method_getConstructorMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_constructorMap & outConstructorMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getGetterMap
   public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_getterMap & outGetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -2531,28 +2531,28 @@ class cPtr_dataPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension method getConstructorMap
   public: virtual void method_getConstructorMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_constructorMap & outConstructorMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getEnumerationList
   public: virtual void method_getEnumerationList (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_enumerationDescriptorList & outEnumerationList,
            class GALGAS_string & outEnumeratedType,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getGetterMap
   public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_getterMap & outGetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getInstanceMethodMap
   public: virtual void method_getInstanceMethodMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_instanceMethodMap & outInstanceMethodMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getSetterMap
   public: virtual void method_getSetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_setterMap & outSetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -2698,17 +2698,17 @@ class cPtr_timerPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension method getConstructorMap
   public: virtual void method_getConstructorMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_constructorMap & outConstructorMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getGetterMap
   public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_getterMap & outGetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getSetterMap
   public: virtual void method_getSetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_setterMap & outSetterMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
 
@@ -2794,7 +2794,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_timerPredefinedType
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_getConstructorMap (const class cPtr_predefinedTypeAST * inObject,
+void callExtensionMethod_getConstructorMap (class cPtr_predefinedTypeAST * inObject,
                                             GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
                                             GALGAS_constructorMap & out_outConstructorMap,
                                             C_Compiler * inCompiler
@@ -2834,7 +2834,7 @@ class cMapElement_unifiedTypeMap : public cMapElement {
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_getGetterMap (const class cPtr_predefinedTypeAST * inObject,
+void callExtensionMethod_getGetterMap (class cPtr_predefinedTypeAST * inObject,
                                        GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
                                        GALGAS_getterMap & out_outGetterMap,
                                        C_Compiler * inCompiler
@@ -2846,7 +2846,7 @@ void callExtensionMethod_getGetterMap (const class cPtr_predefinedTypeAST * inOb
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_getSetterMap (const class cPtr_predefinedTypeAST * inObject,
+void callExtensionMethod_getSetterMap (class cPtr_predefinedTypeAST * inObject,
                                        GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
                                        GALGAS_setterMap & out_outSetterMap,
                                        C_Compiler * inCompiler
@@ -2858,7 +2858,7 @@ void callExtensionMethod_getSetterMap (const class cPtr_predefinedTypeAST * inOb
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_getInstanceMethodMap (const class cPtr_predefinedTypeAST * inObject,
+void callExtensionMethod_getInstanceMethodMap (class cPtr_predefinedTypeAST * inObject,
                                                GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
                                                GALGAS_instanceMethodMap & out_outInstanceMethodMap,
                                                C_Compiler * inCompiler
@@ -2870,7 +2870,7 @@ void callExtensionMethod_getInstanceMethodMap (const class cPtr_predefinedTypeAS
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_getClassMethodMap (const class cPtr_predefinedTypeAST * inObject,
+void callExtensionMethod_getClassMethodMap (class cPtr_predefinedTypeAST * inObject,
                                             GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
                                             GALGAS_classMethodMap & out_outClassMethodMap,
                                             C_Compiler * inCompiler
@@ -2892,7 +2892,7 @@ class GALGAS_operators callExtensionGetter_getSupportedOperatorFlags (const cPtr
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_getAddAssignArgumentList (const class cPtr_predefinedTypeAST * inObject,
+void callExtensionMethod_getAddAssignArgumentList (class cPtr_predefinedTypeAST * inObject,
                                                    GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
                                                    GALGAS_functionSignature & out_outAddAssignArgumentList,
                                                    C_Compiler * inCompiler
@@ -2904,7 +2904,7 @@ void callExtensionMethod_getAddAssignArgumentList (const class cPtr_predefinedTy
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_getEnumerationList (const class cPtr_predefinedTypeAST * inObject,
+void callExtensionMethod_getEnumerationList (class cPtr_predefinedTypeAST * inObject,
                                              GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
                                              GALGAS_enumerationDescriptorList & out_outEnumerationList,
                                              GALGAS_string & out_outEnumeratedType,
@@ -2937,7 +2937,7 @@ class GALGAS_string extensionGetter_commaSourceFile (const class GALGAS_location
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_enterInstructionInSemanticContext (const class cPtr_semanticInstructionAST * inObject,
+void callExtensionMethod_enterInstructionInSemanticContext (class cPtr_semanticInstructionAST * inObject,
                                                             GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
@@ -2948,7 +2948,7 @@ void callExtensionMethod_enterInstructionInSemanticContext (const class cPtr_sem
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_enterExpressionInSemanticContext (const class cPtr_semanticExpressionAST * inObject,
+void callExtensionMethod_enterExpressionInSemanticContext (class cPtr_semanticExpressionAST * inObject,
                                                            GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                            C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
@@ -6506,7 +6506,7 @@ class GALGAS_string callExtensionGetter_keyRepresentation (const class cPtr_sema
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_enterDeclarationInSemanticContext (const class cPtr_semanticDeclarationAST * inObject,
+void callExtensionMethod_enterDeclarationInSemanticContext (class cPtr_semanticDeclarationAST * inObject,
                                                             const GALGAS_extensionMethodMapForBuildingContext constin_inExtensionMethodMapForBuildingContext,
                                                             const GALGAS_extensionGetterMapForBuildingContext constin_inExtensionGetterMapForBuildingContext,
                                                             const GALGAS_extensionSetterMapForBuildingContext constin_inExtensionSetterMapForBuildingContext,
@@ -6804,7 +6804,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticTypePrecede
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_enterDeclarationInGraph (const class cPtr_semanticDeclarationAST * inObject,
+void callExtensionMethod_enterDeclarationInGraph (class cPtr_semanticDeclarationAST * inObject,
                                                   GALGAS_semanticTypePrecedenceGraph & io_ioSemanticTypePrecedenceGraph,
                                                   GALGAS_extensionMethodMapForBuildingContext & io_ioExtensionMethodMapForBuildingContext,
                                                   GALGAS_extensionGetterMapForBuildingContext & io_ioExtensionGetterMapForBuildingContext,
@@ -6819,7 +6819,7 @@ void callExtensionMethod_enterDeclarationInGraph (const class cPtr_semanticDecla
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_addAssociatedElement (const class cPtr_semanticDeclarationAST * inObject,
+void callExtensionMethod_addAssociatedElement (class cPtr_semanticDeclarationAST * inObject,
                                                GALGAS_semanticDeclarationListAST & io_ioSemanticDeclarationList,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
@@ -7167,7 +7167,7 @@ class cPtr_castInExpressionForGeneration : public cPtr_semanticExpressionForGene
            class GALGAS_uint & ioTemporaryVariableIndex,
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            class GALGAS_string & outCppExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mReceiverExpression ;
@@ -7319,7 +7319,7 @@ class cPtr_actualParameterForGeneration : public acStrongPtr_class {
            class GALGAS_stringlist & ioOutputVariableList,
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            class GALGAS_string & outCppName,
-           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
   public: GALGAS_unifiedTypeMapEntry mProperty_mFormalArgumentType ;
@@ -7401,7 +7401,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterForG
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_generateActualParameter (const class cPtr_actualParameterForGeneration * inObject,
+void callExtensionMethod_generateActualParameter (class cPtr_actualParameterForGeneration * inObject,
                                                   GALGAS_stringset & io_ioInclusionSet,
                                                   GALGAS_uint & io_ioTemporaryVariableIndex,
                                                   GALGAS_string & io_ioImplementation,
@@ -7484,7 +7484,7 @@ class cPtr_outputActualParameterForGeneration : public cPtr_actualParameterForGe
            class GALGAS_stringlist & ioOutputVariableList,
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            class GALGAS_string & outCppName,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mOutputActualParameterExpression ;
@@ -7648,7 +7648,7 @@ class cPtr_outputInputActualParameterForGeneration : public cPtr_actualParameter
            class GALGAS_stringlist & ioOutputVariableList,
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            class GALGAS_string & outCppName,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_string mProperty_mOutputInputVariableCppName ;
@@ -7804,7 +7804,7 @@ class cPtr_inputActualParameterForGeneration : public cPtr_actualParameterForGen
            class GALGAS_stringlist & ioOutputVariableList,
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            class GALGAS_string & outCppName,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_string mProperty_mInputActualCppName ;
@@ -7956,7 +7956,7 @@ class cPtr_inputJokerParameterForGeneration : public cPtr_actualParameterForGene
            class GALGAS_stringlist & ioOutputVariableList,
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            class GALGAS_string & outCppName,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_string mProperty_mInputActualCppName ;
@@ -8302,7 +8302,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstruction
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_generateInstruction (const class cPtr_semanticInstructionForGeneration * inObject,
+void callExtensionMethod_generateInstruction (class cPtr_semanticInstructionForGeneration * inObject,
                                               GALGAS_stringset & io_ioInclusionSet,
                                               GALGAS_uint & io_ioTemporaryVariableIndex,
                                               GALGAS_stringset & io_ioUnusedVariableCppNameSet,
@@ -8383,7 +8383,7 @@ class cPtr_semanticBlockInstructionForGeneration : public cPtr_semanticInstructi
            class GALGAS_stringset & ioUnusedVariableCppNameSet,
            const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
            class GALGAS_string & ioGeneratedCode,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_semanticInstructionListForGeneration mProperty_mInstructionList ;
