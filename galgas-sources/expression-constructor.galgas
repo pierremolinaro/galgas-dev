@@ -125,6 +125,26 @@ syntax extension galgas4ExpressionSyntax {
   #·····················································································································
   
   rule <primary> !@semanticExpressionAST outExpression {
+  #--- Type name
+    $@type$ ?let typeName indexing typeReferenceInConstructor
+    let startOfExpression = @location.here
+  #--- Actual arguments
+    let @actualOutputExpressionList expressionList
+    $($
+    <output_expression_list> ?expressionList
+    $)$
+    let endOfExpression = @location.here
+    outExpression = @constructorExpressionAST.new {
+      !typeName
+      !.new {!"new" !typeName}
+      !expressionList
+      ![startOfExpression union !endOfExpression]
+    }
+  }
+  
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
     <optional_type> ?let @lstring typeName
     $.$
     $default$

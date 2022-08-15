@@ -252,6 +252,9 @@ func traduire (projetGALGAS inCheminFichierGALGAS : String) -> (Bool, Int) {
         erreurSemantiqueRemplacement (errorMessageLines: lines, semanticErrorMessage: "'}' is obsolete here, use ')'", replacementString: ")", handled: &handled)
       }
       if !handled {
+        erreurSyntaxeRemplacement (errorMessageLines: lines, semanticErrorMessage: "found the 'refclass' keyword, expected:", replacementString: "class", handled: &handled)
+      }
+      if !handled {
         erreurSyntaxeRemplacement (errorMessageLines: lines, semanticErrorMessage: "found the 'method' keyword, expected:", replacementString: "proc", handled: &handled)
       }
       if !handled {
