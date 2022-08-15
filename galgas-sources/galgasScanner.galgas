@@ -187,8 +187,8 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "then",
   "true",
   "unused",
-  "valueclass",
   "var",
+  "valueclass",
   "warning",
   "while",
   "with"

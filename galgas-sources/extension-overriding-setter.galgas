@@ -23,6 +23,7 @@ syntax extension galgas3DeclarationsSyntax {
     $override$
     $setter$
     $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionSetterDefinition
+#    error className : "OVERRIDE SETTER"
     $identifier$ ?let @lstring setterName indexing overrideExtensionSetterDefinition
     <formal_parameter_list> ?let @formalParameterListAST formalParameterList
     ${$
@@ -54,6 +55,7 @@ syntax extension galgas4DeclarationsSyntax {
     $override$
     $setter$
     $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionSetterDefinition
+    error className : "OVERRIDE SETTER"
     $identifier$ ?let @lstring setterName indexing overrideExtensionSetterDefinition
     <formal_parameter_list> ?let @formalParameterListAST formalParameterList
     ${$

@@ -1397,7 +1397,7 @@ void routine_checkAssignmentTypeWithImplicitGetterCall (const GALGAS_unifiedType
                 inCompiler->emitSemanticError (ioArgument_ioExpression.readProperty_mLocation (), GALGAS_string ("literal value (").add_operation (var_bigIntValue_4180.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 82)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 82)).add_operation (GALGAS_string (") does not fit in an @sint"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 82)), fixItArray6  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 82)) ;
               }
             }
-            ioArgument_ioExpression = GALGAS_literalSIntExpressionForGeneration::constructor_new (constinArgument_inTargetType, ioArgument_ioExpression.readProperty_mLocation (), var_bigIntValue_4180.getter_uint (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 84)).getter_sint (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 84))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 84)) ;
+            ioArgument_ioExpression = GALGAS_literalSIntExpressionForGeneration::constructor_new (constinArgument_inTargetType, ioArgument_ioExpression.readProperty_mLocation (), var_bigIntValue_4180.getter_sint (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 84))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 84)) ;
             var_handled_3589 = GALGAS_bool (true) ;
           }
         }
@@ -1415,7 +1415,7 @@ void routine_checkAssignmentTypeWithImplicitGetterCall (const GALGAS_unifiedType
                   inCompiler->emitSemanticError (ioArgument_ioExpression.readProperty_mLocation (), GALGAS_string ("literal value (").add_operation (var_bigIntValue_4611.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 89)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 89)).add_operation (GALGAS_string (") does not fit in an @uint64"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 89)), fixItArray9  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 89)) ;
                 }
               }
-              ioArgument_ioExpression = GALGAS_literalUInt_36__34_ExpressionForGeneration::constructor_new (constinArgument_inTargetType, ioArgument_ioExpression.readProperty_mLocation (), var_bigIntValue_4611.getter_uint (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 91)).getter_uint_36__34_ (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 91))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 91)) ;
+              ioArgument_ioExpression = GALGAS_literalUInt_36__34_ExpressionForGeneration::constructor_new (constinArgument_inTargetType, ioArgument_ioExpression.readProperty_mLocation (), var_bigIntValue_4611.getter_uint_36__34_ (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 91))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 91)) ;
               var_handled_3589 = GALGAS_bool (true) ;
             }
           }
@@ -1424,16 +1424,16 @@ void routine_checkAssignmentTypeWithImplicitGetterCall (const GALGAS_unifiedType
             if (kBoolTrue == test_10) {
               test_10 = GALGAS_bool (kIsEqual, GALGAS_string ("sint64").objectCompare (extensionGetter_definition (constinArgument_inTargetType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 93)).readProperty_mTypeName ().readProperty_string ())).boolEnum () ;
               if (kBoolTrue == test_10) {
-                GALGAS_bigint var_bigIntValue_5037 = var_bigIntSource_3619.readProperty_mValue () ;
+                GALGAS_bigint var_bigIntValue_5039 = var_bigIntSource_3619.readProperty_mValue () ;
                 enumGalgasBool test_11 = kBoolTrue ;
                 if (kBoolTrue == test_11) {
-                  test_11 = GALGAS_bool (kIsStrictInf, var_bigIntValue_5037.objectCompare (GALGAS_bigint ("-9223372036854775808", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 95)))).operator_or (GALGAS_bool (kIsSupOrEqual, var_bigIntValue_5037.objectCompare (GALGAS_bigint ("9223372036854775808", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 95)))) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 95)).boolEnum () ;
+                  test_11 = GALGAS_bool (kIsStrictInf, var_bigIntValue_5039.objectCompare (GALGAS_bigint ("-9223372036854775808", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 95)))).operator_or (GALGAS_bool (kIsSupOrEqual, var_bigIntValue_5039.objectCompare (GALGAS_bigint ("9223372036854775808", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 95)))) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 95)).boolEnum () ;
                   if (kBoolTrue == test_11) {
                     TC_Array <C_FixItDescription> fixItArray12 ;
-                    inCompiler->emitSemanticError (ioArgument_ioExpression.readProperty_mLocation (), GALGAS_string ("literal value (").add_operation (var_bigIntValue_5037.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 96)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 96)).add_operation (GALGAS_string (") does not fit in an @sint64"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 96)), fixItArray12  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 96)) ;
+                    inCompiler->emitSemanticError (ioArgument_ioExpression.readProperty_mLocation (), GALGAS_string ("literal value (").add_operation (var_bigIntValue_5039.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 96)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 96)).add_operation (GALGAS_string (") does not fit in an @sint64"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 96)), fixItArray12  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 96)) ;
                   }
                 }
-                ioArgument_ioExpression = GALGAS_literalSInt_36__34_ExpressionForGeneration::constructor_new (constinArgument_inTargetType, ioArgument_ioExpression.readProperty_mLocation (), var_bigIntValue_5037.getter_uint (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 98)).getter_sint_36__34_ (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 98))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 98)) ;
+                ioArgument_ioExpression = GALGAS_literalSInt_36__34_ExpressionForGeneration::constructor_new (constinArgument_inTargetType, ioArgument_ioExpression.readProperty_mLocation (), var_bigIntValue_5039.getter_sint_36__34_ (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 98))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 98)) ;
                 var_handled_3589 = GALGAS_bool (true) ;
               }
             }
@@ -1446,55 +1446,55 @@ void routine_checkAssignmentTypeWithImplicitGetterCall (const GALGAS_unifiedType
   if (kBoolTrue == test_13) {
     test_13 = var_handled_3589.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 102)).boolEnum () ;
     if (kBoolTrue == test_13) {
-      GALGAS_unifiedTypeMapEntry var_sourceType_5463 = constinArgument_inSourceType ;
-      GALGAS_bool var_ok_5495 = GALGAS_bool (kIsEqual, constinArgument_inTargetType.objectCompare (constinArgument_inSourceType)) ;
+      GALGAS_unifiedTypeMapEntry var_sourceType_5467 = constinArgument_inSourceType ;
+      GALGAS_bool var_ok_5499 = GALGAS_bool (kIsEqual, constinArgument_inTargetType.objectCompare (constinArgument_inSourceType)) ;
       if (GALGAS_uint::constructor_max (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)).isValid ()) {
-        uint32_t variant_5535 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)).uintValue () ;
-        bool loop_5535 = true ;
-        while (loop_5535) {
-          loop_5535 = var_ok_5495.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)).operator_and (extensionGetter_definition (var_sourceType_5463, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)).operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)).isValid () ;
-          if (loop_5535) {
-            loop_5535 = var_ok_5495.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)).operator_and (extensionGetter_definition (var_sourceType_5463, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)).operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)).boolValue () ;
+        uint32_t variant_5539 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)).uintValue () ;
+        bool loop_5539 = true ;
+        while (loop_5539) {
+          loop_5539 = var_ok_5499.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)).operator_and (extensionGetter_definition (var_sourceType_5467, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)).operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)).isValid () ;
+          if (loop_5539) {
+            loop_5539 = var_ok_5499.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)).operator_and (extensionGetter_definition (var_sourceType_5467, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)).operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)).boolValue () ;
           }
-          if (loop_5535 && (0 == variant_5535)) {
-            loop_5535 = false ;
+          if (loop_5539 && (0 == variant_5539)) {
+            loop_5539 = false ;
             inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 105)) ;
           }
-          if (loop_5535) {
-            variant_5535 -- ;
-            var_sourceType_5463 = extensionGetter_definition (var_sourceType_5463, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 106)).readProperty_mSuperType () ;
-            var_ok_5495 = GALGAS_bool (kIsEqual, constinArgument_inTargetType.objectCompare (var_sourceType_5463)) ;
+          if (loop_5539) {
+            variant_5539 -- ;
+            var_sourceType_5467 = extensionGetter_definition (var_sourceType_5467, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 106)).readProperty_mSuperType () ;
+            var_ok_5499 = GALGAS_bool (kIsEqual, constinArgument_inTargetType.objectCompare (var_sourceType_5467)) ;
           }
         }
       }
       enumGalgasBool test_14 = kBoolTrue ;
       if (kBoolTrue == test_14) {
-        test_14 = var_ok_5495.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 109)).boolEnum () ;
+        test_14 = var_ok_5499.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 109)).boolEnum () ;
         if (kBoolTrue == test_14) {
-          GALGAS_unifiedTypeMapEntry var_targetType_5826 ;
-          const bool optionalResult5795 = extensionGetter_definition (constinArgument_inTargetType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 109)).readProperty_mTypeKindEnum ().optional_weakReferenceType (var_targetType_5826) ;
-          if (!optionalResult5795) {
+          GALGAS_unifiedTypeMapEntry var_targetType_5830 ;
+          const bool optionalResult5799 = extensionGetter_definition (constinArgument_inTargetType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 109)).readProperty_mTypeKindEnum ().optional_weakReferenceType (var_targetType_5830) ;
+          if (!optionalResult5799) {
             test_14 = kBoolFalse ;
           }
           if (kBoolTrue == test_14) {
-            var_sourceType_5463 = constinArgument_inSourceType ;
-            var_ok_5495 = GALGAS_bool (kIsEqual, var_targetType_5826.objectCompare (var_sourceType_5463)) ;
+            var_sourceType_5467 = constinArgument_inSourceType ;
+            var_ok_5499 = GALGAS_bool (kIsEqual, var_targetType_5830.objectCompare (var_sourceType_5467)) ;
             if (GALGAS_uint::constructor_max (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)).isValid ()) {
-              uint32_t variant_5911 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)).uintValue () ;
-              bool loop_5911 = true ;
-              while (loop_5911) {
-                loop_5911 = var_ok_5495.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)).operator_and (extensionGetter_definition (var_sourceType_5463, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)).operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)).isValid () ;
-                if (loop_5911) {
-                  loop_5911 = var_ok_5495.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)).operator_and (extensionGetter_definition (var_sourceType_5463, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)).operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)).boolValue () ;
+              uint32_t variant_5915 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)).uintValue () ;
+              bool loop_5915 = true ;
+              while (loop_5915) {
+                loop_5915 = var_ok_5499.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)).operator_and (extensionGetter_definition (var_sourceType_5467, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)).operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)).isValid () ;
+                if (loop_5915) {
+                  loop_5915 = var_ok_5499.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)).operator_and (extensionGetter_definition (var_sourceType_5467, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)).operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)).boolValue () ;
                 }
-                if (loop_5911 && (0 == variant_5911)) {
-                  loop_5911 = false ;
+                if (loop_5915 && (0 == variant_5915)) {
+                  loop_5915 = false ;
                   inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 112)) ;
                 }
-                if (loop_5911) {
-                  variant_5911 -- ;
-                  var_sourceType_5463 = extensionGetter_definition (var_sourceType_5463, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 113)).readProperty_mSuperType () ;
-                  var_ok_5495 = GALGAS_bool (kIsEqual, var_targetType_5826.objectCompare (var_sourceType_5463)) ;
+                if (loop_5915) {
+                  variant_5915 -- ;
+                  var_sourceType_5467 = extensionGetter_definition (var_sourceType_5467, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 113)).readProperty_mSuperType () ;
+                  var_ok_5499 = GALGAS_bool (kIsEqual, var_targetType_5830.objectCompare (var_sourceType_5467)) ;
                 }
               }
             }
@@ -1503,56 +1503,56 @@ void routine_checkAssignmentTypeWithImplicitGetterCall (const GALGAS_unifiedType
       }
       enumGalgasBool test_15 = kBoolTrue ;
       if (kBoolTrue == test_15) {
-        test_15 = var_ok_5495.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 118)).boolEnum () ;
+        test_15 = var_ok_5499.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 118)).boolEnum () ;
         if (kBoolTrue == test_15) {
-          GALGAS_bool var_isPublic_6301 ;
-          GALGAS_bool var_unused_0_6304 ;
-          GALGAS_unifiedTypeMapEntry var_propertyType_6322 ;
-          const bool optionalResult6243 = extensionGetter_definition (constinArgument_inSourceType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 118)).readProperty_mPropertyMap ().optional_searchKey (extensionGetter_definition (constinArgument_inTargetType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 118)).readProperty_mTypeName ().readProperty_string (), var_isPublic_6301, var_unused_0_6304, var_propertyType_6322) ;
-          if (!optionalResult6243) {
+          GALGAS_bool var_isPublic_6305 ;
+          GALGAS_bool var_unused_0_6308 ;
+          GALGAS_unifiedTypeMapEntry var_propertyType_6326 ;
+          const bool optionalResult6247 = extensionGetter_definition (constinArgument_inSourceType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 118)).readProperty_mPropertyMap ().optional_searchKey (extensionGetter_definition (constinArgument_inTargetType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 118)).readProperty_mTypeName ().readProperty_string (), var_isPublic_6305, var_unused_0_6308, var_propertyType_6326) ;
+          if (!optionalResult6247) {
             test_15 = kBoolFalse ;
           }
           if (kBoolTrue == test_15) {
             enumGalgasBool test_16 = kBoolTrue ;
             if (kBoolTrue == test_16) {
-              test_16 = var_isPublic_6301.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 119)).boolEnum () ;
+              test_16 = var_isPublic_6305.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 119)).boolEnum () ;
               if (kBoolTrue == test_16) {
                 TC_Array <C_FixItDescription> fixItArray17 ;
                 inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string (" inaccessible property (due to its 'private' qualifier)"), fixItArray17  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 120)) ;
               }
             }
-            GALGAS_structPropertyAccessExpressionForGeneration var_conversionExpression_6486 = GALGAS_structPropertyAccessExpressionForGeneration::constructor_new (var_propertyType_6322, constinArgument_inErrorLocation, ioArgument_ioExpression, extensionGetter_definition (constinArgument_inTargetType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 126)).readProperty_mTypeName ().readProperty_string ()  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 122)) ;
-            ioArgument_ioExpression = var_conversionExpression_6486 ;
-            var_ok_5495 = GALGAS_bool (kIsEqual, var_propertyType_6322.objectCompare (constinArgument_inTargetType)) ;
+            GALGAS_structPropertyAccessExpressionForGeneration var_conversionExpression_6490 = GALGAS_structPropertyAccessExpressionForGeneration::constructor_new (var_propertyType_6326, constinArgument_inErrorLocation, ioArgument_ioExpression, extensionGetter_definition (constinArgument_inTargetType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 126)).readProperty_mTypeName ().readProperty_string ()  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 122)) ;
+            ioArgument_ioExpression = var_conversionExpression_6490 ;
+            var_ok_5499 = GALGAS_bool (kIsEqual, var_propertyType_6326.objectCompare (constinArgument_inTargetType)) ;
           }
         }
       }
       if (kBoolFalse == test_15) {
         enumGalgasBool test_18 = kBoolTrue ;
         if (kBoolTrue == test_18) {
-          GALGAS_bool test_19 = var_ok_5495.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 130)) ;
+          GALGAS_bool test_19 = var_ok_5499.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 130)) ;
           if (kBoolTrue == test_19.boolEnum ()) {
             test_19 = extensionGetter_definition (constinArgument_inSourceType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 130)).readProperty_mGetterMap ().getter_hasKey (extensionGetter_definition (constinArgument_inTargetType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 130)).readProperty_mTypeName ().readProperty_string () COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 130)) ;
           }
           test_18 = test_19.boolEnum () ;
           if (kBoolTrue == test_18) {
-            GALGAS_methodKind var_kind_6985 ;
-            GALGAS_functionSignature var_argumentTypeList_7034 ;
-            GALGAS_bool var_hasCompilerArgument_7078 ;
-            GALGAS_unifiedTypeMapEntry var_returnedType_7104 ;
-            GALGAS_location joker_7044 ; // Joker input parameter
-            GALGAS_methodQualifier joker_7114_2 ; // Joker input parameter
-            GALGAS_string joker_7114_1 ; // Joker input parameter
-            extensionGetter_definition (constinArgument_inSourceType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 131)).readProperty_mGetterMap ().method_searchKey (extensionGetter_definition (constinArgument_inTargetType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 132)).readProperty_mTypeName (), var_kind_6985, var_argumentTypeList_7034, joker_7044, var_hasCompilerArgument_7078, var_returnedType_7104, joker_7114_2, joker_7114_1, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 131)) ;
-            var_ok_5495 = GALGAS_bool (kIsEqual, var_argumentTypeList_7034.getter_length (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 140)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 140)).getter_uint (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 140)))).operator_and (GALGAS_bool (kIsEqual, var_returnedType_7104.objectCompare (constinArgument_inTargetType)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 140)) ;
-            GALGAS_getterCallExpressionForGeneration var_conversionExpression_7266 = GALGAS_getterCallExpressionForGeneration::constructor_new (constinArgument_inTargetType, constinArgument_inErrorLocation, var_kind_6985, ioArgument_ioExpression, GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 147)), extensionGetter_definition (constinArgument_inTargetType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 148)).readProperty_mTypeName ().readProperty_string (), GALGAS_semanticExpressionListForGeneration::constructor_emptyList (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 149)), var_hasCompilerArgument_7078  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 142)) ;
-            ioArgument_ioExpression = var_conversionExpression_7266 ;
+            GALGAS_methodKind var_kind_6989 ;
+            GALGAS_functionSignature var_argumentTypeList_7038 ;
+            GALGAS_bool var_hasCompilerArgument_7082 ;
+            GALGAS_unifiedTypeMapEntry var_returnedType_7108 ;
+            GALGAS_location joker_7048 ; // Joker input parameter
+            GALGAS_methodQualifier joker_7118_2 ; // Joker input parameter
+            GALGAS_string joker_7118_1 ; // Joker input parameter
+            extensionGetter_definition (constinArgument_inSourceType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 131)).readProperty_mGetterMap ().method_searchKey (extensionGetter_definition (constinArgument_inTargetType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 132)).readProperty_mTypeName (), var_kind_6989, var_argumentTypeList_7038, joker_7048, var_hasCompilerArgument_7082, var_returnedType_7108, joker_7118_2, joker_7118_1, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 131)) ;
+            var_ok_5499 = GALGAS_bool (kIsEqual, var_argumentTypeList_7038.getter_length (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 140)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 140)).getter_uint (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 140)))).operator_and (GALGAS_bool (kIsEqual, var_returnedType_7108.objectCompare (constinArgument_inTargetType)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 140)) ;
+            GALGAS_getterCallExpressionForGeneration var_conversionExpression_7270 = GALGAS_getterCallExpressionForGeneration::constructor_new (constinArgument_inTargetType, constinArgument_inErrorLocation, var_kind_6989, ioArgument_ioExpression, GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 147)), extensionGetter_definition (constinArgument_inTargetType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 148)).readProperty_mTypeName ().readProperty_string (), GALGAS_semanticExpressionListForGeneration::constructor_emptyList (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 149)), var_hasCompilerArgument_7082  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 142)) ;
+            ioArgument_ioExpression = var_conversionExpression_7270 ;
           }
         }
       }
       enumGalgasBool test_20 = kBoolTrue ;
       if (kBoolTrue == test_20) {
-        test_20 = var_ok_5495.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 154)).boolEnum () ;
+        test_20 = var_ok_5499.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 154)).boolEnum () ;
         if (kBoolTrue == test_20) {
           TC_Array <C_FixItDescription> fixItArray21 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("target object type is '@").add_operation (extensionGetter_definition (constinArgument_inTargetType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 156)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 156)).add_operation (GALGAS_string ("' and cannot be assigned from an '@"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 156)).add_operation (extensionGetter_definition (constinArgument_inSourceType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 156)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 156)).add_operation (GALGAS_string ("' object; this type have no '"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 156)).add_operation (extensionGetter_definition (constinArgument_inTargetType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 158)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 157)).add_operation (GALGAS_string ("' getter without argument that returns a '@"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 158)).add_operation (extensionGetter_definition (constinArgument_inTargetType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 158)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 158)).add_operation (GALGAS_string ("' object"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 158)), fixItArray21  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 155)) ;
@@ -1586,79 +1586,79 @@ void routine_checkDiadicOperator (const GALGAS_unifiedTypeMapEntry constinArgume
     }
   }
   if (kBoolFalse == test_0) {
-    GALGAS_unifiedTypeMapEntry var_rightType_8832 = constinArgument_inRightType ;
-    GALGAS_bool var_ok_8863 = GALGAS_bool (kIsEqual, constinArgument_inLeftType.objectCompare (var_rightType_8832)) ;
+    GALGAS_unifiedTypeMapEntry var_rightType_8836 = constinArgument_inRightType ;
+    GALGAS_bool var_ok_8867 = GALGAS_bool (kIsEqual, constinArgument_inLeftType.objectCompare (var_rightType_8836)) ;
     if (GALGAS_uint::constructor_max (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)).isValid ()) {
-      uint32_t variant_8898 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)).uintValue () ;
-      bool loop_8898 = true ;
-      while (loop_8898) {
-        loop_8898 = var_ok_8863.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)).operator_and (extensionGetter_definition (var_rightType_8832, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)).operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)).isValid () ;
-        if (loop_8898) {
-          loop_8898 = var_ok_8863.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)).operator_and (extensionGetter_definition (var_rightType_8832, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)).operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)).boolValue () ;
+      uint32_t variant_8902 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)).uintValue () ;
+      bool loop_8902 = true ;
+      while (loop_8902) {
+        loop_8902 = var_ok_8867.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)).operator_and (extensionGetter_definition (var_rightType_8836, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)).operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)).isValid () ;
+        if (loop_8902) {
+          loop_8902 = var_ok_8867.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)).operator_and (extensionGetter_definition (var_rightType_8836, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)).operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)).boolValue () ;
         }
-        if (loop_8898 && (0 == variant_8898)) {
-          loop_8898 = false ;
+        if (loop_8902 && (0 == variant_8902)) {
+          loop_8902 = false ;
           inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 178)) ;
         }
-        if (loop_8898) {
-          variant_8898 -- ;
-          var_rightType_8832 = extensionGetter_definition (var_rightType_8832, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 179)).readProperty_mSuperType () ;
-          var_ok_8863 = GALGAS_bool (kIsEqual, constinArgument_inLeftType.objectCompare (var_rightType_8832)) ;
+        if (loop_8902) {
+          variant_8902 -- ;
+          var_rightType_8836 = extensionGetter_definition (var_rightType_8836, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 179)).readProperty_mSuperType () ;
+          var_ok_8867 = GALGAS_bool (kIsEqual, constinArgument_inLeftType.objectCompare (var_rightType_8836)) ;
         }
       }
     }
     enumGalgasBool test_2 = kBoolTrue ;
     if (kBoolTrue == test_2) {
-      test_2 = var_ok_8863.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 183)).boolEnum () ;
+      test_2 = var_ok_8867.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 183)).boolEnum () ;
       if (kBoolTrue == test_2) {
-        GALGAS_bool var_isPublic_9265 ;
-        GALGAS_bool var_unused_0_9268 ;
-        GALGAS_unifiedTypeMapEntry var_propertyType_9286 ;
-        const bool optionalResult9209 = extensionGetter_definition (constinArgument_inRightType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 183)).readProperty_mPropertyMap ().optional_searchKey (extensionGetter_definition (constinArgument_inLeftType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 183)).readProperty_mTypeName ().readProperty_string (), var_isPublic_9265, var_unused_0_9268, var_propertyType_9286) ;
-        if (!optionalResult9209) {
+        GALGAS_bool var_isPublic_9269 ;
+        GALGAS_bool var_unused_0_9272 ;
+        GALGAS_unifiedTypeMapEntry var_propertyType_9290 ;
+        const bool optionalResult9213 = extensionGetter_definition (constinArgument_inRightType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 183)).readProperty_mPropertyMap ().optional_searchKey (extensionGetter_definition (constinArgument_inLeftType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 183)).readProperty_mTypeName ().readProperty_string (), var_isPublic_9269, var_unused_0_9272, var_propertyType_9290) ;
+        if (!optionalResult9213) {
           test_2 = kBoolFalse ;
         }
         if (kBoolTrue == test_2) {
           enumGalgasBool test_3 = kBoolTrue ;
           if (kBoolTrue == test_3) {
-            test_3 = var_isPublic_9265.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 184)).boolEnum () ;
+            test_3 = var_isPublic_9269.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 184)).boolEnum () ;
             if (kBoolTrue == test_3) {
               TC_Array <C_FixItDescription> fixItArray4 ;
               inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string (" inaccessible property (due to its 'private' qualifier)"), fixItArray4  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 185)) ;
             }
           }
-          GALGAS_structPropertyAccessExpressionForGeneration var_conversionExpression_9450 = GALGAS_structPropertyAccessExpressionForGeneration::constructor_new (var_propertyType_9286, constinArgument_inErrorLocation, ioArgument_ioRightExpression, extensionGetter_definition (constinArgument_inLeftType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 191)).readProperty_mTypeName ().readProperty_string ()  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 187)) ;
-          ioArgument_ioRightExpression = var_conversionExpression_9450 ;
-          var_ok_8863 = GALGAS_bool (kIsEqual, var_propertyType_9286.objectCompare (constinArgument_inLeftType)) ;
+          GALGAS_structPropertyAccessExpressionForGeneration var_conversionExpression_9454 = GALGAS_structPropertyAccessExpressionForGeneration::constructor_new (var_propertyType_9290, constinArgument_inErrorLocation, ioArgument_ioRightExpression, extensionGetter_definition (constinArgument_inLeftType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 191)).readProperty_mTypeName ().readProperty_string ()  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 187)) ;
+          ioArgument_ioRightExpression = var_conversionExpression_9454 ;
+          var_ok_8867 = GALGAS_bool (kIsEqual, var_propertyType_9290.objectCompare (constinArgument_inLeftType)) ;
         }
       }
     }
     if (kBoolFalse == test_2) {
       enumGalgasBool test_5 = kBoolTrue ;
       if (kBoolTrue == test_5) {
-        GALGAS_bool test_6 = var_ok_8863.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 195)) ;
+        GALGAS_bool test_6 = var_ok_8867.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 195)) ;
         if (kBoolTrue == test_6.boolEnum ()) {
           test_6 = extensionGetter_definition (constinArgument_inRightType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 195)).readProperty_mGetterMap ().getter_hasKey (extensionGetter_definition (constinArgument_inLeftType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 195)).readProperty_mTypeName ().readProperty_string () COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 195)) ;
         }
         test_5 = test_6.boolEnum () ;
         if (kBoolTrue == test_5) {
-          GALGAS_methodKind var_kind_9949 ;
-          GALGAS_functionSignature var_argumentTypeList_9998 ;
-          GALGAS_bool var_hasCompilerArgument_10042 ;
-          GALGAS_unifiedTypeMapEntry var_returnedType_10068 ;
-          GALGAS_location joker_10008 ; // Joker input parameter
-          GALGAS_methodQualifier joker_10078_2 ; // Joker input parameter
-          GALGAS_string joker_10078_1 ; // Joker input parameter
-          extensionGetter_definition (constinArgument_inRightType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 196)).readProperty_mGetterMap ().method_searchKey (extensionGetter_definition (constinArgument_inLeftType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 197)).readProperty_mTypeName (), var_kind_9949, var_argumentTypeList_9998, joker_10008, var_hasCompilerArgument_10042, var_returnedType_10068, joker_10078_2, joker_10078_1, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 196)) ;
-          var_ok_8863 = GALGAS_bool (kIsEqual, var_argumentTypeList_9998.getter_length (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 205)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 205)).getter_uint (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 205)))).operator_and (GALGAS_bool (kIsEqual, var_returnedType_10068.objectCompare (constinArgument_inLeftType)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 205)) ;
-          GALGAS_getterCallExpressionForGeneration var_conversionExpression_10228 = GALGAS_getterCallExpressionForGeneration::constructor_new (constinArgument_inLeftType, constinArgument_inErrorLocation, var_kind_9949, ioArgument_ioRightExpression, GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 212)), extensionGetter_definition (constinArgument_inLeftType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 213)).readProperty_mTypeName ().readProperty_string (), GALGAS_semanticExpressionListForGeneration::constructor_emptyList (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 214)), var_hasCompilerArgument_10042  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 207)) ;
-          ioArgument_ioRightExpression = var_conversionExpression_10228 ;
+          GALGAS_methodKind var_kind_9953 ;
+          GALGAS_functionSignature var_argumentTypeList_10002 ;
+          GALGAS_bool var_hasCompilerArgument_10046 ;
+          GALGAS_unifiedTypeMapEntry var_returnedType_10072 ;
+          GALGAS_location joker_10012 ; // Joker input parameter
+          GALGAS_methodQualifier joker_10082_2 ; // Joker input parameter
+          GALGAS_string joker_10082_1 ; // Joker input parameter
+          extensionGetter_definition (constinArgument_inRightType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 196)).readProperty_mGetterMap ().method_searchKey (extensionGetter_definition (constinArgument_inLeftType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 197)).readProperty_mTypeName (), var_kind_9953, var_argumentTypeList_10002, joker_10012, var_hasCompilerArgument_10046, var_returnedType_10072, joker_10082_2, joker_10082_1, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 196)) ;
+          var_ok_8867 = GALGAS_bool (kIsEqual, var_argumentTypeList_10002.getter_length (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 205)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 205)).getter_uint (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 205)))).operator_and (GALGAS_bool (kIsEqual, var_returnedType_10072.objectCompare (constinArgument_inLeftType)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 205)) ;
+          GALGAS_getterCallExpressionForGeneration var_conversionExpression_10232 = GALGAS_getterCallExpressionForGeneration::constructor_new (constinArgument_inLeftType, constinArgument_inErrorLocation, var_kind_9953, ioArgument_ioRightExpression, GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 212)), extensionGetter_definition (constinArgument_inLeftType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 213)).readProperty_mTypeName ().readProperty_string (), GALGAS_semanticExpressionListForGeneration::constructor_emptyList (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 214)), var_hasCompilerArgument_10046  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 207)) ;
+          ioArgument_ioRightExpression = var_conversionExpression_10232 ;
         }
       }
     }
     enumGalgasBool test_7 = kBoolTrue ;
     if (kBoolTrue == test_7) {
-      test_7 = var_ok_8863.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)).boolEnum () ;
+      test_7 = var_ok_8867.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)).boolEnum () ;
       if (kBoolTrue == test_7) {
         TC_Array <C_FixItDescription> fixItArray8 ;
         inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("left operand type of '").add_operation (constinArgument_inOperatorNameForErrorMessage, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 221)).add_operation (GALGAS_string ("' operator is '@"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 221)).add_operation (extensionGetter_definition (constinArgument_inLeftType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 221)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 221)).add_operation (GALGAS_string ("', right operand type is '@"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 221)).add_operation (extensionGetter_definition (constinArgument_inRightType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 222)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 222)).add_operation (GALGAS_string ("', it should be either the same, either inherits from left operand type, either have a '"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 222)).add_operation (extensionGetter_definition (constinArgument_inLeftType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 224)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 223)).add_operation (GALGAS_string ("' getter without argument that returns a '@"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 224)).add_operation (extensionGetter_definition (constinArgument_inLeftType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 224)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 224)).add_operation (GALGAS_string ("' object"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 224)), fixItArray8  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 220)) ;

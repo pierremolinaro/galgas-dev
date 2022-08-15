@@ -4869,11 +4869,11 @@ static const char * gSyntaxErrorMessage_galgas_33_Scanner_true = "the 'true' key
 //--- Syntax error message for terminal '$unused$' :
 static const char * gSyntaxErrorMessage_galgas_33_Scanner_unused = "the 'unused' keyword" ;
 
-//--- Syntax error message for terminal '$valueclass$' :
-static const char * gSyntaxErrorMessage_galgas_33_Scanner_valueclass = "the 'valueclass' keyword" ;
-
 //--- Syntax error message for terminal '$var$' :
 static const char * gSyntaxErrorMessage_galgas_33_Scanner_var = "the 'var' keyword" ;
+
+//--- Syntax error message for terminal '$valueclass$' :
+static const char * gSyntaxErrorMessage_galgas_33_Scanner_valueclass = "the 'valueclass' keyword" ;
 
 //--- Syntax error message for terminal '$warning$' :
 static const char * gSyntaxErrorMessage_galgas_33_Scanner_warning = "the 'warning' keyword" ;
@@ -5126,8 +5126,8 @@ C_String C_Lexique_galgas_33_Scanner::getMessageForTerminal (const int16_t inTer
         gSyntaxErrorMessage_galgas_33_Scanner_then,
         gSyntaxErrorMessage_galgas_33_Scanner_true,
         gSyntaxErrorMessage_galgas_33_Scanner_unused,
-        gSyntaxErrorMessage_galgas_33_Scanner_valueclass,
         gSyntaxErrorMessage_galgas_33_Scanner_var,
+        gSyntaxErrorMessage_galgas_33_Scanner_valueclass,
         gSyntaxErrorMessage_galgas_33_Scanner_warning,
         gSyntaxErrorMessage_galgas_33_Scanner_while,
         gSyntaxErrorMessage_galgas_33_Scanner_with,
@@ -7116,14 +7116,14 @@ C_String C_Lexique_galgas_33_Scanner::getCurrentTokenString (const cToken * inTo
       s.appendCString ("unused") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
-    case kToken_valueclass:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("valueclass") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
     case kToken_var:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("var") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
+    case kToken_valueclass:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("valueclass") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_warning:
@@ -8491,8 +8491,8 @@ GALGAS_stringlist C_Lexique_galgas_33_Scanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("then") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("true") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("unused") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("valueclass") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("var") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("valueclass") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("warning") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("while") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("with") COMMA_THERE) ;
@@ -8809,8 +8809,8 @@ uint32_t C_Lexique_galgas_33_Scanner::styleIndexForTerminal (const int32_t inTer
     1 /* galgas3Scanner_1_then */,
     1 /* galgas3Scanner_1_true */,
     1 /* galgas3Scanner_1_unused */,
-    1 /* galgas3Scanner_1_valueclass */,
     1 /* galgas3Scanner_1_var */,
+    1 /* galgas3Scanner_1_valueclass */,
     1 /* galgas3Scanner_1_warning */,
     1 /* galgas3Scanner_1_while */,
     1 /* galgas3Scanner_1_with */,

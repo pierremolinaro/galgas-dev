@@ -81,21 +81,21 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
       if (bigIntValue < -(1 << 31)) | (bigIntValue >= (1 << 31)) then
         error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint"
       end
-      ioExpression = @literalSIntExpressionForGeneration.new {!inTargetType !ioExpression.mLocation ![bigIntValue uint]}
+      ioExpression = @literalSIntExpressionForGeneration.new {!inTargetType !ioExpression.mLocation ![bigIntValue sint]}
       handled = true
     elsif "uint64" == [inTargetType definition].mTypeName then
       let bigIntValue = bigIntSource.mValue
       if (bigIntValue < 0) | (bigIntValue >= (1 << 64)) then
         error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint64"
       end
-      ioExpression = @literalUInt64ExpressionForGeneration.new {!inTargetType !ioExpression.mLocation ![bigIntValue uint]}
+      ioExpression = @literalUInt64ExpressionForGeneration.new {!inTargetType !ioExpression.mLocation ![bigIntValue uint64]}
       handled = true
     elsif "sint64" == [inTargetType definition].mTypeName then
       let bigIntValue = bigIntSource.mValue
       if (bigIntValue < -(1 << 63)) | (bigIntValue >= (1 << 63)) then
         error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint64"
       end
-      ioExpression = @literalSInt64ExpressionForGeneration.new {!inTargetType !ioExpression.mLocation ![bigIntValue uint]}
+      ioExpression = @literalSInt64ExpressionForGeneration.new {!inTargetType !ioExpression.mLocation ![bigIntValue sint64]}
       handled = true
     end
   end
