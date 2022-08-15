@@ -283,3 +283,7 @@ TSWLatexianTemp*
 # expex forward references with \gathertags
 *-tags.tex
 TEST_GALGAS/**
+testsuite/xcode-project/build/*
+testsuite/xcode-project/testsuite.xcodeproj/project.xcworkspace/*
+testsuite/makefile-macosx/testsuite
+testsuite/makefile-macosx/testsuite-debug

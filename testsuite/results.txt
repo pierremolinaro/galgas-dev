@@ -310,7 +310,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (103 types)
+--- Type list (89 types)
   @2lstringlist
   @2lstringlist-element
   @2stringlist
@@ -327,21 +327,11 @@ LOGGING r: <@uint:5>
   @C_C-weak
   @TestExtensionMethod
   @TestExtensionMethod-weak
-  @TestExtensionSetter
-  @TestExtensionSetter-weak
   @aList
   @aList-element
   @aMap
   @aMap-element
-  @abstractOverridingTestExtensionSetter
-  @abstractOverridingTestExtensionSetter-weak
-  @abstractTestExtensionSetter
-  @abstractTestExtensionSetter-weak
-  @adjMat
-  @adjMat-weak
   @application
-  @baseClassForTypeCastInSetterCall
-  @baseClassForTypeCastInSetterCall-weak
   @bigint
   @bigintlist
   @bigintlist-element
@@ -356,8 +346,6 @@ LOGGING r: <@uint:5>
   @function
   @functionlist
   @functionlist-element
-  @inheritedClassForTypeCastInSetterCall
-  @inheritedClassForTypeCastInSetterCall-weak
   @lbigint
   @lbigintlist
   @lbigintlist-element
@@ -385,8 +373,6 @@ LOGGING r: <@uint:5>
   @object
   @objectlist
   @objectlist-element
-  @overridingTestExtensionSetter
-  @overridingTestExtensionSetter-weak
   @range
   @sint
   @sint64
@@ -424,10 +410,6 @@ LOGGING y: <@uint:2>
 LOGGING result: 
 *************************************** begin of extension reader test
 LOGGING s: <@string:"-3-4-4">
-*************************************** begin of extension setter test
-LOGGING u: <@uint:3>
-LOGGING v: <@TestExtensionSetter:[@TestExtensionSetter:<@uint:3>, <@string:"Hello World">]>
-Appel @inheritedClassForTypeCastInSetterCall unSetter
 *************************************** begin of type extension test
 LOGGING Square of 7: <@uint64:49>
 LOGGING Sum 1 + 2 + 3 + 4: <@uint:10>

@@ -47,8 +47,8 @@ message "*************************************** begin of introspection test\n"
 #--- Function invocation
   let @function f = @function.functionWithName {!"functionTest"}
   var arguments = @objectlist {}
-  arguments += ![2 object]
-  arguments += ![6 object]
+  arguments += ![[2 uint] object]
+  arguments += ![[6 uint] object]
   let @object result = [f invoke !arguments !.here]
   log result
 }
