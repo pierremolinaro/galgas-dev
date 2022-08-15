@@ -246,7 +246,6 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !@location.here
     !true
     !@methodQualifier.isBasic
-    !.constantMethod
     !"" # No error message
   ]
   [!?instanceMethodMap insertKey
@@ -256,7 +255,6 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !@location.here
     !true
     !@methodQualifier.isBasic
-    !.constantMethod
     !"" # No error message
   ]
 #--- Add Categories

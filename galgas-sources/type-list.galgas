@@ -226,7 +226,6 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !@location.here
     !true
     !@methodQualifier.isBasic
-    !.constantMethod
     !""
   ]
   [!?instanceMethodMap insertKey
@@ -236,7 +235,6 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !@location.here
     !true
     !@methodQualifier.isBasic
-    !.constantMethod
     !""
   ]
 #----------------------------------------- Modifiers

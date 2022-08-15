@@ -572,7 +572,6 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
       !mSearchMethodName.location
       !true
       !.isBasic
-      !.constantMethod
       !"" # No error message
     ]
   end

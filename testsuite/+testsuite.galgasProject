@@ -19,6 +19,7 @@ project (1:0:0) -> "testsuite" {
   "galgas-sources/testsuite_extension_readers.ggs"
   "galgas-sources/testsuite_extension_methods.ggs"
   "galgas-sources/testsuite_extension_setters.ggs"
+  "galgas-sources/testsuite_extension_mutating_proc.ggs"
   "galgas-sources/testsuite_type_categories.ggs"
   "galgas-sources/testsuite_strings.ggs"
   "galgas-sources/testsuite_range.ggs"

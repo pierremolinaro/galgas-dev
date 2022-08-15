@@ -223,7 +223,7 @@ end
 #--- Methods
 if [[element definition].mInstanceMethodMap count] > 0 then
   %<tr class="result_line"><td>Methods</td><td>%
-  for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument mQualifier mutability mErrorMessage) in [element definition].mInstanceMethodMap do
+  for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument mQualifier mErrorMessage) in [element definition].mInstanceMethodMap do
     switch mKind
     case definedAsMember :
     case definedAsExtension : %(extension) %

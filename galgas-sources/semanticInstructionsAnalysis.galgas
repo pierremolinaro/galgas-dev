@@ -476,6 +476,55 @@ override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+override method @inputActualSelfParameterAST checkAgainstFormalArgument
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+  ?let @analysisContext inAnalysisContext
+  ?let @lstring inFormalSelector
+  ?let @unifiedTypeMapEntry inFormalArgumentType
+  ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
+  ?!@localVarManager unused ioVariableMap
+  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+  ?!@stringset unused ioExclusiveVariableSet
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+{
+  if inFormalArgumentPassingMode != .argumentOut then
+    error self.mActualSelector
+    :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+    + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+  elsif inFormalSelector.string != self.mActualSelector.string then
+    let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
+    error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+  end
+  
+  if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: *] then
+    if not selfIsMutable then
+      error self.mSelfLocation : "'self' not mutable in this context"
+    end
+#    let propertyMap = [selfType definition].mPropertyMap
+#    [propertyMap searchKey !self.mInputActualSelfPropertyName ?2* ?let parameterType]
+    let targetVariableCppName = inAnalysisContext.mSelfObjectCppName
+#     + "mProperty_"+ [self.mInputActualSelfPropertyName.string identifierRepresentation]
+  #--- Check type
+    if inFormalArgumentType != selfType then
+      error self.mSelfLocation
+      :"the parameter object has the '@" + [selfType definition].mTypeName.string
+      + "', it should be the same as the corresponding formal argument: '@"
+      + [inFormalArgumentType definition].mTypeName.string + "'"
+    end
+  #--- Generate actual parameter
+    ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
+      !selfType
+      !targetVariableCppName
+    }
+
+  else
+    error self.mSelfLocation : "'self' not available in this context"
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
@@ -670,6 +719,11 @@ override method @inputActualExistingVariableParameterAST enterParameterInSemanti
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualSelfPropertyParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @inputActualSelfParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

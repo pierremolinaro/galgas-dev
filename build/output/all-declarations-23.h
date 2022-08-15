@@ -997,3 +997,12 @@ void routine_enterClassMethodWithStringInputArgument (class GALGAS_classMethodMa
 class GALGAS_string function_compilerCppName (class C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'syntaxDirectedTranslationResultVarName'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_string function_syntaxDirectedTranslationResultVarName (class C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+

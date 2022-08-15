@@ -2378,8 +2378,7 @@ class GALGAS_instanceMethodMap : public AC_GALGAS_map {
                                                      const class GALGAS_location & inOperand3,
                                                      const class GALGAS_bool & inOperand4,
                                                      const class GALGAS_methodQualifier & inOperand5,
-                                                     const class GALGAS_instanceMethodMutability & inOperand6,
-                                                     const class GALGAS_string & inOperand7,
+                                                     const class GALGAS_string & inOperand6,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
@@ -2390,8 +2389,7 @@ class GALGAS_instanceMethodMap : public AC_GALGAS_map {
                                                   class GALGAS_location constinArgument3,
                                                   class GALGAS_bool constinArgument4,
                                                   class GALGAS_methodQualifier constinArgument5,
-                                                  class GALGAS_instanceMethodMutability constinArgument6,
-                                                  class GALGAS_string constinArgument7,
+                                                  class GALGAS_string constinArgument6,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
@@ -2415,11 +2413,6 @@ class GALGAS_instanceMethodMap : public AC_GALGAS_map {
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMMutabilityForKey (class GALGAS_instanceMethodMutability constinArgument0,
-                                                             class GALGAS_string constinArgument1,
-                                                             C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-
   public: VIRTUAL_IN_DEBUG void setter_setMParameterListForKey (class GALGAS_formalParameterSignature constinArgument0,
                                                                 class GALGAS_string constinArgument1,
                                                                 C_Compiler * inCompiler
@@ -2438,8 +2431,7 @@ class GALGAS_instanceMethodMap : public AC_GALGAS_map {
                                                            class GALGAS_location & outArgument3,
                                                            class GALGAS_bool & outArgument4,
                                                            class GALGAS_methodQualifier & outArgument5,
-                                                           class GALGAS_instanceMethodMutability & outArgument6,
-                                                           class GALGAS_string & outArgument7,
+                                                           class GALGAS_string & outArgument6,
                                                            C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const ;
 
@@ -2449,8 +2441,7 @@ class GALGAS_instanceMethodMap : public AC_GALGAS_map {
                                                   class GALGAS_location & outArgument3,
                                                   class GALGAS_bool & outArgument4,
                                                   class GALGAS_methodQualifier & outArgument5,
-                                                  class GALGAS_instanceMethodMutability & outArgument6,
-                                                  class GALGAS_string & outArgument7,
+                                                  class GALGAS_string & outArgument6,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const ;
 
@@ -2473,10 +2464,6 @@ class GALGAS_instanceMethodMap : public AC_GALGAS_map {
                                                                        C_Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_instanceMethodMutability getter_mMutabilityForKey (const class GALGAS_string & constinOperand0,
-                                                                                           C_Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) const ;
-
   public: VIRTUAL_IN_DEBUG class GALGAS_formalParameterSignature getter_mParameterListForKey (const class GALGAS_string & constinOperand0,
                                                                                               C_Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const ;
@@ -2496,8 +2483,7 @@ class GALGAS_instanceMethodMap : public AC_GALGAS_map {
                                                     class GALGAS_location & outOperand3,
                                                     class GALGAS_bool & outOperand4,
                                                     class GALGAS_methodQualifier & outOperand5,
-                                                    class GALGAS_instanceMethodMutability & outOperand6,
-                                                    class GALGAS_string & outOperand7) const ;
+                                                    class GALGAS_string & outOperand6) const ;
 
 
 //--------------------------------- Introspection
@@ -2527,7 +2513,6 @@ class cEnumerator_instanceMethodMap : public cGenericAbstractEnumerator {
   public: class GALGAS_location current_mDeclarationLocation (LOCATION_ARGS) const ;
   public: class GALGAS_bool current_mHasCompilerArgument (LOCATION_ARGS) const ;
   public: class GALGAS_methodQualifier current_mQualifier (LOCATION_ARGS) const ;
-  public: class GALGAS_instanceMethodMutability current_mMutability (LOCATION_ARGS) const ;
   public: class GALGAS_string current_mErrorMessage (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GALGAS_instanceMethodMap_2D_element current (LOCATION_ARGS) const ;

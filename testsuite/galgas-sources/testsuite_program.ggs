@@ -15,6 +15,7 @@ before {
   testsuite_extension_readers ()
   testsuite_extension_methods ()
   testsuite_extension_setters ()
+  testsuite_extension_mutating_proc ()
   testsuite_type_categories ()
   testsuite_strings ()
   testsuite_range ()

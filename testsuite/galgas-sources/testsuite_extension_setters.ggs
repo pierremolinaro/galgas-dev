@@ -29,8 +29,18 @@ proc @TestExtensionSetter.setter3 (?let @uint inArg) {
 proc @TestExtensionSetter.setter1 (?!@uint ioArg) {
   self.mInteger = self.mInteger + ioArg
   ioArg += 1
+#--- Ces instructions doivent engendrer une erreur de compilation
+#  self = @TestExtensionSetter.new (!1 !"")
+#  procédure1 (?self)
+#  procédure2 (!?self)
 }
 
+#private proc procédure1 (!@TestExtensionSetter outValue) {
+#  outValue = @TestExtensionSetter.new (!1 !"")
+#}
+
+#private proc procédure2 (?!@TestExtensionSetter unused ioValue) {
+#}
 
 class @overridingTestExtensionSetter : @abstractOverridingTestExtensionSetter {
   public var @uint mOtherInteger

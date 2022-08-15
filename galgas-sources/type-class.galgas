@@ -271,7 +271,7 @@ override method @classDeclarationAST enterDeclarationInSemanticContext
     end
   #--- Mark all methods as inherited
     instanceMethodMap = {}
-    for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument * mutability mErrorMessage)
+    for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument * mErrorMessage)
       in superTypeDefinition.mInstanceMethodMap do
       [!?instanceMethodMap insertKey
         !lkey
@@ -280,7 +280,6 @@ override method @classDeclarationAST enterDeclarationInSemanticContext
         !mDeclarationLocation
         !mHasCompilerArgument
         !.isInherited
-        !mutability
         !mErrorMessage
       ] 
     end
@@ -783,7 +782,6 @@ func generateClassGetterDeclaration ?let @lstring inGetterName
 
 func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
                                             ?let @formalParameterSignature inArgumentTypeList
-#                                            ?let @instanceMethodMutability inMutability
                                             ?let @bool inHasCompilerArgument
                                             ?let @methodQualifier inQualifier -> @string {
   var generateMethodDeclaration = true
@@ -835,11 +833,6 @@ func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
       first = false
     end
     result += if first then "LOCATION_ARGS" else " COMMA_LOCATION_ARGS" end + ")"
-#    switch inMutability
-#    case constantMethod :
-#      result += " const"
-#    case mutatingMethod :
-#    end
     result += suffix + " ;\n\n"
   end
 }

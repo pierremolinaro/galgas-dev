@@ -146,7 +146,7 @@ syntax galgas3ParameterArgumentSyntax (galgas3Scanner) {
         !selector
         !inputActualParameterName
       }
-    while # input parameter, existing variable
+    while # input parameter, self.property
       $?$ ?let selector
       $self$
       $.$
@@ -154,6 +154,13 @@ syntax galgas3ParameterArgumentSyntax (galgas3Scanner) {
       outActualParameterList += !@inputActualSelfPropertyParameterAST.new {
         !selector
         !inputActualParameterName
+      }
+    while # input parameter, self
+      $?$ ?let selector
+      $self$
+      outActualParameterList += !@inputActualSelfParameterAST.new {
+        !selector
+        !.here
       }
     while  # input parameter, new variable
       $?$ ?let selector
@@ -388,7 +395,7 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
         !selector
         !inputActualParameterName
       }
-    while # input parameter, existing variable
+    while # input parameter, self.property
       $?$ ?let selector
       $self$
       $.$
@@ -396,6 +403,13 @@ syntax galgas4ParameterArgumentSyntax (galgas3Scanner) {
       outActualParameterList += !@inputActualSelfPropertyParameterAST.new {
         !selector
         !inputActualParameterName
+      }
+    while # input parameter, self
+      $?$ ?let selector
+      $self$
+      outActualParameterList += !@inputActualSelfParameterAST.new {
+        !selector
+        !.here
       }
     while  # input parameter, new variable
       $?$ ?let selector

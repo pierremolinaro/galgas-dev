@@ -101,16 +101,10 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     ?*
     ?let hasCompilerArgument
     ?*
-    ?let mutability
     ?let errorMessage
   ]
   if errorMessage != "" then
     error self.mMethodName : errorMessage
-  end
-  switch mutability
-  case constantMethod :
-  case mutatingMethod :
-#    error self.mMethodName : "not handled yet"
   end
 #--- Check effective parameters
   analyzeRoutineArguments (

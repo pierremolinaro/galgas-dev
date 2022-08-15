@@ -484,7 +484,6 @@ proc addExtensions ?let @extensionMethodMapForBuildingContext inExtensionMethodM
           !lkey.location
           !true
           !.isVirtual
-          !.constantMethod
           !"" # No Error message
         ]
       else
@@ -495,7 +494,6 @@ proc addExtensions ?let @extensionMethodMapForBuildingContext inExtensionMethodM
           !lkey.location
           !true
           !qualifier
-          !.constantMethod
           !"" # No error message
         ]
       end
@@ -525,7 +523,6 @@ proc addExtensions ?let @extensionMethodMapForBuildingContext inExtensionMethodM
         !lkey.location
         !true
         !@methodQualifier.isBasic
-        !.mutatingMethod
         !"" # No Error message
       ]
       if not inAcceptSetters then

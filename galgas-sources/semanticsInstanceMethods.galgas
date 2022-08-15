@@ -27,7 +27,6 @@ private proc enterInstanceMethodWithoutArgument
     !.nowhere
     !inHasCompilerArgument
     !@methodQualifier. isBasic
-    !.constantMethod
     !"" # No error message
   ]
 }
@@ -52,7 +51,6 @@ private proc enterInstanceMethodWithInputArgument
     !.nowhere
     !inHasCompilerArgument
     !@methodQualifier. isBasic
-    !.constantMethod
     !"" # No error message
   ]
 }
@@ -91,7 +89,6 @@ override method @dataPredefinedTypeAST getInstanceMethodMap
     !@location.here
     !true
     !@methodQualifier. isBasic
-    !.constantMethod
     !"" # No error message
   ]
 }
@@ -161,7 +158,6 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
     !@location.here
     !true
     !@methodQualifier.isBasic
-    !.constantMethod
     !"" # No error message
   ]
   [!?outInstanceMethodMap insertKey
@@ -171,7 +167,6 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
     !@location.here
     !true
     !@methodQualifier.isBasic
-    !.constantMethod
     !"" # No error message
   ]
 }
@@ -196,7 +191,6 @@ override method @bigintPredefinedTypeAST getInstanceMethodMap
     !.here
     !true
     !.isBasic
-    !.constantMethod
     !"" # No error message
   ]
   [!?outInstanceMethodMap insertKey
@@ -206,7 +200,6 @@ override method @bigintPredefinedTypeAST getInstanceMethodMap
     !.here
     !true
     !.isBasic
-    !.constantMethod
     !"" # No error message
   ]
   [!?outInstanceMethodMap insertKey
@@ -216,7 +209,6 @@ override method @bigintPredefinedTypeAST getInstanceMethodMap
     !.here
     !true
     !.isBasic
-    !.constantMethod
     !"" # No error message
   ]
 }

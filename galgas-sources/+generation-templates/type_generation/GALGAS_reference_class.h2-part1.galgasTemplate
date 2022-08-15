@@ -10,7 +10,7 @@ class cPtr_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %acS
 for (lkey * argumentTypeList * hasCompilerArgument returnedType qualifier *) in GETTER_MAP do
   !generateClassGetterDeclaration (!lkey !argumentTypeList !hasCompilerArgument !returnedType !qualifier)
 end
-for (lkey * argumentTypeList * hasCompilerArgument qualifier mutabillty *) in INSTANCE_METHOD_MAP do
+for (lkey * argumentTypeList * hasCompilerArgument qualifier *) in INSTANCE_METHOD_MAP do
   !generateClassInstanceMethodDeclaration (!lkey !argumentTypeList !hasCompilerArgument !qualifier)
 end
 %
