@@ -170,7 +170,8 @@ proc checkDiadicOperator ?let @unifiedTypeMapEntry inLeftType
                           ?!@semanticExpressionForGeneration ioRightExpression {
   if not inOperandIsHandled then
     error inErrorLocation
-    : "left operand type is '@" + [inLeftType definition].mTypeName.string + "' and does not accept '" + inOperatorNameForErrorMessage 
+    : "left operand type is '@" + [inLeftType definition].mTypeName.string + "' and does not accept '"
+      + inOperatorNameForErrorMessage 
       + "' operator (right operand type is '@" + [inRightType definition].mTypeName.string + ")"
   else
     var @unifiedTypeMapEntry rightType = inRightType
@@ -179,7 +180,39 @@ proc checkDiadicOperator ?let @unifiedTypeMapEntry inLeftType
       rightType = [rightType definition].mSuperType
       ok = inLeftType == rightType
     end
-#--- Check for a direct property access or for a conversion getter
+  #---- convert bigint ?
+    if not ok, let bigIntSource = ioRightExpression as @literalBigIntExpressionForGeneration then
+      if "uint" == [inLeftType definition].mTypeName then
+        let bigIntValue = bigIntSource.mValue
+        if (bigIntValue < 0) | (bigIntValue >= (1 << 32)) then
+          error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint"
+        end
+        ioRightExpression = @literalUIntExpressionForGeneration.new {!inLeftType !ioRightExpression.mLocation ![bigIntValue uint]}
+        ok = true
+      elsif "sint" == [inLeftType definition].mTypeName then
+        let bigIntValue = bigIntSource.mValue
+        if (bigIntValue < -(1 << 31)) | (bigIntValue >= (1 << 31)) then
+          error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint"
+        end
+        ioRightExpression = @literalSIntExpressionForGeneration.new {!inLeftType !ioRightExpression.mLocation ![bigIntValue sint]}
+        ok = true
+      elsif "uint64" == [inLeftType definition].mTypeName then
+        let bigIntValue = bigIntSource.mValue
+        if (bigIntValue < 0) | (bigIntValue >= (1 << 64)) then
+          error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint64"
+        end
+        ioRightExpression = @literalUInt64ExpressionForGeneration.new {!inLeftType !ioRightExpression.mLocation ![bigIntValue uint64]}
+        ok = true
+      elsif "sint64" == [inLeftType definition].mTypeName then
+        let bigIntValue = bigIntSource.mValue
+        if (bigIntValue < -(1 << 63)) | (bigIntValue >= (1 << 63)) then
+          error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint64"
+        end
+        ioRightExpression = @literalSInt64ExpressionForGeneration.new {!inLeftType !ioRightExpression.mLocation ![bigIntValue sint64]}
+        ok = true
+      end
+    end
+  #--- Check for a direct property access or for a conversion getter
     if not ok, let [[inRightType definition].mPropertyMap searchKey ![inLeftType definition].mTypeName.string ?let isPublic ?* ?let propertyType] then
       if not isPublic then
         error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"

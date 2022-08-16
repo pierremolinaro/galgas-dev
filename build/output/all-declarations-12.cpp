@@ -11064,7 +11064,7 @@ void cParser_galgas_34_ParameterArgumentSyntax::rule_galgas_34_ParameterArgument
         }
         enumGalgasBool test_3 = kBoolTrue ;
         if (kBoolTrue == test_3) {
-          test_3 = GALGAS_bool (kIsEqual, var_n_11197.objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 332)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 332)))).boolEnum () ;
+          test_3 = GALGAS_bool (kIsEqual, var_n_11197.objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
           if (kBoolTrue == test_3) {
             TC_Array <C_FixItDescription> fixItArray4 ;
             inCompiler->emitSemanticError (var_count_11171.readProperty_location (), GALGAS_string ("the count value should be > 0"), fixItArray4  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 333)) ;
@@ -11075,9 +11075,9 @@ void cParser_galgas_34_ParameterArgumentSyntax::rule_galgas_34_ParameterArgument
             uint32_t variant_11452 = var_n_11197.uintValue () ;
             bool loop_11452 = true ;
             while (loop_11452) {
-              loop_11452 = GALGAS_bool (kIsStrictSup, var_n_11197.objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 336)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 336)))).isValid () ;
+              loop_11452 = GALGAS_bool (kIsStrictSup, var_n_11197.objectCompare (GALGAS_uint (uint32_t (0U)))).isValid () ;
               if (loop_11452) {
-                loop_11452 = GALGAS_bool (kIsStrictSup, var_n_11197.objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 336)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 336)))).boolValue () ;
+                loop_11452 = GALGAS_bool (kIsStrictSup, var_n_11197.objectCompare (GALGAS_uint (uint32_t (0U)))).boolValue () ;
               }
               if (loop_11452 && (0 == variant_11452)) {
                 loop_11452 = false ;
@@ -11148,7 +11148,7 @@ void cParser_galgas_34_ParameterArgumentSyntax::rule_galgas_34_ParameterArgument
       }
       enumGalgasBool test_8 = kBoolTrue ;
       if (kBoolTrue == test_8) {
-        test_8 = GALGAS_bool (kIsEqual, var_n_12421.objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 373)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 373)))).boolEnum () ;
+        test_8 = GALGAS_bool (kIsEqual, var_n_12421.objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
         if (kBoolTrue == test_8) {
           TC_Array <C_FixItDescription> fixItArray9 ;
           inCompiler->emitSemanticError (var_count_12399.readProperty_location (), GALGAS_string ("the count value should be > 0"), fixItArray9  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 374)) ;
@@ -11159,9 +11159,9 @@ void cParser_galgas_34_ParameterArgumentSyntax::rule_galgas_34_ParameterArgument
           uint32_t variant_12665 = var_n_12421.uintValue () ;
           bool loop_12665 = true ;
           while (loop_12665) {
-            loop_12665 = GALGAS_bool (kIsStrictSup, var_n_12421.objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 377)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 377)))).isValid () ;
+            loop_12665 = GALGAS_bool (kIsStrictSup, var_n_12421.objectCompare (GALGAS_uint (uint32_t (0U)))).isValid () ;
             if (loop_12665) {
-              loop_12665 = GALGAS_bool (kIsStrictSup, var_n_12421.objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 377)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 377)))).boolValue () ;
+              loop_12665 = GALGAS_bool (kIsStrictSup, var_n_12421.objectCompare (GALGAS_uint (uint32_t (0U)))).boolValue () ;
             }
             if (loop_12665 && (0 == variant_12665)) {
               loop_12665 = false ;
@@ -11898,7 +11898,7 @@ void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_dec
   if (kBoolTrue == test_8) {
     test_8 = var_isOnce_17021.boolEnum () ;
     if (kBoolTrue == test_8) {
-      test_8 = GALGAS_bool (kIsStrictSup, var_formalInputParameterList_17737.getter_length (SOURCE_FILE ("galgasInstructionsSyntax.galgas", 455)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 455)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 455)))).boolEnum () ;
+      test_8 = GALGAS_bool (kIsStrictSup, var_formalInputParameterList_17737.getter_length (SOURCE_FILE ("galgasInstructionsSyntax.galgas", 455)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
       if (kBoolTrue == test_8) {
         TC_Array <C_FixItDescription> fixItArray9 ;
         inCompiler->emitSemanticError (var_functionName_17616.readProperty_location (), GALGAS_string ("an 'once' function should has no argument"), fixItArray9  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 456)) ;
@@ -12075,7 +12075,7 @@ void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_dec
   if (kBoolTrue == test_8) {
     test_8 = var_isOnce_19140.boolEnum () ;
     if (kBoolTrue == test_8) {
-      test_8 = GALGAS_bool (kIsStrictSup, var_formalInputParameterList_19856.getter_length (SOURCE_FILE ("galgasInstructionsSyntax.galgas", 522)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 522)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 522)))).boolEnum () ;
+      test_8 = GALGAS_bool (kIsStrictSup, var_formalInputParameterList_19856.getter_length (SOURCE_FILE ("galgasInstructionsSyntax.galgas", 522)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
       if (kBoolTrue == test_8) {
         TC_Array <C_FixItDescription> fixItArray9 ;
         inCompiler->emitSemanticError (var_functionName_19735.readProperty_location (), GALGAS_string ("an 'once' function should has no argument"), fixItArray9  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 523)) ;
@@ -13218,7 +13218,7 @@ void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_for
   GALGAS_uint var_n_10025 = var_count_10007.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 296)) ;
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
-    test_0 = GALGAS_bool (kIsEqual, var_n_10025.objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 297)).getter_uint (inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 297)))).boolEnum () ;
+    test_0 = GALGAS_bool (kIsEqual, var_n_10025.objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray1 ;
       inCompiler->emitSemanticError (var_count_10007.readProperty_location (), GALGAS_string ("this value should be > 0"), fixItArray1  COMMA_SOURCE_FILE ("instruction-for.galgas", 298)) ;
@@ -13228,9 +13228,9 @@ void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_for
     uint32_t variant_10129 = var_n_10025.uintValue () ;
     bool loop_10129 = true ;
     while (loop_10129) {
-      loop_10129 = GALGAS_bool (kIsStrictSup, var_n_10025.objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 300)).getter_uint (inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 300)))).isValid () ;
+      loop_10129 = GALGAS_bool (kIsStrictSup, var_n_10025.objectCompare (GALGAS_uint (uint32_t (0U)))).isValid () ;
       if (loop_10129) {
-        loop_10129 = GALGAS_bool (kIsStrictSup, var_n_10025.objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 300)).getter_uint (inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 300)))).boolValue () ;
+        loop_10129 = GALGAS_bool (kIsStrictSup, var_n_10025.objectCompare (GALGAS_uint (uint32_t (0U)))).boolValue () ;
       }
       if (loop_10129 && (0 == variant_10129)) {
         loop_10129 = false ;

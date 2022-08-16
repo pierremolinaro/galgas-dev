@@ -136,7 +136,7 @@ void routine_compileSemanticDeclarationsGalgas (GALGAS_lstringlist & ioArgument_
   outArgument_outSemanticDeclarationSortedListForGeneration = GALGAS_semanticDeclarationListForGeneration::constructor_emptyList (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 84)) ;
   enumGalgasBool test_3 = kBoolTrue ;
   if (kBoolTrue == test_3) {
-    test_3 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 85)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 85)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 85)))).boolEnum () ;
+    test_3 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 85)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_3) {
       GALGAS_predefinedTypes var_predefinedTypes_4348 = function_buildPredefinedTypes (outArgument_outSemanticContext, inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 86)) ;
       cEnumerator_semanticDeclarationListAST enumerator_4449 (var_sortedSemanticDeclarationListAST_3919, kENUMERATION_UP) ;
@@ -192,7 +192,7 @@ void routine_buildGalgasSemanticContext (const GALGAS_semanticDeclarationListAST
   }
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = GALGAS_bool (kIsStrictSup, var_semanticTypePrecedenceGraph_6030.getter_undefinedNodeCount (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 140)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 140)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 140)))).boolEnum () ;
+    test_1 = GALGAS_bool (kIsStrictSup, var_semanticTypePrecedenceGraph_6030.getter_undefinedNodeCount (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 140)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_1) {
       cEnumerator_lstringlist enumerator_7064 (var_semanticTypePrecedenceGraph_6030.getter_undefinedNodeReferenceList (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 141)), kENUMERATION_UP) ;
       while (enumerator_7064.hasCurrentObject ()) {
@@ -213,7 +213,7 @@ void routine_buildGalgasSemanticContext (const GALGAS_semanticDeclarationListAST
     var_semanticTypePrecedenceGraph_6030.method_topologicalSort (outArgument_outSortedSemanticDeclarationListAST, joker_7429, var_unsortedSemanticDeclarationListAST_7504, joker_7512, inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 148)) ;
     enumGalgasBool test_4 = kBoolTrue ;
     if (kBoolTrue == test_4) {
-      test_4 = GALGAS_bool (kIsStrictSup, var_unsortedSemanticDeclarationListAST_7504.getter_length (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 154)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 154)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 154)))).boolEnum () ;
+      test_4 = GALGAS_bool (kIsStrictSup, var_unsortedSemanticDeclarationListAST_7504.getter_length (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 154)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
       if (kBoolTrue == test_4) {
         GALGAS_string var_s_7591 = GALGAS_string ("semantic analysis not performed, ").add_operation (var_unsortedSemanticDeclarationListAST_7504.getter_length (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 155)).getter_string (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 155)), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 155)).add_operation (GALGAS_string (" declarations are involved in circular definition:"), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 155)) ;
         cEnumerator_semanticDeclarationListAST enumerator_7799 (var_unsortedSemanticDeclarationListAST_7504, kENUMERATION_UP) ;
@@ -262,7 +262,7 @@ void routine_generateSemanticDeclarationsGalgas_33_ (const GALGAS_unifiedTypeMap
   }
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
-    test_0 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 209)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 209)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 209)))).boolEnum () ;
+    test_0 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 209)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       enumGalgasBool test_1 = kBoolTrue ;
       if (kBoolTrue == test_1) {
@@ -889,7 +889,7 @@ void routine_generateFewImplementationFilesWithFewHeaders (const GALGAS_unifiedT
         var_implementationString_24969.plusAssign_operation(callExtensionGetter_appendTypeGenericImplementation ((const cPtr_semanticDeclarationForGeneration *) enumerator_25152.current (HERE).readProperty_mDeclaration ().ptr (), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 609)), inCompiler  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 609)) ;
         enumGalgasBool test_10 = kBoolTrue ;
         if (kBoolTrue == test_10) {
-          test_10 = GALGAS_bool (kIsStrictSup, var_implementationString_24969.getter_length (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 610)).objectCompare (GALGAS_bigint ("786432", inCompiler  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 610)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 610)))).boolEnum () ;
+          test_10 = GALGAS_bool (kIsStrictSup, var_implementationString_24969.getter_length (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 610)).objectCompare (GALGAS_uint (uint32_t (786432U)))).boolEnum () ;
           if (kBoolTrue == test_10) {
             GALGAS_stringset temp_11 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 611)) ;
             temp_11.addAssign_operation (GALGAS_string ("all-declarations-").add_operation (var_fileIdx_24938.getter_string (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 611)), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 611))  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 611)) ;
@@ -1084,7 +1084,7 @@ const cDirectoryWrapper gWrapperDirectory_0_xcodeProjectGenerationFilewrapper (
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C_Compiler * /* inCompiler */,
                                                                                const GALGAS_string & in_PROJECT_5F_REF,
                                                                                const GALGAS_string & in_MAIN_5F_GROUP_5F_REF,
                                                                                const GALGAS_XCodeGroupList & in_GROUPS,
@@ -1424,7 +1424,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
     cEnumerator_XCodeToolTargetList enumerator_5275 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_5275.hasCurrentObject ()) {
-      const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, enumerator_5275.current_mFrameworksFileRefList (HERE).getter_length (SOURCE_FILE ("project.pbxproj.galgasTemplate", 139)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("project.pbxproj.galgasTemplate", 139)).getter_uint (inCompiler COMMA_SOURCE_FILE ("project.pbxproj.galgasTemplate", 139)))).boolEnum () ;
+      const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, enumerator_5275.current_mFrameworksFileRefList (HERE).getter_length (SOURCE_FILE ("project.pbxproj.galgasTemplate", 139)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "  " ;
         result << enumerator_5275.current_mFrameworkBuildPhaseRef (HERE).stringValue () ;
@@ -1557,7 +1557,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "      " ;
       result << enumerator_7266.current_mBuildPhaseRef (HERE).stringValue () ;
       result << " ,\n" ;
-      const enumGalgasBool test_1 = GALGAS_bool (kIsStrictSup, enumerator_7266.current_mFrameworksFileRefList (HERE).getter_length (SOURCE_FILE ("project.pbxproj.galgasTemplate", 200)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("project.pbxproj.galgasTemplate", 200)).getter_uint (inCompiler COMMA_SOURCE_FILE ("project.pbxproj.galgasTemplate", 200)))).boolEnum () ;
+      const enumGalgasBool test_1 = GALGAS_bool (kIsStrictSup, enumerator_7266.current_mFrameworksFileRefList (HERE).getter_length (SOURCE_FILE ("project.pbxproj.galgasTemplate", 200)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
       if (kBoolTrue == test_1) {
         result << "      " ;
         result << enumerator_7266.current_mFrameworkBuildPhaseRef (HERE).stringValue () ;
@@ -4958,7 +4958,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
   GALGAS_stringlist var_linkOptionForLinkingFrameworkWithTool_22646 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasTargetGeneration.galgas", 463)) ;
   enumGalgasBool test_28 = kBoolTrue ;
   if (kBoolTrue == test_28) {
-    test_28 = GALGAS_bool (kIsStrictSup, constinArgument_inFrameworkToolFileList.getter_length (SOURCE_FILE ("galgasTargetGeneration.galgas", 464)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 464)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 464)))).boolEnum () ;
+    test_28 = GALGAS_bool (kIsStrictSup, constinArgument_inFrameworkToolFileList.getter_length (SOURCE_FILE ("galgasTargetGeneration.galgas", 464)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_28) {
       enumGalgasBool test_29 = kBoolTrue ;
       if (kBoolTrue == test_29) {
@@ -5125,7 +5125,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
       GALGAS_stringlist var_m_5F_HandCodedResourceFileRefForAppList_29399 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasTargetGeneration.galgas", 606)) ;
       enumGalgasBool test_38 = kBoolTrue ;
       if (kBoolTrue == test_38) {
-        test_38 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedSourceAppFileList.getter_length (SOURCE_FILE ("galgasTargetGeneration.galgas", 607)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 607)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 607)))).boolEnum () ;
+        test_38 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedSourceAppFileList.getter_length (SOURCE_FILE ("galgasTargetGeneration.galgas", 607)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
         if (kBoolTrue == test_38) {
           GALGAS_stringlist joker_29670 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasTargetGeneration.galgas", 612)) ;
           GALGAS_stringlist joker_29694 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasTargetGeneration.galgas", 613)) ;
@@ -5143,7 +5143,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
       GALGAS_stringlist var_appFrameworksFileRefList_30069 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasTargetGeneration.galgas", 623)) ;
       enumGalgasBool test_39 = kBoolTrue ;
       if (kBoolTrue == test_39) {
-        test_39 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedLinkAppFileList.getter_length (SOURCE_FILE ("galgasTargetGeneration.galgas", 624)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 624)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 624)))).boolEnum () ;
+        test_39 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedLinkAppFileList.getter_length (SOURCE_FILE ("galgasTargetGeneration.galgas", 624)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
         if (kBoolTrue == test_39) {
           GALGAS_stringlist joker_30344 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasTargetGeneration.galgas", 629)) ;
           GALGAS_stringlist joker_30368 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasTargetGeneration.galgas", 630)) ;
@@ -5167,7 +5167,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
       GALGAS_stringlist var_resourceFileBuildRefs_30926 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasTargetGeneration.galgas", 645)) ;
       enumGalgasBool test_40 = kBoolTrue ;
       if (kBoolTrue == test_40) {
-        test_40 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedSourceToolFileList.getter_length (SOURCE_FILE ("galgasTargetGeneration.galgas", 647)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 647)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 647)))).boolEnum () ;
+        test_40 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedSourceToolFileList.getter_length (SOURCE_FILE ("galgasTargetGeneration.galgas", 647)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
         if (kBoolTrue == test_40) {
           GALGAS_string var_groupRef_31526 ;
           {
@@ -5181,7 +5181,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
       GALGAS_stringlist var_toolFrameworksFileRefList_31691 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasTargetGeneration.galgas", 663)) ;
       enumGalgasBool test_41 = kBoolTrue ;
       if (kBoolTrue == test_41) {
-        test_41 = GALGAS_bool (kIsStrictSup, constinArgument_inFrameworkToolFileList.getter_length (SOURCE_FILE ("galgasTargetGeneration.galgas", 664)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 664)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 664)))).boolEnum () ;
+        test_41 = GALGAS_bool (kIsStrictSup, constinArgument_inFrameworkToolFileList.getter_length (SOURCE_FILE ("galgasTargetGeneration.galgas", 664)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
         if (kBoolTrue == test_41) {
           GALGAS_stringlist joker_31968 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasTargetGeneration.galgas", 669)) ;
           GALGAS_stringlist joker_31992 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgasTargetGeneration.galgas", 670)) ;
@@ -5712,7 +5712,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
       GALGAS_stringlist var_settingList_53263 = temp_61 ;
       enumGalgasBool test_62 = kBoolTrue ;
       if (kBoolTrue == test_62) {
-        test_62 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedLinkToolFileList.getter_length (SOURCE_FILE ("galgasTargetGeneration.galgas", 1331)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1331)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1331)))).boolEnum () ;
+        test_62 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedLinkToolFileList.getter_length (SOURCE_FILE ("galgasTargetGeneration.galgas", 1331)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
         if (kBoolTrue == test_62) {
           GALGAS_string var_s_53522 = GALGAS_string ("OTHER_LDFLAGS=(") ;
           cEnumerator_stringlist enumerator_53562 (constinArgument_inHandCodedLinkToolFileList, kENUMERATION_UP) ;
@@ -5741,7 +5741,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
       var_settingList_53263 = temp_63 ;
       enumGalgasBool test_64 = kBoolTrue ;
       if (kBoolTrue == test_64) {
-        test_64 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedLinkToolFileList.getter_length (SOURCE_FILE ("galgasTargetGeneration.galgas", 1357)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1357)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1357)))).boolEnum () ;
+        test_64 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedLinkToolFileList.getter_length (SOURCE_FILE ("galgasTargetGeneration.galgas", 1357)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
         if (kBoolTrue == test_64) {
           GALGAS_string var_s_54429 = GALGAS_string ("OTHER_LDFLAGS=(") ;
           cEnumerator_stringlist enumerator_54469 (constinArgument_inHandCodedLinkToolFileList, kENUMERATION_UP) ;
@@ -5773,7 +5773,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
           GALGAS_stringlist var_components_55273 = var_macCodeSign_16714.readProperty_string ().getter_componentsSeparatedByString (GALGAS_string (":") COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1382)) ;
           enumGalgasBool test_67 = kBoolTrue ;
           if (kBoolTrue == test_67) {
-            test_67 = GALGAS_bool (kIsNotEqual, var_components_55273.getter_length (SOURCE_FILE ("galgasTargetGeneration.galgas", 1383)).objectCompare (GALGAS_bigint ("2", inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1383)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1383)))).boolEnum () ;
+            test_67 = GALGAS_bool (kIsNotEqual, var_components_55273.getter_length (SOURCE_FILE ("galgasTargetGeneration.galgas", 1383)).objectCompare (GALGAS_uint (uint32_t (2U)))).boolEnum () ;
             if (kBoolTrue == test_67) {
               TC_Array <C_FixItDescription> fixItArray68 ;
               inCompiler->emitSemanticError (var_macCodeSign_16714.readProperty_location (), GALGAS_string ("the %macCodeSign attribute associated string should be \"key:value\""), fixItArray68  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1384)) ;
@@ -5952,7 +5952,7 @@ static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_in
   GALGAS_stringlist var_candidateProjectFiles_3089 = var_parentDirectory_2967.getter_regularFilesWithExtensions (GALGAS_bool (false), temp_0 COMMA_SOURCE_FILE ("galgasProgram.galgas", 71)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = GALGAS_bool (kIsEqual, var_candidateProjectFiles_3089.getter_length (SOURCE_FILE ("galgasProgram.galgas", 72)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasProgram.galgas", 72)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas", 72)))).boolEnum () ;
+    test_1 = GALGAS_bool (kIsEqual, var_candidateProjectFiles_3089.getter_length (SOURCE_FILE ("galgasProgram.galgas", 72)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_1) {
       TC_Array <C_FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (constinArgument_inSourceFile.readProperty_location (), GALGAS_string ("no project file in parent directory of source file"), fixItArray2  COMMA_SOURCE_FILE ("galgasProgram.galgas", 73)) ;
@@ -5961,7 +5961,7 @@ static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_in
   if (kBoolFalse == test_1) {
     enumGalgasBool test_3 = kBoolTrue ;
     if (kBoolTrue == test_3) {
-      test_3 = GALGAS_bool (kIsStrictSup, var_candidateProjectFiles_3089.getter_length (SOURCE_FILE ("galgasProgram.galgas", 74)).objectCompare (GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("galgasProgram.galgas", 74)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas", 74)))).boolEnum () ;
+      test_3 = GALGAS_bool (kIsStrictSup, var_candidateProjectFiles_3089.getter_length (SOURCE_FILE ("galgasProgram.galgas", 74)).objectCompare (GALGAS_uint (uint32_t (1U)))).boolEnum () ;
       if (kBoolTrue == test_3) {
         GALGAS_string var_s_3345 = GALGAS_string ("several project files in source file parent directory:") ;
         cEnumerator_stringlist enumerator_3420 (var_candidateProjectFiles_3089, kENUMERATION_UP) ;
@@ -5999,7 +5999,7 @@ static void routine_programRule_5F__31_ (const GALGAS_lstring constinArgument_in
   GALGAS_stringlist var_candidateProjectFiles_4399 = var_parentDirectory_4277.getter_regularFilesWithExtensions (GALGAS_bool (false), temp_0 COMMA_SOURCE_FILE ("galgasProgram.galgas", 97)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = GALGAS_bool (kIsEqual, var_candidateProjectFiles_4399.getter_length (SOURCE_FILE ("galgasProgram.galgas", 98)).objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("galgasProgram.galgas", 98)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas", 98)))).boolEnum () ;
+    test_1 = GALGAS_bool (kIsEqual, var_candidateProjectFiles_4399.getter_length (SOURCE_FILE ("galgasProgram.galgas", 98)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_1) {
       TC_Array <C_FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (constinArgument_inSourceFile.readProperty_location (), GALGAS_string ("no project file in parent directory of source file"), fixItArray2  COMMA_SOURCE_FILE ("galgasProgram.galgas", 99)) ;
@@ -6008,7 +6008,7 @@ static void routine_programRule_5F__31_ (const GALGAS_lstring constinArgument_in
   if (kBoolFalse == test_1) {
     enumGalgasBool test_3 = kBoolTrue ;
     if (kBoolTrue == test_3) {
-      test_3 = GALGAS_bool (kIsStrictSup, var_candidateProjectFiles_4399.getter_length (SOURCE_FILE ("galgasProgram.galgas", 100)).objectCompare (GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("galgasProgram.galgas", 100)).getter_uint (inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas", 100)))).boolEnum () ;
+      test_3 = GALGAS_bool (kIsStrictSup, var_candidateProjectFiles_4399.getter_length (SOURCE_FILE ("galgasProgram.galgas", 100)).objectCompare (GALGAS_uint (uint32_t (1U)))).boolEnum () ;
       if (kBoolTrue == test_3) {
         GALGAS_string var_s_4655 = GALGAS_string ("several project files in source file parent directory:") ;
         cEnumerator_stringlist enumerator_4730 (var_candidateProjectFiles_4399, kENUMERATION_UP) ;
