@@ -303,7 +303,7 @@ override method @templateAndOperationAST templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression templateExpressionAnalysis
@@ -313,18 +313,16 @@ override method @templateAndOperationAST templateExpressionAnalysis
     ?@semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   checkDiadicOperator (
-    !leftType
-    !rightExpression.mResultType
-    ![[leftType definition].mHandledOperatorFlags infixAndOperator]
+    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixAndOperator]
     !"&"
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration.new {
-    !leftType
+    !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
     !.operator_and
@@ -345,7 +343,7 @@ override method @templateOrOperationAST templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression templateExpressionAnalysis
@@ -355,18 +353,16 @@ override method @templateOrOperationAST templateExpressionAnalysis
     ?@semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   checkDiadicOperator (
-    !leftType
-    !rightExpression.mResultType
-    ![[leftType definition].mHandledOperatorFlags infixOrOperator]
+    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixOrOperator]
     !"|"
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration.new {
-    !leftType
+    !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
     !.operator_or
@@ -387,7 +383,7 @@ override method @templateXorOperationAST templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression templateExpressionAnalysis
@@ -397,18 +393,16 @@ override method @templateXorOperationAST templateExpressionAnalysis
     ?@semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   checkDiadicOperator (
-    !leftType
-    !rightExpression.mResultType
-    ![[leftType definition].mHandledOperatorFlags infixXorOperator]
+    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixXorOperator]
     !"^"
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration.new {
-    !leftType
+    !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
     !.operator_xor
@@ -836,7 +830,7 @@ override method @templateAddOperationAST templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression templateExpressionAnalysis
@@ -846,18 +840,16 @@ override method @templateAddOperationAST templateExpressionAnalysis
     ?@semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   checkDiadicOperator (
-    !leftType
-    !rightExpression.mResultType
-    ![[leftType definition].mHandledOperatorFlags infixAddOperator]
+    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixAddOperator]
     !"+"
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration.new {
-    !leftType
+    !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
     !.add
@@ -880,7 +872,7 @@ override method @templateSubOperationAST templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression templateExpressionAnalysis
@@ -890,18 +882,16 @@ override method @templateSubOperationAST templateExpressionAnalysis
     ?@semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   checkDiadicOperator (
-    !leftType
-    !rightExpression.mResultType
-    ![[leftType definition].mHandledOperatorFlags infixSubOperator]
+    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixSubOperator]
     !"-"
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration.new {
-    !leftType
+    !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
     !.sub
@@ -924,7 +914,7 @@ override method @templateMultiplyOperationAST templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression templateExpressionAnalysis
@@ -934,18 +924,16 @@ override method @templateMultiplyOperationAST templateExpressionAnalysis
     ?@semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   checkDiadicOperator (
-    !leftType
-    !rightExpression.mResultType
-    ![[leftType definition].mHandledOperatorFlags infixMulOperator]
+    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixMulOperator]
     !"*"
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration.new {
-    !leftType
+    !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
     !.multiply_operation
@@ -968,7 +956,7 @@ override method @templateDivideOperationAST templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression templateExpressionAnalysis
@@ -978,18 +966,16 @@ override method @templateDivideOperationAST templateExpressionAnalysis
     ?@semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   checkDiadicOperator (
-    !leftType
-    !rightExpression.mResultType
-    ![[leftType definition].mHandledOperatorFlags infixDivOperator]
+    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixDivOperator]
     !"/"
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration.new {
-    !leftType
+    !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
     !.divide_operation
@@ -1012,7 +998,7 @@ override method @templateModuloOperationAST templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression templateExpressionAnalysis
@@ -1022,18 +1008,16 @@ override method @templateModuloOperationAST templateExpressionAnalysis
     ?@semanticExpressionForGeneration rightExpression
    ]
 #--- Check operator availability
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   checkDiadicOperator (
-    !leftType
-    !rightExpression.mResultType
-    ![[leftType definition].mHandledOperatorFlags infixModOperator]
+    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixModOperator]
     !"mod"
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration.new {
-    !leftType
+    !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
     !.modulo_operation
@@ -1124,7 +1108,7 @@ override method @templateEqualTestAST templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression templateExpressionAnalysis
@@ -1135,11 +1119,10 @@ override method @templateEqualTestAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !leftExpression.mResultType
-    !rightExpression.mResultType
     !true
     !"=="
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression
@@ -1165,7 +1148,7 @@ override method @templateNonEqualTestAST templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression templateExpressionAnalysis
@@ -1176,11 +1159,10 @@ override method @templateNonEqualTestAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !leftExpression.mResultType
-    !rightExpression.mResultType
     !true
     !"!="
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression
@@ -1206,7 +1188,7 @@ override method @templateStrictInfTestAST templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression templateExpressionAnalysis
@@ -1217,11 +1199,10 @@ override method @templateStrictInfTestAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !leftExpression.mResultType
-    !rightExpression.mResultType
     !true
     !"<"
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression
@@ -1247,7 +1228,7 @@ override method @templateInfOrEqualTestAST templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression templateExpressionAnalysis
@@ -1258,11 +1239,10 @@ override method @templateInfOrEqualTestAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !leftExpression.mResultType
-    !rightExpression.mResultType
     !true
     !"<="
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression
@@ -1288,7 +1268,7 @@ override method @templateStrictSupTestAST templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression templateExpressionAnalysis
@@ -1299,11 +1279,10 @@ override method @templateStrictSupTestAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !leftExpression.mResultType
-    !rightExpression.mResultType
     !true
     !">"
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression
@@ -1329,7 +1308,7 @@ override method @templateSupOrEqualTestAST templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression templateExpressionAnalysis
@@ -1340,11 +1319,10 @@ override method @templateSupOrEqualTestAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !leftExpression.mResultType
-    !rightExpression.mResultType
     !true
     !">="
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression

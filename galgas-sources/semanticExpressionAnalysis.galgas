@@ -162,58 +162,91 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc checkDiadicOperator ?let @unifiedTypeMapEntry inLeftType
-                          ?let @unifiedTypeMapEntry inRightType
-                          ?let @bool inOperandIsHandled
+proc checkDiadicOperator ?let @bool inOperandIsHandled
                           ?let @string inOperatorNameForErrorMessage
                           ?let @location inErrorLocation
+                          ?!@semanticExpressionForGeneration ioLeftExpression
                           ?!@semanticExpressionForGeneration ioRightExpression {
+  let leftType  = ioLeftExpression.mResultType
+  let rightType = ioRightExpression.mResultType
   if not inOperandIsHandled then
     error inErrorLocation
-    : "left operand type is '@" + [inLeftType definition].mTypeName.string + "' and does not accept '"
+    : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not accept '"
       + inOperatorNameForErrorMessage 
-      + "' operator (right operand type is '@" + [inRightType definition].mTypeName.string + ")"
+      + "' operator (right operand type is '@" + [rightType definition].mTypeName.string + ")"
   else
-    var @unifiedTypeMapEntry rightType = inRightType
-    var @bool ok = inLeftType == rightType
+    var @unifiedTypeMapEntry rightType = rightType
+    var @bool ok = leftType == rightType
     loop (@uint.max) while (not ok) & (not [[rightType definition].mSuperType isNull]) do
       rightType = [rightType definition].mSuperType
-      ok = inLeftType == rightType
+      ok = leftType == rightType
     end
-  #---- convert bigint ?
+  #---- convert right bigint ?
     if not ok, let bigIntSource = ioRightExpression as @literalBigIntExpressionForGeneration then
-      if "uint" == [inLeftType definition].mTypeName then
+      if "uint" == [leftType definition].mTypeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < 0) | (bigIntValue >= (1 << 32)) then
           error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint"
         end
-        ioRightExpression = @literalUIntExpressionForGeneration.new {!inLeftType !ioRightExpression.mLocation ![bigIntValue uint]}
+        ioRightExpression = @literalUIntExpressionForGeneration.new {!leftType !ioRightExpression.mLocation ![bigIntValue uint]}
         ok = true
-      elsif "sint" == [inLeftType definition].mTypeName then
+      elsif "sint" == [leftType definition].mTypeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < -(1 << 31)) | (bigIntValue >= (1 << 31)) then
           error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint"
         end
-        ioRightExpression = @literalSIntExpressionForGeneration.new {!inLeftType !ioRightExpression.mLocation ![bigIntValue sint]}
+        ioRightExpression = @literalSIntExpressionForGeneration.new {!leftType !ioRightExpression.mLocation ![bigIntValue sint]}
         ok = true
-      elsif "uint64" == [inLeftType definition].mTypeName then
+      elsif "uint64" == [leftType definition].mTypeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < 0) | (bigIntValue >= (1 << 64)) then
           error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint64"
         end
-        ioRightExpression = @literalUInt64ExpressionForGeneration.new {!inLeftType !ioRightExpression.mLocation ![bigIntValue uint64]}
+        ioRightExpression = @literalUInt64ExpressionForGeneration.new {!leftType !ioRightExpression.mLocation ![bigIntValue uint64]}
         ok = true
-      elsif "sint64" == [inLeftType definition].mTypeName then
+      elsif "sint64" == [leftType definition].mTypeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < -(1 << 63)) | (bigIntValue >= (1 << 63)) then
           error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint64"
         end
-        ioRightExpression = @literalSInt64ExpressionForGeneration.new {!inLeftType !ioRightExpression.mLocation ![bigIntValue sint64]}
+        ioRightExpression = @literalSInt64ExpressionForGeneration.new {!leftType !ioRightExpression.mLocation ![bigIntValue sint64]}
+        ok = true
+      end
+    end
+  #---- convert left bigint ?
+    if not ok, let bigIntSource = ioLeftExpression as @literalBigIntExpressionForGeneration then
+      if "uint" == [rightType definition].mTypeName then
+        let bigIntValue = bigIntSource.mValue
+        if (bigIntValue < 0) | (bigIntValue >= (1 << 32)) then
+          error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint"
+        end
+        ioLeftExpression = @literalUIntExpressionForGeneration.new {!rightType !ioLeftExpression.mLocation ![bigIntValue uint]}
+        ok = true
+      elsif "sint" == [rightType definition].mTypeName then
+        let bigIntValue = bigIntSource.mValue
+        if (bigIntValue < -(1 << 31)) | (bigIntValue >= (1 << 31)) then
+          error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint"
+        end
+        ioLeftExpression = @literalSIntExpressionForGeneration.new {!rightType !ioLeftExpression.mLocation ![bigIntValue sint]}
+        ok = true
+      elsif "uint64" == [rightType definition].mTypeName then
+        let bigIntValue = bigIntSource.mValue
+        if (bigIntValue < 0) | (bigIntValue >= (1 << 64)) then
+          error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint64"
+        end
+        ioLeftExpression = @literalUInt64ExpressionForGeneration.new {!rightType !ioLeftExpression.mLocation ![bigIntValue uint64]}
+        ok = true
+      elsif "sint64" == [rightType definition].mTypeName then
+        let bigIntValue = bigIntSource.mValue
+        if (bigIntValue < -(1 << 63)) | (bigIntValue >= (1 << 63)) then
+          error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint64"
+        end
+        ioLeftExpression = @literalSInt64ExpressionForGeneration.new {!rightType !ioLeftExpression.mLocation ![bigIntValue sint64]}
         ok = true
       end
     end
   #--- Check for a direct property access or for a conversion getter
-    if not ok, let [[inRightType definition].mPropertyMap searchKey ![inLeftType definition].mTypeName.string ?let isPublic ?* ?let propertyType] then
+    if not ok, let [[rightType definition].mPropertyMap searchKey ![leftType definition].mTypeName.string ?let isPublic ?* ?let propertyType] then
       if not isPublic then
         error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
       end
@@ -221,13 +254,13 @@ proc checkDiadicOperator ?let @unifiedTypeMapEntry inLeftType
         !propertyType
         !inErrorLocation
         !ioRightExpression
-        ![inLeftType definition].mTypeName.string 
+        ![leftType definition].mTypeName.string 
       }
       ioRightExpression = conversionExpression
-      ok = propertyType == inLeftType
-    elsif (not ok) && [[inRightType definition].mGetterMap hasKey ![inLeftType definition].mTypeName.string] then
-      [[inRightType definition].mGetterMap searchKey
-        ![inLeftType definition].mTypeName
+      ok = propertyType == leftType
+    elsif (not ok) && [[rightType definition].mGetterMap hasKey ![leftType definition].mTypeName.string] then
+      [[rightType definition].mGetterMap searchKey
+        ![leftType definition].mTypeName
         ?let kind
         ?let @functionSignature argumentTypeList
         ?*
@@ -235,15 +268,15 @@ proc checkDiadicOperator ?let @unifiedTypeMapEntry inLeftType
         ?let returnedType
         ?2*
       ]
-      ok = ([argumentTypeList length] == 0) & (returnedType == inLeftType)
+      ok = ([argumentTypeList length] == 0) & (returnedType == leftType)
    #--- Add conversion expression
       let conversionExpression = @getterCallExpressionForGeneration.new {
-        !inLeftType
+        !leftType
         !inErrorLocation
         !kind
         !ioRightExpression
         !{}
-        ![inLeftType definition].mTypeName.string
+        ![leftType definition].mTypeName.string
         !{}
         !hasCompilerArgument
       }
@@ -251,10 +284,10 @@ proc checkDiadicOperator ?let @unifiedTypeMapEntry inLeftType
     end
     if not ok then
       error inErrorLocation
-      : "left operand type of '" + inOperatorNameForErrorMessage + "' operator is '@" + [inLeftType definition].mTypeName.string
-      + "', right operand type is '@" + [inRightType definition].mTypeName.string
+      : "left operand type of '" + inOperatorNameForErrorMessage + "' operator is '@" + [leftType definition].mTypeName.string
+      + "', right operand type is '@" + [rightType definition].mTypeName.string
       + "', it should be either the same, either inherits from left operand type, either have a '"
-      + [inLeftType definition].mTypeName.string + "' getter without argument that returns a '@" + [inLeftType definition].mTypeName.string + "' object"
+      + [leftType definition].mTypeName.string + "' getter without argument that returns a '@" + [leftType definition].mTypeName.string + "' object"
     end
   end
 }

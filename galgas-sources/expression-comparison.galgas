@@ -180,21 +180,20 @@ override method @comparisonExpressionAST analyzeSemanticExpression
     !inferenceType: inInferenceType
     !inAnalysisContext
     !?ioVariableMap
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType: leftType
+    !inferenceType: leftExpression.mResultType
     !inAnalysisContext
     !?ioVariableMap 
-    ?@semanticExpressionForGeneration rightExpression
+    ?var @semanticExpressionForGeneration rightExpression
   ]
 #--- Operator name
-  let isComparable = [[leftType definition].mHandledOperatorFlags isComparable]
-  let isReferenceEquatable = [[leftType definition].mHandledOperatorFlags isReferenceEquatable]
+  let isComparable = [[leftExpression.mResultType definition].mHandledOperatorFlags isComparable]
+  let isReferenceEquatable = [[leftExpression.mResultType definition].mHandledOperatorFlags isReferenceEquatable]
   let @bool operatorIsAvailable
   let @string operatorName
   switch self.mComparison
@@ -225,11 +224,10 @@ override method @comparisonExpressionAST analyzeSemanticExpression
   end
 #--- Check operator availability
   checkDiadicOperator (
-    !leftType
-    !rightExpression.mResultType
     !operatorIsAvailable
     !operatorName
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression

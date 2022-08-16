@@ -161,7 +161,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
     !inferenceType: inInferenceType
     !inAnalysisContext
     !?ioVariableMap
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
@@ -173,18 +173,16 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   checkDiadicOperator (
-    !leftType
-    !rightExpression.mResultType
-    ![[leftType definition].mHandledOperatorFlags infixMulOperatorNoOVF]
+    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixMulOperatorNoOVF]
     !"&*"
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration.new {
-    !leftType
+    !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
     !.multiply_operation_no_ovf
@@ -218,7 +216,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
     !inferenceType: inInferenceType
     !inAnalysisContext
     !?ioVariableMap
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
@@ -230,18 +228,16 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   checkDiadicOperator (
-    !leftType
-    !rightExpression.mResultType
-    ![[leftType definition].mHandledOperatorFlags infixMulOperator]
+    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixMulOperator]
     !"*"
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration.new {
-    !leftType
+    !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
     !.multiply_operation
@@ -274,7 +270,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
     !inferenceType: inInferenceType
     !inAnalysisContext
     !?ioVariableMap
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
@@ -286,18 +282,16 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   checkDiadicOperator (
-    !leftType
-    !rightExpression.mResultType
-    ![[leftType definition].mHandledOperatorFlags infixDivOperatorNoOVF]
+    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixDivOperatorNoOVF]
     !"&/"
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration.new {
-    !leftType
+    !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
     !.divide_operation_no_ovf
@@ -330,7 +324,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
     !inferenceType: inInferenceType
     !inAnalysisContext
     !?ioVariableMap
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
@@ -342,18 +336,16 @@ override method @divisionExpressionAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   checkDiadicOperator (
-    !leftType
-    !rightExpression.mResultType
-    ![[leftType definition].mHandledOperatorFlags infixDivOperator]
+    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixDivOperator]
     !"/"
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration.new {
-    !leftType
+    !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
     !.divide_operation
@@ -386,7 +378,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
     !inferenceType: inInferenceType
     !inAnalysisContext
     !?ioVariableMap
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
@@ -398,18 +390,16 @@ override method @moduloExpressionAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   checkDiadicOperator (
-    !leftType
-    !rightExpression.mResultType
-    ![[leftType definition].mHandledOperatorFlags infixModOperator]
+    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixModOperator]
     !"mod"
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration.new {
-    !leftType
+    !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
     !.modulo_operation

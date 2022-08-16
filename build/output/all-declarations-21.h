@@ -535,12 +535,11 @@ void routine_checkAssignmentTypeWithImplicitGetterCall (const class GALGAS_unifi
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_checkDiadicOperator (const class GALGAS_unifiedTypeMapEntry constinArgument0,
-                                  const class GALGAS_unifiedTypeMapEntry constinArgument1,
-                                  const class GALGAS_bool constinArgument2,
-                                  const class GALGAS_string constinArgument3,
-                                  const class GALGAS_location constinArgument4,
-                                  class GALGAS_semanticExpressionForGeneration & ioArgument5,
+void routine_checkDiadicOperator (const class GALGAS_bool constinArgument0,
+                                  const class GALGAS_string constinArgument1,
+                                  const class GALGAS_location constinArgument2,
+                                  class GALGAS_semanticExpressionForGeneration & ioArgument3,
+                                  class GALGAS_semanticExpressionForGeneration & ioArgument4,
                                   class C_Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 

@@ -101,7 +101,7 @@ override method @andExpressionAST analyzeSemanticExpression
     !inferenceType: inInferenceType
     !inAnalysisContext
     !?ioVariableMap
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
@@ -113,18 +113,16 @@ override method @andExpressionAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   checkDiadicOperator (
-    !leftType
-    !rightExpression.mResultType
-    ![[leftType definition].mHandledOperatorFlags infixAndOperator]
+    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixAndOperator]
     !"&"
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration.new {
-    !leftType
+    !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
     !.operator_and
@@ -157,7 +155,7 @@ override method @andShortExpressionAST analyzeSemanticExpression
     !inferenceType: inInferenceType
     !inAnalysisContext
     !?ioVariableMap
-    ?let @semanticExpressionForGeneration leftExpression
+    ?var @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
@@ -169,18 +167,16 @@ override method @andShortExpressionAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   checkDiadicOperator (
-    !leftType
-    !rightExpression.mResultType
-    ![[leftType definition].mHandledOperatorFlags infixAndOperator]
+    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixAndOperator]
     !"&"
     !self.mOperatorLocation
+    !?leftExpression
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @andShortExpressionForGeneration.new {
-    !leftType
+    !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
     !rightExpression}
