@@ -12112,7 +12112,9 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_valueClassTypeHeader_32
                                                                                            const GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
                                                                                            const GALGAS_typedPropertyList & /* in_CURRENT_5F_PROPERTY_5F_LIST */,
                                                                                            const GALGAS_typedPropertyList & /* in_ALL_5F_PROPERTY_5F_LIST */,
-                                                                                           const GALGAS_bool & /* in_IS_5F_ABSTRACT */
+                                                                                           const GALGAS_bool & /* in_IS_5F_ABSTRACT */,
+                                                                                           const GALGAS_getterMap & in_GETTER_5F_MAP,
+                                                                                           const GALGAS_instanceMethodMap & in_INSTANCE_5F_METHOD_5F_MAP
                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   result << "//----------------------------------------------------------------------------------------------------------------------\n"
@@ -12133,7 +12135,27 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_valueClassTypeHeader_32
     result << "cPtr_" ;
     result << in_SUPER_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   }
-  result << " {\n" ;
+  result << " {\n"
+    "\n" ;
+  GALGAS_uint index_536_ (0) ;
+  if (in_GETTER_5F_MAP.isValid ()) {
+    cEnumerator_getterMap enumerator_536 (in_GETTER_5F_MAP, kENUMERATION_UP) ;
+    while (enumerator_536.hasCurrentObject ()) {
+      result << function_generateClassGetterDeclaration (enumerator_536.current_lkey (HERE), enumerator_536.current_mArgumentTypeList (HERE), enumerator_536.current_mHasCompilerArgument (HERE), enumerator_536.current_mReturnedType (HERE), enumerator_536.current_mQualifier (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_value_class.h2-part1.galgasTemplate", 11)).stringValue () ;
+      index_536_.increment () ;
+      enumerator_536.gotoNextObject () ;
+    }
+  }
+  GALGAS_uint index_736_ (0) ;
+  if (in_INSTANCE_5F_METHOD_5F_MAP.isValid ()) {
+    cEnumerator_instanceMethodMap enumerator_736 (in_INSTANCE_5F_METHOD_5F_MAP, kENUMERATION_UP) ;
+    while (enumerator_736.hasCurrentObject ()) {
+      result << function_generateClassInstanceMethodDeclaration (enumerator_736.current_lkey (HERE), enumerator_736.current_mParameterList (HERE), enumerator_736.current_mHasCompilerArgument (HERE), enumerator_736.current_mQualifier (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_value_class.h2-part1.galgasTemplate", 14)).stringValue () ;
+      index_736_.increment () ;
+      enumerator_736.gotoNextObject () ;
+    }
+  }
+  result << "\n" ;
   return GALGAS_string (result) ;
 }
 

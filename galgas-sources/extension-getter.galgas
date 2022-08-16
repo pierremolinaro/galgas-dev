@@ -171,7 +171,7 @@ override method @extensionGetterAST semanticAnalysis
   let @bool implementedAsFunctionNew
   if [[selfType definition].mTypeKindEnum isClassType] then
     selfObjectNameNew = "this"
-    selfObjectAccessorNew = "object->"
+    selfObjectAccessorNew = "this->"
     implementedAsFunctionNew = false
   else
     selfObjectNameNew = "inObject"

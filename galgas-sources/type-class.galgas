@@ -36,8 +36,8 @@ syntax extension galgas3DeclarationsSyntax {
       $class$
       if [option galgas_cli_options.errorClassDeclaration value] then
         error .here : "'class' declaration is obsolete, use 'valueclass'"
-      else
-        warning .here : "'class' declaration is obsolete, use 'valueclass'"
+#      else
+#        warning .here : "'class' declaration is obsolete, use 'valueclass'"
       end
       isReference = false
     or
@@ -648,6 +648,8 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
         !self.mCurrentTypedAttributeList
         !self.mAllTypedAttributeList
         !self.mIsAbstract
+        ![self.mSelfTypeEntry definition].mGetterMap
+        ![self.mSelfTypeEntry definition].mInstanceMethodMap
       ]
       let @string part2 = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part2
         !typedefinition.mTypeName.string
@@ -678,6 +680,8 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
         !self.mCurrentTypedAttributeList
         !self.mAllTypedAttributeList
         !self.mIsAbstract
+        ![self.mSelfTypeEntry definition].mGetterMap
+        ![self.mSelfTypeEntry definition].mInstanceMethodMap
       ]
       outHeader += [filewrapper typeGenerationTemplate.valueClassTypeHeader2part2
         !typedefinition.mTypeName.string

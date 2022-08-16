@@ -805,6 +805,8 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@typedPropertyList CURRENT_PROPERTY_LIST
     ?@typedPropertyList ALL_PROPERTY_LIST
     ?@bool IS_ABSTRACT
+    ?@getterMap GETTER_MAP
+    ?@instanceMethodMap INSTANCE_METHOD_MAP
 
   template valueClassTypeHeader2part2 "GALGAS_value_class.h2-part2.galgasTemplate"
     ?@string TYPE_NAME

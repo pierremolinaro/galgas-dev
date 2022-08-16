@@ -215,7 +215,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
        then [selfType definition].mAllTypedPropertyList
        else {}
      end
-    !"object->"
+    !"this->"
     !self.mOverridingExtensionGetterInstructionList
     !self.mOverridingExtensionGetterReturnedVariableName
     !self.mOverridingExtensionGetterReturnedTypeName

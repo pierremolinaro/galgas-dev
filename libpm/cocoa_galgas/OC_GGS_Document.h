@@ -102,7 +102,7 @@
 
   @private NSString * mBaseFilePreferenceKey ;
   
-  @private BOOL mHasSpoken ;
+//  @private BOOL mHasSpoken ;
 }
 
 @property (assign, atomic) BOOL mBuildTaskIsRunning ;

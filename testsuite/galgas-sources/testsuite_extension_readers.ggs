@@ -24,6 +24,9 @@ abstract func @A_A.location() -> @location
 
 override func @B_B.location() -> @location outLocation { outLocation = .here}
 
+func @uint.carré () -> @uint {
+  result = self * self
+}
 
 proc testsuite_extension_readers() {
   message "*************************************** begin of extension reader test\n"
@@ -33,5 +36,7 @@ proc testsuite_extension_readers() {
   if false then
     error b : "non displayed message"
   end
+  let @uint a = 9
+  message "Carré de 9: " + [a carré] + "\n"
 }
 

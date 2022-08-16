@@ -549,7 +549,9 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_valueClassTypeHeader_32
                                                                                            const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
                                                                                            const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
                                                                                            const class GALGAS_typedPropertyList & in_ALL_5F_PROPERTY_5F_LIST,
-                                                                                           const class GALGAS_bool & in_IS_5F_ABSTRACT
+                                                                                           const class GALGAS_bool & in_IS_5F_ABSTRACT,
+                                                                                           const class GALGAS_getterMap & in_GETTER_5F_MAP,
+                                                                                           const class GALGAS_instanceMethodMap & in_INSTANCE_5F_METHOD_5F_MAP
                                                                                            COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------

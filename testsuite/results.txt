@@ -408,6 +408,7 @@ LOGGING y: <@uint:2>
 LOGGING result: 
 *************************************** begin of extension reader test
 LOGGING s: <@string:"-3-4-4">
+Carré de 9: 81
 *************************************** begin of extension procs
 2
 *************************************** begin of extension setter test
