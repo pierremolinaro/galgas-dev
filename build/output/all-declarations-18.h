@@ -178,7 +178,7 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public: virtual void nt_declaration_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_declaration_ (GALGAS_galgas_33_DeclarationAST & ioArgument0,
+  public: virtual void nt_declaration_ (GALGAS_galgasDeclarationAST & ioArgument0,
                                         C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //------------------------------------- 'expression' non terminal
@@ -915,19 +915,19 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public: virtual void nt_start_5F_symbol_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_start_5F_symbol_ (GALGAS_galgas_33_DeclarationAST & ioArgument0,
+  public: virtual void nt_start_5F_symbol_ (GALGAS_galgasDeclarationAST & ioArgument0,
                                             C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //--- Start symbol
   public: static void _performSourceFileParsing_ (C_Compiler * inCompiler,
                                                   GALGAS_lstring inFileName,
-                                                  GALGAS_galgas_33_DeclarationAST & ioArgument0
+                                                  GALGAS_galgasDeclarationAST & ioArgument0
                                                   COMMA_LOCATION_ARGS) ;
 
   public: static void _performSourceStringParsing_ (C_Compiler * inCompiler,
                                                     GALGAS_string inSourceString,
                                                     GALGAS_string inNameString,
-                                                    GALGAS_galgas_33_DeclarationAST & ioArgument0
+                                                    GALGAS_galgasDeclarationAST & ioArgument0
                                                     COMMA_LOCATION_ARGS) ;
 
 //--- Indexing
@@ -1029,7 +1029,7 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public: virtual void nt_template_5F_delimitor_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_template_5F_delimitor_ (GALGAS_metamodelTemplateDelimitorListAST & ioArgument0,
+  public: virtual void nt_template_5F_delimitor_ (GALGAS_templateDelimitorListAST & ioArgument0,
                                                   C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //------------------------------------- 'template_replacement' non terminal
@@ -1474,6 +1474,10 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public: virtual int32_t select_galgas_33_LexiqueComponentSyntax_33 (C_Lexique_galgas_33_Scanner *) ;
 
   public: virtual int32_t select_galgas_33_LexiqueComponentSyntax_34 (C_Lexique_galgas_33_Scanner *) ;
+
+  public: virtual int32_t select_galgas_33_LexiqueComponentSyntax_35 (C_Lexique_galgas_33_Scanner *) ;
+
+  public: virtual int32_t select_galgas_33_LexiqueComponentSyntax_36 (C_Lexique_galgas_33_Scanner *) ;
 
   public: virtual int32_t select_galgas_33_OptionComponentSyntax_0 (C_Lexique_galgas_33_Scanner *) ;
 

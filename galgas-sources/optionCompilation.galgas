@@ -34,7 +34,7 @@ syntax galgas3OptionComponentSyntax (galgas3Scanner) {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $option$
     $identifier$ ?let @lstring optionComponentName
     ${$
@@ -97,7 +97,7 @@ syntax galgas4OptionComponentSyntax (galgas3Scanner) {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $option$
     $identifier$ ?let @lstring optionComponentName
     ${$

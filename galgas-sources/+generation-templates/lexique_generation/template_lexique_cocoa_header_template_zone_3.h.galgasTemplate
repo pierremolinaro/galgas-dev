@@ -1,0 +1,24 @@
+
+- (NSUInteger) terminalVocabularyCount ;
+
+- (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal ;
+
+- (void) parseLexicalTokenForLexicalColoring ;
+
+- (NSUInteger) styleCount ;
+
+- (NSString *) styleNameForStyleIndex: (NSInteger) inIndex ;
+
+- (NSString *) styleIdentifierForStyleIndex: (NSInteger) inIndex ;
+
+- (NSString *) indexingDirectory ;
+
+- (NSArray *) indexingTitles ; // Array of NSString
+
+- (BOOL) isTemplateLexique ;
+
+- (BOOL) atomicSelectionForToken: (NSUInteger) inTokenIndex ;
+
+@end
+
+//----------------------------------------------------------------------------------------------------------------------

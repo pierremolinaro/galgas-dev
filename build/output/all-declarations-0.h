@@ -252,26 +252,27 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
 //--- Unicode test functions
 
 //--- Indexing directory
-  protected: virtual C_String indexingDirectory (void) const ;
+  protected: virtual C_String indexingDirectory (void) const override  ;
 
 //--- Parse lexical token
-  protected: virtual bool parseLexicalToken (void) ;
+  protected: void internalParseLexicalToken (cTokenFor_galgasTemplateScanner & token) ;
+  protected: virtual bool parseLexicalToken (void) override ;
 
 //--- Get terminal message
-  protected: virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const ;
+  protected: virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int16_t terminalVocabularyCount (void) const { return 142 ; }
+  public: virtual int16_t terminalVocabularyCount (void) const override { return 142 ; }
 
 //--- Get Token String
-  public: virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
+  public: virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const override ;
 
 //--- Enter Token
   protected: void enterToken (cTokenFor_galgasTemplateScanner & ioToken) ;
 
 //--- Style name for Latex
-  protected: virtual C_String styleNameForIndex (const uint32_t inStyleIndex) const ;
-  protected: virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const ;
+  protected: virtual C_String styleNameForIndex (const uint32_t inStyleIndex) const override ;
+  protected: virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const override ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------

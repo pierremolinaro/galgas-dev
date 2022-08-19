@@ -178,6 +178,7 @@ map @optionComponentMapForSemanticAnalysis {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexiqueComponentMapForSemanticAnalysis {
+  public let @bool mIsTemplate
   public let @terminalMap mTerminalMap
   public let @indexingListAST mIndexingListAST
   public let @lstring mIndexingDirectory
@@ -297,13 +298,6 @@ override getter @galgas3GrammarComponentAST keyRepresentation
 override getter @galgas3SyntaxComponentAST keyRepresentation
   ->@string {
   result = "syntax " + self.mSyntaxComponentName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override getter @lexiqueComponentAST keyRepresentation
-  ->@string {
-  result = "lexique " + self.mLexiqueComponentName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -851,51 +845,6 @@ override method @galgas3GrammarComponentAST enterDeclarationInSemanticContext
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @lexiqueComponentAST enterDeclarationInSemanticContext
-  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-  ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-  ?!@semanticContext ioSemanticContext {
-#--------------------------------------- Build lexical attribute map
-  let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()
-  var @lexicalAttributeMap lexicalAttributeMap = {}
-  buildLexicalAttributeMap (
-   !lexicalTypeMap
-   !self.mLexicalAttributeList
-   !?lexicalAttributeMap
-  )
-#--------------------------------------- 
-  var @terminalMap terminalMap = {}
-  for (mName mSentAttributeList * * *) in self.mTerminalDeclarationList do
-    var argumentTypeList = @lexicalSentValueList {}
-    for (mFormalSelector mAttributeName) in mSentAttributeList do
-      [lexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
-      argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
-    end
-    [!?terminalMap insertKey !mName !argumentTypeList]
-  end
-#---
-  for (* * * mSentAttributeList mEntryList) in self.mLexicalListDeclarationList do
-    var argumentTypeList = @lexicalSentValueList {}
-    for (mFormalSelector mAttributeName) in mSentAttributeList do
-      [lexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
-      argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
-    end
-    for (* mTerminalSpelling *) in mEntryList do
-      [!?terminalMap insertKey !mTerminalSpelling !argumentTypeList]
-    end
-  end
-#---
-  [!?ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis insertKey
-     !self.mLexiqueComponentName
-     !terminalMap
-     !self.mIndexingListAST
-     !self.mIndexingDirectory
-  ]
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
 #    B U I L D    O R D E R E D     S E M A N T I C    L I S T                                                 
 #                                           
@@ -954,18 +903,6 @@ override method @galgas3SyntaxComponentAST enterDeclarationInGraph
       end
     end
   end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @lexiqueComponentAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"lexique " + self.mLexiqueComponentName !self.mLexiqueComponentName.location}
-  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -16,7 +16,7 @@ syntax extension galgas3DeclarationsSyntax {
   #·····················································································································
 
   rule <declaration>
-   ?!@galgas3DeclarationAST ioDeclarations {
+   ?!@galgasDeclarationAST ioDeclarations {
     $listmap$
     $@type$ ?let @lstring mListmapTypeName indexing listmapDefinition
     $($
@@ -38,7 +38,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration>  ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration>  ?!@galgasDeclarationAST ioDeclarations {
     $listmap$
     $@type$ ?let @lstring mListmapTypeName indexing listmapDefinition
     $($

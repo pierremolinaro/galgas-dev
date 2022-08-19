@@ -208,6 +208,35 @@ end
     %}\n\n%
   end
 %//----------------------------------------------------------------------------------------------------------------------
+//               INTERNAL PARSE LEXICAL TOKEN                                         
+//----------------------------------------------------------------------------------------------------------------------
+
+void C_Lexique_%!LEXIQUE_IDENTIFIER%::internalParseLexicalToken (cTokenFor_%!LEXIQUE_IDENTIFIER% & token) {
+%  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
+    %    token.mLexicalAttribute_%![lkey identifierRepresentation] ![mLexicalType initialization] % ;\n%
+  end
+%    mTokenStartLocation = mCurrentLocation ;
+    try{
+%
+  block 6 :
+    for (mLexicalRule) in LEXICAL_RULE_LIST do
+      ![mLexicalRule generateCode !LEXIQUE_IDENTIFIER !LEXIQUE_ANALYSIS_CONTEXT]
+    end
+  end
+%if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
+      token.mTokenCode = kToken_ ; // Empty string code
+    }else{ // Unknown input character
+      unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
+      token.mTokenCode = -1 ; // No token
+      advance () ; // ... go throught unknown character
+    }
+  }catch (const C_lexicalErrorException &) {
+    token.mTokenCode = -1 ; // No token
+    advance () ; // ... go throught unknown character
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 //               P A R S E    L E X I C A L    T O K E N                                         
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -254,55 +283,14 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
       }
     }
     if ((mMatchedTemplateDelimiterIndex >= 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
-%  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
-    %    token.mLexicalAttribute_%![lkey identifierRepresentation] ![mLexicalType initialization] % ;\n%
-  end
-%    mTokenStartLocation = mCurrentLocation ;
-    try{
-%
-  block 6 :
-    for (mLexicalRule) in LEXICAL_RULE_LIST do
-      ![mLexicalRule generateCode !LEXIQUE_IDENTIFIER !LEXIQUE_ANALYSIS_CONTEXT]
-    end
-  end
-%if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
-      token.mTokenCode = kToken_ ; // Empty string code
-    }else{ // Unknown input character
-      unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
-      token.mTokenCode = -1 ; // No token
-      advance () ; // ... go throught unknown character
-    }
-    }catch (const C_lexicalErrorException &) {
-      token.mTokenCode = -1 ; // No token
-      advance () ; // ... go throught unknown character
-    }
+      internalParseLexicalToken (token) ;
     }
     if ((token.mTokenCode > 0) && %!LEXIQUE_IDENTIFIER%_kEndOfScriptInTemplateArray [token.mTokenCode - 1]) {
       mMatchedTemplateDelimiterIndex = -1 ;
     }
   %else
-  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
-    %    token.mLexicalAttribute_%![lkey identifierRepresentation] ![mLexicalType initialization] % ;\n%
-  end
-%    mTokenStartLocation = mCurrentLocation ;
-    try{
-%
-  block 6 :
-    for (mLexicalRule) in LEXICAL_RULE_LIST do
-      ![mLexicalRule generateCode !LEXIQUE_IDENTIFIER !LEXIQUE_ANALYSIS_CONTEXT]
-    end
-  end
-%if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
-        token.mTokenCode = kToken_ ; // Empty string code
-      }else{ // Unknown input character
-        unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
-        token.mTokenCode = -1 ; // No token
-        advance () ; // ... go throught unknown character
-      }
-    }catch (const C_lexicalErrorException &) {
-      token.mTokenCode = -1 ; // No token
-      advance () ; // ... go throught unknown character
-    }%end%
+  %    internalParseLexicalToken (token) ;%
+  end%
   }
   if (UNICODE_VALUE (mCurrentChar) == '\0') {
     token.mTokenCode = 0 ;

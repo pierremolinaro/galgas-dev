@@ -19,7 +19,7 @@ syntax galgas3DeclarationsSyntax (galgas3Scanner) {
   #          Start symbol                     
   #·····················································································································
 
-  rule <start_symbol> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <start_symbol> ?!@galgasDeclarationAST ioDeclarations {
     repeat
     while
       $;$
@@ -107,7 +107,7 @@ syntax galgas3DeclarationsSyntax (galgas3Scanner) {
   #! Filewrapper Declaration
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $filewrapper$
     $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
     $in$
@@ -128,7 +128,7 @@ syntax galgas3DeclarationsSyntax (galgas3Scanner) {
   }
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $private$
     $filewrapper$
     $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
@@ -228,7 +228,7 @@ syntax galgas4DeclarationsSyntax (galgas3Scanner) {
   #          Start symbol                     
   #·····················································································································
 
-  rule <start_symbol> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <start_symbol> ?!@galgasDeclarationAST ioDeclarations {
     repeat
     while
       $;$
@@ -315,7 +315,7 @@ syntax galgas4DeclarationsSyntax (galgas3Scanner) {
   #! Filewrapper Declaration
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $filewrapper$
     $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
     $in$
@@ -336,7 +336,7 @@ syntax galgas4DeclarationsSyntax (galgas3Scanner) {
   }
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $private$
     $filewrapper$
     $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition

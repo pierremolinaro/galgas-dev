@@ -24,7 +24,7 @@ syntax extension galgas3DeclarationsSyntax {
   #·····················································································································
 
   rule <declaration>
-   ?!@galgas3DeclarationAST ioDeclarations {
+   ?!@galgasDeclarationAST ioDeclarations {
     $graph$
     $@type$ ?let @lstring graphTypeName indexing graphDefinition
     $($
@@ -60,7 +60,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $graph$
     $@type$ ?let @lstring graphTypeName indexing graphDefinition
     $($

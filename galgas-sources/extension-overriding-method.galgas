@@ -19,7 +19,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $method$
     $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionMethodDefinition
@@ -50,7 +50,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $proc$
     $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionMethodDefinition

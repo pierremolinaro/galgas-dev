@@ -19,7 +19,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $setter$
     $@type$ ?let @lstring className indexing typeReferenceExtensionSetter
     $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
@@ -49,7 +49,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $mutating$
     $proc$
     $@type$ ?let @lstring className indexing typeReferenceExtensionSetter

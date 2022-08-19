@@ -1,0 +1,342 @@
+
+#import "%!LEXIQUE_HEADER_FILE_NAME%.h"
+#import "PMDebug.h"
+
+//----------------------------------------------------------------------------------------------------------------------
+//            Unicode test functions                                                             
+//----------------------------------------------------------------------------------------------------------------------
+ 
+% for (mFunctionName mLexicalExpression) in UNICODE_TEST_FUNCTIONS do
+    %bool %![mFunctionName identifierRepresentation]% (const utf32 inUnicodeCharacter) {\n%
+    %  return %![mLexicalExpression generateForUnicodeTestFunctions]% ;\n%
+    %}\n\n%
+  end
+%//----------------------------------------------------------------------------------------------------------------------
+
+@implementation OC_Lexique_%!LEXIQUE_CLASS_NAME%
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                           Template Replacements                                               
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+%if [TEMPLATE_REPLACEMENT_LIST length] > 0 then
+%static NSArray * kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% ; // Of NSString \n%
+end%
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                           Template Delimiters                                                 
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+%if [LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList length] > 0 then
+%static NSArray * kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% ;\n%
+end%
+//----------------------------------------------------------------------------------------------------------------------
+
+- (instancetype) init {
+  self = [super init] ;
+  if (self) {
+    noteObjectAllocation (self) ;
+%
+  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
+    %    mLexicalAttribute_%!lkey.string% = % ![mLexicalType cocoaInitializationCode] % ;\n%
+  end
+%  }
+% if [LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList length] > 0 then
+%  if (nil == kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n%
+%    kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
+  for (mStartString mEndString mPreservesStartDelimiter) in LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList do
+  %      [[OC_GGS_TemplateDelimiter alloc] initWithStartString:@%![mStartString utf8Representation]% endString:%
+      if [mEndString length] == 0 then
+        %nil%
+      else
+        %@%![mEndString utf8Representation]
+      end
+      % discardStartString:%
+      ![not mPreservesStartDelimiter ocString]
+      %],\n%
+  end
+  %      nil\n%
+  %    ] ;\n%
+  %  }\n%
+  end
+  if [TEMPLATE_REPLACEMENT_LIST length] > 0 then
+  %  if (nil == kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n\n%
+  %    kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
+  for (mMatchString mReplacementString mReplacementFunction) in TEMPLATE_REPLACEMENT_LIST do
+    %      @%![mMatchString utf8Representation]%, %
+  end
+  %      nil\n%
+  %    ] ;\n%
+  %  }\n%
+  end
+%  return self ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+- (void) dealloc {
+  noteObjectDeallocation (self) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                 I N D E X I N G    D I R E C T O R Y                                          
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+- (NSString *) indexingDirectory {
+  return @%![INDEXING_DIRECTORY utf8Representation]% ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                 I N D E X I N G    T I T L E S                                                
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+- (NSArray *) indexingTitles { // Array of NSString
+%
+if [INDEXING_LIST length] > 0 then
+%  return [NSArray arrayWithObjects:
+%
+  for (mIndexName mIndexComment) in INDEXING_LIST do
+    %    @%![mIndexComment utf8Representation]%,\n%
+  end
+%    NULL
+  ] ;
+%else
+%
+  return [NSArray array] ;
+%
+end
+%}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//            Terminal Symbols as end of script in template mark                                 
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+% if [TEMPLATE_DELIMITOR_LIST length] > 0 then
+   for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList
+      before %static const BOOL kEndOfScriptInTemplateArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [%![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList length] string]%] = {\n%
+      do %  %![mIsEndOfTemplateMark ocString]% /* %!mTerminalName.string% */%
+      between %,\n%
+      after %\n} ;\n%
+    end
+  end
+%
+
+%
+  for (tokenList_lkey tokenList_mExplicitTokenListMap tokenList_mTokenSortedList tokenList_mShouldBeGenerated) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalTokenListMap do
+    if tokenList_mShouldBeGenerated then
+      %//----------------------------------------------------------------------------------------------------------------------\n%
+      %//\n%
+      %//             Key words table '%!tokenList_lkey.string%'      \n%
+      %//\n%
+      %//----------------------------------------------------------------------------------------------------------------------\n\n%
+      %static const C_cocoa_lexique_table_entry ktable_for_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%!tokenList_lkey.string% [%![[tokenList_mExplicitTokenListMap count] string]%] = {\n%
+        for (mLength mName mTerminalName) in tokenList_mTokenSortedList
+        do %  {%![mName utf8Representation]%, %!LEXIQUE_CLASS_NAME%_1_%![mTerminalName identifierRepresentation]%}%
+        between %,\n%
+        end
+      %\n} ;\n\n%
+      %static NSInteger search_into_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%!tokenList_lkey.string% (NSString * inSearchedString) {\n%
+      %  return searchStringInTable (inSearchedString, ktable_for_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%!tokenList_lkey.string%, %![[tokenList_mExplicitTokenListMap count] string]%) ;\n%
+      %}\n\n%
+    end
+  end
+%
+//----------------------------------------------------------------------------------------------------------------------
+//
+//               P A R S E    L E X I C A L    T O K E N                                         
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+- (void) parseLexicalTokenForLexicalColoring {
+  mLoop = YES ;
+  BOOL scanningOk = YES ;
+  mTokenCode = 0 ;
+  while ((mTokenCode == 0) && (mCurrentChar != '\0')) {
+    mTokenStartLocation = mCurrentLocation ;
+%
+  if [TEMPLATE_DELIMITOR_LIST length] > 0 then
+%    if ((mMatchedTemplateDelimiterIndex >= 0) && ([[kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] startString].length > 0)) {
+      const BOOL foundEndDelimitor = [self testForInputString:[[kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] endString] advance:YES] ;
+      if (foundEndDelimitor) {
+        mMatchedTemplateDelimiterIndex = -1 ;
+      }
+    }
+    while ((mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar != '\0')) {
+      %if [TEMPLATE_REPLACEMENT_LIST length] > 0 then%
+      [self searchForReplacementPattern:kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%] ;
+      %end%
+      mMatchedTemplateDelimiterIndex = [self findTemplateDelimiterIndex:kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%] ;
+      if (mMatchedTemplateDelimiterIndex < 0) {
+        [self advance] ;
+        mTokenCode = -2 ;
+      }
+    }
+    if ((mMatchedTemplateDelimiterIndex >= 0) && (mTokenCode == 0) && (mCurrentChar != '\0') && scanningOk) {
+%  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
+    %      %![mLexicalType cocoaResetPrefix]%mLexicalAttribute_%!lkey.string ![mLexicalType cocoaReset] % ;\n%
+  end
+%      mTokenStartLocation = mCurrentLocation ;
+%
+  block 6 :
+    for (mLexicalRule) in LEXICAL_RULE_LIST do
+      ![mLexicalRule generateCocoaCode !LEXIQUE_CLASS_NAME !LEXIQUE_ANALYSIS_CONTEXT]
+    end
+  end
+%if ([self testForInputChar:'\0']) { // End of source text ? 
+        mTokenCode = %!LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
+      }else{ // Unknown input character
+        scanningOk = NO ;
+      }
+    }
+    if ((mTokenCode > 0) && kEndOfScriptInTemplateArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [mTokenCode - 1]) {
+      mMatchedTemplateDelimiterIndex = -1 ;
+    }
+  //--- Error ?
+    if (! scanningOk) {
+      mTokenCode = -1 ;
+      [self advance] ;
+    }%else
+  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
+    %    %![mLexicalType cocoaResetPrefix]%mLexicalAttribute_%!lkey.string ![mLexicalType cocoaReset] % ;\n%
+  end
+%    mTokenStartLocation = mCurrentLocation ;
+%
+  block 4 :
+    for (mLexicalRule) in LEXICAL_RULE_LIST do
+      ![mLexicalRule generateCocoaCode !LEXIQUE_CLASS_NAME !LEXIQUE_ANALYSIS_CONTEXT]
+    end
+  end
+%if ([self testForInputChar:'\0']) { // End of source text ? 
+      mTokenCode = %!LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
+    }else{ // Unknown input character
+      scanningOk = NO ;
+      [self advance] ;
+    }
+  //--- Error ?
+    if (! scanningOk) {
+      mTokenCode = -1 ;
+    }%end%
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                   T E R M I N A L    C O U N T                                                
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+- (NSUInteger) terminalVocabularyCount {
+  return %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList length] string]% ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                     S T Y L E   C O U N T                                                     
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+- (NSUInteger) styleCount {
+  return %![[LEXICAL_STYLE_LIST length] + 1 string]% ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                I S    T E M P L A T E    L E X I Q U E                                        
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+- (BOOL) isTemplateLexique {
+  return %![[TEMPLATE_DELIMITOR_LIST length] > 0 ocString]% ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//   S T Y L E   I N D E X    F O R    T E R M I N A L                                           
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+- (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal {
+  static const NSUInteger kTerminalSymbolStyles [%![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList length] + 1 string]%] = {0%
+for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do
+  %,\n    %![mStyleIndex string]% /* %!LEXIQUE_CLASS_NAME%_1_%![mTerminalName.string identifierRepresentation]% */%
+end%\n  } ;
+  return kTerminalSymbolStyles [inTerminal] ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//    A T O M I C    S E L E C T I O N   F O R    T E R M I N A L                                
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+- (BOOL) atomicSelectionForToken: (NSUInteger) inTokenIndex {
+  static const BOOL kTerminalAtomicSelection [%![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList length] + 1 string]%] = {NO%
+for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do
+  %,\n    %![mAtomicSelection ocString]% /* %!LEXIQUE_CLASS_NAME%_1_%![mTerminalName.string identifierRepresentation]% */%
+end%\n  } ;
+  return kTerminalAtomicSelection [inTokenIndex] ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//             S T Y L E   N A M E    F O R    I N D E X                                         
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+- (NSString *) styleNameForStyleIndex: (NSInteger) inIndex {
+  NSString * result = nil ;
+  if ((inIndex >= 0) && (inIndex < %![[LEXICAL_STYLE_LIST length] + 1 string]%)) {
+    NSString * kStyleArray [%![[LEXICAL_STYLE_LIST length] + 1 string]%] = {
+      @"Default Style"%
+for (mName mComment) in LEXICAL_STYLE_LIST do
+  %,\n      @%![mComment.string utf8Representation]
+end%\n    } ;
+    result = kStyleArray [inIndex] ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//         S T Y L E   I D E N T I F I E R    F O R    I N D E X                                 
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+- (NSString *) styleIdentifierForStyleIndex: (NSInteger) inIndex {
+  NSString * result = nil ;
+  if ((inIndex >= 0) && (inIndex < %![[LEXICAL_STYLE_LIST length] + 1 string]%)) {
+    NSString * kStyleArray [%![[LEXICAL_STYLE_LIST length] + 1 string]%] = {
+      @"%!LEXIQUE_CLASS_NAME%"%
+for (mName mComment) in LEXICAL_STYLE_LIST do
+  %,\n      @"%!LEXIQUE_CLASS_NAME%-%!mName.string%"%
+end
+%\n    } ;
+    result = kStyleArray [inIndex] ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//         L E X I Q U E   I D E N T I F I E R                                                   
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+- (NSString *) lexiqueIdentifier {
+  return @"%!LEXIQUE_CLASS_NAME%" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+@end
+

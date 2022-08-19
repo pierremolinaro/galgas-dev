@@ -23,7 +23,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $enum$
     $@type$ ?let mEnumTypeName indexing enumDefinition
     ${$
@@ -72,7 +72,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $enum$
     $@type$ ?let mEnumTypeName indexing enumDefinition
     ${$

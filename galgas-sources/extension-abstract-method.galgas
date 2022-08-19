@@ -16,7 +16,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
     $method$
     $@type$ ?let @lstring className indexing typeReferenceAbstractExtensionMethod
@@ -40,7 +40,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
     $proc$
     $@type$ ?let @lstring className indexing typeReferenceAbstractExtensionMethod

@@ -1431,7 +1431,7 @@ GALGAS_templateVariableMap_2D_element GALGAS_templateVariableMap_2D_element::ext
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_metamodelTemplateDelimitorListAST_2D_element::GALGAS_metamodelTemplateDelimitorListAST_2D_element (void) :
+GALGAS_templateDelimitorListAST_2D_element::GALGAS_templateDelimitorListAST_2D_element (void) :
 mProperty_mStartString (),
 mProperty_mOptionList (),
 mProperty_mEndString () {
@@ -1439,14 +1439,14 @@ mProperty_mEndString () {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_metamodelTemplateDelimitorListAST_2D_element::~ GALGAS_metamodelTemplateDelimitorListAST_2D_element (void) {
+GALGAS_templateDelimitorListAST_2D_element::~ GALGAS_templateDelimitorListAST_2D_element (void) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_metamodelTemplateDelimitorListAST_2D_element::GALGAS_metamodelTemplateDelimitorListAST_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                                          const GALGAS_lstringlist & inOperand1,
-                                                                                                          const GALGAS_lstring & inOperand2) :
+GALGAS_templateDelimitorListAST_2D_element::GALGAS_templateDelimitorListAST_2D_element (const GALGAS_lstring & inOperand0,
+                                                                                        const GALGAS_lstringlist & inOperand1,
+                                                                                        const GALGAS_lstring & inOperand2) :
 mProperty_mStartString (inOperand0),
 mProperty_mOptionList (inOperand1),
 mProperty_mEndString (inOperand2) {
@@ -1454,28 +1454,28 @@ mProperty_mEndString (inOperand2) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_metamodelTemplateDelimitorListAST_2D_element GALGAS_metamodelTemplateDelimitorListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_metamodelTemplateDelimitorListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                                              GALGAS_lstringlist::constructor_emptyList (HERE),
-                                                              GALGAS_lstring::constructor_default (HERE)) ;
+GALGAS_templateDelimitorListAST_2D_element GALGAS_templateDelimitorListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_templateDelimitorListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
+                                                     GALGAS_lstringlist::constructor_emptyList (HERE),
+                                                     GALGAS_lstring::constructor_default (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_metamodelTemplateDelimitorListAST_2D_element GALGAS_metamodelTemplateDelimitorListAST_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                                                          const GALGAS_lstringlist & inOperand1,
-                                                                                                                          const GALGAS_lstring & inOperand2 
-                                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_metamodelTemplateDelimitorListAST_2D_element result ;
+GALGAS_templateDelimitorListAST_2D_element GALGAS_templateDelimitorListAST_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
+                                                                                                        const GALGAS_lstringlist & inOperand1,
+                                                                                                        const GALGAS_lstring & inOperand2 
+                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_templateDelimitorListAST_2D_element result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_metamodelTemplateDelimitorListAST_2D_element (inOperand0, inOperand1, inOperand2) ;
+    result = GALGAS_templateDelimitorListAST_2D_element (inOperand0, inOperand1, inOperand2) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_metamodelTemplateDelimitorListAST_2D_element::objectCompare (const GALGAS_metamodelTemplateDelimitorListAST_2D_element & inOperand) const {
+typeComparisonResult GALGAS_templateDelimitorListAST_2D_element::objectCompare (const GALGAS_templateDelimitorListAST_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mProperty_mStartString.objectCompare (inOperand.mProperty_mStartString) ;
@@ -1491,13 +1491,13 @@ typeComparisonResult GALGAS_metamodelTemplateDelimitorListAST_2D_element::object
 
 //----------------------------------------------------------------------------------------------------------------------
 
-bool GALGAS_metamodelTemplateDelimitorListAST_2D_element::isValid (void) const {
+bool GALGAS_templateDelimitorListAST_2D_element::isValid (void) const {
   return mProperty_mStartString.isValid () && mProperty_mOptionList.isValid () && mProperty_mEndString.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_metamodelTemplateDelimitorListAST_2D_element::drop (void) {
+void GALGAS_templateDelimitorListAST_2D_element::drop (void) {
   mProperty_mStartString.drop () ;
   mProperty_mOptionList.drop () ;
   mProperty_mEndString.drop () ;
@@ -1505,9 +1505,9 @@ void GALGAS_metamodelTemplateDelimitorListAST_2D_element::drop (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_metamodelTemplateDelimitorListAST_2D_element::description (C_String & ioString,
-                                                                       const int32_t inIndentation) const {
-  ioString << "<struct @metamodelTemplateDelimitorListAST-element:" ;
+void GALGAS_templateDelimitorListAST_2D_element::description (C_String & ioString,
+                                                              const int32_t inIndentation) const {
+  ioString << "<struct @templateDelimitorListAST-element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
@@ -1522,42 +1522,42 @@ void GALGAS_metamodelTemplateDelimitorListAST_2D_element::description (C_String 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@metamodelTemplateDelimitorListAST-element type
+//@templateDelimitorListAST-element type
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_metamodelTemplateDelimitorListAST_2D_element ("metamodelTemplateDelimitorListAST-element",
-                                                                     NULL) ;
+kTypeDescriptor_GALGAS_templateDelimitorListAST_2D_element ("templateDelimitorListAST-element",
+                                                            NULL) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_metamodelTemplateDelimitorListAST_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_metamodelTemplateDelimitorListAST_2D_element ;
+const C_galgas_type_descriptor * GALGAS_templateDelimitorListAST_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateDelimitorListAST_2D_element ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_metamodelTemplateDelimitorListAST_2D_element::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_templateDelimitorListAST_2D_element::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_metamodelTemplateDelimitorListAST_2D_element (*this)) ;
+    macroMyNew (result, GALGAS_templateDelimitorListAST_2D_element (*this)) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_metamodelTemplateDelimitorListAST_2D_element GALGAS_metamodelTemplateDelimitorListAST_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                                        C_Compiler * inCompiler
-                                                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_metamodelTemplateDelimitorListAST_2D_element result ;
-  const GALGAS_metamodelTemplateDelimitorListAST_2D_element * p = (const GALGAS_metamodelTemplateDelimitorListAST_2D_element *) inObject.embeddedObject () ;
+GALGAS_templateDelimitorListAST_2D_element GALGAS_templateDelimitorListAST_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                      C_Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_templateDelimitorListAST_2D_element result ;
+  const GALGAS_templateDelimitorListAST_2D_element * p = (const GALGAS_templateDelimitorListAST_2D_element *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_metamodelTemplateDelimitorListAST_2D_element *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_templateDelimitorListAST_2D_element *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("metamodelTemplateDelimitorListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("templateDelimitorListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -13012,6 +13012,7 @@ GALGAS_optionComponentMapForSemanticAnalysis_2D_element GALGAS_optionComponentMa
 
 GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element (void) :
 mProperty_lkey (),
+mProperty_mIsTemplate (),
 mProperty_mTerminalMap (),
 mProperty_mIndexingListAST (),
 mProperty_mIndexingDirectory () {
@@ -13025,19 +13026,22 @@ GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::~ GALGAS_lexiqueCompon
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                                                    const GALGAS_terminalMap & inOperand1,
-                                                                                                                    const GALGAS_indexingListAST & inOperand2,
-                                                                                                                    const GALGAS_lstring & inOperand3) :
+                                                                                                                    const GALGAS_bool & inOperand1,
+                                                                                                                    const GALGAS_terminalMap & inOperand2,
+                                                                                                                    const GALGAS_indexingListAST & inOperand3,
+                                                                                                                    const GALGAS_lstring & inOperand4) :
 mProperty_lkey (inOperand0),
-mProperty_mTerminalMap (inOperand1),
-mProperty_mIndexingListAST (inOperand2),
-mProperty_mIndexingDirectory (inOperand3) {
+mProperty_mIsTemplate (inOperand1),
+mProperty_mTerminalMap (inOperand2),
+mProperty_mIndexingListAST (inOperand3),
+mProperty_mIndexingDirectory (inOperand4) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element (GALGAS_lstring::constructor_default (HERE),
+                                                                   GALGAS_bool::constructor_default (HERE),
                                                                    GALGAS_terminalMap::constructor_emptyMap (HERE),
                                                                    GALGAS_indexingListAST::constructor_emptyList (HERE),
                                                                    GALGAS_lstring::constructor_default (HERE)) ;
@@ -13046,13 +13050,14 @@ GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element GALGAS_lexiqueComponent
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                                                                    const GALGAS_terminalMap & inOperand1,
-                                                                                                                                    const GALGAS_indexingListAST & inOperand2,
-                                                                                                                                    const GALGAS_lstring & inOperand3 
+                                                                                                                                    const GALGAS_bool & inOperand1,
+                                                                                                                                    const GALGAS_terminalMap & inOperand2,
+                                                                                                                                    const GALGAS_indexingListAST & inOperand3,
+                                                                                                                                    const GALGAS_lstring & inOperand4 
                                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element (inOperand0, inOperand1, inOperand2, inOperand3) ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
+    result = GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4) ;
   }
   return result ;
 }
@@ -13063,6 +13068,9 @@ typeComparisonResult GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::o
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mIsTemplate.objectCompare (inOperand.mProperty_mIsTemplate) ;
   }
   if (result == kOperandEqual) {
     result = mProperty_mTerminalMap.objectCompare (inOperand.mProperty_mTerminalMap) ;
@@ -13079,13 +13087,14 @@ typeComparisonResult GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::o
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mTerminalMap.isValid () && mProperty_mIndexingListAST.isValid () && mProperty_mIndexingDirectory.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mIsTemplate.isValid () && mProperty_mTerminalMap.isValid () && mProperty_mIndexingListAST.isValid () && mProperty_mIndexingDirectory.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::drop (void) {
   mProperty_lkey.drop () ;
+  mProperty_mIsTemplate.drop () ;
   mProperty_mTerminalMap.drop () ;
   mProperty_mIndexingListAST.drop () ;
   mProperty_mIndexingDirectory.drop () ;
@@ -13100,6 +13109,8 @@ void GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::description (C_St
     ioString << " not built" ;
   }else{
     mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mIsTemplate.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mTerminalMap.description (ioString, inIndentation+1) ;
     ioString << ", " ;

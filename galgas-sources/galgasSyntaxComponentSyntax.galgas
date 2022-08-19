@@ -31,7 +31,7 @@ syntax galgas3SyntaxComponentSyntax (galgas3Scanner) {
   #      S Y N T A X    C O M P O N E N T     
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $syntax$
     $identifier$ ?let @lstring syntaxComponentName
   #--- Imported lexique
@@ -78,7 +78,7 @@ syntax galgas3SyntaxComponentSyntax (galgas3Scanner) {
   #      S Y N T A X    E X T E N S I O N     
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $syntax$
     $extension$
     $identifier$ ?let @lstring syntaxComponentName
@@ -211,7 +211,7 @@ syntax galgas4SyntaxComponentSyntax (galgas3Scanner) {
   #      S Y N T A X    C O M P O N E N T     
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $syntax$
     $identifier$ ?let @lstring syntaxComponentName
   #--- Imported lexique
@@ -258,7 +258,7 @@ syntax galgas4SyntaxComponentSyntax (galgas3Scanner) {
   #      S Y N T A X    E X T E N S I O N     
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $syntax$
     $extension$
     $identifier$ ?let @lstring syntaxComponentName

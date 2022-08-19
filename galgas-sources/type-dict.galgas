@@ -23,7 +23,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
   
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $dict$
   #--- Dict type name
     $@type$ ?let mDictTypeName indexing mapDefinition, structDefinition "-element"
@@ -66,7 +66,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
   
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $dict$
   #--- Dict type name
     $@type$ ?let mDictTypeName indexing mapDefinition, structDefinition "-element"

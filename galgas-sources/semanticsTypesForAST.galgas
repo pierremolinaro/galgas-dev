@@ -479,7 +479,7 @@ list @programRuleList {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct @galgas3DeclarationAST {
+struct @galgasDeclarationAST {
   public var @semanticDeclarationListAST mDeclarationList
   public var @galgas3SyntaxComponentListAST mSyntaxComponentList
   public var @syntaxExtensions mSyntaxExtensions

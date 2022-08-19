@@ -52,7 +52,8 @@ project (4:0:0) -> "galgas" {
   "galgas-sources/template-switch-instruction.galgas"
 
 #--- Lexique Component
-  "galgas-sources/galgasLexiqueComponentSyntax.galgas"
+  "galgas-sources/lexique-component.galgas"
+  "galgas-sources/template-lexique-component.galgas"
   "galgas-sources/lexiqueTypesForAST.galgas"
   "galgas-sources/lexiqueSemantics.galgas"
   "galgas-sources/lexicalUnicodeTestFunctions.galgas"

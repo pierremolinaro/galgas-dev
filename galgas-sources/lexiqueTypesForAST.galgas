@@ -37,7 +37,7 @@ list @lexicalInstructionListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-list @metamodelTemplateDelimitorListAST {
+list @templateDelimitorListAST {
   public var @lstring mStartString
   public var @lstringlist mOptionList
   public var @lstring mEndString
@@ -415,26 +415,6 @@ list @externFunctionListAST {
 list @indexingListAST {
   public var @lstring mIndexName
   public var @lstring mIndexComment
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @lexiqueComponentAST : @semanticDeclarationAST {
-  private let @lstring mLexiqueComponentName
-  private let @bool mIsTemplate
-  private let @metamodelTemplateDelimitorListAST mTemplateDelimitorList
-  private let @templateReplacementListAST mTemplateReplacementList
-  private let @lexicalAttributeListAST mLexicalAttributeList
-  private let @lexicalStyleListAST mLexicalStyleList
-  private let @terminalDeclarationListAST mTerminalDeclarationList
-  private let @lexicalMessageDeclarationListAST mLexicalMessageDeclarationList
-  private let @lexicalListDeclarationListAST mLexicalListDeclarationList
-  private let @lexicalRuleListAST mLexicalRuleList
-  private let @externRoutineListAST mExternRoutineList
-  private let @externFunctionListAST mExternFunctionList
-  private let @indexingListAST mIndexingListAST
-  private let @lstring mIndexingDirectory
-  private let @lexicalFunctionListAST mLexicalFunctionListAST
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -178,7 +178,7 @@ private proc parseAndAnalyzeProject
 private proc compileProject ?let @lstring inProjectSourceFile
                             ?let @string inSourceToAnalyze
                             ?let @galgas3ProjectComponentAST inProjectComponentAST {
-  var @galgas3DeclarationAST declarationAST = .default
+  var @galgasDeclarationAST declarationAST = .default
   for (mValue) in inProjectComponentAST.mProjectSourceList do
     if [mValue pathExtension] == "galgas" then
       let absoluteSourcePath = [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]]

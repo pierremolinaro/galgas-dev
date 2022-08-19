@@ -55,7 +55,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
   
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $map$
   #--- Map type name
     $@type$ ?let @lstring mMapTypeName indexing mapDefinition, structDefinition "-element"
@@ -181,7 +181,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
   
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $map$
   #--- Map type name
     $@type$ ?let @lstring mMapTypeName indexing mapDefinition, structDefinition "-element"

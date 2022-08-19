@@ -16,7 +16,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $array$
   #--- Map type name
     $@type$ ?let @lstring arrayTypeName indexing arrayTypeDefinition
@@ -43,7 +43,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $array$
   #--- Map type name
     $@type$ ?let @lstring arrayTypeName indexing arrayTypeDefinition

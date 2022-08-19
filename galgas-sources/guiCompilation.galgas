@@ -91,7 +91,7 @@ syntax galgas3GuiComponentSyntax (galgas3Scanner) {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $gui$
     $identifier$ ?let @lstring mGUIName
     ${$
@@ -217,7 +217,7 @@ syntax galgas4GuiComponentSyntax (galgas3Scanner) {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $gui$
     $identifier$ ?let @lstring mGUIName
     ${$
@@ -421,6 +421,7 @@ private proc guiComponentSemanticAnalysis
   #--- Check lexique
     [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
       !mLexiqueFileName
+      ?*
       ?let @terminalMap terminalMap
       ?2*
     ]

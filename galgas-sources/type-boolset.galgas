@@ -15,7 +15,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $boolset$
     $@type$ ?let @lstring boolsetTypeName indexing structDefinition
     ${$
@@ -44,7 +44,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $boolset$
     $@type$ ?let @lstring boolsetTypeName indexing structDefinition
     ${$

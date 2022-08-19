@@ -16,7 +16,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $abstract$
     $setter$
@@ -40,7 +40,7 @@ syntax extension galgas3DeclarationsSyntax {
 #
 #  #·····················································································································
 #
-#  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+#  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
 #    $override$
 #    $abstract$
 #    $setter$

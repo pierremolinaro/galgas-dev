@@ -1,0 +1,1867 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#                                           
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
+#                                           
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+#  details.                                 
+#                                           
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+    $lexique$
+  #--- Lexique Component Name
+    $identifier$ ?let @lstring lexiqueComponentName
+  #--- Enable indexing ?
+    let @lstring indexingDirectory
+    select
+      indexingDirectory = ["" nowhere]
+    or
+      $indexing$
+      $in$
+      $"string"$ ? indexingDirectory
+    end
+    ${$
+  #--- Parse lexique body
+    var @templateDelimitorListAST templateDelimitorList = {}
+    var @templateReplacementListAST templateReplacementList = {}
+    var @lexicalAttributeListAST lexicalAttributeList = {}
+    var @lexicalStyleListAST lexicalStyleList = {}
+    var @terminalDeclarationListAST terminalDeclarationList = {}
+    var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = {}
+    var @lexicalListDeclarationListAST lexicalListDeclarationList = {}
+    var @lexicalRuleListAST lexicalRuleList = {}
+    var @externRoutineListAST externRoutineList = {}
+    var @externFunctionListAST externFunctionList = {}
+    var @indexingListAST indexingListAST = {}
+    var @lexicalFunctionListAST lexicalFunctionListAST = {}
+    repeat
+    while 
+      <extern_routine_declaration> !?externRoutineList
+    while 
+      <extern_function_declaration> !?externFunctionList
+    while 
+      <template_delimitor> !? templateDelimitorList
+    while 
+      <template_replacement> !? templateReplacementList
+    while 
+      <lexical_attribute_declaration> !? lexicalAttributeList
+    while 
+      <style_declaration> !? lexicalStyleList
+    while 
+      <terminal_declaration> !? terminalDeclarationList
+    while 
+      <lexical_list_declaration> !? lexicalListDeclarationList
+    while
+      <lexical_explicit_rule> !? lexicalRuleList
+    while
+      <lexical_implicit_rule> !? lexicalRuleList
+    while
+      <lexical_message_declaration> !?lexicalMessageDeclarationList
+    while
+      <lexical_indexing_declaration> !?indexingListAST
+    while
+      <lexical_function_declaration> !?lexicalFunctionListAST
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@lexiqueComponentAST.new {
+      !false # Is not predefined
+      !lexiqueComponentName
+      !false # isTemplate
+      !templateDelimitorList
+      !templateReplacementList
+      !lexicalAttributeList
+      !lexicalStyleList
+      !terminalDeclarationList
+      !lexicalMessageDeclarationList
+      !lexicalListDeclarationList
+      !lexicalRuleList
+      !externRoutineList
+      !externFunctionList
+      !indexingListAST
+      !indexingDirectory
+      !lexicalFunctionListAST
+    }
+  }
+
+ #·····················································································································
+
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+    $template$
+    $lexique$
+  #--- Lexique Component Name
+    $identifier$ ?let @lstring lexiqueComponentName
+  #--- Enable indexing ?
+    let @lstring indexingDirectory
+    select
+      indexingDirectory = ["" nowhere]
+    or
+      $indexing$
+      $in$
+      $"string"$ ? indexingDirectory
+    end
+    ${$
+  #--- Parse lexique body
+    var @templateDelimitorListAST templateDelimitorList = {}
+    var @templateReplacementListAST templateReplacementList = {}
+    var @lexicalAttributeListAST lexicalAttributeList = {}
+    var @lexicalStyleListAST lexicalStyleList = {}
+    var @terminalDeclarationListAST terminalDeclarationList = {}
+    var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = {}
+    var @lexicalListDeclarationListAST lexicalListDeclarationList = {}
+    var @lexicalRuleListAST lexicalRuleList = {}
+    var @externRoutineListAST externRoutineList = {}
+    var @externFunctionListAST externFunctionList = {}
+    var @indexingListAST indexingListAST = {}
+    var @lexicalFunctionListAST lexicalFunctionListAST = {}
+    repeat
+    while 
+      <extern_routine_declaration> !?externRoutineList
+    while 
+      <extern_function_declaration> !?externFunctionList
+    while 
+      <template_delimitor> !? templateDelimitorList
+    while 
+      <template_replacement> !? templateReplacementList
+    while 
+      <lexical_attribute_declaration> !? lexicalAttributeList
+    while 
+      <style_declaration> !? lexicalStyleList
+    while 
+      <terminal_declaration> !? terminalDeclarationList
+    while 
+      <lexical_list_declaration> !? lexicalListDeclarationList
+    while
+      <lexical_explicit_rule> !? lexicalRuleList
+    while
+      <lexical_implicit_rule> !? lexicalRuleList
+    while
+      <lexical_message_declaration> !?lexicalMessageDeclarationList
+    while
+      <lexical_indexing_declaration> !?indexingListAST
+    while
+      <lexical_function_declaration> !?lexicalFunctionListAST
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@lexiqueComponentAST.new {
+      !false # Is not predefined
+      !lexiqueComponentName
+      !true # isTemplate
+      !templateDelimitorList
+      !templateReplacementList
+      !lexicalAttributeList
+      !lexicalStyleList
+      !terminalDeclarationList
+      !lexicalMessageDeclarationList
+      !lexicalListDeclarationList
+      !lexicalRuleList
+      !externRoutineList
+      !externFunctionList
+      !indexingListAST
+      !indexingDirectory
+      !lexicalFunctionListAST
+    }
+  }
+
+  #·····················································································································
+
+  rule <lexical_indexing_declaration> ?!@indexingListAST ioIndexingListAST {
+    $indexing$
+    $identifier$ ?let @lstring indexName indexing indexingNameDefinition
+    $:$
+    $"string"$ ?let @lstring indexComment
+    ioIndexingListAST += !indexName !indexComment
+  }
+
+  #·····················································································································
+
+  rule <template_delimitor> ?!@templateDelimitorListAST ioTemplateDelimitorList {
+    $template$
+    $"string"$ ?let @lstring startString
+    var optionList = @lstringlist {}
+    repeat
+    while
+      $%attribute$ ?let @lstring optionName
+      optionList += !optionName
+    end
+    $...$
+    $"string"$ ?let @lstring endString
+    ioTemplateDelimitorList += !startString !optionList !endString
+  }
+
+  #·····················································································································
+
+  rule <template_replacement> ?!@templateReplacementListAST ioTemplateReplacement {
+    $replace$
+    $"string"$ ?let @lstring matchString
+    let @lstring replacementString
+    let @lstring replacementFunction
+    select
+      $...$
+      $"string"$ ?replacementString
+      $:$
+      $identifier$ ?replacementFunction
+    or
+      $->$
+      $"string"$ ?replacementString
+      replacementFunction = @lstring.new {!"" !@location.here}
+    end
+    ioTemplateReplacement += !matchString !replacementString !replacementFunction
+  }
+
+  #·····················································································································
+
+  rule <lexical_message_declaration>
+    ?!@lexicalMessageDeclarationListAST ioLexicalMessageDeclarationList {
+    $message$
+    $identifier$ ?let @lstring messageName
+    $:$
+    $"string"$ ?let @lstring messageValue
+    ioLexicalMessageDeclarationList += !messageName !messageValue
+  }
+
+  #·····················································································································
+
+  rule <lexical_implicit_rule> ?!@lexicalRuleListAST ioLexicalImplicitRuleList {
+    $rule$
+    $list$
+    $identifier$ ?let @lstring listName
+    ioLexicalImplicitRuleList += !@lexicalImplicitRuleAST.new {!listName}
+  }
+
+  #·····················································································································
+
+  rule <lexical_explicit_rule> ?!@lexicalRuleListAST ioLexicalExplicitRuleList {
+    $rule$
+    <lexical_expression> ?let @lexicalExpressionAST lexicalRuleExpression
+    ${$
+    var @lexicalInstructionListAST instructionList = {}
+    repeat
+    while
+      <lexical_instruction> !?instructionList
+    end
+    $}$
+    ioLexicalExplicitRuleList += !@lexicalExplicitRuleAST.new {!lexicalRuleExpression !instructionList}
+  }
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $send$
+    <lexical_send_instruction> ?let @lexicalInstructionAST instruction
+    ioInstructionList += !instruction
+  }
+
+  #·····················································································································
+
+  rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
+    $\$terminal\$$ ?let @lstring sentTerminal
+    outInstruction = @lexicalSimpleSendInstructionAST.new {!sentTerminal}
+  }
+
+  #·····················································································································
+
+  rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
+    var @lexicalSendSearchListAST lexicalSendSearchList = {}
+    $search$
+    repeat
+      $identifier$ ?let @lstring attributeName
+      $in$
+      $identifier$ ?let @lstring searchListName
+      lexicalSendSearchList += !attributeName !searchListName
+      $default$
+    while
+      $search$
+    end
+    let @lexicalSendDefaultActionAST lexicalSendDefaultAction
+    select
+      $\$terminal\$$ ?let @lstring defaultSentTerminal
+      lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST.new {!defaultSentTerminal}
+    or
+      $error$
+      $identifier$ ?let @lstring defaultErrorMessageName
+      lexicalSendDefaultAction = @lexicalErrorByDefaultAST.new {!defaultErrorMessageName}
+    end
+    outInstruction = @lexicalStructuredSendInstructionAST.new {
+      !lexicalSendSearchList
+      !lexicalSendDefaultAction
+    }
+  }
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $repeat$
+    var @lexicalInstructionListAST repeatedInstructionList = {}
+    repeat
+    while
+      <lexical_instruction> !?repeatedInstructionList
+    end
+    var @lexicalWhileBranchListAST lexicalWhileBranchList = {}
+    repeat
+      <repeat_while_branch> !?lexicalWhileBranchList
+    while
+    end
+    $end$
+    ioInstructionList += !@lexicalRepeatInstructionAST.new {
+      !repeatedInstructionList
+      !lexicalWhileBranchList
+    }
+  }
+
+  #·····················································································································
+
+  rule <repeat_while_branch> ?!@lexicalWhileBranchListAST ioLexicalWhileBranchList {
+    $while$
+    <lexical_expression> ?let @lexicalExpressionAST whileExpression
+    $:$
+    var @lexicalInstructionListAST whileInstructionList = {}
+    repeat
+    while
+      <lexical_instruction> !?whileInstructionList
+    end
+    ioLexicalWhileBranchList += !whileExpression !whileInstructionList
+  }
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $select$
+    var @lexicalSelectBranchListAST lexicalWhileBranchList = {}
+    repeat
+      $case$
+      <lexical_expression> ?let @lexicalExpressionAST selectExpression
+      $:$
+      var @lexicalInstructionListAST selectInstructionList = {}
+      repeat
+      while
+        <lexical_instruction> !?selectInstructionList
+      end
+      lexicalWhileBranchList += !selectExpression !selectInstructionList
+    while
+    end
+    $default$
+    var @lexicalInstructionListAST defaultInstructionList = {}
+    repeat
+    while
+      <lexical_instruction> !?defaultInstructionList
+    end
+    $end$
+    ioInstructionList += !@lexicalSelectInstructionAST.new {
+      !lexicalWhileBranchList
+      !defaultInstructionList
+    }
+  }
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $identifier$ ?let @lstring actionName
+    var @lexicalRoutineCallActualArgumentListAST actualArgumentList = {}
+    $($
+    repeat
+    while
+      $!$ ?let selector
+      if selector.string != "" then
+        error selector : "the selector should be '!'" fixit { replace "!" }
+      end
+      let passingModeLocation = @location.here
+      <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
+      actualArgumentList += !@lexicalFormalInputArgumentAST.new {!passingModeLocation !arg}
+    while
+      $!?$ ?let selector
+      if selector.string != "" then
+        error selector : "the selector should be '!?'" fixit { replace "!?" }
+      end
+      let passingModeLocation = @location.here
+      $identifier$ ?let @lstring attributeName
+      let arg = @lexicalAttributeInputOutputArgumentAST.new{!passingModeLocation !attributeName}
+      actualArgumentList += !arg
+    end
+    var @lstringlist errorMessageList = {}
+    select
+    or
+      $error$
+      repeat
+        $identifier$ ?let @lstring errorMessageName
+        errorMessageList += !errorMessageName
+      while
+        $,$
+      end
+    end
+    $)$
+    ioInstructionList += !@lexicalRoutineInstructionAST.new {
+      !actionName
+      !actualArgumentList
+      !errorMessageList}
+  }
+
+  #·····················································································································
+
+  rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
+    $'char'$ ?let @lchar character
+    outEffectiveArgument = @lexicalCharacterInputArgumentAST.new {!character}
+  }
+
+  #·····················································································································
+
+  rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
+    $uint32$ ?let unsignedValue
+    outEffectiveArgument = @lexicalUnsignedInputArgumentAST.new {!unsignedValue}
+  }
+
+  #·····················································································································
+
+  rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
+    let currentLocation = @location.here
+    $*$
+    outEffectiveArgument = @lexicalCurrentCharacterInputArgumentAST.new {!currentLocation}
+  }
+
+  #·····················································································································
+
+  rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
+    $identifier$ ?let idf
+    select
+      outEffectiveArgument = @lexicalAttributeInputArgumentAST.new {!idf}
+    or
+      $($
+      var @lexicalFunctionCallActualArgumentListAST functionActualArgumentList = {}
+      repeat
+      while
+        $!$ ?let selector
+        if selector.string != "" then
+          error selector : "the selector should be '!'" fixit { replace "!" }
+        end
+        <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
+        functionActualArgumentList += !arg
+      end
+      $)$
+      outEffectiveArgument = @lexicalFunctionInputArgumentAST.new {!idf !functionActualArgumentList}
+    end
+  }
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $error$
+    $identifier$ ?let errorMessageName
+    ioInstructionList += !@lexicalErrorInstructionAST.new {!errorMessageName}
+  }
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $warning$
+    $identifier$ ?let warningMessageName
+    ioInstructionList += !@lexicalWarningInstructionAST.new {!warningMessageName}
+  }
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $drop$
+    $\$terminal\$$ ?let terminalName
+    ioInstructionList += !@lexicalDropInstructionAST.new {!terminalName}
+  }
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $tag$
+    $identifier$ ?let tagName
+    ioInstructionList += !@lexicalTagInstructionAST.new {!tagName}
+  }
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $rewind$
+    $identifier$ ?let tagName
+    $send$
+    $\$terminal\$$ ?let terminalName
+    ioInstructionList += !@lexicalRewindInstructionAST.new {!tagName !terminalName}
+  }
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $log$
+    ioInstructionList += !@lexicalLogInstructionAST.new
+  }
+
+  #·····················································································································
+
+  rule <lexical_expression> !@lexicalExpressionAST outExpression {
+    <lexical_term> ?outExpression
+  }
+
+  #·····················································································································
+
+  rule <lexical_term> !@lexicalExpressionAST outExpression {
+    <lexical_factor> ?outExpression
+    repeat
+    while
+      $|$
+      <lexical_factor> ?let rightExpression
+      outExpression = @lexicalOrExpressionAST.new {!outExpression !rightExpression}
+    end
+  }
+
+  #·····················································································································
+
+  rule <lexical_factor>!@lexicalExpressionAST outExpression {
+    $"string"$ ?let string
+    outExpression = @lexicalStringMatchAST.new {!string}
+  }
+
+  #·····················································································································
+
+  rule <lexical_factor> !@lexicalExpressionAST outExpression {
+    $~$
+    $"string"$ ?let string
+    $error$
+    $identifier$ ?let errorMessage
+    outExpression = @lexicalStringNotMatchAST.new {!string !errorMessage}
+  }
+
+  #·····················································································································
+
+  rule <lexical_factor> !@lexicalExpressionAST outExpression {
+    $'char'$ ?let @lchar character
+    select
+      outExpression = @lexicalCharacterMatchAST.new {!character}
+    or
+      $->$
+      $'char'$ ?let @lchar upperBound
+      outExpression = @lexicalCharacterIntervalMatchAST.new {!character !upperBound}
+    end
+  }
+
+  #·····················································································································
+
+  rule <lexical_factor> !@lexicalExpressionAST outExpression {
+    $identifier$ ?let @lstring characterSet
+    outExpression = @lexicalCharacterSetMatchAST.new {!characterSet}
+  }
+
+  #·····················································································································
+
+  rule <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDeclarationList {
+    $list$
+    $identifier$ ?let name
+    var @sentLexicalAttributeListAST sentAttributeList = {}
+    repeat
+    while
+      $!$ ?let selector
+      $identifier$ ?let sentAttribute
+      sentAttributeList += !selector !sentAttribute
+    end
+    let @lstring theStyle # Empty string if no style
+    select
+      $style$
+      $identifier$ ? theStyle
+    or
+      theStyle = @lstring.new {!"" !@location.here}
+    end
+    $error$
+    $message$
+    $"string"$ ?let @lstring errorMessage
+    ${$
+    var entryList = @lexicalListEntryListAST {}
+    repeat
+      <lexical_list_entry> !?entryList
+    while
+      $,$
+    end
+    $}$
+    ioLexicalListDeclarationList += !name !theStyle !errorMessage !sentAttributeList !entryList
+  }
+
+  #·····················································································································
+
+  rule <lexical_list_entry> ?!@lexicalListEntryListAST ioLexicalListEntryList {
+    $"string"$ ?let @lstring entrySpelling
+    var @lstringlist optionList = {}
+    select
+    or
+      $%attribute$ ?let @lstring optionName
+      optionList += !optionName
+    end
+    let @lstring terminalSpelling
+    select
+      $->$
+      $\$terminal\$$ ? terminalSpelling
+    or
+      terminalSpelling = entrySpelling
+    end
+    ioLexicalListEntryList += !entrySpelling !terminalSpelling !optionList
+  }
+
+  #·····················································································································
+
+  rule <lexical_attribute_declaration> ?!@lexicalAttributeListAST ioLexicalAttributeList {
+    $@type$ ?let @lstring typeName
+    $identifier$ ?let @lstring name
+    ioLexicalAttributeList += !typeName !name
+  }
+
+  #·····················································································································
+
+  rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationList {
+    $\$terminal\$$ ?let @lstring name indexing terminalDeclaration
+    var sentAttributeList = @sentLexicalAttributeListAST {}
+    repeat
+    while
+      $!$ ?let selector
+      $identifier$ ?let sentAttribute
+      sentAttributeList += !selector !sentAttribute
+    end
+    var @lstring theStyle = [""nowhere] # Empty string if no style
+    var @lstringlist optionList = {}
+    repeat
+    while
+      $style$
+      if theStyle.string != "" then
+        error @location.here : "duplicated style reference"
+      end
+      $identifier$ ? theStyle
+    while
+      $%attribute$ ?let @lstring optionName
+      optionList += !optionName
+    end
+    $error$
+    $message$
+    $"string"$ ?let @lstring errorMessage
+    ioTerminalDeclarationList += !name !sentAttributeList !errorMessage !theStyle !optionList
+  }
+
+  #·····················································································································
+
+  rule <style_declaration> ?!@lexicalStyleListAST ioLexicalStyleList {
+    $style$
+    $identifier$ ?let @lstring styleIdentifier
+    if [styleIdentifier.string containsCharacter !'_'] then 
+      error styleIdentifier : "for compatibility with latex formatting, a style name should not contain '_' character"
+    end
+    if [styleIdentifier.string containsCharacterInRange !'0' !'9'] then 
+      error styleIdentifier : "for compatibility with latex formatting, a style name should not contain any digit"
+    end
+    $->$
+    $"string"$ ?let @lstring comment
+    ioLexicalStyleList += !styleIdentifier !comment
+  }
+
+  #·····················································································································
+
+  rule <extern_routine_declaration> ?!@externRoutineListAST ioExternRoutineList {
+    $extern$
+    $proc$
+    $identifier$ ?let @lstring routineName
+    var lexicalRoutineFormalArgumentList = @lexicalExternRoutineFormalArgumentListAST {}
+    repeat
+    while
+      let @lexicalArgumentModeAST lexicalArgumentMode
+      select
+        $?!$ ?let selector
+        if selector.string != "" then
+          error selector : "the selector should be '?!'" fixit { replace "?!" }
+        end
+        lexicalArgumentMode = @lexicalArgumentModeAST. lexicalInputOutputMode
+      or
+        $?$ ?let selector
+        if selector.string != "" then
+          error selector : "the selector should be '?'"  fixit { replace "?" }
+        end
+        lexicalArgumentMode = @lexicalArgumentModeAST. lexicalInputMode
+      end
+      $@type$ ?let @lstring lexicalTypeName
+      $identifier$ ?let @lstring formalArgumentName
+      lexicalRoutineFormalArgumentList += !lexicalArgumentMode !lexicalTypeName !formalArgumentName
+    end
+    var @stringlist errorMessageList = {}
+    select
+    or
+      $error$
+      repeat
+        $identifier$ ?let @lstring errorMessageName
+        errorMessageList += !errorMessageName.string
+      while
+        $,$
+      end
+    end
+    ioExternRoutineList += !routineName !lexicalRoutineFormalArgumentList !errorMessageList
+  }
+
+  #·····················································································································
+
+  rule <extern_function_declaration> ?!@externFunctionListAST ioExternFunctionList {
+    $extern$
+    $func$
+    $identifier$ ?let @lstring functionName
+    var lexicalFunctionFormalArgumentList = @lexicalExternFunctionFormalArgumentListAST {}
+    repeat
+    while
+      $?$ ?let selector
+      if selector.string != "" then
+        error selector : "the selector should be '?'"  fixit { replace "?" }
+      end
+      $@type$ ?let @lstring lexicalTypeName
+      $identifier$ ?let @lstring formalArgumentName
+      lexicalFunctionFormalArgumentList += !lexicalTypeName !formalArgumentName
+    end
+    $->$
+    $@type$ ?let @lstring returnedTypeName
+    ioExternFunctionList += !functionName !lexicalFunctionFormalArgumentList !returnedTypeName
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+    $lexique$
+  #--- Lexique Component Name
+    $identifier$ ?let @lstring lexiqueComponentName
+  #--- Enable indexing ?
+    let @lstring indexingDirectory
+    select
+      indexingDirectory = ["" nowhere]
+    or
+      $indexing$
+      $in$
+      $"string"$ ? indexingDirectory
+    end
+    ${$
+  #--- Parse lexique body
+    var @templateDelimitorListAST templateDelimitorList = {}
+    var @templateReplacementListAST templateReplacementList = {}
+    var @lexicalAttributeListAST lexicalAttributeList = {}
+    var @lexicalStyleListAST lexicalStyleList = {}
+    var @terminalDeclarationListAST terminalDeclarationList = {}
+    var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = {}
+    var @lexicalListDeclarationListAST lexicalListDeclarationList = {}
+    var @lexicalRuleListAST lexicalRuleList = {}
+    var @externRoutineListAST externRoutineList = {}
+    var @externFunctionListAST externFunctionList = {}
+    var @indexingListAST indexingListAST = {}
+    var @lexicalFunctionListAST lexicalFunctionListAST = {}
+    repeat
+    while 
+      <extern_routine_declaration> !?externRoutineList
+    while 
+      <extern_function_declaration> !?externFunctionList
+    while 
+      <template_delimitor> !? templateDelimitorList
+    while 
+      <template_replacement> !? templateReplacementList
+    while 
+      <lexical_attribute_declaration> !? lexicalAttributeList
+    while 
+      <style_declaration> !? lexicalStyleList
+    while 
+      <terminal_declaration> !? terminalDeclarationList
+    while 
+      <lexical_list_declaration> !? lexicalListDeclarationList
+    while
+      <lexical_explicit_rule> !? lexicalRuleList
+    while
+      <lexical_implicit_rule> !? lexicalRuleList
+    while
+      <lexical_message_declaration> !?lexicalMessageDeclarationList
+    while
+      <lexical_indexing_declaration> !?indexingListAST
+    while
+      <lexical_function_declaration> !?lexicalFunctionListAST
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@lexiqueComponentAST.new {
+      !false # Is not predefined
+      !lexiqueComponentName
+      !false # isTemplate
+      !templateDelimitorList
+      !templateReplacementList
+      !lexicalAttributeList
+      !lexicalStyleList
+      !terminalDeclarationList
+      !lexicalMessageDeclarationList
+      !lexicalListDeclarationList
+      !lexicalRuleList
+      !externRoutineList
+      !externFunctionList
+      !indexingListAST
+      !indexingDirectory
+      !lexicalFunctionListAST
+    }
+  }
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+    $template$
+    $lexique$
+  #--- Lexique Component Name
+    $identifier$ ?let @lstring lexiqueComponentName
+  #--- Enable indexing ?
+    let @lstring indexingDirectory
+    select
+      indexingDirectory = ["" nowhere]
+    or
+      $indexing$
+      $in$
+      $"string"$ ? indexingDirectory
+    end
+    ${$
+  #--- Parse lexique body
+    var @templateDelimitorListAST templateDelimitorList = {}
+    var @templateReplacementListAST templateReplacementList = {}
+    var @lexicalAttributeListAST lexicalAttributeList = {}
+    var @lexicalStyleListAST lexicalStyleList = {}
+    var @terminalDeclarationListAST terminalDeclarationList = {}
+    var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = {}
+    var @lexicalListDeclarationListAST lexicalListDeclarationList = {}
+    var @lexicalRuleListAST lexicalRuleList = {}
+    var @externRoutineListAST externRoutineList = {}
+    var @externFunctionListAST externFunctionList = {}
+    var @indexingListAST indexingListAST = {}
+    var @lexicalFunctionListAST lexicalFunctionListAST = {}
+    repeat
+    while 
+      <extern_routine_declaration> !?externRoutineList
+    while 
+      <extern_function_declaration> !?externFunctionList
+    while 
+      <template_delimitor> !? templateDelimitorList
+    while 
+      <template_replacement> !? templateReplacementList
+    while 
+      <lexical_attribute_declaration> !? lexicalAttributeList
+    while 
+      <style_declaration> !? lexicalStyleList
+    while 
+      <terminal_declaration> !? terminalDeclarationList
+    while 
+      <lexical_list_declaration> !? lexicalListDeclarationList
+    while
+      <lexical_explicit_rule> !? lexicalRuleList
+    while
+      <lexical_implicit_rule> !? lexicalRuleList
+    while
+      <lexical_message_declaration> !?lexicalMessageDeclarationList
+    while
+      <lexical_indexing_declaration> !?indexingListAST
+    while
+      <lexical_function_declaration> !?lexicalFunctionListAST
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@lexiqueComponentAST.new {
+      !false # Is not predefined
+      !lexiqueComponentName
+      !true # isTemplate
+      !templateDelimitorList
+      !templateReplacementList
+      !lexicalAttributeList
+      !lexicalStyleList
+      !terminalDeclarationList
+      !lexicalMessageDeclarationList
+      !lexicalListDeclarationList
+      !lexicalRuleList
+      !externRoutineList
+      !externFunctionList
+      !indexingListAST
+      !indexingDirectory
+      !lexicalFunctionListAST
+    }
+  }
+
+  #·····················································································································
+
+  rule <lexical_indexing_declaration> ?!@indexingListAST ioIndexingListAST {
+    $indexing$
+    $identifier$ ?let @lstring indexName indexing indexingNameDefinition
+    $:$
+    $"string"$ ?let @lstring indexComment
+    ioIndexingListAST += !indexName !indexComment
+  }
+
+  #·····················································································································
+
+  rule <template_delimitor> ?!@templateDelimitorListAST ioTemplateDelimitorList {
+    $template$
+    $"string"$ ?let @lstring startString
+    var optionList = @lstringlist {}
+    repeat
+    while
+      $%attribute$ ?let @lstring optionName
+      optionList += !optionName
+    end
+    $...$
+    $"string"$ ?let @lstring endString
+    ioTemplateDelimitorList += !startString !optionList !endString
+  }
+
+  #·····················································································································
+
+  rule <template_replacement> ?!@templateReplacementListAST ioTemplateReplacement {
+    $replace$
+    $"string"$ ?let @lstring matchString
+    let @lstring replacementString
+    let @lstring replacementFunction
+    select
+      $...$
+      $"string"$ ?replacementString
+      $:$
+      $identifier$ ?replacementFunction
+    or
+      $->$
+      $"string"$ ?replacementString
+      replacementFunction = @lstring.new {!"" !@location.here}
+    end
+    ioTemplateReplacement += !matchString !replacementString !replacementFunction
+  }
+
+  #·····················································································································
+
+  rule <lexical_message_declaration>
+    ?!@lexicalMessageDeclarationListAST ioLexicalMessageDeclarationList {
+    $message$
+    $identifier$ ?let @lstring messageName
+    $:$
+    $"string"$ ?let @lstring messageValue
+    ioLexicalMessageDeclarationList += !messageName !messageValue
+  }
+
+  #·····················································································································
+
+  rule <lexical_implicit_rule> ?!@lexicalRuleListAST ioLexicalImplicitRuleList {
+    $rule$
+    $list$
+    $identifier$ ?let @lstring listName
+    ioLexicalImplicitRuleList += !@lexicalImplicitRuleAST.new {!listName}
+  }
+
+  #·····················································································································
+
+  rule <lexical_explicit_rule> ?!@lexicalRuleListAST ioLexicalExplicitRuleList {
+    $rule$
+    <lexical_expression> ?let @lexicalExpressionAST lexicalRuleExpression
+    ${$
+    var @lexicalInstructionListAST instructionList = {}
+    repeat
+    while
+      <lexical_instruction> !?instructionList
+    end
+    $}$
+    ioLexicalExplicitRuleList += !@lexicalExplicitRuleAST.new {!lexicalRuleExpression !instructionList}
+  }
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $send$
+    <lexical_send_instruction> ?let @lexicalInstructionAST instruction
+    ioInstructionList += !instruction
+  }
+
+  #·····················································································································
+
+  rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
+    $\$terminal\$$ ?let @lstring sentTerminal
+    outInstruction = @lexicalSimpleSendInstructionAST.new {!sentTerminal}
+  }
+
+  #·····················································································································
+
+  rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
+    var @lexicalSendSearchListAST lexicalSendSearchList = {}
+    $search$
+    repeat
+      $identifier$ ?let @lstring attributeName
+      $in$
+      $identifier$ ?let @lstring searchListName
+      lexicalSendSearchList += !attributeName !searchListName
+      $default$
+    while
+      $search$
+    end
+    let @lexicalSendDefaultActionAST lexicalSendDefaultAction
+    select
+      $\$terminal\$$ ?let @lstring defaultSentTerminal
+      lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST.new {!defaultSentTerminal}
+    or
+      $error$
+      $identifier$ ?let @lstring defaultErrorMessageName
+      lexicalSendDefaultAction = @lexicalErrorByDefaultAST.new {!defaultErrorMessageName}
+    end
+    outInstruction = @lexicalStructuredSendInstructionAST.new {
+      !lexicalSendSearchList
+      !lexicalSendDefaultAction
+    }
+  }
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $repeat$
+    var @lexicalInstructionListAST repeatedInstructionList = {}
+    repeat
+    while
+      <lexical_instruction> !?repeatedInstructionList
+    end
+    var @lexicalWhileBranchListAST lexicalWhileBranchList = {}
+    repeat
+      <repeat_while_branch> !?lexicalWhileBranchList
+    while
+    end
+    $end$
+    ioInstructionList += !@lexicalRepeatInstructionAST.new {
+      !repeatedInstructionList
+      !lexicalWhileBranchList
+    }
+  }
+
+  #·····················································································································
+
+  rule <repeat_while_branch> ?!@lexicalWhileBranchListAST ioLexicalWhileBranchList {
+    $while$
+    <lexical_expression> ?let @lexicalExpressionAST whileExpression
+    $:$
+    var @lexicalInstructionListAST whileInstructionList = {}
+    repeat
+    while
+      <lexical_instruction> !?whileInstructionList
+    end
+    ioLexicalWhileBranchList += !whileExpression !whileInstructionList
+  }
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $select$
+    var @lexicalSelectBranchListAST lexicalWhileBranchList = {}
+    repeat
+      $case$
+      <lexical_expression> ?let @lexicalExpressionAST selectExpression
+      $:$
+      var @lexicalInstructionListAST selectInstructionList = {}
+      repeat
+      while
+        <lexical_instruction> !?selectInstructionList
+      end
+      lexicalWhileBranchList += !selectExpression !selectInstructionList
+    while
+    end
+    $default$
+    var @lexicalInstructionListAST defaultInstructionList = {}
+    repeat
+    while
+      <lexical_instruction> !?defaultInstructionList
+    end
+    $end$
+    ioInstructionList += !@lexicalSelectInstructionAST.new {
+      !lexicalWhileBranchList
+      !defaultInstructionList
+    }
+  }
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $identifier$ ?let @lstring actionName
+    var @lexicalRoutineCallActualArgumentListAST actualArgumentList = {}
+    $($
+    repeat
+    while
+      $!$ ?let selector
+      if selector.string != "" then
+        error selector : "the selector should be '!'" fixit { replace "!" }
+      end
+      let passingModeLocation = @location.here
+      <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
+      actualArgumentList += !@lexicalFormalInputArgumentAST.new {!passingModeLocation !arg}
+    while
+      $!?$ ?let selector
+      if selector.string != "" then
+        error selector : "the selector should be '!?'" fixit { replace "!?" }
+      end
+      let passingModeLocation = @location.here
+      $identifier$ ?let @lstring attributeName
+      let arg = @lexicalAttributeInputOutputArgumentAST.new{!passingModeLocation !attributeName}
+      actualArgumentList += !arg
+    end
+    var @lstringlist errorMessageList = {}
+    select
+    or
+      $error$
+      repeat
+        $identifier$ ?let @lstring errorMessageName
+        errorMessageList += !errorMessageName
+      while
+        $,$
+      end
+    end
+    $)$
+    ioInstructionList += !@lexicalRoutineInstructionAST.new {
+      !actionName
+      !actualArgumentList
+      !errorMessageList}
+  }
+
+  #·····················································································································
+
+  rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
+    $'char'$ ?let @lchar character
+    outEffectiveArgument = @lexicalCharacterInputArgumentAST.new {!character}
+  }
+
+  #·····················································································································
+
+  rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
+    $uint32$ ?let unsignedValue
+    outEffectiveArgument = @lexicalUnsignedInputArgumentAST.new {!unsignedValue}
+  }
+
+  #·····················································································································
+
+  rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
+    let currentLocation = @location.here
+    $*$
+    outEffectiveArgument = @lexicalCurrentCharacterInputArgumentAST.new {!currentLocation}
+  }
+
+  #·····················································································································
+
+  rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
+    $identifier$ ?let idf
+    select
+      outEffectiveArgument = @lexicalAttributeInputArgumentAST.new {!idf}
+    or
+      $($
+      var @lexicalFunctionCallActualArgumentListAST functionActualArgumentList = {}
+      repeat
+      while
+        $!$ ?let selector
+        if selector.string != "" then
+          error selector : "the selector should be '!'" fixit { replace "!" }
+        end
+        <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
+        functionActualArgumentList += !arg
+      end
+      $)$
+      outEffectiveArgument = @lexicalFunctionInputArgumentAST.new {!idf !functionActualArgumentList}
+    end
+  }
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $error$
+    $identifier$ ?let errorMessageName
+    ioInstructionList += !@lexicalErrorInstructionAST.new {!errorMessageName}
+  }
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $warning$
+    $identifier$ ?let warningMessageName
+    ioInstructionList += !@lexicalWarningInstructionAST.new {!warningMessageName}
+  }
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $drop$
+    $\$terminal\$$ ?let terminalName
+    ioInstructionList += !@lexicalDropInstructionAST.new {!terminalName}
+  }
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $tag$
+    $identifier$ ?let tagName
+    ioInstructionList += !@lexicalTagInstructionAST.new {!tagName}
+  }
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $rewind$
+    $identifier$ ?let tagName
+    $send$
+    $\$terminal\$$ ?let terminalName
+    ioInstructionList += !@lexicalRewindInstructionAST.new {!tagName !terminalName}
+  }
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $log$
+    ioInstructionList += !@lexicalLogInstructionAST.new
+  }
+
+  #·····················································································································
+
+  rule <lexical_expression> !@lexicalExpressionAST outExpression {
+    <lexical_term> ?outExpression
+  }
+
+  #·····················································································································
+
+  rule <lexical_term> !@lexicalExpressionAST outExpression {
+    <lexical_factor> ?outExpression
+    repeat
+    while
+      $|$
+      <lexical_factor> ?let rightExpression
+      outExpression = @lexicalOrExpressionAST.new {!outExpression !rightExpression}
+    end
+  }
+
+  #·····················································································································
+
+  rule <lexical_factor>!@lexicalExpressionAST outExpression {
+    $"string"$ ?let string
+    outExpression = @lexicalStringMatchAST.new {!string}
+  }
+
+  #·····················································································································
+
+  rule <lexical_factor> !@lexicalExpressionAST outExpression {
+    $~$
+    $"string"$ ?let string
+    $error$
+    $identifier$ ?let errorMessage
+    outExpression = @lexicalStringNotMatchAST.new {!string !errorMessage}
+  }
+
+  #·····················································································································
+
+  rule <lexical_factor> !@lexicalExpressionAST outExpression {
+    $'char'$ ?let @lchar character
+    select
+      outExpression = @lexicalCharacterMatchAST.new {!character}
+    or
+      $->$
+      $'char'$ ?let @lchar upperBound
+      outExpression = @lexicalCharacterIntervalMatchAST.new {!character !upperBound}
+    end
+  }
+
+  #·····················································································································
+
+  rule <lexical_factor> !@lexicalExpressionAST outExpression {
+    $identifier$ ?let @lstring characterSet
+    outExpression = @lexicalCharacterSetMatchAST.new {!characterSet}
+  }
+
+  #·····················································································································
+
+  rule <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDeclarationList {
+    $list$
+    $identifier$ ?let name
+    var @sentLexicalAttributeListAST sentAttributeList = {}
+    repeat
+    while
+      $!$ ?let selector
+      $identifier$ ?let sentAttribute
+      sentAttributeList += !selector !sentAttribute
+    end
+    let @lstring theStyle # Empty string if no style
+    select
+      $style$
+      $identifier$ ? theStyle
+    or
+      theStyle = @lstring.new {!"" !@location.here}
+    end
+    $error$
+    $message$
+    $"string"$ ?let @lstring errorMessage
+    ${$
+    var entryList = @lexicalListEntryListAST {}
+    repeat
+      <lexical_list_entry> !?entryList
+    while
+      $,$
+    end
+    $}$
+    ioLexicalListDeclarationList += !name !theStyle !errorMessage !sentAttributeList !entryList
+  }
+
+  #·····················································································································
+
+  rule <lexical_list_entry> ?!@lexicalListEntryListAST ioLexicalListEntryList {
+    $"string"$ ?let @lstring entrySpelling
+    var @lstringlist optionList = {}
+    select
+    or
+      $%attribute$ ?let @lstring optionName
+      optionList += !optionName
+    end
+    let @lstring terminalSpelling
+    select
+      $->$
+      $\$terminal\$$ ? terminalSpelling
+    or
+      terminalSpelling = entrySpelling
+    end
+    ioLexicalListEntryList += !entrySpelling !terminalSpelling !optionList
+  }
+
+  #·····················································································································
+
+  rule <lexical_attribute_declaration> ?!@lexicalAttributeListAST ioLexicalAttributeList {
+    $@type$ ?let @lstring typeName
+    $identifier$ ?let @lstring name
+    ioLexicalAttributeList += !typeName !name
+  }
+
+  #·····················································································································
+
+  rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationList {
+    $\$terminal\$$ ?let @lstring name indexing terminalDeclaration
+    var sentAttributeList = @sentLexicalAttributeListAST {}
+    repeat
+    while
+      $!$ ?let selector
+      $identifier$ ?let sentAttribute
+      sentAttributeList += !selector !sentAttribute
+    end
+    var @lstring theStyle = [""nowhere] # Empty string if no style
+    var @lstringlist optionList = {}
+    repeat
+    while
+      $style$
+      if theStyle.string != "" then
+        error @location.here : "duplicated style reference"
+      end
+      $identifier$ ? theStyle
+    while
+      $%attribute$ ?let @lstring optionName
+      optionList += !optionName
+    end
+    $error$
+    $message$
+    $"string"$ ?let @lstring errorMessage
+    ioTerminalDeclarationList += !name !sentAttributeList !errorMessage !theStyle !optionList
+  }
+
+  #·····················································································································
+
+  rule <style_declaration> ?!@lexicalStyleListAST ioLexicalStyleList {
+    $style$
+    $identifier$ ?let @lstring styleIdentifier
+    if [styleIdentifier.string containsCharacter !'_'] then 
+      error styleIdentifier : "for compatibility with latex formatting, a style name should not contain '_' character"
+    end
+    if [styleIdentifier.string containsCharacterInRange !'0' !'9'] then 
+      error styleIdentifier : "for compatibility with latex formatting, a style name should not contain any digit"
+    end
+    $->$
+    $"string"$ ?let @lstring comment
+    ioLexicalStyleList += !styleIdentifier !comment
+  }
+
+  #·····················································································································
+
+  rule <extern_routine_declaration> ?!@externRoutineListAST ioExternRoutineList {
+    $extern$
+    $proc$
+    $identifier$ ?let @lstring routineName
+    var lexicalRoutineFormalArgumentList = @lexicalExternRoutineFormalArgumentListAST {}
+    repeat
+    while
+      let @lexicalArgumentModeAST lexicalArgumentMode
+      select
+        $?!$ ?let selector
+        if selector.string != "" then
+          error selector : "the selector should be '?!'" fixit { replace "?!" }
+        end
+        lexicalArgumentMode = @lexicalArgumentModeAST. lexicalInputOutputMode
+      or
+        $?$ ?let selector
+        if selector.string != "" then
+          error selector : "the selector should be '?'"  fixit { replace "?" }
+        end
+        lexicalArgumentMode = @lexicalArgumentModeAST. lexicalInputMode
+      end
+      $@type$ ?let @lstring lexicalTypeName
+      $identifier$ ?let @lstring formalArgumentName
+      lexicalRoutineFormalArgumentList += !lexicalArgumentMode !lexicalTypeName !formalArgumentName
+    end
+    var @stringlist errorMessageList = {}
+    select
+    or
+      $error$
+      repeat
+        $identifier$ ?let @lstring errorMessageName
+        errorMessageList += !errorMessageName.string
+      while
+        $,$
+      end
+    end
+    ioExternRoutineList += !routineName !lexicalRoutineFormalArgumentList !errorMessageList
+  }
+
+  #·····················································································································
+
+  rule <extern_function_declaration> ?!@externFunctionListAST ioExternFunctionList {
+    $extern$
+    $func$
+    $identifier$ ?let @lstring functionName
+    var lexicalFunctionFormalArgumentList = @lexicalExternFunctionFormalArgumentListAST {}
+    repeat
+    while
+      $?$ ?let selector
+      if selector.string != "" then
+        error selector : "the selector should be '?'"  fixit { replace "?" }
+      end
+      $@type$ ?let @lstring lexicalTypeName
+      $identifier$ ?let @lstring formalArgumentName
+      lexicalFunctionFormalArgumentList += !lexicalTypeName !formalArgumentName
+    end
+    $->$
+    $@type$ ?let @lstring returnedTypeName
+    ioExternFunctionList += !functionName !lexicalFunctionFormalArgumentList !returnedTypeName
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @lexiqueComponentAST : @semanticDeclarationAST {
+  private let @lstring mLexiqueComponentName
+  private let @bool mIsTemplate
+  private let @templateDelimitorListAST mTemplateDelimitorList
+  private let @templateReplacementListAST mTemplateReplacementList
+  private let @lexicalAttributeListAST mLexicalAttributeList
+  private let @lexicalStyleListAST mLexicalStyleList
+  private let @terminalDeclarationListAST mTerminalDeclarationList
+  private let @lexicalMessageDeclarationListAST mLexicalMessageDeclarationList
+  private let @lexicalListDeclarationListAST mLexicalListDeclarationList
+  private let @lexicalRuleListAST mLexicalRuleList
+  private let @externRoutineListAST mExternRoutineList
+  private let @externFunctionListAST mExternFunctionList
+  private let @indexingListAST mIndexingListAST
+  private let @lstring mIndexingDirectory
+  private let @lexicalFunctionListAST mLexicalFunctionListAST
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexiqueComponentAST keyRepresentation -> @string {
+  result = "lexique " + self.mLexiqueComponentName
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @lexiqueComponentAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  let key = @lstring.new {!"lexique " + self.mLexiqueComponentName !self.mLexiqueComponentName.location}
+  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @lexiqueComponentAST enterDeclarationInSemanticContext
+  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+  ?!@semanticContext ioSemanticContext {
+#--------------------------------------- Build lexical attribute map
+  let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()
+  var @lexicalAttributeMap lexicalAttributeMap = {}
+  buildLexicalAttributeMap (
+   !lexicalTypeMap
+   !self.mLexicalAttributeList
+   !?lexicalAttributeMap
+  )
+#--------------------------------------- 
+  var @terminalMap terminalMap = {}
+  for (mName mSentAttributeList * * *) in self.mTerminalDeclarationList do
+    var argumentTypeList = @lexicalSentValueList {}
+    for (mFormalSelector mAttributeName) in mSentAttributeList do
+      [lexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
+      argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
+    end
+    [!?terminalMap insertKey !mName !argumentTypeList]
+  end
+#---
+  for (* * * mSentAttributeList mEntryList) in self.mLexicalListDeclarationList do
+    var argumentTypeList = @lexicalSentValueList {}
+    for (mFormalSelector mAttributeName) in mSentAttributeList do
+      [lexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
+      argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
+    end
+    for (* mTerminalSpelling *) in mEntryList do
+      [!?terminalMap insertKey !mTerminalSpelling !argumentTypeList]
+    end
+  end
+#---
+  [!?ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis insertKey
+     !self.mLexiqueComponentName
+     !mIsTemplate
+     !terminalMap
+     !self.mIndexingListAST
+     !self.mIndexingDirectory
+  ]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @lexiqueComponentAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @string unused inProductDirectory
+  ?let @semanticContext unused inSemanticContext
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
+#--- Useful entities graph
+  let nameForUsefulness = lexiqueNameForUsefulEntitiesGraph (!self.mLexiqueComponentName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+#--------------------------------------- Lexical attribute type name map
+  let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()
+#--------------------------------------- Build lexical routine map
+  var @lexicalRoutineMap lexicalRoutineMap
+  buildLexicalRoutineMap ( ?lexicalRoutineMap )
+#--------------------------------------- Add extern routines
+  for (mRoutineName mLexicalRoutineFormalArgumentList mErrorMessageList) in self.mExternRoutineList do
+    var lexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList {}
+    for (mPassingMode mLexicalTypeName mFormalArgumentName) in mLexicalRoutineFormalArgumentList do
+      [lexicalTypeMap searchKey !mLexicalTypeName ?let lexicalFormalArgumentType]
+      lexicalRoutineFormalArgumentList += !mPassingMode !lexicalFormalArgumentType !mFormalArgumentName.string
+    end
+    [!?lexicalRoutineMap insertKey !mRoutineName !lexicalRoutineFormalArgumentList !mErrorMessageList !true]
+  end
+#--------------------------------------- Build lexical function map
+  var @lexicalFunctionMap lexicalFunctionMap
+  buildLexicalFunctionMap ( ?lexicalFunctionMap )
+#--------------------------------------- Add extern functions
+  for (mFunctionName mLexicalFunctionFormalArgumentList mReturnedTypeName) in self.mExternFunctionList do
+    var @lexicalFunctionFormalArgumentList lexicalFunctionFormalArgumentList = {}
+    for (mLexicalTypeName mFormalArgumentName) in mLexicalFunctionFormalArgumentList do
+      [lexicalTypeMap searchKey !mLexicalTypeName ?let lexicalFormalArgumentType]
+      lexicalFunctionFormalArgumentList += !lexicalFormalArgumentType !mFormalArgumentName.string
+    end
+    [lexicalTypeMap searchKey !mReturnedTypeName ?let returnedArgumentType]
+    [!?lexicalFunctionMap insertKey !mFunctionName !lexicalFunctionFormalArgumentList !returnedArgumentType !"" !true]
+  end
+#--------------------------------------- Unicode test functions
+  lexicalUnicodeTestFunctionAnalysis (!self.mLexicalFunctionListAST ?let unicodeTestFunctions)
+#---------------------------------------
+  var @lexiqueAnalysisContext lexiqueAnalysisContext = .new {
+    !self.mLexiqueComponentName.string
+    !lexicalRoutineMap
+    !lexicalFunctionMap
+    !@lexicalMessageMap {}
+    !@terminalMap {}
+    !@terminalList {}
+    !@lexicalAttributeMap {}
+    !@lexicalExplicitTokenListMapMap {}
+    !{}
+    !@templateDelimitorList {}
+    !@styleMap {}
+    !unicodeTestFunctions
+  }
+#--------------------------------------- Build style map
+  var styleIndex = 1
+  for (mName mComment) in self.mLexicalStyleList do
+    [!?lexiqueAnalysisContext.mStyleMap insertKey !mName !mComment !styleIndex]
+    styleIndex += 1
+  end
+#--------------------------------------- Build lexical attribute map
+  buildLexicalAttributeMap (
+   !lexicalTypeMap
+   !self.mLexicalAttributeList
+   !?lexiqueAnalysisContext.mLexicalAttributeMap
+  )
+#--------------------------------------- Build terminal map
+  for (mName mSentAttributeList mSyntaxErrorMessage mStyle mOptionList) in self.mTerminalDeclarationList do
+    var @uint terminalStyleIndex = 0
+    if [mStyle.string length] > 0 then
+      [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
+    end
+    var argumentTypeList = @lexicalSentValueList {}
+    for (mFormalSelector mAttributeName) in mSentAttributeList do
+      [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
+      argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
+    end
+    [!?lexiqueAnalysisContext.mTerminalMap insertKey !mName !argumentTypeList]
+    var isEndOfTemplateMark = false
+    var atomicSelection = true
+    for (mValue) in mOptionList do
+      if mValue.string == "nonAtomicSelection" then
+        if atomicSelection then
+          atomicSelection = false
+        else
+          error mValue: "the 'nonAtomicSelection' attribute is already set"
+        end
+      elsif mValue.string != "templateEndMark" then
+        error mValue:"only the 'templateEndMark' and 'nonAtomicSelection' attributes are allowed here"
+      elsif isEndOfTemplateMark then
+        error mValue:"the 'templateEndMark' attribute is already set"
+      else
+        isEndOfTemplateMark = true
+      end
+    end
+    lexiqueAnalysisContext.mTerminalList +=
+      !mName
+      !argumentTypeList
+      !mSyntaxErrorMessage.string
+      !isEndOfTemplateMark
+      !atomicSelection
+      !terminalStyleIndex
+  end
+  for (mName mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in self.mLexicalListDeclarationList do
+    var @uint terminalStyleIndex = 0
+    if [mStyle.string length] > 0 then
+      [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
+    end
+    var argumentTypeList = @lexicalSentValueList {}
+    for (mFormalSelector mAttributeName) in mSentAttributeList do
+      [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
+      argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
+    end
+    var @lexicalExplicitTokenListMap lexicalTokenListMap = {}
+    var tokenSortedlist = @tokenSortedlist {}
+    for (mEntrySpelling mTerminalSpelling mAttributeList) in mEntryList do
+      let syntaxErrorMessage = [mSyntaxErrorMessage.string stringByReplacingStringByString !"%K" !mTerminalSpelling.string]
+      var isEndOfTemplateMark = false
+      var atomicSelection = true
+      for (mValue) in mAttributeList do
+        if mValue.string == "nonAtomicSelection" then
+          if atomicSelection then
+            atomicSelection = false
+          else
+            error mValue: "the 'nonAtomicSelection' attribute is already set"
+          end
+        elsif mValue.string != "templateEndMark" then
+          error mValue:"only the 'templateEndMark' and 'nonAtomicSelection' attributes are allowed here"
+        elsif isEndOfTemplateMark then
+          error mValue:"the 'templateEndMark' attribute is already set"
+        else
+          isEndOfTemplateMark = true
+        end
+      end
+      lexiqueAnalysisContext.mTerminalList +=
+        !mTerminalSpelling
+        !argumentTypeList
+        !syntaxErrorMessage
+        !isEndOfTemplateMark
+        !atomicSelection
+        !terminalStyleIndex
+      [!?lexiqueAnalysisContext.mTerminalMap insertKey !mTerminalSpelling !argumentTypeList]
+      [!?lexicalTokenListMap insertKey !mEntrySpelling !mTerminalSpelling !mAttributeList]
+      tokenSortedlist += ![mEntrySpelling.string length] !mEntrySpelling.string !mTerminalSpelling.string
+      lexiqueAnalysisContext.mUnicodeStringToGenerate += !mEntrySpelling.string
+    end
+    [!?lexiqueAnalysisContext.mLexicalTokenListMap insertKey !mName !lexicalTokenListMap !tokenSortedlist !false]
+  end
+#--------------------------------------- Build Message map
+  for (mMessageName mMessageValue) in self.mLexicalMessageDeclarationList do
+    [!?lexiqueAnalysisContext.mLexicalMessageMap insertKey !mMessageName !mMessageValue !false]
+  end
+#--------------------------------------- Check rules
+  for (mLexicalRule) in self.mLexicalRuleList do
+    [mLexicalRule checkLexicalRule !?lexiqueAnalysisContext]
+  end
+#--------------------------------------- Warn for unused messages
+  for (lkey * mMessageIsUsed) in lexiqueAnalysisContext.mLexicalMessageMap do
+    if not mMessageIsUsed then
+      warning lkey:"unused message"
+    end
+  end
+#--------------------------------------- Template delimiters
+  for (mStartString mOptionList mEndString) in self.mTemplateDelimitorList do
+   lexiqueAnalysisContext.mUnicodeStringToGenerate += !mStartString.string
+   lexiqueAnalysisContext.mUnicodeStringToGenerate += !mEndString.string
+   var preservesStartDelimiter = false
+   for (mValue) in mOptionList do
+     if mValue.string != "preserved" then
+       error mValue:"only the 'preserved' attribute is allowed here"
+     elsif preservesStartDelimiter then
+       error mValue:"the 'preserved' attribute is already set"
+     else
+       preservesStartDelimiter = true
+     end
+   end
+   lexiqueAnalysisContext.mTemplateDelimitorList += !mStartString !mEndString !preservesStartDelimiter
+  end
+#--------------------------------------- Check "indexing" declarations
+  if [self.mIndexingDirectory isNowhere] then
+    for (mIndexName *) in self.mIndexingListAST do
+      error mIndexName : "indexing declaration requires one 'indexing in \"path\";' declaration"
+    end
+  end
+  var @stringset indexNameSet = {}
+  for (mIndexName *) in self.mIndexingListAST do
+    if [indexNameSet hasKey !mIndexName.string] then
+      error mIndexName : "the '" + mIndexName + "' index is already declared"
+    end
+    indexNameSet += !mIndexName.string
+  end
+#--------------------------------------- Template replacements
+  for (mMatchString mReplacementString *) in self.mTemplateReplacementList do
+   lexiqueAnalysisContext.mUnicodeStringToGenerate += !mMatchString.string
+   lexiqueAnalysisContext.mUnicodeStringToGenerate += !mReplacementString.string
+   # § TODO Check replacement function
+  end
+#--------------------------------------- Build header and Cpp contents
+  if @uint.errorCount == 0 then
+#    let lexiqueClassName = self.mLexiqueComponentName.string
+  #--- Header
+    var headerContents = [filewrapper lexiqueGenerationTemplates.headerZone2
+       ![self.mLexiqueComponentName.string identifierRepresentation]
+       !lexiqueAnalysisContext
+       !self.mTemplateDelimitorList
+    ]
+    headerContents += [filewrapper lexiqueGenerationTemplates.headerZone3
+      ![self.mLexiqueComponentName.string identifierRepresentation]
+      !self.mLexicalListDeclarationList
+      !lexiqueAnalysisContext
+      !self.mIndexingListAST
+      !self.mLexicalFunctionListAST
+    ]
+  #--- Cpp
+    let cppContents =  [filewrapper lexiqueGenerationTemplates.implementationZone2Galgas3
+      ![self.mLexiqueComponentName.string identifierRepresentation]
+      !lexiqueAnalysisContext.mLexicalAttributeMap
+      !lexiqueAnalysisContext.mLexicalMessageMap
+      !lexiqueAnalysisContext.mTerminalList
+      !lexiqueAnalysisContext.mLexicalTokenListMap
+      !lexiqueAnalysisContext.mUnicodeStringToGenerate
+      !self.mLexicalRuleList
+      !lexiqueAnalysisContext
+      !self.mIndexingDirectory.string
+      !self.mTemplateDelimitorList
+      !self.mLexiqueComponentName.string
+      !self.mTemplateReplacementList
+      !self.mLexicalStyleList
+      !self.mLexicalFunctionListAST
+    ]
+  #--- Cocoa header
+    var cocoaHeader = [filewrapper lexiqueGenerationTemplates.cocoaHeaderZone2
+      !self.mLexiqueComponentName.string
+      !lexiqueAnalysisContext
+      !self.mLexicalFunctionListAST
+    ]
+    cocoaHeader += [filewrapper lexiqueGenerationTemplates.cocoaHeaderZone3
+      !self.mLexiqueComponentName.string
+      !lexiqueAnalysisContext
+    ]
+  #--- Cocoa implementation
+    let cocoaImplementation = [filewrapper lexiqueGenerationTemplates.cocoaImplementationZone2
+      !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation] + "-cocoa"
+      !self.mLexiqueComponentName.string
+      !lexiqueAnalysisContext.mLexicalAttributeMap
+      !lexiqueAnalysisContext.mLexicalMessageMap
+      !lexiqueAnalysisContext.mTerminalList
+      !lexiqueAnalysisContext.mUnicodeStringToGenerate
+      !self.mLexicalRuleList
+      !lexiqueAnalysisContext
+      !self.mTemplateReplacementList
+      !self.mIndexingDirectory.string
+      !self.mIndexingListAST
+      !self.mLexicalStyleList
+      !self.mTemplateDelimitorList
+      !self.mLexicalFunctionListAST
+    ]
+  #---
+    ioSemanticDeclarationListForGeneration +=
+      !""
+      !@lexiqueDeclarationForGeneration.new {
+        !true # has header
+        !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation]
+        !self.mLexiqueComponentName.string
+        !headerContents
+        !cppContents
+        !cocoaHeader
+        !cocoaImplementation
+      }
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#         G E N E R A T I O N    T E M P L A T E S      
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+private filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique_generation" {
+}{
+}{
+  template headerZone2 "lexique_header_template_zone_2.h.galgasTemplate"
+    ?@string LEXIQUE_IDENTIFIER
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@templateDelimitorListAST TEMPLATE_DELIMITOR_LIST
+
+  template headerZone3 "lexique_header_template_zone_3.h.galgasTemplate"
+    ?@string LEXIQUE_IDENTIFIER
+    ?@lexicalListDeclarationListAST DELIMITOR_LIST_LIST
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@indexingListAST INDEXING_LIST
+    ?@lexicalFunctionListAST UNICODE_TEST_FUNCTIONS
+
+  template implementationZone2Galgas3 "lexique_implementation-galgas3.cpp.galgasTemplate"
+    ?@string LEXIQUE_IDENTIFIER
+    ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
+    ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
+    ?@terminalList TERMINAL_LIST
+    ?@lexicalExplicitTokenListMapMap LEXICAL_TOKEN_LIST_MAP
+    ?@stringset STRINGS_IN_EXPLICIT_RULES
+    ?@lexicalRuleListAST LEXICAL_RULE_LIST
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@string INDEXING_DIRECTORY
+    ?@templateDelimitorListAST TEMPLATE_DELIMITOR_LIST
+    ?@string LEXIQUE_COMPONENT_NAME
+    ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
+    ?@lexicalStyleListAST LEXICAL_STYLE_LIST
+    ?@lexicalFunctionListAST UNICODE_TEST_FUNCTIONS
+
+  template cocoaHeaderZone2 "lexique_cocoa_header_template_zone_2.h.galgasTemplate"
+    ?@string LEXIQUE_CLASS_NAME
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@lexicalFunctionListAST UNICODE_TEST_FUNCTIONS
+
+  template cocoaHeaderZone3 "lexique_cocoa_header_template_zone_3.h.galgasTemplate"
+    ?@string unused LEXIQUE_CLASS_NAME
+    ?@lexiqueAnalysisContext unused LEXIQUE_ANALYSIS_CONTEXT
+
+  template cocoaImplementationZone2 "lexique_cocoa_implementation.m.galgasTemplate"
+    ?@string LEXIQUE_HEADER_FILE_NAME
+    ?@string LEXIQUE_CLASS_NAME
+    ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
+    ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
+    ?@terminalList TERMINAL_LIST
+    ?@stringset STRINGS_IN_EXPLICIT_RULES
+    ?@lexicalRuleListAST LEXICAL_RULE_LIST
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
+    ?@string INDEXING_DIRECTORY
+    ?@indexingListAST INDEXING_LIST
+    ?@lexicalStyleListAST LEXICAL_STYLE_LIST
+    ?@templateDelimitorListAST TEMPLATE_DELIMITOR_LIST
+    ?@lexicalFunctionListAST UNICODE_TEST_FUNCTIONS
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -17,7 +17,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
     $getter$
     $@type$ ?let className indexing typeReferenceAbstractExtensionGetter
@@ -49,7 +49,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
     $func$
     $@type$ ?let className indexing typeReferenceAbstractExtensionGetter
