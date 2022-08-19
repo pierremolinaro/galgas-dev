@@ -2542,6 +2542,9 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 //--- 'parse' label
   public: virtual void nt_expression_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
 
+//--- indexing
+  public: virtual void nt_expression_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
+
 //----------- '' label
   public: virtual void nt_expression_ (GALGAS_templateExpressionAST & outArgument0,
                                        C_Lexique_galgasTemplateScanner * inCompiler) ;
@@ -2549,6 +2552,9 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 //------------------------------------- 'factor' non terminal
 //--- 'parse' label
   public: virtual void nt_factor_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
+
+//--- indexing
+  public: virtual void nt_factor_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_factor_ (GALGAS_templateExpressionAST & outArgument0,
@@ -2558,6 +2564,9 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 //--- 'parse' label
   public: virtual void nt_for_5F_instruction_5F_element_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
 
+//--- indexing
+  public: virtual void nt_for_5F_instruction_5F_element_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
+
 //----------- '' label
   public: virtual void nt_for_5F_instruction_5F_element_ (GALGAS_lstringlist & ioArgument0,
                                                           C_Lexique_galgasTemplateScanner * inCompiler) ;
@@ -2565,6 +2574,9 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 //------------------------------------- 'for_instruction_enumerated_object' non terminal
 //--- 'parse' label
   public: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
+
+//--- indexing
+  public: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_ (GALGAS_templateInstructionForEnumerationAST & outArgument0,
@@ -2575,6 +2587,9 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 //--- 'parse' label
   public: virtual void nt_output_5F_expression_5F_list_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
 
+//--- indexing
+  public: virtual void nt_output_5F_expression_5F_list_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
+
 //----------- '' label
   public: virtual void nt_output_5F_expression_5F_list_ (GALGAS_templateExpressionListAST & outArgument0,
                                                          C_Lexique_galgasTemplateScanner * inCompiler) ;
@@ -2582,6 +2597,9 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 //------------------------------------- 'primary' non terminal
 //--- 'parse' label
   public: virtual void nt_primary_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
+
+//--- indexing
+  public: virtual void nt_primary_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_primary_ (GALGAS_templateExpressionAST & outArgument0,
@@ -2591,6 +2609,9 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 //--- 'parse' label
   public: virtual void nt_relation_5F_factor_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
 
+//--- indexing
+  public: virtual void nt_relation_5F_factor_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
+
 //----------- '' label
   public: virtual void nt_relation_5F_factor_ (GALGAS_templateExpressionAST & outArgument0,
                                                C_Lexique_galgasTemplateScanner * inCompiler) ;
@@ -2598,6 +2619,9 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 //------------------------------------- 'relation_term' non terminal
 //--- 'parse' label
   public: virtual void nt_relation_5F_term_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
+
+//--- indexing
+  public: virtual void nt_relation_5F_term_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_relation_5F_term_ (GALGAS_templateExpressionAST & outArgument0,
@@ -2607,6 +2631,9 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 //--- 'parse' label
   public: virtual void nt_simple_5F_expression_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
 
+//--- indexing
+  public: virtual void nt_simple_5F_expression_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
+
 //----------- '' label
   public: virtual void nt_simple_5F_expression_ (GALGAS_templateExpressionAST & outArgument0,
                                                  C_Lexique_galgasTemplateScanner * inCompiler) ;
@@ -2614,6 +2641,9 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 //------------------------------------- 'switch_case' non terminal
 //--- 'parse' label
   public: virtual void nt_switch_5F_case_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
+
+//--- indexing
+  public: virtual void nt_switch_5F_case_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_switch_5F_case_ (GALGAS_lstringlist & outArgument0,
@@ -2624,6 +2654,9 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 //--- 'parse' label
   public: virtual void nt_template_5F_instruction_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
 
+//--- indexing
+  public: virtual void nt_template_5F_instruction_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
+
 //----------- '' label
   public: virtual void nt_template_5F_instruction_ (GALGAS_templateInstructionListAST & ioArgument0,
                                                     C_Lexique_galgasTemplateScanner * inCompiler) ;
@@ -2631,6 +2664,9 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 //------------------------------------- 'template_parser_start_symbol' non terminal
 //--- 'parse' label
   public: virtual void nt_template_5F_parser_5F_start_5F_symbol_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
+
+//--- indexing
+  public: virtual void nt_template_5F_parser_5F_start_5F_symbol_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_template_5F_parser_5F_start_5F_symbol_ (GALGAS_templateInstructionListAST & outArgument0,
@@ -2663,6 +2699,9 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 //------------------------------------- 'term' non terminal
 //--- 'parse' label
   public: virtual void nt_term_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
+
+//--- indexing
+  public: virtual void nt_term_indexing (C_Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_term_ (GALGAS_templateExpressionAST & outArgument0,

@@ -4,19 +4,19 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-%for (mValue) in TEXT_CONTENT_INDEX_STRING_LIST do index idx
+%for (mValue) in TEXT_CONTENT_INDEX_STRING_LIST do (idx)
 %extern const char * gWrapperFileContent_%!mValue%_%![FILEWRAPPER_NAME identifierRepresentation]% ;\n%
 end
 %
 //----------------------------------------------------------------------------------------------------------------------
 
-%for (mValue) in BINARY_CONTENT_INDEX_STRING_LIST do index idx
+%for (mValue) in BINARY_CONTENT_INDEX_STRING_LIST do (idx)
 %extern const uint8_t gWrapperFileContent_%!mValue%_%![FILEWRAPPER_NAME identifierRepresentation]% [] ;\n%
 end
 %
 //----------------------------------------------------------------------------------------------------------------------
 
-%for (mValue) in FILE_INDEX_STRING_LIST do index idx
+%for (mValue) in FILE_INDEX_STRING_LIST do (idx)
 %extern const cRegularFileWrapper gWrapperFile_%!mValue%_%![FILEWRAPPER_NAME identifierRepresentation]% ;\n%
 end
 %

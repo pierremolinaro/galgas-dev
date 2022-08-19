@@ -32,14 +32,14 @@ else
                                              !^%const cObjectArray & inEffectiveParameterArray,\n%
                                              !^%const GALGAS_location & /* inErrorLocation */\n%
                                              !^%COMMA_LOCATION_ARGS) {\n%
-  for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do index IDX
+  for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do (IDX)
     %  const GALGAS_%![mFormalArgumentType identifierRepresentation]% operand%![IDX string]% = GALGAS_%![mFormalArgumentType identifierRepresentation]
     %::extractObject (%?^%inEffectiveParameterArray.objectAtIndex (%![IDX string]% COMMA_HERE),
   %!^%inCompiler
   %!^%COMMA_THERE) ;\n%
   end
   %  return function_%![FUNCTION_NAME identifierRepresentation]% (%?^
-  for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do index IDX
+  for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do (IDX)
     %operand%![IDX string]%,\n%!^
   end
   %inCompiler\n%!^%COMMA_THERE).getter_object (THERE) ;\n%

@@ -197,21 +197,21 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
 
 #------------------------------- GALGAS Unicode letter ------------------
 
-func galgasUnicodeLetter : 'a'->'z' | 'A'->'Z' |
-  '\u00C0' -> '\u00D6' |
-  '\u00D8' -> '\u00F6' |
-  '\u00F8' -> '\u02B4' |
-  '\u038E' -> '\u03A1' |
-  '\u03A3' -> '\u03F5' |
-  '\u03F7' -> '\u0481' |
-  '\u048A' -> '\u0523'
+#func galgasUnicodeLetter : 'a'->'z' | 'A'->'Z' |
+#  '\u00C0' -> '\u00D6' |
+#  '\u00D8' -> '\u00F6' |
+#  '\u00F8' -> '\u02B4' |
+#  '\u038E' -> '\u03A1' |
+#  '\u03A3' -> '\u03F5' |
+#  '\u03F7' -> '\u0481' |
+#  '\u048A' -> '\u0523'
   
 
-rule galgasUnicodeLetter {
+rule isUnicodeLetter {
   repeat
     enterCharacterIntoString (!?identifierString !toLower (!*))
     enterCharacterIntoString (!?tokenString !*)
-  while galgasUnicodeLetter | '_' | '0'->'9' :
+  while isUnicodeLetter | '_' | '0'->'9' :
   end
   send search identifierString in galgasKeyWordList default $identifier$
 }
@@ -373,10 +373,10 @@ message attributeError : "in an attribute name, a letter or a digit should follo
 
 rule '%' {
   select
-  case galgasUnicodeLetter :
+  case isUnicodeLetter :
     repeat
       enterCharacterIntoString (!?tokenString !* )
-    while galgasUnicodeLetter | '-' | '_' | '0'->'9' :
+    while isUnicodeLetter | '-' | '_' | '0'->'9' :
     end
   default
     error attributeError
@@ -680,10 +680,10 @@ rule '<' {
     send $<=$
   case '<' :
     send $<<$
-  case galgasUnicodeLetter :
+  case isUnicodeLetter :
     repeat
       enterCharacterIntoString (!?tokenString !* )
-    while galgasUnicodeLetter | '0' -> '9' | '_' :
+    while isUnicodeLetter | '0' -> '9' | '_' :
     end
     select
     case '>' :

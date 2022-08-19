@@ -10,18 +10,6 @@
 //            Unicode test functions                                                             
 //----------------------------------------------------------------------------------------------------------------------
  
-bool galgasUnicodeLetter (const utf32 inUnicodeCharacter) {
-  return ((0x61 <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0x7A)) ||
-         ((0x41 <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0x5A)) ||
-         ((0xC0 <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0xD6)) ||
-         ((0xD8 <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0xF6)) ||
-         ((0xF8 <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0x2B4)) ||
-         ((0x38E <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0x3A1)) ||
-         ((0x3A3 <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0x3F5)) ||
-         ((0x3F7 <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0x481)) ||
-         ((0x48A <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0x523)) ;
-}
-
 //----------------------------------------------------------------------------------------------------------------------
 
 @implementation OC_Lexique_galgas3Scanner
@@ -273,11 +261,11 @@ static NSInteger search_into_galgas_33_Scanner_galgasKeyWordList (NSString * inS
     mLexicalAttribute_uint32value = 0 ;
     mLexicalAttribute_uint64value = 0 ;
     mTokenStartLocation = mCurrentLocation ;
-    if (scanningOk && ([self testForCharWithFunction:galgasUnicodeLetter])) {
+    if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter])) {
       do {
         scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_identifierString, scanner_cocoa_function_toLower (mPreviousChar)) ;
         scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-        if (scanningOk && ([self testForCharWithFunction:galgasUnicodeLetter] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
+        if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
         }else{
           mLoop = NO ;
         }
@@ -420,10 +408,10 @@ static NSInteger search_into_galgas_33_Scanner_galgasKeyWordList (NSString * inS
       }
       mTokenCode = galgas3Scanner_1__40_type ;
     }else if (scanningOk && ([self testForInputChar:37])) {
-      if (scanningOk && ([self testForCharWithFunction:galgasUnicodeLetter])) {
+      if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter])) {
         do {
           scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-          if (scanningOk && ([self testForCharWithFunction:galgasUnicodeLetter] || [self testForInputChar:45] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
+          if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter] || [self testForInputChar:45] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
           }else{
             mLoop = NO ;
           }
@@ -770,10 +758,10 @@ static NSInteger search_into_galgas_33_Scanner_galgasKeyWordList (NSString * inS
         mTokenCode = galgas3Scanner_1__3C__3D_ ;
       }else if (scanningOk && ([self testForInputChar:60])) {
         mTokenCode = galgas3Scanner_1__3C__3C_ ;
-      }else if (scanningOk && ([self testForCharWithFunction:galgasUnicodeLetter])) {
+      }else if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter])) {
         do {
           scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-          if (scanningOk && ([self testForCharWithFunction:galgasUnicodeLetter] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
+          if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
           }else{
             mLoop = NO ;
           }

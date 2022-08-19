@@ -57,7 +57,7 @@ enum {%!LEXIQUE_CLASS_NAME%_1_%
 
 %
   for (mFunctionName mLexicalExpression) in UNICODE_TEST_FUNCTIONS
-  do %bool %![mFunctionName identifierRepresentation]% (const utf32 inUnicodeCharacter) ;\n\n%
+  do %bool %!LEXIQUE_CLASS_NAME%_%![mFunctionName identifierRepresentation]% (const utf32 inUnicodeCharacter) ;\n\n%
   end
 %//----------------------------------------------------------------------------------------------------------------------
 //

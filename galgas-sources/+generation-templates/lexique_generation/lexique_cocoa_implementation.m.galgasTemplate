@@ -7,7 +7,7 @@
 //----------------------------------------------------------------------------------------------------------------------
  
 % for (mFunctionName mLexicalExpression) in UNICODE_TEST_FUNCTIONS do
-    %bool %![mFunctionName identifierRepresentation]% (const utf32 inUnicodeCharacter) {\n%
+    %bool %!LEXIQUE_CLASS_NAME%_%![mFunctionName identifierRepresentation]% (const utf32 inUnicodeCharacter) {\n%
     %  return %![mLexicalExpression generateForUnicodeTestFunctions]% ;\n%
     %}\n\n%
   end

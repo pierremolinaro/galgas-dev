@@ -85,7 +85,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
 %        int r = 0 ;
         %
           for (mSourceFileExtension mSourceFileHelp mSourceFileVariableName mSourceFileVariableNameIsUnused mReferenceGrammar mInstructionList mEndOfInstructionList) in PROGRAM_RULE_LIST 
-          do index IDX
+          do (IDX)
             %if (fileExtension == %![mSourceFileExtension utf8Representation]%) {\n%
             if mReferenceGrammar.string == "" then
             %          switch (executionMode ()) {\n%

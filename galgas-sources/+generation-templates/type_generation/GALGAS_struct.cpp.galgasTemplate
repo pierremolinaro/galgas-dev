@@ -17,10 +17,10 @@ GALGAS_%!TYPE_IDENTIFIER%::~ GALGAS_%!TYPE_IDENTIFIER% (void) {
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^
 for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in PROPERTY_LIST
-  do index IDX %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]
+  do (IDX) %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
 end%) :\n%
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in PROPERTY_LIST do index IDX
+for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in PROPERTY_LIST do (IDX)
   %mProperty_%![mPropertyName identifierRepresentation]% (inOperand%![IDX string]%)%
   between %,\n%
 end
@@ -43,19 +43,19 @@ end%) ;
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
 for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in PROPERTY_LIST
-  do index IDX %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]
+  do (IDX) %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
 end% \n%!^%COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   if (%
 for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in PROPERTY_LIST
-  do index IDX %inOperand%![IDX string]%.isValid ()%
+  do (IDX) %inOperand%![IDX string]%.isValid ()%
   between % && %
 end
 %) {
     result = GALGAS_%!TYPE_IDENTIFIER% (%
 for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in PROPERTY_LIST
-  do index IDX %inOperand%![IDX string]
+  do (IDX) %inOperand%![IDX string]
   between %, %
 end
 
@@ -105,7 +105,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
   }else{
 %
 for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in PROPERTY_LIST
-  do index IDX %    mProperty_%![mPropertyName identifierRepresentation]%.description (ioString, inIndentation+1) ;\n%
+  do (IDX) %    mProperty_%![mPropertyName identifierRepresentation]%.description (ioString, inIndentation+1) ;\n%
   between %    ioString << ", " ;\n%
 end
 %  }

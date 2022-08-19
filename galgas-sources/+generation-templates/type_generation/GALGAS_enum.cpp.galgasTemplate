@@ -4,12 +4,12 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     %//----------------------------------------------------------------------------------------------------------------------\n\n%
     %cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName%::cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% (%?^
     for (mType) in mAssociatedValueTypeList
-    do index idx %const GALGAS_%![mType identifierRepresentation]% inAssociatedValue%![idx string]
+    do (idx) %const GALGAS_%![mType identifierRepresentation]% inAssociatedValue%![idx string]
     between %,\n%!^
     end
     %\n%!^%COMMA_LOCATION_ARGS) :\n%
     %cEnumAssociatedValues (THERE)%
-    for (mType) in mAssociatedValueTypeList do index idx
+    for (mType) in mAssociatedValueTypeList do (idx)
     %,\nmAssociatedValue%![idx string]% (inAssociatedValue%![idx string]%)%
     end
     % {\n%   
@@ -18,7 +18,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     %void cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName%::description (%?^%C_String & ioString,\n%
                        !^%const int32_t inIndentation) const {\n%
     %  ioString << "(\\n" ;\n%
-    for (mType) in mAssociatedValueTypeList do index idx
+    for (mType) in mAssociatedValueTypeList do (idx)
       %  mAssociatedValue%![idx string]%.description (ioString, inIndentation) ;\n%
     end
     %  ioString << ")" ;\n%
@@ -28,7 +28,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     %  const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% * ptr = dynamic_cast<const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *> (inOperand) ;\n%
     %  macroValidPointer (ptr) ;\n%
     %  typeComparisonResult result = kOperandEqual ;\n%
-    for (mType) in mAssociatedValueTypeList do index idx
+    for (mType) in mAssociatedValueTypeList do (idx)
       %  if (result == kOperandEqual) {\n%
       %    result = mAssociatedValue%![idx string]%.objectCompare (ptr->mAssociatedValue%![idx string]%) ;\n%
       %  }\n%
@@ -56,7 +56,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     %UNUSED_LOCATION_ARGS%
   else
     for (mType) in mAssociatedValueTypeList
-    do index idx %const GALGAS_%![mType identifierRepresentation]% & inAssociatedValue%![idx string]
+    do (idx) %const GALGAS_%![mType identifierRepresentation]% & inAssociatedValue%![idx string]
     between %,\n%!^
     end
     %\n%!^%COMMA_LOCATION_ARGS%
@@ -68,7 +68,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   else
     %  if (%
     for (mType) in mAssociatedValueTypeList
-    do index idx %inAssociatedValue%![idx string]%.isValid ()%
+    do (idx) %inAssociatedValue%![idx string]%.isValid ()%
     between % && %
     end
     %) {\n%
@@ -76,7 +76,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     %    cEnumAssociatedValues * ptr = NULL ;\n%
     %    macroMyNew (ptr, cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% (%
     for (mType) in mAssociatedValueTypeList
-    do index idx %inAssociatedValue%![idx string]
+    do (idx) %inAssociatedValue%![idx string]
     between %, %
     end
     % COMMA_THERE)) ;\n%
@@ -92,13 +92,13 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   if [mAssociatedValueTypeList length] > 0 then
     %//----------------------------------------------------------------------------------------------------------------------\n\n%
     %void GALGAS_%!TYPE_IDENTIFIER%::method_%![mConstantName identifierRepresentation]% (%?^
-    for (mType) in mAssociatedValueTypeList do index idx
+    for (mType) in mAssociatedValueTypeList do (idx)
       %GALGAS_%![mType identifierRepresentation]% & outAssociatedValue%![idx string]%,\n%!^
     end
     !^%C_Compiler * inCompiler\n%
     !^%COMMA_LOCATION_ARGS) const {\n%
     %  if (mEnum != kEnum_%![mConstantName identifierRepresentation]%) {\n%
-    for (mType) in mAssociatedValueTypeList do index idx
+    for (mType) in mAssociatedValueTypeList do (idx)
       %    outAssociatedValue%![idx string]%.drop () ;\n%
     end
     %    C_String s ;\n%
@@ -106,7 +106,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     %    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n%
     %  }else{\n%
     %    const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% * ptr = (const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *) unsafePointer () ;\n%    
-    for (mType) in mAssociatedValueTypeList do index idx
+    for (mType) in mAssociatedValueTypeList do (idx)
       %    outAssociatedValue%![idx string]% = ptr->mAssociatedValue%![idx string]% ;\n%
     end
     %  }\n%
@@ -119,7 +119,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     %//----------------------------------------------------------------------------------------------------------------------\n\n%
     %bool GALGAS_%!TYPE_IDENTIFIER%::optional_%![mConstantName identifierRepresentation]% (%?^
     for (mType) in mAssociatedValueTypeList
-    do index idx
+    do (idx)
       %GALGAS_%![mType identifierRepresentation]% & outAssociatedValue%![idx string]
     between
       %,\n%!^
@@ -130,7 +130,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
       %  if (ok) {\n%
       %    const auto * ptr = (const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *) unsafePointer () ;\n%    
       %    // const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% * ptr = (const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *) unsafePointer () ;\n%    
-      for (mType) in mAssociatedValueTypeList do index idx
+      for (mType) in mAssociatedValueTypeList do (idx)
          %    outAssociatedValue%![idx string]% = ptr->mAssociatedValue%![idx string]% ;\n%
        end
        %  }\n%

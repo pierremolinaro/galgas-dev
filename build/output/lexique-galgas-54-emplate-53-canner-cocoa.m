@@ -75,7 +75,7 @@ static NSArray * kTemplateDefinitionArray_galgasTemplateScanner ;
 //----------------------------------------------------------------------------------------------------------------------
 
 - (NSString *) indexingDirectory {
-  return @"" ;
+  return @"../build/indexes" ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -85,8 +85,64 @@ static NSArray * kTemplateDefinitionArray_galgasTemplateScanner ;
 //----------------------------------------------------------------------------------------------------------------------
 
 - (NSArray *) indexingTitles { // Array of NSString
-
-  return [NSArray array] ;
+  return [NSArray arrayWithObjects:
+    @"Class Definition",
+    @"Enum Definition",
+    @"Struct Definition",
+    @"List Definition",
+    @"Sorted List Definition",
+    @"Listmap Definition",
+    @"Map Definition",
+    @"Extern Type Definition",
+    @"Shared Map Entry Definition",
+    @"Array Definition",
+    @"Reference as array element",
+    @"Filewrapper Definition",
+    @"Filewrapper Reference",
+    @"Graph Definition",
+    @"Class Reference as Superclass",
+    @"Type reference in Constructor",
+    @"Type reference in Type Method",
+    @"Routine Definition",
+    @"Routine Call",
+    @"Function Definition",
+    @"Function Call",
+    @"Terminal Declaration",
+    @"Terminal Reference",
+    @"Rule Definition",
+    @"Rule Reference",
+    @"Abstract Extension Setter Definition",
+    @"Abstract Extension Setter Definition",
+    @"Override Abstract Extension Setter Definition",
+    @"Extension Setter Definition",
+    @"Extension Setter Definition",
+    @"Override Extension Setter Definition",
+    @"Override Extension Setter Definition",
+    @"Override Abstract Extension Setter Definition",
+    @"Abstract Extension Method Definition",
+    @"Abstract Extension Method Definition",
+    @"Override Abstract Extension Method Definition",
+    @"Extension Method Definition",
+    @"Extension Method Definition",
+    @"Override Extension Method Definition",
+    @"Override Extension Method Definition",
+    @"Override Abstract Extension Method Definition",
+    @"Abstract Extension Getter Definition",
+    @"Abstract Extension Getter Definition",
+    @"Override Abstract Extension Getter Definition",
+    @"Override Abstract Extension Getter Definition",
+    @"Extension Getter Definition",
+    @"Extension Getter Definition",
+    @"Override Extension Getter Definition",
+    @"Override Extension Getter Definition",
+    @"Option Component Definition",
+    @"Option Component Reference",
+    @"Grammar Component Definition",
+    @"Grammar Component Reference",
+    @"Indexing Name Definition",
+    @"Indexing Name Reference",
+    NULL
+  ] ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -95,9 +151,8 @@ static NSArray * kTemplateDefinitionArray_galgasTemplateScanner ;
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [142] = {
+static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [156] = {
   NO /* identifier */,
-  NO /* @type */,
   NO /* double.xxx */,
   NO /* uint32 */,
   NO /* sint32_S */,
@@ -105,11 +160,12 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [142] = {
   NO /* sint64_LS */,
   NO /* bigint_G */,
   NO /* . */,
-  NO /* .= */,
   NO /* ... */,
   NO /* ..< */,
+  NO /* @type */,
+  NO /* %attribute */,
   NO /* 'char' */,
-  NO /* "string" */,
+  NO /* $terminal$ */,
   NO /* ? */,
   NO /* ?! */,
   NO /* ! */,
@@ -117,18 +173,21 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [142] = {
   NO /* < */,
   NO /* <= */,
   NO /* << */,
+  NO /* <non_terminal> */,
+  NO /* "string" */,
   NO /* comment */,
+  NO /* commentMark */,
   NO /* abstract */,
   NO /* after */,
   NO /* array */,
+  NO /* as */,
   NO /* before */,
   NO /* between */,
   NO /* block */,
   NO /* boolset */,
-  NO /* case */,
   NO /* cast */,
+  NO /* case */,
   NO /* class */,
-  NO /* const */,
   NO /* constructor */,
   NO /* default */,
   NO /* dict */,
@@ -143,17 +202,15 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [142] = {
   NO /* extern */,
   NO /* false */,
   NO /* filewrapper */,
-  NO /* fixit */,
   NO /* for */,
+  NO /* fixit */,
   NO /* func */,
   NO /* getter */,
   NO /* grammar */,
   NO /* graph */,
   NO /* gui */,
-  NO /* here */,
   NO /* if */,
   NO /* in */,
-  NO /* index */,
   NO /* indexing */,
   NO /* insert */,
   NO /* is */,
@@ -171,18 +228,20 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [142] = {
   NO /* mutating */,
   NO /* not */,
   NO /* on */,
-  NO /* once */,
   NO /* operator */,
   NO /* option */,
   NO /* or */,
   NO /* override */,
   NO /* parse */,
+  NO /* public */,
   NO /* private */,
   NO /* proc */,
   NO /* project */,
+  NO /* refclass */,
   NO /* remove */,
   NO /* replace */,
   NO /* repeat */,
+  NO /* rewind */,
   NO /* rule */,
   NO /* search */,
   NO /* select */,
@@ -200,44 +259,55 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [142] = {
   NO /* true */,
   NO /* unused */,
   NO /* var */,
+  NO /* valueclass */,
   NO /* warning */,
-  NO /* when */,
   NO /* while */,
   NO /* with */,
   NO /* * */,
-  NO /* | */,
   NO /* , */,
   NO /* + */,
-  NO /* -- */,
-  NO /* :> */,
+  NO /* &+ */,
+  NO /* &- */,
+  NO /* &* */,
+  NO /* &/ */,
   NO /* > */,
   NO /* ; */,
   NO /* : */,
-  NO /* ?^ */,
+  NO /* :> */,
   NO /* - */,
   NO /* ( */,
   NO /* ) */,
   NO /* -> */,
   NO /* == */,
-  NO /* := */,
-  NO /* ++ */,
+  NO /* = */,
+  NO /* && */,
   NO /* [ */,
   NO /* ] */,
   NO /* += */,
-  NO /* &+ */,
+  NO /* -= */,
+  NO /* *= */,
+  NO /* /= */,
   NO /* / */,
   NO /* != */,
   NO /* >= */,
   NO /* & */,
-  NO /* !^ */,
   NO /* { */,
   NO /* } */,
+  NO /* ` */,
+  NO /* || */,
+  NO /* | */,
   NO /* ^ */,
   NO /* >> */,
   NO /* ~ */,
-  NO /* &++ */,
+  NO /* -- */,
+  NO /* ++ */,
   NO /* &-- */,
-  NO /* &/ */
+  NO /* &++ */,
+  NO /* ° */,
+  NO /* === */,
+  NO /* !== */,
+  NO /* ?^ */,
+  NO /* !^ */
 } ;
 
 
@@ -248,6 +318,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [142] = {
 //----------------------------------------------------------------------------------------------------------------------
 
 static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgasKeyWordList [86] = {
+  {"as", galgasTemplateScanner_1_as},
   {"do", galgasTemplateScanner_1_do},
   {"if", galgasTemplateScanner_1_if},
   {"in", galgasTemplateScanner_1_in},
@@ -271,29 +342,24 @@ static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgas
   {"else", galgasTemplateScanner_1_else},
   {"enum", galgasTemplateScanner_1_enum},
   {"func", galgasTemplateScanner_1_func},
-  {"here", galgasTemplateScanner_1_here},
   {"list", galgasTemplateScanner_1_list},
   {"loop", galgasTemplateScanner_1_loop},
-  {"once", galgasTemplateScanner_1_once},
   {"proc", galgasTemplateScanner_1_proc},
   {"rule", galgasTemplateScanner_1_rule},
   {"self", galgasTemplateScanner_1_self},
   {"send", galgasTemplateScanner_1_send},
   {"then", galgasTemplateScanner_1_then},
   {"true", galgasTemplateScanner_1_true},
-  {"when", galgasTemplateScanner_1_when},
   {"with", galgasTemplateScanner_1_with},
   {"after", galgasTemplateScanner_1_after},
   {"array", galgasTemplateScanner_1_array},
   {"block", galgasTemplateScanner_1_block},
   {"class", galgasTemplateScanner_1_class},
-  {"const", galgasTemplateScanner_1_const},
   {"elsif", galgasTemplateScanner_1_elsif},
   {"error", galgasTemplateScanner_1_error},
   {"false", galgasTemplateScanner_1_false},
   {"fixit", galgasTemplateScanner_1_fixit},
   {"graph", galgasTemplateScanner_1_graph},
-  {"index", galgasTemplateScanner_1_index},
   {"label", galgasTemplateScanner_1_label},
   {"parse", galgasTemplateScanner_1_parse},
   {"style", galgasTemplateScanner_1_style},
@@ -304,8 +370,10 @@ static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgas
   {"insert", galgasTemplateScanner_1_insert},
   {"method", galgasTemplateScanner_1_method},
   {"option", galgasTemplateScanner_1_option},
+  {"public", galgasTemplateScanner_1_public},
   {"remove", galgasTemplateScanner_1_remove},
   {"repeat", galgasTemplateScanner_1_repeat},
+  {"rewind", galgasTemplateScanner_1_rewind},
   {"search", galgasTemplateScanner_1_search},
   {"select", galgasTemplateScanner_1_select},
   {"setter", galgasTemplateScanner_1_setter},
@@ -329,9 +397,11 @@ static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgas
   {"mutating", galgasTemplateScanner_1_mutating},
   {"operator", galgasTemplateScanner_1_operator},
   {"override", galgasTemplateScanner_1_override},
+  {"refclass", galgasTemplateScanner_1_refclass},
   {"template", galgasTemplateScanner_1_template},
   {"extension", galgasTemplateScanner_1_extension},
   {"sortedlist", galgasTemplateScanner_1_sortedlist},
+  {"valueclass", galgasTemplateScanner_1_valueclass},
   {"constructor", galgasTemplateScanner_1_constructor},
   {"filewrapper", galgasTemplateScanner_1_filewrapper}
 } ;
@@ -380,11 +450,11 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
       mLexicalAttribute_uint32value = 0 ;
       mLexicalAttribute_uint64value = 0 ;
       mTokenStartLocation = mCurrentLocation ;
-      if (scanningOk && ([self testForCharWithFunction:isUnicodeLetter])) {
+      if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter])) {
         do {
           scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_identifierString, scanner_cocoa_function_toLower (mPreviousChar)) ;
           scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-          if (scanningOk && ([self testForCharWithFunction:isUnicodeLetter] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
+          if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
           }else{
             mLoop = NO ;
           }
@@ -396,30 +466,6 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
         if (mTokenCode == 0) {
           mTokenCode = galgasTemplateScanner_1_identifier ;
         }
-      }else if (scanningOk && ([self testForInputChar:64])) {
-        if (scanningOk && ([self testForCharWithFunction:isUnicodeLetter] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
-          do {
-            scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-            if (scanningOk && ([self testForCharWithFunction:isUnicodeLetter] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
-            }else{
-              mLoop = NO ;
-            }
-          }while (mLoop && scanningOk) ;
-          mLoop = YES ;
-          if (scanningOk && ([self testForInputChar:45])) {
-            do {
-              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-              if (scanningOk && ([self testForCharWithFunction:isUnicodeLetter] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
-              }else{
-                mLoop = NO ;
-              }
-            }while (mLoop && scanningOk) ;
-            mLoop = YES ;
-          }
-        }else{
-          scanningOk = NO ;
-        }
-        mTokenCode = galgasTemplateScanner_1__40_type ;
       }else if (scanningOk && ([self testForInputString:@"0x" advance:YES])) {
         do {
           if (scanningOk && ([self testForInputChar:95])) {
@@ -431,11 +477,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
         if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
           scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
           do {
-            if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
-              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-            }else if (scanningOk && ([self testForInputFromChar:97 toChar:102])) {
-              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-            }else if (scanningOk && ([self testForInputFromChar:65 toChar:70])) {
+            if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
               scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
             }else if (scanningOk && ([self testForInputChar:95])) {
             }else{
@@ -523,12 +565,51 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
             mTokenCode = galgasTemplateScanner_1__2E__2E__2E_ ;
           }else if (scanningOk && ([self testForInputString:@".<" advance:YES])) {
             mTokenCode = galgasTemplateScanner_1__2E__2E__3C_ ;
-          }else if (scanningOk && ([self testForInputString:@"=" advance:YES])) {
-            mTokenCode = galgasTemplateScanner_1__2E__3D_ ;
           }else{
             mTokenCode = galgasTemplateScanner_1__2E_ ;
           }
         }
+      }else if (scanningOk && ([self testForInputChar:64])) {
+        if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
+          do {
+            scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
+            if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
+            }else{
+              mLoop = NO ;
+            }
+          }while (mLoop && scanningOk) ;
+          mLoop = YES ;
+          if (scanningOk && ([self testForInputChar:45])) {
+            do {
+              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
+              if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
+              }else{
+                mLoop = NO ;
+              }
+            }while (mLoop && scanningOk) ;
+            mLoop = YES ;
+          }
+          if (scanningOk && ([self testForInputChar:63])) {
+            scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
+          }
+        }else{
+          scanningOk = NO ;
+        }
+        mTokenCode = galgasTemplateScanner_1__40_type ;
+      }else if (scanningOk && ([self testForInputChar:37])) {
+        if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter])) {
+          do {
+            scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
+            if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter] || [self testForInputChar:45] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
+            }else{
+              mLoop = NO ;
+            }
+          }while (mLoop && scanningOk) ;
+          mLoop = YES ;
+        }else{
+          scanningOk = NO ;
+        }
+        mTokenCode = galgasTemplateScanner_1__25_attribute ;
       }else if (scanningOk && ([self testForInputChar:39])) {
         if (scanningOk && ([self testForInputChar:92])) {
           if (scanningOk && ([self testForInputChar:102])) {
@@ -611,19 +692,6 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
             }else{
               scanningOk = NO ;
             }
-          }else if (scanningOk && ([self testForInputChar:120] || [self testForInputChar:88])) {
-            if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-              do {
-                scanner_cocoa_routine_enterHexDigitIntoASCIIcharacter (& scanningOk, & mLexicalAttribute_charValue, mPreviousChar) ;
-                if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-                }else{
-                  mLoop = NO ;
-                }
-              }while (mLoop && scanningOk) ;
-              mLoop = YES ;
-            }else{
-              scanningOk = NO ;
-            }
           }else if (scanningOk && ([self testForInputChar:38])) {
             do {
               if (scanningOk && ([self notTestForInputString:@";" error:& scanningOk])) {
@@ -646,6 +714,260 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
           mTokenCode = galgasTemplateScanner_1__27_char_27_ ;
         }else{
           scanningOk = NO ;
+        }
+      }else if (scanningOk && ([self testForInputChar:36])) {
+        if (scanningOk && ([self testForInputString:@"\\\\" advance:YES])) {
+          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 92) ;
+          do {
+            if (scanningOk && ([self testForInputString:@"\\\\" advance:YES])) {
+              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 92) ;
+            }else if (scanningOk && ([self testForInputString:@"\\$" advance:YES])) {
+              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 36) ;
+            }else if (scanningOk && ([self testForInputFromChar:33 toChar:35] || [self testForInputFromChar:37 toChar:65533])) {
+              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
+            }else{
+              mLoop = NO ;
+            }
+          }while (mLoop && scanningOk) ;
+          mLoop = YES ;
+        }else if (scanningOk && ([self testForInputString:@"\\$" advance:YES])) {
+          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 36) ;
+          do {
+            if (scanningOk && ([self testForInputString:@"\\\\" advance:YES])) {
+              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 92) ;
+            }else if (scanningOk && ([self testForInputString:@"\\$" advance:YES])) {
+              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 36) ;
+            }else if (scanningOk && ([self testForInputFromChar:33 toChar:35] || [self testForInputFromChar:37 toChar:65533])) {
+              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
+            }else{
+              mLoop = NO ;
+            }
+          }while (mLoop && scanningOk) ;
+          mLoop = YES ;
+        }else if (scanningOk && ([self testForInputFromChar:33 toChar:35] || [self testForInputFromChar:37 toChar:65533])) {
+          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
+          do {
+            if (scanningOk && ([self testForInputString:@"\\\\" advance:YES])) {
+              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 92) ;
+            }else if (scanningOk && ([self testForInputString:@"\\$" advance:YES])) {
+              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 36) ;
+            }else if (scanningOk && ([self testForInputFromChar:33 toChar:35] || [self testForInputFromChar:37 toChar:65533])) {
+              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
+            }else{
+              mLoop = NO ;
+            }
+          }while (mLoop && scanningOk) ;
+          mLoop = YES ;
+        }else{
+          scanningOk = NO ;
+        }
+        if (scanningOk && ([self testForInputChar:36])) {
+        }else{
+          scanningOk = NO ;
+        }
+        mTokenCode = galgasTemplateScanner_1__24_terminal_24_ ;
+      }else if (scanningOk && [self testForInputString:@"===" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__3D__3D__3D_ ;
+      }else if (scanningOk && [self testForInputString:@"&--" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__26__2D__2D_ ;
+      }else if (scanningOk && [self testForInputString:@"&++" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__26__2B__2B_ ;
+      }else if (scanningOk && [self testForInputString:@"!==" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__21__3D__3D_ ;
+      }else if (scanningOk && [self testForInputString:@"||" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__7C__7C_ ;
+      }else if (scanningOk && [self testForInputString:@"\?^" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__3F__5E_ ;
+      }else if (scanningOk && [self testForInputString:@">>" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__3E__3E_ ;
+      }else if (scanningOk && [self testForInputString:@">=" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__3E__3D_ ;
+      }else if (scanningOk && [self testForInputString:@"==" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__3D__3D_ ;
+      }else if (scanningOk && [self testForInputString:@":>" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__3A__3E_ ;
+      }else if (scanningOk && [self testForInputString:@"/=" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__2F__3D_ ;
+      }else if (scanningOk && [self testForInputString:@"->" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__2D__3E_ ;
+      }else if (scanningOk && [self testForInputString:@"-=" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__2D__3D_ ;
+      }else if (scanningOk && [self testForInputString:@"--" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__2D__2D_ ;
+      }else if (scanningOk && [self testForInputString:@"+=" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__2B__3D_ ;
+      }else if (scanningOk && [self testForInputString:@"++" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__2B__2B_ ;
+      }else if (scanningOk && [self testForInputString:@"*=" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__2A__3D_ ;
+      }else if (scanningOk && [self testForInputString:@"&/" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__26__2F_ ;
+      }else if (scanningOk && [self testForInputString:@"&-" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__26__2D_ ;
+      }else if (scanningOk && [self testForInputString:@"&+" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__26__2B_ ;
+      }else if (scanningOk && [self testForInputString:@"&*" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__26__2A_ ;
+      }else if (scanningOk && [self testForInputString:@"&&" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__26__26_ ;
+      }else if (scanningOk && [self testForInputString:@"!^" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__21__5E_ ;
+      }else if (scanningOk && [self testForInputString:@"!=" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__21__3D_ ;
+      }else if (scanningOk && [self testForInputString:@"\xC2""\xB0""" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__B0_ ;
+      }else if (scanningOk && [self testForInputString:@"~" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__7E_ ;
+      }else if (scanningOk && [self testForInputString:@"}" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__7D_ ;
+      }else if (scanningOk && [self testForInputString:@"|" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__7C_ ;
+      }else if (scanningOk && [self testForInputString:@"{" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__7B_ ;
+      }else if (scanningOk && [self testForInputString:@"`" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__60_ ;
+      }else if (scanningOk && [self testForInputString:@"^" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__5E_ ;
+      }else if (scanningOk && [self testForInputString:@"]" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__5D_ ;
+      }else if (scanningOk && [self testForInputString:@"[" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__5B_ ;
+      }else if (scanningOk && [self testForInputString:@">" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__3E_ ;
+      }else if (scanningOk && [self testForInputString:@"=" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__3D_ ;
+      }else if (scanningOk && [self testForInputString:@";" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__3B_ ;
+      }else if (scanningOk && [self testForInputString:@":" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__3A_ ;
+      }else if (scanningOk && [self testForInputString:@"/" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__2F_ ;
+      }else if (scanningOk && [self testForInputString:@"-" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__2D_ ;
+      }else if (scanningOk && [self testForInputString:@"," advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__2C_ ;
+      }else if (scanningOk && [self testForInputString:@"+" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__2B_ ;
+      }else if (scanningOk && [self testForInputString:@"*" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__2A_ ;
+      }else if (scanningOk && [self testForInputString:@")" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__29_ ;
+      }else if (scanningOk && [self testForInputString:@"(" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__28_ ;
+      }else if (scanningOk && [self testForInputString:@"&" advance:YES]) {
+        mTokenCode = galgasTemplateScanner_1__26_ ;
+      }else if (scanningOk && ([self testForInputChar:63])) {
+        scanningPointStructForCocoa locationForTag_onlyInterrogationMark ;
+        [self saveScanningPoint: & locationForTag_onlyInterrogationMark] ;
+        if (scanningOk && ([self testForInputChar:33])) {
+          scanningPointStructForCocoa locationForTag_onlyExclamationInterrogationMark ;
+          [self saveScanningPoint: & locationForTag_onlyExclamationInterrogationMark] ;
+          if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90])) {
+            do {
+              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
+              if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
+              }else{
+                mLoop = NO ;
+              }
+            }while (mLoop && scanningOk) ;
+            mLoop = YES ;
+            if (scanningOk && ([self testForInputChar:58])) {
+              mTokenCode = galgasTemplateScanner_1__3F__21_ ;
+            }else{
+              scanner_cocoa_routine_resetString (& scanningOk, mLexicalAttribute_tokenString) ;
+              [self restoreScanningPoint: & locationForTag_onlyExclamationInterrogationMark] ;
+              mTokenCode = galgasTemplateScanner_1__3F__21_ ;
+            }
+          }else{
+            mTokenCode = galgasTemplateScanner_1__3F__21_ ;
+          }
+        }else if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90])) {
+          do {
+            scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
+            if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
+            }else{
+              mLoop = NO ;
+            }
+          }while (mLoop && scanningOk) ;
+          mLoop = YES ;
+          if (scanningOk && ([self testForInputChar:58])) {
+            mTokenCode = galgasTemplateScanner_1__3F_ ;
+          }else{
+            scanner_cocoa_routine_resetString (& scanningOk, mLexicalAttribute_tokenString) ;
+            [self restoreScanningPoint: & locationForTag_onlyInterrogationMark] ;
+            mTokenCode = galgasTemplateScanner_1__3F_ ;
+          }
+        }else{
+          mTokenCode = galgasTemplateScanner_1__3F_ ;
+        }
+      }else if (scanningOk && ([self testForInputChar:33])) {
+        scanningPointStructForCocoa locationForTag_onlyExclamationMark ;
+        [self saveScanningPoint: & locationForTag_onlyExclamationMark] ;
+        if (scanningOk && ([self testForInputChar:63])) {
+          scanningPointStructForCocoa locationForTag_onlyInterrogationExclamationMark ;
+          [self saveScanningPoint: & locationForTag_onlyInterrogationExclamationMark] ;
+          if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90])) {
+            do {
+              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
+              if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
+              }else{
+                mLoop = NO ;
+              }
+            }while (mLoop && scanningOk) ;
+            mLoop = YES ;
+            if (scanningOk && ([self testForInputChar:58])) {
+              mTokenCode = galgasTemplateScanner_1__21__3F_ ;
+            }else{
+              scanner_cocoa_routine_resetString (& scanningOk, mLexicalAttribute_tokenString) ;
+              [self restoreScanningPoint: & locationForTag_onlyInterrogationExclamationMark] ;
+              mTokenCode = galgasTemplateScanner_1__21__3F_ ;
+            }
+          }else{
+            mTokenCode = galgasTemplateScanner_1__21__3F_ ;
+          }
+        }else if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90])) {
+          do {
+            scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
+            if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
+            }else{
+              mLoop = NO ;
+            }
+          }while (mLoop && scanningOk) ;
+          mLoop = YES ;
+          if (scanningOk && ([self testForInputChar:58])) {
+            mTokenCode = galgasTemplateScanner_1__21_ ;
+          }else{
+            scanner_cocoa_routine_resetString (& scanningOk, mLexicalAttribute_tokenString) ;
+            [self restoreScanningPoint: & locationForTag_onlyExclamationMark] ;
+            mTokenCode = galgasTemplateScanner_1__21_ ;
+          }
+        }else{
+          mTokenCode = galgasTemplateScanner_1__21_ ;
+        }
+      }else if (scanningOk && ([self testForInputChar:60])) {
+        scanningPointStructForCocoa locationForTag_onlyInfDelimiter ;
+        [self saveScanningPoint: & locationForTag_onlyInfDelimiter] ;
+        if (scanningOk && ([self testForInputChar:61])) {
+          mTokenCode = galgasTemplateScanner_1__3C__3D_ ;
+        }else if (scanningOk && ([self testForInputChar:60])) {
+          mTokenCode = galgasTemplateScanner_1__3C__3C_ ;
+        }else if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter])) {
+          do {
+            scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
+            if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
+            }else{
+              mLoop = NO ;
+            }
+          }while (mLoop && scanningOk) ;
+          mLoop = YES ;
+          if (scanningOk && ([self testForInputChar:62])) {
+            mTokenCode = galgasTemplateScanner_1__3C_non_5F_terminal_3E_ ;
+          }else{
+            [self restoreScanningPoint: & locationForTag_onlyInfDelimiter] ;
+            mTokenCode = galgasTemplateScanner_1__3C_ ;
+          }
+        }else{
+          mTokenCode = galgasTemplateScanner_1__3C_ ;
         }
       }else if (scanningOk && ([self testForInputChar:34])) {
         do {
@@ -770,179 +1092,26 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
         }else{
           scanningOk = NO ;
         }
-      }else if (scanningOk && [self testForInputString:@"&--" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__26__2D__2D_ ;
-      }else if (scanningOk && [self testForInputString:@"&++" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__26__2B__2B_ ;
-      }else if (scanningOk && [self testForInputString:@"\?^" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__3F__5E_ ;
-      }else if (scanningOk && [self testForInputString:@">>" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__3E__3E_ ;
-      }else if (scanningOk && [self testForInputString:@">=" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__3E__3D_ ;
-      }else if (scanningOk && [self testForInputString:@"==" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__3D__3D_ ;
-      }else if (scanningOk && [self testForInputString:@":>" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__3A__3E_ ;
-      }else if (scanningOk && [self testForInputString:@":=" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__3A__3D_ ;
-      }else if (scanningOk && [self testForInputString:@"->" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__2D__3E_ ;
-      }else if (scanningOk && [self testForInputString:@"--" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__2D__2D_ ;
-      }else if (scanningOk && [self testForInputString:@"+=" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__2B__3D_ ;
-      }else if (scanningOk && [self testForInputString:@"++" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__2B__2B_ ;
-      }else if (scanningOk && [self testForInputString:@"&/" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__26__2F_ ;
-      }else if (scanningOk && [self testForInputString:@"&+" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__26__2B_ ;
-      }else if (scanningOk && [self testForInputString:@"!^" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__21__5E_ ;
-      }else if (scanningOk && [self testForInputString:@"!=" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__21__3D_ ;
-      }else if (scanningOk && [self testForInputString:@"~" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__7E_ ;
-      }else if (scanningOk && [self testForInputString:@"}" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__7D_ ;
-      }else if (scanningOk && [self testForInputString:@"|" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__7C_ ;
-      }else if (scanningOk && [self testForInputString:@"{" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__7B_ ;
-      }else if (scanningOk && [self testForInputString:@"^" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__5E_ ;
-      }else if (scanningOk && [self testForInputString:@"]" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__5D_ ;
-      }else if (scanningOk && [self testForInputString:@"[" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__5B_ ;
-      }else if (scanningOk && [self testForInputString:@">" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__3E_ ;
-      }else if (scanningOk && [self testForInputString:@";" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__3B_ ;
-      }else if (scanningOk && [self testForInputString:@":" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__3A_ ;
-      }else if (scanningOk && [self testForInputString:@"/" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__2F_ ;
-      }else if (scanningOk && [self testForInputString:@"-" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__2D_ ;
-      }else if (scanningOk && [self testForInputString:@"," advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__2C_ ;
-      }else if (scanningOk && [self testForInputString:@"+" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__2B_ ;
-      }else if (scanningOk && [self testForInputString:@"*" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__2A_ ;
-      }else if (scanningOk && [self testForInputString:@")" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__29_ ;
-      }else if (scanningOk && [self testForInputString:@"(" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__28_ ;
-      }else if (scanningOk && [self testForInputString:@"&" advance:YES]) {
-        mTokenCode = galgasTemplateScanner_1__26_ ;
-      }else if (scanningOk && ([self testForInputChar:63])) {
-        scanningPointStructForCocoa locationForTag_onlyInterrogationMark ;
-        [self saveScanningPoint: & locationForTag_onlyInterrogationMark] ;
-        if (scanningOk && ([self testForInputChar:33])) {
-          scanningPointStructForCocoa locationForTag_onlyExclamationInterrogationMark ;
-          [self saveScanningPoint: & locationForTag_onlyExclamationInterrogationMark] ;
-          if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90])) {
-            do {
-              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-              if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
-              }else{
-                mLoop = NO ;
-              }
-            }while (mLoop && scanningOk) ;
-            mLoop = YES ;
-            if (scanningOk && ([self testForInputChar:58])) {
-              mTokenCode = galgasTemplateScanner_1__3F__21_ ;
-            }else{
-              scanner_cocoa_routine_resetString (& scanningOk, mLexicalAttribute_tokenString) ;
-              [self restoreScanningPoint: & locationForTag_onlyExclamationInterrogationMark] ;
-              mTokenCode = galgasTemplateScanner_1__3F__21_ ;
-            }
-          }else{
-            mTokenCode = galgasTemplateScanner_1__3F__21_ ;
-          }
-        }else if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90])) {
-          do {
-            scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-            if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
-            }else{
-              mLoop = NO ;
-            }
-          }while (mLoop && scanningOk) ;
-          mLoop = YES ;
-          if (scanningOk && ([self testForInputChar:58])) {
-            mTokenCode = galgasTemplateScanner_1__3F_ ;
-          }else{
-            scanner_cocoa_routine_resetString (& scanningOk, mLexicalAttribute_tokenString) ;
-            [self restoreScanningPoint: & locationForTag_onlyInterrogationMark] ;
-            mTokenCode = galgasTemplateScanner_1__3F_ ;
-          }
-        }else{
-          mTokenCode = galgasTemplateScanner_1__3F_ ;
-        }
-      }else if (scanningOk && ([self testForInputChar:33])) {
-        scanningPointStructForCocoa locationForTag_onlyExclamationMark ;
-        [self saveScanningPoint: & locationForTag_onlyExclamationMark] ;
-        if (scanningOk && ([self testForInputChar:63])) {
-          scanningPointStructForCocoa locationForTag_onlyInterrogationExclamationMark ;
-          [self saveScanningPoint: & locationForTag_onlyInterrogationExclamationMark] ;
-          if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90])) {
-            do {
-              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-              if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
-              }else{
-                mLoop = NO ;
-              }
-            }while (mLoop && scanningOk) ;
-            mLoop = YES ;
-            if (scanningOk && ([self testForInputChar:58])) {
-              mTokenCode = galgasTemplateScanner_1__21__3F_ ;
-            }else{
-              scanner_cocoa_routine_resetString (& scanningOk, mLexicalAttribute_tokenString) ;
-              [self restoreScanningPoint: & locationForTag_onlyInterrogationExclamationMark] ;
-              mTokenCode = galgasTemplateScanner_1__21__3F_ ;
-            }
-          }else{
-            mTokenCode = galgasTemplateScanner_1__21__3F_ ;
-          }
-        }else if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90])) {
-          do {
-            scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-            if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
-            }else{
-              mLoop = NO ;
-            }
-          }while (mLoop && scanningOk) ;
-          mLoop = YES ;
-          if (scanningOk && ([self testForInputChar:58])) {
-            mTokenCode = galgasTemplateScanner_1__21_ ;
-          }else{
-            scanner_cocoa_routine_resetString (& scanningOk, mLexicalAttribute_tokenString) ;
-            [self restoreScanningPoint: & locationForTag_onlyExclamationMark] ;
-            mTokenCode = galgasTemplateScanner_1__21_ ;
-          }
-        }else{
-          mTokenCode = galgasTemplateScanner_1__21_ ;
-        }
-      }else if (scanningOk && ([self testForInputChar:60])) {
-        if (scanningOk && ([self testForInputChar:61])) {
-          mTokenCode = galgasTemplateScanner_1__3C__3D_ ;
-        }else if (scanningOk && ([self testForInputChar:60])) {
-          mTokenCode = galgasTemplateScanner_1__3C__3C_ ;
-        }else{
-          mTokenCode = galgasTemplateScanner_1__3C_ ;
-        }
       }else if (scanningOk && ([self testForInputChar:35])) {
-        do {
-          if (scanningOk && ([self testForInputFromChar:1 toChar:9] || [self testForInputChar:11] || [self testForInputChar:12] || [self testForInputFromChar:14 toChar:65533])) {
-          }else{
-            mLoop = NO ;
-          }
-        }while (mLoop && scanningOk) ;
-        mLoop = YES ;
-        mTokenCode = galgasTemplateScanner_1_comment ;
+        if (scanningOk && ([self testForInputChar:33])) {
+          do {
+            if (scanningOk && ([self testForInputFromChar:1 toChar:9] || [self testForInputChar:11] || [self testForInputChar:12] || [self testForInputFromChar:14 toChar:65533])) {
+            }else{
+              mLoop = NO ;
+            }
+          }while (mLoop && scanningOk) ;
+          mLoop = YES ;
+          mTokenCode = galgasTemplateScanner_1_commentMark ;
+        }else{
+          do {
+            if (scanningOk && ([self testForInputFromChar:1 toChar:9] || [self testForInputChar:11] || [self testForInputChar:12] || [self testForInputFromChar:14 toChar:1114111])) {
+            }else{
+              mLoop = NO ;
+            }
+          }while (mLoop && scanningOk) ;
+          mLoop = YES ;
+          mTokenCode = galgasTemplateScanner_1_comment ;
+        }
       }else if (scanningOk && ([self testForInputFromChar:1 toChar:32])) {
       }else if ([self testForInputChar:'\0']) { // End of source text ? 
         mTokenCode = galgasTemplateScanner_1_ ; // Empty string code
@@ -968,7 +1137,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 //----------------------------------------------------------------------------------------------------------------------
 
 - (NSUInteger) terminalVocabularyCount {
-  return 142 ;
+  return 156 ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -978,7 +1147,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 //----------------------------------------------------------------------------------------------------------------------
 
 - (NSUInteger) styleCount {
-  return 12 ;
+  return 14 ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -998,40 +1167,43 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 //----------------------------------------------------------------------------------------------------------------------
 
 - (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal {
-  static const NSUInteger kTerminalSymbolStyles [143] = {0,
+  static const NSUInteger kTerminalSymbolStyles [157] = {0,
     0 /* galgasTemplateScanner_1_identifier */,
-    10 /* galgasTemplateScanner_1__40_type */,
-    7 /* galgasTemplateScanner_1_double_2E_xxx */,
-    5 /* galgasTemplateScanner_1_uint_33__32_ */,
-    5 /* galgasTemplateScanner_1_sint_33__32__5F_S */,
-    5 /* galgasTemplateScanner_1_uint_36__34__5F_L */,
-    5 /* galgasTemplateScanner_1_sint_36__34__5F_LS */,
-    6 /* galgasTemplateScanner_1_bigint_5F_G */,
+    8 /* galgasTemplateScanner_1_double_2E_xxx */,
+    6 /* galgasTemplateScanner_1_uint_33__32_ */,
+    6 /* galgasTemplateScanner_1_sint_33__32__5F_S */,
+    6 /* galgasTemplateScanner_1_uint_36__34__5F_L */,
+    6 /* galgasTemplateScanner_1_sint_36__34__5F_LS */,
+    7 /* galgasTemplateScanner_1_bigint_5F_G */,
     2 /* galgasTemplateScanner_1__2E_ */,
-    2 /* galgasTemplateScanner_1__2E__3D_ */,
     2 /* galgasTemplateScanner_1__2E__2E__2E_ */,
     2 /* galgasTemplateScanner_1__2E__2E__3C_ */,
+    11 /* galgasTemplateScanner_1__40_type */,
+    12 /* galgasTemplateScanner_1__25_attribute */,
     9 /* galgasTemplateScanner_1__27_char_27_ */,
-    8 /* galgasTemplateScanner_1__22_string_22_ */,
-    2 /* galgasTemplateScanner_1__3F_ */,
-    2 /* galgasTemplateScanner_1__3F__21_ */,
-    2 /* galgasTemplateScanner_1__21_ */,
-    2 /* galgasTemplateScanner_1__21__3F_ */,
+    4 /* galgasTemplateScanner_1__24_terminal_24_ */,
+    3 /* galgasTemplateScanner_1__3F_ */,
+    3 /* galgasTemplateScanner_1__3F__21_ */,
+    3 /* galgasTemplateScanner_1__21_ */,
+    3 /* galgasTemplateScanner_1__21__3F_ */,
     2 /* galgasTemplateScanner_1__3C_ */,
     2 /* galgasTemplateScanner_1__3C__3D_ */,
     2 /* galgasTemplateScanner_1__3C__3C_ */,
-    11 /* galgasTemplateScanner_1_comment */,
+    5 /* galgasTemplateScanner_1__3C_non_5F_terminal_3E_ */,
+    10 /* galgasTemplateScanner_1__22_string_22_ */,
+    13 /* galgasTemplateScanner_1_comment */,
+    13 /* galgasTemplateScanner_1_commentMark */,
     1 /* galgasTemplateScanner_1_abstract */,
     1 /* galgasTemplateScanner_1_after */,
     1 /* galgasTemplateScanner_1_array */,
+    1 /* galgasTemplateScanner_1_as */,
     1 /* galgasTemplateScanner_1_before */,
     1 /* galgasTemplateScanner_1_between */,
     1 /* galgasTemplateScanner_1_block */,
     1 /* galgasTemplateScanner_1_boolset */,
-    1 /* galgasTemplateScanner_1_case */,
     1 /* galgasTemplateScanner_1_cast */,
+    1 /* galgasTemplateScanner_1_case */,
     1 /* galgasTemplateScanner_1_class */,
-    1 /* galgasTemplateScanner_1_const */,
     1 /* galgasTemplateScanner_1_constructor */,
     1 /* galgasTemplateScanner_1_default */,
     1 /* galgasTemplateScanner_1_dict */,
@@ -1046,17 +1218,15 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
     1 /* galgasTemplateScanner_1_extern */,
     1 /* galgasTemplateScanner_1_false */,
     1 /* galgasTemplateScanner_1_filewrapper */,
-    1 /* galgasTemplateScanner_1_fixit */,
     1 /* galgasTemplateScanner_1_for */,
+    1 /* galgasTemplateScanner_1_fixit */,
     1 /* galgasTemplateScanner_1_func */,
     1 /* galgasTemplateScanner_1_getter */,
     1 /* galgasTemplateScanner_1_grammar */,
     1 /* galgasTemplateScanner_1_graph */,
     1 /* galgasTemplateScanner_1_gui */,
-    1 /* galgasTemplateScanner_1_here */,
     1 /* galgasTemplateScanner_1_if */,
     1 /* galgasTemplateScanner_1_in */,
-    1 /* galgasTemplateScanner_1_index */,
     1 /* galgasTemplateScanner_1_indexing */,
     1 /* galgasTemplateScanner_1_insert */,
     1 /* galgasTemplateScanner_1_is */,
@@ -1074,18 +1244,20 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
     1 /* galgasTemplateScanner_1_mutating */,
     1 /* galgasTemplateScanner_1_not */,
     1 /* galgasTemplateScanner_1_on */,
-    1 /* galgasTemplateScanner_1_once */,
     1 /* galgasTemplateScanner_1_operator */,
     1 /* galgasTemplateScanner_1_option */,
     1 /* galgasTemplateScanner_1_or */,
     1 /* galgasTemplateScanner_1_override */,
     1 /* galgasTemplateScanner_1_parse */,
+    1 /* galgasTemplateScanner_1_public */,
     1 /* galgasTemplateScanner_1_private */,
     1 /* galgasTemplateScanner_1_proc */,
     1 /* galgasTemplateScanner_1_project */,
+    1 /* galgasTemplateScanner_1_refclass */,
     1 /* galgasTemplateScanner_1_remove */,
     1 /* galgasTemplateScanner_1_replace */,
     1 /* galgasTemplateScanner_1_repeat */,
+    1 /* galgasTemplateScanner_1_rewind */,
     1 /* galgasTemplateScanner_1_rule */,
     1 /* galgasTemplateScanner_1_search */,
     1 /* galgasTemplateScanner_1_select */,
@@ -1103,44 +1275,55 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
     1 /* galgasTemplateScanner_1_true */,
     1 /* galgasTemplateScanner_1_unused */,
     1 /* galgasTemplateScanner_1_var */,
+    1 /* galgasTemplateScanner_1_valueclass */,
     1 /* galgasTemplateScanner_1_warning */,
-    1 /* galgasTemplateScanner_1_when */,
     1 /* galgasTemplateScanner_1_while */,
     1 /* galgasTemplateScanner_1_with */,
     2 /* galgasTemplateScanner_1__2A_ */,
-    2 /* galgasTemplateScanner_1__7C_ */,
     2 /* galgasTemplateScanner_1__2C_ */,
     2 /* galgasTemplateScanner_1__2B_ */,
-    2 /* galgasTemplateScanner_1__2D__2D_ */,
-    2 /* galgasTemplateScanner_1__3A__3E_ */,
+    2 /* galgasTemplateScanner_1__26__2B_ */,
+    2 /* galgasTemplateScanner_1__26__2D_ */,
+    2 /* galgasTemplateScanner_1__26__2A_ */,
+    2 /* galgasTemplateScanner_1__26__2F_ */,
     2 /* galgasTemplateScanner_1__3E_ */,
     2 /* galgasTemplateScanner_1__3B_ */,
     2 /* galgasTemplateScanner_1__3A_ */,
-    2 /* galgasTemplateScanner_1__3F__5E_ */,
+    2 /* galgasTemplateScanner_1__3A__3E_ */,
     2 /* galgasTemplateScanner_1__2D_ */,
     2 /* galgasTemplateScanner_1__28_ */,
     2 /* galgasTemplateScanner_1__29_ */,
     2 /* galgasTemplateScanner_1__2D__3E_ */,
     2 /* galgasTemplateScanner_1__3D__3D_ */,
-    2 /* galgasTemplateScanner_1__3A__3D_ */,
-    2 /* galgasTemplateScanner_1__2B__2B_ */,
+    2 /* galgasTemplateScanner_1__3D_ */,
+    2 /* galgasTemplateScanner_1__26__26_ */,
     2 /* galgasTemplateScanner_1__5B_ */,
     2 /* galgasTemplateScanner_1__5D_ */,
     2 /* galgasTemplateScanner_1__2B__3D_ */,
-    2 /* galgasTemplateScanner_1__26__2B_ */,
+    2 /* galgasTemplateScanner_1__2D__3D_ */,
+    2 /* galgasTemplateScanner_1__2A__3D_ */,
+    2 /* galgasTemplateScanner_1__2F__3D_ */,
     2 /* galgasTemplateScanner_1__2F_ */,
     2 /* galgasTemplateScanner_1__21__3D_ */,
     2 /* galgasTemplateScanner_1__3E__3D_ */,
     2 /* galgasTemplateScanner_1__26_ */,
-    2 /* galgasTemplateScanner_1__21__5E_ */,
     2 /* galgasTemplateScanner_1__7B_ */,
     2 /* galgasTemplateScanner_1__7D_ */,
+    2 /* galgasTemplateScanner_1__60_ */,
+    2 /* galgasTemplateScanner_1__7C__7C_ */,
+    2 /* galgasTemplateScanner_1__7C_ */,
     2 /* galgasTemplateScanner_1__5E_ */,
     2 /* galgasTemplateScanner_1__3E__3E_ */,
     2 /* galgasTemplateScanner_1__7E_ */,
-    2 /* galgasTemplateScanner_1__26__2B__2B_ */,
+    2 /* galgasTemplateScanner_1__2D__2D_ */,
+    2 /* galgasTemplateScanner_1__2B__2B_ */,
     2 /* galgasTemplateScanner_1__26__2D__2D_ */,
-    2 /* galgasTemplateScanner_1__26__2F_ */
+    2 /* galgasTemplateScanner_1__26__2B__2B_ */,
+    2 /* galgasTemplateScanner_1__B0_ */,
+    2 /* galgasTemplateScanner_1__3D__3D__3D_ */,
+    2 /* galgasTemplateScanner_1__21__3D__3D_ */,
+    2 /* galgasTemplateScanner_1__3F__5E_ */,
+    2 /* galgasTemplateScanner_1__21__5E_ */
   } ;
   return kTerminalSymbolStyles [inTerminal] ;
 }
@@ -1152,9 +1335,8 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 //----------------------------------------------------------------------------------------------------------------------
 
 - (BOOL) atomicSelectionForToken: (NSUInteger) inTokenIndex {
-  static const BOOL kTerminalAtomicSelection [143] = {NO,
+  static const BOOL kTerminalAtomicSelection [157] = {NO,
     YES /* galgasTemplateScanner_1_identifier */,
-    YES /* galgasTemplateScanner_1__40_type */,
     YES /* galgasTemplateScanner_1_double_2E_xxx */,
     YES /* galgasTemplateScanner_1_uint_33__32_ */,
     YES /* galgasTemplateScanner_1_sint_33__32__5F_S */,
@@ -1162,11 +1344,12 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
     YES /* galgasTemplateScanner_1_sint_36__34__5F_LS */,
     YES /* galgasTemplateScanner_1_bigint_5F_G */,
     YES /* galgasTemplateScanner_1__2E_ */,
-    YES /* galgasTemplateScanner_1__2E__3D_ */,
     YES /* galgasTemplateScanner_1__2E__2E__2E_ */,
     YES /* galgasTemplateScanner_1__2E__2E__3C_ */,
+    YES /* galgasTemplateScanner_1__40_type */,
+    YES /* galgasTemplateScanner_1__25_attribute */,
     YES /* galgasTemplateScanner_1__27_char_27_ */,
-    NO /* galgasTemplateScanner_1__22_string_22_ */,
+    YES /* galgasTemplateScanner_1__24_terminal_24_ */,
     YES /* galgasTemplateScanner_1__3F_ */,
     YES /* galgasTemplateScanner_1__3F__21_ */,
     YES /* galgasTemplateScanner_1__21_ */,
@@ -1174,18 +1357,21 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
     YES /* galgasTemplateScanner_1__3C_ */,
     YES /* galgasTemplateScanner_1__3C__3D_ */,
     YES /* galgasTemplateScanner_1__3C__3C_ */,
+    YES /* galgasTemplateScanner_1__3C_non_5F_terminal_3E_ */,
+    NO /* galgasTemplateScanner_1__22_string_22_ */,
     NO /* galgasTemplateScanner_1_comment */,
+    NO /* galgasTemplateScanner_1_commentMark */,
     YES /* galgasTemplateScanner_1_abstract */,
     YES /* galgasTemplateScanner_1_after */,
     YES /* galgasTemplateScanner_1_array */,
+    YES /* galgasTemplateScanner_1_as */,
     YES /* galgasTemplateScanner_1_before */,
     YES /* galgasTemplateScanner_1_between */,
     YES /* galgasTemplateScanner_1_block */,
     YES /* galgasTemplateScanner_1_boolset */,
-    YES /* galgasTemplateScanner_1_case */,
     YES /* galgasTemplateScanner_1_cast */,
+    YES /* galgasTemplateScanner_1_case */,
     YES /* galgasTemplateScanner_1_class */,
-    YES /* galgasTemplateScanner_1_const */,
     YES /* galgasTemplateScanner_1_constructor */,
     YES /* galgasTemplateScanner_1_default */,
     YES /* galgasTemplateScanner_1_dict */,
@@ -1200,17 +1386,15 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
     YES /* galgasTemplateScanner_1_extern */,
     YES /* galgasTemplateScanner_1_false */,
     YES /* galgasTemplateScanner_1_filewrapper */,
-    YES /* galgasTemplateScanner_1_fixit */,
     YES /* galgasTemplateScanner_1_for */,
+    YES /* galgasTemplateScanner_1_fixit */,
     YES /* galgasTemplateScanner_1_func */,
     YES /* galgasTemplateScanner_1_getter */,
     YES /* galgasTemplateScanner_1_grammar */,
     YES /* galgasTemplateScanner_1_graph */,
     YES /* galgasTemplateScanner_1_gui */,
-    YES /* galgasTemplateScanner_1_here */,
     YES /* galgasTemplateScanner_1_if */,
     YES /* galgasTemplateScanner_1_in */,
-    YES /* galgasTemplateScanner_1_index */,
     YES /* galgasTemplateScanner_1_indexing */,
     YES /* galgasTemplateScanner_1_insert */,
     YES /* galgasTemplateScanner_1_is */,
@@ -1228,18 +1412,20 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
     YES /* galgasTemplateScanner_1_mutating */,
     YES /* galgasTemplateScanner_1_not */,
     YES /* galgasTemplateScanner_1_on */,
-    YES /* galgasTemplateScanner_1_once */,
     YES /* galgasTemplateScanner_1_operator */,
     YES /* galgasTemplateScanner_1_option */,
     YES /* galgasTemplateScanner_1_or */,
     YES /* galgasTemplateScanner_1_override */,
     YES /* galgasTemplateScanner_1_parse */,
+    YES /* galgasTemplateScanner_1_public */,
     YES /* galgasTemplateScanner_1_private */,
     YES /* galgasTemplateScanner_1_proc */,
     YES /* galgasTemplateScanner_1_project */,
+    YES /* galgasTemplateScanner_1_refclass */,
     YES /* galgasTemplateScanner_1_remove */,
     YES /* galgasTemplateScanner_1_replace */,
     YES /* galgasTemplateScanner_1_repeat */,
+    YES /* galgasTemplateScanner_1_rewind */,
     YES /* galgasTemplateScanner_1_rule */,
     YES /* galgasTemplateScanner_1_search */,
     YES /* galgasTemplateScanner_1_select */,
@@ -1257,44 +1443,55 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
     YES /* galgasTemplateScanner_1_true */,
     YES /* galgasTemplateScanner_1_unused */,
     YES /* galgasTemplateScanner_1_var */,
+    YES /* galgasTemplateScanner_1_valueclass */,
     YES /* galgasTemplateScanner_1_warning */,
-    YES /* galgasTemplateScanner_1_when */,
     YES /* galgasTemplateScanner_1_while */,
     YES /* galgasTemplateScanner_1_with */,
     YES /* galgasTemplateScanner_1__2A_ */,
-    YES /* galgasTemplateScanner_1__7C_ */,
     YES /* galgasTemplateScanner_1__2C_ */,
     YES /* galgasTemplateScanner_1__2B_ */,
-    YES /* galgasTemplateScanner_1__2D__2D_ */,
-    YES /* galgasTemplateScanner_1__3A__3E_ */,
+    YES /* galgasTemplateScanner_1__26__2B_ */,
+    YES /* galgasTemplateScanner_1__26__2D_ */,
+    YES /* galgasTemplateScanner_1__26__2A_ */,
+    YES /* galgasTemplateScanner_1__26__2F_ */,
     YES /* galgasTemplateScanner_1__3E_ */,
     YES /* galgasTemplateScanner_1__3B_ */,
     YES /* galgasTemplateScanner_1__3A_ */,
-    YES /* galgasTemplateScanner_1__3F__5E_ */,
+    YES /* galgasTemplateScanner_1__3A__3E_ */,
     YES /* galgasTemplateScanner_1__2D_ */,
     YES /* galgasTemplateScanner_1__28_ */,
     YES /* galgasTemplateScanner_1__29_ */,
     YES /* galgasTemplateScanner_1__2D__3E_ */,
     YES /* galgasTemplateScanner_1__3D__3D_ */,
-    YES /* galgasTemplateScanner_1__3A__3D_ */,
-    YES /* galgasTemplateScanner_1__2B__2B_ */,
+    YES /* galgasTemplateScanner_1__3D_ */,
+    YES /* galgasTemplateScanner_1__26__26_ */,
     YES /* galgasTemplateScanner_1__5B_ */,
     YES /* galgasTemplateScanner_1__5D_ */,
     YES /* galgasTemplateScanner_1__2B__3D_ */,
-    YES /* galgasTemplateScanner_1__26__2B_ */,
+    YES /* galgasTemplateScanner_1__2D__3D_ */,
+    YES /* galgasTemplateScanner_1__2A__3D_ */,
+    YES /* galgasTemplateScanner_1__2F__3D_ */,
     YES /* galgasTemplateScanner_1__2F_ */,
     YES /* galgasTemplateScanner_1__21__3D_ */,
     YES /* galgasTemplateScanner_1__3E__3D_ */,
     YES /* galgasTemplateScanner_1__26_ */,
-    YES /* galgasTemplateScanner_1__21__5E_ */,
     YES /* galgasTemplateScanner_1__7B_ */,
     YES /* galgasTemplateScanner_1__7D_ */,
+    YES /* galgasTemplateScanner_1__60_ */,
+    YES /* galgasTemplateScanner_1__7C__7C_ */,
+    YES /* galgasTemplateScanner_1__7C_ */,
     YES /* galgasTemplateScanner_1__5E_ */,
     YES /* galgasTemplateScanner_1__3E__3E_ */,
     YES /* galgasTemplateScanner_1__7E_ */,
-    YES /* galgasTemplateScanner_1__26__2B__2B_ */,
+    YES /* galgasTemplateScanner_1__2D__2D_ */,
+    YES /* galgasTemplateScanner_1__2B__2B_ */,
     YES /* galgasTemplateScanner_1__26__2D__2D_ */,
-    YES /* galgasTemplateScanner_1__26__2F_ */
+    YES /* galgasTemplateScanner_1__26__2B__2B_ */,
+    YES /* galgasTemplateScanner_1__B0_ */,
+    YES /* galgasTemplateScanner_1__3D__3D__3D_ */,
+    YES /* galgasTemplateScanner_1__21__3D__3D_ */,
+    YES /* galgasTemplateScanner_1__3F__5E_ */,
+    YES /* galgasTemplateScanner_1__21__5E_ */
   } ;
   return kTerminalAtomicSelection [inTokenIndex] ;
 }
@@ -1307,19 +1504,21 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 
 - (NSString *) styleNameForStyleIndex: (NSInteger) inIndex {
   NSString * result = nil ;
-  if ((inIndex >= 0) && (inIndex < 12)) {
-    NSString * kStyleArray [12] = {
+  if ((inIndex >= 0) && (inIndex < 14)) {
+    NSString * kStyleArray [14] = {
       @"Default Style",
       @"Keywords",
       @"Delimiters",
+      @"Selectors",
+      @"Terminal Symbols",
       @"Non Terminal Symbols",
-      @"Variant Symbols",
       @"Integer Constants",
       @"Big Integer Constants",
       @"Floating Point Constants",
-      @"String Constants",
       @"Character Constants",
+      @"String Constants",
       @"Type Names (@...)",
+      @"Attributes (%...)",
       @"Comments"
     } ;
     result = kStyleArray [inIndex] ;
@@ -1335,19 +1534,21 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 
 - (NSString *) styleIdentifierForStyleIndex: (NSInteger) inIndex {
   NSString * result = nil ;
-  if ((inIndex >= 0) && (inIndex < 12)) {
-    NSString * kStyleArray [12] = {
+  if ((inIndex >= 0) && (inIndex < 14)) {
+    NSString * kStyleArray [14] = {
       @"galgasTemplateScanner",
       @"galgasTemplateScanner-keywordsStyle",
       @"galgasTemplateScanner-delimitersStyle",
+      @"galgasTemplateScanner-selectorStyle",
+      @"galgasTemplateScanner-terminalStyle",
       @"galgasTemplateScanner-nonTerminalStyle",
-      @"galgasTemplateScanner-variantStyle",
       @"galgasTemplateScanner-integerStyle",
       @"galgasTemplateScanner-bigintStyle",
       @"galgasTemplateScanner-floatStyle",
-      @"galgasTemplateScanner-stringStyle",
       @"galgasTemplateScanner-characterStyle",
+      @"galgasTemplateScanner-stringStyle",
       @"galgasTemplateScanner-typeNameStyle",
+      @"galgasTemplateScanner-attributeStyle",
       @"galgasTemplateScanner-commentStyle"
     } ;
     result = kStyleArray [inIndex] ;

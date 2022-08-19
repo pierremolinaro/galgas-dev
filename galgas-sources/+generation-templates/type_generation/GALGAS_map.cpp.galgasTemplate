@@ -112,14 +112,14 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_overriddenMap (%?^%C
 
 void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^%const GALGAS_lstring & inKey%
 for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
-  do index IDX %,\n%!^%const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inArgument%![IDX string]
+  do (IDX) %,\n%!^%const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inArgument%![IDX string]
 end
 %,\n %!^%C_Compiler * inCompiler%
 %\n %!^%COMMA_LOCATION_ARGS) {\n%
 %  cMapElement_%!TYPE_IDENTIFIER% * p = NULL ;\n%
 %  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inKey%
 for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
-  do index IDX %, inArgument%![IDX string]
+  do (IDX) %, inArgument%![IDX string]
 end
 % COMMA_HERE)) ;\n%
 %  capCollectionElement attributes ;\n%
@@ -136,14 +136,14 @@ end
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::setter_%![mInsertMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
     for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
-      do index IDX %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inArgument%![IDX string]
+      do (IDX) %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inArgument%![IDX string]
     end
     %,\n %!^%C_Compiler * inCompiler%
     %\n %!^%COMMA_LOCATION_ARGS) {\n%
     %  cMapElement_%!TYPE_IDENTIFIER% * p = NULL ;\n%
     %  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inKey%
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
-    do index IDX %, inArgument%![IDX string]
+    do (IDX) %, inArgument%![IDX string]
   end
   % COMMA_HERE)) ;\n%
   %  capCollectionElement attributes ;\n%
@@ -163,7 +163,7 @@ for (mSearchMethodName mErrorMessage mLocationAttribute) in SEARCH_METHOD_LIST d
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::method_%![mSearchMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
-    do index IDX %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
+    do (IDX) %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
   end
   if mLocationAttribute then
     %,\n%!^%GALGAS_location & outKeyLocation%
@@ -175,7 +175,7 @@ for (mSearchMethodName mErrorMessage mLocationAttribute) in SEARCH_METHOD_LIST d
                !^%kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]%\n%
                !^%COMMA_THERE) ;\n%
   %  if (NULL == p) {\n%
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do index IDX
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
     %    outArgument%![IDX string]%.drop () ;\n%
   end
   if mLocationAttribute then
@@ -183,7 +183,7 @@ for (mSearchMethodName mErrorMessage mLocationAttribute) in SEARCH_METHOD_LIST d
   end
   %  }else{\n%
   %    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do index IDX
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
     %    outArgument%![IDX string]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   end
   if mLocationAttribute then
@@ -198,7 +198,7 @@ for (mMethodName mErrorMessage) in REMOVE_METHOD_LIST do
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::setter_%![mMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
-    do index IDX %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
+    do (IDX) %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
   end
   %,\n %!^%C_Compiler * inCompiler%
   %\n %!^%COMMA_LOCATION_ARGS) {\n%
@@ -207,12 +207,12 @@ for (mMethodName mErrorMessage) in REMOVE_METHOD_LIST do
   %  performRemove (inKey, attributes, inCompiler, kRemoveErrorMessage COMMA_THERE) ;\n%
   %  cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;\n%
   %  if (NULL == p) {\n%
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do index IDX
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
     %    outArgument%![IDX string]%.drop () ;\n%
   end
   %  }else{\n%
   %    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do index IDX
+    for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
     %    outArgument%![IDX string]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   end
   %  }\n%
@@ -224,13 +224,13 @@ if HAS_INSERT_OR_REPLACE then
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::setter_insertOrReplace (%?^%GALGAS_lstring inKey%
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
-    do index IDX %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inArgument%![IDX string]
+    do (IDX) %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inArgument%![IDX string]
   end
   %\n %!^%COMMA_UNUSED_LOCATION_ARGS) {\n%
   %  cMapElement_%!TYPE_IDENTIFIER% * p = NULL ;\n%
   %  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inKey%
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
-    do index IDX %, inArgument%![IDX string]
+    do (IDX) %, inArgument%![IDX string]
   end
   % COMMA_HERE)) ;\n%
   %  capCollectionElement attributes ;\n%
@@ -240,7 +240,7 @@ if HAS_INSERT_OR_REPLACE then
   %}\n\n%
 end
 
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do index IDX
+for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]%ForKey (%?^%const GALGAS_string & inKey,\n%
   %                                               %!^%C_Compiler * inCompiler\n%
@@ -256,7 +256,7 @@ for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
   %}\n\n%
 end 
 
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do index IDX
+for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inAttributeValue,\n%
   %                           %!^%GALGAS_string inKey,\n%
@@ -311,7 +311,7 @@ GALGAS_lstring cEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) cons
   return p->mProperty_lkey ;
 }
 
-%for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do index IDX
+%for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
@@ -323,18 +323,18 @@ end
 %//----------------------------------------------------------------------------------------------------------------------\n\n%
 %bool GALGAS_%!TYPE_IDENTIFIER%::optional_searchKey (%?^%const GALGAS_string & inKey%
 for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
-  do index IDX %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
+  do (IDX) %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
 end
 %) const {\n%
 %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) searchForKey (%?^%inKey) ;\n%
 %  const bool result = NULL != p ;\n%
 %  if (result) {\n%
 %    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do index IDX
+for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
   %    outArgument%![IDX string]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
 end
 %  }else{\n%
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do index IDX
+for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
   %    outArgument%![IDX string]%.drop () ;\n%
 end
 %  }\n%

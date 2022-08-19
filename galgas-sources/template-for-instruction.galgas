@@ -133,8 +133,9 @@ syntax extension templateSyntax {
     select
       indexIdentifier = @lstring.new {!"" !@location.here}
     or
-      $index$
+      $($
       $identifier$ ? indexIdentifier
+      $)$
     end
     var @templateInstructionListAST doInstructionList = {}
     repeat

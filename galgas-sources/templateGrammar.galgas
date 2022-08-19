@@ -15,7 +15,7 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-grammar templateGrammar "SLR" {
+indexing grammar templateGrammar "SLR" {
   syntax templateSyntax
 
    <template_parser_start_symbol>
