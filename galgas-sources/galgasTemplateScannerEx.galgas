@@ -15,7 +15,7 @@
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-template lexique galgasTemplateScanner indexing in "../build/indexes" {
+template lexique galgasTemplateScannerEx indexing in "../build/indexes" {
 
 template "%" ... "%"
 

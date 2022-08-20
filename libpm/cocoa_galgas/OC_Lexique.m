@@ -235,9 +235,9 @@
       testForInputString:td.startString
       advance:td.discardStartString
     ] ;
-    templateIndex ++ ;
+    templateIndex += 1 ;
   }
-  templateIndex -- ;
+  templateIndex -= 1 ;
   if (! found) {
     templateIndex = -1 ;
   }

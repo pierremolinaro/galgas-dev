@@ -15,7 +15,7 @@
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-template lexique galgasTemplateScannerNew indexing in "../build/indexes" {
+template lexique galgasTemplateScanner : galgasScanner {
 
 template "%" ... "%"
 
@@ -24,68 +24,6 @@ replace "\\%" -> "%"
 replace "\\n" -> "\n"
 
 replace "\\\\" -> "\\"
-
-#--- Indexing keys
-indexing classDefinition : "Class Definition"
-indexing enumDefinition : "Enum Definition"
-indexing structDefinition : "Struct Definition"
-indexing listDefinition : "List Definition"
-indexing sortedListDefinition : "Sorted List Definition"
-indexing listmapDefinition : "Listmap Definition"
-indexing mapDefinition : "Map Definition"
-indexing externTypeDefinition : "Extern Type Definition"
-indexing mapEntryDefinition : "Shared Map Entry Definition"
-indexing arrayTypeDefinition : "Array Definition"
-indexing arrayElementTypeReference : "Reference as array element"
-indexing filewrapperDefinition : "Filewrapper Definition"
-indexing filewrapperReference : "Filewrapper Reference"
-indexing graphDefinition : "Graph Definition"
-indexing classReferencedAsSuperClass : "Class Reference as Superclass"
-indexing typeReferenceInConstructor : "Type reference in Constructor"
-indexing typeReferenceInTypeMethod : "Type reference in Type Method"
-indexing routineDefinition : "Routine Definition"
-indexing routineCall : "Routine Call"
-indexing functionDefinition : "Function Definition"
-indexing functionCall : "Function Call"
-indexing terminalDeclaration : "Terminal Declaration"
-indexing terminalReference : "Terminal Reference"
-indexing ruleDefinition : "Rule Definition"
-indexing ruleReference : "Rule Reference"
-
-indexing abstractExtensionSetterDefinition : "Abstract Extension Setter Definition"
-indexing typeReferenceAbstractExtensionSetter : "Abstract Extension Setter Definition"
-indexing overrideabstractExtensionSetterDefinition : "Override Abstract Extension Setter Definition"
-indexing extensionSetterDefinition : "Extension Setter Definition"
-indexing typeReferenceExtensionSetter : "Extension Setter Definition"
-indexing overrideExtensionSetterDefinition : "Override Extension Setter Definition"
-indexing typeReferenceOverrideExtensionSetterDefinition : "Override Extension Setter Definition"
-indexing typeReferenceOverrideAbstractExtensionSetter : "Override Abstract Extension Setter Definition"
-
-indexing abstractExtensionMethodDefinition : "Abstract Extension Method Definition"
-indexing typeReferenceAbstractExtensionMethod : "Abstract Extension Method Definition"
-indexing overrideAbstractExtensionMethodDefinition : "Override Abstract Extension Method Definition"
-indexing extensionMethodDefinition : "Extension Method Definition"
-indexing typeReferenceExtensionMethod : "Extension Method Definition"
-indexing overrideExtensionMethodDefinition : "Override Extension Method Definition"
-indexing typeReferenceOverrideExtensionMethodDefinition : "Override Extension Method Definition"
-indexing typeReferenceOverrideAbstractExtensionMethod : "Override Abstract Extension Method Definition"
-
-indexing abstractExtensionGetterDefinition : "Abstract Extension Getter Definition"
-indexing typeReferenceAbstractExtensionGetter : "Abstract Extension Getter Definition"
-indexing overrideAbstractExtensionGetterDefinition : "Override Abstract Extension Getter Definition"
-indexing typeReferenceOverrideAbstractExtensionGetter : "Override Abstract Extension Getter Definition"
-indexing extensionGetterDefinition : "Extension Getter Definition"
-indexing typeReferenceExtensionGetter : "Extension Getter Definition"
-indexing overrideExtensionGetterDefinition : "Override Extension Getter Definition"
-indexing typeReferenceOverrideExtensionGetter : "Override Extension Getter Definition"
-
-indexing optionComponentDefinition : "Option Component Definition"
-indexing optionComponentReference : "Option Component Reference"
-indexing grammarComponentDefinition : "Grammar Component Definition"
-indexing grammarComponentReference : "Grammar Component Reference"
-
-indexing indexingNameDefinition : "Indexing Name Definition"
-indexing indexingNameReference : "Indexing Name Reference"
 
 #--- Scanner attributes
 @string identifierString

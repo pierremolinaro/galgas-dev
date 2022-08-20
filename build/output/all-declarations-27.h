@@ -10,18 +10,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'checkAssignmentTypes'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_checkAssignmentTypes (const class GALGAS_unifiedTypeMapEntry constinArgument0,
-                                   const class GALGAS_unifiedTypeMapEntry constinArgument1,
-                                   const class GALGAS_location constinArgument2,
-                                   class C_Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Routine 'analyzeErrorOrWarningInstruction'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -57,4 +45,52 @@ void routine_analyzeOptionalMethodCall (const class GALGAS_lstring constinArgume
                                         class GALGAS_ifTestListForGeneration & ioArgument7,
                                         class C_Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'transformInstructionList'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_transformInstructionList (const class GALGAS_syntaxInstructionList constinArgument0,
+                                       class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioArgument1,
+                                       const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis constinArgument2,
+                                       class GALGAS_uint & ioArgument3,
+                                       class GALGAS_syntaxInstructionListForGrammarAnalysis & ioArgument4,
+                                       class C_Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'compareSyntaxSignature'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_bool function_compareSyntaxSignature (const class GALGAS_semanticInstructionListForGeneration & constinArgument0,
+                                                   const class GALGAS_semanticInstructionListForGeneration & constinArgument1,
+                                                   const class GALGAS_location & constinArgument2,
+                                                   class C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'groupSyntaxComponentsGalgas3'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_groupSyntaxComponentsGalgas_33_ (const class GALGAS_galgas_33_SyntaxComponentListAST constinArgument0,
+                                              const class GALGAS_syntaxExtensions constinArgument1,
+                                              class GALGAS_semanticDeclarationListAST & ioArgument2,
+                                              class C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'transformLabelMap'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis function_transformLabelMap (const class GALGAS_nonTerminalLabelListAST & constinArgument0,
+                                                                                     class C_Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
 

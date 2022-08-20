@@ -10,36 +10,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'recursivlyEnumerateRegularFile'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_recursivlyEnumerateRegularFile (const class GALGAS_wrapperFileMap constinArgument0,
-                                             const class GALGAS_wrapperDirectoryMap constinArgument1,
-                                             class GALGAS_stringlist & ioArgument2,
-                                             class GALGAS_stringlist & ioArgument3,
-                                             class GALGAS_stringlist & ioArgument4,
-                                             class GALGAS_stringlist & ioArgument5,
-                                             class C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'generateWrapperContents'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateWrapperContents (const class GALGAS_string constinArgument0,
-                                      const class GALGAS_string constinArgument1,
-                                      const class GALGAS_uint constinArgument2,
-                                      const class GALGAS_wrapperFileMap constinArgument3,
-                                      const class GALGAS_wrapperDirectoryMap constinArgument4,
-                                      class GALGAS_string & ioArgument5,
-                                      class C_Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'predefinedTypeGenerationTemplate'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -447,4 +417,16 @@ void routine_analyzeConstructorInvocation (const class GALGAS_lstring constinArg
                                            class GALGAS_bool & outArgument12,
                                            class C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'checkAssignmentTypes'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_checkAssignmentTypes (const class GALGAS_unifiedTypeMapEntry constinArgument0,
+                                   const class GALGAS_unifiedTypeMapEntry constinArgument1,
+                                   const class GALGAS_location constinArgument2,
+                                   class C_Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
 

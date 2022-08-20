@@ -452,6 +452,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
   #--- Header
     var headerContents = [filewrapper templateLexiqueGenerationTemplates.headerZone2
        ![self.mLexiqueComponentName.string identifierRepresentation]
+       ![self.mLexiqueSuperComponentName.string identifierRepresentation]
        !lexiqueAnalysisContext
        !self.mTemplateDelimitorList
     ]
@@ -460,11 +461,11 @@ override method @templateLexiqueComponentAST semanticAnalysis
       !self.mLexicalListDeclarationList
       !lexiqueAnalysisContext
       !{} # self.mIndexingListAST
-#      !self.mLexicalFunctionListAST
     ]
   #--- Cpp
     let cppContents =  [filewrapper templateLexiqueGenerationTemplates.implementationZone2Galgas3
       ![self.mLexiqueComponentName.string identifierRepresentation]
+      ![self.mLexiqueSuperComponentName.string identifierRepresentation]
       !lexiqueAnalysisContext.mLexicalAttributeMap
       !lexiqueAnalysisContext.mLexicalMessageMap
       !lexiqueAnalysisContext.mTerminalList
@@ -527,6 +528,7 @@ private filewrapper templateLexiqueGenerationTemplates in "+generation-templates
 }{
   template headerZone2 "template_lexique_header_template_zone_2.h.galgasTemplate"
     ?@string LEXIQUE_IDENTIFIER
+    ?@string SUPER_LEXIQUE_IDENTIFIER
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
     ?@templateDelimitorListAST TEMPLATE_DELIMITOR_LIST
 
@@ -535,10 +537,10 @@ private filewrapper templateLexiqueGenerationTemplates in "+generation-templates
     ?@lexicalListDeclarationListAST DELIMITOR_LIST_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
     ?@indexingListAST INDEXING_LIST
-#    ?@lexicalFunctionListAST UNICODE_TEST_FUNCTIONS
 
   template implementationZone2Galgas3 "template_lexique_implementation-galgas3.cpp.galgasTemplate"
     ?@string LEXIQUE_IDENTIFIER
+    ?@string SUPER_LEXIQUE_IDENTIFIER
     ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
     ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
     ?@terminalList TERMINAL_LIST
@@ -551,7 +553,6 @@ private filewrapper templateLexiqueGenerationTemplates in "+generation-templates
     ?@string LEXIQUE_COMPONENT_NAME
     ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
     ?@lexicalStyleListAST LEXICAL_STYLE_LIST
-#    ?@lexicalFunctionListAST UNICODE_TEST_FUNCTIONS
 
   template cocoaHeaderZone2 "template_lexique_cocoa_header_template_zone_2.h.galgasTemplate"
     ?@string LEXIQUE_CLASS_NAME
@@ -575,7 +576,6 @@ private filewrapper templateLexiqueGenerationTemplates in "+generation-templates
     ?@indexingListAST INDEXING_LIST
     ?@lexicalStyleListAST LEXICAL_STYLE_LIST
     ?@templateDelimitorListAST TEMPLATE_DELIMITOR_LIST
-#    ?@lexicalFunctionListAST UNICODE_TEST_FUNCTIONS
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
