@@ -15,13 +15,6 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 #include "galgas2/C_Lexique.h"
-//----------------------------------------------------------------------------------------------------------------------
-//                    E X T E R N    R O U T I N E S
-//----------------------------------------------------------------------------------------------------------------------
-
-//----------------------------------------------------------------------------------------------------------------------
-//                    E X T E R N    F U N C T I O N S
-//----------------------------------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------------------------------
 //                       T O K E N    C L A S S
@@ -55,7 +48,6 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique_galgasScanner {
   #endif
 //--- Scanner mode for template scanner
   private: int32_t mMatchedTemplateDelimiterIndex ;
-
 
 //--- Parse lexical token
   protected: virtual bool parseLexicalToken (void) override ;
@@ -1029,4 +1021,98 @@ class GALGAS_semanticTypeForGeneration_2D_weak : public GALGAS_semanticDeclarati
 //----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @boolsetTypeForGeneration reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_boolsetTypeForGeneration : public GALGAS_semanticTypeForGeneration {
+//--------------------------------- Default constructor
+  public: GALGAS_boolsetTypeForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_boolsetTypeForGeneration (const class cPtr_boolsetTypeForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstringlist readProperty_mFlagList (void) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_boolsetTypeForGeneration extractObject (const GALGAS_object & inObject,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_boolsetTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                        const class GALGAS_lstringlist & inOperand1
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_boolsetTypeForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_boolsetTypeForGeneration class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolsetTypeForGeneration ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @boolsetTypeForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
+
+//--- Extension method appendDeclaration1
+  public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outHeader,
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method appendSpecificImplementation
+  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outImplementation,
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GALGAS_lstringlist mProperty_mFlagList ;
+
+//--- Constructor
+  public: cPtr_boolsetTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                         const GALGAS_lstringlist & in_mFlagList
+                                         COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
 

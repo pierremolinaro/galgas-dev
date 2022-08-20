@@ -196,98 +196,57 @@ extern const cDirectoryWrapper gWrapperDirectory_0_templateLexiqueGenerationTemp
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'templateLexiqueGenerationTemplates headerZone2'
+//Filewrapper template 'templateLexiqueGenerationTemplates cppHeader'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_headerZone_32_ (class C_Compiler * inCompiler,
-                                                                                     const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
-                                                                                     const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_IDENTIFIER,
-                                                                                     const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
-                                                                                     const class GALGAS_templateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST
-                                                                                     COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppHeader (class C_Compiler * inCompiler,
+                                                                                const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
+                                                                                const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_IDENTIFIER
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'templateLexiqueGenerationTemplates headerZone3'
+//Filewrapper template 'templateLexiqueGenerationTemplates cppImplementation'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_headerZone_33_ (class C_Compiler * inCompiler,
-                                                                                     const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
-                                                                                     const class GALGAS_lexicalListDeclarationListAST & in_DELIMITOR_5F_LIST_5F_LIST,
-                                                                                     const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
-                                                                                     const class GALGAS_indexingListAST & in_INDEXING_5F_LIST
-                                                                                     COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppImplementation (class C_Compiler * inCompiler,
+                                                                                        const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
+                                                                                        const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_IDENTIFIER,
+                                                                                        const class GALGAS_lexicalExplicitTokenListMapMap & in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP,
+                                                                                        const class GALGAS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
+                                                                                        const class GALGAS_templateDelimitorList & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                        const class GALGAS_terminalList & in_TERMINAL_5F_LIST,
+                                                                                        const class GALGAS_string & in_LEXIQUE_5F_COMPONENT_5F_NAME,
+                                                                                        const class GALGAS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST
+                                                                                        COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'templateLexiqueGenerationTemplates implementationZone2Galgas3'
+//Filewrapper template 'templateLexiqueGenerationTemplates cocoaHeaderZone'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_implementationZone_32_Galgas_33_ (class C_Compiler * inCompiler,
-                                                                                                       const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
-                                                                                                       const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_IDENTIFIER,
-                                                                                                       const class GALGAS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
-                                                                                                       const class GALGAS_lexicalMessageMap & in_LEXICAL_5F_MESSAGE_5F_MAP,
-                                                                                                       const class GALGAS_terminalList & in_TERMINAL_5F_LIST,
-                                                                                                       const class GALGAS_lexicalExplicitTokenListMapMap & in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP,
-                                                                                                       const class GALGAS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
-                                                                                                       const class GALGAS_lexicalRuleListAST & in_LEXICAL_5F_RULE_5F_LIST,
-                                                                                                       const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
-                                                                                                       const class GALGAS_string & in_INDEXING_5F_DIRECTORY,
-                                                                                                       const class GALGAS_templateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
-                                                                                                       const class GALGAS_string & in_LEXIQUE_5F_COMPONENT_5F_NAME,
-                                                                                                       const class GALGAS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
-                                                                                                       const class GALGAS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST
-                                                                                                       COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cocoaHeaderZone (class C_Compiler * inCompiler,
+                                                                                      const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                      const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                      const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME
+                                                                                      COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'templateLexiqueGenerationTemplates cocoaHeaderZone2'
+//Filewrapper template 'templateLexiqueGenerationTemplates cocoaImplementationZone'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cocoaHeaderZone_32_ (class C_Compiler * inCompiler,
-                                                                                          const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
-                                                                                          const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_CLASS_5F_NAME,
-                                                                                          const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
-                                                                                          const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME
-                                                                                          COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'templateLexiqueGenerationTemplates cocoaHeaderZone3'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cocoaHeaderZone_33_ (class C_Compiler * inCompiler,
-                                                                                          const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
-                                                                                          const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT
-                                                                                          COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'templateLexiqueGenerationTemplates cocoaImplementationZone2'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cocoaImplementationZone_32_ (class C_Compiler * inCompiler,
-                                                                                                  const class GALGAS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
-                                                                                                  const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
-                                                                                                  const class GALGAS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
-                                                                                                  const class GALGAS_lexicalMessageMap & in_LEXICAL_5F_MESSAGE_5F_MAP,
-                                                                                                  const class GALGAS_terminalList & in_TERMINAL_5F_LIST,
-                                                                                                  const class GALGAS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
-                                                                                                  const class GALGAS_lexicalRuleListAST & in_LEXICAL_5F_RULE_5F_LIST,
-                                                                                                  const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
-                                                                                                  const class GALGAS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
-                                                                                                  const class GALGAS_string & in_INDEXING_5F_DIRECTORY,
-                                                                                                  const class GALGAS_indexingListAST & in_INDEXING_5F_LIST,
-                                                                                                  const class GALGAS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST,
-                                                                                                  const class GALGAS_templateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST
-                                                                                                  COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cocoaImplementationZone (class C_Compiler * inCompiler,
+                                                                                              const class GALGAS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
+                                                                                              const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                              const class GALGAS_terminalList & in_TERMINAL_5F_LIST,
+                                                                                              const class GALGAS_templateDelimitorList & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                              const class GALGAS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST
+                                                                                              COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -940,4 +899,31 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
                                                                                               const class GALGAS_lstringlist & in_SLOT_5F_LIST,
                                                                                               const class GALGAS_bigint & in_FULL_5F_SET
                                                                                               COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'generateClassGetterDeclaration'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_string function_generateClassGetterDeclaration (const class GALGAS_lstring & constinArgument0,
+                                                             const class GALGAS_functionSignature & constinArgument1,
+                                                             const class GALGAS_bool & constinArgument2,
+                                                             const class GALGAS_unifiedTypeMapEntry & constinArgument3,
+                                                             const class GALGAS_methodQualifier & constinArgument4,
+                                                             class C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'generateClassInstanceMethodDeclaration'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_string function_generateClassInstanceMethodDeclaration (const class GALGAS_lstring & constinArgument0,
+                                                                     const class GALGAS_formalParameterSignature & constinArgument1,
+                                                                     const class GALGAS_bool & constinArgument2,
+                                                                     const class GALGAS_methodQualifier & constinArgument3,
+                                                                     class C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 

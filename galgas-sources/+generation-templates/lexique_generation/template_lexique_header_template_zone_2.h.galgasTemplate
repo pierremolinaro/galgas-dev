@@ -5,40 +5,7 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 #include "galgas2/C_Lexique.h"
-//----------------------------------------------------------------------------------------------------------------------
-//                    E X T E R N    R O U T I N E S
-//----------------------------------------------------------------------------------------------------------------------
-%
-  for (lkey mLexicalRoutineFormalArgumentList mErrorMessageList mIsExtern) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalRoutineMessageMap do
-    if mIsExtern then
-      %\nvoid scanner_routine_%!lkey.string% (C_Lexique & inLexique%
-      for (mLexicalFormalArgumentMode mLexicalFormalArgumentType mArgumentNameForComment) in mLexicalRoutineFormalArgumentList do
-        %,\n                %![mLexicalFormalArgumentMode cppConstInFormalArgument]
-                             ![mLexicalFormalArgumentType cppTypeName]
-                             ![mLexicalFormalArgumentMode cppReferenceInFormalArgument]
-                             % %!mArgumentNameForComment
-      end
-      for (mValue) in mErrorMessageList do
-        %,\n                const char * %!mValue
-      end
-      %) ;\n%
-    end
-  end
-%
-//----------------------------------------------------------------------------------------------------------------------
-//                    E X T E R N    F U N C T I O N S
-//----------------------------------------------------------------------------------------------------------------------
-%
-  for (lkey mLexicalTypeList mReturnedLexicalType mReplacementFunctionName mIsExtern) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalFunctionMap do
-    if mIsExtern then
-      %\n%![mReturnedLexicalType cppTypeName]% scanner_function_%!lkey.string% (C_Lexique & inLexique%
-      for (mLexicalType mArgumentNameForComment) in mLexicalTypeList do
-        %,\n                const %![mLexicalType cppTypeName]% %!mArgumentNameForComment
-      end
-      %) ;\n%
-    end
-  end
-%
+
 //----------------------------------------------------------------------------------------------------------------------
 //                       T O K E N    C L A S S
 //----------------------------------------------------------------------------------------------------------------------
@@ -71,4 +38,8 @@ class C_Lexique_%!LEXIQUE_IDENTIFIER% : public C_Lexique_%!SUPER_LEXIQUE_IDENTIF
   #endif
 //--- Scanner mode for template scanner
   private: int32_t mMatchedTemplateDelimiterIndex ;
+
+//--- Parse lexical token
+  protected: virtual bool parseLexicalToken (void) override ;
+} ;
 

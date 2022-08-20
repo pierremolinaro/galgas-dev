@@ -1,54 +1,5 @@
 
-#import "OC_Lexique.h"
 #import "%!SUPER_LEXIQUE_HEADER_FILE_NAME%.h"
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//                    E X T E R N    R O U T I N E S
-//
-//----------------------------------------------------------------------------------------------------------------------
-%
-  for (lkey mLexicalRoutineFormalArgumentList mErrorMessageList mIsExtern) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalRoutineMessageMap do
-    if mIsExtern then
-      %\nvoid scanner_cocoa_routine_%!lkey.string% (%?^%BOOL * ioScanningOk%
-      for (mLexicalFormalArgumentMode mLexicalFormalArgumentType mArgumentNameForComment) in mLexicalRoutineFormalArgumentList do
-        %,\n                %!^![mLexicalFormalArgumentMode cppConstInFormalArgument]
-                             ![mLexicalFormalArgumentType cocoaTypeName]
-                             ![mLexicalFormalArgumentMode cocoaPointerInFormalArgument]
-                             % %!mArgumentNameForComment
-      end
-      %) ;\n%
-    end
-  end
-%
-//----------------------------------------------------------------------------------------------------------------------
-//
-//                    E X T E R N    F U N C T I O N S
-//
-//----------------------------------------------------------------------------------------------------------------------
-%
-  for (lkey mLexicalTypeList mReturnedLexicalType mReplacementFunctionName mIsExtern) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalFunctionMap do
-    if mIsExtern then
-      %\n%![mReturnedLexicalType cppTypeName]% scanner_cocoa_function_%!lkey.string% (%?^%BOOL * ioScanningOk%
-      for (mLexicalType mArgumentNameForComment) in mLexicalTypeList do
-        %,\n                %!^%const %![mLexicalType cppTypeName]% %!mArgumentNameForComment
-      end
-      %) ;\n%
-    end
-  end
-%
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//         T E R M I N A L    S Y M B O L    E N U M E R A T I O N
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-enum {%!LEXIQUE_CLASS_NAME%_1_%
-    for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do
-      %,\n  %!LEXIQUE_CLASS_NAME %_1_% ![mTerminalName.string identifierRepresentation]
-    end
-  %\n} ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -58,3 +9,10 @@ enum {%!LEXIQUE_CLASS_NAME%_1_%
 
 @interface OC_Lexique_%!LEXIQUE_CLASS_NAME% : OC_Lexique_%!SUPER_LEXIQUE_CLASS_NAME% {
 }
+- (void) parseLexicalTokenForLexicalColoring ;
+
+- (BOOL) isTemplateLexique ;
+
+@end
+
+//----------------------------------------------------------------------------------------------------------------------

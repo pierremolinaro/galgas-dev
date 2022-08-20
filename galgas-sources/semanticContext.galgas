@@ -182,6 +182,7 @@ map @lexiqueComponentMapForSemanticAnalysis {
   public let @terminalMap mTerminalMap
   public let @indexingListAST mIndexingListAST
   public let @lstring mIndexingDirectory
+  public let @terminalDeclarationListAST mTerminalListAST
   insert insertKey error message "redefinition of the '%K' lexique component: it has been already declared in %L"
   search searchKey error message "the '%K' lexique component is not imported"
 }

@@ -3790,155 +3790,14 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-static void getKeywordLists_galgasTemplateScanner (TC_UniqueArray <C_String> & ioList) {
-  ioList.appendObject ("galgasTemplateScanner:galgasDelimitorsList") ;
-  ioList.appendObject ("galgasTemplateScanner:galgasKeyWordList") ;
+static void getKeywordLists_galgasTemplateScanner (TC_UniqueArray <C_String> & /* ioList */) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-static void getKeywordsForIdentifier_galgasTemplateScanner (const C_String & inIdentifier,
-                                                            bool & ioFound,
-                                                            TC_UniqueArray <C_String> & ioList) {
-  if (inIdentifier == "galgasTemplateScanner:galgasDelimitorsList") {
-    ioFound = true ;
-    ioList.appendObject ("&") ;
-    ioList.appendObject ("(") ;
-    ioList.appendObject (")") ;
-    ioList.appendObject ("*") ;
-    ioList.appendObject ("+") ;
-    ioList.appendObject (",") ;
-    ioList.appendObject ("-") ;
-    ioList.appendObject ("/") ;
-    ioList.appendObject (":") ;
-    ioList.appendObject (";") ;
-    ioList.appendObject ("=") ;
-    ioList.appendObject (">") ;
-    ioList.appendObject ("[") ;
-    ioList.appendObject ("]") ;
-    ioList.appendObject ("^") ;
-    ioList.appendObject ("`") ;
-    ioList.appendObject ("{") ;
-    ioList.appendObject ("|") ;
-    ioList.appendObject ("}") ;
-    ioList.appendObject ("~") ;
-    ioList.appendObject ("\xC2""\xB0""") ;
-    ioList.appendObject ("!=") ;
-    ioList.appendObject ("!^") ;
-    ioList.appendObject ("&&") ;
-    ioList.appendObject ("&*") ;
-    ioList.appendObject ("&+") ;
-    ioList.appendObject ("&-") ;
-    ioList.appendObject ("&/") ;
-    ioList.appendObject ("*=") ;
-    ioList.appendObject ("++") ;
-    ioList.appendObject ("+=") ;
-    ioList.appendObject ("--") ;
-    ioList.appendObject ("-=") ;
-    ioList.appendObject ("->") ;
-    ioList.appendObject ("/=") ;
-    ioList.appendObject (":>") ;
-    ioList.appendObject ("==") ;
-    ioList.appendObject (">=") ;
-    ioList.appendObject (">>") ;
-    ioList.appendObject ("\?^") ;
-    ioList.appendObject ("||") ;
-    ioList.appendObject ("!==") ;
-    ioList.appendObject ("&++") ;
-    ioList.appendObject ("&--") ;
-    ioList.appendObject ("===") ;
-    ioList.sortArrayUsingCompareMethod() ;
-  }
-  if (inIdentifier == "galgasTemplateScanner:galgasKeyWordList") {
-    ioFound = true ;
-    ioList.appendObject ("as") ;
-    ioList.appendObject ("do") ;
-    ioList.appendObject ("if") ;
-    ioList.appendObject ("in") ;
-    ioList.appendObject ("is") ;
-    ioList.appendObject ("on") ;
-    ioList.appendObject ("or") ;
-    ioList.appendObject ("end") ;
-    ioList.appendObject ("for") ;
-    ioList.appendObject ("gui") ;
-    ioList.appendObject ("let") ;
-    ioList.appendObject ("log") ;
-    ioList.appendObject ("map") ;
-    ioList.appendObject ("mod") ;
-    ioList.appendObject ("not") ;
-    ioList.appendObject ("tag") ;
-    ioList.appendObject ("var") ;
-    ioList.appendObject ("case") ;
-    ioList.appendObject ("cast") ;
-    ioList.appendObject ("dict") ;
-    ioList.appendObject ("drop") ;
-    ioList.appendObject ("else") ;
-    ioList.appendObject ("enum") ;
-    ioList.appendObject ("func") ;
-    ioList.appendObject ("list") ;
-    ioList.appendObject ("loop") ;
-    ioList.appendObject ("proc") ;
-    ioList.appendObject ("rule") ;
-    ioList.appendObject ("self") ;
-    ioList.appendObject ("send") ;
-    ioList.appendObject ("then") ;
-    ioList.appendObject ("true") ;
-    ioList.appendObject ("with") ;
-    ioList.appendObject ("after") ;
-    ioList.appendObject ("array") ;
-    ioList.appendObject ("block") ;
-    ioList.appendObject ("class") ;
-    ioList.appendObject ("elsif") ;
-    ioList.appendObject ("error") ;
-    ioList.appendObject ("false") ;
-    ioList.appendObject ("fixit") ;
-    ioList.appendObject ("graph") ;
-    ioList.appendObject ("label") ;
-    ioList.appendObject ("parse") ;
-    ioList.appendObject ("style") ;
-    ioList.appendObject ("while") ;
-    ioList.appendObject ("before") ;
-    ioList.appendObject ("extern") ;
-    ioList.appendObject ("getter") ;
-    ioList.appendObject ("insert") ;
-    ioList.appendObject ("method") ;
-    ioList.appendObject ("option") ;
-    ioList.appendObject ("public") ;
-    ioList.appendObject ("remove") ;
-    ioList.appendObject ("repeat") ;
-    ioList.appendObject ("rewind") ;
-    ioList.appendObject ("search") ;
-    ioList.appendObject ("select") ;
-    ioList.appendObject ("setter") ;
-    ioList.appendObject ("struct") ;
-    ioList.appendObject ("switch") ;
-    ioList.appendObject ("syntax") ;
-    ioList.appendObject ("unused") ;
-    ioList.appendObject ("between") ;
-    ioList.appendObject ("boolset") ;
-    ioList.appendObject ("default") ;
-    ioList.appendObject ("grammar") ;
-    ioList.appendObject ("lexique") ;
-    ioList.appendObject ("listmap") ;
-    ioList.appendObject ("message") ;
-    ioList.appendObject ("private") ;
-    ioList.appendObject ("project") ;
-    ioList.appendObject ("replace") ;
-    ioList.appendObject ("warning") ;
-    ioList.appendObject ("abstract") ;
-    ioList.appendObject ("indexing") ;
-    ioList.appendObject ("mutating") ;
-    ioList.appendObject ("operator") ;
-    ioList.appendObject ("override") ;
-    ioList.appendObject ("refclass") ;
-    ioList.appendObject ("template") ;
-    ioList.appendObject ("extension") ;
-    ioList.appendObject ("sortedlist") ;
-    ioList.appendObject ("valueclass") ;
-    ioList.appendObject ("constructor") ;
-    ioList.appendObject ("filewrapper") ;
-    ioList.sortArrayUsingCompareMethod() ;
-  }
+static void getKeywordsForIdentifier_galgasTemplateScanner (const C_String & /* inIdentifier */,
+                                                            bool & /* ioFound */,
+                                                            TC_UniqueArray <C_String> & /* ioList */) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10564,16 +10423,7 @@ typeComparisonResult cPtr_templateLexiqueComponentAST::dynamicObjectCompare (con
     result = mProperty_mLexicalStyleList.objectCompare (p->mProperty_mLexicalStyleList) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mTerminalDeclarationList.objectCompare (p->mProperty_mTerminalDeclarationList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLexicalMessageDeclarationList.objectCompare (p->mProperty_mLexicalMessageDeclarationList) ;
-  }
-  if (kOperandEqual == result) {
     result = mProperty_mLexicalListDeclarationList.objectCompare (p->mProperty_mLexicalListDeclarationList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLexicalRuleList.objectCompare (p->mProperty_mLexicalRuleList) ;
   }
   return result ;
 }
@@ -10613,10 +10463,7 @@ GALGAS_templateLexiqueComponentAST GALGAS_templateLexiqueComponentAST::construct
                                                               GALGAS_templateReplacementListAST::constructor_emptyList (HERE),
                                                               GALGAS_lexicalAttributeListAST::constructor_emptyList (HERE),
                                                               GALGAS_lexicalStyleListAST::constructor_emptyList (HERE),
-                                                              GALGAS_terminalDeclarationListAST::constructor_emptyList (HERE),
-                                                              GALGAS_lexicalMessageDeclarationListAST::constructor_emptyList (HERE),
-                                                              GALGAS_lexicalListDeclarationListAST::constructor_emptyList (HERE),
-                                                              GALGAS_lexicalRuleListAST::constructor_emptyList (HERE)
+                                                              GALGAS_lexicalListDeclarationListAST::constructor_emptyList (HERE)
                                                               COMMA_THERE) ;
 }
 
@@ -10635,14 +10482,11 @@ GALGAS_templateLexiqueComponentAST GALGAS_templateLexiqueComponentAST::construct
                                                                                         const GALGAS_templateReplacementListAST & inAttribute_mTemplateReplacementList,
                                                                                         const GALGAS_lexicalAttributeListAST & inAttribute_mLexicalAttributeList,
                                                                                         const GALGAS_lexicalStyleListAST & inAttribute_mLexicalStyleList,
-                                                                                        const GALGAS_terminalDeclarationListAST & inAttribute_mTerminalDeclarationList,
-                                                                                        const GALGAS_lexicalMessageDeclarationListAST & inAttribute_mLexicalMessageDeclarationList,
-                                                                                        const GALGAS_lexicalListDeclarationListAST & inAttribute_mLexicalListDeclarationList,
-                                                                                        const GALGAS_lexicalRuleListAST & inAttribute_mLexicalRuleList
+                                                                                        const GALGAS_lexicalListDeclarationListAST & inAttribute_mLexicalListDeclarationList
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_templateLexiqueComponentAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mLexiqueComponentName.isValid () && inAttribute_mLexiqueSuperComponentName.isValid () && inAttribute_mTemplateDelimitorList.isValid () && inAttribute_mTemplateReplacementList.isValid () && inAttribute_mLexicalAttributeList.isValid () && inAttribute_mLexicalStyleList.isValid () && inAttribute_mTerminalDeclarationList.isValid () && inAttribute_mLexicalMessageDeclarationList.isValid () && inAttribute_mLexicalListDeclarationList.isValid () && inAttribute_mLexicalRuleList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateLexiqueComponentAST (inAttribute_mIsPredefined, inAttribute_mLexiqueComponentName, inAttribute_mLexiqueSuperComponentName, inAttribute_mTemplateDelimitorList, inAttribute_mTemplateReplacementList, inAttribute_mLexicalAttributeList, inAttribute_mLexicalStyleList, inAttribute_mTerminalDeclarationList, inAttribute_mLexicalMessageDeclarationList, inAttribute_mLexicalListDeclarationList, inAttribute_mLexicalRuleList COMMA_THERE)) ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mLexiqueComponentName.isValid () && inAttribute_mLexiqueSuperComponentName.isValid () && inAttribute_mTemplateDelimitorList.isValid () && inAttribute_mTemplateReplacementList.isValid () && inAttribute_mLexicalAttributeList.isValid () && inAttribute_mLexicalStyleList.isValid () && inAttribute_mLexicalListDeclarationList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_templateLexiqueComponentAST (inAttribute_mIsPredefined, inAttribute_mLexiqueComponentName, inAttribute_mLexiqueSuperComponentName, inAttribute_mTemplateDelimitorList, inAttribute_mTemplateReplacementList, inAttribute_mLexicalAttributeList, inAttribute_mLexicalStyleList, inAttribute_mLexicalListDeclarationList COMMA_THERE)) ;
   }
   return result ;
 }
@@ -10721,30 +10565,6 @@ GALGAS_lexicalStyleListAST GALGAS_templateLexiqueComponentAST::readProperty_mLex
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_terminalDeclarationListAST GALGAS_templateLexiqueComponentAST::readProperty_mTerminalDeclarationList (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_terminalDeclarationListAST () ;
-  }else{
-    cPtr_templateLexiqueComponentAST * p = (cPtr_templateLexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateLexiqueComponentAST) ;
-    return p->mProperty_mTerminalDeclarationList ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalMessageDeclarationListAST GALGAS_templateLexiqueComponentAST::readProperty_mLexicalMessageDeclarationList (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_lexicalMessageDeclarationListAST () ;
-  }else{
-    cPtr_templateLexiqueComponentAST * p = (cPtr_templateLexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateLexiqueComponentAST) ;
-    return p->mProperty_mLexicalMessageDeclarationList ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_lexicalListDeclarationListAST GALGAS_templateLexiqueComponentAST::readProperty_mLexicalListDeclarationList (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lexicalListDeclarationListAST () ;
@@ -10752,18 +10572,6 @@ GALGAS_lexicalListDeclarationListAST GALGAS_templateLexiqueComponentAST::readPro
     cPtr_templateLexiqueComponentAST * p = (cPtr_templateLexiqueComponentAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateLexiqueComponentAST) ;
     return p->mProperty_mLexicalListDeclarationList ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalRuleListAST GALGAS_templateLexiqueComponentAST::readProperty_mLexicalRuleList (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_lexicalRuleListAST () ;
-  }else{
-    cPtr_templateLexiqueComponentAST * p = (cPtr_templateLexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateLexiqueComponentAST) ;
-    return p->mProperty_mLexicalRuleList ;
   }
 }
 
@@ -10778,10 +10586,7 @@ cPtr_templateLexiqueComponentAST::cPtr_templateLexiqueComponentAST (const GALGAS
                                                                     const GALGAS_templateReplacementListAST & in_mTemplateReplacementList,
                                                                     const GALGAS_lexicalAttributeListAST & in_mLexicalAttributeList,
                                                                     const GALGAS_lexicalStyleListAST & in_mLexicalStyleList,
-                                                                    const GALGAS_terminalDeclarationListAST & in_mTerminalDeclarationList,
-                                                                    const GALGAS_lexicalMessageDeclarationListAST & in_mLexicalMessageDeclarationList,
-                                                                    const GALGAS_lexicalListDeclarationListAST & in_mLexicalListDeclarationList,
-                                                                    const GALGAS_lexicalRuleListAST & in_mLexicalRuleList
+                                                                    const GALGAS_lexicalListDeclarationListAST & in_mLexicalListDeclarationList
                                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mProperty_mLexiqueComponentName (in_mLexiqueComponentName),
@@ -10790,10 +10595,7 @@ mProperty_mTemplateDelimitorList (in_mTemplateDelimitorList),
 mProperty_mTemplateReplacementList (in_mTemplateReplacementList),
 mProperty_mLexicalAttributeList (in_mLexicalAttributeList),
 mProperty_mLexicalStyleList (in_mLexicalStyleList),
-mProperty_mTerminalDeclarationList (in_mTerminalDeclarationList),
-mProperty_mLexicalMessageDeclarationList (in_mLexicalMessageDeclarationList),
-mProperty_mLexicalListDeclarationList (in_mLexicalListDeclarationList),
-mProperty_mLexicalRuleList (in_mLexicalRuleList) {
+mProperty_mLexicalListDeclarationList (in_mLexicalListDeclarationList) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10819,13 +10621,7 @@ void cPtr_templateLexiqueComponentAST::description (C_String & ioString,
   ioString << ", " ;
   mProperty_mLexicalStyleList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mTerminalDeclarationList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLexicalMessageDeclarationList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
   mProperty_mLexicalListDeclarationList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLexicalRuleList.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -10833,7 +10629,7 @@ void cPtr_templateLexiqueComponentAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateLexiqueComponentAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateLexiqueComponentAST (mProperty_mIsPredefined, mProperty_mLexiqueComponentName, mProperty_mLexiqueSuperComponentName, mProperty_mTemplateDelimitorList, mProperty_mTemplateReplacementList, mProperty_mLexicalAttributeList, mProperty_mLexicalStyleList, mProperty_mTerminalDeclarationList, mProperty_mLexicalMessageDeclarationList, mProperty_mLexicalListDeclarationList, mProperty_mLexicalRuleList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateLexiqueComponentAST (mProperty_mIsPredefined, mProperty_mLexiqueComponentName, mProperty_mLexiqueSuperComponentName, mProperty_mTemplateDelimitorList, mProperty_mTemplateReplacementList, mProperty_mLexicalAttributeList, mProperty_mLexicalStyleList, mProperty_mLexicalListDeclarationList COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -15292,6 +15088,156 @@ GALGAS_boolsetDeclarationAST GALGAS_boolsetDeclarationAST::extractObject (const 
       result = *p ;
     }else{
       inCompiler->castError ("boolsetDeclarationAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+// @boolsetTypeForGeneration reference class
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_boolsetTypeForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_boolsetTypeForGeneration * p = (const cPtr_boolsetTypeForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_boolsetTypeForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mSelfTypeEntry.objectCompare (p->mProperty_mSelfTypeEntry) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mFlagList.objectCompare (p->mProperty_mFlagList) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_boolsetTypeForGeneration::objectCompare (const GALGAS_boolsetTypeForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_boolsetTypeForGeneration::GALGAS_boolsetTypeForGeneration (void) :
+GALGAS_semanticTypeForGeneration () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_boolsetTypeForGeneration::GALGAS_boolsetTypeForGeneration (const cPtr_boolsetTypeForGeneration * inSourcePtr) :
+GALGAS_semanticTypeForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_boolsetTypeForGeneration) ;
+}
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_boolsetTypeForGeneration GALGAS_boolsetTypeForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mSelfTypeEntry,
+                                                                                  const GALGAS_lstringlist & inAttribute_mFlagList
+                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_boolsetTypeForGeneration result ;
+  if (inAttribute_mSelfTypeEntry.isValid () && inAttribute_mFlagList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_boolsetTypeForGeneration (inAttribute_mSelfTypeEntry, inAttribute_mFlagList COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lstringlist GALGAS_boolsetTypeForGeneration::readProperty_mFlagList (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_lstringlist () ;
+  }else{
+    cPtr_boolsetTypeForGeneration * p = (cPtr_boolsetTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_boolsetTypeForGeneration) ;
+    return p->mProperty_mFlagList ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//Pointer class for @boolsetTypeForGeneration class
+//----------------------------------------------------------------------------------------------------------------------
+
+cPtr_boolsetTypeForGeneration::cPtr_boolsetTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                              const GALGAS_lstringlist & in_mFlagList
+                                                              COMMA_LOCATION_ARGS) :
+cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
+mProperty_mFlagList (in_mFlagList) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_boolsetTypeForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_boolsetTypeForGeneration ;
+}
+
+void cPtr_boolsetTypeForGeneration::description (C_String & ioString,
+                                                 const int32_t inIndentation) const {
+  ioString << "[@boolsetTypeForGeneration:" ;
+  mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mFlagList.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_boolsetTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_boolsetTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mFlagList COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@boolsetTypeForGeneration type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_boolsetTypeForGeneration ("boolsetTypeForGeneration",
+                                                 & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_boolsetTypeForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_boolsetTypeForGeneration ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_boolsetTypeForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_boolsetTypeForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_boolsetTypeForGeneration GALGAS_boolsetTypeForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_boolsetTypeForGeneration result ;
+  const GALGAS_boolsetTypeForGeneration * p = (const GALGAS_boolsetTypeForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_boolsetTypeForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("boolsetTypeForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

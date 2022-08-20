@@ -1446,13 +1446,15 @@ class cMapElement_lexiqueComponentMapForSemanticAnalysis : public cMapElement {
   public: GALGAS_terminalMap mProperty_mTerminalMap ;
   public: GALGAS_indexingListAST mProperty_mIndexingListAST ;
   public: GALGAS_lstring mProperty_mIndexingDirectory ;
+  public: GALGAS_terminalDeclarationListAST mProperty_mTerminalListAST ;
 
 //--- Constructor
   public: cMapElement_lexiqueComponentMapForSemanticAnalysis (const GALGAS_lstring & inKey,
                                                               const GALGAS_bool & in_mIsTemplate,
                                                               const GALGAS_terminalMap & in_mTerminalMap,
                                                               const GALGAS_indexingListAST & in_mIndexingListAST,
-                                                              const GALGAS_lstring & in_mIndexingDirectory
+                                                              const GALGAS_lstring & in_mIndexingDirectory,
+                                                              const GALGAS_terminalDeclarationListAST & in_mTerminalListAST
                                                               COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
@@ -1501,6 +1503,11 @@ class GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element : public AC_GALGA
     return mProperty_mIndexingDirectory ;
   }
 
+  public: GALGAS_terminalDeclarationListAST mProperty_mTerminalListAST ;
+  public: inline GALGAS_terminalDeclarationListAST readProperty_mTerminalListAST (void) const {
+    return mProperty_mTerminalListAST ;
+  }
+
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
   public: VIRTUAL_IN_DEBUG void drop (void) ;
@@ -1532,6 +1539,10 @@ class GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element : public AC_GALGA
     mProperty_mIndexingDirectory = inValue ;
   }
 
+  public: inline void setter_setMTerminalListAST (const GALGAS_terminalDeclarationListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mTerminalListAST = inValue ;
+  }
+
 //--------------------------------- Virtual destructor (in debug mode)
   public: virtual ~ GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element (void) ;
 
@@ -1540,7 +1551,8 @@ class GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element : public AC_GALGA
                                                                     const GALGAS_bool & in_mIsTemplate,
                                                                     const GALGAS_terminalMap & in_mTerminalMap,
                                                                     const GALGAS_indexingListAST & in_mIndexingListAST,
-                                                                    const GALGAS_lstring & in_mIndexingDirectory) ;
+                                                                    const GALGAS_lstring & in_mIndexingDirectory,
+                                                                    const GALGAS_terminalDeclarationListAST & in_mTerminalListAST) ;
 
 //-- Start of generic part --*
 
@@ -1557,7 +1569,8 @@ class GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element : public AC_GALGA
                                                                                                  const class GALGAS_bool & inOperand1,
                                                                                                  const class GALGAS_terminalMap & inOperand2,
                                                                                                  const class GALGAS_indexingListAST & inOperand3,
-                                                                                                 const class GALGAS_lstring & inOperand4
+                                                                                                 const class GALGAS_lstring & inOperand4,
+                                                                                                 const class GALGAS_terminalDeclarationListAST & inOperand5
                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'

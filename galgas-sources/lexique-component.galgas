@@ -24,8 +24,6 @@ refclass @lexiqueComponentAST : @semanticDeclarationAST {
   private let @lexicalMessageDeclarationListAST mLexicalMessageDeclarationList
   private let @lexicalListDeclarationListAST mLexicalListDeclarationList
   private let @lexicalRuleListAST mLexicalRuleList
-#  private let @externRoutineListAST mExternRoutineList
-#  private let @externFunctionListAST mExternFunctionList
   private let @indexingListAST mIndexingListAST
   private let @lstring mIndexingDirectory
 }
@@ -59,14 +57,8 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
     var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = {}
     var @lexicalListDeclarationListAST lexicalListDeclarationList = {}
     var @lexicalRuleListAST lexicalRuleList = {}
-#    var @externRoutineListAST externRoutineList = {}
-#    var @externFunctionListAST externFunctionList = {}
     var @indexingListAST indexingListAST = {}
     repeat
-#    while 
-#      <extern_routine_declaration> !?externRoutineList
-#    while 
-#      <extern_function_declaration> !?externFunctionList
     while 
       <template_delimitor> !? templateDelimitorList
     while 
@@ -101,8 +93,6 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
       !lexicalMessageDeclarationList
       !lexicalListDeclarationList
       !lexicalRuleList
-#      !externRoutineList
-#      !externFunctionList
       !indexingListAST
       !indexingDirectory
     }
@@ -134,14 +124,8 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
     var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = {}
     var @lexicalListDeclarationListAST lexicalListDeclarationList = {}
     var @lexicalRuleListAST lexicalRuleList = {}
-#    var @externRoutineListAST externRoutineList = {}
-#    var @externFunctionListAST externFunctionList = {}
     var @indexingListAST indexingListAST = {}
     repeat
-#    while 
-#      <extern_routine_declaration> !?externRoutineList
-#    while 
-#      <extern_function_declaration> !?externFunctionList
     while 
       <template_delimitor> !? templateDelimitorList
     while 
@@ -176,8 +160,6 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
       !lexicalMessageDeclarationList
       !lexicalListDeclarationList
       !lexicalRuleList
-#      !externRoutineList
-#      !externFunctionList
       !indexingListAST
       !indexingDirectory
     }
@@ -1487,14 +1469,29 @@ override method @lexiqueComponentAST enterDeclarationInSemanticContext
   )
 #--------------------------------------- 
   var @terminalMap terminalMap = {}
-  for (mName mSentAttributeList * * *) in self.mTerminalDeclarationList do
+#  var @terminalList terminalList = {}
+  for (name sentAttributeList * * *) in self.mTerminalDeclarationList do
     var argumentTypeList = @lexicalSentValueList {}
-    for (mFormalSelector mAttributeName) in mSentAttributeList do
+    for (mFormalSelector mAttributeName) in sentAttributeList do
       [lexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
-    [!?terminalMap insertKey !mName !argumentTypeList]
+    [!?terminalMap insertKey !name !argumentTypeList]
+#    terminalList += !name !sentAttributeList !syntaxErrorMessage
   end
+
+#  public var @sentLexicalAttributeListAST mSentAttributeList
+#  public var @lstring mSyntaxErrorMessage
+#  public var @lstring mStyle # Empty string if no style
+#  public var @lstringlist mOptionList
+
+#  public var @lstring mTerminalName
+#  public var @lexicalSentValueList mSentAttributeList
+#  public var @string mSyntaxErrorMessage
+#  public var @bool mIsEndOfTemplateMark
+#  public var @bool mAtomicSelection # True if atomic selection in source editor
+#  public var @uint mStyleIndex # 0 if default style
+
 #---
   for (* * * mSentAttributeList mEntryList) in self.mLexicalListDeclarationList do
     var argumentTypeList = @lexicalSentValueList {}
@@ -1513,48 +1510,28 @@ override method @lexiqueComponentAST enterDeclarationInSemanticContext
      !terminalMap
      !self.mIndexingListAST
      !self.mIndexingDirectory
+     !self.mTerminalDeclarationList
   ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexiqueComponentAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities 
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @string unused inProductDirectory
-  ?let @semanticContext unused inSemanticContext
-  ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
+                                      ?!@lstringlist unused ioUsefulnessRootEntities 
+                                      ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                      ?let @string unused inProductDirectory
+                                      ?let @semanticContext unused inSemanticContext
+                                      ?let @predefinedTypes unused inPredefinedTypes
+                                      ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
 #--- Useful entities graph
   let nameForUsefulness = lexiqueNameForUsefulEntitiesGraph (!self.mLexiqueComponentName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--------------------------------------- Lexical attribute type name map
   let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()
 #--------------------------------------- Build lexical routine map
-#  var @lexicalRoutineMap lexicalRoutineMap
   buildLexicalRoutineMap (?let lexicalRoutineMap)
-#--------------------------------------- Add extern routines
-#  for (mRoutineName mLexicalRoutineFormalArgumentList mErrorMessageList) in self.mExternRoutineList do
-#    var lexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList {}
-#    for (mPassingMode mLexicalTypeName mFormalArgumentName) in mLexicalRoutineFormalArgumentList do
-#      [lexicalTypeMap searchKey !mLexicalTypeName ?let lexicalFormalArgumentType]
-#      lexicalRoutineFormalArgumentList += !mPassingMode !lexicalFormalArgumentType !mFormalArgumentName.string
-#    end
-#    [!?lexicalRoutineMap insertKey !mRoutineName !lexicalRoutineFormalArgumentList !mErrorMessageList !true]
-#  end
 #--------------------------------------- Build lexical function map
-#  var @lexicalFunctionMap lexicalFunctionMap
   buildLexicalFunctionMap (?let lexicalFunctionMap)
-#--------------------------------------- Add extern functions
-#  for (mFunctionName mLexicalFunctionFormalArgumentList mReturnedTypeName) in self.mExternFunctionList do
-#    var @lexicalFunctionFormalArgumentList lexicalFunctionFormalArgumentList = {}
-#    for (mLexicalTypeName mFormalArgumentName) in mLexicalFunctionFormalArgumentList do
-#      [lexicalTypeMap searchKey !mLexicalTypeName ?let lexicalFormalArgumentType]
-#      lexicalFunctionFormalArgumentList += !lexicalFormalArgumentType !mFormalArgumentName.string
-#    end
-#    [lexicalTypeMap searchKey !mReturnedTypeName ?let returnedArgumentType]
-#    [!?lexicalFunctionMap insertKey !mFunctionName !lexicalFunctionFormalArgumentList !returnedArgumentType !"" !true]
-#  end
 #--------------------------------------- Unicode test functions
   lexicalUnicodeTestFunctionAnalysis (?let unicodeTestFunctions)
 #---------------------------------------
@@ -1728,7 +1705,6 @@ override method @lexiqueComponentAST semanticAnalysis
       !self.mLexicalListDeclarationList
       !lexiqueAnalysisContext
       !self.mIndexingListAST
-#      !self.mLexicalFunctionListAST
     ]
   #--- Cpp
     let cppContents =  [filewrapper lexiqueGenerationTemplates.implementationZone2Galgas3
@@ -1745,13 +1721,11 @@ override method @lexiqueComponentAST semanticAnalysis
       !self.mLexiqueComponentName.string
       !self.mTemplateReplacementList
       !self.mLexicalStyleList
-#      !self.mLexicalFunctionListAST
     ]
   #--- Cocoa header
     var cocoaHeader = [filewrapper lexiqueGenerationTemplates.cocoaHeaderZone2
       !self.mLexiqueComponentName.string
       !lexiqueAnalysisContext
-#      !self.mLexicalFunctionListAST
     ]
     cocoaHeader += [filewrapper lexiqueGenerationTemplates.cocoaHeaderZone3
       !self.mLexiqueComponentName.string
@@ -1806,7 +1780,6 @@ private filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique
     ?@lexicalListDeclarationListAST DELIMITOR_LIST_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
     ?@indexingListAST INDEXING_LIST
-#    ?@lexicalFunctionListAST UNICODE_TEST_FUNCTIONS
 
   template implementationZone2Galgas3 "lexique_implementation-galgas3.cpp.galgasTemplate"
     ?@string LEXIQUE_IDENTIFIER
@@ -1822,12 +1795,10 @@ private filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique
     ?@string LEXIQUE_COMPONENT_NAME
     ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
     ?@lexicalStyleListAST LEXICAL_STYLE_LIST
-#    ?@lexicalFunctionListAST UNICODE_TEST_FUNCTIONS
 
   template cocoaHeaderZone2 "lexique_cocoa_header_template_zone_2.h.galgasTemplate"
     ?@string LEXIQUE_CLASS_NAME
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-#    ?@lexicalFunctionListAST UNICODE_TEST_FUNCTIONS
 
   template cocoaHeaderZone3 "lexique_cocoa_header_template_zone_3.h.galgasTemplate"
     ?@string unused LEXIQUE_CLASS_NAME

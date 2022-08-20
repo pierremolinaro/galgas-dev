@@ -661,6 +661,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
     ?let @terminalMap terminalMap
     ?let @indexingListAST indexingListAST
     ?let @lstring indexingDirectory
+    ?*
   ]
 #--------------------------------------- Build "indexing" set
   var @stringset indexNameSet = {}
@@ -775,6 +776,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     ?* # @terminalMap inTerminalMap
     ?* # @indexingListAST inIndexingListAST
     ?let @lstring inIndexingDirectory
+    ?*
   ]
   let @bool hasIndexing = not [inIndexingDirectory isNowhere]
   if hasIndexing & not self.mHasIndexing.bool then

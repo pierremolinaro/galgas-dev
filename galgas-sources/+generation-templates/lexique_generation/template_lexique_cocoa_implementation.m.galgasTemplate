@@ -22,7 +22,7 @@ end
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-%if [LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList length] > 0 then
+%if [TEMPLATE_DELIMITOR_LIST length] > 0 then
 %static NSArray * kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% ;\n%
 end%
 //----------------------------------------------------------------------------------------------------------------------
@@ -36,10 +36,10 @@ end%
   if (self) {
     noteObjectAllocation (self) ;
   }
-% if [LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList length] > 0 then
+% if [TEMPLATE_DELIMITOR_LIST length] > 0 then
 %  if (nil == kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n%
 %    kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
-  for (mStartString mEndString mPreservesStartDelimiter) in LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList do
+  for (mStartString mEndString mPreservesStartDelimiter) in TEMPLATE_DELIMITOR_LIST do
   %      [[OC_GGS_TemplateDelimiter alloc] initWithStartString:@%![mStartString utf8Representation]% endString:%
       if [mEndString length] == 0 then
         %nil%
@@ -79,8 +79,8 @@ end%
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-% for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList
-    before %static const BOOL kEndOfScriptInTemplateArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [%![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList length] string]%] = {\n%
+% for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in TERMINAL_LIST
+    before %static const BOOL kEndOfScriptInTemplateArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [%![[TERMINAL_LIST length] string]%] = {\n%
     do %  %![mIsEndOfTemplateMark ocString]% /* %!mTerminalName.string% */%
     between %,\n%
     after %\n} ;\n%

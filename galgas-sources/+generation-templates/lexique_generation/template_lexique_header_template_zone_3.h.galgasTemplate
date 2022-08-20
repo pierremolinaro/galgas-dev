@@ -1,5 +1,0 @@
-
-//--- Parse lexical token
-  protected: virtual bool parseLexicalToken (void) override ;
-} ;
-

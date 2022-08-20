@@ -42,7 +42,7 @@ mMatchedTemplateDelimiterIndex (-1) {
 //                           Template Delimiters
 //----------------------------------------------------------------------------------------------------------------------
 
-% for (mStartString mEndString mPreservesStartDelimiter) in LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList
+% for (mStartString mEndString mPreservesStartDelimiter) in TEMPLATE_DELIMITOR_LIST
     before %static const cTemplateDelimiter %!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [%![[TEMPLATE_DELIMITOR_LIST length] string]%] = {\n%
     do %  cTemplateDelimiter (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mStartString identifierRepresentation]%, %![[mStartString length] string]%, %
       if [mEndString length] == 0 then
@@ -80,13 +80,11 @@ mMatchedTemplateDelimiterIndex (-1) {
 //            Terminal Symbols as end of script in template mark
 //----------------------------------------------------------------------------------------------------------------------
 
-% if [TEMPLATE_DELIMITOR_LIST length] > 0 then
-    for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList
-      before %static const bool %!LEXIQUE_IDENTIFIER%_kEndOfScriptInTemplateArray [%![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList length] string]%] = {\n%
-      do %  %![mIsEndOfTemplateMark cString]% /* %!mTerminalName.string% */%
-      between %,\n%
-      after %\n} ;\n%
-    end
+% for (mTerminalName * * mIsEndOfTemplateMark * *) in TERMINAL_LIST
+    before %static const bool %!LEXIQUE_IDENTIFIER%_kEndOfScriptInTemplateArray [%![[TERMINAL_LIST length] string]%] = {\n%
+    do %  %![mIsEndOfTemplateMark cString]% /* %!mTerminalName.string% */%
+    between %,\n%
+    after %\n} ;\n%
   end
 %
 //----------------------------------------------------------------------------------------------------------------------
@@ -152,7 +150,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
 
 GALGAS_stringlist C_Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
   GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
-%for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList
+%for (mTerminalName * * * * *) in TERMINAL_LIST
   do %  result.addAssign_operation (GALGAS_string (%![mTerminalName utf8Representation]%) COMMA_THERE) ;\n%
   end
 %  return result ;
