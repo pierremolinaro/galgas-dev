@@ -18,7 +18,6 @@
 
 static NSArray * kTemplateReplacementArray_galgasTemplateScanner ; // Of NSString 
 
-
 //----------------------------------------------------------------------------------------------------------------------
 //
 //                           Template Delimiters
@@ -28,20 +27,15 @@ static NSArray * kTemplateReplacementArray_galgasTemplateScanner ; // Of NSStrin
 static NSArray * kTemplateDefinitionArray_galgasTemplateScanner ;
 
 //----------------------------------------------------------------------------------------------------------------------
+//
+//                           init
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 - (instancetype) init {
   self = [super init] ;
   if (self) {
     noteObjectAllocation (self) ;
-    mLexicalAttribute_bigintValue = [[NSMutableString alloc] init] ;
-    mLexicalAttribute_charValue = 0 ;
-    mLexicalAttribute_floatValue = 0.0 ;
-    mLexicalAttribute_identifierString = [[NSMutableString alloc] init] ;
-    mLexicalAttribute_sint32value = 0 ;
-    mLexicalAttribute_sint64value = 0 ;
-    mLexicalAttribute_tokenString = [[NSMutableString alloc] init] ;
-    mLexicalAttribute_uint32value = 0 ;
-    mLexicalAttribute_uint64value = 0 ;
   }
   if (nil == kTemplateDefinitionArray_galgasTemplateScanner) {
     kTemplateDefinitionArray_galgasTemplateScanner = [NSArray arrayWithObjects:
@@ -50,9 +44,11 @@ static NSArray * kTemplateDefinitionArray_galgasTemplateScanner ;
     ] ;
   }
   if (nil == kTemplateReplacementArray_galgasTemplateScanner) {
-
     kTemplateReplacementArray_galgasTemplateScanner = [NSArray arrayWithObjects:
-      @"\\%",       @"\\n",       @"\\\\",       nil
+      @"\\%",
+      @"\\n",
+      @"\\\\",
+      nil
     ] ;
   }
   return self ;

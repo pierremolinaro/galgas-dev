@@ -14,8 +14,8 @@
 
 %if [TEMPLATE_REPLACEMENT_LIST length] > 0 then
 %static NSArray * kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% ; // Of NSString \n%
-end%
-
+end
+%
 //----------------------------------------------------------------------------------------------------------------------
 //
 //                           Template Delimiters
@@ -26,16 +26,16 @@ end%
 %static NSArray * kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% ;\n%
 end%
 //----------------------------------------------------------------------------------------------------------------------
+//
+//                           init
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 - (instancetype) init {
   self = [super init] ;
   if (self) {
     noteObjectAllocation (self) ;
-%
-  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
-    %    mLexicalAttribute_%!lkey.string% = % ![mLexicalType cocoaInitializationCode] % ;\n%
-  end
-%  }
+  }
 % if [LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList length] > 0 then
 %  if (nil == kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n%
 %    kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
@@ -55,10 +55,10 @@ end%
   %  }\n%
   end
   if [TEMPLATE_REPLACEMENT_LIST length] > 0 then
-  %  if (nil == kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n\n%
+  %  if (nil == kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n%
   %    kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
   for (mMatchString mReplacementString mReplacementFunction) in TEMPLATE_REPLACEMENT_LIST do
-    %      @%![mMatchString utf8Representation]%, %
+    %      @%![mMatchString utf8Representation]%,\n%
   end
   %      nil\n%
   %    ] ;\n%
@@ -79,13 +79,11 @@ end%
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-% if [TEMPLATE_DELIMITOR_LIST length] > 0 then
-   for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList
-      before %static const BOOL kEndOfScriptInTemplateArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [%![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList length] string]%] = {\n%
-      do %  %![mIsEndOfTemplateMark ocString]% /* %!mTerminalName.string% */%
-      between %,\n%
-      after %\n} ;\n%
-    end
+% for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList
+    before %static const BOOL kEndOfScriptInTemplateArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [%![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList length] string]%] = {\n%
+    do %  %![mIsEndOfTemplateMark ocString]% /* %!mTerminalName.string% */%
+    between %,\n%
+    after %\n} ;\n%
   end
 %
 //----------------------------------------------------------------------------------------------------------------------
