@@ -127,7 +127,7 @@ struct @lexiqueAnalysisContext {
   public var @stringset mUnicodeStringToGenerate
   public var @templateDelimitorList mTemplateDelimitorList
   public var @styleMap mStyleMap
-  public var @stringset mExternUnicodeTestFunctions
+  public var @stringset mUnicodeTestFunctions
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

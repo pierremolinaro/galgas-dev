@@ -3,15 +3,6 @@
 #import "PMDebug.h"
 
 //----------------------------------------------------------------------------------------------------------------------
-//            Unicode test functions                                                             
-//----------------------------------------------------------------------------------------------------------------------
- 
-% for (mFunctionName mLexicalExpression) in UNICODE_TEST_FUNCTIONS do
-    %bool %!LEXIQUE_CLASS_NAME%_%![mFunctionName identifierRepresentation]% (const utf32 inUnicodeCharacter) {\n%
-    %  return %![mLexicalExpression generateForUnicodeTestFunctions]% ;\n%
-    %}\n\n%
-  end
-%//----------------------------------------------------------------------------------------------------------------------
 
 @implementation OC_Lexique_%!LEXIQUE_CLASS_NAME%
 
@@ -158,7 +149,7 @@ end
 //----------------------------------------------------------------------------------------------------------------------
 
 - (void) parseLexicalTokenForLexicalColoring {
-  mLoop = YES ;
+  BOOL loop = YES ;
   BOOL scanningOk = YES ;
   mTokenCode = 0 ;
   while ((mTokenCode == 0) && (mCurrentChar != '\0')) {

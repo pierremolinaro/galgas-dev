@@ -35,12 +35,6 @@
   after %\n  } ;\n%
   end
 %
-//--- Unicode test functions
-%
-  for (mFunctionName mLexicalExpression) in UNICODE_TEST_FUNCTIONS
-  do %  public: static bool %![mFunctionName identifierRepresentation]% (const utf32 inUnicodeCharacter) ;\n%
-  end
-%
 //--- Indexing directory
   protected: virtual C_String indexingDirectory (void) const override  ;
 

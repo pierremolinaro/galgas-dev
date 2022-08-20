@@ -27,7 +27,7 @@ refclass @templateLexiqueComponentAST : @semanticDeclarationAST {
   private let @lexicalRuleListAST mLexicalRuleList
   private let @externRoutineListAST mExternRoutineList
   private let @externFunctionListAST mExternFunctionList
-  private let @lexicalFunctionListAST mLexicalFunctionListAST
+#  private let @lexicalFunctionListAST mLexicalFunctionListAST
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -55,7 +55,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     var @lexicalRuleListAST lexicalRuleList = {}
     var @externRoutineListAST externRoutineList = {}
     var @externFunctionListAST externFunctionList = {}
-    var @lexicalFunctionListAST lexicalFunctionListAST = {}
+#    var @lexicalFunctionListAST lexicalFunctionListAST = {}
     repeat
     while 
       <template_delimitor> !? templateDelimitorList
@@ -80,8 +80,8 @@ syntax extension galgas3LexiqueComponentSyntax {
       <lexical_implicit_rule> !? lexicalRuleList
     while
       <lexical_message_declaration> !?lexicalMessageDeclarationList
-    while
-      <lexical_function_declaration> !?lexicalFunctionListAST
+#    while
+#      <lexical_function_declaration> !?lexicalFunctionListAST
     end
     $}$
     ioDeclarations.mDeclarationList += !@templateLexiqueComponentAST.new {
@@ -99,7 +99,7 @@ syntax extension galgas3LexiqueComponentSyntax {
       !lexicalRuleList
       !externRoutineList
       !externFunctionList
-      !lexicalFunctionListAST
+#      !lexicalFunctionListAST
     }
   }
 
@@ -132,7 +132,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     var @lexicalRuleListAST lexicalRuleList = {}
     var @externRoutineListAST externRoutineList = {}
     var @externFunctionListAST externFunctionList = {}
-    var @lexicalFunctionListAST lexicalFunctionListAST = {}
+#    var @lexicalFunctionListAST lexicalFunctionListAST = {}
     repeat
     while 
       <template_delimitor> !? templateDelimitorList
@@ -157,8 +157,8 @@ syntax extension galgas4LexiqueComponentSyntax {
       <lexical_implicit_rule> !? lexicalRuleList
     while
       <lexical_message_declaration> !?lexicalMessageDeclarationList
-    while
-      <lexical_function_declaration> !?lexicalFunctionListAST
+#    while
+#      <lexical_function_declaration> !?lexicalFunctionListAST
     end
     $}$
     ioDeclarations.mDeclarationList += !@templateLexiqueComponentAST.new {
@@ -176,7 +176,7 @@ syntax extension galgas4LexiqueComponentSyntax {
       !lexicalRuleList
       !externRoutineList
       !externFunctionList
-      !lexicalFunctionListAST
+#      !lexicalFunctionListAST
     }
   }
 
@@ -301,7 +301,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
     [!?lexicalFunctionMap insertKey !mFunctionName !lexicalFunctionFormalArgumentList !returnedArgumentType !"" !true]
   end
 #--------------------------------------- Unicode test functions
-  lexicalUnicodeTestFunctionAnalysis (!self.mLexicalFunctionListAST ?let unicodeTestFunctions)
+  lexicalUnicodeTestFunctionAnalysis (?let unicodeTestFunctions)
 #---------------------------------------
   var @lexiqueAnalysisContext lexiqueAnalysisContext = .new {
     !self.mLexiqueComponentName.string
@@ -474,7 +474,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
       !self.mLexicalListDeclarationList
       !lexiqueAnalysisContext
       !{} # self.mIndexingListAST
-      !self.mLexicalFunctionListAST
+#      !self.mLexicalFunctionListAST
     ]
   #--- Cpp
     let cppContents =  [filewrapper templateLexiqueGenerationTemplates.implementationZone2Galgas3
@@ -491,13 +491,13 @@ override method @templateLexiqueComponentAST semanticAnalysis
       !self.mLexiqueComponentName.string
       !self.mTemplateReplacementList
       !self.mLexicalStyleList
-      !self.mLexicalFunctionListAST
+#      !self.mLexicalFunctionListAST
     ]
   #--- Cocoa header
     var cocoaHeader = [filewrapper templateLexiqueGenerationTemplates.cocoaHeaderZone2
       !self.mLexiqueComponentName.string
       !lexiqueAnalysisContext
-      !self.mLexicalFunctionListAST
+#      !self.mLexicalFunctionListAST
     ]
     cocoaHeader += [filewrapper templateLexiqueGenerationTemplates.cocoaHeaderZone3
       !self.mLexiqueComponentName.string
@@ -518,7 +518,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
       !{} # self.mIndexingListAST
       !self.mLexicalStyleList
       !self.mTemplateDelimitorList
-      !self.mLexicalFunctionListAST
+#      !self.mLexicalFunctionListAST
     ]
   #---
     ioSemanticDeclarationListForGeneration +=
@@ -552,7 +552,7 @@ private filewrapper templateLexiqueGenerationTemplates in "+generation-templates
     ?@lexicalListDeclarationListAST DELIMITOR_LIST_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
     ?@indexingListAST INDEXING_LIST
-    ?@lexicalFunctionListAST UNICODE_TEST_FUNCTIONS
+#    ?@lexicalFunctionListAST UNICODE_TEST_FUNCTIONS
 
   template implementationZone2Galgas3 "template_lexique_implementation-galgas3.cpp.galgasTemplate"
     ?@string LEXIQUE_IDENTIFIER
@@ -568,12 +568,12 @@ private filewrapper templateLexiqueGenerationTemplates in "+generation-templates
     ?@string LEXIQUE_COMPONENT_NAME
     ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
     ?@lexicalStyleListAST LEXICAL_STYLE_LIST
-    ?@lexicalFunctionListAST UNICODE_TEST_FUNCTIONS
+#    ?@lexicalFunctionListAST UNICODE_TEST_FUNCTIONS
 
   template cocoaHeaderZone2 "template_lexique_cocoa_header_template_zone_2.h.galgasTemplate"
     ?@string LEXIQUE_CLASS_NAME
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-    ?@lexicalFunctionListAST UNICODE_TEST_FUNCTIONS
+#    ?@lexicalFunctionListAST UNICODE_TEST_FUNCTIONS
 
   template cocoaHeaderZone3 "template_lexique_cocoa_header_template_zone_3.h.galgasTemplate"
     ?@string unused LEXIQUE_CLASS_NAME
@@ -593,7 +593,7 @@ private filewrapper templateLexiqueGenerationTemplates in "+generation-templates
     ?@indexingListAST INDEXING_LIST
     ?@lexicalStyleListAST LEXICAL_STYLE_LIST
     ?@templateDelimitorListAST TEMPLATE_DELIMITOR_LIST
-    ?@lexicalFunctionListAST UNICODE_TEST_FUNCTIONS
+#    ?@lexicalFunctionListAST UNICODE_TEST_FUNCTIONS
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

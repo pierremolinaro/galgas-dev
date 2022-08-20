@@ -205,18 +205,6 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "with"
 }
 
-#------------------------------- GALGAS Unicode letter ------------------
-
-#func galgasUnicodeLetter : 'a'->'z' | 'A'->'Z' |
-#  '\u00C0' -> '\u00D6' |
-#  '\u00D8' -> '\u00F6' |
-#  '\u00F8' -> '\u02B4' |
-#  '\u038E' -> '\u03A1' |
-#  '\u03A3' -> '\u03F5' |
-#  '\u03F7' -> '\u0481' |
-#  '\u048A' -> '\u0523'
-  
-
 rule isUnicodeLetter {
   repeat
     enterCharacterIntoString (!?identifierString !toLower (!*))

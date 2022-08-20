@@ -652,8 +652,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_headerZone_33_ (cla
                                                                              const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
                                                                              const class GALGAS_lexicalListDeclarationListAST & in_DELIMITOR_5F_LIST_5F_LIST,
                                                                              const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
-                                                                             const class GALGAS_indexingListAST & in_INDEXING_5F_LIST,
-                                                                             const class GALGAS_lexicalFunctionListAST & in_UNICODE_5F_TEST_5F_FUNCTIONS
+                                                                             const class GALGAS_indexingListAST & in_INDEXING_5F_LIST
                                                                              COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -675,8 +674,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_
                                                                                                const class GALGAS_templateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
                                                                                                const class GALGAS_string & in_LEXIQUE_5F_COMPONENT_5F_NAME,
                                                                                                const class GALGAS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
-                                                                                               const class GALGAS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST,
-                                                                                               const class GALGAS_lexicalFunctionListAST & in_UNICODE_5F_TEST_5F_FUNCTIONS
+                                                                                               const class GALGAS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST
                                                                                                COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -687,8 +685,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_
 
 GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaHeaderZone_32_ (class C_Compiler * inCompiler,
                                                                                   const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
-                                                                                  const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
-                                                                                  const class GALGAS_lexicalFunctionListAST & in_UNICODE_5F_TEST_5F_FUNCTIONS
+                                                                                  const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -721,8 +718,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
                                                                                           const class GALGAS_string & in_INDEXING_5F_DIRECTORY,
                                                                                           const class GALGAS_indexingListAST & in_INDEXING_5F_LIST,
                                                                                           const class GALGAS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST,
-                                                                                          const class GALGAS_templateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
-                                                                                          const class GALGAS_lexicalFunctionListAST & in_UNICODE_5F_TEST_5F_FUNCTIONS
+                                                                                          const class GALGAS_templateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST
                                                                                           COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -761,8 +757,7 @@ void routine_buildLexicalRoutineMap (class GALGAS_lexicalRoutineMap & outArgumen
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_lexicalUnicodeTestFunctionAnalysis (const class GALGAS_lexicalFunctionListAST constinArgument0,
-                                                 class GALGAS_stringset & outArgument1,
+void routine_lexicalUnicodeTestFunctionAnalysis (class GALGAS_stringset & outArgument0,
                                                  class C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -805,8 +800,7 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_headerZone_
                                                                                      const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
                                                                                      const class GALGAS_lexicalListDeclarationListAST & in_DELIMITOR_5F_LIST_5F_LIST,
                                                                                      const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
-                                                                                     const class GALGAS_indexingListAST & in_INDEXING_5F_LIST,
-                                                                                     const class GALGAS_lexicalFunctionListAST & in_UNICODE_5F_TEST_5F_FUNCTIONS
+                                                                                     const class GALGAS_indexingListAST & in_INDEXING_5F_LIST
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -828,8 +822,7 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_implementat
                                                                                                        const class GALGAS_templateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
                                                                                                        const class GALGAS_string & in_LEXIQUE_5F_COMPONENT_5F_NAME,
                                                                                                        const class GALGAS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
-                                                                                                       const class GALGAS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST,
-                                                                                                       const class GALGAS_lexicalFunctionListAST & in_UNICODE_5F_TEST_5F_FUNCTIONS
+                                                                                                       const class GALGAS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST
                                                                                                        COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -840,8 +833,7 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_implementat
 
 GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cocoaHeaderZone_32_ (class C_Compiler * inCompiler,
                                                                                           const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
-                                                                                          const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
-                                                                                          const class GALGAS_lexicalFunctionListAST & in_UNICODE_5F_TEST_5F_FUNCTIONS
+                                                                                          const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT
                                                                                           COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -874,7 +866,6 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cocoaImplem
                                                                                                   const class GALGAS_string & in_INDEXING_5F_DIRECTORY,
                                                                                                   const class GALGAS_indexingListAST & in_INDEXING_5F_LIST,
                                                                                                   const class GALGAS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST,
-                                                                                                  const class GALGAS_templateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
-                                                                                                  const class GALGAS_lexicalFunctionListAST & in_UNICODE_5F_TEST_5F_FUNCTIONS
+                                                                                                  const class GALGAS_templateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST
                                                                                                   COMMA_LOCATION_ARGS) ;
 

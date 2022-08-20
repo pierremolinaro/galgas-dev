@@ -117,9 +117,6 @@ class C_Lexique : public C_Compiler {
 
   public: void exitProduction (void) ;
 
-//--- Protected attribute used for handling lexical loops (in parseLexicalToken methods in inherited classes)
-  protected: bool mLoop ;
-
 //--- Reset Scanner for performing second pass
   private: void resetForSecondPass (void) ;
 

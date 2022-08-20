@@ -184,14 +184,18 @@ end
 
 //----------------------------------------------------------------------------------------------------------------------
 
-NSArray * tokenizers (void) {
+NSArray * tokenizers (void) {%
+if [GUI_CONTEXT.mWithLexiqueList length] == 0 then%
+  return [NSArray array] ;
+%else%
   return [NSArray arrayWithObjects:
 %for (mLexiqueClassName mIndex mBlockComment mTitle mTextMacroList mLabels) in GUI_CONTEXT.mWithLexiqueList do
   %    [OC_Tokenizer_%![mIndex string]%_%!mLexiqueClassName% new],\n%
 end
 %    nil
   ] ;
-}
+%end
+%}
 
 //----------------------------------------------------------------------------------------------------------------------
 

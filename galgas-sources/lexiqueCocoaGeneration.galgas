@@ -245,11 +245,11 @@ override getter @lexicalRepeatInstructionAST generateCocoaInstructionCode
     outGeneratedCode += "}else "
   end
   outGeneratedCode += "}else{\n"
-                      "  mLoop = NO ;\n"
+                      "  loop = NO ;\n"
                       "}\n"
   [!?outGeneratedCode decIndentation !2]
-  outGeneratedCode += "}while (mLoop && scanningOk) ;\n"
-                      "mLoop = YES ;\n"
+  outGeneratedCode += "}while (loop && scanningOk) ;\n"
+                      "loop = YES ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

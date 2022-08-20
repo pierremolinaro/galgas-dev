@@ -257,11 +257,11 @@ override getter @lexicalRepeatInstructionAST generateInstructionCode
     result += "}else "
   end
   result += "}else{\n"
-                      "  mLoop = false ;\n"
+                      "  loop = false ;\n"
                       "}\n"
   [!?result decIndentation !2]
-  result += "}while (mLoop) ;\n"
-                      "mLoop = true ;\n"
+  result += "}while (loop) ;\n"
+                      "loop = true ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

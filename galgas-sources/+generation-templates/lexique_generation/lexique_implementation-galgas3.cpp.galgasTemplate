@@ -198,20 +198,11 @@ end
   end
 %
 //----------------------------------------------------------------------------------------------------------------------
-//            Unicode test functions                                                             
-//----------------------------------------------------------------------------------------------------------------------
- 
-%
-  for (mFunctionName mLexicalExpression) in UNICODE_TEST_FUNCTIONS do
-    %bool C_Lexique_%!LEXIQUE_IDENTIFIER%::%![mFunctionName identifierRepresentation]% (const utf32 inUnicodeCharacter) {\n%
-    %  return %![mLexicalExpression generateForUnicodeTestFunctions]% ;\n%
-    %}\n\n%
-  end
-%//----------------------------------------------------------------------------------------------------------------------
 //               INTERNAL PARSE LEXICAL TOKEN                                         
 //----------------------------------------------------------------------------------------------------------------------
 
 void C_Lexique_%!LEXIQUE_IDENTIFIER%::internalParseLexicalToken (cTokenFor_%!LEXIQUE_IDENTIFIER% & token) {
+  bool loop = true ;
 %  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
     %    token.mLexicalAttribute_%![lkey identifierRepresentation] ![mLexicalType initialization] % ;\n%
   end
@@ -242,7 +233,6 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::internalParseLexicalToken (cTokenFor_%!LEX
 
 bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
   cTokenFor_%!LEXIQUE_IDENTIFIER% token ;
-  mLoop = true ;
   token.mTokenCode = -1 ;
   while ((token.mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
 %
