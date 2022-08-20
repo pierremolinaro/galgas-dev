@@ -1,6 +1,6 @@
 
 #import "OC_Lexique.h"
-//#import "%!SUPER_LEXIQUE_HEADER_FILE_NAME%.h"
+#import "%!SUPER_LEXIQUE_HEADER_FILE_NAME%.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -56,11 +56,5 @@ enum {%!LEXIQUE_CLASS_NAME%_1_%
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-@interface OC_Lexique_%!LEXIQUE_CLASS_NAME% : OC_Lexique { // } OC_Lexique_%!SUPER_LEXIQUE_CLASS_NAME% {
-//--- Attributes
-%
-  for (lkey mLexicalType) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalAttributeMap do
-    % @private %![mLexicalType cocoaTypeName]% mLexicalAttribute_%!lkey.string% ;\n%
-  end
-%
+@interface OC_Lexique_%!LEXIQUE_CLASS_NAME% : OC_Lexique_%!SUPER_LEXIQUE_CLASS_NAME% {
 }

@@ -9,247 +9,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Overriding extension method '@overridingAbstractExtensionSetterAST buildExtensionListMaps'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void cPtr_overridingAbstractExtensionSetterAST::method_buildExtensionListMaps (GALGAS_genericExtensionMethodListMap & /* ioArgument_ioAbstractExtensionSetterListMap */,
-                                                                               GALGAS_genericExtensionMethodListMap & /* ioArgument_ioExtensionSettierListMap */,
-                                                                               GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingExtensionSetterListMap */,
-                                                                               GALGAS_genericExtensionMethodListMap & ioArgument_ioOverridingAbstractExtensionSetterListMap,
-                                                                               GALGAS_genericExtensionMethodListMap & /* ioArgument_ioAbstractExtensionMethodListMapAST */,
-                                                                               GALGAS_genericExtensionMethodListMap & /* ioArgument_ioExtensionMethodListMap */,
-                                                                               GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingExtensionMethodListMap */,
-                                                                               GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingAbstractExtensionMethodListMap */,
-                                                                               GALGAS_genericExtensionMethodListMap & /* ioArgument_ioAbstractExtensionGetterListMap */,
-                                                                               GALGAS_genericExtensionMethodListMap & /* ioArgument_ioExtensionGetterListMap */,
-                                                                               GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingExtensionGetterListMap */,
-                                                                               GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingAbstractExtensionGetterListMap */,
-                                                                               C_Compiler * /* inCompiler */
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_overridingAbstractExtensionSetterAST temp_0 = this ;
-  const GALGAS_overridingAbstractExtensionSetterAST temp_1 = this ;
-  ioArgument_ioOverridingAbstractExtensionSetterListMap.addAssign_operation (temp_0.readProperty_mTypeName ().readProperty_string (), temp_1.readProperty_mOverridingExtensionSetterName ()  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 172)) ;
-}
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@overridingExtensionGetterAST enterDeclarationInGraph'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void cPtr_overridingExtensionGetterAST::method_enterDeclarationInGraph (GALGAS_semanticTypePrecedenceGraph & /* ioArgument_ioSemanticTypePrecedenceGraph */,
-                                                                        GALGAS_extensionMethodMapForBuildingContext & /* ioArgument_ioExtensionMethodMapForBuildingContext */,
-                                                                        GALGAS_extensionGetterMapForBuildingContext & ioArgument_ioExtensionGetterMapForBuildingContext,
-                                                                        GALGAS_extensionSetterMapForBuildingContext & /* ioArgument_ioExtensionSetterMapForBuildingContext */,
-                                                                        GALGAS_semanticDeclarationListAST & ioArgument_ioExtensionOverrideDefinitionList,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_overridingExtensionGetterAST temp_0 = this ;
-  ioArgument_ioExtensionOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 112)) ;
-  enumGalgasBool test_1 = kBoolTrue ;
-  if (kBoolTrue == test_1) {
-    const GALGAS_overridingExtensionGetterAST temp_2 = this ;
-    test_1 = ioArgument_ioExtensionGetterMapForBuildingContext.getter_hasKey (temp_2.readProperty_mTypeName ().readProperty_string () COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 114)).operator_not (SOURCE_FILE ("extension-overriding-getter.galgas", 114)).boolEnum () ;
-    if (kBoolTrue == test_1) {
-      {
-      const GALGAS_overridingExtensionGetterAST temp_3 = this ;
-      ioArgument_ioExtensionGetterMapForBuildingContext.setter_insertKey (temp_3.readProperty_mTypeName (), GALGAS_extensionGetterMapForType::constructor_emptyMap (SOURCE_FILE ("extension-overriding-getter.galgas", 117)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 115)) ;
-      }
-    }
-  }
-  const GALGAS_overridingExtensionGetterAST temp_4 = this ;
-  cMapElement_extensionGetterMapForBuildingContext * objectArray_4969 = (cMapElement_extensionGetterMapForBuildingContext *) ioArgument_ioExtensionGetterMapForBuildingContext.readWriteAccessForWithInstructionWithErrorMessage (inCompiler, temp_4.readProperty_mTypeName (), kSearchErrorMessage_extensionGetterMapForBuildingContext_searchKey  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 120)) ;
-  if (NULL != objectArray_4969) {
-    macroValidSharedObject (objectArray_4969, cMapElement_extensionGetterMapForBuildingContext) ;
-    {
-    const GALGAS_overridingExtensionGetterAST temp_5 = this ;
-    const GALGAS_overridingExtensionGetterAST temp_6 = this ;
-    const GALGAS_overridingExtensionGetterAST temp_7 = this ;
-    objectArray_4969->mProperty_mExtensionGetterMapForType.setter_insertKey (temp_5.readProperty_mOverridingExtensionGetterName (), temp_6.readProperty_mOverridingExtensionGetterReturnedTypeName (), temp_7.readProperty_mOverridingExtensionGetterFormalInputParameterList (), GALGAS_methodQualifier::constructor_isVirtualOverriding (SOURCE_FILE ("extension-overriding-getter.galgas", 125)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 121)) ;
-    }
-  }
-}
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Overriding extension getter '@overridingExtensionGetterAST keyRepresentation'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string cPtr_overridingExtensionGetterAST::getter_keyRepresentation (C_Compiler * inCompiler
-                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result_result ; // Returned variable
-  const GALGAS_overridingExtensionGetterAST temp_0 = this ;
-  const GALGAS_overridingExtensionGetterAST temp_1 = this ;
-  result_result = GALGAS_string ("overriding extension getter @").add_operation (temp_0.readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 135)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 135)).add_operation (temp_1.readProperty_mOverridingExtensionGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 135)) ;
-//---
-  return result_result ;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@overridingExtensionGetterAST enterDeclarationInSemanticContext'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void cPtr_overridingExtensionGetterAST::method_enterDeclarationInSemanticContext (const GALGAS_extensionMethodMapForBuildingContext /* constinArgument_inExtensionMethodMapForBuildingContext */,
-                                                                                  const GALGAS_extensionGetterMapForBuildingContext /* constinArgument_inExtensionGetterMapForBuildingContext */,
-                                                                                  const GALGAS_extensionSetterMapForBuildingContext /* constinArgument_inExtensionSetterMapForBuildingContext */,
-                                                                                  GALGAS_semanticContext & /* ioArgument_ioSemanticContext */,
-                                                                                  C_Compiler * /* inCompiler */
-                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-}
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@overridingExtensionGetterAST semanticAnalysis'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void cPtr_overridingExtensionGetterAST::method_semanticAnalysis (GALGAS_lstringlist & /* ioArgument_ioUsefulnessRootEntities */,
-                                                                 GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                 const GALGAS_string /* constinArgument_inProductDirectory */,
-                                                                 const GALGAS_semanticContext constinArgument_inSemanticContext,
-                                                                 const GALGAS_predefinedTypes constinArgument_inPredefinedTypes,
-                                                                 GALGAS_semanticDeclarationListForGeneration & ioArgument_ioSemanticDeclarationListForGeneration,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_overridingExtensionGetterAST temp_0 = this ;
-  const GALGAS_overridingExtensionGetterAST temp_1 = this ;
-  GALGAS_lstring var_nameForUsefulness_7176 = function_getterNameForUsefulEntitiesGraph (temp_0.readProperty_mTypeName ().readProperty_string (), temp_1.readProperty_mOverridingExtensionGetterName (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 162)) ;
-  {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_7176, var_nameForUsefulness_7176, inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 163)) ;
-  }
-  const GALGAS_overridingExtensionGetterAST temp_2 = this ;
-  GALGAS_lstring var_typeNameForUsefulness_7368 = function_typeNameForUsefulEntitiesGraph (temp_2.readProperty_mTypeName (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 164)) ;
-  {
-  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_typeNameForUsefulness_7368, var_nameForUsefulness_7176 COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 165)) ;
-  }
-  const GALGAS_overridingExtensionGetterAST temp_3 = this ;
-  GALGAS_unifiedTypeMapEntry var_selfType_7548 = extensionGetter_searchKey (constinArgument_inSemanticContext.readProperty_mTypeMap (), temp_3.readProperty_mTypeName (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 167)) ;
-  enumGalgasBool test_4 = kBoolTrue ;
-  if (kBoolTrue == test_4) {
-    test_4 = extensionGetter_definition (var_selfType_7548, inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 169)).readProperty_mTypeKindEnum ().getter_isClassType (SOURCE_FILE ("extension-overriding-getter.galgas", 169)).operator_not (SOURCE_FILE ("extension-overriding-getter.galgas", 169)).boolEnum () ;
-    if (kBoolTrue == test_4) {
-      const GALGAS_overridingExtensionGetterAST temp_5 = this ;
-      TC_Array <C_FixItDescription> fixItArray6 ;
-      inCompiler->emitSemanticError (temp_5.readProperty_mOverridingExtensionGetterName ().readProperty_location (), GALGAS_string ("cannot declare a extension getter: '@").add_operation (extensionGetter_definition (var_selfType_7548, inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 170)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 170)).add_operation (GALGAS_string ("' is not a class"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 170)), fixItArray6  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 170)) ;
-    }
-  }
-  GALGAS_string var_baseTypeName_7908 = GALGAS_string::makeEmptyString () ;
-  GALGAS_unifiedTypeMapEntry var_superType_7950 = extensionGetter_definition (var_selfType_7548, inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 174)).readProperty_mSuperType () ;
-  GALGAS_functionSignature var_inheritedSignature_8029 = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("extension-overriding-getter.galgas", 175)) ;
-  GALGAS_unifiedTypeMapEntry var_inheritedReturnType_8060 = GALGAS_unifiedTypeMapEntry::constructor_null (SOURCE_FILE ("extension-overriding-getter.galgas", 176)) ;
-  GALGAS_location var_inheritedDeclarationLocation_8135 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 177)) ;
-  if (constinArgument_inSemanticContext.readProperty_mTypeMap ().getter_count (SOURCE_FILE ("extension-overriding-getter.galgas", 178)).add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 178)).isValid ()) {
-    uint32_t variant_8159 = constinArgument_inSemanticContext.readProperty_mTypeMap ().getter_count (SOURCE_FILE ("extension-overriding-getter.galgas", 178)).add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 178)).uintValue () ;
-    bool loop_8159 = true ;
-    while (loop_8159) {
-      loop_8159 = var_superType_7950.getter_isNull (SOURCE_FILE ("extension-overriding-getter.galgas", 179)).operator_not (SOURCE_FILE ("extension-overriding-getter.galgas", 179)).operator_and (GALGAS_bool (kIsEqual, var_baseTypeName_7908.objectCompare (GALGAS_string::makeEmptyString ())) COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 179)).isValid () ;
-      if (loop_8159) {
-        loop_8159 = var_superType_7950.getter_isNull (SOURCE_FILE ("extension-overriding-getter.galgas", 179)).operator_not (SOURCE_FILE ("extension-overriding-getter.galgas", 179)).operator_and (GALGAS_bool (kIsEqual, var_baseTypeName_7908.objectCompare (GALGAS_string::makeEmptyString ())) COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 179)).boolValue () ;
-      }
-      if (loop_8159 && (0 == variant_8159)) {
-        loop_8159 = false ;
-        inCompiler->loopRunTimeVariantError (SOURCE_FILE ("extension-overriding-getter.galgas", 178)) ;
-      }
-      if (loop_8159) {
-        variant_8159 -- ;
-        enumGalgasBool test_7 = kBoolTrue ;
-        if (kBoolTrue == test_7) {
-          const GALGAS_overridingExtensionGetterAST temp_8 = this ;
-          test_7 = extensionGetter_definition (var_superType_7950, inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 180)).readProperty_mGetterMap ().getter_hasKey (temp_8.readProperty_mOverridingExtensionGetterName ().readProperty_string () COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 180)).boolEnum () ;
-          if (kBoolTrue == test_7) {
-            GALGAS_methodQualifier var_qualifier_8611 ;
-            const GALGAS_overridingExtensionGetterAST temp_9 = this ;
-            GALGAS_methodKind joker_8464 ; // Joker input parameter
-            GALGAS_bool joker_8541 ; // Joker input parameter
-            GALGAS_string joker_8621 ; // Joker input parameter
-            extensionGetter_definition (var_superType_7950, inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 181)).readProperty_mGetterMap ().method_searchKey (temp_9.readProperty_mOverridingExtensionGetterName (), joker_8464, var_inheritedSignature_8029, var_inheritedDeclarationLocation_8135, joker_8541, var_inheritedReturnType_8060, var_qualifier_8611, joker_8621, inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 181)) ;
-            enumGalgasBool test_10 = kBoolTrue ;
-            if (kBoolTrue == test_10) {
-              test_10 = GALGAS_bool (kIsInfOrEqual, var_qualifier_8611.objectCompare (GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("extension-overriding-getter.galgas", 191)))).boolEnum () ;
-              if (kBoolTrue == test_10) {
-                var_baseTypeName_7908 = extensionGetter_definition (var_superType_7950, inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 192)).readProperty_mTypeName ().readProperty_string () ;
-              }
-            }
-          }
-        }
-        var_superType_7950 = extensionGetter_definition (var_superType_7950, inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 195)).readProperty_mSuperType () ;
-      }
-    }
-  }
-  enumGalgasBool test_11 = kBoolTrue ;
-  if (kBoolTrue == test_11) {
-    test_11 = GALGAS_bool (kIsEqual, var_baseTypeName_7908.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-    if (kBoolTrue == test_11) {
-      const GALGAS_overridingExtensionGetterAST temp_12 = this ;
-      TC_Array <C_FixItDescription> fixItArray13 ;
-      inCompiler->emitSemanticError (temp_12.readProperty_mOverridingExtensionGetterName ().readProperty_location (), GALGAS_string ("this getter is not declared by a super class"), fixItArray13  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 198)) ;
-    }
-  }
-  const GALGAS_overridingExtensionGetterAST temp_14 = this ;
-  GALGAS_analysisContext var_analysisContext_9005 = GALGAS_analysisContext::constructor_new (constinArgument_inSemanticContext, constinArgument_inPredefinedTypes, GALGAS_string ("this"), GALGAS_selfAvailability::constructor_available (var_selfType_7548, GALGAS_bool (false), GALGAS_bool (true)  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 205)), GALGAS_string ("object."), temp_14.readProperty_requiresSelfForAccessingProperty ()  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 201)) ;
-  GALGAS_formalInputParameterListForGeneration var_formalParameterListForGeneration_9907 ;
-  GALGAS_unifiedTypeMapEntry var_returnType_9948 ;
-  GALGAS_string var_returnVariableCppName_9987 ;
-  GALGAS_semanticInstructionListForGeneration var_semanticInstructionListForGeneration_10071 ;
-  {
-  const GALGAS_overridingExtensionGetterAST temp_15 = this ;
-  GALGAS_typedPropertyList temp_16 ;
-  const enumGalgasBool test_17 = extensionGetter_definition (var_selfType_7548, inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 214)).readProperty_mTypeKindEnum ().getter_isClassType (SOURCE_FILE ("extension-overriding-getter.galgas", 214)).operator_or (GALGAS_bool (kIsEqual, extensionGetter_definition (var_selfType_7548, inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 214)).readProperty_mTypeKindEnum ().objectCompare (GALGAS_typeKindEnum::constructor_structType (SOURCE_FILE ("extension-overriding-getter.galgas", 214)))) COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 214)).boolEnum () ;
-  if (kBoolTrue == test_17) {
-    temp_16 = extensionGetter_definition (var_selfType_7548, inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 215)).readProperty_mAllTypedPropertyList () ;
-  }else if (kBoolFalse == test_17) {
-    temp_16 = GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("extension-overriding-getter.galgas", 216)) ;
-  }
-  const GALGAS_overridingExtensionGetterAST temp_18 = this ;
-  const GALGAS_overridingExtensionGetterAST temp_19 = this ;
-  const GALGAS_overridingExtensionGetterAST temp_20 = this ;
-  const GALGAS_overridingExtensionGetterAST temp_21 = this ;
-  routine_analyzeFunctionBody (var_nameForUsefulness_7176, ioArgument_ioUsefulEntitiesGraph, var_analysisContext_9005, temp_15.readProperty_mOverridingExtensionGetterFormalInputParameterList (), temp_16, GALGAS_string ("this->"), temp_18.readProperty_mOverridingExtensionGetterInstructionList (), temp_19.readProperty_mOverridingExtensionGetterReturnedVariableName (), temp_20.readProperty_mOverridingExtensionGetterReturnedTypeName (), temp_21.readProperty_mEndOfReaderLocation (), var_formalParameterListForGeneration_9907, var_returnType_9948, var_returnVariableCppName_9987, var_semanticInstructionListForGeneration_10071, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 209)) ;
-  }
-  enumGalgasBool test_22 = kBoolTrue ;
-  if (kBoolTrue == test_22) {
-    test_22 = GALGAS_bool (kIsNotEqual, var_baseTypeName_7908.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-    if (kBoolTrue == test_22) {
-      {
-      const GALGAS_overridingExtensionGetterAST temp_23 = this ;
-      routine_checkGetterSignatures (var_formalParameterListForGeneration_9907, var_returnType_9948, temp_23.readProperty_mOverridingExtensionGetterName ().readProperty_location (), var_inheritedSignature_8029, var_inheritedReturnType_8060, var_inheritedDeclarationLocation_8135, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 230)) ;
-      }
-    }
-  }
-  const GALGAS_overridingExtensionGetterAST temp_24 = this ;
-  const GALGAS_overridingExtensionGetterAST temp_25 = this ;
-  const GALGAS_overridingExtensionGetterAST temp_26 = this ;
-  const GALGAS_overridingExtensionGetterAST temp_27 = this ;
-  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("override extension getter ").add_operation (temp_24.readProperty_mOverridingExtensionGetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 241)), GALGAS_overrideExtensionGetterForGeneration::constructor_new (GALGAS_bool (false), GALGAS_string ("getter-").add_operation (temp_25.readProperty_mTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("extension-overriding-getter.galgas", 244)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 244)).add_operation (GALGAS_string ("-"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 244)).add_operation (temp_26.readProperty_mOverridingExtensionGetterName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("extension-overriding-getter.galgas", 244)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 244)), var_selfType_7548, var_baseTypeName_7908, temp_27.readProperty_mOverridingExtensionGetterName ().readProperty_string (), var_returnType_9948, var_returnVariableCppName_9987, var_formalParameterListForGeneration_9907, extensionGetter_definition (var_selfType_7548, inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 251)).readProperty_mAllTypedPropertyList (), var_semanticInstructionListForGeneration_10071  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 242))  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 240)) ;
-}
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@overridingExtensionGetterAST buildExtensionListMaps'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void cPtr_overridingExtensionGetterAST::method_buildExtensionListMaps (GALGAS_genericExtensionMethodListMap & /* ioArgument_ioAbstractExtensionSetterListMap */,
-                                                                       GALGAS_genericExtensionMethodListMap & /* ioArgument_ioExtensionSettierListMap */,
-                                                                       GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingExtensionSetterListMap */,
-                                                                       GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingAbstractExtensionSetterListMap */,
-                                                                       GALGAS_genericExtensionMethodListMap & /* ioArgument_ioAbstractExtensionMethodListMapAST */,
-                                                                       GALGAS_genericExtensionMethodListMap & /* ioArgument_ioExtensionMethodListMap */,
-                                                                       GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingExtensionMethodListMap */,
-                                                                       GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingAbstractExtensionMethodListMap */,
-                                                                       GALGAS_genericExtensionMethodListMap & /* ioArgument_ioAbstractExtensionGetterListMap */,
-                                                                       GALGAS_genericExtensionMethodListMap & /* ioArgument_ioExtensionGetterListMap */,
-                                                                       GALGAS_genericExtensionMethodListMap & ioArgument_ioOverridingExtensionGetterListMap,
-                                                                       GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingAbstractExtensionGetterListMap */,
-                                                                       C_Compiler * /* inCompiler */
-                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_overridingExtensionGetterAST temp_0 = this ;
-  const GALGAS_overridingExtensionGetterAST temp_1 = this ;
-  ioArgument_ioOverridingExtensionGetterListMap.addAssign_operation (temp_0.readProperty_mTypeName ().readProperty_string (), temp_1.readProperty_mOverridingExtensionGetterName ()  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 273)) ;
-}
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Overriding extension getter '@overrideExtensionGetterForGeneration headerKind'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -8466,4 +8225,211 @@ void cPtr_inputParameterDeclaredConstant::method_analyzeInputParameter (const GA
   extensionSetter_insertInitializedLocalConstant (ioArgument_ioVariableMap, temp_9.readProperty_mActualParameterName (), var_expectedType_56128, var_cppName_57419, var_cppName_57419, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1233)) ;
   }
   ioArgument_ioTerminalCheckAssignementList.addAssign_operation (extensionGetter_definition (var_expectedType_56128, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1236)).readProperty_mTypeName ().readProperty_string (), var_cppName_57419, constinArgument_inLexicalAttributeName  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1235)) ;
+}
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@grammarInstructionSyntaxDirectedTranslationResultNone analyzeSDT'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_grammarInstructionSyntaxDirectedTranslationResultNone::method_analyzeSDT (const GALGAS_analysisContext /* constinArgument_inAnalysisContext */,
+                                                                                    const GALGAS_bool /* constinArgument_inHasTranslateFeature */,
+                                                                                    GALGAS_localVarManager & /* ioArgument_ioVariableMap */,
+                                                                                    C_Compiler * /* inCompiler */
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+}
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@grammarInstructionSyntaxDirectedTranslationDropResult analyzeSDT'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_grammarInstructionSyntaxDirectedTranslationDropResult::method_analyzeSDT (const GALGAS_analysisContext /* constinArgument_inAnalysisContext */,
+                                                                                    const GALGAS_bool constinArgument_inHasTranslateFeature,
+                                                                                    GALGAS_localVarManager & /* ioArgument_ioVariableMap */,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  enumGalgasBool test_0 = kBoolTrue ;
+  if (kBoolTrue == test_0) {
+    test_0 = constinArgument_inHasTranslateFeature.operator_not (SOURCE_FILE ("semanticAnalysis.galgas", 1262)).boolEnum () ;
+    if (kBoolTrue == test_0) {
+      const GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult temp_1 = this ;
+      TC_Array <C_FixItDescription> fixItArray2 ;
+      inCompiler->emitSemanticError (temp_1.readProperty_mLocation (), GALGAS_string ("the ':>' construct requires the syntax component to be declared with 'translate' feature"), fixItArray2  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1263)) ;
+    }
+  }
+}
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@grammarInstructionSyntaxDirectedTranslationResultInVar analyzeSDT'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar::method_analyzeSDT (const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                                     const GALGAS_bool constinArgument_inHasTranslateFeature,
+                                                                                     GALGAS_localVarManager & ioArgument_ioVariableMap,
+                                                                                     C_Compiler * inCompiler
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  enumGalgasBool test_0 = kBoolTrue ;
+  if (kBoolTrue == test_0) {
+    test_0 = constinArgument_inHasTranslateFeature.operator_not (SOURCE_FILE ("semanticAnalysis.galgas", 1273)).boolEnum () ;
+    if (kBoolTrue == test_0) {
+      const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar temp_1 = this ;
+      TC_Array <C_FixItDescription> fixItArray2 ;
+      inCompiler->emitSemanticError (temp_1.readProperty_mActualParameterName ().readProperty_location (), GALGAS_string ("the ':>' construct requires the syntax component to be declared with 'translate' feature"), fixItArray2  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1274)) ;
+    }
+  }
+  GALGAS_unifiedTypeMapEntry var_type_59533 ;
+  {
+  const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar temp_3 = this ;
+  GALGAS_string joker_59535 ; // Joker input parameter
+  GALGAS_string joker_59538 ; // Joker input parameter
+  extensionSetter_searchForWriteAccess (ioArgument_ioVariableMap, temp_3.readProperty_mActualParameterName (), var_type_59533, joker_59535, joker_59538, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1276)) ;
+  }
+  GALGAS_unifiedTypeMapEntry var_expectedType_59559 = constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mStringType () ;
+  enumGalgasBool test_4 = kBoolTrue ;
+  if (kBoolTrue == test_4) {
+    test_4 = GALGAS_bool (kIsNotEqual, var_expectedType_59559.objectCompare (var_type_59533)).boolEnum () ;
+    if (kBoolTrue == test_4) {
+      const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar temp_5 = this ;
+      const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar temp_6 = this ;
+      TC_Array <C_FixItDescription> fixItArray7 ;
+      inCompiler->emitSemanticError (temp_5.readProperty_mActualParameterName ().readProperty_location (), GALGAS_string ("the '").add_operation (temp_6.readProperty_mActualParameterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1280)).add_operation (GALGAS_string ("' parameter has the '@"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1280)).add_operation (extensionGetter_identifierRepresentation (var_type_59533, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1280)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1280)).add_operation (GALGAS_string (", bit an '@"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1280)).add_operation (extensionGetter_identifierRepresentation (var_expectedType_59559, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1281)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1281)).add_operation (GALGAS_string ("' parameter is required here"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1281)), fixItArray7  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1279)) ;
+    }
+  }
+}
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar analyzeSDT'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar::method_analyzeSDT (const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                                             const GALGAS_bool constinArgument_inHasTranslateFeature,
+                                                                                             GALGAS_localVarManager & ioArgument_ioVariableMap,
+                                                                                             C_Compiler * inCompiler
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  enumGalgasBool test_0 = kBoolTrue ;
+  if (kBoolTrue == test_0) {
+    test_0 = constinArgument_inHasTranslateFeature.operator_not (SOURCE_FILE ("semanticAnalysis.galgas", 1291)).boolEnum () ;
+    if (kBoolTrue == test_0) {
+      const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar temp_1 = this ;
+      TC_Array <C_FixItDescription> fixItArray2 ;
+      inCompiler->emitSemanticError (temp_1.readProperty_mActualParameterName ().readProperty_location (), GALGAS_string ("the ':>' construct requires the syntax component to be declared with 'translate' feature"), fixItArray2  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1292)) ;
+    }
+  }
+  const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar temp_3 = this ;
+  const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar temp_4 = this ;
+  GALGAS_string var_cppName_60395 = GALGAS_string ("var_").add_operation (temp_3.readProperty_mActualParameterName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("semanticAnalysis.galgas", 1294)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1294)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1294)).add_operation (temp_4.readProperty_mActualParameterName ().readProperty_location ().getter_locationIndex (inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1294)).getter_string (SOURCE_FILE ("semanticAnalysis.galgas", 1294)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1294)) ;
+  const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar temp_5 = this ;
+  GALGAS_unifiedTypeMapEntry var_type_60529 = extensionGetter_searchKey (constinArgument_inAnalysisContext.readProperty_mSemanticContext ().readProperty_mTypeMap (), temp_5.readProperty_mActualParameterTypeName (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1295)) ;
+  {
+  const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar temp_6 = this ;
+  extensionSetter_insertInitializedLocalVariable (ioArgument_ioVariableMap, temp_6.readProperty_mActualParameterName (), GALGAS_bool (true), var_type_60529, var_cppName_60395, var_cppName_60395, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1296)) ;
+  }
+  GALGAS_unifiedTypeMapEntry var_expectedType_60787 = constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mStringType () ;
+  enumGalgasBool test_7 = kBoolTrue ;
+  if (kBoolTrue == test_7) {
+    test_7 = GALGAS_bool (kIsNotEqual, var_expectedType_60787.objectCompare (var_type_60529)).boolEnum () ;
+    if (kBoolTrue == test_7) {
+      const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar temp_8 = this ;
+      const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar temp_9 = this ;
+      TC_Array <C_FixItDescription> fixItArray10 ;
+      inCompiler->emitSemanticError (temp_8.readProperty_mActualParameterName ().readProperty_location (), GALGAS_string ("the '").add_operation (temp_9.readProperty_mActualParameterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1306)).add_operation (GALGAS_string ("' parameter has the '@"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1306)).add_operation (extensionGetter_identifierRepresentation (var_type_60529, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1306)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1306)).add_operation (GALGAS_string (", bit an '@"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1306)).add_operation (extensionGetter_identifierRepresentation (var_expectedType_60787, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1307)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1307)).add_operation (GALGAS_string ("' parameter is required here"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1307)), fixItArray10  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1305)) ;
+    }
+  }
+}
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst analyzeSDT'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst::method_analyzeSDT (const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                                               const GALGAS_bool constinArgument_inHasTranslateFeature,
+                                                                                               GALGAS_localVarManager & ioArgument_ioVariableMap,
+                                                                                               C_Compiler * inCompiler
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  enumGalgasBool test_0 = kBoolTrue ;
+  if (kBoolTrue == test_0) {
+    test_0 = constinArgument_inHasTranslateFeature.operator_not (SOURCE_FILE ("semanticAnalysis.galgas", 1317)).boolEnum () ;
+    if (kBoolTrue == test_0) {
+      const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst temp_1 = this ;
+      TC_Array <C_FixItDescription> fixItArray2 ;
+      inCompiler->emitSemanticError (temp_1.readProperty_mActualParameterName ().readProperty_location (), GALGAS_string ("the ':>' construct requires the grammar to be declared with 'translate' feature"), fixItArray2  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1318)) ;
+    }
+  }
+  const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst temp_3 = this ;
+  const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst temp_4 = this ;
+  GALGAS_string var_cppName_61616 = GALGAS_string ("var_").add_operation (temp_3.readProperty_mActualParameterName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("semanticAnalysis.galgas", 1320)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1320)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1320)).add_operation (temp_4.readProperty_mActualParameterName ().readProperty_location ().getter_locationIndex (inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1320)).getter_string (SOURCE_FILE ("semanticAnalysis.galgas", 1320)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1320)) ;
+  const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst temp_5 = this ;
+  GALGAS_unifiedTypeMapEntry var_type_61750 = extensionGetter_searchKey (constinArgument_inAnalysisContext.readProperty_mSemanticContext ().readProperty_mTypeMap (), temp_5.readProperty_mActualParameterTypeName (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1321)) ;
+  {
+  const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst temp_6 = this ;
+  extensionSetter_insertInitializedLocalConstant (ioArgument_ioVariableMap, temp_6.readProperty_mActualParameterName (), var_type_61750, var_cppName_61616, var_cppName_61616, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1322)) ;
+  }
+  GALGAS_unifiedTypeMapEntry var_expectedType_61960 = constinArgument_inAnalysisContext.readProperty_mPredefinedTypes ().readProperty_mStringType () ;
+  enumGalgasBool test_7 = kBoolTrue ;
+  if (kBoolTrue == test_7) {
+    test_7 = GALGAS_bool (kIsNotEqual, var_expectedType_61960.objectCompare (var_type_61750)).boolEnum () ;
+    if (kBoolTrue == test_7) {
+      const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst temp_8 = this ;
+      const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst temp_9 = this ;
+      TC_Array <C_FixItDescription> fixItArray10 ;
+      inCompiler->emitSemanticError (temp_8.readProperty_mActualParameterName ().readProperty_location (), GALGAS_string ("the '").add_operation (temp_9.readProperty_mActualParameterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1326)).add_operation (GALGAS_string ("' parameter has the '@"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1326)).add_operation (extensionGetter_identifierRepresentation (var_type_61750, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1326)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1326)).add_operation (GALGAS_string (", bit an '@"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1326)).add_operation (extensionGetter_identifierRepresentation (var_expectedType_61960, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1327)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1327)).add_operation (GALGAS_string ("' parameter is required here"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1327)), fixItArray10  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1325)) ;
+    }
+  }
+}
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@grammarInstructionSyntaxDirectedTranslationResultNone generateCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_grammarInstructionSyntaxDirectedTranslationResultNone::method_generateCode (const GALGAS_bool constinArgument_inGenerateSyntaxDirectedTranslationString,
+                                                                                      const GALGAS_string constinArgument_inAccessMethodName,
+                                                                                      GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                                      GALGAS_string & ioArgument_ioGeneratedCode,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  enumGalgasBool test_0 = kBoolTrue ;
+  if (kBoolTrue == test_0) {
+    test_0 = constinArgument_inGenerateSyntaxDirectedTranslationString.boolEnum () ;
+    if (kBoolTrue == test_0) {
+      ioArgument_ioGeneratedCode.plusAssign_operation(function_syntaxDirectedTranslationResultVarName (inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1347)).add_operation (GALGAS_string (" << "), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1347)).add_operation (constinArgument_inAccessMethodName, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1347)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1347)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1347)) ;
+      {
+      ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_syntaxDirectedTranslationResultVarName (inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1348)) COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1348)) ;
+      }
+    }
+  }
+}
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@grammarInstructionSyntaxDirectedTranslationDropResult generateCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_grammarInstructionSyntaxDirectedTranslationDropResult::method_generateCode (const GALGAS_bool /* constinArgument_inGenerateSyntaxDirectedTranslationString */,
+                                                                                      const GALGAS_string /* constinArgument_inAccessMethodName */,
+                                                                                      GALGAS_stringset & /* ioArgument_ioUnusedVariableCppNameSet */,
+                                                                                      GALGAS_string & /* ioArgument_ioGeneratedCode */,
+                                                                                      C_Compiler * /* inCompiler */
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+}
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@grammarInstructionSyntaxDirectedTranslationResultInVar generateCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar::method_generateCode (const GALGAS_bool /* constinArgument_inGenerateSyntaxDirectedTranslationString */,
+                                                                                       const GALGAS_string constinArgument_inAccessMethodName,
+                                                                                       GALGAS_stringset & /* ioArgument_ioUnusedVariableCppNameSet */,
+                                                                                       GALGAS_string & ioArgument_ioGeneratedCode,
+                                                                                       C_Compiler * inCompiler
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar temp_0 = this ;
+  const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar temp_1 = this ;
+  GALGAS_string var_cppName_64068 = GALGAS_string ("var_").add_operation (temp_0.readProperty_mActualParameterName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("semanticAnalysis.galgas", 1368)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1368)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1368)).add_operation (temp_1.readProperty_mActualParameterName ().readProperty_location ().getter_locationIndex (inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1368)).getter_string (SOURCE_FILE ("semanticAnalysis.galgas", 1368)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1368)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(var_cppName_64068.add_operation (GALGAS_string (" = GALGAS_string ("), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1369)).add_operation (constinArgument_inAccessMethodName, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1369)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1369)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1369)) ;
 }

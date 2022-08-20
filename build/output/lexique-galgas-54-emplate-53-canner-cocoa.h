@@ -4,7 +4,7 @@
 //--- END OF USER ZONE 1
 
 #import "OC_Lexique.h"
-//#import "lexique-galgas-53-canner-cocoa.h"
+#import "lexique-galgas-53-canner-cocoa.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -190,27 +190,13 @@ enum {galgasTemplateScanner_1_,
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-@interface OC_Lexique_galgasTemplateScanner : OC_Lexique { // } OC_Lexique_galgasScanner {
-//--- Attributes
- @private NSMutableString * mLexicalAttribute_bigintValue ;
- @private UInt32 mLexicalAttribute_charValue ;
- @private double mLexicalAttribute_floatValue ;
- @private NSMutableString * mLexicalAttribute_identifierString ;
- @private SInt32 mLexicalAttribute_sint32value ;
- @private SInt64 mLexicalAttribute_sint64value ;
- @private NSMutableString * mLexicalAttribute_tokenString ;
- @private UInt32 mLexicalAttribute_uint32value ;
- @private UInt64 mLexicalAttribute_uint64value ;
-
+@interface OC_Lexique_galgasTemplateScanner : OC_Lexique_galgasScanner {
 }
-
-- (NSUInteger) terminalVocabularyCount ;
-
-- (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal ;
 
 - (void) parseLexicalTokenForLexicalColoring ;
 
-- (NSUInteger) styleCount ;
+
+- (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal ;
 
 - (NSString *) styleNameForStyleIndex: (NSInteger) inIndex ;
 

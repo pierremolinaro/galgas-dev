@@ -1,11 +1,8 @@
 
-- (NSUInteger) terminalVocabularyCount ;
-
-- (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal ;
-
 - (void) parseLexicalTokenForLexicalColoring ;
 
-- (NSUInteger) styleCount ;
+
+- (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal ;
 
 - (NSString *) styleNameForStyleIndex: (NSInteger) inIndex ;
 
