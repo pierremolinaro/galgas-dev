@@ -153,7 +153,6 @@ end
   BOOL scanningOk = YES ;
   mTokenCode = 0 ;
   while ((mTokenCode == 0) && (mCurrentChar != '\0')) {
-    mTokenStartLocation = mCurrentLocation ;
 %
   if [TEMPLATE_DELIMITOR_LIST length] > 0 then
 %    if ((mMatchedTemplateDelimiterIndex >= 0) && ([[kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] startString].length > 0)) {

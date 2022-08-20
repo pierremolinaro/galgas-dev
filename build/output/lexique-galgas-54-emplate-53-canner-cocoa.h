@@ -207,6 +207,8 @@ enum {galgasTemplateScanner_1_,
 
 - (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal ;
 
+- (BOOL) internalParseLexicalTokenForLexicalColoring ;
+
 - (void) parseLexicalTokenForLexicalColoring ;
 
 - (NSUInteger) styleCount ;

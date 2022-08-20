@@ -144,16 +144,42 @@ end
 %
 //----------------------------------------------------------------------------------------------------------------------
 //
+//               I N T E R N A L    P A R S E    L E X I C A L    T O K E N                                         
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+- (BOOL) internalParseLexicalTokenForLexicalColoring {
+  BOOL loop = YES ;
+  BOOL scanningOk = YES ;
+%  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
+    %  %![mLexicalType cocoaResetPrefix]%mLexicalAttribute_%!lkey.string ![mLexicalType cocoaReset] % ;\n%
+  end
+%  mTokenStartLocation = mCurrentLocation ;
+%
+  block 2 :
+    for (mLexicalRule) in LEXICAL_RULE_LIST do
+      ![mLexicalRule generateCocoaCode !LEXIQUE_CLASS_NAME !LEXIQUE_ANALYSIS_CONTEXT]
+    end
+  end
+%  if ([self testForInputChar:'\0']) { // End of source text ? 
+    mTokenCode = %!LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
+  }else{ // Unknown input character
+    scanningOk = NO ;
+    [self advance] ;
+  }
+  return scanningOk ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //               P A R S E    L E X I C A L    T O K E N                                         
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 - (void) parseLexicalTokenForLexicalColoring {
-  BOOL loop = YES ;
   BOOL scanningOk = YES ;
   mTokenCode = 0 ;
   while ((mTokenCode == 0) && (mCurrentChar != '\0')) {
-    mTokenStartLocation = mCurrentLocation ;
 %
   if [TEMPLATE_DELIMITOR_LIST length] > 0 then
 %    if ((mMatchedTemplateDelimiterIndex >= 0) && ([[kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] startString].length > 0)) {
@@ -173,50 +199,16 @@ end
       }
     }
     if ((mMatchedTemplateDelimiterIndex >= 0) && (mTokenCode == 0) && (mCurrentChar != '\0') && scanningOk) {
-%  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
-    %      %![mLexicalType cocoaResetPrefix]%mLexicalAttribute_%!lkey.string ![mLexicalType cocoaReset] % ;\n%
-  end
-%      mTokenStartLocation = mCurrentLocation ;
-%
-  block 6 :
-    for (mLexicalRule) in LEXICAL_RULE_LIST do
-      ![mLexicalRule generateCocoaCode !LEXIQUE_CLASS_NAME !LEXIQUE_ANALYSIS_CONTEXT]
-    end
-  end
-%if ([self testForInputChar:'\0']) { // End of source text ? 
-        mTokenCode = %!LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
-      }else{ // Unknown input character
-        scanningOk = NO ;
-      }
+      scanningOk = [self internalParseLexicalTokenForLexicalColoring] ;
     }
     if ((mTokenCode > 0) && kEndOfScriptInTemplateArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [mTokenCode - 1]) {
       mMatchedTemplateDelimiterIndex = -1 ;
-    }
-  //--- Error ?
-    if (! scanningOk) {
-      mTokenCode = -1 ;
-      [self advance] ;
     }%else
-  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
-    %    %![mLexicalType cocoaResetPrefix]%mLexicalAttribute_%!lkey.string ![mLexicalType cocoaReset] % ;\n%
-  end
-%    mTokenStartLocation = mCurrentLocation ;
-%
-  block 4 :
-    for (mLexicalRule) in LEXICAL_RULE_LIST do
-      ![mLexicalRule generateCocoaCode !LEXIQUE_CLASS_NAME !LEXIQUE_ANALYSIS_CONTEXT]
-    end
-  end
-%if ([self testForInputChar:'\0']) { // End of source text ? 
-      mTokenCode = %!LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
-    }else{ // Unknown input character
-      scanningOk = NO ;
-      [self advance] ;
-    }
-  //--- Error ?
-    if (! scanningOk) {
-      mTokenCode = -1 ;
-    }%end%
+%    scanningOk = [self internalParseLexicalTokenForLexicalColoring] ;%end %
+  }
+//--- Error ?
+  if (! scanningOk) {
+    mTokenCode = -1 ;
   }
 }
 
