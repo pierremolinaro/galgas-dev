@@ -13,7 +13,7 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax galgas3GrammarComponentSyntax (galgas3Scanner) {
+syntax galgas3GrammarComponentSyntax (galgasScanner) {
 
   #·····················································································································
   #   G R A M M A R    C O M P O N E N T      
@@ -183,7 +183,7 @@ syntax galgas3GrammarComponentSyntax (galgas3Scanner) {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax galgas4GrammarComponentSyntax (galgas3Scanner) {
+syntax galgas4GrammarComponentSyntax (galgasScanner) {
 
   #·····················································································································
   #   G R A M M A R    C O M P O N E N T      

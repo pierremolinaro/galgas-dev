@@ -15,7 +15,7 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax galgas3ProjectSyntax (galgas3Scanner) {
+syntax galgas3ProjectSyntax (galgasScanner) {
 
 rule <project_header> !@lbigint majorVersion !@lbigint minorVersion !@lbigint revisionVersion !@lstring targetName {
   $project$

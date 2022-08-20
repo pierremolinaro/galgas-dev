@@ -13,7 +13,26 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
+refclass @lexiqueComponentAST : @semanticDeclarationAST {
+  private let @lstring mLexiqueComponentName
+  private let @bool mIsTemplate
+  private let @templateDelimitorListAST mTemplateDelimitorList
+  private let @templateReplacementListAST mTemplateReplacementList
+  private let @lexicalAttributeListAST mLexicalAttributeList
+  private let @lexicalStyleListAST mLexicalStyleList
+  private let @terminalDeclarationListAST mTerminalDeclarationList
+  private let @lexicalMessageDeclarationListAST mLexicalMessageDeclarationList
+  private let @lexicalListDeclarationListAST mLexicalListDeclarationList
+  private let @lexicalRuleListAST mLexicalRuleList
+#  private let @externRoutineListAST mExternRoutineList
+#  private let @externFunctionListAST mExternFunctionList
+  private let @indexingListAST mIndexingListAST
+  private let @lstring mIndexingDirectory
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax galgas3LexiqueComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
@@ -40,15 +59,14 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
     var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = {}
     var @lexicalListDeclarationListAST lexicalListDeclarationList = {}
     var @lexicalRuleListAST lexicalRuleList = {}
-    var @externRoutineListAST externRoutineList = {}
-    var @externFunctionListAST externFunctionList = {}
+#    var @externRoutineListAST externRoutineList = {}
+#    var @externFunctionListAST externFunctionList = {}
     var @indexingListAST indexingListAST = {}
-#    var @lexicalFunctionListAST lexicalFunctionListAST = {}
     repeat
-    while 
-      <extern_routine_declaration> !?externRoutineList
-    while 
-      <extern_function_declaration> !?externFunctionList
+#    while 
+#      <extern_routine_declaration> !?externRoutineList
+#    while 
+#      <extern_function_declaration> !?externFunctionList
     while 
       <template_delimitor> !? templateDelimitorList
     while 
@@ -69,8 +87,6 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
       <lexical_message_declaration> !?lexicalMessageDeclarationList
     while
       <lexical_indexing_declaration> !?indexingListAST
-#    while
-#      <lexical_function_declaration> !?lexicalFunctionListAST
     end
     $}$
     ioDeclarations.mDeclarationList += !@lexiqueComponentAST.new {
@@ -85,11 +101,10 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
       !lexicalMessageDeclarationList
       !lexicalListDeclarationList
       !lexicalRuleList
-      !externRoutineList
-      !externFunctionList
+#      !externRoutineList
+#      !externFunctionList
       !indexingListAST
       !indexingDirectory
-#      !lexicalFunctionListAST
     }
   }
 
@@ -119,14 +134,14 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
     var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = {}
     var @lexicalListDeclarationListAST lexicalListDeclarationList = {}
     var @lexicalRuleListAST lexicalRuleList = {}
-    var @externRoutineListAST externRoutineList = {}
-    var @externFunctionListAST externFunctionList = {}
+#    var @externRoutineListAST externRoutineList = {}
+#    var @externFunctionListAST externFunctionList = {}
     var @indexingListAST indexingListAST = {}
     repeat
-    while 
-      <extern_routine_declaration> !?externRoutineList
-    while 
-      <extern_function_declaration> !?externFunctionList
+#    while 
+#      <extern_routine_declaration> !?externRoutineList
+#    while 
+#      <extern_function_declaration> !?externFunctionList
     while 
       <template_delimitor> !? templateDelimitorList
     while 
@@ -147,8 +162,6 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
       <lexical_message_declaration> !?lexicalMessageDeclarationList
     while
       <lexical_indexing_declaration> !?indexingListAST
-#    while
-#      <lexical_function_declaration> !?lexicalFunctionListAST
     end
     $}$
     ioDeclarations.mDeclarationList += !@lexiqueComponentAST.new {
@@ -163,11 +176,10 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
       !lexicalMessageDeclarationList
       !lexicalListDeclarationList
       !lexicalRuleList
-      !externRoutineList
-      !externFunctionList
+#      !externRoutineList
+#      !externFunctionList
       !indexingListAST
       !indexingDirectory
-#      !lexicalFunctionListAST
     }
   }
 
@@ -662,66 +674,68 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
 
   #·····················································································································
 
-  rule <extern_routine_declaration> ?!@externRoutineListAST ioExternRoutineList {
-    $extern$
-    $proc$
-    $identifier$ ?let @lstring routineName
-    var lexicalRoutineFormalArgumentList = @lexicalExternRoutineFormalArgumentListAST {}
-    repeat
-    while
-      let @lexicalArgumentModeAST lexicalArgumentMode
-      select
-        $?!$ ?let selector
-        if selector.string != "" then
-          error selector : "the selector should be '?!'" fixit { replace "?!" }
-        end
-        lexicalArgumentMode = @lexicalArgumentModeAST. lexicalInputOutputMode
-      or
-        $?$ ?let selector
-        if selector.string != "" then
-          error selector : "the selector should be '?'"  fixit { replace "?" }
-        end
-        lexicalArgumentMode = @lexicalArgumentModeAST. lexicalInputMode
-      end
-      $@type$ ?let @lstring lexicalTypeName
-      $identifier$ ?let @lstring formalArgumentName
-      lexicalRoutineFormalArgumentList += !lexicalArgumentMode !lexicalTypeName !formalArgumentName
-    end
-    var @stringlist errorMessageList = {}
-    select
-    or
-      $error$
-      repeat
-        $identifier$ ?let @lstring errorMessageName
-        errorMessageList += !errorMessageName.string
-      while
-        $,$
-      end
-    end
-    ioExternRoutineList += !routineName !lexicalRoutineFormalArgumentList !errorMessageList
-  }
+#  rule <extern_routine_declaration> ?!@externRoutineListAST ioExternRoutineList {
+#    $extern$
+#    $proc$
+#    $identifier$ ?let @lstring routineName
+#    error routineName : "OBSOLETE EXTERN LEXICAL ROUTINE"
+#    var lexicalRoutineFormalArgumentList = @lexicalExternRoutineFormalArgumentListAST {}
+#    repeat
+#    while
+#      let @lexicalArgumentModeAST lexicalArgumentMode
+#      select
+#        $?!$ ?let selector
+#        if selector.string != "" then
+#          error selector : "the selector should be '?!'" fixit { replace "?!" }
+#        end
+#        lexicalArgumentMode = @lexicalArgumentModeAST. lexicalInputOutputMode
+#      or
+#        $?$ ?let selector
+#        if selector.string != "" then
+#          error selector : "the selector should be '?'"  fixit { replace "?" }
+#        end
+#        lexicalArgumentMode = @lexicalArgumentModeAST. lexicalInputMode
+#      end
+#      $@type$ ?let @lstring lexicalTypeName
+#      $identifier$ ?let @lstring formalArgumentName
+#      lexicalRoutineFormalArgumentList += !lexicalArgumentMode !lexicalTypeName !formalArgumentName
+#    end
+#    var @stringlist errorMessageList = {}
+#    select
+#    or
+#      $error$
+#      repeat
+#        $identifier$ ?let @lstring errorMessageName
+#        errorMessageList += !errorMessageName.string
+#      while
+#        $,$
+#      end
+#    end
+#    ioExternRoutineList += !routineName !lexicalRoutineFormalArgumentList !errorMessageList
+#  }
 
   #·····················································································································
 
-  rule <extern_function_declaration> ?!@externFunctionListAST ioExternFunctionList {
-    $extern$
-    $func$
-    $identifier$ ?let @lstring functionName
-    var lexicalFunctionFormalArgumentList = @lexicalExternFunctionFormalArgumentListAST {}
-    repeat
-    while
-      $?$ ?let selector
-      if selector.string != "" then
-        error selector : "the selector should be '?'"  fixit { replace "?" }
-      end
-      $@type$ ?let @lstring lexicalTypeName
-      $identifier$ ?let @lstring formalArgumentName
-      lexicalFunctionFormalArgumentList += !lexicalTypeName !formalArgumentName
-    end
-    $->$
-    $@type$ ?let @lstring returnedTypeName
-    ioExternFunctionList += !functionName !lexicalFunctionFormalArgumentList !returnedTypeName
-  }
+#  rule <extern_function_declaration> ?!@externFunctionListAST ioExternFunctionList {
+#    $extern$
+#    $func$
+#    $identifier$ ?let @lstring functionName
+#    error functionName : "OBSOLETE EXTERN LEXICAL FUNCTION"
+#    var lexicalFunctionFormalArgumentList = @lexicalExternFunctionFormalArgumentListAST {}
+#    repeat
+#    while
+#      $?$ ?let selector
+#      if selector.string != "" then
+#        error selector : "the selector should be '?'"  fixit { replace "?" }
+#      end
+#      $@type$ ?let @lstring lexicalTypeName
+#      $identifier$ ?let @lstring formalArgumentName
+#      lexicalFunctionFormalArgumentList += !lexicalTypeName !formalArgumentName
+#    end
+#    $->$
+#    $@type$ ?let @lstring returnedTypeName
+#    ioExternFunctionList += !functionName !lexicalFunctionFormalArgumentList !returnedTypeName
+#  }
 
   #·····················································································································
 
@@ -729,7 +743,7 @@ syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
+syntax galgas4LexiqueComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
@@ -756,15 +770,14 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
     var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = {}
     var @lexicalListDeclarationListAST lexicalListDeclarationList = {}
     var @lexicalRuleListAST lexicalRuleList = {}
-    var @externRoutineListAST externRoutineList = {}
-    var @externFunctionListAST externFunctionList = {}
+#    var @externRoutineListAST externRoutineList = {}
+#    var @externFunctionListAST externFunctionList = {}
     var @indexingListAST indexingListAST = {}
-#    var @lexicalFunctionListAST lexicalFunctionListAST = {}
     repeat
-    while 
-      <extern_routine_declaration> !?externRoutineList
-    while 
-      <extern_function_declaration> !?externFunctionList
+#    while 
+#      <extern_routine_declaration> !?externRoutineList
+#    while 
+#      <extern_function_declaration> !?externFunctionList
     while 
       <template_delimitor> !? templateDelimitorList
     while 
@@ -785,8 +798,6 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
       <lexical_message_declaration> !?lexicalMessageDeclarationList
     while
       <lexical_indexing_declaration> !?indexingListAST
-#    while
-#      <lexical_function_declaration> !?lexicalFunctionListAST
     end
     $}$
     ioDeclarations.mDeclarationList += !@lexiqueComponentAST.new {
@@ -801,11 +812,10 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
       !lexicalMessageDeclarationList
       !lexicalListDeclarationList
       !lexicalRuleList
-      !externRoutineList
-      !externFunctionList
+#      !externRoutineList
+#      !externFunctionList
       !indexingListAST
       !indexingDirectory
-#      !lexicalFunctionListAST
     }
   }
 
@@ -835,15 +845,14 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
     var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = {}
     var @lexicalListDeclarationListAST lexicalListDeclarationList = {}
     var @lexicalRuleListAST lexicalRuleList = {}
-    var @externRoutineListAST externRoutineList = {}
-    var @externFunctionListAST externFunctionList = {}
+#    var @externRoutineListAST externRoutineList = {}
+#    var @externFunctionListAST externFunctionList = {}
     var @indexingListAST indexingListAST = {}
-#    var @lexicalFunctionListAST lexicalFunctionListAST = {}
     repeat
-    while 
-      <extern_routine_declaration> !?externRoutineList
-    while 
-      <extern_function_declaration> !?externFunctionList
+#    while 
+#      <extern_routine_declaration> !?externRoutineList
+#    while 
+#      <extern_function_declaration> !?externFunctionList
     while 
       <template_delimitor> !? templateDelimitorList
     while 
@@ -864,8 +873,6 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
       <lexical_message_declaration> !?lexicalMessageDeclarationList
     while
       <lexical_indexing_declaration> !?indexingListAST
-#    while
-#      <lexical_function_declaration> !?lexicalFunctionListAST
     end
     $}$
     ioDeclarations.mDeclarationList += !@lexiqueComponentAST.new {
@@ -880,11 +887,10 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
       !lexicalMessageDeclarationList
       !lexicalListDeclarationList
       !lexicalRuleList
-      !externRoutineList
-      !externFunctionList
+#      !externRoutineList
+#      !externFunctionList
       !indexingListAST
       !indexingDirectory
-#      !lexicalFunctionListAST
     }
   }
 
@@ -1379,89 +1385,71 @@ syntax galgas4LexiqueComponentSyntax (galgas3Scanner) {
 
   #·····················································································································
 
-  rule <extern_routine_declaration> ?!@externRoutineListAST ioExternRoutineList {
-    $extern$
-    $proc$
-    $identifier$ ?let @lstring routineName
-    var lexicalRoutineFormalArgumentList = @lexicalExternRoutineFormalArgumentListAST {}
-    repeat
-    while
-      let @lexicalArgumentModeAST lexicalArgumentMode
-      select
-        $?!$ ?let selector
-        if selector.string != "" then
-          error selector : "the selector should be '?!'" fixit { replace "?!" }
-        end
-        lexicalArgumentMode = @lexicalArgumentModeAST. lexicalInputOutputMode
-      or
-        $?$ ?let selector
-        if selector.string != "" then
-          error selector : "the selector should be '?'"  fixit { replace "?" }
-        end
-        lexicalArgumentMode = @lexicalArgumentModeAST. lexicalInputMode
-      end
-      $@type$ ?let @lstring lexicalTypeName
-      $identifier$ ?let @lstring formalArgumentName
-      lexicalRoutineFormalArgumentList += !lexicalArgumentMode !lexicalTypeName !formalArgumentName
-    end
-    var @stringlist errorMessageList = {}
-    select
-    or
-      $error$
-      repeat
-        $identifier$ ?let @lstring errorMessageName
-        errorMessageList += !errorMessageName.string
-      while
-        $,$
-      end
-    end
-    ioExternRoutineList += !routineName !lexicalRoutineFormalArgumentList !errorMessageList
-  }
+#  rule <extern_routine_declaration> ?!@externRoutineListAST ioExternRoutineList {
+#    $extern$
+#    $proc$
+#    $identifier$ ?let @lstring routineName
+#    error routineName : "OBSOLETE EXTERN LEXICAL ROUTINE"
+#    var lexicalRoutineFormalArgumentList = @lexicalExternRoutineFormalArgumentListAST {}
+#    repeat
+#    while
+#      let @lexicalArgumentModeAST lexicalArgumentMode
+#      select
+#        $?!$ ?let selector
+#        if selector.string != "" then
+#          error selector : "the selector should be '?!'" fixit { replace "?!" }
+#        end
+#        lexicalArgumentMode = @lexicalArgumentModeAST. lexicalInputOutputMode
+#      or
+#        $?$ ?let selector
+#        if selector.string != "" then
+#          error selector : "the selector should be '?'"  fixit { replace "?" }
+#        end
+#        lexicalArgumentMode = @lexicalArgumentModeAST. lexicalInputMode
+#      end
+#      $@type$ ?let @lstring lexicalTypeName
+#      $identifier$ ?let @lstring formalArgumentName
+#      lexicalRoutineFormalArgumentList += !lexicalArgumentMode !lexicalTypeName !formalArgumentName
+#    end
+#    var @stringlist errorMessageList = {}
+#    select
+#    or
+#      $error$
+#      repeat
+#        $identifier$ ?let @lstring errorMessageName
+#        errorMessageList += !errorMessageName.string
+#      while
+#        $,$
+#      end
+#    end
+#    ioExternRoutineList += !routineName !lexicalRoutineFormalArgumentList !errorMessageList
+#  }
 
   #·····················································································································
 
-  rule <extern_function_declaration> ?!@externFunctionListAST ioExternFunctionList {
-    $extern$
-    $func$
-    $identifier$ ?let @lstring functionName
-    var lexicalFunctionFormalArgumentList = @lexicalExternFunctionFormalArgumentListAST {}
-    repeat
-    while
-      $?$ ?let selector
-      if selector.string != "" then
-        error selector : "the selector should be '?'"  fixit { replace "?" }
-      end
-      $@type$ ?let @lstring lexicalTypeName
-      $identifier$ ?let @lstring formalArgumentName
-      lexicalFunctionFormalArgumentList += !lexicalTypeName !formalArgumentName
-    end
-    $->$
-    $@type$ ?let @lstring returnedTypeName
-    ioExternFunctionList += !functionName !lexicalFunctionFormalArgumentList !returnedTypeName
-  }
+#  rule <extern_function_declaration> ?!@externFunctionListAST ioExternFunctionList {
+#    $extern$
+#    $func$
+#    $identifier$ ?let @lstring functionName
+#    error functionName : "OBSOLETE EXTERN LEXICAL FUNCTION"
+#    var lexicalFunctionFormalArgumentList = @lexicalExternFunctionFormalArgumentListAST {}
+#    repeat
+#    while
+#      $?$ ?let selector
+#      if selector.string != "" then
+#        error selector : "the selector should be '?'"  fixit { replace "?" }
+#      end
+#      $@type$ ?let @lstring lexicalTypeName
+#      $identifier$ ?let @lstring formalArgumentName
+#      lexicalFunctionFormalArgumentList += !lexicalTypeName !formalArgumentName
+#    end
+#    $->$
+#    $@type$ ?let @lstring returnedTypeName
+#    ioExternFunctionList += !functionName !lexicalFunctionFormalArgumentList !returnedTypeName
+#  }
 
   #·····················································································································
 
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @lexiqueComponentAST : @semanticDeclarationAST {
-  private let @lstring mLexiqueComponentName
-  private let @bool mIsTemplate
-  private let @templateDelimitorListAST mTemplateDelimitorList
-  private let @templateReplacementListAST mTemplateReplacementList
-  private let @lexicalAttributeListAST mLexicalAttributeList
-  private let @lexicalStyleListAST mLexicalStyleList
-  private let @terminalDeclarationListAST mTerminalDeclarationList
-  private let @lexicalMessageDeclarationListAST mLexicalMessageDeclarationList
-  private let @lexicalListDeclarationListAST mLexicalListDeclarationList
-  private let @lexicalRuleListAST mLexicalRuleList
-  private let @externRoutineListAST mExternRoutineList
-  private let @externFunctionListAST mExternFunctionList
-  private let @indexingListAST mIndexingListAST
-  private let @lstring mIndexingDirectory
-#  private let @lexicalFunctionListAST mLexicalFunctionListAST
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1543,30 +1531,30 @@ override method @lexiqueComponentAST semanticAnalysis
 #--------------------------------------- Lexical attribute type name map
   let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()
 #--------------------------------------- Build lexical routine map
-  var @lexicalRoutineMap lexicalRoutineMap
-  buildLexicalRoutineMap ( ?lexicalRoutineMap )
+#  var @lexicalRoutineMap lexicalRoutineMap
+  buildLexicalRoutineMap (?let lexicalRoutineMap)
 #--------------------------------------- Add extern routines
-  for (mRoutineName mLexicalRoutineFormalArgumentList mErrorMessageList) in self.mExternRoutineList do
-    var lexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList {}
-    for (mPassingMode mLexicalTypeName mFormalArgumentName) in mLexicalRoutineFormalArgumentList do
-      [lexicalTypeMap searchKey !mLexicalTypeName ?let lexicalFormalArgumentType]
-      lexicalRoutineFormalArgumentList += !mPassingMode !lexicalFormalArgumentType !mFormalArgumentName.string
-    end
-    [!?lexicalRoutineMap insertKey !mRoutineName !lexicalRoutineFormalArgumentList !mErrorMessageList !true]
-  end
+#  for (mRoutineName mLexicalRoutineFormalArgumentList mErrorMessageList) in self.mExternRoutineList do
+#    var lexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList {}
+#    for (mPassingMode mLexicalTypeName mFormalArgumentName) in mLexicalRoutineFormalArgumentList do
+#      [lexicalTypeMap searchKey !mLexicalTypeName ?let lexicalFormalArgumentType]
+#      lexicalRoutineFormalArgumentList += !mPassingMode !lexicalFormalArgumentType !mFormalArgumentName.string
+#    end
+#    [!?lexicalRoutineMap insertKey !mRoutineName !lexicalRoutineFormalArgumentList !mErrorMessageList !true]
+#  end
 #--------------------------------------- Build lexical function map
-  var @lexicalFunctionMap lexicalFunctionMap
-  buildLexicalFunctionMap ( ?lexicalFunctionMap )
+#  var @lexicalFunctionMap lexicalFunctionMap
+  buildLexicalFunctionMap (?let lexicalFunctionMap)
 #--------------------------------------- Add extern functions
-  for (mFunctionName mLexicalFunctionFormalArgumentList mReturnedTypeName) in self.mExternFunctionList do
-    var @lexicalFunctionFormalArgumentList lexicalFunctionFormalArgumentList = {}
-    for (mLexicalTypeName mFormalArgumentName) in mLexicalFunctionFormalArgumentList do
-      [lexicalTypeMap searchKey !mLexicalTypeName ?let lexicalFormalArgumentType]
-      lexicalFunctionFormalArgumentList += !lexicalFormalArgumentType !mFormalArgumentName.string
-    end
-    [lexicalTypeMap searchKey !mReturnedTypeName ?let returnedArgumentType]
-    [!?lexicalFunctionMap insertKey !mFunctionName !lexicalFunctionFormalArgumentList !returnedArgumentType !"" !true]
-  end
+#  for (mFunctionName mLexicalFunctionFormalArgumentList mReturnedTypeName) in self.mExternFunctionList do
+#    var @lexicalFunctionFormalArgumentList lexicalFunctionFormalArgumentList = {}
+#    for (mLexicalTypeName mFormalArgumentName) in mLexicalFunctionFormalArgumentList do
+#      [lexicalTypeMap searchKey !mLexicalTypeName ?let lexicalFormalArgumentType]
+#      lexicalFunctionFormalArgumentList += !lexicalFormalArgumentType !mFormalArgumentName.string
+#    end
+#    [lexicalTypeMap searchKey !mReturnedTypeName ?let returnedArgumentType]
+#    [!?lexicalFunctionMap insertKey !mFunctionName !lexicalFunctionFormalArgumentList !returnedArgumentType !"" !true]
+#  end
 #--------------------------------------- Unicode test functions
   lexicalUnicodeTestFunctionAnalysis (?let unicodeTestFunctions)
 #---------------------------------------
@@ -1729,7 +1717,6 @@ override method @lexiqueComponentAST semanticAnalysis
   end
 #--------------------------------------- Build header and Cpp contents
   if @uint.errorCount == 0 then
-#    let lexiqueClassName = self.mLexiqueComponentName.string
   #--- Header
     var headerContents = [filewrapper lexiqueGenerationTemplates.headerZone2
        ![self.mLexiqueComponentName.string identifierRepresentation]

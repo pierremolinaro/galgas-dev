@@ -13,7 +13,7 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax galgas3SyntaxComponentSyntax (galgas3Scanner) {
+syntax galgas3SyntaxComponentSyntax (galgasScanner) {
 
   #·····················································································································
   #          Rules prototypes                 
@@ -191,7 +191,7 @@ syntax galgas3SyntaxComponentSyntax (galgas3Scanner) {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax galgas4SyntaxComponentSyntax (galgas3Scanner) {
+syntax galgas4SyntaxComponentSyntax (galgasScanner) {
 
   #·····················································································································
   #          Rules prototypes                 

@@ -42,6 +42,7 @@ project (4:0:0) -> "galgas" {
 
 #--- Template
   "galgas-sources/galgasTemplateScanner.galgas"
+  "galgas-sources/galgasTemplateScannerNew.galgas"
   "galgas-sources/templateTypesForAST.galgas"
   "galgas-sources/templateSyntax.galgas"
   "galgas-sources/templateGrammar.galgas"

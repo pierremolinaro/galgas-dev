@@ -935,7 +935,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
     BOOL lineHeightDidChange = NO ;
     NSColor * color = nil ;
     NSMutableDictionary * d = nil ;
-    NSData * data = [inObject valueForKeyPath:inKeyPath] ;
+    NSData * data = [inObject valueForKeyPath: inKeyPath] ;
     const NSUInteger tag = ((NSUInteger) inContext) & TAG_MASK ;
     const NSUInteger idx = ((NSUInteger) inContext) & ~ TAG_MASK ;
     switch (tag) {
@@ -943,20 +943,20 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
       if (data == nil) {
         color = [NSColor whiteColor] ;
       }else{
-        color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
+        color = (NSColor *) [NSKeyedUnarchiver unarchiveObjectWithData: data] ;
       }
-      d = [mFontAttributesDictionaryArray objectAtIndex:idx] ;
-      [d setObject:color forKey:NSForegroundColorAttributeName] ;
-      [self applyTextAttributeForIndex:(NSInteger) idx] ;
+      d = [mFontAttributesDictionaryArray objectAtIndex: idx] ;
+      [d setObject: color forKey: NSForegroundColorAttributeName] ;
+      [self applyTextAttributeForIndex: (NSInteger) idx] ;
       break;
     case TAG_FOR_TEMPLATE_FOREGROUND_COLOR:
       if (data == nil) {
         color = [NSColor whiteColor] ;
       }else{
-        color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
+        color = (NSColor *) [NSKeyedUnarchiver unarchiveObjectWithData: data] ;
       }
       [mTemplateTextAttributeDictionary setObject:color forKey:NSForegroundColorAttributeName] ;
-      [self applyTextAttributeForIndex:-2] ;
+      [self applyTextAttributeForIndex: -2] ;
       break;
     case TAG_FOR_ENABLING_BACKGROUND:
       if (data != nil)  {
@@ -981,7 +981,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
       if (data == nil) {
         color = [NSColor whiteColor] ;
       }else{
-        color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
+        color = (NSColor *) [NSKeyedUnarchiver unarchiveObjectWithData:data] ;
       }
       d = [mFontAttributesDictionaryArray objectAtIndex:idx] ;
       [d setObject:color forKey:NSBackgroundColorAttributeName] ;
@@ -997,7 +997,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
             [mTokenizer styleIdentifierForStyleIndex:(NSInteger) idx]
           ] ;
           NSData * colorData = [[NSUserDefaults standardUserDefaults] objectForKey:keyPath] ;
-          color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:colorData] ;
+          color = (NSColor *) [NSKeyedUnarchiver unarchiveObjectWithData:colorData] ;
           [mTemplateTextAttributeDictionary setValue:color forKey:NSBackgroundColorAttributeName] ;
         }else{
           [mTemplateTextAttributeDictionary removeObjectForKey:NSBackgroundColorAttributeName] ;

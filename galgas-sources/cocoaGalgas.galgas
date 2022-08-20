@@ -23,7 +23,7 @@ gui cocoa {
 
   #·····················································································································
 
-  with lexique galgas3Scanner {
+  with lexique galgasScanner {
     fileExtension : "galgasProject"
     fileExtension : "galgas"
     fileExtension : "ggs"

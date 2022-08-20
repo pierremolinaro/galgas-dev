@@ -31,17 +31,11 @@
 }
 
 - (NSData *) reverseTransformedValue: (NSColor *) inValue {
-//    NSError * error = nil ;
-//    NSData * archiveData = [NSKeyedArchiver archivedDataWithRootObject: inValue requiringSecureCoding: YES error: & error] ;
-//    NSLog (@"-transformedValue %@, error %@, archiveData %@", inValue, error, archiveData) ;
     NSData * archiveData = [NSKeyedArchiver archivedDataWithRootObject: inValue] ;
     return archiveData ;
 }
 
 - (NSColor *) transformedValue: (NSData *) inValue {
-//    NSError * error = nil ;
-//    NSColor * color = [NSKeyedUnarchiver unarchivedObjectOfClass: [NSColor class] fromData: inValue error: & error] ;
-//    NSLog (@"reverseTransformedValue %@", color) ;
     NSColor * color = [NSKeyedUnarchiver unarchiveObjectWithData: inValue] ;
     return color ;
 }

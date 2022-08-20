@@ -381,34 +381,34 @@ getter @lexicalArgumentModeAST cocoaPointerInFormalArgument -> @string {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-list @lexicalExternRoutineFormalArgumentListAST {
-  public var @lexicalArgumentModeAST mPassingMode
-  public var @lstring mLexicalTypeName
-  public var @lstring mFormalArgumentName
-}
+#list @lexicalExternRoutineFormalArgumentListAST {
+#  public var @lexicalArgumentModeAST mPassingMode
+#  public var @lstring mLexicalTypeName
+#  public var @lstring mFormalArgumentName
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-list @externRoutineListAST {
-  public var @lstring mRoutineName
-  public var @lexicalExternRoutineFormalArgumentListAST mLexicalRoutineFormalArgumentList
-  public var @stringlist mErrorMessageList
-}
+#list @externRoutineListAST {
+#  public var @lstring mRoutineName
+#  public var @lexicalExternRoutineFormalArgumentListAST mLexicalRoutineFormalArgumentList
+#  public var @stringlist mErrorMessageList
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-list @lexicalExternFunctionFormalArgumentListAST {
-  public var @lstring mLexicalTypeName
-  public var @lstring mFormalArgumentName
-}
+#list @lexicalExternFunctionFormalArgumentListAST {
+#  public var @lstring mLexicalTypeName
+#  public var @lstring mFormalArgumentName
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-list @externFunctionListAST {
-  public var @lstring mFunctionName
-  public var @lexicalExternFunctionFormalArgumentListAST mLexicalFunctionFormalArgumentList
-  public var @lstring mReturnedTypeName
-}
+#list @externFunctionListAST {
+#  public var @lstring mFunctionName
+#  public var @lexicalExternFunctionFormalArgumentListAST mLexicalFunctionFormalArgumentList
+#  public var @lstring mReturnedTypeName
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

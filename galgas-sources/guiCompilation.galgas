@@ -87,7 +87,7 @@ list @galgas3GUIComponentListAST {
 #! SYNTAX
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax galgas3GuiComponentSyntax (galgas3Scanner) {
+syntax galgas3GuiComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
@@ -213,7 +213,7 @@ syntax galgas3GuiComponentSyntax (galgas3Scanner) {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax galgas4GuiComponentSyntax (galgas3Scanner) {
+syntax galgas4GuiComponentSyntax (galgasScanner) {
 
   #·····················································································································
 

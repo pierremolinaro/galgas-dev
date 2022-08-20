@@ -30,7 +30,7 @@ refclass @optionComponentDeclarationAST : @semanticDeclarationAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-syntax galgas3OptionComponentSyntax (galgas3Scanner) {
+syntax galgas3OptionComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
@@ -93,7 +93,7 @@ syntax galgas3OptionComponentSyntax (galgas3Scanner) {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-syntax galgas4OptionComponentSyntax (galgas3Scanner) {
+syntax galgas4OptionComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
