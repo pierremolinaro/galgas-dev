@@ -8,7 +8,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                           Template Replacements                                               
+//                           Template Replacements
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -18,7 +18,7 @@ end%
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                           Template Delimiters                                                 
+//                           Template Delimiters
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -75,7 +75,7 @@ end%
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                 I N D E X I N G    D I R E C T O R Y                                          
+//                 I N D E X I N G    D I R E C T O R Y
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -85,7 +85,7 @@ end%
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                 I N D E X I N G    T I T L E S                                                
+//                 I N D E X I N G    T I T L E S
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -108,7 +108,7 @@ end
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//            Terminal Symbols as end of script in template mark                                 
+//            Terminal Symbols as end of script in template mark
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -144,7 +144,7 @@ end
 %
 //----------------------------------------------------------------------------------------------------------------------
 //
-//               P A R S E    L E X I C A L    T O K E N                                         
+//               P A R S E    L E X I C A L    T O K E N
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -153,6 +153,7 @@ end
   BOOL scanningOk = YES ;
   mTokenCode = 0 ;
   while ((mTokenCode == 0) && (mCurrentChar != '\0')) {
+    mTokenStartLocation = mCurrentLocation ;
 %
   if [TEMPLATE_DELIMITOR_LIST length] > 0 then
 %    if ((mMatchedTemplateDelimiterIndex >= 0) && ([[kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] startString].length > 0)) {
@@ -162,9 +163,9 @@ end
       }
     }
     while ((mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar != '\0')) {
-      %if [TEMPLATE_REPLACEMENT_LIST length] > 0 then%
-      [self searchForReplacementPattern:kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%] ;
-      %end%
+      %if [TEMPLATE_REPLACEMENT_LIST length] > 0 then
+%[self searchForReplacementPattern:kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%] ;%
+      end%
       mMatchedTemplateDelimiterIndex = [self findTemplateDelimiterIndex:kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%] ;
       if (mMatchedTemplateDelimiterIndex < 0) {
         [self advance] ;
@@ -182,7 +183,7 @@ end
       ![mLexicalRule generateCocoaCode !LEXIQUE_CLASS_NAME !LEXIQUE_ANALYSIS_CONTEXT]
     end
   end
-%if ([self testForInputChar:'\0']) { // End of source text ? 
+%if ([self testForInputChar:'\0']) { // End of source text ?
         mTokenCode = %!LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
       }else{ // Unknown input character
         scanningOk = NO ;
@@ -206,7 +207,7 @@ end
       ![mLexicalRule generateCocoaCode !LEXIQUE_CLASS_NAME !LEXIQUE_ANALYSIS_CONTEXT]
     end
   end
-%if ([self testForInputChar:'\0']) { // End of source text ? 
+%if ([self testForInputChar:'\0']) { // End of source text ?
       mTokenCode = %!LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
     }else{ // Unknown input character
       scanningOk = NO ;
@@ -221,7 +222,7 @@ end
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                   T E R M I N A L    C O U N T                                                
+//                   T E R M I N A L    C O U N T
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -231,7 +232,7 @@ end
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                     S T Y L E   C O U N T                                                     
+//                     S T Y L E   C O U N T
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -241,7 +242,7 @@ end
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                I S    T E M P L A T E    L E X I Q U E                                        
+//                I S    T E M P L A T E    L E X I Q U E
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -251,7 +252,7 @@ end
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//   S T Y L E   I N D E X    F O R    T E R M I N A L                                           
+//   S T Y L E   I N D E X    F O R    T E R M I N A L
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -265,7 +266,7 @@ end%\n  } ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//    A T O M I C    S E L E C T I O N   F O R    T E R M I N A L                                
+//    A T O M I C    S E L E C T I O N   F O R    T E R M I N A L
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -279,7 +280,7 @@ end%\n  } ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//             S T Y L E   N A M E    F O R    I N D E X                                         
+//             S T Y L E   N A M E    F O R    I N D E X
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -298,7 +299,7 @@ end%\n    } ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//         S T Y L E   I D E N T I F I E R    F O R    I N D E X                                 
+//         S T Y L E   I D E N T I F I E R    F O R    I N D E X
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -318,7 +319,7 @@ end
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//         L E X I Q U E   I D E N T I F I E R                                                   
+//         L E X I Q U E   I D E N T I F I E R
 //
 //----------------------------------------------------------------------------------------------------------------------
 

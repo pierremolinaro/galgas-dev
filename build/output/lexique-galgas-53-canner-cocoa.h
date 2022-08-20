@@ -7,20 +7,20 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                    E X T E R N    R O U T I N E S                                             
+//                    E X T E R N    R O U T I N E S
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                    E X T E R N    F U N C T I O N S                                           
+//                    E X T E R N    F U N C T I O N S
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//         T E R M I N A L    S Y M B O L    E N U M E R A T I O N                               
+//         T E R M I N A L    S Y M B O L    E N U M E R A T I O N
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -178,26 +178,28 @@ enum {galgasScanner_1_,
   galgasScanner_1__26__2B__2B_,
   galgasScanner_1__B0_,
   galgasScanner_1__3D__3D__3D_,
-  galgasScanner_1__21__3D__3D_
+  galgasScanner_1__21__3D__3D_,
+  galgasScanner_1__3F__5E_,
+  galgasScanner_1__21__5E_
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                     S C A N N E R    C L A S S                                                
+//                     S C A N N E R    C L A S S
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 @interface OC_Lexique_galgasScanner : OC_Lexique {
 //--- Attributes
-  @private NSMutableString * mLexicalAttribute_bigintValue ;
-  @private UInt32 mLexicalAttribute_charValue ;
-  @private double mLexicalAttribute_floatValue ;
-  @private NSMutableString * mLexicalAttribute_identifierString ;
-  @private SInt32 mLexicalAttribute_sint32value ;
-  @private SInt64 mLexicalAttribute_sint64value ;
-  @private NSMutableString * mLexicalAttribute_tokenString ;
-  @private UInt32 mLexicalAttribute_uint32value ;
-  @private UInt64 mLexicalAttribute_uint64value ;
+  @protected NSMutableString * mLexicalAttribute_bigintValue ;
+  @protected UInt32 mLexicalAttribute_charValue ;
+  @protected double mLexicalAttribute_floatValue ;
+  @protected NSMutableString * mLexicalAttribute_identifierString ;
+  @protected SInt32 mLexicalAttribute_sint32value ;
+  @protected SInt64 mLexicalAttribute_sint64value ;
+  @protected NSMutableString * mLexicalAttribute_tokenString ;
+  @protected UInt32 mLexicalAttribute_uint32value ;
+  @protected UInt64 mLexicalAttribute_uint64value ;
 
 }
 

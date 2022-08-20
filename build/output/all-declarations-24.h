@@ -10,32 +10,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'buildLocalVariableMapAndSignature'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_buildLocalVariableMapAndSignature (const class GALGAS_semanticContext constinArgument0,
-                                                const class GALGAS_formalParameterListAST constinArgument1,
-                                                class GALGAS_localVarManager & ioArgument2,
-                                                class GALGAS_formalParameterListForGeneration & outArgument3,
-                                                class C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'checkMethodSignatures'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_checkMethodSignatures (const class GALGAS_formalParameterListForGeneration constinArgument0,
-                                    const class GALGAS_location constinArgument1,
-                                    const class GALGAS_formalParameterSignature constinArgument2,
-                                    const class GALGAS_location constinArgument3,
-                                    class C_Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Function 'generateFewHeaderFiles'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -627,4 +601,28 @@ GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserCla
                                                                                                const class GALGAS_bool & in_HAS_5F_INDEXING,
                                                                                                const class GALGAS_bool & in_HAS_5F_TRANSLATE_5F_FEATURE
                                                                                                COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterNonterminalNonTerminalInMapAndCheck'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterNonterminalNonTerminalInMapAndCheck (const class GALGAS_lstring constinArgument0,
+                                                       const class GALGAS_nonterminalLabelMap constinArgument1,
+                                                       class GALGAS_nonterminalMap & ioArgument2,
+                                                       class C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'buildNonterminalDeclarationsMap'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_buildNonterminalDeclarationsMap (const class GALGAS_nonterminalDeclarationListAST constinArgument0,
+                                              const class GALGAS_semanticContext constinArgument1,
+                                              class GALGAS_nonterminalMap & outArgument2,
+                                              class C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
 

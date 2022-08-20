@@ -12,7 +12,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                           Template Replacements                                               
+//                           Template Replacements
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -21,7 +21,7 @@ static NSArray * kTemplateReplacementArray_galgasTemplateScanner ; // Of NSStrin
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                           Template Delimiters                                                 
+//                           Template Delimiters
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -66,7 +66,7 @@ static NSArray * kTemplateDefinitionArray_galgasTemplateScanner ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                 I N D E X I N G    D I R E C T O R Y                                          
+//                 I N D E X I N G    D I R E C T O R Y
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -76,7 +76,7 @@ static NSArray * kTemplateDefinitionArray_galgasTemplateScanner ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                 I N D E X I N G    T I T L E S                                                
+//                 I N D E X I N G    T I T L E S
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -87,7 +87,7 @@ static NSArray * kTemplateDefinitionArray_galgasTemplateScanner ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//            Terminal Symbols as end of script in template mark                                 
+//            Terminal Symbols as end of script in template mark
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -353,7 +353,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//               P A R S E    L E X I C A L    T O K E N                                         
+//               P A R S E    L E X I C A L    T O K E N
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -362,6 +362,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
   BOOL scanningOk = YES ;
   mTokenCode = 0 ;
   while ((mTokenCode == 0) && (mCurrentChar != '\0')) {
+    mTokenStartLocation = mCurrentLocation ;
     if ((mMatchedTemplateDelimiterIndex >= 0) && ([[kTemplateDefinitionArray_galgasTemplateScanner objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] startString].length > 0)) {
       const BOOL foundEndDelimitor = [self testForInputString:[[kTemplateDefinitionArray_galgasTemplateScanner objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] endString] advance:YES] ;
       if (foundEndDelimitor) {
@@ -369,9 +370,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
       }
     }
     while ((mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar != '\0')) {
-      
       [self searchForReplacementPattern:kTemplateReplacementArray_galgasTemplateScanner] ;
-      
       mMatchedTemplateDelimiterIndex = [self findTemplateDelimiterIndex:kTemplateDefinitionArray_galgasTemplateScanner] ;
       if (mMatchedTemplateDelimiterIndex < 0) {
         [self advance] ;
@@ -1052,7 +1051,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
           mTokenCode = galgasTemplateScanner_1_comment ;
         }
       }else if (scanningOk && ([self testForInputFromChar:1 toChar:32])) {
-      }else if ([self testForInputChar:'\0']) { // End of source text ? 
+      }else if ([self testForInputChar:'\0']) { // End of source text ?
         mTokenCode = galgasTemplateScanner_1_ ; // Empty string code
       }else{ // Unknown input character
         scanningOk = NO ;
@@ -1071,7 +1070,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                   T E R M I N A L    C O U N T                                                
+//                   T E R M I N A L    C O U N T
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1081,7 +1080,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                     S T Y L E   C O U N T                                                     
+//                     S T Y L E   C O U N T
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1091,7 +1090,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                I S    T E M P L A T E    L E X I Q U E                                        
+//                I S    T E M P L A T E    L E X I Q U E
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1101,7 +1100,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//   S T Y L E   I N D E X    F O R    T E R M I N A L                                           
+//   S T Y L E   I N D E X    F O R    T E R M I N A L
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1269,7 +1268,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//    A T O M I C    S E L E C T I O N   F O R    T E R M I N A L                                
+//    A T O M I C    S E L E C T I O N   F O R    T E R M I N A L
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1437,7 +1436,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//             S T Y L E   N A M E    F O R    I N D E X                                         
+//             S T Y L E   N A M E    F O R    I N D E X
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1467,7 +1466,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//         S T Y L E   I D E N T I F I E R    F O R    I N D E X                                 
+//         S T Y L E   I D E N T I F I E R    F O R    I N D E X
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1497,7 +1496,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//         L E X I Q U E   I D E N T I F I E R                                                   
+//         L E X I Q U E   I D E N T I F I E R
 //
 //----------------------------------------------------------------------------------------------------------------------
 

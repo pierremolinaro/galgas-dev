@@ -15,7 +15,6 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 #include "galgas2/C_Lexique.h"
-
 //----------------------------------------------------------------------------------------------------------------------
 //                    E X T E R N    R O U T I N E S
 //----------------------------------------------------------------------------------------------------------------------
@@ -28,19 +27,7 @@
 //                       T O K E N    C L A S S
 //----------------------------------------------------------------------------------------------------------------------
 
-class cTokenFor_galgasTemplateScanner : public cToken {
-  public: C_BigInt mLexicalAttribute_bigintValue ;
-  public: utf32 mLexicalAttribute_charValue ;
-  public: double mLexicalAttribute_floatValue ;
-  public: C_String mLexicalAttribute_identifierString ;
-  public: int32_t mLexicalAttribute_sint_33__32_value ;
-  public: int64_t mLexicalAttribute_sint_36__34_value ;
-  public: C_String mLexicalAttribute_tokenString ;
-  public: uint32_t mLexicalAttribute_uint_33__32_value ;
-  public: uint64_t mLexicalAttribute_uint_36__34_value ;
-
-  public: cTokenFor_galgasTemplateScanner (void) ;
-} ;
+typedef cTokenFor_galgasScanner cTokenFor_galgasTemplateScanner ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //                     S C A N N E R    C L A S S
@@ -66,226 +53,12 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique_galgasScanner {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     protected: virtual ~ C_Lexique_galgasTemplateScanner (void) {}
   #endif
-
 //--- Scanner mode for template scanner
   private: int32_t mMatchedTemplateDelimiterIndex ;
 
 
-
-//--- Terminal symbols enumeration
-  public: enum {kToken_,
-   kToken_identifier,
-   kToken_double_2E_xxx,
-   kToken_uint_33__32_,
-   kToken_sint_33__32__5F_S,
-   kToken_uint_36__34__5F_L,
-   kToken_sint_36__34__5F_LS,
-   kToken_bigint_5F_G,
-   kToken__2E_,
-   kToken__2E__2E__2E_,
-   kToken__2E__2E__3C_,
-   kToken__40_type,
-   kToken__25_attribute,
-   kToken__27_char_27_,
-   kToken__24_terminal_24_,
-   kToken__3F_,
-   kToken__3F__21_,
-   kToken__21_,
-   kToken__21__3F_,
-   kToken__3C_,
-   kToken__3C__3D_,
-   kToken__3C__3C_,
-   kToken__3C_non_5F_terminal_3E_,
-   kToken__22_string_22_,
-   kToken_comment,
-   kToken_commentMark,
-   kToken_abstract,
-   kToken_after,
-   kToken_array,
-   kToken_as,
-   kToken_before,
-   kToken_between,
-   kToken_block,
-   kToken_boolset,
-   kToken_cast,
-   kToken_case,
-   kToken_class,
-   kToken_constructor,
-   kToken_default,
-   kToken_dict,
-   kToken_do,
-   kToken_drop,
-   kToken_else,
-   kToken_elsif,
-   kToken_end,
-   kToken_enum,
-   kToken_error,
-   kToken_extension,
-   kToken_extern,
-   kToken_false,
-   kToken_filewrapper,
-   kToken_for,
-   kToken_fixit,
-   kToken_func,
-   kToken_getter,
-   kToken_grammar,
-   kToken_graph,
-   kToken_gui,
-   kToken_if,
-   kToken_in,
-   kToken_indexing,
-   kToken_insert,
-   kToken_is,
-   kToken_label,
-   kToken_let,
-   kToken_lexique,
-   kToken_list,
-   kToken_listmap,
-   kToken_log,
-   kToken_loop,
-   kToken_map,
-   kToken_message,
-   kToken_method,
-   kToken_mod,
-   kToken_mutating,
-   kToken_not,
-   kToken_on,
-   kToken_operator,
-   kToken_option,
-   kToken_or,
-   kToken_override,
-   kToken_parse,
-   kToken_public,
-   kToken_private,
-   kToken_proc,
-   kToken_project,
-   kToken_refclass,
-   kToken_remove,
-   kToken_replace,
-   kToken_repeat,
-   kToken_rewind,
-   kToken_rule,
-   kToken_search,
-   kToken_select,
-   kToken_self,
-   kToken_send,
-   kToken_setter,
-   kToken_sortedlist,
-   kToken_struct,
-   kToken_style,
-   kToken_switch,
-   kToken_syntax,
-   kToken_tag,
-   kToken_template,
-   kToken_then,
-   kToken_true,
-   kToken_unused,
-   kToken_var,
-   kToken_valueclass,
-   kToken_warning,
-   kToken_while,
-   kToken_with,
-   kToken__2A_,
-   kToken__2C_,
-   kToken__2B_,
-   kToken__26__2B_,
-   kToken__26__2D_,
-   kToken__26__2A_,
-   kToken__26__2F_,
-   kToken__3E_,
-   kToken__3B_,
-   kToken__3A_,
-   kToken__3A__3E_,
-   kToken__2D_,
-   kToken__28_,
-   kToken__29_,
-   kToken__2D__3E_,
-   kToken__3D__3D_,
-   kToken__3D_,
-   kToken__26__26_,
-   kToken__5B_,
-   kToken__5D_,
-   kToken__2B__3D_,
-   kToken__2D__3D_,
-   kToken__2A__3D_,
-   kToken__2F__3D_,
-   kToken__2F_,
-   kToken__21__3D_,
-   kToken__3E__3D_,
-   kToken__26_,
-   kToken__7B_,
-   kToken__7D_,
-   kToken__60_,
-   kToken__7C__7C_,
-   kToken__7C_,
-   kToken__5E_,
-   kToken__3E__3E_,
-   kToken__7E_,
-   kToken__2D__2D_,
-   kToken__2B__2B_,
-   kToken__26__2D__2D_,
-   kToken__26__2B__2B_,
-   kToken__B0_,
-   kToken__3D__3D__3D_,
-   kToken__21__3D__3D_,
-   kToken__3F__5E_,
-   kToken__21__5E_} ;
-
-//--- Key words table 'galgasKeyWordList'
-  public: static int16_t search_into_galgasKeyWordList (const C_String & inSearchedString) ;
-
-//--- Key words table 'galgasDelimitorsList'
-  public: static int16_t search_into_galgasDelimitorsList (const C_String & inSearchedString) ;
-  
-
-//--- Assign from attribute
-  public: GALGAS_lbigint synthetizedAttribute_bigintValue (void) const ;
-  public: GALGAS_lchar synthetizedAttribute_charValue (void) const ;
-  public: GALGAS_ldouble synthetizedAttribute_floatValue (void) const ;
-  public: GALGAS_lstring synthetizedAttribute_identifierString (void) const ;
-  public: GALGAS_lsint synthetizedAttribute_sint_33__32_value (void) const ;
-  public: GALGAS_lsint_36__34_ synthetizedAttribute_sint_36__34_value (void) const ;
-  public: GALGAS_lstring synthetizedAttribute_tokenString (void) const ;
-  public: GALGAS_luint synthetizedAttribute_uint_33__32_value (void) const ;
-  public: GALGAS_luint_36__34_ synthetizedAttribute_uint_36__34_value (void) const ;
-
-
-//--- Attribute access
-  public: C_BigInt attributeValue_bigintValue (void) const ;
-  public: utf32 attributeValue_charValue (void) const ;
-  public: double attributeValue_floatValue (void) const ;
-  public: C_String attributeValue_identifierString (void) const ;
-  public: int32_t attributeValue_sint_33__32_value (void) const ;
-  public: int64_t attributeValue_sint_36__34_value (void) const ;
-  public: C_String attributeValue_tokenString (void) const ;
-  public: uint32_t attributeValue_uint_33__32_value (void) const ;
-  public: uint64_t attributeValue_uint_36__34_value (void) const ;
-
-
-//--- Indexing keys
-
-//--- Indexing directory
-  protected: virtual C_String indexingDirectory (void) const override  ;
-
 //--- Parse lexical token
-  protected: void internalParseLexicalToken (cTokenFor_galgasTemplateScanner & token) ;
   protected: virtual bool parseLexicalToken (void) override ;
-
-//--- Get terminal message
-  protected: virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const override ;
-
-//--- Get terminal count
-  public: virtual int16_t terminalVocabularyCount (void) const override { return 156 ; }
-
-//--- Get Token String
-  public: virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const override ;
-
-//--- Enter Token
-  protected: void enterToken (cTokenFor_galgasTemplateScanner & ioToken) ;
-
-//--- Style name for Latex
-  protected: virtual C_String styleNameForIndex (const uint32_t inStyleIndex) const override ;
-  protected: virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const override ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -956,4 +729,304 @@ class GALGAS_lexiqueComponentAST_2D_weak : public GALGAS_semanticDeclarationAST_
 //----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueComponentAST_2D_weak ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @semanticDeclarationWithHeaderForGeneration reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_semanticDeclarationWithHeaderForGeneration : public GALGAS_semanticDeclarationForGeneration {
+//--------------------------------- Default constructor
+  public: GALGAS_semanticDeclarationWithHeaderForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_semanticDeclarationWithHeaderForGeneration (const class cPtr_semanticDeclarationWithHeaderForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_bool readProperty_mHasHeader (void) const ;
+
+  public: class GALGAS_string readProperty_mImplementationCppFileName (void) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_semanticDeclarationWithHeaderForGeneration extractObject (const GALGAS_object & inObject,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_semanticDeclarationWithHeaderForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMHasHeader (class GALGAS_bool inArgument0
+                                                      COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMImplementationCppFileName (class GALGAS_string inArgument0
+                                                                      COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_semanticDeclarationWithHeaderForGeneration class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @semanticDeclarationWithHeaderForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_semanticDeclarationWithHeaderForGeneration : public cPtr_semanticDeclarationForGeneration {
+
+//--- Extension getter hasCppHeaderFile
+  public: virtual class GALGAS_bool getter_hasCppHeaderFile (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter headerKind
+  public: virtual class GALGAS_headerKind getter_headerKind (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter implementationCppFileName
+  public: virtual class GALGAS_string getter_implementationCppFileName (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter isPredefined
+  public: virtual class GALGAS_bool getter_isPredefined (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Properties
+  public: GALGAS_bool mProperty_mHasHeader ;
+  public: GALGAS_string mProperty_mImplementationCppFileName ;
+
+//--- Constructor
+  public: cPtr_semanticDeclarationWithHeaderForGeneration (const GALGAS_bool & in_mHasHeader,
+                                                           const GALGAS_string & in_mImplementationCppFileName
+                                                           COMMA_LOCATION_ARGS) ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const override = 0 ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override = 0 ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @semanticDeclarationWithHeaderForGeneration_2D_weak weak reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak : public GALGAS_semanticDeclarationForGeneration_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (const class GALGAS_semanticDeclarationWithHeaderForGeneration & inSource) ;
+
+  public: GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak & operator = (const class GALGAS_semanticDeclarationWithHeaderForGeneration & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_semanticDeclarationWithHeaderForGeneration bang_semanticDeclarationWithHeaderForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak constructor_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @semanticTypeForGeneration reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_semanticTypeForGeneration : public GALGAS_semanticDeclarationForGeneration {
+//--------------------------------- Default constructor
+  public: GALGAS_semanticTypeForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_semanticTypeForGeneration (const class cPtr_semanticTypeForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mSelfTypeEntry (void) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_semanticTypeForGeneration extractObject (const GALGAS_object & inObject,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_semanticTypeForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMSelfTypeEntry (class GALGAS_unifiedTypeMapEntry inArgument0
+                                                          COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_semanticTypeForGeneration class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticTypeForGeneration ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @semanticTypeForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_semanticTypeForGeneration : public cPtr_semanticDeclarationForGeneration {
+
+//--- Extension getter appendTypeGenericImplementation
+  public: virtual class GALGAS_string getter_appendTypeGenericImplementation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter hasCppHeaderFile
+  public: virtual class GALGAS_bool getter_hasCppHeaderFile (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter headerKind
+  public: virtual class GALGAS_headerKind getter_headerKind (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter implementationCppFileName
+  public: virtual class GALGAS_string getter_implementationCppFileName (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter isPredefined
+  public: virtual class GALGAS_bool getter_isPredefined (C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Properties
+  public: GALGAS_unifiedTypeMapEntry mProperty_mSelfTypeEntry ;
+
+//--- Constructor
+  public: cPtr_semanticTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry
+                                          COMMA_LOCATION_ARGS) ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const override = 0 ;
+
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override = 0 ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @semanticTypeForGeneration_2D_weak weak reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_semanticTypeForGeneration_2D_weak : public GALGAS_semanticDeclarationForGeneration_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_semanticTypeForGeneration_2D_weak (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_semanticTypeForGeneration_2D_weak constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_semanticTypeForGeneration_2D_weak (const class GALGAS_semanticTypeForGeneration & inSource) ;
+
+  public: GALGAS_semanticTypeForGeneration_2D_weak & operator = (const class GALGAS_semanticTypeForGeneration & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_semanticTypeForGeneration bang_semanticTypeForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_semanticTypeForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_semanticTypeForGeneration_2D_weak constructor_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_semanticTypeForGeneration_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_semanticTypeForGeneration_2D_weak class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak ;
 

@@ -16,15 +16,15 @@
 #include "galgas2/C_Lexique.h"
 
 //----------------------------------------------------------------------------------------------------------------------
-//                    E X T E R N    R O U T I N E S                                             
+//                    E X T E R N    R O U T I N E S
 //----------------------------------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------------------------------
-//                    E X T E R N    F U N C T I O N S                                           
+//                    E X T E R N    F U N C T I O N S
 //----------------------------------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------------------------------
-//                       T O K E N    C L A S S                                                  
+//                       T O K E N    C L A S S
 //----------------------------------------------------------------------------------------------------------------------
 
 class cTokenFor_galgasScanner : public cToken {
@@ -42,7 +42,7 @@ class cTokenFor_galgasScanner : public cToken {
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
-//                     S C A N N E R    C L A S S                                                
+//                     S C A N N E R    C L A S S
 //----------------------------------------------------------------------------------------------------------------------
 
 class C_Lexique_galgasScanner : public C_Lexique {
@@ -223,7 +223,9 @@ class C_Lexique_galgasScanner : public C_Lexique {
    kToken__26__2B__2B_,
    kToken__B0_,
    kToken__3D__3D__3D_,
-   kToken__21__3D__3D_} ;
+   kToken__21__3D__3D_,
+   kToken__3F__5E_,
+   kToken__21__5E_} ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int16_t search_into_galgasKeyWordList (const C_String & inSearchedString) ;
@@ -326,7 +328,7 @@ class C_Lexique_galgasScanner : public C_Lexique {
   protected: virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int16_t terminalVocabularyCount (void) const override { return 154 ; }
+  public: virtual int16_t terminalVocabularyCount (void) const override { return 156 ; }
 
 //--- Get Token String
   public: virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const override ;

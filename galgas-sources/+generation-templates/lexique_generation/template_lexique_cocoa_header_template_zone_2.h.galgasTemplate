@@ -1,9 +1,10 @@
 
 #import "OC_Lexique.h"
+//#import "%!SUPER_LEXIQUE_HEADER_FILE_NAME%.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                    E X T E R N    R O U T I N E S                                             
+//                    E X T E R N    R O U T I N E S
 //
 //----------------------------------------------------------------------------------------------------------------------
 %
@@ -22,7 +23,7 @@
 %
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                    E X T E R N    F U N C T I O N S                                           
+//                    E X T E R N    F U N C T I O N S
 //
 //----------------------------------------------------------------------------------------------------------------------
 %
@@ -39,7 +40,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//         T E R M I N A L    S Y M B O L    E N U M E R A T I O N                               
+//         T E R M I N A L    S Y M B O L    E N U M E R A T I O N
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -51,15 +52,15 @@ enum {%!LEXIQUE_CLASS_NAME%_1_%
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                     S C A N N E R    C L A S S                                                
+//                     S C A N N E R    C L A S S
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-@interface OC_Lexique_%!LEXIQUE_CLASS_NAME% : OC_Lexique {
+@interface OC_Lexique_%!LEXIQUE_CLASS_NAME% : OC_Lexique { // } OC_Lexique_%!SUPER_LEXIQUE_CLASS_NAME% {
 //--- Attributes
 %
   for (lkey mLexicalType) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalAttributeMap do
-    %  @private %![mLexicalType cocoaTypeName]% mLexicalAttribute_%!lkey.string% ;\n%
+    % @private %![mLexicalType cocoaTypeName]% mLexicalAttribute_%!lkey.string% ;\n%
   end
 %
 }
