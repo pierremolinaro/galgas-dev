@@ -18,13 +18,6 @@ refclass @templateLexiqueComponentAST : @semanticDeclarationAST {
   private let @lstring mLexiqueSuperComponentName
   private let @templateDelimitorListAST mTemplateDelimitorList
   private let @templateReplacementListAST mTemplateReplacementList
-  
-  private let @lexicalAttributeListAST mLexicalAttributeList
-  private let @lexicalStyleListAST mLexicalStyleList
-#  private let @terminalDeclarationListAST mTerminalDeclarationListEX
-#  private let @lexicalMessageDeclarationListAST mLexicalMessageDeclarationListEX
-  private let @lexicalListDeclarationListAST mLexicalListDeclarationList
-#  private let @lexicalRuleListAST mLexicalRuleListEX
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -44,31 +37,11 @@ syntax extension galgas3LexiqueComponentSyntax {
     ${$
     var @templateDelimitorListAST templateDelimitorList = {}
     var @templateReplacementListAST templateReplacementList = {}
-    var @lexicalAttributeListAST lexicalAttributeList = {}
-    var @lexicalStyleListAST lexicalStyleList = {}
-    var @terminalDeclarationListAST terminalDeclarationList = {}
-    var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = {}
-    var @lexicalListDeclarationListAST lexicalListDeclarationList = {}
-    var @lexicalRuleListAST lexicalRuleList = {}
     repeat
     while 
       <template_delimitor> !? templateDelimitorList
     while 
       <template_replacement> !? templateReplacementList
-    while 
-      <lexical_attribute_declaration> !? lexicalAttributeList
-    while 
-      <style_declaration> !? lexicalStyleList
-    while 
-      <terminal_declaration> !? terminalDeclarationList
-    while 
-      <lexical_list_declaration> !? lexicalListDeclarationList
-    while
-      <lexical_explicit_rule> !? lexicalRuleList
-    while
-      <lexical_implicit_rule> !? lexicalRuleList
-    while
-      <lexical_message_declaration> !?lexicalMessageDeclarationList
     end
     $}$
     ioDeclarations.mDeclarationList += !@templateLexiqueComponentAST.new {
@@ -77,13 +50,43 @@ syntax extension galgas3LexiqueComponentSyntax {
       !lexiqueSuperComponentName
       !templateDelimitorList
       !templateReplacementList
-      !lexicalAttributeList
-      !lexicalStyleList
-#      !terminalDeclarationList
-#      !lexicalMessageDeclarationList
-      !lexicalListDeclarationList
-#      !lexicalRuleList
     }
+  }
+
+  #·····················································································································
+
+  rule <template_delimitor> ?!@templateDelimitorListAST ioTemplateDelimitorList {
+    $template$
+    $"string"$ ?let @lstring startString
+    var optionList = @lstringlist {}
+    repeat
+    while
+      $%attribute$ ?let @lstring optionName
+      optionList += !optionName
+    end
+    $...$
+    $"string"$ ?let @lstring endString
+    ioTemplateDelimitorList += !startString !optionList !endString
+  }
+
+  #·····················································································································
+
+  rule <template_replacement> ?!@templateReplacementListAST ioTemplateReplacement {
+    $replace$
+    $"string"$ ?let @lstring matchString
+    let @lstring replacementString
+    let @lstring replacementFunction
+    select
+      $...$
+      $"string"$ ?replacementString
+      $:$
+      $identifier$ ?replacementFunction
+    or
+      $->$
+      $"string"$ ?replacementString
+      replacementFunction = @lstring.new {!"" !@location.here}
+    end
+    ioTemplateReplacement += !matchString !replacementString !replacementFunction
   }
 
   #·····················································································································
@@ -107,31 +110,11 @@ syntax extension galgas4LexiqueComponentSyntax {
     ${$
     var @templateDelimitorListAST templateDelimitorList = {}
     var @templateReplacementListAST templateReplacementList = {}
-    var @lexicalAttributeListAST lexicalAttributeList = {}
-    var @lexicalStyleListAST lexicalStyleList = {}
-    var @terminalDeclarationListAST terminalDeclarationList = {}
-    var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = {}
-    var @lexicalListDeclarationListAST lexicalListDeclarationList = {}
-    var @lexicalRuleListAST lexicalRuleList = {}
     repeat
     while 
       <template_delimitor> !? templateDelimitorList
     while 
       <template_replacement> !? templateReplacementList
-    while 
-      <lexical_attribute_declaration> !? lexicalAttributeList
-    while 
-      <style_declaration> !? lexicalStyleList
-    while 
-      <terminal_declaration> !? terminalDeclarationList
-    while 
-      <lexical_list_declaration> !? lexicalListDeclarationList
-    while
-      <lexical_explicit_rule> !? lexicalRuleList
-    while
-      <lexical_implicit_rule> !? lexicalRuleList
-    while
-      <lexical_message_declaration> !?lexicalMessageDeclarationList
     end
     $}$
     ioDeclarations.mDeclarationList += !@templateLexiqueComponentAST.new {
@@ -140,13 +123,43 @@ syntax extension galgas4LexiqueComponentSyntax {
       !lexiqueSuperComponentName
       !templateDelimitorList
       !templateReplacementList
-      !lexicalAttributeList
-      !lexicalStyleList
-#      !terminalDeclarationList
-#      !lexicalMessageDeclarationList
-      !lexicalListDeclarationList
-#      !lexicalRuleList
     }
+  }
+
+  #·····················································································································
+
+  rule <template_delimitor> ?!@templateDelimitorListAST ioTemplateDelimitorList {
+    $template$
+    $"string"$ ?let @lstring startString
+    var optionList = @lstringlist {}
+    repeat
+    while
+      $%attribute$ ?let @lstring optionName
+      optionList += !optionName
+    end
+    $...$
+    $"string"$ ?let @lstring endString
+    ioTemplateDelimitorList += !startString !optionList !endString
+  }
+
+  #·····················································································································
+
+  rule <template_replacement> ?!@templateReplacementListAST ioTemplateReplacement {
+    $replace$
+    $"string"$ ?let @lstring matchString
+    let @lstring replacementString
+    let @lstring replacementFunction
+    select
+      $...$
+      $"string"$ ?replacementString
+      $:$
+      $identifier$ ?replacementFunction
+    or
+      $->$
+      $"string"$ ?replacementString
+      replacementFunction = @lstring.new {!"" !@location.here}
+    end
+    ioTemplateReplacement += !matchString !replacementString !replacementFunction
   }
 
   #·····················································································································
@@ -188,6 +201,9 @@ override method @templateLexiqueComponentAST enterDeclarationInSemanticContext
      ?let indexingListAST
      ?let indexingDirectory
      ?let terminalListAST
+     ?let lexicalAttributeListAST
+     ?let lexicalStyleListAST
+     ?let lexicalListDeclarationListAST
   ]
   if superLexiqueIsTemplate then
     error self.mLexiqueSuperComponentName : "cannot inherit from a template lexique"
@@ -200,6 +216,9 @@ override method @templateLexiqueComponentAST enterDeclarationInSemanticContext
      !indexingListAST
      !indexingDirectory
      !terminalListAST
+     !lexicalAttributeListAST
+     !lexicalStyleListAST
+     !lexicalListDeclarationListAST
   ]
 }
 
@@ -223,6 +242,9 @@ override method @templateLexiqueComponentAST semanticAnalysis
      ?* #let indexingListAST
      ?* #let indexingDirectory
      ?let terminalListAST
+     ?let lexicalAttributeListAST
+     ?let lexicalStyleListAST
+     ?let lexicalListDeclarationListAST
   ]
 #--------------------------------------- Lexical attribute type name map
   let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()
@@ -249,14 +271,14 @@ override method @templateLexiqueComponentAST semanticAnalysis
   }
 #--------------------------------------- Build style map
   var styleIndex = 1
-  for (mName mComment) in self.mLexicalStyleList do
+  for (mName mComment) in lexicalStyleListAST do
     [!?lexiqueAnalysisContext.mStyleMap insertKey !mName !mComment !styleIndex]
     styleIndex += 1
   end
 #--------------------------------------- Build lexical attribute map
   buildLexicalAttributeMap (
    !lexicalTypeMap
-   !self.mLexicalAttributeList
+   !lexicalAttributeListAST
    !?lexiqueAnalysisContext.mLexicalAttributeMap
   )
 #--------------------------------------- Build terminal map
@@ -297,7 +319,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
       !atomicSelection
       !terminalStyleIndex
   end
-  for (* mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in self.mLexicalListDeclarationList do
+  for (* mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in lexicalListDeclarationListAST do
     var @uint terminalStyleIndex = 0
     if [mStyle.string length] > 0 then
       [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]

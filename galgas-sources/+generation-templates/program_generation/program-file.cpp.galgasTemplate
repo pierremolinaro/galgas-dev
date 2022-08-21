@@ -173,7 +173,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
         message << ".\\n" ;
         ggs_printMessage (message COMMA_HERE) ;
       }
-    }catch (const ::std:: exception & e) {
+    }catch (const ::std::exception & e) {
       F_default_display_exception (e) ;
       returnCode = 1 ; // Error code
     }catch (...) {

@@ -8,16 +8,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                           Template Replacements
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-%if [TEMPLATE_REPLACEMENT_LIST length] > 0 then
-%static NSArray * kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% ; // Of NSString \n%
-end%
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //                           Template Delimiters
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -49,16 +39,6 @@ end%
       % discardStartString:%
       ![not mPreservesStartDelimiter ocString]
       %],\n%
-  end
-  %      nil\n%
-  %    ] ;\n%
-  %  }\n%
-  end
-  if [TEMPLATE_REPLACEMENT_LIST length] > 0 then
-  %  if (nil == kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n\n%
-  %    kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
-  for (mMatchString mReplacementString mReplacementFunction) in TEMPLATE_REPLACEMENT_LIST do
-    %      @%![mMatchString utf8Representation]%, %
   end
   %      nil\n%
   %    ] ;\n%
@@ -105,22 +85,6 @@ if [INDEXING_LIST length] > 0 then
 %
 end
 %}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//            Terminal Symbols as end of script in template mark
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-% if [TEMPLATE_DELIMITOR_LIST length] > 0 then
-   for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList
-      before %static const BOOL kEndOfScriptInTemplateArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [%![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList length] string]%] = {\n%
-      do %  %![mIsEndOfTemplateMark ocString]% /* %!mTerminalName.string% */%
-      between %,\n%
-      after %\n} ;\n%
-    end
-  end
-%
 
 %
   for (tokenList_lkey tokenList_mExplicitTokenListMap tokenList_mTokenSortedList tokenList_mShouldBeGenerated) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalTokenListMap do
@@ -180,31 +144,7 @@ end
   BOOL scanningOk = YES ;
   mTokenCode = 0 ;
   while ((mTokenCode == 0) && (mCurrentChar != '\0')) {
-%
-  if [TEMPLATE_DELIMITOR_LIST length] > 0 then
-%    if ((mMatchedTemplateDelimiterIndex >= 0) && ([[kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] startString].length > 0)) {
-      const BOOL foundEndDelimitor = [self testForInputString:[[kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] endString] advance:YES] ;
-      if (foundEndDelimitor) {
-        mMatchedTemplateDelimiterIndex = -1 ;
-      }
-    }
-    while ((mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar != '\0')) {
-      %if [TEMPLATE_REPLACEMENT_LIST length] > 0 then%
-      [self searchForReplacementPattern:kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%] ;
-      %end%
-      mMatchedTemplateDelimiterIndex = [self findTemplateDelimiterIndex:kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%] ;
-      if (mMatchedTemplateDelimiterIndex < 0) {
-        [self advance] ;
-        mTokenCode = -2 ;
-      }
-    }
-    if ((mMatchedTemplateDelimiterIndex >= 0) && (mTokenCode == 0) && (mCurrentChar != '\0') && scanningOk) {
-      scanningOk = [self internalParseLexicalTokenForLexicalColoring] ;
-    }
-    if ((mTokenCode > 0) && kEndOfScriptInTemplateArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [mTokenCode - 1]) {
-      mMatchedTemplateDelimiterIndex = -1 ;
-    }%else
-%    scanningOk = [self internalParseLexicalTokenForLexicalColoring] ;%end %
+    scanningOk = [self internalParseLexicalTokenForLexicalColoring] ;
   }
 //--- Error ?
   if (! scanningOk) {
@@ -239,7 +179,7 @@ end
 //----------------------------------------------------------------------------------------------------------------------
 
 - (BOOL) isTemplateLexique {
-  return %![[TEMPLATE_DELIMITOR_LIST length] > 0 ocString]% ;
+  return NO ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

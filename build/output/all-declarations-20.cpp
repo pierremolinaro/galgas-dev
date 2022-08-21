@@ -12383,7 +12383,10 @@ mProperty_mIsTemplate (),
 mProperty_mTerminalMap (),
 mProperty_mIndexingListAST (),
 mProperty_mIndexingDirectory (),
-mProperty_mTerminalListAST () {
+mProperty_mTerminalListAST (),
+mProperty_mLexicalAttributeListAST (),
+mProperty_mLexicalStyleListAST (),
+mProperty_mLexicalListDeclarationListAST () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12398,13 +12401,19 @@ GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::GALGAS_lexiqueComponen
                                                                                                                     const GALGAS_terminalMap & inOperand2,
                                                                                                                     const GALGAS_indexingListAST & inOperand3,
                                                                                                                     const GALGAS_lstring & inOperand4,
-                                                                                                                    const GALGAS_terminalDeclarationListAST & inOperand5) :
+                                                                                                                    const GALGAS_terminalDeclarationListAST & inOperand5,
+                                                                                                                    const GALGAS_lexicalAttributeListAST & inOperand6,
+                                                                                                                    const GALGAS_lexicalStyleListAST & inOperand7,
+                                                                                                                    const GALGAS_lexicalListDeclarationListAST & inOperand8) :
 mProperty_lkey (inOperand0),
 mProperty_mIsTemplate (inOperand1),
 mProperty_mTerminalMap (inOperand2),
 mProperty_mIndexingListAST (inOperand3),
 mProperty_mIndexingDirectory (inOperand4),
-mProperty_mTerminalListAST (inOperand5) {
+mProperty_mTerminalListAST (inOperand5),
+mProperty_mLexicalAttributeListAST (inOperand6),
+mProperty_mLexicalStyleListAST (inOperand7),
+mProperty_mLexicalListDeclarationListAST (inOperand8) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12415,7 +12424,10 @@ GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element GALGAS_lexiqueComponent
                                                                    GALGAS_terminalMap::constructor_emptyMap (HERE),
                                                                    GALGAS_indexingListAST::constructor_emptyList (HERE),
                                                                    GALGAS_lstring::constructor_default (HERE),
-                                                                   GALGAS_terminalDeclarationListAST::constructor_emptyList (HERE)) ;
+                                                                   GALGAS_terminalDeclarationListAST::constructor_emptyList (HERE),
+                                                                   GALGAS_lexicalAttributeListAST::constructor_emptyList (HERE),
+                                                                   GALGAS_lexicalStyleListAST::constructor_emptyList (HERE),
+                                                                   GALGAS_lexicalListDeclarationListAST::constructor_emptyList (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12425,11 +12437,14 @@ GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element GALGAS_lexiqueComponent
                                                                                                                                     const GALGAS_terminalMap & inOperand2,
                                                                                                                                     const GALGAS_indexingListAST & inOperand3,
                                                                                                                                     const GALGAS_lstring & inOperand4,
-                                                                                                                                    const GALGAS_terminalDeclarationListAST & inOperand5 
+                                                                                                                                    const GALGAS_terminalDeclarationListAST & inOperand5,
+                                                                                                                                    const GALGAS_lexicalAttributeListAST & inOperand6,
+                                                                                                                                    const GALGAS_lexicalStyleListAST & inOperand7,
+                                                                                                                                    const GALGAS_lexicalListDeclarationListAST & inOperand8 
                                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid ()) {
-    result = GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5) ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid ()) {
+    result = GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8) ;
   }
   return result ;
 }
@@ -12456,13 +12471,22 @@ typeComparisonResult GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::o
   if (result == kOperandEqual) {
     result = mProperty_mTerminalListAST.objectCompare (inOperand.mProperty_mTerminalListAST) ;
   }
+  if (result == kOperandEqual) {
+    result = mProperty_mLexicalAttributeListAST.objectCompare (inOperand.mProperty_mLexicalAttributeListAST) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mLexicalStyleListAST.objectCompare (inOperand.mProperty_mLexicalStyleListAST) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mLexicalListDeclarationListAST.objectCompare (inOperand.mProperty_mLexicalListDeclarationListAST) ;
+  }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mIsTemplate.isValid () && mProperty_mTerminalMap.isValid () && mProperty_mIndexingListAST.isValid () && mProperty_mIndexingDirectory.isValid () && mProperty_mTerminalListAST.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mIsTemplate.isValid () && mProperty_mTerminalMap.isValid () && mProperty_mIndexingListAST.isValid () && mProperty_mIndexingDirectory.isValid () && mProperty_mTerminalListAST.isValid () && mProperty_mLexicalAttributeListAST.isValid () && mProperty_mLexicalStyleListAST.isValid () && mProperty_mLexicalListDeclarationListAST.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12474,6 +12498,9 @@ void GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::drop (void) {
   mProperty_mIndexingListAST.drop () ;
   mProperty_mIndexingDirectory.drop () ;
   mProperty_mTerminalListAST.drop () ;
+  mProperty_mLexicalAttributeListAST.drop () ;
+  mProperty_mLexicalStyleListAST.drop () ;
+  mProperty_mLexicalListDeclarationListAST.drop () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12495,6 +12522,12 @@ void GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::description (C_St
     mProperty_mIndexingDirectory.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mTerminalListAST.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mLexicalAttributeListAST.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mLexicalStyleListAST.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mLexicalListDeclarationListAST.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }

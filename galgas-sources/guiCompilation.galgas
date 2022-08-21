@@ -423,7 +423,7 @@ private proc guiComponentSemanticAnalysis
       !mLexiqueFileName
       ?*
       ?let @terminalMap terminalMap
-      ?3*
+      ?6*
     ]
   #--- Build terminal symbol set
     let terminalSymbolSet = [terminalMap keySet]

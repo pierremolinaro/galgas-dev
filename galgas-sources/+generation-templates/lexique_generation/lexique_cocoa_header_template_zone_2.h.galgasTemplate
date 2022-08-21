@@ -63,3 +63,30 @@ enum {%!LEXIQUE_CLASS_NAME%_1_%
   end
 %
 }
+
+- (NSUInteger) terminalVocabularyCount ;
+
+- (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal ;
+
+- (BOOL) internalParseLexicalTokenForLexicalColoring ;
+
+- (void) parseLexicalTokenForLexicalColoring ;
+
+- (NSUInteger) styleCount ;
+
+- (NSString *) styleNameForStyleIndex: (NSInteger) inIndex ;
+
+- (NSString *) styleIdentifierForStyleIndex: (NSInteger) inIndex ;
+
+- (NSString *) indexingDirectory ;
+
+- (NSArray *) indexingTitles ; // Array of NSString
+
+- (BOOL) isTemplateLexique ;
+
+- (BOOL) atomicSelectionForToken: (NSUInteger) inTokenIndex ;
+
+@end
+
+//----------------------------------------------------------------------------------------------------------------------
+
