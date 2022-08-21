@@ -9662,28 +9662,37 @@ typeComparisonResult cPtr_lexiqueComponentAST::dynamicObjectCompare (const acPtr
     result = mProperty_mLexiqueComponentName.objectCompare (p->mProperty_mLexiqueComponentName) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mLexicalAttributeList.objectCompare (p->mProperty_mLexicalAttributeList) ;
+    result = mProperty_mIsTemplate.objectCompare (p->mProperty_mIsTemplate) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mLexicalStyleList.objectCompare (p->mProperty_mLexicalStyleList) ;
+    result = mProperty_mTemplateDelimitorListAST.objectCompare (p->mProperty_mTemplateDelimitorListAST) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mTerminalDeclarationList.objectCompare (p->mProperty_mTerminalDeclarationList) ;
+    result = mProperty_mTemplateReplacementListAST.objectCompare (p->mProperty_mTemplateReplacementListAST) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mLexicalMessageDeclarationList.objectCompare (p->mProperty_mLexicalMessageDeclarationList) ;
+    result = mProperty_mLexicalAttributeListAST.objectCompare (p->mProperty_mLexicalAttributeListAST) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mLexicalListDeclarationList.objectCompare (p->mProperty_mLexicalListDeclarationList) ;
+    result = mProperty_mLexicalStyleListAST.objectCompare (p->mProperty_mLexicalStyleListAST) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mLexicalRuleList.objectCompare (p->mProperty_mLexicalRuleList) ;
+    result = mProperty_mTerminalDeclarationListAST.objectCompare (p->mProperty_mTerminalDeclarationListAST) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLexicalMessageDeclarationListAST.objectCompare (p->mProperty_mLexicalMessageDeclarationListAST) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLexicalListDeclarationListAST.objectCompare (p->mProperty_mLexicalListDeclarationListAST) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLexicalRuleListAST.objectCompare (p->mProperty_mLexicalRuleListAST) ;
   }
   if (kOperandEqual == result) {
     result = mProperty_mIndexingListAST.objectCompare (p->mProperty_mIndexingListAST) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mIndexingDirectory.objectCompare (p->mProperty_mIndexingDirectory) ;
+    result = mProperty_mIndexingDirectoryAST.objectCompare (p->mProperty_mIndexingDirectoryAST) ;
   }
   return result ;
 }
@@ -9718,6 +9727,9 @@ GALGAS_semanticDeclarationAST () {
 GALGAS_lexiqueComponentAST GALGAS_lexiqueComponentAST::constructor_default (LOCATION_ARGS) {
   return GALGAS_lexiqueComponentAST::constructor_new (GALGAS_bool::constructor_default (HERE),
                                                       GALGAS_lstring::constructor_default (HERE),
+                                                      GALGAS_bool::constructor_default (HERE),
+                                                      GALGAS_templateDelimitorListAST::constructor_emptyList (HERE),
+                                                      GALGAS_templateReplacementListAST::constructor_emptyList (HERE),
                                                       GALGAS_lexicalAttributeListAST::constructor_emptyList (HERE),
                                                       GALGAS_lexicalStyleListAST::constructor_emptyList (HERE),
                                                       GALGAS_terminalDeclarationListAST::constructor_emptyList (HERE),
@@ -9739,18 +9751,21 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 
 GALGAS_lexiqueComponentAST GALGAS_lexiqueComponentAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                         const GALGAS_lstring & inAttribute_mLexiqueComponentName,
-                                                                        const GALGAS_lexicalAttributeListAST & inAttribute_mLexicalAttributeList,
-                                                                        const GALGAS_lexicalStyleListAST & inAttribute_mLexicalStyleList,
-                                                                        const GALGAS_terminalDeclarationListAST & inAttribute_mTerminalDeclarationList,
-                                                                        const GALGAS_lexicalMessageDeclarationListAST & inAttribute_mLexicalMessageDeclarationList,
-                                                                        const GALGAS_lexicalListDeclarationListAST & inAttribute_mLexicalListDeclarationList,
-                                                                        const GALGAS_lexicalRuleListAST & inAttribute_mLexicalRuleList,
+                                                                        const GALGAS_bool & inAttribute_mIsTemplate,
+                                                                        const GALGAS_templateDelimitorListAST & inAttribute_mTemplateDelimitorListAST,
+                                                                        const GALGAS_templateReplacementListAST & inAttribute_mTemplateReplacementListAST,
+                                                                        const GALGAS_lexicalAttributeListAST & inAttribute_mLexicalAttributeListAST,
+                                                                        const GALGAS_lexicalStyleListAST & inAttribute_mLexicalStyleListAST,
+                                                                        const GALGAS_terminalDeclarationListAST & inAttribute_mTerminalDeclarationListAST,
+                                                                        const GALGAS_lexicalMessageDeclarationListAST & inAttribute_mLexicalMessageDeclarationListAST,
+                                                                        const GALGAS_lexicalListDeclarationListAST & inAttribute_mLexicalListDeclarationListAST,
+                                                                        const GALGAS_lexicalRuleListAST & inAttribute_mLexicalRuleListAST,
                                                                         const GALGAS_indexingListAST & inAttribute_mIndexingListAST,
-                                                                        const GALGAS_lstring & inAttribute_mIndexingDirectory
+                                                                        const GALGAS_lstring & inAttribute_mIndexingDirectoryAST
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_lexiqueComponentAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mLexiqueComponentName.isValid () && inAttribute_mLexicalAttributeList.isValid () && inAttribute_mLexicalStyleList.isValid () && inAttribute_mTerminalDeclarationList.isValid () && inAttribute_mLexicalMessageDeclarationList.isValid () && inAttribute_mLexicalListDeclarationList.isValid () && inAttribute_mLexicalRuleList.isValid () && inAttribute_mIndexingListAST.isValid () && inAttribute_mIndexingDirectory.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_lexiqueComponentAST (inAttribute_mIsPredefined, inAttribute_mLexiqueComponentName, inAttribute_mLexicalAttributeList, inAttribute_mLexicalStyleList, inAttribute_mTerminalDeclarationList, inAttribute_mLexicalMessageDeclarationList, inAttribute_mLexicalListDeclarationList, inAttribute_mLexicalRuleList, inAttribute_mIndexingListAST, inAttribute_mIndexingDirectory COMMA_THERE)) ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mLexiqueComponentName.isValid () && inAttribute_mIsTemplate.isValid () && inAttribute_mTemplateDelimitorListAST.isValid () && inAttribute_mTemplateReplacementListAST.isValid () && inAttribute_mLexicalAttributeListAST.isValid () && inAttribute_mLexicalStyleListAST.isValid () && inAttribute_mTerminalDeclarationListAST.isValid () && inAttribute_mLexicalMessageDeclarationListAST.isValid () && inAttribute_mLexicalListDeclarationListAST.isValid () && inAttribute_mLexicalRuleListAST.isValid () && inAttribute_mIndexingListAST.isValid () && inAttribute_mIndexingDirectoryAST.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_lexiqueComponentAST (inAttribute_mIsPredefined, inAttribute_mLexiqueComponentName, inAttribute_mIsTemplate, inAttribute_mTemplateDelimitorListAST, inAttribute_mTemplateReplacementListAST, inAttribute_mLexicalAttributeListAST, inAttribute_mLexicalStyleListAST, inAttribute_mTerminalDeclarationListAST, inAttribute_mLexicalMessageDeclarationListAST, inAttribute_mLexicalListDeclarationListAST, inAttribute_mLexicalRuleListAST, inAttribute_mIndexingListAST, inAttribute_mIndexingDirectoryAST COMMA_THERE)) ;
   }
   return result ;
 }
@@ -9769,73 +9784,109 @@ GALGAS_lstring GALGAS_lexiqueComponentAST::readProperty_mLexiqueComponentName (v
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalAttributeListAST GALGAS_lexiqueComponentAST::readProperty_mLexicalAttributeList (void) const {
+GALGAS_bool GALGAS_lexiqueComponentAST::readProperty_mIsTemplate (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_bool () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mIsTemplate ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateDelimitorListAST GALGAS_lexiqueComponentAST::readProperty_mTemplateDelimitorListAST (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_templateDelimitorListAST () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mTemplateDelimitorListAST ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateReplacementListAST GALGAS_lexiqueComponentAST::readProperty_mTemplateReplacementListAST (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_templateReplacementListAST () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mTemplateReplacementListAST ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalAttributeListAST GALGAS_lexiqueComponentAST::readProperty_mLexicalAttributeListAST (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lexicalAttributeListAST () ;
   }else{
     cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    return p->mProperty_mLexicalAttributeList ;
+    return p->mProperty_mLexicalAttributeListAST ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalStyleListAST GALGAS_lexiqueComponentAST::readProperty_mLexicalStyleList (void) const {
+GALGAS_lexicalStyleListAST GALGAS_lexiqueComponentAST::readProperty_mLexicalStyleListAST (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lexicalStyleListAST () ;
   }else{
     cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    return p->mProperty_mLexicalStyleList ;
+    return p->mProperty_mLexicalStyleListAST ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_terminalDeclarationListAST GALGAS_lexiqueComponentAST::readProperty_mTerminalDeclarationList (void) const {
+GALGAS_terminalDeclarationListAST GALGAS_lexiqueComponentAST::readProperty_mTerminalDeclarationListAST (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_terminalDeclarationListAST () ;
   }else{
     cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    return p->mProperty_mTerminalDeclarationList ;
+    return p->mProperty_mTerminalDeclarationListAST ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalMessageDeclarationListAST GALGAS_lexiqueComponentAST::readProperty_mLexicalMessageDeclarationList (void) const {
+GALGAS_lexicalMessageDeclarationListAST GALGAS_lexiqueComponentAST::readProperty_mLexicalMessageDeclarationListAST (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lexicalMessageDeclarationListAST () ;
   }else{
     cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    return p->mProperty_mLexicalMessageDeclarationList ;
+    return p->mProperty_mLexicalMessageDeclarationListAST ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalListDeclarationListAST GALGAS_lexiqueComponentAST::readProperty_mLexicalListDeclarationList (void) const {
+GALGAS_lexicalListDeclarationListAST GALGAS_lexiqueComponentAST::readProperty_mLexicalListDeclarationListAST (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lexicalListDeclarationListAST () ;
   }else{
     cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    return p->mProperty_mLexicalListDeclarationList ;
+    return p->mProperty_mLexicalListDeclarationListAST ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRuleListAST GALGAS_lexiqueComponentAST::readProperty_mLexicalRuleList (void) const {
+GALGAS_lexicalRuleListAST GALGAS_lexiqueComponentAST::readProperty_mLexicalRuleListAST (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lexicalRuleListAST () ;
   }else{
     cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    return p->mProperty_mLexicalRuleList ;
+    return p->mProperty_mLexicalRuleListAST ;
   }
 }
 
@@ -9853,13 +9904,13 @@ GALGAS_indexingListAST GALGAS_lexiqueComponentAST::readProperty_mIndexingListAST
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_lexiqueComponentAST::readProperty_mIndexingDirectory (void) const {
+GALGAS_lstring GALGAS_lexiqueComponentAST::readProperty_mIndexingDirectoryAST (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
     cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    return p->mProperty_mIndexingDirectory ;
+    return p->mProperty_mIndexingDirectoryAST ;
   }
 }
 
@@ -9869,25 +9920,31 @@ GALGAS_lstring GALGAS_lexiqueComponentAST::readProperty_mIndexingDirectory (void
 
 cPtr_lexiqueComponentAST::cPtr_lexiqueComponentAST (const GALGAS_bool & in_mIsPredefined,
                                                     const GALGAS_lstring & in_mLexiqueComponentName,
-                                                    const GALGAS_lexicalAttributeListAST & in_mLexicalAttributeList,
-                                                    const GALGAS_lexicalStyleListAST & in_mLexicalStyleList,
-                                                    const GALGAS_terminalDeclarationListAST & in_mTerminalDeclarationList,
-                                                    const GALGAS_lexicalMessageDeclarationListAST & in_mLexicalMessageDeclarationList,
-                                                    const GALGAS_lexicalListDeclarationListAST & in_mLexicalListDeclarationList,
-                                                    const GALGAS_lexicalRuleListAST & in_mLexicalRuleList,
+                                                    const GALGAS_bool & in_mIsTemplate,
+                                                    const GALGAS_templateDelimitorListAST & in_mTemplateDelimitorListAST,
+                                                    const GALGAS_templateReplacementListAST & in_mTemplateReplacementListAST,
+                                                    const GALGAS_lexicalAttributeListAST & in_mLexicalAttributeListAST,
+                                                    const GALGAS_lexicalStyleListAST & in_mLexicalStyleListAST,
+                                                    const GALGAS_terminalDeclarationListAST & in_mTerminalDeclarationListAST,
+                                                    const GALGAS_lexicalMessageDeclarationListAST & in_mLexicalMessageDeclarationListAST,
+                                                    const GALGAS_lexicalListDeclarationListAST & in_mLexicalListDeclarationListAST,
+                                                    const GALGAS_lexicalRuleListAST & in_mLexicalRuleListAST,
                                                     const GALGAS_indexingListAST & in_mIndexingListAST,
-                                                    const GALGAS_lstring & in_mIndexingDirectory
+                                                    const GALGAS_lstring & in_mIndexingDirectoryAST
                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mProperty_mLexiqueComponentName (in_mLexiqueComponentName),
-mProperty_mLexicalAttributeList (in_mLexicalAttributeList),
-mProperty_mLexicalStyleList (in_mLexicalStyleList),
-mProperty_mTerminalDeclarationList (in_mTerminalDeclarationList),
-mProperty_mLexicalMessageDeclarationList (in_mLexicalMessageDeclarationList),
-mProperty_mLexicalListDeclarationList (in_mLexicalListDeclarationList),
-mProperty_mLexicalRuleList (in_mLexicalRuleList),
+mProperty_mIsTemplate (in_mIsTemplate),
+mProperty_mTemplateDelimitorListAST (in_mTemplateDelimitorListAST),
+mProperty_mTemplateReplacementListAST (in_mTemplateReplacementListAST),
+mProperty_mLexicalAttributeListAST (in_mLexicalAttributeListAST),
+mProperty_mLexicalStyleListAST (in_mLexicalStyleListAST),
+mProperty_mTerminalDeclarationListAST (in_mTerminalDeclarationListAST),
+mProperty_mLexicalMessageDeclarationListAST (in_mLexicalMessageDeclarationListAST),
+mProperty_mLexicalListDeclarationListAST (in_mLexicalListDeclarationListAST),
+mProperty_mLexicalRuleListAST (in_mLexicalRuleListAST),
 mProperty_mIndexingListAST (in_mIndexingListAST),
-mProperty_mIndexingDirectory (in_mIndexingDirectory) {
+mProperty_mIndexingDirectoryAST (in_mIndexingDirectoryAST) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -9903,21 +9960,27 @@ void cPtr_lexiqueComponentAST::description (C_String & ioString,
   ioString << ", " ;
   mProperty_mLexiqueComponentName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mLexicalAttributeList.description (ioString, inIndentation+1) ;
+  mProperty_mIsTemplate.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mLexicalStyleList.description (ioString, inIndentation+1) ;
+  mProperty_mTemplateDelimitorListAST.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mTerminalDeclarationList.description (ioString, inIndentation+1) ;
+  mProperty_mTemplateReplacementListAST.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mLexicalMessageDeclarationList.description (ioString, inIndentation+1) ;
+  mProperty_mLexicalAttributeListAST.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mLexicalListDeclarationList.description (ioString, inIndentation+1) ;
+  mProperty_mLexicalStyleListAST.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mLexicalRuleList.description (ioString, inIndentation+1) ;
+  mProperty_mTerminalDeclarationListAST.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLexicalMessageDeclarationListAST.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLexicalListDeclarationListAST.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLexicalRuleListAST.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mProperty_mIndexingListAST.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mIndexingDirectory.description (ioString, inIndentation+1) ;
+  mProperty_mIndexingDirectoryAST.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -9925,7 +9988,7 @@ void cPtr_lexiqueComponentAST::description (C_String & ioString,
 
 acPtr_class * cPtr_lexiqueComponentAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_lexiqueComponentAST (mProperty_mIsPredefined, mProperty_mLexiqueComponentName, mProperty_mLexicalAttributeList, mProperty_mLexicalStyleList, mProperty_mTerminalDeclarationList, mProperty_mLexicalMessageDeclarationList, mProperty_mLexicalListDeclarationList, mProperty_mLexicalRuleList, mProperty_mIndexingListAST, mProperty_mIndexingDirectory COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexiqueComponentAST (mProperty_mIsPredefined, mProperty_mLexiqueComponentName, mProperty_mIsTemplate, mProperty_mTemplateDelimitorListAST, mProperty_mTemplateReplacementListAST, mProperty_mLexicalAttributeListAST, mProperty_mLexicalStyleListAST, mProperty_mTerminalDeclarationListAST, mProperty_mLexicalMessageDeclarationListAST, mProperty_mLexicalListDeclarationListAST, mProperty_mLexicalRuleListAST, mProperty_mIndexingListAST, mProperty_mIndexingDirectoryAST COMMA_THERE)) ;
   return ptr ;
 }
 

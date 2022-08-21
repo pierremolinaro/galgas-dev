@@ -66,6 +66,8 @@ class C_Lexique_galgasScanner : public C_Lexique {
     protected: virtual ~ C_Lexique_galgasScanner (void) {}
   #endif
 
+
+
 //--- Terminal symbols enumeration
   public: enum {kToken_,
    kToken_identifier,

@@ -15,14 +15,17 @@
 
 refclass @lexiqueComponentAST : @semanticDeclarationAST {
   private let @lstring mLexiqueComponentName
-  private let @lexicalAttributeListAST mLexicalAttributeList
-  private let @lexicalStyleListAST mLexicalStyleList
-  private let @terminalDeclarationListAST mTerminalDeclarationList
-  private let @lexicalMessageDeclarationListAST mLexicalMessageDeclarationList
-  private let @lexicalListDeclarationListAST mLexicalListDeclarationList
-  private let @lexicalRuleListAST mLexicalRuleList
+  private let @bool mIsTemplate
+  private let @templateDelimitorListAST mTemplateDelimitorListAST
+  private let @templateReplacementListAST mTemplateReplacementListAST
+  private let @lexicalAttributeListAST mLexicalAttributeListAST
+  private let @lexicalStyleListAST mLexicalStyleListAST
+  private let @terminalDeclarationListAST mTerminalDeclarationListAST
+  private let @lexicalMessageDeclarationListAST mLexicalMessageDeclarationListAST
+  private let @lexicalListDeclarationListAST mLexicalListDeclarationListAST
+  private let @lexicalRuleListAST mLexicalRuleListAST
   private let @indexingListAST mIndexingListAST
-  private let @lstring mIndexingDirectory
+  private let @lstring mIndexingDirectoryAST
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -46,6 +49,8 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
     end
     ${$
   #--- Parse lexique body
+    var @templateDelimitorListAST templateDelimitorList = {}
+    var @templateReplacementListAST templateReplacementList = {}
     var @lexicalAttributeListAST lexicalAttributeList = {}
     var @lexicalStyleListAST lexicalStyleList = {}
     var @terminalDeclarationListAST terminalDeclarationList = {}
@@ -54,6 +59,10 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
     var @lexicalRuleListAST lexicalRuleList = {}
     var @indexingListAST indexingListAST = {}
     repeat
+    while 
+      <template_delimitor> !? templateDelimitorList
+    while 
+      <template_replacement> !? templateReplacementList
     while 
       <lexical_attribute_declaration> !? lexicalAttributeList
     while 
@@ -75,6 +84,76 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
     ioDeclarations.mDeclarationList += !@lexiqueComponentAST.new {
       !false # Is not predefined
       !lexiqueComponentName
+      !false # isTemplate
+      !templateDelimitorList
+      !templateReplacementList
+      !lexicalAttributeList
+      !lexicalStyleList
+      !terminalDeclarationList
+      !lexicalMessageDeclarationList
+      !lexicalListDeclarationList
+      !lexicalRuleList
+      !indexingListAST
+      !indexingDirectory
+    }
+  }
+
+ #·····················································································································
+
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+    $template$
+    $lexique$
+  #--- Lexique Component Name
+    $identifier$ ?let @lstring lexiqueComponentName
+  #--- Enable indexing ?
+    let @lstring indexingDirectory
+    select
+      indexingDirectory = ["" nowhere]
+    or
+      $indexing$
+      $in$
+      $"string"$ ? indexingDirectory
+    end
+    ${$
+  #--- Parse lexique body
+    var @templateDelimitorListAST templateDelimitorList = {}
+    var @templateReplacementListAST templateReplacementList = {}
+    var @lexicalAttributeListAST lexicalAttributeList = {}
+    var @lexicalStyleListAST lexicalStyleList = {}
+    var @terminalDeclarationListAST terminalDeclarationList = {}
+    var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = {}
+    var @lexicalListDeclarationListAST lexicalListDeclarationList = {}
+    var @lexicalRuleListAST lexicalRuleList = {}
+    var @indexingListAST indexingListAST = {}
+    repeat
+    while 
+      <template_delimitor> !? templateDelimitorList
+    while 
+      <template_replacement> !? templateReplacementList
+    while 
+      <lexical_attribute_declaration> !? lexicalAttributeList
+    while 
+      <style_declaration> !? lexicalStyleList
+    while 
+      <terminal_declaration> !? terminalDeclarationList
+    while 
+      <lexical_list_declaration> !? lexicalListDeclarationList
+    while
+      <lexical_explicit_rule> !? lexicalRuleList
+    while
+      <lexical_implicit_rule> !? lexicalRuleList
+    while
+      <lexical_message_declaration> !?lexicalMessageDeclarationList
+    while
+      <lexical_indexing_declaration> !?indexingListAST
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@lexiqueComponentAST.new {
+      !false # Is not predefined
+      !lexiqueComponentName
+      !true # isTemplate
+      !templateDelimitorList
+      !templateReplacementList
       !lexicalAttributeList
       !lexicalStyleList
       !terminalDeclarationList
@@ -564,6 +643,8 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner) {
     end
     ${$
   #--- Parse lexique body
+    var @templateDelimitorListAST templateDelimitorList = {}
+    var @templateReplacementListAST templateReplacementList = {}
     var @lexicalAttributeListAST lexicalAttributeList = {}
     var @lexicalStyleListAST lexicalStyleList = {}
     var @terminalDeclarationListAST terminalDeclarationList = {}
@@ -572,6 +653,10 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner) {
     var @lexicalRuleListAST lexicalRuleList = {}
     var @indexingListAST indexingListAST = {}
     repeat
+    while 
+      <template_delimitor> !? templateDelimitorList
+    while 
+      <template_replacement> !? templateReplacementList
     while 
       <lexical_attribute_declaration> !? lexicalAttributeList
     while 
@@ -593,6 +678,9 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner) {
     ioDeclarations.mDeclarationList += !@lexiqueComponentAST.new {
       !false # Is not predefined
       !lexiqueComponentName
+      !false # isTemplate
+      !templateDelimitorList
+      !templateReplacementList
       !lexicalAttributeList
       !lexicalStyleList
       !terminalDeclarationList
@@ -603,6 +691,73 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner) {
       !indexingDirectory
     }
   }
+
+  #·····················································································································
+
+#  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+#    $template$
+#    $lexique$
+#  #--- Lexique Component Name
+#    $identifier$ ?let @lstring lexiqueComponentName
+#  #--- Enable indexing ?
+#    let @lstring indexingDirectory
+#    select
+#      indexingDirectory = ["" nowhere]
+#    or
+#      $indexing$
+#      $in$
+#      $"string"$ ? indexingDirectory
+#    end
+#    ${$
+#  #--- Parse lexique body
+#    var @templateDelimitorListAST templateDelimitorList = {}
+#    var @templateReplacementListAST templateReplacementList = {}
+#    var @lexicalAttributeListAST lexicalAttributeList = {}
+#    var @lexicalStyleListAST lexicalStyleList = {}
+#    var @terminalDeclarationListAST terminalDeclarationList = {}
+#    var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = {}
+#    var @lexicalListDeclarationListAST lexicalListDeclarationList = {}
+#    var @lexicalRuleListAST lexicalRuleList = {}
+#    var @indexingListAST indexingListAST = {}
+#    repeat
+#    while 
+#      <template_delimitor> !? templateDelimitorList
+#    while 
+#      <template_replacement> !? templateReplacementList
+#    while 
+#      <lexical_attribute_declaration> !? lexicalAttributeList
+#    while 
+#      <style_declaration> !? lexicalStyleList
+#    while 
+#      <terminal_declaration> !? terminalDeclarationList
+#    while 
+#      <lexical_list_declaration> !? lexicalListDeclarationList
+#    while
+#      <lexical_explicit_rule> !? lexicalRuleList
+#    while
+#      <lexical_implicit_rule> !? lexicalRuleList
+#    while
+#      <lexical_message_declaration> !?lexicalMessageDeclarationList
+#    while
+#      <lexical_indexing_declaration> !?indexingListAST
+#    end
+#    $}$
+#    ioDeclarations.mDeclarationList += !@lexiqueComponentAST.new {
+#      !false # Is not predefined
+#      !lexiqueComponentName
+#      !true # isTemplate
+#      !templateDelimitorList
+#      !templateReplacementList
+#      !lexicalAttributeList
+#      !lexicalStyleList
+#      !terminalDeclarationList
+#      !lexicalMessageDeclarationList
+#      !lexicalListDeclarationList
+#      !lexicalRuleList
+#      !indexingListAST
+#      !indexingDirectory
+#    }
+#  }
 
   #·····················································································································
 
@@ -1091,12 +1246,12 @@ override method @lexiqueComponentAST enterDeclarationInSemanticContext
   var @lexicalAttributeMap lexicalAttributeMap = {}
   buildLexicalAttributeMap (
    !lexicalTypeMap
-   !self.mLexicalAttributeList
+   !self.mLexicalAttributeListAST
    !?lexicalAttributeMap
   )
 #--------------------------------------- 
   var @terminalMap terminalMap = {}
-  for (name sentAttributeList * * *) in self.mTerminalDeclarationList do
+  for (name sentAttributeList * * *) in self.mTerminalDeclarationListAST do
     var argumentTypeList = @lexicalSentValueList {}
     for (mFormalSelector mAttributeName) in sentAttributeList do
       [lexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
@@ -1104,7 +1259,8 @@ override method @lexiqueComponentAST enterDeclarationInSemanticContext
     end
     [!?terminalMap insertKey !name !argumentTypeList]
   end
-  for (* * * mSentAttributeList mEntryList) in self.mLexicalListDeclarationList do
+#---
+  for (* * * mSentAttributeList mEntryList) in self.mLexicalListDeclarationListAST do
     var argumentTypeList = @lexicalSentValueList {}
     for (mFormalSelector mAttributeName) in mSentAttributeList do
       [lexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
@@ -1117,14 +1273,14 @@ override method @lexiqueComponentAST enterDeclarationInSemanticContext
 #---
   [!?ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis insertKey
      !self.mLexiqueComponentName
-     !false # mIsTemplate
+     !mIsTemplate
      !terminalMap
      !self.mIndexingListAST
-     !self.mIndexingDirectory
-     !self.mTerminalDeclarationList
-     !self.mLexicalAttributeList
-     !self.mLexicalStyleList
-     !self.mLexicalListDeclarationList
+     !self.mIndexingDirectoryAST
+     !self.mTerminalDeclarationListAST
+     !self.mLexicalAttributeListAST
+     !self.mLexicalStyleListAST
+     !self.mLexicalListDeclarationListAST
   ]
 }
 
@@ -1165,18 +1321,18 @@ override method @lexiqueComponentAST semanticAnalysis
   }
 #--------------------------------------- Build style map
   var styleIndex = 1
-  for (mName mComment) in self.mLexicalStyleList do
+  for (mName mComment) in self.mLexicalStyleListAST do
     [!?lexiqueAnalysisContext.mStyleMap insertKey !mName !mComment !styleIndex]
     styleIndex += 1
   end
 #--------------------------------------- Build lexical attribute map
   buildLexicalAttributeMap (
    !lexicalTypeMap
-   !self.mLexicalAttributeList
+   !self.mLexicalAttributeListAST
    !?lexiqueAnalysisContext.mLexicalAttributeMap
   )
 #--------------------------------------- Build terminal map
-  for (mName mSentAttributeList mSyntaxErrorMessage mStyle mOptionList) in self.mTerminalDeclarationList do
+  for (mName mSentAttributeList mSyntaxErrorMessage mStyle mOptionList) in self.mTerminalDeclarationListAST do
     var @uint terminalStyleIndex = 0
     if [mStyle.string length] > 0 then
       [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
@@ -1212,7 +1368,7 @@ override method @lexiqueComponentAST semanticAnalysis
       !atomicSelection
       !terminalStyleIndex
   end
-  for (mName mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in self.mLexicalListDeclarationList do
+  for (mName mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in self.mLexicalListDeclarationListAST do
     var @uint terminalStyleIndex = 0
     if [mStyle.string length] > 0 then
       [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
@@ -1258,11 +1414,11 @@ override method @lexiqueComponentAST semanticAnalysis
     [!?lexiqueAnalysisContext.mLexicalTokenListMap insertKey !mName !lexicalTokenListMap !tokenSortedlist !false]
   end
 #--------------------------------------- Build Message map
-  for (mMessageName mMessageValue) in self.mLexicalMessageDeclarationList do
+  for (mMessageName mMessageValue) in self.mLexicalMessageDeclarationListAST do
     [!?lexiqueAnalysisContext.mLexicalMessageMap insertKey !mMessageName !mMessageValue !false]
   end
 #--------------------------------------- Check rules
-  for (mLexicalRule) in self.mLexicalRuleList do
+  for (mLexicalRule) in self.mLexicalRuleListAST do
     [mLexicalRule checkLexicalRule !?lexiqueAnalysisContext]
   end
 #--------------------------------------- Warn for unused messages
@@ -1271,8 +1427,24 @@ override method @lexiqueComponentAST semanticAnalysis
       warning lkey:"unused message"
     end
   end
+#--------------------------------------- Template delimiters
+  for (mStartString mOptionList mEndString) in self.mTemplateDelimitorListAST do
+   lexiqueAnalysisContext.mUnicodeStringToGenerate += !mStartString.string
+   lexiqueAnalysisContext.mUnicodeStringToGenerate += !mEndString.string
+   var preservesStartDelimiter = false
+   for (mValue) in mOptionList do
+     if mValue.string != "preserved" then
+       error mValue:"only the 'preserved' attribute is allowed here"
+     elsif preservesStartDelimiter then
+       error mValue:"the 'preserved' attribute is already set"
+     else
+       preservesStartDelimiter = true
+     end
+   end
+   lexiqueAnalysisContext.mTemplateDelimitorList += !mStartString !mEndString !preservesStartDelimiter
+  end
 #--------------------------------------- Check "indexing" declarations
-  if [self.mIndexingDirectory isNowhere] then
+  if [self.mIndexingDirectoryAST isNowhere] then
     for (mIndexName *) in self.mIndexingListAST do
       error mIndexName : "indexing declaration requires one 'indexing in \"path\";' declaration"
     end
@@ -1284,13 +1456,20 @@ override method @lexiqueComponentAST semanticAnalysis
     end
     indexNameSet += !mIndexName.string
   end
+#--------------------------------------- Template replacements
+  for (mMatchString mReplacementString *) in self.mTemplateReplacementListAST do
+   lexiqueAnalysisContext.mUnicodeStringToGenerate += !mMatchString.string
+   lexiqueAnalysisContext.mUnicodeStringToGenerate += !mReplacementString.string
+   # § TODO Check replacement function
+  end
 #--------------------------------------- Build header and Cpp contents
   if @uint.errorCount == 0 then
   #--- Header
-    let headerContents = [filewrapper lexiqueGenerationTemplates.headerZone2
+    let headerContents = [filewrapper lexiqueGenerationTemplates.headerZone2     
       ![self.mLexiqueComponentName.string identifierRepresentation]
-      !self.mLexicalListDeclarationList
+      !self.mLexicalListDeclarationListAST
       !lexiqueAnalysisContext
+      !self.mTemplateDelimitorListAST
       !self.mIndexingListAST
     ]
   #--- Cpp
@@ -1301,11 +1480,13 @@ override method @lexiqueComponentAST semanticAnalysis
       !lexiqueAnalysisContext.mTerminalList
       !lexiqueAnalysisContext.mLexicalTokenListMap
       !lexiqueAnalysisContext.mUnicodeStringToGenerate
-      !self.mLexicalRuleList
+      !self.mLexicalRuleListAST
       !lexiqueAnalysisContext
-      !self.mIndexingDirectory.string
+      !self.mIndexingDirectoryAST.string
+      !self.mTemplateDelimitorListAST
       !self.mLexiqueComponentName.string
-      !self.mLexicalStyleList
+      !self.mTemplateReplacementListAST
+      !self.mLexicalStyleListAST
     ]
   #--- Cocoa header
     let cocoaHeader = [filewrapper lexiqueGenerationTemplates.cocoaHeaderZone2
@@ -1320,11 +1501,13 @@ override method @lexiqueComponentAST semanticAnalysis
       !lexiqueAnalysisContext.mLexicalMessageMap
       !lexiqueAnalysisContext.mTerminalList
       !lexiqueAnalysisContext.mUnicodeStringToGenerate
-      !self.mLexicalRuleList
+      !self.mLexicalRuleListAST
       !lexiqueAnalysisContext
-      !self.mIndexingDirectory.string
+      !self.mTemplateReplacementListAST
+      !self.mIndexingDirectoryAST.string
       !self.mIndexingListAST
-      !self.mLexicalStyleList
+      !self.mLexicalStyleListAST
+      !self.mTemplateDelimitorListAST
     ]
   #---
     ioSemanticDeclarationListForGeneration +=
@@ -1352,6 +1535,7 @@ private filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique
     ?@string LEXIQUE_IDENTIFIER
     ?@lexicalListDeclarationListAST DELIMITOR_LIST_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@templateDelimitorListAST TEMPLATE_DELIMITOR_LIST
     ?@indexingListAST INDEXING_LIST
 
   template implementationZone2Galgas3 "lexique_implementation-galgas3.cpp.galgasTemplate"
@@ -1364,7 +1548,9 @@ private filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique
     ?@lexicalRuleListAST LEXICAL_RULE_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
     ?@string INDEXING_DIRECTORY
+    ?@templateDelimitorListAST TEMPLATE_DELIMITOR_LIST
     ?@string LEXIQUE_COMPONENT_NAME
+    ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
     ?@lexicalStyleListAST LEXICAL_STYLE_LIST
 
   template cocoaHeaderZone2 "lexique_cocoa_header_template_zone_2.h.galgasTemplate"
@@ -1380,9 +1566,11 @@ private filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique
     ?@stringset STRINGS_IN_EXPLICIT_RULES
     ?@lexicalRuleListAST LEXICAL_RULE_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
     ?@string INDEXING_DIRECTORY
     ?@indexingListAST INDEXING_LIST
     ?@lexicalStyleListAST LEXICAL_STYLE_LIST
+    ?@templateDelimitorListAST TEMPLATE_DELIMITOR_LIST
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

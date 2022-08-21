@@ -10,6 +10,51 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Filewrapper 'grammarGenerationTemplate'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_grammarGenerationTemplate ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'grammarGenerationTemplate grammarZone3HeaderGalgas3'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_HeaderGalgas_33_ (class C_Compiler * inCompiler,
+                                                                                             const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
+                                                                                             const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis & in_NON_5F_TERMINAL_5F_MAP,
+                                                                                             const class GALGAS_nonTerminalToAddList & in_ADDED_5F_NON_5F_TERMINAL_5F_LIST,
+                                                                                             const class GALGAS_bool & in_HAS_5F_INDEXING,
+                                                                                             const class GALGAS_string & in_START_5F_SYMBOL_5F_NAME,
+                                                                                             const class GALGAS_bool & in_HAS_5F_TRANSLATE_5F_FEATURE,
+                                                                                             const class GALGAS_string & in_GRAMMAR_5F_NAME,
+                                                                                             const class GALGAS_lstringlist & in_SYNTAX_5F_COMPONENTS
+                                                                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'syntaxSignatureOfInstructionList'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_semanticInstructionListForGeneration function_syntaxSignatureOfInstructionList (const class GALGAS_string & constinArgument0,
+                                                                                             const class GALGAS_semanticInstructionListForGeneration & constinArgument1,
+                                                                                             class C_Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Routine 'recursivlyEnumerateRegularFile'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -266,121 +311,4 @@ void routine_generatePredefinedTypeFiles (const class GALGAS_string constinArgum
                                           class GALGAS_stringset & ioArgument4,
                                           class C_Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'semanticFileGenerationTemplate'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_semanticFileGenerationTemplate ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'semanticFileGenerationTemplate semanticFileHeader'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileHeader (class C_Compiler * inCompiler,
-                                                                                     const class GALGAS_string & in_COMPONENT_5F_NAME,
-                                                                                     const class GALGAS_stringlist & in_IMPORTED_5F_COMPONENT_5F_LIST
-                                                                                     COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'semanticFileGenerationTemplate semanticFileImplementation'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImplementation (class C_Compiler * inCompiler,
-                                                                                             const class GALGAS_stringlist & in_IMPORTED_5F_COMPONENT_5F_LIST
-                                                                                             COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'appendPredefinedListTypeAST'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_appendPredefinedListTypeAST (class GALGAS_semanticDeclarationListAST & ioArgument0,
-                                          const class GALGAS_string constinArgument1,
-                                          class GALGAS_lstringlist & ioArgument2,
-                                          class C_Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'insertInUsefulnessEntities'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_insertInUsefulnessEntities (class GALGAS_lstringlist & ioArgument0,
-                                         const class GALGAS_string constinArgument1,
-                                         class C_Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'appendPredefined2StringListTypeAST'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_appendPredefined_32_StringListTypeAST (class GALGAS_semanticDeclarationListAST & ioArgument0,
-                                                    class GALGAS_lstringlist & ioArgument1,
-                                                    class C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'appendPredefined2LStringListTypeAST'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_appendPredefined_32_LStringListTypeAST (class GALGAS_semanticDeclarationListAST & ioArgument0,
-                                                     class GALGAS_lstringlist & ioArgument1,
-                                                     class C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'appendStructASTForTypeWithLocation'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_appendStructASTForTypeWithLocation (class GALGAS_semanticDeclarationListAST & ioArgument0,
-                                                 const class GALGAS_string constinArgument1,
-                                                 class GALGAS_lstringlist & ioArgument2,
-                                                 class C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'appendStructASTForRangeType'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_appendStructASTForRangeType (class GALGAS_semanticDeclarationListAST & ioArgument0,
-                                          class GALGAS_lstringlist & ioArgument1,
-                                          class C_Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'appendPredefinedTypesASTs'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_appendPredefinedTypesASTs (class GALGAS_semanticDeclarationListAST & ioArgument0,
-                                        class GALGAS_lstringlist & ioArgument1,
-                                        class C_Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) ;
 
