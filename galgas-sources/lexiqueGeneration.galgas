@@ -23,6 +23,10 @@ abstract getter @lexicalExpressionAST generateConditionCode
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+#abstract getter @lexicalExpressionAST lexicalExpressionUsesLoopLocalVar -> @bool
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 override getter @lexicalOrExpressionAST generateConditionCode
   ?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string {
@@ -46,6 +50,12 @@ override getter @lexicalCharacterIntervalMatchAST generateConditionCode
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+#override getter @lexicalCharacterIntervalMatchAST lexicalExpressionUsesLoopLocalVar -> @bool {
+#  result = false
+#}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 override getter @lexicalStringMatchAST generateConditionCode
   ?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string {
@@ -54,6 +64,12 @@ override getter @lexicalStringMatchAST generateConditionCode
   result += [[self.mString length] string]
   result += ", true)"
 }
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#override getter @lexicalStringMatchAST lexicalExpressionUsesLoopLocalVar -> @bool {
+#  result = false
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -185,14 +201,18 @@ override getter @lexicalErrorByDefaultAST generateDefaultSendCode
 #  L E X I C A L    I N S T R U C T I O N    C O D E    G E N E R A T I O N                                    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract getter @lexicalInstructionAST generateInstructionCode
+abstract getter @lexicalInstructionAST generateLexicalInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string 
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalStructuredSendInstructionAST generateInstructionCode
+abstract getter @lexicalInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalStructuredSendInstructionAST generateLexicalInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string {
@@ -210,7 +230,13 @@ override getter @lexicalStructuredSendInstructionAST generateInstructionCode
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalDropInstructionAST generateInstructionCode
+override getter @lexicalStructuredSendInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+  result = false
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalDropInstructionAST generateLexicalInstructionCode
   ?let @string unused inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string
@@ -220,19 +246,30 @@ override getter @lexicalDropInstructionAST generateInstructionCode
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalSimpleSendInstructionAST generateInstructionCode
+override getter @lexicalDropInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+  result = false
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalSimpleSendInstructionAST generateLexicalInstructionCode
   ?let @string unused inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string
 {
   result  = "token.mTokenCode = kToken_" + [self.mSentTerminal identifierRepresentation] + " ;\n"
-#  result += "token.mIsOptional = false ;\n"
   result += "enterToken (token) ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalRepeatInstructionAST generateInstructionCode
+override getter @lexicalSimpleSendInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+  result = false
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalRepeatInstructionAST generateLexicalInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string {
@@ -240,7 +277,7 @@ override getter @lexicalRepeatInstructionAST generateInstructionCode
   [!?result incIndentation !2]
 #--- Repeated instruction
   for (mInstruction) in self.mRepeatedInstructionList do
-    result += [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+    result += [mInstruction generateLexicalInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
   end
 #---
   for (mWhileExpression mWhileInstructionList) in self.mLexicalWhileBranchList
@@ -250,7 +287,7 @@ override getter @lexicalRepeatInstructionAST generateInstructionCode
     result += ") {\n"
     [!?result incIndentation !2]
     for (mInstruction) in mWhileInstructionList do
-      result += [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+      result += [mInstruction generateLexicalInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
     end
     [!?result decIndentation !2]
   between
@@ -266,7 +303,13 @@ override getter @lexicalRepeatInstructionAST generateInstructionCode
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalSelectInstructionAST generateInstructionCode
+override getter @lexicalRepeatInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+  result = true
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalSelectInstructionAST generateLexicalInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string {
@@ -279,7 +322,7 @@ override getter @lexicalSelectInstructionAST generateInstructionCode
     result += ") {\n"
     [!?result incIndentation !2]
     for (mInstruction) in mSelectInstructionList do
-      result += [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+      result += [mInstruction generateLexicalInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
     end
     [!?result decIndentation !2]
   between
@@ -289,8 +332,8 @@ override getter @lexicalSelectInstructionAST generateInstructionCode
   if [self.mDefaultInstructionList length] > 0 then
     result += "}else{\n"
     [!?result incIndentation !2]
-    for (mInstruction) in self.mDefaultInstructionList do
-      result += [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+    for (instruction) in self.mDefaultInstructionList do
+      result += [instruction generateLexicalInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
     end
     [!?result decIndentation !2]
   end
@@ -299,7 +342,21 @@ override getter @lexicalSelectInstructionAST generateInstructionCode
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalRoutineInstructionAST generateInstructionCode
+override getter @lexicalSelectInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+  result = false
+  for (* selectInstructionList) in self.mLexicalSelectBranchList while not result do
+    for (instruction) in selectInstructionList while not result do
+      result = [instruction lexicalInstructionUsesLoopLocalVariable]
+    end
+  end
+  for (instruction) in self.mDefaultInstructionList while not result do
+    result = [instruction lexicalInstructionUsesLoopLocalVariable]
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalRoutineInstructionAST generateLexicalInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string {
@@ -315,7 +372,13 @@ override getter @lexicalRoutineInstructionAST generateInstructionCode
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalErrorInstructionAST generateInstructionCode
+override getter @lexicalRoutineInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+  result = false
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalErrorInstructionAST generateLexicalInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string {
@@ -324,7 +387,13 @@ override getter @lexicalErrorInstructionAST generateInstructionCode
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalWarningInstructionAST generateInstructionCode
+override getter @lexicalErrorInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+  result = false
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalWarningInstructionAST generateLexicalInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string {
@@ -333,7 +402,13 @@ override getter @lexicalWarningInstructionAST generateInstructionCode
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalTagInstructionAST generateInstructionCode
+override getter @lexicalWarningInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+  result = false
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalTagInstructionAST generateLexicalInstructionCode
   ?let @string unused inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string {
@@ -344,7 +419,13 @@ override getter @lexicalTagInstructionAST generateInstructionCode
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalRewindInstructionAST generateInstructionCode
+override getter @lexicalTagInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+  result = false
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalRewindInstructionAST generateLexicalInstructionCode
   ?let @string unused inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string {
@@ -352,13 +433,18 @@ override getter @lexicalRewindInstructionAST generateInstructionCode
                     + "mTokenEndLocation = endLocationForTag_" + self.mLexicalTagName + " ;\n"
                     + "mCurrentChar = currentCharForTag_" + self.mLexicalTagName + " ;\n"
                     + "token.mTokenCode = kToken_" + [self.mTerminalName identifierRepresentation] + " ;\n"
-#                    + "token.mIsOptional = false ;\n"
                     + "enterToken (token) ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalLogInstructionAST generateInstructionCode
+override getter @lexicalRewindInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+  result = false
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalLogInstructionAST generateLexicalInstructionCode
   ?let @string unused inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string {
@@ -366,17 +452,27 @@ override getter @lexicalLogInstructionAST generateInstructionCode
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalLogInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+  result = false
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #        L E X I C A L    R U L E    C O D E    G E N E R A T I O N                                            
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract getter @abstractLexicalRuleAST generateCode
+abstract getter @abstractLexicalRuleAST generateLexicalRuleCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string 
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalImplicitRuleAST generateCode
+abstract getter @abstractLexicalRuleAST lexicalRuleUsesLoopLocalVar -> @bool 
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalImplicitRuleAST generateLexicalRuleCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string {
@@ -389,7 +485,6 @@ override getter @lexicalImplicitRuleAST generateCode
     result += [[mName length] string]
     result += ", true)) {\n"
     result += "  token.mTokenCode = kToken_" + [mTerminalName identifierRepresentation] + " ;\n"
-#    result += "  token.mIsOptional = false ;\n"
     result += "  enterToken (token) ;\n"
     result += "}else "
   end
@@ -397,19 +492,34 @@ override getter @lexicalImplicitRuleAST generateCode
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalExplicitRuleAST generateCode
-  ?let @string inScannerClassName
-  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string {
+override getter @lexicalImplicitRuleAST lexicalRuleUsesLoopLocalVar -> @bool {
+  result = false
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalExplicitRuleAST generateLexicalRuleCode
+                                              ?let @string inScannerClassName
+                                              ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
+                                              -> @string {
   result = "if ("
   result += [self.mLexicalRuleExpression generateConditionCode !context:inLexiqueAnalysisContext]
   result += ") {\n"
   [!?result incIndentation !2]
-  for (mInstruction) in self.mInstructionList do
-    result += [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+  for (instruction) in self.mInstructionList do
+    result += [instruction generateLexicalInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
   end
   [!?result decIndentation !2]
   result += "}else "
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalExplicitRuleAST lexicalRuleUsesLoopLocalVar -> @bool {
+  result = false
+  for (instruction) in self.mInstructionList while not result do
+    result = [instruction lexicalInstructionUsesLoopLocalVariable]
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

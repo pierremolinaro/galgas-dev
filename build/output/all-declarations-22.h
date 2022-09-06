@@ -68,6 +68,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_headerZone_32_ (cla
 
 GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_32_Galgas_33_ (class C_Compiler * inCompiler,
                                                                                                const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
+                                                                                               const class GALGAS_bool & in_USE_5F_LOOP_5F_LOCAL_5F_VARIABLE,
                                                                                                const class GALGAS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
                                                                                                const class GALGAS_lexicalMessageMap & in_LEXICAL_5F_MESSAGE_5F_MAP,
                                                                                                const class GALGAS_terminalList & in_TERMINAL_5F_LIST,
@@ -891,17 +892,4 @@ class GALGAS_string function_generateClassGetterDeclaration (const class GALGAS_
                                                              const class GALGAS_methodQualifier & constinArgument4,
                                                              class C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Function 'generateClassInstanceMethodDeclaration'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_string function_generateClassInstanceMethodDeclaration (const class GALGAS_lstring & constinArgument0,
-                                                                     const class GALGAS_formalParameterSignature & constinArgument1,
-                                                                     const class GALGAS_bool & constinArgument2,
-                                                                     const class GALGAS_methodQualifier & constinArgument3,
-                                                                     class C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
 

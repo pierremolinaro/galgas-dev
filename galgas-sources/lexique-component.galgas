@@ -1475,6 +1475,7 @@ override method @lexiqueComponentAST semanticAnalysis
   #--- Cpp
     let cppContents =  [filewrapper lexiqueGenerationTemplates.implementationZone2Galgas3
       ![self.mLexiqueComponentName.string identifierRepresentation]
+      ![self.mLexicalRuleListAST useLoopLocalVar]
       !lexiqueAnalysisContext.mLexicalAttributeMap
       !lexiqueAnalysisContext.mLexicalMessageMap
       !lexiqueAnalysisContext.mTerminalList
@@ -1540,6 +1541,7 @@ private filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique
 
   template implementationZone2Galgas3 "lexique_implementation-galgas3.cpp.galgasTemplate"
     ?@string LEXIQUE_IDENTIFIER
+    ?@bool USE_LOOP_LOCAL_VARIABLE
     ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
     ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
     ?@terminalList TERMINAL_LIST

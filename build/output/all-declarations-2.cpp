@@ -12109,36 +12109,68 @@ GALGAS_string callExtensionGetter_generateDefaultSendCode (const cPtr_lexicalSen
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@lexicalInstructionAST generateInstructionCode'
+//Abstract extension getter '@lexicalInstructionAST generateLexicalInstructionCode'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string callExtensionGetter_generateInstructionCode (const cPtr_lexicalInstructionAST * inObject,
-                                                           const GALGAS_string in_inScannerClassName,
-                                                           const GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
+GALGAS_string callExtensionGetter_generateLexicalInstructionCode (const cPtr_lexicalInstructionAST * inObject,
+                                                                  const GALGAS_string in_inScannerClassName,
+                                                                  const GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
   if (nullptr != inObject) {
-    result = inObject->getter_generateInstructionCode (in_inScannerClassName, in_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
+    result = inObject->getter_generateLexicalInstructionCode (in_inScannerClassName, in_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@abstractLexicalRuleAST generateCode'
+//Abstract extension getter '@lexicalInstructionAST lexicalInstructionUsesLoopLocalVariable'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string callExtensionGetter_generateCode (const cPtr_abstractLexicalRuleAST * inObject,
-                                                const GALGAS_string in_inScannerClassName,
-                                                const GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
-                                                C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
+GALGAS_bool callExtensionGetter_lexicalInstructionUsesLoopLocalVariable (const cPtr_lexicalInstructionAST * inObject,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) {
+  GALGAS_bool result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_lexicalInstructionUsesLoopLocalVariable (inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@abstractLexicalRuleAST generateLexicalRuleCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string callExtensionGetter_generateLexicalRuleCode (const cPtr_abstractLexicalRuleAST * inObject,
+                                                           const GALGAS_string in_inScannerClassName,
+                                                           const GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
   if (nullptr != inObject) {
-    result = inObject->getter_generateCode (in_inScannerClassName, in_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
+    result = inObject->getter_generateLexicalRuleCode (in_inScannerClassName, in_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@abstractLexicalRuleAST lexicalRuleUsesLoopLocalVar'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool callExtensionGetter_lexicalRuleUsesLoopLocalVar (const cPtr_abstractLexicalRuleAST * inObject,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  GALGAS_bool result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_lexicalRuleUsesLoopLocalVar (inCompiler COMMA_THERE) ;
   }
   return result ;
 }

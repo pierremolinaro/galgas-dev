@@ -7577,10 +7577,13 @@ class cPtr_abstractLexicalRuleAST : public acStrongPtr_class {
            const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
-//--- Extension getter generateCode
-  public: virtual class GALGAS_string getter_generateCode (const class GALGAS_string inScannerClassName,
+//--- Extension getter generateLexicalRuleCode
+  public: virtual class GALGAS_string getter_generateLexicalRuleCode (const class GALGAS_string inScannerClassName,
            const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+
+//--- Extension getter lexicalRuleUsesLoopLocalVar
+  public: virtual class GALGAS_bool getter_lexicalRuleUsesLoopLocalVar (C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Extension method checkLexicalRule
   public: virtual void method_checkLexicalRule (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
@@ -8346,10 +8349,13 @@ class cPtr_lexicalInstructionAST : public acStrongPtr_class {
            const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
-//--- Extension getter generateInstructionCode
-  public: virtual class GALGAS_string getter_generateInstructionCode (const class GALGAS_string inScannerClassName,
+//--- Extension getter generateLexicalInstructionCode
+  public: virtual class GALGAS_string getter_generateLexicalInstructionCode (const class GALGAS_string inScannerClassName,
            const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+
+//--- Extension getter lexicalInstructionUsesLoopLocalVariable
+  public: virtual class GALGAS_bool getter_lexicalInstructionUsesLoopLocalVariable (C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Extension method checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
@@ -8690,6 +8696,26 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractLexicalRule
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Extension getter '@lexicalRuleListAST useLoopLocalVar' (as function)
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_bool extensionGetter_useLoopLocalVar (const class GALGAS_lexicalRuleListAST & inObject,
+                                                   class C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@abstractLexicalRuleAST lexicalRuleUsesLoopLocalVar'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_bool callExtensionGetter_lexicalRuleUsesLoopLocalVar (const class cPtr_abstractLexicalRuleAST * inObject,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 // Phase 1: @lexicalImplicitRuleAST reference class
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -8756,10 +8782,13 @@ class cPtr_lexicalImplicitRuleAST : public cPtr_abstractLexicalRuleAST {
            const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateCode
-  public: virtual class GALGAS_string getter_generateCode (const class GALGAS_string inScannerClassName,
+//--- Extension getter generateLexicalRuleCode
+  public: virtual class GALGAS_string getter_generateLexicalRuleCode (const class GALGAS_string inScannerClassName,
            const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter lexicalRuleUsesLoopLocalVar
+  public: virtual class GALGAS_bool getter_lexicalRuleUsesLoopLocalVar (C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalRule
   public: virtual void method_checkLexicalRule (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
@@ -8910,10 +8939,13 @@ class cPtr_lexicalExplicitRuleAST : public cPtr_abstractLexicalRuleAST {
            const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateCode
-  public: virtual class GALGAS_string getter_generateCode (const class GALGAS_string inScannerClassName,
+//--- Extension getter generateLexicalRuleCode
+  public: virtual class GALGAS_string getter_generateLexicalRuleCode (const class GALGAS_string inScannerClassName,
            const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter lexicalRuleUsesLoopLocalVar
+  public: virtual class GALGAS_bool getter_lexicalRuleUsesLoopLocalVar (C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalRule
   public: virtual void method_checkLexicalRule (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
@@ -10534,10 +10566,13 @@ class cPtr_lexicalStructuredSendInstructionAST : public cPtr_lexicalInstructionA
            const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter generateInstructionCode
-  public: virtual class GALGAS_string getter_generateInstructionCode (const class GALGAS_string inScannerClassName,
+//--- Extension getter generateLexicalInstructionCode
+  public: virtual class GALGAS_string getter_generateLexicalInstructionCode (const class GALGAS_string inScannerClassName,
            const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
            C_Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension getter lexicalInstructionUsesLoopLocalVariable
+  public: virtual class GALGAS_bool getter_lexicalInstructionUsesLoopLocalVariable (C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalInstruction
   public: virtual void method_checkLexicalInstruction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,

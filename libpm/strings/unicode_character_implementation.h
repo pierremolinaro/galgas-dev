@@ -202,6 +202,7 @@ utf32 unicodeToUpper (const utf32 inUnicodeCharacter) {
 bool isUnicodeLetter (const utf32 inUnicodeCharacter) {
   return ((0x61 <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0x7A)) ||
          ((0x41 <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0x5A)) ||
+         (0xB5 == UNICODE_VALUE (inUnicodeCharacter)) ||
          ((0xC0 <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0xD6)) ||
          ((0xD8 <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0xF6)) ||
          ((0xF8 <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0x2B4)) ||

@@ -23,6 +23,7 @@ enum @selfAvailability {
   case none
   case available (@unifiedTypeMapEntry type @bool mutable @bool mutableproperties)
 }
+
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @analysisContext {

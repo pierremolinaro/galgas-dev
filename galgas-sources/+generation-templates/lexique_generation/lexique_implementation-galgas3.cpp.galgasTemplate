@@ -202,16 +202,19 @@ end
 //----------------------------------------------------------------------------------------------------------------------
 
 void C_Lexique_%!LEXIQUE_IDENTIFIER%::internalParseLexicalToken (cTokenFor_%!LEXIQUE_IDENTIFIER% & token) {
-  bool loop = true ;
-%  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
-    %    token.mLexicalAttribute_%![lkey identifierRepresentation] ![mLexicalType initialization] % ;\n%
-  end
-%    mTokenStartLocation = mCurrentLocation ;
-    try{
+%IF USE_LOOP_LOCAL_VARIABLE THEN
+%  bool loop = true ;
 %
-  block 6 :
+ end
+  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
+    %  token.mLexicalAttribute_%![lkey identifierRepresentation] ![mLexicalType initialization] % ;\n%
+  end
+%  mTokenStartLocation = mCurrentLocation ;
+  try{
+%
+  block 4 :
     for (mLexicalRule) in LEXICAL_RULE_LIST do
-      ![mLexicalRule generateCode !LEXIQUE_IDENTIFIER !LEXIQUE_ANALYSIS_CONTEXT]
+      ![mLexicalRule generateLexicalRuleCode !LEXIQUE_IDENTIFIER !LEXIQUE_ANALYSIS_CONTEXT]
     end
   end
 %if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 

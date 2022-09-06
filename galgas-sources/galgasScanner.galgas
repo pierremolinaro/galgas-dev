@@ -111,6 +111,7 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "after",
   "array",
   "as",
+  "bang",
   "before",
   "between",
   "block",
@@ -567,8 +568,8 @@ list galgasDelimitorsList style delimitersStyle error message "the '%K' delimito
   "/",    "!=",  ">=", "&",
   "{",    "}",   "`",  "||", "|",
   "^",    ">>",  "~",
-  "--",   "++",  "&--",   "&++",
-  "°", "===", "!==", "?^", "!^"
+  "--",   "++",  "&--",   "&++",   # "°", 
+  "===", "!==", "?^", "!^"
 }
 
 rule list galgasDelimitorsList

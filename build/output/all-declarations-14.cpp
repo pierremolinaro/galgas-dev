@@ -3191,6 +3191,7 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [156] = {
   false /* after */,
   false /* array */,
   false /* as */,
+  false /* bang */,
   false /* before */,
   false /* between */,
   false /* block */,
@@ -3313,7 +3314,6 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [156] = {
   false /* ++ */,
   false /* &-- */,
   false /* &++ */,
-  false /* ° */,
   false /* === */,
   false /* !== */,
   false /* ?^ */,
@@ -3412,6 +3412,7 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("after") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("array") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("as") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("bang") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("before") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("between") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("block") COMMA_THERE) ;
@@ -3534,7 +3535,6 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("++") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("&--") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("&++") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("\xC2""\xB0""") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("===") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("!==") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("\?^") COMMA_THERE) ;

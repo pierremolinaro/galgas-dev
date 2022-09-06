@@ -1824,15 +1824,17 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_location var_operatorLocation_900 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-bang.galgas", 19)) ;
   nt_primary_ (outArgument_outExpression, inCompiler) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__B0_ COMMA_SOURCE_FILE ("expression-bang.galgas", 21)) ;
-  outArgument_outExpression = GALGAS_bangExpressionAST::constructor_new (var_operatorLocation_900, outArgument_outExpression  COMMA_SOURCE_FILE ("expression-bang.galgas", 22)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__2E_ COMMA_SOURCE_FILE ("expression-bang.galgas", 22)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken_bang COMMA_SOURCE_FILE ("expression-bang.galgas", 23)) ;
+  outArgument_outExpression = GALGAS_bangExpressionAST::constructor_new (var_operatorLocation_900, outArgument_outExpression  COMMA_SOURCE_FILE ("expression-bang.galgas", 24)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i37_parse (C_Lexique_galgasScanner * inCompiler) {
   nt_primary_parse (inCompiler) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__B0_ COMMA_SOURCE_FILE ("expression-bang.galgas", 21)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__2E_ COMMA_SOURCE_FILE ("expression-bang.galgas", 22)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken_bang COMMA_SOURCE_FILE ("expression-bang.galgas", 23)) ;
   inCompiler->resetTemplateString () ;
 }
 
@@ -1840,7 +1842,8 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i37_indexing (C_Lexique_galgasScanner * inCompiler) {
   nt_primary_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__B0_ COMMA_SOURCE_FILE ("expression-bang.galgas", 21)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__2E_ COMMA_SOURCE_FILE ("expression-bang.galgas", 22)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken_bang COMMA_SOURCE_FILE ("expression-bang.galgas", 23)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

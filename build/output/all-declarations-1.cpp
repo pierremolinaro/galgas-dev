@@ -11680,6 +11680,36 @@ GALGAS_abstractLexicalRuleAST_2D_weak GALGAS_abstractLexicalRuleAST_2D_weak::ext
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+//
+//Extension Getter '@lexicalRuleListAST useLoopLocalVar'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool extensionGetter_useLoopLocalVar (const GALGAS_lexicalRuleListAST & inObject,
+                                             C_Compiler * inCompiler
+                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_bool result_result ; // Returned variable
+  result_result = GALGAS_bool (false) ;
+  const GALGAS_lexicalRuleListAST temp_0 = inObject ;
+  cEnumerator_lexicalRuleListAST enumerator_2845 (temp_0, kENUMERATION_UP) ;
+  bool bool_1 = result_result.operator_not (SOURCE_FILE ("lexiqueTypesForAST.galgas", 69)).isValidAndTrue () ;
+  if (enumerator_2845.hasCurrentObject () && bool_1) {
+    while (enumerator_2845.hasCurrentObject () && bool_1) {
+      result_result = callExtensionGetter_lexicalRuleUsesLoopLocalVar ((const cPtr_abstractLexicalRuleAST *) enumerator_2845.current_mLexicalRule (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 70)) ;
+      enumerator_2845.gotoNextObject () ;
+      if (enumerator_2845.hasCurrentObject ()) {
+        bool_1 = result_result.operator_not (SOURCE_FILE ("lexiqueTypesForAST.galgas", 69)).isValidAndTrue () ;
+      }
+    }
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_lexicalImplicitRuleAST_2D_weak::objectCompare (const GALGAS_lexicalImplicitRuleAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;

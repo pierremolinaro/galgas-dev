@@ -665,8 +665,9 @@ C_String cStringWithUnsigned (const uint64_t inValue) {
 //----------------------------------------------------------------------------------------------------------------------
 
 C_String cHexStringWithUnsigned (const uint64_t inValue) {
-  C_String result = "0x" ;
-  result.appendUnsignedHex16 (inValue) ;
+  char s [32] ;
+  snprintf (s, 32, "0x%" PRIx64, inValue) ;
+  C_String result = s ;
   return result ;
 }
 

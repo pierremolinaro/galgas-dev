@@ -18,7 +18,9 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary> !@semanticExpressionAST outExpression {
     let operatorLocation = @location.here
     <primary> ? outExpression
-    $°$
+#    $°$
+    $.$
+    $bang$
     outExpression = @bangExpressionAST.new {!operatorLocation !outExpression}
   }
 
@@ -35,7 +37,9 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> !@semanticExpressionAST outExpression {
     let operatorLocation = @location.here
     <primary> ? outExpression
-    $°$
+#    $°$
+    $.$
+    $bang$
     outExpression = @bangExpressionAST.new {!operatorLocation !outExpression}
   }
 

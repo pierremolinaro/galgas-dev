@@ -59,7 +59,16 @@ abstract refclass @abstractLexicalRuleAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalRuleListAST {
-  public var @abstractLexicalRuleAST mLexicalRule
+  public let @abstractLexicalRuleAST mLexicalRule
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+getter @lexicalRuleListAST useLoopLocalVar -> @bool {
+  result = false
+  for (lexicalRule) in self while not result do
+    result = [lexicalRule lexicalRuleUsesLoopLocalVar]
+  end 
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

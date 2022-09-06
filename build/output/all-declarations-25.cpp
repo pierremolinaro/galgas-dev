@@ -9,6 +9,29 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Overriding extension method '@inputActualParameterForGeneration generateActualParameter'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_inputActualParameterForGeneration::method_generateActualParameter (GALGAS_stringset & /* ioArgument_ioInclusionSet */,
+                                                                             GALGAS_uint & /* ioArgument_ioTemporaryVariableIndex */,
+                                                                             GALGAS_string & /* ioArgument_ioImplementation */,
+                                                                             GALGAS_stringlist & /* ioArgument_ioJokerParametersToReleaseList */,
+                                                                             GALGAS_stringlist & ioArgument_ioOutputVariableList,
+                                                                             GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                             GALGAS_string & outArgument_outCppName,
+                                                                             C_Compiler * /* inCompiler */
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_inputActualParameterForGeneration temp_0 = this ;
+  outArgument_outCppName = temp_0.readProperty_mInputActualCppName () ;
+  const GALGAS_inputActualParameterForGeneration temp_1 = this ;
+  ioArgument_ioOutputVariableList.addAssign_operation (temp_1.readProperty_mInputActualCppName ()  COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 62)) ;
+  {
+  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (outArgument_outCppName COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 63)) ;
+  }
+}
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Overriding extension method '@inputJokerParameterForGeneration generateActualParameter'
 //
 //----------------------------------------------------------------------------------------------------------------------

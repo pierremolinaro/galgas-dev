@@ -9,6 +9,30 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Overriding extension method '@overridingExtensionMethodAST buildExtensionListMaps'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_overridingExtensionMethodAST::method_buildExtensionListMaps (GALGAS_genericExtensionMethodListMap & /* ioArgument_ioAbstractExtensionSetterListMap */,
+                                                                       GALGAS_genericExtensionMethodListMap & /* ioArgument_ioExtensionSettierListMap */,
+                                                                       GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingExtensionSetterListMap */,
+                                                                       GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingAbstractExtensionSetterListMap */,
+                                                                       GALGAS_genericExtensionMethodListMap & /* ioArgument_ioAbstractExtensionMethodListMapAST */,
+                                                                       GALGAS_genericExtensionMethodListMap & /* ioArgument_ioExtensionMethodListMap */,
+                                                                       GALGAS_genericExtensionMethodListMap & ioArgument_ioOverridingExtensionMethodListMap,
+                                                                       GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingAbstractExtensionMethodListMap */,
+                                                                       GALGAS_genericExtensionMethodListMap & /* ioArgument_ioAbstractExtensionGetterListMap */,
+                                                                       GALGAS_genericExtensionMethodListMap & /* ioArgument_ioExtensionGetterListMap */,
+                                                                       GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingExtensionGetterListMap */,
+                                                                       GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingAbstractExtensionGetterListMap */,
+                                                                       C_Compiler * /* inCompiler */
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_overridingExtensionMethodAST temp_0 = this ;
+  const GALGAS_overridingExtensionMethodAST temp_1 = this ;
+  ioArgument_ioOverridingExtensionMethodListMap.addAssign_operation (temp_0.readProperty_mTypeName ().readProperty_string (), temp_1.readProperty_mOverridingExtensionMethodName ()  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 251)) ;
+}
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Overriding extension getter '@overridingExtensionMethodForGeneration headerKind'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -8406,28 +8430,5 @@ void cPtr_outputInputActualParameterForGeneration::method_generateActualParamete
   {
   const GALGAS_outputInputActualParameterForGeneration temp_3 = this ;
   ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (temp_3.readProperty_mOutputInputVariableCppName () COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 48)) ;
-  }
-}
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@inputActualParameterForGeneration generateActualParameter'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void cPtr_inputActualParameterForGeneration::method_generateActualParameter (GALGAS_stringset & /* ioArgument_ioInclusionSet */,
-                                                                             GALGAS_uint & /* ioArgument_ioTemporaryVariableIndex */,
-                                                                             GALGAS_string & /* ioArgument_ioImplementation */,
-                                                                             GALGAS_stringlist & /* ioArgument_ioJokerParametersToReleaseList */,
-                                                                             GALGAS_stringlist & ioArgument_ioOutputVariableList,
-                                                                             GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                                                             GALGAS_string & outArgument_outCppName,
-                                                                             C_Compiler * /* inCompiler */
-                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_inputActualParameterForGeneration temp_0 = this ;
-  outArgument_outCppName = temp_0.readProperty_mInputActualCppName () ;
-  const GALGAS_inputActualParameterForGeneration temp_1 = this ;
-  ioArgument_ioOutputVariableList.addAssign_operation (temp_1.readProperty_mInputActualCppName ()  COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 62)) ;
-  {
-  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (outArgument_outCppName COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 63)) ;
   }
 }

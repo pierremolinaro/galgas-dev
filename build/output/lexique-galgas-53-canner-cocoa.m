@@ -141,7 +141,7 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-static const C_cocoa_lexique_table_entry ktable_for_galgasScanner_galgasKeyWordList [86] = {
+static const C_cocoa_lexique_table_entry ktable_for_galgasScanner_galgasKeyWordList [87] = {
   {"as", galgasScanner_1_as},
   {"do", galgasScanner_1_do},
   {"if", galgasScanner_1_if},
@@ -159,6 +159,7 @@ static const C_cocoa_lexique_table_entry ktable_for_galgasScanner_galgasKeyWordL
   {"not", galgasScanner_1_not},
   {"tag", galgasScanner_1_tag},
   {"var", galgasScanner_1_var},
+  {"bang", galgasScanner_1_bang},
   {"case", galgasScanner_1_case},
   {"cast", galgasScanner_1_cast},
   {"dict", galgasScanner_1_dict},
@@ -231,7 +232,7 @@ static const C_cocoa_lexique_table_entry ktable_for_galgasScanner_galgasKeyWordL
 } ;
 
 static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearchedString) {
-  return searchStringInTable (inSearchedString, ktable_for_galgasScanner_galgasKeyWordList, 86) ;
+  return searchStringInTable (inSearchedString, ktable_for_galgasScanner_galgasKeyWordList, 87) ;
 }
 
 
@@ -618,8 +619,6 @@ static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearc
     mTokenCode = galgasScanner_1__21__5E_ ;
   }else if (scanningOk && [self testForInputString:@"!=" advance:YES]) {
     mTokenCode = galgasScanner_1__21__3D_ ;
-  }else if (scanningOk && [self testForInputString:@"\xC2""\xB0""" advance:YES]) {
-    mTokenCode = galgasScanner_1__B0_ ;
   }else if (scanningOk && [self testForInputString:@"~" advance:YES]) {
     mTokenCode = galgasScanner_1__7E_ ;
   }else if (scanningOk && [self testForInputString:@"}" advance:YES]) {
@@ -1011,6 +1010,7 @@ static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearc
     1 /* galgasScanner_1_after */,
     1 /* galgasScanner_1_array */,
     1 /* galgasScanner_1_as */,
+    1 /* galgasScanner_1_bang */,
     1 /* galgasScanner_1_before */,
     1 /* galgasScanner_1_between */,
     1 /* galgasScanner_1_block */,
@@ -1133,7 +1133,6 @@ static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearc
     2 /* galgasScanner_1__2B__2B_ */,
     2 /* galgasScanner_1__26__2D__2D_ */,
     2 /* galgasScanner_1__26__2B__2B_ */,
-    2 /* galgasScanner_1__B0_ */,
     2 /* galgasScanner_1__3D__3D__3D_ */,
     2 /* galgasScanner_1__21__3D__3D_ */,
     2 /* galgasScanner_1__3F__5E_ */,
@@ -1179,6 +1178,7 @@ static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearc
     YES /* galgasScanner_1_after */,
     YES /* galgasScanner_1_array */,
     YES /* galgasScanner_1_as */,
+    YES /* galgasScanner_1_bang */,
     YES /* galgasScanner_1_before */,
     YES /* galgasScanner_1_between */,
     YES /* galgasScanner_1_block */,
@@ -1301,7 +1301,6 @@ static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearc
     YES /* galgasScanner_1__2B__2B_ */,
     YES /* galgasScanner_1__26__2D__2D_ */,
     YES /* galgasScanner_1__26__2B__2B_ */,
-    YES /* galgasScanner_1__B0_ */,
     YES /* galgasScanner_1__3D__3D__3D_ */,
     YES /* galgasScanner_1__21__3D__3D_ */,
     YES /* galgasScanner_1__3F__5E_ */,

@@ -481,7 +481,8 @@ void C_Lexique::internalBottomUpParserError (LOCATION_ARGS) {
 
 void C_Lexique::unknownCharacterLexicalError (LOCATION_ARGS) {
   C_String errorMessage ;
-  errorMessage << "Unknown character: " << unicodeName (mCurrentChar) ;
+  errorMessage << "Unknown character: " << unicodeName (mCurrentChar)
+               << " (Unicode " << cHexStringWithUnsigned (UNICODE_VALUE (mCurrentChar)) << ")" ;
   lexicalError (errorMessage COMMA_THERE) ;
 }
 
