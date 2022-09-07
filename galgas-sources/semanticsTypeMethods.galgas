@@ -99,11 +99,17 @@ override method @uintPredefinedTypeAST getClassMethodMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @applicationPredefinedTypeAST getClassMethodMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@classMethodMap outClassMethodMap
-{
+override method @applicationPredefinedTypeAST getClassMethodMap ?!@unifiedTypeMap ioUnifiedTypeMap
+                                                                !@classMethodMap outClassMethodMap {
   outClassMethodMap = {}
+  enterClassMethodWithInputArgument (
+    !?outClassMethodMap
+    !?ioUnifiedTypeMap
+    !methodName: "exit"
+    !argType: "uint"
+    !argName: "inErrorCode"
+    !compilerArgument:false
+  )
   enterClassMethodWith3InputArguments (
     !?outClassMethodMap
     !?ioUnifiedTypeMap

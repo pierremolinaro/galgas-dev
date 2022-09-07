@@ -6,7 +6,7 @@
 \tableDesMatieresLocaleDeProfondeurRelative{1}
 
 
-Le type \ggs+@application+ ne définit que des constructeurs qui permettent d'obtenir des informations sur le programme courant et son exécution.
+Le type \ggs+@application+ ne définit que des constructeurs et des procédures de type qui permettent d'obtenir des informations sur le programme courant et son exécution.
 
 
 \section{Numéros de version}
@@ -449,7 +449,7 @@ proc @application setStringOptionValue
     ?@string inValue
 \end{galgasbox}
 
-Ce procédure de type affecte la valeur de \ggs=inValue= à l'option chaîne de caractères spécifiée par son nom de domaine et son identificateur. Si l'option n'existe pas, cette fonction est sans effet.
+Cette procédure de type affecte la valeur de \ggs=inValue= à l'option chaîne de caractères spécifiée par son nom de domaine et son identificateur. Si l'option n'existe pas, cette fonction est sans effet.
 
 
 
@@ -472,6 +472,18 @@ Ce constructeur permet de savoir sur quel type de système l'application tourne 
   \item \ggs!"unix"! sur Unix, par exemple OSX ou Linux ;
   \item \ggs!"windows"! sur Windows.
 \end{itemize}
+
+
+
+
+\sectionStaticProc{exit}{application}
+
+
+\begin{galgasbox}
+proc @application exit ?@uint inErrorCode
+\end{galgasbox}
+
+L'exécution de cette procédure de type avorte immédiatement l'exécution (la fonction C \texttt{exit} est appelée). L'argument est le code d'erreur associé. Si il n'est pas construit, la valeur 1 est utilisée.
 
 
 

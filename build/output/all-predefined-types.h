@@ -2317,6 +2317,9 @@ class GALGAS_application : public AC_GALGAS_root {
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
+  public: static void class_method_exit (class GALGAS_uint constinArgument0
+                                         COMMA_LOCATION_ARGS) ;
+
   public: static void class_method_setBoolOptionValue (class GALGAS_string constinArgument0,
                                                        class GALGAS_string constinArgument1,
                                                        class GALGAS_bool constinArgument2

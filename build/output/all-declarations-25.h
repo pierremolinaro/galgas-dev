@@ -298,17 +298,3 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_bigint_5F_typ
 GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_timer_5F_type (class C_Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'generatePredefinedTypeFiles'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generatePredefinedTypeFiles (const class GALGAS_string constinArgument0,
-                                          const class GALGAS_semanticDeclarationListForGeneration constinArgument1,
-                                          class GALGAS_stringlist & ioArgument2,
-                                          class GALGAS_stringlist & ioArgument3,
-                                          class GALGAS_stringset & ioArgument4,
-                                          class C_Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
-
