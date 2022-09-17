@@ -1,6 +1,6 @@
 \startSymbol{template\_parser\_start\_symbol}{9}
 
-\nonTerminalSummaryStart \nonTerminalSummary{expression}{0}\nonTerminalSummarySeparator \nonTerminalSummary{factor}{5}\nonTerminalSummarySeparator \nonTerminalSummary{output\_expression\_list}{7}\nonTerminalSummarySeparator \nonTerminalSummary{primary}{6}\nonTerminalSummarySeparator \nonTerminalSummary{relation\_factor}{2}\nonTerminalSummarySeparator \nonTerminalSummary{relation\_term}{1}\nonTerminalSummarySeparator \nonTerminalSummary{simple\_expression}{3}\nonTerminalSummarySeparator \nonTerminalSummary{switch\_case}{10}\nonTerminalSummarySeparator \nonTerminalSummary{template\_instruction}{8}\nonTerminalSummarySeparator \nonTerminalSummary{template\_parser\_start\_symbol}{9}\nonTerminalSummarySeparator \nonTerminalSummary{term}{4}\nonTerminalSummaryEnd \nonTerminalSection{expression}{0}
+\nonTerminalSummaryStart \nonTerminalSummary{expression}{0}\nonTerminalSummarySeparator \nonTerminalSummary{factor}{5}\nonTerminalSummarySeparator \nonTerminalSummary{for\_instruction\_element}{10}\nonTerminalSummarySeparator \nonTerminalSummary{for\_instruction\_enumerated\_object}{11}\nonTerminalSummarySeparator \nonTerminalSummary{output\_expression\_list}{7}\nonTerminalSummarySeparator \nonTerminalSummary{primary}{6}\nonTerminalSummarySeparator \nonTerminalSummary{relation\_factor}{2}\nonTerminalSummarySeparator \nonTerminalSummary{relation\_term}{1}\nonTerminalSummarySeparator \nonTerminalSummary{simple\_expression}{3}\nonTerminalSummarySeparator \nonTerminalSummary{switch\_case}{12}\nonTerminalSummarySeparator \nonTerminalSummary{template\_instruction}{8}\nonTerminalSummarySeparator \nonTerminalSummary{template\_parser\_start\_symbol}{9}\nonTerminalSummarySeparator \nonTerminalSummary{term}{4}\nonTerminalSummaryEnd \nonTerminalSection{expression}{0}
 
 \ruleSubsection{templateSyntax}{templateSyntax}{26}
 
@@ -25,7 +25,7 @@
 
 \nonTerminalSection{factor}{5}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{203}
+\ruleSubsection{templateSyntax}{templateSyntax}{202}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -42,7 +42,7 @@
   \draw[->] (p0-4) -- (p0-9) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{219}
+\ruleSubsection{templateSyntax}{templateSyntax}{218}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -53,7 +53,7 @@
   \draw[->] (p0-3) -- (p0-4) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{234}
+\ruleSubsection{templateSyntax}{templateSyntax}{232}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -64,7 +64,7 @@
   \draw[->] (p0-3) -- (p0-4) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{249}
+\ruleSubsection{templateSyntax}{templateSyntax}{246}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -75,9 +75,85 @@
   \draw[->] (p0-3) -- (p0-4) ;
 \end{tikzpicture}
 
+\nonTerminalSection{for\_instruction\_element}{10}
+
+\ruleSubsection{templateSyntax}{template-for-instruction}{31}
+
+\begin{tikzpicture}
+  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {uint32}; & \node (p0-3) [terminal] {*}; & \node (p0-4) [lastPoint] {}; & \\
+  };
+  \draw[->] (P0start) -- (p0-2) ;
+  \draw[->] (p0-2) -- (p0-3) ;
+  \draw[->] (p0-3) -- (p0-4) ;
+\end{tikzpicture}
+
+\ruleSubsection{templateSyntax}{template-for-instruction}{46}
+
+\begin{tikzpicture}
+  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {*}; & \node (p0-3) [lastPoint] {}; & \\
+  };
+  \draw[->] (P0start) -- (p0-2) ;
+  \draw[->] (p0-2) -- (p0-3) ;
+\end{tikzpicture}
+
+\ruleSubsection{templateSyntax}{template-for-instruction}{53}
+
+\begin{tikzpicture}
+  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {identifier}; & \node (p0-3) [lastPoint] {}; & \\
+  };
+  \draw[->] (P0start) -- (p0-2) ;
+  \draw[->] (p0-2) -- (p0-3) ;
+\end{tikzpicture}
+
+\nonTerminalSection{for\_instruction\_enumerated\_object}{11}
+
+\ruleSubsection{templateSyntax}{template-for-instruction}{60}
+
+\begin{tikzpicture}
+  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
+    & & & & & & & \node (p1-7) [terminal] {:}; & \node (p1-8) [terminal] {identifier}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {(}; & \node (p0-3) [terminal] {)}; & \node (p0-4) [terminal] {in}; & \node (p0-5) [nonterminal] {\nonTerminalSymbol{expression}{0}}; & \node (p0-6) [point] {}; & \node (p0-7) [point] {}; & & \node (p0-9) [point] {}; & \node (p0-10) [lastPoint] {}; & \\
+  };
+  \draw[->] (P0start) -- (p0-2) ;
+  \draw[->] (p0-2) -- (p0-3) ;
+  \draw[->] (p0-3) -- (p0-4) ;
+  \draw[->] (p0-4) -- (p0-5) ;
+  \draw (p0-5) -- (p0-7) ;
+  \draw[->] (p0-6) |- (p1-7) ;
+  \draw[->] (p1-7) -- (p1-8) ;
+  \draw (p0-7) -- (p0-9) ;
+  \draw[->] (p1-8) -| (p0-9) ;
+  \draw[->] (p0-9) -- (p0-10) ;
+\end{tikzpicture}
+
+\ruleSubsection{templateSyntax}{template-for-instruction}{81}
+
+\begin{tikzpicture}
+  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
+    & & & & & & \node (p1-6) [point] {}; & & & & & \node (p1-11) [terminal] {:}; & \node (p1-12) [terminal] {identifier}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {(}; & \node (p0-3) [point] {}; & \node (p0-4) [nonterminal] {\nonTerminalSymbol{for\_instruction\_element}{10}}; & \node (p0-5) [point] {}; & & \node (p0-7) [terminal] {)}; & \node (p0-8) [terminal] {in}; & \node (p0-9) [nonterminal] {\nonTerminalSymbol{expression}{0}}; & \node (p0-10) [point] {}; & \node (p0-11) [point] {}; & & \node (p0-13) [point] {}; & \node (p0-14) [lastPoint] {}; & \\
+  };
+  \draw[->] (P0start) -- (p0-2) ;
+  \draw[->] (p0-2) -- (p0-4) ;
+  \draw[->] (p1-6) -| (p0-3) ;
+  \draw[->] (p0-5) -| (p1-6) ;
+  \draw[->] (p0-4) -- (p0-7) ;
+  \draw[->] (p0-7) -- (p0-8) ;
+  \draw[->] (p0-8) -- (p0-9) ;
+  \draw (p0-9) -- (p0-11) ;
+  \draw[->] (p0-10) |- (p1-11) ;
+  \draw[->] (p1-11) -- (p1-12) ;
+  \draw (p0-11) -- (p0-13) ;
+  \draw[->] (p1-12) -| (p0-13) ;
+  \draw[->] (p0-13) -- (p0-14) ;
+\end{tikzpicture}
+
 \nonTerminalSection{output\_expression\_list}{7}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{508}
+\ruleSubsection{templateSyntax}{templateSyntax}{513}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -95,7 +171,7 @@
 
 \nonTerminalSection{primary}{6}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{264}
+\ruleSubsection{templateSyntax}{templateSyntax}{261}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -105,7 +181,7 @@
   \draw[->] (p0-2) -- (p0-3) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{275}
+\ruleSubsection{templateSyntax}{templateSyntax}{272}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -117,7 +193,7 @@
   \draw[->] (p0-4) -- (p0-5) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{287}
+\ruleSubsection{templateSyntax}{templateSyntax}{284}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -127,7 +203,7 @@
   \draw[->] (p0-2) -- (p0-3) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{298}
+\ruleSubsection{templateSyntax}{templateSyntax}{295}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -137,7 +213,7 @@
   \draw[->] (p0-2) -- (p0-3) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{309}
+\ruleSubsection{templateSyntax}{templateSyntax}{306}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -147,7 +223,7 @@
   \draw[->] (p0-2) -- (p0-3) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{321}
+\ruleSubsection{templateSyntax}{templateSyntax}{317}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -157,7 +233,7 @@
   \draw[->] (p0-2) -- (p0-3) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{333}
+\ruleSubsection{templateSyntax}{templateSyntax}{329}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -167,7 +243,7 @@
   \draw[->] (p0-2) -- (p0-3) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{345}
+\ruleSubsection{templateSyntax}{templateSyntax}{341}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -177,7 +253,7 @@
   \draw[->] (p0-2) -- (p0-3) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{357}
+\ruleSubsection{templateSyntax}{templateSyntax}{353}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -187,7 +263,7 @@
   \draw[->] (p0-2) -- (p0-3) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{369}
+\ruleSubsection{templateSyntax}{templateSyntax}{365}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -197,7 +273,7 @@
   \draw[->] (p0-2) -- (p0-3) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{380}
+\ruleSubsection{templateSyntax}{templateSyntax}{376}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -210,33 +286,37 @@
   \draw[->] (p0-3) -- (p0-6) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{403}
+\ruleSubsection{templateSyntax}{templateSyntax}{398}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
     & & & & & & \node (p5-6) [terminal] {identifier}; & \node (p5-7) [terminal] {.}; & \node (p5-8) [terminal] {identifier}; & \node (p5-9) [terminal] {identifier}; & \\
-    & & & & \node (p4-4) [terminal] {option}; & \node (p4-5) [point] {}; & \node (p4-6) [terminal] {.}; & \node (p4-7) [terminal] {identifier}; & \node (p4-8) [terminal] {identifier}; & & \node (p4-10) [point] {}; & \\
-    & & & & \node (p3-4) [nonterminal] {\nonTerminalSymbol{expression}{0}}; & \node (p3-5) [terminal] {identifier}; & \node (p3-6) [nonterminal] {\nonTerminalSymbol{output\_expression\_list}{7}}; & \\
-    & & & & \node (p2-4) [terminal] {filewrapper}; & \node (p2-5) [terminal] {identifier}; & \node (p2-6) [terminal] {.}; & \node (p2-7) [terminal] {identifier}; & \node (p2-8) [nonterminal] {\nonTerminalSymbol{output\_expression\_list}{7}}; & \\
-    & & & & \node (p1-4) [terminal] {@type}; & \node (p1-5) [terminal] {identifier}; & \node (p1-6) [nonterminal] {\nonTerminalSymbol{output\_expression\_list}{7}}; & \\
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {[}; & \node (p0-3) [point] {}; & \node (p0-4) [terminal] {template}; & \node (p0-5) [nonterminal] {\nonTerminalSymbol{expression}{0}}; & \node (p0-6) [terminal] {identifier}; & \node (p0-7) [nonterminal] {\nonTerminalSymbol{output\_expression\_list}{7}}; & & & & \node (p0-11) [point] {}; & \node (p0-12) [terminal] {]}; & \node (p0-13) [lastPoint] {}; & \\
+    & & & & \node (p4-4) [terminal] {option}; & \node (p4-5) [point] {}; & \node (p4-6) [terminal] {.}; & \node (p4-7) [terminal] {identifier}; & \node (p4-8) [terminal] {identifier}; & & \node (p4-10) [point] {}; & \node (p4-11) [terminal] {]}; & \\
+    & & & & \node (p3-4) [nonterminal] {\nonTerminalSymbol{expression}{0}}; & \node (p3-5) [terminal] {identifier}; & \node (p3-6) [nonterminal] {\nonTerminalSymbol{output\_expression\_list}{7}}; & \node (p3-7) [terminal] {]}; & \\
+    & & & & \node (p2-4) [terminal] {filewrapper}; & \node (p2-5) [terminal] {identifier}; & \node (p2-6) [terminal] {.}; & \node (p2-7) [terminal] {identifier}; & \node (p2-8) [nonterminal] {\nonTerminalSymbol{output\_expression\_list}{7}}; & \node (p2-9) [terminal] {]}; & \\
+    & & & & \node (p1-4) [terminal] {@type}; & \node (p1-5) [terminal] {identifier}; & \node (p1-6) [nonterminal] {\nonTerminalSymbol{output\_expression\_list}{7}}; & \node (p1-7) [terminal] {]}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {[}; & \node (p0-3) [point] {}; & \node (p0-4) [terminal] {template}; & \node (p0-5) [nonterminal] {\nonTerminalSymbol{expression}{0}}; & \node (p0-6) [terminal] {identifier}; & \node (p0-7) [nonterminal] {\nonTerminalSymbol{output\_expression\_list}{7}}; & \node (p0-8) [terminal] {]}; & & & & \node (p0-12) [point] {}; & \node (p0-13) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-4) ;
   \draw[->] (p0-4) -- (p0-5) ;
   \draw[->] (p0-5) -- (p0-6) ;
   \draw[->] (p0-6) -- (p0-7) ;
+  \draw[->] (p0-7) -- (p0-8) ;
   \draw[->] (p0-3) |- (p1-4) ;
   \draw[->] (p1-4) -- (p1-5) ;
   \draw[->] (p1-5) -- (p1-6) ;
+  \draw[->] (p1-6) -- (p1-7) ;
   \draw[->] (p0-3) |- (p2-4) ;
   \draw[->] (p2-4) -- (p2-5) ;
   \draw[->] (p2-5) -- (p2-6) ;
   \draw[->] (p2-6) -- (p2-7) ;
   \draw[->] (p2-7) -- (p2-8) ;
+  \draw[->] (p2-8) -- (p2-9) ;
   \draw[->] (p0-3) |- (p3-4) ;
   \draw[->] (p3-4) -- (p3-5) ;
   \draw[->] (p3-5) -- (p3-6) ;
+  \draw[->] (p3-6) -- (p3-7) ;
   \draw[->] (p0-3) |- (p4-4) ;
   \draw[->] (p4-4) -- (p4-6) ;
   \draw[->] (p4-6) -- (p4-7) ;
@@ -247,16 +327,16 @@
   \draw[->] (p5-8) -- (p5-9) ;
   \draw (p4-8) -- (p4-10) ;
   \draw[->] (p5-9) -| (p4-10) ;
-  \draw (p0-7) -- (p0-11) ;
-  \draw[->] (p1-6) -| (p0-11) ;
-  \draw[->] (p2-8) -| (p0-11) ;
-  \draw[->] (p3-6) -| (p0-11) ;
-  \draw[->] (p4-10) -| (p0-11) ;
-  \draw[->] (p0-11) -- (p0-12) ;
+  \draw[->] (p4-10) -- (p4-11) ;
+  \draw (p0-8) -- (p0-12) ;
+  \draw[->] (p1-7) -| (p0-12) ;
+  \draw[->] (p2-9) -| (p0-12) ;
+  \draw[->] (p3-7) -| (p0-12) ;
+  \draw[->] (p4-11) -| (p0-12) ;
   \draw[->] (p0-12) -- (p0-13) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{468}
+\ruleSubsection{templateSyntax}{templateSyntax}{473}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -269,7 +349,7 @@
   \draw[->] (p0-5) -- (p0-6) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{478}
+\ruleSubsection{templateSyntax}{templateSyntax}{483}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -377,7 +457,7 @@
   \draw[->] (p0-4) -- (p0-9) ;
 \end{tikzpicture}
 
-\nonTerminalSection{switch\_case}{10}
+\nonTerminalSection{switch\_case}{12}
 
 \ruleSubsection{templateSyntax}{template-switch-instruction}{61}
 
@@ -421,7 +501,7 @@
 
 \nonTerminalSection{template\_instruction}{8}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{525}
+\ruleSubsection{templateSyntax}{templateSyntax}{529}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -432,7 +512,7 @@
   \draw[->] (p0-3) -- (p0-4) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{536}
+\ruleSubsection{templateSyntax}{templateSyntax}{541}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -442,7 +522,7 @@
   \draw[->] (p0-2) -- (p0-3) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{543}
+\ruleSubsection{templateSyntax}{templateSyntax}{548}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -452,7 +532,7 @@
   \draw[->] (p0-2) -- (p0-3) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{550}
+\ruleSubsection{templateSyntax}{templateSyntax}{555}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -471,70 +551,7 @@
   \draw[->] (p0-10) -- (p0-11) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{572}
-
-\begin{tikzpicture}
-  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    & & & & & & & & & & & & & & & & & & & & \node (p3-20) [point] {}; & & & & & & & & & & & & & & & & & & \node (p3-38) [point] {}; & & & & & & & & \node (p3-46) [point] {}; & \\
-    & & & & \node (p2-4) [terminal] {>}; & & & & & & & & & & & & & & & \node (p2-19) [nonterminal] {\nonTerminalSymbol{template\_instruction}{8}}; & & & & & & & & & & & & \node (p2-31) [point] {}; & & & & & & \node (p2-37) [nonterminal] {\nonTerminalSymbol{template\_instruction}{8}}; & & & & & & & & \node (p2-45) [nonterminal] {\nonTerminalSymbol{template\_instruction}{8}}; & \\
-    & & & & \node (p1-4) [terminal] {<}; & & & & & & & \node (p1-11) [terminal] {:}; & \node (p1-12) [terminal] {identifier}; & & & \node (p1-15) [terminal] {before}; & \node (p1-16) [point] {}; & \node (p1-17) [point] {}; & \node (p1-18) [point] {}; & & & & & & \node (p1-24) [terminal] {index}; & \node (p1-25) [terminal] {identifier}; & & & & & \node (p1-30) [nonterminal] {\nonTerminalSymbol{template\_instruction}{8}}; & & & \node (p1-33) [terminal] {between}; & \node (p1-34) [point] {}; & \node (p1-35) [point] {}; & \node (p1-36) [point] {}; & & & & & \node (p1-41) [terminal] {after}; & \node (p1-42) [point] {}; & \node (p1-43) [point] {}; & \node (p1-44) [point] {}; & \\
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {for}; & \node (p0-3) [point] {}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & \node (p0-6) [terminal] {(}; & \node (p0-7) [terminal] {)}; & \node (p0-8) [terminal] {in}; & \node (p0-9) [nonterminal] {\nonTerminalSymbol{expression}{0}}; & \node (p0-10) [point] {}; & \node (p0-11) [point] {}; & & \node (p0-13) [point] {}; & \node (p0-14) [point] {}; & \node (p0-15) [point] {}; & & & & & & \node (p0-21) [point] {}; & \node (p0-22) [terminal] {do}; & \node (p0-23) [point] {}; & \node (p0-24) [point] {}; & & \node (p0-26) [point] {}; & \node (p0-27) [point] {}; & \node (p0-28) [point] {}; & \node (p0-29) [point] {}; & & & \node (p0-32) [point] {}; & \node (p0-33) [point] {}; & & & & & & \node (p0-39) [point] {}; & \node (p0-40) [point] {}; & \node (p0-41) [point] {}; & & & & & & \node (p0-47) [point] {}; & \node (p0-48) [terminal] {end}; & \node (p0-49) [lastPoint] {}; & \\
-  };
-  \draw[->] (P0start) -- (p0-2) ;
-  \draw (p0-2) -- (p0-4) ;
-  \draw[->] (p0-3) |- (p1-4) ;
-  \draw[->] (p0-3) |- (p2-4) ;
-  \draw (p0-4) -- (p0-5) ;
-  \draw[->] (p1-4) -| (p0-5) ;
-  \draw[->] (p2-4) -| (p0-5) ;
-  \draw[->] (p0-5) -- (p0-6) ;
-  \draw[->] (p0-6) -- (p0-7) ;
-  \draw[->] (p0-7) -- (p0-8) ;
-  \draw[->] (p0-8) -- (p0-9) ;
-  \draw (p0-9) -- (p0-11) ;
-  \draw[->] (p0-10) |- (p1-11) ;
-  \draw[->] (p1-11) -- (p1-12) ;
-  \draw (p0-11) -- (p0-13) ;
-  \draw[->] (p1-12) -| (p0-13) ;
-  \draw (p0-13) -- (p0-15) ;
-  \draw[->] (p0-14) |- (p1-15) ;
-  \draw (p1-15) -- (p1-17) ;
-  \draw[->] (p1-18) |- (p2-19) ;
-  \draw[->] (p3-20) -| (p1-16) ;
-  \draw[->] (p2-19) -| (p3-20) ;
-  \draw (p0-15) -- (p0-21) ;
-  \draw[->] (p1-17) -| (p0-21) ;
-  \draw[->] (p0-21) -- (p0-22) ;
-  \draw (p0-22) -- (p0-24) ;
-  \draw[->] (p0-23) |- (p1-24) ;
-  \draw[->] (p1-24) -- (p1-25) ;
-  \draw (p0-24) -- (p0-26) ;
-  \draw[->] (p1-25) -| (p0-26) ;
-  \draw (p0-26) -- (p0-28) ;
-  \draw[->] (p0-29) |- (p1-30) ;
-  \draw[->] (p2-31) -| (p0-27) ;
-  \draw[->] (p1-30) -| (p2-31) ;
-  \draw (p0-28) -- (p0-33) ;
-  \draw[->] (p0-32) |- (p1-33) ;
-  \draw (p1-33) -- (p1-35) ;
-  \draw[->] (p1-36) |- (p2-37) ;
-  \draw[->] (p3-38) -| (p1-34) ;
-  \draw[->] (p2-37) -| (p3-38) ;
-  \draw (p0-33) -- (p0-39) ;
-  \draw[->] (p1-35) -| (p0-39) ;
-  \draw (p0-39) -- (p0-41) ;
-  \draw[->] (p0-40) |- (p1-41) ;
-  \draw (p1-41) -- (p1-43) ;
-  \draw[->] (p1-44) |- (p2-45) ;
-  \draw[->] (p3-46) -| (p1-42) ;
-  \draw[->] (p2-45) -| (p3-46) ;
-  \draw (p0-41) -- (p0-47) ;
-  \draw[->] (p1-43) -| (p0-47) ;
-  \draw[->] (p0-47) -- (p0-48) ;
-  \draw[->] (p0-48) -- (p0-49) ;
-\end{tikzpicture}
-
-\ruleSubsection{templateSyntax}{templateSyntax}{659}
+\ruleSubsection{templateSyntax}{templateSyntax}{576}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -565,6 +582,62 @@
   \draw[->] (p0-22) -- (p0-23) ;
 \end{tikzpicture}
 
+\ruleSubsection{templateSyntax}{template-for-instruction}{106}
+
+\begin{tikzpicture}
+  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
+    & & & & & & & & & & & & & \node (p3-13) [point] {}; & & & & & & & & & & & & & & & & & & & \node (p3-32) [point] {}; & & & & & & & & \node (p3-40) [point] {}; & \\
+    & & & & \node (p2-4) [terminal] {>}; & & & & & & & & \node (p2-12) [nonterminal] {\nonTerminalSymbol{template\_instruction}{8}}; & & & & & & & & & & & & & \node (p2-25) [point] {}; & & & & & & \node (p2-31) [nonterminal] {\nonTerminalSymbol{template\_instruction}{8}}; & & & & & & & & \node (p2-39) [nonterminal] {\nonTerminalSymbol{template\_instruction}{8}}; & \\
+    & & & & \node (p1-4) [terminal] {<}; & & & & \node (p1-8) [terminal] {before}; & \node (p1-9) [point] {}; & \node (p1-10) [point] {}; & \node (p1-11) [point] {}; & & & & & & \node (p1-17) [terminal] {(}; & \node (p1-18) [terminal] {identifier}; & \node (p1-19) [terminal] {)}; & & & & & \node (p1-24) [nonterminal] {\nonTerminalSymbol{template\_instruction}{8}}; & & & \node (p1-27) [terminal] {between}; & \node (p1-28) [point] {}; & \node (p1-29) [point] {}; & \node (p1-30) [point] {}; & & & & & \node (p1-35) [terminal] {after}; & \node (p1-36) [point] {}; & \node (p1-37) [point] {}; & \node (p1-38) [point] {}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {for}; & \node (p0-3) [point] {}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & \node (p0-6) [nonterminal] {\nonTerminalSymbol{for\_instruction\_enumerated\_object}{11}}; & \node (p0-7) [point] {}; & \node (p0-8) [point] {}; & & & & & & \node (p0-14) [point] {}; & \node (p0-15) [terminal] {do}; & \node (p0-16) [point] {}; & \node (p0-17) [point] {}; & & & \node (p0-20) [point] {}; & \node (p0-21) [point] {}; & \node (p0-22) [point] {}; & \node (p0-23) [point] {}; & & & \node (p0-26) [point] {}; & \node (p0-27) [point] {}; & & & & & & \node (p0-33) [point] {}; & \node (p0-34) [point] {}; & \node (p0-35) [point] {}; & & & & & & \node (p0-41) [point] {}; & \node (p0-42) [terminal] {end}; & \node (p0-43) [lastPoint] {}; & \\
+  };
+  \draw[->] (P0start) -- (p0-2) ;
+  \draw (p0-2) -- (p0-4) ;
+  \draw[->] (p0-3) |- (p1-4) ;
+  \draw[->] (p0-3) |- (p2-4) ;
+  \draw (p0-4) -- (p0-5) ;
+  \draw[->] (p1-4) -| (p0-5) ;
+  \draw[->] (p2-4) -| (p0-5) ;
+  \draw[->] (p0-5) -- (p0-6) ;
+  \draw (p0-6) -- (p0-8) ;
+  \draw[->] (p0-7) |- (p1-8) ;
+  \draw (p1-8) -- (p1-10) ;
+  \draw[->] (p1-11) |- (p2-12) ;
+  \draw[->] (p3-13) -| (p1-9) ;
+  \draw[->] (p2-12) -| (p3-13) ;
+  \draw (p0-8) -- (p0-14) ;
+  \draw[->] (p1-10) -| (p0-14) ;
+  \draw[->] (p0-14) -- (p0-15) ;
+  \draw (p0-15) -- (p0-17) ;
+  \draw[->] (p0-16) |- (p1-17) ;
+  \draw[->] (p1-17) -- (p1-18) ;
+  \draw[->] (p1-18) -- (p1-19) ;
+  \draw (p0-17) -- (p0-20) ;
+  \draw[->] (p1-19) -| (p0-20) ;
+  \draw (p0-20) -- (p0-22) ;
+  \draw[->] (p0-23) |- (p1-24) ;
+  \draw[->] (p2-25) -| (p0-21) ;
+  \draw[->] (p1-24) -| (p2-25) ;
+  \draw (p0-22) -- (p0-27) ;
+  \draw[->] (p0-26) |- (p1-27) ;
+  \draw (p1-27) -- (p1-29) ;
+  \draw[->] (p1-30) |- (p2-31) ;
+  \draw[->] (p3-32) -| (p1-28) ;
+  \draw[->] (p2-31) -| (p3-32) ;
+  \draw (p0-27) -- (p0-33) ;
+  \draw[->] (p1-29) -| (p0-33) ;
+  \draw (p0-33) -- (p0-35) ;
+  \draw[->] (p0-34) |- (p1-35) ;
+  \draw (p1-35) -- (p1-37) ;
+  \draw[->] (p1-38) |- (p2-39) ;
+  \draw[->] (p3-40) -| (p1-36) ;
+  \draw[->] (p2-39) -| (p3-40) ;
+  \draw (p0-35) -- (p0-41) ;
+  \draw[->] (p1-37) -| (p0-41) ;
+  \draw[->] (p0-41) -- (p0-42) ;
+  \draw[->] (p0-42) -- (p0-43) ;
+\end{tikzpicture}
+
 \ruleSubsection{templateSyntax}{template-switch-instruction}{28}
 
 \begin{tikzpicture}
@@ -572,7 +645,7 @@
     & & & & & & & & & & & & & & & \node (p4-15) [point] {}; & \\
     & & & & & & & & & & & & & & \node (p3-14) [point] {}; & \\
     & & & & & & & & & & & & & \node (p2-13) [nonterminal] {\nonTerminalSymbol{template\_instruction}{8}}; & \\
-    & & & & & & & \node (p1-7) [terminal] {case}; & \node (p1-8) [nonterminal] {\nonTerminalSymbol{switch\_case}{10}}; & \node (p1-9) [terminal] {:}; & \node (p1-10) [point] {}; & \node (p1-11) [point] {}; & \node (p1-12) [point] {}; & \\
+    & & & & & & & \node (p1-7) [terminal] {case}; & \node (p1-8) [nonterminal] {\nonTerminalSymbol{switch\_case}{12}}; & \node (p1-9) [terminal] {:}; & \node (p1-10) [point] {}; & \node (p1-11) [point] {}; & \node (p1-12) [point] {}; & \\
     \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {switch}; & \node (p0-3) [nonterminal] {\nonTerminalSymbol{expression}{0}}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & \node (p0-6) [point] {}; & & & & & & & & & & \node (p0-16) [terminal] {end}; & \node (p0-17) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
@@ -593,7 +666,7 @@
 
 \nonTerminalSection{template\_parser\_start\_symbol}{9}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{695}
+\ruleSubsection{templateSyntax}{templateSyntax}{612}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -610,7 +683,7 @@
 
 \nonTerminalSection{term}{4}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{169}
+\ruleSubsection{templateSyntax}{templateSyntax}{168}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
