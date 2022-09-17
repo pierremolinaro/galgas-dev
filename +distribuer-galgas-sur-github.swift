@@ -30,7 +30,10 @@ let BUILD_KIND = ProductKind.release
 
 let NOTES : [String] = []
 let BUGFIXES : [String] = []
-let CHANGES : [String] = ["Cocoa Application contains X86_64 and Apple Silicon executables"]
+let CHANGES : [String] = [
+  "Nouvelle gestion des constantes",
+  "les suffixes des constantes littérales sont obsolètes et sans effet, une constante littérale est toujours du type @lbigint"
+]
 let NEWS : [String] = [
 ]
 
