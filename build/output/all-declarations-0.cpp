@@ -64,8 +64,6 @@ static const char * gLexicalMessage_galgasScanner_ASCIIcodeTooLargeError = "ASCI
 
 static const char * gLexicalMessage_galgasScanner_attributeError = "in an attribute name, a letter or a digit should follow the '%' character" ;
 
-static const char * gLexicalMessage_galgasScanner_decimalNumberTooLarge = "decimal number too large" ;
-
 static const char * gLexicalMessage_galgasScanner_floatNumberConversionError = "invalid float number" ;
 
 static const char * gLexicalMessage_galgasScanner_hexDigitError = "0x should be followed by a hexadecimal digit" ;
@@ -104,20 +102,8 @@ static const char * gSyntaxErrorMessage_galgasScanner_identifier = "an identifie
 //--- Syntax error message for terminal '$double.xxx$' :
 static const char * gSyntaxErrorMessage_galgasScanner_double_2E_xxx = "a float number" ;
 
-//--- Syntax error message for terminal '$uint32$' :
-static const char * gSyntaxErrorMessage_galgasScanner_uint_33__32_ = "a literal integer" ;
-
-//--- Syntax error message for terminal '$sint32_S$' :
-static const char * gSyntaxErrorMessage_galgasScanner_sint_33__32__5F_S = "a 32-bit signed decimal number" ;
-
-//--- Syntax error message for terminal '$uint64_L$' :
-static const char * gSyntaxErrorMessage_galgasScanner_uint_36__34__5F_L = "a 64-bit unsigned decimal number" ;
-
-//--- Syntax error message for terminal '$sint64_LS$' :
-static const char * gSyntaxErrorMessage_galgasScanner_sint_36__34__5F_LS = "a 64-bit signed decimal number" ;
-
-//--- Syntax error message for terminal '$bigint_G$' :
-static const char * gSyntaxErrorMessage_galgasScanner_bigint_5F_G = "a big integer number" ;
+//--- Syntax error message for terminal '$literalInt$' :
+static const char * gSyntaxErrorMessage_galgasScanner_literalInt = "a big integer number" ;
 
 //--- Syntax error message for terminal '$.$' :
 static const char * gSyntaxErrorMessage_galgasScanner__2E_ = "the '.' delimitor" ;
@@ -572,15 +558,11 @@ static const char * gSyntaxErrorMessage_galgasScanner__21__5E_ = "the '!^' delim
 
 C_String C_Lexique_galgasScanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
   C_String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 157)) {
-    static const char * syntaxErrorMessageArray [157] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 153)) {
+    static const char * syntaxErrorMessageArray [153] = {kEndOfSourceLexicalErrorMessage,
         gSyntaxErrorMessage_galgasScanner_identifier,
         gSyntaxErrorMessage_galgasScanner_double_2E_xxx,
-        gSyntaxErrorMessage_galgasScanner_uint_33__32_,
-        gSyntaxErrorMessage_galgasScanner_sint_33__32__5F_S,
-        gSyntaxErrorMessage_galgasScanner_uint_36__34__5F_L,
-        gSyntaxErrorMessage_galgasScanner_sint_36__34__5F_LS,
-        gSyntaxErrorMessage_galgasScanner_bigint_5F_G,
+        gSyntaxErrorMessage_galgasScanner_literalInt,
         gSyntaxErrorMessage_galgasScanner__2E_,
         gSyntaxErrorMessage_galgasScanner__2E__2E__2E_,
         gSyntaxErrorMessage_galgasScanner__2E__2E__3C_,
@@ -995,13 +977,6 @@ static const utf32 kUnicodeString_galgasScanner__3E__3E_ [] = {
 static const utf32 kUnicodeString_galgasScanner__3F__5E_ [] = {
   TO_UNICODE ('\?'),
   TO_UNICODE ('^'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$LS$'
-static const utf32 kUnicodeString_galgasScanner_LS [] = {
-  TO_UNICODE ('L'),
-  TO_UNICODE ('S'),
   TO_UNICODE (0)
 } ;
 
@@ -2160,37 +2135,9 @@ C_String C_Lexique_galgasScanner::getCurrentTokenString (const cToken * inTokenP
       s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
       s.appendCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
-    case kToken_uint_33__32_:
+    case kToken_literalInt:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("uint32") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendCLiteralStringConstant (ptr->mLexicalAttribute_bigintValue.decimalString ()) ;
-      break ;
-    case kToken_sint_33__32__5F_S:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("sint32_S") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendSigned (ptr->mLexicalAttribute_sint_33__32_value) ;
-      break ;
-    case kToken_uint_36__34__5F_L:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("uint64_L") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendUnsigned (ptr->mLexicalAttribute_uint_36__34_value) ;
-      break ;
-    case kToken_sint_36__34__5F_LS:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("sint64_LS") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendSigned (ptr->mLexicalAttribute_sint_36__34_value) ;
-      break ;
-    case kToken_bigint_5F_G:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("bigint_G") ;
+      s.appendCString ("literalInt") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
       s.appendCLiteralStringConstant (ptr->mLexicalAttribute_bigintValue.decimalString ()) ;
@@ -3035,27 +2982,9 @@ void C_Lexique_galgasScanner::internalParseLexicalToken (cTokenFor_galgasScanner
           }
         }while (loop) ;
         loop = true ;
-        if (testForInputUTF32String (kUnicodeString_galgasScanner_LS, 2, true)) {
-          ::scanner_routine_convertHexStringIntoSInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_36__34_value, gLexicalMessage_galgasScanner_decimalNumberTooLarge, gLexicalMessage_galgasScanner_internalError) ;
-          token.mTokenCode = kToken_sint_36__34__5F_LS ;
-          enterToken (token) ;
-        }else if (testForInputUTF32Char (TO_UNICODE ('S')) || testForInputUTF32Char (TO_UNICODE ('s'))) {
-          ::scanner_routine_convertHexStringIntoSInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_33__32_value, gLexicalMessage_galgasScanner_decimalNumberTooLarge, gLexicalMessage_galgasScanner_internalError) ;
-          token.mTokenCode = kToken_sint_33__32__5F_S ;
-          enterToken (token) ;
-        }else if (testForInputUTF32Char (TO_UNICODE ('L'))) {
-          ::scanner_routine_convertHexStringIntoUInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_36__34_value, gLexicalMessage_galgasScanner_decimalNumberTooLarge, gLexicalMessage_galgasScanner_internalError) ;
-          token.mTokenCode = kToken_uint_36__34__5F_L ;
-          enterToken (token) ;
-        }else if (testForInputUTF32Char (TO_UNICODE ('G'))) {
-          ::scanner_routine_convertHexStringIntoBigInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_bigintValue, gLexicalMessage_galgasScanner_internalError) ;
-          token.mTokenCode = kToken_bigint_5F_G ;
-          enterToken (token) ;
-        }else{
-          ::scanner_routine_convertHexStringIntoBigInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_bigintValue, gLexicalMessage_galgasScanner_internalError) ;
-          token.mTokenCode = kToken_uint_33__32_ ;
-          enterToken (token) ;
-        }
+        ::scanner_routine_convertHexStringIntoBigInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_bigintValue, gLexicalMessage_galgasScanner_internalError) ;
+        token.mTokenCode = kToken_literalInt ;
+        enterToken (token) ;
       }else{
         lexicalError (gLexicalMessage_galgasScanner_hexDigitError COMMA_LINE_AND_SOURCE_FILE) ;
       }
@@ -3070,23 +2999,7 @@ void C_Lexique_galgasScanner::internalParseLexicalToken (cTokenFor_galgasScanner
         }
       }while (loop) ;
       loop = true ;
-      if (testForInputUTF32Char (TO_UNICODE ('S')) || testForInputUTF32Char (TO_UNICODE ('s'))) {
-        ::scanner_routine_convertDecimalStringIntoSInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_33__32_value, gLexicalMessage_galgasScanner_decimalNumberTooLarge, gLexicalMessage_galgasScanner_internalError) ;
-        token.mTokenCode = kToken_sint_33__32__5F_S ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgasScanner_LS, 2, true)) {
-        ::scanner_routine_convertDecimalStringIntoSInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_36__34_value, gLexicalMessage_galgasScanner_decimalNumberTooLarge, gLexicalMessage_galgasScanner_internalError) ;
-        token.mTokenCode = kToken_sint_36__34__5F_LS ;
-        enterToken (token) ;
-      }else if (testForInputUTF32Char (TO_UNICODE ('L'))) {
-        ::scanner_routine_convertDecimalStringIntoUInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_36__34_value, gLexicalMessage_galgasScanner_decimalNumberTooLarge, gLexicalMessage_galgasScanner_internalError) ;
-        token.mTokenCode = kToken_uint_36__34__5F_L ;
-        enterToken (token) ;
-      }else if (testForInputUTF32Char (TO_UNICODE ('G'))) {
-        ::scanner_routine_convertDecimalStringIntoBigInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_bigintValue, gLexicalMessage_galgasScanner_internalError) ;
-        token.mTokenCode = kToken_bigint_5F_G ;
-        enterToken (token) ;
-      }else if (testForInputUTF32Char (TO_UNICODE ('.'))) {
+      if (testForInputUTF32Char (TO_UNICODE ('.'))) {
         ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('.')) ;
         do {
           if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
@@ -3102,7 +3015,7 @@ void C_Lexique_galgasScanner::internalParseLexicalToken (cTokenFor_galgasScanner
         enterToken (token) ;
       }else{
         ::scanner_routine_convertDecimalStringIntoBigInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_bigintValue, gLexicalMessage_galgasScanner_internalError) ;
-        token.mTokenCode = kToken_uint_33__32_ ;
+        token.mTokenCode = kToken_literalInt ;
         enterToken (token) ;
       }
     }else if (testForInputUTF32Char (TO_UNICODE ('.'))) {
@@ -3987,11 +3900,7 @@ GALGAS_stringlist C_Lexique_galgasScanner::symbols (LOCATION_ARGS) {
   GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
   result.addAssign_operation (GALGAS_string ("identifier") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("double.xxx") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("uint32") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("sint32_S") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("uint64_L") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("sint64_LS") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("bigint_G") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("literalInt") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string (".") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("...") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("..<") COMMA_THERE) ;
@@ -4308,14 +4217,10 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner, getKeywordsForIdentifie
 //----------------------------------------------------------------------------------------------------------------------
 
 uint32_t C_Lexique_galgasScanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [157] = {0,
+  static const uint32_t kTerminalSymbolStyles [153] = {0,
     0 /* galgasScanner_1_identifier */,
     8 /* galgasScanner_1_double_2E_xxx */,
-    6 /* galgasScanner_1_uint_33__32_ */,
-    6 /* galgasScanner_1_sint_33__32__5F_S */,
-    6 /* galgasScanner_1_uint_36__34__5F_L */,
-    6 /* galgasScanner_1_sint_36__34__5F_LS */,
-    7 /* galgasScanner_1_bigint_5F_G */,
+    7 /* galgasScanner_1_literalInt */,
     2 /* galgasScanner_1__2E_ */,
     2 /* galgasScanner_1__2E__2E__2E_ */,
     2 /* galgasScanner_1__2E__2E__3C_ */,
@@ -16346,6 +16251,117 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGen
       result = *p ;
     }else{
       inCompiler->castError ("templateInstructionListForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_templateBlockInstructionForGeneration_2D_weak::objectCompare (const GALGAS_templateBlockInstructionForGeneration_2D_weak & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateBlockInstructionForGeneration_2D_weak::GALGAS_templateBlockInstructionForGeneration_2D_weak (void) :
+GALGAS_templateInstructionForGeneration_2D_weak () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateBlockInstructionForGeneration_2D_weak & GALGAS_templateBlockInstructionForGeneration_2D_weak::operator = (const GALGAS_templateBlockInstructionForGeneration & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != NULL) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateBlockInstructionForGeneration_2D_weak::GALGAS_templateBlockInstructionForGeneration_2D_weak (const GALGAS_templateBlockInstructionForGeneration & inSource) :
+GALGAS_templateInstructionForGeneration_2D_weak (inSource) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateBlockInstructionForGeneration_2D_weak GALGAS_templateBlockInstructionForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+  GALGAS_templateBlockInstructionForGeneration_2D_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateBlockInstructionForGeneration GALGAS_templateBlockInstructionForGeneration_2D_weak::bang_templateBlockInstructionForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_templateBlockInstructionForGeneration result ;
+  if (mProxyPtr != NULL) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == NULL) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_templateBlockInstructionForGeneration) ;
+      result = GALGAS_templateBlockInstructionForGeneration ((cPtr_templateBlockInstructionForGeneration *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@templateBlockInstructionForGeneration-weak type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration_2D_weak ("templateBlockInstructionForGeneration-weak",
+                                                                      & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2D_weak) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_templateBlockInstructionForGeneration_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration_2D_weak ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_templateBlockInstructionForGeneration_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_templateBlockInstructionForGeneration_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateBlockInstructionForGeneration_2D_weak GALGAS_templateBlockInstructionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                                                          C_Compiler * inCompiler
+                                                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_templateBlockInstructionForGeneration_2D_weak result ;
+  const GALGAS_templateBlockInstructionForGeneration_2D_weak * p = (const GALGAS_templateBlockInstructionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_templateBlockInstructionForGeneration_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateBlockInstructionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

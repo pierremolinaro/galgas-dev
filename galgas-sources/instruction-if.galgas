@@ -169,7 +169,7 @@ syntax extension galgas3InstructionsSyntax {
             $*$
             optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: true !location: .here !idx: 0}
           or
-            $uint32$ ?let repetitionCount
+            $literalInt$ ?let repetitionCount
             $*$
             if selector.string != "" then
               error selector : "the selector should be '?'"  fixit { replace "?" }
@@ -324,7 +324,7 @@ syntax extension galgas4InstructionsSyntax {
             $*$
             optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: true !location: .here !idx: 0}
           or
-            $uint32$ ?let repetitionCount
+            $literalInt$ ?let repetitionCount
             $*$
             if selector.string != "" then
               error selector : "the selector should be '?'"  fixit { replace "?" }

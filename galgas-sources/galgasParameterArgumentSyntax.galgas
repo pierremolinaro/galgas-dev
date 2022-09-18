@@ -83,7 +83,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner) {
         $*$
         outActualParameterList += !@inputSingleJokerActualParameterAST.new {!selector}
       or
-        $uint32$ ?let count
+        $literalInt$ ?let count
         $*$
         var n = [count.bigint uint]
         if selector.string != "" then
@@ -124,7 +124,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner) {
       outActualParameterList += !@outputInputSingleJokerParameterAST.new {!selector}
     while
       $!?$ ?let selector
-      $uint32$ ?let count
+      $literalInt$ ?let count
       $*$
       var n = [count.bigint uint]
       if selector.string != "" then
@@ -323,7 +323,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
         $*$
         outActualParameterList += !@inputSingleJokerActualParameterAST.new {!selector}
       or
-        $uint32$ ?let count
+        $literalInt$ ?let count
         $*$
         var n = [count.bigint uint]
         if selector.string != "" then
@@ -364,7 +364,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
       outActualParameterList += !@outputInputSelfParameterAST.new {!selector}
     while
       $!?$ ?let selector
-      $uint32$ ?let count
+      $literalInt$ ?let count
       $*$
       var n = [count.bigint uint]
       if selector.string != "" then

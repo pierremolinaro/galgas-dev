@@ -39,44 +39,8 @@ syntax extension galgas3ExpressionSyntax {
   #·····················································································································
   
   rule <primary> !@semanticExpressionAST outExpression {
-    $uint32$ ?let @lbigint literalInt
+    $literalInt$ ?let @lbigint literalInt
     outExpression = @literalBigIntExpressionAST.new {!literalInt}
-
-#    $uint32$ ?let @luint literalInt
-#    outExpression = @literalUIntExpressionAST.new {!literalInt}
-#    outExpression = @literalBigIntExpressionAST.new {!.new {![literalInt.uint bigint] !literalInt.location}}
- }
-
-  #·····················································································································
-  
-  rule <primary> !@semanticExpressionAST outExpression {
-    $sint32_S$ ?let @lsint literalInt
-    outExpression = @literalSIntExpressionAST.new {!literalInt}
-    warning literalInt : "literal integer S suffix is obsolete: consider removing it"
-  }
-
-  #·····················································································································
-  
-  rule <primary> !@semanticExpressionAST outExpression {
-    $uint64_L$ ?let @luint64 literalInt
-    outExpression = @literalUInt64ExpressionAST.new {!literalInt}
-    warning literalInt : "literal integer L suffix is obsolete: consider removing it"
-  }
-
-  #·····················································································································
-  
-  rule <primary> !@semanticExpressionAST outExpression {
-    $sint64_LS$ ?let @lsint64 literalInt
-    outExpression = @literalSInt64ExpressionAST.new {!literalInt}
-    warning literalInt : "literal integer LS suffix is obsolete: consider removing it"
-  }
-
-  #·····················································································································
-  
-  rule <primary> !@semanticExpressionAST outExpression {
-    $bigint_G$ ?let @lbigint literalInt
-    outExpression = @literalBigIntExpressionAST.new {!literalInt}
-    warning literalInt : "literal integer G suffix is obsolete: consider removing it"
   }
 
   #·····················································································································
@@ -90,44 +54,9 @@ syntax extension galgas4ExpressionSyntax {
   #·····················································································································
   
   rule <primary> !@semanticExpressionAST outExpression {
-    $uint32$ ?let @lbigint literalInt
+    $literalInt$ ?let @lbigint literalInt
     outExpression = @literalBigIntExpressionAST.new {!literalInt}
-
-#    $uint32$ ?let @luint literalInt
-#    outExpression = @literalUIntExpressionAST.new {!literalInt}
-#    outExpression = @literalBigIntExpressionAST.new {!.new {![literalInt.uint bigint] !literalInt.location}}
   }
-
-  #·····················································································································
-  
-#  rule <primary> !@semanticExpressionAST outExpression {
-#    $sint32_S$ ?let @lsint literalInt
-#    outExpression = @literalSIntExpressionAST.new {!literalInt}
-#  }
-
-  #·····················································································································
-  
-#  rule <primary> !@semanticExpressionAST outExpression {
-#    $uint64_L$ ?let @luint64 literalInt
-#    outExpression = @literalUInt64ExpressionAST.new {!literalInt}
-#    warning literalInt : "literal integer L suffix is obsolete: consider removing it"
-#  }
-
-  #·····················································································································
-  
-#  rule <primary> !@semanticExpressionAST outExpression {
-#    $sint64_LS$ ?let @lsint64 literalInt
-#    outExpression = @literalSInt64ExpressionAST.new {!literalInt}
-#    warning literalInt : "literal integer LS suffix is obsolete: consider removing it"
-#  }
-
-  #·····················································································································
-  
-#  rule <primary> !@semanticExpressionAST outExpression {
-#    $bigint_G$ ?let @lbigint literalInt
-#    outExpression = @literalBigIntExpressionAST.new {!literalInt}
-#    warning literalInt : "literal integer G suffix is obsolete: consider remving it"
-#  }
 
   #·····················································································································
 
@@ -135,30 +64,6 @@ syntax extension galgas4ExpressionSyntax {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#override method @literalUIntExpressionAST enterExpressionInSemanticContext
-#  ?!@unifiedTypeMap unused ioTypeMap
-#{
-#}
-
-#·····················································································································
-
-#override method @literalUIntExpressionAST analyzeSemanticExpression
-#  ?let @lstring unused inUsefulnessCallerEntityName
-#  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-#  ?inferenceType: let @unifiedTypeMapEntry unused inType
-#  ?let @analysisContext inAnalysisContext
-#  ?!@localVarManager unused ioVariableMap
-#  !@semanticExpressionForGeneration outExpression
-#{
-#  outExpression = @literalUIntExpressionForGeneration.new {
-#    !inAnalysisContext.mPredefinedTypes.mUIntType
-#    !self.mValue # [mValue location]
-#    !self.mValue # [mValue uint]
-#  }
-#}
-
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @literalUInt64ExpressionAST enterExpressionInSemanticContext

@@ -23,7 +23,7 @@ syntax extension galgas3DeclarationsSyntax {
     $:$
     $@type$ ?let @lstring elementListTypeName indexing arrayElementTypeReference
     $[$
-    $uint32$ ?let dimension
+    $literalInt$ ?let dimension
     $]$
     ioDeclarations.mDeclarationList += !@arrayDeclarationAST.new {
       !false # Is not predefined
@@ -50,7 +50,7 @@ syntax extension galgas4DeclarationsSyntax {
     $:$
     $@type$ ?let @lstring elementListTypeName indexing arrayElementTypeReference
     $[$
-    $uint32$ ?let dimension
+    $literalInt$ ?let dimension
     $]$
     ioDeclarations.mDeclarationList += !@arrayDeclarationAST.new {
       !false # Is not predefined

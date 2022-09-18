@@ -87,7 +87,7 @@ syntax extension galgas3InstructionsSyntax {
       $($
       repeat
         select
-          $uint32$ ?let n
+          $literalInt$ ?let n
           $*$
           for * in 0 ..< n.bigint do
             outAssociatedValuesExtraction += !["" nowhere] !["" nowhere] !false
@@ -179,7 +179,7 @@ syntax extension galgas4InstructionsSyntax {
       $($
       repeat
         select
-          $uint32$ ?let n
+          $literalInt$ ?let n
           $*$
           for * in 0 ..< n.bigint do
             outAssociatedValuesExtraction += !["" nowhere] !["" nowhere] !false

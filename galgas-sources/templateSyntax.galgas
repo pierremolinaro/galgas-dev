@@ -299,49 +299,13 @@ rule <primary> !@templateExpressionAST outExpression {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#   P R I M A R Y  :    a 32-bit unsigned literal integer value                                                
+#   P R I M A R Y  :    a literal integer value                                                
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary> !@templateExpressionAST outExpression {
-  $uint32$ ?let literalInt
+  $literalInt$ ?let literalInt
   outExpression = @templateLiteralUIntExpressionAST.new {!literalInt}
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   P R I M A R Y  :    a 32-bit signed literal integer value                                                  
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-rule <primary> !@templateExpressionAST outExpression {
-  let @lsint literalInt
-  $sint32_S$ ?literalInt
-  outExpression = @templateLiteralSIntExpressionAST.new {!literalInt}
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   P R I M A R Y  :    a 64-bit unsigned literal integer value                                                
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-rule <primary> !@templateExpressionAST outExpression {
-  let @luint64 literalInt
-  $uint64_L$ ?literalInt
-  outExpression = @templateLiteralUInt64ExpressionAST.new {!literalInt}
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   P R I M A R Y  :    a 64-bit signed literal integer value                                                  
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-rule <primary> !@templateExpressionAST outExpression {
-  let @lsint64 literalInt
-  $sint64_LS$ ?literalInt
-  outExpression = @templateLiteralSInt64ExpressionAST.new {!literalInt}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

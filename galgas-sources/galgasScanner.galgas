@@ -209,13 +209,8 @@ rule isUnicodeLetter {
 @double floatValue
 @bigint bigintValue
 $double.xxx$ !floatValue !tokenString  style floatStyle error message "a float number"
-$uint32$ !bigintValue  style integerStyle error message "a literal integer"
-$sint32_S$ !sint32value  style integerStyle error message "a 32-bit signed decimal number"
-$uint64_L$ !uint64value  style integerStyle error message "a 64-bit unsigned decimal number"
-$sint64_LS$ !sint64value  style integerStyle error message "a 64-bit signed decimal number"
-$bigint_G$ !bigintValue  style bigintStyle error message "a big integer number"
+$literalInt$ !bigintValue  style bigintStyle error message "a big integer number"
 
-message decimalNumberTooLarge : "decimal number too large"
 message floatNumberConversionError : "invalid float number"
 message internalError : "internal error"
 message hexDigitError : "0x should be followed by a hexadecimal digit"
@@ -232,23 +227,8 @@ rule "0x" {
       enterCharacterIntoString (!?tokenString !* )
     while '_' :
     end
-    select
-    case "LS" :
-      convertHexStringIntoSInt64 (!tokenString !?sint64value error decimalNumberTooLarge, internalError)
-      send $sint64_LS$
-    case 'S' | 's' :
-      convertHexStringIntoSInt (!tokenString !?sint32value error decimalNumberTooLarge, internalError)
-      send $sint32_S$
-    case 'L' :
-      convertHexStringIntoUInt64 (!tokenString !?uint64value error decimalNumberTooLarge, internalError)
-      send $uint64_L$
-    case 'G' :
-      convertHexStringIntoBigInt (!tokenString !?bigintValue error internalError)
-      send $bigint_G$
-    default
-      convertHexStringIntoBigInt (!tokenString !?bigintValue error internalError)
-      send $uint32$
-    end
+    convertHexStringIntoBigInt (!tokenString !?bigintValue error internalError)
+    send $literalInt$
   default
     error hexDigitError
   end
@@ -262,18 +242,6 @@ rule '0'->'9' {
   while '_' :
   end
   select
-  case 'S' | 's' :
-    convertDecimalStringIntoSInt (!tokenString !?sint32value error decimalNumberTooLarge, internalError )
-    send $sint32_S$
-  case "LS" :
-    convertDecimalStringIntoSInt64 (!tokenString !?sint64value error decimalNumberTooLarge, internalError )
-    send $sint64_LS$
-  case 'L' :
-    convertDecimalStringIntoUInt64 (!tokenString !?uint64value error decimalNumberTooLarge, internalError )
-    send $uint64_L$
-  case 'G' :
-    convertDecimalStringIntoBigInt (!tokenString !?bigintValue error internalError )
-    send $bigint_G$
   case '.' :
     enterCharacterIntoString (!?tokenString !'.')
     repeat
@@ -285,7 +253,7 @@ rule '0'->'9' {
     send $double.xxx$
   default
     convertDecimalStringIntoBigInt (!tokenString !?bigintValue error internalError )
-    send $uint32$
+    send $literalInt$
   end
 }
 

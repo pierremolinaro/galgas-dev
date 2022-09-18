@@ -290,22 +290,8 @@ static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearc
         }
       }while (loop && scanningOk) ;
       loop = YES ;
-      if (scanningOk && ([self testForInputString:@"LS" advance:YES])) {
-        scanner_cocoa_routine_convertHexStringIntoSInt64 (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_sint64value) ;
-        mTokenCode = galgasScanner_1_sint_36__34__5F_LS ;
-      }else if (scanningOk && ([self testForInputChar:83] || [self testForInputChar:115])) {
-        scanner_cocoa_routine_convertHexStringIntoSInt (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_sint32value) ;
-        mTokenCode = galgasScanner_1_sint_33__32__5F_S ;
-      }else if (scanningOk && ([self testForInputChar:76])) {
-        scanner_cocoa_routine_convertHexStringIntoUInt64 (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_uint64value) ;
-        mTokenCode = galgasScanner_1_uint_36__34__5F_L ;
-      }else if (scanningOk && ([self testForInputChar:71])) {
-        scanner_cocoa_routine_convertHexStringIntoBigInt (& scanningOk, mLexicalAttribute_tokenString, mLexicalAttribute_bigintValue) ;
-        mTokenCode = galgasScanner_1_bigint_5F_G ;
-      }else{
-        scanner_cocoa_routine_convertHexStringIntoBigInt (& scanningOk, mLexicalAttribute_tokenString, mLexicalAttribute_bigintValue) ;
-        mTokenCode = galgasScanner_1_uint_33__32_ ;
-      }
+      scanner_cocoa_routine_convertHexStringIntoBigInt (& scanningOk, mLexicalAttribute_tokenString, mLexicalAttribute_bigintValue) ;
+      mTokenCode = galgasScanner_1_literalInt ;
     }else{
       scanningOk = NO ;
     }
@@ -320,19 +306,7 @@ static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearc
       }
     }while (loop && scanningOk) ;
     loop = YES ;
-    if (scanningOk && ([self testForInputChar:83] || [self testForInputChar:115])) {
-      scanner_cocoa_routine_convertDecimalStringIntoSInt (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_sint32value) ;
-      mTokenCode = galgasScanner_1_sint_33__32__5F_S ;
-    }else if (scanningOk && ([self testForInputString:@"LS" advance:YES])) {
-      scanner_cocoa_routine_convertDecimalStringIntoSInt64 (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_sint64value) ;
-      mTokenCode = galgasScanner_1_sint_36__34__5F_LS ;
-    }else if (scanningOk && ([self testForInputChar:76])) {
-      scanner_cocoa_routine_convertDecimalStringIntoUInt64 (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_uint64value) ;
-      mTokenCode = galgasScanner_1_uint_36__34__5F_L ;
-    }else if (scanningOk && ([self testForInputChar:71])) {
-      scanner_cocoa_routine_convertDecimalStringIntoBigInt (& scanningOk, mLexicalAttribute_tokenString, mLexicalAttribute_bigintValue) ;
-      mTokenCode = galgasScanner_1_bigint_5F_G ;
-    }else if (scanningOk && ([self testForInputChar:46])) {
+    if (scanningOk && ([self testForInputChar:46])) {
       scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 46) ;
       do {
         if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
@@ -347,7 +321,7 @@ static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearc
       mTokenCode = galgasScanner_1_double_2E_xxx ;
     }else{
       scanner_cocoa_routine_convertDecimalStringIntoBigInt (& scanningOk, mLexicalAttribute_tokenString, mLexicalAttribute_bigintValue) ;
-      mTokenCode = galgasScanner_1_uint_33__32_ ;
+      mTokenCode = galgasScanner_1_literalInt ;
     }
   }else if (scanningOk && ([self testForInputChar:46])) {
     if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
@@ -950,7 +924,7 @@ static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearc
 //----------------------------------------------------------------------------------------------------------------------
 
 - (NSUInteger) terminalVocabularyCount {
-  return 156 ;
+  return 152 ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -980,14 +954,10 @@ static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearc
 //----------------------------------------------------------------------------------------------------------------------
 
 - (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal {
-  static const NSUInteger kTerminalSymbolStyles [157] = {0,
+  static const NSUInteger kTerminalSymbolStyles [153] = {0,
     0 /* galgasScanner_1_identifier */,
     8 /* galgasScanner_1_double_2E_xxx */,
-    6 /* galgasScanner_1_uint_33__32_ */,
-    6 /* galgasScanner_1_sint_33__32__5F_S */,
-    6 /* galgasScanner_1_uint_36__34__5F_L */,
-    6 /* galgasScanner_1_sint_36__34__5F_LS */,
-    7 /* galgasScanner_1_bigint_5F_G */,
+    7 /* galgasScanner_1_literalInt */,
     2 /* galgasScanner_1__2E_ */,
     2 /* galgasScanner_1__2E__2E__2E_ */,
     2 /* galgasScanner_1__2E__2E__3C_ */,
@@ -1148,14 +1118,10 @@ static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearc
 //----------------------------------------------------------------------------------------------------------------------
 
 - (BOOL) atomicSelectionForToken: (NSUInteger) inTokenIndex {
-  static const BOOL kTerminalAtomicSelection [157] = {NO,
+  static const BOOL kTerminalAtomicSelection [153] = {NO,
     YES /* galgasScanner_1_identifier */,
     YES /* galgasScanner_1_double_2E_xxx */,
-    YES /* galgasScanner_1_uint_33__32_ */,
-    YES /* galgasScanner_1_sint_33__32__5F_S */,
-    YES /* galgasScanner_1_uint_36__34__5F_L */,
-    YES /* galgasScanner_1_sint_36__34__5F_LS */,
-    YES /* galgasScanner_1_bigint_5F_G */,
+    YES /* galgasScanner_1_literalInt */,
     YES /* galgasScanner_1__2E_ */,
     YES /* galgasScanner_1__2E__2E__2E_ */,
     YES /* galgasScanner_1__2E__2E__3C_ */,
