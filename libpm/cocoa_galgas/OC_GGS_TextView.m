@@ -53,6 +53,8 @@
     #endif
     noteObjectAllocation (self) ;
 
+//    self.allowedInputSourceLocales = [NSArray new] ;
+
     mDocumentUsedForDisplaying = inDocumentUsedForDisplaying ;
     mDisplayDescriptor = inDisplayDescriptor ;
     NSUserDefaults * df = [NSUserDefaults standardUserDefaults] ;
